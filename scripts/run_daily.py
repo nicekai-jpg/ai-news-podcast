@@ -4,7 +4,6 @@ import json
 import os
 import re
 import importlib
-import subprocess
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
@@ -425,56 +424,9 @@ async def _tts_to_mp3(
             else:
                 break
 
-    wav_path = mp3_path.with_suffix(".wav")
-    mp3_tmp = mp3_path.with_name(mp3_path.name + ".tmp2")
-    if wav_path.exists():
-        wav_path.unlink()
-    if mp3_tmp.exists():
-        mp3_tmp.unlink()
-
-    for v in ("cmn", "zh", "zh-cn"):
-        try:
-            subprocess.run(
-                ["espeak-ng", "-v", v, "-w", str(wav_path), text],
-                check=True,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-            )
-            if wav_path.exists() and wav_path.stat().st_size > 0:
-                break
-        except Exception:
-            if wav_path.exists():
-                wav_path.unlink()
-
-    if not wav_path.exists() or wav_path.stat().st_size == 0:
-        if last_err is not None:
-            raise last_err
-        raise RuntimeError("No TTS backend available")
-
-    subprocess.run(
-        [
-            "ffmpeg",
-            "-y",
-            "-hide_banner",
-            "-loglevel",
-            "error",
-            "-i",
-            str(wav_path),
-            "-f",
-            "mp3",
-            "-codec:a",
-            "libmp3lame",
-            "-b:a",
-            "96k",
-            str(mp3_tmp),
-        ],
-        check=True,
-    )
-    if not mp3_tmp.exists() or mp3_tmp.stat().st_size == 0:
-        raise RuntimeError("ffmpeg produced empty audio file")
-    mp3_tmp.replace(mp3_path)
-    if wav_path.exists():
-        wav_path.unlink()
+    if last_err is not None:
+        raise last_err
+    raise RuntimeError("edge-tts failed")
 
 
 def _load_sources(sources_path: Path) -> list[dict[str, Any]]:

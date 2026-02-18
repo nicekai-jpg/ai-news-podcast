@@ -19,7 +19,7 @@ pip install -r requirements.txt
 python scripts/run_daily.py --base-url http://localhost --no-audio
 ```
 
-If you are able to access Edge Read Aloud from your network, you can omit `--no-audio` to generate the MP3 locally.
+If you are able to access Edge Read Aloud from your network, you can omit `--no-audio` to generate the MP3.
 
 GitHub Pages setup
 1. Create a GitHub repo and push this folder.
