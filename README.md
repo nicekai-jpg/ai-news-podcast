@@ -1,5 +1,7 @@
 # AI News Podcast (Chinese, Free)
 
+Chinese README: `README.zh-CN.md`
+
 This repo generates a daily AI news podcast episode (MP3) and a podcast RSS feed (`feed.xml`) using only free resources.
 
 What it does
