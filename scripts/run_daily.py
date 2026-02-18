@@ -4,6 +4,7 @@ import json
 import os
 import re
 import importlib
+import subprocess
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from email.utils import format_datetime
@@ -383,13 +384,13 @@ def _build_feed_xml(
 async def _tts_to_mp3(
     text: str, *, mp3_path: Path, voice: str, rate: str, volume: str, pitch: str
 ) -> None:
-    edge_tts = importlib.import_module("edge_tts")
     mp3_path.parent.mkdir(parents=True, exist_ok=True)
     tmp_path = mp3_path.with_name(mp3_path.name + ".tmp")
     if tmp_path.exists():
         tmp_path.unlink()
     last_err: Optional[BaseException] = None
     for attempt in range(1, 4):
+        edge_tts = importlib.import_module("edge_tts")
         comm = edge_tts.Communicate(
             text, voice=voice, rate=rate, volume=volume, pitch=pitch
         )
@@ -406,9 +407,56 @@ async def _tts_to_mp3(
             if attempt < 3:
                 await asyncio.sleep(2 * attempt)
             else:
-                raise
-    if last_err is not None:
-        raise last_err
+                break
+
+    wav_path = mp3_path.with_suffix(".wav")
+    mp3_tmp = mp3_path.with_name(mp3_path.name + ".tmp2")
+    if wav_path.exists():
+        wav_path.unlink()
+    if mp3_tmp.exists():
+        mp3_tmp.unlink()
+
+    for v in ("cmn", "zh", "zh-cn"):
+        try:
+            subprocess.run(
+                ["espeak-ng", "-v", v, "-w", str(wav_path), text],
+                check=True,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+            )
+            if wav_path.exists() and wav_path.stat().st_size > 0:
+                break
+        except Exception:
+            if wav_path.exists():
+                wav_path.unlink()
+
+    if not wav_path.exists() or wav_path.stat().st_size == 0:
+        if last_err is not None:
+            raise last_err
+        raise RuntimeError("No TTS backend available")
+
+    subprocess.run(
+        [
+            "ffmpeg",
+            "-y",
+            "-hide_banner",
+            "-loglevel",
+            "error",
+            "-i",
+            str(wav_path),
+            "-codec:a",
+            "libmp3lame",
+            "-b:a",
+            "96k",
+            str(mp3_tmp),
+        ],
+        check=True,
+    )
+    if not mp3_tmp.exists() or mp3_tmp.stat().st_size == 0:
+        raise RuntimeError("ffmpeg produced empty audio file")
+    mp3_tmp.replace(mp3_path)
+    if wav_path.exists():
+        wav_path.unlink()
 
 
 def _load_sources(sources_path: Path) -> list[dict[str, Any]]:
