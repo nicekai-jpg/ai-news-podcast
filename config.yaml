@@ -1,0 +1,30 @@
+podcast:
+  title: "脑活素 AI 新闻播客"
+  description: "每天 5 分钟，聚合 AI 领域最新发布、技术进展、行业事件与人物采访。"
+  language: "zh-cn"
+  author: "脑活素"
+  explicit: false
+  category: "Technology"
+  keep_last: 30
+  max_stories: 10
+
+tts:
+  voice: "zh-CN-XiaoxiaoNeural"
+  rate: "+0%"
+  volume: "+0%"
+  pitch: "+0Hz"
+
+fetch:
+  timeout_seconds: 20
+  user_agent: "ai-news-podcast/0.1 (+https://github.com/)"
+  max_items_per_feed: 30
+
+selection:
+  prefer_recent_hours: 36
+  fallback_recent_hours: 96
+  per_feed_cap: 6
+
+build:
+  site_dir: "docs"
+  episodes_dir: "docs/episodes"
+  episodes_index: "data/episodes.json"

@@ -1,0 +1,41 @@
+sources:
+  - name: "机器之心"
+    url: "https://www.jiqizhixin.com/rss"
+    category: "news"
+    enabled: true
+  - name: "量子位"
+    url: "https://www.qbitai.com/feed"
+    category: "news"
+    enabled: true
+  - name: "IT之家 AI"
+    url: "https://it.ithome.com/rss/ai/rss.xml"
+    category: "product"
+    enabled: true
+  - name: "36Kr 快讯"
+    url: "https://36kr.com/feed-newsflash"
+    category: "events"
+    enabled: true
+  - name: "少数派"
+    url: "https://sspai.com/feed"
+    category: "tools"
+    enabled: true
+  - name: "智源社区"
+    url: "https://hub.baai.ac.cn/feed"
+    category: "research"
+    enabled: true
+  - name: "ChinAI Newsletter"
+    url: "https://chinai.substack.com/feed"
+    category: "analysis"
+    enabled: true
+  - name: "OpenAI Blog"
+    url: "https://openai.com/blog/rss.xml"
+    category: "official"
+    enabled: false
+  - name: "Anthropic News"
+    url: "https://www.anthropic.com/news.rss"
+    category: "official"
+    enabled: false
+  - name: "DeepMind Blog"
+    url: "https://deepmind.google/blog/rss.xml"
+    category: "official"
+    enabled: false
