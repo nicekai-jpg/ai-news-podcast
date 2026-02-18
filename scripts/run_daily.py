@@ -444,6 +444,8 @@ async def _tts_to_mp3(
             "error",
             "-i",
             str(wav_path),
+            "-f",
+            "mp3",
             "-codec:a",
             "libmp3lame",
             "-b:a",
