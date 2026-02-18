@@ -14,11 +14,11 @@ sources:
   - name: "36Kr 快讯"
     url: "https://36kr.com/feed-newsflash"
     category: "events"
-    enabled: true
+    enabled: false
   - name: "少数派"
     url: "https://sspai.com/feed"
     category: "tools"
-    enabled: true
+    enabled: false
   - name: "智源社区"
     url: "https://hub.baai.ac.cn/feed"
     category: "research"
@@ -26,7 +26,7 @@ sources:
   - name: "ChinAI Newsletter"
     url: "https://chinai.substack.com/feed"
     category: "analysis"
-    enabled: true
+    enabled: false
   - name: "OpenAI Blog"
     url: "https://openai.com/blog/rss.xml"
     category: "official"

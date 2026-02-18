@@ -189,6 +189,8 @@ def _select_stories(
     fallback_recent_hours: int,
     max_stories: int,
     per_feed_cap: int,
+    include_keywords: list[str],
+    exclude_keywords: list[str],
 ) -> list[Story]:
     def within(hours: int) -> list[Story]:
         cutoff = now - timedelta(hours=hours)
@@ -197,6 +199,19 @@ def _select_stories(
     candidates = within(prefer_recent_hours)
     if len(candidates) < max_stories:
         candidates = within(fallback_recent_hours)
+
+    inc = [str(k).strip() for k in include_keywords if str(k).strip()]
+    exc = [str(k).strip() for k in exclude_keywords if str(k).strip()]
+    if inc or exc:
+        filtered: list[Story] = []
+        for s in candidates:
+            text = (s.title + " " + (s.summary or "")).casefold()
+            if inc and not any(k.casefold() in text for k in inc):
+                continue
+            if exc and any(k.casefold() in text for k in exc):
+                continue
+            filtered.append(s)
+        candidates = filtered
 
     seen: set[str] = set()
     deduped: list[Story] = []
@@ -229,15 +244,23 @@ def _build_script(
     episode_date: datetime, stories: list[Story], podcast_title: str
 ) -> str:
     lines: list[str] = []
-    lines.append(f"你正在收听{podcast_title}。")
+    lines.append(f"欢迎收听{podcast_title}。")
     lines.append(f"今天是{_cn_date(episode_date)}。")
-    lines.append(f"下面是今天的AI新闻快报，共{len(stories)}条。")
+    lines.append(f"下面是今天值得关注的AI动态，共{len(stories)}条。")
     for i, s in enumerate(stories, start=1):
-        lines.append(f"第{i}条，来自{s.source}。{s.title}。")
+        if i == 1:
+            lead = "第一条"
+        elif i == 2:
+            lead = "第二条"
+        elif i == 3:
+            lead = "第三条"
+        else:
+            lead = "接下来"
+        lines.append(f"{lead}，来自{s.source}：{s.title}。")
         if s.summary:
-            lines.append(f"要点：{s.summary}。")
-        lines.append("链接我放在节目简介里。")
-    lines.append("以上就是今天的更新，我们明天见。")
+            lines.append(f"简要信息：{s.summary}。")
+    lines.append("相关链接我都放在节目简介里。")
+    lines.append("以上就是今天的更新，感谢收听。")
     return "\n".join(lines).strip() + "\n"
 
 
@@ -327,14 +350,7 @@ def _build_feed_xml(
     ET.register_namespace("atom", ns_atom)
     ET.register_namespace("itunes", ns_itunes)
 
-    rss = ET.Element(
-        "rss",
-        {
-            "version": "2.0",
-            f"xmlns:atom": ns_atom,
-            f"xmlns:itunes": ns_itunes,
-        },
-    )
+    rss = ET.Element("rss", {"version": "2.0"})
     channel = ET.SubElement(rss, "channel")
 
     ET.SubElement(channel, "title").text = podcast_title
@@ -572,6 +588,8 @@ async def main() -> int:
     prefer_recent_hours = int(sel_cfg.get("prefer_recent_hours", 36))
     fallback_recent_hours = int(sel_cfg.get("fallback_recent_hours", 96))
     per_feed_cap = int(sel_cfg.get("per_feed_cap", 6))
+    include_keywords = list(sel_cfg.get("include_keywords", []) or [])
+    exclude_keywords = list(sel_cfg.get("exclude_keywords", []) or [])
 
     base_url = _get_base_url(cfg, args.base_url)
 
@@ -588,6 +606,8 @@ async def main() -> int:
         fallback_recent_hours=fallback_recent_hours,
         max_stories=max_stories,
         per_feed_cap=per_feed_cap,
+        include_keywords=include_keywords,
+        exclude_keywords=exclude_keywords,
     )
 
     script_text = _build_script(day, picked, podcast_title)

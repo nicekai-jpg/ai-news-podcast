@@ -23,6 +23,30 @@ selection:
   prefer_recent_hours: 36
   fallback_recent_hours: 96
   per_feed_cap: 6
+  include_keywords:
+    - "AI"
+    - "人工智能"
+    - "大模型"
+    - "LLM"
+    - "多模态"
+    - "智能体"
+    - "agent"
+    - "微调"
+    - "RAG"
+    - "生成式"
+    - "扩散"
+    - "Transformer"
+    - "算力"
+    - "GPU"
+    - "Claude"
+    - "ChatGPT"
+    - "OpenAI"
+    - "Anthropic"
+    - "DeepMind"
+    - "Hugging Face"
+    - "英伟达"
+    - "NVIDIA"
+  exclude_keywords: []
 
 build:
   site_dir: "docs"
