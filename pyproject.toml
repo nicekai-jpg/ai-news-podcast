@@ -1,0 +1,16 @@
+[project]
+name = "ai-news-podcast"
+version = "0.1.0"
+description = "Daily AI news podcast generator"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "beautifulsoup4==4.12.3",
+  "edge-tts==6.1.12",
+  "feedparser==6.0.11",
+  "PyYAML==6.0.1",
+  "requests==2.32.3",
+]
+
+[dependency-groups]
+dev = []
