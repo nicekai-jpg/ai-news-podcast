@@ -600,8 +600,6 @@ async def main() -> int:
     description_html = "\n".join([l for l in show_desc_lines if l])
 
     if args.no_audio:
-        if mp3_path.exists():
-            mp3_path.unlink()
         return 0
 
     enclosure_url = f"{base_url}/episodes/{episode_id}.mp3"
