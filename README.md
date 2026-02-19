@@ -13,10 +13,8 @@ What it does
 Local run
 ```bash
 cd ai-news-podcast
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-python scripts/run_daily.py --base-url http://localhost --no-audio
+uv sync
+uv run python scripts/run_daily.py --base-url http://localhost --no-audio
 ```
 
 If you are able to access Edge Read Aloud from your network, you can omit `--no-audio` to generate the MP3.
