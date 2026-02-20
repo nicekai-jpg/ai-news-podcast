@@ -116,6 +116,12 @@ script:
     total_chars: [1800, 3900]
     target_duration_minutes: [8, 15]
 
+llm:
+  provider: "gemini"
+  model: "gemini-2.0-flash"
+  temperature: 0.7
+  max_output_tokens: 8192
+
 build:
   site_dir: "docs"
   episodes_dir: "docs/episodes"
