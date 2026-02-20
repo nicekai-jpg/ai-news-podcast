@@ -9,10 +9,19 @@ podcast:
   max_stories: 10
 
 tts:
+  backend: "edge-tts"
   voice: "zh-CN-XiaoxiaoNeural"
   rate: "+0%"
   volume: "+0%"
   pitch: "+0Hz"
+  mood_presets:
+    hook: {rate: "+8%", pitch: "+8Hz", instruct: "用吸引注意力的悬念语气说"}
+    excited: {rate: "+15%", pitch: "+10Hz", instruct: "用兴奋的语气播报"}
+    serious: {rate: "-5%", pitch: "-5Hz", instruct: "用严肃的新闻主播语气说"}
+    calm: {rate: "+0%", pitch: "-2Hz", instruct: "用平稳冷静的语气叙述"}
+    emphasis: {rate: "-10%", pitch: "+5Hz", instruct: "放慢语速，加重语气强调"}
+    closing: {rate: "-3%", pitch: "-3Hz", instruct: "用收束总结的语气说"}
+  chunk_silence_ms: 500
 
 fetch:
   timeout_seconds: 20
@@ -47,6 +56,65 @@ selection:
     - "英伟达"
     - "NVIDIA"
   exclude_keywords: []
+
+processing:
+  dedup:
+    rapidfuzz_threshold: 92
+    jieba_keyword_overlap: 0.35
+    title_sim_threshold: 85
+    dedup_window_hours: 48
+  clustering:
+    ngram_range: [2, 4]
+    eps: 0.35
+    min_samples: 2
+  scoring:
+    dimensions:
+      - "impact_scope"
+      - "novelty"
+      - "explainability"
+      - "listener_relevance"
+      - "source_richness"
+    role_thresholds:
+      main: [12, 15]
+      supporting: [8, 11]
+      quick: [5, 7]
+      skip_below: 5
+  source_authority:
+    official: 1
+    research: 2
+    news: 3
+    product: 3
+    analysis: 3
+    tools: 4
+    events: 4
+  story_memory_days: 90
+  max_pages_per_episode: 80
+
+script:
+  mode_a:
+    name: "连点成线"
+    hook_chars: [150, 180]
+    thesis_chars: [120, 160]
+    main_chars: [1200, 1500]
+    supporting_chars: [450, 550]
+    quick_chars: [300, 450]
+    closing_chars: [150, 220]
+  mode_b:
+    name: "工具优先"
+  style:
+    sentence_length: [12, 28]
+    banned_words:
+      - "废话不多说"
+      - "众所周知"
+      - "颠覆"
+      - "炸裂"
+      - "重磅"
+      - "王炸"
+      - "杀疯了"
+      - "遥遥领先"
+      - "细思极恐"
+    total_chars: [1800, 3900]
+    target_duration_minutes: [8, 15]
 
 build:
   site_dir: "docs"
