@@ -83,10 +83,94 @@ def _replace_banned_words(text: str, banned: list[str] | None = None) -> str:
 # ---------------------------------------------------------------------------
 
 
-def _colloquialize(text: str) -> str:
-    """轻量口语化处理：缩短过长句子、添加语气词。"""
+def _sanitize_for_tts(text: str) -> str:
+    """清洗文本使其适合 TTS 朗读：去除特殊符号、括号注释、标注标记。"""
+    # 去除 [FACT] / [INFERENCE] / [OPINION] 标记
+    text = re.sub(r"\[(?:FACT|INFERENCE|OPINION)\]\s*", "", text)
+    # 去除 （doge）（狗头）（笑）（手动狗头） 等括号表情注释
+    text = re.sub(
+        r"[（(][^）)]{0,10}(?:doge|狗头|笑|手动|滑稽|哭|捂脸)[^）)]{0,5}[）)]", "", text
+    )
+    # 「」『』【】 → 去掉
+    text = re.sub(r"[「」『』【】]", "", text)
+    # 去除 HTML 残留标签
+    text = re.sub(r"<[^>]+>", "", text)
+    # 英文缩写加空格让 TTS 逐字母读: 如 SOTA → S O T A
+    # 但保留常见可整读的词 (AI, API, GPU, CPU, LLM, AGI 等)
+    _READABLE_EN = {
+        "AI",
+        "API",
+        "GPU",
+        "CPU",
+        "TPU",
+        "LLM",
+        "AGI",
+        "ASI",
+        "GPT",
+        "NLP",
+        "NLU",
+        "GAN",
+        "CNN",
+        "RNN",
+        "BERT",
+        "LoRA",
+        "RLHF",
+        "RAG",
+        "SaaS",
+        "PaaS",
+        "IoT",
+        "SDK",
+        "IDE",
+        "MIT",
+        "USB",
+        "WiFi",
+        "CEO",
+        "CTO",
+        "OK",
+        "APP",
+        "Google",
+        "Apple",
+        "Meta",
+        "OpenAI",
+        "Anthropic",
+        "Microsoft",
+        "DeepMind",
+        "GitHub",
+        "HuggingFace",
+        "Tesla",
+        "NVIDIA",
+        "Claude",
+        "Gemini",
+        "Llama",
+        "Mistral",
+        "Copilot",
+    }
+
+    def _spell_unknown_abbr(m: re.Match) -> str:
+        word = m.group(0)
+        if word in _READABLE_EN:
+            return word
+        # 纯大写缩写 3+ 字母且不在白名单 → 逐字母拼读
+        if word.isupper() and len(word) >= 3:
+            return " ".join(word)
+        return word
+
+    text = re.sub(r"[A-Za-z][A-Za-z0-9_-]{1,}", _spell_unknown_abbr, text)
+    # 数字+英文单位 → 中文读法辅助 (358B → 358B 不变, 让TTS自然读)
+    # 去除空括号 ()（）
+    text = re.sub(r"[（(]\s*[）)]", "", text)
+    # 连续标点归一
+    text = re.sub(r"[，,]{2,}", "，", text)
+    text = re.sub(r"[。.]{2,}", "。", text)
+    text = re.sub(r"[：:]{2,}", "：", text)
     # 去除多余空白
     text = re.sub(r"\s+", " ", text).strip()
+    return text
+
+
+def _colloquialize(text: str) -> str:
+    """口语化处理：清洗 TTS 不友好内容 + 缩短过长句子。"""
+    text = _sanitize_for_tts(text)
     return text
 
 

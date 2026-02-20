@@ -51,13 +51,25 @@ class MoodChunk:
 
 
 def _clean_tts_text(text: str) -> str:
-    """Remove annotation markers that should not be spoken aloud."""
+    """Remove annotation markers and non-speakable elements before TTS."""
     # Remove [FACT] / [INFERENCE] / [OPINION] tags
     text = re.sub(r"\[(?:FACT|INFERENCE|OPINION)\]\s*", "", text)
-    # Remove any leftover empty brackets like []
+    # Remove any leftover square-bracket annotations like [], [xxx]
     text = re.sub(r"\[\s*\]", "", text)
+    # Remove parenthetical annotations: （doge）（狗头）（笑）etc.
+    text = re.sub(
+        r"[（(]\s*(?:doge|狗头|笑|手动狗头|bushi|划掉)\s*[）)]",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
+    # Replace fancy quotes「」『』with nothing (TTS reads them as pauses)
+    text = text.replace("「", "").replace("」", "").replace("『", "").replace("』", "")
+    # Replace English parentheses/brackets used decoratively
+    text = re.sub(r"[【】]", "", text)
     # Collapse multiple spaces / newlines into single space
     text = re.sub(r"[ \t]+", " ", text)
+    text = re.sub(r"\n{2,}", "\n", text)
     return text.strip()
 
 
