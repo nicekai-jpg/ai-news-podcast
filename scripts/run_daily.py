@@ -531,8 +531,13 @@ async def main() -> int:
 
     # ── Stage 3: Script generation ──
     log.info("Stage 3: generating script …")
+    llm_cfg = cfg.get("llm", {})
     script_text, warnings = generate_script(
-        brief, episode_date=day, podcast_title=podcast_title, script_cfg=script_cfg
+        brief,
+        episode_date=day,
+        podcast_title=podcast_title,
+        script_cfg=script_cfg,
+        llm_cfg=llm_cfg,
     )
     for w in warnings:
         log.warning("Script warning: %s", w)

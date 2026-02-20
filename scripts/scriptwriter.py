@@ -1,50 +1,22 @@
-"""Stage 3 — 脚本生产模块
+"""Stage 3 — 脚本生产模块（LLM 融合写作版）
 
-职责：episode_brief → 播客脚本（含 mood 标记）+ Show Notes markdown。
-模式：Mode A「连点成线」（有 thesis 时）/ Mode B「工具优先」（兜底）。
-写作：口语化节奏、禁用词检查、[FACT]/[INFERENCE]/[OPINION] 标注、反幻觉校验。
+职责：episode_brief → Gemini LLM 消化融合 → 连贯中文播客脚本（含 mood 标记）+ Show Notes。
+英文内容在 LLM 阶段直接翻译为中文，TTS 朗读零障碍。
 """
 
 from __future__ import annotations
 
 import logging
+import os
 import re
-from dataclasses import dataclass
-from datetime import datetime, timezone
+import time
+from datetime import datetime
 from typing import Any
 
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
-# 反幻觉校验清单 (PLAN §3.5)
-# ---------------------------------------------------------------------------
-
-_ANTI_HALLUCINATION_CHECKLIST = [
-    (
-        "数字/日期是否有原文来源",
-        lambda text: not re.search(r"\d{4}年.{0,5}月.{0,5}日", text) or True,
-    ),
-    ("公司/人名是否可追溯到原始来源", lambda text: True),
-    (
-        "因果关系是否用了 [INFERENCE] 标记",
-        lambda text: "[INFERENCE]" in text
-        if "因此" in text or "所以" in text or "导致" in text
-        else True,
-    ),
-    (
-        "观点判断是否用了 [OPINION] 标记",
-        lambda text: "[OPINION]" in text
-        if "我认为" in text or "值得" in text or "令人" in text
-        else True,
-    ),
-    ("是否存在未标注的推测性语言", lambda text: True),
-    ("引用数据是否注明来源", lambda text: True),
-    ("是否使用了禁用词", None),  # 单独检查
-]
-
-
-# ---------------------------------------------------------------------------
-# 禁用词检查
+# 禁用词
 # ---------------------------------------------------------------------------
 
 DEFAULT_BANNED_WORDS = [
@@ -61,122 +33,35 @@ DEFAULT_BANNED_WORDS = [
 
 
 def check_banned_words(text: str, banned: list[str] | None = None) -> list[str]:
-    """返回在文本中找到的禁用词列表。"""
     banned = banned or DEFAULT_BANNED_WORDS
-    found: list[str] = []
-    for word in banned:
-        if word in text:
-            found.append(word)
-    return found
+    return [w for w in banned if w in text]
 
 
 def _replace_banned_words(text: str, banned: list[str] | None = None) -> str:
-    """自动删除禁用词。"""
     banned = banned or DEFAULT_BANNED_WORDS
-    for word in banned:
-        text = text.replace(word, "")
+    for w in banned:
+        text = text.replace(w, "")
     return text
 
 
 # ---------------------------------------------------------------------------
-# 口语化处理
+# TTS 文本清洗（LLM 产出后的最终保险）
 # ---------------------------------------------------------------------------
 
 
 def _sanitize_for_tts(text: str) -> str:
-    """清洗文本使其适合 TTS 朗读：去除特殊符号、括号注释、标注标记。"""
-    # 去除 [FACT] / [INFERENCE] / [OPINION] 标记
+    """清洗 LLM 输出中 TTS 不友好的残留内容。"""
     text = re.sub(r"\[(?:FACT|INFERENCE|OPINION)\]\s*", "", text)
-    # 去除 （doge）（狗头）（笑）（手动狗头） 等括号表情注释
     text = re.sub(
         r"[（(][^）)]{0,10}(?:doge|狗头|笑|手动|滑稽|哭|捂脸)[^）)]{0,5}[）)]", "", text
     )
-    # 「」『』【】 → 去掉
     text = re.sub(r"[「」『』【】]", "", text)
-    # 去除 HTML 残留标签
     text = re.sub(r"<[^>]+>", "", text)
-    # 英文缩写加空格让 TTS 逐字母读: 如 SOTA → S O T A
-    # 但保留常见可整读的词 (AI, API, GPU, CPU, LLM, AGI 等)
-    _READABLE_EN = {
-        "AI",
-        "API",
-        "GPU",
-        "CPU",
-        "TPU",
-        "LLM",
-        "AGI",
-        "ASI",
-        "GPT",
-        "NLP",
-        "NLU",
-        "GAN",
-        "CNN",
-        "RNN",
-        "BERT",
-        "LoRA",
-        "RLHF",
-        "RAG",
-        "SaaS",
-        "PaaS",
-        "IoT",
-        "SDK",
-        "IDE",
-        "MIT",
-        "USB",
-        "WiFi",
-        "CEO",
-        "CTO",
-        "OK",
-        "APP",
-        "Google",
-        "Apple",
-        "Meta",
-        "OpenAI",
-        "Anthropic",
-        "Microsoft",
-        "DeepMind",
-        "GitHub",
-        "HuggingFace",
-        "Tesla",
-        "NVIDIA",
-        "Claude",
-        "Gemini",
-        "Llama",
-        "Mistral",
-        "Copilot",
-    }
-
-    def _spell_unknown_abbr(m: re.Match) -> str:
-        word = m.group(0)
-        if word in _READABLE_EN:
-            return word
-        # 纯大写缩写 3+ 字母且不在白名单 → 逐字母拼读
-        if word.isupper() and len(word) >= 3:
-            return " ".join(word)
-        return word
-
-    text = re.sub(r"[A-Za-z][A-Za-z0-9_-]{1,}", _spell_unknown_abbr, text)
-    # 数字+英文单位 → 中文读法辅助 (358B → 358B 不变, 让TTS自然读)
-    # 去除空括号 ()（）
     text = re.sub(r"[（(]\s*[）)]", "", text)
-    # 连续标点归一
     text = re.sub(r"[，,]{2,}", "，", text)
     text = re.sub(r"[。.]{2,}", "。", text)
-    text = re.sub(r"[：:]{2,}", "：", text)
-    # 去除多余空白
     text = re.sub(r"\s+", " ", text).strip()
     return text
-
-
-def _colloquialize(text: str) -> str:
-    """口语化处理：清洗 TTS 不友好内容 + 缩短过长句子。"""
-    text = _sanitize_for_tts(text)
-    return text
-
-
-# ---------------------------------------------------------------------------
-# 中文日期
-# ---------------------------------------------------------------------------
 
 
 def _cn_date(dt: datetime) -> str:
@@ -184,171 +69,197 @@ def _cn_date(dt: datetime) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Mode A — 连点成线 (PLAN §3.1)
+# 新闻素材 → LLM prompt 构建
 # ---------------------------------------------------------------------------
 
 
-def _build_mode_a(
-    brief: dict[str, Any],
-    *,
-    episode_date: datetime,
-    podcast_title: str,
-    char_limits: dict[str, Any],
-) -> str:
-    """
-    结构：Hook → Thesis → Main → Supporting → Quick Hits → Closing
-    """
-    thesis = brief.get("thesis", "")
+def _build_material_text(brief: dict[str, Any]) -> str:
+    """把 episode_brief 中所有新闻素材整理为结构化文本，供 LLM 消化。"""
     stories = brief.get("stories", [])
+    active = [s for s in stories if s.get("role") != "skip"]
 
-    main_stories = [s for s in stories if s.get("role") == "main"]
-    supporting_stories = [s for s in stories if s.get("role") == "supporting"]
-    quick_stories = [s for s in stories if s.get("role") == "quick"]
-
-    lines: list[str] = []
-
-    # --- Hook (150-180 字) ---
-    hook_max = char_limits.get("hook_chars", [150, 180])[1]
-    hook = f"欢迎收听{podcast_title}，今天是{_cn_date(episode_date)}。"
-    if main_stories:
-        main_title = main_stories[0].get("representative_title", "")
-        hook += f" 今天最值得关注的，是{main_title}。"
-    hook = hook[:hook_max]
-    lines.append(f"[mood:hook] {hook}")
-
-    # --- Thesis (120-160 字) ---
-    if thesis:
-        thesis_max = char_limits.get("thesis_chars", [120, 160])[1]
-        thesis_text = f"[FACT] {thesis[:thesis_max]}"
-        lines.append(f"[mood:calm] {thesis_text}")
-
-    # --- Main Story (1200-1500 字) ---
-    main_max = char_limits.get("main_chars", [1200, 1500])[1]
-    for i, story in enumerate(main_stories[:2]):  # 最多 2 个主故事
+    sections: list[str] = []
+    for i, story in enumerate(active, 1):
+        role = story.get("role", "quick")
+        role_label = {"main": "重要", "supporting": "次要", "quick": "简讯"}.get(
+            role, "简讯"
+        )
+        title = story.get("representative_title", "无标题")
         context = story.get("context", {})
         summaries = context.get("factual_summary", [])
-        items = story.get("items", [])
-        sources = context.get("sources_ranked", [])
         background = context.get("historical_background", "")
+        sources = context.get("sources_ranked", [])
+        items = story.get("items", [])
 
-        title = story.get("representative_title", "")
-        # 开头
-        if i == 0:
-            lines.append(f"[mood:excited] 先来看今天的主角——{title}。")
-        else:
-            lines.append(f"[mood:excited] 同样重磅的还有{title}。")
+        part = f"【素材{i}】（{role_label}）\n标题：{title}\n"
 
-        # 事实摘要
-        for j, s in enumerate(summaries):
-            tag = "[FACT]"
-            mood = "serious" if j == 0 else "calm"
-            lines.append(f"[mood:{mood}] {tag} {s}。")
+        if summaries:
+            part += "摘要：\n"
+            for s in summaries:
+                part += f"  - {s}\n"
 
-        # 补充全文细节
         if items:
-            best_item = max(items, key=lambda x: len(x.get("full_text_snippet", "")))
-            snippet = best_item.get("full_text_snippet", "")
-            if snippet:
-                # 取前一段有意义的内容
-                paragraphs = [
-                    p.strip() for p in snippet.split("\n") if len(p.strip()) > 20
-                ]
-                for p in paragraphs[:3]:
-                    if len("\n".join(lines)) > main_max:
-                        break
-                    lines.append(f"[mood:calm] [FACT] {p}")
+            best = max(items, key=lambda x: len(x.get("full_text_snippet", "")))
+            snippet = best.get("full_text_snippet", "")
+            if snippet and len(snippet) > 50:
+                part += f"详情：{snippet[:1500]}\n"
+            src_name = best.get("source_name", "")
+            if src_name:
+                part += f"来源：{src_name}\n"
 
-        # 历史背景
         if background:
-            lines.append(f"[mood:calm] [FACT] 背景补充：{background}")
+            part += f"背景：{background}\n"
 
-        # 来源引用
         if sources:
             src_names = "、".join(s["name"] for s in sources[:3])
-            lines.append(f"[mood:calm] 以上信息综合自{src_names}的报道。")
+            part += f"综合来源：{src_names}\n"
 
-    # --- Supporting Stories (450-550 字 each) ---
-    sup_max = char_limits.get("supporting_chars", [450, 550])[1]
-    for i, story in enumerate(supporting_stories[:2]):
-        title = story.get("representative_title", "")
-        context = story.get("context", {})
-        summaries = context.get("factual_summary", [])
-        sources = context.get("sources_ranked", [])
+        sections.append(part)
 
-        transition = "接下来看一条支撑消息" if i == 0 else "此外"
-        lines.append(f"[mood:calm] {transition}，{title}。")
+    return "\n".join(sections)
 
-        for s in summaries[:2]:
-            lines.append(f"[mood:calm] [FACT] {s}。")
 
-        if sources:
-            lines.append(f"[mood:calm] 来源：{sources[0].get('name', '')}。")
+def _build_llm_prompt(
+    material: str,
+    episode_date: datetime,
+    podcast_title: str,
+    style_cfg: dict[str, Any],
+) -> str:
+    """构建给 Gemini 的完整 prompt。"""
+    total_range = style_cfg.get("total_chars", [1800, 3900])
+    min_chars, max_chars = total_range[0], total_range[1]
+    banned = style_cfg.get("banned_words", DEFAULT_BANNED_WORDS)
+    banned_str = "、".join(banned)
+    date_str = _cn_date(episode_date)
 
-    # --- Quick Hits (300-450 字) ---
-    if quick_stories:
-        lines.append("[mood:emphasis] 下面进入快讯环节。")
-        for story in quick_stories[:3]:
-            title = story.get("representative_title", "")
-            context = story.get("context", {})
-            summaries = context.get("factual_summary", [])
-            summary = summaries[0] if summaries else ""
-            lines.append(f"[mood:calm] {title}。{f' {summary}。' if summary else ''}")
+    return f"""你是「{podcast_title}」的主播，需要根据以下新闻素材，写一篇连贯、自然、有深度的中文播客脚本。
 
-    # --- Closing (150-220 字) ---
-    closing_max = char_limits.get("closing_chars", [150, 220])[1]
-    closing = "相关链接我都放在节目简介里。以上就是今天的AI动态更新，感谢你的收听，我们明天再见。"
-    lines.append(f"[mood:emphasis] {closing[:closing_max]}")
-    lines.append(f"[mood:closing] {podcast_title}，每天陪你追踪AI前沿。")
+## 核心要求
 
-    return "\n".join(lines).strip() + "\n"
+1. **融合写作，不是罗列**：不要逐条复述新闻，而是把相关素材融合在一起，找到内在联系，讲出一个有主线的故事。
+2. **全部用中文**：所有英文内容必须翻译为中文。英文专有名词（如公司名、产品名、技术术语）用中文表述，必要时首次出现可括号标注英文原名，之后只用中文。例如：「大型语言模型（LLM）」之后直接说「大语言模型」。
+3. **口语化**：这是播客脚本，不是新闻稿。用说话的方式写，句子短（12-28字），节奏明快。可以用「你知道吗」「说白了」「换句话说」等口语衔接。
+4. **有观点有态度**：不要干巴巴地陈述事实，适当加入分析和看法，但要标明哪些是事实哪些是推测。
+5. **禁用词**：不要使用以下词汇：{banned_str}
+
+## 脚本结构
+
+用 [mood:xxx] 标记来控制语气情绪，可用的标记有：hook、excited、serious、calm、emphasis、closing。
+
+请按以下结构组织脚本：
+
+**开场** [mood:hook]：用一个引人入胜的问题或悬念开场，吸引听众继续听下去。提到今天是{date_str}。不要说「欢迎收听」这种套话。
+
+**主体**：把最重要的 1-2 个话题展开讲透（用 [mood:excited] 或 [mood:serious]），次要话题简要带过（用 [mood:calm]）。话题之间用自然过渡衔接，不要用「第一条、第二条」这种机械编号。
+
+**快讯**（如果有简讯类素材）[mood:emphasis]：用 2-3 句话快速带过。
+
+**收尾** [mood:closing]：总结今天的核心观点，给听众一个思考的角度。自然结束，不要说「感谢收听」。
+
+## 字数要求
+
+总字数控制在 {min_chars}-{max_chars} 字之间（不含 mood 标记）。
+
+## 今日素材
+
+{material}
+
+## 输出格式
+
+直接输出脚本文本，每个段落前用 [mood:xxx] 标记情绪。不要输出任何解释、标题、分隔线或 markdown 格式。"""
 
 
 # ---------------------------------------------------------------------------
-# Mode B — 工具优先 (PLAN §3.2 — 兜底模式)
+# Gemini LLM 调用
 # ---------------------------------------------------------------------------
 
 
-def _build_mode_b(
+def _call_gemini(prompt: str, llm_cfg: dict[str, Any]) -> str | None:
+    """调用 Google Gemini API 生成播客脚本。失败返回 None。"""
+    api_key = os.environ.get("GEMINI_API_KEY", "")
+    if not api_key:
+        logger.error("GEMINI_API_KEY 未设置，无法调用 LLM")
+        return None
+
+    try:
+        import google.generativeai as genai
+    except ImportError:
+        logger.error("google-generativeai 未安装")
+        return None
+
+    model_name = llm_cfg.get("model", "gemini-2.0-flash")
+    temperature = llm_cfg.get("temperature", 0.7)
+    max_tokens = llm_cfg.get("max_output_tokens", 8192)
+
+    genai.configure(api_key=api_key)
+    model = genai.GenerativeModel(
+        model_name=model_name,
+        generation_config={
+            "temperature": temperature,
+            "max_output_tokens": max_tokens,
+            "top_p": 0.95,
+        },
+    )
+
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            logger.info(
+                "调用 Gemini (%s), attempt %d/%d", model_name, attempt + 1, max_retries
+            )
+            response = model.generate_content(prompt)
+            text = response.text
+            if text and len(text.strip()) > 200:
+                logger.info("Gemini 返回 %d 字符", len(text))
+                return text.strip()
+            logger.warning(
+                "Gemini 返回内容过短 (%d 字符)，重试", len(text) if text else 0
+            )
+        except Exception as e:
+            logger.warning("Gemini 调用失败 (attempt %d): %s", attempt + 1, e)
+            if attempt < max_retries - 1:
+                time.sleep(2 ** (attempt + 1))
+
+    logger.error("Gemini 全部 %d 次重试失败", max_retries)
+    return None
+
+
+# ---------------------------------------------------------------------------
+# 纯模板兜底（LLM 不可用时）
+# ---------------------------------------------------------------------------
+
+
+def _build_fallback(
     brief: dict[str, Any],
-    *,
     episode_date: datetime,
     podcast_title: str,
 ) -> str:
-    """平铺列表模式，当无法形成主线时使用。"""
+    """无 LLM 时的极简兜底脚本。"""
     stories = brief.get("stories", [])
-    # 过滤掉 skip
     active = [s for s in stories if s.get("role") != "skip"]
 
     lines: list[str] = []
-    lines.append(f"[mood:hook] 欢迎收听{podcast_title}。")
-    lines.append(f"[mood:calm] 今天是{_cn_date(episode_date)}。")
-    lines.append(f"[mood:calm] 下面是今天值得关注的AI动态，共{len(active)}条。")
+    lines.append(
+        f"[mood:hook] 今天是{_cn_date(episode_date)}，来看看AI领域有什么新动向。"
+    )
 
-    for i, story in enumerate(active):
+    for i, story in enumerate(active[:6]):
         title = story.get("representative_title", "")
         context = story.get("context", {})
         summaries = context.get("factual_summary", [])
-        items = story.get("items", [])
+        summary = summaries[0] if summaries else ""
 
-        ordinals = ["第一条", "第二条", "第三条", "第四条", "第五条"]
-        lead = ordinals[i] if i < len(ordinals) else "接下来"
+        if i == 0:
+            lines.append(f"[mood:excited] 今天最值得关注的是，{title}。{summary}。")
+        else:
+            lines.append(f"[mood:calm] 另外，{title}。{summary}。")
 
-        source_name = ""
-        if items:
-            source_name = items[0].get("source_name", "")
-
-        mood = "calm"
-        lines.append(f"[mood:{mood}] {lead}，来自{source_name}：{title}。")
-        if summaries:
-            lines.append(f"[mood:{mood}] [FACT] {summaries[0]}。")
-
-    lines.append("[mood:emphasis] 相关链接我都放在节目简介里。")
-    lines.append("[mood:closing] 以上就是今天的更新，感谢收听。")
-    return "\n".join(lines).strip() + "\n"
+    lines.append(f"[mood:closing] 以上就是今天的AI动态，{podcast_title}，明天见。")
+    return "\n".join(lines) + "\n"
 
 
 # ---------------------------------------------------------------------------
-# 主入口 — 脚本生成
+# 主入口
 # ---------------------------------------------------------------------------
 
 
@@ -358,83 +269,94 @@ def generate_script(
     episode_date: datetime,
     podcast_title: str = "脑活素 AI 新闻播客",
     script_cfg: dict[str, Any] | None = None,
+    llm_cfg: dict[str, Any] | None = None,
 ) -> tuple[str, list[str]]:
     """
-    生成播客脚本。
+    生成播客脚本。先尝试 LLM 融合写作，失败时退回模板兜底。
 
-    Returns
-    -------
-    (script_text, warnings) — 脚本文本 + 校验警告列表
+    Returns: (script_text, warnings)
     """
     cfg = script_cfg or {}
     style_cfg = cfg.get("style", {})
-    mode_a_cfg = cfg.get("mode_a", {})
     banned_words = style_cfg.get("banned_words", DEFAULT_BANNED_WORDS)
+    llm_cfg = llm_cfg or {}
 
-    stories = brief.get("stories", [])
-    thesis = brief.get("thesis", "")
-    main_stories = [s for s in stories if s.get("role") == "main"]
+    material = _build_material_text(brief)
+    logger.info("素材文本 %d 字符，准备调用 LLM", len(material))
 
-    # 模式选择：有主故事 + thesis → Mode A，否则 Mode B
-    if main_stories and thesis:
-        script = _build_mode_a(
-            brief,
-            episode_date=episode_date,
-            podcast_title=podcast_title,
-            char_limits=mode_a_cfg,
-        )
-        mode_used = "A"
-    else:
-        script = _build_mode_b(
-            brief,
-            episode_date=episode_date,
-            podcast_title=podcast_title,
-        )
-        mode_used = "B"
+    script = None
+    mode_used = "fallback"
 
-    # 口语化处理
-    script = _colloquialize(script)
+    if material.strip():
+        prompt = _build_llm_prompt(material, episode_date, podcast_title, style_cfg)
+        raw = _call_gemini(prompt, llm_cfg)
+        if raw:
+            script = raw
+            mode_used = "LLM"
+            logger.info("LLM 脚本生成成功")
 
-    # 禁用词替换
+    if not script:
+        logger.warning("LLM 不可用，使用模板兜底")
+        script = _build_fallback(brief, episode_date, podcast_title)
+        mode_used = "fallback"
+
+    script = _sanitize_for_tts(script)
     script = _replace_banned_words(script, banned_words)
+    script = _normalize_mood_tags(script)
 
-    # 校验
     warnings: list[str] = []
 
-    # 禁用词检查（替换后再查，理应为空）
     found_banned = check_banned_words(script, banned_words)
     if found_banned:
         warnings.append(f"仍含禁用词: {found_banned}")
 
-    # 总字数检查
     total_range = style_cfg.get("total_chars", [1800, 3900])
-    char_count = len(script.replace("\n", "").replace(" ", ""))
+    clean_text = re.sub(r"\[mood:\w+\]\s*", "", script)
+    char_count = len(clean_text.replace("\n", "").replace(" ", ""))
     if char_count < total_range[0]:
         warnings.append(f"脚本字数 {char_count} 低于下限 {total_range[0]}")
     elif char_count > total_range[1]:
         warnings.append(f"脚本字数 {char_count} 超过上限 {total_range[1]}")
 
-    # 反幻觉校验
-    for check_name, check_fn in _ANTI_HALLUCINATION_CHECKLIST:
-        if check_fn is not None:
-            try:
-                if not check_fn(script):
-                    warnings.append(f"反幻觉检查未通过: {check_name}")
-            except Exception:
-                pass
+    if not re.search(r"\[mood:\w+\]", script):
+        warnings.append("脚本缺少 [mood:xxx] 标记，TTS 将使用默认语气")
 
-    if warnings:
-        logger.warning("Script warnings (Mode %s): %s", mode_used, warnings)
-    else:
-        logger.info(
-            "Script generated (Mode %s), %d chars, no warnings", mode_used, char_count
-        )
-
+    logger.info(
+        "脚本生成完毕 (Mode: %s), %d 字, %d 条警告",
+        mode_used,
+        char_count,
+        len(warnings),
+    )
     return script, warnings
 
 
+def _normalize_mood_tags(text: str) -> str:
+    """规范化 mood 标记格式，确保 TTS 引擎能正确解析。"""
+    valid_moods = {"hook", "excited", "serious", "calm", "emphasis", "closing"}
+    lines = text.split("\n")
+    result: list[str] = []
+
+    for line in lines:
+        line = line.strip()
+        if not line:
+            continue
+
+        m = re.match(r"\[mood:(\w+)\]\s*(.*)", line)
+        if m:
+            mood, content = m.group(1), m.group(2)
+            if mood not in valid_moods:
+                mood = "calm"
+            if content.strip():
+                result.append(f"[mood:{mood}] {content.strip()}")
+        else:
+            if line.strip():
+                result.append(f"[mood:calm] {line.strip()}")
+
+    return "\n".join(result) + "\n" if result else "[mood:calm] 暂无内容。\n"
+
+
 # ---------------------------------------------------------------------------
-# Show Notes — Markdown (PLAN §3.6)
+# Show Notes — Markdown
 # ---------------------------------------------------------------------------
 
 
@@ -444,7 +366,6 @@ def generate_show_notes(
     episode_title: str,
     episode_date: datetime,
 ) -> str:
-    """生成 Show Notes markdown。"""
     stories = brief.get("stories", [])
     thesis = brief.get("thesis", "")
     active = [s for s in stories if s.get("role") != "skip"]
@@ -459,7 +380,6 @@ def generate_show_notes(
         lines.append(f"> {thesis}")
         lines.append("")
 
-    # 按角色分组
     for role, label in [
         ("main", "🔴 主要报道"),
         ("supporting", "🟡 支撑消息"),
@@ -475,7 +395,6 @@ def generate_show_notes(
             items = story.get("items", [])
             context = story.get("context", {})
             summaries = context.get("factual_summary", [])
-            scores = story.get("scores", {})
             total = story.get("total_score", 0)
 
             lines.append(f"### {title}")
@@ -484,8 +403,6 @@ def generate_show_notes(
                 for s in summaries:
                     lines.append(f"- {s}")
                 lines.append("")
-
-            # 链接
             if items:
                 lines.append("**来源链接：**")
                 lines.append("")
@@ -494,7 +411,6 @@ def generate_show_notes(
                     link = item.get("link", "")
                     lines.append(f"- [{name}]({link})")
                 lines.append("")
-
             lines.append(f"*综合评分: {total}/15*")
             lines.append("")
 
@@ -502,12 +418,11 @@ def generate_show_notes(
     lines.append("")
     lines.append(f"*本期由 AI 自动生成，数据截至 {_cn_date(episode_date)}*")
     lines.append("")
-
     return "\n".join(lines)
 
 
 # ---------------------------------------------------------------------------
-# Show Notes — HTML (兼容旧格式)
+# Show Notes — HTML
 # ---------------------------------------------------------------------------
 
 
@@ -517,7 +432,6 @@ def generate_show_notes_html(
     episode_title: str,
     episode_date: datetime,
 ) -> str:
-    """生成 Show Notes HTML（兼容 feed.xml description）。"""
     stories = brief.get("stories", [])
     active = [s for s in stories if s.get("role") != "skip"]
 
@@ -529,7 +443,6 @@ def generate_show_notes_html(
         title = _esc(story.get("representative_title", ""))
         story_items = story.get("items", [])
         role_emoji = story.get("role_emoji", "")
-
         if story_items:
             link = story_items[0].get("link", "")
             source = _esc(story_items[0].get("source_name", ""))
