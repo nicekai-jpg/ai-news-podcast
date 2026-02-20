@@ -5,6 +5,7 @@ import asyncio
 import json
 import logging
 import os
+import re
 import importlib
 from datetime import datetime, timezone
 from email.utils import format_datetime
@@ -50,27 +51,247 @@ def _write_text(path: Path, text: str) -> None:
     path.write_text(text, encoding="utf-8")
 
 
-def _ensure_index_html(site_dir: Path, podcast_title: str) -> None:
-    index_path = site_dir / "index.html"
-    if index_path.exists():
-        return
-    html = (
-        "<!doctype html>\n"
-        '<html lang="zh-CN">\n'
-        "<head>\n"
-        '  <meta charset="utf-8">\n'
-        '  <meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        f"  <title>{podcast_title}</title>\n"
-        "  <style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;max-width:860px;margin:24px auto;padding:0 16px;line-height:1.6}code{background:#f3f3f3;padding:0 6px;border-radius:4px}a{color:#0b57d0;text-decoration:none}a:hover{text-decoration:underline}</style>\n"
-        "</head>\n"
-        "<body>\n"
-        f"  <h1>{podcast_title}</h1>\n"
-        '  <p>订阅地址（Podcast RSS）：<a href="./feed.xml">feed.xml</a></p>\n'
-        "  <p>音频文件在 <code>/episodes/</code> 目录下。</p>\n"
-        "</body>\n"
-        "</html>\n"
+def _build_index_html(
+    site_dir: Path,
+    podcast_title: str,
+    episodes: list[dict[str, Any]],
+    base_url: str,
+) -> None:
+    ep_cards = []
+    for ep in episodes[:30]:
+        ep_id = ep.get("guid", "").rsplit("/", 1)[-1].replace(".mp3", "")
+        title = ep.get("title", ep_id)
+        desc = ep.get("description", "")
+        pub = ep.get("pubDate", "")
+        mp3 = ep.get("enclosure_url", f"{base_url}/episodes/{ep_id}.mp3")
+        txt = f"{base_url}/episodes/{ep_id}.txt"
+        size_mb = round(int(ep.get("enclosure_length", 0)) / 1_048_576, 1)
+
+        desc_html = (
+            desc.replace("&", "&amp;")
+            .replace("<", "&lt;")
+            .replace(">", "&gt;")
+            .replace("\n", "<br>")
+        )
+
+        ep_cards.append(
+            f'<article class="ep-card">\n'
+            f'  <div class="ep-header">\n'
+            f'    <h3 class="ep-title">{title}</h3>\n'
+            f'    <span class="ep-meta">{pub}{f" · {size_mb} MB" if size_mb else ""}</span>\n'
+            f"  </div>\n"
+            f'  <p class="ep-desc">{desc_html}</p>\n'
+            f'  <audio controls preload="none" src="{mp3}"></audio>\n'
+            f'  <div class="ep-links">\n'
+            f'    <a href="{mp3}" download>⬇ 下载音频</a>\n'
+            f'    <a href="{txt}" target="_blank">📄 文字稿</a>\n'
+            f"  </div>\n"
+            f"</article>"
+        )
+
+    cards_html = (
+        "\n".join(ep_cards)
+        if ep_cards
+        else '<p class="empty">暂无节目，请稍后再来。</p>'
     )
-    _write_text(index_path, html)
+
+    html = f'''<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{podcast_title}</title>
+  <link rel="alternate" type="application/rss+xml" title="{podcast_title}" href="./feed.xml">
+  <style>
+    :root {{
+      --bg: #0f0f14;
+      --surface: #1a1a24;
+      --surface2: #24243a;
+      --accent: #7c6af6;
+      --accent-glow: rgba(124,106,246,.25);
+      --text: #e8e6f0;
+      --text2: #9994b8;
+      --border: #2e2e45;
+      --radius: 14px;
+    }}
+    * {{ margin: 0; padding: 0; box-sizing: border-box; }}
+    body {{
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }}
+    .hero {{
+      text-align: center;
+      padding: 64px 24px 48px;
+      background: linear-gradient(160deg, #1e1b4b 0%, #0f0f14 50%, #1a0a2e 100%);
+      border-bottom: 1px solid var(--border);
+    }}
+    .hero-icon {{
+      font-size: 56px;
+      margin-bottom: 16px;
+      display: block;
+    }}
+    .hero h1 {{
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -.02em;
+      background: linear-gradient(135deg, #c4b5fd, #7c6af6, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }}
+    .hero p {{
+      color: var(--text2);
+      margin-top: 12px;
+      font-size: 1.05rem;
+    }}
+    .hero-actions {{
+      margin-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }}
+    .btn {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: .92rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all .2s;
+    }}
+    .btn-primary {{
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 20px var(--accent-glow);
+    }}
+    .btn-primary:hover {{ background: #6b5ce7; transform: translateY(-1px); }}
+    .btn-outline {{
+      border: 1px solid var(--border);
+      color: var(--text2);
+      background: transparent;
+    }}
+    .btn-outline:hover {{ border-color: var(--accent); color: var(--accent); }}
+    .container {{
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }}
+    .section-title {{
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text2);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }}
+    .ep-card {{
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 18px;
+      transition: border-color .2s, box-shadow .2s;
+    }}
+    .ep-card:hover {{
+      border-color: var(--accent);
+      box-shadow: 0 0 30px var(--accent-glow);
+    }}
+    .ep-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+    }}
+    .ep-title {{
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--text);
+      flex: 1;
+    }}
+    .ep-meta {{
+      font-size: .82rem;
+      color: var(--text2);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }}
+    .ep-desc {{
+      font-size: .9rem;
+      color: var(--text2);
+      margin: 12px 0 16px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }}
+    audio {{
+      width: 100%;
+      height: 44px;
+      border-radius: 8px;
+      outline: none;
+    }}
+    audio::-webkit-media-controls-panel {{
+      background: var(--surface2);
+    }}
+    .ep-links {{
+      display: flex;
+      gap: 20px;
+      margin-top: 14px;
+    }}
+    .ep-links a {{
+      font-size: .85rem;
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity .2s;
+    }}
+    .ep-links a:hover {{ opacity: .8; text-decoration: underline; }}
+    .empty {{
+      text-align: center;
+      color: var(--text2);
+      padding: 60px 20px;
+      font-size: 1.05rem;
+    }}
+    .footer {{
+      text-align: center;
+      padding: 32px 20px;
+      font-size: .82rem;
+      color: var(--text2);
+      border-top: 1px solid var(--border);
+    }}
+    .footer a {{ color: var(--accent); text-decoration: none; }}
+    .footer a:hover {{ text-decoration: underline; }}
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <span class="hero-icon">🧠</span>
+    <h1>{podcast_title}</h1>
+    <p>每日精选 AI 前沿资讯，用声音连接智能未来</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="./feed.xml">📡 RSS 订阅</a>
+      <a class="btn btn-outline" href="./feed.xml" title="复制订阅链接到播客客户端">📋 复制订阅地址</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2 class="section-title">📻 全部节目</h2>
+    {cards_html}
+  </div>
+
+  <div class="footer">
+    <p>{podcast_title} · 每日 08:30 自动更新</p>
+    <p>订阅地址: <a href="./feed.xml">{base_url}/feed.xml</a></p>
+  </div>
+</body>
+</html>'''
+
+    _write_text(site_dir / "index.html", html)
 
 
 def _get_base_url(cfg: dict[str, Any], cli_base_url: Optional[str]) -> str:
@@ -320,8 +541,13 @@ async def main() -> int:
     notes_path = episodes_dir / f"{episode_id}.html"
     transcript_path = episodes_dir / f"{episode_id}.txt"
 
-    _write_text(transcript_path, script_text)
-    log.info("Transcript saved: %s (%d chars)", transcript_path, len(script_text))
+    clean_transcript = re.sub(r"\[mood:[a-zA-Z0-9_-]+\]\s*", "", script_text)
+    clean_transcript = re.sub(
+        r"\[(?:FACT|INFERENCE|OPINION)\]\s*", "", clean_transcript
+    )
+    clean_transcript = re.sub(r"\n{3,}", "\n\n", clean_transcript).strip() + "\n"
+    _write_text(transcript_path, clean_transcript)
+    log.info("Transcript saved: %s (%d chars)", transcript_path, len(clean_transcript))
 
     # ── Stage 4: TTS ──
     if not args.no_audio:
@@ -430,7 +656,7 @@ async def main() -> int:
         episodes=sorted_eps,
     )
     _write_text(site_dir / "feed.xml", feed_xml)
-    _ensure_index_html(site_dir, podcast_title)
+    _build_index_html(site_dir, podcast_title, sorted_eps, base_url)
 
     log.info("Episode %s published successfully", episode_id)
     return 0
