@@ -1,25 +1,25 @@
+"""Daily podcast pipeline: fetch → process → script → TTS → publish."""
+
 import argparse
 import asyncio
 import json
+import logging
 import os
-import re
 import importlib
-from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 from email.utils import format_datetime
 from pathlib import Path
 from typing import Any, Optional
-from urllib.parse import urlparse
 
+from tts_engine import synthesize
+from fetcher import fetch_all
+from processor import process, save_brief
+from scriptwriter import (
+    generate_script,
+    generate_show_notes_html,
+)
 
-@dataclass(frozen=True)
-class Story:
-    source: str
-    title: str
-    link: str
-    published_at: datetime
-    summary: str
-    category: str
+log = logging.getLogger("run_daily")
 
 
 def _read_yaml(path: Path) -> dict[str, Any]:
@@ -32,6 +32,8 @@ def _read_yaml(path: Path) -> dict[str, Any]:
 
 
 def _read_json(path: Path) -> Any:
+    if not path.exists():
+        return []
     with path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
@@ -48,268 +50,27 @@ def _write_text(path: Path, text: str) -> None:
     path.write_text(text, encoding="utf-8")
 
 
-def _strip_html(s: str) -> str:
-    bs4 = importlib.import_module("bs4")
-    BeautifulSoup = getattr(bs4, "BeautifulSoup")
-    if not s:
-        return ""
-    if "<" not in s and "&" not in s:
-        return re.sub(r"\s+", " ", s).strip()
-    soup = BeautifulSoup(s, "html.parser")
-    text = soup.get_text(" ", strip=True)
-    text = re.sub(r"\s+", " ", text).strip()
-    return text
-
-
-def _norm_key(s: str) -> str:
-    s = s.strip().lower()
-    s = re.sub(r"\s+", " ", s)
-    s = re.sub(r"[\W_]+", "", s)
-    return s
-
-
-def _parse_dt(entry: Any) -> datetime:
-    for key in ("published_parsed", "updated_parsed", "created_parsed"):
-        parsed = getattr(entry, key, None)
-        if parsed is not None:
-            return datetime(*parsed[:6], tzinfo=timezone.utc)
-    return datetime.now(tz=timezone.utc)
-
-
-def _safe_url(u: str) -> str:
-    u = (u or "").strip()
-    if not u:
-        return ""
-    try:
-        parsed = urlparse(u)
-    except Exception:
-        return ""
-    if parsed.scheme not in ("http", "https"):
-        return ""
-    return u
-
-
-def _fetch_feed(url: str, *, timeout_seconds: int, user_agent: str) -> Any:
-    feedparser = importlib.import_module("feedparser")
-    requests = importlib.import_module("requests")
-
-    resp = requests.get(
-        url,
-        timeout=timeout_seconds,
-        headers={"User-Agent": user_agent},
-    )
-    resp.raise_for_status()
-    return feedparser.parse(resp.content)
-
-
-def _collect_stories(
-    sources: list[dict[str, Any]],
-    *,
-    timeout_seconds: int,
-    user_agent: str,
-    max_items_per_feed: int,
-) -> list[Story]:
-    out: list[Story] = []
-    for src in sources:
-        if not src.get("enabled", False):
-            continue
-        name = str(src.get("name") or "").strip()
-        url = str(src.get("url") or "").strip()
-        category = str(src.get("category") or "").strip() or "news"
-        if not name or not url:
-            continue
-        try:
-            feed = _fetch_feed(
-                url, timeout_seconds=timeout_seconds, user_agent=user_agent
-            )
-        except Exception:
-            continue
-
-        entries = list(getattr(feed, "entries", []) or [])[:max_items_per_feed]
-        for entry in entries:
-            title = _strip_html(str(getattr(entry, "title", "") or "")).strip()
-            link = _safe_url(str(getattr(entry, "link", "") or "")).strip()
-
-            summary_raw = str(getattr(entry, "summary", "") or "") or str(
-                getattr(entry, "description", "") or ""
-            )
-            summary = _strip_html(summary_raw)
-            if len(summary) > 260:
-                summary = summary[:257].rstrip() + "..."
-
-            if not title or not link:
-                continue
-
-            published_at = _parse_dt(entry)
-            out.append(
-                Story(
-                    source=name,
-                    title=title,
-                    link=link,
-                    published_at=published_at,
-                    summary=summary,
-                    category=category,
-                )
-            )
-    return out
-
-
-def _score_story(story: Story, now: datetime) -> float:
-    age_hours = max(0.0, (now - story.published_at).total_seconds() / 3600.0)
-    recency = max(0.0, 72.0 - min(72.0, age_hours))
-    title = story.title
-
-    bonus = 0.0
-    for kw in ("发布", "推出", "开源", "上线", "更新", "版本", "release", "launch"):
-        if kw.lower() in title.lower():
-            bonus += 3.0
-            break
-    for kw in ("论文", "arxiv", "benchmark", "sota", "研究", "新方法", "新技术"):
-        if kw.lower() in title.lower():
-            bonus += 2.0
-            break
-    for kw in ("访谈", "采访", "podcast", "interview"):
-        if kw.lower() in title.lower():
-            bonus += 1.5
-            break
-    for kw in ("政策", "监管", "安全", "合规", "诉讼", "事故"):
-        if kw.lower() in title.lower():
-            bonus += 1.0
-            break
-
-    return recency + bonus
-
-
-def _select_stories(
-    stories: list[Story],
-    *,
-    now: datetime,
-    prefer_recent_hours: int,
-    fallback_recent_hours: int,
-    max_stories: int,
-    per_feed_cap: int,
-    include_keywords: list[str],
-    exclude_keywords: list[str],
-) -> list[Story]:
-    def within(hours: int) -> list[Story]:
-        cutoff = now - timedelta(hours=hours)
-        return [s for s in stories if s.published_at >= cutoff]
-
-    candidates = within(prefer_recent_hours)
-    if len(candidates) < max_stories:
-        candidates = within(fallback_recent_hours)
-
-    inc = [str(k).strip() for k in include_keywords if str(k).strip()]
-    exc = [str(k).strip() for k in exclude_keywords if str(k).strip()]
-    if inc or exc:
-        filtered: list[Story] = []
-        for s in candidates:
-            text = (s.title + " " + (s.summary or "")).casefold()
-            if inc and not any(k.casefold() in text for k in inc):
-                continue
-            if exc and any(k.casefold() in text for k in exc):
-                continue
-            filtered.append(s)
-        candidates = filtered
-
-    seen: set[str] = set()
-    deduped: list[Story] = []
-    for s in sorted(candidates, key=lambda x: x.published_at, reverse=True):
-        key = _norm_key(s.link) or _norm_key(s.title)
-        if not key or key in seen:
-            continue
-        seen.add(key)
-        deduped.append(s)
-
-    scored = sorted(deduped, key=lambda x: _score_story(x, now), reverse=True)
-    per_feed: dict[str, int] = {}
-    picked: list[Story] = []
-    for s in scored:
-        if len(picked) >= max_stories:
-            break
-        per_feed[s.source] = per_feed.get(s.source, 0) + 1
-        if per_feed[s.source] > per_feed_cap:
-            continue
-        picked.append(s)
-
-    return picked
-
-
-def _cn_date(dt: datetime) -> str:
-    return f"{dt.year}年{dt.month}月{dt.day}日"
-
-
-def _build_script(
-    episode_date: datetime, stories: list[Story], podcast_title: str
-) -> str:
-    lines: list[str] = []
-    lines.append(f"欢迎收听{podcast_title}。")
-    lines.append(f"今天是{_cn_date(episode_date)}。")
-    lines.append(f"下面是今天值得关注的AI动态，共{len(stories)}条。")
-    for i, s in enumerate(stories, start=1):
-        if i == 1:
-            lead = "第一条"
-        elif i == 2:
-            lead = "第二条"
-        elif i == 3:
-            lead = "第三条"
-        else:
-            lead = "接下来"
-        lines.append(f"{lead}，来自{s.source}：{s.title}。")
-        if s.summary:
-            lines.append(f"简要信息：{s.summary}。")
-    lines.append("相关链接我都放在节目简介里。")
-    lines.append("以上就是今天的更新，感谢收听。")
-    return "\n".join(lines).strip() + "\n"
-
-
-def _build_notes_html(
-    episode_title: str, episode_date: datetime, stories: list[Story]
-) -> str:
-    items = []
-    for s in stories:
-        pub = s.published_at.astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
-        summary = (
-            (s.summary or "")
-            .replace("&", "&amp;")
-            .replace("<", "&lt;")
-            .replace(">", "&gt;")
-        )
-        title = s.title.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        items.append(
-            "".join(
-                [
-                    "<li>",
-                    f'<a href="{s.link}">{title}</a>',
-                    f"<div><small>{s.source} · {pub}</small></div>",
-                    (f"<div>{summary}</div>" if summary else ""),
-                    "</li>",
-                ]
-            )
-        )
-    date_text = _cn_date(episode_date)
-    items_html = "\n".join(items)
-    safe_title = (
-        episode_title.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-    )
-    return (
+def _ensure_index_html(site_dir: Path, podcast_title: str) -> None:
+    index_path = site_dir / "index.html"
+    if index_path.exists():
+        return
+    html = (
         "<!doctype html>\n"
         '<html lang="zh-CN">\n'
         "<head>\n"
         '  <meta charset="utf-8">\n'
         '  <meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        f"  <title>{safe_title}</title>\n"
-        "  <style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;max-width:860px;margin:24px auto;padding:0 16px;line-height:1.6}li{margin:12px 0}small{color:#555}</style>\n"
+        f"  <title>{podcast_title}</title>\n"
+        "  <style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;max-width:860px;margin:24px auto;padding:0 16px;line-height:1.6}code{background:#f3f3f3;padding:0 6px;border-radius:4px}a{color:#0b57d0;text-decoration:none}a:hover{text-decoration:underline}</style>\n"
         "</head>\n"
         "<body>\n"
-        f"<h1>{safe_title}</h1>\n"
-        f"<p>{date_text}</p>\n"
-        "<ol>\n"
-        f"{items_html}\n"
-        "</ol>\n"
+        f"  <h1>{podcast_title}</h1>\n"
+        '  <p>订阅地址（Podcast RSS）：<a href="./feed.xml">feed.xml</a></p>\n'
+        "  <p>音频文件在 <code>/episodes/</code> 目录下。</p>\n"
         "</body>\n"
         "</html>\n"
     )
+    _write_text(index_path, html)
 
 
 def _get_base_url(cfg: dict[str, Any], cli_base_url: Optional[str]) -> str:
@@ -396,39 +157,6 @@ def _build_feed_xml(
     return xml_bytes.decode("utf-8") + "\n"
 
 
-async def _tts_to_mp3(
-    text: str, *, mp3_path: Path, voice: str, rate: str, volume: str, pitch: str
-) -> None:
-    mp3_path.parent.mkdir(parents=True, exist_ok=True)
-    tmp_path = mp3_path.with_name(mp3_path.name + ".tmp")
-    if tmp_path.exists():
-        tmp_path.unlink()
-    last_err: Optional[BaseException] = None
-    for attempt in range(1, 4):
-        edge_tts = importlib.import_module("edge_tts")
-        comm = edge_tts.Communicate(
-            text, voice=voice, rate=rate, volume=volume, pitch=pitch
-        )
-        try:
-            await comm.save(str(tmp_path))
-            if not tmp_path.exists() or tmp_path.stat().st_size == 0:
-                raise RuntimeError("TTS produced empty audio file")
-            tmp_path.replace(mp3_path)
-            return
-        except BaseException as e:
-            last_err = e
-            if tmp_path.exists():
-                tmp_path.unlink()
-            if attempt < 3:
-                await asyncio.sleep(2 * attempt)
-            else:
-                break
-
-    if last_err is not None:
-        raise last_err
-    raise RuntimeError("edge-tts failed")
-
-
 def _load_sources(sources_path: Path) -> list[dict[str, Any]]:
     data = _read_yaml(sources_path)
     sources = data.get("sources")
@@ -486,6 +214,11 @@ def _prune_episodes(
 
 
 async def main() -> int:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(name)s] %(levelname)s: %(message)s",
+    )
+
     ap = argparse.ArgumentParser()
     ap.add_argument("--config", default="config.yaml")
     ap.add_argument("--sources", default="sources.yaml")
@@ -501,7 +234,8 @@ async def main() -> int:
     podcast_cfg = cfg.get("podcast", {})
     tts_cfg = cfg.get("tts", {})
     fetch_cfg = cfg.get("fetch", {})
-    sel_cfg = cfg.get("selection", {})
+    processing_cfg = cfg.get("processing", {})
+    script_cfg = cfg.get("script", {})
     build_cfg = cfg.get("build", {})
 
     site_dir = root / str(build_cfg.get("site_dir") or "docs")
@@ -526,80 +260,128 @@ async def main() -> int:
     podcast_category = str(podcast_cfg.get("category") or "Technology").strip()
     podcast_explicit = bool(podcast_cfg.get("explicit", False))
     keep_last = int(podcast_cfg.get("keep_last", 30))
-    max_stories = int(podcast_cfg.get("max_stories", 10))
 
+    backend = str(tts_cfg.get("backend") or "edge-tts")
     voice = str(tts_cfg.get("voice") or "zh-CN-XiaoxiaoNeural")
     rate = str(tts_cfg.get("rate") or "+0%")
     volume = str(tts_cfg.get("volume") or "+0%")
     pitch = str(tts_cfg.get("pitch") or "+0Hz")
+    mood_presets = tts_cfg.get("mood_presets")
+    chunk_silence_ms = int(tts_cfg.get("chunk_silence_ms", 500))
+    cosyvoice_model_path = str(tts_cfg.get("cosyvoice_model_path") or "")
+    cosyvoice_speaker = str(tts_cfg.get("cosyvoice_speaker") or "")
 
     timeout_seconds = int(fetch_cfg.get("timeout_seconds", 20))
+    connect_timeout = int(fetch_cfg.get("connect_timeout", 5))
     user_agent = str(fetch_cfg.get("user_agent") or "ai-news-podcast/0.1")
     max_items_per_feed = int(fetch_cfg.get("max_items_per_feed", 30))
-
-    prefer_recent_hours = int(sel_cfg.get("prefer_recent_hours", 36))
-    fallback_recent_hours = int(sel_cfg.get("fallback_recent_hours", 96))
-    per_feed_cap = int(sel_cfg.get("per_feed_cap", 6))
-    include_keywords = list(sel_cfg.get("include_keywords", []) or [])
-    exclude_keywords = list(sel_cfg.get("exclude_keywords", []) or [])
+    max_pages = int(processing_cfg.get("max_pages", 80))
 
     base_url = _get_base_url(cfg, args.base_url)
 
-    stories_all = _collect_stories(
+    # ── Stage 1: Fetch ──
+    log.info("Stage 1: fetching RSS feeds …")
+    raw_items = await fetch_all(
         sources,
         timeout_seconds=timeout_seconds,
+        connect_timeout=connect_timeout,
         user_agent=user_agent,
         max_items_per_feed=max_items_per_feed,
+        max_pages=max_pages,
     )
-    picked = _select_stories(
-        stories_all,
-        now=now,
-        prefer_recent_hours=prefer_recent_hours,
-        fallback_recent_hours=fallback_recent_hours,
-        max_stories=max_stories,
-        per_feed_cap=per_feed_cap,
-        include_keywords=include_keywords,
-        exclude_keywords=exclude_keywords,
+    log.info("Fetched %d raw items from %d sources", len(raw_items), len(sources))
+
+    if not raw_items:
+        log.warning("No items fetched — aborting episode generation")
+        return 1
+
+    # ── Stage 2: Process (dedup → cluster → score → role assign → thesis) ──
+    log.info("Stage 2: processing items …")
+    brief = process(raw_items, processing_cfg=processing_cfg)
+    brief_path = root / "data" / f"brief_{episode_id}.json"
+    save_brief(brief, brief_path)
+    log.info(
+        "Brief: %d stories (main=%d, supporting=%d, quick=%d)",
+        len(brief.get("stories", [])),
+        sum(1 for s in brief.get("stories", []) if s.get("role") == "main"),
+        sum(1 for s in brief.get("stories", []) if s.get("role") == "supporting"),
+        sum(1 for s in brief.get("stories", []) if s.get("role") == "quick"),
     )
 
-    script_text = _build_script(day, picked, podcast_title)
+    # ── Stage 3: Script generation ──
+    log.info("Stage 3: generating script …")
+    script_text, warnings = generate_script(
+        brief, episode_date=day, podcast_title=podcast_title, script_cfg=script_cfg
+    )
+    for w in warnings:
+        log.warning("Script warning: %s", w)
+
     mp3_path = episodes_dir / f"{episode_id}.mp3"
     notes_path = episodes_dir / f"{episode_id}.html"
     transcript_path = episodes_dir / f"{episode_id}.txt"
 
     _write_text(transcript_path, script_text)
+    log.info("Transcript saved: %s (%d chars)", transcript_path, len(script_text))
 
+    # ── Stage 4: TTS ──
     if not args.no_audio:
-        await _tts_to_mp3(
+        log.info("Stage 4: synthesizing audio …")
+        await synthesize(
             script_text,
-            mp3_path=mp3_path,
+            backend=backend,
             voice=voice,
+            output_path=mp3_path,
             rate=rate,
             volume=volume,
             pitch=pitch,
+            mood_presets=(mood_presets if isinstance(mood_presets, dict) else None),
+            chunk_silence_ms=chunk_silence_ms,
+            model_path=cosyvoice_model_path,
+            speaker=cosyvoice_speaker,
         )
+        log.info("Audio saved: %s", mp3_path)
 
-    notes_html = _build_notes_html(episode_title, day, picked)
+    # ── Stage 5: Publish ──
+    log.info("Stage 5: publishing …")
+    notes_html = generate_show_notes_html(
+        brief, episode_title=episode_title, episode_date=day
+    )
     _write_text(notes_path, notes_html)
 
+    stories = brief.get("stories", [])
     show_desc_lines = [
         f"<p>{podcast_description}</p>" if podcast_description else "",
         "<ol>",
     ]
-    for s in picked:
+    for s in stories:
+        if s.get("role") == "skip":
+            continue
+        raw_title = s.get("representative_title") or s.get("title") or ""
         safe_title = (
-            s.title.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            str(raw_title)
+            .replace("&", "&amp;")
+            .replace("<", "&lt;")
+            .replace(">", "&gt;")
         )
+        items = s.get("items") or []
+        first_item = items[0] if items else {}
+        raw_source = first_item.get("source_name") or s.get("source_name") or ""
         safe_source = (
-            s.source.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+            str(raw_source)
+            .replace("&", "&amp;")
+            .replace("<", "&lt;")
+            .replace(">", "&gt;")
         )
+        link = str(first_item.get("link") or s.get("link") or "")
+        role_emoji = s.get("role_emoji", "")
         show_desc_lines.append(
-            f'<li><a href="{s.link}">{safe_title}</a> <small>({safe_source})</small></li>'
+            f'<li>{role_emoji} <a href="{link}">{safe_title}</a> <small>({safe_source})</small></li>'
         )
     show_desc_lines.append("</ol>")
-    description_html = "\n".join([l for l in show_desc_lines if l])
+    description_html = "\n".join([ln for ln in show_desc_lines if ln])
 
     if args.no_audio:
+        log.info("--no-audio: skipping feed.xml update")
         return 0
 
     enclosure_url = f"{base_url}/episodes/{episode_id}.mp3"
@@ -648,7 +430,9 @@ async def main() -> int:
         episodes=sorted_eps,
     )
     _write_text(site_dir / "feed.xml", feed_xml)
+    _ensure_index_html(site_dir, podcast_title)
 
+    log.info("Episode %s published successfully", episode_id)
     return 0
 
 

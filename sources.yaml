@@ -39,3 +39,27 @@ sources:
     url: "https://deepmind.google/blog/rss.xml"
     category: "official"
     enabled: false
+  - name: "Google AI Blog"
+    url: "https://blog.google/technology/ai/rss/"
+    category: "official"
+    enabled: true
+  - name: "HuggingFace Blog"
+    url: "https://huggingface.co/blog/feed.xml"
+    category: "research"
+    enabled: true
+  - name: "GitHub Blog AI"
+    url: "https://github.blog/ai-and-ml/feed/"
+    category: "product"
+    enabled: true
+  - name: "MIT Tech Review AI"
+    url: "https://www.technologyreview.com/topic/artificial-intelligence/feed"
+    category: "analysis"
+    enabled: true
+  - name: "arXiv cs.AI"
+    url: "https://rss.arxiv.org/rss/cs.AI"
+    category: "research"
+    enabled: true
+  - name: "arXiv cs.LG"
+    url: "https://rss.arxiv.org/rss/cs.LG"
+    category: "research"
+    enabled: true

@@ -1,0 +1,23 @@
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - podcast_site:/usr/share/nginx/html:ro
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    restart: unless-stopped
+
+  generator:
+    build: .
+    environment:
+      TZ: Asia/Shanghai
+      PODCAST_BASE_URL: ${PODCAST_BASE_URL:-http://43.142.95.45}
+    volumes:
+      - podcast_site:/app/docs
+      - podcast_state:/app/data
+    restart: "no"
+
+volumes:
+  podcast_site:
+  podcast_state:
