@@ -1,6 +1,6 @@
 """Stage 3 — 脚本生产模块（LLM 融合写作版）
 
-职责：episode_brief → Gemini LLM 消化融合 → 连贯中文播客脚本（含 mood 标记）+ Show Notes。
+职责：episode_brief → 通义千问 LLM 消化融合 → 连贯中文播客脚本（含 mood 标记）+ Show Notes。
 英文内容在 LLM 阶段直接翻译为中文，TTS 朗读零障碍。
 """
 
@@ -131,7 +131,7 @@ def _build_llm_prompt(
     podcast_title: str,
     style_cfg: dict[str, Any],
 ) -> str:
-    """构建给 Gemini 的完整 prompt。"""
+    """构建给 LLM 的完整 prompt。"""
     total_range = style_cfg.get("total_chars", [1800, 3900])
     min_chars, max_chars = total_range[0], total_range[1]
     banned = style_cfg.get("banned_words", DEFAULT_BANNED_WORDS)
@@ -176,65 +176,69 @@ def _build_llm_prompt(
 
 
 # ---------------------------------------------------------------------------
-# Gemini LLM 调用
+# DashScope (通义千问) LLM 调用 — OpenAI 兼容格式
 # ---------------------------------------------------------------------------
 
 
-def _call_gemini(prompt: str, llm_cfg: dict[str, Any]) -> str | None:
-    """调用 Google Gemini API 生成播客脚本。失败返回 None。"""
-    api_key = os.environ.get("GEMINI_API_KEY", "")
+def _call_llm(prompt: str, llm_cfg: dict[str, Any]) -> str | None:
+    """调用通义千问 DashScope API 生成播客脚本。失败返回 None。"""
+    api_key = os.environ.get("DASHSCOPE_API_KEY", "")
     if not api_key:
-        logger.error("GEMINI_API_KEY 未设置，无法调用 LLM")
+        logger.error("DASHSCOPE_API_KEY 未设置，无法调用 LLM")
         return None
 
     try:
-        import google.generativeai as genai
+        from openai import OpenAI
     except ImportError:
-        logger.error("google-generativeai 未安装")
+        logger.error("openai 包未安装，请安装: pip install openai")
         return None
 
-    model_name = llm_cfg.get("model", "gemini-2.0-flash")
+    model_name = llm_cfg.get("model", "qwen-plus")
     temperature = llm_cfg.get("temperature", 0.7)
     max_tokens = llm_cfg.get("max_output_tokens", 8192)
-
-    genai.configure(api_key=api_key)
-    model = genai.GenerativeModel(
-        model_name=model_name,
-        generation_config={
-            "temperature": temperature,
-            "max_output_tokens": max_tokens,
-            "top_p": 0.95,
-        },
+    base_url = llm_cfg.get(
+        "base_url", "https://dashscope.aliyuncs.com/compatible-mode/v1"
     )
+    timeout = llm_cfg.get("timeout", 120)
+
+    client = OpenAI(api_key=api_key, base_url=base_url, timeout=timeout)
 
     max_retries = 3
-    timeout = llm_cfg.get("timeout", 120)
     for attempt in range(max_retries):
         try:
             logger.info(
-                "调用 Gemini (%s), attempt %d/%d, timeout %ds",
+                "调用通义千问 (%s), attempt %d/%d, timeout %ds",
                 model_name,
                 attempt + 1,
                 max_retries,
                 timeout,
             )
-            response = model.generate_content(
-                prompt,
-                request_options={"timeout": timeout},
+            response = client.chat.completions.create(
+                model=model_name,
+                messages=[
+                    {
+                        "role": "system",
+                        "content": "你是一位专业的中文播客脚本撰稿人，擅长将科技新闻素材融合为连贯、生动、有深度的口语化播客文章。",
+                    },
+                    {"role": "user", "content": prompt},
+                ],
+                temperature=temperature,
+                max_tokens=max_tokens,
+                top_p=0.95,
             )
-            text = response.text
+            text = response.choices[0].message.content
             if text and len(text.strip()) > 200:
-                logger.info("Gemini 返回 %d 字符", len(text))
+                logger.info("通义千问返回 %d 字符", len(text))
                 return text.strip()
             logger.warning(
-                "Gemini 返回内容过短 (%d 字符)，重试", len(text) if text else 0
+                "通义千问返回内容过短 (%d 字符)，重试", len(text) if text else 0
             )
         except Exception as e:
-            logger.warning("Gemini 调用失败 (attempt %d): %s", attempt + 1, e)
+            logger.warning("通义千问调用失败 (attempt %d): %s", attempt + 1, e)
             if attempt < max_retries - 1:
                 time.sleep(2 ** (attempt + 1))
 
-    logger.error("Gemini 全部 %d 次重试失败", max_retries)
+    logger.error("通义千问全部 %d 次重试失败", max_retries)
     return None
 
 
@@ -303,7 +307,7 @@ def generate_script(
 
     if material.strip():
         prompt = _build_llm_prompt(material, episode_date, podcast_title, style_cfg)
-        raw = _call_gemini(prompt, llm_cfg)
+        raw = _call_llm(prompt, llm_cfg)
         if raw:
             script = raw
             mode_used = "LLM"
