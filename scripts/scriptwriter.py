@@ -73,10 +73,16 @@ def _cn_date(dt: datetime) -> str:
 # ---------------------------------------------------------------------------
 
 
-def _build_material_text(brief: dict[str, Any]) -> str:
-    """把 episode_brief 中所有新闻素材整理为结构化文本，供 LLM 消化。"""
+def _build_material_text(brief: dict[str, Any], max_stories: int = 8) -> str:
+    """把 episode_brief 中评分最高的新闻素材整理为结构化文本，供 LLM 消化。
+
+    只取 main + supporting + quick 中评分最高的前 max_stories 条，
+    避免素材过多导致 LLM 超时或输出质量下降。
+    """
     stories = brief.get("stories", [])
     active = [s for s in stories if s.get("role") != "skip"]
+    active.sort(key=lambda s: s.get("total_score", 0), reverse=True)
+    active = active[:max_stories]
 
     sections: list[str] = []
     for i, story in enumerate(active, 1):
@@ -102,7 +108,7 @@ def _build_material_text(brief: dict[str, Any]) -> str:
             best = max(items, key=lambda x: len(x.get("full_text_snippet", "")))
             snippet = best.get("full_text_snippet", "")
             if snippet and len(snippet) > 50:
-                part += f"详情：{snippet[:1500]}\n"
+                part += f"详情：{snippet[:800]}\n"
             src_name = best.get("source_name", "")
             if src_name:
                 part += f"来源：{src_name}\n"
@@ -202,12 +208,20 @@ def _call_gemini(prompt: str, llm_cfg: dict[str, Any]) -> str | None:
     )
 
     max_retries = 3
+    timeout = llm_cfg.get("timeout", 120)
     for attempt in range(max_retries):
         try:
             logger.info(
-                "调用 Gemini (%s), attempt %d/%d", model_name, attempt + 1, max_retries
+                "调用 Gemini (%s), attempt %d/%d, timeout %ds",
+                model_name,
+                attempt + 1,
+                max_retries,
+                timeout,
             )
-            response = model.generate_content(prompt)
+            response = model.generate_content(
+                prompt,
+                request_options={"timeout": timeout},
+            )
             text = response.text
             if text and len(text.strip()) > 200:
                 logger.info("Gemini 返回 %d 字符", len(text))
