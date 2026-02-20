@@ -13,7 +13,7 @@ services:
     environment:
       TZ: Asia/Shanghai
       PODCAST_BASE_URL: ${PODCAST_BASE_URL:-http://43.142.95.45}
-      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY}
     volumes:
       - podcast_site:/app/docs
       - podcast_state:/app/data
