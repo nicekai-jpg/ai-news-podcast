@@ -129,9 +129,14 @@ def _build_index_html(
       border-bottom: 1px solid var(--border);
     }}
     .hero-icon {{
-      font-size: 56px;
-      margin-bottom: 16px;
-      display: block;
+      margin-bottom: 20px;
+      display: inline-block;
+      width: 140px;
+      height: 140px;
+      border-radius: 24px;
+      background-image: url('./logo.png');
+      background-size: cover;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }}
     .hero h1 {{
       font-size: 2rem;
@@ -270,7 +275,7 @@ def _build_index_html(
 </head>
 <body>
   <div class="hero">
-    <span class="hero-icon">🧠</span>
+    <div class="hero-icon"></div>
     <h1>{podcast_title}</h1>
     <p>每日精选 AI 前沿资讯，用声音连接智能未来</p>
     <div class="hero-actions">
@@ -346,6 +351,7 @@ def _build_feed_xml(
         "yes" if podcast_explicit else "no"
     )
     ET.SubElement(channel, f"{{{ns_itunes}}}category", {"text": podcast_category})
+    ET.SubElement(channel, f"{{{ns_itunes}}}image", {"href": base_url + "/logo.png"})
     ET.SubElement(
         channel,
         f"{{{ns_atom}}}link",
@@ -426,10 +432,13 @@ def _prune_episodes(
             continue
         mp3 = episodes_dir / f"{eid}.mp3"
         html = episodes_dir / f"{eid}.html"
+        txt = episodes_dir / f"{eid}.txt"
         if mp3.exists():
             mp3.unlink()
         if html.exists():
             html.unlink()
+        if txt.exists():
+            txt.unlink()
 
     return [ep for ep in keep if str(ep.get("id") or "") in keep_ids]
 

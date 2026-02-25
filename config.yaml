@@ -1,8 +1,8 @@
 podcast:
-  title: "脑活素 AI 新闻播客"
+  title: "AI 每日先锋"
   description: "每天 5 分钟，聚合 AI 领域最新发布、技术进展、行业事件与人物采访。"
   language: "zh-cn"
-  author: "脑活素"
+  author: "AI 先锋"
   explicit: false
   category: "Technology"
   keep_last: 30
@@ -117,9 +117,9 @@ script:
     target_duration_minutes: [8, 15]
 
 llm:
-  provider: "dashscope"
-  model: "qwen-plus"
-  base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+  provider: "gemini"
+  model: "gemini-2.5-flash"
+  base_url: "https://generativelanguage.googleapis.com/v1beta/openai/"
   temperature: 0.7
   max_output_tokens: 8192
   timeout: 120

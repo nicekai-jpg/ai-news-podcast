@@ -1,4 +1,4 @@
-# AI News Podcast (Chinese, Free)
+# AI Daily Pioneer (AI 每日先锋)
 
 Chinese README: `README.zh-CN.md`
 
