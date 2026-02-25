@@ -182,9 +182,9 @@ def _build_llm_prompt(
 
 def _call_llm(prompt: str, llm_cfg: dict[str, Any]) -> str | None:
     """调用通义千问 DashScope API 生成播客脚本。失败返回 None。"""
-    api_key = os.environ.get("DASHSCOPE_API_KEY", "")
+    api_key = os.environ.get("GEMINI_API_KEY", "") or os.environ.get("DASHSCOPE_API_KEY", "")
     if not api_key:
-        logger.error("DASHSCOPE_API_KEY 未设置，无法调用 LLM")
+        logger.error("API Key 未设置(尝试了 GEMINI_API_KEY 和 DASHSCOPE_API_KEY)，无法调用 LLM")
         return None
 
     try:
@@ -285,7 +285,7 @@ def generate_script(
     brief: dict[str, Any],
     *,
     episode_date: datetime,
-    podcast_title: str = "脑活素 AI 新闻播客",
+    podcast_title: str = "AI 每日先锋",
     script_cfg: dict[str, Any] | None = None,
     llm_cfg: dict[str, Any] | None = None,
 ) -> tuple[str, list[str]]:

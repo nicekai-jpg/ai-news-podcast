@@ -122,8 +122,8 @@ def _chunk_silence_ms(chunk_silence_ms: int) -> int:
 
 
 async def _run_loudnorm(input_path: Path, output_path: Path) -> None:
-    ffmpeg_bin = Path("/opt/homebrew/bin/ffmpeg")
-    ffmpeg = str(ffmpeg_bin if ffmpeg_bin.exists() else "ffmpeg")
+    ffmpeg_bin = shutil.which("ffmpeg")
+    ffmpeg = ffmpeg_bin if ffmpeg_bin else "ffmpeg"
     output_path.parent.mkdir(parents=True, exist_ok=True)
     cmd = [
         ffmpeg,
