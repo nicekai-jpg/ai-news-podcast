@@ -1,0 +1,32 @@
+name: Feature Request
+description: Suggest an idea for this project or a new feed to track
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for your interest in improving the project! 
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Describe the feature you'd like to see
+      description: Please describe your idea clearly.
+      placeholder: Ex. It would be great if the scriptwriter could directly post to Twitter...
+    validations:
+      required: true
+  - type: textarea
+    id: rss-feeds
+    attributes:
+      label: Submitting new RSS Feeds?
+      description: If you are suggesting new news sources, please provide their RSS or Atom links.
+      placeholder: e.g. https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've considered
+      description: Additional context or alternative solutions you've thought about.
+    validations:
+      required: false
