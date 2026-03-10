@@ -147,8 +147,8 @@ def _strip_html(s: str) -> str:
 def _parse_dt(entry: Any) -> datetime:
     for key in ("published_parsed", "updated_parsed", "created_parsed"):
         parsed = getattr(entry, key, None)
-        if parsed is not None:
-            return datetime(*parsed[:6], tzinfo=timezone.utc)
+        if isinstance(parsed, tuple) and len(parsed) >= 6:
+            return datetime(parsed[0], parsed[1], parsed[2], parsed[3], parsed[4], parsed[5], tzinfo=timezone.utc)
     return datetime.now(tz=timezone.utc)
 
 
@@ -157,6 +157,29 @@ def _parse_dt(entry: Any) -> datetime:
 # ---------------------------------------------------------------------------
 
 _ZH_RE = re.compile(r"[\u4e00-\u9fff]")
+_JUNK_SUMMARY_PATTERNS = [
+    r"illustration of",
+    r"collage of",
+    r"photo of",
+    r"image of",
+    r"an illustration",
+    r"a collage",
+    r"a photo",
+    r"featured image",
+]
+
+
+def _is_junk_summary(text: str) -> bool:
+    """检测摘要是否为无意义的图片描述或占位符。"""
+    if not text:
+        return True
+    low = text.lower()
+    # 如果长度很短且包含图片描述词
+    if len(text) < 200:
+        for p in _JUNK_SUMMARY_PATTERNS:
+            if re.search(p, low):
+                return True
+    return False
 
 
 def _detect_lang(text: str) -> str:
@@ -224,9 +247,9 @@ class _DomainThrottle:
             now = time.monotonic()
             last = self._last.get(domain, 0.0)
             wait_time = max(0.0, self._interval - (now - last))
-            if wait_time > 0:
-                await asyncio.sleep(wait_time)
-            self._last[domain] = time.monotonic()
+            self._last[domain] = now + wait_time
+        if wait_time > 0:
+            await asyncio.sleep(wait_time)
 
 
 # ---------------------------------------------------------------------------
@@ -236,7 +259,7 @@ class _DomainThrottle:
 
 @retry(
     stop=stop_after_attempt(3),
-    wait=wait_exponential(multiplier=2, min=2, max=6),
+    wait=wait_exponential(multiplier=1, min=2, max=6),
     retry=retry_if_exception_type((httpx.HTTPError, httpx.TimeoutException)),
     reraise=True,
 )
@@ -282,10 +305,12 @@ async def _fetch_one_feed(
         logger.warning("Failed to fetch feed: %s (%s)", name, url)
         return []
 
-    entries = list(getattr(feed, "entries", []) or [])[:max_items]
+    entries = list(getattr(feed, "entries", []) or [])
     items: list[RawItem] = []
 
-    for entry in entries:
+    for i, entry in enumerate(entries):
+        if i >= max_items:
+            break
         title = _strip_html(str(getattr(entry, "title", "") or "")).strip()
         link = str(getattr(entry, "link", "") or "").strip()
         if not title or not link:
@@ -299,15 +324,23 @@ async def _fetch_one_feed(
             getattr(entry, "description", "") or ""
         )
         summary = _strip_html(summary_raw)
+        
+        # 如果是垃圾摘要，清空它以便后续逻辑强制尝试抓取正文
+        if _is_junk_summary(summary):
+            logger.debug("Detected junk summary for %s, will try to fetch full text", link)
+            summary = ""
+
         if len(summary) > 500:
             summary = summary[:497].rstrip() + "..."
 
         # 全文提取 (受 max_pages 限制)
         full_text = ""
-        if pages_counter[0] < max_pages:
+        # 如果摘要没了（是垃圾），我们稍微放宽一点限制，或者至少优先抓取
+        if pages_counter[0] < max_pages or not summary:
             try:
                 page_resp = await _http_get(client, link, throttle)
-                pages_counter[0] += 1
+                if not summary: # 只有没摘要时才增加计数，避免浪费配额
+                    pages_counter[0] += 1
                 full_text = _extract_fulltext(
                     page_resp.text, link, min_chars=1200, max_chars=2000
                 )
@@ -317,6 +350,10 @@ async def _fetch_one_feed(
         # 用 summary 兜底
         if not full_text:
             full_text = summary[:2000] if summary else ""
+        
+        # 如果连正文也没抓到，且摘要是空的，这条新闻就没意义了
+        if not full_text and not summary:
+            continue
 
         lang = _detect_lang(f"{title} {summary}")
         category = _infer_category(title, summary)
@@ -381,8 +418,15 @@ async def fetch_all(
         headers={"User-Agent": user_agent},
         follow_redirects=True,
     ) as client:
-        tasks = [_guarded(src) for src in enabled]
-        results = await asyncio.gather(*tasks, return_exceptions=True)
+        tasks = [asyncio.create_task(_guarded(src)) for src in enabled]
+        try:
+            # Enforce an absolute maximum of 10 minutes (600 seconds) for fetching all pages
+            results = await asyncio.wait_for(asyncio.gather(*tasks, return_exceptions=True), timeout=600.0)
+        except asyncio.TimeoutError:
+            logger.error("Fetch all exactly hit 10 minute timeout limit. Aborting remainder.")
+            # Gather any tasks that may have finished but returned before the timeout
+            # We filter for tasks that are actually done to avoid hanging or raising errors
+            results = [t.result() for t in tasks if t.done() and not t.cancelled()]
 
     all_items: list[RawItem] = []
     for result in results:

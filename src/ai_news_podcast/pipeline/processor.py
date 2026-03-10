@@ -21,7 +21,7 @@ from sklearn.cluster import DBSCAN
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_distances
 
-from fetcher import RawItem
+from ai_news_podcast.pipeline.fetcher import RawItem
 
 logger = logging.getLogger(__name__)
 
@@ -262,9 +262,9 @@ def _build_context(
     for item in cluster.items[:3]:
         text = item.summary or item.full_text_snippet
         if text:
-            first_sentence = re.split(r"[。.！!？?\n]", text)[0].strip()
-            if first_sentence:
-                summaries.append(first_sentence)
+            sentences = [s.strip() for s in re.split(r"[。.！!？?\n]", text) if s.strip()]
+            if sentences:
+                summaries.append(sentences[0])
     if not summaries:
         summaries = [rep.title]
 

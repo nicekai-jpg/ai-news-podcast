@@ -19,6 +19,9 @@ dependencies = [
   "tenacity>=8.2",
   "trafilatura>=1.8",
   "openai>=1.0",
+  "google-generativeai>=0.8.6",
+  "google-genai>=1.64.0",
+  "python-dotenv>=1.2.1",
 ]
 
 [dependency-groups]
