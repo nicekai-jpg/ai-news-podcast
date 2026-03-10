@@ -1,0 +1,40 @@
+name: Bug Report
+description: Create a report to help us improve the AI news podcast generator
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: environment
+    attributes:
+      label: Operating System
+      description: Are you running this on macOS, Windows, Linux, or GitHub Actions?
+      placeholder: e.g. macOS Sonoma or GitHub Actions Ubuntu
+    validations:
+      required: true
+  - type: input
+    id: python-version
+    attributes:
+      label: Python Version
+      description: What version of Python are you using? (e.g., Python 3.11.0)
+    validations:
+      required: true
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+      placeholder: Ex. The processor fails to parse a specific RSS feed format correctly.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Please copy and paste any relevant console log output.
+      render: shell
+    validations:
+      required: false
