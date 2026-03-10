@@ -1,40 +1,40 @@
-name: Bug Report
-description: Create a report to help us improve the AI news podcast generator
+name: 缺陷反馈 (Bug Report)
+description: 创建一个报告，帮助我们排查故障并改进 AI 新闻播客生成器
 title: "[Bug]: "
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report!
+        感谢你抽时间反馈 Bug 问题，这能够帮助整个社区！
   - type: input
     id: environment
     attributes:
-      label: Operating System
-      description: Are you running this on macOS, Windows, Linux, or GitHub Actions?
-      placeholder: e.g. macOS Sonoma or GitHub Actions Ubuntu
+      label: 运行操作系统
+      description: 请问你是在 macOS, Windows, Linux 下本地运行，还是在使用 GitHub Actions 服务？
+      placeholder: 例如：macOS Sonoma 或者 GitHub Actions Ubuntu-latest 环境
     validations:
       required: true
   - type: input
     id: python-version
     attributes:
-      label: Python Version
-      description: What version of Python are you using? (e.g., Python 3.11.0)
+      label: Python 版本号
+      description: 你目前本地运行的是哪个版本的 Python 呢？(e.g., Python 3.11.0)
     validations:
       required: true
   - type: textarea
     id: bug-description
     attributes:
-      label: Describe the bug
-      description: A clear and concise description of what the bug is.
-      placeholder: Ex. The processor fails to parse a specific RSS feed format correctly.
+      label: 描述 Bug 的触发过程或表象
+      description: 请清晰且简练地描述遇到了什么错误。
+      placeholder: 比如：在拉取某一个特定的 RSS 新闻源格式时无法被 process 步骤处理并报错。
     validations:
       required: true
   - type: textarea
     id: logs
     attributes:
-      label: Relevant log output
-      description: Please copy and paste any relevant console log output.
+      label: 相关的控制台报错日志
+      description: 请复制并粘贴导致异常的相关终端控制台输出，或者行动日志。
       render: shell
     validations:
       required: false
