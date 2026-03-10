@@ -1,32 +1,32 @@
-name: Feature Request
-description: Suggest an idea for this project or a new feed to track
+name: 新功能需求 (Feature Request)
+description: 提交一个新的点子，或者推荐一个新的优质 RSS 种子源
 title: "[Feature]: "
 labels: ["enhancement"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for your interest in improving the project! 
+        感谢您为项目提供的新奇想法和建议！
   - type: textarea
     id: feature-description
     attributes:
-      label: Describe the feature you'd like to see
-      description: Please describe your idea clearly.
-      placeholder: Ex. It would be great if the scriptwriter could directly post to Twitter...
+      label: 请清晰地描述你的需求场景
+      description: 这个新功能想要解决什么问题，它是如何运作的？
+      placeholder: 比如：我希望 Scriptwriter 在生成 Markdown 之后，也可以自动以短推文的方式推送到我的 Twitter(X) 上...
     validations:
       required: true
   - type: textarea
     id: rss-feeds
     attributes:
-      label: Submitting new RSS Feeds?
-      description: If you are suggesting new news sources, please provide their RSS or Atom links.
-      placeholder: e.g. https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
+      label: 如果你是推荐一个新的 RSS 新闻源？
+      description: 如果你觉得某一家科技媒体的资讯非常有价值，请在此处提供它们官方的 RSS 或是 Atom 地址。
+      placeholder: 如：https://www.theverge.com/ai-artificial-intelligence/rss/index.xml
     validations:
       required: false
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternatives you've considered
-      description: Additional context or alternative solutions you've thought about.
+      label: 您现有的替代解决方案
+      description: 在没有该功能的情况下，如果您有变通的策略，或是对功能实现的技术见解，请在此分享。
     validations:
       required: false

@@ -1,64 +1,65 @@
-# AI News Podcast: Architecture Overview
+# AI 每日先锋：架构说明
 
-This document provides a high-level overview of the `ai-news-podcast` project architecture and how its various components interact.
+本文档提供了 `ai-news-podcast` 项目的宏观架构概述，以及各个核心组件是如何协同工作的。
 
-## System Workflow
+## 系统工作流
 
-The project is designed as a linear pipeline that runs daily. The core workflow is orchestrated by `src/ai_news_podcast/cli/run_daily.py`.
+本项目被设计为一个线性执行的流水线（Pipeline），主要通过每日定时运行来工作。核心流程由 `src/ai_news_podcast/cli/run_daily.py` 调度。
 
 ```mermaid
 graph TD
-    A[Cron Job / GitHub Action] --> B(RSS Fetcher)
-    B --> C(Processor / Scorer)
-    C --> D(LLM Scriptwriter)
-    D --> E(Edge-TTS Engine)
-    E --> F(Site Builder)
-    F --> G[GitHub Pages Deployment]
+    A[Cron Job / GitHub Action 定时任务] --> B(RSS Fetcher - 抓取器)
+    B --> C(Processor / Scorer - 处理器/评分器)
+    C --> D(LLM Scriptwriter - 大模型文案创作)
+    D --> E(Edge-TTS Engine - 语音合成引擎)
+    E --> F(Site Builder - 网站与 RSS 生成)
+    F --> G[GitHub Pages 部署发布]
 ```
 
-## Core Modules (`src/ai_news_podcast/pipeline`)
+## 核心模块 (`src/ai_news_podcast/pipeline`)
 
-### 1. Fetcher (`fetcher.py`)
-- **Inputs:** `config/sources.yaml`
-- **Responsibilities:**
-  - Reads RSS and Atom feeds asynchronously using `httpx`.
-  - Extracts full article text using `trafilatura` or `readability-lxml`.
-  - Normalizes data into a standard JSON format.
+### 1. 抓取器 (`fetcher.py`)
+- **输入：** `config/sources.yaml`
+- **主要职责：**
+  - 使用 `httpx` 异步读取 RSS 和 Atom 订阅源。
+  - 使用 `trafilatura` 或 `readability-lxml` 提取新闻文章的全文正文。
+  - 将抓取到的数据归一化为标准的 JSON 格式。
 
-### 2. Processor (`processor.py`)
-- **Inputs:** Raw fetched articles.
-- **Responsibilities:**
-  - Filters out old news and irrelevant topics based on `config.yaml` (`selection.include_keywords`).
-  - Deduplicates highly similar articles using TF-IDF and Cosine Similarity (`scikit-learn`).
-  - Scores articles based on keyword weights, freshness, and content length to select the top `N` stories for the day.
+### 2. 处理器 (`processor.py`)
+- **输入：** 抓取到的海量原始文章数据。
+- **主要职责：**
+  - 根据 `config.yaml`（如 `selection.include_keywords` 参数）过滤掉旧新闻和不相关的主题。
+  - 使用 TF-IDF 和余弦相似度（基于 `scikit-learn`）对高度相似的重复文章进行去重。
+  - 基于关键词权重、新鲜度以及内容长度进行混合评分，选出当天的前 `N` 条最有价值的新闻报道。
 
-### 3. Scriptwriter (`scriptwriter.py`)
-- **Inputs:** Top scored articles.
-- **Responsibilities:**
-  - Constructs advanced prompts using the selected articles.
-  - Calls external Language Models (OpenAI, Gemini) or local models (Ollama) to summarize the news and generate a conversational podcast script.
-  - Formats output into a JSON/Markdown structure for TTS.
+### 3. 文案创作者 (`scriptwriter.py`)
+- **输入：** 评分最高的精选新闻。
+- **主要职责：**
+  - 提取选定新闻的内容并构建复杂的大模型提示词 (Prompts)。
+  - 调用外部大语言模型（如 OpenAI、Gemini）或本地部署的模型（如 Ollama），对新闻进行摘要，并撰写具有对话感的播客文稿。
+  - 将生成的输出格式化为供语音引擎使用的结构化 JSON 或 Markdown。
 
-### 4. TTS Engine (`tts_engine.py`)
-- **Inputs:** Podcast script.
-- **Responsibilities:**
-  - Synthesizes speech using `edge-tts`.
-  - Uses `pydub` to mix the generated speech with background music (`data/assets/bgm_placeholder.wav`).
-  - Exports the final mixed audio as an MP3 file.
+### 4. 语音合成引擎 (`tts_engine.py`)
+- **输入：** 播客的文本台本。
+- **主要职责：**
+  - 使用微软 `edge-tts` 接口进行语音合成。
+  - 运用 `pydub` 工具将生成的语音与背景音乐 (`data/assets/bgm_placeholder.wav`) 进行混音。
+  - 导出并压缩最终混合好的 MP3 音频文件。
 
-### 5. Site Builder (`site_builder/`)
-- **Inputs:** Generated Audio, Script, and Metadata.
-- **Responsibilities:**
-  - **`html_gen.py`**: Generates a static HTML page for the daily episode.
-  - **`rss_gen.py`**: Updates the podcast XML feed (`docs/feed.xml`) following Apple Podcasts specifications.
+### 5. 网站与 RSS 生成器 (`site_builder/`)
+- **输入：** 生成的音频文件、文本台本和相关元数据。
+- **主要职责：**
+  - **`html_gen.py`**：为当天的播报生成静态的 HTML 展示页面。
+  - **`rss_gen.py`**：生成或更新符合 Apple Podcasts 等平台规范的 XML 订阅源 (`docs/feed.xml`)。
 
-## Configuration Layer (`config/`)
+## 配置层 (`config/`)
 
-- **`config.yaml`**: The central configuration file. It dictates:
-  - `llm`: Which model to use and prompt parameters.
-  - `tts`: Voice selection and audio mixing settings.
-  - `fetch`: Timeout limits and max items per feed.
-  - `processing`: Keyword weighting and scoring parameters.
-- **`sources.yaml`**: A curated list of RSS feeds (e.g., Hacker News, various AI blogs).
+项目的各类行为均由该目录下的文件控制：
+- **`config.yaml`**：核心配置文件。控制内容包括：
+  - `llm`：要使用的模型后端及提示词参数。
+  - `tts`：语音发音人选择和混音相关设置。
+  - `fetch`：网络抓取的超时限制和单源最大拉取数量。
+  - `processing`：关键词权重及文章评分算法的参数。
+- **`sources.yaml`**：精心挑选的 RSS 新闻源列表（如 Hacker News 及各种 AI 博客源）。
 
-> **Note on Modularity:** The project supports separate profiles. For instance, `config_edu.yaml` and `sources_edu.yaml` are used by the `daily_report_edu.py` script to generate specialized education-focused AI reports, reusing the exact same pipeline but skipping TTS.
+> **关于模块化与复用的说明：** 本项目支持独立的配置档案 (Profiles)。例如，`daily_report_edu.py` 脚本使用 `config_edu.yaml` 和 `sources_edu.yaml` 来生成专门针对教育领域的 AI 资讯日报。这段代码复用了完全相同的拉取、分析与文案创作流水线，仅仅是跳过了 TTS 生成语音的步骤。
