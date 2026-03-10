@@ -1,0 +1,131 @@
+podcast:
+  title: "升学规划内参"
+  description: "每日精选国内外教育政策、高校动态、留学资讯与升学规划指南。"
+  language: "zh-cn"
+  author: "升学规划师"
+  explicit: false
+  category: "Education"
+  keep_last: 30
+  max_stories: 1
+
+tts:
+  backend: "edge-tts"
+  voice: "zh-CN-XiaoxiaoNeural"
+  rate: "+0%"
+  volume: "+0%"
+  pitch: "+0Hz"
+  mood_presets:
+    hook: {rate: "+8%", pitch: "+8Hz", instruct: "用吸引注意力的悬念语气说"}
+    excited: {rate: "+15%", pitch: "+10Hz", instruct: "用兴奋的语气播报"}
+    serious: {rate: "-5%", pitch: "-5Hz", instruct: "用严肃的新闻主播语气说"}
+    calm: {rate: "+0%", pitch: "-2Hz", instruct: "用平稳冷静的语气叙述"}
+    emphasis: {rate: "-10%", pitch: "+5Hz", instruct: "放慢语速，加重语气强调"}
+    closing: {rate: "-3%", pitch: "-3Hz", instruct: "用收束总结的语气说"}
+  chunk_silence_ms: 500
+
+fetch:
+  timeout_seconds: 10
+  user_agent: "ai-news-podcast/0.1 (+https://github.com/)"
+  max_items_per_feed: 30
+
+selection:
+  prefer_recent_hours: 36
+  fallback_recent_hours: 96
+  per_feed_cap: 6
+  include_keywords:
+    - "五年规划"
+    - "高质量发展"
+    - "新质生产力"
+    - "大国重器"
+    - "数字经济"
+    - "卡脖子"
+    - "专业调整"
+    - "新增专业"
+    - "撤销专业"
+    - "交叉学科"
+    - "新工科"
+    - "重点实验室"
+    - "强基计划"
+    - "综合评价"
+    - "拔尖创新"
+    - "专项计划"
+    - "综评"
+    - "少年班"
+    - "保送生"
+    - "高考"
+    - "高招"
+    - "志愿填报"
+  exclude_keywords: []
+
+processing:
+  dedup:
+    rapidfuzz_threshold: 92
+    jieba_keyword_overlap: 0.35
+    title_sim_threshold: 85
+    dedup_window_hours: 48
+  clustering:
+    ngram_range: [2, 4]
+    eps: 0.35
+    min_samples: 2
+  scoring:
+    dimensions:
+      - "impact_scope"
+      - "novelty"
+      - "explainability"
+      - "listener_relevance"
+      - "source_richness"
+    role_thresholds:
+      main: [12, 15]
+      supporting: [8, 11]
+      quick: [5, 7]
+      skip_below: 5
+  source_authority:
+    official: 1
+    research: 2
+    news: 3
+    product: 3
+    analysis: 3
+    tools: 4
+    events: 4
+  story_memory_days: 90
+  max_pages_per_episode: 80
+
+script:
+  mode_a:
+    name: "连点成线"
+    hook_chars: [150, 180]
+    thesis_chars: [120, 160]
+    main_chars: [1200, 1500]
+    supporting_chars: [450, 550]
+    quick_chars: [300, 450]
+    closing_chars: [150, 220]
+  mode_b:
+    name: "工具优先"
+  style:
+    sentence_length: [12, 28]
+    banned_words:
+      - "废话不多说"
+      - "众所周知"
+      - "颠覆"
+      - "炸裂"
+      - "重磅"
+      - "王炸"
+      - "杀疯了"
+      - "遥遥领先"
+      - "细思极恐"
+    total_chars: [800, 2500]
+    target_duration_minutes: [5, 10]
+
+llm:
+  provider: "openai_compatible"
+  api_key_env: "LLM_API_KEY"  # Ollama 不需要鉴权，但可以随便填一个环境变量或者留空
+  model: "qwen3.5:35b"        # 本机 Ollama 上的模型
+  base_url: "http://192.168.7.7:11434/v1" # Ollama 的 OpenAI 兼容端口
+  temperature: 0.7
+  max_output_tokens: 2048
+  timeout: 60
+
+build:
+  site_dir: "docs"
+  episodes_dir: "docs/episodes"
+  episodes_index: "data/episodes.json"

@@ -28,7 +28,7 @@ jobs:
       - name: Generate episode + feed
         env:
           TZ: Asia/Shanghai
-        run: uv run python scripts/run_daily.py
+        run: uv run python src/ai_news_podcast/cli/run_daily.py
 
       - name: Commit updates
         run: |

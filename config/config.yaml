@@ -6,7 +6,7 @@ podcast:
   explicit: false
   category: "Technology"
   keep_last: 30
-  max_stories: 10
+  max_stories: 1
 
 tts:
   backend: "edge-tts"
@@ -24,7 +24,7 @@ tts:
   chunk_silence_ms: 500
 
 fetch:
-  timeout_seconds: 20
+  timeout_seconds: 10
   user_agent: "ai-news-podcast/0.1 (+https://github.com/)"
   max_items_per_feed: 30
 
@@ -113,16 +113,17 @@ script:
       - "杀疯了"
       - "遥遥领先"
       - "细思极恐"
-    total_chars: [1800, 3900]
-    target_duration_minutes: [8, 15]
+    total_chars: [800, 2500]
+    target_duration_minutes: [5, 10]
 
 llm:
-  provider: "gemini"
-  model: "gemini-2.5-flash"
-  base_url: "https://generativelanguage.googleapis.com/v1beta/openai/"
+  provider: "openai_compatible"
+  api_key_env: "LLM_API_KEY"  # Ollama 不需要鉴权，但可以随便填一个环境变量或者留空
+  model: "qwen3.5:35b"        # 本机 Ollama 上的模型
+  base_url: "http://192.168.7.7:11434/v1" # Ollama 的 OpenAI 兼容端口
   temperature: 0.7
-  max_output_tokens: 8192
-  timeout: 120
+  max_output_tokens: 2048
+  timeout: 60
 
 build:
   site_dir: "docs"
