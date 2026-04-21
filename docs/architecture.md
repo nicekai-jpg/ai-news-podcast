@@ -43,14 +43,14 @@ graph TD
 - **输入：** 播客的文本台本。
 - **主要职责：**
   - 使用微软 `edge-tts` 接口进行语音合成。
-  - 运用 `pydub` 工具将生成的语音与背景音乐 (`data/assets/bgm_placeholder.wav`) 进行混音。
+  - 运用 `pydub` 工具将生成的语音与背景音乐 (`assets/bgm_placeholder.wav`) 进行混音。
   - 导出并压缩最终混合好的 MP3 音频文件。
 
 ### 5. 网站与 RSS 生成器 (`site_builder/`)
 - **输入：** 生成的音频文件、文本台本和相关元数据。
 - **主要职责：**
   - **`html_gen.py`**：为当天的播报生成静态的 HTML 展示页面。
-  - **`rss_gen.py`**：生成或更新符合 Apple Podcasts 等平台规范的 XML 订阅源 (`docs/feed.xml`)。
+  - **`rss_gen.py`**：生成或更新符合 Apple Podcasts 等平台规范的 XML 订阅源 (`site/feed.xml`)。
 
 ## 配置层 (`config/`)
 
@@ -61,5 +61,3 @@ graph TD
   - `fetch`：网络抓取的超时限制和单源最大拉取数量。
   - `processing`：关键词权重及文章评分算法的参数。
 - **`sources.yaml`**：精心挑选的 RSS 新闻源列表（如 Hacker News 及各种 AI 博客源）。
-
-> **关于模块化与复用的说明：** 本项目支持独立的配置档案 (Profiles)。例如，`daily_report_edu.py` 脚本使用 `config_edu.yaml` 和 `sources_edu.yaml` 来生成专门针对教育领域的 AI 资讯日报。这段代码复用了完全相同的拉取、分析与文案创作流水线，仅仅是跳过了 TTS 生成语音的步骤。

@@ -16,4 +16,4 @@ RUN uv sync --frozen
 
 COPY . /app
 
-CMD ["uv", "run", "python", "scripts/run_daily.py"]
+CMD ["uv", "run", "podcast-daily"]

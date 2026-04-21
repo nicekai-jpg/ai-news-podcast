@@ -24,52 +24,55 @@ uv sync --dev
 
 ```text
 ai-news-podcast/
+├── assets/              # 静态资源（背景音乐等）
 ├── config/              # 运行配置文件与 RSS 新闻源列表
-├── data/                # 生成的缓存 JSON 和各类 Markdown 日报数据
-├── docs/                # 推送至 GitHub Pages 的 Web 根目录（HTML 与 MP3 音频）
+├── data/                # 生成的缓存 JSON 和 episodes 索引
+├── docs/                # 项目文档
 ├── src/ai_news_podcast/ # 核心的 Python 源码包
-│   ├── cli/             # 供命令行执行的各个入口脚本
-│   ├── pipeline/        # 核心功能流水线：抓取、处理、分发文案、TTS 语音等
-│   └── site_builder/    # 用户组装静态 HTML 页面及 RSS XML
-├── tests/               # 单元测试与集成测试代码
-├── .env                 # 存放本地大模型的各种 API Key（请勿提交到 Git 中！）
-├── pyproject.toml       # Python 项目及包依赖管理配置
-└── README.md            # 项目主页的使用说明文档
+│   ├── cli/             # 命令行入口脚本
+│   ├── pipeline/        # 核心流水线：抓取、处理、文案、TTS
+│   ├── site_builder/    # 静态 HTML 页面及 RSS XML 生成
+│   └── utils.py         # 公共工具函数（配置加载、I/O）
+├── tests/               # 测试代码
+├── scripts/             # 调试与开发脚本
+├── .env                 # 本地 API Key（请勿提交到 Git！）
+├── pyproject.toml       # 包配置与依赖管理
+└── README.md            # 项目说明文档
 ```
 
 ## 运行测试集
 
-项目采用了 `pytest` 作为测试框架。你可以通过 `uv` 运行所有测试集：
+`scripts/` 目录下包含调试脚本与验证工具，可直接运行：
 
 ```bash
+# 测试 LLM 接口连通性
+uv run python scripts/debug_llm.py
+
+# 测试 TTS 语音合成
+uv run python scripts/debug_tts.py
+
+# 正式 pytest 测试（如有）
 uv run pytest tests/ -v
 ```
-
-### 测试指定的模块
-
-- **测试大语言模型 (LLM) 接口连通性**：
-  ```bash
-  uv run pytest tests/test_llm.py
-  uv run pytest tests/test_rest_llm.py  # 专门用于测试与本地 Ollama 服务的直接连接
-  ```
-- **测试 TTS 语音合成引擎**：
-  ```bash
-  uv run pytest tests/test_tts.py
-  ```
 
 ## 增加新功能或源
 
 1. **添加新的新闻源**：如果你想增加其他的新闻触角，请将新的 RSS URL 添加到 `config/sources.yaml` 当中。添加前，最好先确认该 feed 能输出全文或者结构良好的 HTML 以便解析工具抓取。
 2. **接入新的 LLM 服务商**：若要集成其它的大模型 API，可在 `src/ai_news_podcast/pipeline/scriptwriter.py` 内部进行扩展。目前系统已内置支持 `google-genai`、`openai` 兼容接口，并支持向本地 `ollama` 直接发起 HTTP 调用。
-3. **增加新的命令行生成任务**：可以在 `src/ai_news_podcast/cli/` 下增加你的专用脚本。运行它们时，我们推荐采用模块化的执行方法，例如：`uv run python -m ai_news_podcast.cli.your_script`。
+3. **增加新的命令行生成任务**：在 `src/ai_news_podcast/cli/` 下增加脚本后，需在 `pyproject.toml` 的 `[project.scripts]` 段落注册入口，例如：
+   ```toml
+   [project.scripts]
+   your-command = "ai_news_podcast.cli.your_script:entrypoint"
+   ```
+   然后通过 `uv run your-command` 运行。
 
 ## 代码风格与检查
 
 目前我们对代码风格暂时不做强制拦截，但请尽量保持代码整洁，并附带必要的注释和类型提示（Type Hints）。我们推荐在提交代码前使用 `ruff` 对代码进行格式化与检查：
 
 ```bash
-uvx ruff check .
-uvx ruff format .
+uv run ruff check src/ tests/ scripts/
+uv run ruff format src/ tests/ scripts/
 ```
 
 ## GitHub Actions 持续集成与发布

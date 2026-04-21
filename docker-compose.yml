@@ -5,7 +5,7 @@ services:
       - "80:80"
     volumes:
       - podcast_site:/usr/share/nginx/html:ro
-      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
     restart: unless-stopped
 
   generator:
@@ -15,7 +15,7 @@ services:
       PODCAST_BASE_URL: ${PODCAST_BASE_URL:-http://43.142.95.45}
       DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY}
     volumes:
-      - podcast_site:/app/docs
+      - podcast_site:/app/site
       - podcast_state:/app/data
     restart: "no"
 

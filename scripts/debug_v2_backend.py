@@ -1,5 +1,6 @@
 import asyncio
 from pathlib import Path
+
 from ai_news_podcast.pipeline import tts_engine
 
 dummy_script = """
@@ -10,6 +11,7 @@ dummy_script = """
 [Host A] 非常棒。那今天的测试就到这里，感谢收听！
 """
 
+
 async def test_tts_only():
     print("1. 解析双人剧本...")
     chunks = tts_engine.parse_dialogue_chunks(dummy_script)
@@ -17,17 +19,18 @@ async def test_tts_only():
         print(f"[{c.host}] {c.text}")
 
     print("\n2. 进行 TTS 音频合成与 BGM 混音...")
-    out_path = Path("data/assets/v2_test_output.mp3")
-    bgm_path = Path("data/assets/bgm_placeholder.wav")
-    
+    out_path = Path("data/v2_test_output.mp3")
+    bgm_path = Path("assets/bgm_placeholder.wav")
+
     await tts_engine.synthesize(
         dummy_script,
         backend="edge-tts",
         voices=("zh-CN-YunxiNeural", "zh-CN-XiaoxiaoNeural"),
         output_path=str(out_path),
-        bgm_path=str(bgm_path) if bgm_path.exists() else None
+        bgm_path=str(bgm_path) if bgm_path.exists() else None,
     )
     print(f"3. 完成！请检查 {out_path}")
+
 
 if __name__ == "__main__":
     asyncio.run(test_tts_only())

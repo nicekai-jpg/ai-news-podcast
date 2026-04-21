@@ -6,7 +6,6 @@
 
 from __future__ import annotations
 
-import json
 import logging
 import os
 import re
@@ -67,20 +66,18 @@ def _sanitize_for_tts(text: str) -> str:
         return ""
     # 1. 处理转义字符（如模型误输出的 \\n）
     text = text.replace("\\n", "\n")
-    
+
     # 2. 清除特定标记和表情
     text = re.sub(r"\[(?:FACT|INFERENCE|OPINION)\]\s*", "", text)
-    text = re.sub(
-        r"[（(][^）)]{0,10}(?:doge|狗头|笑|手动|滑稽|哭|捂脸)[^）)]{0,5}[）)]", "", text
-    )
+    text = re.sub(r"[（(][^）)]{0,10}(?:doge|狗头|笑|手动|滑稽|哭|捂脸)[^）)]{0,5}[）)]", "", text)
     text = re.sub(r"[「」『』【】]", "", text)
     text = re.sub(r"<[^>]+>", "", text)
     text = re.sub(r"[（(]\s*[）)]", "", text)
-    
+
     # 3. 压缩重复标点
     text = re.sub(r"[，,]{2,}", "，", text)
     text = re.sub(r"[。.]{2,}", "。", text)
-    
+
     # 4. 规范化空格和换行：不要把换行符全删了
     # 先把行首行尾空格去掉
     lines = [line.strip() for line in text.split("\n")]
@@ -106,9 +103,11 @@ def _build_material_text(brief: dict[str, Any], max_stories: int = 5) -> str:
     精简版：减少 stories 数量和 snippet 长度以节省 token。
     """
     stories = brief.get("stories", [])
-    active: list[dict[str, Any]] = [s for s in stories if isinstance(s, dict) and s.get("role") != "skip"]
+    active: list[dict[str, Any]] = [
+        s for s in stories if isinstance(s, dict) and s.get("role") != "skip"
+    ]
     active.sort(key=lambda s: s.get("total_score", 0), reverse=True)
-    
+
     # Pyre is complaining about slicing a List[Dict[str, Any]]. Since we typed `active`, a simple slice shouldn't error, but let's iterate to be safe.
     top_active: list[dict[str, Any]] = []
     for i, s in enumerate(active):
@@ -119,15 +118,12 @@ def _build_material_text(brief: dict[str, Any], max_stories: int = 5) -> str:
     sections: list[str] = []
     for i, story in enumerate(top_active, 1):
         role = story.get("role", "quick")
-        role_label = {"main": "重要", "supporting": "次要", "quick": "简讯"}.get(
-            role, "简讯"
-        )
+        role_label = {"main": "重要", "supporting": "次要", "quick": "简讯"}.get(role, "简讯")
         title = story.get("representative_title", "无标题")
         context = story.get("context", {})
         summaries = context.get("factual_summary", [])
         background = context.get("historical_background", "")
         sources = context.get("sources_ranked", [])
-        items = story.get("items", [])
 
         part = f"【素材{i}】（{role_label}）\n标题：{title}\n"
 
@@ -244,13 +240,13 @@ def _call_llm(prompt: str, llm_cfg: dict[str, Any]) -> str | None:
     try:
         from openai import OpenAI
     except ImportError:
-        logger.error("缺少 openai 库，请运行 pip install openai")
+        logger.error("缺少 openai 库，请运行 uv pip install openai")
         return None
 
     # 从配置中获取目标环境变量名、URL和模型
     env_key_name = llm_cfg.get("api_key_env", "OPENAI_API_KEY")
     api_key = os.environ.get(env_key_name, "").strip()
-    
+
     if not api_key:
         logger.error(f"未找到对应的环境变量 {env_key_name} 用于 API 鉴权。请在 .env 中设置。")
         return None
@@ -258,7 +254,7 @@ def _call_llm(prompt: str, llm_cfg: dict[str, Any]) -> str | None:
     model_name = llm_cfg.get("model", "deepseek-chat")
     base_url = llm_cfg.get("base_url")
     timeout = llm_cfg.get("timeout", 60)
-    
+
     # 构造客户端
     client = OpenAI(
         api_key=api_key,
@@ -269,21 +265,23 @@ def _call_llm(prompt: str, llm_cfg: dict[str, Any]) -> str | None:
     max_retries = 3
     for attempt in range(max_retries):
         try:
-            logger.info("发起 LLM 调用 (模型: %s, 节点: %s)", model_name, base_url or "官方 OpenAI")
+            logger.info(
+                "发起 LLM 调用 (模型: %s, 节点: %s)",
+                model_name,
+                base_url or "官方 OpenAI",
+            )
             response = client.chat.completions.create(
                 model=model_name,
-                messages=[
-                    {"role": "user", "content": prompt}
-                ],
+                messages=[{"role": "user", "content": prompt}],
                 temperature=llm_cfg.get("temperature", 0.7),
                 max_tokens=llm_cfg.get("max_output_tokens", 2048),
             )
-            
+
             text = response.choices[0].message.content
             if text:
                 logger.info("LLM 调用成功，返回 %d 字符", len(text))
                 return text.strip()
-                
+
         except Exception as e:
             logger.warning("LLM 调用失败 (第 %d 次重试): %s", attempt + 1, e)
             time.sleep((attempt + 1) * 2)
@@ -303,11 +301,15 @@ def _build_fallback(
 ) -> str:
     """无 LLM 时的极简双人对谈兜底脚本。"""
     stories = brief.get("stories", [])
-    active: list[dict[str, Any]] = [s for s in stories if isinstance(s, dict) and s.get("role") != "skip"]
+    active: list[dict[str, Any]] = [
+        s for s in stories if isinstance(s, dict) and s.get("role") != "skip"
+    ]
 
     lines: list[str] = []
-    lines.append(f"[Host A] 听众朋友们好，欢迎收听{podcast_title}，今天大家过得怎么样？今天是{_cn_date(episode_date)}。")
-    lines.append(f"[Host B] 大家好。今天这AI圈的瓜，那可是相当有意思。")
+    lines.append(
+        f"[Host A] 听众朋友们好，欢迎收听{podcast_title}，今天大家过得怎么样？今天是{_cn_date(episode_date)}。"
+    )
+    lines.append("[Host B] 大家好。今天这AI圈的瓜，那可是相当有意思。")
 
     for i, story in enumerate(active):
         if i >= 4:
@@ -319,16 +321,18 @@ def _build_fallback(
 
         if i == 0:
             lines.append(f"[Host A] 咱们先聊聊今天最大的头条。那就是，{title}。")
-            lines.append(f"[Host B] 哦？这个事影响很大吗？")
+            lines.append("[Host B] 哦？这个事影响很大吗？")
             lines.append(f"[Host A] 确实。简单来说，{summary}")
         else:
             lines.append(f"[Host B] 嗯，除了这个，我看到 {title} 也有新动态。")
             lines.append(f"[Host A] 没错！关于这个，主要是 {summary}")
 
-    lines.append(f"[Host B] 哇，每天都能看到新东西在冒出来。")
-    lines.append(f"[Host A] 科技变化就是快，那以上就是今天的 AI 重点资讯。感谢各位收听，咱们明天见！")
-    lines.append(f"[Host B] 拜拜！")
-    
+    lines.append("[Host B] 哇，每天都能看到新东西在冒出来。")
+    lines.append(
+        "[Host A] 科技变化就是快，那以上就是今天的 AI 重点资讯。感谢各位收听，咱们明天见！"
+    )
+    lines.append("[Host B] 拜拜！")
+
     return "\n".join(lines) + "\n"
 
 
@@ -366,12 +370,14 @@ def generate_script(
         # --- Node 1: Editor ---
         editor_prompt = _build_editor_prompt(material, episode_date)
         raw_editor = _call_llm(editor_prompt, llm_cfg)
-        
+
         if raw_editor:
             logger.info("Editor Agent 生成大纲成功，准备注入 Writer 节点")
             # --- Node 2: Writer ---
             writer_prompt = _build_writer_prompt(raw_editor, episode_date, podcast_title, style_cfg)
-            raw_writer = _call_llm(writer_prompt, dict(llm_cfg, temperature=0.85)) # 稍微提高Writer的temperature增加活泼度
+            raw_writer = _call_llm(
+                writer_prompt, dict(llm_cfg, temperature=0.85)
+            )  # 稍微提高Writer的temperature增加活泼度
             if raw_writer:
                 script = raw_writer
                 mode_used = "Multi-Agent"
@@ -398,16 +404,16 @@ def generate_script(
     host_a_count = script.count("[Host A]")
     host_b_count = script.count("[Host B]")
     total_turns = host_a_count + host_b_count
-    
+
     if host_a_count == 0 or host_b_count == 0:
         warnings.append("生成剧本未严格包含 [Host A] 和 [Host B] 双人对谈标记")
-    
+
     logger.info(
         "双人剧本生成完毕 (Mode: %s), 对话回合数: %d 轮 (A:%d, B:%d)",
         mode_used,
         total_turns,
         host_a_count,
-        host_b_count
+        host_b_count,
     )
     return script, warnings
 
@@ -421,16 +427,16 @@ def _normalize_host_tags(text: str) -> str:
         line = line.strip()
         if not line:
             continue
-        # 宽泛匹配，防止大模型加了一些冒号或者空格: [Host A]: 或者 Host A: 
+        # 宽泛匹配，防止大模型加了一些冒号或者空格: [Host A]: 或者 Host A:
         line = re.sub(r"^\[?Host\s*A\]?:?\s*", "[Host A] ", line, flags=re.IGNORECASE)
         line = re.sub(r"^\[?Host\s*B\]?:?\s*", "[Host B] ", line, flags=re.IGNORECASE)
-        
+
         # 移除段首原本系统的 mood 标记残留
         line = re.sub(r"\[mood:\w+\]\s*", "", line)
-        
+
         # 如果依然没有包含标准的前缀，强行挂给 Host A 作为过渡，避免 TTS 崩溃
         if not line.startswith("[Host A]") and not line.startswith("[Host B]"):
-             line = f"[Host A] {line}"
+            line = f"[Host A] {line}"
 
         if line.strip():
             result.append(line)
@@ -475,7 +481,6 @@ def generate_show_notes(
         lines.append("")
         for story in role_stories:
             title = story.get("representative_title", "")
-            items = story.get("items", [])
             context = story.get("context", {})
             summaries = context.get("factual_summary", [])
             total = story.get("total_score", 0)
@@ -486,10 +491,10 @@ def generate_show_notes(
                 for s in summaries:
                     lines.append(f"- {s}")
                 lines.append("")
-            if items:
+            if story.get("items"):
                 lines.append("**来源链接：**")
                 lines.append("")
-                for item in items[:5]:
+                for item in story.get("items", [])[:5]:
                     name = item.get("source_name", "")
                     link = item.get("link", "")
                     lines.append(f"- [{name}]({link})")
@@ -524,11 +529,10 @@ def generate_show_notes_html(
     items_html: list[str] = []
     for story in active:
         title = _esc(story.get("representative_title", ""))
-        story_items = story.get("items", [])
         role_emoji = story.get("role_emoji", "")
-        if story_items:
-            link = story_items[0].get("link", "")
-            source = _esc(story_items[0].get("source_name", ""))
+        if story.get("items"):
+            link = story.get("items", [])[0].get("link", "")
+            source = _esc(story.get("items", [])[0].get("source_name", ""))
             items_html.append(
                 f'<li>{role_emoji} <a href="{link}">{title}</a> <small>({source})</small></li>'
             )

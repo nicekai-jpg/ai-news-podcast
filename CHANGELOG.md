@@ -16,6 +16,5 @@
 - **命令行执行工具：** 
   - `run_daily.py`：项目的主自动化流水线执行入口。
   - `daily_report.py`：针对通用 AI 资讯的结构化 Markdown 生成工具。
-  - `daily_report_edu.py`：针对垂直领域（AI 赋能教育）的新闻简报生成器。
 - **CI/CD 自动化：** 新增了基于 GitHub Actions 的工作流 (`daily.yml`)，支持每日准时自动执行并将生成的静态内容发布于 GitHub Pages 之中。
-- **社区文档体系：** 新增了包括 `README.md`、`README.zh-CN.md`、架构说明 `ARCHITECTURE.md`、开发指南 `DEVELOPMENT.md` 以及贡献指引 `CONTRIBUTING.md` 在内的完善的开源生态文档。
+- **社区文档体系：** 新增了包括 `README.md`、`README.zh-CN.md`、`docs/architecture.md`、`docs/development.md` 以及 `docs/contributing.md` 在内的完善的开源生态文档。

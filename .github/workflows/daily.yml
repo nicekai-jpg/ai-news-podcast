@@ -28,16 +28,22 @@ jobs:
       - name: Generate episode + feed
         env:
           TZ: Asia/Shanghai
-        run: uv run python src/ai_news_podcast/cli/run_daily.py
+        run: uv run podcast-daily
 
-      - name: Commit updates
+      - name: Commit episodes index
         run: |
-          if git diff --quiet; then
-            echo "No changes"
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs data
-          git commit -m "daily: $(date -u +%F)"
-          git push
+          git add data/episodes.json
+          if git diff --cached --quiet; then
+            echo "No changes to episodes index"
+          else
+            git commit -m "daily: update episodes index $(date -u +%F) [skip ci]"
+            git push
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site

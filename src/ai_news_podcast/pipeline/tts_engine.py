@@ -8,7 +8,7 @@ import tempfile
 from dataclasses import dataclass
 from io import BytesIO
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Union, Tuple
+from typing import Any, List, Optional, Tuple, Union
 
 
 @dataclass(frozen=True)
@@ -47,13 +47,13 @@ def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
     """解析带有 [Host A] 和 [Host B] 的对话文本。"""
     marker_re = re.compile(r"\[Host\s*([AB])\]", re.IGNORECASE)
     chunks: list[DialogueChunk] = []
-    current_host = "A" # Default
+    current_host = "A"  # Default
     cursor: int = 0
 
     for m in marker_re.finditer(text):
         # Pyre string slice bypass using simple casting and indexing
         start_idx = int(m.start())
-        raw = str(text[cursor : start_idx]).strip()
+        raw = str(text[cursor:start_idx]).strip()
         if raw:
             cleaned = _clean_tts_text(raw)
             if cleaned:
@@ -69,9 +69,6 @@ def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
     return chunks
 
 
-
-
-
 def _chunk_silence_ms(chunk_silence_ms: int) -> int:
     base = max(400, min(800, int(chunk_silence_ms)))
     low = max(400, base - 100)
@@ -83,32 +80,33 @@ def _mix_bgm(vocal_segment: Any, bgm_path: Optional[str]) -> Any:
     """Mix vocal track with background music using basic ducking."""
     pydub = importlib.import_module("pydub")
     AudioSegment = getattr(pydub, "AudioSegment")
-    
+
     if not bgm_path or not Path(bgm_path).exists():
         return vocal_segment
 
     bgm = AudioSegment.from_file(bgm_path)
-    
+
     # 调整 BGM：使其和人声一样长，甚至更长一点用于淡出
     vocal_len = len(vocal_segment)
     if len(bgm) < vocal_len + 3000:
         # Loop bgm
         loops = (vocal_len + 3000) // len(bgm) + 1
         bgm = bgm * loops
-    
-    bgm = bgm[:vocal_len + 3000] # 给结尾留3秒尾奏
-    
+
+    bgm = bgm[: vocal_len + 3000]  # 给结尾留3秒尾奏
+
     # 基础音量调节
     bgm = bgm - 12  # 基本降低 BGM 音量，使其成为垫乐
-    
+
     # 将 BGM 在两秒内淡入
     bgm = bgm.fade_in(2000).fade_out(3000)
-    
+
     # Overlay vocals on to BGM (1秒后开始播报，给BGM一个前奏)
     vocal_padded = AudioSegment.silent(duration=1000) + vocal_segment
     # 对整体进行混音
     combined = bgm.overlay(vocal_padded)
     return combined
+
 
 async def _run_loudnorm(input_path: Path, output_path: Path) -> None:
     ffmpeg_bin = shutil.which("ffmpeg")
@@ -143,7 +141,7 @@ async def synthesize_edge_tts(
     *,
     bgm_path: Optional[str] = None,
     volume: str = "+0%",
-    rate: str = "+15%",     # News broadcast usually faster
+    rate: str = "+15%",  # News broadcast usually faster
 ) -> None:
     edge_tts = importlib.import_module("edge_tts")
     pydub = importlib.import_module("pydub")
@@ -229,9 +227,6 @@ def _to_audio_segment_from_cosy_output(result: Any, sample_rate: int = 24000) ->
     raise TypeError("Unsupported CosyVoice output type for audio concatenation")
 
 
-
-
-
 async def synthesize(
     text: str,
     *,
@@ -257,4 +252,6 @@ async def synthesize(
         )
         return
 
-    raise ValueError(f"Unsupported TTS backend: {backend}. Dual-voice engine currently supports only edge-tts natively.")
+    raise ValueError(
+        f"Unsupported TTS backend: {backend}. Dual-voice engine currently supports only edge-tts natively."
+    )
