@@ -1,4 +1,4 @@
-.PHONY: help install lint format check test clean build docker
+.PHONY: help install lint format check test clean build
 
 help: ## 显示可用命令
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -24,15 +24,6 @@ daily: ## 生成一期播客（本地测试）
 
 report: ## 生成 Markdown 日报
 	uv run podcast-report
-
-docker-build: ## 构建 Docker 镜像
-	docker compose build
-
-docker-up: ## 启动 Docker 服务
-	docker compose up -d
-
-docker-down: ## 停止 Docker 服务
-	docker compose down
 
 clean: ## 清理缓存和生成文件
 	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true

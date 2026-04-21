@@ -383,7 +383,7 @@ output/2026-02-20/show_notes.html
 ## 第五阶段：发布与分发
 
 - 更新 `feed.xml`（保留最近 30 期）
-- 托管：GitHub Pages（`gh-pages` 分支）或 VPS（nginx）
+- 托管：GitHub Pages（`gh-pages` 分支）
 - 订阅地址：`https://<domain>/feed.xml`
 - 调度：GitHub Actions 定时（北京 08:30）或 VPS cron
 
