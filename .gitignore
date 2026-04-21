@@ -1,9 +1,42 @@
+# macOS
 .DS_Store
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
 .venv/
+venv/
 .env
 .python-version
 
+# Cache
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.dmypy.json
+
+# Generated data (intermediate artifacts)
+data/brief_*.json
+data/test_tts.mp3
+data/v2_test_output.mp3
+scripts/*.mp3
+scripts/*.html
+
+# Generated site (deployed to gh-pages branch)
+site/
+
 # Local runs
 out/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

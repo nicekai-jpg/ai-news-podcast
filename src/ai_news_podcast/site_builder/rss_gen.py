@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 from email.utils import format_datetime
 from typing import Any
 
+
 def build_feed_xml(
     *,
     base_url: str,
@@ -26,13 +27,9 @@ def build_feed_xml(
     ET.SubElement(channel, "link").text = base_url + "/"
     ET.SubElement(channel, "description").text = podcast_description
     ET.SubElement(channel, "language").text = podcast_language
-    ET.SubElement(channel, "lastBuildDate").text = format_datetime(
-        datetime.now(tz=timezone.utc)
-    )
+    ET.SubElement(channel, "lastBuildDate").text = format_datetime(datetime.now(tz=timezone.utc))
     ET.SubElement(channel, f"{{{ns_itunes}}}author").text = podcast_author
-    ET.SubElement(channel, f"{{{ns_itunes}}}explicit").text = (
-        "yes" if podcast_explicit else "no"
-    )
+    ET.SubElement(channel, f"{{{ns_itunes}}}explicit").text = "yes" if podcast_explicit else "no"
     ET.SubElement(channel, f"{{{ns_itunes}}}category", {"text": podcast_category})
     ET.SubElement(channel, f"{{{ns_itunes}}}image", {"href": base_url + "/logo.png"})
     ET.SubElement(

@@ -1,7 +1,36 @@
-.DS_Store
+# Git / CI
 .git/
 .github/
+.gitignore
+
+# Environments
+.env
+.env.example
 .venv/
+
+# Python cache
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+
+# Cache / IDE
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.DS_Store
+.idea/
+.vscode/
+
+# Generated / runtime
+site/
+data/
 out/
+scripts/
+tests/
+
+# Docs
+docs/
+CHANGELOG.md
+LICENSE
+Makefile
+README*.md

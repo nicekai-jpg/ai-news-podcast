@@ -16,7 +16,7 @@
 3. 提交您的修改。
 
 ### 2. 遵循开发者指南
-请参阅我们的 [`DEVELOPMENT.md`](DEVELOPMENT.md) 获取关于设置本地环境（使用 `uv`）、理解项目结构以及运行测试的详细说明。
+请参阅我们的 [开发指南](development.md) 获取关于设置本地环境（使用 `uv`）、理解项目结构以及运行测试的详细说明。
 
 ### 3. 提交您的修改
 拉取请求 (Pull Request) 需要附带一个描述清晰的提交信息：
@@ -29,7 +29,7 @@ git commit -m "feat: 增加了一个全新的 AI 调研类 RSS 订阅源"
 2. 提交 Pull Request。请在 PR 描述中详细说明您的修改内容，并关联任何相关的 Issue 编号。
 
 ## 添加新的 RSS 新闻源
-如果您准备向 `config/sources.yaml` 或 `config/sources_edu.yaml` 中添加全新的新闻源（Feeds）：
+如果您准备向 `config/sources.yaml` 中添加全新的新闻源（Feeds）：
 - 请确保该源是稳定且仍在积极维护的。
 - 尽量选择那些能提供全文输出，或至少能提供详细摘要的 RSS 源。
 - 添加后，请运行 `uv run pytest` 以确保该数据源的格式没有破坏现有的 RSS 解析器的逻辑。

@@ -126,6 +126,6 @@ llm:
   timeout: 60
 
 build:
-  site_dir: "docs"
-  episodes_dir: "docs/episodes"
+  site_dir: "site"
+  episodes_dir: "site/episodes"
   episodes_index: "data/episodes.json"

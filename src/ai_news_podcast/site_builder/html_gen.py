@@ -1,9 +1,11 @@
 from pathlib import Path
 from typing import Any
 
+
 def _write_text(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
+
 
 def build_index_html(
     site_dir: Path,
@@ -47,13 +49,9 @@ def build_index_html(
             f"</article>"
         )
 
-    cards_html = (
-        "\n".join(ep_cards)
-        if ep_cards
-        else '<p class="empty">暂无节目，请稍后再来。</p>'
-    )
+    cards_html = "\n".join(ep_cards) if ep_cards else '<p class="empty">暂无节目，请稍后再来。</p>'
 
-    html_template = '''<!doctype html>
+    html_template = """<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -123,7 +121,7 @@ def build_index_html(
     .btn-primary:hover { background: #7c3aed; transform: translateY(-2px); }
     .btn-outline { background: var(--surface); border: 1px solid var(--border); color: var(--text); }
     .btn-outline:hover { background: var(--surface-hover); border-color: var(--text-muted); }
-    
+
     .section-title {
       font-size: 1.5rem; font-weight: 600; margin-bottom: 32px; padding-bottom: 12px;
       border-bottom: 1px solid var(--border); text-align: center; color: var(--text);
@@ -143,7 +141,7 @@ def build_index_html(
     .ep-links { display: flex; gap: 20px; }
     .ep-links a { font-size: 0.9rem; color: var(--accent-light); text-decoration: none; font-weight: 500; transition: opacity .2s; }
     .ep-links a:hover { opacity: .8; text-decoration: underline; }
-    
+
     .empty { text-align: center; color: var(--text-muted); padding: 60px 20px; font-size: 1.05rem; }
     .footer { margin-top: 60px; padding: 40px 20px; text-align: center; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border); }
     .footer a { color: var(--accent-light); text-decoration: none; }
@@ -174,7 +172,7 @@ def build_index_html(
     </div>
   </div>
 </body>
-</html>'''
+</html>"""
 
     html = (
         html_template.replace("{podcast_title}", str(podcast_title))

@@ -10,7 +10,6 @@ This repository generates a daily AI news podcast episode (MP3), daily text repo
 - **Text-to-Speech**: Synthesizes audio using Edge TTS and mixes it with background music.
 - **Automation**: GitHub Actions (`.github/workflows/daily.yml`) runs daily to commit updates.
 - **Hosting**: GitHub Pages serves the podcast `feed.xml` and HTML/audio assets.
-- **Specialized Reports**: Includes scripts for general daily AI reports and specialized AI-in-Education reports.
 
 ## Local Setup
 
@@ -31,11 +30,6 @@ cd ai-news-podcast
 uv sync
 ```
 
-Alternatively, use standard pip:
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
 ```
 
 ### 3. Running the Sub-Commands
@@ -43,32 +37,26 @@ pip install -r requirements.txt
 **A. Generate Podcast (MP3 + RSS)**
 This is the main script that pulls news, generates a script via LLM, synthesizes audio with Edge-TTS, and updates the site/RSS feed.
 ```bash
-uv run python -m ai_news_podcast.cli.run_daily --base-url http://localhost
+uv run podcast-daily --base-url http://localhost
 ```
 *Note: Add `--no-audio` if you cannot connect to Edge-TTS or only want the text script.*
 
-**B. Generate Markdown Text Report (General AI)**
+**B. Generate Markdown Text Report**
 Generates a markdown text report directly targeting local Ollama models (default model: `qwen3.5:27b`).
 ```bash
-uv run python -m ai_news_podcast.cli.daily_report
-```
-
-**C. Generate Markdown Text Report (AI in Education)**
-Uses a specialized configuration (`config_edu.yaml`, `sources_edu.yaml`) to output a daily AI in Education report.
-```bash
-uv run python -m ai_news_podcast.cli.daily_report_edu
+uv run podcast-report
 ```
 
 ## Configuration Files
 The project logic is controlled by files in the `config/` directory:
-- `config.yaml` / `config_edu.yaml`: Core settings for LLM prompts, TTS voices, and scraping limits.
-- `sources.yaml` / `sources_edu.yaml`: List of RSS/Atom feeds to fetch news from. Include or disable specific sources here.
+- `config.yaml`: Core settings for LLM prompts, TTS voices, and scraping limits.
+- `sources.yaml`: List of RSS/Atom feeds to fetch news from. Include or disable specific sources here.
 
 ## GitHub Pages Deployment
 1. Push this repository to GitHub.
 2. Go to **Settings** -> **Pages**.
 3. Under **Build and deployment**, select **Deploy from a branch**.
-4. Choose the `main` branch and the `/docs` folder.
+4. Choose the `gh-pages` branch and the `/ (root)` folder.
 5. Your Podcast RSS URL will be: `https://<your-username>.github.io/<repo-name>/feed.xml`
 
 Subscribe to this URL in your favorite podcast app!

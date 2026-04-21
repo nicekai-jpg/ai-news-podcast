@@ -1,5 +1,14 @@
 # AI 新闻播客完整生产计划
 
+> **⚠️ 本文档为项目初始设计文档，记录 MVP 阶段的设计思路与技术选型。实际代码实现可能与本文档存在差异，请以最新源码为准。**
+>
+> 与实际代码的主要差异：
+> - **输出路径**：实际输出到 `site/episodes/`，而非 `output/`
+> - **TTS 引擎**：当前版本仅使用 `edge-tts`，CosyVoice / ChatTTS 等方案暂未接入
+> - **脚本生成**：实际使用 LLM（OpenAI / Gemini / Ollama）生成脚本，而非纯规则拼装
+> - **数据结构**：`episode_brief.json` 的字段命名与本文档略有不同（如 `factual_summary` 而非 `factual_summary_3s`）
+> - **教育日报功能**：已于后续版本中移除
+>
 > 定位：单人主播叙事独白 · 每天 1 期 · 每期 3–5 条新闻 · 8–15 分钟 · 受众：AI 爱好者
 > MVP 不依赖付费 API，可在本地/VPS/GitHub Actions 跑通全链路
 
@@ -374,7 +383,7 @@ output/2026-02-20/show_notes.html
 ## 第五阶段：发布与分发
 
 - 更新 `feed.xml`（保留最近 30 期）
-- 托管：GitHub Pages（`docs/`）或 VPS（nginx）
+- 托管：GitHub Pages（`gh-pages` 分支）或 VPS（nginx）
 - 订阅地址：`https://<domain>/feed.xml`
 - 调度：GitHub Actions 定时（北京 08:30）或 VPS cron
 

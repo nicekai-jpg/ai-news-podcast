@@ -1,5 +1,7 @@
 import os
+
 from google import genai
+
 
 def list_models():
     api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
@@ -16,5 +18,11 @@ def list_models():
     except Exception as e:
         print(f"Failed to list models: {e}")
 
-if __name__ == "__main__":
+
+def entrypoint() -> None:
+    """Synchronous entrypoint for console_scripts."""
     list_models()
+
+
+if __name__ == "__main__":
+    entrypoint()

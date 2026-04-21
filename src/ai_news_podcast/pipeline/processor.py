@@ -9,13 +9,11 @@ from __future__ import annotations
 import json
 import logging
 import re
-from dataclasses import asdict, dataclass, field
-from datetime import datetime, timedelta, timezone
+from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-import jieba
-import numpy as np
 from rapidfuzz import fuzz
 from sklearn.cluster import DBSCAN
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -160,9 +158,7 @@ def dedup_pipeline(
 ) -> list[RawItem]:
     """三层去重管线。"""
     items = _dedup_url(items)
-    items = _dedup_title_fuzzy(
-        items, threshold=rapidfuzz_threshold, window_hours=window_hours
-    )
+    items = _dedup_title_fuzzy(items, threshold=rapidfuzz_threshold, window_hours=window_hours)
     items = _dedup_keyword_overlap(
         items, overlap_threshold=jieba_overlap, title_sim_threshold=title_sim
     )
@@ -190,11 +186,7 @@ def cluster_stories(
 ) -> list[Cluster]:
     """TF-IDF char n-gram + DBSCAN(cosine) 聚类。"""
     if len(items) < 2:
-        return (
-            [Cluster(cluster_id=0, items=items, representative=items[0])]
-            if items
-            else []
-        )
+        return [Cluster(cluster_id=0, items=items, representative=items[0])] if items else []
 
     texts = [f"{it.title} {it.summary}" for it in items]
     vectorizer = TfidfVectorizer(
@@ -223,9 +215,7 @@ def cluster_stories(
         cluster_items = [items[i] for i in indices]
         # 选全文最长的作为代表
         representative = max(cluster_items, key=lambda x: len(x.full_text_snippet))
-        clusters.append(
-            Cluster(cluster_id=cid, items=cluster_items, representative=representative)
-        )
+        clusters.append(Cluster(cluster_id=cid, items=cluster_items, representative=representative))
 
     logger.info("Clustered %d items → %d clusters", len(items), len(clusters))
     return clusters
@@ -349,9 +339,7 @@ def _score_cluster(cluster: Cluster) -> dict[str, int]:
     relevance_kws = ("大模型", "llm", "chatgpt", "claude", "gpt", "agent", "智能体")
     has_relevance = any(k in text for k in relevance_kws)
     relevance = (
-        3
-        if (zh_count > 0 and has_relevance)
-        else (2 if has_relevance or zh_count > 0 else 1)
+        3 if (zh_count > 0 and has_relevance) else (2 if has_relevance or zh_count > 0 else 1)
     )
 
     # source_richness
@@ -380,7 +368,6 @@ def _assign_role(total: int, thresholds: dict[str, Any]) -> tuple[str, str]:
     main_range = thresholds.get("main", [12, 15])
     supporting_range = thresholds.get("supporting", [8, 11])
     quick_range = thresholds.get("quick", [5, 7])
-    skip_below = thresholds.get("skip_below", 5)
 
     if total >= main_range[0]:
         return "main", "🔴"

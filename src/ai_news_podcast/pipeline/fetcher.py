@@ -13,7 +13,7 @@ import importlib
 import logging
 import re
 import time
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from typing import Any
 from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
@@ -40,9 +40,7 @@ class RawItem:
     link: str
     normalized_link: str
     source_name: str
-    source_category: (
-        str  # official / research / news / product / analysis / tools / events / other
-    )
+    source_category: str  # official / research / news / product / analysis / tools / events / other
     published_at: str  # RFC 3339
     summary: str
     full_text_snippet: str  # 1200‑2000 chars
@@ -77,9 +75,7 @@ def normalize_url(url: str) -> str:
     query = urlencode(cleaned, doseq=True) if cleaned else ""
     # 去尾斜杠
     path = parsed.path.rstrip("/") or ""
-    normalized = urlunparse(
-        (scheme, parsed.netloc.lower(), path, parsed.params, query, "")
-    )
+    normalized = urlunparse((scheme, parsed.netloc.lower(), path, parsed.params, query, ""))
     return normalized
 
 
@@ -92,9 +88,7 @@ def _item_id(normalized_link: str) -> str:
 # ---------------------------------------------------------------------------
 
 
-def _extract_fulltext(
-    html: str, url: str, *, min_chars: int = 1200, max_chars: int = 2000
-) -> str:
+def _extract_fulltext(html: str, url: str, *, min_chars: int = 1200, max_chars: int = 2000) -> str:
     """优先 trafilatura，不足 min_chars 时 fallback readability‑lxml。"""
     text = ""
     # 1) trafilatura
@@ -148,7 +142,15 @@ def _parse_dt(entry: Any) -> datetime:
     for key in ("published_parsed", "updated_parsed", "created_parsed"):
         parsed = getattr(entry, key, None)
         if isinstance(parsed, tuple) and len(parsed) >= 6:
-            return datetime(parsed[0], parsed[1], parsed[2], parsed[3], parsed[4], parsed[5], tzinfo=timezone.utc)
+            return datetime(
+                parsed[0],
+                parsed[1],
+                parsed[2],
+                parsed[3],
+                parsed[4],
+                parsed[5],
+                tzinfo=timezone.utc,
+            )
     return datetime.now(tz=timezone.utc)
 
 
@@ -324,7 +326,7 @@ async def _fetch_one_feed(
             getattr(entry, "description", "") or ""
         )
         summary = _strip_html(summary_raw)
-        
+
         # 如果是垃圾摘要，清空它以便后续逻辑强制尝试抓取正文
         if _is_junk_summary(summary):
             logger.debug("Detected junk summary for %s, will try to fetch full text", link)
@@ -339,18 +341,16 @@ async def _fetch_one_feed(
         if pages_counter[0] < max_pages or not summary:
             try:
                 page_resp = await _http_get(client, link, throttle)
-                if not summary: # 只有没摘要时才增加计数，避免浪费配额
+                if not summary:  # 只有没摘要时才增加计数，避免浪费配额
                     pages_counter[0] += 1
-                full_text = _extract_fulltext(
-                    page_resp.text, link, min_chars=1200, max_chars=2000
-                )
+                full_text = _extract_fulltext(page_resp.text, link, min_chars=1200, max_chars=2000)
             except Exception:
                 logger.debug("Full-text fetch failed: %s", link)
 
         # 用 summary 兜底
         if not full_text:
             full_text = summary[:2000] if summary else ""
-        
+
         # 如果连正文也没抓到，且摘要是空的，这条新闻就没意义了
         if not full_text and not summary:
             continue
@@ -421,7 +421,9 @@ async def fetch_all(
         tasks = [asyncio.create_task(_guarded(src)) for src in enabled]
         try:
             # Enforce an absolute maximum of 10 minutes (600 seconds) for fetching all pages
-            results = await asyncio.wait_for(asyncio.gather(*tasks, return_exceptions=True), timeout=600.0)
+            results = await asyncio.wait_for(
+                asyncio.gather(*tasks, return_exceptions=True), timeout=600.0
+            )
         except asyncio.TimeoutError:
             logger.error("Fetch all exactly hit 10 minute timeout limit. Aborting remainder.")
             # Gather any tasks that may have finished but returned before the timeout

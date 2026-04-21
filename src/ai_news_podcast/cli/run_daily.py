@@ -2,61 +2,26 @@
 
 import argparse
 import asyncio
-import json
 import logging
 import os
 import re
-import importlib
 from datetime import datetime, timezone
 from email.utils import format_datetime
 from pathlib import Path
 from typing import Any, Optional
 
-import sys
-sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-
-from ai_news_podcast.pipeline.tts_engine import synthesize
 from ai_news_podcast.pipeline.fetcher import fetch_all
 from ai_news_podcast.pipeline.processor import process, save_brief
 from ai_news_podcast.pipeline.scriptwriter import (
     generate_script,
     generate_show_notes_html,
 )
+from ai_news_podcast.pipeline.tts_engine import synthesize
 from ai_news_podcast.site_builder.html_gen import build_index_html
 from ai_news_podcast.site_builder.rss_gen import build_feed_xml
+from ai_news_podcast.utils import load_sources, read_json, read_yaml, write_json, write_text
 
 log = logging.getLogger("run_daily")
-
-
-def _read_yaml(path: Path) -> dict[str, Any]:
-    yaml = importlib.import_module("yaml")
-    with path.open("r", encoding="utf-8") as f:
-        data = yaml.safe_load(f)
-    if not isinstance(data, dict):
-        raise ValueError(f"Invalid YAML object at {path}")
-    return data
-
-
-def _read_json(path: Path) -> Any:
-    if not path.exists():
-        return []
-    with path.open("r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def _write_json(path: Path, data: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-        f.write("\n")
-
-
-def _write_text(path: Path, text: str) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(text, encoding="utf-8")
-
-
-
 
 
 def _get_base_url(cfg: dict[str, Any], cli_base_url: Optional[str]) -> str:
@@ -76,21 +41,6 @@ def _get_base_url(cfg: dict[str, Any], cli_base_url: Optional[str]) -> str:
             return f"https://{owner}.github.io".rstrip("/")
         return f"https://{owner}.github.io/{repo}".rstrip("/")
     return "http://localhost"
-
-
-
-
-
-def _load_sources(sources_path: Path) -> list[dict[str, Any]]:
-    data = _read_yaml(sources_path)
-    sources = data.get("sources")
-    if not isinstance(sources, list):
-        raise ValueError("sources.yaml must contain a 'sources' list")
-    out: list[dict[str, Any]] = []
-    for src in sources:
-        if isinstance(src, dict):
-            out.append(src)
-    return out
 
 
 def _episode_id(day: datetime) -> str:
@@ -120,12 +70,12 @@ def _prune_episodes(
             return datetime(1970, 1, 1, tzinfo=timezone.utc)
 
     sorted_eps = sorted(episodes, key=parse_pubdate, reverse=True)
-    
+
     keep: list[dict[str, Any]] = []
     for i, ep in enumerate(sorted_eps):
         if i < keep_last:
             keep.append(ep)
-            
+
     keep_ids = {str(ep.get("id") or "") for ep in keep}
 
     for i, ep in enumerate(sorted_eps):
@@ -162,8 +112,8 @@ async def main() -> int:
     args = ap.parse_args()
 
     root = Path(__file__).resolve().parents[3]
-    cfg = _read_yaml(root / args.config)
-    sources = _load_sources(root / args.sources)
+    cfg = read_yaml(root / args.config)
+    sources = load_sources(root / args.sources)
 
     podcast_cfg = cfg.get("podcast", {})
     tts_cfg = cfg.get("tts", {})
@@ -172,8 +122,8 @@ async def main() -> int:
     script_cfg = cfg.get("script", {})
     build_cfg = cfg.get("build", {})
 
-    site_dir = root / str(build_cfg.get("site_dir") or "docs")
-    episodes_dir = root / str(build_cfg.get("episodes_dir") or "docs/episodes")
+    site_dir = root / str(build_cfg.get("site_dir") or "site")
+    episodes_dir = root / str(build_cfg.get("episodes_dir") or "site/episodes")
     episodes_index = root / str(build_cfg.get("episodes_index") or "data/episodes.json")
 
     now = datetime.now(tz=timezone.utc)
@@ -260,13 +210,11 @@ async def main() -> int:
     transcript_path = episodes_dir / f"{episode_id}.txt"
 
     clean_transcript = re.sub(r"\[mood:[a-zA-Z0-9_-]+\]\s*", "", script_text)
-    clean_transcript = re.sub(
-        r"\[(?:FACT|INFERENCE|OPINION)\]\s*", "", clean_transcript
-    )
+    clean_transcript = re.sub(r"\[(?:FACT|INFERENCE|OPINION)\]\s*", "", clean_transcript)
     # Fix literal string representation "\n" replacing to actual new lines
     clean_transcript = clean_transcript.replace("\\n", "\n")
     clean_transcript = re.sub(r"\n{3,}", "\n\n", clean_transcript).strip() + "\n"
-    _write_text(transcript_path, clean_transcript)
+    write_text(transcript_path, clean_transcript)
     log.info("Transcript saved: %s (%d chars)", transcript_path, len(clean_transcript))
 
     # ── Stage 4: TTS ──
@@ -289,10 +237,8 @@ async def main() -> int:
 
     # ── Stage 5: Publish ──
     log.info("Stage 5: publishing …")
-    notes_html = generate_show_notes_html(
-        brief, episode_title=episode_title, episode_date=day
-    )
-    _write_text(notes_path, notes_html)
+    notes_html = generate_show_notes_html(brief, episode_title=episode_title, episode_date=day)
+    write_text(notes_path, notes_html)
 
     stories = brief.get("stories", [])
     show_desc_lines = [
@@ -303,20 +249,12 @@ async def main() -> int:
         if s.get("role") == "skip":
             continue
         raw_title = s.get("representative_title") or s.get("title") or ""
-        safe_title = (
-            str(raw_title)
-            .replace("&", "&amp;")
-            .replace("<", "&lt;")
-            .replace(">", "&gt;")
-        )
+        safe_title = str(raw_title).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
         items = s.get("items") or []
         first_item = items[0] if items else {}
         raw_source = first_item.get("source_name") or s.get("source_name") or ""
         safe_source = (
-            str(raw_source)
-            .replace("&", "&amp;")
-            .replace("<", "&lt;")
-            .replace(">", "&gt;")
+            str(raw_source).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
         )
         link = str(first_item.get("link") or s.get("link") or "")
         role_emoji = s.get("role_emoji", "")
@@ -338,7 +276,7 @@ async def main() -> int:
     pub_date_rfc = format_datetime(now)
     guid = f"{base_url}/episodes/{episode_id}"
 
-    existing = _coerce_episode_list(_read_json(episodes_index))
+    existing = _coerce_episode_list(read_json(episodes_index))
     existing = [ep for ep in existing if str(ep.get("id") or "") != episode_id]
     existing.append(
         {
@@ -355,7 +293,7 @@ async def main() -> int:
     )
 
     pruned = _prune_episodes(existing, keep_last=keep_last, episodes_dir=episodes_dir)
-    _write_json(episodes_index, pruned)
+    write_json(episodes_index, pruned)
 
     sorted_eps = sorted(
         pruned,
@@ -375,12 +313,17 @@ async def main() -> int:
         podcast_explicit=podcast_explicit,
         episodes=sorted_eps,
     )
-    _write_text(site_dir / "feed.xml", feed_xml)
+    write_text(site_dir / "feed.xml", feed_xml)
     build_index_html(site_dir, podcast_title, sorted_eps, base_url)
 
     log.info("Episode %s published successfully", episode_id)
     return 0
 
 
+def entrypoint() -> int:
+    """Synchronous entrypoint for console_scripts."""
+    return asyncio.run(main())
+
+
 if __name__ == "__main__":
-    raise SystemExit(asyncio.run(main()))
+    raise SystemExit(entrypoint())
