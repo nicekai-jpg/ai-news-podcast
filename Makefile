@@ -18,6 +18,9 @@ fix: ## 自动修复代码问题
 lock: ## 更新依赖锁定文件
 	uv lock
 
+test: ## 运行测试
+	uv run pytest tests/ -v
+
 
 daily: ## 生成一期播客（本地测试）
 	uv run podcast-daily --base-url http://localhost

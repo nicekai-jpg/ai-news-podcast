@@ -37,6 +37,9 @@ podcast-list-models = "ai_news_podcast.cli.list_models:entrypoint"
 [dependency-groups]
 dev = [
     "ruff>=0.15.11",
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=7.1.0",
 ]
 
 [tool.ruff]
@@ -54,8 +57,10 @@ ignore = [
     "E501",  # Line too long (handled by formatter)
 ]
 
-[tool.ruff.lint.pydocstyle]
-convention = "google"
+# pydocstyle (D) rules are not enabled in select, so this has no effect.
+# Uncomment the next line and add "D" to select if you want docstring checks.
+# [tool.ruff.lint.pydocstyle]
+# convention = "google"
 
 [tool.ruff.format]
 quote-style = "double"
