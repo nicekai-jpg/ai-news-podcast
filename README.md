@@ -58,3 +58,9 @@ The project logic is controlled by files in the `config/` directory:
 5. Your Podcast RSS URL will be: `https://<your-username>.github.io/<repo-name>/feed.xml`
 
 Subscribe to this URL in your favorite podcast app!
+
+## Daily Automation Setup
+- **Configure Secret**: In your GitHub repository, go to **Settings** -> **Secrets and variables** -> **Actions**. Click **New repository secret**, name it `SPARK_API_KEY`, and paste your Xunfei Spark API key as the value.
+- The repository has a built-in GitHub Actions workflow at `.github/workflows/daily.yml`.
+- It runs automatically every day to generate the Markdown daily report and MP3 podcast episode, committing the outputs back to the repository.
+- You can also manually trigger the run under the **Actions** tab of your repository by clicking **Run workflow**.

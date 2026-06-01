@@ -25,20 +25,23 @@ jobs:
       - name: Install dependencies
         run: uv sync --frozen
 
-      - name: Generate episode + feed
+      - name: Generate episode, feed, and report
         env:
           TZ: Asia/Shanghai
-        run: uv run podcast-daily
+          SPARK_API_KEY: ${{ secrets.SPARK_API_KEY }}
+        run: |
+          uv run podcast-daily
+          uv run podcast-report
 
-      - name: Commit episodes index
+      - name: Commit generated data and reports
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/episodes.json
+          git add data/episodes.json data/reports/
           if git diff --cached --quiet; then
-            echo "No changes to episodes index"
+            echo "No changes to commit"
           else
-            git commit -m "daily: update episodes index $(date -u +%F) [skip ci]"
+            git commit -m "daily: update episodes index and reports $(date -u +%F) [skip ci]"
             git push
           fi
 
