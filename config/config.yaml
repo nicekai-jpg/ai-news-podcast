@@ -118,12 +118,12 @@ script:
 
 llm:
   provider: "openai_compatible"
-  api_key_env: "LLM_API_KEY"  # Ollama 不需要鉴权，但可以随便填一个环境变量或者留空
-  model: "qwen3.5:35b"        # 本机 Ollama 上的模型
-  base_url: "http://192.168.7.7:11434/v1" # Ollama 的 OpenAI 兼容端口
+  api_key_env: "SPARK_API_KEY"  # 讯飞星辰 MaaS Coding Plan 专属 API Key
+  model: "astron-code-latest"
+  base_url: "https://maas-coding-api.cn-huabei-1.xf-yun.com/v2"
   temperature: 0.7
-  max_output_tokens: 2048
-  timeout: 60
+  max_output_tokens: 4096       # astron-code-latest 支持的输出长度
+  timeout: 120
 
 build:
   site_dir: "site"

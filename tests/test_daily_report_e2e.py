@@ -89,10 +89,10 @@ async def test_main_success(report_config: Path, monkeypatch) -> None:
 
     monkeypatch.setattr(report_module, "fetch_all", _fake_fetch_all)
 
-    def _fake_ollama(prompt: str, model: str) -> str:
+    def _fake_llm(prompt: str, llm_cfg: dict) -> str:
         return "# Report\n\nGenerated content."
 
-    monkeypatch.setattr(report_module, "_call_llm_ollama_direct", _fake_ollama)
+    monkeypatch.setattr(report_module, "_call_llm", _fake_llm)
 
     rc = await report_module.main()
     assert rc == 0
@@ -132,7 +132,7 @@ async def test_main_fallback_when_llm_fails(report_config: Path, monkeypatch) ->
         return [raw_item]
 
     monkeypatch.setattr(report_module, "fetch_all", _fake_fetch_all)
-    monkeypatch.setattr(report_module, "_call_llm_ollama_direct", lambda p, m: None)
+    monkeypatch.setattr(report_module, "_call_llm", lambda p, cfg: None)
 
     rc = await report_module.main()
     assert rc == 0

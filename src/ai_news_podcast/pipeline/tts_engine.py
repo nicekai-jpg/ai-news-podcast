@@ -15,6 +15,7 @@ from typing import Any, List, Optional, Tuple, Union
 class DialogueChunk:
     host: str
     text: str
+    voice: Optional[str] = None
 
 
 def _clean_tts_text(text: str) -> str:
@@ -44,7 +45,32 @@ def _clean_tts_text(text: str) -> str:
 
 
 def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
-    """解析带有 [Host A] 和 [Host B] 的对话文本。"""
+    """解析对话文本，支持标准的 SSML (XML/HTML) 格式和自定义 [Host A] / [Host B] 格式。"""
+    stripped_text = text.strip()
+    if stripped_text.startswith("<speak") or "<speak" in stripped_text or "<voice" in stripped_text:
+        try:
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(text, "html.parser")
+            voice_tags = soup.find_all("voice")
+            if voice_tags:
+                chunks: list[DialogueChunk] = []
+                for idx, voice_tag in enumerate(voice_tags):
+                    voice_name = voice_tag.get("name", "").strip()
+                    chunk_text = voice_tag.get_text().strip()
+                    if chunk_text:
+                        cleaned = _clean_tts_text(chunk_text)
+                        if cleaned:
+                            host = "B" if idx % 2 == 1 else "A"
+                            chunks.append(DialogueChunk(
+                                host=host,
+                                text=cleaned,
+                                voice=voice_name if voice_name else None
+                            ))
+                if chunks:
+                    return chunks
+        except Exception:
+            pass
+
     marker_re = re.compile(r"\[Host\s*([AB])\]", re.IGNORECASE)
     chunks: list[DialogueChunk] = []
     current_host = "A"  # Default
@@ -164,7 +190,7 @@ async def synthesize_edge_tts(
         chunk_files: list[Path] = []
 
         for idx, chunk in enumerate(chunks, start=1):
-            voice = voice_map.get(chunk.host, voices[0])
+            voice = chunk.voice or voice_map.get(chunk.host, voices[0])
             # A bit of variation in pitch implicitly separates the voices, but distinct TTS models are better.
             tmp_chunk = tmp_root / f"chunk_{idx:03d}.mp3"
 
