@@ -23,16 +23,12 @@ dependencies = [
   "tenacity>=8.2",
   "trafilatura>=1.8",
   "openai>=1.0",
-  "google-generativeai>=0.8.6",
-  "google-genai>=1.64.0",
   "python-dotenv>=1.2.1",
 ]
 
 [project.scripts]
 podcast-daily = "ai_news_podcast.cli.run_daily:entrypoint"
 podcast-report = "ai_news_podcast.cli.daily_report:entrypoint"
-podcast-debug-headers = "ai_news_podcast.cli.debug_headers:entrypoint"
-podcast-list-models = "ai_news_podcast.cli.list_models:entrypoint"
 
 [dependency-groups]
 dev = [
