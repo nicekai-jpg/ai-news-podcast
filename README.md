@@ -6,7 +6,7 @@ This repository generates a daily AI news podcast episode (MP3), daily text repo
 
 ## Features
 - **RSS Fetching & Scoring**: Fetches news from curated feeds (`config/sources.yaml`) and scores them based on relevance.
-- **LLM Integration**: Uses LLMs (OpenAI, Gemini, or local models via Ollama) to summarize news and write podcast scripts or text reports.
+- **LLM Integration**: Uses LLMs (OpenAI, Gemini, or Xunfei Spark MaaS Coding Plan API) to summarize news and write podcast scripts or text reports.
 - **Text-to-Speech**: Synthesizes audio using Edge TTS and mixes it with background music.
 - **Automation**: GitHub Actions (`.github/workflows/daily.yml`) runs daily to commit updates.
 - **Hosting**: GitHub Pages serves the podcast `feed.xml` and HTML/audio assets.
@@ -17,9 +17,7 @@ This repository generates a daily AI news podcast episode (MP3), daily text repo
 Copy or create a `.env` file in the project root:
 ```env
 # Example .env configuration
-GEMINI_API_KEY="your-gemini-key"
-OPENAI_API_KEY="your-openai-key" # Works with DeepSeek, SiliconFlow, or native OpenAI
-LLM_API_KEY="ollama" # For local model deployment
+SPARK_API_KEY="your-spark-coding-plan-api-key"
 ```
 
 ### 2. Installation (using `uv`)
@@ -42,7 +40,7 @@ uv run podcast-daily --base-url http://localhost
 *Note: Add `--no-audio` if you cannot connect to Edge-TTS or only want the text script.*
 
 **B. Generate Markdown Text Report**
-Generates a markdown text report directly targeting local Ollama models (default model: `qwen3.5:27b`).
+Generates a markdown text report calling the Xunfei Spark MaaS (Astron Coding Plan) API.
 ```bash
 uv run podcast-report
 ```
