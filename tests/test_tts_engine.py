@@ -65,3 +65,19 @@ class TestParseDialogueChunks:
         text = "[Host A] Hello (doge) world"
         chunks = parse_dialogue_chunks(text)
         assert chunks[0].text == "Hello world"
+
+    def test_ssml_parsing(self) -> None:
+        text = """
+        <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
+          <voice name="zh-CN-YunxiNeural">
+            听众朋友大家好
+          </voice>
+          <voice name="zh-CN-XiaoxiaoNeural">
+            大家好，我是 B (doge)
+          </voice>
+        </speak>
+        """
+        chunks = parse_dialogue_chunks(text)
+        assert len(chunks) == 2
+        assert chunks[0] == DialogueChunk(host="A", text="听众朋友大家好", voice="zh-CN-YunxiNeural")
+        assert chunks[1] == DialogueChunk(host="B", text="大家好，我是 B", voice="zh-CN-XiaoxiaoNeural")

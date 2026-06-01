@@ -10,6 +10,13 @@ from email.utils import format_datetime
 from pathlib import Path
 from typing import Any, Optional
 
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv()
+except ImportError:
+    pass
+
 from ai_news_podcast.pipeline.fetcher import fetch_all
 from ai_news_podcast.pipeline.processor import process, save_brief
 from ai_news_podcast.pipeline.scriptwriter import (

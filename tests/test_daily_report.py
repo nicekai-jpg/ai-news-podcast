@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from unittest.mock import MagicMock, patch
 
-from ai_news_podcast.cli.daily_report import _call_llm_ollama_direct, build_report_prompt
+from ai_news_podcast.cli.daily_report import build_report_prompt
 
 
 class TestBuildReportPrompt:
@@ -64,34 +64,4 @@ class TestBuildReportPrompt:
         assert "【素材" not in prompt
 
 
-class TestCallLlmOllamaDirect:
-    def test_success(self) -> None:
-        fake_lines = [
-            b'{"message": {"content": "Hello "}}',
-            b'{"message": {"content": "world"}}',
-        ]
-        mock_resp = MagicMock()
-        mock_resp.iter_lines.return_value = fake_lines
-        mock_resp.raise_for_status = MagicMock()
 
-        with patch("requests.post", return_value=mock_resp):
-            result = _call_llm_ollama_direct("prompt", "qwen")
-        assert result == "Hello world"
-
-    def test_failure_returns_none(self) -> None:
-        with patch("requests.post", side_effect=Exception("network down")):
-            result = _call_llm_ollama_direct("prompt", "qwen")
-        assert result is None
-
-    def test_skips_malformed_json_lines(self) -> None:
-        fake_lines = [
-            b'bad json',
-            b'{"message": {"content": "OK"}}',
-        ]
-        mock_resp = MagicMock()
-        mock_resp.iter_lines.return_value = fake_lines
-        mock_resp.raise_for_status = MagicMock()
-
-        with patch("requests.post", return_value=mock_resp):
-            result = _call_llm_ollama_direct("prompt", "qwen")
-        assert result == "OK"

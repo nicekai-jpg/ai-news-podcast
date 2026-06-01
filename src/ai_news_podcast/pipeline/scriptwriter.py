@@ -71,7 +71,12 @@ def _sanitize_for_tts(text: str) -> str:
     text = re.sub(r"\[(?:FACT|INFERENCE|OPINION)\]\s*", "", text)
     text = re.sub(r"[（(][^）)]{0,10}(?:doge|狗头|笑|手动|滑稽|哭|捂脸)[^）)]{0,5}[）)]", "", text)
     text = re.sub(r"[「」『』【】]", "", text)
-    text = re.sub(r"<[^>]+>", "", text)
+    
+    stripped_text = text.strip()
+    is_ssml = stripped_text.startswith("<speak") or "<speak" in stripped_text or "<voice" in stripped_text
+    if not is_ssml:
+        text = re.sub(r"<[^>]+>", "", text)
+        
     text = re.sub(r"[（(]\s*[）)]", "", text)
 
     # 3. 压缩重复标点
@@ -204,12 +209,14 @@ def _build_writer_prompt(
 
 ## 角色设定
 这是一档由男女双人主持的科技播客。
-- **[Host A]**：男主持，沉稳专业，主导话题的推进，主要负责播报核心信息。
-- **[Host B]**：女主持，活泼好奇，擅长捧哏、提问、惊叹和补充背景，能拉近与听众的距离。
+- **[Host A] (男主持)**：沉稳专业，主导话题的推进，主要负责播报核心信息。在剧本中使用 `<voice name="zh-CN-YunxiNeural">` 标签。
+- **[Host B] (女主持)**：活泼好奇，擅长捧哏、提问、惊叹和补充背景，能拉近与听众的距离。在剧本中使用 `<voice name="zh-CN-XiaoxiaoNeural">` 标签。
 
 ## 剧本编写核心要求
 1. **口语化与互动感**：使用极其自然的口语化表达（如“确实”、“你想啊”、“哎我看到个很有意思的”）。Host B 经常会有小的感叹字（比如：哇、哎哟、天哪）。
-2. **格式极其严格**：每一行发言**必须**以 `[Host A]` 或 `[Host B]` 开头。**绝对不要**在前缀中加入情绪标记，情绪标记需放置在台词内容的最末尾（如果需要的话，例如：[laugh]），但在本系统中我们主要靠文字本身传达情绪，只需确保前缀绝对干净统一。
+2. **格式极其严格**：输出必须符合标准的 SSML (Speech Synthesis Markup Language) XML 格式。
+   - 使用 `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">` 作为根元素。
+   - 每一段台词必须使用对应的 `<voice name="...">` 元素包裹。
 3. **内容结构**：
    - **开场引言**：活泼互动，引出主编大纲中的 Thesis（金句总结）。
    - **深挖头条**：A 和 B 一起讨论头条新闻。不要仅仅念稿，A 说事实，B 可以提问“这到底意味着什么？”，A 再解答。
@@ -221,13 +228,23 @@ def _build_writer_prompt(
 ## 主编大纲 (JSON)
 {editor_plan_json}
 
-## 正确的输出格式示例（严格遵守前缀）：
-[Host A] 听众朋友大家好，欢迎收听{podcast_title}，今天是{date_str}。我是A。
-[Host B] 大家好，我是B。哎，今天科技圈可是相当热闹啊。
-[Host A] 确实。根据咱们主编今天的总结，... (展开讲述)
-[Host B] 哇，这个太厉害了！具体是怎么回事呢？
+## 正确的输出格式示例（必须是合法的 XML/SSML，严格包含在 <speak> 中）：
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
+  <voice name="zh-CN-YunxiNeural">
+    听众朋友大家好，欢迎收听{podcast_title}，今天是{date_str}。我是A。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    大家好，我是B。哎，今天科技圈可是相当热闹啊。
+  </voice>
+  <voice name="zh-CN-YunxiNeural">
+    确实。根据咱们主编今天的总结，...
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    哇，这个太厉害了！具体是怎么回事呢？
+  </voice>
+</speak>
 
-请直接输出剧本全文，**不要**包含任何 Markdown 标题、说明文字，只输出 `[Host x] 台词` 的格式。"""
+请直接输出符合 SSML 标准的 XML 全文，**不要**包含任何 Markdown 标题、说明文字，也**绝对不要**包含 ```xml 这样的 Markdown 代码块标记。根元素必须是 <speak>。"""
 
 
 # ---------------------------------------------------------------------------
@@ -401,12 +418,21 @@ def generate_script(
         warnings.append(f"仍含禁用词: {found_banned}")
 
     # 简单统计Host A和Host B的出场次数
-    host_a_count = script.count("[Host A]")
-    host_b_count = script.count("[Host B]")
-    total_turns = host_a_count + host_b_count
+    stripped_script = script.strip()
+    is_ssml = stripped_script.startswith("<speak") or "<speak" in stripped_script or "<voice" in stripped_script
 
-    if host_a_count == 0 or host_b_count == 0:
-        warnings.append("生成剧本未严格包含 [Host A] 和 [Host B] 双人对谈标记")
+    if is_ssml:
+        host_a_count = script.count('name="zh-CN-YunxiNeural"')
+        host_b_count = script.count('name="zh-CN-XiaoxiaoNeural"')
+        total_turns = host_a_count + host_b_count
+        if host_a_count == 0 or host_b_count == 0:
+            warnings.append("生成剧本未严格包含 <voice> 切换标记")
+    else:
+        host_a_count = script.count("[Host A]")
+        host_b_count = script.count("[Host B]")
+        total_turns = host_a_count + host_b_count
+        if host_a_count == 0 or host_b_count == 0:
+            warnings.append("生成剧本未严格包含 [Host A] 和 [Host B] 双人对谈标记")
 
     logger.info(
         "双人剧本生成完毕 (Mode: %s), 对话回合数: %d 轮 (A:%d, B:%d)",
@@ -419,7 +445,11 @@ def generate_script(
 
 
 def _normalize_host_tags(text: str) -> str:
-    """清理并确保 Host 标签格式绝对标准，形如 `[Host A] 说话内容`。"""
+    """清理并确保 Host 标签格式绝对标准，形如 `[Host A] 说话内容`。如果是 SSML 格式则不进行转换。"""
+    stripped_text = text.strip()
+    if stripped_text.startswith("<speak") or "<speak" in stripped_text or "<voice" in stripped_text:
+        return text
+
     lines = text.split("\n")
     result: list[str] = []
 
