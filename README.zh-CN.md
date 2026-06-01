@@ -6,7 +6,7 @@ English README: `README.md`
 
 ## 核心功能
 - **全自动新闻管家**：自动拉取 `config/sources.yaml` 中的订阅源，解析并根据价值评分。
-- **多模型灵活适配**：支持 OpenAI、Gemini，并深度适配本地部署的 Ollama 模型（断网、免流、数据不出本地也可生成）。
+- **多模型灵活适配**：支持 OpenAI、Gemini，并深度适配讯飞星辰 MaaS（Astron Coding Plan）大模型服务。
 - **多端输出支持**：
   - 生成带背景音效的每日中文 AI 新闻播客 (MP3)。
   - 自动更新并生成支持所有主流播客客户端的 `feed.xml`。
@@ -16,12 +16,9 @@ English README: `README.md`
 ## 怎么“调用”（本地运行）
 
 ### 1. 配置环境变量 `.env`
-在项目根目录创建或编辑 `.env` 文件，用于指定大模型 API Key（视具体调用的脚本与配置而定）：
+在项目根目录创建或编辑 `.env` 文件，填入讯飞星辰 MaaS 专属 API Key：
 ```env
-# 例如：
-OPENAI_API_KEY="sk-xxxx" # 替换为原生 OpenAI、DeepSeek 或 硅基流动 的真实 Key
-GEMINI_API_KEY="your-gemini-key"
-LLM_API_KEY="ollama"     # 若使用本地部署的 Ollama，通常可以这样标识
+SPARK_API_KEY="your-spark-coding-plan-api-key"
 ```
 
 ### 2. 环境安装（推荐使用 uv）
@@ -42,7 +39,7 @@ uv run podcast-daily --base-url http://localhost
 *提示：如果网络环境连不上 Edge-TTS 获取语音，可以追加 `--no-audio` 参数，仅生成文字稿与简介页。*
 
 **B. 生成今日 AI 科技新闻日报 (Markdown)**
-本脚本默认调用本地节点 (`http://192.168.7.7:11434`) 的 Ollama 流式输出。
+本脚本调用讯飞星辰 MaaS（Astron Coding Plan）大模型接口在线生成日报。
 ```bash
 uv run podcast-report
 ```
