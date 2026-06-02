@@ -631,6 +631,56 @@
     .ep-desc ol { padding-left: 18px; margin-top: 6px; }
     .ep-desc li { margin-bottom: 4px; }
 
+    /* Collapsible references list */
+    .ep-links-collapse {
+      margin-top: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.01);
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .ep-links-collapse:hover {
+      border-color: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .ep-links-collapse summary {
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+      outline: none;
+      transition: color 0.2s;
+    }
+    .ep-links-collapse summary:hover {
+      color: #fff;
+    }
+    .ep-links-collapse-content {
+      padding: 0 14px 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      margin-top: 0;
+      background: rgba(0,0,0,0.15);
+    }
+    .ep-links-collapse-content ol {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+    .ep-links-collapse-content li {
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
+    .ep-links-collapse-content a {
+      color: var(--accent-light);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .ep-links-collapse-content a:hover {
+      text-decoration: underline;
+    }
+
     .ep-links {
       display: flex;
       gap: 12px;
@@ -1222,7 +1272,7 @@
             <div class="hero-content">
               <span class="hero-badge">🔥 最新推荐</span>
               <h1 class="hero-title">AI 新闻快报 | 2026-06-02</h1>
-              <div class="hero-subtitle">发布时间: Tue, 02 Jun 2026 04:04:32 +0000</div>
+              <div class="hero-subtitle">发布时间: Tue, 02 Jun 2026 05:11:20 +0000</div>
               <div class="hero-actions">
                 <button class="btn-hero-play" onclick="togglePlay('2026-06-02', 'https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-06-02.mp3', 'AI 新闻快报 | 2026-06-02')" data-id="2026-06-02">
                   <span>▶</span> <span>立即收听</span>
@@ -1273,10 +1323,14 @@
     <div class="ep-card-content-col">
       <div class="ep-header">
         <h3 class="ep-title">AI 新闻快报 | 2026-06-02</h3>
-        <span class="ep-meta">Tue, 02 Jun 2026 04:04:32 +0000 · 0.6 MB</span>
+        <span class="ep-meta">Tue, 02 Jun 2026 05:11:20 +0000 · 0.7 MB</span>
       </div>
       <div class="ep-desc"><p>每天 5 分钟，聚合 AI 领域最新发布、技术进展、行业事件与人物采访。</p>
-<ol>
+
+<details class="ep-links-collapse">
+  <summary>展开查看全部 139 条参考新闻链接</summary>
+  <div class="ep-links-collapse-content">
+    <ol>
 <li>🔴 <a href="https://blog.google/innovation-and-ai/technology/ai/io-2026-keynote-moment-videos/">Catch up on 12 major I/O 2026 moments</a> <small>(Google AI Blog)</small></li>
 <li>🔴 <a href="https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/">100 things we announced at I/O 2026</a> <small>(Google AI Blog)</small></li>
 <li>🔴 <a href="https://blog.google/products-and-platforms/products/workspace/workspace-updates/">New ways to create and get things done in Google Workspace</a> <small>(Google AI Blog)</small></li>
@@ -1285,7 +1339,6 @@
 <li>🔴 <a href="https://blog.google/products-and-platforms/products/search/search-io-2026/">A new era for AI Search</a> <small>(Google AI Blog)</small></li>
 <li>🔴 <a href="https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/">Everything new in our Google AI subscriptions, fresh from I/O 2026</a> <small>(Google AI Blog)</small></li>
 <li>🟡 <a href="https://www.qbitai.com/2026/06/427231.html">德系精工邂逅中国智慧 全新奥迪Q5L现已登陆全国门店</a> <small>(量子位)</small></li>
-<li>🟡 <a href="https://www.qbitai.com/2026/06/427142.html">材料版AlphaFold来了！40个工业任务全方位SOTA，AI4S迎来行业大突破</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/">How we used Gemini to build Google I/O 2026</a> <small>(Google AI Blog)</small></li>
 <li>🟡 <a href="https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/">Catch up on the Dialogues stage at Google I/O 2026.</a> <small>(Google AI Blog)</small></li>
 <li>🟡 <a href="https://blog.google/products-and-platforms/products/search/ai-mode-us-insights/">How AI Mode is changing the way people search in the U.S.</a> <small>(Google AI Blog)</small></li>
@@ -1311,6 +1364,7 @@
 <li>🟡 <a href="https://arxiv.org/abs/2606.00183">Agentic Transformers Provably Learn to Search via Reinforcement Learning</a> <small>(arXiv cs.LG)</small></li>
 <li>🟡 <a href="https://arxiv.org/abs/2606.00189">Learning to Construct Practical Agentic Systems</a> <small>(arXiv cs.LG)</small></li>
 <li>🟡 <a href="https://arxiv.org/abs/2606.00198">BAGEN: Are LLM Agents Budget-Aware?</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/427729.html">机器人运控训练步入分钟级时代！清华AIR开源UniLab：3分钟训好人形，速度暴涨10倍，Mac上也能跑</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://www.qbitai.com/2026/06/427730.html">Qwen3.7-Plus上线！多模态智能体新基座，一键复刻桌面端专业软件</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://www.qbitai.com/2026/06/427530.html">清智系企业亮相 BEYOND Expo 2026 并斩获多项大奖</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://www.qbitai.com/2026/06/427141.html">Token贵只因你喂给模型的垃圾太多了丨@亚马逊王晓野AIGC2026</a> <small>(量子位)</small></li>
@@ -1416,7 +1470,9 @@
 <li>🟢 <a href="https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magnifica-humanitas-offers-a-template-for-individuals-to-meet-the-ai-moment/">How the Pope’s Magnifica Humanitas offers a template for individuals to meet the AI moment</a> <small>(MIT Tech Review AI)</small></li>
 <li>🟢 <a href="https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria/">A reality check on the AI jobs hysteria</a> <small>(MIT Tech Review AI)</small></li>
 <li>🟢 <a href="https://www.technologyreview.com/2026/05/21/1137613/scaling-creativity-in-the-age-of-ai/">Scaling creativity in the age of AI</a> <small>(MIT Tech Review AI)</small></li>
-</ol></div>
+</ol>
+  </div>
+</details></div>
       <div class="ep-links">
         <a href="https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-06-02.mp3" download>⬇ 下载音频</a>
         <a href="https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-06-02.txt" target="_blank">📄 原始文字稿</a>
