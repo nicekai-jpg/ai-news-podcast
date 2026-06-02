@@ -117,26 +117,27 @@ async def test_full_run_with_audio_and_publish(full_config: Path, monkeypatch) -
         sys, "argv", ["run_daily", "--date", "2024-03-15", "--base-url", "https://test.example.com"]
     )
 
-    from ai_news_podcast.pipeline.fetcher import RawItem
+    fake_brief = {
+        "thesis": "Test thesis",
+        "stories": [
+            {
+                "cluster_id": 0,
+                "representative_title": "Test AI News",
+                "role": "main",
+                "role_emoji": "🔴",
+                "total_score": 13,
+                "scores": {"impact_scope": 3, "novelty": 2, "explainability": 3, "listener_relevance": 3, "source_richness": 2},
+                "context": {"factual_summary": ["Summary."], "historical_background": "", "sources_ranked": [{"name": "S", "authority": 3, "link": "https://a.com"}]},
+                "items": [{"id": "abc", "title": "Test AI News", "link": "https://a.com", "source_name": "S", "source_category": "news"}],
+            }
+        ],
+        "metadata": {"total_raw": 1, "total_deduped": 1, "total_clusters": 1},
+    }
 
-    raw_item = RawItem(
-        id="abc",
-        title="Test News",
-        link="https://a.com",
-        normalized_link="https://a.com",
-        source_name="S",
-        source_category="news",
-        published_at=datetime.now(tz=timezone.utc).isoformat(),
-        summary="Summary.",
-        full_text_snippet="Text." * 100,
-        category="product",
-        language="zh",
-    )
+    async def _fake_run_pipeline(*args, **kwargs):
+        return fake_brief
 
-    async def _fake_fetch_all(*args, **kwargs):
-        return [raw_item]
-
-    monkeypatch.setattr(run_daily_module, "fetch_all", _fake_fetch_all)
+    monkeypatch.setattr(run_daily_module, "run_pipeline", _fake_run_pipeline)
 
     fake_script = "[Host A] Hello\n[Host B] World"
     monkeypatch.setattr(run_daily_module, "generate_script", lambda *a, **kw: (fake_script, []))
@@ -180,25 +181,26 @@ async def test_transcript_cleaning(full_config: Path, monkeypatch) -> None:
         sys, "argv", ["run_daily", "--date", "2024-03-16", "--no-audio"]
     )
 
-    from ai_news_podcast.pipeline.fetcher import RawItem
+    fake_brief = {
+        "thesis": "Test thesis",
+        "stories": [
+            {
+                "cluster_id": 0,
+                "representative_title": "T",
+                "role": "main",
+                "role_emoji": "🔴",
+                "total_score": 13,
+                "scores": {"impact_scope": 3, "novelty": 2, "explainability": 3, "listener_relevance": 3, "source_richness": 2},
+                "context": {"factual_summary": ["S."], "historical_background": "", "sources_ranked": [{"name": "S", "authority": 3, "link": "https://a.com"}]},
+                "items": [{"id": "abc", "title": "T", "link": "https://a.com", "source_name": "S", "source_category": "news"}],
+            }
+        ],
+        "metadata": {"total_raw": 1, "total_deduped": 1, "total_clusters": 1},
+    }
 
-    raw_item = RawItem(
-        id="abc",
-        title="T",
-        link="https://a.com",
-        normalized_link="https://a.com",
-        source_name="S",
-        source_category="news",
-        published_at=datetime.now(tz=timezone.utc).isoformat(),
-        summary="S.",
-        full_text_snippet="T." * 100,
-        category="product",
-        language="zh",
-    )
-
-    async def _fake_fetch(*args, **kwargs):
-        return [raw_item]
-    monkeypatch.setattr(run_daily_module, "fetch_all", _fake_fetch)
+    async def _fake_run_pipeline(*args, **kwargs):
+        return fake_brief
+    monkeypatch.setattr(run_daily_module, "run_pipeline", _fake_run_pipeline)
 
     # Script with mood tags, fact tags, and literal \n
     fake_script = "[mood:excited] [Host A] Hello\\n[FACT] world"

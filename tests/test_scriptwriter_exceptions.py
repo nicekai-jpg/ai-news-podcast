@@ -75,7 +75,7 @@ class TestBuildMaterialText:
 
     def test_limits_to_max_stories(self) -> None:
         stories = [
-            {"role": "main", "total_score": 20 - i, "representative_title": f"Story {i}", "context": {}}
+            {"role": "main", "total_score": 20 - i, "representative_title": f"新闻{i}", "context": {}}
             for i in range(10)
         ]
         brief = {"stories": stories}

@@ -151,27 +151,27 @@ async def test_no_audio_run_creates_files(minimal_config: Path, monkeypatch) -> 
     fake_file = root / "src" / "ai_news_podcast" / "cli" / "run_daily.py"
     monkeypatch.setattr(run_daily_module, "__file__", str(fake_file))
 
-    # Mock fetch_all to return one raw item so process() has data
-    from ai_news_podcast.pipeline.fetcher import RawItem
+    fake_brief = {
+        "thesis": "Test thesis",
+        "stories": [
+            {
+                "cluster_id": 0,
+                "representative_title": "Test AI News",
+                "role": "main",
+                "role_emoji": "🔴",
+                "total_score": 13,
+                "scores": {"impact_scope": 3, "novelty": 2, "explainability": 3, "listener_relevance": 3, "source_richness": 2},
+                "context": {"factual_summary": ["Summary text here."], "historical_background": "", "sources_ranked": [{"name": "Test Feed", "authority": 3, "link": "https://example.com/1"}]},
+                "items": [{"id": "abc123", "title": "Test AI News", "link": "https://example.com/1", "source_name": "Test Feed", "source_category": "news"}],
+            }
+        ],
+        "metadata": {"total_raw": 1, "total_deduped": 1, "total_clusters": 1},
+    }
 
-    raw_item = RawItem(
-        id="abc123",
-        title="Test AI News",
-        link="https://example.com/1",
-        normalized_link="https://example.com/1",
-        source_name="Test Feed",
-        source_category="news",
-        published_at=datetime.now(tz=timezone.utc).isoformat(),
-        summary="Summary text here.",
-        full_text_snippet="Full text here." * 100,
-        category="product",
-        language="zh",
-    )
+    async def _fake_run_pipeline(*args, **kwargs):
+        return fake_brief
 
-    async def _fake_fetch_all(*args, **kwargs):
-        return [raw_item]
-
-    monkeypatch.setattr(run_daily_module, "fetch_all", _fake_fetch_all)
+    monkeypatch.setattr(run_daily_module, "run_pipeline", _fake_run_pipeline)
 
     # Mock generate_script to avoid calling LLM
     fake_script = "[Host A] 欢迎收听今日 AI 新闻。\n[Host B] 今天的主要内容如下。"

@@ -3,6 +3,7 @@ import asyncio
 import logging
 from datetime import datetime
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 try:
     from dotenv import load_dotenv
@@ -11,8 +12,7 @@ try:
 except ImportError:
     pass
 
-from ai_news_podcast.pipeline.fetcher import fetch_all
-from ai_news_podcast.pipeline.processor import process, save_brief
+from ai_news_podcast.pipeline.runner import run_pipeline
 from ai_news_podcast.pipeline.scriptwriter import _call_llm
 from ai_news_podcast.utils import load_sources, read_yaml
 
@@ -24,8 +24,8 @@ def build_report_prompt(brief: dict, date_str: str) -> str:
     active = [s for s in stories if isinstance(s, dict) and s.get("role") != "skip"]
     active.sort(key=lambda s: s.get("total_score", 0), reverse=True)
 
-    # 恢复取前 15 条新闻（原生 API 配合大 context 可以扛住）
-    active = active[:15]
+    # 取前 5 个新闻簇作为日报素材
+    active = active[:5]
 
     material = ""
     for i, story in enumerate(active, 1):
@@ -73,6 +73,11 @@ async def main() -> int:
     ap.add_argument("--config", default="config/config.yaml")
     ap.add_argument("--sources", default="config/sources.yaml")
     ap.add_argument("--outdir", default="data/reports")
+    ap.add_argument(
+        "--force-refresh",
+        action="store_true",
+        help="强制重新抓取，忽略已有 brief 缓存",
+    )
     args = ap.parse_args()
 
     root = Path(__file__).resolve().parents[3]
@@ -81,41 +86,23 @@ async def main() -> int:
     outdir = root / args.outdir
     outdir.mkdir(parents=True, exist_ok=True)
 
-    fetch_cfg = cfg.get("fetch", {})
-    processing_cfg = cfg.get("processing", {})
-
-    timeout_seconds = int(fetch_cfg.get("timeout_seconds", 20))
-    connect_timeout = int(fetch_cfg.get("connect_timeout", 5))
-    user_agent = str(fetch_cfg.get("user_agent") or "ai-news-podcast/0.1")
-    max_items_per_feed = int(fetch_cfg.get("max_items_per_feed", 30))
-    max_pages = int(processing_cfg.get("max_pages", 80))
-
-    now = datetime.now()
+    now = datetime.now(tz=ZoneInfo("Asia/Shanghai"))
     date_str = now.strftime("%Y年%m月%d日")
     report_id = now.strftime("%Y-%m-%d")
 
-    # 1. 抓取新闻
-    log.info("Stage 1: Fetching RSS feeds...")
-    raw_items = await fetch_all(
+    # Stage 1 & 2: 通过统一数据基础层获取 brief（抓取 → 去重 → 聚类 → 打分）
+    log.info("Fetching episode brief from pipeline runner...")
+    brief = await run_pipeline(
+        cfg,
         sources,
-        timeout_seconds=timeout_seconds,
-        connect_timeout=connect_timeout,
-        user_agent=user_agent,
-        max_items_per_feed=max_items_per_feed,
-        max_pages=max_pages,
+        date_str=report_id,
+        data_dir=root / "data",
+        force_refresh=args.force_refresh,
     )
 
-    if not raw_items:
-        log.warning("No items fetched. Aborting.")
+    if not brief.get("stories"):
+        log.warning("No stories in brief. Aborting.")
         return 1
-
-    # 2. 数据处理与评分
-    log.info("Stage 2: Processing and scoring items...")
-    brief = process(raw_items, processing_cfg=processing_cfg)
-
-    # 保存 brief 数据，以便 podcast-daily 可以直接复用，确保日报与播客数据源完全同步
-    brief_path = root / "data" / f"brief_{report_id}.json"
-    save_brief(brief, brief_path)
 
     # 3. 构造 Prompt 并调用 LLM
     log.info("Stage 3: Generating report via LLM (configured in config.yaml)...")
@@ -133,7 +120,7 @@ async def main() -> int:
         stories = brief.get("stories", [])
         active = [s for s in stories if isinstance(s, dict) and s.get("role") != "skip"]
         active.sort(key=lambda s: s.get("total_score", 0), reverse=True)
-        active = active[:15]
+        active = active[:5]
 
         for i, story in enumerate(active, 1):
             title = story.get("representative_title", "无标题")
