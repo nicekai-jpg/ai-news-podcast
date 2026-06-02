@@ -18,7 +18,7 @@ class TestBuildEditorPrompt:
         assert "2024年3月15日" in prompt
         assert "Test" in prompt
         assert '"thesis"' in prompt
-        assert '"headline"' in prompt
+        assert '"headlines"' in prompt
         assert '"quick_news"' in prompt
 
 
