@@ -7,11 +7,12 @@ from pathlib import Path
 
 import pytest
 
+import ai_news_podcast.cli.run_daily as m
+
 
 @pytest.mark.asyncio
 async def test_no_raw_items_returns_1(monkeypatch, tmp_path: Path) -> None:
-    """If fetch_all returns empty, main() should return 1."""
-    import ai_news_podcast.cli.run_daily as m
+    """If run_pipeline returns no stories, main() should return 1."""
 
     fake_file = tmp_path / "src" / "ai_news_podcast" / "cli" / "run_daily.py"
     monkeypatch.setattr(m, "__file__", str(fake_file))
@@ -107,10 +108,10 @@ build:
         ["run_daily", "--no-audio", "--date", "2024-03-15"],
     )
 
-    async def _fake_fetch_all(*args, **kwargs):
-        return []
+    async def _fake_run_pipeline(*args, **kwargs):
+        return {"stories": [], "thesis": "", "metadata": {}}
 
-    monkeypatch.setattr(m, "fetch_all", _fake_fetch_all)
+    monkeypatch.setattr(m, "run_pipeline", _fake_run_pipeline)
 
     rc = await m.main()
     assert rc == 1

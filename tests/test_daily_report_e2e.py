@@ -68,26 +68,27 @@ async def test_main_success(report_config: Path, monkeypatch) -> None:
         sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")]
     )
 
-    from ai_news_podcast.pipeline.fetcher import RawItem
+    fake_brief = {
+        "thesis": "Test",
+        "stories": [
+            {
+                "cluster_id": 0,
+                "representative_title": "Test News",
+                "role": "main",
+                "role_emoji": "🔴",
+                "total_score": 13,
+                "scores": {"impact_scope": 3, "novelty": 2, "explainability": 3, "listener_relevance": 3, "source_richness": 2},
+                "context": {"factual_summary": ["Summary."], "historical_background": "", "sources_ranked": []},
+                "items": [],
+            }
+        ],
+        "metadata": {},
+    }
 
-    raw_item = RawItem(
-        id="abc",
-        title="Test News",
-        link="https://a.com",
-        normalized_link="https://a.com",
-        source_name="S",
-        source_category="news",
-        published_at=datetime.now().isoformat(),
-        summary="Summary.",
-        full_text_snippet="Text." * 100,
-        category="product",
-        language="zh",
-    )
+    async def _fake_run_pipeline(*args, **kwargs):
+        return fake_brief
 
-    async def _fake_fetch_all(*args, **kwargs):
-        return [raw_item]
-
-    monkeypatch.setattr(report_module, "fetch_all", _fake_fetch_all)
+    monkeypatch.setattr(report_module, "run_pipeline", _fake_run_pipeline)
 
     def _fake_llm(prompt: str, llm_cfg: dict) -> str:
         return "# Report\n\nGenerated content."
@@ -112,26 +113,27 @@ async def test_main_fallback_when_llm_fails(report_config: Path, monkeypatch) ->
         sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")]
     )
 
-    from ai_news_podcast.pipeline.fetcher import RawItem
+    fake_brief = {
+        "thesis": "Test",
+        "stories": [
+            {
+                "cluster_id": 0,
+                "representative_title": "Test News",
+                "role": "main",
+                "role_emoji": "🔴",
+                "total_score": 13,
+                "scores": {},
+                "context": {"factual_summary": ["Summary."], "historical_background": "", "sources_ranked": []},
+                "items": [],
+            }
+        ],
+        "metadata": {},
+    }
 
-    raw_item = RawItem(
-        id="abc",
-        title="Test News",
-        link="https://a.com",
-        normalized_link="https://a.com",
-        source_name="S",
-        source_category="news",
-        published_at=datetime.now().isoformat(),
-        summary="Summary.",
-        full_text_snippet="Text." * 100,
-        category="product",
-        language="zh",
-    )
+    async def _fake_run_pipeline(*args, **kwargs):
+        return fake_brief
 
-    async def _fake_fetch_all(*args, **kwargs):
-        return [raw_item]
-
-    monkeypatch.setattr(report_module, "fetch_all", _fake_fetch_all)
+    monkeypatch.setattr(report_module, "run_pipeline", _fake_run_pipeline)
     monkeypatch.setattr(report_module, "_call_llm", lambda p, cfg: None)
 
     rc = await report_module.main()
@@ -151,10 +153,10 @@ async def test_main_no_items_returns_1(report_config: Path, monkeypatch) -> None
         sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")]
     )
 
-    async def _fake_fetch_all(*args, **kwargs):
-        return []
+    async def _fake_run_pipeline(*args, **kwargs):
+        return {"stories": [], "thesis": "", "metadata": {}}
 
-    monkeypatch.setattr(report_module, "fetch_all", _fake_fetch_all)
+    monkeypatch.setattr(report_module, "run_pipeline", _fake_run_pipeline)
 
     rc = await report_module.main()
     assert rc == 1

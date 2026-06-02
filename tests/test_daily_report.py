@@ -44,7 +44,7 @@ class TestBuildReportPrompt:
         assert "Keep" in prompt
         assert "Drop" not in prompt
 
-    def test_limits_to_15_stories(self) -> None:
+    def test_limits_to_5_stories(self) -> None:
         stories = [
             {
                 "role": "main",
@@ -57,7 +57,7 @@ class TestBuildReportPrompt:
         brief = {"stories": stories}
         prompt = build_report_prompt(brief, "2024-03-15")
         # Count 【素材 markers
-        assert prompt.count("【素材") == 15
+        assert prompt.count("【素材") == 5
 
     def test_empty_stories(self) -> None:
         prompt = build_report_prompt({"stories": []}, "2024-03-15")

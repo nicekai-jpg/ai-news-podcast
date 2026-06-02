@@ -32,13 +32,23 @@ jobs:
       - name: Install dependencies
         run: uv sync --frozen
 
-      - name: Generate episode, feed, and report
+      - name: Run data pipeline (fetch → dedup → cluster → score)
         env:
           TZ: Asia/Shanghai
           SPARK_API_KEY: ${{ secrets.SPARK_API_KEY }}
-        run: |
-          uv run podcast-report
-          uv run podcast-daily
+        run: uv run podcast-pipeline
+
+      - name: Generate daily report (科技日报)
+        env:
+          TZ: Asia/Shanghai
+          SPARK_API_KEY: ${{ secrets.SPARK_API_KEY }}
+        run: uv run podcast-report
+
+      - name: Generate podcast episode
+        env:
+          TZ: Asia/Shanghai
+          SPARK_API_KEY: ${{ secrets.SPARK_API_KEY }}
+        run: uv run podcast-daily
 
       - name: Commit generated data and reports
         run: |

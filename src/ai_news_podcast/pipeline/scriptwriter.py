@@ -105,31 +105,20 @@ def _cn_date(dt: datetime) -> str:
 # ---------------------------------------------------------------------------
 
 
+
 def _build_material_text(brief: dict[str, Any], max_stories: int = 8) -> str:
-    """把 episode_brief 中评分最高且来源多样化提升的新闻素材整理为结构化文本。
-    精简且多元版：限制单一信源数量，并减少 stories 数量以节省 token。
+    """把 episode_brief 中评分最高的新闻素材整理为结构化文本。
+
+    数据基础层（fetch → dedup → cluster → score）已保证每个「新闻簇」
+    是经过质量控制的可用数据：每簇代表一个独立事件，内含多家媒体的
+    报道汇总。此处直接按总分排序取前 max_stories 条，不做额外过滤。
     """
     stories = brief.get("stories", [])
     active: list[dict[str, Any]] = [
         s for s in stories if isinstance(s, dict) and s.get("role") != "skip"
     ]
     active.sort(key=lambda s: s.get("total_score", 0), reverse=True)
-
-    # 来源多样化限制：每个信源最多保留 2 篇报道，防止单一厂商事件霸占整个播客
-    source_counts: dict[str, int] = {}
-    top_active: list[dict[str, Any]] = []
-    for s in active:
-        sources = s.get("context", {}).get("sources_ranked", [])
-        primary_source = sources[0].get("name") if sources else None
-
-        if primary_source:
-            if source_counts.get(primary_source, 0) >= 2:
-                continue
-            source_counts[primary_source] = source_counts.get(primary_source, 0) + 1
-
-        top_active.append(s)
-        if len(top_active) >= max_stories:
-            break
+    top_active = active[:max_stories]
 
     sections: list[str] = []
     for i, story in enumerate(top_active, 1):
