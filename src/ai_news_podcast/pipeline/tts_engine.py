@@ -185,39 +185,45 @@ async def synthesize_edge_tts(
         "B": voices[1] if len(voices) > 1 else voices[0],
     }
 
+    async def _save_chunk_with_retry(
+        idx: int,
+        chunk: DialogueChunk,
+        voice: str,
+        tmp_chunk: Path,
+    ) -> Path:
+        last_err: Optional[BaseException] = None
+        for attempt in range(1, 4):
+            comm = edge_tts.Communicate(
+                chunk.text,
+                voice=voice,
+                rate=rate,
+                volume=volume,
+            )
+            try:
+                await comm.save(str(tmp_chunk))
+                if not tmp_chunk.exists() or tmp_chunk.stat().st_size == 0:
+                    raise RuntimeError("edge-tts produced empty chunk")
+                return tmp_chunk
+            except BaseException as exc:
+                last_err = exc
+                if tmp_chunk.exists():
+                    tmp_chunk.unlink()
+                if attempt < 3:
+                    await asyncio.sleep(attempt)
+        if last_err is not None:
+            raise last_err
+        raise RuntimeError("edge-tts chunk synthesis failed")
+
     with tempfile.TemporaryDirectory(prefix="tts-edge-dialogue-") as tmp_dir:
         tmp_root = Path(tmp_dir)
-        chunk_files: list[Path] = []
 
+        tasks = []
         for idx, chunk in enumerate(chunks, start=1):
             voice = chunk.voice or voice_map.get(chunk.host, voices[0])
-            # A bit of variation in pitch implicitly separates the voices, but distinct TTS models are better.
             tmp_chunk = tmp_root / f"chunk_{idx:03d}.mp3"
+            tasks.append(_save_chunk_with_retry(idx, chunk, voice, tmp_chunk))
 
-            last_err: Optional[BaseException] = None
-            for attempt in range(1, 4):
-                comm = edge_tts.Communicate(
-                    chunk.text,
-                    voice=voice,
-                    rate=rate,
-                    volume=volume,
-                )
-                try:
-                    await comm.save(str(tmp_chunk))
-                    if not tmp_chunk.exists() or tmp_chunk.stat().st_size == 0:
-                        raise RuntimeError("edge-tts produced empty chunk")
-                    chunk_files.append(tmp_chunk)
-                    break
-                except BaseException as exc:
-                    last_err = exc
-                    if tmp_chunk.exists():
-                        tmp_chunk.unlink()
-                    if attempt < 3:
-                        await asyncio.sleep(attempt)
-            else:
-                if last_err is not None:
-                    raise last_err
-                raise RuntimeError("edge-tts chunk synthesis failed")
+        chunk_files = await asyncio.gather(*tasks)
 
         combined = AudioSegment.empty()
         for idx, chunk_file in enumerate(chunk_files):
