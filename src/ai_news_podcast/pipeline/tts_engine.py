@@ -50,6 +50,7 @@ def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
     if stripped_text.startswith("<speak") or "<speak" in stripped_text or "<voice" in stripped_text:
         try:
             from bs4 import BeautifulSoup
+
             soup = BeautifulSoup(text, "html.parser")
             voice_tags = soup.find_all("voice")
             if voice_tags:
@@ -61,11 +62,13 @@ def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
                         cleaned = _clean_tts_text(chunk_text)
                         if cleaned:
                             host = "B" if idx % 2 == 1 else "A"
-                            chunks.append(DialogueChunk(
-                                host=host,
-                                text=cleaned,
-                                voice=voice_name if voice_name else None
-                            ))
+                            chunks.append(
+                                DialogueChunk(
+                                    host=host,
+                                    text=cleaned,
+                                    voice=voice_name if voice_name else None,
+                                )
+                            )
                 if chunks:
                     return chunks
         except Exception:

@@ -324,9 +324,19 @@ async def main() -> int:
     build_index_html(site_dir, podcast_title, sorted_eps, base_url)
 
     import shutil
+
     logo_src = root / "assets" / "logo.png"
     if logo_src.exists():
         shutil.copy(logo_src, site_dir / "logo.png")
+
+    # Copy pipeline walkthrough and infographic for site integration
+    infographic_src = root / "assets" / "pipeline_infographic.png"
+    if infographic_src.exists():
+        shutil.copy(infographic_src, site_dir / "pipeline_infographic.png")
+
+    walkthrough_src = root / "docs" / "pipeline_walkthrough.md"
+    if walkthrough_src.exists():
+        shutil.copy(walkthrough_src, site_dir / "pipeline_walkthrough.md")
 
     reports_src = root / "data" / "reports"
     reports_dst = site_dir / "reports"
