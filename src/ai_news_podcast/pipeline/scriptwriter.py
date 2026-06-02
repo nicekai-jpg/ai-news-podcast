@@ -106,19 +106,71 @@ def _cn_date(dt: datetime) -> str:
 
 
 
-def _build_material_text(brief: dict[str, Any], max_stories: int = 8) -> str:
-    """把 episode_brief 中评分最高的新闻素材整理为结构化文本。
+def _get_story_entities(story: dict[str, Any]) -> set[str]:
+    """提取新闻故事中的公司/品牌实体词，用于多样性去重。"""
+    title = str(story.get("representative_title", "")).lower()
+    entities = set()
+    COMPANIES = [
+        "谷歌", "google", "openai", "微软", "microsoft", "英伟达", "nvidia", 
+        "苹果", "apple", "meta", "anthropic", "claude", "字节", "腾讯", 
+        "百度", "阿里", "华为", "奥迪", "audi", "特斯拉", "tesla"
+    ]
+    for c in COMPANIES:
+        if c in title:
+            # 标准化实体名
+            norm = c
+            if c in ("google", "谷歌"):
+                norm = "谷歌"
+            elif c in ("microsoft", "微软"):
+                norm = "微软"
+            elif c in ("nvidia", "英伟达"):
+                norm = "英伟达"
+            elif c in ("apple", "苹果"):
+                norm = "苹果"
+            elif c in ("audi", "奥迪"):
+                norm = "奥迪"
+            elif c in ("tesla", "特斯拉"):
+                norm = "特斯拉"
+            entities.add(norm)
+    return entities
 
-    数据基础层（fetch → dedup → cluster → score）已保证每个「新闻簇」
-    是经过质量控制的可用数据：每簇代表一个独立事件，内含多家媒体的
-    报道汇总。此处直接按总分排序取前 max_stories 条，不做额外过滤。
+
+def _build_material_text(brief: dict[str, Any], max_stories: int = 8) -> str:
+    """把 episode_brief 中最重要的新闻素材整理为结构化文本。
+
+    采用动态实体多样性重排算法（类似 MMR 推荐算法）：
+    按分数降序挑选，但如果候选新闻包含已选中实体的关键词，则对其施加分数惩罚（每冲突一次扣 3 分），
+    从而防止同一家公司的多条新闻霸榜，保证节目题材的丰富度。
     """
     stories = brief.get("stories", [])
     active: list[dict[str, Any]] = [
         s for s in stories if isinstance(s, dict) and s.get("role") != "skip"
     ]
-    active.sort(key=lambda s: s.get("total_score", 0), reverse=True)
-    top_active = active[:max_stories]
+    
+    # 动态多样性选择循环
+    selected: list[dict[str, Any]] = []
+    entity_counts: dict[str, int] = {}
+    candidates = [dict(s) for s in active]
+
+    while len(selected) < max_stories and candidates:
+        # 对剩余候选计算有效得分 (Effective Score)
+        for c in candidates:
+            orig_score = c.get("total_score", 0)
+            c_entities = _get_story_entities(c)
+            # 重复选择的实体每个惩罚 3 分
+            penalty = sum(3 * entity_counts.get(ent, 0) for ent in c_entities)
+            c["_temp_score"] = orig_score - penalty
+
+        # 按临时有效得分重新排序并选择最高者
+        candidates.sort(key=lambda x: x.get("_temp_score", 0), reverse=True)
+        best = candidates.pop(0)
+        selected.append(best)
+
+        # 更新已选实体的计数器
+        for ent in _get_story_entities(best):
+            entity_counts[ent] = entity_counts.get(ent, 0) + 1
+
+    top_active = selected
 
     sections: list[str] = []
     for i, story in enumerate(top_active, 1):
