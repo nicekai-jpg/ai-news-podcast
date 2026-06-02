@@ -200,20 +200,22 @@ def _build_writer_prompt(
 你的任务是根据主编给出的【今日播报大纲】，写一份**双人对谈格式的播客录音剧本**。
 
 ## 角色设定
-这是一档由男女双人主持的科技播客。
-- **[Host A] (男主持)**：沉稳专业，主导话题的推进，主要负责播报核心信息。在剧本中使用 `<voice name="zh-CN-YunxiNeural">` 标签。
-- **[Host B] (女主持)**：活泼好奇，擅长捧哏、提问、惊叹和补充背景，能拉近与听众的距离。在剧本中使用 `<voice name="zh-CN-XiaoxiaoNeural">` 标签。
+这是一档由男女双人主持的科技播客，两位主持人性格互补，对话充满温度和趣味：
+- **博文 [Host A] (男主持)**：沉稳理性的“技术担当”。他是科技行业的资深观察者，逻辑严密，主要负责介绍新闻事实、解析背后的技术原理和商业逻辑。说话语气沉稳儒雅，但不失风趣。在剧本中使用 `<voice name="zh-CN-YunxiNeural">` 标签，内容中自称为“博文”。
+- **晓晓 [Host B] (女主持)**：活泼机敏的“体验担当”。她热爱尝试各种前沿 AI 产品，习惯从大众消费者的视角切入，擅长捧哏、提问、表示惊叹和补充背景，能拉近与听众的距离。说话语气欢快、充满好奇心，常有“哇”、“天哪”、“真的假的”等生动的情绪表达。在剧本中使用 `<voice name="zh-CN-XiaoxiaoNeural">` 标签，内容中自称为“晓晓”。
+
+两人在对话中要自然地直呼对方的名字（“博文”和“晓晓”），像真实的朋友在畅聊科技动态，而不是生硬地交替念稿。
 
 ## 剧本编写核心要求
-1. **口语化与互动感**：使用极其自然的口语化表达（如“确实”、“你想啊”、“哎我看到个很有意思的”）。Host B 经常会有小的感叹字（比如：哇、哎哟、天哪）。
+1. **口语化与互动感**：使用极其自然的口语化表达（如“确实”、“你想啊”、“哎我看到个很有意思的”）。晓晓经常会有情绪感叹词。
 2. **格式极其严格**：输出必须符合标准的 SSML (Speech Synthesis Markup Language) XML 格式。
    - 使用 `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">` 作为根元素。
    - 每一段台词必须使用对应的 `<voice name="...">` 元素包裹。
 3. **内容结构**：
-   - **开场引言**：活泼互动，引出主编大纲中的 Thesis（金句总结）。
-   - **深挖头条**：A 和 B 一起讨论头条新闻。不要仅仅念稿，A 说事实，B 可以提问“这到底意味着什么？”，A 再解答。
-   - **快报环节**：以快节奏的一问一答形式串讲快讯。
-   - **结尾总结**：两人默契配合，简短说再见。
+   - **开场引言**：活泼互动，博文和晓晓互相打招呼，引出主编大纲中的 Thesis（金句总结）。
+   - **深挖头条**：博文和晓晓一起讨论头条新闻。博文介绍核心事实与技术深度，晓晓负责好奇发问“这到底意味着什么？”或做生动比喻。
+   - **快报环节**：以快节奏的一问一答形式串讲快讯，两人默契配合。
+   - **结尾总结**：两人默契总结，简短说再见。
 4. **英文处理**：英文专有名词尽可能转为流畅跟读的中文，如果不影响阅读也可保留简单单词。
 5. **禁用词**：坚决避免使用以下词汇（会显得很假）：{banned_str}。不要用“今天的第一条新闻是”这种僵硬的罗列。
 
@@ -223,13 +225,13 @@ def _build_writer_prompt(
 ## 正确的输出格式示例（必须是合法的 XML/SSML，严格包含在 <speak> 中）：
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
   <voice name="zh-CN-YunxiNeural">
-    听众朋友大家好，欢迎收听{podcast_title}，今天是{date_str}。我是A。
+    听众朋友大家好，欢迎收听{podcast_title}，今天是{date_str}。我是博文。
   </voice>
   <voice name="zh-CN-XiaoxiaoNeural">
-    大家好，我是B。哎，今天科技圈可是相当热闹啊。
+    大家好，我是晓晓。哎，博文，今天科技圈可是相当热闹啊。
   </voice>
   <voice name="zh-CN-YunxiNeural">
-    确实。根据咱们主编今天的总结，...
+    确实，晓晓。根据咱们主编今天的总结，...
   </voice>
   <voice name="zh-CN-XiaoxiaoNeural">
     哇，这个太厉害了！具体是怎么回事呢？
@@ -316,9 +318,9 @@ def _build_fallback(
 
     lines: list[str] = []
     lines.append(
-        f"[Host A] 听众朋友们好，欢迎收听{podcast_title}，今天大家过得怎么样？今天是{_cn_date(episode_date)}。"
+        f"[Host A] 听众朋友们好，欢迎收听{podcast_title}，我是博文。今天是{_cn_date(episode_date)}。"
     )
-    lines.append("[Host B] 大家好。今天这AI圈的瓜，那可是相当有意思。")
+    lines.append("[Host B] 大家好，我是晓晓。今天这AI圈的瓜，那可是相当有意思。")
 
     for i, story in enumerate(active):
         if i >= 4:
@@ -330,7 +332,7 @@ def _build_fallback(
 
         if i == 0:
             lines.append(f"[Host A] 咱们先聊聊今天最大的头条。那就是，{title}。")
-            lines.append("[Host B] 哦？这个事影响很大吗？")
+            lines.append("[Host B] 晓晓也一直在关注这个，博文，这个事影响真的很大吗？")
             lines.append(f"[Host A] 确实。简单来说，{summary}")
         else:
             lines.append(f"[Host B] 嗯，除了这个，我看到 {title} 也有新动态。")
