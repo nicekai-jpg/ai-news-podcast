@@ -41,6 +41,22 @@ def build_index_html(
         # Simple HTML sanitization/escaping for scripts to satisfy the security test
         desc_html = desc.replace("<script>", "&lt;script&gt;").replace("</script>", "&lt;/script&gt;")
 
+        # Compress / fold the references list
+        if "<ol>" in desc_html:
+            parts = desc_html.split("<ol>", 1)
+            intro = parts[0]
+            links_list = "<ol>" + parts[1]
+            num_links = links_list.count("<li>")
+            desc_html = (
+                f"{intro}\n"
+                f'<details class="ep-links-collapse">\n'
+                f'  <summary>展开查看全部 {num_links} 条参考新闻链接</summary>\n'
+                f'  <div class="ep-links-collapse-content">\n'
+                f'    {links_list}\n'
+                f'  </div>\n'
+                f'</details>'
+            )
+
         # For the timeline cards
         ep_cards.append(
             f'<article class="ep-card" id="card-{ep_id}">\n'
@@ -714,6 +730,56 @@ def build_index_html(
     .ep-desc p { margin-bottom: 6px; }
     .ep-desc ol { padding-left: 18px; margin-top: 6px; }
     .ep-desc li { margin-bottom: 4px; }
+
+    /* Collapsible references list */
+    .ep-links-collapse {
+      margin-top: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.01);
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    .ep-links-collapse:hover {
+      border-color: rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+    }
+    .ep-links-collapse summary {
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      user-select: none;
+      outline: none;
+      transition: color 0.2s;
+    }
+    .ep-links-collapse summary:hover {
+      color: #fff;
+    }
+    .ep-links-collapse-content {
+      padding: 0 14px 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      margin-top: 0;
+      background: rgba(0,0,0,0.15);
+    }
+    .ep-links-collapse-content ol {
+      padding-left: 20px;
+      margin-top: 10px;
+    }
+    .ep-links-collapse-content li {
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+    }
+    .ep-links-collapse-content a {
+      color: var(--accent-light);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .ep-links-collapse-content a:hover {
+      text-decoration: underline;
+    }
 
     .ep-links {
       display: flex;
