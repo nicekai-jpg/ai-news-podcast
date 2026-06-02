@@ -35,8 +35,8 @@ jobs:
           TZ: Asia/Shanghai
           SPARK_API_KEY: ${{ secrets.SPARK_API_KEY }}
         run: |
-          uv run podcast-daily
           uv run podcast-report
+          uv run podcast-daily
 
       - name: Commit generated data and reports
         run: |
