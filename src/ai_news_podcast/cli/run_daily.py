@@ -323,6 +323,18 @@ async def main() -> int:
     write_text(site_dir / "feed.xml", feed_xml)
     build_index_html(site_dir, podcast_title, sorted_eps, base_url)
 
+    import shutil
+    logo_src = root / "assets" / "logo.png"
+    if logo_src.exists():
+        shutil.copy(logo_src, site_dir / "logo.png")
+
+    reports_src = root / "data" / "reports"
+    reports_dst = site_dir / "reports"
+    if reports_src.exists():
+        if reports_dst.exists():
+            shutil.rmtree(reports_dst)
+        shutil.copytree(reports_src, reports_dst)
+
     log.info("Episode %s published successfully", episode_id)
     return 0
 
