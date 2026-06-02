@@ -105,9 +105,9 @@ def _cn_date(dt: datetime) -> str:
 # ---------------------------------------------------------------------------
 
 
-def _build_material_text(brief: dict[str, Any], max_stories: int = 5) -> str:
-    """把 episode_brief 中评分最高的新闻素材整理为结构化文本。
-    精简版：减少 stories 数量和 snippet 长度以节省 token。
+def _build_material_text(brief: dict[str, Any], max_stories: int = 8) -> str:
+    """把 episode_brief 中评分最高且来源多样化提升的新闻素材整理为结构化文本。
+    精简且多元版：限制单一信源数量，并减少 stories 数量以节省 token。
     """
     stories = brief.get("stories", [])
     active: list[dict[str, Any]] = [
@@ -115,12 +115,21 @@ def _build_material_text(brief: dict[str, Any], max_stories: int = 5) -> str:
     ]
     active.sort(key=lambda s: s.get("total_score", 0), reverse=True)
 
-    # Pyre is complaining about slicing a List[Dict[str, Any]]. Since we typed `active`, a simple slice shouldn't error, but let's iterate to be safe.
+    # 来源多样化限制：每个信源最多保留 2 篇报道，防止单一厂商事件霸占整个播客
+    source_counts: dict[str, int] = {}
     top_active: list[dict[str, Any]] = []
-    for i, s in enumerate(active):
-        if i >= max_stories:
-            break
+    for s in active:
+        sources = s.get("context", {}).get("sources_ranked", [])
+        primary_source = sources[0].get("name") if sources else None
+
+        if primary_source:
+            if source_counts.get(primary_source, 0) >= 2:
+                continue
+            source_counts[primary_source] = source_counts.get(primary_source, 0) + 1
+
         top_active.append(s)
+        if len(top_active) >= max_stories:
+            break
 
     sections: list[str] = []
     for i, story in enumerate(top_active, 1):
@@ -136,21 +145,14 @@ def _build_material_text(brief: dict[str, Any], max_stories: int = 5) -> str:
 
         if summaries:
             part += "摘要：\n"
-            for s in summaries:
-                part += f"  - {s}\n"
+            for sm in summaries:
+                part += f"  - {sm}\n"
 
         if background:
             part += f"背景：{background}\n"
 
         if sources:
-            src_names = "、".join(s["name"] for s in sources[:3])
-            part += f"综合来源：{src_names}\n"
-
-        if background:
-            part += f"背景：{background}\n"
-
-        if sources:
-            src_names = "、".join(s["name"] for s in sources[:3])
+            src_names = "、".join(src["name"] for src in sources[:3])
             part += f"综合来源：{src_names}\n"
 
         sections.append(part)
@@ -170,7 +172,7 @@ def _build_editor_prompt(
 ## 操作要求
 1. **提炼金句 (Thesis)**：用一句话总结今天的整体科技趋势或最震撼的事件。
 2. **挑选头条 (Headline)**：选出一个最有深度、最值得讨论的新闻作为今日头条。
-3. **精选快讯 (Quick News)**：选出 2-3 条次要但有趣的新闻作为快讯。
+3. **精选快讯 (Quick News)**：选出 3-5 条次要但不同主题、不同来源的有趣新闻作为快讯（涵盖不同的领域或主题，保证播客内容丰富多元）。
 4. 忽略毫无价值或者完全重复的素材。
 
 ## 新闻素材
@@ -191,8 +193,7 @@ def _build_editor_prompt(
     }},
     ...
   ]
-}}
-"""
+}}"""
 
 
 def _build_writer_prompt(
