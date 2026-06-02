@@ -7,6 +7,7 @@ def _write_text(path: Path, text: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(text, encoding="utf-8")
 
+
 def build_index_html(
     site_dir: Path,
     podcast_title: str,
@@ -30,7 +31,7 @@ def build_index_html(
             continue
 
         title = ep.get("title", f"AI 新闻快报 | {ep_id}")
-        desc = ep.get("description", "") # Keeps HTML
+        desc = ep.get("description", "")  # Keeps HTML
         pub = ep.get("pubDate", "")
         mp3 = ep.get("enclosure_url", f"{base_url}/episodes/{ep_id}.mp3")
         txt = f"{base_url}/episodes/{ep_id}.txt"
@@ -39,7 +40,9 @@ def build_index_html(
         size_mb = round(length_val / 1048576.0, 1)
 
         # Simple HTML sanitization/escaping for scripts to satisfy the security test
-        desc_html = desc.replace("<script>", "&lt;script&gt;").replace("</script>", "&lt;/script&gt;")
+        desc_html = desc.replace("<script>", "&lt;script&gt;").replace(
+            "</script>", "&lt;/script&gt;"
+        )
 
         # Compress / fold the references list
         if "<ol>" in desc_html:
@@ -50,11 +53,11 @@ def build_index_html(
             desc_html = (
                 f"{intro}\n"
                 f'<details class="ep-links-collapse">\n'
-                f'  <summary>展开查看全部 {num_links} 条参考新闻链接</summary>\n'
+                f"  <summary>展开查看全部 {num_links} 条参考新闻链接</summary>\n"
                 f'  <div class="ep-links-collapse-content">\n'
-                f'    {links_list}\n'
-                f'  </div>\n'
-                f'</details>'
+                f"    {links_list}\n"
+                f"  </div>\n"
+                f"</details>"
             )
 
         # For the timeline cards
@@ -62,22 +65,22 @@ def build_index_html(
             f'<article class="ep-card" id="card-{ep_id}">\n'
             f'  <div class="ep-card-layout">\n'
             f'    <div class="ep-card-play-col">\n'
-            f'      <button class="play-btn-circle" onclick="togglePlay(\'{ep_id}\', \'{mp3}\', \'{title}\')" data-id="{ep_id}">▶</button>\n'
-            f'    </div>\n'
+            f"      <button class=\"play-btn-circle\" onclick=\"togglePlay('{ep_id}', '{mp3}', '{title}')\" data-id=\"{ep_id}\">▶</button>\n"
+            f"    </div>\n"
             f'    <div class="ep-card-content-col">\n'
             f'      <div class="ep-header">\n'
             f'        <h3 class="ep-title">{title}</h3>\n'
             f'        <span class="ep-meta">{pub}{f" · {size_mb} MB" if size_mb else ""}</span>\n'
-            f'      </div>\n'
+            f"      </div>\n"
             f'      <div class="ep-desc">{desc_html}</div>\n'
             f'      <div class="ep-links">\n'
             f'        <a href="{mp3}" download>⬇ 下载音频</a>\n'
             f'        <a href="{txt}" target="_blank">📄 原始文字稿</a>\n'
-            f'        <button class="btn-report-link" onclick="switchTab(\'report\'); loadReport(\'{ep_id}\')">📰 阅读科技日报</button>\n'
-            f'      </div>\n'
-            f'    </div>\n'
-            f'  </div>\n'
-            f'</article>'
+            f"        <button class=\"btn-report-link\" onclick=\"switchTab('report'); loadReport('{ep_id}')\">📰 阅读科技日报</button>\n"
+            f"      </div>\n"
+            f"    </div>\n"
+            f"  </div>\n"
+            f"</article>"
         )
 
     cards_html = "\n".join(ep_cards) if ep_cards else '<p class="empty">暂无节目，请稍后再来。</p>'
@@ -91,7 +94,9 @@ def build_index_html(
     latest_pub = ""
     if episodes:
         latest = episodes[0]
-        latest_id = latest.get("id", "") or latest.get("guid", "").rsplit("/", 1)[-1].replace(".mp3", "")
+        latest_id = latest.get("id", "") or latest.get("guid", "").rsplit("/", 1)[-1].replace(
+            ".mp3", ""
+        )
         latest_title = latest.get("title", f"AI 新闻快报 | {latest_id}")
         latest_mp3 = latest.get("enclosure_url", f"{base_url}/episodes/{latest_id}.mp3")
         latest_txt = f"{base_url}/episodes/{latest_id}.txt"
@@ -107,6 +112,18 @@ def build_index_html(
   <link rel="alternate" type="application/rss+xml" title="{podcast_title}" href="./feed.xml">
   <!-- Load Markdown Parser Marked.js -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Load Mermaid.js for Flowcharts -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script type="text/javascript">
+    if (window.mermaid) {
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: 'dark',
+        securityLevel: 'loose',
+        flowchart: { useWidth: true, htmlLabels: true }
+      });
+    }
+  </script>
   <style>
     :root {
       --bg: #07060d;
@@ -1288,6 +1305,30 @@ def build_index_html(
     }
     .footer a { color: var(--text-muted); text-decoration: none; font-weight: 600; }
     .footer a:hover { text-decoration: underline; color: #fff; }
+
+    /* Mermaid diagram styles */
+    .mermaid {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin: 24px 0;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+    }
+    .mermaid svg {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .report-markdown img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      margin: 24px 0;
+      box-shadow: var(--shadow-lg);
+    }
   </style>
 </head>
 <body>
@@ -1360,6 +1401,9 @@ def build_index_html(
             </button>
             <button class="tab-btn" id="btn-tab-report" onclick="switchTab('report')">
               <span>📰</span> 科技日报
+            </button>
+            <button class="tab-btn" id="btn-tab-walkthrough" onclick="switchTab('walkthrough')">
+              <span>⚙️</span> 运行机制
             </button>
           </nav>
         </div>
@@ -1436,6 +1480,18 @@ def build_index_html(
                 <p style="text-align: center; color: var(--text-muted); padding: 40px 0;">加载中...</p>
               </div>
             </main>
+          </div>
+        </div>
+
+        <!-- Tab Panel 3: Pipeline Walkthrough -->
+        <div class="tab-pane" id="pane-walkthrough">
+          <div class="report-viewer" style="min-height: 500px;">
+            <div class="report-viewer-header">
+              <div class="report-viewing-date-label">⚙️ AI News Podcast 自动化运行机制全景图解</div>
+            </div>
+            <div class="report-markdown" id="walkthrough-content-box">
+              <p style="text-align: center; color: var(--text-muted); padding: 40px 0;">正在加载运行机制图解...</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1595,9 +1651,60 @@ def build_index_html(
       if (tabId === 'episodes') {
         document.getElementById('btn-tab-episodes').classList.add('active');
         document.getElementById('pane-episodes').classList.add('active');
-      } else {
+      } else if (tabId === 'report') {
         document.getElementById('btn-tab-report').classList.add('active');
         document.getElementById('pane-report').classList.add('active');
+      } else if (tabId === 'walkthrough') {
+        document.getElementById('btn-tab-walkthrough').classList.add('active');
+        document.getElementById('pane-walkthrough').classList.add('active');
+        loadWalkthrough();
+      }
+    }
+
+    // Load walkthrough markdown and render flowcharts
+    async function loadWalkthrough() {
+      const contentBox = document.getElementById('walkthrough-content-box');
+      if (!contentBox) return;
+      if (contentBox.getAttribute('data-loaded') === 'true') return; // Only load once
+
+      contentBox.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 40px 0;">正在拉取运行机制图解，请稍候...</p>';
+
+      try {
+        const resp = await fetch('./pipeline_walkthrough.md');
+        if (!resp.ok) {
+          throw new Error('Walkthrough file not found');
+        }
+        let mdText = await resp.text();
+
+        // Rewrite image path from relative repo format to build folder flat format
+        mdText = mdText.replace('../assets/pipeline_infographic.png', './pipeline_infographic.png');
+
+        contentBox.innerHTML = marked.parse(mdText);
+
+        // Convert Mermaid code blocks into divs
+        const codeBlocks = contentBox.querySelectorAll('pre code.language-mermaid');
+        codeBlocks.forEach(block => {
+          const pre = block.parentElement;
+          const div = document.createElement('div');
+          div.className = 'mermaid';
+          div.textContent = block.textContent;
+          pre.replaceWith(div);
+        });
+
+        // Initialize/Run Mermaid if loaded
+        if (window.mermaid) {
+          try {
+            mermaid.run({
+              nodes: contentBox.querySelectorAll('.mermaid')
+            });
+          } catch (err) {
+            console.error('Mermaid render error:', err);
+          }
+        }
+
+        contentBox.setAttribute('data-loaded', 'true');
+      } catch (err) {
+        contentBox.innerHTML = '<p style="text-align: center; color: #ef4444; padding: 40px 0;">未找到运行机制文档。</p>';
       }
     }
 

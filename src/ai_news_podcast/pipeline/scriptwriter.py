@@ -71,12 +71,14 @@ def _sanitize_for_tts(text: str) -> str:
     text = re.sub(r"\[(?:FACT|INFERENCE|OPINION)\]\s*", "", text)
     text = re.sub(r"[（(][^）)]{0,10}(?:doge|狗头|笑|手动|滑稽|哭|捂脸)[^）)]{0,5}[）)]", "", text)
     text = re.sub(r"[「」『』【】]", "", text)
-    
+
     stripped_text = text.strip()
-    is_ssml = stripped_text.startswith("<speak") or "<speak" in stripped_text or "<voice" in stripped_text
+    is_ssml = (
+        stripped_text.startswith("<speak") or "<speak" in stripped_text or "<voice" in stripped_text
+    )
     if not is_ssml:
         text = re.sub(r"<[^>]+>", "", text)
-        
+
     text = re.sub(r"[（(]\s*[）)]", "", text)
 
     # 3. 压缩重复标点
@@ -419,7 +421,11 @@ def generate_script(
 
     # 简单统计Host A和Host B的出场次数
     stripped_script = script.strip()
-    is_ssml = stripped_script.startswith("<speak") or "<speak" in stripped_script or "<voice" in stripped_script
+    is_ssml = (
+        stripped_script.startswith("<speak")
+        or "<speak" in stripped_script
+        or "<voice" in stripped_script
+    )
 
     if is_ssml:
         host_a_count = script.count('name="zh-CN-YunxiNeural"')
