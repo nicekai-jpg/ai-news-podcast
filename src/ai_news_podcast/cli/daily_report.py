@@ -12,7 +12,7 @@ except ImportError:
     pass
 
 from ai_news_podcast.pipeline.fetcher import fetch_all
-from ai_news_podcast.pipeline.processor import process
+from ai_news_podcast.pipeline.processor import process, save_brief
 from ai_news_podcast.pipeline.scriptwriter import _call_llm
 from ai_news_podcast.utils import load_sources, read_yaml
 
@@ -112,6 +112,10 @@ async def main() -> int:
     # 2. 数据处理与评分
     log.info("Stage 2: Processing and scoring items...")
     brief = process(raw_items, processing_cfg=processing_cfg)
+
+    # 保存 brief 数据，以便 podcast-daily 可以直接复用，确保日报与播客数据源完全同步
+    brief_path = root / "data" / f"brief_{report_id}.json"
+    save_brief(brief, brief_path)
 
     # 3. 构造 Prompt 并调用 LLM
     log.info("Stage 3: Generating report via LLM (configured in config.yaml)...")
