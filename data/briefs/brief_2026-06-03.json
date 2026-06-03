@@ -1,0 +1,305 @@
+{
+  "thesis": "今天的AI领域动态丰富，多个方向齐头并进",
+  "stories": [
+    {
+      "cluster_id": 1,
+      "representative_title": "MiniMax M3一手实测：老黄PPT上74个Logo，我以为能难住它",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "还能带你打卡老黄同款南锣路线"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/428092.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "3f5b64ffc0645da0",
+          "title": "MiniMax M3一手实测：老黄PPT上74个Logo，我以为能难住它",
+          "link": "https://www.qbitai.com/2026/06/428092.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/428092.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-02T15:50:16+00:00",
+          "summary": "还能带你打卡老黄同款南锣路线",
+          "full_text_snippet": "MiniMax M3一手实测：老黄PPT上74个Logo，我以为能难住它\n还能带你打卡老黄同款南锣路线\n克雷西 发自 凹非寺\n量子位 | 公众号 QbitAI\nMiniMax M3突然上线后，Token Plan的新计费方式也引起了热议。\n众说纷纭之下，MiniMax官方也火速回应，提高了周用量限额，并对以前没有周限额的老用户保持了这个设定。\n但价格争议之外，更值得我们关注的，依然是模型能力。\n全球开发者，也都在关注模型能力和技术。\n比如Hermes框架的开发平台Nous Research的联创，就公开在X上给M3背书。\n还有Vercel CEO、GitHub 540k星AI大佬Guillermo Rauch，也在X上公开推荐MiniMax M3，称它的表现紧跟Opus和GPT-5，但价格只有其十分之一。\n至于模型的实际任务表现，官方一共给了三个Demo——复刻论文、优化CUDA算子，还有自己训练模型。\n我也自己上手，让M3尝试了一些新鲜玩法。\n不管是官方Demo还是我自己的测试，想完成这些任务，长上下文、多模态、Coding三个能力得同时在线才行。\n而M3，是国内第一个把这三件事同时做到的开源模型。\n就算在闭源模型当中，能做到的也就只有“御三家”（GPT、Claude、Gemini）的最新旗舰。\nM3给出的成绩是，SWE-Bench Pro上跑出59%，超过GPT-5.5和Gemini 3.1 Pro，接近Opus 4.7。\n而且M3效率更高，1M上下文下每token计算量压到上代的1/20，decoding实测加速超过15倍。\n同时，为了搭配M3，MiniMax这次还同步推出了MiniMax Code。\n这是个专为M3设计、并与M3一起训练的Harness，对标的就是Vibe Coding客户端里的扛把子Claude Code。\n既然如此，那就直接模型框架一起测，用MiniMax Code来看看M3的表现究竟如何。\n一手实测MiniMax M3\n官方Demo里，有人把一篇ICLR 2025的论文扔给它，让它独立复现，结果M3连续运行12小时后成功交付结果，全程没有任何辅助。\n这是一篇Outstanding Paper Award获奖论文，研究的是大模型微调过程中的学习动力学。\n具体来说，论文的核心是用“学习动态”框架统一解释大模型微调中的反直觉现象，该框架将每步梯度更新分解为三个因子，揭示了更新如何通过样本相似性在不同输出之间传播。\n基于此，论文提出在SFT阶段同时训练y−，让负样本提前“离开低概率区域”，从根源上缓解挤压效应。\n这个任务中，M3自主运行接近12小时，产出18次commit与23张实验图表。\n它不仅跑通了核心实验，成功吻合了SFT阶段的预测概率变化趋势，还清晰观测到DPO实验重点讨论的挤压效应，并顺利验证了原论文提出的Extend缓解方法。\n中途遇到跑不通的实验，它会自己进行诊断，碰到结果对不上的地方就自己调整，整个过程始终没有人工介入。\n我也照葫芦画瓢，找了一篇ICLR 2026的论文让它复现。\n这篇论文解决的是训练大模型时会遇到的一个底层问题。\nMuon是最近很火的优化器，它每一步更新权重之前，需要对梯度矩阵做一次矩阵极分解。\n经典做法是用Newton-Schulz迭代，每步套一个固定的五次多项式，简单但收敛慢。\n这篇论文提出的Polar Express，把固定系数换成了动态求解，即每一轮根据当前矩阵的奇异值范围，现场算出本轮理论最优的多项式系数。\nM3把整个实现拆成了三个模块，包括baseline方法、最优多项式求解器，以及主算法本体。\n其中最有含金量的是求解器，它从等波动条件出发，建线性方程组，迭代求解，自己算出一组系数。\n然后它专门画了一张验证图，把自己从零推算出来的系数，和论文里硬编码的数字并排放在一起，八个迭代步骤逐一比对。\n结果就像下面这张图，两条线几乎完全重叠，差异肉眼不可见。\n这张图本身就是最好的复现证明，说明M3独立走了一遍和论文作者相同的推导路径，得到了相同的答案。\n除了论文，我还用M3玩出了更多新花样。\n这不是老黄前一阵子来北京打卡了南锣鼓巷吗，当时量子位还专门做过一期探店文章。\n于是我就想，能不能让M3按照老黄的行程，做一个打卡地图呢。\n当然那篇文章我是没喂给M3看的，因为我想看看，它能不能凭借自己的力量，把这些信息搜集到。\nPrompt就这一句：\n搜一下黄仁勋最近一次来北京都打卡了哪些美食，利用真实地图制作可交互的一个打卡攻略网页\n实话实说，这个任务我一开始并没有抱太大希望，倒不是说这个任务有多难，是我觉得M3可能会卡在获取地图资源这一步。\n但我没想到，还真有免费的地图开发资源可以直接获取，而且还被M3发现了。\n它先搜集了网络上的信息，然后总结出了老黄去过的打卡点，然后搜...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "representative_title": "OpenAI挖走中科大少年班校友！12岁上大学，哈佛史上最年轻正教授",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "还挖走了苏炜杰"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/428003.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "9bbb8b5f7f88c761",
+          "title": "OpenAI挖走中科大少年班校友！12岁上大学，哈佛史上最年轻正教授",
+          "link": "https://www.qbitai.com/2026/06/428003.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/428003.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-02T14:54:29+00:00",
+          "summary": "还挖走了苏炜杰",
+          "full_text_snippet": "OpenAI挖走中科大少年班校友！12岁上大学，哈佛史上最年轻正教授\n还挖走了苏炜杰\n鹭羽 发自 凹非寺\n量子位 | 公众号 QbitAI\n是的！辣个男人也加盟OpenAI了……\nTitle简直亮瞎眼：哈佛史上最年轻的华人正教授、斯隆奖&物理学新视野奖得主、弦理论领域最耀眼的新星——\n尹希。\n据海外消息爆料，尹希已加入OpenAI，合作参与AI与理论物理交叉领域研究。\n但截至目前，哈佛官网并未明确撤下相关教职信息，OpenAI与尹希本人也尚未正式官宣。\n更多知情人士透露，尹希此行更像是短期的学术gap，借助学术休假（Sabbatical）制度，在保留教职的情况下，外出前往OpenAI开展新的研究工作。\n类似的情况还有同期加盟OpenAI的苏炜杰。\n继斩获统计学最高荣誉的考普斯会长奖后，苏炜杰在自己社媒上明确表态：\n将在学术休假期间加入OpenAI，与此同时，正式晋升为宾夕法尼亚大学沃顿商学院正教授。\n不过对于尹希与OpenAI的强强联合，业内也给出了不同的看法。\n香港大学计算与数据科学学院院长马毅就公开质疑，尹希对AI极限判断过于乐观：\n尹希是伟大的物理学家，但并不意味着也是当前AI技术的专家，可以轻易断言AI的局限性与否。\n尹希何许人也\n事实上，尹希跨界AI的消息并非空穴来风，他对AI的热情由来已久。\n翻开尹希的GitHub主页，最近连发多个Lean形式化项目，贡献者一栏中——\nClaude均赫然在列。\n更有趣的是，就在他加盟OpenAI的消息满天飞的同时，此人悄悄上传了由他亲自指导、GPT 5.5编撰的量子场论专著。\n总共内容包括二十卷，前十二卷从局域量子场论基础、粒子散射、重整化、规范场论、共形场论一直延伸到弯曲时空量子场论，囊括现代量子场论主流基础分支；后八卷属于进阶拓展内容，还没写……\n所以，要不还得说是大牛呢，世界纷纷扰扰，当事人还在AI Fever。\n他在四月接受哈佛校报采访时，更是直接放出狠话：\n没有什么人类智力是AI复制不了的。\nBTW，这也是前面马毅教授反驳他的理由。\n在尹希眼里，如果把AI和效率工具简单划等号，那就太肤浅了，现在的AI更像是超越极限的算力外挂——以前那些因为算力压根不会考虑的工作，现在通通都给安排上。\n当然过程中还少不了大量的人工监督，但这波仍至少帮他加速了100倍：\nAI几周写出的代码，要换我自己来，起码得写个十年。\n尹希率先想明白这一点：AI辅助物理研究将会带来前所未有的突破。这或许就是他选择OpenAI的理由，去最接近AI的地方，做AI for Science。\n要真正理解他的选择，还得从他的履历出发。\n出生湖南株洲，12岁就考入中科大少年班，2006年获得哈佛大学物理学博士学位，其导师是弦理论和量子引力领域大牛Andrew Strominger。\n同年他留在哈佛继续博士后研究工作，这也是哈佛300年来首次打破了本校博士不得在哈佛继续博士后研究的惯例。\n2008年，尹希加入哈佛大学物理系任教，在他31岁那年，更是直接升任正教授，成为哈佛历史上最年轻的华人正教授。\n奖项上，更是几乎拿遍了青年科学家的顶级荣誉：\n2013年荣获斯隆研究奖（Sloan Research Fellowship），2017年摘得被誉为“科学界奥斯卡”的物理学新视野奖，被同行视作未来最有望冲击诺贝尔物理学奖的人选之一。\n一路以来，可谓是星光熠熠。\n但实则尹希本人相当低调，不发社媒，获奖后也鲜少宣传，几乎是一门心思全扑在课题上。\n他长期深耕理论物理最硬核的部分，包括弦理论、量子场论、量子引力及全息原理，发表上百篇核心论文。\n其中，他与Simone Giombi一同系统发展并验证了高自旋引力与共形场论对应关系，其关于三维AdS量子引力配分函数的研究，也被公认为是AdS₃/CFT₂研究中的经典成果之一。\n另外，他还在黑洞熵和弦理论微观态方面取得多项重要成果。\n照这样看，尹希似乎更符合大众印象中的“老学究”，天赋异禀又异常专注。但这就片面了，要我说，不设限甚至有点离经叛道，才是他最佳的注脚。\n在他的个人网站上，常年挂着一篇论文，名曰《致丑陋物理学的颂歌》。\n全文都在反复论证同一个反主流的观点：\n漂亮的数学推导会赢得掌声，但改变世界的往往是那些让数学家感到别扭的物理学，它们看似混乱、不严谨、表述粗糙，但它们才是物理学最深刻、最具突破性的思想。\n换言之，物理学家就是要用强大的物理直觉，不断打破数学的条条框框，做到让数学家抓狂，物理就成了。\n在论文的最后，尹希还不忘补刀：\n如果说有什么能让数学家在读物理论文时感到最痛苦、最绝望，那一定是去读Lenny Susskind（弦理论之父）的论文。\n数学家：伤害性不高，侮辱性极强！（bushi）\n另外，他本人实践应用力学的方式是——\n攀岩。\nOpenAI求贤如渴\n其实除了尹希，O...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "representative_title": "字节开源统一框架Bernini：给DiT配个“大模型军师”，AI视频编辑先理解再动手",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "AI视频编辑先理解再动手"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/427810.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "9314c81ebe412e08",
+          "title": "字节开源统一框架Bernini：给DiT配个“大模型军师”，AI视频编辑先理解再动手",
+          "link": "https://www.qbitai.com/2026/06/427810.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/427810.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-02T09:28:00+00:00",
+          "summary": "AI视频编辑先理解再动手",
+          "full_text_snippet": "字节开源统一框架Bernini：给DiT配个“大模型军师”，AI视频编辑先理解再动手\nAI视频编辑先理解再动手\n梦瑶 发自 凹非寺\n量子位 | 公众号 QbitAI\n大家都懂，视频生成这件事，最让创作者头疼的，不一定是画面不够清晰。\n而是模型常常听不懂人话！！！（扎心.jpg)\n想把晴天改成雪天，它可能只会往画面上撒雪花；想把一段动画植入商场LED大屏，它可能边界乱飘、透视不稳。\n于是乎，问题来了：AI视频生成，能不能先理解创作者到底想改什么，再动手生成？\n就在刚刚，字节商业化技术团队反手给出一个行业新解法——\n开源面向视频生成与视频编辑的统一框架：Bernini。\n主打一个先理解再生成～\nBernini的思路很直接，让多模态大模型先负责语义理解与规划，再交给diffusion模型完成高质量视觉渲染。\n在能力上，Bernini覆盖了参考生成、视频编辑等多种任务，重点体现的就是两个字：「可控」。\n比如改变整体视觉风格时，不只是把单帧画得好看，还能稳住前后帧的一致性，主打一个效果超级稳：\n这下好了，AI视频生成也能从听prompt干活，往先理解、再动手再进一步了～\n对了，目前，Bernini的推理代码和权重已经开放！！（欢呼.jpg)\n一条指令改视频，Bernini轻松拿捏「可控编辑」！\n如果说过去很多视频生成模型更像按提示词出片，那Bernini想解决的，是另一个更实际的问题——\n生成之后，怎么继续改？\n我们日常碰到的大多数调整需求听起来都很easy，但对视频模型来说并不简单！！！\n因为视频编辑不是改一张图，而是在一段连续画面里，既要听懂指令，又要保住主体、结构、镜头和运动关系。\n稍微处理不好，就会出现主体变形、背景漂移、动作断裂、帧间闪烁等问题。\n而Bernini的核心思路，正是把这个过程拆得更清楚。\n△AI生成\n我们可以把Bernini理解成一个AI视频片场里的「导演+后期团队」。\n前面负责导演的，是一个叫MLLM-based planner的多模态大模型规划器。\n它会先看懂你的文本指令，也会一起理解源视频、参考图片、参考视频这些素材，判断目标画面应该变成什么样。\n等这一步想清楚后，再交给diffusion模型DiT-based renderer来完成视觉渲染，把前面规划好的语义目标，真正变成连续、稳定、高质量的视频画面。\n所以Bernini框架的妙处，就在于分工足够清楚：\n多模态大模型负责想明白，Diffusion Transformer负责生成出来。\n从文本到视频生成，到视频编辑，再到基于图像和视频参考的复杂控制生成都全部梭哈！\n△Bernini在统一框架内支持多种视频生成任务\n这套巧妙分工，也让Bernini在视频可控编辑上，展现出了一批相当直观的视频编辑能力。\n最基础的，是一条指令改变天气、季节、材质和风格的能力。\n比如同一段城市航拍视频，输入指令后，可以从晴天切到雾天、雨天、雪天。\n最关键是，它处理的并不只是天上多几片雪、画面加一层滤镜，而是会连带调整天空、光照、路面、建筑表面和整体环境氛围，让这场天气变化看起来像真的发生在原场景里：\n更进一步，Bernini的语义编辑已经开始进入「镜头语言」。\n首先就是能控制画面关注区域的视角、焦点和动作。\n在视角编辑上，Bernini能进一步理解场景里的三维关系，让部分视角调整结果更符合透视、结构和空间逻辑：\n在焦点编辑能力上，Bernini还能够根据指令调整画面的关注区域，让视频叙事重心随之改变。\n比如一个画面里有多个物体，我们可以让镜头更关注桌上的收音机，也可以让焦点从前景转到背景，so easy～\n当然，视频创作里最容易卡bug的，还有动作。（doge）\n毕竟很多AI视频静止看还行，一动起来就露馅：主体变形、动作断裂、背景漂移，镜头也跟着不稳！！\n值得一提的是，Bernini在保留主体身份和场景结构的前提下，可以高精准度地改变主体动作行为。\n我们来看下面这段棕熊视频，哪怕从普通状态改成起身跳舞、咆哮，环境、光照和镜头关系依然能保持稳定～\n这就意味着，Bernini改视频不只是让主体「动起来」，还要让动作变化「自然嵌进」原来的画面里。\n从反复抽卡到哪里不对改哪里，AI视频终于开始有点后期软件的味儿了？？？\n参考素材上场，视频创作更可控、更一致\n友友们日常做AIGC内容创作时，还会遇到一个问题，那就是——\n我们真的很难用一句prompt，精确描述想要的视觉效果……\n尤其是碰到具体材质、某个商品、某种电影色调，或者一段需要植入到屏幕里的视频素材，就更容易翻车…..\n好巧不巧， Bernini除了编辑的本事很强外，还有一个贼实用的能力：支持图片和视频作为编辑参考。\n不仅如此，它还能基于参考输入直接生成新视频，把物体、角色和场景的一致性问题狠狠拿捏！！\n不只靠prompt：用...",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "representative_title": "滴滴2026Q1财报：国内基本盘稳固 国际业务成第二增长引擎",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "日均订单刷新历史纪录至3940万单"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/428331.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "dfbb62280436029b",
+          "title": "滴滴2026Q1财报：国内基本盘稳固 国际业务成第二增长引擎",
+          "link": "https://www.qbitai.com/2026/06/428331.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/428331.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-02T12:28:08+00:00",
+          "summary": "日均订单刷新历史纪录至3940万单",
+          "full_text_snippet": "滴滴2026Q1财报：国内基本盘稳固 国际业务成第二增长引擎\n日均订单刷新历史纪录至3940万单\n6月2日，滴滴在其官方发布2026年一季度业绩报告。国内业务稳健增长，海外多业务协同效应持续释放。\n一季度，滴滴核心平台订单量（包括中国出行和国际业务在内）同比增长13%，达到48亿单。其中，中国出行单量连续13个季度稳定增长；国际业务快速发展，本季度实现高达60%的GTV增速，带动核心平台GTV同比增长21%至1233亿元，经调EBITDA盈利9.13亿元。\n滴滴创始人、CEO程维表示：第一季度中国出行再创新高，国际业务强劲增长。我们推出AI产品小滴，依托AI能力升级安全管理体系，加大线下服务体系建设，做深品类打造品牌服务，升级会员体系，让出行体验更安心省心，让提供好服务的司机获得更多收入。我们对国际业务发展充满信心，将持续加强国际业务建设，深耕本地服务。同时，加大自动驾驶投入，加速自动驾驶在国内外市场落地应用，携手各方伙伴为行业和社会创造长期价值。\nAI技术全面融入打车场景 多元化拓宽服务边界\n2026年一季度，滴滴中国出行实现35.47亿订单，日均订单刷新历史纪录至3940万单，GTV同比增长10%至858亿元。这得益于公司长期以来在出行领域的精耕细作。\n一季度，公司加速了AI技术在出行场景的应用落地。AI出行助手小滴升级，依托十余年积累的真实运营数据，支持“空气清新、后备厢大、驾驶平稳”等90余个精细化服务标签，通过读懂用户模糊、个性化的出行需求，转化为平台可执行的匹配条件，让服务从“打到车”跨越为“打对车”。\n在安全领域，将多年沉淀的安全能力与AI技术深度融合，研发安全AI模型平台，引入”AI智能研判+安全专家人工复核”人机协同模式，全面提升安全风险识别精度与干预效率，在持续提升平台安全能力的基础上，推动治理效率提升和运营价值优化。\n打对车，更要坐好车，优质服务是关键，近年来滴滴持续构建服务壁垒。一方面，自2024年起，滴滴在全国多城上线轻享、甄选快车、六座快车等溢价品类，丰富多元品类；另一方面，会员体系持续优化升级，覆盖更多权益与场景，有效提升了用户活跃度与留存。去年5月至今，滴滴会员累计使用“快速应答”权益近三千万次，海底捞、亚朵、华住会、希尔顿等会员联名权益累计领取量突破四百万次。\nAI的全面应用与高品质服务的协同发力，既充分挖掘滴滴的服务潜力，也有效满足了用户个性化的出行需求。年轻用户已成为AI打车的主力群体，00后占比超40%。确定性与优质服务共同构建滴滴的核心竞争力。而参与高品质溢价订单服务，司机每小时收入可提升5%-20%。高收益激励司机好服务，好服务带来好口碑，好口碑带来更多订单，多订单提升司机收入，形成“好服务-好收入-好体验”的正向循环，为业务增长注入持续动力。\n此外，滴滴仍在不断拓展服务边界，全方位覆盖出行领域。开放打车Skill，支持AI生态下更多智能化出行需求；畅行卡和海外出行的推出，满足假期攀升的异地及出境打车需求；联合代理加盟商覆盖县域出行，出行服务向更广阔地域延伸。经过长期积累，滴滴充电的智能充电网络目前覆盖290余座城市，连接超7.2万座充电站，截至一季度末累计服务超19亿次，充电量、快充枪占比及服务效率行业领先。让用户在陌生的城市，总有熟悉的滴滴相伴。\n国际业务GTV同比增长60% 生态潜力持续释放\n得益于生态协同效应和运营效率的持续提升，以及对新业务的高效战略投入，滴滴国际业务展现出强劲增长态势。一季度，国际业务订单量同比增长27%至12.55亿单，日均订单量达1394万单。同期GTV实现约60%的高速增长，达到376亿元，占滴滴整体GTV的比例升至30%，国际业务已成为驱动滴滴业绩增长不可或缺的重要引擎。\n作为国际业务的生态锚点，国际出行业务继2025年实现盈利后，本季度延续盈利态势，并持续通过用户流量、运力网络及品牌影响力等生态协同效应助推新业务快速增长。\n自去年4月重启以来，巴西外卖业务（99 Food）已进入当地70多个城市。目前，巴西外卖业务约57%的用户来自出行业务转化，平台上约60%的两轮骑手同时服务于出行及外卖配送业务，约35%的平台用户同时使用出行及外卖服务。随着生态协同不断深化，国际业务打造的超级App生态潜力正持续释放。\n目前，滴滴国际业务覆盖拉美、亚太和非洲的14个国家和地区，为当地用户提供出行、外卖和金融等服务，服务用户超过1亿。\n在持续投入国际业务的同时，随着人工智能的快速发展与应用，滴滴仍保持了对自动驾驶等前沿技术创新的坚定投入。基于滴滴在国际业务上的积累，以及滴滴自动驾驶在AI技术、硬件和出行场景上的体系能力，滴滴自动驾驶正在加快全球化布局，坚持安全体系和本地化服务能力的协同落地，持续推进自动驾驶AI技术和汽车形态的进化，携手本地合作伙伴，推动中...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 0,
+      "representative_title": "刚刚，Meta Skill来了",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "GitHub最新火爆仓库：OpenSquilla"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/428335.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "47e175fb5e0145f2",
+          "title": "刚刚，Meta Skill来了",
+          "link": "https://www.qbitai.com/2026/06/428335.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/428335.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-03T01:29:35+00:00",
+          "summary": "GitHub最新火爆仓库：OpenSquilla。",
+          "full_text_snippet": "刚刚，Meta Skill来了\nGitHub最新火爆仓库：OpenSquilla。\nJay 发自 凹非寺\n量子位 | 公众号 QbitAI\nGitHub最新火爆仓库：OpenSquilla。\n继龙虾、爱马仕后又一个开始飞速攀升的Agent，现在已经2000多star了。\n快速看了下，最大卖点是其内置了一个「智能模型路由」，这样一来，同样的任务，Token成本能比龙虾省60-80%。\n跑任务的时候长这样子，跟个「老虎机」一样。\n很爽，任务做完会弹出一个动画，显示帮你节省了多少Token，还能溯源各环节Token消耗量。\n经常怒省90%多，感觉钱包突然鼓了起来。\n实在太夸张了，顶级「守财奴」（bushi）。\n但今天想聊的不是这个。\n他们刚发布了个新功能，叫Meta Skill。\n不是那个Meta，就是直译——元Skill，Skill的Skill。\n一个Meta Skill内嵌多个Skill，拼接到一块就是一本超级白皮书，能端到端打通一整套长程Workflow。\n△图为AI生成\nMeta Skill实测\n也是很巧，上上周我在把我们AIGC产业峰会后台工作做自动化时，其实就有过这个想法。\n大家可能不知道，办这么一场大会其实很繁琐，工作链条非常碎片化。\n之前梳理过SOP，我负责的部分大概长这样。\n看着很清晰，但其实要自动化的话，就意味着图中每一个蓝色方块，都需要在对话框单独调用Skill。\n像癞蛤蟆一样戳一下动一下，全程Human in the loop，光翻个Skill列表就够忙活半天，非常烦人。\n所以工作流固化后，我给这堆上下文炼化成了个超级Skill，端到端了。\n拿到上下文后，它会自动判断现在是处于哪个阶段，然后再调用对应的子Skill交付结果。\n再加上心跳机制定时查看状态文档，就可以完全自动化推进。\n但说实话，想创建这么一大包Skill，真的很麻烦，而且最后结果其实也蛮粗糙的。\n这还是建立在我本身对内容行业有Know-How的前提下，如果涉及到需要跨行业专家经验整合的任务，照这么排列组合Skill，那真得是灾难了。\n所以我一直在疯狂寻觅，有没有像Claude自带Skill那种，提前封装好的。\n（伸手党ing）\n没想到，前天一看，GitHub上还真有这么个仓库！\n9个封装好的Meta Skill，内嵌在Agent里那种。\n咱挑个实测下吧，就选这个叫meta-kid-project-planner的。\n一个给儿童项目规划用的Meta Skill，当孩子需要做科学展项目、兴趣手工、创意小发明啥的，它能帮助孩子从零开始制定一个可执行的项目计划。\n主要最近不正好是六一吗，感觉还挺合适的。为了偷懒 ，场景就设计成让小朋友自学Meta Skill，帮我给大家讲讲这9个SKill分别都是干嘛的。\nPrompt长这样：\n孩子9岁，想做一本Meta Skill魔法书，先网页呈现再做纸质小书，每页介绍一个咒语。\n不用写很详细，正式开工前，它会根据Skill指令，要求你提供更多信息。\n然后，就进入「彻底疯狂」时间了。\n太离谱了，嗖的一下吐出来这么多执行轨迹，把需求拆分成了一长串子任务。\n全程无需人介入，自己跑了20多分钟，最终交付了一份完整的7天项目规划包。\n确实挺面面俱到的，甚至考虑到是小朋友，还额外做了一轮安全审查。\n甚至给各种预案都做好了。\n咋做到的？\n我翻了一下这个Meta Skill的SKILL.md源文件，大概流程是这样：\n1、立项：询问用户偏好，年龄、周期、预算、家长参与度。\n2、可行性分类：判断安全不安全、需不需要大人帮忙、要不要额外买东西。\n3、执行：分步计划→材料清单→安全提醒→家长学习目标→最终组装交付。\n如果涉及到户外活动，甚至会调用web search查天气……\n△图为AI生成\n整套工作流，由5个不同的原子Skill拼接而成。\n最后的交付结果就是上面那个项目规划包md，3000字左右。\n但为了方便看，我又让它用Claude Opus 4.7，基于这些上下文搓了个HTML。\n交互逻辑跟实体书一样，每次翻页都有动画。\n一共9个Meta Skill，都是遵循我「哈利波特风格」的指令讲解的。\n最后还有一个「魔镜魔镜」功能，方便小朋友根据需求选择Skill。\n网页已经部署了，链接在文末，大家如果不想看MD的话，可以通过这种形式了解这9个Meta Skill。\n对了，还有个挺重要的事。\n实测下来，感觉这个Squilla路由确实能省蛮多钱，不会啥都让Claude来处理。\n比如像这种弱智问题，就只花了我三分钱。\n（ps：DS降价后真的很香啊！！）\n看了下这个Token成本Benchmark，还是挺有冲击力的。\n当然，你也可以自己选择要不要打开，或者直接Prompt要求锁定到某个模型。\n最后说下咋安装。\n说实话，其实还挺简单的，只要你装过...",
+          "category": "open_source",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "representative_title": "头部厂商集体买单，全球AI原生达人营销头号平台正在诞生！",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "平台入驻全球达人已超10万"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/427922.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "4567374cc44ae4cf",
+          "title": "头部厂商集体买单，全球AI原生达人营销头号平台正在诞生！",
+          "link": "https://www.qbitai.com/2026/06/427922.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/427922.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-02T14:52:01+00:00",
+          "summary": "平台入驻全球达人已超10万",
+          "full_text_snippet": "头部厂商集体买单，全球AI原生达人营销头号平台正在诞生！\n平台入驻全球达人已超10万\n鹭羽 发自 凹非寺\n量子位 | 公众号 QbitAI\n浪潮之下，AI Agent正在猛力砸向一个万亿级市场。\n如果说过去几年，大多数AI产品解决的还是效率问题，那么今年以来，一个更值得关注的趋势正在涌现：\nAI开始深度参与业务执行。\n不再止步于生成内容的辅助创作，而是主动对接、跟进进度、推进项目甚至完成交易。\n换句话说，AI正在从Copilot走向Autopilot。\n这也引出了一个新的问题：当泛能力的大模型诞生，垂直细分领域的AI应用最终何去何从？\n来自营销行业的AI Native双边平台走进了量子位的视线，它给出的思路或许值得参考。\n它创造一个新的AI Native平台，类比达人营销界的AI版Uber。通过双边平台及数据飞轮，构建超越AI Agent的深厚壁垒，完成大模型做不到的事。\n它就是全球入驻达人规模最大的AI Native达人营销平台「AhaCreator」，刚刚上线3.0版本。随着越来越多的海外达人在此收获商业化收益，上线1年以来，平台入驻达人数已飙升至10万。\n顾名思义，AhaCreator致力于通过AI为广告主和创作者创造Aha Moment（极好的用户体验）。\n它采取的方式相当独特，没有把Agent简单视作营销工具，而是以Agent为桥梁打造一个连接海外达人和品牌方的双边营销平台。\n与国内相对成熟的达人市场不同，海外达人营销长期处于碎片化状态，品牌分散，达人也分散，散对散，所以沟通成本极高。\n一边是极度分散的全球企业用户，一边是遍布140+国家的百万海外达人，AhaCreator则通过Agent能力，精准重构供需连接过程。\n从达人匹配、建联、议价、催稿、数据回收，整个营销链路都在平台内完成闭环。\n更关键的是，AhaCreator已经在真实交易中，沉淀出了一套难以复制的算法飞轮体系。\n平台掌握着10万+达人在不同合作场景下的真实闭环交易数据，当这些数据持续流经交易链路，Agent便会逐渐成长为最懂达人营销的AI专家。\n这也是为什么，AhaCreator瞄准的并非下一个营销工具，而是一个持续自我进化的AI Native平台。\n而这绝非一个简单的概念包装，相反AhaCreator走得相当稳妥，它瞄准的是背后价值千亿美元的蓝海赛道。\n据行业可靠数据，全球广告营销预算约2万亿美元，其中达人营销市场已达千亿美元级。\n与此同时，全球品牌跨国扩张需求旺盛，2026年的国际市场竞争中，商品平替已经是过去式，如今拼的是跨国品牌的本土化运营与文化共鸣。\nAhaCreator独创的AI原生双边平台，以及行业稀缺的真实交易闭环数据，共同构筑起行业领先的技术+平台双护城河。对于Claude Code、ChatGPT这类泛能力大模型而言，能力可以快速追平，但真实交易数据和双边网络效应却无法凭空复制。\n这也让达人营销成为AI时代少有的、仍具巨大增量空间和长期壁垒的蓝海市场。\n从卖全球到立全球，AhaCreator率先意识到这一点：\n截至目前，平台已覆盖10万+入驻达人、140+国家地区，触及TikTok、Instagram、YouTube、X（Twitter）、LinkedIn等海外主流平台，覆盖北美、欧洲、拉美及东南亚等核心市场。\n全球最权威的达人营销领域研究平台Influencer Marketing Hub更是将其评为“2026年最佳达人营销AI Agent”，并获评2025-2026虎啸奖年度最佳营销自动化平台。\n这些认可的背后，是其持续扩张的创作者生态与不断沉淀的合作数据，AhaCreator正在为不同预算规模和发展阶段的企业提供可规模化、可持续的达人营销资源，满足从产品冷启动、效果增长到全球化品牌建设的多元化需求。\n目前已服务超300家品牌用户，不仅有SeaArt、Hakko AI、ONLYOFFICE这些明星AI工具，还有WonderBiotics、Sportneer等知名品牌。\n此外， AhaCreator近期还与蓝色光标、明略科技达成战略合作，共建全球出海新格局。\n可见，达人营销这件事，正在被AI从根本上改写。\n从「追着达人跑」到「AI全自动」\n实际上，达人营销并不是大家想象中“找几个网红发条广告”那么简单。\n一位出海品牌的运营负责人曾向量子位吐露：哪怕只是一个中等规模的Campaign，光建联达人就要广发数百封邮件，好不容易谈下来，催稿又成了噩梦，经常要追着达人跑好几轮才能拿到内容。\n整个工作流程相当碎片化，需要消耗大量的人力物力，而且期间压根不敢松懈，一旦某个环节掉链子，整个项目都很有可能翻车。\nAhaCreator的解题思路就很直接——\n不做单一环节的工具，而是用Agent将达人营销的完整工作流串联起，让品牌方和达人将精力放...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "representative_title": "Rehumanizing global health care with agentic AI",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "The global health care sector is under increasing strain"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "MIT Tech Review AI",
+            "authority": 3,
+            "link": "https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-global-health-care-with-agentic-ai/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "cac4b329268ed2f9",
+          "title": "Rehumanizing global health care with agentic AI",
+          "link": "https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-global-health-care-with-agentic-ai/",
+          "normalized_link": "https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-global-health-care-with-agentic-ai",
+          "source_name": "MIT Tech Review AI",
+          "source_category": "analysis",
+          "published_at": "2026-06-02T11:23:34+00:00",
+          "summary": "The global health care sector is under increasing strain. Decades of chronic underinvestment and constraints in recruitment have coincided with a surge in demand for services for aging populations. Gaps in provision are already taking a toll, with fragmented access to care and high rates of stress and burnout among staff. And it’s getting worse.…",
+          "full_text_snippet": "Sponsored\nRehumanizing global health care with agentic AI\nAs health-care providers face looming staff shortages, AI agents are automating complex administrative tasks and even clinical decisions so humans can focus more on patient care.\nIn partnership withEma\nThe global health care sector is under increasing strain.\nDecades of chronic underinvestment and constraints in recruitment have coincided with a surge in demand for services for aging populations. Gaps in provision are already taking a toll, with fragmented access to care and high rates of stress and burnout among staff. And it’s getting worse. The World Health Organization has warned that current shortfalls will increase to 11 million workers by 2030.\nIn their urgent hunt for a solution, many health-care providers are now pinning their hopes on agentic AI, with more than two-thirds (68%) having already adopted AI agents into their workforce, according to KPMG.\nThe technology is being deployed to automate complex back-office processes, collaborate with medical teams, and even triage patients, all in a bid to reduce the cognitive load on clinicians and improve quality of care for patients as the supply of human health-care workers dwindles.\nA different type of digitalization\nUntil now, the benefits of digitalization within health care have been limited.\nMany staff have blamed slow or outdated technology for adding to the administrative burden rather than alleviating it. For example, U.S. patient data was migrated to electronic health records (EHRs) in the early 2000s, but this data remains fragmented and reliant on manual inputs.\nNew telehealth services and digital care tools, like remote monitors, have had similar shortcomings, says Ashis Barad, MD, chief digital and technology officer at Hospital for Special Surgery (HSS), an academic medical center in New York that focuses on musculoskeletal health. Both technologies have helped improve access to health care by removing geographical barriers, he says, but...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_raw": 7,
+    "total_deduped": 7,
+    "total_clusters": 7,
+    "generated_at": "2026-06-03T03:22:19.017478+00:00"
+  }
+}
