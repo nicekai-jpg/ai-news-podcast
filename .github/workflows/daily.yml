@@ -2,7 +2,7 @@ name: Daily Podcast
 
 on:
   schedule:
-    - cron: "30 23 * * *"
+    - cron: "43 21 * * *"
   workflow_dispatch:
 
 permissions:
