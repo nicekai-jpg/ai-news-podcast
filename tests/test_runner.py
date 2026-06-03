@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from pathlib import Path
-from ai_news_podcast.pipeline.runner import get_recent_broadcasted_urls
+import pytest
+from ai_news_podcast.pipeline.runner import get_recent_broadcasted_urls, get_recent_broadcasted_titles
 from ai_news_podcast.utils import write_json
 
 
@@ -41,3 +42,74 @@ def test_get_recent_broadcasted_urls_valid(tmp_path: Path) -> None:
     assert "https://example.com/moment-3" in urls
     # Ensure mp3 is not included
     assert "https://example.com/demo.mp3" not in urls
+
+
+def test_get_recent_broadcasted_titles(tmp_path: Path) -> None:
+    path = tmp_path / "episodes.json"
+    episodes = [
+        {
+            "id": "2026-06-03",
+            "description": '<p>Demo description</p><ol><li>🔴 <a href="https://example.com/moment-1">Google I/O 2026 recap</a></li><li>🔴 <a href="http://example.com/moment-2/">Anthropic Claude 3.5 Sonnet</a></li></ol>',
+            "enclosure_url": "https://example.com/demo.mp3",
+        }
+    ]
+    write_json(path, episodes)
+
+    titles = get_recent_broadcasted_titles(path, limit=1)
+    assert isinstance(titles, list)
+    assert len(titles) == 2
+    assert "Google I/O 2026 recap" in titles
+    assert "Anthropic Claude 3.5 Sonnet" in titles
+
+
+@pytest.mark.asyncio
+async def test_run_pipeline_semantic_dedup(tmp_path: Path, raw_item_factory) -> None:
+    from unittest.mock import patch, AsyncMock
+    from ai_news_podcast.pipeline.runner import run_pipeline
+
+    episodes_path = tmp_path / "episodes.json"
+    episodes = [
+        {
+            "id": "2026-06-02",
+            "description": '<p>Demo</p><ol><li>🔴 <a href="https://example.com/item1">Catch up on 12 major I/O 2026 moments</a></li></ol>',
+        }
+    ]
+    write_json(episodes_path, episodes)
+
+    cfg = {
+        "processing": {
+            "dedup": {
+                "semantic_sim_threshold": 0.20,
+            }
+        }
+    }
+
+    item_similar = raw_item_factory(
+        title="Google I/O 2026 developer collection",
+        link="https://example.com/similar-item",
+        summary="A compilation of developer resources from I/O 2026.",
+    )
+    item_different = raw_item_factory(
+        title="MiniMax M3 model released",
+        link="https://example.com/diff-item",
+        summary="MiniMax released their new M3 model today with excellent multi-modal support.",
+    )
+
+    with patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch, \
+         patch("ai_news_podcast.pipeline.runner.process") as mock_process:
+
+        mock_fetch.return_value = [item_similar, item_different]
+        mock_process.return_value = {"stories": []}
+
+        await run_pipeline(
+            cfg=cfg,
+            sources=[],
+            date_str="2026-06-03",
+            data_dir=tmp_path,
+            force_refresh=True,
+        )
+
+        called_args = mock_process.call_args[0][0]
+        assert len(called_args) == 1
+        assert called_args[0].title == "MiniMax M3 model released"
+

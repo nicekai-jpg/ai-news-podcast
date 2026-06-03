@@ -62,6 +62,35 @@ def get_recent_broadcasted_urls(episodes_json_path: Path, limit: int = 14) -> se
     return urls
 
 
+def get_recent_broadcasted_titles(episodes_json_path: Path, limit: int = 14) -> list[str]:
+    """提取最近若干期节目中已经播报过的新闻标题，用于跨期语义去重。"""
+    import re
+
+    titles: list[str] = []
+    if not episodes_json_path.exists():
+        return titles
+
+    try:
+        episodes = read_json(episodes_json_path)
+        if not isinstance(episodes, list):
+            return titles
+
+        for ep in episodes[:limit]:
+            desc = ep.get("description", "")
+            if not desc:
+                continue
+            # 使用 regex 匹配链接和锚文本（标题）
+            # 例如: <li>🔴 <a href="URL">Title</a> <small>(Source)</small></li>
+            matches = re.findall(r'<a\s+[^>]*href="[^"]+"[^>]*>([^<]+)</a>', desc)
+            for title_str in matches:
+                title_str = title_str.strip()
+                if title_str and len(title_str) > 3:
+                    titles.append(title_str)
+    except Exception as e:
+        log.error("Failed to parse historical broadcasted titles: %s", e)
+    return titles
+
+
 async def run_pipeline(
     cfg: dict[str, Any],
     sources: list[Any],
@@ -146,6 +175,66 @@ async def run_pipeline(
                 filtered_count,
                 len(raw_items),
             )
+
+    # ── 跨期语义相似度去重 ──────────────────────────────────────────────────────
+    recent_titles = get_recent_broadcasted_titles(episodes_index, limit=14)
+    if recent_titles and raw_items:
+        import jieba
+        from sklearn.feature_extraction.text import TfidfVectorizer
+        from sklearn.metrics.pairwise import cosine_similarity
+
+        dedup_cfg = processing_cfg.get("dedup", {})
+        sim_threshold = float(dedup_cfg.get("semantic_sim_threshold", 0.25))
+
+        original_count = len(raw_items)
+        try:
+            # 使用 jieba 进行中文分词，以便正确进行词级别相似度计算
+            def tokenize_text(text: str) -> str:
+                return " ".join(jieba.cut(text))
+
+            segmented_hist = [tokenize_text(t) for t in recent_titles]
+            new_titles = [it.title for it in raw_items]
+            segmented_new = [tokenize_text(t) for t in new_titles]
+
+            vectorizer = TfidfVectorizer(
+                analyzer="word",
+                token_pattern=r"(?u)\b\w+\b",
+                lowercase=True,
+            )
+            # 拟合所有分词后的文本以建立统一的特征词典
+            all_texts = segmented_hist + segmented_new
+            vectorizer.fit(all_texts)
+
+            hist_tfidf = vectorizer.transform(segmented_hist)
+            new_tfidf = vectorizer.transform(segmented_new)
+
+            sim_matrix = cosine_similarity(new_tfidf, hist_tfidf)
+
+            filtered_items = []
+            skipped_count = 0
+            for idx, item in enumerate(raw_items):
+                max_sim = float(sim_matrix[idx].max())
+                if max_sim >= sim_threshold:
+                    log.info(
+                        "Semantic dedup: filtered out '%s' (similarity %.2f >= %.2f with historical story)",
+                        item.title,
+                        max_sim,
+                        sim_threshold,
+                    )
+                    skipped_count += 1
+                else:
+                    filtered_items.append(item)
+
+            raw_items = filtered_items
+            if skipped_count > 0:
+                log.info(
+                    "Semantic similarity dedup: filtered out %d items by similarity threshold %.2f, %d items remaining",
+                    skipped_count,
+                    sim_threshold,
+                    len(raw_items),
+                )
+        except Exception as e:
+            log.error("Failed to perform semantic similarity deduplication: %s", e)
 
     # ── Stage 2: 处理（三层去重 → DBSCAN 聚类 → 五维打分） ──────────────────
     log.info("Stage 2 [pipeline]: dedup → cluster → score …")
