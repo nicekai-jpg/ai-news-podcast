@@ -82,7 +82,7 @@ async def main() -> int:
     print(f"   🔴 主故事: {sum(1 for s in stories if s.get('role') == 'main')}")
     print(f"   🟡 支撑故事: {sum(1 for s in stories if s.get('role') == 'supporting')}")
     print(f"   🟢 快讯: {sum(1 for s in stories if s.get('role') == 'quick')}")
-    print(f"   Brief 路径: data/brief_{date_str}.json")
+    print(f"   Brief 路径: data/briefs/brief_{date_str}.json")
     print("=" * 55 + "\n")
 
     return 0

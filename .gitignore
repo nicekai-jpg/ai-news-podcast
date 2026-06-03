@@ -22,7 +22,7 @@ venv/
 .dmypy.json
 
 # Generated data (intermediate artifacts)
-data/brief_*.json
+# data/brief_*.json
 data/test_tts.mp3
 data/v2_test_output.mp3
 scripts/*.mp3
