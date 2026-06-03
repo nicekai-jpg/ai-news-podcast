@@ -81,6 +81,7 @@ async def test_run_pipeline_semantic_dedup(tmp_path: Path, raw_item_factory) -> 
         "processing": {
             "dedup": {
                 "semantic_sim_threshold": 0.20,
+                "embedding_sim_threshold": 0.20,
             }
         }
     }
@@ -98,6 +99,67 @@ async def test_run_pipeline_semantic_dedup(tmp_path: Path, raw_item_factory) -> 
 
     with patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch, \
          patch("ai_news_podcast.pipeline.runner.process") as mock_process:
+
+        mock_fetch.return_value = [item_similar, item_different]
+        mock_process.return_value = {"stories": []}
+
+        brief = await run_pipeline(
+            cfg=cfg,
+            sources=[],
+            date_str="2026-06-03",
+            data_dir=tmp_path,
+            force_refresh=True,
+        )
+
+        called_args = mock_process.call_args[0][0]
+        assert len(called_args) == 1
+        assert called_args[0].title == "MiniMax M3 model released"
+
+        assert "metadata" in brief
+        assert "dedup_details" in brief["metadata"]
+        dedup_details = brief["metadata"]["dedup_details"]
+        assert len(dedup_details) == 1
+        assert dedup_details[0]["title"] == "Google I/O 2026 developer collection"
+        assert dedup_details[0]["reason"] == "cross_episode_semantic"
+        assert dedup_details[0]["matched_story_title"] == "Catch up on 12 major I/O 2026 moments"
+
+
+@pytest.mark.asyncio
+async def test_run_pipeline_semantic_dedup_tfidf_fallback(tmp_path: Path, raw_item_factory) -> None:
+    from unittest.mock import patch, AsyncMock
+    from ai_news_podcast.pipeline.runner import run_pipeline
+
+    episodes_path = tmp_path / "episodes.json"
+    episodes = [
+        {
+            "id": "2026-06-02",
+            "description": '<p>Demo</p><ol><li>🔴 <a href="https://example.com/item1">Catch up on 12 major I/O 2026 moments</a></li></ol>',
+        }
+    ]
+    write_json(episodes_path, episodes)
+
+    cfg = {
+        "processing": {
+            "dedup": {
+                "semantic_sim_threshold": 0.20,
+            }
+        }
+    }
+
+    item_similar = raw_item_factory(
+        title="Google I/O 2026 developer collection",
+        link="https://example.com/similar-item",
+        summary="A compilation of developer resources from I/O 2026.",
+    )
+    item_different = raw_item_factory(
+        title="MiniMax M3 model released",
+        link="https://example.com/diff-item",
+        summary="MiniMax released their new M3 model today with excellent multi-modal support.",
+    )
+
+    with patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch, \
+         patch("ai_news_podcast.pipeline.runner.process") as mock_process, \
+         patch.dict("sys.modules", {"sentence_transformers": None}):
 
         mock_fetch.return_value = [item_similar, item_different]
         mock_process.return_value = {"stories": []}
