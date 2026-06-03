@@ -1,6 +1,32 @@
+import datetime
+from email.utils import parsedate_to_datetime
 import json
 from pathlib import Path
 from typing import Any
+from zoneinfo import ZoneInfo
+
+
+def format_friendly_date(date_str: str) -> str:
+    if not date_str:
+        return ""
+    try:
+        dt = parsedate_to_datetime(date_str)
+        try:
+            dt = dt.astimezone(ZoneInfo("Asia/Shanghai"))
+        except Exception:
+            pass
+        return dt.strftime("%Y-%m-%d %H:%M")
+    except Exception:
+        try:
+            dt = datetime.datetime.fromisoformat(date_str)
+            try:
+                dt = dt.astimezone(ZoneInfo("Asia/Shanghai"))
+            except Exception:
+                pass
+            return dt.strftime("%Y-%m-%d %H:%M")
+        except Exception:
+            return date_str
+
 
 
 def _write_text(path: Path, text: str) -> None:
@@ -32,7 +58,8 @@ def build_index_html(
 
         title = ep.get("title", f"AI 新闻快报 | {ep_id}")
         desc = ep.get("description", "")  # Keeps HTML
-        pub = ep.get("pubDate", "")
+        pub_raw = ep.get("pubDate", "")
+        pub = format_friendly_date(pub_raw)
         mp3 = ep.get("enclosure_url", f"{base_url}/episodes/{ep_id}.mp3")
         txt = f"{base_url}/episodes/{ep_id}.txt"
         enclosure_length = ep.get("enclosure_length", 0)
@@ -75,7 +102,7 @@ def build_index_html(
             f'      <div class="ep-desc">{desc_html}</div>\n'
             f'      <div class="ep-links">\n'
             f'        <a href="{mp3}" download>⬇ 下载音频</a>\n'
-            f'        <a href="{txt}" target="_blank">📄 原始文字稿</a>\n'
+            f"        <button class=\"btn-script-link\" onclick=\"switchTab('script'); loadScript('{ep_id}')\">📄 阅读播客剧本</button>\n"
             f"        <button class=\"btn-report-link\" onclick=\"switchTab('report'); loadReport('{ep_id}')\">📰 阅读科技日报</button>\n"
             f"      </div>\n"
             f"    </div>\n"
@@ -101,7 +128,11 @@ def build_index_html(
         latest_mp3 = latest.get("enclosure_url", f"{base_url}/episodes/{latest_id}.mp3")
         latest_txt = f"{base_url}/episodes/{latest_id}.txt"
         latest.get("description", "")
-        latest_pub = latest.get("pubDate", "")
+        latest_pub_raw = latest.get("pubDate", "")
+        latest_pub = format_friendly_date(latest_pub_raw)
+
+    shanghai_tz = ZoneInfo("Asia/Shanghai")
+    build_time = datetime.datetime.now(tz=shanghai_tz).strftime("%Y-%m-%d %H:%M:%S")
 
     html_template = """<!doctype html>
 <html lang="zh-CN">
@@ -1329,6 +1360,252 @@ def build_index_html(
       margin: 24px 0;
       box-shadow: var(--shadow-lg);
     }
+
+    /* Script Dialogue Layout & bubble styles */
+    .script-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) {
+      .script-layout {
+        grid-template-columns: 220px 1fr;
+      }
+    }
+    .script-sidebar {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      height: fit-content;
+      max-height: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .script-sidebar-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .script-date-list {
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-right: 4px;
+    }
+    .script-date-list::-webkit-scrollbar {
+      width: 4px;
+    }
+    .script-date-list::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .script-date-list::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 99px;
+    }
+    .script-date-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid transparent;
+    }
+    .script-date-item:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .script-date-item.active {
+      color: #fff;
+      background: rgba(139, 92, 246, 0.12);
+      border-color: var(--border-focus);
+    }
+    @media (max-width: 767px) {
+      .script-date-list {
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 6px;
+      }
+      .script-date-item {
+        flex-shrink: 0;
+      }
+      .script-sidebar {
+        max-height: none;
+      }
+    }
+    .script-viewer {
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+    }
+    .script-viewer-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .script-viewing-date-label {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .script-box {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 12px 0;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    .script-box::-webkit-scrollbar {
+      width: 6px;
+    }
+    .script-box::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .script-box::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 99px;
+    }
+    .dialogue-row {
+      display: flex;
+      gap: 16px;
+      max-width: 85%;
+      align-items: flex-start;
+      margin-bottom: 8px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: dialogueFadeIn 0.3s ease forwards;
+    }
+    @keyframes dialogueFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .dialogue-row-xiaoxiao {
+      align-self: flex-start;
+    }
+    .dialogue-row-bowen {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+    .dialogue-row-narrator {
+      align-self: center;
+      max-width: 90%;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: var(--radius-sm);
+      padding: 10px 20px;
+      border: 1px dashed var(--border);
+      text-align: center;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .dialogue-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0;
+    }
+    .dialogue-avatar-xiaoxiao {
+      background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+      border: 2px solid rgba(139, 92, 246, 0.4);
+    }
+    .dialogue-avatar-bowen {
+      background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+      border: 2px solid rgba(6, 182, 212, 0.4);
+    }
+    .dialogue-avatar-narrator {
+      background: #374151;
+      border: 2px solid #4b5563;
+    }
+    .dialogue-bubble-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .dialogue-speaker-name {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .dialogue-row-bowen .dialogue-speaker-name {
+      text-align: right;
+    }
+    .dialogue-bubble {
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      line-height: 1.6;
+      font-size: 0.92rem;
+      color: var(--text);
+      box-shadow: var(--shadow-lg);
+      word-break: break-all;
+    }
+    .dialogue-bubble-xiaoxiao {
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-top-left-radius: 4px;
+    }
+    .dialogue-bubble-bowen {
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-top-right-radius: 4px;
+    }
+    .dialogue-bubble-narrator {
+      background: rgba(55, 65, 81, 0.2);
+      border: 1px solid rgba(75, 85, 99, 0.3);
+      border-radius: var(--radius-sm);
+    }
+    .btn-raw-script {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-raw-script:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border-color: var(--border-focus);
+    }
   </style>
 </head>
 <body>
@@ -1402,6 +1679,9 @@ def build_index_html(
             <button class="tab-btn" id="btn-tab-report" onclick="switchTab('report')">
               <span>📰</span> 科技日报
             </button>
+            <button class="tab-btn" id="btn-tab-script" onclick="switchTab('script')">
+              <span>📄</span> 播客剧本
+            </button>
             <button class="tab-btn" id="btn-tab-walkthrough" onclick="switchTab('walkthrough')">
               <span>⚙️</span> 运行机制
             </button>
@@ -1421,10 +1701,10 @@ def build_index_html(
                 <button class="btn-hero-play" onclick="togglePlay('{latest_id}', '{latest_mp3}', '{latest_title}')" data-id="{latest_id}">
                   <span>▶</span> <span>立即收听</span>
                 </button>
-                <a href="{latest_txt}" target="_blank" class="btn-hero-transcript">
+                <button class="btn-hero-transcript" onclick="switchTab('script'); loadScript('{latest_id}')">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                   阅读剧本
-                </a>
+                </button>
                 <button class="btn-hero-report" onclick="switchTab('report'); loadReport('{latest_id}')">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                   今日日报
@@ -1483,6 +1763,30 @@ def build_index_html(
           </div>
         </div>
 
+        <!-- Tab Panel 3: Script viewer -->
+        <div class="tab-pane" id="pane-script">
+          <div class="script-layout">
+            <aside class="script-sidebar">
+              <div class="script-sidebar-title">📅 剧本归档</div>
+              <div class="script-date-list" id="script-date-selector-list">
+                <!-- Loaded dynamically -->
+              </div>
+            </aside>
+            <main class="script-viewer">
+              <div class="script-viewer-header">
+                <div class="script-viewing-date-label" id="script-viewing-date-label">正在载入...</div>
+                <a href="#" target="_blank" class="btn-raw-script" id="btn-script-raw-download">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 13 7 8"></polyline><line x1="12" y1="13" x2="12" y2="1"></line></svg>
+                  原始文字稿 (.txt)
+                </a>
+              </div>
+              <div class="script-box" id="script-content-box">
+                <p style="text-align: center; color: var(--text-muted); padding: 40px 0;">加载中...</p>
+              </div>
+            </main>
+          </div>
+        </div>
+
         <!-- Tab Panel 3: Pipeline Walkthrough -->
         <div class="tab-pane" id="pane-walkthrough">
           <div class="report-viewer" style="min-height: 500px;">
@@ -1504,7 +1808,7 @@ def build_index_html(
     <div class="toast" id="toast">🎯 RSS 订阅链接已成功复制到剪贴板！</div>
 
     <div class="footer">
-      <p>{podcast_title} · 每日定时自动部署</p>
+      <p>{podcast_title} · 最后构建时间: {build_time}</p>
       <p>播客源 RSS 订阅地址: <a href="./feed.xml">{base_url}/feed.xml</a> · 本项目基于开源自动化生成</p>
     </div>
   </div>
@@ -1643,6 +1947,154 @@ def build_index_html(
       }
     }
 
+    // Parse Script SSML to dialogues
+    function parseScriptSSML(ssmlText) {
+      // Regex to find voice tags and capture speaker name + text
+      const regex = /<voice\\s+name="([^"]+)"\\s*>([\\s\\S]*?)<\\/voice>/gi;
+      const dialogues = [];
+      let match;
+      while ((match = regex.exec(ssmlText)) !== null) {
+        const voiceName = match[1];
+        let content = match[2].trim();
+        
+        // Strip sub-tags like [mood:...] or fact tag annotations
+        content = content.replace(/\\[mood:[a-zA-Z0-9_-]+\\]/gi, "");
+        content = content.replace(/\\[(?:FACT|INFERENCE|OPINION)\\]/gi, "");
+        content = content.replace(/\\s+/g, " "); // collapse multiple whitespace
+        
+        let speaker = "旁白";
+        let roleClass = "narrator";
+        let avatar = "🎙️";
+        if (voiceName.includes("Xiaoxiao")) {
+          speaker = "晓晓 (主持人)";
+          roleClass = "xiaoxiao";
+          avatar = "🎙️";
+        } else if (voiceName.includes("Yunxi")) {
+          speaker = "博文 (技术专家)";
+          roleClass = "bowen";
+          avatar = "👨‍💻";
+        }
+        
+        dialogues.push({
+          speaker,
+          voiceName,
+          content,
+          roleClass,
+          avatar
+        });
+      }
+      
+      if (dialogues.length === 0) {
+        // Fallback for raw txt with no XML/voice tags
+        const paragraphs = ssmlText.split('\\n').map(p => p.trim()).filter(p => p.length > 0);
+        return paragraphs.map(p => ({
+          speaker: "播音员",
+          content: p,
+          roleClass: "narrator",
+          avatar: "📄"
+        }));
+      }
+      
+      return dialogues;
+    }
+
+    // Load script dates select list
+    function initScriptDates() {
+      const container = document.getElementById('script-date-selector-list');
+      if (!container) return;
+      container.innerHTML = '';
+
+      dates.forEach((dateStr, idx) => {
+        const item = document.createElement('div');
+        item.className = 'script-date-item';
+        if (idx === 0) item.classList.add('active');
+        item.setAttribute('data-date', dateStr);
+        item.onclick = () => {
+          document.querySelectorAll('.script-date-item').forEach(el => el.classList.remove('active'));
+          item.classList.add('active');
+          loadScript(dateStr);
+        };
+
+        let displayDate = dateStr;
+        try {
+          const parts = dateStr.split('-');
+          if (parts.length === 3) {
+            displayDate = `${parts[1]}月${parts[2]}日`;
+          }
+        } catch(e) {}
+
+        item.innerHTML = `<span class="report-date-icon">📄</span> <span>${displayDate}</span>`;
+        container.appendChild(item);
+      });
+
+      if (dates.length > 0) {
+        loadScript(dates[0]);
+      }
+    }
+
+    // Load Script dynamically and render interactive dialogue bubbles
+    async function loadScript(dateStr) {
+      const contentBox = document.getElementById('script-content-box');
+      if (!contentBox) return;
+      contentBox.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 40px 0;">正在拉取播客剧本，请稍候...</p>';
+
+      // Update sidebar active state
+      document.querySelectorAll('.script-date-item').forEach(el => {
+        if (el.getAttribute('data-date') === dateStr) {
+          el.classList.add('active');
+          el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+        } else {
+          el.classList.remove('active');
+        }
+      });
+
+      // Update date label in viewer header
+      const label = document.getElementById('script-viewing-date-label');
+      if (label) {
+        let displayDate = dateStr;
+        try {
+          const parts = dateStr.split('-');
+          if (parts.length === 3) {
+            displayDate = `${parts[0]}年${parts[1]}月${parts[2]}日`;
+          }
+        } catch(e) {}
+        label.textContent = `${displayDate} · 播客剧本`;
+      }
+
+      // Update download link for raw txt transcript
+      const downloadBtn = document.getElementById('btn-script-raw-download');
+      if (downloadBtn) {
+        downloadBtn.href = `./episodes/${dateStr}.txt`;
+      }
+
+      try {
+        const resp = await fetch(`./episodes/${dateStr}.txt`);
+        if (!resp.ok) {
+          throw new Error('Script file not found');
+        }
+        const rawText = await resp.text();
+        const dialogues = parseScriptSSML(rawText);
+        
+        contentBox.innerHTML = '';
+        dialogues.forEach((dlg, idx) => {
+          const row = document.createElement('div');
+          row.className = `dialogue-row dialogue-row-${dlg.roleClass}`;
+          row.style.animationDelay = `${idx * 0.04}s`;
+          
+          row.innerHTML = `
+            <div class="dialogue-avatar dialogue-avatar-${dlg.roleClass}">${dlg.avatar}</div>
+            <div class="dialogue-bubble-wrap">
+              <div class="dialogue-speaker-name">${dlg.speaker}</div>
+              <div class="dialogue-bubble dialogue-bubble-${dlg.roleClass}">${dlg.content}</div>
+            </div>
+          `;
+          contentBox.appendChild(row);
+        });
+      } catch (err) {
+        contentBox.innerHTML = `<p style="text-align: center; color: #ef4444; padding: 40px 0;">未找到【${dateStr}】的播客剧本，可能未成功生成。</p>`;
+      }
+    }
+
     // Toggle Tab view
     function switchTab(tabId) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -1654,6 +2106,9 @@ def build_index_html(
       } else if (tabId === 'report') {
         document.getElementById('btn-tab-report').classList.add('active');
         document.getElementById('pane-report').classList.add('active');
+      } else if (tabId === 'script') {
+        document.getElementById('btn-tab-script').classList.add('active');
+        document.getElementById('pane-script').classList.add('active');
       } else if (tabId === 'walkthrough') {
         document.getElementById('btn-tab-walkthrough').classList.add('active');
         document.getElementById('pane-walkthrough').classList.add('active');
@@ -1912,6 +2367,7 @@ def build_index_html(
     // Initialize Page
     window.addEventListener('DOMContentLoaded', () => {
       initReportDates();
+      initScriptDates();
     });
   </script>
 </body>
@@ -1928,6 +2384,7 @@ def build_index_html(
         .replace("{cards_html}", str(cards_html))
         .replace("{base_url}", str(base_url))
         .replace("{dates_json}", str(dates_json))
+        .replace("{build_time}", str(build_time))
     )
 
     _write_text(site_dir / "index.html", html)
