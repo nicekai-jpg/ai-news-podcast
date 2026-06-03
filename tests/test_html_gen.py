@@ -18,6 +18,14 @@ class TestBuildIndexHtml:
                 "pubDate": "Mon, 01 Jan 2024 00:00:00 +0000",
                 "enclosure_url": "https://example.com/episodes/2024-03-15.mp3",
                 "enclosure_length": 1048576,
+            },
+            {
+                "guid": "https://example.com/episodes/2024-03-14",
+                "title": "Ep 2",
+                "description": "<p>Second episode</p>",
+                "pubDate": "Sun, 31 Dec 2023 00:00:00 +0000",
+                "enclosure_url": "https://example.com/episodes/2024-03-14.mp3",
+                "enclosure_length": 1048576,
             }
         ]
         build_index_html(tmp_path, "Test Podcast", episodes, "https://example.com")
@@ -26,7 +34,8 @@ class TestBuildIndexHtml:
         html = index_path.read_text(encoding="utf-8")
         assert "Test Podcast" in html
         assert "Ep 1" in html
-        assert "https://example.com/episodes/2024-03-15.mp3" in html
+        assert "Ep 2" in html
+        assert "https://example.com/episodes/2024-03-14.mp3" in html
         assert "1.0 MB" in html
         assert "<audio controls" in html
 
@@ -39,9 +48,16 @@ class TestBuildIndexHtml:
         episodes = [
             {
                 "guid": "https://example.com/episodes/1",
-                "title": "Title",
-                "description": '<script>alert("xss")</script>',
+                "title": "Title 1",
+                "description": '<script>alert("xss1")</script>',
                 "pubDate": "Mon, 01 Jan 2024 00:00:00 +0000",
+                "enclosure_length": 0,
+            },
+            {
+                "guid": "https://example.com/episodes/2",
+                "title": "Title 2",
+                "description": '<script>alert("xss2")</script>',
+                "pubDate": "Sun, 31 Dec 2023 00:00:00 +0000",
                 "enclosure_length": 0,
             }
         ]

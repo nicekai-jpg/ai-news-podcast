@@ -52,8 +52,12 @@ def build_index_html(
 
         dates_list.append(ep_id)
 
+        # Skip the latest episode in the timeline list to avoid duplicating the hero section
+        if i == 0:
+            continue
+
         # Keep only the latest 30 in the list for presentation
-        if i >= 30:
+        if len(ep_cards) >= 30:
             continue
 
         title = ep.get("title", f"AI 新闻快报 | {ep_id}")
