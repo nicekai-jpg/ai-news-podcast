@@ -7,6 +7,18 @@
   <link rel="alternate" type="application/rss+xml" title="AI 每日先锋" href="./feed.xml">
   <!-- Load Markdown Parser Marked.js -->
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Load Mermaid.js for Flowcharts -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+  <script type="text/javascript">
+    if (window.mermaid) {
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: 'dark',
+        securityLevel: 'loose',
+        flowchart: { useWidth: true, htmlLabels: true }
+      });
+    }
+  </script>
   <style>
     :root {
       --bg: #07060d;
@@ -1188,6 +1200,276 @@
     }
     .footer a { color: var(--text-muted); text-decoration: none; font-weight: 600; }
     .footer a:hover { text-decoration: underline; color: #fff; }
+
+    /* Mermaid diagram styles */
+    .mermaid {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin: 24px 0;
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+    }
+    .mermaid svg {
+      max-width: 100% !important;
+      height: auto !important;
+    }
+    .report-markdown img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      margin: 24px 0;
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Script Dialogue Layout & bubble styles */
+    .script-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) {
+      .script-layout {
+        grid-template-columns: 220px 1fr;
+      }
+    }
+    .script-sidebar {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      height: fit-content;
+      max-height: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .script-sidebar-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .script-date-list {
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-right: 4px;
+    }
+    .script-date-list::-webkit-scrollbar {
+      width: 4px;
+    }
+    .script-date-list::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .script-date-list::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 99px;
+    }
+    .script-date-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid transparent;
+    }
+    .script-date-item:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .script-date-item.active {
+      color: #fff;
+      background: rgba(139, 92, 246, 0.12);
+      border-color: var(--border-focus);
+    }
+    @media (max-width: 767px) {
+      .script-date-list {
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 6px;
+      }
+      .script-date-item {
+        flex-shrink: 0;
+      }
+      .script-sidebar {
+        max-height: none;
+      }
+    }
+    .script-viewer {
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 32px;
+      box-shadow: var(--shadow-lg);
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+    }
+    .script-viewer-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .script-viewing-date-label {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .script-box {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 12px 0;
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    .script-box::-webkit-scrollbar {
+      width: 6px;
+    }
+    .script-box::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .script-box::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 99px;
+    }
+    .dialogue-row {
+      display: flex;
+      gap: 16px;
+      max-width: 85%;
+      align-items: flex-start;
+      margin-bottom: 8px;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: dialogueFadeIn 0.3s ease forwards;
+    }
+    @keyframes dialogueFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .dialogue-row-xiaoxiao {
+      align-self: flex-start;
+    }
+    .dialogue-row-bowen {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+    .dialogue-row-narrator {
+      align-self: center;
+      max-width: 90%;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: var(--radius-sm);
+      padding: 10px 20px;
+      border: 1px dashed var(--border);
+      text-align: center;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .dialogue-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      flex-shrink: 0;
+    }
+    .dialogue-avatar-xiaoxiao {
+      background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+      border: 2px solid rgba(139, 92, 246, 0.4);
+    }
+    .dialogue-avatar-bowen {
+      background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+      border: 2px solid rgba(6, 182, 212, 0.4);
+    }
+    .dialogue-avatar-narrator {
+      background: #374151;
+      border: 2px solid #4b5563;
+    }
+    .dialogue-bubble-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .dialogue-speaker-name {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+    .dialogue-row-bowen .dialogue-speaker-name {
+      text-align: right;
+    }
+    .dialogue-bubble {
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      line-height: 1.6;
+      font-size: 0.92rem;
+      color: var(--text);
+      box-shadow: var(--shadow-lg);
+      word-break: break-all;
+    }
+    .dialogue-bubble-xiaoxiao {
+      background: rgba(139, 92, 246, 0.12);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-top-left-radius: 4px;
+    }
+    .dialogue-bubble-bowen {
+      background: rgba(6, 182, 212, 0.12);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-top-right-radius: 4px;
+    }
+    .dialogue-bubble-narrator {
+      background: rgba(55, 65, 81, 0.2);
+      border: 1px solid rgba(75, 85, 99, 0.3);
+      border-radius: var(--radius-sm);
+    }
+    .btn-raw-script {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-raw-script:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border-color: var(--border-focus);
+    }
   </style>
 </head>
 <body>
@@ -1261,6 +1543,12 @@
             <button class="tab-btn" id="btn-tab-report" onclick="switchTab('report')">
               <span>📰</span> 科技日报
             </button>
+            <button class="tab-btn" id="btn-tab-script" onclick="switchTab('script')">
+              <span>📄</span> 播客剧本
+            </button>
+            <button class="tab-btn" id="btn-tab-walkthrough" onclick="switchTab('walkthrough')">
+              <span>⚙️</span> 运行机制
+            </button>
           </nav>
         </div>
 
@@ -1271,17 +1559,17 @@
             <div class="hero-glow"></div>
             <div class="hero-content">
               <span class="hero-badge">🔥 最新推荐</span>
-              <h1 class="hero-title">AI 新闻快报 | 2026-06-02</h1>
-              <div class="hero-subtitle">发布时间: Tue, 02 Jun 2026 05:11:20 +0000</div>
+              <h1 class="hero-title">AI 新闻快报 | 2026-06-03</h1>
+              <div class="hero-subtitle">发布时间: 2026-06-03 09:01</div>
               <div class="hero-actions">
-                <button class="btn-hero-play" onclick="togglePlay('2026-06-02', 'https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-06-02.mp3', 'AI 新闻快报 | 2026-06-02')" data-id="2026-06-02">
+                <button class="btn-hero-play" onclick="togglePlay('2026-06-03', 'https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-06-03.mp3', 'AI 新闻快报 | 2026-06-03')" data-id="2026-06-03">
                   <span>▶</span> <span>立即收听</span>
                 </button>
-                <a href="https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-06-02.txt" target="_blank" class="btn-hero-transcript">
+                <button class="btn-hero-transcript" onclick="switchTab('script'); loadScript('2026-06-03')">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
                   阅读剧本
-                </a>
-                <button class="btn-hero-report" onclick="switchTab('report'); loadReport('2026-06-02')">
+                </button>
+                <button class="btn-hero-report" onclick="switchTab('report'); loadReport('2026-06-03')">
                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                   今日日报
                 </button>
@@ -1315,15 +1603,15 @@
 
           <h2 class="archive-title">往期历史节目</h2>
           <div class="episodes-list">
-            <article class="ep-card" id="card-2026-06-02">
+            <article class="ep-card" id="card-2026-06-03">
   <div class="ep-card-layout">
     <div class="ep-card-play-col">
-      <button class="play-btn-circle" onclick="togglePlay('2026-06-02', 'https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-06-02.mp3', 'AI 新闻快报 | 2026-06-02')" data-id="2026-06-02">▶</button>
+      <button class="play-btn-circle" onclick="togglePlay('2026-06-03', 'https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-06-03.mp3', 'AI 新闻快报 | 2026-06-03')" data-id="2026-06-03">▶</button>
     </div>
     <div class="ep-card-content-col">
       <div class="ep-header">
-        <h3 class="ep-title">AI 新闻快报 | 2026-06-02</h3>
-        <span class="ep-meta">Tue, 02 Jun 2026 05:11:20 +0000 · 0.7 MB</span>
+        <h3 class="ep-title">AI 新闻快报 | 2026-06-03</h3>
+        <span class="ep-meta">2026-06-03 09:01 · 1.5 MB</span>
       </div>
       <div class="ep-desc"><p>每天 5 分钟，聚合 AI 领域最新发布、技术进展、行业事件与人物采访。</p>
 
@@ -1338,6 +1626,173 @@
 <li>🔴 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/">Gemini 3.5: frontier intelligence with action</a> <small>(Google AI Blog)</small></li>
 <li>🔴 <a href="https://blog.google/products-and-platforms/products/search/search-io-2026/">A new era for AI Search</a> <small>(Google AI Blog)</small></li>
 <li>🔴 <a href="https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/">Everything new in our Google AI subscriptions, fresh from I/O 2026</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/428092.html">MiniMax M3一手实测：老黄PPT上74个Logo，我以为能难住它</a> <small>(量子位)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/428003.html">OpenAI挖走中科大少年班校友！12岁上大学，哈佛史上最年轻正教授</a> <small>(量子位)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/427810.html">字节开源统一框架Bernini：给DiT配个“大模型军师”，AI视频编辑先理解再动手</a> <small>(量子位)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/427754.html">百度文心发布 PaddleOCR-VL-1.6：准确率突破 96.33%，刷新文档解析 SOTA</a> <small>(量子位)</small></li>
+<li>🟡 <a href="https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/">How we used Gemini to build Google I/O 2026</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/">Catch up on the Dialogues stage at Google I/O 2026.</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://blog.google/products-and-platforms/products/search/ai-mode-us-insights/">How AI Mode is changing the way people search in the U.S.</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://blog.google/products-and-platforms/products/search/gardening-tips/">5 gardening tips you can try right in Search</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/Hcompany/holo31">Holo3.1: Fast &amp; Local Computer Use Agents</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/JetBrains/mellum2-launch">Introducing Mellum2: A 12B Mixture-of-Experts Model by JetBrains</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption">Beyond LLMs: Why Scalable Enterprise AI Adoption Depends on Agent Logic</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/local-reachy-mini-conversation">Reachy Mini goes fully local</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/ettin-reranker">Introducing the Ettin Reranker Family</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers">PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/continuous_async">Unlocking asynchronicity in continuous batching</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/ServiceNow-AI/correctness-before-corrections">vLLM V0 to V1: Correctness Before Corrections in RL</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/ibm-granite/granite-4-1">Granite 4.1 LLMs: How They’re Built</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/inference-providers-deepinfra">DeepInfra on Hugging Face Inference Providers 🔥</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard">QIMMA قِمّة ⛰: A Quality-First Arabic LLM Leaderboard</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/ibm-research/vakra-benchmark-analysis">Inside VAKRA: Reasoning, Tool Use, and Failure Modes of Agents</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/Hcompany/holotab">Meet HoloTab by HCompany. Your AI browser companion.</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00017">MindGames Arena Generalization Track: In2AI Solution with Delayed Per-Step Reward Attribution</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00270">Robust Shielding for Safe Reinforcement Learning</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00315">Coupling Language Models with Physics-based Simulation for Synthesis of Inorganic Materials</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00357">From "Weak" Signals to Strong Models: Preference Delta Aggregation with LoRA Merging</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00129">A Shared Valence Axis Across Modern LLMs and Human EEG: The Saturation Regularity</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00136">Generative AI and Digital Ecosystem Resilience: A Proactive Lifecycle-Based Survey</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00183">Agentic Transformers Provably Learn to Search via Reinforcement Learning</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00189">Learning to Construct Practical Agentic Systems</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00198">BAGEN: Are LLM Agents Budget-Aware?</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/427729.html">机器人运控训练步入分钟级时代！清华AIR开源UniLab：3分钟训好人形，速度暴涨10倍，Mac上也能跑</a> <small>(量子位)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/427730.html">Qwen3.7-Plus上线！多模态智能体新基座，一键复刻桌面端专业软件</a> <small>(量子位)</small></li>
+<li>🟡 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/">9 demos of Gemini Omni and Gemini 3.5 in action</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://blog.google/products-and-platforms/products/search/ai-powered-google-finance-in-europe/">The new AI-powered Google Finance is expanding to Europe.</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://blog.google/company-news/inside-google/company-announcements/the-small-brief/">See what happens when creative legends use AI to make ads for small businesses.</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/nvidia/cosmos-3-for-physical-ai">Welcome NVIDIA Cosmos 3: The First Open Omni-model for Physical AI Reasoning and Action</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/Dharma-AI/specialization-beats-scale">Specialization Beats Scale: A Strategic Variable Most AI Procurement Decisions Overlook</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/allenai/olmoearth-v1-1">OlmoEarth v1.1: A more efficient family of Earth observation models</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/ibm-granite/granite-embedding-multilingual-r2">Granite Embedding Multilingual R2: Open Apache 2.0 Multilingual Embeddings with 32K Context — Best Sub-100M Retrieval Quality</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/open-asr-leaderboard-private-data">Adding Benchmaxxer Repellant to the Open ASR Leaderboard</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/openai-privacy-filter-web-apps">How to build scalable web apps with OpenAI's Privacy Filter</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/transformersjs-chrome-extension">How to Use Transformers.js in a Chrome Extension</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/ecom-rlve">Ecom-RLVE: Adaptive Verifiable Environments for E-Commerce Conversational Agents</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/train-multimodal-sentence-transformers">Training and Finetuning Multimodal Embedding &amp; Reranker Models with Sentence Transformers</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://github.blog/ai-and-ml/github-copilot/github-recognized-as-a-leader-in-the-gartner-magic-quadrant-for-enterprise-ai-coding-agents-for-the-third-year-in-a-row/">GitHub recognized as a Leader in the Gartner® Magic Quadrant™ for Enterprise AI Coding Agents for the third year in a row</a> <small>(GitHub Blog AI)</small></li>
+<li>🟡 <a href="https://github.blog/news-insights/product-news/take-your-local-github-sessions-anywhere/">Take your local GitHub sessions anywhere</a> <small>(GitHub Blog AI)</small></li>
+<li>🟡 <a href="https://github.blog/ai-and-ml/github-copilot/building-a-general-purpose-accessibility-agent-and-what-we-learned-in-the-process/">Building a general-purpose accessibility agent—and what we learned in the process</a> <small>(GitHub Blog AI)</small></li>
+<li>🟡 <a href="https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/">Improving token efficiency in GitHub Agentic Workflows</a> <small>(GitHub Blog AI)</small></li>
+<li>🟡 <a href="https://github.blog/ai-and-ml/generative-ai/agent-pull-requests-are-everywhere-heres-how-to-review-them/">Agent pull requests are everywhere. Here’s how to review them.</a> <small>(GitHub Blog AI)</small></li>
+<li>🟡 <a href="https://github.blog/ai-and-ml/generative-ai/validating-agentic-behavior-when-correct-isnt-deterministic/">Validating agentic behavior when “correct” isn’t deterministic</a> <small>(GitHub Blog AI)</small></li>
+<li>🟡 <a href="https://github.blog/open-source/register-now-for-openclaw-after-hours-github/">Register now for OpenClaw: After Hours @ GitHub</a> <small>(GitHub Blog AI)</small></li>
+<li>🟡 <a href="https://github.blog/ai-and-ml/github-copilot/building-an-emoji-list-generator-with-the-github-copilot-cli/">Building an emoji list generator with the GitHub Copilot CLI</a> <small>(GitHub Blog AI)</small></li>
+<li>🟡 <a href="https://www.technologyreview.com/2026/05/22/1137813/google-i-o-showed-how-the-path-for-ai-science-is-shifting/">Google I/O showed how the path for AI-driven science is shifting</a> <small>(MIT Tech Review AI)</small></li>
+<li>🟡 <a href="https://www.technologyreview.com/2026/05/21/1137756/roundtables-can-ai-learn-to-understand-the-world/">Roundtables: Can AI Learn to Understand the World?</a> <small>(MIT Tech Review AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00002">Position Paper: Post-Solve Robustness in Decision Engines: Feasible Regions and Smoothness Under Perturbations</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00005">Emergent Collaborative Deliberation in Multi-Model AI Systems: A BFT-Derived Protocol for Epistemic Synthesis</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00045">Universal Quantum Transformer</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00052">Product-Aware Deep Autoencoders for Robust Process Monitoring in Multi-Product Cyber-Physical Systems</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00240">MindZero: Learning Online Mental Reasoning With Zero Annotations</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00336">From Noise to Control: Parameterized Diffusion Policies</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00424">Weak Critics Make Strong Learners: On-Policy Critique Distillation for Scalable Oversight</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00081">DAStatFormer: A Hybrid Multibranch Transformer with Statistical Feature Integration for DAS-Based Pattern Recognitions</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00132">Foundation-Preserving Adaptation via Generalized Rayleigh-Quotient Optimization</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00135">On Effectiveness and Efficiency of Agentic Tool-calling and RL Training</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00147">RAFT: Data Refinement and Adaptive Distillation for Domain Fine-Tuning with Alleviated Forgetting</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00180">Beyond Augmentation: Score-Guided Pathological Prior for EEG-based Depression Detection</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00228">LithoGRPO: Fast Inverse Lithography via GRPO Reinforced Flow Matching</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00241">InfoAtlas: A Foundation Model for Zero-Shot Statistical Dependence Estimate</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00289">Inner Product Aware Quantization: Provably Fast, Accurate, and Adaptive Algorithms</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/427922.html">头部厂商集体买单，全球AI原生达人营销头号平台正在诞生！</a> <small>(量子位)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/427760.html">“豆包汽车”，目标市场10万-20万</a> <small>(量子位)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/427472.html">云端模型如何落地物理世界？招商局狮子山人工智能实验室用LiOS打通具身智能全链路</a> <small>(量子位)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/427541.html">老黄的Token经济学翻车了！微软亚马逊通通跳车</a> <small>(量子位)</small></li>
+<li>🟡 <a href="https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/">Take our I/O 2026 quiz, vibe coded in Google AI Studio.</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/">Check out real-life AI prototypes from the Futures Lab.</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/">A new experiment brings better group meetings to Google Beam</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/torch-profiler">Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/delta-weight-sync">Shipping a Trillion Parameters With a Hub Bucket: Delta Weight Sync in TRL</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/agent-glossary">Harness, Scaffold, and the AI Agent Terms Worth Getting Right</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-intelligence">Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/deepseekv4">DeepSeek-V4: a million-token context that agents can actually use</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/cybersecurity-openness">AI and the Future of Cybersecurity: Why Openness Matters</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/transformers-to-mlx">The PR you would have opened yourself</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://github.blog/ai-and-ml/github-copilot/dungeons-desktops-building-a-procedurally-generated-roguelike-with-github-copilot-cli/">Dungeons &amp; Desktops: Building a procedurally generated roguelike with GitHub Copilot CLI</a> <small>(GitHub Blog AI)</small></li>
+<li>🟡 <a href="https://github.blog/ai-and-ml/github-copilot/github-copilot-cli-for-beginners-interactive-v-non-interactive-mode/">GitHub Copilot CLI for Beginners: Interactive v. non-interactive mode</a> <small>(GitHub Blog AI)</small></li>
+<li>🟡 <a href="https://www.technologyreview.com/2026/05/28/1138053/the-ai-hype-index-ai-gets-booed-in-graduation-season/">The AI Hype Index: AI gets booed in graduation season</a> <small>(MIT Tech Review AI)</small></li>
+<li>🟡 <a href="https://www.technologyreview.com/2026/05/26/1137865/its-time-to-address-the-looming-crisis-in-entry-level-work/">It’s time to address the looming crisis in entry-level work</a> <small>(MIT Tech Review AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00007">Deliberative Curation: A Protocol for Multi-Agent Knowledge Bases</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00008">Agents on a Tree: Pathwise Coordination for Multi-Objective Molecular Optimization</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00050">Grokers: Bottom-Up Inductive Comprehension and Write-Time Intelligence over Typed Knowledge Graphs</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00103">Evaluating Interactive Reasoning in Large Language Models: A Hierarchical Benchmark with Executable Games</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00138">A Multi-AI-agent Framework Enabling End-to-end Finite Element Analysis for Solid Mechanics Problems</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00251">Capability Self-Assessment: Teaching LLMs to Know Their Limits</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00272">On Wednesdays, We Ask Questions: Optimizing "Active Listening" in Automated Legal Triage and Referral</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00288">Model-Native Computing Architecture: Envisioning Future System Architecture Through the Lens of Computer Architecture</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00376">The Deterministic Horizon: When Extended Reasoning Fails and Tool Delegation Becomes Necessary</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00384">VESTA: Visual Exploration with Statistical Tool Agents</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00440">SDR: Set-Distance Rewards for Radiology Report Generation</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00476">Doing What They Say, Not What They Reason: Locating the Faithfulness Gap in LLM Agents</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00079">BitsMoE: Efficient Spectral Energy-Guided Bit Allocation for MoE LLM Quantization</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00130">Automatically Differentiable Nonlinear Tensor Networks (ADNTNs) for Exponential Compression of Deep Neural Networks</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00133">World Models: A Comprehensive Survey of Architectures, Methodologies, Reasoning Paradigms, and Applications</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00151">Emergence of Exploration in Policy Gradient Reinforcement Learning via Retrying</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00230">A Pre-Training Analogue of Grokking in Language Models: Tracing Delayed Grammatical Generalization</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00257">ARCA: Adapter-Residual Credit Assignment When Token Signals Degenerate</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/">We’re announcing new community investments in Missouri.</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://blog.google/innovation-and-ai/technology/ai/future-vision-film-competition-xprize/">Google is partnering with XPRIZE and Range Media Partners on the $3.5 million Future Vision film competition.</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://huggingface.co/blog/amazon/foundation-model-building-blocks">Building Blocks for Foundation Model Training and Inference on AWS</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-global-health-care-with-agentic-ai/">Rehumanizing global health care with agentic AI</a> <small>(MIT Tech Review AI)</small></li>
+<li>🟡 <a href="https://www.technologyreview.com/2026/06/02/1138227/how-small-businesses-can-leverage-ai/">How small businesses can leverage AI</a> <small>(MIT Tech Review AI)</small></li>
+<li>🟡 <a href="https://www.technologyreview.com/2026/05/26/1137584/rethinking-organizational-design-in-the-age-of-agentic-ai/">Rethinking organizational design in the age of agentic AI</a> <small>(MIT Tech Review AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00009">Optimal Transport-based Permutation-Invariant Bayesian Optimization of Offshore Wind Farm Layouts</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00102">On the evolution of the concept of probability as a mirror of the evolution of reason</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00172">CAST: Non-Privileged Clipped Asymmetric Self-Teaching with Advantage Flipping for GRPO</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00232">TIGER: Traceable Inference with Graph-Based Evidence Routing for Mitigating Hallucinations in Multimodal Generation</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00248">Geodesic Flow Matching for Denoising High-Dimensional Structured Representations</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00269">Closed-Loop Neural Activation Control in Vision-Language-Action Models</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00278">Evaluating Bivariate Causal Statements Based on Mutual Compatibility</a> <small>(arXiv cs.AI)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00082">Hoeffding Concept Bottleneck Models with Applications to Overhead Images</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00083">From Demonstrations to Rewards: Test-Time Prompt Optimization for VLM Reward Models</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00140">Geometric Erasure by Contrastive Velocity Matching in Rectified Flows</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00141">Adaptive data selection improves wearable prediction under low baseline performance</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00144">BudgetDraft: Acceptance-Aware Multi-View Training for Sparse-KV Speculative Decoding</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00169">ChurnNet: A Optimized Modern AI for Churn Prediction</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00187">AI-Guided Design and Optimization of Graphite-Based Anodes via Iterative Experimental Feedback</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00202">From Rashomon Theory to PRAXIS: Efficient Decision Tree Rashomon Sets</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00206">Quantized Reasoning Models Think They Need to Think Longer, but They Do Not</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00262">When Softmax Fails at the Top: Extreme Value Corrections for InfoNCE</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://arxiv.org/abs/2606.00293">Accurate Large-sample Uncertainty Quantification using Stochastic Gradient Markov Chain Monte Carlo</a> <small>(arXiv cs.LG)</small></li>
+<li>🟢 <a href="https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magnifica-humanitas-offers-a-template-for-individuals-to-meet-the-ai-moment/">How the Pope’s Magnifica Humanitas offers a template for individuals to meet the AI moment</a> <small>(MIT Tech Review AI)</small></li>
+<li>🟢 <a href="https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria/">A reality check on the AI jobs hysteria</a> <small>(MIT Tech Review AI)</small></li>
+<li>🟢 <a href="https://www.technologyreview.com/2026/05/21/1137613/scaling-creativity-in-the-age-of-ai/">Scaling creativity in the age of AI</a> <small>(MIT Tech Review AI)</small></li>
+</ol>
+  </div>
+</details></div>
+      <div class="ep-links">
+        <a href="https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-06-03.mp3" download>⬇ 下载音频</a>
+        <button class="btn-script-link" onclick="switchTab('script'); loadScript('2026-06-03')">📄 阅读播客剧本</button>
+        <button class="btn-report-link" onclick="switchTab('report'); loadReport('2026-06-03')">📰 阅读科技日报</button>
+      </div>
+    </div>
+  </div>
+</article>
+<article class="ep-card" id="card-2026-06-02">
+  <div class="ep-card-layout">
+    <div class="ep-card-play-col">
+      <button class="play-btn-circle" onclick="togglePlay('2026-06-02', 'http://localhost/episodes/2026-06-02.mp3', 'AI 新闻快报 | 2026-06-02')" data-id="2026-06-02">▶</button>
+    </div>
+    <div class="ep-card-content-col">
+      <div class="ep-header">
+        <h3 class="ep-title">AI 新闻快报 | 2026-06-02</h3>
+        <span class="ep-meta">2026-06-02 17:27 · 1.5 MB</span>
+      </div>
+      <div class="ep-desc"><p>每天 5 分钟，聚合 AI 领域最新发布、技术进展、行业事件与人物采访。</p>
+
+<details class="ep-links-collapse">
+  <summary>展开查看全部 139 条参考新闻链接</summary>
+  <div class="ep-links-collapse-content">
+    <ol>
+<li>🔴 <a href="https://blog.google/innovation-and-ai/technology/ai/io-2026-keynote-moment-videos/">Catch up on 12 major I/O 2026 moments</a> <small>(Google AI Blog)</small></li>
+<li>🔴 <a href="https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/">100 things we announced at I/O 2026</a> <small>(Google AI Blog)</small></li>
+<li>🔴 <a href="https://blog.google/products-and-platforms/products/workspace/workspace-updates/">New ways to create and get things done in Google Workspace</a> <small>(Google AI Blog)</small></li>
+<li>🔴 <a href="https://blog.google/innovation-and-ai/sundar-pichai-io-2026/">I/O 2026: Welcome to the agentic Gemini era</a> <small>(Google AI Blog)</small></li>
+<li>🔴 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/">Gemini 3.5: frontier intelligence with action</a> <small>(Google AI Blog)</small></li>
+<li>🔴 <a href="https://blog.google/products-and-platforms/products/search/search-io-2026/">A new era for AI Search</a> <small>(Google AI Blog)</small></li>
+<li>🔴 <a href="https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/">Everything new in our Google AI subscriptions, fresh from I/O 2026</a> <small>(Google AI Blog)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/427754.html">百度文心发布 PaddleOCR-VL-1.6：准确率突破 96.33%，刷新文档解析 SOTA</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://www.qbitai.com/2026/06/427231.html">德系精工邂逅中国智慧 全新奥迪Q5L现已登陆全国门店</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/">How we used Gemini to build Google I/O 2026</a> <small>(Google AI Blog)</small></li>
 <li>🟡 <a href="https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/">Catch up on the Dialogues stage at Google I/O 2026.</a> <small>(Google AI Blog)</small></li>
@@ -1367,7 +1822,6 @@
 <li>🟡 <a href="https://www.qbitai.com/2026/06/427729.html">机器人运控训练步入分钟级时代！清华AIR开源UniLab：3分钟训好人形，速度暴涨10倍，Mac上也能跑</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://www.qbitai.com/2026/06/427730.html">Qwen3.7-Plus上线！多模态智能体新基座，一键复刻桌面端专业软件</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://www.qbitai.com/2026/06/427530.html">清智系企业亮相 BEYOND Expo 2026 并斩获多项大奖</a> <small>(量子位)</small></li>
-<li>🟡 <a href="https://www.qbitai.com/2026/06/427141.html">Token贵只因你喂给模型的垃圾太多了丨@亚马逊王晓野AIGC2026</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/">9 demos of Gemini Omni and Gemini 3.5 in action</a> <small>(Google AI Blog)</small></li>
 <li>🟡 <a href="https://blog.google/products-and-platforms/products/search/ai-powered-google-finance-in-europe/">The new AI-powered Google Finance is expanding to Europe.</a> <small>(Google AI Blog)</small></li>
 <li>🟡 <a href="https://blog.google/company-news/inside-google/company-announcements/the-small-brief/">See what happens when creative legends use AI to make ads for small businesses.</a> <small>(Google AI Blog)</small></li>
@@ -1407,11 +1861,11 @@
 <li>🟡 <a href="https://arxiv.org/abs/2606.00228">LithoGRPO: Fast Inverse Lithography via GRPO Reinforced Flow Matching</a> <small>(arXiv cs.LG)</small></li>
 <li>🟡 <a href="https://arxiv.org/abs/2606.00241">InfoAtlas: A Foundation Model for Zero-Shot Statistical Dependence Estimate</a> <small>(arXiv cs.LG)</small></li>
 <li>🟡 <a href="https://arxiv.org/abs/2606.00289">Inner Product Aware Quantization: Provably Fast, Accurate, and Adaptive Algorithms</a> <small>(arXiv cs.LG)</small></li>
+<li>🟡 <a href="https://www.qbitai.com/2026/06/427760.html">“豆包汽车”，目标市场10万-20万</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://www.qbitai.com/2026/06/427472.html">云端模型如何落地物理世界？招商局狮子山人工智能实验室用LiOS打通具身智能全链路</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://www.qbitai.com/2026/06/427541.html">老黄的Token经济学翻车了！微软亚马逊通通跳车</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://www.qbitai.com/2026/06/427516.html">近2亿美元！VAST完成新一轮融资，正式披露世界模型路线</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://www.qbitai.com/2026/06/427332.html">今天起，无限期免费！全球首个全模态API开放，Top 10 AI Lab出手</a> <small>(量子位)</small></li>
-<li>🟡 <a href="https://www.qbitai.com/2026/06/427238.html">OpenAI重返机器人赛道！四大核心岗位开招</a> <small>(量子位)</small></li>
 <li>🟡 <a href="https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/">Take our I/O 2026 quiz, vibe coded in Google AI Studio.</a> <small>(Google AI Blog)</small></li>
 <li>🟡 <a href="https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/">Check out real-life AI prototypes from the Futures Lab.</a> <small>(Google AI Blog)</small></li>
 <li>🟡 <a href="https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/">A new experiment brings better group meetings to Google Beam</a> <small>(Google AI Blog)</small></li>
@@ -1426,7 +1880,6 @@
 <li>🟡 <a href="https://github.blog/ai-and-ml/github-copilot/github-copilot-cli-for-beginners-interactive-v-non-interactive-mode/">GitHub Copilot CLI for Beginners: Interactive v. non-interactive mode</a> <small>(GitHub Blog AI)</small></li>
 <li>🟡 <a href="https://www.technologyreview.com/2026/05/28/1138053/the-ai-hype-index-ai-gets-booed-in-graduation-season/">The AI Hype Index: AI gets booed in graduation season</a> <small>(MIT Tech Review AI)</small></li>
 <li>🟡 <a href="https://www.technologyreview.com/2026/05/26/1137865/its-time-to-address-the-looming-crisis-in-entry-level-work/">It’s time to address the looming crisis in entry-level work</a> <small>(MIT Tech Review AI)</small></li>
-<li>🟡 <a href="https://www.technologyreview.com/2026/05/19/1137454/roundtables-inside-the-musk-v-altman-trial/">Roundtables: Inside the Musk v. Altman Trial</a> <small>(MIT Tech Review AI)</small></li>
 <li>🟡 <a href="https://arxiv.org/abs/2606.00007">Deliberative Curation: A Protocol for Multi-Agent Knowledge Bases</a> <small>(arXiv cs.AI)</small></li>
 <li>🟡 <a href="https://arxiv.org/abs/2606.00008">Agents on a Tree: Pathwise Coordination for Multi-Objective Molecular Optimization</a> <small>(arXiv cs.AI)</small></li>
 <li>🟡 <a href="https://arxiv.org/abs/2606.00050">Grokers: Bottom-Up Inductive Comprehension and Write-Time Intelligence over Typed Knowledge Graphs</a> <small>(arXiv cs.AI)</small></li>
@@ -1448,6 +1901,7 @@
 <li>🟡 <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/">We’re announcing new community investments in Missouri.</a> <small>(Google AI Blog)</small></li>
 <li>🟡 <a href="https://blog.google/innovation-and-ai/technology/ai/future-vision-film-competition-xprize/">Google is partnering with XPRIZE and Range Media Partners on the $3.5 million Future Vision film competition.</a> <small>(Google AI Blog)</small></li>
 <li>🟡 <a href="https://huggingface.co/blog/amazon/foundation-model-building-blocks">Building Blocks for Foundation Model Training and Inference on AWS</a> <small>(HuggingFace Blog)</small></li>
+<li>🟡 <a href="https://www.technologyreview.com/2026/06/02/1138227/how-small-businesses-can-leverage-ai/">How small businesses can leverage AI</a> <small>(MIT Tech Review AI)</small></li>
 <li>🟡 <a href="https://www.technologyreview.com/2026/05/26/1137584/rethinking-organizational-design-in-the-age-of-agentic-ai/">Rethinking organizational design in the age of agentic AI</a> <small>(MIT Tech Review AI)</small></li>
 <li>🟡 <a href="https://arxiv.org/abs/2606.00009">Optimal Transport-based Permutation-Invariant Bayesian Optimization of Offshore Wind Farm Layouts</a> <small>(arXiv cs.AI)</small></li>
 <li>🟡 <a href="https://arxiv.org/abs/2606.00102">On the evolution of the concept of probability as a mirror of the evolution of reason</a> <small>(arXiv cs.AI)</small></li>
@@ -1474,8 +1928,8 @@
   </div>
 </details></div>
       <div class="ep-links">
-        <a href="https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-06-02.mp3" download>⬇ 下载音频</a>
-        <a href="https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-06-02.txt" target="_blank">📄 原始文字稿</a>
+        <a href="http://localhost/episodes/2026-06-02.mp3" download>⬇ 下载音频</a>
+        <button class="btn-script-link" onclick="switchTab('script'); loadScript('2026-06-02')">📄 阅读播客剧本</button>
         <button class="btn-report-link" onclick="switchTab('report'); loadReport('2026-06-02')">📰 阅读科技日报</button>
       </div>
     </div>
@@ -1503,6 +1957,42 @@
             </main>
           </div>
         </div>
+
+        <!-- Tab Panel 3: Script viewer -->
+        <div class="tab-pane" id="pane-script">
+          <div class="script-layout">
+            <aside class="script-sidebar">
+              <div class="script-sidebar-title">📅 剧本归档</div>
+              <div class="script-date-list" id="script-date-selector-list">
+                <!-- Loaded dynamically -->
+              </div>
+            </aside>
+            <main class="script-viewer">
+              <div class="script-viewer-header">
+                <div class="script-viewing-date-label" id="script-viewing-date-label">正在载入...</div>
+                <a href="#" target="_blank" class="btn-raw-script" id="btn-script-raw-download">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 13 7 8"></polyline><line x1="12" y1="13" x2="12" y2="1"></line></svg>
+                  原始文字稿 (.txt)
+                </a>
+              </div>
+              <div class="script-box" id="script-content-box">
+                <p style="text-align: center; color: var(--text-muted); padding: 40px 0;">加载中...</p>
+              </div>
+            </main>
+          </div>
+        </div>
+
+        <!-- Tab Panel 3: Pipeline Walkthrough -->
+        <div class="tab-pane" id="pane-walkthrough">
+          <div class="report-viewer" style="min-height: 500px;">
+            <div class="report-viewer-header">
+              <div class="report-viewing-date-label">⚙️ AI News Podcast 自动化运行机制全景图解</div>
+            </div>
+            <div class="report-markdown" id="walkthrough-content-box">
+              <p style="text-align: center; color: var(--text-muted); padding: 40px 0;">正在加载运行机制图解...</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1513,7 +2003,7 @@
     <div class="toast" id="toast">🎯 RSS 订阅链接已成功复制到剪贴板！</div>
 
     <div class="footer">
-      <p>AI 每日先锋 · 每日定时自动部署</p>
+      <p>AI 每日先锋 · 最后构建时间: 2026-06-03 09:04:10</p>
       <p>播客源 RSS 订阅地址: <a href="./feed.xml">https://nicekai-jpg.github.io/ai-news-podcast/feed.xml</a> · 本项目基于开源自动化生成</p>
     </div>
   </div>
@@ -1562,7 +2052,7 @@
 
   <script type="text/javascript">
     // Config dates list from backend
-    const dates = ["2026-06-02"];
+    const dates = ["2026-06-03", "2026-06-02"];
 
     // Custom HTML5 Player variables
     const audio = document.getElementById('main-audio');
@@ -1652,6 +2142,154 @@
       }
     }
 
+    // Parse Script SSML to dialogues
+    function parseScriptSSML(ssmlText) {
+      // Regex to find voice tags and capture speaker name + text
+      const regex = /<voice\s+name="([^"]+)"\s*>([\s\S]*?)<\/voice>/gi;
+      const dialogues = [];
+      let match;
+      while ((match = regex.exec(ssmlText)) !== null) {
+        const voiceName = match[1];
+        let content = match[2].trim();
+        
+        // Strip sub-tags like [mood:...] or fact tag annotations
+        content = content.replace(/\[mood:[a-zA-Z0-9_-]+\]/gi, "");
+        content = content.replace(/\[(?:FACT|INFERENCE|OPINION)\]/gi, "");
+        content = content.replace(/\s+/g, " "); // collapse multiple whitespace
+        
+        let speaker = "旁白";
+        let roleClass = "narrator";
+        let avatar = "🎙️";
+        if (voiceName.includes("Xiaoxiao")) {
+          speaker = "晓晓 (主持人)";
+          roleClass = "xiaoxiao";
+          avatar = "🎙️";
+        } else if (voiceName.includes("Yunxi")) {
+          speaker = "博文 (技术专家)";
+          roleClass = "bowen";
+          avatar = "👨‍💻";
+        }
+        
+        dialogues.push({
+          speaker,
+          voiceName,
+          content,
+          roleClass,
+          avatar
+        });
+      }
+      
+      if (dialogues.length === 0) {
+        // Fallback for raw txt with no XML/voice tags
+        const paragraphs = ssmlText.split('\n').map(p => p.trim()).filter(p => p.length > 0);
+        return paragraphs.map(p => ({
+          speaker: "播音员",
+          content: p,
+          roleClass: "narrator",
+          avatar: "📄"
+        }));
+      }
+      
+      return dialogues;
+    }
+
+    // Load script dates select list
+    function initScriptDates() {
+      const container = document.getElementById('script-date-selector-list');
+      if (!container) return;
+      container.innerHTML = '';
+
+      dates.forEach((dateStr, idx) => {
+        const item = document.createElement('div');
+        item.className = 'script-date-item';
+        if (idx === 0) item.classList.add('active');
+        item.setAttribute('data-date', dateStr);
+        item.onclick = () => {
+          document.querySelectorAll('.script-date-item').forEach(el => el.classList.remove('active'));
+          item.classList.add('active');
+          loadScript(dateStr);
+        };
+
+        let displayDate = dateStr;
+        try {
+          const parts = dateStr.split('-');
+          if (parts.length === 3) {
+            displayDate = `${parts[1]}月${parts[2]}日`;
+          }
+        } catch(e) {}
+
+        item.innerHTML = `<span class="report-date-icon">📄</span> <span>${displayDate}</span>`;
+        container.appendChild(item);
+      });
+
+      if (dates.length > 0) {
+        loadScript(dates[0]);
+      }
+    }
+
+    // Load Script dynamically and render interactive dialogue bubbles
+    async function loadScript(dateStr) {
+      const contentBox = document.getElementById('script-content-box');
+      if (!contentBox) return;
+      contentBox.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 40px 0;">正在拉取播客剧本，请稍候...</p>';
+
+      // Update sidebar active state
+      document.querySelectorAll('.script-date-item').forEach(el => {
+        if (el.getAttribute('data-date') === dateStr) {
+          el.classList.add('active');
+          el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+        } else {
+          el.classList.remove('active');
+        }
+      });
+
+      // Update date label in viewer header
+      const label = document.getElementById('script-viewing-date-label');
+      if (label) {
+        let displayDate = dateStr;
+        try {
+          const parts = dateStr.split('-');
+          if (parts.length === 3) {
+            displayDate = `${parts[0]}年${parts[1]}月${parts[2]}日`;
+          }
+        } catch(e) {}
+        label.textContent = `${displayDate} · 播客剧本`;
+      }
+
+      // Update download link for raw txt transcript
+      const downloadBtn = document.getElementById('btn-script-raw-download');
+      if (downloadBtn) {
+        downloadBtn.href = `./episodes/${dateStr}.txt`;
+      }
+
+      try {
+        const resp = await fetch(`./episodes/${dateStr}.txt`);
+        if (!resp.ok) {
+          throw new Error('Script file not found');
+        }
+        const rawText = await resp.text();
+        const dialogues = parseScriptSSML(rawText);
+        
+        contentBox.innerHTML = '';
+        dialogues.forEach((dlg, idx) => {
+          const row = document.createElement('div');
+          row.className = `dialogue-row dialogue-row-${dlg.roleClass}`;
+          row.style.animationDelay = `${idx * 0.04}s`;
+          
+          row.innerHTML = `
+            <div class="dialogue-avatar dialogue-avatar-${dlg.roleClass}">${dlg.avatar}</div>
+            <div class="dialogue-bubble-wrap">
+              <div class="dialogue-speaker-name">${dlg.speaker}</div>
+              <div class="dialogue-bubble dialogue-bubble-${dlg.roleClass}">${dlg.content}</div>
+            </div>
+          `;
+          contentBox.appendChild(row);
+        });
+      } catch (err) {
+        contentBox.innerHTML = `<p style="text-align: center; color: #ef4444; padding: 40px 0;">未找到【${dateStr}】的播客剧本，可能未成功生成。</p>`;
+      }
+    }
+
     // Toggle Tab view
     function switchTab(tabId) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -1660,9 +2298,63 @@
       if (tabId === 'episodes') {
         document.getElementById('btn-tab-episodes').classList.add('active');
         document.getElementById('pane-episodes').classList.add('active');
-      } else {
+      } else if (tabId === 'report') {
         document.getElementById('btn-tab-report').classList.add('active');
         document.getElementById('pane-report').classList.add('active');
+      } else if (tabId === 'script') {
+        document.getElementById('btn-tab-script').classList.add('active');
+        document.getElementById('pane-script').classList.add('active');
+      } else if (tabId === 'walkthrough') {
+        document.getElementById('btn-tab-walkthrough').classList.add('active');
+        document.getElementById('pane-walkthrough').classList.add('active');
+        loadWalkthrough();
+      }
+    }
+
+    // Load walkthrough markdown and render flowcharts
+    async function loadWalkthrough() {
+      const contentBox = document.getElementById('walkthrough-content-box');
+      if (!contentBox) return;
+      if (contentBox.getAttribute('data-loaded') === 'true') return; // Only load once
+
+      contentBox.innerHTML = '<p style="text-align: center; color: var(--text-muted); padding: 40px 0;">正在拉取运行机制图解，请稍候...</p>';
+
+      try {
+        const resp = await fetch('./pipeline_walkthrough.md');
+        if (!resp.ok) {
+          throw new Error('Walkthrough file not found');
+        }
+        let mdText = await resp.text();
+
+        // Rewrite image path from relative repo format to build folder flat format
+        mdText = mdText.replace('../assets/pipeline_infographic.png', './pipeline_infographic.png');
+
+        contentBox.innerHTML = marked.parse(mdText);
+
+        // Convert Mermaid code blocks into divs
+        const codeBlocks = contentBox.querySelectorAll('pre code.language-mermaid');
+        codeBlocks.forEach(block => {
+          const pre = block.parentElement;
+          const div = document.createElement('div');
+          div.className = 'mermaid';
+          div.textContent = block.textContent;
+          pre.replaceWith(div);
+        });
+
+        // Initialize/Run Mermaid if loaded
+        if (window.mermaid) {
+          try {
+            mermaid.run({
+              nodes: contentBox.querySelectorAll('.mermaid')
+            });
+          } catch (err) {
+            console.error('Mermaid render error:', err);
+          }
+        }
+
+        contentBox.setAttribute('data-loaded', 'true');
+      } catch (err) {
+        contentBox.innerHTML = '<p style="text-align: center; color: #ef4444; padding: 40px 0;">未找到运行机制文档。</p>';
       }
     }
 
@@ -1870,6 +2562,7 @@
     // Initialize Page
     window.addEventListener('DOMContentLoaded', () => {
       initReportDates();
+      initScriptDates();
     });
   </script>
 </body>
