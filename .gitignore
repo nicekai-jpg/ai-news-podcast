@@ -29,7 +29,10 @@ scripts/*.mp3
 scripts/*.html
 
 # Generated site (deployed to gh-pages branch)
-# site/
+site/
+
+# Test temp output
+tests/tmp/
 
 # Local runs
 out/
