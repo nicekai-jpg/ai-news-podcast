@@ -23,6 +23,45 @@ from ai_news_podcast.utils import read_json
 log = logging.getLogger(__name__)
 
 
+def get_recent_broadcasted_urls(episodes_json_path: Path, limit: int = 14) -> set[str]:
+    """提取最近若干期节目中已经播报过的新闻 URL，用于跨期去重。"""
+    import re
+    from ai_news_podcast.pipeline.fetcher import normalize_url
+
+    urls: set[str] = set()
+    if not episodes_json_path.exists():
+        return urls
+
+    try:
+        episodes = read_json(episodes_json_path)
+        if not isinstance(episodes, list):
+            return urls
+
+        # 只遍历最近的 limit 期节目，避免过度过滤历史主题
+        for ep in episodes[:limit]:
+            desc = ep.get("description", "")
+            if not desc:
+                continue
+            # 匹配 HTML 中的 href 链接
+            found = re.findall(r'href="([^"]+)"', desc)
+            for url in found:
+                url_str = str(url).strip()
+                # 过滤掉 mp3 音频下载链接、以及 feed 订阅和主页链接
+                if (
+                    url_str.endswith(".mp3")
+                    or url_str.endswith(".xml")
+                    or url_str.endswith(".html")
+                    or "/feed.xml" in url_str
+                ):
+                    continue
+                norm = normalize_url(url_str)
+                if norm:
+                    urls.add(norm)
+    except Exception as e:
+        log.error("Failed to parse historical broadcasted URLs: %s", e)
+    return urls
+
+
 async def run_pipeline(
     cfg: dict[str, Any],
     sources: list[Any],
@@ -93,6 +132,20 @@ async def run_pipeline(
         return {"stories": [], "thesis": "", "metadata": {"total_raw": 0, "error": "no_items"}}
 
     log.info("Stage 1 [pipeline]: fetched %d raw items", len(raw_items))
+
+    # ── 跨期历史去重 ──────────────────────────────────────────────────────────
+    episodes_index = data_dir / "episodes.json"
+    recent_urls = get_recent_broadcasted_urls(episodes_index, limit=14)
+    if recent_urls:
+        original_count = len(raw_items)
+        raw_items = [item for item in raw_items if item.normalized_link not in recent_urls]
+        filtered_count = original_count - len(raw_items)
+        if filtered_count > 0:
+            log.info(
+                "Cross-episode dedup: filtered out %d already broadcasted articles, %d items remaining",
+                filtered_count,
+                len(raw_items),
+            )
 
     # ── Stage 2: 处理（三层去重 → DBSCAN 聚类 → 五维打分） ──────────────────
     log.info("Stage 2 [pipeline]: dedup → cluster → score …")
