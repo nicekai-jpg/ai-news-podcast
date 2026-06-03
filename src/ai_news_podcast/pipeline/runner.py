@@ -24,7 +24,7 @@ from ai_news_podcast.utils import read_json
 log = logging.getLogger(__name__)
 
 
-def get_recent_broadcasted_urls(episodes_json_path: Path, limit: int = 14) -> set[str]:
+def get_recent_broadcasted_urls(episodes_json_path: Path, limit: int = 14, current_episode_id: str | None = None) -> set[str]:
     """提取最近若干期节目中已经播报过的新闻 URL，用于跨期去重。"""
     import re
     from ai_news_podcast.pipeline.fetcher import normalize_url
@@ -40,6 +40,9 @@ def get_recent_broadcasted_urls(episodes_json_path: Path, limit: int = 14) -> se
 
         # 只遍历最近的 limit 期节目，避免过度过滤历史主题
         for ep in episodes[:limit]:
+            ep_id = ep.get("id")
+            if current_episode_id and str(ep_id) == str(current_episode_id):
+                continue
             desc = ep.get("description", "")
             if not desc:
                 continue
@@ -86,7 +89,7 @@ def extract_semantic_keywords(title: str, summary: str, full_text: str, top_k: i
         return f"{title} {summary}".strip()
 
 
-def get_recent_broadcasted_texts(episodes_json_path: Path, limit: int = 14) -> list[HistoricalRecord]:
+def get_recent_broadcasted_texts(episodes_json_path: Path, limit: int = 14, current_episode_id: str | None = None) -> list[HistoricalRecord]:
     """提取最近若干期节目中已播报的新闻文本（使用关键词提取进行精简），用于更全面的跨期语义去重。"""
     import re
 
@@ -101,6 +104,9 @@ def get_recent_broadcasted_texts(episodes_json_path: Path, limit: int = 14) -> l
 
         data_dir = episodes_json_path.parent
         for ep in episodes[:limit]:
+            ep_id = ep.get("id")
+            if current_episode_id and str(ep_id) == str(current_episode_id):
+                continue
             ep_id = ep.get("id")
             # 优先从 data/briefs/brief_{ep_id}.json 中读取更完整的“标题+摘要+精简关键词”作为语义特征
             brief_path = data_dir / "briefs" / f"brief_{ep_id}.json"
@@ -241,7 +247,7 @@ async def run_pipeline(
     # ── 跨期历史去重 ──────────────────────────────────────────────────────────
     dedup_details: list[dict[str, Any]] = []
     episodes_index = data_dir / "episodes.json"
-    recent_urls = get_recent_broadcasted_urls(episodes_index, limit=14)
+    recent_urls = get_recent_broadcasted_urls(episodes_index, limit=14, current_episode_id=date_str)
     if recent_urls:
         filtered_items = []
         for item in raw_items:
@@ -266,7 +272,7 @@ async def run_pipeline(
             )
 
     # ── 跨期语义相似度去重 ──────────────────────────────────────────────────────
-    recent_records = get_recent_broadcasted_texts(episodes_index, limit=14)
+    recent_records = get_recent_broadcasted_texts(episodes_index, limit=14, current_episode_id=date_str)
     if recent_records and raw_items:
         dedup_cfg = processing_cfg.get("dedup", {})
         
