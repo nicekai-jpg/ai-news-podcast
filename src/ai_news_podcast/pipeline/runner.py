@@ -12,6 +12,7 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 import logging
 from pathlib import Path
 from typing import Any
@@ -62,23 +63,30 @@ def get_recent_broadcasted_urls(episodes_json_path: Path, limit: int = 14) -> se
     return urls
 
 
-def get_recent_broadcasted_texts(episodes_json_path: Path, limit: int = 14) -> list[str]:
-    """提取最近若干期节目中已播报的新闻文本（标题+摘要），用于更全面的跨期语义去重。"""
+@dataclass
+class HistoricalRecord:
+    text: str
+    story_title: str
+    episode_id: str
+
+
+def get_recent_broadcasted_texts(episodes_json_path: Path, limit: int = 14) -> list[HistoricalRecord]:
+    """提取最近若干期节目中已播报的新闻文本，用于更全面的跨期语义去重。"""
     import re
 
-    texts: list[str] = []
+    records: list[HistoricalRecord] = []
     if not episodes_json_path.exists():
-        return texts
+        return records
 
     try:
         episodes = read_json(episodes_json_path)
         if not isinstance(episodes, list):
-            return texts
+            return records
 
         data_dir = episodes_json_path.parent
         for ep in episodes[:limit]:
             ep_id = ep.get("id")
-            # 优先从 data/briefs/brief_{ep_id}.json 中读取更完整的“标题+摘要”作为语义特征
+            # 优先从 data/briefs/brief_{ep_id}.json 中读取更完整的“标题+摘要+正文片段”作为语义特征
             brief_path = data_dir / "briefs" / f"brief_{ep_id}.json"
             brief_loaded = False
             if brief_path.exists():
@@ -89,9 +97,27 @@ def get_recent_broadcasted_texts(episodes_json_path: Path, limit: int = 14) -> l
                             title = story.get("representative_title", "")
                             context = story.get("context", {})
                             summaries = context.get("factual_summary", [])
-                            full_story_text = f"{title} {' '.join(summaries)}".strip()
+                            
+                            # 提取该 Story 下所有新闻 item 的 title, summary 以及 full_text_snippet
+                            item_texts = []
+                            for item in story.get("items", []):
+                                if item.get("title"):
+                                    item_texts.append(item["title"])
+                                if item.get("summary"):
+                                    item_texts.append(item["summary"])
+                                if item.get("full_text_snippet"):
+                                    item_texts.append(item["full_text_snippet"])
+                            
+                            # 拼接为极全面的语义计算信息
+                            full_story_text = f"{title} {' '.join(summaries)} {' '.join(item_texts)}".strip()
                             if full_story_text:
-                                texts.append(full_story_text)
+                                records.append(
+                                    HistoricalRecord(
+                                        text=full_story_text,
+                                        story_title=title,
+                                        episode_id=str(ep_id),
+                                    )
+                                )
                         brief_loaded = True
                 except Exception as e:
                     log.warning("Failed to load brief %s: %s", brief_path, e)
@@ -104,10 +130,16 @@ def get_recent_broadcasted_texts(episodes_json_path: Path, limit: int = 14) -> l
                     for title_str in matches:
                         title_str = title_str.strip()
                         if title_str and len(title_str) > 3:
-                            texts.append(title_str)
+                            records.append(
+                                HistoricalRecord(
+                                    text=title_str,
+                                    story_title=title_str,
+                                    episode_id=str(ep_id),
+                                )
+                            )
     except Exception as e:
         log.error("Failed to parse historical broadcasted texts: %s", e)
-    return texts
+    return records
 
 
 async def run_pipeline(
@@ -182,12 +214,25 @@ async def run_pipeline(
     log.info("Stage 1 [pipeline]: fetched %d raw items", len(raw_items))
 
     # ── 跨期历史去重 ──────────────────────────────────────────────────────────
+    dedup_details: list[dict[str, Any]] = []
     episodes_index = data_dir / "episodes.json"
     recent_urls = get_recent_broadcasted_urls(episodes_index, limit=14)
     if recent_urls:
-        original_count = len(raw_items)
-        raw_items = [item for item in raw_items if item.normalized_link not in recent_urls]
-        filtered_count = original_count - len(raw_items)
+        filtered_items = []
+        for item in raw_items:
+            if item.normalized_link in recent_urls:
+                dedup_details.append({
+                    "title": item.title,
+                    "link": item.link,
+                    "source": item.source_name,
+                    "reason": "cross_episode_url",
+                    "detail": "URL matches a recently broadcasted article."
+                })
+            else:
+                filtered_items.append(item)
+        
+        filtered_count = len(raw_items) - len(filtered_items)
+        raw_items = filtered_items
         if filtered_count > 0:
             log.info(
                 "Cross-episode dedup: filtered out %d already broadcasted articles, %d items remaining",
@@ -196,8 +241,8 @@ async def run_pipeline(
             )
 
     # ── 跨期语义相似度去重 ──────────────────────────────────────────────────────
-    recent_texts = get_recent_broadcasted_texts(episodes_index, limit=14)
-    if recent_texts and raw_items:
+    recent_records = get_recent_broadcasted_texts(episodes_index, limit=14)
+    if recent_records and raw_items:
         import jieba
         from sklearn.feature_extraction.text import TfidfVectorizer
         from sklearn.metrics.pairwise import cosine_similarity
@@ -211,9 +256,9 @@ async def run_pipeline(
             def tokenize_text(text: str) -> str:
                 return " ".join(jieba.cut(text))
 
-            segmented_hist = [tokenize_text(t) for t in recent_texts]
-            # 新闻文章使用“标题+摘要”作为语义特征进行全面对比
-            new_texts = [f"{it.title} {it.summary}" for it in raw_items]
+            segmented_hist = [tokenize_text(r.text) for r in recent_records]
+            # 新闻文章使用“标题+摘要+正文片段”进行全面对比
+            new_texts = [f"{it.title} {it.summary} {it.full_text_snippet}".strip() for it in raw_items]
             segmented_new = [tokenize_text(t) for t in new_texts]
 
             vectorizer = TfidfVectorizer(
@@ -235,12 +280,29 @@ async def run_pipeline(
             for idx, item in enumerate(raw_items):
                 max_sim = float(sim_matrix[idx].max())
                 if max_sim >= sim_threshold:
+                    max_hist_idx = int(sim_matrix[idx].argmax())
+                    matched_rec = recent_records[max_hist_idx]
+                    
                     log.info(
-                        "Semantic dedup: filtered out '%s' (similarity %.2f >= %.2f with historical story)",
+                        "Semantic dedup: filtered out '%s' (similarity %.2f >= %.2f with historical story '%s' from %s)",
                         item.title,
                         max_sim,
                         sim_threshold,
+                        matched_rec.story_title,
+                        matched_rec.episode_id,
                     )
+                    
+                    dedup_details.append({
+                        "title": item.title,
+                        "link": item.link,
+                        "source": item.source_name,
+                        "reason": "cross_episode_semantic",
+                        "similarity": round(max_sim, 4),
+                        "threshold": sim_threshold,
+                        "matched_story_title": matched_rec.story_title,
+                        "matched_episode_id": matched_rec.episode_id,
+                        "detail": f"Similarity ({max_sim:.2f}) >= threshold ({sim_threshold:.2f}) with historical story '{matched_rec.story_title}' from {matched_rec.episode_id}."
+                    })
                     skipped_count += 1
                 else:
                     filtered_items.append(item)
@@ -259,6 +321,9 @@ async def run_pipeline(
     # ── Stage 2: 处理（三层去重 → DBSCAN 聚类 → 五维打分） ──────────────────
     log.info("Stage 2 [pipeline]: dedup → cluster → score …")
     brief = process(raw_items, processing_cfg=processing_cfg)
+
+    # ── 注入去重详细计算信息 ────────────────────────────────────────────────────
+    brief.setdefault("metadata", {})["dedup_details"] = dedup_details
 
     # ── 持久化 brief ─────────────────────────────────────────────────────────
     data_dir.mkdir(parents=True, exist_ok=True)
