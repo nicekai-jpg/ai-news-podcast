@@ -62,33 +62,52 @@ def get_recent_broadcasted_urls(episodes_json_path: Path, limit: int = 14) -> se
     return urls
 
 
-def get_recent_broadcasted_titles(episodes_json_path: Path, limit: int = 14) -> list[str]:
-    """提取最近若干期节目中已经播报过的新闻标题，用于跨期语义去重。"""
+def get_recent_broadcasted_texts(episodes_json_path: Path, limit: int = 14) -> list[str]:
+    """提取最近若干期节目中已播报的新闻文本（标题+摘要），用于更全面的跨期语义去重。"""
     import re
 
-    titles: list[str] = []
+    texts: list[str] = []
     if not episodes_json_path.exists():
-        return titles
+        return texts
 
     try:
         episodes = read_json(episodes_json_path)
         if not isinstance(episodes, list):
-            return titles
+            return texts
 
+        data_dir = episodes_json_path.parent
         for ep in episodes[:limit]:
-            desc = ep.get("description", "")
-            if not desc:
-                continue
-            # 使用 regex 匹配链接和锚文本（标题）
-            # 例如: <li>🔴 <a href="URL">Title</a> <small>(Source)</small></li>
-            matches = re.findall(r'<a\s+[^>]*href="[^"]+"[^>]*>([^<]+)</a>', desc)
-            for title_str in matches:
-                title_str = title_str.strip()
-                if title_str and len(title_str) > 3:
-                    titles.append(title_str)
+            ep_id = ep.get("id")
+            # 优先从 data/briefs/brief_{ep_id}.json 中读取更完整的“标题+摘要”作为语义特征
+            brief_path = data_dir / "briefs" / f"brief_{ep_id}.json"
+            brief_loaded = False
+            if brief_path.exists():
+                try:
+                    brief = read_json(brief_path)
+                    if brief and isinstance(brief, dict) and brief.get("stories"):
+                        for story in brief["stories"]:
+                            title = story.get("representative_title", "")
+                            context = story.get("context", {})
+                            summaries = context.get("factual_summary", [])
+                            full_story_text = f"{title} {' '.join(summaries)}".strip()
+                            if full_story_text:
+                                texts.append(full_story_text)
+                        brief_loaded = True
+                except Exception as e:
+                    log.warning("Failed to load brief %s: %s", brief_path, e)
+
+            # 兜底方案：若无 brief 缓存，则解析 episodes.json 里的描述 HTML 锚文本（仅标题）
+            if not brief_loaded:
+                desc = ep.get("description", "")
+                if desc:
+                    matches = re.findall(r'<a\s+[^>]*href="[^"]+"[^>]*>([^<]+)</a>', desc)
+                    for title_str in matches:
+                        title_str = title_str.strip()
+                        if title_str and len(title_str) > 3:
+                            texts.append(title_str)
     except Exception as e:
-        log.error("Failed to parse historical broadcasted titles: %s", e)
-    return titles
+        log.error("Failed to parse historical broadcasted texts: %s", e)
+    return texts
 
 
 async def run_pipeline(
@@ -177,14 +196,14 @@ async def run_pipeline(
             )
 
     # ── 跨期语义相似度去重 ──────────────────────────────────────────────────────
-    recent_titles = get_recent_broadcasted_titles(episodes_index, limit=14)
-    if recent_titles and raw_items:
+    recent_texts = get_recent_broadcasted_texts(episodes_index, limit=14)
+    if recent_texts and raw_items:
         import jieba
         from sklearn.feature_extraction.text import TfidfVectorizer
         from sklearn.metrics.pairwise import cosine_similarity
 
         dedup_cfg = processing_cfg.get("dedup", {})
-        sim_threshold = float(dedup_cfg.get("semantic_sim_threshold", 0.25))
+        sim_threshold = float(dedup_cfg.get("semantic_sim_threshold", 0.20))
 
         original_count = len(raw_items)
         try:
@@ -192,9 +211,10 @@ async def run_pipeline(
             def tokenize_text(text: str) -> str:
                 return " ".join(jieba.cut(text))
 
-            segmented_hist = [tokenize_text(t) for t in recent_titles]
-            new_titles = [it.title for it in raw_items]
-            segmented_new = [tokenize_text(t) for t in new_titles]
+            segmented_hist = [tokenize_text(t) for t in recent_texts]
+            # 新闻文章使用“标题+摘要”作为语义特征进行全面对比
+            new_texts = [f"{it.title} {it.summary}" for it in raw_items]
+            segmented_new = [tokenize_text(t) for t in new_texts]
 
             vectorizer = TfidfVectorizer(
                 analyzer="word",
