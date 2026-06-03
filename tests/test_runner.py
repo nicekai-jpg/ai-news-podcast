@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import pytest
-from ai_news_podcast.pipeline.runner import get_recent_broadcasted_urls, get_recent_broadcasted_titles
+from ai_news_podcast.pipeline.runner import get_recent_broadcasted_urls, get_recent_broadcasted_texts
 from ai_news_podcast.utils import write_json
 
 
@@ -44,7 +44,7 @@ def test_get_recent_broadcasted_urls_valid(tmp_path: Path) -> None:
     assert "https://example.com/demo.mp3" not in urls
 
 
-def test_get_recent_broadcasted_titles(tmp_path: Path) -> None:
+def test_get_recent_broadcasted_texts(tmp_path: Path) -> None:
     path = tmp_path / "episodes.json"
     episodes = [
         {
@@ -55,11 +55,11 @@ def test_get_recent_broadcasted_titles(tmp_path: Path) -> None:
     ]
     write_json(path, episodes)
 
-    titles = get_recent_broadcasted_titles(path, limit=1)
-    assert isinstance(titles, list)
-    assert len(titles) == 2
-    assert "Google I/O 2026 recap" in titles
-    assert "Anthropic Claude 3.5 Sonnet" in titles
+    texts = get_recent_broadcasted_texts(path, limit=1)
+    assert isinstance(texts, list)
+    assert len(texts) == 2
+    assert "Google I/O 2026 recap" in texts
+    assert "Anthropic Claude 3.5 Sonnet" in texts
 
 
 @pytest.mark.asyncio
