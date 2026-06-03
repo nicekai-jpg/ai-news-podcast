@@ -70,8 +70,24 @@ class HistoricalRecord:
     episode_id: str
 
 
+def extract_semantic_keywords(title: str, summary: str, full_text: str, top_k: int = 15) -> str:
+    """提取新闻的核心关键词并与标题、摘要组合，形成精简但覆盖全面的语义特征文本。"""
+    import jieba.analyse
+
+    raw_text = f"{title} {summary} {full_text}".strip()
+    if not raw_text:
+        return ""
+
+    try:
+        keywords = jieba.analyse.extract_tags(raw_text, topK=top_k)
+        return f"{title} {summary} {' '.join(keywords)}".strip()
+    except Exception as e:
+        log.warning("Failed to extract keywords using jieba: %s", e)
+        return f"{title} {summary}".strip()
+
+
 def get_recent_broadcasted_texts(episodes_json_path: Path, limit: int = 14) -> list[HistoricalRecord]:
-    """提取最近若干期节目中已播报的新闻文本，用于更全面的跨期语义去重。"""
+    """提取最近若干期节目中已播报的新闻文本（使用关键词提取进行精简），用于更全面的跨期语义去重。"""
     import re
 
     records: list[HistoricalRecord] = []
@@ -86,7 +102,7 @@ def get_recent_broadcasted_texts(episodes_json_path: Path, limit: int = 14) -> l
         data_dir = episodes_json_path.parent
         for ep in episodes[:limit]:
             ep_id = ep.get("id")
-            # 优先从 data/briefs/brief_{ep_id}.json 中读取更完整的“标题+摘要+正文片段”作为语义特征
+            # 优先从 data/briefs/brief_{ep_id}.json 中读取更完整的“标题+摘要+精简关键词”作为语义特征
             brief_path = data_dir / "briefs" / f"brief_{ep_id}.json"
             brief_loaded = False
             if brief_path.exists():
@@ -108,8 +124,17 @@ def get_recent_broadcasted_texts(episodes_json_path: Path, limit: int = 14) -> l
                                 if item.get("full_text_snippet"):
                                     item_texts.append(item["full_text_snippet"])
                             
-                            # 拼接为极全面的语义计算信息
-                            full_story_text = f"{title} {' '.join(summaries)} {' '.join(item_texts)}".strip()
+                            combined_items_text = " ".join(item_texts)
+                            keywords_str = ""
+                            if combined_items_text:
+                                import jieba.analyse
+                                try:
+                                    kws = jieba.analyse.extract_tags(combined_items_text, topK=15)
+                                    keywords_str = " ".join(kws)
+                                except Exception:
+                                    pass
+                            
+                            full_story_text = f"{title} {' '.join(summaries)} {keywords_str}".strip()
                             if full_story_text:
                                 records.append(
                                     HistoricalRecord(
@@ -257,8 +282,11 @@ async def run_pipeline(
                 return " ".join(jieba.cut(text))
 
             segmented_hist = [tokenize_text(r.text) for r in recent_records]
-            # 新闻文章使用“标题+摘要+正文片段”进行全面对比
-            new_texts = [f"{it.title} {it.summary} {it.full_text_snippet}".strip() for it in raw_items]
+            # 新闻文章使用“标题+摘要+正文精简关键词”进行对比
+            new_texts = [
+                extract_semantic_keywords(it.title, it.summary, it.full_text_snippet, top_k=15)
+                for it in raw_items
+            ]
             segmented_new = [tokenize_text(t) for t in new_texts]
 
             vectorizer = TfidfVectorizer(
