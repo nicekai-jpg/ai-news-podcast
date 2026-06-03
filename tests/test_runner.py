@@ -55,9 +55,10 @@ def test_get_recent_broadcasted_texts(tmp_path: Path) -> None:
     ]
     write_json(path, episodes)
 
-    texts = get_recent_broadcasted_texts(path, limit=1)
-    assert isinstance(texts, list)
-    assert len(texts) == 2
+    records = get_recent_broadcasted_texts(path, limit=1)
+    assert isinstance(records, list)
+    assert len(records) == 2
+    texts = [r.text for r in records]
     assert "Google I/O 2026 recap" in texts
     assert "Anthropic Claude 3.5 Sonnet" in texts
 
@@ -101,7 +102,7 @@ async def test_run_pipeline_semantic_dedup(tmp_path: Path, raw_item_factory) -> 
         mock_fetch.return_value = [item_similar, item_different]
         mock_process.return_value = {"stories": []}
 
-        await run_pipeline(
+        brief = await run_pipeline(
             cfg=cfg,
             sources=[],
             date_str="2026-06-03",
@@ -112,4 +113,12 @@ async def test_run_pipeline_semantic_dedup(tmp_path: Path, raw_item_factory) -> 
         called_args = mock_process.call_args[0][0]
         assert len(called_args) == 1
         assert called_args[0].title == "MiniMax M3 model released"
+
+        assert "metadata" in brief
+        assert "dedup_details" in brief["metadata"]
+        dedup_details = brief["metadata"]["dedup_details"]
+        assert len(dedup_details) == 1
+        assert dedup_details[0]["title"] == "Google I/O 2026 developer collection"
+        assert dedup_details[0]["reason"] == "cross_episode_semantic"
+        assert dedup_details[0]["matched_story_title"] == "Catch up on 12 major I/O 2026 moments"
 
