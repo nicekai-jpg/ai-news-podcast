@@ -24,6 +24,7 @@ dependencies = [
   "trafilatura>=1.8",
   "openai>=1.0",
   "python-dotenv>=1.2.1",
+  "sentence-transformers>=3.0.0",
 ]
 
 [project.scripts]

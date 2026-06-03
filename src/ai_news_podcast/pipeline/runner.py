@@ -268,83 +268,153 @@ async def run_pipeline(
     # ── 跨期语义相似度去重 ──────────────────────────────────────────────────────
     recent_records = get_recent_broadcasted_texts(episodes_index, limit=14)
     if recent_records and raw_items:
-        import jieba
-        from sklearn.feature_extraction.text import TfidfVectorizer
-        from sklearn.metrics.pairwise import cosine_similarity
-
         dedup_cfg = processing_cfg.get("dedup", {})
-        sim_threshold = float(dedup_cfg.get("semantic_sim_threshold", 0.20))
-
-        original_count = len(raw_items)
+        
+        use_sentence_transformers = False
         try:
-            # 使用 jieba 进行中文分词，以便正确进行词级别相似度计算
-            def tokenize_text(text: str) -> str:
-                return " ".join(jieba.cut(text))
-
-            segmented_hist = [tokenize_text(r.text) for r in recent_records]
-            # 新闻文章使用“标题+摘要+正文精简关键词”进行对比
-            new_texts = [
-                extract_semantic_keywords(it.title, it.summary, it.full_text_snippet, top_k=15)
-                for it in raw_items
-            ]
-            segmented_new = [tokenize_text(t) for t in new_texts]
-
-            vectorizer = TfidfVectorizer(
-                analyzer="word",
-                token_pattern=r"(?u)\b\w+\b",
-                lowercase=True,
-            )
-            # 拟合所有分词后的文本以建立统一的特征词典
-            all_texts = segmented_hist + segmented_new
-            vectorizer.fit(all_texts)
-
-            hist_tfidf = vectorizer.transform(segmented_hist)
-            new_tfidf = vectorizer.transform(segmented_new)
-
-            sim_matrix = cosine_similarity(new_tfidf, hist_tfidf)
-
-            filtered_items = []
-            skipped_count = 0
-            for idx, item in enumerate(raw_items):
-                max_sim = float(sim_matrix[idx].max())
-                if max_sim >= sim_threshold:
-                    max_hist_idx = int(sim_matrix[idx].argmax())
-                    matched_rec = recent_records[max_hist_idx]
-                    
-                    log.info(
-                        "Semantic dedup: filtered out '%s' (similarity %.2f >= %.2f with historical story '%s' from %s)",
-                        item.title,
-                        max_sim,
-                        sim_threshold,
-                        matched_rec.story_title,
-                        matched_rec.episode_id,
-                    )
-                    
-                    dedup_details.append({
-                        "title": item.title,
-                        "link": item.link,
-                        "source": item.source_name,
-                        "reason": "cross_episode_semantic",
-                        "similarity": round(max_sim, 4),
-                        "threshold": sim_threshold,
-                        "matched_story_title": matched_rec.story_title,
-                        "matched_episode_id": matched_rec.episode_id,
-                        "detail": f"Similarity ({max_sim:.2f}) >= threshold ({sim_threshold:.2f}) with historical story '{matched_rec.story_title}' from {matched_rec.episode_id}."
-                    })
-                    skipped_count += 1
-                else:
-                    filtered_items.append(item)
-
-            raw_items = filtered_items
-            if skipped_count > 0:
-                log.info(
-                    "Semantic similarity dedup: filtered out %d items by similarity threshold %.2f, %d items remaining",
-                    skipped_count,
-                    sim_threshold,
-                    len(raw_items),
-                )
+            from sentence_transformers import SentenceTransformer, util
+            # 使用轻量级多语言模型 paraphrase-multilingual-MiniLM-L12-v2 进行嵌入向量计算
+            model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+            use_sentence_transformers = True
+            log.info("Successfully loaded SentenceTransformer model 'paraphrase-multilingual-MiniLM-L12-v2' for semantic similarity.")
         except Exception as e:
-            log.error("Failed to perform semantic similarity deduplication: %s", e)
+            log.warning("Sentence-Transformers loading failed (falling back to TF-IDF): %s", e)
+
+        if use_sentence_transformers:
+            sim_threshold = float(dedup_cfg.get("embedding_sim_threshold", 0.72))
+            try:
+                # 提取精简后的对比文本
+                segmented_hist_texts = [r.text for r in recent_records]
+                new_texts = [
+                    extract_semantic_keywords(it.title, it.summary, it.full_text_snippet, top_k=15)
+                    for it in raw_items
+                ]
+                
+                # 计算 Embeddings 向量
+                hist_embeddings = model.encode(segmented_hist_texts, convert_to_tensor=True, show_progress_bar=False)
+                new_embeddings = model.encode(new_texts, convert_to_tensor=True, show_progress_bar=False)
+                
+                # 计算 Cosine Similarity 相似度矩阵
+                cos_scores = util.cos_sim(new_embeddings, hist_embeddings)
+                
+                filtered_items = []
+                skipped_count = 0
+                for idx, item in enumerate(raw_items):
+                    max_sim = float(cos_scores[idx].max())
+                    if max_sim >= sim_threshold:
+                        max_hist_idx = int(cos_scores[idx].argmax())
+                        matched_rec = recent_records[max_hist_idx]
+                        
+                        log.info(
+                            "Semantic dedup (ST): filtered out '%s' (similarity %.2f >= %.2f with historical story '%s' from %s)",
+                            item.title,
+                            max_sim,
+                            sim_threshold,
+                            matched_rec.story_title,
+                            matched_rec.episode_id,
+                        )
+                        
+                        dedup_details.append({
+                            "title": item.title,
+                            "link": item.link,
+                            "source": item.source_name,
+                            "reason": "cross_episode_semantic",
+                            "similarity": round(max_sim, 4),
+                            "threshold": sim_threshold,
+                            "matched_story_title": matched_rec.story_title,
+                            "matched_episode_id": matched_rec.episode_id,
+                            "detail": f"SentenceTransformer similarity ({max_sim:.2f}) >= threshold ({sim_threshold:.2f}) with historical story '{matched_rec.story_title}' from {matched_rec.episode_id}."
+                        })
+                        skipped_count += 1
+                    else:
+                        filtered_items.append(item)
+                
+                raw_items = filtered_items
+                if skipped_count > 0:
+                    log.info(
+                        "Sentence-Transformers semantic dedup: filtered out %d items by threshold %.2f, %d items remaining",
+                        skipped_count,
+                        sim_threshold,
+                        len(raw_items),
+                    )
+            except Exception as e:
+                log.error("Failed to perform Sentence-Transformers deduplication: %s (falling back to TF-IDF)", e)
+                use_sentence_transformers = False
+
+        if not use_sentence_transformers:
+            # ── TF-IDF 兜底去重 ─────────────────────────────────────────────────
+            import jieba
+            from sklearn.feature_extraction.text import TfidfVectorizer
+            from sklearn.metrics.pairwise import cosine_similarity
+
+            sim_threshold = float(dedup_cfg.get("semantic_sim_threshold", 0.20))
+            try:
+                # 使用 jieba 进行中文分词，以便正确进行词级别相似度计算
+                def tokenize_text(text: str) -> str:
+                    return " ".join(jieba.cut(text))
+
+                segmented_hist = [tokenize_text(r.text) for r in recent_records]
+                new_texts = [
+                    extract_semantic_keywords(it.title, it.summary, it.full_text_snippet, top_k=15)
+                    for it in raw_items
+                ]
+                segmented_new = [tokenize_text(t) for t in new_texts]
+
+                vectorizer = TfidfVectorizer(
+                    analyzer="word",
+                    token_pattern=r"(?u)\b\w+\b",
+                    lowercase=True,
+                )
+                all_texts = segmented_hist + segmented_new
+                vectorizer.fit(all_texts)
+
+                hist_tfidf = vectorizer.transform(segmented_hist)
+                new_tfidf = vectorizer.transform(segmented_new)
+
+                sim_matrix = cosine_similarity(new_tfidf, hist_tfidf)
+
+                filtered_items = []
+                skipped_count = 0
+                for idx, item in enumerate(raw_items):
+                    max_sim = float(sim_matrix[idx].max())
+                    if max_sim >= sim_threshold:
+                        max_hist_idx = int(sim_matrix[idx].argmax())
+                        matched_rec = recent_records[max_hist_idx]
+                        
+                        log.info(
+                            "Semantic dedup (TF-IDF): filtered out '%s' (similarity %.2f >= %.2f with historical story '%s' from %s)",
+                            item.title,
+                            max_sim,
+                            sim_threshold,
+                            matched_rec.story_title,
+                            matched_rec.episode_id,
+                        )
+                        
+                        dedup_details.append({
+                            "title": item.title,
+                            "link": item.link,
+                            "source": item.source_name,
+                            "reason": "cross_episode_semantic",
+                            "similarity": round(max_sim, 4),
+                            "threshold": sim_threshold,
+                            "matched_story_title": matched_rec.story_title,
+                            "matched_episode_id": matched_rec.episode_id,
+                            "detail": f"TF-IDF similarity ({max_sim:.2f}) >= threshold ({sim_threshold:.2f}) with historical story '{matched_rec.story_title}' from {matched_rec.episode_id}."
+                        })
+                        skipped_count += 1
+                    else:
+                        filtered_items.append(item)
+
+                raw_items = filtered_items
+                if skipped_count > 0:
+                    log.info(
+                        "TF-IDF semantic similarity dedup: filtered out %d items by similarity threshold %.2f, %d items remaining",
+                        skipped_count,
+                        sim_threshold,
+                        len(raw_items),
+                    )
+            except Exception as e:
+                log.error("Failed to perform TF-IDF semantic similarity deduplication: %s", e)
 
     # ── Stage 2: 处理（三层去重 → DBSCAN 聚类 → 五维打分） ──────────────────
     log.info("Stage 2 [pipeline]: dedup → cluster → score …")
