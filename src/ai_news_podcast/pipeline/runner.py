@@ -90,7 +90,7 @@ async def run_pipeline(
     dict
         episode_brief 字典，包含 ``thesis``、``stories``、``metadata`` 等字段。
     """
-    brief_path = data_dir / f"brief_{date_str}.json"
+    brief_path = data_dir / "briefs" / f"brief_{date_str}.json"
 
     # ── 复用已有 brief ──────────────────────────────────────────────────────
     if brief_path.exists() and not force_refresh:
