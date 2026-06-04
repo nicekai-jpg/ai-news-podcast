@@ -4,39 +4,39 @@ from __future__ import annotations
 
 from ai_news_podcast.pipeline.tts_engine import (
     DialogueChunk,
-    _clean_tts_text,
     parse_dialogue_chunks,
 )
+from ai_news_podcast.text_utils import clean_tts_text
 
 
 class TestCleanTtsText:
     def test_removes_fact_tags(self) -> None:
         text = "[FACT] This is true. [INFERENCE] Probably. [OPINION] I think so."
-        assert _clean_tts_text(text) == "This is true. Probably. I think so."
+        assert clean_tts_text(text) == "This is true. Probably. I think so."
 
     def test_removes_mood_tags(self) -> None:
         text = "[mood:excited] Hello world"
-        assert _clean_tts_text(text) == "Hello world"
+        assert clean_tts_text(text) == "Hello world"
 
     def test_removes_square_brackets_except_host(self) -> None:
         text = "[note] Hello [Host A] there"
-        assert "[note]" not in _clean_tts_text(text)
+        assert "[note]" not in clean_tts_text(text)
         # Host tag itself is handled by parser, not cleaner
-        assert "Hello" in _clean_tts_text(text)
+        assert "Hello" in clean_tts_text(text)
 
     def test_removes_parenthetical_annotations(self) -> None:
-        assert _clean_tts_text("Hello (doge) world") == "Hello world"
+        assert clean_tts_text("Hello (doge) world") == "Hello world"
         # Original text has no spaces around the parenthetical, so removal joins words.
-        assert _clean_tts_text("Hello（狗头）world") == "Helloworld"
-        assert _clean_tts_text("Hello(bushi)") == "Hello"
+        assert clean_tts_text("Hello（狗头）world") == "Helloworld"
+        assert clean_tts_text("Hello(bushi)") == "Hello"
 
     def test_normalizes_whitespace(self) -> None:
         text = "Line 1\n\n\n\nLine 2"
-        assert _clean_tts_text(text) == "Line 1\n\nLine 2"
+        assert clean_tts_text(text) == "Line 1\n\nLine 2"
 
     def test_removes_fancy_quotes(self) -> None:
         text = "「 quoted 」 and 『 another 』"
-        assert _clean_tts_text(text) == "quoted and another"
+        assert clean_tts_text(text) == "quoted and another"
 
 
 class TestParseDialogueChunks:

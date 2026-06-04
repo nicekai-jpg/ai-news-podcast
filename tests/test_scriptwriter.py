@@ -7,9 +7,9 @@ from datetime import datetime
 from ai_news_podcast.pipeline.scriptwriter import (
     _cn_date,
     _replace_banned_words,
-    _sanitize_for_tts,
     check_banned_words,
 )
+from ai_news_podcast.text_utils import clean_tts_text
 
 
 class TestCheckBannedWords:
@@ -44,20 +44,20 @@ class TestReplaceBannedWords:
 
 class TestSanitizeForTts:
     def test_escapes_literal_newlines(self) -> None:
-        assert _sanitize_for_tts("line1\\nline2") == "line1\nline2"
+        assert clean_tts_text("line1\\nline2") == "line1\nline2"
 
     def test_removes_tags(self) -> None:
-        assert _sanitize_for_tts("[FACT] hello [INFERENCE] world") == "hello world"
+        assert clean_tts_text("[FACT] hello [INFERENCE] world") == "hello world"
 
     def test_removes_html(self) -> None:
-        assert _sanitize_for_tts("<p>paragraph</p>") == "paragraph"
+        assert clean_tts_text("<p>paragraph</p>") == "paragraph"
 
     def test_compresses_punctuation(self) -> None:
-        assert _sanitize_for_tts("你好，，，世界") == "你好，世界"
-        assert _sanitize_for_tts("你好。。。世界") == "你好。世界"
+        assert clean_tts_text("你好，，，世界") == "你好，世界"
+        assert clean_tts_text("你好。。。世界") == "你好。世界"
 
     def test_empty_string(self) -> None:
-        assert _sanitize_for_tts("") == ""
+        assert clean_tts_text("") == ""
 
 
 class TestCnDate:

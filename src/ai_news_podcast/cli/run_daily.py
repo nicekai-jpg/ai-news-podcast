@@ -4,7 +4,6 @@ import argparse
 import asyncio
 import logging
 import os
-import re
 from datetime import datetime, timezone
 from email.utils import format_datetime
 from pathlib import Path
@@ -25,6 +24,7 @@ from ai_news_podcast.pipeline.scriptwriter import (
 from ai_news_podcast.pipeline.tts_engine import synthesize
 from ai_news_podcast.site_builder.html_gen import build_index_html
 from ai_news_podcast.site_builder.rss_gen import build_feed_xml
+from ai_news_podcast.text_utils import clean_tts_text
 from ai_news_podcast.utils import load_sources, read_json, read_yaml, write_json, write_text
 
 log = logging.getLogger("run_daily")
@@ -197,11 +197,7 @@ async def main() -> int:
     notes_path = episodes_dir / f"{episode_id}.html"
     transcript_path = episodes_dir / f"{episode_id}.txt"
 
-    clean_transcript = re.sub(r"\[mood:[a-zA-Z0-9_-]+\]\s*", "", script_text)
-    clean_transcript = re.sub(r"\[(?:FACT|INFERENCE|OPINION)\]\s*", "", clean_transcript)
-    # Fix literal string representation "\n" replacing to actual new lines
-    clean_transcript = clean_transcript.replace("\\n", "\n")
-    clean_transcript = re.sub(r"\n{3,}", "\n\n", clean_transcript).strip() + "\n"
+    clean_transcript = clean_tts_text(script_text, preserve_ssml=False) + "\n"
     write_text(transcript_path, clean_transcript)
     log.info("Transcript saved: %s (%d chars)", transcript_path, len(clean_transcript))
 
