@@ -171,6 +171,7 @@ async def synthesize_edge_tts(
     bgm_path: Optional[str] = None,
     volume: str = "+0%",
     rate: str = "+15%",  # News broadcast usually faster
+    transcript_path: Optional[Union[str, Path]] = None,
 ) -> None:
     edge_tts = importlib.import_module("edge_tts")
     pydub = importlib.import_module("pydub")
@@ -229,12 +230,22 @@ async def synthesize_edge_tts(
         chunk_files = await asyncio.gather(*tasks)
 
         combined = AudioSegment.empty()
+        timestamps = []
+        current_time_ms = 1000  # bgm pad duration is 1s before vocal starts
+
         for idx, chunk_file in enumerate(chunk_files):
             seg = AudioSegment.from_file(str(chunk_file))
             if idx > 0:
-                # Add distinct silence for breathing room between conversational turns
-                combined += AudioSegment.silent(duration=_chunk_silence_ms(300))
+                silence_len = _chunk_silence_ms(300)
+                combined += AudioSegment.silent(duration=silence_len)
+                current_time_ms += silence_len
+                
+            start_sec = current_time_ms / 1000.0
+            duration_sec = len(seg) / 1000.0
+            timestamps.append((start_sec, duration_sec))
+            
             combined += seg
+            current_time_ms += len(seg)
 
         # Mixing with BGM
         combined = _mix_bgm(combined, bgm_path)
@@ -242,6 +253,22 @@ async def synthesize_edge_tts(
         pre_norm = tmp_root / "combined_prenorm.mp3"
         combined.export(str(pre_norm), format="mp3")
         await _run_loudnorm(pre_norm, final_path)
+
+        # Write transcript with exact timestamps if transcript_path is provided
+        if transcript_path:
+            transcript_path = Path(transcript_path)
+            xml_lines = []
+            xml_lines.append('<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">')
+            for idx, chunk in enumerate(chunks):
+                start_sec, duration_sec = timestamps[idx]
+                v = chunk.voice or voice_map.get(chunk.host, voices[0])
+                xml_lines.append(f'<voice name="{v}" start="{start_sec:.3f}" duration="{duration_sec:.3f}">')
+                xml_lines.append(chunk.text)
+                xml_lines.append('</voice>')
+            xml_lines.append('</speak>')
+            
+            transcript_path.parent.mkdir(parents=True, exist_ok=True)
+            transcript_path.write_text("\n".join(xml_lines), encoding="utf-8")
 
 
 def _to_audio_segment_from_cosy_output(result: Any, sample_rate: int = 24000) -> Any:
@@ -284,6 +311,7 @@ async def synthesize(
             bgm_path=bgm_path,
             volume=str(kwargs.get("volume") or "+0%"),
             rate=str(kwargs.get("rate") or "+10%"),
+            transcript_path=kwargs.get("transcript_path"),
         )
         return
 

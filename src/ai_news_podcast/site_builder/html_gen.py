@@ -54,6 +54,7 @@ def build_index_html(
         ep_id: {
             "title": ep.get("title", f"AI 新闻快报 | {ep_id}"),
             "mp3": ep.get("enclosure_url", f"{base_url}/episodes/{ep_id}.mp3"),
+            "desc": ep.get("description", ""),
         }
         for ep_id, ep in episodes_map.items()
     })
@@ -67,783 +68,1096 @@ def build_index_html(
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{podcast_title}</title>
-  <link rel="alternate" type="application/rss+xml" title="{podcast_title}" href="./feed.xml">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-    :root {{
-      --bg: #07060d;
-      --bg-gradient: radial-gradient(circle at 50% 0%, #150f30 0%, #07060d 70%);
-      --surface: rgba(19, 17, 32, 0.55);
-      --surface-hover: rgba(29, 26, 48, 0.75);
+    :root {
+      --bg: #030206;
+      --bg-gradient: radial-gradient(circle at 50% 0%, #0d061f 0%, #030206 80%);
+      --surface: rgba(13, 9, 28, 0.45);
+      --surface-hover: rgba(20, 15, 38, 0.6);
       --accent: #8b5cf6;
       --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-      --accent-glow: rgba(139, 92, 246, 0.35);
       --accent-light: #c084fc;
-      --text: #f3f4f6;
       --text-muted: #9ca3af;
-      --text-dark: #6b7280;
-      --border: rgba(255, 255, 255, 0.06);
-      --border-focus: rgba(167, 139, 250, 0.35);
-      --radius-sm: 10px;
+      --text-dark: #4b5563;
+      --border: rgba(255, 255, 255, 0.04);
+      --border-hover: rgba(139, 92, 246, 0.2);
+      --radius-sm: 8px;
       --radius-md: 16px;
-      --radius-lg: 24px;
+      --radius-lg: 28px;
       --success: #10b981;
-      --shadow-lg: 0 16px 40px -10px rgba(0, 0, 0, 0.6);
-      --shadow-glow: 0 0 25px rgba(139, 92, 246, 0.15);
+      --shadow-lg: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
       --host-a: #06b6d4;
       --host-b: #f472b6;
-    }}
+      --glow-color: rgba(139, 92, 246, 0.15);
+    }
+    
+    body.theme-report {
+      --accent: #06b6d4;
+      --accent-gradient: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
+      --accent-light: #67e8f9;
+      --glow-color: rgba(6, 182, 212, 0.12);
+      --bg-gradient: radial-gradient(circle at 50% 0%, #05161c 0%, #02080a 80%);
+    }
 
-    * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-
-    body {{
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
-      background: var(--bg);
-      background-image: var(--bg-gradient);
-      background-attachment: fixed;
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }}
-
-    .ambient-glow-1 {{
-      position: fixed; top: -20%; right: 5%; width: 60vw; height: 60vw;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; background: var(--bg); background-image: var(--bg-gradient); background-attachment: fixed; color: #f3f4f6; line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; transition: background 0.8s ease; }
+    
+    .ambient-glow-1 { position: fixed; top: -20%; right: 5%; width: 60vw; height: 60vw; border-radius: 50%; background: radial-gradient(circle, var(--glow-color) 0%, rgba(9, 9, 11, 0) 70%); pointer-events: none; z-index: -1; transition: all 0.8s ease; }
+    
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+    
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px 100px; }
+    
+    /* Header & Navbar */
+    header { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; background: rgba(3, 2, 6, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .logo-block { display: flex; align-items: center; gap: 14px; text-decoration: none; color: #fff; }
+    .logo-img { width: 44px; height: 44px; border-radius: 14px; border: 1px solid var(--border-hover); box-shadow: 0 0 20px rgba(139,92,246,.15); }
+    .brand-name { font-size: 1.35rem; font-weight: 850; background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.02em; }
+    .brand-tagline { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; font-weight: 500; opacity: 0.8; letter-spacing: 0.05em; text-transform: uppercase; }
+    .nav-btn { display: inline-flex; align-items: center; gap: 7px; color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 8px 18px; border-radius: 99px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); transition: all 0.2s ease; }
+    .nav-btn:hover { color: #fff; background: rgba(255,255,255,0.07); border-color: var(--accent); }
+    .nav-btn-rss { color: #f97316; border-color: rgba(249,115,22,.2); }
+    .nav-btn-rss:hover { color: #fb923c; border-color: rgba(249,115,22,.4); background: rgba(249,115,22,.06); }
+    
+    /* Hero Banner */
+    .hero-section { padding: 32px 0; border-bottom: 1px solid var(--border); }
+    .hero-inner { display: flex; align-items: center; gap: 32px; }
+    .hero-cover { width: 96px; height: 96px; flex-shrink: 0; border-radius: 20px; border: 1px solid var(--border-hover); box-shadow: 0 0 30px rgba(139,92,246,.1), var(--shadow-lg); object-fit: cover; }
+    .hero-meta { flex: 1; min-width: 0; }
+    .hero-title { font-size: clamp(1.3rem, 3vw, 1.85rem); font-weight: 900; line-height: 1.25; color: #fff; margin-bottom: 6px; letter-spacing: -0.01em; }
+    .hero-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; max-width: 750px; }
+    
+    /* Mode Switcher Tab */
+    .brand-switcher-wrap { display: flex; justify-content: center; margin: 28px 0 16px; }
+    .brand-switcher { background: rgba(15, 12, 28, 0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border); padding: 5px; border-radius: 99px; display: flex; gap: 4px; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); position: relative; }
+    .mode-btn { background: transparent; border: none; color: var(--text-muted); font-size: 0.88rem; font-weight: 750; padding: 10px 24px; border-radius: 99px; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); display: flex; align-items: center; gap: 8px; position: relative; z-index: 2; }
+    .mode-btn:hover { color: #fff; }
+    .mode-btn.active { color: #fff; background: var(--accent-gradient); box-shadow: 0 4px 15px var(--glow-color); }
+    .tab-icon { width: 15px; height: 15px; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+    
+    /* Date Selector */
+    .date-selector-wrap { padding: 16px 0; border-bottom: 1px solid var(--border); overflow-x: auto; -webkit-overflow-scrolling: touch; display: flex; justify-content: center; }
+    @media (max-width: 768px) {
+      .date-selector-wrap { justify-content: flex-start; }
+    }
+    .date-pills { display: flex; gap: 10px; flex-wrap: nowrap; padding-bottom: 4px; }
+    .date-pill { display: flex; flex-direction: column; align-items: center; padding: 10px 18px; border-radius: var(--radius-md); cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); background: rgba(255,255,255,0.01); border: 1px solid var(--border); flex-shrink: 0; min-width: 76px; }
+    .date-pill:hover { background: rgba(255,255,255,0.04); border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 16px -8px var(--glow-color); }
+    .date-pill.active { background: rgba(139,92,246,.08); border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 20px -6px var(--glow-color); }
+    body.theme-report .date-pill.active { background: rgba(6,182,212,.08); }
+    .pill-month { font-size: 0.65rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; opacity: 0.7; }
+    .pill-day { font-size: 1.35rem; font-weight: 800; color: var(--text-muted); line-height: 1.1; margin: 2px 0; }
+    .pill-weekday { font-size: 0.65rem; color: var(--text-muted); font-weight: 600; opacity: 0.7; }
+    .date-pill.active .pill-month, .date-pill.active .pill-day { color: #fff; }
+    .date-pill.active .pill-weekday { color: var(--accent-light); opacity: 1; }
+    
+    /* Layouts */
+    .main-layout { margin-top: 32px; }
+    
+    /* 播客双栏布局 */
+    .podcast-workspace { display: grid; grid-template-columns: 360px 1fr; gap: 32px; align-items: start; }
+    @media (max-width: 900px) {
+      .podcast-workspace { grid-template-columns: 1fr; }
+    }
+    
+    /* 播客左栏 */
+    .podcast-sidebar { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 110px; }
+    @media (max-width: 900px) {
+      .podcast-sidebar { position: static; }
+    }
+    
+    .station-card, .sources-card { background: var(--surface); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-lg); transition: border-color 0.3s; }
+    .station-card:hover, .sources-card:hover { border-color: var(--border-hover); }
+    
+    /* 黑胶唱片 CD 纹理及光折射 (Conic Shimmer) */
+    .vinyl-wrapper { position: relative; width: 100%; display: flex; flex-direction: column; align-items: center; margin-bottom: 20px; }
+    .vinyl-disc { width: 180px; height: 180px; border-radius: 50%; background: #111; border: 8px solid #222; box-shadow: 0 15px 35px rgba(0,0,0,0.6), inset 0 0 15px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; position: relative; animation: spin-vinyl 20s linear infinite; animation-play-state: paused; }
+    .vinyl-disc.spinning { animation-play-state: running; }
+    @keyframes spin-vinyl { 100% { transform: rotate(360deg); }}
+    
+    .vinyl-disc::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(9, 9, 11, 0) 70%);
-      pointer-events: none; z-index: -1;
-      animation: drift-1 30s ease-in-out infinite alternate;
-    }}
-    .ambient-glow-2 {{
-      position: fixed; bottom: -15%; left: 5%; width: 50vw; height: 50vw;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, rgba(9, 9, 11, 0) 70%);
-      pointer-events: none; z-index: -1;
-      animation: drift-2 25s ease-in-out infinite alternate;
-    }}
-    @keyframes drift-1 {{ 0% {{ transform: translate(0, 0) scale(1); }} 100% {{ transform: translate(-8%, 8%) scale(1.15); }} }}
-    @keyframes drift-2 {{ 0% {{ transform: translate(0, 0) scale(1); }} 100% {{ transform: translate(8%, -8%) scale(1.1); }} }}
-
-    .container {{
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px 180px;
-    }}
-
-    /* Header */
-    header {{
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 20px 0; margin-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(7, 6, 13, 0.4);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-    }}
-    .logo-block {{
-      display: flex; align-items: center; gap: 14px;
-      text-decoration: none; color: #fff; transition: opacity 0.2s;
-    }}
-    .logo-block:hover {{ opacity: 0.9; }}
-    .logo-img {{
-      width: 44px; height: 44px; border-radius: 12px;
-      border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }}
-    .brand-name {{
-      font-size: 1.4rem; font-weight: 800; letter-spacing: -0.03em;
-      background: linear-gradient(to right, #fff, #e5e7eb);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }}
-    .nav-links {{ display: flex; gap: 16px; }}
-    .nav-links a {{
-      display: inline-flex; align-items: center; gap: 8px;
-      color: var(--text-muted); text-decoration: none;
-      font-size: 0.9rem; font-weight: 600;
-      padding: 8px 16px; border-radius: 99px;
-      background: rgba(255,255,255,0.02); border: 1px solid var(--border);
-      transition: all 0.2s ease;
-    }}
-    .nav-links a:hover {{
-      color: #fff; background: rgba(255,255,255,0.06);
-      border-color: var(--border-focus); transform: translateY(-1px);
-    }}
-    .nav-links svg {{ width: 16px; height: 16px; }}
-
-    /* Main Layout: Date List + Content */
-    .layout-grid {{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-      margin-top: 24px;
-    }}
-    @media (min-width: 960px) {{
-      .layout-grid {{
-        grid-template-columns: 200px 1fr;
-      }}
-    }}
-
-    /* Date List Sidebar */
-    .date-list {{
-      background: var(--surface);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 20px 16px;
-      box-shadow: var(--shadow-lg);
-      max-height: calc(100vh - 140px);
-      position: sticky; top: 100px;
-      overflow-y: auto;
-    }}
-    .date-list h2 {{
-      font-size: 1rem; font-weight: 700; color: #fff;
-      margin-bottom: 16px; padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }}
-    .date-list ul {{
-      list-style: none; display: flex; flex-direction: column; gap: 4px;
-    }}
-    .date-item {{
-      display: flex; align-items: center; gap: 8px;
-      padding: 10px 12px; border-radius: var(--radius-sm);
-      cursor: pointer; transition: all 0.2s ease;
-      color: var(--text-muted); font-size: 0.85rem; font-weight: 600;
-      border: 1px solid transparent;
-    }}
-    .date-item:hover {{
-      background: rgba(255,255,255,0.04); color: #fff;
-      border-color: var(--border);
-    }}
-    .date-item.active {{
-      background: rgba(139, 92, 246, 0.12); color: #fff;
-      border-color: var(--border-focus);
-    }}
-    .date-item .play-icon {{
-      font-size: 0.7rem; opacity: 0; transition: opacity 0.2s;
-    }}
-    .date-item:hover .play-icon, .date-item.active .play-icon {{
-      opacity: 1;
-    }}
-
-    /* Content Area */
-    .content-area {{
-      display: flex; flex-direction: column; gap: 24px;
-    }}
-    .content-split {{
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }}
-    @media (min-width: 960px) {{
-      .content-split {{
-        grid-template-columns: 1fr 1fr;
-      }}
-    }}
-
-    /* Panel Cards */
-    .panel-card {{
-      background: var(--surface);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      box-shadow: var(--shadow-lg);
-      min-height: 400px;
-    }}
-    .panel-header {{
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 20px; padding-bottom: 16px;
-      border-bottom: 1px solid var(--border);
-    }}
-    .panel-header h2 {{
-      font-size: 1.15rem; font-weight: 700; color: #fff;
-      display: flex; align-items: center; gap: 8px;
-    }}
-    .panel-date-label {{
-      font-size: 0.85rem; color: var(--text-muted); font-weight: 600;
-    }}
-
-    /* Report Markdown */
-    .report-markdown {{
-      font-size: 0.95rem; line-height: 1.75; color: #d1d5db;
-    }}
-    .report-markdown h1 {{
-      font-size: 1.5rem; font-weight: 900; color: #fff;
-      margin-bottom: 20px; text-align: center;
-      background: var(--accent-gradient);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }}
-    .report-markdown h2 {{
-      font-size: 1.15rem; font-weight: 700; color: #fff;
-      margin: 28px 0 14px; padding-bottom: 6px;
-      border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 8px;
-    }}
-    .report-markdown h2::before {{
-      content: ''; display: inline-block; width: 4px; height: 16px;
-      background: var(--accent-gradient); border-radius: 99px;
-    }}
-    .report-markdown p {{ margin-bottom: 14px; }}
-    .report-markdown ul {{ padding-left: 20px; margin-bottom: 18px; list-style: none; }}
-    .report-markdown li {{ margin-bottom: 8px; position: relative; padding-left: 18px; }}
-    .report-markdown li::before {{
-      content: '\\2726'; position: absolute; left: 0;
-      color: var(--accent-light); font-size: 0.8rem;
-    }}
-    .report-markdown strong {{ color: #fff; font-weight: 700; }}
-    .report-markdown blockquote {{
-      border-left: 4px solid var(--accent);
-      padding: 16px 20px; margin: 20px 0;
-      color: var(--text-muted); font-style: italic;
-      background: rgba(139, 92, 246, 0.04);
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    }}
-
-    /* Transcript Dialogue */
-    .transcript-content {{
-      font-size: 0.9rem; line-height: 1.7;
-    }}
-    .dialogue-line {{
-      display: flex; gap: 12px; margin-bottom: 16px;
-      padding: 12px 16px; border-radius: var(--radius-sm);
-      background: rgba(255,255,255,0.02);
-      border: 1px solid var(--border);
-      transition: background 0.2s;
-    }}
-    .dialogue-line:hover {{
-      background: rgba(255,255,255,0.04);
-    }}
-    .dialogue-line.host-a {{
-      border-left: 3px solid var(--host-a);
-    }}
-    .dialogue-line.host-b {{
-      border-left: 3px solid var(--host-b);
-    }}
-    .speaker-label {{
-      font-weight: 700; font-size: 0.8rem; white-space: nowrap;
-      padding: 2px 8px; border-radius: 99px; flex-shrink: 0;
-      margin-top: 2px;
-    }}
-    .speaker-label.host-a {{
-      color: var(--host-a); background: rgba(6, 182, 212, 0.1);
-    }}
-    .speaker-label.host-b {{
-      color: var(--host-b); background: rgba(244, 114, 182, 0.1);
-    }}
-    .dialogue-text {{
-      color: #d1d5db; flex: 1;
-    }}
-
-    .loading-placeholder {{
-      text-align: center; color: var(--text-muted); padding: 60px 0;
-      font-size: 0.9rem;
-    }}
-
-    /* Player Bar */
-    .player-bar {{
-      position: fixed; bottom: -150px; left: 50%; transform: translateX(-50%);
-      width: calc(100% - 48px); max-width: 960px;
-      background: rgba(12, 11, 20, 0.85);
-      backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
-      border: 1px solid var(--border-focus);
-      border-radius: var(--radius-lg); padding: 16px 24px;
-      z-index: 1000;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(139,92,246,0.15);
-      transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
-    }}
-    .player-bar.active {{ bottom: 24px; }}
-    .player-container {{
-      display: grid; grid-template-columns: 1fr; align-items: center; gap: 16px;
-    }}
-    @media (min-width: 768px) {{
-      .player-container {{ grid-template-columns: 240px 1fr 240px; }}
-    }}
-    .player-track-info {{ display: flex; align-items: center; gap: 12px; overflow: hidden; }}
-    .player-logo-mini {{
-      width: 40px; height: 40px; border-radius: 8px;
-      border: 1px solid var(--border); flex-shrink: 0;
-      animation: spin 8s linear infinite; animation-play-state: paused;
-    }}
-    .player-logo-mini.animating {{ animation-play-state: running; }}
-    @keyframes spin {{ 100% {{ transform: rotate(360deg); }} }}
-    .player-metadata {{ overflow: hidden; }}
-    .player-track-title {{
-      font-size: 0.85rem; font-weight: 700; color: #fff;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }}
-    .player-track-subtitle {{ font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }}
-    .player-controls-main {{ display: flex; flex-direction: column; align-items: center; gap: 8px; width: 100%; }}
-    .player-buttons {{ display: flex; align-items: center; gap: 18px; }}
-    .player-btn {{
-      background: transparent; border: none; color: var(--text-muted);
-      cursor: pointer; font-size: 1.1rem; transition: color 0.2s;
-    }}
-    .player-btn:hover {{ color: #fff; }}
-    .player-btn-play {{
-      width: 36px; height: 36px; border-radius: 50%;
-      background: #fff; color: #07060d; font-size: 1rem;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.25); transition: all 0.2s;
-      padding-left: 2px; border: none; cursor: pointer;
-    }}
-    .player-btn-play:hover {{ transform: scale(1.06); background: var(--accent-light); color: #fff; }}
-    .player-btn-play.playing {{ padding-left: 0; }}
-    .player-timeline {{
-      display: flex; align-items: center; gap: 12px; width: 100%;
-      font-size: 0.75rem; color: var(--text-muted);
-    }}
-    .progress-input {{
-      flex: 1; height: 4px; border-radius: 99px; background: var(--border);
-      outline: none; cursor: pointer; appearance: none; -webkit-appearance: none;
-    }}
-    .progress-input::-webkit-slider-thumb {{
-      appearance: none; -webkit-appearance: none;
-      width: 12px; height: 12px; border-radius: 50%;
-      background: #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    }}
-    .player-utils {{ display: flex; align-items: center; justify-content: flex-end; gap: 16px; }}
-    .speed-control {{
-      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-      border-radius: var(--radius-sm); overflow: hidden;
-    }}
-    .speed-btn {{
-      background: transparent; border: none; color: var(--text-muted);
-      font-size: 0.75rem; font-weight: 700; padding: 6px 10px;
-      cursor: pointer; transition: all 0.2s;
-    }}
-    .speed-btn:hover {{ color: #fff; background: rgba(255,255,255,0.04); }}
-    .volume-control {{ display: flex; align-items: center; gap: 8px; }}
-    .volume-input {{
-      width: 70px; height: 4px; border-radius: 99px; background: var(--border);
-      outline: none; cursor: pointer; appearance: none; -webkit-appearance: none;
-    }}
-    .volume-input::-webkit-slider-thumb {{
-      appearance: none; -webkit-appearance: none;
-      width: 10px; height: 10px; border-radius: 50%; background: #fff;
-    }}
-    .visualizer {{ display: flex; align-items: flex-end; gap: 3px; height: 18px; width: 24px; }}
-    .v-bar {{
-      width: 3px; background: var(--success); height: 3px;
-      border-radius: 99px; transition: height 0.1s ease;
-      box-shadow: 0 0 6px var(--success);
-    }}
-    .visualizer.animating .v-bar:nth-child(1) {{ animation: bounce 0.8s ease-in-out infinite alternate; }}
-    .visualizer.animating .v-bar:nth-child(2) {{ animation: bounce 0.5s ease-in-out infinite alternate; }}
-    .visualizer.animating .v-bar:nth-child(3) {{ animation: bounce 0.9s ease-in-out infinite alternate; }}
-    .visualizer.animating .v-bar:nth-child(4) {{ animation: bounce 0.6s ease-in-out infinite alternate; }}
-    @keyframes bounce {{ 0% {{ height: 3px; }} 100% {{ height: 16px; }} }}
-
-    @media (max-width: 768px) {{
-      .player-bar {{
-        left: 0; transform: none; width: 100%; max-width: 100%;
-        border-radius: 0; border-left: none; border-right: none; border-bottom: none;
-        padding: 14px 16px;
-      }}
-      .player-bar.active {{ bottom: 0; }}
-      .player-utils {{ display: none; }}
-      .player-container {{ grid-template-columns: 1fr 1fr; }}
-      .player-controls-main {{ align-items: flex-end; }}
-    }}
-
-    /* Toast */
-    .toast {{
-      position: fixed; top: 24px; left: 50%; transform: translate(-50%, -100px);
-      background: rgba(16,185,129,0.95); color: #fff;
-      padding: 12px 24px; border-radius: 99px;
-      font-weight: 700; font-size: 0.85rem; z-index: 2000;
-      box-shadow: 0 10px 30px rgba(16,185,129,0.3);
-      transition: transform 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
+      background: conic-gradient(
+        transparent 0%, rgba(255,255,255,0.03) 8%, 
+        transparent 15%, transparent 40%, 
+        rgba(255,255,255,0.03) 48%, transparent 55%, 
+        transparent 80%, rgba(255,255,255,0.03) 88%, 
+        transparent 95%, transparent 100%
+      );
       pointer-events: none;
-      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      z-index: 5;
+    }
+    
+    .vinyl-art { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 2px solid #000; z-index: 2; }
+    .vinyl-center { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: var(--bg); border: 4px solid #333; z-index: 10; }
+    
+    /* 动态声音律动条 - 播放与暂停微幅呼吸切换 */
+    .visualizer-waves { display: flex; align-items: flex-end; justify-content: center; gap: 4px; height: 24px; margin-top: 14px; width: 100%; }
+    .wave-bar { width: 3px; height: 4px; background: var(--accent); border-radius: 99px; transition: height 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }
+    
+    .vinyl-disc.spinning + .visualizer-waves .wave-bar { animation: bounce-wave 1.2s ease-in-out infinite alternate; }
+    .vinyl-disc:not(.spinning) + .visualizer-waves .wave-bar { animation: idle-wave 3s ease-in-out infinite alternate; }
+    
+    .visualizer-waves .wave-bar:nth-child(2) { animation-delay: 0.15s; }
+    .visualizer-waves .wave-bar:nth-child(3) { animation-delay: 0.3s; }
+    .visualizer-waves .wave-bar:nth-child(4) { animation-delay: 0.45s; }
+    .visualizer-waves .wave-bar:nth-child(5) { animation-delay: 0.2s; }
+    .visualizer-waves .wave-bar:nth-child(6) { animation-delay: 0.35s; }
+    .visualizer-waves .wave-bar:nth-child(7) { animation-delay: 0.1s; }
+    .visualizer-waves .wave-bar:nth-child(8) { animation-delay: 0.5s; }
+    
+    @keyframes bounce-wave {
+      0% { height: 4px; }
+      100% { height: 22px; }
+    }
+    @keyframes idle-wave {
+      0% { height: 4px; }
+      100% { height: 8px; }
+    }
+    
+    .podcast-info { text-align: center; margin-bottom: 20px; }
+    .side-title { font-size: 1.05rem; font-weight: 800; color: #fff; margin-bottom: 4px; }
+    .side-meta-date { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; }
+    
+    /* 控制台播放器 */
+    .console-player { background: rgba(0,0,0,0.2); border-radius: var(--radius-md); padding: 16px; border: 1px solid rgba(255,255,255,0.02); }
+    .console-time-row { display: flex; align-items: center; justify-content: space-between; font-size: 0.72rem; color: var(--text-muted); font-family: monospace; margin-bottom: 12px; gap: 10px; }
+    .console-progress-track { flex: 1; height: 4px; border-radius: 99px; background: rgba(255,255,255,.05); position: relative; cursor: pointer; }
+    .console-progress-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-gradient); border-radius: 99px; pointer-events: none; width: 0%; transition: width 0.1s linear; }
+    .console-progress-handle { position: absolute; top: 50%; right: 0; transform: translate(50%, -50%); width: 10px; height: 10px; border-radius: 50%; background: #fff; box-shadow: 0 0 10px var(--accent); opacity: 0; transition: opacity 0.2s; pointer-events: none; }
+    .console-progress-track:hover .console-progress-handle { opacity: 1; }
+    
+    .console-controls { display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 12px; }
+    .ctrl-btn { background: transparent; border: none; color: var(--text-muted); cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 8px; border-radius: 50%; transition: all 0.2s; }
+    .ctrl-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
+    .console-play-btn { width: 44px; height: 44px; border-radius: 50%; background: #fff; color: #000; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: bold; box-shadow: 0 6px 15px rgba(255,255,255,0.1); transition: transform 0.2s, box-shadow 0.2s; }
+    .console-play-btn:hover { transform: scale(1.06); box-shadow: 0 6px 20px var(--glow-color); }
+    
+    .console-extra { display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 10px; }
+    #console-speed-btn { cursor: pointer; color: var(--text-muted); font-weight: 700; background: rgba(255,255,255,0.03); padding: 4px 10px; border-radius: 99px; border: 1px solid var(--border); transition: all 0.2s; }
+    #console-speed-btn:hover { color: #fff; border-color: var(--accent); }
+    
+    .volume-control { display: flex; align-items: center; gap: 8px; color: var(--text-muted); }
+    .volume-control input[type=range] { -webkit-appearance: none; width: 60px; height: 3px; background: rgba(255,255,255,0.1); border-radius: 99px; outline: none; }
+    .volume-control input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 8px; height: 8px; border-radius: 50%; background: #fff; cursor: pointer; }
+    #volume-icon { cursor: pointer; }
+    #volume-icon:hover { color: #fff; }
+    
+    /* 优化引证新闻源（[1], [2] 学术报告式排版） */
+    .sources-card { display: flex; flex-direction: column; max-height: 400px; }
+    .sources-card .card-header { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 850; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px; }
+    .sources-list-body { flex: 1; overflow-y: auto; font-size: 0.8rem; }
+    .sources-list-body p { display: none; } 
+    .sources-list-body ol { list-style: none; display: flex; flex-direction: column; gap: 10px; counter-reset: citation-counter; }
+    .sources-list-body li { 
+      position: relative;
+      padding: 12px 14px 12px 42px; 
+      background: rgba(255, 255, 255, 0.015); 
+      border: 1px solid var(--border); 
+      border-radius: var(--radius-sm); 
+      transition: all 0.25s ease; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 3px; 
+      color: transparent; /* 过滤掉黄色球🟡 */
+    }
+    .sources-list-body li * { color: #fff; }
+    .sources-list-body li:hover { background: rgba(139, 92, 246, 0.05); border-color: rgba(139, 92, 246, 0.25); transform: translateX(3px); }
+    body.theme-report .sources-list-body li:hover { background: rgba(6, 182, 212, 0.05); border-color: rgba(6, 182, 212, 0.25); }
+    
+    .sources-list-body li::before {
+      counter-increment: citation-counter;
+      content: "[" counter(citation-counter) "]";
+      position: absolute;
+      left: 14px;
+      top: 13px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--accent-light);
+      font-family: monospace;
+    }
+    .sources-list-body li a { color: #fff; text-decoration: none; font-weight: 600; line-height: 1.45; font-size: 0.8rem; transition: color 0.2s; display: inline-block; }
+    .sources-list-body li a:hover { color: var(--accent-light); }
+    .sources-list-body li small { 
+      display: inline-block;
+      margin-top: 4px;
+      color: var(--text-muted); 
+      opacity: 0.85; 
+      font-size: 0.68rem; 
+      font-weight: 500; 
+      background: rgba(255,255,255,0.03);
+      padding: 2px 6px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+    
+    /* 播客右栏：提词器 */
+    .podcast-script-pane { background: var(--surface); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); display: flex; flex-direction: column; height: 720px; overflow: hidden; }
+    .podcast-script-pane .pane-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; border-bottom: 1px solid var(--border); background: rgba(0,0,0,0.1); }
+    .podcast-script-pane .pane-header span { font-size: 0.92rem; font-weight: 850; display: flex; align-items: center; gap: 8px; color: #fff; }
+    .teleprompter-badge { font-size: 0.68rem !important; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); color: #10b981 !important; padding: 3px 10px; border-radius: 99px; font-weight: 700; letter-spacing: 0.02em; }
+    
+    .transcript-container { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 14px; scroll-behavior: smooth; }
+    
+    .transcript-row { display: flex; gap: 20px; padding: 16px 20px; border-radius: var(--radius-md); background: rgba(255, 255, 255, 0.01); border: 1px solid transparent; cursor: pointer; transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1); position: relative; }
+    .transcript-row:hover { background: rgba(255, 255, 255, 0.025); border-color: rgba(255, 255, 255, 0.04); }
+    .transcript-row.speaking { background: rgba(139, 92, 246, 0.06); border-color: rgba(139, 92, 246, 0.15); box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    body.theme-report .transcript-row.speaking { background: rgba(6, 182, 212, 0.06); border-color: rgba(6, 182, 212, 0.15); }
+    
+    .speaker-meta { display: flex; flex-direction: column; align-items: center; width: 48px; flex-shrink: 0; position: relative; }
+    .speaker-avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800; color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.3); margin-bottom: 6px; border: 1px solid rgba(255,255,255,0.06); }
+    .speaker-avatar.host-a { background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); }
+    .speaker-avatar.host-b { background: linear-gradient(135deg, #f472b6 0%, #db2777 100%); }
+    .speaker-name { font-size: 0.7rem; font-weight: 700; letter-spacing: -0.01em; }
+    .speaker-avatar.host-a + .speaker-name { color: #22d3ee; }
+    .speaker-avatar.host-b + .speaker-name { color: #f472b6; }
+    
+    .seek-play-icon { position: absolute; top: 16px; left: 16px; width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; box-shadow: 0 4px 10px rgba(139,92,246,0.3); }
+    .transcript-row:hover .seek-play-icon { opacity: 1; transform: scale(1.05); }
+    .transcript-row.speaking .seek-play-icon { display: none; }
+    .transcript-text { flex: 1; font-size: 0.9rem; line-height: 1.8; color: #e5e7eb; display: flex; align-items: center; transition: color 0.2s; }
+    .transcript-row.speaking .transcript-text { color: #fff; font-weight: 500; }
+    
+    /* 人机共存滚动打断悬浮按钮 */
+    .back-to-sync-btn {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(30px);
+      background: rgba(139, 92, 246, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: #fff;
       border: 1px solid rgba(255,255,255,0.1);
-    }}
-    .toast.show {{ transform: translate(-50%, 0); }}
-
-    .footer {{
-      margin-top: 100px; padding: 40px 0; text-align: center;
-      color: var(--text-dark); font-size: 0.8rem;
-      border-top: 1px solid var(--border);
-    }}
-    .footer a {{ color: var(--text-muted); text-decoration: none; font-weight: 600; }}
-    .footer a:hover {{ text-decoration: underline; color: #fff; }}
+      padding: 8px 18px;
+      border-radius: 99px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 10px 25px rgba(139,92,246,0.35);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 100;
+    }
+    .back-to-sync-btn.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .back-to-sync-btn:hover {
+      background: #8b5cf6;
+      box-shadow: 0 10px 30px rgba(139,92,246,0.55);
+      transform: translateX(-50%) translateY(-2px);
+    }
+    body.theme-report .back-to-sync-btn {
+      background: rgba(6, 182, 212, 0.95);
+      box-shadow: 0 10px 25px rgba(6,182,212,0.35);
+    }
+    body.theme-report .back-to-sync-btn:hover {
+      background: #06b6d4;
+      box-shadow: 0 10px 30px rgba(6,182,212,0.55);
+    }
+    
+    /* 科技日报 Medium 杂志版面 */
+    .report-workspace { display: flex; justify-content: center; }
+    .magazine-container { max-width: 800px; width: 100%; background: var(--surface); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 48px; box-shadow: var(--shadow-lg); }
+    @media (max-width: 768px) {
+      .magazine-container { padding: 24px; }
+    }
+    
+    .magazine-header { text-align: center; margin-bottom: 40px; }
+    .magazine-issue { font-size: 0.78rem; font-weight: 700; color: var(--accent-light); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
+    .magazine-title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; color: #fff; letter-spacing: -0.02em; line-height: 1.2; background: linear-gradient(135deg, #fff 50%, var(--accent-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .magazine-divider { height: 1px; background: linear-gradient(to right, transparent, var(--border-hover), transparent); margin-top: 24px; }
+    
+    .magazine-body { display: flex; flex-direction: column; gap: 36px; }
+    .magazine-main-content { font-size: 1rem; color: #d1d5db; line-height: 1.85; }
+    
+    .magazine-main-content h1 { display: none; } 
+    .magazine-main-content p strong { color: #fff; font-weight: 700; }
+    .magazine-main-content p { margin-bottom: 24px; }
+    .magazine-main-content hr { border: none; height: 1px; background: rgba(255,255,255,0.04); margin: 36px 0; }
+    
+    .magazine-main-content h2 { font-size: 1.15rem; font-weight: 850; color: #fff; margin: 36px 0 16px; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 8px; }
+    .magazine-main-content h2::before { content: '✦'; color: var(--accent); font-size: 0.9rem; }
+    
+    /* 日报卡片浮雕及柔和发光边框 */
+    .magazine-main-content p:has(strong) {
+      background: rgba(255, 255, 255, 0.015);
+      padding: 24px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .magazine-main-content p:has(strong):hover {
+      background: rgba(255, 255, 255, 0.025);
+      border-color: rgba(6, 182, 212, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(6, 182, 212, 0.06);
+    }
+    .magazine-main-content p strong:first-child {
+      font-size: 1.08rem;
+      display: block;
+      margin-bottom: 10px;
+      color: #fff;
+      background: linear-gradient(to right, #fff, #c8e0e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* 小编独家锐评卡片高光 */
+    .editor-section-wrapper { margin-top: 12px; }
+    .editor-card { 
+      background: linear-gradient(135deg, rgba(6,182,212,0.06) 0%, rgba(16,185,129,0.02) 100%); 
+      border: 1px solid rgba(6,182,212,0.18); 
+      border-radius: var(--radius-lg); 
+      padding: 32px; 
+      box-shadow: 0 30px 60px rgba(0,0,0,0.45), 0 0 40px rgba(6, 182, 212, 0.03); 
+      position: relative; 
+      overflow: hidden; 
+    }
+    .editor-card::before { 
+      content: ''; 
+      position: absolute; 
+      top: 0; 
+      left: 0; 
+      width: 4px; 
+      height: 100%; 
+      background: linear-gradient(to bottom, #06b6d4, #10b981); 
+      z-index: 2;
+    }
+    .editor-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .editor-avatar { width: 42px; height: 42px; border-radius: 12px; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6,182,212,0.25); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+    .editor-name { font-size: 0.95rem; font-weight: 850; color: #fff; }
+    .editor-title { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .editor-quote { font-size: 0.92rem; line-height: 1.8; color: #e2e8f0; font-style: italic; }
+    .editor-quote p { margin-bottom: 12px; }
+    .editor-quote p:last-child { margin-bottom: 0; }
+    .editor-quote p strong { color: #06b6d4 !important; font-style: normal; }
+    
+    /* Placeholders & Alerts */
+    .state-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 20px; color: var(--text-muted); text-align: center; gap: 14px; }
+    .loading-spinner { width: 28px; height: 28px; border-radius: 50%; border: 2.5px solid rgba(139,92,246,.15); border-top-color: var(--accent); animation: spin .7s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); }}
+    
+    .toast { position: fixed; bottom: 24px; right: 24px; background: rgba(16,185,129,.95); color: #fff; padding: 12px 28px; border-radius: 99px; font-weight: 750; font-size: 0.85rem; transform: translateY(100px); opacity: 0; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 10px 20px rgba(16,185,129,0.3); z-index: 10000; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    
+    .footer { margin-top: 80px; padding: 36px 0; text-align: center; color: var(--text-dark); font-size: 0.78rem; border-top: 1px solid var(--border); }
   </style>
 </head>
 <body>
   <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
-
   <div class="container">
     <header>
       <a href="./" class="logo-block">
         <img src="./logo.png" alt="Logo" class="logo-img">
-        <span class="brand-name">{podcast_title}</span>
+        <div><div class="brand-name">{podcast_title}</div><div class="brand-tagline">AI 前沿动态</div></div>
       </a>
-      <div class="nav-links">
-        <a href="./feed.xml" target="_blank">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
-          RSS
-        </a>
-        <a href="https://github.com/nicekai-jpg/ai-news-podcast" target="_blank">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-          GitHub
-        </a>
+      <div class="header-right">
+        <a href="./feed.xml" target="_blank" class="nav-btn nav-btn-rss">RSS 订阅</a>
       </div>
     </header>
-
-    <div class="layout-grid">
-      <aside class="date-list">
-        <h2>📅 日期</h2>
-        <ul id="date-list-ul"></ul>
-      </aside>
-
-      <main class="content-area">
-        <div class="content-split">
-          <div class="panel-card">
-            <div class="panel-header">
-              <h2>📰 科技日报</h2>
-              <span class="panel-date-label" id="report-date-label"></span>
+    
+    <div class="hero-section">
+      <div class="hero-inner">
+        <img src="./logo.png" alt="Cover" class="hero-cover">
+        <div class="hero-meta">
+          <h1 class="hero-title" id="hero-title">AI 新闻快报</h1>
+          <p class="hero-desc" id="hero-desc">AI 播客电台 · 每日 AI 资讯的声音解说与剧本展示</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="brand-switcher-wrap">
+      <div class="brand-switcher">
+        <button id="btn-mode-podcast" class="mode-btn active" onclick="switchMode('podcast')">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+          AI 播客电台
+        </button>
+        <button id="btn-mode-report" class="mode-btn" onclick="switchMode('report')">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          科技日报
+        </button>
+      </div>
+    </div>
+    
+    <div class="date-selector-wrap"><div class="date-pills" id="date-pills"></div></div>
+    
+    <div class="main-layout">
+      <!-- AI 播客模式布局 -->
+      <div class="podcast-workspace" id="panel-podcast">
+        <!-- 左侧播客播控台 -->
+        <div class="podcast-sidebar">
+          <div class="station-card">
+            <div class="vinyl-wrapper">
+              <div class="vinyl-disc" id="vinyl-disc">
+                <img src="./logo.png" alt="Album Art" class="vinyl-art">
+                <div class="vinyl-center"></div>
+              </div>
+              <div class="visualizer-waves" id="visualizer-waves">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+              </div>
             </div>
-            <div class="report-markdown" id="report-content-box">
-              <div class="loading-placeholder">选择日期查看日报</div>
+            
+            <div class="podcast-info">
+              <h3 class="side-title" id="side-podcast-title">AI 新闻快报</h3>
+              <p class="side-meta-date" id="podcast-date-tag">—</p>
+            </div>
+            
+            <div class="console-player">
+              <div class="console-time-row">
+                <span id="current-time">0:00</span>
+                <div class="console-progress-track" id="console-progress-track" onclick="seekAudio(event)">
+                  <div class="console-progress-fill" id="console-progress-fill"></div>
+                  <div class="console-progress-handle"></div>
+                </div>
+                <span id="total-time">0:00</span>
+              </div>
+              <div class="console-controls">
+                <button class="ctrl-btn" onclick="skipAudio(-15)" title="-15秒">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0-.57-8.38l.41 1.31"/></svg>
+                </button>
+                <button class="console-play-btn" id="console-btn-play" onclick="toggleAudio()">▶</button>
+                <button class="ctrl-btn" onclick="skipAudio(15)" title="+15秒">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1 .57-8.38l-.41 1.31"/></svg>
+                </button>
+              </div>
+              <div class="console-extra">
+                <span id="console-speed-btn" onclick="cycleSpeed()">1.0x</span>
+                <div class="volume-control">
+                  <svg id="volume-icon" onclick="toggleMute()" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                  <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.8" oninput="changeVolume(this.value)">
+                </div>
+              </div>
             </div>
           </div>
-          <div class="panel-card">
-            <div class="panel-header">
-              <h2>🎙️ 播客剧本</h2>
-              <span class="panel-date-label" id="transcript-date-label"></span>
+          
+          <!-- 参考源卡片 -->
+          <div class="sources-card" id="sources-card">
+            <div class="card-header">
+              <span>🔗 本期引证新闻源</span>
             </div>
-            <div class="transcript-content" id="transcript-content-box">
-              <div class="loading-placeholder">选择日期查看剧本</div>
+            <div class="sources-list-body" id="sources-list-body"></div>
+          </div>
+        </div>
+        
+        <!-- 右侧剧本 -->
+        <div class="podcast-script-pane">
+          <div class="pane-header">
+            <span>🎙️ 播客转写同步剧本</span>
+            <span class="teleprompter-badge">智能音文联动</span>
+          </div>
+          <div class="transcript-container-wrapper" style="position: relative; flex: 1; overflow: hidden; display: flex; flex-direction: column;">
+            <div class="transcript-container" id="cast-panel-body" onscroll="handleTranscriptScroll()"></div>
+            <!-- 人机共存滚动打断悬浮按钮 -->
+            <button class="back-to-sync-btn" id="back-to-sync-btn" onclick="resumeSyncScroll()">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+              返回播音位置
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 科技日报模式布局 -->
+      <div class="report-workspace" id="panel-report" style="display: none;">
+        <div class="magazine-container">
+          <div class="magazine-header">
+            <div class="magazine-issue" id="report-date-tag">—</div>
+            <h1 class="magazine-title" id="magazine-main-title">🌍 科技新闻日报</h1>
+            <div class="magazine-divider"></div>
+          </div>
+          
+          <div class="magazine-body">
+            <div class="magazine-main-content" id="report-panel-body"></div>
+            
+            <div class="editor-section-wrapper" id="editor-verdict-wrapper" style="display: none;">
+              <div class="editor-card">
+                <div class="editor-header">
+                  <div class="editor-avatar">💡</div>
+                  <div>
+                    <h4 class="editor-name">AI 小编独家锐评</h4>
+                    <span class="editor-title">Editor's Verdict</span>
+                  </div>
+                </div>
+                <div class="editor-quote" id="editor-quote-body"></div>
+              </div>
             </div>
           </div>
         </div>
-      </main>
+      </div>
     </div>
-
-    <audio controls id="main-audio" style="display: none;"></audio>
-
-    <div class="toast" id="toast">RSS 订阅链接已复制到剪贴板</div>
-
-    <div class="footer">
-      <p>{podcast_title} · {build_time}</p>
-      <p>RSS 订阅: <a href="./feed.xml">{base_url}/feed.xml</a></p>
-    </div>
+    
+    <audio id="main-audio" style="display:none"></audio>
+    <div class="toast" id="toast">✅ 已复制</div>
+    <div class="footer"><p>{podcast_title} · 构建于 {build_time}</p></div>
   </div>
-
-  <div class="player-bar" id="player-bar">
-    <div class="player-container">
-      <div class="player-track-info">
-        <img src="./logo.png" alt="Mini Logo" class="player-logo-mini" id="player-mini-logo">
-        <div class="player-metadata">
-          <div class="player-track-title" id="bar-title">未在播放</div>
-          <div class="player-track-subtitle">{podcast_title}</div>
-        </div>
-      </div>
-      <div class="player-controls-main">
-        <div class="player-buttons">
-          <button class="player-btn" onclick="skip(-15)">⏪</button>
-          <button class="player-btn player-btn-play" id="bar-play-btn" onclick="toggleBarPlay()">▶</button>
-          <button class="player-btn" onclick="skip(15)">⏩</button>
-        </div>
-        <div class="player-timeline">
-          <span id="time-elapsed">0:00</span>
-          <input type="range" class="progress-input" id="progress-bar" min="0" max="100" value="0">
-          <span id="time-duration">0:00</span>
-        </div>
-      </div>
-      <div class="player-utils">
-        <div class="speed-control">
-          <button class="speed-btn" onclick="cycleSpeed()" id="speed-label">1.0x</button>
-        </div>
-        <div class="volume-control">
-          <span style="font-size:0.95rem;cursor:pointer;" onclick="toggleMute()" id="volume-icon">🔊</span>
-          <input type="range" class="volume-input" id="volume-bar" min="0" max="100" value="80">
-        </div>
-        <div class="visualizer" id="visualizer">
-          <div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div><div class="v-bar"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script type="text/javascript">
-    const dates = {dates_json};
-    const episodesMap = {episodes_map_json};
-
-    const audio = document.getElementById('main-audio');
+  
+  <script>
+    const DATES = {dates_json};
+    const EPISODES = {episodes_map_json};
+    const WEEKDAYS = ['日','一','二','三','四','五','六'];
+    const SPEEDS = [1, 1.25, 1.5, 1.75, 2];
+    let speedIdx = 0;
     let currentDate = null;
-    let currentPlayingId = null;
-    let isPlaying = false;
-    let lastVolume = 0.8;
-    const speeds = [1.0, 1.25, 1.5, 1.75, 2.0];
-    let currentSpeedIdx = 0;
-    if (audio) audio.volume = lastVolume;
+    let currentEpId = null;
+    let lastVol = 0.8;
+    let isMuted = false;
+    const audio = document.getElementById('main-audio');
+    audio.volume = lastVol;
 
-    // ── Date List ──
-    function initDateList() {{
-      const ul = document.getElementById('date-list-ul');
-      if (!ul) return;
-      ul.innerHTML = '';
-      dates.forEach(dateStr => {{
-        const li = document.createElement('li');
-        li.className = 'date-item';
-        li.setAttribute('data-date', dateStr);
-        li.onclick = () => loadDate(dateStr);
+    let currentMode = 'podcast';
+    let scriptTotalChars = 0;
+    let scriptParagraphs = [];
+    
+    // 人机共存滚动参数
+    let userScrolling = false;
+    let userScrollTimer = null;
+    let isInternalScroll = false;
 
-        let display = dateStr;
-        try {{
-          const p = dateStr.split('-');
-          if (p.length === 3) display = p[1] + '月' + p[2] + '日';
-        }} catch(e) {{}}
+    function switchMode(mode) {
+      if (currentMode === mode) return;
+      currentMode = mode;
+      
+      document.getElementById('btn-mode-report').classList.toggle('active', mode === 'report');
+      document.getElementById('btn-mode-podcast').classList.toggle('active', mode === 'podcast');
+      
+      const heroDesc = document.getElementById('hero-desc');
+      if (mode === 'report') {
+        document.body.classList.add('theme-report');
+        heroDesc.textContent = '科技日报 · 聚合每日 AI 领域深度前沿动态';
+      } else {
+        document.body.classList.remove('theme-report');
+        heroDesc.textContent = 'AI 播客电台 · 每日 AI 资讯的声音解说与剧本展示';
+      }
+      
+      const panelReport = document.getElementById('panel-report');
+      const panelPodcast = document.getElementById('panel-podcast');
+      
+      if (mode === 'report') {
+        panelPodcast.style.display = 'none';
+        panelReport.style.display = 'flex';
+      } else {
+        panelReport.style.display = 'none';
+        panelPodcast.style.display = 'grid';
+      }
+      
+      buildDatePills();
+    }
 
-        li.innerHTML = '<span class="play-icon">▶</span> ' + display;
-        ul.appendChild(li);
-      }});
-      if (dates.length > 0) loadDate(dates[0]);
-    }}
+    function buildDatePills() {
+      const wrap = document.getElementById('date-pills');
+      wrap.innerHTML = '';
+      
+      const filteredDates = DATES.filter(function(d) {
+        if (currentMode === 'podcast') {
+          return EPISODES[d] && EPISODES[d].mp3;
+        }
+        return true;
+      });
+      
+      filteredDates.forEach(function(d) {
+        var dt = new Date(d + 'T00:00:00');
+        var pill = document.createElement('div');
+        pill.className = 'date-pill';
+        pill.setAttribute('data-date', d);
+        pill.onclick = function() { loadDate(d); };
+        var mon = dt.getMonth() + 1;
+        var day = dt.getDate();
+        var wk = WEEKDAYS[dt.getDay()];
+        pill.innerHTML = '<span class="pill-month">' + mon + '月</span><span class="pill-day">' + day + '</span><span class="pill-weekday">周' + wk + '</span>';
+        wrap.appendChild(pill);
+      });
+      
+      if (filteredDates.length > 0) {
+        if (currentDate && filteredDates.includes(currentDate)) {
+          loadDate(currentDate);
+        } else {
+          loadDate(filteredDates[0]);
+        }
+      } else {
+        if (currentMode === 'report') {
+          setEmpty(document.getElementById('report-panel-body'), '📰', '该模式下暂无日期数据');
+        } else {
+          setEmpty(document.getElementById('cast-panel-body'), '🎙️', '暂无播客电台数据');
+        }
+      }
+    }
 
-    function setActiveDate(dateStr) {{
-      currentDate = dateStr;
-      document.querySelectorAll('.date-item').forEach(li => {{
-        li.classList.toggle('active', li.getAttribute('data-date') === dateStr);
-      }});
-    }}
+    function setActiveDate(d) {
+      currentDate = d;
+      document.querySelectorAll('.date-pill').forEach(function(p) {
+        p.classList.toggle('active', p.getAttribute('data-date') === d);
+      });
+    }
 
-    // ── Load Date Content ──
-    async function loadDate(dateStr) {{
-      setActiveDate(dateStr);
+    async function loadDate(d) {
+      var isFirstLoad = (currentDate === null);
+      setActiveDate(d);
+      var ep = EPISODES[d] || {};
+      var dt = new Date(d + 'T00:00:00');
+      var label = dt.getFullYear() + '年' + (dt.getMonth()+1) + '月' + dt.getDate() + '日';
+      document.getElementById('hero-title').textContent = ep.title || ('AI 新闻快报 | ' + d);
+      
+      // 渲染引证参考源卡片
+      var sourcesCard = document.getElementById('sources-card');
+      var sourcesList = document.getElementById('sources-list-body');
+      if (currentMode === 'podcast') {
+        if (ep.desc && ep.desc.trim()) {
+          sourcesList.innerHTML = ep.desc; 
+          sourcesCard.style.display = 'flex';
+        } else {
+          sourcesCard.style.display = 'none';
+        }
+      }
 
-      let displayFull = dateStr;
-      try {{
-        const p = dateStr.split('-');
-        if (p.length === 3) displayFull = p[0] + '年' + p[1] + '月' + p[2] + '日';
-      }} catch(e) {{}}
+      if (currentMode === 'report') {
+        document.getElementById('report-date-tag').textContent = label;
+        var repBody = document.getElementById('report-panel-body');
+        setLoading(repBody, '正在加载日报…');
+        try {
+          var r = await fetch('./reports/daily_report_' + d + '.md');
+          if (!r.ok) throw new Error();
+          var md = await r.text();
+          repBody.innerHTML = '<div class="report-content">' + marked.parse(md) + '</div>';
+          
+          extractEditorVerdict();
+        } catch(e) {
+          if (ep.desc) {
+            repBody.innerHTML = '<div style="font-size:.88rem;color:#d1d5db;line-height:1.75">' + ep.desc + '</div>';
+          } else {
+            setEmpty(repBody, '📰', '该日期暂无日报');
+          }
+          document.getElementById('editor-verdict-wrapper').style.display = 'none';
+        }
+      } else {
+        document.getElementById('podcast-date-tag').textContent = label;
+        document.getElementById('side-podcast-title').textContent = ep.title || ('AI 新闻快报 | ' + d);
+        var castBody = document.getElementById('cast-panel-body');
+        setLoading(castBody, '正在加载剧本…');
+        var loaded = false;
+        try {
+          var r2 = await fetch('./episodes/' + d + '.txt');
+          if (!r2.ok) throw new Error();
+          var txt = await r2.text();
+          castBody.innerHTML = parseTranscript(txt);
+          loaded = true;
+        } catch(e2) {}
+        if (!loaded) {
+          if (ep.desc) {
+            castBody.innerHTML = '<div style="font-size:.88rem;color:#d1d5db;line-height:1.75">' + ep.desc + '</div>';
+          } else {
+            setEmpty(castBody, '🎙️', '该日期暂无剧本');
+          }
+        }
 
-      const reportLabel = document.getElementById('report-date-label');
-      const transcriptLabel = document.getElementById('transcript-date-label');
-      if (reportLabel) reportLabel.textContent = displayFull;
-      if (transcriptLabel) transcriptLabel.textContent = displayFull;
+        if (ep.mp3 && currentEpId !== d) {
+          loadAudio(d, ep.mp3, ep.title || ('AI 新闻快报 | ' + d), !isFirstLoad);
+        }
+      }
+    }
 
-      // Load report
-      const reportBox = document.getElementById('report-content-box');
-      if (reportBox) {{
-        reportBox.innerHTML = '<div class="loading-placeholder">正在加载日报…</div>';
-        try {{
-          const resp = await fetch('./reports/daily_report_' + dateStr + '.md');
-          if (!resp.ok) throw new Error('Not found');
-          const md = await resp.text();
-          reportBox.innerHTML = marked.parse(md);
-        }} catch(e) {{
-          reportBox.innerHTML = '<div class="loading-placeholder">该日期暂无日报</div>';
-        }}
-      }}
+    function extractEditorVerdict() {
+      var repBody = document.getElementById('report-panel-body');
+      var quoteWrapper = document.getElementById('editor-verdict-wrapper');
+      var quoteBody = document.getElementById('editor-quote-body');
+      
+      if (!repBody || !quoteWrapper || !quoteBody) return;
+      
+      var bq = repBody.querySelector('blockquote');
+      if (bq) {
+        quoteBody.innerHTML = bq.innerHTML;
+        quoteWrapper.style.display = 'block';
+        bq.style.display = 'none'; 
+      } else {
+        quoteWrapper.style.display = 'none';
+      }
+    }
 
-      // Load transcript
-      const transcriptBox = document.getElementById('transcript-content-box');
-      if (transcriptBox) {{
-        transcriptBox.innerHTML = '<div class="loading-placeholder">正在加载剧本…</div>';
-        try {{
-          const resp = await fetch('./episodes/' + dateStr + '.txt');
-          if (!resp.ok) throw new Error('Not found');
-          const text = await resp.text();
-          transcriptBox.innerHTML = parseTranscript(text);
-        }} catch(e) {{
-          transcriptBox.innerHTML = '<div class="loading-placeholder">该日期暂无剧本</div>';
-        }}
-      }}
+    function setLoading(el, msg) {
+      el.innerHTML = '<div class="state-placeholder"><div class="loading-spinner"></div><p>' + msg + '</p></div>';
+    }
+    function setEmpty(el, icon, msg) {
+      el.innerHTML = '<div class="state-placeholder"><div style="font-size:2.5rem;opacity:.5">' + icon + '</div><p>' + msg + '</p></div>';
+    }
 
-      // Auto-play
-      const ep = episodesMap[dateStr];
-      if (ep && ep.mp3) {{
-        togglePlay(dateStr, ep.mp3, ep.title || ('AI 新闻快报 | ' + dateStr));
-      }}
-    }}
+    function parseTranscript(text) {
+      if (!text || !text.trim()) return '<div class="state-placeholder"><p>剧本内容为空</p></div>';
+      var lines = [];
+      var rawParagraphs = [];
+      
+      // 1. 使用浏览器的 DOM 树解析器进行强健解析 SSML 标签
+      try {
+        var parser = new DOMParser();
+        var doc = parser.parseFromString(text, "text/html");
+        var voiceTags = doc.querySelectorAll("voice");
+        if (voiceTags && voiceTags.length > 0) {
+          voiceTags.forEach(function(voiceTag, idx) {
+            var c = voiceTag.textContent.trim();
+            if (!c) return;
+            var voiceName = (voiceTag.getAttribute("name") || "").toLowerCase();
+            var start = parseFloat(voiceTag.getAttribute("start") || "-1");
+            var duration = parseFloat(voiceTag.getAttribute("duration") || "-1");
+            
+            var isXx = voiceName.indexOf('xiaoxiao') >= 0 || voiceName.indexOf('host-b') >= 0 || voiceName.indexOf('host b') >= 0;
+            rawParagraphs.push({ 
+              role: isXx ? 'B' : 'A', 
+              text: c,
+              start: start >= 0 ? start : null,
+              duration: duration >= 0 ? duration : null
+            });
+          });
+        }
+      } catch (eDOM) {}
+      
+      // 2. 如果 DOM 解析未成功或无 voice 标签，尝试正则兼容旧 SSML 格式
+      if (rawParagraphs.length === 0) {
+        var re = /<voice\\s+name\\s*=\\s*["']([^"']+)["']\\s*>([\\s\\S]*?)<\\/voice>/gi;
+        var m;
+        while ((m = re.exec(text)) !== null) {
+          var c = m[2].trim();
+          if (!c) continue;
+          var voiceName = m[1].toLowerCase();
+          var isXx = voiceName.indexOf('xiaoxiao') >= 0 || voiceName.indexOf('host-b') >= 0 || voiceName.indexOf('host b') >= 0;
+          rawParagraphs.push({ role: isXx ? 'B' : 'A', text: c, start: null, duration: null });
+        }
+      }
+      
+      // 3. 尝试匹配中括号格式 [Host A] / [Host B]
+      if (rawParagraphs.length === 0) {
+        var re2 = /\\[Host\\s*([AB])\\]\\s*([^\\[]*)/gi;
+        var m2;
+        while ((m2 = re2.exec(text)) !== null) {
+          var c2 = m2[2].trim();
+          if (!c2) continue;
+          rawParagraphs.push({ role: m2[1].toUpperCase(), text: c2, start: null, duration: null });
+        }
+      }
+      
+      // 4. 再次尝试：解析冒号前缀格式 (如 "博文：" 或 "晓晓:")
+      if (rawParagraphs.length === 0) {
+        var textLines = text.split('\\n');
+        textLines.forEach(function(line) {
+          var trimmed = line.trim();
+          if (!trimmed) return;
+          var colonIdx = trimmed.search(/[:：]/);
+          if (colonIdx > 0 && colonIdx < 10) {
+            var name = trimmed.substring(0, colonIdx).trim();
+            var content = trimmed.substring(colonIdx + 1).trim();
+            if (content) {
+              var isB = name.indexOf('晓晓') >= 0 || name.toLowerCase().indexOf('b') >= 0 || name.indexOf('女') >= 0;
+              rawParagraphs.push({ role: isB ? 'B' : 'A', text: content, start: null, duration: null });
+            }
+          }
+        });
+      }
+      
+      // 5. 段落交替兜底：如果没有结构化数据，去掉XML标签，以空白行切分并交替赋予角色
+      if (rawParagraphs.length === 0) {
+        var cleanText = text.replace(/<[^>]+>/g, '').trim();
+        var textLines2 = cleanText.split(/\\n+/);
+        textLines2.forEach(function(line, idx) {
+          var trimmed = line.trim();
+          if (!trimmed) return;
+          rawParagraphs.push({ role: (idx % 2 === 0) ? 'A' : 'B', text: trimmed, start: null, duration: null });
+        });
+      }
+      
+      // 6. 渲染页面并计算字符偏移量
+      scriptTotalChars = 0;
+      scriptParagraphs = [];
+      rawParagraphs.forEach(function(p) {
+        scriptTotalChars += p.text.length;
+      });
+      
+      var currentOffset = 0;
+      rawParagraphs.forEach(function(p, index) {
+        var cls = p.role === 'B' ? 'host-b' : 'host-a';
+        var name = p.role === 'B' ? '晓晓' : '博文';
+        var avatarChar = p.role === 'B' ? '晓' : '博';
+        var len = p.text.length;
+        
+        var rowHtml = '<div class="transcript-row" id="trans-row-' + index + '" ' +
+                      'data-offset="' + currentOffset + '" ' +
+                      'data-len="' + len + '" ' +
+                      (p.start !== null ? 'data-start="' + p.start + '" data-duration="' + p.duration + '" ' : '') +
+                      'onclick="seekToParagraph(' + index + ')">' +
+                      '<div class="speaker-meta">' +
+                        '<div class="speaker-avatar ' + cls + '">' + avatarChar + '</div>' +
+                        '<div class="speaker-name">' + name + '</div>' +
+                        '<div class="seek-play-icon">▶</div>' +
+                      '</div>' +
+                      '<div class="transcript-text">' + esc(p.text) + '</div>' +
+                    '</div>';
+        lines.push(rowHtml);
+        
+        scriptParagraphs.push({ 
+          index: index, 
+          offset: currentOffset, 
+          len: len,
+          start: p.start,
+          duration: p.duration
+        });
+        currentOffset += len;
+      });
+      
+      return lines.join('');
+    }
 
-    // ── Parse SSML Transcript ──
-    function parseTranscript(text) {{
-      if (!text || !text.trim()) return '<div class="loading-placeholder">剧本内容为空</div>';
+    function esc(s) {
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
 
-      // Try SSML parsing
-      if (text.includes('<voice') || text.includes('<speak')) {{
-        const lines = [];
-        const voiceRegex = /<voice\\s+name="([^"]+)">([\\s\\S]*?)<\\/voice>/g;
-        let match;
-        while ((match = voiceRegex.exec(text)) !== null) {{
-          const voiceName = match[1];
-          const content = match[2].trim();
-          if (!content) continue;
-          const isXiaoxiao = voiceName.includes('Xiaoxiao');
-          const hostClass = isXiaoxiao ? 'host-b' : 'host-a';
-          const speakerName = isXiaoxiao ? '晓晓' : '博文';
-          lines.push(
-            '<div class="dialogue-line ' + hostClass + '">' +
-            '<span class="speaker-label ' + hostClass + '">' + speakerName + '</span>' +
-            '<span class="dialogue-text">' + escapeHtml(content) + '</span>' +
-            '</div>'
-          );
-        }}
-        if (lines.length > 0) return lines.join('');
-      }}
+    function loadAudio(epId, url, title, autoplay) {
+      currentEpId = epId;
+      audio.src = url;
+      if (autoplay) {
+        audio.play().catch(function(){});
+      } else {
+        audio.load();
+      }
+      speedIdx = 0; audio.playbackRate = 1;
+      document.getElementById('console-speed-btn').textContent = '1.0x';
+      
+      // 载入新音频时，恢复自动滚动
+      resumeSyncScroll();
+    }
 
-      // Fallback: [Host A] / [Host B] format
-      const hostRegex = /\\[Host\\s*([AB])\\]\\s*([^\\[]*)/g;
-      let fallbackMatch;
-      const fallbackLines = [];
-      while ((fallbackMatch = hostRegex.exec(text)) !== null) {{
-        const host = fallbackMatch[1];
-        const content = fallbackMatch[2].trim();
-        if (!content) continue;
-        const hostClass = host === 'B' ? 'host-b' : 'host-a';
-        const speakerName = host === 'B' ? '晓晓' : '博文';
-        fallbackLines.push(
-          '<div class="dialogue-line ' + hostClass + '">' +
-          '<span class="speaker-label ' + hostClass + '">' + speakerName + '</span>' +
-          '<span class="dialogue-text">' + escapeHtml(content) + '</span>' +
-          '</div>'
-        );
-      }}
-      if (fallbackLines.length > 0) return fallbackLines.join('');
+    function seekToParagraph(index) {
+      if (!audio.duration) return;
+      var p = scriptParagraphs[index];
+      if (!p) return;
+      
+      var targetTime;
+      if (p.start !== null && p.start !== undefined) {
+        targetTime = p.start;
+      } else {
+        var ratio = p.offset / scriptTotalChars;
+        targetTime = audio.duration * ratio;
+        targetTime = Math.max(0, targetTime - 0.2); 
+      }
+      
+      audio.currentTime = targetTime;
+      if (audio.paused) {
+        audio.play().catch(function(){});
+      }
+      
+      // 用户点击跳转后，默认自动同步该句
+      resumeSyncScroll();
+    }
 
-      // Plain text fallback
-      return '<div class="dialogue-line host-a"><span class="dialogue-text">' + escapeHtml(text) + '</span></div>';
-    }}
-
-    function escapeHtml(str) {{
-      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-    }}
-
-    // ── Audio Player ──
-    function togglePlay(episodeId, mp3Url, titleText) {{
-      const playerBar = document.getElementById('player-bar');
-      const barTitle = document.getElementById('bar-title');
-      if (currentPlayingId === episodeId) {{
-        if (audio.paused) audio.play(); else audio.pause();
-      }} else {{
-        currentPlayingId = episodeId;
-        audio.src = mp3Url;
+    function toggleAudio() {
+      if (!currentEpId) return;
+      if (audio.paused) {
         audio.play();
-        if (barTitle) barTitle.textContent = titleText;
-        if (playerBar) playerBar.classList.add('active');
-        currentSpeedIdx = 0;
-        audio.playbackRate = 1.0;
-        const speedLabel = document.getElementById('speed-label');
-        if (speedLabel) speedLabel.textContent = '1.0x';
-      }}
-    }}
+      } else {
+        audio.pause();
+      }
+    }
 
-    function toggleBarPlay() {{
-      if (!currentPlayingId) return;
-      if (audio.paused) audio.play(); else audio.pause();
-    }}
+    function skipAudio(s) {
+      audio.currentTime = Math.max(0, Math.min(audio.duration||0, audio.currentTime + s));
+      resumeSyncScroll();
+    }
 
-    function updatePlayState(playing) {{
-      isPlaying = playing;
-      const barPlayBtn = document.getElementById('bar-play-btn');
-      const visualizer = document.getElementById('visualizer');
-      const miniLogo = document.getElementById('player-mini-logo');
-      if (barPlayBtn) {{
-        barPlayBtn.textContent = playing ? '⏸' : '▶';
-        if (playing) barPlayBtn.classList.add('playing'); else barPlayBtn.classList.remove('playing');
-      }}
-      if (playing) {{
-        if (visualizer) visualizer.classList.add('animating');
-        if (miniLogo) miniLogo.classList.add('animating');
-      }} else {{
-        if (visualizer) visualizer.classList.remove('animating');
-        if (miniLogo) miniLogo.classList.remove('animating');
-      }}
-      document.querySelectorAll('.date-item').forEach(li => {{
-        const icon = li.querySelector('.play-icon');
-        if (icon) {{
-          if (li.getAttribute('data-date') === currentPlayingId) {{
-            icon.textContent = playing ? '⏸' : '▶';
-          }} else {{
-            icon.textContent = '▶';
-          }}
-        }}
-      }});
-    }}
+    function seekAudio(e) {
+      if (!audio.duration) return;
+      var track = document.getElementById('console-progress-track');
+      var rect = track.getBoundingClientRect();
+      var pct = (e.clientX - rect.left) / rect.width;
+      audio.currentTime = audio.duration * pct;
+      resumeSyncScroll();
+    }
 
-    if (audio) {{
-      audio.addEventListener('play', () => updatePlayState(true));
-      audio.addEventListener('pause', () => updatePlayState(false));
-      audio.addEventListener('timeupdate', () => {{
-        const progressBar = document.getElementById('progress-bar');
-        const timeElapsed = document.getElementById('time-elapsed');
-        const timeDuration = document.getElementById('time-duration');
-        if (!isNaN(audio.duration)) {{
-          const pct = (audio.currentTime / audio.duration) * 100;
-          progressBar.value = pct;
-          progressBar.style.background = 'linear-gradient(to right, var(--accent) 0%, var(--accent) ' + pct + '%, var(--border) ' + pct + '%, var(--border) 100%)';
-          timeElapsed.textContent = formatTime(audio.currentTime);
-          timeDuration.textContent = formatTime(audio.duration);
-        }}
-      }});
-    }}
+    function cycleSpeed() {
+      speedIdx = (speedIdx + 1) % SPEEDS.length;
+      audio.playbackRate = SPEEDS[speedIdx];
+      var s = SPEEDS[speedIdx];
+      document.getElementById('console-speed-btn').textContent = (s % 1 === 0 ? s + '.0' : s) + 'x';
+    }
 
-    const progressBar = document.getElementById('progress-bar');
-    if (progressBar) {{
-      progressBar.addEventListener('input', e => {{
-        if (audio && audio.duration) audio.currentTime = (e.target.value / 100) * audio.duration;
-      }});
-    }}
+    function toggleMute() {
+      isMuted = !isMuted;
+      audio.muted = isMuted;
+      var icon = document.getElementById('volume-icon');
+      var slider = document.getElementById('volume-slider');
+      if (isMuted) {
+        icon.innerHTML = '<path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/>';
+        slider.value = 0;
+      } else {
+        icon.innerHTML = '<path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
+        slider.value = lastVol;
+      }
+    }
 
-    function skip(secs) {{
-      if (audio) audio.currentTime = Math.max(0, Math.min(audio.duration || 0, audio.currentTime + secs));
-    }}
+    function changeVolume(v) {
+      audio.volume = v;
+      lastVol = v;
+      isMuted = (v == 0);
+      audio.muted = isMuted;
+      var icon = document.getElementById('volume-icon');
+      if (isMuted) {
+        icon.innerHTML = '<path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/>';
+      } else {
+        icon.innerHTML = '<path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>';
+      }
+    }
 
-    const volumeBar = document.getElementById('volume-bar');
-    if (volumeBar) {{
-      volumeBar.style.background = 'linear-gradient(to right, var(--accent) 0%, var(--accent) ' + volumeBar.value + '%, var(--border) ' + volumeBar.value + '%, var(--border) 100%)';
-      volumeBar.addEventListener('input', e => {{
-        if (audio) {{
-          audio.volume = e.target.value / 100;
-          lastVolume = audio.volume;
-          volumeBar.style.background = 'linear-gradient(to right, var(--accent) 0%, var(--accent) ' + e.target.value + '%, var(--border) ' + e.target.value + '%, var(--border) 100%)';
-          updateVolumeIcon(audio.volume);
-        }}
-      }});
-    }}
+    function fmtTime(s) {
+      if (!s || isNaN(s)) return '0:00';
+      var m = Math.floor(s/60), sec = Math.floor(s%60);
+      return m + ':' + (sec<10?'0':'') + sec;
+    }
 
-    function toggleMute() {{
-      const volIcon = document.getElementById('volume-icon');
-      if (audio) {{
-        if (audio.volume > 0) {{
-          lastVolume = audio.volume; audio.volume = 0;
-          volumeBar.value = 0;
-          volumeBar.style.background = 'linear-gradient(to right, var(--accent) 0%, var(--accent) 0%, var(--border) 0%, var(--border) 100%)';
-          if (volIcon) volIcon.textContent = '🔇';
-        }} else {{
-          audio.volume = lastVolume; volumeBar.value = lastVolume * 100;
-          volumeBar.style.background = 'linear-gradient(to right, var(--accent) 0%, var(--accent) ' + (lastVolume*100) + '%, var(--border) ' + (lastVolume*100) + '%, var(--border) 100%)';
-          updateVolumeIcon(lastVolume);
-        }}
-      }}
-    }}
+    // 监听用户滚动剧本以实现人机共存控制
+    function handleTranscriptScroll() {
+      if (isInternalScroll) {
+        isInternalScroll = false;
+        return;
+      }
+      
+      userScrolling = true;
+      document.getElementById('back-to-sync-btn').classList.add('show');
+      
+      // 6秒内如果没有操作，自动恢复同步
+      clearTimeout(userScrollTimer);
+      userScrollTimer = setTimeout(function() {
+        resumeSyncScroll();
+      }, 6000);
+    }
 
-    function updateVolumeIcon(vol) {{
-      const volIcon = document.getElementById('volume-icon');
-      if (!volIcon) return;
-      if (vol === 0) volIcon.textContent = '🔇';
-      else if (vol < 0.4) volIcon.textContent = '🔈';
-      else volIcon.textContent = '🔊';
-    }}
+    function resumeSyncScroll() {
+      userScrolling = false;
+      document.getElementById('back-to-sync-btn').classList.remove('show');
+      clearTimeout(userScrollTimer);
+      forceSyncScroll();
+    }
 
-    function cycleSpeed() {{
-      if (!audio) return;
-      currentSpeedIdx = (currentSpeedIdx + 1) % speeds.length;
-      audio.playbackRate = speeds[currentSpeedIdx];
-      document.getElementById('speed-label').textContent = speeds[currentSpeedIdx].toFixed(2).replace('.00','') + 'x';
-    }}
+    function forceSyncScroll() {
+      syncScrollTo(true);
+    }
 
-    function formatTime(secs) {{
-      const m = Math.floor(secs / 60);
-      const s = Math.floor(secs % 60);
-      return m + ':' + (s < 10 ? '0' : '') + s;
-    }}
+    function syncScrollTo(force) {
+      if (!audio.duration || scriptParagraphs.length === 0) return;
+      
+      var currentTime = audio.currentTime;
+      var activeIndex = 0;
+      
+      var hasTimestamps = scriptParagraphs[0].start !== null && scriptParagraphs[0].start !== undefined;
+      if (hasTimestamps) {
+        for (var i = 0; i < scriptParagraphs.length; i++) {
+          var p = scriptParagraphs[i];
+          if (currentTime >= p.start && currentTime < (p.start + p.duration)) {
+            activeIndex = p.index;
+            break;
+          }
+          if (currentTime < p.start) {
+            activeIndex = Math.max(0, i - 1);
+            break;
+          }
+          if (i === scriptParagraphs.length - 1) {
+            activeIndex = i;
+          }
+        }
+      } else {
+        if (scriptTotalChars > 0) {
+          var currentRatio = currentTime / audio.duration;
+          var currentOffset = currentRatio * scriptTotalChars;
+          for (var i = 0; i < scriptParagraphs.length; i++) {
+            var p = scriptParagraphs[i];
+            if (currentOffset >= p.offset && currentOffset < (p.offset + p.len)) {
+              activeIndex = p.index;
+              break;
+            }
+            if (currentOffset < p.offset) {
+              activeIndex = Math.max(0, i - 1);
+              break;
+            }
+            if (i === scriptParagraphs.length - 1) {
+              activeIndex = i;
+            }
+          }
+        }
+      }
+      
+      document.querySelectorAll('.transcript-row').forEach(function(el) {
+        el.classList.remove('speaking');
+      });
+      
+      var activeEl = document.getElementById('trans-row-' + activeIndex);
+      if (activeEl) {
+        activeEl.classList.add('speaking');
+        
+        if (force || !userScrolling) {
+          var container = document.getElementById('cast-panel-body');
+          var relativeTop = activeEl.offsetTop - container.offsetTop;
+          var containerScrollTop = container.scrollTop;
+          var containerHeight = container.clientHeight;
+          var activeHeight = activeEl.clientHeight;
+          
+          var margin = 60; // 60px padding from top and bottom edges
+          var isFullyVisible = (relativeTop >= containerScrollTop + margin) && 
+                               ((relativeTop + activeHeight) <= (containerScrollTop + containerHeight - margin));
+                               
+          if (!isFullyVisible) {
+            var targetScroll = relativeTop - (containerHeight / 2) + (activeHeight / 2);
+            isInternalScroll = true;
+            container.scrollTo({
+              top: targetScroll,
+              behavior: 'smooth'
+            });
+          }
+        }
+      }
+    }
 
-    window.addEventListener('DOMContentLoaded', () => {{
-      initDateList();
-    }});
+    audio.addEventListener('play', function() {
+      document.getElementById('console-btn-play').textContent = '⏸';
+      document.getElementById('vinyl-disc').classList.add('spinning');
+    });
+    audio.addEventListener('pause', function() {
+      document.getElementById('console-btn-play').textContent = '▶';
+      document.getElementById('vinyl-disc').classList.remove('spinning');
+    });
+    
+    audio.addEventListener('timeupdate', function() {
+      if (!audio.duration) return;
+      var pct = (audio.currentTime / audio.duration * 100).toFixed(1);
+      
+      var consoleFill = document.getElementById('console-progress-fill');
+      if (consoleFill) consoleFill.style.width = pct + '%';
+      
+      var curTimeEl = document.getElementById('current-time');
+      if (curTimeEl) curTimeEl.textContent = fmtTime(audio.currentTime);
+      
+      var totalTimeEl = document.getElementById('total-time');
+      if (totalTimeEl && audio.duration) totalTimeEl.textContent = fmtTime(audio.duration);
+      
+      // 同步高亮及滚动
+      syncScrollTo(false);
+    });
+
+    window.addEventListener('DOMContentLoaded', buildDatePills);
   </script>
 </body>
 </html>"""
