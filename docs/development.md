@@ -78,3 +78,45 @@ uv run ruff format src/ tests/ scripts/
 ## GitHub Actions 持续集成与发布
 
 核心的自动化执行流位于 `.github/workflows/daily.yml`。这套工作流依赖 GitHub Actions 每日触发自动执行。如果您提交的 Pull Request 包含了新的第三方包依赖，请确保手动运行过 `uv lock` 更新你的锁定文件，否则云端的 CI 流程在复原环境时可能会失败。
+
+### 触发方式
+
+当前 workflow 仅支持两种触发方式（**不含 push 触发**）：
+
+- **定时触发**：每天 21:43 UTC（北京时间 5:43 AM）
+- **手动触发**：Actions 页面点击 "Run workflow"，或 `gh workflow run "Daily Podcast"`
+
+### 手动触发与部署
+
+```bash
+# 通过 GitHub CLI 触发
+gh workflow run "Daily Podcast"
+
+# 查看运行状态
+gh run list --limit 3
+
+# 查看某次运行的详细日志
+gh run view <run-id>
+```
+
+### 本地构建
+
+```bash
+# 重新构建站点（不运行完整 pipeline）
+uv run scripts/rebuild_site.py
+
+# 重新生成 TTS 音频
+uv run scripts/rebuild_tts.py
+```
+
+### 部署流程
+
+代码推送到 main 分支不会自动触发 Daily Podcast workflow。完整部署链路为：
+
+1. 触发 Daily Podcast workflow（定时或手动）
+2. Pipeline 运行，生成 `site/` 目录
+3. `peaceiris/actions-gh-pages` 将 `site/` 推送到 `gh-pages` 分支
+4. GitHub Pages 检测到 `gh-pages` 更新，自动触发 `pages-build-deployment`
+5. 部署到 CDN，网站更新 → https://nicekai-jpg.github.io/ai-news-podcast/
+
+如需修改触发条件（如增加 push 触发），需编辑 `.github/workflows/daily.yml` 的 `on:` 配置。
