@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 每日先锋 — 全自动化 AI 新闻播客</title>
+  <meta name="description" content="AI 每日先锋：每天自动抓取 AI 领域前沿资讯，经大模型智能整理，生成播客音频与文字日报，并通过 RSS Feed 分发全网。" />
+  <meta property="og:title" content="AI 每日先锋 — 全自动化 AI 新闻播客" />
+  <meta property="og:description" content="全自动 AI 新闻聚合 → 大模型摘要 → 语音合成 → 多端分发" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== Design Tokens ===== */
+    :root {
+      --bg-deep:     #070b14;
+      --bg-card:     rgba(14, 20, 35, 0.75);
+      --bg-glass:    rgba(255,255,255,0.04);
+      --border:      rgba(139, 92, 246, 0.18);
+      --border-glow: rgba(139, 92, 246, 0.55);
+
+      --purple-400:  #a78bfa;
+      --purple-500:  #8b5cf6;
+      --purple-600:  #7c3aed;
+      --pink-400:    #f472b6;
+      --cyan-400:    #22d3ee;
+      --white:       #f1f5f9;
+      --muted:       #94a3b8;
+
+      --grad-main:   linear-gradient(135deg, #8b5cf6 0%, #6366f1 40%, #22d3ee 100%);
+      --grad-card:   linear-gradient(145deg, rgba(139,92,246,.12), rgba(34,211,238,.06));
+      --shadow-glow: 0 0 60px rgba(139,92,246,.35);
+      --shadow-card: 0 8px 40px rgba(0,0,0,.55);
+
+      --font-en: 'Inter', sans-serif;
+      --font-zh: 'Noto Sans SC', 'Inter', sans-serif;
+
+      --radius: 18px;
+      --radius-sm: 10px;
+    }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-zh);
+      background: var(--bg-deep);
+      color: var(--white);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== Animated Background ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% -10%, rgba(139,92,246,.18) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 110%, rgba(34,211,238,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 60% 50%, rgba(99,102,241,.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Floating particles */
+    .particles {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .particle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: var(--purple-400);
+      opacity: 0;
+      animation: floatUp var(--dur, 8s) var(--delay, 0s) infinite ease-in;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: .8; }
+      90%  { opacity: .4; }
+      100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+    }
+
+    /* ===== Scrollbar ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-deep); }
+    ::-webkit-scrollbar-thumb { background: var(--purple-600); border-radius: 3px; }
+
+    /* ===== Layout ===== */
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px) saturate(1.8);
+      -webkit-backdrop-filter: blur(20px) saturate(1.8);
+      background: rgba(7, 11, 20, 0.7);
+      border-bottom: 1px solid var(--border);
+      transition: all .3s;
+    }
+    .nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(139,92,246,.5);
+    }
+    .nav-logo-text {
+      font-size: 1rem;
+      font-weight: 700;
+      background: var(--grad-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: .02em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 500;
+      transition: color .2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--grad-main);
+      transform: scaleX(0);
+      transition: transform .25s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      background: var(--grad-main);
+      color: white !important;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-weight: 600 !important;
+      font-size: .8rem !important;
+      box-shadow: 0 0 20px rgba(139,92,246,.4);
+      transition: box-shadow .25s, transform .25s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover {
+      box-shadow: 0 0 35px rgba(139,92,246,.7) !important;
+      transform: translateY(-1px);
+      color: white !important;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 140px 0 100px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(139,92,246,.12);
+      border: 1px solid rgba(139,92,246,.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: .8rem;
+      color: var(--purple-400);
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      animation: fadeInDown .6s ease both;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cyan-400);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(.7); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 12px;
+      animation: fadeInUp .7s .1s ease both;
+    }
+    .hero-title .grad {
+      background: var(--grad-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle-en {
+      font-family: var(--font-en);
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: .04em;
+      margin-bottom: 24px;
+      animation: fadeInUp .7s .15s ease both;
+    }
+    .hero-desc {
+      max-width: 640px;
+      margin: 0 auto 48px;
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-weight: 400;
+      animation: fadeInUp .7s .2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeInUp .7s .28s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 30px;
+      border-radius: 100px;
+      font-size: .95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .25s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--grad-main);
+      color: white;
+      box-shadow: 0 0 30px rgba(139,92,246,.45), 0 4px 20px rgba(0,0,0,.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 50px rgba(139,92,246,.65), 0 8px 30px rgba(0,0,0,.5);
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--border-glow);
+      backdrop-filter: blur(10px);
+    }
+    .btn-outline:hover {
+      background: rgba(139,92,246,.1);
+      border-color: var(--purple-400);
+      transform: translateY(-2px);
+    }
+
+    /* Hero visual — waveform */
+    .hero-visual {
+      margin-top: 72px;
+      position: relative;
+      animation: fadeInUp .9s .35s ease both;
+    }
+    .waveform-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 36px 40px;
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-card), 0 0 80px rgba(139,92,246,.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .waveform-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139,92,246,.6), transparent);
+    }
+    .waveform-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .waveform-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .waveform-dots span {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .waveform-dots span:nth-child(1) { background: #ff5f57; }
+    .waveform-dots span:nth-child(2) { background: #ffbd2e; }
+    .waveform-dots span:nth-child(3) { background: #28c840; }
+    .waveform-title-bar {
+      flex: 1;
+      text-align: center;
+      font-size: .85rem;
+      color: var(--muted);
+      font-family: var(--font-en);
+    }
+    .waveform-canvas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      height: 80px;
+    }
+    .wave-bar {
+      width: 4px;
+      border-radius: 4px;
+      background: var(--grad-main);
+      animation: waveAnim var(--t, .8s) var(--d, 0s) infinite ease-in-out alternate;
+      opacity: .8;
+    }
+    @keyframes waveAnim {
+      from { height: 6px; opacity: .4; }
+      to   { height: var(--h, 40px); opacity: 1; }
+    }
+    .waveform-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      font-family: var(--font-en);
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    .waveform-meta .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(34,211,238,.1);
+      border: 1px solid rgba(34,211,238,.25);
+      border-radius: 100px;
+      padding: 4px 12px;
+      color: var(--cyan-400);
+      font-weight: 600;
+    }
+    .live-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cyan-400);
+      animation: pulse 1.5s infinite;
+    }
+
+    /* ===== STATS ===== */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 60px 0;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+      backdrop-filter: blur(16px);
+      transition: border-color .3s, transform .3s, box-shadow .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--grad-card);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .stat-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-glow), var(--shadow-card);
+    }
+    .stat-card:hover::before { opacity: 1; }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      font-family: var(--font-en);
+      background: var(--grad-main);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      position: relative;
+    }
+    .stat-label {
+      color: var(--muted);
+      font-size: .875rem;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+
+    /* ===== SECTION HEADER ===== */
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--purple-400);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -.01em;
+    }
+    .section-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-top: 14px;
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.75;
+    }
+
+    /* ===== FEATURES ===== */
+    .features {
+      padding: 40px 0 100px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      backdrop-filter: blur(16px);
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .feat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--grad-main);
+      transform: scaleX(0);
+      transition: transform .3s;
+    }
+    .feat-card:hover {
+      border-color: var(--border-glow);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-glow), var(--shadow-card);
+    }
+    .feat-card:hover::before { transform: scaleX(1); }
+    .feat-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      background: rgba(139,92,246,.12);
+      border: 1px solid rgba(139,92,246,.2);
+    }
+    .feat-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .feat-desc {
+      color: var(--muted);
+      font-size: .875rem;
+      line-height: 1.75;
+    }
+    .feat-tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      border: 1px solid;
+    }
+    .tag-purple { color: var(--purple-400); border-color: rgba(139,92,246,.35); }
+    .tag-cyan   { color: var(--cyan-400);   border-color: rgba(34,211,238,.35); }
+    .tag-pink   { color: var(--pink-400);   border-color: rgba(244,114,182,.35); }
+
+    /* ===== PIPELINE ===== */
+    .pipeline {
+      padding: 40px 0 100px;
+    }
+    .pipeline-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+    .pipeline-steps::before {
+      content: '';
+      position: absolute;
+      left: 35px;
+      top: 35px;
+      bottom: 35px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--purple-500), var(--cyan-400));
+      opacity: .3;
+    }
+    .pipeline-step {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      padding: 20px 0;
+      position: relative;
+      cursor: default;
+    }
+    .pipeline-step:hover .step-body { border-color: var(--border-glow); }
+    .step-num {
+      width: 70px;
+      min-width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--border-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      position: relative;
+      z-index: 1;
+      transition: all .3s;
+      box-shadow: 0 0 20px rgba(139,92,246,.25);
+    }
+    .pipeline-step:hover .step-num {
+      border-color: var(--purple-400);
+      box-shadow: 0 0 35px rgba(139,92,246,.5);
+      transform: scale(1.05);
+    }
+    .step-body {
+      flex: 1;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      backdrop-filter: blur(16px);
+      transition: border-color .3s;
+    }
+    .step-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .step-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .tech-chip {
+      background: rgba(139,92,246,.1);
+      border: 1px solid rgba(139,92,246,.2);
+      border-radius: 100px;
+      padding: 3px 12px;
+      font-size: .75rem;
+      color: var(--purple-400);
+      font-family: var(--font-en);
+      font-weight: 500;
+    }
+    .step-desc { color: var(--muted); font-size: .875rem; line-height: 1.7; }
+
+    /* ===== PIPELINE IMAGE ===== */
+    .pipeline-img-wrapper {
+      margin-top: 56px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-card), 0 0 60px rgba(139,92,246,.1);
+    }
+    .pipeline-img-wrapper img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ===== HOW TO USE ===== */
+    .howto {
+      padding: 40px 0 100px;
+    }
+    .howto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .howto-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      backdrop-filter: blur(16px);
+      transition: all .3s;
+    }
+    .howto-card:hover {
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-glow), var(--shadow-card);
+    }
+    .howto-step-label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--purple-400);
+      margin-bottom: 10px;
+    }
+    .howto-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .code-block {
+      background: rgba(0,0,0,.5);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
+      font-size: .82rem;
+      line-height: 1.7;
+      overflow-x: auto;
+      position: relative;
+    }
+    .code-block .comment { color: #6b7280; }
+    .code-block .cmd     { color: var(--cyan-400); }
+    .code-block .flag    { color: var(--purple-400); }
+    .code-block .str     { color: #34d399; }
+
+    /* ===== CONFIG TABLE ===== */
+    .config-section {
+      padding: 40px 0 100px;
+    }
+    .config-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+    .config-table th {
+      background: rgba(139,92,246,.12);
+      padding: 14px 20px;
+      text-align: left;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--purple-400);
+      border-bottom: 1px solid var(--border);
+    }
+    .config-table td {
+      padding: 14px 20px;
+      font-size: .875rem;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      color: var(--muted);
+      vertical-align: top;
+    }
+    .config-table td:first-child {
+      font-family: var(--font-en);
+      color: var(--cyan-400);
+      font-weight: 500;
+    }
+    .config-table tr:last-child td { border-bottom: none; }
+    .config-table tr:hover td { background: rgba(139,92,246,.05); }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      padding: 40px 0 120px;
+    }
+    .cta-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 72px 48px;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 50% 120%, rgba(139,92,246,.18), transparent);
+    }
+    .cta-box::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(139,92,246,.7), transparent);
+    }
+    .cta-title {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .cta-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.75;
+      position: relative;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-brand img {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      opacity: .8;
+    }
+    .footer-brand span {
+      font-size: .875rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .8rem;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy {
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    /* ===== Animations ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll-reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .howto-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+      .pipeline-steps::before { left: 30px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="../assets/logo.png" alt="AI 每日先锋 Logo" />
+        <span class="nav-logo-text">AI 每日先锋</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">功能特性</a></li>
+        <li><a href="#pipeline">工作流水线</a></li>
+        <li><a href="#quickstart">快速开始</a></li>
+        <li><a href="architecture.html">文档</a></li>
+        <li><a href="https://github.com" class="nav-cta" target="_blank">GitHub ↗</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        每天自动更新 · 全自动化 AI 播客
+      </div>
+
+      <h1 class="hero-title">
+        <span class="grad">AI 每日先锋</span><br />
+        让 AI 替你读天下
+      </h1>
+      <p class="hero-subtitle-en">AI Daily Pioneer — Automated AI News Podcast Generator</p>
+      <p class="hero-desc">
+        每天自动抓取 AI 领域前沿资讯，经大模型智能摘要，合成带背景音效的播客音频，<br />
+        同步生成文字日报，通过 RSS Feed 一键分发全网各大播客平台。
+      </p>
+
+      <div class="hero-actions">
+        <a href="#quickstart" class="btn btn-primary">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          立即开始使用
+        </a>
+        <a href="https://github.com" class="btn btn-outline" target="_blank">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.63-5.48 5.93.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          查看 GitHub 源码
+        </a>
+      </div>
+
+      <!-- Waveform Visual -->
+      <div class="hero-visual">
+        <div class="waveform-wrapper">
+          <div class="waveform-header">
+            <div class="waveform-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="waveform-title-bar">AI Daily Pioneer · Episode Player</div>
+          </div>
+          <div class="waveform-canvas" id="waveformCanvas"></div>
+          <div class="waveform-meta">
+            <div class="live-badge">
+              <span class="live-dot"></span>
+              正在生成今日播客
+            </div>
+            <span>由 Edge-TTS + LLM 自动生成</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section>
+    <div class="container">
+      <div class="stats-row reveal">
+        <div class="stat-card">
+          <span class="stat-number">24h</span>
+          <div class="stat-label">自动更新周期</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">5+</span>
+          <div class="stat-label">流水线处理阶段</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">3x</span>
+          <div class="stat-label">智能去重层级</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">0¥</span>
+          <div class="stat-label">GitHub Pages 托管费用</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">核心功能</span>
+        <h2 class="section-title">声文并茂，全自动出品</h2>
+        <p class="section-desc">从原始 RSS 到成品播客，零人工干预，每天自动交付</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feat-card reveal">
+          <div class="feat-icon">🗞️</div>
+          <div class="feat-name">全自动新闻聚合</div>
+          <p class="feat-desc">并发抓取 <code>sources.yaml</code> 中的 RSS/Atom 订阅源，三层去重算法过滤重复、软文与水文，只留真正有价值的内容。</p>
+          <span class="feat-tag tag-purple">httpx · trafilatura</span>
+        </div>
+        <div class="feat-card reveal" style="transition-delay:.07s">
+          <div class="feat-icon">🧠</div>
+          <div class="feat-name">DBSCAN 智能聚类</div>
+          <p class="feat-desc">TF-IDF + 余弦相似度矩阵驱动 DBSCAN 密度聚类，把不同媒体的同类报道归并为「事件簇」，消除信息冗余。</p>
+          <span class="feat-tag tag-cyan">scikit-learn · jieba</span>
+        </div>
+        <div class="feat-card reveal" style="transition-delay:.14s">
+          <div class="feat-icon">⭐</div>
+          <div class="feat-name">五维评分系统</div>
+          <p class="feat-desc">从社会热度、技术创新、信息丰富度、受众相关性、信源权威五个维度打分，5-15 分决定新闻角色与播出优先级。</p>
+          <span class="feat-tag tag-purple">自研评分算法</span>
+        </div>
+        <div class="feat-card reveal" style="transition-delay:.21s">
+          <div class="feat-icon">✍️</div>
+          <div class="feat-name">LLM 双人剧本创作</div>
+          <p class="feat-desc">支持 OpenAI、Gemini 及讯飞星辰 MaaS，生成口语化的双人对谈播客剧本与媒体编辑风格文字日报，双轨并行输出。</p>
+          <span class="feat-tag tag-pink">OpenAI · Gemini · 讯飞星辰</span>
+        </div>
+        <div class="feat-card reveal" style="transition-delay:.28s">
+          <div class="feat-icon">🎙️</div>
+          <div class="feat-name">神经网络语音合成</div>
+          <p class="feat-desc">调用微软 Edge-TTS 并行合成分段音轨，pydub 无缝拼接后叠加背景音效，响度归一化，输出标准播客级 MP3 音频。</p>
+          <span class="feat-tag tag-cyan">edge-tts · pydub</span>
+        </div>
+        <div class="feat-card reveal" style="transition-delay:.35s">
+          <div class="feat-icon">🚀</div>
+          <div class="feat-name">全自动 CI/CD 部署</div>
+          <p class="feat-desc">GitHub Actions 每日定时触发，自动生成 <code>feed.xml</code> 与 <code>index.html</code>，部署至 GitHub Pages，零费用全球分发。</p>
+          <span class="feat-tag tag-purple">GitHub Actions · Pages</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="pipeline" id="pipeline">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">系统架构</span>
+        <h2 class="section-title">五阶段自动化流水线</h2>
+        <p class="section-desc">从 RSS 抓取到全球分发，每一步都经过精心设计与工程化落地</p>
+      </div>
+
+      <div class="pipeline-steps">
+        <div class="pipeline-step reveal">
+          <div class="step-num">🌐</div>
+          <div class="step-body">
+            <div class="step-title">阶段一 · 资讯抓取与正文提取</div>
+            <p class="step-desc">并发解析 <code>config/sources.yaml</code>，提取 URL 后双引擎提取全文正文（优先 trafilatura，回退 readability-lxml），生成结构化 RawItem 列表。</p>
+            <div class="step-tech">
+              <span class="tech-chip">httpx</span>
+              <span class="tech-chip">trafilatura</span>
+              <span class="tech-chip">readability-lxml</span>
+              <span class="tech-chip">sha256 唯一 ID</span>
+            </div>
+          </div>
+        </div>
+        <div class="pipeline-step reveal" style="transition-delay:.08s">
+          <div class="step-num">🔍</div>
+          <div class="step-body">
+            <div class="step-title">阶段二 · 三层精准去重</div>
+            <p class="step-desc">第一层：规范化 URL 绝对排重。第二层：RapidFuzz 标题相似度比对（阈值 92%）。第三层：Jieba 分词后关键词重合度检测，彻底消除重复信息。</p>
+            <div class="step-tech">
+              <span class="tech-chip">RapidFuzz</span>
+              <span class="tech-chip">jieba</span>
+              <span class="tech-chip">48h 滚动窗口</span>
+            </div>
+          </div>
+        </div>
+        <div class="pipeline-step reveal" style="transition-delay:.16s">
+          <div class="step-num">🧬</div>
+          <div class="step-body">
+            <div class="step-title">阶段三 · DBSCAN 聚类 + 五维打分</div>
+            <p class="step-desc">TF-IDF 字符级 N-Gram 提取特征，计算余弦相似度矩阵并输入 DBSCAN 聚类。每簇取全文最丰富的代表文章，再按社会热度、技术创新、信息量、受众相关、信源权威五维量化评分。</p>
+            <div class="step-tech">
+              <span class="tech-chip">scikit-learn</span>
+              <span class="tech-chip">DBSCAN</span>
+              <span class="tech-chip">TF-IDF</span>
+              <span class="tech-chip">5维评分 5-15分</span>
+            </div>
+          </div>
+        </div>
+        <div class="pipeline-step reveal" style="transition-delay:.24s">
+          <div class="step-num">🤖</div>
+          <div class="step-body">
+            <div class="step-title">阶段四 · LLM 双轨内容创作</div>
+            <p class="step-desc">精选事件簇送入大语言模型，同步生成两路内容：播客双人对话剧本（用于 TTS 合成），以及媒体编辑风格的 Markdown 文字日报（直接发布）。</p>
+            <div class="step-tech">
+              <span class="tech-chip">OpenAI</span>
+              <span class="tech-chip">Gemini</span>
+              <span class="tech-chip">讯飞星辰 MaaS</span>
+              <span class="tech-chip">双轨并行</span>
+            </div>
+          </div>
+        </div>
+        <div class="pipeline-step reveal" style="transition-delay:.32s">
+          <div class="step-num">📡</div>
+          <div class="step-body">
+            <div class="step-title">阶段五 · 语音合成 + 发布分发</div>
+            <p class="step-desc">Edge-TTS 并行合成分段音轨，pydub 无缝拼接叠加 BGM，响度归一化后输出 MP3。同步生成符合 Apple Podcasts 规范的 feed.xml 与 index.html，GitHub Actions 自动部署至 GitHub Pages。</p>
+            <div class="step-tech">
+              <span class="tech-chip">edge-tts</span>
+              <span class="tech-chip">pydub</span>
+              <span class="tech-chip">RSS 2.0</span>
+              <span class="tech-chip">GitHub Actions</span>
+              <span class="tech-chip">GitHub Pages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pipeline-img-wrapper reveal" style="transition-delay:.1s">
+        <img src="../assets/pipeline_infographic.png" alt="AI News Podcast 流水线架构图" />
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO USE -->
+  <section class="howto" id="quickstart">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">快速开始</span>
+        <h2 class="section-title">三步本地运行</h2>
+        <p class="section-desc">推荐使用 uv 进行快速、稳定的依赖管理</p>
+      </div>
+
+      <div class="howto-grid">
+        <div class="howto-card reveal">
+          <div class="howto-step-label">Step 01</div>
+          <div class="howto-title">配置 API 密钥</div>
+          <div class="code-block">
+            <span class="comment"># 在项目根目录创建 .env 文件</span><br />
+            <span class="cmd">cp</span> .env.example .env<br /><br />
+            <span class="comment"># 填入你的 API Key</span><br />
+            SPARK_API_KEY=<span class="str">"your-spark-api-key"</span>
+          </div>
+        </div>
+        <div class="howto-card reveal" style="transition-delay:.08s">
+          <div class="howto-step-label">Step 02</div>
+          <div class="howto-title">安装依赖</div>
+          <div class="code-block">
+            <span class="comment"># 使用 uv（推荐）</span><br />
+            <span class="cmd">git clone</span> https://github.com/your/repo.git<br />
+            <span class="cmd">cd</span> ai-news-podcast<br />
+            <span class="cmd">uv sync</span>
+          </div>
+        </div>
+        <div class="howto-card reveal" style="transition-delay:.16s">
+          <div class="howto-step-label">Step 03A</div>
+          <div class="howto-title">生成今日播客（MP3 + RSS）</div>
+          <div class="code-block">
+            <span class="cmd">uv run</span> podcast-daily <span class="flag">--base-url</span> http://localhost<br /><br />
+            <span class="comment"># 无法连接 Edge-TTS 时追加 --no-audio</span><br />
+            <span class="cmd">uv run</span> podcast-daily <span class="flag">--no-audio</span>
+          </div>
+        </div>
+        <div class="howto-card reveal" style="transition-delay:.24s">
+          <div class="howto-step-label">Step 03B</div>
+          <div class="howto-title">生成文字日报（Markdown）</div>
+          <div class="code-block">
+            <span class="comment"># 调用讯飞星辰 MaaS API 生成日报</span><br />
+            <span class="cmd">uv run</span> podcast-report<br /><br />
+            <span class="comment"># 输出保存至 data/reports/ 目录</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONFIG TABLE -->
+  <section class="config-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">配置文件</span>
+        <h2 class="section-title">灵活定制你的播客</h2>
+        <p class="section-desc">通过 config/ 目录下的文件控制一切行为</p>
+      </div>
+      <table class="config-table reveal">
+        <thead>
+          <tr>
+            <th>文件</th>
+            <th>作用</th>
+            <th>关键配置项</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>config/config.yaml</td>
+            <td>核心行为控制文件</td>
+            <td>llm 模型选择、TTS 声线、抓取超时限制、关键词权重评分参数</td>
+          </tr>
+          <tr>
+            <td>config/sources.yaml</td>
+            <td>新闻源管理</td>
+            <td>精选 RSS/Atom 订阅源列表（Hacker News、各 AI 官方博客），支持单源启用/禁用</td>
+          </tr>
+          <tr>
+            <td>.env</td>
+            <td>密钥与私有配置</td>
+            <td>SPARK_API_KEY、OPENAI_API_KEY、GEMINI_API_KEY 等 API 密钥</td>
+          </tr>
+          <tr>
+            <td>.github/workflows/daily.yml</td>
+            <td>CI/CD 自动化配置</td>
+            <td>定时触发 cron、环境变量注入、构建 + 部署 GitHub Pages 全流程</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box reveal">
+        <h2 class="cta-title">立即订阅你的专属 AI 播客</h2>
+        <p class="cta-desc">
+          Fork 本仓库，配置 GitHub Pages，每天自动获得一集 AI 前沿资讯播客。<br />
+          支持所有主流播客 App 通过 RSS 订阅。
+        </p>
+        <div class="cta-buttons">
+          <a href="https://github.com" class="btn btn-primary" target="_blank">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.2 11.4.6.1.82-.26.82-.58v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.54-1.38-1.33-1.75-1.33-1.75-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 3-.4c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.63-5.48 5.93.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57C20.57 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            Fork 本项目
+          </a>
+          <a href="architecture.md" class="btn btn-outline">
+            📖 阅读完整文档
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="../assets/logo.png" alt="Logo" />
+          <span>AI 每日先锋</span>
+        </div>
+        <div class="footer-links">
+          <a href="architecture.md">架构说明</a>
+          <a href="development.md">开发指南</a>
+          <a href="contributing.md">贡献指南</a>
+          <a href="../CHANGELOG.md">更新日志</a>
+        </div>
+        <p class="footer-copy">MIT License · 由开发者用 ❤️ 构建</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Particles =====
+    const particlesContainer = document.getElementById('particles');
+    const colors = ['#a78bfa', '#22d3ee', '#f472b6', '#818cf8'];
+    for (let i = 0; i < 40; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.cssText = `
+        left: ${Math.random() * 100}%;
+        --dur: ${6 + Math.random() * 8}s;
+        --delay: ${Math.random() * 10}s;
+        background: ${colors[Math.floor(Math.random() * colors.length)]};
+        width: ${1 + Math.random() * 3}px;
+        height: ${1 + Math.random() * 3}px;
+      `;
+      particlesContainer.appendChild(p);
+    }
+
+    // ===== Waveform =====
+    const canvas = document.getElementById('waveformCanvas');
+    const heights = [8,14,22,30,40,52,64,72,80,72,68,60,52,44,36,30,24,18,14,10,8,12,20,28,38,50,62,70,76,68,58,48,40,32,26,20,16,12,10,8,14,24,36,48,58,66,72,74,70,62,52,42,34,26,20,16,12,10,8];
+    heights.forEach((h, i) => {
+      const bar = document.createElement('div');
+      bar.className = 'wave-bar';
+      const dur = (0.4 + Math.random() * 0.8).toFixed(2);
+      const delay = (Math.random() * 0.5).toFixed(2);
+      bar.style.cssText = `--h:${h}px;--t:${dur}s;--d:${delay}s;height:${h/2}px;`;
+      canvas.appendChild(bar);
+    });
+
+    // ===== Scroll Reveal =====
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ===== Nav scroll effect =====
+    const navEl = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) {
+        navEl.style.background = 'rgba(7,11,20,0.92)';
+      } else {
+        navEl.style.background = 'rgba(7,11,20,0.7)';
+      }
+    }, { passive: true });
+  </script>
+</body>
+</html>
