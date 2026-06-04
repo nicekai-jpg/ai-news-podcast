@@ -87,11 +87,20 @@ The LLM config uses an OpenAI-compatible API (`api_key_env`, `base_url`, `model`
 
 ## GitHub Actions
 
-`.github/workflows/daily.yml` runs daily at 21:43 UTC (5:43 AM Shanghai time):
-1. `podcast-pipeline` → brief JSON
+`.github/workflows/daily.yml` runs daily at 21:43 UTC (5:43 AM Shanghai time), or manually via `workflow_dispatch`. **No push trigger** — pushing to main does not re-trigger the workflow.
+
+Steps:
+1. `podcast-pipeline` → brief JSON (Stage 1-2)
 2. `podcast-report` → markdown daily report
-3. `podcast-daily` → full episode + site
-4. Commit data/reports/briefs, deploy `site/` to gh-pages
+3. `podcast-daily` → full episode + site (Stage 3-5)
+4. Commit data/reports/briefs back to main (with `[skip ci]` to prevent future loop if push trigger is ever added)
+5. Deploy `site/` to `gh-pages` branch via `peaceiris/actions-gh-pages`
+
+After `gh-pages` branch is updated, GitHub Pages automatically triggers `pages-build-deployment` (built-in workflow) to deploy to CDN.
+
+Two workflows exist on GitHub:
+- **Daily Podcast** — user-defined, runs the pipeline
+- **pages-build-deployment** — GitHub Pages built-in, deploys static files to CDN
 
 ## Testing
 
