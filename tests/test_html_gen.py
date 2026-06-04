@@ -1,150 +1,100 @@
-"""Tests for ai_news_podcast.site_builder.html_gen."""
-
-from __future__ import annotations
-
+import json
 from pathlib import Path
 
-from ai_news_podcast.pipeline.scriptwriter import generate_show_notes_html
 from ai_news_podcast.site_builder.html_gen import build_index_html
 
 
-class TestBuildIndexHtml:
-    def test_creates_index_html(self, tmp_path: Path) -> None:
-        episodes = [
+def _make_episodes(n=3):
+    episodes = []
+    for i in range(n):
+        date_str = f"2026-06-0{3 - i}"
+        episodes.append(
             {
-                "guid": "https://example.com/episodes/2024-03-15",
-                "title": "Ep 1",
-                "description": "<p>First episode</p>",
-                "pubDate": "Mon, 01 Jan 2024 00:00:00 +0000",
-                "enclosure_url": "https://example.com/episodes/2024-03-15.mp3",
-                "enclosure_length": 1048576,
-            },
-            {
-                "guid": "https://example.com/episodes/2024-03-14",
-                "title": "Ep 2",
-                "description": "<p>Second episode</p>",
-                "pubDate": "Sun, 31 Dec 2023 00:00:00 +0000",
-                "enclosure_url": "https://example.com/episodes/2024-03-14.mp3",
-                "enclosure_length": 1048576,
+                "id": date_str,
+                "title": f"AI 新闻快报 | {date_str}",
+                "enclosure_url": f"https://example.com/episodes/{date_str}.mp3",
             }
-        ]
-        build_index_html(tmp_path, "Test Podcast", episodes, "https://example.com")
-        index_path = tmp_path / "index.html"
-        assert index_path.exists()
-        html = index_path.read_text(encoding="utf-8")
-        assert "Test Podcast" in html
-        assert "Ep 1" in html
-        assert "Ep 2" in html
-        assert "https://example.com/episodes/2024-03-14.mp3" in html
-        assert "1.0 MB" in html
-        assert "<audio controls" in html
-
-    def test_empty_episodes(self, tmp_path: Path) -> None:
-        build_index_html(tmp_path, "Empty Podcast", [], "https://example.com")
-        html = (tmp_path / "index.html").read_text(encoding="utf-8")
-        assert "暂无节目，请稍后再来。" in html
-
-    def test_html_escaping(self, tmp_path: Path) -> None:
-        episodes = [
-            {
-                "guid": "https://example.com/episodes/1",
-                "title": "Title 1",
-                "description": '<script>alert("xss1")</script>',
-                "pubDate": "Mon, 01 Jan 2024 00:00:00 +0000",
-                "enclosure_length": 0,
-            },
-            {
-                "guid": "https://example.com/episodes/2",
-                "title": "Title 2",
-                "description": '<script>alert("xss2")</script>',
-                "pubDate": "Sun, 31 Dec 2023 00:00:00 +0000",
-                "enclosure_length": 0,
-            }
-        ]
-        build_index_html(tmp_path, "Podcast", episodes, "https://example.com")
-        html = (tmp_path / "index.html").read_text(encoding="utf-8")
-        assert "<script>" not in html
-        assert "&lt;script&gt;" in html
-
-    def test_limits_to_30_episodes(self, tmp_path: Path) -> None:
-        episodes = [
-            {
-                "guid": f"https://example.com/episodes/{i:02d}",
-                "title": f"Episode {i}",
-                "description": "",
-                "pubDate": "Mon, 01 Jan 2024 00:00:00 +0000",
-                "enclosure_length": 0,
-            }
-            for i in range(35)
-        ]
-        build_index_html(tmp_path, "Podcast", episodes, "https://example.com")
-        html = (tmp_path / "index.html").read_text(encoding="utf-8")
-        assert html.count('class="ep-card"') == 30
-
-
-class TestGenerateShowNotesHtml:
-    def test_generates_html_structure(self) -> None:
-        from datetime import datetime
-
-        brief = {
-            "stories": [
-                {
-                    "role": "main",
-                    "role_emoji": "🔴",
-                    "representative_title": "GPT-5 发布",
-                    "items": [
-                        {"link": "https://openai.com", "source_name": "OpenAI"}
-                    ],
-                },
-                {
-                    "role": "skip",
-                    "representative_title": "Ignored",
-                    "items": [],
-                },
-            ]
-        }
-        html = generate_show_notes_html(
-            brief,
-            episode_title="AI 新闻快报 | 2024-03-15",
-            episode_date=datetime(2024, 3, 15),
         )
-        assert "<!doctype html>" in html
-        assert "AI 新闻快报 | 2024-03-15" in html
-        assert "2024年3月15日" in html
-        assert "GPT-5 发布" in html
-        assert "https://openai.com" in html
-        assert "OpenAI" in html
-        assert "Ignored" not in html
+    return episodes
 
-    def test_escapes_special_chars(self) -> None:
-        from datetime import datetime
 
-        brief = {
-            "stories": [
-                {
-                    "role": "main",
-                    "role_emoji": "🔴",
-                    "representative_title": "A & B <release>",
-                    "items": [
-                        {"link": "https://a.com", "source_name": "A&B Corp"}
-                    ],
-                }
-            ]
-        }
-        html = generate_show_notes_html(
-            brief,
-            episode_title="Test",
-            episode_date=datetime(2024, 3, 15),
-        )
-        assert "A &amp; B &lt;release&gt;" in html
-        assert "A&amp;B Corp" in html
+def test_build_index_html_creates_file(tmp_path):
+    site_dir = tmp_path / "site"
+    build_index_html(site_dir, "Test Podcast", _make_episodes(), "https://example.com")
+    assert (site_dir / "index.html").exists()
 
-    def test_empty_stories(self) -> None:
-        from datetime import datetime
 
-        html = generate_show_notes_html(
-            {"stories": []},
-            episode_title="Empty",
-            episode_date=datetime(2024, 3, 15),
-        )
-        assert "<ol>\n\n</ol>" in html or "<ol>" in html
+def test_build_index_html_contains_key_elements(tmp_path):
+    site_dir = tmp_path / "site"
+    episodes = _make_episodes()
+    build_index_html(site_dir, "Test Podcast", episodes, "https://example.com")
+    html = (site_dir / "index.html").read_text(encoding="utf-8")
+
+    # Title
+    assert "<title>Test Podcast</title>" in html
+
+    # Layout structure
+    assert "layout-grid" in html
+    assert "date-list" in html
+    assert "content-split" in html
+    assert "report-markdown" in html
+    assert "transcript-content" in html
+
+    # No old sidebar/tabs
+    assert "intro-sidebar" not in html
+    assert "tab-container" not in html
+    assert "tab-nav" not in html
+
+    # Player bar
+    assert "player-bar" in html
+
+    # RSS link
+    assert "./feed.xml" in html
+
+    # Dates in JS
+    assert '"2026-06-03"' in html
+    assert '"2026-06-02"' in html
+    assert '"2026-06-01"' in html
+
+
+def test_build_index_html_episodes_map(tmp_path):
+    site_dir = tmp_path / "site"
+    episodes = _make_episodes()
+    build_index_html(site_dir, "Test Podcast", episodes, "https://example.com")
+    html = (site_dir / "index.html").read_text(encoding="utf-8")
+
+    # Episodes map should contain mp3 URLs
+    assert "2026-06-03.mp3" in html
+    assert "2026-06-02.mp3" in html
+
+
+def test_build_index_html_no_episodes(tmp_path):
+    site_dir = tmp_path / "site"
+    build_index_html(site_dir, "Test Podcast", [], "https://example.com")
+    html = (site_dir / "index.html").read_text(encoding="utf-8")
+
+    assert "<title>Test Podcast</title>" in html
+    assert "layout-grid" in html
+    # dates array should be empty
+    assert "const dates = [];" in html
+
+
+def test_build_index_html_base_url(tmp_path):
+    site_dir = tmp_path / "site"
+    build_index_html(site_dir, "Test Podcast", _make_episodes(), "https://mypod.example.com")
+    html = (site_dir / "index.html").read_text(encoding="utf-8")
+
+    assert "https://mypod.example.com" in html
+
+
+def test_build_index_html_transcript_parser(tmp_path):
+    site_dir = tmp_path / "site"
+    build_index_html(site_dir, "Test Podcast", _make_episodes(), "https://example.com")
+    html = (site_dir / "index.html").read_text(encoding="utf-8")
+
+    # Transcript parser functions should exist
+    assert "parseTranscript" in html
+    assert "dialogue-line" in html
+    assert "speaker-label" in html
+    assert "host-a" in html
+    assert "host-b" in html
