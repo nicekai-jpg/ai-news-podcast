@@ -13,6 +13,8 @@ import time
 from datetime import datetime
 from typing import Any
 
+from ai_news_podcast.text_utils import RE_MOOD_TAG, clean_tts_text
+
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
@@ -60,41 +62,6 @@ def _replace_banned_words(text: str, banned: list[str] | None = None) -> str:
 # ---------------------------------------------------------------------------
 
 
-def _sanitize_for_tts(text: str) -> str:
-    """清洗 LLM 输出中 TTS 不友好的残留内容。"""
-    if not text:
-        return ""
-    # 1. 处理转义字符（如模型误输出的 \\n）
-    text = text.replace("\\n", "\n")
-
-    # 2. 清除特定标记和表情
-    text = re.sub(r"\[(?:FACT|INFERENCE|OPINION)\]\s*", "", text)
-    text = re.sub(r"[（(][^）)]{0,10}(?:doge|狗头|笑|手动|滑稽|哭|捂脸)[^）)]{0,5}[）)]", "", text)
-    text = re.sub(r"[「」『』【】]", "", text)
-
-    stripped_text = text.strip()
-    is_ssml = (
-        stripped_text.startswith("<speak") or "<speak" in stripped_text or "<voice" in stripped_text
-    )
-    if not is_ssml:
-        text = re.sub(r"<[^>]+>", "", text)
-
-    text = re.sub(r"[（(]\s*[）)]", "", text)
-
-    # 3. 压缩重复标点
-    text = re.sub(r"[，,]{2,}", "，", text)
-    text = re.sub(r"[。.]{2,}", "。", text)
-
-    # 4. 规范化空格和换行：不要把换行符全删了
-    # 先把行首行尾空格去掉
-    lines = [line.strip() for line in text.split("\n")]
-    # 过滤掉过多连续空格，但保留非空行
-    text = "\n".join(lines)
-    text = re.sub(r"[ \t]+", " ", text)
-    # 压缩过多连续换行（最多保留两个，即一个空行间隔）
-    text = re.sub(r"\n{3,}", "\n\n", text).strip()
-    return text
-
 
 def _cn_date(dt: datetime) -> str:
     return f"{dt.year}年{dt.month}月{dt.day}日"
@@ -111,8 +78,8 @@ def _get_story_entities(story: dict[str, Any]) -> set[str]:
     title = str(story.get("representative_title", "")).lower()
     entities = set()
     COMPANIES = [
-        "谷歌", "google", "openai", "微软", "microsoft", "英伟达", "nvidia", 
-        "苹果", "apple", "meta", "anthropic", "claude", "字节", "腾讯", 
+        "谷歌", "google", "openai", "微软", "microsoft", "英伟达", "nvidia",
+        "苹果", "apple", "meta", "anthropic", "claude", "字节", "腾讯",
         "百度", "阿里", "华为", "奥迪", "audi", "特斯拉", "tesla"
     ]
     for c in COMPANIES:
@@ -146,7 +113,7 @@ def _build_material_text(brief: dict[str, Any], max_stories: int = 8) -> str:
     active: list[dict[str, Any]] = [
         s for s in stories if isinstance(s, dict) and s.get("role") != "skip"
     ]
-    
+
     # 动态多样性选择循环
     selected: list[dict[str, Any]] = []
     entity_counts: dict[str, int] = {}
@@ -487,7 +454,7 @@ def generate_script(
     if not script:
         script = _build_fallback(brief, episode_date, podcast_title)
 
-    script = _sanitize_for_tts(script)
+    script = clean_tts_text(script)
     script = _replace_banned_words(script, banned_words)
     script = _normalize_host_tags(script)
 
@@ -546,7 +513,7 @@ def _normalize_host_tags(text: str) -> str:
         line = re.sub(r"^\[?Host\s*B\]?:?\s*", "[Host B] ", line, flags=re.IGNORECASE)
 
         # 移除段首原本系统的 mood 标记残留
-        line = re.sub(r"\[mood:\w+\]\s*", "", line)
+        line = RE_MOOD_TAG.sub("", line)
 
         # 如果依然没有包含标准的前缀，强行挂给 Host A 作为过渡，避免 TTS 崩溃
         if not line.startswith("[Host A]") and not line.startswith("[Host B]"):

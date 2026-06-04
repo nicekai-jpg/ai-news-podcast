@@ -10,6 +10,8 @@ from io import BytesIO
 from pathlib import Path
 from typing import Any, List, Optional, Tuple, Union
 
+from ai_news_podcast.text_utils import clean_tts_text
+
 
 @dataclass(frozen=True)
 class DialogueChunk:
@@ -18,30 +20,6 @@ class DialogueChunk:
     voice: Optional[str] = None
 
 
-def _clean_tts_text(text: str) -> str:
-    """Remove annotation markers and non-speakable elements before TTS."""
-    # Remove tags produced by models
-    text = re.sub(r"\[(?:FACT|INFERENCE|OPINION)\]\s*", "", text)
-    # Remove mood tags left behind (if any)
-    text = re.sub(r"\[mood:[^\]]+\]", "", text)
-    # Remove any leftover square-bracket annotations like [], [xxx], except Host tags
-    text = re.sub(r"\[(?!(Host\s*A|Host\s*B))[^\]]*\]", "", text, flags=re.IGNORECASE)
-    # Remove parenthetical annotations
-    text = re.sub(
-        r"[（(]\s*(?:doge|狗头|笑|手动狗头|bushi|划掉)\s*[）)]",
-        "",
-        text,
-        flags=re.IGNORECASE,
-    )
-    # Replace fancy quotes
-    text = text.replace("「", "").replace("」", "").replace("『", "").replace("』", "")
-    text = re.sub(r"[【】]", "", text)
-    # 规范化空格和换行
-    lines = [line.strip() for line in text.split("\n")]
-    text = "\n".join(lines)
-    text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r"\n{3,}", "\n\n", text).strip()
-    return text
 
 
 def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
@@ -59,7 +37,7 @@ def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
                     voice_name = voice_tag.get("name", "").strip()
                     chunk_text = voice_tag.get_text().strip()
                     if chunk_text:
-                        cleaned = _clean_tts_text(chunk_text)
+                        cleaned = clean_tts_text(chunk_text)
                         if cleaned:
                             host = "B" if idx % 2 == 1 else "A"
                             chunks.append(
@@ -84,7 +62,7 @@ def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
         start_idx = int(m.start())
         raw = str(text[cursor:start_idx]).strip()
         if raw:
-            cleaned = _clean_tts_text(raw)
+            cleaned = clean_tts_text(raw)
             if cleaned:
                 chunks.append(DialogueChunk(host=current_host, text=cleaned))
         current_host = str(m.group(1)).strip().upper()
@@ -92,7 +70,7 @@ def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
 
     tail = str(text[cursor:]).strip()
     if tail:
-        cleaned = _clean_tts_text(tail)
+        cleaned = clean_tts_text(tail)
         if cleaned:
             chunks.append(DialogueChunk(host=current_host, text=cleaned))
     return chunks
@@ -239,11 +217,11 @@ async def synthesize_edge_tts(
                 silence_len = _chunk_silence_ms(300)
                 combined += AudioSegment.silent(duration=silence_len)
                 current_time_ms += silence_len
-                
+
             start_sec = current_time_ms / 1000.0
             duration_sec = len(seg) / 1000.0
             timestamps.append((start_sec, duration_sec))
-            
+
             combined += seg
             current_time_ms += len(seg)
 
@@ -266,7 +244,7 @@ async def synthesize_edge_tts(
                 xml_lines.append(chunk.text)
                 xml_lines.append('</voice>')
             xml_lines.append('</speak>')
-            
+
             transcript_path.parent.mkdir(parents=True, exist_ok=True)
             transcript_path.write_text("\n".join(xml_lines), encoding="utf-8")
 
