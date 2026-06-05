@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from unittest.mock import MagicMock, patch
-
 from ai_news_podcast.cli.daily_report import build_report_prompt
 
 
