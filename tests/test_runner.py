@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import pytest
-from ai_news_podcast.pipeline.runner import get_recent_broadcasted_urls, get_recent_broadcasted_texts
+from ai_news_podcast.pipeline.dedup import get_recent_broadcasted_urls, get_recent_broadcasted_texts
 from ai_news_podcast.utils import write_json
 
 

@@ -140,6 +140,8 @@ processing:
     title_sim_threshold: 85
     dedup_window_hours: 48
     semantic_sim_threshold: 0.20
+    recent_episodes_limit: 14
+    semantic_model: "paraphrase-multilingual-MiniLM-L12-v2"
   clustering:
     ngram_range: [2, 4]
     eps: 0.35
