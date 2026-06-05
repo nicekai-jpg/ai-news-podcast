@@ -5,16 +5,18 @@ from __future__ import annotations
 from datetime import datetime
 
 from ai_news_podcast.pipeline.scriptwriter import (
-    _build_editor_prompt,
     _build_material_text,
-    _build_writer_prompt,
+)
+from ai_news_podcast.prompts import (
+    build_editor_prompt,
+    build_writer_prompt,
 )
 
 
 class TestBuildEditorPrompt:
     def test_contains_date_and_material(self) -> None:
         material = "【素材1】\n标题：Test\n"
-        prompt = _build_editor_prompt(material, datetime(2024, 3, 15))
+        prompt = build_editor_prompt(material, datetime(2024, 3, 15))
         assert "2024年3月15日" in prompt
         assert "Test" in prompt
         assert '"thesis"' in prompt
@@ -25,7 +27,7 @@ class TestBuildEditorPrompt:
 class TestBuildWriterPrompt:
     def test_contains_banned_words(self) -> None:
         style_cfg = {"banned_words": ["炸裂", "王炸"]}
-        prompt = _build_writer_prompt(
+        prompt = build_writer_prompt(
             '{"thesis": "x"}',
             datetime(2024, 3, 15),
             "Test Podcast",
@@ -38,7 +40,7 @@ class TestBuildWriterPrompt:
         assert "[Host B]" in prompt
 
     def test_uses_default_banned_words(self) -> None:
-        prompt = _build_writer_prompt(
+        prompt = build_writer_prompt(
             '{"thesis": "x"}',
             datetime(2024, 3, 15),
             "Podcast",
