@@ -20,8 +20,6 @@ class DialogueChunk:
     voice: Optional[str] = None
 
 
-
-
 def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
     """解析对话文本，支持标准的 SSML (XML/HTML) 格式和自定义 [Host A] / [Host B] 格式。"""
     stripped_text = text.strip()
@@ -288,14 +286,18 @@ async def synthesize_edge_tts(
         if transcript_path:
             transcript_path = Path(transcript_path)
             xml_lines = []
-            xml_lines.append('<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">')
+            xml_lines.append(
+                '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">'
+            )
             for idx, chunk in enumerate(chunks):
                 start_sec, duration_sec = timestamps[idx]
                 v = chunk.voice or voice_map.get(chunk.host, voices[0])
-                xml_lines.append(f'<voice name="{v}" start="{start_sec:.3f}" duration="{duration_sec:.3f}">')
+                xml_lines.append(
+                    f'<voice name="{v}" start="{start_sec:.3f}" duration="{duration_sec:.3f}">'
+                )
                 xml_lines.append(chunk.text)
-                xml_lines.append('</voice>')
-            xml_lines.append('</speak>')
+                xml_lines.append("</voice>")
+            xml_lines.append("</speak>")
 
             transcript_path.parent.mkdir(parents=True, exist_ok=True)
             transcript_path.write_text("\n".join(xml_lines), encoding="utf-8")

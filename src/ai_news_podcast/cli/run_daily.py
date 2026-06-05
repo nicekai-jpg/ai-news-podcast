@@ -179,7 +179,6 @@ async def main() -> int:
         log.warning("No stories in brief — aborting episode generation")
         return 1
 
-
     # ── Stage 3: Script generation ──
     log.info("Stage 3: generating script …")
     llm_cfg = cfg.get("llm", {})

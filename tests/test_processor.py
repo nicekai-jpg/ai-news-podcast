@@ -134,7 +134,9 @@ class TestExtractThesis:
                 cluster_id=0,
                 representative_title="GPT-5发布",
                 items=[],
-                context=ContextBlock(factual_summary=[], historical_background="", sources_ranked=[]),
+                context=ContextBlock(
+                    factual_summary=[], historical_background="", sources_ranked=[]
+                ),
                 scores={},
                 total_score=14,
                 role="main",

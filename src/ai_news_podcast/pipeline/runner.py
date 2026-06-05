@@ -106,18 +106,22 @@ async def run_pipeline(
     semantic_model = str(dedup_cfg.get("semantic_model", "paraphrase-multilingual-MiniLM-L12-v2"))
 
     episodes_index = data_dir / "episodes.json"
-    recent_urls = get_recent_broadcasted_urls(episodes_index, limit=recent_episodes_limit, current_episode_id=date_str)
+    recent_urls = get_recent_broadcasted_urls(
+        episodes_index, limit=recent_episodes_limit, current_episode_id=date_str
+    )
     if recent_urls:
         filtered_items = []
         for item in raw_items:
             if item.normalized_link in recent_urls:
-                dedup_details.append({
-                    "title": item.title,
-                    "link": item.link,
-                    "source": item.source_name,
-                    "reason": "cross_episode_url",
-                    "detail": "URL matches a recently broadcasted article."
-                })
+                dedup_details.append(
+                    {
+                        "title": item.title,
+                        "link": item.link,
+                        "source": item.source_name,
+                        "reason": "cross_episode_url",
+                        "detail": "URL matches a recently broadcasted article.",
+                    }
+                )
             else:
                 filtered_items.append(item)
 
@@ -131,7 +135,9 @@ async def run_pipeline(
             )
 
     # ── 跨期语义相似度去重 ──────────────────────────────────────────────────────
-    recent_records = get_recent_broadcasted_texts(episodes_index, limit=recent_episodes_limit, current_episode_id=date_str)
+    recent_records = get_recent_broadcasted_texts(
+        episodes_index, limit=recent_episodes_limit, current_episode_id=date_str
+    )
     if recent_records and raw_items:
         raw_items, semantic_details = semantic_dedup(
             raw_items,

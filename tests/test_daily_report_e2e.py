@@ -62,10 +62,10 @@ processing:
 @pytest.mark.asyncio
 async def test_main_success(report_config: Path, monkeypatch) -> None:
     root = report_config
-    monkeypatch.setattr(report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py"))
     monkeypatch.setattr(
-        sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")]
+        report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py")
     )
+    monkeypatch.setattr(sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")])
 
     fake_brief = {
         "thesis": "Test",
@@ -76,8 +76,18 @@ async def test_main_success(report_config: Path, monkeypatch) -> None:
                 "role": "main",
                 "role_emoji": "🔴",
                 "total_score": 13,
-                "scores": {"impact_scope": 3, "novelty": 2, "explainability": 3, "listener_relevance": 3, "source_richness": 2},
-                "context": {"factual_summary": ["Summary."], "historical_background": "", "sources_ranked": []},
+                "scores": {
+                    "impact_scope": 3,
+                    "novelty": 2,
+                    "explainability": 3,
+                    "listener_relevance": 3,
+                    "source_richness": 2,
+                },
+                "context": {
+                    "factual_summary": ["Summary."],
+                    "historical_background": "",
+                    "sources_ranked": [],
+                },
                 "items": [],
             }
         ],
@@ -107,10 +117,10 @@ async def test_main_success(report_config: Path, monkeypatch) -> None:
 @pytest.mark.asyncio
 async def test_main_fallback_when_llm_fails(report_config: Path, monkeypatch) -> None:
     root = report_config
-    monkeypatch.setattr(report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py"))
     monkeypatch.setattr(
-        sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")]
+        report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py")
     )
+    monkeypatch.setattr(sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")])
 
     fake_brief = {
         "thesis": "Test",
@@ -122,7 +132,11 @@ async def test_main_fallback_when_llm_fails(report_config: Path, monkeypatch) ->
                 "role_emoji": "🔴",
                 "total_score": 13,
                 "scores": {},
-                "context": {"factual_summary": ["Summary."], "historical_background": "", "sources_ranked": []},
+                "context": {
+                    "factual_summary": ["Summary."],
+                    "historical_background": "",
+                    "sources_ranked": [],
+                },
                 "items": [],
             }
         ],
@@ -147,10 +161,10 @@ async def test_main_fallback_when_llm_fails(report_config: Path, monkeypatch) ->
 @pytest.mark.asyncio
 async def test_main_no_items_returns_1(report_config: Path, monkeypatch) -> None:
     root = report_config
-    monkeypatch.setattr(report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py"))
     monkeypatch.setattr(
-        sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")]
+        report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py")
     )
+    monkeypatch.setattr(sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")])
 
     async def _fake_run_pipeline(*args, **kwargs):
         return {"stories": [], "thesis": "", "metadata": {}}

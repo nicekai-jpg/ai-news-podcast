@@ -39,7 +39,10 @@ class TestExtractFulltext:
         mock_bs4 = MagicMock()
         mock_bs4.BeautifulSoup = MagicMock(return_value=soup)
 
-        with patch.dict(sys.modules, {"trafilatura": mock_trafilatura, "readability": mock_readability, "bs4": mock_bs4}):
+        with patch.dict(
+            sys.modules,
+            {"trafilatura": mock_trafilatura, "readability": mock_readability, "bs4": mock_bs4},
+        ):
             text = _extract_fulltext("<html>body</html>", "https://example.com")
         assert len(text) == 1500
 
@@ -49,7 +52,9 @@ class TestExtractFulltext:
         mock_readability = MagicMock()
         mock_readability.Document = MagicMock(side_effect=Exception("boom"))
 
-        with patch.dict(sys.modules, {"trafilatura": mock_trafilatura, "readability": mock_readability}):
+        with patch.dict(
+            sys.modules, {"trafilatura": mock_trafilatura, "readability": mock_readability}
+        ):
             text = _extract_fulltext("<html>body</html>", "https://example.com")
         assert text == ""
 
@@ -70,11 +75,13 @@ class TestHttpGetRetry:
         from ai_news_podcast.pipeline.fetcher import _DomainThrottle
 
         client = AsyncMock()
-        client.get = AsyncMock(side_effect=[
-            httpx.HTTPError("fail 1"),
-            httpx.HTTPError("fail 2"),
-            MagicMock(status_code=200),
-        ])
+        client.get = AsyncMock(
+            side_effect=[
+                httpx.HTTPError("fail 1"),
+                httpx.HTTPError("fail 2"),
+                MagicMock(status_code=200),
+            ]
+        )
         throttle = _DomainThrottle(interval=0.01)
 
         resp = await _http_get(client, "https://example.com", throttle)
@@ -99,7 +106,9 @@ class TestFetchAllEdgeCases:
     async def test_empty_entries_feed(self, mock_httpx_client, mock_feedparser) -> None:
         """Feed with no entries should return empty list."""
         rss_xml = b"<rss><channel></channel></rss>"
-        mock_httpx_client.get = AsyncMock(return_value=MagicMock(content=rss_xml, text="", status_code=200))
+        mock_httpx_client.get = AsyncMock(
+            return_value=MagicMock(content=rss_xml, text="", status_code=200)
+        )
         mock_feedparser.parse.return_value = types.SimpleNamespace(entries=[])
 
         with (
@@ -113,15 +122,27 @@ class TestFetchAllEdgeCases:
         assert items == []
 
     @pytest.mark.asyncio
-    async def test_feed_missing_title_or_link_skipped(self, mock_httpx_client, mock_feedparser) -> None:
+    async def test_feed_missing_title_or_link_skipped(
+        self, mock_httpx_client, mock_feedparser
+    ) -> None:
         """Entries without title or link should be skipped."""
         rss_xml = b"<rss><channel></channel></rss>"
-        mock_httpx_client.get = AsyncMock(return_value=MagicMock(content=rss_xml, text="", status_code=200))
-        mock_feedparser.parse.return_value = types.SimpleNamespace(entries=[
-            types.SimpleNamespace(title="", link="https://a.com", summary="", published_parsed=None),
-            types.SimpleNamespace(title="Has Title", link="", summary="", published_parsed=None),
-            types.SimpleNamespace(title="Good", link="https://a.com/good", summary="s", published_parsed=None),
-        ])
+        mock_httpx_client.get = AsyncMock(
+            return_value=MagicMock(content=rss_xml, text="", status_code=200)
+        )
+        mock_feedparser.parse.return_value = types.SimpleNamespace(
+            entries=[
+                types.SimpleNamespace(
+                    title="", link="https://a.com", summary="", published_parsed=None
+                ),
+                types.SimpleNamespace(
+                    title="Has Title", link="", summary="", published_parsed=None
+                ),
+                types.SimpleNamespace(
+                    title="Good", link="https://a.com/good", summary="s", published_parsed=None
+                ),
+            ]
+        )
 
         with (
             patch("httpx.AsyncClient", return_value=mock_httpx_client),

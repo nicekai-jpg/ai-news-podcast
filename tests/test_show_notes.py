@@ -19,9 +19,7 @@ class TestGenerateShowNotes:
                         "factual_summary": ["It understands everything."],
                     },
                     "total_score": 14,
-                    "items": [
-                        {"source_name": "OpenAI", "link": "https://openai.com"}
-                    ],
+                    "items": [{"source_name": "OpenAI", "link": "https://openai.com"}],
                 },
                 {
                     "role": "supporting",
@@ -37,9 +35,7 @@ class TestGenerateShowNotes:
                     "representative_title": "Mini Update",
                     "context": {"factual_summary": []},
                     "total_score": 6,
-                    "items": [
-                        {"source_name": "TechCrunch", "link": "https://tc.com"}
-                    ],
+                    "items": [{"source_name": "TechCrunch", "link": "https://tc.com"}],
                 },
                 {
                     "role": "skip",

@@ -1,6 +1,5 @@
 """html_gen 站点生成测试。"""
 
-
 from ai_news_podcast.site_builder.html_gen import build_index_html, format_friendly_date
 
 

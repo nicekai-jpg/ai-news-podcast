@@ -79,5 +79,9 @@ class TestParseDialogueChunks:
         """
         chunks = parse_dialogue_chunks(text)
         assert len(chunks) == 2
-        assert chunks[0] == DialogueChunk(host="A", text="听众朋友大家好", voice="zh-CN-YunxiNeural")
-        assert chunks[1] == DialogueChunk(host="B", text="大家好，我是 B", voice="zh-CN-XiaoxiaoNeural")
+        assert chunks[0] == DialogueChunk(
+            host="A", text="听众朋友大家好", voice="zh-CN-YunxiNeural"
+        )
+        assert chunks[1] == DialogueChunk(
+            host="B", text="大家好，我是 B", voice="zh-CN-XiaoxiaoNeural"
+        )
