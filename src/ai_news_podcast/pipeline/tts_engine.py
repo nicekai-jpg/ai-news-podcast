@@ -49,7 +49,7 @@ def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
                             )
                 if chunks:
                     return chunks
-        except Exception:
+        except (ValueError, OSError):
             pass
 
     marker_re = re.compile(r"\[Host\s*([AB])\]", re.IGNORECASE)
@@ -76,14 +76,28 @@ def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
     return chunks
 
 
-def _chunk_silence_ms(chunk_silence_ms: int) -> int:
-    base = max(400, min(800, int(chunk_silence_ms)))
-    low = max(400, base - 100)
-    high = min(800, base + 100)
+def _chunk_silence_ms(
+    chunk_silence_ms: int,
+    *,
+    silence_min: int = 400,
+    silence_max: int = 800,
+    silence_jitter: int = 100,
+) -> int:
+    base = max(silence_min, min(silence_max, int(chunk_silence_ms)))
+    low = max(silence_min, base - silence_jitter)
+    high = min(silence_max, base + silence_jitter)
     return random.randint(low, high)
 
 
-def _mix_bgm(vocal_segment: Any, bgm_path: Optional[str]) -> Any:
+def _mix_bgm(
+    vocal_segment: Any,
+    bgm_path: Optional[str],
+    *,
+    bgm_volume_db: int = -12,
+    bgm_fade_in_ms: int = 2000,
+    bgm_fade_out_ms: int = 3000,
+    vocal_pad_ms: int = 1000,
+) -> Any:
     """Mix vocal track with background music using basic ducking."""
     pydub = importlib.import_module("pydub")
     AudioSegment = getattr(pydub, "AudioSegment")
@@ -95,27 +109,34 @@ def _mix_bgm(vocal_segment: Any, bgm_path: Optional[str]) -> Any:
 
     # 调整 BGM：使其和人声一样长，甚至更长一点用于淡出
     vocal_len = len(vocal_segment)
-    if len(bgm) < vocal_len + 3000:
+    fade_out_tail = bgm_fade_out_ms
+    if len(bgm) < vocal_len + fade_out_tail:
         # Loop bgm
-        loops = (vocal_len + 3000) // len(bgm) + 1
+        loops = (vocal_len + fade_out_tail) // len(bgm) + 1
         bgm = bgm * loops
 
-    bgm = bgm[: vocal_len + 3000]  # 给结尾留3秒尾奏
+    bgm = bgm[: vocal_len + fade_out_tail]  # 给结尾留尾奏
 
     # 基础音量调节
-    bgm = bgm - 12  # 基本降低 BGM 音量，使其成为垫乐
+    bgm = bgm + bgm_volume_db  # 基本降低 BGM 音量，使其成为垫乐
 
-    # 将 BGM 在两秒内淡入
-    bgm = bgm.fade_in(2000).fade_out(3000)
+    # 将 BGM 淡入淡出
+    bgm = bgm.fade_in(bgm_fade_in_ms).fade_out(bgm_fade_out_ms)
 
-    # Overlay vocals on to BGM (1秒后开始播报，给BGM一个前奏)
-    vocal_padded = AudioSegment.silent(duration=1000) + vocal_segment
+    # Overlay vocals on to BGM (vocal_pad_ms 后开始播报，给BGM一个前奏)
+    vocal_padded = AudioSegment.silent(duration=vocal_pad_ms) + vocal_segment
     # 对整体进行混音
     combined = bgm.overlay(vocal_padded)
     return combined
 
 
-async def _run_loudnorm(input_path: Path, output_path: Path) -> None:
+async def _run_loudnorm(
+    input_path: Path,
+    output_path: Path,
+    *,
+    loudnorm: str = "I=-16:LRA=11:TP=-1.5",
+    sample_rate: int = 24000,
+) -> None:
     ffmpeg_bin = shutil.which("ffmpeg")
     ffmpeg = ffmpeg_bin if ffmpeg_bin else "ffmpeg"
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -125,9 +146,9 @@ async def _run_loudnorm(input_path: Path, output_path: Path) -> None:
         "-i",
         str(input_path),
         "-af",
-        "loudnorm=I=-16:LRA=11:TP=-1.5",
+        f"loudnorm={loudnorm}",
         "-ar",
-        "24000",
+        str(sample_rate),
         str(output_path),
     ]
     proc = await asyncio.create_subprocess_exec(
@@ -150,10 +171,24 @@ async def synthesize_edge_tts(
     volume: str = "+0%",
     rate: str = "+15%",  # News broadcast usually faster
     transcript_path: Optional[Union[str, Path]] = None,
+    cfg: Optional[dict] = None,
 ) -> None:
     edge_tts = importlib.import_module("edge_tts")
     pydub = importlib.import_module("pydub")
     AudioSegment = getattr(pydub, "AudioSegment")
+
+    # Extract audio config with defaults matching original hardcoded values
+    audio_cfg = (cfg or {}).get("tts", {}).get("audio", {})
+    _bgm_volume_db = int(audio_cfg.get("bgm_volume_db", -12))
+    _bgm_fade_in_ms = int(audio_cfg.get("bgm_fade_in_ms", 2000))
+    _bgm_fade_out_ms = int(audio_cfg.get("bgm_fade_out_ms", 3000))
+    _vocal_pad_ms = int(audio_cfg.get("vocal_pad_ms", 1000))
+    _loudnorm = str(audio_cfg.get("loudnorm", "I=-16:LRA=11:TP=-1.5"))
+    _sample_rate = int(audio_cfg.get("sample_rate", 24000))
+    _chunk_silence_base = int(audio_cfg.get("chunk_silence_base", 300))
+    _silence_min = int(audio_cfg.get("chunk_silence_min", 400))
+    _silence_max = int(audio_cfg.get("chunk_silence_max", 800))
+    _silence_jitter = int(audio_cfg.get("chunk_silence_jitter", 100))
 
     final_path = Path(output_path)
     final_path.parent.mkdir(parents=True, exist_ok=True)
@@ -209,12 +244,17 @@ async def synthesize_edge_tts(
 
         combined = AudioSegment.empty()
         timestamps = []
-        current_time_ms = 1000  # bgm pad duration is 1s before vocal starts
+        current_time_ms = _vocal_pad_ms  # bgm pad duration before vocal starts
 
         for idx, chunk_file in enumerate(chunk_files):
             seg = AudioSegment.from_file(str(chunk_file))
             if idx > 0:
-                silence_len = _chunk_silence_ms(300)
+                silence_len = _chunk_silence_ms(
+                    _chunk_silence_base,
+                    silence_min=_silence_min,
+                    silence_max=_silence_max,
+                    silence_jitter=_silence_jitter,
+                )
                 combined += AudioSegment.silent(duration=silence_len)
                 current_time_ms += silence_len
 
@@ -226,11 +266,23 @@ async def synthesize_edge_tts(
             current_time_ms += len(seg)
 
         # Mixing with BGM
-        combined = _mix_bgm(combined, bgm_path)
+        combined = _mix_bgm(
+            combined,
+            bgm_path,
+            bgm_volume_db=_bgm_volume_db,
+            bgm_fade_in_ms=_bgm_fade_in_ms,
+            bgm_fade_out_ms=_bgm_fade_out_ms,
+            vocal_pad_ms=_vocal_pad_ms,
+        )
 
         pre_norm = tmp_root / "combined_prenorm.mp3"
         combined.export(str(pre_norm), format="mp3")
-        await _run_loudnorm(pre_norm, final_path)
+        await _run_loudnorm(
+            pre_norm,
+            final_path,
+            loudnorm=_loudnorm,
+            sample_rate=_sample_rate,
+        )
 
         # Write transcript with exact timestamps if transcript_path is provided
         if transcript_path:
@@ -290,6 +342,7 @@ async def synthesize(
             volume=str(kwargs.get("volume") or "+0%"),
             rate=str(kwargs.get("rate") or "+10%"),
             transcript_path=kwargs.get("transcript_path"),
+            cfg=kwargs.get("cfg"),
         )
         return
 
