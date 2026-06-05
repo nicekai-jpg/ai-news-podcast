@@ -53,7 +53,7 @@ class TestExtractKeywords:
 
     def test_jieba_analyse_fallback(self) -> None:
         mock_jieba = MagicMock()
-        mock_jieba.analyse.extract_tags.side_effect = Exception("fail")
+        mock_jieba.analyse.extract_tags.side_effect = RuntimeError("fail")
         mock_jieba.cut.return_value = ["AI", "大", "模型"]
         sys.modules["jieba"] = mock_jieba
         sys.modules["jieba.analyse"] = mock_jieba.analyse

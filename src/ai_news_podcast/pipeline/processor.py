@@ -110,7 +110,7 @@ def _extract_keywords(text: str, topk: int = 10) -> set[str]:
 
         keywords = jieba.analyse.extract_tags(text, topK=topk)
         return set(keywords)
-    except Exception:
+    except (ImportError, RuntimeError):
         words = set(jieba.cut(text))
         return {w for w in words if len(w) >= 2}
 
@@ -383,13 +383,16 @@ def _assign_role(total: int, thresholds: dict[str, Any]) -> tuple[str, str]:
 # Thesis 提炼 (PLAN §2.6)
 # ---------------------------------------------------------------------------
 
-_THESIS_TEMPLATES = [
+_DEFAULT_THESIS_TEMPLATES = [
     "今天的AI领域，{main_topic}正在重塑行业格局",
     "从{main_topic}到{sub_topic}，AI技术持续加速演进",
     "{main_topic}——这可能是本周最值得关注的AI趋势",
     "当{main_topic}遇上实际落地，我们看到了什么",
     "围绕{main_topic}，多方力量正在汇聚",
 ]
+
+# Module-level template list; overwritten by process() when config is available.
+_THESIS_TEMPLATES: list[str] = list(_DEFAULT_THESIS_TEMPLATES)
 
 
 def _extract_thesis(scored_stories: list[ScoredStory]) -> str:
@@ -440,6 +443,10 @@ def process(
     cluster_cfg = cfg.get("clustering", {})
     scoring_cfg = cfg.get("scoring", {})
     authority_cfg = cfg.get("source_authority", _AUTHORITY_ORDER)
+
+    # Load thesis templates from config, keeping defaults as fallback
+    global _THESIS_TEMPLATES
+    _THESIS_TEMPLATES = cfg.get("thesis_templates", _DEFAULT_THESIS_TEMPLATES)
 
     # 1) 三层去重
     deduped = dedup_pipeline(

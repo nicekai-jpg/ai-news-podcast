@@ -27,6 +27,65 @@ fetch:
   timeout_seconds: 10
   user_agent: "ai-news-podcast/0.1 (+https://github.com/)"
   max_items_per_feed: 30
+  junk_summary_patterns:
+    - "illustration of"
+    - "collage of"
+    - "photo of"
+    - "image of"
+    - "an illustration"
+    - "a collage"
+    - "a photo"
+    - "featured image"
+  category_keywords:
+    model:
+      - "模型"
+      - "model"
+      - "参数"
+      - "parameter"
+      - "benchmark"
+      - "SOTA"
+      - "训练"
+      - "training"
+    product:
+      - "发布"
+      - "推出"
+      - "上线"
+      - "launch"
+      - "release"
+      - "产品"
+      - "API"
+    research:
+      - "论文"
+      - "paper"
+      - "arxiv"
+      - "研究"
+      - "research"
+      - "算法"
+      - "method"
+    open_source:
+      - "开源"
+      - "GitHub"
+      - "open source"
+      - "repo"
+      - "仓库"
+    policy:
+      - "政策"
+      - "监管"
+      - "安全"
+      - "法案"
+      - "regulation"
+      - "policy"
+      - "safety"
+      - "合规"
+    tool:
+      - "工具"
+      - "tool"
+      - "插件"
+      - "plugin"
+      - "框架"
+      - "framework"
+      - "SDK"
+      - "库"
 
 selection:
   prefer_recent_hours: 36
@@ -58,6 +117,12 @@ selection:
   exclude_keywords: []
 
 processing:
+  thesis_templates:
+    - "今天的AI领域，{main_topic}正在重塑行业格局"
+    - "从{main_topic}到{sub_topic}，AI技术持续加速演进"
+    - "{main_topic}——这可能是本周最值得关注的AI趋势"
+    - "当{main_topic}遇上实际落地，我们看到了什么"
+    - "围绕{main_topic}，多方力量正在汇聚"
   dedup:
     rapidfuzz_threshold: 92
     jieba_keyword_overlap: 0.35
