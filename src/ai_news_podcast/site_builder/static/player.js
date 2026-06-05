@@ -216,7 +216,7 @@
 
       // 2. 如果 DOM 解析未成功或无 voice 标签，尝试正则兼容旧 SSML 格式
       if (rawParagraphs.length === 0) {
-        var re = /<voice\\s+name\\s*=\\s*["']([^"']+)["']\\s*>([\\s\\S]*?)<\\/voice>/gi;
+        var re = /<voice\s+name\s*=\s*["']([^"']+)["']\s*>([\s\S]*?)<\/voice>/gi;
         var m;
         while ((m = re.exec(text)) !== null) {
           var c = m[2].trim();
@@ -229,7 +229,7 @@
 
       // 3. 尝试匹配中括号格式 [Host A] / [Host B]
       if (rawParagraphs.length === 0) {
-        var re2 = /\\[Host\\s*([AB])\\]\\s*([^\\[]*)/gi;
+        var re2 = /\[Host\s*([AB])\]\s*([^\[]*)/gi;
         var m2;
         while ((m2 = re2.exec(text)) !== null) {
           var c2 = m2[2].trim();
@@ -240,7 +240,7 @@
 
       // 4. 再次尝试：解析冒号前缀格式 (如 "博文：" 或 "晓晓:")
       if (rawParagraphs.length === 0) {
-        var textLines = text.split('\\n');
+        var textLines = text.split('\n');
         textLines.forEach(function(line) {
           var trimmed = line.trim();
           if (!trimmed) return;
@@ -259,7 +259,7 @@
       // 5. 段落交替兜底：如果没有结构化数据，去掉XML标签，以空白行切分并交替赋予角色
       if (rawParagraphs.length === 0) {
         var cleanText = text.replace(/<[^>]+>/g, '').trim();
-        var textLines2 = cleanText.split(/\\n+/);
+        var textLines2 = cleanText.split(/\n+/);
         textLines2.forEach(function(line, idx) {
           var trimmed = line.trim();
           if (!trimmed) return;
