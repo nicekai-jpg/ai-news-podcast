@@ -2,106 +2,109 @@
 <voice name="zh-CN-XiaoxiaoNeural" start="1.000" duration="8.328">
 听众朋友们大家好，欢迎收听AI 每日先锋，今天是2026年6月5日，我是晓晓。
 </voice>
-<voice name="zh-CN-YunxiNeural" start="9.733" duration="2.448">
+<voice name="zh-CN-YunxiNeural" start="9.777" duration="2.448">
 大家好，我是博文。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="12.662" duration="18.528">
-哎，博文，咱们录节目前我刚刷完今天的新闻，真的有一种特别强烈的感受——感觉咱们脚下的这个世界，正在被代码和物理法则重新定义。以前咱们聊AI，总觉得那是飘在云里的数据，但今天不一样了。
+<voice name="zh-CN-XiaoxiaoNeural" start="12.670" duration="18.144">
+哎，博文，咱们录节目前我刚还在刷新闻，今天这科技圈的风向啊，真有点“冰火两重天”的意思。一边是物理AI和世界模型在CVPR上大放异彩，另一边硅谷的裁员潮却是一波未平一波又起。
 </voice>
-<voice name="zh-CN-YunxiNeural" start="31.612" duration="10.632">
-确实，今天的动静不小。从技术突破到行业震荡，信号都很明确。看来咱们今天的选题会是一场“硬仗”啊。
+<voice name="zh-CN-YunxiNeural" start="31.221" duration="11.304">
+确实，这种反差感特别强烈。感觉我们正站在一个巨大的分水岭上，旧的秩序在崩塌，新的范式正在野蛮生长。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="42.712" duration="16.704">
-没错！所以今天咱们得好好聊聊。其实总结下来就一句话：物理AI与世界模型正以极低成本重塑具身智能，而硅谷的裁员潮则残酷宣告了传统代码时代的加速落幕。
+<voice name="zh-CN-XiaoxiaoNeural" start="42.963" duration="16.512">
+没错！所以今天咱们得好好聊聊。其实总结下来就一句话：物理AI与世界模型正以极低成本重塑具身智能，而硅谷裁员潮则残酷宣告传统代码生产方式的终结。
 </voice>
-<voice name="zh-CN-YunxiNeural" start="59.878" duration="3.792">
-这句话分量很重，咱们一个个拆解。
+<voice name="zh-CN-YunxiNeural" start="59.923" duration="3.864">
+这个总结很精准，咱们这就切入正题？
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="64.159" duration="19.248">
-那先说说让我最意外的一件事。博文，你肯定关注了正在进行的 CVPR 2026 吧？我本来以为又是英伟达或者特斯拉那种大秀肌肉的场面，结果你猜怎么着？这次舞台的聚光灯完全打在了中国团队身上。
+<voice name="zh-CN-XiaoxiaoNeural" start="64.218" duration="12.840">
+走起！博文，你肯定刷到了吧，CVPR 2026上咱们中国公司可是出尽了风头，直接给英伟达和特斯拉上了一课，讲起了“物理AI”。
 </voice>
-<voice name="zh-CN-YunxiNeural" start="83.902" duration="14.280">
-嗯，我看了直播。这次中国团队确实争气，他们不再是跟跑者，而是直接向英伟达、特斯拉这些巨头“讲经布道”，讲的就是当下最火的“物理AI”。
+<voice name="zh-CN-YunxiNeural" start="77.466" duration="18.984">
+哈哈，看到了。这次确实扬眉吐气。以前大家总觉得具身智能是特斯拉或者波士顿动力的独角戏，但这次中国团队率先实现了物理AI的闭环飞轮。这可不是简单的算法优化，这是底层逻辑的重写。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="98.641" duration="16.968">
-“物理AI”这个词最近太火了，但说实话，博文，作为产品经理，我有时候觉得这词儿有点虚。你能给咱们听众翻译翻译，这回中国团队到底拿出了什么真东西，能让那帮硅谷极客都服气？
+<voice name="zh-CN-XiaoxiaoNeural" start="96.857" duration="10.488">
+等等，博文，你先别急着飞太高，这“物理AI”到底是个啥？跟咱们以前说的那些AI模型有啥本质区别？
 </voice>
-<voice name="zh-CN-YunxiNeural" start="116.091" duration="22.800">
-哈哈，晓晓，你这直觉还是那么敏锐。其实这事儿的关键在于“闭环”。以前咱们做具身智能，往往是感知是一套、决策是一套，到了执行层面又是另一套，中间有断层。但这次中国团队展示的，是一个完整的“物理AI闭环飞轮”。
+<voice name="zh-CN-YunxiNeural" start="107.777" duration="24.504">
+嗯，我尽量通俗点说。以前的AI，大多活在数字世界里，就像一个绝顶聪明但四肢不勤的“大脑”，你让它写诗作画没问题，但让它去开冰箱拿瓶水，它可能就把冰箱门给拽下来了。而物理AI，就是给这个大脑装上了“物理常识”和“身体感知”，让它明白重力、摩擦力这些现实世界的规则。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="139.368" duration="6.696">
-闭环飞轮？听起来就像是给机器人装上了一个能自我进化的脑子？
+<voice name="zh-CN-XiaoxiaoNeural" start="132.731" duration="18.576">
+噢！我懂了！就像是以前AI是玩模拟人生的玩家，现在它是真的走进游戏里成了角色，能摸能碰能感知了。那这次提到的“世界模型”又是怎么回事？我记得LeCun老师一直很看重这个。
 </voice>
-<voice name="zh-CN-YunxiNeural" start="146.518" duration="23.016">
-对，非常恰当的比喻！简单说，就是让机器人在物理世界里交互，数据直接反馈给模型，模型立刻优化决策，再反哺给物理世界。这种“感知-决策-执行”的一体化，才是具身智能的灵魂。这也意味着，全球具身智能的话语权，正在发生深刻的转移。
+<voice name="zh-CN-YunxiNeural" start="151.726" duration="28.128">
+对，LeCun重注的隐空间世界模型，其实咱们国内早有布局了。世界模型你可以理解为AI在脑子里建的一个“沙盘推演”。它在行动前，先在脑子里模拟一遍后果，比如“如果我这一脚踩下去，可能会滑倒”，这样就能避免在现实中犯错。这次中国团队的突破，就是把这个“沙盘”做得既精准又高效，直接成了具身智能的核心引擎。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="169.982" duration="12.672">
-哇，这可是个大信号。以前咱们总说“算法是核心”，现在看来，谁能把物理世界交互玩明白，谁才是未来的老大。这格局真的变了。
+<voice name="zh-CN-XiaoxiaoNeural" start="180.265" duration="11.856">
+哇，这太神了！这不就是咱们人类做决策的方式吗？三思而后行。看来具身智能的主导权之争，这下是真的白热化了。
 </voice>
-<voice name="zh-CN-YunxiNeural" start="183.096" duration="6.528">
-是的，物理世界交互成了新焦点，光在虚拟世界里刷榜已经不够用了。
+<voice name="zh-CN-YunxiNeural" start="192.527" duration="7.152">
+没错，主导权之争已白热化，而且这背后的技术护城河比以前更深了。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="190.040" duration="12.936">
-说到物理世界交互，博文，我刚才看到另一条新闻，简直让我怀疑是不是小数点点错了。说是现在驱动世界模型的成本，居然降到了“白菜价”？
+<voice name="zh-CN-XiaoxiaoNeural" start="200.175" duration="15.336">
+说到这个技术护城河和行业变革，哎博文，我看今天还有个新闻，听着让人心里挺复杂的。连GitLab都开始裁程序员了，说是硅谷Q1裁员激增了40%。
 </voice>
-<voice name="zh-CN-YunxiNeural" start="203.442" duration="18.720">
-哈哈，你没看错。这确实是具身智能领域的“ChatGPT时刻”。以前训练一个像样的世界模型，那是烧钱无底洞，算力门槛高得吓人。但现在，有团队做到了仅用150元人民币，就能让机器人跑一个月。
+<voice name="zh-CN-YunxiNeural" start="215.962" duration="14.064">
+嗯，这条新闻其实比CVPR那个更值得咱们普通人警惕。GitLab这次裁员，表面看是降本增效，但深层原因其实是AI替代传统代码生产的拐点到了。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="222.660" duration="13.224">
-150块？跑一个月？天哪，这比我手机话费都便宜！这技术是怎么做到的？博文老师，快给咱们科普一下这背后的硬核逻辑。
+<voice name="zh-CN-XiaoxiaoNeural" start="230.452" duration="5.952">
+这么严重？GitLab可是程序员的大本营啊，连他们都动手了？
 </voice>
-<voice name="zh-CN-YunxiNeural" start="236.372" duration="17.256">
-其实核心在于架构的优化。他们通过极简的隐空间表征，剔除了大量冗余的计算，把算力壁垒给打破了。这就像是以前咱们开车得背个巨大的油箱，现在发动机效率提升了，带个小水瓶就能跑长途。
+<voice name="zh-CN-YunxiNeural" start="236.868" duration="21.432">
+你想啊，现在的AI代码生成工具，像Cursor、Copilot已经能高效生成高质量代码了。以前需要三个初级工程师干一周的活，现在可能一个资深工程师带个AI，一天就搞定了。当AI能高效生成代码，传统程序员的需求必然是断崖式下跌。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="254.110" duration="10.200">
-哎，这个比喻太形象了！那这是不是意味着，以后咱们普通人想在家里搞个机器人助手，门槛会低到难以想象？
+<voice name="zh-CN-XiaoxiaoNeural" start="258.739" duration="8.136">
+天哪，这真是……有点残酷。这就像是汽车发明后，马车夫的需求断崖下跌一样。
 </voice>
-<voice name="zh-CN-YunxiNeural" start="264.788" duration="10.152">
-毫无疑问。资金壁垒一倒，机器人大规模普及的奇点就近在眼前了。这对开发者来说，是巨大的机会。
+<voice name="zh-CN-YunxiNeural" start="267.326" duration="12.264">
+你这个比喻非常恰当。软件工程的劳动力结构正经历不可逆的重组。以前那种“写增删改查”就能拿高薪的日子，可能真的要一去不复返了。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="275.344" duration="14.568">
-真是太让人兴奋了！不过，技术狂飙的同时，我也看到了一些让人心里一紧的消息。哎博文，你看到硅谷那边的Q1数据了吗？那个裁员潮，看着有点吓人啊。
+<voice name="zh-CN-XiaoxiaoNeural" start="280.059" duration="13.200">
+哎，听得我背后一凉。看来咱们得终身学习了，不然分分钟被AI优化掉。好了，深吸一口气，咱们来看看几条让人稍微振奋点的快讯。
 </voice>
-<voice name="zh-CN-YunxiNeural" start="290.329" duration="13.992">
-嗯，看到了。数据很残酷，硅谷科技裁员同比暴增了40%。而且这次连 GitLab 这种代码托管平台都开始裁程序员了，这信号太明显了。
+<voice name="zh-CN-YunxiNeural" start="293.709" duration="2.976">
+嗯，我也正好换换脑子。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="304.803" duration="13.152">
-是啊，以前大家都觉得程序员是“铁饭碗”，现在AI代码工具一冲击，这饭碗好像有点端不稳了。这算不算是传统代码时代落幕的一个缩影？
+<voice name="zh-CN-XiaoxiaoNeural" start="297.107" duration="8.136">
+我刚看到个消息，说世界模型现在的价格简直跌到了“白菜价”，月费竟然只要150元！
 </voice>
-<voice name="zh-CN-YunxiNeural" start="318.424" duration="13.248">
-确实如此。AI写代码的效率已经不可同日而语，传统的“堆人头”开发模式正在失效。对于咱们从业者来说，这既是危机，也是倒逼转型的契机。
+<voice name="zh-CN-YunxiNeural" start="305.696" duration="13.224">
+这个确实很夸张。机器人运行世界模型的月成本，现在降到了一个GPT Plus的价格。这意味着什么？意味着具身智能的训练门槛被彻底击穿了。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="332.091" duration="11.856">
-嗯，得学会驾驭AI，而不是跟它比手速。对了，说到驾驭AI，我还注意到一个学术圈的动态，是关于图灵奖得主 LeCun 的。
+<voice name="zh-CN-XiaoxiaoNeural" start="319.379" duration="9.744">
+以前可能只有大厂玩得起，现在创业公司甚至高校实验室都能跑起来了。这对创新来说绝对是好事！
 </voice>
-<voice name="zh-CN-YunxiNeural" start="344.353" duration="5.496">
-你是说那个视觉团队攻克隐空间世界模型的事儿吧？
+<voice name="zh-CN-YunxiNeural" start="329.609" duration="6.624">
+对，技术平权嘛。成本降下来，应用场景才能百花齐放。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="350.263" duration="8.472">
-对对对！听说 LeCun 之前可是押注了十亿美金在这个方向上，这回终于有团队搞出来了？
+<voice name="zh-CN-XiaoxiaoNeural" start="336.733" duration="8.664">
+说到高校，我还注意到英博数科发布了个EBFlex平台，好像是专门针对高校科研算力的？
 </voice>
-<voice name="zh-CN-YunxiNeural" start="359.214" duration="19.368">
-没错。LeCun 一直坚持认为，AI要真正理解世界，必须得有世界模型。这次顶尖视觉团队的突破，正好补上了这块拼图，为AI理解物理世界提供了底层的支撑。这算是给 LeCun 的坚持交出了一份完美的答卷。
+<voice name="zh-CN-YunxiNeural" start="345.830" duration="17.496">
+是的。EBFlex是一个私有化算力管理平台。高校科研一直有个痛点，就是算力碎片化，这边几张卡，那边几张卡，调度特别麻烦。这个平台就是想解决这个瓶颈，把算力聚沙成塔。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="379.082" duration="11.904">
-看来大佬的眼光还是毒辣啊！最后还有个关于算力的消息，英博数科发了个叫 EBFlex 的平台，说是专门针对咱们高校科研的。
+<voice name="zh-CN-XiaoxiaoNeural" start="363.764" duration="16.104">
+这对搞科研的老师们来说简直是福音啊，不用再为了抢卡发愁了。哎，最后还有个关于评测基准的，EVA-Bench Data 2.0发布了，据说覆盖了121个工具和213个场景？
 </voice>
-<voice name="zh-CN-YunxiNeural" start="391.435" duration="14.688">
-这个其实很务实。高校科研经常面临算力“孤岛”问题，有卡但不会调度。EBFlex 就是来解决私有化算力管理的，让科研算力不再闲置，效率能提一大截。
+<voice name="zh-CN-YunxiNeural" start="380.346" duration="17.688">
+没错，这是一个全新的Agent评测基准。它覆盖了3大域的超复杂工具链评估。这就像是给大模型出了一套“地狱级”难度的考卷，专门逼出大模型的真实极限，看看它们到底是不是真智能，还是只会死记硬背。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="406.564" duration="13.800">
-哇，这可是咱们高校师生的福音啊！好了，聊了这么多，从物理AI的崛起，到世界模型的白菜价，再到硅谷的裁员寒潮，今天的信息量确实有点大。
+<voice name="zh-CN-XiaoxiaoNeural" start="398.459" duration="8.448">
+哈哈，博文老师，你这“地狱级考卷”的比喻太形象了。看来以后AI想浑水摸鱼是难了。
 </voice>
-<voice name="zh-CN-YunxiNeural" start="420.783" duration="7.656">
-是的，晓晓。技术变革的车轮滚滚向前，咱们只能保持学习，拥抱变化。
+<voice name="zh-CN-YunxiNeural" start="407.346" duration="4.728">
+确实，评测标准越严，技术进步才越实。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="428.933" duration="5.976">
-没错！感谢大家收听今天的AI 每日先锋，我是晓晓。
+<voice name="zh-CN-XiaoxiaoNeural" start="412.566" duration="11.808">
+好啦，今天的节目就聊到这里。从物理AI的突破到程序员的转型危机，再到算力和评测的落地，今天这信息量确实够大的。
 </voice>
-<voice name="zh-CN-YunxiNeural" start="435.391" duration="2.712">
-我是博文，咱们明天见！
+<voice name="zh-CN-YunxiNeural" start="424.817" duration="7.200">
+是啊，时代变得很快，咱们还是得保持乐观，拥抱变化。我是博文。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="438.534" duration="1.200">
-拜拜！
+<voice name="zh-CN-XiaoxiaoNeural" start="432.420" duration="3.192">
+我是晓晓。咱们明天见！
+</voice>
+<voice name="zh-CN-YunxiNeural" start="436.058" duration="1.704">
+明天见！
 </voice>
 </speak>
