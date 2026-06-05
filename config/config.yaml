@@ -22,6 +22,17 @@ tts:
     emphasis: {rate: "-10%", pitch: "+5Hz", instruct: "放慢语速，加重语气强调"}
     closing: {rate: "-3%", pitch: "-3Hz", instruct: "用收束总结的语气说"}
   chunk_silence_ms: 500
+  audio:
+    bgm_volume_db: -12
+    bgm_fade_in_ms: 2000
+    bgm_fade_out_ms: 3000
+    vocal_pad_ms: 1000
+    loudnorm: "I=-16:LRA=11:TP=-1.5"
+    sample_rate: 24000
+    chunk_silence_base: 300
+    chunk_silence_min: 400
+    chunk_silence_max: 800
+    chunk_silence_jitter: 100
 
 fetch:
   timeout_seconds: 10

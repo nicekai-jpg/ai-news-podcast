@@ -217,6 +217,7 @@ async def main() -> int:
             model_path=cosyvoice_model_path,
             speaker=cosyvoice_speaker,
             transcript_path=transcript_path,
+            cfg=cfg,
         )
         log.info("Audio saved: %s", mp3_path)
 

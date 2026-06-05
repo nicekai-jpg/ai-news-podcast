@@ -28,6 +28,8 @@ class FakeAudioSegment:
     def __add__(self, other: Any) -> "FakeAudioSegment":
         if isinstance(other, FakeAudioSegment):
             return FakeAudioSegment(self._duration + other._duration)
+        if isinstance(other, int):
+            return self
         return NotImplemented
 
     def __sub__(self, val: int) -> "FakeAudioSegment":
@@ -93,7 +95,7 @@ class FakeCommunicate:
 def mock_loudnorm():
     """Prevent real ffmpeg calls during TTS tests."""
 
-    async def _fake_loudnorm(input_path, output_path):
+    async def _fake_loudnorm(input_path, output_path, **kwargs):
         Path(output_path).write_text("fake normalized mp3", encoding="utf-8")
 
     with patch("ai_news_podcast.pipeline.tts_engine._run_loudnorm", side_effect=_fake_loudnorm):
