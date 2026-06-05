@@ -40,6 +40,10 @@ dev = [
     "pytest-cov>=7.1.0",
 ]
 
+[tool.hatch.build.targets.wheel]
+packages = ["src/ai_news_podcast"]
+artifacts = ["src/ai_news_podcast/site_builder/static/*"]
+
 [tool.ruff]
 target-version = "py311"
 line-length = 100
