@@ -50,7 +50,7 @@ class TestExtractFulltext:
         mock_trafilatura = MagicMock()
         mock_trafilatura.extract.return_value = None
         mock_readability = MagicMock()
-        mock_readability.Document = MagicMock(side_effect=Exception("boom"))
+        mock_readability.Document = MagicMock(side_effect=ValueError("boom"))
 
         with patch.dict(
             sys.modules, {"trafilatura": mock_trafilatura, "readability": mock_readability}
