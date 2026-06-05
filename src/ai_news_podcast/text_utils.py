@@ -20,9 +20,7 @@ RE_EMOJI_PAREN = re.compile(
 )
 RE_FANCY_QUOTES = re.compile(r"[「」『』【】]")
 RE_EMPTY_PAREN = re.compile(r"[（(]\s*[）)]")
-RE_NON_HOST_BRACKET = re.compile(
-    r"\[(?!(Host\s*A|Host\s*B))[^\]]*\]", flags=re.IGNORECASE
-)
+RE_NON_HOST_BRACKET = re.compile(r"\[(?!(Host\s*A|Host\s*B))[^\]]*\]", flags=re.IGNORECASE)
 RE_REPEATED_COMMA = re.compile(r"[，,]{2,}")
 RE_REPEATED_PERIOD = re.compile(r"[。.]{2,}")
 RE_MULTI_SPACE = re.compile(r"[ \t]+")
@@ -34,19 +32,17 @@ RE_HTML_TAG = re.compile(r"<[^>]+>")
 # SSML detection helper
 # ---------------------------------------------------------------------------
 
+
 def _is_ssml(text: str) -> bool:
     """Return True if *text* contains SSML markup."""
     stripped = text.strip()
-    return (
-        stripped.startswith("<speak")
-        or "<speak" in stripped
-        or "<voice" in stripped
-    )
+    return stripped.startswith("<speak") or "<speak" in stripped or "<voice" in stripped
 
 
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
+
 
 def clean_tts_text(text: str, *, preserve_ssml: bool = True) -> str:
     """Clean TTS-unfriendly artefacts from *text*.

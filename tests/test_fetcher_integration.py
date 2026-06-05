@@ -119,8 +119,8 @@ async def test_fetch_all_http_error_continues(
 
     responses = [
         httpx.HTTPError("boom"),  # first feed fails
-        ok_response,              # second feed ok
-        ok_response,              # full text for second feed
+        ok_response,  # second feed ok
+        ok_response,  # full text for second feed
     ]
     mock_httpx_client.get = AsyncMock(side_effect=responses)
 

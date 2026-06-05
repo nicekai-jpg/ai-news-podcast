@@ -29,7 +29,7 @@ def test_get_recent_broadcasted_urls_valid(tmp_path: Path) -> None:
             "id": "2026-06-02",
             "description": '<p>Demo description</p><ol><li>🔴 <a href="https://example.com/moment-3?utm_source=test">Moment 3</a></li></ol>',
             "enclosure_url": "https://example.com/demo2.mp3",
-        }
+        },
     ]
     write_json(path, episodes)
 
@@ -100,9 +100,10 @@ async def test_run_pipeline_semantic_dedup(tmp_path: Path, raw_item_factory) -> 
         summary="MiniMax released their new M3 model today with excellent multi-modal support.",
     )
 
-    with patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch, \
-         patch("ai_news_podcast.pipeline.runner.process") as mock_process:
-
+    with (
+        patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch,
+        patch("ai_news_podcast.pipeline.runner.process") as mock_process,
+    ):
         mock_fetch.return_value = [item_similar, item_different]
         mock_process.return_value = {"stories": []}
 
@@ -161,10 +162,11 @@ async def test_run_pipeline_semantic_dedup_tfidf_fallback(tmp_path: Path, raw_it
         summary="MiniMax released their new M3 model today with excellent multi-modal support.",
     )
 
-    with patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch, \
-         patch("ai_news_podcast.pipeline.runner.process") as mock_process, \
-         patch.dict("sys.modules", {"sentence_transformers": None}):
-
+    with (
+        patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch,
+        patch("ai_news_podcast.pipeline.runner.process") as mock_process,
+        patch.dict("sys.modules", {"sentence_transformers": None}),
+    ):
         mock_fetch.return_value = [item_similar, item_different]
         mock_process.return_value = {"stories": []}
 
@@ -221,9 +223,10 @@ async def test_run_pipeline_skips_current_episode(tmp_path: Path, raw_item_facto
         summary="A compilation of developer resources from I/O 2026.",
     )
 
-    with patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch, \
-         patch("ai_news_podcast.pipeline.runner.process") as mock_process:
-
+    with (
+        patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch,
+        patch("ai_news_podcast.pipeline.runner.process") as mock_process,
+    ):
         mock_fetch.return_value = [item_similar]
         mock_process.return_value = {"stories": []}
 
@@ -240,4 +243,3 @@ async def test_run_pipeline_skips_current_episode(tmp_path: Path, raw_item_facto
         assert len(called_args) == 1
         assert called_args[0].title == "Google I/O 2026 developer collection"
         assert len(brief.get("metadata", {}).get("dedup_details", [])) == 0
-

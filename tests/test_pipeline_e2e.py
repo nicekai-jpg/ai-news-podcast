@@ -133,20 +133,26 @@ async def test_no_audio_run_creates_files(minimal_config: Path, monkeypatch) -> 
     """Run daily pipeline with --no-audio and verify output files."""
     root = minimal_config
     monkeypatch.setattr(
-        sys, "argv",
+        sys,
+        "argv",
         [
             "run_daily",
-            "--config", str(root / "config" / "config.yaml"),
-            "--sources", str(root / "config" / "sources.yaml"),
+            "--config",
+            str(root / "config" / "config.yaml"),
+            "--sources",
+            str(root / "config" / "sources.yaml"),
             "--no-audio",
-            "--date", "2024-03-15",
-            "--base-url", "https://test.example.com",
+            "--date",
+            "2024-03-15",
+            "--base-url",
+            "https://test.example.com",
         ],
     )
 
     # main() computes root = Path(__file__).resolve().parents[3]
     # Patch __file__ so it resolves to our temp tree.
     import ai_news_podcast.cli.run_daily as run_daily_module
+
     fake_file = root / "src" / "ai_news_podcast" / "cli" / "run_daily.py"
     monkeypatch.setattr(run_daily_module, "__file__", str(fake_file))
 
@@ -159,9 +165,29 @@ async def test_no_audio_run_creates_files(minimal_config: Path, monkeypatch) -> 
                 "role": "main",
                 "role_emoji": "🔴",
                 "total_score": 13,
-                "scores": {"impact_scope": 3, "novelty": 2, "explainability": 3, "listener_relevance": 3, "source_richness": 2},
-                "context": {"factual_summary": ["Summary text here."], "historical_background": "", "sources_ranked": [{"name": "Test Feed", "authority": 3, "link": "https://example.com/1"}]},
-                "items": [{"id": "abc123", "title": "Test AI News", "link": "https://example.com/1", "source_name": "Test Feed", "source_category": "news"}],
+                "scores": {
+                    "impact_scope": 3,
+                    "novelty": 2,
+                    "explainability": 3,
+                    "listener_relevance": 3,
+                    "source_richness": 2,
+                },
+                "context": {
+                    "factual_summary": ["Summary text here."],
+                    "historical_background": "",
+                    "sources_ranked": [
+                        {"name": "Test Feed", "authority": 3, "link": "https://example.com/1"}
+                    ],
+                },
+                "items": [
+                    {
+                        "id": "abc123",
+                        "title": "Test AI News",
+                        "link": "https://example.com/1",
+                        "source_name": "Test Feed",
+                        "source_category": "news",
+                    }
+                ],
             }
         ],
         "metadata": {"total_raw": 1, "total_deduped": 1, "total_clusters": 1},
@@ -179,6 +205,7 @@ async def test_no_audio_run_creates_files(minimal_config: Path, monkeypatch) -> 
     # Mock synthesize to avoid TTS
     async def _fake_synthesize(*args, **kwargs) -> None:
         pass
+
     monkeypatch.setattr(run_daily_module, "synthesize", _fake_synthesize)
 
     # Run

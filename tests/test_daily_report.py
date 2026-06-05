@@ -60,6 +60,3 @@ class TestBuildReportPrompt:
     def test_empty_stories(self) -> None:
         prompt = build_report_prompt({"stories": []}, "2024-03-15")
         assert "【素材" not in prompt
-
-
-

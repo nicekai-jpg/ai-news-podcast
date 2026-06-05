@@ -56,14 +56,16 @@ def build_index_html(
         episodes_map[ep_id] = ep
 
     dates_json = json.dumps(dates_list)
-    episodes_map_json = json.dumps({
-        ep_id: {
-            "title": ep.get("title", f"AI 新闻快报 | {ep_id}"),
-            "mp3": ep.get("enclosure_url", f"{base_url}/episodes/{ep_id}.mp3"),
-            "desc": ep.get("description", ""),
+    episodes_map_json = json.dumps(
+        {
+            ep_id: {
+                "title": ep.get("title", f"AI 新闻快报 | {ep_id}"),
+                "mp3": ep.get("enclosure_url", f"{base_url}/episodes/{ep_id}.mp3"),
+                "desc": ep.get("description", ""),
+            }
+            for ep_id, ep in episodes_map.items()
         }
-        for ep_id, ep in episodes_map.items()
-    })
+    )
 
     shanghai_tz = ZoneInfo("Asia/Shanghai")
     build_time = datetime.datetime.now(tz=shanghai_tz).strftime("%Y-%m-%d %H:%M:%S")
@@ -71,7 +73,8 @@ def build_index_html(
     css_content = _read_static("style.css")
     js_content = _read_static("player.js")
 
-    html_template = """<!doctype html>
+    html_template = (
+        """<!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
@@ -79,7 +82,9 @@ def build_index_html(
   <title>{podcast_title}</title>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-""" + css_content + """
+"""
+        + css_content
+        + """
   </style>
 </head>
 <body>
@@ -237,10 +242,13 @@ def build_index_html(
   </div>
 
   <script>
-""" + js_content + """
+"""
+        + js_content
+        + """
   </script>
 </body>
 </html>"""
+    )
 
     html = (
         html_template.replace("{podcast_title}", str(podcast_title))

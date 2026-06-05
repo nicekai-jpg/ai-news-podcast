@@ -125,9 +125,27 @@ async def test_full_run_with_audio_and_publish(full_config: Path, monkeypatch) -
                 "role": "main",
                 "role_emoji": "🔴",
                 "total_score": 13,
-                "scores": {"impact_scope": 3, "novelty": 2, "explainability": 3, "listener_relevance": 3, "source_richness": 2},
-                "context": {"factual_summary": ["Summary."], "historical_background": "", "sources_ranked": [{"name": "S", "authority": 3, "link": "https://a.com"}]},
-                "items": [{"id": "abc", "title": "Test AI News", "link": "https://a.com", "source_name": "S", "source_category": "news"}],
+                "scores": {
+                    "impact_scope": 3,
+                    "novelty": 2,
+                    "explainability": 3,
+                    "listener_relevance": 3,
+                    "source_richness": 2,
+                },
+                "context": {
+                    "factual_summary": ["Summary."],
+                    "historical_background": "",
+                    "sources_ranked": [{"name": "S", "authority": 3, "link": "https://a.com"}],
+                },
+                "items": [
+                    {
+                        "id": "abc",
+                        "title": "Test AI News",
+                        "link": "https://a.com",
+                        "source_name": "S",
+                        "source_category": "news",
+                    }
+                ],
             }
         ],
         "metadata": {"total_raw": 1, "total_deduped": 1, "total_clusters": 1},
@@ -176,9 +194,7 @@ async def test_transcript_cleaning(full_config: Path, monkeypatch) -> None:
     monkeypatch.setattr(
         run_daily_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "run_daily.py")
     )
-    monkeypatch.setattr(
-        sys, "argv", ["run_daily", "--date", "2024-03-16", "--no-audio"]
-    )
+    monkeypatch.setattr(sys, "argv", ["run_daily", "--date", "2024-03-16", "--no-audio"])
 
     fake_brief = {
         "thesis": "Test thesis",
@@ -189,9 +205,27 @@ async def test_transcript_cleaning(full_config: Path, monkeypatch) -> None:
                 "role": "main",
                 "role_emoji": "🔴",
                 "total_score": 13,
-                "scores": {"impact_scope": 3, "novelty": 2, "explainability": 3, "listener_relevance": 3, "source_richness": 2},
-                "context": {"factual_summary": ["S."], "historical_background": "", "sources_ranked": [{"name": "S", "authority": 3, "link": "https://a.com"}]},
-                "items": [{"id": "abc", "title": "T", "link": "https://a.com", "source_name": "S", "source_category": "news"}],
+                "scores": {
+                    "impact_scope": 3,
+                    "novelty": 2,
+                    "explainability": 3,
+                    "listener_relevance": 3,
+                    "source_richness": 2,
+                },
+                "context": {
+                    "factual_summary": ["S."],
+                    "historical_background": "",
+                    "sources_ranked": [{"name": "S", "authority": 3, "link": "https://a.com"}],
+                },
+                "items": [
+                    {
+                        "id": "abc",
+                        "title": "T",
+                        "link": "https://a.com",
+                        "source_name": "S",
+                        "source_category": "news",
+                    }
+                ],
             }
         ],
         "metadata": {"total_raw": 1, "total_deduped": 1, "total_clusters": 1},
@@ -199,6 +233,7 @@ async def test_transcript_cleaning(full_config: Path, monkeypatch) -> None:
 
     async def _fake_run_pipeline(*args, **kwargs):
         return fake_brief
+
     monkeypatch.setattr(run_daily_module, "run_pipeline", _fake_run_pipeline)
 
     # Script with mood tags, fact tags, and literal \n
@@ -206,8 +241,10 @@ async def test_transcript_cleaning(full_config: Path, monkeypatch) -> None:
     monkeypatch.setattr(
         run_daily_module, "generate_script", lambda *a, **kw: (fake_script, ["test warning"])
     )
+
     async def _fake_synth(*args, **kwargs) -> None:
         pass
+
     monkeypatch.setattr(run_daily_module, "synthesize", _fake_synth)
 
     rc = await run_daily_module.main()

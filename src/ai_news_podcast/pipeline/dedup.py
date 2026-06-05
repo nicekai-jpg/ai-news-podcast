@@ -132,13 +132,16 @@ def get_recent_broadcasted_texts(
                             keywords_str = ""
                             if combined_items_text:
                                 import jieba.analyse
+
                                 try:
                                     kws = jieba.analyse.extract_tags(combined_items_text, topK=15)
                                     keywords_str = " ".join(kws)
                                 except (ValueError, TypeError, OSError):
                                     pass
 
-                            full_story_text = f"{title} {' '.join(summaries)} {keywords_str}".strip()
+                            full_story_text = (
+                                f"{title} {' '.join(summaries)} {keywords_str}".strip()
+                            )
                             if full_story_text:
                                 records.append(
                                     HistoricalRecord(
@@ -205,7 +208,10 @@ def semantic_dedup(
 
         model = SentenceTransformer(semantic_model)
         use_sentence_transformers = True
-        log.info("Successfully loaded SentenceTransformer model '%s' for semantic similarity.", semantic_model)
+        log.info(
+            "Successfully loaded SentenceTransformer model '%s' for semantic similarity.",
+            semantic_model,
+        )
     except (ImportError, OSError, RuntimeError) as e:
         log.warning("Sentence-Transformers loading failed (falling back to TF-IDF): %s", e)
 
@@ -218,8 +224,12 @@ def semantic_dedup(
                 for it in raw_items
             ]
 
-            hist_embeddings = model.encode(segmented_hist_texts, convert_to_tensor=True, show_progress_bar=False)
-            new_embeddings = model.encode(new_texts, convert_to_tensor=True, show_progress_bar=False)
+            hist_embeddings = model.encode(
+                segmented_hist_texts, convert_to_tensor=True, show_progress_bar=False
+            )
+            new_embeddings = model.encode(
+                new_texts, convert_to_tensor=True, show_progress_bar=False
+            )
 
             cos_scores = util.cos_sim(new_embeddings, hist_embeddings)
 
@@ -240,17 +250,19 @@ def semantic_dedup(
                         matched_rec.episode_id,
                     )
 
-                    dedup_details.append({
-                        "title": item.title,
-                        "link": item.link,
-                        "source": item.source_name,
-                        "reason": "cross_episode_semantic",
-                        "similarity": round(max_sim, 4),
-                        "threshold": sim_threshold,
-                        "matched_story_title": matched_rec.story_title,
-                        "matched_episode_id": matched_rec.episode_id,
-                        "detail": f"SentenceTransformer similarity ({max_sim:.2f}) >= threshold ({sim_threshold:.2f}) with historical story '{matched_rec.story_title}' from {matched_rec.episode_id}."
-                    })
+                    dedup_details.append(
+                        {
+                            "title": item.title,
+                            "link": item.link,
+                            "source": item.source_name,
+                            "reason": "cross_episode_semantic",
+                            "similarity": round(max_sim, 4),
+                            "threshold": sim_threshold,
+                            "matched_story_title": matched_rec.story_title,
+                            "matched_episode_id": matched_rec.episode_id,
+                            "detail": f"SentenceTransformer similarity ({max_sim:.2f}) >= threshold ({sim_threshold:.2f}) with historical story '{matched_rec.story_title}' from {matched_rec.episode_id}.",
+                        }
+                    )
                     skipped_count += 1
                 else:
                     filtered_items.append(item)
@@ -264,7 +276,10 @@ def semantic_dedup(
                 )
             return filtered_items, dedup_details
         except (ImportError, OSError, ValueError, RuntimeError) as e:
-            log.error("Failed to perform Sentence-Transformers deduplication: %s (falling back to TF-IDF)", e)
+            log.error(
+                "Failed to perform Sentence-Transformers deduplication: %s (falling back to TF-IDF)",
+                e,
+            )
             use_sentence_transformers = False
 
     # ── TF-IDF fallback ─────────────────────────────────────────────────
@@ -274,6 +289,7 @@ def semantic_dedup(
 
     sim_threshold = float(dedup_cfg.get("semantic_sim_threshold", 0.20))
     try:
+
         def tokenize_text(text: str) -> str:
             return " ".join(jieba.cut(text))
 
@@ -314,17 +330,19 @@ def semantic_dedup(
                     matched_rec.episode_id,
                 )
 
-                dedup_details.append({
-                    "title": item.title,
-                    "link": item.link,
-                    "source": item.source_name,
-                    "reason": "cross_episode_semantic",
-                    "similarity": round(max_sim, 4),
-                    "threshold": sim_threshold,
-                    "matched_story_title": matched_rec.story_title,
-                    "matched_episode_id": matched_rec.episode_id,
-                    "detail": f"TF-IDF similarity ({max_sim:.2f}) >= threshold ({sim_threshold:.2f}) with historical story '{matched_rec.story_title}' from {matched_rec.episode_id}."
-                })
+                dedup_details.append(
+                    {
+                        "title": item.title,
+                        "link": item.link,
+                        "source": item.source_name,
+                        "reason": "cross_episode_semantic",
+                        "similarity": round(max_sim, 4),
+                        "threshold": sim_threshold,
+                        "matched_story_title": matched_rec.story_title,
+                        "matched_episode_id": matched_rec.episode_id,
+                        "detail": f"TF-IDF similarity ({max_sim:.2f}) >= threshold ({sim_threshold:.2f}) with historical story '{matched_rec.story_title}' from {matched_rec.episode_id}.",
+                    }
+                )
                 skipped_count += 1
             else:
                 filtered_items.append(item)

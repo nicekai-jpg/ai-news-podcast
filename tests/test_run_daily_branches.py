@@ -100,11 +100,14 @@ build:
   episodes_index: "data/episodes.json"
 """
     (tmp_path / "config" / "config.yaml").write_text(config_yaml, encoding="utf-8")
-    (tmp_path / "config" / "sources.yaml").write_text("sources:\n  - name: X\n    url: https://x.com\n    enabled: true\n", encoding="utf-8")
+    (tmp_path / "config" / "sources.yaml").write_text(
+        "sources:\n  - name: X\n    url: https://x.com\n    enabled: true\n", encoding="utf-8"
+    )
     (tmp_path / "data" / "episodes.json").write_text("[]", encoding="utf-8")
 
     monkeypatch.setattr(
-        sys, "argv",
+        sys,
+        "argv",
         ["run_daily", "--no-audio", "--date", "2024-03-15"],
     )
 

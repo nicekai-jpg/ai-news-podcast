@@ -15,6 +15,7 @@ from ai_news_podcast.text_utils import (
 # Basic edge cases
 # ---------------------------------------------------------------------------
 
+
 class TestEdgeCases:
     def test_empty_string(self) -> None:
         assert clean_tts_text("") == ""
@@ -30,6 +31,7 @@ class TestEdgeCases:
 # ---------------------------------------------------------------------------
 # Tag removal
 # ---------------------------------------------------------------------------
+
 
 class TestFactTagRemoval:
     @pytest.mark.parametrize(
@@ -96,6 +98,7 @@ class TestEmptyParenRemoval:
 # Host tag preservation
 # ---------------------------------------------------------------------------
 
+
 class TestHostTagPreservation:
     def test_host_a_preserved(self) -> None:
         text = "[Host A] 大家好"
@@ -117,6 +120,7 @@ class TestHostTagPreservation:
 # Escaped newline handling
 # ---------------------------------------------------------------------------
 
+
 class TestEscapedNewlines:
     def test_literal_backslash_n_replaced(self) -> None:
         assert clean_tts_text("第一行\\n第二行") == "第一行\n第二行"
@@ -128,6 +132,7 @@ class TestEscapedNewlines:
 # ---------------------------------------------------------------------------
 # SSML handling
 # ---------------------------------------------------------------------------
+
 
 class TestSSMLHandling:
     def test_ssml_preserved_by_default(self) -> None:
@@ -159,6 +164,7 @@ class TestSSMLHandling:
 # Punctuation compression
 # ---------------------------------------------------------------------------
 
+
 class TestPunctuationCompression:
     def test_repeated_commas(self) -> None:
         assert clean_tts_text("你好，，，世界") == "你好，世界"
@@ -176,6 +182,7 @@ class TestPunctuationCompression:
 # ---------------------------------------------------------------------------
 # Whitespace normalisation
 # ---------------------------------------------------------------------------
+
 
 class TestWhitespaceNormalisation:
     def test_multiple_spaces_collapsed(self) -> None:
@@ -198,6 +205,7 @@ class TestWhitespaceNormalisation:
 # Idempotency
 # ---------------------------------------------------------------------------
 
+
 class TestIdempotency:
     def test_clean_tts_text_idempotent(self) -> None:
         text = "[FACT] 测试（doge）[mood:happy]  你好，，，世界\\n\\n\\n结束"
@@ -215,6 +223,7 @@ class TestIdempotency:
 # ---------------------------------------------------------------------------
 # Regex constant exports
 # ---------------------------------------------------------------------------
+
 
 class TestRegexConstants:
     def test_re_fact_tag_matches(self) -> None:

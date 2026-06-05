@@ -52,7 +52,6 @@ def _replace_banned_words(text: str, banned: list[str] | None = None) -> str:
 # ---------------------------------------------------------------------------
 
 
-
 def _cn_date(dt: datetime) -> str:
     return f"{dt.year}年{dt.month}月{dt.day}日"
 
@@ -62,22 +61,41 @@ def _cn_date(dt: datetime) -> str:
 # ---------------------------------------------------------------------------
 
 
-
 # ---------------------------------------------------------------------------
 # 默认实体列表（当 config.yaml 中未配置 entities.companies 时使用）
 # ---------------------------------------------------------------------------
 
 _DEFAULT_COMPANIES = [
-    "谷歌", "google", "openai", "微软", "microsoft", "英伟达", "nvidia",
-    "苹果", "apple", "meta", "anthropic", "claude", "字节", "腾讯",
-    "百度", "阿里", "华为", "奥迪", "audi", "特斯拉", "tesla",
+    "谷歌",
+    "google",
+    "openai",
+    "微软",
+    "microsoft",
+    "英伟达",
+    "nvidia",
+    "苹果",
+    "apple",
+    "meta",
+    "anthropic",
+    "claude",
+    "字节",
+    "腾讯",
+    "百度",
+    "阿里",
+    "华为",
+    "奥迪",
+    "audi",
+    "特斯拉",
+    "tesla",
 ]
 
 
 def _load_companies_from_config() -> list[str]:
     """从 config.yaml 读取 entities.companies，读取失败时返回默认值。"""
     try:
-        config_path = Path(__file__).resolve().parent.parent.parent.parent / "config" / "config.yaml"
+        config_path = (
+            Path(__file__).resolve().parent.parent.parent.parent / "config" / "config.yaml"
+        )
         with open(config_path, encoding="utf-8") as f:
             cfg = yaml.safe_load(f)
         companies = cfg.get("entities", {}).get("companies", [])
