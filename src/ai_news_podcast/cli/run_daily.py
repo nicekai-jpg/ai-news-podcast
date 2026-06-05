@@ -72,7 +72,7 @@ def _prune_episodes(
     def parse_pubdate(ep: dict[str, Any]) -> datetime:
         try:
             return datetime.fromisoformat(str(ep["published_at_iso"]))
-        except Exception:
+        except (ValueError, KeyError):
             return datetime(1970, 1, 1, tzinfo=timezone.utc)
 
     sorted_eps = sorted(episodes, key=parse_pubdate, reverse=True)

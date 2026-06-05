@@ -100,7 +100,7 @@ def _load_companies_from_config() -> list[str]:
             cfg = yaml.safe_load(f)
         companies = cfg.get("entities", {}).get("companies", [])
         return companies if companies else _DEFAULT_COMPANIES
-    except Exception:
+    except (OSError, yaml.YAMLError, KeyError):
         return _DEFAULT_COMPANIES
 
 

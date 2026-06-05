@@ -65,7 +65,7 @@ def normalize_url(url: str) -> str:
         return ""
     try:
         parsed = urlparse(url)
-    except Exception:
+    except (ValueError, UnicodeError):
         return url
     # 统一 https
     scheme = "https" if parsed.scheme in ("http", "https") else parsed.scheme
@@ -95,7 +95,7 @@ def _extract_fulltext(html: str, url: str, *, min_chars: int = 1200, max_chars: 
     try:
         trafilatura = importlib.import_module("trafilatura")
         text = trafilatura.extract(html, url=url, include_comments=False) or ""
-    except Exception:
+    except (OSError, ValueError, UnicodeDecodeError):
         logger.debug("trafilatura failed for %s", url)
 
     # 2) readability-lxml fallback
@@ -108,7 +108,7 @@ def _extract_fulltext(html: str, url: str, *, min_chars: int = 1200, max_chars: 
             alt = soup.get_text(" ", strip=True)
             if len(alt) > len(text):
                 text = alt
-        except Exception:
+        except (OSError, ValueError, UnicodeDecodeError):
             logger.debug("readability-lxml fallback failed for %s", url)
 
     # truncate
@@ -303,7 +303,7 @@ async def _fetch_one_feed(
     try:
         resp = await _http_get(client, url, throttle)
         feed = feedparser.parse(resp.content)
-    except Exception:
+    except (httpx.HTTPError, OSError, ValueError):
         logger.warning("Failed to fetch feed: %s (%s)", name, url)
         return []
 
@@ -344,7 +344,7 @@ async def _fetch_one_feed(
                 if not summary:  # 只有没摘要时才增加计数，避免浪费配额
                     pages_counter[0] += 1
                 full_text = _extract_fulltext(page_resp.text, link, min_chars=1200, max_chars=2000)
-            except Exception:
+            except (httpx.HTTPError, OSError, ValueError):
                 logger.debug("Full-text fetch failed: %s", link)
 
         # 用 summary 兜底
