@@ -1,9 +1,7 @@
 """html_gen 站点生成测试。"""
 
-import tempfile
-from pathlib import Path
 
-from ai_news_podcast.site_builder.html_gen import format_friendly_date, build_index_html
+from ai_news_podcast.site_builder.html_gen import build_index_html, format_friendly_date
 
 
 class TestFormatFriendlyDate:

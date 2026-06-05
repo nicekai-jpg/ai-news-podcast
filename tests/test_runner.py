@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 from pathlib import Path
+
 import pytest
-from ai_news_podcast.pipeline.dedup import get_recent_broadcasted_urls, get_recent_broadcasted_texts
+
+from ai_news_podcast.pipeline.dedup import get_recent_broadcasted_texts, get_recent_broadcasted_urls
 from ai_news_podcast.utils import write_json
 
 
@@ -65,7 +67,8 @@ def test_get_recent_broadcasted_texts(tmp_path: Path) -> None:
 
 @pytest.mark.asyncio
 async def test_run_pipeline_semantic_dedup(tmp_path: Path, raw_item_factory) -> None:
-    from unittest.mock import patch, AsyncMock
+    from unittest.mock import AsyncMock, patch
+
     from ai_news_podcast.pipeline.runner import run_pipeline
 
     episodes_path = tmp_path / "episodes.json"
@@ -126,7 +129,8 @@ async def test_run_pipeline_semantic_dedup(tmp_path: Path, raw_item_factory) -> 
 
 @pytest.mark.asyncio
 async def test_run_pipeline_semantic_dedup_tfidf_fallback(tmp_path: Path, raw_item_factory) -> None:
-    from unittest.mock import patch, AsyncMock
+    from unittest.mock import AsyncMock, patch
+
     from ai_news_podcast.pipeline.runner import run_pipeline
 
     episodes_path = tmp_path / "episodes.json"
@@ -187,7 +191,8 @@ async def test_run_pipeline_semantic_dedup_tfidf_fallback(tmp_path: Path, raw_it
 
 @pytest.mark.asyncio
 async def test_run_pipeline_skips_current_episode(tmp_path: Path, raw_item_factory) -> None:
-    from unittest.mock import patch, AsyncMock
+    from unittest.mock import AsyncMock, patch
+
     from ai_news_podcast.pipeline.runner import run_pipeline
 
     episodes_path = tmp_path / "episodes.json"
