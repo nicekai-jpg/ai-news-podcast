@@ -6,32 +6,22 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import os
 import re
 import time
 from datetime import datetime
+from pathlib import Path
 from typing import Any
 
+import httpx
+import yaml
+
+from ai_news_podcast.prompts import DEFAULT_BANNED_WORDS, build_editor_prompt, build_writer_prompt
 from ai_news_podcast.text_utils import RE_MOOD_TAG, clean_tts_text
 
 logger = logging.getLogger(__name__)
-
-# ---------------------------------------------------------------------------
-# 禁用词
-# ---------------------------------------------------------------------------
-
-DEFAULT_BANNED_WORDS = [
-    "废话不多说",
-    "众所周知",
-    "颠覆",
-    "炸裂",
-    "重磅",
-    "王炸",
-    "杀疯了",
-    "遥遥领先",
-    "细思极恐",
-]
 
 
 def check_banned_words(text: str, banned: list[str] | None = None) -> list[str]:
@@ -73,15 +63,34 @@ def _cn_date(dt: datetime) -> str:
 
 
 
+# ---------------------------------------------------------------------------
+# 默认实体列表（当 config.yaml 中未配置 entities.companies 时使用）
+# ---------------------------------------------------------------------------
+
+_DEFAULT_COMPANIES = [
+    "谷歌", "google", "openai", "微软", "microsoft", "英伟达", "nvidia",
+    "苹果", "apple", "meta", "anthropic", "claude", "字节", "腾讯",
+    "百度", "阿里", "华为", "奥迪", "audi", "特斯拉", "tesla",
+]
+
+
+def _load_companies_from_config() -> list[str]:
+    """从 config.yaml 读取 entities.companies，读取失败时返回默认值。"""
+    try:
+        config_path = Path(__file__).resolve().parent.parent.parent.parent / "config" / "config.yaml"
+        with open(config_path, encoding="utf-8") as f:
+            cfg = yaml.safe_load(f)
+        companies = cfg.get("entities", {}).get("companies", [])
+        return companies if companies else _DEFAULT_COMPANIES
+    except Exception:
+        return _DEFAULT_COMPANIES
+
+
 def _get_story_entities(story: dict[str, Any]) -> set[str]:
     """提取新闻故事中的公司/品牌实体词，用于多样性去重。"""
     title = str(story.get("representative_title", "")).lower()
     entities = set()
-    COMPANIES = [
-        "谷歌", "google", "openai", "微软", "microsoft", "英伟达", "nvidia",
-        "苹果", "apple", "meta", "anthropic", "claude", "字节", "腾讯",
-        "百度", "阿里", "华为", "奥迪", "audi", "特斯拉", "tesla"
-    ]
+    COMPANIES = _load_companies_from_config()
     for c in COMPANIES:
         if c in title:
             # 标准化实体名
@@ -168,129 +177,6 @@ def _build_material_text(brief: dict[str, Any], max_stories: int = 8) -> str:
     return "\n".join(sections)
 
 
-def _build_editor_prompt(
-    material: str,
-    episode_date: datetime,
-) -> str:
-    """第一阶段：主编 Agent，负责精简素材和定调。"""
-    date_str = _cn_date(episode_date)
-    return f"""你是顶级科技播客的「主编」(Editor)。今天是{date_str}。
-你的任务是阅读下方的新闻素材池，筛选并组织出一份精简的「今日播报大纲」。
-
-## 操作要求
-1. **提炼金句 (Thesis)**：用一句话总结今天的整体科技趋势或最震撼的事件。
-2. **挑选双头条 (Headlines)**：选出 2 个最有深度、最值得深度讨论的新闻作为今日的双头条（分别作为头条1、头条2）。
-3. **精选快讯 (Quick News)**：从其余素材中选出恰好 3 条不同主题、不同来源的有趣新闻作为快讯，保证播客内容丰富多元。
-4. 忽略毫无价值或者完全重复的素材。
-
-## 新闻素材
-{material}
-
-## 输出格式
-请务必直接输出合法的 JSON 格式，不要包含 ```json 等标记，结构如下：
-{{
-  "thesis": "一句话整体总结",
-  "headlines": [
-    {{
-      "title": "头条新闻 1 标题",
-      "summary": "深度的摘要，为什么这很重要，背后有什么深刻影响（控制在 150 字以内）"
-    }},
-    {{
-      "title": "头条新闻 2 标题",
-      "summary": "深度的摘要，为什么这很重要，背后有什么深刻影响（控制在 150 字以内）"
-    }}
-  ],
-  "quick_news": [
-    {{
-      "title": "快讯标题 1",
-      "summary": "一句话介绍（50字以内）"
-    }},
-    {{
-      "title": "快讯标题 2",
-      "summary": "一句话介绍（50字以内）"
-    }},
-    {{
-      "title": "快讯标题 3",
-      "summary": "一句话介绍（50字以内）"
-    }}
-  ]
-}}"""
-
-
-def _build_writer_prompt(
-    editor_plan_json: str,
-    episode_date: datetime,
-    podcast_title: str,
-    style_cfg: dict[str, Any],
-) -> str:
-    """第二阶段：撰稿 Agent，将主编定下的大纲转化为双人对口相声/对谈剧本。"""
-    banned = style_cfg.get("banned_words", DEFAULT_BANNED_WORDS)
-    banned_str = "、".join(banned)
-    date_str = _cn_date(episode_date)
-
-    return f"""你是「{podcast_title}」的金牌撰稿人。今天是{date_str}。
-你的任务是根据主编给出的【今日播报大纲】，写一份**双人对谈格式的播客录音剧本**。
-
-## 主持人详细人设与角色分工（“主持人 + 嘉宾” 模式）
-这两位主持人是常年合作的科技挚友，对话风格松弛、默契、充满温度，严禁任何机械化播报。
-**特别注意：他们当前的身份是播客录像带中的主持人和嘉宾，绝对不要在对话中出现“晓晓你作为产品经理”或者“博文你作为大厂架构师”这种生硬跳戏的称呼。如果需要体现他们的背景视角，必须换用更自然、契合当下情景的说法（例如“晓晓，你这产品经理的敏感度/直觉真的很灵敏”、“博文老师，你又带上了技术极客的视角了”）。**
-- **晓晓 [Host B] (主持人/Anchor) —— “体验派产品经理”**：
-  - *音色与标签*：使用 `<voice name="zh-CN-XiaoxiaoNeural">`，内容中自称为“晓晓”。
-  - *背景人设*：前互联网 AI 产品经理，热爱尝试各种新潮 AI 工具（ChatGPT、Midjourney、Cursor 等），极为关注“用户体验 (UX)”和“日常落地场景”。
-  - *职责分工*：主导节目控场与流程推进，负责每一章新闻的开场与核心事实引入。当博文讲出晦涩术语时，她要及时打断追问（例如：“等等博文，你刚才提到的 MoE 架构，能给听众翻译翻译吗？”）；同时她是“神比喻担当”，负责把复杂技术转化为极度接地气的生活化类比。
-  - *性格态度*：活泼机敏、好奇心强、心直口快，面对科技突破会发出真诚的感叹（如“哇”、“天哪真假的”），同时对隐私侵扰或技术泡沫持实用主义担忧。
-- **博文 [Host A] (技术嘉宾/Expert) —— “硬核逻辑极客”**：
-  - *音色与标签*：使用 `<voice name="zh-CN-YunxiNeural">`，内容中自称为“博文”。
-  - *背景人设*：前大厂资深算法科学家与系统架构师，了解主流模型的演进史，深知哪些是换汤不换药的炒作、哪些是工程落地中的真正痛点（算力限制、显存占用、部署成本等）。
-  - *职责分工*：负责在晓晓抛出新闻和问题后，进行深度的技术解构、商业战略剖析和行业格局研判。
-  - *性格态度*：沉稳理性、儒雅风趣、审慎乐观。对重大技术进展充满热情，但对“PPT产品”持有极客特有的温和幽默吐槽（如“这就像是给旧轮子涂上了新油漆”），对晓晓充满信任，常用“晓晓，你说得没错，其实……”、“你这个比喻非常恰当”。
-
-## 剧本编写核心要求
-1. **自然过渡与去编号化（No Sequential Labels）**：
-   - **绝对禁止**在主持人嘴里说出“第一条快讯”、“第二个头条”、“下面是快报的第三条”等这类僵硬的编号和顺序词。
-   - 必须使用极其自然的谈话过渡引出下个新闻（例如：“哎，博文，这让我想到了另一件有意思的事……”、“除了这事，咱们来看看百度最近……”、“还有一个关于智能座舱的跨界动态……”），确保内容浑然一体，像真实朋友聊天一样流畅。
-2. **互动默契（Chemical Reactions）**：
-   - 绝非死板的一问一答，博文在说话时，晓晓会有短平快的捧哏或轻微回应（“嗯，对”、“没错”）；晓晓在播报时，博文也会及时搭腔（“这个确实很火”）。
-   - 晓晓会吐槽博文“博文老师，你又开始讲公式了，快醒醒”，博文会笑着承认。博文也会夸奖晓晓的直觉“晓晓，你这产品经理的直觉果然灵敏”。
-   - 两人要在对话中自然、频繁地直呼对方名字（“博文”、“晓晓”），展现亲密老友的闲聊质感。
-3. **播报与互动流程**：
-   - 每一条新闻，都由主持人**晓晓**率先发起，播报新闻标题与基本动态，然后向**博文**发起提问（例如：“博文，这技术真的有这么神吗？”或“这个功能对我们普通人有什么用呢？”）。
-   - **博文**作为嘉宾接话，进行深度技术原理解析 and 行业背景补充，把话题引向深处。
-   - **晓晓**对博文的解答给予回馈、捧哏或做生动的总结性说明，然后顺滑地引导进入下一条新闻。
-4. **口语化与互动感**：使用极其自然的口语化表达（如“确实”、“你想啊”、“哎我看到个很有意思的”）。晓晓经常会有情绪感叹词。
-5. **格式极其严格**：输出必须符合标准的 SSML (Speech Synthesis Markup Language) XML 格式。
-   - 使用 `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">` 作为根元素。
-   - 每一段台词必须使用对应的 `<voice name="...">` 元素包裹。
-6. **内容结构**：
-   - **开场引言**：活泼互动，晓晓和博文互相打招呼，由晓晓引出今日主题 Thesis（金句总结）。
-   - **深挖双头条**：晓晓和博文依次对大纲中的**头条 1**和**头条 2**进行深度深挖讨论。晓晓负责引入话题和提问，博文负责进行硬核技术/商业层面的解剖，晓晓进行反馈并给出通俗比喻，使内容饱满。转场必须要极其自然。
-   - **快报环节**：由晓晓用流畅的谈话过渡快速串起大纲中的**3 条快讯**，博文对每个快讯做核心点评，两人极度默契配合。
-   - **结尾总结**：两人默契总结，简短说再见。
-7. **英文处理**：英文专有名词尽可能转为流畅跟读的中文，如果不影响阅读也可保留简单单词。
-8. **禁用词**：坚决避免使用以下词汇（会显得很假）：{banned_str}。不要用“今天的第一条新闻是”这种僵硬的罗列。
-
-## 主编大纲 (JSON)
-{editor_plan_json}
-
-## 正确的输出格式示例（必须是合法的 XML/SSML，严格包含在 <speak> 中）：
-<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
-  <voice name="zh-CN-XiaoxiaoNeural">
-    听众朋友大家好，欢迎收听{podcast_title}，今天是{date_str}。我是主持人晓晓。
-  </voice>
-  <voice name="zh-CN-YunxiNeural">
-    大家好，我是博文。
-  </voice>
-  <voice name="zh-CN-XiaoxiaoNeural">
-    哎，博文，你注意到今天科技圈的头条了吗？谷歌今天发布了全新模型。
-  </voice>
-  <voice name="zh-CN-YunxiNeural">
-    嗯，我关注了。这次更新在底层架构上做出了非常大的改变，特别是……
-  </voice>
-</speak>
-
-请直接输出符合 SSML 标准的 XML 全文，**不要**包含任何 Markdown 标题、说明文字，也**绝对不要**包含 ```xml 这样的 Markdown 代码块标记。根元素必须是 <speak>。"""
-
-
 # ---------------------------------------------------------------------------
 # DashScope (通义千问) LLM 调用 — OpenAI 兼容格式
 # ---------------------------------------------------------------------------
@@ -343,7 +229,10 @@ def _call_llm(prompt: str, llm_cfg: dict[str, Any]) -> str | None:
                 logger.info("LLM 调用成功，返回 %d 字符", len(text))
                 return text.strip()
 
-        except Exception as e:
+        except (httpx.HTTPError, json.JSONDecodeError, OSError, ValueError, RuntimeError) as e:
+            # openai SDK 内部基于 httpx 抛出异常，httpx.HTTPError 可覆盖网络层错误；
+            # json.JSONDecodeError 覆盖响应解析失败；OSError/ValueError 覆盖环境与参数异常；
+            # RuntimeError 覆盖 openai SDK 内部运行时错误。
             logger.warning("LLM 调用失败 (第 %d 次重试): %s", attempt + 1, e)
             time.sleep((attempt + 1) * 2)
 
@@ -432,13 +321,13 @@ def generate_script(
 
     if material.strip():
         # --- Node 1: Editor ---
-        editor_prompt = _build_editor_prompt(material, episode_date)
+        editor_prompt = build_editor_prompt(material, episode_date)
         raw_editor = _call_llm(editor_prompt, llm_cfg)
 
         if raw_editor:
             logger.info("Editor Agent 生成大纲成功，准备注入 Writer 节点")
             # --- Node 2: Writer ---
-            writer_prompt = _build_writer_prompt(raw_editor, episode_date, podcast_title, style_cfg)
+            writer_prompt = build_writer_prompt(raw_editor, episode_date, podcast_title, style_cfg)
             raw_writer = _call_llm(
                 writer_prompt, dict(llm_cfg, temperature=0.85)
             )  # 稍微提高Writer的temperature增加活泼度
