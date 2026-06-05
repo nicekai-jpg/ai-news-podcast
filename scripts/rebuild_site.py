@@ -1,7 +1,7 @@
-import sys
-import json
+# ruff: noqa: E402
 import shutil
-import yaml
+import sys
+from datetime import datetime
 from pathlib import Path
 
 # Add project src to path
@@ -11,23 +11,23 @@ sys.path.insert(0, str(project_root / "src"))
 from ai_news_podcast.site_builder.html_gen import build_index_html
 from ai_news_podcast.utils import read_json, read_yaml
 
+
 def rebuild():
     print("Starting site rebuild...")
     cfg = read_yaml(project_root / "config/config.yaml")
     podcast_cfg = cfg.get("podcast", {})
     build_cfg = cfg.get("build", {})
-    
+
     podcast_title = str(podcast_cfg.get("title") or "AI 新闻播客").strip()
     site_dir = project_root / str(build_cfg.get("site_dir") or "site")
     episodes_index = project_root / str(build_cfg.get("episodes_index") or "data/episodes.json")
-    
+
     # Load episodes
     episodes = read_json(episodes_index)
     if not isinstance(episodes, list):
         episodes = []
-        
+
     # Sort episodes by date reverse
-    from datetime import datetime
     episodes_sorted = sorted(
         episodes,
         key=lambda ep: datetime.fromisoformat(
@@ -35,7 +35,7 @@ def rebuild():
         ),
         reverse=True,
     )
-    
+
     processed_episodes = []
     for ep in episodes_sorted:
         ep_copy = ep.copy()
@@ -47,7 +47,7 @@ def rebuild():
 
     print(f"Rebuilding index.html in {site_dir}...")
     build_index_html(site_dir, podcast_title, processed_episodes, "http://localhost:8000/site")
-    
+
     # Now sync site to data/_preview
     preview_dir = project_root / "data/_preview"
     if preview_dir.exists():
@@ -69,8 +69,9 @@ def rebuild():
             for f in site_rep_dir.glob("*"):
                 if f.is_file():
                     shutil.copy(f, preview_rep_dir / f.name)
-    
+
     print("Rebuild and sync complete!")
+
 
 if __name__ == "__main__":
     rebuild()
