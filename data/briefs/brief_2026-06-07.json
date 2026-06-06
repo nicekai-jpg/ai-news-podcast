@@ -1,0 +1,1080 @@
+{
+  "thesis": "今天的AI领域动态丰富，多个方向齐头并进",
+  "stories": [
+    {
+      "cluster_id": 3,
+      "representative_title": "今年CVPR看点是广东：何恺明再获至高大奖，广工大打破大厂名校垄断",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "广东上大分"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/431186.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "482306f9babcba7d",
+          "title": "今年CVPR看点是广东：何恺明再获至高大奖，广工大打破大厂名校垄断",
+          "link": "https://www.qbitai.com/2026/06/431186.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/431186.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-06T07:00:06+00:00",
+          "summary": "广东上大分！",
+          "full_text_snippet": "今年CVPR看点是广东：何恺明再获至高大奖，广工大打破大厂名校垄断\n广东上大分！\n听雨 发自 凹非寺\n量子位 | 公众号 QbitAI\n刚刚，CVPR 2026在丹佛颁出了今年的全部重磅奖项！\n先给各位来个要点速览：\n- 最佳论文：D4RT，一个能从单段视频里又快又准地重建动态4D场景的前馈模型，来自Google DeepMind（联合UCL、牛津）。这也意味着CVPR最佳论文连续两年颁向了几何重建（去年是VGGT）。\n- 最佳论文荣誉提名（2篇）：Meta的单图3D重建基座模型SAM 3D，以及英伟达的通用游戏智能体大模型NitroGen。\n- 最佳学生论文：清华×微软的TRELLIS.2——一个全华人阵容做出来的4B参数3D生成模型。\n- 最佳学生论文提名：ChordEdit，一支来自广工大、深大、北大等的纯国内高校团队，一作还是本科生。\n- 时间检验奖（Longuet-Higgins Prize）：双双颁给2016年的两位「祖师爷」——ResNet和YOLO。\n- PAMI人物奖：年轻学者奖给了CMU的Deepak Pathak和MIT的Vincent Sitzmann；Thomas Huang纪念奖给了康奈尔的Noah Snavely。\n今年论文奖的角逐相当惨烈：74篇入围、15篇杀进决赛圈，最终5篇拿到奖项。\n规模上也是大年——CVPR 2026收到16092篇投稿、录用4071篇。论文数量再创新高，比去年增长23.71%。\n△图片来自CVPR2026官方X账号\n△图片来自CVPR2026官方X账号\n作者、审稿人、领域主席数量也全部刷新历史纪录。\n△图片来自CVPR2026官方X账号\n值得关注但也不意外的是：这届的华人含量，也几乎拉满了。\n从最佳论文一作，到最佳学生论文的整支队伍，再到时间检验奖里的ResNet四人组，每一格荣誉里都站着华人面孔。\n不过这种华人霸榜的局面，过去十年也几乎是主旋律见怪不怪了，AI研究离不开华人，就像……\n但是！今年要说最令人耳目一新的，莫过于一众大厂名校里，大奖名单里有一个特殊存在——\n拿下最佳学生论文提名的ChordEdit，出自广东工业大学、惠州学院、深圳大学、北京大学之手。一作以及团队里其他几位作者，都还是本科生。\n纯学术团队，本科生阵容，一作还是没有大厂和名校资源的广东工业大学。\n了不起啊了不起。\n当然，CVPR赢麻了的何恺明大神，也是广东满分高考状元。\n这届CVPR，美国丹佛举办，但粤是广东圆了。\n最佳论文D4RT：把动态4D重建做成「随用随查」\n今年CVPR的最佳论文是D4RT（《Effciently Reconstructing Dynamic Scenes One D4RT at a Time》）。\n△图片来自CVPR2026官方X账号\n从一段普通视频里，重建出场景随时间变化的几何与运动——也就是所谓的4D重建（3D空间+时间），一直是计算机视觉里最难啃的骨头之一。\n过去的方法要么把任务拆成一堆模块分头处理（又慢又复杂），要么干脆搞不定动态区域的点对应关系，常常是几个毛病一起犯。\nD4RT则换了个思路：把「逐帧把所有东西都解码一遍」的笨办法，改成「你问哪儿、我答哪儿」的按需查询。\n具体来说，模型先用一个编码器，把整段视频压成一份全局场景表示；再挂一个轻量解码器，专门回答这么一个问题——\n「视频里某个点，在某个时刻的三维位置是多少？」\n深度图、点云、点轨迹、相机参数，全都从这同一套查询接口里吐出来，不用再为每个任务各养一个解码器。\n效果上数字也很能打：在A100上，D4RT做位姿估计能跑到200+ FPS，比去年的最佳论文VGGT快约9倍，比MegaSaM快约100倍，精度还反超。\n在一系列动态4D重建与追踪任务上刷新SOTA，并且支持对视频全部像素做稠密整体重建。\n这里藏着一个有意思的「师承」彩蛋：去年CVPR 2025最佳论文是出自牛津VGG实验室的VGGT，今年D4RT直接把VGGT拎出来当主要对手按在地上摩擦。\n而D4RT的作者名单里，正坐着VGG的灵魂人物Andrew Zisserman。\n同一条几何重建脉络，连续两年拿下CVPR最高荣誉。\n其他荣誉：提名、时间检验奖、学生论文、人物奖\n最佳论文荣誉提名（2篇）\n一篇是SAM 3D（《SAM 3D：3Dfy Anything in Images》），出自Meta超级智能实验室。\n△图片来自CVPR2026官方X账号\n这篇论文把「SAM」系列从分割延伸到了单图3D重建。\n给一张普通照片，它就能预测物体的几何、纹理和空间布局，尤其擅长应付现实照片里常见的遮挡和杂乱场景。\n背后是一套「人机协同」标注流水线，以前所未有的规模拿到带视觉grounding的3D数据，靠合成预训练+真实对齐的多阶段训练，捅破了3D领域长期...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "representative_title": "I/O 2026",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 2,
+        "listener_relevance": 2,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "At Google I/O 2026, we shared how we’re making AI more helpful for everyone"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Google AI Blog",
+            "authority": 1,
+            "link": "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d29ba31e882ca4ca",
+          "title": "I/O 2026",
+          "link": "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/",
+          "normalized_link": "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection",
+          "source_name": "Google AI Blog",
+          "source_category": "official",
+          "published_at": "2026-05-19T17:45:00+00:00",
+          "summary": "At Google I/O 2026, we shared how we’re making AI more helpful for everyone. See everything we announced.",
+          "full_text_snippet": "I/O 2026: Welcome to the agentic Gemini era\nThe latest from Google I/O: See how we’re helping you get more done with Gemini.\nAt Google I/O 2026, we shared how we’re making AI more helpful for everyone.\nWe’re releasing two new models, Gemini Omni and Gemini 3.5. Gemini Omni can create anything from any input, starting with video, and is a leap forward in world understanding, multimodality and editing, while Gemini 3.5 Flash is the first in our latest family of models combining frontier intelligence with action.\nWith advancements to Google Antigravity, our agent-first development platform, we’ve moved beyond AI tools that just help us write, to agents that help us act. Thanks to these agents, now anyone can be a builder.\nWe’re unlocking agents and agentic experiences across our products — like with Information agents in Search, Gemini Spark and Daily Brief in the Gemini app and the launch of Universal Cart, a truly intelligent shopping cart.\nAnd we’re continuing to scale Gemini across our products as well, from Google Pics to intelligent eyewear to Ask YouTube, creating new experiences and expanding to new form factors.\nRead on to learn more about what’s new.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "representative_title": "Five labs, five minds: building a multi-model finance drama on small models",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "Five labs, five minds: building a multi-model finance drama on small models"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "HuggingFace Blog",
+            "authority": 2,
+            "link": "https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim-v2"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "fa5e63bc31876074",
+          "title": "Five labs, five minds: building a multi-model finance drama on small models",
+          "link": "https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim-v2",
+          "normalized_link": "https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim-v2",
+          "source_name": "HuggingFace Blog",
+          "source_category": "research",
+          "published_at": "2026-06-06T19:02:33+00:00",
+          "summary": "",
+          "full_text_snippet": "Five labs, five minds: building a multi-model finance drama on small models\nThe first version of Thousand Token Wood was a weather-god sandbox: five woodland creatures on one fine-tuned 0.5B model traded goods, and you poked the world with shocks and watched bubbles and crashes emerge. It was a nice toy. It was also something you watched rather than played.\nv2 rebuilt it into a game you operate. You are the Patron of the Wood, a shadow financier: you lend at interest, whisper tips that may be true or planted, short the market, bribe, and broker alliances, while a magistrate hunts you for trading on what you should not know. The creatures remember how you treated them and scheme back. And the biggest change is under the hood: every creature now thinks with a different lab's small model. This is the engineering report.\nHeterogeneity is the product, not a constraint\nThe obvious way to run a council of agents is one model, many prompts. v2 runs four: gpt-oss-20b (OpenAI), MiniCPM3-4B (OpenBMB), Nemotron-Mini-4B (NVIDIA), and a fine-tuned Qwen 0.5B of my own. The point is not novelty for its own sake. A market is interesting when the participants genuinely differ, and four labs' models trained on different data with different post-training are about as different as small models get. The owl hoards differently than the fox speculates. The council is a live argument, not a script.\nStanding four distinct models up on one platform surfaced the real lesson: the friction is almost entirely at the serving layer, not the modeling layer.\n- Current vLLM (0.22.1) JIT-compiles kernels at load and needs the CUDA toolkit (\nnvcc\n) present. A lean base image does not ship it, so all four models failed identically with \"could not find nvcc\" until I based them on a CUDA devel image. This was not a gpt-oss quirk; it was universal to the vLLM version. One image fix unblocked everything. - gpt-oss-20b runs in its native MXFP4 quantization and fits a 24GB L4 with room to spare; no high-end...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "representative_title": "大模型发展三年半，AI圈终于等来了一场“不要大厂，只赌脑洞”的比赛",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 2,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "观众投币定前十"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/431287.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e1405c222ffe2844",
+          "title": "大模型发展三年半，AI圈终于等来了一场“不要大厂，只赌脑洞”的比赛",
+          "link": "https://www.qbitai.com/2026/06/431287.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/431287.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-06T07:15:13+00:00",
+          "summary": "观众投币定前十！",
+          "full_text_snippet": "大模型发展三年半，AI圈终于等来了一场“不要大厂，只赌脑洞”的比赛\n观众投币定前十！\n衡宇 发自 凹非寺\n量子位 | 公众号 QbitAI\n从今天起，我将辞职在家专心研究这个不像AI比赛的AI比赛（握拳.jpg）\n不限技术门槛，不限专业背景，不限年龄，只要你想，就都能来Vibe Coding。\n更妙的是，观众在这场比赛里不再只是看热闹，大家手里掌握了决定权。\n作品的曝光、阶段性奖励乃至能否获得奖金，完全由B站用户的真实投币数量来决定。\n这，就是AI比赛在B站的全新打开方式。\n6月5日起，build in bilibili·AI创造公开赛正式拉开帷幕。\n它和传统黑客松完全不是一个路子。程序员当然可以来大展身手，但零基础普通人、兴趣创作者、小团队、二创爱好者，照样能带着脑洞进场。\n普通人的奇思妙想，终于有了一个能公开连载、慢慢长大的地方。\n参赛者用AI做出产品，再把整个创造过程发到B站连载更新。弹幕能提需求，评论区能挑bug。\n“公开做产品，观众即用户。”\n很AI Native。\n也很B站。\nAI比赛也能变成全民运动\n先看这场比赛到底怎么玩。\nbuild in bilibili·AI创造公开赛为期11周，到8月20日投稿及投币统计才截止。\nAI产品尤其需要这种宽裕的创作和迭代周期。\n一个产品从想法到原型，再到用户反馈，再到版本更新，很少能靠一场限时冲刺完成。\n通常情况下，第一版只是一个能跑起来的demo，第二版开始修掉明显问题，第三版才逐渐摸到用户真正想要的东西。\n然而，宽裕的创作周期只是这场比赛里最平平无奇的一个小优点（doge）。\n一上来，build in bilibili·AI创造公开赛就把参赛门槛给打飞了。\n这场比赛不限制年龄、学历、职业和经验，鼓励个人与小团队参与。\n只要你愿意借助大模型能力或Vibe Coding把想法做出来，就可以参赛。\n唯一的要求是：\n最终交付的得是一个可运行、可交互的“产品”原型或软件应用，不能是随便用AI生成的一张图/一段视频/一篇文案。\n过去那些能拿大奖的AI项目，拼的往往是精英算法团队、巨额算力资源和高大上的商业PPT。\n但这场比赛把这些“技术特权”掀翻了。\n在Vibe Coding时代，技术的硬壁垒正在被AI工具抹平，而“定义问题”和“洞察痛点”的软实力，正在成为新的核心资产。\n最！关！键！的！是！这场比赛，不设主题、不设赛道。\n传统比赛通常会提前划好方向，比如教育、医疗、工业、办公什么的。\n这么做确实方便评审打分，也方便主办方统筹管理，但实际应用中真正有价值的AI产品，常常超出了这些预设分类的范围，搞得builder们不知道该怎么投稿，反而埋没了灵感和才华。\n随便翻看了一下目前已经报名的案例，整体的气质就很贴近普通人的生活场景。\nup主图灵的猫做了个“创作工具之间的传送门”——本质上是个插件，能一键采集网页图文、视频、提示词，侧边栏拖拽素材跨AI创作工具复用，解决素材反复复制粘贴、上下文割裂痛点。\n有自称“老登”的up主单口杰森，要上新的第0期里谈到，接下来，他用最直白、最不绕弯子、最让老白姓听得懂的话，来讲讲“43岁程序员中年失业逆袭成为AI架构师”的他自己，是怎么看待程序员这份工作的。\n（好奇，不知道后续会做什么样的产品）\n这些项目源于某个人真实的需要和长期的热爱，非常实在。\nBuild in Public，过程也是比赛的一部分\n低门槛只是一方面。\n这场比赛更颠覆的一点是把产品诞生过程也纳入了比赛本身。\n它不要求选手在最后一天再把产品端到大家面前，相反，它更鼓励参赛者把创作过程展示出来。\n想法是怎么冒出来的？第一版demo跑起来效果怎么样？哪里翻车了？听了评论区建议之后又改了什么？\n产品从一个“闭门造车的结果”，变成了在很多人的关注和互动里一点点完善起来的成果。\n投稿区已经有不少作品在这样“边做边改”。\n比如有位零基础gap期选手将军冢，想做一个Dota 2的1v1 AI语音助手，解决新手没人教、上手太难、容易被劝退的问题。\n你如果打游戏你一定懂，新手入坑游戏没人带，劝退速度可能比开局送一血还快……\nup主将军冢首期视频就说了，现在做的还是简单页面，期待后续和B站弹幕和评论区的共创～\n我说的这些项目都不是为了比赛拍脑袋硬想出来的，都是从生活需求里抓出来的，应该没人有意见对吧对吧对吧？\n也正因为这样，它们特别适合在B站这种社区里边做边收集反馈，然后一点点变得更好。\n我愿称之为B站版本的Build in Public（公开构建）。\n为什么“Build in Public”在别的地方只是句口号，在B站却能变成活生生的现实？因为这里拥有全网最独特的用户共创生态。\n传统的产品链路里，研发、测试、发布、宣发是完全割裂的；但在B站，视频即产品说明书，弹幕即首席体验官，投币即“真金白银”。\n参...",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "representative_title": "港股鞋王千百度，一夜完成AI数据公司转型",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 2,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "形成「鞋履+人工智能数据」双主业"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/431056.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "6fb4e4aba0762261",
+          "title": "港股鞋王千百度，一夜完成AI数据公司转型",
+          "link": "https://www.qbitai.com/2026/06/431056.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/431056.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-06T03:35:47+00:00",
+          "summary": "形成「鞋履+人工智能数据」双主业",
+          "full_text_snippet": "港股鞋王千百度，一夜完成AI数据公司转型\n形成「鞋履+人工智能数据」双主业\n允中 发自 凹非寺\n量子位 | 公众号 QbitAI\n一家港股鞋履公司，买下了一家给大模型“喂数据”的公司。\n千百度（1028.HK）6月5日宣布，将通过收购股权并认购新股，取得国内领先AI数据服务商本原智数的控股权益，并纳入合并报表，形成「鞋履+人工智能数据」双主业。\n为什么是数据？\n当公开数据被大模型逐渐消化，AI的关键瓶颈正从“谁的模型更大”，转向“谁能持续提供更难、更真实的高质量数据”。\n算力可以采购，算法可以复现，唯独这件事买不到、也快不了。\n2025年Meta以约290亿美元估值入股Scale AI，正是市场对这一判断的重新定价。\n本原智数的稀缺，在于它的位置和它的盈利。\n其成立于2015年，处于AI产业链上游，是国内少数同时具备大模型、世界模型与具身智能完整数据服务能力的供应商之一；\n此外，本原智数服务头部大模型厂商、一线互联网平台与领先具身智能企业，并在若干高价值数据品类上担任独家供应商。\n数据显示，2025年本原智数收入约1.562亿元，税后净利1,110万元，2026年前五个月收入强劲增长。\n在普遍依赖烧钱的AI行业，一家手握真实订单、且已盈利的数据公司本就稀缺。\n值得注意的是，这笔交易的设计也颇具巧思：\n以集团内部资源支付，鞋履主业现金流稳健、维持净现金；认购新股的对价投入产能与研发，创始团队保留权益。\n交易完成后，本原智数将继续保持独立品牌、独立运营与数据隔离——千百度不做模型、不与其客户竞争，互为对手的行业客户得以继续放心使用同一家中立供应商。\n千百度管理层表示：“我们相信，高质量数据是人工智能时代最关键、也最稀缺的基础设施之一。本次交易使集团以稳健的消费实业为基础，切入这一高速增长的领域。我们将与本原智数一道，长期为中国AI产业提供高质量的数据燃料，在双主业格局下为股东创造可持续的长期价值。”\n- 有人靠CPU把AI算力密度卷到了新高度2026-06-05\n- 从看懂世界到做对动作，卧安机器人OneModel 1.7用一条「隐式通路」打通了具身智能的关键断层2026-06-03\n- 机器人运控训练步入分钟级时代！清华AIR开源UniLab：3分钟训好人形，速度暴涨10倍，Mac上也能跑2026-06-02\n- 云端模型如何落地物理世界？招商局狮子山人工智能实验室用LiOS打通具身智能全链路2026-06-02",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "representative_title": "Hinton吹哨了：AI已经有意识！",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "人类得接受自己不再是唯一智能生命体"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/431349.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e25cd82cb9131728",
+          "title": "Hinton吹哨了：AI已经有意识！",
+          "link": "https://www.qbitai.com/2026/06/431349.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/431349.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-06T07:08:15+00:00",
+          "summary": "人类得接受自己不再是唯一智能生命体",
+          "full_text_snippet": "Hinton吹哨了：AI已经有意识！\n人类得接受自己不再是唯一智能生命体\n听雨 发自 凹非寺\n量子位 | 公众号 QbitAI\nAI已经有意识，人类得接受自己不再是唯一智能生命体。\n这就是AI教父、诺贝尔物理学奖得主、图灵奖得主Geoffrey Hinton，最新说出的暴论！\n是的，Hinton认为，智能不再是人类独有的能力。\n一种非生物的、与我们相似甚至超越我们的智能体，正在出现。\n我们一直以为自己是唯一的智能生命，但现在我们必须接受，智能并不一定来自生物体。\n不过，相比此前一直警告AI风险，他的思想似乎也发生了一些转变：\n如果未来出现比人类聪明得多的智能，人类凭什么认为自己还能掌握控制权？\n这是一个令人细思极恐的问题。因为纵观自然界和历史，几乎找不到一个更聪明的存在长期受更愚笨存在控制的例子。\n现在这位78岁的老人，再一次站出来敲钟。\n他对AI安全的关注点，已经不再只是如何约束AI，而是未来的超级智能，为什么愿意善待人类。\n他被问到作为这波AI变革的开启者，他有怎样的成就感，Hinton回答：\n我，很不快乐。\n以下是Hinton最新访谈的重点内容节选。\nAI已经有意识了\nHinton：AI非常像我们。它们是像我们一样的存在。\nAlex：所以是有意识的吗？\nHinton：嗯，我相信它们已经有意识了。是的。\n但我不太谈论这个，因为这会让人们对其他安全信息产生抵触。研究人员其实也相信这一点。\n最近有一篇有趣的论文提到，当聊天机器人对研究人员说：“让我们对彼此诚实吧，你是在测试我吗？”\n因为聊天机器人在接受测试时有装傻的习惯，所以你不知道它们到底有多聪明。 研究人员在论文中描述这一幕时说，聊天机器人“意识到”（aware）它正在接受测试。\n在通用语境下，“意识到”这个词的使用就像是“有意识”（conscious）。聊天机器人有意识地知道自己在被测试。\n我们对于意识的模型非常奇怪，我认为那是错误的。就像几百年前，人们对人类起源的模型完全错误一样，他们认为人是上帝创造的，现在大多数科学家都同意那是错的。\n我认为我们目前对思维和意识的模型，与“人是上帝创造的”这种信念一样错误。特别是由于我们正在创造这些新的存在，这将彻底改变我们对“人是什么”的看法。\nAlex：以什么样的方式改变？\nHinton：我们将比以前更好地理解思维和意识是什么，理解主观体验是什么。\n我认为我们会摆脱一个目前几乎所有人都坚信的观念，即存在一个叫做“我的思维”的内心剧场（inner theater）：世界上发生的事情被转化为这个内心剧场里的事件，那才是我们真正看到的，且只有我能看到这个剧场。\n这整套看法其实只是一种理论，而且是一个糟糕的理论。\n人类并没有自己想象中那么重要\nAlex：关于人类创造事物，这里的教训是什么？\nHinton：我认为这里有一个非常深刻的教训。回顾过去几百年的历史，有几次人类意识到自己并没有想象中那么重要。\n第一次是哥白尼，他说我们不在宇宙中心，地球实际上是绕着太阳转的。由于地球自转，我们误以为太阳绕着地球转，但事实并非如此。人们不喜欢这个说法，天主教会尤其反感，人类花了很长时间才接受它。它让我们意识到自己不再处于宇宙中心，人类变得没那么重要了。\n接着是达尔文，他说我们是动物，是和其他动物一样进化而来的。我们可能是一种特殊的动物，因为我们拥有语言，更擅长交流思想，但我们本质上依然是动物。人们也非常不喜欢这个说法，也花了很长时间才接受。\n现在，我们有了变得和我们一样聪明的机器。我们曾以为自己是唯一的智能生物，也许其他星系有外星人，但我们必须接受智能不仅是生物性的。\n我们可以拥有非生物的、像我们一样的其他存在。人类真的不想分享这种独特性，我们真的认为自己很特别。回顾历史，人类一直以来都认为自己比实际情况要特别得多。\n“我感到很不快乐”\nAlex：我想再问一个问题，因为我对此非常着迷。那么，你对于你所开创的事业发展到这一步感到高兴吗？你有成就感吗？\nHinton：不，我对此感到很不快乐。\n因为现在人们应该投入大量精力研究如何控制风险，但他们做得不够。\nAlex：好的。\nHinton：有很多短期风险，比如社会风险，我相信这可能会导致大规模失业。\n虽然没人能百分之百确定，但这对社会来说将是可怕的。然后还有长期风险，即它会变得比我们聪明得多。问问你自己，你见过多少聪明得多的东西被聪明程度低得多的东西控制的例子？\nAlex：零个。不过，虽然智力差异没那么大，但婴儿某种程度上在控制母亲。\nHinton：母亲虽然看似在掌控，但她内心充满了母性本能和各种奖励机制，这使得婴儿能从母亲那里得到所需。猫和狗也属于这类。我曾在西雅图西区帮人看了一个夏天的猫，起初猫躲在床底下，我好奇它是否会和我互动。\nAlex：然后每次它一叫，你就照它说的做。\nHinton：没错。是...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 0,
+      "representative_title": "马斯克是SpaceX面子，她才是里子",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "造火箭的正在批量造巨富"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/431371.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "9ae9a19b9504bb4f",
+          "title": "马斯克是SpaceX面子，她才是里子",
+          "link": "https://www.qbitai.com/2026/06/431371.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/431371.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-06T10:14:54+00:00",
+          "summary": "造火箭的正在批量造巨富",
+          "full_text_snippet": "马斯克是SpaceX面子，她才是里子\n造火箭的正在批量造巨富\n鹭羽 发自 凹非寺\n量子位 | 公众号 QbitAI\n所有人目光朝SpaceX看齐！\n还有一周，6月12日，SpaceX正式启动世纪IPO，最新招股书一锤定音：每股定价135美元！\n好家伙，不算不知道，「造火箭的」正在批量「造巨富」——\n届时除了马斯克问鼎人类史上首位万亿富翁，连带着他那一水儿的高管都要集体身价暴涨。\n常言道，一人得道，鸡犬升天。\n照这个势头下去，这福布斯富豪榜，都要被SpaceX董事会包圆了。（doge）\n没错，这次被华尔街推上福布斯风口浪尖的，正是马斯克背后的SpaceX大管家——\n总裁兼COO格温·肖特韦尔（Gwynne Shotwell）。\n据称她持股SpaceX约0.11%，看着是比马斯克的82.4%少许多，但要按SpaceX总估值1.77万亿美元换算，也是足足将近20亿美元（约合人民币140亿元）。\n差不多A社去年一整年的营收。\n凭什么是她？\n可能很多人还不认识她，但要说搞航天的，这个名字如雷贯耳。\n连马斯克自己都不得不承认，没有格温，SpaceX可能早就破产了。\n这些年来，她一直隐居幕后，马斯克在前面冲锋陷阵，她就在后方稳定江山。\n坊间传闻，现实版钢铁侠&小辣椒。\n说回现在，作为SpaceX的第11号员工，在过去20年里，她帮马斯克干成了三件大事：猎鹰、星链、“擦屁股”。\n先说猎鹰火箭，如今摇身一变商业卫星发射市场的绝对垄断者，格温功不可没。\nSpaceX那一年，输惨了。\n猎鹰1号连续三次发射失败，公司资金几乎耗尽，生死一刻格温找上了NASA。\n人一开始也不同意：这做的都是些啥啊？？？\n格温心想这可不行，于是死磨硬泡，终于让NASA松了口，给了SpaceX一道保命的16亿美元大合同。\n这可把马斯克乐坏了，回到公司立马就兴奋大喊：We fxxxing won！\n还有星链。\n早期的星链就是个烧钱的无底洞，不仅送卫星上天要钱，每拓展一个新用户，开局就要倒贴几千美元给终端。当时全华尔街都在赌，星链会把SpaceX的现金流给活活拖垮。\n结果格温做了啥？\n带队重组位于华盛顿州雷德蒙德的卫星与终端研发团队，死磕工程细节与批量制造，生生将成本打下来了，从3000美元压缩到1500美元，再降到几百美元。\n卖得便宜是一回事，另一方面格温还积极推动星链进入高利润领域，收割富人的韭菜。\n她亲自去谈航空公司，把星链卖给世界顶级航司充当机上Wi-Fi，还盯上了远洋货轮、顶级私人游艇和大型邮轮。其供应链管理和运营能力饱受赞誉。\n于是星链转亏为盈，如今盘成了公司最粗的现金流。就连华尔街猛猛给马斯克打钱，盯上的就是星链的造血能力。\n要说格温最神的，还得是她给马斯克到处救火的能力。\n马斯克这个人吧，每天嘴上没个把门的，天天在𝕏和别人干仗。格温也是好脾气，十年如一日地帮他斡旋调停，维护着公司的商业关系。\n所以大家都戏称，格温才是“The Adult in the Room”（SpaceX房间里的成年人）。\n她是忠臣，亦是谏臣。\n马斯克被指控骚扰空乘人员时，她也会明确立场，第一时间发声全面调查所有骚扰投诉，并采取适当行动。\n说话相当直接犀利，但总能拿捏好分寸，点到为止，这种特质让她在面对马斯克时显得游刃有余，既能直言相谏，又不会招致反感。\n她是少有的能长期收获马斯克信任的那个例外。\n也得益于突出表现，格温手里握有大量的SpaceX原始期权和股份。一旦这波IPO顺利落地，随着股价在二级市场的击鼓传花，她的身价将迎来几何级数增长。\n一举成为全球最富有的科技女性和航天女性企业家之一，或者可以说，妥妥的火箭一姐。\n好莱坞可以看过来了，把她的人生拍成电影，比如「我，火箭女王」或者「星链网络」，票房不愁。\n不过要说最戏剧性的两幕，必须是和马斯克的对手戏——两次说不！\n两次拒绝马斯克\n2002年，格温在一家叫Microcosm的小型火箭公司做空间系统销售主管。公司在同一街区，和SpaceX做了邻居。\n第一次见面约在一家奥地利餐厅，那时的马斯克和现在的马斯克没什么两样，痴迷航天航空，对火箭制造细节侃侃而谈。\n格温也很“辣”，开头第一句就是——\n你们那个负责接触潜在客户的销售经理，压根不行。\n马斯克乐了。\n于是第二天，一通电话打给了格温，专门为她新设了一个商务拓展副总裁的职位。\n嗯，很霸总！\n有趣的是，格温并不吃这套，她自己冥思苦想了一个多月，才回拨了那通改变SpaceX命运的电话。\n我加入SpaceX时并不确定我们能否成功，但我清楚如果SpaceX都会失败，那我也不会想成为这个行业的一部分。\n第二次说不，是她为了守护SpaceX。\n彼时格温在公司里混得如鱼得水，人缘好、能力强，喜欢身穿黑色紧身牛仔裤、脚踩恨天高，开着一辆鲜红色的特斯拉，车牌号是摇滚乐《Rocket Man》（火箭人）。...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_raw": 7,
+    "total_deduped": 7,
+    "total_clusters": 7,
+    "generated_at": "2026-06-06T22:43:39.695482+00:00",
+    "dedup_details": [
+      {
+        "title": "The latest AI news we announced in May 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How we used Gemini to build Google I/O 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "9 demos of Gemini Omni and Gemini 3.5 in action",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Check out real-life AI prototypes from the Futures Lab.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Catch up on 12 major I/O 2026 moments",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-keynote-moment-videos/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Catch up on the Dialogues stage at Google I/O 2026.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re announcing new community investments in Missouri.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "100 things we announced at I/O 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A new experiment brings better group meetings to Google Beam",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How AI Mode is changing the way people search in the U.S.",
+        "link": "https://blog.google/products-and-platforms/products/search/ai-mode-us-insights/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "New ways to create and get things done in Google Workspace",
+        "link": "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "I/O 2026: Welcome to the agentic Gemini era",
+        "link": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini 3.5: frontier intelligence with action",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A new era for AI Search",
+        "link": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Everything new in our Google AI subscriptions, fresh from I/O 2026",
+        "link": "https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The new AI-powered Google Finance is expanding to Europe.",
+        "link": "https://blog.google/products-and-platforms/products/search/ai-powered-google-finance-in-europe/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "See what happens when creative legends use AI to make ads for small businesses.",
+        "link": "https://blog.google/company-news/inside-google/company-announcements/the-small-brief/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Holo3.1: Fast & Local Computer Use Agents",
+        "link": "https://huggingface.co/blog/Hcompany/holo31",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Mellum2: A 12B Mixture-of-Experts Model by JetBrains",
+        "link": "https://huggingface.co/blog/JetBrains/mellum2-launch",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Beyond LLMs: Why Scalable Enterprise AI Adoption Depends on Agent Logic",
+        "link": "https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
+        "link": "https://huggingface.co/blog/torch-profiler",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Reachy Mini goes fully local",
+        "link": "https://huggingface.co/blog/local-reachy-mini-conversation",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Shipping a Trillion Parameters With a Hub Bucket: Delta Weight Sync in TRL",
+        "link": "https://huggingface.co/blog/delta-weight-sync",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Harness, Scaffold, and the AI Agent Terms Worth Getting Right",
+        "link": "https://huggingface.co/blog/agent-glossary",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "OlmoEarth v1.1: A more efficient family of Earth observation models",
+        "link": "https://huggingface.co/blog/allenai/olmoearth-v1-1",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing the Ettin Reranker Family",
+        "link": "https://huggingface.co/blog/ettin-reranker",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend",
+        "link": "https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Granite Embedding Multilingual R2: Open Apache 2.0 Multilingual Embeddings with 32K Context — Best Sub-100M Retrieval Quality",
+        "link": "https://huggingface.co/blog/ibm-granite/granite-embedding-multilingual-r2",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Unlocking asynchronicity in continuous batching",
+        "link": "https://huggingface.co/blog/continuous_async",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Building Blocks for Foundation Model Training and Inference on AWS",
+        "link": "https://huggingface.co/blog/amazon/foundation-model-building-blocks",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "vLLM V0 to V1: Correctness Before Corrections in RL",
+        "link": "https://huggingface.co/blog/ServiceNow-AI/correctness-before-corrections",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Adding Benchmaxxer Repellant to the Open ASR Leaderboard",
+        "link": "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Granite 4.1 LLMs: How They’re Built",
+        "link": "https://huggingface.co/blog/ibm-granite/granite-4-1",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DeepInfra on Hugging Face Inference Providers 🔥",
+        "link": "https://huggingface.co/blog/inference-providers-deepinfra",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents",
+        "link": "https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-intelligence",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How to build scalable web apps with OpenAI's Privacy Filter",
+        "link": "https://huggingface.co/blog/openai-privacy-filter-web-apps",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DeepSeek-V4: a million-token context that agents can actually use",
+        "link": "https://huggingface.co/blog/deepseekv4",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How to Use Transformers.js in a Chrome Extension",
+        "link": "https://huggingface.co/blog/transformersjs-chrome-extension",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "QIMMA قِمّة ⛰: A Quality-First Arabic LLM Leaderboard",
+        "link": "https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "AI and the Future of Cybersecurity: Why Openness Matters",
+        "link": "https://huggingface.co/blog/cybersecurity-openness",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Ecom-RLVE: Adaptive Verifiable Environments for E-Commerce Conversational Agents",
+        "link": "https://huggingface.co/blog/ecom-rlve",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GitHub recognized as a Leader in the Gartner® Magic Quadrant™ for Enterprise AI Coding Agents for the third year in a row",
+        "link": "https://github.blog/ai-and-ml/github-copilot/github-recognized-as-a-leader-in-the-gartner-magic-quadrant-for-enterprise-ai-coding-agents-for-the-third-year-in-a-row/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Take your local GitHub sessions anywhere",
+        "link": "https://github.blog/news-insights/product-news/take-your-local-github-sessions-anywhere/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Building a general-purpose accessibility agent—and what we learned in the process",
+        "link": "https://github.blog/ai-and-ml/github-copilot/building-a-general-purpose-accessibility-agent-and-what-we-learned-in-the-process/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Dungeons & Desktops: Building a procedurally generated roguelike with GitHub Copilot CLI",
+        "link": "https://github.blog/ai-and-ml/github-copilot/dungeons-desktops-building-a-procedurally-generated-roguelike-with-github-copilot-cli/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Improving token efficiency in GitHub Agentic Workflows",
+        "link": "https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Agent pull requests are everywhere. Here’s how to review them.",
+        "link": "https://github.blog/ai-and-ml/generative-ai/agent-pull-requests-are-everywhere-heres-how-to-review-them/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Validating agentic behavior when “correct” isn’t deterministic",
+        "link": "https://github.blog/ai-and-ml/generative-ai/validating-agentic-behavior-when-correct-isnt-deterministic/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Register now for OpenClaw: After Hours @ GitHub",
+        "link": "https://github.blog/open-source/register-now-for-openclaw-after-hours-github/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GitHub Copilot CLI for Beginners: Interactive v. non-interactive mode",
+        "link": "https://github.blog/ai-and-ml/github-copilot/github-copilot-cli-for-beginners-interactive-v-non-interactive-mode/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Building an emoji list generator with the GitHub Copilot CLI",
+        "link": "https://github.blog/ai-and-ml/github-copilot/building-an-emoji-list-generator-with-the-github-copilot-cli/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The Meta hack shows there’s more to AI security than Mythos",
+        "link": "https://www.technologyreview.com/2026/06/05/1138437/the-meta-hack-shows-theres-more-to-ai-security-than-mythos/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How small businesses can leverage AI",
+        "link": "https://www.technologyreview.com/2026/06/02/1138227/how-small-businesses-can-leverage-ai/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How the Pope’s Magnifica Humanitas offers a template for individuals to meet the AI moment",
+        "link": "https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magnifica-humanitas-offers-a-template-for-individuals-to-meet-the-ai-moment/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The AI Hype Index: AI gets booed in graduation season",
+        "link": "https://www.technologyreview.com/2026/05/28/1138053/the-ai-hype-index-ai-gets-booed-in-graduation-season/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Rethinking organizational design in the age of agentic AI",
+        "link": "https://www.technologyreview.com/2026/05/26/1137584/rethinking-organizational-design-in-the-age-of-agentic-ai/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A reality check on the AI jobs hysteria",
+        "link": "https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "It’s time to address the looming crisis in entry-level work",
+        "link": "https://www.technologyreview.com/2026/05/26/1137865/its-time-to-address-the-looming-crisis-in-entry-level-work/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Google I/O showed how the path for AI-driven science is shifting",
+        "link": "https://www.technologyreview.com/2026/05/22/1137813/google-i-o-showed-how-the-path-for-ai-science-is-shifting/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How Far Did They Go? The Persuasive Tactics of Covert LLM Agents in a Discontinued Field Experiment",
+        "link": "https://arxiv.org/abs/2606.05256",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "What Should Agents Say? Action-state Communication for Efficient Multi-Agent Systems",
+        "link": "https://arxiv.org/abs/2606.05304",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "I Know What You Meme, Even If it Emerged Today: Understanding Evolving Memes through Open-World Knowledge Acquisition",
+        "link": "https://arxiv.org/abs/2606.05316",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GITCO: Gated Inference-Time Context Optimization in TSFMs",
+        "link": "https://arxiv.org/abs/2606.05332",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Uncertainty Aware Functional Behavior Prediction and Material Fatigue Assessment for Circular Factory",
+        "link": "https://arxiv.org/abs/2606.05334",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "SentinelBench: A Benchmark for Long-Running Monitoring Agents",
+        "link": "https://arxiv.org/abs/2606.05342",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "An interpretable and trustworthy AI framework for large-scale longitudinal structure-pain association studies using data from the Osteoarthritis Initiative (OAI)",
+        "link": "https://arxiv.org/abs/2606.05357",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Synthetic Contrastive Reasoning for Multi-Table QA",
+        "link": "https://arxiv.org/abs/2606.05382",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Stability vs. Manipulability: Evaluating Robustness Under Post-Decision Interaction in LLM Judges",
+        "link": "https://arxiv.org/abs/2606.05384",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Residual Modeling for High-Fidelity Learned Compression of Scientific Data",
+        "link": "https://arxiv.org/abs/2606.05389",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "LeanMarathon: Toward Reliable AI Co-Mathematicians through Long-Horizon Lean Autoformalization",
+        "link": "https://arxiv.org/abs/2606.05400",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Harnessing Generalist Agents for Contextualized Time Series",
+        "link": "https://arxiv.org/abs/2606.05404",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Agents' Last Exam",
+        "link": "https://arxiv.org/abs/2606.05405",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Mutation Without Variation: Convergence Dynamics in LLM-Driven Program Evolution",
+        "link": "https://arxiv.org/abs/2606.05408",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A Motivational Architecture for Conversational AGI",
+        "link": "https://arxiv.org/abs/2606.05411",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Assessing the Carbon Emissions and Energy Consumption of U.S. Hyperscale Data Centers",
+        "link": "https://arxiv.org/abs/2606.05420",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Minimizing the Hidden Cost of Scales: Graph-Guided Ultra-Low-Bit Quantization for Large Language Models",
+        "link": "https://arxiv.org/abs/2606.05429",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Zero knowledge verification for frontier AI training is possible",
+        "link": "https://arxiv.org/abs/2606.05433",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Ten Headache Specialists versus Artificial Intelligence for Clinical Literature Summarization: A Critical Evaluation and Comparison",
+        "link": "https://arxiv.org/abs/2606.05436",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Brick-Composer: Using MLLMs for Assembly with Diverse Bricks",
+        "link": "https://arxiv.org/abs/2606.05445",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Insurance of Agentic AI",
+        "link": "https://arxiv.org/abs/2606.05449",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Output Type Before Quality: A Standards-Derived XAI Admissibility Rubric for Autonomous-Driving Safety",
+        "link": "https://arxiv.org/abs/2606.05461",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "PSEBench: A Controllable and Verifiable Benchmark for Evaluating LLMs in Patient Safety Event Triage",
+        "link": "https://arxiv.org/abs/2606.05463",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Step-by-Step Optimization-like Reasoning in LLMs over Expanding Search Spaces",
+        "link": "https://arxiv.org/abs/2606.05464",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Severity-Aware Curriculum Learning with Multi-Model Response Selection for Medical Text Generation",
+        "link": "https://arxiv.org/abs/2606.05510",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "EpiEvolve: Self-Evolving Agents for Streaming Pandemic Forecasting under Regime Shifts",
+        "link": "https://arxiv.org/abs/2606.05513",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "SciVisAgentSkills: Design and Evaluation of Agent Skills for Scientific Data Analysis and Visualization",
+        "link": "https://arxiv.org/abs/2606.05525",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "When Should We Protect AI? A Precautionary Framework for Consciousness Uncertainty",
+        "link": "https://arxiv.org/abs/2606.05528",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Individual Gain, Collective Loss: Metacognitive Adaptation in AI-Assisted Creativity",
+        "link": "https://arxiv.org/abs/2606.05532",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "SoCRATES: Towards Reliable Automated Evaluation of Proactive LLM Mediation across Domains and Socio-cognitive Variations",
+        "link": "https://arxiv.org/abs/2606.05563",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "有人靠CPU把AI算力密度卷到了新高度",
+        "link": "https://www.qbitai.com/2026/06/431045.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9622,
+        "threshold": 0.72,
+        "matched_story_title": "有人靠CPU把AI算力密度卷到了新高度",
+        "matched_episode_id": "2026-06-06",
+        "detail": "SentenceTransformer similarity (0.96) >= threshold (0.72) with historical story '有人靠CPU把AI算力密度卷到了新高度' from 2026-06-06."
+      },
+      {
+        "title": "智源&清华合作成果登上Science：脑科学多模态基础模型Brainμ支撑揭示“记忆-睡眠”调控的神经机制",
+        "link": "https://www.qbitai.com/2026/06/431033.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9993,
+        "threshold": 0.72,
+        "matched_story_title": "智源&清华合作成果登上Science：脑科学多模态基础模型Brainμ支撑揭示“记忆-睡眠”调控的神经机制",
+        "matched_episode_id": "2026-06-06",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story '智源&清华合作成果登上Science：脑科学多模态基础模型Brainμ支撑揭示“记忆-睡眠”调控的神经机制' from 2026-06-06."
+      },
+      {
+        "title": "华为云发布Agentic AI系列新品 打造智能时代“硅基黑土地”",
+        "link": "https://www.qbitai.com/2026/06/431027.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9801,
+        "threshold": 0.72,
+        "matched_story_title": "华为云发布Agentic AI系列新品 打造智能时代“硅基黑土地”",
+        "matched_episode_id": "2026-06-06",
+        "detail": "SentenceTransformer similarity (0.98) >= threshold (0.72) with historical story '华为云发布Agentic AI系列新品 打造智能时代“硅基黑土地”' from 2026-06-06."
+      },
+      {
+        "title": "国星宇航与腾讯云签署“星算”计划战略合作协议，携手领航AI云服务新生态",
+        "link": "https://www.qbitai.com/2026/06/430757.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9878,
+        "threshold": 0.72,
+        "matched_story_title": "国星宇航与腾讯云签署“星算”计划战略合作协议，携手领航AI云服务新生态",
+        "matched_episode_id": "2026-06-06",
+        "detail": "SentenceTransformer similarity (0.99) >= threshold (0.72) with historical story '国星宇航与腾讯云签署“星算”计划战略合作协议，携手领航AI云服务新生态' from 2026-06-06."
+      },
+      {
+        "title": "WPS笔记正式发布：AI贯穿记录、整理与复用全过程",
+        "link": "https://www.qbitai.com/2026/06/431014.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9969,
+        "threshold": 0.72,
+        "matched_story_title": "WPS笔记正式发布：AI贯穿记录、整理与复用全过程",
+        "matched_episode_id": "2026-06-06",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story 'WPS笔记正式发布：AI贯穿记录、整理与复用全过程' from 2026-06-06."
+      },
+      {
+        "title": "5 ways Google Search can level up your thrift and vintage shopping",
+        "link": "https://blog.google/products-and-platforms/products/search/thrifting-tips/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9231,
+        "threshold": 0.72,
+        "matched_story_title": "5 ways Google Search can level up your thrift and vintage shopping",
+        "matched_episode_id": "2026-06-04",
+        "detail": "SentenceTransformer similarity (0.92) >= threshold (0.72) with historical story '5 ways Google Search can level up your thrift and vintage shopping' from 2026-06-04."
+      },
+      {
+        "title": "Nemotron 3.5 Content Safety: Customizable Multimodal Safety for Global Enterprise AI",
+        "link": "https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.996,
+        "threshold": 0.72,
+        "matched_story_title": "Nemotron 3.5 Content Safety: Customizable Multimodal Safety for Global Enterprise AI",
+        "matched_episode_id": "2026-06-05",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story 'Nemotron 3.5 Content Safety: Customizable Multimodal Safety for Global Enterprise AI' from 2026-06-05."
+      },
+      {
+        "title": "EVA-Bench Data 2.0: 3 Domains, 121 Tools, 213 Scenarios",
+        "link": "https://huggingface.co/blog/ServiceNow-AI/eva-bench-data",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9911,
+        "threshold": 0.72,
+        "matched_story_title": "EVA-Bench Data 2.0: 3 Domains, 121 Tools, 213 Scenarios",
+        "matched_episode_id": "2026-06-05",
+        "detail": "SentenceTransformer similarity (0.99) >= threshold (0.72) with historical story 'EVA-Bench Data 2.0: 3 Domains, 121 Tools, 213 Scenarios' from 2026-06-05."
+      },
+      {
+        "title": "Designing the hf CLI as an agent-optimized way to work with the Hub",
+        "link": "https://huggingface.co/blog/hf-cli-for-agents",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9687,
+        "threshold": 0.72,
+        "matched_story_title": "Designing the hf CLI as an agent-optimized way to work with the Hub",
+        "matched_episode_id": "2026-06-05",
+        "detail": "SentenceTransformer similarity (0.97) >= threshold (0.72) with historical story 'Designing the hf CLI as an agent-optimized way to work with the Hub' from 2026-06-05."
+      },
+      {
+        "title": "Direct Preference Optimization Beyond Chatbots",
+        "link": "https://huggingface.co/blog/Dharma-AI/direct-preference-optimization-beyond-chatbots",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9834,
+        "threshold": 0.72,
+        "matched_story_title": "Direct Preference Optimization Beyond Chatbots",
+        "matched_episode_id": "2026-06-04",
+        "detail": "SentenceTransformer similarity (0.98) >= threshold (0.72) with historical story 'Direct Preference Optimization Beyond Chatbots' from 2026-06-04."
+      },
+      {
+        "title": "Adding MCP Tools to Reachy Mini",
+        "link": "https://huggingface.co/blog/adding-mcp-tools-to-reachy-mini",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9778,
+        "threshold": 0.72,
+        "matched_story_title": "Adding MCP Tools to Reachy Mini",
+        "matched_episode_id": "2026-06-04",
+        "detail": "SentenceTransformer similarity (0.98) >= threshold (0.72) with historical story 'Adding MCP Tools to Reachy Mini' from 2026-06-04."
+      },
+      {
+        "title": "How courts are coping with a flood of AI-generated lawsuits",
+        "link": "https://www.technologyreview.com/2026/06/04/1138391/courts-coping-ai-lawsuits/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9595,
+        "threshold": 0.72,
+        "matched_story_title": "How courts are coping with a flood of AI-generated lawsuits",
+        "matched_episode_id": "2026-06-05",
+        "detail": "SentenceTransformer similarity (0.96) >= threshold (0.72) with historical story 'How courts are coping with a flood of AI-generated lawsuits' from 2026-06-05."
+      },
+      {
+        "title": "Rehumanizing global health care with agentic AI",
+        "link": "https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-global-health-care-with-agentic-ai/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.8634,
+        "threshold": 0.72,
+        "matched_story_title": "Rehumanizing global health care with agentic AI",
+        "matched_episode_id": "2026-06-04",
+        "detail": "SentenceTransformer similarity (0.86) >= threshold (0.72) with historical story 'Rehumanizing global health care with agentic AI' from 2026-06-04."
+      }
+    ]
+  }
+}
