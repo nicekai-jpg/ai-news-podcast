@@ -36,13 +36,22 @@ uv sync
 ```bash
 uv run podcast-daily --base-url http://localhost
 ```
-*提示：如果网络环境连不上 Edge-TTS 获取语音，可以追加 `--no-audio` 参数，仅生成文字稿与简介页。*
+*提示：默认 TTS 为 CosyVoice 2 零样本克隆。本地合成需先运行 `bash scripts/setup_cosyvoice_env.sh` 并设置 `COSYVOICE_MODEL_DIR`。可加 `--no-audio` 跳过音频，仅生成文字稿。*
+
+**C. 仅发布已合成音频（GHA Job 2 后）**
+```bash
+uv run podcast-publish --date 2026-06-11
+```
 
 **B. 生成今日 AI 科技新闻日报 (Markdown)**
 本脚本调用讯飞星辰 MaaS（Astron Coding Plan）大模型接口在线生成日报。
 ```bash
 uv run podcast-report
 ```
+
+## TTS 引擎评测与选型
+我们针对双人对谈播客场景，对多种 Text-to-Speech (TTS) 模型（包括 Edge-TTS、ChatTTS、CosyVoice 2、F5-TTS、GPT-SoVITS、Kokoro、MOSS-TTS）进行了本地 CPU 推理实测与三维评估。
+* 关于模型评测对比、2C2G 服务器串行队列设计、服务端代码实现、前端双缓冲播放器设计及 GHA 工作流声明，请参阅 [TTS 系统设计与技术落地全景指南](docs/tts_complete_guide.md)。
 
 ## 如何保证内容质量与专业性
 你可以通过编辑 `config/` 目录下的文件来定义你的关注焦点：

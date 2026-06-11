@@ -1,23 +1,19 @@
 import asyncio
-import asyncio.subprocess
 import importlib
-import random
+import logging
 import re
-import shutil
 import tempfile
-from dataclasses import dataclass
-from io import BytesIO
 from pathlib import Path
 from typing import Any, List, Optional, Tuple, Union
 
+from ai_news_podcast.pipeline.tts_postprocess import (
+    assemble_dialogue_audio,
+    finalize_episode_mp3,
+)
+from ai_news_podcast.pipeline.tts_types import DialogueChunk
 from ai_news_podcast.text_utils import clean_tts_text
 
-
-@dataclass(frozen=True)
-class DialogueChunk:
-    host: str
-    text: str
-    voice: Optional[str] = None
+log = logging.getLogger(__name__)
 
 
 def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
@@ -74,92 +70,6 @@ def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
     return chunks
 
 
-def _chunk_silence_ms(
-    chunk_silence_ms: int,
-    *,
-    silence_min: int = 400,
-    silence_max: int = 800,
-    silence_jitter: int = 100,
-) -> int:
-    base = max(silence_min, min(silence_max, int(chunk_silence_ms)))
-    low = max(silence_min, base - silence_jitter)
-    high = min(silence_max, base + silence_jitter)
-    return random.randint(low, high)
-
-
-def _mix_bgm(
-    vocal_segment: Any,
-    bgm_path: Optional[str],
-    *,
-    bgm_volume_db: int = -12,
-    bgm_fade_in_ms: int = 2000,
-    bgm_fade_out_ms: int = 3000,
-    vocal_pad_ms: int = 1000,
-) -> Any:
-    """Mix vocal track with background music using basic ducking."""
-    pydub = importlib.import_module("pydub")
-    AudioSegment = getattr(pydub, "AudioSegment")
-
-    if not bgm_path or not Path(bgm_path).exists():
-        return vocal_segment
-
-    bgm = AudioSegment.from_file(bgm_path)
-
-    # 调整 BGM：使其和人声一样长，甚至更长一点用于淡出
-    vocal_len = len(vocal_segment)
-    fade_out_tail = bgm_fade_out_ms
-    if len(bgm) < vocal_len + fade_out_tail:
-        # Loop bgm
-        loops = (vocal_len + fade_out_tail) // len(bgm) + 1
-        bgm = bgm * loops
-
-    bgm = bgm[: vocal_len + fade_out_tail]  # 给结尾留尾奏
-
-    # 基础音量调节
-    bgm = bgm + bgm_volume_db  # 基本降低 BGM 音量，使其成为垫乐
-
-    # 将 BGM 淡入淡出
-    bgm = bgm.fade_in(bgm_fade_in_ms).fade_out(bgm_fade_out_ms)
-
-    # Overlay vocals on to BGM (vocal_pad_ms 后开始播报，给BGM一个前奏)
-    vocal_padded = AudioSegment.silent(duration=vocal_pad_ms) + vocal_segment
-    # 对整体进行混音
-    combined = bgm.overlay(vocal_padded)
-    return combined
-
-
-async def _run_loudnorm(
-    input_path: Path,
-    output_path: Path,
-    *,
-    loudnorm: str = "I=-16:LRA=11:TP=-1.5",
-    sample_rate: int = 24000,
-) -> None:
-    ffmpeg_bin = shutil.which("ffmpeg")
-    ffmpeg = ffmpeg_bin if ffmpeg_bin else "ffmpeg"
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    cmd = [
-        ffmpeg,
-        "-y",
-        "-i",
-        str(input_path),
-        "-af",
-        f"loudnorm={loudnorm}",
-        "-ar",
-        str(sample_rate),
-        str(output_path),
-    ]
-    proc = await asyncio.create_subprocess_exec(
-        *cmd,
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE,
-    )
-    _, stderr = await proc.communicate()
-    if proc.returncode != 0:
-        msg = stderr.decode("utf-8", errors="replace")
-        raise RuntimeError(f"ffmpeg loudnorm failed: {msg}")
-
-
 async def synthesize_edge_tts(
     chunks: List[DialogueChunk],
     voices: Tuple[str, str],
@@ -177,12 +87,7 @@ async def synthesize_edge_tts(
 
     # Extract audio config with defaults matching original hardcoded values
     audio_cfg = (cfg or {}).get("tts", {}).get("audio", {})
-    _bgm_volume_db = int(audio_cfg.get("bgm_volume_db", -12))
-    _bgm_fade_in_ms = int(audio_cfg.get("bgm_fade_in_ms", 2000))
-    _bgm_fade_out_ms = int(audio_cfg.get("bgm_fade_out_ms", 3000))
     _vocal_pad_ms = int(audio_cfg.get("vocal_pad_ms", 1000))
-    _loudnorm = str(audio_cfg.get("loudnorm", "I=-16:LRA=11:TP=-1.5"))
-    _sample_rate = int(audio_cfg.get("sample_rate", 24000))
     _chunk_silence_base = int(audio_cfg.get("chunk_silence_base", 300))
     _silence_min = int(audio_cfg.get("chunk_silence_min", 400))
     _silence_max = int(audio_cfg.get("chunk_silence_max", 800))
@@ -239,86 +144,118 @@ async def synthesize_edge_tts(
             tasks.append(_save_chunk_with_retry(idx, chunk, voice, tmp_chunk))
 
         chunk_files = await asyncio.gather(*tasks)
-
-        combined = AudioSegment.empty()
-        timestamps = []
-        current_time_ms = _vocal_pad_ms  # bgm pad duration before vocal starts
-
-        for idx, chunk_file in enumerate(chunk_files):
-            seg = AudioSegment.from_file(str(chunk_file))
-            if idx > 0:
-                silence_len = _chunk_silence_ms(
-                    _chunk_silence_base,
-                    silence_min=_silence_min,
-                    silence_max=_silence_max,
-                    silence_jitter=_silence_jitter,
-                )
-                combined += AudioSegment.silent(duration=silence_len)
-                current_time_ms += silence_len
-
-            start_sec = current_time_ms / 1000.0
-            duration_sec = len(seg) / 1000.0
-            timestamps.append((start_sec, duration_sec))
-
-            combined += seg
-            current_time_ms += len(seg)
-
-        # Mixing with BGM
-        combined = _mix_bgm(
-            combined,
-            bgm_path,
-            bgm_volume_db=_bgm_volume_db,
-            bgm_fade_in_ms=_bgm_fade_in_ms,
-            bgm_fade_out_ms=_bgm_fade_out_ms,
+        segments = [AudioSegment.from_file(str(chunk_file)) for chunk_file in chunk_files]
+        combined, timestamps = assemble_dialogue_audio(
+            chunks,
+            segments,
+            chunk_silence_base=_chunk_silence_base,
             vocal_pad_ms=_vocal_pad_ms,
+            silence_min=_silence_min,
+            silence_max=_silence_max,
+            silence_jitter=_silence_jitter,
         )
-
-        pre_norm = tmp_root / "combined_prenorm.mp3"
-        combined.export(str(pre_norm), format="mp3")
-        await _run_loudnorm(
-            pre_norm,
+        await finalize_episode_mp3(
+            combined,
             final_path,
-            loudnorm=_loudnorm,
-            sample_rate=_sample_rate,
+            bgm_path=bgm_path,
+            audio_cfg=audio_cfg,
+            tmp_dir=tmp_root,
         )
 
-        # Write transcript with exact timestamps if transcript_path is provided
         if transcript_path:
-            transcript_path = Path(transcript_path)
-            xml_lines = []
-            xml_lines.append(
-                '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">'
+            _write_transcript_with_timestamps(
+                chunks=chunks,
+                timestamps=timestamps,
+                voice_map={
+                    "A": voices[0],
+                    "B": voices[1] if len(voices) > 1 else voices[0],
+                },
+                transcript_path=Path(transcript_path),
             )
-            for idx, chunk in enumerate(chunks):
-                start_sec, duration_sec = timestamps[idx]
-                v = chunk.voice or voice_map.get(chunk.host, voices[0])
-                xml_lines.append(
-                    f'<voice name="{v}" start="{start_sec:.3f}" duration="{duration_sec:.3f}">'
-                )
-                xml_lines.append(chunk.text)
-                xml_lines.append("</voice>")
-            xml_lines.append("</speak>")
-
-            transcript_path.parent.mkdir(parents=True, exist_ok=True)
-            transcript_path.write_text("\n".join(xml_lines), encoding="utf-8")
 
 
-def _to_audio_segment_from_cosy_output(result: Any, sample_rate: int = 24000) -> Any:
+def _write_transcript_with_timestamps(
+    *,
+    chunks: List[DialogueChunk],
+    timestamps: list[tuple[float, float]],
+    voice_map: dict[str, str],
+    transcript_path: Path,
+) -> None:
+    xml_lines = [
+        '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">',
+    ]
+    for idx, chunk in enumerate(chunks):
+        start_sec, duration_sec = timestamps[idx]
+        voice = chunk.voice or voice_map.get(chunk.host, voice_map.get("A", ""))
+        xml_lines.append(
+            f'<voice name="{voice}" start="{start_sec:.3f}" duration="{duration_sec:.3f}">'
+        )
+        xml_lines.append(chunk.text)
+        xml_lines.append("</voice>")
+    xml_lines.append("</speak>")
+    transcript_path.parent.mkdir(parents=True, exist_ok=True)
+    transcript_path.write_text("\n".join(xml_lines), encoding="utf-8")
+
+
+async def synthesize_cosyvoice2(
+    chunks: List[DialogueChunk],
+    output_path: Union[str, Path],
+    *,
+    bgm_path: Optional[str] = None,
+    transcript_path: Optional[Union[str, Path]] = None,
+    cfg: Optional[dict] = None,
+    project_root: Optional[Path] = None,
+    engine: Optional[Any] = None,
+) -> None:
+    from ai_news_podcast.pipeline.cosyvoice_backend import CosyVoice2Engine, load_cosyvoice_config
+
+    torchaudio = importlib.import_module("torchaudio")
     pydub = importlib.import_module("pydub")
     AudioSegment = getattr(pydub, "AudioSegment")
 
-    if isinstance(result, AudioSegment):
-        return result
-    if isinstance(result, (str, Path)):
-        return AudioSegment.from_file(str(result))
-    if isinstance(result, bytes):
-        return AudioSegment.from_file(BytesIO(result), format="wav")
-    if isinstance(result, dict):
-        audio = result.get("audio")
-        if isinstance(audio, (str, Path, bytes)):
-            return _to_audio_segment_from_cosy_output(audio, sample_rate=sample_rate)
+    audio_cfg = (cfg or {}).get("tts", {}).get("audio", {})
+    root = project_root or Path.cwd()
+    cv_cfg = load_cosyvoice_config(cfg or {}, project_root=root)
+    cosy_engine = engine or CosyVoice2Engine(cv_cfg)
 
-    raise TypeError("Unsupported CosyVoice output type for audio concatenation")
+    final_path = Path(output_path)
+    final_path.parent.mkdir(parents=True, exist_ok=True)
+
+    voice_map = {"A": "host_a", "B": "host_b"}
+
+    with tempfile.TemporaryDirectory(prefix="tts-cosyvoice-") as tmp_dir:
+        tmp_root = Path(tmp_dir)
+        segments = []
+        for idx, chunk in enumerate(chunks, start=1):
+            tensor = cosy_engine.synthesize_chunk(text=chunk.text, host=chunk.host)
+            wav_path = tmp_root / f"chunk_{idx:03d}.wav"
+            torchaudio.save(str(wav_path), tensor, cv_cfg.sample_rate)
+            segments.append(AudioSegment.from_file(str(wav_path)))
+
+        combined, timestamps = assemble_dialogue_audio(
+            chunks,
+            segments,
+            chunk_silence_base=int(audio_cfg.get("chunk_silence_base", 300)),
+            vocal_pad_ms=int(audio_cfg.get("vocal_pad_ms", 1000)),
+            silence_min=int(audio_cfg.get("chunk_silence_min", 400)),
+            silence_max=int(audio_cfg.get("chunk_silence_max", 800)),
+            silence_jitter=int(audio_cfg.get("chunk_silence_jitter", 100)),
+        )
+        await finalize_episode_mp3(
+            combined,
+            final_path,
+            bgm_path=bgm_path,
+            audio_cfg=audio_cfg,
+            tmp_dir=tmp_root,
+        )
+
+        if transcript_path:
+            _write_transcript_with_timestamps(
+                chunks=chunks,
+                timestamps=timestamps,
+                voice_map=voice_map,
+                transcript_path=Path(transcript_path),
+            )
 
 
 async def synthesize(
@@ -335,19 +272,35 @@ async def synthesize(
         raise ValueError("Input text is empty after dialogue parsing")
 
     backend_name = str(backend).strip().lower()
-    if backend_name == "edge-tts":
-        await synthesize_edge_tts(
-            chunks,
-            voices=voices,
-            output_path=output_path,
-            bgm_path=bgm_path,
-            volume=str(kwargs.get("volume") or "+0%"),
-            rate=str(kwargs.get("rate") or "+10%"),
-            transcript_path=kwargs.get("transcript_path"),
-            cfg=kwargs.get("cfg"),
-        )
+    cosy_kwargs = {
+        "bgm_path": bgm_path,
+        "transcript_path": kwargs.get("transcript_path"),
+        "cfg": kwargs.get("cfg"),
+        "project_root": kwargs.get("project_root"),
+        "engine": kwargs.get("engine"),
+    }
+    edge_kwargs = {
+        "bgm_path": bgm_path,
+        "volume": str(kwargs.get("volume") or "+0%"),
+        "rate": str(kwargs.get("rate") or "+10%"),
+        "transcript_path": kwargs.get("transcript_path"),
+        "cfg": kwargs.get("cfg"),
+    }
+
+    if backend_name in ("edge-tts", "edge"):
+        await synthesize_edge_tts(chunks, voices=voices, output_path=output_path, **edge_kwargs)
         return
 
-    raise ValueError(
-        f"Unsupported TTS backend: {backend}. Dual-voice engine currently supports only edge-tts natively."
-    )
+    if backend_name in ("cosyvoice2", "cosyvoice"):
+        await synthesize_cosyvoice2(chunks, output_path=output_path, **cosy_kwargs)
+        return
+
+    if backend_name == "hybrid":
+        try:
+            await synthesize_cosyvoice2(chunks, output_path=output_path, **cosy_kwargs)
+        except Exception:
+            log.warning("CosyVoice2 failed, falling back to edge-tts", exc_info=True)
+            await synthesize_edge_tts(chunks, voices=voices, output_path=output_path, **edge_kwargs)
+        return
+
+    raise ValueError(f"Unsupported TTS backend: {backend}")

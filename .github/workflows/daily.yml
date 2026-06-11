@@ -9,8 +9,11 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  content:
+    name: Content (fetch → script)
     runs-on: ubuntu-latest
+    outputs:
+      episode_id: ${{ steps.episode.outputs.id }}
     steps:
       - uses: actions/checkout@v4
 
@@ -25,45 +28,118 @@ jobs:
           cache-dependency-glob: "uv.lock"
 
       - name: Install ffmpeg
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
 
       - name: Install dependencies
         run: uv sync --frozen
 
-      - name: Run data pipeline (fetch → dedup → cluster → score)
+      - id: episode
+        run: echo "id=$(TZ=Asia/Shanghai date +%F)" >> "$GITHUB_OUTPUT"
+
+      - name: Pipeline + report + script (no audio)
         env:
           TZ: Asia/Shanghai
           SPARK_API_KEY: ${{ secrets.SPARK_API_KEY }}
-        run: uv run podcast-pipeline
+        run: |
+          uv run podcast-pipeline
+          uv run podcast-report
+          uv run podcast-daily --no-audio
 
-      - name: Generate daily report (科技日报)
-        env:
-          TZ: Asia/Shanghai
-          SPARK_API_KEY: ${{ secrets.SPARK_API_KEY }}
-        run: uv run podcast-report
-
-      - name: Generate podcast episode
-        env:
-          TZ: Asia/Shanghai
-          SPARK_API_KEY: ${{ secrets.SPARK_API_KEY }}
-        run: uv run podcast-daily
-
-      - name: Commit generated data and reports
+      - name: Commit content artifacts
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/episodes.json data/reports/ data/briefs/
+          git add data/briefs/ data/reports/ data/episodes.json site/episodes/*.txt site/episodes/*.html
           if git diff --cached --quiet; then
-            echo "No changes to commit"
+            echo "No content changes to commit"
           else
-            git commit -m "daily: update episodes index, reports, and news briefs $(date -u +%F) [skip ci]"
+            git commit -m "daily: content $(date -u +%F) [skip ci]"
             git push
           fi
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+  tts:
+    name: TTS (CosyVoice 2)
+    needs: content
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull latest content commit
+        run: git pull origin main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Install system deps
+        run: sudo apt-get update -qq && sudo apt-get install -y sox libsox-dev ffmpeg
+
+      - name: Cache CosyVoice
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/cosyvoice_src
+            ~/cosyvoice_models
+          key: cosyvoice-gha-v1
+
+      - name: Setup CosyVoice environment
+        run: bash scripts/setup_cosyvoice_env.sh
+
+      - name: Install podcast postprocess deps
+        run: pip install pydub PyYAML
+
+      - name: Synthesize episode audio
+        env:
+          COSYVOICE_MODEL_DIR: ~/cosyvoice_models/CosyVoice2-0.5B
+          PYTHONPATH: ~/cosyvoice_src:~/cosyvoice_src/third_party/Matcha-TTS
+        run: |
+          EPISODE="${{ needs.content.outputs.episode_id }}"
+          python scripts/gha_tts_cosyvoice.py \
+            --script "site/episodes/${EPISODE}.txt" \
+            --output "site/episodes/${EPISODE}.mp3" \
+            --model-dir "$HOME/cosyvoice_models/CosyVoice2-0.5B"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Publish feed and site
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          uv sync --frozen
+          EPISODE="${{ needs.content.outputs.episode_id }}"
+          uv run podcast-publish --date "$EPISODE"
+
+      - name: Commit audio and site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add site/ data/episodes.json
+          if git diff --cached --quiet; then
+            echo "No audio changes to commit"
+          else
+            git commit -m "daily: audio $(date -u +%F) [skip ci]"
+            git push
+          fi
+
+  deploy:
+    name: Deploy GitHub Pages
+    needs: tts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull latest site commit
+        run: git pull origin main
+
+      - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site

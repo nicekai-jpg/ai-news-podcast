@@ -45,6 +45,10 @@ Generates a markdown text report calling the Xunfei Spark MaaS (Astron Coding Pl
 uv run podcast-report
 ```
 
+## TTS Evaluation & Selection
+We have benchmarked multiple Text-to-Speech (TTS) models (including Edge-TTS, ChatTTS, CosyVoice 2, F5-TTS, GPT-SoVITS, Kokoro, MOSS-TTS) for our dual-host podcast scene. 
+* For a complete guide covering model evaluations, optimal 2C2G ECS server queue designs, code implementations, web player buffering state machines, and GHA workflows, see the [TTS Complete Guide & System Design](docs/tts_complete_guide.md).
+
 ## Configuration Files
 The project logic is controlled by files in the `config/` directory:
 - `config.yaml`: Core settings for LLM prompts, TTS voices, and scraping limits.

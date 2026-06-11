@@ -7,7 +7,7 @@ from unittest.mock import AsyncMock, patch
 
 import pytest
 
-from ai_news_podcast.pipeline.tts_engine import _run_loudnorm
+from ai_news_podcast.pipeline.tts_postprocess import run_loudnorm as _run_loudnorm
 
 
 class TestRunLoudnorm:

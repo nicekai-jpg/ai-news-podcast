@@ -2,10 +2,8 @@
 
 from __future__ import annotations
 
-from ai_news_podcast.pipeline.tts_engine import (
-    DialogueChunk,
-    parse_dialogue_chunks,
-)
+from ai_news_podcast.pipeline.tts_engine import parse_dialogue_chunks
+from ai_news_podcast.pipeline.tts_types import DialogueChunk
 from ai_news_podcast.text_utils import clean_tts_text
 
 

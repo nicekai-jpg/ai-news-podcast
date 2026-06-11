@@ -4,11 +4,51 @@
 
 ---
 
-## 🎨 系统架构概念图
+## 🎨 系统整体架构流水线 (Overall Architecture Pipeline)
 
-![AI News Pipeline 概念图](../assets/pipeline_infographic.png)
+以下是本项目从“资讯抓取”到“全网发布”的端到端整体架构与数据流向流程图：
 
----
+```mermaid
+graph TD
+    subgraph "1. 输入配置 (Inputs)"
+        Config_Sources[config/sources.yaml<br/>RSS新闻源]
+        Config_System[config/config.yaml<br/>系统与打分参数]
+    end
+
+    subgraph "2. 核心资讯处理管线 (Core Pipeline)"
+        Ingestion[RSS 抓取 & Trafilatura 正文提取]
+        Deduplication[三层高精度去重:<br/>URL + Title + Jieba 关键词]
+        Clustering[DBSCAN 密度聚类与代表新闻选定]
+        Scoring[五维打分模型 & 角色与内容路由决策]
+        Generation[LLM 双人对话剧本创作与文字日报生成]
+    end
+
+    subgraph "3. 语音合成与构建 (Audio Synthesis & Concat)"
+        TTS_Select{TTS 选型映射决策}
+        TTS_Local[Edge-TTS GHA 本地合成<br/>(标准旁白/普通文本)]
+        TTS_ECS[Tencent Cloud 2C2G ECS<br/>ONNX 队列合成 (情感/中英混读)]
+        FFmpeg_Conc[ffmpeg 无损拼接 & loudnorm 响度均衡]
+    end
+
+    subgraph "4. 部署与托管 (Distribution & Hosting)"
+        Site_Build[静态页面 index.html & feed.xml 生成]
+        Publish[GitHub Pages CDN 全球分发]
+    end
+
+    Config_Sources & Config_System --> Ingestion
+    Ingestion --> Deduplication
+    Deduplication --> Clustering
+    Clustering --> Scoring
+    Scoring --> Generation
+    
+    Generation -->|文字日报 & 旁白| TTS_Local
+    Generation -->|情感/中英混读台词| TTS_Select
+    TTS_Select -->|缓存未命中| TTS_ECS
+    TTS_Select -->|缓存命中| FFmpeg_Conc
+    TTS_Local & TTS_ECS --> FFmpeg_Conc
+    FFmpeg_Conc --> Site_Build
+    Site_Build --> Publish
+```
 
 ## 🛠️ 技术实现流程详解 (Flowcharts)
 
@@ -104,7 +144,7 @@ graph TD
     E --> F[每日 reports 目录保存]
 
     C --> G[LLM 播客剧本双人对话体创作]
-    G --> H[edge-tts 神经网络并行语音合成]
+    G --> H[CosyVoice2 逐句零样本克隆 → 拼接 → BGM → loudnorm]
     H --> I[音轨小块并行并发 ➔ pydub 无缝拼接]
     I --> J[响度归一化 Loudness Normalization]
     J --> K[生成成品播客 MP3 音频]
