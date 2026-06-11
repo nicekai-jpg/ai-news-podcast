@@ -9,8 +9,19 @@ podcast:
   max_stories: 8
 
 tts:
-  backend: "edge-tts"
-  voice: "zh-CN-XiaoxiaoNeural"
+  backend: "cosyvoice2"              # edge-tts | cosyvoice2 | hybrid
+  fallback_backend: "edge-tts"
+  host_a_voice: "zh-CN-YunxiNeural"  # edge / hybrid 降级时使用
+  host_b_voice: "zh-CN-XiaoxiaoNeural"
+  voice: "zh-CN-XiaoxiaoNeural"      # 兼容旧配置
+  bgm_path: "assets/bgm_placeholder.wav"
+  cosyvoice:
+    model_dir: ""                    # 空则读 COSYVOICE_MODEL_DIR 环境变量
+    ref_audio:
+      host_a: "asset/refs/host_a_ref.wav"
+      host_a_text: "asset/refs/host_a_ref.txt"
+      host_b: "asset/refs/host_b_ref.wav"
+      host_b_text: "asset/refs/host_b_ref.txt"
   rate: "+0%"
   volume: "+0%"
   pitch: "+0Hz"

@@ -9,11 +9,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from ai_news_podcast.pipeline.tts_engine import (
-    DialogueChunk,
-    synthesize,
-    synthesize_edge_tts,
-)
+from ai_news_podcast.pipeline.tts_engine import synthesize, synthesize_edge_tts
+from ai_news_podcast.pipeline.tts_types import DialogueChunk
 
 
 class FakeAudioSegment:
@@ -98,7 +95,7 @@ def mock_loudnorm():
     async def _fake_loudnorm(input_path, output_path, **kwargs):
         Path(output_path).write_text("fake normalized mp3", encoding="utf-8")
 
-    with patch("ai_news_podcast.pipeline.tts_engine._run_loudnorm", side_effect=_fake_loudnorm):
+    with patch("ai_news_podcast.pipeline.tts_postprocess.run_loudnorm", side_effect=_fake_loudnorm):
         yield
 
 
@@ -209,10 +206,34 @@ async def test_synthesize_empty_dialogue_raises(tmp_path: Path) -> None:
 
 
 @pytest.mark.asyncio
+async def test_synthesize_cosyvoice2_backend(tmp_path: Path, monkeypatch) -> None:
+    output = tmp_path / "out.mp3"
+    called: dict = {}
+
+    async def fake_synth(chunks, output_path, **kwargs):
+        called["chunks"] = chunks
+        called["output_path"] = output_path
+        Path(output_path).write_text("ok", encoding="utf-8")
+
+    monkeypatch.setattr(
+        "ai_news_podcast.pipeline.tts_engine.synthesize_cosyvoice2",
+        fake_synth,
+    )
+    await synthesize(
+        "[Host A] 你好\n[Host B] 欢迎",
+        backend="cosyvoice2",
+        output_path=output,
+        cfg={"tts": {}},
+    )
+    assert output.exists()
+    assert len(called["chunks"]) == 2
+
+
+@pytest.mark.asyncio
 async def test_synthesize_unsupported_backend(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="Unsupported TTS backend"):
         await synthesize(
             "[Host A] Hello",
-            backend="cosyvoice",
+            backend="unknown-tts",
             output_path=tmp_path / "out.mp3",
         )

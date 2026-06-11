@@ -29,6 +29,7 @@ dependencies = [
 [project.scripts]
 podcast-pipeline = "ai_news_podcast.cli.pipeline_run:entrypoint"
 podcast-daily    = "ai_news_podcast.cli.run_daily:entrypoint"
+podcast-publish  = "ai_news_podcast.cli.publish_episode:entrypoint"
 podcast-report   = "ai_news_podcast.cli.daily_report:entrypoint"
 
 [dependency-groups]
