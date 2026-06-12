@@ -27,6 +27,8 @@ if [ -f "$REQ_FILE" ]; then
   grep -vE '^(deepspeed|onnxruntime-gpu|tensorrt|openai-whisper|--extra-index-url|torch==|torchaudio==|gradio|fastapi|uvicorn|grpcio|matplotlib|tensorboard|wget|gdown|pyarrow|pydantic|networkx)' \
     "$REQ_FILE" > /tmp/cosyvoice-cpu-reqs.txt
   "${PIP[@]}" install -r /tmp/cosyvoice-cpu-reqs.txt
+  # requirements.txt only lists onnxruntime for darwin/win32; use CPU build on Linux.
+  "${PIP[@]}" install "onnxruntime==1.18.0"
 else
   "${PIP[@]}" install conformer==0.3.2 diffusers==0.29.0 hydra-core==1.3.2 HyperPyYAML==1.2.3 \
     inflect==7.3.1 librosa==0.10.2 lightning==2.2.4 modelscope==1.20.0 numpy==1.26.4 \
