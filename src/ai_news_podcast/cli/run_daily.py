@@ -115,7 +115,7 @@ async def main() -> int:
     notes_path = episodes_dir / f"{episode_id}.html"
     transcript_path = episodes_dir / f"{episode_id}.txt"
 
-    clean_transcript = clean_tts_text(script_text, preserve_ssml=False) + "\n"
+    clean_transcript = clean_tts_text(script_text, preserve_ssml=True) + "\n"
     write_text(transcript_path, clean_transcript)
     log.info("Transcript saved: %s (%d chars)", transcript_path, len(clean_transcript))
 
