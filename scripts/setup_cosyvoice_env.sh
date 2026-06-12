@@ -24,7 +24,7 @@ PYTHON=("$COSY_VENV/bin/python")
 
 REQ_FILE="$COSY_SRC/requirements.txt"
 if [ -f "$REQ_FILE" ]; then
-  grep -vE '^(deepspeed|onnxruntime-gpu|tensorrt|openai-whisper|--extra-index-url|torch==|torchaudio==|gradio|fastapi|uvicorn|grpcio|matplotlib|tensorboard|wget|gdown|pyarrow|pydantic|networkx)' \
+  grep -vE '^(deepspeed|onnxruntime-gpu|tensorrt|openai-whisper|--extra-index-url|torch==|torchaudio==|gradio|fastapi|uvicorn|grpcio|matplotlib|tensorboard|wget|pyarrow|pydantic|networkx)' \
     "$REQ_FILE" > /tmp/cosyvoice-cpu-reqs.txt
   "${PIP[@]}" install -r /tmp/cosyvoice-cpu-reqs.txt
 else
@@ -32,7 +32,7 @@ else
     inflect==7.3.1 librosa==0.10.2 lightning==2.2.4 modelscope==1.20.0 numpy==1.26.4 \
     omegaconf==2.3.0 onnx==1.16.0 onnxruntime==1.18.0 protobuf==4.25 \
     pyworld==0.3.4 rich==13.7.1 soundfile==0.12.1 transformers==4.51.3 x-transformers==2.11.24 \
-    wetext==0.0.4 huggingface_hub
+    wetext==0.0.4 huggingface_hub gdown
 fi
 # requirements.txt only lists onnxruntime for darwin/win32.
 "${PIP[@]}" install "onnxruntime==1.18.0"
