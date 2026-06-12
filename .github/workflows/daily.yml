@@ -64,7 +64,7 @@ jobs:
     name: TTS (CosyVoice 2)
     needs: content
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
 
@@ -92,7 +92,7 @@ jobs:
           path: |
             ~/cosyvoice_src
             ~/cosyvoice_models
-          key: cosyvoice-gha-v1
+          key: cosyvoice-gha-v2
 
       - name: Setup CosyVoice environment
         run: bash scripts/setup_cosyvoice_env.sh
