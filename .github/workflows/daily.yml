@@ -93,7 +93,7 @@ jobs:
             ~/cosyvoice_src
             ~/cosyvoice_models
             ~/cosyvoice_venv
-          key: cosyvoice-gha-v5
+          key: cosyvoice-gha-v6
 
       - name: Setup CosyVoice environment
         run: bash scripts/setup_cosyvoice_env.sh
