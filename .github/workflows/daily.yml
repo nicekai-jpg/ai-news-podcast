@@ -72,10 +72,18 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
 
       - name: Install system deps
         run: sudo apt-get update -qq && sudo apt-get install -y sox libsox-dev ffmpeg
+
+      - name: Install project dependencies
+        run: uv sync --frozen
 
       - name: Cache CosyVoice
         uses: actions/cache@v4
@@ -86,30 +94,19 @@ jobs:
           key: cosyvoice-gha-v1
 
       - name: Setup CosyVoice environment
-        run: bash scripts/setup_cosyvoice_env.sh
-
-      - name: Install podcast postprocess deps
-        run: pip install pydub PyYAML
+        run: |
+          export PATH="${{ github.workspace }}/.venv/bin:$PATH"
+          bash scripts/setup_cosyvoice_env.sh
 
       - name: Synthesize episode audio
-        env:
-          COSYVOICE_MODEL_DIR: ~/cosyvoice_models/CosyVoice2-0.5B
-          PYTHONPATH: ~/cosyvoice_src:~/cosyvoice_src/third_party/Matcha-TTS
         run: |
           EPISODE="${{ needs.content.outputs.episode_id }}"
-          python scripts/gha_tts_cosyvoice.py \
+          export COSYVOICE_MODEL_DIR="$HOME/cosyvoice_models/CosyVoice2-0.5B"
+          export PYTHONPATH="$HOME/cosyvoice_src:$HOME/cosyvoice_src/third_party/Matcha-TTS"
+          uv run python scripts/gha_tts_cosyvoice.py \
             --script "site/episodes/${EPISODE}.txt" \
             --output "site/episodes/${EPISODE}.mp3" \
             --model-dir "$HOME/cosyvoice_models/CosyVoice2-0.5B"
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - uses: astral-sh/setup-uv@v3
-        with:
-          enable-cache: true
-          cache-dependency-glob: "uv.lock"
 
       - name: Publish feed and site
         env:
