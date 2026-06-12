@@ -40,7 +40,13 @@ async def main() -> int:
         output_path = root / output_path
 
     script_text = script_path.read_text(encoding="utf-8")
-    bgm = root / "assets" / "bgm_placeholder.wav"
+    
+    cfg_bgm = cfg.get("tts", {}).get("bgm_path", "")
+    bgm_resolved = None
+    if cfg_bgm:
+        bgm_p = Path(cfg_bgm)
+        bgm_resolved = bgm_p if bgm_p.is_absolute() else root / bgm_p
+
     await synthesize(
         script_text,
         backend="cosyvoice2",
@@ -48,7 +54,7 @@ async def main() -> int:
         transcript_path=script_path,
         cfg=cfg,
         project_root=root,
-        bgm_path=str(bgm) if bgm.exists() else None,
+        bgm_path=str(bgm_resolved) if (bgm_resolved and bgm_resolved.exists()) else None,
     )
     print(f"Audio saved: {output_path}")
     return 0

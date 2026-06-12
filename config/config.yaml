@@ -14,7 +14,7 @@ tts:
   host_a_voice: "zh-CN-YunxiNeural"  # edge / hybrid 降级时使用
   host_b_voice: "zh-CN-XiaoxiaoNeural"
   voice: "zh-CN-XiaoxiaoNeural"      # 兼容旧配置
-  bgm_path: "assets/bgm_placeholder.wav"
+  bgm_path: ""
   cosyvoice:
     model_dir: ""                    # 空则读 COSYVOICE_MODEL_DIR 环境变量
     ref_audio:
