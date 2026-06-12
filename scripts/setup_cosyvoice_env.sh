@@ -37,7 +37,7 @@ fi
 # requirements.txt only lists onnxruntime for darwin/win32.
 "${PIP[@]}" install "onnxruntime==1.18.0"
 # frontend.py imports whisper; zero-shot path uses whisper.log_mel_spectrogram.
-PIP_NO_BUILD_ISOLATION=1 "${PIP[@]}" install "openai-whisper==20231117"
+"${PIP[@]}" install "openai-whisper==20231117" --no-build-isolation
 
 # Minimal project imports for gha_tts_cosyvoice.py (keep CosyVoice deps isolated from uv).
 "${PIP[@]}" install pydub==0.25.1 PyYAML==6.0.1
