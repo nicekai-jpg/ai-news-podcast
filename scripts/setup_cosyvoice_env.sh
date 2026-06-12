@@ -10,15 +10,23 @@ if [ ! -d "$COSY_SRC/cosyvoice" ]; then
   git clone --recursive --depth=1 https://github.com/FunAudioLLM/CosyVoice.git "$COSY_SRC"
 fi
 
-pip install --upgrade pip setuptools
-pip install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
-pip install conformer==0.3.2 diffusers==0.29.0 hydra-core==1.3.2 HyperPyYAML==1.2.3 \
+if command -v uv >/dev/null 2>&1 && [ -d ".venv" ]; then
+  PIP=(uv pip)
+  PYTHON=(uv run python)
+else
+  PIP=(pip)
+  PYTHON=(python)
+fi
+
+"${PIP[@]}" install --upgrade pip setuptools
+"${PIP[@]}" install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+"${PIP[@]}" install conformer==0.3.2 diffusers==0.29.0 hydra-core==1.3.2 HyperPyYAML==1.2.3 \
   inflect librosa omegaconf onnx onnxruntime openai-whisper protobuf pyworld \
   rich soundfile transformers x-transformers wetext huggingface_hub
 
 export PYTHONPATH="$COSY_SRC:$COSY_SRC/third_party/Matcha-TTS${PYTHONPATH:+:$PYTHONPATH}"
 
-python - <<EOF
+"${PYTHON[@]}" - <<EOF
 from huggingface_hub import snapshot_download
 import os
 
