@@ -56,7 +56,8 @@ jobs:
             echo "No content changes to commit"
           else
             git commit -m "daily: content $(date -u +%F) [skip ci]"
-            git push
+            git pull --rebase origin main
+            git push origin main
           fi
 
   tts:
@@ -123,7 +124,8 @@ jobs:
             echo "No audio changes to commit"
           else
             git commit -m "daily: audio $(date -u +%F) [skip ci]"
-            git push
+            git pull --rebase origin main
+            git push origin main
           fi
 
   deploy:
