@@ -94,9 +94,7 @@ jobs:
           key: cosyvoice-gha-v1
 
       - name: Setup CosyVoice environment
-        run: |
-          export PATH="${{ github.workspace }}/.venv/bin:$PATH"
-          bash scripts/setup_cosyvoice_env.sh
+        run: bash scripts/setup_cosyvoice_env.sh
 
       - name: Synthesize episode audio
         run: |
