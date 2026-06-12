@@ -1,92 +1,92 @@
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="1.000" duration="7.401">
 听众朋友们大家好，欢迎收听AI 每日先锋，今天是2026年6月12日，我是晓晓。
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="8.850" duration="1.611">
 大家好，我是博文。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="10.958" duration="14.716">
 哎，博文，咱们搭档这么久，我算是看明白了一件事——这AI圈的风向，转得比翻书还快。前阵子大家还在拼谁的参数多、谁的跑分高，今天这格局就完全变味儿了。
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="26.127" duration="14.106">
 确实，晓晓，你这产品经理的直觉还是很灵敏的。从追求单纯的效率狂飙，到现在开始抢地盘、建城墙，整个行业已经进入到了生态博弈的阶段。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="40.638" duration="15.412">
 没错！所以咱们今天的主题就是——AI从效率狂飙转向生态博弈：底层推理速度突破千Token大关，而头部模型则用反蒸馏筑起护城河，攻守之势正在重塑行业格局。哎，说到这个底层推理速度，小米最近可是放了个大招，你肯定看过了吧？
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="56.483" duration="9.839">
 看过了，小米大模型团队这次在通用GPU上跑出了每秒1000个Token以上的吞吐量，这个数据确实很亮眼。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="66.787" duration="10.188">
 哇，每秒一千个Token啊！博文，这个数字对咱们普通用户，或者像我这种天天琢磨怎么用AI做产品的人来说，到底意味着什么呀？
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="77.437" duration="15.891">
 你想啊，以前我们跑大模型，要么得用那种非常昂贵的专用算力卡，要么就是推理速度慢得让人抓狂。现在小米在通用GPU上把速度提上来，等于是打破了昂贵算力的垄断。对开发者来说，成本直接打下来了；对用户体验来说，就是真正的实时响应。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="93.779" duration="18.242">
 嗯，对！我特别注意到他们提了一个叫"Vibe Coding七秒交付"的概念。天哪，七秒钟！我刚刚还在想，这感觉就像是你去餐厅点菜，刚坐下喝口水，服务员就把热气腾腾的满汉全席端上来了。开发门槛这不就是降到冰点了吗？
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="112.521" duration="13.235">
 你这个比喻非常恰当。Vibe Coding讲究的是一种心流状态，你刚有个想法，代码瞬间就生成好了，不用等编译，不用等推理。AI原生应用爆发之前最大的制约就是算力和速度，现在这个瓶颈算是被彻底击穿了。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="126.194" duration="13.453">
 太爽了！不过哎，这边小米在努力把速度提上去、把门槛降下来，那边却有人在拼命建高墙。博文，Claude的那个Fable 5模型，最近是不是有点争议？
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="140.108" duration="19.418">
 是的，Fable 5自带了一个非常激进的反蒸馏机制。简单来说，就是如果系统检测到有人在试图大量提取模型的输出结果来训练自己的模型，它就会触发高误触降智，宁可输出错误的废话，也不让你把核心能力偷走。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="159.971" duration="7.445">
 等等博文，你刚才提到的"反蒸馏"，能给听众翻译翻译吗？这词儿听着跟化学实验似的。
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="167.890" duration="20.288">
 哈哈，其实原理不复杂。蒸馏就是小模型去模仿大模型的回答，把大模型的"聪明才智"学过来，变成自己的权重。反蒸馏就是大模型为了防这一手，故意在回答里掺沙子，让你学到的全是错题，从而保护自己的核心数据。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="188.605" duration="14.237">
 噢！我懂了！这就好比你去买网红奶茶想偷配方，结果店员故意在试饮杯里多加了两勺盐，你拿回去复刻出来根本没法喝，只能乖乖去他家买原版。但这也有代价吧？正常用户问问题，它要是也降智，那体验不就崩了？
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="203.306" duration="18.242">
 晓晓，你说得没错，这其实暴露出头部AI公司对数据护城河的极度焦虑。他们宁愿牺牲一部分用户体验，也要防范模型被提取。闭源和开源的对抗，已经从单纯的算力竞赛，升级成了底层的权重攻防战。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="221.965" duration="17.850">
 哎，真是攻守异形了。一边是敞开大门把效率拉满，一边是严防死守保住核心资产。除了这两件大事，今天其实还有几个特别有意思的动态，咱们快速过一下。哎博文，你平时玩游戏做3D设计吗？
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="240.251" duration="7.314">
 我可没那艺术细胞，不过Meshy今天发布的3D AI Agent我倒是仔细看了。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="247.982" duration="15.935">
 对！就是那个直接用文本生成3D模型的工具。这简直是3D创作领域的ChatGPT时刻啊！以前建个模得调点调面调一整天，现在打几个字就出来了，内容生产的门槛又掉了一大截。
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="264.413" duration="10.014">
 是的，这会极大丰富未来的3D素材库，尤其是对独立游戏开发者和VR内容创作者来说，算是解放生产力了。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="274.839" duration="12.278">
 嗯，没错。不过接下来这个消息，博文老师，你又得带上你技术极客的视角来解读一下了。谷歌悄悄发了个新模型，居然用扩散模型来生成文字？
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="287.596" duration="16.283">
 这个确实很有意思。我们习惯的文字生成都是自回归，就是一个词一个词往外蹦。谷歌这次用扩散模型的思路，相当于把一段文字当成一张图去降噪生成，速度直接暴涨了4倍。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="304.311" duration="16.327">
 哇！一个字一个字蹦变成了一整段一整段往外吐，这画面感太强了！速度提升4倍，那以后写报告岂不是眨眼就完事？不过说到写剧本拍视频，AI短剧工具赛道今天出了个大新闻。
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="321.106" duration="8.316">
 嗯，年度最大单笔融资诞生了。AI视频生成的商业化在加速，短剧赛道跑出了巨兽。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="329.912" duration="10.971">
 真的，内容工业革命要来了。以后说不定咱们这播客都能直接用AI生成个短剧版，你博文老师连脸都不用露，AI全给代劳了。
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="341.360" duration="5.834">
 哈哈，那可别，AI生成的我估计讲不出这种极客幽默。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="347.612" duration="12.016">
 哈哈！好了，今天聊得真过瘾。从千Token吞吐的效率突破，到反蒸馏的护城河博弈，再到3D和视频生成的全面开花，AI的攻守之势确实在重塑。
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="360.067" duration="8.707">
 是的，速度在打破边界，而壁垒在重新定义边界。这就是2026年AI行业的现状。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="369.186" duration="4.093">
 感谢大家收听今天的AI 每日先锋，咱们明天见！
 </voice>
-<voice name="zh-CN-YunxiNeural">
+<voice name="zh-CN-YunxiNeural" start="373.772" duration="0.784">
 明天见！
 </voice>
 </speak>
