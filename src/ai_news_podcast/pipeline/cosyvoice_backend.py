@@ -90,6 +90,5 @@ class CosyVoice2Engine:
             raise FileNotFoundError(f"Reference audio not found: {ref_wav}")
 
         model = self._ensure_model()
-        ref_audio = self._load_ref(ref_wav)
-        output = next(model.inference_zero_shot(text, ref_text, ref_audio, stream=False))
+        output = next(model.inference_zero_shot(text, ref_text, str(ref_wav), stream=False))
         return output["tts_speech"]
