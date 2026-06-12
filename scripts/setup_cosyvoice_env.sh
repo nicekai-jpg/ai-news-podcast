@@ -1,34 +1,32 @@
 #!/usr/bin/env bash
-# Install CosyVoice2 CPU environment (GHA + local). Not part of uv/pyproject deps.
+# Install CosyVoice2 CPU environment (GHA + local). Isolated venv — not uv/pyproject deps.
 set -euo pipefail
 
 COSY_SRC="${COSYVOICE_SRC:-$HOME/cosyvoice_src}"
 COSY_MODELS="${COSYVOICE_MODELS:-$HOME/cosyvoice_models}"
+COSY_VENV="${COSYVOICE_VENV:-$HOME/cosyvoice_venv}"
 MODEL_DIR="$COSY_MODELS/CosyVoice2-0.5B"
 
 if [ ! -d "$COSY_SRC/cosyvoice" ]; then
   git clone --recursive --depth=1 https://github.com/FunAudioLLM/CosyVoice.git "$COSY_SRC"
 fi
 
-if command -v uv >/dev/null 2>&1 && [ -d ".venv" ]; then
-  PIP=(uv pip)
-  PYTHON=(uv run python)
-else
-  PIP=(pip)
-  PYTHON=(python)
+if [ ! -x "$COSY_VENV/bin/python" ]; then
+  python3 -m venv "$COSY_VENV"
 fi
 
-"${PIP[@]}" install --upgrade pip "setuptools>=69,<81"
-"${PIP[@]}" install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+PIP=("$COSY_VENV/bin/pip")
+PYTHON=("$COSY_VENV/bin/python")
 
-# Install inference deps from upstream requirements.txt, minus GPU/server extras.
+"${PIP[@]}" install --upgrade "pip>=24" "setuptools>=69,<81" wheel
+# Match CosyVoice upstream torch pins — avoid latest torch breaking onnxruntime wheels.
+"${PIP[@]}" install torch==2.3.1 torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cpu
+
 REQ_FILE="$COSY_SRC/requirements.txt"
 if [ -f "$REQ_FILE" ]; then
   grep -vE '^(deepspeed|onnxruntime-gpu|tensorrt|openai-whisper|--extra-index-url|torch==|torchaudio==|gradio|fastapi|uvicorn|grpcio|matplotlib|tensorboard|wget|gdown|pyarrow|pydantic|networkx)' \
     "$REQ_FILE" > /tmp/cosyvoice-cpu-reqs.txt
   "${PIP[@]}" install -r /tmp/cosyvoice-cpu-reqs.txt
-  # requirements.txt only lists onnxruntime for darwin/win32; use CPU build on Linux.
-  "${PIP[@]}" install "onnxruntime==1.18.0"
 else
   "${PIP[@]}" install conformer==0.3.2 diffusers==0.29.0 hydra-core==1.3.2 HyperPyYAML==1.2.3 \
     inflect==7.3.1 librosa==0.10.2 lightning==2.2.4 modelscope==1.20.0 numpy==1.26.4 \
@@ -36,8 +34,19 @@ else
     pyworld==0.3.4 rich==13.7.1 soundfile==0.12.1 transformers==4.51.3 x-transformers==2.11.24 \
     wetext==0.0.4 huggingface_hub
 fi
+# requirements.txt only lists onnxruntime for darwin/win32.
+"${PIP[@]}" install "onnxruntime==1.18.0"
+
+# Minimal project imports for gha_tts_cosyvoice.py (keep CosyVoice deps isolated from uv).
+"${PIP[@]}" install pydub==0.25.1 PyYAML==6.0.1
+"${PIP[@]}" install --no-deps -e .
 
 export PYTHONPATH="$COSY_SRC:$COSY_SRC/third_party/Matcha-TTS${PYTHONPATH:+:$PYTHONPATH}"
+
+"${PYTHON[@]}" - <<'EOF'
+import onnxruntime
+print(f"onnxruntime {onnxruntime.__version__} ok")
+EOF
 
 "${PYTHON[@]}" - <<EOF
 from huggingface_hub import snapshot_download
@@ -55,4 +64,5 @@ else:
     print(f"Model already present at {local_dir}")
 EOF
 
+echo "COSYVOICE_VENV=$COSY_VENV"
 echo "COSYVOICE_MODEL_DIR=$MODEL_DIR"

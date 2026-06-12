@@ -92,7 +92,8 @@ jobs:
           path: |
             ~/cosyvoice_src
             ~/cosyvoice_models
-          key: cosyvoice-gha-v2
+            ~/cosyvoice_venv
+          key: cosyvoice-gha-v3
 
       - name: Setup CosyVoice environment
         run: bash scripts/setup_cosyvoice_env.sh
@@ -102,7 +103,7 @@ jobs:
           EPISODE="${{ needs.content.outputs.episode_id }}"
           export COSYVOICE_MODEL_DIR="$HOME/cosyvoice_models/CosyVoice2-0.5B"
           export PYTHONPATH="$HOME/cosyvoice_src:$HOME/cosyvoice_src/third_party/Matcha-TTS"
-          uv run python scripts/gha_tts_cosyvoice.py \
+          "$HOME/cosyvoice_venv/bin/python" scripts/gha_tts_cosyvoice.py \
             --script "site/episodes/${EPISODE}.txt" \
             --output "site/episodes/${EPISODE}.mp3" \
             --model-dir "$HOME/cosyvoice_models/CosyVoice2-0.5B"
