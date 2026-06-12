@@ -22,7 +22,7 @@ fi
 "${PIP[@]}" install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
 "${PIP[@]}" install conformer==0.3.2 diffusers==0.29.0 hydra-core==1.3.2 HyperPyYAML==1.2.3 \
   inflect librosa omegaconf onnx onnxruntime openai-whisper protobuf pyworld \
-  rich soundfile transformers x-transformers wetext huggingface_hub
+  rich soundfile transformers x-transformers wetext huggingface_hub modelscope
 
 export PYTHONPATH="$COSY_SRC:$COSY_SRC/third_party/Matcha-TTS${PYTHONPATH:+:$PYTHONPATH}"
 
