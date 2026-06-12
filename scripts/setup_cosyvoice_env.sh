@@ -20,9 +20,20 @@ fi
 
 "${PIP[@]}" install --upgrade pip setuptools
 "${PIP[@]}" install torch torchaudio --index-url https://download.pytorch.org/whl/cpu
-"${PIP[@]}" install conformer==0.3.2 diffusers==0.29.0 hydra-core==1.3.2 HyperPyYAML==1.2.3 \
-  inflect librosa omegaconf onnx onnxruntime openai-whisper protobuf pyworld \
-  rich soundfile transformers x-transformers wetext huggingface_hub modelscope
+
+# Install inference deps from upstream requirements.txt, minus GPU/server extras.
+REQ_FILE="$COSY_SRC/requirements.txt"
+if [ -f "$REQ_FILE" ]; then
+  grep -vE '^(deepspeed|onnxruntime-gpu|tensorrt|--extra-index-url|torch==|torchaudio==|gradio|fastapi|uvicorn|grpcio|matplotlib|tensorboard|wget|gdown|pyarrow|pydantic|networkx)' \
+    "$REQ_FILE" > /tmp/cosyvoice-cpu-reqs.txt
+  "${PIP[@]}" install -r /tmp/cosyvoice-cpu-reqs.txt
+else
+  "${PIP[@]}" install conformer==0.3.2 diffusers==0.29.0 hydra-core==1.3.2 HyperPyYAML==1.2.3 \
+    inflect==7.3.1 librosa==0.10.2 lightning==2.2.4 modelscope==1.20.0 numpy==1.26.4 \
+    omegaconf==2.3.0 onnx==1.16.0 onnxruntime==1.18.0 openai-whisper==20231117 protobuf==4.25 \
+    pyworld==0.3.4 rich==13.7.1 soundfile==0.12.1 transformers==4.51.3 x-transformers==2.11.24 \
+    wetext==0.0.4 huggingface_hub
+fi
 
 export PYTHONPATH="$COSY_SRC:$COSY_SRC/third_party/Matcha-TTS${PYTHONPATH:+:$PYTHONPATH}"
 
