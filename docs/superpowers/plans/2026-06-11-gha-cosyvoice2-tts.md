@@ -10,6 +10,8 @@
 
 **评测依据:** `docs/tts_complete_guide.md` 对比矩阵 — CosyVoice 2 韵律最佳、吞字极低；`.github/workflows/tts-benchmark.yml` 已验证 GHA `ubuntu-latest` 可跑。
 
+**部署踩坑记录:** 见 [`docs/gha_cosyvoice2_deployment_log.md`](../gha_cosyvoice2_deployment_log.md)（GHA 实际问题、修复对照表、当前阻塞点）。
+
 ---
 
 ## 文件结构（实施前预览）

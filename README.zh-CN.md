@@ -52,6 +52,7 @@ uv run podcast-report
 ## TTS 引擎评测与选型
 我们针对双人对谈播客场景，对多种 Text-to-Speech (TTS) 模型（包括 Edge-TTS、ChatTTS、CosyVoice 2、F5-TTS、GPT-SoVITS、Kokoro、MOSS-TTS）进行了本地 CPU 推理实测与三维评估。
 * 关于模型评测对比、2C2G 服务器串行队列设计、服务端代码实现、前端双缓冲播放器设计及 GHA 工作流声明，请参阅 [TTS 系统设计与技术落地全景指南](docs/tts_complete_guide.md)。
+* GHA CosyVoice 2 部署问题与修复记录见 [gha_cosyvoice2_deployment_log.md](docs/gha_cosyvoice2_deployment_log.md)。
 
 ## 如何保证内容质量与专业性
 你可以通过编辑 `config/` 目录下的文件来定义你的关注焦点：
