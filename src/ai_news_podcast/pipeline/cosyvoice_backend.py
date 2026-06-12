@@ -67,7 +67,6 @@ class CosyVoice2Engine:
         self._model = CosyVoice2(
             str(self._config.model_dir),
             load_jit=False,
-            load_onnx=False,
             load_trt=False,
         )
         return self._model
