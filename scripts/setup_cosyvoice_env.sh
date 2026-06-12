@@ -31,7 +31,7 @@ from huggingface_hub import snapshot_download
 import os
 
 local_dir = os.path.expanduser("$MODEL_DIR")
-if not os.path.exists(os.path.join(local_dir, "cosyvoice.yaml")):
+if not os.path.exists(os.path.join(local_dir, "cosyvoice2.yaml")):
     snapshot_download(
         "FunAudioLLM/CosyVoice2-0.5B",
         local_dir=local_dir,

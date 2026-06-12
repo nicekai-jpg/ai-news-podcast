@@ -66,7 +66,7 @@ jobs:
           from huggingface_hub import snapshot_download
           import os
           local_dir = os.path.expanduser("~/cosyvoice_models/CosyVoice2-0.5B")
-          if not os.path.exists(os.path.join(local_dir, "cosyvoice.yaml")):
+          if not os.path.exists(os.path.join(local_dir, "cosyvoice2.yaml")):
               snapshot_download(
                   "FunAudioLLM/CosyVoice2-0.5B",
                   local_dir=local_dir,
@@ -106,7 +106,7 @@ jobs:
           from cosyvoice.utils.file_utils import load_wav
 
           model_dir = os.path.expanduser("~/cosyvoice_models/CosyVoice2-0.5B")
-          cosyvoice = CosyVoice2(model_dir, load_jit=False, load_onnx=False, load_trt=False)
+          cosyvoice = CosyVoice2(model_dir, load_jit=False, load_trt=False)
 
           test_texts = {
               "A": "云阳老师，你又带上了技术极客的视角了啊！你能不能给咱们听众翻译翻译，这个机制被 AI 破解到底意味着什么？天哪，真的假的？",
