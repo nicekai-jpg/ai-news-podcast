@@ -1,0 +1,707 @@
+{
+  "thesis": "今天的AI领域动态丰富，多个方向齐头并进",
+  "stories": [
+    {
+      "cluster_id": 0,
+      "representative_title": "HuggingFace CEO力荐，Bengio团队也押注：这个1500美元训出的HRM模型，凭什么火了？",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "模型参数量只有1B"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/435483.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "b3c8b4a755176fe6",
+          "title": "HuggingFace CEO力荐，Bengio团队也押注：这个1500美元训出的HRM模型，凭什么火了？",
+          "link": "https://www.qbitai.com/2026/06/435483.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/435483.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-13T12:40:30+00:00",
+          "summary": "模型参数量只有1B",
+          "full_text_snippet": "HuggingFace CEO力荐，Bengio团队也押注：这个1500美元训出的HRM模型，凭什么火了？\n模型参数量只有1B\n允中 发自 凹非寺\n量子位 | 公众号 QbitAI\n好家伙，这次不是模型圈自嗨。\n一个训练成本约1500美元、参数量约1B、从零开始预训练的小模型，把HRM推到了下一代推理架构讨论的中心。\nHuggingFace联合创始人兼CEO Clem Delangue亲自转发推荐。\n图灵奖得主Yoshua Bengio作为共同作者参与的新论文，也走向了同一条latent recursive reasoning路线。\n更反常的是，它不是蒸馏，不是微调，也不是在已有大模型能力上套壳。\n它就是Sapient Intelligence发布的HRM-Text。\n如果只看参数量，它很容易被写成一个熟悉的故事：“小模型又赢了。”\n但HRM-Text真正值得注意的地方，不是小，也不是便宜。而是它背后那套HRM架构，正在问一个更底层的问题：\n模型到底需要记住全世界，还是需要学会如何思考、如何查找、如何验证、如何行动？\n过去几年，大模型行业的默认答案很简单：参数更多，数据更多，训练更久，Token更长。\nHRM走的是另一条路。\n它不是继续把模型做成一个越来越大的知识仓库，而是试图把模型做成一个更强的推理核心。\n大模型像一个背着图书馆的学生，HRM更像一个会解题、会查资料、会复盘、会行动的人。\n当然，真正让技术圈认真讨论HRM-Text的，不是一次转发，而是一组很反常的数字。\n一个约1B参数模型，在MATH上拿到56.2，在GSM8K上拿到84.5，在ARC-Challenge上拿到81.9，在DROP上拿到82.2。\n训练成本约1500美元，16块H100跑了不到两天。\n没有post-training，没有RLHF，也没有依赖显式思维链数据。团队同步开放了论文、模型权重和预训练代码。\n这意味着，HRM-Text不是在现有大模型能力上做包装，而是在基础预训练阶段，直接验证一种新的架构路线。\n这不是又一个“小模型逆袭”的故事。更准确地说，它是一次推理模型的换脑实验：\n不让模型说出更多思维链，而是让模型在开口之前，先在脑子里想完。\n而这条路线，很快也出现在了更高层级的学术讨论中。\nHRM-Text发布前后，图灵奖得主Yoshua Bengio作为共同作者参与发布了《Generative Recursive Reasoning》。论文提出的GRAM，在核心计算结构上高度复用了HRM的分层递归骨架：同样是高层状态、低层状态、双时间尺度、多轮递归更新，只是在此基础上进一步加入概率生成模块。\n换句话说，Sapient不是等行业给出答案之后再追随，而是先把一个关键问题抛了出来，并率先拿出了可运行、可开源、可验证的模型系统：\n模型能否在输出之前，通过潜空间中的多轮分层递归计算，完成更深层的内部推理？\nHRM-Text的问题因此不只是：\n一个1B模型为什么能做到这些benchmark？\n更关键的问题是：\nSapient是否提前验证了一条下一代推理模型值得认真对待的新路线？\n知识不等于智能，CoT也不等于思考\n现在的推理模型，很多时候像是在“边说边想”。\nChain-of-Thought把推理过程写成一串token，让模型一步一步输出中间过程。\n这当然有用，但问题也很明显：\nToken越来越长，账单越来越高；中间一步错了，后面就可能一路错下去；更关键的是，推理过程被绑定在语言表面，模型很容易学到“像推理的文本”，却不一定真的掌握了“推理的结构”。\nHRM问的是一个更激进的问题：推理为什么一定要写出来？\n人类做很多题，并不是把脑内每一步都说成一句话。我们会在脑子里反复尝试、修正、排除、回退，最后才说出答案。\nHRM想做的，正是这件事：把草稿纸从嘴上拿下来，放回模型的脑子里。\n这就是latent reasoning，潜空间推理。不是让模型输出更长的思维链，而是让模型在输出之前，在内部状态里完成多轮计算。\n这也是Sapient 从一开始押注HRM的原因。\nSapient押注的从来不是“小模型”，而是HRM（Hierarchical Reasoning Model），分层推理模型。\n在大多数团队仍然围绕Transformer做参数、数据和训练技巧优化时，Sapient选择把问题推到更底层：\n如果智能不是只来自规模扩张，而是来自计算过程的组织方式，那么模型架构本身是否应该被重新设计？\nHRM的核心思想，是让模型在输出之前，能够在潜空间中进行多轮、分层、递归的状态更新。\n2025年，Sapient推出HRM-Symbolic。\n这个模型主要面向数独、迷宫、ARC-AGI等封闭、可验证、强推理任务。这类任务有明确规则、明确状态空间、可验证答案，对组合搜索和多...",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "representative_title": "Agent终于长出了身体：Jiuwen Symbiosis背后的思考与实践",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "一起构建下一代物理世界的智能系统"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/435455.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e1f11b9d982bebb6",
+          "title": "Agent终于长出了身体：Jiuwen Symbiosis背后的思考与实践",
+          "link": "https://www.qbitai.com/2026/06/435455.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/435455.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-13T08:11:07+00:00",
+          "summary": "一起构建下一代物理世界的智能系统",
+          "full_text_snippet": "Agent终于长出了身体：Jiuwen Symbiosis背后的思考与实践\n一起构建下一代物理世界的智能系统\n如果你在三年前问AI圈：未来最强的AI长什么样？\n大部分人可能会回答，一个更大的GPT，更多参数，更长上下文，更强推理能力。\n然后我们一路从GPT-3.5走到GPT-4、Claude、Gemini、DeepSeek、Qwen。\n直到今天，突然发现一个有趣的问题：AI已经学会写代码了，学会做数学题了，甚至学会和你讨论人生意义了，但它依然不会给自己倒一杯水。\n这正是当前AI最大的局限之一：\nAI没有身体。\n今天，openJiuwen社区正式开源Jiuwen Symbiosis，一个专为更高阶的physical AI打造的Symbiosis（共生）架构。\n从虚拟数字世界到真实物理世界，我们给AI装上了感知和行动的“骨骼与肌肉”。\nGitcode传送门：\ngitcode.com/openJiuwen/jiuwensymbiosis\n（动动小手，Star一下不迷路⭐）\nMoravec悖论：最难的不是高数，而是走路\n1988年，机器人学家Hans Moravec提出了后来著名的Moravec’s Paradox（莫拉维克悖论），其核心思想非常反直觉：\n对于计算机来说：\n- 下国际象棋很容易\n- 做高等数学很容易\n而对于人类婴儿都能完成的事情，反而异常困难：\n- 行走\n- 抓取\n- 避障\n- 保持平衡\n原因很简单，这些能力并不是逻辑推导出来的，而是数百万年进化形成的身体智能。\n这就是大模型时代的“缸中之脑”困境：智商200，但没有实体，对真实物理世界的摩擦力、重力和空间几何一无所知。\n从“缸中之脑”到“身体力行”：智能的进化史\n智能对外在机器本体控制的演进，本质上就是一场从数字世界到物理现实的历程：\n1.0手搓任务（借助人的辅助）：\n依靠人的理解，进行极为原子化的控制操作。\n2.0虚拟环境演练（Sim2Real）：\n在Habitat、AI2-THOR等仿真环境里模拟，开始有了空间概念，同时训练一个或多个模型，使得大脑可以分析理解指令，并进行任务执行。\n在2.0这个阶段，一系列的问题会凸显出来，最为人诟病的是：\n- 缺乏跨本体环境泛化能力：模型一旦训练完成，其技能集合即固化。要让机器人学会“开抽屉后抓取内部物体”，需要重新采集数据、重新训练整个模型。VLA缺乏组合泛化能力——无法将已学的“开抽屉”与“抓取”零样本组合为新任务。\n- 长程复合任务能力不足：当前模型擅长短程原子操作（如“抓取红色方块”），但面对长程复合任务（如“从料架上取Tray盘→绕过设备→放入机台→按压确认→返回原位”），单一VLA模型缺乏任务分解、子任务编排、异常回退的能力。它只能在训练分布内“模仿”，无法在运行时“规划”。\n- 故障定位困难：当前模型将“视觉→语言理解→物理推理→动作生成”全部压缩进一个Transformer，运行时失败（如抓取偏移、碰撞）无法定位故障根因——是感知误识别、语言歧义、物理推理错误，还是控制轨迹发散。\n- 成功率低，稳定性差：当前模型端到端基础模型为典型黑盒结构，直接输出关节位姿等底层动作指令，大模型兼顾认知决策与运动控制，整体实现难度大，模型稳定性差、任务成功率低。\n3.0共生时代（Jiuwen Symbiosis正在做的）：\n模糊虚拟与现实的边界，让Agent能够真正理解物理法则，并直接输出控制硬件底层拓扑的Action序列。\nAgent时代的到来\n2023年以后，Agent成为整个AI领域最火热的方向之一。\n大家发现：大模型已经具备不错的推理能力，真正缺少的是行动能力。于是出现了：\n- Tool Calling\n- Function Calling\n- MCP\n- Browser Agent\n- Computer Use Agent\nAgent开始获得操作世界的能力，它们不再只是回答问题。但这里依然存在一个问题：这些Agent操作的仍然是数字世界。\n不是物理世界。\n但经过一系列的演进，openJiuwen团队相信具有物理能力的Agent时代已经悄然到来，它比前辈们向着真实世界更加向前迈进了一步。\n下一步是让Agent走进现实世界。简单来说，传统Agent可以简化为如下过程：\n而physical AI Agent的模式发生了本质的改变——Agent不再面对文本，而是面对真实世界，需要与现实环境进行交互反馈，整体过程可以简化为如下：\n但openJiuwen团队认为这依然是远远不够的，人类在执行任务的过程中，观察、反馈等过程是一个不间断的实时系统。\n同时，理论上，从传感器–>VLM–>LLM–>Planner–>ROS的整个过程看起来是非常优雅，但实际执行过程中，极有可能变成JSON的极限堆积，并且系统越复杂，这个现象越明显。...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_raw": 2,
+    "total_deduped": 2,
+    "total_clusters": 2,
+    "generated_at": "2026-06-13T22:45:19.947121+00:00",
+    "dedup_details": [
+      {
+        "title": "The latest AI news we announced in May 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How we used Gemini to build Google I/O 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "9 demos of Gemini Omni and Gemini 3.5 in action",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Check out real-life AI prototypes from the Futures Lab.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Catch up on 12 major I/O 2026 moments",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-keynote-moment-videos/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Catch up on the Dialogues stage at Google I/O 2026.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re announcing new community investments in Missouri.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "100 things we announced at I/O 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A new experiment brings better group meetings to Google Beam",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How AI Mode is changing the way people search in the U.S.",
+        "link": "https://blog.google/products-and-platforms/products/search/ai-mode-us-insights/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "New ways to create and get things done in Google Workspace",
+        "link": "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "I/O 2026: Welcome to the agentic Gemini era",
+        "link": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini 3.5: frontier intelligence with action",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A new era for AI Search",
+        "link": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Everything new in our Google AI subscriptions, fresh from I/O 2026",
+        "link": "https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "I/O 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/google-io-2026-collection/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The new AI-powered Google Finance is expanding to Europe.",
+        "link": "https://blog.google/products-and-platforms/products/search/ai-powered-google-finance-in-europe/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "olmo-eval: An evaluation workbench for the model development loop",
+        "link": "https://huggingface.co/blog/allenai/olmo-eval",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Profiling in PyTorch (Part 2): From nn.Linear to a Fused MLP",
+        "link": "https://huggingface.co/blog/torch-mlp-fusion",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing North Mini Code: Cohere’s First Model For Developers",
+        "link": "https://huggingface.co/blog/CohereLabs/introducing-north-mini-code",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces",
+        "link": "https://huggingface.co/blog/mishig/spaces-agents-md",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Migrating Your GitHub CI to Hugging Face Jobs",
+        "link": "https://huggingface.co/blog/github-ci-hf-jobs",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The Open Source Community is backing OpenEnv for Agentic RL",
+        "link": "https://huggingface.co/blog/openenv-agentic-rl",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Holo3.1: Fast & Local Computer Use Agents",
+        "link": "https://huggingface.co/blog/Hcompany/holo31",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Mellum2: A 12B Mixture-of-Experts Model by JetBrains",
+        "link": "https://huggingface.co/blog/JetBrains/mellum2-launch",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Beyond LLMs: Why Scalable Enterprise AI Adoption Depends on Agent Logic",
+        "link": "https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
+        "link": "https://huggingface.co/blog/torch-profiler",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Reachy Mini goes fully local",
+        "link": "https://huggingface.co/blog/local-reachy-mini-conversation",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Shipping a Trillion Parameters With a Hub Bucket: Delta Weight Sync in TRL",
+        "link": "https://huggingface.co/blog/delta-weight-sync",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Harness, Scaffold, and the AI Agent Terms Worth Getting Right",
+        "link": "https://huggingface.co/blog/agent-glossary",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "OlmoEarth v1.1: A more efficient family of Earth observation models",
+        "link": "https://huggingface.co/blog/allenai/olmoearth-v1-1",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing the Ettin Reranker Family",
+        "link": "https://huggingface.co/blog/ettin-reranker",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend",
+        "link": "https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Granite Embedding Multilingual R2: Open Apache 2.0 Multilingual Embeddings with 32K Context — Best Sub-100M Retrieval Quality",
+        "link": "https://huggingface.co/blog/ibm-granite/granite-embedding-multilingual-r2",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Unlocking asynchronicity in continuous batching",
+        "link": "https://huggingface.co/blog/continuous_async",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Building Blocks for Foundation Model Training and Inference on AWS",
+        "link": "https://huggingface.co/blog/amazon/foundation-model-building-blocks",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "vLLM V0 to V1: Correctness Before Corrections in RL",
+        "link": "https://huggingface.co/blog/ServiceNow-AI/correctness-before-corrections",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Adding Benchmaxxer Repellant to the Open ASR Leaderboard",
+        "link": "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Granite 4.1 LLMs: How They’re Built",
+        "link": "https://huggingface.co/blog/ibm-granite/granite-4-1",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DeepInfra on Hugging Face Inference Providers 🔥",
+        "link": "https://huggingface.co/blog/inference-providers-deepinfra",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing NVIDIA Nemotron 3 Nano Omni: Long-Context Multimodal Intelligence for Documents, Audio and Video Agents",
+        "link": "https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-intelligence",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How to build scalable web apps with OpenAI's Privacy Filter",
+        "link": "https://huggingface.co/blog/openai-privacy-filter-web-apps",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DeepSeek-V4: a million-token context that agents can actually use",
+        "link": "https://huggingface.co/blog/deepseekv4",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How we made GitHub Copilot CLI more selective about delegation",
+        "link": "https://github.blog/ai-and-ml/how-we-made-github-copilot-cli-more-selective-about-delegation/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Making secret scanning more trustworthy: Reducing false positives at scale",
+        "link": "https://github.blog/security/making-secret-scanning-more-trustworthy-reducing-false-positives-at-scale/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Give GitHub Copilot CLI real code intelligence with language servers",
+        "link": "https://github.blog/ai-and-ml/github-copilot/give-github-copilot-cli-real-code-intelligence-with-language-servers/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "From one-off prompts to workflows: How to use custom agents in GitHub Copilot CLI",
+        "link": "https://github.blog/ai-and-ml/github-copilot/from-one-off-prompts-to-workflows-how-to-use-custom-agents-in-github-copilot-cli/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GitHub recognized as a Leader in the Gartner® Magic Quadrant™ for Enterprise AI Coding Agents for the third year in a row",
+        "link": "https://github.blog/ai-and-ml/github-copilot/github-recognized-as-a-leader-in-the-gartner-magic-quadrant-for-enterprise-ai-coding-agents-for-the-third-year-in-a-row/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Take your local GitHub sessions anywhere",
+        "link": "https://github.blog/news-insights/product-news/take-your-local-github-sessions-anywhere/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Building a general-purpose accessibility agent—and what we learned in the process",
+        "link": "https://github.blog/ai-and-ml/github-copilot/building-a-general-purpose-accessibility-agent-and-what-we-learned-in-the-process/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Dungeons & Desktops: Building a procedurally generated roguelike with GitHub Copilot CLI",
+        "link": "https://github.blog/ai-and-ml/github-copilot/dungeons-desktops-building-a-procedurally-generated-roguelike-with-github-copilot-cli/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Improving token efficiency in GitHub Agentic Workflows",
+        "link": "https://github.blog/ai-and-ml/github-copilot/improving-token-efficiency-in-github-agentic-workflows/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Agent pull requests are everywhere. Here’s how to review them.",
+        "link": "https://github.blog/ai-and-ml/generative-ai/agent-pull-requests-are-everywhere-heres-how-to-review-them/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Google DeepMind is worried about what happens when millions of agents start to interact",
+        "link": "https://www.technologyreview.com/2026/06/11/1138794/google-deepmind-is-worried-about-what-happens-when-millions-of-agents-start-to-interact/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Learning to lead in a hybrid human-AI enterprise",
+        "link": "https://www.technologyreview.com/2026/06/09/1137830/learning-to-lead-in-a-hybrid-human-ai-enterprise/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Five things you need to know about AI",
+        "link": "https://www.technologyreview.com/2026/06/09/1138582/five-things-you-need-to-know-about-ai/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The Meta hack shows there’s more to AI security than Mythos",
+        "link": "https://www.technologyreview.com/2026/06/05/1138437/the-meta-hack-shows-theres-more-to-ai-security-than-mythos/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How small businesses can leverage AI",
+        "link": "https://www.technologyreview.com/2026/06/02/1138227/how-small-businesses-can-leverage-ai/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How the Pope’s Magnifica Humanitas offers a template for individuals to meet the AI moment",
+        "link": "https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magnifica-humanitas-offers-a-template-for-individuals-to-meet-the-ai-moment/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The AI Hype Index: AI gets booed in graduation season",
+        "link": "https://www.technologyreview.com/2026/05/28/1138053/the-ai-hype-index-ai-gets-booed-in-graduation-season/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Rethinking organizational design in the age of agentic AI",
+        "link": "https://www.technologyreview.com/2026/05/26/1137584/rethinking-organizational-design-in-the-age-of-agentic-ai/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "2026智源大会开幕：推动AI、物理世界和生命科学“三体互动”",
+        "link": "https://www.qbitai.com/2026/06/435394.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.7699,
+        "threshold": 0.72,
+        "matched_story_title": "2026奇点智能产品大会首批嘉宾官宣：在 AI 的“可交付的时代”，看一线专家如何拆解真实落地闭环！",
+        "matched_episode_id": "2026-06-13",
+        "detail": "SentenceTransformer similarity (0.77) >= threshold (0.72) with historical story '2026奇点智能产品大会首批嘉宾官宣：在 AI 的“可交付的时代”，看一线专家如何拆解真实落地闭环！' from 2026-06-13."
+      },
+      {
+        "title": "马斯克远程敲钟穿了老黄的皮衣！SpaceX员工集体穿上绿鞋",
+        "link": "https://www.qbitai.com/2026/06/435339.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.7306,
+        "threshold": 0.72,
+        "matched_story_title": "马斯克是SpaceX面子，她才是里子",
+        "matched_episode_id": "2026-06-07",
+        "detail": "SentenceTransformer similarity (0.73) >= threshold (0.72) with historical story '马斯克是SpaceX面子，她才是里子' from 2026-06-07."
+      },
+      {
+        "title": "神了，世界杯第一天真按千问剧本踢了",
+        "link": "https://www.qbitai.com/2026/06/435321.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.72,
+        "matched_story_title": "神了，世界杯第一天真按千问剧本踢了",
+        "matched_episode_id": "2026-06-13",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story '神了，世界杯第一天真按千问剧本踢了' from 2026-06-13."
+      },
+      {
+        "title": "千里收购了一家毫米波雷达公司",
+        "link": "https://www.qbitai.com/2026/06/435196.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.72,
+        "matched_story_title": "千里收购了一家毫米波雷达公司",
+        "matched_episode_id": "2026-06-13",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story '千里收购了一家毫米波雷达公司' from 2026-06-13."
+      },
+      {
+        "title": "耐心资本护航创新，2026SuperLink开启创投价值共生新时代",
+        "link": "https://www.qbitai.com/2026/06/435192.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.72,
+        "matched_story_title": "耐心资本护航创新，2026SuperLink开启创投价值共生新时代",
+        "matched_episode_id": "2026-06-13",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story '耐心资本护航创新，2026SuperLink开启创投价值共生新时代' from 2026-06-13."
+      },
+      {
+        "title": "Anthropic老大的唯一 -1，就是AI股神的未婚妻",
+        "link": "https://www.qbitai.com/2026/06/433717.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.72,
+        "matched_story_title": "Anthropic老大的唯一 -1，就是AI股神的未婚妻",
+        "matched_episode_id": "2026-06-13",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story 'Anthropic老大的唯一 -1，就是AI股神的未婚妻' from 2026-06-13."
+      },
+      {
+        "title": "2026奇点智能产品大会首批嘉宾官宣：在 AI 的“可交付的时代”，看一线专家如何拆解真实落地闭环！",
+        "link": "https://www.qbitai.com/2026/06/435105.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9986,
+        "threshold": 0.72,
+        "matched_story_title": "2026奇点智能产品大会首批嘉宾官宣：在 AI 的“可交付的时代”，看一线专家如何拆解真实落地闭环！",
+        "matched_episode_id": "2026-06-13",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story '2026奇点智能产品大会首批嘉宾官宣：在 AI 的“可交付的时代”，看一线专家如何拆解真实落地闭环！' from 2026-06-13."
+      },
+      {
+        "title": "“智能体最后的考试”，Fable 5竟然不敌GPT 5.5",
+        "link": "https://www.qbitai.com/2026/06/434774.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.72,
+        "matched_story_title": "“智能体最后的考试”，Fable 5竟然不敌GPT 5.5",
+        "matched_episode_id": "2026-06-13",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story '“智能体最后的考试”，Fable 5竟然不敌GPT 5.5' from 2026-06-13."
+      },
+      {
+        "title": "Our new community investments in Virginia support local jobs and expand energy affordability.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/virginia-community-investments/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.7382,
+        "threshold": 0.72,
+        "matched_story_title": "We’re announcing new community investments in Missouri.",
+        "matched_episode_id": "2026-06-06",
+        "detail": "SentenceTransformer similarity (0.74) >= threshold (0.72) with historical story 'We’re announcing new community investments in Missouri.' from 2026-06-06."
+      },
+      {
+        "title": "5 ways Google Search can level up your thrift and vintage shopping",
+        "link": "https://blog.google/products-and-platforms/products/search/thrifting-tips/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9231,
+        "threshold": 0.72,
+        "matched_story_title": "5 ways Google Search can level up your thrift and vintage shopping",
+        "matched_episode_id": "2026-06-04",
+        "detail": "SentenceTransformer similarity (0.92) >= threshold (0.72) with historical story '5 ways Google Search can level up your thrift and vintage shopping' from 2026-06-04."
+      },
+      {
+        "title": "Nemotron 3.5 Content Safety: Customizable Multimodal Safety for Global Enterprise AI",
+        "link": "https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.996,
+        "threshold": 0.72,
+        "matched_story_title": "Nemotron 3.5 Content Safety: Customizable Multimodal Safety for Global Enterprise AI",
+        "matched_episode_id": "2026-06-05",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story 'Nemotron 3.5 Content Safety: Customizable Multimodal Safety for Global Enterprise AI' from 2026-06-05."
+      },
+      {
+        "title": "Designing the hf CLI as an agent-optimized way to work with the Hub",
+        "link": "https://huggingface.co/blog/hf-cli-for-agents",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9687,
+        "threshold": 0.72,
+        "matched_story_title": "Designing the hf CLI as an agent-optimized way to work with the Hub",
+        "matched_episode_id": "2026-06-05",
+        "detail": "SentenceTransformer similarity (0.97) >= threshold (0.72) with historical story 'Designing the hf CLI as an agent-optimized way to work with the Hub' from 2026-06-05."
+      },
+      {
+        "title": "Direct Preference Optimization Beyond Chatbots",
+        "link": "https://huggingface.co/blog/Dharma-AI/direct-preference-optimization-beyond-chatbots",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9834,
+        "threshold": 0.72,
+        "matched_story_title": "Direct Preference Optimization Beyond Chatbots",
+        "matched_episode_id": "2026-06-04",
+        "detail": "SentenceTransformer similarity (0.98) >= threshold (0.72) with historical story 'Direct Preference Optimization Beyond Chatbots' from 2026-06-04."
+      },
+      {
+        "title": "Adding MCP Tools to Reachy Mini",
+        "link": "https://huggingface.co/blog/adding-mcp-tools-to-reachy-mini",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9778,
+        "threshold": 0.72,
+        "matched_story_title": "Adding MCP Tools to Reachy Mini",
+        "matched_episode_id": "2026-06-04",
+        "detail": "SentenceTransformer similarity (0.98) >= threshold (0.72) with historical story 'Adding MCP Tools to Reachy Mini' from 2026-06-04."
+      },
+      {
+        "title": "How courts are coping with a flood of AI-generated lawsuits",
+        "link": "https://www.technologyreview.com/2026/06/04/1138391/courts-coping-ai-lawsuits/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9595,
+        "threshold": 0.72,
+        "matched_story_title": "How courts are coping with a flood of AI-generated lawsuits",
+        "matched_episode_id": "2026-06-05",
+        "detail": "SentenceTransformer similarity (0.96) >= threshold (0.72) with historical story 'How courts are coping with a flood of AI-generated lawsuits' from 2026-06-05."
+      },
+      {
+        "title": "Rehumanizing global health care with agentic AI",
+        "link": "https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-global-health-care-with-agentic-ai/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.8634,
+        "threshold": 0.72,
+        "matched_story_title": "Rehumanizing global health care with agentic AI",
+        "matched_episode_id": "2026-06-04",
+        "detail": "SentenceTransformer similarity (0.86) >= threshold (0.72) with historical story 'Rehumanizing global health care with agentic AI' from 2026-06-04."
+      }
+    ]
+  }
+}
