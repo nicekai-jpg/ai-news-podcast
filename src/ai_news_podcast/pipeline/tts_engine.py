@@ -211,6 +211,28 @@ def _write_transcript_with_timestamps(
     transcript_path.write_text("\n".join(xml_lines), encoding="utf-8")
 
 
+def split_text_into_sentences(text: str, max_chars: int = 40) -> list[str]:
+    """将文本切分为较短的句子/短句，避免单次合成文本过长导致 CosyVoice 截断或语速失真。"""
+    # 按照常见的标点符号进行切分，保留标点
+    pattern = re.compile(r"([^，。！？；、,.!?;\s]+[，。！？；、,.!?;\s]*)")
+    parts = pattern.findall(text)
+    if not parts:
+        return [text] if text.strip() else []
+
+    sentences = []
+    current = ""
+    for part in parts:
+        if len(current) + len(part) <= max_chars:
+            current += part
+        else:
+            if current:
+                sentences.append(current.strip())
+            current = part
+    if current:
+        sentences.append(current.strip())
+    return sentences
+
+
 async def synthesize_cosyvoice2(
     chunks: List[DialogueChunk],
     output_path: Union[str, Path],
@@ -241,10 +263,24 @@ async def synthesize_cosyvoice2(
         tmp_root = Path(tmp_dir)
         segments = []
         for idx, chunk in enumerate(chunks, start=1):
-            tensor = cosy_engine.synthesize_chunk(text=chunk.text, host=chunk.host)
-            wav_path = tmp_root / f"chunk_{idx:03d}.wav"
-            torchaudio.save(str(wav_path), tensor, cv_cfg.sample_rate)
-            segments.append(AudioSegment.from_file(str(wav_path)))
+            sentences = split_text_into_sentences(chunk.text, max_chars=40)
+            chunk_segments = []
+            for s_idx, sentence in enumerate(sentences):
+                s_text = sentence.strip()
+                if not s_text:
+                    continue
+                tensor = cosy_engine.synthesize_chunk(text=s_text, host=chunk.host)
+                wav_path = tmp_root / f"chunk_{idx:03d}_{s_idx:03d}.wav"
+                torchaudio.save(str(wav_path), tensor, cv_cfg.sample_rate)
+                chunk_segments.append(AudioSegment.from_file(str(wav_path)))
+
+            if chunk_segments:
+                combined_chunk = chunk_segments[0]
+                for next_seg in chunk_segments[1:]:
+                    combined_chunk += AudioSegment.silent(duration=150) + next_seg
+                segments.append(combined_chunk)
+            else:
+                segments.append(AudioSegment.silent(duration=100))
 
         combined, timestamps = assemble_dialogue_audio(
             chunks,
