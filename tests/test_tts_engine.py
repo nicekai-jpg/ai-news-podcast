@@ -67,7 +67,7 @@ class TestParseDialogueChunks:
     def test_ssml_parsing(self) -> None:
         text = """
         <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
-          <voice name="zh-CN-YunxiNeural">
+          <voice name="zh-CN-YunjianNeural">
             听众朋友大家好
           </voice>
           <voice name="zh-CN-XiaoxiaoNeural">
@@ -78,8 +78,28 @@ class TestParseDialogueChunks:
         chunks = parse_dialogue_chunks(text)
         assert len(chunks) == 2
         assert chunks[0] == DialogueChunk(
-            host="A", text="听众朋友大家好", voice="zh-CN-YunxiNeural"
+            host="A", text="听众朋友大家好", voice="zh-CN-YunjianNeural"
         )
         assert chunks[1] == DialogueChunk(
             host="B", text="大家好，我是 B", voice="zh-CN-XiaoxiaoNeural"
+        )
+
+    def test_ssml_parsing_swapped_order(self) -> None:
+        text = """
+        <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
+          <voice name="zh-CN-XiaoxiaoNeural">
+            大家好，我是 B (doge)
+          </voice>
+          <voice name="zh-CN-YunjianNeural">
+            听众朋友大家好
+          </voice>
+        </speak>
+        """
+        chunks = parse_dialogue_chunks(text)
+        assert len(chunks) == 2
+        assert chunks[0] == DialogueChunk(
+            host="B", text="大家好，我是 B", voice="zh-CN-XiaoxiaoNeural"
+        )
+        assert chunks[1] == DialogueChunk(
+            host="A", text="听众朋友大家好", voice="zh-CN-YunjianNeural"
         )

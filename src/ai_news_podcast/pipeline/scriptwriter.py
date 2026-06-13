@@ -380,7 +380,11 @@ def generate_script(
     )
 
     if is_ssml:
-        host_a_count = script.count('name="zh-CN-YunxiNeural"')
+        host_a_count = (
+            script.count('name="zh-CN-YunxiNeural"')
+            + script.count('name="zh-CN-YunjianNeural"')
+            + script.count('name="zh-CN-YunyangNeural"')
+        )
         host_b_count = script.count('name="zh-CN-XiaoxiaoNeural"')
         total_turns = host_a_count + host_b_count
         if host_a_count == 0 or host_b_count == 0:

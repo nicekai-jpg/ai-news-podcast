@@ -72,7 +72,7 @@ async def main() -> int:
 
     backend = str(tts_cfg.get("backend") or "edge-tts")
     voices = (
-        str(tts_cfg.get("host_a_voice") or "zh-CN-YunxiNeural"),
+        str(tts_cfg.get("host_a_voice") or "zh-CN-YunjianNeural"),
         str(tts_cfg.get("host_b_voice") or tts_cfg.get("voice") or "zh-CN-XiaoxiaoNeural"),
     )
     rate = str(tts_cfg.get("rate") or "+0%")
