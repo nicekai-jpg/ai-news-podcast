@@ -32,8 +32,8 @@ async def _edge_to_wav(voice: str, text: str, out_wav: Path) -> None:
 
 async def main() -> None:
     REFS.mkdir(parents=True, exist_ok=True)
-    await _edge_to_wav("zh-CN-YunyangNeural", HOST_A_TEXT, REFS / "host_a_ref.wav")
-    await _edge_to_wav("zh-CN-XiaoyiNeural", HOST_B_TEXT, REFS / "host_b_ref.wav")
+    await _edge_to_wav("zh-CN-YunjianNeural", HOST_A_TEXT, REFS / "host_a_ref.wav")
+    await _edge_to_wav("zh-CN-XiaoxiaoNeural", HOST_B_TEXT, REFS / "host_b_ref.wav")
     (REFS / "host_a_ref.txt").write_text(HOST_A_TEXT, encoding="utf-8")
     (REFS / "host_b_ref.txt").write_text(HOST_B_TEXT, encoding="utf-8")
     print("Reference audio written to", REFS)

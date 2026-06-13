@@ -11,7 +11,7 @@ podcast:
 tts:
   backend: "cosyvoice2"              # edge-tts | cosyvoice2 | hybrid
   fallback_backend: "edge-tts"
-  host_a_voice: "zh-CN-YunxiNeural"  # edge / hybrid 降级时使用
+  host_a_voice: "zh-CN-YunjianNeural"  # edge / hybrid 降级时使用
   host_b_voice: "zh-CN-XiaoxiaoNeural"
   voice: "zh-CN-XiaoxiaoNeural"      # 兼容旧配置
   bgm_path: ""

@@ -16,7 +16,7 @@ from ai_news_podcast.text_utils import clean_tts_text
 log = logging.getLogger(__name__)
 
 
-def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
+def parse_dialogue_chunks(text: str, voices: Optional[Tuple[str, str]] = None) -> list[DialogueChunk]:
     """解析对话文本，支持标准的 SSML (XML/HTML) 格式和自定义 [Host A] / [Host B] 格式。"""
     stripped_text = text.strip()
     if stripped_text.startswith("<speak") or "<speak" in stripped_text or "<voice" in stripped_text:
@@ -33,7 +33,21 @@ def parse_dialogue_chunks(text: str) -> list[DialogueChunk]:
                     if chunk_text:
                         cleaned = clean_tts_text(chunk_text)
                         if cleaned:
+                            # 默认根据 idx 交替分配
                             host = "B" if idx % 2 == 1 else "A"
+                            if voice_name:
+                                vn_lower = voice_name.strip().lower()
+                                if voices:
+                                    if vn_lower == voices[0].strip().lower():
+                                        host = "A"
+                                    elif vn_lower == voices[1].strip().lower():
+                                        host = "B"
+                                else:
+                                    # 常见中文音色及标识兜底匹配
+                                    if "xiaoxiao" in vn_lower or "xiaoyi" in vn_lower or "host_b" in vn_lower or "host-b" in vn_lower:
+                                        host = "B"
+                                    elif any(x in vn_lower for x in ("yunxi", "yunjian", "yunyang", "host_a", "host-a")):
+                                        host = "A"
                             chunks.append(
                                 DialogueChunk(
                                     host=host,
@@ -262,12 +276,12 @@ async def synthesize(
     text: str,
     *,
     backend: str = "edge-tts",
-    voices: Tuple[str, str] = ("zh-CN-YunxiNeural", "zh-CN-XiaoxiaoNeural"),
+    voices: Tuple[str, str] = ("zh-CN-YunjianNeural", "zh-CN-XiaoxiaoNeural"),
     output_path: Union[str, Path],
     bgm_path: Optional[str] = None,
     **kwargs: Any,
 ) -> None:
-    chunks = parse_dialogue_chunks(text)
+    chunks = parse_dialogue_chunks(text, voices=voices)
     if not chunks:
         raise ValueError("Input text is empty after dialogue parsing")
 
