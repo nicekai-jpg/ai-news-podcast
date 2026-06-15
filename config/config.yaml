@@ -19,15 +19,15 @@ tts:
     model_dir: ""                    # 空则读 COSYVOICE_MODEL_DIR 环境变量
     ref_audio:
       host_a:
-        v1: "assets/audio_samples/男1.mp3"
-        v1_text: "assets/audio_samples/男1.txt"
-        v2: "assets/audio_samples/男2.mp3"
-        v2_text: "assets/audio_samples/男2.txt"
+        v1: "assets/audio_samples/host_a_v1.mp3"
+        v1_text: "assets/audio_samples/host_a_v1.txt"
+        v2: "assets/audio_samples/host_a_v2.mp3"
+        v2_text: "assets/audio_samples/host_a_v2.txt"
       host_b:
-        v1: "assets/audio_samples/女1.mp3"
-        v1_text: "assets/audio_samples/女1.txt"
-        v2: "assets/audio_samples/女2.mp3"
-        v2_text: "assets/audio_samples/女2.txt"
+        v1: "assets/audio_samples/host_b_v1.mp3"
+        v1_text: "assets/audio_samples/host_b_v1.txt"
+        v2: "assets/audio_samples/host_b_v2.mp3"
+        v2_text: "assets/audio_samples/host_b_v2.txt"
   rate: "+0%"
   volume: "+0%"
   pitch: "+0Hz"
