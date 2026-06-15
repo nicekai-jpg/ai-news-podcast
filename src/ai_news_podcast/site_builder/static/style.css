@@ -417,3 +417,42 @@
       font-weight: 500;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     }
+
+    /* Voice Selector Styling */
+    .voice-selector-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+      padding: 6px 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      align-items: center;
+      justify-content: space-between;
+    }
+    .voice-select-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .voice-select-group label {
+      font-size: 0.68rem;
+      color: #9ca3af;
+      font-weight: 500;
+    }
+    .voice-select-group select {
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      padding: 4px 6px;
+      font-size: 0.72rem;
+      outline: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      width: 100%;
+    }
+    .voice-select-group select:focus {
+      border-color: var(--accent);
+    }

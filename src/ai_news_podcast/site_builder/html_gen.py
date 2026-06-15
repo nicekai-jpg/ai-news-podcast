@@ -158,6 +158,22 @@ def build_index_html(
                 <button id="playback-btn-full" class="playback-mode-btn active" onclick="setPlaybackMode('full')">📻 整轨广播</button>
                 <button id="playback-btn-sentence" class="playback-mode-btn" onclick="setPlaybackMode('sentence')" style="display: none;">📖 智能句读</button>
               </div>
+              <div class="voice-selector-row" id="voice-selector-row" style="display: none;">
+                <div class="voice-select-group">
+                  <label>博文音色</label>
+                  <select id="select-voice-a" onchange="changeVoiceVariant('A', this.value)">
+                    <option value="v1">音色 1</option>
+                    <option value="v2">音色 2</option>
+                  </select>
+                </div>
+                <div class="voice-select-group">
+                  <label>晓晓音色</label>
+                  <select id="select-voice-b" onchange="changeVoiceVariant('B', this.value)">
+                    <option value="v1">音色 1</option>
+                    <option value="v2">音色 2</option>
+                  </select>
+                </div>
+              </div>
               <div class="console-time-row">
                 <span id="current-time">0:00</span>
                 <div class="console-progress-track" id="console-progress-track" onclick="seekAudio(event)">
