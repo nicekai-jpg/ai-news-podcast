@@ -29,10 +29,10 @@ def load_cosyvoice_config(cfg: dict, *, project_root: Path) -> CosyVoiceConfig:
     def _read_text(path: Path) -> str:
         return path.read_text(encoding="utf-8").strip()
 
-    host_a_wav = _resolve(str(refs.get("host_a") or "asset/refs/host_a_ref.wav"))
-    host_b_wav = _resolve(str(refs.get("host_b") or "asset/refs/host_b_ref.wav"))
-    host_a_text_path = _resolve(str(refs.get("host_a_text") or "asset/refs/host_a_ref.txt"))
-    host_b_text_path = _resolve(str(refs.get("host_b_text") or "asset/refs/host_b_ref.txt"))
+    host_a_wav = _resolve(str(refs.get("host_a") or "assets/refs/host_a_ref.wav"))
+    host_b_wav = _resolve(str(refs.get("host_b") or "assets/refs/host_b_ref.wav"))
+    host_a_text_path = _resolve(str(refs.get("host_a_text") or "assets/refs/host_a_ref.txt"))
+    host_b_text_path = _resolve(str(refs.get("host_b_text") or "assets/refs/host_b_ref.txt"))
 
     model_dir_raw = str(cosy.get("model_dir") or os.environ.get("COSYVOICE_MODEL_DIR") or "").strip()
     model_dir = Path(model_dir_raw).expanduser() if model_dir_raw else Path()
