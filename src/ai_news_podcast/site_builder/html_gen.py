@@ -154,6 +154,10 @@ def build_index_html(
             </div>
 
             <div class="console-player">
+              <div class="playback-mode-switcher">
+                <button id="playback-btn-full" class="playback-mode-btn active" onclick="setPlaybackMode('full')">📻 整轨广播</button>
+                <button id="playback-btn-sentence" class="playback-mode-btn" onclick="setPlaybackMode('sentence')" style="display: none;">📖 智能句读</button>
+              </div>
               <div class="console-time-row">
                 <span id="current-time">0:00</span>
                 <div class="console-progress-track" id="console-progress-track" onclick="seekAudio(event)">
@@ -237,6 +241,7 @@ def build_index_html(
     </div>
 
     <audio id="main-audio" style="display:none"></audio>
+    <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
     <div class="footer"><p>{podcast_title} · 构建于 {build_time}</p></div>
   </div>
