@@ -176,6 +176,17 @@ async def synthesize_edge_tts(
             tmp_dir=tmp_root,
         )
 
+        _write_chunks_and_playlist(
+            chunks=chunks,
+            segments=segments,
+            timestamps=timestamps,
+            voice_map={
+                "A": voices[0],
+                "B": voices[1] if len(voices) > 1 else voices[0],
+            },
+            output_path=final_path,
+        )
+
         if transcript_path:
             _write_transcript_with_timestamps(
                 chunks=chunks,
@@ -209,6 +220,50 @@ def _write_transcript_with_timestamps(
     xml_lines.append("</speak>")
     transcript_path.parent.mkdir(parents=True, exist_ok=True)
     transcript_path.write_text("\n".join(xml_lines), encoding="utf-8")
+
+
+def _write_chunks_and_playlist(
+    chunks: List[DialogueChunk],
+    segments: List[Any],  # list of AudioSegment
+    timestamps: list[tuple[float, float]],
+    voice_map: dict[str, str],
+    output_path: Path,
+) -> None:
+    """将各个音频片段及播放清单 JSON 写入和单期 ID 同名的文件夹中。"""
+    chunks_dir = output_path.with_suffix("")
+    chunks_dir.mkdir(parents=True, exist_ok=True)
+
+    playlist_chunks = []
+    for idx, chunk in enumerate(chunks, start=1):
+        voice = chunk.voice or voice_map.get(chunk.host, "unknown")
+        start_sec, duration_sec = timestamps[idx - 1]
+        chunk_filename = f"chunk_{idx:03d}.mp3"
+        chunk_dest = chunks_dir / chunk_filename
+
+        # 导出单个音频片段
+        try:
+            segments[idx - 1].export(str(chunk_dest), format="mp3", bitrate="64k")
+        except TypeError:
+            segments[idx - 1].export(str(chunk_dest), format="mp3")
+
+        playlist_chunks.append({
+            "id": idx,
+            "host": chunk.host,
+            "voice": voice,
+            "text": chunk.text,
+            "audio": chunk_filename,
+            "start": round(start_sec, 3),
+            "duration": round(duration_sec, 3)
+        })
+
+    playlist_data = {
+        "episode_id": output_path.stem,
+        "chunks": playlist_chunks
+    }
+
+    import json
+    playlist_json_path = chunks_dir / "playlist.json"
+    playlist_json_path.write_text(json.dumps(playlist_data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def split_text_into_sentences(text: str, max_chars: int = 40) -> list[str]:
@@ -297,6 +352,14 @@ async def synthesize_cosyvoice2(
             bgm_path=bgm_path,
             audio_cfg=audio_cfg,
             tmp_dir=tmp_root,
+        )
+
+        _write_chunks_and_playlist(
+            chunks=chunks,
+            segments=segments,
+            timestamps=timestamps,
+            voice_map=voice_map,
+            output_path=final_path,
         )
 
         if transcript_path:

@@ -10,6 +10,12 @@
     const audio = document.getElementById('main-audio');
     audio.volume = lastVol;
 
+    let playbackMode = 'full'; // 'full' | 'sentence'
+    let currentPlaylist = null; // List of chunks from playlist.json
+    let currentChunkIndex = 0;
+    const bgmAudio = document.getElementById('bgm-audio');
+    bgmAudio.volume = 0.05; // 低音量背景音乐
+
     let currentMode = 'podcast';
     let scriptTotalChars = 0;
     let scriptParagraphs = [];
@@ -155,8 +161,33 @@
           }
         }
 
-        if (ep.mp3 && currentEpId !== d) {
-          loadAudio(d, ep.mp3, ep.title || ('AI 新闻快报 | ' + d), !isFirstLoad);
+        currentPlaylist = null;
+        try {
+          var rPl = await fetch('./episodes/' + d + '/playlist.json');
+          if (rPl.ok) {
+            var plData = await rPl.json();
+            currentPlaylist = plData.chunks;
+            document.getElementById('playback-btn-sentence').style.display = 'block';
+          } else {
+            document.getElementById('playback-btn-sentence').style.display = 'none';
+            setPlaybackMode('full');
+          }
+        } catch (ePl) {
+          document.getElementById('playback-btn-sentence').style.display = 'none';
+          setPlaybackMode('full');
+        }
+
+        if (playbackMode === 'sentence' && currentPlaylist && currentPlaylist.length > 0) {
+          currentChunkIndex = 0;
+          if (currentEpId !== d) {
+            currentEpId = d;
+            loadChunk(currentChunkIndex, !isFirstLoad);
+            bgmAudio.src = 'assets/bgm_placeholder.wav';
+          }
+        } else {
+          if (ep.mp3 && currentEpId !== d) {
+            loadAudio(d, ep.mp3, ep.title || ('AI 新闻快报 | ' + d), !isFirstLoad);
+          }
         }
       }
     }
@@ -312,6 +343,60 @@
       return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
+    function setPlaybackMode(mode) {
+      if (playbackMode === mode) return;
+      playbackMode = mode;
+      document.getElementById('playback-btn-full').classList.toggle('active', mode === 'full');
+      document.getElementById('playback-btn-sentence').classList.toggle('active', mode === 'sentence');
+
+      audio.pause();
+      bgmAudio.pause();
+      var ep = EPISODES[currentDate] || {};
+      if (mode === 'sentence' && currentPlaylist && currentPlaylist.length > 0) {
+        currentChunkIndex = 0;
+        loadChunk(currentChunkIndex, false);
+        bgmAudio.src = 'assets/bgm_placeholder.wav';
+      } else {
+        if (ep.mp3) {
+          loadAudio(currentDate, ep.mp3, ep.title || ('AI 新闻快报 | ' + currentDate), false);
+        }
+      }
+    }
+
+    function loadChunk(index, autoplay) {
+      if (!currentPlaylist || index < 0 || index >= currentPlaylist.length) return;
+      currentChunkIndex = index;
+      var chunk = currentPlaylist[index];
+      audio.src = './episodes/' + currentDate + '/' + chunk.audio;
+      if (autoplay) {
+        audio.play().catch(function(){});
+        if (playbackMode === 'sentence') {
+          bgmAudio.play().catch(function(){});
+        }
+      } else {
+        audio.load();
+      }
+
+      // 智能句读模式下切换片段，需要重置高亮和同步滚动
+      // 我们的 syncScrollTo(true) 会由 timeupdate 触发，或者直接在这里触发
+      document.querySelectorAll('.transcript-row').forEach(function(el) {
+        el.classList.remove('speaking');
+      });
+      var activeEl = document.getElementById('trans-row-' + index);
+      if (activeEl) {
+        activeEl.classList.add('speaking');
+        if (autoplay || !userScrolling) {
+          var container = document.getElementById('cast-panel-body');
+          var relativeTop = activeEl.offsetTop - container.offsetTop;
+          var containerHeight = container.clientHeight;
+          var activeHeight = activeEl.clientHeight;
+          var targetScroll = relativeTop - (containerHeight / 2) + (activeHeight / 2);
+          isInternalScroll = true;
+          container.scrollTo({ top: targetScroll, behavior: 'smooth' });
+        }
+      }
+    }
+
     function loadAudio(epId, url, title, autoplay) {
       currentEpId = epId;
       audio.src = url;
@@ -328,6 +413,12 @@
     }
 
     function seekToParagraph(index) {
+      if (playbackMode === 'sentence' && currentPlaylist) {
+        var isPlaying = !audio.paused;
+        loadChunk(index, isPlaying);
+        resumeSyncScroll();
+        return;
+      }
       if (!audio.duration) return;
       var p = scriptParagraphs[index];
       if (!p) return;
@@ -360,11 +451,52 @@
     }
 
     function skipAudio(s) {
+      if (playbackMode === 'sentence' && currentPlaylist) {
+        var totalDuration = currentPlaylist.reduce((acc, c) => acc + (c.duration || 0), 0);
+        var curVirtualTime = (currentPlaylist[currentChunkIndex].start || 0) + audio.currentTime;
+        var targetTime = Math.max(0, Math.min(totalDuration, curVirtualTime + s));
+
+        // 寻找对应的音频片段
+        for (var i = 0; i < currentPlaylist.length; i++) {
+          var chunk = currentPlaylist[i];
+          if (targetTime >= chunk.start && targetTime <= chunk.start + chunk.duration) {
+            var isPlaying = !audio.paused;
+            loadChunk(i, isPlaying);
+            audio.currentTime = targetTime - chunk.start;
+            break;
+          }
+        }
+        resumeSyncScroll();
+        return;
+      }
+
       audio.currentTime = Math.max(0, Math.min(audio.duration||0, audio.currentTime + s));
       resumeSyncScroll();
     }
 
     function seekAudio(e) {
+      if (playbackMode === 'sentence' && currentPlaylist) {
+        var totalDuration = currentPlaylist.reduce((acc, c) => acc + (c.duration || 0), 0);
+        if (!totalDuration) return;
+        var track = document.getElementById('console-progress-track');
+        var rect = track.getBoundingClientRect();
+        var pct = (e.clientX - rect.left) / rect.width;
+        var targetTime = totalDuration * pct;
+
+        // 寻找对应的音频片段并跳转
+        for (var i = 0; i < currentPlaylist.length; i++) {
+          var chunk = currentPlaylist[i];
+          if (targetTime >= chunk.start && targetTime <= chunk.start + chunk.duration) {
+            var isPlaying = !audio.paused;
+            loadChunk(i, isPlaying);
+            audio.currentTime = targetTime - chunk.start;
+            break;
+          }
+        }
+        resumeSyncScroll();
+        return;
+      }
+
       if (!audio.duration) return;
       var track = document.getElementById('console-progress-track');
       var rect = track.getBoundingClientRect();
@@ -376,6 +508,7 @@
     function cycleSpeed() {
       speedIdx = (speedIdx + 1) % SPEEDS.length;
       audio.playbackRate = SPEEDS[speedIdx];
+      bgmAudio.playbackRate = SPEEDS[speedIdx];
       var s = SPEEDS[speedIdx];
       document.getElementById('console-speed-btn').textContent = (s % 1 === 0 ? s + '.0' : s) + 'x';
     }
@@ -383,6 +516,7 @@
     function toggleMute() {
       isMuted = !isMuted;
       audio.muted = isMuted;
+      bgmAudio.muted = isMuted;
       var icon = document.getElementById('volume-icon');
       var slider = document.getElementById('volume-slider');
       if (isMuted) {
@@ -396,9 +530,11 @@
 
     function changeVolume(v) {
       audio.volume = v;
+      bgmAudio.volume = v * 0.05; // 背景音乐音量缩放
       lastVol = v;
       isMuted = (v == 0);
       audio.muted = isMuted;
+      bgmAudio.muted = isMuted;
       var icon = document.getElementById('volume-icon');
       if (isMuted) {
         icon.innerHTML = '<path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/>';
@@ -442,9 +578,12 @@
     }
 
     function syncScrollTo(force) {
-      if (!audio.duration || scriptParagraphs.length === 0) return;
+      if ((playbackMode !== 'sentence' && !audio.duration) || scriptParagraphs.length === 0) return;
 
       var currentTime = audio.currentTime;
+      if (playbackMode === 'sentence' && currentPlaylist) {
+        currentTime = (currentPlaylist[currentChunkIndex].start || 0) + audio.currentTime;
+      }
       var activeIndex = 0;
 
       var hasTimestamps = scriptParagraphs[0].start !== null && scriptParagraphs[0].start !== undefined;
@@ -515,27 +654,54 @@
       }
     }
 
+    audio.addEventListener('ended', function() {
+      if (playbackMode === 'sentence' && currentPlaylist) {
+        if (currentChunkIndex + 1 < currentPlaylist.length) {
+          loadChunk(currentChunkIndex + 1, true);
+        } else {
+          audio.pause();
+          bgmAudio.pause();
+        }
+      }
+    });
+
     audio.addEventListener('play', function() {
       document.getElementById('console-btn-play').textContent = '⏸';
       document.getElementById('vinyl-disc').classList.add('spinning');
+      if (playbackMode === 'sentence' && currentPlaylist) {
+        bgmAudio.play().catch(function(){});
+      }
     });
     audio.addEventListener('pause', function() {
       document.getElementById('console-btn-play').textContent = '▶';
       document.getElementById('vinyl-disc').classList.remove('spinning');
+      if (playbackMode === 'sentence') {
+        bgmAudio.pause();
+      }
     });
 
     audio.addEventListener('timeupdate', function() {
-      if (!audio.duration) return;
-      var pct = (audio.currentTime / audio.duration * 100).toFixed(1);
+      var curTime = audio.currentTime;
+      var totalDur = audio.duration || 0;
+      if (playbackMode === 'sentence' && currentPlaylist) {
+        if (currentPlaylist[currentChunkIndex]) {
+          curTime = (currentPlaylist[currentChunkIndex].start || 0) + audio.currentTime;
+        }
+        totalDur = currentPlaylist.reduce((acc, c) => acc + (c.duration || 0), 0);
+      } else {
+        if (!audio.duration) return;
+      }
+
+      var pct = totalDur > 0 ? (curTime / totalDur * 100).toFixed(1) : 0;
 
       var consoleFill = document.getElementById('console-progress-fill');
       if (consoleFill) consoleFill.style.width = pct + '%';
 
       var curTimeEl = document.getElementById('current-time');
-      if (curTimeEl) curTimeEl.textContent = fmtTime(audio.currentTime);
+      if (curTimeEl) curTimeEl.textContent = fmtTime(curTime);
 
       var totalTimeEl = document.getElementById('total-time');
-      if (totalTimeEl && audio.duration) totalTimeEl.textContent = fmtTime(audio.duration);
+      if (totalTimeEl && totalDur) totalTimeEl.textContent = fmtTime(totalDur);
 
       // 同步高亮及滚动
       syncScrollTo(false);
