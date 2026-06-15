@@ -13,6 +13,7 @@
     let playbackMode = 'full'; // 'full' | 'sentence'
     let currentPlaylist = null; // List of chunks from playlist.json
     let currentChunkIndex = 0;
+    let selectedVoices = { 'A': 'v1', 'B': 'v1' };
     const bgmAudio = document.getElementById('bgm-audio');
     bgmAudio.volume = 0.05; // 低音量背景音乐
 
@@ -349,6 +350,11 @@
       document.getElementById('playback-btn-full').classList.toggle('active', mode === 'full');
       document.getElementById('playback-btn-sentence').classList.toggle('active', mode === 'sentence');
 
+      var voiceSelector = document.getElementById('voice-selector-row');
+      if (voiceSelector) {
+        voiceSelector.style.display = mode === 'sentence' ? 'flex' : 'none';
+      }
+
       audio.pause();
       bgmAudio.pause();
       var ep = EPISODES[currentDate] || {};
@@ -367,7 +373,12 @@
       if (!currentPlaylist || index < 0 || index >= currentPlaylist.length) return;
       currentChunkIndex = index;
       var chunk = currentPlaylist[index];
-      audio.src = './episodes/' + currentDate + '/' + chunk.audio;
+
+      // 读取当前选择的主持人音色变体
+      var variant = selectedVoices[chunk.host] || 'v1';
+      var audioFile = (chunk.audios && chunk.audios[variant]) || (chunk.audios && chunk.audios['v1']) || chunk.audio || `chunk_${index+1:03d}.mp3`;
+
+      audio.src = './episodes/' + currentDate + '/' + audioFile;
       if (autoplay) {
         audio.play().catch(function(){});
         if (playbackMode === 'sentence') {
@@ -378,7 +389,6 @@
       }
 
       // 智能句读模式下切换片段，需要重置高亮和同步滚动
-      // 我们的 syncScrollTo(true) 会由 timeupdate 触发，或者直接在这里触发
       document.querySelectorAll('.transcript-row').forEach(function(el) {
         el.classList.remove('speaking');
       });
@@ -394,6 +404,16 @@
           isInternalScroll = true;
           container.scrollTo({ top: targetScroll, behavior: 'smooth' });
         }
+      }
+    }
+
+    function changeVoiceVariant(host, value) {
+      selectedVoices[host] = value;
+      if (playbackMode === 'sentence' && currentPlaylist && currentPlaylist.length > 0) {
+        var offsetTime = audio.currentTime;
+        var isPlaying = !audio.paused;
+        loadChunk(currentChunkIndex, isPlaying);
+        audio.currentTime = offsetTime;
       }
     }
 

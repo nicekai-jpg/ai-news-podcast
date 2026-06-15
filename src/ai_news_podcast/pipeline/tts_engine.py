@@ -114,9 +114,23 @@ async def synthesize_edge_tts(
         raise ValueError("No TTS chunks to synthesize")
 
     # Mapping Host A -> voices[0], Host B -> voices[1]
-    voice_map = {
-        "A": voices[0],
-        "B": voices[1] if len(voices) > 1 else voices[0],
+    voices_cfg = (cfg or {}).get("tts", {})
+    voices_v1 = (
+        str(voices_cfg.get("host_a_voices", {}).get("v1") or voices_cfg.get("host_a_voice") or voices[0]),
+        str(voices_cfg.get("host_b_voices", {}).get("v1") or voices_cfg.get("host_b_voice") or (voices[1] if len(voices) > 1 else voices[0])),
+    )
+    voices_v2 = (
+        str(voices_cfg.get("host_a_voices", {}).get("v2") or voices_cfg.get("host_a_voice") or voices[0]),
+        str(voices_cfg.get("host_b_voices", {}).get("v2") or voices_cfg.get("host_b_voice") or (voices[1] if len(voices) > 1 else voices[0])),
+    )
+
+    voice_map_v1 = {
+        "A": voices_v1[0],
+        "B": voices_v1[1],
+    }
+    voice_map_v2 = {
+        "A": voices_v2[0],
+        "B": voices_v2[1],
     }
 
     async def _save_chunk_with_retry(
@@ -151,17 +165,23 @@ async def synthesize_edge_tts(
     with tempfile.TemporaryDirectory(prefix="tts-edge-dialogue-") as tmp_dir:
         tmp_root = Path(tmp_dir)
 
-        tasks = []
+        tasks_v1 = []
+        tasks_v2 = []
         for idx, chunk in enumerate(chunks, start=1):
-            voice = chunk.voice or voice_map.get(chunk.host, voices[0])
-            tmp_chunk = tmp_root / f"chunk_{idx:03d}.mp3"
-            tasks.append(_save_chunk_with_retry(idx, chunk, voice, tmp_chunk))
+            vc_v1 = chunk.voice or voice_map_v1.get(chunk.host, voices_v1[0])
+            vc_v2 = voice_map_v2.get(chunk.host, voices_v2[0])
+            tasks_v1.append(_save_chunk_with_retry(idx, chunk, vc_v1, tmp_root / f"chunk_{idx:03d}_v1.mp3"))
+            tasks_v2.append(_save_chunk_with_retry(idx, chunk, vc_v2, tmp_root / f"chunk_{idx:03d}_v2.mp3"))
 
-        chunk_files = await asyncio.gather(*tasks)
-        segments = [AudioSegment.from_file(str(chunk_file)) for chunk_file in chunk_files]
+        chunk_files_v1 = await asyncio.gather(*tasks_v1)
+        chunk_files_v2 = await asyncio.gather(*tasks_v2)
+
+        segments_v1 = [AudioSegment.from_file(str(cf)) for cf in chunk_files_v1]
+        segments_v2 = [AudioSegment.from_file(str(cf)) for cf in chunk_files_v2]
+
         combined, timestamps = assemble_dialogue_audio(
             chunks,
-            segments,
+            segments_v1,
             chunk_silence_base=_chunk_silence_base,
             vocal_pad_ms=_vocal_pad_ms,
             silence_min=_silence_min,
@@ -178,12 +198,11 @@ async def synthesize_edge_tts(
 
         _write_chunks_and_playlist(
             chunks=chunks,
-            segments=segments,
+            segments_v1=segments_v1,
+            segments_v2=segments_v2,
             timestamps=timestamps,
-            voice_map={
-                "A": voices[0],
-                "B": voices[1] if len(voices) > 1 else voices[0],
-            },
+            voice_map_v1=voice_map_v1,
+            voice_map_v2=voice_map_v2,
             output_path=final_path,
         )
 
@@ -224,36 +243,51 @@ def _write_transcript_with_timestamps(
 
 def _write_chunks_and_playlist(
     chunks: List[DialogueChunk],
-    segments: List[Any],  # list of AudioSegment
+    segments_v1: List[Any],  # list of AudioSegment (Voice 1)
+    segments_v2: List[Any],  # list of AudioSegment (Voice 2)
     timestamps: list[tuple[float, float]],
-    voice_map: dict[str, str],
+    voice_map_v1: dict[str, str],
+    voice_map_v2: dict[str, str],
     output_path: Path,
 ) -> None:
-    """将各个音频片段及播放清单 JSON 写入和单期 ID 同名的文件夹中。"""
+    """将各个音频片段及播放清单 JSON 写入和单期 ID 同名的文件夹中，包含音色 A/B 两个版本。"""
     chunks_dir = output_path.with_suffix("")
     chunks_dir.mkdir(parents=True, exist_ok=True)
 
     playlist_chunks = []
     for idx, chunk in enumerate(chunks, start=1):
-        voice = chunk.voice or voice_map.get(chunk.host, "unknown")
+        voice_v1 = chunk.voice or voice_map_v1.get(chunk.host, "unknown")
+        voice_v2 = voice_map_v2.get(chunk.host, "unknown")
         start_sec, duration_sec = timestamps[idx - 1]
-        chunk_filename = f"chunk_{idx:03d}.mp3"
-        chunk_dest = chunks_dir / chunk_filename
 
-        # 导出单个音频片段
+        # 导出 Voice 1 片段
+        fn_v1 = f"chunk_{idx:03d}_v1.mp3"
         try:
-            segments[idx - 1].export(str(chunk_dest), format="mp3", bitrate="64k")
+            segments_v1[idx - 1].export(str(chunks_dir / fn_v1), format="mp3", bitrate="64k")
         except TypeError:
-            segments[idx - 1].export(str(chunk_dest), format="mp3")
+            segments_v1[idx - 1].export(str(chunks_dir / fn_v1), format="mp3")
+
+        # 导出 Voice 2 片段
+        fn_v2 = f"chunk_{idx:03d}_v2.mp3"
+        try:
+            segments_v2[idx - 1].export(str(chunks_dir / fn_v2), format="mp3", bitrate="64k")
+        except TypeError:
+            segments_v2[idx - 1].export(str(chunks_dir / fn_v2), format="mp3")
 
         playlist_chunks.append({
             "id": idx,
             "host": chunk.host,
-            "voice": voice,
             "text": chunk.text,
-            "audio": chunk_filename,
             "start": round(start_sec, 3),
-            "duration": round(duration_sec, 3)
+            "duration": round(duration_sec, 3),
+            "audios": {
+                "v1": fn_v1,
+                "v2": fn_v2
+            },
+            "voices": {
+                "v1": voice_v1,
+                "v2": voice_v2
+            }
         })
 
     playlist_data = {
@@ -312,34 +346,42 @@ async def synthesize_cosyvoice2(
     final_path = Path(output_path)
     final_path.parent.mkdir(parents=True, exist_ok=True)
 
-    voice_map = {"A": "host_a", "B": "host_b"}
+    voice_map_v1 = {"A": "host_a_v1", "B": "host_b_v1"}
+    voice_map_v2 = {"A": "host_a_v2", "B": "host_b_v2"}
 
     with tempfile.TemporaryDirectory(prefix="tts-cosyvoice-") as tmp_dir:
         tmp_root = Path(tmp_dir)
-        segments = []
+        segments_v1 = []
+        segments_v2 = []
         for idx, chunk in enumerate(chunks, start=1):
             sentences = split_text_into_sentences(chunk.text, max_chars=40)
-            chunk_segments = []
-            for s_idx, sentence in enumerate(sentences):
-                s_text = sentence.strip()
-                if not s_text:
-                    continue
-                tensor = cosy_engine.synthesize_chunk(text=s_text, host=chunk.host)
-                wav_path = tmp_root / f"chunk_{idx:03d}_{s_idx:03d}.wav"
-                torchaudio.save(str(wav_path), tensor, cv_cfg.sample_rate)
-                chunk_segments.append(AudioSegment.from_file(str(wav_path)))
 
-            if chunk_segments:
-                combined_chunk = chunk_segments[0]
-                for next_seg in chunk_segments[1:]:
-                    combined_chunk += AudioSegment.silent(duration=150) + next_seg
-                segments.append(combined_chunk)
-            else:
-                segments.append(AudioSegment.silent(duration=100))
+            # 内部助手函数用于生成音色变体
+            def _gen_variant(var_name: str) -> Any:
+                chunk_segments = []
+                for s_idx, sentence in enumerate(sentences):
+                    s_text = sentence.strip()
+                    if not s_text:
+                        continue
+                    tensor = cosy_engine.synthesize_chunk(text=s_text, host=chunk.host, variant=var_name)
+                    wav_path = tmp_root / f"chunk_{idx:03d}_{var_name}_{s_idx:03d}.wav"
+                    torchaudio.save(str(wav_path), tensor, cv_cfg.sample_rate)
+                    chunk_segments.append(AudioSegment.from_file(str(wav_path)))
+
+                if chunk_segments:
+                    combined_chunk = chunk_segments[0]
+                    for next_seg in chunk_segments[1:]:
+                        combined_chunk += AudioSegment.silent(duration=150) + next_seg
+                    return combined_chunk
+                else:
+                    return AudioSegment.silent(duration=100)
+
+            segments_v1.append(_gen_variant("v1"))
+            segments_v2.append(_gen_variant("v2"))
 
         combined, timestamps = assemble_dialogue_audio(
             chunks,
-            segments,
+            segments_v1,
             chunk_silence_base=int(audio_cfg.get("chunk_silence_base", 300)),
             vocal_pad_ms=int(audio_cfg.get("vocal_pad_ms", 1000)),
             silence_min=int(audio_cfg.get("chunk_silence_min", 400)),
@@ -356,9 +398,11 @@ async def synthesize_cosyvoice2(
 
         _write_chunks_and_playlist(
             chunks=chunks,
-            segments=segments,
+            segments_v1=segments_v1,
+            segments_v2=segments_v2,
             timestamps=timestamps,
-            voice_map=voice_map,
+            voice_map_v1=voice_map_v1,
+            voice_map_v2=voice_map_v2,
             output_path=final_path,
         )
 
@@ -366,7 +410,7 @@ async def synthesize_cosyvoice2(
             _write_transcript_with_timestamps(
                 chunks=chunks,
                 timestamps=timestamps,
-                voice_map=voice_map,
+                voice_map=voice_map_v1,
                 transcript_path=Path(transcript_path),
             )
 

@@ -140,7 +140,7 @@ async def test_synthesize_edge_tts_retries_on_failure(tmp_path: Path) -> None:
                 voices=("voice-a",),
                 output_path=output,
             )
-    assert call_count == 3
+    assert call_count == 4
     assert output.exists()
 
 
