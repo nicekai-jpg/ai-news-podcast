@@ -376,7 +376,7 @@
 
       // 读取当前选择的主持人音色变体
       var variant = selectedVoices[chunk.host] || 'v1';
-      var audioFile = (chunk.audios && chunk.audios[variant]) || (chunk.audios && chunk.audios['v1']) || chunk.audio || `chunk_${index+1:03d}.mp3`;
+      var audioFile = (chunk.audios && chunk.audios[variant]) || (chunk.audios && chunk.audios['v1']) || chunk.audio || `chunk_${String(index + 1).padStart(3, '0')}.mp3`;
 
       audio.src = './episodes/' + currentDate + '/' + audioFile;
       if (autoplay) {
