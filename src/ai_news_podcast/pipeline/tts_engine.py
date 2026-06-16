@@ -300,7 +300,7 @@ def _write_chunks_and_playlist(
     playlist_json_path.write_text(json.dumps(playlist_data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
-def split_text_into_sentences(text: str, max_chars: int = 40) -> list[str]:
+def split_text_into_sentences(text: str, max_chars: int = 80) -> list[str]:
     """将文本切分为较短的句子/短句，避免单次合成文本过长导致 CosyVoice 截断或语速失真。"""
     # 按照常见的标点符号进行切分，保留标点
     pattern = re.compile(r"([^，。！？；、,.!?;\s]+[，。！？；、,.!?;\s]*)")
@@ -354,7 +354,7 @@ async def synthesize_cosyvoice2(
         segments_v1 = []
         segments_v2 = []
         for idx, chunk in enumerate(chunks, start=1):
-            sentences = split_text_into_sentences(chunk.text, max_chars=40)
+            sentences = split_text_into_sentences(chunk.text, max_chars=80)
 
             # 内部助手函数用于生成音色变体
             def _gen_variant(var_name: str) -> Any:
