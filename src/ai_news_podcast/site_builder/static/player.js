@@ -169,12 +169,21 @@
             var plData = await rPl.json();
             currentPlaylist = plData.chunks;
             document.getElementById('playback-btn-sentence').style.display = 'block';
+            var voiceSelector = document.getElementById('voice-selector-row');
+            if (voiceSelector) {
+              voiceSelector.style.display = 'flex';
+              voiceSelector.classList.toggle('dimmed', playbackMode === 'full');
+            }
           } else {
             document.getElementById('playback-btn-sentence').style.display = 'none';
+            var voiceSelector = document.getElementById('voice-selector-row');
+            if (voiceSelector) voiceSelector.style.display = 'none';
             setPlaybackMode('full');
           }
         } catch (ePl) {
           document.getElementById('playback-btn-sentence').style.display = 'none';
+          var voiceSelector = document.getElementById('voice-selector-row');
+          if (voiceSelector) voiceSelector.style.display = 'none';
           setPlaybackMode('full');
         }
 
@@ -352,7 +361,7 @@
 
       var voiceSelector = document.getElementById('voice-selector-row');
       if (voiceSelector) {
-        voiceSelector.style.display = mode === 'sentence' ? 'flex' : 'none';
+        voiceSelector.classList.toggle('dimmed', mode === 'full');
       }
 
       audio.pause();
@@ -407,13 +416,27 @@
       }
     }
 
-    function changeVoiceVariant(host, value) {
-      selectedVoices[host] = value;
-      if (playbackMode === 'sentence' && currentPlaylist && currentPlaylist.length > 0) {
-        var offsetTime = audio.currentTime;
+    function selectVoiceVariant(host, variant) {
+      selectedVoices[host] = variant;
+      
+      // 更新 UI pills
+      document.querySelectorAll(`.voice-pill-btn[data-host="${host}"]`).forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-variant') === variant);
+      });
+
+      if (playbackMode !== 'sentence') {
         var isPlaying = !audio.paused;
-        loadChunk(currentChunkIndex, isPlaying);
-        audio.currentTime = offsetTime;
+        setPlaybackMode('sentence');
+        if (isPlaying) {
+          audio.play().catch(function(){});
+        }
+      } else {
+        if (currentPlaylist && currentPlaylist.length > 0) {
+          var offsetTime = audio.currentTime;
+          var isPlaying = !audio.paused;
+          loadChunk(currentChunkIndex, isPlaying);
+          audio.currentTime = offsetTime;
+        }
       }
     }
 

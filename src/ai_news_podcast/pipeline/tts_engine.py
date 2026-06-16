@@ -372,7 +372,10 @@ async def synthesize_cosyvoice2(
                     combined_chunk = chunk_segments[0]
                     for next_seg in chunk_segments[1:]:
                         combined_chunk += AudioSegment.silent(duration=150) + next_seg
-                    return combined_chunk
+                    
+                    # Add 300ms silence padding at both ends to prevent browser audio cut-offs
+                    silence_pad = AudioSegment.silent(duration=300)
+                    return silence_pad + combined_chunk + silence_pad
                 else:
                     return AudioSegment.silent(duration=100)
 
