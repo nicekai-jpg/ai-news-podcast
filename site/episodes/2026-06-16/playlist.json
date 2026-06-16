@@ -1,0 +1,425 @@
+{
+  "episode_id": "2026-06-16",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "B",
+      "text": "听众朋友们大家好，欢迎收听AI 每日先锋，今天是2026年6月16日，我是晓晓。",
+      "start": 1.0,
+      "duration": 7.924,
+      "audios": {
+        "v1": "chunk_001_v1.mp3",
+        "v2": "chunk_001_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 2,
+      "host": "A",
+      "text": "大家好，我是博文。",
+      "start": 9.373,
+      "duration": 1.219,
+      "audios": {
+        "v1": "chunk_002_v1.mp3",
+        "v2": "chunk_002_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 3,
+      "host": "B",
+      "text": "哎，博文，咱们录节目前我刚梳理完今天的资讯，真的有种特别强烈的感受——AI好像真的在悄悄\"长大\"了。以前咱们聊AI，总觉得它是个单科状元，要么眼睛好使看图，要么耳朵灵光听音，但今天这些动态拼在一起，我最大的感触就是：AI正从单一感知向全模态协同与深度智能体演进，开源与具身智能的突破，正在加速重塑咱们的交互和科研范式。",
+      "start": 11.089,
+      "duration": 31.864,
+      "audios": {
+        "v1": "chunk_003_v1.mp3",
+        "v2": "chunk_003_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 4,
+      "host": "A",
+      "text": "晓晓，你这个总结非常精准。从单点工具走向系统级协作，这确实是当下技术演进最核心的脉络。",
+      "start": 43.406,
+      "duration": 7.837,
+      "audios": {
+        "v1": "chunk_004_v1.mp3",
+        "v2": "chunk_004_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 5,
+      "host": "B",
+      "text": "没错！所以今天咱们得好好聊聊这个话题。哎博文，我首先看到的一个重要研究叫 Orchestra-o1，说是全模态智能体编排，开启了AI协同新纪元。全模态Agent的高效编排协同，这听起来特别酷，但技术真有这么神吗？这到底是个什么概念？",
+      "start": 51.648,
+      "duration": 22.485,
+      "audios": {
+        "v1": "chunk_005_v1.mp3",
+        "v2": "chunk_005_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 6,
+      "host": "A",
+      "text": "嗯，这个研究确实非常前沿。晓晓，你可以这样理解，以前的AI模型就像是一个只会单线操作的员工，看图的只管看图，写代码的只管写代码。但Orchestra-o1做的是什么呢？它相当于请了一个超级指挥家，把视觉、听觉、语言、甚至代码执行这些不同模态的Agent，像交响乐团的各个声部一样完美编排起来。",
+      "start": 74.566,
+      "duration": 23.288,
+      "audios": {
+        "v1": "chunk_006_v1.mp3",
+        "v2": "chunk_006_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 7,
+      "host": "B",
+      "text": "哇，交响乐团这个比喻太形象了！就是不再是各干各的，而是有一个指挥让它们协同作业。",
+      "start": 98.319,
+      "duration": 7.445,
+      "audios": {
+        "v1": "chunk_007_v1.mp3",
+        "v2": "chunk_007_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 8,
+      "host": "A",
+      "text": "对，正是如此。这标志着AI从单点工具向复杂系统级协作跃迁。在工程落地中，最难的不是单个模型的能力，而是多个模型之间怎么通信、怎么分配任务、怎么处理冲突。Orchestra-o1解决的就是这个核心架构问题，为构建真正通用、能处理复杂现实任务的超级智能体打下了基础。",
+      "start": 106.226,
+      "duration": 21.962,
+      "audios": {
+        "v1": "chunk_008_v1.mp3",
+        "v2": "chunk_008_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 9,
+      "host": "B",
+      "text": "嗯，懂了！那对我们普通人来说，这意味什么呢？是不是以后我给AI一个复杂任务，比如\"帮我策划一场旅行并生成视频游记\"，它就能自己调度找机票的、写文案的、剪视频的，我只要等成品就行了？",
+      "start": 128.639,
+      "duration": 17.391,
+      "audios": {
+        "v1": "chunk_009_v1.mp3",
+        "v2": "chunk_009_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 10,
+      "host": "A",
+      "text": "晓晓，你这产品经理的直觉果然灵敏，就是这个意思。用户只需要给出一个高维度的意图，剩下的分解、调度、执行、纠错，全由这个编排系统在底层自动完成。",
+      "start": 146.53,
+      "duration": 14.15,
+      "audios": {
+        "v1": "chunk_010_v1.mp3",
+        "v2": "chunk_010_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 11,
+      "host": "B",
+      "text": "天哪，那可太省事了！这真的是从\"我用工具\"变成了\"我带团队\"啊。哎，说到团队和落地，这就让我想到了另一件特别有意思的事，咱们来看看智源大会刚公布的那个天工 Matrix-Game 3.5。博文，这个世界模型的突破，怎么就重新定义具身智能了呢？",
+      "start": 161.118,
+      "duration": 22.136,
+      "audios": {
+        "v1": "chunk_011_v1.mp3",
+        "v2": "chunk_011_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 12,
+      "host": "A",
+      "text": "这个突破很关键。你要知道，具身智能也就是机器人，它要在现实世界里干活，最大的痛点就是\"不懂物理规律\"。它不知道杯子掉地上会碎，不知道推门需要往哪边使劲。而高质量的世界模型，就是给机器人在虚拟大脑里建一个符合物理规律的\"沙盘\"。",
+      "start": 183.715,
+      "duration": 19.35,
+      "audios": {
+        "v1": "chunk_012_v1.mp3",
+        "v2": "chunk_012_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 13,
+      "host": "B",
+      "text": "嗯，对，就像是在它脑子里先预演一遍！",
+      "start": 203.51,
+      "duration": 3.439,
+      "audios": {
+        "v1": "chunk_013_v1.mp3",
+        "v2": "chunk_013_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "没错，Matrix-Game 3.5的突破就在于，它把这个\"沙盘\"建得极其逼真和高效。机器人在下地干活之前，可以先在这个世界模型里进行海量的试错和训练。这大幅提升了机器对物理世界的理解与预测能力，直接加速了机器人从虚拟向真实场景的落地。",
+      "start": 207.423,
+      "duration": 19.132,
+      "audios": {
+        "v1": "chunk_014_v1.mp3",
+        "v2": "chunk_014_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "哇，所以这就好比是机器人进了一个超级硬核的VR模拟驾驶舱，先在里头撞个几百次墙，等出来了就是老司机了，根本不用在现实里摔杯子试错！",
+      "start": 226.982,
+      "duration": 13.322,
+      "audios": {
+        "v1": "chunk_015_v1.mp3",
+        "v2": "chunk_015_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 16,
+      "host": "A",
+      "text": "哈哈，你这个比喻非常恰当，就是这个道理，大大降低了现实世界的试错成本。",
+      "start": 240.768,
+      "duration": 5.616,
+      "audios": {
+        "v1": "chunk_016_v1.mp3",
+        "v2": "chunk_016_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 17,
+      "host": "B",
+      "text": "真的，这具身智能的进化速度让人有点猝不及防。除了这事，咱们今天还有几条特别有意思的快讯要跟大家分享。博文，你肯定对Noiz AI这个开源音频生成大模型感兴趣吧？联合港科大清华开源的，说是单卡0.24秒4步出声，还支持时间戳理解！",
+      "start": 246.801,
+      "duration": 23.486,
+      "audios": {
+        "v1": "chunk_017_v1.mp3",
+        "v2": "chunk_017_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "这个确实很火。0.24秒4步出声，这意味着实时交互的延迟问题得到了极大缓解。而且支持时间戳理解，说明模型不再是只看文本的\"瞎子\"，它能精准对齐声音和画面的节奏，这对视频配音、虚拟人直播来说，门槛直接降了一大截。",
+      "start": 270.723,
+      "duration": 20.264,
+      "audios": {
+        "v1": "chunk_018_v1.mp3",
+        "v2": "chunk_018_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "嗯，以后咱们做播客没准连剪辑都省了，AI直接根据时间戳帮我把气口和音效全对好！还有个融资消息也是吓我一跳，哈工程89年校友创办的企业，拿下了全球海洋机器人最大单轮融资，上半年订单超10亿！",
+      "start": 291.404,
+      "duration": 20.438,
+      "audios": {
+        "v1": "chunk_019_v1.mp3",
+        "v2": "chunk_019_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "这就是具身智能商业爆发的最好证明。水下环境比陆地更复杂，能拿下十亿订单，说明产品已经跨越了实验室阶段，真正解决了深海作业的刚需，商业闭环跑通了。",
+      "start": 312.338,
+      "duration": 12.103,
+      "audios": {
+        "v1": "chunk_020_v1.mp3",
+        "v2": "chunk_020_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "哎我看到个很有意思的论文，arXiv上新研究提出了个混合开放三元进化法，叫 Hybrid Tri-Evolution，说是能打造更强的 Deep Researcher，推动AI4S科研进化。博文，这三元进化又是什么新魔法？",
+      "start": 324.853,
+      "duration": 21.004,
+      "audios": {
+        "v1": "chunk_021_v1.mp3",
+        "v2": "chunk_021_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "哈哈，这可不是魔法。简单来说，它是在AI做深度研究时，让数据、模型和验证机制这三个核心要素进行协同进化。以前是喂什么数据模型就学什么，现在是模型自己去寻找数据，自己提出假设，再去验证，根据验证结果再迭代。这就让AI从\"文献检索工具\"变成了真正的\"科研助手\"。",
+      "start": 346.336,
+      "duration": 23.529,
+      "audios": {
+        "v1": "chunk_022_v1.mp3",
+        "v2": "chunk_022_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 23,
+      "host": "B",
+      "text": "哇，自己找食吃，自己验证对错，这不就是带了一个不用睡觉还自带查重功能的博士生嘛！博文老师，你又带上了技术极客的视角了，不过讲得真透彻。",
+      "start": 370.297,
+      "duration": 13.976,
+      "audios": {
+        "v1": "chunk_023_v1.mp3",
+        "v2": "chunk_023_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "哈哈，过奖了，但AI4S这领域的进化速度确实让人兴奋。",
+      "start": 384.741,
+      "duration": 3.962,
+      "audios": {
+        "v1": "chunk_024_v1.mp3",
+        "v2": "chunk_024_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 25,
+      "host": "B",
+      "text": "好了，今天聊得真过瘾。从全模态的AI交响乐团，到机器人的虚拟沙盘，再到开源音频和科研进化的新突破，咱们能真切地感受到，AI正在从一个个孤立的单点，长成一张能感知、会协作、懂物理的智慧大网。",
+      "start": 389.193,
+      "duration": 19.263,
+      "audios": {
+        "v1": "chunk_025_v1.mp3",
+        "v2": "chunk_025_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "是的，系统级协作和具身落地，会是接下来几年最值得期待的主线。",
+      "start": 408.933,
+      "duration": 5.268,
+      "audios": {
+        "v1": "chunk_026_v1.mp3",
+        "v2": "chunk_026_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    },
+    {
+      "id": 27,
+      "host": "B",
+      "text": "没错！感谢大家收听今天的AI 每日先锋，咱们明天见！",
+      "start": 414.619,
+      "duration": 4.136,
+      "audios": {
+        "v1": "chunk_027_v1.mp3",
+        "v2": "chunk_027_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-XiaoxiaoNeural",
+        "v2": "host_b_v2"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "明天见！",
+      "start": 419.194,
+      "duration": 1.219,
+      "audios": {
+        "v1": "chunk_028_v1.mp3",
+        "v2": "chunk_028_v2.mp3"
+      },
+      "voices": {
+        "v1": "zh-CN-YunjianNeural",
+        "v2": "host_a_v2"
+      }
+    }
+  ]
+}
