@@ -355,6 +355,11 @@
 
     function setPlaybackMode(mode) {
       if (playbackMode === mode) return;
+      
+      var oldMode = playbackMode;
+      var currentFullTime = audio.currentTime;
+      var isPlaying = !audio.paused;
+
       playbackMode = mode;
       document.getElementById('playback-btn-full').classList.toggle('active', mode === 'full');
       document.getElementById('playback-btn-sentence').classList.toggle('active', mode === 'sentence');
@@ -367,13 +372,45 @@
       audio.pause();
       bgmAudio.pause();
       var ep = EPISODES[currentDate] || {};
+
       if (mode === 'sentence' && currentPlaylist && currentPlaylist.length > 0) {
-        currentChunkIndex = 0;
-        loadChunk(currentChunkIndex, false);
+        var targetIndex = 0;
+        if (oldMode === 'full') {
+          for (var i = 0; i < currentPlaylist.length; i++) {
+            var chunk = currentPlaylist[i];
+            if (currentFullTime >= chunk.start && currentFullTime < chunk.start + chunk.duration) {
+              targetIndex = i;
+              break;
+            } else if (currentFullTime < chunk.start) {
+              targetIndex = i;
+              break;
+            }
+          }
+          if (currentFullTime >= currentPlaylist[currentPlaylist.length - 1].start + currentPlaylist[currentPlaylist.length - 1].duration) {
+            targetIndex = currentPlaylist.length - 1;
+          }
+        }
+        currentChunkIndex = targetIndex;
+        loadChunk(currentChunkIndex, isPlaying);
         bgmAudio.src = 'assets/bgm_placeholder.wav';
+        if (isPlaying) {
+          bgmAudio.play().catch(function(){});
+        }
       } else {
         if (ep.mp3) {
-          loadAudio(currentDate, ep.mp3, ep.title || ('AI 新闻快报 | ' + currentDate), false);
+          var targetFullTime = 0;
+          if (oldMode === 'sentence' && currentPlaylist && currentPlaylist[currentChunkIndex]) {
+            targetFullTime = currentPlaylist[currentChunkIndex].start;
+          }
+          loadAudio(currentDate, ep.mp3, ep.title || ('AI 新闻快报 | ' + currentDate), isPlaying);
+          if (targetFullTime > 0) {
+            var setTime = function() {
+              audio.currentTime = targetFullTime;
+              audio.removeEventListener('loadedmetadata', setTime);
+            };
+            audio.addEventListener('loadedmetadata', setTime);
+            audio.currentTime = targetFullTime;
+          }
         }
       }
     }
@@ -397,7 +434,7 @@
         audio.load();
       }
 
-      // 智能句读模式下切换片段，需要重置高亮和同步滚动
+      // 智能句读模式下切换片段，需要重置高亮 and 同步滚动
       document.querySelectorAll('.transcript-row').forEach(function(el) {
         el.classList.remove('speaking');
       });
@@ -425,11 +462,7 @@
       });
 
       if (playbackMode !== 'sentence') {
-        var isPlaying = !audio.paused;
         setPlaybackMode('sentence');
-        if (isPlaying) {
-          audio.play().catch(function(){});
-        }
       } else {
         if (currentPlaylist && currentPlaylist.length > 0) {
           var offsetTime = audio.currentTime;
