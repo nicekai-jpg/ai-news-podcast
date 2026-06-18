@@ -90,7 +90,7 @@ async def test_fetch_all_success(
             connect_timeout=2,
             user_agent="test",
             max_items_per_feed=5,
-            max_pages=10,
+            max_pages=0,
         )
 
     assert len(items) == 4  # 2 feeds × 2 entries each
