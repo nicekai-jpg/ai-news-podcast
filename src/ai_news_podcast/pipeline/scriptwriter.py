@@ -244,6 +244,9 @@ def _call_llm(prompt: str, llm_cfg: dict[str, Any]) -> str | None:
 
             text = response.choices[0].message.content
             if text:
+                import re
+                # 过滤 MiniMax M3 等推理模型返回的 <think>...</think> 思考链内容
+                text = re.sub(r"<think>.*?</think>", "", text, flags=re.DOTALL)
                 logger.info("LLM 调用成功，返回 %d 字符", len(text))
                 return text.strip()
 
