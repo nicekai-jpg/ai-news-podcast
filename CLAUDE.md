@@ -75,7 +75,7 @@ Stage 5: site_builder/ →  index.html + feed.xml + show notes
 
 - `config/config.yaml`: all pipeline parameters (LLM provider/model, TTS voices, dedup thresholds, scoring dimensions, script style/banned words, build paths)
 - `config/sources.yaml`: RSS feed list with `name`, `url`, `category`, `enabled` flags
-- `.env`: `SPARK_API_KEY` for the Xunfei Spark MaaS LLM (OpenAI-compatible endpoint)
+- `.env`: `MINIMAX_API_KEY` for the MiniMax Token Plan LLM (OpenAI-compatible endpoint)
 
 The LLM config uses an OpenAI-compatible API (`api_key_env`, `base_url`, `model`). The `_call_llm()` function in `scriptwriter.py` is shared by both podcast and report generation.
 

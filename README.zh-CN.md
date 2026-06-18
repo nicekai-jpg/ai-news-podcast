@@ -16,9 +16,9 @@ English README: `README.md`
 ## 怎么“调用”（本地运行）
 
 ### 1. 配置环境变量 `.env`
-在项目根目录创建或编辑 `.env` 文件，填入讯飞星辰 MaaS 专属 API Key：
+在项目根目录创建或编辑 `.env` 文件，填入 MiniMax Token Plan 专属 API Key：
 ```env
-SPARK_API_KEY="your-spark-coding-plan-api-key"
+MINIMAX_API_KEY="your-minimax-api-key"
 ```
 
 ### 2. 环境安装（推荐使用 uv）
@@ -44,7 +44,7 @@ uv run podcast-publish --date 2026-06-11
 ```
 
 **B. 生成今日 AI 科技新闻日报 (Markdown)**
-本脚本调用讯飞星辰 MaaS（Astron Coding Plan）大模型接口在线生成日报。
+本脚本调用 MiniMax Token Plan 大模型接口在线生成日报。
 ```bash
 uv run podcast-report
 ```
@@ -68,7 +68,7 @@ uv run podcast-report
    `https://<你的GitHub用户名>.github.io/<仓库名>/feed.xml`
 
 ## 每天自动更新
-- **配置密钥**：在 GitHub 仓库页面进入 **Settings** -> 左侧菜单栏 **Secrets and variables** -> **Actions**，点击 **New repository secret**，添加名为 `SPARK_API_KEY` 的密钥，填入你的讯飞星辰 API Key。
+- **配置密钥**：在 GitHub 仓库页面进入 **Settings** -> 左侧菜单栏 **Secrets and variables** -> **Actions**，点击 **New repository secret**，添加名为 `MINIMAX_API_KEY` 的密钥，填入你的 MiniMax API Key。
 - 仓库内置 GitHub Actions：`.github/workflows/daily.yml`。
 - 默认每天自动运行构建博客日报 (Markdown) 与播客音频 (MP3)，并自动 commit 提交到仓库。
 - 你也可以在仓库对应 Actions 页面，手动点击 **Run workflow** 强制立刻生成一集。

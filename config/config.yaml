@@ -226,11 +226,11 @@ script:
 
 llm:
   provider: "openai_compatible"
-  api_key_env: "SPARK_API_KEY"  # 讯飞星辰 MaaS Coding Plan 专属 API Key
-  model: "astron-code-latest"
-  base_url: "https://maas-coding-api.cn-huabei-1.xf-yun.com/v2"
+  api_key_env: "MINIMAX_API_KEY"  # MiniMax Token Plan 专属 API Key
+  model: "MiniMax-M3"             # MiniMax-M3 旗舰大语言模型
+  base_url: "https://api.minimaxi.com/v1"
   temperature: 0.7
-  max_output_tokens: 4096       # astron-code-latest 支持的输出长度
+  max_output_tokens: 4096
   timeout: 120
 
 build:

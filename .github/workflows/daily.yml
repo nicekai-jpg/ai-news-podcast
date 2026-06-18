@@ -39,7 +39,7 @@ jobs:
       - name: Pipeline + report + script (no audio)
         env:
           TZ: Asia/Shanghai
-          SPARK_API_KEY: ${{ secrets.SPARK_API_KEY }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
         run: |
           uv run podcast-pipeline
           uv run podcast-report
