@@ -9,7 +9,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from ai_news_podcast.pipeline.tts_engine import synthesize, synthesize_edge_tts
+from ai_news_podcast.pipeline.tts_engine import synthesize
 from ai_news_podcast.pipeline.tts_types import DialogueChunk
 
 
@@ -99,110 +99,24 @@ def mock_loudnorm():
         yield
 
 
-@pytest.mark.asyncio
-async def test_synthesize_edge_tts_success(tmp_path: Path) -> None:
-    chunks = [
-        DialogueChunk(host="A", text="Hello"),
-        DialogueChunk(host="B", text="World"),
-    ]
-    output = tmp_path / "out.mp3"
-
-    with patch.dict(sys.modules, {"pydub": _make_pydub_module()}):
-        with patch("edge_tts.Communicate", FakeCommunicate):
-            await synthesize_edge_tts(
-                chunks,
-                voices=("voice-a", "voice-b"),
-                output_path=output,
-            )
-    assert output.exists()
 
 
 @pytest.mark.asyncio
-async def test_synthesize_edge_tts_retries_on_failure(tmp_path: Path) -> None:
-    """edge-tts retries up to 3 times per chunk."""
-    call_count = 0
-
-    class CountingCommunicate(FakeCommunicate):
-        async def save(self, path: str) -> None:
-            nonlocal call_count
-            call_count += 1
-            if call_count < 3:
-                raise RuntimeError("fail")
-            Path(path).write_text("ok", encoding="utf-8")
-
-    chunks = [DialogueChunk(host="A", text="One")]
-    output = tmp_path / "out.mp3"
-
-    with patch.dict(sys.modules, {"pydub": _make_pydub_module()}):
-        with patch("edge_tts.Communicate", CountingCommunicate):
-            await synthesize_edge_tts(
-                chunks,
-                voices=("voice-a",),
-                output_path=output,
-            )
-    assert call_count == 4
-    assert output.exists()
-
-
-@pytest.mark.asyncio
-async def test_synthesize_edge_tts_raises_after_3_failures(tmp_path: Path) -> None:
-    class AlwaysFail(FakeCommunicate):
-        async def save(self, path: str) -> None:
-            raise RuntimeError("always fails")
-
-    chunks = [DialogueChunk(host="A", text="One")]
-    output = tmp_path / "out.mp3"
-
-    with patch.dict(sys.modules, {"pydub": _make_pydub_module()}):
-        with patch("edge_tts.Communicate", AlwaysFail):
-            with pytest.raises(RuntimeError):
-                await synthesize_edge_tts(
-                    chunks,
-                    voices=("voice-a",),
-                    output_path=output,
-                )
-
-
-@pytest.mark.asyncio
-async def test_synthesize_edge_tts_with_bgm(tmp_path: Path) -> None:
-    bgm = tmp_path / "bgm.wav"
-    bgm.write_text("bgm data", encoding="utf-8")
-    output = tmp_path / "out.mp3"
-
-    chunks = [DialogueChunk(host="A", text="Hello")]
-
-    with patch.dict(sys.modules, {"pydub": _make_pydub_module()}):
-        with patch("edge_tts.Communicate", FakeCommunicate):
-            await synthesize_edge_tts(
-                chunks,
-                voices=("voice-a",),
-                output_path=output,
-                bgm_path=str(bgm),
-            )
-    assert output.exists()
-
-
-@pytest.mark.asyncio
-async def test_synthesize_entrypoint(tmp_path: Path) -> None:
-    """synthesize() should delegate to synthesize_edge_tts for edge-tts backend."""
-    output = tmp_path / "out.mp3"
-
-    with patch.dict(sys.modules, {"pydub": _make_pydub_module()}):
-        with patch("edge_tts.Communicate", FakeCommunicate):
-            await synthesize(
-                "[Host A] Hello\n[Host B] World",
-                backend="edge-tts",
-                voices=("a", "b"),
-                output_path=output,
-            )
-    assert output.exists()
+async def test_synthesize_entrypoint_archived(tmp_path: Path) -> None:
+    """synthesize() should raise ValueError when edge-tts backend is requested."""
+    with pytest.raises(ValueError, match="Edge-TTS backend has been archived"):
+        await synthesize(
+            "[Host A] Hello\n[Host B] World",
+            backend="edge-tts",
+            output_path=tmp_path / "out.mp3",
+        )
 
 
 @pytest.mark.asyncio
 async def test_synthesize_empty_dialogue_raises(tmp_path: Path) -> None:
     """synthesize() should raise when no dialogue chunks are parsed."""
     with pytest.raises(ValueError, match="empty after dialogue parsing"):
-        await synthesize("", backend="edge-tts", output_path=tmp_path / "out.mp3")
+        await synthesize("", backend="cosyvoice2", output_path=tmp_path / "out.mp3")
 
 
 @pytest.mark.asyncio
