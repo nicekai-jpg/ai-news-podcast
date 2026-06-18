@@ -4,16 +4,16 @@
     {
       "id": 1,
       "host": "B",
-      "text": "听众朋友们大家好，欢迎收听AI每日先锋，今天是2026年6月18日，我是晓晓。",
+      "text": "听众朋友们大家好，欢迎收听AI 每日先锋，今天是2026年6月18日，我是晓晓。",
       "start": 1.0,
       "duration": 7.043,
       "audios": {
-        "v1": "chunk_001_v1.mp3",
-        "v2": "chunk_001_v2.mp3"
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-XiaoxiaoNeural",
-        "v2": "host_b_v2"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
@@ -23,342 +23,342 @@
       "start": 8.492,
       "duration": 2.08,
       "audios": {
-        "v1": "chunk_002_v1.mp3",
-        "v2": "chunk_002_v2.mp3"
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-YunjianNeural",
-        "v2": "host_a_v2"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 3,
       "host": "B",
-      "text": "哎，博文，咱们又见面了！今天看了一圈科技圈的动态，我最大的感受就是，AI这波浪潮真的开始动真格的了。以前大家都在聊算力基建、聊资本狂热，但现在，技术落地和商业变现已经进入硬核兑现阶段了。",
+      "text": "哎，博文，咱们录节目前我刚刷到一条消息，真是让我感慨万千。你说咱们天天聊AI，这风向转得也太快了。前两年大家还在卷大模型的文本生成，现在你看，AI已经悄悄摸进了深水区。",
       "start": 11.069,
-      "duration": 20.211,
+      "duration": 17.773,
       "audios": {
-        "v1": "chunk_003_v1.mp3",
-        "v2": "chunk_003_v2.mp3"
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-XiaoxiaoNeural",
-        "v2": "host_b_v2"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 4,
       "host": "A",
-      "text": "没错，晓晓，你这个总结很到位。潮水退去，光靠PPT已经融不到资了，现在拼的都是真刀真枪的落地能力。",
-      "start": 31.733,
-      "duration": 9.046,
+      "text": "确实，晓晓，你这产品经理的直觉很敏锐。资本和应用的热度都在向更实在的地方转移，不再是单纯比拼参数量了。",
+      "start": 29.295,
+      "duration": 9.438,
       "audios": {
-        "v1": "chunk_004_v1.mp3",
-        "v2": "chunk_004_v2.mp3"
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-YunjianNeural",
-        "v2": "host_a_v2"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 5,
       "host": "B",
-      "text": "对呀！就拿今天最让我震惊的一件事来说吧，谷歌的医疗AI登上了《Nature》，说他们在复杂疾病管理上已经比肩全科医生了！博文，这技术真的有这么神吗？AI现在能直接给咱们看病了？",
-      "start": 41.184,
-      "duration": 16.51,
+      "text": "没错！就像咱们今天的主题说的：AI正从底层基建与资本狂热走向深水区。医疗AI比肩人类医生突破应用临界点，具身智能与超级算力成了资本的新宠。这不，谷歌今天就放了个大招，他们的医疗AI登上了Nature，说是在复杂疾病管理上已经比肩初级保健医生了。博文，这技术真的有这么神吗？咱们以后看病真不用找真人了？",
+      "start": 39.138,
+      "duration": 34.752,
       "audios": {
-        "v1": "chunk_005_v1.mp3",
-        "v2": "chunk_005_v2.mp3"
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-XiaoxiaoNeural",
-        "v2": "host_b_v2"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 6,
       "host": "A",
-      "text": "嗯，这次确实是一个质的飞跃。谷歌这个叫AMIE的系统，之前大家觉得它就是个辅助问诊的工具，但这次在复杂疾病管理上达到初级保健医生的水平，标志着AI从“助手”正式跃升为独立的诊疗主体。从技术角度看，它对多模态数据的整合能力，还有长链条的逻辑推理能力，都上了一个大台阶。",
-      "start": 58.127,
-      "duration": 24.652,
+      "text": "嗯，这次谷歌的AMIE系统确实跨过了一个很关键的门槛。以前咱们说医疗AI，更多是辅助工具，比如帮医生看看片子、整理一下病历。但这次AMIE在复杂疾病管理上达到人类初级保健医生的水平，标志着AI开始向独立的诊疗主体迈进了。从技术原理上看，它不仅仅是理解了医学知识，更是在多轮问诊的逻辑推理、甚至共情反馈上，做到了非常拟真且精准的程度。",
+      "start": 74.323,
+      "duration": 31.811,
       "audios": {
-        "v1": "chunk_006_v1.mp3",
-        "v2": "chunk_006_v2.mp3"
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-YunjianNeural",
-        "v2": "host_a_v2"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 7,
       "host": "B",
-      "text": "哇，长链条推理？等等博文，你说的这个长链条推理，能给咱们听众翻译翻译吗？",
-      "start": 83.244,
-      "duration": 7.958,
+      "text": "哇，多轮问诊还能带共情？这感觉就像是一个从不疲倦、永远耐心的家庭医生随时在线啊。",
+      "start": 106.599,
+      "duration": 8.132,
       "audios": {
-        "v1": "chunk_007_v1.mp3",
-        "v2": "chunk_007_v2.mp3"
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-XiaoxiaoNeural",
-        "v2": "host_b_v2"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 8,
       "host": "A",
-      "text": "哈哈，简单来说，就是看病的逻辑不是单线的一问一答了。比如你同时有高血压、糖尿病，还最近失眠，医生需要综合考虑这些病之间的相互影响和用药冲突，这就叫长链条。AMIE现在能像全科医生一样，把这些复杂的变量串起来，给出一个全局最优的方案。",
-      "start": 91.664,
-      "duration": 21.952,
+      "text": "晓晓，你这个比喻非常恰当。但硬币的另一面是，这不仅仅是医疗生产力的重构，更会引发深层的变革。当AI成为独立诊疗主体，医疗责任怎么界定？如果误诊了，是AI开发商的责任，还是医院的？还有行业准入和伦理问题，这些都是接下来必须面对的硬骨头。",
+      "start": 115.193,
+      "duration": 21.604,
       "audios": {
-        "v1": "chunk_008_v1.mp3",
-        "v2": "chunk_008_v2.mp3"
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-YunjianNeural",
-        "v2": "host_a_v2"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 9,
       "host": "B",
-      "text": "哦！这就好比咱们做产品，以前AI是个只会回单条消息的客服机器人，现在它升级成能统筹全局的项目经理了！不过话说回来，这要是真落地了，传统医疗体系不得受大冲击？",
-      "start": 114.067,
-      "duration": 18.276,
+      "text": "对，技术跑得太快，规则还在后面追。不过说真的，如果有个AI医生能24小时秒回我那些奇奇怪怪的健康焦虑，我这种用户真的很难拒绝。哎，除了医疗这个深水区，我发现最近资本也跑到另一个深水区里疯狂撒钱了，就是具身智能。",
+      "start": 137.248,
+      "duration": 21.386,
       "audios": {
-        "v1": "chunk_009_v1.mp3",
-        "v2": "chunk_009_v2.mp3"
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-XiaoxiaoNeural",
-        "v2": "host_b_v2"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 10,
       "host": "A",
-      "text": "晓晓，你这产品经理的直觉真的很灵敏。冲击是一定的，而且不仅是资源分配，更核心的是伦理责任。如果AI独立诊疗出了偏差，责任算谁的？是算开发谷歌的工程师，还是算采纳建议的医院？这背后需要整个医疗体系做深层的重构。",
-      "start": 132.843,
-      "duration": 22.562,
+      "text": "嗯，这个确实火。具身大脑公司半年内完成了三连融，估值飙升，而且有15家VC抢着投他们的世界模型路线。",
+      "start": 159.134,
+      "duration": 10.57,
       "audios": {
-        "v1": "chunk_010_v1.mp3",
-        "v2": "chunk_010_v2.mp3"
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-YunjianNeural",
-        "v2": "host_a_v2"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 11,
       "host": "B",
-      "text": "天哪，这确实是个大问题。技术跑得太快，规则还在后面追。哎，说到跑得快，除了谷歌在医疗领域狂奔，今天资本圈也有个大动静，跟咱们国内的技术极客息息相关。林俊旸的新公司卜拉格，首轮估值就到了135亿！红杉、高榕这些巨头都入局了。",
-      "start": 155.843,
-      "duration": 25.305,
+      "text": "是吧！15家VC抢投，这画面太有冲击力了。博文，这世界模型到底是个啥？怎么就让资本这么疯狂，都不去卷大语言模型了？",
+      "start": 170.142,
+      "duration": 11.136,
       "audios": {
-        "v1": "chunk_011_v1.mp3",
-        "v2": "chunk_011_v2.mp3"
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-XiaoxiaoNeural",
-        "v2": "host_b_v2"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 12,
       "host": "A",
-      "text": "嗯，这个事今天在圈里刷屏了。超2亿美元的联合领投，135亿的首轮估值，这数字太夸张了。",
-      "start": 181.609,
-      "duration": 10.309,
+      "text": "简单来说，大语言模型是在文本的世界里推理，而世界模型是在物理世界里推理。它能让机器人理解重力、碰撞、材质这些物理规律。资本转向这条路线，其实是因为大家发现，没有对物理世界的理解，机器人就只是个提线木偶，做不了复杂的现实任务。结合高继扬最近提出的“无捷径”论，其实就是在说，算力与真实世界的数据壁垒，才是具身智能真正的护城河。",
+      "start": 181.739,
+      "duration": 30.984,
       "audios": {
-        "v1": "chunk_012_v1.mp3",
-        "v2": "chunk_012_v2.mp3"
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-YunjianNeural",
-        "v2": "host_a_v2"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 13,
       "host": "B",
-      "text": "真假的！135亿啊，这钱是大风刮来的吗？博文老师，你又带上技术极客的视角了，你给咱们剖析剖析，凭什么一个新公司首轮能值这么多钱？",
-      "start": 192.363,
-      "duration": 14.053,
+      "text": "等等博文，你刚才说的这个“无捷径”论，能给听众翻译翻译吗？是不是就是说，想造出真机器人，就别想偷懒，只能死磕算力和数据？",
+      "start": 213.168,
+      "duration": 13.269,
       "audios": {
-        "v1": "chunk_013_v1.mp3",
-        "v2": "chunk_013_v2.mp3"
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-XiaoxiaoNeural",
-        "v2": "host_b_v2"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 14,
       "host": "A",
-      "text": "其实资本看中的不是他现在能做出什么应用，而是他瞄准的AI底层架构。现在大模型训练的成本太高了，算力瓶颈卡着所有人的脖子。林俊旸的背景和团队，让大家相信他们有可能在底层架构上实现突破，把算力成本打下来。这预示着新一轮AI基础设施的军备竞赛开启了，顶尖人才和巨额资本的极化效应越来越严重。",
-      "start": 206.89,
-      "duration": 27.699,
+      "text": "哈哈，晓晓你总结得太到位了，就是这个意思。这就好比你想练成绝世武功，没有那种一夜速成的秘籍，只能扎扎实实地蹲马步。资本的狂热也是看中了这点，那些能砸钱堆算力、搞到高质量物理数据的公司，才会重塑这个行业的竞争格局。",
+      "start": 226.911,
+      "duration": 19.558,
       "audios": {
-        "v1": "chunk_014_v1.mp3",
-        "v2": "chunk_014_v2.mp3"
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-YunjianNeural",
-        "v2": "host_a_v2"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 15,
       "host": "B",
-      "text": "嗯，对，就像修高速公路一样，谁掌握了底层算力架构，谁就收所有跑模型公司的过路费。所以资本才敢这么下血本砸。除了这事，咱们来看看具身智能赛道最近也是热得发烫。有个头部具身大脑公司拿了数亿美元融资，听说世界模型路线特别受追捧，15家VC争抢，半年内完成三连融资！",
-      "start": 235.016,
-      "duration": 30.399,
+      "text": "明白了！所以大语言模型是让AI有了脑子，世界模型是给这脑子装了个懂物理规律的身体，而算力就是供血系统。既然说到算力和基建，咱们今天的快讯也是看点十足。博文，林俊旸的新公司卜拉格今天首亮相，估值直接干到了135亿！腾讯、高榕和红杉都在重金入局。",
+      "start": 246.896,
+      "duration": 31.4,
       "audios": {
-        "v1": "chunk_015_v1.mp3",
-        "v2": "chunk_015_v2.mp3"
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-XiaoxiaoNeural",
-        "v2": "host_b_v2"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 16,
       "host": "A",
-      "text": "这个确实很火。世界模型简单说就是给机器人脑袋里装一个物理世界的模拟器，让它在行动前能预判结果。资本这么疯抢，说明大家认定具身智能的奇点快到了，都在抢船票。",
-      "start": 265.879,
-      "duration": 15.62,
+      "text": "这个确实震撼。AI基础设施与底层架构赛道，现在简直是超级独角兽的温床。模型越往深水区走，对底层算力架构的要求就越苛刻，卜拉格能拿到这个估值，说明市场对底层基建的渴望远未饱和。",
+      "start": 278.76,
+      "duration": 17.381,
       "audios": {
-        "v1": "chunk_016_v1.mp3",
-        "v2": "chunk_016_v2.mp3"
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-YunjianNeural",
-        "v2": "host_a_v2"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 17,
       "host": "B",
-      "text": "哎，说到这，还有一家叫算苗科技的，他们那个3D TokenPU正式流片了。博文，流片成功意味着啥？",
-      "start": 281.916,
-      "duration": 9.569,
+      "text": "是啊，地基打得牢，大楼才能盖得高。顺着算力这条线，我还看到一个消息，算苗的3D TokenPU正式流片了！",
+      "start": 296.558,
+      "duration": 11.789,
       "audios": {
-        "v1": "chunk_017_v1.mp3",
-        "v2": "chunk_017_v2.mp3"
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-XiaoxiaoNeural",
-        "v2": "host_b_v2"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 18,
       "host": "A",
-      "text": "流片成功意味着从图纸变成了真正的物理芯片。国产大算力芯片在云端训练侧这次算是关键突破，以后咱们在云端训大模型，又多了一个国产算力底座的选择。",
-      "start": 291.921,
-      "duration": 14.053,
+      "text": "嗯，国产AI云端大算力芯片的又一次突围。流片成功意味着从设计走向了实体制造，底层算力基建正在加速补足短板，这对整个国产大模型生态来说是个好消息。",
+      "start": 308.783,
+      "duration": 14.706,
       "audios": {
-        "v1": "chunk_018_v1.mp3",
-        "v2": "chunk_018_v2.mp3"
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-YunjianNeural",
-        "v2": "host_a_v2"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 19,
       "host": "B",
-      "text": "懂了，就是咱们自己的算力发动机终于点火成功了！不过也不是所有公司都急着跑，星海图的创始人今天就放话，砸2个亿去“喂”数据，说具身智能无捷径。这听着挺硬核的啊？",
-      "start": 306.391,
-      "duration": 16.883,
+      "text": "天哪真假的，最近芯片圈好消息不断。还有一个跟基建相关的，九章云极今天发布了“AI工厂”战略，说要定义智能规模化的新基建。",
+      "start": 323.906,
+      "duration": 14.706,
       "audios": {
-        "v1": "chunk_019_v1.mp3",
-        "v2": "chunk_019_v2.mp3"
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-XiaoxiaoNeural",
-        "v2": "host_b_v2"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 20,
       "host": "A",
-      "text": "哈哈，这话说得很实在。具身智能的三层路线——感知、决策、执行，每一层都得靠海量真实数据喂出来，确实没有捷径可走。重金投入数据获取，这才是构建技术壁垒最笨但也最有效的办法。",
-      "start": 323.77,
-      "duration": 17.294,
+      "text": "这个概念很有意思。AI工厂其实就是在推动AI从单点的模型训练，走向产业级的规模化落地。就像工业革命时期的工厂一样，把智能变成一种可以标准化、大规模输出的生产要素。",
+      "start": 339.108,
+      "duration": 16.859,
       "audios": {
-        "v1": "chunk_020_v1.mp3",
-        "v2": "chunk_020_v2.mp3"
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-YunjianNeural",
-        "v2": "host_a_v2"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 21,
       "host": "B",
-      "text": "没错，就像做饭一样，巧妇难为无米之炊，再牛的算法没有好数据也白搭。好啦，今天聊了这么多，从医疗AI的突破到底层架构的狂热，再到具身智能的脚踏实地，AI真的在加速向核心领域渗透。",
-      "start": 341.476,
-      "duration": 23.563,
+      "text": "哇，把智能变成流水线上的产品，这画面感一下就出来了！所以你看，无论是医疗AI跨越临界点，还是具身智能狂卷世界模型，亦或是底层算力和AI工厂的加速建设，都在印证咱们今天的主题——AI正在踏踏实实地走进深水区。",
+      "start": 356.379,
+      "duration": 22.736,
       "audios": {
-        "v1": "chunk_021_v1.mp3",
-        "v2": "chunk_021_v2.mp3"
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-XiaoxiaoNeural",
-        "v2": "host_b_v2"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 22,
       "host": "A",
-      "text": "是的，技术落地和商业变现的硬核兑现阶段已经到来，咱们拭目以待吧。",
-      "start": 365.518,
-      "duration": 6.869,
+      "text": "没错，晓晓。泡沫退去后，留下的才是真正改变世界的技术和基建。",
+      "start": 379.594,
+      "duration": 6.26,
       "audios": {
-        "v1": "chunk_022_v1.mp3",
-        "v2": "chunk_022_v2.mp3"
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-YunjianNeural",
-        "v2": "host_a_v2"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 23,
       "host": "B",
-      "text": "好的，感谢大家收听今天的AI每日先锋，咱们明天见！",
-      "start": 372.819,
-      "duration": 6.869,
+      "text": "好啦，这就是今天的AI 每日先锋。我们明天见！",
+      "start": 386.286,
+      "duration": 5.694,
       "audios": {
-        "v1": "chunk_023_v1.mp3",
-        "v2": "chunk_023_v2.mp3"
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-XiaoxiaoNeural",
-        "v2": "host_b_v2"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 24,
       "host": "A",
-      "text": "明天见！",
-      "start": 380.156,
-      "duration": 1.383,
+      "text": "明天见。",
+      "start": 392.448,
+      "duration": 1.296,
       "audios": {
-        "v1": "chunk_024_v1.mp3",
-        "v2": "chunk_024_v2.mp3"
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
       },
       "voices": {
-        "v1": "zh-CN-YunjianNeural",
-        "v2": "host_a_v2"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     }
   ]
