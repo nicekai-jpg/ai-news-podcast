@@ -121,7 +121,8 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           EPISODE="${{ needs.content.outputs.episode_id }}"
-          git add -f "site/episodes/${EPISODE}.mp3" "site/episodes/${EPISODE}.html" "site/episodes/${EPISODE}.txt" "site/reports/daily_report_${EPISODE}.md" site/index.html site/feed.xml data/episodes.json
+          git add -u site/ data/episodes.json
+          git add -f "site/episodes/${EPISODE}.mp3" "site/episodes/${EPISODE}.html" "site/episodes/${EPISODE}.txt" "site/reports/daily_report_${EPISODE}.md"
           if git diff --cached --quiet; then
             echo "No audio changes to commit"
           else
