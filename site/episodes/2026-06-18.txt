@@ -1,74 +1,27 @@
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
-<voice name="zh-CN-XiaoxiaoNeural" start="1.000" duration="7.043">
-听众朋友们大家好，欢迎收听AI 每日先锋，今天是2026年6月18日，我是晓晓。
+<voice name="zh-CN-XiaoxiaoNeural">
+嗨大家好，欢迎收听AI每日先锋，我是晓晓。
 </voice>
-<voice name="zh-CN-YunjianNeural" start="8.492" duration="2.080">
+<voice name="zh-CN-YunjianNeural">
 大家好，我是博文。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="11.069" duration="17.773">
-哎，博文，咱们录节目前我刚刷到一条消息，真是让我感慨万千。你说咱们天天聊AI，这风向转得也太快了。前两年大家还在卷大模型的文本生成，现在你看，AI已经悄悄摸进了深水区。
+<voice name="zh-CN-XiaoxiaoNeural">
+博文，今天是2026年6月18号，这期节目我们可是攒了不少料啊。
 </voice>
-<voice name="zh-CN-YunjianNeural" start="29.295" duration="9.438">
-确实，晓晓，你这产品经理的直觉很敏锐。资本和应用的热度都在向更实在的地方转移，不再是单纯比拼参数量了。
+<voice name="zh-CN-YunjianNeural">
+哦？今天圈里有什么大动静？
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="39.138" duration="34.752">
-没错！就像咱们今天的主题说的：AI正从底层基建与资本狂热走向深水区。医疗AI比肩人类医生突破应用临界点，具身智能与超级算力成了资本的新宠。这不，谷歌今天就放了个大招，他们的医疗AI登上了Nature，说是在复杂疾病管理上已经比肩初级保健医生了。博文，这技术真的有这么神吗？咱们以后看病真不用找真人了？
+<voice name="zh-CN-XiaoxiaoNeural">
+你想啊，AI这两年一直在模型层卷参数、卷榜单，但今天我刷完所有新闻，最大的感受是——AI真的开始往产业里扎了。医疗、机器人、芯片，同一天都有大事冒出来。
 </voice>
-<voice name="zh-CN-YunjianNeural" start="74.323" duration="31.811">
-嗯，这次谷歌的AMIE系统确实跨过了一个很关键的门槛。以前咱们说医疗AI，更多是辅助工具，比如帮医生看看片子、整理一下病历。但这次AMIE在复杂疾病管理上达到人类初级保健医生的水平，标志着AI开始向独立的诊疗主体迈进了。从技术原理上看，它不仅仅是理解了医学知识，更是在多轮问诊的逻辑推理、甚至共情反馈上，做到了非常拟真且精准的程度。
+<voice name="zh-CN-YunjianNeural">
+嗯，你这个观察很敏锐。晓晓，今天确实可以看作是AI从"能聊天"走向"能干活"的一个关键节点。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="106.599" duration="8.132">
-哇，多轮问诊还能带共情？这感觉就像是一个从不疲倦、永远耐心的家庭医生随时在线啊。
+<voice name="zh-CN-XiaoxiaoNeural">
+对，所以咱们今天就好好聊聊这些"能干活"的事。先从医疗开始吧，这条新闻我看了挺震撼的。
 </voice>
-<voice name="zh-CN-YunjianNeural" start="115.193" duration="21.604">
-晓晓，你这个比喻非常恰当。但硬币的另一面是，这不仅仅是医疗生产力的重构，更会引发深层的变革。当AI成为独立诊疗主体，医疗责任怎么界定？如果误诊了，是AI开发商的责任，还是医院的？还有行业准入和伦理问题，这些都是接下来必须面对的硬骨头。
+<voice name="zh-CN-YunjianNeural">
+谷歌那个AMIE？
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="137.248" duration="21.386">
-对，技术跑得太快，规则还在后面追。不过说真的，如果有个AI医生能24小时秒回我那些奇奇怪怪的健康焦虑，我这种用户真的很难拒绝。哎，除了医疗这个深水区，我发现最近资本也跑到另一个深水区里疯狂撒钱了，就是具身智能。
-</voice>
-<voice name="zh-CN-YunjianNeural" start="159.134" duration="10.570">
-嗯，这个确实火。具身大脑公司半年内完成了三连融，估值飙升，而且有15家VC抢着投他们的世界模型路线。
-</voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="170.142" duration="11.136">
-是吧！15家VC抢投，这画面太有冲击力了。博文，这世界模型到底是个啥？怎么就让资本这么疯狂，都不去卷大语言模型了？
-</voice>
-<voice name="zh-CN-YunjianNeural" start="181.739" duration="30.984">
-简单来说，大语言模型是在文本的世界里推理，而世界模型是在物理世界里推理。它能让机器人理解重力、碰撞、材质这些物理规律。资本转向这条路线，其实是因为大家发现，没有对物理世界的理解，机器人就只是个提线木偶，做不了复杂的现实任务。结合高继扬最近提出的“无捷径”论，其实就是在说，算力与真实世界的数据壁垒，才是具身智能真正的护城河。
-</voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="213.168" duration="13.269">
-等等博文，你刚才说的这个“无捷径”论，能给听众翻译翻译吗？是不是就是说，想造出真机器人，就别想偷懒，只能死磕算力和数据？
-</voice>
-<voice name="zh-CN-YunjianNeural" start="226.911" duration="19.558">
-哈哈，晓晓你总结得太到位了，就是这个意思。这就好比你想练成绝世武功，没有那种一夜速成的秘籍，只能扎扎实实地蹲马步。资本的狂热也是看中了这点，那些能砸钱堆算力、搞到高质量物理数据的公司，才会重塑这个行业的竞争格局。
-</voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="246.896" duration="31.400">
-明白了！所以大语言模型是让AI有了脑子，世界模型是给这脑子装了个懂物理规律的身体，而算力就是供血系统。既然说到算力和基建，咱们今天的快讯也是看点十足。博文，林俊旸的新公司卜拉格今天首亮相，估值直接干到了135亿！腾讯、高榕和红杉都在重金入局。
-</voice>
-<voice name="zh-CN-YunjianNeural" start="278.760" duration="17.381">
-这个确实震撼。AI基础设施与底层架构赛道，现在简直是超级独角兽的温床。模型越往深水区走，对底层算力架构的要求就越苛刻，卜拉格能拿到这个估值，说明市场对底层基建的渴望远未饱和。
-</voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="296.558" duration="11.789">
-是啊，地基打得牢，大楼才能盖得高。顺着算力这条线，我还看到一个消息，算苗的3D TokenPU正式流片了！
-</voice>
-<voice name="zh-CN-YunjianNeural" start="308.783" duration="14.706">
-嗯，国产AI云端大算力芯片的又一次突围。流片成功意味着从设计走向了实体制造，底层算力基建正在加速补足短板，这对整个国产大模型生态来说是个好消息。
-</voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="323.906" duration="14.706">
-天哪真假的，最近芯片圈好消息不断。还有一个跟基建相关的，九章云极今天发布了“AI工厂”战略，说要定义智能规模化的新基建。
-</voice>
-<voice name="zh-CN-YunjianNeural" start="339.108" duration="16.859">
-这个概念很有意思。AI工厂其实就是在推动AI从单点的模型训练，走向产业级的规模化落地。就像工业革命时期的工厂一样，把智能变成一种可以标准化、大规模输出的生产要素。
-</voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="356.379" duration="22.736">
-哇，把智能变成流水线上的产品，这画面感一下就出来了！所以你看，无论是医疗AI跨越临界点，还是具身智能狂卷世界模型，亦或是底层算力和AI工厂的加速建设，都在印证咱们今天的主题——AI正在踏踏实实地走进深水区。
-</voice>
-<voice name="zh-CN-YunjianNeural" start="379.594" duration="6.260">
-没错，晓晓。泡沫退去后，留下的才是真正改变世界的技术和基建。
-</voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="386.286" duration="5.694">
-好啦，这就是今天的AI 每日先锋。我们明天见！
-</voice>
-<voice name="zh-CN-YunjianNeural" start="392.448" duration="1.296">
-明天见。
-</voice>
-</speak>
+<voice name="zh-CN-XiaoxiaoNeural">
+对！
