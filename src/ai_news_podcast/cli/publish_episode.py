@@ -204,6 +204,7 @@ async def main() -> int:
         base_url=base_url,
         podcast_cfg=podcast_cfg,
         build_cfg=build_cfg,
+        now=day,
     )
     log.info("Episode %s published", ep_id)
     return 0
