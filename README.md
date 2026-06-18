@@ -17,7 +17,7 @@ This repository generates a daily AI news podcast episode (MP3), daily text repo
 Copy or create a `.env` file in the project root:
 ```env
 # Example .env configuration
-SPARK_API_KEY="your-spark-coding-plan-api-key"
+MINIMAX_API_KEY="your-minimax-api-key"
 ```
 
 ### 2. Installation (using `uv`)
@@ -40,7 +40,7 @@ uv run podcast-daily --base-url http://localhost
 *Note: Add `--no-audio` if you cannot connect to Edge-TTS or only want the text script.*
 
 **B. Generate Markdown Text Report**
-Generates a markdown text report calling the Xunfei Spark MaaS (Astron Coding Plan) API.
+Generates a markdown text report calling the MiniMax Token Plan API.
 ```bash
 uv run podcast-report
 ```
@@ -64,7 +64,7 @@ The project logic is controlled by files in the `config/` directory:
 Subscribe to this URL in your favorite podcast app!
 
 ## Daily Automation Setup
-- **Configure Secret**: In your GitHub repository, go to **Settings** -> **Secrets and variables** -> **Actions**. Click **New repository secret**, name it `SPARK_API_KEY`, and paste your Xunfei Spark API key as the value.
+- **Configure Secret**: In your GitHub repository, go to **Settings** -> **Secrets and variables** -> **Actions**. Click **New repository secret**, name it `MINIMAX_API_KEY`, and paste your MiniMax API key as the value.
 - The repository has a built-in GitHub Actions workflow at `.github/workflows/daily.yml`.
 - It runs automatically every day to generate the Markdown daily report and MP3 podcast episode, committing the outputs back to the repository.
 - You can also manually trigger the run under the **Actions** tab of your repository by clicking **Run workflow**.
