@@ -61,9 +61,10 @@ def prune_episodes(
             path = episodes_dir / f"{eid}{suffix}"
             if path.exists():
                 path.unlink()
-        
+
         # 删除对应的音频切片文件夹
         import shutil
+
         chunks_dir = episodes_dir / eid
         if chunks_dir.exists() and chunks_dir.is_dir():
             shutil.rmtree(chunks_dir)

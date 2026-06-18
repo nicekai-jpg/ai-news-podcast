@@ -34,7 +34,7 @@ def test_load_cosyvoice_config_from_yaml_dict(tmp_path: Path) -> None:
     }
     result = load_cosyvoice_config(cfg, project_root=tmp_path)
     assert isinstance(result, CosyVoiceConfig)
-    assert result.refs["A"]["v1"][1] == "男声参考文本"
+    assert result.refs["A"]["professional"][1] == "男声参考文本"
     assert result.model_dir == Path("/models/CosyVoice2-0.5B")
 
 
@@ -49,9 +49,9 @@ def test_synthesize_chunk_dispatches_by_host(tmp_path: Path, monkeypatch) -> Non
     config = CosyVoiceConfig(
         model_dir=tmp_path / "model",
         refs={
-            "A": {"v1": (refs / "host_a_ref.wav", "男声")},
-            "B": {"v1": (refs / "host_b_ref.wav", "女声")},
-        }
+            "A": {"professional": (refs / "host_a_ref.wav", "男声")},
+            "B": {"professional": (refs / "host_b_ref.wav", "女声")},
+        },
     )
     engine = CosyVoice2Engine(config)
     calls: list[tuple[str, str]] = []

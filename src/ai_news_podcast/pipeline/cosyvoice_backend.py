@@ -32,19 +32,24 @@ def load_cosyvoice_config(cfg: dict, *, project_root: Path) -> CosyVoiceConfig:
     for host, host_key in [("A", "host_a"), ("B", "host_b")]:
         host_data = refs.get(host_key)
         if isinstance(host_data, dict):
-            for variant in ["v1", "v2"]:
+            variants = [k for k in host_data.keys() if not k.endswith("_text")]
+            for variant in variants:
                 wav_path = _resolve(str(host_data.get(variant) or ""))
                 text_path = _resolve(str(host_data.get(f"{variant}_text") or ""))
                 parsed_refs[host][variant] = (wav_path, _read_text(text_path))
         else:
             # Fallback for single-voice setup
             wav_path = _resolve(str(host_data or f"assets/refs/host_{host.lower()}_ref.wav"))
-            text_path = _resolve(str(refs.get(f"{host_key}_text") or f"assets/refs/host_{host.lower()}_ref.txt"))
+            text_path = _resolve(
+                str(refs.get(f"{host_key}_text") or f"assets/refs/host_{host.lower()}_ref.txt")
+            )
             txt_content = _read_text(text_path)
-            parsed_refs[host]["v1"] = (wav_path, txt_content)
-            parsed_refs[host]["v2"] = (wav_path, txt_content)
+            parsed_refs[host]["professional"] = (wav_path, txt_content)
+            parsed_refs[host]["lively"] = (wav_path, txt_content)
 
-    model_dir_raw = str(cosy.get("model_dir") or os.environ.get("COSYVOICE_MODEL_DIR") or "").strip()
+    model_dir_raw = str(
+        cosy.get("model_dir") or os.environ.get("COSYVOICE_MODEL_DIR") or ""
+    ).strip()
     model_dir = Path(model_dir_raw).expanduser() if model_dir_raw else Path()
 
     return CosyVoiceConfig(
@@ -86,7 +91,7 @@ class CosyVoice2Engine:
             self._ref_cache[key] = load_wav(str(wav_path), 16000)
         return self._ref_cache[key]
 
-    def synthesize_chunk(self, *, text: str, host: str, variant: str = "v1") -> Any:
+    def synthesize_chunk(self, *, text: str, host: str, variant: str = "professional") -> Any:
         """Return torch Tensor audio (1, T) at model sample rate."""
         host_key = host.upper()
         variant_data = self._config.refs.get(host_key, {}).get(variant)
@@ -95,8 +100,8 @@ class CosyVoice2Engine:
 
         ref_wav, ref_text = variant_data
         if not ref_wav.exists():
-            # Fallback to v1 if file for variant is missing
-            fallback_data = self._config.refs.get(host_key, {}).get("v1")
+            # Fallback to professional if file for variant is missing
+            fallback_data = self._config.refs.get(host_key, {}).get("professional")
             if fallback_data:
                 ref_wav, ref_text = fallback_data
 
