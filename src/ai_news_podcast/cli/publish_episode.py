@@ -57,7 +57,9 @@ def publish_episode(
     mp3_path = episodes_dir / f"{episode_id}.mp3"
     notes_path = episodes_dir / f"{episode_id}.html"
 
-    notes_html = generate_show_notes_html(brief, episode_title=episode_title, episode_date=episode_date)
+    notes_html = generate_show_notes_html(
+        brief, episode_title=episode_title, episode_date=episode_date
+    )
     write_text(notes_path, notes_html)
 
     stories = brief.get("stories", [])
@@ -130,7 +132,7 @@ def publish_episode(
         episodes=sorted_eps,
     )
     write_text(site_dir / "feed.xml", feed_xml)
-    build_index_html(site_dir, podcast_title, sorted_eps, base_url)
+    build_index_html(site_dir, podcast_title, sorted_eps, base_url, cfg)
 
     logo_src = root / "assets" / "logo.png"
     if logo_src.exists():

@@ -44,6 +44,7 @@ def build_index_html(
     podcast_title: str,
     episodes: list[dict[str, Any]],
     base_url: str,
+    cfg: dict[str, Any] | None = None,
 ) -> None:
     dates_list = []
     episodes_map: dict[str, dict[str, Any]] = {}
@@ -66,6 +67,17 @@ def build_index_html(
             for ep_id, ep in episodes_map.items()
         }
     )
+
+    if cfg is None:
+        cfg = {}
+    voices_config = cfg.get("tts", {}).get(
+        "voice_names",
+        {
+            "host_a": {"professional": "专业男声", "lively": "活力男声"},
+            "host_b": {"professional": "亲切女声", "lively": "青春女生"},
+        },
+    )
+    voices_config_json = json.dumps(voices_config, ensure_ascii=False)
 
     shanghai_tz = ZoneInfo("Asia/Shanghai")
     build_time = datetime.datetime.now(tz=shanghai_tz).strftime("%Y-%m-%d %H:%M:%S")
@@ -158,22 +170,7 @@ def build_index_html(
                 <button id="playback-btn-full" class="playback-mode-btn active" onclick="setPlaybackMode('full')">📻 整轨广播</button>
                 <button id="playback-btn-sentence" class="playback-mode-btn" onclick="setPlaybackMode('sentence')" style="display: none;">📖 智能句读</button>
               </div>
-              <div class="voice-selector-row" id="voice-selector-row">
-                <div class="voice-select-group">
-                  <label>博文音色</label>
-                  <div class="voice-pill-group">
-                    <button class="voice-pill-btn active" data-host="A" data-variant="v1" onclick="selectVoiceVariant('A', 'v1')">音色 1</button>
-                    <button class="voice-pill-btn" data-host="A" data-variant="v2" onclick="selectVoiceVariant('A', 'v2')">音色 2</button>
-                  </div>
-                </div>
-                <div class="voice-select-group">
-                  <label>晓晓音色</label>
-                  <div class="voice-pill-group">
-                    <button class="voice-pill-btn active" data-host="B" data-variant="v1" onclick="selectVoiceVariant('B', 'v1')">音色 1</button>
-                    <button class="voice-pill-btn" data-host="B" data-variant="v2" onclick="selectVoiceVariant('B', 'v2')">音色 2</button>
-                  </div>
-                </div>
-              </div>
+              <div class="voice-selector-row" id="voice-selector-row"></div>
               <div class="console-time-row">
                 <span id="current-time">0:00</span>
                 <div class="console-progress-track" id="console-progress-track" onclick="seekAudio(event)">
@@ -276,6 +273,7 @@ def build_index_html(
         .replace("{base_url}", str(base_url))
         .replace("{dates_json}", str(dates_json))
         .replace("{episodes_map_json}", str(episodes_map_json))
+        .replace("{voices_config_json}", str(voices_config_json))
         .replace("{build_time}", str(build_time))
     )
 

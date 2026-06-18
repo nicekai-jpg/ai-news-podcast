@@ -46,7 +46,7 @@ def rebuild():
         processed_episodes.append(ep_copy)
 
     print(f"Rebuilding index.html in {site_dir}...")
-    build_index_html(site_dir, podcast_title, processed_episodes, "http://localhost:8000/site")
+    build_index_html(site_dir, podcast_title, processed_episodes, "http://localhost:8000/site", cfg)
 
     # Now sync site to data/_preview
     preview_dir = project_root / "data/_preview"

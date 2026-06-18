@@ -9,25 +9,37 @@ podcast:
   max_stories: 8
 
 tts:
-  backend: "cosyvoice2"              # edge-tts | cosyvoice2 | hybrid
+  backend: "hybrid"                  # edge-tts | cosyvoice2 | hybrid
   fallback_backend: "edge-tts"
-  host_a_voice: "zh-CN-YunjianNeural"  # edge / hybrid 降级时使用
-  host_b_voice: "zh-CN-XiaoxiaoNeural"
-  voice: "zh-CN-XiaoxiaoNeural"      # 兼容旧配置
+  # 多音色版本配置 (用于智能句读模式)
+  host_a_voices:
+    professional: "zh-CN-YunjianNeural"
+    lively: "zh-CN-YunxiNeural"
+  host_b_voices:
+    professional: "zh-CN-XiaoxiaoNeural"
+    lively: "zh-CN-XiaoyiNeural"
+  # 音色显示名称定义
+  voice_names:
+    host_a:
+      professional: "专业男声"
+      lively: "活力男声"
+    host_b:
+      professional: "亲切女声"
+      lively: "青春女生"
   bgm_path: ""
   cosyvoice:
     model_dir: ""                    # 空则读 COSYVOICE_MODEL_DIR 环境变量
     ref_audio:
       host_a:
-        v1: "assets/audio_samples/host_a_v1.mp3"
-        v1_text: "assets/audio_samples/host_a_v1.txt"
-        v2: "assets/audio_samples/host_a_v2.mp3"
-        v2_text: "assets/audio_samples/host_a_v2.txt"
+        professional: "assets/audio_samples/host_a_v1.mp3"
+        professional_text: "assets/audio_samples/host_a_v1.txt"
+        lively: "assets/audio_samples/host_a_v2.mp3"
+        lively_text: "assets/audio_samples/host_a_v2.txt"
       host_b:
-        v1: "assets/audio_samples/host_b_v1.mp3"
-        v1_text: "assets/audio_samples/host_b_v1.txt"
-        v2: "assets/audio_samples/host_b_v2.mp3"
-        v2_text: "assets/audio_samples/host_b_v2.txt"
+        professional: "assets/audio_samples/host_b_v1.mp3"
+        professional_text: "assets/audio_samples/host_b_v1.txt"
+        lively: "assets/audio_samples/host_b_v2.mp3"
+        lively_text: "assets/audio_samples/host_b_v2.txt"
   rate: "+0%"
   volume: "+0%"
   pitch: "+0Hz"

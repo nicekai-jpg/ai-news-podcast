@@ -40,7 +40,7 @@ async def main() -> int:
         output_path = root / output_path
 
     script_text = script_path.read_text(encoding="utf-8")
-    
+
     cfg_bgm = cfg.get("tts", {}).get("bgm_path", "")
     bgm_resolved = None
     if cfg_bgm:

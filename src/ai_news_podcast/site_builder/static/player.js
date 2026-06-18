@@ -1,5 +1,6 @@
     const DATES = {dates_json};
     const EPISODES = {episodes_map_json};
+    const VOICES_CONFIG = {voices_config_json};
     const WEEKDAYS = ['日','一','二','三','四','五','六'];
     const SPEEDS = [1, 1.25, 1.5, 1.75, 2];
     let speedIdx = 0;
@@ -11,11 +12,24 @@
     audio.volume = lastVol;
 
     let playbackMode = 'full'; // 'full' | 'sentence'
+    let pendingPlaybackMode = null; // Defer playback mode switch for seamless transitions
+    let toastTimer = null;
     let currentPlaylist = null; // List of chunks from playlist.json
     let currentChunkIndex = 0;
-    let selectedVoices = { 'A': 'v1', 'B': 'v1' };
+    let selectedVoices = { 'A': 'professional', 'B': 'professional' };
     const bgmAudio = document.getElementById('bgm-audio');
     bgmAudio.volume = 0.05; // 低音量背景音乐
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function() {
+        toast.classList.remove('show');
+      }, 3000);
+    }
 
     let currentMode = 'podcast';
     let scriptTotalChars = 0;
@@ -168,6 +182,7 @@
           if (rPl.ok) {
             var plData = await rPl.json();
             currentPlaylist = plData.chunks;
+            buildVoiceSelectors();
             document.getElementById('playback-btn-sentence').style.display = 'block';
             var voiceSelector = document.getElementById('voice-selector-row');
             if (voiceSelector) {
@@ -361,6 +376,7 @@
       var isPlaying = !audio.paused;
 
       playbackMode = mode;
+      pendingPlaybackMode = null; // Clear pending switch if mode changes explicitly
       document.getElementById('playback-btn-full').classList.toggle('active', mode === 'full');
       document.getElementById('playback-btn-sentence').classList.toggle('active', mode === 'sentence');
 
@@ -421,8 +437,8 @@
       var chunk = currentPlaylist[index];
 
       // 读取当前选择的主持人音色变体
-      var variant = selectedVoices[chunk.host] || 'v1';
-      var audioFile = (chunk.audios && chunk.audios[variant]) || (chunk.audios && chunk.audios['v1']) || chunk.audio || `chunk_${String(index + 1).padStart(3, '0')}.mp3`;
+      var variant = selectedVoices[chunk.host] || 'professional';
+      var audioFile = (chunk.audios && chunk.audios[variant]) || (chunk.audios && chunk.audios['professional']) || chunk.audio || `chunk_${String(index + 1).padStart(3, '0')}.mp3`;
 
       audio.src = './episodes/' + currentDate + '/' + audioFile;
       if (autoplay) {
@@ -453,6 +469,48 @@
       }
     }
 
+    function buildVoiceSelectors() {
+      const row = document.getElementById('voice-selector-row');
+      if (!row) return;
+      row.innerHTML = '';
+
+      const hosts = [
+        { key: 'A', name: '博文音色', configKey: 'host_a' },
+        { key: 'B', name: '晓晓音色', configKey: 'host_b' }
+      ];
+
+      hosts.forEach(function(h) {
+        const group = document.createElement('div');
+        group.className = 'voice-select-group';
+        
+        const label = document.createElement('label');
+        label.textContent = h.name;
+        group.appendChild(label);
+
+        const pillGroup = document.createElement('div');
+        pillGroup.className = 'voice-pill-group';
+
+        const hostConfig = VOICES_CONFIG[h.configKey] || {};
+        const variants = Object.keys(hostConfig);
+
+        variants.forEach(function(variantId) {
+          const btn = document.createElement('button');
+          btn.className = 'voice-pill-btn';
+          if (selectedVoices[h.key] === variantId) {
+            btn.classList.add('active');
+          }
+          btn.setAttribute('data-host', h.key);
+          btn.setAttribute('data-variant', variantId);
+          btn.onclick = function() { selectVoiceVariant(h.key, variantId); };
+          btn.textContent = hostConfig[variantId] || variantId;
+          pillGroup.appendChild(btn);
+        });
+
+        group.appendChild(pillGroup);
+        row.appendChild(group);
+      });
+    }
+
     function selectVoiceVariant(host, variant) {
       selectedVoices[host] = variant;
       
@@ -462,13 +520,17 @@
       });
 
       if (playbackMode !== 'sentence') {
-        setPlaybackMode('sentence');
+        if (audio.paused) {
+          setPlaybackMode('sentence');
+        } else {
+          pendingPlaybackMode = 'sentence';
+          showToast('音色切换将在下一句自动生效');
+        }
       } else {
-        if (currentPlaylist && currentPlaylist.length > 0) {
-          var offsetTime = audio.currentTime;
-          var isPlaying = !audio.paused;
-          loadChunk(currentChunkIndex, isPlaying);
-          audio.currentTime = offsetTime;
+        if (audio.paused) {
+          loadChunk(currentChunkIndex, false);
+        } else {
+          showToast('新音色将在下一句生效');
         }
       }
     }
@@ -766,6 +828,40 @@
         totalDur = currentPlaylist.reduce((acc, c) => acc + (c.duration || 0), 0);
       } else {
         if (!audio.duration) return;
+
+        // Seamless transition check from full mode to sentence mode
+        if (pendingPlaybackMode === 'sentence' && currentPlaylist && currentPlaylist.length > 0) {
+          var targetIndex = -1;
+          for (var i = 0; i < currentPlaylist.length; i++) {
+            var chunk = currentPlaylist[i];
+            if (curTime >= chunk.start && curTime < chunk.start + chunk.duration) {
+              targetIndex = i;
+              break;
+            }
+          }
+          if (targetIndex !== -1) {
+            var chunk = currentPlaylist[targetIndex];
+            var timeLeft = (chunk.start + chunk.duration) - curTime;
+            // Transition when the current sentence ends (250ms buffer)
+            if (timeLeft <= 0.25) {
+              var nextIndex = targetIndex + 1;
+              if (nextIndex < currentPlaylist.length) {
+                audio.pause();
+                playbackMode = 'sentence';
+                pendingPlaybackMode = null;
+                document.getElementById('playback-btn-full').classList.remove('active');
+                document.getElementById('playback-btn-sentence').classList.add('active');
+                var voiceSelector = document.getElementById('voice-selector-row');
+                if (voiceSelector) voiceSelector.classList.remove('dimmed');
+                
+                bgmAudio.src = 'assets/bgm_placeholder.wav';
+                bgmAudio.play().catch(function(){});
+                loadChunk(nextIndex, true);
+                return;
+              }
+            }
+          }
+        }
       }
 
       var pct = totalDur > 0 ? (curTime / totalDur * 100).toFixed(1) : 0;
