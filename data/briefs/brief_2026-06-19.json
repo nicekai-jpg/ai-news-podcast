@@ -1,0 +1,1703 @@
+{
+  "thesis": "今天的AI领域动态丰富，多个方向齐头并进",
+  "stories": [
+    {
+      "cluster_id": 0,
+      "representative_title": "AI看病成为医患新包袱？补上「多轮追问」，通用AI才迈得过医疗关",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "M4是大脑，百小医是身体"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/436758.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "11435dfc29439da3",
+          "title": "AI看病成为医患新包袱？补上「多轮追问」，通用AI才迈得过医疗关",
+          "link": "https://www.qbitai.com/2026/06/436758.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/436758.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-18T13:46:04+00:00",
+          "summary": "M4是大脑，百小医是身体",
+          "full_text_snippet": "AI看病成为医患新包袱？补上「多轮追问」，通用AI才迈得过医疗关\nM4是大脑，百小医是身体\n衡宇 Jay 发自 凹非寺\n量子位 | 公众号 QbitAI\n应该不只是我家里的长辈天天抱着AI“看病”吧？\n这年头，大家是越来越习惯把症状、化验单、病历丢给AI了。\n正所谓春江水暖鸭先知，身处一线的医生们就对这个事情深有体会。越来越多患者带着AI生成的“自我判断结果”去医院问诊，有些医生甚至反馈，门诊里不少人带着同一套AI结论来求证。\n患者过度依赖大模型诊断，导致医患沟通成本增加。界面新闻采访的三甲医院医生就非常无奈：\n“上午看了30个号，25个病人是带着AI结论来的。”\n虽然许多官媒时不时也提醒公众，通用AI用于医疗场景存在明显的不可靠性，但随着AI技术精进、使用人群越来越广泛，AI确实正在进入医疗决策的前置环节。\n于是一个分化开始变得明显起来。\n一边是通用大模型正在成为健康信息的第一入口，另一边是医疗行业不断强调，通用模型不适合直接承担医疗判断。\n所以我们讨论的话题应该再进一步，聚焦在“哪一种AI有资格靠近医疗”？“我们到底需要什么样的医疗AI”？\n走向“能被病人托付”的医疗增强大模型M4\n落地医疗场景的AI，必须要基于通用大模型做结构性重构与医疗专项增强，方可真正服务医疗。\n而百川智能推出的Baichuan-M4，正是在这个方向上的一次回答。\n一直以来，百川在这方面的路径清晰，从M1到M4，它始终在推动通用大模型在医疗场景的能力边界。\n到了M3阶段，这条路线开始真正收敛成体系，形成了一条清晰的能力基线，从而构筑起由评测领先、范式原创、贴近临床与外部验证四大要素共同支撑的信任体系。\nM4在这条基线上的进一步推进。\n我们可从最新发布的技术报告中一探究竟。\n在最新评测体系中，M4继续保持全球领先。\nHealthBench综合得分提升至68.6，Hard任务提升至49.7，幻觉率进一步下降至3.3%。\n在更贴近真实临床环境的HealthBench Professional评测中，M4在基础推理（不接外部工具）得分55.1，显著高于GPT-5.5的51.8分。\n但如果只看分数，这仍然只是连续优化的结果。\nM4真正的变化发生在能力结构上，它开始从“单点问答优化”走向“医疗过程能力重构”。\n这一变化，可以拆成四层升级。\n会提问，从单轮问诊走向深度诊疗\n真实问诊是个持续追问与信息补全的过程。\n基于SCAN-bench 2.0体系，M4将训练场景从单次标准化问诊扩展到多轮访视与复杂患者画像，使模型能够在信息不完整的情况下持续推进诊疗路径。\n在动态问诊评测SCAN-bench中，M4初诊得分79.0、复诊74.7，均明显领先其他顶尖模型；长上下文临床记忆得分86.9，较上一代M3提升 21.1 分，为同类最高。\n在搭载了M4的百川C端产品百小医上，能非常直观地体现这项技能点的重要性。\n张先生半夜突然急性脚痛，打开APP后，百小医连续追问了10轮，逐步锁定了痛风风险。\n敲黑板，“连续追问10轮”。\n不是闲聊，它在通过连续追问补齐病史信息，逐渐缩小风险范围。\n模型在多轮对话中会持续追问TA的饮食结构、发作频率、用药历史以及近期指标变化，系统逐步收敛风险判断路径，更接近真实门诊的复诊过程。\n会循证，从内容生成走向证据驱动\n“有没有依据”是医疗判断的关键。\n在循证这一层，M4构建了原子化临床路径体系，将复杂医学指南拆解为1000余个可复用临床决策单元，覆盖200余种常见疾病的完整诊疗流程。\n在此基础上，研究团队还引入了更严格的证据锚定机制，使模型输出稳定对齐医学证据。\n很多通用模型也会在结论后甩一串文献，但点进去常常对不上——要么引用编号在、内容却是两回事，要么文献本身没错、被引的那段跟结论不沾边。\n证据锚定要做的，是让每一句结论都能精确落到原文的具体段落，顺着就能查到出处。\n在Baichuan-EBM评测中，循证引用精度达到90.0，显著高于GPT-5.5的54.7。\n拥有Harness调度能力，持续提供健康管理服务\n如果说问诊解决的是单次决策问题，循证解决的是正确性问题，那么调度与记忆解决的是时间问题。\nM4引入了Harness架构。有了这个神经中枢，何时追问、何时检索证据、何时调出既往病史，均由模型自主决定，无需人工逐步指令。\n面对文献检索、长病史梳理这类繁重任务，它会拆分成子任务并行处理，让模型专注于整体诊疗路径的判断；而每一步动作，都在实时的安全约束下完成。\n它会当场拦下违规的工具调用、越权的数据访问、不合临床规范的操作等不安全的行为。\n更重要的是，这套系统不是一次成型，而是在真实诊疗中持续迭代：线上的疑难案例、用户的追问、医生的纠偏，经脱敏与归因后回流，成为模型继续改进的依据。\n问诊、记忆、循证由此被编排成一个完整的整体，M4也从一个最强...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "representative_title": "香港特区政府财政司司长陈茂波一行到访 PPIO",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "香港特区政府财政司司长陈茂波一行到访 PPIO"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/436751.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d4ce42e10261a56a",
+          "title": "香港特区政府财政司司长陈茂波一行到访 PPIO",
+          "link": "https://www.qbitai.com/2026/06/436751.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/436751.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-18T10:14:49+00:00",
+          "summary": "",
+          "full_text_snippet": "香港特区政府财政司司长陈茂波一行到访 PPIO\n6 月 18 日上午，香港特别行政区政府财政司司长陈茂波一行到访 PPIO 上海总部，参观 PPIO 企业展厅，并围绕人工智能基础设施建设、AI 云服务发展、产业生态协同以及香港创新科技发展等议题开展座谈交流。PPIO 联合创始人、董事长兼 CEO 姚欣等接待来访并参加座谈。\n此次来访体现了香港特区政府对人工智能基础设施、分布式 AI 云计算以及新一代 AI 服务平台发展的高度关注，也为 PPIO 进一步发挥自身技术与平台优势、深化香港布局、连接国际市场提供了重要交流契机。\n来访期间，陈茂波司长一行参观了 PPIO 展厅，详细了解 PPIO 的发展历程、技术架构、全球业务布局，以及公司在分布式算力、模型推理服务、Agentic Cloud、智能体基础设施和全球开发者生态等方面的最新进展。\n座谈会上，双方围绕AI产业发展趋势、算力基础设施建设、模型服务能力、AI 应用落地、香港国际化平台优势及未来合作方向等内容进行了深入交流。\nPPIO 是全球领先的 AI 云计算服务商，致力于帮助更多企业、开发者和智能体应用以更低成本、更高效率使用 AI 基础设施服务。面向 AI 原生应用、智能体开发、AI 编程、多模态应用和企业级大模型服务等新一代需求，PPIO 提供高性价比、超弹性、低延迟的一站式 AI 云平台服务，覆盖 GPU 云计算、模型服务平台、模型推理加速、Agent 沙箱和 Agentic Infra 等核心服务。\n香港是连接内地与全球市场的重要枢纽，在国际资本、专业服务、创新科技、跨境业务拓展和国际客户连接等方面具有独特优势，也为人工智能和算力产业发展提供了广阔空间。PPIO 高度重视香港在公司全球化发展中的战略价值，并将香港视为重要的海外业务平台。目前，PPIO 已在香港设立办公室，配置本地团队，持续推进 AI 云服务能力建设、国际客户拓展、本地生态合作和资本市场对接。依托香港国际化优势，PPIO 正积极服务全球开发者和企业客户，助力中国 AI 技术、国产大模型和 AI 应用更高效地连接海外市场。\n此次香港特区政府财政司司长陈茂波一行到访 PPIO，是香港特区政府关注新一代 AI 基础设施发展、支持科技企业国际化布局的重要体现。未来，PPIO 将以此次交流为契机，持续加强与香港市场及生态伙伴的合作，进一步发挥自身在分布式 AI 云计算、模型推理服务和 Agentic Cloud 方面的技术优势，积极参与香港创新科技生态建设，推动更多 AI 应用场景在香港落地。\n香港特区政府财政司司长陈茂波一行到访 PPIO\n-本文系量子位授权转载-\n- 魔法原子牵手万机易租，全栈产品入驻2.0平台共建租赁生态2026-06-18\n- 入局AI新风向，WAIC 2026全球开票！2026-06-17\n- ABot-Earth0.5登顶Hugging Face论文三榜第一，获国际图形学权威陈宝权好评2026-06-18\n- 倒计时30天！2026世界人工智能大会将于7月17日至20日在上海举行2026-06-17",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "representative_title": "18年前不让你苦修PS的美图，这次不让你苦修AI了",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "用八款产品，讲一个变化"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/436517.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d0ced80c76020b93",
+          "title": "18年前不让你苦修PS的美图，这次不让你苦修AI了",
+          "link": "https://www.qbitai.com/2026/06/436517.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/436517.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-18T09:07:51+00:00",
+          "summary": "用八款产品，讲一个变化",
+          "full_text_snippet": "18年前不让你苦修PS的美图，这次不让你苦修AI了\n用八款产品，讲一个变化\n梦瑶 发自 凹非寺\n量子位 | 公众号 QbitAI\n如果说去年，大家还在聊哪些AI工具好用。\n那到了今年，AI圈的打招呼方式可能已经变成了——\n最近又vibe了啥？又订阅了哪些xxx Plan？又装了几个难搞的插件啊？（话匣子打开中.jpg）\n友友们，真不是段子……\n这两年AI工具确实越来越多，但吊诡的是，创作这件事好像并没有因此变得更轻松。\n这也是当前AI创作领域一个很值得玩味的现象：提示词、工作流、模型切换、多工具协同，正在成为新的创作门槛。\n△AI生成\n当整个行业还在卷AI繁冗，甚至默认用户要先苦修一套AI技能时——\n那个我们并不陌生，曾经用影像产品影响过一代人的「美图」，这次给出一个有点反直觉的答案：\n让用户少学点儿技能，直接从AI手里拿结果。\n当前，AI创作工具行业已告别概念爆发期，迈入价值落地深水区。\n有意思的是，行业潮水走向的变化，有时并不在行业巨头中率先显现，反倒最先出现在那些敢于「转身改道」的细分赛道玩家。\n用八款产品，讲一个变化\nAI内容生成赛道走到现在，一个共识是：好产品，从来不缺。\n像Canva、Midjourney、Runway这些头部影像工具厂商，其实在各自的单点能力上做得都已足够成熟。\n但在AI创作这个赛道，最值得细品的一点是——\nAI创作的终局，或许不属于让用户变得更专业的产品，而属于让用户根本不必专业的产品。\n在刚刚结束的美图影像节上，美图就提出了这样的叙事：具体的AI功能逐渐退到幕后，「交付成果」则被推到了最显眼的位置。\n这一次，美图一口气发布了8款AI产品。\n美图最熟悉的入口，依然是影像创作。\n只是到了Agent时代，美图对于影像产品的设计重心发生了变化，向可反复调用的能力演进——\n这次发布的Picchi，是典型的AI原生产品，把「修图」这件事进一步推向Agent模式；而另一款聚焦创意工作流的Artflo，则是来自创始人的思考：能不能让散乱的创作灵感变成概念影像。\n两款产品定位不同，但指向的是同一件事：通过Agent能力，把一次性的创作过程沉淀为可反复调用的创作资产。\n在多模态音视频领域，美图想解决的也不只是生成一段视频。\n活动现场呼声很高的MVLAND，本质上也是在用Agent系统协同完成MV创作；而更强调影像能力的底座的MeituHub，则是把影像生成、编辑、管理与交付打通，面向更复杂的定制化生产需求。\n△AI生成\n另外几款原有产品的升级，基本也是围绕打造Agent Teams、实现向用户交付成果这个逻辑展开——\n美图设计室的AI设计团队，原来可能生成一张图、一套电商物料，需要个人长时间琐碎操作，现在可以一次性生成一个商品在多个电商、社媒平台的物料，原本是琐碎的能力，现在直接交付成果。\n口播视频场景的开拍，也是类似的逻辑，新发布的「AI助手」由多个Agent组成7×24小时的口播视频团队，从选题到成片，保证内容的完整持续输出。\n另外，作为Agent原生产品RoboNeo，这次拿出了具体的场景能力，通过打造AI短剧团队，把编剧、导演、分镜、剪辑等环节串联起来，让内容从剧本阶段就进入协作生产状态。\n△AI生成\n新品足够多，场景也足够细。\n而在多个细分产品背后，呈现出的则是美图对于产品矩阵的清晰判断。\n在美图创始人兼CEO吴欣鸿看来，目前美图在尝试多个细分的独立的产品，核心是希望每个产品都能先拿到清晰定位，并且把一个具体场景做到足够深。\n这种产品机制可以被描述为「AI原生应用的漏斗」：\n新品先聚焦具体场景，经由用户验证后，再逐步延展到更多内容形式和用户群体。\n如果开口不够大，那就很难从中筛出被用户认可和与市场匹配的产品。\n经过一系列验证的产品，最终才有机会成为创作者的基础应用。\n当然，在产品版图不断铺开的背后，一个更底层的产品共性特征也开始逐渐显现——\n8款新品虽然覆盖不同创作场景，但本质上却指向同一个目的。\n那就是让用户从「操作工具」转向「表达需求」。\n从AI工具到AI Agent，最终目的是交付成果\n生成式AI这条赛道，从来不缺市场需求，更不缺漫天铺开的行业想象。\n2022年ChatGPT横空出世，让人们第一次发现信息检索竟然可以被压缩在一个小小的对话框里。\n2025年AI大神卡帕西提出了氛围编程的概念，又一度点燃「万物皆可Coding」的热潮。\n然后就是今年，OpenClaw、Hermes等一批Agent产品集中出现，AI开始更贴近真实工作流的执行层。\n与此同时，开发范式也在持续上移：从早期围绕Prompt的表达工程，到强调上下文组织的Context Engineering，再到今天逐渐成型的Agent Orchestration与系统级调度能力，复杂度也同步外溢。\n于是我们看到，各类配套插件、实操教程...",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 12,
+      "representative_title": "TRIDENT: Breaking the Hybrid-Safety-Physics Coupling for Provably Safe Multi-Agent Reinforcement Learning",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18308"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "9212663e593de9b7",
+          "title": "TRIDENT: Breaking the Hybrid-Safety-Physics Coupling for Provably Safe Multi-Agent Reinforcement Learning",
+          "link": "https://arxiv.org/abs/2606.18308",
+          "normalized_link": "https://arxiv.org/abs/2606.18308",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18308v1 Announce Type: new Abstract: Safe coordination in networked cyber-physical systems forces learning algorithms to simultaneously handle hybrid discrete-continuous actions, hard training-time safety constraints, and physics-governed dynamics. We show that these three features form a directed cycle of biases that defeats any naive composition of off-the-shelf modules, and formalize this as a three-way coupling lemma. We then introduce TRIDENT, the first MARL framework whose th...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:TRIDENT: Breaking the Hybrid-Safety-Physics Coupling for Provably Safe Multi-Agent Reinforcement Learning\nView PDF HTML (experimental)Abstract:Safe coordination in networked cyber-physical systems forces learning algorithms to simultaneously handle hybrid discrete-continuous actions, hard training-time safety constraints, and physics-governed dynamics. We show that these three features form a directed cycle of biases that defeats any naive composition of off-the-shelf modules, and formalize this as a three-way coupling lemma. We then introduce TRIDENT, the first MARL framework whose three components are co-designed to cancel each leak: a Richardson-Romberg gradient correction reducing Gumbel-Softmax bias from O(tau) to O(tau^2), a Lyapunov-constrained sequential trust-region update enforcing per-iterate feasibility, and a physics-informed residual critic that decomposes value rather than reward. We prove an O~(1/sqrt(K)) convergence rate to a constrained Nash equilibrium and an O(sqrt(K)) cumulative-violation bound. On multi-UAV mobile-edge computing, autonomous intersection management, and a hybrid SMAC variant, TRIDENT cuts training-time violations by 95.5% over MADDPG and 76.3% over MACPO, while improving reward by 13.5% over the strongest unconstrained baseline.\nReferences & Citations\nLoading...\nBibliographic and Citation Tools\nBibliographic Explorer (What is the Explorer?)\nConnected Papers (What is Connected Papers?)\nLitmaps (What is Litmaps?)\nscite Smart Citations (What are Smart Citations?)\nCode, Data and Media Associated with this Article\nalphaXiv (What is alphaXiv?)\nCatalyzeX Code Finder for Papers (What is CatalyzeX?)\nDagsHub (What is DagsHub?)\nGotit.pub (What is GotitPub?)\nHugging Face (What is Huggingface?)\nScienceCast (What is ScienceCast?)\nDemos\nRecommenders and Search Tools\nInfluence Flower (What are Influence Flowers?)\nCORE Recommender (What is CORE?)\nIArxiv Recommender\n(What is...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "representative_title": "魔法原子牵手万机易租，全栈产品入驻2.0平台共建租赁生态",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "全系产品入驻万机易租2"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/436802.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "1e010f8ee6c37eaa",
+          "title": "魔法原子牵手万机易租，全栈产品入驻2.0平台共建租赁生态",
+          "link": "https://www.qbitai.com/2026/06/436802.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/436802.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-18T13:42:09+00:00",
+          "summary": "全系产品入驻万机易租2.0",
+          "full_text_snippet": "魔法原子牵手万机易租，全栈产品入驻2.0平台共建租赁生态\n全系产品入驻万机易租2.0\n近日，具身智能科技公司魔法原子（MagicLab）正式宣布，旗下全系列机器人产品已完成对全场景共享机器人租赁平台“万机易租”小程序2.0版本的入驻。\n此举标志着双方自2026年4月签署战略合作协议后，正式从顶层战略设计迈入线上线下深度融合的常态化运营阶段。\n技术沉淀与国家级舞台验证，魔法原子租赁业务市场井喷\n成立于2024年1月的魔法原子，长期聚焦具身智能与通用人形、四足机器人的研发、量产与场景落地。公司坚持软硬一体的全栈自研路线，不断推进关键硬件与运动控制等算法的迭代，将机器人从实验室环境推向可工程化部署的行业真实场景。\n2026年1月，魔法原子作为总台《2026年春节联欢晚会》智能机器人战略合作伙伴，完成了一次极具行业分水岭意义的公开验证。\n在主会场，魔法原子高动态双足人形机器人MagicBot Z1与艺人零误差协同共舞，展现了毫米级的运动控制精度；在宜宾分会场，四足机器人MagicDog扮演的“机器熊猫”完成全球首次百台级大规模群控表演，其无延迟的协同调度能力引发广泛关注。\n此外，魔法原子还首次将机器人的真实服务场景搬上春晚：MagicBot Gen1化身“捞面师”完成精细化操作，MagicBot Z1则作为“送餐员”展示自主导航与避障，强化具身智能机器人的商业化认知。\n春晚亮相后，魔法原子市场关注度激增，租赁需求呈爆发式增长，相关业务迅速铺开。旗下机器人相继担任萧敬腾特邀伴舞嘉宾、在四川达州元宵节庆典完成舞蹈阵列表演，并走进2026年全国两会江苏广电演播厅，担任新闻主播与特约记者。2026年苏超开幕式，魔法原子完成近300台具身智能机器人的超大规模群控武术表演，秀出其模块化的“赛事演艺解决方案”。\n一系列高复杂度、高稳定性的场景落地，验证了魔法原子产品矩阵的工程化成熟度，也使公司产品迅速成为高端商业活动与技术展示的首选标的。\n目前，公司依托全栈自研技术，魔法原子已形成覆盖通用人形机器人、高动态双足机器人、四足机器人、轮足机器人及仿生熊猫机器人的全家族产品矩阵，并围绕工业柔性生产、巡检安防、智慧导览、公共安全、智慧物流、赛事文娱、科研教育、家庭生活等九大核心场景，构建起标准化的智能机器人解决方案，公司最快可在一周内完成从勘测到执行的全套部署，能够满足客户多元化、场景化的使用需求。\n技术产品力与平台拓展力双向赋能，魔法原子携手万机易租共拓万亿市场\n面对指数级增长的跨地域租赁订单，厂商直营模式面临巨大的履约挑战。魔法原子选择深化与万机易租的合作，正是看中了平台作为产业基础设施的支撑能力。\n万机易租作为国内头部租赁平台，采用“线上数字化中台+线下全球终端网点”的双轮驱动商业模式。平台已搭建覆盖全国的城市合伙人体系，并汇聚德马科技、达诺尔等上市产业龙头及顶级投资机构的资本背书。通过整合上游供应链，万机易租可以为入驻厂商提供包括设备展示、交易撮合、电子签约及全国履约在内的标准化服务，有效解决机器人厂商自建线下服务团队成本高企的痛点。\n对于万机易租而言，引入魔法原子全系高端产品，特别是春晚同款IP机型，显著提升平台在高附加值租赁市场的竞争力，丰富平台在具身智能领域的设备供给。同时，魔法原子针对九大核心场景形成的标准化解决方案，可提升万机易租承接定制化、高附加值订单的能力，强化其在智能租赁赛道的差异化竞争优势。\n对于魔法原子而言，入驻万机易租意味着能够进一步拓展全国渠道网络与海量B端客户资源，快速响应春晚后爆发式的市场需求，将技术优势转化为规模化的商业落地，大幅降低市场拓展的边际成本。\n未来，魔法原子将携手万机易租，持续优化租赁服务链路，推动具身智能机器人从“短期展示”向“长期运营”转变。双方将进一步强化技术协同与资源整合，致力于打破行业“重资产采购、高门槛使用、运维复杂”的痛点，通过标准化的场景方案与全国一体化的履约服务，共同构建具身智能机器人及智能机器人行业解\n- 香港特区政府财政司司长陈茂波一行到访 PPIO2026-06-18\n- 入局AI新风向，WAIC 2026全球开票！2026-06-17\n- ABot-Earth0.5登顶Hugging Face论文三榜第一，获国际图形学权威陈宝权好评2026-06-18\n- 倒计时30天！2026世界人工智能大会将于7月17日至20日在上海举行2026-06-17",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "representative_title": "腾讯老兵+大厂00后新锐，码上飞想做的不只是AI Coding",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "已接入华为鸿蒙生态"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/436674.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "fb21a50ca8502ecb",
+          "title": "腾讯老兵+大厂00后新锐，码上飞想做的不只是AI Coding",
+          "link": "https://www.qbitai.com/2026/06/436674.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/436674.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-18T09:39:35+00:00",
+          "summary": "已接入华为鸿蒙生态",
+          "full_text_snippet": "腾讯老兵+大厂00后新锐，码上飞想做的不只是AI Coding\n已接入华为鸿蒙生态\n允中 发自 凹非寺\n量子位 | 公众号 QbitAI\nHDC 2026开幕主题演讲上，华为终端BG CEO何刚展示了鸿蒙生态一项新能力：用户唤起小艺claw，用自然语言描述需求，小艺直接生成一个可运行的应用。\n这项能力背后提供技术服务的，是一家16人的创业公司。\n这家公司的核心产品叫码上飞，成立于2023年，目前注册用户接近百万，ARR超千万元，月环比增长保持在25%左右。\n但码上飞真正想做的事情，比「AI写代码」大得多。\n过去，提起码上飞，外界最容易先记住的，是它的创始团队背景：\n前腾讯T12创始人，前腾讯T11 CTO，前腾讯T10首席架构师，以及一支从腾讯、字节、滴滴、飞书、CODING出来的软件工程团队。\n很多人会下意识以为，码上飞是一支典型的「大厂老兵创业团队」：稳、强、工程能力扎实，但可能不够年轻，不够鲜活，不够AI原生。\n实际上，这并不准确。\n如果走进码上飞，会发现这家公司更真实的样子，是一支由大厂工程老兵、AI产品经理、海外增长操盘手、机器人研究者和02后AI原生一代共同组成的团队。\n老兵负责压住复杂系统的底座，而年轻人，负责冲在AI技术和产品变化的最前沿。\n张诣博：从抖音AI产品一线，到码上飞的产品大脑\n张诣博加入码上飞之前，是芝加哥大学金融数学硕士，在抖音做了5年的策略产品经理和数据分析师。\n她做过的一个代表性项目，是抖音AI评论分类总结功能。\n这个功能听起来不复杂：当评论太多时，AI自动帮创作者总结评论观点。\n但做过AI产品的人都知道，这类功能的难点从来不只是「让模型生成一句总结」。\n它需要判断用户痛点是否成立，需要设计训练数据，需要不断看Badcase，需要做Prompt调优，需要推动模型迭代，也需要通过A/B测试验证用户到底愿不愿意点、愿不愿意用。\n在抖音，张诣博参与推动了AI评论分类总结从训练数据标注、Prompt调优到模型迭代的完整流程。项目覆盖30万+作者，功能点击率达到15%，并通过多轮模型优化，把准确率从36%提升到85%。\n这段经历，对码上飞非常关键。\n因为码上飞面对的不是专业程序员，而是大量不会写代码、不会说技术术语、甚至不知道「自己想做的应用该怎么描述」的普通用户。\n张诣博带来的，正是这种把真实用户语言翻译成AI可执行产品结构的能力。\n她不是传统意义上的「产品经理」，而是经历过AI功能从模型能力、用户反馈、指标体系到线上增长完整闭环的人。\n这类人，决定了码上飞生成出来的应用，不只是「看起来像一个页面」，而是更接近一个真实可用的业务系统。\n李融：从字节品牌到AI出海，理解真实用户如何被打动\n李融的背景，是码上飞团队里另一块重要拼图。\n她毕业于英属哥伦比亚大学市场营销专业，有长期欧美教育和工作经历。回国后早期加入字节跳动做集团与雇主品牌，做过全球化品牌体系、CEO PR、AI技术传播。\n但如果只是把她理解成「市场负责人」，也不准确。\n离开大厂后，她直接All in AI创业，和一个小团队从0到1做海外AI产品。\n在一个小团队里，她同时负责产品、用户增长和设计，面向美国女性用户上线AI情感类产品。产品从卖点验证、TikTok内容测试、KOL合作、到最终跑出ROI，都是她亲自完成的。\n这段经历对码上飞的价值在于：她理解一个AI产品如何从「想法」变成「有人愿意用、愿意传播、愿意付费」的产品。\n码上飞不是一个只服务工程师的AI Coding工具。它真正想做的，是让普通人、个体创业者、小商家和线下老板，可以用AI快速生成自己的业务入口。\n在今年HDC中，李融也出现在央视《脑洞大开麦》的直播现场。\n对码上飞来说，这不是一次简单的品牌曝光。更重要的是，码上飞开始出现在更大众、更普通人的技术传播场景里，让更多人直观看到，AI可以帮一个普通人把想法变成真正能用的应用。\n这正是李融擅长的事。\n李必昂：从商科到机器人，他代表码上飞的跨界能力\n李必昂的履历，很难用传统互联网公司的职能来概括。\n他本科毕业于香港城市大学商学院，主修经济学、辅修计算机科学，后来进入香港中文大学工学院攻读MPhil，研究方向是下肢外骨骼。\n从商科到机器人，从商业理解到硬件系统，这本身就是一次跨度很大的转向。\n更早之前，他还参与过Spot Micro四足机器人开源社区的中文攻略整理。\nSpot Micro是一个开源四足机器人项目，涉及3D打印、硬件采购、树莓派、舵机控制、软件调试、校准和运行。对新手来说，这类项目真正困难的地方，不一定是某一个单点技术，而是大量分散知识叠在一起后，让人不知道从哪里开始。\n李必昂的经历，也让码上飞团队拥有了更强的「跨学科产品感」。\nAI时代的软件，正在从纯数字世界走向更复杂的真实世界：服务、交易、硬件、线下场景、物理空间...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 13,
+      "representative_title": "Ghost Attractor Networks: Basin-Structured Dynamical Decoders for Closed-Loop Sequential Generation",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18315"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "116a059ef333e635",
+          "title": "Ghost Attractor Networks: Basin-Structured Dynamical Decoders for Closed-Loop Sequential Generation",
+          "link": "https://arxiv.org/abs/2606.18315",
+          "normalized_link": "https://arxiv.org/abs/2606.18315",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18315v1 Announce Type: new Abstract: Sequential output generation with large-scale Transformer and diffusion decoders pays a memory cost that grows with sequence length, plus iterative per-step computation. Replacing them with small feed-forward decoders restores efficiency but produces unstructured latent representations that limit closed-loop control: phase-conditioned action generation and cross-step latent carry-over both require a latent geometry with stable basins. This artic...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:Ghost Attractor Networks: Basin-Structured Dynamical Decoders for Closed-Loop Sequential Generation\nView PDF HTML (experimental)Abstract:Sequential output generation with large-scale Transformer and diffusion decoders pays a memory cost that grows with sequence length, plus iterative per-step computation. Replacing them with small feed-forward decoders restores efficiency but produces unstructured latent representations that limit closed-loop control: phase-conditioned action generation and cross-step latent carry-over both require a latent geometry with stable basins. This article proposes Ghost Attractor Networks, a theoretically derived dynamical decoder whose latent evolves under a learned potential with drift and produces a basin-attractor structure by construction. Three desiderata (multi-modality, decoder-level single-pass switching, and constant memory) motivate the potential-drift form, and mode transitions arise as saddle-node bifurcations with ghost-attractor escape. A hierarchical phase-space decomposition separates first-order basin convergence from second-order proprioceptive refinement. Empirically, a Ghost trained end-to-end with a behavioral-cloning and contrastive objective exhibits the predicted gradient-flow contraction in its potential, with the gradient norm decaying by 67 percent across five integration steps on 1430 held-out samples. Ghost is evaluated as a robotic action decoder. A 2.3-million-parameter Ghost matches the offline accuracy of a 1.07-billion-parameter Diffusion Transformer at 462 times fewer parameters and 32 times lower latency, and beats five alternative 2M-parameter decoders (MLP, Neural ODE, CVAE, Transformer, 1-step Diffusion) on offline mean squared error by 5.9 to 29 percent. On the LIBERO-10 closed-loop benchmark, phase conditioning on Ghost's basin-structured latent yields a 13.5 percentage-point success-rate gain over a feed-forward MLP baseline,...",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 23,
+      "representative_title": "A Cross-Model VLM-Judge Protocol for Single-Image 3D Mesh Quality (and Why Cheap Proxies Fall Short)",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18451"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "037045bd077c8cff",
+          "title": "A Cross-Model VLM-Judge Protocol for Single-Image 3D Mesh Quality (and Why Cheap Proxies Fall Short)",
+          "link": "https://arxiv.org/abs/2606.18451",
+          "normalized_link": "https://arxiv.org/abs/2606.18451",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18451v1 Announce Type: new Abstract: Single-image-to-3D generators are improving quickly, but there is no agreed, human-free way to tell whether one generated mesh is better than another. Practitioners commonly rely on cheap automatic proxies (render-space CLIP similarity and mesh geometry-validity statistics), yet how well these track perceived quality is unestablished. We make two contributions. First, we propose and validate a reproducible VLM-judge evaluation protocol: a fixed...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:A Cross-Model VLM-Judge Protocol for Single-Image 3D Mesh Quality (and Why Cheap Proxies Fall Short)\nView PDF HTML (experimental)Abstract:Single-image-to-3D generators are improving quickly, but there is no agreed, human-free way to tell whether one generated mesh is better than another. Practitioners commonly rely on cheap automatic proxies (render-space CLIP similarity and mesh geometry-validity statistics), yet how well these track perceived quality is unestablished. We make two contributions. First, we propose and validate a reproducible VLM-judge evaluation protocol: a fixed 24-view headless render rig, two independent vision-language judge families, and a mandatory position-bias correction that queries both presentation orders and keeps only order-consistent verdicts. The two judge families agree substantially with each other (Cohen's kappa = 0.66), well above the chance-agreement floor. Second, using this protocol as the reference, we show the cheap proxies do not substitute for it. Geometry validity is only a weak signal on average (because, as we show, it is bimodal) and stays below our pre-registered target, while render-CLIP is at chance. A learned Bradley-Terry head collapses onto a single manifoldness statistic (giving render-CLIP a negative weight) and matches geometry-only exactly, so learning the feature weights buys nothing. The proxy is also bimodal: it is significantly above chance on contrasts with visible geometric defects but at chance on ambiguous contrasts, consistent with geometry validity tracking the judge only when the defect is visually salient. We therefore recommend the VLM-judge protocol as a reliable, reproducible evaluator under the conditions tested (two feed-forward generators on Google Scanned Objects, with a face-drop degradation regime) and advise against geometry/CLIP proxies as optimization targets.\nReferences & Citations\nLoading...\nBibliographic and Cita...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 7,
+      "representative_title": "5 ways Google Search can level up your thrift and vintage shopping",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "A colorful, grain-textured collage of various items scattered across a light blue background"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Google AI Blog",
+            "authority": 1,
+            "link": "https://blog.google/products-and-platforms/products/search/thrifting-tips/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "5aec8e110c21507f",
+          "title": "5 ways Google Search can level up your thrift and vintage shopping",
+          "link": "https://blog.google/products-and-platforms/products/search/thrifting-tips/",
+          "normalized_link": "https://blog.google/products-and-platforms/products/search/thrifting-tips",
+          "source_name": "Google AI Blog",
+          "source_category": "official",
+          "published_at": "2026-06-03T13:00:00+00:00",
+          "summary": "A colorful, grain-textured collage of various items scattered across a light blue background. The items include a green bucket hat, a wooden clothes hanger, a blue-and-red striped collar, blue sunglasses, denim shorts, a yellow price tag, a red high-heele",
+          "full_text_snippet": "5 ways Google Search can level up your thrift and vintage shopping\nWith search interest in “vintage” and “how to thrift” hitting all-time highs this year, 2026 is proving that old is new again. Check out a few thrifting trends below for inspiration, then learn how Google tools can help you score the best finds, from a \"vintage jersey\" to \"thrifted heels\" (both trending on Search!). Your next favorite find is just a search, snap or circle away.\n1. Plan your thrift adventure with AI Mode in Search.\nWith AI Mode in Search, you can ask the questions that are on your mind, no matter how specific or nuanced they are — helping you plan the perfect outing hunting for second-hand treasures. Let’s say you really want to find a jersey from the ‘90s and are spending the day shopping with a friend who has specific food needs. Simply ask AI Mode something like, “Where can I find vintage jerseys in San Francisco? Bonus points if there’s a spot I can find a gluten-free brunch after within walking distance.” AI Mode will highlight a few options with key details to help you determine where to spend your day, along with links to learn more.\n2. Uncover hidden gems with Google Lens.\nIf you’re shopping at a thrift store or vintage market, Lens is your secret weapon for uncovering hidden treasures. To learn more about an item that caught your eye, just open the Google app for Android or iOS, tap the Lens icon and snap a photo. You'll be able to browse visual matches and ask for more information about the piece, like its designer or what era it’s from. You can also use Lens to see if something is a rare gem or a dime a dozen by browsing what it sells for online and how many similar offers are out there.\n3. See it, circle it and shop it with Circle to Search.\nIf you find a vintage designer handbag you love or are feeling inspired by the vintage jersey trend while scrolling online, just hold down your Android phone's home button or navigation bar and circle it. Circle to Search will quick...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 16,
+      "representative_title": "SAE Interventions are Unreliable: Post-Intervention Recovery of Suppressed Behavior",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 2,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18322"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e2857d92942ee5e6",
+          "title": "SAE Interventions are Unreliable: Post-Intervention Recovery of Suppressed Behavior",
+          "link": "https://arxiv.org/abs/2606.18322",
+          "normalized_link": "https://arxiv.org/abs/2606.18322",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18322v1 Announce Type: new Abstract: Sparse Autoencoders (SAEs) decompose residual-stream activations into interpretable features. Recent latent-space defenses increasingly rely on these decompositions, assuming that identified \"unsafe\" SAE features serve as actionable handles for monitoring and intervention. In this paradigm, clamping a specific harmful feature is expected to reliably prevent model misbehavior. However, we show that this success may hide a recoverable failure mode...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:SAE Interventions are Unreliable: Post-Intervention Recovery of Suppressed Behavior\nView PDF HTML (experimental)Abstract:Sparse Autoencoders (SAEs) decompose residual-stream activations into interpretable features. Recent latent-space defenses increasingly rely on these decompositions, assuming that identified \"unsafe\" SAE features serve as actionable handles for monitoring and intervention. In this paradigm, clamping a specific harmful feature is expected to reliably prevent model misbehavior. However, we show that this success may hide a recoverable failure mode: the clamp may block one visible route to a behavior without eliminating the behavior itself. We formulate this vulnerability as post-intervention recovery, a constrained residual-space optimization problem. Starting from the post-intervention residual state, we optimize residual perturbations to recover the pre-intervention behavior while preserving the post-intervention values of the targeted SAE features. Even under a strong threat model where the intervention remains active throughout optimization and generation, recovery remains possible. To rule out that recovery simply undoes the intervention, we use encoder-orthogonal updates for single-layer interventions and the corresponding feature-map Jacobian in the cross-layer setting. Across TPP, unlearning, IOI, and refusal steering experiments, this stress test reveals recoverable behavior despite successful feature-level intervention. Especially in the safety-critical refusal-steering setting, we achieve a 95.8% recovery rate on valid samples while keeping defended-feature relative drift to 0.131, substantially below suffix-based baselines. A recovery-path attribution analysis further localizes this recovery to the SAE reconstruction residual, the component left unexplained by the SAE. These results expose a gap between feature-level control and behavioral completeness: SAE features...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 22,
+      "representative_title": "Beyond Prediction: Tail-Aware Scheduling for LLM Inference",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18431"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "67f4f6e671ce52ee",
+          "title": "Beyond Prediction: Tail-Aware Scheduling for LLM Inference",
+          "link": "https://arxiv.org/abs/2606.18431",
+          "normalized_link": "https://arxiv.org/abs/2606.18431",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18431v1 Announce Type: new Abstract: LLM serving exhibits extreme length variability, making size-based scheduling difficult in practice. Recent LLM schedulers approximate SJF/SRPT using predicted decode lengths or ranks and primarily report mean-centric metrics such as TTFT and TBT. We show that these prediction-driven policies can be fragile under distribution shifts, bursty arrivals, and GPU memory pressure, while offering limited control over the tail latency (P90-P99) that dom...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:Beyond Prediction: Tail-Aware Scheduling for LLM Inference\nView PDFAbstract:LLM serving exhibits extreme length variability, making size-based scheduling difficult in practice. Recent LLM schedulers approximate SJF/SRPT using predicted decode lengths or ranks and primarily report mean-centric metrics such as TTFT and TBT. We show that these prediction-driven policies can be fragile under distribution shifts, bursty arrivals, and GPU memory pressure, while offering limited control over the tail latency (P90-P99) that dominates user experience, even with perfect decode-length knowledge. We introduce a distribution-aware, prediction-free scheduling framework that replaces explicit length prediction with soft priority boosting driven by lightweight statistical signals. Our design co-optimizes scheduling and cache-aware preemption to account for memory-coupled decode dynamics across workload mixes. Evaluated on production and open-source traces, our method reduces P99 TTLT by up to 35-50% relative to SRPT with perfect length knowledge and reduces TTFT by 34-47% across workloads, including reasoning-heavy and chat-heavy tasks. These results demonstrate a robust alternative for optimizing tail latency in online LLM serving.\nReferences & Citations\nLoading...\nBibliographic and Citation Tools\nBibliographic Explorer (What is the Explorer?)\nConnected Papers (What is Connected Papers?)\nLitmaps (What is Litmaps?)\nscite Smart Citations (What are Smart Citations?)\nCode, Data and Media Associated with this Article\nalphaXiv (What is alphaXiv?)\nCatalyzeX Code Finder for Papers (What is CatalyzeX?)\nDagsHub (What is DagsHub?)\nGotit.pub (What is GotitPub?)\nHugging Face (What is Huggingface?)\nScienceCast (What is ScienceCast?)\nDemos\nRecommenders and Search Tools\nInfluence Flower (What are Influence Flowers?)\nCORE Recommender (What is CORE?)\nIArxiv Recommender\n(What is IArxiv?)\narXivLabs: experimental projects with com...",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "representative_title": "全员本科生！何恺明组新作：文生图，258M参数就够了",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "整篇论文一共六位作者"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/436518.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8e62a7656116ffd0",
+          "title": "全员本科生！何恺明组新作：文生图，258M参数就够了",
+          "link": "https://www.qbitai.com/2026/06/436518.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/436518.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-18T09:12:09+00:00",
+          "summary": "整篇论文一共六位作者。除了何恺明之外，其余五位都还是本科生。",
+          "full_text_snippet": "全员本科生！何恺明组新作：文生图，258M参数就够了\n整篇论文一共六位作者。除了何恺明之外，其余五位都还是本科生。\nhenry 发自 凹非寺\n量子位 | 公众号 QbitAI\n全员本科生！\n刚刚，何恺明携本科生“军团”又放出一篇新论文。\n继去年探索直接从像素预测图像的JiT架构后，团队这次又把这套“删繁就简”的思路扩展到了文生图领域，推出全新工作：\nMiniT2I。\n在今天动辄数十亿参数、海量图文数据训练文生图模型的背景下，MiniT2I选择了另一条路。\n它基于全新的MM-JiT架构，直接在像素空间进行扩散生成，同时尽可能压缩模型复杂度和训练成本。\n最终，仅用258M参数，就实现了不错的文生图效果。\n更关键的是，整个训练成本只相当于一次标准ImageNet实验。\n这是怎么做到的？\n从JiT到MM-JiT\n整体看来，MM-JiT是恺明组之前论文「Back to Basics」在T2I（文本生成图像）方向上的延伸。\nBack to Basics中，恺明和他的博后黎天鸿提出了JiT架构，Just image Transformers。\nJiT的核心主张是：抛开VAE编解码器，直接在像素空间预测干净图像（x-prediction），而不是像传统扩散模型那样预测噪声。\n这样做的好处是，整个生成流程更加直接，符合流形假设以及“从像素出发”的第一性原理。\n不过，当时的JiT主要针对类别条件生成（class-conditional generation），任务范围相对有限，模型只能根据ImageNet的类别标签生成对应图像。\n然而，真实的图像生成任务往往不限于ImageNet的1000个固定类别，而是需要理解并遵循开放的文本Prompt。\n问题也随之而来。一旦从类别生成扩展到文生图，训练成本往往会迅速攀升。\n无论是SD3、FLUX.1-dev还是DALL·E 3，背后都依赖多阶段训练流程、庞大的文本编码器以及海量数据资源。\n对于大多数学术团队而言，从零开始训练一个完整的文生图模型，几乎是一项难以承担的工程。\n于是，MiniT2I应运而生。\n它试图回答一个更现实的问题：\n如果只用接近ImageNet训练规模的计算资源，能不能也做出效果不错的文生图模型？\n答案是，可以。\n研究发现，当文本首先被预训练语言模型编码为语义表示后，对于生成模型而言，文本条件本质上只是另一种形式的上下文条件。\n换句话说，文生图或许并没有想象中那么特殊。\n在模型架构、训练计算量，甚至所需数据规模上，它与类别条件生成的差距远没有业界普遍认为的那么大。\n如果这个判断成立，那么一个很自然的问题就出现了：\n既然类别条件生成已经能用JiT这样的极简架构完成，那么文生图任务里那些复杂的模块，究竟哪些是真正必要的？\nMM-JiT给出的答案是：把它们一个个删掉，再看模型还能不能工作。\nMM-JiT：删繁就简\n对于上面这个问题，MiniT2I项目负责人王衔邦在X上的总结非常精炼：\n我们的原则很简单，能去掉的全去掉。起点是像素空间、标准的T5-Large编码器，以及一个采用x-prediction的简洁多模态骨干MM-JiT。\n这套思路的第一刀，砍向了VAE。\n众所周知，当前主流文生图模型大多采用潜在扩散（Latent Diffusion）路线：\n先通过VAE把图像压缩到低维潜空间，再在潜空间里完成扩散生成，最后解码回像素。\n这样做的好处是显著降低计算量，但代价也很明显——\nVAE会带来重建误差和伪影，同时还额外增加了一套编解码器的训练流程。\n针对这一问题，在前作JiT中，团队已经证明，至少在ImageNet任务上，直接在像素空间建模并不存在所谓的“不可逾越瓶颈”。\n那么在文生图任务里，VAE是否真的不可替代？\n团队决定直接把它删掉试试。\nMiniT2I将扩散过程重新搬回像素空间，希望验证一个看似反常识的判断：直接在像素空间扩散，不仅完全可行，而且未必比潜空间路线更贵。\n实验表明，传统潜空间模型单次前向传播需要1379 GFLOPs，而彻底摆脱VAE之后，MiniT2I的计算开销仅为265 GFLOPs，直接降低了约80%。\n删掉VAE之后，团队又把目光转向了模型架构本身。\n前作JiT面向的是ImageNet分类条件生成，因此采用标准DiT，并通过AdaLN-Zero注入类别标签和时间步信息。\n但到了开放式文生图任务，最自然的参考对象就变成了SD3采用的MM-DiT。\n在团队看来，MM-DiT身上仍然挂着不少“历史包袱”。\n其中最典型的就是AdaLN机制。模型会把时间步和池化后的文本特征转换成缩放、偏移和门控参数，并注入到每一层网络中。\nMM-JiT的选择则相当激进：直接把AdaLN整个删掉。\n理由也很简单——扩散模型当前所处的噪声水平，其实已经包含在加噪后的输入 z_t 里。\n换句话说...",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "representative_title": "哈？Q1狂烧250亿！OpenAI财报泄露全网炸锅",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "给A社都干沉默了…"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/436477.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "88ab5870a6a0932a",
+          "title": "哈？Q1狂烧250亿！OpenAI财报泄露全网炸锅",
+          "link": "https://www.qbitai.com/2026/06/436477.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/436477.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-18T05:12:25+00:00",
+          "summary": "给A社都干沉默了…",
+          "full_text_snippet": "哈？Q1狂烧250亿！OpenAI财报泄露全网炸锅\n给A社都干沉默了…\n鹭羽 发自 凹非寺\n量子位 | 公众号 QbitAI\n嘿你别说！OpenAI太能烧钱了……\n这才过去一个季度，OpenAI就狂烧了37亿美元（约合人民币250亿元）。\n啥概念呢？Q1一共就赚了57亿美元，一半以上都给烧了出去。\n更夸张的还得是去年，根据最新泄露的财报信息，2025年OpenAI：\n收入130.7亿美元，支出340亿，亏损385亿。\nword天！亏损金额直接是24年的近8倍。\n就这涨幅速度，真·奥特曼来了，都得问一句：钱都去哪里了？\n而且你说巧不巧，这数据泄露得太！是！时！候！了！\n恰逢OpenAI IPO在即，莫不是想动摇军心？（doge）\nOpenAI赔钱赚吆喝？\n不过要说具体怎么一回事，还要多亏了一位「名侦探记者」Ed Zitron。\n他拿到了一份完整的OpenAI审计报告，经《金融时报》独立核实，涵盖有OpenAI 24年和25年的全年财务数据。\n这不看不知道，OpenAI收入涨得快，亏损涨得更快！\n咱一项项来对比着看（2024年→2025年）：\n- 营收：37亿美元→130.7亿美元\n- 收入成本：26.5亿美元→75亿美元\n- 研发投入：78.1亿美元→191.8亿美元\n- 销售和市场营销：11.1亿美元→57.3亿美元\n- 一般及行政开支：9.07亿美元→ 15.7亿美元\n- 总成本和费用：124.8亿美元→340亿美元\n- 运营亏损： 87.8亿美元→209.2亿美元\n- 净亏损：50.9亿美元→385亿美元\n华点来了，收入涨了三倍多，亏损涨了接近八倍。\n340亿美元的支出里，光研发一项就花了191.8亿美元，比全年收入还多出61.1亿美元。也就是说，OpenAI把所有收入都填进研发，还不够。\n更不必提，收入成本、销售和市场、行政，每一项都在高速增长。\n这里值得说道的是收入成本，也可以理解为推理计算成本，即用户每发一条消息、调用一次API的服务器开销。\n同样是涨了近3倍，侧面说明了一件事：OpenAI用户多了，模型也更贵了，成本跑得比收入还快。\n不过这净亏损的385亿美元里，也不全是模型研发的锅。\n去年是OpenAI从非营利转为营利架构的年份，转型带来的不止是内部组织的动荡和马斯克的一纸诉状，还触发了415.5亿美元的可转换权益与认股权证负债公允价值变动损失。\n简单来说，就是架构转换导致AI企业估值暴涨后，股权、投资人持有的可转债、期权类权证全部都要按照会计准则重新公允估值，上涨的全部公允价值在利润表里直接计为当期损失。\n倒不是实际花出去的现金成本，属于是转型阵痛。只要明年没了这一项，财报数据估计会好看不少。\n除去结构问题，文件里还披露了另一条线，同样值得单独拿出来算一算。\n2025年，OpenAI向微软支付了172亿美元，包括研发费用（105.9亿美元）、营收成本（60.47亿美元）、销售和市场营销费用（5.27亿美元）、行政费用（4200万美元）。\n反过来，微软全年付给OpenAI的钱是3.03亿美元，软银付了8.67亿美元，两者合计也才11.7亿美元。\n付出去172亿美元，收进来11.7亿美元，看来微软对OpenAI也不是多热情嘛。更何况微软送给OpenAI的钱，大部分又会通过OpenAI回流到微软的Azure云上。\n这也解释了为什么此前微软CFO在财报里说，因为OpenAI的投资亏损，净利润少了31亿美元，但语气并不特别紧张。\n31亿从左口袋出去，右口袋还有大把算力服务费回来，美滋滋。\n今年形势也不容乐观\n另外，The Information还提及了今年Q1的情况，也让人捏了把冷汗。\n季度收入57亿美元，烧掉37亿美元，现金消耗超过当季收入的一半。这两个数字相比去年同期均增长两倍。\n不过好消息是账上现金还很充裕。\n截至季度末，OpenAI持有现金和有价证券超过730亿美元，比去年年底的400亿美元有着大幅增加。\n这主要得益于3月底那笔创纪录的巨额融资轮，也让OpenAI暂时不需要马上再出去募资，IPO时间压力也没有外界想象得那么紧。\n但往后看，账面并不宽松。\nOpenAI内部预测，2026年全年烧钱250亿美元，2027年增加至570亿美元，逐年递增，每年都需要新钱源源不断涌进。\n所以IPO还是得做啊……\n不过有趣的是，同样是IPO，A社和OpenAI的财务状况可谓是天差地别。\n就在OpenAI账本泄露的同一时间，Anthropic的财务数据也陆续流出：\nAnthropic 2025年全年营收约45亿美元，OpenAI是它的近三倍。但这个差距正在急速收窄，A社今年Q1大逆转，狂揽48亿美元，Q2还预计冲高到109亿美元。\n照这个速度算，A社今年营收有望接近甚至超过OpenAI。\n更关键的是亏损走向，OpenAI预...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 8,
+      "representative_title": "Rehumanizing global health care with agentic AI",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "The global health care sector is under increasing strain"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "MIT Tech Review AI",
+            "authority": 3,
+            "link": "https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-global-health-care-with-agentic-ai/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "cac4b329268ed2f9",
+          "title": "Rehumanizing global health care with agentic AI",
+          "link": "https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-global-health-care-with-agentic-ai/",
+          "normalized_link": "https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-global-health-care-with-agentic-ai",
+          "source_name": "MIT Tech Review AI",
+          "source_category": "analysis",
+          "published_at": "2026-06-02T11:23:34+00:00",
+          "summary": "The global health care sector is under increasing strain. Decades of chronic underinvestment and constraints in recruitment have coincided with a surge in demand for services for aging populations. Gaps in provision are already taking a toll, with fragmented access to care and high rates of stress and burnout among staff. And it’s getting worse.…",
+          "full_text_snippet": "Sponsored\nRehumanizing global health care with agentic AI\nAs health-care providers face looming staff shortages, AI agents are automating complex administrative tasks and even clinical decisions so humans can focus more on patient care.\nIn partnership withEma\nThe global health care sector is under increasing strain.\nDecades of chronic underinvestment and constraints in recruitment have coincided with a surge in demand for services for aging populations. Gaps in provision are already taking a toll, with fragmented access to care and high rates of stress and burnout among staff. And it’s getting worse. The World Health Organization has warned that current shortfalls will increase to 11 million workers by 2030.\nIn their urgent hunt for a solution, many health-care providers are now pinning their hopes on agentic AI, with more than two-thirds (68%) having already adopted AI agents into their workforce, according to KPMG.\nThe technology is being deployed to automate complex back-office processes, collaborate with medical teams, and even triage patients, all in a bid to reduce the cognitive load on clinicians and improve quality of care for patients as the supply of human health-care workers dwindles.\nA different type of digitalization\nUntil now, the benefits of digitalization within health care have been limited.\nMany staff have blamed slow or outdated technology for adding to the administrative burden rather than alleviating it. For example, U.S. patient data was migrated to electronic health records (EHRs) in the early 2000s, but this data remains fragmented and reliant on manual inputs.\nNew telehealth services and digital care tools, like remote monitors, have had similar shortcomings, says Ashis Barad, MD, chief digital and technology officer at Hospital for Special Surgery (HSS), an academic medical center in New York that focuses on musculoskeletal health. Both technologies have helped improve access to health care by removing geographical barriers, he says, but...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 9,
+      "representative_title": "Artemis: Anatomy-Resolved inTervention for Eliminating Multimodal NeuroImage confounderS",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18287"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "bef9ab791a0652f1",
+          "title": "Artemis: Anatomy-Resolved inTervention for Eliminating Multimodal NeuroImage confounderS",
+          "link": "https://arxiv.org/abs/2606.18287",
+          "normalized_link": "https://arxiv.org/abs/2606.18287",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18287v1 Announce Type: new Abstract: Multimodal neuroimaging, integrating functional connectivity from fMRI and structural connectivity from DTI, enables non-invasive analysis of brain networks using graph neural networks. However, demographic factors such as age and sex systematically confound the relationship between brain connectivity and clinical outcomes, causing GNNs to exploit spurious shortcuts rather than learning causally invariant representations. While recent causal GNN...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 10 Jun 2026]\nTitle:Artemis: Anatomy-Resolved inTervention for Eliminating Multimodal NeuroImage confounderS\nView PDF HTML (experimental)Abstract:Multimodal neuroimaging, integrating functional connectivity from fMRI and structural connectivity from DTI, enables non-invasive analysis of brain networks using graph neural networks. However, demographic factors such as age and sex systematically confound the relationship between brain connectivity and clinical outcomes, causing GNNs to exploit spurious shortcuts rather than learning causally invariant representations. While recent causal GNN methods introduce causality at the graph-modeling level, their causal mechanisms remain domain-agnostic without accounting for the real-world confounders inherent in clinical neuroimaging data. Moreover, brain networks are constructed from atlas-based parcellations where each region exhibits distinct sensitivity to demographic factors, necessitating region-aware adjustment. We propose Artemis, a region-level causal framework that bridges this gap with causal intervention at each brain region independently by learning region-specific confounder representations with lightweight parameters. Our adjustment comprehensively utilized the multimodal functional and structural features for graph reasoning as a plug-in module compatible with arbitrary GNN backbones. Experiments on three benchmarks, ADNI for disease diagnosis, OASIS for dementia staging, and HCP for sex classification, demonstrate consistent improvements over representative GNN-based baselines. Multiple supporting experiments further demonstrate statistical significance and neuroscientific interpretability.\nReferences & Citations\nLoading...\nBibliographic and Citation Tools\nBibliographic Explorer (What is the Explorer?)\nConnected Papers (What is Connected Papers?)\nLitmaps (What is Litmaps?)\nscite Smart Citations (What are Smart Citations?)\nCode, Data and Media Associated with...",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 10,
+      "representative_title": "A Link between Shock-wave Theory and Symmetry-reduced Stochastic Gradient Descent for Artificial Neural Networks",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18303"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "50a2b5883e3dc69d",
+          "title": "A Link between Shock-wave Theory and Symmetry-reduced Stochastic Gradient Descent for Artificial Neural Networks",
+          "link": "https://arxiv.org/abs/2606.18303",
+          "normalized_link": "https://arxiv.org/abs/2606.18303",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18303v1 Announce Type: new Abstract: We develop a mathematically explicit link between shock-wave theory and the symmetry-quotiented learning dynamics of stochastic gradient descent, drawing on differential geometry, Lie group theory, and fluid mechanics. Specifically, after quotienting parameter symmetries and applying local-entropy coarse-graining, the effective dynamics satisfy a viscous Hamilton--Jacobi equation on the quotient manifold. Moreover, under the assumption that the...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:A Link between Shock-wave Theory and Symmetry-reduced Stochastic Gradient Descent for Artificial Neural Networks\nView PDF HTML (experimental)Abstract:We develop a mathematically explicit link between shock-wave theory and the symmetry-quotiented learning dynamics of stochastic gradient descent, drawing on differential geometry, Lie group theory, and fluid mechanics. Specifically, after quotienting parameter symmetries and applying local-entropy coarse-graining, the effective dynamics satisfy a viscous Hamilton--Jacobi equation on the quotient manifold. Moreover, under the assumption that the raw parameter dynamics can be summarized by a gradient field on the quotiented space, the gradient of the coarse-grained loss function obeys a Burgers-type equation, and shock formation can be established rigorously. We apply our theory to multilayer perceptrons, convolutional neural networks, Transformers, and mean-field networks, and show that they obey the Hamilton--Jacobi or Burgers-type equations. We conjecture that this framework also yields practical diagnostics for deep learning. In architectures such as Transformers, raw parameter norms are often distorted by symmetry redundancy and may therefore be misleading, whereas symmetry-corrected quotient observables provide a principled basis for monitoring, forecasting, and controlling training-phase transitions.\nReferences & Citations\nLoading...\nBibliographic and Citation Tools\nBibliographic Explorer (What is the Explorer?)\nConnected Papers (What is Connected Papers?)\nLitmaps (What is Litmaps?)\nscite Smart Citations (What are Smart Citations?)\nCode, Data and Media Associated with this Article\nalphaXiv (What is alphaXiv?)\nCatalyzeX Code Finder for Papers (What is CatalyzeX?)\nDagsHub (What is DagsHub?)\nGotit.pub (What is GotitPub?)\nHugging Face (What is Huggingface?)\nScienceCast (What is ScienceCast?)\nDemos\nRecommenders and Search Tools\nInfluence Flower (Wh...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 11,
+      "representative_title": "Fisher Width: A Geometric Measure of Complexity on Statistical Manifolds",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18306"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "58300faf4e9a56b7",
+          "title": "Fisher Width: A Geometric Measure of Complexity on Statistical Manifolds",
+          "link": "https://arxiv.org/abs/2606.18306",
+          "normalized_link": "https://arxiv.org/abs/2606.18306",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18306v1 Announce Type: new Abstract: Gaussian width is a central geometric complexity measure in high-dimensional probability, compressed sensing, convex optimization, and learning theory. It quantifies the average extent of a set along random directions, thereby capturing the effective dimension of constraint sets, hypothesis classes, and descent cones. However, this notion is intrinsically Euclidean. Statistical models instead carry a natural Riemannian geometry induced by the Fi...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:Fisher Width: A Geometric Measure of Complexity on Statistical Manifolds\nView PDF HTML (experimental)Abstract:Gaussian width is a central geometric complexity measure in high-dimensional probability, compressed sensing, convex optimization, and learning theory. It quantifies the average extent of a set along random directions, thereby capturing the effective dimension of constraint sets, hypothesis classes, and descent cones. However, this notion is intrinsically Euclidean. Statistical models instead carry a natural Riemannian geometry induced by the Fisher information metric, where directions are scaled according to statistical distinguishability rather than ambient Euclidean length.\nWe introduce Fisher width, a Fisher-geometric analogue of Gaussian width for statistical manifolds. At a parameter point $\\theta$, Fisher width replaces the Euclidean identity by the local metric tensor $G(\\theta)^{1/2}$, measuring the Gaussian width of the Fisher-rescaled set. This makes the resulting quantity sensitive to local statistical curvature and invariant under smooth reparameterizations.\nWe develop the basic theory of Fisher width, showing that it retains key structural features of Gaussian width, including concentration, metric perturbation stability, and spectral comparison bounds with the Euclidean baseline, while also capturing anisotropic geometric effects invisible to Euclidean measures. As an application, we prove a generalization bound for Fisher-Lipschitz hypothesis classes and propose computable estimators, which we evaluate empirically on MNIST across three model classes.\nFisher width is to statistical manifolds what Gaussian width is to Euclidean convex bodies. This work lays the foundation for studying complexity and learning on curved statistical manifolds.\nCurrent browse context:\ncs.LG\nReferences & Citations\nLoading...\nBibliographic and Citation Tools\nBibliographic Explorer (What is the Ex...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 14,
+      "representative_title": "A Survey on Data-Driven Models for Soil Moisture Regression and Classification",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18316"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d331b2cb53f4549e",
+          "title": "A Survey on Data-Driven Models for Soil Moisture Regression and Classification",
+          "link": "https://arxiv.org/abs/2606.18316",
+          "normalized_link": "https://arxiv.org/abs/2606.18316",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18316v1 Announce Type: new Abstract: Soil Moisture (SM) modelling constitutes a complex spatiotemporal learning problem characterised by nonlinear environmental interactions, heterogeneous data sources, and limited ground observations. Physics-based approaches, such as water balance models, rely on explicit hydrological equations and high-quality inputs, but their computational cost and scalability limitations restrict large-scale deployment. Data-driven artificial intelligence (AI...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:A Survey on Data-Driven Models for Soil Moisture Regression and Classification\nView PDF HTML (experimental)Abstract:Soil Moisture (SM) modelling constitutes a complex spatiotemporal learning problem characterised by nonlinear environmental interactions, heterogeneous data sources, and limited ground observations. Physics-based approaches, such as water balance models, rely on explicit hydrological equations and high-quality inputs, but their computational cost and scalability limitations restrict large-scale deployment. Data-driven artificial intelligence (AI) methods have emerged as flexible alternatives, enabling the extraction of empirical relationships between soil moisture and environmental variables with reduced modelling assumptions. This work presents a structured survey of AI-based models for soil moisture estimation and classification. Existing approaches are organized into five categories: (a) statistical time-series models, (b) geostatistical methods (c) classical machine learning (ML) models, (d) Deep Learning (DL) models and (e) Probabilistic/Bayesian methods. These models leverage historical soil moisture records, meteorological variables, vegetation indices, topography, soil characteristics, and geolocation data to perform regression or classification tasks.\nSubmission history\nFrom: Ilektra Tsimpidi [view email][v1] Tue, 16 Jun 2026 11:31:46 UTC (2,086 KB)\nReferences & Citations\nLoading...\nBibliographic and Citation Tools\nBibliographic Explorer (What is the Explorer?)\nConnected Papers (What is Connected Papers?)\nLitmaps (What is Litmaps?)\nscite Smart Citations (What are Smart Citations?)\nCode, Data and Media Associated with this Article\nalphaXiv (What is alphaXiv?)\nCatalyzeX Code Finder for Papers (What is CatalyzeX?)\nDagsHub (What is DagsHub?)\nGotit.pub (What is GotitPub?)\nHugging Face (What is Huggingface?)\nScienceCast (What is ScienceCast?)\nDemos\nRecommenders and Search Tools...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 15,
+      "representative_title": "ASTRA: A Scalable Next-Generation ATCO Training Simulator with Autonomous Simpilots",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18319"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "5787f66c22a19f38",
+          "title": "ASTRA: A Scalable Next-Generation ATCO Training Simulator with Autonomous Simpilots",
+          "link": "https://arxiv.org/abs/2606.18319",
+          "normalized_link": "https://arxiv.org/abs/2606.18319",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18319v1 Announce Type: new Abstract: Air Traffic Control Operators (ATCOs) are vital in ensuring the safe, orderly, and efficient flow of air traffic, yet training capacity is constrained by reliance on specialized human trainers known as simpilots, who must role-play both pilots and ATCOs in a simulated airspace. Existing automated solutions rely on Western-centric speech models that perform poorly in Singaporean operational contexts, with off-the-shelf systems exhibiting Word Err...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:ASTRA: A Scalable Next-Generation ATCO Training Simulator with Autonomous Simpilots\nView PDF HTML (experimental)Abstract:Air Traffic Control Operators (ATCOs) are vital in ensuring the safe, orderly, and efficient flow of air traffic, yet training capacity is constrained by reliance on specialized human trainers known as simpilots, who must role-play both pilots and ATCOs in a simulated airspace. Existing automated solutions rely on Western-centric speech models that perform poorly in Singaporean operational contexts, with off-the-shelf systems exhibiting Word Error Rates (WER) of up to 107.80% on Singaporean-accented aviation speech. We introduce ASTRA, an end-to-end training simulator that automates these simpilot roles through a pipeline that transcribes ATCO speech, interprets instructions, and generates appropriate pilot and ATCO responses using locally adapted voice models. Our fine-tuned Automatic Speech Recognition (ASR) pipeline reduces WER to 23.45%, substantially outperforming existing approaches in this domain. Beyond traffic simulation, ASTRA incorporates an AI-assisted performance evaluation framework that assesses trainee radiotelephony communications across accuracy, brevity, and completeness, achieving post-optimization scores of 91.7%, 88.2%, and 86.9%, respectively. Built on open-source foundations such as DSPy and Unsloth, this approach enables scalable, standardized ATCO assessment while reducing instructor workload.\nCurrent browse context:\ncs.LG\nReferences & Citations\nLoading...\nBibliographic and Citation Tools\nBibliographic Explorer (What is the Explorer?)\nConnected Papers (What is Connected Papers?)\nLitmaps (What is Litmaps?)\nscite Smart Citations (What are Smart Citations?)\nCode, Data and Media Associated with this Article\nalphaXiv (What is alphaXiv?)\nCatalyzeX Code Finder for Papers (What is CatalyzeX?)\nDagsHub (What is DagsHub?)\nGotit.pub (What is GotitPub?)\nHugging Fa...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 17,
+      "representative_title": "Why SWAVE May Not Be All You Need:A Concept-Evolution Retrospective on Complex-Valued Recurrent Language Models",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18324"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "3fc88b3a3105a8af",
+          "title": "Why SWAVE May Not Be All You Need:A Concept-Evolution Retrospective on Complex-Valued Recurrent Language Models",
+          "link": "https://arxiv.org/abs/2606.18324",
+          "normalized_link": "https://arxiv.org/abs/2606.18324",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18324v1 Announce Type: new Abstract: SWave is a complex-valued recurrent language model (169.26M parameters, D=384, L=16, T=2048) trained on FineWeb-Edu using 2xH100 NVL. It was designed around three founding premises: that representing language as complex waves rather than real-valued numbers enables richer information encoding; that a Cayley-parameterised unitary transition provides a mathematical guarantee against state decay or explosion; and that a hidden state which rotates r...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:Why SWAVE May Not Be All You Need:A Concept-Evolution Retrospective on Complex-Valued Recurrent Language Models\nView PDF HTML (experimental)Abstract:SWave is a complex-valued recurrent language model (169.26M parameters, D=384, L=16, T=2048) trained on FineWeb-Edu using 2xH100 NVL. It was designed around three founding premises: that representing language as complex waves rather than real-valued numbers enables richer information encoding; that a Cayley-parameterised unitary transition provides a mathematical guarantee against state decay or explosion; and that a hidden state which rotates rather than shrinks preserves signal integrity over arbitrarily long contexts. The core of SWave evolved substantially across three development phases. The Resonance Head was found to structurally admit imaginary-channel collapse as a global loss minimum (a failure mode we term cos-domination collapse) and was superseded by an untied head with independent real and imaginary embedding tables from the Phase-Associative Memory (PAM) architecture. This resolved the degenerate minimum and enabled stable 200,000-step training (best-step PPL 22.0 at step 89,861). ComplexNorm and the Wave Propagation Scan proved load-bearing throughout all three phases and were retained to the final architecture. ProtectGatedScan was reframed as a structural prior rather than a learned behaviour. The four multi-scale retention concepts showed no measurable improvement under controlled evaluation and were found non-load-bearing. The ComplexGatedUnit was superseded by a real-valued squared-ReLU channel mixer with fewer parameters. The auxiliary training objectives showed no benefit once structural constraints were resolved. The investigation yields a formal characterisation of cos-domination collapse, a parallel scan with a log-space backward pass for numerical stability, six transferable engineering principles for complex-valued recurr...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 18,
+      "representative_title": "Neural Network Implementation of the Renormalization Group for Fault Diagnosis with Class Imbalance",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18326"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "cc484c95b7056e86",
+          "title": "Neural Network Implementation of the Renormalization Group for Fault Diagnosis with Class Imbalance",
+          "link": "https://arxiv.org/abs/2606.18326",
+          "normalized_link": "https://arxiv.org/abs/2606.18326",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18326v1 Announce Type: new Abstract: The application of machine learning models in practical tasks faces challenges such as class imbalance and multidimensional noise. This paper proposes RGNet, a neural network architecture based on the concept of the renormalization group (RG), for hierarchical coarse-graining of the feature space. The model sequentially compresses the input dimensionality and concatenates all scales before classification, allowing it to capture both local detail...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:Neural Network Implementation of the Renormalization Group for Fault Diagnosis with Class Imbalance\nView PDFAbstract:The application of machine learning models in practical tasks faces challenges such as class imbalance and multidimensional noise. This paper proposes RGNet, a neural network architecture based on the concept of the renormalization group (RG), for hierarchical coarse-graining of the feature space. The model sequentially compresses the input dimensionality and concatenates all scales before classification, allowing it to capture both local details and global patterns. The notion of RG-flows is introduced - interpretable low-dimensional representations whose visualization via t-SNE reveals a discrete curvilinear structure confirming the effectiveness of coarse-graining. Experimental results are presented on the imbalanced AI4I dataset. The obtained results demonstrate that RGNet is a universal, interpretable, and competitive solution for fault prediction in applications with imbalanced classes.\nReferences & Citations\nLoading...\nBibliographic and Citation Tools\nBibliographic Explorer (What is the Explorer?)\nConnected Papers (What is Connected Papers?)\nLitmaps (What is Litmaps?)\nscite Smart Citations (What are Smart Citations?)\nCode, Data and Media Associated with this Article\nalphaXiv (What is alphaXiv?)\nCatalyzeX Code Finder for Papers (What is CatalyzeX?)\nDagsHub (What is DagsHub?)\nGotit.pub (What is GotitPub?)\nHugging Face (What is Huggingface?)\nScienceCast (What is ScienceCast?)\nDemos\nRecommenders and Search Tools\nInfluence Flower (What are Influence Flowers?)\nCORE Recommender (What is CORE?)\nIArxiv Recommender\n(What is IArxiv?)\narXivLabs: experimental projects with community collaborators\narXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.\nBoth individuals and organizations that work with arXivLabs have embraced and...",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 19,
+      "representative_title": "ThousandWorlds: A benchmark for climate emulation of potentially habitable exoplanets",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18338"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "47abec20dc0572a1",
+          "title": "ThousandWorlds: A benchmark for climate emulation of potentially habitable exoplanets",
+          "link": "https://arxiv.org/abs/2606.18338",
+          "normalized_link": "https://arxiv.org/abs/2606.18338",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18338v1 Announce Type: new Abstract: The search for life beyond Earth will depend on detecting faint signatures in the atmospheres of potentially habitable exoplanets. Interpreting those signatures requires understanding the host planet's climate: the same molecule may signal life on one planet and abiotic chemistry on another. Global climate models (GCMs) provide this understanding, but individual runs can require up to millions of core-hours and substantial domain expert time. Ma...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:ThousandWorlds: A benchmark for climate emulation of potentially habitable exoplanets\nView PDF HTML (experimental)Abstract:The search for life beyond Earth will depend on detecting faint signatures in the atmospheres of potentially habitable exoplanets. Interpreting those signatures requires understanding the host planet's climate: the same molecule may signal life on one planet and abiotic chemistry on another. Global climate models (GCMs) provide this understanding, but individual runs can require up to millions of core-hours and substantial domain expert time. Machine-learning emulators could remove this bottleneck, but progress has been limited by the absence of a curated, multi-model exoclimate dataset. We introduce ThousandWorlds, an ML-ready benchmark for exoclimate emulation and for the broader regime of low-data, multi-simulator, parameter-to-field regression. The dataset contains approximately 1800 simulations from five GCMs, mapping eight planet parameters to 3D atmospheric fields including temperature, humidity, winds, clouds, and radiation. Three nested subsets define progressively harder challenges: single-simulator regression, multi-simulator regression with complete observations, and multi-simulator regression with structured missingness. We propose two evaluation protocols: one for ranking methods, and one that measures performance relative to the disagreement between GCMs themselves. We evaluate seven baselines spanning simple methods, deep learning, and Gaussian processes. GP-based methods perform best, suggesting that ThousandWorlds exposes a regime where off-the-shelf deep learning does not yet succeed. Data: this https URL. Code: this https URL.\nSubmission history\nFrom: Edward Stevenson [view email][v1] Tue, 16 Jun 2026 18:00:00 UTC (5,427 KB)\nCurrent browse context:\ncs.LG\nChange to browse by:\nReferences & Citations\nLoading...\nBibliographic and Citation Tools\nBibliographic...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 20,
+      "representative_title": "P$^2$CE: Model-Agnostic Plausible Pareto-Optimal Counterfactual Explanations",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18418"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "855c82495420f3d3",
+          "title": "P$^2$CE: Model-Agnostic Plausible Pareto-Optimal Counterfactual Explanations",
+          "link": "https://arxiv.org/abs/2606.18418",
+          "normalized_link": "https://arxiv.org/abs/2606.18418",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18418v1 Announce Type: new Abstract: The increasing use of machine learning algorithms in social applications has raised concerns about fairness and transparency, leading to the development of counterfactual explanations. These explanations supports individuals to understand and potentially alter unfavorable decisions in areas such as loan applications, job selections, and more, by providing actionable changes to input features that would lead to a desired outcome. Existing methods...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:P$^2$CE: Model-Agnostic Plausible Pareto-Optimal Counterfactual Explanations\nView PDF HTML (experimental)Abstract:The increasing use of machine learning algorithms in social applications has raised concerns about fairness and transparency, leading to the development of counterfactual explanations. These explanations supports individuals to understand and potentially alter unfavorable decisions in areas such as loan applications, job selections, and more, by providing actionable changes to input features that would lead to a desired outcome. Existing methods often struggle to balance feasibility, plausibility, and computational efficiency. To address this, we introduce P$^2$CE, an algorithm for generating plausible Pareto-optimal counterfactual explanations, offering users a diverse set of optimal trade-offs between different notions of feasibility. P$^2$CE employs an auxiliary isolation forest outlier detector to ensure that explanations are in accordance with the data distribution and leverages SHAP values to obtain optimal results with short computing times, regardless of the underlying model. Our algorithm was empirically evaluated on three datasets, demonstrating superior performance in terms of both solution quality and computational efficiency compared to related techniques.\nReferences & Citations\nLoading...\nBibliographic and Citation Tools\nBibliographic Explorer (What is the Explorer?)\nConnected Papers (What is Connected Papers?)\nLitmaps (What is Litmaps?)\nscite Smart Citations (What are Smart Citations?)\nCode, Data and Media Associated with this Article\nalphaXiv (What is alphaXiv?)\nCatalyzeX Code Finder for Papers (What is CatalyzeX?)\nDagsHub (What is DagsHub?)\nGotit.pub (What is GotitPub?)\nHugging Face (What is Huggingface?)\nScienceCast (What is ScienceCast?)\nDemos\nRecommenders and Search Tools\nInfluence Flower (What are Influence Flowers?)\nCORE Recommender (What is CORE?)\nIArxiv Recomm...",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 21,
+      "representative_title": "Measurement noise limits the advantage of nonlinear models over linear models in biomedical prediction",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2606"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.LG",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2606.18420"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "2ef4577aeed09eda",
+          "title": "Measurement noise limits the advantage of nonlinear models over linear models in biomedical prediction",
+          "link": "https://arxiv.org/abs/2606.18420",
+          "normalized_link": "https://arxiv.org/abs/2606.18420",
+          "source_name": "arXiv cs.LG",
+          "source_category": "research",
+          "published_at": "2026-06-18T04:00:00+00:00",
+          "summary": "arXiv:2606.18420v1 Announce Type: new Abstract: On biomedical tabular data, flexible models such as deep networks, gradient-boosted trees, and kernel methods are repeatedly matched or beaten by linear and logistic regression given the same features. The usual reaction is to treat this as a model-side shortfall, to be fixed with more data, a better architecture, or tuning, on the assumption that the nonlinear structure is there and the model has failed to capture it. We argue that these fixes...",
+          "full_text_snippet": "Computer Science > Machine Learning\n[Submitted on 16 Jun 2026]\nTitle:Measurement noise limits the advantage of nonlinear models over linear models in biomedical prediction\nView PDF HTML (experimental)Abstract:On biomedical tabular data, flexible models such as deep networks, gradient-boosted trees, and kernel methods are repeatedly matched or beaten by linear and logistic regression given the same features. The usual reaction is to treat this as a model-side shortfall, to be fixed with more data, a better architecture, or tuning, on the assumption that the nonlinear structure is there and the model has failed to capture it. We argue that these fixes cannot help when the binding limit is the measurement rather than the model, as it frequently is in biomedicine. Additive noise blurs the population-optimal predictor, and because blurring removes a function's fine, rapidly varying detail before its broad shape, it erases nonlinear structure faster than linear structure. A degree-$k$ interaction is attenuated by the $k$-th power of feature reliability, while the linear part is attenuated only once. At the reliabilities typical of biomedical measurement, the nonlinear advantage can vanish even when the underlying biology is strongly nonlinear, and what the noise removes cannot be recovered by a larger cohort or a more flexible model, only by better measurement. The nonlinearity is hidden, not absent, and a tie between linear and flexible models is not by itself a verdict on the biology. These pieces are classical, drawn from measurement-error statistics, psychometrics, and Gaussian analysis, and we assemble them into an exact excess-risk identity. Measurement reliability is one of three conditions, alongside sample size and feature representation, that must align for a flexible model to help, and together they leave only a narrow window that most biomedical tasks fall outside. Across 140 UK Biobank tasks, the gap between flexible and linear models, where it exists, car...",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_raw": 24,
+    "total_deduped": 24,
+    "total_clusters": 24,
+    "generated_at": "2026-06-18T23:57:58.818914+00:00",
+    "dedup_details": [
+      {
+        "title": "New research shows how AMIE, our medical AI, could help manage health conditions.",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-for-disease-management-in-nature/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re strengthening our presence in Alabama through new investments and community support.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/alabama-investment-june-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The latest AI news we announced in May 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How we used Gemini to build Google I/O 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "9 demos of Gemini Omni and Gemini 3.5 in action",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Check out real-life AI prototypes from the Futures Lab.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Catch up on 12 major I/O 2026 moments",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-keynote-moment-videos/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Catch up on the Dialogues stage at Google I/O 2026.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re announcing new community investments in Missouri.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "100 things we announced at I/O 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A new experiment brings better group meetings to Google Beam",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How AI Mode is changing the way people search in the U.S.",
+        "link": "https://blog.google/products-and-platforms/products/search/ai-mode-us-insights/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "New ways to create and get things done in Google Workspace",
+        "link": "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "I/O 2026: Welcome to the agentic Gemini era",
+        "link": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini 3.5: frontier intelligence with action",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A new era for AI Search",
+        "link": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Everything new in our Google AI subscriptions, fresh from I/O 2026",
+        "link": "https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Getting more from each token: How Copilot improves context handling and model routing",
+        "link": "https://github.blog/ai-and-ml/github-copilot/getting-more-from-each-token-how-copilot-improves-context-handling-and-model-routing/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "What are git worktrees, and why should I use them?",
+        "link": "https://github.blog/ai-and-ml/github-copilot/what-are-git-worktrees-and-why-should-i-use-them/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GitHub Copilot CLI for Beginners: Overview of common slash commands",
+        "link": "https://github.blog/ai-and-ml/github-copilot/github-copilot-cli-for-beginners-overview-of-common-slash-commands/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Accelerating researchers and developers building multilingual AI with a new open dataset",
+        "link": "https://github.blog/ai-and-ml/llms/accelerating-researchers-and-developers-building-multilingual-ai-with-a-new-open-dataset/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How we made GitHub Copilot CLI more selective about delegation",
+        "link": "https://github.blog/ai-and-ml/how-we-made-github-copilot-cli-more-selective-about-delegation/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Making secret scanning more trustworthy: Reducing false positives at scale",
+        "link": "https://github.blog/security/making-secret-scanning-more-trustworthy-reducing-false-positives-at-scale/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Give GitHub Copilot CLI real code intelligence with language servers",
+        "link": "https://github.blog/ai-and-ml/github-copilot/give-github-copilot-cli-real-code-intelligence-with-language-servers/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "From one-off prompts to workflows: How to use custom agents in GitHub Copilot CLI",
+        "link": "https://github.blog/ai-and-ml/github-copilot/from-one-off-prompts-to-workflows-how-to-use-custom-agents-in-github-copilot-cli/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GitHub recognized as a Leader in the Gartner® Magic Quadrant™ for Enterprise AI Coding Agents for the third year in a row",
+        "link": "https://github.blog/ai-and-ml/github-copilot/github-recognized-as-a-leader-in-the-gartner-magic-quadrant-for-enterprise-ai-coding-agents-for-the-third-year-in-a-row/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Take your local GitHub sessions anywhere",
+        "link": "https://github.blog/news-insights/product-news/take-your-local-github-sessions-anywhere/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Want to get a data center online quickly? Give it some flex.",
+        "link": "https://www.technologyreview.com/2026/06/16/1138591/data-center-online-quickly-electric-grid-flex/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Why do South Koreans love AI so much?",
+        "link": "https://www.technologyreview.com/2026/06/15/1138983/why-do-south-koreans-love-ai-so-much/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Google DeepMind is worried about what happens when millions of agents start to interact",
+        "link": "https://www.technologyreview.com/2026/06/11/1138794/google-deepmind-is-worried-about-what-happens-when-millions-of-agents-start-to-interact/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Learning to lead in a hybrid human-AI enterprise",
+        "link": "https://www.technologyreview.com/2026/06/09/1137830/learning-to-lead-in-a-hybrid-human-ai-enterprise/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Five things you need to know about AI",
+        "link": "https://www.technologyreview.com/2026/06/09/1138582/five-things-you-need-to-know-about-ai/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The Meta hack shows there’s more to AI security than Mythos",
+        "link": "https://www.technologyreview.com/2026/06/05/1138437/the-meta-hack-shows-theres-more-to-ai-security-than-mythos/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How small businesses can leverage AI",
+        "link": "https://www.technologyreview.com/2026/06/02/1138227/how-small-businesses-can-leverage-ai/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How the Pope’s Magnifica Humanitas offers a template for individuals to meet the AI moment",
+        "link": "https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magnifica-humanitas-offers-a-template-for-individuals-to-meet-the-ai-moment/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Beyond Parallel Sampling: Diverse Query Initialization for Agentic Search",
+        "link": "https://arxiv.org/abs/2606.17209",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "When Rules Learn: A Self-Evolving Agent for Legal Case Retrieval",
+        "link": "https://arxiv.org/abs/2606.17220",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "SkillChain-Gym: A Benchmark for Reskilling-Aware Production-Inventory Control under Disruptions",
+        "link": "https://arxiv.org/abs/2606.17266",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Skill-Constrained Model Predictive Control for Resilient Manufacturing Supply Chains",
+        "link": "https://arxiv.org/abs/2606.17269",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Nothing from Something: Can a Language Model Discover 0?",
+        "link": "https://arxiv.org/abs/2606.17289",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Quantifying Consistency in LLM Logical Reasoning via Structural Uncertainty",
+        "link": "https://arxiv.org/abs/2606.17312",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "MemTrace: Probing What Final Accuracy Misses in Long-Term Memory",
+        "link": "https://arxiv.org/abs/2606.17328",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "SpeechDx: A Multi-Task Benchmark for Clinical Speech AI",
+        "link": "https://arxiv.org/abs/2606.17339",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Distributed General-Purpose Agent Networks: Architecture, Key Mechanisms, and Prototypes",
+        "link": "https://arxiv.org/abs/2606.17368",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Treatment Response Optimized Clinical Decision Support AI System via Digital Twin Simulation",
+        "link": "https://arxiv.org/abs/2606.17405",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Incumbent Advantage: Brand Bias and Cognitive Manipulation Dynamics in LLM Recommendation Systems",
+        "link": "https://arxiv.org/abs/2606.17443",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A Machine-Learned Comorbidity Index",
+        "link": "https://arxiv.org/abs/2606.17450",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "MapSatisfyBench: Benchmarking Satisfaction-Aware Map Agents through Behavior-Grounded Implicit Decision Factors",
+        "link": "https://arxiv.org/abs/2606.17453",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Dissecting model behavior through agent trajectories",
+        "link": "https://arxiv.org/abs/2606.17454",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Can LLMs Be CEOs? Benchmarking Strategic Resource Reallocation with Multi-Role Agent Simulation",
+        "link": "https://arxiv.org/abs/2606.17459",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "LLM-as-Judge in Education: A Curriculum-Grounded Marking Pipeline",
+        "link": "https://arxiv.org/abs/2606.17507",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "SEAGym: An Evaluation Environment for Self-Evolving LLM Agents",
+        "link": "https://arxiv.org/abs/2606.17546",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DeepInsight: A Unified Evaluation Infrastructure Across the Physical AI Stack",
+        "link": "https://arxiv.org/abs/2606.17574",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Surrogate Assisted Pedestrian Protection Design via a Foundation Model Orchestrated Workflow",
+        "link": "https://arxiv.org/abs/2606.17577",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Closing the Feedback Loop: From Experience Extraction to Insight Governance in Verbal Reinforcement Learning",
+        "link": "https://arxiv.org/abs/2606.17591",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Brick-DICL: Dynamic In-Context Learning for Automated Brick Schema Classification",
+        "link": "https://arxiv.org/abs/2606.17637",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "FinAcumen: Financial Multimodal Reasoning via Self-Evolving Experience Memory Harness",
+        "link": "https://arxiv.org/abs/2606.17642",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Beyond Domains: Reusing Web Skills via Transferable Interaction Patterns",
+        "link": "https://arxiv.org/abs/2606.17645",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "From Brewing to Resolution: Tracing the Internal Lifecycle of Code Reasoning in LLMs",
+        "link": "https://arxiv.org/abs/2606.17648",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Using Cognitive Models to Improve Language Model Simulation of Human Persuasion Games",
+        "link": "https://arxiv.org/abs/2606.17657",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "FllumaOne: A Code-Native Multimodal CAD Dataset with Executable Programs and Kernel-Validated Feature Histories",
+        "link": "https://arxiv.org/abs/2606.17696",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "EComAgentBench: Benchmarking Shopping Agents on Long-Horizon Tasks with Distributed Hidden Intent",
+        "link": "https://arxiv.org/abs/2606.17698",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "LongWebBench: Evaluating Structural and Functional Webpage Generation in Long-Horizon Settings",
+        "link": "https://arxiv.org/abs/2606.17727",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Shattering the Autoregressive Curse: Dynamic Epistemic Entropy Orchestrated Erasable Reinforcement Learning for LLMs",
+        "link": "https://arxiv.org/abs/2606.17735",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DecoSearch: Complexity-Aware Routing and Plan-Level Repair for Text-to-SQL",
+        "link": "https://arxiv.org/abs/2606.17821",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "AIEC 2026 | 太初元碁分享国产 AI 算力实践 助力 Token 服务落地生根",
+        "link": "https://www.qbitai.com/2026/06/436740.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3006,
+        "threshold": 0.2,
+        "matched_story_title": "校企共推AI4S 上海交通大学与太初元碁签署合作协议",
+        "matched_episode_id": "2026-06-16",
+        "detail": "TF-IDF similarity (0.30) >= threshold (0.20) with historical story '校企共推AI4S 上海交通大学与太初元碁签署合作协议' from 2026-06-16."
+      },
+      {
+        "title": "ABot-Earth0.5登顶Hugging Face论文三榜第一，获国际图形学权威陈宝权好评",
+        "link": "https://www.qbitai.com/2026/06/436698.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3019,
+        "threshold": 0.2,
+        "matched_story_title": "高德发布ABot-Earth0.5：跨越2D蒸馏模式，以3D原生驱动高一致性场景生成",
+        "matched_episode_id": "2026-06-09",
+        "detail": "TF-IDF similarity (0.30) >= threshold (0.20) with historical story '高德发布ABot-Earth0.5：跨越2D蒸馏模式，以3D原生驱动高一致性场景生成' from 2026-06-09."
+      },
+      {
+        "title": "国产算力正在进入Token标准化时代",
+        "link": "https://www.qbitai.com/2026/06/436468.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2143,
+        "threshold": 0.2,
+        "matched_story_title": "算苗3D TokenPU正式流片 引领国产AI云端大算力芯片再升级",
+        "matched_episode_id": "2026-06-18",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story '算苗3D TokenPU正式流片 引领国产AI云端大算力芯片再升级' from 2026-06-18."
+      },
+      {
+        "title": "Our new community investments in Virginia support local jobs and expand energy affordability.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/virginia-community-investments/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.5595,
+        "threshold": 0.2,
+        "matched_story_title": "We’re announcing new community investments in Missouri.",
+        "matched_episode_id": "2026-06-06",
+        "detail": "TF-IDF similarity (0.56) >= threshold (0.20) with historical story 'We’re announcing new community investments in Missouri.' from 2026-06-06."
+      },
+      {
+        "title": "How courts are coping with a flood of AI-generated lawsuits",
+        "link": "https://www.technologyreview.com/2026/06/04/1138391/courts-coping-ai-lawsuits/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.8697,
+        "threshold": 0.2,
+        "matched_story_title": "How courts are coping with a flood of AI-generated lawsuits",
+        "matched_episode_id": "2026-06-05",
+        "detail": "TF-IDF similarity (0.87) >= threshold (0.20) with historical story 'How courts are coping with a flood of AI-generated lawsuits' from 2026-06-05."
+      },
+      {
+        "title": "Gaussian Mixture Attention: Linear-Time Sequence Mixing via Probabilistic Latent Routing",
+        "link": "https://arxiv.org/abs/2606.18283",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2241,
+        "threshold": 0.2,
+        "matched_story_title": "Reachability and asymptotics of Gaussian Transformer dynamics",
+        "matched_episode_id": "2026-06-10",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Reachability and asymptotics of Gaussian Transformer dynamics' from 2026-06-10."
+      },
+      {
+        "title": "Breaking the Solver Bottleneck: Training Task Generators at the Learnable Frontier",
+        "link": "https://arxiv.org/abs/2606.18284",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2155,
+        "threshold": 0.2,
+        "matched_story_title": "Zero knowledge verification for frontier AI training is possible",
+        "matched_episode_id": "2026-06-06",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Zero knowledge verification for frontier AI training is possible' from 2026-06-06."
+      },
+      {
+        "title": "CODEBLOCK: Learning to Supervise Code at the Right Granularity",
+        "link": "https://arxiv.org/abs/2606.18286",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2084,
+        "threshold": 0.2,
+        "matched_story_title": "From Brewing to Resolution: Tracing the Internal Lifecycle of Code Reasoning in LLMs",
+        "matched_episode_id": "2026-06-18",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'From Brewing to Resolution: Tracing the Internal Lifecycle of Code Reasoning in LLMs' from 2026-06-18."
+      },
+      {
+        "title": "Attribution-Guided and Coverage-Maximized Pruning for Structural MoE Compression",
+        "link": "https://arxiv.org/abs/2606.18304",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.421,
+        "threshold": 0.2,
+        "matched_story_title": "SHAPE: Coalition-Aware Expert Pruning for Sparse Mixture-of-Experts LLMs",
+        "matched_episode_id": "2026-06-11",
+        "detail": "TF-IDF similarity (0.42) >= threshold (0.20) with historical story 'SHAPE: Coalition-Aware Expert Pruning for Sparse Mixture-of-Experts LLMs' from 2026-06-11."
+      },
+      {
+        "title": "DRIFT: Refining Instruction Data via On-Policy Data Attribution",
+        "link": "https://arxiv.org/abs/2606.18307",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3125,
+        "threshold": 0.2,
+        "matched_story_title": "Supervised Fine-tuning with Synthetic Rationale Data Hurts Real-World Disease Prediction",
+        "matched_episode_id": "2026-06-11",
+        "detail": "TF-IDF similarity (0.31) >= threshold (0.20) with historical story 'Supervised Fine-tuning with Synthetic Rationale Data Hurts Real-World Disease Prediction' from 2026-06-11."
+      },
+      {
+        "title": "SAGE: Retain-Aware Post-Hoc Sanitization of Final Unlearning Vector",
+        "link": "https://arxiv.org/abs/2606.18309",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2749,
+        "threshold": 0.2,
+        "matched_story_title": "Rethinking Backdoor Adversarial Unlearning through the Lens of Catastrophic Forgetting in Continual Learning",
+        "matched_episode_id": "2026-06-16",
+        "detail": "TF-IDF similarity (0.27) >= threshold (0.20) with historical story 'Rethinking Backdoor Adversarial Unlearning through the Lens of Catastrophic Forgetting in Continual Learning' from 2026-06-16."
+      },
+      {
+        "title": "Enhanced Graph Neural Networks using K-Hop Gaussian Diffusion",
+        "link": "https://arxiv.org/abs/2606.18317",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2086,
+        "threshold": 0.2,
+        "matched_story_title": "Spatiotemporal Imputation with Graph-Informed Flow Matching",
+        "matched_episode_id": "2026-06-09",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Spatiotemporal Imputation with Graph-Informed Flow Matching' from 2026-06-09."
+      },
+      {
+        "title": "Self-CTRL: Self-Consistency Training with Reinforcement Learning",
+        "link": "https://arxiv.org/abs/2606.18327",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2846,
+        "threshold": 0.2,
+        "matched_story_title": "Rethinking Psychometric Evaluation of LLMs: When and Why Self-Reports Predict Behavior",
+        "matched_episode_id": "2026-06-13",
+        "detail": "TF-IDF similarity (0.28) >= threshold (0.20) with historical story 'Rethinking Psychometric Evaluation of LLMs: When and Why Self-Reports Predict Behavior' from 2026-06-13."
+      },
+      {
+        "title": "Do Time Series Foundation Model Benchmarks Hide Regime-Dependent Failures? Evidence from Traffic Speed Forecasting",
+        "link": "https://arxiv.org/abs/2606.18367",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2251,
+        "threshold": 0.2,
+        "matched_story_title": "PatchSTG: Scalable Spatiotemporal Graph Transformers for Traffic Forecasting on Irregular Sensor Networks",
+        "matched_episode_id": "2026-06-11",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'PatchSTG: Scalable Spatiotemporal Graph Transformers for Traffic Forecasting on Irregular Sensor Networks' from 2026-06-11."
+      },
+      {
+        "title": "From Sparse Features to Trustworthy Proxies: Certifying SAE-Based Interpretability",
+        "link": "https://arxiv.org/abs/2606.18383",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2584,
+        "threshold": 0.2,
+        "matched_story_title": "Rational Sparse Autoencoder",
+        "matched_episode_id": "2026-06-17",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'Rational Sparse Autoencoder' from 2026-06-17."
+      },
+      {
+        "title": "SCOPE-FL: A Strategy-proof Chain-based Optimal pareto efficient Federated Learning System",
+        "link": "https://arxiv.org/abs/2606.18384",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2474,
+        "threshold": 0.2,
+        "matched_story_title": "Federated continual learning: A comprehensive survey on lifelong and privacy-preserving learning over distributed and non-stationary data",
+        "matched_episode_id": "2026-06-12",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'Federated continual learning: A comprehensive survey on lifelong and privacy-preserving learning over distributed and non-stationary data' from 2026-06-12."
+      },
+      {
+        "title": "LLMZero: Discovering Adaptive Training Strategies for RL Post-Training via LLM Agents",
+        "link": "https://arxiv.org/abs/2606.18388",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2126,
+        "threshold": 0.2,
+        "matched_story_title": "Training-Inference Kernel Contracts: Bounding Divergence in Post-Training and Deployment",
+        "matched_episode_id": "2026-06-10",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Training-Inference Kernel Contracts: Bounding Divergence in Post-Training and Deployment' from 2026-06-10."
+      },
+      {
+        "title": "MOLAR: Learning Multimodal Molecular Representations from Noisy Labels",
+        "link": "https://arxiv.org/abs/2606.18390",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3055,
+        "threshold": 0.2,
+        "matched_story_title": "GLACIER: A Multimodal Student-Teacher Foundation Model for Molecular Property Prediction",
+        "matched_episode_id": "2026-06-12",
+        "detail": "TF-IDF similarity (0.31) >= threshold (0.20) with historical story 'GLACIER: A Multimodal Student-Teacher Foundation Model for Molecular Property Prediction' from 2026-06-12."
+      },
+      {
+        "title": "Signature filtering: a lightweight enhancement for statistical watermark detection in large language models",
+        "link": "https://arxiv.org/abs/2606.18430",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2056,
+        "threshold": 0.2,
+        "matched_story_title": "Rift: A Conflict Signature for Deception in Language Models",
+        "matched_episode_id": "2026-06-18",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Rift: A Conflict Signature for Deception in Language Models' from 2026-06-18."
+      },
+      {
+        "title": "TMR-GGNN: Credit Card Fraud Detection based on Time-Aware Multi-Relational Guided Graph Neural Network",
+        "link": "https://arxiv.org/abs/2606.18444",
+        "source": "arXiv cs.LG",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2014,
+        "threshold": 0.2,
+        "matched_story_title": "Finsler Geometry, Graph Neural Networks, and You",
+        "matched_episode_id": "2026-06-18",
+        "detail": "TF-IDF similarity (0.20) >= threshold (0.20) with historical story 'Finsler Geometry, Graph Neural Networks, and You' from 2026-06-18."
+      }
+    ]
+  }
+}
