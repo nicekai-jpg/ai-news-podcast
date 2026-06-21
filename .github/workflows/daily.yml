@@ -4,6 +4,11 @@ on:
   schedule:
     - cron: "43 21 * * *"
   workflow_dispatch:
+    inputs:
+      date:
+        description: "Episode date (YYYY-MM-DD), default is today"
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -34,16 +39,27 @@ jobs:
         run: uv sync --frozen
 
       - id: episode
-        run: echo "id=$(TZ=Asia/Shanghai date +%F)" >> "$GITHUB_OUTPUT"
+        run: |
+          INPUT_DATE="${{ github.event.inputs.date }}"
+          if [ -n "$INPUT_DATE" ]; then
+            echo "id=$INPUT_DATE" >> "$GITHUB_OUTPUT"
+          else
+            echo "id=$(TZ=Asia/Shanghai date +%F)" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Pipeline + report + script (no audio)
         env:
           TZ: Asia/Shanghai
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
         run: |
-          uv run podcast-pipeline
-          uv run podcast-report
-          uv run podcast-daily --no-audio
+          EPISODE="${{ steps.episode.outputs.id }}"
+          if [ -f "site/episodes/${EPISODE}.txt" ]; then
+            echo "Script already exists for ${EPISODE}, skipping pipeline execution to avoid overwriting"
+          else
+            uv run podcast-pipeline
+            uv run podcast-report
+            uv run podcast-daily --no-audio
+          fi
 
       - name: Commit content artifacts
         run: |
