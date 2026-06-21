@@ -131,17 +131,8 @@ jobs:
             git push origin main
           fi
 
-  deploy:
-    name: Deploy GitHub Pages
-    needs: tts
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Pull latest site commit
-        run: git pull origin main
-
-      - uses: peaceiris/actions-gh-pages@v4
+      - name: Deploy GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
