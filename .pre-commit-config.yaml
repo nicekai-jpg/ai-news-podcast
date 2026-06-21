@@ -6,3 +6,19 @@ repos:
         args: [--fix, src/, tests/, scripts/]
       - id: ruff-format
         args: [src/, tests/, scripts/]
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+        args: ['--maxkb=2048'] # 限制提交文件不能超过 2MB，拦截大音频
+
+  - repo: local
+    hooks:
+      - id: block-audio-files
+        name: Block audio files from git main branch
+        entry: Audio files (.mp3, .wav, etc.) are NOT allowed to be committed to main. Audio must only be deployed to gh-pages.
+        language: fail
+        files: '\.(mp3|wav|ogg|flac|m4a)$'
+        exclude: '^assets/bgm_placeholder.wav$|^assets/audio_samples/' # 允许已有的BGM和音频样本
+
