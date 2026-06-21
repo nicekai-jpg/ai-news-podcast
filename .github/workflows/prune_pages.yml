@@ -1,0 +1,30 @@
+name: Prune GitHub Pages History
+
+on:
+  schedule:
+    - cron: "0 0 1 * *" # Run at 00:00 UTC on the 1st of every month
+  workflow_dispatch:     # Allow manual trigger from GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  prune:
+    name: Prune gh-pages branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run gh-pages Pruning Script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/prune_gh_pages.py
