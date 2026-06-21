@@ -1,0 +1,320 @@
+{
+  "episode_id": "2026-06-22",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "B",
+      "text": "听众朋友们大家好，欢迎收听AI每日先锋，今天是2026年6月22号。我是晓晓。",
+      "start": 1.0,
+      "duration": 10.178,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "A",
+      "text": "大家好，我是博文。",
+      "start": 11.627,
+      "duration": 2.124,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "B",
+      "text": "哎博文，说出来你可能不信，我今天看到一条新闻，差点把嘴里的咖啡喷到屏幕上。",
+      "start": 14.248,
+      "duration": 8.785,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "A",
+      "text": "哦？什么新闻这么有冲击力？",
+      "start": 23.486,
+      "duration": 2.559,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "B",
+      "text": "有人在《魔兽世界》的艾泽拉斯大陆上，拉了一支完全由AI组成的团队，足足1800个DeepSeek，整整齐齐地去下副本。",
+      "start": 26.45,
+      "duration": 11.615,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "A",
+      "text": "1800个？一起去打副本？",
+      "start": 38.498,
+      "duration": 2.951,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "B",
+      "text": "对！而且你猜月租多少钱？340块人民币。",
+      "start": 41.914,
+      "duration": 4.083,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "A",
+      "text": "340块……这还真是白菜价。",
+      "start": 46.459,
+      "duration": 3.081,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "B",
+      "text": "我当时看到这数字整个人都愣住了。1800个DeepSeek，平均下来一个AI一天才花一毛多钱，这哪是请打手，这是请了一支蚂蚁雄兵啊。博文你快给我翻译翻译，这事儿到底是怎么做到的？是真的每个AI都在独立思考，还是说有什么黑魔法？",
+      "start": 49.991,
+      "duration": 25.914,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "A",
+      "text": "哈哈，晓晓你这个\"蚂蚁雄兵\"的比喻非常贴切。其实这事儿要从两个层面来看。第一层是成本，第二层是协同。",
+      "start": 76.405,
+      "duration": 10.613,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "B",
+      "text": "嗯，你先说成本。",
+      "start": 87.456,
+      "duration": 1.862,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "A",
+      "text": "你要知道DeepSeek这一代模型采用的是MoE架构，也就是混合专家架构。它的特点是，每次推理的时候，并不是把整个几千亿参数的模型都激活，而是根据输入内容，只调用其中一小撮相关的\"专家\"。这就意味着，同样一张显卡，能同时跑起来的对话实例数，比传统的稠密模型多得多。",
+      "start": 89.779,
+      "duration": 25.958,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "B",
+      "text": "哦，我有点懂了。就好比一个大型医院，平时不是所有科室都开门，只看你挂的是什么号，对吧？",
+      "start": 116.182,
+      "duration": 8.132,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "你这个比方很恰当。所以把这套逻辑再往下推一层——既然单次推理便宜到这种程度，那把它部署成1800个独立Agent同时在线，总账算下来也就没那么夸张了。",
+      "start": 124.788,
+      "duration": 12.529,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "天哪，那这个成本曲线真的是一年一个台阶。",
+      "start": 137.744,
+      "duration": 5.476,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "A",
+      "text": "确实。我记得两年前，大家还在讨论\"为什么一次大模型API调用要两毛钱\"，现在你看，已经能便宜到一毛钱让一个AI跑一整天。",
+      "start": 143.684,
+      "duration": 10.265,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "B",
+      "text": "好，那第二层呢？你刚说的\"协同\"是怎么回事？1800个AI在一起不会打架吗？",
+      "start": 154.366,
+      "duration": 8.262,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "这其实是这件事真正有意思的地方。1800个Agent要在游戏里组队打副本，意味着它们之间必须有一套通讯协议——谁当坦克，谁输出，谁治疗，谁去开怪，这个角色分配是动态协商出来的。这其实是个非常经典的多智能体系统问题。",
+      "start": 163.064,
+      "duration": 19.95,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "等等等等，多智能体系统？博文你又开始讲术语了，给听众翻译翻译。",
+      "start": 183.431,
+      "duration": 7.653,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "哈哈好，我换个说法。你就想啊，有一群人同时被丢进一个迷宫，每个人只能看到自己周围一小块地方，但他们必须配合着把迷宫走出来。每个人时不时喊一句\"我这边发现一条路\"，别人根据这句喊话调整自己的方向。",
+      "start": 191.58,
+      "duration": 20.037,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "噢，就是\"喊话—调整\"循环嘛。",
+      "start": 212.029,
+      "duration": 4.257,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
