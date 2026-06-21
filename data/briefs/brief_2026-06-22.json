@@ -1,0 +1,648 @@
+{
+  "thesis": "今天的AI领域动态丰富，多个方向齐头并进",
+  "stories": [
+    {
+      "cluster_id": 0,
+      "representative_title": "2026年，1800个DeepSeek跟我一起守护艾泽拉斯",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 2,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "一个月只要340块"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/06/437141.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "6cc9ad64c1de4711",
+          "title": "2026年，1800个DeepSeek跟我一起守护艾泽拉斯",
+          "link": "https://www.qbitai.com/2026/06/437141.html",
+          "normalized_link": "https://www.qbitai.com/2026/06/437141.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-06-21T04:46:07+00:00",
+          "summary": "一个月只要340块",
+          "full_text_snippet": "2026年，1800个DeepSeek跟我一起守护艾泽拉斯\n一个月只要340块\nhenry 发自 凹非寺\n量子位 | 公众号 QbitAI\n终于，也是等到了让AI来守护艾泽拉斯的这一天。\n最近，一位Reddit老哥手搓了一个《魔兽世界》私服——\n里面活跃着1800个AI玩家，而且全都接入了DeepSeek API，能像真人一样聊天、组队、闲逛。\n于是，暴风城的聊天频道突然变成了DeepSeek广场，画风大概是这样的：\n猎人在怀念旧天赋，法师接话“奥杜尔是我最爱的副本”，旁边还有人在吐槽“奥核之眼简直是毒瘤”。\n乍一看，跟正常的魔兽聊天频道没什么区别。更关键的是，这套东西还特别便宜。\n由于DeepSeek API成本极低（得益于此前的Token永久折扣），老哥透露，之前运行450个AI玩家版本时，每天在线5~6小时，一个月API费用还不到10欧元（约85块）。\n换算下来，1800个Bot跑满一个月，也就340块，一顿Omakase的钱。\n该说不说，虽然这些年玩家总在吐槽《魔兽世界》里人机越来越多，但真到了私服里，有这么一群会自己聊天、自己互动的AI，好像又突然变得顺眼了起来。\n目前，这条帖子已经拿下1100多个赞、593条评论，冲上相关板块热帖第一。\nDeepSeek这波热度，也是成功让暴雪蹭上了（doge）。\n为了部落，为了联盟，为了DeepSeek！\n1800个DeepSeek跟我守护艾泽拉斯\n一句话概括老哥的做法：\n找一个现成的私服安装包，里面自带机器人模块和AI聊天插件，再写一个Python脚本，把聊天接口从本地模型转到DeepSeek的云端API。\n具体来说，安装包用的是魔兽世界3.3.5版本（巫妖王之怒），属于社区里很常见的“Repack”方案，下载解压就能直接运行。\n包里有两个关键模块：\n一个叫Playerbots，能批量生成模拟真人行为的bot，做任务、升级、组队全自动；\n另一个提供本地大模型的聊天接口。\n由于本地跑大模型太吃硬件，老哥直接让AI帮自己写了一个Python桥接脚本，把聊天请求全部转发到DeepSeek云端API。\n为了进一步省钱，他还加了一个小优化：检测到没有真人在线时，自动停止调用API。\n（属于是该省省，该花花了）\n整个搭建过程被他总结成一句话：改改配置文件，复制粘贴Python脚本，然后双击批处理文件启动。\n甚至连他自己都承认：“说实话，如果没有AI帮忙，我根本搞不定这些。”\n不过，这个私服看起来似乎很make sense，但有一个关键限制，就是：\nDeepSeek管嘴，Playerbots管腿，两套系统之间没有打通。\n比如你在频道里对一个战士说：“帮我拉Boss。”\n它可能会认真回复你：“好的，铁议会我最拿手。”\n但说完之后，它并不会真的跑过去开怪。\n所以从本质上看，这更像是一个被AI填满的单机版《魔兽世界》。\nPlayerbots负责让世界里有人在走动，DeepSeek负责让聊天频道里有人在说话。\n老哥一个人站在暴风城中央，和1800个AI一起守护艾泽拉斯。\nBy the way，由于懂得都懂的原因，老哥并不打算公开自己的私服安装包。\n（注：2025年下半年起暴雪密集起诉WoW私服，Turtle WoW、Stormforge等大服相继在2026年5月关服，社区猜测暴雪在为BlizzCon 2026公布Classic+清场。老哥这种纯本地、不公开的单人私服，恰好处在暴雪够不到的灰色地带）\n互联网已死VS热血怀旧服\n针对老哥这波神人操作，不少网友也是在评论区开始激情对线。\n点赞最高的一条评论（447赞）直接抛出灵魂拷问：\n这不就是死亡互联网理论的现实版吗？\n这里给不熟悉的同学来点上下文。\n所谓“死亡互联网理论”（Dead Internet Theory），是近几年越来越火的一种猜想：\n互联网里的大部分内容和互动，其实已经不是人创造的，而是AI生成的。\n通俗点就是：这游戏还有活人吗？\n这个问题其实挺关键。因为很多玩家对AI进游戏最大的反感就在于——\nAI不会破防，不会整活，不会半夜跟你激情对线，就嗯愣头青玩自己的。\n久而久之，MMO最重要的那种“活人味儿”就没了。\n但另一边，也有不少网友觉得：\n如果一款游戏已经没人玩了，那让AI把它重新填满，好像也没什么不好。\n而且说实话，跟Claude或者DeepSeek聊魔兽，很多时候还挺有节目效果。\n有人回忆起小时候没钱买点卡的时候，总幻想能有个免费的《魔兽世界》。\n没想到多年以后，这个愿望竟然会以另一种形式实现。\n当然，也有人觉得目前最大的违和感恰恰来自聊天内容，因为这些AI还是太有素质了。\n完全不像从真正《魔兽世界》聊天频道训练出来的。\n没有鸟语花香，没有阴阳怪气，最好故意往里面塞几个喷子，味道才够正宗。\n还有玩家表示，现在这套东西本质上还只是...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_raw": 1,
+    "total_deduped": 1,
+    "total_clusters": 1,
+    "generated_at": "2026-06-21T22:48:38.162879+00:00",
+    "dedup_details": [
+      {
+        "title": "New research shows how AMIE, our medical AI, could help manage health conditions.",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-for-disease-management-in-nature/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re strengthening our presence in Alabama through new investments and community support.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/alabama-investment-june-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Our new community investments in Virginia support local jobs and expand energy affordability.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/virginia-community-investments/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The latest AI news we announced in May 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "5 ways Google Search can level up your thrift and vintage shopping",
+        "link": "https://blog.google/products-and-platforms/products/search/thrifting-tips/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How we used Gemini to build Google I/O 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "9 demos of Gemini Omni and Gemini 3.5 in action",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Check out real-life AI prototypes from the Futures Lab.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Catch up on 12 major I/O 2026 moments",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-keynote-moment-videos/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Catch up on the Dialogues stage at Google I/O 2026.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-dialogues-recap/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "100 things we announced at I/O 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-io-2026-all-our-announcements/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A new experiment brings better group meetings to Google Beam",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-research/google-beam-group-meetings/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How AI Mode is changing the way people search in the U.S.",
+        "link": "https://blog.google/products-and-platforms/products/search/ai-mode-us-insights/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "New ways to create and get things done in Google Workspace",
+        "link": "https://blog.google/products-and-platforms/products/workspace/workspace-updates/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "I/O 2026: Welcome to the agentic Gemini era",
+        "link": "https://blog.google/innovation-and-ai/sundar-pichai-io-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini 3.5: frontier intelligence with action",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-5/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A new era for AI Search",
+        "link": "https://blog.google/products-and-platforms/products/search/search-io-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Everything new in our Google AI subscriptions, fresh from I/O 2026",
+        "link": "https://blog.google/products-and-platforms/products/google-one/google-ai-subscriptions/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "MosaicLeaks: Can your research agent keep a secret?",
+        "link": "https://huggingface.co/blog/ServiceNow/mosaicleaks",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Beyond LoRA: Can you beat the most popular fine-tuning technique?",
+        "link": "https://huggingface.co/blog/peft-beyond-lora",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Is it agentic enough? Benchmarking open models on your own tooling",
+        "link": "https://huggingface.co/blog/is-it-agentic-enough",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "MolmoMotion: Language-guided 3D motion forecasting",
+        "link": "https://huggingface.co/blog/allenai/molmomotion",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "From the Hugging Face Hub to robot hardware with Strands Agents and LeRobot",
+        "link": "https://huggingface.co/blog/amazon/strands-lerobot-hub-to-hardware",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GLM-5.2: Built for Long-Horizon Tasks",
+        "link": "https://huggingface.co/blog/zai-org/glm-52-blog",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Agentic Resource Discovery: Let agents search",
+        "link": "https://huggingface.co/blog/agentic-resource-discovery-launch",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Profiling in PyTorch (Part 2): From nn.Linear to a Fused MLP",
+        "link": "https://huggingface.co/blog/torch-mlp-fusion",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How an Agent Built a 3D Paris Gallery by Chaining Two Hugging Face Spaces",
+        "link": "https://huggingface.co/blog/mishig/spaces-agents-md",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Migrating Your GitHub CI to Hugging Face Jobs",
+        "link": "https://huggingface.co/blog/github-ci-hf-jobs",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The Open Source Community is backing OpenEnv for Agentic RL",
+        "link": "https://huggingface.co/blog/openenv-agentic-rl",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Nemotron 3.5 Content Safety: Customizable Multimodal Safety for Global Enterprise AI",
+        "link": "https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Designing the hf CLI as an agent-optimized way to work with the Hub",
+        "link": "https://huggingface.co/blog/hf-cli-for-agents",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Direct Preference Optimization Beyond Chatbots",
+        "link": "https://huggingface.co/blog/Dharma-AI/direct-preference-optimization-beyond-chatbots",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Adding MCP Tools to Reachy Mini",
+        "link": "https://huggingface.co/blog/adding-mcp-tools-to-reachy-mini",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Holo3.1: Fast & Local Computer Use Agents",
+        "link": "https://huggingface.co/blog/Hcompany/holo31",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Mellum2: A 12B Mixture-of-Experts Model by JetBrains",
+        "link": "https://huggingface.co/blog/JetBrains/mellum2-launch",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Beyond LLMs: Why Scalable Enterprise AI Adoption Depends on Agent Logic",
+        "link": "https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
+        "link": "https://huggingface.co/blog/torch-profiler",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Reachy Mini goes fully local",
+        "link": "https://huggingface.co/blog/local-reachy-mini-conversation",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Shipping a Trillion Parameters With a Hub Bucket: Delta Weight Sync in TRL",
+        "link": "https://huggingface.co/blog/delta-weight-sync",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Harness, Scaffold, and the AI Agent Terms Worth Getting Right",
+        "link": "https://huggingface.co/blog/agent-glossary",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "OlmoEarth v1.1: A more efficient family of Earth observation models",
+        "link": "https://huggingface.co/blog/allenai/olmoearth-v1-1",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing the Ettin Reranker Family",
+        "link": "https://huggingface.co/blog/ettin-reranker",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "PaddleOCR 3.5: Running OCR and Document Parsing Tasks with a Transformers Backend",
+        "link": "https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Granite Embedding Multilingual R2: Open Apache 2.0 Multilingual Embeddings with 32K Context — Best Sub-100M Retrieval Quality",
+        "link": "https://huggingface.co/blog/ibm-granite/granite-embedding-multilingual-r2",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Unlocking asynchronicity in continuous batching",
+        "link": "https://huggingface.co/blog/continuous_async",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Building Blocks for Foundation Model Training and Inference on AWS",
+        "link": "https://huggingface.co/blog/amazon/foundation-model-building-blocks",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "vLLM V0 to V1: Correctness Before Corrections in RL",
+        "link": "https://huggingface.co/blog/ServiceNow-AI/correctness-before-corrections",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Adding Benchmaxxer Repellant to the Open ASR Leaderboard",
+        "link": "https://huggingface.co/blog/open-asr-leaderboard-private-data",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How we built an internal data analytics agent",
+        "link": "https://github.blog/ai-and-ml/github-copilot/how-we-built-an-internal-data-analytics-agent/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Getting more from each token: How Copilot improves context handling and model routing",
+        "link": "https://github.blog/ai-and-ml/github-copilot/getting-more-from-each-token-how-copilot-improves-context-handling-and-model-routing/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "What are git worktrees, and why should I use them?",
+        "link": "https://github.blog/ai-and-ml/github-copilot/what-are-git-worktrees-and-why-should-i-use-them/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GitHub Copilot CLI for Beginners: Overview of common slash commands",
+        "link": "https://github.blog/ai-and-ml/github-copilot/github-copilot-cli-for-beginners-overview-of-common-slash-commands/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Accelerating researchers and developers building multilingual AI with a new open dataset",
+        "link": "https://github.blog/ai-and-ml/llms/accelerating-researchers-and-developers-building-multilingual-ai-with-a-new-open-dataset/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How we made GitHub Copilot CLI more selective about delegation",
+        "link": "https://github.blog/ai-and-ml/how-we-made-github-copilot-cli-more-selective-about-delegation/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Making secret scanning more trustworthy: Reducing false positives at scale",
+        "link": "https://github.blog/security/making-secret-scanning-more-trustworthy-reducing-false-positives-at-scale/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Give GitHub Copilot CLI real code intelligence with language servers",
+        "link": "https://github.blog/ai-and-ml/github-copilot/give-github-copilot-cli-real-code-intelligence-with-language-servers/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "From one-off prompts to workflows: How to use custom agents in GitHub Copilot CLI",
+        "link": "https://github.blog/ai-and-ml/github-copilot/from-one-off-prompts-to-workflows-how-to-use-custom-agents-in-github-copilot-cli/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GitHub recognized as a Leader in the Gartner® Magic Quadrant™ for Enterprise AI Coding Agents for the third year in a row",
+        "link": "https://github.blog/ai-and-ml/github-copilot/github-recognized-as-a-leader-in-the-gartner-magic-quadrant-for-enterprise-ai-coding-agents-for-the-third-year-in-a-row/",
+        "source": "GitHub Blog AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A startup claims it broke through a bottleneck that’s holding back LLMs",
+        "link": "https://www.technologyreview.com/2026/06/19/1139313/a-startup-claims-it-broke-through-a-bottleneck-thats-holding-back-llms/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Want to get a data center online quickly? Give it some flex.",
+        "link": "https://www.technologyreview.com/2026/06/16/1138591/data-center-online-quickly-electric-grid-flex/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Why do South Koreans love AI so much?",
+        "link": "https://www.technologyreview.com/2026/06/15/1138983/why-do-south-koreans-love-ai-so-much/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Google DeepMind is worried about what happens when millions of agents start to interact",
+        "link": "https://www.technologyreview.com/2026/06/11/1138794/google-deepmind-is-worried-about-what-happens-when-millions-of-agents-start-to-interact/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Learning to lead in a hybrid human-AI enterprise",
+        "link": "https://www.technologyreview.com/2026/06/09/1137830/learning-to-lead-in-a-hybrid-human-ai-enterprise/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Five things you need to know about AI",
+        "link": "https://www.technologyreview.com/2026/06/09/1138582/five-things-you-need-to-know-about-ai/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The Meta hack shows there’s more to AI security than Mythos",
+        "link": "https://www.technologyreview.com/2026/06/05/1138437/the-meta-hack-shows-theres-more-to-ai-security-than-mythos/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How courts are coping with a flood of AI-generated lawsuits",
+        "link": "https://www.technologyreview.com/2026/06/04/1138391/courts-coping-ai-lawsuits/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Rehumanizing global health care with agentic AI",
+        "link": "https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-global-health-care-with-agentic-ai/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How small businesses can leverage AI",
+        "link": "https://www.technologyreview.com/2026/06/02/1138227/how-small-businesses-can-leverage-ai/",
+        "source": "MIT Tech Review AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "具身赛道现状素描：脑子灵，模型好，不是百亿，就是独角",
+        "link": "https://www.qbitai.com/2026/06/437198.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.7724,
+        "threshold": 0.72,
+        "matched_story_title": "头部具身大脑公司再获数亿美元融资！世界模型路线，15家VC抢着投",
+        "matched_episode_id": "2026-06-18",
+        "detail": "SentenceTransformer similarity (0.77) >= threshold (0.72) with historical story '头部具身大脑公司再获数亿美元融资！世界模型路线，15家VC抢着投' from 2026-06-18."
+      },
+      {
+        "title": "英伟达开始搞机器人自己研究机器人那套了…",
+        "link": "https://www.qbitai.com/2026/06/437041.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.756,
+        "threshold": 0.72,
+        "matched_story_title": "一个模型控制手脚腰身！机器人终于学会全身协同干精细活了",
+        "matched_episode_id": "2026-06-17",
+        "detail": "SentenceTransformer similarity (0.76) >= threshold (0.72) with historical story '一个模型控制手脚腰身！机器人终于学会全身协同干精细活了' from 2026-06-17."
+      },
+      {
+        "title": "陶哲轩12年前的预言，现在AI帮他兑现了",
+        "link": "https://www.qbitai.com/2026/06/437023.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.72,
+        "matched_story_title": "陶哲轩12年前的预言，现在AI帮他兑现了",
+        "matched_episode_id": "2026-06-21",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story '陶哲轩12年前的预言，现在AI帮他兑现了' from 2026-06-21."
+      },
+      {
+        "title": "撸猫撸出SOTA！3个00后2个月，造出史上最快流式音视频社交模型",
+        "link": "https://www.qbitai.com/2026/06/436996.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.72,
+        "matched_story_title": "撸猫撸出SOTA！3个00后2个月，造出史上最快流式音视频社交模型",
+        "matched_episode_id": "2026-06-21",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story '撸猫撸出SOTA！3个00后2个月，造出史上最快流式音视频社交模型' from 2026-06-21."
+      },
+      {
+        "title": "诺奖得主、AlphaFold之父投奔Anthropic！谷歌48小时连跑俩大将",
+        "link": "https://www.qbitai.com/2026/06/436980.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.9839,
+        "threshold": 0.72,
+        "matched_story_title": "诺奖得主、AlphaFold之父投奔Anthropic！谷歌48小时连跑俩大将",
+        "matched_episode_id": "2026-06-21",
+        "detail": "SentenceTransformer similarity (0.98) >= threshold (0.72) with historical story '诺奖得主、AlphaFold之父投奔Anthropic！谷歌48小时连跑俩大将' from 2026-06-21."
+      },
+      {
+        "title": "Meta员工士气跌至20年谷底！内部直播当众开骂，CTO承认AI重组糟糕透顶",
+        "link": "https://www.qbitai.com/2026/06/436966.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.72,
+        "matched_story_title": "Meta员工士气跌至20年谷底！内部直播当众开骂，CTO承认AI重组糟糕透顶",
+        "matched_episode_id": "2026-06-21",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story 'Meta员工士气跌至20年谷底！内部直播当众开骂，CTO承认AI重组糟糕透顶' from 2026-06-21."
+      },
+      {
+        "title": "我把昨晚的梦输入AI，它居然直接把我拉进去玩儿了一把？！",
+        "link": "https://www.qbitai.com/2026/06/436864.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.72,
+        "matched_story_title": "我把昨晚的梦输入AI，它居然直接把我拉进去玩儿了一把？！",
+        "matched_episode_id": "2026-06-20",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story '我把昨晚的梦输入AI，它居然直接把我拉进去玩儿了一把？！' from 2026-06-20."
+      },
+      {
+        "title": "GPT发AI原创新成果了",
+        "link": "https://www.qbitai.com/2026/06/436842.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.993,
+        "threshold": 0.72,
+        "matched_story_title": "GPT发AI原创新成果了",
+        "matched_episode_id": "2026-06-20",
+        "detail": "SentenceTransformer similarity (0.99) >= threshold (0.72) with historical story 'GPT发AI原创新成果了' from 2026-06-20."
+      },
+      {
+        "title": "全球首个人形机器人通用小脑来了！全球最大规模2万小时人类动作数据，实现零样本泛化",
+        "link": "https://www.qbitai.com/2026/06/436813.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.72,
+        "matched_story_title": "全球首个人形机器人通用小脑来了！全球最大规模2万小时人类动作数据，实现零样本泛化",
+        "matched_episode_id": "2026-06-20",
+        "detail": "SentenceTransformer similarity (1.00) >= threshold (0.72) with historical story '全球首个人形机器人通用小脑来了！全球最大规模2万小时人类动作数据，实现零样本泛化' from 2026-06-20."
+      },
+      {
+        "title": "We’re announcing new community investments in Missouri.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.7622,
+        "threshold": 0.72,
+        "matched_story_title": "Our new community investments in Virginia support local jobs and expand energy affordability.",
+        "matched_episode_id": "2026-06-21",
+        "detail": "SentenceTransformer similarity (0.76) >= threshold (0.72) with historical story 'Our new community investments in Virginia support local jobs and expand energy affordability.' from 2026-06-21."
+      }
+    ]
+  }
+}
