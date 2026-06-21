@@ -67,8 +67,10 @@ uv run podcast-report
 5. 几分钟后，在各大播客 App 订阅你的地址：
    `https://<你的GitHub用户名>.github.io/<仓库名>/feed.xml`
 
-## 每天自动更新
+*注意：媒体资源（MP3 音频和智能句读音频切片）仅在 `gh-pages` 分支中增量托管，不提交到主分支 `main`，从而保证您的开发分支轻巧、拉取极速。*
+
+## 每天自动更新与音频防膨胀机制
 - **配置密钥**：在 GitHub 仓库页面进入 **Settings** -> 左侧菜单栏 **Secrets and variables** -> **Actions**，点击 **New repository secret**，添加名为 `MINIMAX_API_KEY` 的密钥，填入你的 MiniMax API Key。
-- 仓库内置 GitHub Actions：`.github/workflows/daily.yml`。
-- 默认每天自动运行构建博客日报 (Markdown) 与播客音频 (MP3)，并自动 commit 提交到仓库。
-- 你也可以在仓库对应 Actions 页面，手动点击 **Run workflow** 强制立刻生成一集。
+- **播客每日更新**：内置 GitHub Actions 工作流 `daily.yml`。每天定时运行自动构建，并将简报和播客文本提交到 `main` 分支，合成的大音频和切片则直接同步部署到 `gh-pages`。
+- **定期历史清理（防膨胀）**：内置历史清理工作流 `prune_pages.yml`，设定每月 1 号执行（也支持随时手动触发）。它会备份最近 30 天有效播客的音频与切片数据，随后**彻底清空重置 `gh-pages` 分支的提交历史**（使 Commit 历史数归为 1），并把备份的 30 天数据强推上去，实现物理删除旧数据并释放 Git 大文件空间。
+- **手动触发**：你可以在仓库的 Actions 页面，手动选择对应的 Workflow 并点击 **Run workflow** 强制立刻运行。
