@@ -1,0 +1,665 @@
+{
+  "episode_id": "2026-06-19",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "B",
+      "text": "哈喽听众朋友们大家好，欢迎来到 AI 每日先锋，今天是 2026 年 6 月 19 日。我是你们的老朋友晓晓。",
+      "start": 1.0,
+      "duration": 9.09,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "A",
+      "text": "大家好，我是博文。",
+      "start": 10.539,
+      "duration": 2.037,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "B",
+      "text": "哎博文，你看最近科技圈的事儿，我感觉通用 AI 这场大考，已经从比谁更聪明变成比谁更接地气了。从医院问诊到咱们写代码，大模型算是被真实场景按在地上反复摩擦。你作为长期关注这一行的技术人，怎么看这个趋势？",
+      "start": 13.073,
+      "duration": 23.171,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "A",
+      "text": "晓晓你这个总结特别到位。我自己最大的感受是，2026 年大家拼的不再是模型参数有多猛，而是在每个具体场景里能不能真正闭环。所以现在行业里讲得最多的词，反而是垂直化和场景化。",
+      "start": 36.697,
+      "duration": 17.903,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "B",
+      "text": "没错！那咱今天就来好好聊聊这个话题。哎对了，最近我看到一件特别扎心的事儿，说出来你肯定有共鸣——就是 AI 去医院当医生，结果反而成了医患双方的新包袱。",
+      "start": 55.005,
+      "duration": 15.011,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "A",
+      "text": "哦？这个说法挺有意思，怎么个新包袱法？",
+      "start": 70.449,
+      "duration": 3.778,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "B",
+      "text": "就是说啊，现在很多人有点不舒服，第一反应就是打开一个 AI 医生问两句。但你猜怎么着？这个 AI 经常是你问一句，它答一句，答完就闭嘴了。你再想问点啥，它就自动开启下一个话题，根本不接着你的问题往下聊。",
+      "start": 74.692,
+      "duration": 17.686,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "A",
+      "text": "嗯，这个我完全能想象得到。",
+      "start": 92.84,
+      "duration": 2.907,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "B",
+      "text": "博文，这不就是典型的你说城门楼子，它说胯骨轴子嘛！真正的医生哪是这样的？你去看病，医生肯定会反复追问你，比如这种疼是白天疼还是晚上疼？最近有没有发烧？这种多轮追问才能把病因搞清楚啊。",
+      "start": 96.198,
+      "duration": 17.468,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "A",
+      "text": "晓晓你这个比喻非常恰当。其实这背后是一个非常底层的技术问题。现在的通用大模型，本质上还是一个单轮应答的范式——你输入一个 prompt，它吐出一个回答，本轮交互就结束了。它内部并没有一个完整的诊疗目标在驱动它去主动收集信息。",
+      "start": 114.166,
+      "duration": 22.04,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "B",
+      "text": "等等博文，你说的单轮应答我能理解，但这听起来好像跟 AI 的智力没关系啊。",
+      "start": 136.644,
+      "duration": 7.435,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "A",
+      "text": "你说得特别准。这恰恰是问题的核心。这不是一个更聪明的模型就能解决的问题，它需要的是一套全新的交互范式。简单来说，就是让 AI 拥有一个目标感，知道当前任务还没完成，还要继续往下问。这背后涉及到任务规划、状态追踪、主动决策一系列机制。",
+      "start": 144.54,
+      "duration": 22.083,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "B",
+      "text": "哇，听你这么一解释，我感觉这就像是给 AI 装上了一个医疗问诊剧本，让它知道这场对话的主线任务是什么。",
+      "start": 167.068,
+      "duration": 8.785,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "你这个比喻其实就是学术界现在在研究的方向，叫Agentic Workflow，智能体工作流。让 AI 不只是被动回答，而是主动规划下一步该做什么。",
+      "start": 176.327,
+      "duration": 12.747,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "哎，那这就引出一个特别值得思考的问题——如果我们连医疗这种最需要严谨的场景，AI 都还做不到位，那它在其他专业领域是不是也会有类似的水土不服？",
+      "start": 189.501,
+      "duration": 12.66,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "A",
+      "text": "确实如此。其实医疗只是一个非常典型的缩影，金融、法律、教育这些垂直领域，都会遇到一模一样的挑战。所以未来谁能在这个交互范式上做出突破，谁才能真正建立起人机信任。",
+      "start": 202.625,
+      "duration": 15.707,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "B",
+      "text": "行，这个话题先聊到这儿。哎博文，这让我想到了另一个最近特别火的方向——AI 写代码。你还记得去年大家都在比谁的代码补全更准吗？现在风向好像变了。",
+      "start": 218.749,
+      "duration": 14.749,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "嗯，你说的是从补全工具升级到平台这个趋势吧？",
+      "start": 233.934,
+      "duration": 5.041,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "对！我看到一个叫码上飞的团队特别有意思，他们的创始团队阵容特别有意思——既有腾讯出来的资深老兵，又有大厂出来的零零后新锐。这种老炮儿加新势力的组合，感觉特别有故事。",
+      "start": 239.392,
+      "duration": 19.776,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "这种组合其实非常合理。AI Coding 这件事，老兵懂工程、懂架构、懂真正的开发者痛点；而零零后这一波是在 AI 原生环境下长大的，他们对人机协作的理解完全不一样。两者碰撞出来的东西，往往比单纯的技术堆砌更有生命力。",
+      "start": 259.664,
+      "duration": 21.561,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "没错！而且我还注意到一个细节——他们已经接入了华为鸿蒙生态了。博文，这个动作你觉得释放了什么信号？",
+      "start": 281.637,
+      "duration": 10.352,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "这个信号其实非常重要。这说明码上飞从一开始就没把自己定位成一个AI 写代码的小插件，而是瞄准了AI 开发协作平台这个更大的盘子。接入鸿蒙生态，本质上是在争夺下一代开发者的入口。",
+      "start": 292.468,
+      "duration": 16.597,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "B",
+      "text": "哎你这么一说我突然想明白了！这就像以前大家都在抢搜索引擎这个入口，现在 AI Coding 赛道其实是在抢开发者工作台这个新入口。谁能把平台做起来，谁就能把所有工具、流程、协作都装进去。",
+      "start": 309.497,
+      "duration": 18.165,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "没错，这就是从工具之争升级到生态之争。单点功能再强，最终都会被平台吞噬掉。这也是为什么大家都在拼全流程能力。",
+      "start": 328.13,
+      "duration": 11.223,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "B",
+      "text": "哎对了博文，说到这种一口气发布很多东西的架势，我想起另一家老朋友——美图。",
+      "start": 339.843,
+      "duration": 9.307,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "哦？美图又有新动作了？",
+      "start": 349.627,
+      "duration": 2.951,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "B",
+      "text": "对！他们这次一口气发布了八款 AI 产品，从修图到生成，全面 AI 化。我看到这个新闻的时候脑子里立刻冒出一句——十八年前不让你苦修 PS 的美图，这次不让你苦修 AI 了。",
+      "start": 352.996,
+      "duration": 18.426,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "哈哈这个总结非常精辟。美图其实一直延续着同一条主线，就是降低创作的门槛。十八年前是把专业修图大众化，今天是把 AI 生成工具大众化。它本质上抓住的是普通人也想要好内容这个永恒的需求。",
+      "start": 371.861,
+      "duration": 17.25,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "B",
+      "text": "没错！而且我觉得美图的厉害之处在于，它不是单纯追风口，而是把自己多年积累的美学数据和对用户审美的理解，变成了 AI 时代真正的护城河。",
+      "start": 389.523,
+      "duration": 14.096,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "这一点确实。其他纯技术驱动的公司，很难快速建立起这种审美层面的数据资产。",
+      "start": 404.112,
+      "duration": 7.305,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "哎博文，你看咱们刚聊完软件层面的事儿，再给你说个跨界动态——机器人公司魔法原子和万机易租搞了个合作，全系产品入驻人家的 2.0 平台了。",
+      "start": 411.826,
+      "duration": 15.185,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "这个动作挺务实的。说白了，机器人产品现在最大的瓶颈不是技术做不出来，而是用得起。",
+      "start": 427.498,
+      "duration": 8.001,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "B",
+      "text": "对对对！一台机器人动不动几十万，谁买得起啊？",
+      "start": 435.941,
+      "duration": 4.605,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "所以租赁模式就成了一个非常聪明的破局点。这就像以前服务器很贵的时候，大家最后都选择了云计算。魔法原子通过租赁生态，可以让更多中小商家用低成本体验到机器人产品，本质上是在加速整个行业的商业化落地。",
+      "start": 441.006,
+      "duration": 18.513,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "嗯，这个商业模式确实跑得通。哎，最后给你来个稍微硬核一点的，我今天在 arXiv 上刷到一篇新论文，叫 Ghost Attractor Networks，说是什么闭环序列生成的新型动态解码架构。",
+      "start": 459.99,
+      "duration": 18.295,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "哦？吸引子盆结构在序列生成里的应用？这个方向挺有意思。",
+      "start": 478.697,
+      "duration": 5.607,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "B",
+      "text": "哈哈你看，一说到技术名词我就开始头大。博文老师，你能不能用最接地气的方式给听众朋友们翻译翻译？",
+      "start": 484.749,
+      "duration": 9.525,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "好嘞。简单来说，传统模型生成一段内容，就像是走一步看一步，每一步都是孤立的。而这篇论文提出的方法，相当于给模型内部装了一套记忆宫殿，让它生成的内容有一个内在的引力中心，保证整个序列不会跑偏。",
+      "start": 494.729,
+      "duration": 18.948,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "哎这个比喻我听懂了！就像咱们写作文，有个明确的主题，句子之间才不会东一榔头西一棒槌。",
+      "start": 514.117,
+      "duration": 7.653,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "对，就是这个意思。这种动态解码架构在长文本生成、多轮对话、代码补全这些需要保持一致性的场景里，特别有价值。",
+      "start": 522.248,
+      "duration": 10.004,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "B",
+      "text": "行，那咱们今天的内容就先聊到这儿。总结一下啊——AI 这场大考，正在从能不能做走向做得好不好。医疗需要多轮追问的能力，AI Coding 需要从工具走向生态，美图和魔法原子在各自的赛道上不断降低门槛，而底层的技术架构也在持续创新。",
+      "start": 532.733,
+      "duration": 26.045,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "没错，晓晓。最后送你一句总结——未来真正能跑出来的 AI 产品，一定是那些在垂直场景里扎得足够深的选手。",
+      "start": 559.204,
+      "duration": 9.699,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "B",
+      "text": "说得太好了！听众朋友们，今天的 AI 每日先锋就到这里啦，咱们明天同一时间，不见不散！",
+      "start": 569.373,
+      "duration": 8.088,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "A",
+      "text": "咱们明天见，大家拜拜！",
+      "start": 577.922,
+      "duration": 3.256,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    }
+  ]
+}
