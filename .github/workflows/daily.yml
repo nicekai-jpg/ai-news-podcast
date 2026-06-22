@@ -147,6 +147,9 @@ jobs:
             git push origin main
           fi
 
+      - name: Remove .gitignore to ensure ignored files are deployed
+        run: rm -f .gitignore
+
       - name: Deploy GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:

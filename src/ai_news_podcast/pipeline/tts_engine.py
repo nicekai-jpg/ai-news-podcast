@@ -1,4 +1,3 @@
-import asyncio
 import importlib
 import logging
 import re
@@ -38,13 +37,25 @@ def parse_dialogue_chunks(
                             # 默认根据 idx 交替分配
                             host = "B" if idx % 2 == 1 else "A"
                             if voice_name:
-                                vn_lower = voice_name.strip().lower()
+                                vn_lower = voice_name.lower()
+                                matched = False
                                 if voices:
-                                    if vn_lower == voices[0].strip().lower():
+                                    voice_a = voices[0] if len(voices) > 0 else None
+                                    voice_b = voices[1] if len(voices) > 1 else None
+                                    if (
+                                        isinstance(voice_a, str)
+                                        and vn_lower == voice_a.strip().lower()
+                                    ):
                                         host = "A"
-                                    elif vn_lower == voices[1].strip().lower():
+                                        matched = True
+                                    elif (
+                                        isinstance(voice_b, str)
+                                        and vn_lower == voice_b.strip().lower()
+                                    ):
                                         host = "B"
-                                else:
+                                        matched = True
+
+                                if not matched:
                                     # 常见中文音色及标识兜底匹配
                                     if (
                                         "xiaoxiao" in vn_lower
@@ -92,8 +103,6 @@ def parse_dialogue_chunks(
         if cleaned:
             chunks.append(DialogueChunk(host=current_host, text=cleaned))
     return chunks
-
-
 
 
 def _write_transcript_with_timestamps(
