@@ -1,73 +1,198 @@
-# AI 每日先锋（全自动化 AI 新闻播客与播报生成器）
+# AI Daily Pioneer 🎙️ (AI 每日先锋)
 
-English README: `README.md`
+[![GitHub license](https://img.shields.io/github/license/nicekai-jpg/ai-news-podcast?style=flat-square)](LICENSE)
+[![Python Version](https://img.shields.io/badge/python-3.11-blue?style=flat-square&logo=python)](https://www.python.org/)
+[![LLM Engine](https://img.shields.io/badge/LLM--Engine-MiniMax--M3-red?style=flat-square&logo=openai)](https://api.minimaxi.com/)
+[![TTS Engine](https://img.shields.io/badge/TTS--Engine-CosyVoice2-green?style=flat-square&logo=googleplay)](https://github.com/FunAudioLLM/CosyVoice)
+[![Automation](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blueviolet?style=flat-square&logo=githubactions)](.github/workflows/daily.yml)
+[![Hosting](https://img.shields.io/badge/Hosting-GitHub%20Pages-orange?style=flat-square&logo=githubpages)](https://pages.github.com/)
 
-本项目每天自动抓取 AI 领域的 RSS/Atom 新闻源，进行智能筛选和摘要，并使用大语言模型（LLM）生成播客文稿与纯文本日报。同时内置文本转语音 (TTS) 以及播客 RSS Feed 生成。
+[**English README** (英文说明文档)](README.md)
 
-## 核心功能
-- **全自动新闻管家**：自动拉取 `config/sources.yaml` 中的订阅源，解析内容并根据价值进行智能去重（语义相似度度量）与打分。
-- **大语言模型（LLM）写作**：基于 **MiniMax-M3**（通过 MiniMax 兼容 OpenAI 格式的接口）的多 Agent 写作框架。包含 Editor Agent 提炼今日大纲，与 Writer Agent 将大纲转化为符合 SSML 规范的双人自然对话剧本。
-- **高质量语音合成 (TTS)**：以 **CosyVoice 2**（利用 `CosyVoice2-0.5B` 进行零样本/小样本声音克隆）为核心的合成引擎，对两个独立的主持人（晓晓与博文）音色进行高拟真合成，并以 **Edge-TTS** 作为兜底。
-- **音频混音与后处理**：使用 **pydub** 与 **FFmpeg** 自动为每个对话分段加入适当的静音停顿（智能句读），混合背景音乐 (BGM) 并完成音量响度均衡归一化（`loudnorm`）。
-- **开源免托管部署**：配置 GitHub Actions 全自动每日运行，音频与 Feed 全托管在免费的 GitHub Pages 上，零费用维护。
+**AI Daily Pioneer (AI 每日先锋)** 是一个全自动、工业级的 AI 播客与新闻日报生成器。它每天定时抓取精心挑选的 RSS/Atom 科技新闻源，使用 NLP 算法进行智能聚类、去重与打分，编排 **多 Agent 协同写作系统** 自动撰写双人对话播客剧本，并使用 **CosyVoice 2** 进行声音克隆和拟真合成，最终将音频及播放器网页全自动发布部署至 **GitHub Pages**。
 
-## 怎么“调用”（本地运行）
+---
 
-### 1. 配置环境变量 `.env`
-在项目根目录创建或编辑 `.env` 文件，填入 MiniMax Token Plan 专属 API Key：
-```env
-MINIMAX_API_KEY="your-minimax-api-key"
+## 🗺️ 系统数据流水线与架构
 
-### 2. 环境安装（推荐使用 uv）
-推荐用 [uv](https://docs.astral.sh/uv/)（更快、更稳定）：
+项目被设计为一套端到端、高度自动化的线性执行流水线（Pipeline）：
+
+```
+[精选 RSS/Atom 新闻信源]
+           │
+           ▼  (fetcher.py)
+   [httpx 异步抓取 & trafilatura 网页正文深度解析]
+           │
+           ▼  (processor.py)
+   [智能去重：TF-IDF + 关键词 overlap 重合度 + 语义相似度度量]
+           │
+           ▼
+   [DBSCAN 聚类分析 & 5维价值评分机制]
+           │
+           ▼  (scriptwriter.py)
+   [主编 Agent：定调 Thesis、选定双头条与 3 条快讯大纲] ──► (MiniMax-M3 旗舰大模型)
+           │
+           ▼
+   [撰稿 Agent：将大纲转化为符合 SSML 语法的双人对话剧本] ──► (MiniMax-M3 旗舰大模型)
+           │
+           ▼  (tts_engine.py)
+   [TTS 语音合成：零样本 (Zero-shot) 声音克隆] ──► (CosyVoice 2 推理引擎)
+           │
+           ▼
+   [音频后处理：句读静音增补、BGM 自动混音与 EBU R128 标准音量均衡] ──► (pydub & FFmpeg)
+           │
+           ▼  (site_builder/)
+   [静态播放页面 & 兼容 Apple Podcasts 规范的 RSS XML 订阅源构建]
+           │
+           ▼  (daily.yml / prune_pages.yml)
+   [Git 文本数据提交至 main 分支 / 音频与静态站点部署至 gh-pages 分支]
+```
+
+---
+
+## 🌟 核心技术亮点
+
+### 1. 智能去重与评分机制
+* **多维语义去重**：通过结合 TF-IDF 关键词重合比对（基于 RapidFuzz 算法）与预训练的多语言语义编码模型（`paraphrase-multilingual-MiniLM-L12-v2`），自动过滤跨平台抓取到的高度重复及类似新闻。
+* **DBSCAN 聚类**：将多源报导的同类科技事件进行自动归堆聚类，捕捉当天的热门风向。
+* **5维打分机制**：从影响力（Impact Scope）、新颖度（Novelty）、可解释性（Explainability）、听众相关性（Relevance）以及来源权威度（Source Authority）五个维度对新闻打分，优中选优。
+
+### 2. 多 Agent 协同双人对话文案创作
+* 基于 **MiniMax-M3** 旗舰大语言模型，通过多 Agent 设定进行接力式文案创作：
+  - **Editor Agent（主编）**：筛选素材，产出结构化的 Thesis、Headlines 及 Quick News JSON 大纲。
+  - **Writer Agent（撰稿人）**：将大纲重写为自然、有温度的双人对谈剧本，包含两位常驻主持人：**晓晓（体验派 PM 视角，擅长比喻、发问，声线温柔）** 和 **博文（技术极客视角，提供专业解析，逻辑清晰）**。
+* 通过在 Prompt 中附加严格的长度限制与 `<think>` 思考链压缩指令，保证大模型能够以完整的 XML `<speak>` 闭合输出，防止超长截断。
+
+### 3. 高拟真 CosyVoice 2 克隆合成
+* 通过 GHA 云端部署的 **CosyVoice 2** (`CosyVoice2-0.5B` 推理引擎）读取 `assets/refs/` 下的参考音频进行高品质的零样本克隆合成。
+* 对话切片优化：合成前使用 `text_utils.py` 中的精细清洗规则将超长句子拆分为自然短句，避免 CosyVoice 大音频推理导致的吞音或语速失真。
+* 双引擎兜底：当环境限制未启用本地推理时，支持自动无缝降级到 **Edge-TTS** 进行念稿。
+
+### 4. 广播级音频混音与后处理
+* **智能句读**：使用 **pydub** 库在不同主持人发言以及自然段落之间插入动态毫秒级的静音段落（Pad padding），使对话节奏如同真人聊天。
+* **音轨混音**：自动在人声音轨中混入低音量背景音乐 (`bgm_placeholder.wav`)，并自动对开头和结尾应用渐入渐出。
+* **响度均衡**：使用 **FFmpeg EBU R128 标准响度均衡器**（`loudnorm` 参数）对最终合成的 MP3 文件进行标准化处理，保证在各种播放设备上音量饱满一致。
+
+### 5. 独创的 Git 媒体防膨胀发布策略
+为了防止 MP3 等高容量音频导致项目 Git 提交历史无限膨胀，项目采用了分支纯净的分流存储设计：
+* **`main` 分支（代码与文本）**：只追踪 Python 源码、YAML 配置、Briefs 数据和剧本 `.txt`/`.html` 文本。**绝对禁止提交任何 `.mp3` 音频文件**（通过 pre-commit 钩子强制拦截）。
+* **`gh-pages` 分支（媒体与部署）**：作为网站发布分支，存储网页静态文件、RSS 订阅源 XML、以及物理生成的 MP3 音频和智能句读音频片段切片文件夹。
+* **定期瘦身优化机制 (`prune_pages.yml`)**：每月 1 号（或手动）触发一次。它将最近 30 天在播的有效音频备份，并在本地建立一个全新、零历史记录的 `gh-pages` 孤立分支（orphan branch），将备份移回并强推覆盖远程分支。此时 `gh-pages` 提交数会重置为 1，30天外的旧音频被彻底物理清空，极大地释放了托管空间。
+
+---
+
+## 📂 项目结构与模块映射
+
+```
+ai-news-podcast/
+├── .github/workflows/          # GHA 全自动流水线工作流
+│   ├── ci.yml                  # 格式化与静态检查 QA (Ruff)
+│   ├── daily.yml               # 每日新闻抓取、脚本编写与语音合成主流程
+│   └── prune_pages.yml         # 孤立分支瘦身与旧音频清理机制
+├── assets/                     # 音频素材与音色参考
+│   ├── audio_samples/          # Edge-TTS 样音
+│   ├── refs/                   # CosyVoice 声音克隆参考文件（host_a_ref.wav 等）
+│   └── bgm_placeholder.wav     # 播客背景混音 BGM 音轨
+├── config/                     # 规则配置层
+│   ├── config.yaml             # Prompt 模板、人声权重、混音参数控制
+│   └── sources.yaml            # RSS/Atom 订阅源列表
+├── data/                       # 本地数据与缓存
+│   ├── briefs/                 # 新闻抓取归一化 JSON 数据 (brief_YYYY-MM-DD.json)
+│   ├── reports/                # 大模型生成 Markdown 日报存档
+│   └── episodes.json           # 历史已发布播客 Episode 元数据索引
+├── docs/                       # 系统架构、开发手册及 TTS 评测报告
+├── scripts/                    # CosyVoice 环境安装脚本等
+├── site/                       # 静态播放器页面及 feed.xml 本地临时构建目录
+├── src/ai_news_podcast/        # 项目主包源码
+│   ├── cli/                    # CLI 终端命令注册接口
+│   ├── pipeline/               # 流水线核心组件
+│   │   ├── fetcher.py          # Stage 1: 异步网页解析抓取器
+│   │   ├── processor.py        # Stage 2: 去重、聚类打分处理器
+│   │   ├── scriptwriter.py     # Stage 3: Editor & Writer 双 Agent 剧本生成
+│   │   ├── tts_engine.py       # Stage 4: CosyVoice/Edge-TTS 合成器
+│   │   └── runner.py           # 串联流水线的整体逻辑控制器
+│   ├── site_builder/           # Stage 5: RSS 生成器与静态 HTML 构建器
+│   ├── prompts.py              # 大模型 Prompt 提示词合集
+│   ├── text_utils.py           # 剧本特殊符号清洗与智能短句切分器
+│   └── utils.py                # 常用辅助逻辑与 YAML 读写器
+├── pyproject.toml              # 项目依赖项配置
+└── uv.lock                     # 锁定的确定版本依赖树
+```
+
+---
+
+## 🛠️ 本地安装与开发指南
+
+### 1. 前置条件
+* 运行环境：Python 3.11+
+* 系统依赖：**FFmpeg**（必须在系统 Path 中，否则 pydub 音频混音会失败）
+* 包管理器：[uv](https://docs.astral.sh/uv/)（强烈推荐，速度极快）
+
+### 2. 克隆与安装
 ```bash
 git clone https://github.com/<your-username>/ai-news-podcast.git
 cd ai-news-podcast
 uv sync
 ```
 
-### 3. 执行功能脚本
-项目已重构为标准的 Python 包结构，不同功能可以通过注册的 CLI 命令直接运行：
-
-**A. 生成完整播客 (MP3 + RSS 页面 + 记录)**
-```bash
-uv run podcast-daily --base-url http://localhost
-```
-*提示：默认 TTS 为 CosyVoice 2 声音克隆。本地合成音频需要先运行 `bash scripts/setup_cosyvoice_env.sh` 配置环境并指定 `COSYVOICE_MODEL_DIR`。可以加上 `--no-audio` 跳过音频合成，仅生成剧本与简报。*
-
-**C. 仅发布已合成音频（GHA Job 2 后）**
-```bash
-uv run podcast-publish --date 2026-06-11
+### 3. 配置密钥环境
+在项目根目录下创建 `.env` 文件，写入你的 API 授权 Key：
+```env
+MINIMAX_API_KEY="你的-minimax-api-key"
 ```
 
-**B. 生成今日 AI 科技新闻日报 (Markdown)**
-本脚本调用 **MiniMax-M3** 大模型生成 Markdown 日报。
-```bash
-uv run podcast-report
-```
+### 4. 运行终端指令
 
-## TTS 引擎评测与选型
-我们针对双人对谈播客场景，对多种 Text-to-Speech (TTS) 模型（包括 Edge-TTS、ChatTTS、CosyVoice 2、F5-TTS、GPT-SoVITS、Kokoro、MOSS-TTS）进行了本地 CPU 推理实测与三维评估。
-* 关于模型评测对比、2C2G 服务器串行队列设计、服务端代码实现、前端双缓冲播放器设计及 GHA 工作流声明，请参阅 [TTS 系统设计与技术落地全景指南](docs/tts_complete_guide.md)。
-* GHA CosyVoice 2 部署问题与修复记录见 [gha_cosyvoice2_deployment_log.md](docs/gha_cosyvoice2_deployment_log.md)。
+* **A. 执行数据层抓取与打分过滤**
+  ```bash
+  uv run podcast-pipeline --date 2026-06-23
+  ```
+  *(本地生成当天的打分数据 `data/briefs/brief_2026-06-23.json`)*
 
-## 如何保证内容质量与专业性
-你可以通过编辑 `config/` 目录下的文件来定义你的关注焦点：
-- **新闻源**：编辑 `config/sources.yaml`，按需启用/禁用 RSS 来源。
-- **配置规则**：编辑 `config/config.yaml` 灵活调节抓取关键字 (`selection.include_keywords`)，更换 TTS 念稿声线等。
+* **B. 生成今日 Markdown 日报**
+  ```bash
+  uv run podcast-report --date 2026-06-23
+  ```
+  *(生成 `data/reports/daily_report_2026-06-23.md`)*
 
-## 启用免费播客托管 (GitHub Pages)
-1. 把本项目推到 GitHub 公共仓库。
-2. 仓库设置 **Settings** -> 左侧菜单栏 **Pages**。
-3. **Build and deployment** -> 选择 **Deploy from a branch**。
-4. Branch 下拉选 `gh-pages`，Folder 下拉选 `/(root)` 并保存。
-5. 几分钟后，在各大播客 App 订阅你的地址：
+* **C. 生成对话剧本与播客音频**
+  ```bash
+  # 仅生成文字剧本与 HTML 详情页（跳过 TTS 语音合成）
+  uv run podcast-daily --date 2026-06-23 --no-audio --base-url http://localhost
+  
+  # 运行完整流程（本地需要配置好 CosyVoice 音频合成服务器）
+  uv run podcast-daily --date 2026-06-23 --base-url http://localhost
+  ```
+
+---
+
+## ☁️ 云端自动化与部署托管
+
+### 1. 配置 GitHub Actions 密钥
+在你的 GitHub 仓库页面，依次点击 **Settings** -> **Secrets and variables** -> **Actions**。
+点击 **New repository secret** 创建新密钥：
+* **Name**: `MINIMAX_API_KEY`
+* **Value**: *填入你的 MiniMax 专属 API Key*
+
+### 2. 启用 GitHub Pages 托管播放页与 RSS
+1. 将代码推送到 GitHub 仓库。
+2. 前往 **Settings** -> 左侧菜单栏 **Pages**。
+3. 在 **Build and deployment** 下，将 Source 设置为 **Deploy from a branch**。
+4. 将分支设置为 `gh-pages`，目录设置为 `/ (root)`，点击保存。
+5. 部署成功后，在各大播客 App（如小宇宙、Apple Podcasts）中填入你的 RSS 地址即可完成订阅：
    `https://<你的GitHub用户名>.github.io/<仓库名>/feed.xml`
 
-*注意：媒体资源（MP3 音频和智能句读音频切片）仅在 `gh-pages` 分支中增量托管，不提交到主分支 `main`，从而保证您的开发分支轻巧、拉取极速。*
+### 3. 手动触发特定日期的重建
+如果您想重新生成某一期的音频（例如：AI 在某一天念错字了，或者您手动在 main 分支上修改了 `site/episodes/日期.txt` 里的文本文档）：
+您可以通过 GHA 手动运行并指定参数，或者在终端利用 GitHub CLI 执行：
+```bash
+gh workflow run "Daily Podcast" -f date=YYYY-MM-DD
+```
+*提示：由于 `daily.yml` 包含检查逻辑，若 main 分支上已存在对应日期的脚本 `.txt`，GHA 将直接使用该既有脚本合成音频，不会使用大模型重新生成覆盖，确保了您的人工修改能完美反映在最终播客中。*
 
-## 每天自动更新与音频防膨胀机制
-- **配置密钥**：在 GitHub 仓库页面进入 **Settings** -> 左侧菜单栏 **Secrets and variables** -> **Actions**，点击 **New repository secret**，添加名为 `MINIMAX_API_KEY` 的密钥，填入你的 MiniMax API Key。
-- **播客每日更新**：内置 GitHub Actions 工作流 `daily.yml`。每天定时运行自动构建，并将简报和播客文本提交到 `main` 分支，合成的大音频和切片则直接同步部署到 `gh-pages`。
-- **定期历史清理（防膨胀）**：内置历史清理工作流 `prune_pages.yml`，设定每月 1 号执行（也支持随时手动触发）。它会备份最近 30 天有效播客的音频与切片数据，随后**彻底清空重置 `gh-pages` 分支的提交历史**（使 Commit 历史数归为 1），并把备份的 30 天数据强推上去，实现物理删除旧数据并释放 Git 大文件空间。
-- **手动触发**：你可以在仓库的 Actions 页面，手动选择对应的 Workflow 并点击 **Run workflow** 强制立刻运行。
+---
+
+## ⚖️ 开源协议
+
+本项目采用 **MIT License** 开源协议进行授权。详情请见 [LICENSE](LICENSE) 文件。
+欢迎提交 Issue 和 PR 共同完善本项目！
