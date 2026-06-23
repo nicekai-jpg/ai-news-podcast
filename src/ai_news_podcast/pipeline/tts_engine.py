@@ -147,8 +147,9 @@ def _write_chunks_and_playlist(
         voices = {}
         for var, segments in segments_by_variant.items():
             fn = f"chunk_{idx:03d}_{var}.mp3"
-            
+
             import importlib
+
             pydub = importlib.import_module("pydub")
             AudioSegment = getattr(pydub, "AudioSegment")
             silence_pad = AudioSegment.silent(duration=300)
