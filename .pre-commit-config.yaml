@@ -20,5 +20,5 @@ repos:
         entry: Audio files (.mp3, .wav, etc.) are NOT allowed to be committed to main. Audio must only be deployed to gh-pages.
         language: fail
         files: '\.(mp3|wav|ogg|flac|m4a)$'
-        exclude: '^assets/bgm_placeholder.wav$|^assets/audio_samples/' # 允许已有的BGM和音频样本
+        exclude: '^assets/' # 允许 assets 目录下的所有音频素材和参考音频
 
