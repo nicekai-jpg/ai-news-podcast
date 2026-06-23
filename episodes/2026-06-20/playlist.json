@@ -3,223 +3,238 @@
   "chunks": [
     {
       "id": 1,
-      "host": "A",
-      "text": "听众朋友们好，欢迎收听AI 每日先锋，我是博文。今天是2026年6月20日。",
+      "host": "B",
+      "text": "听众朋友们大家好，欢迎收听AI每日先锋，今天是2026年6月20日。我是主持人晓晓。",
       "start": 1.0,
-      "duration": 7.392,
+      "duration": 9.404,
       "audios": {
         "professional": "chunk_001_professional.mp3",
         "lively": "chunk_001_lively.mp3"
       },
       "voices": {
-        "professional": "host_a_professional",
-        "lively": "host_a_lively"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 2,
-      "host": "B",
-      "text": "大家好，我是晓晓。今天这AI圈的瓜，那可是相当有意思。",
-      "start": 8.841,
-      "duration": 5.868,
+      "host": "A",
+      "text": "大家好，我是博文。",
+      "start": 10.853,
+      "duration": 1.393,
       "audios": {
         "professional": "chunk_002_professional.mp3",
         "lively": "chunk_002_lively.mp3"
       },
       "voices": {
-        "professional": "host_b_professional",
-        "lively": "host_b_lively"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 3,
-      "host": "A",
-      "text": "咱们先聊聊今天第一个大头条。那就是，GPT发AI原创新成果了。",
-      "start": 15.206,
-      "duration": 6.39,
+      "host": "B",
+      "text": "哎博文，你今天刷新闻了吗？我感觉今天科技圈有两个事特别炸——呃不是，我是说，特别有看头。",
+      "start": 12.743,
+      "duration": 7.488,
       "audios": {
         "professional": "chunk_003_professional.mp3",
         "lively": "chunk_003_lively.mp3"
       },
       "voices": {
-        "professional": "host_a_professional",
-        "lively": "host_a_lively"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 4,
-      "host": "B",
-      "text": "晓晓也一直在关注这个，博文，这个事影响真的很大吗？",
-      "start": 22.049,
-      "duration": 5.563,
+      "host": "A",
+      "text": "哈哈晓晓，你刚才那口误挺真实的。哪两个事？",
+      "start": 20.684,
+      "duration": 3.439,
       "audios": {
         "professional": "chunk_004_professional.mp3",
         "lively": "chunk_004_lively.mp3"
       },
       "voices": {
-        "professional": "host_b_professional",
-        "lively": "host_b_lively"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 5,
-      "host": "A",
-      "text": "确实。简单来说，AI实现药物全自动研发，还远吗",
-      "start": 28.017,
-      "duration": 5.345,
+      "host": "B",
+      "text": "一个是AI全自动做药，另一个是人形机器人突然有了\"通用小脑\"。我就在想啊，今天的AI好像同时在两件事上发力——一边是创造力的爆发，从写代码到造分子；另一边是对自己能力边界的反思。这两个方向同时迎来临界点，太有意思了。",
+      "start": 24.528,
+      "duration": 23.617,
       "audios": {
         "professional": "chunk_005_professional.mp3",
         "lively": "chunk_005_lively.mp3"
       },
       "voices": {
-        "professional": "host_a_professional",
-        "lively": "host_a_lively"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 6,
-      "host": "B",
-      "text": "没错。那今天的第二个大头条，是关于：全球首个人形机器人通用小脑来了！全球最大规模2万小时人类动作数据，实现零样本泛化。",
-      "start": 33.795,
-      "duration": 14.183,
+      "host": "A",
+      "text": "你这个总结挺到位的。一个往外走，一个往内看，确实是今天AI圈特别有意思的张力。那咱们就先聊聊AI做药这个？",
+      "start": 48.578,
+      "duration": 8.795,
       "audios": {
         "professional": "chunk_006_professional.mp3",
         "lively": "chunk_006_lively.mp3"
       },
       "voices": {
-        "professional": "host_b_professional",
-        "lively": "host_b_lively"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 7,
-      "host": "A",
-      "text": "对，这个也备受关注，主要进展是：人形机器人正式迈入“GPT时代”",
-      "start": 48.443,
-      "duration": 5.868,
+      "host": "B",
+      "text": "好嘞！博文，我今天早上看到这条新闻的时候真的愣了一下——说GPT系列的相关AI，在药物研发上做出了\"原创新成果\"，而且是从靶点发现到分子设计，端到端搞定的。",
+      "start": 57.838,
+      "duration": 15.63,
       "audios": {
         "professional": "chunk_007_professional.mp3",
         "lively": "chunk_007_lively.mp3"
       },
       "voices": {
-        "professional": "host_a_professional",
-        "lively": "host_a_lively"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 8,
-      "host": "B",
-      "text": "嗯，除了这两个头条，我看到快讯中 Diffusion Language Models: An Experimental Analysis 也有新动态。",
-      "start": 54.773,
-      "duration": 9.656,
+      "host": "A",
+      "text": "这个\"端到端\"是关键。晓晓，你给听众翻译翻译？",
+      "start": 73.93,
+      "duration": 3.875,
       "audios": {
         "professional": "chunk_008_professional.mp3",
         "lively": "chunk_008_lively.mp3"
       },
       "voices": {
-        "professional": "host_b_professional",
-        "lively": "host_b_lively"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 9,
-      "host": "A",
-      "text": "没错！关于这个，主要是 arXiv:2606",
-      "start": 64.88,
-      "duration": 4.997,
+      "host": "B",
+      "text": "等的就是你这句话！简单说，以前的AI在制药里基本就是个\"超级实习生\"的角色——你给它一个靶点，它帮你筛一堆分子，然后人类科学家再挑、再改、再验证。但这次不一样，它是从头到尾自己把链条跑通了。",
+      "start": 78.256,
+      "duration": 16.825,
       "audios": {
         "professional": "chunk_009_professional.mp3",
         "lively": "chunk_009_lively.mp3"
       },
       "voices": {
-        "professional": "host_a_professional",
-        "lively": "host_a_lively"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 10,
-      "host": "B",
-      "text": "嗯，除了这两个头条，我看到快讯中 LLM Doesn't Know What It Doesn't Know: Detecting Epistemic Blind Spots via Cross-Model Attribution Divergence on Clinical Tabular Data 也有新动态。",
-      "start": 70.377,
-      "duration": 19.316,
+      "host": "A",
+      "text": "对，这就有点\"从助手变成作者\"的味道了。而且我注意到这次特别强调\"原创\"两个字。",
+      "start": 95.581,
+      "duration": 6.966,
       "audios": {
         "professional": "chunk_010_professional.mp3",
         "lively": "chunk_010_lively.mp3"
       },
       "voices": {
-        "professional": "host_b_professional",
-        "lively": "host_b_lively"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 11,
-      "host": "A",
-      "text": "没错！关于这个，主要是 arXiv:2606",
-      "start": 90.131,
-      "duration": 4.954,
+      "host": "B",
+      "text": "对！\"原创\"这两个字我盯了半天。博文，这意味着什么？",
+      "start": 102.985,
+      "duration": 5.181,
       "audios": {
         "professional": "chunk_011_professional.mp3",
         "lively": "chunk_011_lively.mp3"
       },
       "voices": {
-        "professional": "host_a_professional",
-        "lively": "host_a_lively"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 12,
-      "host": "B",
-      "text": "嗯，除了这两个头条，我看到快讯中 Analyzing the Narration Gap in LLM-Solver Loops 也有新动态。",
-      "start": 95.546,
-      "duration": 10.265,
+      "host": "A",
+      "text": "意味着AI不只是把已有的分子数据库重新排列组合，它生成的结构可能是人类专家从来没想过的。这种\"非显而易见性\"才是真正的科学价值。",
+      "start": 108.627,
+      "duration": 12.365,
       "audios": {
         "professional": "chunk_012_professional.mp3",
         "lively": "chunk_012_lively.mp3"
       },
       "voices": {
-        "professional": "host_b_professional",
-        "lively": "host_b_lively"
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 13,
-      "host": "A",
-      "text": "没错！关于这个，主要是 arXiv:2606",
-      "start": 106.256,
-      "duration": 4.997,
+      "host": "B",
+      "text": "哇，这个厉害了。那对我们普通人意味着什么？是不是以后新药会便宜很多？",
+      "start": 121.437,
+      "duration": 5.137,
       "audios": {
         "professional": "chunk_013_professional.mp3",
         "lively": "chunk_013_lively.mp3"
       },
       "voices": {
-        "professional": "host_a_professional",
-        "lively": "host_a_lively"
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
       }
     },
     {
       "id": 14,
-      "host": "B",
-      "text": "哇，每天都能看到新东西在冒出来。",
-      "start": 111.727,
-      "duration": 3.604,
+      "host": "A",
+      "text": "理性地说，药物价格是个复杂系统，但研发周期确实有望被压缩。传统一款新药要十多年、几十亿美元，如果AI能把前期探索阶段砍掉一半，整个行业的资金效率会质变。",
+      "start": 127.048,
+      "duration": 15.064,
       "audios": {
         "professional": "chunk_014_professional.mp3",
         "lively": "chunk_014_lively.mp3"
       },
       "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "我来打个比方啊，这就好像以前开饭店，每道菜都得从种菜开始；现在突然有了一个中央厨房，你只要告诉它要什么味道的菜，它自己研究菜谱、自己种菜、自己炒。",
+      "start": 142.539,
+      "duration": 15.151,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
         "professional": "host_b_professional",
         "lively": "host_b_lively"
       }
     },
     {
-      "id": 15,
+      "id": 16,
       "host": "A",
-      "text": "科技变化就是快，那以上就是今天的 AI 重点资讯。感谢各位收听，咱们明天见！",
-      "start": 115.758,
-      "duration": 6.477,
+      "text": "哈哈哈这个比喻可以，不过晓晓，背后的算力和数据壁垒其实非常高，不是所有团队都能玩的。",
+      "start": 158.154,
+      "duration": 7.619,
       "audios": {
-        "professional": "chunk_015_professional.mp3",
-        "lively": "chunk_015_lively.mp3"
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
       },
       "voices": {
         "professional": "host_a_professional",
@@ -227,18 +242,453 @@
       }
     },
     {
-      "id": 16,
+      "id": 17,
       "host": "B",
-      "text": "拜拜！",
-      "start": 122.699,
-      "duration": 1.383,
+      "text": "对，这个我懂——大厂游戏嘛。那博文，咱们换个话题，我今天看到的另一条新闻也让我很激动——全球第一个\"人形机器人通用小脑\"模型出来了，训练数据用了整整2万小时的人类动作。",
+      "start": 166.19,
+      "duration": 16.215,
       "audios": {
-        "professional": "chunk_016_professional.mp3",
-        "lively": "chunk_016_lively.mp3"
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
       },
       "voices": {
         "professional": "host_b_professional",
         "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "这个我仔细看了。2万小时这个数字很关键。",
+      "start": 182.841,
+      "duration": 3.57,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "关键在哪？",
+      "start": 186.828,
+      "duration": 0.914,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "关键在于它是\"零样本泛化\"。你不需要为每个新任务重新训练，模型看到新场景就能直接上手。",
+      "start": 188.238,
+      "duration": 8.446,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "等等博文，\"零样本泛化\"听起来好专业，你给翻译翻译？",
+      "start": 197.096,
+      "duration": 5.616,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "简单说，就是你不用教它一万次，它看一次就能做。这跟我们以前那种\"一招鲜\"的机器人完全不一样。",
+      "start": 203.191,
+      "duration": 6.618,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "B",
+      "text": "哦！这不就是机器人的\"GPT时刻\"嘛！就像我侄子，看过我做一次蛋糕，他下次就能自己试着做，虽然做得不好，但那个\"举一反三\"的能力是有了。",
+      "start": 210.241,
+      "duration": 12.06,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "你这个比喻非常恰当，本质就是从\"专用控制器\"走向\"通用智能底座\"。以前每个动作都要写代码，现在有了\"通用小脑\"，上层应用开发会爆发。",
+      "start": 222.769,
+      "duration": 12.974,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "B",
+      "text": "对！我突然想到，这其实跟AI做药有点像——都是从一个\"专用工具\"升级成一个\"通用底座\"，然后整个生态就起来了。",
+      "start": 236.233,
+      "duration": 11.494,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "没错，这就是范式跃迁。晓晓你这产品经理的直觉确实灵敏。",
+      "start": 248.204,
+      "duration": 5.224,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "B",
+      "text": "哈哈谢谢夸奖！那接下来轻松一点，我最近还刷到几个挺有意思的学术动向。博文你最近看arXiv了吗？",
+      "start": 253.846,
+      "duration": 8.272,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "看了，有几个我也想聊。",
+      "start": 262.557,
+      "duration": 1.785,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "B",
+      "text": "先说一个我特别好奇的——有篇论文在研究\"扩散语言模型\"。博文，这个方向你觉得靠谱吗？",
+      "start": 264.754,
+      "duration": 8.403,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "挺有意思的尝试。现在所有的大模型都是\"自回归\"，一个字一个字往外蹦，扩散模型在图像里是整体生成的，有人就想了，能不能把这套机制搬到语言上。",
+      "start": 273.65,
+      "duration": 12.016,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "那这不就是\"换一条路走路\"嘛？",
+      "start": 286.075,
+      "duration": 2.612,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "哈哈可以这么理解。具体效果还得观察，但它至少说明一件事——Transformer加自回归这套组合，不一定是终极答案。",
+      "start": 289.174,
+      "duration": 9.012,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "B",
+      "text": "行，这条先存着。哎还有一个让我有点担心的事——有研究说LLM存在\"认知盲区\"，特别是在临床表格数据上，会出现\"不知道自己不知道\"的情况。",
+      "start": 298.628,
+      "duration": 14.629,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "这个挺重要的。它是用\"跨模型归因分歧\"的方法来检测的——就是让好几个模型同时看同一个问题，看它们哪里意见不一致。",
+      "start": 313.717,
+      "duration": 9.361,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "哦，原来是这样！那\"不知道自己不知道\"具体是啥意思？",
+      "start": 323.549,
+      "duration": 4.571,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "通俗讲，就是模型胡说八道的时候还特别自信。在闲聊里问题不大，但在医疗、法律这种场景，是会出人命的。",
+      "start": 328.532,
+      "duration": 9.404,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "B",
+      "text": "对！这种\"不知道自己不知道\"比\"知道但说错\"更可怕。",
+      "start": 338.381,
+      "duration": 4.659,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "是的，所以这类研究越来越重要，是AI安全落地的关键拼图。",
+      "start": 343.495,
+      "duration": 5.399,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "好，最后再聊一个\"十年回顾\"——有篇综述系统梳理了过去十年AI for SE和SE for AI的演进。博文，你怎么评价这十年？",
+      "start": 349.334,
+      "duration": 12.19,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "我觉得这十年最核心的变化是——AI从\"软件工程的工具\"变成了\"软件工程的主体\"。以前我们用AI写代码辅助，现在是AI自己写、自己测、自己改。",
+      "start": 362.002,
+      "duration": 12.234,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "B",
+      "text": "哇，那\"开发者\"这个职业会不会消失？",
+      "start": 374.717,
+      "duration": 3.396,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "不会消失，但角色会变——从\"写代码的\"变成\"管代码的\"，从\"实现者\"变成\"决策者\"。",
+      "start": 378.539,
+      "duration": 7.793,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "B",
+      "text": "嗯，这个我同意。那我总结一下今天啊——我们聊了AI全自动做药、人形机器人的\"通用小脑\"、扩散语言模型的实验、LLM的认知盲区，还有软件工程的十年变迁。你会发现，今天的AI正在同时做两件事：一边疯狂拓展能力边界，一边认真反思自己的能力边界。",
+      "start": 386.802,
+      "duration": 24.27,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "A",
+      "text": "是的晓晓，这正是AI走向成熟的重要标志——既能创造，又能自省。",
+      "start": 411.533,
+      "duration": 5.399,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "B",
+      "text": "行，那今天的AI每日先锋就到这里啦！听众朋友们，我们明天见！",
+      "start": 417.388,
+      "duration": 6.574,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "A",
+      "text": "感谢收听，我们明天见。",
+      "start": 424.428,
+      "duration": 1.785,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
       }
     }
   ]
