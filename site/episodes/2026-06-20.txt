@@ -1,50 +1,140 @@
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
-<voice name="host_a_professional" start="1.000" duration="7.392">
-听众朋友们好，欢迎收听AI 每日先锋，我是博文。今天是2026年6月20日。
-</voice>
-<voice name="host_b_professional" start="8.841" duration="5.868">
-大家好，我是晓晓。今天这AI圈的瓜，那可是相当有意思。
-</voice>
-<voice name="host_a_professional" start="15.206" duration="6.390">
-咱们先聊聊今天第一个大头条。那就是，GPT发AI原创新成果了。
-</voice>
-<voice name="host_b_professional" start="22.049" duration="5.563">
-晓晓也一直在关注这个，博文，这个事影响真的很大吗？
-</voice>
-<voice name="host_a_professional" start="28.017" duration="5.345">
-确实。简单来说，AI实现药物全自动研发，还远吗
-</voice>
-<voice name="host_b_professional" start="33.795" duration="14.183">
-没错。那今天的第二个大头条，是关于：全球首个人形机器人通用小脑来了！全球最大规模2万小时人类动作数据，实现零样本泛化。
-</voice>
-<voice name="host_a_professional" start="48.443" duration="5.868">
-对，这个也备受关注，主要进展是：人形机器人正式迈入“GPT时代”
-</voice>
-<voice name="host_b_professional" start="54.773" duration="9.656">
-嗯，除了这两个头条，我看到快讯中 Diffusion Language Models: An Experimental Analysis 也有新动态。
-</voice>
-<voice name="host_a_professional" start="64.880" duration="4.997">
-没错！关于这个，主要是 arXiv:2606
-</voice>
-<voice name="host_b_professional" start="70.377" duration="19.316">
-嗯，除了这两个头条，我看到快讯中 LLM Doesn't Know What It Doesn't Know: Detecting Epistemic Blind Spots via Cross-Model Attribution Divergence on Clinical Tabular Data 也有新动态。
-</voice>
-<voice name="host_a_professional" start="90.131" duration="4.954">
-没错！关于这个，主要是 arXiv:2606
-</voice>
-<voice name="host_b_professional" start="95.546" duration="10.265">
-嗯，除了这两个头条，我看到快讯中 Analyzing the Narration Gap in LLM-Solver Loops 也有新动态。
-</voice>
-<voice name="host_a_professional" start="106.256" duration="4.997">
-没错！关于这个，主要是 arXiv:2606
-</voice>
-<voice name="host_b_professional" start="111.727" duration="3.604">
-哇，每天都能看到新东西在冒出来。
-</voice>
-<voice name="host_a_professional" start="115.758" duration="6.477">
-科技变化就是快，那以上就是今天的 AI 重点资讯。感谢各位收听，咱们明天见！
-</voice>
-<voice name="host_b_professional" start="122.699" duration="1.383">
-拜拜！
-</voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    听众朋友们大家好，欢迎收听AI每日先锋，今天是2026年6月20日。我是主持人晓晓。
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    大家好，我是博文。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    哎博文，你今天刷新闻了吗？我感觉今天科技圈有两个事特别炸——呃不是，我是说，特别有看头。
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    哈哈晓晓，你刚才那口误挺真实的。哪两个事？
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    一个是AI全自动做药，另一个是人形机器人突然有了"通用小脑"。我就在想啊，今天的AI好像同时在两件事上发力——一边是创造力的爆发，从写代码到造分子；另一边是对自己能力边界的反思。这两个方向同时迎来临界点，太有意思了。
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    你这个总结挺到位的。一个往外走，一个往内看，确实是今天AI圈特别有意思的张力。那咱们就先聊聊AI做药这个？
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    好嘞！博文，我今天早上看到这条新闻的时候真的愣了一下——说GPT系列的相关AI，在药物研发上做出了"原创新成果"，而且是从靶点发现到分子设计，端到端搞定的。
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    这个"端到端"是关键。晓晓，你给听众翻译翻译？
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    等的就是你这句话！简单说，以前的AI在制药里基本就是个"超级实习生"的角色——你给它一个靶点，它帮你筛一堆分子，然后人类科学家再挑、再改、再验证。但这次不一样，它是从头到尾自己把链条跑通了。
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    对，这就有点"从助手变成作者"的味道了。而且我注意到这次特别强调"原创"两个字。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    对！"原创"这两个字我盯了半天。博文，这意味着什么？
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    意味着AI不只是把已有的分子数据库重新排列组合，它生成的结构可能是人类专家从来没想过的。这种"非显而易见性"才是真正的科学价值。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    哇，这个厉害了。那对我们普通人意味着什么？是不是以后新药会便宜很多？
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    理性地说，药物价格是个复杂系统，但研发周期确实有望被压缩。传统一款新药要十多年、几十亿美元，如果AI能把前期探索阶段砍掉一半，整个行业的资金效率会质变。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    我来打个比方啊，这就好像以前开饭店，每道菜都得从种菜开始；现在突然有了一个中央厨房，你只要告诉它要什么味道的菜，它自己研究菜谱、自己种菜、自己炒。
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    哈哈哈这个比喻可以，不过晓晓，背后的算力和数据壁垒其实非常高，不是所有团队都能玩的。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    对，这个我懂——大厂游戏嘛。那博文，咱们换个话题，我今天看到的另一条新闻也让我很激动——全球第一个"人形机器人通用小脑"模型出来了，训练数据用了整整2万小时的人类动作。
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    这个我仔细看了。2万小时这个数字很关键。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    关键在哪？
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    关键在于它是"零样本泛化"。你不需要为每个新任务重新训练，模型看到新场景就能直接上手。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    等等博文，"零样本泛化"听起来好专业，你给翻译翻译？
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    简单说，就是你不用教它一万次，它看一次就能做。这跟我们以前那种"一招鲜"的机器人完全不一样。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    哦！这不就是机器人的"GPT时刻"嘛！就像我侄子，看过我做一次蛋糕，他下次就能自己试着做，虽然做得不好，但那个"举一反三"的能力是有了。
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    你这个比喻非常恰当，本质就是从"专用控制器"走向"通用智能底座"。以前每个动作都要写代码，现在有了"通用小脑"，上层应用开发会爆发。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    对！我突然想到，这其实跟AI做药有点像——都是从一个"专用工具"升级成一个"通用底座"，然后整个生态就起来了。
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    没错，这就是范式跃迁。晓晓你这产品经理的直觉确实灵敏。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    哈哈谢谢夸奖！那接下来轻松一点，我最近还刷到几个挺有意思的学术动向。博文你最近看arXiv了吗？
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    看了，有几个我也想聊。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    先说一个我特别好奇的——有篇论文在研究"扩散语言模型"。博文，这个方向你觉得靠谱吗？
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    挺有意思的尝试。现在所有的大模型都是"自回归"，一个字一个字往外蹦，扩散模型在图像里是整体生成的，有人就想了，能不能把这套机制搬到语言上。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    那这不就是"换一条路走路"嘛？
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    哈哈可以这么理解。具体效果还得观察，但它至少说明一件事——Transformer加自回归这套组合，不一定是终极答案。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    行，这条先存着。哎还有一个让我有点担心的事——有研究说LLM存在"认知盲区"，特别是在临床表格数据上，会出现"不知道自己不知道"的情况。
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    这个挺重要的。它是用"跨模型归因分歧"的方法来检测的——就是让好几个模型同时看同一个问题，看它们哪里意见不一致。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    哦，原来是这样！那"不知道自己不知道"具体是啥意思？
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    通俗讲，就是模型胡说八道的时候还特别自信。在闲聊里问题不大，但在医疗、法律这种场景，是会出人命的。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    对！这种"不知道自己不知道"比"知道但说错"更可怕。
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    是的，所以这类研究越来越重要，是AI安全落地的关键拼图。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    好，最后再聊一个"十年回顾"——有篇综述系统梳理了过去十年AI for SE和SE for AI的演进。博文，你怎么评价这十年？
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    我觉得这十年最核心的变化是——AI从"软件工程的工具"变成了"软件工程的主体"。以前我们用AI写代码辅助，现在是AI自己写、自己测、自己改。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    哇，那"开发者"这个职业会不会消失？
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    不会消失，但角色会变——从"写代码的"变成"管代码的"，从"实现者"变成"决策者"。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    嗯，这个我同意。那我总结一下今天啊——我们聊了AI全自动做药、人形机器人的"通用小脑"、扩散语言模型的实验、LLM的认知盲区，还有软件工程的十年变迁。你会发现，今天的AI正在同时做两件事：一边疯狂拓展能力边界，一边认真反思自己的能力边界。
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    是的晓晓，这正是AI走向成熟的重要标志——既能创造，又能自省。
+  </voice>
+  <voice name="zh-CN-XiaoxiaoNeural">
+    行，那今天的AI每日先锋就到这里啦！听众朋友们，我们明天见！
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    感谢收听，我们明天见。
+  </voice>
 </speak>
