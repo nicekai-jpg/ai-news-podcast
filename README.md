@@ -1,67 +1,198 @@
-# AI Daily Pioneer
+# AI Daily Pioneer 🎙️ (AI 每日先锋)
 
-Chinese README: `README.zh-CN.md`
+[![GitHub license](https://img.shields.io/github/license/nicekai-jpg/ai-news-podcast?style=flat-square)](LICENSE)
+[![Python Version](https://img.shields.io/badge/python-3.11-blue?style=flat-square&logo=python)](https://www.python.org/)
+[![LLM Engine](https://img.shields.io/badge/LLM--Engine-MiniMax--M3-red?style=flat-square&logo=openai)](https://api.minimaxi.com/)
+[![TTS Engine](https://img.shields.io/badge/TTS--Engine-CosyVoice2-green?style=flat-square&logo=googleplay)](https://github.com/FunAudioLLM/CosyVoice)
+[![Automation](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-blueviolet?style=flat-square&logo=githubactions)](.github/workflows/daily.yml)
+[![Hosting](https://img.shields.io/badge/Hosting-GitHub%20Pages-orange?style=flat-square&logo=githubpages)](https://pages.github.com/)
 
-This repository generates a daily AI news podcast episode (MP3), daily text reports, and an RSS feed (`feed.xml`) using AI models and text-to-speech. It has been structured as a standard Python package.
+[**中文说明文档** (Chinese README)](README.zh-CN.md)
 
-## Features
-- **RSS Fetching & Scoring**: Fetches news from curated feeds (`config/sources.yaml`), de-duplicates stories (semantic similarity + overlaping keywords), and scores them based on relevance.
-- **LLM Integration**: Uses **MiniMax-M3** (via MiniMax's OpenAI-compatible API) to score/cluster stories, generate summaries/outlines (Editor Agent), write dual-host dialogue scripts in SSML format (Writer Agent), and compile markdown reports.
-- **Text-to-Speech (TTS)**: Synthesizes high-fidelity audio using **CosyVoice 2** (via zero-shot voice cloning with host reference audio clips) as the primary engine, with **Edge-TTS** acting as the fallback.
-- **Audio Mixing & Mastering**: Utilizes **pydub** and **FFmpeg** to pad speech segments, mix vocal tracks with background music, and apply standard loudness normalization (`loudnorm`).
-- **Automation**: Runs daily via GitHub Actions (`.github/workflows/daily.yml`) to commit script updates and deploy media assets.
-- **Hosting**: GitHub Pages serves the podcast RSS feed (`feed.xml`), show notes HTML, and audio assets.
+**AI Daily Pioneer** is a fully automated, production-grade AI podcast and news briefing generator. Every day, it fetches tech news from curated RSS/Atom sources, filters and prioritizes them using NLP and scoring algorithms, orchestrates a **Multi-Agent Writer** to compose a natural dual-host script, synthesizes high-fidelity voice dialogue using zero-shot clone voice cloning via **CosyVoice 2**, and deploys the generated audio and web-pages automatically to **GitHub Pages**.
 
-## Local Setup
+---
 
-### 1. Environment Variables
-Copy or create a `.env` file in the project root:
-```env
-# Example .env configuration
-MINIMAX_API_KEY="your-minimax-api-key"
+## 🗺️ System Pipeline & Architecture
+
+The project is structured as an end-to-end data pipeline executed daily:
+
+```
+[Curated RSS/Atom Sources]
+           │
+           ▼  (fetcher.py)
+   [httpx Async Fetching & trafilatura Full-text Parsing]
+           │
+           ▼  (processor.py)
+   [Deduplication: TF-IDF + Overlap Keywords + Semantic Similarity]
+           │
+           ▼
+   [DBSCAN Clustering & 5-Dimensional Relevance Scoring]
+           │
+           ▼  (scriptwriter.py)
+   [Editor Agent: Outlines thesis, headlines, and quick updates] ──► (MiniMax-M3 LLM)
+           │
+           ▼
+   [Writer Agent: Composes SSML dual-host dialogue scripts] ──► (MiniMax-M3 LLM)
+           │
+           ▼  (tts_engine.py)
+   [TTS Voice Synthesis: Zero-shot speaker cloning] ──► (CosyVoice 2 Engine)
+           │
+           ▼
+   [Audio Mastering: Dynamic segment padding, BGM mixing, & EBU R128 loudnorm] ──► (pydub & FFmpeg)
+           │
+           ▼  (site_builder/)
+   [Static Web Pages & Apple Podcasts Feed XML Generation]
+           │
+           ▼  (daily.yml / prune_pages.yml)
+   [Git Commit & Push to main / Deploy to gh-pages Branch]
 ```
 
-### 2. Installation (using `uv`)
-We recommend using [uv](https://docs.astral.sh/uv/) for fast dependency management.
+---
+
+## 🌟 Technical Highlights & Core Features
+
+### 1. Intelligent Filtering & Scoring
+* **Semantic Deduplication**: Uses TF-IDF, RapidFuzz, overlapping keywords, and multilingual semantic embedding models (`paraphrase-multilingual-MiniLM-L12-v2`) to prevent duplicate stories across feeds.
+* **DBSCAN Clustering**: Groups related news reports from different publishers to detect hot trends.
+* **5-Dimensional Scoring**: Ranks news items based on Impact Scope, Novelty, Explainability, Relevance, and Source Authority, selecting the absolute best for the daily show.
+
+### 2. Multi-Agent Dual-Host Scriptwriting
+* Powered by the flagship **MiniMax-M3** reasoning model, using a multi-agent framework:
+  - **Editor Agent**: Distills raw material into a JSON structure defining the episode thesis, two deep headlines, and three quick updates.
+  - **Writer Agent**: Translates the outline into a lively, colloquial script featuring two hosts: **晓晓 (PM-perspective, conversational, metaphor-heavy)** and **博文 (Tech-極客 perspective, analytical, structural)**.
+* Restricts reasoning output (`<think>`) lengths via custom system guidelines to fit complete XML/SSML scripts within the 4096-token output limit without clipping.
+
+### 3. High-Fidelity Zero-Shot Clone TTS
+* Synthesizes audio segments via **CosyVoice 2** (`CosyVoice2-0.5B` model) with zero-shot speaker-cloning from host reference clips (`assets/refs/`).
+* Splits script dialogues into smaller, natural sentences before voice synthesis to prevent model speed warp or audio truncation.
+* Backs up and falls back on **Edge-TTS** when local CosyVoice server setups are bypassed.
+
+### 4. Professional Audio Mastering
+* Inserts dynamic silent spacing between hosts' voice segments and paragraphs using **pydub**.
+* Blends clean host vocals with background music (`bgm_placeholder.wav`) using automated cross-fades.
+* Normalizes final master audio volume to standard broadcasting level using **FFmpeg's EBU R128 loudness filter** (`loudnorm`).
+
+### 5. Media Anti-Bloat Branch Strategy
+To keep the primary Git branch light and fast to pull, the repository splits content:
+* **`main` Branch (Code & Scripts)**: Contains source code, YAML configurations, Markdown files, and `.txt`/`.html` script transcript files. **No binary audio `.mp3` files are allowed**.
+* **`gh-pages` Branch (Media & Hosting)**: Serves static player files, RSS feed, and full MP3 files.
+* **Monthly Pruning Job (`prune_pages.yml`)**: Automatically backs up the past 30 days of active episodes, cleans the entire `gh-pages` commit history (resetting commits count to 1), and force-pushes the backup back up, physically deleting old audio data to prevent Git size bloat.
+
+---
+
+## 📂 Project Structure & Module Map
+
+```
+ai-news-podcast/
+├── .github/workflows/          # GHA automation workflows
+│   ├── ci.yml                  # Linting & code format QA (Ruff)
+│   ├── daily.yml               # Daily content pipeline & audio synthesis GHA
+│   └── prune_pages.yml         # Monthly gh-pages history optimization
+├── assets/                     # Soundscapes & clone reference clips
+│   ├── audio_samples/          # Edge-TTS samples
+│   ├── refs/                   # CosyVoice clone reference files (host_a_ref.wav, etc.)
+│   └── bgm_placeholder.wav     # Background BGM audio track
+├── config/                     # Pipeline configurations
+│   ├── config.yaml             # Prompt guidelines, weights, and audio mix options
+│   └── sources.yaml            # Monitored RSS/Atom endpoints
+├── data/                       # Local data stores
+│   ├── briefs/                 # Pipeline output briefs caches (brief_YYYY-MM-DD.json)
+│   ├── reports/                # LLM markdown reports outputs (daily_report_YYYY-MM-DD.md)
+│   └── episodes.json           # Episode records index
+├── docs/                       # Technical documentations & guides
+├── scripts/                    # Helper setup scripts
+├── site/                       # Static web pages & RSS build outputs
+├── src/ai_news_podcast/        # Main Python Package Source
+│   ├── cli/                    # CLI commands endpoints
+│   ├── pipeline/               # Core pipeline modules
+│   │   ├── fetcher.py          # Stage 1: Async scraper
+│   │   ├── processor.py        # Stage 2: Deduplication, clustering & scoring
+│   │   ├── scriptwriter.py     # Stage 3: LLM Script generator
+│   │   ├── tts_engine.py       # Stage 4: CosyVoice TTS synthesis
+│   │   └── runner.py           # Pipeline runner coordinator
+│   ├── site_builder/           # Stage 5: RSS Feed & web site builder
+│   ├── prompts.py              # LLM prompt templates
+│   ├── text_utils.py           # TTS text-cleaning helpers
+│   └── utils.py                # Helpers & YAML loaders
+├── pyproject.toml              # Project dependency setup
+└── uv.lock                     # Locked dependency trees
+```
+
+---
+
+## 🛠️ Local Installation & Development
+
+### 1. Requirements
+* Python 3.11+
+* FFmpeg (must be installed on the system path for audio mixing)
+* [uv](https://docs.astral.sh/uv/) (highly recommended for fast package installation)
+
+### 2. Installation
+Clone the repository and sync the dependencies:
 ```bash
 git clone https://github.com/<your-username>/ai-news-podcast.git
 cd ai-news-podcast
 uv sync
-### 3. Running the Sub-Commands
-
-**A. Generate Podcast (MP3 + RSS)**
-Main entrypoint that pulls RSS feeds, runs the Multi-Agent pipeline (via MiniMax-M3) to write scripts, synthesizes speech with CosyVoice 2 (or Edge-TTS fallback), mixes BGM, and publishes RSS feeds and web players.
-```bash
-uv run podcast-daily --base-url http://localhost
-```
-*Note: Default TTS is CosyVoice 2. Add `--no-audio` to skip audio synthesis and generate text-only materials.*
-
-**B. Generate Markdown Text Report**
-Generates a detailed daily AI news markdown report using the MiniMax-M3 model.
-```bash
-uv run podcast-report
 ```
 
-## TTS Evaluation & Selection
-We have benchmarked multiple Text-to-Speech (TTS) models (including Edge-TTS, ChatTTS, CosyVoice 2, F5-TTS, GPT-SoVITS, Kokoro, MOSS-TTS) for our dual-host podcast scene. 
-* For a complete guide covering model evaluations, optimal 2C2G ECS server queue designs, code implementations, web player buffering state machines, and GHA workflows, see the [TTS Complete Guide & System Design](docs/tts_complete_guide.md).
+### 3. Environment Setup
+Create a `.env` file in the project root:
+```env
+MINIMAX_API_KEY="your-minimax-api-key"
+```
 
-## Configuration Files
-The project logic is controlled by files in the `config/` directory:
-- `config.yaml`: Core settings for LLM prompts, TTS voices, and scraping limits.
-- `sources.yaml`: List of RSS/Atom feeds to fetch news from. Include or disable specific sources here.
+### 4. Running the CLI Commands
 
-## GitHub Pages Deployment
-1. Push this repository to GitHub.
+* **A. Run the entire pipeline (Fetch → Deduplicate → Cluster → Score)**
+  ```bash
+  uv run podcast-pipeline --date 2026-06-23
+  ```
+  *(Generates `data/briefs/brief_2026-06-23.json`)*
+
+* **B. Generate Markdown Daily News Report**
+  ```bash
+  uv run podcast-report --date 2026-06-23
+  ```
+  *(Generates `data/reports/daily_report_2026-06-23.md`)*
+
+* **C. Generate Daily Podcast Script & Audio**
+  ```bash
+  # Generate dialogue transcript and web page (skip audio synthesis)
+  uv run podcast-daily --date 2026-06-23 --no-audio --base-url http://localhost
+  
+  # Full generation including audio (requires local CosyVoice env configured)
+  uv run podcast-daily --date 2026-06-23 --base-url http://localhost
+  ```
+
+---
+
+## ☁️ Automation & Production Hosting
+
+### 1. Setup GitHub Actions Secrets
+In your GitHub repository, navigate to **Settings** -> **Secrets and variables** -> **Actions**. 
+Add a **New repository secret**:
+* **Name**: `MINIMAX_API_KEY`
+* **Value**: *Your MiniMax API Key*
+
+### 2. Configure GitHub Pages
+1. Push the code to your GitHub repository.
 2. Go to **Settings** -> **Pages**.
-3. Under **Build and deployment**, select **Deploy from a branch**.
-4. Choose the `gh-pages` branch and the `/ (root)` folder.
-5. Your Podcast RSS URL will be: `https://<your-username>.github.io/<repo-name>/feed.xml`
+3. Under **Build and deployment**, select **Deploy from a branch** as the source.
+4. Set the branch to `gh-pages` and folder to `/ (root)`.
+5. Your public Podcast RSS Feed URL will be:
+   `https://<your-username>.github.io/<repo-name>/feed.xml`
 
-Subscribe to this URL in your favorite podcast app!
+### 3. Rebuild or Dispatch Runs manually
+If you ever want to rebuild a specific date (e.g. if the LLM output failed or script got truncated), you can run:
+```bash
+gh workflow run "Daily Podcast" -f date=YYYY-MM-DD
+```
+Since GHA contains a safeguard to skip writing if `site/episodes/YYYY-MM-DD.txt` already exists, you can manually fix any script text, push it, and trigger the GHA run, and GHA will synthesize the audio from your corrected script.
 
-## Daily Automation Setup
-- **Configure Secret**: In your GitHub repository, go to **Settings** -> **Secrets and variables** -> **Actions**. Click **New repository secret**, name it `MINIMAX_API_KEY`, and paste your MiniMax API key as the value.
-- The repository has a built-in GitHub Actions workflow at `.github/workflows/daily.yml`.
-- It runs automatically every day to generate the Markdown daily report and MP3 podcast episode, committing the outputs back to the repository.
-- You can also manually trigger the run under the **Actions** tab of your repository by clicking **Run workflow**.
+---
+
+## ⚖️ Open Source License
+
+This project is licensed under the terms of the **MIT License**. For details, see the [LICENSE](LICENSE) file.
+Contributions, issue reports, and suggestions are welcome!
