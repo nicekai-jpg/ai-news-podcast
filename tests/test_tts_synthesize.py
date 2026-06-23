@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import sys
 from pathlib import Path
 from typing import Any
 from unittest.mock import MagicMock, patch
@@ -10,7 +9,6 @@ from unittest.mock import MagicMock, patch
 import pytest
 
 from ai_news_podcast.pipeline.tts_engine import synthesize
-from ai_news_podcast.pipeline.tts_types import DialogueChunk
 
 
 class FakeAudioSegment:
@@ -97,8 +95,6 @@ def mock_loudnorm():
 
     with patch("ai_news_podcast.pipeline.tts_postprocess.run_loudnorm", side_effect=_fake_loudnorm):
         yield
-
-
 
 
 @pytest.mark.asyncio

@@ -103,3 +103,43 @@ class TestParseDialogueChunks:
         assert chunks[1] == DialogueChunk(
             host="A", text="听众朋友大家好", voice="zh-CN-YunjianNeural"
         )
+
+    def test_ssml_parsing_fallback_with_voices(self) -> None:
+        text = """
+        <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
+          <voice name="host_a_professional">
+            First chunk by Host A.
+          </voice>
+          <voice name="host_a_professional">
+            Second chunk by Host A.
+          </voice>
+          <voice name="host_b_professional">
+            Third chunk by Host B.
+          </voice>
+        </speak>
+        """
+        voices = ("zh-CN-YunjianNeural", "zh-CN-XiaoxiaoNeural")
+        chunks = parse_dialogue_chunks(text, voices=voices)
+        assert len(chunks) == 3
+        assert chunks[0] == DialogueChunk(
+            host="A", text="First chunk by Host A.", voice="host_a_professional"
+        )
+        assert chunks[1] == DialogueChunk(
+            host="A", text="Second chunk by Host A.", voice="host_a_professional"
+        )
+        assert chunks[2] == DialogueChunk(
+            host="B", text="Third chunk by Host B.", voice="host_b_professional"
+        )
+
+    def test_ssml_parsing_exact_voice_match(self) -> None:
+        text = """
+        <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
+          <voice name="VoiceA">First</voice>
+          <voice name="VoiceB">Second</voice>
+        </speak>
+        """
+        voices = ("VoiceA", "VoiceB")
+        chunks = parse_dialogue_chunks(text, voices=voices)
+        assert len(chunks) == 2
+        assert chunks[0] == DialogueChunk(host="A", text="First", voice="VoiceA")
+        assert chunks[1] == DialogueChunk(host="B", text="Second", voice="VoiceB")
