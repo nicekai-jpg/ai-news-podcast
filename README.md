@@ -66,7 +66,7 @@ The project is structured as an end-to-end data pipeline executed daily:
 ### 3. High-Fidelity Zero-Shot Clone TTS
 * Synthesizes audio segments via **CosyVoice 2** (`CosyVoice2-0.5B` model) with zero-shot speaker-cloning from host reference clips (`assets/refs/`).
 * Splits script dialogues into smaller, natural sentences before voice synthesis to prevent model speed warp or audio truncation.
-* Backs up and falls back on **Edge-TTS** when local CosyVoice server setups are bypassed.
+* Designed solely around **CosyVoice 2** speaker cloning; the legacy **Edge-TTS** engine has been archived and is disabled.
 
 ### 4. Professional Audio Mastering
 * Inserts dynamic silent spacing between hosts' voice segments and paragraphs using **pydub**.
@@ -78,6 +78,37 @@ To keep the primary Git branch light and fast to pull, the repository splits con
 * **`main` Branch (Code & Scripts)**: Contains source code, YAML configurations, Markdown files, and `.txt`/`.html` script transcript files. **No binary audio `.mp3` files are allowed**.
 * **`gh-pages` Branch (Media & Hosting)**: Serves static player files, RSS feed, and full MP3 files.
 * **Monthly Pruning Job (`prune_pages.yml`)**: Automatically backs up the past 30 days of active episodes, cleans the entire `gh-pages` commit history (resetting commits count to 1), and force-pushes the backup back up, physically deleting old audio data to prevent Git size bloat.
+---
+
+## 🛠️ Tech Stack & Third-Party Tools
+
+The system relies on a curated set of specialized python libraries and system-level utilities:
+
+### 1. Data Fetching & Scraper Engines
+* **`feedparser`** (`v6.0.11`): Decodes and structures incoming RSS and Atom xml payloads.
+* **`httpx`**: Asynchronous HTTP client executing concurrent web scraping requests.
+* **`trafilatura`** (`v1.8`): Dynamic HTML structural text parser. Extract clean text, bypassing navigation sidebars, headers, and footer noise.
+* **`readability-lxml`**: Robust fallback reader library used when HTML extraction results are short.
+* **`beautifulsoup4`**: Parsers and cleans up inline HTML entities and custom tag annotations.
+
+### 2. NLP, Clustering & Scoring Engines
+* **`sentence-transformers`** (`v3.0.0`): Computes dense vector embeddings from articles using `paraphrase-multilingual-MiniLM-L12-v2` for semantic similarity mapping.
+* **`scikit-learn`**: Utilizes `TfidfVectorizer` for keyword weighting and `DBSCAN` for spatial density-based news clustering.
+* **`jieba`**: Segments Chinese text to calculate keyword overlap matrices between candidate news pieces.
+* **`rapidfuzz`**: Extremely fast C-implemented fuzzy string comparison for redundant title checks.
+
+### 3. LLM Orchestration
+* **`openai`**: Leveraged as the standard OpenAI API-compliant interface to query the **MiniMax-M3** flagship reasoning model for Agent scriptwriting.
+
+### 4. Audio Processing & Mastering
+* **`pydub`**: Splits vocal chunks, dynamic silent padding, and cross-fades host voices.
+* **`FFmpeg`**: System mastering utility for mixing vocal stems with BGM and running EBU R128 standard loudness normalizations.
+* **`CosyVoice 2`** (locally installed/GHA setup): Zero-shot speaker cloning model (`CosyVoice2-0.5B`) executing speech synthesis from reference audios. *Note: The legacy `Edge-TTS` engine has been archived and is disabled.*
+
+### 5. Config & Infrastructure
+* **`PyYAML`**: Standard YAML loader for configs (`config.yaml`, `sources.yaml`).
+* **`python-dotenv`**: Environment config loader.
+* **`tenacity`**: Retrying logic with exponential backoff on HTTP/API limits.
 
 ---
 
