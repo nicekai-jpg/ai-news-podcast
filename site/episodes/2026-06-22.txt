@@ -1,65 +1,59 @@
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
-<voice name="zh-CN-XiaoxiaoNeural" start="1.000" duration="10.178">
-听众朋友们大家好，欢迎收听AI每日先锋，今天是2026年6月22号。我是晓晓。
+<voice name="zh-CN-XiaoxiaoNeural">
+听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年6月22日。我是主持人晓晓。
 </voice>
-<voice name="zh-CN-YunjianNeural" start="11.627" duration="2.124">
-大家好，我是博文。
+<voice name="zh-CN-YunjianNeural">
+大家好，我是博文。晓晓，今天就咱们俩聊啊？
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="14.248" duration="8.785">
-哎博文，说出来你可能不信，我今天看到一条新闻，差点把嘴里的咖啡喷到屏幕上。
+<voice name="zh-CN-XiaoxiaoNeural">
+对呀，今天素材池有点羞涩，只有一条特别炸的料，但我觉得这一个故事就够咱们唠一整期了。
 </voice>
-<voice name="zh-CN-YunjianNeural" start="23.486" duration="2.559">
-哦？什么新闻这么有冲击力？
+<voice name="zh-CN-YunjianNeural">
+哦？说来听听。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="26.450" duration="11.615">
-有人在《魔兽世界》的艾泽拉斯大陆上，拉了一支完全由AI组成的团队，足足1800个DeepSeek，整整齐齐地去下副本。
+<voice name="zh-CN-XiaoxiaoNeural">
+博文你玩魔兽世界吗？就那个艾泽拉斯大陆。
 </voice>
-<voice name="zh-CN-YunjianNeural" start="38.498" duration="2.951">
-1800个？一起去打副本？
+<voice name="zh-CN-YunjianNeural">
+嗯，早年玩过，怀旧服也体验过。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="41.914" duration="4.083">
-对！而且你猜月租多少钱？340块人民币。
+<voice name="zh-CN-XiaoxiaoNeural">
+那你想象一下，有人搞了1800个DeepSeek的实例，浩浩荡荡跑进艾泽拉斯去"保卫世界"了，每个月成本才340块人民币。你敢信吗？
 </voice>
-<voice name="zh-CN-YunjianNeural" start="46.459" duration="3.081">
-340块……这还真是白菜价。
+<voice name="zh-CN-YunjianNeural">
+哈哈，这消息我看到了。这事儿乍一听很搞笑，但背后其实是个挺硬核的工程问题。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="49.991" duration="25.914">
-我当时看到这数字整个人都愣住了。1800个DeepSeek，平均下来一个AI一天才花一毛多钱，这哪是请打手，这是请了一支蚂蚁雄兵啊。博文你快给我翻译翻译，这事儿到底是怎么做到的？是真的每个AI都在独立思考，还是说有什么黑魔法？
+<voice name="zh-CN-XiaoxiaoNeural">
+对吧！我就说嘛，这不可能是简单堆数量。你赶紧给听众翻译翻译，1800个实例到底是怎么个玩法？
 </voice>
-<voice name="zh-CN-YunjianNeural" start="76.405" duration="10.613">
-哈哈，晓晓你这个"蚂蚁雄兵"的比喻非常贴切。其实这事儿要从两个层面来看。第一层是成本，第二层是协同。
+<voice name="zh-CN-YunjianNeural">
+你看啊，DeepSeek的单次推理成本现在已经压到了非常低的水平，尤其是批量调用走API的话，单个实例的token费用可以忽略不计。但魔兽世界里角色操作是需要实时决策的——打哪个怪、走哪条路、什么时候吃药——所以每一个"AI玩家"其实都是一个独立的智能体。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="87.456" duration="1.862">
-嗯，你先说成本。
+<voice name="zh-CN-XiaoxiaoNeural">
+哦我懂了，就是每个AI小号都有自己的"大脑"？
 </voice>
-<voice name="zh-CN-YunjianNeural" start="89.779" duration="25.958">
-你要知道DeepSeek这一代模型采用的是MoE架构，也就是混合专家架构。它的特点是，每次推理的时候，并不是把整个几千亿参数的模型都激活，而是根据输入内容，只调用其中一小撮相关的"专家"。这就意味着，同样一张显卡，能同时跑起来的对话实例数，比传统的稠密模型多得多。
+<voice name="zh-CN-YunjianNeural">
+没错，1800个大脑同时在线。算下来每个月的云端算力开销，加上网络带宽、存储日志那些杂费，340块人民币真的不是夸张。这放到两年前，想都不敢想。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="116.182" duration="8.132">
-哦，我有点懂了。就好比一个大型医院，平时不是所有科室都开门，只看你挂的是什么号，对吧？
+<voice name="zh-CN-XiaoxiaoNeural">
+天哪，那这就是说以前那种动辄几万的游戏AI成本，现在直接被打到地板价了？
 </voice>
-<voice name="zh-CN-YunjianNeural" start="124.788" duration="12.529">
-你这个比方很恰当。所以把这套逻辑再往下推一层——既然单次推理便宜到这种程度，那把它部署成1800个独立Agent同时在线，总账算下来也就没那么夸张了。
+<voice name="zh-CN-YunjianNeural">
+可以这么理解。而且这个案例有意思的地方在于，它不是为了"卷"性能，而是验证了一个新的范式——小模型、大规模、协同作战。每个DeepSeek实例可能只负责一小片区域的任务，合起来却能覆盖整个服务器生态。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="137.744" duration="5.476">
-天哪，那这个成本曲线真的是一年一个台阶。
+<voice name="zh-CN-XiaoxiaoNeural">
+我产品经理的直觉告诉我，这事儿远比打游戏值钱。博文你觉得呢？
 </voice>
-<voice name="zh-CN-YunjianNeural" start="143.684" duration="10.265">
-确实。我记得两年前，大家还在讨论"为什么一次大模型API调用要两毛钱"，现在你看，已经能便宜到一毛钱让一个AI跑一整天。
+<voice name="zh-CN-YunjianNeural">
+你说得太对了。这种"廉价智能体集群"的思路一旦成熟，从游戏代练到工业自动化、从客服中心到内容审核，全都会受益。艾泽拉斯只是一个开始，背后的方法论才是真正的价值。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="154.366" duration="8.262">
-好，那第二层呢？你刚说的"协同"是怎么回事？1800个AI在一起不会打架吗？
+<voice name="zh-CN-XiaoxiaoNeural">
+好家伙，一个魔兽故事聊出了工业革命的感觉。那咱们今天就以这个案例收尾吧——AI不再高高在上，它已经钻进游戏里，帮咱们"保卫世界"了。
 </voice>
-<voice name="zh-CN-YunjianNeural" start="163.064" duration="19.950">
-这其实是这件事真正有意思的地方。1800个Agent要在游戏里组队打副本，意味着它们之间必须有一套通讯协议——谁当坦克，谁输出，谁治疗，谁去开怪，这个角色分配是动态协商出来的。这其实是个非常经典的多智能体系统问题。
+<voice name="zh-CN-YunjianNeural">
+总结得漂亮。听众朋友们，咱们明天见。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="183.431" duration="7.653">
-等等等等，多智能体系统？博文你又开始讲术语了，给听众翻译翻译。
-</voice>
-<voice name="zh-CN-YunjianNeural" start="191.580" duration="20.037">
-哈哈好，我换个说法。你就想啊，有一群人同时被丢进一个迷宫，每个人只能看到自己周围一小块地方，但他们必须配合着把迷宫走出来。每个人时不时喊一句"我这边发现一条路"，别人根据这句喊话调整自己的方向。
-</voice>
-<voice name="zh-CN-XiaoxiaoNeural" start="212.029" duration="4.257">
-噢，就是"喊话—调整"循环嘛。
+<voice name="zh-CN-XiaoxiaoNeural">
+拜拜，明天见！
 </voice>
 </speak>
