@@ -259,7 +259,7 @@
             var start = parseFloat(voiceTag.getAttribute("start") || "-1");
             var duration = parseFloat(voiceTag.getAttribute("duration") || "-1");
 
-            var isXx = voiceName.indexOf('xiaoxiao') >= 0 || voiceName.indexOf('host-b') >= 0 || voiceName.indexOf('host b') >= 0;
+            var isXx = voiceName.indexOf('xiaoxiao') >= 0 || voiceName.indexOf('host-b') >= 0 || voiceName.indexOf('host b') >= 0 || voiceName.indexOf('host_b') >= 0;
             rawParagraphs.push({
               role: isXx ? 'B' : 'A',
               text: c,
@@ -278,7 +278,7 @@
           var c = m[2].trim();
           if (!c) continue;
           var voiceName = m[1].toLowerCase();
-          var isXx = voiceName.indexOf('xiaoxiao') >= 0 || voiceName.indexOf('host-b') >= 0 || voiceName.indexOf('host b') >= 0;
+          var isXx = voiceName.indexOf('xiaoxiao') >= 0 || voiceName.indexOf('host-b') >= 0 || voiceName.indexOf('host b') >= 0 || voiceName.indexOf('host_b') >= 0;
           rawParagraphs.push({ role: isXx ? 'B' : 'A', text: c, start: null, duration: null });
         }
       }

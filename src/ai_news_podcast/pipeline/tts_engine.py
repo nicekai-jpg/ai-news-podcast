@@ -1,4 +1,3 @@
-import asyncio
 import importlib
 import logging
 import re
@@ -38,13 +37,25 @@ def parse_dialogue_chunks(
                             # 默认根据 idx 交替分配
                             host = "B" if idx % 2 == 1 else "A"
                             if voice_name:
-                                vn_lower = voice_name.strip().lower()
+                                vn_lower = voice_name.lower()
+                                matched = False
                                 if voices:
-                                    if vn_lower == voices[0].strip().lower():
+                                    voice_a = voices[0] if len(voices) > 0 else None
+                                    voice_b = voices[1] if len(voices) > 1 else None
+                                    if (
+                                        isinstance(voice_a, str)
+                                        and vn_lower == voice_a.strip().lower()
+                                    ):
                                         host = "A"
-                                    elif vn_lower == voices[1].strip().lower():
+                                        matched = True
+                                    elif (
+                                        isinstance(voice_b, str)
+                                        and vn_lower == voice_b.strip().lower()
+                                    ):
                                         host = "B"
-                                else:
+                                        matched = True
+
+                                if not matched:
                                     # 常见中文音色及标识兜底匹配
                                     if (
                                         "xiaoxiao" in vn_lower
@@ -94,8 +105,6 @@ def parse_dialogue_chunks(
     return chunks
 
 
-
-
 def _write_transcript_with_timestamps(
     *,
     chunks: List[DialogueChunk],
@@ -138,10 +147,17 @@ def _write_chunks_and_playlist(
         voices = {}
         for var, segments in segments_by_variant.items():
             fn = f"chunk_{idx:03d}_{var}.mp3"
+            
+            import importlib
+            pydub = importlib.import_module("pydub")
+            AudioSegment = getattr(pydub, "AudioSegment")
+            silence_pad = AudioSegment.silent(duration=300)
+            padded_seg = silence_pad + segments[idx - 1] + silence_pad
+
             try:
-                segments[idx - 1].export(str(chunks_dir / fn), format="mp3", bitrate="64k")
+                padded_seg.export(str(chunks_dir / fn), format="mp3", bitrate="64k")
             except TypeError:
-                segments[idx - 1].export(str(chunks_dir / fn), format="mp3")
+                padded_seg.export(str(chunks_dir / fn), format="mp3")
 
             audios[var] = fn
             voices[var] = voice_maps[var].get(chunk.host, "unknown")
@@ -246,10 +262,7 @@ async def synthesize_cosyvoice2(
                         combined_chunk = chunk_segments[0]
                         for next_seg in chunk_segments[1:]:
                             combined_chunk += AudioSegment.silent(duration=150) + next_seg
-
-                        # Add 300ms silence padding at both ends to prevent browser audio cut-offs
-                        silence_pad = AudioSegment.silent(duration=300)
-                        return silence_pad + combined_chunk + silence_pad
+                        return combined_chunk
                     else:
                         return AudioSegment.silent(duration=100)
 

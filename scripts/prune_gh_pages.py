@@ -5,24 +5,31 @@ and reset git history of the gh-pages branch to release deleted space.
 """
 
 import json
+
+# Setup logging
+import logging
 import os
 import shutil
 import subprocess
 import sys
 from pathlib import Path
 
-# Setup logging
-import logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 log = logging.getLogger("prune_gh_pages")
 
-def run_cmd(cmd: list[str], cwd: Path | None = None, check: bool = True) -> subprocess.CompletedProcess[str]:
+
+def run_cmd(
+    cmd: list[str], cwd: Path | None = None, check: bool = True
+) -> subprocess.CompletedProcess[str]:
     log.info("Running command: %s", " ".join(cmd))
     res = subprocess.run(cmd, cwd=cwd, text=True, capture_output=True)
     if check and res.returncode != 0:
-        log.error("Command failed: %s\nStdout:\n%s\nStderr:\n%s", " ".join(cmd), res.stdout, res.stderr)
+        log.error(
+            "Command failed: %s\nStdout:\n%s\nStderr:\n%s", " ".join(cmd), res.stdout, res.stderr
+        )
         raise RuntimeError(f"Command failed with exit code {res.returncode}")
     return res
+
 
 def main() -> int:
     # 1. Paths setup
@@ -50,11 +57,15 @@ def main() -> int:
     else:
         episodes_list = []
 
-    valid_ids = {str(ep["id"]).strip() for ep in episodes_list if isinstance(ep, dict) and "id" in ep}
+    valid_ids = {
+        str(ep["id"]).strip() for ep in episodes_list if isinstance(ep, dict) and "id" in ep
+    }
     log.info("Loaded %d valid episode IDs: %s", len(valid_ids), sorted(list(valid_ids)))
 
     if not valid_ids:
-        log.error("No valid episode IDs found in episodes.json, aborting to prevent clearing all assets.")
+        log.error(
+            "No valid episode IDs found in episodes.json, aborting to prevent clearing all assets."
+        )
         return 1
 
     # 3. Environment check
@@ -72,15 +83,13 @@ def main() -> int:
     remote_url = f"https://x-access-token:{github_token}@github.com/{github_repo}.git"
     log.info("Cloning gh-pages branch...")
     try:
-        run_cmd([
-            "git", "clone",
-            "--branch", "gh-pages",
-            "--single-branch",
-            remote_url,
-            str(clone_dir)
-        ])
+        run_cmd(
+            ["git", "clone", "--branch", "gh-pages", "--single-branch", remote_url, str(clone_dir)]
+        )
     except Exception as e:
-        log.warning("Failed to clone gh-pages branch directly (possibly branch doesn't exist yet): %s", e)
+        log.warning(
+            "Failed to clone gh-pages branch directly (possibly branch doesn't exist yet): %s", e
+        )
         log.info("Will attempt to initialize a new gh-pages branch from scratch.")
         # If gh-pages doesn't exist, we'll create the directory and initialize it as a git repo
         clone_dir.mkdir(parents=True, exist_ok=True)
@@ -106,7 +115,7 @@ def main() -> int:
                 if file_path.exists():
                     shutil.copy2(file_path, backup_dir / file_name)
                     backed_up_count += 1
-            
+
             # Backup chunk folder
             chunk_folder = source_episodes_dir / eid
             if chunk_folder.exists() and chunk_folder.is_dir():
@@ -120,7 +129,7 @@ def main() -> int:
     run_cmd(["git", "checkout", "--orphan", "temp-orphan-pages"], cwd=clone_dir)
     # Remove all tracked and untracked files
     run_cmd(["git", "rm", "-rf", "."], cwd=clone_dir, check=False)
-    
+
     # Clean up directory thoroughly
     for item in clone_dir.iterdir():
         if item.name == ".git":
@@ -134,7 +143,7 @@ def main() -> int:
     if site_dir.exists():
         log.info("Copying static site assets from main's site/...")
         for item in site_dir.iterdir():
-            if item.name == "episodes": # we will handle episodes separately
+            if item.name == "episodes":  # we will handle episodes separately
                 continue
             if item.is_dir():
                 shutil.copytree(item, clone_dir / item.name)
@@ -144,7 +153,7 @@ def main() -> int:
     # 8. Restore backed up valid episodes
     target_episodes_dir = clone_dir / "episodes"
     target_episodes_dir.mkdir(parents=True, exist_ok=True)
-    
+
     # Copy from backup
     log.info("Restoring valid episodes to the new gh-pages workspace...")
     for item in backup_dir.iterdir():
@@ -162,10 +171,15 @@ def main() -> int:
             # Check if this item matches one of the valid ids
             is_valid = False
             for eid in valid_ids:
-                if item.name == f"{eid}.mp3" or item.name == f"{eid}.html" or item.name == f"{eid}.txt" or item.name == eid:
+                if (
+                    item.name == f"{eid}.mp3"
+                    or item.name == f"{eid}.html"
+                    or item.name == f"{eid}.txt"
+                    or item.name == eid
+                ):
                     is_valid = True
                     break
-            
+
             if is_valid:
                 target_path = target_episodes_dir / item.name
                 if target_path.exists():
@@ -173,7 +187,7 @@ def main() -> int:
                         shutil.rmtree(target_path)
                     else:
                         target_path.unlink()
-                
+
                 if item.is_dir():
                     shutil.copytree(item, target_path)
                 else:
@@ -182,12 +196,18 @@ def main() -> int:
     # 9. Commit and force push to origin gh-pages
     log.info("Configuring git user...")
     run_cmd(["git", "config", "user.name", "github-actions[bot]"], cwd=clone_dir)
-    run_cmd(["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"], cwd=clone_dir)
-    
+    run_cmd(
+        ["git", "config", "user.email", "github-actions[bot]@users.noreply.github.com"],
+        cwd=clone_dir,
+    )
+
     log.info("Committing changes...")
     run_cmd(["git", "add", "-A"], cwd=clone_dir)
-    run_cmd(["git", "commit", "-m", "chore: prune gh-pages to latest 30 days and reset history"], cwd=clone_dir)
-    
+    run_cmd(
+        ["git", "commit", "-m", "chore: prune gh-pages to latest 30 days and reset history"],
+        cwd=clone_dir,
+    )
+
     log.info("Force pushing to gh-pages...")
     run_cmd(["git", "push", "origin", "temp-orphan-pages:gh-pages", "--force"], cwd=clone_dir)
 
@@ -198,6 +218,7 @@ def main() -> int:
 
     log.info("Success! gh-pages branch has been pruned and git history reset.")
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main())
