@@ -1,59 +1,59 @@
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="1.000" duration="7.750">
 听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年6月22日。我是主持人晓晓。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="9.199" duration="3.091">
 大家好，我是博文。晓晓，今天就咱们俩聊啊？
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="12.787" duration="10.580">
 对呀，今天素材池有点羞涩，只有一条特别炸的料，但我觉得这一个故事就够咱们唠一整期了。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="23.820" duration="1.306">
 哦？说来听听。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="25.531" duration="3.048">
 博文你玩魔兽世界吗？就那个艾泽拉斯大陆。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="29.012" duration="2.873">
 嗯，早年玩过，怀旧服也体验过。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="32.350" duration="12.321">
 那你想象一下，有人搞了1800个DeepSeek的实例，浩浩荡荡跑进艾泽拉斯去"保卫世界"了，每个月成本才340块人民币。你敢信吗？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="45.133" duration="6.313">
 哈哈，这消息我看到了。这事儿乍一听很搞笑，但背后其实是个挺硬核的工程问题。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="51.897" duration="8.751">
 对吧！我就说嘛，这不可能是简单堆数量。你赶紧给听众翻译翻译，1800个实例到底是怎么个玩法？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="61.148" duration="22.093">
 你看啊，DeepSeek的单次推理成本现在已经压到了非常低的水平，尤其是批量调用走API的话，单个实例的token费用可以忽略不计。但魔兽世界里角色操作是需要实时决策的——打哪个怪、走哪条路、什么时候吃药——所以每一个"AI玩家"其实都是一个独立的智能体。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="83.679" duration="3.657">
 哦我懂了，就是每个AI小号都有自己的"大脑"？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="87.797" duration="13.801">
 没错，1800个大脑同时在线。算下来每个月的云端算力开销，加上网络带宽、存储日志那些杂费，340块人民币真的不是夸张。这放到两年前，想都不敢想。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="102.043" duration="7.706">
 天哪，那这就是说以前那种动辄几万的游戏AI成本，现在直接被打到地板价了？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="110.223" duration="17.042">
 可以这么理解。而且这个案例有意思的地方在于，它不是为了"卷"性能，而是验证了一个新的范式——小模型、大规模、协同作战。每个DeepSeek实例可能只负责一小片区域的任务，合起来却能覆盖整个服务器生态。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="127.692" duration="6.182">
 我产品经理的直觉告诉我，这事儿远比打游戏值钱。博文你觉得呢？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="134.338" duration="14.977">
 你说得太对了。这种"廉价智能体集群"的思路一旦成熟，从游戏代练到工业自动化、从客服中心到内容审核，全都会受益。艾泽拉斯只是一个开始，背后的方法论才是真正的价值。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="149.732" duration="11.407">
 好家伙，一个魔兽故事聊出了工业革命的感觉。那咱们今天就以这个案例收尾吧——AI不再高高在上，它已经钻进游戏里，帮咱们"保卫世界"了。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="161.575" duration="2.743">
 总结得漂亮。听众朋友们，咱们明天见。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="164.735" duration="1.132">
 拜拜，明天见！
 </voice>
 </speak>
