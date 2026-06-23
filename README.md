@@ -5,11 +5,12 @@ Chinese README: `README.zh-CN.md`
 This repository generates a daily AI news podcast episode (MP3), daily text reports, and an RSS feed (`feed.xml`) using AI models and text-to-speech. It has been structured as a standard Python package.
 
 ## Features
-- **RSS Fetching & Scoring**: Fetches news from curated feeds (`config/sources.yaml`) and scores them based on relevance.
-- **LLM Integration**: Uses LLMs (OpenAI, Gemini, or Xunfei Spark MaaS Coding Plan API) to summarize news and write podcast scripts or text reports.
-- **Text-to-Speech**: Synthesizes audio using Edge TTS and mixes it with background music.
-- **Automation**: GitHub Actions (`.github/workflows/daily.yml`) runs daily to commit updates.
-- **Hosting**: GitHub Pages serves the podcast `feed.xml` and HTML/audio assets.
+- **RSS Fetching & Scoring**: Fetches news from curated feeds (`config/sources.yaml`), de-duplicates stories (semantic similarity + overlaping keywords), and scores them based on relevance.
+- **LLM Integration**: Uses **MiniMax-M3** (via MiniMax's OpenAI-compatible API) to score/cluster stories, generate summaries/outlines (Editor Agent), write dual-host dialogue scripts in SSML format (Writer Agent), and compile markdown reports.
+- **Text-to-Speech (TTS)**: Synthesizes high-fidelity audio using **CosyVoice 2** (via zero-shot voice cloning with host reference audio clips) as the primary engine, with **Edge-TTS** acting as the fallback.
+- **Audio Mixing & Mastering**: Utilizes **pydub** and **FFmpeg** to pad speech segments, mix vocal tracks with background music, and apply standard loudness normalization (`loudnorm`).
+- **Automation**: Runs daily via GitHub Actions (`.github/workflows/daily.yml`) to commit script updates and deploy media assets.
+- **Hosting**: GitHub Pages serves the podcast RSS feed (`feed.xml`), show notes HTML, and audio assets.
 
 ## Local Setup
 
@@ -26,21 +27,17 @@ We recommend using [uv](https://docs.astral.sh/uv/) for fast dependency manageme
 git clone https://github.com/<your-username>/ai-news-podcast.git
 cd ai-news-podcast
 uv sync
-```
-
-```
-
 ### 3. Running the Sub-Commands
 
 **A. Generate Podcast (MP3 + RSS)**
-This is the main script that pulls news, generates a script via LLM, synthesizes audio with Edge-TTS, and updates the site/RSS feed.
+Main entrypoint that pulls RSS feeds, runs the Multi-Agent pipeline (via MiniMax-M3) to write scripts, synthesizes speech with CosyVoice 2 (or Edge-TTS fallback), mixes BGM, and publishes RSS feeds and web players.
 ```bash
 uv run podcast-daily --base-url http://localhost
 ```
-*Note: Add `--no-audio` if you cannot connect to Edge-TTS or only want the text script.*
+*Note: Default TTS is CosyVoice 2. Add `--no-audio` to skip audio synthesis and generate text-only materials.*
 
 **B. Generate Markdown Text Report**
-Generates a markdown text report calling the MiniMax Token Plan API.
+Generates a detailed daily AI news markdown report using the MiniMax-M3 model.
 ```bash
 uv run podcast-report
 ```

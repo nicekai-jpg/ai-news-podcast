@@ -5,12 +5,10 @@ English README: `README.md`
 本项目每天自动抓取 AI 领域的 RSS/Atom 新闻源，进行智能筛选和摘要，并使用大语言模型（LLM）生成播客文稿与纯文本日报。同时内置文本转语音 (TTS) 以及播客 RSS Feed 生成。
 
 ## 核心功能
-- **全自动新闻管家**：自动拉取 `config/sources.yaml` 中的订阅源，解析并根据价值评分。
-- **多模型灵活适配**：支持 OpenAI、Gemini，并深度适配讯飞星辰 MaaS（Astron Coding Plan）大模型服务。
-- **多端输出支持**：
-  - 生成带背景音效的每日中文 AI 新闻播客 (MP3)。
-  - 自动更新并生成支持所有主流播客客户端的 `feed.xml`。
-  - 支持生成纯文本日报 (Markdown)。
+- **全自动新闻管家**：自动拉取 `config/sources.yaml` 中的订阅源，解析内容并根据价值进行智能去重（语义相似度度量）与打分。
+- **大语言模型（LLM）写作**：基于 **MiniMax-M3**（通过 MiniMax 兼容 OpenAI 格式的接口）的多 Agent 写作框架。包含 Editor Agent 提炼今日大纲，与 Writer Agent 将大纲转化为符合 SSML 规范的双人自然对话剧本。
+- **高质量语音合成 (TTS)**：以 **CosyVoice 2**（利用 `CosyVoice2-0.5B` 进行零样本/小样本声音克隆）为核心的合成引擎，对两个独立的主持人（晓晓与博文）音色进行高拟真合成，并以 **Edge-TTS** 作为兜底。
+- **音频混音与后处理**：使用 **pydub** 与 **FFmpeg** 自动为每个对话分段加入适当的静音停顿（智能句读），混合背景音乐 (BGM) 并完成音量响度均衡归一化（`loudnorm`）。
 - **开源免托管部署**：配置 GitHub Actions 全自动每日运行，音频与 Feed 全托管在免费的 GitHub Pages 上，零费用维护。
 
 ## 怎么“调用”（本地运行）
@@ -19,24 +17,23 @@ English README: `README.md`
 在项目根目录创建或编辑 `.env` 文件，填入 MiniMax Token Plan 专属 API Key：
 ```env
 MINIMAX_API_KEY="your-minimax-api-key"
-```
 
 ### 2. 环境安装（推荐使用 uv）
 推荐用 [uv](https://docs.astral.sh/uv/)（更快、更稳定）：
 ```bash
+git clone https://github.com/<your-username>/ai-news-podcast.git
 cd ai-news-podcast
 uv sync
 ```
-```
 
 ### 3. 执行功能脚本
-项目已重构为标准的 Python 包结构 (`src/ai_news_podcast`)，不同功能可通过 `-m` 模块化运行：
+项目已重构为标准的 Python 包结构，不同功能可以通过注册的 CLI 命令直接运行：
 
 **A. 生成完整播客 (MP3 + RSS 页面 + 记录)**
 ```bash
 uv run podcast-daily --base-url http://localhost
 ```
-*提示：默认 TTS 为 CosyVoice 2 零样本克隆。本地合成需先运行 `bash scripts/setup_cosyvoice_env.sh` 并设置 `COSYVOICE_MODEL_DIR`。可加 `--no-audio` 跳过音频，仅生成文字稿。*
+*提示：默认 TTS 为 CosyVoice 2 声音克隆。本地合成音频需要先运行 `bash scripts/setup_cosyvoice_env.sh` 配置环境并指定 `COSYVOICE_MODEL_DIR`。可以加上 `--no-audio` 跳过音频合成，仅生成剧本与简报。*
 
 **C. 仅发布已合成音频（GHA Job 2 后）**
 ```bash
@@ -44,7 +41,7 @@ uv run podcast-publish --date 2026-06-11
 ```
 
 **B. 生成今日 AI 科技新闻日报 (Markdown)**
-本脚本调用 MiniMax Token Plan 大模型接口在线生成日报。
+本脚本调用 **MiniMax-M3** 大模型生成 Markdown 日报。
 ```bash
 uv run podcast-report
 ```
