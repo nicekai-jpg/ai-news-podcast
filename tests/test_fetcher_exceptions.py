@@ -17,52 +17,49 @@ from ai_news_podcast.pipeline.fetcher import (
 
 
 class TestExtractFulltext:
-    def test_trafilatura_success(self) -> None:
-        mock_trafilatura = MagicMock()
-        mock_trafilatura.extract.return_value = "x" * 1500
-
-        with patch.dict(sys.modules, {"trafilatura": mock_trafilatura}):
-            text = _extract_fulltext("<html>body</html>", "https://example.com")
-        assert len(text) == 1500
-
-    def test_fallback_to_readability(self) -> None:
-        mock_trafilatura = MagicMock()
-        mock_trafilatura.extract.return_value = "short"  # below min_chars
-
+    def test_readability_success(self) -> None:
         doc = MagicMock()
-        doc.summary.return_value = "<div>long fallback text</div>"
+        doc.summary.return_value = "<div>long text</div>"
         mock_readability = MagicMock()
         mock_readability.Document = MagicMock(return_value=doc)
 
         soup = MagicMock()
-        soup.get_text = MagicMock(return_value="y" * 1500)
+        soup.get_text = MagicMock(return_value="x" * 1500)
         mock_bs4 = MagicMock()
         mock_bs4.BeautifulSoup = MagicMock(return_value=soup)
 
         with patch.dict(
             sys.modules,
-            {"trafilatura": mock_trafilatura, "readability": mock_readability, "bs4": mock_bs4},
+            {"readability": mock_readability, "bs4": mock_bs4},
         ):
             text = _extract_fulltext("<html>body</html>", "https://example.com")
         assert len(text) == 1500
 
-    def test_both_engines_fail_returns_empty(self) -> None:
-        mock_trafilatura = MagicMock()
-        mock_trafilatura.extract.return_value = None
+    def test_readability_failure_returns_empty(self) -> None:
         mock_readability = MagicMock()
         mock_readability.Document = MagicMock(side_effect=ValueError("boom"))
 
         with patch.dict(
-            sys.modules, {"trafilatura": mock_trafilatura, "readability": mock_readability}
+            sys.modules, {"readability": mock_readability}
         ):
             text = _extract_fulltext("<html>body</html>", "https://example.com")
         assert text == ""
 
     def test_truncates_when_too_long(self) -> None:
-        mock_trafilatura = MagicMock()
-        mock_trafilatura.extract.return_value = "z" * 3000
+        doc = MagicMock()
+        doc.summary.return_value = "<div>long text</div>"
+        mock_readability = MagicMock()
+        mock_readability.Document = MagicMock(return_value=doc)
 
-        with patch.dict(sys.modules, {"trafilatura": mock_trafilatura}):
+        soup = MagicMock()
+        soup.get_text = MagicMock(return_value="z" * 3000)
+        mock_bs4 = MagicMock()
+        mock_bs4.BeautifulSoup = MagicMock(return_value=soup)
+
+        with patch.dict(
+            sys.modules,
+            {"readability": mock_readability, "bs4": mock_bs4},
+        ):
             text = _extract_fulltext("<html>body</html>", "https://example.com", max_chars=100)
         assert text.endswith("...")
         assert len(text) <= 100

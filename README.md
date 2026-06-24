@@ -21,7 +21,7 @@ The project is structured as an end-to-end data pipeline executed daily:
 [Curated RSS/Atom Sources]
            │
            ▼  (fetcher.py)
-   [httpx Async Fetching & trafilatura Full-text Parsing]
+   [httpx Async Fetching & readability-lxml Full-text Parsing]
            │
            ▼  (processor.py)
    [Deduplication: TF-IDF + Overlap Keywords + Semantic Similarity]
@@ -87,8 +87,7 @@ The system relies on a curated set of specialized python libraries and system-le
 ### 1. Data Fetching & Scraper Engines
 * **`feedparser`** (`v6.0.11`): Decodes and structures incoming RSS and Atom xml payloads.
 * **`httpx`**: Asynchronous HTTP client executing concurrent web scraping requests.
-* **`trafilatura`** (`v1.8`): Dynamic HTML structural text parser. Extract clean text, bypassing navigation sidebars, headers, and footer noise.
-* **`readability-lxml`**: Robust fallback reader library used when HTML extraction results are short.
+* **`readability-lxml`**: High-performance HTML structural text parser used to extract clean, readable text from web pages, bypassing headers, navigation links, and footers.
 * **`beautifulsoup4`**: Parsers and cleans up inline HTML entities and custom tag annotations.
 
 ### 2. NLP, Clustering & Scoring Engines
@@ -226,7 +225,6 @@ Since GHA contains a safeguard to skip writing if `site/episodes/YYYY-MM-DD.txt`
 We want to express our deepest gratitude to the developers and maintainers of the following third-party projects and open-source libraries that make **AI Daily Pioneer** possible:
 
 ### 1. Attributions & Third-Party Software Licenses
-* **`trafilatura`** (Licensed under **GNU GPL v3.0**): Used for structural full-text extraction from news articles.
 * **`CosyVoice`** (Licensed under **Apache-2.0**): Used for zero-shot cloning text-to-speech synthesis.
 * **`sentence-transformers`** (Licensed under **Apache-2.0**): Used for computing article embeddings.
 * **`scikit-learn`** (Licensed under **BSD 3-Clause**): Used for TF-IDF vectorization and DBSCAN clustering.
@@ -236,14 +234,14 @@ We want to express our deepest gratitude to the developers and maintainers of th
 * **`rapidfuzz`** (Licensed under **MIT**): Used for fast string comparison.
 * **`jieba`** (Licensed under **MIT**): Used for Chinese text tokenization.
 * **`feedparser`** (Licensed under **BSD 2-Clause**): Used for RSS/Atom XML feed parsing.
-* **`readability-lxml`** (Licensed under **Apache-2.0**): Used as a fallback parser.
+* **`readability-lxml`** (Licensed under **Apache-2.0**): Used to extract readable main text from web articles.
 * **`beautifulsoup4`** (Licensed under **MIT**): Used for HTML tag stripping and formatting.
 * **`PyYAML`** (Licensed under **MIT**): Used for configuration file reading.
 * **`tenacity`** (Licensed under **Apache-2.0**): Used for retry operations.
 * **`python-dotenv`** (Licensed under **BSD 3-Clause**): Used to load local environment configurations.
 
 ### 2. Licensing Compliance & Terms
-* The original source code written for **AI Daily Pioneer** is released under the **MIT License**.
-* However, because this project dynamically imports and links to **`trafilatura`** (which is licensed under the copyleft **GNU General Public License v3.0**), any distributed or modified version of this software as a combined work must be licensed under the terms of the **GNU GPL v3.0** in accordance with its copyleft requirements.
-* Both the MIT License and the Apache/BSD/MIT/GNU GPLv3 licenses of all declared dependencies are fully compatible under these combination guidelines.
+* This entire project, including all its custom source code, configurations, and files, is licensed under the permissive **MIT License** (see [LICENSE](LICENSE) for details).
+* Since we have removed `trafilatura` (GPLv3) and rely entirely on `readability-lxml` and `beautifulsoup4` for web page content extraction, this project has **zero copyleft dependencies**.
+* All dependencies declared in this project are licensed under business-friendly, permissive licenses (MIT, BSD, or Apache-2.0), ensuring that the codebase remains fully compatible under the **MIT License** for commercial use, modification, and redistribution.
 
