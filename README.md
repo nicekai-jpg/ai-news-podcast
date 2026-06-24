@@ -243,3 +243,9 @@ We want to express our deepest gratitude to the developers and maintainers of th
 * The project relies entirely on `readability-lxml` and `beautifulsoup4` for web page content extraction, ensuring **zero copyleft dependencies**.
 * All dependencies declared in this project are licensed under business-friendly, permissive licenses (MIT, BSD, or Apache-2.0), ensuring that the codebase remains fully compatible under the **MIT License** for commercial use, modification, and redistribution.
 
+### 3. Disclaimer
+* **Educational & Research Purpose Only**: This project is intended solely for educational, academic, and research purposes. It demonstrates voice cloning and RSS news parsing pipelines.
+* **Commercial Use & Copyrights**: If you use this project (or its output audio/content) for commercial purposes, you must independently contact and obtain all necessary authorizations, licenses, and consents from the respective copyright owners (including voice samples, BGM, and news content providers).
+* **No Liability**: The authors and contributors of this project assume no responsibility or liability for any legal issues, copyright infringements, or disputes arising from your use, modification, or redistribution of this software. Any consequences or legal liabilities shall be borne solely by the user.
+
+
