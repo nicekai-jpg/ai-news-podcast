@@ -39,9 +39,7 @@ class TestExtractFulltext:
         mock_readability = MagicMock()
         mock_readability.Document = MagicMock(side_effect=ValueError("boom"))
 
-        with patch.dict(
-            sys.modules, {"readability": mock_readability}
-        ):
+        with patch.dict(sys.modules, {"readability": mock_readability}):
             text = _extract_fulltext("<html>body</html>", "https://example.com")
         assert text == ""
 
