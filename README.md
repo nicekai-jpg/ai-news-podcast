@@ -53,7 +53,7 @@ The project is structured as an end-to-end data pipeline executed daily:
 ## 🌟 Technical Highlights & Core Features
 
 ### 1. Intelligent Filtering & Scoring
-* **Semantic Deduplication**: Uses TF-IDF, RapidFuzz, overlapping keywords, and multilingual semantic embedding models (`paraphrase-multilingual-MiniLM-L12-v2`) to prevent duplicate stories across feeds.
+* **Semantic Deduplication**: Uses TF-IDF cosine similarity, RapidFuzz, and overlapping keywords to identify and filter out duplicate stories across different feeds.
 * **DBSCAN Clustering**: Groups related news reports from different publishers to detect hot trends.
 * **5-Dimensional Scoring**: Ranks news items based on Impact Scope, Novelty, Explainability, Relevance, and Source Authority, selecting the absolute best for the daily show.
 
@@ -66,7 +66,7 @@ The project is structured as an end-to-end data pipeline executed daily:
 ### 3. High-Fidelity Zero-Shot Clone TTS
 * Synthesizes audio segments via **CosyVoice 2** (`CosyVoice2-0.5B` model) with zero-shot speaker-cloning from host reference clips (`assets/refs/`).
 * Splits script dialogues into smaller, natural sentences before voice synthesis to prevent model speed warp or audio truncation.
-* Designed solely around **CosyVoice 2** speaker cloning; the legacy **Edge-TTS** engine has been archived and is disabled.
+* Designed around **CosyVoice 2** speaker cloning to generate highly realistic, natural speech for the two hosts.
 
 ### 4. Professional Audio Mastering
 * Inserts dynamic silent spacing between hosts' voice segments and paragraphs using **pydub**.
@@ -101,7 +101,7 @@ The system relies on a curated set of specialized python libraries and system-le
 ### 4. Audio Processing & Mastering
 * **`pydub`**: Splits vocal chunks, dynamic silent padding, and cross-fades host voices.
 * **`FFmpeg`**: System mastering utility for mixing vocal stems with BGM and running EBU R128 standard loudness normalizations.
-* **`CosyVoice 2`** (locally installed/GHA setup): Zero-shot speaker cloning model (`CosyVoice2-0.5B`) executing speech synthesis from reference audios. *Note: The legacy `Edge-TTS` engine has been archived and is disabled.*
+* **`CosyVoice 2`** (locally installed/GHA setup): Zero-shot speaker cloning model (`CosyVoice2-0.5B`) executing high-fidelity speech synthesis from reference audios.
 
 ### 5. Config & Infrastructure
 * **`PyYAML`**: Standard YAML loader for configs (`config.yaml`, `sources.yaml`).
@@ -240,6 +240,6 @@ We want to express our deepest gratitude to the developers and maintainers of th
 
 ### 2. Licensing Compliance & Terms
 * This entire project, including all its custom source code, configurations, and files, is licensed under the permissive **MIT License** (see [LICENSE](LICENSE) for details).
-* Since we have removed `trafilatura` (GPLv3) and rely entirely on `readability-lxml` and `beautifulsoup4` for web page content extraction, this project has **zero copyleft dependencies**.
+* The project relies entirely on `readability-lxml` and `beautifulsoup4` for web page content extraction, ensuring **zero copyleft dependencies**.
 * All dependencies declared in this project are licensed under business-friendly, permissive licenses (MIT, BSD, or Apache-2.0), ensuring that the codebase remains fully compatible under the **MIT License** for commercial use, modification, and redistribution.
 
