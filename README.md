@@ -91,9 +91,8 @@ The system relies on a curated set of specialized python libraries and system-le
 * **`beautifulsoup4`**: Parsers and cleans up inline HTML entities and custom tag annotations.
 
 ### 2. NLP, Clustering & Scoring Engines
-* **`sentence-transformers`** (`v3.0.0`): Computes dense vector embeddings from articles using `paraphrase-multilingual-MiniLM-L12-v2` for semantic similarity mapping.
-* **`scikit-learn`**: Utilizes `TfidfVectorizer` for keyword weighting and `DBSCAN` for spatial density-based news clustering.
-* **`jieba`**: Segments Chinese text to calculate keyword overlap matrices between candidate news pieces.
+* **`scikit-learn`**: Utilizes `TfidfVectorizer` for keyword weighting and cross-episode TF-IDF cosine similarity deduplication, and `DBSCAN` for spatial density-based news clustering.
+* **`jieba`**: Segments Chinese text to calculate keyword overlap matrices and tokenize text for TF-IDF calculations.
 * **`rapidfuzz`**: Extremely fast C-implemented fuzzy string comparison for redundant title checks.
 
 ### 3. LLM Orchestration
@@ -226,8 +225,7 @@ We want to express our deepest gratitude to the developers and maintainers of th
 
 ### 1. Attributions & Third-Party Software Licenses
 * **`CosyVoice`** (Licensed under **Apache-2.0**): Used for zero-shot cloning text-to-speech synthesis.
-* **`sentence-transformers`** (Licensed under **Apache-2.0**): Used for computing article embeddings.
-* **`scikit-learn`** (Licensed under **BSD 3-Clause**): Used for TF-IDF vectorization and DBSCAN clustering.
+* **`scikit-learn`** (Licensed under **BSD 3-Clause**): Used for TF-IDF vectorization, DBSCAN clustering, and TF-IDF cosine similarity deduplication.
 * **`openai`** (Licensed under **Apache-2.0**): Used to interact with OpenAI-compatible APIs.
 * **`httpx`** (Licensed under **BSD 3-Clause**): Used for asynchronous HTTP requests.
 * **`pydub`** (Licensed under **MIT**): Used for audio slicing and track mixing.

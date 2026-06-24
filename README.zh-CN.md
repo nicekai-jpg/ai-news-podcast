@@ -91,9 +91,8 @@
 * **`beautifulsoup4`**：对解析到的正文、自定义标签、SSML 标签进行清理与加工。
 
 ### 2. 语义处理、聚类与去重
-* **`sentence-transformers`** (`v3.0.0`)：利用中文/多语言语义向量嵌入模型（`paraphrase-multilingual-MiniLM-L12-v2`）计算文章相似度。
-* **`scikit-learn`**：利用 `TfidfVectorizer` 提取特征词，使用 `DBSCAN` 密度聚类算法对当日新闻进行热点聚类。
-* **`jieba`**：对新闻进行中文分词与关键词提取，用于计算关键词重合比对。
+* **`scikit-learn`**：利用 `TfidfVectorizer` 计算文本特征词、计算跨期新闻 TF-IDF 余弦相似度以实现高效去重，并使用 `DBSCAN` 密度聚类算法对当日新闻进行热点聚类。
+* **`jieba`**：对新闻进行中文分词与关键词提取，用于分词分句并支持 TF-IDF 计算。
 * **`rapidfuzz`**：基于 C 优化的字符串模糊匹配库，快速清洗并拦截重复的标题。
 
 ### 3. LLM 接口适配
@@ -226,8 +225,7 @@ gh workflow run "Daily Podcast" -f date=YYYY-MM-DD
 
 ### 1. 引用依赖与第三方软件开源协议
 * **`CosyVoice`** (采用 **Apache-2.0** 协议)：用于人声的零样本克隆及高拟真语音合成。
-* **`sentence-transformers`** (采用 **Apache-2.0** 协议)：用于计算新闻内容语义嵌入向量。
-* **`scikit-learn`** (采用 **BSD 3-Clause** 协议)：用于文本 TF-IDF 特征计算与 DBSCAN 算法聚类。
+* **`scikit-learn`** (采用 **BSD 3-Clause** 协议)：用于文本 TF-IDF 特征计算、DBSCAN 算法聚类及 TF-IDF 相似度去重。
 * **`openai`** (采用 **Apache-2.0** 协议)：用于连接兼容 OpenAI 标准接口的大模型 API。
 * **`httpx`** (采用 **BSD 3-Clause** 协议)：用于异步并发执行 HTTP 数据抓取。
 * **`pydub`** (采用 **MIT** 协议)：用于主持对话切片合并及音轨处理。
