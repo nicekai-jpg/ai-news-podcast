@@ -1,7 +1,7 @@
 """Stage 1 — 新闻抓取模块
 
 职责：RSS 抓取 → 全文提取 → URL 规范化 → 输出 RawItem 列表。
-特性：trafilatura + readability-lxml 双引擎全文提取、tenacity 指数退避重试、
+特性：readability-lxml 与 BeautifulSoup4 高效正文提取、tenacity 指数退避重试、
       同域名 1 req/sec 限速、全局并发 ≤ 4。
 """
 
@@ -84,7 +84,7 @@ def _item_id(normalized_link: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# 全文提取 (PLAN §1.3 — trafilatura + readability‑lxml fallback)
+# 全文提取 (readability-lxml)
 # ---------------------------------------------------------------------------
 
 
