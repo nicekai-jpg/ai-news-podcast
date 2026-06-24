@@ -221,9 +221,29 @@ gh workflow run "Daily Podcast" -f date=YYYY-MM-DD
 ```
 Since GHA contains a safeguard to skip writing if `site/episodes/YYYY-MM-DD.txt` already exists, you can manually fix any script text, push it, and trigger the GHA run, and GHA will synthesize the audio from your corrected script.
 
----
+## 🤝 Open Source License & Attributions
 
-## ⚖️ Open Source License
+We want to express our deepest gratitude to the developers and maintainers of the following third-party projects and open-source libraries that make **AI Daily Pioneer** possible:
 
-This project is licensed under the terms of the **MIT License**. For details, see the [LICENSE](LICENSE) file.
-Contributions, issue reports, and suggestions are welcome!
+### 1. Attributions & Third-Party Software Licenses
+* **`trafilatura`** (Licensed under **GNU GPL v3.0**): Used for structural full-text extraction from news articles.
+* **`CosyVoice`** (Licensed under **Apache-2.0**): Used for zero-shot cloning text-to-speech synthesis.
+* **`sentence-transformers`** (Licensed under **Apache-2.0**): Used for computing article embeddings.
+* **`scikit-learn`** (Licensed under **BSD 3-Clause**): Used for TF-IDF vectorization and DBSCAN clustering.
+* **`openai`** (Licensed under **Apache-2.0**): Used to interact with OpenAI-compatible APIs.
+* **`httpx`** (Licensed under **BSD 3-Clause**): Used for asynchronous HTTP requests.
+* **`pydub`** (Licensed under **MIT**): Used for audio slicing and track mixing.
+* **`rapidfuzz`** (Licensed under **MIT**): Used for fast string comparison.
+* **`jieba`** (Licensed under **MIT**): Used for Chinese text tokenization.
+* **`feedparser`** (Licensed under **BSD 2-Clause**): Used for RSS/Atom XML feed parsing.
+* **`readability-lxml`** (Licensed under **Apache-2.0**): Used as a fallback parser.
+* **`beautifulsoup4`** (Licensed under **MIT**): Used for HTML tag stripping and formatting.
+* **`PyYAML`** (Licensed under **MIT**): Used for configuration file reading.
+* **`tenacity`** (Licensed under **Apache-2.0**): Used for retry operations.
+* **`python-dotenv`** (Licensed under **BSD 3-Clause**): Used to load local environment configurations.
+
+### 2. Licensing Compliance & Terms
+* The original source code written for **AI Daily Pioneer** is released under the **MIT License**.
+* However, because this project dynamically imports and links to **`trafilatura`** (which is licensed under the copyleft **GNU General Public License v3.0**), any distributed or modified version of this software as a combined work must be licensed under the terms of the **GNU GPL v3.0** in accordance with its copyleft requirements.
+* Both the MIT License and the Apache/BSD/MIT/GNU GPLv3 licenses of all declared dependencies are fully compatible under these combination guidelines.
+

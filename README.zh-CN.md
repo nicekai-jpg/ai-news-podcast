@@ -221,9 +221,28 @@ gh workflow run "Daily Podcast" -f date=YYYY-MM-DD
 ```
 *提示：由于 `daily.yml` 包含检查逻辑，若 main 分支上已存在对应日期的脚本 `.txt`，GHA 将直接使用该既有脚本合成音频，不会使用大模型重新生成覆盖，确保了您的人工修改能完美反映在最终播客中。*
 
----
+## 🤝 开源协议与鸣谢
 
-## ⚖️ 开源协议
+我们向开发并维护以下第三方项目和开源库的团队及开发者表示由衷的感谢，正是他们的无私奉献让 **AI Daily Pioneer** 的落地成为可能：
 
-本项目采用 **MIT License** 开源协议进行授权。详情请见 [LICENSE](LICENSE) 文件。
-欢迎提交 Issue 和 PR 共同完善本项目！
+### 1. 引用依赖与第三方软件开源协议
+* **`trafilatura`** (采用 **GNU GPL v3.0** 协议)：用于抓取新闻文章时的结构化全文提取。
+* **`CosyVoice`** (采用 **Apache-2.0** 协议)：用于人声的零样本克隆及高拟真语音合成。
+* **`sentence-transformers`** (采用 **Apache-2.0** 协议)：用于计算新闻内容语义嵌入向量。
+* **`scikit-learn`** (采用 **BSD 3-Clause** 协议)：用于文本 TF-IDF 特征计算与 DBSCAN 算法聚类。
+* **`openai`** (采用 **Apache-2.0** 协议)：用于连接兼容 OpenAI 标准接口的大模型 API。
+* **`httpx`** (采用 **BSD 3-Clause** 协议)：用于异步并发执行 HTTP 数据抓取。
+* **`pydub`** (采用 **MIT** 协议)：用于主持对话切片合并及音轨处理。
+* **`rapidfuzz`** (采用 **MIT** 协议)：用于极速字符串模糊匹配。
+* **`jieba`** (采用 **MIT** 协议)：用于中文分词及词频重合分析。
+* **`feedparser`** (采用 **BSD 2-Clause** 协议)：用于解析标准 RSS/Atom 的 XML 信息流。
+* **`readability-lxml`** (采用 **Apache-2.0** 协议)：作为正文提取的备用兜底解析器。
+* **`beautifulsoup4`** (采用 **MIT** 协议)：用于过滤 HTML 标签及 SSML 预处理。
+* **`PyYAML`** (采用 **MIT** 协议)：用于解析项目 YAML 配置文件。
+* **`tenacity`** (采用 **Apache-2.0** 协议)：用于设定 HTTP 请求的指数退避重试。
+* **`python-dotenv`** (采用 **BSD 3-Clause** 协议)：用于读取和加载本地环境密钥配置。
+
+### 2. 开源协议合规性说明
+* 本项目为 **AI Daily Pioneer** 编写的原创源代码部分均以 **MIT License** 协议开放。
+* 需要特别说明的是，由于本项目动态导入并调用了 **`trafilatura`** 库（该库采用具有强传染性的 **GNU GPL v3.0** 协议），根据 GPLv3 协议的 Copyleft 要求，任何将本项目作为组合作品进行分发、分包或修改后的衍生版本，整体上均需遵守 **GNU GPL v3.0** 协议条款。
+* 本项目所采用的 MIT 协议以及所有依赖项的 Apache/BSD/MIT/GNU GPLv3 协议在组合使用时均完全兼容，无任何许可冲突。
