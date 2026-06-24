@@ -228,9 +228,11 @@ def cluster_stories(
 _AUTHORITY_ORDER = {
     "official": 1,
     "research": 2,
+    "open_source": 2,
     "news": 3,
     "product": 3,
     "analysis": 3,
+    "community": 3,
     "tools": 4,
     "events": 4,
     "other": 5,
