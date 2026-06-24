@@ -2,7 +2,7 @@ sources:
   - name: "机器之心"
     url: "https://www.jiqizhixin.com/rss"
     category: "news"
-    enabled: true
+    enabled: false
   - name: "量子位"
     url: "https://www.qbitai.com/feed"
     category: "news"
@@ -10,19 +10,19 @@ sources:
   - name: "IT之家 AI"
     url: "https://it.ithome.com/rss/ai/rss.xml"
     category: "product"
-    enabled: true
+    enabled: false
   - name: "36Kr 快讯"
     url: "https://36kr.com/feed-newsflash"
     category: "events"
-    enabled: false
+    enabled: true
   - name: "少数派"
     url: "https://sspai.com/feed"
     category: "tools"
-    enabled: false
+    enabled: true
   - name: "智源社区"
     url: "https://hub.baai.ac.cn/feed"
     category: "research"
-    enabled: true
+    enabled: false
   - name: "ChinAI Newsletter"
     url: "https://chinai.substack.com/feed"
     category: "analysis"
@@ -30,7 +30,7 @@ sources:
   - name: "OpenAI Blog"
     url: "https://openai.com/blog/rss.xml"
     category: "official"
-    enabled: false
+    enabled: true
   - name: "Anthropic News"
     url: "https://www.anthropic.com/news.rss"
     category: "official"
@@ -38,7 +38,7 @@ sources:
   - name: "DeepMind Blog"
     url: "https://deepmind.google/blog/rss.xml"
     category: "official"
-    enabled: false
+    enabled: true
   - name: "Google AI Blog"
     url: "https://blog.google/technology/ai/rss/"
     category: "official"
@@ -50,11 +50,11 @@ sources:
   - name: "GitHub Blog AI"
     url: "https://github.blog/ai-and-ml/feed/"
     category: "product"
-    enabled: true
+    enabled: false
   - name: "MIT Tech Review AI"
     url: "https://www.technologyreview.com/topic/artificial-intelligence/feed"
     category: "analysis"
-    enabled: true
+    enabled: false
   - name: "arXiv cs.AI"
     url: "https://rss.arxiv.org/rss/cs.AI"
     category: "research"
@@ -62,4 +62,52 @@ sources:
   - name: "arXiv cs.LG"
     url: "https://rss.arxiv.org/rss/cs.LG"
     category: "research"
+    enabled: false
+
+  # === 新增：国外科技媒体 ===
+  - name: "TechCrunch AI"
+    url: "https://techcrunch.com/category/artificial-intelligence/feed/"
+    category: "news"
     enabled: true
+  - name: "Wired AI"
+    url: "https://www.wired.com/tag/artificial-intelligence/rss"
+    category: "analysis"
+    enabled: false
+  - name: "VentureBeat AI"
+    url: "https://venturebeat.com/category/ai/feed/"
+    category: "news"
+    enabled: true
+  - name: "AI News UK"
+    url: "https://www.artificialintelligence-news.com/feed/"
+    category: "news"
+    enabled: false
+  - name: "Synced Review"
+    url: "https://syncedreview.com/feed/"
+    category: "news"
+    enabled: true
+
+  # === 新增：RSSHub 社区/产品源（公共实例不稳定，大部分禁用）===
+  - name: "Reddit r/MachineLearning"
+    url: "https://rsshub.app/reddit/r/MachineLearning/top?t=day"
+    category: "community"
+    enabled: false
+  - name: "Reddit r/LocalLLaMA"
+    url: "https://rsshub.app/reddit/r/LocalLLaMA/top?t=day"
+    category: "community"
+    enabled: false
+  - name: "Hacker News"
+    url: "https://rsshub.app/hackernews"
+    category: "community"
+    enabled: true
+  - name: "GitHub Trending Python"
+    url: "https://rsshub.app/github/trending/python"
+    category: "open_source"
+    enabled: true
+  - name: "Product Hunt"
+    url: "https://rsshub.app/product-hunt/today"
+    category: "product"
+    enabled: false
+  - name: "GitHub Trending Python"
+    url: "https://rsshub.app/github/trending/python"
+    category: "open_source"
+    enabled: false

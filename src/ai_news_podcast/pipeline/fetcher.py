@@ -367,6 +367,167 @@ async def _fetch_one_feed(
 
 
 # ---------------------------------------------------------------------------
+# JSON API 源抓取（GitHub / Hacker News）
+# ---------------------------------------------------------------------------
+
+
+async def _fetch_github_api(
+    src: dict[str, Any],
+    *,
+    client: httpx.AsyncClient,
+    throttle: _DomainThrottle,
+    max_items: int,
+) -> list[RawItem]:
+    """通过 GitHub Search API 抓取热门 AI 仓库。"""
+    name = str(src.get("name") or "").strip()
+    src_category = str(src.get("category") or "other").strip()
+    if not name:
+        return []
+
+    # GitHub 搜索 API：最近更新的 AI 相关仓库
+    api_url = "https://api.github.com/search/repositories?q=topic:artificial-intelligence+created:>2026-06-01&sort=updated&order=desc&per_page=30"
+
+    try:
+        resp = await _http_get(client, api_url, throttle)
+        data = resp.json()
+    except (httpx.HTTPError, OSError, ValueError):
+        logger.warning("Failed to fetch GitHub API: %s", name)
+        return []
+
+    items: list[RawItem] = []
+    repos = data.get("items", [])
+
+    for repo in repos[:max_items]:
+        title = _strip_html(str(repo.get("full_name", "")))
+        link = repo.get("html_url", "")
+        if not title or not link:
+            continue
+
+        norm_link = normalize_url(link)
+        item_id = _item_id(norm_link)
+
+        # GitHub 返回 ISO 8601 时间
+        created_at = repo.get("created_at", "")
+        try:
+            dt = datetime.fromisoformat(created_at.replace("Z", "+00:00"))
+            published_at = dt.isoformat()
+        except ValueError:
+            published_at = datetime.now(tz=timezone.utc).isoformat()
+
+        stars = repo.get("stargazers_count", 0)
+        forks = repo.get("forks_count", 0)
+        language = repo.get("language", "")
+        description = repo.get("description", "") or ""
+
+        summary = f"GitHub 热门仓库（⭐{stars} stars, 🍴{forks} forks）{language and f'[{language}] ' or ''}{description[:200]}"
+        full_text = f"{description}\n\nStars: {stars}\nForks: {forks}\nLanguage: {language}\nURL: {link}"[:2000]
+
+        lang = _detect_lang(f"{title} {summary}")
+        category = _infer_category(title, summary)
+
+        items.append(
+            RawItem(
+                id=item_id,
+                title=title,
+                link=link,
+                normalized_link=norm_link,
+                source_name=name,
+                source_category=src_category,
+                published_at=published_at,
+                summary=summary,
+                full_text_snippet=full_text,
+                category=category,
+                language=lang,
+            )
+        )
+
+    logger.info("Fetched %d items from GitHub API: %s", len(items), name)
+    return items
+
+
+async def _fetch_hn_api(
+    src: dict[str, Any],
+    *,
+    client: httpx.AsyncClient,
+    throttle: _DomainThrottle,
+    max_items: int,
+) -> list[RawItem]:
+    """通过 Hacker News Algolia API 抓取帖子。"""
+    name = str(src.get("name") or "").strip()
+    src_category = str(src.get("category") or "other").strip()
+    if not name:
+        return []
+
+    # Algolia 搜索 API，获取 front page 内容
+    api_url = "https://hn.algolia.com/api/v1/search?tags=front_page&hitsPerPage=30"
+
+    try:
+        resp = await _http_get(client, api_url, throttle)
+        data = resp.json()
+    except (httpx.HTTPError, OSError, ValueError):
+        logger.warning("Failed to fetch HN API: %s", name)
+        return []
+
+    items: list[RawItem] = []
+    hits = data.get("hits", [])
+
+    for hit in hits[:max_items]:
+        title = _strip_html(str(hit.get("title", "")))
+        story_url = hit.get("url", "")
+        object_id = hit.get("objectID", "")
+        # 如果帖子没有外部链接，用 HN 讨论页
+        link = story_url or f"https://news.ycombinator.com/item?id={object_id}"
+        if not title or not link:
+            continue
+
+        norm_link = normalize_url(link)
+        item_id = _item_id(norm_link)
+
+        # Algolia 返回的是毫秒级 unix 时间戳
+        ts = hit.get("created_at_i", 0)
+        published_at = datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()
+
+        points = hit.get("points", 0)
+        num_comments = hit.get("num_comments", 0)
+        author = hit.get("author", "")
+        summary = f"HN 热门讨论（{points} points, {num_comments} 评论）by {author}"
+
+        # HN 帖子需要尝试抓取外部链接的全文
+        full_text = ""
+        if story_url:
+            try:
+                page_resp = await _http_get(client, story_url, throttle)
+                full_text = _extract_fulltext(page_resp.text, story_url, min_chars=600, max_chars=2000)
+            except (httpx.HTTPError, OSError, ValueError):
+                logger.debug("Full-text fetch failed for HN story: %s", story_url)
+
+        if not full_text:
+            full_text = summary
+
+        lang = _detect_lang(f"{title} {summary}")
+        category = _infer_category(title, summary)
+
+        items.append(
+            RawItem(
+                id=item_id,
+                title=title,
+                link=link,
+                normalized_link=norm_link,
+                source_name=name,
+                source_category=src_category,
+                published_at=published_at,
+                summary=summary,
+                full_text_snippet=full_text,
+                category=category,
+                language=lang,
+            )
+        )
+
+    logger.info("Fetched %d items from HN API: %s", len(items), name)
+    return items
+
+
+# ---------------------------------------------------------------------------
 # 主入口 — 并发抓取所有启用源（全局并发 ≤ 4）
 # ---------------------------------------------------------------------------
 
@@ -376,7 +537,7 @@ async def fetch_all(
     *,
     timeout_seconds: int = 20,
     connect_timeout: int = 5,
-    user_agent: str = "ai-news-podcast/0.1",
+    user_agent: str = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     max_items_per_feed: int = 30,
     max_pages: int = 80,
 ) -> list[RawItem]:
@@ -392,14 +553,32 @@ async def fetch_all(
 
     async def _guarded(src: dict[str, Any]) -> list[RawItem]:
         async with semaphore:
-            return await _fetch_one_feed(
-                src,
-                client=client,
-                throttle=throttle,
-                max_items=max_items_per_feed,
-                max_pages=max_pages,
-                pages_counter=pages_counter,
-            )
+            url = str(src.get("url") or "").strip()
+            # 路由分发：根据 URL 模式选择抓取器
+            if "github" in url.lower() and ("trending" in url.lower() or "rsshub" in url.lower()):
+                return await _fetch_github_api(
+                    src,
+                    client=client,
+                    throttle=throttle,
+                    max_items=max_items_per_feed,
+                )
+            elif "hackernews" in url.lower() or "hn.algolia" in url:
+                return await _fetch_hn_api(
+                    src,
+                    client=client,
+                    throttle=throttle,
+                    max_items=max_items_per_feed,
+                )
+            else:
+                # 标准 RSS 抓取
+                return await _fetch_one_feed(
+                    src,
+                    client=client,
+                    throttle=throttle,
+                    max_items=max_items_per_feed,
+                    max_pages=max_pages,
+                    pages_counter=pages_counter,
+                )
 
     timeout = httpx.Timeout(timeout_seconds, connect=connect_timeout)
     async with httpx.AsyncClient(
