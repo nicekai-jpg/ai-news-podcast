@@ -89,27 +89,16 @@ def _item_id(normalized_link: str) -> str:
 
 
 def _extract_fulltext(html: str, url: str, *, min_chars: int = 1200, max_chars: int = 2000) -> str:
-    """优先 trafilatura，不足 min_chars 时 fallback readability‑lxml。"""
+    """使用 readability-lxml 提取网页正文内容。"""
     text = ""
-    # 1) trafilatura
     try:
-        trafilatura = importlib.import_module("trafilatura")
-        text = trafilatura.extract(html, url=url, include_comments=False) or ""
+        readability = importlib.import_module("readability")
+        bs4 = importlib.import_module("bs4")
+        doc = readability.Document(html)
+        soup = bs4.BeautifulSoup(doc.summary(), "html.parser")
+        text = soup.get_text(" ", strip=True)
     except (OSError, ValueError, UnicodeDecodeError):
-        logger.debug("trafilatura failed for %s", url)
-
-    # 2) readability-lxml fallback
-    if len(text) < min_chars:
-        try:
-            readability = importlib.import_module("readability")
-            bs4 = importlib.import_module("bs4")
-            doc = readability.Document(html)
-            soup = bs4.BeautifulSoup(doc.summary(), "html.parser")
-            alt = soup.get_text(" ", strip=True)
-            if len(alt) > len(text):
-                text = alt
-        except (OSError, ValueError, UnicodeDecodeError):
-            logger.debug("readability-lxml fallback failed for %s", url)
+        logger.debug("readability-lxml extraction failed for %s", url)
 
     # truncate
     if len(text) > max_chars:

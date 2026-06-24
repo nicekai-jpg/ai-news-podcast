@@ -21,7 +21,7 @@
 [精选 RSS/Atom 新闻信源]
            │
            ▼  (fetcher.py)
-   [httpx 异步抓取 & trafilatura 网页正文深度解析]
+   [httpx 异步抓取 & readability-lxml 网页正文解析]
            │
            ▼  (processor.py)
    [智能去重：TF-IDF + 关键词 overlap 重合度 + 语义相似度度量]
@@ -87,8 +87,7 @@
 ### 1. 新闻数据抓取与解析
 * **`feedparser`** (`v6.0.11`)：解析 RSS 及 Atom 订阅源，结构化元数据。
 * **`httpx`**：异步 HTTP 请求库，用于高并发的新闻源抓取与内容请求。
-* **`trafilatura`** (`v1.8`)：精细化的 HTML 正文和元数据提取引擎，能自动剥离侧边栏、导航栏与页脚广告等噪音。
-* **`readability-lxml`**：作为备用的网页内容提取引擎，当正文过短时进行兜底提取。
+* **`readability-lxml`**：高效的 HTML 正文与网页结构解析引擎，能够精准提取页面文章正文，剥离导航、页脚等噪声。
 * **`beautifulsoup4`**：对解析到的正文、自定义标签、SSML 标签进行清理与加工。
 
 ### 2. 语义处理、聚类与去重
@@ -226,7 +225,6 @@ gh workflow run "Daily Podcast" -f date=YYYY-MM-DD
 我们向开发并维护以下第三方项目和开源库的团队及开发者表示由衷的感谢，正是他们的无私奉献让 **AI Daily Pioneer** 的落地成为可能：
 
 ### 1. 引用依赖与第三方软件开源协议
-* **`trafilatura`** (采用 **GNU GPL v3.0** 协议)：用于抓取新闻文章时的结构化全文提取。
 * **`CosyVoice`** (采用 **Apache-2.0** 协议)：用于人声的零样本克隆及高拟真语音合成。
 * **`sentence-transformers`** (采用 **Apache-2.0** 协议)：用于计算新闻内容语义嵌入向量。
 * **`scikit-learn`** (采用 **BSD 3-Clause** 协议)：用于文本 TF-IDF 特征计算与 DBSCAN 算法聚类。
@@ -236,13 +234,13 @@ gh workflow run "Daily Podcast" -f date=YYYY-MM-DD
 * **`rapidfuzz`** (采用 **MIT** 协议)：用于极速字符串模糊匹配。
 * **`jieba`** (采用 **MIT** 协议)：用于中文分词及词频重合分析。
 * **`feedparser`** (采用 **BSD 2-Clause** 协议)：用于解析标准 RSS/Atom 的 XML 信息流。
-* **`readability-lxml`** (采用 **Apache-2.0** 协议)：作为正文提取的备用兜底解析器。
+* **`readability-lxml`** (采用 **Apache-2.0** 协议)：用于直接解析和抓取网页中高可读性的正文文本。
 * **`beautifulsoup4`** (采用 **MIT** 协议)：用于过滤 HTML 标签及 SSML 预处理。
 * **`PyYAML`** (采用 **MIT** 协议)：用于解析项目 YAML 配置文件。
 * **`tenacity`** (采用 **Apache-2.0** 协议)：用于设定 HTTP 请求的指数退避重试。
 * **`python-dotenv`** (采用 **BSD 3-Clause** 协议)：用于读取和加载本地环境密钥配置。
 
 ### 2. 开源协议合规性说明
-* 本项目为 **AI Daily Pioneer** 编写的原创源代码部分均以 **MIT License** 协议开放。
-* 需要特别说明的是，由于本项目动态导入并调用了 **`trafilatura`** 库（该库采用具有强传染性的 **GNU GPL v3.0** 协议），根据 GPLv3 协议的 Copyleft 要求，任何将本项目作为组合作品进行分发、分包或修改后的衍生版本，整体上均需遵守 **GNU GPL v3.0** 协议条款。
-* 本项目所采用的 MIT 协议以及所有依赖项的 Apache/BSD/MIT/GNU GPLv3 协议在组合使用时均完全兼容，无任何许可冲突。
+* 本项目所包含的原创源代码、配置及文档文件均采用 **MIT License** 开源协议进行授权（详见 [LICENSE](LICENSE) 文件）。
+* 由于我们已经完全移除了采用 GPL 协议的 `trafilatura` 依赖，本项目目前 **没有任何 Copyleft（传染性）的开源依赖**。
+* 本项目声明的所有第三方依赖库均采用商业友好的宽松开源协议（MIT、BSD 或 Apache-2.0），确保整个项目在作为开源分发、商业二次开发或闭源分发时，与 **MIT License** 保持完全兼容且无任何潜在冲突。
