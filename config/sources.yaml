@@ -98,10 +98,12 @@ sources:
   - name: "Hacker News"
     url: "https://rsshub.app/hackernews"
     category: "community"
+    fetcher_type: "hn_api"
     enabled: true
   - name: "GitHub Trending Python"
     url: "https://rsshub.app/github/trending/python"
     category: "open_source"
+    fetcher_type: "github_api"
     enabled: true
   - name: "Product Hunt"
     url: "https://rsshub.app/product-hunt/today"
