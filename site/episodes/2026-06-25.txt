@@ -1,189 +1,191 @@
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="1.000" duration="8.882">
 听众朋友大家好，欢迎收听AI每日先锋，今天是2026年6月25日。我是主持人晓晓。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="10.331" duration="1.350">
 大家好，我是博文。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="12.178" duration="15.257">
 哎博文老师，今天这个日子挺有看点的。DeepMind今天是大动作连连，从AI Agent的安全护栏，到多智能体科研搭档，再到国家层面的全球结盟，一整天下来信息量有点大。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="27.888" duration="14.866">
 是啊晓晓，我今天也一直在跟这些新闻。最让我感慨的一点就是——AI真的开始从实验室里走出来，变成社会底层的基础设施了。这已经不是简单的技术升级，而是一个范式的跃迁。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="43.159" duration="14.866">
 嗯，这话说到点子上了。哎对了，说到科研搭档这件事，我今天一早就看到Google DeepMind放出了一个大招，他们基于Gemini推出了一个叫Co-Scientist的多智能体系统。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="58.458" duration="1.524">
 对，这个我也详细看了。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="60.447" duration="14.803">
 但我有个疑问啊——现在的AI不都能回答问题、写代码、写文章吗？这个Co-Scientist它跟ChatGPT、跟咱们平时用的聊天助手，有什么本质区别？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="75.712" duration="13.864">
 晓晓这个问题问得特别好。其实区别大了去了。以前的AI工具，不管多强大，本质上都是被动的——你问它答，你不给指令它就停在那儿。但Co-Scientist不一样，它是一个主动的参与者。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="90.027" duration="1.524">
 哦？主动到什么程度？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="92.051" duration="16.738">
 你想啊，传统的科研流程是这样的：科学家提出假设，然后设计实验，收集数据，再分析结果。但Co-Scientist的厉害之处在于——它能主动提出假设，甚至帮你设计实验方案，然后和你一起协作去验证。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="109.227" duration="4.267">
 哇，这听起来就有点像一个真正的研究伙伴了。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="113.955" duration="6.487">
 对，晓晓你这个直觉非常准。它不是工具，它已经变成了科研流程里的一个角色。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="120.887" duration="5.137">
 那博文，这背后是什么技术原理啊？是简单的检索增强吗？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="126.498" duration="3.657">
 哈哈，晓晓你这是要逼我讲技术细节了。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="130.582" duration="4.659">
 来吧来吧，反正听众朋友们也都爱听你的硬核解析。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="135.705" duration="16.781">
 好的。其实这个Co-Scientist是基于多智能体协作架构的，你可以把它想象成一个研究小组，里面有专门负责检索文献的智能体，有专门负责推理的，有负责生成假设的，它们彼此之间会辩论、会协作。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="152.903" duration="4.397">
 嗯，这有点像咱们公司以前的跨部门协作哈。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="157.736" duration="6.879">
 哈哈，对，但它的效率高多了，因为机器之间不需要开会扯皮，也不用互相客套。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="165.032" duration="4.397">
 那这个对学术圈、对普通科研人员影响到底有多大？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="169.925" duration="14.038">
 我觉得这是根本性的改变。科学发现的速度会被大幅压缩。以前一个博士生要读几千篇文献才能找到的研究方向，AI可能几个小时就能梳理出来。但这同时也带来一个问题——学术诚信。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="184.375" duration="5.094">
 哦，你是说如果AI参与了科研，那论文算谁的？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="189.948" duration="11.320">
 对啊，这是个非常严肃的问题。如果AI提出了核心假设，甚至设计了关键实验，那它算不算共同作者？这种边界现在是非常模糊的。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="201.700" duration="4.441">
 嗯，确实，这可能比技术本身还要难解。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="206.609" duration="12.365">
 哎博文，说到AI主动参与决策这件事啊，就不得不提到一个更深层的问题——既然AI越来越自主，那谁来保证它不会失控呢？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="219.464" duration="3.701">
 没错，这个话题今天DeepMind也给出了答案。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="223.642" duration="8.838">
 对，我看到了一个叫AI Control Roadmap的东西，他们说要给Agent装一个"免疫系统"，这个比喻还挺有意思的。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="232.898" duration="6.835">
 晓晓，你这产品经理的敏感度果然每次都很灵敏。这个免疫系统的比喻其实非常准确。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="240.172" duration="4.397">
 哈哈是吗，那你能不能给听众朋友们翻译翻译？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="244.981" duration="10.188">
 好。传统的AI安全防护，主要是给模型加一些规则，比如不能输出有害内容、不能执行危险操作。但这是静态的、被动的。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="255.662" duration="4.441">
 嗯，就像咱们以前给家里装的那种老式防盗门，锁上了就不管了。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="260.512" duration="10.405">
 对，这个比喻很贴切。但现在的Agent不一样了，它有自主行动能力。它可能自己去点链接、自己去操作数据库，甚至自己去下单。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="271.404" duration="1.916">
 哇，那确实挺吓人的。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="273.762" duration="13.472">
 所以这个AI Control Roadmap的核心理念是——把传统安全防护和实时监控融合起来。Agent每做一个动作，背后都有一套系统在看，它有没有越界、有没有异常行为。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="287.694" duration="6.444">
 这听起来就像是给一个会自己走路的机器人装了一个GPS加紧急刹车。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="294.609" duration="4.310">
 哈哈，晓晓你这个比喻简直绝了，意思就是这么个意思。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="299.331" duration="2.917">
 那博文，这事紧迫到什么程度啊？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="302.693" duration="12.365">
 我觉得非常紧迫。你想想，一个失控的Agent如果在金融领域，它可能自动执行了错误的交易；如果在医疗领域，它可能给出一个错误的诊断建议。这种系统性风险是不可逆的。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="315.513" duration="2.961">
 嗯，所以行业标准必须得跟上。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="318.914" duration="6.182">
 对，这已经不是某个公司能自己解决的事情了，需要整个行业、监管机构一起建立框架。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="325.574" duration="9.056">
 哎博文，除了AI自身的安全问题，我还注意到一个很有意思的跨界动态。DeepMind今天和韩国政府达成了合作。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="335.111" duration="1.437">
 嗯，这个我也关注了。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="336.974" duration="2.177">
 这事儿你觉得意味着什么？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="339.621" duration="12.408">
 意味着AI的地缘博弈已经进入了实质阶段。你想啊，AI模型的训练需要算力、数据、还有顶尖人才，这些都是国家级资源。一个国家选择跟谁合作，其实就是在押注未来。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="352.490" duration="4.180">
 哦，那这算不算AI主权时代正式开启了？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="357.126" duration="6.095">
 我觉得可以这么说。各国都在争夺AI制高点，而这种国家级合作就是主战场。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="363.687" duration="1.219">
 嗯，有道理。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="365.339" duration="13.845">
 哎对了博文，还有个事我想跟你聊聊。一个叫HIL-ResRL的方案我今天看到了，说是机器人真机强化学习微调只要一小时，成功率超过95%。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="379.591" duration="2.090">
 哦？这个我得仔细说说。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="382.151" duration="2.438">
 这个对普通人有什么意义啊？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="384.990" duration="10.797">
 意义很大。以前训练一个机器人的成本非常高，一个博士可能调几个月都调不出能用的模型。现在只要一小时，门槛直接拉到了白菜价。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="396.198" duration="4.659">
 哇，那以后具身智能不就要进入快车道了？
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="401.349" duration="10.580">
 是啊，具身智能最难的从来不是算法，而是真机数据。这个方案把数据采集的成本打下来了，整个行业都会受益。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="412.380" duration="1.480">
 嗯嗯，明白。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="414.350" duration="15.804">
 哎博文，最后还有个让你这个技术人可能更有共鸣的事——港大MaRS Lab的一作拿到了IEEE TRO的最佳论文奖，而且据说是个华为的天才少年。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="430.654" duration="5.921">
 对，我也看到了。最厉害的是，这个项目在GitHub上已经狂揽了4万星标。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="437.060" duration="3.352">
 四万星？这热度也太夸张了吧。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="440.892" duration="8.751">
 哈哈，是啊。不过这也说明具身智能这个领域现在是真的热。学术界、工业界都在抢人才。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="450.043" duration="3.004">
 嗯嗯，期待这些年轻人的后续作品。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="453.525" duration="6.400">
 哎博文，今天聊下来我发现一件事——AI真的不再是一个遥远的技术概念了。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="460.388" duration="5.790">
 是啊晓晓，它已经渗透进了科研、安全、国际合作、教育、机器人……几乎每一个角落。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="466.620" duration="6.139">
 所以说这个时代的科技从业者其实是挺幸福的，每天都有新东西。
 </voice>
-<voice name="zh-CN-YunjianNeural">
+<voice name="zh-CN-YunjianNeural" start="473.190" duration="3.222">
 哈哈，对，但也挺累的，信息量太大。
 </voice>
-<voice name="zh-CN-XiaoxiaoNeural">
+<voice name="zh-CN-XiaoxiaoNeural" start="476.905" duration="4.005">
 哈哈哈是的。好了听众朋友们，今天的AI每日
+</voice>
+</speak>
