@@ -528,6 +528,17 @@ async def _fetch_hn_api(
 
 
 # ---------------------------------------------------------------------------
+# 抓取器注册表
+# ---------------------------------------------------------------------------
+
+_FETCHER_REGISTRY: dict[str, Any] = {
+    "rss": _fetch_one_feed,
+    "github_api": _fetch_github_api,
+    "hn_api": _fetch_hn_api,
+}
+
+
+# ---------------------------------------------------------------------------
 # 主入口 — 并发抓取所有启用源（全局并发 ≤ 4）
 # ---------------------------------------------------------------------------
 
@@ -541,7 +552,13 @@ async def fetch_all(
     max_items_per_feed: int = 30,
     max_pages: int = 80,
 ) -> list[RawItem]:
-    """抓取所有已启用 RSS 源，返回 RawItem 列表。"""
+    """抓取所有已启用源，返回 RawItem 列表。
+
+    根据 source 中的 ``fetcher_type`` 字段自动路由到对应的抓取器：
+    - ``rss``（默认）：标准 RSS 抓取
+    - ``github_api``：GitHub Search API
+    - ``hn_api``：Hacker News Algolia API
+    """
     enabled = [s for s in sources if s.get("enabled", False)]
     if not enabled:
         logger.warning("No enabled sources")
@@ -553,31 +570,28 @@ async def fetch_all(
 
     async def _guarded(src: dict[str, Any]) -> list[RawItem]:
         async with semaphore:
-            url = str(src.get("url") or "").strip()
-            # 路由分发：根据 URL 模式选择抓取器
-            if "github" in url.lower() and ("trending" in url.lower() or "rsshub" in url.lower()):
-                return await _fetch_github_api(
-                    src,
-                    client=client,
-                    throttle=throttle,
-                    max_items=max_items_per_feed,
-                )
-            elif "hackernews" in url.lower() or "hn.algolia" in url:
-                return await _fetch_hn_api(
-                    src,
-                    client=client,
-                    throttle=throttle,
-                    max_items=max_items_per_feed,
-                )
-            else:
-                # 标准 RSS 抓取
-                return await _fetch_one_feed(
+            fetcher_type = str(src.get("fetcher_type") or "rss").strip()
+            fetcher = _FETCHER_REGISTRY.get(fetcher_type)
+            if fetcher is None:
+                logger.warning("Unknown fetcher_type '%s' for source '%s', falling back to rss", fetcher_type, src.get("name"))
+                fetcher = _fetch_one_feed
+
+            if fetcher_type == "rss":
+                return await fetcher(
                     src,
                     client=client,
                     throttle=throttle,
                     max_items=max_items_per_feed,
                     max_pages=max_pages,
                     pages_counter=pages_counter,
+                )
+            else:
+                # API 抓取器不需要 pages_counter
+                return await fetcher(
+                    src,
+                    client=client,
+                    throttle=throttle,
+                    max_items=max_items_per_feed,
                 )
 
     timeout = httpx.Timeout(timeout_seconds, connect=connect_timeout)
