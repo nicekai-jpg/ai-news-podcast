@@ -230,7 +230,7 @@ llm:
   model: "MiniMax-M3"             # MiniMax-M3 旗舰大语言模型
   base_url: "https://api.minimaxi.com/v1"
   temperature: 0.7
-  max_output_tokens: 4096
+  max_output_tokens: 8192
   timeout: 120
 
 build:
