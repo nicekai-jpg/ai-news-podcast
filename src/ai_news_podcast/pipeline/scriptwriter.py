@@ -335,7 +335,7 @@ def generate_script(
     banned_words = style_cfg.get("banned_words", DEFAULT_BANNED_WORDS)
     llm_cfg = llm_cfg or {}
 
-    material = _build_material_text(brief)
+    material = _build_material_text(brief, max_stories=5)
     logger.info("素材文本 %d 字符，准备启动 Multi-Agent 编剧流程", len(material))
 
     script = None
@@ -368,6 +368,7 @@ def generate_script(
     script = clean_tts_text(script)
     script = _replace_banned_words(script, banned_words)
     script = _normalize_host_tags(script)
+    script = _ensure_proper_ending(script)
 
     warnings: list[str] = []
 
@@ -438,6 +439,31 @@ def _normalize_host_tags(text: str) -> str:
             result.append(line)
 
     return "\n\n".join(result) + "\n"
+
+
+def _ensure_proper_ending(script: str) -> str:
+    """检测脚本是否被截断，如果是则追加标准结束语。"""
+    stripped = script.strip()
+    if not stripped:
+        return script
+
+    # 检查是否以完整的结束语结尾
+    endings = ["</speak>", "拜拜", "再见", "明天见", "下期见"]
+    has_ending = any(stripped.endswith(e) for e in endings)
+
+    if has_ending:
+        return script
+
+    # 脚本被截断，追加标准结束语
+    logger.warning("脚本被截断，自动追加标准结束语")
+    closing_lines = """\n  <voice name="zh-CN-XiaoxiaoNeural">
+    好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！
+  </voice>
+  <voice name="zh-CN-YunjianNeural">
+    拜拜！
+  </voice>
+</speak>"""
+    return stripped + closing_lines + "\n"
 
 
 # ---------------------------------------------------------------------------
