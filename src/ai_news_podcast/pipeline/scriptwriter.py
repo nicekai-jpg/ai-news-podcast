@@ -378,11 +378,7 @@ def generate_script(
 
     # 简单统计Host A和Host B的出场次数
     stripped_script = script.strip()
-    is_ssml = (
-        stripped_script.startswith("<speak")
-        or "<speak" in stripped_script
-        or "<voice" in stripped_script
-    )
+    is_ssml = ("<speak" in stripped_script or "<voice" in stripped_script)
 
     if is_ssml:
         host_a_count = (
@@ -448,7 +444,7 @@ def _ensure_proper_ending(script: str) -> str:
         return script
 
     # 检查是否以完整的结束语结尾
-    endings = ["</speak>", "拜拜", "再见", "明天见", "下期见"]
+    endings = ["拜拜", "再见", "明天见", "下期见"]
     has_ending = any(stripped.endswith(e) for e in endings)
 
     if has_ending:
@@ -456,13 +452,7 @@ def _ensure_proper_ending(script: str) -> str:
 
     # 脚本被截断，追加标准结束语
     logger.warning("脚本被截断，自动追加标准结束语")
-    closing_lines = """\n  <voice name="zh-CN-XiaoxiaoNeural">
-    好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！
-  </voice>
-  <voice name="zh-CN-YunjianNeural">
-    拜拜！
-  </voice>
-</speak>"""
+    closing_lines = """\n[Host A] 好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！\n[Host B] 拜拜！"""
     return stripped + closing_lines + "\n"
 
 
