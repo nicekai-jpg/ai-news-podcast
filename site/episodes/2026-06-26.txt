@@ -1,145 +1,224 @@
-[Host B] 哎博文，听众朋友们大家好啊，欢迎来到今天的AI每日先锋，我是晓晓。
-
-[Host A] 大家好，我是博文。晓晓，今天这期节目感觉信息量特别大啊。
-
-[Host B] 没错，我整理大纲的时候也发现了。你有没有一种感觉，就是现在大家聊AI，已经不怎么比谁的参数更大了？
-
-[Host A] 你说到点子上了。前两年大家张口闭口都是千亿、万亿参数，现在风口确实在转。
-
-[Host B] 对，所以今天咱们这期节目的核心就一句话——AI正在从参数竞赛，真正走向产业落地和硬核基建。
-
-[Host A] 嗯，企业级Agent、3D生成、算力底座，这三件事今年齐头并进，科技叙事从"比谁更大"彻底转向了"比谁更实"。
-
-[Host B] 说得太好了。那咱们先来聊聊第一个让我特别兴奋的事情——科大讯飞最近搞了个大动作。
-
-[Host A] 嗯，我看到了。
-
-[Host B] 他们发布了一个叫Claw的企业服务平台，博文你知道最让我震撼的是什么吗？就是用户只要说一句话，它就能帮你把需求拆解完，最后直接交付方案。
-
-[Host A] 对，这确实是大模型竞争从C端聊天机器人向B端生产力工具转向的一个非常典型的信号。
-
-[Host B] 哎博文，这跟之前咱们用的那些聊天机器人有啥本质区别啊？我感觉不都是跟AI说句话嘛。
-
-[Host A] 你这个问题问得好。区别其实非常大。你想啊，普通的聊天机器人，你问它问题，它给你回答一个文本对吧？但企业级Agent不是这样的。
-
-[Host B] 嗯嗯。
-
-[Host A] 它是真正能"干活"的。比如你说"帮我做一份下个季度的市场分析方案"，它会自己调用数据分析工具，自己去拉数据，自己做PPT，最后把一个完整的成果交到你手里。
-
-[Host B] 哇，那这就相当于一个不用发工资的数字员工了？
-
-[Host A] 你这个比喻非常恰当。某种意义上来说，它就是企业里的一个新工种。
-
-[Host B] 天哪真假的。那这个Claw跟市面上其他的企业级Agent相比，它的核心壁垒到底在哪里？
-
-[Host A] 这就要说到科大讯飞的老本行了。他们在教育、医疗、政务这些垂直行业积累了非常深的行业知识，也就是咱们常说的Know-how。
-
-[Host B] 哦我懂了，就是它不是那种什么都能干但什么都干不好的"万金油"？
-
-[Host A] 对。企业服务是AI最难啃、但也最赚钱的骨头。你模型再强，不懂某个行业的门道，落地的时候一样抓瞎。
-
-[Host B] 那你觉得Claw能打破这个垂直行业Know-how的壁垒吗？
-
-[Host A] 我觉得它有机会，但挑战也不小。因为每个企业的流程都不一样，定制化成本非常高。
-
-[Host B] 嗯，这就像是……给每个企业量身定制西装，比做均码难多了。
-
-[Host A] 对，就是这个意思。所以接下来大家比的不再是模型多强，而是谁能把行业know-how和通用能力结合得更好。
-
-[Host B] 明白了，懂了懂了。哎博文，这让我想到另一件特别酷的事情，你知道最近3D生成领域有个特别非常的突破吗？
-
-[Host A] 你说的是不是那家号称"3D领域的Anthropic"的公司？
-
-[Host B] 对对对，就是它！他们现在能做到4秒生成一个百万面的3D模型，而且精度能达到千万面，贴图直接给到12K的高清级别。
-
-[Host A] 嗯，这个指标确实非常恐怖。
-
-[Host B] 博文你给不太了解3D的听众翻译翻译，这几个数字到底意味着什么？百万面、千万面、12K贴图，听着就头大。
-
-[Host A] 好，我尽量接地气地说啊。你可以这么理解——"面"就是3D模型表面的三角形数量。
-
-[Host B] 嗯嗯。
-
-[Host A] 百万面已经足够做一个相当精细的游戏角色了，而千万面基本就是电影级别的精度。贴图的12K，你可以想象成手机上看的4K视频的清晰度套在3D模型表面。
-
-[Host B] 哇哦，那这个4秒就出来是什么概念？
-
-[Host A] 你想啊，以前做一个电影级的3D资产，一个成熟的3D艺术家可能要花好几天甚至一两周。现在4秒钟。
-
-[Host B] 天哪，这成本直接降到了一个不可思议的地步。
-
-[Host A] 对。所以这背后真正的意义不是"快"这么简单，而是3D内容生产的工业化拐点到了。
-
-[Host B] 等等，你说的工业化拐点我怎么没太听明白？能给举个例子吗？
-
-[Host A] 好，你看啊。以前游戏公司做一款3A大作，3D建模的成本可能占到整个项目预算的三分之一甚至更多。
-
-[Host B] 嗯。
-
-[Host A] 现在如果这个技术成熟并且普及，游戏开发成本会断崖式下降，影视特效、元宇宙场景搭建也是一样。
-
-[Host B] 哎我突然想到了一个事，是不是具身智能也要靠这个？
-
-[Host A] 你这个观察角度非常敏锐。没错，机器人要在真实世界里行动，必须先在虚拟的3D环境里训练，这个技术直接关系到机器人的"学习效率"。
-
-[Host B] 所以这不仅仅是一个"让游戏画面更好看"的技术，而是整个数字资产生产方式的革命？
-
-[Host A] 对，UGC 3D时代真正要开始了。
-
-[Host B] 好的好的，涨知识了。哎博文，除了这两个大事之外，最近还有一些很有意思的动态，咱们一个一个快速过一下。
-
-[Host A] 好，你来。
-
-[Host B] 我看到一个消息，7月17到20号，量子位要办一个叫WAIC UP!的大会，最有意思的是他们的slogan——"AI圈都在聊参数，我们偏不"。
-
-[Host A] 哈哈，这个定位挺有意思的。
-
-[Host B] 对吧？大家都在比谁的模型参数大，他们偏要聚焦AI落地的新叙事。
-
-[Host A] 嗯，这其实跟咱们今天聊的主题不谋而合。参数竞赛已经审美疲劳了，市场需要看到真正的落地价值。
-
-[Host B] 没错，而且这种行业大会往往是新趋势的风向标，值得关注。
-
-[Host A] 确实。
-
-[Host B] 还有一个特别浪漫的事情要跟大家分享，《三体》问世20周年了！
-
-[Host A] 哦对，这个IP今年确实是个大年。
-
-[Host B] 关键是光帆科技联合三体宇宙，搞了一个联名的AI全感穿戴设备，还放出了一个概念视频叫《破晓》。
-
-[Host A] 嗯，科幻IP和硬科技结合，这个路子挺聪明的。
-
-[Host B] 对，你想想，《三体》里那些关于AI、关于星际航行的想象，现在正在一点一点变成现实。这种联名不只是卖产品，更像是一种对未来生活的预演。
-
-[Host A] 你说得对，特别是"全感"这两个字，背后其实是多模态交互技术的进步。
-
-[Host B] 嗯，值得期待一下。哎博文，最后一个动态我觉得特别硬核——6月30号深圳要办一个算力基础设施大会，专门讨论GW级Token工厂怎么定义下一代AI算力底座。
-
-[Host A] 这个话题我特别想多说两句。
-
-[Host B] 哎快讲讲快讲讲。
-
-[Host A] 你想啊，现在大模型推理的成本越来越高，什么Token价格战、算力紧缺，已经是行业里最头疼的问题之一了。
-
-[Host B] 对对对。
-
-[Host A] GW级Token工厂的意思就是，把Token的生产从"小作坊"模式升级到"发电厂"模式——规模更大、效率更高、成本更低。
-
-[Host B] 哦我懂了，这就相当于AI时代的"发电厂"？
-
-[Host A] 你这个比喻非常恰当。电力是工业时代的底座，那Token就是AI时代的底座。谁能把Token的"发电成本"降下来，谁就掌握了下个时代的入场券。
-
-[Host B] 哇哦，这个格局一下子就大了。好了听众朋友们，今天的节目到这里就接近尾声了。
-
-[Host A] 简单总结一下吧。AI的故事已经从"谁更大"变成了"谁更实"。从讯飞的Claw到3D生成的工业化，再到GW级的Token工厂，硬基建和真落地成了新关键词。
-
-[Host B] 没错，参数会过时，但真正解决问题的技术会留下来。
-
-[Host A] 嗯，希望大家今天听完有所收获。
-
-[Host B] 好的，那我们下期节目再见啦，拜拜博文！
-
-[Host A] 拜拜晓晓，听众朋友们再见！
-[Host A] 好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！
-[Host B] 拜拜！
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
+<voice name="host_b_professional" start="1.000" duration="6.400">
+哎博文，听众朋友们大家好啊，欢迎来到今天的AI每日先锋，我是晓晓。
+</voice>
+<voice name="host_a_professional" start="7.849" duration="5.137">
+大家好，我是博文。晓晓，今天这期节目感觉信息量特别大啊。
+</voice>
+<voice name="host_b_professional" start="13.483" duration="9.012">
+没错，我整理大纲的时候也发现了。你有没有一种感觉，就是现在大家聊AI，已经不怎么比谁的参数更大了？
+</voice>
+<voice name="host_a_professional" start="22.948" duration="7.358">
+你说到点子上了。前两年大家张口闭口都是千亿、万亿参数，现在风口确实在转。
+</voice>
+<voice name="host_b_professional" start="30.711" duration="11.363">
+对，所以今天咱们这期节目的核心就一句话——AI正在从参数竞赛，真正走向产业落地和硬核基建。
+</voice>
+<voice name="host_a_professional" start="42.507" duration="11.015">
+嗯，企业级Agent、3D生成、算力底座，这三件事今年齐头并进，科技叙事从"比谁更大"彻底转向了"比谁更实"。
+</voice>
+<voice name="host_b_professional" start="53.987" duration="7.184">
+说得太好了。那咱们先来聊聊第一个让我特别兴奋的事情——科大讯飞最近搞了个大动作。
+</voice>
+<voice name="host_a_professional" start="61.633" duration="1.524">
+嗯，我看到了。
+</voice>
+<voice name="host_b_professional" start="63.608" duration="14.454">
+他们发布了一个叫Claw的企业服务平台，博文你知道最让我震撼的是什么吗？就是用户只要说一句话，它就能帮你把需求拆解完，最后直接交付方案。
+</voice>
+<voice name="host_a_professional" start="78.562" duration="8.011">
+对，这确实是大模型竞争从C端聊天机器人向B端生产力工具转向的一个非常典型的信号。
+</voice>
+<voice name="host_b_professional" start="87.011" duration="8.011">
+哎博文，这跟之前咱们用的那些聊天机器人有啥本质区别啊？我感觉不都是跟AI说句话嘛。
+</voice>
+<voice name="host_a_professional" start="95.483" duration="11.059">
+你这个问题问得好。区别其实非常大。你想啊，普通的聊天机器人，你问它问题，它给你回答一个文本对吧？但企业级Agent不是这样的。
+</voice>
+<voice name="host_b_professional" start="106.987" duration="0.566">
+嗯嗯。
+</voice>
+<voice name="host_a_professional" start="108.027" duration="12.582">
+它是真正能"干活"的。比如你说"帮我做一份下个季度的市场分析方案"，它会自己调用数据分析工具，自己去拉数据，自己做PPT，最后把一个完整的成果交到你手里。
+</voice>
+<voice name="host_b_professional" start="121.036" duration="4.963">
+哇，那这就相当于一个不用发工资的数字员工了？
+</voice>
+<voice name="host_a_professional" start="126.463" duration="4.746">
+你这个比喻非常恰当。某种意义上来说，它就是企业里的一个新工种。
+</voice>
+<voice name="host_b_professional" start="131.626" duration="8.838">
+天哪真假的。那这个Claw跟市面上其他的企业级Agent相比，它的核心壁垒到底在哪里？
+</voice>
+<voice name="host_a_professional" start="140.900" duration="10.449">
+这就要说到科大讯飞的老本行了。他们在教育、医疗、政务这些垂直行业积累了非常深的行业知识，也就是咱们常说的Know-how。
+</voice>
+<voice name="host_b_professional" start="151.766" duration="5.878">
+哦我懂了，就是它不是那种什么都能干但什么都干不好的"万金油"？
+</voice>
+<voice name="host_a_professional" start="158.140" duration="8.925">
+对。企业服务是AI最难啃、但也最赚钱的骨头。你模型再强，不懂某个行业的门道，落地的时候一样抓瞎。
+</voice>
+<voice name="host_b_professional" start="167.477" duration="4.223">
+那你觉得Claw能打破这个垂直行业Know-how的壁垒吗？
+</voice>
+<voice name="host_a_professional" start="172.179" duration="7.010">
+我觉得它有机会，但挑战也不小。因为每个企业的流程都不一样，定制化成本非常高。
+</voice>
+<voice name="host_b_professional" start="179.621" duration="6.182">
+嗯，这就像是……给每个企业量身定制西装，比做均码难多了。
+</voice>
+<voice name="host_a_professional" start="186.271" duration="8.316">
+对，就是这个意思。所以接下来大家比的不再是模型多强，而是谁能把行业know-how和通用能力结合得更好。
+</voice>
+<voice name="host_b_professional" start="195.077" duration="10.188">
+明白了，懂了懂了。哎博文，这让我想到另一件特别酷的事情，你知道最近3D生成领域有个特别非常的突破吗？
+</voice>
+<voice name="host_a_professional" start="205.742" duration="4.484">
+你说的是不是那家号称"3D领域的Anthropic"的公司？
+</voice>
+<voice name="host_b_professional" start="210.644" duration="11.581">
+对对对，就是它！他们现在能做到4秒生成一个百万面的3D模型，而且精度能达到千万面，贴图直接给到12K的高清级别。
+</voice>
+<voice name="host_a_professional" start="222.664" duration="3.875">
+嗯，这个指标确实非常恐怖。
+</voice>
+<voice name="host_b_professional" start="226.951" duration="8.795">
+博文你给不太了解3D的听众翻译翻译，这几个数字到底意味着什么？百万面、千万面、12K贴图，听着就头大。
+</voice>
+<voice name="host_a_professional" start="236.239" duration="6.269">
+好，我尽量接地气地说啊。你可以这么理解——"面"就是3D模型表面的三角形数量。
+</voice>
+<voice name="host_b_professional" start="242.917" duration="0.566">
+嗯嗯。
+</voice>
+<voice name="host_a_professional" start="243.970" duration="14.324">
+百万面已经足够做一个相当精细的游戏角色了，而千万面基本就是电影级别的精度。贴图的12K，你可以想象成手机上看的4K视频的清晰度套在3D模型表面。
+</voice>
+<voice name="host_b_professional" start="258.736" duration="4.223">
+哇哦，那这个4秒就出来是什么概念？
+</voice>
+<voice name="host_a_professional" start="263.419" duration="8.925">
+你想啊，以前做一个电影级的3D资产，一个成熟的3D艺术家可能要花好几天甚至一两周。现在4秒钟。
+</voice>
+<voice name="host_b_professional" start="272.815" duration="4.049">
+天哪，这成本直接降到了一个不可思议的地步。
+</voice>
+<voice name="host_a_professional" start="277.276" duration="6.748">
+对。所以这背后真正的意义不是"快"这么简单，而是3D内容生产的工业化拐点到了。
+</voice>
+<voice name="host_b_professional" start="284.469" duration="5.355">
+等等，你说的工业化拐点我怎么没太听明白？能给举个例子吗？
+</voice>
+<voice name="host_a_professional" start="290.279" duration="10.101">
+好，你看啊。以前游戏公司做一款3A大作，3D建模的成本可能占到整个项目预算的三分之一甚至更多。
+</voice>
+<voice name="host_b_professional" start="300.820" duration="0.305">
+嗯。
+</voice>
+<voice name="host_a_professional" start="301.603" duration="9.578">
+现在如果这个技术成熟并且普及，游戏开发成本会断崖式下降，影视特效、元宇宙场景搭建也是一样。
+</voice>
+<voice name="host_b_professional" start="311.662" duration="4.963">
+哎我突然想到了一个事，是不是具身智能也要靠这个？
+</voice>
+<voice name="host_a_professional" start="317.051" duration="11.407">
+你这个观察角度非常敏锐。没错，机器人要在真实世界里行动，必须先在虚拟的3D环境里训练，这个技术直接关系到机器人的"学习效率"。
+</voice>
+<voice name="host_b_professional" start="328.928" duration="7.619">
+所以这不仅仅是一个"让游戏画面更好看"的技术，而是整个数字资产生产方式的革命？
+</voice>
+<voice name="host_a_professional" start="337.008" duration="2.873">
+对，UGC 3D时代真正要开始了。
+</voice>
+<voice name="host_b_professional" start="340.337" duration="10.231">
+好的好的，涨知识了。哎博文，除了这两个大事之外，最近还有一些很有意思的动态，咱们一个一个快速过一下。
+</voice>
+<voice name="host_a_professional" start="351.034" duration="1.045">
+好，你来。
+</voice>
+<voice name="host_b_professional" start="352.512" duration="14.846">
+我看到一个消息，7月17到20号，量子位要办一个叫WAIC UP!的大会，最有意思的是他们的slogan——"AI圈都在聊参数，我们偏不"。
+</voice>
+<voice name="host_a_professional" start="367.765" duration="1.872">
+哈哈，这个定位挺有意思的。
+</voice>
+<voice name="host_b_professional" start="370.107" duration="6.356">
+对吧？大家都在比谁的模型参数大，他们偏要聚焦AI落地的新叙事。
+</voice>
+<voice name="host_a_professional" start="376.864" duration="8.620">
+嗯，这其实跟咱们今天聊的主题不谋而合。参数竞赛已经审美疲劳了，市场需要看到真正的落地价值。
+</voice>
+<voice name="host_b_professional" start="385.895" duration="7.271">
+没错，而且这种行业大会往往是新趋势的风向标，值得关注。
+</voice>
+<voice name="host_a_professional" start="393.658" duration="0.740">
+确实。
+</voice>
+<voice name="host_b_professional" start="394.849" duration="5.399">
+还有一个特别浪漫的事情要跟大家分享，《三体》问世20周年了！
+</voice>
+<voice name="host_a_professional" start="400.738" duration="3.265">
+哦对，这个IP今年确实是个大年。
+</voice>
+<voice name="host_b_professional" start="404.503" duration="9.927">
+关键是光帆科技联合三体宇宙，搞了一个联名的AI全感穿戴设备，还放出了一个概念视频叫《破晓》。
+</voice>
+<voice name="host_a_professional" start="414.915" duration="5.050">
+嗯，科幻IP和硬科技结合，这个路子挺聪明的。
+</voice>
+<voice name="host_b_professional" start="420.445" duration="13.714">
+对，你想想，《三体》里那些关于AI、关于星际航行的想象，现在正在一点一点变成现实。这种联名不只是卖产品，更像是一种对未来生活的预演。
+</voice>
+<voice name="host_a_professional" start="434.559" duration="5.616">
+你说得对，特别是"全感"这两个字，背后其实是多模态交互技术的进步。
+</voice>
+<voice name="host_b_professional" start="440.653" duration="14.890">
+嗯，值得期待一下。哎博文，最后一个动态我觉得特别硬核——6月30号深圳要办一个算力基础设施大会，专门讨论GW级Token工厂怎么定义下一代AI算力底座。
+</voice>
+<voice name="host_a_professional" start="456.006" duration="2.351">
+这个话题我特别想多说两句。
+</voice>
+<voice name="host_b_professional" start="458.799" duration="1.437">
+哎快讲讲快讲讲。
+</voice>
+<voice name="host_a_professional" start="460.667" duration="9.839">
+你想啊，现在大模型推理的成本越来越高，什么Token价格战、算力紧缺，已经是行业里最头疼的问题之一了。
+</voice>
+<voice name="host_b_professional" start="470.999" duration="0.522">
+对对对。
+</voice>
+<voice name="host_a_professional" start="471.962" duration="10.275">
+GW级Token工厂的意思就是，把Token的生产从"小作坊"模式升级到"发电厂"模式——规模更大、效率更高、成本更低。
+</voice>
+<voice name="host_b_professional" start="482.727" duration="3.788">
+哦我懂了，这就相当于AI时代的"发电厂"？
+</voice>
+<voice name="host_a_professional" start="486.923" duration="11.015">
+你这个比喻非常恰当。电力是工业时代的底座，那Token就是AI时代的底座。谁能把Token的"发电成本"降下来，谁就掌握了下个时代的入场券。
+</voice>
+<voice name="host_b_professional" start="498.362" duration="6.356">
+哇哦，这个格局一下子就大了。好了听众朋友们，今天的节目到这里就接近尾声了。
+</voice>
+<voice name="host_a_professional" start="505.190" duration="14.063">
+简单总结一下吧。AI的故事已经从"谁更大"变成了"谁更实"。从讯飞的Claw到3D生成的工业化，再到GW级的Token工厂，硬基建和真落地成了新关键词。
+</voice>
+<voice name="host_b_professional" start="519.681" duration="6.095">
+没错，参数会过时，但真正解决问题的技术会留下来。
+</voice>
+<voice name="host_a_professional" start="526.206" duration="2.917">
+嗯，希望大家今天听完有所收获。
+</voice>
+<voice name="host_b_professional" start="529.541" duration="3.396">
+好的，那我们下期节目再见啦，拜拜博文！
+</voice>
+<voice name="host_a_professional" start="533.406" duration="2.003">
+拜拜晓晓，听众朋友们再见！
+</voice>
+<voice name="host_a_professional" start="535.866" duration="5.355">
+好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！
+</voice>
+<voice name="host_b_professional" start="541.632" duration="0.914">
+拜拜！
+</voice>
+</speak>
