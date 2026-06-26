@@ -1,0 +1,1115 @@
+{
+  "episode_id": "2026-06-26",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "B",
+      "text": "哎博文，听众朋友们大家好啊，欢迎来到今天的AI每日先锋，我是晓晓。",
+      "start": 1.0,
+      "duration": 6.4,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "A",
+      "text": "大家好，我是博文。晓晓，今天这期节目感觉信息量特别大啊。",
+      "start": 7.849,
+      "duration": 5.137,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "B",
+      "text": "没错，我整理大纲的时候也发现了。你有没有一种感觉，就是现在大家聊AI，已经不怎么比谁的参数更大了？",
+      "start": 13.483,
+      "duration": 9.012,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "A",
+      "text": "你说到点子上了。前两年大家张口闭口都是千亿、万亿参数，现在风口确实在转。",
+      "start": 22.948,
+      "duration": 7.358,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "B",
+      "text": "对，所以今天咱们这期节目的核心就一句话——AI正在从参数竞赛，真正走向产业落地和硬核基建。",
+      "start": 30.711,
+      "duration": 11.363,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "A",
+      "text": "嗯，企业级Agent、3D生成、算力底座，这三件事今年齐头并进，科技叙事从\"比谁更大\"彻底转向了\"比谁更实\"。",
+      "start": 42.507,
+      "duration": 11.015,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "B",
+      "text": "说得太好了。那咱们先来聊聊第一个让我特别兴奋的事情——科大讯飞最近搞了个大动作。",
+      "start": 53.987,
+      "duration": 7.184,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "A",
+      "text": "嗯，我看到了。",
+      "start": 61.633,
+      "duration": 1.524,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "B",
+      "text": "他们发布了一个叫Claw的企业服务平台，博文你知道最让我震撼的是什么吗？就是用户只要说一句话，它就能帮你把需求拆解完，最后直接交付方案。",
+      "start": 63.608,
+      "duration": 14.454,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "A",
+      "text": "对，这确实是大模型竞争从C端聊天机器人向B端生产力工具转向的一个非常典型的信号。",
+      "start": 78.562,
+      "duration": 8.011,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "B",
+      "text": "哎博文，这跟之前咱们用的那些聊天机器人有啥本质区别啊？我感觉不都是跟AI说句话嘛。",
+      "start": 87.011,
+      "duration": 8.011,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "A",
+      "text": "你这个问题问得好。区别其实非常大。你想啊，普通的聊天机器人，你问它问题，它给你回答一个文本对吧？但企业级Agent不是这样的。",
+      "start": 95.483,
+      "duration": 11.059,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "B",
+      "text": "嗯嗯。",
+      "start": 106.987,
+      "duration": 0.566,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "它是真正能\"干活\"的。比如你说\"帮我做一份下个季度的市场分析方案\"，它会自己调用数据分析工具，自己去拉数据，自己做PPT，最后把一个完整的成果交到你手里。",
+      "start": 108.027,
+      "duration": 12.582,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "哇，那这就相当于一个不用发工资的数字员工了？",
+      "start": 121.036,
+      "duration": 4.963,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "A",
+      "text": "你这个比喻非常恰当。某种意义上来说，它就是企业里的一个新工种。",
+      "start": 126.463,
+      "duration": 4.746,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "B",
+      "text": "天哪真假的。那这个Claw跟市面上其他的企业级Agent相比，它的核心壁垒到底在哪里？",
+      "start": 131.626,
+      "duration": 8.838,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "这就要说到科大讯飞的老本行了。他们在教育、医疗、政务这些垂直行业积累了非常深的行业知识，也就是咱们常说的Know-how。",
+      "start": 140.9,
+      "duration": 10.449,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "哦我懂了，就是它不是那种什么都能干但什么都干不好的\"万金油\"？",
+      "start": 151.766,
+      "duration": 5.878,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "对。企业服务是AI最难啃、但也最赚钱的骨头。你模型再强，不懂某个行业的门道，落地的时候一样抓瞎。",
+      "start": 158.14,
+      "duration": 8.925,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "那你觉得Claw能打破这个垂直行业Know-how的壁垒吗？",
+      "start": 167.477,
+      "duration": 4.223,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "我觉得它有机会，但挑战也不小。因为每个企业的流程都不一样，定制化成本非常高。",
+      "start": 172.179,
+      "duration": 7.01,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "B",
+      "text": "嗯，这就像是……给每个企业量身定制西装，比做均码难多了。",
+      "start": 179.621,
+      "duration": 6.182,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "对，就是这个意思。所以接下来大家比的不再是模型多强，而是谁能把行业know-how和通用能力结合得更好。",
+      "start": 186.271,
+      "duration": 8.316,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "B",
+      "text": "明白了，懂了懂了。哎博文，这让我想到另一件特别酷的事情，你知道最近3D生成领域有个特别非常的突破吗？",
+      "start": 195.077,
+      "duration": 10.188,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "你说的是不是那家号称\"3D领域的Anthropic\"的公司？",
+      "start": 205.742,
+      "duration": 4.484,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "B",
+      "text": "对对对，就是它！他们现在能做到4秒生成一个百万面的3D模型，而且精度能达到千万面，贴图直接给到12K的高清级别。",
+      "start": 210.644,
+      "duration": 11.581,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "嗯，这个指标确实非常恐怖。",
+      "start": 222.664,
+      "duration": 3.875,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "B",
+      "text": "博文你给不太了解3D的听众翻译翻译，这几个数字到底意味着什么？百万面、千万面、12K贴图，听着就头大。",
+      "start": 226.951,
+      "duration": 8.795,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "好，我尽量接地气地说啊。你可以这么理解——\"面\"就是3D模型表面的三角形数量。",
+      "start": 236.239,
+      "duration": 6.269,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "嗯嗯。",
+      "start": 242.917,
+      "duration": 0.566,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "百万面已经足够做一个相当精细的游戏角色了，而千万面基本就是电影级别的精度。贴图的12K，你可以想象成手机上看的4K视频的清晰度套在3D模型表面。",
+      "start": 243.97,
+      "duration": 14.324,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "B",
+      "text": "哇哦，那这个4秒就出来是什么概念？",
+      "start": 258.736,
+      "duration": 4.223,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "你想啊，以前做一个电影级的3D资产，一个成熟的3D艺术家可能要花好几天甚至一两周。现在4秒钟。",
+      "start": 263.419,
+      "duration": 8.925,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "天哪，这成本直接降到了一个不可思议的地步。",
+      "start": 272.815,
+      "duration": 4.049,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "对。所以这背后真正的意义不是\"快\"这么简单，而是3D内容生产的工业化拐点到了。",
+      "start": 277.276,
+      "duration": 6.748,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "B",
+      "text": "等等，你说的工业化拐点我怎么没太听明白？能给举个例子吗？",
+      "start": 284.469,
+      "duration": 5.355,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "好，你看啊。以前游戏公司做一款3A大作，3D建模的成本可能占到整个项目预算的三分之一甚至更多。",
+      "start": 290.279,
+      "duration": 10.101,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "嗯。",
+      "start": 300.82,
+      "duration": 0.305,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "现在如果这个技术成熟并且普及，游戏开发成本会断崖式下降，影视特效、元宇宙场景搭建也是一样。",
+      "start": 301.603,
+      "duration": 9.578,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "B",
+      "text": "哎我突然想到了一个事，是不是具身智能也要靠这个？",
+      "start": 311.662,
+      "duration": 4.963,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "你这个观察角度非常敏锐。没错，机器人要在真实世界里行动，必须先在虚拟的3D环境里训练，这个技术直接关系到机器人的\"学习效率\"。",
+      "start": 317.051,
+      "duration": 11.407,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "B",
+      "text": "所以这不仅仅是一个\"让游戏画面更好看\"的技术，而是整个数字资产生产方式的革命？",
+      "start": 328.928,
+      "duration": 7.619,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "A",
+      "text": "对，UGC 3D时代真正要开始了。",
+      "start": 337.008,
+      "duration": 2.873,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "B",
+      "text": "好的好的，涨知识了。哎博文，除了这两个大事之外，最近还有一些很有意思的动态，咱们一个一个快速过一下。",
+      "start": 340.337,
+      "duration": 10.231,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "A",
+      "text": "好，你来。",
+      "start": 351.034,
+      "duration": 1.045,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "B",
+      "text": "我看到一个消息，7月17到20号，量子位要办一个叫WAIC UP!的大会，最有意思的是他们的slogan——\"AI圈都在聊参数，我们偏不\"。",
+      "start": 352.512,
+      "duration": 14.846,
+      "audios": {
+        "professional": "chunk_047_professional.mp3",
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "A",
+      "text": "哈哈，这个定位挺有意思的。",
+      "start": 367.765,
+      "duration": 1.872,
+      "audios": {
+        "professional": "chunk_048_professional.mp3",
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "B",
+      "text": "对吧？大家都在比谁的模型参数大，他们偏要聚焦AI落地的新叙事。",
+      "start": 370.107,
+      "duration": 6.356,
+      "audios": {
+        "professional": "chunk_049_professional.mp3",
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "A",
+      "text": "嗯，这其实跟咱们今天聊的主题不谋而合。参数竞赛已经审美疲劳了，市场需要看到真正的落地价值。",
+      "start": 376.864,
+      "duration": 8.62,
+      "audios": {
+        "professional": "chunk_050_professional.mp3",
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "B",
+      "text": "没错，而且这种行业大会往往是新趋势的风向标，值得关注。",
+      "start": 385.895,
+      "duration": 7.271,
+      "audios": {
+        "professional": "chunk_051_professional.mp3",
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "A",
+      "text": "确实。",
+      "start": 393.658,
+      "duration": 0.74,
+      "audios": {
+        "professional": "chunk_052_professional.mp3",
+        "lively": "chunk_052_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 53,
+      "host": "B",
+      "text": "还有一个特别浪漫的事情要跟大家分享，《三体》问世20周年了！",
+      "start": 394.849,
+      "duration": 5.399,
+      "audios": {
+        "professional": "chunk_053_professional.mp3",
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "A",
+      "text": "哦对，这个IP今年确实是个大年。",
+      "start": 400.738,
+      "duration": 3.265,
+      "audios": {
+        "professional": "chunk_054_professional.mp3",
+        "lively": "chunk_054_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 55,
+      "host": "B",
+      "text": "关键是光帆科技联合三体宇宙，搞了一个联名的AI全感穿戴设备，还放出了一个概念视频叫《破晓》。",
+      "start": 404.503,
+      "duration": 9.927,
+      "audios": {
+        "professional": "chunk_055_professional.mp3",
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "A",
+      "text": "嗯，科幻IP和硬科技结合，这个路子挺聪明的。",
+      "start": 414.915,
+      "duration": 5.05,
+      "audios": {
+        "professional": "chunk_056_professional.mp3",
+        "lively": "chunk_056_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 57,
+      "host": "B",
+      "text": "对，你想想，《三体》里那些关于AI、关于星际航行的想象，现在正在一点一点变成现实。这种联名不只是卖产品，更像是一种对未来生活的预演。",
+      "start": 420.445,
+      "duration": 13.714,
+      "audios": {
+        "professional": "chunk_057_professional.mp3",
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "A",
+      "text": "你说得对，特别是\"全感\"这两个字，背后其实是多模态交互技术的进步。",
+      "start": 434.559,
+      "duration": 5.616,
+      "audios": {
+        "professional": "chunk_058_professional.mp3",
+        "lively": "chunk_058_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 59,
+      "host": "B",
+      "text": "嗯，值得期待一下。哎博文，最后一个动态我觉得特别硬核——6月30号深圳要办一个算力基础设施大会，专门讨论GW级Token工厂怎么定义下一代AI算力底座。",
+      "start": 440.653,
+      "duration": 14.89,
+      "audios": {
+        "professional": "chunk_059_professional.mp3",
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "A",
+      "text": "这个话题我特别想多说两句。",
+      "start": 456.006,
+      "duration": 2.351,
+      "audios": {
+        "professional": "chunk_060_professional.mp3",
+        "lively": "chunk_060_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 61,
+      "host": "B",
+      "text": "哎快讲讲快讲讲。",
+      "start": 458.799,
+      "duration": 1.437,
+      "audios": {
+        "professional": "chunk_061_professional.mp3",
+        "lively": "chunk_061_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 62,
+      "host": "A",
+      "text": "你想啊，现在大模型推理的成本越来越高，什么Token价格战、算力紧缺，已经是行业里最头疼的问题之一了。",
+      "start": 460.667,
+      "duration": 9.839,
+      "audios": {
+        "professional": "chunk_062_professional.mp3",
+        "lively": "chunk_062_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 63,
+      "host": "B",
+      "text": "对对对。",
+      "start": 470.999,
+      "duration": 0.522,
+      "audios": {
+        "professional": "chunk_063_professional.mp3",
+        "lively": "chunk_063_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 64,
+      "host": "A",
+      "text": "GW级Token工厂的意思就是，把Token的生产从\"小作坊\"模式升级到\"发电厂\"模式——规模更大、效率更高、成本更低。",
+      "start": 471.962,
+      "duration": 10.275,
+      "audios": {
+        "professional": "chunk_064_professional.mp3",
+        "lively": "chunk_064_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 65,
+      "host": "B",
+      "text": "哦我懂了，这就相当于AI时代的\"发电厂\"？",
+      "start": 482.727,
+      "duration": 3.788,
+      "audios": {
+        "professional": "chunk_065_professional.mp3",
+        "lively": "chunk_065_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 66,
+      "host": "A",
+      "text": "你这个比喻非常恰当。电力是工业时代的底座，那Token就是AI时代的底座。谁能把Token的\"发电成本\"降下来，谁就掌握了下个时代的入场券。",
+      "start": 486.923,
+      "duration": 11.015,
+      "audios": {
+        "professional": "chunk_066_professional.mp3",
+        "lively": "chunk_066_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 67,
+      "host": "B",
+      "text": "哇哦，这个格局一下子就大了。好了听众朋友们，今天的节目到这里就接近尾声了。",
+      "start": 498.362,
+      "duration": 6.356,
+      "audios": {
+        "professional": "chunk_067_professional.mp3",
+        "lively": "chunk_067_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 68,
+      "host": "A",
+      "text": "简单总结一下吧。AI的故事已经从\"谁更大\"变成了\"谁更实\"。从讯飞的Claw到3D生成的工业化，再到GW级的Token工厂，硬基建和真落地成了新关键词。",
+      "start": 505.19,
+      "duration": 14.063,
+      "audios": {
+        "professional": "chunk_068_professional.mp3",
+        "lively": "chunk_068_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 69,
+      "host": "B",
+      "text": "没错，参数会过时，但真正解决问题的技术会留下来。",
+      "start": 519.681,
+      "duration": 6.095,
+      "audios": {
+        "professional": "chunk_069_professional.mp3",
+        "lively": "chunk_069_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 70,
+      "host": "A",
+      "text": "嗯，希望大家今天听完有所收获。",
+      "start": 526.206,
+      "duration": 2.917,
+      "audios": {
+        "professional": "chunk_070_professional.mp3",
+        "lively": "chunk_070_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 71,
+      "host": "B",
+      "text": "好的，那我们下期节目再见啦，拜拜博文！",
+      "start": 529.541,
+      "duration": 3.396,
+      "audios": {
+        "professional": "chunk_071_professional.mp3",
+        "lively": "chunk_071_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 72,
+      "host": "A",
+      "text": "拜拜晓晓，听众朋友们再见！",
+      "start": 533.406,
+      "duration": 2.003,
+      "audios": {
+        "professional": "chunk_072_professional.mp3",
+        "lively": "chunk_072_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 73,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 535.866,
+      "duration": 5.355,
+      "audios": {
+        "professional": "chunk_073_professional.mp3",
+        "lively": "chunk_073_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 74,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 541.632,
+      "duration": 0.914,
+      "audios": {
+        "professional": "chunk_074_professional.mp3",
+        "lively": "chunk_074_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
