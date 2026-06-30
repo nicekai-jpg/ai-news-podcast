@@ -21,6 +21,11 @@ from ai_news_podcast.pipeline.scriptwriter import (
     generate_show_notes_html,
 )
 from ai_news_podcast.pipeline.tts_engine import synthesize
+
+try:
+    from ai_news_podcast.cli.daily_report import generate_report
+except ImportError:
+    generate_report = None  # type: ignore
 from ai_news_podcast.text_utils import clean_tts_text
 from ai_news_podcast.utils import load_sources, read_yaml, write_text
 
@@ -39,6 +44,11 @@ async def main() -> int:
     ap.add_argument("--base-url", default=None)
     ap.add_argument("--date", default=None)
     ap.add_argument("--no-audio", action="store_true")
+    ap.add_argument(
+        "--with-report",
+        action="store_true",
+        help="同时生成日报 (daily report)",
+    )
     ap.add_argument(
         "--force-refresh",
         action="store_true",
@@ -118,6 +128,26 @@ async def main() -> int:
     clean_transcript = clean_tts_text(script_text, preserve_ssml=True) + "\n"
     write_text(transcript_path, clean_transcript)
     log.info("Transcript saved: %s (%d chars)", transcript_path, len(clean_transcript))
+
+    # ── Stage 3b: Daily Report (optional) ──
+    if args.with_report and generate_report is not None:
+        log.info("Stage 3b: generating daily report …")
+        report_dir = root / "data" / "reports"
+        report_dir.mkdir(parents=True, exist_ok=True)
+        date_str = day.strftime("%Y年%m月%d日")
+        report_id = episode_id
+        llm_cfg = cfg.get("llm", {})
+        try:
+            generate_report(
+                brief,
+                date_str=date_str,
+                report_id=report_id,
+                outdir=report_dir,
+                llm_cfg=llm_cfg,
+            )
+            log.info("Daily report saved to %s", report_dir)
+        except Exception as e:
+            log.warning("Daily report generation failed: %s", e)
 
     # ── Stage 4: TTS ──
     if not args.no_audio:
