@@ -1,11 +1,11 @@
-"""Tests for scriptwriter _call_llm with mocked openai client."""
+"""Tests for llm_client.py — call_llm with mocked OpenAI client."""
 
 from __future__ import annotations
 
 from typing import Any
 from unittest.mock import MagicMock, patch
 
-from ai_news_podcast.pipeline.llm_client import call_llm as _call_llm
+from ai_news_podcast.pipeline.llm_client import call_llm
 
 
 class FakeCompletion:
@@ -31,7 +31,7 @@ class FakeOpenAI:
         self.api_key = api_key
         self.base_url = base_url
         self.timeout = timeout
-        self.chat = FakeChat("Generated script content")
+        self.chat = FakeChat("Generated content")
 
 
 class FakeOpenAIEmpty:
@@ -56,8 +56,8 @@ class TestCallLlm:
         fake_openai_module.OpenAI = FakeOpenAI
 
         with patch.dict("sys.modules", {"openai": fake_openai_module}):
-            result = _call_llm("prompt", {"api_key_env": "FAKE_KEY", "model": "test"})
-        assert result == "Generated script content"
+            result = call_llm("prompt", {"api_key_env": "FAKE_KEY", "model": "test"})
+        assert result == "Generated content"
 
     def test_empty_content_returns_none(self, monkeypatch) -> None:
         monkeypatch.setenv("FAKE_KEY", "sk-test")
@@ -66,7 +66,7 @@ class TestCallLlm:
         fake_openai_module.OpenAI = FakeOpenAIEmpty
 
         with patch.dict("sys.modules", {"openai": fake_openai_module}):
-            result = _call_llm("prompt", {"api_key_env": "FAKE_KEY", "model": "test"})
+            result = call_llm("prompt", {"api_key_env": "FAKE_KEY", "model": "test"})
         assert result is None
 
     def test_retries_then_returns_none(self, monkeypatch) -> None:
@@ -77,14 +77,17 @@ class TestCallLlm:
 
         with patch.dict("sys.modules", {"openai": fake_openai_module}):
             with patch("time.sleep"):  # speed up retries
-                result = _call_llm("prompt", {"api_key_env": "FAKE_KEY", "model": "test"})
+                result = call_llm("prompt", {"api_key_env": "FAKE_KEY", "model": "test"})
         assert result is None
 
-    def test_missing_openai_import_returns_none(self, monkeypatch) -> None:
-        monkeypatch.setenv("FAKE_KEY", "sk-test")
+    def test_missing_api_key_returns_none(self, monkeypatch) -> None:
+        monkeypatch.delenv("MISSING_KEY", raising=False)
 
-        with patch.dict("sys.modules", {"openai": None}):
-            result = _call_llm("prompt", {"api_key_env": "FAKE_KEY"})
+        fake_openai_module = MagicMock()
+        fake_openai_module.OpenAI = FakeOpenAI
+
+        with patch.dict("sys.modules", {"openai": fake_openai_module}):
+            result = call_llm("prompt", {"api_key_env": "MISSING_KEY"})
         assert result is None
 
     def test_uses_base_url_and_model(self, monkeypatch) -> None:
@@ -103,7 +106,7 @@ class TestCallLlm:
         fake_openai_module.OpenAI = CapturingOpenAI
 
         with patch.dict("sys.modules", {"openai": fake_openai_module}):
-            _call_llm(
+            call_llm(
                 "prompt",
                 {
                     "api_key_env": "FAKE_KEY",

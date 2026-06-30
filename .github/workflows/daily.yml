@@ -47,7 +47,7 @@ jobs:
             echo "id=$(TZ=Asia/Shanghai date +%F)" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Pipeline + report + script (no audio)
+      - name: Pipeline + script + report (no audio)
         env:
           TZ: Asia/Shanghai
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
@@ -56,9 +56,7 @@ jobs:
           if [ -f "site/episodes/${EPISODE}.txt" ]; then
             echo "Script already exists for ${EPISODE}, skipping pipeline execution to avoid overwriting"
           else
-            uv run podcast-pipeline
-            uv run podcast-report
-            uv run podcast-daily --no-audio
+            uv run podcast-daily --no-audio --with-report
           fi
 
       - name: Commit content artifacts

@@ -5,10 +5,10 @@ from __future__ import annotations
 from datetime import datetime
 from unittest.mock import patch
 
+from ai_news_podcast.pipeline.llm_client import call_llm as _call_llm
+from ai_news_podcast.pipeline.material import build_material_text as _build_material_text
 from ai_news_podcast.pipeline.scriptwriter import (
     _build_fallback,
-    _build_material_text,
-    _call_llm,
     _normalize_host_tags,
     generate_script,
 )

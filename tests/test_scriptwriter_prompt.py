@@ -4,9 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from ai_news_podcast.pipeline.scriptwriter import (
-    _build_material_text,
-)
+from ai_news_podcast.pipeline.material import build_material_text as _build_material_text
 from ai_news_podcast.prompts import (
     build_editor_prompt,
     build_writer_prompt,

@@ -13,30 +13,15 @@ except ImportError:
     pass
 
 from ai_news_podcast.pipeline.runner import run_pipeline
-from ai_news_podcast.pipeline.scriptwriter import _call_llm
+from ai_news_podcast.pipeline.llm_client import call_llm
+from ai_news_podcast.pipeline.material import build_material_text
 from ai_news_podcast.utils import load_sources, read_yaml
 
 log = logging.getLogger("daily_report")
 
 
 def build_report_prompt(brief: dict, date_str: str) -> str:
-    stories = brief.get("stories", [])
-    active = [s for s in stories if isinstance(s, dict) and s.get("role") != "skip"]
-    active.sort(key=lambda s: s.get("total_score", 0), reverse=True)
-
-    # 取前 5 个新闻簇作为日报素材
-    active = active[:5]
-
-    material = ""
-    for i, story in enumerate(active, 1):
-        title = story.get("representative_title", "无标题")
-        context = story.get("context", {})
-        summaries = context.get("factual_summary", [])
-
-        material += f"【素材{i}】\n标题：{title}\n摘要：\n"
-        for s in summaries:
-            material += f"  - {s}\n"
-        material += "\n"
+    material = build_material_text(brief, max_stories=5, strategy="pure_score")
 
     prompt = f"""你是专业的科技媒体编辑，需要根据以下今日的 AI 和科技新闻素材，写一份专业的「科技新闻日报」。
 
@@ -61,6 +46,57 @@ def build_report_prompt(brief: dict, date_str: str) -> str:
 请直接输出 Markdown 文本，不要在开头和结尾带多余的解释，不要带 ```markdown 这样的代码块标记。"""
 
     return prompt
+
+
+def generate_report(
+    brief: dict,
+    *,
+    date_str: str,
+    report_id: str,
+    outdir: Path,
+    llm_cfg: dict,
+) -> Path:
+    """Generate and save the daily tech news report.
+
+    Returns
+    -------
+    Path: Path to the generated report file.
+    """
+    prompt = build_report_prompt(brief, date_str)
+    log.info("Generated prompt string length: %d characters", len(prompt))
+
+    report_md = call_llm(prompt, llm_cfg)
+
+    if not report_md:
+        log.warning("Failed to generate report from LLM. Generating a basic fallback report.")
+        report_md = f"# 🌍 科技新闻日报 | {date_str}\n\n> 由于大模型服务暂时不可用，以下是由系统自动整理的新闻速览：\n\n"
+
+        stories = brief.get("stories", [])
+        active = [s for s in stories if isinstance(s, dict) and s.get("role") != "skip"]
+        active.sort(key=lambda s: s.get("total_score", 0), reverse=True)
+        active = active[:5]
+
+        for i, story in enumerate(active, 1):
+            title = story.get("representative_title", "无标题")
+            context = story.get("context", {})
+            summaries = context.get("factual_summary", [])
+            report_md += f"## {i}. {title}\n"
+            for s in summaries:
+                report_md += f"- **{s}**\n"
+            report_md += "\n"
+
+    # Clean up markdown markers
+    if report_md.startswith("```markdown"):
+        report_md = report_md[11:].strip()
+    if report_md.endswith("```"):
+        report_md = report_md[:-3].strip()
+
+    # Save report
+    report_path = outdir / f"daily_report_{report_id}.md"
+    report_path.write_text(report_md, encoding="utf-8")
+
+    log.info("✨ Daily report generated successfully! Saved to: %s", report_path)
+    return report_path
 
 
 async def main() -> int:
@@ -111,7 +147,7 @@ async def main() -> int:
     log.info(f"Generated prompt string length: {len(prompt)} characters")
 
     llm_cfg = cfg.get("llm", {})
-    report_md = _call_llm(prompt, llm_cfg)
+    report_md = call_llm(prompt, llm_cfg)
 
     if not report_md:
         log.warning("Failed to generate report from LLM. Generating a basic fallback report.")

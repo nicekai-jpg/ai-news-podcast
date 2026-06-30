@@ -25,9 +25,10 @@ uv run pytest tests/test_processor.py -v
 
 # Run pipeline stages individually
 uv run podcast-pipeline              # Stage 1-2: fetch → dedup → cluster → score → brief JSON
-uv run podcast-report                # Stage 1-2 + LLM daily markdown report
+uv run podcast-report                # Stage 1-2 + LLM daily markdown report (standalone)
 uv run podcast-daily --base-url http://localhost  # Full pipeline: fetch → script → TTS → publish
 uv run podcast-daily --no-audio      # Skip TTS, only generate text + site
+uv run podcast-daily --no-audio --with-report  # Also generate daily report
 uv run podcast-daily --force-refresh # Re-fetch even if brief cache exists
 
 # Clean caches
@@ -41,12 +42,20 @@ The pipeline is a linear 5-stage flow, orchestrated by `cli/run_daily.py`:
 ```
 Stage 1: fetcher.py  →  RawItem list (RSS + full-text extraction)
 Stage 2: processor.py →  episode_brief (dedup → cluster → score → role assignment)
-Stage 3: scriptwriter.py →  SSML/Host-tagged podcast script (Editor Agent → Writer Agent)
+Stage 3: scriptwriter.py →  Podcast script (Editor Agent → Writer Agent)
+Stage 3b: daily_report.py →  Daily tech news report (optional, via --with-report)
 Stage 4: tts_engine.py →  MP3 audio (Edge TTS + BGM mixing + loudnorm)
 Stage 5: site_builder/ →  index.html + feed.xml + show notes
 ```
 
 **Key architectural constraint**: `runner.py` is the single gateway to Stages 1-2. All upper-level business (podcast, daily report) must call `run_pipeline()` — never call `fetch_all()` or `process()` directly.
+
+### Shared modules
+
+- **`llm_client.py`**: Unified LLM caller (`call_llm()`) used by both `scriptwriter.py` and `daily_report.py`. OpenAI-compatible protocol with retry logic.
+- **`material.py`**: Shared material builder (`build_material_text()`) with two strategies:
+  - `score_diversity`: MMR-like entity diversity penalty for podcast scripts
+  - `pure_score`: Pure score ranking for daily reports
 
 ### Data flow
 
@@ -61,6 +70,8 @@ Stage 5: site_builder/ →  index.html + feed.xml + show notes
 1. **Editor Agent**: selects headlines + quick news from material, outputs JSON outline
 2. **Writer Agent**: converts outline into SSML dual-host dialogue script (Host A: 博文/YunxiNeural, Host B: 晓晓/XiaoxiaoNeural)
 3. Falls back to template-based `[Host A]/[Host B]` format if LLM fails
+
+The LLM calls go through `llm_client.call_llm()`, which handles OpenAI-compatible API with retry logic.
 
 ### TTS engine
 
@@ -90,11 +101,10 @@ The LLM config uses an OpenAI-compatible API (`api_key_env`, `base_url`, `model`
 `.github/workflows/daily.yml` runs daily at 21:43 UTC (5:43 AM Shanghai time), or manually via `workflow_dispatch`. **No push trigger** — pushing to main does not re-trigger the workflow.
 
 Steps:
-1. `podcast-pipeline` → brief JSON (Stage 1-2)
-2. `podcast-report` → markdown daily report
-3. `podcast-daily` → full episode + site (Stage 3-5)
-4. Commit data/reports/briefs back to main (with `[skip ci]` to prevent future loop if push trigger is ever added)
-5. Deploy `site/` to `gh-pages` branch via `peaceiris/actions-gh-pages`
+1. `podcast-daily --no-audio --with-report` → brief JSON + podcast script + daily report (Stage 1-3)
+2. Commit data/reports/briefs back to main (with `[skip ci]` to prevent future loop if push trigger is ever added)
+3. TTS job synthesizes audio from the saved transcript
+4. Deploy `site/` to `gh-pages` branch via `peaceiris/actions-gh-pages`
 
 After `gh-pages` branch is updated, GitHub Pages automatically triggers `pages-build-deployment` (built-in workflow) to deploy to CDN.
 
