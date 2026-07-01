@@ -33,7 +33,7 @@ The project is structured as an end-to-end data pipeline executed daily:
    [Editor Agent: Outlines thesis, headlines, and quick updates] ──► (MiniMax-M3 LLM)
            │
            ▼
-   [Writer Agent: Composes SSML dual-host dialogue scripts] ──► (MiniMax-M3 LLM)
+   [Writer Agent: Composes [Host A]/[Host B] dual-host dialogue] ──► (MiniMax-M3 LLM)
            │
            ▼  (tts_engine.py)
    [TTS Voice Synthesis: Zero-shot speaker cloning] ──► (CosyVoice 2 Engine)
@@ -55,16 +55,16 @@ The project is structured as an end-to-end data pipeline executed daily:
 ### 1. Intelligent Filtering & Scoring
 * **Semantic Deduplication**: Uses TF-IDF cosine similarity, RapidFuzz, and overlapping keywords to identify and filter out duplicate stories across different feeds.
 * **DBSCAN Clustering**: Groups related news reports from different publishers to detect hot trends.
-* **5-Dimensional Scoring**: Ranks news items based on Impact Scope, Novelty, Explainability, Relevance, and Source Authority, selecting the absolute best for the daily show.
+* **5-Dimensional Scoring**: Ranks news items based on Impact Scope, Novelty, Explainability, Listener Relevance, and Source Authority, selecting the absolute best for the daily show.
 
 ### 2. Multi-Agent Dual-Host Scriptwriting
 * Powered by the flagship **MiniMax-M3** reasoning model, using a multi-agent framework:
-  - **Editor Agent**: Distills raw material into a JSON structure defining the episode thesis, two deep headlines, and three quick updates.
-  - **Writer Agent**: Translates the outline into a lively, colloquial script featuring two hosts: **晓晓 (PM-perspective, conversational, metaphor-heavy)** and **博文 (Tech-極客 perspective, analytical, structural)**.
-* Restricts reasoning output (`<think>`) lengths via custom system guidelines to fit complete XML/SSML scripts within the 4096-token output limit without clipping.
+  - **Editor Agent**: Distills raw material into a **Markdown** structure defining the episode thesis, two deep headlines, and three quick updates.
+  - **Writer Agent**: Translates the outline into a lively, colloquial script featuring two hosts: **晓晓 (PM-perspective, conversational, metaphor-heavy)** and **博文 (Tech-expert perspective, analytical, structural)**.
+* Editor output uses **Markdown format** (not JSON) to reduce token usage by ~28%.
 
 ### 3. High-Fidelity Zero-Shot Clone TTS
-* Synthesizes audio segments via **CosyVoice 2** (`CosyVoice2-0.5B` model) with zero-shot speaker-cloning from host reference clips (`assets/refs/`).
+* Synthesizes audio segments via **CosyVoice 2** (`CosyVoice2-0.5B` model) with zero-shot speaker-cloning from host reference clips (`assets/audio_samples/`).
 * Splits script dialogues into smaller, natural sentences before voice synthesis to prevent model speed warp or audio truncation.
 * Designed around **CosyVoice 2** speaker cloning to generate highly realistic, natural speech for the two hosts.
 
@@ -78,6 +78,7 @@ To keep the primary Git branch light and fast to pull, the repository splits con
 * **`main` Branch (Code & Scripts)**: Contains source code, YAML configurations, Markdown files, and `.txt`/`.html` script transcript files. **No binary audio `.mp3` files are allowed**.
 * **`gh-pages` Branch (Media & Hosting)**: Serves static player files, RSS feed, and full MP3 files.
 * **Monthly Pruning Job (`prune_pages.yml`)**: Automatically backs up the past 30 days of active episodes, cleans the entire `gh-pages` commit history (resetting commits count to 1), and force-pushes the backup back up, physically deleting old audio data to prevent Git size bloat.
+
 ---
 
 ## 🛠️ Tech Stack & Third-Party Tools
@@ -101,7 +102,7 @@ The system relies on a curated set of specialized python libraries and system-le
 ### 4. Audio Processing & Mastering
 * **`pydub`**: Splits vocal chunks, dynamic silent padding, and cross-fades host voices.
 * **`FFmpeg`**: System mastering utility for mixing vocal stems with BGM and running EBU R128 standard loudness normalizations.
-* **`CosyVoice 2`** (locally installed/GHA setup): Zero-shot speaker cloning model (`CosyVoice2-0.5B`) executing high-fidelity speech synthesis from reference audios.
+* **CosyVoice 2** (locally installed/GHA setup): Zero-shot speaker cloning model (`CosyVoice2-0.5B`) executing high-fidelity speech synthesis from reference audios.
 
 ### 5. Config & Infrastructure
 * **`PyYAML`**: Standard YAML loader for configs (`config.yaml`, `sources.yaml`).
@@ -115,31 +116,41 @@ The system relies on a curated set of specialized python libraries and system-le
 ```
 ai-news-podcast/
 ├── .github/workflows/          # GHA automation workflows
-│   ├── ci.yml                  # Linting & code format QA (Ruff)
-│   ├── daily.yml               # Daily content pipeline & audio synthesis GHA
-│   └── prune_pages.yml         # Monthly gh-pages history optimization
+│   ├── ci.yml                 # Linting & code format QA (Ruff)
+│   ├── daily.yml              # Daily content pipeline & audio synthesis GHA
+│   └── prune_pages.yml        # Monthly gh-pages history optimization
 ├── assets/                     # Soundscapes & clone reference clips
-│   ├── audio_samples/          # Edge-TTS samples
-│   ├── refs/                   # CosyVoice clone reference files (host_a_ref.wav, etc.)
-│   └── bgm_placeholder.wav     # Background BGM audio track
+│   ├── audio_samples/         # CosyVoice reference files (host_a/b v1/v2)
+│   └── bgm_placeholder.wav    # Background BGM audio track
 ├── config/                     # Pipeline configurations
-│   ├── config.yaml             # Prompt guidelines, weights, and audio mix options
-│   └── sources.yaml            # Monitored RSS/Atom endpoints
+│   ├── config.yaml            # Prompt guidelines, weights, and audio mix options
+│   └── sources.yaml           # Monitored RSS/Atom endpoints
 ├── data/                       # Local data stores
-│   ├── briefs/                 # Pipeline output briefs caches (brief_YYYY-MM-DD.json)
-│   ├── reports/                # LLM markdown reports outputs (daily_report_YYYY-MM-DD.md)
-│   └── episodes.json           # Episode records index
+│   ├── briefs/                # Pipeline output briefs caches (brief_YYYY-MM-DD.json)
+│   ├── reports/               # LLM markdown reports outputs (daily_report_YYYY-MM-DD.md)
+│   └── episodes.json          # Episode records index
 ├── docs/                       # Technical documentations & guides
 ├── scripts/                    # Helper setup scripts
 ├── site/                       # Static web pages & RSS build outputs
 ├── src/ai_news_podcast/        # Main Python Package Source
 │   ├── cli/                    # CLI commands endpoints
+│   │   ├── run_daily.py       # Main orchestrator (Stage 1-5)
+│   │   ├── daily_report.py    # Standalone report generator
+│   │   └── publish_episode.py # Episode publisher
 │   ├── pipeline/               # Core pipeline modules
-│   │   ├── fetcher.py          # Stage 1: Async scraper
-│   │   ├── processor.py        # Stage 2: Deduplication, clustering & scoring
-│   │   ├── scriptwriter.py     # Stage 3: LLM Script generator
-│   │   ├── tts_engine.py       # Stage 4: CosyVoice TTS synthesis
-│   │   └── runner.py           # Pipeline runner coordinator
+│   │   ├── fetcher.py         # Stage 1: Async scraper
+│   │   ├── processor*.py      # Stage 2: Deduplication, clustering & scoring
+│   │   │   ├── processor_types.py
+│   │   │   ├── processor_dedup.py
+│   │   │   ├── processor_cluster.py
+│   │   │   ├── processor_context.py
+│   │   │   ├── processor_score.py
+│   │   │   └── processor_thesis.py
+│   │   ├── scriptwriter.py    # Stage 3: LLM Script generator
+│   │   ├── tts_engine.py      # Stage 4: CosyVoice TTS synthesis
+│   │   ├── tts_parser.py      # Dialogue chunk parser
+│   │   ├── tts_postprocess.py # Audio assembly & loudnorm
+│   │   └── runner.py          # Pipeline runner coordinator
 │   ├── site_builder/           # Stage 5: RSS Feed & web site builder
 │   ├── prompts.py              # LLM prompt templates
 │   ├── text_utils.py           # TTS text-cleaning helpers
@@ -247,5 +258,3 @@ We want to express our deepest gratitude to the developers and maintainers of th
 * **Educational & Research Purpose Only**: This project is intended solely for educational, academic, and research purposes. It demonstrates voice cloning and RSS news parsing pipelines.
 * **Commercial Use & Copyrights**: If you use this project (or its output audio/content) for commercial purposes, you must independently contact and obtain all necessary authorizations, licenses, and consents from the respective copyright owners (including voice samples, BGM, and news content providers).
 * **No Liability**: The authors and contributors of this project assume no responsibility or liability for any legal issues, copyright infringements, or disputes arising from your use, modification, or redistribution of this software. Any consequences or legal liabilities shall be borne solely by the user.
-
-

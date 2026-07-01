@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-AI Daily Pioneer (AI 每日先锋) — a fully automated daily AI news podcast generator. The pipeline fetches RSS feeds, deduplicates/clusters/scores news, generates dual-host podcast scripts via LLM, synthesizes audio with Edge TTS, and publishes to GitHub Pages with RSS feed.
+AI Daily Pioneer (AI 每日先锋) — a fully automated daily AI news podcast generator. The pipeline fetches RSS feeds, deduplicates/clusters/scores news, generates dual-host podcast scripts via LLM (MiniMax-M3), synthesizes audio with CosyVoice 2 zero-shot cloning, and publishes to GitHub Pages with RSS feed.
 
 ## Commands
 
@@ -44,7 +44,7 @@ Stage 1: fetcher.py  →  RawItem list (RSS + full-text extraction)
 Stage 2: processor.py →  episode_brief (dedup → cluster → score → role assignment)
 Stage 3: scriptwriter.py →  Podcast script (Editor Agent → Writer Agent)
 Stage 3b: daily_report.py →  Daily tech news report (optional, via --with-report)
-Stage 4: tts_engine.py →  MP3 audio (Edge TTS + BGM mixing + loudnorm)
+Stage 4: tts_engine.py →  MP3 audio (CosyVoice 2 + BGM mixing + loudnorm)
 Stage 5: site_builder/ →  index.html + feed.xml + show notes
 ```
 
@@ -67,15 +67,19 @@ Stage 5: site_builder/ →  index.html + feed.xml + show notes
 ### Multi-Agent script generation
 
 `scriptwriter.py` uses a two-stage LLM pipeline:
-1. **Editor Agent**: selects headlines + quick news from material, outputs JSON outline
-2. **Writer Agent**: converts outline into SSML dual-host dialogue script (Host A: 博文/YunxiNeural, Host B: 晓晓/XiaoxiaoNeural)
+1. **Editor Agent**: selects headlines + quick news from material, outputs **Markdown** outline
+2. **Writer Agent**: converts outline into `[Host A]/[Host B]` dual-host dialogue script
 3. Falls back to template-based `[Host A]/[Host B]` format if LLM fails
 
 The LLM calls go through `llm_client.call_llm()`, which handles OpenAI-compatible API with retry logic.
 
 ### TTS engine
 
-`tts_engine.py` parses both SSML `<voice>` tags and `[Host A]/[Host B]` markers into `DialogueChunk` objects. Each chunk is synthesized separately via Edge TTS, concatenated with variable silence between turns, mixed with BGM, and normalized via ffmpeg loudnorm.
+`tts_engine.py` parses `[Host A]/[Host B]` markers into `DialogueChunk` objects. Each chunk is synthesized separately via **CosyVoice 2** zero-shot cloning, concatenated with variable silence between turns, mixed with BGM, and normalized via ffmpeg loudnorm.
+
+**Voice mapping**:
+- Host A (博文) → `host_a_professional` / `host_a_lively` (男声)
+- Host B (晓晓) → `host_b_professional` / `host_b_lively` (女声)
 
 ### Site builder
 
@@ -88,7 +92,7 @@ The LLM calls go through `llm_client.call_llm()`, which handles OpenAI-compatibl
 - `config/sources.yaml`: RSS feed list with `name`, `url`, `category`, `enabled` flags
 - `.env`: `MINIMAX_API_KEY` for the MiniMax Token Plan LLM (OpenAI-compatible endpoint)
 
-The LLM config uses an OpenAI-compatible API (`api_key_env`, `base_url`, `model`). The `_call_llm()` function in `scriptwriter.py` is shared by both podcast and report generation.
+The LLM config uses an OpenAI-compatible API (`api_key_env`, `base_url`, `model`). The `call_llm()` function in `llm_client.py` is shared by both podcast and report generation.
 
 ## Key data structures
 
