@@ -38,7 +38,7 @@ class TestCleanTtsText:
 
     def test_strips_html_tags(self) -> None:
         """HTML tags should be stripped (SSML support removed)."""
-        text = '<p>Hello <b>world</b></p>'
+        text = "<p>Hello <b>world</b></p>"
         assert clean_tts_text(text) == "Hello world"
 
 

@@ -259,7 +259,9 @@ def _dedup_with_sentence_transformers(
         for it in raw_items
     ]
 
-    hist_embeddings = model.encode(segmented_hist_texts, convert_to_tensor=True, show_progress_bar=False)
+    hist_embeddings = model.encode(
+        segmented_hist_texts, convert_to_tensor=True, show_progress_bar=False
+    )
     new_embeddings = model.encode(new_texts, convert_to_tensor=True, show_progress_bar=False)
 
     cos_scores = util.cos_sim(new_embeddings, hist_embeddings)
@@ -283,7 +285,9 @@ def _dedup_with_sentence_transformers(
             )
 
             dedup_details.append(
-                _build_dedup_detail(item, matched_rec, max_sim, sim_threshold, "SentenceTransformer")
+                _build_dedup_detail(
+                    item, matched_rec, max_sim, sim_threshold, "SentenceTransformer"
+                )
             )
             skipped_count += 1
         else:

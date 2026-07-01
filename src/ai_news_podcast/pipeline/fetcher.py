@@ -438,7 +438,11 @@ async def _fetch_github_api(
         description = repo.get("description", "") or ""
 
         summary = f"GitHub 热门仓库（⭐{stars} stars, 🍴{forks} forks）{language and f'[{language}] ' or ''}{description[:200]}"
-        full_text = f"{description}\n\nStars: {stars}\nForks: {forks}\nLanguage: {language}\nURL: {link}"[:2000]
+        full_text = (
+            f"{description}\n\nStars: {stars}\nForks: {forks}\nLanguage: {language}\nURL: {link}"[
+                :2000
+            ]
+        )
 
         lang = _detect_lang(f"{title} {summary}")
         category = _infer_category(title, summary)
@@ -515,7 +519,9 @@ async def _fetch_hn_api(
         if story_url:
             try:
                 page_resp = await _http_get(client, story_url, throttle)
-                full_text = _extract_fulltext(page_resp.text, story_url, min_chars=600, max_chars=2000)
+                full_text = _extract_fulltext(
+                    page_resp.text, story_url, min_chars=600, max_chars=2000
+                )
             except (httpx.HTTPError, OSError, ValueError):
                 logger.debug("Full-text fetch failed for HN story: %s", story_url)
 
@@ -591,7 +597,11 @@ async def fetch_all(  # noqa: PLR0913
             fetcher_type = str(src.get("fetcher_type") or "rss").strip()
             fetcher = _FETCHER_REGISTRY.get(fetcher_type)
             if fetcher is None:
-                logger.warning("Unknown fetcher_type '%s' for source '%s', falling back to rss", fetcher_type, src.get("name"))
+                logger.warning(
+                    "Unknown fetcher_type '%s' for source '%s', falling back to rss",
+                    fetcher_type,
+                    src.get("name"),
+                )
                 fetcher = _fetch_one_feed
 
             if fetcher_type == "rss":
