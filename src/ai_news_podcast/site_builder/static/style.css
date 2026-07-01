@@ -309,13 +309,17 @@
     .magazine-body { display: flex; flex-direction: column; gap: 36px; }
     .magazine-main-content { font-size: 1rem; color: #d1d5db; line-height: 1.85; }
 
-    .magazine-main-content h1 { display: none; }
+    .magazine-main-content h1 { font-size: 1.1rem; font-weight: 700; color: var(--accent-light); margin-bottom: 16px; letter-spacing: 0.05em; }
     .magazine-main-content p strong { color: #fff; font-weight: 700; }
     .magazine-main-content p { margin-bottom: 24px; }
     .magazine-main-content hr { border: none; height: 1px; background: rgba(255,255,255,0.04); margin: 36px 0; }
 
     .magazine-main-content h2 { font-size: 1.15rem; font-weight: 850; color: #fff; margin: 36px 0 16px; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 8px; }
     .magazine-main-content h2::before { content: '✦'; color: var(--accent); font-size: 0.9rem; }
+
+    .magazine-main-content h3 { font-size: 1.05rem; font-weight: 700; color: #e2e8f0; margin: 24px 0 12px; }
+
+    .magazine-main-content blockquote { border-left: 3px solid var(--accent); padding-left: 16px; margin: 24px 0; color: var(--accent-light); font-style: italic; }
 
     /* 日报卡片浮雕及柔和发光边框 */
     .magazine-main-content p:has(strong) {
