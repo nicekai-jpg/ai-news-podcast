@@ -294,7 +294,7 @@
         }
       }
 
-      // 4. 再次尝试：解析冒号前缀格式 (如 "博文：" 或 "晓晓:")
+      // 4. 再次尝试：解析冒号前缀格式 (如 "周航：" 或 "苏晴:")
       if (rawParagraphs.length === 0) {
         var textLines = text.split('\n');
         textLines.forEach(function(line) {
@@ -305,7 +305,7 @@
             var name = trimmed.substring(0, colonIdx).trim();
             var content = trimmed.substring(colonIdx + 1).trim();
             if (content) {
-              var isB = name.indexOf('晓晓') >= 0 || name.toLowerCase().indexOf('b') >= 0 || name.indexOf('女') >= 0;
+              var isB = name.indexOf('苏晴') >= 0 || name.toLowerCase().indexOf('b') >= 0 || name.indexOf('女') >= 0;
               rawParagraphs.push({ role: isB ? 'B' : 'A', text: content, start: null, duration: null });
             }
           }
@@ -333,8 +333,8 @@
       var currentOffset = 0;
       rawParagraphs.forEach(function(p, index) {
         var cls = p.role === 'B' ? 'host-b' : 'host-a';
-        var name = p.role === 'B' ? '晓晓' : '博文';
-        var avatarChar = p.role === 'B' ? '晓' : '博';
+        var name = p.role === 'B' ? '苏晴' : '周航';
+        var avatarChar = p.role === 'B' ? '苏' : '周';
         var len = p.text.length;
 
         var rowHtml = '<div class="transcript-row" id="trans-row-' + index + '" ' +
@@ -475,8 +475,8 @@
       row.innerHTML = '';
 
       const hosts = [
-        { key: 'A', name: '博文音色', configKey: 'host_a' },
-        { key: 'B', name: '晓晓音色', configKey: 'host_b' }
+        { key: 'A', name: '苏晴音色', configKey: 'host_a' },
+        { key: 'B', name: '周航音色', configKey: 'host_b' }
       ];
 
       hosts.forEach(function(h) {
