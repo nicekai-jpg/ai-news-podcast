@@ -3,8 +3,9 @@
 import argparse
 import asyncio
 import logging
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
+from typing import Any
 
 try:
     from dotenv import load_dotenv
@@ -30,6 +31,142 @@ from ai_news_podcast.text_utils import clean_tts_text
 from ai_news_podcast.utils import load_sources, read_yaml, write_text
 
 log = logging.getLogger("run_daily")
+
+
+def _resolve_date_and_id(
+    args: Any, cfg: dict[str, Any],
+) -> tuple[datetime, str, str, str]:
+    """Parse CLI args to resolve episode date, id, title and base URL."""
+    if args.date:
+        day = datetime.fromisoformat(args.date).replace(tzinfo=UTC)
+    else:
+        from zoneinfo import ZoneInfo
+        day = datetime.now(tz=ZoneInfo("Asia/Shanghai"))
+
+    episode_id = _episode_id(day)
+    episode_title = f"AI 新闻快报 | {episode_id}"
+    base_url = _get_base_url(cfg, args.base_url)
+    return day, episode_id, episode_title, base_url
+
+
+def _extract_tts_config(
+    cfg: dict[str, Any], root: Path,
+) -> tuple[str, tuple[str, str], dict[str, Any], dict[str, Any]]:
+    """Extract TTS configuration and parameters."""
+    podcast_cfg = cfg.get("podcast", {})
+    tts_cfg = cfg.get("tts", {})
+
+    podcast_title = str(podcast_cfg.get("title") or "AI 新闻播客").strip()
+    voices = (
+        str(tts_cfg.get("host_a_voices", {}).get("professional") or "zh-CN-YunjianNeural"),
+        str(tts_cfg.get("host_b_voices", {}).get("professional") or "zh-CN-XiaoxiaoNeural"),
+    )
+    mood_presets = tts_cfg.get("mood_presets")
+    bgm_rel = str(tts_cfg.get("bgm_path") or "assets/bgm_placeholder.wav")
+
+    params = {
+        "backend": str(tts_cfg.get("backend") or "edge-tts"),
+        "rate": str(tts_cfg.get("rate") or "+0%"),
+        "volume": str(tts_cfg.get("volume") or "+0%"),
+        "pitch": str(tts_cfg.get("pitch") or "+0Hz"),
+        "mood_presets": mood_presets if isinstance(mood_presets, dict) else None,
+        "chunk_silence_ms": int(tts_cfg.get("chunk_silence_ms", 500)),
+        "bgm_path": str(root / bgm_rel) if (root / bgm_rel).exists() else None,
+    }
+    return podcast_title, voices, params, podcast_cfg
+
+
+def _maybe_generate_report(
+    args: Any, brief: dict[str, Any], day: datetime, episode_id: str, root: Path
+) -> None:
+    """Generate daily report if --with-report flag is set."""
+    if args.with_report and generate_report is not None:
+        log.info("Stage 3b: generating daily report …")
+        report_dir = root / "data" / "reports"
+        report_dir.mkdir(parents=True, exist_ok=True)
+        date_str = day.strftime("%Y年%m月%d日")
+        llm_cfg = brief.get("llm_cfg", {})
+        try:
+            generate_report(
+                brief,
+                date_str=date_str,
+                report_id=episode_id,
+                outdir=report_dir,
+                llm_cfg=llm_cfg,
+            )
+            log.info("Daily report saved to %s", report_dir)
+        except Exception as e:  # noqa: BLE001
+            log.warning("Daily report generation failed: %s", e)
+
+
+async def _synthesize_episode(  # noqa: PLR0913
+    script_text: str,
+    tts_params: dict[str, Any],
+    voices: tuple[str, str],
+    mp3_path: Path,
+    transcript_path: Path,
+    cfg: dict[str, Any],
+    root: Path,
+) -> None:
+    """Synthesize audio for the episode."""
+    log.info("Stage 4: synthesizing audio …")
+    await synthesize(
+        script_text,
+        backend=tts_params["backend"],
+        voices=voices,
+        output_path=mp3_path,
+        bgm_path=tts_params["bgm_path"],
+        rate=tts_params["rate"],
+        volume=tts_params["volume"],
+        pitch=tts_params["pitch"],
+        mood_presets=tts_params["mood_presets"],
+        chunk_silence_ms=tts_params["chunk_silence_ms"],
+        transcript_path=transcript_path,
+        cfg=cfg,
+        project_root=root,
+    )
+    log.info("Audio saved: %s", mp3_path)
+
+
+async def _publish_or_skip(  # noqa: PLR0913
+    args: Any,
+    brief: dict[str, Any],
+    episode_id: str,
+    episode_title: str,
+    day: datetime,
+    base_url: str,
+    podcast_cfg: dict[str, Any],
+    build_cfg: dict[str, Any],
+    now: datetime,
+    root: Path,
+    cfg: dict[str, Any],
+    notes_path: Path,
+) -> int:
+    """Publish episode or skip if --no-audio."""
+    if args.no_audio:
+        log.info("Stage 5: show notes only (--no-audio) …")
+        notes_html = generate_show_notes_html(brief, episode_title=episode_title, episode_date=day)
+        write_text(notes_path, notes_html)
+        log.info("--no-audio: deferring feed/site publish to podcast-publish")
+        return 0
+
+    log.info("Stage 5: publishing …")
+    from ai_news_podcast.cli.publish_episode import publish_episode
+
+    publish_episode(
+        root=root,
+        cfg=cfg,
+        brief=brief,
+        episode_id=episode_id,
+        episode_title=episode_title,
+        episode_date=day,
+        base_url=base_url,
+        podcast_cfg=podcast_cfg,
+        build_cfg=build_cfg,
+        now=now,
+    )
+    log.info("Episode %s published successfully", episode_id)
+    return 0
 
 
 async def main() -> int:
@@ -60,40 +197,12 @@ async def main() -> int:
     cfg = read_yaml(root / args.config)
     sources = load_sources(root / args.sources)
 
-    podcast_cfg = cfg.get("podcast", {})
-    tts_cfg = cfg.get("tts", {})
-    script_cfg = cfg.get("script", {})
+    now = datetime.now(tz=UTC)
+    day, episode_id, episode_title, base_url = _resolve_date_and_id(args, cfg)
     build_cfg = cfg.get("build", {})
-
+    script_cfg = cfg.get("script", {})
+    podcast_title, voices, tts_params, podcast_cfg = _extract_tts_config(cfg, root)
     episodes_dir = root / str(build_cfg.get("episodes_dir") or "site/episodes")
-
-    now = datetime.now(tz=timezone.utc)
-    if args.date:
-        day = datetime.fromisoformat(args.date).replace(tzinfo=timezone.utc)
-    else:
-        from zoneinfo import ZoneInfo
-
-        day = datetime.now(tz=ZoneInfo("Asia/Shanghai"))
-
-    episode_id = _episode_id(day)
-    episode_title = f"AI 新闻快报 | {episode_id}"
-
-    podcast_title = str(podcast_cfg.get("title") or "AI 新闻播客").strip()
-
-    backend = str(tts_cfg.get("backend") or "edge-tts")
-    voices = (
-        str(tts_cfg.get("host_a_voices", {}).get("professional") or "zh-CN-YunjianNeural"),
-        str(tts_cfg.get("host_b_voices", {}).get("professional") or "zh-CN-XiaoxiaoNeural"),
-    )
-    rate = str(tts_cfg.get("rate") or "+0%")
-    volume = str(tts_cfg.get("volume") or "+0%")
-    pitch = str(tts_cfg.get("pitch") or "+0Hz")
-    mood_presets = tts_cfg.get("mood_presets")
-    chunk_silence_ms = int(tts_cfg.get("chunk_silence_ms", 500))
-    bgm_rel = str(tts_cfg.get("bgm_path") or "assets/bgm_placeholder.wav")
-    bgm_path = str(root / bgm_rel) if (root / bgm_rel).exists() else None
-
-    base_url = _get_base_url(cfg, args.base_url)
 
     # ── Stage 1 & 2: 数据基础层（抓取 → 去重 → 聚类 → 打分） ────────────────
     brief = await run_pipeline(
@@ -125,75 +234,19 @@ async def main() -> int:
     notes_path = episodes_dir / f"{episode_id}.html"
     transcript_path = episodes_dir / f"{episode_id}.txt"
 
-    clean_transcript = clean_tts_text(script_text, preserve_ssml=True) + "\n"
+    clean_transcript = clean_tts_text(script_text) + "\n"
     write_text(transcript_path, clean_transcript)
     log.info("Transcript saved: %s (%d chars)", transcript_path, len(clean_transcript))
 
-    # ── Stage 3b: Daily Report (optional) ──
-    if args.with_report and generate_report is not None:
-        log.info("Stage 3b: generating daily report …")
-        report_dir = root / "data" / "reports"
-        report_dir.mkdir(parents=True, exist_ok=True)
-        date_str = day.strftime("%Y年%m月%d日")
-        report_id = episode_id
-        llm_cfg = cfg.get("llm", {})
-        try:
-            generate_report(
-                brief,
-                date_str=date_str,
-                report_id=report_id,
-                outdir=report_dir,
-                llm_cfg=llm_cfg,
-            )
-            log.info("Daily report saved to %s", report_dir)
-        except Exception as e:
-            log.warning("Daily report generation failed: %s", e)
+    _maybe_generate_report(args, brief, day, episode_id, root)
 
-    # ── Stage 4: TTS ──
     if not args.no_audio:
-        log.info("Stage 4: synthesizing audio …")
-        await synthesize(
-            script_text,
-            backend=backend,
-            voices=voices,
-            output_path=mp3_path,
-            bgm_path=bgm_path,
-            rate=rate,
-            volume=volume,
-            pitch=pitch,
-            mood_presets=(mood_presets if isinstance(mood_presets, dict) else None),
-            chunk_silence_ms=chunk_silence_ms,
-            transcript_path=transcript_path,
-            cfg=cfg,
-            project_root=root,
-        )
-        log.info("Audio saved: %s", mp3_path)
+        await _synthesize_episode(script_text, tts_params, voices, mp3_path, transcript_path, cfg, root)
 
-    # ── Stage 5: Publish ──
-    if args.no_audio:
-        log.info("Stage 5: show notes only (--no-audio) …")
-        notes_html = generate_show_notes_html(brief, episode_title=episode_title, episode_date=day)
-        write_text(notes_path, notes_html)
-        log.info("--no-audio: deferring feed/site publish to podcast-publish")
-        return 0
-
-    log.info("Stage 5: publishing …")
-    from ai_news_podcast.cli.publish_episode import publish_episode
-
-    publish_episode(
-        root=root,
-        cfg=cfg,
-        brief=brief,
-        episode_id=episode_id,
-        episode_title=episode_title,
-        episode_date=day,
-        base_url=base_url,
-        podcast_cfg=podcast_cfg,
-        build_cfg=build_cfg,
-        now=now,
+    return await _publish_or_skip(
+        args, brief, episode_id, episode_title, day, base_url, podcast_cfg, build_cfg, now,
+        root, cfg, notes_path
     )
-    log.info("Episode %s published successfully", episode_id)
-    return 0
 
 
 def entrypoint() -> int:

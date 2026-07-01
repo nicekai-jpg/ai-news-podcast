@@ -36,6 +36,11 @@ class TestCleanTtsText:
         text = "「 quoted 」 and 『 another 』"
         assert clean_tts_text(text) == "quoted and another"
 
+    def test_strips_html_tags(self) -> None:
+        """HTML tags should be stripped (SSML support removed)."""
+        text = '<p>Hello <b>world</b></p>'
+        assert clean_tts_text(text) == "Hello world"
+
 
 class TestParseDialogueChunks:
     def test_simple_host_switch(self) -> None:
@@ -64,82 +69,19 @@ class TestParseDialogueChunks:
         chunks = parse_dialogue_chunks(text)
         assert chunks[0].text == "Hello world"
 
-    def test_ssml_parsing(self) -> None:
-        text = """
-        <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
-          <voice name="zh-CN-YunjianNeural">
-            听众朋友大家好
-          </voice>
-          <voice name="zh-CN-XiaoxiaoNeural">
-            大家好，我是 B (doge)
-          </voice>
-        </speak>
-        """
+    def test_case_insensitive_host_markers(self) -> None:
+        """Host markers should be case-insensitive."""
+        text = "[host a] Hello\n[HOST B] Hi"
         chunks = parse_dialogue_chunks(text)
         assert len(chunks) == 2
-        assert chunks[0] == DialogueChunk(
-            host="A", text="听众朋友大家好", voice="zh-CN-YunjianNeural"
-        )
-        assert chunks[1] == DialogueChunk(
-            host="B", text="大家好，我是 B", voice="zh-CN-XiaoxiaoNeural"
-        )
+        assert chunks[0] == DialogueChunk(host="A", text="Hello")
+        assert chunks[1] == DialogueChunk(host="B", text="Hi")
 
-    def test_ssml_parsing_swapped_order(self) -> None:
-        text = """
-        <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
-          <voice name="zh-CN-XiaoxiaoNeural">
-            大家好，我是 B (doge)
-          </voice>
-          <voice name="zh-CN-YunjianNeural">
-            听众朋友大家好
-          </voice>
-        </speak>
-        """
+    def test_multiple_chunks_same_host(self) -> None:
+        """Multiple consecutive chunks for the same host."""
+        text = "[Host A] First\n[Host A] Second\n[Host B] Third"
         chunks = parse_dialogue_chunks(text)
-        assert len(chunks) == 2
-        assert chunks[0] == DialogueChunk(
-            host="B", text="大家好，我是 B", voice="zh-CN-XiaoxiaoNeural"
-        )
-        assert chunks[1] == DialogueChunk(
-            host="A", text="听众朋友大家好", voice="zh-CN-YunjianNeural"
-        )
-
-    def test_ssml_parsing_fallback_with_voices(self) -> None:
-        text = """
-        <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
-          <voice name="host_a_professional">
-            First chunk by Host A.
-          </voice>
-          <voice name="host_a_professional">
-            Second chunk by Host A.
-          </voice>
-          <voice name="host_b_professional">
-            Third chunk by Host B.
-          </voice>
-        </speak>
-        """
-        voices = ("zh-CN-YunjianNeural", "zh-CN-XiaoxiaoNeural")
-        chunks = parse_dialogue_chunks(text, voices=voices)
         assert len(chunks) == 3
-        assert chunks[0] == DialogueChunk(
-            host="A", text="First chunk by Host A.", voice="host_a_professional"
-        )
-        assert chunks[1] == DialogueChunk(
-            host="A", text="Second chunk by Host A.", voice="host_a_professional"
-        )
-        assert chunks[2] == DialogueChunk(
-            host="B", text="Third chunk by Host B.", voice="host_b_professional"
-        )
-
-    def test_ssml_parsing_exact_voice_match(self) -> None:
-        text = """
-        <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
-          <voice name="VoiceA">First</voice>
-          <voice name="VoiceB">Second</voice>
-        </speak>
-        """
-        voices = ("VoiceA", "VoiceB")
-        chunks = parse_dialogue_chunks(text, voices=voices)
-        assert len(chunks) == 2
-        assert chunks[0] == DialogueChunk(host="A", text="First", voice="VoiceA")
-        assert chunks[1] == DialogueChunk(host="B", text="Second", voice="VoiceB")
+        assert chunks[0] == DialogueChunk(host="A", text="First")
+        assert chunks[1] == DialogueChunk(host="A", text="Second")
+        assert chunks[2] == DialogueChunk(host="B", text="Third")

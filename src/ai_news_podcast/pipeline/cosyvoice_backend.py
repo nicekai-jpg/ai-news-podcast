@@ -32,7 +32,7 @@ def load_cosyvoice_config(cfg: dict, *, project_root: Path) -> CosyVoiceConfig:
     for host, host_key in [("A", "host_a"), ("B", "host_b")]:
         host_data = refs.get(host_key)
         if isinstance(host_data, dict):
-            variants = [k for k in host_data.keys() if not k.endswith("_text")]
+            variants = [k for k in host_data if not k.endswith("_text")]
             for variant in variants:
                 wav_path = _resolve(str(host_data.get(variant) or ""))
                 text_path = _resolve(str(host_data.get(f"{variant}_text") or ""))

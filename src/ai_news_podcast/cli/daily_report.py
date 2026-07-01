@@ -12,9 +12,9 @@ try:
 except ImportError:
     pass
 
-from ai_news_podcast.pipeline.runner import run_pipeline
 from ai_news_podcast.pipeline.llm_client import call_llm
 from ai_news_podcast.pipeline.material import build_material_text
+from ai_news_podcast.pipeline.runner import run_pipeline
 from ai_news_podcast.utils import load_sources, read_yaml
 
 log = logging.getLogger("daily_report")

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from unittest.mock import AsyncMock, MagicMock
 
 import pytest
@@ -14,7 +14,7 @@ from ai_news_podcast.pipeline.fetcher import RawItem
 # ---------------------------------------------------------------------------
 
 
-def make_raw_item(
+def make_raw_item(  # noqa: PLR0913
     *,
     title: str = "Test Title",
     link: str = "https://example.com/article",
@@ -37,7 +37,7 @@ def make_raw_item(
         normalized_link=norm,
         source_name=source_name,
         source_category=source_category,
-        published_at=published_at or datetime.now(tz=timezone.utc).isoformat(),
+        published_at=published_at or datetime.now(tz=UTC).isoformat(),
         summary=summary,
         full_text_snippet=full_text_snippet,
         category=category,

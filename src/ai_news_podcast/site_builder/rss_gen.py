@@ -1,10 +1,10 @@
 import xml.etree.ElementTree as ET
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from email.utils import format_datetime
 from typing import Any
 
 
-def build_feed_xml(
+def build_feed_xml(  # noqa: PLR0913
     *,
     base_url: str,
     podcast_title: str,
@@ -27,7 +27,7 @@ def build_feed_xml(
     ET.SubElement(channel, "link").text = base_url + "/"
     ET.SubElement(channel, "description").text = podcast_description
     ET.SubElement(channel, "language").text = podcast_language
-    ET.SubElement(channel, "lastBuildDate").text = format_datetime(datetime.now(tz=timezone.utc))
+    ET.SubElement(channel, "lastBuildDate").text = format_datetime(datetime.now(tz=UTC))
     ET.SubElement(channel, f"{{{ns_itunes}}}author").text = podcast_author
     ET.SubElement(channel, f"{{{ns_itunes}}}explicit").text = "yes" if podcast_explicit else "no"
     ET.SubElement(channel, f"{{{ns_itunes}}}category", {"text": podcast_category})

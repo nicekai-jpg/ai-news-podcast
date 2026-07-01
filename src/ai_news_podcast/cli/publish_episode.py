@@ -6,10 +6,10 @@ import argparse
 import asyncio
 import logging
 import shutil
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from email.utils import format_datetime
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 from zoneinfo import ZoneInfo
 
 from ai_news_podcast.cli.episode_utils import (
@@ -26,7 +26,32 @@ from ai_news_podcast.utils import load_sources, read_json, read_yaml, write_json
 log = logging.getLogger("publish_episode")
 
 
-def publish_episode(
+def _safe_html(text: str) -> str:
+    """Escape HTML entities."""
+    return str(text).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def _build_description_html(stories: list[dict], podcast_description: str) -> str:
+    """Build RSS description HTML from brief stories."""
+    lines = [f"<p>{podcast_description}</p>" if podcast_description else "", "<ol>"]
+    for s in stories:
+        if s.get("role") == "skip":
+            continue
+        raw_title = s.get("representative_title") or s.get("title") or ""
+        items = s.get("items") or []
+        first_item = items[0] if items else {}
+        raw_source = first_item.get("source_name") or s.get("source_name") or ""
+        link = str(first_item.get("link") or s.get("link") or "")
+        role_emoji = s.get("role_emoji", "")
+        lines.append(
+            f'<li>{role_emoji} <a href="{link}">{_safe_html(raw_title)}</a>'
+            f' <small>({_safe_html(raw_source)})</small></li>'
+        )
+    lines.append("</ol>")
+    return "\n".join([ln for ln in lines if ln])
+
+
+def publish_episode(  # noqa: PLR0913
     *,
     root: Path,
     cfg: dict[str, Any],
@@ -37,10 +62,10 @@ def publish_episode(
     base_url: str,
     podcast_cfg: dict[str, Any],
     build_cfg: dict[str, Any],
-    now: Optional[datetime] = None,
+    now: datetime | None = None,
 ) -> None:
     """Write show notes, update episodes index, feed.xml, and static site."""
-    now = now or datetime.now(tz=timezone.utc)
+    now = now or datetime.now(tz=UTC)
 
     site_dir = root / str(build_cfg.get("site_dir") or "site")
     episodes_dir = root / str(build_cfg.get("episodes_dir") or "site/episodes")
@@ -62,29 +87,9 @@ def publish_episode(
     )
     write_text(notes_path, notes_html)
 
-    stories = brief.get("stories", [])
-    show_desc_lines = [
-        f"<p>{podcast_description}</p>" if podcast_description else "",
-        "<ol>",
-    ]
-    for s in stories:
-        if s.get("role") == "skip":
-            continue
-        raw_title = s.get("representative_title") or s.get("title") or ""
-        safe_title = str(raw_title).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        items = s.get("items") or []
-        first_item = items[0] if items else {}
-        raw_source = first_item.get("source_name") or s.get("source_name") or ""
-        safe_source = (
-            str(raw_source).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-        )
-        link = str(first_item.get("link") or s.get("link") or "")
-        role_emoji = s.get("role_emoji", "")
-        show_desc_lines.append(
-            f'<li>{role_emoji} <a href="{link}">{safe_title}</a> <small>({safe_source})</small></li>'
-        )
-    show_desc_lines.append("</ol>")
-    description_html = "\n".join([ln for ln in show_desc_lines if ln])
+    description_html = _build_description_html(
+        brief.get("stories", []), podcast_description
+    )
 
     enclosure_url = f"{base_url}/episodes/{episode_id}.mp3"
     notes_url = f"{base_url}/episodes/{episode_id}.html"

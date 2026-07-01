@@ -3,12 +3,12 @@
 from __future__ import annotations
 
 import os
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Optional
+from typing import Any
 
 
-def get_base_url(cfg: dict[str, Any], cli_base_url: Optional[str]) -> str:
+def get_base_url(cfg: dict[str, Any], cli_base_url: str | None) -> str:
     env = os.environ
     if cli_base_url:
         return cli_base_url.rstrip("/")
@@ -47,7 +47,7 @@ def prune_episodes(
         try:
             return datetime.fromisoformat(str(ep["published_at_iso"]))
         except (ValueError, KeyError):
-            return datetime(1970, 1, 1, tzinfo=timezone.utc)
+            return datetime(1970, 1, 1, tzinfo=UTC)
 
     sorted_eps = sorted(episodes, key=parse_pubdate, reverse=True)
     keep = sorted_eps[:keep_last]
