@@ -7,7 +7,7 @@ import importlib
 import random
 import shutil
 from pathlib import Path
-from typing import Any, Optional, Sequence
+from typing import Any, Sequence
 
 from ai_news_podcast.pipeline.tts_types import DialogueChunk
 
@@ -25,9 +25,9 @@ def chunk_silence_ms(
     return random.randint(low, high)
 
 
-def mix_bgm(
+def mix_bgm(  # noqa: PLR0913
     vocal_segment: Any,
-    bgm_path: Optional[str],
+    bgm_path: str | None,
     *,
     bgm_volume_db: int = -12,
     bgm_fade_in_ms: int = 2000,
@@ -36,12 +36,12 @@ def mix_bgm(
 ) -> Any:
     """Mix vocal track with background music using basic ducking."""
     pydub = importlib.import_module("pydub")
-    AudioSegment = getattr(pydub, "AudioSegment")
+    audio_segment_cls = pydub.AudioSegment
 
     if not bgm_path or not Path(bgm_path).exists():
         return vocal_segment
 
-    bgm = AudioSegment.from_file(bgm_path)
+    bgm = audio_segment_cls.from_file(bgm_path)
 
     vocal_len = len(vocal_segment)
     fade_out_tail = bgm_fade_out_ms
@@ -53,7 +53,7 @@ def mix_bgm(
     bgm = bgm + bgm_volume_db
     bgm = bgm.fade_in(bgm_fade_in_ms).fade_out(bgm_fade_out_ms)
 
-    vocal_padded = AudioSegment.silent(duration=vocal_pad_ms) + vocal_segment
+    vocal_padded = audio_segment_cls.silent(duration=vocal_pad_ms) + vocal_segment
     return bgm.overlay(vocal_padded)
 
 
@@ -89,7 +89,7 @@ async def run_loudnorm(
         raise RuntimeError(f"ffmpeg loudnorm failed: {msg}")
 
 
-def assemble_dialogue_audio(
+def assemble_dialogue_audio(  # noqa: PLR0913
     chunks: Sequence[DialogueChunk],
     segments: Sequence[Any],
     *,
@@ -104,9 +104,9 @@ def assemble_dialogue_audio(
         raise ValueError("chunks and segments length mismatch")
 
     pydub = importlib.import_module("pydub")
-    AudioSegment = getattr(pydub, "AudioSegment")
+    audio_segment_cls = pydub.AudioSegment
 
-    combined = AudioSegment.empty()
+    combined = audio_segment_cls.empty()
     timestamps: list[tuple[float, float]] = []
     current_time_ms = vocal_pad_ms
 
@@ -118,7 +118,7 @@ def assemble_dialogue_audio(
                 silence_max=silence_max,
                 silence_jitter=silence_jitter,
             )
-            combined += AudioSegment.silent(duration=silence_len)
+            combined += audio_segment_cls.silent(duration=silence_len)
             current_time_ms += silence_len
 
         start_sec = current_time_ms / 1000.0
@@ -134,7 +134,7 @@ async def finalize_episode_mp3(
     combined: Any,
     output_path: Path,
     *,
-    bgm_path: Optional[str],
+    bgm_path: str | None,
     audio_cfg: dict,
     tmp_dir: Path,
 ) -> None:

@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import logging
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -42,6 +43,7 @@ _DEFAULT_COMPANIES = [
 ]
 
 
+@lru_cache(maxsize=1)
 def _load_companies_from_config() -> list[str]:
     """从 config.yaml 读取 entities.companies，读取失败时返回默认值。"""
     try:
@@ -60,8 +62,8 @@ def _get_story_entities(story: dict[str, Any]) -> set[str]:
     """提取新闻故事中的公司/品牌实体词，用于多样性去重。"""
     title = str(story.get("representative_title", "")).lower()
     entities = set()
-    COMPANIES = _load_companies_from_config()
-    for c in COMPANIES:
+    companies = _load_companies_from_config()
+    for c in companies:
         if c in title:
             # 标准化实体名
             norm = c

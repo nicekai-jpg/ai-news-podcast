@@ -1,108 +1,24 @@
+"""TTS 音频合成引擎：CosyVoice2 后端。"""
+
+from __future__ import annotations
+
 import importlib
 import logging
-import re
 import tempfile
 from pathlib import Path
-from typing import Any, List, Optional, Tuple, Union
+from typing import Any, List
 
+from ai_news_podcast.pipeline.tts_parser import (
+    parse_dialogue_chunks,
+    split_text_into_sentences,
+)
 from ai_news_podcast.pipeline.tts_postprocess import (
     assemble_dialogue_audio,
     finalize_episode_mp3,
 )
 from ai_news_podcast.pipeline.tts_types import DialogueChunk
-from ai_news_podcast.text_utils import clean_tts_text
 
 log = logging.getLogger(__name__)
-
-
-def parse_dialogue_chunks(
-    text: str, voices: Optional[Tuple[str, str]] = None
-) -> list[DialogueChunk]:
-    """解析对话文本，支持标准的 SSML (XML/HTML) 格式和自定义 [Host A] / [Host B] 格式。"""
-    stripped_text = text.strip()
-    if stripped_text.startswith("<speak") or "<speak" in stripped_text or "<voice" in stripped_text:
-        try:
-            from bs4 import BeautifulSoup
-
-            soup = BeautifulSoup(text, "html.parser")
-            voice_tags = soup.find_all("voice")
-            if voice_tags:
-                chunks: list[DialogueChunk] = []
-                for idx, voice_tag in enumerate(voice_tags):
-                    voice_name = voice_tag.get("name", "").strip()
-                    chunk_text = voice_tag.get_text().strip()
-                    if chunk_text:
-                        cleaned = clean_tts_text(chunk_text)
-                        if cleaned:
-                            # 默认根据 idx 交替分配
-                            host = "B" if idx % 2 == 1 else "A"
-                            if voice_name:
-                                vn_lower = voice_name.lower()
-                                matched = False
-                                if voices:
-                                    voice_a = voices[0] if len(voices) > 0 else None
-                                    voice_b = voices[1] if len(voices) > 1 else None
-                                    if (
-                                        isinstance(voice_a, str)
-                                        and vn_lower == voice_a.strip().lower()
-                                    ):
-                                        host = "A"
-                                        matched = True
-                                    elif (
-                                        isinstance(voice_b, str)
-                                        and vn_lower == voice_b.strip().lower()
-                                    ):
-                                        host = "B"
-                                        matched = True
-
-                                if not matched:
-                                    # 常见中文音色及标识兜底匹配
-                                    if (
-                                        "xiaoxiao" in vn_lower
-                                        or "xiaoyi" in vn_lower
-                                        or "host_b" in vn_lower
-                                        or "host-b" in vn_lower
-                                    ):
-                                        host = "B"
-                                    elif any(
-                                        x in vn_lower
-                                        for x in ("yunxi", "yunjian", "yunyang", "host_a", "host-a")
-                                    ):
-                                        host = "A"
-                            chunks.append(
-                                DialogueChunk(
-                                    host=host,
-                                    text=cleaned,
-                                    voice=voice_name if voice_name else None,
-                                )
-                            )
-                if chunks:
-                    return chunks
-        except (ValueError, OSError):
-            pass
-
-    marker_re = re.compile(r"\[Host\s*([AB])\]", re.IGNORECASE)
-    chunks: list[DialogueChunk] = []
-    current_host = "A"  # Default
-    cursor: int = 0
-
-    for m in marker_re.finditer(text):
-        # Pyre string slice bypass using simple casting and indexing
-        start_idx = int(m.start())
-        raw = str(text[cursor:start_idx]).strip()
-        if raw:
-            cleaned = clean_tts_text(raw)
-            if cleaned:
-                chunks.append(DialogueChunk(host=current_host, text=cleaned))
-        current_host = str(m.group(1)).strip().upper()
-        cursor = int(m.end())
-
-    tail = str(text[cursor:]).strip()
-    if tail:
-        cleaned = clean_tts_text(tail)
-        if cleaned:
-            chunks.append(DialogueChunk(host=current_host, text=cleaned))
-    return chunks
 
 
 def _write_transcript_with_timestamps(
@@ -130,9 +46,9 @@ def _write_transcript_with_timestamps(
 
 def _write_chunks_and_playlist(
     chunks: List[DialogueChunk],
-    segments_by_variant: dict[str, List[Any]],  # Maps variant ID to list of AudioSegments
+    segments_by_variant: dict[str, List[Any]],
     timestamps: list[tuple[float, float]],
-    voice_maps: dict[str, dict[str, str]],  # Maps variant ID to host voice map
+    voice_maps: dict[str, dict[str, str]],
     output_path: Path,
 ) -> None:
     """将各个音频片段及播放清单 JSON 写入和单期 ID 同名的文件夹中，包含所有音色版本。"""
@@ -151,8 +67,8 @@ def _write_chunks_and_playlist(
             import importlib
 
             pydub = importlib.import_module("pydub")
-            AudioSegment = getattr(pydub, "AudioSegment")
-            silence_pad = AudioSegment.silent(duration=300)
+            audio_segment_cls = pydub.AudioSegment
+            silence_pad = audio_segment_cls.silent(duration=300)
             padded_seg = silence_pad + segments[idx - 1] + silence_pad
 
             try:
@@ -185,43 +101,21 @@ def _write_chunks_and_playlist(
     )
 
 
-def split_text_into_sentences(text: str, max_chars: int = 80) -> list[str]:
-    """将文本切分为较短的句子/短句，避免单次合成文本过长导致 CosyVoice 截断或语速失真。"""
-    # 按照常见的标点符号进行切分，保留标点
-    pattern = re.compile(r"([^，。！？；、,.!?;\s]+[，。！？；、,.!?;\s]*)")
-    parts = pattern.findall(text)
-    if not parts:
-        return [text] if text.strip() else []
-
-    sentences = []
-    current = ""
-    for part in parts:
-        if len(current) + len(part) <= max_chars:
-            current += part
-        else:
-            if current:
-                sentences.append(current.strip())
-            current = part
-    if current:
-        sentences.append(current.strip())
-    return sentences
-
-
-async def synthesize_cosyvoice2(
+async def synthesize_cosyvoice2(  # noqa: PLR0913
     chunks: List[DialogueChunk],
-    output_path: Union[str, Path],
+    output_path: Path,
     *,
-    bgm_path: Optional[str] = None,
-    transcript_path: Optional[Union[str, Path]] = None,
-    cfg: Optional[dict] = None,
-    project_root: Optional[Path] = None,
-    engine: Optional[Any] = None,
+    bgm_path: str | None = None,
+    transcript_path: Path | None = None,
+    cfg: dict | None = None,
+    project_root: Path | None = None,
+    engine: Any | None = None,
 ) -> None:
     from ai_news_podcast.pipeline.cosyvoice_backend import CosyVoice2Engine, load_cosyvoice_config
 
     torchaudio = importlib.import_module("torchaudio")
     pydub = importlib.import_module("pydub")
-    AudioSegment = getattr(pydub, "AudioSegment")
+    audio_segment_cls = pydub.AudioSegment
 
     audio_cfg = (cfg or {}).get("tts", {}).get("audio", {})
     root = project_root or Path.cwd()
@@ -257,15 +151,15 @@ async def synthesize_cosyvoice2(
                         )
                         wav_path = tmp_root / f"chunk_{idx:03d}_{var_name}_{s_idx:03d}.wav"
                         torchaudio.save(str(wav_path), tensor, cv_cfg.sample_rate)
-                        chunk_segments.append(AudioSegment.from_file(str(wav_path)))
+                        chunk_segments.append(audio_segment_cls.from_file(str(wav_path)))
 
                     if chunk_segments:
                         combined_chunk = chunk_segments[0]
                         for next_seg in chunk_segments[1:]:
-                            combined_chunk += AudioSegment.silent(duration=150) + next_seg
+                            combined_chunk += audio_segment_cls.silent(duration=150) + next_seg
                         return combined_chunk
                     else:
-                        return AudioSegment.silent(duration=100)
+                        return audio_segment_cls.silent(duration=100)
 
                 segments_by_variant[var].append(_gen_variant(var))
 
@@ -308,9 +202,9 @@ async def synthesize(
     text: str,
     *,
     backend: str = "cosyvoice2",
-    voices: Tuple[str, str] = ("zh-CN-YunjianNeural", "zh-CN-XiaoxiaoNeural"),
-    output_path: Union[str, Path],
-    bgm_path: Optional[str] = None,
+    voices: tuple[str, str] = ("zh-CN-YunjianNeural", "zh-CN-XiaoxiaoNeural"),
+    output_path: Path,
+    bgm_path: str | None = None,
     **kwargs: Any,
 ) -> None:
     chunks = parse_dialogue_chunks(text, voices=voices)

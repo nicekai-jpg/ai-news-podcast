@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from ai_news_podcast.cli.episode_utils import (
@@ -52,7 +52,7 @@ class TestGetBaseUrl:
 
 class TestEpisodeId:
     def test_format(self) -> None:
-        dt = datetime(2024, 3, 15, 10, 30, tzinfo=timezone.utc)
+        dt = datetime(2024, 3, 15, 10, 30, tzinfo=UTC)
         assert episode_id(dt) == "2024-03-15"
 
 

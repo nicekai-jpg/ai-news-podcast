@@ -14,7 +14,7 @@ import logging
 import re
 import time
 from dataclasses import asdict, dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
 
@@ -138,9 +138,9 @@ def _parse_dt(entry: Any) -> datetime:
                 parsed[3],
                 parsed[4],
                 parsed[5],
-                tzinfo=timezone.utc,
+                tzinfo=UTC,
             )
-    return datetime.now(tz=timezone.utc)
+    return datetime.now(tz=UTC)
 
 
 # ---------------------------------------------------------------------------
@@ -271,7 +271,78 @@ async def _http_get(
 # ---------------------------------------------------------------------------
 
 
-async def _fetch_one_feed(
+async def _process_single_entry(  # noqa: PLR0913
+    entry: Any,
+    *,
+    name: str,
+    src_category: str,
+    client: httpx.AsyncClient,
+    throttle: _DomainThrottle,
+    max_pages: int,
+    pages_counter: list[int],
+) -> RawItem | None:
+    """处理单个 RSS entry，返回 RawItem 或 None（如果无效）。"""
+    title = _strip_html(str(getattr(entry, "title", "") or "")).strip()
+    link = str(getattr(entry, "link", "") or "").strip()
+    if not title or not link:
+        return None
+
+    norm_link = normalize_url(link)
+    item_id = _item_id(norm_link)
+    published_at = _parse_dt(entry)
+
+    summary_raw = str(getattr(entry, "summary", "") or "") or str(
+        getattr(entry, "description", "") or ""
+    )
+    summary = _strip_html(summary_raw)
+
+    # 如果是垃圾摘要，清空它以便后续逻辑强制尝试抓取正文
+    if _is_junk_summary(summary):
+        logger.debug("Detected junk summary for %s, will try to fetch full text", link)
+        summary = ""
+
+    if len(summary) > 500:
+        summary = summary[:497].rstrip() + "..."
+
+    # 全文提取 (受 max_pages 限制)
+    full_text = ""
+    # 如果摘要没了（是垃圾），我们稍微放宽一点限制，或者至少优先抓取
+    if pages_counter[0] < max_pages or not summary:
+        try:
+            page_resp = await _http_get(client, link, throttle)
+            if not summary:  # 只有没摘要时才增加计数，避免浪费配额
+                pages_counter[0] += 1
+            full_text = _extract_fulltext(page_resp.text, link, min_chars=1200, max_chars=2000)
+        except (httpx.HTTPError, OSError, ValueError):
+            logger.debug("Full-text fetch failed: %s", link)
+
+    # 用 summary 兜底
+    if not full_text:
+        full_text = summary[:2000] if summary else ""
+
+    # 如果连正文也没抓到，且摘要是空的，这条新闻就没意义了
+    if not full_text and not summary:
+        return None
+
+    lang = _detect_lang(f"{title} {summary}")
+    category = _infer_category(title, summary)
+
+    return RawItem(
+        id=item_id,
+        title=title,
+        link=link,
+        normalized_link=norm_link,
+        source_name=name,
+        source_category=src_category,
+        published_at=published_at.isoformat(),
+        summary=summary,
+        full_text_snippet=full_text,
+        category=category,
+        language=lang,
+    )
+
+
+async def _fetch_one_feed(  # noqa: PLR0913
     src: dict[str, Any],
     *,
     client: httpx.AsyncClient,
@@ -302,73 +373,19 @@ async def _fetch_one_feed(
     for i, entry in enumerate(entries):
         if i >= max_items:
             break
-        title = _strip_html(str(getattr(entry, "title", "") or "")).strip()
-        link = str(getattr(entry, "link", "") or "").strip()
-        if not title or not link:
-            continue
-
-        norm_link = normalize_url(link)
-        item_id = _item_id(norm_link)
-        published_at = _parse_dt(entry)
-
-        summary_raw = str(getattr(entry, "summary", "") or "") or str(
-            getattr(entry, "description", "") or ""
+        item = await _process_single_entry(
+            entry,
+            name=name,
+            src_category=src_category,
+            client=client,
+            throttle=throttle,
+            max_pages=max_pages,
+            pages_counter=pages_counter,
         )
-        summary = _strip_html(summary_raw)
-
-        # 如果是垃圾摘要，清空它以便后续逻辑强制尝试抓取正文
-        if _is_junk_summary(summary):
-            logger.debug("Detected junk summary for %s, will try to fetch full text", link)
-            summary = ""
-
-        if len(summary) > 500:
-            summary = summary[:497].rstrip() + "..."
-
-        # 全文提取 (受 max_pages 限制)
-        full_text = ""
-        # 如果摘要没了（是垃圾），我们稍微放宽一点限制，或者至少优先抓取
-        if pages_counter[0] < max_pages or not summary:
-            try:
-                page_resp = await _http_get(client, link, throttle)
-                if not summary:  # 只有没摘要时才增加计数，避免浪费配额
-                    pages_counter[0] += 1
-                full_text = _extract_fulltext(page_resp.text, link, min_chars=1200, max_chars=2000)
-            except (httpx.HTTPError, OSError, ValueError):
-                logger.debug("Full-text fetch failed: %s", link)
-
-        # 用 summary 兜底
-        if not full_text:
-            full_text = summary[:2000] if summary else ""
-
-        # 如果连正文也没抓到，且摘要是空的，这条新闻就没意义了
-        if not full_text and not summary:
-            continue
-
-        lang = _detect_lang(f"{title} {summary}")
-        category = _infer_category(title, summary)
-
-        items.append(
-            RawItem(
-                id=item_id,
-                title=title,
-                link=link,
-                normalized_link=norm_link,
-                source_name=name,
-                source_category=src_category,
-                published_at=published_at.isoformat(),
-                summary=summary,
-                full_text_snippet=full_text,
-                category=category,
-                language=lang,
-            )
-        )
+        if item is not None:
+            items.append(item)
 
     return items
-
-
-# ---------------------------------------------------------------------------
-# JSON API 源抓取（GitHub / Hacker News）
-# ---------------------------------------------------------------------------
 
 
 async def _fetch_github_api(
@@ -412,7 +429,7 @@ async def _fetch_github_api(
             dt = datetime.fromisoformat(created_at.replace("Z", "+00:00"))
             published_at = dt.isoformat()
         except ValueError:
-            published_at = datetime.now(tz=timezone.utc).isoformat()
+            published_at = datetime.now(tz=UTC).isoformat()
 
         stars = repo.get("stargazers_count", 0)
         forks = repo.get("forks_count", 0)
@@ -485,7 +502,7 @@ async def _fetch_hn_api(
 
         # Algolia 返回的是毫秒级 unix 时间戳
         ts = hit.get("created_at_i", 0)
-        published_at = datetime.fromtimestamp(ts, tz=timezone.utc).isoformat()
+        published_at = datetime.fromtimestamp(ts, tz=UTC).isoformat()
 
         points = hit.get("points", 0)
         num_comments = hit.get("num_comments", 0)
@@ -543,7 +560,7 @@ _FETCHER_REGISTRY: dict[str, Any] = {
 # ---------------------------------------------------------------------------
 
 
-async def fetch_all(
+async def fetch_all(  # noqa: PLR0913
     sources: list[dict[str, Any]],
     *,
     timeout_seconds: int = 20,

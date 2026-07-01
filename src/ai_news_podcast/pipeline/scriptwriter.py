@@ -6,17 +6,10 @@
 
 from __future__ import annotations
 
-import json
 import logging
-import os
 import re
-import time
 from datetime import datetime
-from pathlib import Path
 from typing import Any
-
-import httpx
-import yaml
 
 from ai_news_podcast.pipeline.llm_client import call_llm as _call_llm
 from ai_news_podcast.pipeline.material import build_material_text as _build_material_text
@@ -184,25 +177,11 @@ def generate_script(
         warnings.append(f"仍含禁用词: {found_banned}")
 
     # 简单统计Host A和Host B的出场次数
-    stripped_script = script.strip()
-    is_ssml = ("<speak" in stripped_script or "<voice" in stripped_script)
-
-    if is_ssml:
-        host_a_count = (
-            script.count('name="zh-CN-YunxiNeural"')
-            + script.count('name="zh-CN-YunjianNeural"')
-            + script.count('name="zh-CN-YunyangNeural"')
-        )
-        host_b_count = script.count('name="zh-CN-XiaoxiaoNeural"')
-        total_turns = host_a_count + host_b_count
-        if host_a_count == 0 or host_b_count == 0:
-            warnings.append("生成剧本未严格包含 <voice> 切换标记")
-    else:
-        host_a_count = script.count("[Host A]")
-        host_b_count = script.count("[Host B]")
-        total_turns = host_a_count + host_b_count
-        if host_a_count == 0 or host_b_count == 0:
-            warnings.append("生成剧本未严格包含 [Host A] 和 [Host B] 双人对谈标记")
+    host_a_count = script.count("[Host A]")
+    host_b_count = script.count("[Host B]")
+    total_turns = host_a_count + host_b_count
+    if host_a_count == 0 or host_b_count == 0:
+        warnings.append("生成剧本未严格包含 [Host A] 和 [Host B] 双人对谈标记")
 
     logger.info(
         "双人剧本生成完毕 (Mode: %s), 对话回合数: %d 轮 (A:%d, B:%d)",
@@ -215,11 +194,7 @@ def generate_script(
 
 
 def _normalize_host_tags(text: str) -> str:
-    """清理并确保 Host 标签格式绝对标准，形如 `[Host A] 说话内容`。如果是 SSML 格式则不进行转换。"""
-    stripped_text = text.strip()
-    if stripped_text.startswith("<speak") or "<speak" in stripped_text or "<voice" in stripped_text:
-        return text
-
+    """清理并确保 Host 标签格式绝对标准，形如 `[Host A] 说话内容`。"""
     lines = text.split("\n")
     result: list[str] = []
 

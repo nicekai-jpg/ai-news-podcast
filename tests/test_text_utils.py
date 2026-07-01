@@ -130,34 +130,26 @@ class TestEscapedNewlines:
 
 
 # ---------------------------------------------------------------------------
-# SSML handling
+# HTML tag stripping (SSML support removed)
 # ---------------------------------------------------------------------------
 
 
-class TestSSMLHandling:
-    def test_ssml_preserved_by_default(self) -> None:
-        text = '<speak><voice name="zh-CN-XiaoxiaoNeural">你好</voice></speak>'
-        result = clean_tts_text(text)
-        assert "<speak" in result
-        assert "<voice" in result
-
-    def test_ssml_stripped_when_preserve_false(self) -> None:
-        text = '<speak><voice name="zh-CN-XiaoxiaoNeural">你好</voice></speak>'
-        result = clean_tts_text(text, preserve_ssml=False)
-        assert "<speak" not in result
-        assert "<voice" not in result
-        assert "你好" in result
-
-    def test_non_ssml_html_stripped_by_default(self) -> None:
+class TestHtmlTagStripping:
+    def test_html_tags_stripped(self) -> None:
         text = "<b>粗体</b>和<i>斜体</i>"
         result = clean_tts_text(text)
         assert "<b>" not in result
+        assert "<i>" not in result
         assert "粗体" in result
+        assert "斜体" in result
 
-    def test_voice_tag_triggers_ssml_detection(self) -> None:
-        text = '<voice name="zh-CN-YunxiNeural">你好</voice>'
+    def test_ssml_tags_stripped(self) -> None:
+        """SSML tags are no longer preserved; they are treated as HTML and stripped."""
+        text = '<speak><voice name="zh-CN-XiaoxiaoNeural">你好</voice></speak>'
         result = clean_tts_text(text)
-        assert "<voice" in result
+        assert "<speak" not in result
+        assert "<voice" not in result
+        assert "你好" in result
 
 
 # ---------------------------------------------------------------------------
@@ -217,7 +209,11 @@ class TestIdempotency:
         text = '<speak><voice name="zh-CN-XiaoxiaoNeural">[FACT] 测试</voice></speak>'
         first = clean_tts_text(text)
         second = clean_tts_text(first)
+        # SSML tags are stripped, leaving only text; idempotent means applying
+        # clean_tts_text twice produces the same result.
         assert first == second
+        assert "测试" in first
+        assert "<voice" not in first
 
 
 # ---------------------------------------------------------------------------

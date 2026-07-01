@@ -29,32 +29,17 @@ RE_HTML_TAG = re.compile(r"<[^>]+>")
 
 
 # ---------------------------------------------------------------------------
-# SSML detection helper
-# ---------------------------------------------------------------------------
-
-
-def _is_ssml(text: str) -> bool:
-    """Return True if *text* contains SSML markup."""
-    stripped = text.strip()
-    return stripped.startswith("<speak") or "<speak" in stripped or "<voice" in stripped
-
-
-# ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
 
 
-def clean_tts_text(text: str, *, preserve_ssml: bool = True) -> str:
+def clean_tts_text(text: str) -> str:
     """Clean TTS-unfriendly artefacts from *text*.
 
     Parameters
     ----------
     text:
         Raw text produced by the LLM or template fallback.
-    preserve_ssml:
-        When *True* (default), HTML/XML tags are kept if the text is
-        detected as SSML.  When *False*, all HTML tags are stripped
-        regardless.
 
     Returns
     -------
@@ -83,11 +68,8 @@ def clean_tts_text(text: str, *, preserve_ssml: bool = True) -> str:
     # 6. Remove empty parentheses
     text = RE_EMPTY_PAREN.sub("", text)
 
-    # 7. HTML / SSML handling
-    if preserve_ssml and _is_ssml(text):
-        pass  # keep XML tags intact
-    else:
-        text = RE_HTML_TAG.sub("", text)
+    # 7. Strip HTML tags
+    text = RE_HTML_TAG.sub("", text)
 
     # 8. Compress repeated punctuation
     text = RE_REPEATED_COMMA.sub("，", text)
