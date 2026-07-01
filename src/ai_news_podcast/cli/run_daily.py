@@ -34,13 +34,15 @@ log = logging.getLogger("run_daily")
 
 
 def _resolve_date_and_id(
-    args: Any, cfg: dict[str, Any],
+    args: Any,
+    cfg: dict[str, Any],
 ) -> tuple[datetime, str, str, str]:
     """Parse CLI args to resolve episode date, id, title and base URL."""
     if args.date:
         day = datetime.fromisoformat(args.date).replace(tzinfo=UTC)
     else:
         from zoneinfo import ZoneInfo
+
         day = datetime.now(tz=ZoneInfo("Asia/Shanghai"))
 
     episode_id = _episode_id(day)
@@ -50,7 +52,8 @@ def _resolve_date_and_id(
 
 
 def _extract_tts_config(
-    cfg: dict[str, Any], root: Path,
+    cfg: dict[str, Any],
+    root: Path,
 ) -> tuple[str, dict[str, Any], dict[str, Any]]:
     """Extract TTS configuration and parameters."""
     podcast_cfg = cfg.get("podcast", {})
@@ -227,8 +230,18 @@ async def main() -> int:
         await _synthesize_episode(script_text, tts_params, mp3_path, transcript_path, cfg, root)
 
     return await _publish_or_skip(
-        args, brief, episode_id, episode_title, day, base_url, podcast_cfg, build_cfg, now,
-        root, cfg, notes_path
+        args,
+        brief,
+        episode_id,
+        episode_title,
+        day,
+        base_url,
+        podcast_cfg,
+        build_cfg,
+        now,
+        root,
+        cfg,
+        notes_path,
     )
 
 

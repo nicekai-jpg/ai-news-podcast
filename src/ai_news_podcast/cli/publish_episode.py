@@ -45,7 +45,7 @@ def _build_description_html(stories: list[dict], podcast_description: str) -> st
         role_emoji = s.get("role_emoji", "")
         lines.append(
             f'<li>{role_emoji} <a href="{link}">{_safe_html(raw_title)}</a>'
-            f' <small>({_safe_html(raw_source)})</small></li>'
+            f" <small>({_safe_html(raw_source)})</small></li>"
         )
     lines.append("</ol>")
     return "\n".join([ln for ln in lines if ln])
@@ -87,9 +87,7 @@ def publish_episode(  # noqa: PLR0913
     )
     write_text(notes_path, notes_html)
 
-    description_html = _build_description_html(
-        brief.get("stories", []), podcast_description
-    )
+    description_html = _build_description_html(brief.get("stories", []), podcast_description)
 
     enclosure_url = f"{base_url}/episodes/{episode_id}.mp3"
     notes_url = f"{base_url}/episodes/{episode_id}.html"

@@ -18,7 +18,7 @@ def parse_dialogue_chunks(
     cursor = 0
 
     for m in marker_re.finditer(text):
-        raw = text[cursor:m.start()].strip()
+        raw = text[cursor : m.start()].strip()
         if raw:
             cleaned = clean_tts_text(raw)
             if cleaned:

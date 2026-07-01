@@ -46,9 +46,7 @@ def call_llm(prompt: str, llm_cfg: dict[str, Any]) -> str | None:
     api_key = os.environ.get(env_key_name, "").strip()
 
     if not api_key:
-        logger.error(
-            "未找到对应的环境变量 %s 用于 API 鉴权。请在 .env 中设置。", env_key_name
-        )
+        logger.error("未找到对应的环境变量 %s 用于 API 鉴权。请在 .env 中设置。", env_key_name)
         return None
 
     model_name = llm_cfg.get("model", "deepseek-chat")
