@@ -32,6 +32,7 @@ podcast-report   = "ai_news_podcast.cli.daily_report:entrypoint"
 [dependency-groups]
 dev = [
     "ruff>=0.15.11",
+    "pre-commit>=3.0",
     "pytest>=8.0",
     "pytest-asyncio>=0.24",
     "pytest-cov>=7.1.0",
