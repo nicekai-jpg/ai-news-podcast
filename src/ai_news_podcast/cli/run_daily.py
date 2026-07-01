@@ -51,21 +51,17 @@ def _resolve_date_and_id(
 
 def _extract_tts_config(
     cfg: dict[str, Any], root: Path,
-) -> tuple[str, tuple[str, str], dict[str, Any], dict[str, Any]]:
+) -> tuple[str, dict[str, Any], dict[str, Any]]:
     """Extract TTS configuration and parameters."""
     podcast_cfg = cfg.get("podcast", {})
     tts_cfg = cfg.get("tts", {})
 
     podcast_title = str(podcast_cfg.get("title") or "AI 新闻播客").strip()
-    voices = (
-        str(tts_cfg.get("host_a_voices", {}).get("professional") or "zh-CN-YunjianNeural"),
-        str(tts_cfg.get("host_b_voices", {}).get("professional") or "zh-CN-XiaoxiaoNeural"),
-    )
     mood_presets = tts_cfg.get("mood_presets")
     bgm_rel = str(tts_cfg.get("bgm_path") or "assets/bgm_placeholder.wav")
 
     params = {
-        "backend": str(tts_cfg.get("backend") or "edge-tts"),
+        "backend": str(tts_cfg.get("backend") or "cosyvoice2"),
         "rate": str(tts_cfg.get("rate") or "+0%"),
         "volume": str(tts_cfg.get("volume") or "+0%"),
         "pitch": str(tts_cfg.get("pitch") or "+0Hz"),
@@ -73,7 +69,7 @@ def _extract_tts_config(
         "chunk_silence_ms": int(tts_cfg.get("chunk_silence_ms", 500)),
         "bgm_path": str(root / bgm_rel) if (root / bgm_rel).exists() else None,
     }
-    return podcast_title, voices, params, podcast_cfg
+    return podcast_title, params, podcast_cfg
 
 
 def _maybe_generate_report(
@@ -99,10 +95,9 @@ def _maybe_generate_report(
             log.warning("Daily report generation failed: %s", e)
 
 
-async def _synthesize_episode(  # noqa: PLR0913
+async def _synthesize_episode(
     script_text: str,
     tts_params: dict[str, Any],
-    voices: tuple[str, str],
     mp3_path: Path,
     transcript_path: Path,
     cfg: dict[str, Any],
@@ -113,14 +108,8 @@ async def _synthesize_episode(  # noqa: PLR0913
     await synthesize(
         script_text,
         backend=tts_params["backend"],
-        voices=voices,
         output_path=mp3_path,
         bgm_path=tts_params["bgm_path"],
-        rate=tts_params["rate"],
-        volume=tts_params["volume"],
-        pitch=tts_params["pitch"],
-        mood_presets=tts_params["mood_presets"],
-        chunk_silence_ms=tts_params["chunk_silence_ms"],
         transcript_path=transcript_path,
         cfg=cfg,
         project_root=root,
@@ -201,7 +190,7 @@ async def main() -> int:
     day, episode_id, episode_title, base_url = _resolve_date_and_id(args, cfg)
     build_cfg = cfg.get("build", {})
     script_cfg = cfg.get("script", {})
-    podcast_title, voices, tts_params, podcast_cfg = _extract_tts_config(cfg, root)
+    podcast_title, tts_params, podcast_cfg = _extract_tts_config(cfg, root)
     episodes_dir = root / str(build_cfg.get("episodes_dir") or "site/episodes")
 
     # ── Stage 1 & 2: 数据基础层（抓取 → 去重 → 聚类 → 打分） ────────────────
@@ -241,7 +230,7 @@ async def main() -> int:
     _maybe_generate_report(args, brief, day, episode_id, root)
 
     if not args.no_audio:
-        await _synthesize_episode(script_text, tts_params, voices, mp3_path, transcript_path, cfg, root)
+        await _synthesize_episode(script_text, tts_params, mp3_path, transcript_path, cfg, root)
 
     return await _publish_or_skip(
         args, brief, episode_id, episode_title, day, base_url, podcast_cfg, build_cfg, now,
