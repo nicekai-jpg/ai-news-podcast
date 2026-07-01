@@ -402,7 +402,8 @@ async def _fetch_github_api(
         return []
 
     # GitHub 搜索 API：最近更新的 AI 相关仓库
-    api_url = "https://api.github.com/search/repositories?q=topic:artificial-intelligence+created:>2026-06-01&sort=updated&order=desc&per_page=30"
+    today = datetime.now(tz=UTC).strftime("%Y-%m-%d")
+    api_url = f"https://api.github.com/search/repositories?q=topic:artificial-intelligence+created:>{today}&sort=updated&order=desc&per_page=30"
 
     try:
         resp = await _http_get(client, api_url, throttle)
