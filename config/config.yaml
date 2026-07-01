@@ -9,7 +9,7 @@ podcast:
   max_stories: 5
 
 tts:
-  backend: "cosyvoice2"               # cosyvoice2
+  backend: "cosyvoice2"
   bgm_path: ""
   cosyvoice:
     model_dir: ""                    # 空则读 COSYVOICE_MODEL_DIR 环境变量
@@ -24,17 +24,6 @@ tts:
         professional_text: "assets/audio_samples/host_b_v1.txt"
         lively: "assets/audio_samples/host_b_v2.mp3"
         lively_text: "assets/audio_samples/host_b_v2.txt"
-  rate: "+0%"
-  volume: "+0%"
-  pitch: "+0Hz"
-  mood_presets:
-    hook: {rate: "+8%", pitch: "+8Hz", instruct: "用吸引注意力的悬念语气说"}
-    excited: {rate: "+15%", pitch: "+10Hz", instruct: "用兴奋的语气播报"}
-    serious: {rate: "-5%", pitch: "-5Hz", instruct: "用严肃的新闻主播语气说"}
-    calm: {rate: "+0%", pitch: "-2Hz", instruct: "用平稳冷静的语气叙述"}
-    emphasis: {rate: "-10%", pitch: "+5Hz", instruct: "放慢语速，加重语气强调"}
-    closing: {rate: "-3%", pitch: "-3Hz", instruct: "用收束总结的语气说"}
-  chunk_silence_ms: 500
   audio:
     bgm_volume_db: -12
     bgm_fade_in_ms: 2000
