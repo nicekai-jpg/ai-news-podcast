@@ -17,6 +17,12 @@ repos:
 
   - repo: local
     hooks:
+      - id: import-linter
+        name: Import Linter
+        entry: uv run lint-imports
+        language: system
+        pass_filenames: false
+        always_run: true
       - id: block-audio-files
         name: Block audio files from git main branch
         entry: Audio files (.mp3, .wav, etc.) are NOT allowed to be committed to main. Audio must only be deployed to gh-pages.

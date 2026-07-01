@@ -1,0 +1,65 @@
+[importlinter]
+root_package = ai_news_podcast
+include_external_packages =
+    ai_news_podcast
+
+[importlinter:contract:1]
+name = Layered architecture
+
+type = layers
+
+layers =
+    cli
+    site_builder
+    pipeline
+    utils
+    prompts
+    text_utils
+
+containers =
+    ai_news_podcast
+
+[importlinter:contract:2]
+name = Pipeline internal dependencies
+
+type = forbidden
+
+source_modules =
+    ai_news_podcast.pipeline.fetcher
+    ai_news_podcast.pipeline.processor
+    ai_news_podcast.pipeline.scriptwriter
+    ai_news_podcast.pipeline.tts_engine
+    ai_news_podcast.pipeline.dedup
+    ai_news_podcast.pipeline.llm_client
+    ai_news_podcast.pipeline.material
+    ai_news_podcast.pipeline.runner
+
+forbidden_modules =
+    ai_news_podcast.cli
+    ai_news_podcast.site_builder
+
+[importlinter:contract:3]
+name = Utils should not depend on business logic
+
+type = forbidden
+
+source_modules =
+    ai_news_podcast.utils
+    ai_news_podcast.text_utils
+
+forbidden_modules =
+    ai_news_podcast.pipeline
+    ai_news_podcast.cli
+    ai_news_podcast.site_builder
+
+[importlinter:contract:4]
+name = CLI should not depend on site_builder internals
+
+type = forbidden
+
+source_modules =
+    ai_news_podcast.cli.pipeline_run
+    ai_news_podcast.cli.daily_report
+
+forbidden_modules =
+    ai_news_podcast.site_builder
