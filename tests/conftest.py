@@ -14,7 +14,7 @@ from ai_news_podcast.pipeline.fetcher import RawItem
 # ---------------------------------------------------------------------------
 
 
-def make_raw_item(  # noqa: PLR0913
+def make_raw_item(
     *,
     title: str = "Test Title",
     link: str = "https://example.com/article",

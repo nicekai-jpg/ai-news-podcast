@@ -88,7 +88,7 @@ def _maybe_generate_report(
                 llm_cfg=llm_cfg,
             )
             log.info("Daily report saved to %s", report_dir)
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:
             log.warning("Daily report generation failed: %s", e)
 
 
@@ -114,7 +114,7 @@ async def _synthesize_episode(
     log.info("Audio saved: %s", mp3_path)
 
 
-async def _publish_or_skip(  # noqa: PLR0913
+async def _publish_or_skip(
     args: Any,
     brief: dict[str, Any],
     episode_id: str,

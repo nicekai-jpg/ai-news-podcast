@@ -51,7 +51,7 @@ def _build_description_html(stories: list[dict], podcast_description: str) -> st
     return "\n".join([ln for ln in lines if ln])
 
 
-def publish_episode(  # noqa: PLR0913
+def publish_episode(
     *,
     root: Path,
     cfg: dict[str, Any],

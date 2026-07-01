@@ -79,6 +79,4 @@ def clean_tts_text(text: str) -> str:
     lines = [line.strip() for line in text.split("\n")]
     text = "\n".join(lines)
     text = RE_MULTI_SPACE.sub(" ", text)
-    text = RE_MULTI_NEWLINE.sub("\n\n", text).strip()
-
-    return text
+    return RE_MULTI_NEWLINE.sub("\n\n", text).strip()

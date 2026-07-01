@@ -123,7 +123,7 @@ class TestGenerateScriptFallback:
             ]
         }
         with patch("ai_news_podcast.pipeline.scriptwriter._call_llm", return_value=None):
-            script, warnings = generate_script(
+            script, _warnings = generate_script(
                 brief,
                 episode_date=datetime(2024, 3, 15),
                 podcast_title="Test",
@@ -147,7 +147,7 @@ class TestGenerateScriptFallback:
         }
         fake_llm = "[Host A] LLM generated script\n[Host B] Yes it is"
         with patch("ai_news_podcast.pipeline.scriptwriter._call_llm", return_value=fake_llm):
-            script, warnings = generate_script(
+            script, _warnings = generate_script(
                 brief,
                 episode_date=datetime(2024, 3, 15),
                 podcast_title="Test",
@@ -159,7 +159,7 @@ class TestGenerateScriptFallback:
     def test_warns_on_single_host(self) -> None:
         brief = {"stories": []}
         with patch("ai_news_podcast.pipeline.scriptwriter._call_llm", return_value=None):
-            script, warnings = generate_script(
+            script, _warnings = generate_script(
                 brief,
                 episode_date=datetime(2024, 3, 15),
                 podcast_title="Test",

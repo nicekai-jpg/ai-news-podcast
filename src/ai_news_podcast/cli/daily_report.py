@@ -23,7 +23,7 @@ log = logging.getLogger("daily_report")
 def build_report_prompt(brief: dict, date_str: str) -> str:
     material = build_material_text(brief, max_stories=5, strategy="pure_score")
 
-    prompt = f"""你是专业的科技媒体编辑，需要根据以下今日的 AI 和科技新闻素材，写一份专业的「科技新闻日报」。
+    return f"""你是专业的科技媒体编辑，需要根据以下今日的 AI 和科技新闻素材，写一份专业的「科技新闻日报」。
 
 ## 格式与结构要求
 请严格使用 Markdown 格式输出，包含以下几个部分：
@@ -44,8 +44,6 @@ def build_report_prompt(brief: dict, date_str: str) -> str:
 {material}
 
 请直接输出 Markdown 文本，不要在开头和结尾带多余的解释，不要带 ```markdown 这样的代码块标记。"""
-
-    return prompt
 
 
 def generate_report(

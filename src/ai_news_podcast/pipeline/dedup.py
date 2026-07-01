@@ -64,18 +64,13 @@ def get_recent_broadcasted_urls(
             found = re.findall(r'href="([^"]+)"', desc)
             for url in found:
                 url_str = str(url).strip()
-                if (
-                    url_str.endswith(".mp3")
-                    or url_str.endswith(".xml")
-                    or url_str.endswith(".html")
-                    or "/feed.xml" in url_str
-                ):
+                if url_str.endswith((".mp3", ".xml", ".html")) or "/feed.xml" in url_str:
                     continue
                 norm = normalize_url(url_str)
                 if norm:
                     urls.add(norm)
-    except (OSError, ValueError) as e:
-        log.error("Failed to parse historical broadcasted URLs: %s", e)
+    except (OSError, ValueError):
+        log.exception("Failed to parse historical broadcasted URLs")
     return urls
 
 
@@ -160,8 +155,8 @@ def _extract_from_description(desc: str, ep_id: str) -> list[HistoricalRecord]:
 
     records: list[HistoricalRecord] = []
     matches = re.findall(r'<a\s+[^>]*href="[^"]+"[^>]*>([^<]+)</a>', desc)
-    for title_str in matches:
-        title_str = title_str.strip()
+    for raw_title in matches:
+        title_str = raw_title.strip()
         if title_str and len(title_str) > 3:
             records.append(
                 HistoricalRecord(
@@ -209,8 +204,8 @@ def get_recent_broadcasted_texts(
                 if desc:
                     records.extend(_extract_from_description(desc, str(ep_id)))
 
-    except (json.JSONDecodeError, KeyError, ValueError) as e:
-        log.error("Failed to parse historical broadcasted texts: %s", e)
+    except (json.JSONDecodeError, KeyError, ValueError):
+        log.exception("Failed to parse historical broadcasted texts")
     return records
 
 
@@ -415,14 +410,13 @@ def semantic_dedup(
     if model is not None:
         try:
             return _dedup_with_sentence_transformers(raw_items, recent_records, dedup_cfg, model)
-        except (ImportError, OSError, ValueError, RuntimeError) as e:
-            log.error(
-                "Failed to perform Sentence-Transformers deduplication: %s (falling back to TF-IDF)",
-                e,
+        except (ImportError, OSError, ValueError, RuntimeError):
+            log.exception(
+                "Failed to perform Sentence-Transformers deduplication (falling back to TF-IDF)",
             )
 
     try:
         return _dedup_with_tfidf(raw_items, recent_records, dedup_cfg)
-    except (ImportError, OSError, ValueError, RuntimeError) as e:
-        log.error("Failed to perform TF-IDF semantic similarity deduplication: %s", e)
+    except (ImportError, OSError, ValueError, RuntimeError):
+        log.exception("Failed to perform TF-IDF semantic similarity deduplication")
         return raw_items, []

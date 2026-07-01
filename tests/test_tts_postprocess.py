@@ -16,17 +16,17 @@ class FakeSeg:
     def __len__(self) -> int:
         return self._ms
 
-    def __add__(self, other: object) -> "FakeSeg":
+    def __add__(self, other: object) -> FakeSeg:
         if isinstance(other, FakeSeg):
             return FakeSeg(self._ms + other._ms)
         return self
 
     @classmethod
-    def empty(cls) -> "FakeSeg":
+    def empty(cls) -> FakeSeg:
         return cls(0)
 
     @classmethod
-    def silent(cls, *, duration: int) -> "FakeSeg":
+    def silent(cls, *, duration: int) -> FakeSeg:
         return cls(duration)
 
 

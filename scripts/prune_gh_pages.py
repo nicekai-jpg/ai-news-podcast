@@ -43,7 +43,7 @@ def main() -> int:
 
     # 2. Get valid episode IDs from index
     try:
-        with open(episodes_json_path, "r", encoding="utf-8") as f:
+        with open(episodes_json_path, encoding="utf-8") as f:
             episodes = json.load(f)
     except Exception as e:
         log.error("Failed to load episodes.json: %s", e)

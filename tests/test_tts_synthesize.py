@@ -20,47 +20,47 @@ class FakeAudioSegment:
     def __len__(self) -> int:
         return self._duration
 
-    def __add__(self, other: Any) -> "FakeAudioSegment":
+    def __add__(self, other: Any) -> FakeAudioSegment:
         if isinstance(other, FakeAudioSegment):
             return FakeAudioSegment(self._duration + other._duration)
         if isinstance(other, int):
             return self
         return NotImplemented
 
-    def __sub__(self, val: int) -> "FakeAudioSegment":
+    def __sub__(self, val: int) -> FakeAudioSegment:
         return self
 
-    def __mul__(self, n: int) -> "FakeAudioSegment":
+    def __mul__(self, n: int) -> FakeAudioSegment:
         return FakeAudioSegment(self._duration * n)
 
-    def __getitem__(self, idx: slice) -> "FakeAudioSegment":
+    def __getitem__(self, idx: slice) -> FakeAudioSegment:
         if isinstance(idx, slice):
             stop = idx.stop if idx.stop is not None else self._duration
             return FakeAudioSegment(min(stop, self._duration))
         return self
 
-    def fade_in(self, _ms: int) -> "FakeAudioSegment":
+    def fade_in(self, _ms: int) -> FakeAudioSegment:
         return self
 
-    def fade_out(self, _ms: int) -> "FakeAudioSegment":
+    def fade_out(self, _ms: int) -> FakeAudioSegment:
         return self
 
-    def overlay(self, _other: Any) -> "FakeAudioSegment":
+    def overlay(self, _other: Any) -> FakeAudioSegment:
         return self
 
     def export(self, _path: str, format: str | None = None) -> None:
         pass
 
     @classmethod
-    def empty(cls) -> "FakeAudioSegment":
+    def empty(cls) -> FakeAudioSegment:
         return cls(0)
 
     @classmethod
-    def silent(cls, *, duration: int) -> "FakeAudioSegment":
+    def silent(cls, *, duration: int) -> FakeAudioSegment:
         return cls(duration)
 
     @classmethod
-    def from_file(cls, _path: str) -> "FakeAudioSegment":
+    def from_file(cls, _path: str) -> FakeAudioSegment:
         return cls(1000)
 
 

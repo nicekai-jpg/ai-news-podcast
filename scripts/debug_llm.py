@@ -11,7 +11,7 @@ logger = logging.getLogger("test_llm")
 
 def test():
     root = Path(__file__).resolve().parents[1]
-    with open(root / "config" / "config.yaml", "r") as f:
+    with open(root / "config" / "config.yaml") as f:
         cfg = yaml.safe_load(f)
 
     llm_cfg = cfg.get("llm", {})

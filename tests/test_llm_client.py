@@ -75,9 +75,11 @@ class TestCallLlm:
         fake_openai_module = MagicMock()
         fake_openai_module.OpenAI = FakeOpenAIFailing
 
-        with patch.dict("sys.modules", {"openai": fake_openai_module}):
-            with patch("time.sleep"):  # speed up retries
-                result = call_llm("prompt", {"api_key_env": "FAKE_KEY", "model": "test"})
+        with (
+            patch.dict("sys.modules", {"openai": fake_openai_module}),
+            patch("time.sleep"),
+        ):  # speed up retries
+            result = call_llm("prompt", {"api_key_env": "FAKE_KEY", "model": "test"})
         assert result is None
 
     def test_missing_api_key_returns_none(self, monkeypatch) -> None:

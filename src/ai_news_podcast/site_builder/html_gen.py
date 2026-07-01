@@ -1,3 +1,4 @@
+import contextlib
 import datetime
 import json
 from email.utils import parsedate_to_datetime
@@ -17,18 +18,14 @@ def format_friendly_date(date_str: str) -> str:
         return ""
     try:
         dt = parsedate_to_datetime(date_str)
-        try:
+        with contextlib.suppress(ValueError, TypeError):
             dt = dt.astimezone(ZoneInfo("Asia/Shanghai"))
-        except (ValueError, TypeError):
-            pass
         return dt.strftime("%Y-%m-%d %H:%M")
     except (ValueError, TypeError):
         try:
             dt = datetime.datetime.fromisoformat(date_str)
-            try:
+            with contextlib.suppress(ValueError, TypeError):
                 dt = dt.astimezone(ZoneInfo("Asia/Shanghai"))
-            except (ValueError, TypeError):
-                pass
             return dt.strftime("%Y-%m-%d %H:%M")
         except (ValueError, TypeError):
             return date_str
