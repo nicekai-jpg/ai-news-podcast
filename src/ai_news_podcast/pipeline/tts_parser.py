@@ -9,7 +9,7 @@ from ai_news_podcast.text_utils import clean_tts_text
 
 
 def parse_dialogue_chunks(
-    text: str, voices: tuple[str, str] | None = None,
+    text: str,
 ) -> list[DialogueChunk]:
     """解析 [Host A]/[Host B] 对话标记为 DialogueChunk 列表。"""
     marker_re = re.compile(r"\[Host\s*([AB])\]", re.IGNORECASE)

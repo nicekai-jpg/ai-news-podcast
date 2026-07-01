@@ -202,12 +202,11 @@ async def synthesize(
     text: str,
     *,
     backend: str = "cosyvoice2",
-    voices: tuple[str, str] = ("zh-CN-YunjianNeural", "zh-CN-XiaoxiaoNeural"),
     output_path: Path,
     bgm_path: str | None = None,
     **kwargs: Any,
 ) -> None:
-    chunks = parse_dialogue_chunks(text, voices=voices)
+    chunks = parse_dialogue_chunks(text)
     if not chunks:
         raise ValueError("Input text is empty after dialogue parsing")
 

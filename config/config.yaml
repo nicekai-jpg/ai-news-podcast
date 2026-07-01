@@ -9,23 +9,7 @@ podcast:
   max_stories: 5
 
 tts:
-  backend: "hybrid"                  # edge-tts | cosyvoice2 | hybrid
-  fallback_backend: "edge-tts"
-  # 多音色版本配置 (用于智能句读模式)
-  host_a_voices:
-    professional: "zh-CN-YunjianNeural"
-    lively: "zh-CN-YunxiNeural"
-  host_b_voices:
-    professional: "zh-CN-XiaoxiaoNeural"
-    lively: "zh-CN-XiaoyiNeural"
-  # 音色显示名称定义
-  voice_names:
-    host_a:
-      professional: "专业男声"
-      lively: "活力男声"
-    host_b:
-      professional: "亲切女声"
-      lively: "青春女生"
+  backend: "cosyvoice2"               # cosyvoice2
   bgm_path: ""
   cosyvoice:
     model_dir: ""                    # 空则读 COSYVOICE_MODEL_DIR 环境变量
