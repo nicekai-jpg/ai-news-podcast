@@ -57,16 +57,10 @@ def _extract_tts_config(
     tts_cfg = cfg.get("tts", {})
 
     podcast_title = str(podcast_cfg.get("title") or "AI 新闻播客").strip()
-    mood_presets = tts_cfg.get("mood_presets")
     bgm_rel = str(tts_cfg.get("bgm_path") or "assets/bgm_placeholder.wav")
 
     params = {
         "backend": str(tts_cfg.get("backend") or "cosyvoice2"),
-        "rate": str(tts_cfg.get("rate") or "+0%"),
-        "volume": str(tts_cfg.get("volume") or "+0%"),
-        "pitch": str(tts_cfg.get("pitch") or "+0Hz"),
-        "mood_presets": mood_presets if isinstance(mood_presets, dict) else None,
-        "chunk_silence_ms": int(tts_cfg.get("chunk_silence_ms", 500)),
         "bgm_path": str(root / bgm_rel) if (root / bgm_rel).exists() else None,
     }
     return podcast_title, params, podcast_cfg
