@@ -3,9 +3,11 @@ repos:
     rev: v0.15.11
     hooks:
       - id: ruff
-        args: [--fix, src/, tests/, scripts/]
+        args: [--fix, src/, tests/]
+        exclude: ^scripts/
       - id: ruff-format
-        args: [src/, tests/, scripts/]
+        args: [src/, tests/]
+        exclude: ^scripts/
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.6.0

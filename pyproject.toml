@@ -48,14 +48,45 @@ line-length = 100
 
 [tool.ruff.lint]
 select = [
-    "E",   # pycodestyle errors
-    "F",   # Pyflakes
-    "I",   # isort
-    "W",   # pycodestyle warnings
+    "E",     # pycodestyle errors
+    "F",     # Pyflakes
+    "I",     # isort
+    "W",     # pycodestyle warnings
+    "UP",    # pyupgrade (Python syntax upgrades)
+    "B",     # flake8-bugbear (bug traps)
+    "SIM",   # flake8-simplify (code simplification)
+    "RET",   # flake8-return (return logic)
+    "C4",    # flake8-comprehensions
+    "RUF",   # Ruff-specific rules
+    "ASYNC", # async best practices
+    "N",     # pep8-naming (naming conventions)
+    "C90",   # mccabe complexity
+    "PL",    # Pylint
+    "TRY",   # tryceratops (exception handling)
+    "SLF",   # private member access
+    "PERF",  # performance anti-patterns
+    "PTH",   # use pathlib instead of os.path
+    "PIE",   # misc simplifications
+    "T20",   # no print statements (use logging)
 ]
 ignore = [
-    "E501",  # Line too long (handled by formatter)
+    "E501",     # Line too long (handled by formatter)
+    "S101",     # assert statements (used heavily in tests)
+    "ASYNC240", # blocking pathlib in async (overly strict for CLI tools)
+    "T201",     # print statements (CLI tools need user output)
+    "PLC0415",  # import outside top-level (Python common optimization)
+    "PLR2004",  # magic value comparison (values have context in code)
+    "TRY003",   # raise vanilla args (inline messages are standard Python)
+    "PLR0913",  # too many arguments (pipeline functions naturally have many params)
+    "PLW0603",  # global statement (used intentionally for config setters)
+    "RUF001",   # ambiguous unicode in strings (Chinese project)
+    "RUF002",   # ambiguous unicode in docstrings
+    "RUF003",   # ambiguous unicode in comments
+    "D",        # docstring checks (not enabled, but be explicit)
 ]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 15
 
 # pydocstyle (D) rules are not enabled in select, so this has no effect.
 # Uncomment the next line and add "D" to select if you want docstring checks.

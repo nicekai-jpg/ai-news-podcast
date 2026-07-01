@@ -14,7 +14,7 @@ def read_yaml(path: Path) -> dict[str, Any]:
     with path.open("r", encoding="utf-8") as f:
         data = yaml.safe_load(f)
     if not isinstance(data, dict):
-        raise ValueError(f"Invalid YAML object at {path}")
+        raise TypeError(f"Invalid YAML object at {path}")
     return data
 
 
@@ -45,9 +45,5 @@ def load_sources(sources_path: Path) -> list[dict[str, Any]]:
     data = read_yaml(sources_path)
     sources = data.get("sources")
     if not isinstance(sources, list):
-        raise ValueError("sources.yaml must contain a 'sources' list")
-    out: list[dict[str, Any]] = []
-    for src in sources:
-        if isinstance(src, dict):
-            out.append(src)
-    return out
+        raise TypeError("sources.yaml must contain a 'sources' list")
+    return [src for src in sources if isinstance(src, dict)]

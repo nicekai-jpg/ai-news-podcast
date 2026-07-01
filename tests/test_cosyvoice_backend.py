@@ -61,7 +61,7 @@ def test_synthesize_chunk_dispatches_by_host(tmp_path: Path, monkeypatch) -> Non
             calls.append((text, ref_text))
             yield {"tts_speech": "fake_tensor"}
 
-    monkeypatch.setattr(engine, "_ensure_model", lambda: FakeModel())
+    monkeypatch.setattr(engine, "_ensure_model", FakeModel)
     monkeypatch.setattr(engine, "_load_ref", lambda _p: "fake_audio")
 
     engine.synthesize_chunk(text="测试句子", host="A")

@@ -36,9 +36,11 @@ class TestRunLoudnorm:
         mock_proc.returncode = 1
         mock_proc.communicate = AsyncMock(return_value=(b"", b"ffmpeg error"))
 
-        with patch("asyncio.create_subprocess_exec", return_value=mock_proc):
-            with pytest.raises(RuntimeError, match="ffmpeg loudnorm failed"):
-                await _run_loudnorm(input_path, output_path)
+        with (
+            patch("asyncio.create_subprocess_exec", return_value=mock_proc),
+            pytest.raises(RuntimeError, match="ffmpeg loudnorm failed"),
+        ):
+            await _run_loudnorm(input_path, output_path)
 
     @pytest.mark.asyncio
     async def test_creates_parent_dirs(self, tmp_path: Path) -> None:

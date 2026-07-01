@@ -6,8 +6,9 @@ import asyncio
 import importlib
 import random
 import shutil
+from collections.abc import Sequence
 from pathlib import Path
-from typing import Any, Sequence
+from typing import Any
 
 from ai_news_podcast.pipeline.tts_types import DialogueChunk
 
@@ -25,7 +26,7 @@ def chunk_silence_ms(
     return random.randint(low, high)
 
 
-def mix_bgm(  # noqa: PLR0913
+def mix_bgm(
     vocal_segment: Any,
     bgm_path: str | None,
     *,
@@ -89,7 +90,7 @@ async def run_loudnorm(
         raise RuntimeError(f"ffmpeg loudnorm failed: {msg}")
 
 
-def assemble_dialogue_audio(  # noqa: PLR0913
+def assemble_dialogue_audio(
     chunks: Sequence[DialogueChunk],
     segments: Sequence[Any],
     *,

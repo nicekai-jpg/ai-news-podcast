@@ -56,10 +56,7 @@ async def main() -> int:
     cfg = read_yaml(root / args.config)
     sources = load_sources(root / args.sources)
 
-    if args.date:
-        date_str = args.date
-    else:
-        date_str = datetime.now(tz=ZoneInfo("Asia/Shanghai")).strftime("%Y-%m-%d")
+    date_str = args.date or datetime.now(tz=ZoneInfo("Asia/Shanghai")).strftime("%Y-%m-%d")
 
     data_dir = root / "data"
 

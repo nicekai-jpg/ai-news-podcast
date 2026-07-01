@@ -29,9 +29,8 @@ def _normalize_mood_tags(text: str) -> str:
                 mood = "calm"
             if content.strip():
                 result.append(f"[mood:{mood}] {content.strip()}")
-        else:
-            if line.strip():
-                result.append(f"[mood:calm] {line.strip()}")
+        elif line.strip():
+            result.append(f"[mood:calm] {line.strip()}")
     return "\n\n".join(result) + "\n" if result else "[mood:calm] 暂无内容。\n"
 
 

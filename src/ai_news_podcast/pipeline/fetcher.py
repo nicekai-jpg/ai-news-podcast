@@ -75,8 +75,7 @@ def normalize_url(url: str) -> str:
     query = urlencode(cleaned, doseq=True) if cleaned else ""
     # 去尾斜杠
     path = parsed.path.rstrip("/") or ""
-    normalized = urlunparse((scheme, parsed.netloc.lower(), path, parsed.params, query, ""))
-    return normalized
+    return urlunparse((scheme, parsed.netloc.lower(), path, parsed.params, query, ""))
 
 
 def _item_id(normalized_link: str) -> str:
@@ -271,7 +270,7 @@ async def _http_get(
 # ---------------------------------------------------------------------------
 
 
-async def _process_single_entry(  # noqa: PLR0913
+async def _process_single_entry(
     entry: Any,
     *,
     name: str,
@@ -342,7 +341,7 @@ async def _process_single_entry(  # noqa: PLR0913
     )
 
 
-async def _fetch_one_feed(  # noqa: PLR0913
+async def _fetch_one_feed(
     src: dict[str, Any],
     *,
     client: httpx.AsyncClient,
@@ -437,7 +436,7 @@ async def _fetch_github_api(
         language = repo.get("language", "")
         description = repo.get("description", "") or ""
 
-        summary = f"GitHub 热门仓库（⭐{stars} stars, 🍴{forks} forks）{language and f'[{language}] ' or ''}{description[:200]}"
+        summary = f"GitHub 热门仓库（⭐{stars} stars, 🍴{forks} forks）{(language and f'[{language}] ') or ''}{description[:200]}"
         full_text = (
             f"{description}\n\nStars: {stars}\nForks: {forks}\nLanguage: {language}\nURL: {link}"[
                 :2000
@@ -567,7 +566,7 @@ _FETCHER_REGISTRY: dict[str, Any] = {
 # ---------------------------------------------------------------------------
 
 
-async def fetch_all(  # noqa: PLR0913
+async def fetch_all(
     sources: list[dict[str, Any]],
     *,
     timeout_seconds: int = 20,
@@ -613,14 +612,13 @@ async def fetch_all(  # noqa: PLR0913
                     max_pages=max_pages,
                     pages_counter=pages_counter,
                 )
-            else:
-                # API 抓取器不需要 pages_counter
-                return await fetcher(
-                    src,
-                    client=client,
-                    throttle=throttle,
-                    max_items=max_items_per_feed,
-                )
+            # API 抓取器不需要 pages_counter
+            return await fetcher(
+                src,
+                client=client,
+                throttle=throttle,
+                max_items=max_items_per_feed,
+            )
 
     timeout = httpx.Timeout(timeout_seconds, connect=connect_timeout)
     async with httpx.AsyncClient(
@@ -634,8 +632,8 @@ async def fetch_all(  # noqa: PLR0913
             results = await asyncio.wait_for(
                 asyncio.gather(*tasks, return_exceptions=True), timeout=600.0
             )
-        except asyncio.TimeoutError:
-            logger.error("Fetch all exactly hit 10 minute timeout limit. Aborting remainder.")
+        except TimeoutError:
+            logger.exception("Fetch all exactly hit 10 minute timeout limit. Aborting remainder.")
             # Gather any tasks that may have finished but returned before the timeout
             # We filter for tasks that are actually done to avoid hanging or raising errors
             results = [t.result() for t in tasks if t.done() and not t.cancelled()]

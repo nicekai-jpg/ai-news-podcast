@@ -20,7 +20,7 @@ class TestReadYaml:
     def test_raises_on_non_dict(self, tmp_path: Path) -> None:
         path = tmp_path / "list.yaml"
         path.write_text("- a\n- b\n", encoding="utf-8")
-        with pytest.raises(ValueError, match="Invalid YAML object"):
+        with pytest.raises(TypeError, match="Invalid YAML object"):
             read_yaml(path)
 
 
@@ -69,7 +69,7 @@ class TestLoadSources:
     def test_raises_when_missing_sources_key(self, tmp_path: Path) -> None:
         path = tmp_path / "bad.yaml"
         path.write_text("other: []\n", encoding="utf-8")
-        with pytest.raises(ValueError, match="must contain a 'sources' list"):
+        with pytest.raises(TypeError, match="must contain a 'sources' list"):
             load_sources(path)
 
     def test_skips_non_dict_entries(self, tmp_path: Path) -> None:

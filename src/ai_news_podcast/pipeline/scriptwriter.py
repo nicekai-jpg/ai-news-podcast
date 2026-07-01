@@ -198,8 +198,8 @@ def _normalize_host_tags(text: str) -> str:
     lines = text.split("\n")
     result: list[str] = []
 
-    for line in lines:
-        line = line.strip()
+    for raw_line in lines:
+        line = raw_line.strip()
         if not line:
             continue
         # 宽泛匹配，防止大模型加了一些冒号或者空格: [Host A]: 或者 Host A:
@@ -282,8 +282,7 @@ def generate_show_notes(
             lines.append(f"### {title}")
             lines.append("")
             if summaries:
-                for s in summaries:
-                    lines.append(f"- {s}")
+                lines.extend(f"- {s}" for s in summaries)
                 lines.append("")
             if story.get("items"):
                 lines.append("**来源链接：**")

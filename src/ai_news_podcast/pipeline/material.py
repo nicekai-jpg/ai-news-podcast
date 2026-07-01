@@ -50,12 +50,13 @@ def _load_companies_from_config() -> list[str]:
         config_path = (
             Path(__file__).resolve().parent.parent.parent.parent / "config" / "config.yaml"
         )
-        with open(config_path, encoding="utf-8") as f:
+        with config_path.open(encoding="utf-8") as f:
             cfg = yaml.safe_load(f)
-        companies = cfg.get("entities", {}).get("companies", [])
-        return companies if companies else _DEFAULT_COMPANIES
     except (OSError, yaml.YAMLError, KeyError):
         return _DEFAULT_COMPANIES
+    else:
+        companies = cfg.get("entities", {}).get("companies", [])
+        return companies if companies else _DEFAULT_COMPANIES
 
 
 def _get_story_entities(story: dict[str, Any]) -> set[str]:

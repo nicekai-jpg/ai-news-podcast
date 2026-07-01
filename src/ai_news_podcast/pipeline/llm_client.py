@@ -39,7 +39,7 @@ def call_llm(prompt: str, llm_cfg: dict[str, Any]) -> str | None:
     try:
         from openai import OpenAI
     except ImportError:  # pragma: no cover
-        logger.error("缺少 openai 库，请运行 uv pip install openai")
+        logger.exception("缺少 openai 库，请运行 uv pip install openai")
         return None
 
     env_key_name = llm_cfg.get("api_key_env", "OPENAI_API_KEY")

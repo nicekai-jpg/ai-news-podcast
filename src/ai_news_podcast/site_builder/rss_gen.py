@@ -4,7 +4,7 @@ from email.utils import format_datetime
 from typing import Any
 
 
-def build_feed_xml(  # noqa: PLR0913
+def build_feed_xml(
     *,
     base_url: str,
     podcast_title: str,

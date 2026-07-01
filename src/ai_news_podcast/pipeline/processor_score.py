@@ -98,9 +98,8 @@ def _assign_role(total: int, thresholds: dict[str, Any]) -> tuple[str, str]:
 
     if total >= main_range[0]:
         return "main", "🔴"
-    elif total >= supporting_range[0]:
+    if total >= supporting_range[0]:
         return "supporting", "🟡"
-    elif total >= quick_range[0]:
+    if total >= quick_range[0]:
         return "quick", "🟢"
-    else:
-        return "skip", "⚪"
+    return "skip", "⚪"

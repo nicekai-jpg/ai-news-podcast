@@ -6,7 +6,7 @@ import importlib
 import logging
 import tempfile
 from pathlib import Path
-from typing import Any, List
+from typing import Any
 
 from ai_news_podcast.pipeline.tts_parser import (
     parse_dialogue_chunks,
@@ -23,7 +23,7 @@ log = logging.getLogger(__name__)
 
 def _write_transcript_with_timestamps(
     *,
-    chunks: List[DialogueChunk],
+    chunks: list[DialogueChunk],
     timestamps: list[tuple[float, float]],
     voice_map: dict[str, str],
     transcript_path: Path,
@@ -45,8 +45,8 @@ def _write_transcript_with_timestamps(
 
 
 def _write_chunks_and_playlist(
-    chunks: List[DialogueChunk],
-    segments_by_variant: dict[str, List[Any]],
+    chunks: list[DialogueChunk],
+    segments_by_variant: dict[str, list[Any]],
     timestamps: list[tuple[float, float]],
     voice_maps: dict[str, dict[str, str]],
     output_path: Path,
@@ -101,8 +101,8 @@ def _write_chunks_and_playlist(
     )
 
 
-async def synthesize_cosyvoice2(  # noqa: PLR0913
-    chunks: List[DialogueChunk],
+async def synthesize_cosyvoice2(
+    chunks: list[DialogueChunk],
     output_path: Path,
     *,
     bgm_path: str | None = None,
@@ -139,29 +139,23 @@ async def synthesize_cosyvoice2(  # noqa: PLR0913
 
             # Generate segment for each variant
             for var in variants:
+                chunk_segments: list[Any] = []
+                for s_idx, sentence in enumerate(sentences):
+                    s_text = sentence.strip()
+                    if not s_text:
+                        continue
+                    tensor = cosy_engine.synthesize_chunk(text=s_text, host=chunk.host, variant=var)
+                    wav_path = tmp_root / f"chunk_{idx:03d}_{var}_{s_idx:03d}.wav"
+                    torchaudio.save(str(wav_path), tensor, cv_cfg.sample_rate)
+                    chunk_segments.append(audio_segment_cls.from_file(str(wav_path)))
 
-                def _gen_variant(var_name: str) -> Any:
-                    chunk_segments = []
-                    for s_idx, sentence in enumerate(sentences):
-                        s_text = sentence.strip()
-                        if not s_text:
-                            continue
-                        tensor = cosy_engine.synthesize_chunk(
-                            text=s_text, host=chunk.host, variant=var_name
-                        )
-                        wav_path = tmp_root / f"chunk_{idx:03d}_{var_name}_{s_idx:03d}.wav"
-                        torchaudio.save(str(wav_path), tensor, cv_cfg.sample_rate)
-                        chunk_segments.append(audio_segment_cls.from_file(str(wav_path)))
-
-                    if chunk_segments:
-                        combined_chunk = chunk_segments[0]
-                        for next_seg in chunk_segments[1:]:
-                            combined_chunk += audio_segment_cls.silent(duration=150) + next_seg
-                        return combined_chunk
-                    else:
-                        return audio_segment_cls.silent(duration=100)
-
-                segments_by_variant[var].append(_gen_variant(var))
+                if chunk_segments:
+                    combined_chunk = chunk_segments[0]
+                    for next_seg in chunk_segments[1:]:
+                        combined_chunk += audio_segment_cls.silent(duration=150) + next_seg
+                    segments_by_variant[var].append(combined_chunk)
+                else:
+                    segments_by_variant[var].append(audio_segment_cls.silent(duration=100))
 
         default_variant = "professional" if "professional" in variants else variants[0]
         combined, timestamps = assemble_dialogue_audio(

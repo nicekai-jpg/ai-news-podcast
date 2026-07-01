@@ -125,7 +125,6 @@ def dedup_pipeline(
     """三层去重管线。"""
     items = _dedup_url(items)
     items = _dedup_title_fuzzy(items, threshold=rapidfuzz_threshold, window_hours=window_hours)
-    items = _dedup_keyword_overlap(
+    return _dedup_keyword_overlap(
         items, overlap_threshold=jieba_overlap, title_sim_threshold=title_sim
     )
-    return items
