@@ -38,6 +38,9 @@ tests/tmp/
 # Local runs
 out/
 
+# OMC (Claude Code plugin)
+.omc/
+
 # IDE
 .idea/
 .vscode/
