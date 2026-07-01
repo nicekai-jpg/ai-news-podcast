@@ -17,9 +17,9 @@ class TestBuildEditorPrompt:
         prompt = build_editor_prompt(material, datetime(2024, 3, 15))
         assert "2024年3月15日" in prompt
         assert "Test" in prompt
-        assert '"thesis"' in prompt
-        assert '"headlines"' in prompt
-        assert '"quick_news"' in prompt
+        assert "## 金句" in prompt
+        assert "## 头条 1" in prompt
+        assert "## 快讯" in prompt
 
 
 class TestBuildWriterPrompt:
