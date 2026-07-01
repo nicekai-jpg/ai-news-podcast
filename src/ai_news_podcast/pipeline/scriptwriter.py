@@ -79,9 +79,9 @@ def _build_fallback(
 
     lines: list[str] = []
     lines.append(
-        f"[Host A] 听众朋友们好，欢迎收听{podcast_title}，我是博文。今天是{_cn_date(episode_date)}。"
+        f"[Host A] 听众朋友们好，欢迎收听{podcast_title}，我是苏晴。今天是{_cn_date(episode_date)}。"
     )
-    lines.append("[Host B] 大家好，我是晓晓。今天这AI圈的瓜，那可是相当有意思。")
+    lines.append("[Host B] 大家好，我是周航。今天这AI圈的瓜，那可是相当有意思。")
 
     for i, story in enumerate(active):
         if i >= 5:
@@ -93,7 +93,7 @@ def _build_fallback(
 
         if i == 0:
             lines.append(f"[Host A] 咱们先聊聊今天第一个大头条。那就是，{title}。")
-            lines.append("[Host B] 晓晓也一直在关注这个，博文，这个事影响真的很大吗？")
+            lines.append("[Host B] 苏晴也一直在关注这个，周航，这个事影响真的很大吗？")
             lines.append(f"[Host A] 确实。简单来说，{summary}")
         elif i == 1:
             lines.append(f"[Host B] 没错。那今天的第二个大头条，是关于：{title}。")
