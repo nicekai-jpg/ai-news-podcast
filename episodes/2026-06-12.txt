@@ -1,0 +1,77 @@
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
+<voice name="zh-CN-XiaoxiaoNeural" start="1.000" duration="7.837">
+听众朋友们大家好，欢迎收听今天的AI 每日先锋，今天是2026年6月12日，我是晓晓。
+</voice>
+<voice name="zh-CN-YunxiNeural" start="9.286" duration="2.177">
+大家好，我是博文。
+</voice>
+<voice name="zh-CN-XiaoxiaoNeural" start="11.960" duration="15.195">
+哎，博文，咱们今天这期节目主题，我琢磨了半天，觉得可以用一句话来概括：大模型攻防战升级了，反蒸馏机制正在重塑商业护城河，而极致的推理效率，正在让AI原生应用全面爆发。
+</voice>
+<voice name="zh-CN-YunxiNeural" start="27.608" duration="10.275">
+听起来是“攻”与“守”的两端啊，一边是拼命护住核心资产，一边是拼命降低落地门槛，这行业确实越来越有意思了。
+</voice>
+<voice name="zh-CN-XiaoxiaoNeural" start="38.288" duration="15.195">
+没错！那咱们先来聊聊这个“守”的一方。博文，你关注那个 Claude Fable 5 的新闻了吗？听说他们这次为了防蒸馏，可是下了狠手，宁可误伤也要保卫模型权重，这事儿在圈子里传得沸沸扬扬的。
+</voice>
+<voice name="zh-CN-YunxiNeural" start="53.916" duration="26.688">
+嗯，关注了。说实话，这事儿从技术角度看挺决绝的。Fable 5 引入了一个非常激进的反蒸馏机制。简单说，就是模型会实时检测用户的输入模式，一旦它觉得你的提问方式像是在做“知识蒸馏”——也就是试图通过大量特定问答把它的能力“偷”走——它就会立刻触发“降智”模式，开始胡说八道或者输出低质量内容。
+</voice>
+<voice name="zh-CN-XiaoxiaoNeural" start="81.069" duration="12.103">
+哇，这也太硬核了吧！但是博文，这有个问题啊，万一它判断失误了呢？比如我就是单纯想问个复杂问题，它突然给我“降智”了，那用户体验岂不是灾难？
+</voice>
+<voice name="zh-CN-YunxiNeural" start="93.634" duration="13.627">
+你说到了痛点。目前的反馈来看，误触率确实不低。这就像是给自家的金库装了一个极其灵敏的防盗系统，只要有人靠近就喷墨水，结果有时候送快递的、甚至房主自己回家，都会被喷一身黑。但这也折射出头部厂商的焦虑——模型权重是他们的核心资产，一旦被蒸馏，护城河可能一夜之间就干了。
+</voice>
+<voice name="zh-CN-XiaoxiaoNeural" start="107.712" duration="18.242">
+哎，这比喻太形象了！宁可错杀一千，不可放过一个。看来模型版权的攻防战，真的进入白热化阶段了。这让我想到了咱们以前做产品，为了防爬虫把接口限流限得死死的，结果正常用户也进不来，真是两难啊。
+</voice>
+<voice name="zh-CN-YunxiNeural" start="126.454" duration="14.541">
+是的，这就是商业竞争残酷的一面。不过晓晓，咱们把目光转到另一边，刚才说的“攻”的一方，或者说“落地”的一端，今天有个消息让我特别兴奋。
+</voice>
+<voice name="zh-CN-XiaoxiaoNeural" start="141.433" duration="12.190">
+哈哈，我知道你要说哪个！是不是小米那个 1T 大模型的实测数据？我看了那个新闻，在通用 GPU 上跑出 1000 多 Tokens 每秒，这速度简直离谱啊！
+</voice>
+<voice name="zh-CN-YunxiNeural" start="154.084" duration="16.457">
+对，就是这个！晓晓，你作为产品经理，直觉真的很灵敏。你知道这个意味着什么吗？以前我们跑这种千亿参数甚至万亿参数的大模型，都得靠昂贵的专用算力卡，推理成本高得吓人。但小米这次通过极致的工程优化，在通用 GPU 上实现了吞吐量暴涨，这直接把门槛给踩塌了。
+</voice>
+<voice name="zh-CN-XiaoxiaoNeural" start="170.986" duration="11.320">
+嗯，而且那个“Vibe Coding 七秒交付”的功能，听起来太性感了！用户写代码就像聊天一样，七秒钟就能出结果，这完全改变了开发者的工作流啊。
+</voice>
+<voice name="zh-CN-YunxiNeural" start="182.780" duration="13.888">
+没错。这背后其实是推理成本的数量级下降。你想啊，当推理快到像七秒交付这样，AI 就不再是那个需要你“等一等”的工具，而是变成了一个随叫随到的实时助手。这对 AI 原生应用和端侧智能的普及，绝对是核弹级的利好。
+</voice>
+<voice name="zh-CN-XiaoxiaoNeural" start="197.095" duration="11.973">
+确实！一边是拼命防守，一边是拼命把门槛打下来，这就是今天的科技图景啊。好了，聊完这两个大头，咱们来看看还有哪些值得关注的快讯。
+</voice>
+<voice name="zh-CN-YunxiNeural" start="209.532" duration="3.135">
+嗯，我也注意到了几个挺有意思的小动态。
+</voice>
+<voice name="zh-CN-XiaoxiaoNeural" start="213.084" duration="13.932">
+先说个让创作者兴奋的吧，Meshy 发布了 3D AI Agent，号称 3D 创作迎来了 ChatGPT 时刻，文本直接生成 3D 模型，门槛降至冰点。博文，你怎么看这个？
+</voice>
+<voice name="zh-CN-YunxiNeural" start="227.452" duration="14.106">
+这对游戏开发和元宇宙行业是大利好。以前建个模得折腾半天，现在一句话出模型，虽然精度可能还得打磨，但原型设计的效率起码提升了十倍不止。
+</voice>
+<voice name="zh-CN-XiaoxiaoNeural" start="241.975" duration="10.754">
+嗯，以后咱们普通人也能当 3D 建模师了！还有个事儿挺反常态的，谷歌居然用扩散模型来生成文字了？而且速度暴涨 4 倍？
+</voice>
+<voice name="zh-CN-YunxiNeural" start="253.225" duration="21.769">
+哈哈，这个确实有点意思。扩散模型以前主要是画图的，谷歌非要用它来写字，结果发现速度极快。这就像是本来用钢笔写字，现在改用喷绘枪喷字，虽然路子野，但效率确实高，这可能会给文本生成领域带来新的技术思路。
+</voice>
+<voice name="zh-CN-XiaoxiaoNeural" start="275.406" duration="10.841">
+哈哈，博文老师，你这个“喷绘枪”的比喻太到位了！最后还有一个资本层面的消息，AI 短剧工具赛道迎来了年度最大单笔融资。
+</voice>
+<voice name="zh-CN-YunxiNeural" start="286.726" duration="15.848">
+这说明资本开始押注 AIGC 影视内容的工业化了。短剧这种快消品，最适合 AI 来批量生产，看来以后咱们屏幕上看到的短剧，可能大半都是 AI 编剧、AI 剪辑的了。
+</voice>
+<voice name="zh-CN-XiaoxiaoNeural" start="303.006" duration="15.238">
+真的，想想以后刷到的视频可能都是 AI 生成的，这世界变化太快了。好了，今天的节目就聊到这里。晓晓我觉得今天这期内容特别充实，既有防守的博弈，又有进攻的狂欢。
+</voice>
+<voice name="zh-CN-YunxiNeural" start="318.712" duration="7.097">
+是的，技术就是这样，在矛盾中螺旋上升。感谢大家的收听，咱们明天见。
+</voice>
+<voice name="zh-CN-XiaoxiaoNeural" start="326.299" duration="1.393">
+明天见，拜拜！
+</voice>
+</speak>

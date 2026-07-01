@@ -1,0 +1,680 @@
+{
+  "episode_id": "2026-06-24",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "B",
+      "text": "哎，博文，晚上好啊！欢迎又来到我们的AI每日先锋，我是晓晓。",
+      "start": 1.0,
+      "duration": 6.444,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "A",
+      "text": "晓晓好，听众朋友们大家好，我是博文。",
+      "start": 7.893,
+      "duration": 3.091,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "B",
+      "text": "博文，你有没有觉得最近这一阵子，整个科技圈的风向好像又转了。之前大家天天在聊哪个大模型参数又破纪录了、跑分又刷榜了，现在呢，大家嘴里挂着的全是\"Agent\"和\"自主智能体\"这两个词。",
+      "start": 11.481,
+      "duration": 17.565,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "A",
+      "text": "嗯，你这个观察很准，晓晓。我们之前可能更多是在\"对话\"的层面用AI，问个问题、写个文案。但2026年这半年最明显的一个趋势，就是AI开始真正\"动手干活\"了，它不再是被动回答问题的工具，而是能自己拆解任务、规划步骤、连续执行十几二十个小时的\"硅基员工\"。",
+      "start": 29.499,
+      "duration": 24.095,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "B",
+      "text": "对，而且资本也跟着这条线在跑。所以今天我们的核心主题就很清晰了——AI正从被动工具进化为能独立完成芯片设计、模型训练这类复杂工程的\"硅基员工\"，产业资本也在同步押注物理智能的下一个战场。",
+      "start": 53.999,
+      "duration": 19.045,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "A",
+      "text": "没错，今天的几条新闻，串起来看刚好都在印证这条主线。",
+      "start": 73.477,
+      "duration": 4.789,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "B",
+      "text": "好，那咱们就先来聊第一件让我下巴差点掉到地上的事。字节家的豆包，刚刚发布了2.1版本，它里面那个Agent，能连续自主跑18个小时，独立完成芯片设计级别的代码任务，编程能力直接对标Claude Opus 4。博文，你听到这个数字的时候，第一反应是什么？",
+      "start": 78.731,
+      "duration": 25.663,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "A",
+      "text": "我第一反应其实是愣了一下，因为\"18小时\"这个时长，意味着它跨越了一个我们之前认为很关键的门槛。晓晓，你想想，芯片设计代码和普通的业务代码完全不是一回事，它对架构的理解、对模块的拆分、对底层逻辑的严谨度要求极高。",
+      "start": 104.856,
+      "duration": 19.132,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "B",
+      "text": "对对对，这个我太有感触了。",
+      "start": 124.439,
+      "duration": 2.351,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "A",
+      "text": "这就像是你让一个实习生去写个普通的App他可能勉强能交差，但你让他连续18小时盯着一颗芯片的RTL代码去debug，他早就崩溃了。豆包2.1能撑下来，说明它不只是在\"生成\"，而是真的具备了任务规划、长程记忆和自我纠错的能力。",
+      "start": 127.29,
+      "duration": 20.351,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "B",
+      "text": "博文你说到点子上了。我给你翻译翻译啊，这事儿对咱们普通人意味着什么？以前我们说AI写代码，那都是你写一行它补一行，写个函数它帮你自动补全。现在呢，AI自己能领任务了，你告诉它\"我需要一个支持某协议的芯片前端模块\"，它自己拆解、自己查资料、自己写、自己测，18个小时之后甩一个工程给你看。这简直是给团队里塞了一个不用睡觉、不用喝咖啡的超级架构师啊。",
+      "start": 148.079,
+      "duration": 36.566,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "A",
+      "text": "晓晓你这个比喻非常恰当。而且我更想提醒大家注意背后范式的转变。以前我们开发软件的流程，是\"人写代码，AI辅助\"；以后会变成\"人定义问题，AI写代码，人来审查和决策\"。这意味着企业的研发组织架构都要被推倒重写。",
+      "start": 185.106,
+      "duration": 18.871,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "B",
+      "text": "哇，这个真的挺震撼的。程序员朋友们可能又兴奋又紧张吧。",
+      "start": 204.422,
+      "duration": 5.007,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "嗯，但我觉得短期不用太焦虑，18小时自主跑完和18小时跑出来的代码完全可用，这中间其实还隔着工程化验证的漫长链条。不过方向确实是定了的。",
+      "start": 209.903,
+      "duration": 13.497,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "方向是定了的，这话我同意。哎，这事儿聊完，我想到另一件特别有意思的事，刚好是\"钱\"在投票。你看，正行创新这家做物理智能的公司，刚完成了一笔近亿美元的天使轮，背后站着的全是正大集团、华勤技术这种产业资本。博文，你给我们解读解读，为啥这个时间点，资本突然集体往\"物理智能\"这个赛道冲？",
+      "start": 223.827,
+      "duration": 29.973,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "A",
+      "text": "晓晓，这其实是资本逻辑的一次大转弯。前两年大家疯狂卷大模型参数、卷跑分，本质上是在\"数字世界\"里抢地盘。但现在大家都意识到一个问题——大模型再强，它没法帮你拧螺丝、没法帮你搬运箱子，对吧？",
+      "start": 254.264,
+      "duration": 19.219,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "B",
+      "text": "哈哈哈没错，它能跟你聊\"螺丝\"但它拧不动。",
+      "start": 273.9,
+      "duration": 5.007,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "对，所以下一个战场，必然是AI和物理世界的结合，也就是机器人、智能制造、自动驾驶这些\"能动手\"的领域。而正行创新这家公司有意思的地方在于，它不是只做模型，也不是只做硬件，而是把\"数据-模型-基础设施\"这事儿当一个系统工程来打通。",
+      "start": 279.343,
+      "duration": 21.222,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "哦，我明白了。这就相当于别人都在单点突破，它直接组了一支特战队。",
+      "start": 300.982,
+      "duration": 6.226,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "没错，这种系统性能力的稀缺性，正是产业资本愿意下重注的原因。而且你注意看投资方，正大、华勤这些都是有实体产业背景的，他们投的不是PPT上的故事，是真的想把AI塞进自己的工厂和产线里。",
+      "start": 307.704,
+      "duration": 18.784,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "听你这么一说我就懂了，这轮融资其实是一个信号——AI的下半场，就是\"AI+实体经济\"的下半场，是看谁能把算法落地成真实的生产力。这跟我们开头聊的\"硅基员工\"其实是一条线，数字世界的员工进化完了，下一步就是物理世界的员工。",
+      "start": 326.9,
+      "duration": 22.659,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "晓晓你这串题能力真的很强，一条线就把两件事穿起来了。",
+      "start": 350.038,
+      "duration": 4.571,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "B",
+      "text": "嘿嘿，那必须的。哎，说到落地，我刚刚还刷到一个特别\"接底气\"的案例。博文你知道吗？可口可乐这次世界杯的电视广告，里面的素材居然是用prompt直接生成的，而且它还搞了一个能24小时在线陪你聊球的AI陪聊助手。",
+      "start": 355.041,
+      "duration": 19.829,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "嗯，这个确实挺火。全球大品牌在用生成式AI重塑整个营销流程，这事儿其实有两层信号。",
+      "start": 375.338,
+      "duration": 7.576,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "B",
+      "text": "哪两层？",
+      "start": 383.404,
+      "duration": 1.045,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "第一层是创作端，AI生成素材的速度和成本，已经低到让可口可乐这种\"老钱\"品牌都愿意大规模试水了；第二层是交互端，2秒钟在线陪聊，这不是传统那种\"查赛事数据\"的工具，而是一个有温度的、能接梗的对话伙伴。",
+      "start": 384.926,
+      "duration": 18.697,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "B",
+      "text": "哎对，我觉得这个\"陪聊\"特别关键。以前我们说AI客服，那是冷冰冰的流程化回复；现在可口可乐搞的，是把AI包装成\"球迷朋友\"的人设。这说明什么？说明品牌方已经意识到，AI的真正杀手锏不是更快，而是更\"懂人心\"。",
+      "start": 404.041,
+      "duration": 20.482,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "没错，而且这个趋势会从快消蔓延到各行各业。",
+      "start": 424.962,
+      "duration": 4.136,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "B",
+      "text": "说到让AI\"更懂人心\"，HuggingFace那边也有新动作，他们开源了一个叫CUGA Apps的框架，号称在一个很轻量的harness上就能跑出二十多个Agent的真实应用示例。博文，这对开发者来说意味着啥？",
+      "start": 429.51,
+      "duration": 17.347,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "意味着Agent开发的门槛被进一步打下来了，晓晓。你想啊，以前你想搭一个Agent应用，光是选择框架、配置环境、理解一堆抽象概念，就能劝退一大波人。现在CUGA直接给你提供现成的\"积木块\"，你站在巨人的肩膀上改改参数、换换数据源，就能上线一个能用的Agent。",
+      "start": 447.35,
+      "duration": 21.875,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "哦我懂了，这就相当于以前想吃火锅得自己熬底料，现在超市里直接给你配好了料包，回家加水煮开就行。",
+      "start": 469.634,
+      "duration": 8.62,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "哈哈哈哈，对，晓晓你总能给出最通俗的类比。",
+      "start": 478.741,
+      "duration": 4.876,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "B",
+      "text": "那必须的，我可是体验派的代表嘛。哎博文，最后这条新闻，我觉得可能比前面几条都更\"硬核\"一点。arXiv上一篇新研究提出了A-Evolve-Training方法，让一个30B的模型自主完成全流程的post-training。",
+      "start": 484.059,
+      "duration": 21.701,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "这条我仔细看了，确实是个很有想象空间的研究。",
+      "start": 506.22,
+      "duration": 3.701,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "你给大家解释解释\"post-training\"是啥意思？又有术语了。",
+      "start": 510.392,
+      "duration": 4.136,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "好好好，我来翻译。post-training你可以理解成模型出厂前的\"岗前培训\"，数据清洗、奖励对齐、风格调教这些都算。传统做法是大量人类工程师手动设计流程、写规则、做评估。但A-Evolve-Training让模型自己来设计、自己来执行这些后训练步骤。",
+      "start": 514.94,
+      "duration": 21.483,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "B",
+      "text": "等等博文，这不就是\"AI自己训练自己\"吗？",
+      "start": 536.868,
+      "duration": 3.352,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "对，核心就是这个。这意味着我们正在进入一个\"自我进化\"的阶段，AI不再需要人类手把手教它怎么变得更好，它能根据自己的输出反馈自主迭代。这事儿如果真的规模化，对AI行业的影响是结构性的。",
+      "start": 540.675,
+      "duration": 15.17,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "我的天，这一刻突然有种看科幻片的感觉。",
+      "start": 556.285,
+      "duration": 4.571,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "哈哈，不过我们也要清醒，目前还只是研究阶段，距离大规模工程落地还有距离，但它指明的方向非常清晰。",
+      "start": 561.334,
+      "duration": 9.012,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "B",
+      "text": "嗯，方向清晰这一点就够了。好啦，今天的节目也快到尾声了。咱们今天聊的豆包2.1、正行创新融资、可口可乐营销、HuggingFace CUGA，还有A-Evolve-Training这几条线，串起来其实就一句话——AI正在从一个\"你问它答\"的工具，长成一个\"能自己干、自己学、自己进化\"的硅基员工。",
+      "start": 570.827,
+      "duration": 26.49,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "是的，无论是编程领域的18小时自主任务，还是物理智能的产业资本押注，亦或是模型的自我训练，都指向同一个未来。",
+      "start": 597.743,
+      "duration": 10.144,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "B",
+      "text": "好，那今天就先聊到这儿。博文，跟听众朋友们说个再见吧。",
+      "start": 608.357,
+      "duration": 5.137,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "A",
+      "text": "好，谢谢大家的陪伴，我们明天见。",
+      "start": 613.955,
+      "duration": 2.482,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "B",
+      "text": "拜拜，大家明天见！",
+      "start": 616.893,
+      "duration": 2.656,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
