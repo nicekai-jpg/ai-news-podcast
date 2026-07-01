@@ -24,9 +24,8 @@ graph TD
     end
 
     subgraph "3. 语音合成与构建 (Audio Synthesis & Concat)"
-        TTS_Select{TTS 选型映射决策}
-        TTS_Local[Edge-TTS GHA 本地合成<br/>(标准旁白/普通文本)]
-        TTS_ECS[Tencent Cloud 2C2G ECS<br/>ONNX 队列合成 (情感/中英混读)]
+        TTS_Select{TTS 音色决策}
+        TTS_Cosy[CosyVoice 2 零样本克隆合成<br/>（host_a / host_b 双音色）]
         FFmpeg_Conc[ffmpeg 无损拼接 & loudnorm 响度均衡]
     end
 

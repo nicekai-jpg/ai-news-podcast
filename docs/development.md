@@ -24,14 +24,23 @@ uv sync --dev
 
 ```text
 ai-news-podcast/
-├── assets/              # 静态资源（背景音乐等）
+├── assets/              # 静态资源（背景音乐、参考音频等）
 ├── config/              # 运行配置文件与 RSS 新闻源列表
-├── data/                # 生成的缓存 JSON 和 episodes 索引
+├── data/                # 生成的缓存 JSON、日报和 episodes 索引
 ├── docs/                # 项目文档
 ├── src/ai_news_podcast/ # 核心的 Python 源码包
 │   ├── cli/             # 命令行入口脚本
 │   ├── pipeline/        # 核心流水线：抓取、处理、文案、TTS
+│   │   ├── fetcher.py
+│   │   ├── processor*.py  # 已拆分为子模块
+│   │   ├── scriptwriter.py
+│   │   ├── tts_engine.py
+│   │   ├── tts_parser.py
+│   │   ├── tts_postprocess.py
+│   │   └── runner.py
 │   ├── site_builder/    # 静态 HTML 页面及 RSS XML 生成
+│   ├── prompts.py       # LLM Prompt 模板
+│   ├── text_utils.py    # 文本清洗工具
 │   └── utils.py         # 公共工具函数（配置加载、I/O）
 ├── tests/               # 测试代码
 ├── scripts/             # 调试与开发脚本
@@ -68,12 +77,20 @@ uv run pytest tests/ -v
 
 ## 代码风格与检查
 
-目前我们对代码风格暂时不做强制拦截，但请尽量保持代码整洁，并附带必要的注释和类型提示（Type Hints）。我们推荐在提交代码前使用 `ruff` 对代码进行格式化与检查：
+代码风格由 `ruff` 统一管理，提交前必须运行检查：
 
 ```bash
+# 检查代码风格与潜在问题
 uv run ruff check src/ tests/ scripts/
+
+# 自动修复可修复的问题
+uv run ruff check --fix src/ tests/ scripts/
+
+# 格式化代码
 uv run ruff format src/ tests/ scripts/
 ```
+
+项目配置的 lint 规则包括 E/F/I/W 基础规则。
 
 ## GitHub Actions 持续集成与发布
 

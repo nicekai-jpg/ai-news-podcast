@@ -11,7 +11,7 @@ graph TD
     A[Cron Job / GitHub Action 定时任务] --> B(RSS Fetcher - 抓取器)
     B --> C(Processor / Scorer - 处理器/评分器)
     C --> D(LLM Scriptwriter - 大模型文案创作)
-    D --> E(Edge-TTS Engine - 语音合成引擎)
+    D --> E(CosyVoice 2 TTS Engine - 语音合成引擎)
     E --> F(Site Builder - 网站与 RSS 生成)
     F --> G[GitHub Pages 部署发布]
 ```
@@ -42,7 +42,7 @@ graph TD
 ### 4. 语音合成引擎 (`tts_engine.py`)
 - **输入：** 播客的文本台本。
 - **主要职责：**
-  - 使用微软 `edge-tts` 接口进行语音合成。
+  - 使用 **CosyVoice 2** 进行零样本声音克隆合成。
   - 运用 `pydub` 工具将生成的语音与背景音乐 (`assets/bgm_placeholder.wav`) 进行混音。
   - 导出并压缩最终混合好的 MP3 音频文件。
 

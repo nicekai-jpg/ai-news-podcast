@@ -4,6 +4,37 @@
 
 该文件的格式基于 [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) 规范，并且本项目遵循 [Semantic Versioning 语义化版本](https://semver.org/spec/v2.0.0.html) 规范。
 
+## [Unreleased]
+
+### 变更
+- **Editor Agent 输出格式**: JSON → Markdown，减少约 28% token 使用量
+- **代码异味清理**: 全面重构，修复 lint 违规，拆分模块
+
+### 修复
+- **日报显示**: 修复 h1 标题被隐藏、blockquote 样式缺失、h3 样式缺失
+- **GitHub API**: 修复硬编码日期 `2026-06-01` → 动态 `datetime.now()`
+
+---
+
+## [0.2.0] - 2026-07-01
+
+### 重构
+- **模块拆分**: `processor.py` 拆分为 6 个子模块（types/dedup/cluster/context/score/thesis）
+- **TTS 拆分**: `tts_engine.py` 提取 `tts_parser.py`
+- **CLI 简化**: `run_daily.py` 提取 5 个 helper 函数
+- **代码异味清理**: 修复 C901/PLR0915/N806/B009/SIM118/UP017 等 lint 违规
+
+### 移除
+- **EdgeTTS 遗留**: 移除 `voices` 参数、`host_a/b_voices`、`voice_names`、`fallback_backend`
+- **SSML 死代码**: 移除 `_is_ssml()`、`preserve_ssml`、SSML 解析分支
+
+### 修复
+- **fetcher.py**: 提取 `_process_single_entry` 降低复杂度
+- **dedup.py**: 拆分 `get_recent_broadcasted_texts` 和 `semantic_dedup`
+- **config.yaml**: 移除死参数，修复重复键
+
+---
+
 ## [0.1.0] - 2026-03-10
 
 ### 新增功能
