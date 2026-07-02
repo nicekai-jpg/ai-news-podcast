@@ -204,10 +204,10 @@ def build_index_html(
           </div>
         </div>
 
-        <!-- 右侧剧本 -->
-        <div class="podcast-script-pane">
+        <!-- 右侧播客剧本 -->
+        <div class="podcast-pane">
           <div class="pane-header">
-            <span>🎙️ 播客转写同步剧本</span>
+            <span>🎙️ 播客剧本</span>
             <span class="teleprompter-badge">智能音文联动</span>
           </div>
           <div class="transcript-container-wrapper" style="position: relative; flex: 1; overflow: hidden; display: flex; flex-direction: column;">

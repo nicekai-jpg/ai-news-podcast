@@ -224,9 +224,9 @@
     }
 
     /* 播客右栏：提词器 */
-    .podcast-script-pane { background: var(--surface); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); display: flex; flex-direction: column; height: 720px; overflow: hidden; }
-    .podcast-script-pane .pane-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; border-bottom: 1px solid var(--border); background: rgba(0,0,0,0.1); }
-    .podcast-script-pane .pane-header span { font-size: 0.92rem; font-weight: 850; display: flex; align-items: center; gap: 8px; color: #fff; }
+    .podcast-pane { background: var(--surface); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); display: flex; flex-direction: column; height: 720px; overflow: hidden; }
+    .podcast-pane .pane-header { display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; border-bottom: 1px solid var(--border); background: rgba(0,0,0,0.1); }
+    .podcast-pane .pane-header span { font-size: 0.92rem; font-weight: 850; display: flex; align-items: center; gap: 8px; color: #fff; }
     .teleprompter-badge { font-size: 0.68rem !important; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.25); color: #10b981 !important; padding: 3px 10px; border-radius: 99px; font-weight: 700; letter-spacing: 0.02em; }
 
     .transcript-container { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 14px; scroll-behavior: smooth; }

@@ -1,1 +1,1 @@
-"""Pipeline stages: fetch → process → script → TTS."""
+"""Pipeline stages: fetch → process → podcast → TTS."""
