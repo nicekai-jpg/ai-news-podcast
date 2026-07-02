@@ -24,7 +24,8 @@ dependencies = [
 ]
 
 [project.scripts]
-podcast-pipeline = "ai_news_podcast.cli.pipeline_run:entrypoint"
+podcast-fetch    = "ai_news_podcast.cli.podcast_fetch:entrypoint"
+podcast-process  = "ai_news_podcast.cli.podcast_process:entrypoint"
 podcast-script   = "ai_news_podcast.cli.podcast_script:entrypoint"
 podcast-tts      = "ai_news_podcast.cli.podcast_tts:entrypoint"
 podcast-daily    = "ai_news_podcast.cli.run_daily:entrypoint"
