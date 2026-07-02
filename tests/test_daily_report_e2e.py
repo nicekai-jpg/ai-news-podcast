@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import json
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import pytest
@@ -14,6 +16,7 @@ import ai_news_podcast.cli.daily_report as report_module
 def report_config(tmp_path: Path) -> Path:
     (tmp_path / "config").mkdir(parents=True, exist_ok=True)
     (tmp_path / "data").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "data" / "briefs").mkdir(parents=True, exist_ok=True)
     (tmp_path / "data" / "reports").mkdir(parents=True, exist_ok=True)
 
     config_yaml = """
@@ -59,45 +62,45 @@ processing:
     return tmp_path
 
 
+FAKE_BRIEF = {
+    "thesis": "Test",
+    "stories": [
+        {
+            "cluster_id": 0,
+            "representative_title": "Test News",
+            "role": "main",
+            "role_emoji": "🔴",
+            "total_score": 13,
+            "scores": {
+                "impact_scope": 3,
+                "novelty": 2,
+                "explainability": 3,
+                "listener_relevance": 3,
+                "source_richness": 2,
+            },
+            "context": {
+                "factual_summary": ["Summary."],
+                "historical_background": "",
+                "sources_ranked": [],
+            },
+            "items": [],
+        }
+    ],
+    "metadata": {},
+}
+
+
 @pytest.mark.asyncio
 async def test_main_success(report_config: Path, monkeypatch) -> None:
     root = report_config
+    today = datetime.now().strftime("%Y-%m-%d")
+    brief_path = root / "data" / "briefs" / f"brief_{today}.json"
+    brief_path.write_text(json.dumps(FAKE_BRIEF, ensure_ascii=False), encoding="utf-8")
+
     monkeypatch.setattr(
         report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py")
     )
     monkeypatch.setattr(sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")])
-
-    fake_brief = {
-        "thesis": "Test",
-        "stories": [
-            {
-                "cluster_id": 0,
-                "representative_title": "Test News",
-                "role": "main",
-                "role_emoji": "🔴",
-                "total_score": 13,
-                "scores": {
-                    "impact_scope": 3,
-                    "novelty": 2,
-                    "explainability": 3,
-                    "listener_relevance": 3,
-                    "source_richness": 2,
-                },
-                "context": {
-                    "factual_summary": ["Summary."],
-                    "historical_background": "",
-                    "sources_ranked": [],
-                },
-                "items": [],
-            }
-        ],
-        "metadata": {},
-    }
-
-    async def _fake_run_pipeline(*args, **kwargs):
-        return fake_brief
-
-    monkeypatch.setattr(report_module, "run_pipeline", _fake_run_pipeline)
 
     def _fake_llm(prompt: str, llm_cfg: dict) -> str:
         return "# Report\n\nGenerated content."
@@ -117,36 +120,15 @@ async def test_main_success(report_config: Path, monkeypatch) -> None:
 @pytest.mark.asyncio
 async def test_main_fallback_when_llm_fails(report_config: Path, monkeypatch) -> None:
     root = report_config
+    today = datetime.now().strftime("%Y-%m-%d")
+    brief_path = root / "data" / "briefs" / f"brief_{today}.json"
+    brief_path.write_text(json.dumps(FAKE_BRIEF, ensure_ascii=False), encoding="utf-8")
+
     monkeypatch.setattr(
         report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py")
     )
     monkeypatch.setattr(sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")])
 
-    fake_brief = {
-        "thesis": "Test",
-        "stories": [
-            {
-                "cluster_id": 0,
-                "representative_title": "Test News",
-                "role": "main",
-                "role_emoji": "🔴",
-                "total_score": 13,
-                "scores": {},
-                "context": {
-                    "factual_summary": ["Summary."],
-                    "historical_background": "",
-                    "sources_ranked": [],
-                },
-                "items": [],
-            }
-        ],
-        "metadata": {},
-    }
-
-    async def _fake_run_pipeline(*args, **kwargs):
-        return fake_brief
-
-    monkeypatch.setattr(report_module, "run_pipeline", _fake_run_pipeline)
     monkeypatch.setattr(report_module, "call_llm", lambda p, cfg: None)
 
     rc = await report_module.main()
@@ -159,17 +141,31 @@ async def test_main_fallback_when_llm_fails(report_config: Path, monkeypatch) ->
 
 
 @pytest.mark.asyncio
-async def test_main_no_items_returns_1(report_config: Path, monkeypatch) -> None:
+async def test_main_no_brief_returns_1(report_config: Path, monkeypatch) -> None:
     root = report_config
     monkeypatch.setattr(
         report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py")
     )
     monkeypatch.setattr(sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")])
 
-    async def _fake_run_pipeline(*args, **kwargs):
-        return {"stories": [], "thesis": "", "metadata": {}}
+    rc = await report_module.main()
+    assert rc == 1
 
-    monkeypatch.setattr(report_module, "run_pipeline", _fake_run_pipeline)
+
+@pytest.mark.asyncio
+async def test_main_no_stories_returns_1(report_config: Path, monkeypatch) -> None:
+    root = report_config
+    today = datetime.now().strftime("%Y-%m-%d")
+    brief_path = root / "data" / "briefs" / f"brief_{today}.json"
+    brief_path.write_text(
+        json.dumps({"stories": [], "thesis": "", "metadata": {}}, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setattr(
+        report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py")
+    )
+    monkeypatch.setattr(sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")])
 
     rc = await report_module.main()
     assert rc == 1

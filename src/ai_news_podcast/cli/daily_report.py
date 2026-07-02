@@ -14,8 +14,7 @@ except ImportError:
 
 from ai_news_podcast.pipeline.llm_client import call_llm
 from ai_news_podcast.pipeline.material import build_material_text
-from ai_news_podcast.pipeline.runner import run_pipeline
-from ai_news_podcast.utils import load_sources, read_yaml
+from ai_news_podcast.utils import read_yaml
 
 log = logging.getLogger("daily_report")
 
@@ -103,84 +102,43 @@ async def main() -> int:
         format="%(asctime)s [%(name)s] %(levelname)s: %(message)s",
     )
 
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(description="生成科技新闻日报 (Stage 3b)")
     ap.add_argument("--config", default="config/config.yaml")
-    ap.add_argument("--sources", default="config/sources.yaml")
+    ap.add_argument("--date", default=None, help="指定日期 YYYY-MM-DD (默认今天)")
     ap.add_argument("--outdir", default="data/reports")
-    ap.add_argument(
-        "--force-refresh",
-        action="store_true",
-        help="强制重新抓取，忽略已有 brief 缓存",
-    )
     args = ap.parse_args()
 
     root = Path(__file__).resolve().parents[3]
     cfg = read_yaml(root / args.config)
-    sources = load_sources(root / args.sources)
-    outdir = root / args.outdir
-    outdir.mkdir(parents=True, exist_ok=True)
 
-    now = datetime.now(tz=ZoneInfo("Asia/Shanghai"))
-    date_str = now.strftime("%Y年%m月%d日")
-    report_id = now.strftime("%Y-%m-%d")
+    date_str = args.date or datetime.now(tz=ZoneInfo("Asia/Shanghai")).strftime("%Y-%m-%d")
+    report_id = date_str
+    date_display = datetime.strptime(date_str, "%Y-%m-%d").strftime("%Y年%m月%d日")
 
-    # Stage 1 & 2: 通过统一数据基础层获取 brief（抓取 → 去重 → 聚类 → 打分）
-    log.info("Fetching episode brief from pipeline runner...")
-    brief = await run_pipeline(
-        cfg,
-        sources,
-        date_str=report_id,
-        data_dir=root / "data",
-        force_refresh=args.force_refresh,
-    )
+    # 读取已有的 brief
+    brief_path = root / "data" / "briefs" / f"brief_{date_str}.json"
+    if not brief_path.exists():
+        log.error("Brief not found: %s", brief_path)
+        return 1
 
+    brief = read_yaml(brief_path)
     if not brief.get("stories"):
         log.warning("No stories in brief. Aborting.")
         return 1
 
-    # 3. 构造 Prompt 并调用 LLM
-    log.info("Stage 3: Generating report via LLM (configured in config.yaml)...")
-    prompt = build_report_prompt(brief, date_str)
+    outdir = root / args.outdir
+    outdir.mkdir(parents=True, exist_ok=True)
 
-    log.info(f"Generated prompt string length: {len(prompt)} characters")
-
+    # 生成报告
+    log.info("Stage 3b: Generating daily report for %s ...", date_str)
     llm_cfg = cfg.get("llm", {})
-    report_md = call_llm(prompt, llm_cfg)
-
-    if not report_md:
-        log.warning("Failed to generate report from LLM. Generating a basic fallback report.")
-        report_md = f"# 🌍 科技新闻日报 | {date_str}\n\n> 由于大模型服务暂时不可用，以下是由系统自动整理的新闻速览：\n\n"
-
-        stories = brief.get("stories", [])
-        active = [s for s in stories if isinstance(s, dict) and s.get("role") != "skip"]
-        active.sort(key=lambda s: s.get("total_score", 0), reverse=True)
-        active = active[:5]
-
-        for i, story in enumerate(active, 1):
-            title = story.get("representative_title", "无标题")
-            context = story.get("context", {})
-            summaries = context.get("factual_summary", [])
-            report_md += f"## {i}. {title}\n"
-            for s in summaries:
-                report_md += f"- **{s}**\n"
-            report_md += "\n"
-
-    # 清理顶部可能的 ```markdown 标记
-    if report_md.startswith("```markdown"):
-        report_md = report_md[11:].strip()
-    if report_md.endswith("```"):
-        report_md = report_md[:-3].strip()
-
-    # 4. 保存报告
-    report_path = outdir / f"daily_report_{report_id}.md"
-    report_path.write_text(report_md, encoding="utf-8")
-
-    log.info(f"✨ Daily report generated successfully! Saved to: {report_path}")
-    print("\n" + "=" * 50)
-    print(f"📄 报告已生成: {report_path}")
-    print("=" * 50 + "\n")
-    print(report_md)
-    print("\n" + "=" * 50)
+    generate_report(
+        brief,
+        date_str=date_display,
+        report_id=report_id,
+        outdir=outdir,
+        llm_cfg=llm_cfg,
+    )
 
     return 0
 
