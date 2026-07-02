@@ -1,4 +1,4 @@
-"""Tests for scriptwriter _call_llm with mocked openai client."""
+"""Tests for podcastwriter _call_llm with mocked openai client."""
 
 from __future__ import annotations
 

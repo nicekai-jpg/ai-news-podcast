@@ -1,10 +1,10 @@
-"""Tests for scriptwriter generate_show_notes (Markdown)."""
+"""Tests for podcastwriter generate_show_notes (Markdown)."""
 
 from __future__ import annotations
 
 from datetime import datetime
 
-from ai_news_podcast.pipeline.scriptwriter import generate_show_notes
+from ai_news_podcast.pipeline.podcastwriter import generate_show_notes
 
 
 class TestGenerateShowNotes:

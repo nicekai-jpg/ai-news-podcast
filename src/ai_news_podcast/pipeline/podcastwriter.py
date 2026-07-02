@@ -116,7 +116,7 @@ def _build_fallback(
 # ---------------------------------------------------------------------------
 
 
-def generate_script(
+def generate_podcast(
     brief: dict[str, Any],
     *,
     episode_date: datetime,

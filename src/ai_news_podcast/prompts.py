@@ -10,7 +10,7 @@ from datetime import datetime
 from typing import Any
 
 # ---------------------------------------------------------------------------
-# 禁用词（从 scriptwriter 提取，供 prompt 构建和脚本清洗共用）
+# 禁用词（从 podcastwriter 提取，供 prompt 构建和脚本清洗共用）
 # ---------------------------------------------------------------------------
 
 DEFAULT_BANNED_WORDS = [

@@ -157,7 +157,7 @@ async def test_full_run_with_audio_and_publish(full_config: Path, monkeypatch) -
     monkeypatch.setattr(run_daily_module, "run_pipeline", _fake_run_pipeline)
 
     fake_script = "[Host A] Hello\n[Host B] World"
-    monkeypatch.setattr(run_daily_module, "generate_script", lambda *a, **kw: (fake_script, []))
+    monkeypatch.setattr(run_daily_module, "generate_podcast", lambda *a, **kw: (fake_script, []))
 
     async def _fake_synthesize(*args, **kwargs) -> None:
         output = kwargs.get("output_path")
@@ -239,7 +239,7 @@ async def test_transcript_cleaning(full_config: Path, monkeypatch) -> None:
     # Script with mood tags, fact tags, and literal \n
     fake_script = "[mood:excited] [Host A] Hello\\n[FACT] world"
     monkeypatch.setattr(
-        run_daily_module, "generate_script", lambda *a, **kw: (fake_script, ["test warning"])
+        run_daily_module, "generate_podcast", lambda *a, **kw: (fake_script, ["test warning"])
     )
 
     async def _fake_synth(*args, **kwargs) -> None:

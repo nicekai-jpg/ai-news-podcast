@@ -1,4 +1,4 @@
-"""Tests for scriptwriter fallback, error handling and edge cases."""
+"""Tests for podcastwriter fallback, error handling and edge cases."""
 
 from __future__ import annotations
 
@@ -7,10 +7,10 @@ from unittest.mock import patch
 
 from ai_news_podcast.pipeline.llm_client import call_llm as _call_llm
 from ai_news_podcast.pipeline.material import build_material_text as _build_material_text
-from ai_news_podcast.pipeline.scriptwriter import (
+from ai_news_podcast.pipeline.podcastwriter import (
     _build_fallback,
     _normalize_host_tags,
-    generate_script,
+    generate_podcast,
 )
 
 
@@ -122,8 +122,8 @@ class TestGenerateScriptFallback:
                 }
             ]
         }
-        with patch("ai_news_podcast.pipeline.scriptwriter._call_llm", return_value=None):
-            script, _warnings = generate_script(
+        with patch("ai_news_podcast.pipeline.podcastwriter._call_llm", return_value=None):
+            script, _warnings = generate_podcast(
                 brief,
                 episode_date=datetime(2024, 3, 15),
                 podcast_title="Test",
@@ -146,8 +146,8 @@ class TestGenerateScriptFallback:
             ]
         }
         fake_llm = "[Host A] LLM generated script\n[Host B] Yes it is"
-        with patch("ai_news_podcast.pipeline.scriptwriter._call_llm", return_value=fake_llm):
-            script, _warnings = generate_script(
+        with patch("ai_news_podcast.pipeline.podcastwriter._call_llm", return_value=fake_llm):
+            script, _warnings = generate_podcast(
                 brief,
                 episode_date=datetime(2024, 3, 15),
                 podcast_title="Test",
@@ -158,8 +158,8 @@ class TestGenerateScriptFallback:
 
     def test_warns_on_single_host(self) -> None:
         brief = {"stories": []}
-        with patch("ai_news_podcast.pipeline.scriptwriter._call_llm", return_value=None):
-            script, _warnings = generate_script(
+        with patch("ai_news_podcast.pipeline.podcastwriter._call_llm", return_value=None):
+            script, _warnings = generate_podcast(
                 brief,
                 episode_date=datetime(2024, 3, 15),
                 podcast_title="Test",

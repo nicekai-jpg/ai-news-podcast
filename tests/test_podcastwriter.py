@@ -1,10 +1,10 @@
-"""Tests for ai_news_podcast.pipeline.scriptwriter pure functions."""
+"""Tests for ai_news_podcast.pipeline.podcastwriter pure functions."""
 
 from __future__ import annotations
 
 from datetime import datetime
 
-from ai_news_podcast.pipeline.scriptwriter import (
+from ai_news_podcast.pipeline.podcastwriter import (
     _cn_date,
     _replace_banned_words,
     check_banned_words,
