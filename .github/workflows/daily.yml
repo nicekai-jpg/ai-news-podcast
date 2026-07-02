@@ -14,8 +14,8 @@ permissions:
   contents: write
 
 jobs:
-  content:
-    name: Content (fetch → script)
+  pipeline:
+    name: Stage 1-2 (fetch → process)
     runs-on: ubuntu-latest
     outputs:
       episode_id: ${{ steps.episode.outputs.id }}
@@ -47,42 +47,35 @@ jobs:
             echo "id=$(TZ=Asia/Shanghai date +%F)" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Pipeline + script + report (no audio)
+      - name: Run pipeline
         env:
           TZ: Asia/Shanghai
-          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
         run: |
           EPISODE="${{ steps.episode.outputs.id }}"
-          if [ -f "site/episodes/${EPISODE}.txt" ]; then
-            echo "Script already exists for ${EPISODE}, skipping pipeline execution to avoid overwriting"
-          else
-            uv run podcast-daily --no-audio --with-report
-          fi
+          uv run podcast-pipeline --date "$EPISODE"
 
-      - name: Commit content artifacts
+      - name: Commit brief
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           EPISODE="${{ steps.episode.outputs.id }}"
-          git add data/briefs/ data/reports/ data/episodes.json
-          git add -f "site/episodes/${EPISODE}.txt" "site/episodes/${EPISODE}.html"
+          git add data/briefs/
           if git diff --cached --quiet; then
-            echo "No content changes to commit"
+            echo "No brief changes to commit"
           else
-            git commit -m "daily: content $(date -u +%F) [skip ci]"
+            git commit -m "daily: brief $EPISODE [skip ci]"
             git pull --rebase origin main
             git push origin main
           fi
 
-  tts:
-    name: TTS (CosyVoice 2)
-    needs: content
+  script:
+    name: Stage 3 (script generation)
+    needs: pipeline
     runs-on: ubuntu-latest
-    timeout-minutes: 240
     steps:
       - uses: actions/checkout@v4
 
-      - name: Pull latest content commit
+      - name: Pull latest brief
         run: git pull origin main
 
       - uses: actions/setup-python@v5
@@ -91,13 +84,105 @@ jobs:
 
       - uses: astral-sh/setup-uv@v3
         with:
+          version: "latest"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Generate script
+        env:
+          TZ: Asia/Shanghai
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+        run: |
+          EPISODE="${{ needs.pipeline.outputs.episode_id }}"
+          uv run podcast-script --date "$EPISODE"
+
+      - name: Commit script
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          EPISODE="${{ needs.pipeline.outputs.episode_id }}"
+          git add site/episodes/${EPISODE}.txt site/episodes/${EPISODE}.html
+          if git diff --cached --quiet; then
+            echo "No script changes to commit"
+          else
+            git commit -m "daily: script $EPISODE [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi
+
+  report:
+    name: Stage 3b (daily report)
+    needs: pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull latest brief
+        run: git pull origin main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Generate daily report
+        env:
+          TZ: Asia/Shanghai
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+        run: |
+          EPISODE="${{ needs.pipeline.outputs.episode_id }}"
+          uv run podcast-report --date "$EPISODE"
+
+      - name: Commit report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          EPISODE="${{ needs.pipeline.outputs.episode_id }}"
+          git add data/reports/
+          if git diff --cached --quiet; then
+            echo "No report changes to commit"
+          else
+            git commit -m "daily: report $EPISODE [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi
+
+  tts:
+    name: Stage 4 (TTS audio)
+    needs: script
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull latest content
+        run: git pull origin main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
           enable-cache: true
           cache-dependency-glob: "uv.lock"
 
       - name: Install system deps
         run: sudo apt-get update -qq && sudo apt-get install -y sox libsox-dev ffmpeg
 
-      - name: Install project dependencies
+      - name: Install dependencies
         run: uv sync --frozen
 
       - name: Cache CosyVoice
@@ -114,33 +199,70 @@ jobs:
 
       - name: Synthesize episode audio
         run: |
-          EPISODE="${{ needs.content.outputs.episode_id }}"
+          EPISODE="${{ needs.script.outputs.episode_id || needs.pipeline.outputs.episode_id }}"
           export COSYVOICE_MODEL_DIR="$HOME/cosyvoice_models/CosyVoice2-0.5B"
           export PYTHONPATH="$HOME/cosyvoice_src:$HOME/cosyvoice_src/third_party/Matcha-TTS"
+          # Stage 4: 使用 podcast-tts CLI，但需要特殊 Python 环境
           "$HOME/cosyvoice_venv/bin/python" scripts/gha_tts_cosyvoice.py \
             --script "site/episodes/${EPISODE}.txt" \
             --output "site/episodes/${EPISODE}.mp3" \
             --model-dir "$HOME/cosyvoice_models/CosyVoice2-0.5B"
 
+      - name: Commit audio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          EPISODE="${{ needs.script.outputs.episode_id || needs.pipeline.outputs.episode_id }}"
+          git add -u site/
+          if git diff --cached --quiet; then
+            echo "No audio changes to commit"
+          else
+            git commit -m "daily: audio $EPISODE [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi
+
+  publish:
+    name: Stage 5 (publish site)
+    needs: [tts, report]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pull latest content
+        run: git pull origin main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
       - name: Publish feed and site
         env:
           TZ: Asia/Shanghai
         run: |
-          uv sync --frozen
-          EPISODE="${{ needs.content.outputs.episode_id }}"
+          EPISODE="${{ needs.tts.outputs.episode_id || needs.script.outputs.episode_id || needs.pipeline.outputs.episode_id }}"
           uv run podcast-publish --date "$EPISODE"
 
-      - name: Commit audio and site
+      - name: Commit site
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          EPISODE="${{ needs.content.outputs.episode_id }}"
+          EPISODE="${{ needs.tts.outputs.episode_id || needs.script.outputs.episode_id || needs.pipeline.outputs.episode_id }}"
           git add -u site/ data/episodes.json
-          git add -f "site/episodes/${EPISODE}.html" "site/episodes/${EPISODE}.txt" "site/reports/daily_report_${EPISODE}.md"
+          git add -f "site/reports/daily_report_${EPISODE}.md"
           if git diff --cached --quiet; then
-            echo "No audio changes to commit"
+            echo "No site changes to commit"
           else
-            git commit -m "daily: audio $(date -u +%F) [skip ci]"
+            git commit -m "daily: publish $EPISODE [skip ci]"
             git pull --rebase origin main
             git push origin main
           fi
