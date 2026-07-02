@@ -55,11 +55,11 @@ async def main() -> int:
     bgm_rel = str(tts_cfg.get("bgm_path") or "assets/bgm_placeholder.wav")
     bgm_path = str(root / bgm_rel) if (root / bgm_rel).exists() else None
 
-    script_text = script_path.read_text(encoding="utf-8")
+    podcast_text = script_path.read_text(encoding="utf-8")
 
     log.info("Stage 4: synthesizing audio for %s …", date_str)
     await synthesize(
-        script_text,
+        podcast_text,
         backend=str(tts_cfg.get("backend") or "cosyvoice2"),
         output_path=output_path,
         bgm_path=bgm_path,

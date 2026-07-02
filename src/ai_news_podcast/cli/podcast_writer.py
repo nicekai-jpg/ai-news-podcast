@@ -19,11 +19,11 @@ try:
 except ImportError:
     pass
 
-from ai_news_podcast.pipeline.scriptwriter import generate_script
+from ai_news_podcast.pipeline.podcastwriter import generate_podcast
 from ai_news_podcast.text_utils import clean_tts_text
 from ai_news_podcast.utils import read_yaml, write_text
 
-log = logging.getLogger("podcast_script")
+log = logging.getLogger("podcast_writer")
 
 
 async def main() -> int:
@@ -58,7 +58,7 @@ async def main() -> int:
     llm_cfg = cfg.get("llm", {})
 
     log.info("Stage 3: generating script for %s …", date_str)
-    script_text, warnings = generate_script(
+    podcast_text, warnings = generate_podcast(
         brief,
         episode_date=day,
         podcast_title=podcast_title,
@@ -72,7 +72,7 @@ async def main() -> int:
     episodes_dir.mkdir(parents=True, exist_ok=True)
 
     transcript_path = episodes_dir / f"{date_str}.txt"
-    clean_transcript = clean_tts_text(script_text) + "\n"
+    clean_transcript = clean_tts_text(podcast_text) + "\n"
     write_text(transcript_path, clean_transcript)
     log.info("Script saved: %s (%d chars)", transcript_path, len(clean_transcript))
 

@@ -18,7 +18,7 @@ from ai_news_podcast.cli.episode_utils import (
     get_base_url,
     prune_episodes,
 )
-from ai_news_podcast.pipeline.scriptwriter import generate_show_notes_html
+from ai_news_podcast.pipeline.podcastwriter import generate_show_notes_html
 from ai_news_podcast.site_builder.html_gen import build_index_html
 from ai_news_podcast.site_builder.rss_gen import build_feed_xml
 from ai_news_podcast.utils import load_sources, read_json, read_yaml, write_json, write_text

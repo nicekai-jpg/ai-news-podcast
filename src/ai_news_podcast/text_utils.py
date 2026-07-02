@@ -1,7 +1,7 @@
 """Shared TTS text-cleaning utilities.
 
 Consolidates the text sanitisation logic previously duplicated across
-scriptwriter.py, tts_engine.py, and run_daily.py into a single module.
+podcastwriter.py, tts_engine.py, and run_daily.py into a single module.
 """
 
 from __future__ import annotations

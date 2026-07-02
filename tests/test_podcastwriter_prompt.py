@@ -1,4 +1,4 @@
-"""Tests for scriptwriter prompt building functions."""
+"""Tests for podcastwriter prompt building functions."""
 
 from __future__ import annotations
 

@@ -198,9 +198,9 @@ async def test_no_audio_run_creates_files(minimal_config: Path, monkeypatch) -> 
 
     monkeypatch.setattr(run_daily_module, "run_pipeline", _fake_run_pipeline)
 
-    # Mock generate_script to avoid calling LLM
+    # Mock generate_podcast to avoid calling LLM
     fake_script = "[Host A] 欢迎收听今日 AI 新闻。\n[Host B] 今天的主要内容如下。"
-    monkeypatch.setattr(run_daily_module, "generate_script", lambda *a, **kw: (fake_script, []))
+    monkeypatch.setattr(run_daily_module, "generate_podcast", lambda *a, **kw: (fake_script, []))
 
     # Mock synthesize to avoid TTS
     async def _fake_synthesize(*args, **kwargs) -> None:

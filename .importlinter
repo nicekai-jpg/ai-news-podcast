@@ -27,7 +27,7 @@ type = forbidden
 source_modules =
     ai_news_podcast.pipeline.fetcher
     ai_news_podcast.pipeline.processor
-    ai_news_podcast.pipeline.scriptwriter
+    ai_news_podcast.pipeline.podcastwriter
     ai_news_podcast.pipeline.tts_engine
     ai_news_podcast.pipeline.dedup
     ai_news_podcast.pipeline.llm_client

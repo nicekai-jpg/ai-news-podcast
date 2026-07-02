@@ -16,11 +16,11 @@ except ImportError:
 
 from ai_news_podcast.cli.episode_utils import episode_id as _episode_id
 from ai_news_podcast.cli.episode_utils import get_base_url as _get_base_url
-from ai_news_podcast.pipeline.runner import run_pipeline
-from ai_news_podcast.pipeline.scriptwriter import (
-    generate_script,
+from ai_news_podcast.pipeline.podcastwriter import (
+    generate_podcast,
     generate_show_notes_html,
 )
+from ai_news_podcast.pipeline.runner import run_pipeline
 from ai_news_podcast.pipeline.tts_engine import synthesize
 
 try:
@@ -93,7 +93,7 @@ def _maybe_generate_report(
 
 
 async def _synthesize_episode(
-    script_text: str,
+    podcast_text: str,
     tts_params: dict[str, Any],
     mp3_path: Path,
     transcript_path: Path,
@@ -103,7 +103,7 @@ async def _synthesize_episode(
     """Synthesize audio for the episode."""
     log.info("Stage 4: synthesizing audio …")
     await synthesize(
-        script_text,
+        podcast_text,
         backend=tts_params["backend"],
         output_path=mp3_path,
         bgm_path=tts_params["bgm_path"],
@@ -206,7 +206,7 @@ async def main() -> int:
     # ── Stage 3: Script generation ──
     log.info("Stage 3: generating script …")
     llm_cfg = cfg.get("llm", {})
-    script_text, warnings = generate_script(
+    podcast_text, warnings = generate_podcast(
         brief,
         episode_date=day,
         podcast_title=podcast_title,
@@ -220,14 +220,14 @@ async def main() -> int:
     notes_path = episodes_dir / f"{episode_id}.html"
     transcript_path = episodes_dir / f"{episode_id}.txt"
 
-    clean_transcript = clean_tts_text(script_text) + "\n"
+    clean_transcript = clean_tts_text(podcast_text) + "\n"
     write_text(transcript_path, clean_transcript)
     log.info("Transcript saved: %s (%d chars)", transcript_path, len(clean_transcript))
 
     _maybe_generate_report(args, brief, day, episode_id, root)
 
     if not args.no_audio:
-        await _synthesize_episode(script_text, tts_params, mp3_path, transcript_path, cfg, root)
+        await _synthesize_episode(podcast_text, tts_params, mp3_path, transcript_path, cfg, root)
 
     return await _publish_or_skip(
         args,
