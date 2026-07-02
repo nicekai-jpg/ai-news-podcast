@@ -1,7 +1,7 @@
 """通用 LLM 客户端（OpenAI 兼容协议）
 
 封装 OpenAI-compatible API 调用，提供统一的 prompt→response 接口，
-供 podcast script 生成和 daily report 生成共用。
+供 podcast 生成和 daily report 生成共用。
 """
 
 from __future__ import annotations

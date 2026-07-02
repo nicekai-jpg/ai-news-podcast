@@ -127,7 +127,7 @@ class TestGenerateScriptFallback:
                 brief,
                 episode_date=datetime(2024, 3, 15),
                 podcast_title="Test",
-                script_cfg={},
+                writer_cfg={},
                 llm_cfg={"api_key_env": "FAKE_KEY"},
             )
         assert "[Host A]" in script
@@ -151,7 +151,7 @@ class TestGenerateScriptFallback:
                 brief,
                 episode_date=datetime(2024, 3, 15),
                 podcast_title="Test",
-                script_cfg={},
+                writer_cfg={},
                 llm_cfg={"api_key_env": "FAKE_KEY"},
             )
         assert "LLM generated script" in script
@@ -163,7 +163,7 @@ class TestGenerateScriptFallback:
                 brief,
                 episode_date=datetime(2024, 3, 15),
                 podcast_title="Test",
-                script_cfg={},
+                writer_cfg={},
                 llm_cfg={"api_key_env": "FAKE_KEY"},
             )
         # Fallback always generates both hosts, so no warning expected here

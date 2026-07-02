@@ -1,4 +1,4 @@
-"""Stage 3 CLI 入口：podcast-script。
+"""Stage 3 CLI 入口：podcast-writer。
 
 根据 brief 生成播客对话脚本。
 输入: data/briefs/brief_{date}.json

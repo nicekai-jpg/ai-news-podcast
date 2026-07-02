@@ -1,7 +1,7 @@
 """Stage 3 — 脚本生产模块（LLM 多 Agent 融合写作版）
 
 职责：episode_brief → 主编Agent选定头条/大纲 → 撰稿Agent转化为双人对白播客脚本（Host A, Host B）。
-英文内容在 LLM 阶段直接翻译为中文，输出格式严格遵循对话剧本要求，供后续混音使用。
+英文内容在 LLM 阶段直接翻译为中文，输出格式严格遵循对话播客要求，供后续混音使用。
 """
 
 from __future__ import annotations
@@ -121,16 +121,16 @@ def generate_podcast(
     *,
     episode_date: datetime,
     podcast_title: str = "AI 每日先锋",
-    script_cfg: dict[str, Any] | None = None,
+    writer_cfg: dict[str, Any] | None = None,
     llm_cfg: dict[str, Any] | None = None,
 ) -> tuple[str, list[str]]:
     """
     生成播客脚本 (双Agent双播客机制)。
     Step 1: Editor Agent 提炼大纲
-    Step 2: Writer Agent 编写对谈剧本
+    Step 2: Writer Agent 编写对谈播客
     失败时退回退化版的双人对谈模板。
     """
-    cfg = script_cfg or {}
+    cfg = writer_cfg or {}
     style_cfg = cfg.get("style", {})
     banned_words = style_cfg.get("banned_words", DEFAULT_BANNED_WORDS)
     llm_cfg = llm_cfg or {}
@@ -156,7 +156,7 @@ def generate_podcast(
             if raw_writer:
                 script = raw_writer
                 mode_used = "Multi-Agent"
-                logger.info("Writer Agent 剧本生成成功")
+                logger.info("Writer Agent 播客生成成功")
             else:
                 logger.warning("Writer Agent 生成失败，降级到 Fallback 模式")
         else:
@@ -181,10 +181,10 @@ def generate_podcast(
     host_b_count = script.count("[Host B]")
     total_turns = host_a_count + host_b_count
     if host_a_count == 0 or host_b_count == 0:
-        warnings.append("生成剧本未严格包含 [Host A] 和 [Host B] 双人对谈标记")
+        warnings.append("生成播客未严格包含 [Host A] 和 [Host B] 双人对谈标记")
 
     logger.info(
-        "双人剧本生成完毕 (Mode: %s), 对话回合数: %d 轮 (A:%d, B:%d)",
+        "双人播客生成完毕 (Mode: %s), 对话回合数: %d 轮 (A:%d, B:%d)",
         mode_used,
         total_turns,
         host_a_count,
