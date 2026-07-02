@@ -1,4 +1,4 @@
-"""Tests for ai_news_podcast.cli.run_daily helpers."""
+"""Tests for ai_news_podcast.cli.podcast_daily helpers."""
 
 from __future__ import annotations
 

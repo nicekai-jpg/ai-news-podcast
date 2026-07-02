@@ -58,8 +58,8 @@ name = CLI should not depend on site_builder internals
 type = forbidden
 
 source_modules =
-    ai_news_podcast.cli.pipeline_run
-    ai_news_podcast.cli.daily_report
+    ai_news_podcast.cli.podcast_pipeline
+    ai_news_podcast.cli.podcast_report
 
 forbidden_modules =
     ai_news_podcast.site_builder

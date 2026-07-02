@@ -1,8 +1,8 @@
-"""Tests for ai_news_podcast.cli.daily_report."""
+"""Tests for ai_news_podcast.cli.podcast_report."""
 
 from __future__ import annotations
 
-from ai_news_podcast.cli.daily_report import build_report_prompt
+from ai_news_podcast.cli.podcast_report import build_report_prompt
 
 
 class TestBuildReportPrompt:

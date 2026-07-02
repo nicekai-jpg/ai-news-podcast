@@ -24,7 +24,7 @@ from ai_news_podcast.pipeline.runner import run_pipeline
 from ai_news_podcast.pipeline.tts_engine import synthesize
 
 try:
-    from ai_news_podcast.cli.daily_report import generate_report
+    from ai_news_podcast.cli.podcast_report import generate_report
 except ImportError:
     generate_report = None  # type: ignore
 from ai_news_podcast.text_utils import clean_tts_text
@@ -137,7 +137,7 @@ async def _publish_or_skip(
         return 0
 
     log.info("Stage 5: publishing …")
-    from ai_news_podcast.cli.publish_episode import publish_episode
+    from ai_news_podcast.cli.podcast_publish import publish_episode
 
     publish_episode(
         root=root,
