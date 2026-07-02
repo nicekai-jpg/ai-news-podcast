@@ -50,6 +50,22 @@ class RawItem:
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
 
+    @classmethod
+    def from_dict(cls, d: dict[str, Any]) -> RawItem:
+        return cls(
+            id=d.get("id", ""),
+            title=d.get("title", ""),
+            link=d.get("link", ""),
+            normalized_link=d.get("normalized_link", ""),
+            source_name=d.get("source_name", ""),
+            source_category=d.get("source_category", ""),
+            published_at=d.get("published_at", ""),
+            summary=d.get("summary", ""),
+            full_text_snippet=d.get("full_text_snippet", ""),
+            category=d.get("category", ""),
+            language=d.get("language", ""),
+        )
+
 
 # ---------------------------------------------------------------------------
 # URL 规范化 (PLAN §1.3)
