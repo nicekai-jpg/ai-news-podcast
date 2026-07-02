@@ -9,7 +9,7 @@ from pathlib import Path
 
 import pytest
 
-import ai_news_podcast.cli.daily_report as report_module
+import ai_news_podcast.cli.podcast_report as report_module
 
 
 @pytest.fixture

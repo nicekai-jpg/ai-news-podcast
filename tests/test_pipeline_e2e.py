@@ -151,7 +151,7 @@ async def test_no_audio_run_creates_files(minimal_config: Path, monkeypatch) -> 
 
     # main() computes root = Path(__file__).resolve().parents[3]
     # Patch __file__ so it resolves to our temp tree.
-    import ai_news_podcast.cli.run_daily as run_daily_module
+    import ai_news_podcast.cli.podcast_daily as run_daily_module
 
     fake_file = root / "src" / "ai_news_podcast" / "cli" / "run_daily.py"
     monkeypatch.setattr(run_daily_module, "__file__", str(fake_file))

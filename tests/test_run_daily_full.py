@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-import ai_news_podcast.cli.run_daily as run_daily_module
+import ai_news_podcast.cli.podcast_daily as run_daily_module
 
 
 @pytest.fixture
