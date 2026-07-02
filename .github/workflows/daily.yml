@@ -47,26 +47,19 @@ jobs:
             echo "id=$(TZ=Asia/Shanghai date +%F)" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Stage 1: Fetch
+      - name: Run pipeline
         env:
           TZ: Asia/Shanghai
         run: |
           EPISODE="${{ steps.episode.outputs.id }}"
-          uv run podcast-fetch --date "$EPISODE"
-
-      - name: Stage 2: Process
-        env:
-          TZ: Asia/Shanghai
-        run: |
-          EPISODE="${{ steps.episode.outputs.id }}"
-          uv run podcast-process --date "$EPISODE"
+          uv run podcast-pipeline --date "$EPISODE"
 
       - name: Commit brief
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           EPISODE="${{ steps.episode.outputs.id }}"
-          git add data/raw/ data/briefs/
+          git add data/briefs/
           if git diff --cached --quiet; then
             echo "No brief changes to commit"
           else
