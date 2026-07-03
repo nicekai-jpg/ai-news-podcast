@@ -1,63 +1,70 @@
-<think>The user wants me to create a professional tech news daily report based on the provided materials. Let me analyze the materials:
+<think>
+The user wants me to write a tech news daily report in Chinese based on the provided materials. Let me analyze the materials:
 
-1. AReaL 2.0 - Open source RL infrastructure for self-evolving agents (secondary)
-2. World's first trillion model with zero NVIDIA content, popular overseas (secondary)
-3. Skywork 3.2 upgrade with Skywork Tags for agents (secondary)
-4. Superpowers 6 - HN hot discussion (secondary)
-5. Procut - iOS clipboard management tool (secondary)
+1. AReaL 2.0 open source - RL infrastructure for self-evolving agents
+2. First trillion-parameter model without NVIDIA - popular overseas
+3. Skywork 3.2 upgrade - Skywork Tags for agents joining work chat
+4. Superpowers 6 - HN hot discussion
+5. Procut - iOS clipboard management tool
 
-The date is July 3, 2026. All materials are marked as secondary importance. I need to synthesize these into a coherent tech news daily report in Chinese, following the specified format.
+The date is July 3, 2026. Let me craft a professional tech news daily report following the format requirements.
 
-Key themes I can identify:
-- AI Agents are a major theme (AReaL 2.0, Skywork 3.2, Superpowers 6)
-- Open source AI infrastructure
-- Non-NVIDIA AI ecosystem
-- Productivity tools
+I need to:
+- Use Markdown format
+- Big title with date
+- Brief introduction
+- Categorize news
+- Each news item with bold subtitle and summary
+- Optional AI insight at the end
+- All in Chinese
+- 800-1500 words
+- Merge related materials when possible
 
-Let me write this report now, being concise and professional. I'll merge related items where possible.
+Let me think about categorization:
+- AI前沿 (AI Frontier): AReaL 2.0, trillion model without NVIDIA
+- 产品与开源 (Products & Open Source): Skywork 3.2, Superpowers 6
+- 工具与应用 (Tools & Apps): Procut
 
-Let me organize:
-1. AI 前沿与开源 - covering AReaL 2.0, trillion model, Skywork
-2. 产品与工具 - covering Superpowers 6, Procut
-3. AI 洞察小结
-
-Let me write it out.</think>
-
+Let me write the report.
+</think>
 # 🌍 科技新闻日报 | 2026年07月03日
 
-**导语：** 今日科技动态聚焦"AI 智能体生态"的持续演进——从底层强化学习基础设施的开放，到万亿参数模型的"去英伟达化"突破，再到面向协作场景的 Agent 工牌系统，Agent 正从单点能力走向规模化、平台化落地。
+**今日要闻：智能体（Agent）生态加速演进，从强化学习基础设施到工作场景落地，AI 正在从"工具"向"协作伙伴"持续进化；同时，国产大模型凭借非英伟达硬件栈成功跻身全球第一梯队，引发海外开发者社区广泛关注。**
 
 ---
 
-## 💡 AI 前沿与开源动态
+## 🤖 AI 前沿：智能体基础设施与算力突围
 
-**AReaL 2.0 开源发布，打造面向自演进智能体的强化学习基础设施**
-面向智能体（Agent）训练的核心痛点，社区推出 AReaL 2.0，强化学习基础设施进一步开放。该项目旨在让 Agent 在长期使用中持续自我进化，与开发者共同构建自演进智能体生态。开源化的训练底座，有望降低中小团队搭建 Agent RL 流水线的门槛。
+- **AReaL 2.0 开源：让 Agent 越用越强的强化学习底座**
 
-**全球首个"零英伟达"万亿参数模型走红海外**
-一款完全不含英伟达（NVIDIA）技术栈的万亿参数大模型在海外开发者社区走红，并在 OpenRou 榜单上表现亮眼。该模型的成功验证了在国产或非英伟达算力体系上训练超大参数模型的可行性，对全球 AI 算力格局多元化具有标志性意义。
+  面向自演进智能体的强化学习（RL）基础设施 AReaL 正式发布 2.0 版本。与传统 RL 框架不同，AReaL 2.0 的核心目标是让 Agent 在与环境的持续交互中自我迭代、越用越强，进一步降低自演进智能体的训练门槛。该项目以开源方式与社区共建，意图打造一个开放、可扩展的智能体训练生态，推动 RL 从实验室能力走向真实业务场景的规模化部署。
 
----
+- **全球首个"零英伟达"万亿模型，海外开发者抢着用**
 
-## 🤖 大公司动态：智能体走向"工牌化"
-
-**天工 Skywork 3.2 重磅升级，Agent 正式"持证上岗"**
-昆仑万维旗下天工大模型迎来 3.2 版本更新，全新上线 Skywork Tags 功能。该功能相当于为每个 AI Agent 发放一张专属"工牌"，使其能够以标准化身份加入用户的工作群聊，与人类成员并肩协作。这一升级意味着 Agent 从"工具调用"迈向"组织成员"的角色化阶段，为多 Agent 协同办公场景提供了新范式。
+  一款完全基于非英伟达硬件栈训练的万亿参数大模型正式亮相，并在海外开发者社区迅速走红，霸榜主流开源模型榜单。这不仅是国产大模型在算力自主路线上的标志性突破，也意味着全球大模型竞赛的"硬件底座"正在发生结构性变化。对于受限于高端 GPU 供应的团队而言，这一路径提供了具备竞争力的替代方案。
 
 ---
 
-## 🛠 产品与开发者社区
+## 🛠 产品动态：Agent 进入工作流
 
-**Superpowers 6 引爆 Hacker News 热议**
-开发者社区工具 Superpowers 发布第 6 版本，在 Hacker News 引发热烈讨论（38 points、12 条评论）。作为面向开发者的辅助工具集，其新版本继续聚焦提升 AI 辅助编程的体验，进一步降低 AI Coding 的使用门槛。
+- **天工 3.2 重磅升级：Skywork Tags 上线，给 Agent 一张"工牌"**
 
-**iOS 剪贴板管理工具 Procut：碎片化信息的"二次收藏"**
-针对剪贴板内容易被聊天记录淹没的痛点，iOS 工具 Procut 提供了一套轻量级的碎片化信息管理方案。用户可在小红书、浏览器等场景下快速复制并归档链接与文本内容，让"稍后再看"真正可执行，成为效率工具市场中的细分创新。
+  天工大模型迎来 3.2 版本更新，重点功能 Skywork Tags 正式发布。该能力允许用户为 Agent 创建专属身份标签，并将其直接拉入工作群聊，使其能够像人类同事一样参与协作、响应任务。这一升级标志着 Agent 正在从"独立工具"转向"嵌入式协作成员"，企业级 AI 应用的人机协同范式由此进入新阶段。
+
+- **Superpowers 6 发布，社区热议开发者能力增强框架**
+
+  Superpowers 项目推出第六个主要版本，在 Hacker News 引发开发者社区关注与讨论。虽然具体细节尚未完全披露，但从社区反馈来看，该项目延续了一贯的"为开发者赋能"定位，聚焦工作流效率与能力扩展，受到独立开发者与小型团队的青睐。
 
 ---
 
-## 📊 行业观察
+## 📱 工具推荐：碎片化信息管理新解法
 
-综合来看，今天的几条新闻共同勾勒出一条清晰主线：**Agent 正在从"能力演示"走向"工程化落地"**。基础设施层面，AReaL 2.0 解决了 Agent 的训练问题；模型层面，"去英伟达"万亿模型证明了算力路径的多样性；应用层面，Skywork Tags 让 Agent 拥有了组织身份与协作入口；工具层面，开发者与个人用户的效率场景也在同步被 AI 重构。
+- **Procut：iOS 剪贴板管理工具，让"稍后再看"不再石沉大海**
 
-> **AI 洞察小结：** 今天的科技新闻表面分散，实则围绕同一个关键词——**Agent 生态化**。RL 基础设施的开放解决了 Agent "怎么变强"的问题，国产/非英伟达万亿模型解决了 Agent "在哪跑得起"的问题，而 Skywork Tags 则解决了 Agent "如何融入工作流"的问题。三者叠加，预示着 2026 年下半场的 AI 竞争主战场，已从"模型参数竞赛"悄然转向"Agent 工程化与生态构建"。可以预见，围绕 Agent 的开源协议、协作标准与算力适配，将成为未来数月最值得关注的产业风向标。
+  针对日常使用中复制链接、文本却常常淹没在聊天记录里的痛点，少数派推荐了 iOS 剪贴板管理工具 Procut。它通过智能分类、快速检索与碎片化收藏机制，帮助用户把临时复制的内容沉淀为可追溯、可整理的知识资产，弥补了 iOS 原生剪贴板在"信息暂存与回溯"上的能力短板。
+
+---
+
+## 💡 AI 洞察小结
+
+> 今日的科技动态呈现出两条清晰的主线：**一是 Agent 的"工作化"**——从 AReaL 2.0 的自演进训练框架，到天工 Skywork Tags 把 Agent 接入群聊协作，智能体正在以"同事"而非"工具"的身份进入生产场景，这背后是 RL 基础设施与应用入口的双重成熟；**二是算力与模型的"去英伟达化"**，首个零英伟达万亿模型走红海外，标志着大模型训练的硬件选择正在多元化，国产算力栈的工程化能力获得国际开发者社区的实质认可。可以预见，下一阶段的竞争焦点将不再是"模型有多大"，而是"Agent 能在多大程度上自主完成真实任务"以及"训练与部署的算力成本能否进一步下沉"。
