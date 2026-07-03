@@ -85,14 +85,16 @@ class DailyCommand(AsyncCommand):
             print("No stories in brief — aborting")
             return 1
 
+        import dataclasses
+
         # ── Stage 3: Script generation ──
         print("Stage 3: generating script …")
         podcast_text, warnings = generate_podcast(
             brief,
             episode_date=day,
             podcast_title=podcast_title,
-            script_cfg=cfg.script,
-            llm_cfg=cfg.llm,
+            writer_cfg=dataclasses.asdict(cfg.script),
+            llm_cfg=dataclasses.asdict(cfg.llm),
         )
         for w in warnings:
             print(f"Script warning: {w}")

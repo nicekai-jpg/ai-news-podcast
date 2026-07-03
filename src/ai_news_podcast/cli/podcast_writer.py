@@ -39,6 +39,8 @@ class WriterCommand(AsyncCommand):
             print("Brief has no stories")
             return 1
 
+        import dataclasses
+
         podcast_title = cfg.podcast.title
         script_cfg = cfg.script
         llm_cfg = cfg.llm
@@ -48,8 +50,8 @@ class WriterCommand(AsyncCommand):
             brief,
             episode_date=day,
             podcast_title=podcast_title,
-            script_cfg=script_cfg,
-            llm_cfg=llm_cfg,
+            writer_cfg=dataclasses.asdict(script_cfg),
+            llm_cfg=dataclasses.asdict(llm_cfg),
         )
         for w in warnings:
             print(f"Script warning: {w}")
