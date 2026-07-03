@@ -14,10 +14,10 @@
 
 **Files:**
 - Modify: `src/ai_news_podcast/pipeline/tts_engine.py`
-- Modify: `src/ai_news_podcast/cli/run_daily.py`
+- Modify: `src/ai_news_podcast/cli/podcast_daily.py`
 
 - [x] **Step 1: Modify `src/ai_news_podcast/pipeline/tts_engine.py`** (Done)
-- [x] **Step 2: Modify `src/ai_news_podcast/cli/run_daily.py`** (Done)
+- [x] **Step 2: Modify `src/ai_news_podcast/cli/podcast_daily.py`** (Done)
 
 ### Task 2: Remove redundant and untracked files
 

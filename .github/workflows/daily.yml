@@ -14,8 +14,8 @@ permissions:
   contents: write
 
 jobs:
-  pipeline:
-    name: Stage 1-2 (fetch → process)
+  stage1:
+    name: Stage 1 (fetch → process)
     runs-on: ubuntu-latest
     outputs:
       episode_id: ${{ steps.episode.outputs.id }}
@@ -68,10 +68,12 @@ jobs:
             git push origin main
           fi
 
-  script:
+  writer:
     name: Stage 3 (script generation)
-    needs: pipeline
+    needs: stage1
     runs-on: ubuntu-latest
+    outputs:
+      episode_id: ${{ needs.stage1.outputs.episode_id }}
     steps:
       - uses: actions/checkout@v4
 
@@ -96,15 +98,15 @@ jobs:
           TZ: Asia/Shanghai
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
         run: |
-          EPISODE="${{ needs.pipeline.outputs.episode_id }}"
-          uv run podcast-script --date "$EPISODE"
+          EPISODE="${{ needs.stage1.outputs.episode_id }}"
+          uv run podcast-writer --date "$EPISODE"
 
       - name: Commit script
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          EPISODE="${{ needs.pipeline.outputs.episode_id }}"
-          git add site/episodes/${EPISODE}.txt site/episodes/${EPISODE}.html
+          EPISODE="${{ needs.stage1.outputs.episode_id }}"
+          git add site/episodes/${EPISODE}.txt
           if git diff --cached --quiet; then
             echo "No script changes to commit"
           else
@@ -115,8 +117,10 @@ jobs:
 
   report:
     name: Stage 3b (daily report)
-    needs: pipeline
+    needs: stage1
     runs-on: ubuntu-latest
+    outputs:
+      episode_id: ${{ needs.stage1.outputs.episode_id }}
     steps:
       - uses: actions/checkout@v4
 
@@ -141,14 +145,14 @@ jobs:
           TZ: Asia/Shanghai
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
         run: |
-          EPISODE="${{ needs.pipeline.outputs.episode_id }}"
+          EPISODE="${{ needs.stage1.outputs.episode_id }}"
           uv run podcast-report --date "$EPISODE"
 
       - name: Commit report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          EPISODE="${{ needs.pipeline.outputs.episode_id }}"
+          EPISODE="${{ needs.stage1.outputs.episode_id }}"
           git add data/reports/
           if git diff --cached --quiet; then
             echo "No report changes to commit"
@@ -160,9 +164,11 @@ jobs:
 
   tts:
     name: Stage 4 (TTS audio)
-    needs: script
+    needs: writer
     runs-on: ubuntu-latest
     timeout-minutes: 240
+    outputs:
+      episode_id: ${{ needs.writer.outputs.episode_id }}
     steps:
       - uses: actions/checkout@v4
 
@@ -199,7 +205,7 @@ jobs:
 
       - name: Synthesize episode audio
         run: |
-          EPISODE="${{ needs.script.outputs.episode_id || needs.pipeline.outputs.episode_id }}"
+          EPISODE="${{ needs.writer.outputs.episode_id }}"
           export COSYVOICE_MODEL_DIR="$HOME/cosyvoice_models/CosyVoice2-0.5B"
           export PYTHONPATH="$HOME/cosyvoice_src:$HOME/cosyvoice_src/third_party/Matcha-TTS"
           # Stage 4: 使用 podcast-tts CLI，但需要特殊 Python 环境
@@ -212,7 +218,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          EPISODE="${{ needs.script.outputs.episode_id || needs.pipeline.outputs.episode_id }}"
+          EPISODE="${{ needs.writer.outputs.episode_id }}"
           git add -u site/
           if git diff --cached --quiet; then
             echo "No audio changes to commit"
@@ -249,14 +255,14 @@ jobs:
         env:
           TZ: Asia/Shanghai
         run: |
-          EPISODE="${{ needs.tts.outputs.episode_id || needs.script.outputs.episode_id || needs.pipeline.outputs.episode_id }}"
+          EPISODE="${{ needs.tts.outputs.episode_id || needs.report.outputs.episode_id }}"
           uv run podcast-publish --date "$EPISODE"
 
       - name: Commit site
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          EPISODE="${{ needs.tts.outputs.episode_id || needs.script.outputs.episode_id || needs.pipeline.outputs.episode_id }}"
+          EPISODE="${{ needs.tts.outputs.episode_id || needs.report.outputs.episode_id }}"
           git add -u site/ data/episodes.json
           git add -f "site/reports/daily_report_${EPISODE}.md"
           if git diff --cached --quiet; then

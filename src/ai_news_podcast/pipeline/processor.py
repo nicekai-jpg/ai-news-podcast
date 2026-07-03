@@ -21,7 +21,12 @@ from ai_news_podcast.pipeline.processor_dedup import (  # noqa: F401
     dedup_pipeline,
 )
 from ai_news_podcast.pipeline.processor_score import _assign_role, _score_cluster
-from ai_news_podcast.pipeline.processor_thesis import _extract_thesis, set_thesis_templates
+from ai_news_podcast.pipeline.processor_thesis import (  # noqa: F401
+    ThesisExtractor,
+    ThesisTemplateRepository,
+    _extract_thesis,
+    set_thesis_templates,
+)
 
 # Re-export types and functions for backward compatibility with existing tests
 from ai_news_podcast.pipeline.processor_types import (  # noqa: F401
@@ -58,7 +63,8 @@ def process(
     authority_cfg = cfg.get("source_authority", {})
 
     # Load thesis templates from config, keeping defaults as fallback
-    set_thesis_templates(cfg.get("thesis_templates"))
+    template_repo = ThesisTemplateRepository()
+    template_repo.set_templates(cfg.get("thesis_templates"))
 
     # 1) 三层去重
     deduped = dedup_pipeline(
@@ -121,7 +127,8 @@ def process(
     scored_stories.sort(key=lambda x: x.total_score, reverse=True)
 
     # 4) Thesis 提炼
-    thesis = _extract_thesis(scored_stories)
+    thesis_extractor = ThesisExtractor(template_repo)
+    thesis = thesis_extractor.extract(scored_stories)
 
     # 5) 组装 episode_brief
     brief: dict[str, Any] = {

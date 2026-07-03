@@ -23,13 +23,13 @@ The project is structured as an end-to-end data pipeline executed daily:
            ▼  (fetcher.py)
    [httpx Async Fetching & readability-lxml Full-text Parsing]
            │
-           ▼  (processor.py)
+           ▼  (runner.py: fetcher + processor)
    [Deduplication: TF-IDF + Overlap Keywords + Semantic Similarity]
            │
            ▼
    [DBSCAN Clustering & 5-Dimensional Relevance Scoring]
            │
-           ▼  (scriptwriter.py)
+           ▼  (podcastwriter.py)
    [Editor Agent: Outlines thesis, headlines, and quick updates] ──► (MiniMax-M3 LLM)
            │
            ▼
@@ -134,19 +134,22 @@ ai-news-podcast/
 ├── site/                       # Static web pages & RSS build outputs
 ├── src/ai_news_podcast/        # Main Python Package Source
 │   ├── cli/                    # CLI commands endpoints
-│   │   ├── run_daily.py       # Main orchestrator (Stage 1-5)
-│   │   ├── daily_report.py    # Standalone report generator
-│   │   └── publish_episode.py # Episode publisher
+│   │   ├── podcast_daily.py   # Main orchestrator (Stage 1 + 3-5)
+│   │   ├── podcast_pipeline.py # Stage 1: fetch → process → brief
+│   │   ├── podcast_writer.py  # Stage 3: script generation
+│   │   ├── podcast_tts.py     # Stage 4: TTS audio synthesis
+│   │   ├── podcast_report.py  # Stage 3b: daily report generator
+│   │   └── podcast_publish.py # Stage 5: episode publisher
 │   ├── pipeline/               # Core pipeline modules
 │   │   ├── fetcher.py         # Stage 1: Async scraper
-│   │   ├── processor*.py      # Stage 2: Deduplication, clustering & scoring
+│   │   ├── processor*.py      # Stage 1: Deduplication, clustering & scoring
 │   │   │   ├── processor_types.py
 │   │   │   ├── processor_dedup.py
 │   │   │   ├── processor_cluster.py
 │   │   │   ├── processor_context.py
 │   │   │   ├── processor_score.py
 │   │   │   └── processor_thesis.py
-│   │   ├── scriptwriter.py    # Stage 3: LLM Script generator
+│   │   ├── podcastwriter.py   # Stage 3: LLM Script generator
 │   │   ├── tts_engine.py      # Stage 4: CosyVoice TTS synthesis
 │   │   ├── tts_parser.py      # Dialogue chunk parser
 │   │   ├── tts_postprocess.py # Audio assembly & loudnorm

@@ -13,9 +13,12 @@
 from __future__ import annotations
 
 import logging
+from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from ai_news_podcast.config.models import AppConfig
+from ai_news_podcast.events import StageCompleted, StageFailed, StageStarted, event_bus
 from ai_news_podcast.pipeline.dedup import (
     get_recent_broadcasted_texts,
     get_recent_broadcasted_urls,
@@ -28,8 +31,19 @@ from ai_news_podcast.utils import read_json
 log = logging.getLogger(__name__)
 
 
-async def run_pipeline(
-    cfg: dict[str, Any],
+def _to_dict(cfg: AppConfig | dict[str, Any]) -> dict[str, Any]:
+    """Convert AppConfig back to dict for backward compatibility."""
+    if isinstance(cfg, dict):
+        return cfg
+    # AppConfig is a dataclass — convert to dict recursively
+    import dataclasses
+    import json
+
+    return json.loads(json.dumps(dataclasses.asdict(cfg), default=str))
+
+
+async def run_pipeline(  # noqa: PLR0915
+    cfg: AppConfig | dict[str, Any],
     sources: list[Any],
     date_str: str,
     data_dir: Path,
@@ -41,7 +55,7 @@ async def run_pipeline(
     Parameters
     ----------
     cfg:
-        完整的 config.yaml 内容（dict）。
+        AppConfig 实例或兼容的 dict。
     sources:
         由 load_sources() 读取的信源列表。
     date_str:
@@ -56,6 +70,7 @@ async def run_pipeline(
     dict
         episode_brief 字典，包含 ``thesis``、``stories``、``metadata`` 等字段。
     """
+    cfg_dict = _to_dict(cfg)
     brief_path = data_dir / "briefs" / f"brief_{date_str}.json"
 
     # ── 复用已有 brief ──────────────────────────────────────────────────────
@@ -74,8 +89,8 @@ async def run_pipeline(
         log.warning("Existing brief at %s appears invalid, re-running pipeline", brief_path)
 
     # ── Stage 1: 抓取 ───────────────────────────────────────────────────────
-    fetch_cfg = cfg.get("fetch", {})
-    processing_cfg = cfg.get("processing", {})
+    fetch_cfg = cfg_dict.get("fetch", {})
+    processing_cfg = cfg_dict.get("processing", {})
 
     timeout_seconds = int(fetch_cfg.get("timeout_seconds", 20))
     connect_timeout = int(fetch_cfg.get("connect_timeout", 5))
@@ -84,6 +99,7 @@ async def run_pipeline(
     max_pages = int(processing_cfg.get("max_pages", 80))
 
     log.info("Stage 1 [pipeline]: fetching RSS feeds …")
+    event_bus.emit(StageStarted(stage="fetch", episode_id=date_str, timestamp=datetime.now(tz=UTC)))
     raw_items = await fetch_all(
         sources,
         timeout_seconds=timeout_seconds,
@@ -95,9 +111,22 @@ async def run_pipeline(
 
     if not raw_items:
         log.warning("No items fetched — pipeline aborted")
+        event_bus.emit(
+            StageFailed(
+                stage="fetch",
+                episode_id=date_str,
+                error="No items fetched",
+                timestamp=datetime.now(tz=UTC),
+            )
+        )
         return {"stories": [], "thesis": "", "metadata": {"total_raw": 0, "error": "no_items"}}
 
     log.info("Stage 1 [pipeline]: fetched %d raw items", len(raw_items))
+    event_bus.emit(
+        StageCompleted(
+            stage="fetch", episode_id=date_str, duration_ms=0, result={"count": len(raw_items)}
+        )
+    )
 
     # ── 跨期历史去重 ──────────────────────────────────────────────────────────
     dedup_details: list[dict[str, Any]] = []
@@ -149,6 +178,9 @@ async def run_pipeline(
 
     # ── Stage 2: 处理（三层去重 → DBSCAN 聚类 → 五维打分） ──────────────────
     log.info("Stage 2 [pipeline]: dedup → cluster → score …")
+    event_bus.emit(
+        StageStarted(stage="process", episode_id=date_str, timestamp=datetime.now(tz=UTC))
+    )
     brief = process(raw_items, processing_cfg=processing_cfg)
 
     # ── 注入去重详细计算信息 ────────────────────────────────────────────────────
@@ -165,6 +197,14 @@ async def run_pipeline(
         sum(1 for s in brief.get("stories", []) if s.get("role") == "supporting"),
         sum(1 for s in brief.get("stories", []) if s.get("role") == "quick"),
         brief_path,
+    )
+    event_bus.emit(
+        StageCompleted(
+            stage="process",
+            episode_id=date_str,
+            duration_ms=0,
+            result={"stories": len(brief.get("stories", []))},
+        )
     )
 
     return brief

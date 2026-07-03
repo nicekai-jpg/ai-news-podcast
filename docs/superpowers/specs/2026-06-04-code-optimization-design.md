@@ -6,7 +6,7 @@
 - 多处 `except Exception:` 过于宽泛
 - 硬编码值散落各模块，应提取到配置
 - 跨模块重复逻辑（TTS 文本清洗）
-- `html_gen.py`（1173 行）和 `scriptwriter.py`（677 行）过大
+- `html_gen.py`（1173 行）和 `podcastwriter.py`（677 行）过大
 - `html_gen.py` 零测试覆盖
 
 ## 策略
@@ -19,7 +19,7 @@
 
 ### 1. 公共模块提取（基础，后续依赖）
 
-**问题**：TTS 文本清洗逻辑在 3 个文件中重复（`scriptwriter.py`、`tts_engine.py`、`run_daily.py`），正则模式也重复定义。
+**问题**：TTS 文本清洗逻辑在 3 个文件中重复（`podcastwriter.py`、`tts_engine.py`、`podcast_daily.py`），正则模式也重复定义。
 
 **方案**：创建 `src/ai_news_podcast/text_utils.py`，集中管理：
 - `_sanitize_for_tts` / `_clean_tts_text` 合并为统一的 `clean_tts_text()`
@@ -51,7 +51,7 @@
 
 ---
 
-### 4. scriptwriter.py
+### 4. podcastwriter.py
 
 | 类别 | 问题 | 修复 |
 |------|------|------|
@@ -108,7 +108,7 @@
 1. text_utils.py（基础，2/4/5 依赖）
 2. fetcher.py
 3. processor.py
-4. scriptwriter.py（依赖 1）
+4. podcastwriter.py（依赖 1）
 5. tts_engine.py（依赖 1）
 6. html_gen.py（独立，最大改动）
 7. runner.py（独立）

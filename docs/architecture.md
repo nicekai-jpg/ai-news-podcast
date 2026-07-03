@@ -4,7 +4,7 @@
 
 ## 系统工作流
 
-本项目被设计为一个线性执行的流水线（Pipeline），主要通过每日定时运行来工作。核心流程由 `src/ai_news_podcast/cli/run_daily.py` 调度。
+本项目被设计为一个线性执行的流水线（Pipeline），主要通过每日定时运行来工作。核心流程由 `src/ai_news_podcast/cli/podcast_daily.py` 调度。
 
 ```mermaid
 graph TD
@@ -25,14 +25,15 @@ graph TD
   - 使用 `trafilatura` 或 `readability-lxml` 提取新闻文章的全文正文。
   - 将抓取到的数据归一化为标准的 JSON 格式。
 
-### 2. 处理器 (`processor.py`)
+### 2. 处理器 (`processor*.py`)
 - **输入：** 抓取到的海量原始文章数据。
 - **主要职责：**
   - 根据 `config.yaml`（如 `selection.include_keywords` 参数）过滤掉旧新闻和不相关的主题。
-  - 使用 TF-IDF 和余弦相似度（基于 `scikit-learn`）对高度相似的重复文章进行去重。
-  - 基于关键词权重、新鲜度以及内容长度进行混合评分，选出当天的前 `N` 条最有价值的新闻报道。
+  - 使用 TF-IDF 和余弦相似度（基于 `scikit-learn`）对高度相似的重复文章进行去重（`processor_dedup.py`）。
+  - 使用 DBSCAN 密度聚类算法将相关新闻归为一类（`processor_cluster.py`）。
+  - 基于五维评分模型（影响力、新颖度、可解释性、相关性、权威度）进行混合评分（`processor_score.py`），选出当天的前 `N` 条最有价值的新闻报道。
 
-### 3. 文案创作者 (`scriptwriter.py`)
+### 3. 文案创作者 (`podcastwriter.py`)
 - **输入：** 评分最高的精选新闻。
 - **主要职责：**
   - 提取选定新闻的内容并构建复杂的大模型提示词 (Prompts)。
@@ -80,7 +81,7 @@ graph TD
 3. setup-uv          → 安装 uv 包管理器
 4. install ffmpeg    → 安装 ffmpeg（音频处理）
 5. uv sync           → 安装 Python 依赖
-6. podcast-pipeline  → Stage 1-2: 抓 RSS → 去重 → 聚类 → 评分 → brief JSON
+6. podcast-pipeline  → Stage 1: 抓 RSS → 去重 → 聚类 → 评分 → brief JSON
 7. podcast-report    → 复用 brief → LLM 生成 Markdown 日报
 8. podcast-daily     → Stage 3-5: LLM 写脚本 → TTS 合成音频（及音频分片） → 构建站点
 9. git commit & push → 将 brief/报告/文本文件/episodes 索引提交回 main（不提交 MP3，以 [skip ci] 标记提交）
