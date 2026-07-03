@@ -1,61 +1,55 @@
-<think>The user wants me to write a tech news daily report based on the provided materials. Let me analyze the materials:
+<think>
+Let me analyze the provided news materials and craft a professional tech news daily report in Chinese.
 
-1. AReaL 2.0 - RL infrastructure for self-evolving agents (open source)
-2. World's first trillion model with zero Nvidia content, popular overseas developers
-3. 天工 3.2 upgrade - Skywork Tags, giving agents a "work badge" to join group chats
-4. Superpowers 6 - HN hot discussion
-5. iOS clipboard management tool Procut
+Materials:
+1. AReaL 2.0 open source - RL infrastructure for self-evolving agents
+2. First trillion-parameter model with 0 NVIDIA content - popular overseas
+3. Skywork 3.2 upgrade - Skywork Tags, agent work badge
+4. Superpowers 6 - HN discussion
+5. Procut - iOS clipboard management tool
 
-I need to organize these into categories, write in Chinese, and make it professional. Let me structure this well.
+The date is July 3, 2026. Let me organize this into a proper tech news daily report.
 
-Date: 2026年07月03日
+I'll group these into categories:
+- AI前沿 (AI Frontier): AReaL 2.0, Trillion model, Skywork 3.2
+- 开源与工具 (Open Source & Tools): Superpowers 6
+- 产品与体验 (Products): Procut
 
-Key themes I see:
-- AI Agents are a hot topic (AReaL 2.0, 天工 3.2)
-- Open source AI models (the "0 Nvidia" trillion model)
-- Developer tools (Superpowers 6)
-- Consumer productivity tools (Procut)
-
-Let me write this out now.</think>
-
+Let me write a professional, well-structured report within 800-1500 characters.
+</think>
 # 🌍 科技新闻日报 | 2026年07月03日
 
-**导语**：今日科技圈焦点集中在 AI 智能体的基建升级与开源生态繁荣——从强化学习框架到万亿参数去英伟达模型，再到面向工作协同的 Agent 工具，智能体正以"基建+应用"双轮驱动的姿态加速落地。
+**今日核心趋势**：智能体（Agent）正从"工具"走向"同事"，围绕自演进能力、多模型基础设施与协作入口的竞争全面升温。
 
 ---
 
-## 🤖 AI 前沿：智能体基建再升级
+## 🤖 AI 前沿：智能体基础设施进入"自演进"时代
 
-- **AReaL 2.0 开源：面向自演进智能体的强化学习基础设施**
+- **AReaL 2.0 开源：让 Agent 越用越强的强化学习底座**
+  面向自演进智能体的强化学习基础设施 AReaL 2.0 正式开源，目标是与社区共同构建可持续进化的智能体生态。相较于以往静态的模型训练范式，AReaL 2.0 强调在真实交互中持续学习与迭代，意味着 Agent 不再是一次训练定终身，而是具备"使用即成长"的能力。该项目的开源有望降低自演进 Agent 的研发门槛，加速行业从"演示 Demo"走向"生产可用"。
 
-  AReaL 2.0 正式开源，定位为面向"自演进智能体"的强化学习（RL）基础设施。随着大模型从训练阶段走向部署阶段，如何让 Agent 在真实交互中持续自我进化成为下一阶段的关键命题。AReaL 2.0 正是为此目标而设计的训练-推理一体化框架，强调与社区共建生态，推动智能体在开放环境中不断迭代能力上限。
+- **全球首个"零英伟达"万亿模型，海外开发者争相体验**
+  一款完全不依赖英伟达硬件训练而成的万亿参数大模型正式发布，并在海外开发者社区迅速走红，登顶 OpenRouter 等主流模型调用平台。在全球算力供应链仍存不确定性的背景下，这一突破不仅展示了非英伟达技术路线的可行性，也为开发者提供了更具成本效益的模型选择，被视为 AI 基础设施多元化的重要里程碑。
 
-- **天工 3.2 重磅升级：Skywork Tags 让 Agent 拿到"工牌"加入群聊**
-
-  天工 3.2 版本迎来重要更新，推出 Skywork Tags 功能——为每个 Agent 赋予一张专属"工牌"，使其能够以正式成员身份接入企业或团队的群聊工具，与人类用户并肩协作。这一升级意味着 Agent 正在从"单点工具调用"迈向"组织级协同角色"，为多智能体在工作流中的常态化部署提供了更轻量的入口。
-
----
-
-## 🏗️ 大模型动态：去英伟达万亿模型走红海外
-
-- **全球首个"英伟达含量为0"的万亿模型霸榜海外开发者社区**
-
-  一款完全脱离英伟达算力栈训练而成的万亿参数大模型近期在海外开发者圈走红，并登顶 OpenRouter 等热门平台榜单。在全球高端 GPU 供给受限的背景下，这一突破展示了非英伟达算力路线（如国产 GPU 或自研加速器）在超大规模训练上的可行性，也意味着大模型训练的硬件选择正在走向多元化。
+- **天工 3.2 重磅升级：Skywork Tags 让 Agent 持证上岗**
+  昆仑万维旗下天工大模型推出 3.2 版本，重点上线 Skywork Tags 功能——相当于给每个 Agent 发一张"工牌"，使其能像同事一样加入用户的工作群聊，直接参与任务协作。这一升级将 Agent 从"被动响应工具"推向"主动协作者"，人机协同的工作流被进一步重塑。
 
 ---
 
-## 🛠️ 开发者与效率工具
+## 🛠️ 开源与工具：开发者社区持续活跃
 
-- **Superpowers 6 引爆 HN 讨论**
-
-  Superpowers 6 在 Hacker News 引发开发者热议，收获 38 分热度与 12 条评论。作为开发者生产力工具的迭代版本，Superpowers 持续打磨其面向工程师的核心能力，社区对其在代码工作流中的角色展开热烈讨论，反映出开发者对高效编码辅助工具的持续关注。
-
-- **剪贴板管理工具 Procut：换个方式收藏碎片化信息**
-
-  针对日常碎片化信息难以回溯的痛点，iOS 剪贴板管理工具 Procut 提供了一种更优雅的收藏方式。用户在小红书、微博等平台复制的内容可以被自动归档、结构化管理，从而告别聊天记录中被淹没的"稍后再看"列表，让灵感与链接真正可被检索与复用。
+- **Superpowers 6 引发 HN 热议**
+  Hacker News 上关于 Superpowers 6 的讨论热度持续走高，开发者围绕项目新版本的能力边界与使用场景展开深入交流，反映出社区对开发者效率工具的高度关注。
 
 ---
 
-## 📝 AI 洞察小结
+## 📱 产品与体验：碎片化信息管理新方案
 
-> 今日新闻呈现出两条清晰的主线：其一，**AI 智能体正从"概念热"走向"基建化"**，无论是 AReaL 2.0 的强化学习基础设施，还是天工 Skywork Tags 的工牌化协同，都是在为 Agent 在真实场景中规模化部署铺路；其二，**算力与模型的"去垄断"趋势**愈发明显——万亿参数模型不再必须绑定英伟达栈，这不仅是技术突破，更是产业格局重塑的信号。对开发者而言，工具层（Superpowers、Procut）的迭代同样值得关注：在大模型能力趋同的当下，工程效率与信息管理能力正在成为新的差异化战场。
+- **iOS 剪贴板管理工具 Procut：让碎片化收藏不再丢失**
+  针对"复制即遗忘"的日常痛点，剪贴板管理工具 Procut 提供了一种轻量化解决方案，帮助用户高效收纳来自小红书等平台的链接、文本与图片碎片，重新定义移动端的信息暂存与回溯体验。
+
+---
+
+## 📊 AI 洞察小结
+
+> 今天的科技动态呈现出一条清晰的主线：**AI 智能体正从"能力展示"迈向"基础设施级落地"**。AReaL 2.0 解决了 Agent 如何持续进化的问题，零英伟达万亿模型则打破了底层算力垄断的隐忧，而 Skywork Tags 则将 Agent 真正嵌入了日常协作场景。三者分别对应了智能体的"学习能力、算力底座、协作入口"三个关键环节，标志着 AI Agent 正在从单点突破走向系统性成熟。与此同时，开发者工具与消费级应用层面的微创新也在持续涌现，预示着 2026 年下半场的竞争将更加深入产业纵深。
