@@ -1,73 +1,61 @@
-<think>
-The user wants me to create a professional tech news daily report based on the provided materials. Let me analyze the materials:
+<think>The user wants me to write a tech news daily report based on the provided materials. Let me analyze the materials:
 
-1. AReaL 2.0 - Open source RL infrastructure for self-evolving agents
-2. First trillion model with 0% NVIDIA content, popular with overseas developers
-3. Tiangong 3.2 upgrade with Skywork Tags feature for agents
+1. AReaL 2.0 - RL infrastructure for self-evolving agents (open source)
+2. World's first trillion model with zero Nvidia content, popular overseas developers
+3. 天工 3.2 upgrade - Skywork Tags, giving agents a "work badge" to join group chats
 4. Superpowers 6 - HN hot discussion
 5. iOS clipboard management tool Procut
 
-The materials are somewhat fragmented, so I need to combine and organize them thematically. Let me think about the categories:
-
-- AI前沿 (AI Frontier): AReaL 2.0, the trillion model, Tiangong 3.2
-- 开源生态 (Open Source Ecosystem): Superpowers 6
-- 工具与效率 (Tools & Productivity): Procut
-
-Let me write this report professionally in Chinese, around 800-1500 words.
+I need to organize these into categories, write in Chinese, and make it professional. Let me structure this well.
 
 Date: 2026年07月03日
 
-Let me organize the news:
+Key themes I see:
+- AI Agents are a hot topic (AReaL 2.0, 天工 3.2)
+- Open source AI models (the "0 Nvidia" trillion model)
+- Developer tools (Superpowers 6)
+- Consumer productivity tools (Procut)
 
-1. AI Agent infrastructure and tools seem to be the main theme:
-   - AReaL 2.0 (open source RL infrastructure for agents)
-   - Tiangong 3.2 with Skywork Tags (agent collaboration)
-   - The trillion model (overseas popularity)
+Let me write this out now.</think>
 
-2. Developer tools: Superpowers 6
-
-3. Consumer tools: Procut
-
-Let me draft this out with proper structure and professional language.
-</think>
 # 🌍 科技新闻日报 | 2026年07月03日
 
-**导语**：今日科技动态聚焦于 AI Agent 生态的纵深推进——从强化学习基础设施、大模型去英伟达化，到企业级 Agent 协作能力的持续升级，智能体正从"能用"走向"好用"的演进关键期。
+**导语**：今日科技圈焦点集中在 AI 智能体的基建升级与开源生态繁荣——从强化学习框架到万亿参数去英伟达模型，再到面向工作协同的 Agent 工具，智能体正以"基建+应用"双轮驱动的姿态加速落地。
 
 ---
 
-## 🤖 AI 前沿：Agent 基建与模型突围
+## 🤖 AI 前沿：智能体基建再升级
 
-**AReaL 2.0 开源，让 Agent 越用越强**
+- **AReaL 2.0 开源：面向自演进智能体的强化学习基础设施**
 
-面向自演进智能体的强化学习基础设施 AReaL 2.0 正式开源，旨在与社区共同推进自演进智能体生态的发展。该项目的核心思路是让 Agent 在与环境的持续交互中自我迭代优化能力曲线，降低开发者构建长期学习型智能体的工程门槛。在大模型竞争从"参数比拼"转向"能力沉淀"的当下，此类基础设施有望成为下一代 AI 应用的底座。
+  AReaL 2.0 正式开源，定位为面向"自演进智能体"的强化学习（RL）基础设施。随着大模型从训练阶段走向部署阶段，如何让 Agent 在真实交互中持续自我进化成为下一阶段的关键命题。AReaL 2.0 正是为此目标而设计的训练-推理一体化框架，强调与社区共建生态，推动智能体在开放环境中不断迭代能力上限。
 
-**全球首个"零英伟达"万亿模型霸榜，成海外开发者抢手货**
+- **天工 3.2 重磅升级：Skywork Tags 让 Agent 拿到"工牌"加入群聊**
 
-在主流大模型普遍深度依赖英伟达 GPU 集群训练的行业格局下，首个训练链路中英伟达含量为 0 的万亿参数模型正式亮相，并在 OpenRouter 等海外主流模型调用平台上迅速登顶。该成果意味着国产算力栈已具备支撑超大参数规模训练的成熟能力，同时也为全球开发者提供了更具性价比与供应链韧性的选择。
-
-**天工 3.2 重磅升级：Skywork Tags 上线，Agent 有了"工牌"**
-
-天工 3.2 推出 Skywork Tags 功能，相当于为每个 Agent 颁发一张"工牌"，使其能够以更结构化的身份被邀请进入用户的工作群聊中，与人类协作完成任务。这一升级直击当前 Agent 落地的核心痛点——身份与权限的模糊问题，让 Agent 从"外挂工具"转变为"团队成员"，进一步模糊了人与智能体之间的协作边界。
+  天工 3.2 版本迎来重要更新，推出 Skywork Tags 功能——为每个 Agent 赋予一张专属"工牌"，使其能够以正式成员身份接入企业或团队的群聊工具，与人类用户并肩协作。这一升级意味着 Agent 正在从"单点工具调用"迈向"组织级协同角色"，为多智能体在工作流中的常态化部署提供了更轻量的入口。
 
 ---
 
-## 🛠️ 产品与开源
+## 🏗️ 大模型动态：去英伟达万亿模型走红海外
 
-**Superpowers 6 在 HN 引热议**
+- **全球首个"英伟达含量为0"的万亿模型霸榜海外开发者社区**
 
-开发效率工具 Superpowers 6 在 Hacker News 引发开发者社区讨论，热度持续攀升。作为一款面向开发者的辅助工具，其新版本在功能与体验上的迭代，再次印证了 AI 时代开发者对"效率杠杆"的旺盛需求。
-
----
-
-## 📱 效率工具
-
-**Procut：重新定义剪贴板管理**
-
-iOS 剪贴板管理工具 Procut 切入了一个被长期低估的痛点场景——碎片化信息收藏。无论是小红书链接、聊天片段还是临时想法，复制即被淹没的体验几乎困扰过每一个智能手机用户。Procut 通过更智能的剪贴板管理逻辑，让这些"数字剪报"真正可被检索、可被组织，也折射出工具型应用向"轻量化信息中枢"演进的趋势。
+  一款完全脱离英伟达算力栈训练而成的万亿参数大模型近期在海外开发者圈走红，并登顶 OpenRouter 等热门平台榜单。在全球高端 GPU 供给受限的背景下，这一突破展示了非英伟达算力路线（如国产 GPU 或自研加速器）在超大规模训练上的可行性，也意味着大模型训练的硬件选择正在走向多元化。
 
 ---
 
-## 📝 今日小结
+## 🛠️ 开发者与效率工具
 
-> 今天的科技图景呈现出两条清晰的主线：一方面，AI Agent 赛道从底层基础设施（AReaL 2.0）到上层协作形态（Skywork Tags）同步推进，行业正加速解决"智能体如何真正融入生产场景"这一核心命题；另一方面，国产算力"去英伟达"突破与开源生态的活跃相互呼应，显示出中国 AI 产业在自主创新与全球协作之间的双线推进。可以预见，2026 年的下半年，Agent 之间的竞争将不再是"谁更聪明"，而是"谁更好用、谁更可信"。
+- **Superpowers 6 引爆 HN 讨论**
+
+  Superpowers 6 在 Hacker News 引发开发者热议，收获 38 分热度与 12 条评论。作为开发者生产力工具的迭代版本，Superpowers 持续打磨其面向工程师的核心能力，社区对其在代码工作流中的角色展开热烈讨论，反映出开发者对高效编码辅助工具的持续关注。
+
+- **剪贴板管理工具 Procut：换个方式收藏碎片化信息**
+
+  针对日常碎片化信息难以回溯的痛点，iOS 剪贴板管理工具 Procut 提供了一种更优雅的收藏方式。用户在小红书、微博等平台复制的内容可以被自动归档、结构化管理，从而告别聊天记录中被淹没的"稍后再看"列表，让灵感与链接真正可被检索与复用。
+
+---
+
+## 📝 AI 洞察小结
+
+> 今日新闻呈现出两条清晰的主线：其一，**AI 智能体正从"概念热"走向"基建化"**，无论是 AReaL 2.0 的强化学习基础设施，还是天工 Skywork Tags 的工牌化协同，都是在为 Agent 在真实场景中规模化部署铺路；其二，**算力与模型的"去垄断"趋势**愈发明显——万亿参数模型不再必须绑定英伟达栈，这不仅是技术突破，更是产业格局重塑的信号。对开发者而言，工具层（Superpowers、Procut）的迭代同样值得关注：在大模型能力趋同的当下，工程效率与信息管理能力正在成为新的差异化战场。
