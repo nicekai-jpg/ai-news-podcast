@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import logging
 import os
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass(frozen=True)
@@ -109,5 +112,17 @@ class CosyVoice2Engine:
             raise FileNotFoundError(f"Reference audio not found: {ref_wav}")
 
         model = self._ensure_model()
-        output = next(model.inference_zero_shot(text, ref_text, str(ref_wav), stream=False))
-        return output["tts_speech"]
+        try:
+            output = next(model.inference_zero_shot(text, ref_text, str(ref_wav), stream=False))
+            return output["tts_speech"]
+        except StopIteration:
+            import torch
+
+            logger.warning(
+                "CosyVoice returned no speech for chunk (host=%s). "
+                "Returning 1s silence. Input text: %r",
+                host,
+                text[:80],
+            )
+            sr = self._config.sample_rate
+            return torch.zeros(1, sr)
