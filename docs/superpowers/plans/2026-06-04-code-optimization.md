@@ -16,12 +16,12 @@
 |------|------|------|
 | 创建 | `src/ai_news_podcast/text_utils.py` | 统一的 TTS 文本清洗函数和正则常量 |
 | 创建 | `tests/test_text_utils.py` | text_utils 的单元测试 |
-| 创建 | `src/ai_news_podcast/prompts.py` | LLM prompt 模板（从 scriptwriter.py 提取） |
+| 创建 | `src/ai_news_podcast/prompts.py` | LLM prompt 模板（从 podcastwriter.py 提取） |
 | 创建 | `src/ai_news_podcast/pipeline/dedup.py` | 跨期去重逻辑（从 runner.py 提取） |
 | 创建 | `tests/test_html_gen.py` | html_gen.py 的单元测试 |
-| 修改 | `src/ai_news_podcast/pipeline/scriptwriter.py` | 删除重复清洗逻辑，import text_utils；删除内联 prompt，import prompts |
+| 修改 | `src/ai_news_podcast/pipeline/podcastwriter.py` | 删除重复清洗逻辑，import text_utils；删除内联 prompt，import prompts |
 | 修改 | `src/ai_news_podcast/pipeline/tts_engine.py` | 删除重复清洗逻辑，import text_utils；硬编码提取到配置 |
-| 修改 | `src/ai_news_podcast/cli/run_daily.py` | 删除重复正则，import text_utils |
+| 修改 | `src/ai_news_podcast/cli/podcast_daily.py` | 删除重复正则，import text_utils |
 | 修改 | `src/ai_news_podcast/pipeline/fetcher.py` | 收窄异常，硬编码提取到配置 |
 | 修改 | `src/ai_news_podcast/pipeline/processor.py` | 收窄异常，补类型标注，硬编码提取到配置 |
 | 修改 | `src/ai_news_podcast/pipeline/runner.py` | 收窄异常，硬编码提取到配置，去重逻辑拆到 dedup.py |
@@ -41,10 +41,10 @@
 
 - [ ] **步骤 1：编写 text_utils.py**
 
-将 `scriptwriter.py:63-96` 的 `_sanitize_for_tts` 和 `tts_engine.py:21-44` 的 `_clean_tts_text` 合并为统一的 `clean_tts_text()`。合并逻辑取两者之并集：
+将 `podcastwriter.py:63-96` 的 `_sanitize_for_tts` 和 `tts_engine.py:21-44` 的 `_clean_tts_text` 合并为统一的 `clean_tts_text()`。合并逻辑取两者之并集：
 
 ```python
-"""公共文本清洗工具 — 供 scriptwriter、tts_engine、run_daily 共用。"""
+"""公共文本清洗工具 — 供 podcastwriter、tts_engine、podcast_daily 共用。"""
 
 from __future__ import annotations
 
@@ -72,7 +72,7 @@ RE_EMPTY_PAREN = re.compile(r"[（(]\s*[）)]")
 def clean_tts_text(text: str, *, preserve_ssml: bool = True) -> str:
     """清洗 LLM 输出中 TTS 不友好的残留内容。
 
-    合并了原 scriptwriter._sanitize_for_tts 和 tts_engine._clean_tts_text 的全部逻辑。
+    合并了原 podcastwriter._sanitize_for_tts 和 tts_engine._clean_tts_text 的全部逻辑。
     当 preserve_ssml=True 时，检测到 SSML 标签则保留 XML 标记。
     """
     if not text:
@@ -178,9 +178,9 @@ class TestCleanTtsText:
 运行：`uv run pytest tests/test_text_utils.py -v`
 预期：全部 PASS
 
-- [ ] **步骤 4：替换 scriptwriter.py 中的 _sanitize_for_tts**
+- [ ] **步骤 4：替换 podcastwriter.py 中的 _sanitize_for_tts**
 
-在 `scriptwriter.py` 中：
+在 `podcastwriter.py` 中：
 - 添加 `from ai_news_podcast.text_utils import clean_tts_text`
 - 将第 490 行的 `script = _sanitize_for_tts(script)` 改为 `script = clean_tts_text(script)`
 - 删除 `_sanitize_for_tts` 函数定义（第 63-96 行）
@@ -192,16 +192,16 @@ class TestCleanTtsText:
 - 将第 62、87、95 行的 `_clean_tts_text(...)` 改为 `clean_tts_text(...)`
 - 删除 `_clean_tts_text` 函数定义（第 21-44 行）
 
-- [ ] **步骤 6：替换 run_daily.py 中的内联正则**
+- [ ] **步骤 6：替换 podcast_daily.py 中的内联正则**
 
-在 `run_daily.py` 第 200-204 行，替换为：
+在 `podcast_daily.py` 第 200-204 行，替换为：
 ```python
 from ai_news_podcast.text_utils import clean_tts_text
 clean_transcript = clean_tts_text(script_text, preserve_ssml=False) + "\n"
 ```
 删除原来的 4 行内联正则。
 
-- [ ] **步骤 7：替换 scriptwriter.py 第 549 行的 mood 正则**
+- [ ] **步骤 7：podcastwriter.py 第 549 行的 mood 正则**
 
 将 `line = re.sub(r"\[mood:\w+\]\s*", "", line)` 改为使用 `RE_MOOD_TAG`：
 ```python
@@ -217,7 +217,7 @@ line = RE_MOOD_TAG.sub("", line)
 - [ ] **步骤 9：Commit**
 
 ```bash
-git add src/ai_news_podcast/text_utils.py tests/test_text_utils.py src/ai_news_podcast/pipeline/scriptwriter.py src/ai_news_podcast/pipeline/tts_engine.py src/ai_news_podcast/cli/run_daily.py
+git add src/ai_news_podcast/text_utils.py tests/test_text_utils.py src/ai_news_podcast/pipeline/podcastwriter.py src/ai_news_podcast/pipeline/tts_engine.py src/ai_news_podcast/cli/podcast_daily.py
 git commit -m "refactor: extract shared text_utils module, eliminate duplicate TTS cleaning logic"
 ```
 
@@ -309,11 +309,11 @@ git commit -m "refactor: processor — extract thesis templates to config, add t
 
 ---
 
-## 任务 4：scriptwriter.py 优化
+## 任务 4：podcastwriter.py 优化
 
 **文件：**
 - 创建：`src/ai_news_podcast/prompts.py`
-- 修改：`src/ai_news_podcast/pipeline/scriptwriter.py`
+- 修改：`src/ai_news_podcast/pipeline/podcastwriter.py`
 - 修改：`config/config.yaml`
 
 - [ ] **步骤 1：将 COMPANIES 列表提取到 config.yaml**
@@ -345,25 +345,25 @@ entities:
     - "tesla"
 ```
 
-在 `scriptwriter.py` 中改为从配置读取，保留原列表作为默认值。
+在 `podcastwriter.py` 中改为从配置读取，保留原列表作为默认值。
 
 - [ ] **步骤 2：将 LLM prompt 模板提取到 prompts.py**
 
-创建 `src/ai_news_podcast/prompts.py`，将 `_build_editor_prompt` 和 `_build_writer_prompt` 中的长字符串模板提取为模块级常量或函数。`scriptwriter.py` 改为 `from ai_news_podcast.prompts import ...`。
+创建 `src/ai_news_podcast/prompts.py`，将 `_build_editor_prompt` 和 `_build_writer_prompt` 中的长字符串模板提取为模块级常量或函数。`podcastwriter.py` 改为 `from ai_news_podcast.prompts import ...`。
 
-- [ ] **步骤 3：收窄 scriptwriter.py 的 except Exception**
+- [ ] **步骤 3：收窄 podcastwriter.py 的 except Exception**
 
 第 379 行 LLM 调用：`except Exception as e:` → `except (httpx.HTTPError, json.JSONDecodeError, OSError, ValueError) as e:`
 
 - [ ] **步骤 4：运行测试验证**
 
-运行：`uv run pytest tests/test_scriptwriter.py -v && uv run ruff check src/ai_news_podcast/pipeline/scriptwriter.py src/ai_news_podcast/prompts.py`
+运行：`uv run pytest tests/test_scriptwriter.py -v && uv run ruff check src/ai_news_podcast/pipeline/podcastwriter.py src/ai_news_podcast/prompts.py`
 预期：PASS
 
 - [ ] **步骤 5：Commit**
 
 ```bash
-git add src/ai_news_podcast/prompts.py src/ai_news_podcast/pipeline/scriptwriter.py config/config.yaml
+git add src/ai_news_podcast/prompts.py src/ai_news_podcast/pipeline/podcastwriter.py config/config.yaml
 git commit -m "refactor: scriptwriter — extract prompts and entities, narrow exceptions"
 ```
 

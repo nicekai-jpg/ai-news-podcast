@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from ai_news_podcast.pipeline.podcastwriter import generate_show_notes
+from ai_news_podcast.site_builder.show_notes import generate_show_notes
 
 
 class TestGenerateShowNotes:
@@ -52,7 +52,7 @@ class TestGenerateShowNotes:
             episode_date=datetime(2024, 3, 15),
         )
         assert "# AI News | 2024-03-15" in md
-        assert "2024年3月15日" in md
+        assert "2024年03月15日" in md
         assert "> AI is evolving fast" in md
         assert "🔴 主要报道" in md
         assert "🟡 支撑消息" in md

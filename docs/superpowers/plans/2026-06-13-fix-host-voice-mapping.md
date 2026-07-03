@@ -130,9 +130,9 @@ git commit -m "fix: resolve host voice swapping issue and add tests"
 
 **Files:**
 - Modify: `config/config.yaml`
-- Modify: `src/ai_news_podcast/cli/run_daily.py`
+- Modify: `src/ai_news_podcast/cli/podcast_daily.py`
 - Modify: `src/ai_news_podcast/prompts.py`
-- Modify: `src/ai_news_podcast/pipeline/scriptwriter.py`
+- Modify: `src/ai_news_podcast/pipeline/podcastwriter.py`
 
 - [ ] **Step 1: Update voice configuration in `config/config.yaml`**
 
@@ -142,7 +142,7 @@ Change `host_a_voice` to `zh-CN-YunjianNeural`:
   host_a_voice: "zh-CN-YunjianNeural"  # edge / hybrid 降级时使用
 ```
 
-- [ ] **Step 2: Update default fallback in `src/ai_news_podcast/cli/run_daily.py`**
+- [ ] **Step 2: Update default fallback in `src/ai_news_podcast/cli/podcast_daily.py`**
 
 Change `host_a_voice` default to `"zh-CN-YunjianNeural"`:
 
@@ -166,7 +166,7 @@ Replace `zh-CN-YunxiNeural` with `zh-CN-YunjianNeural`:
   <voice name="zh-CN-YunjianNeural">
 ```
 
-- [ ] **Step 4: Update voice count checks in `src/ai_news_podcast/pipeline/scriptwriter.py`**
+- [ ] **Step 4: Update voice count checks in `src/ai_news_podcast/pipeline/podcastwriter.py`**
 
 Modify:
 
@@ -186,6 +186,6 @@ Expected: PASS
 - [ ] **Step 6: Commit**
 
 ```bash
-git add config/config.yaml src/ai_news_podcast/cli/run_daily.py src/ai_news_podcast/prompts.py src/ai_news_podcast/pipeline/scriptwriter.py
+git add config/config.yaml src/ai_news_podcast/cli/podcast_daily.py src/ai_news_podcast/prompts.py src/ai_news_podcast/pipeline/podcastwriter.py
 git commit -m "feat: improve default male voice quality by switching from Yunxi to Yunjian"
 ```

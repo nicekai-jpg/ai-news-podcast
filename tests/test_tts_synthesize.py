@@ -120,13 +120,14 @@ async def test_synthesize_cosyvoice2_backend(tmp_path: Path, monkeypatch) -> Non
     output = tmp_path / "out.mp3"
     called: dict = {}
 
-    async def fake_synth(chunks, output_path, **kwargs):
-        called["chunks"] = chunks
+    async def fake_synth(self, text, *, output_path, **kwargs):
+        called["text"] = text
         called["output_path"] = output_path
         Path(output_path).write_text("ok", encoding="utf-8")
 
+    # Patch the CosyVoice2Backend.synthesize method
     monkeypatch.setattr(
-        "ai_news_podcast.pipeline.tts_engine.synthesize_cosyvoice2",
+        "ai_news_podcast.pipeline.tts_backends.cosyvoice2.CosyVoice2Backend.synthesize",
         fake_synth,
     )
     await synthesize(
@@ -136,7 +137,7 @@ async def test_synthesize_cosyvoice2_backend(tmp_path: Path, monkeypatch) -> Non
         cfg={"tts": {}},
     )
     assert output.exists()
-    assert len(called["chunks"]) == 2
+    assert "[Host A]" in called["text"]
 
 
 @pytest.mark.asyncio

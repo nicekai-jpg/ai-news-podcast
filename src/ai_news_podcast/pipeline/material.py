@@ -6,123 +6,11 @@
 from __future__ import annotations
 
 import logging
-from functools import lru_cache
-from pathlib import Path
 from typing import Any
 
-import yaml
+from ai_news_podcast.pipeline.strategies import StrategyRegistry
 
 logger = logging.getLogger(__name__)
-
-# ---------------------------------------------------------------------------
-# 默认实体列表（当 config.yaml 中未配置 entities.companies 时使用）
-# ---------------------------------------------------------------------------
-
-_DEFAULT_COMPANIES = [
-    "谷歌",
-    "google",
-    "openai",
-    "微软",
-    "microsoft",
-    "英伟达",
-    "nvidia",
-    "苹果",
-    "apple",
-    "meta",
-    "anthropic",
-    "claude",
-    "字节",
-    "腾讯",
-    "百度",
-    "阿里",
-    "华为",
-    "奥迪",
-    "audi",
-    "特斯拉",
-    "tesla",
-]
-
-
-@lru_cache(maxsize=1)
-def _load_companies_from_config() -> list[str]:
-    """从 config.yaml 读取 entities.companies，读取失败时返回默认值。"""
-    try:
-        config_path = (
-            Path(__file__).resolve().parent.parent.parent.parent / "config" / "config.yaml"
-        )
-        with config_path.open(encoding="utf-8") as f:
-            cfg = yaml.safe_load(f)
-    except (OSError, yaml.YAMLError, KeyError):
-        return _DEFAULT_COMPANIES
-    else:
-        companies = cfg.get("entities", {}).get("companies", [])
-        return companies if companies else _DEFAULT_COMPANIES
-
-
-def _get_story_entities(story: dict[str, Any]) -> set[str]:
-    """提取新闻故事中的公司/品牌实体词，用于多样性去重。"""
-    title = str(story.get("representative_title", "")).lower()
-    entities = set()
-    companies = _load_companies_from_config()
-    for c in companies:
-        if c in title:
-            # 标准化实体名
-            norm = c
-            if c in ("google", "谷歌"):
-                norm = "谷歌"
-            elif c in ("microsoft", "微软"):
-                norm = "微软"
-            elif c in ("nvidia", "英伟达"):
-                norm = "英伟达"
-            elif c in ("apple", "苹果"):
-                norm = "苹果"
-            elif c in ("audi", "奥迪"):
-                norm = "奥迪"
-            elif c in ("tesla", "特斯拉"):
-                norm = "特斯拉"
-            entities.add(norm)
-    return entities
-
-
-def _select_with_diversity(
-    stories: list[dict[str, Any]],
-    max_stories: int,
-) -> list[dict[str, Any]]:
-    """动态实体多样性重排（MMR-like）：防止同一家公司霸榜。
-
-    按分数降序挑选，但如果候选新闻包含已选中实体的关键词，
-    则对其施加分数惩罚（每冲突一次扣 3 分）。
-    """
-    active = [s for s in stories if isinstance(s, dict) and s.get("role") != "skip"]
-    selected: list[dict[str, Any]] = []
-    entity_counts: dict[str, int] = {}
-    candidates = [dict(s) for s in active]
-
-    while len(selected) < max_stories and candidates:
-        for c in candidates:
-            orig_score = c.get("total_score", 0)
-            c_entities = _get_story_entities(c)
-            penalty = sum(3 * entity_counts.get(ent, 0) for ent in c_entities)
-            c["_temp_score"] = orig_score - penalty
-
-        candidates.sort(key=lambda x: x.get("_temp_score", 0), reverse=True)
-        best = candidates.pop(0)
-        selected.append(best)
-
-        for ent in _get_story_entities(best):
-            entity_counts[ent] = entity_counts.get(ent, 0) + 1
-
-    return selected
-
-
-def _select_pure_score(
-    stories: list[dict[str, Any]],
-    max_stories: int,
-) -> list[dict[str, Any]]:
-    """纯按分数排序，取 top N。"""
-    active = [s for s in stories if isinstance(s, dict) and s.get("role") != "skip"]
-    active.sort(key=lambda s: s.get("total_score", 0), reverse=True)
-    return active[:max_stories]
 
 
 def build_material_text(
@@ -148,12 +36,8 @@ def build_material_text(
     """
     stories = brief.get("stories", [])
 
-    if strategy == "score_diversity":
-        selected = _select_with_diversity(stories, max_stories)
-    elif strategy == "pure_score":
-        selected = _select_pure_score(stories, max_stories)
-    else:
-        raise ValueError(f"Unknown strategy: {strategy}")
+    strategy_obj = StrategyRegistry.get(strategy)
+    selected = strategy_obj.select(stories, max_stories)
 
     sections: list[str] = []
     for i, story in enumerate(selected, 1):

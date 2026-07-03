@@ -23,13 +23,13 @@
            ▼  (fetcher.py)
    [httpx 异步抓取 & readability-lxml 网页正文解析]
            │
-           ▼  (processor.py)
+           ▼  (runner.py: fetcher + processor)
    [智能去重：TF-IDF + 关键词 overlap 重合度 + 语义相似度度量]
            │
            ▼
    [DBSCAN 聚类分析 & 5维价值评分机制]
            │
-           ▼  (scriptwriter.py)
+           ▼  (podcastwriter.py)
    [主编 Agent：定调 Thesis、选定双头条与 3 条快讯大纲] ──► (MiniMax-M3 旗舰大模型)
            │
            ▼
@@ -134,12 +134,26 @@ ai-news-podcast/
 ├── site/                       # 静态播放器页面及 feed.xml 本地临时构建目录
 ├── src/ai_news_podcast/        # 项目主包源码
 │   ├── cli/                    # CLI 终端命令注册接口
+│   │   ├── podcast_daily.py    # 主编排器 (Stage 1 + 3-5)
+│   │   ├── podcast_pipeline.py # Stage 1: 数据抓取与处理
+│   │   ├── podcast_writer.py   # Stage 3: 播客脚本生成
+│   │   ├── podcast_tts.py      # Stage 4: TTS 语音合成
+│   │   ├── podcast_report.py   # Stage 3b: 日报生成
+│   │   └── podcast_publish.py  # Stage 5: 站点发布
 │   ├── pipeline/               # 流水线核心组件
 │   │   ├── fetcher.py          # Stage 1: 异步网页解析抓取器
-│   │   ├── processor.py        # Stage 2: 去重、聚类打分处理器
-│   │   ├── scriptwriter.py     # Stage 3: Editor & Writer 双 Agent 剧本生成
-│   │   ├── tts_engine.py       # Stage 4: CosyVoice/Edge-TTS 合成器
-│   │   └── runner.py           # 串联流水线的整体逻辑控制器
+│   │   ├── processor*.py         # Stage 1: 去重、聚类打分处理器
+│   │   │   ├── processor_types.py
+│   │   │   ├── processor_dedup.py
+│   │   │   ├── processor_cluster.py
+│   │   │   ├── processor_context.py
+│   │   │   ├── processor_score.py
+│   │   │   └── processor_thesis.py
+│   │   ├── podcastwriter.py    # Stage 3: LLM 播客脚本生成
+│   │   ├── tts_engine.py       # Stage 4: CosyVoice TTS 合成器
+│   │   ├── tts_parser.py       # 对话分块解析器
+│   │   ├── tts_postprocess.py  # 音频组装与响度均衡
+│   │   └── runner.py           # 流水线运行协调器
 │   ├── site_builder/           # Stage 5: RSS 生成器与静态 HTML 构建器
 │   ├── prompts.py              # 大模型 Prompt 提示词合集
 │   ├── text_utils.py           # 剧本特殊符号清洗与智能短句切分器

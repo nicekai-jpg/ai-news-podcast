@@ -7,14 +7,22 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+from ai_news_podcast.config.models import AppConfig
 
-def get_base_url(cfg: dict[str, Any], cli_base_url: str | None) -> str:
+
+def get_base_url(cfg: dict[str, Any] | AppConfig, cli_base_url: str | None) -> str:
     env = os.environ
     if cli_base_url:
         return cli_base_url.rstrip("/")
     if env.get("PODCAST_BASE_URL"):
         return env["PODCAST_BASE_URL"].rstrip("/")
-    base_url = str(cfg.get("podcast", {}).get("base_url") or "").strip()
+
+    # Handle both dict and AppConfig
+    if isinstance(cfg, dict):
+        base_url = str(cfg.get("podcast", {}).get("base_url") or "").strip()
+    else:
+        base_url = str(getattr(cfg.podcast, "base_url", "") or "").strip()
+
     if base_url:
         return base_url.rstrip("/")
     owner = (env.get("GITHUB_REPOSITORY_OWNER") or "").strip()

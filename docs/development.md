@@ -30,10 +30,16 @@ ai-news-podcast/
 ├── docs/                # 项目文档
 ├── src/ai_news_podcast/ # 核心的 Python 源码包
 │   ├── cli/             # 命令行入口脚本
+│   │   ├── podcast_daily.py    # 主编排器 (Stage 1 + 3-5)
+│   │   ├── podcast_pipeline.py # Stage 1: 数据抓取与处理
+│   │   ├── podcast_writer.py   # Stage 3: 播客脚本生成
+│   │   ├── podcast_tts.py      # Stage 4: TTS 语音合成
+│   │   ├── podcast_report.py   # Stage 3b: 日报生成
+│   │   └── podcast_publish.py  # Stage 5: 站点发布
 │   ├── pipeline/        # 核心流水线：抓取、处理、文案、TTS
 │   │   ├── fetcher.py
-│   │   ├── processor*.py  # 已拆分为子模块
-│   │   ├── scriptwriter.py
+│   │   ├── processor*.py  # 已拆分为子模块 (types/dedup/cluster/context/score/thesis)
+│   │   ├── podcastwriter.py
 │   │   ├── tts_engine.py
 │   │   ├── tts_parser.py
 │   │   ├── tts_postprocess.py
@@ -67,7 +73,7 @@ uv run pytest tests/ -v
 ## 增加新功能或源
 
 1. **添加新的新闻源**：如果你想增加其他的新闻触角，请将新的 RSS URL 添加到 `config/sources.yaml` 当中。添加前，最好先确认该 feed 能输出全文或者结构良好的 HTML 以便解析工具抓取。
-2. **接入新的 LLM 服务商**：若要集成其它的大模型 API，可在 `src/ai_news_podcast/pipeline/scriptwriter.py` 内部进行扩展。目前系统已内置支持 `google-genai`、`openai` 兼容接口，并支持向本地 `ollama` 直接发起 HTTP 调用。
+2. **接入新的 LLM 服务商**：若要集成其它的大模型 API，可在 `src/ai_news_podcast/pipeline/podcastwriter.py` 内部进行扩展。目前系统已内置支持 `openai` 兼容接口。
 3. **增加新的命令行生成任务**：在 `src/ai_news_podcast/cli/` 下增加脚本后，需在 `pyproject.toml` 的 `[project.scripts]` 段落注册入口，例如：
    ```toml
    [project.scripts]

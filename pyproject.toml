@@ -21,6 +21,7 @@ dependencies = [
   "tenacity>=8.2",
   "openai>=1.0",
   "python-dotenv>=1.2.1",
+  "pydantic>=2.12.5",
 ]
 
 [project.scripts]

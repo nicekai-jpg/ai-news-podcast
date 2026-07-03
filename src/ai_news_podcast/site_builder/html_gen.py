@@ -6,6 +6,8 @@ from pathlib import Path
 from typing import Any
 from zoneinfo import ZoneInfo
 
+from ai_news_podcast.config.models import AppConfig
+
 _STATIC_DIR = Path(__file__).parent / "static"
 
 
@@ -41,7 +43,7 @@ def build_index_html(
     podcast_title: str,
     episodes: list[dict[str, Any]],
     base_url: str,
-    cfg: dict[str, Any] | None = None,
+    cfg: dict[str, Any] | AppConfig | None = None,
 ) -> None:
     dates_list = []
     episodes_map: dict[str, dict[str, Any]] = {}
@@ -67,13 +69,20 @@ def build_index_html(
 
     if cfg is None:
         cfg = {}
-    voices_config = cfg.get("tts", {}).get(
-        "voice_names",
-        {
+    if isinstance(cfg, dict):
+        voices_config = cfg.get("tts", {}).get(
+            "voice_names",
+            {
+                "host_a": {"professional": "专业男声", "lively": "活力男声"},
+                "host_b": {"professional": "亲切女声", "lively": "青春女生"},
+            },
+        )
+    else:
+        # cfg is AppConfig
+        voices_config = {
             "host_a": {"professional": "专业男声", "lively": "活力男声"},
             "host_b": {"professional": "亲切女声", "lively": "青春女生"},
-        },
-    )
+        }
     voices_config_json = json.dumps(voices_config, ensure_ascii=False)
 
     shanghai_tz = ZoneInfo("Asia/Shanghai")

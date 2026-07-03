@@ -21,7 +21,7 @@
 ### 重构
 - **模块拆分**: `processor.py` 拆分为 6 个子模块（types/dedup/cluster/context/score/thesis）
 - **TTS 拆分**: `tts_engine.py` 提取 `tts_parser.py`
-- **CLI 简化**: `run_daily.py` 提取 5 个 helper 函数
+- **CLI 简化**: `podcast_daily.py` 提取 5 个 helper 函数
 - **代码异味清理**: 修复 C901/PLR0915/N806/B009/SIM118/UP017 等 lint 违规
 
 ### 移除
@@ -45,7 +45,7 @@
 - **语音合成引擎：** 配置了基于 Edge-TTS 的语音合成，支持同时混音插入背景音乐。
 - **站点与 RSS 生成器：** 自动化构建播客网页索引 (`index.html`)、带音频的剧集单页，以及符合 Apple Podcasts 规范的聚合 RSS 广播流 (`feed.xml`)。
 - **命令行执行工具：** 
-  - `run_daily.py`：项目的主自动化流水线执行入口。
-  - `daily_report.py`：针对通用 AI 资讯的结构化 Markdown 生成工具。
+  - `podcast_daily.py`：项目的主自动化流水线执行入口。
+  - `podcast_report.py`：针对通用 AI 资讯的结构化 Markdown 生成工具。
 - **CI/CD 自动化：** 新增了基于 GitHub Actions 的工作流 (`daily.yml`)，支持每日准时自动执行并将生成的静态内容发布于 GitHub Pages 之中。
 - **社区文档体系：** 新增了包括 `README.md`、`README.zh-CN.md`、`docs/architecture.md`、`docs/development.md` 以及 `docs/contributing.md` 在内的完善的开源生态文档。

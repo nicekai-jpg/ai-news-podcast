@@ -23,7 +23,7 @@
 | `src/ai_news_podcast/pipeline/tts_postprocess.py` | 从 `tts_engine.py` 抽出的拼接/BGM/loudnorm 共用逻辑 |
 | `src/ai_news_podcast/pipeline/cosyvoice_backend.py` | CosyVoice2 模型加载与单句推理 |
 | `src/ai_news_podcast/pipeline/tts_engine.py` | 新增 `synthesize_cosyvoice2()`，更新 `synthesize()` 分发 |
-| `src/ai_news_podcast/cli/publish_episode.py` | 从 `run_daily.py` 抽出的 Stage 5 发布逻辑 |
+| `src/ai_news_podcast/cli/podcast_publish.py` | 从 `podcast_daily.py` 抽出的 Stage 5 发布逻辑 |
 | `scripts/gha_tts_cosyvoice.py` | GHA Job 2 入口：安装 CosyVoice 环境 + 调用合成 |
 | `scripts/setup_cosyvoice_env.sh` | CosyVoice 依赖安装（GHA 与本地复用） |
 | `.github/workflows/daily.yml` | 三 Job 工作流 |
@@ -562,7 +562,7 @@ if backend_name == "hybrid":
 raise ValueError(...)
 ```
 
-- [ ] **Step 5: 修复 `run_daily.py` 传参**
+- [ ] **Step 5: 修复 `podcast_daily.py` 传参**
 
 将 `voice=voice` 改为：
 
@@ -585,13 +585,13 @@ await synthesize(
 
 - [ ] **Step 6: 运行测试**
 
-Run: `uv run pytest tests/test_tts_synthesize.py tests/test_run_daily_full.py -v`
+Run: `uv run pytest tests/test_tts_synthesize.py tests/test_podcast_daily_full.py -v`
 Expected: ALL PASS
 
 - [ ] **Step 7: Commit**
 
 ```bash
-git add src/ai_news_podcast/pipeline/tts_engine.py src/ai_news_podcast/cli/run_daily.py tests/test_tts_synthesize.py
+git add src/ai_news_podcast/pipeline/tts_engine.py src/ai_news_podcast/cli/podcast_daily.py tests/test_tts_synthesize.py
 git commit -m "feat(tts): wire CosyVoice2 backend into synthesize dispatcher"
 ```
 
@@ -599,33 +599,33 @@ git commit -m "feat(tts): wire CosyVoice2 backend into synthesize dispatcher"
 
 ## Task 5: 抽取发布逻辑 + 修复 --no-audio 工作流断层
 
-**背景:** 当前 `run_daily.py` 在 `--no-audio` 时 Stage 5 直接 `return 0`，不生成 `feed.xml` / `index.html`。三 Job 架构需要 Job 1 生成站点骨架，Job 2 合成后补全发布。
+**背景:** 当前 `podcast_daily.py` 在 `--no-audio` 时 Stage 5 直接 `return 0`，不生成 `feed.xml` / `index.html`。三 Job 架构需要 Job 1 生成站点骨架，Job 2 合成后补全发布。
 
 **Files:**
-- Create: `src/ai_news_podcast/cli/publish_episode.py`
-- Modify: `src/ai_news_podcast/cli/run_daily.py`
+- Create: `src/ai_news_podcast/cli/podcast_publish.py`
+- Modify: `src/ai_news_podcast/cli/podcast_daily.py`
 - Modify: `pyproject.toml`
 
 - [ ] **Step 1: 写失败测试 — publish_episode 更新 feed**
 
 ```python
-# tests/test_publish_episode.py
-def test_publish_episode_writes_feed_xml(tmp_path, monkeypatch):
+# tests/test_podcast_publish.py
+def test_podcast_publish_writes_feed_xml(tmp_path, monkeypatch):
     # 准备 episodes.json、mp3、brief 缓存等最小 fixture
     ...
-    from ai_news_podcast.cli.publish_episode import publish_episode
+    from ai_news_podcast.cli.podcast_publish import publish_episode
     publish_episode(config_path=..., date="2026-06-11")
     assert (tmp_path / "site" / "feed.xml").exists()
 ```
 
-- [ ] **Step 2: 从 `run_daily.py` 抽出 `publish_episode()` 函数**
+- [ ] **Step 2: 从 `podcast_daily.py` 抽出 `podcast_publish()` 函数**
 
-将 L223–327（Stage 5）移入 `publish_episode.py`，接受 `episode_id`、`brief`、`cfg`、`root` 参数。
+将 L223–327（Stage 5）移入 `podcast_publish.py`，接受 `episode_id`、`brief`、`cfg`、`root` 参数。
 
 - [ ] **Step 3: 修改 `--no-audio` 行为**
 
 ```python
-# run_daily.py Stage 5 调整后：
+# podcast_daily.py Stage 5 调整后：
 if args.no_audio:
     # 仍生成 show notes HTML，但不写 feed.xml（等 TTS 完成后再 publish）
     notes_html = generate_show_notes_html(...)
@@ -640,21 +640,21 @@ if args.no_audio:
 
 ```toml
 # pyproject.toml
-podcast-publish = "ai_news_podcast.cli.publish_episode:entrypoint"
+podcast-publish = "ai_news_podcast.cli.podcast_publish:entrypoint"
 ```
 
-`publish_episode` CLI 参数：`--date`、`--config`，读取已有 brief + mp3，执行 Stage 5。
+`podcast_publish` CLI 参数：`--date`、`--config`，读取已有 brief + mp3，执行 Stage 5。
 
 - [ ] **Step 5: 运行测试**
 
-Run: `uv run pytest tests/test_publish_episode.py tests/test_run_daily_full.py -v`
+Run: `uv run pytest tests/test_podcast_publish.py tests/test_podcast_daily_full.py -v`
 Expected: ALL PASS
 
 - [ ] **Step 6: Commit**
 
 ```bash
-git add src/ai_news_podcast/cli/publish_episode.py src/ai_news_podcast/cli/run_daily.py pyproject.toml tests/test_publish_episode.py
-git commit -m "feat(cli): extract publish_episode for post-TTS GHA workflow"
+git add src/ai_news_podcast/cli/podcast_publish.py src/ai_news_podcast/cli/podcast_daily.py pyproject.toml tests/test_podcast_publish.py
+git commit -m "feat(cli): extract podcast_publish for post-TTS GHA workflow"
 ```
 
 ---
@@ -1004,7 +1004,7 @@ Expected: no errors
 | CosyVoice 首次 cache miss 超 90 分钟 | 提高 `timeout-minutes: 120`；模型 cache key 保持稳定 |
 | 参考音频质量差 | Task 1 人工试听；后续可换真人录音 |
 | Job 1 push 后 Job 2 checkout 拿不到最新 commit | `git pull` after checkout（已在 workflow 中） |
-| `run_daily` 的 `voice`/`voices` 参数不一致 | Task 4 修复 |
+| `podcast_daily` 的 `voice`/`voices` 参数不一致 | Task 4 修复 |
 | CosyVoice 非 uv 依赖污染主环境 | GHA Job 2 用独立 pip 环境，不加入 `pyproject.toml` |
 
 ---
