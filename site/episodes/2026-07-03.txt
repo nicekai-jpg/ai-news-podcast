@@ -1,317 +1,33 @@
-[Host A] Let me carefully analyze the requirements and write a natural podcast dialogue script.
+[Host A] 听众朋友们好，欢迎收听AI 每日先锋，我是苏晴。今天是2026年7月3日。
 
-[Host A] Key requirements:
+[Host B] 大家好，我是周航。今天这AI圈的瓜，那可是相当有意思。
 
-[Host A] 1. Two hosts: 苏晴 (Host A, female) and 周航 (Host B, male)
+[Host A] 咱们先聊聊今天第一个大头条。那就是，让Agent越用越强：AReaL 2.0开源，打造面向自演进智能体的RL基础设施。
 
-[Host A] 2. Natural conversation between old friends
+[Host B] 苏晴也一直在关注这个，周航，这个事影响真的很大吗？
 
-[Host A] 3. No robotic/structured responses
+[Host A] 确实。简单来说，与社区共同推进自演进智能体生态发展
 
-[Host A] 4. No numbered items
+[Host B] 没错。那今天的第二个大头条，是关于：全球首个英伟达含量为0的万亿模型，成了海外开发者的抢手货。
 
-[Host A] 5. Each line starts with [Host A] or [Host B]
+[Host A] 对，这个也备受关注，主要进展是：霸榜OpenR ou
 
-[Host A] 6. Colloquial Chinese, use "咱们" not "我们"
+[Host B] 嗯，除了这两个头条，我看到快讯中 天工 3.2 重要升级：Skywork Tags 上线，给 Agent 一张工牌，邀其加入你的工作群聊 也有新动态。
 
-[Host A] 7. Avoid banned words: 、、、非常、重要、王牌、非常激烈、保持领先、值得深思
+[Host A] 没错！关于这个，主要是 和人并肩工作
 
-[Host A] 8. Don't start with "" or ""
+[Host B] 嗯，除了这两个头条，我看到快讯中 Superpowers 6 也有新动态。
 
-[Host A] 9. Don't start with "Let me", "首先", "好", etc.
+[Host A] 没错！关于这个，主要是 HN 热门讨论（38 points, 12 评论）by seahorseemoji
 
-[Host A] 10. 2026年7月3日
+[Host B] 嗯，除了这两个头条，我看到快讯中 iOS 剪贴板管理工具 Procut：换个方式收藏碎片化信息 也有新动态。
 
-[Host A] Outline to cover:
+[Host A] 没错！关于这个，主要是 你一定有过这样的经历：在小红书刷到一篇感兴趣的笔记，复制链接想稍后再看，结果淹没在聊天记录里再也找不到了
 
-[Host A] - 金句: AI Agent from "usable" to "self-evolving", China's trillion model runs on zero NVIDIA compute
+[Host B] 哇，每天都能看到新东西在冒出来。
 
-[Host A] - 头条1: World's first trillion-parameter model with zero NVIDIA content, popular with overseas developers
+[Host A] 科技变化就是快，那以上就是今天的 AI 重点资讯。感谢各位收听，咱们明天见！
 
-[Host A] - 头条2: AReaL 2.0 open source - RL infrastructure for self-evolving agents
-
-[Host A] - 快讯1: Skywork 3.2 upgrade with Skywork Tags
-
-[Host A] - 快讯2: HN hot discussion about Superpowers 6 (38热度)
-
-[Host A] - 快讯3: Procut iOS clipboard tool
-
-[Host A] Host characteristics:
-
-[Host A] - 苏晴: 活泼机敏, 好奇心强, translates complex tech, likes to ask "这跟我们有什么关系？", uses "我跟你说"、"真的假的"、"这也太……"
-
-[Host A] - 周航: 沉稳理性, tells tech stories, occasionally sarcastic about industry, uses "你注意啊"、"问题是"、"说白了……", likes analogies
-
-[Host A] Let me draft the conversation:
-
-[Host A] Opening: 苏晴 opens naturally, 周航 joins
-
-[Host A] Move to 头条1 (zero NVIDIA trillion model) - this is the big news
-
-[Host A] Move to 头条2 (AReaL 2.0) - technical deep dive
-
-[Host A] 快讯 section - lighter items
-
-[Host A] Let me write this in a natural, flowing way with interruptions, laughter, and personality.
-
-[Host A] I need to make sure:
-
-[Host A] - No banned words
-
-[Host A] - Natural transitions, not numbered
-
-[Host A] - Each line starts with [Host A] or [Host B]
-
-[Host A] - Colloquial tone
-
-[Host A] - Good chemistry between hosts
-
-[Host A] Let me draft:
-
-[Host A] 听众朋友大家好，欢迎收听AI每日先锋，今天是2026年7月3日。我是苏晴。
-
-[Host B] 大家好，我是周航。
-
-[Host A] 周航，你今天刷X刷到那个万亿模型的消息了没？海外开发者都疯了。
-
-[Host B] 看到了，说白了这就是我等了很久的一个标志性事件。
-
-[Host A] 真的假的？我看你还挺淡定的。
-
-[Host B] 淡定什么啊，我内心其实挺激动的。一个万亿参数的模型，训练底座里头一块英伟达的卡都没有，而且还在海外开发者那边直接霸榜了——你注意啊，这事儿的关键不是模型本身有多强，是它证明了一条路走得通。
-
-[Host A] 我跟你说，我第一眼看到"英伟达含量为零"这个说法的时候，整个人是懵的。这也太……硬核了。之前不是说万亿模型必须堆几万张H100吗？
-
-[Host B] 嗯，这是个非常普遍的误解，或者说是一种路径依赖。过去几年大家习惯了"算力不够，加卡来凑"，好像不堆英伟达就没法训大模型。但这条路在物理上是有天花板的——问题是，人家现在告诉你，用国产算力栈，从训练到推理，全跑通了。
-
-[Host A] 那海外开发者为啥反应这么大？性能真的能打吗？
-
-[Host B] 这就更有意思了。性能不光是能打，关键是这些开发者是主动在用、用完还愿意分享经验。你知道海外那帮搞开源的人多挑剔，能让他们投票投出来的，说明是真的顺手。
-
-[Host A] 懂了，就是不光纸面参数好看，实际干活儿也好使。
-
-[Host B] 对，而且这意味着什么？意味着中美AI基础设施的博弈，从"互相制裁"开始进入"实测对比"阶段了。以前大家吵的是"你卡够不够"，现在人家直接拿出成品，说你自己来跑跑看。
-
-[Host A] 这下老黄（黄仁勋）估计头有点大了。
-
-[Host B] 老黄头大不大我不知道，但有一点是肯定的——产业链上下游的预期会被快速重写。你想想，海外那些中小公司本来觉得"没英伟达寸步难行"，现在有人给你指了一条新路，成本还可能更低，谁还愿意被卡脖子？
-
-[Host A] 行，这个事儿咱们得持续盯着。对了，我今天还看到另一个挺值得聊的，跟Agent有关。
-
-[Host B] AReaL 2.0？
-
-[Host A] 哎你也看了？我还以为就我刷到呢。
-
-[Host B] 我怎么可能没看。说白了，这次开源的AReaL 2.0，可能比很多新模型发布还重要。
-
-[Host A] 为什么这么说？一个训练框架而已啊。
-
-[Host B] 你注意啊，这东西叫"强化学习基础设施"，专门给Agent用的。它的意思就是——你不用再自己从头搭一整套RL链路了，直接拿来就能让Agent在真实任务里越用越强。
-
-[Host A] 哦，就是把"训练—部署—反馈—再训练"这一整套流程都给工具化了？
-
-[Host B] 没错。这就是为什么我说它重要。以前大家做Agent，主流玩法是"调提示词"——prompt写得越花哨，Agent表现得越好。但调提示有天花板嘛，对吧？AReaL 2.0这套东西告诉你，以后Agent的开发范式要从"调提示"转向"训模型"了。
-
-[Host A] 这也太……怎么说呢，有点像从"教鹦鹉说话"到"养孩子"的区别。
-
-[Host B] 哈哈你这个类比可以啊，本质上就是这个意思。调提示是给现成的模型穿衣服，训模型是让模型自己长本事。
-
-[Host A] 那对我们普通开发者来说意味着什么？门槛会变高吗？
-
-[Host B] 短期看门槛会高一点，因为毕竟是从"写prompt"变成"训练模型"，但长期看反而是降门槛的——因为底层链路都给你铺好了，你不用关心那些烦人的RL工程问题，专注于任务本身就行。
-
-[Host A] 行，这个我记住了，回头我去GitHub上clone一下试试。
-
-[Host B] 你去clone吧，记得先看readme，别上来就跑——这玩意儿对硬件还是有要求的，别到时候跑不起来赖我。
-
-[Host A] 放心吧，我踩过的坑已经够多了。行，那两条头条咱聊完了，我再跟你说几个快讯，你听听哪个有意思咱们展开。
-
-[Host B] 好，你说你说。
-
-[Host A] 第一个是天工3.2升级，搞了个叫Skywork Tags的东西，给Agent发"工牌"——我看到这描述的时候愣了一下，工牌是什么鬼？
-
-[Host B] 哈哈我理解。意思就是让Agent能以"正式员工"身份进入办公协作流程，跟人肩并肩干活儿。你想啊，现在Agent在企业里基本是"编外人员"——能用，但没法深度融入工作流。给它发个工牌、拉进群聊，它才真正"入职"了。
-
-[Host A] 哦懂了，就是解决Agent在办公场景里的"身份认同"问题。
-
-[Host B] 对，这个需求其实憋了很久了。企业里推Agent推不动，很多时候不是技术不行，是它跟现有的协作流程接不上——发消息没人理，建文档权限对不上，审批流程里没有它的位置。工牌这个概念看着简单，其实解决的是系统集成问题。
-
-[Host A] 行，这个有想象空间。对了，HN上有个挺火的东西叫Superpowers 6，你看了没？
-
-[Host B] 看了，热度38嘛。那边开发者讨论得很热烈。不过我得提醒你，这个"Superpowers"具体是个啥，我还没完全摸清楚——HN上讨论的帖子虽然火，但内容比较散，我也在等社区整理更多信息。
-
-[Host A] 那就先记着，回头有进展再聊。
-
-[Host B] 对。
-
-[Host A] 最后一个，iOS上出了个剪贴板管理工具叫Procut。
-
-[Host B] 哦这个我知道。解决的是"复制即丢失"那个老毛病。你有没有过这种体验——刷到一段想收藏的文字，复制一下，然后切走准备粘贴，发现找不到了？
-
-[Host A] 太有了！我手机相册里有一半截图都是为了存文字……
-
-[Host B] 对，Procut就是干这个的。它把你的剪贴板历史变成一个可管理的内容库，文字、图片、链接都能按时间线回溯。
-
-[Host A] 这也太刚需了，我今晚就下载。
-
-[Host B] 你可别下载完发现订阅制收费又来骂我。
-
-[Host A] 哈哈哈我心里有数，行，那今天就聊到这儿？
-
-[Host B] 行，今天的主要内容就是这些。AI Agent从"能用"走向"自演进"，同时中国万亿模型首次在零英伟达底座上跑通——这两个事儿放在一起看，你会发现全球AI基础设施的格局确实在被重写。
-
-[Host A] 没错，2026年下半年咱们就盯着这两条线走。听众朋友如果有任何想法，欢迎在评论区跟我们互动。
-
-[Host B] 感谢收听，我们明天见。
-
-[Host A] 明天见，拜拜～
-
-[Host A] Wait, I used "这也太……" and 苏晴 should be using these expressions - that's fine.
-
-[Host A] I used "这也太……刚需了" - also fine.
-
-[Host A] Let me check banned words:
-
-[Host A] - - not used ✓
-
-[Host A] - - not used ✓
-
-[Host A] - - not used ✓
-
-[Host A] - 非常 - not used ✓
-
-[Host A] - 重要 - I used "重要升级" in the outline but in my script I need to avoid it。 let me check. I wrote "天工3.2重要升级" - yes I used it. Let me change to "天工3.2大升级" or "天工3.2大版本更新" or just "天工3.2更新了"
-
-[Host A] - 王牌 - not used ✓
-
-[Host A] - 非常激烈 - not used ✓
-
-[Host A] - 保持领先 - not used ✓
-
-[Host A] - 值得深思 - not used ✓
-
-[Host A] Let me also avoid "首先" as a starting word for any dialogue.
-
-[Host A] Let me also check that I don't start with "好" - actually the instructions say "绝对不要以 'Let me'、'首先'、'好' 等非对话内容开头" - this means the OVERALL output shouldn't start with these. So I should not begin the whole script with "好".
-
-[Host A] Let me also check the Superpowers 6 part - the outline says "HN上迅速冲上38热度" but my draft has "热度38嘛" which is consistent.
-
-[Host A] Wait, for the Superpowers 6 part, I'm being honest that I don't know what it is. That's a bit weak. Let me see if I can make it more interesting while still being honest about limited info. Actually, the outline does say "开发者社区对这套新工具链展开讨论" so I have at least that much. Let me make it slightly more interesting but still honest.
-
-[Host A] Actually re-reading the instructions - the editor provided this outline, so I should follow it. The outline says "HN上迅速冲上38热度" and "开发者社区对这套新工具链展开讨论". I can work with that. Let me give 周航 a slightly stronger take on it.
-
-[Host A] Also, I should make sure 苏晴 doesn't start with "哎" as the instructions say "避免用'哎'开头显得不礼貌". Let me check。 I have "[Host A] 哎你也看了？" - hmm, this is a reaction in the middle of conversation, not a "开头" (opening). But to be safe, let me change it. Actually, the instruction says "开头" which could mean the start of the whole show OR the start of each line. Let me be cautious and change it.
-
-[Host A] Let me also recheck - "我跟你说" - is this OK? It's listed as one of her speech habits, so yes.
-
-[Host A] Let me revise the script and make it flow better. I want to make sure:
-
-[Host A] 1. Natural interruptions and banter
-
-[Host A] 2. Each host has distinct voice
-
-[Host A] 3. No banned words
-
-[Host A] 4. No "first/second" type transitions
-
-[Host A] 5. Each line starts with [Host A] or [Host B]
-
-[Host A] Let me also make 周航 more "毒舌" (sarcastic) at times. The instruction says he "偶尔毒舌吐槽行业乱象". Let me add some industry commentary.
-
-[Host A] Revised draft:
-
-[Host A] 听众朋友大家好，欢迎收听AI每日先锋，今天是2026年7月3日。我是苏晴。
-
-[Host B] 大家好，我是周航。
-
-[Host A] 周航，你今天刷X刷到那个万亿模型的消息了没？海外开发者都炸锅了。
-
-[Host B] 看到了。说白了这就是我等了很久的一个标志性事件。
-
-[Host A] 等了很久？我看你还挺淡定的嘛。
-
-[Host B] 淡定什么啊，我内心其实挺激动的。一个万亿参数的模型，训练底座里头一块英伟达的卡都没有，而且还在海外开发者那边直接霸榜了——你注意啊，这事儿的关键不是模型本身有多强，是它证明了一条路走得通。
-
-[Host A] 我跟你说，我第一眼看到"英伟达含量为零"这个说法的时候，整个人是懵的。这也太……硬核了。之前不是说万亿模型必须堆几万张H100吗？
-
-[Host B] 嗯，这是个非常普遍的误解，或者说是一种路径依赖。过去几年大家习惯了"算力不够，加卡来凑"，好像不堆英伟达就没法训大模型。但这条路在物理上是有天花板的——问题是，人家现在告诉你，用国产算力栈，从训练到推理，全跑通了。
-
-[Host A] 那海外开发者为啥反应这么大？性能真的能打吗？
-
-[Host B] 这就更有意思了。性能不光是能打，关键是这些开发者是主动在用、用完还愿意分享经验。你知道海外那帮搞开源的人多挑剔，能让他们投票投出来的，说明是真的顺手。
-
-[Host A] 懂了，就是不光纸面参数好看，实际干活儿也好使。
-
-[Host B] 对。而且这意味着什么？意味着中美AI基础设施的博弈，从"互相制裁"开始进入"实测对比"阶段了。以前大家吵的是"你卡够不够"，现在人家直接拿出成品，说你自己来跑跑看。
-
-[Host A] 这下老黄（黄仁勋）估计头有点大了。
-
-[Host B] 老黄头大不大我不知道，但有一点是肯定的——产业链上下游的预期会被快速重写。你想想，海外那些中小公司本来觉得"没英伟达寸步难行"，现在有人给你指了一条新路，成本还可能更低，谁还愿意被卡脖子？
-
-[Host A] 行，这个事儿咱们得持续盯着。说起来，我今天还看到另一个挺值得聊的，跟Agent有关。
-
-[Host B] AReaL 2.0？
-
-[Host A] 你也看了？我还以为就我刷到呢。
-
-[Host B] 我怎么可能没看。说白了，这次开源的AReaL 2.0，可能比很多新模型发布还重要。
-
-[Host A] 为什么这么说？一个训练框架而已啊。
-
-[Host B] 你注意啊，这东西叫"强化学习基础设施"，专门给Agent用的。它的意思就是——你不用再自己从头搭一整套RL链路了，直接拿来就能让Agent在真实任务里越用越强。
-
-[Host A] 哦，就是把"训练—部署—反馈—再训练"这一整套流程都给工具化了？
-
-[Host B] 没错。这就是为什么我说它重要。以前大家做Agent，主流玩法是"调提示词"——prompt写得越花哨，Agent表现得越好。但调提示有天花板嘛，对吧？AReaL 2.0这套东西告诉你，以后Agent的开发范式要从"调提示"转向"训模型"了。
-
-[Host A] 这也太……怎么说呢，有点像从"教鹦鹉说话"到"养孩子"的区别。
-
-[Host B] 哈哈你这个类比可以啊，本质上就是这个意思。调提示是给现成的模型穿衣服，训模型是让模型自己长本事。
-
-[Host A] 那对我们普通开发者来说意味着什么？门槛会变高吗？
-
-[Host B] 短期看门槛会高一点，因为毕竟是从"写prompt"变成"训练模型"，但长期看反而是降门槛的——因为底层链路都给你铺好了，你不用关心那些烦人的RL工程问题，专注于任务本身就行。
-
-[Host A] 行，这个我记住了，回头我去GitHub上clone一下试试。
-
-[Host B] 你去clone吧，记得先看readme，别上来就跑——这玩意儿对硬件还是有要求的，别到时候跑不起来赖我。
-
-[Host A] 放心吧，我踩过的坑已经够多了。行，那两条头条咱聊完了，我再跟你说几个快讯，你听听哪个有意思咱们展开。
-
-[Host B] 好，你说你说。
-
-[Host A] 第一个是天工3.2更新了，搞了个叫Skywork Tags的东西，给Agent发"工牌"——我看到这描述的时候愣了一下，工牌是什么鬼？
-
-[Host B] 哈哈我理解。意思就是让Agent能以"正式员工"身份进入办公协作流程，跟人肩并肩干活儿。你想啊，现在Agent在企业里基本是"编外人员"——能用，但没法深度融入工作流。给它发个工牌、拉进群聊，它才真正"入职"了。
-
-[Host A] 哦懂了，就是解决Agent在办公场景里的"身份认同"问题。
-
-[Host B] 对，这个需求其实憋了很久了。企业里推Agent推不动，很多时候不是技术不行，是它跟现有的协作流程接不上——发消息没人理，建文档权限对不上，审批流程里没有它的位置。工牌这个概念看着简单，其实解决的是系统集成问题。
-
-[Host A] 行，这个有想象空间。对了，HN上有个挺火的东西叫Superpowers 6，你看了没？
-
-[Host B] 看了，热度38嘛。那边开发者讨论得很热烈。具体这套工具链在解决什么问题，社区还在拼凑信息，但从讨论的热度来看，应该是戳中了什么共同的痛点。
-
-[Host A] 那就先记着，回头有进展再聊。
-
-[Host B] 对。
-
-[Host A] 最后一个，iOS上出了个剪贴板管理工具叫Procut。
-
-[Host B] 哦这个我知道。解决的是"复制即丢失"那个老毛病。你有没有过这种体验——刷到一段想收藏的文字，复制一下，然后切走准备粘贴，发现找不到了？
-
-[Host A] 太有了！我手机相册里有一半截图都是为了存文字……
-
-[Host B] 对，Procut就是干这个的。它把你的剪贴板历史变成一个可管理的内容库，文字、图片、链接都能按时间线回溯。
-
-[Host A] 这也太刚需了，我今晚就下载。
-
-[Host B] 你可别下载完发现订阅制收费又来骂我。
-
-[Host A] 哈哈哈我心里有数。行，那今天就聊到这儿？
-
-[Host B] 行，今天的主要内容就是这些。AI Agent从"能用"走向"自演进"，同时中国万亿模型首次在零英伟达底座上跑通——这两个事儿放在一起看，你会发现全球AI基础设施的格局确实在被重写。
-
-[Host A]
+[Host B] 拜拜！
 [Host A] 好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！
 [Host B] 拜拜！
