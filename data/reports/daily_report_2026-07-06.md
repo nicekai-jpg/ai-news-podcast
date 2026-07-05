@@ -1,0 +1,78 @@
+<think>The user wants me to write a tech news daily report in Chinese based on the provided materials. Let me analyze the materials:
+
+1. Meta considering launching "Meta Compute" - GPU/compute business
+2. Chinese team applying JEPA architecture to cell biology (world models in cells)
+3. 奕境 (Yi Jing) partnering with Huawei Qiankun for global testing, featured on CCTV
+4. Huawei updated "韬定律" (Tao's Law) paper
+5. FenyiDic - an English vocabulary learning app focusing on definitions rather than just words
+
+Let me organize these into categories:
+- AI前沿: JEPA in cells, Huawei paper update
+- 大公司动态: Meta Compute
+- 产品与开源: FenyiDic
+- 行业动态: 奕境×华为合作
+
+I need to write this in a professional, objective tone, 800-1500 words, with proper Markdown formatting. Let me draft this.
+
+Date: 2026年07月06日
+
+Let me think about the title - "科技新闻日报 | 2026年07月06日"
+
+导语 should capture the main trends: AI continuing to penetrate various fields (biology, automotive, infrastructure), tech companies expanding business boundaries.
+
+Let me write this out properly now.</think>
+
+# 🌍 科技新闻日报 | 2026年07月06日
+
+**今日要闻**：AI 技术正从通用大模型向纵深领域加速渗透，无论是生命科学、汽车产业还是底层算力市场，都正在被新一轮技术浪潮重塑。与此同时，开源工具与垂直应用持续涌现，AI 的落地边界比以往任何时候都更加宽广。
+
+---
+
+## 🔬 AI 前沿：从语言模型到"细胞世界模型"
+
+**中国团队将 JEPA 架构引入细胞生物学研究**
+
+四年前 Meta 首席科学家 Yann LeCun 提出 JEPA（联合嵌入预测架构）时，其核心目标是构建能够理解物理世界的"世界模型"。而一支中国研究团队近日则开创性地将这一架构引入到单细胞数据的建模与分析中，探索细胞内部的"状态演化规律"。这一跨领域尝试表明，JEPA 所代表的非生成式、自监督表征学习范式正在突破计算机视觉的边界，向生命科学等高维复杂系统延伸。如果这条路被验证可行，AI for Science 将迎来新的方法论范式。
+
+**华为更新"韬定律"论文，明确技术路线取舍**
+
+华为近期对其提出的"韬定律"系列论文进行了重要更新，不仅阐述了智能跃迁的新观察，也首次系统披露了此前被放弃的技术路线及其原因。这种"公开试错"的姿态在业界并不多见，反映出中国科技企业在基础研究层面愈发注重方法论的可复现性与技术决策的透明度。
+
+---
+
+## 🏢 大公司动态：Meta 押注算力商业化
+
+**扎克伯格考虑推出 "Meta Compute"，剑指 GPU 算力租赁市场**
+
+在自家大模型迭代节奏放缓的背景下，Meta 正在筹划一项新的业务——向外部客户出售或出租 AI 算力。据内部消息，Meta Compute 的雏形正在酝酿之中，意在将公司庞大 GPU 集群的闲置资源转化为新的收入来源。这一举动不难理解：当模型层的差异化优势逐渐缩小，**底层算力正成为科技巨头新一轮竞争的筹码**。从微软 Azure、AWS 到谷歌 GCP，云算力市场早已是红海，Meta 的入局或将引发新一轮价格与服务战。
+
+---
+
+## 🚗 智能汽车：华为乾崑生态再下一城
+
+**奕境携手华为乾崑全球实测，央视《超凡一步》见证中国汽车"三大跨越"**
+
+智能汽车赛道再传新进展。央视《超凡一步》节目近日跟踪报道了奕境汽车与华为乾崑智驾系统的全球路测合作，覆盖多种极端气候与复杂路况。从节目中披露的信息来看，中国新能源汽车正同时实现三项关键跨越：**智能驾驶能力的代际跃升、全球化测试体系的成熟，以及跨品牌软硬件协同的标准化**。华为乾崑作为"赋能者"的角色越发清晰——不造车，却以技术底座的身份深度绑定多家车企，这种"安卓式"的打法正在智能车领域复制。
+
+---
+
+## 🛠 产品与工具：让英语学习回归"理解"
+
+**FenyiDic：用释义构建词汇的深度记忆**
+
+"每个单词都认识，为什么还是读不懂英文？"这是许多英语学习者的共同困境。近期上架的词典应用 FenyiDic 给出的解题思路是——**背单词，更要背释义**。与传统背词软件不同，FenyiDic 更强调单词在语境中的精确含义、搭配与情感色彩，帮助用户告别"熟悉的陌生人"式记忆。这一产品折射出一个趋势：在 AI 翻译日益精准的今天，语言学习的价值正在从"识字"向"精准理解与表达"迁移。
+
+---
+
+## 📊 今日速览
+
+| 领域 | 核心动态 |
+|------|---------|
+| AI 研究 | JEPA 架构跨界进入细胞生物学；华为"韬定律"论文更新 |
+| 算力市场 | Meta 筹划对外出售 GPU 算力，加码基础设施层 |
+| 智能汽车 | 奕境 × 华为乾崑全球实测登上央视 |
+| 工具应用 | FenyiDic 聚焦词汇深度理解，重塑英语学习路径 |
+
+---
+
+> **AI 洞察小结**：今天的科技动态呈现出两条鲜明主线——**一是"下沉"**：AI 不再停留在聊天机器人的表层，而是深入到细胞建模、汽车智能驾驶底层、算力基础设施等纵深领域，竞争维度从"模型参数"转向"落地深度"；**二是"分叉"**：头部公司一边收缩非核心战线（如 Meta 模型节奏放缓），一边开辟新增长极（如算力商业化），而新兴团队则在垂直场景中找到差异化空间。可以预见，未来一段时间，"通用大模型的边际收益递减"与"垂直应用的爆发式增长"将同时上演，AI 产业正进入精耕细作的新阶段。
