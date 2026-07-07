@@ -138,6 +138,15 @@ class PublishCommand(AsyncCommand):
         write_text(site_dir / "feed.xml", feed_xml)
         build_index_html(site_dir, podcast_title, sorted_eps, base_url, cfg)
 
+        import shutil
+
+        reports_src = root / "data" / "reports"
+        reports_dst = site_dir / "reports"
+        if reports_src.exists():
+            if reports_dst.exists():
+                shutil.rmtree(reports_dst)
+            shutil.copytree(reports_src, reports_dst)
+
         print(f"Episode {ep_id} published")
         return 0
 
