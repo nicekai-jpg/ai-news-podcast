@@ -37,6 +37,9 @@ RE_THINKING_MARKERS = re.compile(
 )
 
 
+RE_THINK_TAG = re.compile(r"(?is)<think>.*?</think>\s*")
+
+
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
@@ -57,6 +60,9 @@ def clean_tts_text(text: str) -> str:
     """
     if not text:
         return ""
+
+    # 0. Strip <think>...</think> tags and contents
+    text = RE_THINK_TAG.sub("", text)
 
     # 1. Fix escaped newlines (e.g. model outputs literal \\n)
     text = text.replace("\\n", "\n")
@@ -137,6 +143,8 @@ def contains_thinking_process(text: str) -> bool:
     """Return True if the text contains LLM reasoning/thinking output."""
     if not text:
         return False
+    # Strip <think> tag content first so we check the remaining dialogue text
+    text = RE_THINK_TAG.sub("", text)
     # Check if there are lines with thinking markers before any real dialogue
     lines = text.split("\n")
     for line in lines:
