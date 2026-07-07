@@ -1,57 +1,75 @@
-<think>Let me analyze the news materials provided and create a professional tech news daily report in Chinese. The materials are:
+<think>The user wants me to write a professional tech news daily report based on the provided materials. Let me analyze the materials:
 
 1. Alibaba/Tsinghua paper on diffusion model inference - ICML outstanding paper
-2. 2026 Singularity Intelligent Products Conference - 40+ speakers from ByteDance, Unitree, BAT, etc.
-3. Lenovo Holdings establishes Chinese Information Society industry-academia-innovation committee
-4. OpenSquilla 0.5.0 Preview - multi-model integration tops DRACO charts
-5. Chinese company at UN - "brain-like" robot approach to reduce AI compute burden
+2. 2026 Singularity Intelligent Products Conference - 40+ products from ByteDance, Unitree, BAT
+3. Lenovo Holdings established China Information Processing Society of China industry-academia innovation ecology committee
+4. OpenSquilla 0.5.0 Preview - multi-model integration topped DRACO dual rankings, with Fable 5 in comparison list
+5. Chinese company at UN - giving AI "less load" - brain-like chip for robots instead of stacking computing power
 
-All materials are marked as "次要" (secondary), so I should keep them concise but informative. Let me organize them by category and write a professional report.
+All materials are marked as "次要" (secondary), so I should write a more condensed report.
 
-Date: July 7, 2026
+Let me organize these into categories:
+- AI前沿 (AI Frontier): Materials 1, 4, 5 - these are about AI research and applications
+- 大公司动态 (Big Company News): Materials 2, 3 - conference and industry collaboration
 
-Let me structure:
-- 大标题
-- 导语
-- AI前沿 (materials 1, 5)
-- 行业动态 (materials 2, 3)
-- 产品与开源 (material 4)
-- AI洞察小结
+Let me write this in Chinese, professional tone, 800-1500 words.
 
-Let me write this carefully, keeping word count between 800-1500 Chinese characters.</think>
+I need to:
+- Use Markdown format
+- Have a main title
+- Have a brief intro
+- Categorize news
+- Use bold subheadings for each news item
+- Add an AI insight summary at the end using blockquote
+
+Let me craft this carefully. The date is July 7, 2026.
+
+Material 1: 极简方案刷新扩散模型推理纪录 - Alibaba and Tsinghua paper wins ICML outstanding paper, simple solution refreshes diffusion model inference record
+
+Material 2: 2026 Singularity Intelligent Products Conference - latest agenda, 40+ product experts from ByteDance, Unitree, BAT gathering
+
+Material 3: Lenovo Holdings initiated establishment of China Information Processing Society industry-academia innovation ecology work committee
+
+Material 4: OpenSquilla 0.5.0 Preview - multi-model integration tops DRACO dual rankings, Fable 5 appears in comparison list
+
+Material 5: Chinese company at UN - giving AI "less load" - brain-like chip for robots instead of stacking computing power
+
+Let me write the report now.</think>
 
 # 🌍 科技新闻日报 | 2026年07月07日
 
-**导语**：今日科技动态聚焦于AI模型的"轻量化"突围——从扩散模型推理加速、类脑机器人路线，到多模型集成框架登顶评测榜单，"以巧取胜、而非以力取胜"正成为业界共识。与此同时，产学研协同与产业大会的密集召开，折射出中国AI生态从基础研究到落地应用的纵深推进。
+**导语**：今日科技动态聚焦"轻量化"与"生态化"两条主线：一方面，学界与产业界持续探索以更简洁高效的方式推进 AI 推理与应用落地；另一方面，中国科技企业正加速构建产学研协作平台，推动智能产品矩阵化发展。
 
 ---
 
-## 🔬 AI前沿
+## 🔬 AI 前沿研究
 
-- **阿里清华联手刷新扩散模型推理纪录，入选ICML杰出论文**。来自阿里巴巴与清华大学的联合团队凭借极简方案，大幅提升扩散模型的推理效率，相关论文入选ICML（国际机器学习大会）杰出论文行列。该成果的核心价值在于，不依赖堆叠算力，而是通过算法层面的精巧设计，让生成式模型在保持质量的前提下实现显著加速，为扩散模型在工业级场景中的低成本部署提供了新路径。
+- **阿里清华联合论文入选 ICML 杰出，极简方案刷新扩散模型推理纪录**
 
-- **中国公司在联合国倡导"类脑"路线，为AI"减负"**。在近日联合国相关场合，一家中国科技公司提出区别于"暴力堆算力"的AI发展路径——为机器人装载类脑计算架构，强调以仿生方式提升能效比。该理念与当前全球对AI能耗问题的担忧形成呼应，代表了中国企业在绿色AI、边缘智能方向上的差异化探索。
+  阿里巴巴与清华大学联合团队的研究论文凭借一套极简方案在扩散模型推理效率上取得突破，成功入选 ICML 大会杰出论文。该方案以更精简的算法设计显著降低了扩散模型的推理成本，为生成式 AI 在实时场景中的应用提供了新的技术路径。这一成果也反映出国内顶尖科研力量在大模型底层推理优化领域的持续深耕。
 
----
+- **OpenSquilla 发布 0.5.0 Preview：多模型集成登顶 DRACO 双榜**
 
-## 🏢 大公司动态
+  开源项目 OpenSquilla 推出 0.5.0 预览版本，凭借多模型集成策略同时登顶 DRAGO 双榜。值得注意的是，其对比名单中出现了最新旗舰模型 Fable 5，表明开源生态正在快速追赶闭源前沿。多模型协同已成为提升综合能力的关键路径，开源社区的竞争力持续增强。
 
-- **联想控股牵头成立中文信息学会产学研创新生态工作委员会**。联想控股联合中国中文信息学会发起设立产学研创新生态工作委员会，旨在打通学术界与产业界的资源通道，加速自然语言处理、信息检索等领域的成果转化。此举也意味着联想系在AI基础研究生态中的布局进一步深化。
+- **中国"类脑"方案亮相联合国：不堆算力，给机器人装"大脑"**
 
----
-
-## 📦 产品与开源
-
-- **OpenSquilla发布0.5.0 Preview，多模型集成登顶DRACO双榜**。开源项目OpenSquilla推出0.5.0 Preview版本，凭借多模型集成策略在DRAGO评测中名列前茅，其对比名单中出现了最新旗舰模型Fable 5。这表明，在单一模型能力逼近天花板后，"集成即智能"的工程化思路正在成为新的竞争焦点，开源生态也持续在评测舞台上与闭源旗舰正面交锋。
+  在联合国相关场合，一家中国公司展示了其面向 AI 的"减负"思路——不再依赖堆叠算力，而是为机器人搭载类脑芯片，以更低功耗实现更高效的环境感知与决策。这一技术路径与当前主流的"算力军备竞赛"形成鲜明对比，为 AI 硬件的可持续发展提供了差异化方案。
 
 ---
 
-## 🎤 行业活动
+## 🏢 大公司动态与行业生态
 
-- **2026奇点智能产品大会即将启幕，40+产品大咖齐聚**。字节跳动、宇树科技、百度、阿里、腾讯等头部企业的40余位产品负责人确认出席，奇点智能产品大会公布最新日程。大会聚焦智能产品的定义、落地与商业化路径，涵盖大模型应用、具身智能、AI硬件等多个热门方向，被视为观察中国智能产品风向的重要窗口。
+- **联想控股发起成立中国中文信息学会产学研创新生态工作委员会**
+
+  联想控股联合中国中文信息学会发起成立产学研创新生态工作委员会，旨在打通学术界、产业界与资本方之间的协作通道。该委员会的成立标志着大企业在推动中文信息处理技术从实验室走向规模化落地上扮演着更积极的"生态组织者"角色。
+
+- **2026 奇点智能产品大会启幕在即：字节、宇树、BAT 等 40+ 大咖齐聚**
+
+  2026 奇点智能智能产品大会正式公布最新日程，字节跳动、宇树科技、BAT 等头部企业的 40 余位产品负责人确认出席。大会聚焦智能产品的设计哲学、商业化路径与未来生态，将成为观察中国 AI 产品落地趋势的重要窗口。机器人与 AI 应用的深度融合成为本届大会的核心议题。
 
 ---
 
-## 💡 AI洞察小结
+## 💡 AI 洞察小结
 
-> 今日新闻呈现出几条清晰的主线：其一，**算法创新正重新成为AI进步的主引擎**——无论是阿里清华的扩散模型加速方案，还是类脑计算路线的提出，都反映出业界对"算力堆叠"的反思与对"精巧设计"的回归；其二，**开源与闭源的边界博弈加剧**，OpenSquilla等集成方案在评测中挑战旗舰模型，预示着应用层创新仍有巨大空间；其三，**产学研协同与产业大会的密集落地**，表明中国AI生态正从单点突破走向系统化推进。综合来看，AI竞争的下半场，比拼的不仅是模型规模，更是落地效率、能耗经济性与生态协同能力的综合较量。
+> 今日科技动态呈现出鲜明的"轻装上阵"特征：阿里清华团队的极简推理方案、中国公司的类脑芯片路线，无不指向以更聪明的方法替代更庞大的算力消耗。与此同时，OpenSquilla 等开源项目的崛起与产学研委员会的成立，则表明中国 AI 生态正从单点突破走向系统化协同。可以预见，2026 年下半年的科技竞争将不再单纯比拼参数规模与算力堆叠，而是更多聚焦于效率优化、生态构建与产品落地的综合能力。
