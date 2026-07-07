@@ -1,111 +1,173 @@
-[Host A] 听众朋友们大家好啊，欢迎收听AI每日先锋，今天是2026年7月7日。我是苏晴。
-
-[Host B] 我是周航。苏晴今天挺精神啊。
-
-[Host A] 那必须，今天的话题太对我胃口了。周航你知道吗，昨天有个新闻我看了好几遍都没缓过来。
-
-[Host B] 哪个？
-
-[Host A] 就是有个中国公司跑联合国去了，给AI减负。你说这个事儿是不是听着就很带感？
-
-[Host B] 等一下，"跑联合国去给AI减负"，这个描述我得让你具体说说。
-
-[Host A] 情况是这样的，现在全球AI圈都在疯狂堆算力嘛，几万卡几万卡地烧，那叫一个卷。但这家公司反着来，它不堆算力，而是给机器人装了一套类脑架构，在联合国那个场合直接展示出来的。
-
-[Host B] 你注意啊，这里面有个关键点——咱们一般人一听"类脑"都觉得是个噱头对吧？动不动就拿这个词出来吹。但这次不一样的是，人家是在联合国大舞台上拿出来的，而且强调的是"降算力依赖"这个落点。
-
-[Host A] 对，落点很重要。
-
-[Host B] 说白了，类脑架构这条路之前不是没人走，但真正能跑到台面上讲故事的很少。这家公司敢在国际场合讲，而且讲的是"让AI更轻"，这个叙事其实挺聪明的。你想想，现在全球都在担心AI耗能的问题，对吧？
-
-[Host A] 真的假的，那能耗问题真的有那么严重吗？
-
-[Host B] 你知道训练一次大模型碳排放多少吗？而且推理才是大头，每时每刻都在跑。这家公司的思路相当于告诉你：嘿，智能不一定非得靠堆GPU，结构上做文章也能行。
-
-[Host A] 我跟你说，这个角度我特别喜欢。以前一提中国AI出海，大家印象里就是产品出海、APP出海，对吧？现在人家开始输出理念了，这不一样。
-
-[Host B] 没错，这是从"卖货"到"立标准"的转变。
-
-[Host A] 哎，这话精准。那跟咱们有什么关系呢？周航你翻译翻译。
-
-[Host B] 翻译一下就是——以后你家里的扫地机器人、智能音箱，可能不需要那么贵的主芯片就能跑得很聪明了。成本下来了，价格才有可能下来。
-
-[Host A] 嗯，这个我喜欢听。
-
-[Host A] 对了说到这个，我得提一嘴另一件事儿，可能很多听众没注意到。
-
-[Host B] 什么事儿？
-
-[Host A] 阿里和清华联合搞的一篇论文，拿了今年的ICML杰出论文。这篇论文干了什么呢？用一个极简方案，把扩散模型的推理效率给刷出了新纪录。
-
-[Host B] 这个你得展开讲讲。ICML，机器学习顶会的杰出论文，含金量很高的。
-
-[Host A] 对，而且重点是"极简"两个字。咱们现在生成一张AI图片，背后要跑好几十步的扩散过程对吧？很贵很慢。
-
-[Host B] 是，这是扩散模型的老毛病了。
-
-[Host A] 阿里清华这个团队就证明了一件事儿——这个事儿不是必须的。结构上做简化，一样能逼近原来的效果，速度还快得多。
-
-[Host B] 你注意啊，这两件事儿其实是一条线上的。前面那个类脑架构是硬件层面的"减负"，这个扩散模型极简化是软件层面的"减负"。今天这个主题其实挺统一的。
-
-[Host A] 我跟你说，我看到那个采访里有个工程师说了一句话特别打动我，原话大意是："我们觉得，智能的下一个突破点不是更大的模型，而是更聪明的设计。"
-
-[Host B] 这话有点东西的。说白了，现在业界有个误区，好像参数越多越牛，算力越大越强。但实际上你看OpenAI也好、Google也好，最近的研究方向都开始往效率上靠了。这篇论文某种意义上就是给这股潮流添了一把柴。
-
-[Host A] 对，而且AIGC这个东西，推理成本才是真正的成本。你想想以后大家天天用AI生成视频、生成3D，那推理开销不得了？如果能把这个砍下来，对整个行业的商业化是连锁利好。
-
-[Host B] 所以端侧部署这个事儿，下次苏晴你可以专门做一期。
-
-[Host A] 行，记下来了。
-
-[Host A] 周航，咱们快讯部分今天也有几条挺有意思的，你想先聊哪个？
-
-[Host B] OpenSquilla那个挺让人好奇的。0.5.0 Preview版本，直接登顶了一个叫DRACO的双榜。
-
-[Host A] 哦？DRACO我之前没怎么听说。
-
-[Host B] 是个基准评测榜单，专门测多模型集成架构的。它最让人嘀咕的是对比名单里出现了一个叫Fable 5的东西，很多人猜这可能是某个下一代旗舰。
-
-[Host A] 真的假的？这名字我没听过。是你说它真是下一代旗舰？还是就是大家在猜？
-
-[Host B] 这个嘛，目前确实没有官方背书，就是社区在传。但你要说OpenSquilla这套多模型集成架构本身，确实是有看点的。你注意啊，它不是简单地调API拼一堆模型，而是有一套自己的调度逻辑。
-
-[Host A] 我插一句——是不是类似那种"哪个问题适合哪个模型就派谁去"那种思路？
-
-[Host B] 大致是这个意思，但比那复杂，还要考虑成本、延迟这些。
-
-[Host A] 这个思路其实挺对的，一个模型不可能啥都擅长，分诊制是迟早的事儿。
-
-[Host A] 还有一条快讯，联想控股牵头搞了个产学研创新生态工作委员会，跟中国中文信息学会合作的。我挺好奇这个事儿的，周航你给评评。
-
-[Host B] 这个事儿说白了就是大厂开始把"高校关系"做扎实了。中文信息处理这个领域其实挺特殊的，英文那边很多大模型拿过来直接用就行，但中文有自己的一套逻辑——成语、歇后语、古文这些，还有方言。
-
-[Host A] 对，这个我深有体会。之前用某个英文为主的大模型，让它写个"下雨天打孩子"的下半句，它愣是给我编了一通。
-
-[Host B] 哈哈，那它理解错了。这个事儿就需要产学研一起搞，光靠企业自己挖人不够，得有学术土壤。苏晴你信不信，这种合作最后受益最大的其实是中小开发者？
-
-[Host A] 为什么这么说？
-
-[Host B] 因为这种生态搭起来之后，开源的工具、数据集、评测标准都会慢慢沉淀下来。你一个人创业想做中文NLP产品，不用再从零开始了。
-
-[Host A] 这个我举双手赞成。
-
-[Host A] 最后一条快讯，2026奇点智能产品大会的日程出来了，字节、宇树、BAT这些加上其他公司，一共40多号产品大咖。据说今年的主题是AI硬件。
-
-[Host B] 你注意啊，这个会议名字里有"奇点"两个字，但今年明显务实多了。前几年AI硬件还在概念阶段，今年一看名单，全是已经在卖货或者快要卖货的。
-
-[Host A] 我发现一个事儿哈——以前大家都是先开技术发布会，再开产品发布会。现在反过来，产品先出了，攒一波用户，再回去迭代技术。
-
-[Host B] 这个变化其实挺深刻的。说白了说明产品经理的话语权在AI公司里变大了，技术团队得围着用户场景转。
-
-[Host A] 嗯，这话到位。
-
-[Host A] 周航，今天聊下来其实你能看出来一条主线——AI这两年从"大力出奇迹"，开始往"巧劲"上转了，对吧？
-
-[Host B] 对，这个变化挺值得关注。算力军备竞赛不会停，但越来越多的研究者和公司开始意识到，可持续性的智能才是真正的未来。
-
-[Host A] 好，那今天节目就先到这里。听众朋友们，咱们明天见。
-
-[Host B] 明天见，大家早点休息。
-[Host A] 好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！
-[Host B] 拜拜！
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
+<voice name="host_a_professional" start="1.000" duration="7.314">
+听众朋友们大家好啊，欢迎收听AI每日先锋，今天是2026年7月7日。我是苏晴。
+</voice>
+<voice name="host_b_professional" start="8.763" duration="4.397">
+我是周航。苏晴今天挺精神啊。
+</voice>
+<voice name="host_a_professional" start="13.657" duration="7.445">
+那必须，今天的话题太对我胃口了。周航你知道吗，昨天有个新闻我看了好几遍都没缓过来。
+</voice>
+<voice name="host_b_professional" start="21.555" duration="0.522">
+哪个？
+</voice>
+<voice name="host_a_professional" start="22.482" duration="6.182">
+就是有个中国公司跑联合国去了，给AI减负。你说这个事儿是不是听着就很带感？
+</voice>
+<voice name="host_b_professional" start="29.097" duration="5.790">
+等一下，"跑联合国去给AI减负"，这个描述我得让你具体说说。
+</voice>
+<voice name="host_a_professional" start="35.352" duration="16.389">
+情况是这样的，现在全球AI圈都在疯狂堆算力嘛，几万卡几万卡地烧，那叫一个卷。但这家公司反着来，它不堆算力，而是给机器人装了一套类脑架构，在联合国那个场合直接展示出来的。
+</voice>
+<voice name="host_b_professional" start="52.203" duration="18.218">
+你注意啊，这里面有个关键点——咱们一般人一听"类脑"都觉得是个噱头对吧？动不动就拿这个词出来吹。但这次不一样的是，人家是在联合国大舞台上拿出来的，而且强调的是"降算力依赖"这个落点。
+</voice>
+<voice name="host_a_professional" start="70.872" duration="1.350">
+对，落点很重要。
+</voice>
+<voice name="host_b_professional" start="72.722" duration="18.697">
+说白了，类脑架构这条路之前不是没人走，但真正能跑到台面上讲故事的很少。这家公司敢在国际场合讲，而且讲的是"让AI更轻"，这个叙事其实挺聪明的。你想想，现在全球都在担心AI耗能的问题，对吧？
+</voice>
+<voice name="host_a_professional" start="91.857" duration="2.743">
+真的假的，那能耗问题真的有那么严重吗？
+</voice>
+<voice name="host_b_professional" start="95.061" duration="14.977">
+你知道训练一次大模型碳排放多少吗？而且推理才是大头，每时每刻都在跑。这家公司的思路相当于告诉你：嘿，智能不一定非得靠堆GPU，结构上做文章也能行。
+</voice>
+<voice name="host_a_professional" start="110.483" duration="10.580">
+我跟你说，这个角度我特别喜欢。以前一提中国AI出海，大家印象里就是产品出海、APP出海，对吧？现在人家开始输出理念了，这不一样。
+</voice>
+<voice name="host_b_professional" start="121.537" duration="3.657">
+没错，这是从"卖货"到"立标准"的转变。
+</voice>
+<voice name="host_a_professional" start="125.621" duration="4.702">
+哎，这话精准。那跟咱们有什么关系呢？周航你翻译翻译。
+</voice>
+<voice name="host_b_professional" start="130.787" duration="12.278">
+翻译一下就是——以后你家里的扫地机器人、智能音箱，可能不需要那么贵的主芯片就能跑得很聪明了。成本下来了，价格才有可能下来。
+</voice>
+<voice name="host_a_professional" start="143.482" duration="1.829">
+嗯，这个我喜欢听。
+</voice>
+<voice name="host_a_professional" start="145.747" duration="5.268">
+对了说到这个，我得提一嘴另一件事儿，可能很多听众没注意到。
+</voice>
+<voice name="host_b_professional" start="151.432" duration="0.740">
+什么事儿？
+</voice>
+<voice name="host_a_professional" start="152.668" duration="11.668">
+阿里和清华联合搞的一篇论文，拿了今年的ICML杰出论文。这篇论文干了什么呢？用一个极简方案，把扩散模型的推理效率给刷出了新纪录。
+</voice>
+<voice name="host_b_professional" start="164.748" duration="7.184">
+这个你得展开讲讲。ICML，机器学习顶会的杰出论文，含金量很高的。
+</voice>
+<voice name="host_a_professional" start="172.411" duration="10.710">
+对，而且重点是"极简"两个字。咱们现在生成一张AI图片，背后要跑好几十步的扩散过程对吧？很贵很慢。
+</voice>
+<voice name="host_b_professional" start="183.553" duration="3.091">
+是，这是扩散模型的老毛病了。
+</voice>
+<voice name="host_a_professional" start="187.112" duration="9.056">
+阿里清华这个团队就证明了一件事儿——这个事儿不是必须的。结构上做简化，一样能逼近原来的效果，速度还快得多。
+</voice>
+<voice name="host_b_professional" start="196.658" duration="14.193">
+你注意啊，这两件事儿其实是一条线上的。前面那个类脑架构是硬件层面的"减负"，这个扩散模型极简化是软件层面的"减负"。今天这个主题其实挺统一的。
+</voice>
+<voice name="host_a_professional" start="211.328" duration="11.668">
+我跟你说，我看到那个采访里有个工程师说了一句话特别打动我，原话大意是："我们觉得，智能的下一个突破点不是更大的模型，而是更聪明的设计。"
+</voice>
+<voice name="host_b_professional" start="223.414" duration="20.656">
+这话有点东西的。说白了，现在业界有个误区，好像参数越多越牛，算力越大越强。但实际上你看OpenAI也好、Google也好，最近的研究方向都开始往效率上靠了。这篇论文某种意义上就是给这股潮流添了一把柴。
+</voice>
+<voice name="host_a_professional" start="244.509" duration="16.041">
+对，而且AIGC这个东西，推理成本才是真正的成本。你想想以后大家天天用AI生成视频、生成3D，那推理开销不得了？如果能把这个砍下来，对整个行业的商业化是连锁利好。
+</voice>
+<voice name="host_b_professional" start="260.962" duration="4.223">
+所以端侧部署这个事儿，下次苏晴你可以专门做一期。
+</voice>
+<voice name="host_a_professional" start="265.678" duration="1.437">
+行，记下来了。
+</voice>
+<voice name="host_a_professional" start="267.524" duration="5.094">
+周航，咱们快讯部分今天也有几条挺有意思的，你想先聊哪个？
+</voice>
+<voice name="host_b_professional" start="273.105" duration="9.186">
+OpenSquilla那个挺让人好奇的。0.5.0 Preview版本，直接登顶了一个叫DRACO的双榜。
+</voice>
+<voice name="host_a_professional" start="282.733" duration="3.135">
+哦？DRACO我之前没怎么听说。
+</voice>
+<voice name="host_b_professional" start="286.328" duration="15.412">
+是个基准评测榜单，专门测多模型集成架构的。它最让人嘀咕的是对比名单里出现了一个叫Fable 5的东西，很多人猜这可能是某个下一代旗舰。
+</voice>
+<voice name="host_a_professional" start="302.211" duration="6.313">
+真的假的？这名字我没听过。是你说它真是下一代旗舰？还是就是大家在猜？
+</voice>
+<voice name="host_b_professional" start="308.936" duration="20.003">
+这个嘛，目前确实没有官方背书，就是社区在传。但你要说OpenSquilla这套多模型集成架构本身，确实是有看点的。你注意啊，它不是简单地调API拼一堆模型，而是有一套自己的调度逻辑。
+</voice>
+<voice name="host_a_professional" start="329.384" duration="6.661">
+我插一句——是不是类似那种"哪个问题适合哪个模型就派谁去"那种思路？
+</voice>
+<voice name="host_b_professional" start="336.500" duration="5.007">
+大致是这个意思，但比那复杂，还要考虑成本、延迟这些。
+</voice>
+<voice name="host_a_professional" start="341.947" duration="6.269">
+这个思路其实挺对的，一个模型不可能啥都擅长，分诊制是迟早的事儿。
+</voice>
+<voice name="host_a_professional" start="348.694" duration="11.624">
+还有一条快讯，联想控股牵头搞了个产学研创新生态工作委员会，跟中国中文信息学会合作的。我挺好奇这个事儿的，周航你给评评。
+</voice>
+<voice name="host_b_professional" start="360.799" duration="16.738">
+这个事儿说白了就是大厂开始把"高校关系"做扎实了。中文信息处理这个领域其实挺特殊的，英文那边很多大模型拿过来直接用就行，但中文有自己的一套逻辑——成语、歇后语、古文这些，还有方言。
+</voice>
+<voice name="host_a_professional" start="377.963" duration="8.403">
+对，这个我深有体会。之前用某个英文为主的大模型，让它写个"下雨天打孩子"的下半句，它愣是给我编了一通。
+</voice>
+<voice name="host_b_professional" start="386.836" duration="15.978">
+哈哈，那它理解错了。这个事儿就需要产学研一起搞，光靠企业自己挖人不够，得有学术土壤。苏晴你信不信，这种合作最后受益最大的其实是中小开发者？
+</voice>
+<voice name="host_a_professional" start="403.275" duration="1.263">
+为什么这么说？
+</voice>
+<voice name="host_b_professional" start="404.994" duration="12.016">
+因为这种生态搭起来之后，开源的工具、数据集、评测标准都会慢慢沉淀下来。你一个人创业想做中文NLP产品，不用再从零开始了。
+</voice>
+<voice name="host_a_professional" start="417.476" duration="1.654">
+这个我举双手赞成。
+</voice>
+<voice name="host_a_professional" start="419.563" duration="13.061">
+最后一条快讯，2026奇点智能产品大会的日程出来了，字节、宇树、BAT这些加上其他公司，一共40多号产品大咖。据说今年的主题是AI硬件。
+</voice>
+<voice name="host_b_professional" start="433.031" duration="14.454">
+你注意啊，这个会议名字里有"奇点"两个字，但今年明显务实多了。前几年AI硬件还在概念阶段，今年一看名单，全是已经在卖货或者快要卖货的。
+</voice>
+<voice name="host_a_professional" start="447.955" duration="10.405">
+我发现一个事儿哈——以前大家都是先开技术发布会，再开产品发布会。现在反过来，产品先出了，攒一波用户，再回去迭代技术。
+</voice>
+<voice name="host_b_professional" start="458.761" duration="10.449">
+这个变化其实挺深刻的。说白了说明产品经理的话语权在AI公司里变大了，技术团队得围着用户场景转。
+</voice>
+<voice name="host_a_professional" start="469.621" duration="1.437">
+嗯，这话到位。
+</voice>
+<voice name="host_a_professional" start="471.550" duration="8.533">
+周航，今天聊下来其实你能看出来一条主线——AI这两年从"大力出奇迹"，开始往"巧劲"上转了，对吧？
+</voice>
+<voice name="host_b_professional" start="480.534" duration="12.321">
+对，这个变化挺值得关注。算力军备竞赛不会停，但越来越多的研究者和公司开始意识到，可持续性的智能才是真正的未来。
+</voice>
+<voice name="host_a_professional" start="493.345" duration="5.007">
+好，那今天节目就先到这里。听众朋友们，咱们明天见。
+</voice>
+<voice name="host_b_professional" start="498.852" duration="2.133">
+明天见，大家早点休息。
+</voice>
+<voice name="host_a_professional" start="501.470" duration="5.355">
+好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！
+</voice>
+<voice name="host_b_professional" start="507.305" duration="1.045">
+拜拜！
+</voice>
+</speak>
