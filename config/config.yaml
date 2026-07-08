@@ -15,15 +15,15 @@ tts:
     model_dir: ""                    # 空则读 COSYVOICE_MODEL_DIR 环境变量
     ref_audio:
       host_a:
-        professional: "assets/audio_samples/host_a_v1.mp3"
-        professional_text: "assets/audio_samples/host_a_v1.txt"
-        lively: "assets/audio_samples/host_a_v2.mp3"
-        lively_text: "assets/audio_samples/host_a_v2.txt"
-      host_b:
         professional: "assets/audio_samples/host_b_v1.mp3"
         professional_text: "assets/audio_samples/host_b_v1.txt"
         lively: "assets/audio_samples/host_b_v2.mp3"
         lively_text: "assets/audio_samples/host_b_v2.txt"
+      host_b:
+        professional: "assets/audio_samples/host_a_v1.mp3"
+        professional_text: "assets/audio_samples/host_a_v1.txt"
+        lively: "assets/audio_samples/host_a_v2.mp3"
+        lively_text: "assets/audio_samples/host_a_v2.txt"
   audio:
     bgm_volume_db: -12
     bgm_fade_in_ms: 2000

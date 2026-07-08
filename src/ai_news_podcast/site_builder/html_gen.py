@@ -73,15 +73,15 @@ def build_index_html(
         voices_config = cfg.get("tts", {}).get(
             "voice_names",
             {
-                "host_a": {"professional": "专业男声", "lively": "活力男声"},
-                "host_b": {"professional": "亲切女声", "lively": "青春女生"},
+                "host_a": {"professional": "亲切女声", "lively": "青春女声"},
+                "host_b": {"professional": "专业男声", "lively": "活力男声"},
             },
         )
     else:
         # cfg is AppConfig
         voices_config = {
-            "host_a": {"professional": "专业男声", "lively": "活力男声"},
-            "host_b": {"professional": "亲切女声", "lively": "青春女生"},
+            "host_a": {"professional": "亲切女声", "lively": "青春女声"},
+            "host_b": {"professional": "专业男声", "lively": "活力男声"},
         }
     voices_config_json = json.dumps(voices_config, ensure_ascii=False)
 
