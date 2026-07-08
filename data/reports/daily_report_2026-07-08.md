@@ -1,75 +1,72 @@
-<think>Let me analyze the materials provided and create a comprehensive tech news daily report in Chinese.
+<think>Let me analyze the news materials and create a professional tech news daily report in Chinese.
 
-The materials are:
-1. WAIC 2026 - AI4S (AI for Science) from "auxiliary computing" to "autonomous discovery" - China reshaping global research landscape
-2. WAIC 2026 - Theoretical breakthroughs: mathematics and physics dual empowerment opening AI paradigm innovation
-3. Google expanding Managed Agents in Gemini API: background tasks, remote MCP, etc.
-4. GLM-5.2: Built for Long-Horizon Tasks (from HuggingFace)
-5. Agentic Resource Discovery: Let agents search for tools, skills, and other agents (from HuggingFace)
+The materials cover:
+1. WAIC 2026 - AI4S (AI for Science) - China's reshaping of global research landscape
+2. WAIC 2026 - Theoretical breakthroughs in AI paradigm innovation
+3. Google expanding Managed Agents in Gemini API
+4. GLM-5.2 from HuggingFace for long-horizon tasks
+5. Agentic Resource Discovery from HuggingFace
 
-Let me categorize and synthesize:
+Let me organize these into categories:
+- AI前沿：WAIC 2026相关内容（AI4S、理论突破）
+- 产品与开源：GLM-5.2、Agentic Resource Discovery
+- 大公司动态：Google Gemini API的Managed Agents扩展
 
-**AI前沿 (AI Frontier):**
-- WAIC 2026 themes - AI4S and theoretical breakthroughs
-- GLM-5.2 for long-horizon tasks
+Let me write a comprehensive daily report with proper Chinese translation and professional tone.
 
-**大公司动态 (Big Company Dynamics):**
-- Google expanding Managed Agents in Gemini API
+The date is July 8, 2026. Let me craft this report.
 
-**产品与开源 (Products & Open Source):**
-- GLM-5.2 release
-- Agentic Resource Discovery
+I should merge materials 1 and 2 since they're both about WAIC 2026. Materials 4 and 5 are both from HuggingFace and can be combined under open source. Material 3 is about Google's product update.
 
-Let me write a coherent daily report, merging related topics where possible.
+Let me structure it:
 
-I'll structure it as:
-1. Main title with date
-2. Brief intro summarizing today's trends
-3. Categorized news
-4. AI insights at the end
+1. 大标题
+2. 导语
+3. AI前沿与学术（WAIC 2026 合并）
+4. 大公司动态（Google Gemini）
+5. 产品与开源（GLM-5.2 + Agentic Resource Discovery）
+6. AI洞察小结
 
-Date: July 8, 2026
-
-Let me craft this carefully, keeping it between 800-1500 Chinese characters, professional tone.</think>
+Let me write this out carefully.</think>
 
 # 🌍 科技新闻日报 | 2026年07月08日
 
-**今日核心趋势**：WAIC 2026 揭示 AI 正从"工具"走向"科学发现主体"，与此同时，智能体（Agent）能力在头部厂商与开源社区同步加速，"长任务执行"与"资源自主发现"成为新的竞争焦点。
+**导语**：今日科技领域呈现出"AI走向自主、Agent走向成熟"的鲜明趋势。从WAIC 2026聚焦的AI for Science（AI4S）与基础理论突破，到大厂加速Agent基础设施、开源社区推出面向长程任务的新一代模型，AI正从工具型助手向自主型智能体加速演进。
 
 ---
 
-## 一、AI 前沿：科学智能迎来范式跃迁
+## 🔬 AI前沿：WAIC 2026 聚焦科学智能与理论范式革新
 
-**WAIC 2026 聚焦 AI4S：从辅助计算迈向自主科学发现**
+- **AI4S从"辅助计算"迈向"自主发现"，中国科研版图加速重构**
 
-正在举行的世界人工智能大会（WAIC 2026）将"科学智能"（AI4S）推至舞台中央。与早期 AI 仅作为科研"加速器"不同，如今的研究者开始探讨如何让 AI 真正参与科学假设的提出与验证。中国在材料、生物、地学等多个 AI4S 领域已形成系统化布局，正以"数据 + 模型 + 算力 + 场景"的协同优势，深度参与重塑全球科研版图。
+  在2026世界人工智能大会（WAIC）上，科学智能（AI4S）成为最受关注的核心议题。与早期AI仅作为科研"辅助计算工具"不同，如今的AI for Science正逐步具备"自主发现"能力——从蛋白质结构预测、材料基因组筛选到生命科学领域的靶点挖掘，AI正在深度介入科研的假设生成与实验验证全流程。多位与会专家指出，中国凭借海量高质量科研数据、完善的算力基础设施以及跨学科协作生态，正在全球AI4S版图中占据越来越关键的位置，有望在新一轮科研范式变革中实现"换道超车"。
 
-**AI 理论突破：以数理双向赋能开启范式革新**
+- **数理双向赋能为钥，开启AI范式革新新征程**
 
-WAIC 同期，多位学者强调下一代 AI 的突破将来自数学与物理的双向赋能。一方面，物理世界的结构化知识为模型架构提供先验；另一方面，数学工具的进步正在帮助人类理解和解释大模型涌现的行为模式。这一交叉融合被视为打开 AI 范式革新之门的关键钥匙。
-
----
-
-## 二、大公司动态：智能体基础设施持续完善
-
-**谷歌扩展 Gemini API 中的 Managed Agents 能力**
-
-Google 近日宣布为 Gemini API 中的托管智能体（Managed Agents）推出重要功能升级，涵盖后台任务（background tasks）、远程 MCP（Model Context Protocol）支持等多项特性。这标志着谷歌正持续完善其智能体基础设施——不仅让 Agent 具备"长时间独立执行"的能力，还通过标准化的远程协议，使其能够更灵活地调用外部工具与资源，构建可持续运行的复杂工作流。
+  WAIC 2026同期，多位顶尖学者围绕AI基础理论的突破展开深入讨论。与会专家普遍认为，当前大模型的能力天花板，正越来越多地受制于数学理论的滞后与计算范式的瓶颈。一方面，数学为AI提供了严谨的理论根基——可解释性、泛化性、收敛性等问题亟需新的数学工具；另一方面，AI也在反过来推动数学研究的自动化，如DeepMind、陶哲轩团队所探索的"AI辅助数学证明"已取得阶段性成果。这种"数理×AI"的双向赋能，或将成为下一轮AI范式革新的关键钥匙。
 
 ---
 
-## 三、产品与开源：长任务与自主探索成新焦点
+## 🏢 大公司动态：Google加码Gemini Agent基础设施
 
-**GLM-5.2 发布，专攻长时序任务**
+- **Gemini API全面扩展Managed Agents，新增后台任务与远程MCP支持**
 
-智谱 AI 在 Hugging Face 发布 GLM-5.2 模型，明确将其定位为"为长时序任务而构建"（Built for Long-Horizon Tasks）。这表明国产大模型正从"单轮对话 + 短上下文"的范式，向"持续规划、多步骤推理、跨小时级执行"的能力迈进，是 Agent 时代模型层的关键补课。
-
-**Hugging Face 提出 Agentic Resource Discovery：让 Agent 自己找资源**
-
-Hugging Face 同期发布 Agentic Resource Discovery 方案，核心思路是赋予 Agent 自主搜索工具、技能乃至其他 Agent 的能力。在传统架构中，开发者需要预先为 Agent 配置可调用资源，而该方案则让 Agent 在运行时根据任务需求"即兴发现"最合适的协作对象，被视为多智能体协作生态走向自组织化的重要一步。
+  Google今日宣布对其Gemini API中的Managed Agents（托管智能体）能力进行重大升级，新增多项面向企业级Agent开发的关键功能，包括后台任务（Background Tasks）执行、远程MCP（Model Context Protocol）服务器接入，以及更丰富的工具调度能力。这意味着开发者可以更便捷地构建能够长时间运行、自主调用外部工具的复杂智能体。Google正试图通过降低Agent开发门槛，构建以Gemini为核心的Agent生态护城河，进一步巩固其在企业级AI市场的竞争力。
 
 ---
 
-## 四、AI 洞察小结
+## 🛠️ 产品与开源：长程任务模型与Agent资源发现新范式
 
-> 今日新闻呈现出一条清晰的主线：**AI 正在从"被动响应"走向"主动探索"**。WAIC 上的科学智能议题表明，AI 开始具备参与重大科学发现的能力；GLM-5.2 和 Managed Agents 的升级则说明，工业界已经意识到"长任务执行能力"是 Agent 落地的关键瓶颈；而 Agentic Resource Discovery 所代表的"让 Agent 自主发现资源"理念，则进一步指向了未来多智能体生态的自组织方向。可以预见，2026 年的下半年，围绕"长时序推理 + 自主协作"的军备竞赛将全面展开，谁能率先打通"模型—工具—智能体协作"的全链路，谁就能在 Agent 时代占据定义权。
+- **GLM-5.2发布，专为长程任务而生**
+
+  智谱AI在Hugging Face Blog正式推出GLM-5.2模型，新版本重点针对长程任务（Long-Horizon Tasks）进行优化。长程任务要求AI在长时间跨度内保持目标一致性、上下文连贯性与决策稳定性，是当前Agent落地的核心痛点之一。GLM-5.2通过改进记忆机制、规划能力与多轮推理稳定性，在复杂工作流编排、跨工具协作等场景中表现显著提升，为开源社区提供了可与闭源旗舰模型竞争的新选择。
+
+- **Agentic Resource Discovery：让智能体自主搜索工具、技能与同伴**
+
+  Hugging Face同步推出"Agentic Resource Discovery"（智能体资源发现）机制，允许Agent在运行时自主检索所需的工具、技能模块以及其他智能体。这一机制打破了传统Agent架构中"能力由开发者预设"的局限，使智能体具备了类似"按需装配"的弹性扩展能力。业内认为，这一方向有望成为未来Agent互操作性的重要基础设施，推动多智能体协同从实验室概念走向大规模生产部署。
+
+---
+
+## 💡 AI洞察小结
+
+> 今日的多条新闻共同指向一个核心判断：**AI产业的主战场已从"模型参数竞赛"转向"Agent能力与科研范式重构"**。在学术端，AI4S与数理基础理论的双向奔赴，预示着AI正从"工程奇迹"走向"科学发现"；在产业端，Google、智谱AI、Hugging Face等中外玩家不约而同地在Agent基础设施上发力——无论是Managed Agents的后台化、还是GLM-5.2对长程任务的强化、以及Agentic Resource Discovery的弹性装配，都在为"自主智能体时代"铺设底座。可以预见，2026年下半年，围绕Agent生态的竞争将成为观察AI行业格局演变的最重要窗口。
