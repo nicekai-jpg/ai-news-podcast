@@ -33,7 +33,7 @@ podcast:
 
 tts:
   backend: "edge-tts"
-  voice: "zh-CN-XiaoxiaoNeural"
+  voice: "zh-CN-SuqingNeural"
 
 fetch:
   timeout_seconds: 5

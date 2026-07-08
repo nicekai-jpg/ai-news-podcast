@@ -28,7 +28,7 @@ podcast:
 
 tts:
   backend: "edge-tts"
-  voice: "zh-CN-XiaoxiaoNeural"
+  voice: "zh-CN-SuqingNeural"
   rate: "+0%"
   volume: "+0%"
   pitch: "+0Hz"

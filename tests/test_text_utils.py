@@ -145,7 +145,7 @@ class TestHtmlTagStripping:
 
     def test_ssml_tags_stripped(self) -> None:
         """SSML tags are no longer preserved; they are treated as HTML and stripped."""
-        text = '<speak><voice name="zh-CN-XiaoxiaoNeural">你好</voice></speak>'
+        text = '<speak><voice name="zh-CN-SuqingNeural">你好</voice></speak>'
         result = clean_tts_text(text)
         assert "<speak" not in result
         assert "<voice" not in result
@@ -206,7 +206,7 @@ class TestIdempotency:
         assert first == second
 
     def test_ssml_idempotent(self) -> None:
-        text = '<speak><voice name="zh-CN-XiaoxiaoNeural">[FACT] 测试</voice></speak>'
+        text = '<speak><voice name="zh-CN-SuqingNeural">[FACT] 测试</voice></speak>'
         first = clean_tts_text(text)
         second = clean_tts_text(first)
         # SSML tags are stripped, leaving only text; idempotent means applying
