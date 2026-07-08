@@ -366,7 +366,7 @@ ffmpeg -i normalized.wav -codec:a libmp3lame -b:a 128k -ar 44100 -ac 2 episode.m
 ### 4.5 重试/降级策略
 
 - 每个 chunk 失败重试 3 次（2s / 6s / 15s）
-- edge-tts 失败切换备用音色（Xiaoxiao → Yunxi → Xiaoyi）
+- edge-tts 失败切换备用音色（Suqing → Zhouhang → Xiaoyi）
 - 最终兜底：EmotiVoice（CPU 可跑）
 
 ### 4.6 输出产物
