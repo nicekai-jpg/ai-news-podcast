@@ -1,0 +1,905 @@
+{
+  "episode_id": "2026-07-08",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友们大家好，欢迎收听AI每日先锋，今天是2026年7月8日。我是苏晴。",
+      "start": 1.0,
+      "duration": 5.355,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。苏晴你这个开场越来越省力了。",
+      "start": 6.804,
+      "duration": 5.094,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "怎么省力了？我这叫精准传达信息。",
+      "start": 12.395,
+      "duration": 3.178,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "行行行，你说得都对。今天咱们聊的事儿还挺有意思的，你看今天的大会那个主题没？",
+      "start": 16.026,
+      "duration": 6.531,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "你说的是WAIC吧？我跟你说，这个会今年释放出来的信号，跟往年完全不是一个味儿。",
+      "start": 22.962,
+      "duration": 6.661,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "对，我昨天看了几篇报道，有个说法特别戳我——他们说AI4S现在不是\"替科学家算\"了，是\"替科学家想\"。",
+      "start": 30.056,
+      "duration": 8.011,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "这也太夸张了吧？真的假的？",
+      "start": 38.532,
+      "duration": 2.22,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你注意啊，这还真不是标题党。以前AI在科研里干啥？跑模拟、筛数据、画图，本质上是个计算器，算得比人快而已。但今年会上好几个团队展示的东西，已经能让AI自己提假设了。",
+      "start": 41.214,
+      "duration": 18.305,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "自己提假设？我的天，那科学家干嘛？坐着等结果？",
+      "start": 59.97,
+      "duration": 4.484,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "你这话糙但理不糙。其实更准确的说是AI能在海量文献和实验数据里找到人压根不会去想的关联性，然后反过来给科学家一个方向，你说这算不算\"自己想\"？",
+      "start": 64.954,
+      "duration": 15.673,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "算……这确实算。但我比较好奇的是，为什么这个节点突然就爆发了？是算力到了？还是模型到了？",
+      "start": 81.065,
+      "duration": 6.444,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "我觉得都不是，关键是\"科学数据\"这个东西终于结构化到可以被AI真正消化了。你想啊，材料基因组、蛋白质数据库、天文观测数据……这些玩意儿前几年还是孤岛，现在串起来了。",
+      "start": 87.97,
+      "duration": 17.391,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "所以等于是基建铺好了，最后那块拼图才扣上去。",
+      "start": 105.806,
+      "duration": 4.136,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "对。但这里头还有个问题你想过没有——中国在这个赛道上是真猛。论文数量、算力调度、还有各种垂直场景的落地速度，叠在一起……",
+      "start": 110.416,
+      "duration": 12.365,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "你这么一说我就有画面了。以前咱们觉得搞基础科学还是人家老美欧洲那边的强项对吧？",
+      "start": 123.208,
+      "duration": 6.835,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "说白了，过去科研是\"理论—验证\"闭环，谁手里有顶尖实验室、有大牛，谁就出成果。但AI4S一旦进入自主发现的范式，这套玩法就变了。",
+      "start": 130.507,
+      "duration": 14.237,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "变成啥了？",
+      "start": 145.161,
+      "duration": 0.914,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "变成拼\"模型+数据+算力\"的基建竞赛。你模型好、数据多、算力便宜，你就能让AI替你发现新东西。这跟人才的关系反而没那么直接了。",
+      "start": 146.511,
+      "duration": 10.971,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "我去……这听着有点吓人。",
+      "start": 157.899,
+      "duration": 1.741,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "是挺吓人的。地缘格局要洗牌了。不过话说回来，这事儿对咱们普通听众有啥影响？你可能会问。",
+      "start": 160.136,
+      "duration": 8.272,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "对对对，我正想问呢！",
+      "start": 168.82,
+      "duration": 1.567,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "你注意啊，影响其实比你想的近。比如说你以后吃的药，可能就是AI先筛出来的分子结构；你手机里的电池材料，可能就是AI模拟了几十万种组合挑出来的。",
+      "start": 170.866,
+      "duration": 14.89,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "哎这个我信，新能源车这块儿其实已经在用类似的逻辑了。",
+      "start": 186.188,
+      "duration": 4.746,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "对，只不过以前是辅助，现在是主导。这就是从\"工具\"变成\"合作者\"的区别。",
+      "start": 191.402,
+      "duration": 7.837,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "行，这个话题我先消化消化。对了还有件事儿，谷歌那边今天也有动静你知道吗？",
+      "start": 199.729,
+      "duration": 5.616,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "Gemini API嘛，我看了，Managed Agents这次升级挺关键的。",
+      "start": 205.822,
+      "duration": 5.573,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "你能给我翻译翻译什么叫Managed Agents吗？我看这个词儿我脑子里就一团浆糊。",
+      "start": 211.813,
+      "duration": 6.356,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "简单说就是——以前咱们用AI Agent，是不是得自己写一堆调度代码？这事儿对开发者特别烦。谷歌这次的意思是，这些脏活累活我帮你干了。",
+      "start": 218.608,
+      "duration": 12.365,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "哦，就是\"交钥匙工程\"。",
+      "start": 231.385,
+      "duration": 2.264,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "你这个比喻还挺准。但更狠的是后面那两个新东西——后台任务，还有远程MCP。",
+      "start": 234.142,
+      "duration": 6.313,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "后台任务我懂，就是AI可以挂在后台跑对吧？那MCP是啥？",
+      "start": 240.864,
+      "duration": 4.92,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "你注意啊，MCP你可以理解成一个通用插座。以前每个Agent想调外部工具，都得单独写接口。现在只要符合这个协议，就能即插即用。",
+      "start": 246.271,
+      "duration": 12.452,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "懂了……这不就是Agent界的USB-C嘛。",
+      "start": 259.165,
+      "duration": 2.873,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "哈哈哈你这个类比我服气。",
+      "start": 262.498,
+      "duration": 2.656,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "我跟你说，这种基础设施一铺开，生态会自己长出来。你看HuggingFace那边今天也发了新东西对吧？",
+      "start": 265.625,
+      "duration": 7.924,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "对，Agentic Resource Discovery，名字很绕，我给你拆开说。就是Agent现在能自己去\"找工具\"了。",
+      "start": 273.961,
+      "duration": 8.054,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "找工具？啥意思？",
+      "start": 282.46,
+      "duration": 1.959,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "以前Agent要用啥功能，得开发者提前给它配好。现在它可以自己去搜索、去匹配，找到合适的Skill或者工具直接调用。",
+      "start": 284.874,
+      "duration": 12.626,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "我的妈呀，这不是Agent版的App Store嘛。",
+      "start": 297.94,
+      "duration": 2.612,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "而且还不止——它甚至能找到其他Agent，跟别的Agent协作。你想想这个画面。",
+      "start": 301.03,
+      "duration": 7.706,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "有点头皮发麻。Agent去找Agent，那以后是不是咱们可以指挥一个Agent，它自己拉一帮小弟来干活？",
+      "start": 309.217,
+      "duration": 8.141,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "说白了，这就是\"Agent经济\"的雏形了。谷歌铺基建，HuggingFace搞发现机制，模型厂商还在卷长周期推理能力……",
+      "start": 317.784,
+      "duration": 10.362,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "你说到长周期我想起来，智谱那个GLM-5.2对吧？",
+      "start": 328.616,
+      "duration": 4.702,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "对，这个模型特别有意思。它的定位不是\"答题王\"，是\"打工人\"。",
+      "start": 333.779,
+      "duration": 4.876,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "打工人？",
+      "start": 339.111,
+      "duration": 1.088,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "你注意啊，传统大模型你问它一个问题，它回答完就完了，状态全清。但GLM-5.2主打的是什么？是能记住自己前面干了啥，能规划接下来要干啥，能跨多个步骤把一个复杂任务执行到底。",
+      "start": 340.665,
+      "duration": 19.132,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "哦……所以它就是个\"耐力型选手\"。",
+      "start": 360.23,
+      "duration": 2.873,
+      "audios": {
+        "professional": "chunk_047_professional.mp3",
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "对，而且这个耐力不是为了炫技，是真的冲着Agent场景去的。你想想，如果一个Agent只能跑三步就断片儿，那它啥长流程工作都接不了。",
+      "start": 363.51,
+      "duration": 11.189,
+      "audios": {
+        "professional": "chunk_048_professional.mp3",
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "所以你看，今天这几条新闻放在一起看，是不是有个共同的信号？",
+      "start": 375.169,
+      "duration": 4.005,
+      "audios": {
+        "professional": "chunk_049_professional.mp3",
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "你看出来了？我还以为就我一个人在想这个。",
+      "start": 379.575,
+      "duration": 3.265,
+      "audios": {
+        "professional": "chunk_050_professional.mp3",
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "周航你少来，我也是有思考的好吧。",
+      "start": 383.251,
+      "duration": 2.786,
+      "audios": {
+        "professional": "chunk_051_professional.mp3",
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "好好好，那你总结总结？",
+      "start": 386.529,
+      "duration": 2.22,
+      "audios": {
+        "professional": "chunk_052_professional.mp3",
+        "lively": "chunk_052_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "我觉得吧……从科研领域的AI自主发现，到软件领域的Agent基础设施铺开，再到长周期推理模型的出现……2026年下半年整个Agent生态是真正从\"玩具\"变成\"工具\"了。",
+      "start": 389.2,
+      "duration": 15.998,
+      "audios": {
+        "professional": "chunk_053_professional.mp3",
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "说得不错。但我得补一句——它不光是工具，它在变成\"自主行动者\"。工具是你指挥它干活，行动者是它自己能判断啥时候该干活、怎么干。",
+      "start": 405.688,
+      "duration": 14.977,
+      "audios": {
+        "professional": "chunk_054_professional.mp3",
+        "lively": "chunk_054_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "你这话我得记下来，太精辟了。",
+      "start": 421.165,
+      "duration": 2.569,
+      "audios": {
+        "professional": "chunk_055_professional.mp3",
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "行了别捧了，咱们下期接着聊。今天就到这儿。",
+      "start": 424.219,
+      "duration": 4.005,
+      "audios": {
+        "professional": "chunk_056_professional.mp3",
+        "lively": "chunk_056_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "感谢大家收听AI每日先锋，咱们明天见！",
+      "start": 428.704,
+      "duration": 3.439,
+      "audios": {
+        "professional": "chunk_057_professional.mp3",
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "明天见，拜拜。",
+      "start": 432.543,
+      "duration": 1.437,
+      "audios": {
+        "professional": "chunk_058_professional.mp3",
+        "lively": "chunk_058_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 434.458,
+      "duration": 5.181,
+      "audios": {
+        "professional": "chunk_059_professional.mp3",
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 440.102,
+      "duration": 0.784,
+      "audios": {
+        "professional": "chunk_060_professional.mp3",
+        "lively": "chunk_060_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
