@@ -31,7 +31,7 @@ RE_HTML_TAG = re.compile(r"<[^>]+>")
 RE_THINKING_MARKERS = re.compile(
     r"(?i)(?:let me|key requirements|requirements and write|"
     r"natural conversation|two hosts:|host a.*host b|"
-    r"\d+\.[\s]*two hosts|here is|below is|i will|"
+    r"\d+\.\s*two hosts|here is|below is|i will|"
     r"firstly|secondly|finally|step \d|note:|"
     r"^\s*1\.\s+two hosts|^\s*\d+\.\s*(?:two|host|conversation|natural))"
 )

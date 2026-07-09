@@ -170,21 +170,52 @@ def generate_podcast(
     if not script:
         script = _build_fallback(brief, episode_date, podcast_title)
 
+    script, warnings, _ = _post_process_script(
+        script, brief, episode_date, podcast_title, banned_words, mode_used
+    )
+    return script, warnings
+
+
+def _post_process_script(
+    script: str,
+    brief: dict[str, Any],
+    episode_date: datetime,
+    podcast_title: str,
+    banned_words: list[str],
+    mode_used: str,
+) -> tuple[str, list[str], str]:
+    """清洗、验证脚本，必要时回退到 fallback 模板。"""
     script = clean_tts_text(script)
+    if not script.strip():
+        logger.warning("clean_tts_text 后脚本为空，强制降级到 Fallback 模板")
+        script = _build_fallback(brief, episode_date, podcast_title)
+        mode_used = "fallback (forced: empty after cleaning)"
     script = _replace_banned_words(script, banned_words)
     script = _normalize_host_tags(script)
     script = _ensure_proper_ending(script)
 
     warnings: list[str] = []
+    host_a_count = script.count("[Host A]")
+    host_b_count = script.count("[Host B]")
+    total_turns = host_a_count + host_b_count
+
+    if total_turns == 0:
+        logger.warning("脚本生成后不含任何 [Host A]/[Host B] 标记，强制降级到 Fallback 模板")
+        script = _build_fallback(brief, episode_date, podcast_title)
+        script = clean_tts_text(script)
+        script = _replace_banned_words(script, banned_words)
+        script = _normalize_host_tags(script)
+        script = _ensure_proper_ending(script)
+        mode_used = "fallback (forced: no host markers)"
+        warnings.append("LLM 输出不含 Host 标记，已强制降级到 Fallback 模板")
+        host_a_count = script.count("[Host A]")
+        host_b_count = script.count("[Host B]")
+        total_turns = host_a_count + host_b_count
 
     found_banned = check_banned_words(script, banned_words)
     if found_banned:
         warnings.append(f"仍含禁用词: {found_banned}")
 
-    # 简单统计Host A和Host B的出场次数
-    host_a_count = script.count("[Host A]")
-    host_b_count = script.count("[Host B]")
-    total_turns = host_a_count + host_b_count
     if host_a_count == 0 or host_b_count == 0:
         warnings.append("生成播客未严格包含 [Host A] 和 [Host B] 双人对谈标记")
 
@@ -195,7 +226,7 @@ def generate_podcast(
         host_a_count,
         host_b_count,
     )
-    return script, warnings
+    return script, warnings, mode_used
 
 
 def _normalize_host_tags(text: str) -> str:
