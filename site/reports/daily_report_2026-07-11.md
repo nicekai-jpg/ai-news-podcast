@@ -1,0 +1,65 @@
+<think>The user wants me to create a professional tech news daily report in Chinese, based on the provided materials. Let me analyze the materials:
+
+1. 蚂蚁InTech奖申报即将截止 - Third Ant InTech Award, Turing Award winner as judge
+2. AI生物研发MoleculeOS - AI biology R&D enters "operating system era"
+3. 百度搭子日均提问暴增20倍 - Baidu's AI companion upgrade
+4. 派早报：蔚来ES8上市等，OpenAI发布GPT-5 - NIO ES8 launch, OpenAI GPT-5 release
+5. Apple起诉OpenAI - Apple sues OpenAI over trade secret theft
+
+I need to merge related stories and present them in categories. Let me organize:
+
+- AI前沿：MoleculeOS、百度搭子升级
+- 大公司动态：OpenAI发布GPT-5、Apple起诉OpenAI、蔚来ES8
+- 行业活动：蚂蚁InTech奖
+
+I should be concise, professional, and write between 800-1500 characters in Chinese.
+
+Let me write this now.</think>
+
+# 🌍 科技新闻日报 | 2026年07月11日
+
+**导语**：今日科技圈重磅不断——OpenAI 发布 GPT-5 引爆新一轮 AI 竞赛，Apple 与 OpenAI 围绕商业秘密对簿公堂，AI 在生物研发与企业服务领域的落地也在持续深化，行业竞争与生态构建同步加速。
+
+---
+
+## 🚀 AI 前沿
+
+**AI 生物研发迈入"操作系统时代"，MoleculeOS 正式开放**
+许锦波团队推出 MoleculeOS，将 AI 从单一工具升级为研发流程的"组织者"，打通生物分子设计、实验验证、数据反馈等环节。这一举措意味着 AI 正从"辅助分析"向"全流程调度"演进，生物医药研发有望迎来类似操作系统级别的范式重构。
+
+**百度"搭子"日均提问量暴增 20 倍，企业版同步上线**
+百度智能助手迎来重磅升级，日均交互量实现 20 倍增长，并同步推出企业版本，覆盖协同办公与业务流程自动化场景。产品形态的成熟与 Agent 概念的落地，折射出 AI 正从"对话工具"快速进化为"任务执行体"。
+
+---
+
+## 🏢 大公司动态
+
+**OpenAI 正式发布 GPT-5，苹果提起商业秘密诉讼**
+OpenAI 推出新一代旗舰模型 GPT-5，性能与多模态能力进一步升级，再次拉高大模型竞争水位。与此同时，Apple 正式起诉 OpenAI，指控其涉嫌窃取商业秘密，并称相关行为由 OpenAI 高层直接授意，涉及一名长期任职的前 Apple 员工。两起事件同日落地，凸显头部 AI 公司在技术领跑与法律风险之间的双重张力。
+
+**蔚来 ES8 大五座版正式上市**
+蔚来发布 ES8 大五座版车型，进一步完善其高端 SUV 产品矩阵。新车在空间布局与配置上针对家庭与商务用户优化，反映出新势力车企在存量竞争阶段正以细分场景为切入口争夺市场份额。
+
+---
+
+## 🎯 行业活动
+
+**第三届蚂蚁 InTech 奖申报倒计时 7 天，图灵奖得主坐镇评审**
+聚焦 AI、隐私计算、安全、绿色科技四大方向，奖金直发机制为科研团队提供从研究到落地的全链路支持。图灵奖得主领衔评审阵容，意味着该奖项在学术权威性与产业影响力两端均具备较高门槛，对国内前沿科技项目的吸引力值得关注。
+
+---
+
+## 📊 行业速览
+
+| 领域 | 关键动态 |
+|------|----------|
+| 大模型 | OpenAI 发布 GPT-5 |
+| 法律与竞争 | Apple 起诉 OpenAI |
+| AI for Science | MoleculeOS 开放 |
+| 企业级 AI | 百度搭子企业版上线 |
+| 智能汽车 | 蔚来 ES8 大五座版上市 |
+| 科研激励 | 蚂蚁 InTech 奖申报收尾 |
+
+---
+
+> **AI 洞察小结**：今天的科技图景呈现出两条清晰主线——一是**能力跃迁**，从 GPT-5 到 MoleculeOS，大模型与垂直 AI 正在向"操作系统级"基础设施迈进；二是**格局重塑**，苹果与 OpenAI 的法律交锋标志着头部玩家之间的竞争已从纯技术维度延伸至法律与商业秘密层面。可以预见，随着 AI 渗透到研发、生产、办公等核心场景，围绕技术、数据与人才的争夺将进一步白热化，行业洗牌或将加速到来。
