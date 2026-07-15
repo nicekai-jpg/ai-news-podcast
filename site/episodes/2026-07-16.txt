@@ -1,61 +1,98 @@
-[Host A] 听众朋友大家好，欢迎收听AI每日先锋，今天是2026年7月16日。我是苏晴。
-
-[Host B] 大家好，我是周航。
-
-[Host A] 周航，今天这个选题我准备的时候自己都兴奋了一下，DeepMind一口气放了好几个大招，而且方向特别一致——他们想把AI从"工具箱"变成"同事"。
-
-[Host B] 我懂你意思，这个"同事"可能是真的坐在你旁边跟你一起搞研究、一起看病的同事。
-
-[Host A] 对，先说最让我震撼的一个，DeepMind刚发了一个叫Co-Scientist的东西，你知道这是什么吗？
-
-[Host B] 知道，说白了它不是一个模型，是一群模型组团干活。你注意啊，它的架构很有意思——不是一个大模型啥都干，而是好几个智能体分工，有的专门负责读文献帮你找研究空白，有的负责生成假设，有的专门挑刺说"你这个假设站不住脚"。
-
-[Host A] 这也太……有点像论文版的辩论赛？一群AI吵一架，最后吵出一个靠谱的方向？
-
-[Host B] 你这个类比还挺到位的。它的核心逻辑其实是模拟真实的科研流程。你想啊，做研究最难的从来不是写代码或者算数据，是"我该研究什么"这个问题本身。这个系统就在攻这个最难的环节。
-
-[Host A] 我跟你说，如果这个成熟了，学术圈要地震。以后导师让博士生干的活，可能一半都被AI干了。
-
-[Host B] 也不能这么说，AI现在能做的是提速和拓展思路，但真正的实验验证还得人来跑。不过它确实在改变一个事儿——未来一个实验室能产出的成果密度可能会翻好几倍，人机配比会彻底不一样。
-
-[Host A] 说到AI深入各行各业当"同事"，Google另一个发布更让我心里一紧——他们的医疗AI AMIE发了篇Nature论文。
-
-[Host B] 这个我看了，而且这次的关注点特别关键。以前医疗AI大家比拼的是"问诊准不准"，就是那种你描述症状它帮你判断挂什么科。AMIE这次直接把战场挪到了"长期慢病管理"。
-
-[Host A] 你知道这意味着什么吗？我自己有个慢性病的老亲戚，每次复诊都折腾半天，光是跟医生讲清楚这三个月身体变化就够呛。如果AI能把这种日常的跟踪管起来……
-
-[Host B] 问题是，论文里的数据虽然漂亮，但AMIE在"对话式共情"和临床判断的综合表现上已经达到初级保健医生的水准了。一旦这个真的拿到监管放行，基层医疗资源的缺口确实有可能被结构性缓解。
-
-[Host A] 但我有个特别现实的担心——你看病的时候，对面坐的是AI，你真的能把隐私和心里话说出来吗？这个医患信任怎么重建？
-
-[Host B] 这个挑战比技术本身还大。责任归属也是个灰色地带，AI给的建议出了偏差算谁的？这些不是技术问题，是整个医疗体系要重新设计的系统性问题。但方向已经不可逆了。
-
-[Host A] 对了，说到这个AI越来越"能自己做主"的趋势，DeepMind还做了一件挺低调但重要的事儿——发了个AI Control Roadmap，就是给AI Agent上"缰绳"的那套安全方案。
-
-[Host B] 你注意啊，这个时机很有意思。他们一边在推Agent越来越自主，一边在补安全的基础设施。这个Roadmap把传统的安全防护和实时监控结合起来，核心思路是"AI做什么之前先过一道校验"，不是事后追责而是事前锁死。
-
-[Host A] 说白了就是边放手边系安全带？
-
-[Host B] 对，而且是在Agent真正大规模部署之前先把路修好，这个顺序是对的。
-
-[Host A] 还有一个Google AI博客的文章我觉得挺值得聊，叫"Ask an AI expert: What exactly is the full stack"，它重新定义了什么是AI时代的全栈工程师。
-
-[Host B] 这个话题有意思。在传统开发里，全栈就是前端后端数据库都能搞定。但AI时代不一样了，你得懂怎么调模型、怎么搭RAG、怎么设计Agent的工作流、怎么评估效果——每一层的技术栈都在剧烈变化。
-
-[Host A] 我翻译一下，就是说光会写代码不够了，你得是个懂产品、懂数据、懂AI能力边界的"杂家"？
-
-[Host B] 可以这么理解。而且这个变化对教育冲击很大，高校里还在教的那套技术栈，出来可能已经过时了一两代。
-
-[Host A] 那咱们今天听节目的朋友们，你们公司的技术栈跟AI全栈搭上边了吗？
-
-[Host B] 这个就值得大家回去盘一盘了。
-
-[Host A] 好，今天的节目就到这里。DeepMind这一波操作给我一个特别清晰的感受——AI不是在某一个点突破，而是在每一个行业里同时往深处扎。
-
-[Host B] 是的，而且它做这些事的方式不是单点发力，是从工具、协作、安全、基础设施四个维度同时推进。这种系统级的推进才是真正可怕的地方。
-
-[Host A] 好，感谢各位收听，明天同一时间咱们再见。
-
-[Host B] 大家拜拜。
-[Host A] 好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！
-[Host B] 拜拜！
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
+<voice name="host_a_professional" start="1.000" duration="6.400">
+听众朋友大家好，欢迎收听AI每日先锋，今天是2026年7月16日。我是苏晴。
+</voice>
+<voice name="host_b_professional" start="7.849" duration="1.437">
+大家好，我是周航。
+</voice>
+<voice name="host_a_professional" start="9.783" duration="13.540">
+周航，今天这个选题我准备的时候自己都兴奋了一下，DeepMind一口气放了好几个大招，而且方向特别一致——他们想把AI从"工具箱"变成"同事"。
+</voice>
+<voice name="host_b_professional" start="23.776" duration="5.616">
+我懂你意思，这个"同事"可能是真的坐在你旁边跟你一起搞研究、一起看病的同事。
+</voice>
+<voice name="host_a_professional" start="29.797" duration="8.838">
+对，先说最让我震撼的一个，DeepMind刚发了一个叫Co-Scientist的东西，你知道这是什么吗？
+</voice>
+<voice name="host_b_professional" start="39.068" duration="19.959">
+知道，说白了它不是一个模型，是一群模型组团干活。你注意啊，它的架构很有意思——不是一个大模型啥都干，而是好几个智能体分工，有的专门负责读文献帮你找研究空白，有的负责生成假设，有的专门挑刺说"你这个假设站不住脚"。
+</voice>
+<voice name="host_a_professional" start="59.492" duration="7.706">
+这也太……有点像论文版的辩论赛？一群AI吵一架，最后吵出一个靠谱的方向？
+</voice>
+<voice name="host_b_professional" start="67.660" duration="15.388">
+你这个类比还挺到位的。它的核心逻辑其实是模拟真实的科研流程。你想啊，做研究最难的从来不是写代码或者算数据，是"我该研究什么"这个问题本身。这个系统就在攻这个最难的环节。
+</voice>
+<voice name="host_a_professional" start="83.499" duration="8.098">
+我跟你说，如果这个成熟了，学术圈要地震。以后导师让博士生干的活，可能一半都被AI干了。
+</voice>
+<voice name="host_b_professional" start="92.097" duration="16.128">
+也不能这么说，AI现在能做的是提速和拓展思路，但真正的实验验证还得人来跑。不过它确实在改变一个事儿——未来一个实验室能产出的成果密度可能会翻好几倍，人机配比会彻底不一样。
+</voice>
+<voice name="host_a_professional" start="108.663" duration="11.494">
+说到AI深入各行各业当"同事"，Google另一个发布更让我心里一紧——他们的医疗AI AMIE发了篇Nature论文。
+</voice>
+<voice name="host_b_professional" start="120.618" duration="15.257">
+这个我看了，而且这次的关注点特别关键。以前医疗AI大家比拼的是"问诊准不准"，就是那种你描述症状它帮你判断挂什么科。AMIE这次直接把战场挪到了"长期慢病管理"。
+</voice>
+<voice name="host_a_professional" start="136.320" duration="15.064">
+你知道这意味着什么吗？我自己有个慢性病的老亲戚，每次复诊都折腾半天，光是跟医生讲清楚这三个月身体变化就够呛。如果AI能把这种日常的跟踪管起来……
+</voice>
+<voice name="host_b_professional" start="151.858" duration="16.607">
+问题是，论文里的数据虽然漂亮，但AMIE在"对话式共情"和临床判断的综合表现上已经达到初级保健医生的水准了。一旦这个真的拿到监管放行，基层医疗资源的缺口确实有可能被结构性缓解。
+</voice>
+<voice name="host_a_professional" start="168.892" duration="11.929">
+但我有个特别现实的担心——你看病的时候，对面坐的是AI，你真的能把隐私和心里话说出来吗？这个医患信任怎么重建？
+</voice>
+<voice name="host_b_professional" start="181.285" duration="15.107">
+这个挑战比技术本身还大。责任归属也是个灰色地带，AI给的建议出了偏差算谁的？这些不是技术问题，是整个医疗体系要重新设计的系统性问题。但方向已经不可逆了。
+</voice>
+<voice name="host_a_professional" start="196.809" duration="16.346">
+对了，说到这个AI越来越"能自己做主"的趋势，DeepMind还做了一件挺低调但重要的事儿——发了个AI Control Roadmap，就是给AI Agent上"缰绳"的那套安全方案。
+</voice>
+<voice name="host_b_professional" start="213.591" duration="19.089">
+你注意啊，这个时机很有意思。他们一边在推Agent越来越自主，一边在补安全的基础设施。这个Roadmap把传统的安全防护和实时监控结合起来，核心思路是"AI做什么之前先过一道校验"，不是事后追责而是事前锁死。
+</voice>
+<voice name="host_a_professional" start="233.097" duration="3.135">
+说白了就是边放手边系安全带？
+</voice>
+<voice name="host_b_professional" start="236.728" duration="6.400">
+对，而且是在Agent真正大规模部署之前先把路修好，这个顺序是对的。
+</voice>
+<voice name="host_a_professional" start="243.540" duration="14.561">
+还有一个Google AI博客的文章我觉得挺值得聊，叫"Ask an AI expert: What exactly is the full stack"，它重新定义了什么是AI时代的全栈工程师。
+</voice>
+<voice name="host_b_professional" start="258.580" duration="18.000">
+这个话题有意思。在传统开发里，全栈就是前端后端数据库都能搞定。但AI时代不一样了，你得懂怎么调模型、怎么搭RAG、怎么设计Agent的工作流、怎么评估效果——每一层的技术栈都在剧烈变化。
+</voice>
+<voice name="host_a_professional" start="277.012" duration="10.188">
+我翻译一下，就是说光会写代码不够了，你得是个懂产品、懂数据、懂AI能力边界的"杂家"？
+</voice>
+<voice name="host_b_professional" start="287.668" duration="7.532">
+可以这么理解。而且这个变化对教育冲击很大，高校里还在教的那套技术栈，出来可能已经过时了一两代。
+</voice>
+<voice name="host_a_professional" start="295.690" duration="5.965">
+那咱们今天听节目的朋友们，你们公司的技术栈跟AI全栈搭上边了吗？
+</voice>
+<voice name="host_b_professional" start="302.132" duration="2.656">
+这个就值得大家回去盘一盘了。
+</voice>
+<voice name="host_a_professional" start="305.206" duration="12.060">
+好，今天的节目就到这里。DeepMind这一波操作给我一个特别清晰的感受——AI不是在某一个点突破，而是在每一个行业里同时往深处扎。
+</voice>
+<voice name="host_b_professional" start="317.705" duration="12.321">
+是的，而且它做这些事的方式不是单点发力，是从工具、协作、安全、基础设施四个维度同时推进。这种系统级的推进才是真正可怕的地方。
+</voice>
+<voice name="host_a_professional" start="330.438" duration="3.222">
+好，感谢各位收听，明天同一时间咱们再见。
+</voice>
+<voice name="host_b_professional" start="334.153" duration="0.827">
+大家拜拜。
+</voice>
+<voice name="host_a_professional" start="335.389" duration="7.097">
+好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！
+</voice>
+<voice name="host_b_professional" start="342.973" duration="0.522">
+拜拜！
+</voice>
+</speak>
