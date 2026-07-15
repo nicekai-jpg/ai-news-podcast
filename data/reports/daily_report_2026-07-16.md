@@ -1,0 +1,53 @@
+<think>The user wants me to create a professional tech news daily report based on the provided materials. Let me analyze the materials:
+
+1. Material 1: Securing the future of AI agents - DeepMind Blog about AI Control Roadmap for securing internal systems
+2. Material 2: Gemini for Science - tools and experiments for scientific exploration
+3. Material 3: Co-Scientist - multi-agent AI partner built with Gemini
+4. Material 4: Ask an AI expert: What exactly is the full stack? - Google AI Blog
+5. Material 5: AMIE medical AI research published in Nature
+
+All materials are from Google/DeepMind. I need to:
+- Write in Chinese
+- Use Markdown format
+- Organize by themes
+- Be concise (800-1500 words)
+- Add an AI insight summary
+
+Let me categorize:
+- AI前沿 (AI Frontier): Materials 1, 2, 3 (AI agents security, Gemini for Science, Co-Scientist)
+- 大公司动态 (Big Company News): Materials 4, 5 (Google AI stack discussion, AMIE medical AI)
+
+I should merge related topics where appropriate. Let me draft the report.</think>
+
+# 🌍 科技新闻日报 | 2026年07月16日
+
+**导语**：今日科技动态聚焦于 Google DeepMind 在 AI 安全、科学研究辅助以及医疗 AI 等垂直领域的密集布局。从智能体安全防护到多智能体科研协作，AI 正加速从通用工具向专业领域纵深渗透。
+
+---
+
+## 🔬 AI 前沿：智能体安全与科学发现双线并进
+
+- **DeepMind 发布「AI 控制路线图」，为智能体安全保驾护航**
+  DeepMind 近日推出面向 AI 智能体（AI Agents）的内部控制框架——「AI 控制路线图」（AI Control Roadmap）。该方案将传统安全防护机制与实时监控系统相结合，旨在应对 AI 智能体在内部系统中日益增长的自主操作能力所带来的风险。随着 AI 智能体开始在企业内部流程中独立执行任务，如何在赋予其行动力的同时确保可控性，已成为行业核心议题。该路线图为企业构建可信赖的 AI 智能体生态提供了系统性参考。
+
+- **「Gemini for Science」亮相，AI 成为科研探索的新基础设施**
+  DeepMind 同步推出 Gemini for Science 项目，集结一系列面向科学研究场景的 AI 工具与实验性应用，旨在扩展科学探索的规模与精度。科研人员可借助 Gemini 模型加速数据分析、文献挖掘与假设生成等环节。该项目的发布标志着 Gemini 从通用大模型向科学专用工具链的延伸，有望重塑基础研究与实验科学的工作流。
+
+- **Co-Scientist：多智能体协同，重塑科研协作模式**
+  作为 Gemini for Science 的核心组成部分，DeepMind 推出 Co-Scientist（联合科学家）——一款基于 Gemini 构建的多智能体 AI 协作伙伴。Co-Scientist 可与人类研究人员实时互动，协助提出假设、设计实验、分析结果，显著压缩从构想到验证的周期。这一产品形态预示着 AI 正从「辅助工具」进化为「研究合作者」，可能深刻改变学术科研的组织方式。
+
+---
+
+## 🏢 大公司动态：从全栈架构到医疗落地
+
+- **Google 解读「AI 全栈」：从应用层到模型层的完整生态**
+  Google AI 博客发布专家问答文章，探讨「什么是真正的 AI 全栈」（Full Stack）。文章回顾了计算范式从移动应用到 AI 时代的演进，指出 AI 全栈涵盖芯片基础设施、模型开发、平台服务到终端应用等多个层级。Google 强调，唯有打通全栈，才能在性能、成本与安全之间取得平衡，这也是其相较于纯模型供应商的核心竞争优势。
+
+- **AMIE 医疗 AI 研究登上《Nature》，复杂疾病管理能力比肩初级保健医师**
+  Google 发表于《Nature》的最新研究显示，其对话式医疗 AI 系统 AMIE 在复杂疾病管理任务中的表现已与初级保健医生持平。AMIE 能够通过多轮对话采集病史、提供分诊建议并辅助慢病管理。这一成果不仅验证了大模型在医疗垂直领域的临床可行性，也为 AI 辅助诊疗系统的规模化落地提供了循证基础。
+
+---
+
+## 📌 今日趋势小结
+
+> 今日 Google DeepMind 的多条动态呈现出清晰的双主线战略：**横向**通过 AI 控制路线图与全栈架构夯实基础设施底座，解决 AI 智能体大规模部署的安全与工程难题；**纵向**则依托 Gemini for Science、Co-Scientist 与 AMIE 等项目，将 AI 能力深度嵌入科研、医疗等高价值垂直领域。值得关注的是，「多智能体协作」正在成为新一代 AI 应用的关键范式——无论是科研中的 Co-Scientist，还是企业内部的智能体管控，都指向同一个未来：AI 不再是单一工具，而是由多个专业化智能体组成的协作网络。这场从「单模型竞争」向「智能体生态竞争」的跃迁，或将定义接下来几年科技产业的核心格局。
