@@ -1,0 +1,485 @@
+{
+  "episode_id": "2026-07-16",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年7月16日。我是苏晴。",
+      "start": 1.0,
+      "duration": 6.4,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 7.849,
+      "duration": 1.437,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天这个选题我准备的时候自己都兴奋了一下，DeepMind一口气放了好几个大招，而且方向特别一致——他们想把AI从\"工具箱\"变成\"同事\"。",
+      "start": 9.783,
+      "duration": 13.54,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "我懂你意思，这个\"同事\"可能是真的坐在你旁边跟你一起搞研究、一起看病的同事。",
+      "start": 23.776,
+      "duration": 5.616,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "对，先说最让我震撼的一个，DeepMind刚发了一个叫Co-Scientist的东西，你知道这是什么吗？",
+      "start": 29.797,
+      "duration": 8.838,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "知道，说白了它不是一个模型，是一群模型组团干活。你注意啊，它的架构很有意思——不是一个大模型啥都干，而是好几个智能体分工，有的专门负责读文献帮你找研究空白，有的负责生成假设，有的专门挑刺说\"你这个假设站不住脚\"。",
+      "start": 39.068,
+      "duration": 19.959,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "这也太……有点像论文版的辩论赛？一群AI吵一架，最后吵出一个靠谱的方向？",
+      "start": 59.492,
+      "duration": 7.706,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你这个类比还挺到位的。它的核心逻辑其实是模拟真实的科研流程。你想啊，做研究最难的从来不是写代码或者算数据，是\"我该研究什么\"这个问题本身。这个系统就在攻这个最难的环节。",
+      "start": 67.66,
+      "duration": 15.388,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "我跟你说，如果这个成熟了，学术圈要地震。以后导师让博士生干的活，可能一半都被AI干了。",
+      "start": 83.499,
+      "duration": 8.098,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "也不能这么说，AI现在能做的是提速和拓展思路，但真正的实验验证还得人来跑。不过它确实在改变一个事儿——未来一个实验室能产出的成果密度可能会翻好几倍，人机配比会彻底不一样。",
+      "start": 92.097,
+      "duration": 16.128,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "说到AI深入各行各业当\"同事\"，Google另一个发布更让我心里一紧——他们的医疗AI AMIE发了篇Nature论文。",
+      "start": 108.663,
+      "duration": 11.494,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "这个我看了，而且这次的关注点特别关键。以前医疗AI大家比拼的是\"问诊准不准\"，就是那种你描述症状它帮你判断挂什么科。AMIE这次直接把战场挪到了\"长期慢病管理\"。",
+      "start": 120.618,
+      "duration": 15.257,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "你知道这意味着什么吗？我自己有个慢性病的老亲戚，每次复诊都折腾半天，光是跟医生讲清楚这三个月身体变化就够呛。如果AI能把这种日常的跟踪管起来……",
+      "start": 136.32,
+      "duration": 15.064,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "问题是，论文里的数据虽然漂亮，但AMIE在\"对话式共情\"和临床判断的综合表现上已经达到初级保健医生的水准了。一旦这个真的拿到监管放行，基层医疗资源的缺口确实有可能被结构性缓解。",
+      "start": 151.858,
+      "duration": 16.607,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "但我有个特别现实的担心——你看病的时候，对面坐的是AI，你真的能把隐私和心里话说出来吗？这个医患信任怎么重建？",
+      "start": 168.892,
+      "duration": 11.929,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "这个挑战比技术本身还大。责任归属也是个灰色地带，AI给的建议出了偏差算谁的？这些不是技术问题，是整个医疗体系要重新设计的系统性问题。但方向已经不可逆了。",
+      "start": 181.285,
+      "duration": 15.107,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "对了，说到这个AI越来越\"能自己做主\"的趋势，DeepMind还做了一件挺低调但重要的事儿——发了个AI Control Roadmap，就是给AI Agent上\"缰绳\"的那套安全方案。",
+      "start": 196.809,
+      "duration": 16.346,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "你注意啊，这个时机很有意思。他们一边在推Agent越来越自主，一边在补安全的基础设施。这个Roadmap把传统的安全防护和实时监控结合起来，核心思路是\"AI做什么之前先过一道校验\"，不是事后追责而是事前锁死。",
+      "start": 213.591,
+      "duration": 19.089,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "说白了就是边放手边系安全带？",
+      "start": 233.097,
+      "duration": 3.135,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "对，而且是在Agent真正大规模部署之前先把路修好，这个顺序是对的。",
+      "start": 236.728,
+      "duration": 6.4,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "还有一个Google AI博客的文章我觉得挺值得聊，叫\"Ask an AI expert: What exactly is the full stack\"，它重新定义了什么是AI时代的全栈工程师。",
+      "start": 243.54,
+      "duration": 14.561,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "这个话题有意思。在传统开发里，全栈就是前端后端数据库都能搞定。但AI时代不一样了，你得懂怎么调模型、怎么搭RAG、怎么设计Agent的工作流、怎么评估效果——每一层的技术栈都在剧烈变化。",
+      "start": 258.58,
+      "duration": 18.0,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "我翻译一下，就是说光会写代码不够了，你得是个懂产品、懂数据、懂AI能力边界的\"杂家\"？",
+      "start": 277.012,
+      "duration": 10.188,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "可以这么理解。而且这个变化对教育冲击很大，高校里还在教的那套技术栈，出来可能已经过时了一两代。",
+      "start": 287.668,
+      "duration": 7.532,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "那咱们今天听节目的朋友们，你们公司的技术栈跟AI全栈搭上边了吗？",
+      "start": 295.69,
+      "duration": 5.965,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "这个就值得大家回去盘一盘了。",
+      "start": 302.132,
+      "duration": 2.656,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "好，今天的节目就到这里。DeepMind这一波操作给我一个特别清晰的感受——AI不是在某一个点突破，而是在每一个行业里同时往深处扎。",
+      "start": 305.206,
+      "duration": 12.06,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "是的，而且它做这些事的方式不是单点发力，是从工具、协作、安全、基础设施四个维度同时推进。这种系统级的推进才是真正可怕的地方。",
+      "start": 317.705,
+      "duration": 12.321,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "好，感谢各位收听，明天同一时间咱们再见。",
+      "start": 330.438,
+      "duration": 3.222,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "大家拜拜。",
+      "start": 334.153,
+      "duration": 0.827,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 335.389,
+      "duration": 7.097,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 342.973,
+      "duration": 0.522,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
