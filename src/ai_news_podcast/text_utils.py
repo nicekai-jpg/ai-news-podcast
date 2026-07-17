@@ -15,7 +15,7 @@ import re
 RE_FACT_TAG = re.compile(r"\[(?:FACT|INFERENCE|OPINION)\]\s*")
 RE_MOOD_TAG = re.compile(r"\[mood:[^\]]+\]\s*")
 RE_EMOJI_PAREN = re.compile(
-    r"[（(][^）)]{0,10}(?:doge|狗头|笑|手动|滑稽|哭|捂脸|bushi|划掉)[^）)]{0,5}[）)]",
+    r"[（(][^）)]{0,10}(?:doge|狗头|笑|手动|滑稽|哭|捂脸|bushi|划掉|叹气|打趣|无奈|思索|笑声|大笑|微笑|撇嘴|咳嗽|清嗓子|深呼吸)[^）)]{0,5}[）)]",
     flags=re.IGNORECASE,
 )
 RE_FANCY_QUOTES = re.compile(r"[「」『』【】]")
@@ -25,7 +25,10 @@ RE_REPEATED_COMMA = re.compile(r"[，,]{2,}")
 RE_REPEATED_PERIOD = re.compile(r"[。.]{2,}")
 RE_MULTI_SPACE = re.compile(r"[ \t]+")
 RE_MULTI_NEWLINE = re.compile(r"\n{3,}")
-RE_HTML_TAG = re.compile(r"<[^>]+>")
+# Whitelist CosyVoice paralinguistic/non-verbal tags from being stripped
+RE_HTML_TAG = re.compile(
+    r"<(?!(?:breath|quick_breath|laughter|cough|sigh|gasp|lipsmack|noise|laughing|/laughing|strong|/strong)\b)[^>]+>"
+)
 
 # Thinking-process markers that LLM sometimes outputs instead of actual dialogue
 RE_THINKING_MARKERS = re.compile(

@@ -63,9 +63,11 @@ class OpenAILLMBackend(LLMBackend):
 
                 text = response.choices[0].message.content
                 if text:
-                    # 过滤 MiniMax M3 等推理模型返回的思考链内容
+                    # 过滤 MiniMax M3/DeepSeek 等推理模型返回的思考链内容
                     text = re.sub(r"\s*<thinking>.*?</thinking>\s*", "", text, flags=re.DOTALL)
+                    text = re.sub(r"\s*<think>.*?</think>\s*", "", text, flags=re.DOTALL)
                     text = re.sub(r"\s*[^\w\s]*thinking[^\w\s]*\s*", "", text, flags=re.DOTALL)
+                    text = re.sub(r"\s*[^\w\s]*think[^\w\s]*\s*", "", text, flags=re.DOTALL)
                     logger.info("LLM 调用成功，返回 %d 字符", len(text))
                     return text.strip()
 

@@ -29,7 +29,10 @@ def _build_context(
     for item in cluster.items[:3]:
         text = item.summary or item.full_text_snippet
         if text:
-            sentences = [s.strip() for s in re.split(r"[。.！!？?\n]", text) if s.strip()]
+            # Use a regex that doesn't split on decimal points (e.g. 5.6)
+            sentences = [
+                s.strip() for s in re.split(r"(?<!\d)\.(?!\d)|[。！!？?\n]", text) if s.strip()
+            ]
             if sentences:
                 summaries.append(sentences[0])
     if not summaries:
