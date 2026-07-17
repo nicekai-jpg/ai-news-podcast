@@ -1,0 +1,110 @@
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
+<voice name="host_a_professional" start="1.000" duration="7.401">
+听众朋友大家好，欢迎收听AI每日先锋，今天是2026年7月17日，我是苏晴。
+</voice>
+<voice name="host_b_professional" start="8.850" duration="7.184">
+大家好，我是周航。苏晴，一大早你就在群里发那个DeepMind的消息，看得出来你很兴奋啊。
+</voice>
+<voice name="host_a_professional" start="16.531" duration="13.932">
+不是我兴奋，是这件事太有意思了。谷歌DeepMind跟Isomorphic Labs终于把他们在生物韧性上的路线图系统性地公开了，你知道这意味着什么吗？
+</voice>
+<voice name="host_b_professional" start="30.916" duration="13.627">
+你注意啊，"生物韧性"这个词听起来挺学术的，但说白了就是——以后再遇到什么未知病毒、抗药性细菌，AI能不能帮我们提前做好准备，而不是等疫情来了手忙脚乱。
+</voice>
+<voice name="host_a_professional" start="44.948" duration="12.844">
+我跟你说，之前AlphaFold大家觉得已经很牛了对吧，预测蛋白质结构、拿诺贝尔奖。但那次更多是"单点突破"，这次不一样，这次是系统性地建基础设施。
+</voice>
+<voice name="host_b_professional" start="58.225" duration="21.135">
+对，这个区别很关键。你想想，过去几年全球其实被各种生物安全事件搞得挺狼狈的，从新冠到猴痘到各种抗药菌，传统药物研发周期又长又贵。如果AI能把整个抗风险的底座建起来，那它就不只是实验室里的工具了，而是公共卫生战略层面的基础设施。
+</voice>
+<voice name="host_a_professional" start="79.825" duration="5.137">
+所以说AI for Science这个赛道，现在是从"炫技"往"落地"走了？
+</voice>
+<voice name="host_b_professional" start="85.424" duration="20.787">
+可以这么说，但我觉得更准确的说法是——从"我能解一个问题"变成"我能建一套体系"。你注意看这次披露的内容，它不是一个模型，是一整套方法论，从数据、模型到验证闭环都有。这种东西一旦跑通，后面其他公司其实是很难追的，因为门槛不在技术，在生态。
+</voice>
+<voice name="host_a_professional" start="106.662" duration="12.452">
+嗯，你说到生态我就想到另一件事了。今天第二条消息也挺猛的，银河通用发了个新框架，说机器人只需要看人类视频就能干活部署，连遥操都不用。
+</voice>
+<voice name="host_b_professional" start="119.614" duration="15.083">
+我看到这条的时候也是愣了一下。你知道现在主流的人形机器人路线是什么吗？特斯拉Optimus、Figure那些，全都是建数据工厂，雇人戴着VR手套一个个动作去教，成本高得离谱。
+</voice>
+<voice name="host_a_professional" start="135.135" duration="7.488">
+对对，动不动一个动作采集就要几十上百美元，部署一个场景得采集几个月那种。
+</voice>
+<voice name="host_b_professional" start="143.084" duration="17.521">
+问题是银河通用这个框架如果真的成立，意味着什么？意味着YouTube上几十年的视频全部变成了免费的训练数据。你想想，B站、小红书、抖音，那些做饭的、搬东西的、叠衣服的视频，机器人全都能看会学。
+</voice>
+<voice name="host_a_professional" start="161.050" duration="5.486">
+这也太……等于把整个互联网变成了机器人的驾校？
+</voice>
+<voice name="host_b_professional" start="167.010" duration="13.148">
+你这个比喻还挺到位的。而且最关键的是它那个"边干边学"的设定，机器人不是看完视频就完事了，是在真实场景里继续微调，这就把部署成本压到了一个非常恐怖的低位。
+</voice>
+<voice name="host_a_professional" start="180.585" duration="7.663">
+那周航，这个路线如果真跑通了，是不是意味着中国具身智能有机会换道超车？
+</voice>
+<voice name="host_b_professional" start="188.712" duration="13.255">
+我觉得是有可能的，但得泼一盆冷水。现在还只是框架发布，真实场景的泛化效果到底怎么样，还得看后续的落地数据。AI这行你知道的，paper里的效果跟产线上的效果经常是两回事。
+</voice>
+<voice name="host_a_professional" start="202.384" duration="4.746">
+行，那我先保留我的激动，等实测出来再说。
+</voice>
+<voice name="host_b_professional" start="207.566" duration="5.834">
+说到机器人，今天还有一条不能不提，逐际动力也放了个新Demo。
+</voice>
+<voice name="host_a_professional" start="213.817" duration="4.310">
+哦？这家我知道，是国内做人形机器人的对吧。
+</voice>
+<voice name="host_b_professional" start="218.623" duration="13.037">
+对，他们那个Demo有意思的点不在于展示了什么新动作，而在于他们公开说了句很实在的话——"不赌单一模型通吃"。说白了就是承认现在通用大模型这条路还没跑通，大家得各显神通。
+</voice>
+<voice name="host_a_professional" start="232.072" duration="6.400">
+我怎么感觉最近整个机器人赛道有点分裂了，各种路线都在冒头。
+</voice>
+<voice name="host_b_professional" start="238.951" duration="18.827">
+这其实是好事。你想想，如果全行业只有一种声音，那才说明大家都没思路。现在路线分化恰恰说明这个领域还在快速迭代，每家都在押自己的判断。逐际动力的态度其实挺理性的——我先把活干好，模型的事等模型成熟了再说。
+</voice>
+<voice name="host_a_professional" start="258.210" duration="9.056">
+好，那咱们换个方向，工业这条线今天也有动静。中国移动投了友机技术，押注工业AI。
+</voice>
+<voice name="host_b_professional" start="267.734" duration="19.829">
+这条消息看着不起眼，但你要把它跟中国移动这两年在5G专网和算力网络的布局放一起看，其实逻辑挺清楚的。工业母机是什么？是工厂的"母体"，所有零件加工都靠它。如果母机本身变得智能了，整个制造业的效率天花板就直接被抬上去了。
+</voice>
+<voice name="host_a_professional" start="288.053" duration="7.227">
+所以说中国移动不是在投一家公司，是在给自己的工业算力网找一个超级入口？
+</voice>
+<voice name="host_b_professional" start="295.757" duration="19.742">
+你这个理解我觉得很到位。工业场景跟消费场景最大的不同是——它要的是确定性，不是惊喜。你一个手机App崩了大不了重启，工厂里一台机床判断失误可能整批报废。所以这种基础设施级的合作，移动这种级别的玩家入场是迟早的事。
+</voice>
+<voice name="host_a_professional" start="315.917" duration="10.667">
+好，最后一条快讯，NVIDIA的Nemotron 3 Embed登顶了RTEB榜首，这个你给咱讲讲？
+</voice>
+<voice name="host_b_professional" start="327.023" duration="23.181">
+简单说就是专门给AI Agent做信息检索用的嵌入模型。你注意啊，现在的Agent不是简单的问答了，它要完成复杂任务，中间要去查很多资料，但查回来的东西经常有噪声，影响它下一步判断。这个模型就是专门解决这个问题的——在多步推理里，怎么把最相关的上下文精准捞出来。
+</voice>
+<voice name="host_a_professional" start="350.616" duration="5.921">
+所以说以前Agent经常"犯糊涂"，很可能就是检索这步没做好？
+</voice>
+<voice name="host_b_professional" start="357.030" duration="18.131">
+可以这么理解。就像你让一个助理去查资料，他每次给你一堆无关的东西，你能不崩溃吗？Nemotron 3 Embed干的就是让这个助理的"搜索能力"上一个台阶。这种底层工具的进步，短期不起眼，但对整个Agent生态的成熟是决定性的。
+</voice>
+<voice name="host_a_professional" start="375.570" duration="11.537">
+明白了。所以今天咱们聊了一圈，AI其实早就不只是聊天画画了，从蛋白质到工厂到机器人再到Agent底层，到处都在开花。
+</voice>
+<voice name="host_b_professional" start="387.594" duration="14.019">
+是这样的，而且你会发现这些事不是孤立发生的，背后都是同一个趋势——AI正在全面走出数字世界，往物理现实里扎。这个方向我觉得接下来两年会是真正的主线。
+</voice>
+<voice name="host_a_professional" start="402.055" duration="4.746">
+好，今天的节目就到这里，感谢大家收听，咱们明天见。
+</voice>
+<voice name="host_b_professional" start="407.261" duration="1.393">
+明天见，拜拜。
+</voice>
+<voice name="host_a_professional" start="409.125" duration="6.269">
+好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！
+</voice>
+<voice name="host_b_professional" start="415.806" duration="0.740">
+拜拜！
+</voice>
+</speak>
