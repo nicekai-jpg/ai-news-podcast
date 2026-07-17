@@ -44,7 +44,7 @@
       ]
     },
     {
-      "cluster_id": 41,
+      "cluster_id": 48,
       "representative_title": "Can Reinforcement Learning Efficiently Discover Price Manipulation?",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -58,7 +58,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.06121v1 Announce Type: cross Abstract: In this paper, we investigate whether a model-free RL agent can identify and exploit price manipulation opportunities more effectively than a traditional model-based approach that assumes correct specification of the data-generating process but relies on noisy parameter estimates"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -82,6 +82,48 @@
           "full_text_snippet": "[Submitted on 7 Jul 2026] Title: Can Reinforcement Learning Efficiently Discover Price Manipulation? View a PDF of the paper titled Can Reinforcement Learning Efficiently Discover Price Manipulation?, by Ioanna-Yvonni Tsaknaki and 2 other authors View PDF HTML (experimental) Abstract: In this paper, we investigate whether a model-free RL agent can identify and exploit price manipulation opportunities more effectively than a traditional model-based approach that assumes correct specification of the data-generating process but relies on noisy parameter estimates. We consider a single-asset market in which prices evolve according to an Almgren-Chriss framework with non-linear permanent impact and linear temporary impact. We first establish the existence of price-manipulative strategies in discrete time and compute the optimal benchmark strategy using Sequential Least Squares Quadratic Programming under full information. We then compare two finite-sample learning approaches: a model-based procedure that estimates impact parameters from simulated execution data and an agnostic RL approach based on Deep Deterministic Policy Gradient, trained directly on the same amount of data. For intermediate volatility, the RL agent successfully discovers profitable manipulative strategies without explicit knowledge of the underlying model, even when training data are quite limited. More importantly, RL consistently outperforms the model-based approach when parameter estimates are affected by sampling error, despite the latter benefiting from the correct model specification. For large volatility, all methods are unable to identify manipulation opportunities, while for small volatility, the model based approach outperforms RL. These findings highlight both the effectiveness of RL in complex control problems and the risks associated with deploying learning algorithms in financial markets without appropriate safeguards. Submission history From: Ioanna-Yvonni Tsaknaki [ view email ] [v1...",
           "category": "model",
           "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 0,
+      "representative_title": "Zero-Shot提升31%！原力灵机DM0.5登场，15万小时数据喂出",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "“已经出现泛化涌现”"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/07/447508.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "4a9d473d790f124c",
+          "title": "Zero-Shot提升31%！原力灵机DM0.5登场，15万小时数据喂出",
+          "link": "https://www.qbitai.com/2026/07/447508.html",
+          "normalized_link": "https://www.qbitai.com/2026/07/447508.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-07-09T12:18:17+00:00",
+          "summary": "“已经出现泛化涌现”",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> Zero-Shot提升31%！原力灵机DM0.5登场，15万小时数据喂出 衡宇 2026-07-09 20:18:17 来源： 量子位 衡宇 发自 凹非寺 量子位 | 公众号 QbitAI 具身智能这个行业里吧，几乎没什么共识。 不过有一点大家共同认可： 数据飞轮转不起来，是行业最大的阻碍之一。 如果遵循Scaling Law，具身智能同样需要更大的数据规模、更高质量的数据闭环，以及更强的算力。 算力问题的解决路径相对清晰；但数据这边，想追求百万小时级的数据，靠纯人工采集真的很费时费力，咱真的等不起。 要求严一点，要数据又多又具备真实任务价值，用脚后跟想想都知道更更更更难了。 比较理想的状态就是 把采具身数据这件事，从被动“采集型数据”，变成真实业务里持续产生的“场景型数据”，以此推动和加速数据飞轮转起来 。 这方面具身智能明星创业公司原力灵机做得有点说法，挺有代表性。 其核心创始团队出自旷视科技，具备大规模AI模型训练、机器人落地和高可靠硬件量产经验；公司最近又和物流机器人公司Atomix完成合并，补上了真实场景侧的关键拼图。 经验和场景在手肯定也不能说稳赢，毕竟如果把一个半吊子模型扔到场景里，它也吃不进or消化不好数据。 今天的原力灵机开发者大会上，这家公司就把 新一代具身基础模型DM0.5 端上了桌。 往前，它能接住数据飞轮；往后，它连着开发者平台与真实场景，可以说是后续一切落地动作的底座。 15万小时数据，DM0.5的硬核底座 原力灵机给DM0.5赋予的关键词是“更大、更强、更实用”。 它被定位为“ 面向开放世界的通用具身基础模型 ”，参数规模为4B，相比上一代DM0参数规模翻倍。 相比上一代基础模型，DM0.5的数据量则增加了400%。 这些数据 由三类高质量数据共同构成 。 第一类是真机数据。 DM0.5使用了5万小时高精度操作数据，覆盖100多种丰富动作，并实现秒级精细指令动作对齐。 这类数据主要负责解决机器人如何在真实物理世界里完成操作的相关问题。 第二类是Egocentric数据，也就是第一视角数据。 10万小时Ego数据，让模型能够从类似人类视角理解环境，并支持毫米级高精度3D Landmark生成。 第三类是场景重建数据。 团队通过100万平方米空间数据建模复杂室内环境，帮助模型降低Sim2Real Gap（仿真环境和现实世界之间的差距）。 高质量数据之外，DM0.5 还在模型架构上做了三项关键创新 。 1、上下文抽象层 现实场景里具身智能面对的任务，多是数分钟甚至更久的长周期作业，必须加强对前序步骤和状态的记忆。 经过高效上下文压缩，DM0.5原生支持最长60秒记忆能力（平均水平在30秒上下）。 模型能更精准地提取并保留关键的历史上下文，理解更长时间范围内发生的动作和环境变化，减少在长周期连贯作业中的断片情况。 2、具身思维链任务 原力灵机的具身模型主要走的还是VLA路线，但VLA模型其实更多关注视觉输入到动作输出之间的映射，在理解和执行能力上目前的技术还是差点意思，遇到复杂场景容易盲目试错甚至卡壳。 DM0.5引入了任务规划、目标定位、未来状态预测等推理任务，让模型学到“先谋后动”这一招。 面对复杂指令时，它会在内部将大目标拆解为多个子任务，规划好先后顺序与动作逻辑再下手，大幅降低无效动作和失败率。 3、轨迹对齐层 理想中的状态是咱们用嘴说句话支使机器人干活，但从它听到话到机械臂各个关节毫米级转动，中间的鸿沟也就比马里亚纳海沟浅一点点。 轨迹对齐层在模型中起到专八级别的翻译官式的作用，让动作学习从传统“对点”走向“对齐”，帮助模型理解运动过程中的规律。 以上提到的数据和架构上的升级，都服务于让机器人从“记住动作”走向“理解任务”——这也是为什么原力灵机把DM0.5称为面向开放世界的通用具身基础模型。 在这套数据规模与架构创新双重加持的底座支撑下，DM0.5展现出了亮眼的性能优势。 在真机与仿真的四大公开评测中，DM0.5全面超越当前SOTA。 仅凭单个模型，DM0.5就能同时支持导航、抓取、全身控制等任务。 相比上一代DM0，其Zero-Shot导航成功率大幅提升31%，Few-shot成功率提升45%，而经过微调后的任务成功率也提升了20%。 不仅准，而且快。 评测结果显示，DM0.5的推理效率整体提升了25%，在H100平台上推理延迟低至50ms。 即便在消费级显卡4090上，推理延迟也仅为90ms。 泛化涌现与成本普惠，DM0.5这样定义“好用” 原力灵机联合创始...",
+          "category": "other",
+          "language": "zh"
         }
       ]
     },
@@ -128,49 +170,7 @@
       ]
     },
     {
-      "cluster_id": 5,
-      "representative_title": "派早报：蔚来 ES8 大五座版正式上市等",
-      "role": "supporting",
-      "role_emoji": "🟡",
-      "total_score": 10,
-      "scores": {
-        "impact_scope": 1,
-        "novelty": 3,
-        "explainability": 2,
-        "listener_relevance": 3,
-        "source_richness": 1
-      },
-      "context": {
-        "factual_summary": [
-          "OpenAI 发布 GPT-5.6 系列模型等，SpaceXAI 发布编程智能体模型 Grok 4.5"
-        ],
-        "historical_background": "",
-        "sources_ranked": [
-          {
-            "name": "少数派",
-            "authority": 4,
-            "link": "https://sspai.com/post/112143"
-          }
-        ]
-      },
-      "items": [
-        {
-          "id": "18f2feccc784ad1d",
-          "title": "派早报：蔚来 ES8 大五座版正式上市等",
-          "link": "https://sspai.com/post/112143",
-          "normalized_link": "https://sspai.com/post/112143",
-          "source_name": "少数派",
-          "source_category": "tools",
-          "published_at": "2026-07-10T00:56:18+00:00",
-          "summary": "OpenAI 发布 GPT-5.6 系列模型等，SpaceXAI 发布编程智能体模型 Grok 4.5。 查看全文",
-          "full_text_snippet": "7 月 10 日，OpenAI 正式发布 GPT-5.6 系列模型，并推出面向长时、多步骤任务的智能体产品 ChatGPT Work，同时整合 ChatGPT 与 Codex 桌面应用。OpenAI 还宣布，ChatGPT Atlas 浏览器将于 8 月 9 日停止支持，其浏览器智能体能力将迁移至 ChatGPT 和 Codex。 GPT-5.6 系列包括旗舰模型 Sol、均衡型模型 Terra，以及主打速度与成本的 Luna，现已开始向 ChatGPT、Codex 和 OpenAI API 用户推送。三款模型每 100 万 Tokens 的输入价格分别为 5 美元、2.5 美元和 1 美元，输出价格分别为 30 美元、15 美元和 6 美元。新系列还新增 Max 推理强度和 Ultra 模式，其中 Ultra 模式默认协调 4 个智能体并行处理复杂任务。根据 OpenAI 公布的数据，GPT-5.6 Sol 在 Terminal-Bench 2.1 基准测试中取得 88.8% 的成绩，开启 Ultra 模式后提升至 91.9%。 来源 与新模型同步推出的 ChatGPT Work 面向长时工作流程，可调用应用和文件中的信息，完成研究与分析任务，并生成文档、电子表格、演示文稿、报告和网站。OpenAI 表示，Codex 每周活跃用户已超过 500 万，其中逾 100 万用户将其用于软件开发以外的场景。OpenAI 内部也已广泛使用 ChatGPT Work 和 Codex 处理财务、数据整理和文档制作等工作。 产品方面，原 Codex 桌面应用已升级为新版 ChatGPT 桌面应用，统一提供 Chat、Work 和 Codex 三个功能入口，并保留原有 Codex 项目。原 ChatGPT 桌面应用则更名为 ChatGPT Classic，继续获得模型更新和安全维护。新版桌面应用已面向 macOS 和 Windows 用户推出。ChatGPT Work 首批向网页端和移动端的 Pro、Enterprise 及 Edu 用户开放，Plus 和 Business 用户将在随后数日内获得支持。 来源 与此同时，OpenAI 宣布将于 8 月 9 日停止支持 ChatGPT Atlas 浏览器，将相关浏览器智能体能力转移至 ChatGPT 和 Codex。 来源",
-          "category": "model",
-          "language": "zh"
-        }
-      ]
-    },
-    {
-      "cluster_id": 7,
+      "cluster_id": 13,
       "representative_title": "派早报：GPT-5.6 即将开放使用、Nothing 发布 Phone (4b) 等",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -212,7 +212,7 @@
       ]
     },
     {
-      "cluster_id": 42,
+      "cluster_id": 49,
       "representative_title": "LipSSD: Lipschitz-Constrained Single-Shot Detection for Adversarially Robust Object Detection",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -226,7 +226,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.06592v1 Announce Type: cross Abstract: Object detectors have many applications in safety-critical systems, but they are known to be sensitive to worst-case perturbations such as adversarial attacks, which limits their applicability in real-world scenarios"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -254,49 +254,7 @@
       ]
     },
     {
-      "cluster_id": 43,
-      "representative_title": "Fidji Simo steps down from OpenAI’s no. 2 role",
-      "role": "supporting",
-      "role_emoji": "🟡",
-      "total_score": 10,
-      "scores": {
-        "impact_scope": 1,
-        "novelty": 3,
-        "explainability": 3,
-        "listener_relevance": 2,
-        "source_richness": 1
-      },
-      "context": {
-        "factual_summary": [
-          "OpenAI's No"
-        ],
-        "historical_background": "",
-        "sources_ranked": [
-          {
-            "name": "TechCrunch AI",
-            "authority": 3,
-            "link": "https://techcrunch.com/2026/07/09/fidji-simo-steps-down-from-openais-no-2-role/"
-          }
-        ]
-      },
-      "items": [
-        {
-          "id": "52f9a2ef1f05bcb4",
-          "title": "Fidji Simo steps down from OpenAI’s no. 2 role",
-          "link": "https://techcrunch.com/2026/07/09/fidji-simo-steps-down-from-openais-no-2-role/",
-          "normalized_link": "https://techcrunch.com/2026/07/09/fidji-simo-steps-down-from-openais-no-2-role",
-          "source_name": "TechCrunch AI",
-          "source_category": "news",
-          "published_at": "2026-07-09T23:38:00+00:00",
-          "summary": "OpenAI's No. 2 executive, Fidji Simo, is stepping down from her full-time role after her medical leave proved longer than expected — a leadership vacuum that comes at a tricky time as the company eyes a possible IPO and races to catch Anthropic in the enterprise market.",
-          "full_text_snippet": "Fidji Simo, OpenAI’s No. 2 executive, is stepping down from her full-time role, the Wall Street Journal reports . In a staff note Thursday, Simo said her ongoing medical leave has proven longer and harder than expected, and that she’ll transition to a part-time advisory role instead. Simo joined OpenAI’s board of directors in 2024 and joined OpenAI in May 2025 as CEO of Applications, then a newly created role reporting directly to Sam Altman that consolidated the company’s business and product operations. Her appointment came with a broader reporting shift: COO Brad Lightcap, CFO Sarah Friar, and CPO Kevin Weil all began reporting to her, while Altman stepped back to focus on research, compute, and safety. Simo first disclosed her health issues in April, when she announced she was taking medical leave for a relapse of a neuroimmune condition; that same memo publicly announced that Lightcap was moving into a new “special projects” role and that CMO Kate Rouch was leaving the company to focus on cancer recovery. Weil has since left the company , too. Simo came to OpenAI from Instacart, where she’d been CEO since 2021 and led the company through its 2023 IPO, and before that spent over a decade at Meta, including running the Facebook app. Simo’s decision to step back permanently leaves Altman searching for a successor right as OpenAI itself eyes a possible IPO. She’d been widely seen as a likely candidate to take on even more responsibility once OpenAI went public, making this a real vacuum for him to address. Simo was primarily focused on growing OpenAI’s consumer business. But ChatGPT’s growth cooled late last year, missing internal revenue targets, pushing the company to lean harder into coding tools instead, an area where it has been, and for now continues to be, trailing Anthropic. TechCrunch has reached out to OpenAI for more information. Soon after the Journal story broke, Simo shared the news directly on X, after which Altman responded , also on X: “i am rea...",
-          "category": "other",
-          "language": "en"
-        }
-      ]
-    },
-    {
-      "cluster_id": 45,
+      "cluster_id": 50,
       "representative_title": "OpenAI is shutting down Atlas, but its AI browser ambitions are still growing",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -331,14 +289,14 @@
           "source_category": "news",
           "published_at": "2026-07-09T22:03:54+00:00",
           "summary": "OpenAI is sunsetting its AI-powered browser after less than a year. But it's moving some agentic browsing features to its desktop app and a Chrome extension.",
-          "full_text_snippet": "OpenAI is sunsetting Atlas, the AI-powered browser it launched in October with ChatGPT at its core. But it’s not giving up on the idea that AI should help people browse the web. Instead, it’s taking some of the agentic browsing features it tested in Atlas and redistributing them across ChatGPT’s desktop app and a Google Chrome extension. The move to shut down Atlas comes a few months after OpenAI’s CEO of applications Fidji Simo told the team to cut back on “side quests,” which led to the AI firm shutting down its AI video-generation tool Sora . For much of the past year, the AI industry had been engaged in a war to unseat Chrome as the place where people spend most of their time online. Perplexity launched Comet, The Browser Company launched Dia, and Google and Microsoft have updated Chrome and Edge, respectively, with new AI-powered features. After a few months of experimenting, OpenAI appears to have concluded that the browser is a feature, not the destination. So it’s folding Atlas’ browser-like agent capabilities into the places people already work — and that includes Chrome. OpenAI is launching a ChatGPT extension on Chrome that gives it access to the context of the page you’re viewing, lets users ask questions about web pages, summarize content, or start longer tasks all from the browser. It’s a direct competitor to Google’s Gemini Side Panel, which performs several of the same tasks. OpenAI is also boosting its ChatGPT desktop app by featuring a more robust browser that allows users to browse websites, log into accounts, download files, and interact with web pages without leaving ChatGPT. A separate cloud browser runs remotely on OpenAI’s servers as a place where the app’s agents can complete tasks on a user’s behalf. Together, the updates turn ChatGPT into a continuous workspace that spans Chrome, the desktop app, and an AI agent.",
+          "full_text_snippet": "OpenAI is sunsetting Atlas, the AI-powered browser it launched in October with ChatGPT at its core. But it’s not giving up on the idea that AI should help people browse the web. Instead, it’s taking some of the agentic browsing features it tested in Atlas and redistributing them across ChatGPT’s desktop app and a Google Chrome extension. The move to shut down Atlas comes a few months after OpenAI’s CEO of applications Fidji Simo told the team to cut back on “side quests,” which led to the AI firm shutting down its AI video generation tool Sora . For much of the past year, the AI industry had been engaged in a war to unseat Chrome as the place where people spend most of their time online. Perplexity launched Comet, The Browser Company launched Dia, and Google and Microsoft have updated Chrome and Edge, respectively, with new AI-powered features. After a few months of experimenting, OpenAI appears to have concluded that the browser is a feature, not the destination. So it’s folding Atlas’s browser-like agent capabilities into the places people already work — and that includes Chrome. OpenAI is launching a ChatGPT extension on Chrome that gives it access to the context of the page you’re viewing, lets users ask questions about webpages, summarize content, or start longer tasks all from the browser. It’s a direct competitor to Google’s Gemini Side Panel, which performs several of the same tasks. OpenAI is also boosting its ChatGPT desktop app by featuring a more robust browser that allows users to browse websites, log into accounts, download files, and interact with web pages without leaving ChatGPT. A separate cloud browser runs remotely on OpenAI’s servers as a place where the app’s agents can complete tasks on a user’s behalf. Together, the updates turn ChatGPT into a continuous workspace that spans Chrome, the desktop app, and an AI agent.",
           "category": "other",
           "language": "en"
         }
       ]
     },
     {
-      "cluster_id": 47,
+      "cluster_id": 52,
       "representative_title": "Meta enters the crowded AI coding battle with Muse Spark 1.1",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -380,7 +338,7 @@
       ]
     },
     {
-      "cluster_id": 50,
+      "cluster_id": 55,
       "representative_title": "Paris-based AI voice startup Gradium raises $100M seed, backed by Nvidia",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -416,90 +374,6 @@
           "published_at": "2026-07-09T18:34:35+00:00",
           "summary": "The company is using the cash to open an office in the Bay Area and compete for talent there, \"strengthening its position at the heart of the world's leading AI ecosystem.\"",
           "full_text_snippet": "Gradium, a Paris-based startup that offers voice AI models, reopened its seed round to new investors, including Nvidia, and has now raised $100 million total for the round, it said Thursday . The company is using the cash to open an office in the Bay Area and compete for talent there, “strengthening its position at the heart of the world’s leading AI ecosystem,” as Gradium put it. Paris is a major European hub for AI, so this is an interesting acknowledgment of the benefits for AI startups to be close to Anthropic, Google, Meta, and OpenAI. Gradium originally launched out of stealth in December with $70 million from a roster of impressive investors, including FirstMark Capital, Eurazeo, DST Global Partners, Eric Schmidt, and French telecom billionaire Xavier Niel. The startup was spun out of French AI lab Kyutai (a lab backed by Niel). Both Kyutai and Gradium were co-founded by Neil Zeghidour, a researcher who previously worked at Google Brain, DeepMind, and Facebook. Gradium is working on audio models that deliver voice at scale with ultra-low latency, meaning AI voices that respond almost instantly, without that awkward pause that often creeps into AI agent conversations. The company has plenty of competition, though, from other voice AI startups like ElevenLabs, valued at $11 billion in February, to major model makers known for voice like Google’s Gemini. But Gradium seems to be winning ground anyway. Since its December launch, Gradium says it has landed some big customers, including French auto manufacturer Renault .",
-          "category": "other",
-          "language": "en"
-        }
-      ]
-    },
-    {
-      "cluster_id": 67,
-      "representative_title": "Building a real-time AI tutor for 5-year-olds",
-      "role": "supporting",
-      "role_emoji": "🟡",
-      "total_score": 10,
-      "scores": {
-        "impact_scope": 1,
-        "novelty": 3,
-        "explainability": 3,
-        "listener_relevance": 2,
-        "source_richness": 1
-      },
-      "context": {
-        "factual_summary": [
-          "HN 热门讨论（72 points, 107 评论）by catalinvoss"
-        ],
-        "historical_background": "",
-        "sources_ranked": [
-          {
-            "name": "Hacker News",
-            "authority": 5,
-            "link": "https://www.ello.com/blog/teaching-a-child-in-1000-ms"
-          }
-        ]
-      },
-      "items": [
-        {
-          "id": "b363dd2e2d6969fe",
-          "title": "Building a real-time AI tutor for 5-year-olds",
-          "link": "https://www.ello.com/blog/teaching-a-child-in-1000-ms",
-          "normalized_link": "https://www.ello.com/blog/teaching-a-child-in-1000-ms",
-          "source_name": "Hacker News",
-          "source_category": "community",
-          "published_at": "2026-07-09T20:51:06+00:00",
-          "summary": "HN 热门讨论（72 points, 107 评论）by catalinvoss",
-          "full_text_snippet": "Most AI products build guardrails in serial with a model call or agent turn. A user won't notice when the token stream goes through a content filter and a developer is willing to wait for a CLI tool call to be auto-reviewed. There's nowhere to hide in a real-time conversation with a five-year-old. Nor is there an undo: a child can't unhear what the tutor said. The safety system has to gate any action, on every turn. Our safety classifier is an LLM that takes ~500-1000ms to run. Waiting to run the converser until that check completes adds a second of delay to every turn that we can't afford. Here’s another advantage of decoupling generation from execution in our harness. The safety classifier blocks execution without blocking generation. As soon as the child finishes speaking, we dispatch both the classifier and a small model to generate the converser's first action in parallel. That model reacts quickly with an eager response that mirrors or acknowledges what the child said (\"you like dinosaurs! me too\"). While a rules-based check would be faster and cheaper, it wouldn't survive the ways a five-year-old actually talks. Every category we add to the safety policy adds tokens and requires re-tuning a non-deterministic classifier. Sometimes a transcription error spooks the classifier and triggers a false positive. We review these cases and use them to improve how the agent understands the child. By the time that eager action has generated, the classifier has usually returned safe. That check unblocks the converser to generate while the eager action executes. The child hears one continuous turn despite the multiple model calls.",
-          "category": "other",
-          "language": "en"
-        }
-      ]
-    },
-    {
-      "cluster_id": 73,
-      "representative_title": "Build your own vulnerability harness",
-      "role": "supporting",
-      "role_emoji": "🟡",
-      "total_score": 10,
-      "scores": {
-        "impact_scope": 1,
-        "novelty": 3,
-        "explainability": 3,
-        "listener_relevance": 2,
-        "source_richness": 1
-      },
-      "context": {
-        "factual_summary": [
-          "HN 热门讨论（35 points, 16 评论）by ianrahman"
-        ],
-        "historical_background": "",
-        "sources_ranked": [
-          {
-            "name": "Hacker News",
-            "authority": 5,
-            "link": "https://blog.cloudflare.com/build-your-own-vulnerability-harness/"
-          }
-        ]
-      },
-      "items": [
-        {
-          "id": "87a196dd2517b1a1",
-          "title": "Build your own vulnerability harness",
-          "link": "https://blog.cloudflare.com/build-your-own-vulnerability-harness/",
-          "normalized_link": "https://blog.cloudflare.com/build-your-own-vulnerability-harness",
-          "source_name": "Hacker News",
-          "source_category": "community",
-          "published_at": "2026-07-10T01:28:43+00:00",
-          "summary": "HN 热门讨论（35 points, 16 评论）by ianrahman",
-          "full_text_snippet": "A few weeks ago, we published our initial findings from Project Glasswing , looking at what happens when you point frontier security models at an enterprise codebase. We also explored how our defensive structures adapt to protect our infrastructure and customers from threats posed by frontier AI . Since then, the AI ecosystem has continued to shift rapidly — developers who've built tightly around a single model have already experienced what happens when that model is no longer available or gets superseded by a more capable one. These market shifts only reinforce our core thesis: no matter which underlying model is leading the pack on any given day, the future of agentic workflows will not be found in standalone models, prompts, or single-agent sessions. Moving from a localized security \"skill\" to a continuous, fleet-wide scanning pipeline requires an architecture where models are treated as interchangeable components. Relying on a single model inherently limits defensive coverage, as the same system will tend to look at code paths through the exact same lens. To counter this, models should be frequently interchanged and cross-tested. By varying the models across the pipeline — such as using one model for initial discovery and an entirely different one for validation — we can ensure that vulnerabilities are cross-checked by distinct sets of logic. Furthermore, a true enterprise-scale harness must look beyond isolated repositories to trace vulnerabilities across cross-repo dependencies, ultimately filtering thousands of raw candidates down to a trusted, triaged queue of actionable fixes. This post serves as a practical look at how to build that model-agnostic layer, focusing on how we manage state controls, eliminate false positives, and coordinate end-to-end triage at scale. The first post made the case for why generic coding agents can't do this job. The main issue is that agents only hold one hypothesis at a time, fill their context window after covering a slive...",
           "category": "other",
           "language": "en"
         }
@@ -590,7 +464,7 @@
       ]
     },
     {
-      "cluster_id": 9,
+      "cluster_id": 15,
       "representative_title": "我的出行好伙伴，用 iPhone 一站式解决旅途痛点",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -632,7 +506,7 @@
       ]
     },
     {
-      "cluster_id": 10,
+      "cluster_id": 16,
       "representative_title": "好的桌面需要设备，更需要灯光：明基×少数派线下店体验空间升级",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -674,7 +548,7 @@
       ]
     },
     {
-      "cluster_id": 19,
+      "cluster_id": 25,
       "representative_title": "Measuring the impact of learning with AI in Sierra Leone and beyond",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -716,7 +590,7 @@
       ]
     },
     {
-      "cluster_id": 20,
+      "cluster_id": 26,
       "representative_title": "5 ways Google Search can level up your thrift and vintage shopping",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -758,7 +632,7 @@
       ]
     },
     {
-      "cluster_id": 22,
+      "cluster_id": 29,
       "representative_title": "LLM-powered reasoning in agent-based modeling",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -772,7 +646,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.06757v1 Announce Type: new Abstract: Agent-based modeling (ABM) has the capability to model millions of individuals and their interactions, which is useful for policy making"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -791,7 +665,7 @@
           "normalized_link": "https://arxiv.org/abs/2607.06757",
           "source_name": "arXiv cs.AI",
           "source_category": "research",
-          "published_at": "2026-07-10T04:00:00+00:00",
+          "published_at": "2026-07-09T04:00:00+00:00",
           "summary": "arXiv:2607.06757v1 Announce Type: new Abstract: Agent-based modeling (ABM) has the capability to model millions of individuals and their interactions, which is useful for policy making. However, ABMs have traditionally relied on static prior, which prevents the models from adapting to real-time changes. Our research provides a novel approach to addressing this information gap. Large language models (LLMs) offer new opportunities to predict human decision-making. Here, we introduce a scalable...",
           "full_text_snippet": "BibTeX formatted citation ×",
           "category": "research",
@@ -800,7 +674,7 @@
       ]
     },
     {
-      "cluster_id": 40,
+      "cluster_id": 47,
       "representative_title": "Institutional Red-Teaming: Deployment Rules, Not Just Models, Causally Shape Multi-Agent AI Safety",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -814,7 +688,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.07695v1 Announce Type: new Abstract: We introduce institutional red-teaming, an evaluation methodology for testing deployment rules in multi-agent AI: hold the agents, objectives, and task state fixed, vary only one rule, and attribute the resulting change in collective behavior to that rule"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -842,7 +716,7 @@
       ]
     },
     {
-      "cluster_id": 46,
+      "cluster_id": 51,
       "representative_title": "Can AI answer the $3 trillion question?",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -884,7 +758,7 @@
       ]
     },
     {
-      "cluster_id": 53,
+      "cluster_id": 58,
       "representative_title": "Anthropic, OpenAI, and SpaceX are bigger than the last 25 years of tech exits",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -926,7 +800,7 @@
       ]
     },
     {
-      "cluster_id": 54,
+      "cluster_id": 59,
       "representative_title": "Popular open source AI developer tool Ollama raises $65M, grows to nearly 9M users",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -968,7 +842,7 @@
       ]
     },
     {
-      "cluster_id": 55,
+      "cluster_id": 60,
       "representative_title": "Character.AI enters the microdrama arena with its own productions, but there’s a twist",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -1010,7 +884,7 @@
       ]
     },
     {
-      "cluster_id": 56,
+      "cluster_id": 61,
       "representative_title": "Nandan Nilekani leaves GP role at Fundamentum as it launches $200M third fund",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -1052,8 +926,8 @@
       ]
     },
     {
-      "cluster_id": 65,
-      "representative_title": "Why American ambulance rides are so expensive",
+      "cluster_id": 63,
+      "representative_title": "Google’s deepfake detector system used to debunk McConnell hoax pic",
       "role": "supporting",
       "role_emoji": "🟡",
       "total_score": 9,
@@ -1066,36 +940,36 @@
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（164 points, 204 评论）by jyunwai"
+          "Earlier this week, a picture seemed to show Kentucky Senator Mitch McConnell covered in tubes in a hospital bed in a state of extreme distress"
         ],
         "historical_background": "",
         "sources_ranked": [
           {
-            "name": "Hacker News",
-            "authority": 5,
-            "link": "https://davidoks.blog/p/why-american-ambulance-rides-are"
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/07/08/googles-deepfake-detector-system-used-to-debunk-mcconnell-hoax-pic/"
           }
         ]
       },
       "items": [
         {
-          "id": "ad2788bfe4edda0c",
-          "title": "Why American ambulance rides are so expensive",
-          "link": "https://davidoks.blog/p/why-american-ambulance-rides-are",
-          "normalized_link": "https://davidoks.blog/p/why-american-ambulance-rides-are",
-          "source_name": "Hacker News",
-          "source_category": "community",
-          "published_at": "2026-07-09T22:15:56+00:00",
-          "summary": "HN 热门讨论（164 points, 204 评论）by jyunwai",
-          "full_text_snippet": "In July 2023, a 25-year-old man named Jagdish Whitten was out for a run in San Francisco. As he crossed a busy street, a car hit him; he did, in his words, “a little flip” over the vehicle, landed in the road, and dragged himself to the curb. Those who had seen the accident called an ambulance for him. But Whitten waved them off and called a friend, who drove him to a nearby hospital instead: “I knew that ambulances were expensive,” he said, “and I didn’t think I was going to die.” Whitten was right on both counts. At the hospital, doctors found that he had a mild concussion, a broken toe, and a few bruises—nothing too serious. But because he’d suffered a traumatic injury, they were obligated to send him to San Francisco General, the city’s only designated trauma center. This time he didn’t have a choice. He was loaded into an ambulance for a six-mile transfer, evaluated without additional treatment, and sent home the same night. Over the weeks that followed, Whitten got bills from both hospitals. Everything was roughly what he expected, and all of it would be covered by his insurance plan. But a few months later, Whitten got another bill—this time from American Medical Response, the ambulance provider that had transferred him between hospitals. The ambulance ride, he learned, would cost him $12,873 : $737 for the miles traveled, $314 for monitoring his heart on the trip, $151 for infection control, and $11,670 as a “base rate.” He sent the bill to his insurance provider, which at first denied the claim, saying that AMR was out of network and that the ride hadn’t been pre-authorized. (Whitten, of course, hadn’t chosen the ambulance, or anything else about the trip.) On appeal, his insurance agreed to cover $9,967 of the charge—better than nothing, but it still left him on the hook for about $3,000. After several failed attempts to contest the bill with AMR, and not wanting it sent to collections to hurt his credit score, he paid the remaining $2,900 or so. The br...",
+          "id": "39798e3e25e16d7c",
+          "title": "Google’s deepfake detector system used to debunk McConnell hoax pic",
+          "link": "https://techcrunch.com/2026/07/08/googles-deepfake-detector-system-used-to-debunk-mcconnell-hoax-pic/",
+          "normalized_link": "https://techcrunch.com/2026/07/08/googles-deepfake-detector-system-used-to-debunk-mcconnell-hoax-pic",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-07-08T20:37:03+00:00",
+          "summary": "Earlier this week, a picture seemed to show Kentucky Senator Mitch McConnell covered in tubes in a hospital bed in a state of extreme distress. It turned out to be an AI-generated fake.",
+          "full_text_snippet": "Google’s SynthID system has been used to debunk a high-profile AI-generated hoax image, in a rare but significant win for the system. Earlier this week, a picture circulated online that seemed to show Kentucky Senator Mitch McConnell covered in tubes in a hospital bed in a state of extreme distress. The image was shared widely on Reddit and X , but by Wednesday, the revered fact-checking site Snopes had debunked the image, noting that, when checked, the image registers as containing the SynthID watermark designed by Google to identify AI-generated pictures. In short, the watermark worked exactly as it was supposed to in a win for anti-deepfake technology. Senator McConnell’s health has been the subject of intense speculation since he checked into the hospital after an emergency call on June 14 . Since that time, he’s been largely absent from the public eye, fueling speculation that his health may be failing. In this case, however, the evidence proved to be entirely fake. Launched at Google’s I/O developer conference in 2025, SynthID works as an invisible signature, visible to SynthID algorithms but designed to be unnoticeable to the casual observer. Because the signature is built into the image itself, it survives even when an image is screencaptured across multiple platforms, as the McConnell image was. SynthID’s main limitation is that it can only be used when an image-generation tool actively participates in the program. Gemini models have included the watermark since the program launched in 2025. OpenAI joined in May 2026, as part of a broader effort to fight malicious image generation . Anthropic does not participate in the program. Users can check if images contain the watermark by asking a Gemini model or uploading them to OpenAI’s public image verification tool .",
           "category": "other",
           "language": "en"
         }
       ]
     },
     {
-      "cluster_id": 66,
-      "representative_title": "Girls just wanna have fast MPMC queues with bounded waiting",
+      "cluster_id": 70,
+      "representative_title": "AI content is everywhere on social media, especially LinkedIn",
       "role": "supporting",
       "role_emoji": "🟡",
       "total_score": 9,
@@ -1108,161 +982,77 @@
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（150 points, 31 评论）by EvgeniyZh"
+          "HN 热门讨论（154 points, 137 评论）by mukmuk"
         ],
         "historical_background": "",
         "sources_ranked": [
           {
             "name": "Hacker News",
             "authority": 5,
-            "link": "https://nahla.dev/blog/waitfree_queue/"
+            "link": "https://www.pangram.com/blog/ai-in-your-feed"
           }
         ]
       },
       "items": [
         {
-          "id": "652348e49d0f25a8",
-          "title": "Girls just wanna have fast MPMC queues with bounded waiting",
-          "link": "https://nahla.dev/blog/waitfree_queue/",
-          "normalized_link": "https://nahla.dev/blog/waitfree_queue",
+          "id": "54bcb251e9afef47",
+          "title": "AI content is everywhere on social media, especially LinkedIn",
+          "link": "https://www.pangram.com/blog/ai-in-your-feed",
+          "normalized_link": "https://www.pangram.com/blog/ai-in-your-feed",
           "source_name": "Hacker News",
           "source_category": "community",
-          "published_at": "2026-07-06T19:46:30+00:00",
-          "summary": "HN 热门讨论（150 points, 31 评论）by EvgeniyZh",
-          "full_text_snippet": "Girls Just Wanna Have Fast MPMC Queues with bounded waiting Thu, Mar 12, 2026 Disclaimer: An earlier version of this post claimed the structure is wait-free, this is incorrect.\nBeing wait-free requires that failure or suspension of any thread can’t cause failure or\nsuspension of another thread. This queue in fact does not fulfill that requirement. The main\nsection which discusses the wait bounds of queue operations has been amended to reflect this, but\nother parts of this article have not been. As such there may parts of the text which refer to this\nas a wait-free queue, which it is not. I chose to keep those sections to avoid rewriting chunks\nof this post after it was already posted.\nThanks for the correction Reddit user matthieum! After my last post I started working on writing a data structure to facilitate sharing a buffer\nmutably between multiple threads. One tangent lead to another and that lead to me getting really\ninto lock-free data structures so I decided I wanted to make a wait-free queue. This thing seems\ndecently fast to me and I’m proud of it so I figured its worth writing about it. I also wanted to\nwrite something short and sweet after the novella that was my last post. To be clear, I am not claiming this data structure is ground-breaking in any way. This is me testing\nmy intuition of lock-free/wait-free programming. To that end, I’ve kept cross-referencing of other\nworks to a minimum, only going so far as to benchmark some other queue implementations* on my\nmachine without peeking at their internals. I’m hoping to get some feedback from people who know\nmore about this stuff than me, so if that’s you, please feel to give your thoughts! * When ever I mention benchmarks for “other queues” I’m referencing benchmarks I got through\nmax0x7ba’s excellent atomic_queue repository. It has a\nset of scripts and make files that made it very easy to get a solid collection of benchmarks for\nvarious popular queue implementations. Design Theory The queue works base...",
+          "published_at": "2026-07-09T15:50:09+00:00",
+          "summary": "HN 热门讨论（154 points, 137 评论）by mukmuk",
+          "full_text_snippet": "Two months ago, we launched our Chrome extension to help combat the rising slop problem on social media. It lets users scan posts on social media as they scroll, flagging AI-generated content so they can make informed decisions about how they spend their attention. Pangram is a research-first company, not just for our industry-leading AI detection algorithms, but for tracking the risk and prevalence of AI-generated content. Social media is one of the hardest domains to study here — much harder than, say, news articles , research papers , or Amazon reviews . But it's also one of the most crucial, because it's potentially the highest-volume source of AI-generated content we face. We believe it's important to understand this problem so that we can better combat it. That's why we included an opt-in setting in our Chrome extension, to allow users to aid our research by anonymously sharing their scan statistics with us. We've compiled the first few months of this data into the report below. Key findings: One in four longform posts on social media flagged as fully AI-generated Of all posts we flagged as AI-generated, two-thirds came from LinkedIn Nearly half of X/Twitter articles contained AI writing AI-generated content is hitting longform the hardest AI-generated content appeared across all social media platforms in our data set. The average AI rate across all scanned items was 13.8%, but specific rates varied by platform and item length. On four out of five platforms, longer content was more likely to be AI-generated than shortform content . Across all platforms, one in four longform items (25.72% of items over 250 words) were fully AI-generated. Substack was an exception; there, the rate of fully AI-generated content remained fairly flat, and longer, more substantial posts were actually slightly less likely to be AI-generated compared to shorter ones. LinkedIn was the most AI-saturated platform, where more than 40% of longform posts flagged as fully AI-generated. Ho...",
           "category": "other",
           "language": "en"
         }
       ]
     },
     {
-      "cluster_id": 68,
-      "representative_title": "Study: \"Mommy, do you love your phone more than me?\"",
+      "cluster_id": 75,
+      "representative_title": "Almost Always Unsigned",
       "role": "supporting",
       "role_emoji": "🟡",
       "total_score": 9,
       "scores": {
         "impact_scope": 1,
-        "novelty": 3,
-        "explainability": 3,
-        "listener_relevance": 1,
-        "source_richness": 1
-      },
-      "context": {
-        "factual_summary": [
-          "HN 热门讨论（70 points, 32 评论）by hbcondo714"
-        ],
-        "historical_background": "",
-        "sources_ranked": [
-          {
-            "name": "Hacker News",
-            "authority": 5,
-            "link": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1766665/full"
-          }
-        ]
-      },
-      "items": [
-        {
-          "id": "f27f5d5b180065b4",
-          "title": "Study: \"Mommy, do you love your phone more than me?\"",
-          "link": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1766665/full",
-          "normalized_link": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2026.1766665/full",
-          "source_name": "Hacker News",
-          "source_category": "community",
-          "published_at": "2026-07-10T00:20:28+00:00",
-          "summary": "HN 热门讨论（70 points, 32 评论）by hbcondo714",
-          "full_text_snippet": "Abstract While there is robust literature on the negative impact of adolescent device use on physical and psychological health, there is less research on the use of technology in the presence of others and its implications for key relationships. Known as “technoference” and “phubbing,” these device-based behaviors have only recently been examined in parent-child contexts. The present study investigated adolescents' perceptions of their primary caregivers' device-centric behaviors, the emotional appraisal of that behavior, and their association with the caregiver–adolescent attachment relationship. We hypothesized that adolescents' perceptions of less attentional availability would be associated with higher levels of insecure attachment. To test this, we validated the Device Attachment Interference Scale (DAIS) in a general population sample of U.S. adolescents ( N = 600; ages 12–17). We also examined the association between DAIS scores and adolescent-reported attachment to a primary caregiver using the Experiences in Close Relationships–Relationship Structures scale. Exploratory and confirmatory factor analyses supported a unidimensional structure of the DAIS. Additionally, higher DAIS scores were consistently associated with greater insecure attachment (both anxious and avoidant) to both mother- and father-like figures. These findings highlight adolescents' perceptions of caregiver attentional availability in the context of device use as a potentially important relational context associated with attachment insecurity. Implications, limitations, and directions for future research are discussed. Introduction Several years ago, a mother familiar with the first author's work surrounding healthy device use and digital-behavior mindfulness for families, shared with him a distressing event in which her young daughter asked her, “Mommy, do you love your phone more than me?” (Anonymous, personal communication, 2018). Similar accounts had been increasingly emerging in his...",
-          "category": "other",
-          "language": "en"
-        }
-      ]
-    },
-    {
-      "cluster_id": 69,
-      "representative_title": "My Story of 3D Realms / Apogee Part I (2020)",
-      "role": "supporting",
-      "role_emoji": "🟡",
-      "total_score": 9,
-      "scores": {
-        "impact_scope": 1,
-        "novelty": 3,
-        "explainability": 3,
-        "listener_relevance": 1,
-        "source_richness": 1
-      },
-      "context": {
-        "factual_summary": [
-          "HN 热门讨论（59 points, 2 评论）by Michelangelo11"
-        ],
-        "historical_background": "",
-        "sources_ranked": [
-          {
-            "name": "Hacker News",
-            "authority": 5,
-            "link": "https://joesiegler.blog/2020/11/my-story-of-apogee-3dr/"
-          }
-        ]
-      },
-      "items": [
-        {
-          "id": "0ef06b67bfed15d1",
-          "title": "My Story of 3D Realms / Apogee Part I (2020)",
-          "link": "https://joesiegler.blog/2020/11/my-story-of-apogee-3dr/",
-          "normalized_link": "https://joesiegler.blog/2020/11/my-story-of-apogee-3dr",
-          "source_name": "Hacker News",
-          "source_category": "community",
-          "published_at": "2026-07-02T06:21:49+00:00",
-          "summary": "HN 热门讨论（59 points, 2 评论）by Michelangelo11",
-          "full_text_snippet": "ADMIN NOTE (Jan 2026): The current owners of 3D Realms have taken down the “legacy” 3DR site ( https://legacy.3drealms.com ).  I link to a LOT of things there in this article which are now broken links.  I have to find some time to go through all of this article and link over to those things on the Wayback Machine.  Just letting you know ahead of time I know about that issue. ADMIN NOTE (Jan 2023): In Jan 2023, this blog post became a problem for my site. It was 33,000+ words in a single entry.  When I wrote it in 2020, I did have some problems with the size, but it worked on the front end (even if I did have problems on the back end). Now as my site has grown, it can’t process the thing in one giant piece on the front end, so I had to break it down into several smaller parts.  This first one is in the same spot as full size original.  No content has been changed, just broken up into smaller pieces to help with the blog being able to render the pages!  There will be navigation links on the subsequent pages.  Don’t miss the other pages beyond this first one. Those who know me (and have read my blog over the years) know that I spent quite some time working for Scott Miller & George Broussard of Apogee Software (later 3D Realms).  Was probably the single most fun job I’ve ever had in my life, and to this day, I still wish the old team was together.  I’m not getting into the why of that, just pointing out what happened in the past.  I worked there from Dec of 1992 through May of 2009.   I’ve talked about that part of my life in more detail elsewhere on this blog.  That’s not why I’m writing today.  I’m writing about the history of the company. Apogee was founded back in 1987, and still exists today, although the path to get from then till now has a lot of twisty, confusing bits.  I always meant to lay this out, but the current incarnation of the company did  a really cool “ Realms Deep ” thing last month, so I thought I’d get around to doing this historical piece.  B...",
-          "category": "other",
-          "language": "en"
-        }
-      ]
-    },
-    {
-      "cluster_id": 0,
-      "representative_title": "AI华语歌，终于能听了！从零预训练十亿参数，告别「人机味」",
-      "role": "supporting",
-      "role_emoji": "🟡",
-      "total_score": 8,
-      "scores": {
-        "impact_scope": 1,
-        "novelty": 1,
+        "novelty": 2,
         "explainability": 3,
         "listener_relevance": 2,
         "source_richness": 1
       },
       "context": {
         "factual_summary": [
-          "字节也入局了"
+          "HN 热门讨论（42 points, 50 评论）by gavide"
         ],
         "historical_background": "",
         "sources_ranked": [
           {
-            "name": "量子位",
-            "authority": 3,
-            "link": "https://www.qbitai.com/2026/07/447602.html"
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://graphitemaster.github.io/aau/"
           }
         ]
       },
       "items": [
         {
-          "id": "e61a3b7030a7be1d",
-          "title": "AI华语歌，终于能听了！从零预训练十亿参数，告别「人机味」",
-          "link": "https://www.qbitai.com/2026/07/447602.html",
-          "normalized_link": "https://www.qbitai.com/2026/07/447602.html",
-          "source_name": "量子位",
-          "source_category": "news",
-          "published_at": "2026-07-10T04:44:38+00:00",
-          "summary": "字节也入局了",
-          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> AI华语歌，终于能听了！从零预训练十亿参数，告别「人机味」 Jay 2026-07-10 12:44:38 来源： 量子位 Jay 发自 凹非寺 量子位 | 公众号 QbitAI AI华语音乐，终于能听了。 母语羞耻、咬字飘忽、人机味…… 没有。 全都没有。 这首歌，是我让它以一首我特别喜欢的Jazz Hiphop为灵感，给定歌词， zero-shot生成的 。 命名为——《关于小羊》（doge）。 说实话，太灵了。 特别是verse第四句歌词开头那个「塞」的咬字，我很少听到AI国语音乐注意到这个细节，像s、c这种舌尖前音，其实是特别适合用带停顿的短促发音来制造律动的。 还有Pre-Hook前 bridge结尾那个转音 ，我反复拉了无数遍进度条…… 当然，最让我惊喜的还是最后一遍 Hook 。我歌词里明明没写，结果—— 它自己即兴发挥加了段哼唱？？ 这首《Coco》的结尾也用了这种手法。 另一个版本的《关于小羊》我也蛮满意的，大家可以边读文章边当bgm挂着。 上面这些音频丢给身边几位音乐发烧友听了下，得到的评价大多 三个字 ： 很清爽。 说实话，我已经很久没有用「清爽」这个词来形容任何一首AI歌曲了。 这个清爽的模型，叫 歌歌AI 。 他们只做一件事—— 让AI音乐，听起来像中国人写的歌。 重做AI音乐模型 听起来挺简单对吧。 但为了这一句话，他们从零预训练了一个 十亿参数的模型 。 端到端 那种，用户输入歌词、风格情绪描述与指定歌手，模型一次性直接生成长达3分钟、人声与伴奏俱全的完整立体声歌曲，还能同步输出独立的人声分轨与伴奏分轨。 我猜你看到「预训练」这三个字的第一反应，应该和我最开始一样： 哈？为啥不直接微调？？ 这事吧，得先从一个更本质的问题聊起—— 为什么以前的AI唱不好中文歌？ 现在市面上的主流AI音乐模型，从出生的第一天起就是为英语准备的。 但汉语的演唱逻辑完全不同。 1、固定声调。 中文每个字本身带音高走势，四声之别，「妈」和「骂」就是完全不同的两个字。 2、音节边界。 英语里一个词可能有多个音节，而且弱读、连读、吞音很多，比如I wanna know，唱起来可以糊成一串，也能听懂。 但中文是一个字一个音节，边界很清楚，一旦连得太厉害，基本听不懂。 这也是为什么，YouTube英文播客基本无自带字幕，但在中文社区，内嵌字幕是必备的。 3、字音对齐逻辑。 简单来说就是，模型得知道哪个字落在哪个拍子上，哪个字可以拖，哪个字不能乱拖。 英语是重音计时型语言，一个音节可以拉多长都行，无所谓；中文歌词和旋律、节拍之间的对应关系会更难把握。比如爱可以拖成「爱～～」，但如果把「的」「了」「着」这种轻声助词拖得特别长，会巨奇怪。 总而言之就是，基于英语AI音乐模型做本土化， 无异于强行让外国人唱京剧 。 结果就是—— 人声机械生硬、情感表达空洞干瘪，对国风、华语流行、民谣等国民主流曲风适配度极低。 问题根本不在参数上。 在架构。 这也是为什么歌歌AI选择从零开始，为华语音乐重新设计一套技术栈。 主要有三层—— 双流独立生成架构 一首AI音乐，人声和伴奏是怎么组合起来的？ 传统AI音乐的做法是「事后对拍」。人声和伴奏各自生成完毕，再像两个图层一样硬叠在一起。 拆开做当然技术难度更低，但总会觉得人声和伴奏之间隔了一层什么东西。各唱各的，没有呼吸感。 真人歌手在录音棚里是什么状态？ 他听着伴奏的律动，感受着鼓点的推进，然后决定——这个气口落在哪里，这个音要怎么咬，这段尾音该收还是该放。 这是一个和伴奏「对话」的心流过程。 歌歌AI做的事情，正是把种「心流」，搬进了模型里。 原生双流设计 ——人声一条通路，伴奏一条通路，各走各的生成链路。两条线并行往下跑，中间通过跨流注意力机制，实时完成节奏与和声的精准对齐。 音素时序软对齐 咬字一直是个大坑。 模型如果搞不清每个字在时间轴上的精确位置、发音时长，就会出现音节错位、字音模糊。听着像嘴里含着糖在唱歌…… 正常聊天无所谓，音乐是有「节奏」限制的，人耳在这种场景下非常敏锐，模型即便每句歌词只有一个字没咬对，那就是灾难。 怎么让AI维持更稳定的咬字？ 歌歌AI的解法是： 先画一张地图。 在模型「开嗓」之前，先告诉它每个字的拼音在时间轴上大致落在哪个位置。这张“地图”作为先验知识，直接注入到生成过程中。 按图索骥——每个字什么时候起、什么时候落，有这套上下文后会稳定很多。 分层多维条件控制 最后，也是我觉得最能体现他们野心的。 情绪。 亚洲和欧美所有文化作品（小说...",
-          "category": "model",
+          "id": "7cfe3404b404f908",
+          "title": "Almost Always Unsigned",
+          "link": "https://graphitemaster.github.io/aau/",
+          "normalized_link": "https://graphitemaster.github.io/aau",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-08T19:35:07+00:00",
+          "summary": "HN 热门讨论（42 points, 50 评论）by gavide",
+          "full_text_snippet": "Almost Always Unsigned # Written by Dale Weiler Last updated Saturday, January 1, 2022 The need for signed integer arithmetic is often misplaced as most integers\nnever represent negative values within a program. The indexing of arrays and\niteration count of a loop reflects this concept as well. There should be a\npropensity to use unsigned integers more often than signed, yet despite this,\nmost code incorrectly choses to use signed integers almost exclusively. Most of the motivation of this article applies to C and C++, but examples for\nother languages such as Go, Rust and Odin will also be\npresented in an attempt to establish that this concept applies to all\nlanguages, regardless of their choices (for instance C and C++ leave signed\ninteger wrap undefined), but rather is intrinsic to the arithmetic itself. The arguments against unsigned # There are a lot of arguments against the use of unsigned integers. Let me\nexplain why I think they’re mostly incorrect. The safety argument # The most typical argument against the use of unsigned integers is that it’s\nmore error prone since it’s far easier for an expression to underflow than it\nis to overflow. This advice is so common that the official Google C++ Style Guide outright discourages the use of unsigned types. We’ll see in the following arguments where these safety issues come from and how\nto easily avoid them with trivial idioms that are easier to understand than\nusing signed everywhere. We’ll also see that these arguments are incorrect most\nof the time as they encourage continuing to write and use unsafe code. The loop in reverse argument # When the counter of a for loop needs to count in reverse and the body of\nthe loop needs to execute when the counter is also zero, most programmers will\nfind unsigned difficult to use because i >= 0 will always evaluate true . The temptation is to cast the unsigned value to a signed one, e.g: for ( int64_t i = int64_t (size) - 1 ; i >= 0 ; i -- ) { // ... } Of course this is dang...",
+          "category": "other",
           "language": "zh"
         }
       ]
     },
     {
-      "cluster_id": 6,
+      "cluster_id": 12,
       "representative_title": "角落新声｜在陌生的城市里，寻找属于自己的角落",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -1304,7 +1094,7 @@
       ]
     },
     {
-      "cluster_id": 8,
+      "cluster_id": 14,
       "representative_title": "乌兰布统，草原观星",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -1346,7 +1136,49 @@
       ]
     },
     {
-      "cluster_id": 11,
+      "cluster_id": 17,
+      "representative_title": "派早报：Nothing Ear (3a) 发布、Meta 推出 Muse 图像生成模型等",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 2,
+        "explainability": 1,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Google Voice 推出付费订阅方案并调整 Android 设备备份策略等"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "少数派",
+            "authority": 4,
+            "link": "https://sspai.com/post/112049"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "c9403c82d830aff1",
+          "title": "派早报：Nothing Ear (3a) 发布、Meta 推出 Muse 图像生成模型等",
+          "link": "https://sspai.com/post/112049",
+          "normalized_link": "https://sspai.com/post/112049",
+          "source_name": "少数派",
+          "source_category": "tools",
+          "published_at": "2026-07-07T23:48:25+00:00",
+          "summary": "Google Voice 推出付费订阅方案并调整 Android 设备备份策略等。 查看全文",
+          "full_text_snippet": "7 月 7 日，Anthropic 将针对通用知识工作设计的 Claude Cowork 扩展至网页与移动端。该版本支持任务在设备关闭等离线状态下于后台持续运行，实现了跨设备的进度同步与结果提取，并初步在网页与桌面端完成了对话界面与项目工件的统一。本次跨端更新已于当日正式面向 Max 订阅用户开放。 Anthropic 同时也公布了 Claude Cowork 的早期使用统计数据，根据 5 月最后两周对超过 60 万家组织、共计 120 万次匿名会话的采样数据，Claude Cowork 的三大核心使用场景依次为占比 33.4% 的业务流程运营、占比 16.4% 的内容创作与文案撰写，以及占比 8.7% 的软件开发。 来源",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 18,
       "representative_title": "ChatGPT is now a partner for your most ambitious work",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -1388,7 +1220,7 @@
       ]
     },
     {
-      "cluster_id": 12,
+      "cluster_id": 19,
       "representative_title": "GPT-5.5 Bio Bug Bounty",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -1430,7 +1262,7 @@
       ]
     },
     {
-      "cluster_id": 13,
+      "cluster_id": 20,
       "representative_title": "GPT-5.6: Frontier intelligence that scales with your ambition",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -1472,7 +1304,7 @@
       ]
     },
     {
-      "cluster_id": 16,
+      "cluster_id": 23,
       "representative_title": "MUFG aims to become AI-native with OpenAI",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -1514,7 +1346,7 @@
       ]
     },
     {
-      "cluster_id": 17,
+      "cluster_id": 24,
       "representative_title": "Australian Payments Plus moves faster with ChatGPT and Codex",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -1556,49 +1388,49 @@
       ]
     },
     {
-      "cluster_id": 18,
-      "representative_title": "Previewing GPT-5.6 Sol: a next-generation model",
+      "cluster_id": 27,
+      "representative_title": "PRX Part 4: Our Data Strategy",
       "role": "supporting",
       "role_emoji": "🟡",
       "total_score": 8,
       "scores": {
         "impact_scope": 1,
         "novelty": 1,
-        "explainability": 1,
-        "listener_relevance": 2,
-        "source_richness": 3
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
       },
       "context": {
         "factual_summary": [
-          "OpenAI previews GPT-5.6 Sol, a next-generation model with stronger capabilities in coding, science, and cybersecurity, paired with its most advanced safety stack"
+          "PRX Part 4: Our Data Strategy Welcome back"
         ],
         "historical_background": "",
         "sources_ranked": [
           {
-            "name": "OpenAI Blog",
-            "authority": 1,
-            "link": "https://openai.com/index/previewing-gpt-5-6-sol"
+            "name": "HuggingFace Blog",
+            "authority": 2,
+            "link": "https://huggingface.co/blog/Photoroom/prx-part4-data"
           }
         ]
       },
       "items": [
         {
-          "id": "30f48121decc708b",
-          "title": "Previewing GPT-5.6 Sol: a next-generation model",
-          "link": "https://openai.com/index/previewing-gpt-5-6-sol",
-          "normalized_link": "https://openai.com/index/previewing-gpt-5-6-sol",
-          "source_name": "OpenAI Blog",
-          "source_category": "official",
-          "published_at": "2026-06-26T10:00:00+00:00",
-          "summary": "OpenAI previews GPT-5.6 Sol, a next-generation model with stronger capabilities in coding, science, and cybersecurity, paired with its most advanced safety stack.",
-          "full_text_snippet": "OpenAI previews GPT-5.6 Sol, a next-generation model with stronger capabilities in coding, science, and cybersecurity, paired with its most advanced safety stack.",
-          "category": "model",
+          "id": "1dc5824027254506",
+          "title": "PRX Part 4: Our Data Strategy",
+          "link": "https://huggingface.co/blog/Photoroom/prx-part4-data",
+          "normalized_link": "https://huggingface.co/blog/Photoroom/prx-part4-data",
+          "source_name": "HuggingFace Blog",
+          "source_category": "research",
+          "published_at": "2026-07-06T15:30:55+00:00",
+          "summary": "",
+          "full_text_snippet": "PRX Part 4: Our Data Strategy Welcome back! This is Part 4 of the PRX series. Parts 1 to 3 covered model architectures , training design , and a 24-hour speedrun . This time we're pulling back the curtain on the part that quietly underpins all of it: the data. Of all the things that shaped PRX's quality, the data pipeline was one of the least glamorous parts to build but nevertheless an important piece to get right. Here's what we did, what we'd do differently, and a few things we only learned the slow way. In one sentence: we assemble training data from a mix of public and internal datasets, re-caption the images with a VLM, and turn the result into the streamable corpus we trained PRX on. At a high level, the data pipeline looks like this: In the following we will dive into it in detail. 1. Guiding principles A diverse dataset for pre-training The goal was to assemble a large, diverse dataset for pre-training. At this stage the model is learning how the world looks: the visual concepts, the objects and scenes, how things are composed and lit, and the sheer range of what images can contain. That is a problem of coverage and diversity, not of per-image perfection. A broad, representative corpus teaches the model far more about the structure of the visual world than a smaller, prettier one would, even if many of the individual images are ordinary snapshots or slightly compressed. Over-filtering for aesthetics at this stage would actually hurt, narrowing the distribution and costing the model concepts and compositional variety it cannot recover later. Making generations look polished is a separate, later concern, which we leave to fine-tuning and preference alignment on small, ruthlessly curated sets. Pre-training is for breadth; fine-tuning is for taste. A mix of data sources We assemble our pre-training data from a mix of public and internal datasets. The priority at this stage is breadth, diversity, and standing on curation that already exists rather than redoin...",
+          "category": "other",
           "language": "en"
         }
       ]
     },
     {
-      "cluster_id": 48,
+      "cluster_id": 53,
       "representative_title": "New York Times says OpenAI hid evidence in ChatGPT copyright trial",
       "role": "supporting",
       "role_emoji": "🟡",
@@ -1640,7 +1472,7 @@
       ]
     },
     {
-      "cluster_id": 14,
+      "cluster_id": 21,
       "representative_title": "Our approach to government and national security partnerships",
       "role": "quick",
       "role_emoji": "🟢",
@@ -1682,7 +1514,7 @@
       ]
     },
     {
-      "cluster_id": 15,
+      "cluster_id": 22,
       "representative_title": "Separating signal from noise in coding evaluations",
       "role": "quick",
       "role_emoji": "🟢",
@@ -1724,7 +1556,7 @@
       ]
     },
     {
-      "cluster_id": 21,
+      "cluster_id": 28,
       "representative_title": "AgentLens: Production-Assessed Trajectory Reviews for Coding Agent Evaluation",
       "role": "quick",
       "role_emoji": "🟢",
@@ -1738,7 +1570,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.06624v1 Announce Type: new Abstract: We present AgentLens, a production-assessed benchmark for interactive code agents"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -1757,7 +1589,7 @@
           "normalized_link": "https://arxiv.org/abs/2607.06624",
           "source_name": "arXiv cs.AI",
           "source_category": "research",
-          "published_at": "2026-07-10T04:00:00+00:00",
+          "published_at": "2026-07-09T04:00:00+00:00",
           "summary": "arXiv:2607.06624v1 Announce Type: new Abstract: We present AgentLens, a production-assessed benchmark for interactive code agents. Most code-agent benchmarks reduce a run to a single bit -- did the task pass? -- but the people who actually use these agents experience the entire trajectory: how the agent follows instructions, uses its tools, verifies its own work, recovers from mistakes, and talks to them along the way. AgentLens evaluates that whole trajectory. It pairs formal verification, w...",
           "full_text_snippet": "BibTeX formatted citation ×",
           "category": "model",
@@ -1766,7 +1598,7 @@
       ]
     },
     {
-      "cluster_id": 23,
+      "cluster_id": 30,
       "representative_title": "QANTIS: Hardware-Calibrated Sequential POMDP Belief Updates on IBM Heron",
       "role": "quick",
       "role_emoji": "🟢",
@@ -1780,7 +1612,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.06760v1 Announce Type: new Abstract: Autonomous systems under partial observability act on beliefs, not raw sensor events"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -1799,7 +1631,7 @@
           "normalized_link": "https://arxiv.org/abs/2607.06760",
           "source_name": "arXiv cs.AI",
           "source_category": "research",
-          "published_at": "2026-07-10T04:00:00+00:00",
+          "published_at": "2026-07-09T04:00:00+00:00",
           "summary": "arXiv:2607.06760v1 Announce Type: new Abstract: Autonomous systems under partial observability act on beliefs, not raw sensor events. QANTIS treats the quantum processor as a calibrated belief-update service in that loop: it receives a prior and an observation model, estimates the rare-event evidence term, and returns an ordinary posterior to a classical planner. This paper asks whether that service can be reused across a sequential Tiger POMDP horizon on present IBM Heron hardware without co...",
           "full_text_snippet": "BibTeX formatted citation ×",
           "category": "research",
@@ -1808,7 +1640,7 @@
       ]
     },
     {
-      "cluster_id": 24,
+      "cluster_id": 31,
       "representative_title": "Cost-Effective Agent Harnesses for Abstract Reasoning and Generalization on ARC-AGI-1",
       "role": "quick",
       "role_emoji": "🟢",
@@ -1822,7 +1654,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.06764v1 Announce Type: new Abstract: Recent progress on ARC-AGI-1 from disclosed architectures has come broadly from two regimes: heavy test-time compute over frontier models (evolutionary search, exhaustive sampling, extended chain-of-thought), or benchmark-specific training in which small models are fine-tuned on ARC data, often with task-specialized architectures"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -1841,7 +1673,7 @@
           "normalized_link": "https://arxiv.org/abs/2607.06764",
           "source_name": "arXiv cs.AI",
           "source_category": "research",
-          "published_at": "2026-07-10T04:00:00+00:00",
+          "published_at": "2026-07-09T04:00:00+00:00",
           "summary": "arXiv:2607.06764v1 Announce Type: new Abstract: Recent progress on ARC-AGI-1 from disclosed architectures has come broadly from two regimes: heavy test-time compute over frontier models (evolutionary search, exhaustive sampling, extended chain-of-thought), or benchmark-specific training in which small models are fine-tuned on ARC data, often with task-specialized architectures. We study a third regime: an open-weight model in non-thinking mode (DeepSeek V3.2) under a strict budget, with no AR...",
           "full_text_snippet": "BibTeX formatted citation ×",
           "category": "model",
@@ -1850,7 +1682,7 @@
       ]
     },
     {
-      "cluster_id": 25,
+      "cluster_id": 32,
       "representative_title": "Evaluating SageMath-Augmented LLM Agents for Computational and Experimental Mathematics",
       "role": "quick",
       "role_emoji": "🟢",
@@ -1864,7 +1696,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.06820v1 Announce Type: new Abstract: Recent advances in AI for Mathematics have focused largely on autoformalization and theorem proving, leaving the role of Computer Algebra Systems (CAS) in agentic LLM workflows underexplored"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -1883,7 +1715,7 @@
           "normalized_link": "https://arxiv.org/abs/2607.06820",
           "source_name": "arXiv cs.AI",
           "source_category": "research",
-          "published_at": "2026-07-10T04:00:00+00:00",
+          "published_at": "2026-07-09T04:00:00+00:00",
           "summary": "arXiv:2607.06820v1 Announce Type: new Abstract: Recent advances in AI for Mathematics have focused largely on autoformalization and theorem proving, leaving the role of Computer Algebra Systems (CAS) in agentic LLM workflows underexplored. We propose a ReAct-style agentic setup that combines LLM reasoning with verifiable feedback from SageMath, together with Context7 for the up-to-date documentation. We evaluate this agentic setup across frontier models for solving research-level mathematical...",
           "full_text_snippet": "BibTeX formatted citation ×",
           "category": "research",
@@ -1892,7 +1724,7 @@
       ]
     },
     {
-      "cluster_id": 26,
+      "cluster_id": 33,
       "representative_title": "The Harness Effect: How Orchestration Design Sets the Token Economics of Enterprise Agentic AI",
       "role": "quick",
       "role_emoji": "🟢",
@@ -1906,7 +1738,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.06906v1 Announce Type: new Abstract: Agentic AI development today runs on token maxing: buying capability with tokens -- longer reasoning traces, more turns, wider tool payloads, bigger replayed contexts -- so tokens per task grow faster than task value"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -1925,7 +1757,7 @@
           "normalized_link": "https://arxiv.org/abs/2607.06906",
           "source_name": "arXiv cs.AI",
           "source_category": "research",
-          "published_at": "2026-07-10T04:00:00+00:00",
+          "published_at": "2026-07-09T04:00:00+00:00",
           "summary": "arXiv:2607.06906v1 Announce Type: new Abstract: Agentic AI development today runs on token maxing: buying capability with tokens -- longer reasoning traces, more turns, wider tool payloads, bigger replayed contexts -- so tokens per task grow faster than task value. Falling per-token prices mask the pattern; total spend rises anyway. We argue the decisive lever against token maxing is the harness: the orchestration layer that assembles context, exposes tools, sequences turns, delegates work, a...",
           "full_text_snippet": "BibTeX formatted citation ×",
           "category": "research",
@@ -1934,7 +1766,7 @@
       ]
     },
     {
-      "cluster_id": 29,
+      "cluster_id": 36,
       "representative_title": "Learning social norms enhances compatibility in dynamic human-AI coordination",
       "role": "quick",
       "role_emoji": "🟢",
@@ -1948,7 +1780,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.07021v1 Announce Type: new Abstract: Humans continuously coordinate with others in dynamic interactions, often through implicit, hard-to-quantify social norms that act as shared tacit expectations among interacting agents"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -1976,7 +1808,7 @@
       ]
     },
     {
-      "cluster_id": 30,
+      "cluster_id": 37,
       "representative_title": "Operational Reframing and Approval-Framed Delegation in Multi-Agent LLM Safety",
       "role": "quick",
       "role_emoji": "🟢",
@@ -1990,7 +1822,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.07097v1 Announce Type: new Abstract: Safety evaluations of multi-agent LLM systems often compare a direct prompt with a planner-executor pipeline and report the difference as a single \"pipeline effect"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2018,7 +1850,7 @@
       ]
     },
     {
-      "cluster_id": 31,
+      "cluster_id": 38,
       "representative_title": "Does AI Understand Imaging? A Systematic Benchmark of Agentic AI for Computational Imaging Tasks",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2032,7 +1864,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.07189v1 Announce Type: new Abstract: Vision-language models (VLMs) and agentic AI have shown strong performance on semantic visual tasks, but it remains unclear whether they can handle the physics and inverse problems that underlie computational imaging"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2060,7 +1892,7 @@
       ]
     },
     {
-      "cluster_id": 34,
+      "cluster_id": 41,
       "representative_title": "Agentic Data Environments",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2074,7 +1906,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.07397v1 Announce Type: new Abstract: Autonomous agents promise substantial gains in speed, scale, and labor efficiency, but their failures can impose abrupt and often irreversible costs"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2102,7 +1934,7 @@
       ]
     },
     {
-      "cluster_id": 35,
+      "cluster_id": 42,
       "representative_title": "Reason Less, Verify More: Deterministic Gates Recover a Silent Policy-Violation Failure Mode in Tool-Using LLM Agents",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2116,7 +1948,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.07405v1 Announce Type: new Abstract: Tool-using LLM agents can violate the very policies they are deployed to enforce while appearing to complete the task successfully"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2144,7 +1976,7 @@
       ]
     },
     {
-      "cluster_id": 36,
+      "cluster_id": 43,
       "representative_title": "SpaCellAgent: A Self-Evolving LLM-Based Multi-Agent Framework for Trajectory Analysis",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2158,7 +1990,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.07467v1 Announce Type: new Abstract: Spatial and Single-cell transcriptomics are transformative in deciphering cellular dynamics"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2186,7 +2018,7 @@
       ]
     },
     {
-      "cluster_id": 38,
+      "cluster_id": 45,
       "representative_title": "Do LLM-Generated Skills Make Better AI Data Scientists? A Component Ablation Across Data-Science Workflows",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2200,7 +2032,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.07504v1 Announce Type: new Abstract: Product data scientists often ask LLM-based agents to help with recurring execution tasks such as cleaning data, writing SQL, choosing statistical tests, and formatting results"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2228,7 +2060,7 @@
       ]
     },
     {
-      "cluster_id": 39,
+      "cluster_id": 46,
       "representative_title": "SkillCenter: A Large-Scale Source-Grounded Skill Library for Autonomous AI Agents",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2242,7 +2074,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.07676v1 Announce Type: new Abstract: Autonomous AI agents can execute complex tasks with limited human review, yet they often lack the grounded operational knowledge to make their outputs not just executable but correct, secure, and maintainable"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2270,49 +2102,7 @@
       ]
     },
     {
-      "cluster_id": 44,
-      "representative_title": "An AI agent startup just let its agent run its $100M fundraise",
-      "role": "quick",
-      "role_emoji": "🟢",
-      "total_score": 7,
-      "scores": {
-        "impact_scope": 1,
-        "novelty": 1,
-        "explainability": 2,
-        "listener_relevance": 2,
-        "source_richness": 1
-      },
-      "context": {
-        "factual_summary": [
-          "Lyzr, a startup that builds AI agents for enterprises, used its own AI agent to raise a $100 million round — proof, evidently, that the product actually works"
-        ],
-        "historical_background": "",
-        "sources_ranked": [
-          {
-            "name": "TechCrunch AI",
-            "authority": 3,
-            "link": "https://techcrunch.com/2026/07/09/an-ai-agent-startup-just-let-its-agent-run-its-100-million-fundraise/"
-          }
-        ]
-      },
-      "items": [
-        {
-          "id": "e9036cc9df8797f1",
-          "title": "An AI agent startup just let its agent run its $100M fundraise",
-          "link": "https://techcrunch.com/2026/07/09/an-ai-agent-startup-just-let-its-agent-run-its-100-million-fundraise/",
-          "normalized_link": "https://techcrunch.com/2026/07/09/an-ai-agent-startup-just-let-its-agent-run-its-100-million-fundraise",
-          "source_name": "TechCrunch AI",
-          "source_category": "news",
-          "published_at": "2026-07-09T22:08:58+00:00",
-          "summary": "Lyzr, a startup that builds AI agents for enterprises, used its own AI agent to raise a $100 million round — proof, evidently, that the product actually works.",
-          "full_text_snippet": "There’s something almost too perfect about this one, via Bloomberg . Lyzr, a three-year-old, Jersey City, New Jersey, startup that helps enterprises build AI agents, used its own AI agent to raise its own round. The system, SivaClaw, reportedly fielded questions from more than 130 investors, drafted investment memos, and even tracked which slides backers lingered on. It basically ran point on the startup’s $100 million Series B (at a roughly $500 million valuation) while proving that the product actually works. It’s hard to imagine a cleaner sales pitch. But the most telling detail, per Bloomberg’s retelling, is how little legwork was involved. Lyzr told the outlet it pulled in $400 million in interest from Silicon Valley, the Middle East, and financial-sector investors without a founder ever needing to fly out and do the traditional laps up and down Sand Hill Road for coffee meetings and warm intros. That may be the real story of this go-go moment: There’s so much capital chasing AI bets that startup founders with traction barely have to leave their desks to raise nine figures.",
-          "category": "other",
-          "language": "en"
-        }
-      ]
-    },
-    {
-      "cluster_id": 49,
+      "cluster_id": 54,
       "representative_title": "Google will now disclose which ads are made with AI",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2354,7 +2144,7 @@
       ]
     },
     {
-      "cluster_id": 51,
+      "cluster_id": 56,
       "representative_title": "Meta’s new AI chips will begin production in September",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2396,7 +2186,7 @@
       ]
     },
     {
-      "cluster_id": 52,
+      "cluster_id": 57,
       "representative_title": "Nvidia is a victim of the compute marketplace it created",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2438,8 +2228,50 @@
       ]
     },
     {
-      "cluster_id": 57,
-      "representative_title": "John Deere owners will get the right to repair equipment under FTC settlement",
+      "cluster_id": 62,
+      "representative_title": "Lovable reportedly in talks to double its valuation to $13.2B",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 2,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "The $300 million round is expected to be led by Menlo Ventures, Sifted reported"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/07/08/lovable-reportedly-in-talks-to-double-its-valuation-to-13-2b/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "1592b44562b704df",
+          "title": "Lovable reportedly in talks to double its valuation to $13.2B",
+          "link": "https://techcrunch.com/2026/07/08/lovable-reportedly-in-talks-to-double-its-valuation-to-13-2b/",
+          "normalized_link": "https://techcrunch.com/2026/07/08/lovable-reportedly-in-talks-to-double-its-valuation-to-13-2b",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-07-08T22:41:33+00:00",
+          "summary": "The $300 million round is expected to be led by Menlo Ventures, Sifted reported.",
+          "full_text_snippet": "Lovable, a Swedish vibe-coding startup, is in talks to raise $300 million at a valuation of $13.2 billion — exactly double the $6.6 billion valuation the company achieved last December, Sifted reported . Menlo Ventures, a firm that announced its latest $3 billion fund last month, is expected to lead the round, according to the report. The less-than-three-year-old startup hit $500 million in annualized revenue run rate in June. Lovable’s users include founders, individual designers, and salespeople building websites and e-commerce storefronts. The company also sells its vibe-coding tool to large enterprises, including Workday, Asana, and Nvidia. Vibe coding, which allows users to build software simply by describing it, is by far the most popular and lucrative use case for AI. Other high-profile vibe-coding startups include Replit, valued at $9 billion in March, and Factory, a startup that helps enterprises develop AI agents, which raised $150 million at a $1.5 billion valuation in April. Meanwhile, Cursor, which offers vibe coding for developers, was acquired by SpaceX for $60 billion last month.",
+          "category": "open_source",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 65,
+      "representative_title": "Meta reuses old RAM in new servers with custom bridge chip",
       "role": "quick",
       "role_emoji": "🟢",
       "total_score": 7,
@@ -2452,77 +2284,35 @@
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（1301 points, 275 评论）by djoldman"
+          "HN 热门讨论（287 points, 206 评论）by ihsw"
         ],
         "historical_background": "",
         "sources_ranked": [
           {
             "name": "Hacker News",
             "authority": 5,
-            "link": "https://apnews.com/article/john-deere-right-to-repair-agriculture-equipment-cb7514ffedb95c130a976af661f2bc02"
+            "link": "https://www.theregister.com/systems/2026/06/29/zuck-saves-meta-bucks-by-reusing-memory-from-old-servers-with-a-custom-cxl-asic/5263483"
           }
         ]
       },
       "items": [
         {
-          "id": "85b4cb35f7bf100d",
-          "title": "John Deere owners will get the right to repair equipment under FTC settlement",
-          "link": "https://apnews.com/article/john-deere-right-to-repair-agriculture-equipment-cb7514ffedb95c130a976af661f2bc02",
-          "normalized_link": "https://apnews.com/article/john-deere-right-to-repair-agriculture-equipment-cb7514ffedb95c130a976af661f2bc02",
+          "id": "b5575f39972643e4",
+          "title": "Meta reuses old RAM in new servers with custom bridge chip",
+          "link": "https://www.theregister.com/systems/2026/06/29/zuck-saves-meta-bucks-by-reusing-memory-from-old-servers-with-a-custom-cxl-asic/5263483",
+          "normalized_link": "https://www.theregister.com/systems/2026/06/29/zuck-saves-meta-bucks-by-reusing-memory-from-old-servers-with-a-custom-cxl-asic/5263483",
           "source_name": "Hacker News",
           "source_category": "community",
-          "published_at": "2026-07-08T23:37:43+00:00",
-          "summary": "HN 热门讨论（1301 points, 275 评论）by djoldman",
-          "full_text_snippet": "It looks like John Deere owners can soon feel free to fix their own machines. The Federal Trade Commission and attorneys general from several states secured a right-to-repair settlement Wednesday with agriculture equipment giant Deere & Co . — commonly known as John Deere — that requires the company to let farmers and independent shops fix their own equipment. The Illinois-based manufacturer has faced complaints for years for withholding the software needed for repairs and forcing customers to use authorized dealers instead of independent ones. This marks the second right-to-repair settlement Deere has reached this year, following a separate $99 million class-action settlement with farmers in April. Though the class-action compensated consumers, the FTC’s settlement instead requires Deere to make its repair services available to equipment owners and independent shops. The FTC and attorneys general from Arizona, Illinois, Michigan, Minnesota and Wisconsin brought the antitrust lawsuit in January 2025, arguing that Deere had illegally restricted farmers and independent shops that might otherwise service them from repairing farm equipment such as tractors. Deere also makes engines and equipment for forestry, landscaping and construction. Under the order filed in Illinois, Deere will now be required to make diagnostic and repair tools available to equipment owners and independent repair shops, not only its own network of authorized dealers. It also prevents Deere dealers from retaliating against equipment owners or repair shops who choose to fix their own equipment instead of paying for Deere’s services. The order is headed to Judge Iain D. Johnston for his approval. “For too long, Arizona farmers and independent mechanics have been at the mercy of Deere’s monopoly over repair tools, forced to wait — and pay — for authorized dealers just to fix broken tractors and other equipment,” Arizona Attorney General Kris Mayes said in a statement Wednesday. Deere must pay $1 m...",
+          "published_at": "2026-07-03T19:27:05+00:00",
+          "summary": "HN 热门讨论（287 points, 206 评论）by ihsw",
+          "full_text_snippet": "SYSTEMS Zuck saves Meta bucks by reusing memory from old servers with a custom CXL ASIC In production on millions of boxes and the payoff is a 25% reduction in machines needed for some inference workloads Meta is recovering DDR4 memory from old servers, installing it in new machines, and using a custom Compute Express Link (CXL) ASIC to share the memory across applications – without encountering latency problems. The social networking giant calls its tech \"Vistara\" and will present it at ISCA 2026 on Monday, but The Register found the company's paper ahead of the talk. Our sister site, Blocks and Files , also happens to have reported on this on Friday. The document opens with the admission that Meta can't increase the amount of memory in around 40 percent of its vast server fleet, meaning millions of servers can't handle some of its workloads. That's unfortunate because the expected service life of its servers is three to five years, but memory is useful for seven to ten years. Meta's response is to rip DDR4 DIMMs from old servers, put them into new machines that rely on DDR5, and turn it all into a pool of capacity – which in theory makes it possible to compose virtual servers that share resources across multiple physical hosts. The paper points out that CXL is hard to put into production because sharing memory across hosts can mean low bandwidth, high latency, and extra computing overheads to manage additional memory layers. Those problems can arise in systems that combine different memory technologies. Meta wanted to blend memory types in a single machine but found off-the-shelf CXL kit can't do the job. \"Most CXL solutions bundle DRAM with the controller – preventing DIMM reuse – and often omit DDR4 support, which is a requirement for repurposing older memory,\" the paper states. \"Additionally, their high power consumption and high cost further limit their appeal.\" To make CXL sing, Meta created a custom ASIC called \"Vistara.\" \"At its core, the Vistara ASIC is...",
           "category": "other",
           "language": "en"
         }
       ]
     },
     {
-      "cluster_id": 59,
-      "representative_title": "Train sim created by just one person is being called the best ever made",
-      "role": "quick",
-      "role_emoji": "🟢",
-      "total_score": 7,
-      "scores": {
-        "impact_scope": 1,
-        "novelty": 1,
-        "explainability": 3,
-        "listener_relevance": 1,
-        "source_richness": 1
-      },
-      "context": {
-        "factual_summary": [
-          "HN 热门讨论（437 points, 155 评论）by oumua_don17"
-        ],
-        "historical_background": "",
-        "sources_ranked": [
-          {
-            "name": "Hacker News",
-            "authority": 5,
-            "link": "https://kotaku.com/a-train-sim-created-by-just-one-person-is-being-called-the-best-ever-made-2000699429"
-          }
-        ]
-      },
-      "items": [
-        {
-          "id": "9bad1ac5886ab9ac",
-          "title": "Train sim created by just one person is being called the best ever made",
-          "link": "https://kotaku.com/a-train-sim-created-by-just-one-person-is-being-called-the-best-ever-made-2000699429",
-          "normalized_link": "https://kotaku.com/a-train-sim-created-by-just-one-person-is-being-called-the-best-ever-made-2000699429",
-          "source_name": "Hacker News",
-          "source_category": "community",
-          "published_at": "2026-07-05T08:40:27+00:00",
-          "summary": "HN 热门讨论（437 points, 155 评论）by oumua_don17",
-          "full_text_snippet": "I spent a rather embarrassing amount of time trying to match up Running Train ‘s hyper-realistic train lines and Japanese terrain with the real world. And in doing so, I paid the game the highest possible compliment. This extraordinarily realistic sim made by one-person development team Novatetsu Games is in fact set in a fictional region of Japan, but is created so lovingly that you’ll believe it’s real life. © Novatetsu Games / Kotaku I’m not exactly a train enthusiast, nor indeed particularly au fait with the range of train sim games previously available, but in Running Train I’ve found something absolutely captivating. And most bizarrely, I’ve found that quality not by actually playing it, but rather by letting it play itself. While the game encourages you to master the reasonably simple controls of its range of perfectly crafted engines, you can also just set it to play itself and then take over the free camera as it does. Doing so has brought me so much pleasure. Played properly, Running Train asks you to carefully control your speed, braking, and prompt, safe arrival at train stations, and rewards or penalizes you accordingly. By turning off in-game guides and even the UI, you can earn higher scores and more credit, contributing to your overall rating for each of the 42 different routes it currently features. These routes feature ten 12-minute routes on the fictional Fukugawa Line, and a further 32 of hugely varying length on the equally made up Sankai Main Line. They can be as short as six minutes, or as long as 44, each set at different times of day. And oh my goodness, it’s so pretty. Vast stretches of imagined Japanese towns and countryside have been created (40 kilometers of track, apparently), and it’s not just randomly placed assets. Jumping into that free camera, I couldn’t believe it when I noticed that even powerlines are logically placed, with wires beginning at substations, then stretching across pylon networks. Roads are filled with traffic, c...",
-          "category": "other",
-          "language": "en"
-        }
-      ]
-    },
-    {
-      "cluster_id": 61,
+      "cluster_id": 66,
       "representative_title": "Buried Apple feature turns an iPhone into the perfect kids' dumb phone",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2536,7 +2326,7 @@
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（314 points, 186 评论）by PotatoNinja"
+          "HN 热门讨论（231 points, 148 评论）by PotatoNinja"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2556,7 +2346,7 @@
           "source_name": "Hacker News",
           "source_category": "community",
           "published_at": "2026-07-06T10:53:51+00:00",
-          "summary": "HN 热门讨论（314 points, 186 评论）by PotatoNinja",
+          "summary": "HN 热门讨论（231 points, 148 评论）by PotatoNinja",
           "full_text_snippet": "It's called Assistive Access . Introduced with iOS 17 , Apple designed it for those with cognitive disabilities. If you've never encountered or stumbled across it, it's a distinctive iOS experience: fewer options, more focused features, easier to navigate. The aesthetic is ideal for kids: large, friendly tiles for the apps replace the smaller icons of the “normal” Apple interface. Here's how you set it up : Head into Settings , tap Accessibility , scroll down to the General section at the very bottom, and tap Assistive Access . Now, tap Set Up Assistive Access , then Continue . It will then ask you to select your preferred appearance: rows or a grid. I suggest choosing a grid. This is how you get those super-large tiles. Now the OS will ask you to select allowed apps—tap the green plus icon next to the apps you want to allow. I’ve turned an old, unused iPhone languishing in a drawer into the best six-app dumb phone money hasn’t bought. Crucially, this is where, unlike with Apple’s standard child screen-time restrictions, you can choose to completely block internet browsing by simply not allowing Safari, Chrome, or any other similar app. And, unlike with those screen-time restrictions, if someone texts your child a link, it won't work. Why? Assistive Access is designed to prevent accidental navigation, so the system restricts unexpected web browsing. Even though Assistive Access on Apple devices allows internet access, it is heavily restricted by design, and it's turned off by default. In this mode, the phone treats any link in a message as plain text, preventing the user from accidentally leaving the simplified interface. Made for caregivers or trusted supporters, the user must specifically add internet-enabled apps like Messages, Safari, or third-party web apps to the Assistive Access interface. And once you add, say, Messages or Calls, you then choose whether your child can contact or be contacted by everyone, their contacts only, or just selected favorites.",
           "category": "other",
           "language": "en"
@@ -2564,7 +2354,7 @@
       ]
     },
     {
-      "cluster_id": 62,
+      "cluster_id": 67,
       "representative_title": "No leap second will be introduced at the end of December 2026",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2578,7 +2368,7 @@
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（266 points, 201 评论）by ChrisArchitect"
+          "HN 热门讨论（211 points, 168 评论）by ChrisArchitect"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2598,7 +2388,7 @@
           "source_name": "Hacker News",
           "source_category": "community",
           "published_at": "2026-07-09T14:16:34+00:00",
-          "summary": "HN 热门讨论（266 points, 201 评论）by ChrisArchitect",
+          "summary": "HN 热门讨论（211 points, 168 评论）by ChrisArchitect",
           "full_text_snippet": "INTERNATIONAL EARTH ROTATION AND REFERENCE SYSTEMS SERVICE (IERS) \n\nSERVICE INTERNATIONAL DE LA ROTATION TERRESTRE ET DES SYSTEMES DE REFERENCE\n\n\nSERVICE DE LA ROTATION TERRESTRE DE L'IERS\nOBSERVATOIRE DE PARIS\n61, Av. de l'Observatoire 75014 PARIS (France)\nTel.      : +33 1 40 51 23 35\ne-mail    : services.iers@obspm.fr\nhttp://hpiers.obspm.fr/eop-pc\n \n \n                                              Paris, 06 July 2026\n \n \n                                              Bulletin C 72\n \n                                              To authorities responsible\n                                              for the measurement and\n                                              distribution of time\n \n \n \n                          INFORMATION ON UTC - TAI\n \n \n NO leap second will be introduced at the end of December 2026.\n The difference between Coordinated Universal Time UTC and the\n International Atomic Time TAI is :\n \n     from 2017 January 1, 0h UTC, until further notice : UTC-TAI = -37 s\n \n Leap seconds can be introduced in UTC at the end of the months of December\n or June,  depending on the evolution of UT1-TAI. Bulletin C is mailed every\n six months, either to announce a time step in UTC, or to confirm that there\n will be no time step at the next possible date.\n \n \n                                            Christian BIZOUARD\n                                            Director\n                                            Earth Orientation Center of IERS\n\t\t\t\t\t    Observatoire de Paris, France",
           "category": "other",
           "language": "en"
@@ -2606,7 +2396,7 @@
       ]
     },
     {
-      "cluster_id": 63,
+      "cluster_id": 68,
       "representative_title": "A possible future for Damn Interesting",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2620,7 +2410,7 @@
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（265 points, 36 评论）by mzur"
+          "HN 热门讨论（203 points, 23 评论）by mzur"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2640,7 +2430,7 @@
           "source_name": "Hacker News",
           "source_category": "community",
           "published_at": "2026-07-09T15:25:25+00:00",
-          "summary": "HN 热门讨论（265 points, 36 评论）by mzur",
+          "summary": "HN 热门讨论（203 points, 23 评论）by mzur",
           "full_text_snippet": "© 2026 All Rights Reserved. Do not distribute or repurpose this work without written permission from the copyright holder(s). Printed from https://www.damninteresting.com/a-possible-future/ Alan Bellows here, founder of Damn Interesting. For the better part of twenty years , I kept this project afloat by working part-time engineering jobs to pay the bills, and spending the other halves of my work days researching, writing , editing, and podcasting . But in recent years, the landscape has shifted, and those part-time positions appear to have gone extinct. Employers want all or nothing⁠—at least those willing to respond to an application from a graybeard. So a few years ago, after months of searching, I finally had to just take a full-time position. I had always been a bit of a bottleneck around here, but now I’m a downright cork. Meanwhile, a tsunami of AI slop sloshes over most of the Internet. Clearly something must be done. So I am trying an experiment⁠—a one-off fundraiser. I know the timing isn’t ideal, but the goal is restrained. My hope today (and possibly again a year from today) is that we can raise the same as I used to make with my part-time salary, which will allow me to return much of my time and attention back to this project for the next 12 months. If you want to push back against the rising tide of AI, and see more long-form articles from Damn Interesting, here’s how to chip in: GoFundMe → This fundraiser is entirely separate from our Give a Damn donation system, which aims to cover Damn Interesting monthly expenses⁠—web hosting, subscriptions, usage licenses, link curation, and that sort of thing. An amazing array of donors support us through that system, and those lovely people are the reason we survive to this day. This new experiment is specifically so I myself can afford to spend more time writing and running the site. Thanks for reading, and for helping out if you can. Original 1948 patent for 'liquid filled dice agitator' Pictured at the top...",
           "category": "other",
           "language": "en"
@@ -2648,7 +2438,91 @@
       ]
     },
     {
-      "cluster_id": 64,
+      "cluster_id": 69,
+      "representative_title": "Train sim created by just one person is being called the best ever made",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（170 points, 63 评论）by oumua_don17"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://kotaku.com/a-train-sim-created-by-just-one-person-is-being-called-the-best-ever-made-2000699429"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "9bad1ac5886ab9ac",
+          "title": "Train sim created by just one person is being called the best ever made",
+          "link": "https://kotaku.com/a-train-sim-created-by-just-one-person-is-being-called-the-best-ever-made-2000699429",
+          "normalized_link": "https://kotaku.com/a-train-sim-created-by-just-one-person-is-being-called-the-best-ever-made-2000699429",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-05T08:40:27+00:00",
+          "summary": "HN 热门讨论（170 points, 63 评论）by oumua_don17",
+          "full_text_snippet": "I spent a rather embarrassing amount of time trying to match up Running Train ‘s hyper-realistic train lines and Japanese terrain with the real world. And in doing so, I paid the game the highest possible compliment. This extraordinarily realistic sim made by one-person development team Novatetsu Games is in fact set in a fictional region of Japan, but is created so lovingly that you’ll believe it’s real life. © Novatetsu Games / Kotaku I’m not exactly a train enthusiast, nor indeed particularly au fait with the range of train sim games previously available, but in Running Train I’ve found something absolutely captivating. And most bizarrely, I’ve found that quality not by actually playing it, but rather by letting it play itself. While the game encourages you to master the reasonably simple controls of its range of perfectly crafted engines, you can also just set it to play itself and then take over the free camera as it does. Doing so has brought me so much pleasure. Played properly, Running Train asks you to carefully control your speed, braking, and prompt, safe arrival at train stations, and rewards or penalizes you accordingly. By turning off in-game guides and even the UI, you can earn higher scores and more credit, contributing to your overall rating for each of the 42 different routes it currently features. These routes feature ten 12-minute routes on the fictional Fukugawa Line, and a further 32 of hugely varying length on the equally made up Sankai Main Line. They can be as short as six minutes, or as long as 44, each set at different times of day. And oh my goodness, it’s so pretty. Vast stretches of imagined Japanese towns and countryside have been created (40 kilometers of track, apparently), and it’s not just randomly placed assets. Jumping into that free camera, I couldn’t believe it when I noticed that even powerlines are logically placed, with wires beginning at substations, then stretching across pylon networks. Roads are filled with traffic, c...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 71,
+      "representative_title": "TLS certificates for internal services done right",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（119 points, 82 评论）by mrl5"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://tuxnet.dev/posts/tls-for-internal-services/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "0bbc0f75af8d1c18",
+          "title": "TLS certificates for internal services done right",
+          "link": "https://tuxnet.dev/posts/tls-for-internal-services/",
+          "normalized_link": "https://tuxnet.dev/posts/tls-for-internal-services",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-09T14:57:02+00:00",
+          "summary": "HN 热门讨论（119 points, 82 评论）by mrl5",
+          "full_text_snippet": "Title is a bit clickbait-y — YMMV, but let me explain why I think “this is the\nway”. Let’s start with a simple example — we have a server which hosts bunch\nof HTTP services. Some of those services are external, others internal. In\norder to reach the internal ones you need to be connected to the VPN. For the sake of simplicity let’s consider we have two choices: We use top-level domain restricted by ICANN for private\nuse — e.g. .internal . We use a public apex domain that we own — e.g. tuxnet.dev Grafana would be our example internal app. Let’s assume that it’s reachable on 10.0.1.10 internal IP address and our VPN has DNS resolver features. What’s wrong with .internal then? We could simply create a DNS record of type “A” that resolves to 10.0.1.10 internal IP address — e.g. grafana.tuxnet.internal . But then if we don’t\nwant it to be a plain text HTTP service we would need to create a self-signed\ncertificate. The good part is that there are plenty tutorials that show you how to do this\n(e.g. this\none ).\nThe ugly part is that suddenly every HTTP client should be configured to trust\nthis self-signed certificate. Alternatively we could just tell our users to\nignore the TLS certificate errors ¯\\_(ツ)_/¯ . How to do it “the right way” Meet the “split-horizon DNS” configuration. For public DNS resolvers our grafana.tuxnet.dev domain resolves to a public IP and for clients connected\nto the VPN this domain resolves to an internal IP. The good part is that since it resolves to a public IP we can use some public\nCA like Let’s Encrypt or ZeroSSL. The ugly part is that we still need some WAF\nrejecting traffic that does not originate from the VPN. Considering pros and cons of both solutions I think it’s much easier to set up\na WAF in one place (on our server) than to install self-signed certificate on\nevery machine that joins our internal network (… or advising our users to\nsuppress the TLS errors). ”Talk is cheap show me the code” We have theory now, time to get our hands dir...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 76,
       "representative_title": "Interview with Mitchell Hashimoto about Ghostty and Zig",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2662,7 +2536,7 @@
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（192 points, 79 评论）by veqq"
+          "HN 热门讨论（42 points, 5 评论）by veqq"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2682,7 +2556,7 @@
           "source_name": "Hacker News",
           "source_category": "community",
           "published_at": "2026-07-09T17:17:16+00:00",
-          "summary": "HN 热门讨论（192 points, 79 评论）by veqq",
+          "summary": "HN 热门讨论（42 points, 5 评论）by veqq",
           "full_text_snippet": "Interview With Mitchell Hashimoto Jul 2026 - Alex Alejandre Mitchell Hashimoto was behind Vagrant , Packer , Consul , Terraform , Vault , Nomad , Waypoint and now builds Ghostty and Vouch . In this interview, we talk about terminals, Zig and open source. You’ve been interviewed a lot . Why do people like to interview you? In interviews, everyone comes from a different angle. Many people want to know how the software engineering to business founder mindset transition went. Then others are interested in product stuff, the work I did at Hashicorp or Ghostty now. What’s different here is there’s no known agenda coming into it; neither of us have anything to sell. What do you find so fun about terminals? Like, why Ghostty? I spent ~15 years building CLI applications (not TUIs like we see nowadays). Through that process, I accidentally learned how to color things, move cursors etc. Leaving Hashicorp, I wanted to sharpen my technical skills (where they’d grown dull from neglect) and specifically work on: Pre-AI GPU programming, desktop/single node systems programming (spending so much time on the distributed side where you didn’t worry about cache locality or vector operations, since network costs dominated). I also really wanted to play with Zig. I wanted to satisfy those 3 things. After 15 years building CLIs, I didn’t understand how a terminal emulator worked. I knew the components of a terminal but really wanted to understand how it worked, which would also let me work on the GPU, desktop and in Zig. My goal was to run vim and the compiler in it, have it build itself, then throw it away. But as I learned more about the terminal ecosystem, I understood nothing fit the niche I wanted: fast, feature-rich and natively cross-platform. I shared it with a few friends in Discord, who asked if they could share it with others because they were actually using it every day. The Ghostty Discord was just my friends’ group chat which got repurposed. I didn’t want to publish becaus...",
           "category": "other",
           "language": "en"
@@ -2690,133 +2564,301 @@
       ]
     },
     {
-      "cluster_id": 70,
-      "representative_title": "Ben Bernanke Joins Anthropic Oversight Trust",
+      "cluster_id": 5,
+      "representative_title": "滴滴车载AED将纳入120调度，首期西安、深圳试点",
       "role": "quick",
       "role_emoji": "🟢",
-      "total_score": 7,
+      "total_score": 6,
       "scores": {
         "impact_scope": 1,
         "novelty": 1,
-        "explainability": 3,
-        "listener_relevance": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
         "source_richness": 1
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（58 points, 48 评论）by Jimmc414"
+          "7月9日，滴滴携手中国红十字基金会向陕西省红十字会交付第二批车载AED"
         ],
         "historical_background": "",
         "sources_ranked": [
           {
-            "name": "Hacker News",
-            "authority": 5,
-            "link": "https://www.anthropic.com/news/ben-bernanke"
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3888466005162501?f=rss"
           }
         ]
       },
       "items": [
         {
-          "id": "5a81a35f01891896",
-          "title": "Ben Bernanke Joins Anthropic Oversight Trust",
-          "link": "https://www.anthropic.com/news/ben-bernanke",
-          "normalized_link": "https://www.anthropic.com/news/ben-bernanke",
-          "source_name": "Hacker News",
-          "source_category": "community",
-          "published_at": "2026-07-10T02:39:07+00:00",
-          "summary": "HN 热门讨论（58 points, 48 评论）by Jimmc414",
-          "full_text_snippet": "Anthropic's Long-Term Benefit Trust (LTBT) has appointed Dr. Ben Bernanke, a Distinguished Fellow at the Brookings Institution and former Chair of the Federal Reserve, as its newest member. He joins an independent body that works to hold Anthropic to its mission: the responsible development of advanced AI for the long-term benefit of humanity. Bernanke led the Federal Reserve from 2006 to 2014, steering the central bank through the 2008 global financial crisis and the recovery that followed. Before entering government, he spent more than two decades as an academic economist, much of that time at Princeton, where he chaired the economics department and built a body of research on the Great Depression and the role banks play in financial crises. That work earned him the Nobel Prize in Economic Sciences in 2022. “The potential of artificial intelligence is enormous, and so is the range of outcomes. How that potential plays out will depend, in part, on the institutions we build around it,” said Dr. Bernanke. “Anthropic has created a unique governance structure to try to ensure that the long-run benefits of AI for humanity far outweigh the risks. I am honored to have this opportunity, and I will try to contribute in any way I can to this critical mission.” “AI may have the most significant economic effects of any technology in modern history, and Anthropic has a dual responsibility to understand those effects and to act on them,” said Daniela Amodei, Co-Founder and President of Anthropic. “Ben’s career has run from studying how economies react to disruptive moments to helping steer the world’s largest economy through one such time. His judgment will make us better at anticipating and responding to how advanced AI affects workforces and economies around the world.” Anthropic is a Public Benefit Corporation, meaning the company was created to balance commercial success with generating social and public good. The LTBT exists to help the company responsibly maintain that...",
+          "id": "96a2c32cb1cb17bf",
+          "title": "滴滴车载AED将纳入120调度，首期西安、深圳试点",
+          "link": "https://36kr.com/newsflashes/3888466005162501?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3888466005162501?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-09T13:52:10+00:00",
+          "summary": "7月9日，滴滴携手中国红十字基金会向陕西省红十字会交付第二批车载AED。此前，滴滴与腾讯企鹅急救开放平台达成合作，未来城市120可更快速调度附近的滴滴车载AED，为患者进行急救。其中西安、深圳为首批试点城市。据了解，滴滴将城市网约车的车载AED数据与腾讯企鹅急救开放平台打通，当城市120调度接到心脏骤停等AED和急救志愿者需求时，通过腾讯该平台可实时匹配事发地周边的滴滴车载AED，向司机推送救援信息，滴滴平台协助调度司机前往。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
           "category": "other",
-          "language": "en"
+          "language": "zh"
         }
       ]
     },
     {
-      "cluster_id": 72,
-      "representative_title": "Patterncollider: Generate and explore quasiperiodic tiling patterns",
+      "cluster_id": 6,
+      "representative_title": "ST银江：因涉嫌信息披露违法违规，公司及控股股东被证监会立案",
       "role": "quick",
       "role_emoji": "🟢",
-      "total_score": 7,
+      "total_score": 6,
       "scores": {
         "impact_scope": 1,
         "novelty": 1,
-        "explainability": 3,
-        "listener_relevance": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
         "source_richness": 1
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（37 points, 1 评论）by tobr"
+          "36氪获悉，ST银江公告，公司及控股股东银江科技集团有限公司于2026年7月9日收到中国证监会下发的《立案告知书》，因涉嫌信息披露违法违规，中国证监会决定对公司及控股股东立案"
         ],
         "historical_background": "",
         "sources_ranked": [
           {
-            "name": "Hacker News",
-            "authority": 5,
-            "link": "https://github.com/aatishb/patterncollider"
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3888389281790465?f=rss"
           }
         ]
       },
       "items": [
         {
-          "id": "0aef742250adb601",
-          "title": "Patterncollider: Generate and explore quasiperiodic tiling patterns",
-          "link": "https://github.com/aatishb/patterncollider",
-          "normalized_link": "https://github.com/aatishb/patterncollider",
-          "source_name": "Hacker News",
-          "source_category": "community",
-          "published_at": "2026-07-06T05:26:22+00:00",
-          "summary": "HN 热门讨论（37 points, 1 评论）by tobr",
-          "full_text_snippet": "https://aatishb.com/patterncollider/ Pattern Collider is a tool for generating and exploring quasiperiodic tiling patterns. Every pattern that you create has a custom URL that you can bookmark & share. Learn more about how it works by watching the Minute Physics video . Created by Aatish Bhatia in collaboration with Henry Reich . Special thanks to Arkarup Banerjee , Shefali Nayak , Vijay Ravikumar , and Connie Sun for their helpful feedback & suggestions. This project uses the following javascript libraries: All code in this repository with no prior license is published under the open-source MIT License . What are Quasiperiodic Patterns? Quasiperiodic patterns are patterns that don't repeat themselves when you slide in any direction, but where every motif (i.e. every cluster of tiles) occurs infinitely often throughout the pattern. The most famous example of a quasiperiodic tiling is the Penrose Tiling . Quasiperiodic patterns can also be found in medieval Islamic Art , and they occur in nature in the form of quasicrystals . Visually, these patterns contain many repeating motifs, and yet the entire pattern doesn't repeat in any direction. The trick is that they're constructed out of components that do repeat periodically, but whose periods never coincide with each other (because their ratio is an irrational number). Some \"Famous\" Tiling Patterns Here are a few previously named tiling patterns that you can recreate with Pattern Collider: Pattern Collider uses the multigrid method of creating quasiperiodic patterns discovered by the mathematician Nicolaas Govert de Bruijn . de Bruijn noticed that every collection of intersecting lines generates a tiling pattern. To see this, start with a bunch of lines and find the points where they intersect. At each intersection point, draw equilateral polygons whose sides are perpendicular to the lines. These are the tiles. Each tile arises from the intersection of two lines. The shape of the tile is determined by the intersecti...",
+          "id": "e558c34eb6a4ff21",
+          "title": "ST银江：因涉嫌信息披露违法违规，公司及控股股东被证监会立案",
+          "link": "https://36kr.com/newsflashes/3888389281790465?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3888389281790465?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-09T12:34:07+00:00",
+          "summary": "36氪获悉，ST银江公告，公司及控股股东银江科技集团有限公司于2026年7月9日收到中国证监会下发的《立案告知书》，因涉嫌信息披露违法违规，中国证监会决定对公司及控股股东立案。目前公司生产经营活动正常开展，该事项不会对公司生产经营产生重大影响。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
           "category": "other",
-          "language": "en"
+          "language": "zh"
         }
       ]
     },
     {
-      "cluster_id": 74,
-      "representative_title": "Cache-Conscious Data Layout in Rust: Field Zoning, False Sharing, 128-Byte Rule",
+      "cluster_id": 7,
+      "representative_title": "法国对英伟达反垄断调查接近尾声，最高或面临全球年度营收10%罚款",
       "role": "quick",
       "role_emoji": "🟢",
-      "total_score": 7,
+      "total_score": 6,
       "scores": {
         "impact_scope": 1,
         "novelty": 1,
-        "explainability": 3,
-        "listener_relevance": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
         "source_richness": 1
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（20 points, 13 评论）by eigenBasis"
+          "法国竞争管理局官员对外确认，针对AI芯片巨头英伟达的反垄断调查已临近收尾，监管机构大概率很快出具正式异议声明，指控企业存在多项限制市场竞争行为"
         ],
         "historical_background": "",
         "sources_ranked": [
           {
-            "name": "Hacker News",
-            "authority": 5,
-            "link": "https://debasishg.github.io/blog/part1-cache-conscious-data-layout-in-rust/"
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3888377221364232?f=rss"
           }
         ]
       },
       "items": [
         {
-          "id": "8f44fae583237058",
-          "title": "Cache-Conscious Data Layout in Rust: Field Zoning, False Sharing, 128-Byte Rule",
-          "link": "https://debasishg.github.io/blog/part1-cache-conscious-data-layout-in-rust/",
-          "normalized_link": "https://debasishg.github.io/blog/part1-cache-conscious-data-layout-in-rust",
-          "source_name": "Hacker News",
-          "source_category": "community",
-          "published_at": "2026-07-07T03:01:03+00:00",
-          "summary": "HN 热门讨论（20 points, 13 评论）by eigenBasis",
-          "full_text_snippet": "Cache-Conscious Data Layout: Field Zoning, False Sharing, and the 128-Byte Rule Part 1 of Low-Level Systems Design in Rust - a series on writing high-throughput, low-latency systems code, using a single-producer / single-consumer (SPSC) ring buffer as the running example. Part 0 - Architectural Decomposition made the highest-leverage decision (remove contention structurally, so every writer gets its own ring) and holds the full series index and guiding principles. This post starts the micro-level work: given one such SPSC ring, how should it be laid out in memory? The patterns aren't specific to ring buffers - they apply to any structure more than one core touches. The thing nobody tells you about multi-threaded structs When you write a single-threaded data structure, the only layout question that matters is \"does it fit in cache.\" When you write a multi-threaded one, a second, relevant and a bit subtle question appears: For each field, which core touches it, and how often? Getting this wrong will make you pay in a way that no profiler flags as a single hot line. Two cores writing to different fields that happen to share a 64-byte cache line will quietly serialize each other through the hardware coherence protocol - a pathology called false sharing . The code looks lock-free. The benchmark says otherwise. This post is about designing the layout deliberately. It comes in two parts: Field zoning - grouping fields by (write owner, frequency) so that one core's hot writes don't evict another core's hot working set. Alignment and padding - the mechanics that make zoning real: why #[repr(C)] is load-bearing, why the magic number is often 128 and not 64, and why adding prefetch hints can make things worse. The running example is a single-producer / single-consumer (SPSC) ring buffer.  One core (the producer) appends, another core (the consumer) drains. They coordinate through two monotonic cursors - tail (where the producer writes next) and head (where the consumer read...",
-          "category": "other",
-          "language": "en"
+          "id": "eb6bc81e6377847b",
+          "title": "法国对英伟达反垄断调查接近尾声，最高或面临全球年度营收10%罚款",
+          "link": "https://36kr.com/newsflashes/3888377221364232?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3888377221364232?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-09T12:21:51+00:00",
+          "summary": "法国竞争管理局官员对外确认，针对AI芯片巨头英伟达的反垄断调查已临近收尾，监管机构大概率很快出具正式异议声明，指控企业存在多项限制市场竞争行为。据报道，本次调查始于2023年，监管机构当年突击检查英伟达法国分部，核心围绕英伟达在全球GPU、AI云计算赛道的绝对主导地位展开核查。按照法国反垄断法规，一旦最终裁定违规，英伟达最高将面临全球年度营收10%的巨额罚款。（财联社）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "policy",
+          "language": "zh"
         }
       ]
     },
     {
-      "cluster_id": 27,
+      "cluster_id": 8,
+      "representative_title": "五粮液：2025年度拟每10股派25.8元",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "36氪获悉，五粮液公告，公司2025年度利润分配方案为：以总股本扣除回购账户股份后的3,879,072,246股为基数，向全体股东每10股派25"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3888372021754374?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "37c9f81aa8be6c1e",
+          "title": "五粮液：2025年度拟每10股派25.8元",
+          "link": "https://36kr.com/newsflashes/3888372021754374?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3888372021754374?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-09T12:16:33+00:00",
+          "summary": "36氪获悉，五粮液公告，公司2025年度利润分配方案为：以总股本扣除回购账户股份后的3,879,072,246股为基数，向全体股东每10股派25.796852元现金（含税），共计派发现金约100.07亿元。股权登记日为2026年7月15日，除权除息日为2026年7月16日。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 9,
+      "representative_title": "三峡旅游：拟4576.11万元向控股股东出售九凤谷公司100%股权",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "36氪获悉，三峡旅游公告，公司计划将持有的全资子公司湖北三峡九凤谷旅游开发有限公司（简称“九凤谷公司”）100%股权，以4576"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3888352182549001?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "0263916ba25ba052",
+          "title": "三峡旅游：拟4576.11万元向控股股东出售九凤谷公司100%股权",
+          "link": "https://36kr.com/newsflashes/3888352182549001?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3888352182549001?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-09T11:56:23+00:00",
+          "summary": "36氪获悉，三峡旅游公告，公司计划将持有的全资子公司湖北三峡九凤谷旅游开发有限公司（简称“九凤谷公司”）100%股权，以4576.11万元的价格出售给控股股东湖北三峡文化旅游集团有限公司。此次出售资产所得款项将主要用于补充公司流动资金。九凤谷公司主营业务为景区运营。近年来，九凤谷景区因区域市场竞争态势加剧，景区核心吸引物吸引力持续弱化，九凤谷公司经营业绩出现持续亏损，现金流承压明显。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 10,
+      "representative_title": "3天2板有研硅：晶隆半导体现有产能规模较小，尚未形成规模效益",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "36氪获悉，有研硅公告，公司以公开竞价摘牌方式参与收购安徽晶隆半导体科技有限公司60%股权，截至本公告披露日，公司已与滁州市南谯区国有资产运营有限公司签署《产权交易合同》并完成了相关款项的支付"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3888328136047109?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "cb5817329cac174d",
+          "title": "3天2板有研硅：晶隆半导体现有产能规模较小，尚未形成规模效益",
+          "link": "https://36kr.com/newsflashes/3888328136047109?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3888328136047109?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-09T11:31:55+00:00",
+          "summary": "36氪获悉，有研硅公告，公司以公开竞价摘牌方式参与收购安徽晶隆半导体科技有限公司60%股权，截至本公告披露日，公司已与滁州市南谯区国有资产运营有限公司签署《产权交易合同》并完成了相关款项的支付。晶隆半导体现有产能规模较小，尚未形成规模效益，后续产能扩充及经济效益存在不确定性；叠加行业周期波动、市场环境变化及运营管理水平等因素的影响，可能存在营业收入、盈利水平不及预期的风险。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 11,
+      "representative_title": "美团联合医生学者发布“司南口腔榜”",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "7月9日，美团2026司南口腔榜在上海正式发布，全国33个城市的576家口腔机构、367位口腔医生入选，覆盖儿童早矫、正畸、种植牙等10大口腔品类"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3888311962024710?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "ed26bb6a1c0e3d0a",
+          "title": "美团联合医生学者发布“司南口腔榜”",
+          "link": "https://36kr.com/newsflashes/3888311962024710?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3888311962024710?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-09T11:15:28+00:00",
+          "summary": "7月9日，美团2026司南口腔榜在上海正式发布，全国33个城市的576家口腔机构、367位口腔医生入选，覆盖儿童早矫、正畸、种植牙等10大口腔品类。据了解，这是国内首个面向家庭口腔健康领域推出的专业机构及医师榜单。据了解，此榜单由9位学科教授领衔，联合40余位公立三甲专家独立交叉评审，同时综合平台超5000万口腔消费用户的真实交易数据和328万条真实评价数据，最终评选出三星机构21家、二星机构90家、一星机构465家。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 34,
       "representative_title": "Grounding Spatial Relations in a Compact World Model: Instruction Leakage and a Goal-Free Dynamics Fix",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2830,7 +2872,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.06925v1 Announce Type: new Abstract: Compact world models that condition on a language goal promise to ground relations such as ``put the red block left of the blue block'' using a sparse set of explicit \\emph{reference anchors}"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2849,7 +2891,7 @@
           "normalized_link": "https://arxiv.org/abs/2607.06925",
           "source_name": "arXiv cs.AI",
           "source_category": "research",
-          "published_at": "2026-07-10T04:00:00+00:00",
+          "published_at": "2026-07-09T04:00:00+00:00",
           "summary": "arXiv:2607.06925v1 Announce Type: new Abstract: Compact world models that condition on a language goal promise to ground relations such as ``put the red block left of the blue block'' using a sparse set of explicit \\emph{reference anchors}. We ask when such references actually ground a relation, and identify a trap: a goal-conditioned predictor reaches a striking $0.90$ relation-readout accuracy, yet this is \\emph{instruction transcription}, not perception. Withholding the goal collapses it t...",
           "full_text_snippet": "BibTeX formatted citation ×",
           "category": "model",
@@ -2858,7 +2900,7 @@
       ]
     },
     {
-      "cluster_id": 28,
+      "cluster_id": 35,
       "representative_title": "Large Behavior Model: A Promptable Digital Twin of the Retail Customer",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2872,7 +2914,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.06993v1 Announce Type: new Abstract: Customer behavior modeling underpins recommendation, marketing, and decision support, yet existing approaches either optimize predictive accuracy without explaining decisions or simulate users without grounding them in real behavioral data"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2891,7 +2933,7 @@
           "normalized_link": "https://arxiv.org/abs/2607.06993",
           "source_name": "arXiv cs.AI",
           "source_category": "research",
-          "published_at": "2026-07-10T04:00:00+00:00",
+          "published_at": "2026-07-09T04:00:00+00:00",
           "summary": "arXiv:2607.06993v1 Announce Type: new Abstract: Customer behavior modeling underpins recommendation, marketing, and decision support, yet existing approaches either optimize predictive accuracy without explaining decisions or simulate users without grounding them in real behavioral data. We present the Large Behavioral Model (LBM) that learns customer decision making directly from large-scale retail transactions through a unified Person-Environment formulation. Customer state is represented b...",
           "full_text_snippet": "BibTeX formatted citation ×",
           "category": "model",
@@ -2900,7 +2942,7 @@
       ]
     },
     {
-      "cluster_id": 32,
+      "cluster_id": 39,
       "representative_title": "Reasoning Consistency Scanning: A Framework for Auditing Chain-of-Thought Validity in AI Safety Evaluations",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2914,7 +2956,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.07229v1 Announce Type: new Abstract: Prior work has shown that chain-of-thought (CoT) reasoning is often unfaithful: a model's stated reasoning does not reliably reflect the process that produced its output"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2942,7 +2984,7 @@
       ]
     },
     {
-      "cluster_id": 33,
+      "cluster_id": 40,
       "representative_title": "MIRA-Math: A Benchmark for Minimal Information Requesting and Mathematical Reasoning",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2956,7 +2998,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.07391v1 Announce Type: new Abstract: Mathematical reasoning benchmarks typically provide all facts needed to solve each problem, while interactive benchmarks often mix reasoning with tools, retrieval, and long-horizon dialogue"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -2984,7 +3026,7 @@
       ]
     },
     {
-      "cluster_id": 37,
+      "cluster_id": 44,
       "representative_title": "Search, Fail, Recover: A Training Framework for Correction-Aware Reasoning",
       "role": "quick",
       "role_emoji": "🟢",
@@ -2998,7 +3040,7 @@
       },
       "context": {
         "factual_summary": [
-          "arXiv:2607.07492v1 Announce Type: new Abstract: Many reasoning tasks are not well described by a single left-to-right chain: a solver may need to pursue a plausible branch, observe delayed failure, and return to the latest prefix that can still be completed"
+          "arXiv:2607"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -3026,7 +3068,7 @@
       ]
     },
     {
-      "cluster_id": 58,
+      "cluster_id": 64,
       "representative_title": "Show HN: 18 Words",
       "role": "quick",
       "role_emoji": "🟢",
@@ -3040,7 +3082,7 @@
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（920 points, 299 评论）by pompomsheep"
+          "HN 热门讨论（760 points, 273 评论）by pompomsheep"
         ],
         "historical_background": "",
         "sources_ranked": [
@@ -3060,7 +3102,7 @@
           "source_name": "Hacker News",
           "source_category": "community",
           "published_at": "2026-07-09T12:48:52+00:00",
-          "summary": "HN 热门讨论（920 points, 299 评论）by pompomsheep",
+          "summary": "HN 热门讨论（760 points, 273 评论）by pompomsheep",
           "full_text_snippet": "⏳ 18 Words Can you survive the 18 words challenge? Play now Reveal letter ( 3 ) Use a hint Share score Challenge friend Practice again Relax again Play Archive Thanks for playing! You can send me feedback or try my other game Zanagrams .",
           "category": "other",
           "language": "zh"
@@ -3068,8 +3110,8 @@
       ]
     },
     {
-      "cluster_id": 60,
-      "representative_title": "Hy3",
+      "cluster_id": 73,
+      "representative_title": "Opinionated and easy Pi.dev configuration",
       "role": "quick",
       "role_emoji": "🟢",
       "total_score": 6,
@@ -3082,36 +3124,78 @@
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（434 points, 89 评论）by andai"
+          "HN 热门讨论（91 points, 57 评论）by lwhsiao"
         ],
         "historical_background": "",
         "sources_ranked": [
           {
             "name": "Hacker News",
             "authority": 5,
-            "link": "https://hy.tencent.com/research/hy3"
+            "link": "https://lazypi.org/"
           }
         ]
       },
       "items": [
         {
-          "id": "8e710880e81e3882",
-          "title": "Hy3",
-          "link": "https://hy.tencent.com/research/hy3",
-          "normalized_link": "https://hy.tencent.com/research/hy3",
+          "id": "6828b4e694f5a491",
+          "title": "Opinionated and easy Pi.dev configuration",
+          "link": "https://lazypi.org/",
+          "normalized_link": "https://lazypi.org",
           "source_name": "Hacker News",
           "source_category": "community",
-          "published_at": "2026-07-09T15:27:48+00:00",
-          "summary": "HN 热门讨论（434 points, 89 评论）by andai",
-          "full_text_snippet": "HN 热门讨论（434 points, 89 评论）by andai",
+          "published_at": "2026-07-09T15:19:33+00:00",
+          "summary": "HN 热门讨论（91 points, 57 评论）by lwhsiao",
+          "full_text_snippet": "❯ npx @robzolkos/lazypi ◆ Install everything or pick packages? ● Install all (recommended) ✔ pi-subagents installed ✔ pi-memory-md installed ✔ pi-mcp-adapter installed ✔ 67 themes installed ✔ 60+ skills ready ◆ Done. Run pi to get started.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 77,
+      "representative_title": "I Changed My Name",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（27 points, 28 评论）by surprisetalk"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://robida.net/entries/2026/07/01/i-changed-my-name"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "4acad73c7d0b4e2b",
+          "title": "I Changed My Name",
+          "link": "https://robida.net/entries/2026/07/01/i-changed-my-name",
+          "normalized_link": "https://robida.net/entries/2026/07/01/i-changed-my-name",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-06T14:15:19+00:00",
+          "summary": "HN 热门讨论（27 points, 28 评论）by surprisetalk",
+          "full_text_snippet": "HN 热门讨论（27 points, 28 评论）by surprisetalk",
           "category": "other",
           "language": "zh"
         }
       ]
     },
     {
-      "cluster_id": 71,
-      "representative_title": "Triple Dragon Fractal (2020)",
+      "cluster_id": 72,
+      "representative_title": "Girls just wanna have fast MPMC queues with bounded waiting",
       "role": "quick",
       "role_emoji": "🟢",
       "total_score": 5,
@@ -3124,28 +3208,70 @@
       },
       "context": {
         "factual_summary": [
-          "HN 热门讨论（38 points, 8 评论）by nhatcher"
+          "HN 热门讨论（112 points, 21 评论）by EvgeniyZh"
         ],
         "historical_background": "",
         "sources_ranked": [
           {
             "name": "Hacker News",
             "authority": 5,
-            "link": "https://paulbourke.net/fractals/tripledragon/"
+            "link": "https://nahla.dev/blog/waitfree_queue/"
           }
         ]
       },
       "items": [
         {
-          "id": "7cb05579e296c66f",
-          "title": "Triple Dragon Fractal (2020)",
-          "link": "https://paulbourke.net/fractals/tripledragon/",
-          "normalized_link": "https://paulbourke.net/fractals/tripledragon",
+          "id": "652348e49d0f25a8",
+          "title": "Girls just wanna have fast MPMC queues with bounded waiting",
+          "link": "https://nahla.dev/blog/waitfree_queue/",
+          "normalized_link": "https://nahla.dev/blog/waitfree_queue",
           "source_name": "Hacker News",
           "source_category": "community",
-          "published_at": "2026-07-06T13:36:58+00:00",
-          "summary": "HN 热门讨论（38 points, 8 评论）by nhatcher",
-          "full_text_snippet": "Triple Dragon Fractal Created by Paul Bourke December 2020 This image is a visualisation of how the following series behaves for initial\nvalues z 0 at each point on rectangular region of the real-imaginary plane. The colour represents how fast the series converges to a fixed point, or\ndiverges to infinity (which it doesn't actually to for points in the bounded\npart of the complex plane in the figures here).",
+          "published_at": "2026-07-06T19:46:30+00:00",
+          "summary": "HN 热门讨论（112 points, 21 评论）by EvgeniyZh",
+          "full_text_snippet": "HN 热门讨论（112 points, 21 评论）by EvgeniyZh",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 74,
+      "representative_title": "SimPolitics: America’s quest to solve politics with computers",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（64 points, 8 评论）by mckelveyf"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://mitpress.mit.edu/9780262053198/simpolitics/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "6e96b17b40ab07e9",
+          "title": "SimPolitics: America’s quest to solve politics with computers",
+          "link": "https://mitpress.mit.edu/9780262053198/simpolitics/",
+          "normalized_link": "https://mitpress.mit.edu/9780262053198/simpolitics",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-09T14:20:14+00:00",
+          "summary": "HN 热门讨论（64 points, 8 评论）by mckelveyf",
+          "full_text_snippet": "HN 热门讨论（64 points, 8 评论）by mckelveyf",
           "category": "other",
           "language": "en"
         }
@@ -3153,10 +3279,10 @@
     }
   ],
   "metadata": {
-    "total_raw": 75,
-    "total_deduped": 75,
-    "total_clusters": 75,
-    "generated_at": "2026-07-10T06:27:39.451778+00:00",
+    "total_raw": 79,
+    "total_deduped": 78,
+    "total_clusters": 78,
+    "generated_at": "2026-07-09T22:56:34.498073+00:00",
     "dedup_details": [
       {
         "title": "Core dump epidemiology: fixing an 18-year-old bug",
@@ -3740,33 +3866,25 @@
         "detail": "URL matches a recently broadcasted article."
       },
       {
-        "title": "行业首个具身原生世界动作模型来了！蚂蚁灵波发布LingBot-VA 2.0",
-        "link": "https://www.qbitai.com/2026/07/447597.html",
-        "source": "量子位",
-        "reason": "cross_episode_semantic",
-        "similarity": 0.3929,
-        "threshold": 0.2,
-        "matched_story_title": "机器人视觉迎来新突破！蚂蚁灵波空间感知模型LingBot-Depth 2.0正式发布",
-        "matched_episode_id": "2026-07-08",
-        "detail": "TF-IDF similarity (0.39) >= threshold (0.20) with historical story '机器人视觉迎来新突破！蚂蚁灵波空间感知模型LingBot-Depth 2.0正式发布' from 2026-07-08."
+        "title": "Show HN: I rewrote my 2012 self-signed cert generator in Go – cert-depot.com",
+        "link": "https://news.ycombinator.com/item?id=47613622",
+        "source": "Hacker News",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
       },
       {
-        "title": "Zero-Shot提升31%！原力灵机DM0.5登场，15万小时数据喂出",
-        "link": "https://www.qbitai.com/2026/07/447508.html",
-        "source": "量子位",
-        "reason": "cross_episode_semantic",
-        "similarity": 0.2017,
-        "threshold": 0.2,
-        "matched_story_title": "全球首个人形机器人通用小脑来了！全球最大规模2万小时人类动作数据，实现零样本泛化",
-        "matched_episode_id": "2026-06-20",
-        "detail": "TF-IDF similarity (0.20) >= threshold (0.20) with historical story '全球首个人形机器人通用小脑来了！全球最大规模2万小时人类动作数据，实现零样本泛化' from 2026-06-20."
+        "title": "Making your JITted Code known: Let me count the ways",
+        "link": "https://wakelift.de/2026/03/09/making-your-jitted-code-known-let-me-count-the-ways/",
+        "source": "Hacker News",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
       },
       {
         "title": "刚刚，全球首个具身专属的MoE视频模型，开源了！",
         "link": "https://www.qbitai.com/2026/07/446568.html",
         "source": "量子位",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2416,
+        "similarity": 0.243,
         "threshold": 0.2,
         "matched_story_title": "阿里发布视频生成模型HappyHorse 1.1：五大维度全面升级",
         "matched_episode_id": "2026-06-23",
@@ -3777,7 +3895,7 @@
         "link": "https://www.qbitai.com/2026/07/436498.html",
         "source": "量子位",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2742,
+        "similarity": 0.269,
         "threshold": 0.2,
         "matched_story_title": "WAIC UP!｜AI圈都在聊参数，我们偏不",
         "matched_episode_id": "2026-06-26",
@@ -3788,29 +3906,183 @@
         "link": "https://www.qbitai.com/2026/07/446548.html",
         "source": "量子位",
         "reason": "cross_episode_semantic",
-        "similarity": 0.3891,
+        "similarity": 0.3894,
         "threshold": 0.2,
         "matched_story_title": "机器人视觉迎来新突破！蚂蚁灵波空间感知模型LingBot-Depth 2.0正式发布",
         "matched_episode_id": "2026-07-08",
         "detail": "TF-IDF similarity (0.39) >= threshold (0.20) with historical story '机器人视觉迎来新突破！蚂蚁灵波空间感知模型LingBot-Depth 2.0正式发布' from 2026-07-08."
       },
       {
-        "title": "Vibe Coding 时代，为什么降本不一定增效？",
-        "link": "https://sspai.com/post/111975",
-        "source": "少数派",
+        "title": "蚂蚁灵波开源LingBot-Video，全球首个面向具身的视频基模来了！",
+        "link": "https://www.qbitai.com/2026/07/446458.html",
+        "source": "量子位",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2146,
+        "similarity": 0.3512,
         "threshold": 0.2,
-        "matched_story_title": "Vibe-coding platform Base44 launches own model as AI startups seek defensibility",
-        "matched_episode_id": "2026-07-01",
-        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Vibe-coding platform Base44 launches own model as AI startups seek defensibility' from 2026-07-01."
+        "matched_story_title": "机器人视觉迎来新突破！蚂蚁灵波空间感知模型LingBot-Depth 2.0正式发布",
+        "matched_episode_id": "2026-07-08",
+        "detail": "TF-IDF similarity (0.35) >= threshold (0.20) with historical story '机器人视觉迎来新突破！蚂蚁灵波空间感知模型LingBot-Depth 2.0正式发布' from 2026-07-08."
+      },
+      {
+        "title": "从餐饮后厨到物理世界基础模型：量化派的物理AI，走的是卖能力的路",
+        "link": "https://www.qbitai.com/2026/07/446435.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2055,
+        "threshold": 0.2,
+        "matched_story_title": "世界模型混战，Momenta率先冲刺IPO",
+        "matched_episode_id": "2026-06-26",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story '世界模型混战，Momenta率先冲刺IPO' from 2026-06-26."
+      },
+      {
+        "title": "上海燧原科技股份有限公司科创板IPO注册生效",
+        "link": "https://36kr.com/newsflashes/3888407422089736?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2556,
+        "threshold": 0.2,
+        "matched_story_title": "信诺维科创板IPO获上市委会议通过",
+        "matched_episode_id": "2026-06-27",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story '信诺维科创板IPO获上市委会议通过' from 2026-06-27."
+      },
+      {
+        "title": "热门中概股美股盘前多数下跌，B站跌超2%",
+        "link": "https://36kr.com/newsflashes/3888407213882114?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.6135,
+        "threshold": 0.2,
+        "matched_story_title": "热门中概股美股盘前跌多涨少，蔚来跌超2%",
+        "matched_episode_id": "2026-06-25",
+        "detail": "TF-IDF similarity (0.61) >= threshold (0.20) with historical story '热门中概股美股盘前跌多涨少，蔚来跌超2%' from 2026-06-25."
+      },
+      {
+        "title": "美股大型科技股盘前跌多涨少，Meta跌超3%",
+        "link": "https://36kr.com/newsflashes/3888405984918025?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.5485,
+        "threshold": 0.2,
+        "matched_story_title": "美股大型科技股盘前涨跌不一，SpaceX跌近2%",
+        "matched_episode_id": "2026-06-25",
+        "detail": "TF-IDF similarity (0.55) >= threshold (0.20) with historical story '美股大型科技股盘前涨跌不一，SpaceX跌近2%' from 2026-06-25."
+      },
+      {
+        "title": "美光科技：计划在2035年前将对美国本土的投资总额提升至超过2500亿美元",
+        "link": "https://36kr.com/newsflashes/3888404789443331?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2048,
+        "threshold": 0.2,
+        "matched_story_title": "美国5月贸易逆差扩大至776亿美元",
+        "matched_episode_id": "2026-07-08",
+        "detail": "TF-IDF similarity (0.20) >= threshold (0.20) with historical story '美国5月贸易逆差扩大至776亿美元' from 2026-07-08."
+      },
+      {
+        "title": "立讯精密：H股于7月9日在香港联交所主板挂牌上市",
+        "link": "https://36kr.com/newsflashes/3888404506868488?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.242,
+        "threshold": 0.2,
+        "matched_story_title": "圣邦股份：确定H股发行价格为每股85.20港元",
+        "matched_episode_id": "2026-06-25",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story '圣邦股份：确定H股发行价格为每股85.20港元' from 2026-06-25."
+      },
+      {
+        "title": "大唐发电：拟募资不超过80亿元用于多个电厂扩建项目",
+        "link": "https://36kr.com/newsflashes/3888365419444739?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2971,
+        "threshold": 0.2,
+        "matched_story_title": "协创数据：拟定增募资不超80亿元，用于智算中心及数据存储项目等",
+        "matched_episode_id": "2026-06-27",
+        "detail": "TF-IDF similarity (0.30) >= threshold (0.20) with historical story '协创数据：拟定增募资不超80亿元，用于智算中心及数据存储项目等' from 2026-06-27."
+      },
+      {
+        "title": "华神科技：向特定对象发行股票申请获深交所审核通过",
+        "link": "https://36kr.com/newsflashes/3888348553313032?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.8649,
+        "threshold": 0.2,
+        "matched_story_title": "中材科技：向特定对象发行股票申请获深交所审核通过",
+        "matched_episode_id": "2026-07-07",
+        "detail": "TF-IDF similarity (0.86) >= threshold (0.20) with historical story '中材科技：向特定对象发行股票申请获深交所审核通过' from 2026-07-07."
+      },
+      {
+        "title": "报道称Meta计划于9月开始生产AI芯片，并计划将计算能力翻倍",
+        "link": "https://36kr.com/newsflashes/3888342478748160?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2376,
+        "threshold": 0.2,
+        "matched_story_title": "美光科技与福特汽车签署战略协议，协议将加强内存和存储解决方案的供应",
+        "matched_episode_id": "2026-07-07",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story '美光科技与福特汽车签署战略协议，协议将加强内存和存储解决方案的供应' from 2026-07-07."
+      },
+      {
+        "title": "伟隆股份：实控人拟减持公司不超1.49%股份",
+        "link": "https://36kr.com/newsflashes/3888323223960322?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3469,
+        "threshold": 0.2,
+        "matched_story_title": "德尔玛：持股5%以上股东磐茂投资拟减持不超5%股份",
+        "matched_episode_id": "2026-06-25",
+        "detail": "TF-IDF similarity (0.35) >= threshold (0.20) with historical story '德尔玛：持股5%以上股东磐茂投资拟减持不超5%股份' from 2026-06-25."
+      },
+      {
+        "title": "今飞凯达：拟募资不超2.95亿元用于年产60万件锻造铝合金汽车轮毂生产线智能制造项目等",
+        "link": "https://36kr.com/newsflashes/3888322362341891?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2185,
+        "threshold": 0.2,
+        "matched_story_title": "协创数据：拟定增募资不超80亿元，用于智算中心及数据存储项目等",
+        "matched_episode_id": "2026-06-27",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story '协创数据：拟定增募资不超80亿元，用于智算中心及数据存储项目等' from 2026-06-27."
+      },
+      {
+        "title": "鼎龙股份：预计上半年净利润同比增长64%-74%",
+        "link": "https://36kr.com/newsflashes/3888309184723721?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3371,
+        "threshold": 0.2,
+        "matched_story_title": "赛意信息：上半年净利润同比预增188.36%—257.01%",
+        "matched_episode_id": "2026-07-07",
+        "detail": "TF-IDF similarity (0.34) >= threshold (0.20) with historical story '赛意信息：上半年净利润同比预增188.36%—257.01%' from 2026-07-07."
+      },
+      {
+        "title": "燧原科技科创板IPO申请获证监会同意注册批复",
+        "link": "https://36kr.com/newsflashes/3888306591693314?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.212,
+        "threshold": 0.2,
+        "matched_story_title": "中材科技：向特定对象发行股票申请获深交所审核通过",
+        "matched_episode_id": "2026-07-07",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story '中材科技：向特定对象发行股票申请获深交所审核通过' from 2026-07-07."
+      },
+      {
+        "title": "紫金矿业：预计上半年净利润同比增长68%",
+        "link": "https://36kr.com/newsflashes/3888303888873988?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3628,
+        "threshold": 0.2,
+        "matched_story_title": "藏格矿业：上半年净利润同比预增97.2%—108.31%",
+        "matched_episode_id": "2026-07-07",
+        "detail": "TF-IDF similarity (0.36) >= threshold (0.20) with historical story '藏格矿业：上半年净利润同比预增97.2%—108.31%' from 2026-07-07."
       },
       {
         "title": "TDS REVIEW | 小米耳夹式耳机体验",
         "link": "https://sspai.com/post/112011",
         "source": "少数派",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2139,
+        "similarity": 0.2136,
         "threshold": 0.2,
         "matched_story_title": "TDS REVIEW | OPPO Enco Clip2 耳夹式开放真无线耳机体验",
         "matched_episode_id": "2026-06-25",
@@ -3821,7 +4093,7 @@
         "link": "https://sspai.com/post/112083",
         "source": "少数派",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2438,
+        "similarity": 0.2443,
         "threshold": 0.2,
         "matched_story_title": "You can now customize Siri’s pace and expressivity in the latest iOS 27 beta",
         "matched_episode_id": "2026-07-07",
@@ -3832,18 +4104,29 @@
         "link": "https://sspai.com/prime/story/home-made-beverages-2",
         "source": "少数派",
         "reason": "cross_episode_semantic",
-        "similarity": 0.6309,
+        "similarity": 0.6298,
         "threshold": 0.2,
         "matched_story_title": "家庭饮品 DIY 指南（二）：常用液体物料推荐",
         "matched_episode_id": "2026-07-08",
         "detail": "TF-IDF similarity (0.63) >= threshold (0.20) with historical story '家庭饮品 DIY 指南（二）：常用液体物料推荐' from 2026-07-08."
       },
       {
+        "title": "社区速递 148 | 派友的全屋智能实操、水月雨布丁耳机与MUJI可调节毛巾枕",
+        "link": "https://sspai.com/post/112017",
+        "source": "少数派",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.7217,
+        "threshold": 0.2,
+        "matched_story_title": "社区速递 146 | 晒晒派友的夏季出门包、百元薄膜键盘与高性价比净化器",
+        "matched_episode_id": "2026-06-25",
+        "detail": "TF-IDF similarity (0.72) >= threshold (0.20) with historical story '社区速递 146 | 晒晒派友的夏季出门包、百元薄膜键盘与高性价比净化器' from 2026-06-25."
+      },
+      {
         "title": "GPT-5.6 is now the preferred model in Microsoft 365 Copilot",
         "link": "https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot",
         "source": "OpenAI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2813,
+        "similarity": 0.2788,
         "threshold": 0.2,
         "matched_story_title": "Improving health intelligence in ChatGPT",
         "matched_episode_id": "2026-06-25",
@@ -3854,7 +4137,7 @@
         "link": "https://openai.com/index/k-12-educators-practical-skills",
         "source": "OpenAI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.3591,
+        "similarity": 0.3599,
         "threshold": 0.2,
         "matched_story_title": "New OpenAI Academy courses for the next era of work",
         "matched_episode_id": "2026-06-25",
@@ -3865,7 +4148,7 @@
         "link": "https://openai.com/index/introducing-gpt-live",
         "source": "OpenAI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2548,
+        "similarity": 0.2473,
         "threshold": 0.2,
         "matched_story_title": "Hugging Face and Cerebras bring Gemma 4 to real-time voice AI",
         "matched_episode_id": "2026-07-08",
@@ -3876,7 +4159,7 @@
         "link": "https://openai.com/index/how-chatgpt-adoption-has-expanded",
         "source": "OpenAI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2101,
+        "similarity": 0.2106,
         "threshold": 0.2,
         "matched_story_title": "New usage analytics and updated spend controls for enterprises",
         "matched_episode_id": "2026-06-25",
@@ -3887,7 +4170,7 @@
         "link": "https://openai.com/index/introducing-genebench-pro",
         "source": "OpenAI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2135,
+        "similarity": 0.2131,
         "threshold": 0.2,
         "matched_story_title": "Introducing LifeSciBench",
         "matched_episode_id": "2026-06-25",
@@ -3898,18 +4181,29 @@
         "link": "https://openai.com/index/hp-frontier-partnership",
         "source": "OpenAI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.207,
+        "similarity": 0.2078,
         "threshold": 0.2,
         "matched_story_title": "Strengthening Singapore’s AI Future: A New National Partnership",
         "matched_episode_id": "2026-06-25",
         "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Strengthening Singapore’s AI Future: A New National Partnership' from 2026-06-25."
       },
       {
+        "title": "Previewing GPT-5.6 Sol: a next-generation model",
+        "link": "https://openai.com/index/previewing-gpt-5-6-sol",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2004,
+        "threshold": 0.2,
+        "matched_story_title": "Improving health intelligence in ChatGPT",
+        "matched_episode_id": "2026-06-25",
+        "detail": "TF-IDF similarity (0.20) >= threshold (0.20) with historical story 'Improving health intelligence in ChatGPT' from 2026-06-25."
+      },
+      {
         "title": "How agents are transforming work",
         "link": "https://openai.com/index/how-agents-are-transforming-work",
         "source": "OpenAI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2081,
+        "similarity": 0.2069,
         "threshold": 0.2,
         "matched_story_title": "ORAgentBench: Can LLM Agents Solve Challenging Operations Research Tasks End to End?",
         "matched_episode_id": "2026-06-20",
@@ -3920,7 +4214,7 @@
         "link": "https://openai.com/index/daybreak-securing-the-world",
         "source": "OpenAI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.3842,
+        "similarity": 0.3833,
         "threshold": 0.2,
         "matched_story_title": "Patch the Planet: a Daybreak initiative to support open source maintainers",
         "matched_episode_id": "2026-06-25",
@@ -3931,7 +4225,7 @@
         "link": "https://deepmind.google/blog/google-deepmind-and-a24-announce-first-of-its-kind-research-partnership/",
         "source": "DeepMind Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2464,
+        "similarity": 0.246,
         "threshold": 0.2,
         "matched_story_title": "Strengthening Singapore’s AI Future: A New National Partnership",
         "matched_episode_id": "2026-06-25",
@@ -3942,7 +4236,7 @@
         "link": "https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash/",
         "source": "DeepMind Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.4087,
+        "similarity": 0.4086,
         "threshold": 0.2,
         "matched_story_title": "Nano Banana 2 Lite",
         "matched_episode_id": "2026-07-01",
@@ -3953,18 +4247,18 @@
         "link": "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash/",
         "source": "DeepMind Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.388,
+        "similarity": 0.3846,
         "threshold": 0.2,
         "matched_story_title": "Gemini 3.5: frontier intelligence with action",
         "matched_episode_id": "2026-06-21",
-        "detail": "TF-IDF similarity (0.39) >= threshold (0.20) with historical story 'Gemini 3.5: frontier intelligence with action' from 2026-06-21."
+        "detail": "TF-IDF similarity (0.38) >= threshold (0.20) with historical story 'Gemini 3.5: frontier intelligence with action' from 2026-06-21."
       },
       {
         "title": "DiffusionGemma: 4x faster text generation",
         "link": "https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/",
         "source": "DeepMind Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2214,
+        "similarity": 0.2217,
         "threshold": 0.2,
         "matched_story_title": "Does Text Actually Help? Uncovering and Resolving Text Collapse in Multimodal Time Series Forecasting",
         "matched_episode_id": "2026-06-20",
@@ -3975,7 +4269,7 @@
         "link": "https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/",
         "source": "DeepMind Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2594,
+        "similarity": 0.2586,
         "threshold": 0.2,
         "matched_story_title": "Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution",
         "matched_episode_id": "2026-06-25",
@@ -3986,7 +4280,7 @@
         "link": "https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/",
         "source": "DeepMind Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2602,
+        "similarity": 0.2574,
         "threshold": 0.2,
         "matched_story_title": "Gemini 3.5: frontier intelligence with action",
         "matched_episode_id": "2026-06-21",
@@ -3997,7 +4291,7 @@
         "link": "https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/",
         "source": "DeepMind Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2365,
+        "similarity": 0.2377,
         "threshold": 0.2,
         "matched_story_title": "Hugging Face and Cerebras bring Gemma 4 to real-time voice AI",
         "matched_episode_id": "2026-07-08",
@@ -4008,7 +4302,7 @@
         "link": "https://deepmind.google/blog/introducing-gemini-omni/",
         "source": "DeepMind Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.4898,
+        "similarity": 0.4904,
         "threshold": 0.2,
         "matched_story_title": "9 demos of Gemini Omni and Gemini 3.5 in action",
         "matched_episode_id": "2026-06-21",
@@ -4019,7 +4313,7 @@
         "link": "https://deepmind.google/blog/gemini-3-5-frontier-intelligence-with-action/",
         "source": "DeepMind Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.7182,
+        "similarity": 0.718,
         "threshold": 0.2,
         "matched_story_title": "Gemini 3.5: frontier intelligence with action",
         "matched_episode_id": "2026-06-21",
@@ -4030,7 +4324,7 @@
         "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026/",
         "source": "Google AI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2874,
+        "similarity": 0.2871,
         "threshold": 0.2,
         "matched_story_title": "The latest AI news we announced in May 2026",
         "matched_episode_id": "2026-06-21",
@@ -4041,7 +4335,7 @@
         "link": "https://blog.google/products-and-platforms/products/education/nyc-ai-summit/",
         "source": "Google AI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2535,
+        "similarity": 0.2522,
         "threshold": 0.2,
         "matched_story_title": "Partnering with industry leaders to accelerate AI transformation",
         "matched_episode_id": "2026-06-25",
@@ -4052,7 +4346,7 @@
         "link": "https://blog.google/innovation-and-ai/technology/ai/full-stack-ai-explainer/",
         "source": "Google AI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2565,
+        "similarity": 0.2578,
         "threshold": 0.2,
         "matched_story_title": "vivekkr620/StackMind",
         "matched_episode_id": "2026-06-25",
@@ -4063,7 +4357,7 @@
         "link": "https://blog.google/products-and-platforms/products/search/google-finance-updates-june-2026/",
         "source": "Google AI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2218,
+        "similarity": 0.2209,
         "threshold": 0.2,
         "matched_story_title": "Everything new in our Google AI subscriptions, fresh from I/O 2026",
         "matched_episode_id": "2026-06-21",
@@ -4074,7 +4368,7 @@
         "link": "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-for-disease-management-in-nature/",
         "source": "Google AI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2166,
+        "similarity": 0.2176,
         "threshold": 0.2,
         "matched_story_title": "Enabling a new model for healthcare with AI co-clinician",
         "matched_episode_id": "2026-06-25",
@@ -4085,7 +4379,7 @@
         "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/alabama-investment-june-2026/",
         "source": "Google AI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.254,
+        "similarity": 0.2548,
         "threshold": 0.2,
         "matched_story_title": "Our new community investments in Virginia support local jobs and expand energy affordability.",
         "matched_episode_id": "2026-06-21",
@@ -4096,7 +4390,7 @@
         "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/missouri-programs/",
         "source": "Google AI Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.7407,
+        "similarity": 0.7409,
         "threshold": 0.2,
         "matched_story_title": "Our new community investments in Virginia support local jobs and expand energy affordability.",
         "matched_episode_id": "2026-06-21",
@@ -4107,7 +4401,7 @@
         "link": "https://huggingface.co/blog/nvidia/open-data-for-agents",
         "source": "HuggingFace Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2473,
+        "similarity": 0.2486,
         "threshold": 0.2,
         "matched_story_title": "Autodata: An agentic data scientist to create high quality synthetic data",
         "matched_episode_id": "2026-06-26",
@@ -4118,29 +4412,18 @@
         "link": "https://huggingface.co/blog/native-speed-vllm-transformers-backend",
         "source": "HuggingFace Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.21,
+        "similarity": 0.2101,
         "threshold": 0.2,
         "matched_story_title": "vLLM V0 to V1: Correctness Before Corrections in RL",
         "matched_episode_id": "2026-06-21",
         "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'vLLM V0 to V1: Correctness Before Corrections in RL' from 2026-06-21."
       },
       {
-        "title": "PRX Part 4: Our Data Strategy",
-        "link": "https://huggingface.co/blog/Photoroom/prx-part4-data",
-        "source": "HuggingFace Blog",
-        "reason": "cross_episode_semantic",
-        "similarity": 0.2004,
-        "threshold": 0.2,
-        "matched_story_title": "Pre-Modern Armies for Worldbuilders, Part III: Paying for It",
-        "matched_episode_id": "2026-06-27",
-        "detail": "TF-IDF similarity (0.20) >= threshold (0.20) with historical story 'Pre-Modern Armies for Worldbuilders, Part III: Paying for It' from 2026-06-27."
-      },
-      {
         "title": "Run a vLLM Server on HF Jobs in One Command",
         "link": "https://huggingface.co/blog/vllm-jobs",
         "source": "HuggingFace Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2335,
+        "similarity": 0.2333,
         "threshold": 0.2,
         "matched_story_title": "vLLM V0 to V1: Correctness Before Corrections in RL",
         "matched_episode_id": "2026-06-21",
@@ -4151,7 +4434,7 @@
         "link": "https://huggingface.co/blog/ffasr-leaderboard",
         "source": "HuggingFace Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.3078,
+        "similarity": 0.3077,
         "threshold": 0.2,
         "matched_story_title": "Adding Benchmaxxer Repellant to the Open ASR Leaderboard",
         "matched_episode_id": "2026-06-21",
@@ -4162,7 +4445,7 @@
         "link": "https://huggingface.co/blog/torch-mlp-fusion",
         "source": "HuggingFace Blog",
         "reason": "cross_episode_semantic",
-        "similarity": 0.431,
+        "similarity": 0.4311,
         "threshold": 0.2,
         "matched_story_title": "Profiling in PyTorch (Part 1): A Beginner's Guide to torch.profiler",
         "matched_episode_id": "2026-06-21",
@@ -4173,7 +4456,7 @@
         "link": "https://arxiv.org/abs/2607.06720",
         "source": "arXiv cs.AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2172,
+        "similarity": 0.2174,
         "threshold": 0.2,
         "matched_story_title": "A new era for AI Search",
         "matched_episode_id": "2026-06-21",
@@ -4184,7 +4467,7 @@
         "link": "https://arxiv.org/abs/2607.07040",
         "source": "arXiv cs.AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2332,
+        "similarity": 0.2311,
         "threshold": 0.2,
         "matched_story_title": "Human-like autonomy emerges from self-play and a pinch of human data",
         "matched_episode_id": "2026-06-20",
@@ -4195,7 +4478,7 @@
         "link": "https://arxiv.org/abs/2607.07321",
         "source": "arXiv cs.AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2155,
+        "similarity": 0.2158,
         "threshold": 0.2,
         "matched_story_title": "How Do Tool-Augmented LLM Agents Perform on Real-World Energy Analytics Tasks?",
         "matched_episode_id": "2026-06-27",
@@ -4206,7 +4489,7 @@
         "link": "https://arxiv.org/abs/2607.07379",
         "source": "arXiv cs.AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2173,
+        "similarity": 0.2174,
         "threshold": 0.2,
         "matched_story_title": "Understanding Rollout Error in Graph World Models",
         "matched_episode_id": "2026-06-30",
@@ -4217,7 +4500,7 @@
         "link": "https://arxiv.org/abs/2607.07422",
         "source": "arXiv cs.AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2375,
+        "similarity": 0.2377,
         "threshold": 0.2,
         "matched_story_title": "Fuzzy Quantification over OWL Ontologies and Knowledge Graphs",
         "matched_episode_id": "2026-06-26",
@@ -4228,7 +4511,7 @@
         "link": "https://arxiv.org/abs/2607.07436",
         "source": "arXiv cs.AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2225,
+        "similarity": 0.2215,
         "threshold": 0.2,
         "matched_story_title": "How courts are coping with a flood of AI-generated lawsuits",
         "matched_episode_id": "2026-06-20",
@@ -4239,7 +4522,7 @@
         "link": "https://arxiv.org/abs/2607.07646",
         "source": "arXiv cs.AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.255,
+        "similarity": 0.2582,
         "threshold": 0.2,
         "matched_story_title": "A-Evolve-Training: Autonomous Post-Training of a 30B Model",
         "matched_episode_id": "2026-06-24",
@@ -4250,40 +4533,40 @@
         "link": "https://arxiv.org/abs/2607.07663",
         "source": "arXiv cs.AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2886,
+        "similarity": 0.2889,
         "threshold": 0.2,
         "matched_story_title": "MIT Researchers Unveil “SEAL”: A New Step Towards Self-Improving AI",
         "matched_episode_id": "2026-06-25",
         "detail": "TF-IDF similarity (0.29) >= threshold (0.20) with historical story 'MIT Researchers Unveil “SEAL”: A New Step Towards Self-Improving AI' from 2026-06-25."
       },
       {
-        "title": "OpenAI says GPT 5.6 is the ‘preferred model’ for Microsoft Copilot 365 amid breakup chatter",
-        "link": "https://techcrunch.com/2026/07/09/openai-says-gpt-5-6-is-the-preferred-model-for-microsoft-copilot-amid-breakup-chatter/",
-        "source": "TechCrunch AI",
-        "reason": "cross_episode_semantic",
-        "similarity": 0.2277,
-        "threshold": 0.2,
-        "matched_story_title": "OpenAI limits GPT-5.6 rollout after government request, says restrictions shouldn’t be the norm",
-        "matched_episode_id": "2026-06-27",
-        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'OpenAI limits GPT-5.6 rollout after government request, says restrictions shouldn’t be the norm' from 2026-06-27."
-      },
-      {
         "title": "OpenAI launches its new family of models with GPT-5.6",
         "link": "https://techcrunch.com/2026/07/09/openai-launches-its-new-family-of-models-with-gpt-5-6/",
         "source": "TechCrunch AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2503,
+        "similarity": 0.2527,
         "threshold": 0.2,
         "matched_story_title": "The White House is asking OpenAI to slow roll the release of its new model over safety concerns",
         "matched_episode_id": "2026-06-27",
         "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'The White House is asking OpenAI to slow roll the release of its new model over safety concerns' from 2026-06-27."
       },
       {
+        "title": "An AI agent startup just let its agent run its $100 million fundraise",
+        "link": "https://techcrunch.com/2026/07/09/an-ai-agent-startup-just-let-its-agent-run-its-100-million-fundraise/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2369,
+        "threshold": 0.2,
+        "matched_story_title": "Railway secures $100 million to challenge AWS with AI-native cloud infrastructure",
+        "matched_episode_id": "2026-06-25",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'Railway secures $100 million to challenge AWS with AI-native cloud infrastructure' from 2026-06-25."
+      },
+      {
         "title": "Elon Musk praises Mythos/Fable, promises not to ‘cut off’ Anthropic",
         "link": "https://techcrunch.com/2026/07/09/elon-musk-praises-mythos-fable-promises-not-to-cut-off-anthropic/",
         "source": "TechCrunch AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.3984,
+        "similarity": 0.398,
         "threshold": 0.2,
         "matched_story_title": "SoftBank’s CEO isn’t the only one with questions about Elon Musk’s orbital data center hype",
         "matched_episode_id": "2026-06-28",
@@ -4294,7 +4577,7 @@
         "link": "https://techcrunch.com/2026/07/09/how-did-the-government-decide-openais-frontier-model-was-safe-to-release/",
         "source": "TechCrunch AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2874,
+        "similarity": 0.2889,
         "threshold": 0.2,
         "matched_story_title": "The White House is asking OpenAI to slow roll the release of its new model over safety concerns",
         "matched_episode_id": "2026-06-27",
@@ -4305,18 +4588,18 @@
         "link": "https://techcrunch.com/2026/07/09/how-to-stop-metas-ai-image-generator-from-using-your-instagram-photos/",
         "source": "TechCrunch AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2955,
+        "similarity": 0.2942,
         "threshold": 0.2,
         "matched_story_title": "Instagram is incorporating users' photos in ads for Meta Glasses",
         "matched_episode_id": "2026-06-30",
-        "detail": "TF-IDF similarity (0.30) >= threshold (0.20) with historical story 'Instagram is incorporating users' photos in ads for Meta Glasses' from 2026-06-30."
+        "detail": "TF-IDF similarity (0.29) >= threshold (0.20) with historical story 'Instagram is incorporating users' photos in ads for Meta Glasses' from 2026-06-30."
       },
       {
         "title": "Anthropic’s new Claude feature is quietly selling you on AI",
         "link": "https://techcrunch.com/2026/07/09/anthropics-new-claude-feature-is-quietly-selling-you-on-ai/",
         "source": "TechCrunch AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.3138,
+        "similarity": 0.3148,
         "threshold": 0.2,
         "matched_story_title": "Anthropic’s Claude Tag is learning your company, one Slack message at a time",
         "matched_episode_id": "2026-06-25",
@@ -4327,7 +4610,7 @@
         "link": "https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think",
         "source": "VentureBeat AI",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2433,
+        "similarity": 0.2445,
         "threshold": 0.2,
         "matched_story_title": "A new era for AI Search",
         "matched_episode_id": "2026-06-21",
@@ -4338,7 +4621,7 @@
         "link": "https://syncedreview.com/2025/06/16/researchers-from-psu-and-duke-introduce-multi-agent-systems-automated-failure-attribution/",
         "source": "Synced Review",
         "reason": "cross_episode_semantic",
-        "similarity": 0.7922,
+        "similarity": 0.7917,
         "threshold": 0.2,
         "matched_story_title": "Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution",
         "matched_episode_id": "2026-06-25",
@@ -4349,7 +4632,7 @@
         "link": "https://syncedreview.com/2025/05/28/adobe-research-unlocking-long-term-memory-in-video-world-models-with-state-space-models/",
         "source": "Synced Review",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2211,
+        "similarity": 0.2203,
         "threshold": 0.2,
         "matched_story_title": "Adobe acquires image and video enhancement tool maker Topaz Labs",
         "matched_episode_id": "2026-06-26",
@@ -4360,40 +4643,73 @@
         "link": "https://syncedreview.com/2025/04/30/deepseek-unveils-deepseek-prover-v2-advancing-neural-theorem-proving-with-recursive-proof-search-and-a-new-benchmark/",
         "source": "Synced Review",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2649,
+        "similarity": 0.2648,
         "threshold": 0.2,
         "matched_story_title": "VERITAS: Verifier-Guided Proof Search for Zero-Shot Formal Theorem Proving",
         "matched_episode_id": "2026-06-20",
         "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'VERITAS: Verifier-Guided Proof Search for Zero-Shot Formal Theorem Proving' from 2026-06-20."
       },
       {
-        "title": "EU Parliament greenlights Chat Control 1.0",
-        "link": "https://www.patrick-breyer.de/en/eu-parliament-greenlights-chat-control-1-0-breyer-our-children-lose-out/",
-        "source": "Hacker News",
-        "reason": "cross_episode_semantic",
-        "similarity": 0.4076,
-        "threshold": 0.2,
-        "matched_story_title": "EU to legislate about Chat Control behind closed doors",
-        "matched_episode_id": "2026-06-29",
-        "detail": "TF-IDF similarity (0.41) >= threshold (0.20) with historical story 'EU to legislate about Chat Control behind closed doors' from 2026-06-29."
-      },
-      {
         "title": "GPT-5.6",
         "link": "https://openai.com/index/gpt-5-6/",
         "source": "Hacker News",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2168,
+        "similarity": 0.22,
         "threshold": 0.2,
         "matched_story_title": "U.S. government will decide who gets to use GPT-5.6",
         "matched_episode_id": "2026-06-27",
         "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'U.S. government will decide who gets to use GPT-5.6' from 2026-06-27."
       },
       {
+        "title": "EU Parliament greenlights Chat Control 1.0",
+        "link": "https://www.patrick-breyer.de/en/eu-parliament-greenlights-chat-control-1-0-breyer-our-children-lose-out/",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4081,
+        "threshold": 0.2,
+        "matched_story_title": "EU to legislate about Chat Control behind closed doors",
+        "matched_episode_id": "2026-06-29",
+        "detail": "TF-IDF similarity (0.41) >= threshold (0.20) with historical story 'EU to legislate about Chat Control behind closed doors' from 2026-06-29."
+      },
+      {
+        "title": "Hy3",
+        "link": "https://hy.tencent.com/research/hy3",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2116,
+        "threshold": 0.2,
+        "matched_story_title": "How H-E-B became Texas' most beloved brand (2024)",
+        "matched_episode_id": "2026-06-28",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'How H-E-B became Texas' most beloved brand (2024)' from 2026-06-28."
+      },
+      {
+        "title": "Muse Spark 1.1",
+        "link": "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2076,
+        "threshold": 0.2,
+        "matched_story_title": "Holo3.1: Fast & Local Computer Use Agents",
+        "matched_episode_id": "2026-06-21",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Holo3.1: Fast & Local Computer Use Agents' from 2026-06-21."
+      },
+      {
+        "title": "The glass backbone: Why the Army's logistics will break in the next war",
+        "link": "https://mwi.westpoint.edu/the-glass-backbone-why-the-armys-logistics-will-break-in-the-next-war/",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2349,
+        "threshold": 0.2,
+        "matched_story_title": "The US Army Issued Ocarinas to Soldiers in World War II",
+        "matched_episode_id": "2026-06-28",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'The US Army Issued Ocarinas to Soldiers in World War II' from 2026-06-28."
+      },
+      {
         "title": "Postgres rewritten in Rust, now passing 100% of the Postgres regression tests",
         "link": "https://github.com/malisper/pgrust",
         "source": "Hacker News",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2295,
+        "similarity": 0.2309,
         "threshold": 0.2,
         "matched_story_title": "Why we built yet another Postgres connection pooler",
         "matched_episode_id": "2026-07-08",
@@ -4404,40 +4720,29 @@
         "link": "https://github.com/JustVugg/colibri",
         "source": "Hacker News",
         "reason": "cross_episode_semantic",
-        "similarity": 0.3425,
+        "similarity": 0.3365,
         "threshold": 0.2,
         "matched_story_title": "GLM-5.2: Built for Long-Horizon Tasks",
         "matched_episode_id": "2026-07-08",
         "detail": "TF-IDF similarity (0.34) >= threshold (0.20) with historical story 'GLM-5.2: Built for Long-Horizon Tasks' from 2026-07-08."
       },
       {
-        "title": "Muse Spark 1.1",
-        "link": "https://ai.meta.com/blog/introducing-muse-spark-meta-model-api/",
+        "title": "GLM 5.2 is nearly as accurate as a human book keeper",
+        "link": "https://toot-books.pages.dev/blog/glm-5-2-vat-benchmark",
         "source": "Hacker News",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2087,
+        "similarity": 0.2997,
         "threshold": 0.2,
-        "matched_story_title": "Meta rolls out Muse, a new AI image generator",
+        "matched_story_title": "GLM-5.2: Built for Long-Horizon Tasks",
         "matched_episode_id": "2026-07-08",
-        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Meta rolls out Muse, a new AI image generator' from 2026-07-08."
-      },
-      {
-        "title": "The glass backbone: Why the Army's logistics will break in the next war",
-        "link": "https://mwi.westpoint.edu/the-glass-backbone-why-the-armys-logistics-will-break-in-the-next-war/",
-        "source": "Hacker News",
-        "reason": "cross_episode_semantic",
-        "similarity": 0.2345,
-        "threshold": 0.2,
-        "matched_story_title": "The US Army Issued Ocarinas to Soldiers in World War II",
-        "matched_episode_id": "2026-06-28",
-        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'The US Army Issued Ocarinas to Soldiers in World War II' from 2026-06-28."
+        "detail": "TF-IDF similarity (0.30) >= threshold (0.20) with historical story 'GLM-5.2: Built for Long-Horizon Tasks' from 2026-07-08."
       },
       {
         "title": "A road to Lisp: Why Lisp",
         "link": "https://scotto.me/blog/2026-07-09-why-lisp/",
         "source": "Hacker News",
         "reason": "cross_episode_semantic",
-        "similarity": 0.3418,
+        "similarity": 0.3421,
         "threshold": 0.2,
         "matched_story_title": "Slisp: Simple Lisp compiler (Linux/amd64)",
         "matched_episode_id": "2026-06-27",
@@ -4448,33 +4753,22 @@
         "link": "https://www.context.dev",
         "source": "Hacker News",
         "reason": "cross_episode_semantic",
-        "similarity": 0.2166,
+        "similarity": 0.2188,
         "threshold": 0.2,
         "matched_story_title": "Can In-Context Learning Support Intrinsic Curiosity?",
         "matched_episode_id": "2026-06-20",
         "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Can In-Context Learning Support Intrinsic Curiosity?' from 2026-06-20."
       },
       {
-        "title": "Apple Silicon Exec Explains Mac Mini AI Demand and On-Device Future",
-        "link": "https://www.macrumors.com/2026/07/06/apple-silicon-exec-explains-mac-mini-ai-demand/",
+        "title": "How to Start a Ruby Meetup",
+        "link": "https://guides.rubyevents.org/meetups/",
         "source": "Hacker News",
         "reason": "cross_episode_semantic",
-        "similarity": 0.204,
+        "similarity": 0.2387,
         "threshold": 0.2,
-        "matched_story_title": "Show HN: Davit, a Apple Containers UI",
-        "matched_episode_id": "2026-07-08",
-        "detail": "TF-IDF similarity (0.20) >= threshold (0.20) with historical story 'Show HN: Davit, a Apple Containers UI' from 2026-07-08."
-      },
-      {
-        "title": "Life with Hazard Ratios",
-        "link": "https://dynomight.net/hazard-ratios/",
-        "source": "Hacker News",
-        "reason": "cross_episode_semantic",
-        "similarity": 0.2756,
-        "threshold": 0.2,
-        "matched_story_title": "Conway's Game of Life, in real life",
-        "matched_episode_id": "2026-06-26",
-        "detail": "TF-IDF similarity (0.28) >= threshold (0.20) with historical story 'Conway's Game of Life, in real life' from 2026-06-26."
+        "matched_story_title": "How to organize 3 acquired companies into one coherent website",
+        "matched_episode_id": "2026-06-25",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'How to organize 3 acquired companies into one coherent website' from 2026-06-25."
       }
     ]
   }

@@ -1,0 +1,68 @@
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">
+<voice name="host_a_professional" start="1.000" duration="7.271">
+听众朋友们大家好，欢迎收听AI每日先锋，今天是2026年7月14日周一，我是苏晴。
+</voice>
+<voice name="host_b_professional" start="8.720" duration="1.611">
+我是周航，欢迎收听。
+</voice>
+<voice name="host_a_professional" start="10.828" duration="11.189">
+周航，你今天看到浪潮那条新闻没？单柜能塞4万个Agent，我第一反应是——这是服务器还是蜂巢？
+</voice>
+<voice name="host_b_professional" start="22.470" duration="9.622">
+你注意啊，4万这个数字的关键不是堆叠，是并发。每个Agent都在并行跑任务，传统机柜架构根本扛不住这个密度。
+</voice>
+<voice name="host_a_professional" start="32.497" duration="7.097">
+等等，我得先理解一下——4万个Agent是啥概念？是4万个客服同时在线那种？
+</voice>
+<voice name="host_b_professional" start="40.027" duration="9.143">
+客服只是最浅的层面。真正的工业级Agent能自己拆任务、调度工具、纠错，你想想这算力消耗得多猛。
+</voice>
+<voice name="host_a_professional" start="49.635" duration="6.095">
+那散热和电费怎么算？感觉这机柜得边跑边烧开水。
+</voice>
+<voice name="host_b_professional" start="56.192" duration="9.665">
+你猜对了一半。所以浪潮这次主打CPU原生液冷整机柜，传统风冷方案到这个密度直接趴窝，液冷是硬需求。
+</voice>
+<voice name="host_a_professional" start="66.308" duration="12.321">
+我跟你说，这个新闻最让我震撼的不是数字本身，是它背后的信号。咱们以前比的是谁的模型参数大，现在变成了谁的机柜能养多少Agent。
+</voice>
+<voice name="host_b_professional" start="79.129" duration="8.098">
+这个观察挺到位。这就是竞争维度的彻底转移，从大模型军备竞赛进入Agent工业化部署阶段。
+</voice>
+<voice name="host_a_professional" start="87.665" duration="7.619">
+对，而且浪潮还搞了个多模融合超节点，说是让不同的大模型能组队答题。
+</voice>
+<voice name="host_b_professional" start="95.745" duration="10.667">
+那是另一条线了。一个解决密度，一个解决协同。你想，4万Agent如果各自为战，跟散兵游勇没区别；超节点的作用就是让它们像一支军队分工合作。
+</voice>
+<voice name="host_a_professional" start="106.857" duration="6.531">
+军队这个类比可以啊。那是不是可以说，Agent终于从Demo间走进真正的车间了？
+</voice>
+<voice name="host_b_professional" start="113.862" duration="7.967">
+可以这么说。但车间里不光有机器和Agent，还有个问题特别扎心——你生成的内容，到底是真的还是假的？
+</voice>
+<voice name="host_a_professional" start="122.256" duration="6.705">
+你说的是少数派那篇关于AI生图防伪的文章吧？我刚才正好也刷到了。
+</voice>
+<voice name="host_b_professional" start="129.425" duration="6.313">
+嗯。C2PA这个标准你听过没？Adobe、微软、英特尔、索尼这些巨头都在推。
+</voice>
+<voice name="host_a_professional" start="136.155" duration="5.442">
+C2PA是什么东西？听起来像特工片里的加密代码。
+</voice>
+<voice name="host_b_professional" start="142.033" duration="7.706">
+差不多。它的核心是给图片视频加一层数字指纹，记录谁生成的、什么时候生成的、有没有被改过。
+</voice>
+<voice name="host_a_professional" start="150.156" duration="3.875">
+哦我懂了，相当于给每张图发个身份证。
+</voice>
+<voice name="host_b_professional" start="154.527" duration="3.483">
+对。但问题是这身份证现在不是强制的，各
+</voice>
+<voice name="host_a_professional" start="158.422" duration="7.227">
+好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！
+</voice>
+<voice name="host_b_professional" start="166.128" duration="0.653">
+拜拜！
+</voice>
+</speak>
