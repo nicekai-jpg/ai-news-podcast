@@ -30,20 +30,10 @@ def _write_transcript_with_timestamps(
     voice_map: dict[str, str],
     transcript_path: Path,
 ) -> None:
-    xml_lines = [
-        '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zh-CN">',
-    ]
-    for idx, chunk in enumerate(chunks):
-        start_sec, duration_sec = timestamps[idx]
-        voice = chunk.voice or voice_map.get(chunk.host, voice_map.get("A", ""))
-        xml_lines.append(
-            f'<voice name="{voice}" start="{start_sec:.3f}" duration="{duration_sec:.3f}">'
-        )
-        xml_lines.append(chunk.text)
-        xml_lines.append("</voice>")
-    xml_lines.append("</speak>")
+    # Save clean plain text transcript (bracketed format) to .txt file
+    clean_lines = [f"[Host {chunk.host}] {chunk.text}" for chunk in chunks]
     transcript_path.parent.mkdir(parents=True, exist_ok=True)
-    transcript_path.write_text("\n".join(xml_lines), encoding="utf-8")
+    transcript_path.write_text("\n\n".join(clean_lines) + "\n", encoding="utf-8")
 
 
 def _write_chunks_and_playlist(

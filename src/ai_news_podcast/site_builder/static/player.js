@@ -182,6 +182,24 @@
           if (rPl.ok) {
             var plData = await rPl.json();
             currentPlaylist = plData.chunks;
+            
+            // Map precise timestamps from playlist.json to scriptParagraphs and DOM elements
+            if (currentPlaylist && scriptParagraphs) {
+              var limit = Math.min(currentPlaylist.length, scriptParagraphs.length);
+              for (var idx = 0; idx < limit; idx++) {
+                var chunk = currentPlaylist[idx];
+                if (scriptParagraphs[idx]) {
+                  scriptParagraphs[idx].start = chunk.start;
+                  scriptParagraphs[idx].duration = chunk.duration;
+                  var rowEl = document.getElementById('trans-row-' + idx);
+                  if (rowEl) {
+                    rowEl.setAttribute('data-start', chunk.start);
+                    rowEl.setAttribute('data-duration', chunk.duration);
+                  }
+                }
+              }
+            }
+
             buildVoiceSelectors();
             document.getElementById('playback-btn-sentence').style.display = 'block';
             var voiceSelector = document.getElementById('voice-selector-row');

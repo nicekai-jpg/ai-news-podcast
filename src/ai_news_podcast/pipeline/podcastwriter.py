@@ -261,9 +261,10 @@ def _ensure_proper_ending(script: str) -> str:
     if not stripped:
         return script
 
-    # 检查是否以完整的结束语结尾
+    # 检查是否以完整的结束语结尾 (忽略尾部标点符号)
     endings = ["拜拜", "再见", "明天见", "下期见"]
-    has_ending = any(stripped.endswith(e) for e in endings)
+    check_str = re.sub(r"[^\w\u4e00-\u9fff]+$", "", stripped)
+    has_ending = any(check_str.endswith(e) for e in endings)
 
     if has_ending:
         return script
