@@ -1,0 +1,58 @@
+<think>The user wants me to create a professional tech news daily report in Chinese, based on the provided materials. Let me analyze the materials:
+
+1. Google DeepMind and Isomorphic Labs sharing their approach to bioresilience and AI models - this is about AI in biology/drug discovery
+2. 银河通用 - new framework for robots using human videos, can also learn while working
+3. 中国移动投资友机技术 - industrial AI infrastructure
+4. 逐际动力 Demo - robot demo, Figure company having trouble sleeping
+5. NVIDIA Nemotron 3 Embed - ranks #1 on RTEB for agentic retrieval
+
+Let me categorize:
+- AI前沿: Material 1 (DeepMind bioresilience), Material 5 (NVIDIA Nemotron)
+- 大公司动态: Material 3 (中国移动 investment)
+- 产品与开源: Materials 2, 4 (robotics)
+
+I should merge related topics. Materials 2 and 4 are both about humanoid robots/embodied AI - I'll combine them.
+
+Let me write this in a professional, condensed way, in Chinese, around 800-1500 words.</think>
+
+# 🌍 科技新闻日报 | 2026年07月17日
+
+**今日核心趋势**：AI 正在加速从虚拟世界走向物理世界——从生物医药到工业制造、人形机器人，大模型的触角已延伸至真实产业的关键环节。
+
+---
+
+## 🧬 AI 前沿：基础研究与行业基座并进
+
+- **DeepMind 与 Isomorphic Labs 联合发布"生物韧性（Bioresilience）"研究方向**
+
+  Google DeepMind 与其衍生生物医药公司 Isomorphic Labs 今日联合公布了在"生物韧性"领域的研究框架与 AI 模型思路。这一方向聚焦利用 AI 理解和增强生命系统在面对环境变化、疾病侵扰时的适应能力，标志着大型科技实验室在 AI for Science 议题上从单点突破走向系统性布局。Isomorphic Labs 自孵化以来一直被业内视为 DeepMind 在药物研发与生物学领域的"延伸臂"，本次联合发声，显示出双方正试图打通基础模型与产业落地的链路。
+
+- **NVIDIA Nemotron 3 Embed 登顶 RTEB，主攻智能体检索能力**
+
+  NVIDIA 发布的 Nemotron 3 Embed 模型在 RTEB（Retrieval Embedding Benchmark）综合榜单上排名第一，主打"智能体检索（Agentic Retrieval）"能力。智能体在执行多步推理任务时，常因检索环节召回上下文失准而浪费 token 预算、累积推理噪声。NVIDIA 此举意在为下一代 Agent 系统提供更可靠的"记忆与检索"基础设施，进一步巩固其在企业级 AI 底座市场的话语权。
+
+---
+
+## 🤖 具身智能：人形机器人赛道迎来密集刷脸
+
+- **银河通用发布全球首个"纯人类视频"机器人部署框架**
+
+  国内具身智能公司银河通用推出全新框架，仅需人类操作视频即可让机器人完成技能部署，并支持边执行边学习。这一范式大幅降低了对遥操作、动捕设备等高成本数据采集手段的依赖，被业内视为"机器人数据民主化"的重要一步。无独有偶，近日逐际动力也放出一段 Demo，展示出模型在复杂地形适应与泛化任务上的进展——在 Elon Musk 的 Tesla Optimus、Figure AI 的竞争压力下，中国团队正以前所未有的密度输出工程化成果。
+
+  从行业共识来看，"赌某一个端到端大模型通吃一切"已被证明过于乐观。当前更务实的路线是分层架构：底层视觉-语言-动作大模型负责感知与策略，专用模块负责执行与稳定控制。这也解释了为何近期具身智能公司频频在工业搬运、装配、巡检等垂直场景率先落地，而非急于切入家庭服务市场。
+
+---
+
+## 🏭 工业 AI：中国移动押注"工业母机的计算化时刻"
+
+- **中国移动战略投资友机技术，剑指工业 AI 下一代基础设施**
+
+  中国移动宣布投资工业 AI 公司友机技术，瞄准"工业母机的计算化时刻"。所谓工业母机，即数控机床、机器人等基础制造装备，长期被外界视为中国制造业"卡脖子"环节之一。此轮投资的核心逻辑在于：将工业母机从过去以精度、刚性为指标的"机械系统"，重塑为以数据、算力、模型为驱动的"计算系统"。
+
+  友机技术的路线选择也颇具代表性——公司并未单纯追求具身智能或工业大模型的某一端，而是在加工过程感知、刀具补偿、自适应控制等环节嵌入 AI 算法，让传统机床具备"在线学习"与"自优化"能力。运营商背景的中国移动入局，意味着工业 AI 正与 5G、边缘计算、专网通信深度耦合，工业现场的算力部署或将迎来新的格局。
+
+---
+
+## 📝 写在最后
+
+> 今天的科技动态呈现出一种鲜明的"落地感"：DeepMind 的生物韧性研究指向生命科学的长期命题，NVIDIA 在检索层面的精进则服务于智能体系统的工业化，而国内机器人与工业 AI 的密集动作，则把视线拉回到中国制造业升级的现实战场上。无论是大模型的上半场，还是具身智能与工业智能的下半场，竞争的核心早已不再是参数与跑分，而是**谁能让 AI 真正嵌进真实世界的运转链条**。

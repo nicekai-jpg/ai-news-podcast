@@ -1,0 +1,335 @@
+{
+  "episode_id": "2026-07-14",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友们大家好，欢迎收听AI每日先锋，今天是2026年7月14日周一，我是苏晴。",
+      "start": 1.0,
+      "duration": 7.271,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "我是周航，欢迎收听。",
+      "start": 8.72,
+      "duration": 1.611,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，你今天看到浪潮那条新闻没？单柜能塞4万个Agent，我第一反应是——这是服务器还是蜂巢？",
+      "start": 10.828,
+      "duration": 11.189,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你注意啊，4万这个数字的关键不是堆叠，是并发。每个Agent都在并行跑任务，传统机柜架构根本扛不住这个密度。",
+      "start": 22.47,
+      "duration": 9.622,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "等等，我得先理解一下——4万个Agent是啥概念？是4万个客服同时在线那种？",
+      "start": 32.497,
+      "duration": 7.097,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "客服只是最浅的层面。真正的工业级Agent能自己拆任务、调度工具、纠错，你想想这算力消耗得多猛。",
+      "start": 40.027,
+      "duration": 9.143,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "那散热和电费怎么算？感觉这机柜得边跑边烧开水。",
+      "start": 49.635,
+      "duration": 6.095,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你猜对了一半。所以浪潮这次主打CPU原生液冷整机柜，传统风冷方案到这个密度直接趴窝，液冷是硬需求。",
+      "start": 56.192,
+      "duration": 9.665,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "我跟你说，这个新闻最让我震撼的不是数字本身，是它背后的信号。咱们以前比的是谁的模型参数大，现在变成了谁的机柜能养多少Agent。",
+      "start": 66.308,
+      "duration": 12.321,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "这个观察挺到位。这就是竞争维度的彻底转移，从大模型军备竞赛进入Agent工业化部署阶段。",
+      "start": 79.129,
+      "duration": 8.098,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "对，而且浪潮还搞了个多模融合超节点，说是让不同的大模型能组队答题。",
+      "start": 87.665,
+      "duration": 7.619,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "那是另一条线了。一个解决密度，一个解决协同。你想，4万Agent如果各自为战，跟散兵游勇没区别；超节点的作用就是让它们像一支军队分工合作。",
+      "start": 95.745,
+      "duration": 10.667,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "军队这个类比可以啊。那是不是可以说，Agent终于从Demo间走进真正的车间了？",
+      "start": 106.857,
+      "duration": 6.531,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "可以这么说。但车间里不光有机器和Agent，还有个问题特别扎心——你生成的内容，到底是真的还是假的？",
+      "start": 113.862,
+      "duration": 7.967,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "你说的是少数派那篇关于AI生图防伪的文章吧？我刚才正好也刷到了。",
+      "start": 122.256,
+      "duration": 6.705,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "嗯。C2PA这个标准你听过没？Adobe、微软、英特尔、索尼这些巨头都在推。",
+      "start": 129.425,
+      "duration": 6.313,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "C2PA是什么东西？听起来像特工片里的加密代码。",
+      "start": 136.155,
+      "duration": 5.442,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "差不多。它的核心是给图片视频加一层数字指纹，记录谁生成的、什么时候生成的、有没有被改过。",
+      "start": 142.033,
+      "duration": 7.706,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "哦我懂了，相当于给每张图发个身份证。",
+      "start": 150.156,
+      "duration": 3.875,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "对。但问题是这身份证现在不是强制的，各",
+      "start": 154.527,
+      "duration": 3.483,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 158.422,
+      "duration": 7.227,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 166.128,
+      "duration": 0.653,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
