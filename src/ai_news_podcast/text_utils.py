@@ -27,7 +27,8 @@ RE_MULTI_SPACE = re.compile(r"[ \t]+")
 RE_MULTI_NEWLINE = re.compile(r"\n{3,}")
 # Whitelist CosyVoice paralinguistic/non-verbal tags from being stripped
 RE_HTML_TAG = re.compile(
-    r"<(?!(?:breath|quick_breath|laughter|cough|sigh|gasp|lipsmack|noise|laughing|/laughing|strong|/strong)\b)[^>]+>"
+    r"<(?!(?:breath|quick_breath|laughter|cough|sigh|gasp|lipsmack|noise|laughing|/laughing|strong|/strong)\b)[^>]+>",
+    flags=re.IGNORECASE,
 )
 
 # Thinking-process markers that LLM sometimes outputs instead of actual dialogue
@@ -102,6 +103,17 @@ def clean_tts_text(text: str) -> str:
     text = "\n".join(lines)
     text = RE_MULTI_SPACE.sub(" ", text)
     return RE_MULTI_NEWLINE.sub("\n\n", text).strip()
+
+
+def strip_tts_tags(text: str) -> str:
+    """Remove all HTML/SSML/TTS tags (e.g. <breath>, <laughing>) for user display."""
+    if not text:
+        return ""
+    # Remove any tag matching <...>
+    text = re.sub(r"<[^>]+>", "", text)
+    # Compress multiple spaces
+    text = RE_MULTI_SPACE.sub(" ", text)
+    return text.strip()
 
 
 def _strip_thinking_process(text: str) -> str:

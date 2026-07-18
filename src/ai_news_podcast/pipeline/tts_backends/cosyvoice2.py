@@ -19,6 +19,7 @@ from ai_news_podcast.pipeline.tts_postprocess import (
     assemble_dialogue_audio,
     finalize_episode_mp3,
 )
+from ai_news_podcast.text_utils import strip_tts_tags
 
 log = logging.getLogger(__name__)
 
@@ -31,7 +32,7 @@ def _write_transcript_with_timestamps(
     transcript_path: Path,
 ) -> None:
     # Save clean plain text transcript (bracketed format) to .txt file
-    clean_lines = [f"[Host {chunk.host}] {chunk.text}" for chunk in chunks]
+    clean_lines = [f"[Host {chunk.host}] {strip_tts_tags(chunk.text)}" for chunk in chunks]
     transcript_path.parent.mkdir(parents=True, exist_ok=True)
     transcript_path.write_text("\n\n".join(clean_lines) + "\n", encoding="utf-8")
 
@@ -75,7 +76,7 @@ def _write_chunks_and_playlist(
             {
                 "id": idx,
                 "host": chunk.host,
-                "text": chunk.text,
+                "text": strip_tts_tags(chunk.text),
                 "start": round(start_sec, 3),
                 "duration": round(duration_sec, 3),
                 "audios": audios,

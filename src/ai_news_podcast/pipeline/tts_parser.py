@@ -53,4 +53,20 @@ def split_text_into_sentences(text: str, max_chars: int = 80) -> list[str]:
             current = part
     if current:
         sentences.append(current.strip())
-    return sentences
+
+    # Repair any split tags (like <laughing> or <strong>) in each sentence
+    repaired_sentences = []
+    for s in sentences:
+        repaired_s = s
+        for tag in ["laughing", "strong"]:
+            open_tag = f"<{tag}>"
+            close_tag = f"</{tag}>"
+            open_count = repaired_s.count(open_tag)
+            close_count = repaired_s.count(close_tag)
+            if open_count > close_count:
+                repaired_s = repaired_s + (close_tag * (open_count - close_count))
+            elif close_count > open_count:
+                repaired_s = (open_tag * (close_count - open_count)) + repaired_s
+        repaired_sentences.append(repaired_s)
+
+    return repaired_sentences

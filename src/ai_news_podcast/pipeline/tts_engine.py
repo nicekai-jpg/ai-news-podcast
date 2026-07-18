@@ -32,6 +32,39 @@ async def synthesize(
         bgm_path: Optional background music path.
         **kwargs: Additional arguments passed to the backend.
     """
+    import re
+
+    # Check if script already has paralinguistic tags. If not, auto-annotate using Director Agent
+    if not re.search(r"<[^>]+>", text):
+        log.info("未检测到情感标签，正在启动 Director Agent 进行情感与非语言标签标注...")
+        cfg = kwargs.get("cfg")
+        if cfg:
+            import dataclasses
+
+            from ai_news_podcast.pipeline.llm_client import call_llm
+            from ai_news_podcast.prompts import build_director_prompt
+
+            podcast_title = "AI 每日先锋"
+            if (
+                hasattr(cfg, "podcast")
+                and cfg.podcast
+                and hasattr(cfg.podcast, "title")
+                and cfg.podcast.title
+            ):
+                podcast_title = cfg.podcast.title
+
+            llm_cfg = dataclasses.asdict(cfg.llm) if hasattr(cfg, "llm") and cfg.llm else {}
+
+            director_prompt = build_director_prompt(text, podcast_title)
+            annotated_text = call_llm(director_prompt, llm_cfg)
+            if annotated_text and annotated_text.strip():
+                log.info("Director Agent 成功对剧本进行了音频情感标注")
+                text = annotated_text
+            else:
+                log.warning("Director Agent 情感标注失败，降级为原纯净剧本进行合成")
+        else:
+            log.warning("未检测到 AppConfig 配置，跳过 Director 情感标注")
+
     chunks = parse_dialogue_chunks(text)
     if not chunks:
         raise ValueError("Input text is empty after dialogue parsing")

@@ -13,7 +13,11 @@ from typing import Any
 
 from ai_news_podcast.pipeline.llm_client import call_llm as _call_llm
 from ai_news_podcast.pipeline.material import build_material_text as _build_material_text
-from ai_news_podcast.prompts import DEFAULT_BANNED_WORDS, build_editor_prompt, build_writer_prompt
+from ai_news_podcast.prompts import (
+    DEFAULT_BANNED_WORDS,
+    build_editor_prompt,
+    build_writer_prompt,
+)
 from ai_news_podcast.text_utils import RE_MOOD_TAG, clean_tts_text, contains_thinking_process
 
 logger = logging.getLogger(__name__)
