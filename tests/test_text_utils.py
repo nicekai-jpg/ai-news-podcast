@@ -9,6 +9,7 @@ from ai_news_podcast.text_utils import (
     RE_MOOD_TAG,
     RE_NON_HOST_BRACKET,
     clean_tts_text,
+    strip_tts_tags,
 )
 
 # ---------------------------------------------------------------------------
@@ -238,3 +239,18 @@ class TestRegexConstants:
         assert m is None
         m = RE_NON_HOST_BRACKET.search("[other]")
         assert m is not None
+
+
+class TestStripTtsTags:
+    @pytest.mark.parametrize(
+        "input_text,expected",
+        [
+            ("你好<breath/>世界", "你好世界"),
+            ("大笑<laughing>哈哈哈哈</laughing>测试", "大笑哈哈哈哈测试"),
+            ("文字<strong>加粗</strong>格式", "文字加粗格式"),
+            ("没有标签的正常对话", "没有标签的正常对话"),
+            ('<speak><voice name="test">内容</voice></speak>', "内容"),
+        ],
+    )
+    def test_strip_tts_tags(self, input_text: str, expected: str) -> None:
+        assert strip_tts_tags(input_text) == expected
