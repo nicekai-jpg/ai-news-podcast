@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import asyncio
+import logging
 import os
 import sys
 from pathlib import Path
@@ -20,6 +21,11 @@ def _bootstrap_imports():
 
 
 async def main() -> int:
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+        stream=sys.stdout,
+    )
     root, synthesize, read_yaml = _bootstrap_imports()
     ap = argparse.ArgumentParser()
     ap.add_argument("--script", required=True, help="Path to episode .txt script")
