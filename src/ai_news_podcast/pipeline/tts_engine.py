@@ -44,16 +44,19 @@ async def synthesize(
             from ai_news_podcast.pipeline.llm_client import call_llm
             from ai_news_podcast.prompts import build_director_prompt
 
-            podcast_title = "AI 每日先锋"
-            if (
-                hasattr(cfg, "podcast")
-                and cfg.podcast
-                and hasattr(cfg.podcast, "title")
-                and cfg.podcast.title
-            ):
-                podcast_title = cfg.podcast.title
-
-            llm_cfg = dataclasses.asdict(cfg.llm) if hasattr(cfg, "llm") and cfg.llm else {}
+            if isinstance(cfg, dict):
+                podcast_title = cfg.get("podcast", {}).get("title", "AI 每日先锋")
+                llm_cfg = cfg.get("llm", {})
+            else:
+                podcast_title = "AI 每日先锋"
+                if (
+                    hasattr(cfg, "podcast")
+                    and cfg.podcast
+                    and hasattr(cfg.podcast, "title")
+                    and cfg.podcast.title
+                ):
+                    podcast_title = cfg.podcast.title
+                llm_cfg = dataclasses.asdict(cfg.llm) if hasattr(cfg, "llm") and cfg.llm else {}
 
             director_prompt = build_director_prompt(text, podcast_title)
             annotated_text = call_llm(director_prompt, llm_cfg)
