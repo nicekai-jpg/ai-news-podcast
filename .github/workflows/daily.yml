@@ -204,6 +204,9 @@ jobs:
         run: bash scripts/setup_cosyvoice_env.sh
 
       - name: Synthesize episode audio
+        env:
+          TZ: Asia/Shanghai
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
         run: |
           EPISODE="${{ needs.writer.outputs.episode_id }}"
           export COSYVOICE_MODEL_DIR="$HOME/cosyvoice_models/CosyVoice2-0.5B"

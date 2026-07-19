@@ -40,7 +40,7 @@ fi
 "${PIP[@]}" install "openai-whisper==20231117" --no-build-isolation
 
 # Minimal project imports for gha_tts_cosyvoice.py (keep CosyVoice deps isolated from uv).
-"${PIP[@]}" install pydub==0.25.1 PyYAML==6.0.1
+"${PIP[@]}" install pydub==0.25.1 PyYAML==6.0.1 "httpx>=0.27" "openai>=1.0" "python-dotenv>=1.2.1" "pydantic>=2.12.5" "tenacity>=8.2"
 "${PIP[@]}" install --no-deps -e .
 
 export PYTHONPATH="$COSY_SRC:$COSY_SRC/third_party/Matcha-TTS${PYTHONPATH:+:$PYTHONPATH}"
