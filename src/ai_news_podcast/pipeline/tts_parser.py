@@ -8,6 +8,19 @@ from ai_news_podcast.pipeline.tts_types import DialogueChunk
 from ai_news_podcast.text_utils import clean_tts_text
 
 
+def _filter_chunk_text(raw: str) -> str:
+    """过滤掉 LLM 可能会附带在段落末尾的点评注释或项目符号（如 - Standard opening... 或 * 注：...）。"""
+    lines = [line.strip() for line in raw.splitlines() if line.strip()]
+    valid_lines = []
+    for line in lines:
+        if re.match(r"^[-*#]\s+", line) or re.match(
+            r"^（注[：:]|^\(Note[：:]", line, re.IGNORECASE
+        ):
+            continue
+        valid_lines.append(line)
+    return clean_tts_text(" ".join(valid_lines))
+
+
 def parse_dialogue_chunks(
     text: str,
 ) -> list[DialogueChunk]:
@@ -20,7 +33,7 @@ def parse_dialogue_chunks(
     for m in marker_re.finditer(text):
         raw = text[cursor : m.start()].strip()
         if raw:
-            cleaned = clean_tts_text(raw)
+            cleaned = _filter_chunk_text(raw)
             if cleaned:
                 chunks.append(DialogueChunk(host=current_host, text=cleaned))
         current_host = m.group(1).upper()
@@ -28,7 +41,7 @@ def parse_dialogue_chunks(
 
     tail = text[cursor:].strip()
     if tail:
-        cleaned = clean_tts_text(tail)
+        cleaned = _filter_chunk_text(tail)
         if cleaned:
             chunks.append(DialogueChunk(host=current_host, text=cleaned))
     return chunks
