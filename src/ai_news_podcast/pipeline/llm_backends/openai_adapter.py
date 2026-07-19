@@ -19,6 +19,11 @@ from ai_news_podcast.pipeline.llm_backends.base import LLMBackend
 logger = logging.getLogger(__name__)
 
 
+def _validate_llm_text(t: str) -> None:
+    if not t or len(t) < 10:
+        raise ValueError(f"LLM 返回过滤后内容为空或过短 ({len(t)} 字符)")
+
+
 class OpenAILLMBackend(LLMBackend):
     """OpenAI-compatible LLM backend."""
 
@@ -61,15 +66,27 @@ class OpenAILLMBackend(LLMBackend):
                     max_tokens=self.config.get("max_output_tokens", 2048),
                 )
 
-                text = response.choices[0].message.content
-                if text:
+                raw_text = response.choices[0].message.content
+                if raw_text:
                     # 过滤 MiniMax M3/DeepSeek 等推理模型返回的思考链内容
-                    text = re.sub(r"\s*<thinking>.*?</thinking>\s*", "", text, flags=re.DOTALL)
+                    text = re.sub(r"\s*<thinking>.*?</thinking>\s*", "", raw_text, flags=re.DOTALL)
                     text = re.sub(r"\s*<think>.*?</think>\s*", "", text, flags=re.DOTALL)
                     text = re.sub(r"\s*[^\w\s]*thinking[^\w\s]*\s*", "", text, flags=re.DOTALL)
                     text = re.sub(r"\s*[^\w\s]*think[^\w\s]*\s*", "", text, flags=re.DOTALL)
+                    text = text.strip()
+
+                    # 如果去除 <think> 标签后内容为空或被思考链吞没，尝试直接从原始返回中恢复 [Host A]/[Host B] 对白
+                    if not text or len(text) < 10:
+                        host_match = re.search(
+                            r"(\[Host\s*[AB]\].*)", raw_text, re.DOTALL | re.IGNORECASE
+                        )
+                        if host_match:
+                            text = host_match.group(1).strip()
+                            logger.info("从思考链或未闭合标签中自动找回对白: %d 字符", len(text))
+
+                    _validate_llm_text(text)
                     logger.info("LLM 调用成功，返回 %d 字符", len(text))
-                    return text.strip()
+                    return text
 
             except (httpx.HTTPError, json.JSONDecodeError, OSError, ValueError, RuntimeError) as e:
                 logger.warning("LLM 调用失败 (第 %d 次重试): %s", attempt + 1, e)
