@@ -19,6 +19,68 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 
 
+def _is_model_release_or_update(text: str) -> bool:
+    """判断是否为大模型或核心AI产品的发布/开源/版本升级新闻。"""
+    import re
+
+    text = text.lower()
+    model_kws = (
+        "kimi",
+        "qwen",
+        "千问",
+        "通义",
+        "deepseek",
+        "claude",
+        "gpt",
+        "gemini",
+        "llama",
+        "glm",
+        "智谱",
+        "minimax",
+        "hunyuan",
+        "混元",
+        "doubao",
+        "豆包",
+        "gemma",
+        "smollm",
+        "mistral",
+        "o1",
+        "o3",
+        "grok",
+        "百川",
+        "零一万物",
+        "大模型",
+        "大语言模型",
+        "llm",
+        "vlm",
+        "基础模型",
+        "foundation model",
+    )
+    release_kws = (
+        "发布",
+        "首发",
+        "推出",
+        "上线",
+        "开源",
+        "问世",
+        "亮相",
+        "新一代",
+        "新模型",
+        "launch",
+        "release",
+        "unveil",
+        "announce",
+        "open weight",
+        "open-source",
+        "available",
+    )
+    has_model = any(k in text for k in model_kws)
+    has_release = any(k in text for k in release_kws) or bool(
+        re.search(r"\b(?:v|k|r)?\d+(?:\.\d+)+\b", text)
+    )
+    return has_model and has_release
+
+
 def _score_cluster(cluster: Cluster) -> dict[str, int]:
     """
     五维评分，每维 1-3 分，总分 5-15。
@@ -32,9 +94,14 @@ def _score_cluster(cluster: Cluster) -> dict[str, int]:
     rep = cluster.representative
     text = f"{rep.title} {rep.summary} {rep.full_text_snippet}".lower()
 
+    # 判定是否为大模型或核心产品发布/升级新闻，大幅增加打分权重
+    is_model_rel = _is_model_release_or_update(text)
+
     # impact_scope
     unique_sources = len({it.source_name for it in items})
     impact = 3 if unique_sources >= 3 else (2 if unique_sources >= 2 else 1)
+    if is_model_rel:
+        impact = max(impact, 2)  # 大模型发布默认具备行业广泛影响，保底2分
 
     # novelty
     novel_kws = (
@@ -53,26 +120,32 @@ def _score_cluster(cluster: Cluster) -> dict[str, int]:
     )
     novelty = (
         3
-        if any(k in text for k in novel_kws)
+        if is_model_rel or any(k in text for k in novel_kws)
         else (2 if any(k in text for k in ("更新", "update", "升级")) else 1)
     )
 
     # explainability
     fulltext_len = len(rep.full_text_snippet)
     explain = 3 if fulltext_len >= 1200 else (2 if fulltext_len >= 600 else 1)
+    if is_model_rel:
+        explain = max(explain, 2)  # 大模型发布规格硬核，保底2分
 
     # listener_relevance
     zh_count = sum(1 for it in items if it.language == "zh")
     relevance_kws = ("大模型", "llm", "chatgpt", "claude", "gpt", "agent", "智能体")
     has_relevance = any(k in text for k in relevance_kws)
     relevance = (
-        3 if (zh_count > 0 and has_relevance) else (2 if has_relevance or zh_count > 0 else 1)
+        3
+        if (is_model_rel or (zh_count > 0 and has_relevance))
+        else (2 if has_relevance or zh_count > 0 else 1)
     )
 
     # source_richness
     auth_scores = [AUTHORITY_ORDER.get(it.source_category, 5) for it in items]
     min_auth = min(auth_scores) if auth_scores else 5
     richness = 3 if min_auth <= 1 else (2 if min_auth <= 2 else 1)
+    if is_model_rel:
+        richness = max(richness, 3)  # 大模型重磅发布赋予高权威权重，保底3分
 
     return {
         "impact_scope": impact,
