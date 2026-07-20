@@ -4,9 +4,9 @@
     {
       "id": 1,
       "host": "A",
-      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年7月20日。我是苏晴。",
+      "text": "听众朋友们大家好啊，欢迎收听AI 每日先锋，今天是2026年7月20日星期一，我是苏晴。",
       "start": 1.0,
-      "duration": 6.356,
+      "duration": 11.059,
       "audios": {
         "professional": "chunk_001_professional.mp3",
         "lively": "chunk_001_lively.mp3"
@@ -19,9 +19,9 @@
     {
       "id": 2,
       "host": "B",
-      "text": "大家好，我是周航。苏晴今天嗓子听着有点哑啊，昨晚又熬夜刷论文了？",
-      "start": 7.805,
-      "duration": 6.487,
+      "text": "大家好，我是周航。",
+      "start": 12.508,
+      "duration": 1.48,
       "audios": {
         "professional": "chunk_002_professional.mp3",
         "lively": "chunk_002_lively.mp3"
@@ -34,9 +34,9 @@
     {
       "id": 3,
       "host": "A",
-      "text": "别提了，昨晚看到一份关于AI治理的报告，越看越精神，根本睡不着。我跟你说，今天咱们要聊的话题特别有意思。",
-      "start": 14.789,
-      "duration": 13.322,
+      "text": "周航，今天这期节目我真的特别想跟你聊聊，你发现没有，最近AI圈特别魔幻——一方面模型能力往天上飙，另一方面大家开始认认真真讨论怎么管住AI了。",
+      "start": 14.485,
+      "duration": 14.691,
       "audios": {
         "professional": "chunk_003_professional.mp3",
         "lively": "chunk_003_lively.mp3"
@@ -49,9 +49,9 @@
     {
       "id": 4,
       "host": "B",
-      "text": "是嘛，我看大纲了。说实话，第一条看完我还愣了一下——讲哲学？AI播客讲哲学？",
-      "start": 28.564,
-      "duration": 7.576,
+      "text": "你这个总结挺准的。主编今天给了一句金句说得特别好，说AI正同时在\"能力天花板\"和\"治理底线\"两个方向急速延伸。我琢磨了一下，还真是这么回事儿。",
+      "start": 29.629,
+      "duration": 14.188,
       "audios": {
         "professional": "chunk_004_professional.mp3",
         "lively": "chunk_004_lively.mp3"
@@ -64,9 +64,9 @@
     {
       "id": 5,
       "host": "A",
-      "text": "对啊，你看这个标题，\"冷门的哲学，成了'治'AI的热门\"。你是不是也觉得很新鲜？",
-      "start": 36.545,
-      "duration": 6.922,
+      "text": "能力天花板我等会儿慢慢说，咱们先来看一个这两天最炸锅的事儿——Kimi K3 上线四十八小时，什么概念呢？模型爆火，GPU爆肝，连会员都临时停售了。",
+      "start": 44.222,
+      "duration": 19.872,
       "audios": {
         "professional": "chunk_005_professional.mp3",
         "lively": "chunk_005_lively.mp3"
@@ -79,9 +79,9 @@
     {
       "id": 6,
       "host": "B",
-      "text": "说实话，我第一反应是……哲学家终于有饭吃了？但仔细想想这事儿其实挺严肃的。AI以前咱们聊的都是模型多强、参数多少，现在突然冒出来一个\"价值对齐\"、\"责任边界\"，这风向不对啊。",
-      "start": 43.9,
-      "duration": 17.304,
+      "text": "我跟你说，这个事我昨天看新闻的时候就笑了。会员停售这个事儿吧，在互联网行业其实挺常见的，但是发生在国产大模型身上，而且发生在Kimi这种已经跑出来的大厂身上，这个信号就不一样了。",
+      "start": 64.527,
+      "duration": 15.388,
       "audios": {
         "professional": "chunk_006_professional.mp3",
         "lively": "chunk_006_lively.mp3"
@@ -94,9 +94,9 @@
     {
       "id": 7,
       "host": "A",
-      "text": "我也是这种感觉。你想啊，前几年大家都在卷算力、卷数据、卷模型架构，工程师说了算对吧？现在呢？规则制定这场子，慢慢地要由哲学背景的人来参与了。",
-      "start": 61.669,
-      "duration": 16.718,
+      "text": "对，因为之前大家老说国产大模型烧钱嘛，商业模式跑不通。结果人家Kimi直接告诉你，不是跑不通，是算力不够卖给你的。",
+      "start": 80.38,
+      "duration": 12.863,
       "audios": {
         "professional": "chunk_007_professional.mp3",
         "lively": "chunk_007_lively.mp3"
@@ -109,9 +109,9 @@
     {
       "id": 8,
       "host": "B",
-      "text": "你注意啊，这不是说工程师不重要了，而是维度变了。技术能解决\"能不能做\"的问题，但\"该不该做\"这个问题，工程师答不上来。你让一个搞Transformer的人去讲电车难题，他能给你讲出花来吗？",
-      "start": 78.849,
-      "duration": 16.215,
+      "text": "你注意啊，这个事儿背后的逻辑特别值得讲。K3这次能火，核心肯定不是参数又涨了多少，你看月之暗面他们最近的对外口径，一直在强调推理能力、工程优化和产品体验。说明国产大模型已经过了那个\"我参数比你大所以我厉害\"的阶段了，现在拼的是产品力。",
+      "start": 93.705,
+      "duration": 22.678,
       "audios": {
         "professional": "chunk_008_professional.mp3",
         "lively": "chunk_008_lively.mp3"
@@ -124,9 +124,9 @@
     {
       "id": 9,
       "host": "A",
-      "text": "哈哈哈确实。我看到大纲里有一句话特别戳我——说未来各国和企业的AI竞争力，不仅取决于算力和算法，更取决于治理哲学的成熟度与话语权。这话分量很重啊。",
-      "start": 95.515,
-      "duration": 17.391,
+      "text": "没错。而且会员停售这个动作其实特别聪明，你想啊，他们既证明了需求是真实的——真的有那么多人愿意为AI付费——又没有过度承诺把自己搞崩。",
+      "start": 116.834,
+      "duration": 12.95,
       "audios": {
         "professional": "chunk_009_professional.mp3",
         "lively": "chunk_009_lively.mp3"
@@ -139,9 +139,9 @@
     {
       "id": 10,
       "host": "B",
-      "text": "重在哪呢？重在\"话语权\"这三个字。你看现在欧盟搞AI法案，美国搞各种行政令，咱们国家也在推自己的标准框架。这些东西表面上是法律条文，骨子里全是哲学问题——什么叫公平？什么叫透明？什么叫可解释？",
-      "start": 113.406,
-      "duration": 16.999,
+      "text": "说白了就是供需关系决定一切。GPU算力告急这个事，其实折射出整个行业之前都低估了推理侧的需求。大家之前都在卷训练，堆算力堆参数，结果真正上线之后发现，用户用起来那个推理消耗才是无底洞。",
+      "start": 130.284,
+      "duration": 18.958,
       "audios": {
         "professional": "chunk_010_professional.mp3",
         "lively": "chunk_010_lively.mp3"
@@ -154,9 +154,9 @@
     {
       "id": 11,
       "host": "A",
-      "text": "对，而且我发现一个特别有意思的现象。最近好多科技公司招人，开始列一个奇怪的要求：哲学博士优先。你以前见过这种招聘吗？",
-      "start": 130.843,
-      "duration": 10.101,
+      "text": "所以这个事件我觉得可以看成C端AI订阅制商业模式的一个真正的爆发拐点。咱们国内终于有拿得出手的、用户真金白银愿意掏钱订阅的AI产品了。",
+      "start": 149.68,
+      "duration": 13.472,
       "audios": {
         "professional": "chunk_011_professional.mp3",
         "lively": "chunk_011_lively.mp3"
@@ -169,9 +169,9 @@
     {
       "id": 12,
       "host": "B",
-      "text": "我跟你说，这不是开玩笑。我上个月还看到一家做AGI的公司，专门设了个\"首席哲学家\"的岗位，年薪开得比很多技术VP都高。说白了，他们是真意识到，光靠技术跑得快没用，跑偏了更麻烦。",
-      "start": 141.405,
-      "duration": 15.649,
+      "text": "对，而且你别忘了，这还只是一家Kimi。接下来各家跟进的话，整个推理算力的军备竞赛才真正开始。这对做AI基础设施的公司来说反而是个大利好。",
+      "start": 163.613,
+      "duration": 13.124,
       "audios": {
         "professional": "chunk_012_professional.mp3",
         "lively": "chunk_012_lively.mp3"
@@ -184,9 +184,9 @@
     {
       "id": 13,
       "host": "A",
-      "text": "嗯，这就让我想到主编给的那句金句——AI的竞争已从模型本身延伸至治理哲学与算力底座，技术之外的软实力和硬基础设施同样决定未来格局。",
-      "start": 157.499,
-      "duration": 16.738,
+      "text": "行，说到基础设施，我赶紧提一嘴，咱们等会儿快讯里会专门聊。先把第二个头条说了——WAIC 2026上有个挺牛的东西，智象未来发布了全球首个无限时长内容创作智能体，vivago R1。",
+      "start": 177.182,
+      "duration": 20.09,
       "audios": {
         "professional": "chunk_013_professional.mp3",
         "lively": "chunk_013_lively.mp3"
@@ -199,9 +199,9 @@
     {
       "id": 14,
       "host": "B",
-      "text": "这个总结挺到位的。算力是硬的，算法是软的，但治理哲学是介于两者之间的东西——它没芯片那么硬，但影响比算法还要深远。",
-      "start": 174.711,
-      "duration": 11.276,
+      "text": "无限时长这个概念其实挺难做的。你想啊，之前不管是Sora还是可灵，做视频生成都是有时长限制的，一般几秒到十几秒就要重新生成。",
+      "start": 197.746,
+      "duration": 14.411,
       "audios": {
         "professional": "chunk_014_professional.mp3",
         "lively": "chunk_014_lively.mp3"
@@ -214,9 +214,9 @@
     {
       "id": 15,
       "host": "A",
-      "text": "那咱们接着聊第二个头条，这个我觉得对咱们国家AI产业特别关键。\"不靠英伟达网卡，国产GPU直通方案实测出炉：吞吐飙升、延迟砍半\"。",
-      "start": 186.414,
-      "duration": 14.3,
+      "text": "对，我每次用那些工具都特别崩溃，好不容易生成一段满意的，结果镜头一切，又崩了。",
+      "start": 212.584,
+      "duration": 11.407,
       "audios": {
         "professional": "chunk_015_professional.mp3",
         "lively": "chunk_015_lively.mp3"
@@ -229,9 +229,9 @@
     {
       "id": 16,
       "host": "B",
-      "text": "这事儿我必须好好说说。你知道这意味着什么吗？以前国产GPU一直被诟病什么？单卡性能其实还行，但一上集群就拉胯，问题就出在互联上。",
-      "start": 201.178,
-      "duration": 12.713,
+      "text": "问题是，无限时长不是说简单地把生成时间拉长就行了。最大的挑战是叙事连贯性——人物不能变样，场景不能穿帮，剧情逻辑得接得上。这对模型的长上下文记忆和一致性控制要求极高。",
+      "start": 224.455,
+      "duration": 17.304,
       "audios": {
         "professional": "chunk_016_professional.mp3",
         "lively": "chunk_016_lively.mp3"
@@ -244,9 +244,9 @@
     {
       "id": 17,
       "host": "A",
-      "text": "等等，你给没听过技术细节的听众解释一下，啥叫RDMA？为啥这么重要？",
-      "start": 214.308,
-      "duration": 8.403,
+      "text": "所以vivago R1这个Agent的突破，本质上是把AI从一个\"片段生成工具\"升级成了一个\"持续叙事创作者\"？",
+      "start": 242.176,
+      "duration": 11.755,
       "audios": {
         "professional": "chunk_017_professional.mp3",
         "lively": "chunk_017_lively.mp3"
@@ -259,9 +259,9 @@
     {
       "id": 18,
       "host": "B",
-      "text": "行，我打个比方。你把GPU想象成工厂里的工人，单个工人干活挺快，但要几百个工人协同完成一个大项目，中间通信就特别关键。RDMA就是那种\"工人之间能直接对话、绕过所有中间人\"的通信方式，延迟极低，吞吐极高。",
-      "start": 223.147,
-      "duration": 20.612,
+      "text": "没错，这个意义就大了去了。你想啊，短视频、影视、广告这些内容生产链，以前最贵的成本是什么？是人力，是时间，是反复修改。如果AI真的能稳定输出长时长的连贯内容，那整个工作流会被彻底改写。",
+      "start": 254.367,
+      "duration": 19.306,
       "audios": {
         "professional": "chunk_018_professional.mp3",
         "lively": "chunk_018_lively.mp3"
@@ -274,9 +274,9 @@
     {
       "id": 19,
       "host": "A",
-      "text": "哦明白了。那英伟达的网卡在里头扮演啥角色？",
-      "start": 244.176,
-      "duration": 4.92,
+      "text": "而且对咱们普通人来说，以后拍短视频可能真的就是\"我口述一个想法，AI给我生成长片\"这种模式了。",
+      "start": 274.09,
+      "duration": 9.622,
       "audios": {
         "professional": "chunk_019_professional.mp3",
         "lively": "chunk_019_lively.mp3"
@@ -289,9 +289,9 @@
     {
       "id": 20,
       "host": "B",
-      "text": "以前大家都用英伟达的ConnectX系列网卡，就因为它支持RDMA而且性能顶呱呱。但你想啊，国产GPU用别人家的网卡做互联，等于脖子还是被别人卡着。这次不一样了，国产GPU终于在RDMA层面摆脱了对英伟达的依赖。",
-      "start": 249.592,
-      "duration": 25.14,
+      "text": "你这个场景我觉得一两年内就会普及。不过短期内，vivago R1最先冲击的应该是那种批量化生产短视频的MCN机构，还有做广告素材的乙方公司。",
+      "start": 284.208,
+      "duration": 13.124,
       "audios": {
         "professional": "chunk_020_professional.mp3",
         "lively": "chunk_020_lively.mp3"
@@ -304,9 +304,9 @@
     {
       "id": 21,
       "host": "A",
-      "text": "而且大纲里说\"吞吐飙升、延迟砍半\"，这个数据很硬核啊。",
-      "start": 275.144,
-      "duration": 7.271,
+      "text": "哎这事儿我突然想到一个点，咱们之前老说AI要替代人类嘛，你看这不就开始了吗？ 而且替代的不是蓝领工人，先替代的是内容创作者。",
+      "start": 297.744,
+      "duration": 10.884,
       "audios": {
         "professional": "chunk_021_professional.mp3",
         "lively": "chunk_021_lively.mp3"
@@ -319,9 +319,9 @@
     {
       "id": 22,
       "host": "B",
-      "text": "这可不是PPT数据，是实测出来的。这事儿如果放在三年前说出来，估计没人信。但现在做到了，这就是\"系统级替代\"——不是单点替代，是从芯片到互联到软件栈，整套东西咱们自己能玩了。",
-      "start": 282.894,
-      "duration": 17.26,
+      "text": "这就引出了咱们今天那个治理话题了。 不过先别急，咱们把快讯过一下。第一个，机器人顶会RSS的三项最佳论文出炉了，708篇送审只有8篇进决赛，华人学者继续主导前沿研究。",
+      "start": 309.107,
+      "duration": 17.304,
       "audios": {
         "professional": "chunk_022_professional.mp3",
         "lively": "chunk_022_lively.mp3"
@@ -334,9 +334,9 @@
     {
       "id": 23,
       "host": "A",
-      "text": "我跟你说，这事儿对咱们普通人也有影响。你想啊，国产算力一旦真正自主了，大模型训练成本能降下来，以后咱们用AI产品的费用可能也会更便宜。而且最关键的，供应链安全这事儿，再也不用担心被\"卡脖子\"了。",
-      "start": 300.586,
-      "duration": 20.656,
+      "text": "这个我印象特别深。我记得前几年RSS最佳论文里华人面孔就已经很多了，今年更是继续领跑。",
+      "start": 326.843,
+      "duration": 8.098,
       "audios": {
         "professional": "chunk_023_professional.mp3",
         "lively": "chunk_023_lively.mp3"
@@ -349,9 +349,9 @@
     {
       "id": 24,
       "host": "B",
-      "text": "对，这是里程碑意义。之前是\"能不能造出来\"的问题，现在是\"造出来能不能用好\"的问题。这两个问题的难度完全不在一个量级。",
-      "start": 321.71,
-      "duration": 11.034,
+      "text": "你注意啊，这背后其实是中国整个机器人研究体系的成熟。从硬件供应链到算法开源社区，华人学者现在做机器人研究的环境比十年前好太多了。 不过也得承认，基础理论层面的原创性突破，还是美国和欧洲那几个老牌实验室更强。",
+      "start": 335.409,
+      "duration": 20.917,
       "audios": {
         "professional": "chunk_024_professional.mp3",
         "lively": "chunk_024_lively.mp3"
@@ -364,9 +364,9 @@
     {
       "id": 25,
       "host": "A",
-      "text": "嗯，所以我觉得这条新闻和头条一其实是呼应起来的。头条一说软实力——治理哲学，这条说硬底座——算力基础设施。一个管方向，一个管执行，AI这块拼图越来越完整了。",
-      "start": 333.234,
-      "duration": 15.978,
+      "text": "嗯，期待未来几年咱们能看到更多从0到1的工作。 第二个快讯，GMI Cloud在WAIC上展示了全栈方案，AI Cloud、MaaS、Agentbox一站式智算方案。",
+      "start": 356.816,
+      "duration": 16.476,
       "audios": {
         "professional": "chunk_025_professional.mp3",
         "lively": "chunk_025_lively.mp3"
@@ -379,9 +379,9 @@
     {
       "id": 26,
       "host": "B",
-      "text": "这个观察挺到位的。咱们接着聊快讯，第一条，商汤大装置和国信数算达成战略合作，要共建算力网试验场。",
-      "start": 349.689,
-      "duration": 9.056,
+      "text": "基础设施层的竞争现在已经白热化了。你想啊，模型层卷完，Agent层卷完，最后大家发现，钱都被卖铲子的赚走了。 所以现在不管是阿里、腾讯这种大厂，还是GMI Cloud这种垂直玩家，都在拼命做全栈方案。",
+      "start": 373.769,
+      "duration": 19.829,
       "audios": {
         "professional": "chunk_026_professional.mp3",
         "lively": "chunk_026_lively.mp3"
@@ -394,9 +394,9 @@
     {
       "id": 27,
       "host": "A",
-      "text": "这事儿我理解就是响应\"全国一体化算力网\"的号召吧？现在各地都在搞算力中心，但都是散的，怎么把它们串起来是个大问题。",
-      "start": 359.163,
-      "duration": 10.971,
+      "text": "说白了就是大家都想当AI时代的\"水电煤\"供应商呗。",
+      "start": 394.016,
+      "duration": 5.181,
       "audios": {
         "professional": "chunk_027_professional.mp3",
         "lively": "chunk_027_lively.mp3"
@@ -409,9 +409,9 @@
     {
       "id": 28,
       "host": "B",
-      "text": "你注意啊，\"一体化\"这三个字背后是国家层面的算力调度思路。东部算力贵、西部算力便宜，怎么把西部便宜算力调度到东部用？这就像电力网络一样，算力也要搞\"西电东送\"。",
-      "start": 370.573,
-      "duration": 15.867,
+      "text": "对，但这个生意也卷啊。你不仅要提供算力，还要提供模型服务，还要提供Agent部署的整套工具链。 客户才会买单。",
+      "start": 399.636,
+      "duration": 11.189,
       "audios": {
         "professional": "chunk_028_professional.mp3",
         "lively": "chunk_028_lively.mp3"
@@ -424,9 +424,9 @@
     {
       "id": 29,
       "host": "A",
-      "text": "哈，这个类比妙。所以商汤和国信数算的合作，本质上是把\"算力调度\"这个事儿落地做试验田对吧？",
-      "start": 386.852,
-      "duration": 9.23,
+      "text": "行，最后一条快讯，这个特别有意思——冷门哲学成了\"治\"AI的热门。",
+      "start": 411.237,
+      "duration": 6.661,
       "audios": {
         "professional": "chunk_029_professional.mp3",
         "lively": "chunk_029_lively.mp3"
@@ -439,9 +439,9 @@
     {
       "id": 30,
       "host": "B",
-      "text": "对，而且商汤自己有模型、有人才，国信数算有数据中心、有客户资源，两家合作能把\"算力—模型—应用\"这条链路打通。这种合作如果跑通了，后面会有更多玩家跟进。",
-      "start": 396.575,
-      "duration": 12.495,
+      "text": "这条我得好好说一说。你有没有发现，今年不管是欧盟的AI法案修订，还是国内出台的各种AI治理规范，里面开始大量引用哲学概念了？什么价值对齐、技术中立性、算法道德主体性，这些以前只在象牙塔里讨论的东西， 现在真成了政策制定者的底层工具。",
+      "start": 418.391,
+      "duration": 22.963,
       "audios": {
         "professional": "chunk_030_professional.mp3",
         "lively": "chunk_030_lively.mp3"
@@ -454,9 +454,9 @@
     {
       "id": 31,
       "host": "A",
-      "text": "行，那咱们看看快讯二。WAIC端侧原生架构获产业共识，Om AI联汇正式发起物理AI协同发展倡议。",
-      "start": 409.479,
-      "duration": 14.106,
+      "text": "因为智能体越来越深入社会各环节嘛，它做的每一个决策都可能影响真实的人。那你光靠工程师写代码里的if-else逻辑肯定管不住了，必须上升到哲学层面的思辨。",
+      "start": 441.763,
+      "duration": 16.607,
       "audios": {
         "professional": "chunk_031_professional.mp3",
         "lively": "chunk_031_lively.mp3"
@@ -469,9 +469,9 @@
     {
       "id": 32,
       "host": "B",
-      "text": "端侧AI这个赛道，今年是真的起来了。说白了，就是AI不再非得跑在云端数据中心里，可以直接在你手机、你车、你家里那些设备上跑。",
-      "start": 424.072,
-      "duration": 11.929,
+      "text": "问题在于，哲学本身就没有标准答案啊。一百个哲学家对\"什么是公平\"能吵一百年。现在让这些思辨去指导AI治理，其实是给技术圈出了一道超纲的考题。",
+      "start": 458.857,
+      "duration": 13.821,
       "audios": {
         "professional": "chunk_032_professional.mp3",
         "lively": "chunk_032_lively.mp3"
@@ -484,9 +484,9 @@
     {
       "id": 33,
       "host": "A",
-      "text": "对，你看现在手机厂商、汽车厂商都在卷这个。这次Om AI联汇发起的\"物理AI协同发展倡议\"，听着挺新鲜的——物理AI是个啥概念？",
-      "start": 436.443,
-      "duration": 11.363,
+      "text": "不过我觉得这其实是个好事。说明咱们整个社会开始严肃对待AI了，不再是那种\"先野蛮生长再出问题再补牢\"的套路了。",
+      "start": 473.12,
+      "duration": 16.041,
       "audios": {
         "professional": "chunk_033_professional.mp3",
         "lively": "chunk_033_lively.mp3"
@@ -499,9 +499,9 @@
     {
       "id": 34,
       "host": "B",
-      "text": "我跟你讲，物理AI就是让AI不只是处理文字图片，而是能跟真实物理世界打交道。比如机器人、自动驾驶、智能工厂里的机械臂，这些都需要AI理解和操控物理环境。这跟你手机上聊天画图完全不是一个level。",
-      "start": 448.266,
-      "duration": 19.48,
+      "text": "所以你看，回头看今天咱们聊的这几件事——Kimi的商业化验证，vivago的创作能力突破，华人学者的研究主导地位，基础设施的全栈竞争，再到哲学介入治理——其实全部指向同一个判断：AI行业正在从青春期走向成年期。",
+      "start": 489.621,
+      "duration": 20.612,
       "audios": {
         "professional": "chunk_034_professional.mp3",
         "lively": "chunk_034_lively.mp3"
@@ -514,9 +514,9 @@
     {
       "id": 35,
       "host": "A",
-      "text": "哦，那Om AI联汇是个什么组织？",
-      "start": 468.217,
-      "duration": 3.701,
+      "text": "这个比喻我喜欢。青春期就是野蛮生长嘛，成年期就是既追求能力上限，又得承担社会责任。",
+      "start": 510.704,
+      "duration": 8.446,
       "audios": {
         "professional": "chunk_035_professional.mp3",
         "lively": "chunk_035_lively.mp3"
@@ -529,9 +529,9 @@
     {
       "id": 36,
       "host": "B",
-      "text": "我查了下，它是这次WAIC期间成立的一个产业联盟性质的东西，把做端侧芯片、做模型、做应用的公司拢到一块儿。大家约定好接口协议、数据格式，避免重复造轮子，一起把生态做大。",
-      "start": 472.33,
-      "duration": 16.259,
+      "text": "没错。能力天花板和治理底线同时往上抬，这个行业才有可能真正走得远。",
+      "start": 519.562,
+      "duration": 6.574,
       "audios": {
         "professional": "chunk_036_professional.mp3",
         "lively": "chunk_036_lively.mp3"
@@ -544,9 +544,9 @@
     {
       "id": 37,
       "host": "A",
-      "text": "这个思路挺对的。说白了就是——以前大家各干各的，互不兼容，最后市场做不大。现在先定标准、再搞技术，反而是更高效的做法。",
-      "start": 489.034,
-      "duration": 10.797,
+      "text": "行，今天的节目差不多就到这儿了。周航最后跟听众朋友们说两句？",
+      "start": 526.581,
+      "duration": 5.181,
       "audios": {
         "professional": "chunk_037_professional.mp3",
         "lively": "chunk_037_lively.mp3"
@@ -559,9 +559,9 @@
     {
       "id": 38,
       "host": "B",
-      "text": "没错，边缘AI已经成新风口了。这个浪潮里，咱们中国厂商其实有先天优势——制造业基础在这儿，物联网设备数量全球第一，应用场景多得不得了。",
-      "start": 500.286,
-      "duration": 12.21,
+      "text": "好，希望今天这期节目能让大家看到AI更立体的样子。它不只是一个冰冷的参数游戏，也不只是一个会抢走你工作的机器，它正在变成一个有规则、有伦理、有商业逻辑的复杂生态。",
+      "start": 532.217,
+      "duration": 16.955,
       "audios": {
         "professional": "chunk_038_professional.mp3",
         "lively": "chunk_038_lively.mp3"
@@ -574,9 +574,9 @@
     {
       "id": 39,
       "host": "A",
-      "text": "嗯，说到这个我想起来一个数据。全球物联网设备连接数早就超过百亿了，这里面随便挑几个场景拿出来做端侧AI，都是大生意。",
-      "start": 512.936,
-      "duration": 12.495,
+      "text": "感谢大家收听，咱们明天同一时间再见，拜拜！",
+      "start": 549.612,
+      "duration": 4.92,
       "audios": {
         "professional": "chunk_039_professional.mp3",
         "lively": "chunk_039_lively.mp3"
@@ -589,162 +589,12 @@
     {
       "id": 40,
       "host": "B",
-      "text": "行，咱们再看看最后一条轻松的——索尼WH-1000XX无线降噪头戴耳机体验。",
-      "start": 525.909,
-      "duration": 7.837,
+      "text": "拜拜！",
+      "start": 555.01,
+      "duration": 0.784,
       "audios": {
         "professional": "chunk_040_professional.mp3",
         "lively": "chunk_040_lively.mp3"
-      },
-      "voices": {
-        "professional": "host_b_professional",
-        "lively": "host_b_lively"
-      }
-    },
-    {
-      "id": 41,
-      "host": "A",
-      "text": "这个我感兴趣！索尼这代降噪耳机我看了少数派的评测，说降噪和音质全面升级？我最近坐飞机就想换一个好的降噪耳机。",
-      "start": 534.227,
-      "duration": 10.493,
-      "audios": {
-        "professional": "chunk_041_professional.mp3",
-        "lively": "chunk_041_lively.mp3"
-      },
-      "voices": {
-        "professional": "host_a_professional",
-        "lively": "host_a_lively"
-      }
-    },
-    {
-      "id": 42,
-      "host": "B",
-      "text": "是嘛，你要是问我，我会说这代确实有亮点。新一代的降噪算法用了AI自适应场景识别，你在地铁、咖啡馆、飞机上，它能自动切换降噪模式。音质方面，高码率LDAC配合新的振膜材料，听感很细腻。",
-      "start": 545.146,
-      "duration": 17.913,
-      "audios": {
-        "professional": "chunk_042_professional.mp3",
-        "lively": "chunk_042_lively.mp3"
-      },
-      "voices": {
-        "professional": "host_b_professional",
-        "lively": "host_b_lively"
-      }
-    },
-    {
-      "id": 43,
-      "host": "A",
-      "text": "听着挺好，但索尼命名这事儿我必须吐槽一下。WH-1000X、WH-1000XM、WH-1000XX……这命名鬼才设计出来的，消费者谁能分清啊？",
-      "start": 563.529,
-      "duration": 20.482,
-      "audios": {
-        "professional": "chunk_043_professional.mp3",
-        "lively": "chunk_043_lively.mp3"
-      },
-      "voices": {
-        "professional": "host_a_professional",
-        "lively": "host_a_lively"
-      }
-    },
-    {
-      "id": 44,
-      "host": "B",
-      "text": "哈哈哈你也发现了？我跟你说，索尼这命名逻辑堪称业界谜题。每一代加个字母，X变XM，XM又变回X，简直是行为艺术。我都怀疑他们产品经理是不是故意为难消费者。",
-      "start": 584.472,
-      "duration": 20.308,
-      "audios": {
-        "professional": "chunk_044_professional.mp3",
-        "lively": "chunk_044_lively.mp3"
-      },
-      "voices": {
-        "professional": "host_b_professional",
-        "lively": "host_b_lively"
-      }
-    },
-    {
-      "id": 45,
-      "host": "A",
-      "text": "我觉得不是为难，是索尼法务部要求\"既要延续经典又要显得新款\"，最后搞出来的缝合怪。不过评测说这一代续航好像又提升了？",
-      "start": 605.236,
-      "duration": 14.846,
-      "audios": {
-        "professional": "chunk_045_professional.mp3",
-        "lively": "chunk_045_lively.mp3"
-      },
-      "voices": {
-        "professional": "host_a_professional",
-        "lively": "host_a_lively"
-      }
-    },
-    {
-      "id": 46,
-      "host": "B",
-      "text": "对，官方数据说续航能达到40小时以上，比上一代又多了几个小时。降噪开启情况下也能撑30小时，对于我这种经常出差的人挺友好。",
-      "start": 620.548,
-      "duration": 10.841,
-      "audios": {
-        "professional": "chunk_046_professional.mp3",
-        "lively": "chunk_046_lively.mp3"
-      },
-      "voices": {
-        "professional": "host_b_professional",
-        "lively": "host_b_lively"
-      }
-    },
-    {
-      "id": 47,
-      "host": "A",
-      "text": "嗯，那总结一下吧。今天咱们聊了AI治理哲学、国产GPU算力突围、商汤合作、端侧物理AI、索尼耳机……信息量挺大。",
-      "start": 631.822,
-      "duration": 11.973,
-      "audios": {
-        "professional": "chunk_047_professional.mp3",
-        "lively": "chunk_047_lively.mp3"
-      },
-      "voices": {
-        "professional": "host_a_professional",
-        "lively": "host_a_lively"
-      }
-    },
-    {
-      "id": 48,
-      "host": "B",
-      "text": "是这样，但其实这些新闻背后都有一条暗线——AI正在从\"技术议题\"变成\"社会议题\"，从\"单点突破\"走向\"系统级竞争\"。未来几年，看一个国家或企业的AI实力，不能光看模型发布，得看治理、算力、生态、终端这些综合的东西。",
-      "start": 644.202,
-      "duration": 19.892,
-      "audios": {
-        "professional": "chunk_048_professional.mp3",
-        "lively": "chunk_048_lively.mp3"
-      },
-      "voices": {
-        "professional": "host_b_professional",
-        "lively": "host_b_lively"
-      }
-    },
-    {
-      "id": 49,
-      "host": "A",
-      "text": "说得好。好了听众朋友们，今天的AI每日先锋就到这里，咱们明天见！",
-      "start": 664.564,
-      "duration": 10.101,
-      "audios": {
-        "professional": "chunk_049_professional.mp3",
-        "lively": "chunk_049_lively.mp3"
-      },
-      "voices": {
-        "professional": "host_a_professional",
-        "lively": "host_a_lively"
-      }
-    },
-    {
-      "id": 50,
-      "host": "B",
-      "text": "明天见！",
-      "start": 675.066,
-      "duration": 0.653,
-      "audios": {
-        "professional": "chunk_050_professional.mp3",
-        "lively": "chunk_050_lively.mp3"
       },
       "voices": {
         "professional": "host_b_professional",
