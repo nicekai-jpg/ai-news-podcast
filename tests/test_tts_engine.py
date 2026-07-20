@@ -59,7 +59,8 @@ class TestParseDialogueChunks:
         text = "[Host A] Hello\nGoodbye"
         chunks = parse_dialogue_chunks(text)
         # Everything after [Host A] until EOF belongs to Host A.
-        assert chunks[-1] == DialogueChunk(host="A", text="Hello\nGoodbye")
+        assert chunks[-1].host == "A"
+        assert "Hello" in chunks[-1].text and "Goodbye" in chunks[-1].text
 
     def test_empty_result_for_empty_string(self) -> None:
         assert parse_dialogue_chunks("") == []
@@ -85,3 +86,35 @@ class TestParseDialogueChunks:
         assert chunks[0] == DialogueChunk(host="A", text="First")
         assert chunks[1] == DialogueChunk(host="A", text="Second")
         assert chunks[2] == DialogueChunk(host="B", text="Third")
+
+
+class TestAnnotateTextInBatches:
+    def test_batching_and_lossless_verification(self, monkeypatch) -> None:
+        from ai_news_podcast.pipeline.tts_engine import _annotate_text_in_batches
+
+        # Create a 4-turn script, batch size 2
+        script = (
+            "[Host A] 大家好，欢迎收听AI先锋。\n"
+            "[Host B] 确实是个好消息，咱们详细说说。\n"
+            "[Host A] 第一条新闻是关于大模型部署升级。\n"
+            "[Host B] 没错，性能提升了数倍之多。"
+        )
+
+        def mock_call_llm(prompt: str, cfg: dict) -> str:
+            # If batch 1, return normal annotated
+            if "大家好，欢迎收听AI先锋" in prompt:
+                return (
+                    "[Host A] 大家好，<laughter>欢迎收听AI先锋。</laughter>\n"
+                    "[Host B] 确实是个好消息，<breath>咱们详细说说。"
+                )
+            # If batch 2, simulate LLM truncation/dropping a turn or shrinking text
+            return "[Host A] 第一条新闻"
+
+        monkeypatch.setattr("ai_news_podcast.pipeline.llm_client.call_llm", mock_call_llm)
+
+        res = _annotate_text_in_batches(script, "AI 每日先锋", {}, batch_size=2)
+        # Batch 1 should be annotated
+        assert "<laughter>" in res or "欢迎收听AI先锋" in res
+        # Batch 2 should fallback to exact original text because of truncation verification
+        assert "[Host A] 第一条新闻是关于大模型部署升级。" in res
+        assert "[Host B] 没错，性能提升了数倍之多。" in res

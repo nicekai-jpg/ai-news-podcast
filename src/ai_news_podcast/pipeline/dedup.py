@@ -214,6 +214,89 @@ def get_recent_broadcasted_texts(
 # ---------------------------------------------------------------------------
 
 
+def _extract_model_versions(text: str) -> set[tuple[str, str]]:
+    """Extract (model_family, version) pairs from text, e.g., ('qwen', '3.8'), ('kimi', 'k3')."""
+    import re
+
+    text_lower = text.lower()
+
+    family_map = {
+        "千问": "qwen",
+        "通义": "qwen",
+        "qwen": "qwen",
+        "kimi": "kimi",
+        "月之暗面": "kimi",
+        "deepseek": "deepseek",
+        "claude": "claude",
+        "gpt": "gpt",
+        "gemini": "gemini",
+        "llama": "llama",
+        "glm": "glm",
+        "智谱": "glm",
+        "minimax": "minimax",
+        "hunyuan": "hunyuan",
+        "混元": "hunyuan",
+        "doubao": "doubao",
+        "豆包": "doubao",
+        "gemma": "gemma",
+        "smollm": "smollm",
+        "mistral": "mistral",
+    }
+
+    found_pairs: set[tuple[str, str]] = set()
+    for raw_key, family in family_map.items():
+        if raw_key in text_lower:
+            pattern = rf"(?:{raw_key})[\s\-_]*(?:v|k|r)?(\d+(?:\.\d+)*|k\d+(?:\.\d+)*|v\d+(?:\.\d+)*|r\d+(?:\.\d+)*)"
+            matches = re.findall(pattern, text_lower)
+            for m in matches:
+                if m and len(m) >= 1:
+                    found_pairs.add((family, m.strip("vk-_")))
+
+    for raw_key, family in family_map.items():
+        if raw_key in text_lower:
+            gen_matches = re.findall(
+                r"\b(?:v|k|r)?(\d+\.\d+|[2-9]b|\d+t|k[2-5](?:\.\d+)?|v[2-6](?:\.\d+)?)\b",
+                text_lower,
+            )
+            for gm in gen_matches:
+                clean_v = gm.strip("vk-_")
+                if clean_v and clean_v not in ("2024", "2025", "2026"):
+                    found_pairs.add((family, clean_v))
+
+    return found_pairs
+
+
+def _are_distinct_model_versions(new_text: str, hist_text: str) -> bool:
+    """Check if new_text specifies a model version distinct from or missing in hist_text."""
+    new_versions = _extract_model_versions(new_text)
+    if not new_versions:
+        return False
+
+    hist_versions = _extract_model_versions(hist_text)
+    hist_text_lower = hist_text.lower()
+
+    for family, new_v in new_versions:
+        fam_hist_versions = {v for f, v in hist_versions if f == family}
+        if fam_hist_versions and new_v not in fam_hist_versions:
+            log.info(
+                "Model version divergence detected for '%s': new '%s' vs historical %s. Keeping item.",
+                family,
+                new_v,
+                fam_hist_versions,
+            )
+            return True
+
+        if new_v not in hist_text_lower:
+            log.info(
+                "Model version '%s' (%s) not found in historical match. Keeping item.",
+                new_v,
+                family,
+            )
+            return True
+
+    return False
+
+
 def _build_dedup_detail(
     item: Any,
     matched_rec: HistoricalRecord,
@@ -269,6 +352,11 @@ def _dedup_with_sentence_transformers(
         if max_sim >= sim_threshold:
             max_hist_idx = int(cos_scores[idx].argmax())
             matched_rec = recent_records[max_hist_idx]
+
+            item_text = f"{item.title} {item.summary} {item.full_text_snippet}"
+            if _are_distinct_model_versions(item_text, matched_rec.text):
+                filtered_items.append(item)
+                continue
 
             log.info(
                 "Semantic dedup (ST): filtered out '%s' (similarity %.2f >= %.2f with historical story '%s' from %s)",
@@ -341,6 +429,11 @@ def _dedup_with_tfidf(
         if max_sim >= sim_threshold:
             max_hist_idx = int(sim_matrix[idx].argmax())
             matched_rec = recent_records[max_hist_idx]
+
+            item_text = f"{item.title} {item.summary} {item.full_text_snippet}"
+            if _are_distinct_model_versions(item_text, matched_rec.text):
+                filtered_items.append(item)
+                continue
 
             log.info(
                 "Semantic dedup (TF-IDF): filtered out '%s' (similarity %.2f >= %.2f with historical story '%s' from %s)",
