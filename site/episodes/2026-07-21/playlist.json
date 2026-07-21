@@ -1,0 +1,755 @@
+{
+  "episode_id": "2026-07-21",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年7月21日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.837,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。苏晴啊，今天HN热榜基本被AI话题刷屏了，但这次不太一样——不是哪家单纯发新模型，而是一个大趋势冒出来了。",
+      "start": 9.286,
+      "duration": 12.016,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "真的假的？我昨晚忙着追剧没怎么看。什么趋势啊？",
+      "start": 21.799,
+      "duration": 5.747,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你注意啊，Anthropic正在遭遇一场夹击——内部是Kimi K3和Qwen 3.8这两个中国选手在快速逼近前沿，迭代速度吓人；外部呢，Anthropic自己团队和组织架构也出现了松散迹象。内外一起出问题。",
+      "start": 27.999,
+      "duration": 16.757,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "这也太刺激了吧。Kimi K3和Qwen 3.8我之前还真没太关注，感觉好像一下子冒出来的。这种\"逼近前沿\"具体是什么意思？是benchmark刷得比Anthropic强了？",
+      "start": 45.161,
+      "duration": 16.172,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "问题就在这里——不是说单一指标超过，而是综合能力已经能在很多任务上跟Claude掰手腕了。Anthropic之前一直以\"安全对齐\"为卖点，模型质量也确实稳居第一梯队。但K3和Qwen 3.8来了之后，这个差距在肉眼可见地缩小，而且人家还能开源用，这威胁就大了。",
+      "start": 61.766,
+      "duration": 23.636,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "我跟你说，这就是开源的恐怖之处。闭源公司再厉害，也扛不住全世界开发者一起帮你迭代。",
+      "start": 85.867,
+      "duration": 7.576,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "对。说白了，开源不是慈善，是战略。当开发者能用上接近前沿水平的开源模型，那谁还花钱调Claude API？特别是企业用户，成本敏感型场景直接就被截胡了。",
+      "start": 93.905,
+      "duration": 16.041,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "那这个\"美中三足鼎立\"的临界点你是怎么判断的？",
+      "start": 110.397,
+      "duration": 4.659,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "我个人觉得，这其实是从\"美欧双雄\"——也就是OpenAI和Anthropic这两家——转向中美竞争的转折点。以前欧洲还有个Mistral撑场面做第三极，但你看Mistral现在影响力真的越来越有限。中国这边靠着阿里、月之暗面这些公司，加上开源权重策略，正在形成一个完全不一样的生态。",
+      "start": 115.556,
+      "duration": 23.941,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "我好奇问一下，开源权重到底是什么意思？跟完全开源有区别吗？",
+      "start": 139.935,
+      "duration": 6.008,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "你注意啊，开源权重就是模型权重可以下载，你可以在自己机器上跑、微调，但训练数据、训练代码不一定完全公开。这是一种折中——既给了社区使用的自由，又保留了一些商业秘密。相比完全开源，这种策略对商业化其实更友好。",
+      "start": 146.404,
+      "duration": 19.263,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "懂了。照这么说，Anthropic现在是真的危险了？",
+      "start": 166.112,
+      "duration": 4.659,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "怎么说呢，短期不会倒，但中长期压力很大。它的护城河以前是\"安全\"+\"质量\"这两条腿，现在质量那条腿的壁垒在松，安全这个故事又很难直接变现。如果说一年前大家还觉得Anthropic是和OpenAI平起平坐的，现在这个地位真的有点悬了。",
+      "start": 171.245,
+      "duration": 20.395,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "说到AI格局变化，头条第二个更有意思——说所有顶级模型厂商开始汇聚到同一家Agentic Infra。我看到这标题的时候愣了一下，这具体指什么？",
+      "start": 192.067,
+      "duration": 14.803,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "这个趋势其实藏了挺长一段时间了。你注意啊，咱们看2026年上半年，OpenAI、Anthropic、Google DeepMind这些做模型的，开发自家Agent时用的那套基础设施——编排框架、工具调用协议、记忆系统——都开始往同一个方向收敛。",
+      "start": 207.334,
+      "duration": 18.261,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "收敛到哪家啊？",
+      "start": 226.012,
+      "duration": 1.35,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "这就是最关键的部分——不是收敛到某一家的产品，而是那个\"水电煤\"层面的标准正在固化。比如智能体之间通信的协议、长短期记忆的存储格式、工具调用的接口规范，这些东西一旦大家都用同一套，后来者想切换就很痛苦了。",
+      "start": 227.798,
+      "duration": 19.219,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "我跟你说，这让我想到当年的云计算——AWS先做，后来大家都按AWS那套API来设计架构，再后来Azure、GCP再怎么使劲推，企业迁移成本都高得离谱。AI Agent现在也是这个剧本？",
+      "start": 247.434,
+      "duration": 19.002,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "完全一样。问题是，这会带来一个很深刻的二阶效应。当基础设施层固化，上层应用的开发成本会大幅下降——大家不用重复造轮子了嘛。但同时，基础设施提供方会变得极其有话语权。谁掌握标准，谁就有定价权。",
+      "start": 266.932,
+      "duration": 17.957,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "所以AGI时代的\"水电煤\"就是Agentic Infra？ 那现在看，谁有机会做这个水电煤的公司啊？",
+      "start": 285.301,
+      "duration": 10.362,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "现阶段比较有机会的是几类——一类是云厂商转型的，比如AWS的Bedrock那一套在往Agent方向走；一类是专门做Agent中间件的创业公司； 还有就是模型厂商自己把内部那层基础设施开放出来。到底谁最后胜出不好说，但格局已经开始集中了。",
+      "start": 296.142,
+      "duration": 22.746,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "我感觉这个趋势对普通开发者来说应该是个好消息吧？",
+      "start": 319.32,
+      "duration": 3.701,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "是好消息。你想啊，假设今天你要做一个AI Agent，光是工具调用协议的适配就可能要折腾好几周。 要是大家都按同一套标准来做，你直接拿来用就行，把精力专注在业务逻辑上。但也有隐忧——就是被生态绑定的风险。",
+      "start": 323.489,
+      "duration": 19.568,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "嗯，跟当年数据库锁定在Oracle一个道理。 话说回来，今天几条快讯也挺有料的。NVIDIA那个Cosmos 3 Edge你看了没？",
+      "start": 343.547,
+      "duration": 11.189,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "我看了，这个挺有意思。 你注意啊，Cosmos 3 Edge是面向物理AI的世界模型——说人话就是，让机器人能在脑子里\"预演\"接下来一秒会发什么。",
+      "start": 355.213,
+      "duration": 12.123,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "这不就是科幻片那种？ 机器人抬头看一眼桌子，就能预测杯子会不会掉？",
+      "start": 367.754,
+      "duration": 7.184,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "对，差不多这个意思。它让机器人理解场景变化、预测下一步，并且评估自己行动的后果。比如它想推一个箱子，它能先在脑子里模拟一下——\"我推了它会倒吗？会砸到旁边的花瓶吗？\"这是把\"反应式\"升级成了\"认知式\"。",
+      "start": 375.377,
+      "duration": 17.086,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "我跟你说，这个对具身智能来说是质的飞跃啊。以前机器人是\"看到就反应\"，现在变成\"看到—预测—评估—再行动\"。这个能力一旦成熟，工厂里的机械臂、家里的服务机器人、路况复杂的自动驾驶——可靠性会上一个大台阶。",
+      "start": 392.875,
+      "duration": 20.177,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "你理解得到位。但现在Cosmos 3 Edge还是Edge版本，也就是边缘部署，算力要求不高，可能先在受控环境里跑起来。 云端版本可以处理更复杂的场景，但得有网络。两种版本是互补的，覆盖不同的实时性需求。",
+      "start": 413.545,
+      "duration": 18.479,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "嗯，分得很细。 对了，Google自研的那个新AI芯片你有什么看法？我看说是专门给Gemini用的下一代TPU。",
+      "start": 432.433,
+      "duration": 11.712,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "这事儿意义很大但做得比较低调。你注意啊，Google TPU其实已经迭代很多代了，下一代这一版据说在推理效率上做了大幅度的优化。",
+      "start": 444.632,
+      "duration": 10.817,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "推理效率提升具体意味着什么？",
+      "start": 455.891,
+      "duration": 3.222,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "说白了，就是跑同样一个模型，能耗更低、速度更快、单位成本更低。这对Google来说重要得不得了，因为Gemini规模越做越大，推理成本已经是天文数字。如果自研芯片能把单token成本压下来，Gemini在市场上的价格竞争力会显著增强。",
+      "start": 459.573,
+      "duration": 20.395,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "我跟你说，这是不是说明Google要继续在模型层跟OpenAI、Anthropic正面硬刚？",
+      "start": 480.439,
+      "duration": 7.532,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "是的。但Google走的是另一条路——它有芯片、有模型、有应用场景（搜索、Workspace、Cloud），它可以做全栈优化。OpenAI和Anthropic主要还是依赖英伟达，成本结构上天然吃亏。所以Google这套打法其实是它传统强项的再次发挥，跟前几年的TPU策略是一脉相承的。",
+      "start": 488.383,
+      "duration": 20.308,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "那自研芯片这个护城河确实够深。 对了，刚才看到HN上836点讨论，说中国开源权重策略赢得了全球开发者的新共识，这个你怎么看？",
+      "start": 509.136,
+      "duration": 15.456,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "这个讨论还挺热闹的。核心观点是——你看Qwen、Kimi这些系列，权重一公开，全世界的独立开发者、中小企业、甚至一些大公司的内部工具就开始往中国模型上迁移。这是一种\"用开放换生态\"的策略，而且已经奏效了。",
+      "start": 525.047,
+      "duration": 20.003,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "哈，这跟我们刚才聊的K3、Qwen 3.8那个趋势是连着的嘛。",
+      "start": 545.49,
+      "duration": 9.056,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "同一回事儿。开源权重一旦形成生态，先发优势就建立了。后来者哪怕技术更强，也很难撬动——因为生态有锁定效应，迁移成本在那儿摆着。这对中国AI公司来说是一个非常聪明的战略选择。",
+      "start": 555.024,
+      "duration": 15.388,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "我感觉这有点像中国在5G、新能源车上的打法——用市场规模换技术标准的话语权？",
+      "start": 570.893,
+      "duration": 7.488,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "你这个类比挺到位的。不过AI行业里还有它自己的特点——开源代码、模型权重可以在网上全球分发，不像5G那样需要逐个国家去推基站。所以这个策略的传播速度更快，影响范围也更广，一个版本发布几天之内全球开发者就用上了。",
+      "start": 578.807,
+      "duration": 17.695,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "那美国那边是不是有点坐不住了？",
+      "start": 596.972,
+      "duration": 4.963,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "多少有一点。你看OpenAI最近也开了几款模型的部分权重，Anthropic还是坚持闭源——这个姿态本身就说明了市场压力。但闭源公司现在面临的问题就是，开源模型的\"够用\"程度在以肉眼可见的速度逼近闭源前沿。",
+      "start": 602.396,
+      "duration": 20.806,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "行，今天聊下来感觉AI行业确实是——怎么说呢——一个\"栈层固化\"的阶段。",
+      "start": 623.658,
+      "duration": 7.619,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "对，这就是今天主编给的那句金句的意思。从底层芯片、中间件Agentic Infra到顶层模型战局，地缘竞争和开源浪潮同时冲击着旧秩序。这个判断挺准的，是观察2026年AI格局的一条主线。",
+      "start": 631.743,
+      "duration": 17.521,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "我觉得对普通听众来说，最实在的两个变化——一个是能用到越来越强的开源模型，二是机器人开始有\"预判\"能力了。其实这两个都挺影响日常生活的。",
+      "start": 649.697,
+      "duration": 14.212,
+      "audios": {
+        "professional": "chunk_047_professional.mp3",
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "还有Google自研芯片那条线，未来推理成本真要降下来，咱们用AI产品的费用也可能慢慢降下来。行业内部的竞争最终还是会传导到消费者端的。",
+      "start": 664.316,
+      "duration": 13.037,
+      "audios": {
+        "professional": "chunk_048_professional.mp3",
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "好，今天先聊到这儿。听众朋友如果有什么想法，欢迎在评论区留言，咱们下期见。",
+      "start": 677.823,
+      "duration": 6.618,
+      "audios": {
+        "professional": "chunk_049_professional.mp3",
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "下期见。",
+      "start": 684.842,
+      "duration": 0.784,
+      "audios": {
+        "professional": "chunk_050_professional.mp3",
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
