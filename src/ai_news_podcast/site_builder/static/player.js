@@ -200,25 +200,15 @@
               }
             }
 
-            buildVoiceSelectors();
             document.getElementById('playback-btn-sentence').style.display = 'block';
-            var voiceSelector = document.getElementById('voice-selector-row');
-            if (voiceSelector) {
-              voiceSelector.style.display = 'flex';
-              voiceSelector.classList.toggle('dimmed', playbackMode === 'full');
-            }
           } else {
             document.getElementById('playback-btn-sentence').style.display = 'none';
-            var voiceSelector = document.getElementById('voice-selector-row');
-            if (voiceSelector) voiceSelector.style.display = 'none';
-            setPlaybackMode('full');
           }
         } catch (ePl) {
           document.getElementById('playback-btn-sentence').style.display = 'none';
-          var voiceSelector = document.getElementById('voice-selector-row');
-          if (voiceSelector) voiceSelector.style.display = 'none';
-          setPlaybackMode('full');
         }
+
+        buildVoiceSelectors();
 
         if (playbackMode === 'sentence' && currentPlaylist && currentPlaylist.length > 0) {
           currentChunkIndex = 0;
@@ -496,10 +486,19 @@
       const row = document.getElementById('voice-selector-row');
       if (!row) return;
       row.innerHTML = '';
+      row.style.display = 'flex';
+
+      const title = document.createElement('div');
+      title.className = 'voice-deck-title';
+      title.innerHTML = '🎙️ 双主播音色定制 (Host Voice Timbre Deck)';
+      row.appendChild(title);
+
+      const hostsContainer = document.createElement('div');
+      hostsContainer.className = 'voice-hosts-container';
 
       const hosts = [
-        { key: 'A', name: '苏晴音色', configKey: 'host_a' },
-        { key: 'B', name: '周航音色', configKey: 'host_b' }
+        { key: 'A', name: '👩‍💼 苏晴音色', configKey: 'host_a' },
+        { key: 'B', name: '👨‍💼 周航音色', configKey: 'host_b' }
       ];
 
       hosts.forEach(function(h) {
@@ -518,7 +517,7 @@
 
         variants.forEach(function(variantId) {
           const btn = document.createElement('button');
-          btn.className = 'voice-pill-btn';
+          btn.className = 'voice-pill-btn host-' + h.key.toLowerCase() + '-btn';
           if (selectedVoices[h.key] === variantId) {
             btn.classList.add('active');
           }
@@ -530,8 +529,10 @@
         });
 
         group.appendChild(pillGroup);
-        row.appendChild(group);
+        hostsContainer.appendChild(group);
       });
+
+      row.appendChild(hostsContainer);
     }
 
     function selectVoiceVariant(host, variant) {
