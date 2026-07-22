@@ -143,7 +143,13 @@ def build_index_html(
       </div>
     </div>
 
-    <div class="date-selector-wrap"><div class="date-pills" id="date-pills"></div></div>
+    <div class="date-selector-wrap">
+      <div class="studio-calendar-header">
+        <span>📅 播客节目历程 (Program Calendar)</span>
+        <span class="calendar-sub-badge">点击即可切换多期对谈与日报</span>
+      </div>
+      <div class="date-pills" id="date-pills"></div>
+    </div>
 
     <div class="main-layout">
       <!-- AI 播客模式布局 -->
@@ -151,6 +157,26 @@ def build_index_html(
         <!-- 左侧播客播控台 -->
         <div class="podcast-sidebar">
           <div class="station-card">
+            <!-- 双 AI 主播动态卡片 Deck -->
+            <div class="host-cards-deck">
+              <div class="host-profile-card host-a-card" id="host-card-a">
+                <div class="host-avatar-ring host-a-ring">👩‍💼</div>
+                <div class="host-meta-text">
+                  <span class="host-name">苏晴</span>
+                  <span class="host-role">Host A · 控场解说</span>
+                </div>
+                <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
+              </div>
+              <div class="host-profile-card host-b-card" id="host-card-b">
+                <div class="host-avatar-ring host-b-ring">👨‍💼</div>
+                <div class="host-meta-text">
+                  <span class="host-name">周航</span>
+                  <span class="host-role">Host B · 技术拆解</span>
+                </div>
+                <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
+              </div>
+            </div>
+
             <div class="vinyl-wrapper">
               <div class="vinyl-disc" id="vinyl-disc">
                 <img src="./logo.png" alt="Album Art" class="vinyl-art">
@@ -218,9 +244,16 @@ def build_index_html(
         <!-- 右侧播客剧本 -->
         <div class="podcast-pane">
           <div class="pane-header">
-            <span>🎙️ 播客剧本</span>
-            <span class="teleprompter-badge">智能音文联动</span>
+            <span>🎙️ 播客对谈剧本</span>
+            <span class="teleprompter-badge">🔴 智能音文联动</span>
           </div>
+
+          <!-- 本期核心金句卡片 -->
+          <div class="episode-insight-banner" id="episode-insight-banner">
+            <div class="insight-badge">💡 本期核心研判</div>
+            <div class="insight-text" id="insight-text-content">每天 5 分钟，聚合 AI 领域最新发布、技术进展与行业观察。</div>
+          </div>
+
           <div class="transcript-container-wrapper" style="position: relative; flex: 1; overflow: hidden; display: flex; flex-direction: column;">
             <div class="transcript-container" id="cast-panel-body" onscroll="handleTranscriptScroll()"></div>
             <!-- 人机共存滚动打断悬浮按钮 -->
