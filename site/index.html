@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AI 每日先锋</title>
+  <title>AI 新闻快报</title>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     :root {
@@ -302,67 +302,166 @@
       box-shadow: 0 10px 30px rgba(6,182,212,0.55);
     }
 
-    /* 科技日报 Medium 杂志版面 */
+    /* 科技日报 Executive Intelligence 杂志版面 */
     .report-workspace { display: flex; justify-content: center; }
-    .magazine-container { max-width: 800px; width: 100%; background: var(--surface); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 48px; box-shadow: var(--shadow-lg); }
+    .magazine-container {
+      max-width: 860px;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      border-top: 3px solid #06b6d4;
+      border-radius: var(--radius-lg);
+      padding: 52px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 50px rgba(6, 182, 212, 0.05);
+      position: relative;
+    }
     @media (max-width: 768px) {
-      .magazine-container { padding: 24px; }
+      .magazine-container { padding: 24px 18px; }
     }
 
-    .magazine-header { text-align: center; margin-bottom: 40px; }
-    .magazine-issue { font-size: 0.78rem; font-weight: 700; color: var(--accent-light); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px; }
-    .magazine-title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 900; color: #fff; letter-spacing: -0.02em; line-height: 1.2; background: linear-gradient(135deg, #fff 50%, var(--accent-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .magazine-divider { height: 1px; background: linear-gradient(to right, transparent, var(--border-hover), transparent); margin-top: 24px; }
+    .magazine-header { text-align: center; margin-bottom: 44px; position: relative; }
+    .magazine-issue {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      padding: 4px 14px;
+      background: rgba(6, 182, 212, 0.1);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      border-radius: 20px;
+    }
+    .magazine-title {
+      font-size: clamp(2rem, 4.5vw, 2.75rem);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+      background: linear-gradient(135deg, #ffffff 40%, #a5f3fc 70%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .magazine-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(56, 189, 248, 0.3), transparent);
+      margin-top: 28px;
+    }
 
-    .magazine-body { display: flex; flex-direction: column; gap: 36px; }
-    .magazine-main-content { font-size: 1rem; color: #d1d5db; line-height: 1.85; }
+    .magazine-body { display: flex; flex-direction: column; gap: 40px; }
+    .magazine-main-content { font-size: 1rem; color: #cbd5e1; line-height: 1.85; }
 
-    .magazine-main-content h1 { font-size: 1.1rem; font-weight: 700; color: var(--accent-light); margin-bottom: 16px; letter-spacing: 0.05em; }
-    .magazine-main-content p strong { color: #fff; font-weight: 700; }
+    .magazine-main-content h1 { font-size: 1.2rem; font-weight: 800; color: #38bdf8; margin-bottom: 20px; letter-spacing: 0.05em; }
+    .magazine-main-content p strong { color: #f8fafc; font-weight: 700; }
     .magazine-main-content p { margin-bottom: 24px; }
-    .magazine-main-content hr { border: none; height: 1px; background: rgba(255,255,255,0.04); margin: 36px 0; }
+    .magazine-main-content hr { border: none; height: 1px; background: rgba(255,255,255,0.06); margin: 40px 0; }
 
-    .magazine-main-content h2 { font-size: 1.15rem; font-weight: 850; color: #fff; margin: 36px 0 16px; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 8px; }
-    .magazine-main-content h2::before { content: '✦'; color: var(--accent); font-size: 0.9rem; }
+    /* 板块二级标题 */
+    .magazine-main-content h2 {
+      font-size: 1.25rem;
+      font-weight: 850;
+      color: #f8fafc;
+      margin: 44px 0 20px;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+      padding-bottom: 10px;
+    }
+    .magazine-main-content h2::before {
+      content: '⚡';
+      font-size: 1rem;
+      color: #38bdf8;
+    }
 
-    .magazine-main-content h3 { font-size: 1.05rem; font-weight: 700; color: #e2e8f0; margin: 24px 0 12px; }
+    .magazine-main-content h3 { font-size: 1.08rem; font-weight: 700; color: #f1f5f9; margin: 28px 0 14px; }
 
-    .magazine-main-content blockquote { border-left: 3px solid var(--accent); padding-left: 16px; margin: 24px 0; color: var(--accent-light); font-style: italic; }
-
-    /* 日报卡片浮雕及柔和发光边框 */
-    .magazine-main-content p:has(strong) {
-      background: rgba(255, 255, 255, 0.015);
-      padding: 24px;
+    /* 导语特制高光卡片 */
+    .magazine-main-content p:first-of-type {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(15, 23, 42, 0.4) 100%);
+      border: 1px solid rgba(6, 182, 212, 0.3);
+      border-left: 4px solid #06b6d4;
+      padding: 24px 28px;
       border-radius: var(--radius-md);
-      border: 1px solid var(--border);
+      color: #e2e8f0;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      box-shadow: 0 12px 30px rgba(6, 182, 212, 0.08);
+      margin-bottom: 32px;
+    }
+    .magazine-main-content p:first-of-type strong:first-child {
+      color: #38bdf8;
+      font-size: 1.1rem;
+      background: none;
+      -webkit-text-fill-color: initial;
+    }
+
+    /* 研报条目与长段落卡片化 */
+    .magazine-main-content p:has(strong):not(:first-of-type) {
+      background: rgba(30, 41, 59, 0.4);
+      padding: 24px 28px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       position: relative;
       overflow: hidden;
+      margin-bottom: 20px;
     }
-    .magazine-main-content p:has(strong):hover {
-      background: rgba(255, 255, 255, 0.025);
-      border-color: rgba(6, 182, 212, 0.25);
-      transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(6, 182, 212, 0.06);
+    .magazine-main-content p:has(strong):not(:first-of-type):hover {
+      background: rgba(30, 41, 59, 0.7);
+      border-color: rgba(6, 182, 212, 0.35);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(6, 182, 212, 0.1);
     }
-    .magazine-main-content p strong:first-child {
-      font-size: 1.08rem;
+    .magazine-main-content p:has(strong):not(:first-of-type) strong:first-child {
+      font-size: 1.1rem;
       display: block;
       margin-bottom: 10px;
-      color: #fff;
-      background: linear-gradient(to right, #fff, #c8e0e5);
+      color: #f8fafc;
+      background: linear-gradient(to right, #ffffff, #93c5fd);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
+    /* 列表条目精美卡片化 */
+    .magazine-main-content ul {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      list-style: none;
+      padding: 0;
+      margin-bottom: 32px;
+    }
+    .magazine-main-content ul li {
+      background: rgba(30, 41, 59, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      transition: all 0.25s ease;
+      line-height: 1.75;
+      color: #cbd5e1;
+    }
+    .magazine-main-content ul li:hover {
+      background: rgba(30, 41, 59, 0.65);
+      border-color: rgba(56, 189, 248, 0.3);
+      transform: translateX(4px);
+    }
+    .magazine-main-content ul li strong {
+      color: #f8fafc;
+    }
+
     /* 小编独家锐评卡片高光 */
-    .editor-section-wrapper { margin-top: 12px; }
+    .editor-section-wrapper { margin-top: 16px; }
     .editor-card {
-      background: linear-gradient(135deg, rgba(6,182,212,0.06) 0%, rgba(16,185,129,0.02) 100%);
-      border: 1px solid rgba(6,182,212,0.18);
+      background: linear-gradient(135deg, rgba(6,182,212,0.1) 0%, rgba(16,185,129,0.04) 100%);
+      border: 1px solid rgba(6,182,212,0.25);
       border-radius: var(--radius-lg);
-      padding: 32px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.45), 0 0 40px rgba(6, 182, 212, 0.03);
+      padding: 36px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 50px rgba(6, 182, 212, 0.06);
       position: relative;
       overflow: hidden;
     }
@@ -491,7 +590,7 @@
     <header>
       <a href="./" class="logo-block">
         <img src="./logo.png" alt="Logo" class="logo-img">
-        <div><div class="brand-name">AI 每日先锋</div><div class="brand-tagline">AI 前沿动态</div></div>
+        <div><div class="brand-name">AI 新闻快报</div><div class="brand-tagline">AI 前沿动态</div></div>
       </a>
       <div class="header-right">
         <a href="./feed.xml" target="_blank" class="nav-btn nav-btn-rss">RSS 订阅</a>
@@ -615,7 +714,7 @@
         <div class="magazine-container">
           <div class="magazine-header">
             <div class="magazine-issue" id="report-date-tag">—</div>
-            <h1 class="magazine-title" id="magazine-main-title">🌍 科技新闻日报</h1>
+            <h1 class="magazine-title" id="magazine-main-title">✨ 科技新闻日报</h1>
             <div class="magazine-divider"></div>
           </div>
 
@@ -642,7 +741,7 @@
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-22 08:56:28</p></div>
+    <div class="footer"><p>AI 新闻快报 · 构建于 2026-07-22 15:00:25</p></div>
   </div>
 
   <script>

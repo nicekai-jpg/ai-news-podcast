@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import contextlib
 import datetime
 import json
@@ -235,7 +237,7 @@ def build_index_html(
         <div class="magazine-container">
           <div class="magazine-header">
             <div class="magazine-issue" id="report-date-tag">—</div>
-            <h1 class="magazine-title" id="magazine-main-title">🌍 科技新闻日报</h1>
+            <h1 class="magazine-title" id="magazine-main-title">✨ 科技新闻日报</h1>
             <div class="magazine-divider"></div>
           </div>
 

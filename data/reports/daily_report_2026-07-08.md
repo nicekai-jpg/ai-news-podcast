@@ -1,35 +1,4 @@
-<think>Let me analyze the news materials and create a professional tech news daily report in Chinese.
-
-The materials cover:
-1. WAIC 2026 - AI4S (AI for Science) - China's reshaping of global research landscape
-2. WAIC 2026 - Theoretical breakthroughs in AI paradigm innovation
-3. Google expanding Managed Agents in Gemini API
-4. GLM-5.2 from HuggingFace for long-horizon tasks
-5. Agentic Resource Discovery from HuggingFace
-
-Let me organize these into categories:
-- AI前沿：WAIC 2026相关内容（AI4S、理论突破）
-- 产品与开源：GLM-5.2、Agentic Resource Discovery
-- 大公司动态：Google Gemini API的Managed Agents扩展
-
-Let me write a comprehensive daily report with proper Chinese translation and professional tone.
-
-The date is July 8, 2026. Let me craft this report.
-
-I should merge materials 1 and 2 since they're both about WAIC 2026. Materials 4 and 5 are both from HuggingFace and can be combined under open source. Material 3 is about Google's product update.
-
-Let me structure it:
-
-1. 大标题
-2. 导语
-3. AI前沿与学术（WAIC 2026 合并）
-4. 大公司动态（Google Gemini）
-5. 产品与开源（GLM-5.2 + Agentic Resource Discovery）
-6. AI洞察小结
-
-Let me write this out carefully.</think>
-
-# 🌍 科技新闻日报 | 2026年07月08日
+# ✨ 科技新闻日报 | 2026年07月08日
 
 **导语**：今日科技领域呈现出"AI走向自主、Agent走向成熟"的鲜明趋势。从WAIC 2026聚焦的AI for Science（AI4S）与基础理论突破，到大厂加速Agent基础设施、开源社区推出面向长程任务的新一代模型，AI正从工具型助手向自主型智能体加速演进。
 

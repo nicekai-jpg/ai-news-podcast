@@ -1,30 +1,6 @@
-<think>The user wants me to write a tech news daily report in Chinese based on the provided materials. Let me analyze the materials:
+# ✨ 科技新闻日报 | 2026年07月06日
 
-1. Meta considering launching "Meta Compute" - GPU/compute business
-2. Chinese team applying JEPA architecture to cell biology (world models in cells)
-3. 奕境 (Yi Jing) partnering with Huawei Qiankun for global testing, featured on CCTV
-4. Huawei updated "韬定律" (Tao's Law) paper
-5. FenyiDic - an English vocabulary learning app focusing on definitions rather than just words
-
-Let me organize these into categories:
-- AI前沿: JEPA in cells, Huawei paper update
-- 大公司动态: Meta Compute
-- 产品与开源: FenyiDic
-- 行业动态: 奕境×华为合作
-
-I need to write this in a professional, objective tone, 800-1500 words, with proper Markdown formatting. Let me draft this.
-
-Date: 2026年07月06日
-
-Let me think about the title - "科技新闻日报 | 2026年07月06日"
-
-导语 should capture the main trends: AI continuing to penetrate various fields (biology, automotive, infrastructure), tech companies expanding business boundaries.
-
-Let me write this out properly now.</think>
-
-# 🌍 科技新闻日报 | 2026年07月06日
-
-**今日要闻**：AI 技术正从通用大模型向纵深领域加速渗透，无论是生命科学、汽车产业还是底层算力市场，都正在被新一轮技术浪潮重塑。与此同时，开源工具与垂直应用持续涌现，AI 的落地边界比以往任何时候都更加宽广。
+**导语**：**今日要闻**：AI 技术正从通用大模型向纵深领域加速渗透，无论是生命科学、汽车产业还是底层算力市场，都正在被新一轮技术浪潮重塑。与此同时，开源工具与垂直应用持续涌现，AI 的落地边界比以往任何时候都更加宽广。
 
 ---
 

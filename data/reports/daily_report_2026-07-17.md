@@ -1,23 +1,6 @@
-<think>The user wants me to create a professional tech news daily report in Chinese, based on the provided materials. Let me analyze the materials:
+# ✨ 科技新闻日报 | 2026年07月17日
 
-1. Google DeepMind and Isomorphic Labs sharing their approach to bioresilience and AI models - this is about AI in biology/drug discovery
-2. 银河通用 - new framework for robots using human videos, can also learn while working
-3. 中国移动投资友机技术 - industrial AI infrastructure
-4. 逐际动力 Demo - robot demo, Figure company having trouble sleeping
-5. NVIDIA Nemotron 3 Embed - ranks #1 on RTEB for agentic retrieval
-
-Let me categorize:
-- AI前沿: Material 1 (DeepMind bioresilience), Material 5 (NVIDIA Nemotron)
-- 大公司动态: Material 3 (中国移动 investment)
-- 产品与开源: Materials 2, 4 (robotics)
-
-I should merge related topics. Materials 2 and 4 are both about humanoid robots/embodied AI - I'll combine them.
-
-Let me write this in a professional, condensed way, in Chinese, around 800-1500 words.</think>
-
-# 🌍 科技新闻日报 | 2026年07月17日
-
-**今日核心趋势**：AI 正在加速从虚拟世界走向物理世界——从生物医药到工业制造、人形机器人，大模型的触角已延伸至真实产业的关键环节。
+**导语**：AI 正在加速从虚拟世界走向物理世界——从生物医药到工业制造、人形机器人，大模型的触角已延伸至真实产业的关键环节。
 
 ---
 

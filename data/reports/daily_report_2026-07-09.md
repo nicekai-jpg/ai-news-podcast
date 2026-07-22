@@ -1,27 +1,6 @@
-<think>The user wants me to write a tech news daily report based on the provided materials. Let me analyze the materials:
+# ✨ 科技新闻日报 | 2026年07月09日
 
-1. Material 1: Alibaba's "Tech Hardcore Youth Festival" event in Beijing/Hangzhou with AIGX achievements
-2. Material 2: arXiv paper - Prompt-to-Paper: Agentic AI System for Bioinformatics
-3. Material 3: 2026 World Robot Conference press conference in Beijing
-4. Material 4: AutoNavi (高德) releases Phys AI Data - first one-stop spatial data foundation for physical AI
-5. Material 5: arXiv paper - Physics-Inspired Structural Attribution for Cyber-Physical IoT Systems
-
-All materials are marked as "次要" (secondary). I need to write a professional tech news daily report in Chinese, with about 800-1500 words.
-
-Let me organize this into categories:
-- AI前沿 (AI Frontier): Materials 2, 5 (academic papers)
-- 大公司动态 (Big Company News): Materials 1, 4 (Alibaba/Taobao event, AutoNavi)
-- 行业活动 (Industry Events): Material 3 (World Robot Conference)
-
-Let me draft the report now, following the format requirements strictly.
-
-I should be careful with the date - the title says 2026年07月09日. The materials reference arXiv:2607 which suggests July 2026.
-
-Let me write this:</think>
-
-# 🌍 科技新闻日报 | 2026年07月09日
-
-今日科技领域的关键词是"落地"——无论是 AI Agent 在垂直学科的深度应用，还是物理 AI 数据基础设施的搭建，抑或是机器人与 AIGC 产业的密集活动，都在指向同一趋势：前沿技术正加速从论文与演示阶段，走向产业一线与真实场景。
+**导语**：今日科技领域的关键词是"落地"——无论是 AI Agent 在垂直学科的深度应用，还是物理 AI 数据基础设施的搭建，抑或是机器人与 AIGC 产业的密集活动，都在指向同一趋势：前沿技术正加速从论文与演示阶段，走向产业一线与真实场景。
 
 ---
 

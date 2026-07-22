@@ -1,25 +1,6 @@
-<think>
-Let me analyze the provided news materials and craft a professional tech news daily report in Chinese.
+# ✨ 科技新闻日报 | 2026年07月03日
 
-Materials:
-1. AReaL 2.0 open source - RL infrastructure for self-evolving agents
-2. First trillion-parameter model with 0 NVIDIA content - popular overseas
-3. Skywork 3.2 upgrade - Skywork Tags, agent work badge
-4. Superpowers 6 - HN discussion
-5. Procut - iOS clipboard management tool
-
-The date is July 3, 2026. Let me organize this into a proper tech news daily report.
-
-I'll group these into categories:
-- AI前沿 (AI Frontier): AReaL 2.0, Trillion model, Skywork 3.2
-- 开源与工具 (Open Source & Tools): Superpowers 6
-- 产品与体验 (Products): Procut
-
-Let me write a professional, well-structured report within 800-1500 characters.
-</think>
-# 🌍 科技新闻日报 | 2026年07月03日
-
-**今日核心趋势**：智能体（Agent）正从"工具"走向"同事"，围绕自演进能力、多模型基础设施与协作入口的竞争全面升温。
+**导语**：智能体（Agent）正从"工具"走向"同事"，围绕自演进能力、多模型基础设施与协作入口的竞争全面升温。
 
 ---
 

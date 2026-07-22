@@ -1,25 +1,4 @@
-<think>The user wants me to create a professional tech news daily report based on the provided materials. Let me analyze the materials:
-
-1. Material 1: Securing the future of AI agents - DeepMind Blog about AI Control Roadmap for securing internal systems
-2. Material 2: Gemini for Science - tools and experiments for scientific exploration
-3. Material 3: Co-Scientist - multi-agent AI partner built with Gemini
-4. Material 4: Ask an AI expert: What exactly is the full stack? - Google AI Blog
-5. Material 5: AMIE medical AI research published in Nature
-
-All materials are from Google/DeepMind. I need to:
-- Write in Chinese
-- Use Markdown format
-- Organize by themes
-- Be concise (800-1500 words)
-- Add an AI insight summary
-
-Let me categorize:
-- AI前沿 (AI Frontier): Materials 1, 2, 3 (AI agents security, Gemini for Science, Co-Scientist)
-- 大公司动态 (Big Company News): Materials 4, 5 (Google AI stack discussion, AMIE medical AI)
-
-I should merge related topics where appropriate. Let me draft the report.</think>
-
-# 🌍 科技新闻日报 | 2026年07月16日
+# ✨ 科技新闻日报 | 2026年07月16日
 
 **导语**：今日科技动态聚焦于 Google DeepMind 在 AI 安全、科学研究辅助以及医疗 AI 等垂直领域的密集布局。从智能体安全防护到多智能体科研协作，AI 正加速从通用工具向专业领域纵深渗透。
 
