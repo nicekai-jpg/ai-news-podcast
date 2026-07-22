@@ -19,27 +19,34 @@ def build_report_prompt(brief: dict, date_str: str) -> str:
     """Build the LLM prompt for the daily tech news report."""
 
     material = build_material_text(brief, max_stories=5, strategy="pure_score")
-    return f"""你是专业的科技媒体编辑，需要根据以下今日的 AI 和科技新闻素材，写一份专业的「科技新闻日报」。
+    return f"""你是顶级科技智库与科技媒体的主编，需要根据以下今日的 AI 和科技新闻素材，撰写一份结构严谨、视角深刻的「科技新闻日报」。
 
-## 格式与结构要求
-请严格使用 Markdown 格式输出，包含以下几个部分：
+## 格式与结构要求（必须严格遵守）
+请严格使用标准的 Markdown 格式输出，包含以下结构：
 
-1. **大标题**：如 `# 🌍 科技新闻日报 | {date_str}`
-2. **导语**：简短概括今天最核心的科技趋势（1-2句话）。
-3. **分类新闻**：将新闻素材按主题分类（如：AI前沿、大公司动态、产品与开源、行业数据等）。
-4. **新闻条目**：每条新闻使用列表格式，加粗小标题，然后是一段精炼的中文总结。
-5. **AI 洞察小结**（可选）：在文末用引用的方式（`> `）输出一段你对今天科技动态的总评析。
+1. **大标题**：必须为 `# ✨ 科技新闻日报 | {date_str}`
+2. **核心导语**：
+   - 必须以 `**导语**：` 开头，用 2-3 句话高度概括今日全球科技圈最核心的技术突破与行业演进主线。
+3. **今日重磅解读**：
+   - 使用二级标题 `## 🚀 重磅解读`。
+   - 挑选 2 个最重要的事件进行深度拆解，包含：事件背景、核心突破点、对行业生态与用户的深刻影响。
+4. **前沿情报与产品动向**：
+   - 使用二级标题 `## ⚡ 前沿情报`。
+   - 精炼总结其余 2-3 条短新闻，使用列表格式，包含加粗关键词和简析。
+5. **AI 小编深度点评**：
+   - 在文末必须包含一个引用块（以 `> ` 开头），写一段 150-250 字的专业总结，洞察今日所有新闻背后的底层商业逻辑与未来竞争局势。
 
-## 写作要求
-- **全部用中文**：所有英文内容必须翻译为中文，保持用词专业、准确。
-- **融合提炼**：不要机械地罗列每条素材，如果有相关的素材可以合并写。
-- **客观中立**：保持科技新闻的客观感，语言精炼。
-- **字数**：总字数控制在 800 - 1500 字左右。
+## 写作风格与要求
+- **深度洞察**：拒绝机械罗列，突出“为什么重要”与“背后逻辑”。
+- **专业流畅**：使用准确、专业的科技与商业术语。
+- **排版优雅**：灵活使用加粗、列表、引用块提升阅读体验。
+- **字数**：控制在 1000 - 1800 字左右。
+- **禁止思考过程**：绝对不要包含 `<think>` 等思考标记，不要在开头结尾带 ``` 代码块。
 
 ## 今日素材
 {material}
 
-请直接输出 Markdown 文本，不要在开头和结尾带多余的解释，不要带 ```markdown 这样的代码块标记。"""
+请直接输出 Markdown 文本。"""
 
 
 class ReportCommand(AsyncCommand):
@@ -52,6 +59,8 @@ class ReportCommand(AsyncCommand):
         parser.add_argument("--outdir", default="data/reports")
 
     async def execute_async(self, args: argparse.Namespace, cfg: AppConfig, root: Path) -> int:
+        import re
+
         date_str = args.date or datetime.now(tz=ZoneInfo("Asia/Shanghai")).strftime("%Y-%m-%d")
         report_id = date_str
         date_display = datetime.strptime(date_str, "%Y-%m-%d").strftime("%Y年%m月%d日")
@@ -73,8 +82,12 @@ class ReportCommand(AsyncCommand):
         prompt = build_report_prompt(brief, date_display)
         report_md = call_llm(prompt, cfg.llm)
 
+        if report_md:
+            # Strip <think>...</think> if present
+            report_md = re.sub(r"<think>.*?</think>", "", report_md, flags=re.DOTALL).strip()
+
         if not report_md:
-            report_md = f"# 🌍 科技新闻日报 | {date_display}\n\n> 由于大模型服务暂时不可用，以下是由系统自动整理的新闻速览：\n\n"
+            report_md = f"# ✨ 科技新闻日报 | {date_display}\n\n**导语**：由于大模型服务暂时不可用，以下是由系统自动整理的新闻速览：\n\n"
             stories = brief.get("stories", [])
             active = [s for s in stories if isinstance(s, dict) and s.get("role") != "skip"]
             active.sort(key=lambda s: s.get("total_score", 0), reverse=True)
@@ -90,6 +103,8 @@ class ReportCommand(AsyncCommand):
 
         if report_md.startswith("```markdown"):
             report_md = report_md[11:].strip()
+        if report_md.startswith("```"):
+            report_md = report_md[3:].strip()
         if report_md.endswith("```"):
             report_md = report_md[:-3].strip()
 

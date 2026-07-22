@@ -1,28 +1,4 @@
-<think>The user wants me to create a professional tech news daily report based on the provided materials. Let me analyze the materials:
-
-1. JEPA architecture being applied to cellular biology by a Chinese team
-2. 奕境 partnering with Huawei for autonomous driving testing, featured on CCTV
-3. AI discovering 4 new superconductors using only 28 GPU-hours
-4. Wiola Architecture for Efficient Small Language Models (arXiv paper)
-5. NIO's Li Bin giving a speech at Peking University about entrepreneurship failures
-
-I need to:
-- Create a Markdown formatted tech news daily report
-- Date: 2026年07月04日
-- Categorize the news
-- Translate English content to Chinese
-- Be objective and concise
-- 800-1500 words total
-- Include an AI insight summary at the end
-
-Let me organize these into categories:
-- AI前沿 (AI Frontier): Materials 1, 3, 4 - all AI-related research/breakthroughs
-- 大公司动态 (Big Company News): Material 2 - 奕境 + Huawei, Material 5 - NIO's Li Bin
-- 行业数据 (Industry Data): Could incorporate some metrics
-
-Let me write this up now.</think>
-
-# 🌍 科技新闻日报 | 2026年07月04日
+# ✨ 科技新闻日报 | 2026年07月04日
 
 **导语**：今日科技动态呈现两大主线：一方面，AI 在基础科学与生命科学领域持续突破边界，从超导体发现到细胞建模，科研范式正在被重塑；另一方面，中国科技企业在智能驾驶与品牌叙事上加速前行，硬实力与软实力并行提升。
 

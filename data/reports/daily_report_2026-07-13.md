@@ -1,43 +1,6 @@
-<think>The user wants me to write a professional tech news daily report in Chinese, based on the provided materials. Let me analyze the materials:
+# ✨ 科技新闻日报 | 2026年07月13日
 
-1. NVIDIA RTX Spark - a "super chip" announced at ComputeX, CPU and GPU soldered together, running 120B large models on laptops
-2. Claude Code sends 33k tokens before reading the prompt; OpenCode sends 7k - HN discussion about AI coding tool efficiency
-3. Chromium 148 - Math.tanh is now fingerprintable to link underlying OS - privacy concern
-4. Against Usefulness - HN discussion
-5. Deir El-Medina Strikes - HN discussion (this seems unrelated to tech, more about labor strikes in Egypt - archaeological site workers)
-
-The materials are all "次要" (secondary/less important), so I need to be selective and synthesize them. Let me categorize:
-
-- AI前沿: RTX Spark, Claude Code/OpenCode token efficiency
-- 隐私与安全: Chromium fingerprinting issue
-- The other two seem less relevant or are general HN discussions
-
-Let me write a professional Chinese tech news daily report, around 800-1500 words.
-
-Date: 2026年07月13日
-
-Let me structure this properly:
-
-1. Main title with date
-2. Lead paragraph (1-2 sentences)
-3. Categorized news
-4. AI insight at the end in blockquote
-
-Let me draft this:
-
-导语: 今天科技领域的焦点集中在端侧AI硬件突破与开发者工具效率优化上，英伟达RTX Spark展示"芯片级融合"新形态，而AI编程助手的Token浪费问题引发社区广泛讨论。
-
-分类:
-- AI硬件前沿
-- AI开发者工具
-- 浏览器安全与隐私
-- 社区热议
-
-Let me write this out properly.</think>
-
-# 🌍 科技新闻日报 | 2026年07月13日
-
-**今日要闻**：端侧大模型硬件迎来里程碑式突破，英伟达 RTX Spark 实机首次亮相，"CPU+GPU 一体化焊接"设计让 120B 参数模型可在笔记本运行；与此同时，AI 编程工具的 Token 效率问题在开发者社区引发激烈反思。
+**导语**：**今日要闻**：端侧大模型硬件迎来里程碑式突破，英伟达 RTX Spark 实机首次亮相，"CPU+GPU 一体化焊接"设计让 120B 参数模型可在笔记本运行；与此同时，AI 编程工具的 Token 效率问题在开发者社区引发激烈反思。
 
 ---
 

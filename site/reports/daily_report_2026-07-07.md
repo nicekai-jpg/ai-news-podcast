@@ -1,42 +1,4 @@
-<think>The user wants me to write a professional tech news daily report based on the provided materials. Let me analyze the materials:
-
-1. Alibaba/Tsinghua paper on diffusion model inference - ICML outstanding paper
-2. 2026 Singularity Intelligent Products Conference - 40+ products from ByteDance, Unitree, BAT
-3. Lenovo Holdings established China Information Processing Society of China industry-academia innovation ecology committee
-4. OpenSquilla 0.5.0 Preview - multi-model integration topped DRACO dual rankings, with Fable 5 in comparison list
-5. Chinese company at UN - giving AI "less load" - brain-like chip for robots instead of stacking computing power
-
-All materials are marked as "次要" (secondary), so I should write a more condensed report.
-
-Let me organize these into categories:
-- AI前沿 (AI Frontier): Materials 1, 4, 5 - these are about AI research and applications
-- 大公司动态 (Big Company News): Materials 2, 3 - conference and industry collaboration
-
-Let me write this in Chinese, professional tone, 800-1500 words.
-
-I need to:
-- Use Markdown format
-- Have a main title
-- Have a brief intro
-- Categorize news
-- Use bold subheadings for each news item
-- Add an AI insight summary at the end using blockquote
-
-Let me craft this carefully. The date is July 7, 2026.
-
-Material 1: 极简方案刷新扩散模型推理纪录 - Alibaba and Tsinghua paper wins ICML outstanding paper, simple solution refreshes diffusion model inference record
-
-Material 2: 2026 Singularity Intelligent Products Conference - latest agenda, 40+ product experts from ByteDance, Unitree, BAT gathering
-
-Material 3: Lenovo Holdings initiated establishment of China Information Processing Society industry-academia innovation ecology work committee
-
-Material 4: OpenSquilla 0.5.0 Preview - multi-model integration tops DRACO dual rankings, Fable 5 appears in comparison list
-
-Material 5: Chinese company at UN - giving AI "less load" - brain-like chip for robots instead of stacking computing power
-
-Let me write the report now.</think>
-
-# 🌍 科技新闻日报 | 2026年07月07日
+# ✨ 科技新闻日报 | 2026年07月07日
 
 **导语**：今日科技动态聚焦"轻量化"与"生态化"两条主线：一方面，学界与产业界持续探索以更简洁高效的方式推进 AI 推理与应用落地；另一方面，中国科技企业正加速构建产学研协作平台，推动智能产品矩阵化发展。
 

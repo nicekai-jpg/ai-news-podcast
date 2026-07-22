@@ -1,26 +1,4 @@
-<think>The user wants me to create a professional tech news daily report in Chinese based on the provided materials. Let me analyze the materials:
-
-1. Google AI Blog - May 2026 AI news recap
-2. Google I/O 2026 - 12 major moments recap
-3. Google I/O 2026 - 100 announcements
-4. Google community investments in Virginia (jobs and energy)
-5. DeepMind Blog - Gemini 3.5 Live Translate (fluid, natural voice translation)
-
-The theme is clearly Google's I/O 2026 conference and related announcements. Let me organize this into a coherent tech news daily report.
-
-Key themes:
-- Google I/O 2026 was a major event with 100+ announcements
-- Gemini 3.5 is a major product (Live Translate mentioned)
-- Google AI ecosystem updates
-- Google's community investments (Virginia - jobs, energy)
-
-Since all these are from around the same event/period (May 2026, I/O 2026), I should merge them intelligently rather than treating each as separate news.
-
-The date in the title should be 2026年07月12日 as specified by the user.
-
-Let me write a well-structured Chinese tech news daily report.</think>
-
-# 🌍 科技新闻日报 | 2026年07月12日
+# ✨ 科技新闻日报 | 2026年07月12日
 
 **导语**：今日科技头条聚焦谷歌 I/O 2026 的余波——从 Gemini 3.5 的实时语音翻译到覆盖开发者、企业与硬件生态的百项发布，AI 正以前所未有的速度融入产品与日常生活。与此同时，谷歌在能源与人才领域的社区投入，也展现出大公司在前沿创新之外的长期基础设施布局。
 
