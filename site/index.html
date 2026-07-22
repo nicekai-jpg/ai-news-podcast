@@ -615,12 +615,40 @@
       flex: 1;
       display: flex;
       flex-direction: column;
+    .voice-selector-row {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 14px 0 18px 0;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(15, 23, 42, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .voice-deck-title {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #f8fafc;
+      letter-spacing: 0.02em;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .voice-hosts-container {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .voice-select-group {
+      display: flex;
+      flex-direction: column;
       gap: 4px;
     }
     .voice-select-group label {
       font-size: 0.68rem;
-      color: #9ca3af;
-      font-weight: 500;
+      color: #cbd5e1;
+      font-weight: 700;
     }
     .voice-pill-group {
       display: flex;
@@ -631,28 +659,31 @@
       flex: 1;
       padding: 6px 12px;
       font-size: 0.72rem;
-      font-weight: 600;
+      font-weight: 700;
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: rgba(255, 255, 255, 0.02);
-      color: #9ca3af;
+      color: #94a3b8;
       border-radius: 6px;
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.25s ease;
       text-align: center;
     }
     .voice-pill-btn:hover {
       color: #fff;
-      border-color: rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.06);
     }
-    .voice-pill-btn.active {
-      background: rgba(139, 92, 246, 0.15);
-      border-color: var(--accent);
-      color: #fff;
+    .voice-pill-btn.host-a-btn.active {
+      background: rgba(168, 85, 247, 0.2);
+      border-color: #c084fc;
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
     }
-    body.theme-report .voice-pill-btn.active {
-      background: rgba(6, 182, 212, 0.15);
-      border-color: var(--accent);
+    .voice-pill-btn.host-b-btn.active {
+      background: rgba(6, 182, 212, 0.2);
+      border-color: #38bdf8;
+      color: #ffffff;
+      box-shadow: 0 0 12px rgba(6, 182, 212, 0.3);
     }
 
   </style>
@@ -847,7 +878,7 @@
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 新闻快报 · 构建于 2026-07-22 16:01:52</p></div>
+    <div class="footer"><p>AI 新闻快报 · 构建于 2026-07-22 16:12:43</p></div>
   </div>
 
   <script>
@@ -1053,25 +1084,15 @@
               }
             }
 
-            buildVoiceSelectors();
             document.getElementById('playback-btn-sentence').style.display = 'block';
-            var voiceSelector = document.getElementById('voice-selector-row');
-            if (voiceSelector) {
-              voiceSelector.style.display = 'flex';
-              voiceSelector.classList.toggle('dimmed', playbackMode === 'full');
-            }
           } else {
             document.getElementById('playback-btn-sentence').style.display = 'none';
-            var voiceSelector = document.getElementById('voice-selector-row');
-            if (voiceSelector) voiceSelector.style.display = 'none';
-            setPlaybackMode('full');
           }
         } catch (ePl) {
           document.getElementById('playback-btn-sentence').style.display = 'none';
-          var voiceSelector = document.getElementById('voice-selector-row');
-          if (voiceSelector) voiceSelector.style.display = 'none';
-          setPlaybackMode('full');
         }
+
+        buildVoiceSelectors();
 
         if (playbackMode === 'sentence' && currentPlaylist && currentPlaylist.length > 0) {
           currentChunkIndex = 0;
@@ -1349,10 +1370,19 @@
       const row = document.getElementById('voice-selector-row');
       if (!row) return;
       row.innerHTML = '';
+      row.style.display = 'flex';
+
+      const title = document.createElement('div');
+      title.className = 'voice-deck-title';
+      title.innerHTML = '🎙️ 双主播音色定制 (Host Voice Timbre Deck)';
+      row.appendChild(title);
+
+      const hostsContainer = document.createElement('div');
+      hostsContainer.className = 'voice-hosts-container';
 
       const hosts = [
-        { key: 'A', name: '苏晴音色', configKey: 'host_a' },
-        { key: 'B', name: '周航音色', configKey: 'host_b' }
+        { key: 'A', name: '👩‍💼 苏晴音色', configKey: 'host_a' },
+        { key: 'B', name: '👨‍💼 周航音色', configKey: 'host_b' }
       ];
 
       hosts.forEach(function(h) {
@@ -1371,7 +1401,7 @@
 
         variants.forEach(function(variantId) {
           const btn = document.createElement('button');
-          btn.className = 'voice-pill-btn';
+          btn.className = 'voice-pill-btn host-' + h.key.toLowerCase() + '-btn';
           if (selectedVoices[h.key] === variantId) {
             btn.classList.add('active');
           }
@@ -1383,8 +1413,10 @@
         });
 
         group.appendChild(pillGroup);
-        row.appendChild(group);
+        hostsContainer.appendChild(group);
       });
+
+      row.appendChild(hostsContainer);
     }
 
     function selectVoiceVariant(host, variant) {
