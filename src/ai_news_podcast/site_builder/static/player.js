@@ -350,12 +350,14 @@
 
       var currentOffset = 0;
       rawParagraphs.forEach(function(p, index) {
-        var cls = p.role === 'B' ? 'host-b' : 'host-a';
-        var name = p.role === 'B' ? '苏晴' : '周航';
-        var avatarChar = p.role === 'B' ? '苏' : '周';
+        var isHostA = p.role === 'A';
+        var cls = isHostA ? 'host-a' : 'host-b';
+        var name = isHostA ? '苏晴' : '周航';
+        var roleTag = isHostA ? '👩‍💼 苏晴' : '👨‍💼 周航';
+        var avatarChar = isHostA ? '晴' : '航';
         var len = p.text.length;
 
-        var rowHtml = '<div class="transcript-row" id="trans-row-' + index + '" ' +
+        var rowHtml = '<div class="transcript-row ' + cls + '-bubble" id="trans-row-' + index + '" ' +
                       'data-offset="' + currentOffset + '" ' +
                       'data-len="' + len + '" ' +
                       (p.start !== null ? 'data-start="' + p.start + '" data-duration="' + p.duration + '" ' : '') +
@@ -365,7 +367,10 @@
                         '<div class="speaker-name">' + name + '</div>' +
                         '<div class="seek-play-icon">▶</div>' +
                       '</div>' +
-                      '<div class="transcript-text">' + esc(p.text) + '</div>' +
+                      '<div class="transcript-content-wrapper">' +
+                        '<div class="speaker-role-badge ' + cls + '">' + roleTag + '</div>' +
+                        '<div class="transcript-text">' + esc(p.text) + '</div>' +
+                      '</div>' +
                     '</div>';
         lines.push(rowHtml);
 
