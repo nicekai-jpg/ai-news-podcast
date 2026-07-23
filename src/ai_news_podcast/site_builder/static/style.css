@@ -123,61 +123,133 @@
     /* Layouts */
     .main-layout { width: 100%; min-height: 500px; }
 
-    /* 顶部全幅广播式调控台 (Top Broadcast Studio Console Banner) */
+    /* 精准匹配设计图 ui_layout_comparison 的 Studio Control Deck */
     .top-studio-console {
-      display: grid;
-      grid-template-columns: 260px 1fr 350px;
-      gap: 20px;
-      align-items: center;
-      padding: 16px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px 24px;
       border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, rgba(22, 16, 45, 0.9) 0%, rgba(10, 7, 22, 0.95) 100%);
+      background: linear-gradient(135deg, rgba(22, 16, 45, 0.95) 0%, rgba(10, 7, 22, 0.98) 100%);
       border: 1px solid rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(28px);
       -webkit-backdrop-filter: blur(28px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(139, 92, 246, 0.12);
-      position: sticky;
-      top: 85px;
-      z-index: 90;
-      margin-bottom: 8px;
-    }
-    @media (max-width: 1024px) {
-      .top-studio-console { grid-template-columns: 1fr; position: static; }
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(139, 92, 246, 0.15);
+      margin-bottom: 20px;
     }
 
-    /* 左侧黑胶 & 标题 */
-    .console-left-deck { display: flex; align-items: center; gap: 14px; min-width: 0; }
-    .vinyl-wrapper-compact { position: relative; width: 62px; height: 62px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .vinyl-disc-sm { width: 56px; height: 56px; border-radius: 50%; background: #111; border: 3px solid #222; box-shadow: 0 6px 16px rgba(0,0,0,0.6); position: relative; animation: spin-vinyl 20s linear infinite; animation-play-state: paused; display: flex; align-items: center; justify-content: center; }
-    .vinyl-disc-sm.spinning { animation-play-state: running; }
-    .vinyl-art { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; }
-    .vinyl-center { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid #444; }
+    /* 上半部分：唱盘视觉区 + 声轨音色卡片区 */
+    .console-upper-deck {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      width: 100%;
+    }
+    @media (max-width: 768px) {
+      .console-upper-deck { flex-direction: column; }
+    }
+
+    .vinyl-center-stage {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+      min-width: 0;
+    }
+    .vinyl-wrapper-compact { position: relative; width: 64px; height: 64px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .vinyl-disc {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #111;
+      border: 4px solid #222;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      position: relative;
+      animation: spin-vinyl 20s linear infinite;
+      animation-play-state: paused;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .vinyl-disc.spinning { animation-play-state: running; }
+    .vinyl-art { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
+    .vinyl-center { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid #444; }
 
     .console-ep-meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
     .console-live-badge { font-size: 0.62rem; font-weight: 800; color: #34d399; letter-spacing: 0.08em; display: flex; align-items: center; gap: 5px; }
     .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #34d399; box-shadow: 0 0 8px #34d399; animation: pulse-dot 1.5s infinite; }
     @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .console-ep-title { font-size: 0.95rem; font-weight: 850; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .console-ep-date { font-size: 0.7rem; color: #94a3b8; font-weight: 600; }
+    .console-ep-title { font-size: 1rem; font-weight: 850; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .console-ep-date { font-size: 0.72rem; color: #94a3b8; font-weight: 600; }
 
-    /* 中间播放控制 */
-    .console-center-player { display: flex; flex-direction: column; gap: 8px; }
-    .console-time-row { display: flex; align-items: center; gap: 10px; width: 100%; }
-    .time-text { font-size: 0.72rem; color: #94a3b8; font-weight: 700; width: 38px; text-align: center; }
+    /* 右侧双声轨卡片 */
+    .console-host-voices-deck {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 380px;
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .console-host-voices-deck { width: 100%; }
+    }
+
+    .console-voice-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #f1f5f9;
+    }
+    .playback-mode-switcher { display: flex; gap: 4px; background: rgba(0,0,0,0.3); padding: 2px; border-radius: 99px; }
+    .playback-mode-btn { font-size: 0.65rem; font-weight: 700; color: #94a3b8; background: transparent; border: none; padding: 2px 8px; border-radius: 99px; cursor: pointer; }
+    .playback-mode-btn.active { color: #fff; background: rgba(255,255,255,0.12); }
+
+    .console-host-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .host-item-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 100px;
+      flex-shrink: 0;
+    }
+    .host-emoji { font-size: 0.88rem; }
+    .host-name-sm { font-size: 0.74rem; font-weight: 800; color: #f8fafc; display: flex; align-items: center; gap: 4px; }
+    .host-badge-a { font-size: 0.58rem; color: #c084fc; background: rgba(192,132,252,0.12); padding: 1px 5px; border-radius: 4px; }
+    .host-badge-b { font-size: 0.58rem; color: #38bdf8; background: rgba(56,189,248,0.12); padding: 1px 5px; border-radius: 4px; }
+
+    /* 下半部分全宽播放控制 */
+    .console-lower-player {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .console-time-row { display: flex; align-items: center; gap: 12px; width: 100%; }
+    .time-text { font-size: 0.74rem; color: #94a3b8; font-weight: 700; width: 42px; text-align: center; }
     .console-progress-track { flex: 1; height: 6px; border-radius: 99px; background: rgba(255,255,255,0.08); position: relative; cursor: pointer; }
     .console-progress-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-gradient); border-radius: 99px; width: 0%; transition: width 0.1s linear; }
     .console-progress-handle { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 12px; height: 12px; border-radius: 50%; background: #fff; box-shadow: 0 0 10px var(--accent); opacity: 0; transition: opacity 0.2s; pointer-events: none; }
     .console-progress-track:hover .console-progress-handle { opacity: 1; }
 
-    .console-ctrl-bar { display: flex; align-items: center; justify-content: center; gap: 14px; }
-    .console-play-btn { width: 38px; height: 38px; border-radius: 50%; background: #ffffff; color: #090714; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 900; box-shadow: 0 4px 15px rgba(255,255,255,0.25); transition: transform 0.2s; }
+    .console-ctrl-bar { display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .console-play-btn { width: 42px; height: 42px; border-radius: 50%; background: #ffffff; color: #090714; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 900; box-shadow: 0 4px 15px rgba(255,255,255,0.25); transition: transform 0.2s; }
     .console-play-btn:hover { transform: scale(1.08); }
     .speed-pill-btn { font-size: 0.72rem; font-weight: 800; color: #c084fc; background: rgba(192, 132, 252, 0.12); padding: 3px 10px; border-radius: 99px; border: 1px solid rgba(192, 132, 252, 0.25); cursor: pointer; }
     .volume-control { display: flex; align-items: center; gap: 6px; color: #94a3b8; }
-    .volume-control input[type=range] { width: 55px; height: 3px; accent-color: var(--accent); }
-
-    /* 右侧双声轨定制 */
-    .console-right-voices { display: flex; flex-direction: column; gap: 6px; }
+    .volume-control input[type=range] { width: 60px; height: 3px; accent-color: var(--accent); }
     .console-voice-header { display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; font-weight: 800; color: #f1f5f9; padding-bottom: 2px; }
     .playback-mode-switcher { display: flex; gap: 4px; background: rgba(0,0,0,0.3); padding: 2px; border-radius: 99px; }
     .playback-mode-btn { font-size: 0.65rem; font-weight: 700; color: #94a3b8; background: transparent; border: none; padding: 2px 8px; border-radius: 99px; cursor: pointer; }
