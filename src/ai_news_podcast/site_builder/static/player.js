@@ -81,16 +81,24 @@
         return true;
       });
 
-      filteredDates.forEach(function(d) {
+      filteredDates.forEach(function(d, index) {
         var dt = new Date(d + 'T00:00:00');
         var pill = document.createElement('div');
         pill.className = 'date-pill';
         pill.setAttribute('data-date', d);
         pill.onclick = function() { loadDate(d); };
-        var mon = dt.getMonth() + 1;
-        var day = dt.getDate();
+
+        var mon = String(dt.getMonth() + 1).padStart(2, '0');
+        var day = String(dt.getDate()).padStart(2, '0');
         var wk = WEEKDAYS[dt.getDay()];
-        pill.innerHTML = '<span class="pill-month">' + mon + '月</span><span class="pill-day">' + day + '</span><span class="pill-weekday">周' + wk + '</span>';
+        var isLatest = (index === 0);
+
+        pill.innerHTML = 
+          '<span class="pill-month">' + mon + '月</span>' +
+          '<span class="pill-day">' + day + '</span>' +
+          '<span class="pill-weekday">周' + wk + '</span>' +
+          (isLatest ? '<span class="pill-latest-badge">最新</span>' : '');
+
         wrap.appendChild(pill);
       });
 
