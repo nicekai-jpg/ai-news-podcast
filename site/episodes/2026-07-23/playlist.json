@@ -1,0 +1,905 @@
+{
+  "episode_id": "2026-07-23",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年7月23日。我是苏晴。",
+      "start": 1.0,
+      "duration": 8.925,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。苏晴，你今天刷到百度文心的那个新闻没有？",
+      "start": 10.374,
+      "duration": 4.746,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "我跟你说，刷到了刷到了！文心助手那个任务Agent，把Claude和GPT系列全干趴下了，拿了国际权威智能体评测的全球第一。 我第一反应是——真的假的？然后我点进去一看，榜单还挺硬核的，不是那种野榜。",
+      "start": 15.617,
+      "duration": 17.87,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你注意啊，这个榜单考的不是你会不会聊天，而是真刀真枪看你的Agent能不能干活——任务规划、工具调用、多步推理，这三板斧全砍下来，文心拿了第一，含金量挺高。",
+      "start": 33.94,
+      "duration": 13.603,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "这也太提气了吧！以前咱们聊大模型，张嘴就是GPT几几几、Claude几几几，国产的往往是用\"也非常优秀\"、\"达到国际先进水平\"这种委婉措辞。这次不一样，直接登顶，而且是被国际权威机构认可的。",
+      "start": 47.948,
+      "duration": 24.879,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "但说白了，登顶这件事本身还不是最重要的，最重要的是它背后传递的信号。中国的大模型开始从\"能对话\"跨越到\"能办事\"了。以前你问它问题，它给你一段漂亮话；现在你让它干活，它真能把活儿给你干完。",
+      "start": 73.26,
+      "duration": 18.784,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "我大概理解了，这个Agent就相当于一个会思考的小秘书？你告诉它\"帮我订明天去上海的机票，要靠窗的，下午到\"，它自己拆解任务、调API、查航班、比价格，最后把结果给你。",
+      "start": 92.509,
+      "duration": 21.483,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你这个类比还挺准的。 技术层面，它要听懂你的意图，拆成子任务，调用不同工具，处理中间可能出现的异常。比如查航班时遇到延误，它得知道换个方案；付款时遇到余额不足，它得知道提示你。这一整条链路能跑通，才叫真正的Agent能力。",
+      "start": 114.454,
+      "duration": 19.306,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "那对咱们普通人有啥影响？是不是以后用百度系产品，文心助手就能帮我把琐事全包了？",
+      "start": 134.211,
+      "duration": 6.966,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "短期内还没那么神，但方向是对的。百度这次把Agent能力做扎实了，等于在AI应用层拿到了一个制高点。以后各家拼的不再是\"我的模型参数多少亿\"，而是\"我的Agent能在多少真实场景里把事办成\"。",
+      "start": 141.677,
+      "duration": 16.912,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "哈，这话让我想起今天金句的那句话——从追赶到领跑，中国AI正从\"刷榜单\"走向\"深落地\"。技术狂飙之后，价值兑现才是真战场。",
+      "start": 159.027,
+      "duration": 15.369,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "对，\"深落地\"其实是整个行业的转向。光在benchmark上刷分刷到全球第一没用，最终还是得看你能不能解决真实问题。",
+      "start": 174.857,
+      "duration": 9.404,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "说到\"深落地\"，我特别想跟你聊聊医疗AI。这个赛道卷了十年了，我记得2016年那会儿就有人喊\"AI看片比医生准\"、\"AI要替代放射科医生\"，结果呢？",
+      "start": 184.706,
+      "duration": 14.89,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "结果牛皮吹得震天响，落地嘛……说实话，磕磕绊绊。医疗是个高度保守的行业，容错率极低。AI判断错了，医生不敢用；医生自己看，又用不上AI。两边拉扯了十年。",
+      "start": 200.07,
+      "duration": 14.169,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "所以这次大纲里说\"终于悟了\"，我觉得这词用得特别形象。那到底悟出了啥？",
+      "start": 214.666,
+      "duration": 5.834,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "你注意啊，最大的认知转变是：不再死磕\"替代医生\"了。十年下来大家都想明白了，AI短期内干不了医生这活儿。医生的临床判断、医患沟通、伦理决策，这些东西不是几个模型能搞定的。",
+      "start": 220.964,
+      "duration": 14.125,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "那现在走的是什么路子？",
+      "start": 235.506,
+      "duration": 2.133,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "现在是\"给医院装buff\"——AI变成医院的基础设施，跟CT机、核磁共振一个层级，是底层能力底座，不是前台医生。",
+      "start": 238.075,
+      "duration": 8.969,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "哦我懂了，有点像游戏里给英雄装备。医生是英雄，AI是装备，装备越强英雄越能打。",
+      "start": 247.461,
+      "duration": 9.143,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "你这个类比相当贴切。具体落地比如AI辅助诊断、AI影像分析、AI病历生成、AI用药审核——这些都是嵌进医院工作流里的工具，医生用着顺手，效率提高，错误率下降。",
+      "start": 257.1,
+      "duration": 15.693,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "我跟你说，这个转变对行业意义特别大。商业逻辑整个变了——以前想To C，让患者自己用AI看病，那付费意愿很弱；现在To B，直接卖给医院，付费方明确，预算稳定，账也好算。",
+      "start": 273.205,
+      "duration": 22.049,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "而且医院一旦用起来，数据飞轮就转起来了。AI用得越多，积累的临床数据越多，模型迭代越快，越用越好用，别的医院一看，也想用。这不就是强者愈强嘛。",
+      "start": 295.733,
+      "duration": 13.168,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "那以后我们去挂号、看医生，是不是能明显感觉到AI的存在？",
+      "start": 309.333,
+      "duration": 4.702,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "会的。比如你进去看病，医生面前那个系统可能已经把你过去三年的体检报告、用药记录、家族病史全整理好了，还自动提示了几个需要重点关注的风险点。医生不再是\"打字机\"，而是真正的决策者。",
+      "start": 314.503,
+      "duration": 17.304,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "这画面感一下就来了。说白了，AI把医生从繁琐的文书工作里解放出来，让医生把时间花在\"看病\"本身上。",
+      "start": 332.297,
+      "duration": 12.147,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "你这话说到点子上了。十年悟道，悟出的就是这个——AI不是来抢饭碗的，是来让专业的人干更专业的事的。",
+      "start": 344.921,
+      "duration": 8.882,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "对了，说到AIGC生态，最近美图干了件挺狠的事——砸了一个亿悬赏AI影像的Builder。",
+      "start": 354.221,
+      "duration": 8.882,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "一个亿？真的假的？",
+      "start": 363.542,
+      "duration": 1.611,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "真的，我专门查了。美图启动了一个产品挑战赛，奖金池一个亿，面向全行业征集AI影像应用开发者。",
+      "start": 365.565,
+      "duration": 10.144,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "你注意啊，美图这步棋很聪明。它自己虽然有美图秀秀这种国民级应用，但AIGC时代，光靠一个App打天下已经远远不够了。它需要生态。",
+      "start": 376.202,
+      "duration": 10.991,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "所以这相当于美图出钱、出流量、出平台，让开发者来基于它的底层能力搭应用？",
+      "start": 387.602,
+      "duration": 9.099,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "对，本质上就是在建AIGC时代的\"App Store\"。你做出来好用的AI修图、AI视频、AI生图工具，挂在我美图生态里，我帮你分发，大家一起赚钱。",
+      "start": 397.188,
+      "duration": 14.125,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "这个思路其实跟苹果当年搞App Store一个逻辑。早期靠硬件赚钱，成熟期靠生态赚钱。美图现在明显是奔着生态去了。",
+      "start": 411.755,
+      "duration": 12.166,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "而且一个亿对美图来说不算伤筋动骨，但足以吸引一大批中小开发者。高手在民间嘛，说不定就冒出来一个现象级的AI影像应用。",
+      "start": 424.381,
+      "duration": 11.363,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "哈，那以后我们手机上可能就会出现一堆基于美图底层能力的AI小工具了。",
+      "start": 436.215,
+      "duration": 7.924,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "说到办公工具这块，最近金山办公也挺有意思。田然提了AI办公助理的三个标准——\"懂你、能交付、专业操作\"。",
+      "start": 444.551,
+      "duration": 10.623,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "我跟你说，这三个标准其实挺狠的，等于把市面上那些\"智障办公助手\"全给比下去了。",
+      "start": 455.619,
+      "duration": 10.362,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "你展开讲讲。",
+      "start": 466.436,
+      "duration": 1.611,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "\"懂你\"是基础中的基础，你得知道我是谁、我在干啥、我的习惯是什么。一个不记得我昨天做啥的助手，那就是个假助手。",
+      "start": 468.487,
+      "duration": 11.252,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "\"能交付\"这点更重要。现在很多AI办公产品，你让它写个报告，它给你大纲；你让它做个表，它给你思路。最后落地还是得你自己搞。",
+      "start": 480.217,
+      "duration": 10.512,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "对，交付就是它得真把活儿干完。一个能直接给你的成品，不是一份需要你加工的半成品。",
+      "start": 491.21,
+      "duration": 8.664,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "\"专业操作\"是天花板。你注意啊，办公不是聊天，专业操作意味着它得能调用企业内部系统、操作各种专业软件，不是表面上的花拳绣腿。",
+      "start": 500.3,
+      "duration": 11.842,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "这三个标准其实是递进的：懂你是前提，能交付是门槛，专业操作是分水岭。能同时做到这三点的产品，才能真正杀进企业核心工作流。",
+      "start": 512.612,
+      "duration": 14.933,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "WPS现在要是能把这三点都打透，那对微软Office的冲击会非常大。尤其在国内市场，性价比加上AI能力的组合，挺能打的。",
+      "start": 528.006,
+      "duration": 10.144,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "那说到行业风向标，前几天WAIC 2026开幕了吧？十大趋势你看了没？",
+      "start": 538.606,
+      "duration": 9.578,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "看了，每年这个时候各家都把自己的压箱底拿出来。我跟你说我印象最深的几条。",
+      "start": 548.65,
+      "duration": 6.879,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "我先来一个，具身智能肯定是大热门吧？",
+      "start": 555.962,
+      "duration": 5.529,
+      "audios": {
+        "professional": "chunk_047_professional.mp3",
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "必须的。具身智能这两年从概念到落地，进展比大家想象得快。我看到好几个展台，机器人已经能完成一些复杂的工厂任务了，动作丝滑度比去年明显上了一个台阶。",
+      "start": 561.898,
+      "duration": 13.758,
+      "audios": {
+        "professional": "chunk_048_professional.mp3",
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "大模型这块呢？",
+      "start": 576.126,
+      "duration": 1.48,
+      "audios": {
+        "professional": "chunk_049_professional.mp3",
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "大模型本身已经不是新闻了，今年大家聊的是多模态原生——文字、图像、视频、音频，从底层架构就是一个模态，不是我先生成文本再翻译成图片。这种原生多模态能力，是下一代模型的标配。",
+      "start": 578.007,
+      "duration": 16.955,
+      "audios": {
+        "professional": "chunk_050_professional.mp3",
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "我比较关注AI治理这一块。",
+      "start": 595.373,
+      "duration": 4.876,
+      "audios": {
+        "professional": "chunk_051_professional.mp3",
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "这个话题越来越重要了。技术跑得快，规则跟不上，监管就容易出问题。今年WAIC上能看到很多关于AI伦理、版权、隐私的国际讨论，各国监管思路差别也挺大。",
+      "start": 600.741,
+      "duration": 14.604,
+      "audios": {
+        "professional": "chunk_052_professional.mp3",
+        "lively": "chunk_052_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "还有啥趋势值得聊的？",
+      "start": 615.796,
+      "duration": 3.396,
+      "audios": {
+        "professional": "chunk_053_professional.mp3",
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "还有Agent生态、AI for Science、AI普惠教育等等。说白了，十大趋势背后就是一个主线——AI从极客玩具变成社会基础设施，渗透到各行各业里去。",
+      "start": 619.682,
+      "duration": 13.864,
+      "audios": {
+        "professional": "chunk_054_professional.mp3",
+        "lively": "chunk_054_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "这个主线跟我前面说的\"深落地\"是一回事。",
+      "start": 634.046,
+      "duration": 5.312,
+      "audios": {
+        "professional": "chunk_055_professional.mp3",
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "对，技术狂飙之后，价值兑现才是真战场。这句话咱们今天反复用，因为它是真的。",
+      "start": 639.843,
+      "duration": 6.008,
+      "audios": {
+        "professional": "chunk_056_professional.mp3",
+        "lively": "chunk_056_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "那我最后给你做个收尾吧——今天咱们聊了三件事：百度文心任务Agent登顶全球，标志中国AI从\"能对话\"到\"能办事\"；医疗AI十年悟道，从想\"替代医生\"转向\"给医院装buff\"；还有美图一个亿砸生态、金山办公定标准、WAIC十大趋势指向落地。",
+      "start": 646.331,
+      "duration": 26.335,
+      "audios": {
+        "professional": "chunk_057_professional.mp3",
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "这三件事看似散，其实都指向同一个底层逻辑：中国AI正在穿越\"技术神话\"的阶段，进入\"产业兑现\"的阶段。能不能把技术变成实实在在的价值，决定了下一轮谁笑到最后。",
+      "start": 673.066,
+      "duration": 14.212,
+      "audios": {
+        "professional": "chunk_058_professional.mp3",
+        "lively": "chunk_058_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "听众朋友，今天的AI每日先锋就到这里，咱们明天见。",
+      "start": 687.756,
+      "duration": 5.007,
+      "audios": {
+        "professional": "chunk_059_professional.mp3",
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "B",
+      "text": "明天见。",
+      "start": 693.226,
+      "duration": 1.045,
+      "audios": {
+        "professional": "chunk_060_professional.mp3",
+        "lively": "chunk_060_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
