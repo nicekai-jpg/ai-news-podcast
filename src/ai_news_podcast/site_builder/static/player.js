@@ -483,56 +483,40 @@
     }
 
     function buildVoiceSelectors() {
-      const row = document.getElementById('voice-selector-row');
-      if (!row) return;
-      row.innerHTML = '';
-      row.style.display = 'flex';
+      const containerA = document.getElementById('host-a-voice-selector');
+      const containerB = document.getElementById('host-b-voice-selector');
+      if (!containerA || !containerB) return;
 
-      const title = document.createElement('div');
-      title.className = 'voice-deck-title';
-      title.innerHTML = '🎙️ 双主播音色定制 (Host Voice Timbre Deck)';
-      row.appendChild(title);
+      containerA.innerHTML = '';
+      containerB.innerHTML = '';
 
-      const hostsContainer = document.createElement('div');
-      hostsContainer.className = 'voice-hosts-container';
-
-      const hosts = [
-        { key: 'A', name: '👩‍💼 苏晴音色', configKey: 'host_a' },
-        { key: 'B', name: '👨‍💼 周航音色', configKey: 'host_b' }
+      const configs = [
+        { container: containerA, key: 'A', configKey: 'host_a' },
+        { container: containerB, key: 'B', configKey: 'host_b' }
       ];
 
-      hosts.forEach(function(h) {
-        const group = document.createElement('div');
-        group.className = 'voice-select-group';
-        
-        const label = document.createElement('label');
-        label.textContent = h.name;
-        group.appendChild(label);
-
+      configs.forEach(function(cfg) {
         const pillGroup = document.createElement('div');
         pillGroup.className = 'voice-pill-group';
 
-        const hostConfig = VOICES_CONFIG[h.configKey] || {};
+        const hostConfig = VOICES_CONFIG[cfg.configKey] || {};
         const variants = Object.keys(hostConfig);
 
         variants.forEach(function(variantId) {
           const btn = document.createElement('button');
-          btn.className = 'voice-pill-btn host-' + h.key.toLowerCase() + '-btn';
-          if (selectedVoices[h.key] === variantId) {
+          btn.className = 'voice-pill-btn host-' + cfg.key.toLowerCase() + '-btn';
+          if (selectedVoices[cfg.key] === variantId) {
             btn.classList.add('active');
           }
-          btn.setAttribute('data-host', h.key);
+          btn.setAttribute('data-host', cfg.key);
           btn.setAttribute('data-variant', variantId);
-          btn.onclick = function() { selectVoiceVariant(h.key, variantId); };
+          btn.onclick = function() { selectVoiceVariant(cfg.key, variantId); };
           btn.textContent = hostConfig[variantId] || variantId;
           pillGroup.appendChild(btn);
         });
 
-        group.appendChild(pillGroup);
-        hostsContainer.appendChild(group);
+        cfg.container.appendChild(pillGroup);
       });
-
-      row.appendChild(hostsContainer);
     }
 
     function selectVoiceVariant(host, variant) {
