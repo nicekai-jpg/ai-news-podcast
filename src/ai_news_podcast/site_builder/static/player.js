@@ -495,6 +495,11 @@
         { container: containerB, key: 'B', configKey: 'host_b' }
       ];
 
+      const icons = {
+        'professional': '🎙️',
+        'lively': '⚡'
+      };
+
       configs.forEach(function(cfg) {
         const hostConfig = VOICES_CONFIG[cfg.configKey] || {};
         const variants = Object.keys(hostConfig);
@@ -508,7 +513,9 @@
           btn.setAttribute('data-host', cfg.key);
           btn.setAttribute('data-variant', variantId);
           btn.onclick = function() { selectVoiceVariant(cfg.key, variantId); };
-          btn.textContent = hostConfig[variantId] || variantId;
+          
+          const icon = icons[variantId] || '🎵';
+          btn.innerHTML = `<span class="pill-icon">${icon}</span> ${hostConfig[variantId] || variantId}`;
           cfg.container.appendChild(btn);
         });
       });
