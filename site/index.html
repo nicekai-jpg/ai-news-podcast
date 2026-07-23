@@ -133,7 +133,7 @@
     .host-b-tag { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
     .host-role { font-size: 0.68rem; color: #94a3b8; font-weight: 600; margin-top: 2px; }
 
-    /* Segmented Voice Timbre Switcher */
+    /* Responsive & Extensible Segmented Voice Timbre Switcher */
     .host-voice-segmented {
       display: flex;
       gap: 6px;
@@ -142,10 +142,15 @@
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.06);
       width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
+    .host-voice-segmented::-webkit-scrollbar { display: none; }
     .voice-pill-btn {
-      flex: 1;
-      padding: 6px 10px;
+      flex: 1 0 auto;
+      min-width: calc(50% - 3px);
+      padding: 6px 12px;
       font-size: 0.74rem;
       font-weight: 700;
       border: 1px solid transparent;
@@ -899,7 +904,7 @@
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-23 10:47:33</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-23 10:58:44</p></div>
   </div>
 
   <script>
@@ -1402,7 +1407,14 @@
 
       const icons = {
         'professional': '🎙️',
-        'lively': '⚡'
+        'lively': '⚡',
+        'warm': '🌸',
+        'gentle': '🍃',
+        'serious': '🎩',
+        'cute': '✨',
+        'mature': '🍷',
+        'energetic': '🔥',
+        'calm': '🌊'
       };
 
       configs.forEach(function(cfg) {
