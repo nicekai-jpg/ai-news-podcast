@@ -91,97 +91,101 @@
     /* Layouts */
     .main-layout { width: 100%; min-height: 500px; }
 
-    /* 播客双栏布局 */
-    .podcast-workspace { display: grid; grid-template-columns: 350px 1fr; gap: 24px; width: 100%; }
-    @media (max-width: 900px) {
-      .podcast-workspace { grid-template-columns: 1fr; }
+    /* 顶部全幅广播式调控台 (Top Broadcast Studio Console Banner) */
+    .top-studio-console {
+      display: grid;
+      grid-template-columns: 260px 1fr 350px;
+      gap: 20px;
+      align-items: center;
+      padding: 16px 22px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(22, 16, 45, 0.9) 0%, rgba(10, 7, 22, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(139, 92, 246, 0.12);
+      position: sticky;
+      top: 85px;
+      z-index: 90;
+      margin-bottom: 8px;
+    }
+    @media (max-width: 1024px) {
+      .top-studio-console { grid-template-columns: 1fr; position: static; }
     }
 
-    /* 播客左栏 */
-    .podcast-sidebar { display: flex; flex-direction: column; gap: 24px; }
-    .station-card, .sources-card { background: var(--surface); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-lg); transition: border-color 0.3s; }
-    .station-card:hover, .sources-card:hover { border-color: var(--border-hover); }
+    /* 左侧黑胶 & 标题 */
+    .console-left-deck { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .vinyl-wrapper-compact { position: relative; width: 62px; height: 62px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .vinyl-disc-sm { width: 56px; height: 56px; border-radius: 50%; background: #111; border: 3px solid #222; box-shadow: 0 6px 16px rgba(0,0,0,0.6); position: relative; animation: spin-vinyl 20s linear infinite; animation-play-state: paused; display: flex; align-items: center; justify-content: center; }
+    .vinyl-disc-sm.spinning { animation-play-state: running; }
+    .vinyl-art { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; }
+    .vinyl-center { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid #444; }
 
-    /* 双主播专属 DJ 调控卡片 Deck */
-    .host-cards-deck { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; width: 100%; }
-    .host-profile-card {
+    .console-ep-meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .console-live-badge { font-size: 0.62rem; font-weight: 800; color: #34d399; letter-spacing: 0.08em; display: flex; align-items: center; gap: 5px; }
+    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #34d399; box-shadow: 0 0 8px #34d399; animation: pulse-dot 1.5s infinite; }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    .console-ep-title { font-size: 0.95rem; font-weight: 850; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .console-ep-date { font-size: 0.7rem; color: #94a3b8; font-weight: 600; }
+
+    /* 中间播放控制 */
+    .console-center-player { display: flex; flex-direction: column; gap: 8px; }
+    .console-time-row { display: flex; align-items: center; gap: 10px; width: 100%; }
+    .time-text { font-size: 0.72rem; color: #94a3b8; font-weight: 700; width: 38px; text-align: center; }
+    .console-progress-track { flex: 1; height: 6px; border-radius: 99px; background: rgba(255,255,255,0.08); position: relative; cursor: pointer; }
+    .console-progress-fill { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent-gradient); border-radius: 99px; width: 0%; transition: width 0.1s linear; }
+    .console-progress-handle { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 12px; height: 12px; border-radius: 50%; background: #fff; box-shadow: 0 0 10px var(--accent); opacity: 0; transition: opacity 0.2s; pointer-events: none; }
+    .console-progress-track:hover .console-progress-handle { opacity: 1; }
+
+    .console-ctrl-bar { display: flex; align-items: center; justify-content: center; gap: 14px; }
+    .console-play-btn { width: 38px; height: 38px; border-radius: 50%; background: #ffffff; color: #090714; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 900; box-shadow: 0 4px 15px rgba(255,255,255,0.25); transition: transform 0.2s; }
+    .console-play-btn:hover { transform: scale(1.08); }
+    .speed-pill-btn { font-size: 0.72rem; font-weight: 800; color: #c084fc; background: rgba(192, 132, 252, 0.12); padding: 3px 10px; border-radius: 99px; border: 1px solid rgba(192, 132, 252, 0.25); cursor: pointer; }
+    .volume-control { display: flex; align-items: center; gap: 6px; color: #94a3b8; }
+    .volume-control input[type=range] { width: 55px; height: 3px; accent-color: var(--accent); }
+
+    /* 右侧双声轨定制 */
+    .console-right-voices { display: flex; flex-direction: column; gap: 6px; }
+    .console-voice-header { display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; font-weight: 800; color: #f1f5f9; padding-bottom: 2px; }
+    .playback-mode-switcher { display: flex; gap: 4px; background: rgba(0,0,0,0.3); padding: 2px; border-radius: 99px; }
+    .playback-mode-btn { font-size: 0.65rem; font-weight: 700; color: #94a3b8; background: transparent; border: none; padding: 2px 8px; border-radius: 99px; cursor: pointer; }
+    .playback-mode-btn.active { color: #fff; background: rgba(255,255,255,0.12); }
+
+    .console-host-rows { display: flex; flex-direction: column; gap: 6px; }
+    .console-host-item { display: flex; align-items: center; gap: 8px; background: rgba(0, 0, 0, 0.35); padding: 4px 8px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05); }
+    .host-item-left { display: flex; align-items: center; gap: 5px; width: 62px; flex-shrink: 0; }
+    .host-emoji { font-size: 0.85rem; }
+    .host-name-sm { font-size: 0.72rem; font-weight: 800; color: #f8fafc; }
+
+    /* Sub Header Bar: Tabs + Calendar */
+    .sub-header-bar { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+
+    /* 全幅广播提词器 (Full-Width Teleprompter Workspace) */
+    .podcast-workspace { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+    .podcast-pane-full {
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--surface);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      padding: 14px 16px;
-      border-radius: var(--radius-md);
-      background: linear-gradient(135deg, rgba(26, 20, 50, 0.6) 0%, rgba(13, 9, 28, 0.8) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-      position: relative;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      height: 680px;
+      overflow: hidden;
     }
-    .host-profile-card:hover {
-      border-color: rgba(255, 255, 255, 0.18);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
-    }
-    .host-a-card { border-left: 4px solid #c084fc; }
-    .host-b-card { border-left: 4px solid #38bdf8; }
-    
-    .host-card-main { display: flex; align-items: center; gap: 12px; width: 100%; }
-    .host-avatar-ring { font-size: 1.3rem; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
-    .host-meta-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
-    .host-name { font-size: 0.88rem; font-weight: 800; color: #f8fafc; display: flex; align-items: center; }
-    .host-tag { font-size: 0.62rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; margin-left: 6px; letter-spacing: 0.04em; }
-    .host-a-tag { background: rgba(192, 132, 252, 0.15); color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.3); }
-    .host-b-tag { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
-    .host-role { font-size: 0.68rem; color: #94a3b8; font-weight: 600; margin-top: 2px; }
-
-    /* Responsive & Extensible Segmented Voice Timbre Switcher */
-    .host-voice-segmented {
-      display: flex;
-      gap: 6px;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 4px;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
+    .sources-card-full {
       width: 100%;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    .host-voice-segmented::-webkit-scrollbar { display: none; }
-    .voice-pill-btn {
-      flex: 1 0 auto;
-      min-width: calc(50% - 3px);
-      padding: 6px 12px;
-      font-size: 0.74rem;
-      font-weight: 700;
-      border: 1px solid transparent;
-      background: transparent;
-      color: #94a3b8;
-      border-radius: 7px;
-      cursor: pointer;
-      transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
-      text-align: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      white-space: nowrap;
-    }
-    .voice-pill-btn .pill-icon { font-size: 0.76rem; opacity: 0.8; }
-    .voice-pill-btn:hover {
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.08);
-    }
-    .voice-pill-btn.host-a-btn.active {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, rgba(192, 132, 252, 0.18) 100%);
-      border-color: #c084fc;
-      color: #ffffff;
-      box-shadow: 0 2px 12px rgba(168, 85, 247, 0.4);
-    }
-    .voice-pill-btn.host-b-btn.active {
-      background: linear-gradient(135deg, rgba(6, 182, 212, 0.3) 0%, rgba(56, 189, 248, 0.18) 100%);
-      border-color: #38bdf8;
-      color: #ffffff;
-      box-shadow: 0 2px 12px rgba(6, 182, 212, 0.4);
+      max-width: 980px;
+      margin: 0 auto;
+      background: var(--surface);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
     }
 
     /* 本期金句 Banner */
@@ -719,140 +723,111 @@
       </div>
     </header>
 
-    <div class="hero-section">
-      <div class="hero-inner">
-        <img src="./logo.png" alt="Cover" class="hero-cover">
-        <div class="hero-meta">
-          <h1 class="hero-title" id="hero-title">AI 新闻快报</h1>
-          <p class="hero-desc" id="hero-desc">AI 播客电台 · 每日 AI 资讯的声音解说与剧本展示</p>
+    <!-- 顶部全幅广播式调控台 (Top Broadcast Studio Console) -->
+    <div class="top-studio-console" id="top-studio-console">
+      <!-- 1. 左侧：黑胶唱片与电台标志 -->
+      <div class="console-left-deck">
+        <div class="vinyl-wrapper-compact">
+          <div class="vinyl-disc-sm" id="vinyl-disc">
+            <img src="./logo.png" alt="Album Art" class="vinyl-art">
+            <div class="vinyl-center"></div>
+          </div>
+          <div class="visualizer-waves" id="visualizer-waves">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+          </div>
+        </div>
+        <div class="console-ep-meta">
+          <span class="console-live-badge"><span class="live-dot"></span> LIVE BROADCAST</span>
+          <h2 class="console-ep-title" id="side-podcast-title">AI 新闻快报</h2>
+          <span class="console-ep-date" id="podcast-date-tag">—</span>
+        </div>
+      </div>
+
+      <!-- 2. 中间：专业播放控制盘 -->
+      <div class="console-center-player">
+        <div class="console-time-row">
+          <span id="current-time">0:00</span>
+          <div class="console-progress-track" id="console-progress-track" onclick="seekAudio(event)">
+            <div class="console-progress-fill" id="console-progress-fill"></div>
+            <div class="console-progress-handle"></div>
+          </div>
+          <span id="total-time">0:00</span>
+        </div>
+        <div class="console-ctrl-bar">
+          <button class="ctrl-btn" onclick="skipAudio(-15)" title="-15秒">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0-.57-8.38l.41 1.31"/></svg>
+          </button>
+          <button class="console-play-btn" id="console-btn-play" onclick="toggleAudio()">▶</button>
+          <button class="ctrl-btn" onclick="skipAudio(15)" title="+15秒">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1 .57-8.38l-.41 1.31"/></svg>
+          </button>
+          <span id="console-speed-btn" class="speed-pill-btn" onclick="cycleSpeed()">1.0x</span>
+          <div class="volume-control">
+            <svg id="volume-icon" onclick="toggleMute()" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.8" oninput="changeVolume(this.value)">
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 右侧：双主播音色定制轨 (Dual Host Timbre Decks) -->
+      <div class="console-right-voices">
+        <div class="console-voice-header">
+          <span>🎙️ 双声轨定制</span>
+          <div class="playback-mode-switcher">
+            <button id="playback-btn-full" class="playback-mode-btn active" onclick="setPlaybackMode('full')">📻 整轨</button>
+            <button id="playback-btn-sentence" class="playback-mode-btn" onclick="setPlaybackMode('sentence')" style="display: none;">📖 句读</button>
+          </div>
+        </div>
+        <div class="console-host-rows">
+          <div class="console-host-item" id="host-card-a">
+            <div class="host-item-left">
+              <span class="host-emoji">👩‍💼</span>
+              <span class="host-name-sm">苏晴</span>
+              <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
+            </div>
+            <div class="host-voice-segmented" id="host-a-voice-pills"></div>
+          </div>
+          <div class="console-host-item" id="host-card-b">
+            <div class="host-item-left">
+              <span class="host-emoji">👨‍💼</span>
+              <span class="host-name-sm">周航</span>
+              <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
+            </div>
+            <div class="host-voice-segmented" id="host-b-voice-pills"></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="brand-switcher-wrap">
+    <!-- 模式切换 Tabs 与 历程日历 -->
+    <div class="sub-header-bar">
       <div class="brand-switcher">
         <button id="btn-mode-podcast" class="mode-btn active" onclick="switchMode('podcast')">
           <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
-          AI 播客电台
+          AI 播客剧本
         </button>
         <button id="btn-mode-report" class="mode-btn" onclick="switchMode('report')">
           <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
           科技日报
         </button>
       </div>
-    </div>
 
-    <div class="date-selector-wrap">
-      <div class="studio-calendar-header">
-        <span>📅 播客节目历程 (Program Calendar)</span>
-        <span class="calendar-sub-badge">点击即可切换多期对谈与日报</span>
+      <div class="date-selector-wrap">
+        <div class="date-pills" id="date-pills"></div>
       </div>
-      <div class="date-pills" id="date-pills"></div>
     </div>
 
     <div class="main-layout">
-      <!-- AI 播客模式布局 -->
+      <!-- AI 播客模式布局：全幅广播提词器 -->
       <div class="podcast-workspace" id="panel-podcast">
-        <!-- 左侧播客播控台 -->
-        <div class="podcast-sidebar">
-          <div class="station-card">
-            <!-- 1. 双主播专属 DJ 调控卡片 Deck (Dual Host DJ Decks) -->
-            <div class="host-cards-deck">
-              <!-- Host A: 苏晴 Deck -->
-              <div class="host-profile-card host-a-card" id="host-card-a">
-                <div class="host-card-main">
-                  <div class="host-avatar-ring host-a-ring">👩‍💼</div>
-                  <div class="host-meta-text">
-                    <span class="host-name">苏晴 <span class="host-tag host-a-tag">Host A</span></span>
-                    <span class="host-role">控场解说 · 观点穿透</span>
-                  </div>
-                  <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
-                </div>
-                <div class="host-voice-segmented" id="host-a-voice-pills"></div>
-              </div>
-
-              <!-- Host B: 周航 Deck -->
-              <div class="host-profile-card host-b-card" id="host-card-b">
-                <div class="host-card-main">
-                  <div class="host-avatar-ring host-b-ring">👨‍💼</div>
-                  <div class="host-meta-text">
-                    <span class="host-name">周航 <span class="host-tag host-b-tag">Host B</span></span>
-                    <span class="host-role">技术拆解 · 深度研判</span>
-                  </div>
-                  <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
-                </div>
-                <div class="host-voice-segmented" id="host-b-voice-pills"></div>
-              </div>
-            </div>
-
-            <div class="vinyl-wrapper">
-              <div class="vinyl-disc" id="vinyl-disc">
-                <img src="./logo.png" alt="Album Art" class="vinyl-art">
-                <div class="vinyl-center"></div>
-              </div>
-              <div class="visualizer-waves" id="visualizer-waves">
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-                <div class="wave-bar"></div>
-              </div>
-            </div>
-
-            <div class="podcast-info">
-              <h3 class="side-title" id="side-podcast-title">AI 新闻快报</h3>
-              <p class="side-meta-date" id="podcast-date-tag">—</p>
-            </div>
-
-            <div class="console-player">
-              <div class="playback-mode-switcher">
-                <button id="playback-btn-full" class="playback-mode-btn active" onclick="setPlaybackMode('full')">📻 整轨广播</button>
-                <button id="playback-btn-sentence" class="playback-mode-btn" onclick="setPlaybackMode('sentence')" style="display: none;">📖 智能句读</button>
-              </div>
-              <div class="console-time-row">
-                <span id="current-time">0:00</span>
-                <div class="console-progress-track" id="console-progress-track" onclick="seekAudio(event)">
-                  <div class="console-progress-fill" id="console-progress-fill"></div>
-                  <div class="console-progress-handle"></div>
-                </div>
-                <span id="total-time">0:00</span>
-              </div>
-              <div class="console-controls">
-                <button class="ctrl-btn" onclick="skipAudio(-15)" title="-15秒">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0-.57-8.38l.41 1.31"/></svg>
-                </button>
-                <button class="console-play-btn" id="console-btn-play" onclick="toggleAudio()">▶</button>
-                <button class="ctrl-btn" onclick="skipAudio(15)" title="+15秒">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1 .57-8.38l-.41 1.31"/></svg>
-                </button>
-              </div>
-              <div class="console-extra">
-                <span id="console-speed-btn" onclick="cycleSpeed()">1.0x</span>
-                <div class="volume-control">
-                  <svg id="volume-icon" onclick="toggleMute()" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                  <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.8" oninput="changeVolume(this.value)">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 参考源卡片 -->
-          <div class="sources-card" id="sources-card">
-            <div class="card-header">
-              <span>🔗 本期引证新闻源</span>
-            </div>
-            <div class="sources-list-body" id="sources-list-body"></div>
-          </div>
-        </div>
-
-        <!-- 右侧播客剧本 -->
-        <div class="podcast-pane">
+        <div class="podcast-pane-full">
           <div class="pane-header">
-            <span>🎙️ 播客对谈剧本</span>
-            <span class="teleprompter-badge">🔴 智能音文联动</span>
+            <span>🎙️ 播客对谈剧本 (Live Teleprompter Feed)</span>
+            <span class="teleprompter-badge">🔴 智能音文同步 · 点击段落即刻跳转</span>
           </div>
 
           <!-- 本期核心金句卡片 -->
@@ -869,6 +844,14 @@
               返回播音位置
             </button>
           </div>
+        </div>
+
+        <!-- 底部新闻源 -->
+        <div class="sources-card-full" id="sources-card">
+          <div class="card-header">
+            <span>🔗 本期引证新闻源 (Verified Sources)</span>
+          </div>
+          <div class="sources-list-body" id="sources-list-body"></div>
         </div>
       </div>
 
@@ -904,7 +887,7 @@
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-23 10:58:44</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-23 11:11:59</p></div>
   </div>
 
   <script>
