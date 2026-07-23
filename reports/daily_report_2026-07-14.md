@@ -1,46 +1,4 @@
-<think>The user wants me to write a tech news daily report based on the provided materials. Let me analyze the materials:
-
-1. 浪潮信息 - Agent数量与算力，单柜4万Agent，多模融合超节点
-2. 西门子 - 2026世界人工智能大会参展
-3. 蚂蚁安全 - 开源安全框架，应对Claude Code漏洞
-4. CNCF - 招商银行AI调度平台案例，HAMi技术
-5. AI生图信息防伪
-
-These are all marked as "次要" (secondary) materials, so I need to write a focused but concise report. The date is July 14, 2026.
-
-Let me organize by themes:
-- AI基础设施与算力: 素材1（浪潮信息）, 素材4（CNCF/HAMi）
-- AI安全: 素材3（蚂蚁安全）
-- AI行业大会: 素材2（西门子WAIC）
-- AI内容与伦理: 素材5（AI生图防伪）
-
-Let me write this in Chinese, professional tone, 800-1500 words.
-
-Let me draft:
-
-# 🌍 科技新闻日报 | 2026年07月14日
-
-## 导语
-今日科技动态聚焦AI基础设施规模化、安全治理与产业化落地，业界正同步推进大模型智能体（Agent）的算力底座加固与风险防护体系构建。
-
-## AI基础设施：Agent规模化催生算力新底座
-- **浪潮信息发布整机柜超节点，单柜可承载4万Agent**...
-- **CNCF发布招商银行AI调度案例，HAMi技术获生产级验证**...
-
-## AI安全治理：从工具风险到系统性防护
-- **蚂蚁安全开源两大框架，填补Claude Code类工具安全空白**...
-
-## 行业动态：大模型加速走向产业现场
-- **西门子确认参展2026世界人工智能大会**...
-
-## AI与社会：生成内容的真实性之问
-- **AI生图时代的信息防伪再引关注**...
-
-## AI洞察小结
-
-Let me refine and write this out properly. I need to make sure I have good integration and professional tone.</think>
-
-# 🌍 科技新闻日报 | 2026年07月14日
+# ✨ 科技新闻日报 | 2026年07月14日
 
 ## 导语
 今日科技领域焦点集中在 AI 基础设施规模化、行业落地深化以及生成式 AI 治理三个方向。从单柜承载数万 Agent 的整机柜方案，到针对 AI 编程工具的安全防护框架，业界正围绕"大模型走向生产"这一核心命题，搭建从硬件底座到上层应用的全栈能力。

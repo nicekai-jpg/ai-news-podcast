@@ -1,22 +1,4 @@
-<think>The user wants me to create a professional tech news daily report in Chinese, based on the provided materials. Let me analyze the materials:
-
-1. 蚂蚁InTech奖申报即将截止 - Third Ant InTech Award, Turing Award winner as judge
-2. AI生物研发MoleculeOS - AI biology R&D enters "operating system era"
-3. 百度搭子日均提问暴增20倍 - Baidu's AI companion upgrade
-4. 派早报：蔚来ES8上市等，OpenAI发布GPT-5 - NIO ES8 launch, OpenAI GPT-5 release
-5. Apple起诉OpenAI - Apple sues OpenAI over trade secret theft
-
-I need to merge related stories and present them in categories. Let me organize:
-
-- AI前沿：MoleculeOS、百度搭子升级
-- 大公司动态：OpenAI发布GPT-5、Apple起诉OpenAI、蔚来ES8
-- 行业活动：蚂蚁InTech奖
-
-I should be concise, professional, and write between 800-1500 characters in Chinese.
-
-Let me write this now.</think>
-
-# 🌍 科技新闻日报 | 2026年07月11日
+# ✨ 科技新闻日报 | 2026年07月11日
 
 **导语**：今日科技圈重磅不断——OpenAI 发布 GPT-5 引爆新一轮 AI 竞赛，Apple 与 OpenAI 围绕商业秘密对簿公堂，AI 在生物研发与企业服务领域的落地也在持续深化，行业竞争与生态构建同步加速。
 
