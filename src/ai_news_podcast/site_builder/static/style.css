@@ -102,16 +102,67 @@
     .station-card:hover, .sources-card:hover { border-color: var(--border-hover); }
 
     /* 双 AI 主播动态卡片 Deck */
-    .host-cards-deck { display: flex; gap: 10px; margin-bottom: 24px; width: 100%; }
-    .host-profile-card { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: var(--radius-md); background: rgba(30, 41, 59, 0.45); border: 1px solid rgba(255, 255, 255, 0.08); position: relative; transition: all 0.25s ease; }
-    .host-profile-top { display: flex; align-items: center; gap: 10px; width: 100%; }
+    .host-cards-deck { display: flex; gap: 10px; margin-bottom: 14px; width: 100%; }
+    .host-profile-card { flex: 1; display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: var(--radius-md); background: rgba(30, 41, 59, 0.45); border: 1px solid rgba(255, 255, 255, 0.08); position: relative; transition: all 0.25s ease; }
     .host-a-card { border-left: 4px solid #c084fc; }
     .host-b-card { border-left: 4px solid #38bdf8; }
     .host-avatar-ring { font-size: 1.3rem; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.06); flex-shrink: 0; }
     .host-meta-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
     .host-name { font-size: 0.85rem; font-weight: 800; color: #f8fafc; }
     .host-role { font-size: 0.68rem; color: #94a3b8; font-weight: 600; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
-    .host-voice-selector { width: 100%; padding-top: 6px; border-top: 1px dashed rgba(255, 255, 255, 0.08); }
+
+    /* 全幅专属音色电台调音盘 (Voice Console) */
+    .host-voice-console {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    .voice-console-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .voice-console-title {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #f1f5f9;
+      letter-spacing: 0.02em;
+    }
+    .voice-console-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 8px;
+      border-radius: 99px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    .voice-console-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .voice-console-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .voice-host-label {
+      font-size: 0.74rem;
+      font-weight: 800;
+      width: 65px;
+      flex-shrink: 0;
+    }
+    .host-a-label { color: #c084fc; }
+    .host-b-label { color: #38bdf8; }
 
     /* 本期金句 Banner */
     .episode-insight-banner {
@@ -596,86 +647,39 @@
     /* Voice Selector Styling */
     .voice-selector-row {
       display: flex;
-      gap: 12px;
-      margin-top: 10px;
-      padding: 6px 12px;
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      align-items: center;
-      justify-content: space-between;
-    }
-    .voice-select-group {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    .voice-selector-row {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin: 14px 0 18px 0;
-      padding: 14px;
-      border-radius: var(--radius-md);
-      background: rgba(15, 23, 42, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .voice-deck-title {
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: #f8fafc;
-      letter-spacing: 0.02em;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .voice-hosts-container {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .voice-select-group {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .voice-select-group label {
-      font-size: 0.68rem;
-      color: #cbd5e1;
-      font-weight: 700;
-    }
     .voice-pill-group {
       display: flex;
       gap: 6px;
-      margin-top: 4px;
+      flex: 1;
     }
     .voice-pill-btn {
       flex: 1;
-      padding: 6px 12px;
-      font-size: 0.72rem;
+      padding: 6px 10px;
+      font-size: 0.74rem;
       font-weight: 700;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.03);
       color: #94a3b8;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       text-align: center;
+      white-space: nowrap;
     }
     .voice-pill-btn:hover {
-      color: #fff;
-      border-color: rgba(255, 255, 255, 0.25);
-      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.07);
     }
     .voice-pill-btn.host-a-btn.active {
-      background: rgba(168, 85, 247, 0.2);
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(192, 132, 252, 0.15) 100%);
       border-color: #c084fc;
       color: #ffffff;
-      box-shadow: 0 0 12px rgba(168, 85, 247, 0.3);
+      box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
     }
     .voice-pill-btn.host-b-btn.active {
-      background: rgba(6, 182, 212, 0.2);
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.25) 0%, rgba(56, 189, 248, 0.15) 100%);
       border-color: #38bdf8;
       color: #ffffff;
-      box-shadow: 0 0 12px rgba(6, 182, 212, 0.3);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.35);
     }
