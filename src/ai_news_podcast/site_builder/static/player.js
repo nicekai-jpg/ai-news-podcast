@@ -483,8 +483,8 @@
     }
 
     function buildVoiceSelectors() {
-      const containerA = document.getElementById('host-a-voice-selector');
-      const containerB = document.getElementById('host-b-voice-selector');
+      const containerA = document.getElementById('host-a-voice-pills');
+      const containerB = document.getElementById('host-b-voice-pills');
       if (!containerA || !containerB) return;
 
       containerA.innerHTML = '';
@@ -496,9 +496,6 @@
       ];
 
       configs.forEach(function(cfg) {
-        const pillGroup = document.createElement('div');
-        pillGroup.className = 'voice-pill-group';
-
         const hostConfig = VOICES_CONFIG[cfg.configKey] || {};
         const variants = Object.keys(hostConfig);
 
@@ -512,10 +509,8 @@
           btn.setAttribute('data-variant', variantId);
           btn.onclick = function() { selectVoiceVariant(cfg.key, variantId); };
           btn.textContent = hostConfig[variantId] || variantId;
-          pillGroup.appendChild(btn);
+          cfg.container.appendChild(btn);
         });
-
-        cfg.container.appendChild(pillGroup);
       });
     }
 

@@ -157,29 +157,41 @@ def build_index_html(
         <!-- 左侧播客播控台 -->
         <div class="podcast-sidebar">
           <div class="station-card">
-            <!-- 双 AI 主播动态卡片 Deck 与音色定制 -->
+            <!-- 1. 双 AI 主播动态卡片 Deck -->
             <div class="host-cards-deck">
               <div class="host-profile-card host-a-card" id="host-card-a">
-                <div class="host-profile-top">
-                  <div class="host-avatar-ring host-a-ring">👩‍💼</div>
-                  <div class="host-meta-text">
-                    <span class="host-name">苏晴</span>
-                    <span class="host-role">Host A · 控场解说</span>
-                  </div>
-                  <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
+                <div class="host-avatar-ring host-a-ring">👩‍💼</div>
+                <div class="host-meta-text">
+                  <span class="host-name">苏晴</span>
+                  <span class="host-role">Host A · 控场解说</span>
                 </div>
-                <div class="host-voice-selector" id="host-a-voice-selector"></div>
+                <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
               </div>
               <div class="host-profile-card host-b-card" id="host-card-b">
-                <div class="host-profile-top">
-                  <div class="host-avatar-ring host-b-ring">👨‍💼</div>
-                  <div class="host-meta-text">
-                    <span class="host-name">周航</span>
-                    <span class="host-role">Host B · 技术拆解</span>
-                  </div>
-                  <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
+                <div class="host-avatar-ring host-b-ring">👨‍💼</div>
+                <div class="host-meta-text">
+                  <span class="host-name">周航</span>
+                  <span class="host-role">Host B · 技术拆解</span>
                 </div>
-                <div class="host-voice-selector" id="host-b-voice-selector"></div>
+                <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
+              </div>
+            </div>
+
+            <!-- 2. 全幅专属音色电台调音盘 (Voice Timbre Deck) -->
+            <div class="host-voice-console">
+              <div class="voice-console-header">
+                <span class="voice-console-title">🎙️ 双主播音色定制</span>
+                <span class="voice-console-tag">AI 双声轨</span>
+              </div>
+              <div class="voice-console-grid">
+                <div class="voice-console-row">
+                  <span class="voice-host-label host-a-label">👩‍💼 苏晴</span>
+                  <div class="voice-pill-group" id="host-a-voice-pills"></div>
+                </div>
+                <div class="voice-console-row">
+                  <span class="voice-host-label host-b-label">👨‍💼 周航</span>
+                  <div class="voice-pill-group" id="host-b-voice-pills"></div>
+                </div>
               </div>
             </div>
 
