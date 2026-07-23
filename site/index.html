@@ -6,34 +6,34 @@
   <title>AI 每日先锋</title>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-    :root {
-      --bg: #030206;
-      --bg-gradient: radial-gradient(circle at 50% 0%, #0d061f 0%, #030206 80%);
-      --surface: rgba(13, 9, 28, 0.45);
-      --surface-hover: rgba(20, 15, 38, 0.6);
+:root {
+      --bg: #090714;
+      --bg-gradient: radial-gradient(circle at 50% 0%, #150a2a 0%, #070510 85%);
+      --surface: rgba(18, 14, 36, 0.75);
+      --surface-hover: rgba(26, 20, 50, 0.85);
       --accent: #8b5cf6;
       --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
       --accent-light: #c084fc;
       --text-muted: #9ca3af;
       --text-dark: #4b5563;
-      --border: rgba(255, 255, 255, 0.04);
-      --border-hover: rgba(139, 92, 246, 0.2);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-hover: rgba(139, 92, 246, 0.3);
       --radius-sm: 8px;
       --radius-md: 16px;
       --radius-lg: 28px;
       --success: #10b981;
       --shadow-lg: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
-      --host-a: #06b6d4;
-      --host-b: #f472b6;
-      --glow-color: rgba(139, 92, 246, 0.15);
+      --host-a: #c084fc;
+      --host-b: #38bdf8;
+      --glow-color: rgba(139, 92, 246, 0.18);
     }
 
     body.theme-report {
       --accent: #06b6d4;
       --accent-gradient: linear-gradient(135deg, #06b6d4 0%, #10b981 100%);
       --accent-light: #67e8f9;
-      --glow-color: rgba(6, 182, 212, 0.12);
-      --bg-gradient: radial-gradient(circle at 50% 0%, #05161c 0%, #02080a 80%);
+      --glow-color: rgba(6, 182, 212, 0.15);
+      --bg-gradient: radial-gradient(circle at 50% 0%, #051820 0%, #020a0d 85%);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -46,131 +46,138 @@
     ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 99px; }
     ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px 100px; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 24px 60px; min-height: 100vh; display: flex; flex-direction: column; gap: 24px; }
 
     /* Header & Navbar */
-    header { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; background: rgba(3, 2, 6, 0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-    .logo-block { display: flex; align-items: center; gap: 14px; text-decoration: none; color: #fff; }
-    .logo-img { width: 44px; height: 44px; border-radius: 14px; border: 1px solid var(--border-hover); box-shadow: 0 0 20px rgba(139,92,246,.15); }
+    header { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100; background: rgba(9, 7, 20, 0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+    .logo-block { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-img { width: 42px; height: 42px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 4px 15px var(--glow-color); }
     .brand-name { font-size: 1.35rem; font-weight: 850; background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.02em; }
-    .brand-tagline { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; font-weight: 500; opacity: 0.8; letter-spacing: 0.05em; text-transform: uppercase; }
+    .brand-tagline { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; }
     .nav-btn { display: inline-flex; align-items: center; gap: 7px; color: var(--text-muted); text-decoration: none; font-size: 0.82rem; font-weight: 600; padding: 8px 18px; border-radius: 99px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); transition: all 0.2s ease; }
     .nav-btn:hover { color: #fff; background: rgba(255,255,255,0.07); border-color: var(--accent); }
-    .nav-btn-rss { color: #f97316; border-color: rgba(249,115,22,.2); }
     .nav-btn-rss:hover { color: #fb923c; border-color: rgba(249,115,22,.4); background: rgba(249,115,22,.06); }
 
     /* Hero Banner */
-    .hero-section { padding: 32px 0; border-bottom: 1px solid var(--border); }
-    .hero-inner { display: flex; align-items: center; gap: 32px; }
-    .hero-cover { width: 96px; height: 96px; flex-shrink: 0; border-radius: 20px; border: 1px solid var(--border-hover); box-shadow: 0 0 30px rgba(139,92,246,.1), var(--shadow-lg); object-fit: cover; }
-    .hero-meta { flex: 1; min-width: 0; }
-    .hero-title { font-size: clamp(1.3rem, 3vw, 1.85rem); font-weight: 900; line-height: 1.25; color: #fff; margin-bottom: 6px; letter-spacing: -0.01em; }
-    .hero-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; max-width: 750px; }
+    .hero-section { background: rgba(18, 14, 36, 0.6); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 32px; box-shadow: var(--shadow-lg); }
+    .hero-inner { display: flex; align-items: center; gap: 24px; }
+    .hero-cover { width: 72px; height: 72px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 8px 24px -6px var(--glow-color); object-fit: cover; }
+    .hero-meta { flex: 1; }
+    .hero-title { font-size: 1.45rem; font-weight: 850; color: #fff; letter-spacing: -0.01em; margin-bottom: 4px; }
+    .hero-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
 
     /* Mode Switcher Tab */
-    .brand-switcher-wrap { display: flex; justify-content: center; margin: 28px 0 16px; }
-    .brand-switcher { background: rgba(15, 12, 28, 0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border); padding: 5px; border-radius: 99px; display: flex; gap: 4px; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); position: relative; }
+    .brand-switcher-wrap { display: flex; justify-content: center; margin: 4px 0; }
+    .brand-switcher { background: rgba(15, 12, 28, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border); padding: 5px; border-radius: 99px; display: flex; gap: 4px; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); position: relative; }
     .mode-btn { background: transparent; border: none; color: var(--text-muted); font-size: 0.88rem; font-weight: 750; padding: 10px 24px; border-radius: 99px; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); display: flex; align-items: center; gap: 8px; position: relative; z-index: 2; }
     .mode-btn:hover { color: #fff; }
     .mode-btn.active { color: #fff; background: var(--accent-gradient); box-shadow: 0 4px 15px var(--glow-color); }
-    .tab-icon { width: 15px; height: 15px; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; }
+    .tab-icon { width: 16px; height: 16px; }
 
     /* Date Selector & Studio Calendar Header */
-    .date-selector-wrap { padding: 20px 24px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: rgba(15, 23, 42, 0.5); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); overflow-x: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
-    .studio-calendar-header { display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; font-weight: 800; color: #f8fafc; letter-spacing: 0.02em; padding-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-    .calendar-sub-badge { font-size: 0.72rem; font-weight: 600; color: #94a3b8; background: rgba(255, 255, 255, 0.04); padding: 3px 10px; border-radius: 99px; }
+    .date-selector-wrap { padding: 20px 24px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: rgba(18, 14, 36, 0.6); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); overflow-x: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+    .studio-calendar-header { display: flex; align-items: center; justify-content: space-between; font-size: 0.85rem; font-weight: 800; color: #f8fafc; letter-spacing: 0.02em; padding-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.06); }
+    .calendar-sub-badge { font-size: 0.72rem; font-weight: 600; color: #94a3b8; background: rgba(255, 255, 255, 0.05); padding: 3px 10px; border-radius: 99px; }
     
     .date-pills { display: flex; gap: 10px; flex-wrap: nowrap; padding-bottom: 4px; width: 100%; }
-    .date-pill { display: flex; flex-direction: column; align-items: center; padding: 10px 18px; border-radius: var(--radius-md); cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); background: rgba(255,255,255,0.015); border: 1px solid var(--border); flex-shrink: 0; min-width: 76px; }
-    .date-pill:hover { background: rgba(255,255,255,0.05); border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 16px -8px var(--glow-color); }
-    .date-pill.active { background: linear-gradient(135deg, rgba(168, 85, 247, 0.2) 0%, rgba(139, 92, 246, 0.05) 100%); border-color: #c084fc; transform: translateY(-2px); box-shadow: 0 8px 24px -4px rgba(168, 85, 247, 0.4); }
-    body.theme-report .date-pill.active { background: linear-gradient(135deg, rgba(6, 182, 212, 0.2) 0%, rgba(14, 116, 144, 0.05) 100%); border-color: #38bdf8; box-shadow: 0 8px 24px -4px rgba(6, 182, 212, 0.4); }
-    .pill-month { font-size: 0.65rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; opacity: 0.7; }
-    .pill-day { font-size: 1.35rem; font-weight: 800; color: var(--text-muted); line-height: 1.1; margin: 2px 0; }
-    .pill-weekday { font-size: 0.65rem; color: var(--text-muted); font-weight: 600; opacity: 0.7; }
-    .date-pill.active .pill-month, .date-pill.active .pill-day { color: #fff; }
-    .date-pill.active .pill-weekday { color: var(--accent-light); opacity: 1; }
+    .date-pill { display: flex; flex-direction: column; align-items: center; padding: 10px 18px; border-radius: var(--radius-md); cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); background: rgba(255,255,255,0.02); border: 1px solid var(--border); flex-shrink: 0; min-width: 76px; }
+    .date-pill:hover { background: rgba(255,255,255,0.06); border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 8px 16px -8px var(--glow-color); }
+    .date-pill.active { background: linear-gradient(135deg, rgba(168, 85, 247, 0.25) 0%, rgba(139, 92, 246, 0.1) 100%); border-color: #c084fc; transform: translateY(-2px); box-shadow: 0 8px 24px -4px rgba(168, 85, 247, 0.4); }
+    body.theme-report .date-pill.active { background: linear-gradient(135deg, rgba(6, 182, 212, 0.25) 0%, rgba(14, 116, 144, 0.1) 100%); border-color: #38bdf8; box-shadow: 0 8px 24px -4px rgba(6, 182, 212, 0.4); }
+    .pill-day { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
+    .pill-date { font-size: 0.95rem; font-weight: 800; color: #fff; margin-top: 2px; }
+    .pill-badge { font-size: 0.65rem; color: var(--accent-light); font-weight: 700; margin-top: 4px; }
 
     /* Layouts */
-    .main-layout { margin-top: 24px; }
+    .main-layout { width: 100%; min-height: 500px; }
 
     /* 播客双栏布局 */
-    .podcast-workspace { display: grid; grid-template-columns: 360px 1fr; gap: 32px; align-items: start; }
+    .podcast-workspace { display: grid; grid-template-columns: 350px 1fr; gap: 24px; width: 100%; }
     @media (max-width: 900px) {
       .podcast-workspace { grid-template-columns: 1fr; }
     }
 
     /* 播客左栏 */
-    .podcast-sidebar { display: flex; flex-direction: column; gap: 24px; position: sticky; top: 110px; }
-    @media (max-width: 900px) {
-      .podcast-sidebar { position: static; }
-    }
-
+    .podcast-sidebar { display: flex; flex-direction: column; gap: 24px; }
     .station-card, .sources-card { background: var(--surface); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-lg); transition: border-color 0.3s; }
     .station-card:hover, .sources-card:hover { border-color: var(--border-hover); }
 
-    /* 双 AI 主播动态卡片 Deck */
-    .host-cards-deck { display: flex; gap: 10px; margin-bottom: 14px; width: 100%; }
-    .host-profile-card { flex: 1; display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: var(--radius-md); background: rgba(30, 41, 59, 0.45); border: 1px solid rgba(255, 255, 255, 0.08); position: relative; transition: all 0.25s ease; }
+    /* 双主播专属 DJ 调控卡片 Deck */
+    .host-cards-deck { display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px; width: 100%; }
+    .host-profile-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, rgba(26, 20, 50, 0.6) 0%, rgba(13, 9, 28, 0.8) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .host-profile-card:hover {
+      border-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+    }
     .host-a-card { border-left: 4px solid #c084fc; }
     .host-b-card { border-left: 4px solid #38bdf8; }
-    .host-avatar-ring { font-size: 1.3rem; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.06); flex-shrink: 0; }
+    
+    .host-card-main { display: flex; align-items: center; gap: 12px; width: 100%; }
+    .host-avatar-ring { font-size: 1.3rem; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255,255,255,0.1); flex-shrink: 0; }
     .host-meta-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
-    .host-name { font-size: 0.85rem; font-weight: 800; color: #f8fafc; }
-    .host-role { font-size: 0.68rem; color: #94a3b8; font-weight: 600; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+    .host-name { font-size: 0.88rem; font-weight: 800; color: #f8fafc; display: flex; align-items: center; }
+    .host-tag { font-size: 0.62rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; margin-left: 6px; letter-spacing: 0.04em; }
+    .host-a-tag { background: rgba(192, 132, 252, 0.15); color: #c084fc; border: 1px solid rgba(192, 132, 252, 0.3); }
+    .host-b-tag { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .host-role { font-size: 0.68rem; color: #94a3b8; font-weight: 600; margin-top: 2px; }
 
-    /* 全幅专属音色电台调音盘 (Voice Console) */
-    .host-voice-console {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-md);
-      padding: 12px 14px;
-      margin-bottom: 24px;
+    /* Segmented Voice Timbre Switcher */
+    .host-voice-segmented {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 4px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      width: 100%;
     }
-    .voice-console-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 6px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .voice-console-title {
-      font-size: 0.76rem;
-      font-weight: 800;
-      color: #f1f5f9;
-      letter-spacing: 0.02em;
-    }
-    .voice-console-tag {
-      font-size: 0.65rem;
-      font-weight: 700;
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.1);
-      padding: 2px 8px;
-      border-radius: 99px;
-      border: 1px solid rgba(56, 189, 248, 0.2);
-    }
-    .voice-console-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .voice-console-row {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .voice-host-label {
+    .voice-pill-btn {
+      flex: 1;
+      padding: 6px 10px;
       font-size: 0.74rem;
-      font-weight: 800;
-      width: 65px;
-      flex-shrink: 0;
+      font-weight: 700;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #94a3b8;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      white-space: nowrap;
     }
-    .host-a-label { color: #c084fc; }
-    .host-b-label { color: #38bdf8; }
+    .voice-pill-btn .pill-icon { font-size: 0.76rem; opacity: 0.8; }
+    .voice-pill-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .voice-pill-btn.host-a-btn.active {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.3) 0%, rgba(192, 132, 252, 0.18) 100%);
+      border-color: #c084fc;
+      color: #ffffff;
+      box-shadow: 0 2px 12px rgba(168, 85, 247, 0.4);
+    }
+    .voice-pill-btn.host-b-btn.active {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.3) 0%, rgba(56, 189, 248, 0.18) 100%);
+      border-color: #38bdf8;
+      color: #ffffff;
+      box-shadow: 0 2px 12px rgba(6, 182, 212, 0.4);
+    }
 
     /* 本期金句 Banner */
     .episode-insight-banner {
@@ -744,41 +751,32 @@
         <!-- 左侧播客播控台 -->
         <div class="podcast-sidebar">
           <div class="station-card">
-            <!-- 1. 双 AI 主播动态卡片 Deck -->
+            <!-- 1. 双主播专属 DJ 调控卡片 Deck (Dual Host DJ Decks) -->
             <div class="host-cards-deck">
+              <!-- Host A: 苏晴 Deck -->
               <div class="host-profile-card host-a-card" id="host-card-a">
-                <div class="host-avatar-ring host-a-ring">👩‍💼</div>
-                <div class="host-meta-text">
-                  <span class="host-name">苏晴</span>
-                  <span class="host-role">Host A · 控场解说</span>
+                <div class="host-card-main">
+                  <div class="host-avatar-ring host-a-ring">👩‍💼</div>
+                  <div class="host-meta-text">
+                    <span class="host-name">苏晴 <span class="host-tag host-a-tag">Host A</span></span>
+                    <span class="host-role">控场解说 · 观点穿透</span>
+                  </div>
+                  <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
                 </div>
-                <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
+                <div class="host-voice-segmented" id="host-a-voice-pills"></div>
               </div>
-              <div class="host-profile-card host-b-card" id="host-card-b">
-                <div class="host-avatar-ring host-b-ring">👨‍💼</div>
-                <div class="host-meta-text">
-                  <span class="host-name">周航</span>
-                  <span class="host-role">Host B · 技术拆解</span>
-                </div>
-                <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
-              </div>
-            </div>
 
-            <!-- 2. 全幅专属音色电台调音盘 (Voice Timbre Deck) -->
-            <div class="host-voice-console">
-              <div class="voice-console-header">
-                <span class="voice-console-title">🎙️ 双主播音色定制</span>
-                <span class="voice-console-tag">AI 双声轨</span>
-              </div>
-              <div class="voice-console-grid">
-                <div class="voice-console-row">
-                  <span class="voice-host-label host-a-label">👩‍💼 苏晴</span>
-                  <div class="voice-pill-group" id="host-a-voice-pills"></div>
+              <!-- Host B: 周航 Deck -->
+              <div class="host-profile-card host-b-card" id="host-card-b">
+                <div class="host-card-main">
+                  <div class="host-avatar-ring host-b-ring">👨‍💼</div>
+                  <div class="host-meta-text">
+                    <span class="host-name">周航 <span class="host-tag host-b-tag">Host B</span></span>
+                    <span class="host-role">技术拆解 · 深度研判</span>
+                  </div>
+                  <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
                 </div>
-                <div class="voice-console-row">
-                  <span class="voice-host-label host-b-label">👨‍💼 周航</span>
-                  <div class="voice-pill-group" id="host-b-voice-pills"></div>
-                </div>
+                <div class="host-voice-segmented" id="host-b-voice-pills"></div>
               </div>
             </div>
 
@@ -901,7 +899,7 @@
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-23 10:35:28</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-23 10:47:33</p></div>
   </div>
 
   <script>
@@ -1402,6 +1400,11 @@
         { container: containerB, key: 'B', configKey: 'host_b' }
       ];
 
+      const icons = {
+        'professional': '🎙️',
+        'lively': '⚡'
+      };
+
       configs.forEach(function(cfg) {
         const hostConfig = VOICES_CONFIG[cfg.configKey] || {};
         const variants = Object.keys(hostConfig);
@@ -1415,7 +1418,9 @@
           btn.setAttribute('data-host', cfg.key);
           btn.setAttribute('data-variant', variantId);
           btn.onclick = function() { selectVoiceVariant(cfg.key, variantId); };
-          btn.textContent = hostConfig[variantId] || variantId;
+          
+          const icon = icons[variantId] || '🎵';
+          btn.innerHTML = `<span class="pill-icon">${icon}</span> ${hostConfig[variantId] || variantId}`;
           cfg.container.appendChild(btn);
         });
       });
