@@ -64,7 +64,7 @@
         panelReport.style.display = 'flex';
       } else {
         panelReport.style.display = 'none';
-        panelPodcast.style.display = 'grid';
+        panelPodcast.style.display = 'flex';
       }
 
       buildDatePills();
