@@ -103,13 +103,15 @@
 
     /* 双 AI 主播动态卡片 Deck */
     .host-cards-deck { display: flex; gap: 10px; margin-bottom: 24px; width: 100%; }
-    .host-profile-card { flex: 1; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius-md); background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255, 255, 255, 0.06); position: relative; transition: all 0.25s ease; }
-    .host-a-card { border-left: 3px solid #c084fc; }
-    .host-b-card { border-left: 3px solid #38bdf8; }
-    .host-avatar-ring { font-size: 1.3rem; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.05); }
+    .host-profile-card { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: var(--radius-md); background: rgba(30, 41, 59, 0.45); border: 1px solid rgba(255, 255, 255, 0.08); position: relative; transition: all 0.25s ease; }
+    .host-profile-top { display: flex; align-items: center; gap: 10px; width: 100%; }
+    .host-a-card { border-left: 4px solid #c084fc; }
+    .host-b-card { border-left: 4px solid #38bdf8; }
+    .host-avatar-ring { font-size: 1.3rem; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.06); flex-shrink: 0; }
     .host-meta-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
-    .host-name { font-size: 0.82rem; font-weight: 800; color: #f8fafc; }
-    .host-role { font-size: 0.65rem; color: #94a3b8; font-weight: 600; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+    .host-name { font-size: 0.85rem; font-weight: 800; color: #f8fafc; }
+    .host-role { font-size: 0.68rem; color: #94a3b8; font-weight: 600; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+    .host-voice-selector { width: 100%; padding-top: 6px; border-top: 1px dashed rgba(255, 255, 255, 0.08); }
 
     /* 本期金句 Banner */
     .episode-insight-banner {

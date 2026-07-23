@@ -111,13 +111,15 @@
 
     /* 双 AI 主播动态卡片 Deck */
     .host-cards-deck { display: flex; gap: 10px; margin-bottom: 24px; width: 100%; }
-    .host-profile-card { flex: 1; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: var(--radius-md); background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255, 255, 255, 0.06); position: relative; transition: all 0.25s ease; }
-    .host-a-card { border-left: 3px solid #c084fc; }
-    .host-b-card { border-left: 3px solid #38bdf8; }
-    .host-avatar-ring { font-size: 1.3rem; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.05); }
+    .host-profile-card { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: var(--radius-md); background: rgba(30, 41, 59, 0.45); border: 1px solid rgba(255, 255, 255, 0.08); position: relative; transition: all 0.25s ease; }
+    .host-profile-top { display: flex; align-items: center; gap: 10px; width: 100%; }
+    .host-a-card { border-left: 4px solid #c084fc; }
+    .host-b-card { border-left: 4px solid #38bdf8; }
+    .host-avatar-ring { font-size: 1.3rem; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: rgba(255, 255, 255, 0.06); flex-shrink: 0; }
     .host-meta-text { display: flex; flex-direction: column; flex: 1; min-width: 0; }
-    .host-name { font-size: 0.82rem; font-weight: 800; color: #f8fafc; }
-    .host-role { font-size: 0.65rem; color: #94a3b8; font-weight: 600; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+    .host-name { font-size: 0.85rem; font-weight: 800; color: #f8fafc; }
+    .host-role { font-size: 0.68rem; color: #94a3b8; font-weight: 600; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+    .host-voice-selector { width: 100%; padding-top: 6px; border-top: 1px dashed rgba(255, 255, 255, 0.08); }
 
     /* 本期金句 Banner */
     .episode-insight-banner {
@@ -738,23 +740,29 @@
         <!-- 左侧播客播控台 -->
         <div class="podcast-sidebar">
           <div class="station-card">
-            <!-- 双 AI 主播动态卡片 Deck -->
+            <!-- 双 AI 主播动态卡片 Deck 与音色定制 -->
             <div class="host-cards-deck">
               <div class="host-profile-card host-a-card" id="host-card-a">
-                <div class="host-avatar-ring host-a-ring">👩‍💼</div>
-                <div class="host-meta-text">
-                  <span class="host-name">苏晴</span>
-                  <span class="host-role">Host A · 控场解说</span>
+                <div class="host-profile-top">
+                  <div class="host-avatar-ring host-a-ring">👩‍💼</div>
+                  <div class="host-meta-text">
+                    <span class="host-name">苏晴</span>
+                    <span class="host-role">Host A · 控场解说</span>
+                  </div>
+                  <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
                 </div>
-                <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
+                <div class="host-voice-selector" id="host-a-voice-selector"></div>
               </div>
               <div class="host-profile-card host-b-card" id="host-card-b">
-                <div class="host-avatar-ring host-b-ring">👨‍💼</div>
-                <div class="host-meta-text">
-                  <span class="host-name">周航</span>
-                  <span class="host-role">Host B · 技术拆解</span>
+                <div class="host-profile-top">
+                  <div class="host-avatar-ring host-b-ring">👨‍💼</div>
+                  <div class="host-meta-text">
+                    <span class="host-name">周航</span>
+                    <span class="host-role">Host B · 技术拆解</span>
+                  </div>
+                  <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
                 </div>
-                <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
+                <div class="host-voice-selector" id="host-b-voice-selector"></div>
               </div>
             </div>
 
@@ -785,7 +793,6 @@
                 <button id="playback-btn-full" class="playback-mode-btn active" onclick="setPlaybackMode('full')">📻 整轨广播</button>
                 <button id="playback-btn-sentence" class="playback-mode-btn" onclick="setPlaybackMode('sentence')" style="display: none;">📖 智能句读</button>
               </div>
-              <div class="voice-selector-row" id="voice-selector-row"></div>
               <div class="console-time-row">
                 <span id="current-time">0:00</span>
                 <div class="console-progress-track" id="console-progress-track" onclick="seekAudio(event)">
@@ -878,7 +885,7 @@
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-23 10:04:57</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-23 10:27:28</p></div>
   </div>
 
   <script>
@@ -1367,56 +1374,40 @@
     }
 
     function buildVoiceSelectors() {
-      const row = document.getElementById('voice-selector-row');
-      if (!row) return;
-      row.innerHTML = '';
-      row.style.display = 'flex';
+      const containerA = document.getElementById('host-a-voice-selector');
+      const containerB = document.getElementById('host-b-voice-selector');
+      if (!containerA || !containerB) return;
 
-      const title = document.createElement('div');
-      title.className = 'voice-deck-title';
-      title.innerHTML = '🎙️ 双主播音色定制 (Host Voice Timbre Deck)';
-      row.appendChild(title);
+      containerA.innerHTML = '';
+      containerB.innerHTML = '';
 
-      const hostsContainer = document.createElement('div');
-      hostsContainer.className = 'voice-hosts-container';
-
-      const hosts = [
-        { key: 'A', name: '👩‍💼 苏晴音色', configKey: 'host_a' },
-        { key: 'B', name: '👨‍💼 周航音色', configKey: 'host_b' }
+      const configs = [
+        { container: containerA, key: 'A', configKey: 'host_a' },
+        { container: containerB, key: 'B', configKey: 'host_b' }
       ];
 
-      hosts.forEach(function(h) {
-        const group = document.createElement('div');
-        group.className = 'voice-select-group';
-        
-        const label = document.createElement('label');
-        label.textContent = h.name;
-        group.appendChild(label);
-
+      configs.forEach(function(cfg) {
         const pillGroup = document.createElement('div');
         pillGroup.className = 'voice-pill-group';
 
-        const hostConfig = VOICES_CONFIG[h.configKey] || {};
+        const hostConfig = VOICES_CONFIG[cfg.configKey] || {};
         const variants = Object.keys(hostConfig);
 
         variants.forEach(function(variantId) {
           const btn = document.createElement('button');
-          btn.className = 'voice-pill-btn host-' + h.key.toLowerCase() + '-btn';
-          if (selectedVoices[h.key] === variantId) {
+          btn.className = 'voice-pill-btn host-' + cfg.key.toLowerCase() + '-btn';
+          if (selectedVoices[cfg.key] === variantId) {
             btn.classList.add('active');
           }
-          btn.setAttribute('data-host', h.key);
+          btn.setAttribute('data-host', cfg.key);
           btn.setAttribute('data-variant', variantId);
-          btn.onclick = function() { selectVoiceVariant(h.key, variantId); };
+          btn.onclick = function() { selectVoiceVariant(cfg.key, variantId); };
           btn.textContent = hostConfig[variantId] || variantId;
           pillGroup.appendChild(btn);
         });
 
-        group.appendChild(pillGroup);
-        hostsContainer.appendChild(group);
+        cfg.container.appendChild(pillGroup);
       });
-
-      row.appendChild(hostsContainer);
     }
 
     function selectVoiceVariant(host, variant) {

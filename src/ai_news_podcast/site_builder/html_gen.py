@@ -157,23 +157,29 @@ def build_index_html(
         <!-- 左侧播客播控台 -->
         <div class="podcast-sidebar">
           <div class="station-card">
-            <!-- 双 AI 主播动态卡片 Deck -->
+            <!-- 双 AI 主播动态卡片 Deck 与音色定制 -->
             <div class="host-cards-deck">
               <div class="host-profile-card host-a-card" id="host-card-a">
-                <div class="host-avatar-ring host-a-ring">👩‍💼</div>
-                <div class="host-meta-text">
-                  <span class="host-name">苏晴</span>
-                  <span class="host-role">Host A · 控场解说</span>
+                <div class="host-profile-top">
+                  <div class="host-avatar-ring host-a-ring">👩‍💼</div>
+                  <div class="host-meta-text">
+                    <span class="host-name">苏晴</span>
+                    <span class="host-role">Host A · 控场解说</span>
+                  </div>
+                  <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
                 </div>
-                <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
+                <div class="host-voice-selector" id="host-a-voice-selector"></div>
               </div>
               <div class="host-profile-card host-b-card" id="host-card-b">
-                <div class="host-avatar-ring host-b-ring">👨‍💼</div>
-                <div class="host-meta-text">
-                  <span class="host-name">周航</span>
-                  <span class="host-role">Host B · 技术拆解</span>
+                <div class="host-profile-top">
+                  <div class="host-avatar-ring host-b-ring">👨‍💼</div>
+                  <div class="host-meta-text">
+                    <span class="host-name">周航</span>
+                    <span class="host-role">Host B · 技术拆解</span>
+                  </div>
+                  <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
                 </div>
-                <div class="live-speaking-indicator"><span></span><span></span><span></span></div>
+                <div class="host-voice-selector" id="host-b-voice-selector"></div>
               </div>
             </div>
 
@@ -204,7 +210,6 @@ def build_index_html(
                 <button id="playback-btn-full" class="playback-mode-btn active" onclick="setPlaybackMode('full')">📻 整轨广播</button>
                 <button id="playback-btn-sentence" class="playback-mode-btn" onclick="setPlaybackMode('sentence')" style="display: none;">📖 智能句读</button>
               </div>
-              <div class="voice-selector-row" id="voice-selector-row"></div>
               <div class="console-time-row">
                 <span id="current-time">0:00</span>
                 <div class="console-progress-track" id="console-progress-track" onclick="seekAudio(event)">
