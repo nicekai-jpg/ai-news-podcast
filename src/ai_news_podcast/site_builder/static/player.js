@@ -497,7 +497,14 @@
 
       const icons = {
         'professional': '🎙️',
-        'lively': '⚡'
+        'lively': '⚡',
+        'warm': '🌸',
+        'gentle': '🍃',
+        'serious': '🎩',
+        'cute': '✨',
+        'mature': '🍷',
+        'energetic': '🔥',
+        'calm': '🌊'
       };
 
       configs.forEach(function(cfg) {
