@@ -23,6 +23,8 @@
       currentVariant = variant;
       localStorage.setItem('ab_variant', variant);
 
+      document.body.classList.toggle('theme-variant-b', variant === 'B');
+
       const btnA = document.getElementById('btn-variant-a');
       const btnB = document.getElementById('btn-variant-b');
       if (btnA) btnA.classList.toggle('active', variant === 'A');
