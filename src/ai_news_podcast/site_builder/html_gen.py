@@ -138,9 +138,13 @@ def build_index_html(
       <div class="tab-page-workspace" id="panel-podcast">
         <!-- 播客专属节目历程日历 -->
         <div class="date-selector-wrap">
-          <div class="studio-calendar-header">
-            <span>📅 播客期数日历 (Podcast Program Calendar)</span>
-            <span class="calendar-sub-badge">点击切换播客对谈单集</span>
+          <div class="card-internal-header">
+            <div class="header-left">
+              <span class="header-icon">📅</span>
+              <span class="header-title">播客期数日历</span>
+              <span class="header-sub">Podcast Program Calendar</span>
+            </div>
+            <span class="header-badge">点击切换单集</span>
           </div>
           <div class="date-pills" id="date-pills"></div>
         </div>
@@ -151,6 +155,15 @@ def build_index_html(
           <div class="podcast-left-column">
             <!-- 1. 唱片主播放器卡片 -->
             <div class="studio-player-card">
+              <div class="card-internal-header">
+                <div class="header-left">
+                  <span class="header-icon">📻</span>
+                  <span class="header-title">播控声轨控制台</span>
+                  <span class="header-sub">Studio Player</span>
+                </div>
+                <span class="live-broadcast-badge"><span class="live-dot"></span> LIVE BROADCAST</span>
+              </div>
+
               <div class="vinyl-display-box">
                 <div class="vinyl-disc-lg" id="vinyl-disc">
                   <img src="./logo.png" alt="Album Art" class="vinyl-art">
@@ -163,7 +176,6 @@ def build_index_html(
               </div>
 
               <div class="player-meta-box">
-                <span class="live-broadcast-badge"><span class="live-dot"></span> LIVE BROADCAST</span>
                 <h2 class="ep-main-title" id="side-podcast-title">AI 新闻快报</h2>
                 <span class="ep-date-sub" id="podcast-date-tag">—</span>
               </div>
@@ -199,8 +211,13 @@ def build_index_html(
 
             <!-- 2. 双声轨音色定制独立卡片 (Voice Pills Card) -->
             <div class="voice-pills-card">
-              <div class="voice-card-header">
-                <span>🎙️ 双声轨音色定制 (Voice Pills)</span>
+              <div class="card-internal-header">
+                <div class="header-left">
+                  <span class="header-icon">🎙️</span>
+                  <span class="header-title">双声轨音色定制</span>
+                  <span class="header-sub">Voice Pills</span>
+                </div>
+                <span class="header-badge">双声轨独立选择</span>
               </div>
               <div class="host-voice-rows">
                 <div class="console-host-item host-a-box" id="host-card-a">
@@ -224,9 +241,13 @@ def build_index_html(
           <!-- 右栏：对谈提词器卡片 + 新闻源 -->
           <div class="podcast-right-column">
             <div class="podcast-pane-full">
-              <div class="pane-header">
-                <span>🎙️ 播客对谈剧本 (Script Teleprompter)</span>
-                <span class="teleprompter-badge">🔴 智能音文同步 · 点击段落跳转</span>
+              <div class="card-internal-header">
+                <div class="header-left">
+                  <span class="header-icon">📖</span>
+                  <span class="header-title">播客对谈剧本</span>
+                  <span class="header-sub">Script Teleprompter</span>
+                </div>
+                <span class="header-badge">🔴 智能音文同步</span>
               </div>
 
               <!-- 本期核心研判卡片 -->
@@ -247,15 +268,15 @@ def build_index_html(
           </div>
         </div>
 
-        <!-- 底部 100% 全宽：本期引证新闻源 Section -->
-        <div class="sources-workspace" id="sources-card">
-          <div class="sources-section-header">
-            <div class="section-title">
-              <span class="title-icon">🔗</span>
-              <span class="title-text">本期引证新闻源</span>
-              <span class="title-en">Verified Sources</span>
+        <!-- 底部 100% 全宽：本期引证新闻源卡片 -->
+        <div class="sources-card-full" id="sources-card">
+          <div class="card-internal-header">
+            <div class="header-left">
+              <span class="header-icon">🔗</span>
+              <span class="header-title">本期引证新闻源</span>
+              <span class="header-sub">Verified Sources</span>
             </div>
-            <span class="sources-count-badge" id="sources-count-tag">权威数据源交叉验证</span>
+            <span class="header-badge">权威数据源交叉验证</span>
           </div>
           <div class="sources-list-body" id="sources-list-body"></div>
         </div>

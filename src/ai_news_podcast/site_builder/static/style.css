@@ -357,43 +357,47 @@
       height: 640px;
       overflow: hidden;
     }
-    .sources-workspace {
-      width: 100%;
-      margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .sources-section-header {
+    /* 全站统一卡片内嵌 Header 规范 (Card-Internal Header Standard) */
+    .card-internal-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding-bottom: 12px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 16px;
+      width: 100%;
     }
-    .section-title {
+    .podcast-pane-full .card-internal-header {
+      padding: 20px 24px 12px 24px;
+      margin-bottom: 0;
+    }
+    .header-left {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 1.08rem;
-      font-weight: 850;
-      color: #f8fafc;
     }
-    .title-en {
-      font-size: 0.76rem;
-      font-weight: 600;
-      color: #94a3b8;
-      margin-left: 6px;
-      letter-spacing: 0.03em;
-    }
-    .sources-count-badge {
-      font-size: 0.72rem;
+    .header-icon { font-size: 0.95rem; }
+    .header-title { font-size: 0.88rem; font-weight: 850; color: #f8fafc; letter-spacing: 0.01em; }
+    .header-sub { font-size: 0.72rem; color: #94a3b8; font-weight: 600; margin-left: 4px; }
+    .header-badge {
+      font-size: 0.68rem;
       font-weight: 800;
       color: #c084fc;
       background: rgba(192, 132, 252, 0.12);
       border: 1px solid rgba(192, 132, 252, 0.25);
-      padding: 3px 12px;
+      padding: 2px 10px;
       border-radius: 99px;
+    }
+
+    .sources-card-full {
+      width: 100%;
+      margin-top: 24px;
+      background: linear-gradient(135deg, rgba(18, 14, 36, 0.9) 0%, rgba(10, 7, 22, 0.95) 100%);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
 
     .source-chips-grid {
