@@ -647,7 +647,7 @@
 
           variants.forEach(function(variantId) {
             const btn = document.createElement('button');
-            btn.className = 'voice-pill-btn host-' + item.key.toLowerCase() + '-btn';
+            btn.className = 'voice-pill-btn host-' + item.key.toLowerCase() + '-btn pill-variant-' + variantId;
             if (selectedVoices[item.key] === variantId) {
               btn.classList.add('active');
             }
