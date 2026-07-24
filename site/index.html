@@ -969,10 +969,6 @@
             <div class="voice-pills-card">
               <div class="voice-card-header">
                 <span>🎙️ 双声轨音色定制 (Voice Pills)</span>
-                <div class="playback-mode-switcher">
-                  <button id="playback-btn-full" class="playback-mode-btn active" onclick="setPlaybackMode('full')">📻 整轨</button>
-                  <button id="playback-btn-sentence" class="playback-mode-btn" onclick="setPlaybackMode('sentence')" style="display: none;">📖 句读</button>
-                </div>
               </div>
               <div class="host-voice-rows">
                 <div class="console-host-item host-a-box" id="host-card-a">
@@ -1070,7 +1066,7 @@
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-24 11:33:40</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-24 11:37:51</p></div>
   </div>
 
   <script>
@@ -1317,12 +1313,15 @@
               }
             }
 
-            document.getElementById('playback-btn-sentence').style.display = 'block';
+            var btnSent = document.getElementById('playback-btn-sentence');
+            if (btnSent) btnSent.style.display = 'block';
           } else {
-            document.getElementById('playback-btn-sentence').style.display = 'none';
+            var btnSent = document.getElementById('playback-btn-sentence');
+            if (btnSent) btnSent.style.display = 'none';
           }
         } catch (ePl) {
-          document.getElementById('playback-btn-sentence').style.display = 'none';
+          var btnSent = document.getElementById('playback-btn-sentence');
+          if (btnSent) btnSent.style.display = 'none';
         }
 
         buildVoiceSelectors();
@@ -1507,8 +1506,10 @@
 
       playbackMode = mode;
       pendingPlaybackMode = null; // Clear pending switch if mode changes explicitly
-      document.getElementById('playback-btn-full').classList.toggle('active', mode === 'full');
-      document.getElementById('playback-btn-sentence').classList.toggle('active', mode === 'sentence');
+      var btnFull = document.getElementById('playback-btn-full');
+      var btnSent = document.getElementById('playback-btn-sentence');
+      if (btnFull) btnFull.classList.toggle('active', mode === 'full');
+      if (btnSent) btnSent.classList.toggle('active', mode === 'sentence');
 
       var voiceSelector = document.getElementById('voice-selector-row');
       if (voiceSelector) {
@@ -1983,8 +1984,10 @@
                 audio.pause();
                 playbackMode = 'sentence';
                 pendingPlaybackMode = null;
-                document.getElementById('playback-btn-full').classList.remove('active');
-                document.getElementById('playback-btn-sentence').classList.add('active');
+                var btnFull = document.getElementById('playback-btn-full');
+                var btnSent = document.getElementById('playback-btn-sentence');
+                if (btnFull) btnFull.classList.remove('active');
+                if (btnSent) btnSent.classList.add('active');
                 var voiceSelector = document.getElementById('voice-selector-row');
                 if (voiceSelector) voiceSelector.classList.remove('dimmed');
                 

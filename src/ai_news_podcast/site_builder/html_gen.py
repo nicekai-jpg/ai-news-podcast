@@ -201,10 +201,6 @@ def build_index_html(
             <div class="voice-pills-card">
               <div class="voice-card-header">
                 <span>🎙️ 双声轨音色定制 (Voice Pills)</span>
-                <div class="playback-mode-switcher">
-                  <button id="playback-btn-full" class="playback-mode-btn active" onclick="setPlaybackMode('full')">📻 整轨</button>
-                  <button id="playback-btn-sentence" class="playback-mode-btn" onclick="setPlaybackMode('sentence')" style="display: none;">📖 句读</button>
-                </div>
               </div>
               <div class="host-voice-rows">
                 <div class="console-host-item host-a-box" id="host-card-a">
