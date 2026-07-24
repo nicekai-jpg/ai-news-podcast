@@ -161,48 +161,52 @@
     /* Layouts */
     .main-layout { width: 100%; min-height: 500px; }
 
-    /* 精准匹配设计图 ui_layout_comparison 的 Studio Control Deck */
-    .top-studio-console {
+    /* 播客主体：黄金 2 栏网格 (Podcast Grid Layout Matching Concept Mockup) */
+    .podcast-grid-layout {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 24px;
+      width: 100%;
+      align-items: start;
+    }
+    @media (max-width: 1024px) {
+      .podcast-grid-layout { grid-template-columns: 1fr; }
+    }
+
+    .podcast-left-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .studio-player-card {
       display: flex;
       flex-direction: column;
       gap: 16px;
-      padding: 20px 24px;
+      padding: 24px;
       border-radius: var(--radius-lg);
       background: linear-gradient(135deg, rgba(22, 16, 45, 0.95) 0%, rgba(10, 7, 22, 0.98) 100%);
       border: 1px solid rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(139, 92, 246, 0.15);
-      margin-bottom: 20px;
     }
 
-    /* 上半部分：唱盘视觉区 + 声轨音色卡片区 */
-    .console-upper-deck {
+    .vinyl-display-box {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      width: 100%;
-    }
-    @media (max-width: 768px) {
-      .console-upper-deck { flex-direction: column; }
+      justify-content: center;
+      position: relative;
+      padding: 12px 0;
     }
 
-    .vinyl-center-stage {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      flex: 1;
-      min-width: 0;
-    }
-    .vinyl-wrapper-compact { position: relative; width: 64px; height: 64px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .vinyl-disc {
-      width: 64px;
-      height: 64px;
+    .vinyl-disc-lg {
+      width: 135px;
+      height: 135px;
       border-radius: 50%;
       background: #111;
-      border: 4px solid #222;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      border: 5px solid #222;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.8), 0 0 25px rgba(168, 85, 247, 0.35);
       position: relative;
       animation: spin-vinyl 20s linear infinite;
       animation-play-state: paused;
@@ -210,27 +214,38 @@
       align-items: center;
       justify-content: center;
     }
-    .vinyl-disc.spinning { animation-play-state: running; }
-    .vinyl-art { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
-    .vinyl-center { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid #444; }
+    .vinyl-disc-lg.spinning { animation-play-state: running; }
+    .vinyl-disc-lg .vinyl-art { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; }
+    .vinyl-disc-lg .vinyl-center { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid #444; }
 
-    .console-ep-meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-    .console-live-badge { font-size: 0.62rem; font-weight: 800; color: #34d399; letter-spacing: 0.08em; display: flex; align-items: center; gap: 5px; }
-    .live-dot { width: 6px; height: 6px; border-radius: 50%; background: #34d399; box-shadow: 0 0 8px #34d399; animation: pulse-dot 1.5s infinite; }
-    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .console-ep-title { font-size: 1rem; font-weight: 850; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .console-ep-date { font-size: 0.72rem; color: #94a3b8; font-weight: 600; }
+    .player-meta-box { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .live-broadcast-badge { font-size: 0.65rem; font-weight: 850; color: #34d399; letter-spacing: 0.08em; display: flex; align-items: center; gap: 5px; }
+    .ep-main-title { font-size: 1.15rem; font-weight: 850; color: #ffffff; }
+    .ep-date-sub { font-size: 0.75rem; color: #94a3b8; }
 
-    /* 右侧双声轨卡片 */
-    .console-host-voices-deck {
+    .player-progress-area { width: 100%; }
+    .time-row { display: flex; align-items: center; gap: 12px; width: 100%; }
+    .player-ctrl-row { display: flex; align-items: center; justify-content: center; gap: 16px; width: 100%; }
+
+    /* 双声轨音色卡片 */
+    .voice-pills-card {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      width: 380px;
-      flex-shrink: 0;
+      gap: 12px;
+      padding: 18px 20px;
+      border-radius: var(--radius-lg);
+      background: rgba(15, 12, 28, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
-    @media (max-width: 768px) {
-      .console-host-voices-deck { width: 100%; }
+    .voice-card-header { display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; font-weight: 800; color: #f1f5f9; }
+    .host-voice-rows { display: flex; flex-direction: column; gap: 10px; }
+
+    .podcast-right-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-width: 0;
     }
 
     .console-voice-header {
