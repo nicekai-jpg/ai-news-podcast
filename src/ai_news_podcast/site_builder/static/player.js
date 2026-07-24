@@ -11,7 +11,7 @@
     const audio = document.getElementById('main-audio');
     audio.volume = lastVol;
 
-    let playbackMode = 'full'; // 'full' | 'sentence'
+    let playbackMode = 'sentence'; // Default to interactive dynamic sentence mode
     let pendingPlaybackMode = null; // Defer playback mode switch for seamless transitions
     let toastTimer = null;
     let currentPlaylist = null; // List of chunks from playlist.json
@@ -582,19 +582,10 @@
         btn.classList.toggle('active', btn.getAttribute('data-variant') === variant);
       });
 
-      if (playbackMode !== 'sentence') {
-        if (audio.paused) {
-          setPlaybackMode('sentence');
-        } else {
-          pendingPlaybackMode = 'sentence';
-          showToast('音色切换将在下一句自动生效');
-        }
+      if (audio.paused) {
+        loadChunk(currentChunkIndex, false);
       } else {
-        if (audio.paused) {
-          loadChunk(currentChunkIndex, false);
-        } else {
-          showToast('新音色将在下一句生效');
-        }
+        showToast('新音色将在下一句自动生效');
       }
     }
 
