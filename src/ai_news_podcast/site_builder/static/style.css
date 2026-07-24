@@ -1120,10 +1120,7 @@
     /* B 版专属全页主题色调 (Variant B Full Page Theme Palette) */
     /* 1:1 还原 ui_layout_comparison_1784798540222.jpg 全页背景与调色板 */
     /* ---------------------------------------------------- */
-    body.theme-variant-b {
-      background: #090714 !important;
-      color: #f1f5f9;
-    }
+    
 
     
 
@@ -1188,4 +1185,38 @@
       body.theme-variant-b .b-grid-left, body.theme-variant-b .b-grid-right {
         width: 100% !important;
       }
+    }
+
+    /* B 版专属深邃黑底主题 (Variant B Pure Dark/Black Theme) */
+    body.theme-variant-b {
+      background: #050505 !important;
+      background-image: none !important;
+      color: #e2e8f0 !important;
+    }
+
+    body.theme-variant-b .app-header, 
+    body.theme-variant-b header {
+      background: rgba(8, 8, 8, 0.9) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
+    }
+
+    body.theme-variant-b .top-studio-console,
+    body.theme-variant-b .podcast-pane-full,
+    body.theme-variant-b .sources-card-full,
+    body.theme-variant-b .magazine-container,
+    body.theme-variant-b .date-selector-wrap {
+      background: linear-gradient(135deg, #121212 0%, #0a0a0a 100%) !important;
+      border: 1px solid rgba(255, 255, 255, 0.05) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+    }
+    
+    body.theme-variant-b .card-internal-header {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+    
+    body.theme-variant-b .transcript-para.active {
+      background: rgba(255, 255, 255, 0.05) !important;
+      border-left: 3px solid #6b7280 !important;
+      box-shadow: none !important;
     }
