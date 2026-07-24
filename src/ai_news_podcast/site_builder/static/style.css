@@ -511,37 +511,19 @@
     /* 优化引证新闻源（[1], [2] 学术报告式排版） */
     .sources-card { display: flex; flex-direction: column; max-height: 400px; }
     .sources-card .card-header { display: flex; align-items: center; gap: 8px; font-size: 0.88rem; font-weight: 850; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 12px; }
-    .sources-list-body { flex: 1; overflow-y: auto; font-size: 0.8rem; }
+    .sources-list-body { flex: 1; overflow-y: auto; font-size: 0.8rem; margin: 0; padding: 0; }
     .sources-list-body p { display: none; }
-    .sources-list-body ol { list-style: none; display: flex; flex-direction: column; gap: 10px; counter-reset: citation-counter; }
-    .sources-list-body li {
-      position: relative;
-      padding: 12px 14px 12px 42px;
-      background: rgba(255, 255, 255, 0.015);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      transition: all 0.25s ease;
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-      color: transparent; /* 过滤掉黄色球🟡 */
-    }
-    .sources-list-body li * { color: #fff; }
-    .sources-list-body li:hover { background: rgba(139, 92, 246, 0.05); border-color: rgba(139, 92, 246, 0.25); transform: translateX(3px); }
-    body.theme-report .sources-list-body li:hover { background: rgba(6, 182, 212, 0.05); border-color: rgba(6, 182, 212, 0.25); }
-
-    .sources-list-body li::before {
-      counter-increment: citation-counter;
-      content: "[" counter(citation-counter) "]";
-      position: absolute;
-      left: 14px;
-      top: 13px;
+    .sources-list-body ol, .sources-list-body ul { list-style: none; margin: 0; padding: 0; }
+    .sources-list-body li { padding: 0; margin: 0; background: transparent; border: none; }
+    .sources-list-body li::before { display: none; }
+    .sources-list-body li a { color: #fff; text-decoration: none; font-weight: 600; line-height: 1.45; font-size: 0.8rem; transition: color 0.2s; display: inline-block; }
+    .sources-list-body li a:hover { color: var(--accent-light); }
+    .source-chip-num {
+      font-family: monospace;
       font-size: 0.72rem;
       font-weight: 800;
-      color: var(--accent-light);
-      font-family: monospace;
+      color: #c084fc;
     }
-    .sources-list-body li a { color: #fff; text-decoration: none; font-weight: 600; line-height: 1.45; font-size: 0.8rem; transition: color 0.2s; display: inline-block; }
     .sources-list-body li a:hover { color: var(--accent-light); }
     .sources-list-body li small {
       display: inline-block;
