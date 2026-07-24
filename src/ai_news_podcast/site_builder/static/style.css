@@ -260,26 +260,51 @@
     .playback-mode-btn { font-size: 0.65rem; font-weight: 700; color: #94a3b8; background: transparent; border: none; padding: 2px 8px; border-radius: 99px; cursor: pointer; }
     .playback-mode-btn.active { color: #fff; background: rgba(255,255,255,0.12); }
 
-    .console-host-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(0, 0, 0, 0.4);
-      padding: 6px 10px;
-      border-radius: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .host-item-left {
+    .host-voice-segmented {
       display: flex;
       align-items: center;
       gap: 6px;
-      width: 100px;
-      flex-shrink: 0;
+      overflow-x: auto;
+      flex: 1;
+      padding: 2px 0;
+      scrollbar-width: none;
     }
-    .host-emoji { font-size: 0.88rem; }
-    .host-name-sm { font-size: 0.74rem; font-weight: 800; color: #f8fafc; display: flex; align-items: center; gap: 4px; }
-    .host-badge-a { font-size: 0.58rem; color: #c084fc; background: rgba(192,132,252,0.12); padding: 1px 5px; border-radius: 4px; }
-    .host-badge-b { font-size: 0.58rem; color: #38bdf8; background: rgba(56,189,248,0.12); padding: 1px 5px; border-radius: 4px; }
+    .host-voice-segmented::-webkit-scrollbar { display: none; }
+
+    .voice-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #94a3b8;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 4px 10px;
+      border-radius: 99px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .voice-pill-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-1px);
+    }
+    .host-a-btn.active {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.4) 0%, rgba(139, 92, 246, 0.2) 100%);
+      border-color: #c084fc;
+      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.35);
+    }
+    .host-b-btn.active {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.4) 0%, rgba(14, 116, 144, 0.2) 100%);
+      border-color: #38bdf8;
+      box-shadow: 0 4px 12px rgba(6, 182, 212, 0.35);
+    }
+    .pill-icon { font-size: 0.78rem; }
 
     /* 下半部分全宽播放控制 */
     .console-lower-player {
@@ -321,8 +346,6 @@
     .podcast-workspace { display: flex; flex-direction: column; gap: 24px; width: 100%; }
     .podcast-pane-full {
       width: 100%;
-      max-width: 980px;
-      margin: 0 auto;
       background: var(--surface);
       backdrop-filter: blur(28px);
       -webkit-backdrop-filter: blur(28px);
@@ -331,13 +354,11 @@
       box-shadow: var(--shadow-lg);
       display: flex;
       flex-direction: column;
-      height: 680px;
+      height: 640px;
       overflow: hidden;
     }
     .sources-card-full {
       width: 100%;
-      max-width: 980px;
-      margin: 0 auto;
       background: var(--surface);
       backdrop-filter: blur(24px);
       border: 1px solid var(--border);
