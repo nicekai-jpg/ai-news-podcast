@@ -171,7 +171,7 @@
       if (currentMode === 'podcast') {
         if (ep.desc && ep.desc.trim()) {
           sourcesList.innerHTML = parseSourcesHtml(ep.desc);
-          sourcesCard.style.display = 'flex';
+          sourcesCard.style.display = 'block';
         } else {
           sourcesCard.style.display = 'none';
         }
@@ -447,8 +447,8 @@
 
         var href = a.getAttribute('href') || '#';
         var text = a.textContent || href;
-        // 清理开头的 Emoji 圆点符号
-        text = text.replace(/^[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}]\s*/u, '').trim();
+        // 清理开头的 Emoji 圆点符号 (兼容所有 JS 引擎)
+        text = text.replace(/^[🔴🟡🟢🔵✨🔥⚡🌸🍃🎩🍷🌊🌐💡🔗\s]+/, '').trim();
 
         // 尝试提取 small 标签中的媒体名称 (如 "(量子位)")
         var sourceName = '';
