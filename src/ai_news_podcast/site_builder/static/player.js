@@ -165,12 +165,12 @@
         heroTitle.textContent = ep.title || ('AI 新闻快报 | ' + d);
       }
 
-      // 渲染引证参考源卡片
+      // 渲染引证参考源卡片 (Perplexity 芯片风格)
       var sourcesCard = document.getElementById('sources-card');
       var sourcesList = document.getElementById('sources-list-body');
       if (currentMode === 'podcast') {
         if (ep.desc && ep.desc.trim()) {
-          sourcesList.innerHTML = ep.desc;
+          sourcesList.innerHTML = parseSourcesHtml(ep.desc);
           sourcesCard.style.display = 'flex';
         } else {
           sourcesCard.style.display = 'none';
@@ -423,6 +423,37 @@
 
     function esc(s) {
       return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function parseSourcesHtml(htmlStr) {
+      if (!htmlStr) return '';
+      var temp = document.createElement('div');
+      temp.innerHTML = htmlStr;
+      var links = temp.querySelectorAll('a');
+      if (links.length === 0) {
+        return '<div class="sources-raw-body">' + htmlStr + '</div>';
+      }
+      var cardsHtml = '<div class="source-chips-grid">';
+      links.forEach(function(a) {
+        var href = a.getAttribute('href') || '#';
+        var text = a.textContent || href;
+        var domain = 'source';
+        try {
+          var u = new URL(href, window.location.href);
+          domain = u.hostname.replace(/^www\./, '');
+        } catch(e) {}
+        cardsHtml += 
+          '<a href="' + esc(href) + '" target="_blank" class="source-chip-card">' +
+            '<div class="source-chip-top">' +
+              '<span class="source-chip-icon">🌐</span>' +
+              '<span class="source-chip-domain">' + esc(domain) + '</span>' +
+              '<span class="source-chip-arrow">↗</span>' +
+            '</div>' +
+            '<div class="source-chip-title">' + esc(text) + '</div>' +
+          '</a>';
+      });
+      cardsHtml += '</div>';
+      return cardsHtml;
     }
 
     function setPlaybackMode(mode) {
