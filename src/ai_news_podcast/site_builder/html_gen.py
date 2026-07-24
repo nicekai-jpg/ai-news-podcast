@@ -247,10 +247,15 @@ def build_index_html(
           </div>
         </div>
 
-        <!-- 底部 100% 全宽：本期引证新闻源卡片 -->
-        <div class="sources-card-full" id="sources-card">
-          <div class="card-header">
-            <span>🔗 本期引证新闻源 (Verified Sources)</span>
+        <!-- 底部 100% 全宽：本期引证新闻源 Section -->
+        <div class="sources-workspace" id="sources-card">
+          <div class="sources-section-header">
+            <div class="section-title">
+              <span class="title-icon">🔗</span>
+              <span class="title-text">本期引证新闻源</span>
+              <span class="title-en">Verified Sources</span>
+            </div>
+            <span class="sources-count-badge" id="sources-count-tag">权威数据源交叉验证</span>
           </div>
           <div class="sources-list-body" id="sources-list-body"></div>
         </div>

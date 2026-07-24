@@ -357,38 +357,69 @@
       height: 640px;
       overflow: hidden;
     }
-    .sources-card-full {
+    .sources-workspace {
       width: 100%;
-      margin-top: 24px;
-      background: linear-gradient(135deg, rgba(18, 14, 36, 0.9) 0%, rgba(10, 7, 22, 0.95) 100%);
-      backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: var(--radius-lg);
-      padding: 18px 22px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
+    .sources-section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.08rem;
+      font-weight: 850;
+      color: #f8fafc;
+    }
+    .title-en {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: #94a3b8;
+      margin-left: 6px;
+      letter-spacing: 0.03em;
+    }
+    .sources-count-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #c084fc;
+      background: rgba(192, 132, 252, 0.12);
+      border: 1px solid rgba(192, 132, 252, 0.25);
+      padding: 3px 12px;
+      border-radius: 99px;
+    }
+
     .source-chips-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 12px;
-      margin-top: 12px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+      width: 100%;
     }
     .source-chip-card {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      padding: 12px 14px;
-      background: rgba(255, 255, 255, 0.03);
+      gap: 8px;
+      padding: 14px 16px;
+      background: rgba(18, 14, 36, 0.75);
+      backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-md);
       text-decoration: none;
       transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     }
     .source-chip-card:hover {
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(30, 24, 60, 0.85);
       border-color: rgba(192, 132, 252, 0.4);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(168, 85, 247, 0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(168, 85, 247, 0.25);
     }
     .source-chip-top {
       display: flex;
