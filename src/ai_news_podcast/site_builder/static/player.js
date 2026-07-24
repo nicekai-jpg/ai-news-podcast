@@ -149,7 +149,7 @@
           loadDate(currentDates[0]);
         }
       } else {
-        if (currentMode === 'report') {
+        if (currentMode === 'report' || document.body.classList.contains('theme-variant-b')) {
           setEmpty(document.getElementById('report-panel-body'), '📰', '该模式下暂无日期数据');
         } else {
           setEmpty(document.getElementById('cast-panel-body'), '🎙️', '暂无播客电台数据');
@@ -181,7 +181,7 @@
       var sourcesListA = document.getElementById('sources-list-body');
       var sourcesListB = document.getElementById('sources-list-body-b');
       
-      if (currentMode === 'podcast') {
+      if (currentMode === 'podcast' || document.body.classList.contains('theme-variant-b')) {
         if (ep.desc && ep.desc.trim()) {
           var parsedSources = parseSourcesHtml(ep.desc);
           if (sourcesListA) sourcesListA.innerHTML = parsedSources;
@@ -194,7 +194,7 @@
         }
       }
 
-      if (currentMode === 'report') {
+      if (currentMode === 'report' || document.body.classList.contains('theme-variant-b')) {
         var repDateTag = document.getElementById('report-date-tag');
         if (repDateTag) repDateTag.textContent = label;
         var repBody = document.getElementById('report-panel-body');
@@ -215,7 +215,8 @@
           var verdictWrap = document.getElementById('editor-verdict-wrapper');
           if (verdictWrap) verdictWrap.style.display = 'none';
         }
-      } else {
+      } 
+      if (currentMode === 'podcast' || document.body.classList.contains('theme-variant-b')) {
         var dateTagA = document.getElementById('podcast-date-tag');
         var dateTagB = document.getElementById('podcast-date-tag-b');
         if (dateTagA) dateTagA.textContent = label;
