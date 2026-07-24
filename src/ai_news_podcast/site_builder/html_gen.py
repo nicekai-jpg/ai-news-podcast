@@ -244,14 +244,14 @@ def build_index_html(
                 </button>
               </div>
             </div>
+          </div>
 
-            <!-- 底部新闻源 -->
-            <div class="sources-card-full" id="sources-card">
-              <div class="card-header">
-                <span>🔗 本期引证新闻源 (Verified Sources)</span>
-              </div>
-              <div class="sources-list-body" id="sources-list-body"></div>
+          <!-- 底部全宽：本期引证新闻源卡片 -->
+          <div class="sources-card-full" id="sources-card">
+            <div class="card-header">
+              <span>🔗 本期引证新闻源 (Verified Sources)</span>
             </div>
+            <div class="sources-list-body" id="sources-list-body"></div>
           </div>
         </div>
       </div>
