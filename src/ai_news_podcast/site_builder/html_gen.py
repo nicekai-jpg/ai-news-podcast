@@ -115,39 +115,37 @@ def build_index_html(
         <img src="./logo.png" alt="Logo" class="logo-img">
         <div><div class="brand-name">{podcast_title}</div><div class="brand-tagline">AI 前沿动态</div></div>
       </a>
+
+      <!-- 顶级双 Tab 页切换选项卡 (Two Top Tab Pages Navigation) -->
+      <nav class="top-tab-nav">
+        <button id="btn-mode-podcast" class="top-tab-btn active" onclick="switchMode('podcast')">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+          🎙️ AI 播客电台
+        </button>
+        <button id="btn-mode-report" class="top-tab-btn" onclick="switchMode('report')">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          📰 科技日报
+        </button>
+      </nav>
+
       <div class="header-right">
         <a href="./feed.xml" target="_blank" class="nav-btn nav-btn-rss">RSS 订阅</a>
       </div>
     </header>
 
-    <!-- 模式切换 Tabs 与 历程日历 (通用导航) -->
-    <div class="sub-header-bar">
-      <div class="brand-switcher-wrap">
-        <div class="brand-switcher">
-          <button id="btn-mode-podcast" class="mode-btn active" onclick="switchMode('podcast')">
-            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
-            AI 播客剧本
-          </button>
-          <button id="btn-mode-report" class="mode-btn" onclick="switchMode('report')">
-            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-            科技日报
-          </button>
-        </div>
-      </div>
-
-      <div class="date-selector-wrap">
-        <div class="studio-calendar-header">
-          <span>📅 节目历程 (Program Calendar)</span>
-          <span class="calendar-sub-badge">点击即可切换多期对谈与日报</span>
-        </div>
-        <div class="date-pills" id="date-pills"></div>
-      </div>
-    </div>
-
     <div class="main-layout">
-      <!-- AI 播客模式布局：播客专属控制台 + 全幅广播提词器 -->
-      <div class="podcast-workspace" id="panel-podcast">
-        <!-- 播客专属广播式调控台 (Studio Control Deck - Matching Design Mockup) -->
+      <!-- ==================== Tab 页 1：🎙️ AI 播客电台页面 ==================== -->
+      <div class="tab-page-workspace" id="panel-podcast">
+        <!-- 播客专属节目历程日历 -->
+        <div class="date-selector-wrap">
+          <div class="studio-calendar-header">
+            <span>📅 播客期数日历 (Podcast Program Calendar)</span>
+            <span class="calendar-sub-badge">点击切换播客对谈单集</span>
+          </div>
+          <div class="date-pills" id="date-pills"></div>
+        </div>
+
+        <!-- 播客专属广播式调控台 (Studio Control Deck) -->
         <div class="top-studio-console" id="top-studio-console">
           <!-- 上半部分：唱盘视觉区 + 声轨音色选择区 -->
           <div class="console-upper-deck">
@@ -222,6 +220,7 @@ def build_index_html(
           </div>
         </div>
 
+        <!-- 播客对谈剧本提词器 -->
         <div class="podcast-pane-full">
           <div class="pane-header">
             <span>🎙️ 播客对谈剧本 (Live Teleprompter Feed)</span>
@@ -253,8 +252,18 @@ def build_index_html(
         </div>
       </div>
 
-      <!-- 科技日报模式布局 -->
-      <div class="report-workspace" id="panel-report" style="display: none;">
+      <!-- ==================== Tab 页 2：📰 科技日报页面 ==================== -->
+      <div class="tab-page-workspace" id="panel-report" style="display: none;">
+        <!-- 日报专属出版历程日历 -->
+        <div class="date-selector-wrap">
+          <div class="studio-calendar-header">
+            <span>📅 日报出版日历 (Daily Publishing Calendar)</span>
+            <span class="calendar-sub-badge">点击切换往期深度科技日报</span>
+          </div>
+          <div class="date-pills" id="report-date-pills"></div>
+        </div>
+
+        <!-- 科技日报杂志排版 (零任何播放器控件) -->
         <div class="magazine-container">
           <div class="magazine-header">
             <div class="magazine-issue" id="report-date-tag">—</div>
