@@ -926,11 +926,68 @@
     /* Voice Selector Styling */
     .voice-selector-row {
       display: flex;
+    }
     .voice-pill-group {
       display: flex;
       gap: 6px;
       flex: 1;
     }
+
+    /* A/B 测试方案切换开关 (A/B Test Variant Switcher) */
+    .ab-variant-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 3px 6px;
+      border-radius: 99px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-right: 12px;
+    }
+    .ab-toggle-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #c084fc;
+      margin: 0 4px;
+    }
+    .ab-toggle-btn {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #94a3b8;
+      background: transparent;
+      border: none;
+      padding: 3px 10px;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .ab-toggle-btn.active {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.4) 0%, rgba(139, 92, 246, 0.25) 100%);
+      border: 1px solid rgba(192, 132, 252, 0.3);
+      box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3);
+    }
+
+    /* Version B 下方双栏网格 (B Lower Grid) */
+    .b-lower-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 24px;
+      width: 100%;
+      align-items: start;
+      margin-top: 24px;
+    }
+    @media (max-width: 1024px) {
+      .b-lower-grid { grid-template-columns: 1fr; }
+    }
+    .b-grid-left, .b-grid-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-width: 0;
+    }
+    #sources-card-b { margin-top: 0; }
+
     .voice-pill-btn {
       flex: 1;
       padding: 6px 10px;
@@ -987,6 +1044,11 @@
       </nav>
 
       <div class="header-right">
+        <div class="ab-variant-toggle">
+          <span class="ab-toggle-label">🧪 A/B 测试:</span>
+          <button id="btn-variant-a" class="ab-toggle-btn active" onclick="switchVariant('A')">A 版 (现行并排)</button>
+          <button id="btn-variant-b" class="ab-toggle-btn" onclick="switchVariant('B')">B 版 (控台顶置)</button>
+        </div>
         <a href="./feed.xml" target="_blank" class="nav-btn nav-btn-rss">RSS 订阅</a>
       </div>
     </header>
@@ -1007,136 +1069,253 @@
           <div class="date-pills" id="date-pills"></div>
         </div>
 
-        <!-- 播客主体：左右 2 栏黄金比例网格 (2 Column Grid Matching Concept Mockup) -->
-        <div class="podcast-grid-layout">
-          <!-- 左栏：唱片主播放器卡片 + 声轨音色卡片 -->
-          <div class="podcast-left-column">
-            <!-- 1. 唱片主播放器卡片 -->
-            <div class="studio-player-card">
-              <div class="card-internal-header">
-                <div class="header-left">
-                  <span class="header-icon">📻</span>
-                  <span class="header-title">播控声轨控制台</span>
-                  <span class="header-sub">Studio Player</span>
-                </div>
-                <span class="live-broadcast-badge"><span class="live-dot"></span> LIVE BROADCAST</span>
-              </div>
-
-              <div class="vinyl-display-box">
-                <div class="vinyl-disc-lg" id="vinyl-disc">
-                  <img src="./logo.png" alt="Album Art" class="vinyl-art">
-                  <div class="vinyl-center"></div>
-                </div>
-                <div class="visualizer-waves" id="visualizer-waves">
-                  <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-                  <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
-                </div>
-              </div>
-
-              <div class="player-meta-box">
-                <h2 class="ep-main-title" id="side-podcast-title">AI 新闻快报</h2>
-                <span class="ep-date-sub" id="podcast-date-tag">—</span>
-              </div>
-
-              <!-- 播放时间进度条 -->
-              <div class="player-progress-area">
-                <div class="time-row">
-                  <span id="current-time" class="time-text">0:00</span>
-                  <div class="console-progress-track" id="console-progress-track" onclick="seekAudio(event)">
-                    <div class="console-progress-fill" id="console-progress-fill"></div>
-                    <div class="console-progress-handle"></div>
+        <!-- Variant A 布局 (现行黄金两栏: 左唱片与音色, 右提词, 底引文) -->
+        <div id="variant-container-a" class="variant-workspace">
+          <div class="podcast-grid-layout">
+            <div class="podcast-left-column">
+              <!-- 唱片主播放器卡片 -->
+              <div class="studio-player-card">
+                <div class="card-internal-header">
+                  <div class="header-left">
+                    <span class="header-icon">📻</span>
+                    <span class="header-title">播控声轨控制台</span>
+                    <span class="header-sub">Studio Player</span>
                   </div>
-                  <span id="total-time" class="time-text">0:00</span>
+                  <span class="live-broadcast-badge"><span class="live-dot"></span> LIVE BROADCAST</span>
+                </div>
+
+                <div class="vinyl-display-box">
+                  <div class="vinyl-disc-lg" id="vinyl-disc">
+                    <img src="./logo.png" alt="Album Art" class="vinyl-art">
+                    <div class="vinyl-center"></div>
+                  </div>
+                  <div class="visualizer-waves" id="visualizer-waves">
+                    <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                    <div class="wave-bar"></div><div class="wave-bar"></div><div class="wave-bar"></div>
+                  </div>
+                </div>
+
+                <div class="player-meta-box">
+                  <h2 class="ep-main-title" id="side-podcast-title">AI 新闻快报</h2>
+                  <span class="ep-date-sub" id="podcast-date-tag">—</span>
+                </div>
+
+                <div class="player-progress-area">
+                  <div class="time-row">
+                    <span id="current-time" class="time-text">0:00</span>
+                    <div class="console-progress-track" id="console-progress-track" onclick="seekAudio(event)">
+                      <div class="console-progress-fill" id="console-progress-fill"></div>
+                      <div class="console-progress-handle"></div>
+                    </div>
+                    <span id="total-time" class="time-text">0:00</span>
+                  </div>
+                </div>
+
+                <div class="player-ctrl-row">
+                  <button class="ctrl-btn" onclick="skipAudio(-15)" title="-15秒">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0-.57-8.38l.41 1.31"/></svg>
+                  </button>
+                  <button class="console-play-btn" id="console-btn-play" onclick="toggleAudio()">▶</button>
+                  <button class="ctrl-btn" onclick="skipAudio(15)" title="+15秒">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1 .57-8.38l-.41 1.31"/></svg>
+                  </button>
+                  <span id="console-speed-btn" class="speed-pill-btn" onclick="cycleSpeed()">1.0x</span>
+                  <div class="volume-control">
+                    <svg id="volume-icon" onclick="toggleMute()" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                    <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.8" oninput="changeVolume(this.value)">
+                  </div>
                 </div>
               </div>
 
-              <!-- 播控按键栏 -->
-              <div class="player-ctrl-row">
-                <button class="ctrl-btn" onclick="skipAudio(-15)" title="-15秒">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0-.57-8.38l.41 1.31"/></svg>
-                </button>
-                <button class="console-play-btn" id="console-btn-play" onclick="toggleAudio()">▶</button>
-                <button class="ctrl-btn" onclick="skipAudio(15)" title="+15秒">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1 .57-8.38l-.41 1.31"/></svg>
-                </button>
-                <span id="console-speed-btn" class="speed-pill-btn" onclick="cycleSpeed()">1.0x</span>
-                <div class="volume-control">
-                  <svg id="volume-icon" onclick="toggleMute()" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                  <input type="range" id="volume-slider" min="0" max="1" step="0.05" value="0.8" oninput="changeVolume(this.value)">
+              <!-- 双声轨音色定制卡片 -->
+              <div class="voice-pills-card">
+                <div class="card-internal-header">
+                  <div class="header-left">
+                    <span class="header-icon">🎙️</span>
+                    <span class="header-title">双声轨音色定制</span>
+                    <span class="header-sub">Voice Pills</span>
+                  </div>
+                  <span class="header-badge">双声轨独立选择</span>
+                </div>
+                <div class="host-voice-rows">
+                  <div class="console-host-item host-a-box" id="host-card-a">
+                    <div class="host-item-left">
+                      <span class="host-emoji">👩‍💼</span>
+                      <span class="host-name-sm">苏晴 <span class="host-badge-a">Female Host</span></span>
+                    </div>
+                    <div class="host-voice-segmented" id="host-a-voice-pills"></div>
+                  </div>
+                  <div class="console-host-item host-b-box" id="host-card-b">
+                    <div class="host-item-left">
+                      <span class="host-emoji">👨‍💼</span>
+                      <span class="host-name-sm">周航 <span class="host-badge-b">Male Host</span></span>
+                    </div>
+                    <div class="host-voice-segmented" id="host-b-voice-pills"></div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <!-- 2. 双声轨音色定制独立卡片 (Voice Pills Card) -->
-            <div class="voice-pills-card">
-              <div class="card-internal-header">
-                <div class="header-left">
-                  <span class="header-icon">🎙️</span>
-                  <span class="header-title">双声轨音色定制</span>
-                  <span class="header-sub">Voice Pills</span>
-                </div>
-                <span class="header-badge">双声轨独立选择</span>
-              </div>
-              <div class="host-voice-rows">
-                <div class="console-host-item host-a-box" id="host-card-a">
-                  <div class="host-item-left">
-                    <span class="host-emoji">👩‍💼</span>
-                    <span class="host-name-sm">苏晴 <span class="host-badge-a">Female Host</span></span>
+            <!-- 右栏：对谈提词器卡片 -->
+            <div class="podcast-right-column">
+              <div class="podcast-pane-full">
+                <div class="card-internal-header">
+                  <div class="header-left">
+                    <span class="header-icon">📖</span>
+                    <span class="header-title">播客对谈剧本</span>
+                    <span class="header-sub">Script Teleprompter</span>
                   </div>
-                  <div class="host-voice-segmented" id="host-a-voice-pills"></div>
+                  <span class="header-badge">🔴 智能音文同步</span>
                 </div>
-                <div class="console-host-item host-b-box" id="host-card-b">
-                  <div class="host-item-left">
-                    <span class="host-emoji">👨‍💼</span>
-                    <span class="host-name-sm">周航 <span class="host-badge-b">Male Host</span></span>
-                  </div>
-                  <div class="host-voice-segmented" id="host-b-voice-pills"></div>
+
+                <div class="episode-insight-banner" id="episode-insight-banner">
+                  <div class="insight-badge">💡 本期核心研判</div>
+                  <div class="insight-text" id="insight-text-content">每天 5 分钟，聚合 AI 领域最新发布、技术进展与行业观察。</div>
+                </div>
+
+                <div class="transcript-container-wrapper" style="position: relative; flex: 1; overflow: hidden; display: flex; flex-direction: column;">
+                  <div class="transcript-container" id="cast-panel-body" onscroll="handleTranscriptScroll()"></div>
+                  <button class="back-to-sync-btn" id="back-to-sync-btn" onclick="resumeSyncScroll()">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                    返回播音位置
+                  </button>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- 右栏：对谈提词器卡片 + 新闻源 -->
-          <div class="podcast-right-column">
-            <div class="podcast-pane-full">
-              <div class="card-internal-header">
-                <div class="header-left">
-                  <span class="header-icon">📖</span>
-                  <span class="header-title">播客对谈剧本</span>
-                  <span class="header-sub">Script Teleprompter</span>
-                </div>
-                <span class="header-badge">🔴 智能音文同步</span>
+          <!-- 底部 100% 全宽：本期引证新闻源卡片 -->
+          <div class="sources-card-full" id="sources-card">
+            <div class="card-internal-header">
+              <div class="header-left">
+                <span class="header-icon">🔗</span>
+                <span class="header-title">本期引证新闻源</span>
+                <span class="header-sub">Verified Sources</span>
               </div>
-
-              <!-- 本期核心研判卡片 -->
-              <div class="episode-insight-banner" id="episode-insight-banner">
-                <div class="insight-badge">💡 本期核心研判</div>
-                <div class="insight-text" id="insight-text-content">每天 5 分钟，聚合 AI 领域最新发布、技术进展与行业观察。</div>
-              </div>
-
-              <div class="transcript-container-wrapper" style="position: relative; flex: 1; overflow: hidden; display: flex; flex-direction: column;">
-                <div class="transcript-container" id="cast-panel-body" onscroll="handleTranscriptScroll()"></div>
-                <!-- 人机共存滚动打断悬浮按钮 -->
-                <button class="back-to-sync-btn" id="back-to-sync-btn" onclick="resumeSyncScroll()">
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-                  返回播音位置
-                </button>
-              </div>
+              <span class="header-badge">权威数据源交叉验证</span>
             </div>
+            <div class="sources-list-body" id="sources-list-body"></div>
           </div>
         </div>
 
-        <!-- 底部 100% 全宽：本期引证新闻源卡片 -->
-        <div class="sources-card-full" id="sources-card">
-          <div class="card-internal-header">
-            <div class="header-left">
-              <span class="header-icon">🔗</span>
-              <span class="header-title">本期引证新闻源</span>
-              <span class="header-sub">Verified Sources</span>
+        <!-- Variant B 布局 (精准复刻 ui_layout_comparison_1784798540222.jpg: 顶部 Console 控台 + 下方左剧本右新闻源) -->
+        <div id="variant-container-b" style="display: none;" class="variant-workspace">
+          <!-- 1. 顶部 Studio Control Console 大控台 -->
+          <div class="top-studio-console">
+            <div class="card-internal-header">
+              <div class="header-left">
+                <span class="header-icon">📻</span>
+                <span class="header-title">播控声轨控制台</span>
+                <span class="header-sub">Version B · Top Studio Console</span>
+              </div>
+              <span class="live-broadcast-badge"><span class="live-dot"></span> LIVE BROADCAST</span>
             </div>
-            <span class="header-badge">权威数据源交叉验证</span>
+
+            <div class="console-upper-deck">
+              <div class="vinyl-center-stage">
+                <div class="vinyl-wrapper-compact">
+                  <div class="vinyl-disc" id="vinyl-disc-b">
+                    <img src="./logo.png" alt="Album Art" class="vinyl-art">
+                    <div class="vinyl-center"></div>
+                  </div>
+                </div>
+                <div class="console-ep-meta">
+                  <h2 class="ep-main-title" id="side-podcast-title-b">AI 新闻快报</h2>
+                  <span class="ep-date-sub" id="podcast-date-tag-b">—</span>
+                </div>
+              </div>
+
+              <div class="console-host-voices-deck">
+                <div class="voice-card-header">
+                  <span>🎙️ 双声轨音色定制 (Voice Pills)</span>
+                </div>
+                <div class="host-voice-rows">
+                  <div class="console-host-item host-a-box">
+                    <div class="host-item-left">
+                      <span class="host-emoji">👩‍💼</span>
+                      <span class="host-name-sm">苏晴 <span class="host-badge-a">Female</span></span>
+                    </div>
+                    <div class="host-voice-segmented" id="host-a-voice-pills-b"></div>
+                  </div>
+                  <div class="console-host-item host-b-box">
+                    <div class="host-item-left">
+                      <span class="host-emoji">👨‍💼</span>
+                      <span class="host-name-sm">周航 <span class="host-badge-b">Male</span></span>
+                    </div>
+                    <div class="host-voice-segmented" id="host-b-voice-pills-b"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="console-lower-player">
+              <div class="console-time-row">
+                <span id="current-time-b" class="time-text">0:00</span>
+                <div class="console-progress-track" id="console-progress-track-b" onclick="seekAudio(event)">
+                  <div class="console-progress-fill" id="console-progress-fill-b"></div>
+                  <div class="console-progress-handle"></div>
+                </div>
+                <span id="total-time-b" class="time-text">0:00</span>
+              </div>
+              <div class="console-ctrl-bar">
+                <button class="ctrl-btn" onclick="skipAudio(-15)" title="-15秒">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0-.57-8.38l.41 1.31"/></svg>
+                </button>
+                <button class="console-play-btn" id="console-btn-play-b" onclick="toggleAudio()">▶</button>
+                <button class="ctrl-btn" onclick="skipAudio(15)" title="+15秒">
+                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1 .57-8.38l-.41 1.31"/></svg>
+                </button>
+                <span id="console-speed-btn-b" class="speed-pill-btn" onclick="cycleSpeed()">1.0x</span>
+                <div class="volume-control">
+                  <svg id="volume-icon-b" onclick="toggleMute()" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                  <input type="range" id="volume-slider-b" min="0" max="1" step="0.05" value="0.8" oninput="changeVolume(this.value)">
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="sources-list-body" id="sources-list-body"></div>
+
+          <!-- 2. 下方 2 栏网格：左侧对谈剧本 + 右侧引证新闻源 -->
+          <div class="b-lower-grid">
+            <div class="b-grid-left">
+              <div class="podcast-pane-full">
+                <div class="card-internal-header">
+                  <div class="header-left">
+                    <span class="header-icon">📖</span>
+                    <span class="header-title">播客对谈剧本</span>
+                    <span class="header-sub">Script Teleprompter</span>
+                  </div>
+                  <span class="header-badge">🔴 智能音文同步</span>
+                </div>
+
+                <div class="episode-insight-banner" id="episode-insight-banner-b">
+                  <div class="insight-badge">💡 本期核心研判</div>
+                  <div class="insight-text" id="insight-text-content-b">每天 5 分钟，聚合 AI 领域最新发布与行业观察。</div>
+                </div>
+
+                <div class="transcript-container-wrapper" style="position: relative; flex: 1; overflow: hidden; display: flex; flex-direction: column;">
+                  <div class="transcript-container" id="cast-panel-body-b" onscroll="handleTranscriptScroll()"></div>
+                  <button class="back-to-sync-btn" id="back-to-sync-btn-b" onclick="resumeSyncScroll()">
+                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                    返回播音位置
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="b-grid-right">
+              <div class="sources-card-full" id="sources-card-b">
+                <div class="card-internal-header">
+                  <div class="header-left">
+                    <span class="header-icon">🔗</span>
+                    <span class="header-title">本期引证新闻源</span>
+                    <span class="header-sub">Verified Sources</span>
+                  </div>
+                  <span class="header-badge">权威数据源</span>
+                </div>
+                <div class="sources-list-body" id="sources-list-body-b"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1182,7 +1361,7 @@
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-24 16:10:17</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-24 20:56:58</p></div>
   </div>
 
   <script>
@@ -1205,18 +1384,26 @@
     let currentPlaylist = null; // List of chunks from playlist.json
     let currentChunkIndex = 0;
     let selectedVoices = { 'A': 'professional', 'B': 'professional' };
-    const bgmAudio = document.getElementById('bgm-audio');
-    bgmAudio.volume = 0.05; // 低音量背景音乐
+    let currentVariant = localStorage.getItem('ab_variant') || 'A';
 
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      if (!toast) return;
-      toast.textContent = msg;
-      toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(function() {
-        toast.classList.remove('show');
-      }, 3000);
+    function switchVariant(variant) {
+      currentVariant = variant;
+      localStorage.setItem('ab_variant', variant);
+
+      const btnA = document.getElementById('btn-variant-a');
+      const btnB = document.getElementById('btn-variant-b');
+      if (btnA) btnA.classList.toggle('active', variant === 'A');
+      if (btnB) btnB.classList.toggle('active', variant === 'B');
+
+      const wrapA = document.getElementById('variant-container-a');
+      const wrapB = document.getElementById('variant-container-b');
+      if (wrapA) wrapA.style.display = (variant === 'A') ? 'block' : 'none';
+      if (wrapB) wrapB.style.display = (variant === 'B') ? 'block' : 'none';
+
+      buildVoiceSelectors();
+      if (currentDate) {
+        loadDate(currentDate);
+      }
     }
 
     let currentMode = 'podcast';
@@ -1354,19 +1541,27 @@
       }
 
       // 渲染引证参考源卡片 (Perplexity 芯片风格)
-      var sourcesCard = document.getElementById('sources-card');
-      var sourcesList = document.getElementById('sources-list-body');
+      var sourcesCardA = document.getElementById('sources-card');
+      var sourcesCardB = document.getElementById('sources-card-b');
+      var sourcesListA = document.getElementById('sources-list-body');
+      var sourcesListB = document.getElementById('sources-list-body-b');
+      
       if (currentMode === 'podcast') {
         if (ep.desc && ep.desc.trim()) {
-          sourcesList.innerHTML = parseSourcesHtml(ep.desc);
-          sourcesCard.style.display = 'block';
+          var parsedSources = parseSourcesHtml(ep.desc);
+          if (sourcesListA) sourcesListA.innerHTML = parsedSources;
+          if (sourcesListB) sourcesListB.innerHTML = parsedSources;
+          if (sourcesCardA) sourcesCardA.style.display = 'block';
+          if (sourcesCardB) sourcesCardB.style.display = 'block';
         } else {
-          sourcesCard.style.display = 'none';
+          if (sourcesCardA) sourcesCardA.style.display = 'none';
+          if (sourcesCardB) sourcesCardB.style.display = 'none';
         }
       }
 
       if (currentMode === 'report') {
-        document.getElementById('report-date-tag').textContent = label;
+        var repDateTag = document.getElementById('report-date-tag');
+        if (repDateTag) repDateTag.textContent = label;
         var repBody = document.getElementById('report-panel-body');
         setLoading(repBody, '正在加载日报…');
         try {
@@ -1382,26 +1577,42 @@
           } else {
             setEmpty(repBody, '📰', '该日期暂无日报');
           }
-          document.getElementById('editor-verdict-wrapper').style.display = 'none';
+          var verdictWrap = document.getElementById('editor-verdict-wrapper');
+          if (verdictWrap) verdictWrap.style.display = 'none';
         }
       } else {
-        document.getElementById('podcast-date-tag').textContent = label;
-        document.getElementById('side-podcast-title').textContent = ep.title || ('AI 新闻快报 | ' + d);
-        var castBody = document.getElementById('cast-panel-body');
-        setLoading(castBody, '正在加载剧本…');
+        var dateTagA = document.getElementById('podcast-date-tag');
+        var dateTagB = document.getElementById('podcast-date-tag-b');
+        if (dateTagA) dateTagA.textContent = label;
+        if (dateTagB) dateTagB.textContent = label;
+
+        var titleA = document.getElementById('side-podcast-title');
+        var titleB = document.getElementById('side-podcast-title-b');
+        if (titleA) titleA.textContent = ep.title || ('AI 新闻快报 | ' + d);
+        if (titleB) titleB.textContent = ep.title || ('AI 新闻快报 | ' + d);
+
+        var castBodyA = document.getElementById('cast-panel-body');
+        var castBodyB = document.getElementById('cast-panel-body-b');
+        if (castBodyA) setLoading(castBodyA, '正在加载剧本…');
+        if (castBodyB) setLoading(castBodyB, '正在加载剧本…');
         var loaded = false;
         try {
           var r2 = await fetch('./episodes/' + d + '.txt');
           if (!r2.ok) throw new Error();
           var txt = await r2.text();
-          castBody.innerHTML = parseTranscript(txt);
+          var parsedScript = parseTranscript(txt);
+          if (castBodyA) castBodyA.innerHTML = parsedScript;
+          if (castBodyB) castBodyB.innerHTML = parsedScript;
           loaded = true;
         } catch(e2) {}
         if (!loaded) {
           if (ep.desc) {
-            castBody.innerHTML = '<div style="font-size:.88rem;color:#d1d5db;line-height:1.75">' + ep.desc + '</div>';
+            var descHtml = '<div style="font-size:.88rem;color:#d1d5db;line-height:1.75">' + ep.desc + '</div>';
+            if (castBodyA) castBodyA.innerHTML = descHtml;
+            if (castBodyB) castBodyB.innerHTML = descHtml;
           } else {
-            setEmpty(castBody, '🎙️', '该日期暂无剧本');
+            if (castBodyA) setEmpty(castBodyA, '🎙️', '该日期暂无剧本');
+            if (castBodyB) setEmpty(castBodyB, '🎙️', '该日期暂无剧本');
           }
         }
 
@@ -1772,16 +1983,14 @@
     }
 
     function buildVoiceSelectors() {
-      const containerA = document.getElementById('host-a-voice-pills');
-      const containerB = document.getElementById('host-b-voice-pills');
-      if (!containerA || !containerB) return;
+      const containerA1 = document.getElementById('host-a-voice-pills');
+      const containerB1 = document.getElementById('host-b-voice-pills');
+      const containerA2 = document.getElementById('host-a-voice-pills-b');
+      const containerB2 = document.getElementById('host-b-voice-pills-b');
 
-      containerA.innerHTML = '';
-      containerB.innerHTML = '';
-
-      const configs = [
-        { container: containerA, key: 'A', configKey: 'host_a' },
-        { container: containerB, key: 'B', configKey: 'host_b' }
+      const targetContainers = [
+        { containers: [containerA1, containerA2], key: 'A', configKey: 'host_a' },
+        { containers: [containerB1, containerB2], key: 'B', configKey: 'host_b' }
       ];
 
       const icons = {
@@ -1796,23 +2005,27 @@
         'calm': '🌊'
       };
 
-      configs.forEach(function(cfg) {
-        const hostConfig = VOICES_CONFIG[cfg.configKey] || {};
-        const variants = Object.keys(hostConfig);
+      targetContainers.forEach(function(item) {
+        item.containers.forEach(function(ct) {
+          if (!ct) return;
+          ct.innerHTML = '';
+          const hostConfig = VOICES_CONFIG[item.configKey] || {};
+          const variants = Object.keys(hostConfig);
 
-        variants.forEach(function(variantId) {
-          const btn = document.createElement('button');
-          btn.className = 'voice-pill-btn host-' + cfg.key.toLowerCase() + '-btn';
-          if (selectedVoices[cfg.key] === variantId) {
-            btn.classList.add('active');
-          }
-          btn.setAttribute('data-host', cfg.key);
-          btn.setAttribute('data-variant', variantId);
-          btn.onclick = function() { selectVoiceVariant(cfg.key, variantId); };
-          
-          const icon = icons[variantId] || '🎵';
-          btn.innerHTML = `<span class="pill-icon">${icon}</span> ${hostConfig[variantId] || variantId}`;
-          cfg.container.appendChild(btn);
+          variants.forEach(function(variantId) {
+            const btn = document.createElement('button');
+            btn.className = 'voice-pill-btn host-' + item.key.toLowerCase() + '-btn';
+            if (selectedVoices[item.key] === variantId) {
+              btn.classList.add('active');
+            }
+            btn.setAttribute('data-host', item.key);
+            btn.setAttribute('data-variant', variantId);
+            btn.onclick = function() { selectVoiceVariant(item.key, variantId); };
+            
+            const icon = icons[variantId] || '🎵';
+            btn.innerHTML = `<span class="pill-icon">${icon}</span> ${hostConfig[variantId] || variantId}`;
+            ct.appendChild(btn);
+          });
         });
       });
     }
@@ -2165,20 +2378,38 @@
 
       var pct = totalDur > 0 ? (curTime / totalDur * 100).toFixed(1) : 0;
 
-      var consoleFill = document.getElementById('console-progress-fill');
-      if (consoleFill) consoleFill.style.width = pct + '%';
+      var consoleFillA = document.getElementById('console-progress-fill');
+      var consoleFillB = document.getElementById('console-progress-fill-b');
+      if (consoleFillA) consoleFillA.style.width = pct + '%';
+      if (consoleFillB) consoleFillB.style.width = pct + '%';
 
-      var curTimeEl = document.getElementById('current-time');
-      if (curTimeEl) curTimeEl.textContent = fmtTime(curTime);
+      var curTimeA = document.getElementById('current-time');
+      var curTimeB = document.getElementById('current-time-b');
+      var formattedCurTime = fmtTime(curTime);
+      if (curTimeA) curTimeA.textContent = formattedCurTime;
+      if (curTimeB) curTimeB.textContent = formattedCurTime;
 
-      var totalTimeEl = document.getElementById('total-time');
-      if (totalTimeEl && totalDur) totalTimeEl.textContent = fmtTime(totalDur);
+      var totalTimeA = document.getElementById('total-time');
+      var totalTimeB = document.getElementById('total-time-b');
+      if (totalDur) {
+        var formattedTotalTime = fmtTime(totalDur);
+        if (totalTimeA) totalTimeA.textContent = formattedTotalTime;
+        if (totalTimeB) totalTimeB.textContent = formattedTotalTime;
+      }
 
       // 同步高亮及滚动
       syncScrollTo(false);
     });
 
-    window.addEventListener('DOMContentLoaded', buildDatePills);
+    window.addEventListener('DOMContentLoaded', function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var urlVar = urlParams.get('variant');
+      if (urlVar === 'A' || urlVar === 'B') {
+        currentVariant = urlVar;
+      }
+      switchVariant(currentVariant);
+      buildDatePills();
+    });
 
   </script>
 </body>

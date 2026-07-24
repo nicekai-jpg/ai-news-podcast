@@ -918,11 +918,68 @@
     /* Voice Selector Styling */
     .voice-selector-row {
       display: flex;
+    }
     .voice-pill-group {
       display: flex;
       gap: 6px;
       flex: 1;
     }
+
+    /* A/B 测试方案切换开关 (A/B Test Variant Switcher) */
+    .ab-variant-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 3px 6px;
+      border-radius: 99px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-right: 12px;
+    }
+    .ab-toggle-label {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #c084fc;
+      margin: 0 4px;
+    }
+    .ab-toggle-btn {
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #94a3b8;
+      background: transparent;
+      border: none;
+      padding: 3px 10px;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .ab-toggle-btn.active {
+      color: #ffffff;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.4) 0%, rgba(139, 92, 246, 0.25) 100%);
+      border: 1px solid rgba(192, 132, 252, 0.3);
+      box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3);
+    }
+
+    /* Version B 下方双栏网格 (B Lower Grid) */
+    .b-lower-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 24px;
+      width: 100%;
+      align-items: start;
+      margin-top: 24px;
+    }
+    @media (max-width: 1024px) {
+      .b-lower-grid { grid-template-columns: 1fr; }
+    }
+    .b-grid-left, .b-grid-right {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      min-width: 0;
+    }
+    #sources-card-b { margin-top: 0; }
+
     .voice-pill-btn {
       flex: 1;
       padding: 6px 10px;
