@@ -1121,21 +1121,13 @@
     /* 1:1 还原 ui_layout_comparison_1784798540222.jpg 全页背景与调色板 */
     /* ---------------------------------------------------- */
     body.theme-variant-b {
-      background: radial-gradient(circle at 50% 20%, #1e1238 0%, #0d081f 55%, #05030b 100%), #05030b !important;
+      background: #090714 !important;
       color: #f1f5f9;
     }
 
-    body.theme-variant-b .app-header {
-      background: rgba(15, 10, 32, 0.85) !important;
-      border-bottom: 1px solid rgba(168, 85, 247, 0.25) !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(168, 85, 247, 0.15) !important;
-    }
+    
 
-    body.theme-variant-b .date-selector-wrap {
-      background: linear-gradient(135deg, rgba(24, 17, 48, 0.85) 0%, rgba(14, 9, 30, 0.9) 100%) !important;
-      border: 1px solid rgba(168, 85, 247, 0.25) !important;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(168, 85, 247, 0.12) !important;
-    }
+    
 
     body.theme-variant-b .date-pill {
       background: rgba(255, 255, 255, 0.04) !important;
@@ -1153,12 +1145,7 @@
       box-shadow: 0 0 15px rgba(168, 85, 247, 0.5) !important;
     }
 
-    body.theme-variant-b .podcast-pane-full,
-    body.theme-variant-b .sources-card-full {
-      background: linear-gradient(135deg, rgba(22, 15, 46, 0.88) 0%, rgba(12, 8, 28, 0.94) 100%) !important;
-      border: 1px solid rgba(168, 85, 247, 0.22) !important;
-      box-shadow: 0 10px 32px rgba(0, 0, 0, 0.45), 0 0 18px rgba(147, 51, 234, 0.12) !important;
-    }
+    
 
     body.theme-variant-b .transcript-para.active {
       background: rgba(168, 85, 247, 0.15) !important;
@@ -1174,4 +1161,31 @@
       color: #c084fc !important;
       background: rgba(192, 132, 252, 0.15) !important;
       border: 1px solid rgba(192, 132, 252, 0.3) !important;
+    }
+
+    /* B 版专属双栏并排布局 (Variant B Split Screen Layout) */
+    @media (min-width: 1024px) {
+      body.theme-variant-b .top-tab-nav {
+        display: none !important;
+      }
+      body.theme-variant-b .main-layout {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+        gap: 32px !important;
+        align-items: start;
+      }
+      body.theme-variant-b #panel-podcast, 
+      body.theme-variant-b #panel-report {
+        display: block !important;
+      }
+      body.theme-variant-b #panel-report .date-selector-wrap {
+        display: none !important;
+      }
+      body.theme-variant-b .b-lower-grid {
+        display: flex !important;
+        flex-direction: column !important;
+      }
+      body.theme-variant-b .b-grid-left, body.theme-variant-b .b-grid-right {
+        width: 100% !important;
+      }
     }
