@@ -241,12 +241,15 @@
               }
             }
 
-            document.getElementById('playback-btn-sentence').style.display = 'block';
+            var btnSent = document.getElementById('playback-btn-sentence');
+            if (btnSent) btnSent.style.display = 'block';
           } else {
-            document.getElementById('playback-btn-sentence').style.display = 'none';
+            var btnSent = document.getElementById('playback-btn-sentence');
+            if (btnSent) btnSent.style.display = 'none';
           }
         } catch (ePl) {
-          document.getElementById('playback-btn-sentence').style.display = 'none';
+          var btnSent = document.getElementById('playback-btn-sentence');
+          if (btnSent) btnSent.style.display = 'none';
         }
 
         buildVoiceSelectors();
@@ -431,8 +434,10 @@
 
       playbackMode = mode;
       pendingPlaybackMode = null; // Clear pending switch if mode changes explicitly
-      document.getElementById('playback-btn-full').classList.toggle('active', mode === 'full');
-      document.getElementById('playback-btn-sentence').classList.toggle('active', mode === 'sentence');
+      var btnFull = document.getElementById('playback-btn-full');
+      var btnSent = document.getElementById('playback-btn-sentence');
+      if (btnFull) btnFull.classList.toggle('active', mode === 'full');
+      if (btnSent) btnSent.classList.toggle('active', mode === 'sentence');
 
       var voiceSelector = document.getElementById('voice-selector-row');
       if (voiceSelector) {
@@ -907,8 +912,10 @@
                 audio.pause();
                 playbackMode = 'sentence';
                 pendingPlaybackMode = null;
-                document.getElementById('playback-btn-full').classList.remove('active');
-                document.getElementById('playback-btn-sentence').classList.add('active');
+                var btnFull = document.getElementById('playback-btn-full');
+                var btnSent = document.getElementById('playback-btn-sentence');
+                if (btnFull) btnFull.classList.remove('active');
+                if (btnSent) btnSent.classList.add('active');
                 var voiceSelector = document.getElementById('voice-selector-row');
                 if (voiceSelector) voiceSelector.classList.remove('dimmed');
                 
