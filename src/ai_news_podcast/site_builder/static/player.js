@@ -48,23 +48,31 @@
       document.getElementById('btn-mode-podcast').classList.toggle('active', mode === 'podcast');
 
       const heroDesc = document.getElementById('hero-desc');
-      if (mode === 'report') {
-        document.body.classList.add('theme-report');
-        heroDesc.textContent = '科技日报 · 聚合每日 AI 领域深度前沿动态';
+      if (heroDesc) {
+        if (mode === 'report') {
+          document.body.classList.add('theme-report');
+          heroDesc.textContent = '科技日报 · 聚合每日 AI 领域深度前沿动态';
+        } else {
+          document.body.classList.remove('theme-report');
+          heroDesc.textContent = 'AI 播客电台 · 每日 AI 资讯的声音解说与剧本展示';
+        }
       } else {
-        document.body.classList.remove('theme-report');
-        heroDesc.textContent = 'AI 播客电台 · 每日 AI 资讯的声音解说与剧本展示';
+        if (mode === 'report') {
+          document.body.classList.add('theme-report');
+        } else {
+          document.body.classList.remove('theme-report');
+        }
       }
 
       const panelReport = document.getElementById('panel-report');
       const panelPodcast = document.getElementById('panel-podcast');
 
       if (mode === 'report') {
-        panelPodcast.style.display = 'none';
-        panelReport.style.display = 'flex';
+        if (panelPodcast) panelPodcast.style.display = 'none';
+        if (panelReport) panelReport.style.display = 'flex';
       } else {
-        panelReport.style.display = 'none';
-        panelPodcast.style.display = 'flex';
+        if (panelReport) panelReport.style.display = 'none';
+        if (panelPodcast) panelPodcast.style.display = 'grid';
       }
 
       buildDatePills();
@@ -152,7 +160,10 @@
       var ep = EPISODES[d] || {};
       var dt = new Date(d + 'T00:00:00');
       var label = dt.getFullYear() + '年' + (dt.getMonth()+1) + '月' + dt.getDate() + '日';
-      document.getElementById('hero-title').textContent = ep.title || ('AI 新闻快报 | ' + d);
+      var heroTitle = document.getElementById('hero-title');
+      if (heroTitle) {
+        heroTitle.textContent = ep.title || ('AI 新闻快报 | ' + d);
+      }
 
       // 渲染引证参考源卡片
       var sourcesCard = document.getElementById('sources-card');
