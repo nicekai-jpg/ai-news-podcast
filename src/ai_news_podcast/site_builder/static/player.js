@@ -71,42 +71,64 @@
     }
 
     function buildDatePills() {
-      const wrap = document.getElementById('date-pills');
-      wrap.innerHTML = '';
+      const podcastWrap = document.getElementById('date-pills');
+      const reportWrap = document.getElementById('report-date-pills');
+      if (podcastWrap) podcastWrap.innerHTML = '';
+      if (reportWrap) reportWrap.innerHTML = '';
 
-      const filteredDates = DATES.filter(function(d) {
-        if (currentMode === 'podcast') {
-          return EPISODES[d] && EPISODES[d].mp3;
-        }
-        return true;
-      });
+      const podcastDates = DATES.filter(function(d) { return EPISODES[d] && EPISODES[d].mp3; });
+      const reportDates = DATES;
 
-      filteredDates.forEach(function(d, index) {
-        var dt = new Date(d + 'T00:00:00');
-        var pill = document.createElement('div');
-        pill.className = 'date-pill';
-        pill.setAttribute('data-date', d);
-        pill.onclick = function() { loadDate(d); };
+      const currentDates = (currentMode === 'podcast') ? podcastDates : reportDates;
+      const currentWrap = (currentMode === 'podcast') ? podcastWrap : reportWrap;
 
-        var mon = String(dt.getMonth() + 1).padStart(2, '0');
-        var day = String(dt.getDate()).padStart(2, '0');
-        var wk = WEEKDAYS[dt.getDay()];
-        var isLatest = (index === 0);
+      // Render Podcast Calendar Pills
+      if (podcastWrap) {
+        podcastDates.forEach(function(d, index) {
+          var dt = new Date(d + 'T00:00:00');
+          var pill = document.createElement('div');
+          pill.className = 'date-pill';
+          pill.setAttribute('data-date', d);
+          pill.onclick = function() { loadDate(d); };
+          var mon = String(dt.getMonth() + 1).padStart(2, '0');
+          var day = String(dt.getDate()).padStart(2, '0');
+          var wk = WEEKDAYS[dt.getDay()];
+          var isLatest = (index === 0);
+          pill.innerHTML = 
+            '<span class="pill-month">' + mon + '月</span>' +
+            '<span class="pill-day">' + day + '</span>' +
+            '<span class="pill-weekday">周' + wk + '</span>' +
+            (isLatest ? '<span class="pill-latest-badge">最新</span>' : '');
+          podcastWrap.appendChild(pill);
+        });
+      }
 
-        pill.innerHTML = 
-          '<span class="pill-month">' + mon + '月</span>' +
-          '<span class="pill-day">' + day + '</span>' +
-          '<span class="pill-weekday">周' + wk + '</span>' +
-          (isLatest ? '<span class="pill-latest-badge">最新</span>' : '');
+      // Render Report Calendar Pills
+      if (reportWrap) {
+        reportDates.forEach(function(d, index) {
+          var dt = new Date(d + 'T00:00:00');
+          var pill = document.createElement('div');
+          pill.className = 'date-pill';
+          pill.setAttribute('data-date', d);
+          pill.onclick = function() { loadDate(d); };
+          var mon = String(dt.getMonth() + 1).padStart(2, '0');
+          var day = String(dt.getDate()).padStart(2, '0');
+          var wk = WEEKDAYS[dt.getDay()];
+          var isLatest = (index === 0);
+          pill.innerHTML = 
+            '<span class="pill-month">' + mon + '月</span>' +
+            '<span class="pill-day">' + day + '</span>' +
+            '<span class="pill-weekday">周' + wk + '</span>' +
+            (isLatest ? '<span class="pill-latest-badge">最新</span>' : '');
+          reportWrap.appendChild(pill);
+        });
+      }
 
-        wrap.appendChild(pill);
-      });
-
-      if (filteredDates.length > 0) {
-        if (currentDate && filteredDates.includes(currentDate)) {
+      if (currentDates.length > 0) {
+        if (currentDate && currentDates.includes(currentDate)) {
           loadDate(currentDate);
         } else {
-          loadDate(filteredDates[0]);
+          loadDate(currentDates[0]);
         }
       } else {
         if (currentMode === 'report') {

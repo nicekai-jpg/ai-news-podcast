@@ -58,13 +58,51 @@
     .hero-title { font-size: 1.45rem; font-weight: 850; color: #fff; letter-spacing: -0.01em; margin-bottom: 4px; }
     .hero-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
 
-    /* Mode Switcher Tab */
-    .brand-switcher-wrap { display: flex; justify-content: center; margin: 4px 0; }
-    .brand-switcher { background: rgba(15, 12, 28, 0.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--border); padding: 5px; border-radius: 99px; display: flex; gap: 4px; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); position: relative; }
-    .mode-btn { background: transparent; border: none; color: var(--text-muted); font-size: 0.88rem; font-weight: 750; padding: 10px 24px; border-radius: 99px; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); display: flex; align-items: center; gap: 8px; position: relative; z-index: 2; }
-    .mode-btn:hover { color: #fff; }
-    .mode-btn.active { color: #fff; background: var(--accent-gradient); box-shadow: 0 4px 15px var(--glow-color); }
+    /* 顶级双 Tab 页选项卡 (Top Tab Pages Navigation) */
+    .top-tab-nav {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 12, 28, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 4px;
+      border-radius: 99px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    .top-tab-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 0.88rem;
+      font-weight: 800;
+      padding: 8px 22px;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .top-tab-btn:hover { color: #ffffff; background: rgba(255, 255, 255, 0.05); }
+    .top-tab-btn.active {
+      color: #ffffff;
+      background: var(--accent-gradient);
+      box-shadow: 0 4px 15px var(--glow-color);
+    }
+    body.theme-report .top-tab-btn.active {
+      background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%);
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+    }
     .tab-icon { width: 16px; height: 16px; }
+
+    /* Tab Page Workspace */
+    .tab-page-workspace {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width: 100%;
+    }
 
     /* Date Selector & Studio Calendar Header */
     .date-selector-wrap { padding: 16px 20px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: rgba(18, 14, 36, 0.7); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); overflow-x: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
