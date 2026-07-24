@@ -429,29 +429,53 @@
       if (!htmlStr) return '';
       var temp = document.createElement('div');
       temp.innerHTML = htmlStr;
-      var links = temp.querySelectorAll('a');
-      if (links.length === 0) {
-        return '<div class="sources-raw-body">' + htmlStr + '</div>';
+      var items = temp.querySelectorAll('li');
+      
+      if (items.length === 0) {
+        var links = temp.querySelectorAll('a');
+        if (links.length === 0) {
+          return '<div class="sources-raw-body">' + htmlStr + '</div>';
+        }
+        items = links;
       }
+
       var cardsHtml = '<div class="source-chips-grid">';
-      links.forEach(function(a, index) {
+      
+      items.forEach(function(item, index) {
+        var a = item.tagName && item.tagName.toLowerCase() === 'a' ? item : item.querySelector('a');
+        if (!a) return;
+
         var href = a.getAttribute('href') || '#';
         var text = a.textContent || href;
-        var domain = 'source';
-        try {
-          var u = new URL(href, window.location.href);
-          domain = u.hostname.replace(/^www\./, '');
-        } catch(e) {}
+        // 清理开头的 Emoji 圆点符号
+        text = text.replace(/^[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F600}-\u{1F64F}\u{1F680}-\u{1F6FF}]\s*/u, '').trim();
+
+        // 尝试提取 small 标签中的媒体名称 (如 "(量子位)")
+        var sourceName = '';
+        var small = (item.querySelector ? item.querySelector('small') : null);
+        if (small) {
+          sourceName = small.textContent.replace(/[()（）]/g, '').trim();
+        }
+        if (!sourceName) {
+          try {
+            var u = new URL(href, window.location.href);
+            sourceName = u.hostname.replace(/^www\./, '');
+          } catch(e) {
+            sourceName = '权威数据源';
+          }
+        }
+
         cardsHtml += 
           '<a href="' + esc(href) + '" target="_blank" class="source-chip-card">' +
             '<div class="source-chip-top">' +
               '<span class="source-chip-num">[' + (index + 1) + ']</span>' +
-              '<span class="source-chip-domain">' + esc(domain) + '</span>' +
+              '<span class="source-chip-domain">' + esc(sourceName) + '</span>' +
               '<span class="source-chip-arrow">↗</span>' +
             '</div>' +
             '<div class="source-chip-title">' + esc(text) + '</div>' +
           '</a>';
       });
+
       cardsHtml += '</div>';
       return cardsHtml;
     }
