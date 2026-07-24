@@ -359,6 +359,7 @@
     }
     .sources-card-full {
       width: 100%;
+      margin-top: 24px;
       background: linear-gradient(135deg, rgba(18, 14, 36, 0.9) 0%, rgba(10, 7, 22, 0.95) 100%);
       backdrop-filter: blur(24px);
       border: 1px solid rgba(255, 255, 255, 0.1);
