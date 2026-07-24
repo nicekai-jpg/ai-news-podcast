@@ -283,20 +283,12 @@ def build_index_html(
           </div>
         </div>
 
-        <!-- Variant B 布局 (精准复刻 ui_layout_comparison_1784798540222.jpg: 顶部 Console 控台 + 下方左剧本右新闻源) -->
+        <!-- Variant B 布局 (Aurora Obsidian Asymmetrical Dashboard) -->
         <div id="variant-container-b" style="display: none;" class="variant-workspace">
-          <!-- 1. 顶部 Studio Control Console 大控台 -->
-          <div class="top-studio-console">
-            <div class="card-internal-header">
-              <div class="header-left">
-                <span class="header-icon">📻</span>
-                <span class="header-title">播控声轨控制台</span>
-                <span class="header-sub">Version B · Top Studio Console</span>
-              </div>
-              <span class="live-broadcast-badge"><span class="live-dot"></span> LIVE BROADCAST</span>
-            </div>
-
-            <div class="console-upper-deck">
+          <!-- 极光黑耀侧边坞 (Aurora Sidebar) -->
+          <div class="aurora-sidebar">
+            <div class="sidebar-top">
+              <span class="live-broadcast-badge"><span class="live-dot"></span> LIVE AUDIO</span>
               <div class="vinyl-center-stage">
                 <div class="vinyl-wrapper-compact">
                   <div class="vinyl-disc" id="vinyl-disc-b">
@@ -304,36 +296,22 @@ def build_index_html(
                     <div class="vinyl-center"></div>
                   </div>
                 </div>
-                <div class="console-ep-meta">
-                  <h2 class="ep-main-title" id="side-podcast-title-b">AI 新闻快报</h2>
-                  <span class="ep-date-sub" id="podcast-date-tag-b">—</span>
-                </div>
               </div>
-
-              <div class="console-host-voices-deck">
-                <div class="voice-card-header">
-                  <span>🎙️ 双声轨音色定制 (Voice Pills)</span>
-                </div>
-                <div class="host-voice-rows">
-                  <div class="console-host-item host-a-box">
-                    <div class="host-item-left">
-                      <span class="host-emoji">👩‍💼</span>
-                      <span class="host-name-sm">苏晴 <span class="host-badge-a">Female</span></span>
-                    </div>
-                    <div class="host-voice-segmented" id="host-a-voice-pills-b"></div>
-                  </div>
-                  <div class="console-host-item host-b-box">
-                    <div class="host-item-left">
-                      <span class="host-emoji">👨‍💼</span>
-                      <span class="host-name-sm">周航 <span class="host-badge-b">Male</span></span>
-                    </div>
-                    <div class="host-voice-segmented" id="host-b-voice-pills-b"></div>
-                  </div>
-                </div>
+              <div class="sidebar-meta">
+                <h2 class="ep-main-title" id="side-podcast-title-b">AI 新闻快报</h2>
+                <span class="ep-date-sub" id="podcast-date-tag-b">—</span>
               </div>
             </div>
 
-            <div class="console-lower-player">
+            <div class="sidebar-host-voices">
+              <span class="sidebar-section-title">🎙️ Timbre</span>
+              <div class="host-voice-rows">
+                <div class="console-host-item"><div class="host-voice-segmented" id="host-a-voice-pills-b"></div></div>
+                <div class="console-host-item"><div class="host-voice-segmented" id="host-b-voice-pills-b"></div></div>
+              </div>
+            </div>
+
+            <div class="sidebar-player-controls">
               <div class="console-time-row">
                 <span id="current-time-b" class="time-text">0:00</span>
                 <div class="console-progress-track" id="console-progress-track-b" onclick="seekAudio(event)">
@@ -344,60 +322,40 @@ def build_index_html(
               </div>
               <div class="console-ctrl-bar">
                 <button class="ctrl-btn" onclick="skipAudio(-15)" title="-15秒">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0-.57-8.38l.41 1.31"/></svg>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0-.57-8.38l.41 1.31"/></svg>
                 </button>
                 <button class="console-play-btn" id="console-btn-play-b" onclick="toggleAudio()">▶</button>
                 <button class="ctrl-btn" onclick="skipAudio(15)" title="+15秒">
-                  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1 .57-8.38l-.41 1.31"/></svg>
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1 .57-8.38l-.41 1.31"/></svg>
                 </button>
+              </div>
+              <div class="sidebar-bottom-ctrls">
                 <span id="console-speed-btn-b" class="speed-pill-btn" onclick="cycleSpeed()">1.0x</span>
                 <div class="volume-control">
-                  <svg id="volume-icon-b" onclick="toggleMute()" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+                  <svg id="volume-icon-b" onclick="toggleMute()" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
                   <input type="range" id="volume-slider-b" min="0" max="1" step="0.05" value="0.8" oninput="changeVolume(this.value)">
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- 2. 下方 2 栏网格：左侧对谈剧本 + 右侧引证新闻源 -->
-          <div class="b-lower-grid">
-            <div class="b-grid-left">
-              <div class="podcast-pane-full">
-                <div class="card-internal-header">
-                  <div class="header-left">
-                    <span class="header-icon">📖</span>
-                    <span class="header-title">播客对谈剧本</span>
-                    <span class="header-sub">Script Teleprompter</span>
-                  </div>
-                  <span class="header-badge">🔴 智能音文同步</span>
-                </div>
-
-                <div class="episode-insight-banner" id="episode-insight-banner-b">
-                  <div class="insight-badge">💡 本期核心研判</div>
-                  <div class="insight-text" id="insight-text-content-b">每天 5 分钟，聚合 AI 领域最新发布与行业观察。</div>
-                </div>
-
-                <div class="transcript-container-wrapper" style="position: relative; flex: 1; overflow: hidden; display: flex; flex-direction: column;">
-                  <div class="transcript-container" id="cast-panel-body-b" onscroll="handleTranscriptScroll()"></div>
-                  <button class="back-to-sync-btn" id="back-to-sync-btn-b" onclick="resumeSyncScroll()">
-                    <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-                    返回播音位置
-                  </button>
+          <!-- 主画布区：提词器 (Aurora Script Canvas) -->
+          <div class="aurora-script-area">
+            <div class="podcast-pane-full" style="height: 100%; border: none;">
+              <div class="card-internal-header" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <div class="header-left">
+                  <span class="header-icon">✨</span>
+                  <span class="header-title">Teleprompter Script</span>
+                  <span class="header-sub">Interactive AI Script</span>
                 </div>
               </div>
-            </div>
 
-            <div class="b-grid-right">
-              <div class="sources-card-full" id="sources-card-b">
-                <div class="card-internal-header">
-                  <div class="header-left">
-                    <span class="header-icon">🔗</span>
-                    <span class="header-title">本期引证新闻源</span>
-                    <span class="header-sub">Verified Sources</span>
-                  </div>
-                  <span class="header-badge">权威数据源</span>
-                </div>
-                <div class="sources-list-body" id="sources-list-body-b"></div>
+              <div class="transcript-container-wrapper" style="position: relative; flex: 1; overflow: hidden; display: flex; flex-direction: column; min-height: 400px; padding-top: 16px;">
+                <div class="transcript-container" id="cast-panel-body-b" onscroll="handleTranscriptScroll()"></div>
+                <button class="back-to-sync-btn" id="back-to-sync-btn-b" onclick="resumeSyncScroll()">
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+                  Sync
+                </button>
               </div>
             </div>
           </div>

@@ -1160,79 +1160,128 @@
       border: 1px solid var(--border-hover) !important;
     }
 
-    /* B 版专属双栏并排布局 (Variant B Split Screen Layout) */
+    /* ========================================================= */
+    /* B 版专属 - Aurora Obsidian 重构架构 (Aurora Obsidian Layout) */
+    /* ========================================================= */
+    body.theme-variant-b {
+      --bg: #0A0A0C;
+      --bg-gradient: radial-gradient(circle at top left, rgba(0, 229, 255, 0.04) 0%, transparent 60%);
+      --surface: rgba(16, 16, 20, 0.6);
+      --surface-hover: rgba(24, 24, 30, 0.8);
+      --accent: #00E5FF;
+      --accent-gradient: linear-gradient(135deg, #00E5FF 0%, #6D28D9 100%);
+      --accent-light: #6D28D9;
+      --border: rgba(255, 255, 255, 0.05);
+      --border-hover: rgba(0, 229, 255, 0.3);
+      --glow-color: rgba(0, 229, 255, 0.15);
+      --host-a: #6D28D9;
+      --host-b: #00E5FF;
+      
+      background: #0A0A0C !important;
+      background-image: var(--bg-gradient) !important;
+      color: #e2e8f0 !important;
+    }
+
     @media (min-width: 1024px) {
       body.theme-variant-b .top-tab-nav {
         display: none !important;
       }
       body.theme-variant-b .main-layout {
         display: grid !important;
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
-        gap: 32px !important;
+        grid-template-columns: 320px 1fr !important;
+        grid-template-rows: auto 1fr !important;
+        grid-template-areas: 
+          "sidebar script"
+          "sidebar news" !important;
+        gap: 28px !important;
         align-items: start;
+        max-width: 1440px;
+        margin: 0 auto;
       }
       body.theme-variant-b #panel-podcast, 
-      body.theme-variant-b #panel-report {
-        display: block !important;
+      body.theme-variant-b #variant-container-b {
+        display: contents !important;
       }
-      body.theme-variant-b #panel-report .date-selector-wrap {
+      body.theme-variant-b #variant-container-a {
         display: none !important;
       }
-      body.theme-variant-b .b-lower-grid {
-        display: flex !important;
-        flex-direction: column !important;
-      }
-      body.theme-variant-b .b-grid-left, body.theme-variant-b .b-grid-right {
-        width: 100% !important;
-      }
-    }
-
-    /* B 版专属深邃黑底主题 (Variant B Pure Dark/Black Theme) */
-    
-    /* B 版专属深邃黑底主题 (Variant B Pure Dark/Black Theme) */
-    body.theme-variant-b {
-      --bg: #050505;
-      --bg-gradient: none;
-      --surface: rgba(20, 20, 20, 0.9);
-      --surface-hover: rgba(35, 35, 35, 0.95);
-      --accent: #f1f5f9;
-      --accent-gradient: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 100%);
-      --accent-light: #cbd5e1;
-      --border: rgba(255, 255, 255, 0.1);
-      --border-hover: rgba(255, 255, 255, 0.25);
-      --glow-color: rgba(255, 255, 255, 0.05);
-      --host-a: #cbd5e1;
-      --host-b: #94a3b8;
       
-      background: #050505 !important;
-      background-image: none !important;
-      color: #e2e8f0 !important;
+      /* Sidebar styles */
+      body.theme-variant-b .aurora-sidebar {
+        grid-area: sidebar;
+        background: rgba(10, 10, 12, 0.85);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        position: sticky;
+        top: 24px;
+        height: calc(100vh - 48px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      }
+      body.theme-variant-b .aurora-script-area {
+        grid-area: script;
+      }
+      body.theme-variant-b #panel-report {
+        grid-area: news;
+        display: block !important;
+      }
+      body.theme-variant-b #report-panel-body {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
+        gap: 20px !important;
+      }
+      body.theme-variant-b #panel-report .date-selector-wrap,
+      body.theme-variant-b .magazine-header {
+        display: none !important; /* Hide duplicate header in B version */
+      }
     }
 
-
-    body.theme-variant-b .app-header, 
-    body.theme-variant-b header {
-      background: rgba(8, 8, 8, 0.9) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8) !important;
-    }
-
-    body.theme-variant-b .top-studio-console,
-    body.theme-variant-b .podcast-pane-full,
-    body.theme-variant-b .sources-card-full,
-    body.theme-variant-b .magazine-container,
-    body.theme-variant-b .date-selector-wrap {
-      background: linear-gradient(135deg, #121212 0%, #0a0a0a 100%) !important;
-      border: 1px solid rgba(255, 255, 255, 0.05) !important;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6) !important;
+    /* Aurora Sidebar Internal Styles */
+    body.theme-variant-b .sidebar-top { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+    body.theme-variant-b .vinyl-disc { width: 140px; height: 140px; border-radius: 50%; background: #000; position: relative; display: flex; justify-content: center; align-items: center; border: 2px solid #111; box-shadow: 0 0 25px var(--glow-color); margin: 0 auto; }
+    body.theme-variant-b .vinyl-disc .vinyl-art { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; z-index: 2; border: 2px solid #333; }
+    @keyframes spin-aurora { 100% { transform: rotate(360deg); } }
+    body.theme-variant-b .vinyl-disc.playing::after { content: ''; position: absolute; inset: -15px; border-radius: 50%; border: 2px dashed var(--accent); animation: spin-aurora 8s linear infinite; opacity: 0.8; pointer-events: none; }
+    
+    body.theme-variant-b .sidebar-meta h2 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 4px; margin-top: 10px; }
+    body.theme-variant-b .sidebar-meta span { font-size: 0.8rem; color: var(--text-muted); }
+    
+    body.theme-variant-b .sidebar-section-title { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 800; letter-spacing: 0.1em; margin-bottom: 12px; display: block; }
+    body.theme-variant-b .console-host-item { background: transparent; padding: 0; box-shadow: none; border: none; }
+    body.theme-variant-b .host-voice-segmented { display: flex; gap: 8px; flex-wrap: wrap; }
+    body.theme-variant-b .voice-pill-btn { padding: 6px 12px; font-size: 0.7rem; border-radius: 99px; }
+    
+    body.theme-variant-b .sidebar-player-controls { margin-top: auto; display: flex; flex-direction: column; gap: 16px; }
+    body.theme-variant-b .sidebar-bottom-ctrls { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding-top: 16px; border-top: 1px solid var(--border); }
+    
+    body.theme-variant-b .podcast-pane-full, body.theme-variant-b .magazine-container {
+      background: rgba(18, 18, 22, 0.4) !important;
+      backdrop-filter: blur(40px) !important;
+      border: 1px solid var(--border) !important;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
     }
     
-    body.theme-variant-b .card-internal-header {
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-    }
-    
-    body.theme-variant-b .transcript-para.active {
-      background: rgba(255, 255, 255, 0.05) !important;
-      border-left: 3px solid #6b7280 !important;
+    body.theme-variant-b .news-card {
+      background: rgba(255,255,255,0.02) !important;
+      border: 1px solid var(--border) !important;
       box-shadow: none !important;
+    }
+    body.theme-variant-b .news-card:hover {
+      border-color: var(--accent) !important;
+      box-shadow: 0 8px 25px var(--glow-color) !important;
+    }
+
+    body.theme-variant-b .transcript-para.active {
+      background: rgba(0, 229, 255, 0.05) !important;
+      border-left: 3px solid var(--accent) !important;
+      box-shadow: none !important;
+    }
+    
+    body.theme-variant-b .app-header {
+      background: rgba(10, 10, 12, 0.8) !important;
+      border-bottom: 1px solid var(--border) !important;
+      backdrop-filter: blur(20px);
     }
