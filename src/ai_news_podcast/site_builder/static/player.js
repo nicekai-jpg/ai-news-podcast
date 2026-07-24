@@ -17,18 +17,26 @@
     let currentPlaylist = null; // List of chunks from playlist.json
     let currentChunkIndex = 0;
     let selectedVoices = { 'A': 'professional', 'B': 'professional' };
-    const bgmAudio = document.getElementById('bgm-audio');
-    bgmAudio.volume = 0.05; // 低音量背景音乐
+    let currentVariant = localStorage.getItem('ab_variant') || 'A';
 
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      if (!toast) return;
-      toast.textContent = msg;
-      toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(function() {
-        toast.classList.remove('show');
-      }, 3000);
+    function switchVariant(variant) {
+      currentVariant = variant;
+      localStorage.setItem('ab_variant', variant);
+
+      const btnA = document.getElementById('btn-variant-a');
+      const btnB = document.getElementById('btn-variant-b');
+      if (btnA) btnA.classList.toggle('active', variant === 'A');
+      if (btnB) btnB.classList.toggle('active', variant === 'B');
+
+      const wrapA = document.getElementById('variant-container-a');
+      const wrapB = document.getElementById('variant-container-b');
+      if (wrapA) wrapA.style.display = (variant === 'A') ? 'block' : 'none';
+      if (wrapB) wrapB.style.display = (variant === 'B') ? 'block' : 'none';
+
+      buildVoiceSelectors();
+      if (currentDate) {
+        loadDate(currentDate);
+      }
     }
 
     let currentMode = 'podcast';
@@ -166,19 +174,27 @@
       }
 
       // 渲染引证参考源卡片 (Perplexity 芯片风格)
-      var sourcesCard = document.getElementById('sources-card');
-      var sourcesList = document.getElementById('sources-list-body');
+      var sourcesCardA = document.getElementById('sources-card');
+      var sourcesCardB = document.getElementById('sources-card-b');
+      var sourcesListA = document.getElementById('sources-list-body');
+      var sourcesListB = document.getElementById('sources-list-body-b');
+      
       if (currentMode === 'podcast') {
         if (ep.desc && ep.desc.trim()) {
-          sourcesList.innerHTML = parseSourcesHtml(ep.desc);
-          sourcesCard.style.display = 'block';
+          var parsedSources = parseSourcesHtml(ep.desc);
+          if (sourcesListA) sourcesListA.innerHTML = parsedSources;
+          if (sourcesListB) sourcesListB.innerHTML = parsedSources;
+          if (sourcesCardA) sourcesCardA.style.display = 'block';
+          if (sourcesCardB) sourcesCardB.style.display = 'block';
         } else {
-          sourcesCard.style.display = 'none';
+          if (sourcesCardA) sourcesCardA.style.display = 'none';
+          if (sourcesCardB) sourcesCardB.style.display = 'none';
         }
       }
 
       if (currentMode === 'report') {
-        document.getElementById('report-date-tag').textContent = label;
+        var repDateTag = document.getElementById('report-date-tag');
+        if (repDateTag) repDateTag.textContent = label;
         var repBody = document.getElementById('report-panel-body');
         setLoading(repBody, '正在加载日报…');
         try {
@@ -194,26 +210,42 @@
           } else {
             setEmpty(repBody, '📰', '该日期暂无日报');
           }
-          document.getElementById('editor-verdict-wrapper').style.display = 'none';
+          var verdictWrap = document.getElementById('editor-verdict-wrapper');
+          if (verdictWrap) verdictWrap.style.display = 'none';
         }
       } else {
-        document.getElementById('podcast-date-tag').textContent = label;
-        document.getElementById('side-podcast-title').textContent = ep.title || ('AI 新闻快报 | ' + d);
-        var castBody = document.getElementById('cast-panel-body');
-        setLoading(castBody, '正在加载剧本…');
+        var dateTagA = document.getElementById('podcast-date-tag');
+        var dateTagB = document.getElementById('podcast-date-tag-b');
+        if (dateTagA) dateTagA.textContent = label;
+        if (dateTagB) dateTagB.textContent = label;
+
+        var titleA = document.getElementById('side-podcast-title');
+        var titleB = document.getElementById('side-podcast-title-b');
+        if (titleA) titleA.textContent = ep.title || ('AI 新闻快报 | ' + d);
+        if (titleB) titleB.textContent = ep.title || ('AI 新闻快报 | ' + d);
+
+        var castBodyA = document.getElementById('cast-panel-body');
+        var castBodyB = document.getElementById('cast-panel-body-b');
+        if (castBodyA) setLoading(castBodyA, '正在加载剧本…');
+        if (castBodyB) setLoading(castBodyB, '正在加载剧本…');
         var loaded = false;
         try {
           var r2 = await fetch('./episodes/' + d + '.txt');
           if (!r2.ok) throw new Error();
           var txt = await r2.text();
-          castBody.innerHTML = parseTranscript(txt);
+          var parsedScript = parseTranscript(txt);
+          if (castBodyA) castBodyA.innerHTML = parsedScript;
+          if (castBodyB) castBodyB.innerHTML = parsedScript;
           loaded = true;
         } catch(e2) {}
         if (!loaded) {
           if (ep.desc) {
-            castBody.innerHTML = '<div style="font-size:.88rem;color:#d1d5db;line-height:1.75">' + ep.desc + '</div>';
+            var descHtml = '<div style="font-size:.88rem;color:#d1d5db;line-height:1.75">' + ep.desc + '</div>';
+            if (castBodyA) castBodyA.innerHTML = descHtml;
+            if (castBodyB) castBodyB.innerHTML = descHtml;
           } else {
-            setEmpty(castBody, '🎙️', '该日期暂无剧本');
+            if (castBodyA) setEmpty(castBodyA, '🎙️', '该日期暂无剧本');
+            if (castBodyB) setEmpty(castBodyB, '🎙️', '该日期暂无剧本');
           }
         }
 
@@ -584,16 +616,14 @@
     }
 
     function buildVoiceSelectors() {
-      const containerA = document.getElementById('host-a-voice-pills');
-      const containerB = document.getElementById('host-b-voice-pills');
-      if (!containerA || !containerB) return;
+      const containerA1 = document.getElementById('host-a-voice-pills');
+      const containerB1 = document.getElementById('host-b-voice-pills');
+      const containerA2 = document.getElementById('host-a-voice-pills-b');
+      const containerB2 = document.getElementById('host-b-voice-pills-b');
 
-      containerA.innerHTML = '';
-      containerB.innerHTML = '';
-
-      const configs = [
-        { container: containerA, key: 'A', configKey: 'host_a' },
-        { container: containerB, key: 'B', configKey: 'host_b' }
+      const targetContainers = [
+        { containers: [containerA1, containerA2], key: 'A', configKey: 'host_a' },
+        { containers: [containerB1, containerB2], key: 'B', configKey: 'host_b' }
       ];
 
       const icons = {
@@ -608,23 +638,27 @@
         'calm': '🌊'
       };
 
-      configs.forEach(function(cfg) {
-        const hostConfig = VOICES_CONFIG[cfg.configKey] || {};
-        const variants = Object.keys(hostConfig);
+      targetContainers.forEach(function(item) {
+        item.containers.forEach(function(ct) {
+          if (!ct) return;
+          ct.innerHTML = '';
+          const hostConfig = VOICES_CONFIG[item.configKey] || {};
+          const variants = Object.keys(hostConfig);
 
-        variants.forEach(function(variantId) {
-          const btn = document.createElement('button');
-          btn.className = 'voice-pill-btn host-' + cfg.key.toLowerCase() + '-btn';
-          if (selectedVoices[cfg.key] === variantId) {
-            btn.classList.add('active');
-          }
-          btn.setAttribute('data-host', cfg.key);
-          btn.setAttribute('data-variant', variantId);
-          btn.onclick = function() { selectVoiceVariant(cfg.key, variantId); };
-          
-          const icon = icons[variantId] || '🎵';
-          btn.innerHTML = `<span class="pill-icon">${icon}</span> ${hostConfig[variantId] || variantId}`;
-          cfg.container.appendChild(btn);
+          variants.forEach(function(variantId) {
+            const btn = document.createElement('button');
+            btn.className = 'voice-pill-btn host-' + item.key.toLowerCase() + '-btn';
+            if (selectedVoices[item.key] === variantId) {
+              btn.classList.add('active');
+            }
+            btn.setAttribute('data-host', item.key);
+            btn.setAttribute('data-variant', variantId);
+            btn.onclick = function() { selectVoiceVariant(item.key, variantId); };
+            
+            const icon = icons[variantId] || '🎵';
+            btn.innerHTML = `<span class="pill-icon">${icon}</span> ${hostConfig[variantId] || variantId}`;
+            ct.appendChild(btn);
+          });
         });
       });
     }
@@ -977,17 +1011,35 @@
 
       var pct = totalDur > 0 ? (curTime / totalDur * 100).toFixed(1) : 0;
 
-      var consoleFill = document.getElementById('console-progress-fill');
-      if (consoleFill) consoleFill.style.width = pct + '%';
+      var consoleFillA = document.getElementById('console-progress-fill');
+      var consoleFillB = document.getElementById('console-progress-fill-b');
+      if (consoleFillA) consoleFillA.style.width = pct + '%';
+      if (consoleFillB) consoleFillB.style.width = pct + '%';
 
-      var curTimeEl = document.getElementById('current-time');
-      if (curTimeEl) curTimeEl.textContent = fmtTime(curTime);
+      var curTimeA = document.getElementById('current-time');
+      var curTimeB = document.getElementById('current-time-b');
+      var formattedCurTime = fmtTime(curTime);
+      if (curTimeA) curTimeA.textContent = formattedCurTime;
+      if (curTimeB) curTimeB.textContent = formattedCurTime;
 
-      var totalTimeEl = document.getElementById('total-time');
-      if (totalTimeEl && totalDur) totalTimeEl.textContent = fmtTime(totalDur);
+      var totalTimeA = document.getElementById('total-time');
+      var totalTimeB = document.getElementById('total-time-b');
+      if (totalDur) {
+        var formattedTotalTime = fmtTime(totalDur);
+        if (totalTimeA) totalTimeA.textContent = formattedTotalTime;
+        if (totalTimeB) totalTimeB.textContent = formattedTotalTime;
+      }
 
       // 同步高亮及滚动
       syncScrollTo(false);
     });
 
-    window.addEventListener('DOMContentLoaded', buildDatePills);
+    window.addEventListener('DOMContentLoaded', function() {
+      var urlParams = new URLSearchParams(window.location.search);
+      var urlVar = urlParams.get('variant');
+      if (urlVar === 'A' || urlVar === 'B') {
+        currentVariant = urlVar;
+      }
+      switchVariant(currentVariant);
+      buildDatePills();
+    });
