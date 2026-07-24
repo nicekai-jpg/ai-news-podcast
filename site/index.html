@@ -11,19 +11,19 @@
       --bg-gradient: radial-gradient(circle at 50% 0%, #150a2a 0%, #070510 85%);
       --surface: rgba(18, 14, 36, 0.75);
       --surface-hover: rgba(26, 20, 50, 0.85);
-      --accent: #8b5cf6;
-      --accent-gradient: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
-      --accent-light: #c084fc;
+      --accent: var(--accent);
+      --accent-gradient: linear-gradient(135deg, var(--accent) 0%, #ec4899 100%);
+      --accent-light: var(--accent-light);
       --text-muted: #9ca3af;
       --text-dark: #4b5563;
       --border: rgba(255, 255, 255, 0.08);
-      --border-hover: rgba(139, 92, 246, 0.3);
+      --border-hover: var(--glow-color);
       --radius-sm: 8px;
       --radius-md: 16px;
       --radius-lg: 28px;
       --success: #10b981;
       --shadow-lg: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
-      --host-a: #c084fc;
+      --host-a: var(--accent-light);
       --host-b: #38bdf8;
       --glow-color: rgba(139, 92, 246, 0.18);
     }
@@ -139,10 +139,10 @@
       box-shadow: 0 8px 16px -8px var(--glow-color);
     }
     .date-pill.active {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.28) 0%, rgba(139, 92, 246, 0.12) 100%);
-      border-color: #c084fc;
+      background: linear-gradient(135deg, var(--glow-color) 0%, var(--glow-color) 100%);
+      border-color: var(--accent-light);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px -4px rgba(168, 85, 247, 0.45);
+      box-shadow: 0 8px 24px -4px var(--glow-color);
     }
     body.theme-report .date-pill.active {
       background: linear-gradient(135deg, rgba(6, 182, 212, 0.28) 0%, rgba(14, 116, 144, 0.12) 100%);
@@ -152,13 +152,13 @@
     .pill-month { font-size: 0.65rem; color: #94a3b8; text-transform: uppercase; font-weight: 700; }
     .pill-day { font-size: 1.2rem; font-weight: 900; color: #f8fafc; line-height: 1.1; margin: 3px 0; }
     .pill-weekday { font-size: 0.68rem; font-weight: 700; color: #64748b; }
-    .date-pill.active .pill-weekday { color: #c084fc; }
+    .date-pill.active .pill-weekday { color: var(--accent-light); }
     body.theme-report .date-pill.active .pill-weekday { color: #38bdf8; }
     .pill-latest-badge {
       font-size: 0.58rem;
       font-weight: 800;
       color: #ffffff;
-      background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+      background: var(--accent-gradient);
       padding: 2px 7px;
       border-radius: 99px;
       margin-top: 4px;
@@ -196,7 +196,7 @@
       background: linear-gradient(135deg, rgba(22, 16, 45, 0.95) 0%, rgba(10, 7, 22, 0.98) 100%);
       border: 1px solid rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(28px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(139, 92, 246, 0.15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px var(--glow-color);
     }
 
     .vinyl-display-box {
@@ -214,7 +214,7 @@
       border-radius: 50%;
       background: #111;
       border: 5px solid #222;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.8), 0 0 25px rgba(168, 85, 247, 0.35);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.8), 0 0 25px var(--glow-color);
       position: relative;
       animation: spin-vinyl 20s linear infinite;
       animation-play-state: paused;
@@ -302,9 +302,9 @@
     }
     .host-a-btn.active {
       color: #ffffff;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.4) 0%, rgba(139, 92, 246, 0.2) 100%);
-      border-color: #c084fc;
-      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.35);
+      background: linear-gradient(135deg, var(--glow-color) 0%, var(--glow-color) 100%);
+      border-color: var(--accent-light);
+      box-shadow: 0 4px 12px var(--glow-color);
     }
     .host-b-btn.active {
       color: #ffffff;
@@ -333,7 +333,7 @@
     .console-ctrl-bar { display: flex; align-items: center; justify-content: center; gap: 16px; }
     .console-play-btn { width: 42px; height: 42px; border-radius: 50%; background: #ffffff; color: #090714; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 900; box-shadow: 0 4px 15px rgba(255,255,255,0.25); transition: transform 0.2s; }
     .console-play-btn:hover { transform: scale(1.08); }
-    .speed-pill-btn { font-size: 0.72rem; font-weight: 800; color: #c084fc; background: rgba(192, 132, 252, 0.12); padding: 3px 10px; border-radius: 99px; border: 1px solid rgba(192, 132, 252, 0.25); cursor: pointer; }
+    .speed-pill-btn { font-size: 0.72rem; font-weight: 800; color: var(--accent-light); background: var(--glow-color); padding: 3px 10px; border-radius: 99px; border: 1px solid var(--border-hover); cursor: pointer; }
     .volume-control { display: flex; align-items: center; gap: 6px; color: #94a3b8; }
     .volume-control input[type=range] { width: 60px; height: 3px; accent-color: var(--accent); }
     .console-voice-header { display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; font-weight: 800; color: #f1f5f9; padding-bottom: 2px; }
@@ -390,9 +390,9 @@
     .header-badge {
       font-size: 0.68rem;
       font-weight: 800;
-      color: #c084fc;
-      background: rgba(192, 132, 252, 0.12);
-      border: 1px solid rgba(192, 132, 252, 0.25);
+      color: var(--accent-light);
+      background: var(--glow-color);
+      border: 1px solid var(--border-hover);
       padding: 2px 10px;
       border-radius: 99px;
     }
@@ -429,9 +429,9 @@
     }
     .source-chip-card:hover {
       background: rgba(30, 24, 60, 0.85);
-      border-color: rgba(192, 132, 252, 0.4);
+      border-color: var(--border-hover);
       transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(168, 85, 247, 0.25);
+      box-shadow: 0 12px 30px var(--glow-color);
     }
     .source-chip-top {
       display: flex;
@@ -442,11 +442,11 @@
       font-weight: 700;
     }
     .source-chip-domain {
-      color: #c084fc;
-      background: rgba(192, 132, 252, 0.12);
+      color: var(--accent-light);
+      background: var(--glow-color);
       padding: 2px 8px;
       border-radius: 99px;
-      border: 1px solid rgba(192, 132, 252, 0.2);
+      border: 1px solid var(--glow-color);
     }
     .source-chip-arrow { color: #94a3b8; font-size: 0.78rem; }
     .source-chip-title {
@@ -462,9 +462,9 @@
 
     /* 本期金句 Banner */
     .episode-insight-banner {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(15, 23, 42, 0.4) 100%);
-      border: 1px solid rgba(168, 85, 247, 0.25);
-      border-left: 4px solid #c084fc;
+      background: linear-gradient(135deg, var(--glow-color) 0%, rgba(15, 23, 42, 0.4) 100%);
+      border: 1px solid var(--glow-color);
+      border-left: 4px solid var(--accent-light);
       padding: 16px 20px;
       margin: 16px 24px 0 24px;
       border-radius: var(--radius-md);
@@ -472,7 +472,7 @@
       flex-direction: column;
       gap: 6px;
     }
-    .insight-badge { font-size: 0.72rem; font-weight: 800; color: #c084fc; letter-spacing: 0.03em; }
+    .insight-badge { font-size: 0.72rem; font-weight: 800; color: var(--accent-light); letter-spacing: 0.03em; }
     .insight-text { font-size: 0.88rem; font-weight: 600; color: #e2e8f0; line-height: 1.6; }
 
     /* 黑胶唱片 CD 纹理及光折射 (Conic Shimmer) */
@@ -566,7 +566,7 @@
       font-family: monospace;
       font-size: 0.72rem;
       font-weight: 800;
-      color: #c084fc;
+      color: var(--accent-light);
     }
     .sources-list-body li a:hover { color: var(--accent-light); }
     .sources-list-body li small {
@@ -605,9 +605,9 @@
       position: relative;
     }
     .transcript-row.host-a-bubble {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.07) 0%, rgba(15, 23, 42, 0.3) 100%);
-      border-left: 3.5 solid #c084fc;
-      border-color: rgba(168, 85, 247, 0.12);
+      background: linear-gradient(135deg, var(--glow-color) 0%, rgba(15, 23, 42, 0.3) 100%);
+      border-left: 3.5 solid var(--accent-light);
+      border-color: var(--glow-color);
     }
     .transcript-row.host-b-bubble {
       background: linear-gradient(135deg, rgba(6, 182, 212, 0.07) 0%, rgba(15, 23, 42, 0.3) 100%);
@@ -625,9 +625,9 @@
       z-index: 2;
     }
     .transcript-row.host-a-bubble.speaking {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.18) 0%, rgba(139, 92, 246, 0.08) 100%);
-      border-color: rgba(192, 132, 252, 0.4);
-      box-shadow: 0 12px 36px rgba(168, 85, 247, 0.25);
+      background: linear-gradient(135deg, var(--glow-color) 0%, var(--glow-color) 100%);
+      border-color: var(--border-hover);
+      box-shadow: 0 12px 36px var(--glow-color);
     }
     .transcript-row.host-b-bubble.speaking {
       background: linear-gradient(135deg, rgba(6, 182, 212, 0.18) 0%, rgba(14, 116, 144, 0.08) 100%);
@@ -637,15 +637,15 @@
 
     .speaker-meta { display: flex; flex-direction: column; align-items: center; width: 44px; flex-shrink: 0; position: relative; }
     .speaker-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; font-weight: 800; color: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.4); margin-bottom: 4px; border: 1.5px solid rgba(255,255,255,0.15); }
-    .speaker-avatar.host-a { background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); }
+    .speaker-avatar.host-a { background: linear-gradient(135deg, var(--host-a) 0%, var(--host-a) 100%); }
     .speaker-avatar.host-b { background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%); }
     .speaker-name { font-size: 0.68rem; font-weight: 700; letter-spacing: -0.01em; }
-    .speaker-avatar.host-a + .speaker-name { color: #c084fc; }
+    .speaker-avatar.host-a + .speaker-name { color: var(--accent-light); }
     .speaker-avatar.host-b + .speaker-name { color: #38bdf8; }
 
     .transcript-content-wrapper { flex: 1; display: flex; flex-direction: column; gap: 4px; }
     .speaker-role-badge { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.03em; margin-bottom: 2px; }
-    .speaker-role-badge.host-a { color: #c084fc; }
+    .speaker-role-badge.host-a { color: var(--accent-light); }
     .speaker-role-badge.host-b { color: #38bdf8; }
 
     .seek-play-icon { position: absolute; top: 16px; left: 16px; width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; opacity: 0; pointer-events: none; transition: opacity 0.2s, transform 0.2s; box-shadow: 0 4px 10px rgba(139,92,246,0.3); }
@@ -685,7 +685,7 @@
       pointer-events: auto;
     }
     .back-to-sync-btn:hover {
-      background: #8b5cf6;
+      background: var(--accent);
       box-shadow: 0 10px 30px rgba(139,92,246,0.55);
       transform: translateX(-50%) translateY(-2px);
     }
@@ -947,7 +947,7 @@
     .ab-toggle-label {
       font-size: 0.7rem;
       font-weight: 800;
-      color: #c084fc;
+      color: var(--accent-light);
       margin: 0 4px;
     }
     .ab-toggle-btn {
@@ -963,9 +963,9 @@
     }
     .ab-toggle-btn.active {
       color: #ffffff;
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.4) 0%, rgba(139, 92, 246, 0.25) 100%);
-      border: 1px solid rgba(192, 132, 252, 0.3);
-      box-shadow: 0 2px 8px rgba(168, 85, 247, 0.3);
+      background: linear-gradient(135deg, var(--glow-color) 0%, var(--glow-color) 100%);
+      border: 1px solid var(--border-hover);
+      box-shadow: 0 2px 8px var(--glow-color);
     }
 
     /* Version B 下方双栏网格 (B Lower Grid) */
@@ -993,10 +993,10 @@
       width: 100%;
       background: linear-gradient(135deg, rgba(20, 16, 42, 0.92) 0%, rgba(12, 8, 28, 0.96) 100%);
       backdrop-filter: blur(28px);
-      border: 1px solid rgba(168, 85, 247, 0.25);
+      border: 1px solid var(--glow-color);
       border-radius: var(--radius-lg);
       padding: 20px 24px;
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(168, 85, 247, 0.15);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 20px var(--glow-color);
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -1033,7 +1033,7 @@
     .console-time-row { display: flex; align-items: center; gap: 12px; }
     .console-ctrl-bar { display: flex; align-items: center; justify-content: center; gap: 16px; position: relative; }
     #console-progress-fill-b {
-      background: linear-gradient(90deg, #a855f7 0%, #d946ef 50%, #38bdf8 100%);
+      background: linear-gradient(90deg, var(--host-a) 0%, #d946ef 50%, #38bdf8 100%);
       box-shadow: 0 0 10px rgba(217, 70, 239, 0.7);
     }
 
@@ -1059,14 +1059,14 @@
 
     /* 多彩亮色 Pills 微光系统 */
     .voice-pill-btn.pill-variant-professional {
-      border-color: rgba(168, 85, 247, 0.3);
+      border-color: var(--glow-color);
       color: #e9d5ff;
     }
     .voice-pill-btn.pill-variant-professional.active {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.4) 0%, rgba(147, 51, 234, 0.3) 100%);
-      border-color: #c084fc;
+      background: linear-gradient(135deg, var(--glow-color) 0%, var(--glow-color) 100%);
+      border-color: var(--accent-light);
       color: #ffffff;
-      box-shadow: 0 0 14px rgba(192, 132, 252, 0.5);
+      box-shadow: 0 0 14px var(--glow-color);
     }
 
     .voice-pill-btn.pill-variant-lively {
@@ -1107,10 +1107,10 @@
       color: #e0e7ff;
     }
     .voice-pill-btn.pill-variant-serious.active {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.4) 0%, rgba(79, 70, 229, 0.3) 100%);
-      border-color: #818cf8;
+      background: linear-gradient(135deg, var(--glow-color) 0%, var(--glow-color) 100%);
+      border-color: var(--accent-light);
       color: #ffffff;
-      box-shadow: 0 0 14px rgba(129, 140, 248, 0.5);
+      box-shadow: 0 0 14px var(--glow-color);
     }
 
     .voice-pill-btn.pill-variant-mature {
@@ -1136,26 +1136,26 @@
 
     body.theme-variant-b .date-pill {
       background: rgba(255, 255, 255, 0.04) !important;
-      border: 1px solid rgba(168, 85, 247, 0.15) !important;
+      border: 1px solid var(--glow-color) !important;
     }
 
     body.theme-variant-b .date-pill:hover {
-      background: rgba(168, 85, 247, 0.15) !important;
-      border-color: rgba(192, 132, 252, 0.4) !important;
+      background: var(--glow-color) !important;
+      border-color: var(--border-hover) !important;
     }
 
     body.theme-variant-b .date-pill.active {
-      background: linear-gradient(135deg, #9333ea 0%, #6366f1 100%) !important;
-      border-color: #c084fc !important;
-      box-shadow: 0 0 15px rgba(168, 85, 247, 0.5) !important;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent) 100%) !important;
+      border-color: var(--accent-light) !important;
+      box-shadow: 0 0 15px var(--glow-color) !important;
     }
 
     
 
     body.theme-variant-b .transcript-para.active {
-      background: rgba(168, 85, 247, 0.15) !important;
-      border-left: 3px solid #c084fc !important;
-      box-shadow: 0 0 12px rgba(192, 132, 252, 0.25) !important;
+      background: var(--glow-color) !important;
+      border-left: 3px solid var(--accent-light) !important;
+      box-shadow: 0 0 12px var(--border-hover) !important;
     }
 
     body.theme-variant-b .card-internal-header {
@@ -1163,9 +1163,9 @@
     }
 
     body.theme-variant-b .header-badge {
-      color: #c084fc !important;
-      background: rgba(192, 132, 252, 0.15) !important;
-      border: 1px solid rgba(192, 132, 252, 0.3) !important;
+      color: var(--accent-light) !important;
+      background: var(--glow-color) !important;
+      border: 1px solid var(--border-hover) !important;
     }
 
     /* B 版专属双栏并排布局 (Variant B Split Screen Layout) */
@@ -1196,11 +1196,27 @@
     }
 
     /* B 版专属深邃黑底主题 (Variant B Pure Dark/Black Theme) */
+    
+    /* B 版专属深邃黑底主题 (Variant B Pure Dark/Black Theme) */
     body.theme-variant-b {
+      --bg: #050505;
+      --bg-gradient: none;
+      --surface: rgba(20, 20, 20, 0.9);
+      --surface-hover: rgba(35, 35, 35, 0.95);
+      --accent: #f1f5f9;
+      --accent-gradient: linear-gradient(135deg, #f1f5f9 0%, #94a3b8 100%);
+      --accent-light: #cbd5e1;
+      --border: rgba(255, 255, 255, 0.1);
+      --border-hover: rgba(255, 255, 255, 0.25);
+      --glow-color: rgba(255, 255, 255, 0.05);
+      --host-a: #cbd5e1;
+      --host-b: #94a3b8;
+      
       background: #050505 !important;
       background-image: none !important;
       color: #e2e8f0 !important;
     }
+
 
     body.theme-variant-b .app-header, 
     body.theme-variant-b header {
@@ -1570,7 +1586,7 @@
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-24 21:40:52</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-24 21:45:43</p></div>
   </div>
 
   <script>
