@@ -434,7 +434,7 @@
         return '<div class="sources-raw-body">' + htmlStr + '</div>';
       }
       var cardsHtml = '<div class="source-chips-grid">';
-      links.forEach(function(a) {
+      links.forEach(function(a, index) {
         var href = a.getAttribute('href') || '#';
         var text = a.textContent || href;
         var domain = 'source';
@@ -445,7 +445,7 @@
         cardsHtml += 
           '<a href="' + esc(href) + '" target="_blank" class="source-chip-card">' +
             '<div class="source-chip-top">' +
-              '<span class="source-chip-icon">🌐</span>' +
+              '<span class="source-chip-num">[' + (index + 1) + ']</span>' +
               '<span class="source-chip-domain">' + esc(domain) + '</span>' +
               '<span class="source-chip-arrow">↗</span>' +
             '</div>' +
