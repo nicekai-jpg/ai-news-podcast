@@ -1189,8 +1189,9 @@
       body.theme-variant-b .main-layout {
         display: grid !important;
         grid-template-columns: 320px 1fr !important;
-        grid-template-rows: auto 1fr !important;
+        grid-template-rows: auto auto 1fr !important;
         grid-template-areas: 
+          "calendar calendar"
           "sidebar script"
           "sidebar news" !important;
         gap: 28px !important;
@@ -1229,9 +1230,12 @@
         display: block !important;
       }
       body.theme-variant-b #report-panel-body {
-        display: grid !important;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important;
-        gap: 20px !important;
+        display: block !important;
+      }
+      body.theme-variant-b #panel-podcast .date-selector-wrap {
+        grid-area: calendar;
+        display: block !important;
+        margin-bottom: 24px;
       }
       body.theme-variant-b #panel-report .date-selector-wrap,
       body.theme-variant-b .magazine-header {
@@ -1280,7 +1284,40 @@
       box-shadow: none !important;
     }
     
+
+    body.theme-variant-b .report-content {
+      background: rgba(18, 18, 22, 0.4) !important;
+      backdrop-filter: blur(40px) !important;
+      border: 1px solid var(--border) !important;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5) !important;
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      color: #e2e8f0;
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+    
+    body.theme-variant-b .report-content h2 {
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-top: 24px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    body.theme-variant-b .report-content ul, 
+    body.theme-variant-b .report-content ol {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    
+    body.theme-variant-b .report-content p {
+      margin-bottom: 16px;
+    }
+
     body.theme-variant-b .app-header {
+
       background: rgba(10, 10, 12, 0.8) !important;
       border-bottom: 1px solid var(--border) !important;
       backdrop-filter: blur(20px);
