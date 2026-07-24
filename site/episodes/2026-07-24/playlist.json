@@ -1,0 +1,605 @@
+{
+  "episode_id": "2026-07-24",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友们大家好，欢迎收听AI每日先锋，今天是2026年7月24日。我是苏晴。",
+      "start": 1.0,
+      "duration": 6.269,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 7.718,
+      "duration": 1.785,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航你有没有感觉，今年AI圈的风向跟去年完全不一样了？ 去年大家还在比谁的参数多、谁的跑分高，今年全都在聊落地、聊场景、聊怎么真真白银把AI用起来。",
+      "start": 10.0,
+      "duration": 16.999,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你这观察还挺敏锐。 说白了，大模型这东西经过这两三年的狂奔，该出的模型都出得差不多了，行业发现光有模型根本没用，得让它真正跑在工厂里、跑在机器人身上、跑在企业业务流程里才能产生价值。所以现在整个赛道其实是从\"模型之争\"全面转向\"落地之战\"了。",
+      "start": 27.452,
+      "duration": 25.271,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "对，所以我看今天这堆新闻，甭管是具身智能、企业级AI治理还是算力工厂，其实全都围绕这个主题。",
+      "start": 53.128,
+      "duration": 9.491,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "没错，咱一条一条聊。",
+      "start": 63.052,
+      "duration": 2.046,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "先说个让我特别兴奋的， 它石智航发了AWE 3.5，号称\"具身原生大脑\"。",
+      "start": 65.563,
+      "duration": 9.012,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你注意啊，这个名字信息量很大。 \"具身原生\"四个字，意味着它不是那种给通用大模型套个机器人外壳的做法，而是从一开始就是为物理世界、为机器人身体专门设计的。",
+      "start": 75.037,
+      "duration": 14.909,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "我看到他们说这是首次让一台机器人在多任务实战里跑通了具身Scaling Law。",
+      "start": 90.397,
+      "duration": 7.271,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "这句话的分量你得仔细品。 Scaling Law这个概念最早是GPT那一代大模型带火的，简单说就是\"参数越大、数据越多、算力越强，模型表现就越好\"的那个规律。当年GPT就是跨过了Scaling门槛才有后来ChatGPT的爆发。 现在具身智能也跨过这道坎了，意味着机器人也能像大模型一样\"喂数据就能变强\"。",
+      "start": 98.168,
+      "duration": 27.511,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "那不就意味着以后工厂里那些拧螺丝、搬箱子的活儿，真能被通用机器人干了？",
+      "start": 126.117,
+      "duration": 6.531,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "意思差不多。以前机器人基本是个\"单任务选手\"，你让它拧螺丝它就只会拧螺丝，换个任务就得重新训练、重新写代码。而AWE 3.5据说能在多任务实战里实现Scaling效应，数据越多、模型越大，机器人的泛化能力也跟着水涨船高。",
+      "start": 133.109,
+      "duration": 20.83,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "这么说的话，AGI的下一站战场可能真不在手机屏幕里了，而是工厂车间、家里的客厅？",
+      "start": 154.384,
+      "duration": 10.623,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "我觉得这个判断挺靠谱的。屏幕里的智能终究是虚拟的，但具身智能能动手、能搬东西、能跟物理世界交互。一旦Scaling Law在这个领域也成立，机器人的进化速度会非常恐怖。",
+      "start": 165.481,
+      "duration": 14.343,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "这想想就有点赛博朋克了。话说回来，这个AWE 3.5是在WAIC上发布的吧？",
+      "start": 180.251,
+      "duration": 9.796,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "对，世界人工智能大会上亮相的。他们自己都说WAIC最硬核的展台不在大模型展区，而在工业深水区。这话虽然有点凡尔赛，但确实是这个意思。",
+      "start": 190.511,
+      "duration": 11.861,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "哈哈行，那咱接着聊下一个。科大讯飞发了个叫\"星火Token Factory\"的东西，这个名字就特别有画面感。",
+      "start": 202.789,
+      "duration": 10.642,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "Token工厂嘛，你可以把它想象成AI能力的流水线。现在的企业不再满足于\"有没有大模型\"这个问题了，他们的核心痛点早就变成了\"怎么用好、怎么管好\"。",
+      "start": 213.867,
+      "duration": 13.864,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "我理解是当企业用大模型的时候，不再是\"一个模型包打天下\"，而是要根据不同任务、不同成本、不同响应速度需求，灵活调度不同的模型？",
+      "start": 228.148,
+      "duration": 13.41,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "完全正确，这就是它核心押注的方向，叫\"模型路由与治理底座\"。前面是企业各种各样的业务请求，后面可能挂了通义、星火、还有一堆开源模型一大堆。这个系统就像个智能调度中心，根据任务复杂度、延迟要求、预算自动匹配最合适的模型。",
+      "start": 242.054,
+      "duration": 20.787,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "我跟你说，这个东西太实用了。企业花大价钱接入了各种模型API，但实际上80%的任务根本用不着顶级模型，统统上大模型那成本根本扛不住。",
+      "start": 263.253,
+      "duration": 13.211,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "没错。而且\"治理\"这部分更关键——企业最怕什么？数据安全、合规审计、模型输出质量不稳定。这些事如果每个业务线自己搞一遍，那简直是个灾难。",
+      "start": 276.943,
+      "duration": 11.949,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "所以讯飞这是想把AI能力做成水电煤那种基础设施？",
+      "start": 289.324,
+      "duration": 5.312,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "比喻非常贴切。竞争主战场已经从参数军备竞赛悄悄切到了企业级精细化运营的新阶段，谁能把基础设施搭好，谁就能吃到这波红利。",
+      "start": 295.104,
+      "duration": 11.929,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "对了还有几件快讯也值得聊两句。第一个，趋境科技要在钱江世纪城建一个万卡级的AI Token工厂。",
+      "start": 307.523,
+      "duration": 9.665,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "万卡集群这个词去年听起来还挺震撼，今年就开始\"通货膨胀\"了。但你注意啊，\"高品质\"这三个字才是重点。",
+      "start": 317.665,
+      "duration": 12.34,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "怎么讲？",
+      "start": 330.423,
+      "duration": 0.522,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "万卡不难，难的是让一万张卡高效协同、不掉链子、互相不打架。真正的门槛是网络拓扑、散热设计、容错机制这些工程细节。趋境敢说五年内建成，说明华东的算力版图又要添一枚重兵了。",
+      "start": 331.384,
+      "duration": 17.347,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "这也说明一件事——AI工业化大生产的时代真的来了。算力不再是研究所的奢侈品，而是城市级别的基建。",
+      "start": 349.143,
+      "duration": 9.839,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "说到开源生态，LeRobot v0.6.0也发布了，你关注到了吗？",
+      "start": 359.475,
+      "duration": 5.878,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "我看到了，打通了\"想象—评估—改进\"这个机器人学习闭环。这个听起来有点玄乎。",
+      "start": 365.762,
+      "duration": 9.839,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "你可以这么理解：以前机器人学新技能基本靠\"死记硬背\"，人类演示一遍，它就照葫芦画瓢，没有举一反三的能力。现在v0.6.0加入了一个\"想象\"环节，机器人能在脑子里先模拟一遍动作会产生什么后果，然后再决定要不要真动手。",
+      "start": 376.088,
+      "duration": 20.351,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "这不就是人类干活的模式吗？先在脑子里过一遍再行动。",
+      "start": 396.881,
+      "duration": 7.793,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "完全正确。这种\"世界模型\"的雏形一旦开源，对整个具身生态的推动会非常大，门槛一下子降低好多。",
+      "start": 405.134,
+      "duration": 8.882,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "最后一条，Hugging Face跟Cerebras联手把Gemma 4接入了实时语音AI。",
+      "start": 414.487,
+      "duration": 6.661,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "这个组合挺有意思。Cerebras是搞晶圆级芯片的那家，速度快得离谱；Hugging Face是开源社区的老大哥；Gemma又是谷歌的轻量级模型家族。三家联手，意味着低延迟语音交互体验要上一个新台阶。",
+      "start": 421.56,
+      "duration": 16.651,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "我特别关心\"实时\"两个字。现在跟AI说话总感觉还是有半秒到一秒的延迟，特别出戏。",
+      "start": 438.656,
+      "duration": 9.273,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "是啊，这次如果真能把端到端延迟压到人类对话的自然节奏，那语音AI的应用场景会彻底打开，从智能客服到陪伴机器人再到实时翻译，全都得重新洗牌。",
+      "start": 448.384,
+      "duration": 16.041,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "好的，那今天节目就到这里。听众朋友们，咱们明天见。",
+      "start": 464.865,
+      "duration": 4.354,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "明天见。",
+      "start": 469.697,
+      "duration": 0.74,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
