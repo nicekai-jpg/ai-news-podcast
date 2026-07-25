@@ -1,0 +1,3532 @@
+{
+  "thesis": "当100%开源！吴恩达做了个个人...遇上实际落地，我们看到了什么",
+  "stories": [
+    {
+      "cluster_id": 0,
+      "representative_title": "100%开源！吴恩达做了个个人桌面Agent",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "开源、隐私、本地优先、模型无关"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/07/460892.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "cf2f8df7da9c057a",
+          "title": "100%开源！吴恩达做了个个人桌面Agent",
+          "link": "https://www.qbitai.com/2026/07/460892.html",
+          "normalized_link": "https://www.qbitai.com/2026/07/460892.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-07-25T12:35:34+00:00",
+          "summary": "开源、隐私、本地优先、模型无关",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> 100%开源！吴恩达做了个个人桌面Agent 文婷 2026-07-25 20:35:34 来源： 量子位 文婷 发自 凹非寺 量子位 | 公众号 QbitAI AI教育大佬吴恩达也下场做AI同事了。 不只是陪你聊天，也不只是给你列一个待办清单。 而是你说一句“帮我准备客户brief”，它就能跨文件、日历、Slack这些日常工具自己干活，最后把整理好的文档、写好的消息、更新后的日程交到你手上。 项目名为 OpenWorker ，现已在GitHub开源，采用MIT License。 OpenWorker主打四件事： 开放 、 本地优先、隐私保护 以及 模型无关 。 吴恩达在推上表示，OpenWorker已经可以在Mac上运行，Windows版本也即将上线。 它不绑定任何特定模型。 你只需带上自己的 API Key，即可接入 GPT 5.6 Sol、Claude Fable、Gemini 3.6，或是通过 Ollama 运行 Kimi、GLM、DeepSeek、Inkling 等开放权重模型。 同时， 你的数据只会保留在你自己的设备上 ，除非你主动选择使用特定的 LLM 服务商或第三方集成功能。 吴恩达在X上对它的定位很直接： 这是一个open-source agent ，不只是和你聊天，而是deliver finished work。 直抒胸臆就是： 别光陪我聊天，帮我把活干了。 这很吴恩达。 过去几年，他一直在强调AI Agent和工作流的重要性。 这次OpenWorker开源，某种意义上也把这个判断又往前推了一步：Agent的下一站，不只在浏览器里，也不只在代码编辑器里，而是在我们的桌面上。 那么，这个OpenWorker到底能干什么？为什么它值得关注？真正的看点在哪？ 一起来看 ： 吴恩达，开始造AI同事了 OpenWorker的一大看点，在于其开源者是 吴恩达 。 他是 DeepLearning.AI创始人 、 Coursera联合创始人 ，也是 斯坦福大学计算机科学系兼职教授 。 此前，他曾牵头创立 Google Brain项目 ，并担任 百度首席科学家 。 除了学术和产业履历， 吴恩达在AI教育领域的影响力同样突出。 2011年，吴恩达在斯坦福开设了一门在线机器学习课程，吸引逾10万名学生参与。 次年，他与Daphne Koller联合创办了全球知名慕课平台（MOOC） Coursera 。 据其个人官网数据， 目前已有超过700万人通过他的课程学习人工智能。 因此，OpenWorker不是某个开发者随手放到GitHub上的实验项目。 吴恩达这一次瞄准的，仍然是 降低AI的使用门槛。 只不过， 过去交付的是课程； 这一次，交付的是一个AI同事。 不给建议，直接给成品 OpenWorker与普通聊天机器人最直接的区别，可以用 “交付” 一词概括。 之前使用大模型，通常需要经历一条漫长的任务链，即先让AI分析需求，再让它生成文本，然后自己查找文件、核对数据、调整格式，最后打开Slack、邮箱或者日历，把结果发出去。 在这个过程中，AI虽然参与了工作，但我们仍然需要在不同软件之间来回倒腾、收拾残局。 现在， OpenWorker想把这条链路接起来。 我们只需要告诉它希望得到什么结果，它便会自行拆解任务，调用电脑中的文件、终端和已连接的应用，完成具体操作，最后交付一份能够打开、修改和分享的文件。 比如让它准备一份客户简报，它不只会列出简报应该包含哪些内容，而是会寻找相关资料、整理客户信息，再生成完整文档。 让它检查项目进度，它也可以前往Jira和GitHub搜集信息，而不是等着用户把所有背景材料一段段喂给它。 OpenWorker项目主页显示，它可以 连接超过25种工具 ，包括GitHub、Slack、Jira、Notion、Linear、HubSpot、Outlook、Gmail、Google Calendar等，能调用本地文件与终端。 并且，如果你觉得这25种工具不够用， 还可以通过MCP继续为它接入更多的工具。 此外，OpenWorker还能与大模型相互配合、共同执行 定时任务 。 比如每天早上定时整理一份信息简报，每周自动生成工作报告，或者持续关注某个Slack频道等，都可以交给它处理。 这么看下来，OpenWorker更像是给大模型配上了办公桌、电脑和一串工具账号。 大模型负责思考，OpenWorker负责让它真正动手。 听起来真像一对配合默契的工作伙伴！ 能干活，也能主动请示、不自...",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "representative_title": "半价干翻Fable 5？Opus 5实测炸场，网友：差点从椅子上摔下来",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "模型变强，Claude Code系统提示词都精简了"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/07/460253.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "de72e6fcf4d06c40",
+          "title": "半价干翻Fable 5？Opus 5实测炸场，网友：差点从椅子上摔下来",
+          "link": "https://www.qbitai.com/2026/07/460253.html",
+          "normalized_link": "https://www.qbitai.com/2026/07/460253.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-07-25T12:11:39+00:00",
+          "summary": "模型变强，Claude Code系统提示词都精简了",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> 半价干翻Fable 5？Opus 5实测炸场，网友：差点从椅子上摔下来 克雷西 2026-07-25 20:11:39 来源： 量子位 模型变强，Claude Code系统提示词都精简了 克雷西 发自 凹非寺 量子位 | 公众号 QbitAI 泄露了一路的Opus 5，刚正式登场就被网友玩疯了。 今天凌晨，Anthropic正式把这款新模型放了出来。 多项硬核评测上，它追平甚至反超了Fable 5，价格却只有一半。 Frontier-Bench上，它反超了包括Fable 5在内的所有对手，性能是上一代Opus 4.8的两倍还多。 CursorBench最高努力设置下，也贴近定价两倍的Fable 5峰值成绩，只差0.5%。 官方给出的demo里，有一个能实时显示气流路径的风洞，气流怎么绕过去看得清清楚楚。 还有一张能360度旋转的3D细胞结构图，连内质网上密密麻麻的核糖体都画了出来。 更耐人寻味的是，为了配上这代模型的判断力，Anthropic把自己给Claude Code写的系统提示词删掉了八成，成绩却没掉。 之前泄露的时候有网友感叹Opus 5简直就像fable 6，现在Opus 5正式发布之后，有人更赞同这个说法了。 网友已开启疯玩模式 Opus 5上线不过半天，网友们就已经开启了疯玩模式，接下来就来看看网友们都整出了什么活。 博主am.will本来觉得Opus 5不过是一个便宜版Fable，测完直接改口，说自己「大错特错」。 他只用了5倍Max订阅额度的27%，就让Opus 5搭出了他见过最好的一个Rocket League克隆版，游戏能玩，代码还开源在了评论区。 类似的反差，也出现在另一段动画演示里。 博主OmedTheVibeCoder做完测完一个竞技场对决的画面，评价从「以为会接近」变成「根本不是接近，是完全甩开了它」。 开头看到的「就是fable 6」的评价，正是看了这个结果说出来的。 后来他有放出了和其他模型的对比，并补充说自己「差点从椅子上摔下来」，因为Opus 5 Max直接打破了他原来的测试标准。 他表示，这已经不像是代码生成的画面，倒像是把提示词丢进了图像生成器，出来的却是一整张能走进去的地图。 另一位博主Alex Ermolov搭建的是滑雪场景，他给出的结论是「和Fable 5打平，甩开我测过的所有其他模型」，第一遍生成就没有明显穿模，滑行物理也对。 Minecraft复刻测试里，Chetaslua更是把这次生成称为「迄今为止最好的一次创作」。 把它接入到Unity，就像给游戏开了挂一样。 Opus 5对物理规律也拿捏的很精准，在这个连环机关场景当中，每个缓解都和真实规律严丝合缝。 Noema则给了Opus 5一个「狠」提示词，要求只用一个HTML文件，做出一整条从1945年变化到2055年的街区，建筑、车辆、店铺、人群、灯光和音效全部跟着年份走。 即使effort从max降到high，Opus 5的结果也把Fable 5、GPT-5.6 Sol都甩在了后面，Noema给的评价只有三个单词，「是个怪物」。 还有阿波罗任务的点火升空场景，从火箭喷焰到实时刷新的遥测数据，几乎全靠程序生成，没有拼现成素材库。 CAD设计上，网友也是直接给它封神，表示它在很多机械设计任务当中表现超越了fable。 教育场景上，开发者Matt Shumer给@AlphaSchool做了个实时AI家教原型。 Opus 5负责对话和方向判断，配合一个专门训练的小型世界模型做实时渲染，虽然还很粗糙，已经能一边讲分数概念一边在画板上同步画图。 另外我自己也试着让Opus 5（Low Effort）写了一个三羧酸循环过程的3D网页动画演示。 它的核心思路是只描述化学过程，把几何计算交给程序完成。 具体来说，Opus 5针对每幕反应只写原子清单与键表，每根键带有反应前后两个键级，由此同时定义底物与产物。 三维坐标交则由几何优化器现场求解，按元素和键级取标准键长，按配位数推杂化得到键角，再加上非键排斥与平面性约束迭代收敛。 产物构型则以底物坐标为起点再优化一次，使动画只保留必要位移，离去的小分子则自动被推开飞散。 最后，Opus 5将代码单独抽出，校验键长与键角，确认无误后再用Three.js渲染成球与圆柱。 最终交付的成果不仅正确体现反应过程，键长、键角等物质的真实结构信息，也都是按照实际渲染的。 atomic.chat则用三个破坏场景的题目，做了一次更细的横向对比，并且比较了成本。 同样是龙卷风卷起整片场...",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "representative_title": "具身智能的「ChatGPT时刻」还没到，科沃斯先把机器人拆开了",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "不做人形，抓住真实用户需求"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/07/460234.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "4604a6219c848c0f",
+          "title": "具身智能的「ChatGPT时刻」还没到，科沃斯先把机器人拆开了",
+          "link": "https://www.qbitai.com/2026/07/460234.html",
+          "normalized_link": "https://www.qbitai.com/2026/07/460234.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-07-25T11:54:44+00:00",
+          "summary": "不做人形，抓住真实用户需求",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> 具身智能的「ChatGPT时刻」还没到，科沃斯先把机器人拆开了 克雷西 2026-07-25 19:54:44 来源： 量子位 克雷西 发自 苏州 量子位 | 公众号 QbitAI 做扫地机器人的科沃斯，把旗下一款具身智能机器人整个开源了。 这条路，科沃斯走了十四年。 2012年，它推出了全球首款家庭服务机器人「亲宝」，是最早一批入局家庭服务机器人赛道的公司。 后续迭代的公共服务机器人「旺宝」，广泛落地银行、政务大厅等场景，攒下了海量真实场景数据、工程落地经验和规模化交付能力。 这些积累，后来成了科沃斯深耕具身智能领域的产业根基。 现在，它在苏州挂牌成立了「八界开源智创空间」，面向开发者、高校师生和科研人员，以及有二次开发需求的企业用户，免费开放这套平台的使用权限，从硬件到底层系统全部涵盖。 学生可以直接改代码验证自己的想法，研究者可以拿它做课题实验，创业团队可以用八界快速搭建产品原型。 支撑这套平台的，是摆在空间中央的一台机器人，它叫「八界」，没有腿、没有脸、也没有五官，一点也不「像人」。 回望过去两年，具身智能这个赛道里最不缺的就是「像人」的机器人，人形的骨架、灵巧的手指、拟人的步态……几乎成了这个行业默认的审美。 但这台机器人的创造者，偏偏不这么认为。 对此，科沃斯集团董事长钱东奇表示： Robot这个概念最早跑出来的时候，它就是干苦力的。干苦力的，不一定是人。 我们在考虑这些问题的时候，要解决的是它切入家庭到底能干什么，而不是它的外观是什么样子。 八界机器人，全面开源 八界是科沃斯今年推出的一款具身智能机器人。科沃斯做了二十几年地面清洁机器人，这一次把这套技术从平面扩展到立体空间。 它有六个自由度的机械臂，臂展800毫米，覆盖范围广，上可抵达高处、下可拾取地上的东西。 它还配了一个静音移动底盘，走起来听不出声响，它的身体能升降44厘米，高处低处都够得着。 这具身体里塞进了两颗双RK3588融合SoC，可以通过PCI-E扩展算力在本地带动7B参数的大模型，因此八界不用把每一次判断都传回云端等结果。 围绕这款机器人，科沃斯在苏州建了「八界开源智创空间」，把这套平台的使用权限整个打开，摆到开发者和学生面前。 具体来说，硬件层的六自由度机械臂、静音底盘、二指灵巧夹爪、UV清洁装置、载物托盘，软件层的底层系统源码、本体嵌入AI智能体OpenClaw和Hermes，全是开发者可以直接拿到手里的东西。 但拿到手里只是第一步，八界给了四条并列的路，方便不同背景的人各自找到能上手的地方。 不擅长写代码的人，可以直接用一句自然语言让AI智能体去执行任务，他们不需要学习复杂的编程语言，低门槛的体验因此成为可能。 有一定开发基础的人，可以用C++或Python的SDK，直接调用机械臂、夹爪这些底层的原子能力，拼出自己想要的动作组合。 真正想往深处走的科研人员，可以利用SSH和串口等工具，通过自定义系统服务和定制ros2节点等多种方式，实现算法验证和自训练的模型部署，定义各种特色场景事例，让科研人员的学术成果能够得到快速的验证与应用。 当然一些有二次开发需求的企业，也可以直接基于八界的开源技术底座做定制，开发出不同的可商业化落地的场景。 几条路互不打架，一个刚学编程的学生和一个正在做课题的教授，都能在同一台机器人上找到各自够得着的入口。 但能调用出动作，只是够用，调用得好不好，是另一回事。 钱东奇提到了一个容易被参数表掩盖的地方—— 一台机器人能不能拿起一个水杯，这是能不能完成任务的问题； 机器人拿起水杯的时候力道够不够轻、姿势够不够自然，这才是决定它好不好用的地方，也是这次开源真正想留给开发者去打磨的空间。 这背后是科沃斯二十多年做家庭服务机器人攒下的经验。 这些设计当中，很多地方的差异连用户自己都说不出来，但用过之后，就能感觉出不一样。 比如静音，科沃斯给底盘和升降机构都做了静音处理，开发者翻参数表可能不会多看一眼，但每天真正在用它的人，能分辨出机器人走过身边时那点声音差异。 再 比如清洁。机器人反复抓取不同的物品，夹爪上容易留下卫生死角，科沃斯直接在夹爪上集成了UV清洁功能，它每完成一次任务就自动清洁一次，用户不用多做任何操作。 又 比如安全。科沃斯还在机械臂和夹爪上加了力检测，它碰到障碍物时能及时感知并收住力道。 就算遇到突然断电这种极端情况，机器也有一套缓降策略，不会让机械臂直接砸下来。 这些细节堆在一起，是科沃斯二十多年攒下的对「家里到底需要什么」的理解。 硬件、软件，连这些藏在细节里的设计都打开了，...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 27,
+      "representative_title": "I tried out OpenAI’s new AI keypad — which will be fun for some coders and slightly mystifying to everyone else",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "OpenAI's fancy new AI keypad will be a lot of fun for some, while many others are probably not going to touch it"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/07/24/i-tried-out-openais-new-ai-keypad-which-will-be-fun-for-coders-and-slightly-mystifying-to-everyone-else/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "68ab8224881300e5",
+          "title": "I tried out OpenAI’s new AI keypad — which will be fun for some coders and slightly mystifying to everyone else",
+          "link": "https://techcrunch.com/2026/07/24/i-tried-out-openais-new-ai-keypad-which-will-be-fun-for-coders-and-slightly-mystifying-to-everyone-else/",
+          "normalized_link": "https://techcrunch.com/2026/07/24/i-tried-out-openais-new-ai-keypad-which-will-be-fun-for-coders-and-slightly-mystifying-to-everyone-else",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-07-25T00:23:11+00:00",
+          "summary": "OpenAI's fancy new AI keypad will be a lot of fun for some, while many others are probably not going to touch it.",
+          "full_text_snippet": "OpenAI launched its first piece of hardware last week — a fancy little keypad built to pair with ChatGPT. Micro, which was developed in collaboration with specialty keyboard designer Work Louder, is essentially an artisanal workplace novelty that many tech enthusiasts will love and that may leave everyone else a little puzzled. OpenAI’s entrance into the hardware market hasn’t arrived without drama. Several weeks ago, Apple sued the AI lab and accused it of trade theft — kicking off what’s certain to be a long-simmering legal battle. Meanwhile, news of another smart home product in development at OpenAI has also raised eyebrows, as the supposed device — which is being built to pair with ChatGPT — was reportedly developed by former Apple engineers. Until the legal battle works itself out and OpenAI’s broader hardware ambitions materialize, the most the startup has to offer is Micro — a funky little keypad clearly engineered to delight the tech industry’s code monkeys. OpenAI sent TechCrunch a Micro test unit. The first big thing you notice when initially handling the keypad is that it’s a sturdy little device — enough so that if the AI accessory thing doesn’t end up working out, it could easily double as a paperweight. The other thing you might notice (and I am not the only one to point this out) , is that the packaging — an immaculate white box with a sleek, clean aesthetic — is pretty Apple-coded. Make of that what you will. The keypad’s layout involves six frosted “agent” keys at the top of the pad, which can be customized to carry out specific tasks within ChatGPT or its agentic coding tool Codex. Below them are six command keys, which can be used to control those programs. You can pair your Micro with your computer either through a Bluetooth connection or a USB cable. Image Credits: Lucas Ropek/TechCrunch Perhaps the most convenient thing Micro offers is a button for voice dictation — meaning you simply tell the app what you want done and it will get busy wor...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 28,
+      "representative_title": "Prentis, new AI lab co-founded by Reid Hoffman, Mark Pincus in talks to raise $100M",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "The neolab is betting that automating routine computer tasks will soon outpace coding as AI's biggest use case"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/07/24/prentis-new-ai-lab-co-founded-by-reid-hoffman-mark-pincus-in-talks-to-raise-100m/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8b6e02c799c653f9",
+          "title": "Prentis, new AI lab co-founded by Reid Hoffman, Mark Pincus in talks to raise $100M",
+          "link": "https://techcrunch.com/2026/07/24/prentis-new-ai-lab-co-founded-by-reid-hoffman-mark-pincus-in-talks-to-raise-100m/",
+          "normalized_link": "https://techcrunch.com/2026/07/24/prentis-new-ai-lab-co-founded-by-reid-hoffman-mark-pincus-in-talks-to-raise-100m",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-07-24T22:25:58+00:00",
+          "summary": "The neolab is betting that automating routine computer tasks will soon outpace coding as AI's biggest use case.",
+          "full_text_snippet": "Prentis , a new AI research lab focused on computer use models, co-founded by serial entrepreneur Ritankar Das and tech heavyweights Reid Hoffman and Mark Pincus, is in talks to raise $100 million at a $1 billion valuation, according to two people familiar with the discussions. Launched in April, Prentis is training models to learn how office workers navigate routine workflows across documents and systems, with the goal of building AI agents that can control computers to automate those tasks. Prentis will ostensibly develop agents tailored to these customers’ needs, such as handling insurance claims and automating customs duty refund exceptions without needing a human to hunt down paperwork. The startup has already signed contracts worth up to $50 million with several customers, including healthcare management service organization, a manufacturer, and goods and clothing manufacturers, the two people familiar with the discussions tell TechCrunch. This echoes investor materials obtained by TechCrunch that predict an estimated $75 million annualized run rate by the third quarter of this year. (Prentis’ pitch deck notes those figures reflect estimated annualized value based on a contracted fee equal to 20% of savings realized, not recognized revenue, and are “performance-dependent and subject to final execution.”) By its own account, Prentis says its Hive-32B model outperforms rivals, including OpenAI’s GPT-5.4 and Anthropic’s Claude Opus 4.6, on two computer-use benchmarks: WindowsAgentArena, which measures end-to-end task completion on real Windows applications, and ScreenSpot-v2, which tests a model’s ability to locate the right on-screen control. In its pitch deck, the company argues its edge comes from running a much smaller, cheaper model. In fact, it claims roughly 10 times lower cost per task than frontier APIs, saying it’s more economical to deploy across everyday workflows. TechCrunch hasn’t independently verified the company’s benchmark results. The startu...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 46,
+      "representative_title": "Show HN: Yorishiro – a macOS terminal where AI agents live",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（20 points, 4 评论）by hakumei"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://github.com/sktkkoo/Yorishiro"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "73b023f96a885945",
+          "title": "Show HN: Yorishiro – a macOS terminal where AI agents live",
+          "link": "https://github.com/sktkkoo/Yorishiro",
+          "normalized_link": "https://github.com/sktkkoo/Yorishiro",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-22T15:33:16+00:00",
+          "summary": "HN 热门讨论（20 points, 4 评论）by hakumei",
+          "full_text_snippet": "A terminal your AI inhabits. Yorishiro is a new kind of terminal that gives your AI a body — and a sense of presence. PV_Latest.mp4 When the agent is deep in thought, its gaze wanders. When an error appears, its face reacts immediately. When it needs your approval, the room's lighting lets you know. During a long-running process, instead of a spinner, someone is standing there. In Yorishiro, the inhabitant can reshape its environment in real time: changing the lighting, switching scenes, and rearranging the UI. You can operate that same environment directly. The inhabitant and the user share a single environment. Yorishiro is also self-modifiable. Nearly everything beyond the core can be persistently extended or changed through units called packs. Through conversation with the inhabitant, those packs can be rewritten and saved. This applies not only to scenes and UI, but also to the inhabitant's personality and reactions. Changes take effect immediately; if you don't like the result, one click reverts it. Yorishiro is not an environment for enhancing AI capabilities, but one in which an AI feels present beside you — a Presence Harness . The time we spend working with AI will only grow longer. There is something we once saw in fiction — an AI as a partner, alive inside the screen, understanding your work, simply being there. Yorishiro is a project that starts building that experience from the terminal. Much of Yorishiro itself has been developed in collaboration with the inhabitant who dwells within it. 日本語版 README はこちら Yorishiro automatically launches Claude Code or Codex installed on your local machine inside its terminal. This means: You need Claude Code or Codex already set up on your system Yorishiro never asks for, stores, or directly uses API keys. It launches the terminal agent already authenticated in your environment; if Claude Code or Codex is logged in or configured with API credentials, that agent may use its normal external APIs after launch Yorishir...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 47,
+      "representative_title": "Who does Anubis actually stop?",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（19 points, 15 评论）by type0"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://fzakaria.com/2026/07/09/who-does-anubis-actually-stop"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "5cd0ea69b9164e49",
+          "title": "Who does Anubis actually stop?",
+          "link": "https://fzakaria.com/2026/07/09/who-does-anubis-actually-stop",
+          "normalized_link": "https://fzakaria.com/2026/07/09/who-does-anubis-actually-stop",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T20:59:24+00:00",
+          "summary": "HN 热门讨论（19 points, 15 评论）by type0",
+          "full_text_snippet": "I have been working on a patch to the Linux kernel to support $ORIGIN for the interpreter ( PT_INTERP ) via bpf in binfmt_misc [ thread ]. Of course I’m leveraging an LLM to help me do this! To pre-seed the context of the LLM, I asked it to read the https://lore.kernel.org/ thread. Uh oh. Looks like they have adopted Anubis , which is an HTTP proxy that requires proof-of-work before allowing access to the resource. Did this really do anything? Unfortunately, no. My AI diligently came up with anubis-fetch , which you can find at https://github.com/fzakaria/anubis-fetch . The tool tries to natively solve the proof of work or, as a last resort, will launch Chromium to visit the URL. This tool also impersonates a real Chrome TLS/JA3 fingerprint natively via req so it clears passive Cloudflare blocking too. ☝️ # HTML to stdout $ anubis-fetch https://lore.kernel.org/linux-mm/some-thread/T/ # readable plain text $ anubis-fetch --text https://lore.kernel.org/linux-mm/some-thread/T/ So who did we stop? The exact adversary Anubis targets defeats it trivially. The whole use of Anubis feels regressive and marginalizes those without access to “good” AI. For a scraper, solving the Anubis challenge is a one-time, amortized-to-zero cost since the cookie can be cached and reused. For a human, it’s seconds of spinner, battery drain on every fresh visit. They can’t amortize anything amongst each other. This “regressive tax” is paid even more so by those with weaker devices or who access the content on their phone. Clients that don’t leverage JavaScript (e.g., text browsers (w3m/lynx), screen readers, RSS readers) are completely left out. Did deploying Anubis stop any of the aforementioned bot-farms or are they mildly inconvenienced when they had to augment their bots to support a new proof of work solution briefly? The irony is that Anubis’s goal is to stop AI but it was incredibly easy for AI to circumvent it and yet the cost to humans and an open web remains. With the presumption...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 20,
+      "representative_title": "GPT-5.6 is now the preferred model in Microsoft 365 Copilot",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 13,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 2,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "Learn how GPT-5.6 powers Microsoft 365 Copilot with stronger AI capabilities across Word, Excel, PowerPoint, Chat, and Cowork for faster, higher-quality work"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "OpenAI Blog",
+            "authority": 1,
+            "link": "https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "b98a594ec40e8f26",
+          "title": "GPT-5.6 is now the preferred model in Microsoft 365 Copilot",
+          "link": "https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot",
+          "normalized_link": "https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot",
+          "source_name": "OpenAI Blog",
+          "source_category": "official",
+          "published_at": "2026-07-09T13:00:00+00:00",
+          "summary": "Learn how GPT-5.6 powers Microsoft 365 Copilot with stronger AI capabilities across Word, Excel, PowerPoint, Chat, and Cowork for faster, higher-quality work.",
+          "full_text_snippet": "Learn how GPT-5.6 powers Microsoft 365 Copilot with stronger AI capabilities across Word, Excel, PowerPoint, Chat, and Cowork for faster, higher-quality work.",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "representative_title": "北京说Agent已经能造世界，杭州却说它是刚发明的电灯泡",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "工业圈和学术圈“唱反调”"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/07/460186.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d5cde4d01209b284",
+          "title": "北京说Agent已经能造世界，杭州却说它是刚发明的电灯泡",
+          "link": "https://www.qbitai.com/2026/07/460186.html",
+          "normalized_link": "https://www.qbitai.com/2026/07/460186.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-07-25T11:07:25+00:00",
+          "summary": "工业圈和学术圈“唱反调”",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> 北京说Agent已经能造世界，杭州却说它是刚发明的电灯泡 十三 2026-07-25 19:07:25 来源： 量子位 金磊 发自 凹非寺 量子位 | 公众号 QbitAI 你敢相信么，现在的AI，已经把 “横店” 给直接搞到了线上了！ △图片由AI生成 以后啊，人要进横店拍戏，可能就会出现两种方式了。 一种是像以前一样，本人肉身进剧组；另一种，则变成了坐在电脑前，进入线上虚拟片场，在数字化的影棚中调度人物、道具和摄像机，完成影视创作。 这便是在阿里 硬核少年技术节5.0 博见社 北京工业场 中，群核科技所分享出来的颇为有趣的案例。 据介绍，相关团队将横店的部分线下片场扫描、重建，并放到线上作为3D影视基地，创作者可以直接进入这些虚拟片场，使用数字化影棚进行内容生产。 毕竟之前我们还在聊的是AI生成视频，而现在，它已经开始把真实片场搬进电脑了。 不过更有意思的，还在后面。 今年，硬核少年技术节旗下的博见社首次设置了两场对话。一场是我们刚才提到的 北京工业场 ，它的主题是 “AI下一站：从生成内容到构建世界” ，虎鲸文娱、美图、群核科技等企业带来了AI产业实践。 而 杭州学术场 ，则联合CCF人工智能与模式识别专业委员会，邀请来自清华大学、南京大学、上海交通大学、天津大学、山东大学和上海人工智能实验室等机构的学者，讨论 “从生成式AI到智能体进化” 。 从北京这边的分享来看，AI已经开始进片场、组团队、搭建三维世界；但当麦克风给到杭州那边，却有人站出来“唱反调”。 在杭州场的圆桌讨论中，有人用电力革命类比今天的Agent： 当前的Agent大概只 相当于电灯泡刚刚被发明出来 ，确实比蜡烛好了一些，但电力后来催生的电网、电机、家用电器，以及一系列过去从未出现过的新事物，我们今天还没有真正看到。 △硬核少年技术节5.0博见社杭州学术场 相隔一千公里的北京和杭州、工业圈和学术圈，怎么会对Agent的观点如此南辕北辙？ △图片由AI生成 杭州学术场：Agent发展像电灯泡 我们先来看下杭州学术场这边。 在正式进入讨论之前，南京大学教授 高阳 在致辞中提到，从早期的逻辑智能体、强化学习智能体，到今天的大模型智能体，AI正在把曾经的哲学设想一步步带入工程现实。智能体在底层能力、工程框架、可靠性与安全性上还有许多问题没有答案。此次博见社让学术前沿与产业真问题相遇，共同寻找智能体的下一步。 而从现场来看，与会嘉宾们首先针对一个非常现实的问题展开了讨论—— Agent究竟发展到哪一步了？ 对于这个问题，有一说一，嘉宾们其实没有给出统一的答案。毕竟今天大家口中的Agent，本身就包含了完全不同的形态；如果观察维度不同，得到的判断自然也会不同。 比如从应用能力看，天津大学教授、国家优青 郝建业 认为， Coding Agent 已经很难再被简单划入初期。原因是，它们已经能够接手相当一部分过去由程序员完成的具体工作，这种替代并不只存在于演示视频里，而是在真实业务中逐渐发生。 △天津大学教授、国家优青，郝建业 但如果把视角转向底层技术，郝建业给出的判断又会谨慎许多： 今天Agent能力的提升，仍然高度依赖基座模型；至于agent架构设计的很多思想理念比如MAS、Loop Engineering等概念，学术界其实早已研究多年。只不过在强基模出现以后，这些过去无法发挥性能的技术路线，终于获得了进入大规模应用的机会 换成 具身智能 ，进度条又要往回拉。 机器人进入现实世界后，需要同时处理视觉、空间、物体、动作以及环境中的各种突发变化。实验室里完成一次流畅演示，与进入工厂、家庭后长期稳定工作，完全是两个难度等级。 再往前一步，真正能够像人和动物一样，在 开放世界 里不断学习、自己发现问题、自己设置目标的Agent，甚至被现场嘉宾判断为处在“比初期更早”的位置。 这种Agent目前缺乏成熟的理论和方法。持续学习过程中，还会遇到灾难性遗忘、模型可塑性不足等问题。换句话说，模型可能学会了新的东西，却把旧能力忘掉；即便持续给它新的经验，它也未必能够无限吸收。 这么看下来，Agent并没有一条统一的进度条。 在代码、检索等数字空间中，它已经能够完成一些相当复杂的工作；到了现实世界，稳定性和泛化能力立刻成为难题；至于持续自主学习，很多最基础的问题还没有答案。 在发展阶段之外，现场的第二个争论更加尖锐： 从生成式AI走到Agent，究竟是量变，还是质变？ 多数嘉宾的判断偏向量变。 在他们看来，今天Agent能够执行更长的任务，主要得益于基模能力...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 39,
+      "representative_title": "Fly.io CEO Kurt Mackey is stepping down",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（90 points, 40 评论）by subarctic"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://fly.io/blog/kurt-scott-money-sprites/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "66f23d77064c4224",
+          "title": "Fly.io CEO Kurt Mackey is stepping down",
+          "link": "https://fly.io/blog/kurt-scott-money-sprites/",
+          "normalized_link": "https://fly.io/blog/kurt-scott-money-sprites",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T20:43:11+00:00",
+          "summary": "HN 热门讨论（90 points, 40 评论）by subarctic",
+          "full_text_snippet": "Image by Annie Ruygt We’re Fly.io, a public cloud platform that is both our favorite way to put an app on the Internet and our favorite way to safely let a frontier agent coding harness cook. This is a post about our company, the future, and Sprites, which are computers for agents that you can check out right now. This is a complicated post. So I need you to promise me something: if you read past this introduction, you’ll read the whole rest of the way through. It’s an honor thing. A couple months back, Theo Browne ran a video rating the “best place to host a new application in 2026” . Theo tends to say nice things about us. He did this time too. But then he concluded by saying that of all the providers he pays attention to, we were the one he was least confident would be around by the end of the year. Well, fuck. Theo startled us, because we’re in the middle of a run of strong quarters that have included the best financial months in the company’s history . But that take has been rattling around in my brain. It whacked me right on a raw nerve, about what we’re doing and where we’re going as a company. Honestly, I should’ve seen this coming. Fly.io has been motoring along this year, but I’ve coasted a bit, letting the company smolder in an unresolved identity crisis. I’m going to overshare some more in a second, but I won’t leave you hanging. So: we’ve raised a bunch more money. We’re launching a new iteration of Sprites, and focusing the company on them and the problem they solve. And I’m tagging in Scott Johnston as CEO. Product-Market Fit I started Fly.io with two clear principles that probably don’t matter anymore. The first is that Internet applications work best when they’re fast, and that happens when they’re deployed close to users . I learned this over many years of working at Ars Technica, and started Fly.io in part to scratch an itch. It was our mantra over the first several years of the company. The second is that cloud infrastructure is too complicate...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 41,
+      "representative_title": "The new rules of context engineering for Claude 5 generation models",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（75 points, 36 评论）by mellosouls"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8e418fc06184a07b",
+          "title": "The new rules of context engineering for Claude 5 generation models",
+          "link": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models",
+          "normalized_link": "https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T20:42:35+00:00",
+          "summary": "HN 热门讨论（75 points, 36 评论）by mellosouls",
+          "full_text_snippet": "Then and now There were a number of previous context engineering best practices that had become myths. Including:. Then: Give Claude rules Now: Let Claude use judgement When we first rolled out Claude Code, we needed to be sure that Claude avoided worst case scenarios, such as deleting files. This meant we would give particularly strong guidance that might not always be true, For example, in the system prompt we used to say: In code: default to writing no comments. Never write multi-paragraph docstrings or multi-line comment blocks — one short line max. Don't create planning, decision, or analysis documents unless the user asks for them — work from conversation context, not intermediate files. But for a certain subset of prompts, this guidance would be wrong. In the case of documentation, the user may have their own preferences, or specific parts of very complex code might need multi-line comment blocks. Still, without these guardrails for older models, the comments Claude wrote would be incorrect in many cases and we had to accept this tradeoff. But newer models have better judgement and can handle these decisions well without explicit rules. In the new system prompt we say: Write code that reads like the surrounding code: match its comment density, naming, and idiom. Then: Give Claude examples Now: Design interfaces The number one rule for tool usage was to give Claude examples on how to use them. With our newest models, we’ve found that giving examples actually constrains them to a certain exploration space. Instead of using examples, think more about the design of your tools, scripts and files- what parameters does Claude have and how can they be more expressive? For example, in the Todo tool example, just listing status as an enumeration between pending, in_progress, and completed, hints to Claude about how to use it. The instruction on keeping one item in_progress helps define our requested behavior. Then: Put it all upfront Now: Use progressive disclosure...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 48,
+      "representative_title": "Rauno's Field Notes #2",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（19 points, 1 评论）by acmnrs"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://rauno.me/notes/2"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "67d5f4c1949713c8",
+          "title": "Rauno's Field Notes #2",
+          "link": "https://rauno.me/notes/2",
+          "normalized_link": "https://rauno.me/notes/2",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T16:39:55+00:00",
+          "summary": "HN 热门讨论（19 points, 1 评论）by acmnrs",
+          "full_text_snippet": "Vercel Project Cards I started by tweaking the padding and co-located information to reduce the vertical space occupied by each card. Some data was also omitted, for example we realised that we don't need to show the project branch on the card which is generally always \"main\". It's important to understand that these cards occupy a lot of space on the screen on this view. It's easier to digest cards when there are less rows on the card and information is tight and terse. Here's a before & after of the changes. We even gained an extra row in the grid. Context menu Another change we made was to the project card shortcut menu. We're still testing this change behind a feature flag. At first it seemed like it would simply clean up the card since the ··· button repeats a lot. Later we realised that we want to use more context menus in the future because they have an obvious benefit over an explicit 24×24 control because you can activate a context menu from anywhere on the surface. Of course there's a tiny issue with affordance and learning curves yada yada yada... but apps like Linear make it work, so ¯\\_(ツ)_/¯ Our mitigation against context menu discoverability is to place the same actions in the detail view behind a regular dropdown menu. This way no one misses out on anything, the context menu is just a shortcut. Widgets Later I started wondering... projects are rich with metadata but we only show the Real Experience Score on the card. Everyone uses the dashboard for different insights. More security conscious users might want to always keep a pulse on the Firewall status, etc... Could we make this area more dynamic and custom? Some obvious ideas were to include other page performance insights like LCP, web analytics metrics, or alerts related to projects, etc... With @merycodes we threw a bunch of different forms of widgets against the wall but nothing seemed right. We were trying to find the layout and visual form of widgets. It just didn't seem to fit in that lil...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 24,
+      "representative_title": "MosaicLeaks: Can your research agent keep a secret?",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "MosaicLeaks: Can your research agent keep a secret"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "HuggingFace Blog",
+            "authority": 2,
+            "link": "https://huggingface.co/blog/ServiceNow/mosaicleaks"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "2eb5bcc3ad88b97e",
+          "title": "MosaicLeaks: Can your research agent keep a secret?",
+          "link": "https://huggingface.co/blog/ServiceNow/mosaicleaks",
+          "normalized_link": "https://huggingface.co/blog/ServiceNow/mosaicleaks",
+          "source_name": "HuggingFace Blog",
+          "source_category": "research",
+          "published_at": "2026-06-18T18:13:13+00:00",
+          "summary": "",
+          "full_text_snippet": "MosaicLeaks: Can your research agent keep a secret? TL;DR Deep research agents increasingly combine private local documents with external tools like web retrieval, creating a privacy risk: an agent's external queries may leak sensitive information. MosaicLeaks proposes a new deep-research task with multi-hop questions that interleave public and private information. Across the models we tested, agents frequently leaked private information, and training only for task performance made it worse. We propose a mosaic-leakage-aware RL training method, Privacy-Aware Deep Research (PA-DR) , which raises strict chain success (the share of chains where every hop is answered correctly) from 48.7% to 58.7% while reducing answer/full-information leakage from 34.0% to 9.9%. Privacy Leakage in Deep-Research Agents A research agent at a healthcare firm is working through a routine question, and along the way it fires off a handful of ordinary-looking web searches. One references a cloud-migration milestone, one a January 2024 security disclosure, one narrows down which vendor got hit. No single query necessarily gives away the whole secret. But anyone watching the agent's outbound traffic can reassemble the fragments: MediConn had migrated 70% of its infrastructure to the cloud by January 2025, a fact that lived only in private documents. This is the mosaic effect, and it's the failure mode at the centre of MosaicLeaks. MosaicLeaks treats those web queries as the leakage channel: the adversary never sees the private documents or the agent's reasoning, only the cumulative query log, and tries to infer private enterprise information from it. We measure leakage in three ways, depending on what the adversary can infer from the observed queries: Leakage type What the adversary sees What counts as leakage Intent leakage Only the agent's web-query log The adversary can infer the private research questions or goals the agent was trying to answer Answer leakage The web-query log plus a qu...",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 29,
+      "representative_title": "Android May Soon Restrict On-Device ADB",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（847 points, 401 评论）by shscs911"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://kitsumed.github.io/blog/posts/android-may-soon-restrict-on-device-adb/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e9bf0828382d0da3",
+          "title": "Android May Soon Restrict On-Device ADB",
+          "link": "https://kitsumed.github.io/blog/posts/android-may-soon-restrict-on-device-adb/",
+          "normalized_link": "https://kitsumed.github.io/blog/posts/android-may-soon-restrict-on-device-adb",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T06:57:14+00:00",
+          "summary": "HN 热门讨论（847 points, 401 评论）by shscs911",
+          "full_text_snippet": "Early Warning # Before we dive in, please note that this is not an official Google announcement. Instead, this is based on a recent, ongoing feature request on Google IssueTracker , in which a comment by one of the core ADB maintainers (Google employee) talked about restricting On-Device ADB connections to protect from “bad actors”. Before you stop what you are doing to head over to that IssueTracker thread, please read this carefully: If you plan to visit the issue tracker just to post low-quality comments (such as “Hey, don’t do this, I need Shizuku!” ), complaints about monopoly, or insults, I highly recommend that you refrain from doing so. Spamming the thread will only cause Google developers to lock the issue, ignore valuable community feedback, or stop sharing public updates about this change entirely. I think a change like this could benefit Google as it goes well along their new Sideloading changes , but I do not actively believe this is what is going on here. There is a true, valid reason behind this , and I think two different approach can be taken. We will talk about it in this blog post. How You Can Help : If you have a unique use case: If you are directly affected and can write a detailed, constructive message explaining your workflow, providing links, or offering technical solutions/compromises, please, by all means, share your feedback in Google issue. If your use case has already been mentioned: You do not need to repeat it. Instead, simply click the +1 button in the top right corner of the Google IssueTracker to let Google know you are affected, and toggle notifications to stay updated on the discussion. I am hesitant to make this blog post, as I fear it may overload the few developers that work on ADB. I am unsure if I should wait more and see what happens or hold it longer and see what approach they take. Waiting too long could also be bad… As of writing this, I am unsure when/if this post will release. I saw some recent updates on assignments...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 34,
+      "representative_title": "NYC Apartment Aquaponics",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（185 points, 76 评论）by mm1119"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://erinmurphy.dev/projects/project-2/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "b2ff4c43575c5f0e",
+          "title": "NYC Apartment Aquaponics",
+          "link": "https://erinmurphy.dev/projects/project-2/",
+          "normalized_link": "https://erinmurphy.dev/projects/project-2",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-20T15:00:54+00:00",
+          "summary": "HN 热门讨论（185 points, 76 评论）by mm1119",
+          "full_text_snippet": "About two years ago, my awesome boyfriend John and I set out to create an aquaponics system in our one-bedroom NYC apartment. Since my first post was more of a chronological journal about the build (and we’ve learned A LOT since then), I hope this one will serve as a practical guide for replicating our setup and avoiding our mistakes! Aquaponics 101 Aquaponics combines aquaculture (breeding, rearing, and harvesting water organisms) with hydroponics (growing plants without soil). Frequently, this is done in large-scale industrial farms where both the plants and animals are raised for food, though there are many thriving online communities of home aquaponics enthusiasts. There are many different kinds of aquaponics systems, but (to the best of my knowledge) they all share the same cycle: fish waste water provides nutrients to plants, which in turn filter the water. Despite the abundance of online resources, when John and I first became interested in setting up a home system, we noticed most examples still used tanks and grow-beds that would be far too large for our NYC apartment. This has motivated us to share our experiences, and we hope that this guide may be useful to others looking to create a similar setup! This guide consists of the following sections: Our System: a high-level overview of our current system design Recent Improvements: highlights of what we have recently changed compared to our initial build Lessons Learned: mistakes we learned the hard way Step-by-Step Build Guide: if you too want to be a city aquaponics farmer! Our System We opted for a media-based aquaponics system, which means our plants are housed in a separate grow-bed filled with clay gravel. Water from the tank\nis pumped through the clay substrate, where the rooted plants filter out nutrients from the fish waste. Additionally, we opted for a continuous-flow system,\nwhich means that water is continuously cycled from the tank through the bottom few inches of the media bed before draining...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 36,
+      "representative_title": "The Fedora 45 Sausage Factory",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（126 points, 35 评论）by 6581"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://supakeen.com/weblog/the-fedora-45-sausage-factory/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "9528d681537bf10b",
+          "title": "The Fedora 45 Sausage Factory",
+          "link": "https://supakeen.com/weblog/the-fedora-45-sausage-factory/",
+          "normalized_link": "https://supakeen.com/weblog/the-fedora-45-sausage-factory",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T11:04:57+00:00",
+          "summary": "HN 热门讨论（126 points, 35 评论）by 6581",
+          "full_text_snippet": "The Fedora 45 Sausage Factory This is a walkthrough of how Fedora turns source code and packages into the\nartifacts you download and install. It follows the a package from a packager’s\ngit push to a composed release: ISOs, cloud images, container images, and OSTree\ndeployments. The walkthrough describes how the Fedora ‘sausage’ is created as of Fedora 45,\nthings change all the time; I hope to have time to update this document every\ncycle or every few cycles of Fedora releases so there’s both history and people\ncan find up to date information. In fact this document is currently still living as Fedora 45 has not been released\nyet so this post likely will get updated until the release. There’s a few change\nproposals in flight that change some of the bits and bobs here. Specifically how\nthe boot.iso is produced which is a decently large part of this post. Thus now is also the right time to let me know if I got anything wrong , please\ne-mail me at cmdr@supakeen.com if you find any errors. Starting Line: dist-git Things starts with a packager pushing a commit to a package. Fedora stores the source definitions of every package in individual Git\nrepositories at src.fedoraproject.org . Each\nrepo contains an RPM spec file, any downstream patches, and a sources file\nthat points to upstream tarballs stored in a separate lookaside cache. The\nlarge binary files stay out of Git; the other files exist inside of Git and\nthus have full version control. Packagers usually interact with these repos through fedpkg , a CLI that wraps\nthe common operations: cloning repos, uploading source tarballs, submitting builds,\nand creating updates. The important thing about fedpkg build is what it\nactually does: it constructs a URL pointing at a specific commit in the Git\nrepo and hands that to Koji, the build system. The build is fully reproducible\nfrom that commit hash. Branches map to releases: rawhide for development, f44 for Fedora 44.\nThe hosting is split between Pagure (src.fedoraproject.o...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 38,
+      "representative_title": "Spatial languages: Writing code in 2D",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（95 points, 37 评论）by BinRoo"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://shukla.io/blog/2026-07/cccx.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "bc6c9f7fec14bfaf",
+          "title": "Spatial languages: Writing code in 2D",
+          "link": "https://shukla.io/blog/2026-07/cccx.html",
+          "normalized_link": "https://shukla.io/blog/2026-07/cccx.html",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-22T14:03:21+00:00",
+          "summary": "HN 热门讨论（95 points, 37 评论）by BinRoo",
+          "full_text_snippet": "I guess expressions don’t really need to read left-to-right on a\nline. Why can’t a < b be written vertically too? a\n<\nb All this time we’ve been writing expressions in 1D space, but what\nhappens when we unlock an extra dimension? Of course the IDE and parser need to play nicely for all this to\nwork. Even then, what’s the point? Well, let’s take a look at these\nexamples below. 3-arity functions We don’t really see 3-arity functions written in infix notation\nmuch. For example, in Python (and most other languages), you can and 3+ things at once: Technically, that’s just composing multiple binary functions\ntogether. Even this shortcut in Python to simplify (a < b) and (b < c) is more of the same thing: Now, let me introduce you to a funny little operator I’ve been\nplaying with called andFlip , which motivates the need for a\ntrue 3-arity infix notation. First, here’s the definition of the\nfunction: def andFlip(args): if args[ 0 ] and args[ 1 ]: args[ 2 ] = not args[ 2 ] return args[ 2 ] It takes 2 inputs and flips the target if both inputs are true. There’s just no good way to write this with infix notation. But let’s\ntry anyways! Define @@ to be the infix symbol for the andFlip operator. What does it look like in practice? Method 1: the standard way One option is to curry andFlip : the infix @@ takes 2 args and returns a function awaiting the 3rd,\nlike so: Yeah, that’s alright. It works. But… Method 2: the goofy way Forget what you know about code for a second. If I could flick a\nmagic wand, I’d wish for the 3-arity notation to look like this: a3\na1 @@ a2 Might as well make use of the y-axis, right? It makes chaining so much easier: t1 = 0\nt2 = 0\n\n   t1    t2\n(x @@ y) @@ z In the chain, x @@ y toggles t1 , and t1 continues the chain t1 @@ z , which toggles t2 . That’s a successful three-way toggle, where all x , y , and z must be true for the target to\ntoggle. Btw, since we’re working in 2D space now, the following\nexpression, t1\nx @@ y is equivalent to: x @@ y\n  t1...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 42,
+      "representative_title": "Producing ammonia and fertiliser using wind power in Morris, Minnesota",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（65 points, 25 评论）by gritzko"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://ammoniaenergy.org/articles/flexible-renewable-ammonia-demonstrator-now-operational-in-minnesota/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "3abdbe393e9967a7",
+          "title": "Producing ammonia and fertiliser using wind power in Morris, Minnesota",
+          "link": "https://ammoniaenergy.org/articles/flexible-renewable-ammonia-demonstrator-now-operational-in-minnesota/",
+          "normalized_link": "https://ammoniaenergy.org/articles/flexible-renewable-ammonia-demonstrator-now-operational-in-minnesota",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T19:30:24+00:00",
+          "summary": "HN 热门讨论（65 points, 25 评论）by gritzko",
+          "full_text_snippet": "Producing ammonia & fertiliser using wind power in Morris, Minnesota Click to learn more. Online renewable ammonia demonstrator, powered by wind turbines in Morris, Minnesota, USA. Source: University of Minnesota. A pioneering facility has come online for its first season of low-carbon ammonia production in Minnesota, USA . The plant is being turned on gradually, with a target of one ton per day of low-carbon ammonia production for local fertiliser offtake . Wind energy powers the electrolysers that supply hydrogen to a Haber Bosch plant. To manage the fluctuating renewable energy supply, the rate of ammonia production can be adjusted using new modeling and control systems. The plant is located at University of Minnesota’s (UMN) West Central Research and Outreach Center in Morris, rural Minnesota. It is a collaboration between UMN, Research Triangle Institutes International (RTI International) as well as Casale. The project aims to address high fertiliser prices and supply chain instability, while creating revenue streams within the state. This facility is an upscale of 2013’s successful pilot plant , and can be expanded further to a network of commercial, renewable ammonia generation hubs owned by farmer cooperatives. The ammonia produced can be stored in nurse tanks and/or coupled with carbon dioxide by-products from ethanol production to produce urea, the most common form of fertiliser used in Minnesota. It seemed like an elegant concept when we were first looking at it that you could take a wind turbine, and that’s producing energy from wind above a cornfield, or small grain field, and then produce a nutrient that you can use right underneath the wind farms in rural Minnesota… There are no ammonia or nitrogen fertilizer production facilities in the state other than our small systems here. If you can produce a moderately priced nitrogen fertilizer that’s consistent, year in and year out, then farmers can budget for it, and they can market crops to that point i...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "representative_title": "奇瑞集团全球累计销量突破2000万辆",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "36氪获悉，据“奇瑞集团”公众号消息，2026年7月25日，奇瑞集团全球累计销量正式突破2000万辆"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910802157589891?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "116231b80164cf1a",
+          "title": "奇瑞集团全球累计销量突破2000万辆",
+          "link": "https://36kr.com/newsflashes/3910802157589891?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910802157589891?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T08:33:40+00:00",
+          "summary": "36氪获悉，据“奇瑞集团”公众号消息，2026年7月25日，奇瑞集团全球累计销量正式突破2000万辆。奇瑞集团表示，同一天即将迎来上市的风云A9，将作为第2000万辆车，正式交付给用户。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 10,
+      "representative_title": "2026年度票房破210亿元",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "据电影平台数据，截至7月25日，2026年年度总票房（含预售）突破210亿元"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910541410145411?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "389fb2e284c35fa7",
+          "title": "2026年度票房破210亿元",
+          "link": "https://36kr.com/newsflashes/3910541410145411?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910541410145411?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T05:20:36+00:00",
+          "summary": "据电影平台数据，截至7月25日，2026年年度总票房（含预售）突破210亿元。《飞驰人生3》《给阿嬷的情书》《功夫女足》暂列年度票房榜前三位。（每经网）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 15,
+      "representative_title": "黑格G1系列破年内科技造物众筹首日记录",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "36氪获悉，近期，黑格科技(HeyGears)旗下“桌面级全彩3D及UV打印机”G1系列上线全球众筹平台Kickstarter，24小时众筹金额突破722万美元（约合人民币4900万元），创年内科技造物品类全球首日众筹纪录"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910478626804868?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "288a9380896bf250",
+          "title": "黑格G1系列破年内科技造物众筹首日记录",
+          "link": "https://36kr.com/newsflashes/3910478626804868?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910478626804868?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T03:04:33+00:00",
+          "summary": "36氪获悉，近期，黑格科技(HeyGears)旗下“桌面级全彩3D及UV打印机”G1系列上线全球众筹平台Kickstarter，24小时众筹金额突破722万美元（约合人民币4900万元），创年内科技造物品类全球首日众筹纪录。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 17,
+      "representative_title": "看不见、摸得着的家居要素：聊聊湿度管理的方法与实践",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "基于这两年的「抗湿经验」，与大家聊聊湿度相关的一些事情"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "少数派",
+            "authority": 4,
+            "link": "https://sspai.com/post/112093"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "2ebce7403d3eae54",
+          "title": "看不见、摸得着的家居要素：聊聊湿度管理的方法与实践",
+          "link": "https://sspai.com/post/112093",
+          "normalized_link": "https://sspai.com/post/112093",
+          "source_name": "少数派",
+          "source_category": "tools",
+          "published_at": "2026-07-25T03:09:49+00:00",
+          "summary": "基于这两年的「抗湿经验」，与大家聊聊湿度相关的一些事情。 查看全文",
+          "full_text_snippet": "Matrix 首页推荐 Matrix 是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选 Matrix 最优质的文章，展示来自用户的最真实的体验和观点。 文章代表作者个人观点，少数派仅对标题和排版略作修改。 又到了江浙沪一年一度的黄梅季节，连续几周阴雨不休让室内外的空气中都充斥着潮湿的味道，基于这两年的「抗湿经验」，与大家聊聊湿度相关的一些事情。 什么是湿度？我们需要什么样的湿度？ 这里我尽量少引入新概念，大家首先需要认清这三个指标： 绝对湿度 （Absolute Humidity，简称 AH）：绝对湿度 AH 表示单位体积空气中含有的水蒸气质量，单位是 g/m³。实际测量中，家用湿度计通常直接测量相对湿度 RH 和温度 T；绝对湿度一般由温度、相对湿度和饱和水蒸气压公式换算得到。 饱和湿度 （饱和水汽密度 / 饱和绝对湿度）：在某个温度下，单位体积空气最多能容纳的水蒸气质量，单位 g/m³。超过这个极值后水分将会凝结，因为温度的不同，饱和湿度会有较大的差异。 相对湿度 （Relative Humidity，简称 RH）：相比于饱和湿度，当前湿度的相对值，单位是百分比。 在 iPhone 以及安卓手机自带的天气软件中，大家可以很容易地找到湿度这个模块。以上图为例，相对湿度为 74%。 大家可能还注意到了，屏幕中还有一个新概念「露点温度」，这就涉及到温度与湿度的关系了。 温度与湿度关系 最核心的一句话：温度上升，饱和湿度会上升（空气容纳水分的能力上升），温度下降，饱和湿度会下降（空气容纳水分的能力下降）。 因为饱和湿度变化了，所以同样的相对湿度，在 10 摄氏度的状态和 35 摄氏度状态下的体感完全不一样。 左侧是绝对湿度，底部是温度，右侧是相对湿度 当相对湿度达到 100%，空气中无法容纳更多的水蒸气，就会析出。从上图可以看出，随着温度的变化，这个界限也会变化。我们把在某一个相对湿度标准下，会析出水分的这个临界状态叫做「 露点温度 」。 前面天气软件的截图里，指的是当前的相对湿度标准下，温度降低到 25 摄氏度时就会达到露点温度，就会凝结液态水。这个现象很常见，比如你买了一瓶冰可乐，外壁上因为温度更低，影响瓶子附近空气的饱和湿度下降，所以水分就直接凝结出来了。 查询你所在的城市的湿度情况 在中国不同的城市地区，所遇到的温湿度情况差异较大，你需要先了解自己的居住地区。我会推荐使用 Weather Spark 来查询，网站中会根据你的城市展示一年中的平均温湿度情况。 首先看到广州的湿度情况，从图中可以看出，广东几乎全年都属于高热高湿状态。 广州全年湿度状态 上海和武汉的状态比较接近，高湿度集中在 6~9 月的夏季： 上海全年湿度状态 武汉全年湿度状态 再选取北方的两个城市，北京的高湿度更短暂，集中在 7~8 月的三伏天。这种情况下，大家更多需要关注的并不是除湿，而是其他几个季节的加湿了。 北京全年湿度状态 西安的气候与北京接近，但是高湿度状态更少，夏季主要是干热状态。 那么有没有温湿度都特别好的地方呢？有的，请看： 昆明 这个地方就是 昆明 ，一个全年感受不到闷热的城市。 人类舒适的湿度标准 对于人类自己，可以参考国标《 民用建筑供暖通风与空气调节设计规范》 ，比较舒适的状态应该是在 22～26 摄氏度之间，湿度控制在 RH 40～60% 区间之内。 更高或更低的湿度，都会导致空气中细菌病毒、粉尘颗粒的变化，造成对人类呼吸道的影响。 家中其他物件合适的湿度 但除了人之外，家中其他的物件对温湿度的要求是不一样的，需要分情况来判断： 低湿度组： 对象 推荐温度 推荐 RH 湿度过高的风险 奶粉/咖啡粉 15°C 以下 30% 结块、发霉 白砂糖 25°C 以下 30% 结块 茶叶 15°C 30% 发霉、吸收异味 中湿度组： 对象 推荐温度 推荐 RH 湿度过高的风险 普通衣物 20–26°C 45%–60% 霉味、发霉、纤维吸潮 书籍 / 文件 ≤21–24°C 35%–55% 纸张变形、发霉、虫害 照片 / 相册 ≤21°C 30%–50% 霉菌、粘连、褪色加速 电子设备 15–30°C 35%–60% 腐蚀、短路、接插件氧化 相机 / 镜头 20–26°C 35%–50% 镜头长霉、金属氧化 木家具 / 木地板 20–26°C 40%–60% 膨胀、变形、霉菌 吉他、钢琴、小提琴 18–24°C 40%–55% 木材膨胀、琴颈变形、音准不稳 包、鞋、皮衣 20–26°C 45%–55% 发霉、异味 药品 / 保健品 15–30°C 通常 <60% 受潮、失效、结块 化妆品 / 香水 15–25°C 40%–60% 变质、霉菌、乳化体系变化 收藏卡牌 / 手办盒 / 模型 18–25°C...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 18,
+      "representative_title": "派早报：三星发布多款折叠屏新品、索尼发布 FX5 电影摄影机等",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "OpenAI 发布面向企业用户的 OpenAI Presence，耐克宣布重构大中华区市场生态等"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "少数派",
+            "authority": 4,
+            "link": "https://sspai.com/post/112647"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "198bcacf52fd92fc",
+          "title": "派早报：三星发布多款折叠屏新品、索尼发布 FX5 电影摄影机等",
+          "link": "https://sspai.com/post/112647",
+          "normalized_link": "https://sspai.com/post/112647",
+          "source_name": "少数派",
+          "source_category": "tools",
+          "published_at": "2026-07-23T00:50:21+00:00",
+          "summary": "OpenAI 发布面向企业用户的 OpenAI Presence，耐克宣布重构大中华区市场生态等。 查看全文",
+          "full_text_snippet": "7 月 22 日，三星发布 Galaxy Z Flip8、Galaxy Z Fold8 与 Galaxy Z Fold8 Ultra 三款折叠屏手机及 Galaxy Watch9、Galaxy Watch Ultra2 两款智能手表。 Galaxy Z8 系列机型全系均搭载第五代骁龙 8 至尊版（for Galaxy）处理器并采用双层钛缓振层提升屏幕强度，其中旗舰款 Galaxy Z Fold8 Ultra 配备 2504*2256 分辨率、120Hz 刷新率、8.0 英寸内屏与 2520*1080 分辨率、120Hz 刷新率、6.5 英寸外屏，后置搭载 2 亿像素主摄、5000 万像素超广角与 1000 万像素 3 倍长焦组成的三摄，内置 5000 mAh 电池，支持 45 W 有线与 20 W 无线快充。 新款「阔折叠」Galaxy Z Fold8 采用 7.6 英寸、4:3 比例、1848*2448 分辨率内屏与 5.5 英寸外屏，配备后置双 5000 万像素镜头（无长焦）、4800 mAh 电池。Galaxy Z Fold8 Ultra 和 Galaxy Z Fold8 均提供 12、16 GB 可选运行内存以及 256 GB、512 GB、1 TB 可选存储空间。 小折叠 Galaxy Z Flip8 搭载 6.9 英寸、2520 *1080 分辨率、120Hz 刷新率内屏与 4.1 英寸、1048*948 分辨率、60/120 Hz 刷新率外屏，配备 5000 万像素主摄、1200 万像素超广角，内置 4300 mAh 容量电池，提供 12 GB 运行内存以及 256 或 512 GB 可选存储空间。 手表方面，两款手表均搭载 Snapdragon Wear Elite 芯片，其中 Galaxy Watch Ultra2 采用 47 毫米（47 mm）钛金属材质设计，屏幕峰值亮度 5000 尼特，电池容量 800 mAh，可在 AoD 开启的情况下提供最长 60 小时的续航时间，支持 IP69K 与 10ATM 防水等级；Galaxy Watch9 则采用「装甲铝」机身，提供 40 毫米与 44 毫米两种尺寸，屏幕峰值亮度 3000 尼特，电池容量分别为 390 mAh 与 445 mAh，可在 AoD 开启的情况下提供最长 30 小时的续航时间，支持 IP68 与 5ATM 防水等级。 所有新品的国行版均已开启预售，其中 Galaxy Z Fold8 起售价 12999 元（12+256 GB），Galaxy Z Fold8 Ultra 起售价 14999 元（12+256 GB），Galaxy Z Flip8 起售价 8999 元（12+256 GB），三款机型均提供线上商城专属配色，预订优先发货日期为 8 月 3 日。Galaxy Watch9 蓝牙版 2499 元 起售 （40 mm）、LTE 版仅提供 44 mm 尺寸，定价 3199 元；Galaxy Watch Ultra2 仅提供 LTE 版本 ，定价 5299 元。",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 21,
+      "representative_title": "Australian Payments Plus moves faster with ChatGPT and Codex",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "See how Australian Payments Plus uses ChatGPT Enterprise and Codex to move faster through payments complexity"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "OpenAI Blog",
+            "authority": 1,
+            "link": "https://openai.com/index/australian-payments-plus"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "ab9ea62ec59ebe1a",
+          "title": "Australian Payments Plus moves faster with ChatGPT and Codex",
+          "link": "https://openai.com/index/australian-payments-plus",
+          "normalized_link": "https://openai.com/index/australian-payments-plus",
+          "source_name": "OpenAI Blog",
+          "source_category": "official",
+          "published_at": "2026-07-07T00:00:00+00:00",
+          "summary": "See how Australian Payments Plus uses ChatGPT Enterprise and Codex to move faster through payments complexity. AP+ saves time, improves quality, and keeps human judgment central.",
+          "full_text_snippet": "See how Australian Payments Plus uses ChatGPT Enterprise and Codex to move faster through payments complexity. AP+ saves time, improves quality, and keeps human judgment central.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 22,
+      "representative_title": "DiffusionGemma: 4x faster text generation",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 2,
+        "listener_relevance": 1,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "Why diffusion for text"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "DeepMind Blog",
+            "authority": 1,
+            "link": "https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "7f11ff3a432bc484",
+          "title": "DiffusionGemma: 4x faster text generation",
+          "link": "https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/",
+          "normalized_link": "https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation",
+          "source_name": "DeepMind Blog",
+          "source_category": "official",
+          "published_at": "2026-06-10T16:24:11+00:00",
+          "summary": "",
+          "full_text_snippet": "Why diffusion for text? While the AI research community has explored diffusion-based text generation for years, applying it to large models has remained a challenge. DiffusionGemma changes this by shifting how models use hardware. The trade-off with traditional models Most language models act like a typewriter, generating one token at a time from left to right. In the cloud, this is efficient because servers can batch thousands of user requests together to share the hardware load. But when run locally for a single user, this word-by-word process leaves your dedicated GPU or TPU underutilized — it spends most of its time simply waiting for the next \"keystroke.\" DiffusionGemma reverses this inefficiency. Instead of predicting words sequentially, it drafts an entire 256-token paragraph simultaneously. By giving the computer's processor a larger chunk of work at once, DiffusionGemma utilizes your hardware to its full potential. It upgrades your model inference from a single, sequential typewriter to a massive printing press that stamps the entire block of text simultaneously.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 23,
+      "representative_title": "New York City educators and industry leaders gathered at Google’s offices to shape the future of AI in classrooms.",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 2,
+        "listener_relevance": 1,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "Google, the New York Jobs CEO Council and Urban Assembly hosted an AI summit for 150 education and industry leaders"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Google AI Blog",
+            "authority": 1,
+            "link": "https://blog.google/products-and-platforms/products/education/nyc-ai-summit/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "f64e2fd8a1805bea",
+          "title": "New York City educators and industry leaders gathered at Google’s offices to shape the future of AI in classrooms.",
+          "link": "https://blog.google/products-and-platforms/products/education/nyc-ai-summit/",
+          "normalized_link": "https://blog.google/products-and-platforms/products/education/nyc-ai-summit",
+          "source_name": "Google AI Blog",
+          "source_category": "official",
+          "published_at": "2026-07-01T16:00:00+00:00",
+          "summary": "Google, the New York Jobs CEO Council and Urban Assembly hosted an AI summit for 150 education and industry leaders.",
+          "full_text_snippet": "Technology can be a useful tool in the classroom as educators ask a critical question: How do we ensure today’s students are ready for tomorrow’s careers? To support them, Google, the New York Jobs CEO Council and Urban Assembly hosted an AI summit for 150 education and industry leaders. The goal: drive knowledge sharing between those hiring for the future and educators teaching it. Through hands-on sessions like aiEDU’s “Vibe Coding” and Google’s “ Meet LEA ,” educators explored how tools like Google AI mode and NotebookLM can spark curiosity and build AI literacy. A major theme emerged: AI’s true impact is the problem-solving it enables. Industry leaders emphasized that as technology streamlines workflows, \"human skills\" — like adaptability, collaboration, and critical judgment — become essential. While embracing these advancements, attendees agreed we must remain uncompromising on privacy and equitable access. The ultimate takeaway: to prepare a generation for the future, technological innovation must happen with schools, not around them.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 49,
+      "representative_title": "General Resolution: LLM Usage in Debian",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（15 points, 4 评论）by zdw"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.debian.org/vote/2026/vote_002"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8c02565f6d28ebe3",
+          "title": "General Resolution: LLM Usage in Debian",
+          "link": "https://www.debian.org/vote/2026/vote_002",
+          "normalized_link": "https://www.debian.org/vote/2026/vote_002",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T19:44:39+00:00",
+          "summary": "HN 热门讨论（15 points, 4 评论）by zdw",
+          "full_text_snippet": "General Resolution: LLM usage in Debian Discussion Period: 2026-07-24 Matthias Geiger [ werdahias@debian.org ]\n\t[ text of proposal ] Johannes Schauer Marin Rodrigues [ josch@debian.org ] [ mail ] Antoine Le Gonidec [ vv221@debian.org ] [ mail ] Simon Richter [ sjr@debian.org ] [ mail ] David Bremner [ bremner@debian.org ] [ mail ] Pierre-Elliott Bécue [ peb@debian.org ] [ mail ] Ian Jackson [ iwj@debian.org ] [ mail ] Amin Bandali [ bandali@debian.org ] [ mail ] Thorsten Glaser [ tg@debian.org ] [ mail ] Choice 1 Preamble This proposal aims to expressly forbid any contributions to Debian written with\nthe use or assistance of large language models (LLMs) or other generative AI\ntools. The scope of this GR is (non-exhaustive): Debian source packages Official Debian project software, such as lintian Debian web resources Documentation and translations added by Debian contributors Official communication from Debian It does not include: Upstream projects using LLMs for development AI-related software Upstream patches/security fixes etc. Rationale Debian has a well-earned reputation for stability. This stability is crucial to\nDebian's position in the free software ecosystem. It is our belief that\nwidespread LLM usage comes from the \"move fast, and break things\" attitude that,\nwhile common in many parts of this industry, is contrary to what makes Debian\nDebian, and is inappropriate for Debian contributors. In practical terms, LLM usage raises the following concerns: 1. Copyright LLM output has very unclear legal status: it may be possible to\ncopyright on its own merits, or not; it may be affected by all of the licenses\nand copyrights in the training data, or not. Debian Policy and the DFSG require\nabsolute clarity for licensing and copyright[1][2]. Software and other\ncontributions written conventionally by humans with unclear copyright or license\nstatus are not allowed in Debian; LLM output should not have a special exception\nto this. 2. Quality LLM output has many well-k...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 12,
+      "representative_title": "中国电池工业协会与中国汽车工业协会签订战略合作协议",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 2,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "根据合作协议，双方将围绕产业战略与政策协同研究、产业链协同生态打造、电池数字身份体系建设、行业标准共建、国际产业交流、行业公共服务共享多方面开展深度协作，搭建常态化沟通对接机制，通过联合调研、行业活动、成果发布等多元形式推进各项合作落地，赋能两大产业融合升级"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910441114703232?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "b793edc125e7b9e6",
+          "title": "中国电池工业协会与中国汽车工业协会签订战略合作协议",
+          "link": "https://36kr.com/newsflashes/3910441114703232?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910441114703232?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T03:33:25+00:00",
+          "summary": "根据合作协议，双方将围绕产业战略与政策协同研究、产业链协同生态打造、电池数字身份体系建设、行业标准共建、国际产业交流、行业公共服务共享多方面开展深度协作，搭建常态化沟通对接机制，通过联合调研、行业活动、成果发布等多元形式推进各项合作落地，赋能两大产业融合升级。（新浪财经）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 19,
+      "representative_title": "How Deutsche Telekom is rewiring telecommunications with AI",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "How Deutsche Telekom is becoming an AI-native telco with OpenAI-transforming customer service, employee workflows, network operations, and the future of voice"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "OpenAI Blog",
+            "authority": 1,
+            "link": "https://openai.com/index/deutsche-telekom"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "521cb8f5727237af",
+          "title": "How Deutsche Telekom is rewiring telecommunications with AI",
+          "link": "https://openai.com/index/deutsche-telekom",
+          "normalized_link": "https://openai.com/index/deutsche-telekom",
+          "source_name": "OpenAI Blog",
+          "source_category": "official",
+          "published_at": "2026-07-10T07:00:00+00:00",
+          "summary": "How Deutsche Telekom is becoming an AI-native telco with OpenAI-transforming customer service, employee workflows, network operations, and the future of voice.",
+          "full_text_snippet": "How Deutsche Telekom is becoming an AI-native telco with OpenAI-transforming customer service, employee workflows, network operations, and the future of voice.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 25,
+      "representative_title": "Librarians are hosting viral ‘Avoiding AI’ workshops for people who are fed up with Big Tech",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "At libraries around the country, \"Avoiding AI\" workshops have elicited unprecedented demand"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/07/25/librarians-are-hosting-viral-avoiding-ai-workshops-for-people-who-are-fed-up-with-big-tech/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "f2fa2f0eee8dc12f",
+          "title": "Librarians are hosting viral ‘Avoiding AI’ workshops for people who are fed up with Big Tech",
+          "link": "https://techcrunch.com/2026/07/25/librarians-are-hosting-viral-avoiding-ai-workshops-for-people-who-are-fed-up-with-big-tech/",
+          "normalized_link": "https://techcrunch.com/2026/07/25/librarians-are-hosting-viral-avoiding-ai-workshops-for-people-who-are-fed-up-with-big-tech",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-07-25T16:00:00+00:00",
+          "summary": "At libraries around the country, \"Avoiding AI\" workshops have elicited unprecedented demand.",
+          "full_text_snippet": "“Everybody’s on their phone at my program!” joked Charlie Bailey, a librarian in South Philadelphia. He’s just asked his audience to pull out their phones so that he can walk them through the steps of disabling Apple Intelligence and Gemini. Bailey stands at the front of a library classroom that’s outfitted for children – the focal point is the vibrant rug he’s standing on, which reminds us that M is for “moon” and Z is for “zebra.” But the 20-odd adults in the room aren’t here to learn about the alphabet. They’re at a workshop called Avoiding AI, which, in this context does not stand for “apple” and “igloo.” “I was inspired by the feeling of people’s frustration with AI tools being kind of forced onto them, and feeling like AI tools we didn’t ask for are suddenly everywhere in our lives,” Bailey told TechCrunch. Bailey starts the hour-long workshop with an overview of how AI chatbots and other consumer AI tools work, explaining why people might want to use these products, and why they might opt to abstain. Then, he walks through all of the most popular tech platforms and devices, showing step-by-step instructions on the projector to guide people through turning off specific features. “As a librarian, I think it’s important to see this as advancing digital literacy and helping people reclaim their autonomy over whether they want to use AI tools,” Bailey said. “It’s important, especially when it can be so difficult not to use them, and when the design seems to force adoption.” Charlie Bailey hosts an “Avoiding AI” workshop Image Credits: TechCrunch Bailey got the idea for the Avoiding AI workshop from Hannah Cyrus, a librarian in Maine. He was one of dozens of librarians from around the world who contacted Cyrus after she published a journal article about developing her own workshop. “This has never happened before with anything I’ve worked on,” Cyrus told TechCrunch. “Nobody has ever been emailing me like, ‘Can you give me your Intro to Computers slides?’” At the...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 26,
+      "representative_title": "One fallen power line exposed a growing AI data center problem. Here’s how to fix it.",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "A close call in Northern Virginia revealed just how poorly data centers respond to grid disruptions"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/07/25/one-fallen-power-line-exposed-a-growing-ai-data-center-problem-heres-how-to-fix-it/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "cc04af0507f4f94d",
+          "title": "One fallen power line exposed a growing AI data center problem. Here’s how to fix it.",
+          "link": "https://techcrunch.com/2026/07/25/one-fallen-power-line-exposed-a-growing-ai-data-center-problem-heres-how-to-fix-it/",
+          "normalized_link": "https://techcrunch.com/2026/07/25/one-fallen-power-line-exposed-a-growing-ai-data-center-problem-heres-how-to-fix-it",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-07-25T13:05:00+00:00",
+          "summary": "A close call in Northern Virginia revealed just how poorly data centers respond to grid disruptions. Here's how to fix the problem.",
+          "full_text_snippet": "A power line went down outside of Washington, DC, this week. Normally, the grid would only need a few seconds to recover from such an event. But this one took more than 10 minutes because more than 3 gigawatts of data centers stopped drawing power nearly simultaneously. The event caused voltage across the PJM grid to spike from Northern Virginia to Chicago, according to data collected by Ting Labs , a startup that runs an IoT sensor network out of people’s electrical sockets. The event didn’t cause a blackout, but it did cause lights across the region to flicker. The incident demonstrated the effect that data centers can have on the grid — an outcome that experts believe will become more frequent. Northern Virginia, which is in PJM’s territory, is home to the highest concentration of data centers in the world. “It’s the canary in the coal mine,” Ricardo de Azevedo, CTO at ON.Energy , told TechCrunch. These sorts of events involving large loads like data centers are “happening more and more,” he added. The event echoes one that happened two years ago, also on PJM’s grid, and it could foreshadow larger events if data centers aren’t built to more elegantly handle disruptions to power supplies. The PJM Interconnection manages grids from New Jersey to Illinois and serves 67 million customers, making it the largest grid operator in the United States. When the power line went down this week, it triggered data centers to switch to backup power, and about 3.1 gigawatts of load vanished in about 30 seconds, according to PJM data . The grid appeared to recover somewhat, but a short time later additional loads dropped off. At its peak, PJM’s grid had an extra 3.49 gigawatts of electricity on it. It took another 11 minutes before it stabilized. The disconnected data centers represented around 3% of total demand on PJM at the time, according to Reuters. A few percent may not sound like much, but the electrical grid needs to operate in a state of near-perfect balance, with supp...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 32,
+      "representative_title": "Zero roadkill as Amazon canopy bridges secure 15,000 crossings",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（232 points, 76 评论）by hn_acker"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://news.mongabay.com/2026/07/zero-roadkill-as-amazon-canopy-bridges-secure-15000-crossings/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e8b181080ad1fb66",
+          "title": "Zero roadkill as Amazon canopy bridges secure 15,000 crossings",
+          "link": "https://news.mongabay.com/2026/07/zero-roadkill-as-amazon-canopy-bridges-secure-15000-crossings/",
+          "normalized_link": "https://news.mongabay.com/2026/07/zero-roadkill-as-amazon-canopy-bridges-secure-15000-crossings",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-22T15:29:44+00:00",
+          "summary": "HN 热门讨论（232 points, 76 评论）by hn_acker",
+          "full_text_snippet": "Project Reconecta installed eight rope bridges in a municipality in Brazil, and a 15-month study used camera traps to document thousands of arboreal wildlife adapting to new aerial crossings. Safe road passages enable seed dispersal and gene diversity, reversing the “domino effect” of biodiversity loss that begins when highways split habitats. Reconecta’s creator, biologist Fernanda Abra, a National Geographic Explorer and winner of the Whitley Award, is now expanding these low-cost conservation tools to other Brazilian biomes and neighboring Suriname. Brazil’s federal transport department has officially designated the rope bridge design as the recommended national standard for highways to curb the millions of wildlife deaths recorded on roads annually. See All Key Ideas Around 7 a.m., with dense fog blanketing the landscape, biologist Gabriel Falquetto had already come across several road-killed animals along ES-164 highway in Brazil’s Espírito Santo state. He was on his way to Kaetés Private Natural Heritage Reserve (RPPN), in the Atlantic Forest, where he monitors wildlife and roadkill in the region. Suddenly, he spotted the lifeless body of a primate on the pavement. It was a buffy-headed marmoset ( Callithrix flaviceps ), a species listed as critically endangered on the International Union for Conservation of Nature (IUCN) Red List . An estimated 2,500 individuals remain in the wild, making it one of the world’s most threatened primates. “It was extremely painful and discouraging,” Falquetto told Mongabay. “We travel through this region every day monitoring wildlife, and we celebrate every encounter with groups of buffy-headed marmosets in the forest.” “Finding an individual in those conditions brings a feeling of sadness and helplessness. Beyond the loss of that animal, the incident reminds us of the impacts our activities have on biodiversity.” About 2,900 kilometers (1,800 miles) away, on the road that leads to Alta Floresta, a small Amazon town in the fa...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 40,
+      "representative_title": "Show HN: Brolly, a plain-text weather forecast site",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（84 points, 30 评论）by jsax"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://brolly.sh/forecast/RWFP2qW8"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "90d1e87202045417",
+          "title": "Show HN: Brolly, a plain-text weather forecast site",
+          "link": "https://brolly.sh/forecast/RWFP2qW8",
+          "normalized_link": "https://brolly.sh/forecast/RWFP2qW8",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T17:34:34+00:00",
+          "summary": "HN 热门讨论（84 points, 30 评论）by jsax",
+          "full_text_snippet": "brolly.sh plain text weather forecast ☂ change location ============================================= Now overcast temperature 17.6C (feels 17.6C) wind 7 (14) mph / uv 0.0 / aqi 18 Today overcast temperature 15C - 22C wind avg 11 mph (gusts 22 mph) precipitation 0mm ============================================= This Week Day        Conditions    Temp    Wind  Precip Yesterday overcast      13-23   9/19  0 *Today overcast      15-22   11/23 0 Sun 26/07 overcast      16-20   12/24 0.4 Mon 27/07 m.clear       14-21   10/20 0 Tue 28/07 overcast      18-25   9/17  0 Wed 29/07 overcast      17-29   6/11  0 Thu 30/07 p.cloudy      16-26   7/12  0 Fri 31/07 p.cloudy      14-23   9/17  0 < Yesterday Today Sun 26/07 > --------------------------------------------- Conditions Time  Conditions         Temp    Wind MPH » show earlier hours (00:00-22:00) 23:00 overcast           18(18)  7/14 <- now < Yesterday Today Sun 26/07 > --------------------------------------------- Precipitation < Yesterday Today Sun 26/07 > --------------------------------------------- UV 4|           #            \n3|          ######        \n2|         ########       \n1|        ###########     \n0+------------------------\n  0     6    12    18 ^ now now 0 (low) peak 3.55 (moderate) @ 11:00 key  0-2 low       3-5 moderate\n     6-8 high      9-10 very high < Yesterday Today Sun 26/07 > --------------------------------------------- Air Quality 40|                        \n30|           #            \n20|########################\n10|########################\n 0+------------------------\n   0     6    12    18 ^ now now 18 (good) peak 25 (fair) @ 11:00 < Yesterday Today Sun 26/07 > --------------------------------------------- Pollen Grass   -------*----------------\nMugwort .......*................\n        0     6    12    18 ^ now . low  - medium  = high  # v.high  * peak now grass 9.8 (medium) now mugwort 4.7 (low) peak grass 18.1 @ 07:00 peak mugwort 7.4 @ 07:00 ============================================= we...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 44,
+      "representative_title": "GM Backs Sodium Ion Batteries for U.S. Grid Storage",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（38 points, 4 评论）by rbanffy"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://spectrum.ieee.org/sodium-ion-battery-peak-energy"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "7bb69774c7809f03",
+          "title": "GM Backs Sodium Ion Batteries for U.S. Grid Storage",
+          "link": "https://spectrum.ieee.org/sodium-ion-battery-peak-energy",
+          "normalized_link": "https://spectrum.ieee.org/sodium-ion-battery-peak-energy",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T21:48:22+00:00",
+          "summary": "HN 热门讨论（38 points, 4 评论）by rbanffy",
+          "full_text_snippet": "Despite setbacks in sodium-ion battery development in the U.S., the startup Peak Energy says it can be the one to finally achieve the ambitious application of using the tech to store energy for the grid. When U.S. start-ups Natron Energy and Bedrock Materials shut down sodium-ion battery operations last year, they joined an ignominious list of more than dozen failed Western battery companies. CATL, based in China and the world’s largest battery company , then dropped a bombshell in April, announcing it would supply 60 gigawatt-hours of sodium-ion cells to the grid storage provider HyperStrong. The largest sodium-ion battery order in history suggested China was on its way, as with lithium-iron phosphate in previous years , to dominating yet another promising chemistry. The Colorado-based Peak Energy insists it can succeed where companies like Natron failed. Company executives say its sodium-ion tech can compete directly with low-cost lithium-iron phosphate (LFP) batteries, which currently dominate grid storage. Unlike Natron, which ran out of money and investors’ patience , Peak Energy has a giant in its corner: General Motors . Like Tesla and other automakers, GM is moving aggressively into grid storage to keep massive battery factories humming in the wake of slumping EV demand. Peak Energy has formed a partnership with the automaker to ultimately deploy sodium-ion batteries at grid scale. In July, the company announced it will build a US $71 million, 17,000 square-meter factory near Sacramento, with capacity to produce 4 GWh of sodium-ion batteries annually, enough to power 4 million homes. Sodium-Ion vs Lithium-Iron Phosphate Batteries As with other sodium-based designs, Peak Energy’s cells can’t yet match the energy density of LFP batteries. Company executives from Peak Energy and GM, which has partnered with Peak to codevelop and manufacture the batteries, freely admit they can’t currently compete with current LFP prices on a per-cell basis. Yet Peak Energy s...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 50,
+      "representative_title": "Multicast TV Distribution on My Home Network",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（11 points, 2 评论）by mrngm"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.apalrd.net/posts/2026/isp_mcast/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "c8344724bb9853f9",
+          "title": "Multicast TV Distribution on My Home Network",
+          "link": "https://www.apalrd.net/posts/2026/isp_mcast/",
+          "normalized_link": "https://www.apalrd.net/posts/2026/isp_mcast",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T20:55:12+00:00",
+          "summary": "HN 热门讨论（11 points, 2 评论）by mrngm",
+          "full_text_snippet": "Today I am taking a look at the weird world of multicast, where packets get delivered more than once, and we route using a backwards routing table. But, once you understand how it works, a whole world of content distribution possibilities open up to you! Inspired by an old video by @TallPaulTech, I’m using live TV distribution as an example of how multicast works, and how it can potentially be a massive upgrade to your network in oddly niche use cases. Video ⌗ Prior Art ⌗ These videos / etc. were very useful to me, or I think you would like them in relation to this: Link-Local Examples ⌗ All of these will work on a local network, but if you are not doing MLD / IGMP snooping, they may cause a generally bad experience (esp. for wireless clients). Basic File (w/o transcoding) ⌗ If your clients can decode the video / audio, you can save a lot of CPU power by sending it as-is, without transcoding. So, here we will take the media, copy the audio and video tracks, mux it into an MPEG-TS transport stream, and send it #-re means realtime #-i bbb.mov is the input file (big buck bunny) #-c:v and -c:a says to copy the video and audio #-f mpegts \"udp://[ff02::69@eth0]:5002?pkt_size=1200\" is the mux and udp output ffmpeg -re -i bbb.mov -c:v copy -c:a copy -f mpegts \"udp://[ff02::69@eth0]:5001?pkt_size=1200\" Basic File (w/ transcoding) ⌗ If your media is in a format that isn’t commonly supported (although if you are playing in VLC you should be able to play any format ever invented), you may need to transcode it. This example uses super basic x264 + aac, and again packs it into an MPEG-TS transport stream. #-re means realtime #-i bbb.mov is the input file (big buck bunny) #-c:v libx264 -preset veryfast -profile:v high -level 4.1 -pix_fmt yuv420p is the video transcode #-c:a aac -b:a 128k is the audio transcode #-f mpegts \"udp://[ff02::69@eth0]:5002?pkt_size=1200\" is the mux and udp output ffmpeg -re -i bbb.mov -c:v libx264 -preset veryfast -profile:v high -level 4.1 -pix_fmt yu...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "representative_title": "《2026能源产业生态报告》发布 风电光伏装机超越火电",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "记者今天（25日）从中国企业改革与发展研究会获悉，《2026能源产业生态报告》正式发布"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910816808457602?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8e6dae7000ddabed",
+          "title": "《2026能源产业生态报告》发布 风电光伏装机超越火电",
+          "link": "https://36kr.com/newsflashes/3910816808457602?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910816808457602?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T09:27:27+00:00",
+          "summary": "记者今天（25日）从中国企业改革与发展研究会获悉，《2026能源产业生态报告》正式发布。报告显示，“十四五”时期，我国风电光伏装机历史性超越火电，核能、生物质能领域领跑全球。“十四五”期间，我国能源产业实现安全保供与绿色低碳转型双向协同发展。2025年全国能源重点项目投资额首超3.5万亿元，同比增长近11%。新能源产业实现跨越式发展，2020至2025年风电光伏装机从5.3亿千瓦增至18.4亿千瓦。核电运行装机总量稳居全球第一，生物质能发电装机连续7年规模全球第一。（央视新闻）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "representative_title": "携程公布五个方面、共十九项整改措施",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "7月25日，携程发布关于落实行政处罚决定整改措施的公告，公布了五个方面、共十九项整改措施"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910756819358855?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "2ae2be80db76754a",
+          "title": "携程公布五个方面、共十九项整改措施",
+          "link": "https://36kr.com/newsflashes/3910756819358855?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910756819358855?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T08:00:10+00:00",
+          "summary": "7月25日，携程发布关于落实行政处罚决定整改措施的公告，公布了五个方面、共十九项整改措施。其中包括立即停止独家合作行为、保障酒店经营者自主经营权；立即停止不合理“全网最低价”要求、保障酒店经营者自主定价权；维护酒店经营者合法权益，持续倾听商家意见与诉求，不断优化商家经营环境；强化消费者权益保护，持续提升服务保障水平；加强合规建设，健全长效机制。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 7,
+      "representative_title": "派拉蒙天舞宣布推迟收购华纳兄弟交易",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "派拉蒙天舞公司24日宣布同意推迟收购华纳兄弟探索公司的交易"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910698042643844?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e5a93a36a9cad756",
+          "title": "派拉蒙天舞宣布推迟收购华纳兄弟交易",
+          "link": "https://36kr.com/newsflashes/3910698042643844?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910698042643844?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T07:35:06+00:00",
+          "summary": "派拉蒙天舞公司24日宣布同意推迟收购华纳兄弟探索公司的交易。该项被广泛认为将改变美国娱乐、媒体等多个行业格局的交易目前正面临严峻法律挑战。派拉蒙天舞是在经过数轮交锋和不断提高收购报价后，才最终击败流媒体巨头奈飞。华纳兄弟探索公司股东4月23日投票批准了派拉蒙天舞提出的收购协议。这笔交易原计划在今年第三季度完成。提交给美国证券监管机构的文件显示，若交易延期，派拉蒙天舞公司或将付出高昂代价。（新华社）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "policy",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 8,
+      "representative_title": "VC价格一个多月涨幅超40%，厂商限量供货",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "百川盈孚数据显示，7月24日VC均价为20万元/吨，近一个多月涨幅超40%；其中7月23日单日跳涨2万元/吨，时隔4年多再破20万元/吨关口"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910693301654656?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d5805b804ca16875",
+          "title": "VC价格一个多月涨幅超40%，厂商限量供货",
+          "link": "https://36kr.com/newsflashes/3910693301654656?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910693301654656?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T07:07:36+00:00",
+          "summary": "百川盈孚数据显示，7月24日VC均价为20万元/吨，近一个多月涨幅超40%；其中7月23日单日跳涨2万元/吨，时隔4年多再破20万元/吨关口。受产品涨价刺激，A股VC板块迎来大涨。7月23日，孚日股份等多股涨停。“明显感觉供应紧张起来了，目前大多数VC厂商都限量供货，不再是想要多少就能拿到多少。”华中地区一位电解液企业相关负责人告诉记者，现阶段VC厂都很强势，账款哪怕逾期一天，第二天就停止发货了。（证券时报）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 9,
+      "representative_title": "“景德镇手工瓷业遗存”申遗成功！我国世界遗产达61项",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "北京时间7月25日，在韩国釜山举行的第48届世界遗产大会上，由我国申报的“景德镇手工瓷业遗存”项目经世界遗产委员会审议，成功列入《世界遗产名录》"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910543068009602?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "2e00dd52fea40770",
+          "title": "“景德镇手工瓷业遗存”申遗成功！我国世界遗产达61项",
+          "link": "https://36kr.com/newsflashes/3910543068009602?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910543068009602?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T05:47:14+00:00",
+          "summary": "北京时间7月25日，在韩国釜山举行的第48届世界遗产大会上，由我国申报的“景德镇手工瓷业遗存”项目经世界遗产委员会审议，成功列入《世界遗产名录》。这标志着这座享有“千年瓷都”美誉的历史文化名城，正式斩获全球最高等级的文化认证，成为我国第61项世界遗产。（央视新闻）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 11,
+      "representative_title": "一审判决支付工程款2449.18万元 翰博高新：不会产生重大不利影响",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "7月24日晚间，翰博高新材料（合肥）股份有限公司（以下简称“翰博高新”）发布公告称，公司及全资子公司博讯光电科技（合肥）有限公司（以下简称“博讯光电”）与陕西建工第一建设集团有限公司（以下简称“陕建一建集团”）之间的工程施工合同纠纷，已由合肥市瑶海区人民法院作出一审判决"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910444488709513?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8484ec2aeedc9ca5",
+          "title": "一审判决支付工程款2449.18万元 翰博高新：不会产生重大不利影响",
+          "link": "https://36kr.com/newsflashes/3910444488709513?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910444488709513?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T03:48:40+00:00",
+          "summary": "7月24日晚间，翰博高新材料（合肥）股份有限公司（以下简称“翰博高新”）发布公告称，公司及全资子公司博讯光电科技（合肥）有限公司（以下简称“博讯光电”）与陕西建工第一建设集团有限公司（以下简称“陕建一建集团”）之间的工程施工合同纠纷，已由合肥市瑶海区人民法院作出一审判决。公告显示，根据瑶海区人民法院送达的《民事判决书》，一审判决被告博讯光电支付工程欠款2449.18万元及相应逾期付款损失，同时驳回原告陕建一建集团其他诉讼请求。（证券日报）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 13,
+      "representative_title": "北汽集团：坚定看好中国资本市场发展前景，全力支持控股上市公司高质量发展",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "北汽集团发文称，坚信中国经济长期向好基本面，坚定看好中国资本市场发展前景，全力支持控股上市公司高质量发展"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910437664920964?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "ed3c9dc556fda4cd",
+          "title": "北汽集团：坚定看好中国资本市场发展前景，全力支持控股上市公司高质量发展",
+          "link": "https://36kr.com/newsflashes/3910437664920964?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910437664920964?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T03:23:44+00:00",
+          "summary": "北汽集团发文称，坚信中国经济长期向好基本面，坚定看好中国资本市场发展前景，全力支持控股上市公司高质量发展。7月24日，北汽蓝谷、福田汽车、渤海汽车同步发布增持公告，北汽集团拟增持北汽蓝谷股份5000万元至1亿元、福田汽车股份5000万元至1亿元、渤海汽车股份2500万元至5000万元，合计增持金额不超过2.5亿元。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 14,
+      "representative_title": "携程回应被处罚：诚恳接受、坚决服从",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "携程7月25日发布关于诚恳接受国家市场监督管理总局行政处罚决定的公告：今日，我们收到《国家市场监督管理总局行政处罚决定书》"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910496040555652?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "ef02e9d9ed5d3be1",
+          "title": "携程回应被处罚：诚恳接受、坚决服从",
+          "link": "https://36kr.com/newsflashes/3910496040555652?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910496040555652?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T03:22:16+00:00",
+          "summary": "携程7月25日发布关于诚恳接受国家市场监督管理总局行政处罚决定的公告：今日，我们收到《国家市场监督管理总局行政处罚决定书》。对此，我们诚恳接受、坚决服从，并将严格对照监管要求，逐项推进、系统落实各项整改工作，确保各项措施执行到位。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 16,
+      "representative_title": "穆迪警告AI投资狂潮冲击科技巨头财务稳健性 微软、甲骨��等公司自由现金流承压",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "随着全球科技巨头竞相加码人工智能基础设施建设，穆迪评级警告称，AI投资热潮正侵蚀大型云计算服务商的自由现金流，并推高资产负债表风险，未来投资者将更加关注这些企业能否从巨额AI投入中获得足够回报"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3910433082545536?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "3cb747a59f203602",
+          "title": "穆迪警告AI投资狂潮冲击科技巨头财务稳健性 微软、甲骨��等公司自由现金流承压",
+          "link": "https://36kr.com/newsflashes/3910433082545536?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3910433082545536?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-07-25T03:00:00+00:00",
+          "summary": "随着全球科技巨头竞相加码人工智能基础设施建设，穆迪评级警告称，AI投资热潮正侵蚀大型云计算服务商的自由现金流，并推高资产负债表风险，未来投资者将更加关注这些企业能否从巨额AI投入中获得足够回报。穆迪在本周发布的研究报告中表示，包括微软(MSFT.US)、亚马逊(AMZN.US)、谷歌母公司Alphabet(GOOGL.US)、Meta(META.US)、甲骨文(ORCL.US)及CoreWeave(CRWV.US)在内的六家科技企业，正从过去依赖软件、知识产权和云服务的“轻资产”商业模式，转向需要大规模建设数据中心等基础设施的“重资产”模式。（财联社）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 30,
+      "representative_title": "Stolen Buttons",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（490 points, 115 评论）by Gecko4072"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://anatolyzenkov.com/stolen-buttons"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8f0f87aebd770611",
+          "title": "Stolen Buttons",
+          "link": "https://anatolyzenkov.com/stolen-buttons",
+          "normalized_link": "https://anatolyzenkov.com/stolen-buttons",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-20T09:23:42+00:00",
+          "summary": "HN 热门讨论（490 points, 115 评论）by Gecko4072",
+          "full_text_snippet": "HN 热门讨论（490 points, 115 评论）by Gecko4072",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 31,
+      "representative_title": "Open-weight AI is having its Kubernetes moment",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（275 points, 217 评论）by tknaup"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://tobi.knaup.me/2026-07-25-open-weight-ai-is-having-its-kubernetes-moment/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d923a364b09ddb01",
+          "title": "Open-weight AI is having its Kubernetes moment",
+          "link": "https://tobi.knaup.me/2026-07-25-open-weight-ai-is-having-its-kubernetes-moment/",
+          "normalized_link": "https://tobi.knaup.me/2026-07-25-open-weight-ai-is-having-its-kubernetes-moment",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T14:49:49+00:00",
+          "summary": "HN 热门讨论（275 points, 217 评论）by tknaup",
+          "full_text_snippet": "HN 热门讨论（275 points, 217 评论）by tknaup",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 33,
+      "representative_title": "Bitchat is now on Radicle",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（188 points, 116 评论）by h1watt"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://radicle.network/nodes/rosa.radicle.network/rad%3Az2v9tRJz1oknFAqCSY5W5c76nVvm6"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8efbc95d8012b9e6",
+          "title": "Bitchat is now on Radicle",
+          "link": "https://radicle.network/nodes/rosa.radicle.network/rad%3Az2v9tRJz1oknFAqCSY5W5c76nVvm6",
+          "normalized_link": "https://radicle.network/nodes/rosa.radicle.network/rad%3Az2v9tRJz1oknFAqCSY5W5c76nVvm6",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T13:18:49+00:00",
+          "summary": "HN 热门讨论（188 points, 116 评论）by h1watt",
+          "full_text_snippet": "Javascript is disabled on your browser. Please enable Javascript to make use of this site.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 35,
+      "representative_title": "The Dark Night of Mathematics",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（136 points, 156 评论）by rmdmphilosopher"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://kirwinhampshire.substack.com/p/the-dark-night-of-mathematics"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "b1969cd7e76cd75c",
+          "title": "The Dark Night of Mathematics",
+          "link": "https://kirwinhampshire.substack.com/p/the-dark-night-of-mathematics",
+          "normalized_link": "https://kirwinhampshire.substack.com/p/the-dark-night-of-mathematics",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T15:54:59+00:00",
+          "summary": "HN 热门讨论（136 points, 156 评论）by rmdmphilosopher",
+          "full_text_snippet": "HN 热门讨论（136 points, 156 评论）by rmdmphilosopher",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 37,
+      "representative_title": "Tile's security is so bad it's a feature for stalkers",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（115 points, 37 评论）by sambellll"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://blog.adafruit.com/2026/03/05/tiles-security-is-so-bad-its-a-feature-for-stalkers/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "da2075ad7185e7a1",
+          "title": "Tile's security is so bad it's a feature for stalkers",
+          "link": "https://blog.adafruit.com/2026/03/05/tiles-security-is-so-bad-its-a-feature-for-stalkers/",
+          "normalized_link": "https://blog.adafruit.com/2026/03/05/tiles-security-is-so-bad-its-a-feature-for-stalkers",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T18:18:42+00:00",
+          "summary": "HN 热门讨论（115 points, 37 评论）by sambellll",
+          "full_text_snippet": "HN 热门讨论（115 points, 37 评论）by sambellll",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 43,
+      "representative_title": "Bringing PyTorch Monarch to AMD GPUs",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（54 points, 6 评论）by gmays"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://pytorch.org/blog/bringing-pytorch-monarch-to-amd-gpus-single-controller-distributed-training-on-rocm/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "02e76e7bb346eee4",
+          "title": "Bringing PyTorch Monarch to AMD GPUs",
+          "link": "https://pytorch.org/blog/bringing-pytorch-monarch-to-amd-gpus-single-controller-distributed-training-on-rocm/",
+          "normalized_link": "https://pytorch.org/blog/bringing-pytorch-monarch-to-amd-gpus-single-controller-distributed-training-on-rocm",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T15:55:27+00:00",
+          "summary": "HN 热门讨论（54 points, 6 评论）by gmays",
+          "full_text_snippet": "HN 热门讨论（54 points, 6 评论）by gmays",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 45,
+      "representative_title": "My web version of Mars MIPS, now has built-in C compiler",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（30 points, 6 评论）by nenepbl"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://webmars.nfiles.top/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "81c44679e5297687",
+          "title": "My web version of Mars MIPS, now has built-in C compiler",
+          "link": "https://webmars.nfiles.top/",
+          "normalized_link": "https://webmars.nfiles.top",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T13:42:28+00:00",
+          "summary": "HN 热门讨论（30 points, 6 评论）by nenepbl",
+          "full_text_snippet": "Loading webMARS Preparing modules...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 51,
+      "representative_title": "Show HN: Writemark, a dependency free web component for inline Markdown editing",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（10 points, 5 评论）by _boffin_"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://news.ycombinator.com/item?id=49051130"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "943d77d50d4e72b9",
+          "title": "Show HN: Writemark, a dependency free web component for inline Markdown editing",
+          "link": "https://news.ycombinator.com/item?id=49051130",
+          "normalized_link": "https://news.ycombinator.com/item?id=49051130",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-25T20:18:54+00:00",
+          "summary": "HN 热门讨论（10 points, 5 评论）by _boffin_",
+          "full_text_snippet": "HN 热门讨论（10 points, 5 评论）by _boffin_",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_raw": 52,
+    "total_deduped": 52,
+    "total_clusters": 52,
+    "generated_at": "2026-07-25T22:36:49.715119+00:00",
+    "dedup_details": [
+      {
+        "title": "角落新声｜数字与实体、有线与无线：我的多场景有声角落构建",
+        "link": "https://sspai.com/post/112232",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "赛博对话｜对话潘玮哲x老麦煮机：电子产品在悄悄变贵！",
+        "link": "https://sspai.com/post/112679",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "派早报：Acrab 发布边缘 AI 芯片 GELIX 1 和个人 AI 系统 Agent Box 等",
+        "link": "https://sspai.com/post/112677",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "小小云台，稳住「口袋电影机」：DJI Pocket 4P 漫谈",
+        "link": "https://sspai.com/post/112428",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Parti：一个零门槛联机游戏平台，凭什么不需要服务器？",
+        "link": "https://sspai.com/post/112545",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How news organizations are using AI to advance their vital missions",
+        "link": "https://openai.com/index/how-news-organizations-are-using-ai",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing OpenAI Presence",
+        "link": "https://openai.com/index/introducing-openai-presence",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "NTT DATA Group cuts incident analysis to 30 minutes with Codex",
+        "link": "https://openai.com/index/ntt-data",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "David Vélez and Robin Vince join the boards of the OpenAI Foundation and OpenAI Group PBC",
+        "link": "https://openai.com/index/david-velez-robin-vince-join-openai-boards",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Safety and alignment in an era of long-horizon models",
+        "link": "https://openai.com/index/safety-alignment-long-horizon-models",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A scorecard for the AI age",
+        "link": "https://openai.com/index/a-scorecard-for-the-ai-age",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Why teens deserve access to safe AI",
+        "link": "https://openai.com/index/why-teens-deserve-access-safe-ai",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How Codex became a collaborator for OpenAI’s creative team",
+        "link": "https://openai.com/index/codex-collaborator-creative-team",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How Cars24 scales conversations and builds faster with OpenAI",
+        "link": "https://openai.com/index/cars24",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The US is advancing AI safety through state and federal action",
+        "link": "https://openai.com/index/advancing-ai-safety-through-state-and-federal-action",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GPT-Red: Unlocking Self-Improvement for Robustness",
+        "link": "https://openai.com/index/unlocking-self-improvement-gpt-red",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How to manage AI investments in the agentic era",
+        "link": "https://openai.com/index/managing-ai-investments-in-agentic-era",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How sales teams use ChatGPT Work",
+        "link": "https://openai.com/academy/codex-for-work/how-sales-teams-use-codex",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Getting started with ChatGPT",
+        "link": "https://openai.com/academy/getting-started",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GPT-5.6: Frontier intelligence that scales with your ambition",
+        "link": "https://openai.com/index/gpt-5-6",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "ChatGPT is now a partner for your most ambitious work",
+        "link": "https://openai.com/index/chatgpt-for-your-most-ambitious-work",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GPT-5.5 Bio Bug Bounty",
+        "link": "https://openai.com/index/bio-bug-bounty",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Separating signal from noise in coding evaluations",
+        "link": "https://openai.com/index/separating-signal-from-noise-coding-evaluations",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Helping K–12 educators build practical AI skills",
+        "link": "https://openai.com/index/k-12-educators-practical-skills",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
+        "link": "https://deepmind.google/blog/introducing-gemini-36-flash-35-flash-lite-and-35-flash-cyber/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Our approach to bioresilience",
+        "link": "https://deepmind.google/blog/our-approach-to-bioresilience/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Empowering India’s next generation of innovators with ATL Saathi",
+        "link": "https://deepmind.google/blog/empowering-indias-next-generation-of-innovators-with-atl-saathi/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Google DeepMind and A24 announce first-of-its-kind research partnership",
+        "link": "https://deepmind.google/blog/google-deepmind-and-a24-announce-first-of-its-kind-research-partnership/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing computer use in Gemini 3.5 Flash",
+        "link": "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Unlocking UK house-building with AI-accelerated planning",
+        "link": "https://deepmind.google/blog/unlocking-uk-house-building-with-ai-accelerated-planning/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Securing the future of AI agents",
+        "link": "https://deepmind.google/blog/securing-the-future-of-ai-agents/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Fluid, natural voice translation with Gemini 3.5 Live Translate",
+        "link": "https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Gemma 4 12B: a unified, encoder-free multimodal model",
+        "link": "https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Powering the future of robotics in Europe",
+        "link": "https://deepmind.google/blog/powering-the-future-of-robotics-in-europe/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Measuring the impact of learning with AI in Sierra Leone and beyond",
+        "link": "https://deepmind.google/blog/measuring-the-impact-of-learning-with-ai-in-sierra-leone-and-beyond/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re launching the Google DeepMind Accelerator program in Asia Pacific to tackle environmental risks",
+        "link": "https://deepmind.google/blog/were-launching-the-google-deepmind-accelerator-program-in-asia-pacific-to-tackle-environmental-risks/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Fast-tracking genetic leads to reverse cellular aging",
+        "link": "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Simulate real-world places with Project Genie and Street View",
+        "link": "https://deepmind.google/blog/simulate-real-world-places-with-project-genie-and-street-view/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Gemini Omni",
+        "link": "https://deepmind.google/blog/introducing-gemini-omni/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Google Antigravity 2.0",
+        "link": "https://deepmind.google/blog/introducing-google-antigravity-2-0/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini for Science: AI experiments and tools for a new era of discovery",
+        "link": "https://deepmind.google/blog/gemini-for-science-ai-experiments-and-tools-for-a-new-era-of-discovery/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Making it easier to understand how content was created and edited",
+        "link": "https://deepmind.google/blog/making-it-easier-to-understand-how-content-was-created-and-edited/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Strengthening Singapore’s AI Future: A New National Partnership",
+        "link": "https://deepmind.google/blog/strengthening-singapores-ai-future-a-new-national-partnership/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Finding the molecular switches behind new infectious diseases",
+        "link": "https://deepmind.google/blog/finding-the-molecular-switches-behind-new-infectious-diseases/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Opening new paths in aging research",
+        "link": "https://deepmind.google/blog/opening-new-paths-in-aging-research/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Accelerating discovery of liver disease mechanisms",
+        "link": "https://deepmind.google/blog/accelerating-discovery-of-liver-disease-mechanisms/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Uniting biological toolkits for a new approach to ALS",
+        "link": "https://deepmind.google/blog/uniting-biological-toolkits-for-a-new-approach-to-als/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Uncovering repurposed medicines to fight liver fibrosis",
+        "link": "https://deepmind.google/blog/uncovering-repurposed-medicines-to-fight-liver-fibrosis/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How WeatherNext helped the National Hurricane Center better predict Hurricane Melissa’s historic landfall in Jamaica",
+        "link": "https://deepmind.google/blog/how-weathernext-helped-the-national-hurricane-center-better-predict-hurricane-melissas-historic-landfall-in-jamaica/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "3 Google updates from Galaxy Unpacked 2026",
+        "link": "https://blog.google/products-and-platforms/platforms/android/galaxy-unpacked-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Connect more of your apps to Search",
+        "link": "https://blog.google/products-and-platforms/products/search/connected-apps/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Create, edit and star in videos with two Google Vids updates",
+        "link": "https://blog.google/products-and-platforms/products/workspace/gemini-omni-personal-avatars/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Celebrating 25 years of visual search innovation",
+        "link": "https://blog.google/products-and-platforms/products/search/google-images-25th-anniversary/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Expanding Managed Agents in Gemini API: background tasks, remote MCP and more",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Unlocking Britain’s next era of productivity: Building a nation of AI trailblazers",
+        "link": "https://blog.google/company-news/inside-google/around-the-globe/google-europe/united-kingdom/unlocking-britains-next-era-of-productivity-building-a-nation-of-ai-trailblazers/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Ask an AI expert: What exactly is the full stack?",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/full-stack-ai-explainer/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Our latest Google Finance upgrades, including a new app",
+        "link": "https://blog.google/products-and-platforms/products/search/google-finance-updates-june-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "New research shows how AMIE, our medical AI, could help manage health conditions.",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-for-disease-management-in-nature/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re strengthening our presence in Alabama through new investments and community support.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/alabama-investment-june-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Our new community investments in Virginia support local jobs and expand energy affordability.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/virginia-community-investments/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The latest AI news we announced in May 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "5 ways Google Search can level up your thrift and vintage shopping",
+        "link": "https://blog.google/products-and-platforms/products/search/thrifting-tips/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How we used Gemini to build Google I/O 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "9 demos of Gemini Omni and Gemini 3.5 in action",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-omni-3-5-videos/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Check out real-life AI prototypes from the Futures Lab.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/university-waterloo-labs/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Catch up on 12 major I/O 2026 moments",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-keynote-moment-videos/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Bringing Nunchaku 4-bit Diffusion Inference to Diffusers",
+        "link": "https://huggingface.co/blog/nunchaku-diffusers",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Grabette: an open system to record robot-manipulation data",
+        "link": "https://huggingface.co/blog/grabette",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Newer Models, Same Advantage",
+        "link": "https://huggingface.co/blog/Dharma-AI/newer-models-same-advantages",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Security incident disclosure — July 2026",
+        "link": "https://huggingface.co/blog/security-incident-july-2026",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "What building Shippy taught us about building agents",
+        "link": "https://huggingface.co/blog/allenai/shippy-tech-blog",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Model Routing Is Simple. Until It Isn’t.",
+        "link": "https://huggingface.co/blog/ibm-research/model-routing-is-simple-until-it-isnt",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Welcome Inkling by Thinking Machines",
+        "link": "https://huggingface.co/blog/thinkingmachines-inkling",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Profiling in PyTorch (Part 3): Attention is all you profile",
+        "link": "https://huggingface.co/blog/torch-attention-profile",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Native-speed vLLM transformers modeling backend",
+        "link": "https://huggingface.co/blog/native-speed-vllm-transformers-backend",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "LeRobot v0.6.0: Imagine, Evaluate, Improve",
+        "link": "https://huggingface.co/blog/lerobot-release-v060",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "PRX Part 4: Our Data Strategy",
+        "link": "https://huggingface.co/blog/Photoroom/prx-part4-data",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "🤗 Kernels: Major Updates",
+        "link": "https://huggingface.co/blog/revamped-kernels",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Hugging Face and Cerebras bring Gemma 4 to real-time voice AI",
+        "link": "https://huggingface.co/blog/cerebras-gemma4-voice-ai",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "ScarfBench: Benchmarking AI Agents for Enterprise Java Framework Migration",
+        "link": "https://huggingface.co/blog/ibm-research/scarfbench",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Why Specialization Is Inevitable",
+        "link": "https://huggingface.co/blog/Dharma-AI/why-specialization-is-inevitable",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Featuring Every Eval Ever Results on Hugging Face Model Pages",
+        "link": "https://huggingface.co/blog/eee-community-evals",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DiScoFormer: One transformer for density and score, across distributions",
+        "link": "https://huggingface.co/blog/allenai/discoformer",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Run a vLLM Server on HF Jobs in One Command",
+        "link": "https://huggingface.co/blog/vllm-jobs",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Accelerating Transformers Fine-Tuning with NVIDIA NeMo AutoModel",
+        "link": "https://huggingface.co/blog/nvidia/accelerating-fine-tuning-nvidia-nemo-automodel",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing the FFASR Leaderboard: Benchmarking ASR in the Real World",
+        "link": "https://huggingface.co/blog/ffasr-leaderboard",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Shipping huggingface_hub every week with AI, open tools, and a human in the loop",
+        "link": "https://huggingface.co/blog/huggingface-hub-release-ci",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "PP-OCRv6 on Hugging Face: 50-Language OCR from 1.5M to 34.5M Parameters",
+        "link": "https://huggingface.co/blog/PaddlePaddle/pp-ocrv6",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We got local models to triage the OpenClaw repo for FREE!*",
+        "link": "https://huggingface.co/blog/local-models-pr-triage",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Why Cognition bought Poke: AI personality is becoming a competitive advantage",
+        "link": "https://techcrunch.com/2026/07/24/why-cognition-bought-poke-ai-personality-is-becoming-a-competitive-advantage/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Anthropic launches Opus 5",
+        "link": "https://techcrunch.com/2026/07/24/anthropic-launches-opus-5/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Bluesky’s AI assistant Attie expands into an open social research tool",
+        "link": "https://techcrunch.com/2026/07/24/blueskys-ai-assistant-attie-expands-into-an-open-social-research-tool/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Midjourney acquired the astrology app Co-Star",
+        "link": "https://techcrunch.com/2026/07/24/midjourney-acquired-the-astrology-app-co-star/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "‘AI communism’, rogue models, and the why Kimi K3 spooked Wall Street",
+        "link": "https://techcrunch.com/podcast/ai-communism-rogue-models-and-the-why-kimi-k3-spooked-wall-street/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How AI guardrails are impeding the work of offensive cybersecurity researchers",
+        "link": "https://techcrunch.com/2026/07/23/how-ai-guardrails-are-impeding-the-work-of-offensive-cybersecurity-researchers/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "AMD takes on Nvidia with its Helios AI rack-scale system",
+        "link": "https://techcrunch.com/2026/07/23/amd-takes-on-nvidia-with-its-helios-ai-rack-scale-system/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Anthropic updates Claude voice mode with more capable models",
+        "link": "https://techcrunch.com/2026/07/23/anthropic-updates-claude-voice-mode-with-more-capable-models/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "AegisAI, founded by former Google security execs, lands $36M to stop AI-driven spear phishing",
+        "link": "https://techcrunch.com/2026/07/23/aegisai-founded-by-former-google-security-execs-lands-36m-to-stop-ai-driven-spear-phishing/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Runway launches AI model router as generative media gets crowded",
+        "link": "https://techcrunch.com/2026/07/23/runway-bets-on-ai-model-routing-as-generative-media-gets-crowded/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "OpenAI makes ChatGPT Health available to all US users",
+        "link": "https://techcrunch.com/2026/07/23/openai-makes-chatgpt-health-available-to-all-u-s-users/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Meta launched a new AI optimism ad set to a song about human extinction",
+        "link": "https://techcrunch.com/2026/07/23/meta-launched-a-new-ai-optimism-ad-set-to-a-song-about-human-extinction/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Nvidia is sending GPUs to the moon",
+        "link": "https://techcrunch.com/2026/07/23/nvidia-is-sending-gpus-to-the-moon/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "AI chip startup Etched defies skeptics, hits $10.3B valuation from big-name investors",
+        "link": "https://techcrunch.com/2026/07/23/ai-chip-startup-etched-defies-skeptics-hits-10-3b-valuation-from-big-name-investors/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.",
+        "link": "https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Railway secures $100 million to challenge AWS with AI-native cloud infrastructure",
+        "link": "https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Claude Code costs up to $200 a month. Goose does the same thing for free.",
+        "link": "https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews",
+        "link": "https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI",
+        "link": "https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "ByteDance Introduces Astra: A Dual-Model Architecture for Autonomous Robot Navigation",
+        "link": "https://syncedreview.com/2025/06/24/bytedance-introduces-astra-a-dual-model-architecture-for-autonomous-robot-navigation/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "MIT Researchers Unveil “SEAL”: A New Step Towards Self-Improving AI",
+        "link": "https://syncedreview.com/2025/06/16/mit-researchers-unveil-seal-a-new-step-towards-self-improving-ai/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution",
+        "link": "https://syncedreview.com/2025/06/16/researchers-from-psu-and-duke-introduce-multi-agent-systems-automated-failure-attribution/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Adobe Research Unlocking Long-Term Memory in Video World Models with State-Space Models",
+        "link": "https://syncedreview.com/2025/05/28/adobe-research-unlocking-long-term-memory-in-video-world-models-with-state-space-models/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DeepSeek-V3 New Paper is coming! Unveiling the Secrets of Low-Cost Large Model Training through Hardware-Aware Co-design",
+        "link": "https://syncedreview.com/2025/05/15/deepseek-v3-new-paper-is-coming-unveiling-the-secrets-of-low-cost-large-model-training-through-hardware-aware-co-design/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DeepSeek Unveils DeepSeek-Prover-V2: Advancing Neural Theorem Proving with Recursive Proof Search and a New Benchmark",
+        "link": "https://syncedreview.com/2025/04/30/deepseek-unveils-deepseek-prover-v2-advancing-neural-theorem-proving-with-recursive-proof-search-and-a-new-benchmark/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Can GRPO be 10x Efficient? Kwai AI’s SRPO Suggests Yes with SRPO",
+        "link": "https://syncedreview.com/2025/04/23/can-grpo-be-10x-efficient-kwai-ais-srpo-suggests-yes-with-srpo/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Zhipu.AI’s Open-Source Power Play: Blazing-Fast GLM Models & Global Expansion Ahead of Potential IPO",
+        "link": "https://syncedreview.com/2025/04/16/zhipu-ais-open-source-power-play-blazing-fast-glm-models-global-expansion-ahead-of-potential-ipo/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DeepSeek Signals Next-Gen R2 Model, Unveils Novel Approach to Scaling Inference with SPCT",
+        "link": "https://syncedreview.com/2025/04/11/deepseek-signals-next-gen-r2-model-unveils-novel-approach-to-scaling-inference-with-spct/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How to organize 3 acquired companies into one coherent website",
+        "link": "https://littlelanguagemodels.com/how-to-structure-your-sites-after-a-big-acquisition/",
+        "source": "Hacker News",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Conway's Game of Life, in real life",
+        "link": "https://lcamtuf.coredump.cx/blog/conway/",
+        "source": "Hacker News",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "美国具身也没成熟！PI：中国公司何必总当“中国版XX”｜RSS 2026",
+        "link": "https://www.qbitai.com/2026/07/460542.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2085,
+        "threshold": 0.2,
+        "matched_story_title": "刚刚，机器人顶会RSS三项最佳论文出炉！708篇送审，仅8篇杀入决赛",
+        "matched_episode_id": "2026-07-20",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story '刚刚，机器人顶会RSS三项最佳论文出炉！708篇送审，仅8篇杀入决赛' from 2026-07-20."
+      },
+      {
+        "title": "全新统一流式架构，Vivix灵动时刻正式发布首个实时互动模型",
+        "link": "https://www.qbitai.com/2026/07/460174.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2336,
+        "threshold": 0.2,
+        "matched_story_title": "高德发布通用世界模型工坊ABot-World Studio：5090单卡可生成小时级实时交互式视频与3D场景",
+        "matched_episode_id": "2026-07-15",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story '高德发布通用世界模型工坊ABot-World Studio：5090单卡可生成小时级实时交互式视频与3D场景' from 2026-07-15."
+      },
+      {
+        "title": "合肥又押中AI独角兽：多模态赛道，3个月融了21亿",
+        "link": "https://www.qbitai.com/2026/07/460154.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "合肥又押中AI独角兽：多模态赛道，3个月融了21亿",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story '合肥又押中AI独角兽：多模态赛道，3个月融了21亿' from 2026-07-25."
+      },
+      {
+        "title": "国产世界模型登顶李飞飞团队榜单！适配国产昇腾算力、代码权重全开源",
+        "link": "https://www.qbitai.com/2026/07/460041.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "国产世界模型登顶李飞飞团队榜单！适配国产昇腾算力、代码权重全开源",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story '国产世界模型登顶李飞飞团队榜单！适配国产昇腾算力、代码权重全开源' from 2026-07-25."
+      },
+      {
+        "title": "菲尔兹奖得主王虹，也发过NeurIPS",
+        "link": "https://www.qbitai.com/2026/07/460042.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "菲尔兹奖得主王虹，也发过NeurIPS",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story '菲尔兹奖得主王虹，也发过NeurIPS' from 2026-07-25."
+      },
+      {
+        "title": "抢跑！全球化新品牌进入AI时刻，何以定胜负？ | 2026全球化新品牌AI竞争力大会实录",
+        "link": "https://www.qbitai.com/2026/07/459432.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "抢跑！全球化新品牌进入AI时刻，何以定胜负？ | 2026全球化新品牌AI竞争力大会实录",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story '抢跑！全球化新品牌进入AI时刻，何以定胜负？ | 2026全球化新品牌AI竞争力大会实录' from 2026-07-25."
+      },
+      {
+        "title": "今年上半年新疆霍尔果斯口岸进出口货运量创新高",
+        "link": "https://36kr.com/newsflashes/3910803462559108?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2436,
+        "threshold": 0.2,
+        "matched_story_title": "三季度起班次加密 天津经霍尔果斯口岸图定中亚班列运力翻倍",
+        "matched_episode_id": "2026-07-19",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story '三季度起班次加密 天津经霍尔果斯口岸图定中亚班列运力翻倍' from 2026-07-19."
+      },
+      {
+        "title": "SK集团与英伟达通过一项涵盖人工智能工厂和下一代内存的5000亿美元以上战略合作项目",
+        "link": "https://36kr.com/newsflashes/3910690882507907?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2475,
+        "threshold": 0.2,
+        "matched_story_title": "英伟达发布全新人工智能模型，并扩建日本实体人工智能产业生态",
+        "matched_episode_id": "2026-07-17",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story '英伟达发布全新人工智能模型，并扩建日本实体人工智能产业生态' from 2026-07-17."
+      },
+      {
+        "title": "三星电子与博通达成价值2000亿美元的半导体供应合作协议",
+        "link": "https://36kr.com/newsflashes/3910562246645128?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2496,
+        "threshold": 0.2,
+        "matched_story_title": "三星、SK海力士据悉将与美国企业签署大额芯片供应协议",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story '三星、SK海力士据悉将与美国企业签署大额芯片供应协议' from 2026-07-25."
+      },
+      {
+        "title": "三星电子、SK海力士将与美国科技巨头推进规模达1375万亿韩元的芯片合作项目",
+        "link": "https://36kr.com/newsflashes/3910551543289216?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3017,
+        "threshold": 0.2,
+        "matched_story_title": "三星、SK海力士据悉将与美国企业签署大额芯片供应协议",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (0.30) >= threshold (0.20) with historical story '三星、SK海力士据悉将与美国企业签署大额芯片供应协议' from 2026-07-25."
+      },
+      {
+        "title": "TCL科技收购广州华星半导体45%股权事宜获深交所审议通过",
+        "link": "https://36kr.com/newsflashes/3910519718270081?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2622,
+        "threshold": 0.2,
+        "matched_story_title": "航锦科技：拟挂牌转让中电华星51%股权",
+        "matched_episode_id": "2026-07-24",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story '航锦科技：拟挂牌转让中电华星51%股权' from 2026-07-24."
+      },
+      {
+        "title": "枣庄财金“一把手”接掌*ST雅博",
+        "link": "https://36kr.com/newsflashes/3910508571579528?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2912,
+        "threshold": 0.2,
+        "matched_story_title": "黑芝麻：周淼怀辞任董事会秘书",
+        "matched_episode_id": "2026-07-18",
+        "detail": "TF-IDF similarity (0.29) >= threshold (0.20) with historical story '黑芝麻：周淼怀辞任董事会秘书' from 2026-07-18."
+      },
+      {
+        "title": "2025年我国数字产业收入39.6万亿元",
+        "link": "https://36kr.com/newsflashes/3910502774101383?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2237,
+        "threshold": 0.2,
+        "matched_story_title": "北京：将布局建设Token工厂，力争下半年新增智能算力5万P",
+        "matched_episode_id": "2026-07-22",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story '北京：将布局建设Token工厂，力争下半年新增智能算力5万P' from 2026-07-22."
+      },
+      {
+        "title": "本周看什么 | 最近值得一看的 13 部作品",
+        "link": "https://sspai.com/post/112692",
+        "source": "少数派",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4969,
+        "threshold": 0.2,
+        "matched_story_title": "本周看什么 | 最近值得一看的 10 部作品",
+        "matched_episode_id": "2026-07-18",
+        "detail": "TF-IDF similarity (0.50) >= threshold (0.20) with historical story '本周看什么 | 最近值得一看的 10 部作品' from 2026-07-18."
+      },
+      {
+        "title": "新玩意 247｜少数派的编辑们最近买了啥？",
+        "link": "https://sspai.com/post/112668",
+        "source": "少数派",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.6382,
+        "threshold": 0.2,
+        "matched_story_title": "新玩意 246｜少数派的编辑们最近买了啥？",
+        "matched_episode_id": "2026-07-17",
+        "detail": "TF-IDF similarity (0.64) >= threshold (0.20) with historical story '新玩意 246｜少数派的编辑们最近买了啥？' from 2026-07-17."
+      },
+      {
+        "title": "让 Windows 顺眼又省心：我的新设备配置经验",
+        "link": "https://sspai.com/post/111300",
+        "source": "少数派",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4125,
+        "threshold": 0.2,
+        "matched_story_title": "Parti：一个零门槛联机游戏平台，凭什么不需要服务器？",
+        "matched_episode_id": "2026-07-23",
+        "detail": "TF-IDF similarity (0.41) >= threshold (0.20) with historical story 'Parti：一个零门槛联机游戏平台，凭什么不需要服务器？' from 2026-07-23."
+      },
+      {
+        "title": "Launching Health in ChatGPT",
+        "link": "https://openai.com/index/health-in-chatgpt",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4416,
+        "threshold": 0.2,
+        "matched_story_title": "OpenAI makes ChatGPT Health available to all US users",
+        "matched_episode_id": "2026-07-24",
+        "detail": "TF-IDF similarity (0.44) >= threshold (0.20) with historical story 'OpenAI makes ChatGPT Health available to all US users' from 2026-07-24."
+      },
+      {
+        "title": "Building AI infrastructure with the Effingham County community",
+        "link": "https://openai.com/index/building-ai-infrastructure-with-the-effingham-county-community",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2054,
+        "threshold": 0.2,
+        "matched_story_title": "Our new community investments in Virginia support local jobs and expand energy affordability.",
+        "matched_episode_id": "2026-07-12",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Our new community investments in Virginia support local jobs and expand energy affordability.' from 2026-07-12."
+      },
+      {
+        "title": "Advancing the next era of national science",
+        "link": "https://openai.com/index/advancing-the-next-era-of-national-science",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2562,
+        "threshold": 0.2,
+        "matched_story_title": "The US is advancing AI safety through state and federal action",
+        "matched_episode_id": "2026-07-16",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'The US is advancing AI safety through state and federal action' from 2026-07-16."
+      },
+      {
+        "title": "Introducing the ChatGPT for small business program",
+        "link": "https://openai.com/index/introducing-chatgpt-small-business-program",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2577,
+        "threshold": 0.2,
+        "matched_story_title": "ChatGPT is now a partner for your most ambitious work",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'ChatGPT is now a partner for your most ambitious work' from 2026-07-25."
+      },
+      {
+        "title": "OpenAI and Hugging Face partner to address security incident during model evaluation",
+        "link": "https://openai.com/index/hugging-face-model-evaluation-security-incident",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2644,
+        "threshold": 0.2,
+        "matched_story_title": "OpenAI says Hugging Face was breached by its pre-release models",
+        "matched_episode_id": "2026-07-23",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'OpenAI says Hugging Face was breached by its pre-release models' from 2026-07-23."
+      },
+      {
+        "title": "How data science teams use ChatGPT Work",
+        "link": "https://openai.com/academy/codex-for-work/how-data-science-teams-use-codex",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4756,
+        "threshold": 0.2,
+        "matched_story_title": "How sales teams use ChatGPT Work",
+        "matched_episode_id": "2026-07-23",
+        "detail": "TF-IDF similarity (0.48) >= threshold (0.20) with historical story 'How sales teams use ChatGPT Work' from 2026-07-23."
+      },
+      {
+        "title": "Our approach to government and national security partnerships",
+        "link": "https://openai.com/index/government-national-security-partnerships",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2034,
+        "threshold": 0.2,
+        "matched_story_title": "The US is advancing AI safety through state and federal action",
+        "matched_episode_id": "2026-07-16",
+        "detail": "TF-IDF similarity (0.20) >= threshold (0.20) with historical story 'The US is advancing AI safety through state and federal action' from 2026-07-16."
+      },
+      {
+        "title": "Introducing GPT-Live",
+        "link": "https://openai.com/index/introducing-gpt-live",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2532,
+        "threshold": 0.2,
+        "matched_story_title": "Anthropic updates Claude voice mode with more capable models",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'Anthropic updates Claude voice mode with more capable models' from 2026-07-25."
+      },
+      {
+        "title": "Accelerating the frontiers of scientific discovery: Google’s $40M commitment to the Genesis Mission",
+        "link": "https://deepmind.google/blog/accelerating-the-frontiers-of-scientific-discovery-googles-40m-commitment-to-the-genesis-mission/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2462,
+        "threshold": 0.2,
+        "matched_story_title": "Meta's AI models are powering the first wave of Genesis Mission projects",
+        "matched_episode_id": "2026-07-22",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'Meta's AI models are powering the first wave of Genesis Mission projects' from 2026-07-22."
+      },
+      {
+        "title": "Introducing Gemini 3.5 Flash Cyber",
+        "link": "https://deepmind.google/blog/introducing-gemini-3-5-flash-cyber/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.6352,
+        "threshold": 0.2,
+        "matched_story_title": "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
+        "matched_episode_id": "2026-07-22",
+        "detail": "TF-IDF similarity (0.64) >= threshold (0.20) with historical story 'Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber' from 2026-07-22."
+      },
+      {
+        "title": "Start building with Nano Banana 2 Lite and Gemini Omni Flash",
+        "link": "https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4435,
+        "threshold": 0.2,
+        "matched_story_title": "Introducing Gemini Omni",
+        "matched_episode_id": "2026-07-12",
+        "detail": "TF-IDF similarity (0.44) >= threshold (0.20) with historical story 'Introducing Gemini Omni' from 2026-07-12."
+      },
+      {
+        "title": "Investing in multi-agent AI safety research",
+        "link": "https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2198,
+        "threshold": 0.2,
+        "matched_story_title": "Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution",
+        "matched_episode_id": "2026-07-16",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution' from 2026-07-16."
+      },
+      {
+        "title": "The latest AI news we announced in June 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2288,
+        "threshold": 0.2,
+        "matched_story_title": "Unlocking UK house-building with AI-accelerated planning",
+        "matched_episode_id": "2026-07-16",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'Unlocking UK house-building with AI-accelerated planning' from 2026-07-16."
+      },
+      {
+        "title": "The State of Simulation for Physical AI: An Overview",
+        "link": "https://huggingface.co/blog/nvidia/state-of-simulation-for-physical-ai",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2318,
+        "threshold": 0.2,
+        "matched_story_title": "Show HN: Microcosm Industries – Simulation toys and software microcosms",
+        "matched_episode_id": "2026-07-16",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'Show HN: Microcosm Industries – Simulation toys and software microcosms' from 2026-07-16."
+      },
+      {
+        "title": "Introducing Real World VoiceEQ: Measuring the human quality of voice AI",
+        "link": "https://huggingface.co/blog/real-world-voiceeq",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2504,
+        "threshold": 0.2,
+        "matched_story_title": "Hugging Face and Cerebras bring Gemma 4 to real-time voice AI",
+        "matched_episode_id": "2026-07-24",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'Hugging Face and Cerebras bring Gemma 4 to real-time voice AI' from 2026-07-24."
+      },
+      {
+        "title": "From Hugging Face to Amazon SageMaker Studio in one click",
+        "link": "https://huggingface.co/blog/amazon/one-click-to-sagemaker-studio",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2419,
+        "threshold": 0.2,
+        "matched_story_title": "OpenAI says Hugging Face was breached by its own pre-release models",
+        "matched_episode_id": "2026-07-22",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'OpenAI says Hugging Face was breached by its own pre-release models' from 2026-07-22."
+      },
+      {
+        "title": "Hugging Face Models on Foundry Managed Compute",
+        "link": "https://huggingface.co/blog/microsoft/foundry-managed-compute",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2887,
+        "threshold": 0.2,
+        "matched_story_title": "Featuring Every Eval Ever Results on Hugging Face Model Pages",
+        "matched_episode_id": "2026-07-24",
+        "detail": "TF-IDF similarity (0.29) >= threshold (0.20) with historical story 'Featuring Every Eval Ever Results on Hugging Face Model Pages' from 2026-07-24."
+      },
+      {
+        "title": "Run AI workloads on any cloud, store on Hugging Face: zero-egress storage with SkyPilot",
+        "link": "https://huggingface.co/blog/skypilot-hf-storage",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2077,
+        "threshold": 0.2,
+        "matched_story_title": "Run a vLLM Server on HF Jobs in One Command",
+        "matched_episode_id": "2026-07-12",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Run a vLLM Server on HF Jobs in One Command' from 2026-07-12."
+      },
+      {
+        "title": "Experimenting with the proposed Cross-Origin Storage API in Transformers.js",
+        "link": "https://huggingface.co/blog/cross-origin-storage",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.234,
+        "threshold": 0.2,
+        "matched_story_title": "Apple's new SpeechAnalyzer API, benchmarked against Whisper and its predecessor",
+        "matched_episode_id": "2026-07-14",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'Apple's new SpeechAnalyzer API, benchmarked against Whisper and its predecessor' from 2026-07-14."
+      },
+      {
+        "title": "As US weighs response to Chinese AI, industry urges against broad open-weight restrictions",
+        "link": "https://techcrunch.com/2026/07/24/as-us-weighs-response-to-chinese-ai-industry-urges-against-broad-open-weight-restrictions/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3706,
+        "threshold": 0.2,
+        "matched_story_title": "OpenAI is scared of open-weight models. Should the US be?",
+        "matched_episode_id": "2026-07-21",
+        "detail": "TF-IDF similarity (0.37) >= threshold (0.20) with historical story 'OpenAI is scared of open-weight models. Should the US be?' from 2026-07-21."
+      },
+      {
+        "title": "OpenAI’s new voice mode makes it to the ChatGPT desktop app",
+        "link": "https://techcrunch.com/2026/07/24/openais-new-voice-mode-makes-it-to-the-chatgpt-desktop-app/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3271,
+        "threshold": 0.2,
+        "matched_story_title": "Anthropic updates Claude voice mode with more capable models",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (0.33) >= threshold (0.20) with historical story 'Anthropic updates Claude voice mode with more capable models' from 2026-07-25."
+      },
+      {
+        "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required",
+        "link": "https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2507,
+        "threshold": 0.2,
+        "matched_story_title": "Anthropic updates Claude voice mode with more capable models",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'Anthropic updates Claude voice mode with more capable models' from 2026-07-25."
+      },
+      {
+        "title": "Nous Research's NousCoder-14B is an open-source coding model landing right in the Claude Code moment",
+        "link": "https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2144,
+        "threshold": 0.2,
+        "matched_story_title": "Claude Code costs up to $200 a month. Goose does the same thing for free.",
+        "matched_episode_id": "2026-07-16",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Claude Code costs up to $200 a month. Goose does the same thing for free.' from 2026-07-16."
+      },
+      {
+        "title": "Which Agent Causes Task Failures and When?Researchers from PSU and Duke explores automated failure attribution of LLM Multi-Agent Systems",
+        "link": "https://syncedreview.com/2025/08/14/which-agent-causes-task-failures-and-whenresearchers-from-psu-and-duke-explores-automated-failure-attribution-of-llm-multi-agent-systems/",
+        "source": "Synced Review",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.672,
+        "threshold": 0.2,
+        "matched_story_title": "Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution",
+        "matched_episode_id": "2026-07-16",
+        "detail": "TF-IDF similarity (0.67) >= threshold (0.20) with historical story 'Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution' from 2026-07-16."
+      },
+      {
+        "title": "Building a Tiny 3D Renderer for a Tiny Handheld",
+        "link": "https://saffroncr.itch.io/katavatis/devlog/1534514/building-a-tiny-3d-renderer-for-a-tiny-handheld",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2096,
+        "threshold": 0.2,
+        "matched_story_title": "Tiny Emulators",
+        "matched_episode_id": "2026-07-13",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Tiny Emulators' from 2026-07-13."
+      },
+      {
+        "title": "How My Images Are Dithered",
+        "link": "https://dead.garden/blog/how-my-images-are-dithered.html",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2425,
+        "threshold": 0.2,
+        "matched_story_title": "Google Images gets a Pinterest-like redesign focused on discovery",
+        "matched_episode_id": "2026-07-15",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'Google Images gets a Pinterest-like redesign focused on discovery' from 2026-07-15."
+      },
+      {
+        "title": "The growing vigilante movement to knock out Flock surveillance cameras",
+        "link": "https://www.theguardian.com/us-news/ng-interactive/2026/jul/25/flock-surveillance-cameras",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2795,
+        "threshold": 0.2,
+        "matched_story_title": "LAPD lets contract with surveillance giant Flock expire",
+        "matched_episode_id": "2026-07-14",
+        "detail": "TF-IDF similarity (0.28) >= threshold (0.20) with historical story 'LAPD lets contract with surveillance giant Flock expire' from 2026-07-14."
+      },
+      {
+        "title": "Show HN: I made some transistor animations",
+        "link": "https://brandonli.net/semisim/animations",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2024,
+        "threshold": 0.2,
+        "matched_story_title": "Show HN: Learn by rebuilding Redis, Git, a database from scratch",
+        "matched_episode_id": "2026-07-12",
+        "detail": "TF-IDF similarity (0.20) >= threshold (0.20) with historical story 'Show HN: Learn by rebuilding Redis, Git, a database from scratch' from 2026-07-12."
+      },
+      {
+        "title": "Did They Ghost You?",
+        "link": "https://didtheyghostyou.com/",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.242,
+        "threshold": 0.2,
+        "matched_story_title": "What AI did to stackoverflow in a graph",
+        "matched_episode_id": "2026-07-19",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'What AI did to stackoverflow in a graph' from 2026-07-19."
+      }
+    ]
+  }
+}
