@@ -283,19 +283,62 @@ def build_index_html(
           </div>
         </div>
 
-        <!-- Variant B 布局 (Aurora Obsidian Asymmetrical Dashboard) -->
+                <!-- Variant B 布局 (1:1 Exact Split Screen matching JPG) -->
         <div id="variant-container-b" style="display: none;" class="variant-workspace">
-          <!-- 极光黑耀侧边坞 (Aurora Sidebar) -->
-          <div class="aurora-sidebar">
-            <div class="sidebar-top">
-              <span class="live-broadcast-badge"><span class="live-dot"></span> LIVE AUDIO</span>
-              <div class="vinyl-center-stage">
-                <div class="vinyl-wrapper-compact">
-                  <div class="vinyl-disc" id="vinyl-disc-b">
+          <div class="unified-podcast-card">
+            <!-- Upper Player Section -->
+            <div class="player-upper">
+              <div class="player-top-row">
+                <div class="vinyl-display-b">
+                  <div class="vinyl-disc-b" id="vinyl-disc-b">
                     <img src="./logo.png" alt="Album Art" class="vinyl-art">
                     <div class="vinyl-center"></div>
                   </div>
                 </div>
+                <div class="host-selectors-b">
+                  <div class="host-pill-b" id="host-a-voice-pills-b">
+                     <span style="display:flex; align-items:center; gap:8px;"><span style="color:#48D1CC;">♀</span> FEMALE HOST</span>
+                  </div>
+                  <div class="host-pill-b" id="host-b-voice-pills-b">
+                     <span style="display:flex; align-items:center; gap:8px;"><span style="color:#888;">♂</span> MALE HOST</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="podcast-meta-b">
+                <div class="progress-info-b">
+                  <span id="current-time-b">04:18</span>
+                  <span id="total-time-b" style="color:#666;">/ 15:30</span>
+                </div>
+                <h2 id="side-podcast-title-b">Future of AI in Fintech</h2>
+                <div class="time-tag-b">TIME:20:30</div>
+              </div>
+
+              <div class="progress-track-b" id="console-progress-track-b" onclick="seekAudio(event)">
+                 <div class="progress-fill-b" id="console-progress-fill-b"></div>
+                 <div class="progress-handle-b"></div>
+              </div>
+
+              <div class="controls-row-b">
+                <div class="left-ctrls">
+                  <button onclick="skipAudio(-15)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0-.57-8.38l.41 1.31"/></svg></button>
+                  <button id="console-btn-play-b" onclick="toggleAudio()"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></button>
+                </div>
+                <div class="right-ctrls">
+                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lower Teleprompter Section -->
+            <div class="teleprompter-lower">
+               <h3 class="teleprompter-title">Interactive Speech Bubble Teleprompter</h3>
+               <div class="chat-container-b" id="cast-panel-body-b" onscroll="handleTranscriptScroll()"></div>
+               <button class="back-to-sync-btn" id="back-to-sync-btn-b" onclick="resumeSyncScroll()">Sync</button>
+            </div>
+          </div>
+        </div>
               </div>
               <div class="sidebar-meta">
                 <h2 class="ep-main-title" id="side-podcast-title-b">AI 新闻快报</h2>
