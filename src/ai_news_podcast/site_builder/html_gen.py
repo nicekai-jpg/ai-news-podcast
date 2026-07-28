@@ -283,67 +283,78 @@ def build_index_html(
           </div>
         </div>
 
-                <!-- Variant B 布局 (1:1 Exact Split Screen matching JPG) -->
+        
+        <!-- Variant B 布局 (Luxury Editorial V2) -->
         <div id="variant-container-b" style="display: none;" class="variant-workspace">
-          <div class="unified-podcast-card">
-            <!-- Upper Player Section -->
-            <div class="player-upper">
-              <div class="player-top-row">
-                <div class="vinyl-display-b">
-                  <div class="vinyl-disc-b" id="vinyl-disc-b">
-                    <img src="./logo.png" alt="Album Art" class="vinyl-art">
-                    <div class="vinyl-center"></div>
-                  </div>
-                </div>
-                <div class="host-selectors-b">
-                  <div class="host-pill-b" id="host-a-voice-pills-b">
-                     <span style="display:flex; align-items:center; gap:8px;"><span style="color:#48D1CC;">♀</span> FEMALE HOST</span>
-                  </div>
-                  <div class="host-pill-b" id="host-b-voice-pills-b">
-                     <span style="display:flex; align-items:center; gap:8px;"><span style="color:#888;">♂</span> MALE HOST</span>
-                  </div>
+          <div class="mesh-bg"><div class="blob color1"></div><div class="blob color2"></div><div class="blob color3"></div></div>
+          <div class="noise-overlay"></div>
+
+          <!-- GLOBAL STICKY TOP HEADER -->
+          <header class="global-header">
+            <div class="header-brand">AI Daily <span>Pioneer</span></div>
+            <div class="header-calendar" id="date-pills-b">
+              <!-- JS Populated Timeline -->
+            </div>
+            
+            <div class="ab-variant-toggle">
+              <button id="btn-variant-a-b" class="ab-toggle-btn" onclick="switchVariant('A')">返回 A 版</button>
+            </div>
+          </header>
+
+          <!-- THE PODCAST -->
+          <section class="podcast-section">
+            <div class="podcast-container">
+              <div class="podcast-hero reveal-up">
+                <h1 class="ep-title" id="side-podcast-title-b">AI 新闻快报</h1>
+                <div class="hero-art-container reveal-up stagger-1">
+                  <div class="hero-vinyl" id="vinyl-disc-b"><div class="hero-vinyl-center"></div></div>
+                  <button class="hero-play-btn" id="console-btn-play-hero-b" onclick="toggleAudio()"><svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
                 </div>
               </div>
 
-              <div class="podcast-meta-b">
-                <div class="progress-info-b">
-                  <span id="current-time-b">04:18</span>
-                  <span id="total-time-b" style="color:#666;">/ 15:30</span>
-                </div>
-                <h2 id="side-podcast-title-b">Future of AI in Fintech</h2>
-                <div class="time-tag-b">TIME:20:30</div>
-              </div>
-
-              <div class="progress-track-b" id="console-progress-track-b" onclick="seekAudio(event)">
-                 <div class="progress-fill-b" id="console-progress-fill-b"></div>
-                 <div class="progress-handle-b"></div>
-              </div>
-
-              <div class="controls-row-b">
-                <div class="left-ctrls">
-                  <button onclick="skipAudio(-15)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0-.57-8.38l.41 1.31"/></svg></button>
-                  <button id="console-btn-play-b" onclick="toggleAudio()"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg></button>
-                </div>
-                <div class="right-ctrls">
-                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                   <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+              <div class="transcript-container reveal-up stagger-2">
+                <div class="transcript-header">Live Audio Transcript</div>
+                <div class="chat-container" id="cast-panel-body-b" onscroll="handleTranscriptScroll()">
+                  <!-- Script injected by JS -->
                 </div>
               </div>
             </div>
+          </section>
 
-            <!-- Lower Teleprompter Section -->
-            <div class="teleprompter-lower">
-               <h3 class="teleprompter-title">Interactive Speech Bubble Teleprompter</h3>
-               <div class="chat-container-b" id="cast-panel-body-b" onscroll="handleTranscriptScroll()"></div>
-               <button class="back-to-sync-btn" id="back-to-sync-btn-b" onclick="resumeSyncScroll()">Sync</button>
+          <!-- MAGAZINE -->
+          <section class="magazine-section">
+            <div class="magazine-container">
+              <h2 class="section-title-mag reveal-up">Executive Intelligence<br><span style="font-size: 1rem; color: var(--gold-accent); letter-spacing: 0.3em; font-family: 'Inter', sans-serif;">Today's Source Material</span></h2>
+              <div class="articles-grid" id="sources-list-body-b">
+                <!-- Sources injected by JS -->
+              </div>
+            </div>
+          </section>
+
+          <!-- STICKY BOTTOM PLAYER -->
+          <div class="global-player">
+            <div class="player-text" style="min-width: 130px;">
+              <div class="p-title" id="player-title-b">AI Daily Pioneer</div>
+              <div class="p-date" id="podcast-date-tag-b">...</div>
+            </div>
+            <div class="player-controls">
+              <button class="ctrl-btn" onclick="skipAudio(-15)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg></button>
+              <button class="ctrl-btn play-pause-btn" id="console-btn-play-b" onclick="toggleAudio()"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+              <button class="ctrl-btn" onclick="skipAudio(15)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg></button>
+            </div>
+            <div class="player-progress">
+              <span class="time" id="current-time-b">0:00</span>
+              <div class="prog-track" id="console-progress-track-b" onclick="seekAudio(event)">
+                <div class="prog-fill" id="console-progress-fill-b"></div>
+              </div>
+              <span class="time" id="total-time-b">0:00</span>
+            </div>
+            <div class="player-hosts">
+              <div class="host-badge active" id="host-a-voice-pills-b">Host A</div>
+              <div class="host-badge" id="host-b-voice-pills-b">Host B</div>
             </div>
           </div>
         </div>
-              </div>
-              <div class="sidebar-meta">
-                <h2 class="ep-main-title" id="side-podcast-title-b">AI 新闻快报</h2>
-                <span class="ep-date-sub" id="podcast-date-tag-b">—</span>
-              </div>
             </div>
 
             <div class="sidebar-host-voices">
