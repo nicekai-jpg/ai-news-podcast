@@ -1,0 +1,665 @@
+{
+  "episode_id": "2026-07-29",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年7月29日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.445,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。苏晴我跟你说，今天这一整期内容，我早上看大纲的时候就觉得信息密度高得离谱，每一条拎出来都能单独做一期。",
+      "start": 8.894,
+      "duration": 11.624,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "对，我也有这种感觉。今天的主线特别明确，就是Agent，而且不是那种嘴上说说的Agent，是真的从底层架构到产品落地全面铺开的那种。",
+      "start": 21.015,
+      "duration": 11.731,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你注意啊，今年整个AI产业的主旋律就一个词，自主行动。从模型层到应用层，从国际大厂到国内玩家，全在围绕Agent能力重构自己的竞争格局。",
+      "start": 33.199,
+      "duration": 12.776,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "说到这儿我得先请你帮我翻译翻译，今天头条第一条那个Agentic扩散模型到底是个什么来头？我光看名字脑子里都是糊的。",
+      "start": 46.38,
+      "duration": 12.539,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "哈哈这个确实有点抽象。我先给你补个背景，你知道的，过去几年生成式AI的主流范式叫自回归，就是模型从左往右一个个token往外蹦，写文章如此，写代码也如此。",
+      "start": 59.352,
+      "duration": 13.061,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "对，就像我们写作文一样，一笔一画从头写到尾。",
+      "start": 72.878,
+      "duration": 5.79,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "没错。但扩散模型走的是完全不同的路线，它先有一个模糊的整体轮廓，然后反复迭代、逐步清晰，最后才输出成型的结果。你注意啊，这两种范式之前基本是井水不犯河水，各有各擅长的领域。",
+      "start": 79.13,
+      "duration": 17.129,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "那今天这个Agentic扩散模型牛在哪儿？",
+      "start": 96.71,
+      "duration": 4.746,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "牛在它第一次把扩散范式用到了长程Agent任务上。你想想，Agent干的都是多步骤的事儿，帮你订机票、查资料、规划行程、写代码，中间任何一步出错都可能影响后续所有步骤。传统自回归模型走到第十步发现第三步就错了，基本只能全部推倒重来。",
+      "start": 101.956,
+      "duration": 23.051,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "那扩散模型呢？",
+      "start": 125.445,
+      "duration": 1.872,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "扩散模型可以边生成边回头检查、边修正，这个能力放在Agent场景里简直就是量身定做。更关键的是，它把上下文窗口做到了128K，直接追平了顶尖的自回归模型，意味着在长文本处理能力上它已经没有明显短板了。",
+      "start": 127.778,
+      "duration": 20.003,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "我特别好奇，这个事情对整个行业意味着什么？毕竟以前大家都觉得Transformer一统天下，架构层面的创新好像很久没出现过了。",
+      "start": 148.226,
+      "duration": 10.667,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "说白了，这意味着Agent时代的底层推理引擎可能从单一范式走向双轨并行。长程规划用扩散，短文本生成用自回归，不同任务选不同范式。这对开发者其实是好事，不用被一个架构绑死了。你注意啊，这种范式层面的变化，影响是五年十年级别的。",
+      "start": 159.367,
+      "duration": 21.135,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "我跟你说，听完这条我才意识到，今天这几条新闻不是孤立事件，是一整盘棋。",
+      "start": 180.929,
+      "duration": 8.533,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "对，而且国际巨头也没闲着。谷歌这次直接把Agent能力产品化了，推出Gemini Managed Agents，配套的还有3.6 Flash模型、Hooks和Triggers机制。",
+      "start": 189.926,
+      "duration": 13.516,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "周航你得给我解释一下这三个东西都是干嘛的，我看大纲的时候就被这些名词砸晕了。",
+      "start": 203.859,
+      "duration": 6.008,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "哈哈好的我给你拆一下。3.6 Flash是这次专门给Agent场景配的模型，主打的就是快和便宜，因为Agent调用频次远高于普通聊天，每一步响应都要算钱的。Hooks和Triggers则是一对工程化机制——Triggers可以理解成触发器，比如新邮件到了就自动启动Agent、用户下班了就自动跑日报；Hooks则是钩子，能在Agent执行的关键节点插入你自己的逻辑。",
+      "start": 210.303,
+      "duration": 30.665,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "哦我懂了，那这些加在一起，对开发者来说不就是拎包入住吗？",
+      "start": 241.385,
+      "duration": 4.876,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "你这个比喻很准。以前你想搞个Agent应用，得自己搭框架、写编排逻辑、处理各种异常和重试，门槛高得离谱。现在谷歌直接把模型、触发器、钩子全封装成托管服务了，开发者只需要关注自己的业务逻辑。",
+      "start": 246.757,
+      "duration": 17.304,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "但我总觉得这事有点让人警惕。大厂把基础设施都铺好了，开发者不就只能在它的平台上做应用吗？",
+      "start": 264.473,
+      "duration": 9.186,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "你这个观察特别敏锐。当平台型公司把基础设施做到足够成熟的时候，应用层创新的主战场就会往这些平台上迁移。这就像当年移动互联网时代，大家都得在iOS和Android上开发App一样。这才是真正的护城河，模型本身的分数反而不那么关键了。",
+      "start": 274.138,
+      "duration": 20.675,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "所以说到底，今天这两条头条其实在讲同一件事，Agent的竞争已经进入深水区了，不再是比谁的概念响，而是比谁的工程化、生态化做得好。",
+      "start": 295.245,
+      "duration": 14.909,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "没错。而且你注意啊，这个趋势不只是国际公司在推动，国内的几条快讯也都是围绕Agent这个主旋律展开的。",
+      "start": 310.622,
+      "duration": 10.797,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "那咱们先说豆包那条。字节把豆包搜索能力开放给第三方Agent了，这个\"走出豆包\"到底意味着什么？",
+      "start": 321.909,
+      "duration": 9.448,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "你这么理解，Agent要干活，第一步永远是获取信息。如果每个Agent都要自己爬数据、建索引，生态根本起不来。字节把搜索能力开放出来，相当于在底层铺了一条信息高速公路，所有跑在上面的Agent都能调用。",
+      "start": 331.834,
+      "duration": 19.48,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "这跟当年高德、百度地图开放API是不是一个逻辑？",
+      "start": 351.732,
+      "duration": 4.615,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "非常像，本质都是把底层能力开放出去，吃未来生态入口的红利。所以你看字节这步棋，看的不是当下的搜索广告收入，而是未来Agent生态里\"信息从哪儿来\"这个关键问题的答案权。",
+      "start": 356.786,
+      "duration": 16.128,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "接下来Kimi那条也挺让人提气。月之暗面的Kimi K3和Unlimited OCR在海外榜单直接包揽全球前二了。",
+      "start": 373.326,
+      "duration": 10.449,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "而且是开源路线。你注意啊，这意味着全球开发者都能基于它做二次开发。",
+      "start": 384.268,
+      "duration": 6.4,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "中国开源模型在海外榜单登顶这件事，放在两三年前大家都不敢想。",
+      "start": 391.077,
+      "duration": 6.008,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "说白了这是个此消彼长的过程。美国那边OpenAI、Anthropic越来越往闭源走，中国这边反而把开源生态做得风生水起。最后大家拼的不再是我有什么，而是全世界开发者用什么。",
+      "start": 397.572,
+      "duration": 15.954,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "对了还有一条关于人的新闻，翁荔从Thinking Machines离职了。",
+      "start": 413.968,
+      "duration": 6.356,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "这个名字你可能不太熟，她在公众面前曝光不多，但圈子里非常受尊重。翁荔是前OpenAI的研究员，主要做AI安全和模型对齐方向，在Thinking Machines待了整整20个月。",
+      "start": 420.784,
+      "duration": 14.256,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "这种级别的人事变动一般背后都有些什么故事？",
+      "start": 435.511,
+      "duration": 3.439,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "你注意啊，顶尖AI人才现在基本就在一张很小的桌子上转来转去。OpenAI、Anthropic、Thinking Machines，再加上几家明星创业公司，核心研究员就那么几十号人。每一次离职的背后，往往意味着新的研究方向或者新的公司在酝酿。",
+      "start": 439.362,
+      "duration": 20.612,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "AI圈有句话叫\"人才即路线图\"，是不是就这个意思？",
+      "start": 460.419,
+      "duration": 4.876,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "没错，这个说法特别准。一个顶尖研究员的选择，往往预示着下一个技术爆点的方向。所以这种人事情报的信号价值极高，有时候比模型发布的含金量还高。",
+      "start": 465.75,
+      "duration": 11.949,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "那今天这一整期听下来，你最大的感受是什么？",
+      "start": 478.139,
+      "duration": 4.223,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "我最大的感受就是两个字，落地。Agentic扩散模型落地了，Gemini Managed Agents落地了，豆包搜索能力对外开放了，Kimi K3在海外榜单登顶了，连顶尖人才也都在向最能发挥价值的地方流动。",
+      "start": 482.84,
+      "duration": 18.305,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "而且竞争维度也变了，不再是单一的比模型参数，而是底层架构、产品形态、搜索基础设施、开源生态、人才储备全方位的博弈。",
+      "start": 501.626,
+      "duration": 14.063,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "对，这才是Agent时代真正残酷也真正精彩的地方。",
+      "start": 516.115,
+      "duration": 4.833,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "行，那今天咱们就先聊到这里。听众朋友们如果对今天的话题有任何想法，欢迎在评论区跟我们互动。我是苏晴。",
+      "start": 521.418,
+      "duration": 10.667,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "我是周航。咱们明天见。",
+      "start": 532.546,
+      "duration": 2.09,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
