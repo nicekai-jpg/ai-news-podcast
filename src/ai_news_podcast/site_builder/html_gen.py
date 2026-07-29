@@ -57,6 +57,9 @@ def build_index_html(
         dates_list.append(ep_id)
         episodes_map[ep_id] = ep
 
+    # Ensure dates are sorted descending (latest first) to display correctly in the calendar
+    dates_list = sorted(set(dates_list), reverse=True)
+
     dates_json = json.dumps(dates_list)
     episodes_map_json = json.dumps(
         {
@@ -283,7 +286,7 @@ def build_index_html(
           </div>
         </div>
 
-        
+
         <!-- Variant B 布局 (Luxury Editorial V2) -->
         <div id="variant-container-b" style="display: none;" class="variant-workspace">
           <div class="mesh-bg"><div class="blob color1"></div><div class="blob color2"></div><div class="blob color3"></div></div>
@@ -295,7 +298,7 @@ def build_index_html(
             <div class="header-calendar" id="date-pills-b">
               <!-- JS Populated Timeline -->
             </div>
-            
+
             <div class="ab-variant-toggle">
               <button id="btn-variant-a-b" class="ab-toggle-btn" onclick="switchVariant('A')">返回 A 版</button>
             </div>
