@@ -355,65 +355,6 @@ def build_index_html(
             </div>
           </div>
         </div>
-            </div>
-
-            <div class="sidebar-host-voices">
-              <span class="sidebar-section-title">🎙️ Timbre</span>
-              <div class="host-voice-rows">
-                <div class="console-host-item"><div class="host-voice-segmented" id="host-a-voice-pills-b"></div></div>
-                <div class="console-host-item"><div class="host-voice-segmented" id="host-b-voice-pills-b"></div></div>
-              </div>
-            </div>
-
-            <div class="sidebar-player-controls">
-              <div class="console-time-row">
-                <span id="current-time-b" class="time-text">0:00</span>
-                <div class="console-progress-track" id="console-progress-track-b" onclick="seekAudio(event)">
-                  <div class="console-progress-fill" id="console-progress-fill-b"></div>
-                  <div class="console-progress-handle"></div>
-                </div>
-                <span id="total-time-b" class="time-text">0:00</span>
-              </div>
-              <div class="console-ctrl-bar">
-                <button class="ctrl-btn" onclick="skipAudio(-15)" title="-15秒">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 2v6h6M2.66 15.57a10 10 0 1 0-.57-8.38l.41 1.31"/></svg>
-                </button>
-                <button class="console-play-btn" id="console-btn-play-b" onclick="toggleAudio()">▶</button>
-                <button class="ctrl-btn" onclick="skipAudio(15)" title="+15秒">
-                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1 .57-8.38l-.41 1.31"/></svg>
-                </button>
-              </div>
-              <div class="sidebar-bottom-ctrls">
-                <span id="console-speed-btn-b" class="speed-pill-btn" onclick="cycleSpeed()">1.0x</span>
-                <div class="volume-control">
-                  <svg id="volume-icon-b" onclick="toggleMute()" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-                  <input type="range" id="volume-slider-b" min="0" max="1" step="0.05" value="0.8" oninput="changeVolume(this.value)">
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 主画布区：提词器 (Aurora Script Canvas) -->
-          <div class="aurora-script-area">
-            <div class="podcast-pane-full" style="height: 100%; border: none;">
-              <div class="card-internal-header" style="border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <div class="header-left">
-                  <span class="header-icon">✨</span>
-                  <span class="header-title">Teleprompter Script</span>
-                  <span class="header-sub">Interactive AI Script</span>
-                </div>
-              </div>
-
-              <div class="transcript-container-wrapper" style="position: relative; flex: 1; overflow: hidden; display: flex; flex-direction: column; min-height: 400px; padding-top: 16px;">
-                <div class="transcript-container" id="cast-panel-body-b" onscroll="handleTranscriptScroll()"></div>
-                <button class="back-to-sync-btn" id="back-to-sync-btn-b" onclick="resumeSyncScroll()">
-                  <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
-                  Sync
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- ==================== Tab 页 2：📰 科技日报页面 ==================== -->
