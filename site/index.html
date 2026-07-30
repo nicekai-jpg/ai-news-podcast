@@ -175,7 +175,7 @@
       grid-template-columns: 400px 1fr;
       gap: 24px;
       width: 100%;
-      align-items: start;
+      align-items: stretch;
     }
     @media (max-width: 1024px) {
       .podcast-grid-layout { grid-template-columns: 1fr; }
@@ -185,6 +185,7 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      height: 100%;
     }
 
     .studio-player-card {
@@ -197,6 +198,8 @@
       border: 1px solid rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(28px);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px var(--glow-color);
+      flex: 1;
+      justify-content: space-between;
     }
 
     .vinyl-display-box {
@@ -2050,7 +2053,7 @@ body.theme-variant-b .header-brand { display: none; }
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-30 07:55:43</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-07-30 16:12:24</p></div>
   </div>
 
   <script>
