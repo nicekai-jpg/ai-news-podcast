@@ -176,15 +176,15 @@
     .podcast-left-column {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 16px;
       height: 100%;
     }
 
     .studio-player-card {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      padding: 24px;
+      gap: 12px;
+      padding: 16px 20px;
       border-radius: var(--radius-lg);
       background: linear-gradient(135deg, rgba(22, 16, 45, 0.95) 0%, rgba(10, 7, 22, 0.98) 100%);
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -200,15 +200,15 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      padding: 12px 0;
+      padding: 6px 0;
     }
 
     .vinyl-disc-lg {
-      width: 135px;
-      height: 135px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       background: #111;
-      border: 5px solid #222;
+      border: 4px solid #222;
       box-shadow: 0 12px 30px rgba(0,0,0,0.8), 0 0 25px var(--glow-color);
       position: relative;
       animation: spin-vinyl 20s linear infinite;
@@ -218,8 +218,8 @@
       justify-content: center;
     }
     .vinyl-disc-lg.spinning { animation-play-state: running; }
-    .vinyl-disc-lg .vinyl-art { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; }
-    .vinyl-disc-lg .vinyl-center { position: absolute; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid #444; }
+    .vinyl-disc-lg .vinyl-art { width: 55px; height: 55px; border-radius: 50%; object-fit: cover; }
+    .vinyl-disc-lg .vinyl-center { position: absolute; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid #444; }
 
     .player-meta-box { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 4px; }
     .live-broadcast-badge { font-size: 0.65rem; font-weight: 850; color: #34d399; letter-spacing: 0.08em; display: flex; align-items: center; gap: 5px; }
@@ -234,15 +234,15 @@
     .voice-pills-card {
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      padding: 18px 20px;
+      gap: 10px;
+      padding: 14px 18px;
       border-radius: var(--radius-lg);
       background: rgba(15, 12, 28, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
     .voice-card-header { display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; font-weight: 800; color: #f1f5f9; }
-    .host-voice-rows { display: flex; flex-direction: column; gap: 10px; }
+    .host-voice-rows { display: flex; flex-direction: column; gap: 8px; }
 
     .podcast-right-column {
       display: flex;
