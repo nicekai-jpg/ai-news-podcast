@@ -1,0 +1,275 @@
+{
+  "episode_id": "2026-07-13",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友们好，欢迎收听AI 每日先锋，我是苏晴。今天是2026年7月13日。",
+      "start": 1.0,
+      "duration": 6.574,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。今天这AI圈的瓜，那可是相当有意思。",
+      "start": 8.023,
+      "duration": 4.528,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "咱们先聊聊今天第一个大头条。那就是，老黄RTX Spark真机现身Bilibili World！CPU和GPU直接焊在一起，笔记本跑120B大模型。",
+      "start": 13.048,
+      "duration": 14.541,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "苏晴也一直在关注这个，周航，这个事影响真的很大吗？",
+      "start": 28.042,
+      "duration": 5.05,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "确实。简单来说，老黄在ComputeX发布的“超级芯片”，已经在真机中落地了",
+      "start": 33.497,
+      "duration": 7.401,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "没错。那今天的第二个大头条，是关于：Claude Code sends 33k tokens before reading the prompt; OpenCode sends 7k。",
+      "start": 41.331,
+      "duration": 10.294,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "对，这个也备受关注，主要进展是：HN 热门讨论（352 points, 198 评论）by systima",
+      "start": 52.09,
+      "duration": 10.188,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "嗯，除了这两个头条，我看到快讯中 Since Chromium 148, Math.tanh is now fingerprintable to link underlying OS 也有新动态。",
+      "start": 62.74,
+      "duration": 10.686,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "没错！关于这个，主要是 HN 热门讨论（119 points, 44 评论）by joahnn_s",
+      "start": 73.877,
+      "duration": 7.314,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "嗯，除了这两个头条，我看到快讯中 Against Usefulness 也有新动态。",
+      "start": 81.691,
+      "duration": 5.66,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "没错！关于这个，主要是 HN 热门讨论（67 points, 16 评论）by supo",
+      "start": 87.789,
+      "duration": 6.879,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "嗯，除了这两个头条，我看到快讯中 Deir El-Medina Strikes 也有新动态。",
+      "start": 95.129,
+      "duration": 5.834,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "没错！关于这个，主要是 HN 热门讨论（47 points, 5 评论）by mooreds",
+      "start": 101.408,
+      "duration": 8.185,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "哇，每天都能看到新东西在冒出来。",
+      "start": 110.067,
+      "duration": 2.525,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "科技变化就是快，那以上就是今天的 AI 重点资讯。感谢各位收听，咱们明天见！",
+      "start": 113.019,
+      "duration": 6.313,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 119.796,
+      "duration": 0.61,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 120.823,
+      "duration": 6.139,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 127.398,
+      "duration": 0.784,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}

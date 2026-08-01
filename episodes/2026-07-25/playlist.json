@@ -1,0 +1,755 @@
+{
+  "episode_id": "2026-07-25",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年7月25日，我是苏晴。",
+      "start": 1.0,
+      "duration": 8.925,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 10.374,
+      "duration": 1.567,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "我跟你说周航，今天这期节目我自己特别有感触。因为咱们科技圈最近有个特别明显的趋势——大家不再光盯着那个参数量刷榜了，而是开始真正关心能不能落地、能不能赚钱、能不能在场景里跑出来。",
+      "start": 12.438,
+      "duration": 18.958,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "对，你这个观察挺敏锐的。说白了，AI这一波从底层技术往上走，已经到了一个分水岭。前面是拼参数、拼算力的上半场，现在开始进入拼场景、拼共识的下半场。但偏偏这个\"共识\"两个字是最有意思的话题，因为行业里头正在为路线问题吵得不可开交。",
+      "start": 31.849,
+      "duration": 19.655,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "真的假的？现在吵成什么样了？",
+      "start": 51.909,
+      "duration": 2.395,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "哈，等会儿咱们就聊这个。先说今天第一条——合肥这个地方最近又押中了一个AI独角兽，多模态赛道的，三个月融了21个亿。这数字听起来就挺吓人。",
+      "start": 54.737,
+      "duration": 12.515,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "这也太猛了吧！合肥这地方这几年真是开挂了，从当年押宝京东方开始，一路押一路中，感觉他们是有啥独门投资秘籍。",
+      "start": 67.717,
+      "duration": 8.596,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "关键是合肥押的是什么。这次这家公司走的是\"原生全模态\"的路径，不是那种先搞文本再叠加图像、视频的拼接式多模态，而是从底层架构就为多模态设计的。",
+      "start": 76.775,
+      "duration": 14.648,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "我插一句啊，读者朋友可能不太明白什么叫\"原生全模态\"。周航你给打个比方呗。",
+      "start": 91.874,
+      "duration": 7.314,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "好，这么说吧，传统做法就像你买了一本菜谱、一本摄影集、一个音乐播放器，三样东西各管各的，勉强拼一块用。而原生全模态呢，是直接给你一个大脑，这个大脑天生就能看、能听、能说、能写，理解的时候是一个统一的认知在处理。",
+      "start": 99.688,
+      "duration": 20.177,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "哦——你这么一比方我就懂了。那这种原生路线难在哪儿呢？",
+      "start": 120.303,
+      "duration": 4.397,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "难点在于训练数据的配比和模态之间的对齐。你想啊，文本是一维的，图像是二维的，视频还带时间轴，三种信息流怎么在同一个模型里和谐共处，这本身就是技术活儿。所以敢走这条路的团队本身就少，资本愿意给21个亿，本质上是在买稀缺性。",
+      "start": 125.161,
+      "duration": 20.874,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "而且合肥这次押注还有个特别值得琢磨的地方——地方政府在AI产业里的话语权。你看以前咱们觉得AI就是北京、杭州、深圳的事，现在合肥突然冒出来，说明地方政府如果能在早期就识别出技术拐点，话语权是可以重塑的。",
+      "start": 146.48,
+      "duration": 20.612,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "这点我特别同意。说白了，地方政府投AI和那些风投机构不一样。风投看财务回报，地方政府看的是产业集群效应。合肥这套路如果跑通了，可能会有更多二线城市跟进，因为大家会发现——哦，原来AI投资不只是那五个城市的专利。",
+      "start": 167.566,
+      "duration": 18.349,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "对了，说到路线之争这个话题，今天第二条新闻更有意思——世界模型的\"六小龙\"在WAIC大会上公开吵起来了。",
+      "start": 186.342,
+      "duration": 10.188,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "哈，我特意看了那段视频回放，确实火药味挺浓的。六家做世界模型的公司——就是研究怎么让AI真正理解物理世界、能在脑子里模拟一个完整世界的那种模型——他们在WAIC的圆桌环节直接对线了。",
+      "start": 196.994,
+      "duration": 16.607,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "我特别好奇，他们到底在吵什么？是技术路线分歧吗？",
+      "start": 214.018,
+      "duration": 3.831,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "是，但又不全是。你注意啊，主要分歧集中在两个层面。一个是世界模型到底应该走\"生成式\"还是\"预测式\"。生成式派觉得应该让AI像视频生成那样去想象下一个画面；预测式派认为应该让AI老老实实学物理规律、做因果推理。",
+      "start": 218.285,
+      "duration": 22.31,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "等等等等，这两个路子听起来差别还挺大的呀。",
+      "start": 241.012,
+      "duration": 5.79,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "差别大到骨子里。另一个层面更根本，就是世界模型到底需不需要\"具身\"——也就是必须跟机器人、跟真实环境交互才能训练出来，还是纯靠视频和文本就能学到。一个想造大脑，一个想造机器人加上大脑。",
+      "start": 247.298,
+      "duration": 15.954,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "这听起来就特别有争议啊。",
+      "start": 263.664,
+      "duration": 2.09,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "所以这次讨论里有个金句我印象特别深，叫\"行业红利就在非共识里\"。这话意思是说，凡是大家已经达成共识的方向，那都是红海，卷得不能再卷；反而是那些现在吵得不可开交的非共识地带，藏着下一代平台型机会。",
+      "start": 266.233,
+      "duration": 19.742,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "我觉得这个观点反过来也成立——一旦吵出结果了，机会反而就消失了。所以现在这种混乱状态，恰恰是创业者最好的窗口期。",
+      "start": 286.407,
+      "duration": 11.121,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "你这个解读挺到位的。其实这种争论本身就是泡沫和突破的分水岭。如果一个方向没人吵、大家都闷头做，要么是真没希望，要么是机会窗口已经过了。吵得凶说明大家都觉得有戏，只是路径还没收敛。",
+      "start": 297.996,
+      "duration": 16.476,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "行，那咱们稍微放松一下，来看几条快讯。第一个我特别感兴趣——长内容创作Agent破局AI失忆难题。",
+      "start": 314.962,
+      "duration": 9.839,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "哎，这个我前两天还真体验了一下。咱们都知道大模型有个老毛病，就是上下文一长就开始忘事，早期的指令到后面就失效了。",
+      "start": 325.278,
+      "duration": 8.795,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "对对对，写个长篇小说写到第十章，AI可能就忘了第一章主角叫啥了。",
+      "start": 334.491,
+      "duration": 6.879,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "哈，对。所以之前业界普遍的做法是搞长上下文，比如把窗口从8K扩到128K、扩到1M。但问题是窗口再长，里面的信息密度也会被稀释，模型真正能\"调用\"的还是有限的。",
+      "start": 341.809,
+      "duration": 17.173,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "那这个新Agent是怎么破局的？",
+      "start": 359.394,
+      "duration": 3.788,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "它走了一条完全不一样的路——不靠死记硬背，而是让Agent在工作过程中自己建索引、做笔记、动态维护一个外部记忆库。相当于人写长篇小说时不是把所有情节背下来，而是会列大纲、写人物小传、贴便签纸。",
+      "start": 363.675,
+      "duration": 19.045,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "我去，这个思路挺聪明的呀。而且我看这个产品的门槛据说低到只要会打字就行，这也就意味着它不是给程序员用的，是给普通写作者用的。",
+      "start": 383.129,
+      "duration": 14.43,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "对，这才是关键。你想啊，咱们国家有多少想做内容创作但不会写代码的人？白领、学生、自媒体博主，他们才是长内容创作的真正主力。门槛一降下来，这事儿就有可能跑出来一个独立赛道。",
+      "start": 398.046,
+      "duration": 16.128,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "接下来这条让我挺感慨的——DeepMind在塞拉利昂做了一场真实的AI教育实验，而且是随机对照试验。",
+      "start": 414.616,
+      "duration": 9.361,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "是的，这个研究我觉得是今年AI教育领域最有价值的一个实证。它不是那种PPT上的概念演示，而是真的跑到塞拉利昂的中学里，随机分两组，一组用Gemini的Guided Learning功能学，一组用传统方式学。",
+      "start": 424.437,
+      "duration": 16.694,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "随机对照试验这个方法在医学里是金标准啊，跑来做教育评估，DeepMind这次是认真的。",
+      "start": 441.602,
+      "duration": 6.879,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "你说得很对。结果发现用了Guided Learning的那组，学习参与度和效率都有显著提升。注意啊，Guided Learning不是直接给答案，而是像苏格拉底那样一步步引导。",
+      "start": 448.893,
+      "duration": 13.08,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "这也太重要了。因为一直以来大家都说AI能改变教育，但真正落到发展中国家去验证的少之又少。塞拉利昂这种地方教育资源本来就稀缺，AI如果真能帮上忙，那意义完全不一样。",
+      "start": 462.418,
+      "duration": 16.128,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "而且你想，这个研究如果跑通了，可以直接复制到非洲其他地区、拉美、东南亚。它给AI普惠教育提供了真实世界证据，不是那种\"我觉得有用\"的玄学，而是有数据支撑的结论。",
+      "start": 479.001,
+      "duration": 13.559,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "说到AI个性化，这里正好引出咱们今天最后一条——arXiv上有篇新论文提出了LLM个性化能力基准测试。",
+      "start": 493.0,
+      "duration": 11.581,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "这个我看了，挺有意思的。咱们现在用大模型基本上都是\"千人一面\"的体验，不管你是小学生还是博士生，模型给的输出风格都差不多。",
+      "start": 505.059,
+      "duration": 11.6,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "没错，我每次跟AI对话都感觉它在用一种\"标准化的播音腔\"跟我讲话，特别没意思。",
+      "start": 517.14,
+      "duration": 7.488,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "哈，是的。那这篇论文做的就是给\"个性化能力\"建一套评测标准。他们发现当前主流大模型在针对不同受众定制输出这件事上，短板非常明显。比如给一个7岁小孩讲量子力学，大多数模型还是按默认模式输出，不会自动切换到小朋友能理解的语言。",
+      "start": 525.054,
+      "duration": 21.657,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "这个基准测试如果真的被业界采纳，未来模型厂商在训练的时候可能就会专门优化\"个性化\"这个维度了。",
+      "start": 547.181,
+      "duration": 10.362,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "对，而且它影响的可能不只是教育领域，还有客服、营销、医疗咨询——这些场景里\"对不同人说不同话\"是刚需。说白了，未来的AI助理必须懂得察言观色、按需输出，这是基本功。",
+      "start": 558.004,
+      "duration": 16.041,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "我跟你说，这一圈聊下来我最大的感受就是——AI行业真的到了一个特别微妙的阶段，参数竞赛那种爽感已经过去了，现在比拼的是谁真正扎根到场景里、谁能理解用户、谁能在非共识里找到自己的路。",
+      "start": 574.501,
+      "duration": 21.285,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "总结得挺好。而且你别忘了，咱们今天聊的这些事情背后其实有一条暗线：政府、学界、产业、教育，全球都在重新校准自己的AI坐标。谁能找到自己的生态位，谁就能吃到下一波红利。",
+      "start": 596.252,
+      "duration": 17.086,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "行，那今天就先聊到这儿。听众朋友们，咱们明天同一时间再见。",
+      "start": 613.771,
+      "duration": 6.574,
+      "audios": {
+        "professional": "chunk_047_professional.mp3",
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "拜拜，记得点赞关注AI每日先锋。",
+      "start": 620.752,
+      "duration": 2.961,
+      "audios": {
+        "professional": "chunk_048_professional.mp3",
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 624.183,
+      "duration": 7.706,
+      "audios": {
+        "professional": "chunk_049_professional.mp3",
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 632.29,
+      "duration": 1.306,
+      "audios": {
+        "professional": "chunk_050_professional.mp3",
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}

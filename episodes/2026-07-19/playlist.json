@@ -1,0 +1,185 @@
+{
+  "episode_id": "2026-07-19",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年7月19日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.576,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 9.025,
+      "duration": 1.654,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，WAIC 2026 你关注了吗？这两天上海可是把整个科技圈的目光都吸过去了。",
+      "start": 11.176,
+      "duration": 8.62,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "关注了，虽然没去现场，但线上的内容基本都刷了一遍。说实话今年WAIC跟往年不太一样，少了点花活，多了点实在东西。",
+      "start": 20.249,
+      "duration": 8.882,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "我知道你想说最高奖那个项目，无人机直连卫星传Token对吧？这个标题我第一眼看的时候脑子是懵的，无人机为啥要传Token啊？它又不是大模型。",
+      "start": 29.536,
+      "duration": 15.083,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你注意啊，关键不是无人机自己生成Token，而是它需要实时调用云端大模型。你想想海上救援、森林巡检、应急通信这些场景，地面基站压根覆盖不到。传统做法是无人机先把数据传回地面，再转给服务器跑模型，链路又长又脆。",
+      "start": 45.052,
+      "duration": 21.44,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "那现在这个方案就是直接走卫星链路，把中间地面那层跳过去了？",
+      "start": 66.957,
+      "duration": 6.922,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "对，这就是\"空天地一体化\"的思路。无人机上的端侧设备可以直接通过卫星和云端大模型通信，推理结果实时回传。延迟降了，可靠性上来了，以前做不了的事现在能做。",
+      "start": 74.341,
+      "duration": 14.106,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "所以这次最高奖给的是底层基础设施的创新，不是某个模型的参数刷榜？",
+      "start": 88.898,
+      "duration": 7.097,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "说得特别准。说白了，参数竞赛已经卷到头了，大家发现光把模型堆大没用，得让它真的能落地。这个方案背后代表的是AI基础设施从\"集中式\"往\"空天地一体化\"的范式跃迁，这是产业链层面的事。",
+      "start": 96.495,
+      "duration": 16.651,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "我跟你说，这个跟咱们普通人的生活其实也不远。比如以后你在远洋渔船上，或者去野外徒步真出了意外，地面信号没了，AI辅助救援还能运转，就靠这种链路撑着。",
+      "start": 113.584,
+      "duration": 14.672,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "还有低空经济嘛。无人机配送、城市空中巡检",
+      "start": 128.717,
+      "duration": 4.441,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
