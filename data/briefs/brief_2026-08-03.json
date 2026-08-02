@@ -1,0 +1,2916 @@
+{
+  "thesis": "围绕Show HN: MicroC...，多方力量正在汇聚",
+  "stories": [
+    {
+      "cluster_id": 31,
+      "representative_title": "Show HN: MicroCodex Coding Agent – OpenAI/codex reimplemented in C++ <1MB binary",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（10 points, 2 评论）by paoloanzn"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://github.com/paoloanzn/microcodex"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "863ea882643596bc",
+          "title": "Show HN: MicroCodex Coding Agent – OpenAI/codex reimplemented in C++ <1MB binary",
+          "link": "https://github.com/paoloanzn/microcodex",
+          "normalized_link": "https://github.com/paoloanzn/microcodex",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T20:11:35+00:00",
+          "summary": "HN 热门讨论（10 points, 2 评论）by paoloanzn",
+          "full_text_snippet": "MicroCodex is an ultra-lightweight coding agent that runs locally in your terminal. MicroCodex is written in C++23 and provides one-shot prompts, an interactive terminal UI, local coding tools, durable conversations, and automatic context compaction. Installing and running MicroCodex Run the following on Mac or Linux to install MicroCodex: curl -fsSL https://github.com/paoloanzn/microcodex/releases/latest/download/install.sh | sh Then simply run microcodex login to sign in, followed by microcodex to get started. You can also go to the latest GitHub Release and download the appropriate binary for your platform. Each GitHub Release contains these executables: macOS Apple Silicon/arm64: microcodex-aarch64-apple-darwin.tar.gz x86_64: microcodex-x86_64-apple-darwin.tar.gz Linux x86_64: microcodex-x86_64-unknown-linux-gnu.tar.gz arm64: microcodex-aarch64-unknown-linux-gnu.tar.gz Each archive contains a single entry with the platform baked into the name (for example, microcodex-aarch64-apple-darwin ), so you likely want to rename it to microcodex after extracting it. The installer selects the native build for the current architecture. Linux requires the libcurl and OpenSSL runtime libraries. To install a specific release, set MICROCODEX_RELEASE : curl -fsSL https://github.com/paoloanzn/microcodex/releases/latest/download/install.sh | MICROCODEX_RELEASE=v0.1.0 sh Using MicroCodex with your ChatGPT plan Run microcodex login and open the displayed URL in your browser. On a remote or headless machine, run microcodex login --device-auth and enter the displayed one-time code at the verification URL. MicroCodex stores the resulting OAuth credentials under $CODEX_HOME , or ~/.codex when CODEX_HOME is unset. You can then start an interactive session or pass a one-shot prompt: microcodex\nmicrocodex \" Find the failing test, fix it, and run the relevant test suite \" Warning MicroCodex is not a sandbox. Before starting the user's shell, it applies a\nsimple lexical denylist that bloc...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 10,
+      "representative_title": "Karpathy’s Pelican",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（348 points, 277 评论）by delichon"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://twitter.com/karpathy/status/2083749667410727319"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "31733591a286c19b",
+          "title": "Karpathy’s Pelican",
+          "link": "https://twitter.com/karpathy/status/2083749667410727319",
+          "normalized_link": "https://twitter.com/karpathy/status/2083749667410727319",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T04:05:56+00:00",
+          "summary": "HN 热门讨论（348 points, 277 评论）by delichon",
+          "full_text_snippet": "We're starting to leave the territory where you'd test an LLM by e.g. \"create an svg of pelican on a bicycle\". As one idea to generalize it, I was interested what Opus 5 would do if I gave it the first paragraph of the Lord of the Rings, a 1M token budget (~$10) and asked for three js render of it. Opus went off for ~2 hours and wrote 5500 lines of code that (procedurally) rendered the story. It's kind of janky but fun. But it's a bit mindboggling that the LLM has to place and orchestrate various polygon assets in (x,y,z) coordinates and write code that animates it all, and that it even does anything at all.\n\nI also like this kind of examples because no one in their right mind would ever spend the time to write something this custom but LLMs have all the stamina and patience in the world, so it's an example where we go from \"no one would ever do this\" to \"sure, why not, it's ~free\". There might be a lot more. But I'm excited about creating hyper custom worlds that you can imagine dropping players into, e.g. here to participate in the LoTR story as a spectator NPC, or one of the characters, or etc. Something like an ephemeral GTA of X on demand.\n\nLast thought is that the domain of worlds/games exposes a weakness in LLMs: they can't easily audit their work because they aren't able to efficiently and natively perceive videos or play games within them. Here, Opus 5 had to very slowly and painstakingly take screenshots at different points, and it messed up a few times and created a bunch of jank. An example of raw capability (multimodal, gameplay) that I think is still quite lacking.",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 13,
+      "representative_title": "Show HN: Bor – Open-source policy management for Linux desktops",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（163 points, 21 评论）by eniac111"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://getbor.dev/blog/2026-08-02-bor-v080-release/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "7af8bf2ae0319ffd",
+          "title": "Show HN: Bor – Open-source policy management for Linux desktops",
+          "link": "https://getbor.dev/blog/2026-08-02-bor-v080-release/",
+          "normalized_link": "https://getbor.dev/blog/2026-08-02-bor-v080-release",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T09:06:33+00:00",
+          "summary": "HN 热门讨论（163 points, 21 评论）by eniac111",
+          "full_text_snippet": "Bor v0.8.0 is out. This release adds three new policy types — Thunderbird , Microsoft Edge for Business , and Firewalld zones — alongside a full web UI overhaul, finer-grained RBAC, and a dedicated security hardening pass. The complete changelog is on the GitHub release page . Thunderbird policy type Mozilla Thunderbird can now be managed on enrolled desktops with the same mechanism used for Firefox ESR. The agent writes the managed policies.json that Thunderbird expects, merged from all bound policies, and removing the last policy restores the original file. Flatpak installations are detected and enforced alongside RPM/DEB installations, and the managed file is protected by the tamper watcher — external edits are detected and immediately restored. The web UI ships a full policy editor with the complete Thunderbird policy catalogue. Microsoft Edge for Business policy type For fleets running Edge on Linux, the agent writes bor_managed.json into each Edge managed-policy directory and cleans it up from every directory when the last bound policy is removed. The web UI provides a tree-based editor with the Edge policy catalogue, JSON validation, and a setting preview before enabling. Firewalld zone policy type The new Firewalld policy type manages firewalld zones on enrolled nodes: services, ports, forward ports, rich rules, masquerade, interfaces, sources, and the zone target. The agent writes zone XML to /etc/firewalld/zones/ , validates it with firewall-cmd --check-config , and reloads firewalld. Like all other managed files, the zone files are tamper-protected. Polkit: variable conditions Polkit rules now support variable conditions via action.lookup() , so a rule can match on action variables — for example allowing mounts only for removable drives. Also fixed: multiple action IDs in one rule are now correctly joined with || . Per-action RBAC User and role administration is now guarded by per-action permissions instead of a single blanket permission, allowing fine...",
+          "category": "policy",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 28,
+      "representative_title": "The Myth of Snow Leopard",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（20 points, 17 评论）by speckx"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.rubenerd.au/the-myth-of-snow-leopard/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "4de7345af4950400",
+          "title": "The Myth of Snow Leopard",
+          "link": "https://www.rubenerd.au/the-myth-of-snow-leopard/",
+          "normalized_link": "https://www.rubenerd.au/the-myth-of-snow-leopard",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T18:21:45+00:00",
+          "summary": "HN 热门讨论（20 points, 17 评论）by speckx",
+          "full_text_snippet": "Snow Leopard was a version of Mac OS X released in 2010. It was billed by Apple as having “0 new features”, with a focus on refining the system, improving efficiency, and fixing bugs. Those of us using Macs at the time welcomed the news after living with updates that seemingly broke as many things as they introduced with each release. This idea is so powerful—and so longed for—that it’s escaped containment among the Apple crowd. I’ve seen everything from Linux distro to phone updates referred to as Snow Leopard releases, when their vendors cite stability and bug fixes over new features. Likewise, people plead with their vendors for a Snow Leopard release when they feel quality has slipped. The reality was a bit different. As I wrote at the time : This could be the first time I’ve ever downgraded an Apple OS. As we speak I’m downgrading the Snow Leopard partition on my trusty old Core Duo 2006 MacBook Pro back to Leopard (and while I’m at it, I’m finally getting around to upgrading the FreeBSD partition to 8.0!). I kept waiting for updates to fix the severe stability problems in the Finder, my FireWire 800 ExpressCard and my iMovie HD plugins, but I’ve decided to give up for now. This was putting it mildly. When I tried it again a few months later, I still had so many problems that I downgraded again, then leapfrogged it for Lion when it was released in 2011. Jeff Johnson has a great post discussing all the problems Snow Leopard introduced and had to have patched. It was a mess. Still, whether Snow Leopard really was this bastion of stability and polish, the myth surrounding its development and stated purpose obviously resonates today. People invoke its memory because they’re broadly craving stability and quality of life improvements, something almost everyone has wilfully discarded as they chase the next rung of enshittification . Apple’s marketing team hit on something so popular that it has staying power sixteen years later.",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 14,
+      "representative_title": "Twenty Years of RISC OS Open",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（141 points, 25 评论）by AlexeyBrin"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.riscosopen.org/news/articles/2026/06/20/twenty-years-of-risc-os-open"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "5d3b40996d9db166",
+          "title": "Twenty Years of RISC OS Open",
+          "link": "https://www.riscosopen.org/news/articles/2026/06/20/twenty-years-of-risc-os-open",
+          "normalized_link": "https://www.riscosopen.org/news/articles/2026/06/20/twenty-years-of-risc-os-open",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T12:36:07+00:00",
+          "summary": "HN 热门讨论（141 points, 25 评论）by AlexeyBrin",
+          "full_text_snippet": "On 20 June 2006 we incorporated RISC OS Open Ltd with one slightly mad ambition: to take a proprietary operating system and open it up to anyone who fancied helping. Twenty years on, that has largely happened, and the RISC OS of today is in far better health than the one we inherited. To mark the occasion, here is the story so far, with one highlight for each of our first twenty years. Our thanks go to everyone who has written code, filed a bug, funded a bounty, contributed in our forums and wiki, tested a nightly build, or simply cheered from the sidelines. None of it would exist without you. Twenty years, a year at a time Year 1 (2006-07) : it started with a plan to do the unthinkable. Castle and ROOL announced a shared source initiative that autumn, and by the Wakefield Show the following May the very first RISC OS sources were in public hands . Year 2 (2007-08) : batch by batch, more of the OS went out to the community, and the early momentum earned ROOL its second Drobe award , this one for “Best show of initiative”. Year 3 (2008-09) : a first for the platform. A build of RISC OS 5 ran on an IYONIX carrying a great deal of community-contributed code, shown off to a warm reception at the Midlands Show. Year 4 (2009-10) : the plumbing grew up. Nightly autobuilds began rebuilding and testing the sources automatically, while Jeffrey Lee’s port to the BeagleBoard, our first step towards cheap RISC OS hardware, took an Icon Bar award . Year 5 (2010-11) : a neat idea took shape. The Bounty Scheme let the community pool donations and vote with their wallets for the features they most wanted to see from the roadmap . It is still going strong today. Year 6 (2011-12) : working with Piccolo Systems, ROOL published an open source SD and MMC filing system , giving the BeagleBoard machines native memory-card support and laying important groundwork for the stable release ahead. Year 7 (2012-13) : the watershed. RISC OS Pi brought the OS to the Raspberry Pi, a credit-card co...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 15,
+      "representative_title": "F*: A general-purpose proof-oriented programming language",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（136 points, 60 评论）by ducktective"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://fstar-lang.org/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "aaa59e783fd4bbeb",
+          "title": "F*: A general-purpose proof-oriented programming language",
+          "link": "https://fstar-lang.org/",
+          "normalized_link": "https://fstar-lang.org",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T12:31:16+00:00",
+          "summary": "HN 热门讨论（136 points, 60 评论）by ducktective",
+          "full_text_snippet": "Introduction F* (pronounced F star ) is a general-purpose proof-oriented\n  programming language, supporting both purely functional and\n  effectful programming. It combines the expressive power of dependent\n  types with proof automation based on SMT solving and tactic-based\n  interactive theorem proving. F* programs compile, by default, to OCaml. Various fragments of F*\n  can also be extracted to F#, to C or Wasm by a tool\n  called KaRaMeL ,\n  or to assembly using\n  the Vale toolchain. F* is implemented in F* and bootstrapped using OCaml. F* is open source on GitHub and is under \n  active development by Microsoft Research , Inria , and by the community. Download F* is distributed under the Apache 2.0 license .\n  Binaries for Windows, Linux, and Mac OS X are posted regularly on the releases page on GitHub .\n  You can also install F* from OPAM, Docker, Nix, or build it from sources, by following the instructions in INSTALL.md . Learn F* An online\n  book Proof-oriented\n  Programming In F* is being written and regular updates are\n  posted online. You probably want to read it while trying out\n  examples and exercises in your browser by clicking the image below. Low* We also have a tutorial that covers Low* , a low-level subset of F*, which can be compiled to C by KaRaMeL. Course Material F* courses are often taught at various seasonal schools. Lectures and course materials for some of them are\n    also a useful resource. Embedding Proof-oriented Programming Languages in F* Formal Verification with F* and Meta-F* Verifying Low-Level Code for Correctness and Security Program Verification with F* Uses F* is used in several projects in both industrial and academic settings.\n    We list a few of them here. If you are using F* in your project, please\n    let us know by writing to the fstar-mailing-list . Project Everest Project Everest is an umbrella project that develops high-assurance\n    secure communication software in F*. A big part of the development of F* has been mot...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 26,
+      "representative_title": "Harvesting SSH Credentials: Insights from My Honeypot Network",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（30 points, 23 评论）by whatbackup"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://uphillsecurity.com/articles/harvesting-ssh-credentials-insights-from-my-honeypot-network/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "ac90e570648f3dc0",
+          "title": "Harvesting SSH Credentials: Insights from My Honeypot Network",
+          "link": "https://uphillsecurity.com/articles/harvesting-ssh-credentials-insights-from-my-honeypot-network/",
+          "normalized_link": "https://uphillsecurity.com/articles/harvesting-ssh-credentials-insights-from-my-honeypot-network",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T17:45:51+00:00",
+          "summary": "HN 热门讨论（30 points, 23 评论）by whatbackup",
+          "full_text_snippet": "I’ve been working on this honeypot network for the past couple of months, and I’d now like to share some information from the first 30 days. In this article: : Intro and short summary the Data - credentials, attack sources, and so on the Tech - servers, automation, honeypot the Future - some plans and next steps The project is still work-in-progress and I plan to improve it over time. The presentation is still a little bit rough, but this will do for now. Feedback and questions are welcome! Intro Locations of honeypots References for this article:\n- Timeframe = July 2026\n- 15 servers (only dedicated for this purpose)\n- 15 IPs, IPv4\n- all over the world (see above)\n- 5 VPS Providers\n- SSH Honeypot, Port 22/TCP The Data Some things to consider before we start: Most honeypots are currently in Europe (60%) - I plan to add more Passwords and usernames are percent-encoded (like an URL) to provide the information lossless and fully reversible - use Cyberchef to reverse it . Only login attempts are considered - scans or other attacks are not (yet)! I can’t publish the IPs of the attackers as I am not yet familiar with the privacy laws Presentation is still rough, but will improve with next versions. Summary Unique IPs: 6790\nTotal Login Attempts: 1,531,053\nUnique Credentials: 131922             (Pair UN+PW)\nUnique Usernames: 12238\nUnique Passwords: 97621 Attack IP Sources Continent == Continent by unique IPs ==\n       IPs   share  continents\n      4084   60.1%  Asia\n      1294   19.1%  Europe\n       832   12.3%  North America\n       360    5.3%  South America\n       190    2.8%  Africa\n        30    0.4%  Oceania\n----------  ------  ---\n      6790  100.0%  6 distinct continents\n\n\n== Continent by login attempts ==\n  attempts   share  continents\n    921439   60.2%  Europe\n    453254   29.6%  Asia\n     97441    6.4%  North America\n     38604    2.5%  South America\n     18793    1.2%  Africa\n      1522    0.1%  Oceania\n----------  ------  ---\n   1531053  100.0%  6 distinct co...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 29,
+      "representative_title": "Sharing an X11 Server Across Hosts with FamilyWild",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（16 points, 4 评论）by shirozuki"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://dobrowolski.dev/article/sharing-an-x-server-across-hosts-with-familywild/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8bd98fa79ece084c",
+          "title": "Sharing an X11 Server Across Hosts with FamilyWild",
+          "link": "https://dobrowolski.dev/article/sharing-an-x-server-across-hosts-with-familywild/",
+          "normalized_link": "https://dobrowolski.dev/article/sharing-an-x-server-across-hosts-with-familywild",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T20:26:47+00:00",
+          "summary": "HN 热门讨论（16 points, 4 评论）by shirozuki",
+          "full_text_snippet": "2026-08-02 Sharing an X Server Across Hosts with FamilyWild Ever tried running an X11 application from inside a container, a chroot, or over ssh with a bind-mounted .Xauthority — only to be greeted by the ever-helpful Authorization required, but no authorization protocol specified ? The file is right there, mounted read-only where the client expects it, and yet\nX refuses the connection. The reason is subtle, and the fix is a single line of sed . Why the cookie is rejected An .Xauthority file is a list of cookies, and every entry is keyed by a family and a hostname . When a client connects, it doesn't just grab the\nfirst cookie it finds — it looks for the entry whose hostname matches the\nmachine the client believes it's running on. That's exactly what breaks the moment the client runs somewhere other than where\nthe cookie was minted. Inside a container the hostname is different; over an\nun-forwarded socket the client resolves a different name entirely. The cookie is\npresent and valid, but its hostname doesn't match, so the client never offers it\nand X falls back to \"no authorization protocol.\" You can see the family/hostname keying for yourself: $ xauth list\nmyhost/unix:0  MIT-MAGIC-COOKIE-1  a1b2c3d4e5f6... That leading myhost/unix:0 is the problem — it pins the cookie to myhost . FamilyWild to the rescue X has a wildcard family, FamilyWild , whose numeric value is 0xffff . A cookie\nin this family matches any hostname. So instead of trying to make the client's\nhostname match the cookie, we rewrite the cookie to match every host. xauth nlist prints entries in a numeric format where the first field is the\n4-hex-digit family. Overwrite it with ffff and merge the result into a fresh\nfile: : > /tmp/portable.Xauthority && xauth nlist :0 | \\\n    sed 's/^..../ffff/' | xauth -f /tmp/portable.Xauthority nmerge -\n# Replace :0 with your $DISPLAY value The change is a single field It's worth seeing just how small the edit is. An .Xauthority entry is a packed\nbinary record: a...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 0,
+      "representative_title": "中信证券：调整基本结束，8月修复可期",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "8月2日消息，中信证券研报表示，A股本轮调整更多是拥挤交易的修正，而非韩国式的去杠杆冲击，这体现在：1）整体杠杆情况比较安全，7月上涨股票数量接近全A一半，明显超过6月；2）相比全球历史上典型的去杠杆行情，当前的融资回落幅度并不算大；3）ETF市场呈现持续的资金流入，科技类ETF的流入提供了充足流动性支持"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3922183036694147?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "f123047fed0f8710",
+          "title": "中信证券：调整基本结束，8月修复可期",
+          "link": "https://36kr.com/newsflashes/3922183036694147?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3922183036694147?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-08-02T09:58:47+00:00",
+          "summary": "8月2日消息，中信证券研报表示，A股本轮调整更多是拥挤交易的修正，而非韩国式的去杠杆冲击，这体现在：1）整体杠杆情况比较安全，7月上涨股票数量接近全A一半，明显超过6月；2）相比全球历史上典型的去杠杆行情，当前的融资回落幅度并不算大；3）ETF市场呈现持续的资金流入，科技类ETF的流入提供了充足流动性支持。当然，局部的流动性压力依然存在，尤其是部分非核心AI股，这些个股的调整影响到了科技板块内部的持仓调整，造成核心标的定价短暂失效，不过中信证券认为目前该影响已基本消除。8月普遍修复的概率还在提升，但并非简单超跌反弹，非AI板块的负面叙事有边际好转，资金环境也支持适当修复。配置上，建议增配能化、有色、非银和创新药，科技内部需要借反弹更加聚焦持仓。（界面）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "policy",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 8,
+      "representative_title": "央行：提高金融服务实体经济质效 高质量建设债券市场“科技板”",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "8月1日，中国人民银行召开2026年下半年工作会议���会议强调，提高金融服务实体经济质效"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3922066899054208?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "a751de6d90f8e337",
+          "title": "央行：提高金融服务实体经济质效 高质量建设债券市场“科技板”",
+          "link": "https://36kr.com/newsflashes/3922066899054208?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3922066899054208?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-08-02T07:38:40+00:00",
+          "summary": "8月1日，中国人民银行召开2026年下半年工作会议���会议强调，提高金融服务实体经济质效。落实金融“五篇大文章”政策框架，持续完善金融统计制度、评价体系。用好各项结构性货币政策工具。加强与地方财政、产业部门协同，放大政策激励效能。高质量建设债券市场“科技板”。稳妥实施科技创新与民营企业债券风险分担工具，探索科技金融领域信息开放共享和数据融合运用。健全民营中小企业增信制度，提升中小企业金融服务能力。（e公司）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "tool",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 19,
+      "representative_title": "Developers are attached to tools because tools encode trust",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（105 points, 50 评论）by HieronymusBosch"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://stackoverflow.blog/2026/07/29/developers-are-attached-to-tools-because-tools-encode-trust/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "ca80808e22f1f3fa",
+          "title": "Developers are attached to tools because tools encode trust",
+          "link": "https://stackoverflow.blog/2026/07/29/developers-are-attached-to-tools-because-tools-encode-trust/",
+          "normalized_link": "https://stackoverflow.blog/2026/07/29/developers-are-attached-to-tools-because-tools-encode-trust",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-29T14:25:54+00:00",
+          "summary": "HN 热门讨论（105 points, 50 评论）by HieronymusBosch",
+          "full_text_snippet": "About six years ago, we ran a piece about IDEs where the gist was that IDEs were getting to be so powerful and capable that it was a marvel that anybody used Vim or Emacs like a caveman. While yes, it was a provocative article, it got a lot of developers pretty riled up. Comments came from both sides, both from folks trashing the article for not understanding how developers work and from those developers who preach the good news of Emacs all day. But mostly there was a great discussion about why these tools were actually useful. For a novice, Vim and Emacs can seem like unintuitive terminal programs that require memorization of secret keystrokes to use (and escape ). But for the experienced user, it can feel as natural as thinking. One comment pointed to The Pragmatic Programmer by David Thomas and Andrew Hunt, which explained that developers—craftsmen that they are (or were) —need “sharp tools” that feel like an extension of their hand. Vim and Emacs, in their infinite customizability, can be molded to fit your exact hand and workflow. Taking the time to build proficiency and trust in your tools, and well as hacking them to fit you, pays deep dividends. In this age of agentic engineering, the new tools are terminals you talk to in natural language. A coding agent lacks the precision and specificity of a developer writing well-crafted code, but it can output whole applications in a fraction of the time. The question that still echoes today is whether those outputs can be trusted. Our last Developer Survey found that the more developers used AI, the less they trusted it—usage rose from 76% to 84%, but trust fell from 40% to 29%. The tools themselves are new and their capabilities are in constant flux. If your kitchen knife kept changing shape, weight, and edge, you’d have to relearn it every time; that’s a hard tool to build trust in. But it also points to a flaw in how you use that tool, the process around it, and the way the tool reinforces the process. You trus...",
+          "category": "tool",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 27,
+      "representative_title": "Show HN: Make your Framework 12 sound like a creaky door",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 2,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（21 points, 2 评论）by arcaege"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://github.com/ArcaEge/creakwork12"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "a1aa071a3c93084f",
+          "title": "Show HN: Make your Framework 12 sound like a creaky door",
+          "link": "https://github.com/ArcaEge/creakwork12",
+          "normalized_link": "https://github.com/ArcaEge/creakwork12",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T20:33:01+00:00",
+          "summary": "HN 热门讨论（21 points, 2 评论）by arcaege",
+          "full_text_snippet": "turn your framework 12 into a creaky wooden door, basically this (that was also the inspiration too) but ported to a fw12. it may or may not work on other laptops too, I haven't tested it. the filtering is optimised for framework 12's hinge stiffness. demo.mp4 make your hinge go creaky tested on framework 12, might work on other laptops too ✨ effects ✨ pitch depends on position of hinge volume depends on how fast you adjust it have fun funny there is an executable in the releases tab. download it, do the usual chmod +x and run. enjoy. note: this was built on fedora, so your mileage may vary on other distros - there might be dynamic linking issues. or git clone and do cargo run . you'll have to install libiio-devel and alsa-lib-devel first though if you do that (or libasound2-dev and libalsa-dev on debian/ubuntu)",
+          "category": "tool",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 11,
+      "representative_title": "How the words we teach English language learners changed",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（179 points, 111 评论）by c-oreills"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://pudding.cool/2026/07/essential-words/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e0555e3ee6651da7",
+          "title": "How the words we teach English language learners changed",
+          "link": "https://pudding.cool/2026/07/essential-words/",
+          "normalized_link": "https://pudding.cool/2026/07/essential-words",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T15:41:08+00:00",
+          "summary": "HN 热门讨论（179 points, 111 评论）by c-oreills",
+          "full_text_snippet": "Most of the adverbs specify degree, frequency, certainty, and extent. Some hedge (somewhat, partly, relatively, possibly, approximately). Others assert (absolutely, definitely, entirely, exactly, precisely). They're all doing the same kind of work: Take a statement and tell you how much of it is true, how often, and how certain. It’s as if the world now requires you to be more precise about everything. Bread survived both lists. Flour, wheat, harvest and bake didn’t. The word for what sustains us remained essential, while the words for how we’d make it weren’t. That might be the most honest summary of what happened. The world that made the 2023 list is more regulated, more connected, and in many ways more capable than the one behind the 1953 list. It’s a world further than our kitchen or home, reaching across economies, institutions, and democracies. Today's vocabulary reflects a life that isn’t self-contained, but rather more systemic. It’s not so much about what’s within arm’s reach, but more about the larger world we navigate through. That sort of long-distance connection requires a particular kind of language: expansive, abstract, and precise. And language, it turns out, can’t help itself. It keeps track.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 18,
+      "representative_title": "Fasttracker II clone in C using SDL 2",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（108 points, 36 评论）by andsoitis"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://16-bits.org/ft2.php"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "eac6bc6c8d1cd6b1",
+          "title": "Fasttracker II clone in C using SDL 2",
+          "link": "https://16-bits.org/ft2.php",
+          "normalized_link": "https://16-bits.org/ft2.php",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-29T06:47:22+00:00",
+          "summary": "HN 热门讨论（108 points, 36 评论）by andsoitis",
+          "full_text_snippet": "I have written a portable Fasttracker II clone in C using SDL 2. Here's a screenshot. What is Fasttracker II? Read about it on Wikipedia . Note: If you have more than one monitor connected to your PC, and they use different refresh rates, you\n\t\t\t\tmight get some program issues! FT2 clone v2.22 download: (19th of July 2026 18:36 - GMT +2 - changelog ) Source code and more info can be found over at GitHub . Please read \"HOW-TO-COMPILE.txt\". Compiles on Linux. Windows important notice: If ALT+F4/ALT+F5 (copy/paste block) doesn't work and you have an NVIDIA GPU, you need to make sure those keybindings are disabled in 'GeForce Experience' (if it's installed). macOS/OS X important notices: To be able to actually run the program, you need to right click the .app/program and click \"Open\". This is needed just once.\n\t\t\t\tIf using a modern version of macOS, you need to allow the program to run in System Settings -> Privacy & Security after having attempted to run it. A lot of important keybindings in FT2 are occupied and has to be rerouted or removed in the OS To toggle fullscreen mode, press ALT+Enter or Ctrl+Cmd+F Linux important notice: To get ALT+F4 (copy pattern) and ALT+F5 (paste pattern) working, you have to change these keyboard shortcuts in your OS to something else.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 22,
+      "representative_title": "Note-Taking and Personal Knowledge Management",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（80 points, 22 评论）by surprisetalk"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://unattributed.cc/note-taking-and-personal-knowledge-management"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8b6674f763c2fae9",
+          "title": "Note-Taking and Personal Knowledge Management",
+          "link": "https://unattributed.cc/note-taking-and-personal-knowledge-management",
+          "normalized_link": "https://unattributed.cc/note-taking-and-personal-knowledge-management",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-28T14:21:10+00:00",
+          "summary": "HN 热门讨论（80 points, 22 评论）by surprisetalk",
+          "full_text_snippet": "Bridge heading into the smokey landscape. License: CC-0 I read Brennan Kenneth Brown's What have note-taking PKMs accomplished, really? , and found myself writing a lengthy response. But, after I wrote my response I reread Brennan's article and found myself in a bit of a quandary. I found myself asking a simple question: was it intentional that he presented both arguments and counterarguments in his piece? That seemed to have a simple answer: yes. Any good piece of writing should undertake to present the relevant perspectives, and treat them seriously. But this is where I stumbled to understand Brennan's position. While he presented the counterpoints, or counterarguments to these positions, he didn't seem to treat them in the same manner as his primary arguments and points. That has caused me to think about his article from a different perspective. What Was the Purpose There is a statement, or rather a question, that forms the premise of Brennan's argument about Personal Knowledge Management: Obsidian has been out for six years now—has there been an increase in public-facing understanding and knowledge? That is a question that, the more that I look at it, seems completely wrong. It's taking the idea of a single piece of technology, a single application, and asking what that tool has contributed to the world. How does anyone measure what the contribution of a piece of software is to the world? Take for example a couple of applications that have been around for many more decades than Obsidian: Emacs and vim. Have Emacs and vim contributed to “public-facing” understanding or knowledge? No, they haven't. However, what they have enabled people to do a lot of things: write code, programs, applications, papers, documents, books, poems, and a lot more. The tool doesn't make the contribution. The tool enables people to make contributions to the world. But Brennan goes on to double down: I think it's safe to say that, while there have always been courses and lessons on pro...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 24,
+      "representative_title": "My personal AI benchmark: \"Generate an SVG of a frog with a Habsburg jaw.\"",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（63 points, 37 评论）by thebigship"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://frogs.vaguespac.es/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "6b1f28e7afc87ab9",
+          "title": "My personal AI benchmark: \"Generate an SVG of a frog with a Habsburg jaw.\"",
+          "link": "https://frogs.vaguespac.es/",
+          "normalized_link": "https://frogs.vaguespac.es",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T19:42:08+00:00",
+          "summary": "HN 热门讨论（63 points, 37 评论）by thebigship",
+          "full_text_snippet": "Run 3 of 3 · Aug 2 2026           · 44.1s          · 13,406 B The model added extensive royal/portrait framing beyond a simple frog illustration, including full Habsburg regalia (crown, Golden Fleece chain, ruff collar, velvet mantle) and explicit mood/character labels like \"Sleepy Drooping Aristocratic Eyelid,\" \"Haughty Expression,\" and \"Asymmetric Downturned Corner Creases (Inbred Royal Disdain).\" It also inserted anatomical/clinical commentary framing the jaw as pathology, labeling the section \"THE PROMINENT HABSBURG JAW (PROGNATHISM)\" and describing \"Deep Chin Center Indentation / Dimple of Prognathism\" and \"Open Cavity Line Showing Exaggerated Underbite Gap.\" View SVG source <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 800 800\" width=\"100%\" height=\"100%\">\n  <defs>\n    <!-- Background Gradient -->\n    <radialGradient id=\"bgGrad\" cx=\"50%\" cy=\"50%\" r=\"75%\">\n      <stop offset=\"0%\" stop-color=\"#4a1525\"/>\n      <stop offset=\"60%\" stop-color=\"#210810\"/>\n      <stop offset=\"100%\" stop-color=\"#050103\"/>\n    </radialGradient>\n\n    <!-- Gold Gradient -->\n    <linearGradient id=\"goldGrad\" x1=\"0%\" y1=\"0%\" x2=\"100%\" y2=\"100%\">\n      <stop offset=\"0%\" stop-color=\"#ffeea1\"/>\n      <stop offset=\"30%\" stop-color=\"#d4af37\"/>\n      <stop offset=\"70%\" stop-color=\"#aa7c11\"/>\n      <stop offset=\"100%\" stop-color=\"#5a3d05\"/>\n    </linearGradient>\n\n    <!-- Frog Skin Base Gradient -->\n    <radialGradient id=\"frogSkin\" cx=\"40%\" cy=\"30%\" r=\"70%\">\n      <stop offset=\"0%\" stop-color=\"#88be43\"/>\n      <stop offset=\"55%\" stop-color=\"#558b2f\"/>\n      <stop offset=\"85%\" stop-color=\"#2e5317\"/>\n      <stop offset=\"100%\" stop-color=\"#19330b\"/>\n    </radialGradient>\n\n    <!-- Jaw/Belly Skin Gradient -->\n    <radialGradient id=\"jawSkin\" cx=\"50%\" cy=\"30%\" r=\"70%\">\n      <stop offset=\"0%\" stop-color=\"#cbe38b\"/>\n      <stop offset=\"60%\" stop-color=\"#93c44f\"/>\n      <stop offset=\"90%\" stop-color=\"#558b2f\"/>\n      <stop offset=\"100%\" stop-color=\"#345918\"/>\n    </radialGradient>\n\n    <!-- Hab...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 25,
+      "representative_title": "EU Age Verification Project Mandates Hardware-Bound Attestation",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（58 points, 23 评论）by RobotToaster"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://linuxiac.com/eu-age-verification-project-mandates-hardware-bound-attestation/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "70fc4c472bbadabb",
+          "title": "EU Age Verification Project Mandates Hardware-Bound Attestation",
+          "link": "https://linuxiac.com/eu-age-verification-project-mandates-hardware-bound-attestation/",
+          "normalized_link": "https://linuxiac.com/eu-age-verification-project-mandates-hardware-bound-attestation",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T20:44:24+00:00",
+          "summary": "HN 热门讨论（58 points, 23 评论）by RobotToaster",
+          "full_text_snippet": "The European Union’s open-source age-verification project has drawn criticism after a maintainer confirmed that hardware-bound attestation is a mandatory architectural requirement, raising concerns about Linux, custom Android ROMs, and independently compiled applications. The debate began in the GitHub repository for the project’s Android app, where a user argued that tying credentials to specific hardware environments would make it more difficult to support open systems. “ Hardware-bound attestation is a requirement of this project, not an implementation detail we can simply drop ,” a maintainer responded . The project invited alternative architectural proposals and said a dedicated security review and threat model would be published soon. The solution lets users prove they are over a certain age without revealing their name, exact birth date, or full identity document. To prevent credentials from being copied, cloned, or reused by modified clients, the project relies on keys stored in protected hardware like Android TEE, StrongBox, or Apple’s Secure Enclave. However, critics claim that this approach endangers the system by making it dependent on a small number of approved devices, operating systems, and attestation providers. The project’s technical specification requires age verification apps to use native cryptographic hardware when available. However, stricter checks like root detection, Google Play Integrity, and Apple App Attest are not universally mandated by the reference implementation and may be left to individual deployers. This distinction matters because hardware-backed key storage does not require a server to approve the entire device, operating system, or application build. The maintainer’s wording leaves some uncertainty over how restrictive production deployments will be. There is also a separate governance limitation. Proof of Age providers are expected to issue credentials only to applications included in a list of compliant apps maintained by...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 30,
+      "representative_title": "Schmitt Trigger: Robust Comparator Design with Hysteresis",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（12 points, 7 评论）by ankitg12"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.wevolver.com/article/schmitt-trigger-robust-comparator-design-with-hysteresis"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "96128e9c70dcc921",
+          "title": "Schmitt Trigger: Robust Comparator Design with Hysteresis",
+          "link": "https://www.wevolver.com/article/schmitt-trigger-robust-comparator-design-with-hysteresis",
+          "normalized_link": "https://www.wevolver.com/article/schmitt-trigger-robust-comparator-design-with-hysteresis",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-30T15:12:17+00:00",
+          "summary": "HN 热门讨论（12 points, 7 评论）by ankitg12",
+          "full_text_snippet": "Key Takeaways ● A Schmitt trigger is a comparator with built-in hysteresis. Positive feedback ensures the output toggles only when the input crosses distinct upper (V(TH)) and lower (V(TL)) threshold voltages, so noise within the hysteresis window cannot cause repeated toggles. ● Inverting op-amp Schmitt trigger thresholds. With input resistor R1, feedback resistor R2, and saturation voltage V(sat), the thresholds are V(TH) = (R1 / (R1 + R2)) × V(sat) and V(TL) = (R1 / (R1 + R2)) × (−V(sat)). The hysteresis width is V(H) = V(TH) − V(TL) = (2 × R1 / (R1 + R2)) × |V(sat)| ● Non-inverting Schmitt trigger. Using superposition, V(UT) = +(R1 / R(f)) × V(sat) and V(LT) = −(R1 / R(f)) × V(sat). The hysteresis is 2 × (R1 / R(f)) × |V(sat)| ● Discrete BJT Schmitt trigger. Two transistors sharing a common emitter resistor produce hysteresis because the emitter voltage shifts with the output state. Typical resistor values give roughly 0.4 V of hysteresis. ● CMOS Schmitt-trigger inverters. The SN74HC14 at 4.5 V supply has a typical positive threshold V(T+) of about 2.5 V and negative threshold V(T−) of about 1.6 V; hysteresis ranges from about 0.4 V to 2.1 V The single-gate SN74LVC1G14 supports 1.65-5.5 V supplies; at 5.5 V, typical V(T+) is 2.61-3.33 V and V(T⁻) is 1.87-2.29 V, giving 0.71-1.11 V of hysteresis. ● Comparator ICs with hysteresis. The LM393 dual comparator operates from 2-36 V with a large-signal response of roughly 300 ns and a small-signal response of 1.3 µs [5]. The TLV3201 micropower comparator has a 40 ns propagation delay and 1.2 mV of built-in internal hysteresis, operating from 2.7 to 5.5 V. Introduction: Why Add Hysteresis to a Comparator? Standard comparators switch output state whenever the input crosses a reference voltage. When a noisy input or a slowly varying analog signal hovers near that reference, the comparator output can chatter, rapidly toggling high and low as noise causes repeated threshold crossings. This behavior is problematic in digit...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "representative_title": "近120万辆特斯拉汽车遭调查",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "央视财经消息，据美国媒体日前报道，美国国家公路交通安全管理局已宣布，在收到多起悬架故障投诉后，正式对近120万辆特斯拉汽车展开初步调查"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3922152130653828?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "2006a56c813ca703",
+          "title": "近120万辆特斯拉汽车遭调查",
+          "link": "https://36kr.com/newsflashes/3922152130653828?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3922152130653828?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-08-02T09:30:22+00:00",
+          "summary": "央视财经消息，据美国媒体日前报道，美国国家公路交通安全管理局已宣布，在收到多起悬架故障投诉后，正式对近120万辆特斯拉汽车展开初步调查。美国国家公路交通安全管理局表示，该机构累计已收到156起特斯拉悬架故障相关投诉，主要涉及2018至2020款Model 3和2021至2023款Model Y车型。故障表现为车辆前下横向连杆脱落，极端情况下可能造成车辆失控，截至目前尚未收到因这一故障引发人员伤亡的报告。 （央视财经）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "representative_title": "比亚迪：今年前7月新能源汽车销量222.77万辆",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "36氪获悉，比亚迪8月2日公告，2026年7月公司新能源汽车销量为419,211辆，产量为420,249辆"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3922137591786886?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "be4e7cd2fd537ec7",
+          "title": "比亚迪：今年前7月新能源汽车销量222.77万辆",
+          "link": "https://36kr.com/newsflashes/3922137591786886?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3922137591786886?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-08-02T09:15:35+00:00",
+          "summary": "36氪获悉，比亚迪8月2日公告，2026年7月公司新能源汽车销量为419,211辆，产量为420,249辆。2026年1-7月，公司累计新能源汽车销量为2,227,722辆，较去年同期下降10.54%；累计新能源汽车产量为2,234,379辆，较去年同期下降8.98%。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "representative_title": "汇宇制药：公司3个产品拟中标第十二批全国药品集中采购",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "36氪获悉，汇宇制药8月2日公告，公司参与了国家组织药品联合采购办公室（简称“联采办”）组织的第十二批全国药品集中采购的投标工作，根据联采办于2026年7月31日在上海阳光医药采购网发布的《第12批国家组织药品集中带量采购拟中选结果公示》显示，公司3个产品拟中标本次集中采购，分别为注射用盐酸表柔比星、注射用替考拉宁、亚叶酸钙注射液"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3922094224043656?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "db99ed35e18d6e27",
+          "title": "汇宇制药：公司3个产品拟中标第十二批全国药品集中采购",
+          "link": "https://36kr.com/newsflashes/3922094224043656?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3922094224043656?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-08-02T08:53:29+00:00",
+          "summary": "36氪获悉，汇宇制药8月2日公告，公司参与了国家组织药品联合采购办公室（简称“联采办”）组织的第十二批全国药品集中采购的投标工作，根据联采办于2026年7月31日在上海阳光医药采购网发布的《第12批国家组织药品集中带量采购拟中选结果公示》显示，公司3个产品拟中标本次集中采购，分别为注射用盐酸表柔比星、注射用替考拉宁、亚叶酸钙注射液。",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "representative_title": "Truth Social推出“Truth API”服务，每月10万美元出售特朗普帖文快速访问权",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "当地时间8月1日，据美联社报道，美国总统特朗普旗下Truth Social将于当天推出名为“Truth API”的高速信息服务，向华尔街交易机构收费提供特朗普社交媒体帖文的快速访问渠道，引发有关内幕交易、利益冲突以及利用公职谋取私人利益的质疑"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3922088228957576?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "c28c925bdd3d01b7",
+          "title": "Truth Social推出“Truth API”服务，每月10万美元出售特朗普帖文快速访问权",
+          "link": "https://36kr.com/newsflashes/3922088228957576?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3922088228957576?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-08-02T08:15:21+00:00",
+          "summary": "当地时间8月1日，据美联社报道，美国总统特朗普旗下Truth Social将于当天推出名为“Truth API”的高速信息服务，向华尔街交易机构收费提供特朗普社交媒体帖文的快速访问渠道，引发有关内幕交易、利益冲突以及利用公职谋取私人利益的质疑。 报道称，Truth API收费高达每月10万美元，目标客户主要是高频交易公司。由于特朗普经常通过Truth Social发布涉及关税、战争、央行领导层及其他重大政策的消息，这些内容往往会迅速引发股票、债券、汇率和大宗商品价格波动。批评者认为，即使帖子理论上同时向公众发布，付费客户通过更快的数据接口和自动交易系统，仍可能比普通投资者更早采取行动。 报道指出，特朗普近期越来越频繁地在社交媒体上点名上市公司。4月，他发文称赞Palantir Technologies后，该公司股价一度大涨；随后发文祝贺英特尔“表现出色”后，英特尔股价也立即在盘后交易中上涨。（央视财经）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "representative_title": "谷歌地球紧急叫停AI生图：虚构场景可叠加卫星图散播假信息",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "谷歌推出谷歌地球（Google Earth）人工智能（AI）图像生成功能不到48小时后，宣布暂停服务，以加强安全防护"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3922077104664199?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "a94817702c507808",
+          "title": "谷歌地球紧急叫停AI生图：虚构场景可叠加卫星图散播假信息",
+          "link": "https://36kr.com/newsflashes/3922077104664199?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3922077104664199?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-08-02T07:51:54+00:00",
+          "summary": "谷歌推出谷歌地球（Google Earth）人工智能（AI）图像生成功能不到48小时后，宣布暂停服务，以加强安全防护。专家此前警告，这项工具可把虚构场景叠加在真实卫星图像上，容易被用于散播假信息。 (澎湃新闻)",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "product",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "representative_title": "央行：继续做好金融支持地方政府融资平台债务风险化解工作 推进融资平台市场化转型",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "中国人民银行8月1日召开2026年下半年工作会议"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3922068248260229?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "ce393e20c3cd2726",
+          "title": "央行：继续做好金融支持地方政府融资平台债务风险化解工作 推进融资平台市场化转型",
+          "link": "https://36kr.com/newsflashes/3922068248260229?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3922068248260229?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-08-02T07:43:04+00:00",
+          "summary": "中国人民银行8月1日召开2026年下半年工作会议。会议强调，稳妥化解重点领域风险。继续做好金融支持地方政府融资平台债务风险化解工作，推进融资平台市场化转型。强化宏观审慎管理和金融稳定保障体系，丰富宏观审慎和金融稳定管理工具箱，校正和阻断金融市场风险的累积，维护金融市场稳定健康发展。发挥好两项支持资本市场货币政策工具的作用。提升存款保险履职效能。稳妥有序推进重点地区和重点机构风险化解。强化打击非法金融活动。（财联社）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "policy",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 7,
+      "representative_title": "央行：继续实施好适度宽松的货币政策",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "8月1日，中国人民银行召开2026年下半年工作会议"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3922067356315266?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "227be9f5144b543c",
+          "title": "央行：继续实施好适度宽松的货币政策",
+          "link": "https://36kr.com/newsflashes/3922067356315266?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3922067356315266?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-08-02T07:40:08+00:00",
+          "summary": "8月1日，中国人民银行召开2026年下半年工作会议。会议指出，继续实施好适度宽松的货币政策。综合运用并适时调整货币政策工具，保持流动性充裕，引导金融机构增强信贷投放均衡性，使社会融资规模、货币供应量增长同经济增长和价格总水平预期目标相匹配。规范信贷市场经营行为，促进降低融资中间费用，保持社会综合融资成本低位运行。继续做好利率政策执行和监督。坚持市场在汇率形成中的决定性作用，保持汇率弹性，强化预期引导，保持人民币汇率在合理均衡水平上的基本稳定。持续评估完善货币政策框架。（界面）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "tool",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 9,
+      "representative_title": "央行：完善金融市场宏观审慎管理指标体系，探索丰富金融市场宏观审慎管理工具箱",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "8月1日，中国人民银行召开2026年下半年工作会议"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "36Kr 快讯",
+            "authority": 4,
+            "link": "https://36kr.com/newsflashes/3922066245922184?f=rss"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "7e8b58b934db66c3",
+          "title": "央行：完善金融市场宏观审慎管理指标体系，探索丰富金融市场宏观审慎管理工具箱",
+          "link": "https://36kr.com/newsflashes/3922066245922184?f=rss",
+          "normalized_link": "https://36kr.com/newsflashes/3922066245922184?f=rss",
+          "source_name": "36Kr 快讯",
+          "source_category": "events",
+          "published_at": "2026-08-02T07:32:06+00:00",
+          "summary": "8月1日，中国人民银行召开2026年下半年工作会议。会议强调，加快金融市场建设发展。加强制度机制建设，完善金融市场宏观审慎管理指标体系，探索丰富金融市场宏观审慎管理工具箱，健全金融基础设施制度规则和治理体系，加强金融市场运行状况的监测、评估。强化金融市场执法，严厉打击违法违规行为，维护金融市场秩序。稳步推进金融市场高水平开放，优化债券通双向开放机制，有序推进境内外基础设施合作，丰富流动性管理和风险对冲工具。（第一财经）",
+          "full_text_snippet": "推送和解读前沿、有料的科技创投资讯 一级市场金融信息和系统服务提供商 聚焦全球优秀创业者，项目融资率接近97%，领跑行业",
+          "category": "tool",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 16,
+      "representative_title": "Folding Paper Globes",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（132 points, 28 评论）by dango2506"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://foldingglobes.com/globes"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "b24ce2c97410a285",
+          "title": "Folding Paper Globes",
+          "link": "https://foldingglobes.com/globes",
+          "normalized_link": "https://foldingglobes.com/globes",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-29T05:53:00+00:00",
+          "summary": "HN 热门讨论（132 points, 28 评论）by dango2506",
+          "full_text_snippet": "HN 热门讨论（132 points, 28 评论）by dango2506",
+          "category": "research",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 20,
+      "representative_title": "Show HN: Fuse – statically typed functional programming language",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 2,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（99 points, 27 评论）by the_unproven"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://fuselang.org"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "4ac7b796555ee570",
+          "title": "Show HN: Fuse – statically typed functional programming language",
+          "link": "https://fuselang.org",
+          "normalized_link": "https://fuselang.org",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T11:23:56+00:00",
+          "summary": "HN 热门讨论（99 points, 27 评论）by the_unproven",
+          "full_text_snippet": "trait Functor [ A ] : fun map [ B ] ( self , f : A -> B ) -> Self [ B ] ; impl List [ A ] : fun fold [ A , B ] ( l : List [ A ] , z : B , f : ( B , A ) -> B ) -> B match l: Cons ( h , t ) => List :: fold ( t , f ( z , h ) , f ) Nil => z fun sum ( l : List [ i32 ] ) -> i32 List :: fold ( l , 0 , ( a , b ) => a + b ) impl Functor [ A ] for List [ A ] : fun map [ B ] ( self , f : A -> B ) -> List [ B ] List :: fold ( self , Nil [ B ] , ( t , h ) => Cons ( f ( h ) , t ) ) fun fmap [ A , B , F : Functor ] ( f : A -> B , x : F [ A ] ) -> F [ B ] x . map ( f ) fun main ( ) -> IO [ Unit ] let l = Cons ( 1 , Cons ( 2 , Cons ( 3 , Nil ) ) ) let l2 = fmap ( x => x * 2 , l ) print ( int_to_str ( List :: sum ( l2 ) ) )",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 12,
+      "representative_title": "Meshdiff – visually compare two STL versions in the browser, client-side",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（167 points, 17 评论）by projscope"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://meshdiff.com/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "3974100619dcdf8a",
+          "title": "Meshdiff – visually compare two STL versions in the browser, client-side",
+          "link": "https://meshdiff.com/",
+          "normalized_link": "https://meshdiff.com",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T11:34:41+00:00",
+          "summary": "HN 热门讨论（167 points, 17 评论）by projscope",
+          "full_text_snippet": "Meshdiff requires JavaScript to run — it's a browser-based 3D diff tool.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 17,
+      "representative_title": "'Crush this lady': how eBay harassment campaign led to $56M payout",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（117 points, 48 评论）by JumpCrisscross"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.ft.com/content/06ec1b03-d4af-40cf-b12a-4ba5a410f6d2"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "6fb9e6914950ade0",
+          "title": "'Crush this lady': how eBay harassment campaign led to $56M payout",
+          "link": "https://www.ft.com/content/06ec1b03-d4af-40cf-b12a-4ba5a410f6d2",
+          "normalized_link": "https://www.ft.com/content/06ec1b03-d4af-40cf-b12a-4ba5a410f6d2",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T19:19:24+00:00",
+          "summary": "HN 热门讨论（117 points, 48 评论）by JumpCrisscross",
+          "full_text_snippet": "HN 热门讨论（117 points, 48 评论）by JumpCrisscross",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 21,
+      "representative_title": "When transit passes were designed by hand (2022)",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（83 points, 27 评论）by nate"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://letterformarchive.org/news/milwaukee-transit-passes/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e8e346be6ba22c06",
+          "title": "When transit passes were designed by hand (2022)",
+          "link": "https://letterformarchive.org/news/milwaukee-transit-passes/",
+          "normalized_link": "https://letterformarchive.org/news/milwaukee-transit-passes",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-07-31T13:38:04+00:00",
+          "summary": "HN 热门讨论（83 points, 27 评论）by nate",
+          "full_text_snippet": "HN 热门讨论（83 points, 27 评论）by nate",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 23,
+      "representative_title": "Rooting, firmware analysis and persistent credentials of TP-Link TL-841N",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（72 points, 12 评论）by mindracer"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://blog.juni-mp4.com/posts/42/rooting-the-tplink-tl841n-pt1/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "c80abb15e41d75a5",
+          "title": "Rooting, firmware analysis and persistent credentials of TP-Link TL-841N",
+          "link": "https://blog.juni-mp4.com/posts/42/rooting-the-tplink-tl841n-pt1/",
+          "normalized_link": "https://blog.juni-mp4.com/posts/42/rooting-the-tplink-tl841n-pt1",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-02T16:19:17+00:00",
+          "summary": "HN 热门讨论（72 points, 12 评论）by mindracer",
+          "full_text_snippet": "HN 热门讨论（72 points, 12 评论）by mindracer",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_raw": 32,
+    "total_deduped": 32,
+    "total_clusters": 32,
+    "generated_at": "2026-08-02T22:39:00.376892+00:00",
+    "dedup_details": [
+      {
+        "title": "「弯道超车」赛车入门指北：进站不只为换胎，策略里的那本时间账",
+        "link": "https://sspai.com/post/112701",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "本月玩什么｜节奏天国、斯普拉遁 涂击队、刺客信条：黑旗 记忆重置",
+        "link": "https://sspai.com/post/112962",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "本周看什么 | 最近值得一看的 10 部作品",
+        "link": "https://sspai.com/post/112961",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "App+1 | 诗经山河图：我用 AI 做了一张《诗经》地图",
+        "link": "https://sspai.com/post/112730",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "简单有效的 E-cise，如何让我摆脱体态不良的「三件套」？",
+        "link": "https://sspai.com/post/112833",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "派早报：小米汽车举行 SKYNOMAD 小米澎程技术发布会等",
+        "link": "https://sspai.com/post/112930",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "App+1 | 免费、多功能的远程控制新选择：网易 UU 远程",
+        "link": "https://sspai.com/post/112405",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Ten advances in mathematics and theoretical computer science",
+        "link": "https://openai.com/index/ten-advances-in-mathematics",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Advancing responsible AI across Europe",
+        "link": "https://openai.com/index/advancing-responsible-ai-across-europe",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Building abundant intelligence",
+        "link": "https://openai.com/index/building-abundant-intelligence",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Univé builds an AI-ready workforce",
+        "link": "https://openai.com/index/unive",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Disrupting a Criminal Scam Operation",
+        "link": "https://openai.com/index/disrupting-malicious-uses-of-ai-criminal-scam-operation",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Advancing the price-performance frontier with GPT-5.6",
+        "link": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How avatarin built a 24/7 retail agent with GPT-Realtime",
+        "link": "https://openai.com/index/avatarin",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How enabling two settings tripled our scores on the ARC-AGI-3 benchmark",
+        "link": "https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Scientific computing in the age of agentic AI",
+        "link": "https://openai.com/index/scientific-computing-agentic-ai",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How AI is expanding what people do at work",
+        "link": "https://openai.com/index/how-ai-is-expanding-what-people-do-at-work",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Building AI infrastructure with the Effingham County community",
+        "link": "https://openai.com/index/building-ai-infrastructure-with-the-effingham-county-community",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How news organizations are using AI to advance their vital missions",
+        "link": "https://openai.com/index/how-news-organizations-are-using-ai",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Advancing the next era of national science",
+        "link": "https://openai.com/index/advancing-the-next-era-of-national-science",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing OpenAI Presence",
+        "link": "https://openai.com/index/introducing-openai-presence",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "NTT DATA Group cuts incident analysis to 30 minutes with Codex",
+        "link": "https://openai.com/index/ntt-data",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "David Vélez and Robin Vince join the boards of the OpenAI Foundation and OpenAI Group PBC",
+        "link": "https://openai.com/index/david-velez-robin-vince-join-openai-boards",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Safety and alignment in an era of long-horizon models",
+        "link": "https://openai.com/index/safety-alignment-long-horizon-models",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "A scorecard for the AI age",
+        "link": "https://openai.com/index/a-scorecard-for-the-ai-age",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Why teens deserve access to safe AI",
+        "link": "https://openai.com/index/why-teens-deserve-access-safe-ai",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How Codex became a collaborator for OpenAI’s creative team",
+        "link": "https://openai.com/index/codex-collaborator-creative-team",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How Cars24 scales conversations and builds faster with OpenAI",
+        "link": "https://openai.com/index/cars24",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The US is advancing AI safety through state and federal action",
+        "link": "https://openai.com/index/advancing-ai-safety-through-state-and-federal-action",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GPT-Red: Unlocking Self-Improvement for Robustness",
+        "link": "https://openai.com/index/unlocking-self-improvement-gpt-red",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How to manage AI investments in the agentic era",
+        "link": "https://openai.com/index/managing-ai-investments-in-agentic-era",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini Robotics ER 2: powering robotics with video understanding, task orchestration, and multi-robot collaboration",
+        "link": "https://deepmind.google/blog/gemini-robotics-er-2-powering-robotics-with-video-understanding-task-orchestration-and-multi-robot-collaboration/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re launching Lyria 3.5 in Google Flow Music, with advances across musicality, lyrics, vocals, and creative control",
+        "link": "https://deepmind.google/blog/were-launching-lyria-35-in-google-flow-music-with-advances-across-musicality-lyrics-vocals-and-creative-control/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini Robotics 2 brings whole body intelligence to robots",
+        "link": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
+        "link": "https://deepmind.google/blog/introducing-gemini-3-6-flash-3-5-flash-lite-and-3-5-flash-cyber/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Our approach to bioresilience",
+        "link": "https://deepmind.google/blog/our-approach-to-bioresilience/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Empowering India’s next generation of innovators with ATL Saathi",
+        "link": "https://deepmind.google/blog/empowering-indias-next-generation-of-innovators-with-atl-saathi/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Google DeepMind and A24 announce first-of-its-kind research partnership",
+        "link": "https://deepmind.google/blog/google-deepmind-and-a24-announce-first-of-its-kind-research-partnership/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing computer use in Gemini 3.5 Flash",
+        "link": "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Unlocking UK house-building with AI-accelerated planning",
+        "link": "https://deepmind.google/blog/unlocking-uk-house-building-with-ai-accelerated-planning/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Securing the future of AI agents",
+        "link": "https://deepmind.google/blog/securing-the-future-of-ai-agents/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DiffusionGemma: 4x faster text generation",
+        "link": "https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Investing in multi-agent AI safety research",
+        "link": "https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Gemma 4 12B: a unified, encoder-free multimodal model",
+        "link": "https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Measuring the impact of learning with AI in Sierra Leone and beyond",
+        "link": "https://deepmind.google/blog/measuring-the-impact-of-learning-with-ai-in-sierra-leone-and-beyond/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re launching the Google DeepMind Accelerator program in Asia Pacific to tackle environmental risks",
+        "link": "https://deepmind.google/blog/were-launching-the-google-deepmind-accelerator-program-in-asia-pacific-to-tackle-environmental-risks/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Fast-tracking genetic leads to reverse cellular aging",
+        "link": "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Simulate real-world places with Project Genie and Street View",
+        "link": "https://deepmind.google/blog/simulate-real-world-places-with-project-genie-and-street-view/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Google Antigravity 2.0",
+        "link": "https://deepmind.google/blog/introducing-google-antigravity-2-0/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini for Science: AI experiments and tools for a new era of discovery",
+        "link": "https://deepmind.google/blog/gemini-for-science-ai-experiments-and-tools-for-a-new-era-of-discovery/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Making it easier to understand how content was created and edited",
+        "link": "https://deepmind.google/blog/making-it-easier-to-understand-how-content-was-created-and-edited/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Strengthening Singapore’s AI Future: A New National Partnership",
+        "link": "https://deepmind.google/blog/strengthening-singapores-ai-future-a-new-national-partnership/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Finding the molecular switches behind new infectious diseases",
+        "link": "https://deepmind.google/blog/finding-the-molecular-switches-behind-new-infectious-diseases/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Opening new paths in aging research",
+        "link": "https://deepmind.google/blog/opening-new-paths-in-aging-research/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Accelerating discovery of liver disease mechanisms",
+        "link": "https://deepmind.google/blog/accelerating-discovery-of-liver-disease-mechanisms/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini API Managed Agents: 3.6 Flash, hooks, and more",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api-3-6-flash-hooks/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "5 ways to host the ultimate dinner party with Google Search",
+        "link": "https://blog.google/products-and-platforms/products/search/dinner-party-hosting-tips/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "3 Google updates from Galaxy Unpacked 2026",
+        "link": "https://blog.google/products-and-platforms/platforms/android/galaxy-unpacked-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Connect more of your apps to Search",
+        "link": "https://blog.google/products-and-platforms/products/search/connected-apps/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Create, edit and star in videos with two Google Vids updates",
+        "link": "https://blog.google/products-and-platforms/products/workspace/gemini-omni-personal-avatars/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Expanding Managed Agents in Gemini API: background tasks, remote MCP and more",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "New York City educators and industry leaders gathered at Google’s offices to shape the future of AI in classrooms.",
+        "link": "https://blog.google/products-and-platforms/products/education/nyc-ai-summit/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Unlocking Britain’s next era of productivity: Building a nation of AI trailblazers",
+        "link": "https://blog.google/company-news/inside-google/around-the-globe/google-europe/united-kingdom/unlocking-britains-next-era-of-productivity-building-a-nation-of-ai-trailblazers/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Ask an AI expert: What exactly is the full stack?",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/full-stack-ai-explainer/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Our latest Google Finance upgrades, including a new app",
+        "link": "https://blog.google/products-and-platforms/products/search/google-finance-updates-june-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "New research shows how AMIE, our medical AI, could help manage health conditions.",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-for-disease-management-in-nature/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re strengthening our presence in Alabama through new investments and community support.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/alabama-investment-june-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Our new community investments in Virginia support local jobs and expand energy affordability.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/virginia-community-investments/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The latest AI news we announced in May 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "5 ways Google Search can level up your thrift and vintage shopping",
+        "link": "https://blog.google/products-and-platforms/products/search/thrifting-tips/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How we used Gemini to build Google I/O 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-google-ai/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio.",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/io-2026-vibe-coded-quiz/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GPU Management: Why Idle GPUs Are the New Grounded Aircraft",
+        "link": "https://huggingface.co/blog/Dharma-AI/gpu-management",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The OlmoEarth Platform: Geospatial inference at planetary scale",
+        "link": "https://huggingface.co/blog/allenai/olmoearth-infrastructure",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "LFM2.5-Encoders for Fast Long-Context Inference on CPU",
+        "link": "https://huggingface.co/blog/LiquidAI/lfm2-5-encoders",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident",
+        "link": "https://huggingface.co/blog/agent-intrusion-technical-timeline",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Bringing Nunchaku 4-bit Diffusion Inference to Diffusers",
+        "link": "https://huggingface.co/blog/nunchaku-diffusers",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Grabette: an open system to record robot-manipulation data",
+        "link": "https://huggingface.co/blog/grabette",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Newer Models, Same Advantage",
+        "link": "https://huggingface.co/blog/Dharma-AI/newer-models-same-advantages",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Model Routing Is Simple. Until It Isn’t.",
+        "link": "https://huggingface.co/blog/ibm-research/model-routing-is-simple-until-it-isnt",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Welcome Inkling by Thinking Machines",
+        "link": "https://huggingface.co/blog/thinkingmachines-inkling",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Profiling in PyTorch (Part 3): Attention is all you profile",
+        "link": "https://huggingface.co/blog/torch-attention-profile",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Native-speed vLLM transformers modeling backend",
+        "link": "https://huggingface.co/blog/native-speed-vllm-transformers-backend",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Run AI workloads on any cloud, store on Hugging Face: zero-egress storage with SkyPilot",
+        "link": "https://huggingface.co/blog/skypilot-hf-storage",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "LeRobot v0.6.0: Imagine, Evaluate, Improve",
+        "link": "https://huggingface.co/blog/lerobot-release-v060",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "PRX Part 4: Our Data Strategy",
+        "link": "https://huggingface.co/blog/Photoroom/prx-part4-data",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "🤗 Kernels: Major Updates",
+        "link": "https://huggingface.co/blog/revamped-kernels",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Hugging Face and Cerebras bring Gemma 4 to real-time voice AI",
+        "link": "https://huggingface.co/blog/cerebras-gemma4-voice-ai",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "ScarfBench: Benchmarking AI Agents for Enterprise Java Framework Migration",
+        "link": "https://huggingface.co/blog/ibm-research/scarfbench",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Why Specialization Is Inevitable",
+        "link": "https://huggingface.co/blog/Dharma-AI/why-specialization-is-inevitable",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Featuring Every Eval Ever Results on Hugging Face Model Pages",
+        "link": "https://huggingface.co/blog/eee-community-evals",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DiScoFormer: One transformer for density and score, across distributions",
+        "link": "https://huggingface.co/blog/allenai/discoformer",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Run a vLLM Server on HF Jobs in One Command",
+        "link": "https://huggingface.co/blog/vllm-jobs",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing the FFASR Leaderboard: Benchmarking ASR in the Real World",
+        "link": "https://huggingface.co/blog/ffasr-leaderboard",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Shipping huggingface_hub every week with AI, open tools, and a human in the loop",
+        "link": "https://huggingface.co/blog/huggingface-hub-release-ci",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Experimenting with the proposed Cross-Origin Storage API in Transformers.js",
+        "link": "https://huggingface.co/blog/cross-origin-storage",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Judge denies xAI’s request to block Minnesota ban on ‘nudify’ apps",
+        "link": "https://techcrunch.com/2026/08/01/judge-denies-xais-request-to-block-minnesota-ban-on-nudify-apps/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "YouTuber Hank Green says his AI usage is ‘not healthy’",
+        "link": "https://techcrunch.com/2026/08/01/youtuber-hank-green-says-his-ai-usage-is-not-healthy/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Sam Altman is still making the case for parenting via ChatGPT",
+        "link": "https://techcrunch.com/2026/08/01/sam-altman-is-still-making-the-case-for-parenting-via-chatgpt/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Google nixes its Earth AI feature one day after launch, amid criticism it would spread misinformation",
+        "link": "https://techcrunch.com/2026/07/31/google-nixes-its-earth-ai-feature-one-day-after-launch-amid-criticism-it-would-spread-misinformation/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "SpaceX won’t remove all of xAI’s unpermitted turbines for another year",
+        "link": "https://techcrunch.com/2026/07/31/spacex-wont-remove-all-of-xais-unpermitted-turbines-for-another-year/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Anthropic says its own AI models breached three companies during security tests",
+        "link": "https://techcrunch.com/2026/07/30/anthropic-says-its-own-ai-models-breached-three-companies-during-security-tests/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "AI hedge fund Situational Awareness may have sold its public portfolio, but it still has its Anthropic shares",
+        "link": "https://techcrunch.com/2026/07/30/ai-hedge-fund-situational-awareness-may-have-sold-its-public-portfolio-but-it-still-has-its-anthropic-shares/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Judge says Trump admin still lacks evidence for Anthropic ‘supply-chain risk’ label",
+        "link": "https://techcrunch.com/2026/07/30/judge-says-trump-admin-still-lacks-evidence-for-anthropic-supply-chain-risk-label/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Friend, the lonely AI wearable, returns with a new voice and a much bigger price tag",
+        "link": "https://techcrunch.com/2026/07/30/friend-the-lonely-ai-wearable-returns-with-a-new-voice-and-a-much-bigger-price-tag/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.",
+        "link": "https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Claude Code costs up to $200 a month. Goose does the same thing for free.",
+        "link": "https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews",
+        "link": "https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI",
+        "link": "https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Nous Research's NousCoder-14B is an open-source coding model landing right in the Claude Code moment",
+        "link": "https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "ByteDance Introduces Astra: A Dual-Model Architecture for Autonomous Robot Navigation",
+        "link": "https://syncedreview.com/2025/06/24/bytedance-introduces-astra-a-dual-model-architecture-for-autonomous-robot-navigation/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "MIT Researchers Unveil “SEAL”: A New Step Towards Self-Improving AI",
+        "link": "https://syncedreview.com/2025/06/16/mit-researchers-unveil-seal-a-new-step-towards-self-improving-ai/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution",
+        "link": "https://syncedreview.com/2025/06/16/researchers-from-psu-and-duke-introduce-multi-agent-systems-automated-failure-attribution/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Adobe Research Unlocking Long-Term Memory in Video World Models with State-Space Models",
+        "link": "https://syncedreview.com/2025/05/28/adobe-research-unlocking-long-term-memory-in-video-world-models-with-state-space-models/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DeepSeek-V3 New Paper is coming! Unveiling the Secrets of Low-Cost Large Model Training through Hardware-Aware Co-design",
+        "link": "https://syncedreview.com/2025/05/15/deepseek-v3-new-paper-is-coming-unveiling-the-secrets-of-low-cost-large-model-training-through-hardware-aware-co-design/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DeepSeek Unveils DeepSeek-Prover-V2: Advancing Neural Theorem Proving with Recursive Proof Search and a New Benchmark",
+        "link": "https://syncedreview.com/2025/04/30/deepseek-unveils-deepseek-prover-v2-advancing-neural-theorem-proving-with-recursive-proof-search-and-a-new-benchmark/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Can GRPO be 10x Efficient? Kwai AI’s SRPO Suggests Yes with SRPO",
+        "link": "https://syncedreview.com/2025/04/23/can-grpo-be-10x-efficient-kwai-ais-srpo-suggests-yes-with-srpo/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Zhipu.AI’s Open-Source Power Play: Blazing-Fast GLM Models & Global Expansion Ahead of Potential IPO",
+        "link": "https://syncedreview.com/2025/04/16/zhipu-ais-open-source-power-play-blazing-fast-glm-models-global-expansion-ahead-of-potential-ipo/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How to organize 3 acquired companies into one coherent website",
+        "link": "https://littlelanguagemodels.com/how-to-structure-your-sites-after-a-big-acquisition/",
+        "source": "Hacker News",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "「天线宝宝」机器人上门做保洁，200元/小时，纯·人工·智能",
+        "link": "https://www.qbitai.com/2026/08/464781.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2732,
+        "threshold": 0.2,
+        "matched_story_title": "具身智能的「ChatGPT时刻」还没到，科沃斯先把机器人拆开了",
+        "matched_episode_id": "2026-07-26",
+        "detail": "TF-IDF similarity (0.27) >= threshold (0.20) with historical story '具身智能的「ChatGPT时刻」还没到，科沃斯先把机器人拆开了' from 2026-07-26."
+      },
+      {
+        "title": "获奖之后，王虹最想感谢的人",
+        "link": "https://www.qbitai.com/2026/08/464761.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2075,
+        "threshold": 0.2,
+        "matched_story_title": "菲尔兹奖得主王虹，也发过NeurIPS",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story '菲尔兹奖得主王虹，也发过NeurIPS' from 2026-07-25."
+      },
+      {
+        "title": "奥特曼也逃不过刷TikTok上瘾，Sora背后最抓马的一段来了",
+        "link": "https://www.qbitai.com/2026/08/464713.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "奥特曼也逃不过刷TikTok上瘾，Sora背后最抓马的一段来了",
+        "matched_episode_id": "2026-08-02",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story '奥特曼也逃不过刷TikTok上瘾，Sora背后最抓马的一段来了' from 2026-08-02."
+      },
+      {
+        "title": "OpenAI前员工刚跑路就喊话：要套现就赶紧套，别等IPO！",
+        "link": "https://www.qbitai.com/2026/08/464693.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "OpenAI前员工刚跑路就喊话：要套现就赶紧套，别等IPO！",
+        "matched_episode_id": "2026-08-02",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story 'OpenAI前员工刚跑路就喊话：要套现就赶紧套，别等IPO！' from 2026-08-02."
+      },
+      {
+        "title": "李飞飞World Labs收购SceniX，物理AI训练正从“采数据”走向“造世界”",
+        "link": "https://www.qbitai.com/2026/08/464532.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4307,
+        "threshold": 0.2,
+        "matched_story_title": "李飞飞的世界模型，终于开始训练机器人了",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.43) >= threshold (0.20) with historical story '李飞飞的世界模型，终于开始训练机器人了' from 2026-07-31."
+      },
+      {
+        "title": "黄仁勋：不玩𝕏是我太内向，现在为AI必须站出来",
+        "link": "https://www.qbitai.com/2026/08/464452.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "黄仁勋：不玩𝕏是我太内向，现在为AI必须站出来",
+        "matched_episode_id": "2026-08-02",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story '黄仁勋：不玩𝕏是我太内向，现在为AI必须站出来' from 2026-08-02."
+      },
+      {
+        "title": "Anthropic模型，也失控了。。。",
+        "link": "https://www.qbitai.com/2026/08/464412.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "Anthropic模型，也失控了。。。",
+        "matched_episode_id": "2026-08-02",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story 'Anthropic模型，也失控了。。。' from 2026-08-02."
+      },
+      {
+        "title": "AI顶会现场，见到了一家美妆巨头",
+        "link": "https://www.qbitai.com/2026/08/464364.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "AI顶会现场，见到了一家美妆巨头",
+        "matched_episode_id": "2026-08-02",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story 'AI顶会现场，见到了一家美妆巨头' from 2026-08-02."
+      },
+      {
+        "title": "SIGGRAPH时间检验奖揭晓：这项研究，提前十年押中了物理AI",
+        "link": "https://www.qbitai.com/2026/07/464328.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "SIGGRAPH时间检验奖揭晓：这项研究，提前十年押中了物理AI",
+        "matched_episode_id": "2026-08-01",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story 'SIGGRAPH时间检验奖揭晓：这项研究，提前十年押中了物理AI' from 2026-08-01."
+      },
+      {
+        "title": "刚刚，即梦 Seedance 2.5来了！我狂测测测测……",
+        "link": "https://www.qbitai.com/2026/07/464329.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "刚刚，即梦 Seedance 2.5来了！我狂测测测测……",
+        "matched_episode_id": "2026-08-01",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story '刚刚，即梦 Seedance 2.5来了！我狂测测测测……' from 2026-08-01."
+      },
+      {
+        "title": "兆易创新：拟10亿-20亿元回购A股股份用于注销",
+        "link": "https://36kr.com/newsflashes/3922182182841985?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.391,
+        "threshold": 0.2,
+        "matched_story_title": "东山精密：拟2-3亿元回购股份用于员工持股或股权激励",
+        "matched_episode_id": "2026-07-21",
+        "detail": "TF-IDF similarity (0.39) >= threshold (0.20) with historical story '东山精密：拟2-3亿元回购股份用于员工持股或股权激励' from 2026-07-21."
+      },
+      {
+        "title": "2026年度电影总票房突破230亿",
+        "link": "https://36kr.com/newsflashes/3922136236518789?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.6183,
+        "threshold": 0.2,
+        "matched_story_title": "2026年度票房破210亿元",
+        "matched_episode_id": "2026-07-26",
+        "detail": "TF-IDF similarity (0.62) >= threshold (0.20) with historical story '2026年度票房破210亿元' from 2026-07-26."
+      },
+      {
+        "title": "雷军：小米正式推出小米龙甲电池体系",
+        "link": "https://36kr.com/newsflashes/3922092589805191?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2145,
+        "threshold": 0.2,
+        "matched_story_title": "派早报：小米汽车举行 SKYNOMAD 小米澎程技术发布会等",
+        "matched_episode_id": "2026-08-01",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story '派早报：小米汽车举行 SKYNOMAD 小米澎程技术发布会等' from 2026-08-01."
+      },
+      {
+        "title": "上汽集团：2026年7月整车产量同比增5.17% 新能源车表现亮眼",
+        "link": "https://36kr.com/newsflashes/3922089781538183?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2643,
+        "threshold": 0.2,
+        "matched_story_title": "蔚来公司7月交付35934台，同比增长71%",
+        "matched_episode_id": "2026-08-02",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story '蔚来公司7月交付35934台，同比增长71%' from 2026-08-02."
+      },
+      {
+        "title": "欣天科技：控股股东将变更为深圳元启 明起复牌",
+        "link": "https://36kr.com/newsflashes/3922095174987394?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3953,
+        "threshold": 0.2,
+        "matched_story_title": "联创电子：控股股东拟变更为寿县新桥，股票明起复牌",
+        "matched_episode_id": "2026-07-30",
+        "detail": "TF-IDF similarity (0.40) >= threshold (0.20) with historical story '联创电子：控股股东拟变更为寿县新桥，股票明起复牌' from 2026-07-30."
+      },
+      {
+        "title": "北汽蓝谷：子公司2026年7月销量同比增长122%",
+        "link": "https://36kr.com/newsflashes/3922082527178118?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.275,
+        "threshold": 0.2,
+        "matched_story_title": "蔚来公司7月交付35934台，同比增长71%",
+        "matched_episode_id": "2026-08-02",
+        "detail": "TF-IDF similarity (0.28) >= threshold (0.20) with historical story '蔚来公司7月交付35934台，同比增长71%' from 2026-08-02."
+      },
+      {
+        "title": "一博科技：上半年净利润同比增长1562% PCB工厂订单增长势头良好",
+        "link": "https://36kr.com/newsflashes/3922079463615872?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2401,
+        "threshold": 0.2,
+        "matched_story_title": "中微半导：预计2026年上半年净利润同比增长90.82%",
+        "matched_episode_id": "2026-07-23",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story '中微半导：预计2026年上半年净利润同比增长90.82%' from 2026-07-23."
+      },
+      {
+        "title": "长安汽车：7月交付20.71万辆",
+        "link": "https://36kr.com/newsflashes/3922078266420608?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4052,
+        "threshold": 0.2,
+        "matched_story_title": "岚图汽车：7月交付13189辆新车",
+        "matched_episode_id": "2026-08-02",
+        "detail": "TF-IDF similarity (0.41) >= threshold (0.20) with historical story '岚图汽车：7月交付13189辆新车' from 2026-08-02."
+      },
+      {
+        "title": "下周央行公开市场将有18420亿元逆回购到期",
+        "link": "https://36kr.com/newsflashes/3922069720592004?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2526,
+        "threshold": 0.2,
+        "matched_story_title": "年内A股公司累计回购金额超过800亿元",
+        "matched_episode_id": "2026-07-21",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story '年内A股公司累计回购金额超过800亿元' from 2026-07-21."
+      },
+      {
+        "title": "中国产品包揽全球大模型调用量前五",
+        "link": "https://36kr.com/newsflashes/3921989528432259?f=rss",
+        "source": "36Kr 快讯",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4292,
+        "threshold": 0.2,
+        "matched_story_title": "小米MiMo-V2.5登OpenRouter全球周榜、月榜双第一",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.43) >= threshold (0.20) with historical story '小米MiMo-V2.5登OpenRouter全球周榜、月榜双第一' from 2026-07-28."
+      },
+      {
+        "title": "从拉萨到雅鲁藏布江大峡谷，我的春日西藏游记",
+        "link": "https://sspai.com/post/112843",
+        "source": "少数派",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4055,
+        "threshold": 0.2,
+        "matched_story_title": "Parti：一个零门槛联机游戏平台，凭什么不需要服务器？",
+        "matched_episode_id": "2026-07-23",
+        "detail": "TF-IDF similarity (0.41) >= threshold (0.20) with historical story 'Parti：一个零门槛联机游戏平台，凭什么不需要服务器？' from 2026-07-23."
+      },
+      {
+        "title": "在流媒体时代，搭建一个专属于自己的「音乐探索系统」",
+        "link": "https://sspai.com/post/112656",
+        "source": "少数派",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4098,
+        "threshold": 0.2,
+        "matched_story_title": "Parti：一个零门槛联机游戏平台，凭什么不需要服务器？",
+        "matched_episode_id": "2026-07-23",
+        "detail": "TF-IDF similarity (0.41) >= threshold (0.20) with historical story 'Parti：一个零门槛联机游戏平台，凭什么不需要服务器？' from 2026-07-23."
+      },
+      {
+        "title": "少数派会员年度更新：把共同的热爱随身携带",
+        "link": "https://sspai.com/post/112858",
+        "source": "少数派",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2191,
+        "threshold": 0.2,
+        "matched_story_title": "派评 | 近期值得关注的 App",
+        "matched_episode_id": "2026-07-30",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story '派评 | 近期值得关注的 App' from 2026-07-30."
+      },
+      {
+        "title": "Accelerating scientific discovery with ChatGPT for Academic Researchers",
+        "link": "https://openai.com/index/chatgpt-for-academic-researchers",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2158,
+        "threshold": 0.2,
+        "matched_story_title": "Gemini for Science: AI experiments and tools for a new era of discovery",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Gemini for Science: AI experiments and tools for a new era of discovery' from 2026-07-31."
+      },
+      {
+        "title": "How GPT-5.6 fuses frontier intelligence with frontier efficiency",
+        "link": "https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3436,
+        "threshold": 0.2,
+        "matched_story_title": "GPT-5.6: Frontier intelligence that scales with your ambition",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (0.34) >= threshold (0.20) with historical story 'GPT-5.6: Frontier intelligence that scales with your ambition' from 2026-07-25."
+      },
+      {
+        "title": "Launching Health in ChatGPT",
+        "link": "https://openai.com/index/health-in-chatgpt",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4292,
+        "threshold": 0.2,
+        "matched_story_title": "OpenAI makes ChatGPT Health available to all US users",
+        "matched_episode_id": "2026-07-24",
+        "detail": "TF-IDF similarity (0.43) >= threshold (0.20) with historical story 'OpenAI makes ChatGPT Health available to all US users' from 2026-07-24."
+      },
+      {
+        "title": "Introducing the ChatGPT for small business program",
+        "link": "https://openai.com/index/introducing-chatgpt-small-business-program",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2559,
+        "threshold": 0.2,
+        "matched_story_title": "ChatGPT is now a partner for your most ambitious work",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'ChatGPT is now a partner for your most ambitious work' from 2026-07-25."
+      },
+      {
+        "title": "OpenAI and Hugging Face partner to address security incident during model evaluation",
+        "link": "https://openai.com/index/hugging-face-model-evaluation-security-incident",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2431,
+        "threshold": 0.2,
+        "matched_story_title": "OpenAI says Hugging Face was breached by its pre-release models",
+        "matched_episode_id": "2026-07-23",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'OpenAI says Hugging Face was breached by its pre-release models' from 2026-07-23."
+      },
+      {
+        "title": "How data science teams use ChatGPT Work",
+        "link": "https://openai.com/academy/codex-for-work/how-data-science-teams-use-codex",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4704,
+        "threshold": 0.2,
+        "matched_story_title": "How sales teams use ChatGPT Work",
+        "matched_episode_id": "2026-07-23",
+        "detail": "TF-IDF similarity (0.47) >= threshold (0.20) with historical story 'How sales teams use ChatGPT Work' from 2026-07-23."
+      },
+      {
+        "title": "Accelerating the frontiers of scientific discovery: Google’s $40M commitment to the Genesis Mission",
+        "link": "https://deepmind.google/blog/accelerating-the-frontiers-of-scientific-discovery-googles-40m-commitment-to-the-genesis-mission/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2452,
+        "threshold": 0.2,
+        "matched_story_title": "Meta's AI models are powering the first wave of Genesis Mission projects",
+        "matched_episode_id": "2026-07-22",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'Meta's AI models are powering the first wave of Genesis Mission projects' from 2026-07-22."
+      },
+      {
+        "title": "Introducing Gemini 3.5 Flash Cyber",
+        "link": "https://deepmind.google/blog/introducing-gemini-3-5-flash-cyber/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.6173,
+        "threshold": 0.2,
+        "matched_story_title": "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.62) >= threshold (0.20) with historical story 'Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber' from 2026-07-28."
+      },
+      {
+        "title": "Start building with Nano Banana 2 Lite and Gemini Omni Flash",
+        "link": "https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3451,
+        "threshold": 0.2,
+        "matched_story_title": "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.35) >= threshold (0.20) with historical story 'Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber' from 2026-07-28."
+      },
+      {
+        "title": "Fluid, natural voice translation with Gemini 3.5 Live Translate",
+        "link": "https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2845,
+        "threshold": 0.2,
+        "matched_story_title": "Google releases three new Gemini models — but no 3.5 Pro",
+        "matched_episode_id": "2026-07-22",
+        "detail": "TF-IDF similarity (0.28) >= threshold (0.20) with historical story 'Google releases three new Gemini models — but no 3.5 Pro' from 2026-07-22."
+      },
+      {
+        "title": "Powering the future of robotics in Europe",
+        "link": "https://deepmind.google/blog/powering-the-future-of-robotics-in-europe/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3358,
+        "threshold": 0.2,
+        "matched_story_title": "Gemini Robotics ER 2: powering robotics with video understanding, task orchestration, and multi-robot collaboration",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.34) >= threshold (0.20) with historical story 'Gemini Robotics ER 2: powering robotics with video understanding, task orchestration, and multi-robot collaboration' from 2026-07-31."
+      },
+      {
+        "title": "Introducing Gemini Omni",
+        "link": "https://deepmind.google/blog/introducing-gemini-omni/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2999,
+        "threshold": 0.2,
+        "matched_story_title": "Create, edit and star in videos with two Google Vids updates",
+        "matched_episode_id": "2026-07-20",
+        "detail": "TF-IDF similarity (0.30) >= threshold (0.20) with historical story 'Create, edit and star in videos with two Google Vids updates' from 2026-07-20."
+      },
+      {
+        "title": "5 ways AI Mode in Search helps you enjoy the real world",
+        "link": "https://blog.google/products-and-platforms/products/search/ai-mode-real-world-tips/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2186,
+        "threshold": 0.2,
+        "matched_story_title": "Connect more of your apps to Search",
+        "matched_episode_id": "2026-08-01",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Connect more of your apps to Search' from 2026-08-01."
+      },
+      {
+        "title": "Celebrating 25 years of visual search innovation",
+        "link": "https://blog.google/products-and-platforms/products/search/google-images-25th-anniversary/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2105,
+        "threshold": 0.2,
+        "matched_story_title": "Create, edit and star in videos with two Google Vids updates",
+        "matched_episode_id": "2026-07-20",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Create, edit and star in videos with two Google Vids updates' from 2026-07-20."
+      },
+      {
+        "title": "The latest AI news we announced in June 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2411,
+        "threshold": 0.2,
+        "matched_story_title": "Unlocking UK house-building with AI-accelerated planning",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'Unlocking UK house-building with AI-accelerated planning' from 2026-07-31."
+      },
+      {
+        "title": "NVIDIA Cosmos-H-Dreams: Bringing Real-Time Generative Simulation to Surgical Robotics",
+        "link": "https://huggingface.co/blog/nvidia/cosmos-h-dreams",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2411,
+        "threshold": 0.2,
+        "matched_story_title": "Introducing Cosmos 3 Edge",
+        "matched_episode_id": "2026-07-21",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'Introducing Cosmos 3 Edge' from 2026-07-21."
+      },
+      {
+        "title": "Security incident disclosure — July 2026",
+        "link": "https://huggingface.co/blog/security-incident-july-2026",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2918,
+        "threshold": 0.2,
+        "matched_story_title": "Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident",
+        "matched_episode_id": "2026-07-29",
+        "detail": "TF-IDF similarity (0.29) >= threshold (0.20) with historical story 'Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident' from 2026-07-29."
+      },
+      {
+        "title": "Introducing Real World VoiceEQ: Measuring the human quality of voice AI",
+        "link": "https://huggingface.co/blog/real-world-voiceeq",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2638,
+        "threshold": 0.2,
+        "matched_story_title": "Hugging Face and Cerebras bring Gemma 4 to real-time voice AI",
+        "matched_episode_id": "2026-07-24",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'Hugging Face and Cerebras bring Gemma 4 to real-time voice AI' from 2026-07-24."
+      },
+      {
+        "title": "From Hugging Face to Amazon SageMaker Studio in one click",
+        "link": "https://huggingface.co/blog/amazon/one-click-to-sagemaker-studio",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2159,
+        "threshold": 0.2,
+        "matched_story_title": "OpenAI says Hugging Face was breached by its own pre-release models",
+        "matched_episode_id": "2026-07-22",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'OpenAI says Hugging Face was breached by its own pre-release models' from 2026-07-22."
+      },
+      {
+        "title": "Hugging Face Models on Foundry Managed Compute",
+        "link": "https://huggingface.co/blog/microsoft/foundry-managed-compute",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2684,
+        "threshold": 0.2,
+        "matched_story_title": "Featuring Every Eval Ever Results on Hugging Face Model Pages",
+        "matched_episode_id": "2026-07-24",
+        "detail": "TF-IDF similarity (0.27) >= threshold (0.20) with historical story 'Featuring Every Eval Ever Results on Hugging Face Model Pages' from 2026-07-24."
+      },
+      {
+        "title": "Accelerating Transformers Fine-Tuning with NVIDIA NeMo AutoModel",
+        "link": "https://huggingface.co/blog/nvidia/accelerating-fine-tuning-nvidia-nemo-automodel",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4573,
+        "threshold": 0.2,
+        "matched_story_title": "Fine-tune video and image models at scale with NVIDIA NeMo Automodel and 🤗 Diffusers",
+        "matched_episode_id": "2026-07-20",
+        "detail": "TF-IDF similarity (0.46) >= threshold (0.20) with historical story 'Fine-tune video and image models at scale with NVIDIA NeMo Automodel and 🤗 Diffusers' from 2026-07-20."
+      },
+      {
+        "title": "Sam Altman and AI’s decel debate",
+        "link": "https://techcrunch.com/2026/08/02/sam-altman-and-ais-decel-debate/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3471,
+        "threshold": 0.2,
+        "matched_story_title": "Sam Altman is ready to decelerate",
+        "matched_episode_id": "2026-07-29",
+        "detail": "TF-IDF similarity (0.35) >= threshold (0.20) with historical story 'Sam Altman is ready to decelerate' from 2026-07-29."
+      },
+      {
+        "title": "This $9 key physically locks your most addictive apps",
+        "link": "https://techcrunch.com/2026/08/01/this-9-key-physically-locks-your-most-addictive-apps/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2,
+        "threshold": 0.2,
+        "matched_story_title": "Connect more of your apps to Search",
+        "matched_episode_id": "2026-08-01",
+        "detail": "TF-IDF similarity (0.20) >= threshold (0.20) with historical story 'Connect more of your apps to Search' from 2026-08-01."
+      },
+      {
+        "title": "OpenAI reportedly finds evidence that more of its agents ran amok",
+        "link": "https://techcrunch.com/2026/07/31/openai-reportedly-finds-evidence-that-more-of-its-agents-ran-amok/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2419,
+        "threshold": 0.2,
+        "matched_story_title": "OpenAI says Hugging Face was breached by its pre-release models",
+        "matched_episode_id": "2026-07-23",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'OpenAI says Hugging Face was breached by its pre-release models' from 2026-07-23."
+      },
+      {
+        "title": "India is starting to pay for apps, not just download them",
+        "link": "https://techcrunch.com/2026/07/31/india-is-starting-to-pay-for-apps-not-just-download-them/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2639,
+        "threshold": 0.2,
+        "matched_story_title": "Cursor makes its biggest India push yet ahead of SpaceX acquisition with localized pricing",
+        "matched_episode_id": "2026-07-29",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'Cursor makes its biggest India push yet ahead of SpaceX acquisition with localized pricing' from 2026-07-29."
+      },
+      {
+        "title": "Sam Altman isn’t the only one who wants to pump the brakes on AI",
+        "link": "https://techcrunch.com/video/sam-altman-isnt-the-only-one-who-wants-to-pump-the-brakes-on-ai/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3346,
+        "threshold": 0.2,
+        "matched_story_title": "Sam Altman is ready to decelerate",
+        "matched_episode_id": "2026-07-29",
+        "detail": "TF-IDF similarity (0.33) >= threshold (0.20) with historical story 'Sam Altman is ready to decelerate' from 2026-07-29."
+      },
+      {
+        "title": "Snapchat no longer rewards fully AI-generated Spotlight content",
+        "link": "https://techcrunch.com/2026/07/31/snapchat-no-longer-rewards-fully-ai-generated-spotlight-content/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2349,
+        "threshold": 0.2,
+        "matched_story_title": "YouTube clarifies policies around AI slop and upsetting videos",
+        "matched_episode_id": "2026-07-21",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'YouTube clarifies policies around AI slop and upsetting videos' from 2026-07-21."
+      },
+      {
+        "title": "Siri AI could come with a paywall for power users",
+        "link": "https://techcrunch.com/2026/07/31/siri-ai-could-come-with-a-paywall-for-power-users/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2043,
+        "threshold": 0.2,
+        "matched_story_title": "Apple defeats liability for not scanning iCloud for CSAM",
+        "matched_episode_id": "2026-07-22",
+        "detail": "TF-IDF similarity (0.20) >= threshold (0.20) with historical story 'Apple defeats liability for not scanning iCloud for CSAM' from 2026-07-22."
+      },
+      {
+        "title": "Smallest.ai raises $13M to build ultra-fast voice AI that sounds genuinely human",
+        "link": "https://techcrunch.com/2026/07/31/smallest-ai-raises-13m-to-build-ultra-fast-voice-ai-that-sounds-genuinely-human/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2204,
+        "threshold": 0.2,
+        "matched_story_title": "Hugging Face and Cerebras bring Gemma 4 to real-time voice AI",
+        "matched_episode_id": "2026-07-24",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Hugging Face and Cerebras bring Gemma 4 to real-time voice AI' from 2026-07-24."
+      },
+      {
+        "title": "AI labs want to pump the brakes, but Amazon and SpaceX are still blasting off",
+        "link": "https://techcrunch.com/podcast/ai-labs-want-to-pump-the-brakes-but-amazon-and-spacex-are-still-blasting-off/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2407,
+        "threshold": 0.2,
+        "matched_story_title": "Sam Altman is ready to decelerate",
+        "matched_episode_id": "2026-07-29",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'Sam Altman is ready to decelerate' from 2026-07-29."
+      },
+      {
+        "title": "Reddit reports a solid quarter but shows signs of AI’s impact",
+        "link": "https://techcrunch.com/2026/07/30/reddit-reports-a-solid-quarter-but-shows-signs-of-ais-impact/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2075,
+        "threshold": 0.2,
+        "matched_story_title": "Judge Rejects Google's Attempt to DMCA Its Way Out of Being Scraped",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Judge Rejects Google's Attempt to DMCA Its Way Out of Being Scraped' from 2026-07-28."
+      },
+      {
+        "title": "Investors love AI, as long as you’re a cloud host",
+        "link": "https://techcrunch.com/2026/07/30/investors-love-ai-as-long-as-youre-a-cloud-host/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.261,
+        "threshold": 0.2,
+        "matched_story_title": "Google justifies its massive AI spending with a booming cloud business",
+        "matched_episode_id": "2026-07-23",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'Google justifies its massive AI spending with a booming cloud business' from 2026-07-23."
+      },
+      {
+        "title": "Railway secures $100 million to challenge AWS with AI-native cloud infrastructure",
+        "link": "https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2202,
+        "threshold": 0.2,
+        "matched_story_title": "Enigma raises $71M to make controlling a robot as easy as adjusting the volume",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Enigma raises $71M to make controlling a robot as easy as adjusting the volume' from 2026-07-28."
+      },
+      {
+        "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required",
+        "link": "https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2345,
+        "threshold": 0.2,
+        "matched_story_title": "Anthropic updates Claude voice mode with more capable models",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'Anthropic updates Claude voice mode with more capable models' from 2026-07-25."
+      },
+      {
+        "title": "Which Agent Causes Task Failures and When?Researchers from PSU and Duke explores automated failure attribution of LLM Multi-Agent Systems",
+        "link": "https://syncedreview.com/2025/08/14/which-agent-causes-task-failures-and-whenresearchers-from-psu-and-duke-explores-automated-failure-attribution-of-llm-multi-agent-systems/",
+        "source": "Synced Review",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.6792,
+        "threshold": 0.2,
+        "matched_story_title": "Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.68) >= threshold (0.20) with historical story 'Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution' from 2026-07-31."
+      },
+      {
+        "title": "DeepSeek Signals Next-Gen R2 Model, Unveils Novel Approach to Scaling Inference with SPCT",
+        "link": "https://syncedreview.com/2025/04/11/deepseek-signals-next-gen-r2-model-unveils-novel-approach-to-scaling-inference-with-spct/",
+        "source": "Synced Review",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2873,
+        "threshold": 0.2,
+        "matched_story_title": "DeepSeek-V3 New Paper is coming! Unveiling the Secrets of Low-Cost Large Model Training through Hardware-Aware Co-design",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.29) >= threshold (0.20) with historical story 'DeepSeek-V3 New Paper is coming! Unveiling the Secrets of Low-Cost Large Model Training through Hardware-Aware Co-design' from 2026-07-31."
+      },
+      {
+        "title": "Show HN: Kakehashi – Experimental userspace to run macOS binaries on Linux ARM",
+        "link": "https://github.com/wie-project/kakehashi",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.241,
+        "threshold": 0.2,
+        "matched_story_title": "But can your calculator run Linux?",
+        "matched_episode_id": "2026-08-02",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'But can your calculator run Linux?' from 2026-08-02."
+      },
+      {
+        "title": "Show HN: NixOS-DGX-Spark – Nix and NixOS on the DGX Spark",
+        "link": "https://github.com/graham33/nixos-dgx-spark",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3726,
+        "threshold": 0.2,
+        "matched_story_title": "Nvidia DGX Spark as a daily driver",
+        "matched_episode_id": "2026-07-23",
+        "detail": "TF-IDF similarity (0.37) >= threshold (0.20) with historical story 'Nvidia DGX Spark as a daily driver' from 2026-07-23."
+      },
+      {
+        "title": "Let the machines in",
+        "link": "https://blog.semenzin.com/let-the-machines-in/",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2357,
+        "threshold": 0.2,
+        "matched_story_title": "So Bright the Vision (1956) – a story about machines writing instead of humans [pdf]",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'So Bright the Vision (1956) – a story about machines writing instead of humans [pdf]' from 2026-07-25."
+      },
+      {
+        "title": "Turtle-inspired interactive Python project",
+        "link": "https://www.codembark.com/projects/fv20lz9map/spider-web-drawing",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2026,
+        "threshold": 0.2,
+        "matched_story_title": "Show HN: XY – A Fast, composable, GPU-accelerated interactive plotting library",
+        "matched_episode_id": "2026-07-29",
+        "detail": "TF-IDF similarity (0.20) >= threshold (0.20) with historical story 'Show HN: XY – A Fast, composable, GPU-accelerated interactive plotting library' from 2026-07-29."
+      },
+      {
+        "title": "Conway's Game of Life, in real life",
+        "link": "https://lcamtuf.coredump.cx/blog/conway/",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2112,
+        "threshold": 0.2,
+        "matched_story_title": "Half-Life 2 running natively on HaikuOS",
+        "matched_episode_id": "2026-07-25",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Half-Life 2 running natively on HaikuOS' from 2026-07-25."
+      },
+      {
+        "title": "Adding Go's Defer to the TypeScript Compiler",
+        "link": "https://healeycodes.com/adding-defer-to-the-typescript-compiler",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2078,
+        "threshold": 0.2,
+        "matched_story_title": "Escape Analysis in Go: Stack vs. Heap Allocations Explained",
+        "matched_episode_id": "2026-07-24",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Escape Analysis in Go: Stack vs. Heap Allocations Explained' from 2026-07-24."
+      },
+      {
+        "title": "Read the Novels and Forget Everything Else",
+        "link": "https://hedgehogreview.com/web-features/thr/posts/read-the-novels-and-forget-everything-else",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2764,
+        "threshold": 0.2,
+        "matched_story_title": "Beckett the Prophet",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.28) >= threshold (0.20) with historical story 'Beckett the Prophet' from 2026-07-31."
+      }
+    ]
+  }
+}
