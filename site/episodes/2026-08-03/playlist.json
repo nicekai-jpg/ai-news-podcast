@@ -1,0 +1,890 @@
+{
+  "episode_id": "2026-08-03",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年8月3日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.097,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 8.546,
+      "duration": 1.611,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天的大纲特别有意思，主编用了一个词叫\"两极突破\"，你知道指的是啥不？",
+      "start": 10.654,
+      "duration": 9.709,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "我看了，一头大一头小嘛。一头是Karpathy的新项目Pelican在HN上炸了，另一头是个不到1MB的C++代码智能体重写项目。一个往极致大模型走，一个往极致小端侧走，刚好是两个方向。",
+      "start": 20.816,
+      "duration": 17.086,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "对，我看到这个对比的时候也挺感慨的。AI工具现在真的不是只有一种活法了。那咱们先说Pelican这个事。",
+      "start": 38.307,
+      "duration": 8.664,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "行。你知道Pelican这个词吧，鹈鹕，一种大嘴鸟。但Karpathy给它起这个名字肯定不是随便起的。",
+      "start": 47.404,
+      "duration": 8.098,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "我也好奇。他之前那个NanoGPT就是教人从头搭GPT，特别\"小而美\"。这次Pelican听起来也是延续那种极简主义的路子？",
+      "start": 55.967,
+      "duration": 10.971,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "嗯，他这个人一贯的风格就是\"把复杂的东西拆开给你看\"。他觉得现在AI工程圈太依赖那些庞大的框架了，动不动就PyTorch、Transformers库，搞得大家离了这些基础设施就不会写代码了。所以他经常搞一些\"反潮流\"的东西。",
+      "start": 67.4,
+      "duration": 18.0,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "我跟你说，348分、277条评论，这热度真的离谱了。一般HN上能上200分就算爆款了，这个数字说明大家都在激烈讨论。",
+      "start": 85.851,
+      "duration": 11.45,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "是，而且评论区那种氛围，你能感受到开发者社区对他的期待。大家其实一直在等他做点什么，因为Karpathy这个名字在AI教育圈基本就是金字招牌。他从特斯拉出来之后搞了个Eureka Labs专门做AI教育，这次Pelican大概率也是这个方向的东西。",
+      "start": 97.801,
+      "duration": 22.068,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "那你觉得Pelican具体会是干嘛的？有人猜是教学工具，有人猜是个新框架。",
+      "start": 120.307,
+      "duration": 7.358,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "说实话我现在也不确定。 但从他的过往项目来看，要么是一个教你理解某个核心概念的极简实现，要么是一个让你能\"看清\"模型内部运作的可视化工具。你注意啊，他从来不做那种花里胡哨的产品，他做的东西都有教学目的。",
+      "start": 128.126,
+      "duration": 20.177,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "对，这也是他跟那些纯发论文的大佬不一样的地方。他是真想让普通人也能搞懂AI。",
+      "start": 148.748,
+      "duration": 7.75,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "而且他自己说过一句话特别有意思，大意是\"现在最缺的不是更强的模型，而是更好的教学材料\"。 Pelican这个名字我也想了一下，鹈鹕有个大喉囊能装很多东西，这可能暗示这个工具是个\"容器\"类的项目，把多种AI概念集成进去。",
+      "start": 156.972,
+      "duration": 20.482,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "这个解读挺浪漫的。 不过评论区肯定也有争议吧？Karpathy每次发新东西都会有争论。",
+      "start": 177.881,
+      "duration": 9.97,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "那必须有。最大的争议其实还是\"AI教育到底该不该走极简路线\"。有人说他在重复造轮子，明明现有框架已经很好用了；也有人说正是因为有了他这种人，AI才不会变成少数巨头的专利。 我个人站后面那种。",
+      "start": 188.315,
+      "duration": 17.26,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "同意。说白了，AI如果只是几个大厂的游戏，那最后受伤的永远是普通开发者。",
+      "start": 205.992,
+      "duration": 7.184,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "而且你想啊，Karpathy每次发项目都会顺手发一条长长的推文讲设计哲学，这种\"开源+布道\"的模式才是他影响力的真正来源。 Pelican这个项目我估计过几天代码就出来了，到时候整个社区又要集体学习一遍。",
+      "start": 213.612,
+      "duration": 16.912,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "哈哈，是，Karpathy一出手，社区就得补课。",
+      "start": 230.941,
+      "duration": 3.701,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "行，那说到另一个极端——MicroCodex Coding Agent。 这个项目更狠，直接用C++从零重写OpenAI Codex智能体，最终编译产物不到1MB。",
+      "start": 235.138,
+      "duration": 13.211,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "1MB这个数字你注意啊。我们现在随便一张照片就几MB了，一个完整的编程AI助手能做到1MB以内，这是什么概念？",
+      "start": 248.761,
+      "duration": 12.06,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "这就是典型的\"代码瘦身运动\"。你想啊，现在主流的AI编码工具动不动就要跑在云端，背后是几百亿参数的模型，GPU集群烧着电。但MicroCodex这个路子不一样，它大概率是个轻量级的本地代理，负责解析你的代码意图然后跟远端模型通信，本地只做最小的处理。",
+      "start": 261.3,
+      "duration": 21.744,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "我理解成\"翻译官+小管家\"。重活还是远端干，但本地这个壳子可以做得极小极快。",
+      "start": 283.476,
+      "duration": 10.188,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "你这个比喻挺准的。它的意义不只是炫技，而是\"可分发\"。你想，如果一个AI编码工具能压缩到1MB，那它就能塞进各种奇怪的地方——路由器里、嵌入式设备里、甚至U盘里。你拷一个U盘走到哪儿都能用AI编程，这画面多带感。",
+      "start": 294.132,
+      "duration": 20.395,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "真的假的，那以后程序员出差都不用带电脑了？随便找个网吧插个U盘就行？",
+      "start": 315.017,
+      "duration": 6.705,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "哈，没那么夸张，但思路是对的。这就是AI工程\"轻量化、端侧化\"的拐点。以前大家都觉得AI必须在云端，必须依赖巨头的基础设施。但MicroCodex这种项目就是在说，不一定，我可以做得更小、更独立、更可分发。",
+      "start": 322.199,
+      "duration": 18.349,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "说白了就是AI版的\"去中心化\"嘛。",
+      "start": 340.966,
+      "duration": 3.004,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "对，而且这种项目对开源生态特别有意义。一个1MB的二进制文件任何人都可以审计、修改、重新分发。不像那些动辄几十GB的模型权重，你想研究一下都得先下载半天，显卡还得够强。",
+      "start": 344.409,
+      "duration": 16.651,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "这倒是。以后说不定会出现各种\"魔改版\"，有人往里加自己的规则，有人精简功能，这种生态才健康。",
+      "start": 361.472,
+      "duration": 10.754,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "而且商业上也有想象空间。中小企业不想把代码送到OpenAI的服务器？没关系，用本地的MicroCodex壳子加一个私有模型照样能跑。这对金融、医疗这些数据敏感的行业特别重要。",
+      "start": 372.719,
+      "duration": 14.691,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "我跟你说，这个趋势比Pelican还让我激动。Pelican是教育层面的突破，MicroCodex是工程范式的转变，影响的是整个行业怎么部署AI。",
+      "start": 387.819,
+      "duration": 14.082,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "说得好。接下来快讯部分，三条都挺有意思的。先说Bor，这个163分登HN的开源Linux桌面策略管理工具。",
+      "start": 402.388,
+      "duration": 10.405,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "Bor这名字我还以为是个人名，原来是工具。它的核心卖点是\"统一管理Linux桌面策略\"。",
+      "start": 413.235,
+      "duration": 10.884,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "对，这东西解决的是一个挺烦人的问题。你用Linux桌面装了一堆应用，每个应用都有自己的配置目录、自己的策略文件，散得到处都是。你想统一管一下？没有现成工具。",
+      "start": 424.579,
+      "duration": 14.909,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "我用Linux的时候最头疼的就是这个，配置文件到处藏，有的一层套一层文件夹，找起来要命。",
+      "start": 439.959,
+      "duration": 7.837,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "Bor就是干这个的，它相当于一个\"管家\"，把所有桌面策略集中起来，让你一个地方管所有应用。这事儿听起来小，但对Linux桌面的企业部署特别有用。你想，一个公司要给几百台机器统一配置，没有这种工具就得手动一个个改。",
+      "start": 448.208,
+      "duration": 19.742,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "那它跟现有的配置管理工具比如Ansible有什么区别？",
+      "start": 468.395,
+      "duration": 4.615,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "Ansible那种是面向服务器和大规模集群的，Bor是专门给桌面环境做的，更轻量，更聚焦。所以它能在HN上拿163分，说明开发者社区确实有这个需求。",
+      "start": 473.465,
+      "duration": 13.559,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "说白了，Linux桌面想要真正进入普通用户的生活，这种\"小而美\"的工具链是不可或缺的。",
+      "start": 487.464,
+      "duration": 8.185,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "没错。然后第二个快讯，RISC OS开源二十周年。",
+      "start": 496.127,
+      "duration": 5.486,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "这个我有感情。我记得RISC OS是1987年就在ARM上跑的那个操作系统对吧？",
+      "start": 502.094,
+      "duration": 7.663,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "对，它是ARM架构的\"亲儿子\"。当年Acorn公司设计ARM处理器就是想让RISC OS跑得更快。所以RISC OS这条血脉，基本就等于ARM的起家史。",
+      "start": 510.183,
+      "duration": 13.037,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "二十年啊，从封闭到开源，这条路走得不容易。",
+      "start": 523.69,
+      "duration": 5.399,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "是，RISC OS在2018年前后正式开源，到现在刚好二十年。这个项目的意义不只是怀旧，它提醒咱们整个移动计算时代的基石，最初是一群工程师在剑桥做出来的极简操作系统。",
+      "start": 529.55,
+      "duration": 15.998,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "我跟你说，现在大家天天拿着ARM芯片的手机刷视频，根本不会想到这背后有RISC OS的血脉。",
+      "start": 546.004,
+      "duration": 7.75,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "但它确实存在。今天几乎所有智能手机的芯片架构追根溯源都跟当年那个精简到极致的RISC OS有关系。这种\"小而美\"的工程哲学，跟咱们今天说的Pelican、MicroCodex其实是同一种精神。",
+      "start": 554.22,
+      "duration": 16.215,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "嗯，做技术的真应该学学这种\"先做对，再做大\"的思路。",
+      "start": 570.868,
+      "duration": 8.969,
+      "audios": {
+        "professional": "chunk_047_professional.mp3",
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "那最后一条快讯——The Myth of Snow Leopard，关于Snow Leopard迷思的讨论。",
+      "start": 580.244,
+      "duration": 5.573,
+      "audios": {
+        "professional": "chunk_048_professional.mp3",
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "等等，Snow Leopard不是苹果系统吗？那个号称特别精简特别快的版本。",
+      "start": 586.287,
+      "duration": 7.184,
+      "audios": {
+        "professional": "chunk_049_professional.mp3",
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "对，10.6那个版本。很多果粉把它当成\"苹果最后的良心\"，说后面的系统臃肿了、慢了、变味了。这篇文章就是在讨论这个神话。",
+      "start": 593.872,
+      "duration": 12.819,
+      "audios": {
+        "professional": "chunk_050_professional.mp3",
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "哦，它想说什么？是说Snow Leopard其实没那么神，还是说那个时代的美学值得咱们怀念？",
+      "start": 607.102,
+      "duration": 11.015,
+      "audios": {
+        "professional": "chunk_051_professional.mp3",
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "两者都有。核心观点是，软件精简和速度美学本质上是一种\"约束驱动\"的产物。那时候硬件有限，开发者被迫做减法，反而做出了极致体验。 而现在硬件过剩，大家都在堆功能，堆完了再说。",
+      "start": 618.609,
+      "duration": 16.912,
+      "audios": {
+        "professional": "chunk_052_professional.mp3",
+        "lively": "chunk_052_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "我觉得这个跟咱们今天的节目主题太契合了。从Pelican到MicroCodex，从RISC OS到Snow Leopard，其实都在讲同一件事——少即是多。",
+      "start": 635.972,
+      "duration": 13.08,
+      "audios": {
+        "professional": "chunk_053_professional.mp3",
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "没错。当整个行业都在往\"大模型、大数据、大集群\"狂奔的时候，总有一些人在反方向走，提醒咱们\"轻\"的价值。这是AI时代最稀缺的一种声音。",
+      "start": 649.542,
+      "duration": 12.297,
+      "audios": {
+        "professional": "chunk_054_professional.mp3",
+        "lively": "chunk_054_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "说得好。那今天的节目就到这里？最后帮听众朋友们总结一下吧。",
+      "start": 662.339,
+      "duration": 6.792,
+      "audios": {
+        "professional": "chunk_055_professional.mp3",
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "好的，简单回顾一下今天的三条线。Pelican代表了AI教育的极简主义实验，348分的热度说明社区在呼唤\"看得懂的AI\"。MicroCodex Coding Agent开启了AI工程的轻量化范式，1MB的二进制重新定义了什么叫\"可分发\"。而快讯里的RISC OS和Snow Leopard则从历史维度印证了\"小而美\"这条路跨越二十年的持久生命力。",
+      "start": 669.616,
+      "duration": 28.294,
+      "audios": {
+        "professional": "chunk_056_professional.mp3",
+        "lively": "chunk_056_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "一头是教育，一头是工程；一头是大佬布道，一头是社区极客。AI世界的丰富性，就藏在这些看似相反的方向里。",
+      "start": 698.39,
+      "duration": 10.144,
+      "audios": {
+        "professional": "chunk_057_professional.mp3",
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "听众朋友们，如果你们对今天的新闻有自己的看法，欢迎在评论区跟我们聊聊。咱们下期再见！",
+      "start": 708.934,
+      "duration": 6.4,
+      "audios": {
+        "professional": "chunk_058_professional.mp3",
+        "lively": "chunk_058_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "下期再见，拜拜！",
+      "start": 715.812,
+      "duration": 1.872,
+      "audios": {
+        "professional": "chunk_059_professional.mp3",
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    }
+  ]
+}
