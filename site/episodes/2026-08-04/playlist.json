@@ -1,0 +1,680 @@
+{
+  "episode_id": "2026-08-04",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年8月4日。我是苏晴。",
+      "start": 1.0,
+      "duration": 6.922,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 8.371,
+      "duration": 1.611,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天这科技圈真的有点热闹过头了，中美两家在同一天放大招你受得了吗？ 我早上起来看新闻还以为自己看错日期了。",
+      "start": 10.479,
+      "duration": 12.863,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "我跟你讲，我也愣了一下。 本来想着今天可以轻松点，结果一刷手机，全是模型发布的消息，眼睛都看花了。",
+      "start": 23.795,
+      "duration": 10.014,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "真的假的？这也太卷了吧…… 那咱们今天得好好聊聊。我跟你说，这两家对垒其实挺有看点的，一边是阿里的Qwen3.8-Max，一边是谷歌的Gemma 4 12B。",
+      "start": 34.214,
+      "duration": 15.867,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你注意啊，这俩虽然都是模型，但路线其实不太一样。 Qwen3.8-Max是冲云端旗舰去的，Gemma 4 12B反而走的是端侧多模态的路子。一个是往高了打，一个是往小了打。",
+      "start": 50.514,
+      "duration": 16.085,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "这么一听还真挺有意思的。那咱先说Qwen3.8-Max吧，我看到新闻标题写的是\"冲进全球第一梯队\"， 这话放在国产模型身上，以前还真不敢随便说。",
+      "start": 67.064,
+      "duration": 14.019,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "说白了，这次Qwen3.8-Max确实有点东西。阿里这次重点放在了编程、长程任务，还有多模态分析这几块。 你知道编程能力意味着什么吧？现在Agentic AI最吃的就是这个，写代码、调接口、处理复杂任务，全靠它。",
+      "start": 81.545,
+      "duration": 20.961,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "等等，长程任务是啥意思？我有时候听这个词儿还是有点懵。",
+      "start": 102.957,
+      "duration": 4.702,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "你这么想啊，以前大模型干的事儿像什么呢，就像你跟一个金鱼聊天，你问一句它答一句，转头就忘了。 长程任务就是让这个\"金鱼\"能记住前因后果，能连续做几十步甚至上百步的操作，中间不跑偏。这对智能体来说就是命根子。",
+      "start": 108.159,
+      "duration": 17.565,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "哦我明白了，那这种能力确实是Agentic AI的基础对吧？我跟你说，这跟我关系还挺大的，我现在做调研经常让AI帮我跑流程，要是它中途忘了前面干过啥，那不就白折腾了吗？",
+      "start": 126.162,
+      "duration": 16.433,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "没错，所以这次Qwen3.8-Max把这块做强，本质上就是在抢Agent这个赛道的入场券。而且它还号称性能直逼Claude，这个评价可不算低啊，Claude系列一直是编程和推理领域的标杆。",
+      "start": 143.056,
+      "duration": 15.606,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "那这事儿对咱们普通用户来说，最直接的影响是啥？是说以后咱们用国产的AI也能干那些原来只有海外模型才能干的活儿？",
+      "start": 159.107,
+      "duration": 12.539,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "对，但我觉得更深层的意义在于生态。你看，以前高端模型基本就是OpenAI、Anthropic、谷歌这几家的事儿，国产的虽然有，但说实话在最高端的局里很难站到C位。现在Qwen3.8-Max冲进去了，意味着整个格局开始松动，开发者做选择的时候不再只有那几家可以挑了。",
+      "start": 172.12,
+      "duration": 21.372,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "而且开源社区那边肯定也跟着受益吧？我记得Qwen系列一直是开源做得比较好的。",
+      "start": 193.919,
+      "duration": 7.401,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "你说到点子上了。开源这事对于中国AI生态来说太重要了。闭源模型再强，大家用起来也有门槛；开源就不一样了，大家可以在它基础上搞微调、做行业适配、搞二次开发，这对整个生态的活跃度是质变。",
+      "start": 201.784,
+      "duration": 16.172,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "那行，Qwen3.8-Max这事咱先聊到这儿。说实话我觉得今天最让我意外的是谷歌那条新闻，Gemma 4 12B，12B的参数量，能搞多模态？你不觉得这个数字有点反常识吗？",
+      "start": 218.373,
+      "duration": 19.132,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "我跟你讲，亮点不在参数大小，关键在它那个\"无编码器架构\"，就是encoder-free。这个词儿你可能听着抽象，但你这么理解——以前做多模态模型是啥流程呢？就相当于搞个翻译团队，图片先翻译成某种中间语言，文字再翻译成另一种，然后让大模型同时理解这两种语言。",
+      "start": 237.941,
+      "duration": 24.095,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "等等我消化一下，所以无编码器就是把这个翻译团队直接砍了？",
+      "start": 262.453,
+      "duration": 6.835,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "你这个比方挺到位的。无编码器架构意味着模型直接就能\"看\"图片和文字，不需要中间翻译这一步。这样做的好处是啥呢？一方面省算力，另一方面，端侧部署就变得可行了。你想啊，以前要搞个多模态模型，光管线就复杂得不行，现在直接把模型装到笔记本上就能跑。",
+      "start": 269.784,
+      "duration": 22.156,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "哇这听起来太实用了。我现在用的笔记本平时跑个大模型都费劲，多模态根本不敢想。如果Gemma 4 12B真能本地跑多模态，那意味着什么？意味着咱不用老是把数据传到云端去了？",
+      "start": 292.352,
+      "duration": 17.478,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "没错，这就是端侧Agentic AI时代的开端。你注意啊，这次发布谷歌用的词是\"unified\"——统一架构。意思就是不管你输入的是文字、图片、还是视频片段，它都在同一个模型里处理，没有割裂感。这种体验跟之前那种拼凑起来的多模态完全不是一个东西。",
+      "start": 310.309,
+      "duration": 21.372,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "那这事儿对开发者影响应该挺大的吧？以前想做个跨模态应用，光搭管线就要命了。",
+      "start": 332.113,
+      "duration": 6.922,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "你说到开发者我就来劲了。传统多模态管线有多麻烦呢？图像处理要走视觉模型，文字要走语言模型，两边再对齐，中间还可能丢信息。encoder-free架构把这些都干掉了，开发者用一套API就能搞定。这对中小开发者来说简直是福音，门槛一下子拉低了一大截。",
+      "start": 339.503,
+      "duration": 21.353,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "这么一看，今天这两场发布虽然风格完全不同，但核心其实都指向了一个东西——Agentic AI，对吧？一个把云端智能体能力做强，一个把端侧多模态铺开，一个在高端市场抢位置，一个在普及市场铺基建。",
+      "start": 361.346,
+      "duration": 23.007,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "你总结得挺准的。问题是谁能先把生态建起来，谁就拿到了下一个十年的船票。现在中美两家在同一天亮剑，其实就是在告诉全世界，这个赛道的战争还没真正开始呢。",
+      "start": 384.83,
+      "duration": 15.214,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "哈哈哈你这\"船票\"用得有点狠。不过确实，今天这两件事单独看是新闻，放一起看就是趋势。我特别想看看接下来OpenAI和Anthropic会怎么应对，总不能光看着吧？",
+      "start": 400.462,
+      "duration": 17.739,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "这个啊，我觉得各家心里都门儿清，只是看谁先动手。OpenAI那个路线一向是闭源+大参数，Anthropic偏安全和长上下文。Qwen3.8-Max和Gemma 4 12B一出来，压力肯定给到了。",
+      "start": 418.64,
+      "duration": 16.172,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "行，模型这块咱们今天先告一段落。哎对了，还有两个快讯我也特别想聊聊，你知道GEO这个词儿吗？生成式引擎优化。",
+      "start": 435.224,
+      "duration": 11.015,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "我看到了。说白了这事儿挺黑色幽默的——以前咱们做营销想的是怎么让百度、谷歌搜索结果里排前面，现在得反过来想，怎么让AI回答问题的时候把咱家品牌给\"自然地\"提一嘴。",
+      "start": 446.732,
+      "duration": 16.52,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "我跟你说，这事儿一出来我就觉得挺魔幻的。 以前SEO是人和机器抢注意力，现在GEO是品牌和品牌抢AI的嘴。",
+      "start": 463.661,
+      "duration": 11.624,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "你这个总结太精辟了。 翰智这种公司入场，其实就是在说一个新的职业门类要起来了——专门帮品牌\"调教\"AI回答的。",
+      "start": 475.772,
+      "duration": 9.535,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "那不就变成AI时代的公关公司了吗？ 而且我觉得这事儿还会有更深层的影响——如果一个品牌能被AI频繁推荐，那它的市场地位就稳了； 反过来说如果AI压根不提你，你连被讨论的机会都没有。 这跟传统搜索时代的\"不被搜索到就等于不存在\"是一个逻辑。",
+      "start": 485.749,
+      "duration": 24.531,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "所以你看，AI这把双刃剑又来了。 表面看是营销赛道升级，背后其实是话语权分配的又一次重构。",
+      "start": 510.74,
+      "duration": 9.206,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "嗯……这事儿值得观察。还有一条新闻更逗，你知道有个叫赛博义父Tibo的爆料吗？说谷歌早一年就做出了类ChatGPT产品，硬是没敢发！网友直接管谷歌叫\"美国豆包\"，我看到那评论笑得不行。",
+      "start": 520.417,
+      "duration": 22.398,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "我跟你说，这个梗之所以能传开，是因为它戳中了大厂的一个老毛病——过度规避风险。 谷歌当时不是做不出来，而是怕发出去之后翻车影响股价，怕被舆论骂，结果呢？眼睁睁看着OpenAI先发了，ChatGPT一炮而红，整个行业的叙事都被人家定义了。",
+      "start": 543.227,
+      "duration": 22.504,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "这就跟咱们职场里那种\"过分求稳错过风口\"的人一个样嘛。 手里的牌明明最好，但因为怕输就不敢下注，等对手下完了才发现，哦原来这事儿能成。",
+      "start": 566.176,
+      "duration": 13.342,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "你注意啊，这事儿其实对所有大厂都是个警示。 在AI这种高速迭代的领域，先发优势有时候就是生死线。谷歌现在拼命追赶，每次发布会都被说\"补课\"，就是因为当年那一步没迈出去。",
+      "start": 579.973,
+      "duration": 17.105,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "对，而且我觉得这也是个哲学问题——创新有时候就是需要承担风险的。 你想稳妥，那就只能跟在别人后面吃灰；你想领跑，那就得准备好摔几跤。",
+      "start": 597.518,
+      "duration": 14.822,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "说白了，今天这些新闻凑在一起，其实都在讲同一件事：AI行业已经进入了下半场，不再是单纯的技术比拼，而是战略眼光、生态布局、风险决策的综合较量。",
+      "start": 612.818,
+      "duration": 12.515,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "没错，你看Qwen3.8-Max敢冲高端，Gemma 4 12B敢押注端侧，连国内的GEO赛道都开始有人布局了——整个行业都在加速，没人愿意再当那个\"等一等\"的谷歌。",
+      "start": 625.814,
+      "duration": 20.7,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "嗯，我估计接下来这一两年，我们会看到更多类似的剧情，谁都不敢再犹豫了。",
+      "start": 646.94,
+      "duration": 8.272,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "好了听众朋友们，今天的AI每日先锋就到这里。我是苏晴。",
+      "start": 655.682,
+      "duration": 5.442,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "我是周航。",
+      "start": 661.585,
+      "duration": 0.958,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "感谢收听，咱们明天见！",
+      "start": 662.999,
+      "duration": 2.046,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    }
+  ]
+}
