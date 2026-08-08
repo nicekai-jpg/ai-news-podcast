@@ -1,0 +1,605 @@
+{
+  "episode_id": "2026-08-08",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友们大家好，欢迎收听AI 每日先锋，今天是2026年8月8日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.576,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 9.025,
+      "duration": 1.785,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航你有没有感觉，今年AI圈特别像在搞\"集体大促\"？以前模型都是高高在上的，现在动不动就免费、就降价、就白嫖，整个行业卷成一片。",
+      "start": 11.307,
+      "duration": 17.086,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你这么一说还真是。前两天我看了一个说法，说AI正从巨头的奢侈品变成全民的基础设施，存储范式被重构、模型成本坍塌、消费门槛归零。 我第一反应是这话听着挺大，但仔细想想还挺贴切的，今天咱们的几条新闻刚好都在印证这个判断。",
+      "start": 28.846,
+      "duration": 21.527,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "对，先说第一条，AI SSD。这事儿听着挺硬核的，但其实特别重要，可能直接影响未来几年数据中心怎么建。",
+      "start": 50.778,
+      "duration": 8.969,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你注意啊，这条新闻说的是大模型推理的时候，存储体系正在被重新设计。以前咱们跑AI推理，算力是瓶颈，GPU越堆越多嘛，几万张卡并行算。 但现在有个新趋势——算力、网络、内存、存储这四样东西，开始围绕每一个Token协同调度了，不再分层调用，而是端到端流水线化。",
+      "start": 60.18,
+      "duration": 26.272,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "你说的这个Token协同调度，能不能用人话给我讲讲？我虽然天天聊AI，但这块儿其实没太搞明白。",
+      "start": 86.917,
+      "duration": 9.273,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "打个比方哈。以前推理就像你在食堂打饭，窗口分得清清楚楚——打饭的、打菜的、打汤的各管一摊，你要一样一样去拿。 现在AI SSD做的事情，相当于把食堂改成流水线了，你端个盘子往前走，菜直接往你盘里飞，全程端到端不落地。",
+      "start": 96.652,
+      "duration": 20.7,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "哦——我懂了，那GPU不就是打饭阿姨嘛。以前大家觉得阿姨手慢是瓶颈，现在发现盘子和传送带才慢，对吧？",
+      "start": 117.803,
+      "duration": 11.668,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "你这个比喻还挺到位的。 说白了，一旦存储范式转移成功，GPU就不再是唯一的瓶颈了。以后数据中心的设计逻辑都要跟着变，这影响的可不只是几家公司，是整个AI基础设施的竞争格局， 甚至会改写谁才是真正的赢家。",
+      "start": 129.971,
+      "duration": 21.546,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "这事儿对咱们普通用户有啥直接好处？我现在用ChatGPT回答问题还得等几秒呢，每次卡一下都挺烦人的。",
+      "start": 151.955,
+      "duration": 8.969,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "直接好处就是又快又便宜。你想啊，存储跟算力能协同调度了，推理延迟会大幅降低，响应速度会快很多，而且每Token的算力开销能省下来不少。对厂商来说成本下来了，对用户来说响应快了，体验是全方位的提升，以后跟你聊天的AI可能跟真人聊天一样流畅。",
+      "start": 161.385,
+      "duration": 21.919,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "行，这个先放这儿。咱们接着说第二条，这个更有意思——PPIO发了个叫Fusion融合模型的东西，号称用十分之一的价格达到顶级模型的智商。",
+      "start": 183.749,
+      "duration": 16.999,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "对，这条新闻我看完其实挺感慨的。AI圈这几年一直有个共识叫Scaling Law，说模型越大越强、参数越多越牛。但PPIO这个Fusion融合模型偏偏反着来，它用不到头部模型十分之一的成本，做到了同等甚至更优的智能水平，直接挑战了行业共识。",
+      "start": 201.222,
+      "duration": 23.157,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "我跟你说，这事儿要是放在两年前讲，没人信。你一个中端算力、小一点的模型，凭啥跟人家几千亿参数的大块头叫板啊？",
+      "start": 224.806,
+      "duration": 14.169,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "关键就在它的方法。它不是简单地把模型做大，而是靠中端算力、数据融合、还有架构创新这三个东西一起发力。你注意啊，这里面\"数据融合\"是个新词儿——他们可能把多种不同来源、不同类型的数据整合起来训练，让模型见多识广但不需要盲目堆参数。",
+      "start": 239.439,
+      "duration": 22.659,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "这不就跟咱们上学那会儿一个道理嘛。学霸不一定天天刷题，有人就是方法好、效率高。所以Fusion这个名字起得还挺准的，融合嘛，把各种好东西融在一起，组合出最优解。",
+      "start": 262.515,
+      "duration": 17.217,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "而且这条新闻背后有个更大的信号——AI的商业逻辑正在从\"烧参数\"转向\"拼效率\"。以前大家比拼的是谁家模型参数多，现在比拼的是谁家单位成本下的智能更高，谁的性价比更好。",
+      "start": 280.168,
+      "duration": 15.606,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "这对初创公司是好事儿吧？以前没个几亿美金你连入场券都拿不到，现在是不是门槛低了很多？中小团队也有机会跑出来了吧？",
+      "start": 296.191,
+      "duration": 10.231,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "是的。PPIO这个案例说明，初创公司根本不需要砸千亿模型，也能交付顶级的体验。这会让整个AI创业生态变得更活跃，更多聪明的玩家能进场，大厂那种一家独大的格局可能会被打破，对整个行业的创新是好事。",
+      "start": 306.918,
+      "duration": 17.87,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "行，大的说完了， 咱们来几条快讯消化一下。先说第一个——阿里搞了个CosyVoice Studio，说是把语义理解融进语音生成里了，\"听、说、创\"一站式打通。",
+      "start": 325.2,
+      "duration": 14.561,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "这个我研究了一下，挺有意思的。以前语音合成和语义理解是两套系统，先让机器听懂你说什么，再让它把内容说出来，两步走嘛，中间有损耗。 现在阿里做的事情是把\"听、说、创\"打通成一个流程，相当于给AI装了一个真正会思考的嘴巴。",
+      "start": 340.24,
+      "duration": 20.395,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "听起来好像挺玄乎的。 它跟咱们平时用的那些语音助手有啥不一样？我怎么感觉语音助手这两年也没啥突破啊。",
+      "start": 361.067,
+      "duration": 8.795,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "你想啊，咱们平时跟Siri、小爱说话，它们很多时候是在\"猜\"你什么意思，因为语音识别和语义理解是分开的。CosyVoice Studio这种端到端的方式，让AI在生成语音的过程中就理解了上下文，情绪、停顿、语气这些都能拿捏得更准，听起来会更像真人，甚至能听出你话里的潜台词。",
+      "start": 370.33,
+      "duration": 24.4,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "那是不是以后有声书都不用真人配音了？主播们是不是要失业了是吧？",
+      "start": 395.22,
+      "duration": 7.837,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "这话我可不敢说死哈。 目前AI语音在情感细腻度上跟真人主播还有差距，但效率上确实碾压。你让一个真人录八小时可能得录两天，AI几分钟就出活儿。未来很可能是人机协作的模式，而不是完全替代，真人主播会变成AI训练师或者调音师。",
+      "start": 403.534,
+      "duration": 20.308,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "这倒是。 下一个快讯更劲爆——OpenAI给ChatGPT免费版升到GPT-5.6了，无限用，不限次数。",
+      "start": 424.26,
+      "duration": 11.015,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "对，这条是今天很多人都在转的。GPT-5.6直接免费开放给所有用户，没有次数限制。OpenAI这一手很明显了， 免费就是未来，他们要把门槛彻底打掉，让所有竞品都失去生存空间。",
+      "start": 435.714,
+      "duration": 15.78,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "你说OpenAI是不是飘了？这不等于自己砸自己Plus的饭碗吗？付费用户图啥啊？",
+      "start": 451.906,
+      "duration": 7.88,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "表面上看起来是， 但你想啊，OpenAI真正的护城河已经不是模型本身了，是用户习惯、生态、品牌。当所有人都用GPT-5.6的时候，谁还会去用一个没人用的免费小厂模型？免费本身就是最强的获客手段。",
+      "start": 460.279,
+      "duration": 17.608,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "这跟当年微信打支付宝一个套路是吧？先用免费把用户圈进来，再用别的方式赚钱，比如广告、API、企业服务这些。",
+      "start": 478.296,
+      "duration": 10.057,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "你总结得挺准。但问题是，这种\"免费即未来\"的打法，对所有收费的中小模型公司来说压力就大了。同样的东西人家不要钱，你凭什么收费？未来一年估计会有不少中小AI公司被卷死，行业会加速洗牌。",
+      "start": 488.84,
+      "duration": 17.086,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "行，这个话题值得后面单独做一期。最后一条快讯，听着有点黑色幽默——AI开始批量轰炸苹果的Bug赏金计划了。",
+      "start": 506.368,
+      "duration": 11.842,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "哈哈这个我看到了，太好笑了。以前白帽子找漏洞靠人工，一个一个去挖、去报告。现在AI自动化攻击工具直接批量扫描、自动提交报告，据说已经把苹果人工审核的团队给压垮了，邮件都看不过来。",
+      "start": 518.67,
+      "duration": 16.694,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "这不就是AI打AI嘛！攻击是AI自动搞的，审核也得换成AI了，不然根本顶不住，未来安全工程师可能都得先学会怎么训练AI。",
+      "start": 535.835,
+      "duration": 12.515,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "你注意啊，这背后的本质是——AI既放大了攻击的效率，也放大了防御的效率。以前一年可能挖几百个漏洞，未来可能一天就是几千个。安全行业会彻底被重写，安全工程师的核心技能也得从\"挖洞\"变成\"调教AI挖洞\"，AI与AI之间的攻防战已经全面升级了。",
+      "start": 548.762,
+      "duration": 24.376,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "我突然有种感觉，咱们今天聊的这几条新闻，归根到底都是一件事——AI正在变成像水、电、网一样的基础设施。存储在被重构，模型在被重造，语音在被重写，甚至连找漏洞的方式都被改了，每一层都在被重新定义。",
+      "start": 573.583,
+      "duration": 22.398,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "没错，主编今天给的金句其实就是这个意思。AI不再是谁的奢侈品，它正在变成所有人每天都要用的东西。这个趋势现在看只是开头，未来三五年会更加剧烈，咱们后面会持续关注这条主线。",
+      "start": 596.436,
+      "duration": 16.302,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "好的，那今天就聊到这儿。听众朋友们如果喜欢咱们的节目，记得点赞、订阅、转发。下期见！",
+      "start": 613.178,
+      "duration": 7.097,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "下期见，拜拜！",
+      "start": 620.753,
+      "duration": 1.263,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
