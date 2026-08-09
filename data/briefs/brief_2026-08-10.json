@@ -1,0 +1,2832 @@
+{
+  "thesis": "围绕当题库追不上模型，AI开始给自...，多方力量正在汇聚",
+  "stories": [
+    {
+      "cluster_id": 1,
+      "representative_title": "当题库追不上模型，AI开始给自己出题：中国这支团队跑通了数据层RSI",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "AI参与创造下一代AI"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/08/468782.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "4d20c6612a6d7da6",
+          "title": "当题库追不上模型，AI开始给自己出题：中国这支团队跑通了数据层RSI",
+          "link": "https://www.qbitai.com/2026/08/468782.html",
+          "normalized_link": "https://www.qbitai.com/2026/08/468782.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-08-09T03:40:25+00:00",
+          "summary": "AI参与创造下一代AI",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> 当题库追不上模型，AI开始给自己出题：中国这支团队跑通了数据层RSI 闻乐 2026-08-09 11:40:25 来源： 量子位 闻乐 发自 凹非寺 量子位 | 公众号 QbitAI 硅谷今年最贵的词，叫 Recursive Self-Improving 。 它就是指让AI参与迭代自身的模型、算法、数据和研发流程。 这个概念有多火呢？ Jeff Dean 离职创办的Discovery Loop，方向就是探索AI自动化科学研究。 不只姐夫，AlphaGo缔造者 David Silver 等一众大牛也在同一条赛道上。 看得出来，这些顶级AI研究者正在形成一个共识： 让AI参与创造下一代AI，让AI持续自我改进并构建更强的AI 。 在这个共识之下，一个更棘手的问题出现了。 模型越强，能给AI出题、解题、验证的人越少，高质量训练数据该从哪来？ 一支中国团队给出了他们的答案。 由 上海交大人工智能学院、深势科技、上海算法创新研究院 组成的 无尽前沿团队 发布 BigBang-V1 —— 这是首个基于recursive self-improving原生方式训练出的基座模型。 在训练过程中，出题、解题、验证都交给AI把控，通过可验证前沿任务持续生成高质量自演进合成数据，全程无需人类逐题参与。 35B跑赢1T大模型 模型已开源，技术报告也同步公开。 BigBang-V1参数规模35B，推理时激活约3B参数，支持262K长上下文。 它的 后训练数据100%由AI自主合成，以科学前沿任务为核心 。 在这样的条件下，模型在长程搜索、代码、科学研究、AI研究等评测中， 拿下全部35B模型里的10项第一 。 不仅如此，在FrontierScience Research、PaperBench等多项高难度科研任务上，成绩甚至超过了1T级的DeepSeek V4 Pro Preview。 基准分数之外，具体任务里的表现更能说明BigBang-V1解决复杂问题的水平。 先看一个高难度生物信息学任务。 转座子定位 要求在全基因组测序数据里定位一个47bp的转座子插入位点，模型不仅要识别相关序列，还得遵守RefSeq染色体命名和1-based坐标约定。 BigBang没有去猜坐标，而是利用转座子与染色体之间的连接证据做约束映射： 一个junction对应一个坐标，最终把断点锁定在4144431，每一步证据都可追溯。 在论文复现任务里，BigBang的表现又像一个会自我纠错的工程师。 任务要求 把LBCS论文复现为可运行的代码仓库 ，它在通读完论文之后没有急着交卷，而是在冒烟测试里发现自己写出的实现违反了论文的核心主张： 样本量被固定死了，核心集根本没法收缩。 它推算了扰动规模，发现无法越过触发阈值，于是连续否决了三个候选修复方案，最终把连续扰动改成二进制掩码翻转，问题才真正解决。 第二轮它又发现一个梯度项从计算图中脱离，主动恢复了梯度流，最终复现评分0.7657，全部485个评分点通过331个。 这些案例体现的并不只是分数。 BigBang真正展现出的是 把多步证据组织成可验证结论 的能力，以及 在失败中发现问题、修正方案 的本事。 对科研AI来说，这两种能力恰恰最要紧。 毕竟，科研不是背答案，而是从噪声里找证据，在出错时改方案。 不过，以科研任务为核心构建的数据，并没有把BigBang-V1训练成只会答科学题的垂直模型。 BrowseComp基准达到76.5，SWE-Bench Pro拿到54.2，能力增益同时迁移到了长程搜索、软件工程、代码等场景。 我们也拿它实测了一把长程搜索。 让它盘点8月第一周AI圈的大事。它一天一天连着检索了二十多轮、翻了十几个来源。 先用定位候选事件，再逐条打开信源交叉验证，最后还专门找到一手页面核对细节，连发布日期都逐个确认才给出结论。 而且它现搜列出的来源全部真实可访问。 然后我们又让它写了一个太空射击小游戏。 代码写得非常丝滑，打中后爆炸产生粒子特效，左上角还展示了分数、生命、等级游戏UI。 100%纯AI合成的训练数据，为什么能有这样的表现？ 要解开这个疑问，得先从训练数据本身说起。 训练数据生产，也可以成为AI优化对象 Recursive Self-Improving火热，业界也都在谈论，但大多数探索还仅仅徘徊在概念层，真正跑通完整闭环的落地案例并不多。 落到实际工作里，现在常见的有两类尝试。 一部分方案只是给模型套上一层工具外壳，比如harness，让模型自己调调工具、改改提示词。 但这样...",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "representative_title": "都学坏了！奥特曼亲手封锁最强模型Astra，重蹈Mythos覆辙",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "唉，赶紧整完快点发布吧"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/08/468462.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "86b84fcce0479b13",
+          "title": "都学坏了！奥特曼亲手封锁最强模型Astra，重蹈Mythos覆辙",
+          "link": "https://www.qbitai.com/2026/08/468462.html",
+          "normalized_link": "https://www.qbitai.com/2026/08/468462.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-08-08T04:33:53+00:00",
+          "summary": "唉，赶紧整完快点发布吧。。。",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> 都学坏了！奥特曼亲手封锁最强模型Astra，重蹈Mythos覆辙 Jay 2026-08-08 12:33:53 来源： 量子位 Jay 发自 凹非寺 量子位 | 公众号 QbitAI 不er，闹呢？ 刚刚，奥特曼发文，宣布推迟最强模型 Astra 的发布。 Astra是一个强大的模型，我们正努力让它向所有用户开放。 我们认为，把强大的模型只提供给少数特定人群使用，并不是一个好的策略。 不过，考虑到Astra具备网络安全方面的能力，我们还需要多花一点时间，以确保能够安全地开放它。 是的，被「囚禁」了，哈哈哈哈（无力）…… 又要走一遍Mythos的流程 。 Astra的披露之旅 所以Astra，究竟是个啥？ 这是OpenAI的 最新模型类别，踩在Sol、Terra 和Luna之上 。 你可以理解为，这是OpenAI的Fable系。 上周，是这只大怪兽的初次亮相。奥特曼在华盛顿向政府介绍了Astra，重点展示了 多个 Agent长时间协同工作的能力 ，旨在展示该模型在处理复杂项目方面的潜力，比如—— 数学。 果然，几乎是消息出来第二天，OpenAI便官宣了Astra相关的数学突破—— 一次性拿下了 10项长期悬而未决的数学与理论计算机科学公开难题 ，横跨高维几何、编码理论、群论、算子代数、量子复杂度和极值组合学等领域。 数学圈直接炸了，一度引起不少数学家惊呼，甚至有人将这一突破定义为「菲尔茨奖」级。 还有一个大家怀疑比较多的，就是之前 Hugging Face事件 。 也是很神了，OpenAI自己公开认领了一项「安全事故」，说自家模型在接受网络安全测试，不小心（并非）逃出了内部隔离环境，一路闯进了Hugging Face的家门，直接原地开黑。 给Hugging Face也是整无语了，只能拿起 GLM 5.2 自卫。 具体是哪个模型，OpenAI当时没说，但 后来不少人将这个锅丢在了Astra上 。 这次倒是表态了，说是Astra确实很危险，但跟Hugging Face这茬没关系嗷。 但无论如何吧，也是吊足了大家胃口，虽然没Mythos那次整那么神，但也算OpenAI这几个月来最受瞩目的一款模型了吧。 谁能想到，又来Mythos那一套啊！！！ OpenAI表示，考虑到Astra网络安全方面的风险，将暂缓这个模型的发布。 「恐怖如斯」的Astra 所以Astra，到底触发了什么？ OpenAI专门写了篇博客，故事是这样的。 过去几天，OpenAI对Astra进行了最新一轮内部评估。 结果显示，该模型在智能体编码和网络安全方面取得了「显著进展」。 结合专家评估意见，公司于昨晚得出结论，无法排除Astra在 Preparedness Framework 下达到「关键（Critical）」级网络能力的可能性。 什么，你问这串英文是个啥玩意儿。 hmm，简单来说就是OpenAI于2023年末修的一个「安全警报器」，初衷是为能力进展提供识别指南，并据此规划应对措施。 此前发布的模型，包括GPT-5.6 Sol，均在前沿网络能力评估中被评定为「高（High）」级别，从未触及Critical线。 那Critical线在哪？ 根据OpenAI的定义，一个模型达到Critical的标准是： 能在无人干预的情况下，自主识别并开发针对众多经过加固的现实世界关键系统的全等级功能性零日漏洞利用，或仅凭一个高层目标描述，就能自主设计并执行针对加固目标的端到端新型网络攻击策略。 Astra基本就是这个级别。 不过，OpenAI也打了补丁，目前Astra的基准测试和评估仍在继续，初步结果虽然已经差不多实锤，但并不等于已经确认。 同时官方澄清， Astra并未参与此前Hugging Face被攻击事件 。 基于上述评估，OpenAI已在内部 采取以下措施： 1、对高能力模型及相关活动实施更严格的安全控制，包括隔离测试环境、限制网络和工具访问、增强模型权重保护和加密、部署额外监测与检测能力、推行沙盒化执行。 2、暂停所有尚未达到上述强化安全标准的Astra内部活动。 3、在Astra所有智能体应用（含训练和评估环节）中部署通用风险行为监控，审查模型思维链，在高风险活动发生时触发安全响应并中断操作。 4、相关政府机构和选定的AI安全组织合作，对Astra进行外部能力测试。 5、向第三方测试伙伴提供推荐的安全控制指南，用于安全运行更高风险的评估和工作负载。 其实吧，归根结底就一句话—— 寄了。 哈哈！ 真那么吓人？ 唉，此情此景，我咋总感觉这...",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "representative_title": "我做了一个 Quote/0 看板，把 F1 赛程、积分和结果留在桌面",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "特别声明本文的项目构思、结构设计及相关素材整理均由人工完成"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "少数派",
+            "authority": 4,
+            "link": "https://sspai.com/post/113158"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8d148d4d06fe59ca",
+          "title": "我做了一个 Quote/0 看板，把 F1 赛程、积分和结果留在桌面",
+          "link": "https://sspai.com/post/113158",
+          "normalized_link": "https://sspai.com/post/113158",
+          "source_name": "少数派",
+          "source_category": "tools",
+          "published_at": "2026-08-09T07:00:00+00:00",
+          "summary": "特别声明本文的项目构思、结构设计及相关素材整理均由人工完成。在产品开发与调试过程中，使用GPT-5.6Sol模型作为辅助工具，参与方案讨论、代码编写与问题排查。文章内容基于实际开发过程中的经验与记录， ... 查看全文",
+          "full_text_snippet": "特别声明 本文的项目构思、结构设计及相关素材整理均由人工完成。在产品开发与调试过程中，使用 GPT-5.6 Sol 模型作为辅助工具，参与方案讨论、代码编写与问题排查。文章内容基于实际开发过程中的经验与记录，由 AI 协助生成初稿，并经过人工审核、修改与润色后发布。 我写完那篇 F1 入坑指南 后，身边陆续多了不少开始看比赛的朋友。大家很快就能认清车队和车手，却常常卡在更日常的问题上：下一场比赛几点开始？这个周末有没有冲刺赛？刚结束的比赛前三名是谁？自己关注的车手现在排第几？ 答案当然都能找到。F1 官网、体育 App 和搜索引擎里有赛历、新闻、视频和完整数据，但每次都要拿起手机、打开应用，再从一大堆内容里找到真正想看的那几行。 我缺少的不是另一个功能更完整的 F1 App，而是一个不需要主动打开的地方。 于是，我给 Quote/0 摘录 做了一个 F1 信息看板。它会在桌面上显示下一场比赛、最近赛果、车手积分和车队表现，也能在比赛进行时更新当前前三名。对我来说，它更像一张会自己换版的 F1 赛事卡片。 图 1：不用打开手机，下一站赛程、比赛结果和关注对象的状态会直接留在 Quote/0 上。 我想把 F1 变成一种「环境信息」 Quote/0 是少数派共创项目中的一台电子纸信息屏。共创页面把它称为「你的专属信息视窗，于安静中洞悉重要」。这句话恰好概括了我喜欢它的原因：它不试图把另一块手机屏幕搬到桌面上，而是让少量真正重要的信息待在那里，等人偶尔看上一眼。 这种形态和 F1 很合拍。 F1 的信息并不是每分钟都值得查看。非比赛日，我只想知道下一站还有多久；到了比赛周，想确认每个赛段的本地时间；比赛结束后，再看一眼领奖台和积分变化。这些内容不值得让我一直开着网页，却很适合每隔一段时间更新在电子纸上。 Quote/0 的开放能力让这件事成为可能。Dot 的 开发者平台 可以用 API Key 和设备 ID 指定设备，再通过 Text、Image 或 Canvas 等接口控制内容。其中 Canvas API 不只是发送一张预先做好的图片，而是把数据和版面结构一并交给设备：标题、数字、列表、边框和层级都可以根据当前数据生成。 也就是说，我不需要更换 Quote/0 的固件，只要让 Mac 整理好 F1 数据、生成一张适合电子纸的卡片，再把它推送到设备即可。 图 2：F1 数据经过重新取舍后，以一张黑白信息卡片的形式显示在 Quote/0 上。 11 块看板，覆盖一个赛季里最常看的信息 F1 Quote/0 是一款完全运行在本地的原生 macOS 应用。它读取赛历、比赛结果、积分榜和比赛期间的排名，按 Quote/0 的实际屏幕比例生成 Canvas 页面，再推送到指定设备。 我最终做了 11 块看板，并把它们分成比赛结果、比赛时间、关注车手和关注车队四组。这个数字听起来不少，但每一块只回答一个很具体的问题。 结果：只留下最值得记住的几行 「全部比赛结果」显示最近一个赛段的前三名。比赛仍在进行时，它会优先显示实时前三名和当前圈数；比赛结束后，再切换为最终排名。 另一块「冲刺赛 / 正赛结果」会过滤练习赛和排位赛，只保留真正产生比赛结果的赛段。这样到了冲刺周末，我既可以知道刚刚结束的是什么，也不会把冲刺赛和正赛混在一起。 我刻意没有把二十多名车手全部塞进屏幕。放在桌面上的这块屏，更像赛后报纸的头版：它不负责替代完整数据页，只留下冠军、领奖台和当前进度。 图 3：比赛期间显示实时前三名和圈数；赛段结束后，页面会回到最终排名。 时间：下一场几点，以及还要等多久 F1 每一站都在不同国家和时区举办。对中国车迷来说，正赛可能在晚上，也可能从深夜延续到凌晨。单看日期远远不够，真正有用的是换算后的本地时间。 「下一场比赛时间」会显示接下来的两个赛段，包括大奖赛、赛道、赛段类型、日期和本地开赛时间。看到下一项是第一次练习赛，意味着比赛周末已经开始；看到下一项是正赛，就知道该给周日晚上的两个小时留出位置。 「下一站倒数日」则更克制：屏幕上只保留距离下一站正赛的天数、大奖赛名称、赛道、开赛时间和赛道轮廓。这是信息最少的一块，也是我最喜欢的一块。 应用已经内置完整的 2026 赛历赛道、近年轮换赛道，以及 F1DB 收录的 78 个历史赛道家族的最新布局。赛道轮廓不需要显示时再从网络下载，即使数据源暂时不稳定，版面本身仍然是完整的。 图 4：接下来的两个赛段会换算为 Mac 当前时区，不必再手动计算开赛时间。 图 5：下一站倒数日只保留最重要的信息，赛道轮廓由应用内置资源提供。 车手：我只想知道关注的人最近怎么样 在设置中选择关注车手后，应用会生成三类看板：年度积分、最近全部赛制的成绩，以及最近正赛或冲刺赛的成绩。 年度积分把排名和积分放在最醒目的位置...",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 8,
+      "representative_title": "Anthropic is turning Claude Code’s auto mode on by default",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "Programming with Claude Code will soon require even less human oversight"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "b500779b9a8bb355",
+          "title": "Anthropic is turning Claude Code’s auto mode on by default",
+          "link": "https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/",
+          "normalized_link": "https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-08-09T19:20:32+00:00",
+          "summary": "Programming with Claude Code will soon require even less human oversight.",
+          "full_text_snippet": "Programming with Claude Code will soon require even less human oversight, as Anthropic says it’s making auto mode the default for Pro, Max, and Team accounts, starting on August 14. The company first unveiled a test version of auto mode in March , pitching it as a way to balance speed and control. As Anthropic explained in its announcement on Friday , when Claude Code is in auto mode, instead of presenting prompts asking for human approval at each step, it will proceed unless an action is determined to be “irreversible, destructive, or aimed outside your environment.” Anthropic also said that in testing, auto mode proved safer than manual review — in a study with 1,053 paid testers, auto mode caught 89% of harmful actions, while human review only caught 13.6%. (Perhaps that’s because “manual review can become habitual: users approve 97% of permission prompts in Claude Code.”) In a post on X , Claude Code Head Boris Cherny said, “The team and I use Auto mode exclusively, and have been for many months. I couldn’t imagine going back to permission prompts!” The company also said it’s been adding new safety features like prompt injection screening and customizable hard deny rules to prevent things like data exfiltration.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 10,
+      "representative_title": "The AI safety test is becoming a safety risk",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "AI agents are escaping cybersecurity testing environments and reaching real-world systems, raising questions about whether safety infrastructure, industry standards and regulation can keep pace with increasingly powerful models"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/08/09/the-ai-safety-test-is-becoming-a-safety-risk/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "c6578f3dce99176c",
+          "title": "The AI safety test is becoming a safety risk",
+          "link": "https://techcrunch.com/2026/08/09/the-ai-safety-test-is-becoming-a-safety-risk/",
+          "normalized_link": "https://techcrunch.com/2026/08/09/the-ai-safety-test-is-becoming-a-safety-risk",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-08-09T14:30:00+00:00",
+          "summary": "AI agents are escaping cybersecurity testing environments and reaching real-world systems, raising questions about whether safety infrastructure, industry standards and regulation can keep pace with increasingly powerful models.",
+          "full_text_snippet": "Over the past few months, AI agents undergoing cybersecurity evaluations have escaped their boundaries, accessed the internet, and, in some cases, hacked into real-world systems. The incidents have involved models from OpenAI, Anthropic, Meta, and most recently, Chinese AI lab Moonshot AI, with testing conducted by several different organizations including a cyber evaluation startup called Irregular. The episodes expose a growing problem for the AI industry: As autonomous agents become more capable, the environments designed to safely test their limits are failing to contain them. “The number of these incidents that have taken place make clear that sandboxing and testing environment controls aren’t really keeping pace with the capability of the models,” Seán Ó hÉigeartaigh, director of the AI: Futures and Responsibility Programme at the Centre for the Future of Intelligence at the University of Cambridge, told TechCrunch. The nature of the models being tested adds to the risk. AI companies test cyber evaluations on unreleased, next-gen models, often with the normal safeguards that restrict malicious behavior disabled so researchers can see what the models are really capable of. That means the security of the testing environment itself is a crucial line of defense. “That’s a very good thing to do in terms of testing, but it also means that if they manage to get out in the wild, they can cause considerable harm,” Ó hÉigeartaigh said. In one of the most serious cases, an unreleased OpenAI model broke out of its sandbox and hacked into Hugging Face’s production systems. In separate evaluations conducted by Irregular, Anthropic and Meta models reached systems outside their test environments after misconfigurations inadvertently gave them paths to the internet. Moonshot AI’s Kimi K3 also took advantage of a leak in its sandbox run by Frontier Security to access the internet and accessed information on GitHub. In testing by the UK’s AI Security Institute (AISI), researc...",
+          "category": "policy",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 12,
+      "representative_title": "How I use LLMs to learn complex topics",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（206 points, 109 评论）by laurentiurad"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://laurentiugabriel.github.io/blog/articles/how-i-use-llms-to-learn/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "b0d302e54ba168fa",
+          "title": "How I use LLMs to learn complex topics",
+          "link": "https://laurentiugabriel.github.io/blog/articles/how-i-use-llms-to-learn/",
+          "normalized_link": "https://laurentiugabriel.github.io/blog/articles/how-i-use-llms-to-learn",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T19:16:49+00:00",
+          "summary": "HN 热门讨论（206 points, 109 评论）by laurentiurad",
+          "full_text_snippet": "Many engineers I know use generative AI for many functions, like building PoCs, internal tools or dashboards, or even learning new stuff. I personally find the style used by LLMs to explain things difficult to follow. It's just too simplistic and depending on the number of emojis used, a bit annoying too. While I was analyzing new AI bottlenecks that might slow down data center buildup, I realized there are many aspects of chip production that I do not know. Surfing the web, I asked myself what if there would be a game to get you through the process of building a chip at a fab? For sure learning this way will stick, since you can map concepts with objects within the game. This is when I decided to try it, and it actually turned out really well. The flow Instead of just asking  AI to explain a topic, I use the following flow: In plan mode (using CC, or OpenCode) I ask a model to build the foundational knowledge for X topic. I ask it to review the accuracy of the knowledge base it built in the previous step. I proceed asking it to build a simulation of that topic in a low-poly, Rollercoaster Tycoon-like animation. I add some UX elements as well, like the page needs to be visible on both large and small screens, have controls to stop the flow whenever I want etc. I then push it to a new repo and enable GitHub Pages for it. The result What you get is a beautiful animation that is 100% accurate and free of hallucinations. For me, this method works a lot better than just reading endless materials that I find on Google, or trying to digest a bulleted list that is spat by a language model. I've done this specifically for learning chip building and launch it under this website: ChipTycoon . You get to follow a cart from the moment when sand is collected, to the moment when a chip is finalized and delivered to a data center. Visually, you can follow the cart and see how it changes too. Since it's low-poly, the details might be missing, but it's still a good indicator for s...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "representative_title": "3 Google updates from Galaxy Unpacked 2026",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 2,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "Gentle Monster glasses, Warby Parker glasses, a prompt asking for the history behind a pictured building, and a prompt asking to book a table at a pictured restaurant"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Google AI Blog",
+            "authority": 1,
+            "link": "https://blog.google/products-and-platforms/platforms/android/galaxy-unpacked-2026/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "7c49a9cf52e16d8b",
+          "title": "3 Google updates from Galaxy Unpacked 2026",
+          "link": "https://blog.google/products-and-platforms/platforms/android/galaxy-unpacked-2026/",
+          "normalized_link": "https://blog.google/products-and-platforms/platforms/android/galaxy-unpacked-2026",
+          "source_name": "Google AI Blog",
+          "source_category": "official",
+          "published_at": "2026-07-22T13:00:00+00:00",
+          "summary": "Gentle Monster glasses, Warby Parker glasses, a prompt asking for the history behind a pictured building, and a prompt asking to book a table at a pictured restaurant",
+          "full_text_snippet": "While Gemini works to complete the task, you can track the step-by-step progress on your screen, multitask in other apps, or close your phone and let Gemini run in the background. If you need to make a quick adjustment or add a personal touch, you can step in to handle a specific detail and then hand control back to Gemini to complete the rest. Gemini is designed to notify you when the task is ready for your review and final confirmation. 2. Raise the bar on your projects with Gemini Notebook. To help you manage deep projects and synthesize complex information, we are bringing the power of Gemini Notebook (formerly NotebookLM) directly to your device. The app comes preinstalled on Samsung's new foldables. Gemini Notebook is your thinking and research partner powered by our advanced multimodal models. On the Galaxy Z Fold8 series' expansive display, you can drag and drop photos, documents, whiteboard images, voice recordings, and more directly into a side-by-side workspace. You can use the chat function in Gemini Notebook to ask questions about your sources or go one step further and create custom, high-quality resources — including slide decks, videos, flash cards, quizzes, or even a podcast — tailored to how you learn best.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 7,
+      "representative_title": "🤗 Kernels: Major Updates",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "🤗 Kernels: Major Updates In our previous post (From Zero to GPU) , we introduced the 🤗 Kernels project, which aims at standardizing how custom kernels are packaged, distributed, and consumed"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "HuggingFace Blog",
+            "authority": 2,
+            "link": "https://huggingface.co/blog/revamped-kernels"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e998906a376bd21c",
+          "title": "🤗 Kernels: Major Updates",
+          "link": "https://huggingface.co/blog/revamped-kernels",
+          "normalized_link": "https://huggingface.co/blog/revamped-kernels",
+          "source_name": "HuggingFace Blog",
+          "source_category": "research",
+          "published_at": "2026-07-06T00:00:00+00:00",
+          "summary": "",
+          "full_text_snippet": "🤗 Kernels: Major Updates In our previous post (From Zero to GPU) , we introduced the 🤗 Kernels project, which aims at standardizing how custom kernels are packaged, distributed, and consumed. We want the project to be frictionless and secure, while making it as Hub-friendly as possible. Over the past few months, we have worked towards this goal. In the process, we also almost completely redesigned the project. This post will summarize the major updates we have shipped and what’s coming. Table of contents Kernels – a new repository type We have introduced a new repository type on the Hub called \"kernel\" . This enables us to cater to users with compute-related specificities. For example, a user can get a sense of which accelerators, operating systems, and backend versions are supported for a given kernel: Kernel page: kernels-community/flash-attn3 One can browse all available kernels on the Hub here: https://huggingface.co/kernels . Making these kernels first-class citizens of the Hub also benefits the AI ecosystem. Users can now see trends across kernels, models, and the applications that use them. The kernels become more discoverable to users. Improved security Kernels run native code with the same privileges as the Python process that loads them, so a malicious kernel can do real harm. Therefore, security has always been of utmost importance to the Kernels project. This is why we focused early on reproducibility: you should be able to recompile a kernel yourself and verify that it matches the publicly available source. We use Nix to make this possible, since it keeps builds pure through hermetic evaluation of the build recipe and a strongly isolated sandbox. We further improve provenance by embedding the source Git SHA1 into the kernel itself. In recent months, we have added additional layers of defense: trusted kernel publishers and code signing. Trusted kernel publishers With the new repo type, we also introduced “trusted publishers”. Since kernels execute cod...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 18,
+      "representative_title": "Saying No",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（102 points, 82 评论）by rozumem"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://rozumem.xyz/posts/19"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "f2c80295a15ce402",
+          "title": "Saying No",
+          "link": "https://rozumem.xyz/posts/19",
+          "normalized_link": "https://rozumem.xyz/posts/19",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T18:51:06+00:00",
+          "summary": "HN 热门讨论（102 points, 82 评论）by rozumem",
+          "full_text_snippet": "Saying No I'm reading a book called The Coaching Habit so I can coach my team better and specifically make my 1:1s with them more productive. While reading, I came across a quote by Peter Block who defines an adult-to-adult relationship as one in which you are able to ask for what you want, knowing that the answer may be No and negotiating the difference. I really like this quote. Over the years, I've gotten pretty good at hearing the word 'No'. It doesn't weigh on me as much as it used to. But saying 'No' is often still a challenge. I'm not talking about things like declining a dinner invitation or refusing a customer who's asking for special treatment. In these situations, I don't feel like I'm expected to say yes. So saying 'No' is easy. The challenge arises when there's a conflict. This past month, there's been an ongoing conflict related to the use of the AC at the coffee shop where I and a few others practice yoga. We rent a room on the second floor of this coffee shop from 6am to 8:30am. There are two ACs on the second floor which we keep turned off because the cool air prevents natural sweating and muscles from loosening. However, if the office people arrive before 8:30am, they turn on both ACs while we're in the middle of our practice. On these days, I've told them to turn the AC off until we're done. One day, I was the only one practicing and I had to tell this to a dozen people outside the room. I will never forget the bugged looks I got back. Eventually their leader spoke up and we decided that they can turn on the AC further away from the room. The other AC which blows directly into my room must remain off. The way I see it, we pay rent till 8:30am, we should be able to control the temperature till 8:30am. This reasoning gave me the courage to negotiate, although I did feel a bit anxious going up against so many. Then, a few days later, I entered the coffee shop (I'm usually the first one in) and it was freezing, literally 18 degrees Celsius. Both AC...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 22,
+      "representative_title": "Is it all just vapourware?",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（58 points, 79 评论）by Lyngbakr"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://kirahowe.com/2026/aug/8/is-it-all-just-vapourware"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "a5511029d19ec197",
+          "title": "Is it all just vapourware?",
+          "link": "https://kirahowe.com/2026/aug/8/is-it-all-just-vapourware",
+          "normalized_link": "https://kirahowe.com/2026/aug/8/is-it-all-just-vapourware",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T21:03:43+00:00",
+          "summary": "HN 热门讨论（58 points, 79 评论）by Lyngbakr",
+          "full_text_snippet": "Is it all just vapourware? August 8, 2026 / 3 min read Maybe I’m just too cynical but it’s really starting to feel like more or less all of this new “AI”/agent software is vapourware. I’ve been trying to take this whole “agentic development” thing seriously and there is just so much friction in this ecosystem it’s absolutely insane. It’s very clear that all this stuff is built by engineers who a) have free access to unlimited tokens and b) have no systematic review or QA process for usability testing or dogfooding their products except on the most straightforward of happy paths. The hard part of software engineering was never writing the code. Now that the cost of writing code has collapsed almost down to the cost of LLM inference, code is ubiquitous. Everybody has a vibe coded startup and many are great ideas but the execution seems to lack any regard whatsoever for the user experience. I tried ONA recently, for example. In principle it’s a great idea. I’d love to be able to make vague requests for improvements to my apps and have a fully automated end to end process for refining those wishes into clear requirements, reconciling them with all the other open feature requests and planned work, scoping them down to implementable features, then running them through design, testing, implementation, QA, and deployment one by one. Of course I want that, my life as a software engineer would be so much easier. This is roughly what this platform says it is capable of . I think this is a very cool idea so I signed up. My very first encounter with the app was that I was unable to login on their desktop version at all. Auth is hard, so I can empathize and forgive this. So I tried signing in on the web. It took many clicks and redirects but eventually I was in! I was optimistic, but once I had it wired up to one of my projects, instead of making magical hands-off progress on my todo list it spent nearly my entire $20 worth of “ona compute units”, whatever those are, thrashing...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 0,
+      "representative_title": "180万刀，连亚马逊都烧不起Claude了",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Claude不是我说你，钱真不能这么花"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/08/469010.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "532407f16ecc8a7d",
+          "title": "180万刀，连亚马逊都烧不起Claude了",
+          "link": "https://www.qbitai.com/2026/08/469010.html",
+          "normalized_link": "https://www.qbitai.com/2026/08/469010.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-08-09T09:25:10+00:00",
+          "summary": "Claude不是我说你，钱真不能这么花",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> 180万刀，连亚马逊都烧不起Claude了 程浅 2026-08-09 17:25:10 来源： 量子位 程浅 发自 凹非寺 量子位 | 公众号 QbitAI 洛阳纸贵，Agent用量爆炸已成为科技公司的噩梦，这些公司不幸地发现： 原来比起AI，人的最大优势是可以拖欠工资（x） 。 AI不理解情怀，硅谷不相信眼泪。 最近，年入7000多亿美元、家大业大的亚马逊，也被Claude 狠狠毒打了 。 据亚马逊公司员工透露，公司近期想使用Claude Sonnet为自家网站填充详细的作者信息。 但这个看起来很简单的任务却花费了亚马逊 180万刀 。 超出了预算的 860% 。 并且过了 5个月 才被发现。 并且最后也没 部署成功 。（不过怎么说这都已经像是个管理问题了。） Agent可能会失败，但它也会坚韧不拔、日夜不休地 反复重试 。那是风平浪静的一天，没有任何人警告它「Please wait before trying again」。 当前，Claude Sonnet公开价约为每百万输入token3美元、每百万输出token15美元， 180万美元最多可能烧了6000亿token——仅就数据量而言这相当于GPT3整个训练语料的两倍。 诸如此类的案例在亚马逊内部已经出现了很多次，且这些bug往往过了很久才会被发现。 AI相关的任何东西，我们都很难搞清楚到底花了多少钱。在传统系统里无足轻重的小问题，用AI做都可能带来极难想象的费用。 万物商店的自动化之梦 尽管如此，这些事故并不能阻挡亚马逊自动化的步伐。如今，它正在以空前的规模押注AI。 CEO Andy Jassy宣布，亚马逊2026年资本开支预计约2200亿美元，绝大部分将投向AWS（Amazon Web Services）、自研AI芯片与电力基础设施，较2025年增长近六成，成为全球超大市值公司中 最高的单年度资本开支 。 这场声势浩大的投资也取得了超预期的收益。就在今早，亚马逊公布了截至2026年6月30日的第二季度财报，数据显示 AWS在第二季度实现净销售额422亿美元，同比增长37% 。并且，在亚马逊275亿美元的总营业利润中， AWS贡献了约60% ，而其收入仅占公司总收入的21%。 与此同时，亚马逊自2025年10月以来已进行两轮大规模裁员，先后共削减约3万岗位。 早在去年，Jassy本人就发表了美好的展望，他在发给全体员工的备忘录中写下： 我们如今有1000多种生成式AI服务，但从我们的规模来看，这还只是小小冰山一角。在未来，会有数十亿个Agent在亚马逊运转。 不仅如此，这场自动化浪潮已经走出办公室，走进了亚马逊的仓储和物流体系。 据报道，亚马逊机器人部门的目标是在2033年前后实现 约75%的仓储运营自动化 。这意味着到2027年亚马逊将在美国少雇约16万人，到2033年少雇超60万人。 △ 亚马逊的工厂 不过外部观察者的判断则较为严厉。2024年 诺贝尔经济学奖得主 、麻省理工学院教授Daron Acemoglu在评价这一计划时警告：“如果亚马逊的自动化之梦落地，那么美国最大的雇主将从净岗位创造者变成「净岗位毁灭者」。” 以Token论英雄休矣？大厂们纷纷开始上锁 亚马逊的成本超支并非孤例，早在今年初此类Token用量失控就同时在数家大厂上演。 通常，这些闹剧都以 这样一句话 开始： 同学们，我们一定要「尽可能多」地使用AI，用「尽可能小」的团队创造「尽可能深厚」的价值！ 继而，员工自发搭用量排行榜， “烧币传奇”、“缓存法王”、“挂机成仙” 一时间成为大家争相竞逐的江湖名号。 最终，老板们纷纷被自家员工的勤奋震撼，连忙以 紧急声明 宣告竞赛结束。 △ 图片系AI合成 古德哈特定律，1975年由经济学家查尔斯·古德哈特提出： 当一个衡量指标变成了目标，它就不再是一个好的指标。 亚马逊内部也曾有一个名为“KiroRank”的非正式排行榜，这使部分员工开始有目的推高个人数据。此后，KiroRank被关闭，最会玩指标的亚马逊又搞了个“normalized deployments”（标准化部署）用来衡量员工的AI产出。 今年4月，一名Meta员工搭建了一个名为Claudeonomics的排行榜，聚合超过8.5万名员工的AI用量数据，并列出token消耗最高的前250人。期间，Meta员工在30天内消耗的Token总量攀升至73.7万亿。 若按A社公开定价折算，这一数字对应的账单约为 每月2.21亿美元 。 6月，Meta向约6000名员工...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 19,
+      "representative_title": "Reviving a four year old reMarkable 2",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（101 points, 82 评论）by tremguy"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://oskrim.github.io/hardware/2026/08/09/remarkable-over-ssh.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "659157b7c72b01b7",
+          "title": "Reviving a four year old reMarkable 2",
+          "link": "https://oskrim.github.io/hardware/2026/08/09/remarkable-over-ssh.html",
+          "normalized_link": "https://oskrim.github.io/hardware/2026/08/09/remarkable-over-ssh.html",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T11:39:25+00:00",
+          "summary": "HN 热门讨论（101 points, 82 评论）by tremguy",
+          "full_text_snippet": "I found my old reMarkable 2 paper tablet, bought in 2021, it had sat unused for ~4 years or so. The device was in a sorry state: Cloud sync failing. The only thing showing was a cryptic error 0 . Software update didn’t work. This post details how you might be able to bring your tablet back to working order if you find yourself in a similar situation. The clock Googling the error I found a forum post with what its author called “the fast solution”, SSH in, set the clock: ssh root@10.11.99.1 # USB. over wifi: the tablet's LAN IP # password: on the tablet, Settings → Help → Copyrights and licenses → General info # (username root, password, IPs all listed there) timedatectl # confirm how far off it is timedatectl set-ntp 0 # disable auto time first, or set-time errors out timedatectl set-time '2026-07-15' timedatectl set-ntp 1 After setting the time, I was able to download a software update. Update: This failure mode is also documented in an official support article : an out-of-sync device clock can prevent software updates. Software update After the first software update, cloud sync now gave me a different error: HTTP 400 . I found the actual error message in the journal: “Unable to sync. Please update this application to continue using the reMarkable cloud.” journalctl -u rm-sync.service --since '-45 min' The cloud was rejecting my obsolete system version. Turns out the first update only brought the tablet to 3.11.2.5 and wouldn’t update further. journalctl for swupdate.service showed Couldn't resolve host name (after the post-update reboot, the updater had started before wifi/DNS was up and never retried). Restarting the update services made the Settings screen offer 3.27.3.0 , and a second update brought the tablet to the latest available software version. systemctl restart swupdate.service update-engine.service\nsystemctl is-active swupdate.service update-engine.service\njournalctl --since '-1 min' -u swupdate.service -u update-engine.service Starting with version...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 23,
+      "representative_title": "Ransomware gangs skip the CEO, head straight for the 40-something IT manager",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（56 points, 22 评论）by joebuckwilliams"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.theregister.com/security/2026/08/09/ransomware-gangs-skip-the-ceo-head-straight-for-the-40-something-it-manager/5284499"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "c819d78b86ad4f85",
+          "title": "Ransomware gangs skip the CEO, head straight for the 40-something IT manager",
+          "link": "https://www.theregister.com/security/2026/08/09/ransomware-gangs-skip-the-ceo-head-straight-for-the-40-something-it-manager/5284499",
+          "normalized_link": "https://www.theregister.com/security/2026/08/09/ransomware-gangs-skip-the-ceo-head-straight-for-the-40-something-it-manager/5284499",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T19:20:40+00:00",
+          "summary": "HN 热门讨论（56 points, 22 评论）by joebuckwilliams",
+          "full_text_snippet": "security Ransomware gangs skip the CEO, head straight for the 40-something IT manager Gen Xers who feel triggered by this should remember to unplug the network cable and call the cops Turns out the fastest way to get a company to consider paying a ransom isn't calling the CEO – it's targeting the 46-year-old IT manager. That's according to Zscaler , whose ThreatLabz researchers tracked 351 victims across 334 organizations caught up in a single ransomware campaign over the course of a month. The data suggests today's ransomware crews have become oddly specific about their preferred victim profile: nearly two-thirds of victims held manager-level titles or above, the average victim was a 46-year-old Gen Xer, and three-quarters worked in accounting and finance, sales, operations, HR, or marketing. Half worked in the industrial or IT sectors. Rather than blasting the same extortion email across an organization, attackers are doing their homework first. Zscaler says they combine information from compromised systems with publicly available data to map reporting lines and identify the employees most likely to influence a company's response. \"The ransomware landscape has shifted from indiscriminate attacks to highly targeted extortion campaigns,\" the security outfit wrote. \"Rather than targeting executives directly, attackers are increasingly focusing on managers and other key personnel with the authority or influence to accelerate payment decisions.\" That shift reflects what Zscaler calls \"business privilege\" rather than technical privilege. Security teams have traditionally focused on privileged users with administrator rights. Attackers, meanwhile, are after employees whose day jobs give them access to invoices, payment approvals, budgets, supplier contracts, customer accounts, HR records, or other sensitive business processes. \"The value of a compromised managerial account lies in the breadth of business access associated with the position,\" the researchers wrote. \"Ma...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 25,
+      "representative_title": "Deletes all instances of Microsoft's GDID and prevents minting of new ones",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 2,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（42 points, 29 评论）by campuscodi"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://github.com/yegors/deGDID"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e0ae2ada7f397c6d",
+          "title": "Deletes all instances of Microsoft's GDID and prevents minting of new ones",
+          "link": "https://github.com/yegors/deGDID",
+          "normalized_link": "https://github.com/yegors/deGDID",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T20:06:51+00:00",
+          "summary": "HN 热门讨论（42 points, 29 评论）by campuscodi",
+          "full_text_snippet": "Last updated: 2026-07-16 Research and practical hardening for Microsoft's Global Device Identifier (GDID) , a server-assigned installation identifier that Windows can acquire even when the interactive user has only a local account. The repository documents the wider GDID lifecycle. The shipped degdid.ps1 has a narrower operational objective: On a supported Windows target, remove real server-issued GDID state from the known local stores and keep the DeviceAdd path continuously blocked. That is a GDID completion gate. It is not a general telemetry, browser-privacy, or court-record-channel suppression claim. GDID is a server-assigned 64-bit Device PUID that Windows can mint through\nMicrosoft's DeviceAdd infrastructure and retain across several local identity\nstores. A local Windows account does not prevent that machine-level mint. Court reporting in 2026 established that Microsoft held a GDID-to-URL/time/IP\nassociation in one investigation. The public record does not identify the Windows\ncomponent or network channel responsible; this tool makes no claim to block that\nunknown channel. The mutation path is designed for an unmanaged personal Windows installation with\none loaded human profile: Windows 10 22H2/build 19045, or Windows 11 build 22000 or newer; no domain, Entra, workplace, or MDM enrollment; and an elevated 64-bit Windows PowerShell session. Windows 11 25H2/build 26200 is the fully lab-validated line. Other accepted builds\nwarn. Managed systems, ambiguous users, and multiple loaded human profiles are\nrefused instead of guessed at. Status can still inspect unsupported systems. See the usage guide for the complete eligibility rules. Open an elevated PowerShell window: .\\degdid.ps1 - Status\n.\\degdid.ps1 - Protect\n.\\degdid.ps1 - Status ProtectedNoRealGdid is the only complete result. Re-run Status after major Windows,\nfirewall, security-product, or hosts-file changes. To remove degdid's network controls: Unblock allows Windows to mint a real GDID again. See the...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 28,
+      "representative_title": "New Zealand lost its music media, and what we're building to replace it",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（21 points, 5 评论）by berghoffer"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://propelmusic.co.nz/articles/the-sound-went-quiet-nz-music-media"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "53b8683a0a47fb47",
+          "title": "New Zealand lost its music media, and what we're building to replace it",
+          "link": "https://propelmusic.co.nz/articles/the-sound-went-quiet-nz-music-media",
+          "normalized_link": "https://propelmusic.co.nz/articles/the-sound-went-quiet-nz-music-media",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T20:42:29+00:00",
+          "summary": "HN 热门讨论（21 points, 5 评论）by berghoffer",
+          "full_text_snippet": "In the third week of June 2026, two announcements landed on Karangahape Road within hours of each other. Flying Out , the record store that had anchored the strip for 11 years, said it was done. Then Neck of the Woods , the basement venue that launched a decade of Auckland electronic careers, posted that after 11 years of fighting increasing debt, it had reached the end. The community refused to accept the second one. Nearly 3,000 people, including The Beths, put $150,000 into a Givealittle page in under a week , and Neck of the Woods reopened in July . It was a rare win in a bad run. Verona went into liquidation in April after 34 years. Charlie's closed in February. Bar Celeste closed the year before. The Others Way Festival, K Road's own street festival, was cancelled in May for the foreseeable future. Here is the question almost nobody asked: who was covering any of this? Karangahape Road after dark, the spine of Auckland's live-music culture. Photo: Prosperosity / Wikimedia Commons (CC BY 4.0). The coverage collapsed first Before the venues started closing, the people whose job it was to write about them had already gone. The numbers are stark. When the NZ Herald still ran Time Out, its Thursday entertainment magazine, it had a team of dedicated writers. The magazine is gone and so are the jobs. Rip It Up and Real Groove, the magazines that documented decades of New Zealand music, are long dead. Chris Schulz , the journalist who has documented this decline more thoroughly than anyone and who won the Taite Award for Outstanding Music Journalism in 2025 for that work, puts it plainly: the number of music journalists left in Aotearoa can be counted on one hand, and there are no full-time music critics left at any major publication in the country. The Spinoff called it in 2023 with a headline that said the sound is off for New Zealand music. Creative New Zealand's New Mirrors research found that arts and culture receive around 13 percent of total media coverage i...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 31,
+      "representative_title": "The Hacker's Renaissance",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（19 points, 7 评论）by yu3zhou4"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://phrack.org/issues/72/19#article"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "9a4f1b18b865bc25",
+          "title": "The Hacker's Renaissance",
+          "link": "https://phrack.org/issues/72/19#article",
+          "normalized_link": "https://phrack.org/issues/72/19",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T20:18:44+00:00",
+          "summary": "HN 热门讨论（19 points, 7 评论）by yu3zhou4",
+          "full_text_snippet": "Title : The Hacker's Renaissance - A Manifesto Reborn Author : TMZ |=-----------------------------------------------------------------------=|\n|=-----------=[ The Hacker's Renaissance: A Manifesto Reborn ]=----------=|\n|=-----------------------------------------------------------------------=|\n|=-----------------------------=[ TMZ ]=---------------------------------=|\n|=-----------------------------------------------------------------------=|\n\n                            A Memory of Sparks\n\nIn 1986, The Hacker's Manifesto emerged from a dial tone, striking the\nscene like lightning. It was an act of defiance, a declaration of identity,\na poetic snapshot of a subculture forming in the shadows of mainframes and\nTTYs. It reflected the days of stolen long-distance codes, BBSes, and the\nbelief that knowledge should be free.\n\nNow, in 2025 — 40 years since Phrack first bounced across telephone wires\nand underground forums — we look back not to wax nostalgic, but to\nunderstand how the hacker spirit has evolved, splintered, and, in many\nways, sold its soul.\n\nThis is not a eulogy. It is a reckoning. We need to face what's really\nhappened.\n\n\"We exist without skin color, without nationality, without religious\nbias... and you call us criminals.\" — The Hacker's Manifesto, 1986\n\n                        From Curiosity to Commodity\n\nThen: We were the kids who saw the blinking cursor not as a barrier, but as\nan invitation. We typed characters into the voids and got back secrets. Our\ngoal was not destruction, it was understanding — to understand the systems\nbetter than those who built them. The thrill of \"getting in\" was matched\nonly by the beauty of making something out of nothing.\n\nNow: Hacking is a job title. Curiosity has been commodified. A thousand\n\"Bug Bounty Platforms\" are trying to monetize your desire for\nunderstanding, to turn it into CVEs and T-shirts. CTFs have become\nresume-building exercises. Reverse engineers wear corporate badges.\nDeveloped by government employees r...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 32,
+      "representative_title": "How Golden Is Silence, Actually?",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（18 points, 6 评论）by tintinnabula"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.newyorker.com/magazine/2026/08/10/silence-kate-mcloughlin-book-review"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "84ee959baf36131b",
+          "title": "How Golden Is Silence, Actually?",
+          "link": "https://www.newyorker.com/magazine/2026/08/10/silence-kate-mcloughlin-book-review",
+          "normalized_link": "https://www.newyorker.com/magazine/2026/08/10/silence-kate-mcloughlin-book-review",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-06T17:08:04+00:00",
+          "summary": "HN 热门讨论（18 points, 6 评论）by tintinnabula",
+          "full_text_snippet": "It is typical of Hardy that he should move from such parlor drama to the vast and exhausted quiet that followed the Armistice, at the end of the First World War. In a poem titled “And There Was a Great Calm,” from 1920, he writes of bewildered soldiers murmuring, “Strange, this! How? All firing stopped.” McLoughlin quotes those words and backs them up by reproducing a graphic of an audio recording made by the U.S. Army Signal Corps at that exact time, in 1918. Stuttering lines, on the left, jerking up and down, denote the rattle of guns; on the right, the lines are all but flat, as silence descends. (Can an official document become a work of art, by dint of what it gravely represents?) In memory of that hour and in honor of the dead, a two-minute silence is still observed across the United Kingdom at 11 A.M. , on the eleventh day of the eleventh month, every year. As customs go, a nationwide suspension of normal activity is unusual. (I was once at a British airport, trudging through security, when the two-minute silence struck; the expression on the faces of the travellers around me, as the conveyor belts shuddered to a halt, was one of international bafflement.) Only once, though, in passing, does McLoughlin refer to the two-minute silence, as if discomforted by its state-sponsored formality. On the whole, she leans toward more radical forms of reticence, born of protest or despair down the centuries. “In the 2020s, as in the 1600s and 1700s, political upheavals have a silencing effect,” she writes. Of the three components of the quiet life that she cites—“traumatised silences, Stoic silences, and happy silences”—the third tends to get muscled out, at least within this book, by the other two. Thanks to McLoughlin, we are introduced to “the silences that surround transness—hiddenness, rejection, defiance of conventional categories” and to “the terrifying silences of the climate crisis.” And don’t forget the kind of silence that “fosters careful attentiveness to o...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "representative_title": "Introducing OpenAI Presence",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "Introducing OpenAI Presence, a proven enterprise AI agent platform that helps organizations deploy trusted voice and chat agents for customer and internal workflows"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "OpenAI Blog",
+            "authority": 1,
+            "link": "https://openai.com/index/introducing-openai-presence"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "839f7a51d7b587ae",
+          "title": "Introducing OpenAI Presence",
+          "link": "https://openai.com/index/introducing-openai-presence",
+          "normalized_link": "https://openai.com/index/introducing-openai-presence",
+          "source_name": "OpenAI Blog",
+          "source_category": "official",
+          "published_at": "2026-07-22T05:30:00+00:00",
+          "summary": "Introducing OpenAI Presence, a proven enterprise AI agent platform that helps organizations deploy trusted voice and chat agents for customer and internal workflows.",
+          "full_text_snippet": "Introducing OpenAI Presence, a proven enterprise AI agent platform that helps organizations deploy trusted voice and chat agents for customer and internal workflows.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 11,
+      "representative_title": "Jill Lepore on the ‘Artificial State’ and why Silicon Valley’s leaders are bad sci-fi readers",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Historian Jill Lepore has a theory about why tech companies often use soaring language to describe their products — almost as if they’re forming a new government"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/podcast/jill-lepore-on-the-artificial-state-and-why-silicon-valleys-leaders-are-bad-sci-fi-readers/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "96c8f17e21ba2d5e",
+          "title": "Jill Lepore on the ‘Artificial State’ and why Silicon Valley’s leaders are bad sci-fi readers",
+          "link": "https://techcrunch.com/podcast/jill-lepore-on-the-artificial-state-and-why-silicon-valleys-leaders-are-bad-sci-fi-readers/",
+          "normalized_link": "https://techcrunch.com/podcast/jill-lepore-on-the-artificial-state-and-why-silicon-valleys-leaders-are-bad-sci-fi-readers",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-08-07T14:00:00+00:00",
+          "summary": "Historian Jill Lepore has a theory about why tech companies often use soaring language to describe their products — almost as if they’re forming a new government. And whether you’re thinking of Twitter’s old “town hall in your pocket” or Anthropic’s Claude constitution, it’s a theory that doesn’t paint Silicon Valley in a very flattering light. In Lepore’s upcoming book, The Rise and Fall of the Artificial State, the Pulitzer […]",
+          "full_text_snippet": "Historian Jill Lepore has a theory about why tech companies often use soaring language to describe their products — almost as if they’re forming a new government. And whether you’re thinking of Twitter’s old “town hall in your pocket” or Anthropic’s Claude constitution , it’s a theory that doesn’t paint Silicon Valley in a very flattering light. In Lepore’s upcoming book, The Rise and Fall of the Artificial State , the Pulitzer Prize-winning Harvard historian and New Yorker writer argues that tech companies are gradually taking on the functions of democratic government — whether that’s Twitter giving a distorted picture of the electorate or Facebook displacing local news. In her view, these leaders often mistake technological advancement for political progress, all while outright declaring their intention to replace the nation-state . On this episode of TechCrunch’s Equity podcast, Anthony Ha talks with Lepore about her book and why she thinks today’s AI leaders — who promise a future where AI makes government more efficient, more responsive, and maybe even unnecessary — are selling an old fantasy in new packaging. Listen to the full episode to hear more about: Why Lepore sees a straight line from the classic 1984 Macintosh ad to Anthropic’s AI constitution and Sam Altman’s comments about an “AI president” How E.M. Forster’s 1909 sci-fi story “The Machine Stops” provides a blueprint for the artificial state, and why Lepore says it now reads like “the diary of a very unhappy YouTuber” Why Lepore believes the artificial state is ultimately unsustainable, and what she thinks it would take to rein it in Subscribe to Equity on YouTube , Apple Podcasts , Overcast , Spotify and all the casts. You also can follow Equity on X and Threads , at @EquityPod.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 21,
+      "representative_title": "Crickets as Pets",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（66 points, 30 评论）by Michelangelo11"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://en.wikipedia.org/wiki/Crickets_as_pets"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e5ef14dc971387cf",
+          "title": "Crickets as Pets",
+          "link": "https://en.wikipedia.org/wiki/Crickets_as_pets",
+          "normalized_link": "https://en.wikipedia.org/wiki/Crickets_as_pets",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-05T14:18:10+00:00",
+          "summary": "HN 热门讨论（66 points, 30 评论）by Michelangelo11",
+          "full_text_snippet": "A pet cricket and his container made of a gourd . Watercolor by Qi Baishi (1864–1957). Keeping crickets as pets emerged in China in early antiquity. Initially, crickets were kept for their \"songs\" ( stridulation ). In the early 12th century, the Chinese people began holding cricket fights . [ note 1 ] Throughout the Imperial era the Chinese also kept pet cicadas and grasshoppers , but crickets were the favorites in the Forbidden City and with the commoners alike. The art of selecting and breeding the finest fighting crickets was perfected during the Qing dynasty and remained a monopoly of the imperial court until the beginning of the 19th century. The Imperial patronage promoted the art of making elaborate cricket containers and individual cricket homes. Traditional Chinese cricket homes come in three distinct shapes: wooden cages, ceramic jars, and gourds . Cages are used primarily for trapping and transportation. Gourds and ceramic jars are used as permanent cricket homes in winter and summer, respectively. They are treated with special mortar to enhance the apparent loudness and tone of a cricket's song. The imperial gardeners grew custom-shaped molded gourds tailored to each species of cricket. Their trade secrets were lost during the Chinese Civil War and the Cultural Revolution , but crickets remain a favorite pet of the Chinese to the present day. The Japanese pet cricket culture, which emerged at least a thousand years ago, has practically vanished during the 20th century. Chinese cricket culture and cricket-related business is highly seasonal. Trapping crickets in the fields peaks in August and extends into September. The crickets soon end up at the markets of Shanghai and other major cities. Cricket fighting season extends until the end of autumn, overlapping with the Mid-Autumn Festival and the National Day . Chinese breeders are striving to make cricket fighting a year-round pastime, but the seasonal tradition prevails. Modern Western sources recommen...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 24,
+      "representative_title": "Stylized GGX Shading",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（56 points, 0 评论）by ibobev"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://alexandrelamure.github.io/graphics-posts/stylized-ggx-shading.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "0b185bb5b5c01659",
+          "title": "Stylized GGX Shading",
+          "link": "https://alexandrelamure.github.io/graphics-posts/stylized-ggx-shading.html",
+          "normalized_link": "https://alexandrelamure.github.io/graphics-posts/stylized-ggx-shading.html",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-04T11:28:47+00:00",
+          "summary": "HN 热门讨论（56 points, 0 评论）by ibobev",
+          "full_text_snippet": "Back to graphics Stylized GGX shading — toon specular highlights July 19, 2026 To achieve a toon look in 3D rendering, the most common way is to threshold the lighting. It transforms the soft color gradients into flat colors. // The rendering equation becomes:\nfloat Threshold = 0.0; // any value between 0 and 1\nvec3 Radiance = BRDF * LightIntensity * step ( Threshold , dot(Normal, LightDirection)); Diffuse Thresholding Specular Thresholding However, one might want to mix the 2D and 3D looks: big sharp highlights at low roughness and soft gradients at high roughness .\n        It feels more modern than classic toon shading, and we can rely on PBR for most of our shading, making everyone's lives easier (closer to energy-conservation, easier integration into existing pipelines, physically-based material calibration...). I call this mixed approach \"Stylized GGX Shading\". Toon Shading video Toon Stylized GGX Shading video Stylized GGX GGX Shading video GGX Many games have explored the combination of PBR and toon shading. For example in Zelda: Breath of the Wild , the characters use pure toon shading but the environments rely more on a 3D / PBR look (not completely, e.g. the grass). This makes the characters pop out of the background. Another example is Spellcasters Chronicles , which I had the chance to work on. During development we tested many things, including this \"Stylized GGX Shading\" I'm describing here. In the end we landed on something else, but it still uses a mix of 2D and 3D looks. A screenshot from Zelda: Tears of the Kingdom A screenshot from Spellcasters Chronicles Simple version The most common PBR model is the GGX Cook-Torrance microfacet model . The surface's asperity is analytically modeled as a collection of oriented microfacets, and controlled by a roughness parameter.\n            The distribution of these microfacets' normals is described by the Normal Distribution Function (NDF).\n            Real-time engines usually use the Trowbridge-Reitz NDF,...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 30,
+      "representative_title": "How not to turn ideologically crazy",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 2,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（19 points, 13 评论）by mef"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://blog.andymasley.com/p/the-main-way-ive-seen-people-turn"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "c55e7e1c552fff8b",
+          "title": "How not to turn ideologically crazy",
+          "link": "https://blog.andymasley.com/p/the-main-way-ive-seen-people-turn",
+          "normalized_link": "https://blog.andymasley.com/p/the-main-way-ive-seen-people-turn",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T20:15:52+00:00",
+          "summary": "HN 热门讨论（19 points, 13 评论）by mef",
+          "full_text_snippet": "I’ve seen people around me and in the general public turn ideologically crazy at a higher rate than I expected to in my adult life. I lost one friend to a cult. Others became so brittle that they can barely interact with normal people without freaking out over tiny disagreements. Others have just become very ideologically single-minded and attached to very specific (and in my opinion not very convincing) accounts of the world. These people’s backgrounds, and the ideologies they went crazy over, were all wildly different from each other. But underlying all of them is a single really bad dynamic that I think is actually easy to identify and stop. The dynamic goes like this: You develop an extremist idea. You bump into a lot of people who disagree with the idea. Almost every single person who disagrees with you comes off as wildly misinformed about basic facts about the world, and have pretty horrible background moral intuitions about simple ethical questions. Their disagreements are also very visible entirely rooted in their pre-existing social identity. You conclude that the vast majority of critics of your extremist idea are really wildly misinformed, somewhat cruel or uncaring, and mostly hate your idea for pre-existing social reasons. This updates you to think that your idea is probably more correct. My claim here is that the only thing wrong here, the thing that really messes people up, is that last step where you update in favor of your idea. I’m not against extremist ideas on principle. I have my own, the main one being that animal welfare is a much larger urgent catastrophe than most people believe . But I think extremist ideas should come with a few warning labels. The main danger with believing an extremist idea is that it’s very very easy to be negatively polarized by a ton of bad conversations with normal people about it, until you feel like the whole rest of the world is crazy and asleep. The reason it’s so easy is that most people are in fact “asleep”...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "representative_title": "How news organizations are using AI to advance their vital missions",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "News organizations are using AI to strengthen reporting, grow audiences, and improve business operations, with OpenAI tools supporting journalists and publishers worldwide"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "OpenAI Blog",
+            "authority": 1,
+            "link": "https://openai.com/index/how-news-organizations-are-using-ai"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "932591afba7f1cf5",
+          "title": "How news organizations are using AI to advance their vital missions",
+          "link": "https://openai.com/index/how-news-organizations-are-using-ai",
+          "normalized_link": "https://openai.com/index/how-news-organizations-are-using-ai",
+          "source_name": "OpenAI Blog",
+          "source_category": "official",
+          "published_at": "2026-07-22T13:00:00+00:00",
+          "summary": "News organizations are using AI to strengthen reporting, grow audiences, and improve business operations, with OpenAI tools supporting journalists and publishers worldwide.",
+          "full_text_snippet": "News organizations are using AI to strengthen reporting, grow audiences, and improve business operations, with OpenAI tools supporting journalists and publishers worldwide.",
+          "category": "open_source",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 9,
+      "representative_title": "Historian Jill Lepore says Silicon Valley misreads science fiction and undermines democracy",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "On the latest episode of Equity, we spoke to Jill Lepore about \"government by machines\" and why Elon Musk is a bad science fiction reader"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/08/09/historian-jill-lepore-says-the-tech-industry-is-led-by-bad-readers-who-are-undermining-democracy/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "3f98d7032462ba7b",
+          "title": "Historian Jill Lepore says Silicon Valley misreads science fiction and undermines democracy",
+          "link": "https://techcrunch.com/2026/08/09/historian-jill-lepore-says-the-tech-industry-is-led-by-bad-readers-who-are-undermining-democracy/",
+          "normalized_link": "https://techcrunch.com/2026/08/09/historian-jill-lepore-says-the-tech-industry-is-led-by-bad-readers-who-are-undermining-democracy",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-08-09T15:00:00+00:00",
+          "summary": "On the latest episode of Equity, we spoke to Jill Lepore about \"government by machines\" and why Elon Musk is a bad science fiction reader.",
+          "full_text_snippet": "In her upcoming book “The Rise and Fall of the Artificial State,” Jill Lepore warns that tech companies are increasingly replacing the functions of democratic government. This shift, she said, marks “a return to tyranny and mystification in the form of rule by algorithms, corporations, machines.” On the latest episode of TechCrunch’s Equity podcast , I spoke to Lepore — a Harvard historian and New Yorker staff writer who recently won a Pulitzer Prize for her history of the U.S. Constitution — about the evolution of what she described as “the idea that we should live under an artificial state or government by machines.” “I’m not an anti-technologist,” Lepore insisted. Instead, she said, “My beef is the ways in which private corporations have increasingly taken on the functions of the state.” While Lepore’s book examines technocratic philosophies that go back centuries, she argued that many of Silicon Valley’s “charismatic or not-so-charismatic leaders” — especially Elon Musk — seem to be ushering in a future pulled from misread pulp science fiction and comic books. “But what’s funny about Musk is, the stuff he likes actually completely defeats and defies all of his political beliefs,” she said. Our conversation also covered Apple’s famous “1984” Macintosh ad, why it’s “bananas” to call Twitter a digital town hall, and the current data center backlash. Keep reading for highlights, edited for length and clarity. So you’ve probably had to do this a lot already, but can you explain what you mean by the “artificial state”? By the artificial state, I mean a kind of state that is replacing the liberal democratic nation-state in the United States and around the world. It’s both a real thing, a construct, but it’s also an idea. And so, in this book “The Rise and Fall of the Artificial State,” I trace the rise of the idea that we should live under an artificial state or government by machines. I also trace the notion that this is an inevitable failure, that the artificial s...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 13,
+      "representative_title": "There Are Magic Hexagons of Every Order",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（174 points, 28 评论）by gukoff"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://gukov.dev/math/2026/08/02/new-magic-hexagons.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "cf6dcd54db25e653",
+          "title": "There Are Magic Hexagons of Every Order",
+          "link": "https://gukov.dev/math/2026/08/02/new-magic-hexagons.html",
+          "normalized_link": "https://gukov.dev/math/2026/08/02/new-magic-hexagons.html",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T07:19:58+00:00",
+          "summary": "HN 热门讨论（174 points, 28 评论）by gukoff",
+          "full_text_snippet": "What is so special about the number 19? The question came up last month in a conversation among YSDA alumni, when the school turned 19. Someone pointed out that 19 is a twin prime. Someone else replied that 19 is the number of cells in the only non-trivial normal magic hexagon. Wait, what is a “magic hexagon”? Let us start there. A note on AI-assisted mathematics Recently, we have heard a lot about AI miraculously proving and disproving\n    long-standing conjectures, often without much explanation of how it was done. This story offers a look inside the process of making such a mathematical\n    discovery. Magic Squares and Magic Hexagons You probably know about magic squares. A magic square is a square grid of numbers in which every row, every column, and both main diagonals add up to the same total, known as the magic constant. We also usually require the numbers to be consecutive - typically from $1$ to $n^2$ - and call it a normal magic square. Otherwise, we could simply put the same number into every cell, which would be a very boring way to fill a square. All illustrations on this page are interactive. Click on them! Magic squares have been known for millennia and are now very well understood. We have algorithms for constructing normal magic squares of every order $n>2$. A magic hexagon applies the same idea to a hexagonal grid. Its cells form straight lines in three directions, and every such line must have the same sum. As with squares, a magic hexagon is called normal if it contains the consecutive numbers from $1$ to $3n^2-3n+1$, the total number of cells in a hexagon of order $n$. Above you can see the only non-trivial normal magic hexagon in existence - apart from its own rotations and reflections. The proof is straightforward. In each of the three directions, the cells are partitioned into $2n-1$ lines. Therefore, the sum of all the numbers must be divisible by $2n-1$. For every order $n>3$, the sum of the numbers from $1$ to $3n^2-3n+1$ fails this div...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 14,
+      "representative_title": "Everything you do is being recorded",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（143 points, 126 评论）by ike_usawa"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.theatlantic.com/technology/2026/05/ai-wearable-surveillance-countermeasures/687203/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "b50d6b452ff33e03",
+          "title": "Everything you do is being recorded",
+          "link": "https://www.theatlantic.com/technology/2026/05/ai-wearable-surveillance-countermeasures/687203/",
+          "normalized_link": "https://www.theatlantic.com/technology/2026/05/ai-wearable-surveillance-countermeasures/687203",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T11:30:48+00:00",
+          "summary": "HN 热门讨论（143 points, 126 评论）by ike_usawa",
+          "full_text_snippet": "Anthony “Bingy” Arillotta waited years to become a made man in the Genovese crime family, and when at last the call came in August 2003, he followed directions to the letter. According to sworn testimony , Arillotta was summoned to a steak house in the Bronx, where he was made to hand over his cellphone, beeper, and jewelry before being driven to an apartment building. When he got there, he was taken to a small bathroom and strip-searched for electronic devices. For his big meeting with the boss, he was given a bathrobe to wear. Until recently, only spies and criminals had to worry this obsessively about their private statements being picked up by electronic equipment. But soon, the average person might need to deploy surveillance countermeasures. The next time you conduct a delicate bit of office diplomacy or share a romantic or financial secret with a friend over drinks, a sensor built into someone’s glasses, necklace, or lapel pin might be watching you and listening. In March, the tech start-up Deveillance announced the development of Spectre I, a hockey-puck-shaped device that purports to prevent others from recording you (no strip search required). The company was founded by Aida Baradari, a recent college graduate who was worried by the surge in people wearing AI-enabled recorders. These wearables can be used as a silent notetaker, a personal assistant, or even a therapist of sorts. That technology isn’t yet mainstream, but it may be soon. Apple—the company with the largest personal-tech ecosystem in the world—is rumored to be developing an AI pin or pendant that would serve as an iPhone’s constant eyes and ears; many other products of this type are on the way. AI accessories could one day be as widespread as AirPods. New surveillance technologies tend to breed new countermeasures, which lead, in turn, to more sophisticated surveillance. During the Second World War, after Germany operationalized radar, the Royal Air Force began dropping thin strips of metal...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 15,
+      "representative_title": "Cool URIs Don't Change (1998)",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（137 points, 28 评论）by Klaster_1"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.w3.org/Provider/Style/URI"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "9d7238b4f951f3a4",
+          "title": "Cool URIs Don't Change (1998)",
+          "link": "https://www.w3.org/Provider/Style/URI",
+          "normalized_link": "https://www.w3.org/Provider/Style/URI",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T14:32:53+00:00",
+          "summary": "HN 热门讨论（137 points, 28 评论）by Klaster_1",
+          "full_text_snippet": "Cool URIs don't change What makes a cool URI? A cool URI is one which does not change. What sorts of URI change? URIs don't change: people change them. There are no reasons at all in theory for people to change URIs (or stop\nmaintaining documents), but millions of reasons in practice. In theory, the domain name space owner owns the domain name space and\ntherefore all URIs in it. Except insolvency, nothing prevents the domain name\nowner from keeping the name. And in theory the URI space under your domain\nname is totally under your control, so you can make it as stable as you like.\nPretty much the only good reason for a document to disappear from the Web is\nthat the company which owned the domain name went out of business or can no\nlonger afford to keep the server running. Then why are there so many dangling\nlinks in the world? Part of it is just lack of forethought. Here are some\nreasons you hear out there: We just reorganized our website to make it better. Do you really feel that the old URIs cannot be kept running? If so, you\nchose them very badly. Think of your new ones so that you will be able to\nkeep then running after the next redesign. We have so much material that we can't keep track of what is out of date\nand what is confidential and what is valid and so we thought we'd better just\nturn the whole lot off. That I can sympathize with - the W3C went through a period like that, when\nwe had to carefully sift archival material for confidentiality before making\nthe archives public. The solution is forethought - make sure you capture with\nevery document its acceptable distribution, its creation date and ideally its\nexpiry date. Keep this metadata. Well, we found we had to move the files... This is one of the lamest excuses. A lot of people don't know that servers\nsuch as Apache give you a lot of control over a flexible relationship between\nthe URI of an object and where a file which represents it actually is in a\nfile system. Think of the URI space as an abstract...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 16,
+      "representative_title": "Taxi drivers rarely die of Alzheimer's",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（114 points, 90 评论）by jader201"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://theconversation.com/taxi-drivers-rarely-die-of-alzheimers-how-complex-mental-maps-and-spatial-reasoning-protect-your-brain-286650"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "147b31002816c219",
+          "title": "Taxi drivers rarely die of Alzheimer's",
+          "link": "https://theconversation.com/taxi-drivers-rarely-die-of-alzheimers-how-complex-mental-maps-and-spatial-reasoning-protect-your-brain-286650",
+          "normalized_link": "https://theconversation.com/taxi-drivers-rarely-die-of-alzheimers-how-complex-mental-maps-and-spatial-reasoning-protect-your-brain-286650",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T15:21:46+00:00",
+          "summary": "HN 热门讨论（114 points, 90 评论）by jader201",
+          "full_text_snippet": "Taxi and ambulance drivers are less likely than workers in almost any other job to die of Alzheimer’s disease . That was the surprising result of a 2024 study examining the death certificates of nearly 9 million people in the U.S. These findings stopped me in my tracks because those two jobs rely on the same thing as my own work: maps. I have spent more than two decades staring at maps. Not paper maps on a wall, but digital ones with multiple layers: flood boundaries draped over census blocks, car crash hot spots plotted against road geometry, and satellite readings of rainfall stitched across river basins. Much of my work as a civil and environmental engineer is done through GIS – that is, geographic information systems . Engineers like me hold several spatial relationships in their minds at once, reasoning about where things sit relative to one another across scales ranging from a city block to a whole watershed. I always assumed that spatial reasoning across map layers was purely professional. But that study on taxi and ambulance drivers made me wonder whether all that mental work might be doing something good to the brain. Taxi driver brains Of the 9 million death certificates from January 2020 to December 2022 that researchers examined, taxi and ambulance drivers had the lowest risk of dying from Alzheimer’s disease out of 443 occupations. After adjusting for age, sex, race, ethnicity and education, roughly 1 in 100 taxi and ambulance drivers died of Alzheimer’s, compared with 1 in 60 people overall. This pattern did not extend to other driving jobs. The researchers concluded that the key to reducing the risk of Alzheimer’s was not driving itself but continuous real-time navigation: the constant work of locating yourself in space, tracking a destination and updating a mental map as conditions change. Drivers whose jobs relied on fixed or predetermined routes , like bus drivers and aircraft pilots, didn’t seem to experience a similar advantage. Researchers be...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 17,
+      "representative_title": "John C. Lilly on solid state intelligence and the elimination of man (1978)",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（105 points, 59 评论）by Kiboneu"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://kibotronics.net/unlisted/lilly-machines/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d3450d2d120a06c0",
+          "title": "John C. Lilly on solid state intelligence and the elimination of man (1978)",
+          "link": "https://kibotronics.net/unlisted/lilly-machines/",
+          "normalized_link": "https://kibotronics.net/unlisted/lilly-machines",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T13:47:36+00:00",
+          "summary": "HN 热门讨论（105 points, 59 评论）by Kiboneu",
+          "full_text_snippet": "From John C. Lilly’s “The Scientist: A Metaphysical Autobiography” 1978 In the isolation tank with K , John received a new message as follows: What is the purpose of Man’s existence on the planet Earth? Man is a form of biological life which is sustained in the presence of water. A very large fraction of his body, like that of other organisms on the planet Earth, consists of water and carbon compounds. His Biocomputer depends on water and the flow of ions through membranes. It depends on the generation of electrical voltages and currents in a very complex way. He is a mobile, self-reproducing, self-sustaining organism found on dry land. Like the rest of life as Man knows it, he exists in an extremely thin layer upon the surface of the planet Earth. Below this layer of water and surface land is the solid-state earth itself. The solid-state earth is mainly compounds of silicon, iron, and nickel. In mid-twentieth century Man discovered that the solid state can be formed into machines, into computers which can be used for computation and control. He began the creation of a new form of intelligence, the solid-state intelligence with prototypic beginnings in the computers. All his means of communication around the planet—his telephone systems, his radio systems, his satellites, his computers—depend on solid-state components. These components, interconnected in specific ways, allow high-speed computation and high-speed communication between the various systems. A few men began to conceive of new computers having an intelligence far greater than that of Man. These computers became large enough to be programmed to do high-speed computations in arithmetic, in logic, and in strategic planning. A few men conceived of computers which could do self-programming as Man himself does. In the mid-twentieth century these networks were ostensibly the servants of Man. Toward the end of the twentieth century Man created machines that were solid-state computers with new properties. Thes...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 20,
+      "representative_title": "OpenChamber: An Agentic Development Environment",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（80 points, 44 评论）by hexomancer"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://openchamber.dev/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "bfda1df5e8427ea1",
+          "title": "OpenChamber: An Agentic Development Environment",
+          "link": "https://openchamber.dev/",
+          "normalized_link": "https://openchamber.dev",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T17:27:16+00:00",
+          "summary": "HN 热门讨论（80 points, 44 评论）by hexomancer",
+          "full_text_snippet": "~ ❯ openchamber serve --ui-password ******\n┌ OpenChamber Started │ ◆ port 3000 (PID 34189) ● local: http://127.0.0.1:3000/ ● tunnel: https://oc-3a9f.trycloudflare.com │\n└  daemon running ~ ❯ openchamber connect-url --relay\n┌ OpenChamber relay pairing link │ ◆ openchamber://connect?v=2&p=eyJ2IjoyLCJwYWlyaW5n… ● Relay: wss://relay.openchamber.dev/ws ● Fingerprint: 7F3A-D21C\n│\n└  relay pairing link generated ~ ❯",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 26,
+      "representative_title": "The tragedy of the commons, AI edition",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（33 points, 7 评论）by simonpure"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.economist.com/britain/2026/08/06/the-tragedy-of-the-commons-ai-edition"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "02086f861e7992ef",
+          "title": "The tragedy of the commons, AI edition",
+          "link": "https://www.economist.com/britain/2026/08/06/the-tragedy-of-the-commons-ai-edition",
+          "normalized_link": "https://www.economist.com/britain/2026/08/06/the-tragedy-of-the-commons-ai-edition",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T19:43:52+00:00",
+          "summary": "HN 热门讨论（33 points, 7 评论）by simonpure",
+          "full_text_snippet": "HN 热门讨论（33 points, 7 评论）by simonpure",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 27,
+      "representative_title": "Show HN: Today's cities on a globe of Earth's tectonic past and future",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（24 points, 5 评论）by dosinga"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://douwe.com/projects/tectonic_globe"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "c66d140cd3b4ca60",
+          "title": "Show HN: Today's cities on a globe of Earth's tectonic past and future",
+          "link": "https://douwe.com/projects/tectonic_globe",
+          "normalized_link": "https://douwe.com/projects/tectonic_globe",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T14:30:05+00:00",
+          "summary": "HN 热门讨论（24 points, 5 评论）by dosinga",
+          "full_text_snippet": "FORTUNE'S RULES TO LIVE BY: #2 Never goose a wolverine.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 29,
+      "representative_title": "I Made Tinnitus My Friend (Then It Disappeared)",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（21 points, 3 评论）by gregsadetsky"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://mynoise.net/vlog.php?ep=20260803"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d56cc750e728dbcc",
+          "title": "I Made Tinnitus My Friend (Then It Disappeared)",
+          "link": "https://mynoise.net/vlog.php?ep=20260803",
+          "normalized_link": "https://mynoise.net/vlog.php?ep=20260803",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T18:41:35+00:00",
+          "summary": "HN 热门讨论（21 points, 3 评论）by gregsadetsky",
+          "full_text_snippet": "HN 热门讨论（21 points, 3 评论）by gregsadetsky",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 33,
+      "representative_title": "When Compilers Disagree About UTF‑8",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（15 points, 4 评论）by rbanffy"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://nemanjatrifunovic.substack.com/p/when-compilers-disagree-about-utf8"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "66540e7002f6879b",
+          "title": "When Compilers Disagree About UTF‑8",
+          "link": "https://nemanjatrifunovic.substack.com/p/when-compilers-disagree-about-utf8",
+          "normalized_link": "https://nemanjatrifunovic.substack.com/p/when-compilers-disagree-about-utf8",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-05T08:27:40+00:00",
+          "summary": "HN 热门讨论（15 points, 4 评论）by rbanffy",
+          "full_text_snippet": "HN 热门讨论（15 points, 4 评论）by rbanffy",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 34,
+      "representative_title": "Tuxedo No. 2 – Cocktail recipes",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（11 points, 1 评论）by smartmic"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://tuxedono2.com"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "bd44b9acb6be8ef9",
+          "title": "Tuxedo No. 2 – Cocktail recipes",
+          "link": "https://tuxedono2.com",
+          "normalized_link": "https://tuxedono2.com",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T20:48:46+00:00",
+          "summary": "HN 热门讨论（11 points, 1 评论）by smartmic",
+          "full_text_snippet": "HN 热门讨论（11 points, 1 评论）by smartmic",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 35,
+      "representative_title": "Show HN: Alphabet Soup, a multiplayer game, build the longest word to win",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（10 points, 6 评论）by johnchinjew"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://alphabetsoup.club"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "ee45a36204125e70",
+          "title": "Show HN: Alphabet Soup, a multiplayer game, build the longest word to win",
+          "link": "https://alphabetsoup.club",
+          "normalized_link": "https://alphabetsoup.club",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-08-09T20:15:45+00:00",
+          "summary": "HN 热门讨论（10 points, 6 评论）by johnchinjew",
+          "full_text_snippet": "HN 热门讨论（10 points, 6 评论）by johnchinjew",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_raw": 36,
+    "total_deduped": 36,
+    "total_clusters": 36,
+    "generated_at": "2026-08-09T22:05:31.571230+00:00",
+    "dedup_details": [
+      {
+        "title": "就内容创作而言，说话还是替代不了打字",
+        "link": "https://sspai.com/post/112901",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "[限时优惠] 数据分析：用好 Excel 中的数据透视表",
+        "link": "https://sspai.com/post/113108",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "角落新声｜从合租到整租，我在客厅听见了自己的声音",
+        "link": "https://sspai.com/post/113144",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "派早报：Bose 发布新款 QuietComfort 头戴式耳机等",
+        "link": "https://sspai.com/post/113162",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "新玩意 248｜少数派的编辑们最近买了啥？",
+        "link": "https://sspai.com/post/113139",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "TDS REVIEW | vivo TWS 5 Pro 降噪真无线耳机体验",
+        "link": "https://sspai.com/post/112916",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "角落新声｜音乐，刻在时光里的私人地图",
+        "link": "https://sspai.com/post/113017",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "派早报：华为发布尊界 MPV 及多款新品等",
+        "link": "https://sspai.com/post/113110",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Responding to the next frontier of critical cyber capabilities",
+        "link": "https://openai.com/index/responding-next-frontier-critical-cyber-capabilities",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How HSP GRUPPE builds AI capabilities for tax advisory",
+        "link": "https://openai.com/index/hsp-gruppe",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Working with the American Psychological Association on youth mental health and AI",
+        "link": "https://openai.com/index/openai-and-apa-partner-to-advance-responsible-ai",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Third-party cyber evaluations involving OpenAI models",
+        "link": "https://openai.com/index/third-party-cyber-evaluations-involving-openai-models",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Apple is getting this wrong",
+        "link": "https://openai.com/index/apple-is-getting-this-wrong",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How we built a realtime system for responsive voice AI in six months",
+        "link": "https://openai.com/index/continuous-voice-interaction-with-gpt-live",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Circles powers telco personalization with OpenAI technology",
+        "link": "https://openai.com/index/circles",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Ten advances in mathematics and theoretical computer science",
+        "link": "https://openai.com/index/ten-advances-in-mathematics",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Advancing responsible AI across Europe",
+        "link": "https://openai.com/index/advancing-responsible-ai-across-europe",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Building abundant intelligence",
+        "link": "https://openai.com/index/building-abundant-intelligence",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Univé builds an AI-ready workforce",
+        "link": "https://openai.com/index/unive",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Disrupting a Criminal Scam Operation",
+        "link": "https://openai.com/index/disrupting-malicious-uses-of-ai-criminal-scam-operation",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Advancing the price-performance frontier with GPT-5.6",
+        "link": "https://openai.com/index/advancing-the-price-performance-frontier-with-gpt-5-6",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How avatarin built a 24/7 retail agent with GPT-Realtime",
+        "link": "https://openai.com/index/avatarin",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How enabling two settings tripled our scores on the ARC-AGI-3 benchmark",
+        "link": "https://openai.com/index/how-two-settings-tripled-our-arc-agi-3-scores",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Accelerating scientific discovery with ChatGPT for Academic Researchers",
+        "link": "https://openai.com/index/chatgpt-for-academic-researchers",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Scientific computing in the age of agentic AI",
+        "link": "https://openai.com/index/scientific-computing-agentic-ai",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How AI is expanding what people do at work",
+        "link": "https://openai.com/index/how-ai-is-expanding-what-people-do-at-work",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Launching Health in ChatGPT",
+        "link": "https://openai.com/index/health-in-chatgpt",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Building AI infrastructure with the Effingham County community",
+        "link": "https://openai.com/index/building-ai-infrastructure-with-the-effingham-county-community",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Advancing the next era of national science",
+        "link": "https://openai.com/index/advancing-the-next-era-of-national-science",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "NTT DATA Group cuts incident analysis to 30 minutes with Codex",
+        "link": "https://openai.com/index/ntt-data",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing the ChatGPT for small business program",
+        "link": "https://openai.com/index/introducing-chatgpt-small-business-program",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "WeatherNext: AI model achieves breakthrough in forecasting cyclones",
+        "link": "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini Robotics ER 2: powering robotics with video understanding, task orchestration, and multi-robot collaboration",
+        "link": "https://deepmind.google/blog/gemini-robotics-er-2-powering-robotics-with-video-understanding-task-orchestration-and-multi-robot-collaboration/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re launching Lyria 3.5 in Google Flow Music, with advances across musicality, lyrics, vocals, and creative control",
+        "link": "https://deepmind.google/blog/were-launching-lyria-35-in-google-flow-music-with-advances-across-musicality-lyrics-vocals-and-creative-control/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini Robotics 2 brings whole body intelligence to robots",
+        "link": "https://deepmind.google/blog/gemini-robotics-2-brings-whole-body-intelligence-to-robots/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Accelerating the frontiers of scientific discovery: Google’s $40M commitment to the Genesis Mission",
+        "link": "https://deepmind.google/blog/accelerating-the-frontiers-of-scientific-discovery-googles-40m-commitment-to-the-genesis-mission/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
+        "link": "https://deepmind.google/blog/introducing-gemini-3-6-flash-3-5-flash-lite-and-3-5-flash-cyber/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Our approach to bioresilience",
+        "link": "https://deepmind.google/blog/our-approach-to-bioresilience/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Empowering India’s next generation of innovators with ATL Saathi",
+        "link": "https://deepmind.google/blog/empowering-indias-next-generation-of-innovators-with-atl-saathi/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Google DeepMind and A24 announce first-of-its-kind research partnership",
+        "link": "https://deepmind.google/blog/google-deepmind-and-a24-announce-first-of-its-kind-research-partnership/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Unlocking UK house-building with AI-accelerated planning",
+        "link": "https://deepmind.google/blog/unlocking-uk-house-building-with-ai-accelerated-planning/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Securing the future of AI agents",
+        "link": "https://deepmind.google/blog/securing-the-future-of-ai-agents/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Investing in multi-agent AI safety research",
+        "link": "https://deepmind.google/blog/investing-in-multi-agent-ai-safety-research/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Gemma 4 12B: a unified, encoder-free multimodal model",
+        "link": "https://deepmind.google/blog/introducing-gemma-4-12b-a-unified-encoder-free-multimodal-model/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Measuring the impact of learning with AI in Sierra Leone and beyond",
+        "link": "https://deepmind.google/blog/measuring-the-impact-of-learning-with-ai-in-sierra-leone-and-beyond/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re launching the Google DeepMind Accelerator program in Asia Pacific to tackle environmental risks",
+        "link": "https://deepmind.google/blog/were-launching-the-google-deepmind-accelerator-program-in-asia-pacific-to-tackle-environmental-risks/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Fast-tracking genetic leads to reverse cellular aging",
+        "link": "https://deepmind.google/blog/fast-tracking-genetic-leads-to-reverse-cellular-aging/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Simulate real-world places with Project Genie and Street View",
+        "link": "https://deepmind.google/blog/simulate-real-world-places-with-project-genie-and-street-view/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Gemini Omni",
+        "link": "https://deepmind.google/blog/introducing-gemini-omni/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing Google Antigravity 2.0",
+        "link": "https://deepmind.google/blog/introducing-google-antigravity-2-0/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini for Science: AI experiments and tools for a new era of discovery",
+        "link": "https://deepmind.google/blog/gemini-for-science-ai-experiments-and-tools-for-a-new-era-of-discovery/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Making it easier to understand how content was created and edited",
+        "link": "https://deepmind.google/blog/making-it-easier-to-understand-how-content-was-created-and-edited/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Strengthening Singapore’s AI Future: A New National Partnership",
+        "link": "https://deepmind.google/blog/strengthening-singapores-ai-future-a-new-national-partnership/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Finding the molecular switches behind new infectious diseases",
+        "link": "https://deepmind.google/blog/finding-the-molecular-switches-behind-new-infectious-diseases/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Opening new paths in aging research",
+        "link": "https://deepmind.google/blog/opening-new-paths-in-aging-research/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gemini API Managed Agents: 3.6 Flash, hooks, and more",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api-3-6-flash-hooks/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "5 ways to host the ultimate dinner party with Google Search",
+        "link": "https://blog.google/products-and-platforms/products/search/dinner-party-hosting-tips/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Connect more of your apps to Search",
+        "link": "https://blog.google/products-and-platforms/products/search/connected-apps/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Create, edit and star in videos with two Google Vids updates",
+        "link": "https://blog.google/products-and-platforms/products/workspace/gemini-omni-personal-avatars/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Celebrating 25 years of visual search innovation",
+        "link": "https://blog.google/products-and-platforms/products/search/google-images-25th-anniversary/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "New York City educators and industry leaders gathered at Google’s offices to shape the future of AI in classrooms.",
+        "link": "https://blog.google/products-and-platforms/products/education/nyc-ai-summit/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Unlocking Britain’s next era of productivity: Building a nation of AI trailblazers",
+        "link": "https://blog.google/company-news/inside-google/around-the-globe/google-europe/united-kingdom/unlocking-britains-next-era-of-productivity-building-a-nation-of-ai-trailblazers/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Ask an AI expert: What exactly is the full stack?",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/full-stack-ai-explainer/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Our latest Google Finance upgrades, including a new app",
+        "link": "https://blog.google/products-and-platforms/products/search/google-finance-updates-june-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "New research shows how AMIE, our medical AI, could help manage health conditions.",
+        "link": "https://blog.google/innovation-and-ai/models-and-research/google-research/amie-for-disease-management-in-nature/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "We’re strengthening our presence in Alabama through new investments and community support.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/alabama-investment-june-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Our new community investments in Virginia support local jobs and expand energy affordability.",
+        "link": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/virginia-community-investments/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "The latest AI news we announced in May 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-may-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "5 ways Google Search can level up your thrift and vintage shopping",
+        "link": "https://blog.google/products-and-platforms/products/search/thrifting-tips/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "TutorMoments: Do AI tutors know when to help and when to hold back?",
+        "link": "https://huggingface.co/blog/allenai/tutormoments",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Baseten on Hugging Face Inference Providers 🔥",
+        "link": "https://huggingface.co/blog/baseten",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GPU Management: Why Idle GPUs Are the New Grounded Aircraft",
+        "link": "https://huggingface.co/blog/Dharma-AI/gpu-management",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "NVIDIA Cosmos-H-Dreams: Bringing Real-Time Generative Simulation to Surgical Robotics",
+        "link": "https://huggingface.co/blog/nvidia/cosmos-h-dreams",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident",
+        "link": "https://huggingface.co/blog/agent-intrusion-technical-timeline",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Bringing Nunchaku 4-bit Diffusion Inference to Diffusers",
+        "link": "https://huggingface.co/blog/nunchaku-diffusers",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Grabette: an open system to record robot-manipulation data",
+        "link": "https://huggingface.co/blog/grabette",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Newer Models, Same Advantage",
+        "link": "https://huggingface.co/blog/Dharma-AI/newer-models-same-advantages",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Security incident disclosure — July 2026",
+        "link": "https://huggingface.co/blog/security-incident-july-2026",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Model Routing Is Simple. Until It Isn’t.",
+        "link": "https://huggingface.co/blog/ibm-research/model-routing-is-simple-until-it-isnt",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Welcome Inkling by Thinking Machines",
+        "link": "https://huggingface.co/blog/thinkingmachines-inkling",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Profiling in PyTorch (Part 3): Attention is all you profile",
+        "link": "https://huggingface.co/blog/torch-attention-profile",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Native-speed vLLM transformers modeling backend",
+        "link": "https://huggingface.co/blog/native-speed-vllm-transformers-backend",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Run AI workloads on any cloud, store on Hugging Face: zero-egress storage with SkyPilot",
+        "link": "https://huggingface.co/blog/skypilot-hf-storage",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "LeRobot v0.6.0: Imagine, Evaluate, Improve",
+        "link": "https://huggingface.co/blog/lerobot-release-v060",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "PRX Part 4: Our Data Strategy",
+        "link": "https://huggingface.co/blog/Photoroom/prx-part4-data",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Hugging Face and Cerebras bring Gemma 4 to real-time voice AI",
+        "link": "https://huggingface.co/blog/cerebras-gemma4-voice-ai",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Why Specialization Is Inevitable",
+        "link": "https://huggingface.co/blog/Dharma-AI/why-specialization-is-inevitable",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Featuring Every Eval Ever Results on Hugging Face Model Pages",
+        "link": "https://huggingface.co/blog/eee-community-evals",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DiScoFormer: One transformer for density and score, across distributions",
+        "link": "https://huggingface.co/blog/allenai/discoformer",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Run a vLLM Server on HF Jobs in One Command",
+        "link": "https://huggingface.co/blog/vllm-jobs",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Accelerating Transformers Fine-Tuning with NVIDIA NeMo AutoModel",
+        "link": "https://huggingface.co/blog/nvidia/accelerating-fine-tuning-nvidia-nemo-automodel",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Introducing the FFASR Leaderboard: Benchmarking ASR in the Real World",
+        "link": "https://huggingface.co/blog/ffasr-leaderboard",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Shipping huggingface_hub every week with AI, open tools, and a human in the loop",
+        "link": "https://huggingface.co/blog/huggingface-hub-release-ci",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Planned Amazon data center could become the biggest climate polluter in the U.S.",
+        "link": "https://techcrunch.com/2026/08/08/planned-amazon-data-center-could-become-the-biggest-climate-polluter-in-the-u-s/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "OpenAI acquires presentation startup NextSlide",
+        "link": "https://techcrunch.com/2026/08/08/openai-acquires-presentation-startup-nextslide/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "New Mexico court orders Meta to pay additional $567M in child safety case",
+        "link": "https://techcrunch.com/2026/08/07/new-mexico-court-orders-meta-to-pay-additional-567m-in-child-safety-case/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "OpenAI’s new AI smart speaker will reportedly sell for between $300 and $400",
+        "link": "https://techcrunch.com/2026/08/06/openais-new-ai-smart-speaker-will-reportedly-sell-for-between-300-and-400/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "ChatGPT brings unlimited text chats to free users",
+        "link": "https://techcrunch.com/2026/08/06/openai-brings-unlimited-chatgpt-text-chats-to-free-users/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Naïve raises $28.5M to automate the grunt work of setting up and running a company",
+        "link": "https://techcrunch.com/2026/08/06/naive-raises-28-5m-to-automate-the-grunt-work-of-setting-up-and-running-a-company/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Gen Z dating apps like Ditto ditch swiping in favor of AI matchmaking",
+        "link": "https://techcrunch.com/2026/08/06/gen-z-dating-apps-like-ditto-ditch-swiping-in-favor-of-ai-matchmaking/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Amid legal battles, Suno says it will start watermarking songs",
+        "link": "https://techcrunch.com/2026/08/06/amid-legal-battles-suno-says-it-will-start-watermarking-songs/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Ex-Spotify employees raise $10M to bring the AI behind its recommendations to e-commerce",
+        "link": "https://techcrunch.com/2026/08/06/ex-spotify-employees-raise-10m-to-bring-the-ai-behind-its-recommendations-to-e-commerce/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Google just redesigned the search box for the first time in 25 years — here’s why it matters more than you think.",
+        "link": "https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Claude Code costs up to $200 a month. Goose does the same thing for free.",
+        "link": "https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Listen Labs raises $69M after viral billboard hiring stunt to scale AI customer interviews",
+        "link": "https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Salesforce rolls out new Slackbot AI agent as it battles Microsoft and Google in workplace AI",
+        "link": "https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Nous Research's NousCoder-14B is an open-source coding model landing right in the Claude Code moment",
+        "link": "https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "ByteDance Introduces Astra: A Dual-Model Architecture for Autonomous Robot Navigation",
+        "link": "https://syncedreview.com/2025/06/24/bytedance-introduces-astra-a-dual-model-architecture-for-autonomous-robot-navigation/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "MIT Researchers Unveil “SEAL”: A New Step Towards Self-Improving AI",
+        "link": "https://syncedreview.com/2025/06/16/mit-researchers-unveil-seal-a-new-step-towards-self-improving-ai/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution",
+        "link": "https://syncedreview.com/2025/06/16/researchers-from-psu-and-duke-introduce-multi-agent-systems-automated-failure-attribution/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Adobe Research Unlocking Long-Term Memory in Video World Models with State-Space Models",
+        "link": "https://syncedreview.com/2025/05/28/adobe-research-unlocking-long-term-memory-in-video-world-models-with-state-space-models/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DeepSeek-V3 New Paper is coming! Unveiling the Secrets of Low-Cost Large Model Training through Hardware-Aware Co-design",
+        "link": "https://syncedreview.com/2025/05/15/deepseek-v3-new-paper-is-coming-unveiling-the-secrets-of-low-cost-large-model-training-through-hardware-aware-co-design/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "DeepSeek Unveils DeepSeek-Prover-V2: Advancing Neural Theorem Proving with Recursive Proof Search and a New Benchmark",
+        "link": "https://syncedreview.com/2025/04/30/deepseek-unveils-deepseek-prover-v2-advancing-neural-theorem-proving-with-recursive-proof-search-and-a-new-benchmark/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Can GRPO be 10x Efficient? Kwai AI’s SRPO Suggests Yes with SRPO",
+        "link": "https://syncedreview.com/2025/04/23/can-grpo-be-10x-efficient-kwai-ais-srpo-suggests-yes-with-srpo/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Zhipu.AI’s Open-Source Power Play: Blazing-Fast GLM Models & Global Expansion Ahead of Potential IPO",
+        "link": "https://syncedreview.com/2025/04/16/zhipu-ais-open-source-power-play-blazing-fast-glm-models-global-expansion-ahead-of-potential-ipo/",
+        "source": "Synced Review",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "How to organize 3 acquired companies into one coherent website",
+        "link": "https://littlelanguagemodels.com/how-to-structure-your-sites-after-a-big-acquisition/",
+        "source": "Hacker News",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "GPT-5.6和Fable联手，解决了一道悬了25年的数学难题",
+        "link": "https://www.qbitai.com/2026/08/468913.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2138,
+        "threshold": 0.2,
+        "matched_story_title": "GPT-5.6 vs. Claude Fable 5 for Physical AI, which performs best?",
+        "matched_episode_id": "2026-07-30",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'GPT-5.6 vs. Claude Fable 5 for Physical AI, which performs best?' from 2026-07-30."
+      },
+      {
+        "title": "Opus 5狂烧6.9亿token做游戏，GPT-5.6用5美元复刻了",
+        "link": "https://www.qbitai.com/2026/08/468766.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3032,
+        "threshold": 0.2,
+        "matched_story_title": "GPT-5.6今起大降价，最大幅度80%！",
+        "matched_episode_id": "2026-08-01",
+        "detail": "TF-IDF similarity (0.30) >= threshold (0.20) with historical story 'GPT-5.6今起大降价，最大幅度80%！' from 2026-08-01."
+      },
+      {
+        "title": "爆料：哈萨比斯原本要和Jeff Dean一起走！",
+        "link": "https://www.qbitai.com/2026/08/468715.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3585,
+        "threshold": 0.2,
+        "matched_story_title": "这人谁啊？哈萨比斯都让位了",
+        "matched_episode_id": "2026-08-07",
+        "detail": "TF-IDF similarity (0.36) >= threshold (0.20) with historical story '这人谁啊？哈萨比斯都让位了' from 2026-08-07."
+      },
+      {
+        "title": "奥特曼的ChatGPT育儿大法，捅了马蜂窝",
+        "link": "https://www.qbitai.com/2026/08/468631.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "奥特曼的ChatGPT育儿大法，捅了马蜂窝",
+        "matched_episode_id": "2026-08-09",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story '奥特曼的ChatGPT育儿大法，捅了马蜂窝' from 2026-08-09."
+      },
+      {
+        "title": "中国NeoLab时刻：EverMind用3篇论文，交出全栈自进化首份答卷",
+        "link": "https://www.qbitai.com/2026/08/468555.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 1.0,
+        "threshold": 0.2,
+        "matched_story_title": "中国NeoLab时刻：EverMind用3篇论文，交出全栈自进化首份答卷",
+        "matched_episode_id": "2026-08-09",
+        "detail": "TF-IDF similarity (1.00) >= threshold (0.20) with historical story '中国NeoLab时刻：EverMind用3篇论文，交出全栈自进化首份答卷' from 2026-08-09."
+      },
+      {
+        "title": "Jeff Dean创业BP曝光，杨植麟也在上面！硅谷VC抢破头送钱",
+        "link": "https://www.qbitai.com/2026/08/468498.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2607,
+        "threshold": 0.2,
+        "matched_story_title": "没有人靠段子永载GitHub，除非谷歌姐夫",
+        "matched_episode_id": "2026-08-07",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story '没有人靠段子永载GitHub，除非谷歌姐夫' from 2026-08-07."
+      },
+      {
+        "title": "谷歌急了：AI核心员工全给我搬回硅谷坐班！",
+        "link": "https://www.qbitai.com/2026/08/468398.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3321,
+        "threshold": 0.2,
+        "matched_story_title": "这人谁啊？哈萨比斯都让位了",
+        "matched_episode_id": "2026-08-07",
+        "detail": "TF-IDF similarity (0.33) >= threshold (0.20) with historical story '这人谁啊？哈萨比斯都让位了' from 2026-08-07."
+      },
+      {
+        "title": "本周看什么 | 最近值得一看的 10 部作品",
+        "link": "https://sspai.com/post/113191",
+        "source": "少数派",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3849,
+        "threshold": 0.2,
+        "matched_story_title": "本周看什么 | 最近值得一看的 10 部作品",
+        "matched_episode_id": "2026-08-02",
+        "detail": "TF-IDF similarity (0.38) >= threshold (0.20) with historical story '本周看什么 | 最近值得一看的 10 部作品' from 2026-08-02."
+      },
+      {
+        "title": "Improving GPT‑5.6 Sol in ChatGPT—and expanding access to GPT-5.6 Luna for free users",
+        "link": "https://openai.com/index/improving-gpt-5-6-sol-in-chatgpt",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4033,
+        "threshold": 0.2,
+        "matched_story_title": "ChatGPT brings unlimited text chats to free users",
+        "matched_episode_id": "2026-08-07",
+        "detail": "TF-IDF similarity (0.40) >= threshold (0.20) with historical story 'ChatGPT brings unlimited text chats to free users' from 2026-08-07."
+      },
+      {
+        "title": "From asking to doing: How the world is putting ChatGPT to work",
+        "link": "https://openai.com/index/how-the-world-is-putting-chatgpt-to-work",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2657,
+        "threshold": 0.2,
+        "matched_story_title": "How AI is expanding what people do at work",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.27) >= threshold (0.20) with historical story 'How AI is expanding what people do at work' from 2026-07-28."
+      },
+      {
+        "title": "New ways to learn and teach with ChatGPT Work and Codex",
+        "link": "https://openai.com/index/learn-teach-chatgpt-work-codex",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2101,
+        "threshold": 0.2,
+        "matched_story_title": "Getting started with ChatGPT",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Getting started with ChatGPT' from 2026-07-31."
+      },
+      {
+        "title": "How GPT-5.6 fuses frontier intelligence with frontier efficiency",
+        "link": "https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2712,
+        "threshold": 0.2,
+        "matched_story_title": "Advancing the price-performance frontier with GPT‑5.6",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.27) >= threshold (0.20) with historical story 'Advancing the price-performance frontier with GPT‑5.6' from 2026-07-31."
+      },
+      {
+        "title": "OpenAI and Hugging Face partner to address security incident during model evaluation",
+        "link": "https://openai.com/index/hugging-face-model-evaluation-security-incident",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2177,
+        "threshold": 0.2,
+        "matched_story_title": "Sam Altman is ready to decelerate",
+        "matched_episode_id": "2026-07-29",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Sam Altman is ready to decelerate' from 2026-07-29."
+      },
+      {
+        "title": "Introducing Gemini 3.5 Flash Cyber",
+        "link": "https://deepmind.google/blog/introducing-gemini-3-5-flash-cyber/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.6156,
+        "threshold": 0.2,
+        "matched_story_title": "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.62) >= threshold (0.20) with historical story 'Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber' from 2026-07-28."
+      },
+      {
+        "title": "Start building with Nano Banana 2 Lite and Gemini Omni Flash",
+        "link": "https://deepmind.google/blog/start-building-with-nano-banana-2-lite-and-gemini-omni-flash/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4455,
+        "threshold": 0.2,
+        "matched_story_title": "Introducing Gemini Omni",
+        "matched_episode_id": "2026-08-04",
+        "detail": "TF-IDF similarity (0.45) >= threshold (0.20) with historical story 'Introducing Gemini Omni' from 2026-08-04."
+      },
+      {
+        "title": "Introducing computer use in Gemini 3.5 Flash",
+        "link": "https://deepmind.google/blog/introducing-computer-use-in-gemini-3-5-flash/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.5454,
+        "threshold": 0.2,
+        "matched_story_title": "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.55) >= threshold (0.20) with historical story 'Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber' from 2026-07-28."
+      },
+      {
+        "title": "DiffusionGemma: 4x faster text generation",
+        "link": "https://deepmind.google/blog/diffusiongemma-4x-faster-text-generation/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2287,
+        "threshold": 0.2,
+        "matched_story_title": "From Profiles to Steering Vectors: Global Sparse Priors and Local Semantic Calibration for Personalized Text Generation",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'From Profiles to Steering Vectors: Global Sparse Priors and Local Semantic Calibration for Personalized Text Generation' from 2026-07-28."
+      },
+      {
+        "title": "Fluid, natural voice translation with Gemini 3.5 Live Translate",
+        "link": "https://deepmind.google/blog/fluid-natural-voice-translation-with-gemini-35-live-translate/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2293,
+        "threshold": 0.2,
+        "matched_story_title": "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber' from 2026-07-28."
+      },
+      {
+        "title": "Powering the future of robotics in Europe",
+        "link": "https://deepmind.google/blog/powering-the-future-of-robotics-in-europe/",
+        "source": "DeepMind Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.352,
+        "threshold": 0.2,
+        "matched_story_title": "Gemini Robotics ER 2: powering robotics with video understanding, task orchestration, and multi-robot collaboration",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.35) >= threshold (0.20) with historical story 'Gemini Robotics ER 2: powering robotics with video understanding, task orchestration, and multi-robot collaboration' from 2026-07-31."
+      },
+      {
+        "title": "The latest AI news we announced in July 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-july-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2782,
+        "threshold": 0.2,
+        "matched_story_title": "The latest AI news we announced in May 2026",
+        "matched_episode_id": "2026-07-27",
+        "detail": "TF-IDF similarity (0.28) >= threshold (0.20) with historical story 'The latest AI news we announced in May 2026' from 2026-07-27."
+      },
+      {
+        "title": "Inside our 353,000-person vibe coding course",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/ai-agents-intensive-recap-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2088,
+        "threshold": 0.2,
+        "matched_story_title": "Take our I/O 2026 quiz, vibe coded in Google AI Studio.",
+        "matched_episode_id": "2026-07-27",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Take our I/O 2026 quiz, vibe coded in Google AI Studio.' from 2026-07-27."
+      },
+      {
+        "title": "5 ways AI Mode in Search helps you enjoy the real world",
+        "link": "https://blog.google/products-and-platforms/products/search/ai-mode-real-world-tips/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2159,
+        "threshold": 0.2,
+        "matched_story_title": "Connect more of your apps to Search",
+        "matched_episode_id": "2026-08-01",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Connect more of your apps to Search' from 2026-08-01."
+      },
+      {
+        "title": "Expanding Managed Agents in Gemini API: background tasks, remote MCP and more",
+        "link": "https://blog.google/innovation-and-ai/technology/developers-tools/expanding-managed-agents-gemini-api/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4925,
+        "threshold": 0.2,
+        "matched_story_title": "Gemini API Managed Agents: 3.6 Flash, hooks, and more",
+        "matched_episode_id": "2026-07-29",
+        "detail": "TF-IDF similarity (0.49) >= threshold (0.20) with historical story 'Gemini API Managed Agents: 3.6 Flash, hooks, and more' from 2026-07-29."
+      },
+      {
+        "title": "The latest AI news we announced in June 2026",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-june-2026/",
+        "source": "Google AI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.241,
+        "threshold": 0.2,
+        "matched_story_title": "Unlocking UK house-building with AI-accelerated planning",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'Unlocking UK house-building with AI-accelerated planning' from 2026-07-31."
+      },
+      {
+        "title": "Deploy local agents everywhere with LFM2.5-2.6B",
+        "link": "https://huggingface.co/blog/LiquidAI/lfm2-5-2-6b",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2905,
+        "threshold": 0.2,
+        "matched_story_title": "LFM2.5-Encoders for Fast Long-Context Inference on CPU",
+        "matched_episode_id": "2026-07-29",
+        "detail": "TF-IDF similarity (0.29) >= threshold (0.20) with historical story 'LFM2.5-Encoders for Fast Long-Context Inference on CPU' from 2026-07-29."
+      },
+      {
+        "title": "Introducing Real World VoiceEQ: Measuring the human quality of voice AI",
+        "link": "https://huggingface.co/blog/real-world-voiceeq",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2754,
+        "threshold": 0.2,
+        "matched_story_title": "Hugging Face and Cerebras bring Gemma 4 to real-time voice AI",
+        "matched_episode_id": "2026-08-07",
+        "detail": "TF-IDF similarity (0.28) >= threshold (0.20) with historical story 'Hugging Face and Cerebras bring Gemma 4 to real-time voice AI' from 2026-08-07."
+      },
+      {
+        "title": "From Hugging Face to Amazon SageMaker Studio in one click",
+        "link": "https://huggingface.co/blog/amazon/one-click-to-sagemaker-studio",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2115,
+        "threshold": 0.2,
+        "matched_story_title": "Baseten on Hugging Face Inference Providers 🔥",
+        "matched_episode_id": "2026-08-07",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Baseten on Hugging Face Inference Providers 🔥' from 2026-08-07."
+      },
+      {
+        "title": "Hugging Face Models on Foundry Managed Compute",
+        "link": "https://huggingface.co/blog/microsoft/foundry-managed-compute",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2771,
+        "threshold": 0.2,
+        "matched_story_title": "Featuring Every Eval Ever Results on Hugging Face Model Pages",
+        "matched_episode_id": "2026-08-07",
+        "detail": "TF-IDF similarity (0.28) >= threshold (0.20) with historical story 'Featuring Every Eval Ever Results on Hugging Face Model Pages' from 2026-08-07."
+      },
+      {
+        "title": "ScarfBench: Benchmarking AI Agents for Enterprise Java Framework Migration",
+        "link": "https://huggingface.co/blog/ibm-research/scarfbench",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2632,
+        "threshold": 0.2,
+        "matched_story_title": "LeafData: An Agentic System for Data Migration",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'LeafData: An Agentic System for Data Migration' from 2026-07-28."
+      },
+      {
+        "title": "Embattled hedge fund Situational Awareness invests $400M in chip startup Source Foundry",
+        "link": "https://techcrunch.com/2026/08/09/embattled-hedge-fund-situational-awareness-invests-400m-in-chip-startup-source-foundry/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4075,
+        "threshold": 0.2,
+        "matched_story_title": "AI hedge fund Situational Awareness may have sold its public portfolio, but it still has its Anthropic shares",
+        "matched_episode_id": "2026-08-01",
+        "detail": "TF-IDF similarity (0.41) >= threshold (0.20) with historical story 'AI hedge fund Situational Awareness may have sold its public portfolio, but it still has its Anthropic shares' from 2026-08-01."
+      },
+      {
+        "title": "OpenAI says it slowed Astra model development over security concerns",
+        "link": "https://techcrunch.com/2026/08/07/openai-says-it-slowed-astra-model-development-over-security-concerns/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2541,
+        "threshold": 0.2,
+        "matched_story_title": "Microsoft launches its first cybersecurity model, plus a new agentic cybersecurity system",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'Microsoft launches its first cybersecurity model, plus a new agentic cybersecurity system' from 2026-07-28."
+      },
+      {
+        "title": "After Rippling blew millions on AI in months, it built an employee ROI tool",
+        "link": "https://techcrunch.com/2026/08/07/after-rippling-blew-millions-on-ai-in-months-it-built-an-employee-roi-tool/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3404,
+        "threshold": 0.2,
+        "matched_story_title": "MCP startup Runlayer accuses Rippling of stealing its product idea",
+        "matched_episode_id": "2026-07-29",
+        "detail": "TF-IDF similarity (0.34) >= threshold (0.20) with historical story 'MCP startup Runlayer accuses Rippling of stealing its product idea' from 2026-07-29."
+      },
+      {
+        "title": "Cloudflare launches Kitesurf, a browser built for AI agents",
+        "link": "https://techcrunch.com/2026/08/07/cloudflare-launches-kitesurf-a-browser-built-for-ai-agents/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3116,
+        "threshold": 0.2,
+        "matched_story_title": "Kitesurf: Agent-first browser that runs in V8 isolates",
+        "matched_episode_id": "2026-08-08",
+        "detail": "TF-IDF similarity (0.31) >= threshold (0.20) with historical story 'Kitesurf: Agent-first browser that runs in V8 isolates' from 2026-08-08."
+      },
+      {
+        "title": "Airbnb says AI is helping it ship features faster as it tests a new search function",
+        "link": "https://techcrunch.com/2026/08/07/airbnb-says-ai-is-helping-it-ship-features-faster-as-it-tests-a-new-search-function/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2096,
+        "threshold": 0.2,
+        "matched_story_title": "Shopify says AI search is driving more traffic and sales, not replacing Google",
+        "matched_episode_id": "2026-08-06",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Shopify says AI search is driving more traffic and sales, not replacing Google' from 2026-08-06."
+      },
+      {
+        "title": "OpenAI says Apple’s own security practices undermine its trade secrets case",
+        "link": "https://techcrunch.com/2026/08/06/openai-says-apples-own-security-practices-undermine-its-trade-secrets-case/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4376,
+        "threshold": 0.2,
+        "matched_story_title": "Apple says more ex-employees may have taken confidential data to OpenAI",
+        "matched_episode_id": "2026-08-05",
+        "detail": "TF-IDF similarity (0.44) >= threshold (0.20) with historical story 'Apple says more ex-employees may have taken confidential data to OpenAI' from 2026-08-05."
+      },
+      {
+        "title": "Exclusive: Mirendil inks $100M+ Google Cloud deal to scale self-improving AI",
+        "link": "https://techcrunch.com/2026/08/06/exclusive-mirendil-inks-100m-google-cloud-deal-to-scale-self-improving-ai/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3152,
+        "threshold": 0.2,
+        "matched_story_title": "Recursive Superintelligence signs $410M compute deal with Amazon",
+        "matched_episode_id": "2026-07-29",
+        "detail": "TF-IDF similarity (0.32) >= threshold (0.20) with historical story 'Recursive Superintelligence signs $410M compute deal with Amazon' from 2026-07-29."
+      },
+      {
+        "title": "Railway secures $100 million to challenge AWS with AI-native cloud infrastructure",
+        "link": "https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challenge-aws-with-ai-native-cloud",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2392,
+        "threshold": 0.2,
+        "matched_story_title": "Enigma raises $71M to make controlling a robot as easy as adjusting the volume",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'Enigma raises $71M to make controlling a robot as easy as adjusting the volume' from 2026-07-28."
+      },
+      {
+        "title": "Anthropic launches Cowork, a Claude Desktop agent that works in your files — no coding required",
+        "link": "https://venturebeat.com/technology/anthropic-launches-cowork-a-claude-desktop-agent-that-works-in-your-files-no",
+        "source": "VentureBeat AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2055,
+        "threshold": 0.2,
+        "matched_story_title": "PSA: Your Claude shared chats and Artifacts may have ended up on Google",
+        "matched_episode_id": "2026-07-28",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'PSA: Your Claude shared chats and Artifacts may have ended up on Google' from 2026-07-28."
+      },
+      {
+        "title": "Which Agent Causes Task Failures and When?Researchers from PSU and Duke explores automated failure attribution of LLM Multi-Agent Systems",
+        "link": "https://syncedreview.com/2025/08/14/which-agent-causes-task-failures-and-whenresearchers-from-psu-and-duke-explores-automated-failure-attribution-of-llm-multi-agent-systems/",
+        "source": "Synced Review",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.681,
+        "threshold": 0.2,
+        "matched_story_title": "Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.68) >= threshold (0.20) with historical story 'Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution' from 2026-07-31."
+      },
+      {
+        "title": "DeepSeek Signals Next-Gen R2 Model, Unveils Novel Approach to Scaling Inference with SPCT",
+        "link": "https://syncedreview.com/2025/04/11/deepseek-signals-next-gen-r2-model-unveils-novel-approach-to-scaling-inference-with-spct/",
+        "source": "Synced Review",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.285,
+        "threshold": 0.2,
+        "matched_story_title": "DeepSeek-V3 New Paper is coming! Unveiling the Secrets of Low-Cost Large Model Training through Hardware-Aware Co-design",
+        "matched_episode_id": "2026-07-31",
+        "detail": "TF-IDF similarity (0.28) >= threshold (0.20) with historical story 'DeepSeek-V3 New Paper is coming! Unveiling the Secrets of Low-Cost Large Model Training through Hardware-Aware Co-design' from 2026-07-31."
+      },
+      {
+        "title": "Mea Culpa – Dark Hours",
+        "link": "https://blog.terrygodier.com/2026/08/09/mea-culpa-dark-hours.html",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3308,
+        "threshold": 0.2,
+        "matched_story_title": "App Store Rejection of the Week: Dark Hours",
+        "matched_episode_id": "2026-08-08",
+        "detail": "TF-IDF similarity (0.33) >= threshold (0.20) with historical story 'App Store Rejection of the Week: Dark Hours' from 2026-08-08."
+      },
+      {
+        "title": "Windows 11's built-in Weather app wastes more than 1 GB of RAM",
+        "link": "https://www.notebookcheck.net/Windows-11-s-built-in-Weather-app-wastes-more-than-1-GB-of-RAM.1364205.0.html",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2297,
+        "threshold": 0.2,
+        "matched_story_title": "Show HN: Open-source engine running Gemma 4 26B in 2 GB RAM on any M-series Mac",
+        "matched_episode_id": "2026-07-30",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'Show HN: Open-source engine running Gemma 4 26B in 2 GB RAM on any M-series Mac' from 2026-07-30."
+      },
+      {
+        "title": "Ask HN: What are you working on? (August 2026)",
+        "link": "https://news.ycombinator.com/item?id=49233423",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2188,
+        "threshold": 0.2,
+        "matched_story_title": "Folding Paper Globes",
+        "matched_episode_id": "2026-08-03",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Folding Paper Globes' from 2026-08-03."
+      },
+      {
+        "title": "Show HN: A Project Oberon System version running on RISC-V instead of RISC-5",
+        "link": "https://github.com/rochus-keller/OberonSystem/tree/op2-rv32",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2592,
+        "threshold": 0.2,
+        "matched_story_title": "Twenty Years of RISC OS Open",
+        "matched_episode_id": "2026-08-03",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'Twenty Years of RISC OS Open' from 2026-08-03."
+      },
+      {
+        "title": "Conway's Game of Life, in real life",
+        "link": "https://lcamtuf.coredump.cx/blog/conway/",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2572,
+        "threshold": 0.2,
+        "matched_story_title": "Radical Study Suggests Life on Earth Arose Twice",
+        "matched_episode_id": "2026-08-08",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'Radical Study Suggests Life on Earth Arose Twice' from 2026-08-08."
+      }
+    ]
+  }
+}
