@@ -401,7 +401,10 @@
 
       // 5. 段落交替兜底：如果没有结构化数据，去掉XML标签，以空白行切分并交替赋予角色
       if (rawParagraphs.length === 0) {
-        var cleanText = text.replace(/<[^>]+>/g, '').trim();
+        var cleanText = text
+          .replace(/<[^>]+>/g, '')
+          .replace(/\[\s*(?:laughter|breath|cough|sigh|lipsmack|vocalized-noise)\s*\]/gi, '')
+          .trim();
         var textLines2 = cleanText.split(/\n+/);
         textLines2.forEach(function(line, idx) {
           var trimmed = line.trim();

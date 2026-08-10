@@ -82,7 +82,12 @@ def _annotate_text_in_batches(
                 break
 
             orig_clean = re.sub(r"[^\w\u4e00-\u9fff]+", "", orig_c.text)
-            ann_no_tags = re.sub(r"<[^>]+>", "", ann_c.text)
+            ann_no_tags = re.sub(
+                r"\[\s*(?:laughter|breath|cough|sigh|lipsmack|vocalized-noise)\s*\]",
+                "",
+                ann_c.text,
+                flags=re.IGNORECASE,
+            )
             ann_clean = re.sub(r"[^\w\u4e00-\u9fff]+", "", ann_no_tags)
 
             # 严格防止正文被大模型删改缩减（若去标签字数减少超过 20%，说明大模型改词或吞字了）
@@ -125,7 +130,11 @@ async def synthesize(
     import re
 
     # Check if script already has paralinguistic tags. If not, auto-annotate using Director Agent
-    if not re.search(r"<[^>]+>", text):
+    if not re.search(
+        r"\[\s*(?:laughter|breath|cough|sigh|lipsmack|vocalized-noise)\s*\]",
+        text,
+        flags=re.IGNORECASE,
+    ):
         log.info("未检测到情感标签，正在启动 Director Agent 切段标注与无损校验机制...")
         cfg = kwargs.get("cfg")
         if cfg:

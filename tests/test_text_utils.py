@@ -232,13 +232,16 @@ class TestRegexConstants:
         assert RE_MOOD_TAG.search("[mood:happy]")
         assert RE_MOOD_TAG.search("[mood:sad]")
 
-    def test_re_non_host_bracket_preserves_host(self) -> None:
-        m = RE_NON_HOST_BRACKET.search("[Host A]")
-        assert m is None
-        m = RE_NON_HOST_BRACKET.search("[Host B]")
-        assert m is None
-        m = RE_NON_HOST_BRACKET.search("[other]")
-        assert m is not None
+    def test_re_non_host_bracket_preserves_host_and_cosyvoice_tokens(self) -> None:
+        assert RE_NON_HOST_BRACKET.search("[Host A]") is None
+        assert RE_NON_HOST_BRACKET.search("[Host B]") is None
+        assert RE_NON_HOST_BRACKET.search("[laughter]") is None
+        assert RE_NON_HOST_BRACKET.search("[breath]") is None
+        assert RE_NON_HOST_BRACKET.search("[cough]") is None
+        assert RE_NON_HOST_BRACKET.search("[sigh]") is None
+        assert RE_NON_HOST_BRACKET.search("[lipsmack]") is None
+        assert RE_NON_HOST_BRACKET.search("[vocalized-noise]") is None
+        assert RE_NON_HOST_BRACKET.search("[other]") is not None
 
 
 class TestStripTtsTags:
@@ -246,8 +249,9 @@ class TestStripTtsTags:
         "input_text,expected",
         [
             ("你好<breath/>世界", "你好世界"),
-            ("大笑<laughing>哈哈哈哈</laughing>测试", "大笑哈哈哈哈测试"),
-            ("文字<strong>加粗</strong>格式", "文字加粗格式"),
+            ("你好[breath]世界", "你好世界"),
+            ("大笑[laughter]哈哈哈哈测试", "大笑哈哈哈哈测试"),
+            ("咳嗽[cough]叹气[sigh]咂嘴[lipsmack]", "咳嗽叹气咂嘴"),
             ("没有标签的正常对话", "没有标签的正常对话"),
             ('<speak><voice name="test">内容</voice></speak>', "内容"),
         ],
