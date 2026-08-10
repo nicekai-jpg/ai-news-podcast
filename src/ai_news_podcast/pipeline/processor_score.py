@@ -112,6 +112,19 @@ def _score_cluster(cluster: Cluster) -> dict[str, int]:
             "openai",
             "anthropic",
             "deepmind",
+            "grok",
+            "xai",
+            "nvidia",
+            "英伟达",
+            "mistral",
+            "llama",
+            "混元",
+            "hunyuan",
+            "bytedance",
+            "internlm",
+            "书生",
+            "ernie",
+            "文心",
         )
     )
 

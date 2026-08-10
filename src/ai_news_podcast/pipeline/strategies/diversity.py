@@ -101,6 +101,14 @@ class DiversityStrategy(MaterialSelectionStrategy):
         "通义": "通义千问",
         "baichuan": "百川",
         "百川": "百川",
+        "grok": "xAI",
+        "xai": "xAI",
+        "mistral": "Mistral",
+        "llama": "Meta",
+        "hunyuan": "腾讯",
+        "bytedance": "字节跳动",
+        "internlm": "上海AI Lab",
+        "ernie": "百度",
     }
 
     def _get_story_entities(self, story: dict[str, Any]) -> set[str]:
