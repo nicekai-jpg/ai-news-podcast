@@ -85,8 +85,56 @@ sources:
     url: "http://export.arxiv.org/api/query?search_query=abs:MiniMax&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
+  - name: "Anthropic / Claude 技术论文源"
+    url: "http://export.arxiv.org/api/query?search_query=abs:Anthropic+OR+ti:Claude&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: "research"
+    enabled: true
+  - name: "Grok / xAI 技术论文源"
+    url: "http://export.arxiv.org/api/query?search_query=abs:xAI+OR+ti:Grok&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: "research"
+    enabled: true
+  - name: "NVIDIA 官方博客"
+    url: "https://blogs.nvidia.com/feed/"
+    category: "official"
+    enabled: true
+  - name: "Apple ML Research"
+    url: "https://machinelearning.apple.com/rss.xml"
+    category: "official"
+    enabled: true
+  - name: "Microsoft Research AI"
+    url: "https://www.microsoft.com/en-us/research/feed/"
+    category: "official"
+    enabled: true
+  - name: "Mistral & Meta Llama 技术论文源"
+    url: "http://export.arxiv.org/api/query?search_query=abs:Mistral+OR+abs:Mixtral+OR+abs:Llama&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: "research"
+    enabled: true
+  - name: "腾讯混元技术源"
+    url: "http://export.arxiv.org/api/query?search_query=abs:Hunyuan&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: "research"
+    enabled: true
+  - name: "字节跳动 AI Lab 技术源"
+    url: "http://export.arxiv.org/api/query?search_query=abs:ByteDance+OR+abs:Seed-TTS&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: "research"
+    enabled: true
+  - name: "上海 AI Lab (书生/InternLM) 技术源"
+    url: "http://export.arxiv.org/api/query?search_query=abs:InternLM&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: "research"
+    enabled: true
+  - name: "百度文心 ERNIE 技术源"
+    url: "http://export.arxiv.org/api/query?search_query=abs:ERNIE+OR+abs:PaddlePaddle&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: "research"
+    enabled: true
   - name: "arXiv 计算与语言 (cs.CL)"
     url: "http://export.arxiv.org/api/query?search_query=cat:cs.CL&sortBy=submittedDate&sortOrder=descending&max_results=20"
+    category: "research"
+    enabled: true
+  - name: "arXiv 计算机视觉与多模态 (cs.CV)"
+    url: "http://export.arxiv.org/api/query?search_query=cat:cs.CV&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: "research"
+    enabled: true
+  - name: "arXiv 机器人与具身智能 (cs.RO)"
+    url: "http://export.arxiv.org/api/query?search_query=cat:cs.RO&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
 
