@@ -20,16 +20,16 @@ RE_EMOJI_PAREN = re.compile(
 )
 RE_FANCY_QUOTES = re.compile(r"[「」『』【】]")
 RE_EMPTY_PAREN = re.compile(r"[（(]\s*[）)]")
-RE_NON_HOST_BRACKET = re.compile(r"\[(?!(Host\s*A|Host\s*B))[^\]]*\]", flags=re.IGNORECASE)
+RE_NON_HOST_BRACKET = re.compile(
+    r"\[(?!(?:\s*Host\s*[AB]\s*\]|\s*(?:laughter|breath|cough|sigh|lipsmack|vocalized-noise)\s*\]))[^\]]*\]",
+    flags=re.IGNORECASE,
+)
 RE_REPEATED_COMMA = re.compile(r"[，,]{2,}")
 RE_REPEATED_PERIOD = re.compile(r"[。.]{2,}")
 RE_MULTI_SPACE = re.compile(r"[ \t]+")
 RE_MULTI_NEWLINE = re.compile(r"\n{3,}")
-# Whitelist CosyVoice paralinguistic/non-verbal tags from being stripped
-RE_HTML_TAG = re.compile(
-    r"<(?!(?:breath|quick_breath|laughter|cough|sigh|gasp|lipsmack|noise|laughing|/laughing|strong|/strong)\b)[^>]+>",
-    flags=re.IGNORECASE,
-)
+# Strip invalid HTML/XML tags
+RE_HTML_TAG = re.compile(r"<[^>]+>", flags=re.IGNORECASE)
 
 # Thinking-process markers that LLM sometimes outputs instead of actual dialogue
 RE_THINKING_MARKERS = re.compile(
@@ -106,11 +106,18 @@ def clean_tts_text(text: str) -> str:
 
 
 def strip_tts_tags(text: str) -> str:
-    """Remove all HTML/SSML/TTS tags (e.g. <breath>, <laughing>) for user display."""
+    """Remove all HTML/SSML/TTS tags (e.g. [breath], [laughter]) for user display."""
     if not text:
         return ""
-    # Remove any tag matching <...>
+    # Remove XML
     text = re.sub(r"<[^>]+>", "", text)
+    # Remove CosyVoice tokens
+    text = re.sub(
+        r"\[\s*(?:laughter|breath|cough|sigh|lipsmack|vocalized-noise)\s*\]",
+        "",
+        text,
+        flags=re.IGNORECASE,
+    )
     # Compress multiple spaces
     text = RE_MULTI_SPACE.sub(" ", text)
     return text.strip()

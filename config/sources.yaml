@@ -64,6 +64,32 @@ sources:
     category: "research"
     enabled: false
 
+  # === 新增：国内头部 AI 厂商官方与技术源 ===
+  - name: "Qwen 通义千问技术博客"
+    url: "https://qwenlm.github.io/blog/index.xml"
+    category: "official"
+    enabled: true
+  - name: "DeepSeek 技术论文源"
+    url: "http://export.arxiv.org/api/query?search_query=abs:DeepSeek+OR+ti:DeepSeek&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: "research"
+    enabled: true
+  - name: "智谱 GLM 技术论文源"
+    url: "http://export.arxiv.org/api/query?search_query=abs:GLM-4+OR+ti:GLM-4+OR+abs:ZhipuAI&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: "research"
+    enabled: true
+  - name: "Kimi 月之暗面技术论文源"
+    url: "http://export.arxiv.org/api/query?search_query=abs:Moonshot+OR+abs:Kimi&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: "research"
+    enabled: true
+  - name: "MiniMax 技术论文源"
+    url: "http://export.arxiv.org/api/query?search_query=abs:MiniMax&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: "research"
+    enabled: true
+  - name: "arXiv 计算与语言 (cs.CL)"
+    url: "http://export.arxiv.org/api/query?search_query=cat:cs.CL&sortBy=submittedDate&sortOrder=descending&max_results=20"
+    category: "research"
+    enabled: true
+
   # === 新增：国外科技媒体 ===
   - name: "TechCrunch AI"
     url: "https://techcrunch.com/category/artificial-intelligence/feed/"

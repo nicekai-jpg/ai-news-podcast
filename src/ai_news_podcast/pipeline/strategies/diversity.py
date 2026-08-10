@@ -33,6 +33,20 @@ class DiversityStrategy(MaterialSelectionStrategy):
         "audi",
         "特斯拉",
         "tesla",
+        "智谱",
+        "zhipu",
+        "glm",
+        "deepseek",
+        "minimax",
+        "kimi",
+        "moonshot",
+        "月之暗面",
+        "qwen",
+        "通义",
+        "百川",
+        "baichuan",
+        "零一万物",
+        "阶跃星辰",
     ]
 
     def __init__(self, companies: list[str] | None = None, penalty: int = 3) -> None:
@@ -62,25 +76,39 @@ class DiversityStrategy(MaterialSelectionStrategy):
 
         return selected
 
+    _ENTITY_MAP: ClassVar[dict[str, str]] = {
+        "google": "谷歌",
+        "谷歌": "谷歌",
+        "microsoft": "微软",
+        "微软": "微软",
+        "nvidia": "英伟达",
+        "英伟达": "英伟达",
+        "apple": "苹果",
+        "苹果": "苹果",
+        "audi": "奥迪",
+        "奥迪": "奥迪",
+        "tesla": "特斯拉",
+        "特斯拉": "特斯拉",
+        "zhipu": "智谱",
+        "智谱": "智谱",
+        "glm": "智谱",
+        "deepseek": "deepseek",
+        "minimax": "minimax",
+        "kimi": "月之暗面",
+        "moonshot": "月之暗面",
+        "月之暗面": "月之暗面",
+        "qwen": "通义千问",
+        "通义": "通义千问",
+        "baichuan": "百川",
+        "百川": "百川",
+    }
+
     def _get_story_entities(self, story: dict[str, Any]) -> set[str]:
         """Extract company/brand entities from a story title."""
         title = str(story.get("representative_title", "")).lower()
         entities: set[str] = set()
         for c in self.companies:
             if c in title:
-                # Normalize entity names
-                norm = c
-                if c in ("google", "谷歌"):
-                    norm = "谷歌"
-                elif c in ("microsoft", "微软"):
-                    norm = "微软"
-                elif c in ("nvidia", "英伟达"):
-                    norm = "英伟达"
-                elif c in ("apple", "苹果"):
-                    norm = "苹果"
-                elif c in ("audi", "奥迪"):
-                    norm = "奥迪"
-                elif c in ("tesla", "特斯拉"):
-                    norm = "特斯拉"
+                norm = self._ENTITY_MAP.get(c, c)
                 entities.add(norm)
         return entities

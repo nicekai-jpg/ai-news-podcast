@@ -24,11 +24,9 @@ from ai_news_podcast.text_utils import strip_tts_tags
 log = logging.getLogger(__name__)
 
 
-def _write_transcript_with_timestamps(
+def _write_clean_transcript(
     *,
     chunks: list[DialogueChunk],
-    timestamps: list[tuple[float, float]],
-    voice_map: dict[str, str],
     transcript_path: Path,
 ) -> None:
     # Save clean plain text transcript (bracketed format) to .txt file
@@ -147,8 +145,11 @@ class CosyVoice2Backend(TTSBackend):
                         s_text = sentence.strip()
                         if not s_text:
                             continue
+
+                        cv2_text = s_text
+
                         tensor = cosy_engine.synthesize_chunk(
-                            text=s_text, host=chunk.host, variant=var
+                            text=cv2_text, host=chunk.host, variant=var
                         )
                         wav_path = tmp_root / f"chunk_{idx:03d}_{var}_{s_idx:03d}.wav"
                         torchaudio.save(str(wav_path), tensor, cv_cfg.sample_rate)
@@ -189,9 +190,7 @@ class CosyVoice2Backend(TTSBackend):
             )
 
             if transcript_path:
-                _write_transcript_with_timestamps(
+                _write_clean_transcript(
                     chunks=chunks,
-                    timestamps=timestamps,
-                    voice_map=voice_maps[default_variant],
                     transcript_path=Path(transcript_path),
                 )

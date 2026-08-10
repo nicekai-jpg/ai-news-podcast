@@ -101,11 +101,11 @@ class TestAnnotateTextInBatches:
         )
 
         def mock_call_llm(prompt: str, cfg: dict) -> str:
-            # If batch 1, return normal annotated
+            # If batch 1, return normal annotated with native tokens
             if "大家好，欢迎收听AI先锋" in prompt:
                 return (
-                    "[Host A] 大家好，<laughter>欢迎收听AI先锋。</laughter>\n"
-                    "[Host B] 确实是个好消息，<breath>咱们详细说说。"
+                    "[Host A] 大家好，[laughter] 欢迎收听AI先锋。\n"
+                    "[Host B] 确实是个好消息，[breath] 咱们详细说说。"
                 )
             # If batch 2, simulate LLM truncation/dropping a turn or shrinking text
             return "[Host A] 第一条新闻"
@@ -114,7 +114,7 @@ class TestAnnotateTextInBatches:
 
         res = _annotate_text_in_batches(script, "AI 每日先锋", {}, batch_size=2)
         # Batch 1 should be annotated
-        assert "<laughter>" in res or "欢迎收听AI先锋" in res
+        assert "[laughter]" in res or "欢迎收听AI先锋" in res
         # Batch 2 should fallback to exact original text because of truncation verification
         assert "[Host A] 第一条新闻是关于大模型部署升级。" in res
         assert "[Host B] 没错，性能提升了数倍之多。" in res
