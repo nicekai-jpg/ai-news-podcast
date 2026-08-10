@@ -2053,7 +2053,7 @@ body.theme-variant-b .header-brand { display: none; }
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-08-10 08:14:46</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-08-10 18:17:01</p></div>
   </div>
 
   <script>
@@ -2460,7 +2460,10 @@ body.theme-variant-b .header-brand { display: none; }
 
       // 5. 段落交替兜底：如果没有结构化数据，去掉XML标签，以空白行切分并交替赋予角色
       if (rawParagraphs.length === 0) {
-        var cleanText = text.replace(/<[^>]+>/g, '').trim();
+        var cleanText = text
+          .replace(/<[^>]+>/g, '')
+          .replace(/\[\s*(?:laughter|breath|cough|sigh|lipsmack|vocalized-noise)\s*\]/gi, '')
+          .trim();
         var textLines2 = cleanText.split(/\n+/);
         textLines2.forEach(function(line, idx) {
           var trimmed = line.trim();
