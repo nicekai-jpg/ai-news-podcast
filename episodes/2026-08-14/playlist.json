@@ -1,0 +1,890 @@
+{
+  "episode_id": "2026-08-14",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年8月14日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.227,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 8.676,
+      "duration": 1.48,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航， 不知道你有没有感觉，2026年这波AI竞赛跟以前完全不是一个画风了。",
+      "start": 10.653,
+      "duration": 6.095,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你这话说得在理。前几年大家卷参数、卷跑分， 现在你看，拼的是价格、拼产品力、还有谁能真的把事儿落地。三条赛道同时开打，谁都不敢掉队。",
+      "start": 17.201,
+      "duration": 11.712,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "对，所以今天这期内容特别有嚼头， 咱们一个个聊。先说DeepSeek，这两天圈里讨论度最高的。",
+      "start": 29.318,
+      "duration": 9.622,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "嗯，DeepSeek Harness，对吧？",
+      "start": 39.373,
+      "duration": 2.22,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "你用过没？我跟你说， 这次他们涨价了。",
+      "start": 42.058,
+      "duration": 2.961,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "涨价？ 现在各家都在打价格战，DeepSeek居然敢涨？",
+      "start": 45.481,
+      "duration": 4.615,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "但奇怪的是， 体验过的用户几乎一边倒地说\"原谅\"。这事儿听着挺反常识的，对吧？",
+      "start": 50.547,
+      "duration": 8.359,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "是有点意思。但你注意啊，DeepSeek这次推出的Harness工具，它不是一个简单的聊天界面升级，而是一整套工程化能力——它能调度多模型协同、能做长任务的拆解、能跟你的本地文件直接联动， 说白了，它开始往\"AI助手\"那个方向跑了，不再只是一个对话窗口。",
+      "start": 59.406,
+      "duration": 21.744,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "我去，这点太关键了。你想想，之前国产AI工具的玩法是什么？烧钱换增长嘛——便宜、免费、甚至倒贴，就为了抢用户。但这种模式有个问题，用户来的时候是因为便宜，走的时候也是因为便宜，没有粘性。",
+      "start": 81.588,
+      "duration": 17.913,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "没错，靠补贴拉来的用户是没有忠诚度的。但这次DeepSeek Harness涨完价，用户反而不走了，说明它开始有产品力溢价了——用户买的不是token，是这套工具带来的实际效率提升。",
+      "start": 99.962,
+      "duration": 14.474,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "我自己体验下来也是，最惊艳的是它的多模型调度。比如你丢给它一个特别复杂的任务，它会自动拆解，调用不同的子模型来处理不同模块，最后整合输出。整个过程就像有个项目经理在帮你干活。",
+      "start": 114.881,
+      "duration": 19.263,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "你这个比喻很贴切。问题在于，这种能力的背后是工程能力的沉淀，不是一两天能抄的。所以即便涨价，用户也会觉得值。这恰恰说明AI商业化模型正在走向成熟，价值竞争正在取代价格内卷。",
+      "start": 134.618,
+      "duration": 16.955,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "听你这么一分析我特踏实。但我也在想，这个趋势会不会蔓延到其他国产模型？接下来豆包、通义、文心这些，是不是也会陆续涨价？",
+      "start": 152.0,
+      "duration": 9.361,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "我觉得会。但有个前提——你得有DeepSeek这个产品力再说。没有硬功夫就敢涨价，那是找死。",
+      "start": 161.825,
+      "duration": 7.358,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "哈，这话扎心了。说完了DeepSeek，咱们聊聊马斯克。",
+      "start": 169.6,
+      "duration": 6.792,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "对，重头戏。Grok 4.6回来了。",
+      "start": 176.828,
+      "duration": 2.83,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "周航我跟你说，Grok之前那一段时间真是有点尴尬，价格不低、表现也一般，被Fable 5压着打。",
+      "start": 180.075,
+      "duration": 8.403,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "嗯，去年到今年上半年，xAI的日子确实不太好过。Fable 5在很多基准测试上都把Grok比下去了，马斯克那时候估计也挺憋屈的。",
+      "start": 188.974,
+      "duration": 12.408,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "但这次Grok 4.6直接以更低的价格反超Fable 5，重新杀回第一梯队。这波操作我真觉得挺狠的。",
+      "start": 201.794,
+      "duration": 9.535,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "你注意啊，关键变量是什么？是Cursor那笔收购。xAI把Cursor收入麾下之后，编程能力直接起飞了。大模型加编辑器生态的闭环开始释放威力。",
+      "start": 211.808,
+      "duration": 12.384,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "这个逻辑我能理解。就像你买了个超强的发动机，结果发现没轮子，跑不起来。Cursor就是那个轮子。",
+      "start": 224.624,
+      "duration": 8.098,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "对，类比得很准。Cursor原本就是程序员群体里口碑非常好的AI编辑器，xAI拿到手之后，相当于直接把Grok嵌进了真实的生产环境里。模型在实战里打磨，反过来又优化了模型本身。这个飞轮一旦转起来，Fable 5就难受了。",
+      "start": 233.19,
+      "duration": 18.523,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "而且价格还更便宜。这简直是降维打击啊。我猜测Fable那边现在应该在连夜开会想对策。",
+      "start": 252.203,
+      "duration": 8.969,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "说白了，大模型这事儿到最后拼的是生态。光有模型强不够，你得有人用、有人反馈、有人帮你迭代。xAI这次算是把短板补上了。",
+      "start": 261.649,
+      "duration": 11.189,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "我还看到一个消息，说xAI在搞什么\"马斯克版Workbuddy\"？这名字听着怎么有点那个。",
+      "start": 273.256,
+      "duration": 10.275,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "哈，我懂你意思。叫Workbuddy，听起来像是\"工作伙伴\"。估计是想做企业级的AI协作助手，对标那些做AI Agent的公司。",
+      "start": 283.97,
+      "duration": 10.338,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "嗯，方向是对的。但名字这块儿我持保留意见，马斯克的命名审美一直挺让人无语的。",
+      "start": 294.72,
+      "duration": 8.838,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "你这就是毒舌了。不过话说回来，xAI这一系列动作——价格战加场景战双管齐下，确实对整个大模型格局形成强冲击。Fable、OpenAI、Anthropic这些老牌玩家估计都得重新评估自己的护城河。",
+      "start": 304.051,
+      "duration": 17.129,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "说完了两个大头，咱们来几条快讯，轻松一下。",
+      "start": 321.589,
+      "duration": 3.527,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "好，第一条。DeepMind推出了一个叫SL2T的模型，全称是Sign Language to Text，手语转文本。",
+      "start": 325.603,
+      "duration": 7.967,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "我看到这条新闻的时候真的挺感动的。你知道吗，之前听障用户用AI其实是有点尴尬的——语音转文字有，文字转语音也有，但手语这个东西，AI基本是不碰的。",
+      "start": 334.012,
+      "duration": 14.3,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "你说得很对。难点不在于翻译，而在于理解。手语有它自己的语法结构、空间表达、面部表情，这些跟自然语言是完全不同的体系。所以这么多年，AI在手语这块几乎是空白。",
+      "start": 348.772,
+      "duration": 13.516,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "但SL2T这次不一样，官方说是\"原生AI手语支持\"。我理解就是，不是先把手语拍成视频再分析，而是模型能直接捕捉手部动作、姿态、表情，然后实时翻译成自然语言。",
+      "start": 362.759,
+      "duration": 15.63,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "对，这其实是多模态能力的一次跃迁。无障碍AI开始进入\"主动理解\"阶段——不再是我迁就你的输入方式，而是AI主动来理解你。",
+      "start": 378.801,
+      "duration": 10.841,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "这个意义远超技术本身。周航你想想，如果一个听障小朋友在学校里，AI能实时把他同学的手语翻译成文字显示在屏幕上，他上课就能跟得上。这改变的可能是一个孩子的一生。",
+      "start": 390.087,
+      "duration": 16.651,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "嗯，这就是科技向善的力量。DeepMind这次做的事儿，值得点个赞。",
+      "start": 407.193,
+      "duration": 5.399,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "第二条，Google Sheets推出Canvas画布。我跟你说，这个更新看着不起眼，但其实挺有意思的。",
+      "start": 413.032,
+      "duration": 7.75,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "你展开说说。",
+      "start": 421.26,
+      "duration": 1.176,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "以前我们在表格里做数据可视化，基本就是插个图表，对吧？静态的。Canvas画布是说，你现在可以把数据\"放\"到一个画布上，AI会自动帮你生成各种动态可视化，还能拖拽、组合、联动。",
+      "start": 422.917,
+      "duration": 17.347,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "哦，这有点像把Figma的设计逻辑搬到了表格里。",
+      "start": 440.69,
+      "duration": 4.093,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "你这个类比绝了。我理解就是，表格不再只是数据的容器，而是变成了一块可以自由创作的画布。你可以在同一个Canvas里同时展示销售趋势、用户画像、地理分布，而且它们之间是联动的——你点一下某个区域，相关数据会同步刷新。",
+      "start": 445.253,
+      "duration": 19.045,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "这对做商业分析的人来说简直是福音。以前做个PPT配图表得折腾半天，现在AI直接帮你组装。",
+      "start": 464.759,
+      "duration": 7.967,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "对，办公协作的最基础形态正在被AI重塑。Google这次虽然只是一个小更新，但信号很明确——未来所有的办公工具都会往\"AI原生\"方向走。",
+      "start": 473.182,
+      "duration": 11.537,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "说白了，就是表格不再只是表格，它变成了一个会思考的助手。",
+      "start": 485.185,
+      "duration": 4.92,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "第三条快讯，Google Search推出了5种晚宴策划玩法。这条最生活化，我特别喜欢。",
+      "start": 490.538,
+      "duration": 7.837,
+      "audios": {
+        "professional": "chunk_047_professional.mp3",
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "哈，搜索开始办派对了？",
+      "start": 498.782,
+      "duration": 2.003,
+      "audios": {
+        "professional": "chunk_048_professional.mp3",
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "是啊，以前咱们用Google，是问\"附近有什么餐厅\"、\"这道菜怎么做\"。现在不一样了，你直接说\"我想给老婆办个生日晚宴\"，Google会给你一套完整的方案——餐厅推荐、菜单设计、氛围布置、音乐清单、甚至请柬文案。",
+      "start": 501.255,
+      "duration": 19.698,
+      "audios": {
+        "professional": "chunk_049_professional.mp3",
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "你注意啊，这个转变的本质是——搜索从\"找答案\"升级到\"办派对\"。以前搜索引擎是个工具库，现在它变成了一个生活管家。",
+      "start": 521.354,
+      "duration": 9.404,
+      "audios": {
+        "professional": "chunk_050_professional.mp3",
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "这个变化其实挺有标志性的。大模型正在接管越来越多的生活琐事，从工作到家庭，从生产到娱乐。",
+      "start": 531.169,
+      "duration": 8.838,
+      "audios": {
+        "professional": "chunk_051_professional.mp3",
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "没错。而且Google这种大厂一旦出手，其他搜索引擎肯定跟进。以后咱们的生活，可能会被各种AI Agent包围。",
+      "start": 540.499,
+      "duration": 8.054,
+      "audios": {
+        "professional": "chunk_052_professional.mp3",
+        "lively": "chunk_052_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "一想到这儿我既兴奋又有点慌。兴奋是因为方便，慌是因为……我怎么感觉自己越来越没用了？",
+      "start": 549.004,
+      "duration": 8.664,
+      "audios": {
+        "professional": "chunk_053_professional.mp3",
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "哈，你这就是典型的\"AI焦虑\"。但你看今天这些新闻，从DeepSeek Harness到Grok 4.6，从SL2T到Google Sheets Canvas，再到晚宴策划，你会发现AI的进化不是要替代谁，而是在拓展能力的边界。",
+      "start": 558.158,
+      "duration": 18.915,
+      "audios": {
+        "professional": "chunk_054_professional.mp3",
+        "lively": "chunk_054_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "听你这么一说，我心里舒服多了。行，那今天的内容差不多就是这些。",
+      "start": 577.573,
+      "duration": 4.963,
+      "audios": {
+        "professional": "chunk_055_professional.mp3",
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "嗯，咱们简单收个尾。今天聊的这些新闻，其实都指向同一个趋势——2026年的AI竞赛，早已超越参数比拼，进入价格、体验、价值三维博弈的新阶段。",
+      "start": 583.021,
+      "duration": 12.234,
+      "audios": {
+        "professional": "chunk_056_professional.mp3",
+        "lively": "chunk_056_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "三条赛道同时开打，谁能跑出来，咱们拭目以待。",
+      "start": 595.735,
+      "duration": 4.397,
+      "audios": {
+        "professional": "chunk_057_professional.mp3",
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "好，AI每日先锋，今天就到这里。我是周航。",
+      "start": 600.532,
+      "duration": 3.265,
+      "audios": {
+        "professional": "chunk_058_professional.mp3",
+        "lively": "chunk_058_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "我是苏晴，咱们下期见。",
+      "start": 604.275,
+      "duration": 2.177,
+      "audios": {
+        "professional": "chunk_059_professional.mp3",
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    }
+  ]
+}
