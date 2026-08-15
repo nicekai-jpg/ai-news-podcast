@@ -1,0 +1,905 @@
+{
+  "episode_id": "2026-08-15",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年8月15日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.097,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。苏晴今天一上来这语气，我怎么感觉今天有大瓜要吃。",
+      "start": 8.546,
+      "duration": 5.878,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "你还别说，今天的瓜确实有点猛。我跟你说，谷歌那边出大事了，DeepMind你知道吧？就那个号称AI界\"学术净土\"的地方，谷歌要开始肢解它了。",
+      "start": 14.921,
+      "duration": 11.886,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "等一下，肢解？这个词用得有点狠啊。具体什么情况？",
+      "start": 27.26,
+      "duration": 5.486,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "就是字面意思。数个团队要被划归谷歌总部，直接归布林管。这事儿在业内引起的震动，不亚于当年阿尔法狗下棋赢人类。",
+      "start": 33.151,
+      "duration": 11.363,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你注意啊，这可不是小调整。DeepMind当年被谷歌收购的时候，是给了相当大的自主权的。甚至可以说是个\"独立王国\"，有自己的研究节奏，自己的发表自由，不太受总部KPI的约束。",
+      "start": 44.947,
+      "duration": 15.17,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "对对对，所以这次布林亲自下场督战，信号就很明确了——谷歌要集中火力了。",
+      "start": 60.582,
+      "duration": 8.185,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "说白了就是，AGI这场仗打到现在，大家发现光靠\"放养式\"的学术研究可能不够了。你看OpenAI、Anthropic那边都是高度集中、目标导向的打法。谷歌这次调整，本质上是在把DeepMind的研究力量和总部的工程化能力捏到一块儿去。",
+      "start": 69.229,
+      "duration": 18.218,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "我特别好奇一点啊，这种\"学术乌托邦\"时代结束了，会不会让那些真正想做长期基础研究的人觉得不舒服？",
+      "start": 87.898,
+      "duration": 11.32,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "肯定会。但问题是，商业化的压力摆在那儿。你看DeepMind这两年，像AlphaFold、Genie这些项目确实很惊艳，但怎么变成谷歌云上能赚钱的产品？中间这个转化链路以前是断的，这次调整就是在补这个链路。",
+      "start": 99.718,
+      "duration": 16.912,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "那对整个行业来说呢？是不是意味着顶级AI实验室都得面临类似的转型？",
+      "start": 117.068,
+      "duration": 8.403,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "我觉得是。这其实反映了一个趋势——AI研究从\"发表论文\"到\"产品落地\"的距离越来越短了。以后那种闷头做五年基础研究再放个大招的模式，可能越来越少了。",
+      "start": 125.932,
+      "duration": 12.993,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "这也太真实了。不过说到研究，我接下来要说的事儿可能更让人坐不住——智谱的GLM-5.3发布了。",
+      "start": 139.37,
+      "duration": 9.535,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "哟，这个我看了。",
+      "start": 149.379,
+      "duration": 1.48,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "你看了是吧？我跟你说，这模型在编程基准上直接逼近了一个名字很有意思的闭源模型——Fable 5。",
+      "start": 151.286,
+      "duration": 10.493,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "等等，Fable 5？这个名字有点陌生啊。",
+      "start": 162.243,
+      "duration": 3.135,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "不陌生，就是目前公认的最强闭源编程模型之一。",
+      "start": 165.795,
+      "duration": 5.66,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "懂了。说真的，GLM-5.3这次的表现确实让人意外。咱们得承认，前几年国内的开源大模型跟头部闭源模型之间还是有明显代差的。但现在这个差距在快速缩小，这是肉眼可见的趋势。",
+      "start": 171.891,
+      "duration": 15.867,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "而且你知道最让我觉得牛的是什么吗？这模型揪出了一个潜伏40年的bug。",
+      "start": 188.175,
+      "duration": 7.358,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "40年？真的假的？",
+      "start": 196.029,
+      "duration": 2.351,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "对，40年！你想想要是一个人类程序员得熬到头发白才能排查出来这种深藏几十年的隐藏漏洞，AI一下子就给定位了。这事儿听着就让人觉得不真实。",
+      "start": 198.792,
+      "duration": 15.083,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "这个其实挺有象征意义的。你注意啊，AI写代码、找bug这事，以前大家觉得它就是快，但质量不一定靠得住。这次GLM-5.3直接挖出一个40年的隐藏漏洞，说明它在代码理解、上下文分析上的能力已经到了一个新高度。这已经不是单纯的快，而是真正有\"工程师直觉\"了。",
+      "start": 214.354,
+      "duration": 21.875,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "周航你觉得这事儿对全球开发者生态意味着什么？",
+      "start": 236.661,
+      "duration": 5.268,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "说白了，就是开源这边终于有了能跟闭源掰手腕的东西。以前闭源模型靠性能碾压，开源靠便宜和可定制。但GLM-5.3这次直接把性能拉到了接近顶级的水平，而且还顺手拿了个\"最强开源安全模型\"的称号，这是双重突破。",
+      "start": 242.397,
+      "duration": 21.657,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "这对咱们普通开发者有啥影响啊？",
+      "start": 264.544,
+      "duration": 3.57,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "影响大了去了。你想啊，以前你要用顶级的代码生成能力，要么用闭源API按token付费，要么自己部署一套开源的但性能差点。现在GLM-5.3这种模型出来了，企业可以用更低的成本拿到接近顶级的编程能力，这对那些中型软件公司、独立开发者来说简直就是福音。",
+      "start": 268.591,
+      "duration": 22.789,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "而且这次是在安全领域也有了突破，我觉得这才是真正让闭源阵营坐不住的地方。",
+      "start": 291.798,
+      "duration": 7.01,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "对。安全这个场景特别敏感。企业代码审计、漏洞挖掘这些活儿，很多公司是不敢把数据传到闭源模型上的。开源模型在本地化部署、数据隐私保护上有天然优势。GLM-5.3拿下\"最强开源安全模型\"这个名号，等于是给整个开源生态打了一针强心剂。",
+      "start": 299.247,
+      "duration": 22.006,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "说真的，看到咱们国内的开源力量能突围出来，我是挺激动的。",
+      "start": 321.665,
+      "duration": 5.486,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "是，这两年国内在AI上的投入和产出，确实是在全球范围内有目共睹的。不过咱们也得清醒，性能逼近是一回事，整个生态的成熟度还得慢慢来。开源不只是把模型权重放出来，还得有工具链、社区、文档，这些都需要时间沉淀。",
+      "start": 327.644,
+      "duration": 17.173,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "对，急不得。对了，说到全球的事儿，今天还有几条快讯挺值得聊的。一个是谷歌在印度搞了个叫ATL Saathi的工具。",
+      "start": 345.226,
+      "duration": 10.928,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "ATL Saathi？什么来头？",
+      "start": 356.641,
+      "duration": 3.483,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "是谷歌联合AIM组织搞的，基于Gemini的AI工具，主要给印度那些机器人实验室的教师和学生用。你看，印度这几年的AI教育推进是真的快。",
+      "start": 360.566,
+      "duration": 14.411,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "这个挺有意思的。\"Saathi\"在印地语里是\"伙伴\"的意思，谷歌这个取名挺接地气。而且你注意啊，AI教育下沉到中学甚至小学这个层面，不是简单的\"教大家用ChatGPT\"，而是要培养下一代的AI原住民。这些孩子长大以后对AI的理解和使用方式会跟咱们完全不同。",
+      "start": 375.437,
+      "duration": 19.655,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "我跟你说，这事儿跟接下来的另一条新闻形成了一个特别有意思的呼应。",
+      "start": 395.563,
+      "duration": 5.834,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "你是说印尼那个？",
+      "start": 401.809,
+      "duration": 2.046,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "对！NVIDIA联合Indosat和印尼的加札马达大学，搞了印尼第一个大学AI中心。",
+      "start": 404.3,
+      "duration": 8.925,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "这个布局很有意思。你看，NVIDIA不光是卖卡，它其实在下一盘很大的棋。印尼是东南亚人口最多的国家，也是互联网经济增速最快的市场之一。在那里建AI中心，本质上是在抢未来AI人才的入口。",
+      "start": 413.68,
+      "duration": 17.129,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "我突然发现一个规律啊，谷歌在印度搞教育，NVIDIA在印尼搞人才培养，是不是都在盯着新兴市场？",
+      "start": 431.249,
+      "duration": 11.32,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "你看出来了。表面上是做教育、做公益，本质上是在跑马圈地。AI这个东西最贵的是什么？不是显卡，不是电费，是人才。北美那边的人才竞争已经白热化了，成本高得离谱。新兴市场的人才红利才刚刚开始释放。",
+      "start": 443.047,
+      "duration": 17.042,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "所以全球AI人才的重心是在往下沉？",
+      "start": 460.57,
+      "duration": 4.136,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "对，你看这几年印度、印尼、越南、尼日利亚这些地方的AI开发者社区增长非常快。这不是偶然，是巨头们在有意引导。谁先把当地的开发者生态建起来，未来十年谁就掌握了主动权。",
+      "start": 465.132,
+      "duration": 15.17,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "那对咱们国内的开发者来说，有什么启示吗？",
+      "start": 480.772,
+      "duration": 4.223,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "我觉得吧，机会肯定是有的，但竞争也激烈了。以前咱们可能只需要跟硅谷、印度PK，现在东南亚、非洲这些地方也在崛起。但反过来想，咱们的优势是产业链完整、应用场景丰富，这些是别人短期内学不来的。",
+      "start": 485.456,
+      "duration": 16.085,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "嗯，这个判断挺客观的。对了，还有一条Gemini API升级的消息，你关注了吗？",
+      "start": 501.997,
+      "duration": 7.14,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "看到了。托管智能体升级到了3.6 Flash版本，还新增了Hooks和Triggers这些开发者钩子能力。",
+      "start": 509.603,
+      "duration": 8.664,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "\"开发者钩子\"这名字听着挺玄乎的，到底是干嘛用的？",
+      "start": 518.7,
+      "duration": 5.094,
+      "audios": {
+        "professional": "chunk_047_professional.mp3",
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "你注意啊，这个特别重要。简单来说，Hooks就是允许开发者在智能体的特定执行节点上注入自定义逻辑，比如在模型调用前后做一些数据处理、日志记录、合规检查之类的。Triggers就更直接了，是基于事件触发的，比如新邮件来了、订单状态变了，自动启动某个智能体流程。",
+      "start": 524.201,
+      "duration": 22.006,
+      "audios": {
+        "professional": "chunk_048_professional.mp3",
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "这不就是给AI智能体装上了\"手脚\"嘛？",
+      "start": 546.677,
+      "duration": 4.92,
+      "audios": {
+        "professional": "chunk_049_professional.mp3",
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "你这个比喻挺准的。以前AI模型像个孤岛，你问它问题它回答你，问完了就完了。但有了Hooks和Triggers，AI就能嵌入到业务流程里去了。这是Agent走向成熟的关键一步，也是谷歌在企业市场跟其他玩家竞争的重要筹码。",
+      "start": 551.998,
+      "duration": 18.585,
+      "audios": {
+        "professional": "chunk_050_professional.mp3",
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "我突然有个想法啊，你说如果把这些能力都结合起来——GLM-5.3的开源能力、Gemini的托管智能体、新兴市场的人才红利——是不是意味着我们正站在一个AI应用大爆发的临界点上？",
+      "start": 570.994,
+      "duration": 16.215,
+      "audios": {
+        "professional": "chunk_051_professional.mp3",
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "临界点这个说法我同意一半。技术上确实是到了，但商业上能不能跑通，还得看具体的落地场景。这就好比移动互联网当年技术成熟了，但真正赚钱的是那些找到具体场景的产品。技术是必要条件，不是充分条件。",
+      "start": 587.701,
+      "duration": 17.26,
+      "audios": {
+        "professional": "chunk_052_professional.mp3",
+        "lively": "chunk_052_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "所以说到底，还是得回到\"AI到底解决了什么具体问题\"这个本原问题上来。",
+      "start": 605.412,
+      "duration": 7.053,
+      "audios": {
+        "professional": "chunk_053_professional.mp3",
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "对。任何脱离实际应用的技术炫技，最后都会被市场教育。这个规律在每一波技术浪潮里都反复上演。",
+      "start": 612.955,
+      "duration": 8.751,
+      "audios": {
+        "professional": "chunk_054_professional.mp3",
+        "lively": "chunk_054_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "周航，今天聊完这些新闻，我最大的感受就是——AI这个领域的变化速度真的超出想象。年初我们还在讨论某个模型是不是超过了某个基准，年底就已经是几代技术更迭了。",
+      "start": 622.206,
+      "duration": 13.646,
+      "audios": {
+        "professional": "chunk_055_professional.mp3",
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "是，而且更深层的变化不在技术本身，而在整个产业格局的重构。从谷歌肢解DeepMind到GLM-5.3的突围，从新兴市场的人才下沉到Gemini API的能力升级，你会发现AI的\"游戏规则\"正在被快速改写。今天谁能说自己是绝对领先，那都是暂时的。",
+      "start": 636.337,
+      "duration": 21.396,
+      "audios": {
+        "professional": "chunk_056_professional.mp3",
+        "lively": "chunk_056_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "嗯，咱们作为观察者和记录者，能做的就是把这些变化及时传递给大家。",
+      "start": 658.213,
+      "duration": 6.574,
+      "audios": {
+        "professional": "chunk_057_professional.mp3",
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "也希望咱们国内的开发者和创业者能从这些全球动态中找到自己的机会。看清大势，不盲目跟风，也不轻易掉队。",
+      "start": 665.187,
+      "duration": 9.143,
+      "audios": {
+        "professional": "chunk_058_professional.mp3",
+        "lively": "chunk_058_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "好的，那今天的节目就到这里。听众朋友们如果觉得节目有意思，欢迎在评论区告诉我们你最关注的AI新闻。咱们下期再见。",
+      "start": 674.808,
+      "duration": 9.665,
+      "audios": {
+        "professional": "chunk_059_professional.mp3",
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "B",
+      "text": "下期再见，拜拜。",
+      "start": 684.936,
+      "duration": 1.306,
+      "audios": {
+        "professional": "chunk_060_professional.mp3",
+        "lively": "chunk_060_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
