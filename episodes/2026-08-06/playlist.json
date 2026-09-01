@@ -1,0 +1,785 @@
+{
+  "episode_id": "2026-08-06",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友们大家好，欢迎收听AI每日先锋，今天是2026年8月6日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.14,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 8.589,
+      "duration": 1.611,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航你今天来得够早的，我刚听说科技圈出了个大新闻，NVIDIA那个CUDA护城河，被人凿穿了？",
+      "start": 10.697,
+      "duration": 17.695,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你消息挺灵通的。这事儿我跟你讲，真挺有意思的。NVIDIA的CUDA生态你知道吧，他们花了整整二十年，把开发者都圈在那个生态里了。",
+      "start": 28.845,
+      "duration": 10.947,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "我知道我知道，就是那个写GPU程序用的软件框架嘛，对吧？以前大家都觉得这个壁垒深得跟马里亚纳海沟似的。",
+      "start": 40.197,
+      "duration": 12.147,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "对，但这次不是哪个小公司出来挑战，是AI自己来凿的。说白了，就是用AI编译器，把本来需要大量人工去移植适配的活儿给自动化了。",
+      "start": 52.777,
+      "duration": 11.644,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "你注意啊，这个\"10小时\"是什么概念？人家NVIDIA花了二十年垒起来的墙，AI用10小时就给找到突破口了？",
+      "start": 64.886,
+      "duration": 12.278,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "是这么个意思。但你要说CUDA马上要完蛋，那也不至于——毕竟现存的代码量、开发者习惯、工具链成熟度，这些都是实实在在的护城河。",
+      "start": 77.626,
+      "duration": 12.906,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "那这次突破到底打开了什么口子？",
+      "start": 90.983,
+      "duration": 4.136,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "问题就在这儿。过去国产GPU也好，一些新兴架构也好，硬件参数堆得再猛，没生态就是白搭。开发者不愿意为一个新架构重写代码，成本太高。",
+      "start": 95.619,
+      "duration": 11.861,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "嗯，这跟苹果M1芯片出来后，大家还在Windows生态转不过来是一个道理？",
+      "start": 107.918,
+      "duration": 6.4,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "你这个类比还挺贴切的。现在AI编译器能自动把代码翻译到不同架构上，相当于把\"搬家\"的成本压到几乎为零。",
+      "start": 114.779,
+      "duration": 10.928,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "那对咱们普通人有啥影响？我买显卡是不是要变天了？",
+      "start": 126.152,
+      "duration": 4.397,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "短期内买显卡还是看NVIDIA，但是吧——说白了，整个算力栈要重新洗牌了。以后AI芯片竞争的重点不再是单纯的硬件参数，而是谁能构建更开放的编译生态。",
+      "start": 131.023,
+      "duration": 14.125,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "这对国产GPU来说岂不是天大的好事？",
+      "start": 145.575,
+      "duration": 4.397,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "没错，窗口期真的来了。但是话说回来，生态这东西不只是技术问题，开发者社区、文档、培训、案例库，这些都需要时间积累。AI编译器打开了一扇门，但门后面的路还得慢慢走。",
+      "start": 150.436,
+      "duration": 16.694,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "嗯，反正这事儿让我想起一句话——技术壁垒从来不是铁板一块，时间站在变革那一边。",
+      "start": 167.547,
+      "duration": 14.15,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "总结得挺到位的。那咱们接着聊下一个，这个更值得关注。Sand.ai开源了一个千亿参数的MoE视频生成模型。",
+      "start": 182.133,
+      "duration": 10.667,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "这个我也看到了！114B参数，但实际激活只有6B，听着就很夸张。",
+      "start": 193.217,
+      "duration": 6.705,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "你给我翻译翻译，什么叫MoE架构？",
+      "start": 200.418,
+      "duration": 4.441,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "呃……我先猜一个，是不是\"混合专家\"？意思是一个大模型里有好多专家模块，平时干活只调用其中几个？",
+      "start": 205.271,
+      "duration": 9.273,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "你行啊苏晴，这都知道。MoE就是这个思路，相当于平时养着一百多号人，但干活只派六个人出去，推理成本能压得很低。",
+      "start": 215.023,
+      "duration": 9.665,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "那这个模型实际效果怎么样？",
+      "start": 225.12,
+      "duration": 2.395,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "能生成10秒1080P视频，成本低到0.5元。你听清楚——0.5元一条。",
+      "start": 227.983,
+      "duration": 8.185,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "真的假的？0.5元一条10秒1080P视频？这也太便宜了吧！以前这种级别的东西都是按秒收费闭源API的天价吧？",
+      "start": 236.658,
+      "duration": 15.649,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "对，所以我说这是视频生成正式跨入\"开源+低成本\"时代的标志。以前这种千亿级别的视频模型，都是闭源API按秒收费的，现在直接开源给你用。",
+      "start": 252.784,
+      "duration": 11.015,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "那对那些做短视频、广告、影视的公司来说，生产方式要被重新定义了呀。",
+      "start": 264.217,
+      "duration": 7.706,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "没错，但生产范式被重塑更准确。你想啊，以前做个短视频脚本、配个画面，找外包可能几千块；现在自己跑模型，成本几乎可以忽略不计。",
+      "start": 272.362,
+      "duration": 12.471,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "是不是意味着以后小红书博主人人都是导演了？",
+      "start": 285.245,
+      "duration": 6.182,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "这么说也不算夸张。但你也别高兴太早——内容产业的门槛从来不在工具，在于创意和审美。工具越平权，内容的差异化就越重要。",
+      "start": 291.92,
+      "duration": 11.731,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "嗯，这话在理。 AI解决了\"能不能做\"的问题，但\"做得好不好\"还是得靠人。",
+      "start": 304.06,
+      "duration": 8.925,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "而且我跟你说，这次开源的意义不只是便宜。开源意味着整个社区都能基于它做微调、做插件、做垂直应用，生态会一下子铺开。 AI视频应用的爆发拐点是真的到了。",
+      "start": 313.472,
+      "duration": 15.214,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "说到工具应用， 我今天还看到一则快讯——兔展智能发了个叫RabbitVis的东西，听名字就知道跟设计有关。",
+      "start": 329.128,
+      "duration": 10.405,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "这个我看了，重点是AI终于能逐层编辑设计稿了。你知道吧，以前AI生成设计稿就是出一张图，你要改某个元素，等于重做整张图。",
+      "start": 339.993,
+      "duration": 10.449,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "啊对对对，这个痛点我太懂了！我之前用某AI工具生成海报，想换个logo位置，结果它把整张图重新生成了一遍，颜色风格全变了。",
+      "start": 350.913,
+      "duration": 15.475,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "对，RabbitVis就是把设计全流程打通了——AI不只是出图，还能理解图层结构、单独编辑元素。 设计师的活儿确实要被重新定义。",
+      "start": 366.8,
+      "duration": 12.103,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "这下设计师是不是又要紧张了？",
+      "start": 379.348,
+      "duration": 4.92,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "说实话， 初级执行层面的设计师确实会受影响，但高级设计师反而解放了——他们可以把精力放在创意和审美决策上，执行交给AI。",
+      "start": 384.723,
+      "duration": 12.234,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "嗯，听上去是工具把人往更高层级推了一把。 还有一则，阿里淘天开了2027届校招，听说AI技术岗占比超过90%。",
+      "start": 397.397,
+      "duration": 11.407,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "我跟你说，这个数字挺震撼的。 十年前你去阿里，研发岗里可能十个里面才两三个搞AI相关的，现在反过来，十个里面九个都是AI。",
+      "start": 409.282,
+      "duration": 12.21,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "这说明大厂人才争夺全面倾斜AI了？",
+      "start": 421.973,
+      "duration": 4.093,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "对，而且不只是阿里。你注意啊，现在字节、腾讯、美团，所有大厂的校招HC基本都往AI倾斜。传统开发岗位的增量越来越少，AI岗位成了绝对主力。",
+      "start": 426.492,
+      "duration": 13.298,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "那正在找工作的学生应该怎么看这个趋势？",
+      "start": 440.26,
+      "duration": 3.222,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "说白了，就是要把AI当基础设施来学。别把它当一个工具，要把它当底座。懂业务加懂AI的人，未来三到五年是最吃香的。",
+      "start": 443.943,
+      "duration": 10.729,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "嗯，这条建议挺实在的。最后还有一则，Google承诺4000万美元支持Genesis Mission，DeepMind提供AI算力token和credits。",
+      "start": 455.128,
+      "duration": 12.645,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "这个Genesis Mission是干啥的呢？简单说就是用AI加速前沿科学发现的项目。DeepMind过去在AlphaFold、天气预报这些领域都用AI做出过突破，现在他们把算力资源往科学研究上倾斜。",
+      "start": 468.239,
+      "duration": 16.694,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "听上去挺宏大的。",
+      "start": 485.366,
+      "duration": 1.872,
+      "audios": {
+        "professional": "chunk_047_professional.mp3",
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "是挺宏大的。你想啊，以前小团队想用顶级AI算力基本没戏，现在通过这种项目能拿到token和credits，相当于给基础科研开了个口子。",
+      "start": 487.645,
+      "duration": 14.15,
+      "audios": {
+        "professional": "chunk_048_professional.mp3",
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "那这对普通科研工作者来说是好消息吗？",
+      "start": 502.265,
+      "duration": 3.57,
+      "audios": {
+        "professional": "chunk_049_professional.mp3",
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "当然是好消息。从基础科学突破到最后应用到咱们生活中，这个链条可能会缩短很多。说到底，今天这几条新闻串起来看，就是咱们开头那句话——AI正在以小时为单位凿穿旧秩序、重塑新格局。",
+      "start": 506.236,
+      "duration": 18.305,
+      "audios": {
+        "professional": "chunk_050_professional.mp3",
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "好，今天的播报就到这里。我是苏晴，咱们明天见。",
+      "start": 524.952,
+      "duration": 4.005,
+      "audios": {
+        "professional": "chunk_051_professional.mp3",
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "我是周航，听众朋友们明天见。",
+      "start": 529.449,
+      "duration": 3.527,
+      "audios": {
+        "professional": "chunk_052_professional.mp3",
+        "lively": "chunk_052_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
