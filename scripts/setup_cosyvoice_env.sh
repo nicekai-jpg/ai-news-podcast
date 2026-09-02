@@ -11,7 +11,9 @@ if [ ! -d "$COSY_SRC/cosyvoice" ]; then
   git clone --recursive --depth=1 https://github.com/FunAudioLLM/CosyVoice.git "$COSY_SRC"
 fi
 
-if [ ! -x "$COSY_VENV/bin/python" ]; then
+if ! "$COSY_VENV/bin/python" -c "import sys" &>/dev/null; then
+  echo "Virtualenv is missing or broken, creating new venv at $COSY_VENV..."
+  rm -rf "$COSY_VENV"
   python3 -m venv "$COSY_VENV"
 fi
 
