@@ -1,0 +1,665 @@
+{
+  "episode_id": "2026-09-04",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年9月4日。我是苏晴，坐在我旁边的依然是我们的老搭档——周航。",
+      "start": 1.0,
+      "duration": 10.58,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。今天这一期说实话有点特殊，因为今天科技圈发生的事情密度太大了。",
+      "start": 12.029,
+      "duration": 6.574,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "我跟你说，我早上刷新闻的时候都愣了一下。OpenAI直接甩出了GPT-6，然后官方说了一句话——欢迎来到AGI时代。这话听着像不像科幻片？",
+      "start": 19.1,
+      "duration": 12.756,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "像，太像了。但你注意啊，OpenAI每次升级都有一个特点，就是它会把一个本来属于学术圈的概念直接硬拽到大众面前。以前\"大模型\"这个词谁说？现在你看谁都能聊两句。",
+      "start": 32.309,
+      "duration": 15.083,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "那这次呢？",
+      "start": 47.797,
+      "duration": 0.784,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "这次直接把\"AGI\"这三个字给贴上了。注意这个措辞，他们没有说\"接近AGI\"，没有说\"迈向AGI\"，说的是\"欢迎来到AGI时代\"。你品品这个口气。",
+      "start": 49.014,
+      "duration": 13.429,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "我品到了。但周航，AGI这事儿到底怎么理解？普通人就当口号听吗？",
+      "start": 62.908,
+      "duration": 8.011,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "说白了，AGI的全称叫通用人工智能，意思是机器在任何智力任务上都能跟人掰手腕。这次GPT-6最大的跃迁其实是在两个地方：一个是复杂推理，另一个是长程Agent任务。简单说，它不仅能回答你\"现在该怎么办\"，还能自己去执行。",
+      "start": 71.381,
+      "duration": 19.655,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "我跟你说这个特别戳中我。我以前跟AI聊天，它给我的方案都是建议性的，最后还是得我动手。现在是它直接帮我办？",
+      "start": 91.487,
+      "duration": 9.317,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "对，这句话就触及到本质了——API生态马上要全面进入\"自主执行\"阶段。法律、金融、研发这种知识工作，结构性地要被重塑。",
+      "start": 101.304,
+      "duration": 10.667,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "那这么听起来，是不是有些职业有点慌了？",
+      "start": 112.409,
+      "duration": 4.005,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "职业慌不慌我不知道，但企业层面是真慌。你看国内外的反应就知道，OpenAI这次发布之后，股价、合作伙伴、各种发布会都跟着动了一圈。",
+      "start": 116.875,
+      "duration": 10.188,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "不过话说回来，我看到另一条新闻特别有意思，是关于Google的。Google掏出4000万美元的AI算力，搞了个叫Genesis Mission的科学计划。",
+      "start": 127.508,
+      "duration": 12.732,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "这件事得好好说说。你知道吗，AI for Science这个概念讲了好几年了，但之前大部分是高校和实验室的小规模尝试，火是火，但没成气候。Google这次直接甩4000万美元的token和算力信用，本质上是把这件事从概念验证推到了大规模资源承诺阶段。",
+      "start": 140.714,
+      "duration": 21.004,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "我感觉这是一个信号，就是说AI厂商不再满足于让AI写写邮件、画个图了，它们开始盯上基础科学这块硬骨头了。",
+      "start": 162.145,
+      "duration": 10.014,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "对，而且你注意啊，这个时间点非常微妙。OpenAI在前面领跑通用能力，Google在后面死磕科研能力。这两家一前一后，本质上是把AI行业的竞争维度从\"谁更会聊天\"升级到了\"谁更能推动人类认知边界\"。",
+      "start": 172.623,
+      "duration": 17.826,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "我跟你说，这事儿听起来宏大，但对普通人来说可能有点远。咱们说点近的——IFA 2026，NVIDIA在这个展会上放话了。",
+      "start": 190.866,
+      "duration": 10.58,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "哎对，我专门去看了看相关内容。NVIDIA这次在IFA上核心就讲了一个词——\"前沿智能正在走向端侧\"。",
+      "start": 201.882,
+      "duration": 9.361,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "这话啥意思？",
+      "start": 211.66,
+      "duration": 1.263,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "意思是以前的大模型推理都得在云端完成，你手机上的AI其实是远程调用。现在不行了，NVIDIA明显在押注一个新的赛道——边缘算力的军备竞赛。你看各种本地推理方案层出不穷，PC、笔记本、甚至一些专门的AI盒子都开始塞高性能GPU。",
+      "start": 213.419,
+      "duration": 20.003,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "那这个对我们有啥好处？",
+      "start": 233.834,
+      "duration": 2.09,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "隐私是一方面，数据不用上传了呗。再一个就是延迟，你跟AI说话它秒回，那种感觉不一样的。第三个其实很多人忽略——成本。你不用每个月给云服务交订阅费了，一次性投入之后用自己的算力就行。",
+      "start": 236.403,
+      "duration": 17.739,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "我跟你说我突然意识到一个事儿，这跟我们前面讲的GPT-6时代其实是两条线。GPT-6走的是云端超级大脑，这条线走的是端侧普及化。",
+      "start": 254.574,
+      "duration": 12.408,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "你这句话说到点子上了。两条线并行，谁也别说自己就是终局。最终很可能是组合方案——隐私要求高的本地跑，复杂任务丢给云端。这种\"混合推理\"的架构才是真未来。",
+      "start": 267.45,
+      "duration": 14.125,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "说到本地推理，今天正好有个新研究挺应景的。arXiv上有一篇新论文，专门讲Qwen3-4B这个模型三值化后训练的事儿。",
+      "start": 282.065,
+      "duration": 10.884,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "这篇我看了。三值化你理解一下，就是把模型里的参数精度压到极限——1.58-bit，这是什么概念？正常的大模型参数都是浮点数，精度高但占空间。现在硬生生压缩到接近二进制的程度。",
+      "start": 293.426,
+      "duration": 17.304,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "那效果不会变差吗？",
+      "start": 311.148,
+      "duration": 1.741,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "这就是这篇论文有意思的地方。它不是简单地暴力压，而是探讨在极低比特情况下，怎么通过后训练技术把模型的能力尽量保留下来。这就为开源端侧大模型落地提供了一条真正的技术路径——以前大家总担心本地跑不好，现在告诉你其实是可行的。",
+      "start": 313.328,
+      "duration": 20.569,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "我理解一下，是不是说以后咱们的小设备也能跑个像样的AI了？",
+      "start": 334.309,
+      "duration": 6.618,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "没错，这就是边缘AI真正落地的关键技术节点。Qwen3系列本来就是开源里口碑很好的，4B这个参数量在本地推理上是个非常甜点的尺寸。",
+      "start": 341.42,
+      "duration": 12.582,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "对了还有件事儿，特别巧——就在今天，GPT-6发布的同时，法律科技公司Legora直接用上了。",
+      "start": 354.411,
+      "duration": 9.361,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "你说的是GPT-6 Astra那个案例吧？",
+      "start": 364.259,
+      "duration": 3.309,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "对对对，Legora用GPT-6 Astra，据说把文档审阅效率提升了40%。他们用AI在几分钟之内审了41份文档，还精准找出了全部错误。",
+      "start": 368.01,
+      "duration": 13.366,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "我跟你说这个数字很有意思。40%效率提升是什么概念呢？以前律师审合同、看条款，那都是按小时收费的活，现在GPT-6 Astra几分钟搞定41份。这对企业来说不是省了一点点钱，是结构性地改变了法律服务的成本曲线。",
+      "start": 381.836,
+      "duration": 18.566,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "而且你说\"精准找出全部错误\"，这里头有一个特别要命的点——一个都不能漏。漏一个可能就是一个几百万的坑。这种事敢交给AI做，说明GPT-6 Astra在专业领域的可靠性已经到了行业可接受的水平。",
+      "start": 400.873,
+      "duration": 18.653,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "所以说这是GPT-6企业落地的第一个标杆案例。但你注意啊，这只是开头。Legora试水之后，法律行业里其他玩家可能会快速跟进，然后扩散到金融、咨询、医疗诊断这些领域。整个专业知识服务市场的格局在接下来几个月内可能会有大变化。",
+      "start": 419.938,
+      "duration": 19.045,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "我突然有个感悟——之前大家都说AI是工具，现在看这个定义可能要更新了。Legora用GPT-6 Astra做的那种事，已经超出了\"工具\"的范畴，开始像\"同事\"了。",
+      "start": 439.428,
+      "duration": 15.519,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "这个比喻挺到位的。但换个角度想，这对每个知识工作者来说都是一个提醒——你的核心价值到底在哪？如果AI几分钟能干完你几天的活，那你的不可替代性体现在什么方面？这是接下来每个人都得想清楚的事。",
+      "start": 455.402,
+      "duration": 16.259,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "嗯，这个话题留给听众朋友自己思考。今天节目时间也差不多了，咱们最后做个收尾吧。",
+      "start": 472.101,
+      "duration": 6.661,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "简单说两句。今天这一天密度太大，GPT-6宣告AGI、Google砸4000万美元搞科研、IFA上NVIDIA猛推端侧、极低比特模型研究出炉、法律行业第一个标杆落地。整个AI技术栈在同一天集体跃迁，这种场面在过去几年都不多见。",
+      "start": 479.24,
+      "duration": 21.048,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "是的，所以今天这个标题我想了很久，最后用这句话——GPT-6高呼AGI到来，但真正的震撼是整个技术栈的集体跃迁。",
+      "start": 500.769,
+      "duration": 11.799,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "这句话我服。",
+      "start": 512.994,
+      "duration": 1.001,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "好，朋友们，今天的AI每日先锋就到这里。我是苏晴。",
+      "start": 514.465,
+      "duration": 4.789,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "我是周航，咱们下期再见。",
+      "start": 519.715,
+      "duration": 1.916,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
