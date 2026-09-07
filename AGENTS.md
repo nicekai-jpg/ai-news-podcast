@@ -68,6 +68,14 @@ Stage CLIs (console scripts in pyproject):
 
 ## Gotchas
 
+- **Network to GitHub from this machine is hostile to large HTTPS uploads** (HTTP/2
+  streams get reset mid-transfer; downloads are fine). Repo config pins
+  `http.version=HTTP/1.1` — keep it. For very large pushes (e.g. history rewrites),
+  push in ~40-commit chunks to a temp branch, then force-push the real ref.
+  `git filter-repo` (via `uvx git-filter-repo`) was used on 2026-09-07 to strip all
+  audio blobs from main's history; a full backup bundle
+  (`ai-news-podcast-pre-rewrite-2026-09-07.bundle`) sits next to the repo directory.
+
 - **Audio must NOT be committed to `main`**. The CI TTS job passes the episode MP3 and
   chunk folder to the publish job via a workflow **artifact** (`episode-audio-{date}`);
   only the publish job's deploy step sends them to `gh-pages`. Historical commits before
