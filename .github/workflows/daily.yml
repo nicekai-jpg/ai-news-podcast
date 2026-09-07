@@ -217,21 +217,15 @@ jobs:
             --output "site/episodes/${EPISODE}.mp3" \
             --model-dir "$HOME/cosyvoice_models/CosyVoice2-0.5B"
 
-      - name: Commit audio
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          EPISODE="${{ needs.writer.outputs.episode_id }}"
-          git add -f "site/episodes/${EPISODE}.mp3"
-          git add -f "site/episodes/${EPISODE}/"
-          git add -f "site/episodes/${EPISODE}.txt"
-          if git diff --cached --quiet; then
-            echo "No audio changes to commit"
-          else
-            git commit -m "daily: audio $EPISODE [skip ci]"
-            git pull --rebase origin main
-            git push origin main
-          fi
+      # 音频只通过 artifact 传递给 publish job，不提交到 main，避免 git 历史膨胀
+      - name: Upload episode audio artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: episode-audio-${{ needs.writer.outputs.episode_id }}
+          path: |
+            site/episodes/${{ needs.writer.outputs.episode_id }}.mp3
+            site/episodes/${{ needs.writer.outputs.episode_id }}/
+          if-no-files-found: error
 
   publish:
     name: Stage 5 (publish site)
@@ -255,6 +249,12 @@ jobs:
 
       - name: Install dependencies
         run: uv sync --frozen
+
+      - name: Download episode audio artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: episode-audio-${{ needs.tts.outputs.episode_id }}
+          path: site/episodes
 
       - name: Publish feed and site
         env:

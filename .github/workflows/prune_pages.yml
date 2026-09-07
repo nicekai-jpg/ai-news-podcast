@@ -2,7 +2,8 @@ name: Prune GitHub Pages History
 
 on:
   schedule:
-    - cron: "0 0 1 * *" # Run at 00:00 UTC on the 1st of every month
+    # 每月 1 号 12:00 UTC 运行，避开 Daily Podcast 窗口 (21:43 UTC 起，约 2-3 小时)
+    - cron: "0 12 1 * *"
   workflow_dispatch:     # Allow manual trigger from GitHub UI
 
 permissions:
