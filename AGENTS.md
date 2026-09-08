@@ -80,13 +80,13 @@ Stage CLIs (console scripts in pyproject):
 
 - **Audio must NOT be committed to `main`**. The CI TTS job passes the episode MP3 and
   chunk folder to the publish job via a workflow **artifact** (`episode-audio-{date}`);
-  only the publish job's deploy step sends them to `gh-pages`. Historical commits before
-  2026-09-07 still carry MP3s (main pack ≈ 600 MB) — don't resurrect the old pattern of
-  `git add -f site/episodes/*.mp3`. Locally, pre-commit blocks audio outside `assets/`
-  and any file over 2 MB, but those hooks don't exist in CI.
+  only the publish job's deploy step sends them to `gh-pages`. All historical audio was
+  already stripped from main's history by `git filter-repo` (2026-09-07) — don't
+  resurrect the old pattern of `git add -f site/episodes/*.mp3`. Locally, pre-commit
+  blocks audio outside `assets/` and any file over 2 MB, but those hooks don't exist in CI.
 - `podcast-writer` **always regenerates and overwrites** `site/episodes/{date}.txt`.
-  There is no "reuse the existing manually edited script" behavior, despite README /
-  CLAUDE.md saying so. Don't hand-edit scripts expecting them to survive a rerun.
+  There is no "reuse the existing manually edited script" behavior. Don't hand-edit
+  scripts expecting them to survive a rerun.
 - `config.yaml` `tts.cosyvoice.ref_audio` intentionally maps host_a ↔ host_b sample
   files cross-wise; don't "fix" it without listening to the reference audio.
 - TTS requires a CosyVoice2-0.5B environment: `COSYVOICE_MODEL_DIR` plus
