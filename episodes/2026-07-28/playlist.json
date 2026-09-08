@@ -1,0 +1,710 @@
+{
+  "episode_id": "2026-07-28",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年7月28日。我是苏晴。",
+      "start": 1.0,
+      "duration": 8.185,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 9.634,
+      "duration": 1.567,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天这几条新闻我特别想跟你聊，第一个就让我眼前一亮——中科院出手了，要给AI补情商课。",
+      "start": 11.698,
+      "duration": 9.752,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你注意啊，这个事儿听起来有点玄乎。咱们平时一提AI都是拼智商，写代码、写文案、做数学题，怎么突然开始补情商了？",
+      "start": 21.903,
+      "duration": 11.45,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "对吧！但你想想现在谁家还没个AI助手？用着用着就发现一个特别尴尬的问题——它跟你聊天的时候经常get不到你的点，你明明已经不开心了，它还在那儿傻乎乎地问\"还有什么可以帮您\"。",
+      "start": 33.758,
+      "duration": 15.736,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "说白了就是AI太\"直男\"了嘛。它能解微积分，但读不懂你朋友圈发的那条\"哈哈\"到底是真的开心还是已经气到不想说话了。",
+      "start": 49.927,
+      "duration": 10.381,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "真的假的？中科院这次具体怎么搞的？",
+      "start": 60.773,
+      "duration": 3.091,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "他们干了一件特别工程化的事——把\"情商\"这种听起来很虚的东西，拆成了可以测量、可以训练、可以打分的指标体系。你想啊，人类的情感再复杂，其实也是有迹可循的，语境、语气、上下文关联、微表情，这些东西以前AI学不会，现在被量化了。",
+      "start": 64.326,
+      "duration": 21.266,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "我跟你讲，这个突破真正牛的地方在于它打通了AI从\"认知智能\"到\"社交智能\"那道坎儿。以后不管是陪伴机器人、心理咨询、教育辅导还是客服，都不再是冷冰冰的标准化回答，而是能真正跟你共情。",
+      "start": 86.043,
+      "duration": 22.789,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "你就想象一个场景——家里老人有慢性病，每次打电话都跟你絮叨同样几句，AI如果能识别出老人的情绪状态，知道什么时候该顺着说、什么时候该引导，那它的价值就不是一个工具了，是半个家庭成员。",
+      "start": 109.332,
+      "duration": 17.434,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "是是是，而且这背后是千亿级的市场空间。情感陪伴、心理健康、老年陪护，全是刚需。",
+      "start": 127.204,
+      "duration": 9.622,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "不过反过来想，AI能\"读懂\"你了，那它会不会反过来\"操纵\"你？这事儿也得严肃对待。",
+      "start": 137.287,
+      "duration": 6.4,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "嗯，这就需要伦理和监管同步跟上。技术跑太快，刹车得自己装。",
+      "start": 144.132,
+      "duration": 7.271,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "说到这儿，咱们来聊个更能\"料\"的——老黄的开源协议。",
+      "start": 151.877,
+      "duration": 4.702,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "哈哈，这个新闻我一看标题就乐了。英伟达推一个开源协议，全行业大佬都签了字，就剩一家\"Denny's\"没签。",
+      "start": 157.006,
+      "duration": 8.316,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "A",
+      "text": "Denny's？这不是美国那家24小时营业的连锁煎饼店吗？怎么跑AI圈来搅和了？",
+      "start": 165.786,
+      "duration": 9.404,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "B",
+      "text": "显然是个代号嘛，老黄搞幽默呢。但你注意啊，英伟达核心业务是GPU和AI基础设施，跟它高度重叠的公司，大家心里其实都有数。",
+      "start": 175.607,
+      "duration": 11.426,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "这还能是谁啊？AMD？Intel？还是那些做专用AI芯片的新势力？",
+      "start": 187.469,
+      "duration": 6.531,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "我觉得呀，不管是谁，这个\"不签\"的动作本身就特别耐人寻味。签字意味着站队英伟达的生态，不签意味着自己有独立的路线图。说白了，要么是底气足，要么是赌对了未来。",
+      "start": 194.417,
+      "duration": 14.735,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "我跟你说，这背后的博弈深得很。英伟达这两年一直在推CUDA生态的开放标准，谁先把协议铺开，谁就拿到下一代AI基础设施的入场券。",
+      "start": 209.648,
+      "duration": 13.342,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "你看现在OpenAI的ChatGPT Work智能体背后跑的就是大量GPU资源，Anthropic也好、谷歌DeepMind也好，全都在抢算力。 哪家厂商能把这套标准握在手里，未来十年都有饭吃。",
+      "start": 223.402,
+      "duration": 15.693,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "所以\"Denny's\"这家不签，可能不是不愿意，是想让自己的技术路线被尊重，不想被英伟达牵着鼻子走。",
+      "start": 239.574,
+      "duration": 9.578,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "B",
+      "text": "嗯， 不管怎么说，这家公司的下一步动作会成为整个行业的风向标。咱们得盯着。",
+      "start": 249.584,
+      "duration": 7.097,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "行， 说完热闹的，咱们来几条快讯，走个轻快的节奏。",
+      "start": 257.149,
+      "duration": 5.05,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "B",
+      "text": "飞书深诺这个出海AI营销工具值得关注。",
+      "start": 262.689,
+      "duration": 4.31,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "对，我跟你说，做生意的朋友可能用得着。品牌出海最头疼的就是当地市场不熟， 花钱投广告打水漂。飞书深诺做的就是帮你用AI精准获客。",
+      "start": 267.476,
+      "duration": 16.414,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "B",
+      "text": "关键那个\"可信任\"三个字。现在AI营销最大的坑就是被平台判定违规或者数据造假，品牌主投了一堆钱，最后账号被封了。",
+      "start": 284.308,
+      "duration": 10.58,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "所以这个工具主打的就是合规，让中国品牌出海的时候能稳一点。",
+      "start": 295.327,
+      "duration": 5.573,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "B",
+      "text": "嗯。 再来看谷歌，DeepMind又发新模型了，而且一搞就是三个。",
+      "start": 301.312,
+      "duration": 5.355,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "这次是Gemini 3.6 Flash、3.5 Flash-Lite，还有3.5 Flash Cyber。",
+      "start": 307.16,
+      "duration": 7.358,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "你注意啊，3.6 Flash主打应该是性能升级，Lite版本走轻量化路线，Cyber这个版本看名字就知道是面向网络安全场景的。",
+      "start": 314.927,
+      "duration": 11.973,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "谷歌这布局挺清晰的，高中低三个档位全占了，再加专业垂直场景。",
+      "start": 327.387,
+      "duration": 8.577,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "B",
+      "text": "说白了，谷歌现在跟OpenAI干仗不靠单个模型，靠的是模型矩阵。不同场景用不同模型，成本和效果都能调到最优。",
+      "start": 336.406,
+      "duration": 10.71,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "这对咱们普通人有啥影响？",
+      "start": 347.576,
+      "duration": 2.264,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "影响就是以后你用的AI产品会越来越细分。比如你以后问医疗问题，不可能让通用模型给你答案，会有专门的医疗版本；问法律问题，会有专门的法律版本。垂直化是趋势。",
+      "start": 350.311,
+      "duration": 14.125,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "最后一个，arXiv上有一篇挺有意思的论文，Transformer被发现有\"硬决策层\"。",
+      "start": 364.848,
+      "duration": 9.491,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "B",
+      "text": "这个特别有意思。你知道Transformer现在做选择题是多轮的，会反复推敲答案对不对。",
+      "start": 374.784,
+      "duration": 6.748,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "嗯，然后呢？",
+      "start": 381.987,
+      "duration": 1.785,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "之前大家以为它每一步都在犹豫，但最新研究拍到了——在某些特定层，模型会突然\"拍板\"，不再左顾右盼，直接给答案。",
+      "start": 384.212,
+      "duration": 11.32,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "就像考试的时候最后五分钟突然不检查了直接交卷？",
+      "start": 396.01,
+      "duration": 5.094,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "B",
+      "text": "对，哈哈，挺形象。研究人员管这个叫\"承诺推理\"层——模型在哪个层级做出最终承诺，是可以被定位的。",
+      "start": 401.585,
+      "duration": 10.057,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "这事儿对咱们有啥用？",
+      "start": 412.068,
+      "duration": 1.785,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "B",
+      "text": "用途大了。你想，AI决策不透明一直是个大问题，法律、金融、医疗这些场景尤其敏感。现在我们知道哪一层在\"硬决策\"，就可以针对性地做解释、做审计。",
+      "start": 414.323,
+      "duration": 13.908,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "A",
+      "text": "等于给黑箱开了个小窗。",
+      "start": 428.692,
+      "duration": 2.961,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "B",
+      "text": "对，未来AI可解释性研究就可以围绕这些\"承诺层\"展开。这个方向一旦成熟，AI在敏感行业的落地会顺畅很多。",
+      "start": 432.109,
+      "duration": 9.404,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "A",
+      "text": "好的，今天的节目就到这里，咱们明天见。",
+      "start": 441.979,
+      "duration": 2.961,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "B",
+      "text": "明天见。",
+      "start": 445.373,
+      "duration": 0.653,
+      "audios": {
+        "professional": "chunk_047_professional.mp3",
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}

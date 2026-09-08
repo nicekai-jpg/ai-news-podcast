@@ -1,0 +1,635 @@
+{
+  "episode_id": "2026-08-16",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年8月16日，我是苏晴。",
+      "start": 1.0,
+      "duration": 8.359,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 9.808,
+      "duration": 1.437,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天这期节目信息量有点大，我感觉光看大纲就能聊上一整天。",
+      "start": 11.742,
+      "duration": 5.529,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "还真是，今天这几条新闻都挺有料的。开源那边在正面突围，谷歌内部也在大调整，连机器人都开始卷全身协调控制了。",
+      "start": 17.724,
+      "duration": 10.623,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "那咱们先聊最让我意外的那个——Qwen3.8-27B，这个模型你听说了没？阿里通义千问新发的。",
+      "start": 28.752,
+      "duration": 9.099,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你说这个啊，27B的参数量，一张消费级显卡就能本地部署起来，而且直接干翻了Claude。",
+      "start": 38.284,
+      "duration": 6.835,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "真的假的？27B跑出来什么效果？",
+      "start": 45.584,
+      "duration": 5.878,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你注意啊，这里有个关键点——它跑出来的不是一般对话能力，而是Opus级别的Agent能力。什么意思呢？就是说这个27B的模型在很多关键基准上已经把Anthropic的Claude给超了，而且是那种智能体任务层面的超越，不是简单问答。",
+      "start": 51.924,
+      "duration": 22.199,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "我跟你说，这个意义完全不一样。以前大家说开源模型追上闭源，追的都是写文案、做摘要这种基础能力。但Agent能力不一样，Agent是要能自己拆解任务、调用工具、一步步执行下去的。这个被开源拿下，等于说闭源API那层高溢价的壳子被直接撕开了。",
+      "start": 74.574,
+      "duration": 24.574,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "而且你知道最狠的是什么吗？推理能力还能自定义。你可以根据自己的业务场景调整它的推理风格和链路，这以前是闭源模型才敢吹的卖点。阿里直接把这条路铺到了消费级显卡上。",
+      "start": 99.648,
+      "duration": 15.388,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "那这对普通开发者来说到底意味着什么？",
+      "start": 115.474,
+      "duration": 3.57,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "说白了，以前你想玩Agent，要么花钱调OpenAI或者Anthropic的API，跑个复杂任务几十块钱就没了；要么自己买显卡、租云服务器，成本吓人。 现在一张4090甚至更低的卡就能本地部署27B跑Agent，速度还不慢。你想想这对独立开发者和小团队来说是多大的利好。",
+      "start": 119.505,
+      "duration": 21.788,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "我突然想到一个问题——这个27B开源，会不会倒逼那些闭源厂商降价？",
+      "start": 141.738,
+      "duration": 6.966,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "这是肯定的嘛。 你看OpenAI这两年一直在调价格，搞各种订阅档位，背后就是被开源逼的。当你的能力能在开源27B上复现个八九成，API定价就没有理由继续高高在上了。",
+      "start": 149.178,
+      "duration": 14.822,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "而且现在不光是Qwen，Meta的Llama、Mistral这些开源系都在追，整个开源阵营是越来越强。",
+      "start": 164.427,
+      "duration": 9.273,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "对，这次提到一个词我印象挺深——AI普惠的临界点。 我觉得这个描述挺准的。当部署门槛降到一张消费级显卡的时候，AI就不再是几家大公司的玩具了，而是真正能落到每个开发者手上的工具。",
+      "start": 174.164,
+      "duration": 15.78,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "说完这个开源的热闹，我跟你说，还有件事更让我意外——谷歌居然开始肢解DeepMind了。",
+      "start": 190.361,
+      "duration": 9.796,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "哈哈，是的，这个新闻你乍一看挺突然，但仔细想想又在意料之中。",
+      "start": 200.593,
+      "duration": 5.66,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "怎么讲？DeepMind不是谷歌的王牌吗？AlphaGo那个时代开始就是门面，怎么说拆就拆？",
+      "start": 206.67,
+      "duration": 8.141,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "你注意啊，拆的不是整个DeepMind，是把里面好几个团队划归到总部，而且据说是布林亲自下场督战。 这说明什么问题？说明谷歌觉得DeepMind过去的模式太学院派了，研究和产品之间隔着一堵墙。",
+      "start": 215.307,
+      "duration": 15.998,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "我听说过这种说法，DeepMind在伦敦那边有自己的研究节奏，发论文挺厉害，但落地到谷歌的产品里总感觉慢半拍。",
+      "start": 231.717,
+      "duration": 10.231,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "对，就是这个问题。当行业进入新阶段，开源模型在快速追赶、能力差距越来越小的时候，谷歌需要的不是再多几个惊艳的论文，而是让研究成果快速变成搜索、Gemini、Workspace这些产品里的实际功能。所以这次组织调整，本质上是从纯研究驱动切换到研究与产品一体化。",
+      "start": 242.427,
+      "duration": 23.399,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "布林亲自督战这个细节也挺值得琢磨。他这几年其实挺低调的，连发布会都不怎么露面，这次能跳出来管AI这摊事，说明谷歌是真着急了。",
+      "start": 266.258,
+      "duration": 12.844,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "说白了，就是感受到压力了。Anthropic在企业市场切走了一大块蛋糕，OpenAI在消费端还牢牢攥着用户，Meta的开源生态也越来越大。谷歌不能再让DeepMind按自己的节奏来了，必须集中力量办大事。",
+      "start": 279.57,
+      "duration": 17.129,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "但我有个担心——这种调整会不会反而伤害到DeepMind的创新能力？毕竟人家原来吸引人才靠的就是那种自由研究的氛围。",
+      "start": 297.189,
+      "duration": 11.886,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "你这个担心不是没道理。但你看Anthropic怎么起来的，OpenAI早期也是研究院气质，后面不都转向产品化了？整个行业的逻辑都变了，纯研究的时代已经过去了。当然DeepMind可能还会保留一些基础研究部门，但核心团队肯定是要和总部深度协同的。",
+      "start": 309.552,
+      "duration": 20.177,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "聊完巨头调整，咱们再看看DeepMind自己今天发了什么——Gemini Robotics 2和ER 2两个版本。",
+      "start": 330.147,
+      "duration": 9.012,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "嗯，这两个我还专门看了演示视频，确实有点东西。",
+      "start": 339.598,
+      "duration": 4.136,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "你给我翻译翻译，什么叫从脚趾到指尖的全身智能控制？",
+      "start": 344.146,
+      "duration": 6.966,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "你这么想啊，以前的机器人控制基本是分块的——胳膊是胳膊，腿是腿，手是手，每个部分单独写控制算法。但Gemini Robotics 2把整个身体当作一个统一的智能体来调度，你让它去拿高架子上的东西，它会自己决定怎么蹲下、怎么抬臂、怎么用指尖捏住、力度怎么分配，全是一气呵成。",
+      "start": 351.605,
+      "duration": 24.444,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "这听起来像不像咱们人手去够柜子顶层的调料瓶？身体自然协调重心和手部动作。",
+      "start": 376.458,
+      "duration": 7.532,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "对，就是这个感觉。以前机器人做不到这种全身协同，是因为底层控制是分模块写的，整合不到一起现在用大模型作为统一大脑来调度整个身体的运动，效果就完全不一样了。",
+      "start": 384.477,
+      "duration": 13.69,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "那ER 2呢？这个听起来更专一些。",
+      "start": 398.609,
+      "duration": 3.831,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "ER 2我猜那个ER应该是Embodied Robotics的意思，它专注的是多机器人协同。核心能力是视频理解、任务编排和多机器人协作。什么意思呢？就是你给这一堆机器人一段视频或者一段任务描述，它们能自己商量谁干什么。",
+      "start": 402.9,
+      "duration": 19.219,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "举个例子呢？",
+      "start": 422.59,
+      "duration": 1.088,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "比如说你在仓库里有一群机器人，ER 2能让它们自己分工——谁去搬运，谁去码放，谁去检查异常不是人为编程分配，是它们通过视频感知现场情况，自己推理出最优的协作方案。",
+      "start": 424.09,
+      "duration": 15.083,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "我跟你说这个才是真正有意思的地方。单个机器人能干活已经不稀奇了，让一群机器人自己组队、自己分工，这事儿才开始变成现实。",
+      "start": 439.618,
+      "duration": 10.754,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "而且这两个版本是配合着用的。Gemini Robotics 2负责把单个机器人变成全身灵光的个体，ER 2负责把一群这样的个体组织成有协同能力的团队。你想想把这个能力放到工厂、物流、甚至家庭服务场景里影响可就大了。",
+      "start": 450.827,
+      "duration": 18.784,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "周航，你这一说我突然有点感慨——今天聊的这三件事，其实都在指向一个趋势：AI能力正在从云端、从巨头手里，一层一层地下沉到普通人和中小企业这边。",
+      "start": 470.051,
+      "duration": 16.239,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "总结得挺到位。开源让开发者用消费级显卡就能跑顶级Agent，机器人开始能全身协调地干活，AI正在从能用变成好用。2026年的夏天，这个行业格局的变化真的是在加速。",
+      "start": 486.768,
+      "duration": 16.651,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "好，那今天的节目就到这里，感谢大家的收听，咱们下期再见！",
+      "start": 503.9,
+      "duration": 4.833,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "下期再见，拜拜！",
+      "start": 509.159,
+      "duration": 1.524,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}

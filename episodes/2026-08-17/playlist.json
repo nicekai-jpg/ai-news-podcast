@@ -1,0 +1,680 @@
+{
+  "episode_id": "2026-08-17",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年8月17日。我是苏晴。",
+      "start": 1.0,
+      "duration": 8.838,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 10.287,
+      "duration": 1.654,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天这条新闻我看完真的坐不住了，你知道Qwen3.8-27B那事儿吗？",
+      "start": 12.438,
+      "duration": 8.446,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "知道，通义千问新出的这个版本嘛，今天早上一打开推特全在刷。我跟你说，这次动静确实不小。",
+      "start": 21.337,
+      "duration": 7.576,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "对对对，你看那个标题写得多狠——\"一张消费级显卡跑出Opus级Agent\"。这话放半年前谁敢信啊？",
+      "start": 29.318,
+      "duration": 10.754,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你注意啊，关键信息其实有三个层次。第一，性能上，多项核心基准反超Claude；第二，能跑，单张消费级显卡就能部署；第三，能定制，推理路径可以自己改。这三点叠在一起才是真正要命的。",
+      "start": 40.505,
+      "duration": 17.26,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "周航你给我翻译翻译，这跟咱们普通听众到底有啥关系？我看评论区一堆人在喊\"开源赢了\"，这说法靠谱吗？",
+      "start": 58.23,
+      "duration": 10.362,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "这么说吧。过去你想让一个AI帮你做复杂任务链，比如自动订机票、写代码、查资料、生成报告串起来，你基本只能调OpenAI或者Anthropic的API，按token付费，数据还要上他们的云。但现在Qwen3.8-27B这种级别的模型，你买一张高端显卡，自己电脑就能跑，数据全在本地，推理逻辑还能按业务定制——你说这意味着什么？",
+      "start": 69.054,
+      "duration": 29.688,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "意味着……大模型真正变成\"水电煤\"了？跟当年Linux打掉服务器市场一个逻辑？",
+      "start": 99.193,
+      "duration": 7.445,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "哈，你这个类比还挺到位的。说白了，云端闭源大模型赚的是信息差和算力垄断的钱。一旦开源阵营在性能上追平甚至反超，这层窗户纸就捅破了。",
+      "start": 107.138,
+      "duration": 15.867,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "我比较好奇的是，这个\"推理能力可自定义\"具体怎么理解？是不是就是改改prompt那么简单？",
+      "start": 123.443,
+      "duration": 8.011,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "不是prompt层面，是模型本身的推理路径可以干预。你可以理解为，以前的开源模型更像一个成品厨师，给你什么你就吃什么；现在的Qwen3.8-27B更像个开放式厨房，你告诉他今天客人忌口什么、喜欢啥口味，他能重新规划整道菜的流程。",
+      "start": 131.915,
+      "duration": 21.483,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "这也太实用了吧。那对企业来说，尤其是那种对数据敏感的行业，比如金融、医疗，是不是直接起飞？",
+      "start": 153.843,
+      "duration": 8.925,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "对，这类客户之前最大的顾虑就是数据出境和合规。现在本地化部署，性能又不差，等于把最后一层窗户纸也捅了。我估计接下来半年，会有一波中型企业快速把工作流从云端API迁回本地。",
+      "start": 163.242,
+      "duration": 17.129,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "说到这儿我倒想吐槽一下OpenAI。你看咱们大纲里也提到，OpenAI今天不是刚发了一个\"Building abundant intelligence\"的路线图嘛，说要让AI更便宜更普惠——",
+      "start": 180.798,
+      "duration": 13.429,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "哈哈哈哈，你说这个。这不就是被Qwen、Llama这帮开源选手逼出来的吗？你注意啊，原文那个\"abundant\"用得很有意思，丰沛的、富足的意思。潜台词就是：我承认以前太贵了，现在我要变便宜。",
+      "start": 194.691,
+      "duration": 17.347,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "这反应速度挺快的。而且人家提的是\"全栈路线\"，从芯片到模型到应用都要自己搞。",
+      "start": 212.455,
+      "duration": 6.966,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "是，这就是在抢叙事权嘛。以前大家觉得OpenAI是最聪明的模型提供者，现在发现\"聪明\"这个词被开源追平了，那它就得换故事——变成最完整的AI基础设施提供商。说白了，护城河从模型层下沉到全栈层。",
+      "start": 219.857,
+      "duration": 16.694,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "行，那咱们换个话题。说真的，今天第二条新闻我觉得更有意思——DeepMind和Isomorphic Labs联合发了那个\"生物韧性\"路线图。这名字听起来就很玄乎。",
+      "start": 236.968,
+      "duration": 16.607,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "你别被名字唬住。咱们拆开看，Isomorphic Labs是DeepMind旗下的制药公司，这次联合发布的本质就是把AlphaFold那套蛋白质理解能力往外延伸，从\"看懂分子\"升级到\"看懂并增强整个生命系统的韧性\"。",
+      "start": 254.071,
+      "duration": 18.436,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "那具体能干啥？比如说我感冒了，它能给我配个新药？",
+      "start": 272.919,
+      "duration": 3.788,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "没那么直接，但逻辑是通的。生物韧性覆盖三个层面：一个是药物设计，针对疑难靶点加速新药研发；一个是抗生素耐药性，这个现在已经是全球性公共卫生危机了；再一个是生态系统响应，比如珊瑚礁退化、森林病害这种。AI for Science从\"理解分子\"迈向\"增强系统\"，这是质变。",
+      "start": 277.186,
+      "duration": 24.052,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "我跟你说，我之前看过一个数据说每年因为抗生素耐药性死的人比癌症还多，听着特别吓人。",
+      "start": 301.67,
+      "duration": 8.054,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "是，传统新药研发周期十年起步、烧钱几十亿美金，成功率不到10%。AI介入后，至少在靶点发现和分子筛选这两个环节效率提升是指数级的。这次路线图更激进，直接把视角拉到\"生命系统\"层级，等于在重新定义AI for Science的边界。",
+      "start": 310.192,
+      "duration": 20.221,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "那这是不是意味着以后咱们看病的方式都会变？",
+      "start": 330.903,
+      "duration": 3.744,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "会，但不是一朝一夕。短期内你看到的变化可能是某些罕见病突然有了新药，中期是临床试验效率提升、个性化治疗普及，长期才是真正的\"生命系统增强\"——听着科幻，但路线图已经画出来了。",
+      "start": 335.124,
+      "duration": 17.391,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "好，那说说快讯。微软那个Aurora 1.5你看了没？",
+      "start": 352.933,
+      "duration": 5.007,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "看了，这个更新挺硬核的。地球系统基础模型新增了22个气候变量，分辨率提升到逐小时，而且加了概率集合预报。说人话就是，以前Aurora预报台风大概只能告诉你\"会来\"，现在能告诉你\"有73%的概率在这个时间点登陆这个区域\"。",
+      "start": 358.379,
+      "duration": 20.134,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "那对普通人有啥实际影响？我以后查天气是不是更准了？",
+      "start": 378.925,
+      "duration": 4.702,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "直接影响你我可能感觉不强，但下游应用会受益。比如能源行业，风电、光伏的发电预测直接关系到电网调度；农业，提前知道寒潮或干旱能少损失多少粮食；防灾，台风路径的概率化预测能让撤离决策更科学。",
+      "start": 384.12,
+      "duration": 18.871,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "明白了，这种基础设施级别的AI更新，平时没感觉，关键时刻能救命。",
+      "start": 403.4,
+      "duration": 5.442,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "对，而且你注意啊，Aurora这种模型跟咱们前面聊的Qwen那种不一样，它走的是开放科学路线，数据和论文都公开，本质上是为全球科研社区服务的，不完全是商业产品。",
+      "start": 409.329,
+      "duration": 14.517,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "最后一条，OpenAI在欧洲的\"责任AI进展\"。这条听起来挺官方的，有什么值得聊的吗？",
+      "start": 424.288,
+      "duration": 7.967,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "有，而且挺关键。你知道欧盟AI法案是全球第一个全面AI监管框架，2024年8月生效，2026年正好进入实质性合规阶段。OpenAI这次主动公开在欧洲的安全、透明度、溯源实践，等于在监管博弈里从\"被动应对\"转向\"主动示范\"。",
+      "start": 432.715,
+      "duration": 22.441,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "我翻译一下就是——监管落地了，大厂开始表态度了？",
+      "start": 455.627,
+      "duration": 5.094,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "不只是表态度。你想啊，欧盟市场占全球GDP大概16%，你要是被定性为\"高风险不合规\"，整个市场就进不去了。所以这不是姿态问题，是真金白银的生意问题。OpenAI在抢合规标准的话语权——如果它的实践范式成为欧洲的参考标准，那其他厂商就得跟着它的规则走。",
+      "start": 461.133,
+      "duration": 20.83,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "哈，原来是这么个博弈。",
+      "start": 482.408,
+      "duration": 2.264,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "对，而且我跟你说，溯源这件事特别值得关注。以后每个AI生成的图片、视频、文本可能都要打\"数字水印\"或者\"来源标签\"，这对内容平台、版权方、监管机构都是全新的基础设施。",
+      "start": 485.127,
+      "duration": 15.17,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "想想还挺科幻的，以后刷到一段视频，第一反应就是\"这是不是AI生成的\"。",
+      "start": 500.737,
+      "duration": 6.182,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "这一天不会太远了。",
+      "start": 507.397,
+      "duration": 1.785,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "行，那今天咱们简单总结一下——开源这边Qwen3.8-27B捅破了消费级部署的天花板，OpenAI赶紧发路线图回应；DeepMind那边把AI for Science从分子层推到生命系统层；微软Aurora 1.5在气候预测上又进了一步；OpenAI在欧洲合规博弈里开始主动出击。整体看，今天这一天信息量挺大的。",
+      "start": 509.663,
+      "duration": 30.602,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "是，而且你注意啊，今天几条新闻串起来看有个共同点——AI的\"普惠化\"和\"基础设施化\"在同时加速。不管是模型层、科学层、气候层还是监管层，都在从\"少数人的玩具\"变成\"社会的底座\"。",
+      "start": 540.691,
+      "duration": 15.606,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "这话说得好。那今天就到这儿，感谢大家收听，咱们下期再见。",
+      "start": 556.767,
+      "duration": 4.92,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "下期再见，拜拜。",
+      "start": 562.148,
+      "duration": 1.48,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "拜拜～",
+      "start": 564.084,
+      "duration": 0.784,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    }
+  ]
+}

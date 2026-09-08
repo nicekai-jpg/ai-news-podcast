@@ -1,0 +1,695 @@
+{
+  "episode_id": "2026-09-08",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年9月8日。我是苏晴，今天咱们从数学之深聊到全球之广，看看AI正在怎样向外扩、向上钻。",
+      "start": 1.0,
+      "duration": 15.978,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "我是周航。今天的头条很有意思，一位菲尔兹奖得主直接冲进了大模型推理前沿，另一边是150多位全球技术大咖在深圳讨论开源，一个向最难的问题进军，一个让更多人和地区参与进来。",
+      "start": 17.427,
+      "duration": 14.866,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "先说菲尔兹奖得主这事儿，顶级数学家也开始卷大模型了，真的假的？我的第一反应是，数学家研究的不是公式吗，怎么突然跑来刷ARC-AGI 3了？",
+      "start": 32.79,
+      "duration": 14.387,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你注意啊，数学家真正擅长的是从极少信息里抽出结构，而ARC-AGI 3考的恰恰不是记住了多少知识，而是能不能观察新环境、猜出规则、连续行动，再根据反馈调整策略。",
+      "start": 47.63,
+      "duration": 15.867,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "这么看它更像让一个完全没玩过某类游戏的人，看几眼之后马上学会规则，还得举一反三，而不是传统的问答模型那样直接从资料库里找答案。",
+      "start": 63.902,
+      "duration": 15.717,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "对，这次方案用的是一个端侧4B量级Qwen，加云端GLM组成的双模型协同架构。手机端先看画面、识别对象和变化，云端再负责更长的推理链，两者交换的不是整段思考，而是有用的线索。",
+      "start": 80.052,
+      "duration": 17.478,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "这就像咱们去陌生城市找路，小助手先在路边看路牌、记特征，发现自己拿不准，就把几个关键岔路发给见多识广的朋友，而不是把整条街的视频全传过去。",
+      "start": 97.995,
+      "duration": 13.453,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "这个类比基本到位。4B量级模型的优势是响应快、离线可用，也更省电和隐私；云端GLM则能处理复杂规则。真正有价值的是异构协作，不是简单把两个模型名字放在一起。",
+      "start": 111.91,
+      "duration": 14.474,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "因为两个模型之间怎么沟通特别关键。你说\"这里好像能走\"，云端得知道你指的到底是颜色变化、物体位置，还是连续动作。要是来回传太多内容，延迟和费用马上就会冒出来。",
+      "start": 126.835,
+      "duration": 17.391,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "所以产品化之后一定会遇到三个现实问题：谁来判断自己不够聪明，传递多少信息才够，以及本地模型怎样从云端反馈里学习，而不是每一步都远程求助。产品亮点背后其实是调度系统。",
+      "start": 144.726,
+      "duration": 14.778,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "那位菲尔兹奖得主的意义，可能不只是榜单分数更高，而是有人开始用研究抽象结构和证明问题的思路，去拆大模型最缺的归纳、迁移与适应能力。",
+      "start": 159.942,
+      "duration": 14.759,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "你抓得很准。榜单成绩只能说明它在特定测试里表现好，不能直接宣布通用智能到账了。真正值得观察的是，这套方法换任务、换界面、换规则之后还能不能稳定。",
+      "start": 175.162,
+      "duration": 12.495,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "我就怕模型为了刷ARC-AGI 3，专门学会了测试里的视觉套路，那就跟背题库差不多。数学家入场后，至少会更强调定义、泛化边界和失败案例吧。",
+      "start": 188.102,
+      "duration": 14.106,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "肯定会更较真，也会追问分数提升来自结构理解，还是数据泄漏、提示方式和评测器漏洞。这种跨界真正值钱的地方，是把\"刷榜\"重新拉回可证明、可复现的问题。",
+      "start": 202.682,
+      "duration": 14.411,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "而且端云协同跟咱们普通人也有关。以后手机助手可能不必把所有数据都送上云，本地先处理敏感内容，只把必要任务交给云端，既快一点，也少一点隐私焦虑。",
+      "start": 217.52,
+      "duration": 13.192,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "说白了，未来智能体未必是一个大模型包打天下，更像一支分工不同的团队。不过团队越大，沟通成本越高，怎么让它们少报废话、互相校验，才是端云协作能走进产品里的关键。",
+      "start": 231.176,
+      "duration": 15.562,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "说完数学之深，咱们把镜头切到深圳。GOSIM首次落地深圳，全议程已经公布，150多位全球技术大咖，DHH以及英伟达、微软、Hugging Face等开源力量都会参与，这阵仗确实不小。",
+      "start": 247.155,
+      "duration": 19.045,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "你注意啊，大会最值得看的不只是名单长不长，而是不同阵营坐在同一张桌子上。DHH代表的是Ruby on Rails背后那种独立、务实的开源传统，大公司则掌握算力、云平台和工程分发能力。",
+      "start": 266.636,
+      "duration": 16.085,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "Hugging Face又把模型、数据集和开发者工具拉到一起。这样一边讨论怎么写代码，一边讨论模型怎么训练、部署和治理，碰撞起来肯定比单纯办一场演讲热闹。",
+      "start": 283.138,
+      "duration": 16.607,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "议题从开源基础设施、基础软件和开发工具，延伸到智能体、端侧AI与工程实践。真正关键的是，会议结束之后有没有可合并的代码、可复用的方案，以及愿意长期维护的社区。",
+      "start": 300.241,
+      "duration": 15.17,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "很多会开完只留下合影和通稿， 但开源大会要是能让中国开发者直接向全球项目贡献补丁、文档和案例，那输出影响力就不是请谁来撑场，而是别人真的会下载、复用和继续维护。",
+      "start": 315.823,
+      "duration": 17.434,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "深圳也有它的特殊气质。 硬件供应链、创业公司、机器人企业和制造场景挤在一起，工程迭代特别快，海外嘉宾看到的不只是演示视频，而是一套可以快速试错的生产环境。",
+      "start": 333.736,
+      "duration": 15.04,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "DHH在中间可能有点像那个专门追问的人：代码能不能跑，方案是不是绕路，复杂设计到底有没有必要。 他偶尔毒舌一点，反而能提醒行业别把概念包装当成技术成果。",
+      "start": 349.208,
+      "duration": 16.302,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "这场大会也是中美科技交流中的一次现实样本。 开源代码可以跨过边境流动，但算力、人才、治理规则和市场环境仍有差异。真正成熟的协作，是允许不同路线存在，也允许别人指出问题。",
+      "start": 365.978,
+      "duration": 14.3,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "对了还有谷歌。 Galaxy Unpacked 2026这一波，三个很直观的落点是Gentle Monster与Warby Parker联名AI眼镜，以及\"看图识建筑历史\"和\"看图订餐厅\"这类视觉搜索能力。",
+      "start": 380.768,
+      "duration": 17.826,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "先说眼镜。 Gentle Monster擅长时尚设计，Warby Parker了解配镜渠道，谷歌提供视觉模型和操作系统。这个组合说明AI眼镜不再只是极客玩具，开始认真考虑谁愿意戴、在哪里买。",
+      "start": 399.071,
+      "duration": 15.388,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "\"看图识建筑历史\"也很有画面感。 你站在一栋老建筑前，AI不只是告诉你这是哪种风格，还能结合地点和年代讲背后的城市故事，视觉搜索从识别物体变成理解场景。",
+      "start": 414.877,
+      "duration": 18.566,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "\"看图订餐厅\"则更往前一步。 看见菜单、门店照片或朋友发来的截图，AI可以理解你的偏好，筛选餐厅，再尝试完成订位。它不再只回答信息，而是开始替你调用服务。",
+      "start": 433.882,
+      "duration": 14.256,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "那这跟我们有什么关系？ 我觉得是手机上的聊天框可能会慢慢退到后台，AI直接长在相机、地图、支付和日历里。你不需要先想清楚要打开哪个应用，眼前的画面就是入口。",
+      "start": 448.55,
+      "duration": 13.385,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "但眼镜比手机多了一双持续观察世界的眼睛。 拍到别人之前能否明确提示，影像是否默认本地处理，餐厅和路人有没有拒绝拍摄的权利，这些都不是附加问题，而是产品能不能被信任的前提。",
+      "start": 462.428,
+      "duration": 15.693,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "下一条快讯更有人情味。OpenAI携手AIRPPU，并联合WAN-IFRA发起AI赋能计划，帮助乌克兰的独立新闻机构在战时提升创新能力和韧性，重点不是制造几个会写稿的聊天机器人。",
+      "start": 478.53,
+      "duration": 17.608,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "你注意啊，战时新闻机构面对的是采访受阻、信息碎片化、网站攻击、人员短缺和资料流失。AI如果用得合适，可以协助转写、翻译、整理采访线索、检索历史资料，也能让少量编辑覆盖更多语言。",
+      "start": 496.625,
+      "duration": 17.913,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "但新闻最不能丢的是来源。机器可以帮助记者发现材料，却不能把未经核实的内容直接推成标题，更不能在战时传播错误位置、伤亡信息或虚假画面，这比普通内容创作的风险高得多。",
+      "start": 514.98,
+      "duration": 16.563,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "所以这类项目真正的价值不是替代记者，而是保护记者的生产力。它还要考虑离线可用、账号安全、敏感资料保护和可追溯日志，让机构知道哪条内容由谁依据什么材料生成。",
+      "start": 532.003,
+      "duration": 14.822,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "还有一个很现实的点，独立媒体本来就缺预算，昂贵的企业工具未必用得起。如果合作能提供适配本地语言、新闻流程和基础设施的支持，才会真正提高韧性。",
+      "start": 547.296,
+      "duration": 15.02,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "OpenAI扩大巴西市场布局也是类似逻辑，但关注点从战时新闻转到开发者、企业与社区合作。巴西有庞大的葡语用户和活跃的技术群体，市场潜力不能只用用户数量衡量。",
+      "start": 562.728,
+      "duration": 15.344,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "葡语也不是把英语界面直接翻译过来就结束。法律文本、行业术语、教育场景和本地文化都需要单独适配，企业还要考虑数据驻留、隐私规则、云成本和支付能力。",
+      "start": 578.517,
+      "duration": 14.778,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "对开发者来说，布局有没有诚意，不看发布会说了多少，而看文档是否葡语化、模型价格能否承受、本地社区有没有稳定支持。企业则更关心模型能不能接进客服、金融、医疗和农业的真实流程。",
+      "start": 593.75,
+      "duration": 16.738,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "我还挺喜欢把巴西看作一次本地化能力的考试。全球模型如果能在葡萄牙语、法律合规和基础设施差异下仍然好用，才算真正从一个国家的产品，变成当地社会能用得上的工具。",
+      "start": 610.928,
+      "duration": 15.998,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "你看，今天几条消息其实连成了一条线：菲尔兹奖得主研究的是AI怎样获得更深的推理能力，GOSIM讨论怎样让全球开发者共同推进技术，而眼镜、乌克兰新闻业和巴西市场，则把AI放进真实世界。",
+      "start": 627.404,
+      "duration": 18.218,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "一边在问模型能不能想得更深，另一边在问技术能不能走得更广。数学之深决定上限，深圳、乌克兰和巴西这样的真实场景，则决定它最后能不能成为大家真正用得起、信得上的基础设施。",
+      "start": 646.103,
+      "duration": 18.61,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "这也是今天最值得记住的一句：AI正在同时向推理的深度和协作的广度加速，但榜单、参会名单和合作公告都不是终点，真正的考卷永远在现实生活里。",
+      "start": 665.139,
+      "duration": 13.671,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "好啦，今天的AI 每日先锋就到这里。菲尔兹奖得主、ARC-AGI 3、深圳开源盛事，还有眼镜、新闻援助和巴西市场，咱们下期接着聊它们后来到底有没有把承诺变成成果。",
+      "start": 679.28,
+      "duration": 21.048,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "我是周航，感谢大家收听。技术可以很快，问题可以很深，但咱们还是一步一个脚印，看它怎样真正改变普通人的生活。",
+      "start": 700.789,
+      "duration": 10.101,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 711.346,
+      "duration": 8.054,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 719.866,
+      "duration": 0.914,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
