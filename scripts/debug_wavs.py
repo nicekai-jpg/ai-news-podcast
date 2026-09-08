@@ -4,7 +4,7 @@ import numpy as np
 import soundfile as sf
 
 out_dir = Path("/Users/limingkai/nas/project/ai-news-podcast/site/episodes/benchmark")
-files = sorted(list(out_dir.glob("moss_*.wav")))
+files = sorted(out_dir.glob("moss_*.wav"))
 
 print("Analyzing MOSS-TTS-Nano generated wav files:")
 for f in files:

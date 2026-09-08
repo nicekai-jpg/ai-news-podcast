@@ -22,11 +22,13 @@ def test_gemini_via_openai(model_name):
             messages=[{"role": "user", "content": "你好，请回复'收到'"}],
             max_tokens=10,
         )
-        print(f"✅ 成功! 返回内容: {response.choices[0].message.content}")
-        return True
+        content = response.choices[0].message.content
     except Exception as e:
         print(f"❌ 失败! 错误信息: {e}")
         return False
+    else:
+        print(f"✅ 成功! 返回内容: {content}")
+        return True
 
 
 if __name__ == "__main__":

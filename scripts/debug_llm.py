@@ -11,7 +11,7 @@ logger = logging.getLogger("test_llm")
 
 def test():
     root = Path(__file__).resolve().parents[1]
-    with open(root / "config" / "config.yaml") as f:
+    with (root / "config" / "config.yaml").open() as f:
         cfg = yaml.safe_load(f)
 
     llm_cfg = cfg.get("llm", {})
@@ -35,8 +35,8 @@ def test():
             max_tokens=10,
         )
         logger.info(f"✅ LLM 响应成功: {response.choices[0].message.content}")
-    except Exception as e:
-        logger.error(f"❌ LLM 调用失败: {e}")
+    except Exception:
+        logger.exception("❌ LLM 调用失败")
 
 
 if __name__ == "__main__":

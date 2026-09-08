@@ -10,8 +10,7 @@ def _sanitize_for_tts(text: str) -> str:
     lines = [line.strip() for line in text.split("\n")]
     text = "\n".join(lines)
     text = re.sub(r"[ \t]+", " ", text)
-    text = re.sub(r"\n{3,}", "\n\n", text).strip()
-    return text
+    return re.sub(r"\n{3,}", "\n\n", text).strip()
 
 
 def _normalize_mood_tags(text: str) -> str:
@@ -19,18 +18,18 @@ def _normalize_mood_tags(text: str) -> str:
     lines = text.split("\n")
     result = []
     for line in lines:
-        line = line.strip()
-        if not line:
+        stripped = line.strip()
+        if not stripped:
             continue
-        m = re.match(r"\[mood:(\w+)\]\s*(.*)", line)
+        m = re.match(r"\[mood:(\w+)\]\s*(.*)", stripped)
         if m:
             mood, content = m.group(1), m.group(2)
             if mood not in valid_moods:
                 mood = "calm"
             if content.strip():
                 result.append(f"[mood:{mood}] {content.strip()}")
-        elif line.strip():
-            result.append(f"[mood:calm] {line.strip()}")
+        else:
+            result.append(f"[mood:calm] {stripped}")
     return "\n\n".join(result) + "\n" if result else "[mood:calm] 暂无内容。\n"
 
 
