@@ -32,6 +32,11 @@ podcast-daily    = "ai_news_podcast.cli.podcast_daily:entrypoint"
 podcast-publish  = "ai_news_podcast.cli.podcast_publish:entrypoint"
 podcast-report   = "ai_news_podcast.cli.podcast_report:entrypoint"
 
+[project.optional-dependencies]
+# 语义去重增强（sentence-transformers 会连带安装 torch，体积大；默认不装，
+# 未安装时 semantic_dedup 自动降级 TF-IDF 并输出 warning 日志）
+semantic = ["sentence-transformers>=3.0"]
+
 [dependency-groups]
 dev = [
     "ruff>=0.15.11",
