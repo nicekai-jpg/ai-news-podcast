@@ -75,7 +75,7 @@
 
 ### 5. 独创的 Git 媒体防膨胀发布策略
 为了防止 MP3 等高容量音频导致项目 Git 提交历史无限膨胀，项目采用了分支纯净的分流存储设计：
-* **`main` 分支（代码与文本）**：只追踪 Python 源码、YAML 配置、Briefs 数据和剧本 `.txt`/`.html` 文本。**绝对禁止提交任何 `.mp3` 音频文件**（通过 pre-commit 钩子强制拦截）。
+* **`main` 分支（代码与文本）**：只追踪 Python 源码、YAML 配置、Briefs 数据和剧本 `.txt`/`.html` 文本。**禁止提交任何 `.mp3` 音频文件**——本地由 pre-commit 钩子拦截，CI 中音频通过 workflow artifact 在 TTS 与 publish job 之间传递，不经过 main 分支。
 * **`gh-pages` 分支（媒体与部署）**：作为网站发布分支，存储网页静态文件、RSS 订阅源 XML、以及物理生成的 MP3 音频和智能句读音频片段切片文件夹。
 * **定期瘦身优化机制 (`prune_pages.yml`)**：每月 1 号（或手动）触发一次。它将最近 30 天在播的有效音频备份，并在本地建立一个全新、零历史记录的 `gh-pages` 孤立分支（orphan branch），将备份移回并强推覆盖远程分支。此时 `gh-pages` 提交数会重置为 1，30天外的旧音频被彻底物理清空，极大地释放了托管空间。
 ---
@@ -115,7 +115,7 @@
 ```
 ai-news-podcast/
 ├── .github/workflows/          # GHA 全自动流水线工作流
-│   ├── ci.yml                  # 格式化与静态检查 QA (Ruff)
+│   ├── ci.yml                  # 代码质量门禁（Ruff 检查 + 架构契约 + pytest）
 │   ├── daily.yml               # 每日新闻抓取、脚本编写与语音合成主流程
 │   └── prune_pages.yml         # 孤立分支瘦身与旧音频清理机制
 ├── assets/                     # 音频素材与音色参考
@@ -231,7 +231,7 @@ MINIMAX_API_KEY="你的-minimax-api-key"
 ```bash
 gh workflow run "Daily Podcast" -f date=YYYY-MM-DD
 ```
-*提示：由于 `daily.yml` 包含检查逻辑，若 main 分支上已存在对应日期的脚本 `.txt`，GHA 将直接使用该既有脚本合成音频，不会使用大模型重新生成覆盖，确保了您的人工修改能完美反映在最终播客中。*
+*提示：`podcast-writer` 每次运行都会调用大模型重新生成并覆盖 `site/episodes/{date}.txt`，不存在"沿用已有脚本"的逻辑。如果您想修正某期节目，可以直接在本地运行 `podcast-tts` 基于修正后的脚本合成音频；若触发云端 workflow 重跑，脚本将被重新生成覆盖。*
 
 ## 🤝 开源协议与鸣谢
 

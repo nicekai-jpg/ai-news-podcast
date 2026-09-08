@@ -62,6 +62,8 @@ Stage CLIs (console scripts in pyproject):
 - Stage 1 output: `data/briefs/brief_{date}.json`; reused if present unless
   `--force-refresh`. Cross-episode dedup filters against the last 14 episodes
   (semantic model `paraphrase-multilingual-MiniLM-L12-v2`, TF-IDF fallback).
+  sentence-transformers is an optional extra (`uv sync --extra semantic`, pulls torch);
+  without it dedup always uses the TF-IDF fallback and logs a warning.
 - Other artifacts: `data/reports/daily_report_{date}.md`,
   `site/episodes/{date}.txt` (script) and `.mp3` (audio),
   `data/episodes.json` (episode index, `keep_last: 30`).
@@ -109,8 +111,7 @@ Stage CLIs (console scripts in pyproject):
 - `docs/architecture.md` and `docs/pipeline_walkthrough.md` — pipeline design
 - `docs/development.md`, `docs/contributing.md` — dev workflow
 - `docs/tts_complete_guide.md`, `docs/gha_cosyvoice2_deployment_log.md` — CosyVoice setup
-- README and README.zh-CN are partially outdated: they list a `ci.yml` workflow that no
-  longer exists (only `daily.yml` + `prune_pages.yml` remain) and describe a script-reuse
-  behavior that isn't implemented. Report generation lives in `cli/podcast_report.py`
-  (via `call_llm` + `build_material_text`); HTML extraction uses readability-lxml.
-  Trust the code over the READMEs when they conflict.
+- `.github/workflows/` holds `ci.yml` (quality gate: ruff + import contracts + pytest;
+  bot commits carry `[skip ci]` so they don't re-trigger it), `daily.yml`, and
+  `prune_pages.yml`. READMEs were corrected on 2026-09-08; trust the code over the
+  docs when they conflict.

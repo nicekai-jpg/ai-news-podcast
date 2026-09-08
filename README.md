@@ -75,7 +75,7 @@ The project is structured as an end-to-end data pipeline executed daily:
 
 ### 5. Media Anti-Bloat Branch Strategy
 To keep the primary Git branch light and fast to pull, the repository splits content:
-* **`main` Branch (Code & Scripts)**: Contains source code, YAML configurations, Markdown files, and `.txt`/`.html` script transcript files. **No binary audio `.mp3` files are allowed**.
+* **`main` Branch (Code & Scripts)**: Contains source code, YAML configurations, Markdown files, and `.txt`/`.html` script transcript files. **No binary audio `.mp3` files are allowed** — audio travels between CI jobs via workflow artifacts and is deployed only to `gh-pages`.
 * **`gh-pages` Branch (Media & Hosting)**: Serves static player files, RSS feed, and full MP3 files.
 * **Monthly Pruning Job (`prune_pages.yml`)**: Automatically backs up the past 30 days of active episodes, cleans the entire `gh-pages` commit history (resetting commits count to 1), and force-pushes the backup back up, physically deleting old audio data to prevent Git size bloat.
 
@@ -116,7 +116,7 @@ The system relies on a curated set of specialized python libraries and system-le
 ```
 ai-news-podcast/
 ├── .github/workflows/          # GHA automation workflows
-│   ├── ci.yml                 # Linting & code format QA (Ruff)
+│   ├── ci.yml                 # Quality gate (Ruff lint + import contracts + pytest)
 │   ├── daily.yml              # Daily content pipeline & audio synthesis GHA
 │   └── prune_pages.yml        # Monthly gh-pages history optimization
 ├── assets/                     # Soundscapes & clone reference clips
@@ -231,7 +231,7 @@ If you ever want to rebuild a specific date (e.g. if the LLM output failed or sc
 ```bash
 gh workflow run "Daily Podcast" -f date=YYYY-MM-DD
 ```
-Since GHA contains a safeguard to skip writing if `site/episodes/YYYY-MM-DD.txt` already exists, you can manually fix any script text, push it, and trigger the GHA run, and GHA will synthesize the audio from your corrected script.
+Note: `podcast-writer` always regenerates and overwrites `site/episodes/{date}.txt` with fresh LLM output on every run — there is no "reuse the existing script" logic. To correct an episode, synthesize locally from your fixed script via `podcast-tts`; re-running the cloud workflow will produce a new script.
 
 ## 🤝 Open Source License & Attributions
 
