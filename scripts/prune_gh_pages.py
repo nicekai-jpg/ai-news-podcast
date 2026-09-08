@@ -132,6 +132,9 @@ def rebuild_orphan_branch(clone_dir: Path) -> None:
 
 def copy_site_assets(site_dir: Path, clone_dir: Path) -> None:
     """Copy static site structure from main's site/ dir (if exists)."""
+    # GitHub Pages needs .nojekyll to skip Jekyll processing; the deploy action writes
+    # it on every deploy, but a prune rebuild would otherwise drop it.
+    (clone_dir / ".nojekyll").touch()
     if not site_dir.exists():
         return
     log.info("Copying static site assets from main's site/...")
