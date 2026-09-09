@@ -100,3 +100,43 @@ class TestPruneEpisodes:
 
     def test_empty_list(self, tmp_path: Path) -> None:
         assert prune_episodes([], keep_last=5, episodes_dir=tmp_path) == []
+
+    def test_sweeps_orphan_files(self, tmp_path: Path) -> None:
+        episodes = [{"id": "2024-03-02", "published_at_iso": "2024-03-02T00:00:00+00:00"}]
+        (tmp_path / "2024-02-20.txt").write_text("orphan script")
+        (tmp_path / "2024-02-20.html").write_text("orphan notes")
+        (tmp_path / "2024-02-20").mkdir()
+        (tmp_path / "2024-02-20" / "playlist.json").write_text("{}")
+        (tmp_path / "2024-03-02.txt").write_text("keep")
+        (tmp_path / "unrelated.txt").write_text("keep")
+        (tmp_path / "notes.md").write_text("keep")
+
+        prune_episodes(episodes, keep_last=5, episodes_dir=tmp_path)
+
+        assert not (tmp_path / "2024-02-20.txt").exists()
+        assert not (tmp_path / "2024-02-20.html").exists()
+        assert not (tmp_path / "2024-02-20").exists()
+        assert (tmp_path / "2024-03-02.txt").exists()
+        assert (tmp_path / "unrelated.txt").exists()
+        assert (tmp_path / "notes.md").exists()
+
+    def test_sweep_spares_in_flight_future_files(self, tmp_path: Path) -> None:
+        # 脚本已提交、剧集还没发布(索引里没有该日期)时,绝不能删。
+        episodes = [{"id": "2024-03-02", "published_at_iso": "2024-03-02T00:00:00+00:00"}]
+        (tmp_path / "2024-03-03.txt").write_text("in-flight script")
+        (tmp_path / "2024-03-01.txt").write_text("real orphan")
+
+        prune_episodes(episodes, keep_last=5, episodes_dir=tmp_path)
+
+        assert (tmp_path / "2024-03-03.txt").exists()
+        assert not (tmp_path / "2024-03-01.txt").exists()
+
+    def test_sweep_skipped_when_ids_not_dates(self, tmp_path: Path) -> None:
+        episodes = [{"id": "weird-id", "published_at_iso": "2024-03-02T00:00:00+00:00"}]
+        (tmp_path / "2024-03-01.txt").write_text("would-be orphan")
+        (tmp_path / "weird-id.txt").write_text("current")
+
+        prune_episodes(episodes, keep_last=5, episodes_dir=tmp_path)
+
+        assert (tmp_path / "2024-03-01.txt").exists()
+        assert (tmp_path / "weird-id.txt").exists()

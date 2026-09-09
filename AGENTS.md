@@ -99,19 +99,30 @@ Stage CLIs (console scripts in pyproject):
   from pre-commit but still linted by `make lint`.
 - Tests mirror modules one-to-one. `tests/conftest.py` provides a `make_raw_item`
   factory and mock fixtures for feedparser/httpx/readability/bs4; e2e tests mock
-  LLM and TTS. No pytest ini section exists — defaults apply.
+  LLM and TTS. `tests/test_prune_gh_pages.py` additionally covers
+  `scripts/prune_gh_pages.py` (loaded by path via importlib). No pytest ini section
+  exists — defaults apply.
+- `prune_episodes` (cli/episode_utils.py) also sweeps "orphan" files for dates that
+  are not in episodes.json (e.g. a script committed but TTS failed). It only touches
+  date-shaped names and never deletes dates newer than the newest indexed episode,
+  so in-flight scripts survive.
 - `.github/workflows/daily.yml` job chain: `stage1 → writer → report → tts → publish`;
   each job commits `daily: brief|script|report|publish {date} [skip ci]` to main.
   No push trigger, so bot commits don't re-trigger. The publish job deletes
-  `.gitignore` and deploys `site/` to gh-pages via peaceiris action (`keep_files`).
-  `prune_pages.yml` monthly rebuilds gh-pages as an orphan branch (30-day audio retention).
+  `.gitignore` and deploys `site/` to gh-pages via peaceiris action (`keep_files`);
+  it force-adds `site/episodes/{date}/playlist.json` — that chunk metadata is the
+  only per-episode site content tracked on main, while audio, show notes HTML and
+  full chunk dirs live only on gh-pages (prune_gh_pages.py backs them up on rebuild).
+  `daily.yml` and `prune_pages.yml` share the `podcast-pipeline` concurrency group
+  so manual dispatches queue instead of racing. `prune_pages.yml` monthly rebuilds
+  gh-pages as an orphan branch (30-day audio retention).
 
 ## Docs to read before touching sensitive areas
 
 - `docs/architecture.md` and `docs/pipeline_walkthrough.md` — pipeline design
 - `docs/development.md`, `docs/contributing.md` — dev workflow
 - `docs/tts_complete_guide.md`, `docs/gha_cosyvoice2_deployment_log.md` — CosyVoice setup
-- `.github/workflows/` holds `ci.yml` (quality gate: ruff + import contracts + pytest;
-  bot commits carry `[skip ci]` so they don't re-trigger it), `daily.yml`, and
-  `prune_pages.yml`. READMEs were corrected on 2026-09-08; trust the code over the
-  docs when they conflict.
+- `.github/workflows/` holds `ci.yml` (quality gate: ruff check + ruff format check
+  + import contracts + pytest; bot commits carry `[skip ci]` so they don't re-trigger
+  it), `daily.yml`, and `prune_pages.yml`. READMEs were corrected on 2026-09-08;
+  trust the code over the docs when they conflict.
