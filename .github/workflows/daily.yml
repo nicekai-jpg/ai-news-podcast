@@ -235,7 +235,7 @@ jobs:
 
   publish:
     name: Stage 5 (publish site)
-    needs: [tts, report]
+    needs: [tts]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -266,16 +266,16 @@ jobs:
         env:
           TZ: Asia/Shanghai
         run: |
-          EPISODE="${{ needs.tts.outputs.episode_id || needs.report.outputs.episode_id }}"
+          EPISODE="${{ needs.tts.outputs.episode_id }}"
           uv run podcast-publish --date "$EPISODE"
 
       - name: Commit site
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          EPISODE="${{ needs.tts.outputs.episode_id || needs.report.outputs.episode_id }}"
+          EPISODE="${{ needs.tts.outputs.episode_id }}"
           git add -u site/ data/episodes.json
-          git add -f "site/reports/daily_report_${EPISODE}.md"
+          git add -f "site/reports/daily_report_${EPISODE}.md" 2>/dev/null || echo "No daily report for ${EPISODE}, skipped"
           git add -f "site/episodes/${EPISODE}/playlist.json" 2>/dev/null || echo "No playlist.json for ${EPISODE}, skipped"
           if git diff --cached --quiet; then
             echo "No site changes to commit"
