@@ -60,26 +60,32 @@ def load_valid_episode_ids(episodes_json_path: Path) -> set[str] | None:
 
 
 def ensure_gh_pages_clone(root_dir: Path, remote_url: str) -> Path:
-    """Clone gh-pages into a temp dir, or init a fresh one if the branch is missing."""
+    """Clone gh-pages into a temp dir; init a fresh one only if the branch truly doesn't exist.
+
+    A blind "clone failed → start from scratch" fallback would wipe every deployed
+    episode: with no clone there is nothing to back up, and the script still force-pushes.
+    So probe the remote first and abort on any failure other than a missing branch.
+    """
     clone_dir = root_dir / "tmp_gh_pages_clone"
     if clone_dir.exists():
         shutil.rmtree(clone_dir)
 
-    log.info("Cloning gh-pages branch...")
-    try:
-        run_cmd(
-            ["git", "clone", "--branch", "gh-pages", "--single-branch", remote_url, str(clone_dir)]
+    log.info("Probing gh-pages branch existence via ls-remote...")
+    probe = run_cmd(["git", "ls-remote", "--heads", remote_url, "gh-pages"], check=False)
+    if probe.returncode != 0:
+        raise RuntimeError(
+            f"Cannot reach remote to verify gh-pages branch, aborting: {probe.stderr.strip()}"
         )
-    except Exception as e:
-        log.warning(
-            "Failed to clone gh-pages branch directly (possibly branch doesn't exist yet): %s", e
-        )
-        log.info("Will attempt to initialize a new gh-pages branch from scratch.")
-        # If gh-pages doesn't exist, we'll create the directory and initialize it as a git repo
+    if not probe.stdout.strip():
+        log.warning("gh-pages branch does not exist yet; initializing a fresh one.")
         clone_dir.mkdir(parents=True, exist_ok=True)
         run_cmd(["git", "init"], cwd=clone_dir)
         run_cmd(["git", "checkout", "-b", "gh-pages"], cwd=clone_dir)
         run_cmd(["git", "remote", "add", "origin", remote_url], cwd=clone_dir)
+        return clone_dir
+
+    log.info("Cloning gh-pages branch...")
+    run_cmd(["git", "clone", "--branch", "gh-pages", "--single-branch", remote_url, str(clone_dir)])
     return clone_dir
 
 
@@ -154,7 +160,9 @@ def _episode_asset_names(valid_ids: set[str]) -> set[str]:
     return names
 
 
-def restore_episodes(backup_dir: Path, site_dir: Path, clone_dir: Path, valid_ids: set[str]) -> None:
+def restore_episodes(
+    backup_dir: Path, site_dir: Path, clone_dir: Path, valid_ids: set[str]
+) -> None:
     """Restore backed-up episodes, then merge fresh ones from main's site/."""
     target_episodes_dir = clone_dir / "episodes"
     target_episodes_dir.mkdir(parents=True, exist_ok=True)
@@ -180,14 +188,16 @@ def restore_episodes(backup_dir: Path, site_dir: Path, clone_dir: Path, valid_id
             continue
 
         target_path = target_episodes_dir / item.name
-        if target_path.is_dir():
-            shutil.rmtree(target_path)
-        elif target_path.exists():
-            target_path.unlink()
-
         if item.is_dir():
+            # Chunk dirs: never overwrite the restored backup. Audio is untracked on
+            # main, so a CI checkout can hold partial chunk dirs (playlist.json only)
+            # that must not replace the full restored ones.
+            if target_path.exists():
+                continue
             shutil.copytree(item, target_path)
         else:
+            # Plain files (.mp3/.html/.txt): main's copy is the fresher regeneration,
+            # so it wins over a possibly stale backup file.
             shutil.copy2(item, target_path)
 
 
