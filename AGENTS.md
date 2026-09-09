@@ -119,7 +119,8 @@ Stage CLIs (console scripts in pyproject):
   `site/episodes/{date}/playlist.json` — that chunk metadata is the only per-episode site
   content tracked on main, while audio, show notes HTML and full chunk dirs live only on
   gh-pages (prune_gh_pages.py backs them up on rebuild). The trailing `notify` job
-  (`if: always()`, job-level `issues: write` + `actions: write`) writes a per-job health
+  (`if: always()`, job-level `contents: read` + `issues: write` + `actions: write`)
+  writes a per-job health
   report to the Step Summary; on failure it opens/comments a GitHub issue
   `⚠️ Daily pipeline failed: {date}` and auto-re-runs the workflow ONCE via
   `-f retry=true` (a failed retry only alerts, no second rerun); on success it

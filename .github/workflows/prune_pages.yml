@@ -51,3 +51,13 @@ jobs:
           else
             gh issue create --title "$TITLE" --body "$BODY"
           fi
+
+      - name: Close stale failure issues
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          for N in $(gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"gh-pages prune failed\"" --jq '.items[].number' 2>/dev/null || true); do
+            gh issue close "$N" -c "本次 prune 成功,自动关闭。"
+          done
