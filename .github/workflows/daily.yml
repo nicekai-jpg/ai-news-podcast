@@ -253,6 +253,7 @@ jobs:
           TZ: Asia/Shanghai
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
         run: |
+          echo "TTS_START_EPOCH=$(date +%s)" >> "$GITHUB_ENV"
           EPISODE="${{ needs.writer.outputs.episode_id }}"
           export COSYVOICE_MODEL_DIR="$HOME/cosyvoice_models/CosyVoice2-0.5B"
           export PYTHONPATH="$HOME/cosyvoice_src:$HOME/cosyvoice_src/third_party/Matcha-TTS"
@@ -265,7 +266,12 @@ jobs:
       - name: Report synthesis duration
         if: always()
         run: |
-          echo "TTS 用时: $((SECONDS / 60)) 分 $((SECONDS % 60)) 秒(episode ${{ needs.writer.outputs.episode_id }})" >> "$GITHUB_STEP_SUMMARY"
+          if [ -n "${TTS_START_EPOCH:-}" ]; then
+            DUR=$(( $(date +%s) - TTS_START_EPOCH ))
+            echo "TTS 用时: $((DUR / 60)) 分 $((DUR % 60)) 秒(episode ${{ needs.writer.outputs.episode_id }})" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "TTS 用时: 未知(合成步骤未记录起点)" >> "$GITHUB_STEP_SUMMARY"
+          fi
 
       # 音频只通过 artifact 传递给 publish job，不提交到 main，避免 git 历史膨胀
       - name: Upload episode audio artifact
@@ -450,7 +456,7 @@ jobs:
           失败环节: $FAILED
           Run: $RUN_URL
           重试策略: $RETRY_NOTE"
-            FOUND=$(gh api "search/issues?q=repo:$GH_REPO+in:title+state:open+\"$TITLE\"" --jq '.items[0].number' 2>/dev/null || true)
+            FOUND=$(gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"Daily pipeline failed: $EPISODE\"" --jq '.items[0].number' 2>/dev/null || true)
             if [ -n "$FOUND" ]; then
               gh issue comment "$FOUND" --body "$BODY"
             else
@@ -461,7 +467,7 @@ jobs:
               echo "已触发自动重跑: date=$EPISODE retry=true"
             fi
           else
-            for N in $(gh api "search/issues?q=repo:$GH_REPO+in:title+state:open+\"Daily pipeline failed\"" --jq '.items[].number' 2>/dev/null || true); do
+            for N in $(gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"Daily pipeline failed\"" --jq '.items[].number' 2>/dev/null || true); do
               gh issue close "$N" -c "今日运行全部成功,自动关闭。Run: $RUN_URL"
             done
           fi
