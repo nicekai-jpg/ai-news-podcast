@@ -9,6 +9,11 @@ on:
         description: "Episode date (YYYY-MM-DD), default is today"
         required: false
         type: string
+      retry:
+        description: "Internal: auto-retry pass (do not set manually)"
+        required: false
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -349,3 +354,75 @@ jobs:
             exit 1
           fi
           echo "gh-pages reconciliation OK"
+
+  notify:
+    name: Health check & alert
+    needs: [stage1, writer, report, tts, publish]
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      actions: write
+    steps:
+      - name: Summarize, alert and auto-retry
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          EPISODE: ${{ needs.stage1.outputs.episode_id }}
+          S1: ${{ needs.stage1.result }}
+          WRITER: ${{ needs.writer.result }}
+          REPORT: ${{ needs.report.result }}
+          TTS: ${{ needs.tts.result }}
+          PUBLISH: ${{ needs.publish.result }}
+          RETRY: ${{ github.event.inputs.retry }}
+        run: |
+          EPISODE="${EPISODE:-$(date -u +%F)}"
+          FAILED=""
+          if [ "$S1" != "success" ]; then FAILED="$FAILED stage1=$S1"; fi
+          if [ "$WRITER" = "failure" ] || [ "$WRITER" = "cancelled" ]; then FAILED="$FAILED writer=$WRITER"; fi
+          if [ "$REPORT" = "failure" ] || [ "$REPORT" = "cancelled" ]; then FAILED="$FAILED report=$REPORT"; fi
+          if [ "$TTS" = "failure" ] || [ "$TTS" = "cancelled" ]; then FAILED="$FAILED tts=$TTS"; fi
+          if [ "$PUBLISH" = "failure" ] || [ "$PUBLISH" = "cancelled" ]; then FAILED="$FAILED publish=$PUBLISH"; fi
+
+          {
+            echo "## Daily Podcast 健康报告 — $EPISODE"
+            echo ""
+            echo "| job | 结果 |"
+            echo "|---|---|"
+            echo "| stage1 | $S1 |"
+            echo "| writer | $WRITER |"
+            echo "| report | $REPORT |"
+            echo "| tts | $TTS |"
+            echo "| publish | $PUBLISH |"
+            echo ""
+            echo "Run: $RUN_URL"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          TITLE="⚠️ Daily pipeline failed: $EPISODE"
+          if [ -n "$FAILED" ]; then
+            if [ "$RETRY" = "true" ]; then
+              RETRY_NOTE="本次已是自动重跑,不再继续重试,需要人工介入"
+            else
+              RETRY_NOTE="将自动重跑一次"
+            fi
+            BODY="日期: $EPISODE
+          失败环节: $FAILED
+          Run: $RUN_URL
+          重试策略: $RETRY_NOTE"
+            FOUND=$(gh api "search/issues?q=repo:$GH_REPO+in:title+state:open+\"$TITLE\"" --jq '.items[0].number' 2>/dev/null || true)
+            if [ -n "$FOUND" ]; then
+              gh issue comment "$FOUND" --body "$BODY"
+            else
+              gh issue create --title "$TITLE" --body "$BODY"
+            fi
+            if [ "$RETRY" != "true" ]; then
+              gh workflow run daily.yml --ref main -f date="$EPISODE" -f retry=true
+              echo "已触发自动重跑: date=$EPISODE retry=true"
+            fi
+          else
+            for N in $(gh api "search/issues?q=repo:$GH_REPO+in:title+state:open+\"Daily pipeline failed\"" --jq '.items[].number' 2>/dev/null || true); do
+              gh issue close "$N" -c "今日运行全部成功,自动关闭。Run: $RUN_URL"
+            done
+          fi
