@@ -269,6 +269,29 @@ jobs:
           EPISODE="${{ needs.tts.outputs.episode_id }}"
           uv run podcast-publish --date "$EPISODE"
 
+      - name: Validate episode artifacts
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          EPISODE="${{ needs.tts.outputs.episode_id }}"
+          python3 - "$EPISODE" <<'PYEOF'
+          import json
+          import sys
+          from pathlib import Path
+
+          ep = sys.argv[1]
+          mp3 = Path(f"site/episodes/{ep}.mp3")
+          assert mp3.exists(), f"missing {mp3}"
+          size = mp3.stat().st_size
+          assert size > 100_000, f"mp3 too small: {size} bytes"
+          feed = Path("site/feed.xml").read_text(encoding="utf-8")
+          assert f"episodes/{ep}.mp3" in feed, "feed.xml missing episode enclosure"
+          index = json.loads(Path("data/episodes.json").read_text(encoding="utf-8"))
+          eps = index if isinstance(index, list) else index.get("episodes", [])
+          assert any(str(e.get("id")) == ep for e in eps), "episodes.json missing entry"
+          print(f"validated {ep}: mp3={size} bytes, feed+index ok")
+          PYEOF
+
       - name: Commit site
         run: |
           git config user.name "github-actions[bot]"
