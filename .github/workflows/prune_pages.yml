@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 # 与 daily.yml 共用同一并发组:prune 会 force-push gh-pages,
 # 不能和正在运行的 daily(也会 push main / 部署 gh-pages)重叠。
@@ -35,3 +36,18 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: python scripts/prune_gh_pages.py
+
+      - name: Alert on failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          TITLE="⚠️ gh-pages prune failed: $(date -u +%F)"
+          BODY="Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          FOUND=$(gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"gh-pages prune failed\"" --jq '.items[0].number' 2>/dev/null || true)
+          if [ -n "$FOUND" ]; then
+            gh issue comment "$FOUND" --body "$BODY"
+          else
+            gh issue create --title "$TITLE" --body "$BODY"
+          fi
