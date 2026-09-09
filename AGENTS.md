@@ -106,16 +106,27 @@ Stage CLIs (console scripts in pyproject):
   are not in episodes.json (e.g. a script committed but TTS failed). It only touches
   date-shaped names and never deletes dates newer than the newest indexed episode,
   so in-flight scripts survive.
-- `.github/workflows/daily.yml` job chain: `stage1 → writer → report → tts → publish`;
-  each job commits `daily: brief|script|report|publish {date} [skip ci]` to main.
-  No push trigger, so bot commits don't re-trigger. The publish job deletes
-  `.gitignore` and deploys `site/` to gh-pages via peaceiris action (`keep_files`);
-  it force-adds `site/episodes/{date}/playlist.json` — that chunk metadata is the
-  only per-episode site content tracked on main, while audio, show notes HTML and
-  full chunk dirs live only on gh-pages (prune_gh_pages.py backs them up on rebuild).
-  `daily.yml` and `prune_pages.yml` share the `podcast-pipeline` concurrency group
-  so manual dispatches queue instead of racing. `prune_pages.yml` monthly rebuilds
-  gh-pages as an orphan branch (30-day audio retention).
+- `.github/workflows/daily.yml` job chain: main line is `stage1 → writer → tts → publish`;
+  `report` is a fire-and-forget side branch off stage1 — its failure alerts but does not
+  block publish. Each job commits `daily: brief|script|report|publish {date} [skip ci]`
+  to main. No push trigger, so bot commits don't re-trigger. The writer job appends
+  script-quality stats and the tts job a TTS duration line to the Step Summary
+  (`if: always()`). The publish job has a job-level env `MIN_MP3_BYTES: '100000'`
+  (mp3 truncation guard) shared by pre-publish artifact validation (mp3 exists and size
+  above threshold, `feed.xml` enclosure, `episodes.json` entry) and post-deploy gh-pages
+  reconciliation (mp3 size + `playlist.json`); it then deletes `.gitignore` and deploys
+  `site/` to gh-pages via peaceiris action (`keep_files`), force-adding
+  `site/episodes/{date}/playlist.json` — that chunk metadata is the only per-episode site
+  content tracked on main, while audio, show notes HTML and full chunk dirs live only on
+  gh-pages (prune_gh_pages.py backs them up on rebuild). The trailing `notify` job
+  (`if: always()`, job-level `issues: write` + `actions: write`) writes a per-job health
+  report to the Step Summary; on failure it opens/comments a GitHub issue
+  `⚠️ Daily pipeline failed: {date}` and auto-re-runs the workflow ONCE via
+  `-f retry=true` (a failed retry only alerts, no second rerun); on success it
+  auto-closes open failure issues. `daily.yml` and `prune_pages.yml` share the
+  `podcast-pipeline` concurrency group so manual dispatches queue instead of racing.
+  `prune_pages.yml` monthly rebuilds gh-pages as an orphan branch (30-day audio
+  retention) and, on failure, alerts via a `gh-pages prune failed` issue.
 
 ## Docs to read before touching sensitive areas
 
