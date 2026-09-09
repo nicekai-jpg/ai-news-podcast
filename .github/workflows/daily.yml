@@ -317,3 +317,23 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
           keep_files: true
+
+      - name: Verify gh-pages deployment
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          EPISODE="${{ needs.tts.outputs.episode_id }}"
+          sleep 10
+          SIZE=$(gh api "repos/$GH_REPO/contents/episodes/$EPISODE.mp3?ref=gh-pages" --jq '.size' 2>/dev/null || echo 0)
+          echo "gh-pages $EPISODE.mp3 size: $SIZE"
+          if [ "$SIZE" -le 100000 ]; then
+            echo "::error::$EPISODE.mp3 missing or too small on gh-pages"
+            exit 1
+          fi
+          PLAYLIST=$(gh api "repos/$GH_REPO/contents/episodes/$EPISODE/playlist.json?ref=gh-pages" --jq '.size' 2>/dev/null || echo 0)
+          if [ "$PLAYLIST" -le 0 ]; then
+            echo "::error::$EPISODE/playlist.json missing on gh-pages"
+            exit 1
+          fi
+          echo "gh-pages reconciliation OK"
