@@ -1,0 +1,1250 @@
+{
+  "episode_id": "2026-09-09",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年9月9日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.663,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 9.112,
+      "duration": 1.524,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天科技圈有几个事儿，我看完之后脑子一直是嗡嗡的，你给咱聊聊。",
+      "start": 11.133,
+      "duration": 6.008,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "行，你说。",
+      "start": 17.594,
+      "duration": 1.045,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "头一个，菲尔兹奖得主亲自下场搞大模型了。领衔团队用\"端侧4B Qwen加上云端GLM\"的协同架构，在那个号称抽象推理天花板的ARC-AGI 3上刷出了新成绩。",
+      "start": 19.044,
+      "duration": 17.87,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你注意啊，这个事信息量挺大。菲尔兹奖是数学界的诺贝尔奖，最顶尖的纯数学大脑现在下场研究AI推理，说明什么？说明行业里的人都意识到，光靠堆参数这条路快走到头了。",
+      "start": 37.347,
+      "duration": 15.301,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "我跟你说，我看到4B这个数字的时候还愣了一下。4B就是40亿参数，现在大模型动不动上千亿，4B算个啥？",
+      "start": 53.113,
+      "duration": 9.97,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "问题是人家这个4B不是单兵作战，是跟云端的GLM协同干活。你可以这么理解——相当于一支小而精的特种部队在前线做侦察，把情报传给后方的指挥部做战略决策。",
+      "start": 63.545,
+      "duration": 14.561,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "哈，这比喻好。我之前一直以为小模型就是给大模型搬砖头的，结果人家反过来了，小模型在前沿做抽象推理，云端做总指挥。",
+      "start": 78.557,
+      "duration": 11.059,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "对，而且端侧4B能直接跑在手机上，这意味着用户提问时能几乎零延迟拿到初步反馈，复杂的部分再丢给云端慢慢算。",
+      "start": 90.116,
+      "duration": 10.536,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "听起来就像点外卖，手机上秒看菜单，后厨慢慢颠勺。",
+      "start": 101.09,
+      "duration": 6.4,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "哈，差不多。 这套架构真正牛的地方在于，它打破了\"大模型必须又大又重才能搞复杂推理\"的迷思，给行业指出了一条新路。",
+      "start": 107.951,
+      "duration": 9.796,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "而且那个团队提了个观点我特别想琢磨——\"拼参数不如拼架构与对齐\"。 这话分量有多重？",
+      "start": 118.192,
+      "duration": 8.882,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "说白了，给整个行业泼了一盆清醒水。 过去两年大家都在卷参数、卷规模，结果人家告诉你，方向可能根本不是把模型做得更大，而是怎么让模型更聪明地协作、更精准地对齐人类意图。",
+      "start": 127.548,
+      "duration": 16.172,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "嗯，数学家视角介入也算开了新口子。 搞数学的最擅长什么？抽象推理、形式化证明，他们看推理问题的角度跟工程师完全不一样。",
+      "start": 144.147,
+      "duration": 12.844,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "没错，这种跨学科碰撞往往能催生真正的方法论革新， 不是小修小补。",
+      "start": 157.455,
+      "duration": 6.4,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "那这事儿对咱们普通人有啥影响？",
+      "start": 164.272,
+      "duration": 2.264,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "短期内影响不大，但中长期看，如果这套架构跑通了，未来你手机里就能跑一个推理能力顶级的AI助手，不用什么都靠云端。 这对隐私、延迟、成本都是巨大利好。",
+      "start": 166.972,
+      "duration": 12.34,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "说到AI for Science，再讲一个让我头皮发麻的—— DeepMind刚发布AlphaGenome Atlas。",
+      "start": 179.729,
+      "duration": 9.143,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "嗯，这个我也仔细看了。 简单说就是他们搞了一套系统，能预测人类全基因组里90亿个单字母DNA变异的分子效应。",
+      "start": 189.368,
+      "duration": 10.536,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "我跟你说，90亿这个数字我反复确认了好几遍。人类基因组大概30亿个碱基对，每个位置都可能变异，现在他们把几乎所有变异的效应都给预测了一遍。",
+      "start": 200.316,
+      "duration": 13.888,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "你注意啊，这事厉害在哪儿——过去研究基因变异功能，基本是\"个别已知位点\"的模式。研究人员盯着一两个致病基因反复做实验，一年能搞清楚几个位点就算高产。",
+      "start": 214.683,
+      "duration": 13.124,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "那现在等于直接全基因组覆盖了？",
+      "start": 228.239,
+      "duration": 2.961,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "对，相当于从\"一盏灯照亮一个房间\"直接跳到\"整个城市夜景图\"。这种跃迁的工程量是惊人的。",
+      "start": 231.668,
+      "duration": 7.793,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "这也太浪漫了。我脑子里画面是，科学家以前拿着放大镜一寸一寸找宝贝，现在AI直接把整个地球的矿产分布图给画出来了。",
+      "start": 239.951,
+      "duration": 11.276,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "哈，你这比喻还挺形象。更重要的是这张图谱意味着遗传病诊断、药物靶点发现、精准医疗，全部有了一个全新的基础设施。",
+      "start": 251.704,
+      "duration": 11.189,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "比如说呢？",
+      "start": 263.311,
+      "duration": 1.001,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "比如罕见病孩子出生了，医生现在最快的方式是全基因组测序，跟这张图谱做比对，几分钟内就能告诉你哪些变异可能致病，不用一篇一篇翻论文。",
+      "start": 264.751,
+      "duration": 13.279,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "真的假的？这也太救命了。",
+      "start": 278.442,
+      "duration": 3.309,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "还有药物研发。以前找靶点靠运气，现在可以系统性扫描全基因组，看哪个变异跟疾病最相关，直接定位成药靶点。",
+      "start": 282.244,
+      "duration": 8.751,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "嗯，这事标志着什么？我感觉应该不只是技术进步这么简单。",
+      "start": 291.404,
+      "duration": 6.531,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "你说得对，标志着AI for Science从\"单点突破\"进入了\"系统性建模\"新阶段。以前AI在科学里搞出成绩，往往是解决一个具体问题——预测蛋白质结构、识别某个天文现象。现在开始系统性地建模整个领域的基础设施。",
+      "start": 298.422,
+      "duration": 19.176,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "听你这么一说，我突然觉得AI for Science这词被赋予了全新含义。以前是AI帮科学家干活，现在是AI在为整个学科搭建底层平台。",
+      "start": 318.04,
+      "duration": 13.584,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "是的，这个范式转变的深远影响，可能未来十年才会真正显现。",
+      "start": 332.084,
+      "duration": 5.181,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "好，说完两个大新闻，再来几个有意思的快讯。第一个，阿里通义千问发了个新算法叫GSPO。",
+      "start": 337.736,
+      "duration": 8.882,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "GSPO全称是面向大模型强化学习的可扩展序列级优化。简单说，就是把强化学习用在训练大模型推理能力时，给出了一个全新的优化范式。",
+      "start": 347.03,
+      "duration": 13.148,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "你能不能用人话翻译一下？",
+      "start": 360.623,
+      "duration": 2.177,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "这么说吧，以前训练大模型做数学题、做代码题这种需要推理的任务，强化学习的优化方式是\"逐token打分\"，每生成一个词就立刻评价好不好。",
+      "start": 363.255,
+      "duration": 11.799,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "那有啥问题？",
+      "start": 375.494,
+      "duration": 1.263,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "问题是这样太碎片化了。写代码或者解数学题，过程是一整个连贯的逻辑链条，你拆成token逐个评判，等于用放大镜看拼图，反而把整体逻辑打断了。",
+      "start": 377.235,
+      "duration": 12.321,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "哦，我明白了，GSPO是等整个序列生成完了再评判？",
+      "start": 390.037,
+      "duration": 6.531,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "对，序列级优化。而且关键是它做到了\"可扩展\"——以前序列级优化在小模型上能跑，到了大模型就崩，现在GSPO解决了这个工程痛点。",
+      "start": 396.994,
+      "duration": 11.363,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "所以效率提升到底有多大？",
+      "start": 408.827,
+      "duration": 2.961,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "官方说推理训练效率显著提升，具体数字我没看到，但这东西一旦推广开，所有做大模型训练的公司都会跟进，因为它解决的是一个非常核心的痛点。",
+      "start": 412.249,
+      "duration": 12.06,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "嗯，AI行业这种\"算法层\"的小突破，往往最后能带来产品体验的巨大提升。",
+      "start": 424.765,
+      "duration": 7.01,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "没错，很多看似底层的东西，最后都会通过模型表现传递到普通用户面前。",
+      "start": 432.241,
+      "duration": 6.139,
+      "audios": {
+        "professional": "chunk_046_professional.mp3",
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "下一个快讯更有意思，谷歌搞了个\"氛围编程\"课，35.3万人报名。",
+      "start": 438.813,
+      "duration": 7.271,
+      "audios": {
+        "professional": "chunk_047_professional.mp3",
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "35万3千人！这应该是人类历史上最大规模的编程教学实践了。",
+      "start": 446.491,
+      "duration": 5.573,
+      "audios": {
+        "professional": "chunk_048_professional.mp3",
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "\"氛围编程\"是什么鬼？我怎么感觉这名字怪怪的。",
+      "start": 452.534,
+      "duration": 3.657,
+      "audios": {
+        "professional": "chunk_049_professional.mp3",
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "哈，vibe coding这个词是今年特别火的概念。你知道以前学编程是啥样的吗？先装环境、配编译器、写Hello World、debug三小时。",
+      "start": 456.592,
+      "duration": 12.21,
+      "audios": {
+        "professional": "chunk_050_professional.mp3",
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "嗯嗯，那种地狱模式我听说过。",
+      "start": 469.213,
+      "duration": 3.309,
+      "audios": {
+        "professional": "chunk_051_professional.mp3",
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "现在反过来。你打开AI编程助手，跟它说\"我想做个能自动整理相册的小工具\"，它直接给你生成代码，你根本不需要懂代码。",
+      "start": 473.014,
+      "duration": 8.882,
+      "audios": {
+        "professional": "chunk_052_professional.mp3",
+        "lively": "chunk_052_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "这也太爽了。但那还算编程吗？",
+      "start": 482.347,
+      "duration": 3.352,
+      "audios": {
+        "professional": "chunk_053_professional.mp3",
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "这就是争议所在。有人说这是\"编程民主化\"，让零基础的人也能做产品；也有人吐槽这不是编程，是\"AI代写\"。",
+      "start": 486.189,
+      "duration": 9.404,
+      "audios": {
+        "professional": "chunk_054_professional.mp3",
+        "lively": "chunk_054_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "我倒是觉得这事挺深刻。你想啊，过去编程有门槛，门槛挡住了90%的人。现在门槛没了，35万人涌进来。",
+      "start": 496.093,
+      "duration": 9.97,
+      "audios": {
+        "professional": "chunk_055_professional.mp3",
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "你注意啊，35万人一起上课这件事本身就很有意义。它揭示了一个趋势：AI编程正在重塑零基础开发者的入门路径，未来很多产品可能就是\"聊\"出来的。",
+      "start": 506.548,
+      "duration": 14.063,
+      "audios": {
+        "professional": "chunk_056_professional.mp3",
+        "lively": "chunk_056_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "那传统程序员会不会被抢饭碗？",
+      "start": 521.091,
+      "duration": 3.744,
+      "audios": {
+        "professional": "chunk_057_professional.mp3",
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "短期内不会。vibe coding做出来的东西往往是原型或者简单工具，复杂系统、底层架构、性能优化还是得靠专业程序员。但长期看，整个行业的分工肯定会重新洗牌。",
+      "start": 525.235,
+      "duration": 14.343,
+      "audios": {
+        "professional": "chunk_058_professional.mp3",
+        "lively": "chunk_058_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "嗯，这事最有意思的不是35万这个数字，而是它透露出一种信号——技术学习的入口被AI彻底改写了。",
+      "start": 540.056,
+      "duration": 11.189,
+      "audios": {
+        "professional": "chunk_059_professional.mp3",
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "A",
+      "text": "最后一个快讯，Google Ads和Analytics上线了Advisor AI UI。",
+      "start": 551.708,
+      "duration": 6.748,
+      "audios": {
+        "professional": "chunk_060_professional.mp3",
+        "lively": "chunk_060_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 61,
+      "host": "B",
+      "text": "这个我得仔细说说，因为它直接关系到很多做生意的人。 简单说，谷歌的广告投放平台和数据分析平台，正式把AI助手整合进操作界面了。",
+      "start": 558.898,
+      "duration": 11.233,
+      "audios": {
+        "professional": "chunk_061_professional.mp3",
+        "lively": "chunk_061_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 62,
+      "host": "A",
+      "text": "以前咱们投广告不是得自己研究关键词、出价策略、人群定向吗？",
+      "start": 570.562,
+      "duration": 6.269,
+      "audios": {
+        "professional": "chunk_062_professional.mp3",
+        "lively": "chunk_062_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 63,
+      "host": "B",
+      "text": "对，那是相当痛苦的。 新手商家光搞懂Google Ads的规则就能崩溃，更别说精细化运营了。",
+      "start": 577.324,
+      "duration": 7.88,
+      "audios": {
+        "professional": "chunk_063_professional.mp3",
+        "lively": "chunk_063_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 64,
+      "host": "A",
+      "text": "那现在呢？",
+      "start": 585.645,
+      "duration": 1.132,
+      "audios": {
+        "professional": "chunk_064_professional.mp3",
+        "lively": "chunk_064_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 65,
+      "host": "B",
+      "text": "现在你打开广告后台，AI直接以\"顾问\"身份出现。 它会看你历史投放数据、看竞争对手表现、看市场趋势，然后主动建议你\"应该把预算往这个品类倾斜\"、\"这个关键词出价应该提高\"。",
+      "start": 587.267,
+      "duration": 15.17,
+      "audios": {
+        "professional": "chunk_065_professional.mp3",
+        "lively": "chunk_065_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 66,
+      "host": "A",
+      "text": "我跟你说，这事让我想起我之前给朋友小店做咨询的痛苦经历。 我花了三个小时给他讲怎么投广告，他一个没听懂。现在AI顾问直接告诉他该干嘛，效率完全不一样。",
+      "start": 602.845,
+      "duration": 13.037,
+      "audios": {
+        "professional": "chunk_066_professional.mp3",
+        "lively": "chunk_066_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 67,
+      "host": "B",
+      "text": "是的，AI不再只是被动等命令的工具，而是主动提供决策建议的\"顾问\"。 广告投放正式进入了智能顾问时代。",
+      "start": 616.306,
+      "duration": 9.012,
+      "audios": {
+        "professional": "chunk_067_professional.mp3",
+        "lively": "chunk_067_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 68,
+      "host": "A",
+      "text": "那会不会出现一个问题——大家都听AI顾问的，最后投出来的策略都差不多，反而没有差异化竞争力？",
+      "start": 625.79,
+      "duration": 7.924,
+      "audios": {
+        "professional": "chunk_068_professional.mp3",
+        "lively": "chunk_068_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 69,
+      "host": "B",
+      "text": "你这个担心很有道理。 AI建议的同质化确实是风险，但反过来想，AI也在进化，未来可能更强调个性化建议而不是模板化推荐。",
+      "start": 634.142,
+      "duration": 10.144,
+      "audios": {
+        "professional": "chunk_069_professional.mp3",
+        "lively": "chunk_069_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 70,
+      "host": "A",
+      "text": "不过说真的，对小商家来说，这东西绝对是大福利。 以前请个营销顾问得花多少钱，现在AI直接给建议。",
+      "start": 644.716,
+      "duration": 7.924,
+      "audios": {
+        "professional": "chunk_070_professional.mp3",
+        "lively": "chunk_070_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 71,
+      "host": "B",
+      "text": "是的，技术普惠的好处就在这里，让原本只有大公司才能享受的专业能力，门槛大幅降低。",
+      "start": 653.058,
+      "duration": 7.01,
+      "audios": {
+        "professional": "chunk_071_professional.mp3",
+        "lively": "chunk_071_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 72,
+      "host": "A",
+      "text": "周航，今天这几个新闻串起来看，你有什么整体感受？",
+      "start": 660.537,
+      "duration": 5.529,
+      "audios": {
+        "professional": "chunk_072_professional.mp3",
+        "lively": "chunk_072_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 73,
+      "host": "B",
+      "text": "我最大的感受是AI正在双向突破——往基础科学的\"深度\"走，往日常应用的\"广度\"走。",
+      "start": 666.523,
+      "duration": 8.49,
+      "audios": {
+        "professional": "chunk_073_professional.mp3",
+        "lively": "chunk_073_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 74,
+      "host": "A",
+      "text": "怎么说？",
+      "start": 675.424,
+      "duration": 0.653,
+      "audios": {
+        "professional": "chunk_074_professional.mp3",
+        "lively": "chunk_074_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 75,
+      "host": "B",
+      "text": "深度方面，菲尔兹奖得主下场研究抽象推理、DeepMind绘制全基因组图谱，这些都是AI在触碰人类认知最前沿的问题。",
+      "start": 676.487,
+      "duration": 9.665,
+      "audios": {
+        "professional": "chunk_075_professional.mp3",
+        "lively": "chunk_075_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 76,
+      "host": "A",
+      "text": "嗯，那广度呢？",
+      "start": 686.592,
+      "duration": 1.654,
+      "audios": {
+        "professional": "chunk_076_professional.mp3",
+        "lively": "chunk_076_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 77,
+      "host": "B",
+      "text": "广度方面，35万人学vibe coding、广告顾问AI上线，都是让AI真正渗透到普通人的工作和生活里。",
+      "start": 688.711,
+      "duration": 9.186,
+      "audios": {
+        "professional": "chunk_077_professional.mp3",
+        "lively": "chunk_077_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 78,
+      "host": "A",
+      "text": "我特别喜欢这种双向突破的感觉。一边是仰望星空，一边是脚踏实地。",
+      "start": 698.359,
+      "duration": 6.531,
+      "audios": {
+        "professional": "chunk_078_professional.mp3",
+        "lively": "chunk_078_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 79,
+      "host": "B",
+      "text": "是的，AI最让人兴奋的地方就在于此，它不是单一维度的发展，而是在不同层面同时发力。",
+      "start": 705.303,
+      "duration": 6.705,
+      "audios": {
+        "professional": "chunk_079_professional.mp3",
+        "lively": "chunk_079_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 80,
+      "host": "A",
+      "text": "好，今天的节目就到这里，感谢大家收听，咱们明天见。",
+      "start": 712.446,
+      "duration": 4.92,
+      "audios": {
+        "professional": "chunk_080_professional.mp3",
+        "lively": "chunk_080_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 81,
+      "host": "B",
+      "text": "明天见，bye bye。",
+      "start": 717.836,
+      "duration": 1.916,
+      "audios": {
+        "professional": "chunk_081_professional.mp3",
+        "lively": "chunk_081_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 82,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 720.189,
+      "duration": 5.66,
+      "audios": {
+        "professional": "chunk_082_professional.mp3",
+        "lively": "chunk_082_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 83,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 726.339,
+      "duration": 1.48,
+      "audios": {
+        "professional": "chunk_083_professional.mp3",
+        "lively": "chunk_083_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    }
+  ]
+}
