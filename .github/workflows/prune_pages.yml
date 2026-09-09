@@ -9,6 +9,12 @@ on:
 permissions:
   contents: write
 
+# 与 daily.yml 共用同一并发组:prune 会 force-push gh-pages,
+# 不能和正在运行的 daily(也会 push main / 部署 gh-pages)重叠。
+concurrency:
+  group: podcast-pipeline
+  cancel-in-progress: false
+
 jobs:
   prune:
     name: Prune gh-pages branch

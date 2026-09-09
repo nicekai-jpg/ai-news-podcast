@@ -32,6 +32,9 @@ jobs:
       - name: Ruff lint (src / tests / scripts)
         run: uv run ruff check src/ tests/ scripts/
 
+      - name: Ruff format check (src / tests / scripts)
+        run: uv run ruff format --check src/ tests/ scripts/
+
       - name: Import linter contracts
         run: uv run lint-imports
 

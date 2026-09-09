@@ -13,6 +13,12 @@ on:
 permissions:
   contents: write
 
+# 与 prune_pages.yml 共用同一并发组:两者都会 push main / 部署 gh-pages,
+# 手动触发与定时运行不能同时跑,排队等待而不是并行竞争。
+concurrency:
+  group: podcast-pipeline
+  cancel-in-progress: false
+
 jobs:
   stage1:
     name: Stage 1 (fetch → process)
@@ -270,6 +276,7 @@ jobs:
           EPISODE="${{ needs.tts.outputs.episode_id || needs.report.outputs.episode_id }}"
           git add -u site/ data/episodes.json
           git add -f "site/reports/daily_report_${EPISODE}.md"
+          git add -f "site/episodes/${EPISODE}/playlist.json" 2>/dev/null || echo "No playlist.json for ${EPISODE}, skipped"
           if git diff --cached --quiet; then
             echo "No site changes to commit"
           else
