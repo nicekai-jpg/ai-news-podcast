@@ -126,6 +126,40 @@ jobs:
             git push origin main
           fi
 
+      - name: Script quality stats
+        if: always()
+        run: |
+          EPISODE="${{ needs.stage1.outputs.episode_id }}"
+          python3 - "$EPISODE" <<'PYEOF'
+          import os
+          import re
+          import sys
+          from pathlib import Path
+
+          path = Path(f"site/episodes/{sys.argv[1]}.txt")
+          if not path.exists():
+              print(f"script missing: {path}")
+              sys.exit(0)
+          txt = path.read_text(encoding="utf-8")
+          a = len(re.findall(r"^\[Host A\]", txt, re.M))
+          b = len(re.findall(r"^\[Host B\]", txt, re.M))
+          chars = len(re.sub(r"\s", "", txt))
+          ratio = round(b / a, 2) if a else 0
+          warns = []
+          if chars < 1500:
+              warns.append("too short")
+          if a == 0 or b == 0:
+              warns.append("missing host")
+          if ratio and (ratio < 0.5 or ratio > 2.0):
+              warns.append("host imbalance")
+          line = f"script stats: {chars} chars, HostA={a}, HostB={b}, ratio={ratio}, warnings={warns or 'none'}"
+          print(line)
+          summary = os.environ.get("GITHUB_STEP_SUMMARY")
+          if summary:
+              with open(summary, "a", encoding="utf-8") as f:
+                  f.write(f"- {line}\n")
+          PYEOF
+
   report:
     name: Stage 3b (daily report)
     needs: stage1
@@ -227,6 +261,11 @@ jobs:
             --script "site/episodes/${EPISODE}.txt" \
             --output "site/episodes/${EPISODE}.mp3" \
             --model-dir "$HOME/cosyvoice_models/CosyVoice2-0.5B"
+
+      - name: Report synthesis duration
+        if: always()
+        run: |
+          echo "TTS 用时: $((SECONDS / 60)) 分 $((SECONDS % 60)) 秒(episode ${{ needs.writer.outputs.episode_id }})" >> "$GITHUB_STEP_SUMMARY"
 
       # 音频只通过 artifact 传递给 publish job，不提交到 main，避免 git 历史膨胀
       - name: Upload episode audio artifact
