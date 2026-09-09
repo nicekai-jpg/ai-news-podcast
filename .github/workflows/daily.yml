@@ -405,6 +405,7 @@ jobs:
     needs: [stage1, writer, report, tts, publish]
     if: always()
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: read
       issues: write
@@ -423,7 +424,7 @@ jobs:
           PUBLISH: ${{ needs.publish.result }}
           RETRY: ${{ github.event.inputs.retry }}
         run: |
-          EPISODE="${EPISODE:-$(date -u +%F)}"
+          EPISODE="${EPISODE:-$(TZ=Asia/Shanghai date +%F)}"
           FAILED=""
           if [ "$S1" != "success" ]; then FAILED="$FAILED stage1=$S1"; fi
           if [ "$WRITER" = "failure" ] || [ "$WRITER" = "cancelled" ]; then FAILED="$FAILED writer=$WRITER"; fi
@@ -456,18 +457,19 @@ jobs:
           失败环节: $FAILED
           Run: $RUN_URL
           重试策略: $RETRY_NOTE"
-            FOUND=$(gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"Daily pipeline failed: $EPISODE\"" --jq '.items[0].number' 2>/dev/null || true)
-            if [ -n "$FOUND" ]; then
-              gh issue comment "$FOUND" --body "$BODY"
-            else
-              gh issue create --title "$TITLE" --body "$BODY"
-            fi
+            # 重跑派发必须先做:issue API 故障不能吞掉重试(Step Summary 已留档,告警降级为 best-effort)
             if [ "$RETRY" != "true" ]; then
               gh workflow run daily.yml --ref main -f date="$EPISODE" -f retry=true
               echo "已触发自动重跑: date=$EPISODE retry=true"
             fi
+            FOUND=$(gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"Daily pipeline failed: $EPISODE\"" --jq '.items[0].number' 2>/dev/null || true)
+            if [ -n "$FOUND" ]; then
+              gh issue comment "$FOUND" --body "$BODY" || true
+            else
+              gh issue create --title "$TITLE" --body "$BODY" || true
+            fi
           else
-            for N in $(gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"Daily pipeline failed\"" --jq '.items[].number' 2>/dev/null || true); do
-              gh issue close "$N" -c "今日运行全部成功,自动关闭。Run: $RUN_URL"
+            for N in $(gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"Daily pipeline failed: $EPISODE\"" --jq '.items[].number' 2>/dev/null || true); do
+              gh issue close "$N" -c "今日运行($EPISODE)全部成功,自动关闭。Run: $RUN_URL"
             done
           fi

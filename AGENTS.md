@@ -127,7 +127,8 @@ Stage CLIs (console scripts in pyproject):
   auto-closes open failure issues. `daily.yml` and `prune_pages.yml` share the
   `podcast-pipeline` concurrency group so manual dispatches queue instead of racing.
   `prune_pages.yml` monthly rebuilds gh-pages as an orphan branch (30-day audio
-  retention) and, on failure, alerts via a `gh-pages prune failed` issue.
+  retention) and, on failure, alerts via a `gh-pages prune failed` issue (a
+  successful prune auto-closes stale ones, mirroring the daily `notify` behavior).
 
 ## Docs to read before touching sensitive areas
 
