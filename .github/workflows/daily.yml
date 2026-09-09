@@ -237,6 +237,9 @@ jobs:
     name: Stage 5 (publish site)
     needs: [tts]
     runs-on: ubuntu-latest
+    env:
+      EPISODE: ${{ needs.tts.outputs.episode_id }}
+      MIN_MP3_BYTES: '100000'  # mp3 截断保护阈值(实际单期约 2-3MB)
     steps:
       - uses: actions/checkout@v4
 
@@ -266,39 +269,38 @@ jobs:
         env:
           TZ: Asia/Shanghai
         run: |
-          EPISODE="${{ needs.tts.outputs.episode_id }}"
           uv run podcast-publish --date "$EPISODE"
 
       - name: Validate episode artifacts
         env:
           TZ: Asia/Shanghai
         run: |
-          EPISODE="${{ needs.tts.outputs.episode_id }}"
           python3 - "$EPISODE" <<'PYEOF'
           import json
+          import os
           import sys
           from pathlib import Path
 
           ep = sys.argv[1]
+          min_bytes = int(os.environ["MIN_MP3_BYTES"])
           mp3 = Path(f"site/episodes/{ep}.mp3")
           assert mp3.exists(), f"missing {mp3}"
           size = mp3.stat().st_size
-          assert size > 100_000, f"mp3 too small: {size} bytes"
+          assert size > min_bytes, f"mp3 too small: {size} bytes"
           feed = Path("site/feed.xml").read_text(encoding="utf-8")
           assert f"episodes/{ep}.mp3" in feed, "feed.xml missing episode enclosure"
           index = json.loads(Path("data/episodes.json").read_text(encoding="utf-8"))
           eps = index if isinstance(index, list) else index.get("episodes", [])
           assert any(str(e.get("id")) == ep for e in eps), "episodes.json missing entry"
-          print(f"validated {ep}: mp3={size} bytes, feed+index ok")
+          print(f"validated {ep}: mp3={size} bytes, threshold={min_bytes}, feed+index ok")
           PYEOF
 
       - name: Commit site
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          EPISODE="${{ needs.tts.outputs.episode_id }}"
           git add -u site/ data/episodes.json
-          git add -f "site/reports/daily_report_${EPISODE}.md" 2>/dev/null || echo "No daily report for ${EPISODE}, skipped"
+          if [ -f "site/reports/daily_report_${EPISODE}.md" ]; then git add -f "site/reports/daily_report_${EPISODE}.md"; else echo "No daily report for ${EPISODE}, skipped"; fi
           git add -f "site/episodes/${EPISODE}/playlist.json" 2>/dev/null || echo "No playlist.json for ${EPISODE}, skipped"
           if git diff --cached --quiet; then
             echo "No site changes to commit"
@@ -323,15 +325,25 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
         run: |
-          EPISODE="${{ needs.tts.outputs.episode_id }}"
           sleep 10
-          SIZE=$(gh api "repos/$GH_REPO/contents/episodes/$EPISODE.mp3?ref=gh-pages" --jq '.size' 2>/dev/null || echo 0)
+          get_size() {
+            local path="$1" n size=""
+            for n in 1 2 3; do
+              if size=$(gh api "repos/$GH_REPO/contents/$path?ref=gh-pages" --jq '.size' 2>/dev/null); then
+                case "$size" in ''|*[!0-9]*) size="";; esac
+                if [ -n "$size" ]; then echo "$size"; return 0; fi
+              fi
+              sleep 20
+            done
+            echo 0
+          }
+          SIZE=$(get_size "episodes/$EPISODE.mp3")
           echo "gh-pages $EPISODE.mp3 size: $SIZE"
-          if [ "$SIZE" -le 100000 ]; then
+          if [ "$SIZE" -le "$MIN_MP3_BYTES" ]; then
             echo "::error::$EPISODE.mp3 missing or too small on gh-pages"
             exit 1
           fi
-          PLAYLIST=$(gh api "repos/$GH_REPO/contents/episodes/$EPISODE/playlist.json?ref=gh-pages" --jq '.size' 2>/dev/null || echo 0)
+          PLAYLIST=$(get_size "episodes/$EPISODE/playlist.json")
           if [ "$PLAYLIST" -le 0 ]; then
             echo "::error::$EPISODE/playlist.json missing on gh-pages"
             exit 1
