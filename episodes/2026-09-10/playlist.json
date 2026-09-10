@@ -1,0 +1,680 @@
+{
+  "episode_id": "2026-09-10",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年9月10日。我是苏晴。",
+      "start": 1.0,
+      "duration": 8.054,
+      "audios": {
+        "professional": "chunk_001_professional.mp3",
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 9.503,
+      "duration": 1.611,
+      "audios": {
+        "professional": "chunk_002_professional.mp3",
+        "lively": "chunk_002_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天这个新闻清单啊，我一打开就知道咱们又有得聊了。你看，谷歌一口气发三个新模型，这阵仗。",
+      "start": 11.611,
+      "duration": 10.057,
+      "audios": {
+        "professional": "chunk_003_professional.mp3",
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "确实。我跟你说，这次谷歌DeepMind的动作挺有意思——Gemini 3.6 Flash、3.5 Flash-Lite，还有一个是3.5 Flash Cyber，三个型号分三条赛道走。",
+      "start": 22.121,
+      "duration": 15.083,
+      "audios": {
+        "professional": "chunk_004_professional.mp3",
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "这名字我一看就懵了，啥叫Cyber啊？听着像黑客帝国要出续集了。",
+      "start": 37.609,
+      "duration": 7.967,
+      "audios": {
+        "professional": "chunk_005_professional.mp3",
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你还真猜对了一半。Cyber这个版本就是专门做网络安全防御的，等于是把AI能力系统化地嵌进安全产品里。你想啊，现在攻击端的AI也起来了，你光靠传统防火墙扛不住的，对面拿AI扫漏洞那速度太快了，所以防守方也得升级。",
+      "start": 46.009,
+      "duration": 19.698,
+      "audios": {
+        "professional": "chunk_006_professional.mp3",
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "啊……这意思就是以后我们的电脑后台是不是都有一个AI保安在值班？",
+      "start": 66.172,
+      "duration": 6.444,
+      "audios": {
+        "professional": "chunk_007_professional.mp3",
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你可以这么理解。而且你注意啊，这三个模型不是简单的性能高低排序，而是场景分层。Flash主打极速响应，Flash-Lite是轻量级部署，跑一些小任务省钱，Cyber专门做安全。问题是——这意味着头部厂商的玩法已经变了。",
+      "start": 73.078,
+      "duration": 19.176,
+      "audios": {
+        "professional": "chunk_008_professional.mp3",
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "怎么说？",
+      "start": 92.705,
+      "duration": 0.871,
+      "audios": {
+        "professional": "chunk_009_professional.mp3",
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "说白了，以前大家卷的是\"我比你大、比你能跑\"，是单点性能竞赛。但你看现在谷歌这些头部，都在搞矩阵覆盖。你要快的我有，你要便宜的我有，你要专门干某个活的我也得有。这就好比……你去一个超市，以前只卖一种面粉，现在你要包饺子的、做面包的、做蛋糕的、还有无麸质的，全给你摆上。",
+      "start": 94.076,
+      "duration": 23.138,
+      "audios": {
+        "professional": "chunk_010_professional.mp3",
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "这个比喻我秒懂。所以以后我们选模型不是\"哪个最强\"，而是\"哪个最适合我这个场景\"，对吧？",
+      "start": 117.652,
+      "duration": 8.533,
+      "audios": {
+        "professional": "chunk_011_professional.mp3",
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "对。这就是分层化、矩阵化的新常态。对开发者来说反而是好事，因为成本能压下来了，Lite版本跑简单任务便宜得很。",
+      "start": 126.646,
+      "duration": 8.882,
+      "audios": {
+        "professional": "chunk_012_professional.mp3",
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "那这个Gemini 3.6 Flash呢？跟之前比有什么提升？",
+      "start": 135.973,
+      "duration": 4.31,
+      "audios": {
+        "professional": "chunk_013_professional.mp3",
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "3.6 Flash这次主要是在响应速度和推理效率上做了优化，亚秒级那种感觉。你想想，咱们现在用AI聊天，多少还要等那么一下，以后可能真的就是\"问完立刻答\"，跟人对话一样。",
+      "start": 140.757,
+      "duration": 15.257,
+      "audios": {
+        "professional": "chunk_014_professional.mp3",
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "这也太爽了吧！我现在用ChatGPT问个问题有时候还要转两圈圈……",
+      "start": 156.441,
+      "duration": 8.359,
+      "audios": {
+        "professional": "chunk_015_professional.mp3",
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "哈，但你也别光盯着速度。Flash-Lite那个版本其实更有意思——它是面向边缘部署的，也就是说可以跑在手机、车载、IoT设备这些算力没那么强的地方。这意味着以后你手机里的本地AI助手会越来越聪明，不是什么都得上云了。",
+      "start": 165.264,
+      "duration": 18.349,
+      "audios": {
+        "professional": "chunk_016_professional.mp3",
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "真的假的？那我手机就不用再担心隐私泄露了？",
+      "start": 184.03,
+      "duration": 4.31,
+      "audios": {
+        "professional": "chunk_017_professional.mp3",
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "这倒没那么绝对，但至少敏感数据可以本地处理一部分，这是趋势。",
+      "start": 188.776,
+      "duration": 5.312,
+      "audios": {
+        "professional": "chunk_018_professional.mp3",
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "说到这个，我跟你说，NVIDIA最近在IBC大会搞了个大动作，我觉得你应该很关注。",
+      "start": 194.505,
+      "duration": 7.097,
+      "audios": {
+        "professional": "chunk_019_professional.mp3",
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "我看了。IBC是欧洲那个广播行业的年度大展，NVIDIA这次直接把实时AI塞进了直播流程里。",
+      "start": 202.098,
+      "duration": 8.316,
+      "audios": {
+        "professional": "chunk_020_professional.mp3",
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "\"实时AI\"是个什么概念啊？咱们平时看比赛直播不也是实时的吗？",
+      "start": 210.826,
+      "duration": 6.052,
+      "audios": {
+        "professional": "chunk_021_professional.mp3",
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "你注意啊，不一样的。咱们说的实时是画面实时传到你这来，但内容生产本身——比如解说、字幕、精彩回放剪辑——这些都还是人工在做，或者事后处理。NVIDIA这次展示的是，AI能在亚秒级延迟下，一边比赛一边给你生成解说、识别关键动作、自动切精彩镜头，还能实时翻译成多语言字幕。",
+      "start": 217.357,
+      "duration": 23.529,
+      "audios": {
+        "professional": "chunk_022_professional.mp3",
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "等等等等，这意思是以后体育比赛可能是AI在解说？那解说员怎么办？",
+      "start": 241.318,
+      "duration": 9.796,
+      "audios": {
+        "professional": "chunk_023_professional.mp3",
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "哈，别急。我跟你的判断一样，解说员短期内不会失业。但你想想，NBA、英超这种全球赛事，光中文解说就一堆语言版本要配，翻译成本高得一塌糊涂。如果AI实时翻译能做到九成以上的准确度，那这个成本结构就被彻底重塑了。",
+      "start": 251.582,
+      "duration": 19.176,
+      "audios": {
+        "professional": "chunk_024_professional.mp3",
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "这也太……我觉得我现在每看一个AI新闻就想说\"这也太XX了\"。",
+      "start": 271.248,
+      "duration": 5.965,
+      "audios": {
+        "professional": "chunk_025_professional.mp3",
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "但这背后真不是闹着玩的。你知道这要什么技术底子吗？亚秒级延迟、千万级并发推理，等于是一边比赛一边几百万观众同时在让AI干活，工程栈扛不住就崩了。NVIDIA卖的不光是GPU，是一整套从硬件到软件的实时推理流水线。",
+      "start": 277.69,
+      "duration": 19.045,
+      "audios": {
+        "professional": "chunk_026_professional.mp3",
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "那这对行业格局影响会很大吧？",
+      "start": 297.153,
+      "duration": 3.222,
+      "audios": {
+        "professional": "chunk_027_professional.mp3",
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "非常大。问题是——全球体育IP的版权方、流媒体平台，谁先把这套流水线驯服了，谁就掌握了未来十年内容分发的定价权。你想啊，同样的比赛，A平台有AI智能解说加多语言实时字幕加自动精彩集锦，B平台还是老一套，你选哪个？",
+      "start": 300.814,
+      "duration": 20.961,
+      "audios": {
+        "professional": "chunk_028_professional.mp3",
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "说得好有道理，我都无法反驳了。说到智能体，我得跟你提一嘴通义千问最近发的一个研究。你看了没？",
+      "start": 322.187,
+      "duration": 9.622,
+      "audios": {
+        "professional": "chunk_029_professional.mp3",
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "看了。Qwen团队这次发的论文是讲数学推理的过程监督——说白了，就是让AI做数学题的时候，不是只看最终答案对不对，而是每一步都打分监督，发现哪一步错了就立刻纠正。",
+      "start": 332.302,
+      "duration": 15.432,
+      "audios": {
+        "professional": "chunk_030_professional.mp3",
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "这听起来像我们小时候做应用题，老师在旁边批\"这一步不对扣两分\"。",
+      "start": 348.143,
+      "duration": 6.444,
+      "audios": {
+        "professional": "chunk_031_professional.mp3",
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "你这个类比特别准。传统方式训练AI推理是\"结果导向\"的，答对了就完事了，但中间过程可能完全是蒙对的。结果监督就好比只看卷面分数，过程监督就是改卷老师盯着你每一步推导过程。这种方式能显著降低多步推理的错误率。",
+      "start": 355.074,
+      "duration": 17.913,
+      "audios": {
+        "professional": "chunk_032_professional.mp3",
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "那这个对咱们普通人有啥影响啊？",
+      "start": 373.429,
+      "duration": 2.177,
+      "audios": {
+        "professional": "chunk_033_professional.mp3",
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "你看，数学是所有逻辑推理的基础。如果AI在数学这种硬逻辑上能一步步走对，那它在代码、法律文档分析、医学诊断这些需要严谨链条的领域就更靠谱了。等于AI的\"思维严谨度\"在提升。",
+      "start": 376.066,
+      "duration": 14.735,
+      "audios": {
+        "professional": "chunk_034_professional.mp3",
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "对了，还有一件事你肯定看了——Google AI用生成技术重现了一对夫妇七十年的爱情影像。这个新闻我点开的时候真的眼眶有点热。",
+      "start": 391.272,
+      "duration": 11.581,
+      "audios": {
+        "professional": "chunk_035_professional.mp3",
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "我懂。这个新闻跟咱们平时聊的\"AI提效\"完全不是一个调性。它是把老照片、旧影像用生成式AI修复、续接、上色，甚至补出当时没有的画面，让一段跨越七十年的人生重新在银幕上鲜活起来。",
+      "start": 403.265,
+      "duration": 16.433,
+      "audios": {
+        "professional": "chunk_036_professional.mp3",
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "我跟你说，这种事听着就……你想想，七十年啊，一个人从青年到暮年，AI做的事情不是\"创造\"，是\"唤回\"。",
+      "start": 420.143,
+      "duration": 14.367,
+      "audios": {
+        "professional": "chunk_037_professional.mp3",
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "你说得特别好。技术服务于记忆本身。这个方向我其实挺看好的——你看现在很多家庭都有老相册、老录像带，受潮了、褪色了、甚至胶片损坏了。AI可以让这些记忆重新\"活\"过来，这对一个家族来说意义巨大。",
+      "start": 434.965,
+      "duration": 15.432,
+      "audios": {
+        "professional": "chunk_038_professional.mp3",
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "哈，我都想把我爷爷的相册翻出来了。",
+      "start": 450.837,
+      "duration": 2.743,
+      "audios": {
+        "professional": "chunk_039_professional.mp3",
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "可以试试。其实Google那个AI Blog七月的盘点里就有不少这类应用的延伸阅读，里头除了技术进展也有不少这种人文向的案例，咱们听众朋友感兴趣的话可以去翻翻。",
+      "start": 454.058,
+      "duration": 11.992,
+      "audios": {
+        "professional": "chunk_040_professional.mp3",
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "好， 那咱们今天给大家捎一下：谷歌三款新模型覆盖不同场景，意味着AI竞争进入矩阵化时代；NVIDIA把实时AI推进广播行业，内容生产链被重新定义；通义千问在数学推理上的过程监督研究让AI逻辑更严谨；Google AI重现七十年爱情故事则展示了技术的人文温度。",
+      "start": 466.531,
+      "duration": 25.924,
+      "audios": {
+        "professional": "chunk_041_professional.mp3",
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "总结得到位。 三条主线其实你把它们放一起看——更强智能、更广落地、更深共情——AI确实已经不是一个单一工具了，它同时在重塑产业基础设施和人类情感。",
+      "start": 492.881,
+      "duration": 14.474,
+      "audios": {
+        "professional": "chunk_042_professional.mp3",
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "没错。 听众朋友们如果想了解更多细节，Google AI Blog的七月进展汇总是个不错的延伸阅读入口，大家可以去搜搜看。",
+      "start": 507.825,
+      "duration": 9.143,
+      "audios": {
+        "professional": "chunk_043_professional.mp3",
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "今天的AI每日先锋就到这里，感谢大家的收听，咱们明天见。",
+      "start": 517.429,
+      "duration": 5.007,
+      "audios": {
+        "professional": "chunk_044_professional.mp3",
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional",
+        "lively": "host_b_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "明天见， 拜拜！",
+      "start": 522.892,
+      "duration": 1.829,
+      "audios": {
+        "professional": "chunk_045_professional.mp3",
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "professional": "host_a_professional",
+        "lively": "host_a_lively"
+      }
+    }
+  ]
+}
