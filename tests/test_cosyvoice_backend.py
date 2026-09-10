@@ -136,30 +136,55 @@ class TestSelectVariants:
                 "A": {k: (Path(), "") for k in refs_keys},
                 "B": {k: (Path(), "") for k in refs_keys},
             },
-            synth_variants=tuple(synth_variants),
+            synth_variants=synth_variants,
         )
 
-    def test_empty_config_synthesizes_all(self) -> None:
-        from ai_news_podcast.pipeline.tts_backends.cosyvoice2 import _select_variants
+    def test_empty_config_all_variants_both_hosts(self) -> None:
+        from ai_news_podcast.pipeline.tts_backends.cosyvoice2 import _select_variants_for_host
 
-        assert _select_variants(self._cfg(())) == ["professional", "lively"]
+        cfg = self._cfg({})
+        assert _select_variants_for_host(cfg, "A") == ["professional", "lively"]
+        assert _select_variants_for_host(cfg, "B") == ["professional", "lively"]
 
-    def test_configured_filter(self) -> None:
-        from ai_news_podcast.pipeline.tts_backends.cosyvoice2 import _select_variants
+    def test_global_list_applies_to_both_hosts(self) -> None:
+        from ai_news_podcast.pipeline.tts_backends.cosyvoice2 import _select_variants_for_host
 
-        assert _select_variants(self._cfg(["professional"])) == ["professional"]
+        cfg = self._cfg({"A": ("professional",), "B": ("professional",)})
+        assert _select_variants_for_host(cfg, "A") == ["professional"]
+        assert _select_variants_for_host(cfg, "B") == ["professional"]
 
-    def test_unknown_variant_falls_back_to_all(self) -> None:
-        from ai_news_podcast.pipeline.tts_backends.cosyvoice2 import _select_variants
+    def test_per_host_selection(self) -> None:
+        from ai_news_podcast.pipeline.tts_backends.cosyvoice2 import _select_variants_for_host
 
-        assert _select_variants(self._cfg(["warm"])) == ["professional", "lively"]
+        cfg = self._cfg({"A": ("lively",), "B": ("professional",)})
+        assert _select_variants_for_host(cfg, "A") == ["lively"]
+        assert _select_variants_for_host(cfg, "B") == ["professional"]
 
-    def test_partial_overlap_keeps_intersection(self) -> None:
-        from ai_news_podcast.pipeline.tts_backends.cosyvoice2 import _select_variants
+    def test_no_overlap_falls_back_to_all(self) -> None:
+        from ai_news_podcast.pipeline.tts_backends.cosyvoice2 import _select_variants_for_host
 
-        assert _select_variants(self._cfg(["lively", "warm"])) == ["lively"]
+        cfg = self._cfg({"A": ("warm",), "B": ()})
+        assert _select_variants_for_host(cfg, "A") == ["professional", "lively"]
+        assert _select_variants_for_host(cfg, "B") == ["professional", "lively"]
 
-    def test_no_refs_default_pairs(self) -> None:
-        from ai_news_podcast.pipeline.tts_backends.cosyvoice2 import _select_variants
+    def test_empty_refs_default_pairs(self) -> None:
+        from ai_news_podcast.pipeline.tts_backends.cosyvoice2 import _select_variants_for_host
 
-        assert _select_variants(self._cfg((), refs_keys=())) == ["professional", "lively"]
+        cfg = self._cfg({}, refs_keys=())
+        assert _select_variants_for_host(cfg, "A") == ["professional", "lively"]
+
+    def test_host_plan_defaults(self) -> None:
+        from ai_news_podcast.pipeline.tts_backends.cosyvoice2 import _host_variant_plan
+
+        cfg = self._cfg({"A": ("lively", "professional"), "B": ("professional",)})
+        variants, defaults = _host_variant_plan(cfg)
+        assert variants["A"] == ["lively", "professional"]
+        assert defaults["A"] == "lively"
+        assert variants["B"] == ["professional"]
+        assert defaults["B"] == "professional"
+
+    def test_host_plan_empty_config(self) -> None:
+        from ai_news_podcast.pipeline.tts_backends.cosyvoice2 import _host_variant_plan
+
+        _variants, defaults = _host_variant_plan(self._cfg({}))
+        assert defaults == {"A": "professional", "B": "professional"}

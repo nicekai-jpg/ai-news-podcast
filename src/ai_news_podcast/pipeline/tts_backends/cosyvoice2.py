@@ -42,6 +42,7 @@ def _write_clean_transcript(
 def _write_chunks_and_playlist(
     chunks: list[DialogueChunk],
     segments_by_variant: dict[str, list[Any]],
+    chunk_variant_names: list[list[str]],
     timestamps: list[tuple[float, float]],
     voice_maps: dict[str, dict[str, str]],
     output_path: Path,
@@ -58,13 +59,16 @@ def _write_chunks_and_playlist(
 
         audios = {}
         voices = {}
-        for var, segments in segments_by_variant.items():
+        for var in chunk_variant_names[idx - 1]:
             fn = f"chunk_{idx:03d}_{var}.mp3"
+            segments = segments_by_variant[var][idx - 1]
+            if segments is None:
+                continue
 
             pydub = importlib.import_module("pydub")
             audio_segment_cls = pydub.AudioSegment
             silence_pad = audio_segment_cls.silent(duration=300)
-            padded_seg = silence_pad + segments[idx - 1] + silence_pad
+            padded_seg = silence_pad + segments + silence_pad
 
             try:
                 padded_seg.export(str(chunks_dir / fn), format="mp3", bitrate="64k")
@@ -94,20 +98,26 @@ def _write_chunks_and_playlist(
     )
 
 
-def _select_variants(cv_cfg: CosyVoiceConfig) -> list[str]:
-    """决定真实要合成的音色变体;配置与 ref_audio 无交集时回退为全部(防呆)。"""
-    available = list(cv_cfg.refs["A"].keys()) if "A" in cv_cfg.refs else ["professional", "lively"]
-    if not available:
-        available = ["professional", "lively"]
-    configured = [v for v in cv_cfg.synth_variants if v in available]
+def _select_variants_for_host(cv_cfg: CosyVoiceConfig, host: str) -> list[str]:
+    """决定某位主持人真实要合成的变体;配置与 ref_audio 无交集时回退为全部(防呆)。"""
+    available = list(cv_cfg.refs.get(host, {}).keys()) or ["professional", "lively"]
+    configured = [v for v in cv_cfg.synth_variants.get(host, ()) if v in available]
     if configured:
         return configured
-    if cv_cfg.synth_variants:
+    if cv_cfg.synth_variants.get(host):
         log.warning(
-            "tts.cosyvoice.synth_variants=%s 与 ref_audio 无交集,回退为合成全部音色",
-            list(cv_cfg.synth_variants),
+            "synth_variants[%s]=%s 与 ref_audio 无交集,回退为合成全部音色",
+            host,
+            list(cv_cfg.synth_variants.get(host, ())),
         )
     return available
+
+
+def _host_variant_plan(cv_cfg: CosyVoiceConfig) -> tuple[dict[str, list[str]], dict[str, str]]:
+    """返回 (每位主持人的合成变体列表, 每位主持人的发布默认变体,即列表首位)。"""
+    variants = {host: _select_variants_for_host(cv_cfg, host) for host in ("A", "B")}
+    defaults = {host: (vs[0] if vs else "professional") for host, vs in variants.items()}
+    return variants, defaults
 
 
 class CosyVoice2Backend(TTSBackend):
@@ -145,29 +155,29 @@ class CosyVoice2Backend(TTSBackend):
         final_path = Path(output_path)
         final_path.parent.mkdir(parents=True, exist_ok=True)
 
-        variants = _select_variants(cv_cfg)
-        voice_maps = {}
-        for var in variants:
-            voice_maps[var] = {"A": f"host_a_{var}", "B": f"host_b_{var}"}
+        host_variant_map, host_default = _host_variant_plan(cv_cfg)
+        all_variants = sorted({v for vs in host_variant_map.values() for v in vs})
+        voice_maps = {var: {"A": f"host_a_{var}", "B": f"host_b_{var}"} for var in all_variants}
 
         with tempfile.TemporaryDirectory(prefix="tts-cosyvoice-") as tmp_dir:
             tmp_root = Path(tmp_dir)
-            segments_by_variant = {var: [] for var in variants}
+            segments_by_variant: dict[str, list[Any]] = {}
+            chunk_variant_names: list[list[str]] = []
 
             for idx, chunk in enumerate(chunks, start=1):
                 sentences = split_text_into_sentences(chunk.text, max_chars=80)
+                vars_for_chunk = host_variant_map[chunk.host]
+                chunk_variant_names.append(vars_for_chunk)
 
-                for var in variants:
+                for var in vars_for_chunk:
                     chunk_segments: list[Any] = []
                     for s_idx, sentence in enumerate(sentences):
                         s_text = sentence.strip()
                         if not s_text:
                             continue
 
-                        cv2_text = s_text
-
                         tensor = cosy_engine.synthesize_chunk(
-                            text=cv2_text, host=chunk.host, variant=var
+                            text=s_text, host=chunk.host, variant=var
                         )
                         wav_path = tmp_root / f"chunk_{idx:03d}_{var}_{s_idx:03d}.wav"
                         torchaudio.save(str(wav_path), tensor, cv_cfg.sample_rate)
@@ -177,14 +187,18 @@ class CosyVoice2Backend(TTSBackend):
                         combined_chunk = chunk_segments[0]
                         for next_seg in chunk_segments[1:]:
                             combined_chunk += audio_segment_cls.silent(duration=150) + next_seg
-                        segments_by_variant[var].append(combined_chunk)
                     else:
-                        segments_by_variant[var].append(audio_segment_cls.silent(duration=100))
+                        combined_chunk = audio_segment_cls.silent(duration=100)
+                    segments_by_variant.setdefault(var, [None] * len(chunks))[idx - 1] = (
+                        combined_chunk
+                    )
 
-            default_variant = "professional" if "professional" in variants else variants[0]
             combined, timestamps = assemble_dialogue_audio(
                 chunks,
-                segments_by_variant[default_variant],
+                [
+                    segments_by_variant[host_default[chunk.host]][i]
+                    for i, chunk in enumerate(chunks)
+                ],
                 chunk_silence_base=int(audio_cfg.get("chunk_silence_base", 300)),
                 vocal_pad_ms=int(audio_cfg.get("vocal_pad_ms", 1000)),
                 silence_min=int(audio_cfg.get("chunk_silence_min", 400)),
@@ -202,6 +216,7 @@ class CosyVoice2Backend(TTSBackend):
             _write_chunks_and_playlist(
                 chunks=chunks,
                 segments_by_variant=segments_by_variant,
+                chunk_variant_names=chunk_variant_names,
                 timestamps=timestamps,
                 voice_maps=voice_maps,
                 output_path=final_path,
