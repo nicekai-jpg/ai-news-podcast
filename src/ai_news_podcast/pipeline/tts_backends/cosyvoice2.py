@@ -47,7 +47,7 @@ def _write_chunks_and_playlist(
     voice_maps: dict[str, dict[str, str]],
     output_path: Path,
 ) -> None:
-    """将各个音频片段及播放清单 JSON 写入和单期 ID 同名的文件夹中，包含所有音色版本。"""
+    """将各主持人在其合成变体下的音频片段与播放清单 JSON 写入以单期 ID 命名的文件夹。"""
     import json
 
     chunks_dir = output_path.with_suffix("")

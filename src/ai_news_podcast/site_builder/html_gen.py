@@ -44,13 +44,15 @@ def _voice_labels(cfg: Any) -> dict[str, dict[str, str]]:
         custom = None
         raw_variants = cfg.tts.cosyvoice.synth_variants
 
-    labels = custom or {k: dict(v) for k, v in _DEFAULT_VOICE_NAMES.items()}
+    labels = {k: dict(v) for k, v in _DEFAULT_VOICE_NAMES.items()}
+    if isinstance(custom, dict):
+        labels.update(custom)
     if isinstance(raw_variants, dict):
         allowed: dict[str, list[str]] = {}
         for key, values in raw_variants.items():
             host = _norm_host_key(key)
-            if host is not None:
-                allowed[host] = [str(v).strip() for v in (values or []) if str(v).strip()]
+            if host is not None and isinstance(values, (list, tuple)):
+                allowed[host] = [str(v).strip() for v in values if str(v).strip()]
     elif raw_variants:
         allowed = {
             "host_a": [str(v).strip() for v in raw_variants],
@@ -59,9 +61,9 @@ def _voice_labels(cfg: Any) -> dict[str, dict[str, str]]:
     else:
         allowed = {}
 
-    for host in ("host_a", "host_b"):
-        if allowed.get(host):
-            labels[host] = {var: name for var, name in labels[host].items() if var in allowed[host]}
+    for host, allowed_vars in allowed.items():
+        if allowed_vars and host in labels:
+            labels[host] = {var: name for var, name in labels[host].items() if var in allowed_vars}
     return labels
 
 

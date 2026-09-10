@@ -92,7 +92,9 @@ Stage CLIs (console scripts in pyproject):
   `tts.cosyvoice.synth_variants` 支持列表(全体统一)或字典(按 host 指定,
   键接受 host_a/A/host_b/B),空=全部合成;当前为 host_a→lively(青春女声)、
   host_b→professional(专业男声)的组合。播放器对未合成变体逐级回退
-  (professional → 任一可用),html_gen 按 host 渲染音色按钮。
+  (professional → 任一可用),html_gen 按 host 渲染音色按钮。发布主轨/默认
+  变体 = 每位主持人**配置列表的第一项**(不是 professional 优先;professional
+  优先仅是"列表为空时的回退"),别按 professional-first 误改。
 - TTS requires a CosyVoice2-0.5B environment: `COSYVOICE_MODEL_DIR` plus
   `PYTHONPATH` into the cloned CosyVoice repo. See `scripts/setup_cosyvoice_env.sh`,
   `scripts/gha_tts_cosyvoice.py`, and `docs/gha_cosyvoice2_deployment_log.md`.

@@ -159,3 +159,35 @@ class TestVoiceLabels:
         labels = _voice_labels(cfg)
         assert set(labels["host_a"]) == {"lively"}
         assert set(labels["host_b"]) == {"professional"}
+
+    def test_partial_custom_voice_names_does_not_crash(self) -> None:
+        from ai_news_podcast.site_builder.html_gen import _voice_labels
+
+        cfg = {
+            "tts": {
+                "voice_names": {"host_a": {"professional": "亲切女声"}},
+                "cosyvoice": {"synth_variants": ["professional"]},
+            },
+        }
+        labels = _voice_labels(cfg)
+        assert set(labels["host_a"]) == {"professional"}
+        assert set(labels["host_b"]) == {"professional"}
+
+    def test_scalar_variant_value_ignored(self) -> None:
+        from ai_news_podcast.site_builder.html_gen import _voice_labels
+
+        cfg = {
+            "tts": {
+                "cosyvoice": {"synth_variants": {"host_a": "lively", "host_b": ["professional"]}}
+            }
+        }
+        labels = _voice_labels(cfg)
+        assert set(labels["host_a"]) == {"professional", "lively"}
+        assert set(labels["host_b"]) == {"professional"}
+
+    def test_none_cfg_returns_defaults(self) -> None:
+        from ai_news_podcast.site_builder.html_gen import _voice_labels
+
+        labels = _voice_labels(None)
+        assert set(labels["host_a"]) == {"professional", "lively"}
+        assert set(labels["host_b"]) == {"professional", "lively"}
