@@ -13,7 +13,7 @@ tts:
   bgm_path: ""
   cosyvoice:
     model_dir: ""                    # 空则读 COSYVOICE_MODEL_DIR 环境变量
-    synth_variants: ["professional"] # 只真实合成列出的音色;留空则合成 ref_audio 全部(旧行为)
+    synth_variants: ["professional"] # 只真实合成列出的音色;可填 ref_audio 的任意键(见下 professional/lively),留空=全部(旧行为)
     ref_audio:
       host_a:
         professional: "assets/audio_samples/host_b_v1.mp3"
