@@ -81,12 +81,13 @@ async def test_run_pipeline_semantic_dedup(tmp_path: Path, raw_item_factory) -> 
     write_json(episodes_path, episodes)
 
     cfg = {
+        "gh_radar": {"enabled": False},
         "processing": {
             "dedup": {
                 "semantic_sim_threshold": 0.20,
                 "embedding_sim_threshold": 0.20,
             }
-        }
+        },
     }
 
     item_similar = raw_item_factory(
@@ -144,11 +145,12 @@ async def test_run_pipeline_semantic_dedup_tfidf_fallback(tmp_path: Path, raw_it
     write_json(episodes_path, episodes)
 
     cfg = {
+        "gh_radar": {"enabled": False},
         "processing": {
             "dedup": {
                 "semantic_sim_threshold": 0.20,
             }
-        }
+        },
     }
 
     item_similar = raw_item_factory(
@@ -208,12 +210,13 @@ async def test_run_pipeline_skips_current_episode(tmp_path: Path, raw_item_facto
     write_json(episodes_path, episodes)
 
     cfg = {
+        "gh_radar": {"enabled": False},
         "processing": {
             "dedup": {
                 "semantic_sim_threshold": 0.20,
                 "embedding_sim_threshold": 0.20,
             }
-        }
+        },
     }
 
     # This item has the exact same link and a highly similar title, which would normally trigger deduplication
@@ -243,3 +246,65 @@ async def test_run_pipeline_skips_current_episode(tmp_path: Path, raw_item_facto
         assert len(called_args) == 1
         assert called_args[0].title == "Google I/O 2026 developer collection"
         assert len(brief.get("metadata", {}).get("dedup_details", [])) == 0
+
+
+@pytest.mark.asyncio
+async def test_run_pipeline_attaches_radar(tmp_path: Path, raw_item_factory) -> None:
+    from unittest.mock import AsyncMock, patch
+
+    from ai_news_podcast.pipeline.runner import run_pipeline
+
+    radar = {
+        "date": "2026-06-03",
+        "projects": [{"repo": "owner/hot", "stars": 1500, "delta_stars": 1000}],
+        "meta": {"pick_repo": "owner/hot", "runner_up_repos": [], "degraded": False},
+    }
+    with (
+        patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch,
+        patch("ai_news_podcast.pipeline.runner.process") as mock_process,
+        patch("ai_news_podcast.pipeline.runner.build_radar", new_callable=AsyncMock) as mock_radar,
+    ):
+        mock_fetch.return_value = [raw_item_factory()]
+        mock_process.return_value = {"stories": []}
+        mock_radar.return_value = radar
+
+        brief = await run_pipeline(
+            cfg={},
+            sources=[],
+            date_str="2026-06-03",
+            data_dir=tmp_path,
+            force_refresh=True,
+        )
+
+        assert brief["radar"]["meta"]["pick_repo"] == "owner/hot"
+        saved = (tmp_path / "briefs" / "brief_2026-06-03.json").read_text(encoding="utf-8")
+        assert '"pick_repo"' in saved
+
+
+@pytest.mark.asyncio
+async def test_run_pipeline_survives_radar_failure(tmp_path: Path, raw_item_factory) -> None:
+    from unittest.mock import AsyncMock, patch
+
+    from ai_news_podcast.pipeline.runner import run_pipeline
+
+    with (
+        patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch,
+        patch("ai_news_podcast.pipeline.runner.process") as mock_process,
+        patch(
+            "ai_news_podcast.pipeline.runner.build_radar",
+            new_callable=AsyncMock,
+            side_effect=RuntimeError("github down"),
+        ),
+    ):
+        mock_fetch.return_value = [raw_item_factory()]
+        mock_process.return_value = {"stories": []}
+
+        brief = await run_pipeline(
+            cfg={},
+            sources=[],
+            date_str="2026-06-03",
+            data_dir=tmp_path,
+            force_refresh=True,
+        )
+
+        assert "radar" not in brief  # 雷达失败,正片照常

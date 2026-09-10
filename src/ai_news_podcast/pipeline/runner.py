@@ -25,6 +25,7 @@ from ai_news_podcast.pipeline.dedup import (
     semantic_dedup,
 )
 from ai_news_podcast.pipeline.fetcher import fetch_all
+from ai_news_podcast.pipeline.gh_radar import build_radar
 from ai_news_podcast.pipeline.processor import process, save_brief
 from ai_news_podcast.utils import read_json
 
@@ -185,6 +186,34 @@ async def run_pipeline(  # noqa: PLR0915
 
     # ── 注入去重详细计算信息 ────────────────────────────────────────────────────
     brief.setdefault("metadata", {})["dedup_details"] = dedup_details
+
+    # ── Stage 2b: 项目雷达(独立项目轨,可失败不致命) ──────────────────────
+    gh_radar_cfg = cfg_dict.get("gh_radar", {})
+    if gh_radar_cfg.get("enabled", True):
+        event_bus.emit(
+            StageStarted(stage="gh_radar", episode_id=date_str, timestamp=datetime.now(tz=UTC))
+        )
+        try:
+            news_titles = [item.title for item in raw_items]
+            brief["radar"] = await build_radar(gh_radar_cfg, date_str, data_dir, news_titles)
+            event_bus.emit(
+                StageCompleted(
+                    stage="gh_radar",
+                    episode_id=date_str,
+                    duration_ms=0,
+                    result={"projects": len(brief["radar"].get("projects", []))},
+                )
+            )
+        except Exception as e:  # 雷达必须可失败不致命
+            log.warning("项目雷达失败,当期正片不含雷达栏目: %s", e)
+            event_bus.emit(
+                StageFailed(
+                    stage="gh_radar",
+                    episode_id=date_str,
+                    error=str(e),
+                    timestamp=datetime.now(tz=UTC),
+                )
+            )
 
     # ── 持久化 brief ─────────────────────────────────────────────────────────
     data_dir.mkdir(parents=True, exist_ok=True)
