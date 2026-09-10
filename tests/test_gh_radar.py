@@ -17,7 +17,7 @@ from ai_news_podcast.pipeline.gh_radar import (
     count_news_mentions,
     score_project,
 )
-from ai_news_podcast.utils import write_json
+from ai_news_podcast.utils import read_json, write_json
 
 
 class TestGhRadarConfig:
@@ -106,11 +106,15 @@ class FakeGhClient:
     def __init__(self, items: list[dict], readmes: dict[str, str] | None = None) -> None:
         self.items = items
         self.readmes = readmes or {}
+        self.queries: list[str] = []
+        self.readme_calls: list[str] = []
 
     async def search_repos(self, query: str, *, sort: str = "stars", per_page: int = 30):
+        self.queries.append(query)
         return self.items
 
     async def fetch_readme_text(self, repo: str) -> str:
+        self.readme_calls.append(repo)
         return self.readmes.get(repo, "")
 
     async def aclose(self) -> None:
@@ -241,6 +245,10 @@ class TestBuildRadar:
         ]
         gh = FakeGhClient(items, {"owner/hot": "pip install hot\n# quickstart"})
         radar = await build_radar(GCFG, "2026-09-09", tmp_path, [], client=gh, now=_NOW)
+        # 搜索查询:剧集日期 2026-09-09 往前 30 天
+        assert len(gh.queries) == 1
+        assert "created:>2026-08-10" in gh.queries[0]
+        assert "stars:>=500" in gh.queries[0]
 
         repos = [p["repo"] for p in radar["projects"]]
         assert "owner/hot" in repos
@@ -254,6 +262,18 @@ class TestBuildRadar:
         assert (tmp_path / "gh_radar" / "radar_2026-09-09.json").exists()
         snap = snap_dir / "snap_2026-09-09.json"
         assert snap.exists()  # 当日快照已写
+
+    @pytest.mark.asyncio
+    async def test_snapshot_covers_all_before_probe_truncation(self, tmp_path: Path) -> None:
+        gcfg = dict(GCFG, readme_probe_limit=1)
+        items = [_repo_item("owner/hot", 1500), _repo_item("owner/warm", 1200)]
+        gh = FakeGhClient(items, {"owner/hot": "pip install hot"})
+        radar = await build_radar(gcfg, "2026-09-09", tmp_path, [], client=gh, now=_NOW)
+
+        snap = read_json(tmp_path / "gh_snapshots" / "snap_2026-09-09.json")
+        assert set(snap["stars"]) == {"owner/hot", "owner/warm"}  # 截断前快照,新进榜也有基线
+        assert gh.readme_calls == ["owner/hot"]  # 只探测截断后的第一名
+        assert [p["repo"] for p in radar["projects"]] == ["owner/hot"]
 
     @pytest.mark.asyncio
     async def test_readme_excerpt_in_pick(self, tmp_path: Path) -> None:

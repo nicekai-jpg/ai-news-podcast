@@ -15,17 +15,23 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
+import httpx
+
 from ai_news_podcast.pipeline.gh_client import GhClient
 from ai_news_podcast.utils import read_json, write_json
 
 logger = logging.getLogger(__name__)
 
-_INSTALL_HINTS = (
+_INSTALL_COMMANDS = (
     "pip install",
     "npm install",
     "cargo install",
     "brew install",
     "docker run",
+)
+
+_INSTALL_HINTS = (
+    *_INSTALL_COMMANDS,
     "quickstart",
     "getting started",
     "安装",
@@ -108,16 +114,7 @@ def _hands_on_excerpt(readme: str, max_chars: int) -> str:
     if start < 0:
         for i, line in enumerate(lines):
             low = line.lower()
-            if any(
-                h in low
-                for h in (
-                    "pip install",
-                    "npm install",
-                    "cargo install",
-                    "brew install",
-                    "docker run",
-                )
-            ):
+            if any(h in low for h in _INSTALL_COMMANDS):
                 start = max(0, i)
                 break
     if start < 0:
@@ -178,7 +175,10 @@ def _to_project(
 
 
 def score_project(p: RadarProject, *, now: datetime, preferred_topics: list[str]) -> None:
-    """确定性评分:0.5 增速 + 0.3 可上手 + 0.2 交叉热度 + 0.1 AI 主题加分。"""
+    """确定性评分:0.5 增速 + 0.3 可上手 + 0.2 交叉热度 + 0.1 AI 主题加分。
+
+    前置条件:pushed_at 必须是可解析的非空 ISO 时间戳(由 _hard_filter 保证)。
+    """
     if p.delta_stars is not None:
         velocity = min(p.delta_stars, 1500) / 1500
     else:
@@ -198,7 +198,7 @@ def score_project(p: RadarProject, *, now: datetime, preferred_topics: list[str]
     topic_set = {t.lower() for t in p.topics}
     ai_bonus = 0.1 if any(t in topic_set for t in preferred_topics) else 0.0
 
-    p.score = round(min(1.0, 0.5 * velocity + 0.3 * hands_on + 0.2 * cross + ai_bonus), 4)
+    p.score = round(max(0.0, min(1.0, 0.5 * velocity + 0.3 * hands_on + 0.2 * cross + ai_bonus)), 4)
     p.score_parts = {
         "velocity": round(velocity, 4),
         "hands_on": round(hands_on, 4),
@@ -216,15 +216,16 @@ def _load_previous_snapshot(snapshot_dir: Path, today: str) -> dict[str, int]:
     for f in sorted(snapshot_dir.glob("snap_*.json")):
         try:
             data = read_json(f)
-        except Exception:  # 单份快照损坏不影响其余
-            continue
-        if not isinstance(data, dict):
-            continue
-        d = str(data.get("date", ""))
-        if d < today and d > best_date:
-            best_date = d
+            if not isinstance(data, dict):
+                continue
+            d = str(data.get("date", ""))
             stars = data.get("stars", {})
-            best = {str(k): int(v) for k, v in stars.items()} if isinstance(stars, dict) else {}
+            # 先解析再赋值:解析失败(如 stars 值为 "1k")时不能污染 best_date
+            parsed = {str(k): int(v) for k, v in stars.items()} if isinstance(stars, dict) else None
+            if d < today and d > best_date and parsed is not None:
+                best_date, best = d, parsed
+        except Exception:  # 单份快照损坏/字段类型异常不影响其余
+            continue
     return best
 
 
@@ -259,9 +260,9 @@ def _load_recent_picks(output_dir: Path, window_days: int, today: str) -> set[st
             continue
         try:
             data = read_json(f)
-        except Exception:  # 单份历史损坏不影响其余
+            picked |= _picks_from_radar(data)
+        except Exception:  # 单份历史损坏/字段类型异常(如 projects 为数字)不影响其余
             continue
-        picked |= _picks_from_radar(data)
     return picked
 
 
@@ -282,24 +283,23 @@ async def build_radar(
     top_n = int(gcfg.get("top_n", 30))
     min_stars = int(gcfg.get("min_stars", 500))
     window_days = int(gcfg.get("created_window_days", 30))
-    cutoff = (now - timedelta(days=window_days)).strftime("%Y-%m-%d")
+    # cutoff 与排重窗口同源:都用剧集日期(Asia/Shanghai),而非 UTC 的 now
+    cutoff = (datetime.fromisoformat(date_str) - timedelta(days=window_days)).strftime("%Y-%m-%d")
     query = f"created:>{cutoff} stars:>={min_stars}"
 
     owns_client = client is None
     if client is None:
-        import httpx
-
         client = GhClient(httpx.AsyncClient(timeout=30.0))
 
     try:
         items = await client.search_repos(query, per_page=top_n)
         candidates = [it for it in items if _hard_filter(it, gcfg, now)]
         candidates.sort(key=lambda it: int(it.get("stargazers_count", 0)), reverse=True)
-        candidates = candidates[: int(gcfg.get("readme_probe_limit", 12))]
 
         snapshot_dir = data_dir / str(gcfg.get("snapshot_dir", "gh_snapshots"))
         snapshot_dir.mkdir(parents=True, exist_ok=True)
-        # 快照在排重之前写:被排重的热门项目次日仍能算出增速
+        # 快照在排重和 README 截断之前写:被排重的项目、以及今天新进榜的热门项目,
+        # 次日都能算出增速
         write_json(
             snapshot_dir / f"snap_{date_str}.json",
             {
@@ -310,6 +310,8 @@ async def build_radar(
                 },
             },
         )
+        # README 只探测榜单前几名,截断必须在快照之后
+        candidates = candidates[: int(gcfg.get("readme_probe_limit", 12))]
 
         prev_stars = _load_previous_snapshot(snapshot_dir, date_str)
         output_dir = data_dir / str(gcfg.get("output_dir", "gh_radar"))
