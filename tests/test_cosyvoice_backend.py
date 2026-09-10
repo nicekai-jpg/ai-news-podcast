@@ -71,26 +71,61 @@ def test_synthesize_chunk_dispatches_by_host(tmp_path: Path, monkeypatch) -> Non
 
 
 class TestSynthVariantsConfig:
-    def test_appconfig_passthrough(self) -> None:
+    def test_appconfig_list_passthrough(self) -> None:
         from ai_news_podcast.config.models import AppConfig
 
         cfg = AppConfig.from_dict({"tts": {"cosyvoice": {"synth_variants": ["professional"]}}})
         assert cfg.tts.cosyvoice.synth_variants == ["professional"]
 
-    def test_default_is_empty(self) -> None:
+    def test_appconfig_dict_passthrough(self) -> None:
         from ai_news_podcast.config.models import AppConfig
 
-        cfg = AppConfig.from_dict({})
-        assert cfg.tts.cosyvoice.synth_variants == []
+        cfg = AppConfig.from_dict(
+            {
+                "tts": {
+                    "cosyvoice": {
+                        "synth_variants": {"host_a": ["lively"], "host_b": ["professional"]}
+                    }
+                }
+            }
+        )
+        assert cfg.tts.cosyvoice.synth_variants == {
+            "host_a": ["lively"],
+            "host_b": ["professional"],
+        }
 
-    def test_load_cosyvoice_config_parses(self, tmp_path: Path) -> None:
-        cfg = {"tts": {"cosyvoice": {"synth_variants": ["professional"], "model_dir": ""}}}
-        parsed = load_cosyvoice_config(cfg, project_root=tmp_path)
-        assert parsed.synth_variants == ("professional",)
+    def test_default_is_empty_list(self) -> None:
+        from ai_news_podcast.config.models import AppConfig
 
-    def test_load_cosyvoice_config_default_empty(self, tmp_path: Path) -> None:
+        assert AppConfig.from_dict({}).tts.cosyvoice.synth_variants == []
+
+    def test_runtime_normalizes_list_to_both_hosts(self, tmp_path: Path) -> None:
+        parsed = load_cosyvoice_config(
+            {"tts": {"cosyvoice": {"synth_variants": ["professional"]}}}, project_root=tmp_path
+        )
+        assert parsed.synth_variants == {"A": ("professional",), "B": ("professional",)}
+
+    def test_runtime_normalizes_dict_with_aliases(self, tmp_path: Path) -> None:
+        parsed = load_cosyvoice_config(
+            {
+                "tts": {
+                    "cosyvoice": {"synth_variants": {"host_a": ["lively"], "B": ["professional"]}}
+                }
+            },
+            project_root=tmp_path,
+        )
+        assert parsed.synth_variants == {"A": ("lively",), "B": ("professional",)}
+
+    def test_runtime_unknown_host_key_ignored(self, tmp_path: Path) -> None:
+        parsed = load_cosyvoice_config(
+            {"tts": {"cosyvoice": {"synth_variants": {"host_c": ["lively"]}}}},
+            project_root=tmp_path,
+        )
+        assert parsed.synth_variants == {}
+
+    def test_runtime_default_empty(self, tmp_path: Path) -> None:
         parsed = load_cosyvoice_config({}, project_root=tmp_path)
-        assert parsed.synth_variants == ()
+        assert parsed.synth_variants == {"A": (), "B": ()}
 
 
 class TestSelectVariants:

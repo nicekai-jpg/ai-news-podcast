@@ -13,7 +13,9 @@ tts:
   bgm_path: ""
   cosyvoice:
     model_dir: ""                    # 空则读 COSYVOICE_MODEL_DIR 环境变量
-    synth_variants: ["professional"] # 只真实合成列出的音色;可填 ref_audio 的任意键(见下 professional/lively),留空=全部(旧行为)
+    synth_variants:                   # 每位主持人的音色;列表=全体统一,字典=按 host 指定,留空=全部
+      host_a: ["lively"]              # 苏晴 → 青春女声
+      host_b: ["professional"]        # 周航 → 专业男声
     ref_audio:
       host_a:
         professional: "assets/audio_samples/host_b_v1.mp3"

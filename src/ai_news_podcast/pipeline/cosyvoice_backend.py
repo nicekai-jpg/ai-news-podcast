@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import logging
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -16,8 +16,8 @@ class CosyVoiceConfig:
     model_dir: Path
     refs: dict[str, dict[str, tuple[Path, str]]]
     sample_rate: int = 22050
-    # 需要真实合成的变体;空元组 = 合成 refs 的全部(向后兼容)。
-    synth_variants: tuple[str, ...] = ()
+    # 需要真实合成的变体(按 host);空元组 = 合成 refs 的全部(向后兼容)。
+    synth_variants: dict[str, tuple[str, ...]] = field(default_factory=dict)
 
 
 def load_cosyvoice_config(cfg: dict, *, project_root: Path) -> CosyVoiceConfig:
@@ -57,8 +57,32 @@ def load_cosyvoice_config(cfg: dict, *, project_root: Path) -> CosyVoiceConfig:
     ).strip()
     model_dir = Path(model_dir_raw).expanduser() if model_dir_raw else Path()
 
-    synth_variants_raw = cosy.get("synth_variants") or []
-    synth_variants = tuple(str(v).strip() for v in synth_variants_raw if str(v).strip())
+    raw_variants = cosy.get("synth_variants") or []
+
+    def _norm_host(key: str) -> str | None:
+        k = str(key).strip().lower()
+        if k in ("host_a", "a"):
+            return "A"
+        if k in ("host_b", "b"):
+            return "B"
+        return None
+
+    def _clean_variants(values: Any) -> tuple[str, ...]:
+        if not isinstance(values, (list, tuple)):
+            return ()
+        return tuple(str(v).strip() for v in values if str(v).strip())
+
+    if isinstance(raw_variants, dict):
+        synth_variants: dict[str, tuple[str, ...]] = {}
+        for key, values in raw_variants.items():
+            host = _norm_host(key)
+            if host is None:
+                logger.warning("synth_variants 未知 host 键 %r,已忽略", key)
+                continue
+            synth_variants[host] = _clean_variants(values)
+    else:
+        global_variants = _clean_variants(raw_variants)
+        synth_variants = {"A": global_variants, "B": global_variants}
 
     return CosyVoiceConfig(
         model_dir=model_dir,
