@@ -2,17 +2,25 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** 在每日流水线中新增独立「项目轨」——每天扫描 GitHub 发现正在起势、可上手的开源项目,产出播客固定栏目「项目雷达」(3 快讯 + 1 深评)与日报雷达章节;与新闻管线数据完全隔离,失败不致命,数字零幻觉。
+**Goal:** 在每日流水线中新增独立「项目轨」——每天从 GitHub 发现一个正在起势、可上手的开源项目,播客固定栏目「项目雷达」只主推这一个项目并讲透(是什么/为什么是现在/第一步怎么跑起来/fork 能做什么),日报雷达章节列主推 + 备选;与新闻管线数据完全隔离,失败不致命,数字零幻觉。
 
-**Architecture:** 双轨制。新闻轨(fetch→process→打分)不变;新增 `pipeline/gh_client.py`(GitHub REST 轻客户端)与 `pipeline/gh_radar.py`(候选→硬过滤→快照差分→评分→选优)。runner 在 stage1 内挂载雷达(try/except 包裹,失败仅发 StageFailed 事件),结果以 `brief["radar"]` 随 brief 持久化,writer/report 从 brief 自然读到。播客栏目文案由 LLM 生成但所有数字由代码注入素材;日报雷达章节完全由代码生成。
+**Architecture:** 双轨制。新闻轨(fetch→process→打分)不变;新增 `pipeline/gh_client.py`(GitHub REST 轻客户端)与 `pipeline/gh_radar.py`(候选→硬过滤→排重→快照差分→评分→README 摘录→选主推)。runner 在 stage1 内挂载雷达(try/except 包裹,失败仅发 StageFailed 事件),结果以 `brief["radar"]` 随 brief 持久化,writer/report 从 brief 自然读到。播客栏目文案由 LLM 生成但所有数字与安装命令由代码注入素材;日报雷达章节完全由代码生成(主推 + 备选)。
 
 **Tech Stack:** Python 3.11 / httpx(已有依赖)/ GitHub REST API(免费额度,`GITHUB_TOKEN` 可选)/ pytest + pytest-asyncio。
 
 **关键约束(设计已定,不可偏离):**
 - 雷达是"可失败环节":任何异常不得阻断正片。
-- LLM 禁止自报数字:stars/增速等由代码写进素材文本。
-- 同步纪律:快照 `data/gh_snapshots/snap_{date}.json` 必须随 stage1 提交到 main(次日 CI 才能算增速)。
+- LLM 禁止自报数字与安装命令:stars/增速由代码写进素材;安装命令逐字来自 README 摘录。
+- 播客栏目每日只主推 1 个项目(用户 2026-09-10 拍板,替代原"3 快讯 + 1 深评");备选只进日报,不进播客。
+- 主推由代码确定性取评分第一名,编辑/撰稿 Agent 只写文案、不参与挑选。
+- 同步纪律:快照 `data/gh_snapshots/snap_{date}.json` 与推荐 `data/gh_radar/radar_{date}.json` 必须随 stage1 提交到 main(次日 CI 才能算增速与排重)。
 - 命名:内部 `gh_radar`,中文显示名「项目雷达」。
+
+**设计决策记录(2026-09-10 pivot,用户拍板):**
+- 原设计"3 快讯 + 1 深评"改为**每日只主推 1 个项目**:一个项目讲透"是什么/为什么是现在/第一步怎么跑起来/fork 能做什么",构成一次完整的上手决策;广度由日报备选补齐。
+- 备选处理:评分第 2、3 名只出现在日报(各一行带链接),播客不提——播客保持聚焦,阅读版补广度。
+- 单选质量:主推 = 确定性评分第一名(可复现、可调试),评分权重已偏向"能跑起来"的项目;README 上手小节原文摘录进素材,安装命令必须逐字引用,压掉"第一步怎么装"的幻觉空间。
+- 重复排除:近 30 天已推荐过的仓库(历史 `radar_*.json` 的 projects + pick_repo + runner_up_repos)直接出局,防止小池子天天霸榜。
 
 ---
 
@@ -23,7 +31,7 @@
 | `src/ai_news_podcast/config/models.py` | 修改 | 新增 `GhRadarConfig` + `AppConfig.gh_radar` |
 | `config/config.yaml` | 修改 | 新增 `gh_radar:` 配置块 |
 | `src/ai_news_podcast/pipeline/gh_client.py` | 新建 | GitHub REST 轻客户端(search + readme) |
-| `src/ai_news_podcast/pipeline/gh_radar.py` | 新建 | 雷达编排:过滤/评分/快照/产物 |
+| `src/ai_news_podcast/pipeline/gh_radar.py` | 新建 | 雷达编排:过滤/排重/评分/快照/摘录/主推 |
 | `src/ai_news_podcast/pipeline/runner.py` | 修改 | stage1 挂载雷达,注入 `brief["radar"]` |
 | `src/ai_news_podcast/pipeline/material.py` | 修改 | 新增 `build_radar_text()` |
 | `src/ai_news_podcast/prompts.py` | 修改 | editor/writer 模板增加雷达段 |
@@ -62,16 +70,24 @@ class TestGhRadarConfig:
         cfg = AppConfig.from_dict({})
         assert cfg.gh_radar.enabled is True
         assert cfg.gh_radar.min_stars == 500
-        assert cfg.gh_radar.quick_count == 3
-        assert cfg.gh_radar.deep_dive_count == 1
+        assert cfg.gh_radar.pick_count == 1
+        assert cfg.gh_radar.runner_up_count == 2
+        assert cfg.gh_radar.repeat_window_days == 30
         assert cfg.gh_radar.snapshot_dir == "gh_snapshots"
 
     def test_overrides(self) -> None:
         cfg = AppConfig.from_dict(
-            {"gh_radar": {"min_stars": 100, "preferred_topics": ["rag"]}}
+            {
+                "gh_radar": {
+                    "min_stars": 100,
+                    "preferred_topics": ["rag"],
+                    "pick_count": 2,
+                }
+            }
         )
         assert cfg.gh_radar.min_stars == 100
         assert cfg.gh_radar.preferred_topics == ["rag"]
+        assert cfg.gh_radar.pick_count == 2
 ```
 
 - [ ] **Step 2: 跑测试确认失败**
@@ -86,16 +102,18 @@ Expected: FAIL —— `AttributeError: 'AppConfig' object has no attribute 'gh_r
 ```python
 @dataclass(frozen=True)
 class GhRadarConfig:
-    """GitHub 项目雷达(独立项目轨)配置。"""
+    """GitHub 项目雷达(独立项目轨,每日一项目)配置。"""
 
     enabled: bool = True
     min_stars: int = 500
     created_window_days: int = 30
     recent_push_days: int = 21
     top_n: int = 30
-    quick_count: int = 3
-    deep_dive_count: int = 1
+    pick_count: int = 1
+    runner_up_count: int = 2
     readme_probe_limit: int = 12
+    repeat_window_days: int = 30
+    readme_excerpt_chars: int = 1200
     excluded_name_patterns: list[str] = field(
         default_factory=lambda: [
             "awesome",
@@ -156,9 +174,11 @@ gh_radar:
   created_window_days: 30         # 新星榜创建时间窗口(天)
   recent_push_days: 21            # 最近一次 commit 必须在此窗口内(项目还活着)
   top_n: 30                       # 搜索拉取的候选数量
-  quick_count: 3                  # 每期快讯项目数
-  deep_dive_count: 1              # 每期深评项目数(取最高分)
+  pick_count: 1                   # 播客每日主推项目数(确定性取评分第一)
+  runner_up_count: 2              # 日报备选项目数(只进日报,不进播客)
   readme_probe_limit: 12          # 探测 README 的候选上限(控 API 用量)
+  repeat_window_days: 30          # 最近 N 天已推荐过的仓库不再推荐
+  readme_excerpt_chars: 1200      # README 上手小节摘录的最大字符数
   excluded_name_patterns:         # 命中即排除(资料合集类不可上手)
     - "awesome"
     - "tutorial"
@@ -333,7 +353,7 @@ uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/a
 
 ---
 
-### Task 3: `pipeline/gh_radar.py` — 雷达核心(过滤/评分/快照/编排)
+### Task 3: `pipeline/gh_radar.py` — 雷达核心(过滤/排重/评分/快照/摘录/主推)
 
 **Files:**
 - Create: `src/ai_news_podcast/pipeline/gh_radar.py`
@@ -346,6 +366,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 
 from ai_news_podcast.pipeline.gh_radar import (
+    _hands_on_excerpt,
     build_radar,
     count_news_mentions,
     score_project,
@@ -390,8 +411,9 @@ def _repo_item(full_name: str, stars: int, *, pushed: str = "2026-09-08T00:00:00
 
 
 GCFG = {"enabled": True, "min_stars": 500, "created_window_days": 30,
-        "recent_push_days": 21, "top_n": 30, "quick_count": 3, "deep_dive_count": 1,
-        "readme_probe_limit": 12, "excluded_name_patterns": ["awesome", "list"],
+        "recent_push_days": 21, "top_n": 30, "pick_count": 1, "runner_up_count": 2,
+        "readme_probe_limit": 12, "repeat_window_days": 30, "readme_excerpt_chars": 1200,
+        "excluded_name_patterns": ["awesome", "list"],
         "preferred_topics": ["llm"], "snapshot_dir": "gh_snapshots",
         "output_dir": "gh_radar"}
 
@@ -403,6 +425,21 @@ class TestCountNewsMentions:
 
     def test_short_tokens_ignored(self) -> None:
         assert count_news_mentions("acme/gpt", ["gpt is everywhere"]) == 0
+
+
+class TestHandsOnExcerpt:
+    def test_quickstart_heading_extracted(self) -> None:
+        readme = "# Hot\nA tool.\n\n## Quickstart\npip install hot\nhot run\n\n## License\nMIT"
+        text = _hands_on_excerpt(readme, 1200)
+        assert "pip install hot" in text
+        assert "MIT" not in text
+
+    def test_no_heading_falls_back_to_install_line(self) -> None:
+        readme = "Some intro.\nJust run `pip install hot` to start."
+        assert "pip install hot" in _hands_on_excerpt(readme, 1200)
+
+    def test_empty_readme(self) -> None:
+        assert _hands_on_excerpt("", 1200) == ""
 
 
 class TestScoreProject:
@@ -423,7 +460,8 @@ def _mk(**kw) -> "RadarProject":
         repo="owner/repo", url="https://github.com/owner/repo", description="d",
         language="Python", topics=[], stars=1000, delta_stars=None, is_new=True,
         created_at="2026-08-15T00:00:00Z", pushed_at="2026-09-08T00:00:00Z",
-        license="MIT", has_install_docs=False, mentions=0, score=0.0, score_parts={},
+        license="MIT", has_install_docs=False, mentions=0, readme_excerpt="",
+        score=0.0, score_parts={},
     )
     defaults.update(kw)
     return RadarProject(**defaults)
@@ -455,10 +493,38 @@ class TestBuildRadar:
         hot = next(p for p in radar["projects"] if p["repo"] == "owner/hot")
         assert hot["delta_stars"] == 1000           # 1500 - 500
         assert hot["has_install_docs"] is True
-        assert radar["meta"]["deep_dive_repo"] == radar["projects"][0]["repo"]
+        assert radar["meta"]["pick_repo"] == radar["projects"][0]["repo"]
         assert (tmp_path / "gh_radar" / "radar_2026-09-09.json").exists()
         snap = (snap_dir / "snap_2026-09-09.json")
         assert snap.exists()                        # 当日快照已写
+
+    @pytest.mark.asyncio
+    async def test_readme_excerpt_in_pick(self, tmp_path: Path) -> None:
+        readme = "# Hot\n\n## Quickstart\npip install hot\n\n## License\nMIT"
+        gh = FakeGhClient([_repo_item("owner/hot", 800)], {"owner/hot": readme})
+        radar = await build_radar(GCFG, "2026-09-09", tmp_path, [], client=gh, now=_NOW)
+        assert "pip install hot" in radar["projects"][0]["readme_excerpt"]
+
+    @pytest.mark.asyncio
+    async def test_recent_picks_excluded(self, tmp_path: Path) -> None:
+        out = tmp_path / "gh_radar"
+        out.mkdir()
+        write_json(
+            out / "radar_2026-09-08.json",
+            {
+                "date": "2026-09-08",
+                "projects": [{"repo": "owner/hot"}, {"repo": "owner/second"}],
+                "meta": {"pick_repo": "owner/hot", "runner_up_repos": ["owner/second"]},
+            },
+        )
+        items = [_repo_item("owner/hot", 1500), _repo_item("owner/fresh2", 800)]
+        gh = FakeGhClient(items)
+        radar = await build_radar(GCFG, "2026-09-09", tmp_path, [], client=gh, now=_NOW)
+        repos = [p["repo"] for p in radar["projects"]]
+        assert "owner/hot" not in repos
+        assert "owner/second" not in repos
+        assert "owner/fresh2" in repos
+        assert radar["meta"]["excluded_recent"] == 2
 
     @pytest.mark.asyncio
     async def test_first_day_no_delta(self, tmp_path: Path) -> None:
@@ -496,11 +562,12 @@ Expected: FAIL —— `ModuleNotFoundError: ... gh_radar`
 新建 `src/ai_news_podcast/pipeline/gh_radar.py`:
 
 ```python
-"""项目雷达:发现正在起势、可上手的开源项目。
+"""项目雷达:每天发现一个正在起势、可上手的开源项目。
 
 双轨制中的「项目轨」,与新闻管线数据完全隔离:
-产物只进入播客固定栏目「项目雷达」与日报章节两个出口。
-数字全部来自 GitHub API 实测并由代码写入,LLM 无权自报热度。
+播客栏目「项目雷达」只主推评分第一名,备选(评分第 2、3 名)只进日报章节。
+数字全部来自 GitHub API 实测并由代码写入,安装命令逐字来自 README 摘录,
+LLM 无权自报热度或改写命令。
 """
 
 from __future__ import annotations
@@ -529,6 +596,17 @@ _INSTALL_HINTS = (
     "快速开始",
 )
 
+_EXCERPT_HEADINGS = (
+    "quickstart",
+    "getting started",
+    "installation",
+    "install",
+    "usage",
+    "安装",
+    "快速开始",
+    "上手",
+)
+
 
 @dataclass
 class RadarProject:
@@ -547,6 +625,7 @@ class RadarProject:
     license: str
     has_install_docs: bool
     mentions: int
+    readme_excerpt: str = ""
     score: float = 0.0
     score_parts: dict[str, float] = field(default_factory=dict)
 
@@ -574,6 +653,43 @@ def _has_install_docs(readme: str) -> bool:
         return False
     low = readme.lower()
     return any(hint in low for hint in _INSTALL_HINTS)
+
+
+def _hands_on_excerpt(readme: str, max_chars: int) -> str:
+    """从 README 截取上手小节(安装/快速开始)原文,供文案逐字引用。
+
+    优先找标题行(Quickstart/安装 等);找不到则退化为第一条安装命令所在行起。
+    """
+    if not readme:
+        return ""
+    lines = readme.splitlines()
+    start = -1
+    for i, line in enumerate(lines):
+        stripped = line.strip().lower()
+        if stripped.startswith("#") and any(h in stripped for h in _EXCERPT_HEADINGS):
+            start = i + 1
+            break
+    if start < 0:
+        for i, line in enumerate(lines):
+            low = line.lower()
+            if any(
+                h in low
+                for h in ("pip install", "npm install", "cargo install", "brew install", "docker run")
+            ):
+                start = max(0, i)
+                break
+    if start < 0:
+        return ""
+    picked: list[str] = []
+    size = 0
+    for line in lines[start:]:
+        if line.strip().startswith("#") and picked:
+            break
+        picked.append(line)
+        size += len(line) + 1
+        if size >= max_chars:
+            break
+    return "\n".join(picked).strip()[:max_chars]
 
 
 def _hard_filter(item: dict[str, Any], gcfg: dict[str, Any], now: datetime) -> bool:
@@ -674,6 +790,36 @@ def _load_previous_snapshot(snapshot_dir: Path, today: str) -> dict[str, int]:
     return best
 
 
+def _load_recent_picks(output_dir: Path, window_days: int, today: str) -> set[str]:
+    """收集最近 window_days 天已推荐过的仓库,防止热门项目天天霸榜。"""
+    if window_days <= 0 or not output_dir.exists():
+        return set()
+    base = datetime.fromisoformat(today)
+    cutoff = (base - timedelta(days=window_days)).strftime("%Y-%m-%d")
+    picked: set[str] = set()
+    for f in sorted(output_dir.glob("radar_*.json")):
+        m = re.search(r"radar_(\d{4}-\d{2}-\d{2})\.json$", f.name)
+        if not m or not (cutoff <= m.group(1) < today):
+            continue
+        try:
+            data = read_json(f)
+        except Exception:  # noqa: BLE001 — 单份历史损坏不影响其余
+            continue
+        if not isinstance(data, dict):
+            continue
+        for p in data.get("projects") or []:
+            if isinstance(p, dict) and p.get("repo"):
+                picked.add(str(p["repo"]))
+        meta = data.get("meta") or {}
+        for key in ("pick_repo", "runner_up_repos"):
+            v = meta.get(key)
+            if isinstance(v, str) and v:
+                picked.add(v)
+            elif isinstance(v, list):
+                picked.update(str(x) for x in v if x)
+    return picked
+
+
 async def build_radar(
     gcfg: dict[str, Any],
     date_str: str,
@@ -708,6 +854,7 @@ async def build_radar(
 
         snapshot_dir = data_dir / str(gcfg.get("snapshot_dir", "gh_snapshots"))
         snapshot_dir.mkdir(parents=True, exist_ok=True)
+        # 快照在排重之前写:被排重的热门项目次日仍能算出增速
         write_json(
             snapshot_dir / f"snap_{date_str}.json",
             {
@@ -720,36 +867,47 @@ async def build_radar(
         )
 
         prev_stars = _load_previous_snapshot(snapshot_dir, date_str)
+        output_dir = data_dir / str(gcfg.get("output_dir", "gh_radar"))
+        recent_picks = _load_recent_picks(
+            output_dir, int(gcfg.get("repeat_window_days", 30)), date_str
+        )
+        excluded_recent = sum(
+            1 for it in candidates if str(it.get("full_name", "")) in recent_picks
+        )
         preferred = [str(t).lower() for t in gcfg.get("preferred_topics", [])]
+        excerpt_chars = int(gcfg.get("readme_excerpt_chars", 1200))
 
         projects: list[RadarProject] = []
         for item in candidates:
+            if str(item.get("full_name", "")) in recent_picks:
+                continue
             p = _to_project(item, prev_stars, news_titles)
             try:
-                p.has_install_docs = _has_install_docs(await client.fetch_readme_text(p.repo))
+                readme = await client.fetch_readme_text(p.repo)
+                p.has_install_docs = _has_install_docs(readme)
+                p.readme_excerpt = _hands_on_excerpt(readme, excerpt_chars)
             except Exception as e:  # noqa: BLE001 — 单仓库 README 拉取失败不致命
                 logger.warning("README probe failed for %s: %s", p.repo, e)
             score_project(p, now=now, preferred_topics=preferred)
             projects.append(p)
 
         projects.sort(key=lambda x: x.score, reverse=True)
-        quick_count = int(gcfg.get("quick_count", 3))
-        deep_count = int(gcfg.get("deep_dive_count", 1))
-        projects = projects[: quick_count + deep_count]
-        deep_dive_repo = projects[0].repo if projects else ""
+        keep = int(gcfg.get("pick_count", 1)) + int(gcfg.get("runner_up_count", 2))
+        projects = projects[:keep]
+        pick_repo = projects[0].repo if projects else ""
 
-        output_dir = data_dir / str(gcfg.get("output_dir", "gh_radar"))
         output_dir.mkdir(parents=True, exist_ok=True)
         radar = {
             "date": date_str,
             "generated_at": now.isoformat(),
             "projects": [asdict(p) for p in projects],
             "meta": {
-                "quick_repos": [p.repo for p in projects[deep_count:]],
-                "deep_dive_repo": deep_dive_repo,
+                "pick_repo": pick_repo,
+                "runner_up_repos": [p.repo for p in projects[1:]],
                 "degraded": False,
                 "reason": "",
                 "candidates": len(candidates),
+                "excluded_recent": excluded_recent,
             },
         }
         write_json(output_dir / f"radar_{date_str}.json", radar)
@@ -759,7 +917,7 @@ async def build_radar(
             await client.aclose()
 ```
 
-注意 `meta.quick_repos` 用 `projects[deep_count:]`:深评取第一名,快讯取其后 N 个。
+注意:`projects` 列表 = 主推(评分第一)+ 备选(第 2、3 名),`meta.pick_repo` 即第一名;快照在排重之前写。
 
 - [ ] **Step 4: 跑测试确认通过**
 
@@ -769,7 +927,7 @@ Expected: PASS(全部通过)
 - [ ] **Step 5: Commit**
 
 ```bash
-uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/pipeline/gh_radar.py tests/test_gh_radar.py && git commit -m "feat(radar): implement project radar scoring, snapshot and builder"
+uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/pipeline/gh_radar.py tests/test_gh_radar.py && git commit -m "feat(radar): implement daily-pick scoring, repeat exclusion and snapshot"
 ```
 
 ---
@@ -792,7 +950,7 @@ async def test_run_pipeline_attaches_radar(tmp_path: Path, raw_item_factory) -> 
     radar = {
         "date": "2026-06-03",
         "projects": [{"repo": "owner/hot", "stars": 1500, "delta_stars": 1000}],
-        "meta": {"deep_dive_repo": "owner/hot", "quick_repos": [], "degraded": False},
+        "meta": {"pick_repo": "owner/hot", "runner_up_repos": [], "degraded": False},
     }
     with (
         patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch,
@@ -809,9 +967,9 @@ async def test_run_pipeline_attaches_radar(tmp_path: Path, raw_item_factory) -> 
             cfg={}, sources=[], date_str="2026-06-03", data_dir=tmp_path, force_refresh=True
         )
 
-        assert brief["radar"]["meta"]["deep_dive_repo"] == "owner/hot"
+        assert brief["radar"]["meta"]["pick_repo"] == "owner/hot"
         saved = (tmp_path / "briefs" / "brief_2026-06-03.json").read_text(encoding="utf-8")
-        assert '"deep_dive_repo"' in saved
+        assert '"pick_repo"' in saved
 
 
 @pytest.mark.asyncio
@@ -891,7 +1049,7 @@ from ai_news_podcast.pipeline.gh_radar import build_radar
 Run: `uv run pytest tests/test_runner.py -v`
 Expected: PASS(原有用例 + 2 个新用例;原有用例 cfg 不含 gh_radar → `enabled` 默认 True → build_radar 会被调用?**注意**:原用例没有 mock build_radar,会真发网络请求!)
 
-**修正(必须做)**:原有两个 `test_run_pipeline_semantic_dedup*` 用例的 cfg dict 无 `gh_radar` 键,会触发真实调用。给原用例的 cfg 增加 `"gh_radar": {"enabled": False}`,并在 degraded 测试中同样使用 `cfg={"gh_radar": {"enabled": False}, ...}` 时无需 mock——上面 Step 1 的两个新用例 cfg 用 `{}`(enabled 默认开)所以必须 mock,保持原样;原用例加 `"gh_radar": {"enabled": False}` 即可关闭。
+**修正(必须做)**:原有两个 `test_run_pipeline_semantic_dedup*` 用例的 cfg dict 无 `gh_radar` 键,会触发真实调用。给原用例的 cfg 增加 `"gh_radar": {"enabled": False}`,即可关闭;上面 Step 1 的两个新用例 cfg 用 `{}`(enabled 默认开)所以必须 mock,保持原样。
 
 Run: `uv run pytest tests/test_runner.py -v`
 Expected: PASS(全部)
@@ -921,22 +1079,23 @@ class TestBuildRadarText:
         assert build_radar_text(None) == ""
         assert build_radar_text({"projects": []}) == ""
 
-    def test_formats_projects_with_numbers(self) -> None:
+    def test_formats_pick_with_excerpt_and_numbers(self) -> None:
         radar = {
             "projects": [
                 {"repo": "owner/hot", "url": "https://github.com/owner/hot", "stars": 1500,
                  "delta_stars": 1000, "language": "Python", "license": "MIT",
-                 "description": "Fast LLM harness"},
-                {"repo": "owner/next", "url": "https://github.com/owner/next", "stars": 800,
-                 "delta_stars": None, "language": "Rust", "license": "Apache-2.0",
-                 "description": "Quick agent runtime"},
+                 "description": "Fast LLM harness", "readme_excerpt": "pip install hot"},
+                {"repo": "owner/next", "url": "u2", "stars": 800, "delta_stars": None,
+                 "language": "Rust", "license": "Apache-2.0", "description": "Agent runtime",
+                 "readme_excerpt": ""},
             ],
-            "meta": {"deep_dive_repo": "owner/hot"},
+            "meta": {"pick_repo": "owner/hot"},
         }
         text = build_radar_text(radar)
-        assert "[深评]" in text and "[快讯]" in text
-        assert "owner/hot" in text and "⭐1500" in text and "较昨日 +1000" in text
-        assert "首日无对比数据" in text
+        assert "[主推]" in text and "owner/hot" in text
+        assert "⭐1500" in text and "较昨日 +1000" in text
+        assert "pip install hot" in text and "逐字" in text
+        assert "其余候选" in text and "owner/next ⭐800" in text
         assert "禁止编造" in text
 ```
 
@@ -953,26 +1112,37 @@ Expected: FAIL —— `ImportError: cannot import name 'build_radar_text'`
 def build_radar_text(radar: dict[str, Any] | None) -> str:
     """把项目雷达结果格式化为固定栏目素材文本(空雷达返回空串)。
 
-    数字与链接全部来自代码注入的结构化数据,LLM 不得增删。
+    每日只主推一个项目;其余候选仅作对比背景。数字与摘录全部由代码注入,LLM 不得增删。
     """
     if not radar or not radar.get("projects"):
         return ""
     meta = radar.get("meta", {})
-    deep_repo = meta.get("deep_dive_repo")
+    pick_repo = meta.get("pick_repo")
     lines = ["以下是「项目雷达」栏目的结构化素材(与新闻无关,单独成栏)。"]
     for p in radar.get("projects", []):
-        role = "深评" if p.get("repo") == deep_repo else "快讯"
+        if p.get("repo") != pick_repo:
+            continue
         delta = p.get("delta_stars")
         delta_str = f"较昨日 +{delta}" if isinstance(delta, int) else "首日无对比数据"
         lines.append(
-            f"- [{role}] {p.get('repo')}(⭐{p.get('stars')},{delta_str},"
+            f"- [主推] {p.get('repo')}(⭐{p.get('stars')},{delta_str},"
             f"语言:{p.get('language') or '未知'},许可证:{p.get('license') or '无'}):"
             f"{str(p.get('description') or '').strip()}"
         )
+        excerpt = str(p.get("readme_excerpt") or "").strip()
+        if excerpt:
+            lines.append(f"  README 上手摘录(原文,安装命令必须逐字引用):\n  {excerpt}")
         lines.append(f"  链接:{p.get('url')}")
+    others = [
+        f"{p.get('repo')} ⭐{p.get('stars')}"
+        for p in radar.get("projects", [])
+        if p.get("repo") != pick_repo
+    ]
+    if others:
+        lines.append("  其余候选(仅供对比参考,播客中不要展开):" + ";".join(others))
     lines.append(
-        "使用规则:所有仓库名与数字必须原样引用,禁止编造或修改;"
-        "禁止把项目与新闻混在同一栏目。"
+        "使用规则:仓库名、数字、安装命令必须原样引用,禁止编造或修改;"
+        "只讲主推项目,不要展开其余候选;禁止把项目与新闻混在同一栏目。"
     )
     return "\n".join(lines)
 ```
@@ -985,7 +1155,7 @@ Expected: PASS(原有用例 + 新用例)
 - [ ] **Step 5: Commit**
 
 ```bash
-uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/pipeline/material.py tests/test_material.py && git commit -m "feat(radar): format radar material text for prompts"
+uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/pipeline/material.py tests/test_material.py && git commit -m "feat(radar): format daily-pick radar material text for prompts"
 ```
 
 ---
@@ -1008,7 +1178,7 @@ class TestRadarPromptSections:
         prompt = build_editor_prompt("素材", datetime(2026, 9, 9), radar_material="雷达素材")
         assert "项目雷达素材" in prompt
         assert "雷达素材" in prompt
-        assert "3 个快讯项目" in prompt and "1 个深评项目" in prompt
+        assert "[主推]" in prompt
 
     def test_writer_prompt_radar_rules_toggle(self) -> None:
         base = build_writer_prompt("大纲", datetime(2026, 9, 9), "AI 每日先锋", {})
@@ -1017,7 +1187,7 @@ class TestRadarPromptSections:
             "大纲", datetime(2026, 9, 9), "AI 每日先锋", {}, has_radar=True
         )
         assert "项目雷达栏目规范" in with_radar
-        assert "400-600 字" in with_radar
+        assert "300-500 字" in with_radar
 ```
 
 (注意 import:复用该文件已有的 `build_editor_prompt`/`build_writer_prompt`/`datetime` 导入。)
@@ -1036,31 +1206,25 @@ Expected: FAIL —— `TypeError: build_editor_prompt() got an unexpected keywor
 ```python
 EDITOR_RADAR_SECTION = """
 
-## 项目雷达素材(固定栏目,与新闻无关)
+## 项目雷达素材(固定栏目,与新闻无关,每日只主推一个项目)
 {radar_material}
 
-除上述新闻大纲外,请在输出末尾追加一节「## 项目雷达」:选出 {quick_count} 个快讯项目和
-{deep_dive_count} 个深评项目(深评固定选给出的最高分项目)。快讯每条一句话(50 字以内,
-必须点出「能拿来干什么」);深评回答三件事:第一步怎么跑起来、生态缺口在哪、fork 后
-最小改动能做出什么差异化。所有仓库名与数字必须原样引用,禁止编造。"""
+除上述新闻大纲外,请在输出末尾追加一节「## 项目雷达」,只讲素材中标注 [主推] 的这一个项目,
+按四件事组织:是什么、为什么是现在值得上手(引用星数/增速数字)、第一步怎么跑起来
+(安装命令必须逐字引用摘录原文)、fork 后最小改动能做出什么差异化。其余候选不要展开。
+所有仓库名与数字必须原样引用,禁止编造。"""
 
 
 def build_editor_prompt(
     material: str,
     episode_date: datetime,
     radar_material: str = "",
-    quick_count: int = 3,
-    deep_dive_count: int = 1,
 ) -> str:
     """第一阶段:主编 Agent,负责精简素材和定调(可选附项目雷达)。"""
     date_str = _cn_date(episode_date)
     prompt = EDITOR_USER_TEMPLATE.format(date_str=date_str, material=material)
     if radar_material.strip():
-        prompt += EDITOR_RADAR_SECTION.format(
-            radar_material=radar_material,
-            quick_count=quick_count,
-            deep_dive_count=deep_dive_count,
-        )
+        prompt += EDITOR_RADAR_SECTION.format(radar_material=radar_material)
     return prompt
 ```
 
@@ -1072,11 +1236,11 @@ WRITER_RADAR_SECTION = """
 ## 项目雷达栏目规范(大纲中含「## 项目雷达」时必须遵守)
 1. 用固定转场自然开启栏目,例如苏晴说「新闻说完了,接下来进入今天的项目雷达时间」。
    不要每天一字不差。
-2. 大纲里的仓库名、星数、增速数字必须原样引用,禁止编造、取整或夸大。
-3. 快讯每个 2-3 句:是什么 + 为什么热 + 「能拿来干什么」。
-4. 深评务必回答三件事:第一步怎么跑起来(如 pip install xx)、生态缺口在哪、
-   fork 后最小改动能做出什么差异化。
-5. 雷达部分总字数控制在 400-600 字,整体字数上限可放宽至 3500 字。"""
+2. 大纲里的仓库名、星数、增速数字、安装命令必须原样引用,禁止编造、取整或夸大。
+3. 只讲主推这一个项目,按「是什么 → 为什么是现在 → 第一步怎么跑起来 → fork 能做什么」
+   展开,让听众听完能直接决定要不要 clone。
+4. 安装命令逐字念出素材摘录中的原文,不要自己改写参数。
+5. 雷达部分总字数控制在 300-500 字,整体字数上限可放宽至 3500 字。"""
 
 
 def build_writer_prompt(
@@ -1111,7 +1275,7 @@ Expected: PASS(原有用例 + 新用例)
 - [ ] **Step 5: Commit**
 
 ```bash
-uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/prompts.py tests/test_podcastwriter_prompt.py && git commit -m "feat(radar): add radar sections to editor/writer prompts"
+uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/prompts.py tests/test_podcastwriter_prompt.py && git commit -m "feat(radar): add daily-pick radar sections to editor/writer prompts"
 ```
 
 ---
@@ -1134,8 +1298,9 @@ async def test_generate_podcast_injects_radar_into_editor_prompt() -> None:
 
     brief = {"radar": {"projects": [
         {"repo": "owner/hot", "url": "u", "stars": 1500, "delta_stars": 1000,
-         "language": "Python", "license": "MIT", "description": "hot harness"},
-    ]}, "meta": {"deep_dive_repo": "owner/hot"}}
+         "language": "Python", "license": "MIT", "description": "hot harness",
+         "readme_excerpt": "pip install hot"},
+    ]}, "meta": {"pick_repo": "owner/hot"}}
     captured: list[str] = []
 
     def fake_llm(prompt, cfg):
@@ -1143,7 +1308,7 @@ async def test_generate_podcast_injects_radar_into_editor_prompt() -> None:
         if len(captured) == 1:
             return (
                 "# 今日播报大纲\n\n## 金句\nx\n\n## 头条 1\n- **标题**: a\n- **摘要**: b\n\n"
-                "## 头条 2\n- **标题**: c\n- **摘要**: d\n\n## 项目雷达\n- **深评 [owner/hot]**"
+                "## 头条 2\n- **标题**: c\n- **摘要**: d\n\n## 项目雷达\n- **主推 [owner/hot]**"
             )
         return "[Host A] 我们聊聊刚过去的 radar-repo。\n[Host B] 好的,这个项目值得说说。"
 
@@ -1223,20 +1388,24 @@ class TestRadarReportSection:
         assert build_radar_report_section(None, "2026年9月9日") == ""
         assert build_radar_report_section({"projects": []}, "2026年9月9日") == ""
 
-    def test_renders_links_and_numbers(self) -> None:
+    def test_renders_pick_and_runner_ups(self) -> None:
         radar = {
             "projects": [
                 {"repo": "owner/hot", "url": "https://github.com/owner/hot", "stars": 1500,
                  "delta_stars": 1000, "language": "Python", "license": "MIT",
                  "description": "Fast LLM harness"},
+                {"repo": "owner/next", "url": "https://github.com/owner/next", "stars": 800,
+                 "delta_stars": None, "language": "Rust", "license": "Apache-2.0",
+                 "description": "Quick agent runtime"},
             ],
-            "meta": {"deep_dive_repo": "owner/hot"},
+            "meta": {"pick_repo": "owner/hot"},
         }
         section = build_radar_report_section(radar, "2026年9月9日")
         assert "## 📡 项目雷达 | 2026年9月9日" in section
+        assert "🥇 主推 [owner/hot]" in section
         assert "https://github.com/owner/hot" in section
         assert "⭐ 1500" in section and "+1000/天" in section
-        assert "🔬 深评" in section
+        assert "备选 [owner/next]" in section
 ```
 
 - [ ] **Step 2: 跑测试确认失败**
@@ -1250,21 +1419,28 @@ Expected: FAIL —— `ImportError: cannot import name 'build_radar_report_secti
 
 ```python
 def build_radar_report_section(radar: dict[str, Any] | None, date_display: str) -> str:
-    """雷达章节由代码生成(非 LLM),保证数字与链接零幻觉。"""
+    """雷达章节由代码生成(非 LLM),保证数字与链接零幻觉。主推 + 备选。"""
     if not radar or not radar.get("projects"):
         return ""
     meta = radar.get("meta", {})
+    pick_repo = meta.get("pick_repo")
     lines = [f"\n## 📡 项目雷达 | {date_display}\n", "> 数字为 GitHub 实测,链接可直接上手。\n"]
     for p in radar.get("projects", []):
-        role = "🔬 深评" if p.get("repo") == meta.get("deep_dive_repo") else "⚡ 快讯"
         delta = p.get("delta_stars")
         delta_str = f"+{delta}/天" if isinstance(delta, int) else "首日"
-        lines.append(
-            f"- **{role} [{p.get('repo')}]({p.get('url')})**"
-            f" ⭐ {p.get('stars')}({delta_str})"
-            f" · {p.get('language') or '—'} · License: {p.get('license') or '无'}\n"
-            f"  {str(p.get('description') or '').strip()}\n"
-        )
+        if p.get("repo") == pick_repo:
+            lines.append(
+                f"### 🥇 主推 [{p.get('repo')}]({p.get('url')})"
+                f" ⭐ {p.get('stars')}({delta_str})"
+                f" · {p.get('language') or '—'} · License: {p.get('license') or '无'}\n"
+                f"{str(p.get('description') or '').strip()}\n"
+            )
+        else:
+            lines.append(
+                f"- 📎 备选 [{p.get('repo')}]({p.get('url')})"
+                f" ⭐ {p.get('stars')}({delta_str})"
+                f" · {str(p.get('description') or '').strip()}\n"
+            )
     return "\n".join(lines) + "\n"
 ```
 
@@ -1284,7 +1460,7 @@ Expected: PASS
 - [ ] **Step 5: Commit**
 
 ```bash
-uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/cli/podcast_report.py tests/test_daily_report.py && git commit -m "feat(radar): append code-generated radar chapter to daily report"
+uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/cli/podcast_report.py tests/test_daily_report.py && git commit -m "feat(radar): append code-generated daily-pick chapter to daily report"
 ```
 
 ---
@@ -1326,18 +1502,20 @@ Expected: `OK`
 `## Data flow and dates` 一节,在 `- Other artifacts:` 列表中追加:
 
 ```markdown
-- 项目雷达: `data/gh_radar/radar_{date}.json`(当期推荐)与
+- 项目雷达: `data/gh_radar/radar_{date}.json`(每日一项目主推 + 备选)与
   `data/gh_snapshots/snap_{date}.json`(星数快照,供次日差分算增速)。
   两者都由 stage1 提交到 main。雷达作为独立「项目轨」与新闻管线完全隔离,
-  结果挂在 brief 的 `radar` 键上,播客栏目「项目雷达」与日报章节均由此生成。
+  结果挂在 brief 的 `radar` 键上,播客栏目「项目雷达」(只讲主推)与日报章节
+  (主推 + 备选)均由此生成。
 ```
 
 `## Gotchas` 一节末尾追加:
 
 ```markdown
 - **项目雷达必须是可失败环节**:`runner` 用 try/except 包裹 `build_radar`,失败只发
-  `StageFailed` 事件、正片照常。LLM 禁止自报 stars/增速等数字——全部由
-  `material.build_radar_text` 从结构化数据注入;日报雷达章节完全由代码生成。
+  `StageFailed` 事件、正片照常。LLM 禁止自报 stars/增速等数字、禁止改写安装命令——
+  全部由 `material.build_radar_text` 从结构化数据注入;日报雷达章节完全由代码生成。
+  近 30 天已推荐过的仓库由 `_load_recent_picks` 排除,不要绕过。
   `GITHUB_TOKEN` 匿名时走匿名限流(每日一次扫描足够),不要在雷达里加需要
   更高限流的调用。
 ```
@@ -1357,7 +1535,7 @@ git add .github/workflows/daily.yml AGENTS.md && git commit -m "chore(radar): wi
 - [ ] **Step 1: 全量质量门**
 
 Run: `uv run ruff check src/ tests/ scripts/ && uv run ruff format --check src/ tests/ scripts/ && uv run lint-imports && uv run pytest tests/ -q`
-Expected: 全部通过(测试数从 271 增加约 12-14 个)
+Expected: 全部通过(测试数从 295 增加约 14-16 个)
 
 - [ ] **Step 2: pre-commit 全量**
 
@@ -1379,21 +1557,25 @@ async def main() -> None:
     tmp = Path(tempfile.mkdtemp())
     cfg = {
         "enabled": True, "min_stars": 500, "created_window_days": 30,
-        "recent_push_days": 21, "top_n": 30, "quick_count": 3, "deep_dive_count": 1,
-        "readme_probe_limit": 12, "excluded_name_patterns": ["awesome", "list"],
+        "recent_push_days": 21, "top_n": 30, "pick_count": 1, "runner_up_count": 2,
+        "readme_probe_limit": 12, "repeat_window_days": 30, "readme_excerpt_chars": 1200,
+        "excluded_name_patterns": ["awesome", "list"],
         "preferred_topics": ["llm", "agents", "rag"], "snapshot_dir": "gh_snapshots",
         "output_dir": "gh_radar",
     }
-    radar = await build_radar(cfg, "2026-09-09", tmp, [], now=datetime.now(tz=UTC))
+    radar = await build_radar(cfg, "2026-09-10", tmp, [], now=datetime.now(tz=UTC))
     print("degraded:", radar["meta"]["degraded"])
+    print("主推:", radar["meta"]["pick_repo"])
     for p in radar["projects"]:
         print(f"{p['repo']} ⭐{p['stars']} Δ{p['delta_stars']} score={p['score']}")
+        if p["repo"] == radar["meta"]["pick_repo"]:
+            print("摘录:", (p["readme_excerpt"] or "")[:200])
 
 asyncio.run(main())
 EOF
 ```
 
-Expected: 打印 4 个真实仓库(或空列表但 `degraded: False`),`data` 临时目录写出 snap/radar 两个 JSON。
+Expected: 打印主推(1 个)与备选(最多 2 个)真实仓库(或空列表但 `degraded: False`),临时目录写出 snap/radar 两个 JSON,主推带 README 摘录。
 
 - [ ] **Step 4: 收尾报告**
 
@@ -1403,6 +1585,6 @@ Expected: 打印 4 个真实仓库(或空列表但 `degraded: False`),`data` 临
 
 ## Self-Review 记录
 
-1. **Spec 覆盖**:双轨隔离(雷达不进新闻池——`build_radar` 独立数据源 ✓)、可上手硬过滤(Task 3 `_hard_filter` ✓)、增速信号(快照差分 ✓)、交叉提及(`count_news_mentions` ✓)、播客栏目(Task 6/7 ✓)、日报章节(Task 8 ✓)、可失败纪律(Task 4 ✓)、数字防幻觉(素材由代码注入 + 日报代码生成 ✓)、AI 工具链优先(`preferred_topics` 加分 ✓)、快照提交纪律(Task 9 ✓)、L3 网页不在本期(范围已定 L1+L2 ✓)。
+1. **Spec 覆盖**:每日一主推(`pick_count=1`,代码确定性取评分第一 ✓)、备选只进日报(`meta.runner_up_repos` + 日报章节 ✓)、重复排除(`_load_recent_picks` + `excluded_recent` 计数 ✓)、README 上手摘录(`_hands_on_excerpt` + 素材"逐字引用"标注 ✓)、双轨隔离(雷达不进新闻池——`build_radar` 独立数据源 ✓)、可上手硬过滤(Task 3 `_hard_filter` ✓)、增速信号(快照差分,快照在排重前写 ✓)、交叉提及(`count_news_mentions` ✓)、播客栏目(Task 6/7 ✓)、日报章节(Task 8 ✓)、可失败纪律(Task 4 ✓)、数字防幻觉(素材由代码注入 + 日报代码生成 ✓)、AI 工具链优先(`preferred_topics` 加分 ✓)、快照提交纪律(Task 9 ✓)、L3 网页不在本期(范围已定 L1+L2 ✓)。
 2. **占位符**:无 TBD/TODO;Task 7 测试中 `_call_llm` 签名以源码为准已显式标注为执行前确认项(这是"读源码再落笔"的指令,非占位符)。
-3. **类型一致性**:`build_radar(gcfg, date_str, data_dir, news_titles, *, client, now)` 在 Task 3 定义、Task 4 调用一致;`build_radar_text(radar) -> str` Task 5 定义、Task 7 调用一致;`build_editor_prompt(..., radar_material, quick_count, deep_dive_count)` 与 `build_writer_prompt(..., has_radar)` Task 6 定义、Task 7 调用一致;`build_radar_report_section(radar, date_display)` Task 8 内定义与测试一致。
+3. **类型一致性**:`build_radar(gcfg, date_str, data_dir, news_titles, *, client, now)` 在 Task 3 定义、Task 4 调用一致;`build_radar_text(radar) -> str` Task 5 定义、Task 7 调用一致;`build_editor_prompt(material, episode_date, radar_material="")` 与 `build_writer_prompt(..., has_radar)` Task 6 定义、Task 7 调用一致;`build_radar_report_section(radar, date_display)` Task 8 内定义与测试一致;`RadarProject` 新增 `readme_excerpt` 字段,`asdict` 自动序列化进 radar JSON。
