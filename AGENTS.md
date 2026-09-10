@@ -98,6 +98,8 @@ Stage CLIs (console scripts in pyproject):
 - TTS requires a CosyVoice2-0.5B environment: `COSYVOICE_MODEL_DIR` plus
   `PYTHONPATH` into the cloned CosyVoice repo. See `scripts/setup_cosyvoice_env.sh`,
   `scripts/gha_tts_cosyvoice.py`, and `docs/gha_cosyvoice2_deployment_log.md`.
+  `setup_cosyvoice_env.sh` picks its own interpreter (≥3.11 guard; `COSYVOICE_PYTHON`
+  overrides) — the local venv is aligned at 3.11.9, same as CI.
   GHA caches the venv/models (cache key `cosyvoice-gha-v7`); workflows pin Python to
   exact **3.11.9** — keep that pin when touching CI.
 - Ruff: line length 100, mccabe ≤ 15. `T201` (print) is ignored because CLIs print;

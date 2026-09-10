@@ -7,6 +7,25 @@ COSY_MODELS="${COSYVOICE_MODELS:-$HOME/cosyvoice_models}"
 COSY_VENV="${COSYVOICE_VENV:-$HOME/cosyvoice_venv}"
 MODEL_DIR="$COSY_MODELS/CosyVoice2-0.5B"
 
+# 解释器选择:项目目标 3.11+(CI 精确 pin 3.11.9)。
+# 优先级:COSYVOICE_PYTHON 环境变量 → python3(≥3.11 时)→ python3.11 → 报错。
+# GHA 上 setup-python 的 python3 就是 3.11.9,行为与旧版脚本一致。
+COSY_PYTHON_BIN="${COSYVOICE_PYTHON:-}"
+if [ -z "$COSY_PYTHON_BIN" ]; then
+  if command -v python3 >/dev/null 2>&1 \
+    && python3 -c 'import sys; sys.exit(0 if sys.version_info >= (3, 11) else 1)' 2>/dev/null; then
+    COSY_PYTHON_BIN="python3"
+  elif command -v python3.11 >/dev/null 2>&1 \
+    && python3.11 -c 'import sys; sys.exit(0 if sys.version_info >= (3, 11) else 1)' 2>/dev/null; then
+    COSY_PYTHON_BIN="python3.11"
+  else
+    echo "ERROR: 需要 Python >= 3.11 构建 CosyVoice venv(与 CI 3.11.9 对齐)。" >&2
+    echo "本地可用: uv python install 3.11.9 && COSYVOICE_PYTHON=\$(uv python find 3.11.9) bash scripts/setup_cosyvoice_env.sh" >&2
+    exit 1
+  fi
+fi
+echo "Using interpreter: $COSY_PYTHON_BIN ($("$COSY_PYTHON_BIN" --version))"
+
 if [ ! -d "$COSY_SRC/cosyvoice" ]; then
   git clone --recursive --depth=1 https://github.com/FunAudioLLM/CosyVoice.git "$COSY_SRC"
 fi
@@ -14,7 +33,7 @@ fi
 if ! "$COSY_VENV/bin/python" -c "import sys" &>/dev/null; then
   echo "Virtualenv is missing or broken, creating new venv at $COSY_VENV..."
   rm -rf "$COSY_VENV"
-  python3 -m venv "$COSY_VENV"
+  "$COSY_PYTHON_BIN" -m venv "$COSY_VENV"
 fi
 
 PIP=("$COSY_VENV/bin/pip")
