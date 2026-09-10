@@ -14,10 +14,14 @@ from typing import Any
 import httpx
 
 _GITHUB_API = "https://api.github.com"
+_README_MAX_CHARS = 6000
 
 
 class GhClient:
-    """异步 GitHub REST 客户端。测试时传入 MockTransport 构造的 AsyncClient。"""
+    """异步 GitHub REST 客户端。测试时传入 MockTransport 构造的 AsyncClient。
+
+    接管传入 client 的生命周期（`aclose()` 会关闭它）；超时等传输参数由构造方设置。
+    """
 
     def __init__(
         self,
@@ -45,7 +49,8 @@ class GhClient:
             f"{_GITHUB_API}/search/repositories", params=params, headers=self._headers
         )
         resp.raise_for_status()
-        await asyncio.sleep(self._sleep_seconds)  # search API 限流：匿名 10 次/分钟
+        # 调用间隔 1s；匿名 search 限流 10 次/分钟，勿高频调用
+        await asyncio.sleep(self._sleep_seconds)
         return list(resp.json().get("items", []))
 
     async def fetch_readme_text(self, repo: str) -> str:
@@ -56,4 +61,4 @@ class GhClient:
         if resp.status_code == 404:
             return ""
         resp.raise_for_status()
-        return resp.text[:6000]
+        return resp.text[:_README_MAX_CHARS]

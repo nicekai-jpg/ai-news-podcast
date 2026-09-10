@@ -49,6 +49,8 @@ class TestGhClient:
         def handler(request: httpx.Request) -> httpx.Response:
             seen["url"] = str(request.url)
             seen["auth"] = request.headers.get("Authorization", "")
+            seen["sort"] = request.url.params["sort"]
+            seen["per_page"] = request.url.params["per_page"]
             return httpx.Response(200, json={"items": [{"full_name": "owner/repo"}]})
 
         gh = _gh(handler)
@@ -56,6 +58,8 @@ class TestGhClient:
         assert items[0]["full_name"] == "owner/repo"
         assert seen["auth"] == "Bearer t0k"
         assert "search/repositories" in seen["url"]
+        assert seen["sort"] == "stars"
+        assert seen["per_page"] == "30"
         await gh.aclose()
 
     @pytest.mark.asyncio
@@ -67,4 +71,19 @@ class TestGhClient:
 
         gh = _gh(handler)
         assert await gh.fetch_readme_text("owner/repo") == ""
+        await gh.aclose()
+
+    @pytest.mark.asyncio
+    async def test_fetch_readme_success_raw_accept_and_truncation(self) -> None:
+        body = "x" * 7000
+        seen: dict[str, str] = {}
+
+        def handler(request: httpx.Request) -> httpx.Response:
+            seen["accept"] = request.headers["Accept"]
+            return httpx.Response(200, text=body)
+
+        gh = _gh(handler)
+        text = await gh.fetch_readme_text("owner/repo")
+        assert seen["accept"] == "application/vnd.github.raw+json"
+        assert text == body[:6000]
         await gh.aclose()
