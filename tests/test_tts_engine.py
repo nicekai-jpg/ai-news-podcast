@@ -89,6 +89,23 @@ class TestParseDialogueChunks:
 
 
 class TestAnnotateTextInBatches:
+    def test_zip_path_runs_when_llm_returns_valid_annotation(self, monkeypatch) -> None:
+        """Director 返回有效标注时必须走到逐轮校验(该路径曾因 3.10+ 的 zip(strict=) 在本地 3.9 venv 崩溃)。"""
+        from ai_news_podcast.pipeline import llm_client
+        from ai_news_podcast.pipeline.tts_engine import _annotate_text_in_batches
+
+        def fake_call_llm(prompt, llm_cfg):
+            return "[Host A] 大家好 [laughter]。\n\n[Host B] 嗯 [breath],听我说。"
+
+        monkeypatch.setattr(llm_client, "call_llm", fake_call_llm)
+
+        text = "[Host A] 大家好。\n\n[Host B] 嗯,听我说。"
+        result = _annotate_text_in_batches(text, "AI 每日先锋", {}, batch_size=10)
+
+        assert "[laughter]" in result
+        assert "[Host A]" in result and "[Host B]" in result
+        assert "大家好" in result and "听我说" in result
+
     def test_batching_and_lossless_verification(self, monkeypatch) -> None:
         from ai_news_podcast.pipeline.tts_engine import _annotate_text_in_batches
 

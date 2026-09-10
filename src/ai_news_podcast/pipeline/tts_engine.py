@@ -67,8 +67,10 @@ def _annotate_text_in_batches(
             continue
 
         # 对切段内每一轮对话进行无损精确校验：说话人一致 & 剔除标签后的正文长度不下坠
+        # 注:长度已由上方轮次校验保证相等;不用 zip(strict=) 是 3.10+ 语法,本地 CosyVoice venv 为 3.9。
         batch_valid = True
-        for j, (orig_c, ann_c) in enumerate(zip(batch, annotated_chunks, strict=False)):
+        for j in range(len(batch)):
+            orig_c, ann_c = batch[j], annotated_chunks[j]
             if orig_c.host != ann_c.host:
                 log.warning(
                     "第 %d/%d 切段第 %d 轮说话人匹配不符 (期望 Host %s，实际 Host %s)，该切段回退原对白",
