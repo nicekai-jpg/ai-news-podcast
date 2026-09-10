@@ -590,7 +590,7 @@
 
       // 读取当前选择的主持人音色变体
       var variant = selectedVoices[chunk.host] || 'professional';
-      var audioFile = (chunk.audios && chunk.audios[variant]) || (chunk.audios && chunk.audios['professional']) || chunk.audio || `chunk_${String(index + 1).padStart(3, '0')}.mp3`;
+      var audioFile = (chunk.audios && (chunk.audios[variant] || chunk.audios['professional'] || Object.values(chunk.audios)[0])) || chunk.audio || `chunk_${String(index + 1).padStart(3, '0')}.mp3`;
 
       audio.src = './episodes/' + currentDate + '/' + audioFile;
       if (autoplay) {

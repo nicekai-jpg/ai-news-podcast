@@ -23,24 +23,45 @@ _DEFAULT_VOICE_NAMES = {
 }
 
 
+def _norm_host_key(key: str) -> str | None:
+    k = str(key).strip().lower()
+    if k in ("host_a", "a"):
+        return "host_a"
+    if k in ("host_b", "b"):
+        return "host_b"
+    return None
+
+
 def _voice_labels(cfg: Any) -> dict[str, dict[str, str]]:
-    """注入播放器的音色标签;按 synth_variants 收敛,保证按钮只指向真实存在的音频。"""
+    """注入播放器的音色标签;按 synth_variants(每 host)收敛,按钮只指向真实存在的音频。"""
     if cfg is None:
         return {k: dict(v) for k, v in _DEFAULT_VOICE_NAMES.items()}
 
     if isinstance(cfg, dict):
         custom = cfg.get("tts", {}).get("voice_names")
-        synth_variants = cfg.get("tts", {}).get("cosyvoice", {}).get("synth_variants") or []
+        raw_variants = cfg.get("tts", {}).get("cosyvoice", {}).get("synth_variants") or []
     else:
         custom = None
-        synth_variants = list(cfg.tts.cosyvoice.synth_variants)
+        raw_variants = cfg.tts.cosyvoice.synth_variants
 
     labels = custom or {k: dict(v) for k, v in _DEFAULT_VOICE_NAMES.items()}
-    if synth_variants:
-        labels = {
-            host: {var: name for var, name in variants.items() if var in synth_variants}
-            for host, variants in labels.items()
+    if isinstance(raw_variants, dict):
+        allowed: dict[str, list[str]] = {}
+        for key, values in raw_variants.items():
+            host = _norm_host_key(key)
+            if host is not None:
+                allowed[host] = [str(v).strip() for v in (values or []) if str(v).strip()]
+    elif raw_variants:
+        allowed = {
+            "host_a": [str(v).strip() for v in raw_variants],
+            "host_b": [str(v).strip() for v in raw_variants],
         }
+    else:
+        allowed = {}
+
+    for host in ("host_a", "host_b"):
+        if allowed.get(host):
+            labels[host] = {var: name for var, name in labels[host].items() if var in allowed[host]}
     return labels
 
 

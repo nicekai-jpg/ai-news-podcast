@@ -122,9 +122,8 @@ class TestVoiceLabels:
 
         labels = _voice_labels({})
         assert set(labels["host_a"]) == {"professional", "lively"}
-        assert set(labels["host_b"]) == {"professional", "lively"}
 
-    def test_filtered_by_synth_variants(self) -> None:
+    def test_global_list_filters_both_hosts(self) -> None:
         from ai_news_podcast.site_builder.html_gen import _voice_labels
 
         cfg = {"tts": {"cosyvoice": {"synth_variants": ["professional"]}}}
@@ -132,16 +131,31 @@ class TestVoiceLabels:
         assert set(labels["host_a"]) == {"professional"}
         assert set(labels["host_b"]) == {"professional"}
 
+    def test_per_host_dict_filters_independently(self) -> None:
+        from ai_news_podcast.site_builder.html_gen import _voice_labels
+
+        cfg = {
+            "tts": {
+                "cosyvoice": {"synth_variants": {"host_a": ["lively"], "host_b": ["professional"]}}
+            }
+        }
+        labels = _voice_labels(cfg)
+        assert set(labels["host_a"]) == {"lively"}
+        assert set(labels["host_b"]) == {"professional"}
+
     def test_appconfig_cfg(self) -> None:
         from ai_news_podcast.config.models import AppConfig
         from ai_news_podcast.site_builder.html_gen import _voice_labels
 
-        cfg = AppConfig.from_dict({"tts": {"cosyvoice": {"synth_variants": ["professional"]}}})
+        cfg = AppConfig.from_dict(
+            {
+                "tts": {
+                    "cosyvoice": {
+                        "synth_variants": {"host_a": ["lively"], "host_b": ["professional"]}
+                    }
+                }
+            }
+        )
         labels = _voice_labels(cfg)
+        assert set(labels["host_a"]) == {"lively"}
         assert set(labels["host_b"]) == {"professional"}
-
-    def test_none_cfg_returns_defaults(self) -> None:
-        from ai_news_podcast.site_builder.html_gen import _voice_labels
-
-        labels = _voice_labels(None)
-        assert set(labels["host_a"]) == {"professional", "lively"}
