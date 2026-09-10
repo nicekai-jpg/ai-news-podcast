@@ -118,3 +118,72 @@ class TestAnnotateTextInBatches:
         # Batch 2 should fallback to exact original text because of truncation verification
         assert "[Host A] 第一条新闻是关于大模型部署升级。" in res
         assert "[Host B] 没错，性能提升了数倍之多。" in res
+
+
+class TestSynthesizeCfgNormalization:
+    def test_appconfig_cfg_normalized_to_dict_for_backend(self, monkeypatch) -> None:
+        """本地 CLI 传 AppConfig;后端按 dict 读配置——入口必须归一化。"""
+        import asyncio
+        from pathlib import Path
+
+        from ai_news_podcast.config.models import AppConfig
+        from ai_news_podcast.pipeline import tts_engine
+
+        captured: dict = {}
+
+        class FakeBackend:
+            async def synthesize(self, text, **kwargs):
+                captured.update(kwargs)
+
+        def fake_create(name):
+            return FakeBackend()
+
+        monkeypatch.setattr(tts_engine.TTSBackendFactory, "create", staticmethod(fake_create))
+        monkeypatch.setattr(
+            tts_engine, "_annotate_text_in_batches", lambda text, title, llm, batch_size=10: text
+        )
+
+        cfg = AppConfig.from_dict({"tts": {"cosyvoice": {"synth_variants": ["professional"]}}})
+        asyncio.run(
+            tts_engine.synthesize(
+                "[Host A] 大家好 [laughter]。\n\n[Host B] 嗯。",
+                backend="cosyvoice2",
+                output_path=Path("unused.mp3"),
+                cfg=cfg,
+            )
+        )
+
+        assert isinstance(captured.get("cfg"), dict)
+        assert captured["cfg"]["tts"]["cosyvoice"]["synth_variants"] == ["professional"]
+
+    def test_dict_cfg_passes_through_unchanged(self, monkeypatch) -> None:
+        import asyncio
+        from pathlib import Path
+
+        from ai_news_podcast.pipeline import tts_engine
+
+        captured: dict = {}
+
+        class FakeBackend:
+            async def synthesize(self, text, **kwargs):
+                captured.update(kwargs)
+
+        def fake_create(name):
+            return FakeBackend()
+
+        monkeypatch.setattr(tts_engine.TTSBackendFactory, "create", staticmethod(fake_create))
+        monkeypatch.setattr(
+            tts_engine, "_annotate_text_in_batches", lambda text, title, llm, batch_size=10: text
+        )
+
+        cfg = {"tts": {"cosyvoice": {"synth_variants": []}}}
+        asyncio.run(
+            tts_engine.synthesize(
+                "[Host A] 大家好 [laughter]。\n\n[Host B] 嗯。",
+                backend="cosyvoice2",
+                output_path=Path("unused.mp3"),
+                cfg=cfg,
+            )
+        )
+
+        assert captured.get("cfg") is cfg

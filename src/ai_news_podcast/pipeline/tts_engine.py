@@ -127,7 +127,14 @@ async def synthesize(
         bgm_path: Optional background music path.
         **kwargs: Additional arguments passed to the backend.
     """
+    import dataclasses
     import re
+
+    # 后端按 dict 读配置;本地 CLI 传入的是 AppConfig——在此统一归一化,所有后端受益。
+    cfg = kwargs.get("cfg")
+    if cfg is not None and not isinstance(cfg, dict):
+        cfg = dataclasses.asdict(cfg)
+        kwargs["cfg"] = cfg
 
     # Check if script already has paralinguistic tags. If not, auto-annotate using Director Agent
     if not re.search(
@@ -136,23 +143,9 @@ async def synthesize(
         flags=re.IGNORECASE,
     ):
         log.info("未检测到情感标签，正在启动 Director Agent 切段标注与无损校验机制...")
-        cfg = kwargs.get("cfg")
         if cfg:
-            import dataclasses
-
-            if isinstance(cfg, dict):
-                podcast_title = cfg.get("podcast", {}).get("title", "AI 每日先锋")
-                llm_cfg = cfg.get("llm", {})
-            else:
-                podcast_title = "AI 每日先锋"
-                if (
-                    hasattr(cfg, "podcast")
-                    and cfg.podcast
-                    and hasattr(cfg.podcast, "title")
-                    and cfg.podcast.title
-                ):
-                    podcast_title = cfg.podcast.title
-                llm_cfg = dataclasses.asdict(cfg.llm) if hasattr(cfg, "llm") and cfg.llm else {}
+            podcast_title = str(cfg.get("podcast", {}).get("title") or "AI 每日先锋")
+            llm_cfg = cfg.get("llm", {})
 
             annotated_text = _annotate_text_in_batches(text, podcast_title, llm_cfg, batch_size=10)
             if annotated_text and annotated_text.strip():
