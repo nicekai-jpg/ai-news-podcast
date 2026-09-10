@@ -89,6 +89,10 @@ Stage CLIs (console scripts in pyproject):
   scripts expecting them to survive a rerun.
 - `config.yaml` `tts.cosyvoice.ref_audio` intentionally maps host_a ↔ host_b sample
   files cross-wise; don't "fix" it without listening to the reference audio.
+  `tts.cosyvoice.synth_variants` controls which variants are actually synthesized
+  (empty = all, the legacy behavior); it is currently `["professional"]` to halve CPU
+  inference — the player falls back to professional for un-synthesized variants
+  (`player.js`) and html_gen renders only the configured voice pills.
 - TTS requires a CosyVoice2-0.5B environment: `COSYVOICE_MODEL_DIR` plus
   `PYTHONPATH` into the cloned CosyVoice repo. See `scripts/setup_cosyvoice_env.sh`,
   `scripts/gha_tts_cosyvoice.py`, and `docs/gha_cosyvoice2_deployment_log.md`.

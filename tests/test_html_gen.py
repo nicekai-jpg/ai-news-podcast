@@ -114,3 +114,34 @@ class TestBuildIndexHtml:
         assert "speaker-label" in html or "speaker-meta" in html
         assert "host-a" in html
         assert "host-b" in html
+
+
+class TestVoiceLabels:
+    def test_defaults_without_config(self) -> None:
+        from ai_news_podcast.site_builder.html_gen import _voice_labels
+
+        labels = _voice_labels({})
+        assert set(labels["host_a"]) == {"professional", "lively"}
+        assert set(labels["host_b"]) == {"professional", "lively"}
+
+    def test_filtered_by_synth_variants(self) -> None:
+        from ai_news_podcast.site_builder.html_gen import _voice_labels
+
+        cfg = {"tts": {"cosyvoice": {"synth_variants": ["professional"]}}}
+        labels = _voice_labels(cfg)
+        assert set(labels["host_a"]) == {"professional"}
+        assert set(labels["host_b"]) == {"professional"}
+
+    def test_appconfig_cfg(self) -> None:
+        from ai_news_podcast.config.models import AppConfig
+        from ai_news_podcast.site_builder.html_gen import _voice_labels
+
+        cfg = AppConfig.from_dict({"tts": {"cosyvoice": {"synth_variants": ["professional"]}}})
+        labels = _voice_labels(cfg)
+        assert set(labels["host_b"]) == {"professional"}
+
+    def test_none_cfg_returns_defaults(self) -> None:
+        from ai_news_podcast.site_builder.html_gen import _voice_labels
+
+        labels = _voice_labels(None)
+        assert set(labels["host_a"]) == {"professional", "lively"}

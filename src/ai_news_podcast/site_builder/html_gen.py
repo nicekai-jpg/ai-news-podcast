@@ -17,6 +17,33 @@ def _read_static(filename: str) -> str:
     return (_STATIC_DIR / filename).read_text(encoding="utf-8")
 
 
+_DEFAULT_VOICE_NAMES = {
+    "host_a": {"professional": "亲切女声", "lively": "青春女声"},
+    "host_b": {"professional": "专业男声", "lively": "活力男声"},
+}
+
+
+def _voice_labels(cfg: Any) -> dict[str, dict[str, str]]:
+    """注入播放器的音色标签;按 synth_variants 收敛,保证按钮只指向真实存在的音频。"""
+    if cfg is None:
+        return {k: dict(v) for k, v in _DEFAULT_VOICE_NAMES.items()}
+
+    if isinstance(cfg, dict):
+        custom = cfg.get("tts", {}).get("voice_names")
+        synth_variants = cfg.get("tts", {}).get("cosyvoice", {}).get("synth_variants") or []
+    else:
+        custom = None
+        synth_variants = list(cfg.tts.cosyvoice.synth_variants)
+
+    labels = custom or {k: dict(v) for k, v in _DEFAULT_VOICE_NAMES.items()}
+    if synth_variants:
+        labels = {
+            host: {var: name for var, name in variants.items() if var in synth_variants}
+            for host, variants in labels.items()
+        }
+    return labels
+
+
 def format_friendly_date(date_str: str) -> str:
     if not date_str:
         return ""
@@ -74,20 +101,7 @@ def build_index_html(
 
     if cfg is None:
         cfg = {}
-    if isinstance(cfg, dict):
-        voices_config = cfg.get("tts", {}).get(
-            "voice_names",
-            {
-                "host_a": {"professional": "亲切女声", "lively": "青春女声"},
-                "host_b": {"professional": "专业男声", "lively": "活力男声"},
-            },
-        )
-    else:
-        # cfg is AppConfig
-        voices_config = {
-            "host_a": {"professional": "亲切女声", "lively": "青春女声"},
-            "host_b": {"professional": "专业男声", "lively": "活力男声"},
-        }
+    voices_config = _voice_labels(cfg)
     voices_config_json = json.dumps(voices_config, ensure_ascii=False)
 
     shanghai_tz = ZoneInfo("Asia/Shanghai")

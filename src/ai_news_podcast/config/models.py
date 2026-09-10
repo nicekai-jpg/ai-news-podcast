@@ -40,6 +40,8 @@ class CosyVoiceConfig:
 
     model_dir: str = ""
     ref_audio: dict[str, CosyVoiceRefAudio] = field(default_factory=dict)
+    # 需要真实合成的音色变体;空列表 = 合成 ref_audio 的全部(向后兼容)。
+    synth_variants: list[str] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -251,6 +253,7 @@ def _build_tts(data: dict[str, Any]) -> TTSConfig:
     cosyvoice = CosyVoiceConfig(
         model_dir=cosyvoice_data.get("model_dir", ""),
         ref_audio=ref_audio,
+        synth_variants=list(cosyvoice_data.get("synth_variants", [])),
     )
     audio_data = t.get("audio", {})
     audio = AudioConfig(

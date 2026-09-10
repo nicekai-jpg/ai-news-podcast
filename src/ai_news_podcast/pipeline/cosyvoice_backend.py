@@ -16,6 +16,8 @@ class CosyVoiceConfig:
     model_dir: Path
     refs: dict[str, dict[str, tuple[Path, str]]]
     sample_rate: int = 22050
+    # 需要真实合成的变体;空元组 = 合成 refs 的全部(向后兼容)。
+    synth_variants: tuple[str, ...] = ()
 
 
 def load_cosyvoice_config(cfg: dict, *, project_root: Path) -> CosyVoiceConfig:
@@ -55,9 +57,13 @@ def load_cosyvoice_config(cfg: dict, *, project_root: Path) -> CosyVoiceConfig:
     ).strip()
     model_dir = Path(model_dir_raw).expanduser() if model_dir_raw else Path()
 
+    synth_variants_raw = cosy.get("synth_variants") or []
+    synth_variants = tuple(str(v).strip() for v in synth_variants_raw if str(v).strip())
+
     return CosyVoiceConfig(
         model_dir=model_dir,
         refs=parsed_refs,
+        synth_variants=synth_variants,
     )
 
 

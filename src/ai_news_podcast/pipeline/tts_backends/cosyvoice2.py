@@ -8,7 +8,11 @@ import tempfile
 from pathlib import Path
 from typing import Any
 
-from ai_news_podcast.pipeline.cosyvoice_backend import CosyVoice2Engine, load_cosyvoice_config
+from ai_news_podcast.pipeline.cosyvoice_backend import (
+    CosyVoice2Engine,
+    CosyVoiceConfig,
+    load_cosyvoice_config,
+)
 from ai_news_podcast.pipeline.tts_backends.base import TTSBackend
 from ai_news_podcast.pipeline.tts_parser import (
     DialogueChunk,
@@ -90,6 +94,22 @@ def _write_chunks_and_playlist(
     )
 
 
+def _select_variants(cv_cfg: CosyVoiceConfig) -> list[str]:
+    """决定真实要合成的音色变体;配置与 ref_audio 无交集时回退为全部(防呆)。"""
+    available = list(cv_cfg.refs["A"].keys()) if "A" in cv_cfg.refs else ["professional", "lively"]
+    if not available:
+        available = ["professional", "lively"]
+    configured = [v for v in cv_cfg.synth_variants if v in available]
+    if configured:
+        return configured
+    if cv_cfg.synth_variants:
+        log.warning(
+            "tts.cosyvoice.synth_variants=%s 与 ref_audio 无交集,回退为合成全部音色",
+            list(cv_cfg.synth_variants),
+        )
+    return available
+
+
 class CosyVoice2Backend(TTSBackend):
     """CosyVoice 2 TTS backend implementation."""
 
@@ -125,9 +145,7 @@ class CosyVoice2Backend(TTSBackend):
         final_path = Path(output_path)
         final_path.parent.mkdir(parents=True, exist_ok=True)
 
-        variants = (
-            list(cv_cfg.refs["A"].keys()) if "A" in cv_cfg.refs else ["professional", "lively"]
-        )
+        variants = _select_variants(cv_cfg)
         voice_maps = {}
         for var in variants:
             voice_maps[var] = {"A": f"host_a_{var}", "B": f"host_b_{var}"}
