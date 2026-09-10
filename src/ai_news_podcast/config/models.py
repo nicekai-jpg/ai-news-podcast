@@ -204,6 +204,47 @@ class BuildConfig:
 
 
 @dataclass(frozen=True)
+class GhRadarConfig:
+    """GitHub 项目雷达(独立项目轨,每日一项目)配置。"""
+
+    enabled: bool = True
+    min_stars: int = 500
+    created_window_days: int = 30
+    recent_push_days: int = 21
+    top_n: int = 30
+    pick_count: int = 1
+    runner_up_count: int = 2
+    readme_probe_limit: int = 12
+    repeat_window_days: int = 30
+    readme_excerpt_chars: int = 1200
+    excluded_name_patterns: list[str] = field(
+        default_factory=lambda: [
+            "awesome",
+            "tutorial",
+            "roadmap",
+            "interview",
+            "books",
+            "cheatsheet",
+            "list",
+        ]
+    )
+    preferred_topics: list[str] = field(
+        default_factory=lambda: [
+            "llm",
+            "ai",
+            "agents",
+            "agent",
+            "rag",
+            "inference",
+            "mcp",
+            "transformers",
+        ]
+    )
+    snapshot_dir: str = "gh_snapshots"
+    output_dir: str = "gh_radar"
+
+
+@dataclass(frozen=True)
 class EntitiesConfig:
     """Named entity lists for content analysis."""
 
@@ -222,6 +263,7 @@ class AppConfig:
     script: ScriptConfig = field(default_factory=ScriptConfig)
     llm: LLMConfig = field(default_factory=LLMConfig)
     build: BuildConfig = field(default_factory=BuildConfig)
+    gh_radar: GhRadarConfig = field(default_factory=GhRadarConfig)
     entities: EntitiesConfig = field(default_factory=EntitiesConfig)
 
     @classmethod
@@ -236,6 +278,7 @@ class AppConfig:
             script=_build_script(data),
             llm=_build_llm(data),
             build=_build_build(data),
+            gh_radar=_build_gh_radar(data),
             entities=_build_entities(data),
         )
 
@@ -338,6 +381,11 @@ def _build_llm(data: dict[str, Any]) -> LLMConfig:
 def _build_build(data: dict[str, Any]) -> BuildConfig:
     b = data.get("build", {})
     return BuildConfig(**{k: v for k, v in b.items() if k in BuildConfig.__dataclass_fields__})
+
+
+def _build_gh_radar(data: dict[str, Any]) -> GhRadarConfig:
+    g = data.get("gh_radar", {})
+    return GhRadarConfig(**{k: v for k, v in g.items() if k in GhRadarConfig.__dataclass_fields__})
 
 
 def _build_entities(data: dict[str, Any]) -> EntitiesConfig:

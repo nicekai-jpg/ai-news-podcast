@@ -238,6 +238,37 @@ build:
   episodes_dir: "site/episodes"
   episodes_index: "data/episodes.json"
 
+gh_radar:
+  enabled: true
+  min_stars: 500                  # 新星榜最低星数门槛
+  created_window_days: 30         # 新星榜创建时间窗口(天)
+  recent_push_days: 21            # 最近一次 commit 必须在此窗口内(项目还活着)
+  top_n: 30                       # 搜索拉取的候选数量
+  pick_count: 1                   # 播客每日主推项目数(确定性取评分第一)
+  runner_up_count: 2              # 日报备选项目数(只进日报,不进播客)
+  readme_probe_limit: 12          # 探测 README 的候选上限(控 API 用量)
+  repeat_window_days: 30          # 最近 N 天已推荐过的仓库不再推荐
+  readme_excerpt_chars: 1200      # README 上手小节摘录的最大字符数
+  excluded_name_patterns:         # 命中即排除(资料合集类不可上手)
+    - "awesome"
+    - "tutorial"
+    - "roadmap"
+    - "interview"
+    - "books"
+    - "cheatsheet"
+    - "list"
+  preferred_topics:               # AI 工具链优先:命中主题加分
+    - "llm"
+    - "ai"
+    - "agents"
+    - "agent"
+    - "rag"
+    - "inference"
+    - "mcp"
+    - "transformers"
+  snapshot_dir: "gh_snapshots"    # 相对 data/ 目录
+  output_dir: "gh_radar"          # 相对 data/ 目录
+
 entities:
   companies:
     - "谷歌"
