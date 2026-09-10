@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import pytest
 
-from ai_news_podcast.pipeline.material import build_material_text
+from ai_news_podcast.pipeline.material import build_material_text, build_radar_text
 
 
 class TestBuildMaterialText:
@@ -160,3 +160,42 @@ class TestBuildMaterialText:
         assert "Fact 2" in result
         assert "Background info" in result
         assert "TechCrunch" in result
+
+
+class TestBuildRadarText:
+    def test_empty_radar_returns_empty(self) -> None:
+        assert build_radar_text(None) == ""
+        assert build_radar_text({"projects": []}) == ""
+
+    def test_formats_pick_with_excerpt_and_numbers(self) -> None:
+        radar = {
+            "projects": [
+                {
+                    "repo": "owner/hot",
+                    "url": "https://github.com/owner/hot",
+                    "stars": 1500,
+                    "delta_stars": 1000,
+                    "language": "Python",
+                    "license": "MIT",
+                    "description": "Fast LLM harness",
+                    "readme_excerpt": "pip install hot",
+                },
+                {
+                    "repo": "owner/next",
+                    "url": "u2",
+                    "stars": 800,
+                    "delta_stars": None,
+                    "language": "Rust",
+                    "license": "Apache-2.0",
+                    "description": "Agent runtime",
+                    "readme_excerpt": "",
+                },
+            ],
+            "meta": {"pick_repo": "owner/hot"},
+        }
+        text = build_radar_text(radar)
+        assert "[主推]" in text and "owner/hot" in text
+        assert "⭐1500" in text and "较昨日 +1000" in text
+        assert "pip install hot" in text and "逐字" in text
+        assert "其余候选" in text and "owner/next ⭐800" in text
+        assert "禁止编造" in text

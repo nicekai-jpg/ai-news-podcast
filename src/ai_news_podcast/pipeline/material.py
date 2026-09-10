@@ -66,3 +66,41 @@ def build_material_text(
         sections.append(part)
 
     return "\n".join(sections)
+
+
+def build_radar_text(radar: dict[str, Any] | None) -> str:
+    """把项目雷达结果格式化为固定栏目素材文本(空雷达返回空串)。
+
+    每日只主推一个项目;其余候选仅作对比背景。数字与摘录全部由代码注入,LLM 不得增删。
+    """
+    if not radar or not radar.get("projects"):
+        return ""
+    meta = radar.get("meta", {})
+    pick_repo = meta.get("pick_repo")
+    lines = ["以下是「项目雷达」栏目的结构化素材(与新闻无关,单独成栏)。"]
+    for p in radar.get("projects", []):
+        if p.get("repo") != pick_repo:
+            continue
+        delta = p.get("delta_stars")
+        delta_str = f"较昨日 +{delta}" if isinstance(delta, int) else "首日无对比数据"
+        lines.append(
+            f"- [主推] {p.get('repo')}(⭐{p.get('stars')},{delta_str},"
+            f"语言:{p.get('language') or '未知'},许可证:{p.get('license') or '无'}):"
+            f"{str(p.get('description') or '').strip()}"
+        )
+        excerpt = str(p.get("readme_excerpt") or "").strip()
+        if excerpt:
+            lines.append(f"  README 上手摘录(原文,安装命令必须逐字引用):\n  {excerpt}")
+        lines.append(f"  链接:{p.get('url')}")
+    others = [
+        f"{p.get('repo')} ⭐{p.get('stars')}"
+        for p in radar.get("projects", [])
+        if p.get("repo") != pick_repo
+    ]
+    if others:
+        lines.append("  其余候选(仅供对比参考,播客中不要展开):" + ";".join(others))
+    lines.append(
+        "使用规则:仓库名、数字、安装命令必须原样引用,禁止编造或修改;"
+        "只讲主推项目,不要展开其余候选;禁止把项目与新闻混在同一栏目。"
+    )
+    return "\n".join(lines)
