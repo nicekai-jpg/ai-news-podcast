@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
@@ -278,7 +279,7 @@ async def test_run_pipeline_attaches_radar(tmp_path: Path, raw_item_factory) -> 
 
         assert brief["radar"]["meta"]["pick_repo"] == "owner/hot"
         saved = (tmp_path / "briefs" / "brief_2026-06-03.json").read_text(encoding="utf-8")
-        assert '"pick_repo"' in saved
+        assert json.loads(saved)["radar"]["meta"]["pick_repo"] == "owner/hot"
 
 
 @pytest.mark.asyncio
@@ -308,3 +309,29 @@ async def test_run_pipeline_survives_radar_failure(tmp_path: Path, raw_item_fact
         )
 
         assert "radar" not in brief  # 雷达失败,正片照常
+
+
+@pytest.mark.asyncio
+async def test_run_pipeline_skips_radar_when_disabled(tmp_path: Path, raw_item_factory) -> None:
+    from unittest.mock import AsyncMock, patch
+
+    from ai_news_podcast.pipeline.runner import run_pipeline
+
+    with (
+        patch("ai_news_podcast.pipeline.runner.fetch_all", new_callable=AsyncMock) as mock_fetch,
+        patch("ai_news_podcast.pipeline.runner.process") as mock_process,
+        patch("ai_news_podcast.pipeline.runner.build_radar", new_callable=AsyncMock) as mock_radar,
+    ):
+        mock_fetch.return_value = [raw_item_factory()]
+        mock_process.return_value = {"stories": []}
+
+        brief = await run_pipeline(
+            cfg={"gh_radar": {"enabled": False}},
+            sources=[],
+            date_str="2026-06-03",
+            data_dir=tmp_path,
+            force_refresh=True,
+        )
+
+        assert mock_radar.await_count == 0
+        assert "radar" not in brief

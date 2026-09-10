@@ -205,12 +205,12 @@ async def run_pipeline(  # noqa: PLR0915
                 )
             )
         except Exception as e:  # 雷达必须可失败不致命
-            log.warning("项目雷达失败,当期正片不含雷达栏目: %s", e)
+            log.warning("项目雷达失败,当期正片不含雷达栏目: %s", e, exc_info=True)
             event_bus.emit(
                 StageFailed(
                     stage="gh_radar",
                     episode_id=date_str,
-                    error=str(e),
+                    error=f"{type(e).__name__}: {e}",
                     timestamp=datetime.now(tz=UTC),
                 )
             )
