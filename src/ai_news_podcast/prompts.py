@@ -68,13 +68,28 @@ EDITOR_USER_TEMPLATE = """你是顶级科技播客的「主编」(Editor)。今�
 3. **快讯标题 3**：一句话介绍（50字以内）"""
 
 
+EDITOR_RADAR_SECTION = """
+
+## 项目雷达素材（固定栏目，与新闻无关，每日只主推一个项目）
+{radar_material}
+
+除上述新闻大纲外，请在输出末尾追加一节「## 项目雷达」，只讲素材中标注 [主推] 的这一个项目，
+按四件事组织：是什么、为什么是现在值得上手（引用星数/增速数字）、第一步怎么跑起来
+（安装命令必须逐字引用摘录原文）、fork 后最小改动能做出什么差异化。其余候选不要展开。
+所有仓库名与数字必须原样引用，禁止编造。"""
+
+
 def build_editor_prompt(
     material: str,
     episode_date: datetime,
+    radar_material: str = "",
 ) -> str:
-    """第一阶段：主编 Agent，负责精简素材和定调。"""
+    """第一阶段：主编 Agent，负责精简素材和定调（可选附项目雷达）。"""
     date_str = _cn_date(episode_date)
-    return EDITOR_USER_TEMPLATE.format(date_str=date_str, material=material)
+    prompt = EDITOR_USER_TEMPLATE.format(date_str=date_str, material=material)
+    if radar_material.strip():
+        prompt += EDITOR_RADAR_SECTION.format(radar_material=radar_material)
+    return prompt
 
 
 # ---------------------------------------------------------------------------
@@ -126,23 +141,40 @@ WRITER_USER_TEMPLATE = """你是「{podcast_title}」的金牌撰稿人。今天
 如果输出中没有任何 `[Host A]` 或 `[Host B]` 标记，脚本将被判定为无效并丢弃。"""
 
 
+WRITER_RADAR_SECTION = """
+
+## 项目雷达栏目规范（大纲中含「## 项目雷达」时必须遵守）
+1. 用固定转场自然开启栏目，例如苏晴说「新闻说完了，接下来进入今天的项目雷达时间」。
+   不要每天一字不差。
+2. 大纲里的仓库名、星数、增速数字、安装命令必须原样引用，禁止编造、取整或夸大。
+3. 只讲主推这一个项目，按「是什么 → 为什么是现在 → 第一步怎么跑起来 → fork 能做什么」
+   展开，让听众听完能直接决定要不要 clone。
+4. 安装命令逐字念出素材摘录中的原文，不要自己改写参数。
+5. 雷达部分总字数控制在 300-500 字，整体字数上限可放宽至 3500 字。"""
+
+
 def build_writer_prompt(
     editor_plan_json: str,
     episode_date: datetime,
     podcast_title: str,
     style_cfg: dict[str, Any],
+    *,
+    has_radar: bool = False,
 ) -> str:
-    """第二阶段：撰稿 Agent，将主编定下的大纲转化为双人对口相声/对谈剧本。"""
+    """第二阶段：撰稿 Agent，将主编定下的大纲转化为双人对谈剧本。"""
     banned = style_cfg.get("banned_words", DEFAULT_BANNED_WORDS)
     banned_str = "、".join(banned)
     date_str = _cn_date(episode_date)
 
-    return WRITER_USER_TEMPLATE.format(
+    prompt = WRITER_USER_TEMPLATE.format(
         date_str=date_str,
         podcast_title=podcast_title,
         banned_str=banned_str,
         editor_plan_json=editor_plan_json,
     )
+    if has_radar:
+        prompt += WRITER_RADAR_SECTION
+    return prompt
 
 
 # ---------------------------------------------------------------------------

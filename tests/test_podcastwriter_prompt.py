@@ -99,3 +99,24 @@ class TestBuildMaterialTextBackgroundAndSources:
         assert "重要" in text
         assert "次要" in text
         assert "简讯" in text
+
+
+class TestRadarPromptSections:
+    def test_editor_prompt_without_radar_omits_section(self) -> None:
+        prompt = build_editor_prompt("素材", datetime(2026, 9, 9))
+        assert "项目雷达素材" not in prompt
+
+    def test_editor_prompt_with_radar(self) -> None:
+        prompt = build_editor_prompt("素材", datetime(2026, 9, 9), radar_material="雷达素材")
+        assert "项目雷达素材" in prompt
+        assert "雷达素材" in prompt
+        assert "[主推]" in prompt
+
+    def test_writer_prompt_radar_rules_toggle(self) -> None:
+        base = build_writer_prompt("大纲", datetime(2026, 9, 9), "AI 每日先锋", {})
+        assert "项目雷达栏目规范" not in base
+        with_radar = build_writer_prompt(
+            "大纲", datetime(2026, 9, 9), "AI 每日先锋", {}, has_radar=True
+        )
+        assert "项目雷达栏目规范" in with_radar
+        assert "300-500 字" in with_radar
