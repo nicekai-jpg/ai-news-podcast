@@ -53,7 +53,7 @@
 - Modify: `config/config.yaml`
 - Test: `tests/test_gh_radar.py`(新建)
 
-- [ ] **Step 1: 写失败测试**
+- [x] **Step 1: 写失败测试**
 
 新建 `tests/test_gh_radar.py`:
 
@@ -90,12 +90,12 @@ class TestGhRadarConfig:
         assert cfg.gh_radar.pick_count == 2
 ```
 
-- [ ] **Step 2: 跑测试确认失败**
+- [x] **Step 2: 跑测试确认失败**
 
 Run: `uv run pytest tests/test_gh_radar.py -v`
 Expected: FAIL —— `AttributeError: 'AppConfig' object has no attribute 'gh_radar'`(dataclass 无该字段)
 
-- [ ] **Step 3: 实现 `GhRadarConfig`**
+- [x] **Step 3: 实现 `GhRadarConfig`**
 
 `src/ai_news_podcast/config/models.py` 中,在 `class BuildConfig` 之后、`class EntitiesConfig` 之前插入:
 
@@ -163,7 +163,7 @@ def _build_gh_radar(data: dict[str, Any]) -> GhRadarConfig:
     )
 ```
 
-- [ ] **Step 4: config.yaml 增加配置块**
+- [x] **Step 4: config.yaml 增加配置块**
 
 在 `config/config.yaml` 的 `build:` 块之后、`entities:` 之前插入:
 
@@ -200,12 +200,12 @@ gh_radar:
   output_dir: "gh_radar"          # 相对 data/ 目录
 ```
 
-- [ ] **Step 5: 跑测试确认通过**
+- [x] **Step 5: 跑测试确认通过**
 
 Run: `uv run pytest tests/test_gh_radar.py -v`
 Expected: PASS(2 passed)
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/config/models.py config/config.yaml tests/test_gh_radar.py && git commit -m "feat(radar): add gh_radar config block and typed settings"
@@ -219,7 +219,7 @@ uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/a
 - Create: `src/ai_news_podcast/pipeline/gh_client.py`
 - Test: `tests/test_gh_radar.py`(追加)
 
-- [ ] **Step 1: 写失败测试(追加到 tests/test_gh_radar.py)**
+- [x] **Step 1: 写失败测试(追加到 tests/test_gh_radar.py)**
 
 ```python
 import httpx
@@ -264,12 +264,12 @@ class TestGhClient:
         await gh.aclose()
 ```
 
-- [ ] **Step 2: 跑测试确认失败**
+- [x] **Step 2: 跑测试确认失败**
 
 Run: `uv run pytest tests/test_gh_radar.py -v`
 Expected: FAIL —— `ModuleNotFoundError: No module named 'ai_news_podcast.pipeline.gh_client'`
 
-- [ ] **Step 3: 实现客户端**
+- [x] **Step 3: 实现客户端**
 
 新建 `src/ai_news_podcast/pipeline/gh_client.py`:
 
@@ -340,12 +340,12 @@ class GhClient:
         return resp.text[:6000]
 ```
 
-- [ ] **Step 4: 跑测试确认通过**
+- [x] **Step 4: 跑测试确认通过**
 
 Run: `uv run pytest tests/test_gh_radar.py -v`
 Expected: PASS(4 passed)
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/pipeline/gh_client.py tests/test_gh_radar.py && git commit -m "feat(radar): add minimal GitHub REST client for radar"
@@ -359,7 +359,7 @@ uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/a
 - Create: `src/ai_news_podcast/pipeline/gh_radar.py`
 - Test: `tests/test_gh_radar.py`(追加)
 
-- [ ] **Step 1: 写失败测试(追加到 tests/test_gh_radar.py)**
+- [x] **Step 1: 写失败测试(追加到 tests/test_gh_radar.py)**
 
 ```python
 from datetime import UTC, datetime
@@ -552,12 +552,12 @@ class TestBuildRadar:
             await build_radar(GCFG, "2026-09-09", tmp_path, [], client=gh, now=_NOW)
 ```
 
-- [ ] **Step 2: 跑测试确认失败**
+- [x] **Step 2: 跑测试确认失败**
 
 Run: `uv run pytest tests/test_gh_radar.py -v`
 Expected: FAIL —— `ModuleNotFoundError: ... gh_radar`
 
-- [ ] **Step 3: 实现 gh_radar.py**
+- [x] **Step 3: 实现 gh_radar.py**
 
 新建 `src/ai_news_podcast/pipeline/gh_radar.py`:
 
@@ -919,12 +919,12 @@ async def build_radar(
 
 注意:`projects` 列表 = 主推(评分第一)+ 备选(第 2、3 名),`meta.pick_repo` 即第一名;快照在排重之前写。
 
-- [ ] **Step 4: 跑测试确认通过**
+- [x] **Step 4: 跑测试确认通过**
 
 Run: `uv run pytest tests/test_gh_radar.py -v`
 Expected: PASS(全部通过)
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/pipeline/gh_radar.py tests/test_gh_radar.py && git commit -m "feat(radar): implement daily-pick scoring, repeat exclusion and snapshot"
@@ -938,7 +938,7 @@ uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/a
 - Modify: `src/ai_news_podcast/pipeline/runner.py`
 - Test: `tests/test_runner.py`(追加)
 
-- [ ] **Step 1: 写失败测试(追加到 tests/test_runner.py)**
+- [x] **Step 1: 写失败测试(追加到 tests/test_runner.py)**
 
 ```python
 @pytest.mark.asyncio
@@ -997,12 +997,12 @@ async def test_run_pipeline_survives_radar_failure(tmp_path: Path, raw_item_fact
         assert "radar" not in brief  # 雷达失败,正片照常
 ```
 
-- [ ] **Step 2: 跑测试确认失败**
+- [x] **Step 2: 跑测试确认失败**
 
 Run: `uv run pytest tests/test_runner.py -k radar -v`
 Expected: FAIL —— `AttributeError: <module ...> does not have the attribute 'build_radar'`
 
-- [ ] **Step 3: 实现 runner 挂载**
+- [x] **Step 3: 实现 runner 挂载**
 
 `src/ai_news_podcast/pipeline/runner.py`:
 
@@ -1044,7 +1044,7 @@ from ai_news_podcast.pipeline.gh_radar import build_radar
             )
 ```
 
-- [ ] **Step 4: 跑测试确认通过**
+- [x] **Step 4: 跑测试确认通过**
 
 Run: `uv run pytest tests/test_runner.py -v`
 Expected: PASS(原有用例 + 2 个新用例;原有用例 cfg 不含 gh_radar → `enabled` 默认 True → build_radar 会被调用?**注意**:原用例没有 mock build_radar,会真发网络请求!)
@@ -1054,7 +1054,7 @@ Expected: PASS(原有用例 + 2 个新用例;原有用例 cfg 不含 gh_radar �
 Run: `uv run pytest tests/test_runner.py -v`
 Expected: PASS(全部)
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/pipeline/runner.py tests/test_runner.py && git commit -m "feat(radar): attach radar to stage1 brief with fail-safe integration"
@@ -1068,7 +1068,7 @@ uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/a
 - Modify: `src/ai_news_podcast/pipeline/material.py`
 - Test: `tests/test_material.py`(追加)
 
-- [ ] **Step 1: 写失败测试(追加到 tests/test_material.py)**
+- [x] **Step 1: 写失败测试(追加到 tests/test_material.py)**
 
 ```python
 from ai_news_podcast.pipeline.material import build_radar_text
@@ -1099,12 +1099,12 @@ class TestBuildRadarText:
         assert "禁止编造" in text
 ```
 
-- [ ] **Step 2: 跑测试确认失败**
+- [x] **Step 2: 跑测试确认失败**
 
 Run: `uv run pytest tests/test_material.py -k radar -v`
 Expected: FAIL —— `ImportError: cannot import name 'build_radar_text'`
 
-- [ ] **Step 3: 实现**
+- [x] **Step 3: 实现**
 
 `src/ai_news_podcast/pipeline/material.py` 末尾追加:
 
@@ -1147,12 +1147,12 @@ def build_radar_text(radar: dict[str, Any] | None) -> str:
     return "\n".join(lines)
 ```
 
-- [ ] **Step 4: 跑测试确认通过**
+- [x] **Step 4: 跑测试确认通过**
 
 Run: `uv run pytest tests/test_material.py -v`
 Expected: PASS(原有用例 + 新用例)
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/pipeline/material.py tests/test_material.py && git commit -m "feat(radar): format daily-pick radar material text for prompts"
@@ -1166,7 +1166,7 @@ uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/a
 - Modify: `src/ai_news_podcast/prompts.py`
 - Test: `tests/test_podcastwriter_prompt.py`(追加)
 
-- [ ] **Step 1: 写失败测试(追加到 tests/test_podcastwriter_prompt.py)**
+- [x] **Step 1: 写失败测试(追加到 tests/test_podcastwriter_prompt.py)**
 
 ```python
 class TestRadarPromptSections:
@@ -1192,12 +1192,12 @@ class TestRadarPromptSections:
 
 (注意 import:复用该文件已有的 `build_editor_prompt`/`build_writer_prompt`/`datetime` 导入。)
 
-- [ ] **Step 2: 跑测试确认失败**
+- [x] **Step 2: 跑测试确认失败**
 
 Run: `uv run pytest tests/test_podcastwriter_prompt.py -k radar -v`
 Expected: FAIL —— `TypeError: build_editor_prompt() got an unexpected keyword argument 'radar_material'`
 
-- [ ] **Step 3: 实现模板扩展**
+- [x] **Step 3: 实现模板扩展**
 
 `src/ai_news_podcast/prompts.py`:
 
@@ -1267,12 +1267,12 @@ def build_writer_prompt(
     return prompt
 ```
 
-- [ ] **Step 4: 跑测试确认通过**
+- [x] **Step 4: 跑测试确认通过**
 
 Run: `uv run pytest tests/test_podcastwriter_prompt.py -v`
 Expected: PASS(原有用例 + 新用例)
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/prompts.py tests/test_podcastwriter_prompt.py && git commit -m "feat(radar): add daily-pick radar sections to editor/writer prompts"
@@ -1286,7 +1286,7 @@ uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/a
 - Modify: `src/ai_news_podcast/pipeline/podcastwriter.py`
 - Test: `tests/test_podcastwriter.py`(追加)
 
-- [ ] **Step 1: 写失败测试(追加到 tests/test_podcastwriter.py)**
+- [x] **Step 1: 写失败测试(追加到 tests/test_podcastwriter.py)**
 
 ```python
 @pytest.mark.asyncio
@@ -1321,12 +1321,12 @@ async def test_generate_podcast_injects_radar_into_editor_prompt() -> None:
 
 (测试里 `_SOME_DATETIME` 复用该文件已有的 datetime 常量或 `datetime(2026, 9, 9)`;`_call_llm` 的真实签名在该文件顶部,若为 `prompt, cfg` 两个位置参数则按此写,执行者先读 `podcastwriter.py` 中 `_call_llm` 定义再落笔——其参数名以实际代码为准。)
 
-- [ ] **Step 2: 跑测试确认失败**
+- [x] **Step 2: 跑测试确认失败**
 
 Run: `uv run pytest tests/test_podcastwriter.py -k radar -v`
 Expected: FAIL —— `captured[0]` 中不含 `owner/hot`
 
-- [ ] **Step 3: 实现**
+- [x] **Step 3: 实现**
 
 `src/ai_news_podcast/pipeline/podcastwriter.py`:
 
@@ -1358,12 +1358,12 @@ from ai_news_podcast.pipeline.material import build_radar_text as _build_radar_t
             )
 ```
 
-- [ ] **Step 4: 跑测试确认通过**
+- [x] **Step 4: 跑测试确认通过**
 
 Run: `uv run pytest tests/test_podcastwriter.py -v`
 Expected: PASS(原有用例 + 新用例;原用例 brief 无 radar → 行为不变)
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/pipeline/podcastwriter.py tests/test_podcastwriter.py && git commit -m "feat(radar): wire radar into podcast writer agents"
@@ -1377,7 +1377,7 @@ uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/a
 - Modify: `src/ai_news_podcast/cli/podcast_report.py`
 - Test: `tests/test_daily_report.py`(追加)
 
-- [ ] **Step 1: 写失败测试(追加到 tests/test_daily_report.py)**
+- [x] **Step 1: 写失败测试(追加到 tests/test_daily_report.py)**
 
 ```python
 from ai_news_podcast.cli.podcast_report import build_radar_report_section
@@ -1408,12 +1408,12 @@ class TestRadarReportSection:
         assert "备选 [owner/next]" in section
 ```
 
-- [ ] **Step 2: 跑测试确认失败**
+- [x] **Step 2: 跑测试确认失败**
 
 Run: `uv run pytest tests/test_daily_report.py -k radar -v`
 Expected: FAIL —— `ImportError: cannot import name 'build_radar_report_section'`
 
-- [ ] **Step 3: 实现**
+- [x] **Step 3: 实现**
 
 `src/ai_news_podcast/cli/podcast_report.py` 中,`build_report_prompt` 之后追加:
 
@@ -1452,12 +1452,12 @@ def build_radar_report_section(radar: dict[str, Any] | None, date_display: str) 
         report_md += build_radar_report_section(brief.get("radar"), date_display)
 ```
 
-- [ ] **Step 4: 跑测试确认通过**
+- [x] **Step 4: 跑测试确认通过**
 
 Run: `uv run pytest tests/test_daily_report.py -v`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/ai_news_podcast/cli/podcast_report.py tests/test_daily_report.py && git commit -m "feat(radar): append code-generated daily-pick chapter to daily report"
@@ -1472,7 +1472,7 @@ uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/a
 - Modify: `AGENTS.md`
 - 验证: workflow YAML 解析
 
-- [ ] **Step 1: daily.yml stage1 传 token 并提交雷达产物**
+- [x] **Step 1: daily.yml stage1 传 token 并提交雷达产物**
 
 `stage1` job 的 `Run pipeline` step,env 增加一行:
 
@@ -1492,12 +1492,12 @@ uv run ruff format src/ tests/ && uv run ruff check src/ tests/ && git add src/a
           git add data/briefs/ data/gh_radar/ data/gh_snapshots/
 ```
 
-- [ ] **Step 2: 验证 YAML 可解析**
+- [x] **Step 2: 验证 YAML 可解析**
 
 Run: `uv run python -c "import yaml; yaml.safe_load(open('.github/workflows/daily.yml')); print('OK')"`
 Expected: `OK`
 
-- [ ] **Step 3: AGENTS.md 同步**
+- [x] **Step 3: AGENTS.md 同步**
 
 `## Data flow and dates` 一节,在 `- Other artifacts:` 列表中追加:
 
@@ -1520,7 +1520,7 @@ Expected: `OK`
   更高限流的调用。
 ```
 
-- [ ] **Step 4: Commit**
+- [x] **Step 4: Commit**
 
 ```bash
 git add .github/workflows/daily.yml AGENTS.md && git commit -m "chore(radar): wire GITHUB_TOKEN into stage1 and sync docs"
@@ -1532,17 +1532,17 @@ git add .github/workflows/daily.yml AGENTS.md && git commit -m "chore(radar): wi
 
 **Files:** 无新改动(验证任务)
 
-- [ ] **Step 1: 全量质量门**
+- [x] **Step 1: 全量质量门**
 
 Run: `uv run ruff check src/ tests/ scripts/ && uv run ruff format --check src/ tests/ scripts/ && uv run lint-imports && uv run pytest tests/ -q`
 Expected: 全部通过(测试数从 295 增加约 14-16 个)
 
-- [ ] **Step 2: pre-commit 全量**
+- [x] **Step 2: pre-commit 全量**
 
 Run: `uv run pre-commit run --all-files`
 Expected: 全部 Passed
 
-- [ ] **Step 3: 真网冒烟(本机可访问 GitHub API,下载不受限)**
+- [x] **Step 3: 真网冒烟(本机可访问 GitHub API,下载不受限)**
 
 ```bash
 uv run python - <<'EOF'
@@ -1577,7 +1577,7 @@ EOF
 
 Expected: 打印主推(1 个)与备选(最多 2 个)真实仓库(或空列表但 `degraded: False`),临时目录写出 snap/radar 两个 JSON,主推带 README 摘录。
 
-- [ ] **Step 4: 收尾报告**
+- [x] **Step 4: 收尾报告**
 
 向用户报告:测试增量、冒烟结果、(可选)按拆分提交历史。
 
