@@ -13,6 +13,7 @@ from typing import Any
 
 from ai_news_podcast.pipeline.llm_client import call_llm as _call_llm
 from ai_news_podcast.pipeline.material import build_material_text as _build_material_text
+from ai_news_podcast.pipeline.material import build_radar_text as _build_radar_text
 from ai_news_podcast.prompts import (
     DEFAULT_BANNED_WORDS,
     build_editor_prompt,
@@ -125,6 +126,7 @@ def generate_podcast(
     llm_cfg = llm_cfg or {}
 
     material = _build_material_text(brief, max_stories=5)
+    radar_material = _build_radar_text(brief.get("radar"))
     logger.info("素材文本 %d 字符，准备启动 Multi-Agent 编剧流程", len(material))
 
     script = None
@@ -132,13 +134,19 @@ def generate_podcast(
 
     if material.strip():
         # --- Node 1: Editor ---
-        editor_prompt = build_editor_prompt(material, episode_date)
+        editor_prompt = build_editor_prompt(material, episode_date, radar_material=radar_material)
         raw_editor = _call_llm(editor_prompt, llm_cfg)
 
         if raw_editor:
             logger.info("Editor Agent 生成大纲成功，准备注入 Writer 节点")
             # --- Node 2: Writer ---
-            writer_prompt = build_writer_prompt(raw_editor, episode_date, podcast_title, style_cfg)
+            writer_prompt = build_writer_prompt(
+                raw_editor,
+                episode_date,
+                podcast_title,
+                style_cfg,
+                has_radar="## 项目雷达" in raw_editor,
+            )
             raw_writer = _call_llm(
                 writer_prompt, dict(llm_cfg, temperature=0.85)
             )  # 稍微提高Writer的temperature增加活泼度
