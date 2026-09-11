@@ -61,6 +61,7 @@ jobs:
       - name: Run pipeline
         env:
           TZ: Asia/Shanghai
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           EPISODE="${{ steps.episode.outputs.id }}"
           uv run podcast-pipeline --date "$EPISODE"
@@ -71,6 +72,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           EPISODE="${{ steps.episode.outputs.id }}"
           git add data/briefs/
+          git add data/gh_radar/ 2>/dev/null || echo "No gh_radar artifacts, skipped"
+          git add data/gh_snapshots/ 2>/dev/null || echo "No gh_snapshots artifacts, skipped"
           if git diff --cached --quiet; then
             echo "No brief changes to commit"
           else

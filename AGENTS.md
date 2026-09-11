@@ -67,6 +67,11 @@ Stage CLIs (console scripts in pyproject):
 - Other artifacts: `data/reports/daily_report_{date}.md`,
   `site/episodes/{date}.txt` (script) and `.mp3` (audio),
   `data/episodes.json` (episode index, `keep_last: 30`).
+- 项目雷达: `data/gh_radar/radar_{date}.json`(每日一项目主推 + 备选)与
+  `data/gh_snapshots/snap_{date}.json`(星数快照,供次日差分算增速)。
+  两者都由 stage1 提交到 main。雷达作为独立「项目轨」与新闻管线完全隔离,
+  结果挂在 brief 的 `radar` 键上,播客栏目「项目雷达」(只讲主推)与日报章节
+  (主推 + 备选)均由此生成。
 
 ## Gotchas
 
@@ -137,6 +142,12 @@ Stage CLIs (console scripts in pyproject):
   `prune_pages.yml` monthly rebuilds gh-pages as an orphan branch (30-day audio
   retention) and, on failure, alerts via a `gh-pages prune failed` issue (a
   successful prune auto-closes stale ones, mirroring the daily `notify` behavior).
+- **项目雷达必须是可失败环节**:`runner` 用 try/except 包裹 `build_radar`,失败只发
+  `StageFailed` 事件、正片照常。LLM 禁止自报 stars/增速等数字、禁止改写安装命令——
+  全部由 `material.build_radar_text` 从结构化数据注入;日报雷达章节完全由代码生成。
+  近 30 天已推荐过的仓库由 `_load_recent_picks` 排除,不要绕过。
+  `GITHUB_TOKEN` 匿名时走匿名限流(每日一次扫描足够),不要在雷达里加需要
+  更高限流的调用。
 
 ## Docs to read before touching sensitive areas
 
