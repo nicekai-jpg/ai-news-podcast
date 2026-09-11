@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from datetime import datetime
+from unittest.mock import patch
 
+from ai_news_podcast.pipeline import podcastwriter
 from ai_news_podcast.pipeline.podcastwriter import (
     _cn_date,
     _replace_banned_words,
@@ -69,10 +71,6 @@ class TestCnDate:
 class TestGeneratePodcastRadar:
     def test_generate_podcast_injects_radar_into_editor_prompt(self) -> None:
         """雷达素材必须进入 Editor prompt，writer prompt 收到 has_radar 标记。"""
-        from unittest.mock import patch
-
-        from ai_news_podcast.pipeline import podcastwriter
-
         brief = {
             "stories": [
                 {
@@ -93,9 +91,9 @@ class TestGeneratePodcastRadar:
                         "description": "hot harness",
                         "readme_excerpt": "pip install hot",
                     }
-                ]
+                ],
+                "meta": {"pick_repo": "owner/hot"},
             },
-            "meta": {"pick_repo": "owner/hot"},
         }
         captured: list[str] = []
 
@@ -112,4 +110,5 @@ class TestGeneratePodcastRadar:
             podcastwriter.generate_podcast(brief, episode_date=datetime(2026, 9, 11))
 
         assert "owner/hot" in captured[0]  # editor prompt 含雷达素材
+        assert "[主推]" in captured[0]  # 主推段(delta/许可证/语言/摘录格式)已渲染
         assert "项目雷达栏目规范" in captured[1]  # writer prompt 含雷达规则
