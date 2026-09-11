@@ -146,7 +146,7 @@ Stage CLIs (console scripts in pyproject):
   `StageFailed` 事件、正片照常。LLM 禁止自报 stars/增速等数字、禁止改写安装命令——
   全部由 `material.build_radar_text` 从结构化数据注入;日报雷达章节完全由代码生成。
   近 30 天已推荐过的仓库由 `_load_recent_picks` 排除,不要绕过。
-  `GITHUB_TOKEN` 匿名时走匿名限流(每日一次扫描足够),不要在雷达里加需要
+  无 `GITHUB_TOKEN` 时走匿名限流(每日一次扫描足够),不要在雷达里加需要
   更高限流的调用。
 
 ## Docs to read before touching sensitive areas
