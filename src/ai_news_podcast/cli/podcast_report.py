@@ -6,6 +6,7 @@ Generate daily tech news report from brief.
 import argparse
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 from zoneinfo import ZoneInfo
 
 from ai_news_podcast.cli.base import AsyncCommand
@@ -47,6 +48,32 @@ def build_report_prompt(brief: dict, date_str: str) -> str:
 {material}
 
 请直接输出 Markdown 文本。"""
+
+
+def build_radar_report_section(radar: dict[str, Any] | None, date_display: str) -> str:
+    """雷达章节由代码生成(非 LLM),保证数字与链接零幻觉。主推 + 备选。"""
+    if not radar or not radar.get("projects"):
+        return ""
+    meta = radar.get("meta", {})
+    pick_repo = meta.get("pick_repo")
+    lines = [f"\n## 📡 项目雷达 | {date_display}\n", "> 数字为 GitHub 实测,链接可直接上手。\n"]
+    for p in radar.get("projects", []):
+        delta = p.get("delta_stars")
+        delta_str = f"+{delta}/天" if isinstance(delta, int) else "首日"
+        if p.get("repo") == pick_repo:
+            lines.append(
+                f"### 🥇 主推 [{p.get('repo')}]({p.get('url')})"
+                f" ⭐ {p.get('stars')}({delta_str})"
+                f" · {p.get('language') or '—'} · License: {p.get('license') or '无'}\n"
+                f"{str(p.get('description') or '').strip()}\n"
+            )
+        else:
+            lines.append(
+                f"- 📎 备选 [{p.get('repo')}]({p.get('url')})"
+                f" ⭐ {p.get('stars')}({delta_str})"
+                f" · {str(p.get('description') or '').strip()}\n"
+            )
+    return "\n".join(lines) + "\n"
 
 
 class ReportCommand(AsyncCommand):
@@ -107,6 +134,8 @@ class ReportCommand(AsyncCommand):
             report_md = report_md[3:].strip()
         if report_md.endswith("```"):
             report_md = report_md[:-3].strip()
+
+        report_md += build_radar_report_section(brief.get("radar"), date_display)
 
         report_path = outdir / f"daily_report_{report_id}.md"
         report_path.write_text(report_md, encoding="utf-8")
