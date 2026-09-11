@@ -102,3 +102,4 @@ class TestRadarReportSection:
         assert "https://github.com/owner/hot" in section
         assert "⭐ 1500" in section and "+1000/天" in section
         assert "备选 [owner/next]" in section
+        assert "首日" in section

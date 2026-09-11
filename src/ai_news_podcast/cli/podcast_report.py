@@ -51,7 +51,10 @@ def build_report_prompt(brief: dict, date_str: str) -> str:
 
 
 def build_radar_report_section(radar: dict[str, Any] | None, date_display: str) -> str:
-    """雷达章节由代码生成(非 LLM),保证数字与链接零幻觉。主推 + 备选。"""
+    """雷达章节由代码生成(非 LLM),保证数字与链接零幻觉。主推 + 备选。
+
+    pick_repo 匹配不到任何项目时,章节仅含备选、无主推(降级但不算错)。
+    """
     if not radar or not radar.get("projects"):
         return ""
     meta = radar.get("meta", {})

@@ -129,7 +129,11 @@ async def test_report_command_cleaning(dummy_cfg, tmp_path):
     brief_dir = tmp_path / "data" / "briefs"
     brief_dir.mkdir(parents=True, exist_ok=True)
     (brief_dir / "brief_2026-07-22.json").write_text(
-        '{"stories": [{"title": "Test"}]}', encoding="utf-8"
+        '{"stories": [{"title": "Test"}], "radar": {"projects": [{"repo": "owner/hot", '
+        '"url": "https://github.com/owner/hot", "stars": 1500, "delta_stars": 1000, '
+        '"language": "Python", "license": "MIT", "description": "d"}], '
+        '"meta": {"pick_repo": "owner/hot"}}}',
+        encoding="utf-8",
     )
 
     with patch(
@@ -144,3 +148,4 @@ async def test_report_command_cleaning(dummy_cfg, tmp_path):
         assert "<think>" not in content
         assert "internal reasoning" not in content
         assert "✨ 科技新闻日报" in content
+        assert "项目雷达" in content
