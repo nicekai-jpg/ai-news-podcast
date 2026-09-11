@@ -72,6 +72,7 @@ def build_radar_text(radar: dict[str, Any] | None) -> str:
     """把项目雷达结果格式化为固定栏目素材文本(空雷达返回空串)。
 
     每日只主推一个项目;其余候选仅作对比背景。数字与摘录全部由代码注入,LLM 不得增删。
+    pick_repo 匹配不到任何项目时,降级为仅其余候选+使用规则,不出现主推段。
     """
     if not radar or not radar.get("projects"):
         return ""
@@ -91,6 +92,7 @@ def build_radar_text(radar: dict[str, Any] | None) -> str:
         excerpt = str(p.get("readme_excerpt") or "").strip()
         if excerpt:
             lines.append(f"  README 上手摘录(原文,安装命令必须逐字引用):\n  {excerpt}")
+            lines.append("  (摘录结束)")
         lines.append(f"  链接:{p.get('url')}")
     others = [
         f"{p.get('repo')} ⭐{p.get('stars')}"

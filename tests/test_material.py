@@ -197,5 +197,52 @@ class TestBuildRadarText:
         assert "[主推]" in text and "owner/hot" in text
         assert "⭐1500" in text and "较昨日 +1000" in text
         assert "pip install hot" in text and "逐字" in text
+        assert "(摘录结束)" in text
         assert "其余候选" in text and "owner/next ⭐800" in text
         assert "禁止编造" in text
+
+    def test_pick_with_none_delta_shows_first_day(self) -> None:
+        """唯一项目即主推且 delta_stars 为 None 时,应显示"首日无对比数据"。"""
+        radar = {
+            "projects": [
+                {
+                    "repo": "owner/solo",
+                    "url": "https://github.com/owner/solo",
+                    "stars": 42,
+                    "delta_stars": None,
+                    "language": "Go",
+                    "license": None,
+                    "description": "Brand new tool",
+                    "readme_excerpt": "",
+                }
+            ],
+            "meta": {"pick_repo": "owner/solo"},
+        }
+        text = build_radar_text(radar)
+        assert "首日无对比数据" in text
+        assert "[主推]" in text
+
+    def test_unmatched_pick_repo_degrades_safely(self) -> None:
+        """pick_repo 匹配不到任何项目时,降级为仅其余候选+使用规则,不出现主推段。"""
+        radar = {
+            "projects": [
+                {
+                    "repo": "owner/next",
+                    "url": "u2",
+                    "stars": 800,
+                    "delta_stars": None,
+                    "language": "Rust",
+                    "license": "Apache-2.0",
+                    "description": "Agent runtime",
+                    "readme_excerpt": "",
+                }
+            ],
+            "meta": {"pick_repo": "owner/ghost"},
+        }
+        text = build_radar_text(radar)
+        assert "[主推]" not in text
+        assert "其余候选" in text
+        assert (
+            "使用规则:仓库名、数字、安装命令必须原样引用,禁止编造或修改;只讲主推项目,不要展开其余候选;禁止把项目与新闻混在同一栏目。"
+            in text
+        )
