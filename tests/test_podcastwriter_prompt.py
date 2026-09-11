@@ -106,6 +106,10 @@ class TestRadarPromptSections:
         prompt = build_editor_prompt("素材", datetime(2026, 9, 9))
         assert "项目雷达素材" not in prompt
 
+    def test_editor_prompt_whitespace_radar_omits_section(self) -> None:
+        prompt = build_editor_prompt("素材", datetime(2026, 9, 9), radar_material="   ")
+        assert "项目雷达素材" not in prompt
+
     def test_editor_prompt_with_radar(self) -> None:
         prompt = build_editor_prompt("素材", datetime(2026, 9, 9), radar_material="雷达素材")
         assert "项目雷达素材" in prompt
