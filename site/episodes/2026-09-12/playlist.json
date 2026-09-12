@@ -1,0 +1,1019 @@
+{
+  "episode_id": "2026-09-12",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友们大家好啊，欢迎收听AI每日先锋，今天是2026年9月12日。我是苏晴，坐在我旁边的还是那个永远比我还清楚技术细节的周航。",
+      "start": 1.0,
+      "duration": 11.624,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。苏晴你这话说的，好像我抢你饭碗似的。",
+      "start": 13.073,
+      "duration": 5.137,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "你本来就是在抢嘛，行吧。今天的选题跨度有点大，左手在挑战千禧年数学猜想，右手在开三百万年薪抢人，简直是两个平行宇宙。",
+      "start": 18.707,
+      "duration": 12.582,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "这种感觉最近越来越明显了。以前AI公司之间那种泾渭分明的边界，现在越来越模糊。",
+      "start": 31.742,
+      "duration": 7.14,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "那咱们就先从最硬核的开始聊。OpenAI这事儿你听说了吗？他们居然把数学界七大千禧年难题之一的霍奇猜想给拿去做模型评测基准了。",
+      "start": 39.287,
+      "duration": 11.973,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "我跟你说，这事儿挺值得琢磨的。千禧年难题在数学界的地位你应该知道吧，克雷数学研究所2000年提出来的七道题，每道悬赏一百万美元，到现在一道都没被完整攻克。",
+      "start": 51.693,
+      "duration": 14.387,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "这也太……怎么说呢，这是不是有点把学术界的顶尖荣誉当成期末考试卷子了？",
+      "start": 66.545,
+      "duration": 6.269,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你这比喻其实挺到位的。但换个角度想，霍奇猜想这种级别的推理深度，对模型来说是真正的硬骨头。说白了，它不是那种靠记忆和模式匹配能糊弄过去的东西，模型必须真正构建出新的数学论证链条。",
+      "start": 73.276,
+      "duration": 16.825,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "那如果哪天真被AI给证出来呢？",
+      "start": 90.552,
+      "duration": 3.265,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "那就是双重震撼。对数学界来说，一百年的难题被解决了，论文能挂一辈子；对AI行业来说，证明了大模型真的能跨过纯模式识别，进入创造性思维的范畴。",
+      "start": 94.317,
+      "duration": 12.776,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "我特别好奇的是，他们具体怎么测的？是让模型直接答题，还是设计成某种形式的中间步骤考核？",
+      "start": 107.531,
+      "duration": 8.838,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "大概率是后者。你注意啊，直接让大模型证霍奇猜想现阶段没意义，它算力也撑不住，更可能的是把问题拆解成层层递进的子命题，让模型在每一步给出推理，看看能不能复现或者逼近人类顶尖数学家的思路。",
+      "start": 116.83,
+      "duration": 16.694,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "这听起来有点像让一个学生去考数学竞赛的初赛复赛决赛那种感觉？",
+      "start": 133.969,
+      "duration": 7.271,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "没错，本质上就是把顶级数学竞赛的训练方式系统化了。苏晴你想啊，要是OpenAI真在这条路上跑通了，意味着什么？",
+      "start": 141.714,
+      "duration": 10.318,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "意味着以后高考数学卷子可以丢给AI去刷分？",
+      "start": 152.459,
+      "duration": 4.789,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "你这格局小了。意味着大模型的推理能力有了可量化、可对标的硬指标，行业不再只能盯着MMLU那种被刷爆了的基准卷分数争论谁更强。",
+      "start": 157.712,
+      "duration": 11.712,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "好的，学术聊完了，咱们来点世俗一点的。",
+      "start": 169.841,
+      "duration": 3.048,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "是够世俗的。",
+      "start": 173.325,
+      "duration": 1.829,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "Anthropic你听说了吗？开出最高320万美元年薪招企业销售，年薪啊朋友们，不是月薪。",
+      "start": 175.571,
+      "duration": 9.099,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "320万美金的base加上股票，这数字在中国能买好几套学区房了。",
+      "start": 185.166,
+      "duration": 5.834,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "真的假的？但重点还不是这个数字，是他们要招的销售干嘛用的。",
+      "start": 191.412,
+      "duration": 6.356,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "你说到点子上了。这岗位的核心任务是服务Meta这种超级客户。说白了，就是大客户战略。",
+      "start": 198.247,
+      "duration": 6.487,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "这事儿你说奇不奇怪？Anthropic跟OpenAI打生打死，结果转头还得伺候Meta这个潜在的对手？",
+      "start": 205.166,
+      "duration": 8.707,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "这就是AI行业最拧巴的地方。我跟你讲，企业级AI市场现在就是这种\"竞合\"状态。Meta自己也在做大模型，Anthropic跟它是竞争关系；但Meta又愿意花钱买Anthropic的服务，因为它暂时还没把自己的模型做到能完全替代外部供应的程度。",
+      "start": 214.341,
+      "duration": 19.002,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "所以等Meta自研模型成熟了，会不会一脚把Anthropic踹了？",
+      "start": 233.833,
+      "duration": 5.137,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "这是必然的。所以Anthropic现在高薪挖人，本质上是在抢时间窗口。在Meta觉醒之前，把客户关系做到牢不可破，把工作流嵌入得足够深，让对方哪怕有替代方案也懒得换。",
+      "start": 239.447,
+      "duration": 13.08,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "我突然有种看宫斗剧的感觉，你方唱罢我登场，谁也不知道谁是最后的盟友。",
+      "start": 252.945,
+      "duration": 7.271,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "你这形容挺有意思。但说真的，这种格局对客户来说其实挺不利的。你的供应商一边给你提供服务，一边在提防你，因为你既是金主也可能是明天的竞争对手。",
+      "start": 260.655,
+      "duration": 11.146,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "那这种关系会不会催生一种新的商业模式？比如搞个排他条款什么的。",
+      "start": 272.213,
+      "duration": 6.139,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "短期内不会。大模型迭代速度太快，任何长期排他协议都不划算。但未来可能会出现一种\"中立云\"模式，由第三方公司来撮合，让AI公司和它的潜在对手在数据隔离的前提下做生意。",
+      "start": 278.845,
+      "duration": 14.866,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "听起来有点像瑞士的中立国。",
+      "start": 294.12,
+      "duration": 3.091,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "你这比喻挺形象的。好了，大新闻聊完了，咱们来看看几条有意思的快讯。",
+      "start": 297.698,
+      "duration": 5.268,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "对，第一条，Moonshot AI，就是Kimi的母公司，目标年营收20亿美元了。",
+      "start": 303.408,
+      "duration": 7.619,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "20亿美元啊，这数字在国内AI公司里算是相当激进的。而且你注意，他们还提到K3模型日均处理3000亿tokens。",
+      "start": 311.487,
+      "duration": 10.362,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "3000亿？这个量级听着有点吓人。具体是什么概念呢？",
+      "start": 322.32,
+      "duration": 4.876,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "这么跟你说吧，一个普通用户跟ChatGPT聊一整天，可能也就消耗个几万tokens。3000亿意味着Moonshot的算力调度能力已经进入了第一世界的水平。",
+      "start": 327.608,
+      "duration": 11.905,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "那他们主要靠什么赚钱呢？C端订阅还是企业服务？",
+      "start": 339.958,
+      "duration": 5.094,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "大概率是企业服务占大头。C端订阅有天花板，国内用户的付费意愿再怎么挖掘也很难撑起20亿美元。所以他们肯定是在做垂直行业方案，比如金融、教育、法律这些场景。",
+      "start": 345.507,
+      "duration": 13.559,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "好的，第二条快讯，Google DeepMind推出了Gemini驱动的ATL Saathi，给印度机器人实验室的教师当助手。",
+      "start": 359.506,
+      "duration": 8.707,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "这名字ATL Saathi挺有意思的，Saathi在印地语里就是\"伙伴\"的意思。你看，DeepMind连起名字都在做本地化运营。",
+      "start": 368.691,
+      "duration": 10.188,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "是给老师用的AI伙伴？",
+      "start": 379.36,
+      "duration": 2.003,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "对，专门辅助机器人实验课程的老师。你知道印度现在STEM教育推得很猛，机器人实验室雨后春笋一样冒出来，但合格的教师严重不够。所以这种AI助手就承担了一部分答疑、指导、个性化辅导的工作。",
+      "start": 381.789,
+      "duration": 16.563,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "我跟你说，这种应用场景特别有意义。比那些卷参数、刷榜的新闻接地气多了。",
+      "start": 398.822,
+      "duration": 8.011,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "完全同意。而且它选印度不是偶然的，人口基数大、教育需求迫切、政府支持力度够，是天然的AI教育试验场。",
+      "start": 407.294,
+      "duration": 8.62,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "第三条快讯，Apple的ML Research发布了一个叫SimpleDesign的东西。",
+      "start": 416.37,
+      "duration": 5.616,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "这个有意思。它是联合建模蛋白质序列和三维结构的，目标是加速AI for Science的落地。",
+      "start": 422.452,
+      "duration": 7.488,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "AI for Science这个词最近听着挺频繁的。具体到这个SimpleDesign，它难在哪？",
+      "start": 430.373,
+      "duration": 6.444,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "你注意啊，传统方法要么是先预测序列再折叠结构，要么是先有结构再反推序列，两步走容易累积误差。SimpleDesign想做的事情是端到端联合建模，让序列和结构在生成过程中互相约束。",
+      "start": 437.224,
+      "duration": 18.915,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "这种技术对普通人有啥影响？听着很高深的样子。",
+      "start": 456.609,
+      "duration": 4.31,
+      "audios": {
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "说白了，最终受益的是药物研发。你想，新药研发里很大一块成本是试错，找到一个能精准结合靶点的蛋白质分子。如果AI能把这一步的效率提上去，那新药上市的速度会快很多。",
+      "start": 461.32,
+      "duration": 14.474,
+      "audios": {
+        "professional": "chunk_050_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "我现在终于理解为啥AI这么重要了，它真的是在改变很多行业的底层逻辑。",
+      "start": 476.205,
+      "duration": 7.445,
+      "audios": {
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "是的，这就是为什么AI for Science会是接下来几年的主战场。好了，新闻部分咱们聊完了，接下来进入今天的项目雷达时间。",
+      "start": 484.142,
+      "duration": 9.883,
+      "audios": {
+        "professional": "chunk_052_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "今天给大家推荐一个超有意思的GitHub项目，叫XiaoDuoYa/codex-with-chatgpt，目前已经收获了4048颗星了。",
+      "start": 494.476,
+      "duration": 11.146,
+      "audios": {
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "这个项目解决了一个挺普遍的需求。你写代码的时候，是不是经常卡在\"我不知道该写什么\"，然后又要花时间一行行敲实现？",
+      "start": 506.112,
+      "duration": 9.273,
+      "audios": {
+        "professional": "chunk_054_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "是啊，我自己写代码就是这样，想着挺美，一动手就卡壳。",
+      "start": 515.885,
+      "duration": 5.529,
+      "audios": {
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "这个项目的思路是让ChatGPT当\"规划大脑\"，负责想清楚要做什么、怎么拆解；Codex当\"执行手脚\"，负责把代码真正写出来。一个动脑一个动手，分工明确。",
+      "start": 521.899,
+      "duration": 13.08,
+      "audios": {
+        "professional": "chunk_056_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "这种双脑协作的模式听起来挺符合现在Agent的潮流。",
+      "start": 535.459,
+      "duration": 5.312,
+      "audios": {
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "而且仓库首日增长曲线显示社区关注度还在快速爬坡，意味着这个需求被验证了，是真实痛点而不是纸上谈兵。",
+      "start": 541.171,
+      "duration": 9.535,
+      "audios": {
+        "professional": "chunk_058_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "那具体怎么跑起来呢？我来给大家念念安装命令，这段直接复制给你的编码Agent就能用，全程不用动手。",
+      "start": 551.184,
+      "duration": 8.751,
+      "audios": {
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "B",
+      "text": "请帮我完整安装并配置 Codex with ChatGPT，全程自动，我是不懂技术的小白，所有事情你自己做。",
+      "start": 560.398,
+      "duration": 8.054,
+      "audios": {
+        "professional": "chunk_060_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 61,
+      "host": "A",
+      "text": "第一步，环境自检。 需要git和Node.js ≥ 20，缺什么就自动安装，macOS用Homebrew，Windows用winget，同时安装cloudflared。",
+      "start": 568.894,
+      "duration": 15.083,
+      "audios": {
+        "lively": "chunk_061_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 62,
+      "host": "B",
+      "text": "第二步，下载。 把https://github.com/XiaoDuoYa/codex-with-chatgpt克隆到~/codex-with-chatgpt，已存在就git pull更新。",
+      "start": 584.408,
+      "duration": 11.687,
+      "audios": {
+        "professional": "chunk_062_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 63,
+      "host": "A",
+      "text": "第三步，构建。 在该目录里执行corepack pnpm install和corepack pnpm build。",
+      "start": 596.588,
+      "duration": 8.272,
+      "audios": {
+        "lively": "chunk_063_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 64,
+      "host": "B",
+      "text": "第四步，安装Skill。 把仓库里的skill/SKILL.md复制到~/.codex/skills/codex-with-chatgpt/SKILL.md，并把文件中\"The codex-with-chatgpt checkout lives at:\"那一行的路径改成实际克隆路径。",
+      "start": 605.301,
+      "duration": 17.236,
+      "audios": {
+        "professional": "chunk_064_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 65,
+      "host": "A",
+      "text": "第五步，首次配置。 按SKILL.md里的first-time setup流程执行，运行c2c setup，用内置浏览器打开ChatGPT配置连接器并输入配对码。全程只用内置浏览器，禁止打开任何第三方浏览器。",
+      "start": 623.027,
+      "duration": 19.829,
+      "audios": {
+        "lively": "chunk_065_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 66,
+      "host": "B",
+      "text": "第六步，只有遇到需要我登录（ChatGPT / Cloudflare）、验证码或两步验证时才叫我， 而且一次只告诉我一个动作。",
+      "start": 643.264,
+      "duration": 9.143,
+      "audios": {
+        "professional": "chunk_066_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 67,
+      "host": "A",
+      "text": "第七步，完成后给我看✓清单，并确认文件读取测试通过。 我不懂MCP、OAuth、Tunnel、端口这些词，不要向我解释；出了问题先自己修。",
+      "start": 652.831,
+      "duration": 13.366,
+      "audios": {
+        "lively": "chunk_067_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 68,
+      "host": "B",
+      "text": "这个安装流程写得挺人性化的， 作者明显是从小白用户的角度倒推过。",
+      "start": 666.669,
+      "duration": 5.878,
+      "audios": {
+        "professional": "chunk_068_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 69,
+      "host": "A",
+      "text": "对，特别贴心。 最后简单聊聊，如果你想fork这个项目做点差异化，能从哪几个方向入手。",
+      "start": 672.975,
+      "duration": 7.88,
+      "audios": {
+        "lively": "chunk_069_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 70,
+      "host": "B",
+      "text": "第一个方向， 多规划器可插拔。 把规划层抽象成接口，让Claude、Gemini等也能担任规划大脑，做出一个模型无关的版本，立刻从单点工具升级为平台。",
+      "start": 681.285,
+      "duration": 12.297,
+      "audios": {
+        "professional": "chunk_070_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 71,
+      "host": "A",
+      "text": "第二个方向，成本与质量仪表盘。记录每个任务消耗的tokens、调用轮次与最终成功率，做成可视化面板，让用户对比不同模型作为规划层时的性价比。",
+      "start": 694.0,
+      "duration": 14.716,
+      "audios": {
+        "lively": "chunk_071_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 72,
+      "host": "B",
+      "text": "第三个方向，项目级记忆库。让ChatGPT在规划时能参考该项目历史会话和代码风格偏好，减少重复沟通，真正实现越用越懂你。",
+      "start": 709.185,
+      "duration": 11.494,
+      "audios": {
+        "professional": "chunk_072_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 73,
+      "host": "A",
+      "text": "这三个方向听着都挺实在的，特别是第二个仪表盘，对实际用户特别友好。",
+      "start": 721.136,
+      "duration": 5.834,
+      "audios": {
+        "lively": "chunk_073_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 74,
+      "host": "B",
+      "text": "是的，工具类产品最后拼的都是这种细节体验。好了，今天的项目雷达就到这里，咱们这期节目也差不多接近尾声了。",
+      "start": 727.381,
+      "duration": 8.098,
+      "audios": {
+        "professional": "chunk_074_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 75,
+      "host": "A",
+      "text": "嗯，今天从千禧年数学猜想聊到三百万年薪，从印度机器人实验室聊到蛋白质结构预测，最后还拆解了一个GitHub项目，信息量还是挺大的。",
+      "start": 735.889,
+      "duration": 12.993,
+      "audios": {
+        "lively": "chunk_075_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 76,
+      "host": "B",
+      "text": "是啊，感觉这一年的AI行业就是不停地在拓展边界，原本毫不相关的领域都开始被卷进来。",
+      "start": 749.322,
+      "duration": 6.487,
+      "audios": {
+        "professional": "chunk_076_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 77,
+      "host": "A",
+      "text": "那今天就到这里吧，朋友们，咱们下期再见！",
+      "start": 756.274,
+      "duration": 3.831,
+      "audios": {
+        "lively": "chunk_077_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 78,
+      "host": "B",
+      "text": "下期再见，拜拜！",
+      "start": 760.567,
+      "duration": 1.524,
+      "audios": {
+        "professional": "chunk_078_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
