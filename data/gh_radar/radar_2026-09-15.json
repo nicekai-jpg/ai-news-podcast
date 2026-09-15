@@ -1,0 +1,112 @@
+{
+  "date": "2026-09-15",
+  "generated_at": "2026-09-15T00:01:51.502533+00:00",
+  "projects": [
+    {
+      "repo": "ashemag/human-atlas",
+      "url": "https://github.com/ashemag/human-atlas",
+      "description": "Open-source 3D anatomy explorer: 2,234 selectable BodyParts3D meshes, system layers, search, and exploded views.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 3434,
+      "delta_stars": 91,
+      "is_new": false,
+      "created_at": "2026-09-05T00:24:43Z",
+      "pushed_at": "2026-09-06T23:35:06Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 3,
+      "readme_excerpt": "",
+      "score": 0.3653,
+      "score_parts": {
+        "velocity": 0.0607,
+        "hands_on": 0.45,
+        "cross_heat": 1.0,
+        "ai_bonus": 0.0
+      }
+    },
+    {
+      "repo": "crmne/spotifast",
+      "url": "https://github.com/crmne/spotifast",
+      "description": "Spotify, native and fast. One lightweight Rust app for your whole library, local playback, and Spotify Connect on Linux, macOS, and Windows.",
+      "language": "Rust",
+      "topics": [
+        "audio",
+        "cross-platform",
+        "desktop-app",
+        "egui",
+        "gui",
+        "librespot",
+        "linux",
+        "macos",
+        "mpris",
+        "music",
+        "music-player",
+        "rust",
+        "spotify",
+        "spotify-client",
+        "spotify-connect",
+        "windows"
+      ],
+      "stars": 4061,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-08-27T12:46:32Z",
+      "pushed_at": "2026-09-14T22:34:53Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "score": 0.2815,
+      "score_parts": {
+        "velocity": 0.2031,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    },
+    {
+      "repo": "ApodexAI/FrontierAgent",
+      "url": "https://github.com/ApodexAI/FrontierAgent",
+      "description": "🧩 FrontierAgent, our agent framework, open-sourced alongside it — native command-line TUI, ReAct and Agent Team modes, one command on macOS and Linux, no preinstall, no hard Docker dependency.",
+      "language": "Python",
+      "topics": [
+        "agent-orchestration",
+        "agentic-ai",
+        "agentic-framework",
+        "ai-agents",
+        "harness",
+        "multi-agent",
+        "terminal-agent",
+        "tui"
+      ],
+      "stars": 2949,
+      "delta_stars": 144,
+      "is_new": false,
+      "created_at": "2026-08-22T05:07:35Z",
+      "pushed_at": "2026-09-14T23:07:36Z",
+      "license": "Apache-2.0",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "score": 0.228,
+      "score_parts": {
+        "velocity": 0.096,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    }
+  ],
+  "meta": {
+    "pick_repo": "ashemag/human-atlas",
+    "runner_up_repos": [
+      "crmne/spotifast",
+      "ApodexAI/FrontierAgent"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 6
+  }
+}
