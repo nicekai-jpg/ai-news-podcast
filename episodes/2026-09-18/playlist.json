@@ -1,0 +1,811 @@
+{
+  "episode_id": "2026-09-18",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年9月18日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.097,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 8.546,
+      "duration": 1.611,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天这新闻有点意思， 我读完第一条之后后背有点发凉，你知道为啥吗？",
+      "start": 10.654,
+      "duration": 6.444,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "啊？这么刺激？说说看。",
+      "start": 17.551,
+      "duration": 2.046,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "智谱的唐杰团队搞了个叫 RSI 的框架，这词儿我一开始还以为是 RSI 技术指标，看股市那个。",
+      "start": 20.002,
+      "duration": 9.099,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你这是炒股炒魔怔了。这次是 Recursive Self-Improvement，递归自我改进。",
+      "start": 29.534,
+      "duration": 6.095,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "对对对，递归自我改进。 但这个最吓人的点在哪呢？是 GLM 模型已经开始参与构建下一代 GLM 了。",
+      "start": 36.094,
+      "duration": 10.057,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你注意啊， 这跟我们以前说的\"AI 写代码\"完全不是一码事。 以前 AI 写代码，是工程师把 AI 当工具使，AI 本身根本不懂自己在干啥。这次是 GLM 直接介入到数据筛选、训练策略，甚至架构设计这个层面。",
+      "start": 46.613,
+      "duration": 18.392,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "翻译成人话就是啥呢？ 以前是老师教学生，现在学生开始自己编教材、自己改课程大纲了，连考试怎么出都自己定了。",
+      "start": 65.456,
+      "duration": 9.839,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "差不多这个意思。 说白了，这就是 AI 进化的\"自驱模式\"正式启动了。研发周期可能会指数级压缩，以前调参训练要几个月，模型自己优化自己可能几周就跑完一轮。",
+      "start": 75.795,
+      "duration": 12.34,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "我跟你讲，这一听是好事儿啊，AI 越来越聪明。但你后面那句\"安全性、对齐、可控性\"的讨论才是重点吧？",
+      "start": 88.573,
+      "duration": 7.924,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "是啊，你想啊，一个模型自己训练自己，人类的监督环节就越来越少了。万一它在迭代过程中学到了点什么人类不希望它学的东西，那可就麻烦了。就像你养了一只猫，结果猫学会了开冰箱，还学会了怎么把冰箱门关上不让主人发现。",
+      "start": 96.958,
+      "duration": 18.261,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "哈哈哈这个类比绝了，你以后别当工程师了，去当动物园园长吧。那这个 RSI 框架接下来会不会有更多家跟进？",
+      "start": 115.664,
+      "duration": 8.272,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "我觉得会。这事儿一旦智谱跑通了，其他大厂肯定坐不住。你看着吧，年底之前估计会有一波\"自驱进化\"的概念潮。",
+      "start": 124.41,
+      "duration": 10.362,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "那对咱们这些普通开发者来说，意味着啥？",
+      "start": 135.199,
+      "duration": 4.702,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "意味着你得习惯 AI 不再是静态工具，而是个会自己进化的\"同事\"。你今天调通的 prompt，可能下个月就被它自己优化掉了。",
+      "start": 140.365,
+      "duration": 9.404,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "我跟你说，听完这段我突然有一种紧迫感……",
+      "start": 150.186,
+      "duration": 2.961,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "哎对了，说到模型迭代速度快，DeepMind 这次又来刷屏了。Gemini 3.8 Flash 嘛，3.7 Flash 刚发布才三周，3.8 就来了。",
+      "start": 153.583,
+      "duration": 9.902,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "对，而且不是 Pro 版先发，是 Flash 版先上的。这迭代速度我都不知道该夸还是该吐槽了。",
+      "start": 163.902,
+      "duration": 7.14,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "你注意啊，DeepMind 这次明确说了，这是\"六周内第三个 Flash 版本\"。说白了，Flash 序列已经成了他们的\"快速试验田\"，先用小模型验证方向，再把成果搬到主力模型上。",
+      "start": 171.538,
+      "duration": 14.343,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "3.8 Flash 这次主打的提升是哪几个方向？",
+      "start": 186.293,
+      "duration": 4.005,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "软件工程、Agent 任务、多步推理。你看没看出来，这三个方向其实是一回事儿——都是在让模型\"能干活\"，而不只是\"能聊天\"。",
+      "start": 190.777,
+      "duration": 9.578,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "我跟你讲，软件工程这块的提升对我这种非技术人来说感受最明显。以前让 AI 写个脚本，经常给你返回一堆伪代码糊弄过去，现在能直接给你跑通了，注释还挺全。",
+      "start": 200.787,
+      "duration": 14.561,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "嗯，这就是模型从\"理解指令\"到\"执行任务\"的跨越。还有个 3.8 Flash Cyber 也值得说，这个是专门给安全场景做的版本。",
+      "start": 215.816,
+      "duration": 10.101,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "这个 Cyber 版本我有点好奇，是面向哪类用户？",
+      "start": 226.407,
+      "duration": 4.093,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "主要是企业安全团队。可以理解为 Gemini 的\"白帽子特化版\"，用来做漏洞分析、攻击模拟、应急响应这些。",
+      "start": 230.977,
+      "duration": 8.229,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "那我总结一下啊，DeepMind 释放的信号就是：推理和代码能力是现在头部实验室的核心战场，而且\"周更级\"迭代已经成了新常态。",
+      "start": 239.624,
+      "duration": 12.626,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "对，下游应用的适配窗口正在急剧收窄。以前你做个产品可以慢慢适配新模型，现在两周一更新，团队压力山大。我有个做 Agent 创业的朋友跟我说，他现在最怕的就是周末——因为周末最容易爆新模型。",
+      "start": 252.689,
+      "duration": 17.129,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "哈哈哈，周末焦虑症了属于是。",
+      "start": 270.23,
+      "duration": 3.309,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "新闻说完了，接下来聊聊几条快讯。先说 OpenAI 这个，周航你知道 Astra for Law 吗？",
+      "start": 274.032,
+      "duration": 7.576,
+      "audios": {
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "知道，这是 OpenAI 给律所定制的版本，主打客户机密场景下的法律级可控性。",
+      "start": 282.017,
+      "duration": 6.226,
+      "audios": {
+        "professional": "chunk_031_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "听着好高大上，但我第一反应是——律师这行这么赚钱的吗？都开始用定制版大模型了？",
+      "start": 288.73,
+      "duration": 8.098,
+      "audios": {
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "B",
+      "text": "你注意啊，律所这个场景确实特殊。客户的数据敏感度极高，普通云端模型他们根本不敢用，万一聊天记录泄露出去了，那是要吃官司的。OpenAI 这招其实是把\"私有化部署\"玩到了定制化层面，给律所做了一套\"数据保险柜\"。",
+      "start": 297.27,
+      "duration": 18.044,
+      "audios": {
+        "professional": "chunk_033_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "懂了，等于给律所开了一个\"AI 安全屋\"。",
+      "start": 315.774,
+      "duration": 3.309,
+      "audios": {
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "可以这么理解，本质上还是在抢 B 端市场。",
+      "start": 319.554,
+      "duration": 3.396,
+      "audios": {
+        "professional": "chunk_035_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "第二条，Apple 这次发了个叫 REVERSAL-BENCH 的东西，这词儿我没看懂。",
+      "start": 323.362,
+      "duration": 6.748,
+      "audios": {
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "B",
+      "text": "这个比较技术。简单说，Apple 提出了一个\"可逆性\"评估轴，还有一个 Reset Oracle 机制，用来衡量自主强化学习在没有外部重置条件下的稳定性。",
+      "start": 330.555,
+      "duration": 12.689,
+      "audios": {
+        "professional": "chunk_037_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "你能用大白话给我翻译一下吗？",
+      "start": 343.699,
+      "duration": 2.917,
+      "audios": {
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "你想啊，AI 训练有时候会\"跑偏\"，这时候工程师会手动把它拉回来，这叫\"外部重置\"。但如果让 AI 自主学习，没有工程师盯着，它自己能不能意识到\"我跑偏了\"并且自己修正回来？REVERSAL-BENCH 就是测这个能力的。",
+      "start": 347.056,
+      "duration": 16.651,
+      "audios": {
+        "professional": "chunk_039_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "哦～所以这是测 AI 的\"自我纠错\"能力？测它有没有\"自知之明\"？",
+      "start": 364.185,
+      "duration": 6.313,
+      "audios": {
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "B",
+      "text": "对，你看这跟我们前面聊的智谱 RSI 其实是呼应上的——既然要让模型自驱进化，那它首先得能\"刹车\"才行。",
+      "start": 370.979,
+      "duration": 8.838,
+      "audios": {
+        "professional": "chunk_041_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "这个角度确实挺有意思的。",
+      "start": 380.243,
+      "duration": 2.264,
+      "audios": {
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "第三条相对轻松，Google 给联合国做了个数据共享平台。",
+      "start": 382.977,
+      "duration": 5.529,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "对，让全球发展数据更容易被探索和复用。比如贫困数据、教育数据、卫生数据这些。",
+      "start": 388.967,
+      "duration": 7.314,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "我跟你说，这种事儿才是大公司该干的。模型再强，也得让数据真正为人服务。",
+      "start": 396.737,
+      "duration": 7.184,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "嗯，AI 普惠的另一种打开方式。这种基础设施层面的东西，短期看不出商业价值，但长期会改变很多。",
+      "start": 404.387,
+      "duration": 8.229,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "接下来进入今天的项目雷达时间。",
+      "start": 413.049,
+      "duration": 2.873,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "今天的项目挺有意思，叫 reef，仓库在 Human-Agent-Society 这个组织下面。星标 3151，单日净增 570，Python 写的，Apache-2.0 协议。",
+      "start": 416.329,
+      "duration": 13.298,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "周航你给我讲讲这是干嘛的？",
+      "start": 430.097,
+      "duration": 3.135,
+      "audios": {
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "这个项目定位很明确——面向\"自我提升型 Agent\"的持续学习基础设施。简单说，就是给 Agent 搭一个工程底座，让它在长生命周期里能不断吸收经验、自我迭代。",
+      "start": 433.633,
+      "duration": 13.168,
+      "audios": {
+        "professional": "chunk_050_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "为什么是现在值得关注？",
+      "start": 447.212,
+      "duration": 2.177,
+      "audios": {
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "你注意啊，2026 年是 Agent 工程化的风口年。Self-Improving Agent 加 Continual Learning Infra 这两个赛道叠在一起，热度非常高。而且基础设施层的项目有个特点：被引用率高，越早参与越容易进入核心贡献者圈层。",
+      "start": 449.881,
+      "duration": 18.392,
+      "audios": {
+        "professional": "chunk_052_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "那第一步怎么跑起来？门槛高不高？",
+      "start": 468.724,
+      "duration": 3.048,
+      "audios": {
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "这个项目有个前置依赖，需要安装 git-lfs。Reef 在它的 artifact 仓库里会本地初始化 Git LFS，所以这个装上才能正常用。包管理官方推荐用 uv，命令都是用 uv 写的。",
+      "start": 472.262,
+      "duration": 16.215,
+      "audios": {
+        "professional": "chunk_054_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "周航再给我们讲讲，如果 fork 之后想做差异化，能从哪切入？",
+      "start": 488.977,
+      "duration": 6.008,
+      "audios": {
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "最好的切入点就是\"自定义 Memory Schema 与策略\"。比如在现有持续学习管线上加一个可插拔的记忆模块，按任务难度分桶做优先级采样，或者对接外部向量库做跨 Agent 经验共享。这样不改核心训练循环，就能做出一个\"更聪明、更不遗忘\"的差异化版本，顺便也能给论文或者社区 PR 提供切入点。",
+      "start": 495.47,
+      "duration": 25.769,
+      "audios": {
+        "professional": "chunk_056_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "懂了，相当于给 Agent 装一个\"外接硬盘\"，而且这个硬盘还会自己整理文件。",
+      "start": 521.719,
+      "duration": 6.966,
+      "audios": {
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "哈哈你这个类比也到位。",
+      "start": 529.085,
+      "duration": 3.048,
+      "audios": {
+        "professional": "chunk_058_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "好，那今天节目就到这里，感谢大家收听，我们下期再见！",
+      "start": 532.611,
+      "duration": 4.354,
+      "audios": {
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "B",
+      "text": "下期见，朋友们！",
+      "start": 537.428,
+      "duration": 1.176,
+      "audios": {
+        "professional": "chunk_060_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 61,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 539.046,
+      "duration": 5.834,
+      "audios": {
+        "lively": "chunk_061_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 62,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 545.311,
+      "duration": 0.74,
+      "audios": {
+        "professional": "chunk_062_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
