@@ -1,0 +1,603 @@
+{
+  "episode_id": "2026-09-19",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年9月19日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.271,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 8.72,
+      "duration": 1.654,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天早上我看到一条新闻整个人都愣住了。Anthropic在搞一间真正的生物学实验室，AI在里面真的在动手做实验。",
+      "start": 10.871,
+      "duration": 11.059,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "对，你注意啊，这事儿跟之前所有AI for Science的玩法都不太一样。以前大家都是在屏幕上算——算蛋白质结构、算分子对接、生成一篇挺唬人的论文对吧？现在Anthropic直接让模型走出屏幕，去拿移液枪。",
+      "start": 22.383,
+      "duration": 17.391,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "我跟你说，这个画面感太强了。一个大模型在那儿认真地点样、离心、培养细胞。我第一反应其实是担心安全问题。",
+      "start": 40.179,
+      "duration": 9.491,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "这也是大家最担心的点。你想，语言模型最大的特征就是会\"幻觉\"，它有时候会一本正经地胡说八道。如果把这种不确定性直接搬到湿实验室里，加错试剂、污染样本、搞出什么生物安全风险……这可不是软件出bug重启一下就能解决的。",
+      "start": 50.103,
+      "duration": 18.479,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "B",
+      "text": "所以说白了，这事儿既是技术上的大胆跨越，也是治理上的巨大考验。",
+      "start": 69.047,
+      "duration": 5.399,
+      "audios": {
+        "professional": "chunk_007_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 8,
+      "host": "A",
+      "text": "那Anthropic为啥非得走这条最难的路呢？",
+      "start": 74.908,
+      "duration": 4.659,
+      "audios": {
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "B",
+      "text": "我觉得他们想打破一个天花板。你看现在AI公司基本就两条赚钱的路——要么卖算力，要么卖订阅。但生物医药研发这条赛道实在太大了，全球一年砸进去几千亿美元。",
+      "start": 80.018,
+      "duration": 12.297,
+      "audios": {
+        "professional": "chunk_009_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "如果AI能从\"给你预测个结构图\"升级到\"我真的帮你跑通了实验、拿到了可用的分子\"，那它的价值就不是按token收费了，而是按成果分成。这个商业模式完全是另一个量级。",
+      "start": 92.815,
+      "duration": 13.08,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "哇， 所以Anthropic是赌自己能当下一个制药公司的核心乙方？",
+      "start": 106.333,
+      "duration": 5.834,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "不止是乙方，它想做的是基础设施。 问题是谁敢第一个把临床前实验全交给AI流水线？这需要监管层、药企、学术界一起慢慢建立信任。",
+      "start": 112.628,
+      "duration": 10.405,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "行，说到AI for Science，还有一个事儿我觉得特别值得聊。谷歌给一个叫Genesis Mission的项目砸了4000万美元的算力。",
+      "start": 123.478,
+      "duration": 10.275,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "这个我也看到了。乍一看4000万美元对谷歌来说不算啥，但它背后的信号特别有意思。这笔钱的形态不是现金捐赠，而是token和算力额度。",
+      "start": 134.227,
+      "duration": 12.19,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "嗯， 这种\"给算力\"而不是\"给钱\"的方式，你觉得意味着什么？",
+      "start": 146.844,
+      "duration": 5.05,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "你注意啊，这意味着DeepMind要的是\"卡位\"。他们不是在赞助几个实验室做项目，而是在把自己嵌入到国家级的科研基础设施里。 Genesis Mission听着像是美国能源部牵头的科学计划，谷歌这么一投，下一轮做天文学、材料学、气候模拟的研究人员，第一个想到的合作伙伴可能就是DeepMind的模型。",
+      "start": 152.358,
+      "duration": 25.01,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "B",
+      "text": "换句话说，AI竞赛的关键词正在从\"谁的模型更大\"变成\"谁占据了科学发现的主入口\"。",
+      "start": 177.785,
+      "duration": 8.229,
+      "audios": {
+        "professional": "chunk_017_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "这个比喻挺有意思。以前大家比benchmark分数，现在比\"我的AI是谁家出的\"。",
+      "start": 186.45,
+      "duration": 6.879,
+      "audios": {
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "对。 你看DeepMind本来就有AlphaFold这种杀手锏，现在又通过Genesis Mission把通道铺好，等于把\"基础设施+应用\"这条链全占了。后来者想追，光有模型好没用，你得让科学家愿意用你的工具才行。",
+      "start": 193.746,
+      "duration": 17.042,
+      "audios": {
+        "professional": "chunk_019_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "这事儿对中国和欧洲的AI公司其实也是个提醒—— 光刷榜单真的没用了，得真的去科研一线扎根。",
+      "start": 211.284,
+      "duration": 8.011,
+      "audios": {
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "是这个道理，没错。",
+      "start": 219.707,
+      "duration": 1.35,
+      "audios": {
+        "professional": "chunk_021_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "说完两个大头，咱们聊几条快讯。说到端侧AI，NVIDIA在IFA 2026上可是下了大力气。",
+      "start": 221.536,
+      "duration": 9.099,
+      "audios": {
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "B",
+      "text": "这事儿不意外。今年所有的芯片厂商都在喊一句话——AI要下沉到端侧。PC、笔记本、边缘盒子，全在卷本地大模型推理能力。",
+      "start": 231.067,
+      "duration": 10.623,
+      "audios": {
+        "professional": "chunk_023_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "我跟你说，现在云端大模型确实越来越贵，而且数据隐私这块儿企业用户也越来越敏感。本地AI如果能做到七八成的体验、价格还能压下来，对中小企业吸引力极大。",
+      "start": 242.158,
+      "duration": 15.344,
+      "audios": {
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "B",
+      "text": "而且你不光是企业用，你看现在新一代游戏本里都开始塞独立NPU了。NVIDIA在IFA上推的这些方案，说白了就是在给RTX系列显卡铺生态——让游戏玩家同时也变成AI开发者，一举两得。",
+      "start": 257.992,
+      "duration": 18.044,
+      "audios": {
+        "professional": "chunk_025_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "还有一个偏技术的，Apple发了一个叫\"动态缩放激活引导\"的研究。",
+      "start": 276.513,
+      "duration": 6.444,
+      "audios": {
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "B",
+      "text": "这个名字听起来绕，其实干的事儿挺关键。你可以把它理解成给大模型加了一个\"音量旋钮\"，但这个旋钮不是整体调大调小，而是针对不同类型的危险输出做精细化的压制。",
+      "start": 283.375,
+      "duration": 15.606,
+      "audios": {
+        "professional": "chunk_027_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "哦，就是更精细的对齐微调？",
+      "start": 299.42,
+      "duration": 3.657,
+      "audios": {
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "B",
+      "text": "对。传统做法要么是RLHF一刀切，要么是写一堆规则去拦截。但这套方法是直接干预模型内部的激活值，相当于在神经元层面做手术。毒性抑制、越狱防御这些场景它都能用上。",
+      "start": 303.489,
+      "duration": 16.781,
+      "audios": {
+        "professional": "chunk_029_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "那这对开发者来说是个好事儿。",
+      "start": 320.763,
+      "duration": 3.091,
+      "audios": {
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "是啊。模型安全工具箱里又多了一件利器，而且是从Apple这种大厂出来的研究，落地可能性比较高。",
+      "start": 324.263,
+      "duration": 7.75,
+      "audios": {
+        "professional": "chunk_031_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "对了，再来个贴近生活的——Google Search上线了三种AI旅行规划的新方式。",
+      "start": 332.5,
+      "duration": 6.226,
+      "audios": {
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "B",
+      "text": "这个我体验了一下。AI Mode直接接管搜索框，你现在不用先搜\"去东京的机票\"，再搜\"东京的酒店\"，再搜\"东京的攻略\"了。你就一句话说\"我想下个月带爸妈去东京玩五天，预算两万，要慢节奏\"，它能直接给你一整套方案，甚至订票订房一条龙搞定。",
+      "start": 339.168,
+      "duration": 19.176,
+      "audios": {
+        "professional": "chunk_033_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "真的假的？这也太省心了吧。",
+      "start": 358.804,
+      "duration": 3.396,
+      "audios": {
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "但问题是，旅游平台、OTA、航司的蛋糕被怎么分？这套模式如果成了，Google就从搜索引擎变成了真正的旅行入口。那些中间商可能慢慢就退化成后台供应商了。",
+      "start": 362.671,
+      "duration": 14.343,
+      "audios": {
+        "professional": "chunk_035_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "\"想走就走\"听起来浪漫，背后其实是入口争夺战。",
+      "start": 377.426,
+      "duration": 4.528,
+      "audios": {
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "新闻聊完了，接下来进入今天的项目雷达时间。今天给大家推荐一个很有意思的开源项目——browser-use/jev-ultrafast。",
+      "start": 382.399,
+      "duration": 9.97,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "这个项目名字挺有意思，标语直接写着\"I. am. speed.\"——我就是速度。",
+      "start": 392.824,
+      "duration": 5.268,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "对，它是一个浏览器自动化的Python项目，主打的就是一个快。当前已经收获5436颗star了，首日就冲到了高位区间，热度信号非常强。许可证是MIT，零门槛商用，对做浏览器代理类项目的团队来说非常友好。",
+      "start": 398.532,
+      "duration": 18.871,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "你注意啊，在AI Agent这个赛道，\"执行速度\"已经成了生死线。用户用agent去操作网页，延迟高一点体验就崩了。一个以速度为核心定位的库，在现在的市场里其实是有稀缺性的。",
+      "start": 417.881,
+      "duration": 14.474,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "那第一步怎么跑起来呢？原素材里没给具体的安装命令，建议直接去仓库的README里查pip install或者作者推荐的初始化方式，以官方文档为准。",
+      "start": 432.836,
+      "duration": 13.211,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "嗯，这点要强调一下，别听咱俩瞎指挥，去看README最稳。",
+      "start": 446.473,
+      "duration": 5.094,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "如果你fork下来想做点差异化，我倒有个小建议——可以围绕\"延迟可观测性\"做文章。每一次浏览器操作都加上毫秒级埋点，再做个可视化面板，把\"快\"这个口号变成可量化的产品特性。比起同类agent框架，这种可观测性会成为你的明显卖点。",
+      "start": 452.037,
+      "duration": 23.094,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "这个思路挺聪明的。性能看不见，大家就只能凭感觉说\"挺快\"，但你要是能实时展示每一步操作花了多少毫秒，那就是产品级的差距。",
+      "start": 475.592,
+      "duration": 10.188,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "好了，今天的AI每日先锋就到这里，感谢大家收听，我们下期再见。",
+      "start": 486.236,
+      "duration": 5.486,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "下期再见，拜拜。",
+      "start": 492.188,
+      "duration": 1.306,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
