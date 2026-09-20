@@ -1,0 +1,82 @@
+{
+  "date": "2026-09-21",
+  "generated_at": "2026-09-20T23:34:40.294696+00:00",
+  "projects": [
+    {
+      "repo": "robbietilton/Compositor",
+      "url": "https://github.com/robbietilton/Compositor",
+      "description": "The Photoshop alternative for Mac",
+      "language": "Swift",
+      "topics": [],
+      "stars": 3640,
+      "delta_stars": 1266,
+      "is_new": false,
+      "created_at": "2026-09-16T20:35:54Z",
+      "pushed_at": "2026-09-20T22:33:05Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "- [`create-dmg`](https://github.com/create-dmg/create-dmg) (`brew install create-dmg`)",
+      "score": 0.722,
+      "score_parts": {
+        "velocity": 0.844,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    },
+    {
+      "repo": "jub0t/Concat",
+      "url": "https://github.com/jub0t/Concat",
+      "description": "Free & Open-Source CapCut replacement (supports MCPs).",
+      "language": "Rust",
+      "topics": [
+        "audio-processor",
+        "auto-caption",
+        "automation",
+        "capcut",
+        "capcut-alternative",
+        "content-creation",
+        "cross-platform",
+        "desktop-app",
+        "ffmpeg",
+        "free-video-editor",
+        "non-linear-editor",
+        "offline-first",
+        "open-source-video-editor",
+        "rust-lang",
+        "slint",
+        "video-editing",
+        "video-editing-software",
+        "video-processing-tool",
+        "whisper-cpp"
+      ],
+      "stars": 3023,
+      "delta_stars": 139,
+      "is_new": false,
+      "created_at": "2026-08-25T18:34:47Z",
+      "pushed_at": "2026-09-20T11:03:52Z",
+      "license": "AGPL-3.0",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "score": 0.2263,
+      "score_parts": {
+        "velocity": 0.0927,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    }
+  ],
+  "meta": {
+    "pick_repo": "robbietilton/Compositor",
+    "runner_up_repos": [
+      "jub0t/Concat"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 10
+  }
+}
