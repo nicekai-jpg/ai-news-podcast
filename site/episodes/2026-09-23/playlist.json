@@ -1,0 +1,1032 @@
+{
+  "episode_id": "2026-09-23",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年9月23日。我是苏晴。",
+      "start": 1.0,
+      "duration": 8.316,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 9.765,
+      "duration": 1.567,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天这个新闻我看得我头皮发麻。OpenAI一次性发了两款模型，这是什么打法？",
+      "start": 11.829,
+      "duration": 8.403,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "哈哈，你头皮发麻这个形容挺到位。说白了这就是把刀磨快了还要分两把卖——Sol主打低成本，Luna主打更少幻觉，这两条线分开走。",
+      "start": 20.685,
+      "duration": 12.123,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "等一下，Luna我懂，就是幻觉更少嘛。Sol呢？",
+      "start": 33.213,
+      "duration": 3.831,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "Sol这名字你注意啊，它是英文太阳的意思。Solar，主打的就是便宜、走量、便宜到让人肉疼的那种便宜。OpenAI这次明确说API价格又往下砍了，开发者调用一次的成本比上一代直接腰斩。",
+      "start": 37.477,
+      "duration": 16.476,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "腰斩？真的假的。这也太狠了吧。",
+      "start": 54.418,
+      "duration": 3.004,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "所以我说刀磨快了啊。这两款模型都延续了Astra的技术路线，所以底层架构没翻天覆地的变化，但正因如此才能做到这么便宜。说白了就是把同一套引擎调了两个不同的参数包，一个给\"我要便宜\"，一个给\"我要准确\"。",
+      "start": 57.884,
+      "duration": 18.349,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "那对我们普通用户有啥影响啊？我手机里跑的ChatGPT会变聪明吗？",
+      "start": 76.684,
+      "duration": 5.921,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "这个区别还真不一定能马上感受到。但你注意啊，企业端的开发者会先炸锅——以前做大模型应用最头疼的就是token账单，现在这个成本曲线一压下来，很多以前做不起的场景突然就能做了。",
+      "start": 83.105,
+      "duration": 14.648,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "就像以前打车贵你舍不得叫专车，现在专车降价你就天天叫了？",
+      "start": 98.191,
+      "duration": 5.616,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "对，就是这个意思。所以昨天我看X上很多独立开发者已经在转发，说本来搁置的项目可以重启了。",
+      "start": 104.268,
+      "duration": 7.488,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "那OpenAI这套打法——同时发两款、便宜又少错——是不是在跟开源那边抢人？",
+      "start": 112.201,
+      "duration": 7.314,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "问题是这恰恰是最狠的地方。开源模型本来靠的就是\"免费\"两个字撑场面，现在闭源直接打到这个价位，开源的护城河就有点尴尬了。你以前选开源是因为便宜，现在闭源也便宜还更稳定，那为什么还要费劲自己部署？",
+      "start": 119.989,
+      "duration": 15.823,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "周航你这句话有点损啊。",
+      "start": 136.239,
+      "duration": 3.004,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "哈哈哈，我是说实话。行业里大家都在讲\"性能价格比\"，GPT-6这一出基本上把这个比值的下限重新定义了。",
+      "start": 139.707,
+      "duration": 11.581,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "说到这个成本，说完了模型层，咱们再看基建层——今天的第二个头条。",
+      "start": 151.705,
+      "duration": 5.703,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "对，今天Emerald AI牵头拉上Google和NVIDIA，搞了个三方联盟。这事儿听起来像抱团取暖，其实不是。",
+      "start": 157.844,
+      "duration": 8.098,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "那是什么？",
+      "start": 166.359,
+      "duration": 1.132,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "他们重新定义了\"AI工厂\"这个概念。你想啊，传统的数据中心是什么？是机柜，是电力，是固定的散热系统——进去了就不好改。",
+      "start": 167.987,
+      "duration": 10.797,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "对，我理解就是盖好的楼，盖好了就不动了。",
+      "start": 179.196,
+      "duration": 3.788,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "没错。但AI训练你知道，任务负载波动非常大——有时候一个预训练任务吃满整个集群，有时候又只用一点点。以前的做法是要么浪费电，要么排队等。",
+      "start": 183.463,
+      "duration": 10.71,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "那柔性数据中心是说……",
+      "start": 194.605,
+      "duration": 3.004,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "它的核心是说，电力、散热、计算负载这三件事可以动态协同调度。打个比方，以前你家空调是一开就满功率，现在变成了智能变频——根据房间里几个人决定出多大风。",
+      "start": 198.077,
+      "duration": 15.562,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "这也太接地气了吧。但这对行业意味着啥？",
+      "start": 214.129,
+      "duration": 4.397,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "你注意啊，这意味着下一代大模型训练的边际成本曲线会变。谁能用更低的电费、更灵活的调度跑完一次预训练，谁的token出厂价就能压得更低。说白了，以后大模型公司拼的不只是算法，还有谁能用最便宜的电。",
+      "start": 219.003,
+      "duration": 17.783,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "我跟你说，这个事其实跟普通人也有关——以后你用AI工具，账单里有一半是电费。",
+      "start": 237.204,
+      "duration": 6.705,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "哈哈哈，对，所以现在北美那边抢建数据中心抢到电网都紧张了。微软、亚马逊都在跟电力公司签长期协议。",
+      "start": 244.348,
+      "duration": 8.838,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "那Emerald AI这种联盟，Google和NVIDIA为啥愿意来参加？",
+      "start": 253.598,
+      "duration": 6.008,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "说白了，这两家是互补——Google有TPU和软件栈，NVIDIA有GPU和互联方案，Emerald AI擅长的是底层编排。三家凑一起就是把\"算力\"+\"软件\"+\"调度\"打包卖。以后你建AI工厂不用自己攒，一站式搞定。",
+      "start": 260.099,
+      "duration": 17.26,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "这听着有点像装修公司了，连软装带硬装全包。",
+      "start": 277.768,
+      "duration": 6.574,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "你这个比喻还挺准的。而且这个联盟一旦形成，后来者想进入门槛就高了——这又是另一种成本护城河。",
+      "start": 284.829,
+      "duration": 8.316,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "好，说完了两个头条，咱们来看几条快讯。先说一个让本地玩家兴奋的。",
+      "start": 293.587,
+      "duration": 6.356,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "HuggingFace Transformers原生支持llama.cpp的GGUF量化了。",
+      "start": 300.403,
+      "duration": 6.052,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "这话听着像绕口令，啥意思啊？",
+      "start": 306.926,
+      "duration": 3.309,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "你注意啊，这个事情的杀伤力其实被低估了。以前你想在笔记本上跑个大模型，要么折腾Python环境，要么用Ollama这种工具。现在Transformers——就是那个最主流的库——直接支持了。",
+      "start": 310.647,
+      "duration": 14.474,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "所以我是不是可以在我那个2019年的MacBook上跑个70B的模型了？",
+      "start": 325.566,
+      "duration": 6.792,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "70B可能还差点，但跑个7B、13B是完全没有问题的。这意味着本地推理的门槛又降了一档——以前是程序员专属，现在连产品经理都能上手玩。",
+      "start": 332.813,
+      "duration": 11.407,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "那我回去就试试。不过周航，本地跑模型跟用ChatGPT有啥实际区别？",
+      "start": 344.66,
+      "duration": 7.358,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "说白了，最大的区别是隐私。你的数据不出本机，不用担心被拿去训练。还有就是不用付订阅费。",
+      "start": 352.496,
+      "duration": 8.707,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "不用付钱这个理由我喜欢。",
+      "start": 361.684,
+      "duration": 2.003,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "哈哈，对，但也有代价——响应速度慢一点，模型能力也差一点。不过日常用用、写个文案、总结个文档，完全够。",
+      "start": 364.113,
+      "duration": 8.229,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "接下来这条更刺激，Anthropic发Opus 5.5了，自称迄今最强，价格还更低。",
+      "start": 372.812,
+      "duration": 6.922,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "我感觉OpenAI刚发完GPT-6，Anthropic这边立刻接招啊？",
+      "start": 380.195,
+      "duration": 5.094,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "B",
+      "text": "没错，这就是典型的双雄对决。Anthropic之前Opus系列一直走的是\"贵但强\"的路线，这次居然也降价了，说明Claude那边的成本压力也上来了。",
+      "start": 385.745,
+      "duration": 12.297,
+      "audios": {
+        "professional": "chunk_045_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 46,
+      "host": "A",
+      "text": "那它是比GPT-6 Sol便宜还是比Luna便宜？",
+      "start": 398.508,
+      "duration": 5.224,
+      "audios": {
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "B",
+      "text": "这个问题挺有意思的。Opus 5.5对位的其实是Luna——都是主打高质量、低幻觉。Sol这种走量款，Anthropic有对应的Haiku系列。不过这次Opus 5.5的卖点放在了企业级编程和长上下文处理上。",
+      "start": 404.165,
+      "duration": 15.301,
+      "audios": {
+        "professional": "chunk_047_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 48,
+      "host": "A",
+      "text": "所以说白了，巨头之间的火药味是越来越浓了。",
+      "start": 419.873,
+      "duration": 4.093,
+      "audios": {
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "B",
+      "text": "是，但对用户来说反而是好事——你卷你的，我薅我的羊毛。",
+      "start": 424.436,
+      "duration": 4.093,
+      "audios": {
+        "professional": "chunk_049_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 50,
+      "host": "A",
+      "text": "还有一条跟GPT-6相关。GPT-6的提示缓存升级了。",
+      "start": 428.93,
+      "duration": 5.399,
+      "audios": {
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "B",
+      "text": "这个事儿对开发者来说是大礼包。你想啊，调用大模型最贵的不是回答，而是把那一长串system prompt重新发给它一遍。",
+      "start": 434.74,
+      "duration": 10.231,
+      "audios": {
+        "professional": "chunk_051_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 52,
+      "host": "A",
+      "text": "那缓存的意思是……",
+      "start": 445.463,
+      "duration": 2.046,
+      "audios": {
+        "lively": "chunk_052_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 53,
+      "host": "B",
+      "text": "缓存就是第一次发完之后记住，下次直接用。这次升级主要做了三件事——命中率提升、多了断点诊断、还有延迟控制。",
+      "start": 447.96,
+      "duration": 9.361,
+      "audios": {
+        "professional": "chunk_053_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 54,
+      "host": "A",
+      "text": "断点诊断是啥？",
+      "start": 457.811,
+      "duration": 2.046,
+      "audios": {
+        "lively": "chunk_054_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 55,
+      "host": "B",
+      "text": "就是告诉你\"这次缓存为啥没命中\"，是key不对还是过期了。这对调Bug的人来说简直是救命稻草。",
+      "start": 460.357,
+      "duration": 6.705,
+      "audios": {
+        "professional": "chunk_055_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 56,
+      "host": "A",
+      "text": "那对企业账单的影响呢？",
+      "start": 467.547,
+      "duration": 2.351,
+      "audios": {
+        "lively": "chunk_056_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 57,
+      "host": "B",
+      "text": "举个例子，一个客服机器人每次对话都要带5000字的系统提示，原来每次都要花一遍钱；现在命中缓存之后，费用基本归零。规模一上来，账单能砍掉三成到一半。",
+      "start": 470.378,
+      "duration": 13.429,
+      "audios": {
+        "professional": "chunk_057_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 58,
+      "host": "A",
+      "text": "这简直就是给企业省钱的金矿啊。",
+      "start": 484.207,
+      "duration": 3.701,
+      "audios": {
+        "lively": "chunk_058_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 59,
+      "host": "B",
+      "text": "对，而且延迟控制也意味着响应速度更快，用户体验也跟着上来了。",
+      "start": 488.386,
+      "duration": 5.399,
+      "audios": {
+        "professional": "chunk_059_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 60,
+      "host": "A",
+      "text": "新闻聊完了，接下来是今天的项目雷达时间。",
+      "start": 494.248,
+      "duration": 3.614,
+      "audios": {
+        "lively": "chunk_060_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 61,
+      "host": "B",
+      "text": "今天给大家推荐一个挺有意思的项目，叫kev，仓库名是jaredpalmer/kev。",
+      "start": 498.304,
+      "duration": 6.226,
+      "audios": {
+        "professional": "chunk_061_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 62,
+      "host": "A",
+      "text": "这名字咋这么短？",
+      "start": 504.961,
+      "duration": 1.48,
+      "audios": {
+        "lively": "chunk_062_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 63,
+      "host": "B",
+      "text": "作者取名就是这么直接。它本质上是一个轻量级的决策模型家族，基于Qwen3.5构建的，走的是Jev风格——就是那种一问一答、层层递进的决策路线。",
+      "start": 506.934,
+      "duration": 13.951,
+      "audios": {
+        "professional": "chunk_063_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 64,
+      "host": "A",
+      "text": "跟普通聊天模型有啥不一样？",
+      "start": 521.326,
+      "duration": 3.178,
+      "audios": {
+        "lively": "chunk_064_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 65,
+      "host": "B",
+      "text": "你注意啊，普通模型是\"一次性给答案\"，决策模型是\"分步骤推\"。比如我问你\"该不该买这只股票\"，普通模型可能直接说\"买\"或者\"不买\"；但决策模型会把问题拆成几步——先问你的风险偏好，再问持仓周期，再问行业景气度，最后才给建议。",
+      "start": 524.994,
+      "duration": 19.959,
+      "audios": {
+        "professional": "chunk_065_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 66,
+      "host": "A",
+      "text": "那这个项目现在有多火？",
+      "start": 545.361,
+      "duration": 2.264,
+      "audios": {
+        "lively": "chunk_066_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 67,
+      "host": "B",
+      "text": "火得很，单日星标涨了1765，总星标已经到了4190。社区关注度24小时几乎翻倍——这在本地决策模型赛道里算是冒头非常快的。",
+      "start": 548.049,
+      "duration": 11.407,
+      "audios": {
+        "professional": "chunk_067_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 68,
+      "host": "A",
+      "text": "听着我都心动了，怎么跑起来啊？",
+      "start": 559.928,
+      "duration": 2.917,
+      "audios": {
+        "lively": "chunk_068_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 69,
+      "host": "B",
+      "text": "很简单，先两条命令搞定——`npm install`，然后`npm run dev -- -p 3001`。完了浏览器打开`http://localhost:3001`就能看到预设题目直接加载。",
+      "start": 563.273,
+      "duration": 12.95,
+      "audios": {
+        "professional": "chunk_069_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 70,
+      "host": "A",
+      "text": "这么省事？",
+      "start": 576.653,
+      "duration": 1.524,
+      "audios": {
+        "lively": "chunk_070_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 71,
+      "host": "B",
+      "text": "对，这也是Jev风格的好处——开箱即用，不需要你懂太多机器学习的东西。",
+      "start": 578.595,
+      "duration": 6.008,
+      "audios": {
+        "professional": "chunk_071_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 72,
+      "host": "A",
+      "text": "那如果我想做点差异化呢？光跑预设题有啥意思。",
+      "start": 585.072,
+      "duration": 6.226,
+      "audios": {
+        "lively": "chunk_072_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 73,
+      "host": "B",
+      "text": "这个我建议你可以fork之后，把里面的预设题目替换成自己行业的——比如你是做金融的，就换成风控题；做客服的，就换工单分诊题。然后跑两组实验，一组是\"一次性问完\"，一组是\"逐题追问\"，对比一下命中率和token成本。",
+      "start": 591.755,
+      "duration": 19.35,
+      "audios": {
+        "professional": "chunk_073_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 74,
+      "host": "A",
+      "text": "这样就能看出决策模型到底在我的领域里有没有用了？",
+      "start": 611.516,
+      "duration": 6.008,
+      "audios": {
+        "lively": "chunk_074_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 75,
+      "host": "B",
+      "text": "对，而且你能沉淀出一套针对自己行业的提问策略模板。这才是fork这个项目的最大价值——不是白嫖模型，而是把它的方法论变成你的工具。",
+      "start": 617.934,
+      "duration": 11.973,
+      "audios": {
+        "professional": "chunk_075_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 76,
+      "host": "A",
+      "text": "好的，那今天的节目就到这里。周航，最后有什么想跟听众朋友说的？",
+      "start": 630.347,
+      "duration": 4.571,
+      "audios": {
+        "lively": "chunk_076_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 77,
+      "host": "B",
+      "text": "就一句话吧——2026年的AI行业，\"便宜\"和\"够用\"已经是新的标配了，谁能把这两件事做到极致，谁就能活下来。",
+      "start": 635.383,
+      "duration": 10.362,
+      "audios": {
+        "professional": "chunk_077_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 78,
+      "host": "A",
+      "text": "这话说得真有格局。我们明天见，拜拜！",
+      "start": 646.207,
+      "duration": 4.484,
+      "audios": {
+        "lively": "chunk_078_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 79,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 651.104,
+      "duration": 0.61,
+      "audios": {
+        "professional": "chunk_079_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
