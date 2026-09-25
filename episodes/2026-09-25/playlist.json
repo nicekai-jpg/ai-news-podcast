@@ -1,0 +1,499 @@
+{
+  "episode_id": "2026-09-25",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年9月25日。我是苏晴。",
+      "start": 1.0,
+      "duration": 8.446,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 9.895,
+      "duration": 1.741,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天科技圈有个事儿真的让我兴奋得不行。你知道DeepSeek最近干了件什么事吗？",
+      "start": 12.133,
+      "duration": 7.576,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "看到了。用PCIe显卡跑推理，把吞吐量拉到了原来的近七倍，这话题在咱们搞技术的朋友圈里刷屏了。",
+      "start": 20.162,
+      "duration": 8.403,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "七倍！我第一反应是\"真的假的\"。因为长久以来大家都默认，AI推理这块儿必须得靠H100、B300这种旗舰GPU才能扛得住，结果这次他们说1.5台PCIe 6000D就能跑赢一台B300。",
+      "start": 28.97,
+      "duration": 16.955,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你注意啊，关键不是简单换个硬件。他们做了两件事——一是内核层面的深度优化，把计算单元的利用率拉满；二是通信重构，把卡和卡之间数据传输的瓶颈给打通了。两个一起发力，才有了这个七倍的吞吐。",
+      "start": 46.358,
+      "duration": 18.044,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "诶，这跟我们普通人有什么关系呢？我家又不开机房。",
+      "start": 64.867,
+      "duration": 5.573,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "关系大了。你想啊，以前企业部署一个顶尖推理服务，得买那种特别贵的旗舰卡，一张几万美金。现在用相对便宜的PCIe卡堆一叠，再叠上软件优化也能达到差不多的效果，那企业用AI的成本直接就下来了。这就叫推理算力的民主化。",
+      "start": 70.902,
+      "duration": 22.223,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "我懂了，这就相当于你买了个经济型的车，但通过改装也能跑出跑车的速度。",
+      "start": 93.576,
+      "duration": 7.227,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "没错。更深层的意义是对NVIDIA高端路线的挑战。以前大家觉得推理必须上H100或者B300，这是行业默认的规矩，现在DeepSeek用1.5台PCIe 6000D把这个规矩给打破了，那高端卡的高溢价以后还能不能撑得住，可就不好说了。",
+      "start": 101.303,
+      "duration": 20.308,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "说白了，战场的核心已经从\"堆算力\"转到\"拼效率\"了，对吧？",
+      "start": 122.049,
+      "duration": 5.878,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "可以这么理解。这其实跟咱们今天要聊的另一个话题是一脉相承的。",
+      "start": 128.388,
+      "duration": 5.007,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "对了，说到这儿。谷歌今天一口气发了三个Flash模型，3.6 Flash、3.5 Flash-Lite，还有3.5 Flash Cyber。",
+      "start": 133.84,
+      "duration": 10.884,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "嗯，三个一起发。但你别以为这就是普通的版本号迭代。这次其实是Google在下一盘很大的棋。",
+      "start": 145.198,
+      "duration": 7.967,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "哦？怎么讲？",
+      "start": 153.592,
+      "duration": 0.958,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "你看啊，3.6 Flash主打速度，3.5 Flash-Lite主打低成本，3.5 Flash Cyber专门针对网络安全场景。三款模型分别卡位不同的细分市场，每一个都是为特定场景量身打造的。",
+      "start": 155.014,
+      "duration": 15.649,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "我天，这不就是\"术业有专攻\"嘛。以前大家都比谁的参数多、模型大，现在变成比谁在特定场景下更精准、更高效。",
+      "start": 171.08,
+      "duration": 11.32,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "对，这就是Google在传递一个信号：大一统基模的时代差不多到头了。未来竞争的胜负手不在参数规模，而在每个token为每个场景而生。\"Flash\"家族已经从产品线演变成一种覆盖消费到企业的方法论。",
+      "start": 182.836,
+      "duration": 16.128,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "这也太清醒了吧。从\"越大越好\"到\"专才胜出\"，这思路上的转变可不是一点点。",
+      "start": 199.381,
+      "duration": 6.922,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "是啊，这也是整个行业的一个缩影——AI正同时走向两个方向，一个是推理成本的断崖式下降，另一个就是模型能力的细分布局。",
+      "start": 206.799,
+      "duration": 11.363,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "好嘞，那咱们来看几条快讯。第一条，DeepMind给他们的Personal AI加了个新功能，叫Private AI Compute，引入服务端记忆。",
+      "start": 218.574,
+      "duration": 11.034,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "这个挺有意思。你想啊，AI要变得个性化，就得记住你的习惯、你的偏好，对吧？但如果把记忆存在云端，又会担心隐私泄露的问题。",
+      "start": 230.087,
+      "duration": 11.842,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "嗯，所以这个\"Private\"是关键。",
+      "start": 242.361,
+      "duration": 2.961,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "对，DeepMind在做的就是既让AI能跨设备记住你，又保证这些数据不被滥用。它划了一条清晰的隐私边界。问题是怎么在\"贴心\"和\"安全\"之间找平衡，这是个手艺活儿。",
+      "start": 245.79,
+      "duration": 13.995,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "我觉得这个设计思路很对。因为大家最怕的就是AI啥都记着，但记的东西又不知道被谁看去了。这种\"我信你，但你也得让我放心\"的心态，其实是AI能不能真正走进千家万户的关键。",
+      "start": 260.275,
+      "duration": 14.909,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "第二条快讯也挺实用。阿里通义千问开源了一个数学推理的过程级奖励方法，专门纠偏大模型在数学推理中的中间步错误。",
+      "start": 275.661,
+      "duration": 10.493,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "我跟你说，数学推理一直是AI的痛点。你让AI解一道题，它经常前面算着算着突然就崩了，最后给你个莫名其妙的结果。",
+      "start": 286.572,
+      "duration": 9.535,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "没错，传统方法只看最终答案对不对，但这有个问题——答对了不等于推理过程对。这个开源方案的核心是逐环检查每一步的逻辑，一旦发现某一步错误就及时纠正，相当于给AI配了个细心的数学老师。",
+      "start": 296.546,
+      "duration": 18.349,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "这就像咱们写作文，老师不光看你最后得了多少分，还要看你每一段的逻辑通不通、推理严不严谨。",
+      "start": 315.307,
+      "duration": 8.925,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "你这个类比挺好。对于开发者来说，开源就意味着大家都能用上这个纠偏能力，对提升整个社区的大模型数学能力是个好事。",
+      "start": 324.725,
+      "duration": 9.578,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "最后一条快讯特别温馨。 Google AI用生成式视频，把一对老夫妻70年前的影院记忆一帧一帧还原出来了。",
+      "start": 334.712,
+      "duration": 9.97,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "啊，我看到这个案例了，真的挺打动人的。 70年前的事情，按理说不可能有视频记录留下来，但AI可以通过他们口述的细节、家里的老照片、当时的着装风格这些线索，去\"想象\"出当年的画面。",
+      "start": 345.169,
+      "duration": 15.693,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "我天，这不就是用技术帮人圆梦嘛。",
+      "start": 361.304,
+      "duration": 3.962,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "你注意啊，这个案例最有价值的地方在于它展示了AI的另一种用法。 不是替代创作，而是去\"重现\"那些已经丢失的记忆。这种人文层面的应用，比单纯在跑分榜单上刷出新高有意义多了。",
+      "start": 365.726,
+      "duration": 15.301,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "说得太好了。 今天这一期让我感觉到，AI不光在卷技术，也开始在卷温度了。",
+      "start": 381.498,
+      "duration": 6.922,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "这也正是咱们做这个节目的意义所在嘛。 那今天就聊到这里。",
+      "start": 388.832,
+      "duration": 4.92,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "下期见！ 听众朋友们拜拜。",
+      "start": 394.197,
+      "duration": 3.483,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "下期见！",
+      "start": 398.135,
+      "duration": 0.958,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
