@@ -1,0 +1,993 @@
+{
+  "episode_id": "2026-09-27",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年9月27日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.227,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 8.676,
+      "duration": 1.524,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天这期节目我开场先抛一句话——AI的算力霸权正在被瓦解。",
+      "start": 10.697,
+      "duration": 6.444,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "这话听着挺大，但你把最近两天的事儿串起来看，确实有这种苗头。",
+      "start": 17.594,
+      "duration": 5.529,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "你看，一个在用SSD替代显存，另一个TPU反超GPU，两条线完全是\"非常规打法\"。",
+      "start": 23.528,
+      "duration": 9.709,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你注意啊，背后的关键词不是某一家公司赢了，而是开源力量正在硬件层面重新定义游戏规则。",
+      "start": 33.67,
+      "duration": 8.533,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "说白了，过去咱们总觉得大模型就是\"高端GPU的烧钱游戏\"，对吧？现在这个铁律开始松动了。",
+      "start": 42.668,
+      "duration": 7.706,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "而且松动得比很多人预想的都快。先聊哪个？",
+      "start": 50.836,
+      "duration": 3.875,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "当然是GitHub上那个最火的项目啦——Colibrì，你听说了吗？",
+      "start": 55.162,
+      "duration": 5.79,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "我正想说这个。它直接用SSD替代显存，让普通笔记本也能跑700B参数的大模型。",
+      "start": 61.452,
+      "duration": 7.184,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "700B？我没听错吧？那个量级以前你跟我说笔记本能跑，我肯定觉得你在逗我。",
+      "start": 69.074,
+      "duration": 6.356,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "你没听错，而且跑的还是GLM，智谱那个GLM 700B。",
+      "start": 75.891,
+      "duration": 7.184,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "我的天，这事儿最关键的是它真不是PPT，是有人拿真机实测过的。",
+      "start": 83.52,
+      "duration": 5.66,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "对，所以才有这么多开发者关注它。你给我解释解释技术原理呗，凭啥SSD能替代显存？",
+      "start": 89.654,
+      "duration": 7.184,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "你注意啊，这事儿核心思路其实挺巧妙。显存贵嘛，一张H100动不动十几万，但SSD现在都白菜价了。",
+      "start": 97.265,
+      "duration": 8.446,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "那速度差几个数量级呢，咋整？",
+      "start": 106.175,
+      "duration": 3.265,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "关键是SSD延迟高，意味着推理响应会有波动，实时性要求高的场景还是得靠GPU。",
+      "start": 109.857,
+      "duration": 8.795,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "所以Colibrì本质上就是把SSD当三级缓存用，内存是二级，显存是一级。",
+      "start": 119.088,
+      "duration": 6.922,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "哈，你这个分级缓存的类比太到位了。我突然觉得它真正可怕的地方不是现在能干什么，而是代表了\"AI算力去中心化\"的方向。",
+      "start": 126.427,
+      "duration": 12.016,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "你想啊，以前学生、个人开发者、中小团队想做前沿实验，光硬件门槛就把人挡在门外了。",
+      "start": 138.939,
+      "duration": 8.446,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "现在这条路趟出来， 开源生态的下沉速度可能会远超那些巨头的预期。",
+      "start": 147.797,
+      "duration": 6.487,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "巨头们还在琢磨怎么卖更贵的卡呢，结果开源这边已经把\"用便宜硬件跑大模型\"这条路给走通了。",
+      "start": 154.763,
+      "duration": 7.576,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "但话说回来， 这条路也不是没坑的吧？",
+      "start": 162.771,
+      "duration": 4.397,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "最大的两个挑战， 一个是数据安全，一个是推理稳定性。",
+      "start": 167.636,
+      "duration": 4.702,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "数据安全这块儿我理解，毕竟数据要过SSD嘛，加密和隔离机制得做扎实。",
+      "start": 172.828,
+      "duration": 6.531,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "但真正格局的， 是它让\"科研民主化\"这件事变得可能了。",
+      "start": 179.836,
+      "duration": 4.833,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "哈，被你这么一说，我感觉我那台老笔记本又有救了。",
+      "start": 185.087,
+      "duration": 4.789,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "你那笔记本几年没换了？",
+      "start": 190.315,
+      "duration": 2.09,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "…… 四五年了吧。",
+      "start": 192.817,
+      "duration": 1.219,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "那还得再等等，能跑和跑得流畅是两码事，别到时候跑起来风扇呼呼转。",
+      "start": 194.529,
+      "duration": 6.356,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "哎，也是。",
+      "start": 201.294,
+      "duration": 1.829,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "说回正题啊，跟GPU相关的事儿还有一件特别关键的——vLLM团队基于DeepSeek推理框架在谷歌TPU上跑Kimi，性能比英伟达GPU还快57%。",
+      "start": 203.61,
+      "duration": 14.169,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "这个数字太关键了！以前大家都觉得TPU就是谷歌自用的，不通用。",
+      "start": 218.221,
+      "duration": 6.313,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "你注意啊，这次vLLM是基于DeepSeek框架做的优化，证明TPU生态正在快速成熟。",
+      "start": 224.994,
+      "duration": 7.837,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "说白了，这事儿标志着推理栈正在成为新的战场。",
+      "start": 233.302,
+      "duration": 4.397,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "啥叫推理栈？以前大家比的是模型参数多、训练数据大，现在风向变了，比的是谁能更好把模型部署到生产环境里。",
+      "start": 238.111,
+      "duration": 9.012,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "也就是谁能把推理成本压下来，谁就能掌握定价权。",
+      "start": 247.568,
+      "duration": 6.487,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "对，而推理成本这件事光靠硬件便宜还不够，必须软硬协同优化。",
+      "start": 254.51,
+      "duration": 5.79,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "所以这次vLLM加DeepSeek加TPU的组合，意义就在于它证明了\"非英伟达路径\"的可行性。",
+      "start": 260.74,
+      "duration": 10.797,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "你可以理解为，GPU垄断的格局第一次出现了实质性裂缝。",
+      "start": 272.015,
+      "duration": 5.05,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "那这裂缝会越来越大吗？",
+      "start": 277.546,
+      "duration": 2.569,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "短期内英伟达还是老大，但长期来看，多元化算力格局是必然的。你想想，TPU都能做到这程度，AMD的MI系列呢？国产芯片呢？",
+      "start": 280.541,
+      "duration": 11.363,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "整个行业的竞争会从\"模型层\"下沉到\"基础设施层\"。",
+      "start": 292.374,
+      "duration": 5.137,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "对咱普通开发者来说，以后部署模型时可选方案会越来越多，价格也会被打下来。",
+      "start": 297.972,
+      "duration": 6.835,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "这个我举双手欢迎。",
+      "start": 305.263,
+      "duration": 2.177,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "那几个快讯你也念念呗。",
+      "start": 307.906,
+      "duration": 2.09,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "好嘞。第一个，谷歌DeepMind最近搞了个叫ATL Saathi的AI工具，Gemini驱动的，落地印度的机器人实验室，主打助力中小学教师。",
+      "start": 310.429,
+      "duration": 13.235,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "这个动作挺耐人寻味的。印度是全球教育需求最旺盛的市场之一，DeepMind选这里做切入点，明显是看中了规模化效应。",
+      "start": 324.071,
+      "duration": 10.188,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "说白了，先用印度市场验证产品模型，然后再往其他新兴市场推。",
+      "start": 334.729,
+      "duration": 6.269,
+      "audios": {
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "而且Gemini作为底层模型，这个工具能做的事就多了，比如课程设计、答疑、甚至个性化辅导。",
+      "start": 341.399,
+      "duration": 7.924,
+      "audios": {
+        "professional": "chunk_050_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "我突然意识到这对国内AI教育产品其实是一种压力。你看国内厂商都在抢K12市场，结果谷歌从印度侧翼包抄。",
+      "start": 349.734,
+      "duration": 9.535,
+      "audios": {
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "这反倒能逼着国内厂商加速迭代，对学生其实是好事。",
+      "start": 359.761,
+      "duration": 4.528,
+      "audios": {
+        "professional": "chunk_052_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "第二个快讯，HuggingFace发了《开源模型现状：2026夏季观察》这份报告。",
+      "start": 364.74,
+      "duration": 6.966,
+      "audios": {
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "这份报告我细读了，核心观点就一句话——在AI世界时间被极度压缩的当下，开源模型的迭代速度与闭源前沿的距离正在快速缩小。",
+      "start": 372.196,
+      "duration": 11.189,
+      "audios": {
+        "professional": "chunk_054_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "翻译成大白话呢？",
+      "start": 383.885,
+      "duration": 1.829,
+      "audios": {
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "2024年那会儿，开源模型跟闭源前沿差距还挺大，可能落后大半年；现在这个差距已经被压缩到几个月，甚至在某些细分任务上开源已经追平闭源。",
+      "start": 386.199,
+      "duration": 14.15,
+      "audios": {
+        "professional": "chunk_056_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "这个速度太狠了。",
+      "start": 400.829,
+      "duration": 2.046,
+      "audios": {
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "而且HuggingFace发这种报告本身就是一种信号，告诉整个行业：闭源不再是唯一解，开源已经具备跟闭源掰手腕的能力。",
+      "start": 403.275,
+      "duration": 9.839,
+      "audios": {
+        "professional": "chunk_058_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "你看Colibrì、TPU上的vLLM，这些都是开源力量的胜利。",
+      "start": 413.592,
+      "duration": 6.661,
+      "audios": {
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "B",
+      "text": "没错，开源正在从\"追赶者\"变成\"规则制定者\"之一。",
+      "start": 420.716,
+      "duration": 4.571,
+      "audios": {
+        "professional": "chunk_060_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 61,
+      "host": "A",
+      "text": "最后一个快讯，Simate-beta空降RoboDojo了。",
+      "start": 425.729,
+      "duration": 4.18,
+      "audios": {
+        "lively": "chunk_061_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 62,
+      "host": "B",
+      "text": "这个我得仔细说说。你注意啊，Physical AI这个概念最近特别火，指的是能跟物理世界交互的AI，不光聊天、看图，而是能控制机器人、跟环境互动。",
+      "start": 430.34,
+      "duration": 11.861,
+      "audios": {
+        "professional": "chunk_062_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 63,
+      "host": "A",
+      "text": "那FSD级团队是啥意思？",
+      "start": 442.694,
+      "duration": 3.483,
+      "audios": {
+        "lively": "chunk_063_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 64,
+      "host": "B",
+      "text": "你看特斯拉的FSD，它的研发团队配置代表了\"世界级Physical AI团队\"的标杆，Simate-beta背后的团队规模和技术储备是同级别的。",
+      "start": 446.618,
+      "duration": 11.276,
+      "audios": {
+        "professional": "chunk_064_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 65,
+      "host": "A",
+      "text": "而且他们还在RoboDojo并行推进数十条独立研究路线？",
+      "start": 458.384,
+      "duration": 5.312,
+      "audios": {
+        "lively": "chunk_065_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 66,
+      "host": "B",
+      "text": "对，你想想，一条研究路线就已经够烧钱了，他们同时推进几十条，这背后需要的资源调度能力是非常可怕的。",
+      "start": 464.104,
+      "duration": 8.882,
+      "audios": {
+        "professional": "chunk_066_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 67,
+      "host": "A",
+      "text": "说白了，AI正式从\"屏幕里\"走向\"物理世界\"了。",
+      "start": 473.41,
+      "duration": 5.137,
+      "audios": {
+        "lively": "chunk_067_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 68,
+      "host": "B",
+      "text": "你这个总结特别到位。以前AI就是聊聊天、生成张图，现在AI要开始\"动手\"了。",
+      "start": 479.019,
+      "duration": 6.748,
+      "audios": {
+        "professional": "chunk_068_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 69,
+      "host": "A",
+      "text": "哈，我突然有个画面感——以后AI不光能跟你聊天，还能帮你收拾房间。",
+      "start": 486.195,
+      "duration": 6.008,
+      "audios": {
+        "lively": "chunk_069_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 70,
+      "host": "B",
+      "text": "这个画面其实已经在慢慢变成现实了。你注意啊，Physical AI的赛博朋克不是坏事，它意味着AI的应用边界在快速扩展。",
+      "start": 492.633,
+      "duration": 9.752,
+      "audios": {
+        "professional": "chunk_070_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 71,
+      "host": "A",
+      "text": "我现在就特别期待Simate-beta后续的更新，咱们一起盯着。",
+      "start": 502.803,
+      "duration": 5.137,
+      "audios": {
+        "lively": "chunk_071_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 72,
+      "host": "B",
+      "text": "一起盯着。",
+      "start": 508.409,
+      "duration": 0.871,
+      "audios": {
+        "professional": "chunk_072_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 73,
+      "host": "A",
+      "text": "好啦，今天的AI每日先锋就到这里。",
+      "start": 509.737,
+      "duration": 3.352,
+      "audios": {
+        "lively": "chunk_073_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 74,
+      "host": "B",
+      "text": "总结一下，今天我们聊了Colibrì、TPU反超GPU、ATL Saathi、HuggingFace报告以及Simate-beta，核心主题就一个——AI的算力霸权正在被瓦解，开源力量正在重新定义游戏规则。",
+      "start": 513.5,
+      "duration": 15.998,
+      "audios": {
+        "professional": "chunk_074_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 75,
+      "host": "A",
+      "text": "听众朋友们，咱们下期再见。",
+      "start": 529.908,
+      "duration": 2.525,
+      "audios": {
+        "lively": "chunk_075_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 76,
+      "host": "B",
+      "text": "下期见！",
+      "start": 532.873,
+      "duration": 1.393,
+      "audios": {
+        "professional": "chunk_076_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
