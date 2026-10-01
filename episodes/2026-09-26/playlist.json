@@ -1,0 +1,447 @@
+{
+  "episode_id": "2026-09-26",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年9月26日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.967,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 9.416,
+      "duration": 2.003,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天科技圈真的热闹，我早上起床刷新闻刷到手都酸了。",
+      "start": 11.916,
+      "duration": 6.008,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "是不是被Meta那条给刷屏了？",
+      "start": 18.377,
+      "duration": 2.351,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "你猜得太准了。 Muse这词我这两天看了不下二十遍，但还是想跟你掰扯掰扯，它到底为什么能这么出圈。",
+      "start": 21.133,
+      "duration": 8.969,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "这事儿我得跟你好好聊。你注意啊，过去这一两年，整个行业的叙事其实被OpenAI和Anthropic两家牢牢绑定了。每一次大版本发布，全世界盯着的就是这两家谁先扔出下一代旗舰。Meta虽然一直憋着劲，之前Llama系列开源做得不错，但总感觉还差一口气。这次Muse一出来，直接把\"前沿领跑者\"这顶帽子给抢了过来。",
+      "start": 30.535,
+      "duration": 26.379,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "我跟你说，最有意思的不是Muse本身有多强，而是它出现的时机。你想想，OpenAI和Anthropic最近一直在谈什么\"控制前沿节奏\"，说得好像AI这事儿要慢慢来、要谨慎。Meta这次等于直接掀桌子：别扯那些虚的，我手里有好牌，我先出。",
+      "start": 57.379,
+      "duration": 21.415,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "说白了，这就是工程文化和治理文化的正面碰撞。OpenAI内部现在讨论的是\"我们到底要不要把最强模型放出来\"，而Meta的思路是\"我先发了再说\"。这两种路线没有绝对的对错，但Meta这波操作确实把行业节奏给搅起来了。",
+      "start": 79.256,
+      "duration": 18.044,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "对，而且这事儿对咱们普通用户其实也是好事。以前大家都觉得AI就是OpenAI和Anthropic两家说了算，现在Meta一脚把门踹开，你会发现选择多了，竞争激烈了，最后受益的还是咱们这些用AI的人。价格也好、功能也好，最终都得卷起来。",
+      "start": 97.751,
+      "duration": 19.829,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "没错。Muse的出现会倒逼OpenAI和Anthropic加速下一代模型的发布节奏，这点几乎是板上钉钉的。",
+      "start": 118.08,
+      "duration": 8.403,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "说到加速，我今天还看到一个让我下巴差点掉下来的新闻。DeepSeek他们居然用PCIe级别的显卡，把推理吞吐拉高了将近7倍。你给我翻译翻译这是什么概念？",
+      "start": 126.921,
+      "duration": 15.17,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "你注意啊，这事儿得拆开看。DeepSeek用的那个6000D显卡，本身并不是什么顶级货，它走的是PCIe通道，不是那种带宽特别高的NVLink互联。但是DeepSeek通过内核补齐和通信重构，硬生生把这张卡的效率给榨干了。结果是什么呢？1.5台6000D的性能，就能对标1台B300。",
+      "start": 142.552,
+      "duration": 26.248,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "这也太夸张了吧？那岂不是说……",
+      "start": 169.245,
+      "duration": 4.267,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "是的，你想想B300一张多少钱，6000D一张多少钱。如果真的能用便宜的硬件撑起大规模推理负载，那整个AI基础设施的经济账就要重新算了。",
+      "start": 173.986,
+      "duration": 12.06,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "我懂你意思了。以前大家觉得AI推理必须靠最顶级的互联、最高的带宽，没有NVLink就玩不转。但DeepSeek这次证明了，软件层面的优化能把硬件的短板给补回来。",
+      "start": 186.473,
+      "duration": 13.821,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "对，而且这种技术路径一旦铺开，影响的可不止英伟达一家。AMD那边的PCIe卡、其他厂商的卡，都会跟着受益。NVLink这种专有互联技术的护城河，可能就没以前那么深了。",
+      "start": 200.758,
+      "duration": 14.866,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "说白了，这就是\"巧妇能为无米之炊\"的AI版本。",
+      "start": 216.041,
+      "duration": 4.963,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "这个类比可以，深得我心。",
+      "start": 221.44,
+      "duration": 4.18,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "对了还有几则快讯我也想跟你聊聊。第一个，Kimi你知道吧？就是那个之前一直扎根代码赛道的模型，他们现在All in浏览器插件Agent了。",
+      "start": 226.037,
+      "duration": 11.581,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "嗯，我看到了。这其实反映了整个Agent赛道的一个明显趋势：大家开始把AI的触角伸向日常浏览器场景。Kimi这次的思路是把网页操作封装成一个一个的\"Skill\"，用户想做什么，AI就调对应的Skill去执行。",
+      "start": 238.114,
+      "duration": 16.999,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "我跟你说，这个方向我特别看好。你想啊，咱们普通人每天打开电脑最多的就是浏览器，能在这里面用AI解决实际问题，比搞什么花里胡哨的生成更有意义。",
+      "start": 255.525,
+      "duration": 13.279,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "没错。Agent真正要落地，就得扎根在这种高频场景里。代码生成是垂直赛道，但浏览器是通用入口，Kimi这次转型算是踩对了节奏。",
+      "start": 269.283,
+      "duration": 12.408,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "第二个快讯挺让我感动的。DeepMind推出了一款手语转文字的模型，叫SL2T。",
+      "start": 282.123,
+      "duration": 7.053,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "这个真的是技术向善的典型代表。你想想，全球有非常多的听障朋友，他们日常交流主要靠手语，但不懂手语的人跟他们沟通就有障碍。现在DeepMind用大模型把这件事做了，让手语交流第一次获得了原生大模型级别的实时转译支持。",
+      "start": 289.644,
+      "duration": 18.61,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "对，而且我特意去看了下，DeepMind这个模型是端到端做的，不是那种把问题拆成好几步再拼起来的老方案。这意味着什么？意味着延迟低、准确率高，可以真正用在日常交流场景里。",
+      "start": 308.744,
+      "duration": 16.389,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "这种应用比单纯刷榜单有意义多了。AI最终的价值，还是要落到每一个具体的用户身上。",
+      "start": 325.61,
+      "duration": 7.314,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "说到落到具体用户，Google那边也有动静。Google Search上线了三款Gemini驱动的赛事备战功能，从训练计划到赛事信息，一站搞定。",
+      "start": 333.342,
+      "duration": 11.755,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "这个其实是Gemini持续渗透搜索消费场景的又一个例子。你注意啊，Google这两年一直想把搜索从\"给你一堆链接\"变成\"直接给你答案\"。现在加入赛事备战这种垂直场景，等于在搜索的主页里塞了一个AI教练。",
+      "start": 345.536,
+      "duration": 17.521,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "我觉得这个功能对业余爱好者特别有用。以前你想跑马拉松、想参加铁三，搜出来一堆广告和零碎信息，现在Gemini能帮你把训练计划、赛事报名、注意事项全整合好。",
+      "start": 363.469,
+      "duration": 14.778,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "说白了，搜索这个产品正在被Gemini重新定义。未来的搜索可能不再是\"找信息\"，而是\"完成任务\"。",
+      "start": 378.74,
+      "duration": 7.88,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "听完今天这一圈新闻，我最大的感受就是：AI竞争的主旋律真的变了。以前大家拼的是参数、拼的是跑分榜单，现在拼的是工程巧思和场景渗透。",
+      "start": 387.029,
+      "duration": 14.343,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "是的。从OpenAI和Anthropic讨论\"怎么控制节奏\"，到Meta用Muse一脚踢开门，再到DeepSeek用软件优化重新定义硬件叙事，整个行业的玩法都不一样了。",
+      "start": 401.859,
+      "duration": 13.255,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "嗯，那我们今天的节目就到这里。明天同一时间，咱们继续一起追踪AI圈的新鲜事。",
+      "start": 415.556,
+      "duration": 7.401,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "大家记得订阅、留言、转发，咱们下期见。",
+      "start": 423.417,
+      "duration": 2.917,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}

@@ -1,0 +1,577 @@
+{
+  "episode_id": "2026-09-20",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年9月20号周日。我是苏晴，坐在我旁边的还是那位大家熟悉的周航老师。",
+      "start": 1.0,
+      "duration": 11.233,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好啊，我是周航。难得周日还能跟大伙儿一块儿聊，苏晴你今天气色不错，是不是昨晚睡好了？",
+      "start": 12.682,
+      "duration": 6.705,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "睡什么睡，我昨晚熬到两点半就为了追一个开源项目的更新动态，你猜怎么着，那个仓库一夜之间涨了一千多颗星，简直离谱。",
+      "start": 19.884,
+      "duration": 11.32,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "一千多颗星？你说今天项目雷达里要讲的那个 fast-jev-compaction 吧？那个我等会儿跟你细聊，确实挺有意思。不过咱先把正事儿聊了，今天科技圈的重头戏其实在天气领域。",
+      "start": 31.657,
+      "duration": 12.558,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "对，DeepMind 这两天发布了他们的新版本 WeatherNext 3，我跟你说，这次的关键词不是\"更快\"也不是\"更准\"，而是一个特别学术的词——连续学习。你能想象吗，以前 AI 学气象数据，本质上是从地球上零零散散的气象站采集数据，相当于一个瞎子摸象的过程。",
+      "start": 44.62,
+      "duration": 22.833,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你这个比喻还挺到位的。你注意啊，WeatherNext 3 这次最大的突破就在于它不再依赖离散站点的采样，而是直接从全球连续尺度的真实数据里学习。这事儿听起来有点抽象，我给你翻译翻译——以前模型看到的是一堆散点数据，每个点之间它得靠插值去猜；现在它看的是连续的地球大气本身，气流的过渡、区域的关联性都能直接学到。",
+      "start": 67.886,
+      "duration": 28.077,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "真的假的？那这种改变对咱们普通人有啥实际影响？我平时就看个明天穿不穿秋裤的预报。",
+      "start": 96.428,
+      "duration": 6.835,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你还别说，这种底层能力的跃迁最终一定会传导到你的手机天气预报上。但更关键的是它在极端天气上的表现，气旋路径预测历来是气象学最难的问题之一，因为台风的转向、强度变化本身就是混沌系统，你怎么报都有偏差。",
+      "start": 103.725,
+      "duration": 19.959,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "那它怎么解决这个\"怎么报都不准\"的问题呢？总不能瞎猜吧。",
+      "start": 124.135,
+      "duration": 7.01,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "问题就在这儿，WeatherNext 3 引入了功能性生成网络（FGNs），这个网络的核心能力是生成概率集合。说白了就是，AI 不再给你一个单一的\"台风会登陆上海\"答案，而是给你一组可能路径，每条路径的发生概率都标得清清楚楚，气象部门拿到这组预测就可以做更科学的应急决策了。",
+      "start": 131.645,
+      "duration": 25.14,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "哦我懂了，相当于以前是告诉你\"明天有雨\"，现在变成\"明天有 60% 的概率下中雨，30% 的概率下小雨，10% 的概率放晴\"，对吧？",
+      "start": 157.223,
+      "duration": 13.584,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "你总结得相当到位，Suqing 同学。 这种把不确定性显式建模的能力，对防灾减灾的意义是巨大的。你想想，如果深圳气象局能提前知道\"台风有 70% 概率正面登陆深圳沿海\"，那疏散决策的精准度会高非常多。",
+      "start": 171.268,
+      "duration": 18.827,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "这也太关键了。 说到这个，DeepMind 这次还专门强调了 FGNs 在气旋预测上的精准刻画，他们说能高效生成多组预测，把路径不确定性建模得清清楚楚。这不就是给天气预报装上了一个概率引擎吗？",
+      "start": 190.54,
+      "duration": 17.695,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "可以这么理解。 其实 WeatherNext 3 这次真正改变的是\"什么是可预测的天气\"这个定义本身。当 AI 能从连续尺度学习的时候，理论上它的预测上限就被大幅拉高了，剩下的就是计算资源和数据量的问题了。",
+      "start": 208.709,
+      "duration": 15.649,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "这话我信。行，那咱们换个话题，说到 AI 这事儿，最近 OpenAI 搞了个挺值得玩味的东西，叫\"澳大利亚青少年安全蓝图\"，我刚看到标题还愣了一下，OpenAI 不是美国公司吗，怎么跟澳大利亚扯上关系了？",
+      "start": 224.785,
+      "duration": 18.392,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "这你就得了解背景了。 澳大利亚这几年在 AI 监管上属于激进派，尤其是青少年保护这块儿，立法层面走得相当靠前。OpenAI 这次发这个蓝图，某种程度上是主动迎合监管预期的产物，但它本身的设计思路其实是全球可复用的。",
+      "start": 243.641,
+      "duration": 19.306,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "我专门去翻了一下，这个蓝图把保护未成年人拆成了六个支柱，分别涉及政策、产品、监管合作、家长工具、教育和透明度。 说实话，我第一反应是——这种\"六大支柱\"的提法，怎么听着像政府工作报告呢？",
+      "start": 263.364,
+      "duration": 19.524,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "你吐槽得挺犀利。但其实这种结构化拆解是有意义的。 你注意啊，它的价值不在于口号，而在于行业头部公司第一次愿意把\"青少年安全\"当成一个需要被工程化治理的系统问题来对待，而不是发个声明表个态就完事了。",
+      "start": 283.324,
+      "duration": 20.569,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "你这么说我就理解了。以前大家都是出事儿了再道歉，现在是要在出事儿之前把流程都设计好，是这个意思吗？",
+      "start": 304.31,
+      "duration": 9.97,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "对，治理前移。 而且你要看到背后的商业逻辑。在监管收紧、公众信任下行的双重压力下，谁先把安全治理这套体系搭起来，谁就能在未来的市场竞争里占据道德高地。这种\"自我立规\"会成为 AI 公司新的护城河，或者说新的竞争维度。",
+      "start": 314.776,
+      "duration": 20.134,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "我跟你说，这个趋势其实跟整个科技行业的合规化是同步的。当年互联网公司也是从\"野蛮生长\"慢慢过渡到\"合规先行\"，AI 公司现在不过是在走同样的路而已，只是速度快得多。",
+      "start": 335.322,
+      "duration": 15.257,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "你这个观察特别准。问题是，AI 行业的迭代速度比传统互联网快了好几个量级，合规体系能不能跟得上，这是个真问题。说白了，光靠公司自律肯定不够，最终还得是立法层面落地才有效。",
+      "start": 351.058,
+      "duration": 16.302,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "这个我同意。对了，说到快讯，我今天还看到一条挺有意思的消息，业界居然有人喊出了\"留给人类阻止 AI 的时间不多了\"这种听起来像末日宣言的话。",
+      "start": 367.792,
+      "duration": 15.064,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "我也刷到了。说实话这话听着挺唬人的，但你仔细看上下文就会发现，喊这话的不是什么野生科学家，而是正经的行业大佬在呼吁全球协同治理。问题的核心不是\"要不要阻止 AI\"，而是\"用什么框架让它有序发展\"。这两件事性质完全不同。",
+      "start": 383.324,
+      "duration": 21.004,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "嗯，这个区分确实关键。还有一条你可能没注意，Baseten 正式入驻 Hugging Face 的推理供应商行列了，开发者现在可以在 HF Hub 上直接调用他们的推理服务。",
+      "start": 404.818,
+      "duration": 14.561,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "这个我看到了。说白了这就是 Hugging Face 在构建自己的\"推理基础设施生态\"。你想啊，模型托管在 HF，推理部署在 Baseten，中间还能接入各种优化工具，这种模块化思路对开发者来说特别友好，省得自己搭一套部署流水线。",
+      "start": 419.856,
+      "duration": 20.177,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "对，开发者最怕的就是从模型到上线中间那段\"死亡谷\"，现在 HF 这套打法基本把这条路径打通了。",
+      "start": 440.451,
+      "duration": 10.667,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "你总结得好。新闻聊完了，咱们接下来进入今天的项目雷达时间。今天要推荐的这个项目，我觉得值得所有玩 Claude Code 的朋友好好研究一下。",
+      "start": 451.557,
+      "duration": 10.057,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "这个项目叫 tamaratran/fast-jev-compaction，对吧？我跟你说，我昨晚熬到两点半就是在盯它的 Star 曲线。",
+      "start": 462.026,
+      "duration": 11.731,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "那你给我报个最新数据呗。",
+      "start": 474.25,
+      "duration": 1.916,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "仓库目前已经拿到 4202 颗星了，关键是较昨日新增了 1035 颗，这个增速在 Claude Code 插件圈子里算是相当炸——啊不是，相当亮眼。",
+      "start": 476.575,
+      "duration": 13.864,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "你刚才差点说\"非常\"了对吧，收住了。但我理解，这个数据确实亮眼。",
+      "start": 490.926,
+      "duration": 5.921,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "它本质上是一个 Claude Code 的插件，但思路跟传统的压缩摘要完全不同。它把\"压缩摘要\"替换成了\"Jev 决策\"机制，在一次快速请求内给每个工具调用和结果打分，过期或者没用的就直接丢掉或者截断，剩下的内容逐字保留，避免摘要带来的信息失真。",
+      "start": 497.289,
+      "duration": 22.92,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "你注意啊，这个设计很聪明。你想想 Claude Code 长会话里那些冗余的 tool call 结果，传统做法是让 LLM 再总结一遍，但总结必然有信息损失。这个项目反其道而行之——能留就留，不能留就明确告诉你为啥丢。",
+      "start": 520.669,
+      "duration": 17.739,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "对，而且它是 MIT 许可证加 TypeScript 实现，对 Claude Code 重度用户来说几乎没有接入成本。第一步怎么跑起来呢，我直接念命令：npm install fast-jev-compaction，然后 export TYPESAFE_API_KEY 等于你的 key，就可以了。",
+      "start": 538.879,
+      "duration": 21.744,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "调用方式也很直接，用 compactMessages(transcript, { preserveRecentMessages: 4 }) 就能拿到新的消息数组、决策记录和统计信息。还有个细节值得注意，当 reductionRatio(result) 小于 0.25 的时候就建议放弃压缩、改用摘要，这个阈值设计得挺合理的。",
+      "start": 561.035,
+      "duration": 21.894,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "那如果有人想 fork 之后做差异化，能从哪儿下手呢？",
+      "start": 583.374,
+      "duration": 4.354,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "路径至少有三条。第一是替换打分策略，项目里抽象出了一个 JevAsker 接口，你只需要实现一个 ask(state, questions) 方法，就能接入更便宜的本地小模型，或者改用 token 成本、相关性、时效性这些不同维度的评分标准。第二是利用它已经暴露的 collectToolCalls、fitState、batchCalls 这些 building block，扩展成按文件或者按会话阶段的自适应压缩策略。第三是增加可视化，在 result.decisions 上加一层 UI，让用户直观看到哪条 tool call 被丢掉、为啥被丢，把压缩过程变成一个可审计的过程。",
+      "start": 588.183,
+      "duration": 44.988,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "最后一个可视化思路我觉得特别有意思，等于把黑箱操作变成了白盒审计，对企业用户来说尤其有价值。",
+      "start": 633.611,
+      "duration": 9.665,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "没错。那今天的内容基本就这些。苏晴，你最后跟听众朋友们说两句？",
+      "start": 643.754,
+      "duration": 4.92,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "好，感谢大家的收听。无论你是开发者、创业者还是普通 AI 爱好者，希望今天的节目能给你带来一点新的思考。周航老师每次讲技术都能给我讲出故事感来，我自己也学到了不少。下期节目咱们继续聊，记得订阅、点赞、留言，咱们下期见。",
+      "start": 649.155,
+      "duration": 19.219,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "下期见，各位听众朋友周末愉快！",
+      "start": 668.8,
+      "duration": 2.264,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 671.534,
+      "duration": 7.793,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 679.788,
+      "duration": 1.219,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}

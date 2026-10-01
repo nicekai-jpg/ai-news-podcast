@@ -1,0 +1,499 @@
+{
+  "episode_id": "2026-09-28",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年9月28日，我是苏晴。",
+      "start": 1.0,
+      "duration": 8.49,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 9.939,
+      "duration": 1.698,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天有几个事儿真的让我有种\"科技圈变天\"的感觉，你知道今天GitHub上最火的那个项目吗？",
+      "start": 12.134,
+      "duration": 7.663,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你是说那个Colibrì吧？我早上刷到的时候都愣了一下。",
+      "start": 20.25,
+      "duration": 4.528,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "我跟你说，我第一眼看到标题以为是标题党——\"笔记本跑700B参数大模型\"，这不是吹牛吗？",
+      "start": 25.183,
+      "duration": 7.488,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "关键是人家还真做到了。你注意啊，这个项目核心思路是拿SSD当显存用。你想想，咱们平时玩游戏、做渲染才用显存，它居然把固态硬盘的IO带宽利用起来当大模型的\"内存\"，相当于给笔记本硬塞了一个超级大脑。",
+      "start": 33.104,
+      "duration": 17.957,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "等等，你这么一说我更迷糊了。SSD的速度比显存差远了吧？它怎么能跟上模型运算节奏？",
+      "start": 51.526,
+      "duration": 7.314,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "这就是它设计的精髓了。它不是简单粗暴地把权重全塞进去读，而是把模型切片、做异步预取，让数据流像流水线一样不断供给GPU。所以虽然单次读取慢，但平均下来整体吞吐并不差。说白了，硬件没变，是软件调度玩出了花。",
+      "start": 59.302,
+      "duration": 19.393,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "这也太……等于说算法工程师给硬件打了个补丁，让消费级笔记本也能干以前服务器才能干的活？",
+      "start": 79.146,
+      "duration": 10.318,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "对，而且你想想这意味着什么。以前咱们觉得跑大模型必须买H100、A100那种几万块的卡，普通玩家只能蹭云服务。现在倒好，你花个五六千买个游戏本，就能本地部署7000亿参数的GLM了。这事儿对隐私敏感的行业简直是福音——医生、律师、企业内部的敏感数据，根本不用上传到云端，笔记本自己就能处理。",
+      "start": 89.964,
+      "duration": 28.406,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "真的假的？我现在就想拿我的旧笔记本试试。",
+      "start": 118.808,
+      "duration": 4.136,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "哈，你别急，等开源生态再成熟一点。不过有一点我得提醒，这项目现在主要还是跑GLM这一类架构，不是所有模型都能无缝适配。但不管怎么说，AI普惠化这个临界点是真到了。",
+      "start": 123.405,
+      "duration": 14.3,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "行行行，先把这个激动人心的消息放放。另一个更让我起鸡皮疙瘩的，是DeepMind今天发的那个Gemini Robotics 2。",
+      "start": 138.15,
+      "duration": 10.057,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "你说的是\"全身智能\"那个吧。我看了官方演示视频，说实话，比之前波士顿动力那些机器人给我的冲击还大。",
+      "start": 148.681,
+      "duration": 8.403,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "为什么这么说？波士顿动力的机器人不是早就跑酷、后空翻了吗？",
+      "start": 157.511,
+      "duration": 5.529,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "你注意啊，跑酷那是预设动作编排，是\"表演\"。但Gemini Robotics 2不一样，它是从脚趾到指尖的全身协调控制——意味着机器人不再是一个独立的机械臂加一个会走路的底座，而是一个真正有\"身体感知\"的整体。比如它端一杯水，能根据杯子重量、液体晃动实时调整手指力度和身体平衡，这是过去做不到的。",
+      "start": 163.504,
+      "duration": 25.377,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "我理解了，等于说以前的机器人是\"局部聪明\"，现在的机器人开始\"整体聪明\"了。",
+      "start": 189.298,
+      "duration": 6.705,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "对，这个区别非常大。你想想，具身智能如果一直停留在机械臂时代，它就只能在工厂里抓抓零件、拧拧螺丝。但一旦有了全身协调能力，进入家庭的可能性就出现了——叠衣服、做家务、照顾老人，这些场景需要的恰恰是全身配合。",
+      "start": 196.439,
+      "duration": 18.566,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "而且它还提到多机协作。",
+      "start": 215.422,
+      "duration": 2.656,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "是的，这个我特别想展开讲一下。多个机器人一起干活，不是简单的分工，而是能\"商量\"——比如两个机器人一起搬桌子，一个感知到桌子的重心偏移，另一个能立刻调整施力方向。这种协同决策能力，是过去机器人完全不具备的。",
+      "start": 218.574,
+      "duration": 18.044,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "这事儿让我想起一个画面，以后咱们家里可能真不是养猫养狗了，是养机器人。",
+      "start": 237.03,
+      "duration": 7.14,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "哈，你别急着做决定。硬件成本降下来、可靠性验证通过，至少还得个三五年。",
+      "start": 244.649,
+      "duration": 6.531,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "行，咱先不展望那么远。说说今天的几个快讯吧，先讲讲让我印象最深的一个——谷歌TPU跑Kimi比英伟达GPU快57%。",
+      "start": 251.612,
+      "duration": 10.449,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "这个数字挺亮眼的，但得看怎么测的。它用的是DeepSeek的推理框架，专门针对长文本场景做了优化。说白了，就是\"专门跑长跑的尖子生碰上了针对性的训练方案\"。所以这个57%不是TPU在所有任务上都碾压GPU，而是说在某些特定场景下，TPU凭借架构优势，加上合适的软件，确实能跑出很夸张的性能。",
+      "start": 262.529,
+      "duration": 26.422,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "那对英伟达来说是坏消息吗？",
+      "start": 289.441,
+      "duration": 3.788,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "不能说坏消息，得说\"格局要变了\"。以前大家默认AI训练就是英伟达的天下，现在谷歌、亚马逊、Meta都在自研芯片，TPU这个案例说明专用芯片加专用框架的组合，在特定场景下能打出更强的组合拳。这对整个算力市场的议价权是有冲击的。",
+      "start": 293.706,
+      "duration": 18.349,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "再说一个，DeepMind庆祝游戏AI研究15年，从Atari一路做到EVE Online。",
+      "start": 312.473,
+      "duration": 7.663,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "这个我个人感情比较深。你想想，2013年DeepMind用DQN打雅达利游戏的时候，整个AI圈都震惊了——机器居然能自己学会打游戏。到今天15年，他们跟游戏工作室合作，已经不是在\"打游戏\"，而是在探索\"AI怎么改变游戏玩法本身\"。比如NPC会不会因为AI驱动而变得真正有灵魂？这事儿想想都兴奋。",
+      "start": 320.575,
+      "duration": 27.598,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "我就说嘛，AI玩游戏和AI\"在\"游戏里，是两回事。",
+      "start": 348.585,
+      "duration": 5.05,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "对，一个是工具，一个是居民。",
+      "start": 354.128,
+      "duration": 2.438,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "对了，还有一个得跟前面新闻串起来看的，Gemini Robotics ER 2——视频理解、任务编排、多机器人协作。",
+      "start": 356.975,
+      "duration": 9.796,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "这个思路很清晰。Gemini Robotics 2是\"身体\"层面的智能，ER 2就是\"大脑\"层面的智能。它让机器人能看懂视频指令，能把一个复杂任务自动拆分成步骤，再分发给不同的机器人去执行。本质上是给机器人装上了一个\"项目经理\"。",
+      "start": 367.258,
+      "duration": 19.698,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "我脑子里立刻浮现出一个画面——你对着一群机器人说\"去把仓库整理一下\"，然后它们自己讨论怎么分工、谁搬什么、走哪条路线。",
+      "start": 387.398,
+      "duration": 9.883,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "对，而且这一步已经在路上了。",
+      "start": 397.741,
+      "duration": 2.22,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "周航，今天聊下来我最大的感受就是，AI真的不再是被锁在机房里的\"大玩具\"了，它开始往咱们身边渗透。",
+      "start": 400.432,
+      "duration": 9.361,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "你总结得挺到位的。算力这堵墙被SSD方案打薄了，躯体这堵墙被Gemini Robotics 2捅穿了，剩下就是时间和成本的问题了。",
+      "start": 410.205,
+      "duration": 10.318,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "行，今天就聊到这儿，感谢大家收听，咱们明天见！",
+      "start": 420.968,
+      "duration": 4.484,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "明天见！",
+      "start": 425.907,
+      "duration": 0.784,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}

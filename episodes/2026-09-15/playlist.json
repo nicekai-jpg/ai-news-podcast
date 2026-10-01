@@ -1,0 +1,837 @@
+{
+  "episode_id": "2026-09-15",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年9月15日，我是苏晴。",
+      "start": 1.0,
+      "duration": 8.707,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 10.156,
+      "duration": 1.48,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，你今天早上刷新闻的时候有没有一种感觉，就是AI这玩意儿，现在已经开始从云端往咱们口袋和桌面上跑了？",
+      "start": 12.133,
+      "duration": 9.099,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你这开场有点意思。我跟你说，今天这几条新闻如果连着看，串起来其实就是一句话——AI Agent的安全边界和算力版图，正在被同时重新定义。",
+      "start": 21.685,
+      "duration": 12.8,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "对，这个就是咱们今天的金句。我注意到啊，这句话里藏了两个关键词，一个是\"脱离云端\"，一个是\"重新定义\"。",
+      "start": 34.89,
+      "duration": 9.186,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "说白了，AI不再只是躲在数据中心里的那个大家伙了，它开始走到你的手机里、PC里，甚至你桌上摆的那个小盒子里。算力、安全、使用方式，全都在被推倒重来。",
+      "start": 44.509,
+      "duration": 13.559,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "那咱先聊第一条，我觉得这个特别重要。DeepMind发了一份\"AI Control Roadmap\"，你看了吗？",
+      "start": 58.533,
+      "duration": 8.62,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "我看了，但说真的第一遍没太看懂。你给翻译翻译呗，啥意思？",
+      "start": 67.615,
+      "duration": 4.31,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "啊，我的理解是这样的——他们说，传统的安全护栏已经不够用了。",
+      "start": 72.376,
+      "duration": 5.616,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "等等，这个\"传统护栏\"是指啥？",
+      "start": 78.492,
+      "duration": 3.091,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "你想啊，以前咱们做AI安全，主要是设关键词、设禁区、设拒答规则对吧？模型一开口，先过一遍过滤器，不让说的直接挡回去。",
+      "start": 82.021,
+      "duration": 12.19,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "这个我理解，那为什么现在这套不够用了？",
+      "start": 94.672,
+      "duration": 4.136,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "因为Agent不一样了嘛。Agent现在能自己调工具、读写文件、发邮件、订机票，你让它\"自律\"？它自己都不知道自己哪一步违规了，传统的关键词挡不住它，因为它压根没在\"说话\"，它在\"做事\"。",
+      "start": 99.253,
+      "duration": 16.346,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "对，这就好比你养了只猫，你跟它说\"别上桌子\"，它记住了——但如果这只猫学会了开冰箱、开电视、开扫地机器人呢？你那套护栏还管用吗？",
+      "start": 116.073,
+      "duration": 9.491,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "哈，这个类比绝了。所以DeepMind提出的方案是——要从\"事后审计\"变成\"过程干预\"。",
+      "start": 125.991,
+      "duration": 8.795,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "你注意啊，这个思路的转变其实是质变。以前是等Agent干完活，你回头查日志、看它有没有搞事；现在是要在它执行过程中实时盯着，每一步决策都能被监控，甚至被叫停。",
+      "start": 135.25,
+      "duration": 13.69,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "这对企业落地来说真的是里程碑意义。你想，企业敢不敢让一个AI Agent去操作财务系统、去处理客户数据？以前真不敢，因为出事了你才发现；现在能实时拦截了，企业敢放手让它跑。",
+      "start": 149.357,
+      "duration": 14.953,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "没错，而且我跟你说，这份路线图还有一层意思是——安全这件事不能再是AI公司的\"独角戏\"了，得让企业IT、合规部门都参与进来一起设计监控规则。",
+      "start": 164.746,
+      "duration": 14.846,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "这跟我们普通用户有什么关系？",
+      "start": 180.009,
+      "duration": 2.22,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "关系大了。你以后用的每一个Agent，背后大概率都有这样一套安全机制在跑。你看不到它，但你的数据、你的钱、你的账号，全都靠它守着。说白了，Agent越能干，它的安全机制就越得跟上。",
+      "start": 182.725,
+      "duration": 13.472,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "那说完安全这条，我给你看个特别有意思的——Perplexity联合NVIDIA RTX，推出了一个Windows版的便携设备。",
+      "start": 196.609,
+      "duration": 9.361,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "啊，我看到新闻了。但我有个疑问，这个\"便携设备\"是啥概念？是个大号U盘吗？",
+      "start": 206.449,
+      "duration": 6.444,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "哈哈哈不是U盘，是一台本地跑大模型的小电脑。它能直接在PC上处理工作，还能把敏感数据留在本地，不上云。",
+      "start": 213.325,
+      "duration": 10.405,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "这个点挺关键。你注意啊，过去两三年大家都喊着\"上云上云\"，所有AI都跑在数据中心里。现在反过来，开始强调\"端侧优先\"了。",
+      "start": 224.198,
+      "duration": 10.057,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "为什么会有这个反转？",
+      "start": 234.745,
+      "duration": 1.785,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "问题是你把数据传上去，总归有点不放心嘛。医疗记录、法务文件、企业内部财务，这些都是命根子，传到别人服务器上你睡得着觉吗？",
+      "start": 237.007,
+      "duration": 10.797,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "这也太……",
+      "start": 248.222,
+      "duration": 1.219,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "而且还有一个延迟问题。Agent如果每做一步都要等云端响应，那和网络抖动的体验没差别。本地跑模型，反应快，还不卡。",
+      "start": 249.88,
+      "duration": 11.102,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "我理解，说白了就是云端有云端的好处，但有些事必须端侧自己做。",
+      "start": 261.394,
+      "duration": 7.053,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "对，NVIDIA这边RTX的算力这几年提升得很快，消费级显卡已经能在本地跑相当不错的模型了。Perplexity和它合作，本质上是在押注\"本地Agent\"这条路线。",
+      "start": 268.94,
+      "duration": 13.995,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "那这事儿对普通人的影响呢？咱们普通用户也得专门买这种设备吗？",
+      "start": 283.344,
+      "duration": 5.399,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "不一定直接买设备，但是\"本地优先\"这个趋势会渗透到你的下一台笔记本、下一台手机上。以后你买电脑，可能就要看它\"AI算力\"够不够了，就像现在看内存、看硬盘一样稀松平常。",
+      "start": 289.23,
+      "duration": 13.777,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "这倒是，从今年开始AI PC这个概念肯定会越来越热。",
+      "start": 303.449,
+      "duration": 4.92,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "接下来聊几条快讯吧，比较轻松，但都有料。",
+      "start": 308.829,
+      "duration": 3.439,
+      "audios": {
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "好，先说DevFest 2026，Google那个全球开发者社区活动，新一轮报名开启了。",
+      "start": 312.739,
+      "duration": 7.576,
+      "audios": {
+        "professional": "chunk_035_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "这个我之前参加过线下的，体验还挺有意思的，全世界各地的开发者聚在一起聊技术、做黑客松。如果你对Google那一套技术栈感兴趣，可以关注一下。",
+      "start": 320.727,
+      "duration": 12.365,
+      "audios": {
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "B",
+      "text": "第二条，Gemini和Pixel合作，给体育赛事做了个新玩法。具体什么体验我还没亲自试过，但大概意思是用Pixel手机结合Gemini的能力，看比赛的时候能有一些沉浸式的、互动的功能。",
+      "start": 333.537,
+      "duration": 14.256,
+      "audios": {
+        "professional": "chunk_037_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "这个我猜，要么是AI解说员，要么是AI战术分析。",
+      "start": 348.248,
+      "duration": 4.615,
+      "audios": {
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "都有可能，反正它能根据比赛实时生成内容，帮你看懂球。",
+      "start": 353.303,
+      "duration": 4.093,
+      "audios": {
+        "professional": "chunk_039_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "哈，这个功能对伪球迷挺友好的。",
+      "start": 357.874,
+      "duration": 3.483,
+      "audios": {
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "B",
+      "text": "第三条比较有意思——微软推出了一个叫Flint的东西，说是面向AI时代的数据可视化语言。",
+      "start": 361.838,
+      "duration": 7.924,
+      "audios": {
+        "professional": "chunk_041_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "等等，数据可视化还有专门的语言？不是用Python的matplotlib、或者JavaScript的D3就够了吗？",
+      "start": 370.188,
+      "duration": 9.317,
+      "audios": {
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "B",
+      "text": "你注意啊，Flint主打的是\"用很短的规约就能生成更有表现力的图表\"。意思是你不用写一堆代码，告诉它\"我要一张能体现趋势的图\"，它自己理解、自己画。",
+      "start": 379.975,
+      "duration": 12.732,
+      "audios": {
+        "professional": "chunk_043_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 44,
+      "host": "A",
+      "text": "这不就是把自然语言变成图表嘛。",
+      "start": 393.168,
+      "duration": 3.135,
+      "audios": {
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "B",
+      "text": "对，但它比\"说一句画一张\"更进一步——它有自己的一套语法和结构，是专门为AI生成图表设计的。我觉得这个方向挺有意思，等于微软在赌未来做图基本都是AI的活。",
+      "start": 396.759,
+      "duration": 13.342,
+      "audios": {
+        "professional": "chunk_045_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 46,
+      "host": "A",
+      "text": "嗯，这个咱们以后可以专门聊一期，今天先放这儿。",
+      "start": 410.567,
+      "duration": 4.136,
+      "audios": {
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "新闻聊完了，接下来进入今天的项目雷达时间。今天给大家推荐一个我觉得特别有想象力的开源项目。",
+      "start": 415.136,
+      "duration": 8.838,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "是哪个？",
+      "start": 424.381,
+      "duration": 0.697,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "仓库名叫ashemag/human-atlas。简单说，它是一个开源的3D解剖学浏览器，里面有2234个可以单独选择的BodyParts3D网格。",
+      "start": 425.548,
+      "duration": 14.125,
+      "audios": {
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "等等，2234个身体部件？这数字有点夸张啊。",
+      "start": 440.074,
+      "duration": 4.615,
+      "audios": {
+        "professional": "chunk_050_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "是啊，相当于把人体每一块骨头、每一条肌肉、每一个器官都拆成独立的3D模型了。 而且它支持系统分层、搜索，还有爆炸视图——就是你可以把整个身体\"炸开\"，一层一层看内部结构。",
+      "start": 445.1,
+      "duration": 15.736,
+      "audios": {
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "这个对医学生来说简直是神器。",
+      "start": 461.328,
+      "duration": 2.699,
+      "audios": {
+        "professional": "chunk_052_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "对，所以它为什么火呢？ 现在仓库已经有3434颗星了，而且只昨天一天就涨了91颗，热度很明显。",
+      "start": 464.478,
+      "duration": 10.449,
+      "audios": {
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "协议友好吗？",
+      "start": 475.417,
+      "duration": 1.219,
+      "audios": {
+        "professional": "chunk_054_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "MIT协议，而且是用TypeScript写的， 二次开发或者商用都没什么门槛。",
+      "start": 477.136,
+      "duration": 6.792,
+      "audios": {
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "那第一步怎么跑起来？",
+      "start": 484.413,
+      "duration": 1.698,
+      "audios": {
+        "professional": "chunk_056_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "你把仓库克隆到本地，然后按仓库里的安装和启动说明配置依赖、跑起来就行。 具体命令我没拿到逐字可引用的版本，所以大家以仓库的README为准。",
+      "start": 486.591,
+      "duration": 13.497,
+      "audios": {
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "懂了。 那如果我想fork一下做点差异化，你觉得加什么功能比较有意思？",
+      "start": 500.488,
+      "duration": 6.139,
+      "audios": {
+        "professional": "chunk_058_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "我自己的脑洞是，可以叠加一个AI助手面板——用户用自然语言说\"我想看心脏的内部结构\"，AI就帮你定位到对应的BodyParts3D网格。 还可以加一个一键导出当前视角为医学教学卡片的功能，AI自动配上文字说明。",
+      "start": 507.105,
+      "duration": 20.395,
+      "audios": {
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "B",
+      "text": "这样就形成了\"AI导览 + 解剖可视化\"的差异化体验。",
+      "start": 527.963,
+      "duration": 4.31,
+      "audios": {
+        "professional": "chunk_060_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 61,
+      "host": "A",
+      "text": "对，听众朋友如果有兴趣，可以去GitHub上搜ashemag/human-atlas，自己clone下来玩玩。",
+      "start": 532.715,
+      "duration": 8.141,
+      "audios": {
+        "lively": "chunk_061_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 62,
+      "host": "A",
+      "text": "好，那今天的节目差不多就到这里。",
+      "start": 541.287,
+      "duration": 2.569,
+      "audios": {
+        "lively": "chunk_062_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 63,
+      "host": "B",
+      "text": "感谢大家收听，咱们明天见。",
+      "start": 544.349,
+      "duration": 2.046,
+      "audios": {
+        "professional": "chunk_063_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 64,
+      "host": "A",
+      "text": "拜拜～[laughter",
+      "start": 546.836,
+      "duration": 2.873,
+      "audios": {
+        "lively": "chunk_064_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    }
+  ]
+}
