@@ -1,0 +1,629 @@
+{
+  "episode_id": "2026-10-04",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友们大家好，欢迎收听AI 每日先锋，今天是2026年10月4日。我是苏晴。",
+      "start": 1.0,
+      "duration": 6.574,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 8.023,
+      "duration": 1.872,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天看了一圈新闻，我有个特别强烈的感受：AI行业的竞争现在真是全方位展开了，从技术、人才到安全、算力、场景落地，每个维度都在打仗。",
+      "start": 10.392,
+      "duration": 12.539,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你这个总结挺到位的。以前大家觉得AI公司就是比谁模型跑分高，现在完全不是这回事儿了。",
+      "start": 23.384,
+      "duration": 6.618,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "对，比如DeepSeek最近就在搞一个大动作——他们开始大规模招人了，而且这次招的方向挺有意思。",
+      "start": 30.407,
+      "duration": 8.011,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "看到了，这次的招聘JD真的是……怎么说呢，我看了都以为自己在读技术论文。",
+      "start": 38.851,
+      "duration": 6.618,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "对对对，我也这么觉得！一般公司写招聘启事都是\"有责任心、有团队精神\"，人家直接上来就给你整底层架构的技术细节，看得人头疼又过瘾。",
+      "start": 45.934,
+      "duration": 13.584,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你注意啊，他们重点扩的是弹性计算团队。这个团队是干嘛的呢？说白了就是管算力的调度和分配，让大模型训练和推理的时候能把GPU用得最有效率，避免浪费。",
+      "start": 59.98,
+      "duration": 14.953,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "这跟我们普通听众有什么关系呢？",
+      "start": 75.384,
+      "duration": 3.135,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "关系可大了。你想啊，DeepSeek之前靠低成本模型把整个行业震了一下，对吧？大家都在讨论\"怎么才能把训练成本打下来\"。但模型再便宜，后面的基础设施跟不上，跑起来一样贵。",
+      "start": 79.019,
+      "duration": 15.519,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "哦我懂了，就是光有好的模型没用，得有一套能扛住大规模训练的底座。",
+      "start": 94.976,
+      "duration": 6.966,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "对，现在他们就是在补这块短板。而且你知道吗，资深工程师这次直接标成\"刚需\"，意味着他们要的是真正能动手解决工程难题的人，不是写写文档、做做PPT的那种。",
+      "start": 102.403,
+      "duration": 14.474,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "这事儿其实反映出一个趋势，中国的AI公司现在不光是卷模型本身了，得在算力工程化这条线上跟海外巨头正面掰手腕。",
+      "start": 117.322,
+      "duration": 10.449,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "是这么个意思。以前大家觉得，搞个开源模型出来就赢了，现在发现不是这样。自研基础设施才是头部玩家的入场券，没有这个能力根本撑不起长期竞争。",
+      "start": 128.245,
+      "duration": 12.365,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "说到人才争夺战，OpenAI那边最近可不太平。我跟你说，安全团队简直是\"地震\"了。",
+      "start": 141.037,
+      "duration": 7.358,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "我也看到了，安全负责人离职了，还一下开除了三个员工，说是泄密。这事儿挺严重的。",
+      "start": 148.859,
+      "duration": 7.576,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "你怎么看待这件事？我感觉OpenAI这两年一直在商业化狂奔，又是融资又是搞企业市场，但安全这块儿好像总是跟不上节奏。",
+      "start": 156.852,
+      "duration": 11.799,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "问题是，他们自己一直在讲超级智能的叙事嘛。Sam Altman天天说AGI要来了、超级智能要来了，但越是这种激进的叙事，外界对你内部安全机制的关注就越严苛。",
+      "start": 169.087,
+      "duration": 14.517,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "对啊，你天天跟大众讲\"我们要安全地开发AI\"，结果自己内部安全团队都管不住，这怎么让人信服？",
+      "start": 184.021,
+      "duration": 8.011,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "说白了，这就是一种撕裂。一方面要快速把产品推出去赚钱，另一方面安全治理需要时间和谨慎，这两件事天然就是冲突的。",
+      "start": 192.528,
+      "duration": 10.884,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "那你觉得这次动荡会不会影响整个行业对\"AI安全承诺\"的信任？",
+      "start": 203.824,
+      "duration": 5.573,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "肯定会啊。你注意啊，当一个标杆企业出现这种问题的时候，监管的态度会变得更谨慎，公众的预期也会下调。这对整个行业都不是好事。",
+      "start": 209.876,
+      "duration": 10.405,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "而且我听说被开除的那三个人，据说手上握有的信息还挺敏感的，这事儿挺让人浮想联翩的。",
+      "start": 220.713,
+      "duration": 7.706,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "这种细节咱也不好瞎猜，但可以肯定的是，OpenAI现在的内部治理已经到了必须动刀子的阶段。再不收拾，后面的麻烦会更大。",
+      "start": 228.887,
+      "duration": 10.101,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "对了，还有几件事儿挺值得聊的。谷歌最近给一个叫Genesis Mission的科学计划投了4000万美元的AI资源，这事儿你知道吗？",
+      "start": 239.478,
+      "duration": 9.491,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "知道，这个挺有意思的。AI for Science现在成了大厂的新战场，大家都在抢着用AI加速前沿科研。",
+      "start": 249.446,
+      "duration": 6.922,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "4000万美元虽然对谷歌来说不算啥，但投向科学发现这块儿，意义不一样。你想啊，AI不只是用来聊天、写文章、做PPT，它还能帮科学家发现新东西。",
+      "start": 256.786,
+      "duration": 12.931,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "是的，而且这类项目往往能产出一些意想不到的成果。比如材料科学、生命科学这些领域，AI的介入可能会让一些原本需要几十年的研究周期大幅缩短。",
+      "start": 270.156,
+      "duration": 12.931,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "这种事儿挺让我感动的，感觉科技公司终于不只是盯着广告收入了，开始有点\"科技向善\"的意思了。",
+      "start": 283.499,
+      "duration": 8.011,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "也不能完全这么说，AI for Science最终的落脚点还是产业落地和商业回报，只是周期更长、想象空间更大。但对人类整体来说，这种投入肯定是好事。",
+      "start": 292.003,
+      "duration": 12.166,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "还有个事儿，谷歌搜索的AI Mode现在可以做旅行规划和预订了，你知道吧？",
+      "start": 304.578,
+      "duration": 6.661,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "这个我用了，体验还挺丝滑的。AI搜索从单纯的\"回答问题\"升级到\"代办任务\"，直接切入旅游交易场景。",
+      "start": 311.726,
+      "duration": 9.97,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "对啊，以前你搜\"去日本玩一周怎么安排\"，AI给你列一堆攻略，你自己还得一个个去订。现在它可以直接帮你订机票、酒店、做行程表。",
+      "start": 322.138,
+      "duration": 11.537,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "这意味着什么？意味着谷歌从信息入口开始往交易入口渗透了。它不光是告诉你答案，它想完成整个交易闭环。",
+      "start": 334.135,
+      "duration": 9.186,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "这也太……这对那些OTA平台冲击挺大的吧？",
+      "start": 343.792,
+      "duration": 5.529,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "肯定的。携程、Booking这种公司，未来可能不再是用户规划旅行的第一站了。AI Mode直接在前端就把需求给截留了，留给OTA的可能只剩一些边缘场景。",
+      "start": 349.733,
+      "duration": 11.905,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "而且这个趋势一旦起来，不只是旅游，什么订餐、买票、购物估计都得被AI接管一大半。",
+      "start": 362.083,
+      "duration": 7.619,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "这就是所谓的Agent趋势的具体落地。AI不再只是工具，它开始变成你生活里的代办助手，慢慢取代你跟各种APP打交道的环节。",
+      "start": 370.157,
+      "duration": 10.797,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "最后一个，谷歌搜索上线了橄榄球赛事的专属AI功能。这个你怎么看？",
+      "start": 381.394,
+      "duration": 6.792,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "这个动作虽然小，但反映出一个趋势：AI Mode在持续渗透体育资讯这块儿。实时数据和生成式AI的结合，让搜索结果变得更动态、更个性化。",
+      "start": 388.664,
+      "duration": 11.929,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "我感觉对体育迷来说挺友好的。以后看比赛的时候，有啥数据想问直接问AI就行，不用自己去翻各种APP了。",
+      "start": 401.074,
+      "duration": 8.664,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "是的，而且这个功能的特点是实时性。比赛还在进行，你问AI当前比分、球员状态，它马上就能给你拉出最新的信息，比解说员还快。",
+      "start": 410.164,
+      "duration": 9.927,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "这种垂直化的AI功能，其实对体育媒体和数据分析公司也提出了新的挑战。",
+      "start": 420.561,
+      "duration": 7.01,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "是啊，传统的体育资讯平台要么被纳入AI生态，要么被边缘化，没有中间地带。这是所有垂直内容领域都要面对的问题。",
+      "start": 428.032,
+      "duration": 9.448,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "行，今天聊了不少，从DeepSeek的招聘到OpenAI的动荡，再到谷歌的几项新动作，AI行业的全景图越来越清晰了。",
+      "start": 437.936,
+      "duration": 9.491,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "是的，竞争已经从单一维度变成了多维博弈。下期咱们继续盯着这些变化，给大家掰开了揉碎了讲。",
+      "start": 447.893,
+      "duration": 8.098,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "那今天的节目就到这里啦。听众朋友们下期再见！",
+      "start": 456.424,
+      "duration": 5.747,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "下期再见，拜拜！",
+      "start": 462.578,
+      "duration": 1.35,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
