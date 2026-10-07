@@ -48,3 +48,6 @@ out/
 *.swo
 *~
 .coverage
+
+# Command Code tool state (auto-managed; must not be tracked)
+.commandcode/
