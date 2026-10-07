@@ -240,7 +240,7 @@ async def main() -> int:
     ap.add_argument("--force-refresh", action="store_true")
     args = ap.parse_args(sys.argv[1:])
 
-    root = Path(__file__).resolve().parents[3]
+    root = Path(__file__).resolve().parents[4]
     config_path = root / args.config
     cfg = load_config(config_path) if config_path.exists() else AppConfig()
 

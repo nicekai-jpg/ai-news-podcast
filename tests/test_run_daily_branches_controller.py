@@ -14,7 +14,7 @@ import ai_news_podcast.presentation.cli.podcast_daily_controller as m
 async def test_no_raw_items_returns_1(monkeypatch, tmp_path: Path) -> None:
     """If run_pipeline returns no stories, main() should return 1."""
 
-    fake_file = tmp_path / "src" / "ai_news_podcast" / "cli" / "run_daily.py"
+    fake_file = tmp_path / "src" / "ai_news_podcast" / "presentation" / "cli" / "run_daily.py"
     monkeypatch.setattr(m, "__file__", str(fake_file))
 
     # Create minimal config tree

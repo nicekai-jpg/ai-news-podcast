@@ -98,7 +98,9 @@ async def test_main_success(report_config: Path, monkeypatch) -> None:
     brief_path.write_text(json.dumps(FAKE_BRIEF, ensure_ascii=False), encoding="utf-8")
 
     monkeypatch.setattr(
-        report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py")
+        report_module,
+        "__file__",
+        str(root / "src" / "ai_news_podcast" / "presentation" / "cli" / "daily_report.py"),
     )
     monkeypatch.setattr(sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")])
 
@@ -125,7 +127,9 @@ async def test_main_fallback_when_llm_fails(report_config: Path, monkeypatch) ->
     brief_path.write_text(json.dumps(FAKE_BRIEF, ensure_ascii=False), encoding="utf-8")
 
     monkeypatch.setattr(
-        report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py")
+        report_module,
+        "__file__",
+        str(root / "src" / "ai_news_podcast" / "presentation" / "cli" / "daily_report.py"),
     )
     monkeypatch.setattr(sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")])
 
@@ -144,7 +148,9 @@ async def test_main_fallback_when_llm_fails(report_config: Path, monkeypatch) ->
 async def test_main_no_brief_returns_1(report_config: Path, monkeypatch) -> None:
     root = report_config
     monkeypatch.setattr(
-        report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py")
+        report_module,
+        "__file__",
+        str(root / "src" / "ai_news_podcast" / "presentation" / "cli" / "daily_report.py"),
     )
     monkeypatch.setattr(sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")])
 
@@ -163,7 +169,9 @@ async def test_main_no_stories_returns_1(report_config: Path, monkeypatch) -> No
     )
 
     monkeypatch.setattr(
-        report_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "daily_report.py")
+        report_module,
+        "__file__",
+        str(root / "src" / "ai_news_podcast" / "presentation" / "cli" / "daily_report.py"),
     )
     monkeypatch.setattr(sys, "argv", ["daily_report", "--outdir", str(root / "data" / "reports")])
 

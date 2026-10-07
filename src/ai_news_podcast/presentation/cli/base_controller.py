@@ -68,7 +68,7 @@ class BaseCommand(ABC):
         self.add_arguments(self.parser)
         args = self.parser.parse_args(argv)
 
-        root = Path(__file__).resolve().parents[3]
+        root = Path(__file__).resolve().parents[4]
         config_path = root / args.config
         cfg = load_config(config_path)
 
@@ -109,7 +109,7 @@ class AsyncCommand(BaseCommand):
         self.add_arguments(self.parser)
         args = self.parser.parse_args(argv)
 
-        root = Path(__file__).resolve().parents[3]
+        root = Path(__file__).resolve().parents[4]
         config_path = root / args.config
         cfg = load_config(config_path)
 

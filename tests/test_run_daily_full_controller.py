@@ -110,7 +110,9 @@ async def test_full_run_with_audio_and_publish(full_config: Path, monkeypatch) -
     """Run full pipeline including audio synthesis and site publishing."""
     root = full_config
     monkeypatch.setattr(
-        run_daily_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "run_daily.py")
+        run_daily_module,
+        "__file__",
+        str(root / "src" / "ai_news_podcast" / "presentation" / "cli" / "run_daily.py"),
     )
     monkeypatch.setattr(
         sys, "argv", ["run_daily", "--date", "2024-03-15", "--base-url", "https://test.example.com"]
@@ -192,7 +194,9 @@ async def test_transcript_cleaning(full_config: Path, monkeypatch) -> None:
     """Verify transcript cleaning removes mood tags and literal backslash-n."""
     root = full_config
     monkeypatch.setattr(
-        run_daily_module, "__file__", str(root / "src" / "ai_news_podcast" / "cli" / "run_daily.py")
+        run_daily_module,
+        "__file__",
+        str(root / "src" / "ai_news_podcast" / "presentation" / "cli" / "run_daily.py"),
     )
     monkeypatch.setattr(sys, "argv", ["run_daily", "--date", "2024-03-16", "--no-audio"])
 
