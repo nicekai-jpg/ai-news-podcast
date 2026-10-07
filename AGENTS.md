@@ -39,22 +39,25 @@ Stage CLIs (console scripts in pyproject):
 
 ## Architecture boundaries (enforced by `.importlinter`, check with `uv run lint-imports`)
 
-- Layer order: `cli` → `site_builder` → `pipeline` → `utils` / `prompts` / `text_utils`.
-  Higher layers may import lower ones, never the reverse.
-- `pipeline/runner.py:run_pipeline()` is the **only** gateway to Stage 1. Never call
-  `fetch_all()` / `process()` from upper layers.
-- All LLM calls go through `pipeline/llm_client.py:call_llm()` (OpenAI-compatible API,
-  tenacity retry). Backends are pluggable via `pipeline/llm_backends/` and
-  `pipeline/tts_backends/` registries.
-- Material selection strategies (`pipeline/strategies/`): `score_diversity` (podcast,
-  MMR-like diversity penalty) vs `pure_score` (daily report); both via
-  `pipeline/material.py:build_material_text()`.
-- `events/` is an in-process event bus; pipeline stages emit `StageStarted` /
+- Three-tier layout (renamed 2026-09-13, order enforced one-way):
+  `presentation/cli` + `presentation/site_builder` → `business/pipeline` +
+  `business/events` → `data/config` / `data.utils_dao` / `data.prompts_dao` /
+  `data.text_utils_dao`. Higher tiers may import lower ones, never the reverse.
+- `business/pipeline/runner_service.py:run_pipeline()` is the **only** gateway to Stage 1.
+  Never call `fetch_all()` / `process()` from upper tiers.
+- All LLM calls go through `business/pipeline/llm_client_service.py:call_llm()`
+  (OpenAI-compatible API, tenacity retry). Backends are pluggable via
+  `business/pipeline/llm_backends/` and `business/pipeline/tts_backends/` registries.
+- Material selection strategies (`business/pipeline/strategies/`): `score_diversity`
+  (podcast, MMR-like diversity penalty) vs `pure_score` (daily report); both via
+  `business/pipeline/material_service.py:build_material_text()`.
+- `business/events/` is an in-process event bus; pipeline stages emit `StageStarted` /
   `StageCompleted` / `StageFailed` — keep stages decoupled through it.
-- `src/ai_news_podcast/config/` holds the pydantic `AppConfig` and YAML loader.
+- `src/ai_news_podcast/data/config/` holds the pydantic `AppConfig` and YAML loader.
   All runtime knobs live in `config/config.yaml` (LLM, TTS, dedup/scoring thresholds,
   script style + banned words, audio params) and `config/sources.yaml` (~45 feeds).
-- `src/ai_news_podcast/site_builder/static/*` is packaged via hatchling `artifacts`.
+- `src/ai_news_podcast/presentation/site_builder/static/*` is packaged via hatchling
+  `artifacts`.
 
 ## Data flow and dates
 
@@ -97,7 +100,7 @@ Stage CLIs (console scripts in pyproject):
   `tts.cosyvoice.synth_variants` 支持列表(全体统一)或字典(按 host 指定,
   键接受 host_a/A/host_b/B),空=全部合成;当前为 host_a→lively(青春女声)、
   host_b→professional(专业男声)的组合。播放器对未合成变体逐级回退
-  (professional → 任一可用),html_gen 按 host 渲染音色按钮。发布主轨/默认
+  (professional → 任一可用),html_gen_view 按 host 渲染音色按钮。发布主轨/默认
   变体 = 每位主持人**配置列表的第一项**(不是 professional 优先;professional
   优先仅是"列表为空时的回退"),别按 professional-first 误改。
 - TTS requires a CosyVoice2-0.5B environment: `COSYVOICE_MODEL_DIR` plus
@@ -115,7 +118,7 @@ Stage CLIs (console scripts in pyproject):
   LLM and TTS. `tests/test_prune_gh_pages.py` additionally covers
   `scripts/prune_gh_pages.py` (loaded by path via importlib). No pytest ini section
   exists — defaults apply.
-- `prune_episodes` (cli/episode_utils.py) also sweeps "orphan" files for dates that
+- `prune_episodes` (presentation/cli/episode_utils_controller.py) also sweeps "orphan" files for dates that
   are not in episodes.json (e.g. a script committed but TTS failed). It only touches
   date-shaped names and never deletes dates newer than the newest indexed episode,
   so in-flight scripts survive.
@@ -144,7 +147,7 @@ Stage CLIs (console scripts in pyproject):
   successful prune auto-closes stale ones, mirroring the daily `notify` behavior).
 - **项目雷达必须是可失败环节**:`runner` 用 try/except 包裹 `build_radar`,失败只发
   `StageFailed` 事件、正片照常。LLM 禁止自报 stars/增速等数字、禁止改写安装命令——
-  全部由 `material.build_radar_text` 从结构化数据注入;日报雷达章节完全由代码生成。
+  全部由 `material_service.build_radar_text` 从结构化数据注入;日报雷达章节完全由代码生成。
   近 30 天已推荐过的仓库由 `_load_recent_picks` 排除,不要绕过。
   无 `GITHUB_TOKEN` 时走匿名限流(每日一次扫描足够),不要在雷达里加需要
   更高限流的调用。

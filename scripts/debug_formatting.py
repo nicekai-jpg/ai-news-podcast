@@ -1,7 +1,7 @@
 import re
 
 
-# Mocking the functions from scriptwriter.py to test them
+# Mocking the functions from scriptwriter_service.py to test them
 def _sanitize_for_tts(text: str) -> str:
     if not text:
         return ""

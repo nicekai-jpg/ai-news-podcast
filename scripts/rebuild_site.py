@@ -8,8 +8,8 @@ from pathlib import Path
 project_root = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(project_root / "src"))
 
-from ai_news_podcast.site_builder.html_gen import build_index_html
-from ai_news_podcast.utils import read_json, read_yaml
+from ai_news_podcast.data.utils_dao import read_json, read_yaml
+from ai_news_podcast.presentation.site_builder.html_gen_view import build_index_html
 
 
 def rebuild():

@@ -1,0 +1,142 @@
+"""Tests for ai_news_podcast.presentation.cli.podcast_daily_controller helpers."""
+
+from __future__ import annotations
+
+from datetime import UTC, datetime
+from pathlib import Path
+
+from ai_news_podcast.presentation.cli.episode_utils_controller import (
+    coerce_episode_list,
+    episode_id,
+    get_base_url,
+    prune_episodes,
+)
+
+
+class TestGetBaseUrl:
+    def test_cli_flag_wins(self, monkeypatch) -> None:
+        monkeypatch.delenv("PODCAST_BASE_URL", raising=False)
+        assert get_base_url({}, "https://cli.example.com") == "https://cli.example.com"
+
+    def test_env_var(self, monkeypatch) -> None:
+        monkeypatch.setenv("PODCAST_BASE_URL", "https://env.example.com")
+        assert get_base_url({}, None) == "https://env.example.com"
+
+    def test_config_value(self, monkeypatch) -> None:
+        monkeypatch.delenv("PODCAST_BASE_URL", raising=False)
+        cfg = {"podcast": {"base_url": "https://cfg.example.com"}}
+        assert get_base_url(cfg, None) == "https://cfg.example.com"
+
+    def test_github_pages_user_repo(self, monkeypatch) -> None:
+        monkeypatch.delenv("PODCAST_BASE_URL", raising=False)
+        monkeypatch.setenv("GITHUB_REPOSITORY_OWNER", "alice")
+        monkeypatch.setenv("GITHUB_REPOSITORY", "alice/ai-news-podcast")
+        assert get_base_url({}, None) == "https://alice.github.io/ai-news-podcast"
+
+    def test_github_pages_user_site(self, monkeypatch) -> None:
+        monkeypatch.delenv("PODCAST_BASE_URL", raising=False)
+        monkeypatch.setenv("GITHUB_REPOSITORY_OWNER", "alice")
+        monkeypatch.setenv("GITHUB_REPOSITORY", "alice/alice.github.io")
+        assert get_base_url({}, None) == "https://alice.github.io"
+
+    def test_fallback_localhost(self, monkeypatch) -> None:
+        monkeypatch.delenv("PODCAST_BASE_URL", raising=False)
+        monkeypatch.delenv("GITHUB_REPOSITORY", raising=False)
+        monkeypatch.delenv("GITHUB_REPOSITORY_OWNER", raising=False)
+        assert get_base_url({}, None) == "http://localhost"
+
+    def test_strips_trailing_slash(self, monkeypatch) -> None:
+        monkeypatch.setenv("PODCAST_BASE_URL", "https://example.com/")
+        assert get_base_url({}, None) == "https://example.com"
+
+
+class TestEpisodeId:
+    def test_format(self) -> None:
+        dt = datetime(2024, 3, 15, 10, 30, tzinfo=UTC)
+        assert episode_id(dt) == "2024-03-15"
+
+
+class TestCoerceEpisodeList:
+    def test_list_of_dicts(self) -> None:
+        assert coerce_episode_list([{"id": "1"}, {"id": "2"}]) == [{"id": "1"}, {"id": "2"}]
+
+    def test_filters_non_dicts(self) -> None:
+        assert coerce_episode_list([{"id": "1"}, "bad", 123, None]) == [{"id": "1"}]
+
+    def test_non_list_returns_empty(self) -> None:
+        assert coerce_episode_list(None) == []
+        assert coerce_episode_list("string") == []
+        assert coerce_episode_list({}) == []
+
+
+class TestPruneEpisodes:
+    def test_keeps_last_n(self, tmp_path: Path) -> None:
+        episodes = [
+            {"id": "2024-03-01", "published_at_iso": "2024-03-01T00:00:00+00:00"},
+            {"id": "2024-03-02", "published_at_iso": "2024-03-02T00:00:00+00:00"},
+            {"id": "2024-03-03", "published_at_iso": "2024-03-03T00:00:00+00:00"},
+        ]
+        result = prune_episodes(episodes, keep_last=2, episodes_dir=tmp_path)
+        assert len(result) == 2
+        assert result[0]["id"] == "2024-03-03"
+        assert result[1]["id"] == "2024-03-02"
+
+    def test_removes_old_files(self, tmp_path: Path) -> None:
+        episodes = [
+            {"id": "2024-03-01", "published_at_iso": "2024-03-01T00:00:00+00:00"},
+            {"id": "2024-03-02", "published_at_iso": "2024-03-02T00:00:00+00:00"},
+        ]
+        # Create files for the older episode
+        (tmp_path / "2024-03-01.mp3").write_text("mp3")
+        (tmp_path / "2024-03-01.html").write_text("html")
+        (tmp_path / "2024-03-01.txt").write_text("txt")
+
+        result = prune_episodes(episodes, keep_last=1, episodes_dir=tmp_path)
+
+        assert len(result) == 1
+        assert not (tmp_path / "2024-03-01.mp3").exists()
+        assert not (tmp_path / "2024-03-01.html").exists()
+        assert not (tmp_path / "2024-03-01.txt").exists()
+
+    def test_empty_list(self, tmp_path: Path) -> None:
+        assert prune_episodes([], keep_last=5, episodes_dir=tmp_path) == []
+
+    def test_sweeps_orphan_files(self, tmp_path: Path) -> None:
+        episodes = [{"id": "2024-03-02", "published_at_iso": "2024-03-02T00:00:00+00:00"}]
+        (tmp_path / "2024-02-20.txt").write_text("orphan script")
+        (tmp_path / "2024-02-20.html").write_text("orphan notes")
+        (tmp_path / "2024-02-20").mkdir()
+        (tmp_path / "2024-02-20" / "playlist.json").write_text("{}")
+        (tmp_path / "2024-03-02.txt").write_text("keep")
+        (tmp_path / "unrelated.txt").write_text("keep")
+        (tmp_path / "notes.md").write_text("keep")
+
+        prune_episodes(episodes, keep_last=5, episodes_dir=tmp_path)
+
+        assert not (tmp_path / "2024-02-20.txt").exists()
+        assert not (tmp_path / "2024-02-20.html").exists()
+        assert not (tmp_path / "2024-02-20").exists()
+        assert (tmp_path / "2024-03-02.txt").exists()
+        assert (tmp_path / "unrelated.txt").exists()
+        assert (tmp_path / "notes.md").exists()
+
+    def test_sweep_spares_in_flight_future_files(self, tmp_path: Path) -> None:
+        # 脚本已提交、剧集还没发布(索引里没有该日期)时,绝不能删。
+        episodes = [{"id": "2024-03-02", "published_at_iso": "2024-03-02T00:00:00+00:00"}]
+        (tmp_path / "2024-03-03.txt").write_text("in-flight script")
+        (tmp_path / "2024-03-01.txt").write_text("real orphan")
+
+        prune_episodes(episodes, keep_last=5, episodes_dir=tmp_path)
+
+        assert (tmp_path / "2024-03-03.txt").exists()
+        assert not (tmp_path / "2024-03-01.txt").exists()
+
+    def test_sweep_skipped_when_ids_not_dates(self, tmp_path: Path) -> None:
+        episodes = [{"id": "weird-id", "published_at_iso": "2024-03-02T00:00:00+00:00"}]
+        (tmp_path / "2024-03-01.txt").write_text("would-be orphan")
+        (tmp_path / "weird-id.txt").write_text("current")
+
+        prune_episodes(episodes, keep_last=5, episodes_dir=tmp_path)
+
+        assert (tmp_path / "2024-03-01.txt").exists()
+        assert (tmp_path / "weird-id.txt").exists()

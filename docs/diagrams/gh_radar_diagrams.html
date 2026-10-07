@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>项目雷达 · 架构与时序图</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+  body { font-family: -apple-system, "PingFang SC", sans-serif; margin: 24px auto; max-width: 1100px; padding: 0 16px; }
+  h1 { font-size: 20px; } h2 { font-size: 16px; margin-top: 40px; }
+  .mermaid { background: #fafafa; border: 1px solid #eee; border-radius: 8px; padding: 16px; }
+</style>
+</head>
+<body>
+<h1>项目雷达（gh_radar）· 双轨流水线</h1>
+<p>图 3：每日全流程（含失败分支）。图 1：每日流水线时序（新闻轨不变，项目轨独立、可失败）。图 2：build_radar 内部决策流。</p>
+
+<h2>图 3 · 每日全流程图（UML Activity，含失败分支）</h2>
+<pre class="mermaid">
+flowchart TD
+    CRON["cron 触发 21:43 UTC<br/>（= 上海 05:43）"] --> S1
+
+    subgraph STAGE1 ["Stage 1 · podcast-pipeline（新闻轨 + 项目轨）"]
+        S1["抓取约45个源 → 去重/聚类/五维打分"] --> RADAR["项目雷达 build_radar"]
+        RADAR -- "成功" --> B1["brief 含 radar：<br/>主推×1 + 备选×2"]
+        RADAR -- "失败：可失败不致命<br/>只记 StageFailed + 日志" --> B2["brief 不含 radar"]
+        B1 --> SAVE["brief + radar_D.json + snap_D.json<br/>提交 main（daily: brief D [skip ci]）"]
+        B2 --> SAVE
+    end
+
+    SAVE --> REP["Stage 3b · 日报（旁路）<br/>雷达章节由代码生成"]
+    REP -- "失败" --> ALERT["⚠️ 告警，但不阻塞发布"]
+    SAVE --> WR["Stage 3 · 写稿（editor → writer 两段 LLM）"]
+    WR -- "大纲含「## 项目雷达」" --> SC1["脚本含雷达栏目<br/>只讲主推，300-500字"]
+    WR -- "不含（雷达缺席或降级）" --> SC2["脚本只有新闻正片"]
+    SC1 --> TTS
+    SC2 --> TTS
+    TTS["Stage 4 · TTS<br/>苏晴=lively / 周航=professional 分轨合成"] --> PUB
+    TTS -- "失败" --> NOTIFY
+    PUB["Stage 5 · 发布<br/>站点/feed → gh-pages<br/>MIN_MP3_BYTES 截断守护"] --> NOTIFY
+    NOTIFY["notify · 健康检查（always）"] -- "全部成功" --> CLOSE["自动关闭历史失败 issue"]
+    NOTIFY -- "有失败" --> ISSUE["开/评论 issue<br/>自动重跑一次（retry=true）"]
+    ISSUE -. "重跑再次失败只告警" .-> DONE2["结束"]
+    CLOSE --> DONE["结束 · gh-pages 可收听"]
+    ALERT --> DONE
+</pre>
+
+<h2>图 1 · 每日流水线时序图（UML Sequence）</h2>
+<pre class="mermaid">
+sequenceDiagram
+    autonumber
+    participant CRON as GitHub Actions 定时<br/>cron 21:43 UTC
+    participant RUN as runner.run_pipeline
+    participant NEWS as 新闻轨<br/>fetch→去重→打分
+    participant R as 项目轨<br/>gh_radar.build_radar
+    participant GH as GitHub API
+    participant WR as podcastwriter<br/>editor→writer 两段 LLM
+    participant REP as 日报 report
+    participant PUB as TTS→publish→gh-pages
+
+    CRON->>RUN: podcast-pipeline --date D
+    RUN->>NEWS: 抓取约 45 个 RSS/Atom 源
+    NEWS->>NEWS: 去重 / 聚类 / 五维打分
+    NEWS-->>RUN: raw_items + stories
+
+    rect rgb(232, 244, 255)
+        note over R,GH: 项目轨：任何异常只记 StageFailed，正片照常
+        RUN->>R: build_radar(配置, D, 新闻标题)
+        R->>GH: search created 大于 D-30天 且 stars>=500
+        GH-->>R: 前 30 个候选仓库
+        R->>R: 硬过滤：合集/无描述/无许可证/停更出局
+        R->>R: 30 天排重：已推荐过的出局
+        R->>R: 写快照 snap_D.json（明日算增速的基线）
+        R->>GH: 前 12 名逐个拉 README
+        GH-->>R: 截取安装/Quickstart 小节原文
+        R->>R: 评分 0.5增速 + 0.3可上手 + 0.2交叉热度 + 0.1AI主题
+        R-->>RUN: 主推×1 + 备选×2，挂到 brief["radar"]
+    end
+
+    RUN->>WR: brief（可能含 radar）
+    WR->>WR: editor：新闻大纲 + 「## 项目雷达」（只讲主推）
+    WR->>WR: writer：对谈稿，栏目 300-500 字
+    RUN->>REP: 日报（雷达章节由代码生成，零幻觉）
+    RUN->>PUB: MP3 合成 → 站点/feed 发布
+</pre>
+
+<h2>图 2 · build_radar 决策流（UML Activity）</h2>
+<pre class="mermaid">
+flowchart TD
+    A["GitHub 搜索<br/>created:>D-30d, stars>=500, 取前30"] --> B{"硬过滤"}
+    B -- "合集/无描述/无许可证/21天未更新" --> X["出局"]
+    B -- 通过 --> C{"近30天已推荐过?"}
+    C -- 是 --> X
+    C -- 否 --> D["写快照 snap_D.json<br/>（先于一切，保住明日增速基线）"]
+    D --> E["前12名拉 README"]
+    E --> F["提取安装/Quickstart 原文摘录"]
+    F --> G["评分 0.5*增速 + 0.3*可上手 + 0.2*交叉热度 + 0.1*AI主题"]
+    G --> H["排序取前3"]
+    H --> I["第1名 = 主推（播客只讲它）"]
+    H --> J["第2、3名 = 备选（只进日报）"]
+    I --> K["radar_D.json + brief['radar']<br/>随每日 brief 提交到 main"]
+    J --> K
+    X -.-> D
+</pre>
+
+<h2>图 4 · 代码地图（图 3 的每个实体住在哪里）</h2>
+<pre class="mermaid">
+flowchart LR
+    subgraph WF ["daily.yml · CI 壳"]
+        YML["stage1 job：GITHUB_TOKEN<br/>commit: gh_radar/ + gh_snapshots/"]
+    end
+    subgraph CFG ["配置实体"]
+        Y["config/config.yaml<br/>gh_radar 块"] --- M["config/models.py<br/>GhRadarConfig :206"]
+    end
+    subgraph PIPE ["pipeline 层"]
+        R["runner.py<br/>run_pipeline 编排<br/>:190 Stage2b 挂载 try/except"]
+        F["fetcher.py / processor.py<br/>（去重 processor_dedup 等）<br/>新闻轨"]
+        G["gh_radar.py<br/>build_radar / _hard_filter<br/>score_project / _hands_on_excerpt"]
+        C["gh_client.py<br/>GhClient search+readme"]
+        MAT["material.py<br/>build_radar_text :71"]
+        W["podcastwriter.py<br/>generate_podcast<br/>:129 素材 / :137 editor / :148 has_radar"]
+        TTS["tts_engine.py<br/>+ cosyvoice_backend.py"]
+    end
+    subgraph PROM ["prompts.py"]
+        P1["EDITOR_RADAR_SECTION"]
+        P2["WRITER_RADAR_SECTION"]
+    end
+    subgraph CLIS ["cli 层入口"]
+        PP1["podcast_pipeline.py"]
+        RP["podcast_report.py<br/>build_radar_report_section :53（接线 :138）"]
+        PW["podcast_writer.py"]
+        PT["podcast_tts.py"]
+        PPU["podcast_publish.py"]
+    end
+    subgraph SB ["site_builder 层"]
+        H["html_gen.py / rss_gen.py"]
+    end
+    subgraph DATA ["数据实体 · data/"]
+        B[("briefs/brief_D.json<br/>含 radar 键")]
+        RD[("gh_radar/radar_D.json<br/>主推+备选")]
+        SN[("gh_snapshots/snap_D.json<br/>星数基线")]
+    end
+    YML --> PP1 --> R
+    R --> F
+    F --> R
+    R --> G
+    G --> C
+    G --> RD
+    G --> SN
+    G -- brief["radar"] --> B
+    M --> G
+    B --> RP
+    B --> PW
+    R -- radar 素材 --> MAT
+    MAT --> W
+    P1 --> W
+    P2 --> W
+    PW --> PT --> TTS
+    TTS --> H --> PPU
+</pre>
+
+<h2>图 5 · 分层数据流图（DFD：L0 顶层 → L1 一层 → L2 雷达爆炸）</h2>
+
+<h3>L0 · 顶层图（Context）：全系统 = 1 个加工，只看与外界的边界</h3>
+<pre class="mermaid">
+flowchart LR
+    E1["RSS/Atom 源"]
+    E2["GitHub API"]
+    E3["LLM API"]
+    E4["CosyVoice2 环境"]
+    E5["听众 / 播客客户端"]
+    P0("AI 每日先锋<br/>每日流水线")
+    E1 -- "原始资讯" --> P0
+    P0 -- "仓库/README 查询" --> E2
+    E2 -- "元数据+README" --> P0
+    P0 -- "prompt" --> E3
+    E3 -- "大纲/脚本/日报" --> P0
+    P0 -- "台词" --> E4
+    E4 -- "MP3" --> P0
+    P0 -- "播客 RSS：MP3+feed.xml" --> E5
+</pre>
+
+<h3>L1 · 一层图：7 个加工 + 8 个数据存储</h3>
+<pre class="mermaid">
+flowchart LR
+    E1["RSS/Atom 源"]
+    E2["GitHub API"]
+    E3["LLM API"]
+    E4["CosyVoice2"]
+    E5["听众"]
+
+    P1("1 抓取")
+    P2("2 加工<br/>去重聚类打分")
+    P2B("2b 项目雷达")
+    P3("3 写稿")
+    P3B("3b 日报")
+    P4("4 TTS")
+    P5("5 发布")
+
+    D1[("配置 sources+config")]
+    D2[("brief_D.json")]
+    D3[("radar_D.json")]
+    D4[("snap_D.json")]
+    D5[("脚本 D.txt / MP3")]
+    D6[("episodes.json")]
+    D7[("日报_D.md")]
+    D8[("gh-pages")]
+
+    E1 -- 原始资讯 --> P1
+    D1 -- 源清单 --> P1
+    P1 -- "RawItem" --> P2
+    P2 -- stories --> D2
+    P2 -- 入选标题 --> P2B
+    D1 -- 雷达参数 --> P2B
+    P2B -- 查询 --> E2
+    E2 -- 元数据+README --> P2B
+    P2B -- 快照(D) --> D4
+    D4 -. 昨日基线(次日) .-> P2B
+    P2B -- 主推+备选 --> D3
+    P2B -- radar 键 --> D2
+    D2 -- brief --> P3
+    D2 -- brief --> P3B
+    D1 -- 风格/禁词 --> P3
+    P3 -- prompt --> E3
+    E3 -- 大纲+脚本 --> P3
+    P3 -- 对谈脚本 --> D5
+    P3B -- prompt --> E3
+    P3B -- 章节 --> D7
+    D5 -- 台词 --> P4
+    P4 -- 合成 --> E4
+    E4 -- 音频 --> P4
+    P4 -- MP3+playlist --> D5
+    D5 -- 全部产物 --> P5
+    D6 -- keep_last --> P5
+    P5 -- 站点+feed --> D8
+    D8 -- RSS --> E5
+</pre>
+
+<h3>L2 · 二层图：只爆炸「2b 项目雷达」</h3>
+<pre class="mermaid">
+flowchart TD
+    IN["来自 L1：入选新闻标题 + 雷达参数"]
+    E2["GitHub API"]
+    S1("2b.1 搜索<br/>created 大于 D-30天, 星数大于等于500, 前30")
+    S2("2b.2 硬过滤<br/>合集/无描述/无许可证/停更")
+    S3("2b.3 排重<br/>读30天推荐历史")
+    S4("2b.4 快照差分<br/>算增速")
+    S5("2b.5 README 探针<br/>安装/Quickstart 摘录")
+    S6("2b.6 评分选主推<br/>0.5增速+0.3可上手+0.2交叉+0.1AI")
+    DS[("snap_D.json")]
+    DR[("radar_D.json")]
+    OUT["去 L1：brief 的 radar 键<br/>（主推×1 + 备选×2）"]
+
+    IN --> S1
+    S1 -- "查询" --> E2
+    E2 -- "30 候选" --> S2
+    S2 -- "可上手候选" --> S3
+    DR -. "近30天已推荐" .-> S3
+    S3 -- "新面孔" --> S4
+    S2 -- "全部候选" --> DS
+    DS -. "昨日星数" .-> S4
+    S4 -- "带增速候选" --> S5
+    E2 -- "README 原文" --> S5
+    S5 -- "带摘录候选" --> S6
+    S6 -- "当日快照落盘" --> DS
+    S6 -- "主推+备选 归档" --> DR
+    S6 --> OUT
+</pre>
+
+<h2>图 6 · 六层横带版（另一种"分层"思路：按架构层次收进一张图，数据只从上层流向下层）</h2>
+<pre class="mermaid">
+flowchart TB
+    subgraph B1 ["① 源层 · 外部输入"]
+        E1["RSS/Atom 源 ×45"]
+        D1[("config/sources.yaml<br/>config/config.yaml")]
+        E2["GitHub REST API"]
+    end
+
+    subgraph B2 ["② 采集层 · 拿原始数据"]
+        P1("Stage1 抓取+正文提取<br/>fetcher.py")
+        P3("Stage2b 雷达扫描<br/>gh_client.py")
+    end
+
+    subgraph B3 ["③ 加工层 · 变成可用素材"]
+        P2("Stage2 去重→聚类→五维打分<br/>processor*.py")
+        P3b("过滤→30天排重→评分→选主推<br/>gh_radar.py")
+    end
+
+    subgraph B4 ["④ 汇合层 · 当日数据存储"]
+        D2[("brief_D.json<br/>新闻 stories + radar 键")]
+        D3[("gh_radar/radar_D.json<br/>主推+备选")]
+        D4[("gh_snapshots/snap_D.json<br/>星数基线")]
+    end
+
+    subgraph B5 ["⑤ 生产层 · 文字内容"]
+        P4("Stage3 写稿 editor→writer<br/>podcastwriter.py")
+        D5[("episodes/D.txt<br/>对谈脚本(枢纽)")]
+        P5("Stage3b 日报<br/>podcast_report.py")
+        D7[("reports/daily_report_D.md")]
+        E3["LLM API"]
+    end
+
+    subgraph B6 ["⑥ 发布层 · 音频与分发"]
+        P6("Stage4 TTS 双音色<br/>tts_engine.py")
+        P7("Stage5 构建+部署<br/>site_builder")
+        D6[("episodes.json 索引")]
+        D8[("gh-pages<br/>站点+MP3+playlist")]
+        E4["CosyVoice2 本地环境"]
+    end
+
+    E1 -- "原始资讯" --> P1
+    E2 -- "仓库元数据+README" --> P3
+    P3 -- "search/readme 请求" --> E2
+    D1 -. "配置参数(贯穿注入各层,其余省略)" .-> P1
+
+    P1 -- "RawItem 列表" --> P2
+    P3 -- "候选仓库" --> P3b
+
+    P2 -- "stories" --> D2
+    P3b -- "主推+备选" --> D3
+    P3b -- "星数快照" --> D4
+    D4 -. "次日回环:差分算增速" .-> P3
+
+    D3 -- "挂载 radar 键" --> D2
+
+    D2 -- "brief" --> P4
+    D2 -- "brief" --> P5
+    E3 -- "双 Agent 调用" --> P4
+    E3 -- "日报文案" --> P5
+    P4 -- "对谈脚本" --> D5
+    P5 -- "雷达章节=代码直出" --> D7
+
+    D5 -- "台词分轨文本" --> P6
+    E4 -- "零样本音色克隆" --> P6
+    P6 -- "MP3+playlist" --> P7
+    D5 -- "文本/文稿页" --> P7
+    P7 --> D6
+    P7 -- "部署" --> D8
+
+    D8 -- "RSS 订阅/网页收听" --> E5["听众"]
+</pre>
+
+<script>mermaid.initialize({ startOnLoad: true, theme: "default" });</script>
+</body>
+</html>

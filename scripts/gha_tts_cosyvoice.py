@@ -14,8 +14,8 @@ from pathlib import Path
 def _bootstrap_imports():
     root = Path(__file__).resolve().parents[1]
     sys.path.insert(0, str(root / "src"))
-    from ai_news_podcast.pipeline.tts_engine import synthesize
-    from ai_news_podcast.utils import read_yaml
+    from ai_news_podcast.business.pipeline.tts_engine_service import synthesize
+    from ai_news_podcast.data.utils_dao import read_yaml
 
     return root, synthesize, read_yaml
 

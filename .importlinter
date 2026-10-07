@@ -9,12 +9,14 @@ name = Layered architecture
 type = layers
 
 layers =
-    cli
-    site_builder
-    pipeline
-    utils
-    prompts
-    text_utils
+    presentation.cli
+    presentation.site_builder
+    business.pipeline
+    business.events
+    data.config
+    data.utils_dao
+    data.prompts_dao
+    data.text_utils_dao
 
 containers =
     ai_news_podcast
@@ -25,18 +27,18 @@ name = Pipeline internal dependencies
 type = forbidden
 
 source_modules =
-    ai_news_podcast.pipeline.fetcher
-    ai_news_podcast.pipeline.processor
-    ai_news_podcast.pipeline.podcastwriter
-    ai_news_podcast.pipeline.tts_engine
-    ai_news_podcast.pipeline.dedup
-    ai_news_podcast.pipeline.llm_client
-    ai_news_podcast.pipeline.material
-    ai_news_podcast.pipeline.runner
+    ai_news_podcast.business.pipeline.fetcher_service
+    ai_news_podcast.business.pipeline.processor_service
+    ai_news_podcast.business.pipeline.podcast_writer_service
+    ai_news_podcast.business.pipeline.tts_engine_service
+    ai_news_podcast.business.pipeline.dedup_service
+    ai_news_podcast.business.pipeline.llm_client_service
+    ai_news_podcast.business.pipeline.material_service
+    ai_news_podcast.business.pipeline.runner_service
 
 forbidden_modules =
-    ai_news_podcast.cli
-    ai_news_podcast.site_builder
+    ai_news_podcast.presentation.cli
+    ai_news_podcast.presentation.site_builder
 
 [importlinter:contract:3]
 name = Utils should not depend on business logic
@@ -44,13 +46,13 @@ name = Utils should not depend on business logic
 type = forbidden
 
 source_modules =
-    ai_news_podcast.utils
-    ai_news_podcast.text_utils
+    ai_news_podcast.data.utils_dao
+    ai_news_podcast.data.text_utils_dao
 
 forbidden_modules =
-    ai_news_podcast.pipeline
-    ai_news_podcast.cli
-    ai_news_podcast.site_builder
+    ai_news_podcast.business.pipeline
+    ai_news_podcast.presentation.cli
+    ai_news_podcast.presentation.site_builder
 
 [importlinter:contract:4]
 name = CLI should not depend on site_builder internals
@@ -58,8 +60,8 @@ name = CLI should not depend on site_builder internals
 type = forbidden
 
 source_modules =
-    ai_news_podcast.cli.podcast_pipeline
-    ai_news_podcast.cli.podcast_report
+    ai_news_podcast.presentation.cli.podcast_pipeline_controller
+    ai_news_podcast.presentation.cli.podcast_report_controller
 
 forbidden_modules =
-    ai_news_podcast.site_builder
+    ai_news_podcast.presentation.site_builder

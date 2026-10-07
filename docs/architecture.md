@@ -4,7 +4,15 @@
 
 ## 系统工作流
 
-本项目被设计为一个线性执行的流水线（Pipeline），主要通过每日定时运行来工作。核心流程由 `src/ai_news_podcast/cli/podcast_daily.py` 调度。
+本项目被设计为一个线性执行的流水线（Pipeline），主要通过每日定时运行来工作。核心流程由 `src/ai_news_podcast/presentation/cli/podcast_daily_controller.py` 调度。
+
+### 三层代码结构
+
+`src/ai_news_podcast` 按三层架构组织（由 `.importlinter` 强制单向依赖，`presentation → business → data`）：
+
+- **表现层 `presentation/`**：`cli/`（命令入口）与 `site_builder/`（静态站点与 feed 渲染）。
+- **业务层 `business/`**：`pipeline/`（抓取/去重/评分/写稿/TTS 编排）与 `events/`（进程内事件总线）。
+- **数据层 `data/`**：`config/`（pydantic 配置模型 + YAML loader）、`utils_dao.py`、`prompts_dao.py`、`text_utils_dao.py`。
 
 ```mermaid
 graph TD
@@ -16,9 +24,9 @@ graph TD
     F --> G[GitHub Pages 部署发布]
 ```
 
-## 核心模块 (`src/ai_news_podcast/pipeline`)
+## 核心模块 (`src/ai_news_podcast/business/pipeline`)
 
-### 1. 抓取器 (`fetcher.py`)
+### 1. 抓取器 (`fetcher_service.py`)
 - **输入：** `config/sources.yaml`
 - **主要职责：**
   - 使用 `httpx` 异步读取 RSS 和 Atom 订阅源。
@@ -29,29 +37,29 @@ graph TD
 - **输入：** 抓取到的海量原始文章数据。
 - **主要职责：**
   - 根据 `config.yaml`（如 `selection.include_keywords` 参数）过滤掉旧新闻和不相关的主题。
-  - 使用 TF-IDF 和余弦相似度（基于 `scikit-learn`）对高度相似的重复文章进行去重（`processor_dedup.py`）。
-  - 使用 DBSCAN 密度聚类算法将相关新闻归为一类（`processor_cluster.py`）。
-  - 基于五维评分模型（影响力、新颖度、可解释性、相关性、权威度）进行混合评分（`processor_score.py`），选出当天的前 `N` 条最有价值的新闻报道。
+  - 使用 TF-IDF 和余弦相似度（基于 `scikit-learn`）对高度相似的重复文章进行去重（`processor_dedup_service.py`）。
+  - 使用 DBSCAN 密度聚类算法将相关新闻归为一类（`processor_cluster_service.py`）。
+  - 基于五维评分模型（影响力、新颖度、可解释性、相关性、权威度）进行混合评分（`processor_score_service.py`），选出当天的前 `N` 条最有价值的新闻报道。
 
-### 3. 文案创作者 (`podcastwriter.py`)
+### 3. 文案创作者 (`podcast_writer_service.py`)
 - **输入：** 评分最高的精选新闻。
 - **主要职责：**
   - 提取选定新闻的内容并构建复杂的大模型提示词 (Prompts)。
   - 调用外部大语言模型（如 OpenAI、Gemini）或本地部署的模型（如 Ollama），对新闻进行摘要，并撰写具有对话感的播客文稿。
   - 将生成的输出格式化为供语音引擎使用的结构化 JSON 或 Markdown。
 
-### 4. 语音合成引擎 (`tts_engine.py`)
+### 4. 语音合成引擎 (`tts_engine_service.py`)
 - **输入：** 播客的文本台本。
 - **主要职责：**
   - 使用 **CosyVoice 2** 进行零样本声音克隆合成。
   - 运用 `pydub` 工具将生成的语音与背景音乐 (`assets/bgm_placeholder.wav`) 进行混音。
   - 导出并压缩最终混合好的 MP3 音频文件。
 
-### 5. 网站与 RSS 生成器 (`site_builder/`)
+### 5. 网站与 RSS 生成器 (`presentation/site_builder/`)
 - **输入：** 生成的音频文件、文本台本和相关元数据。
 - **主要职责：**
-  - **`html_gen.py`**：为当天的播报生成静态的 HTML 展示页面。
-  - **`rss_gen.py`**：生成或更新符合 Apple Podcasts 等平台规范的 XML 订阅源 (`site/feed.xml`)。
+  - **`html_gen_view.py`**：为当天的播报生成静态的 HTML 展示页面。
+  - **`rss_gen_view.py`**：生成或更新符合 Apple Podcasts 等平台规范的 XML 订阅源 (`site/feed.xml`)。
 
 ## GitHub Actions 与 GitHub Pages 部署
 
@@ -135,7 +143,7 @@ gh-pages/
 └── pipeline_infographic.png
 ```
 
-## 配置层 (`config/`)
+## 配置层 (`data/config/`)
 
 项目的各类行为均由该目录下的文件控制：
 - **`config.yaml`**：核心配置文件。控制内容包括：

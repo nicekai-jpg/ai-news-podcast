@@ -25,12 +25,12 @@ dependencies = [
 ]
 
 [project.scripts]
-podcast-pipeline = "ai_news_podcast.cli.podcast_pipeline:entrypoint"
-podcast-writer   = "ai_news_podcast.cli.podcast_writer:entrypoint"
-podcast-tts      = "ai_news_podcast.cli.podcast_tts:entrypoint"
-podcast-daily    = "ai_news_podcast.cli.podcast_daily:entrypoint"
-podcast-publish  = "ai_news_podcast.cli.podcast_publish:entrypoint"
-podcast-report   = "ai_news_podcast.cli.podcast_report:entrypoint"
+podcast-pipeline = "ai_news_podcast.presentation.cli.podcast_pipeline_controller:entrypoint"
+podcast-writer   = "ai_news_podcast.presentation.cli.podcast_writer_controller:entrypoint"
+podcast-tts      = "ai_news_podcast.presentation.cli.podcast_tts_controller:entrypoint"
+podcast-daily    = "ai_news_podcast.presentation.cli.podcast_daily_controller:entrypoint"
+podcast-publish  = "ai_news_podcast.presentation.cli.podcast_publish_controller:entrypoint"
+podcast-report   = "ai_news_podcast.presentation.cli.podcast_report_controller:entrypoint"
 
 [project.optional-dependencies]
 # 语义去重增强（sentence-transformers 会连带安装 torch，体积大；默认不装，
@@ -49,7 +49,7 @@ dev = [
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ai_news_podcast"]
-artifacts = ["src/ai_news_podcast/site_builder/static/*"]
+artifacts = ["src/ai_news_podcast/presentation/site_builder/static/*"]
 
 [tool.ruff]
 target-version = "py311"

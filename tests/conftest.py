@@ -7,7 +7,7 @@ from unittest.mock import AsyncMock, MagicMock
 
 import pytest
 
-from ai_news_podcast.pipeline.fetcher import RawItem
+from ai_news_podcast.business.pipeline.fetcher_service import RawItem
 
 # ---------------------------------------------------------------------------
 # RawItem factory
