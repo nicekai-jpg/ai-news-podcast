@@ -7,6 +7,16 @@ import re
 from ai_news_podcast.pipeline.tts_types import DialogueChunk
 from ai_news_podcast.text_utils import clean_tts_text
 
+# 至少含一个可发音字符(汉字/字母/数字)才算有效内容;纯标点/符号/emoji 会被
+# CosyVoice 内嵌的 wetext 英文正则化 tokenize 成空列表并触发 AssertionError
+# (见 2026-09-30 TTS 事故),因此在切句阶段直接剔除。
+_RENDERABLE_RE = re.compile(r"[\w\u4e00-\u9fff]")
+
+
+def has_renderable_text(text: str) -> bool:
+    """文本是否含可发音内容,用于剔除纯标点/符号段。"""
+    return bool(_RENDERABLE_RE.search(text))
+
 
 def _filter_chunk_text(raw: str) -> str:
     """过滤掉 LLM 可能会附带在段落末尾的点评注释或项目符号（如 - Standard opening... 或 * 注：...）。"""
@@ -53,7 +63,7 @@ def split_text_into_sentences(text: str, max_chars: int = 80) -> list[str]:
     pattern = re.compile(r"([^，。！？；、,.!?;\s]+[，。！？；、,.!?;\s]*)")
     parts = pattern.findall(text)
     if not parts:
-        return [text] if text.strip() else []
+        return [text] if has_renderable_text(text) else []
 
     sentences = []
     current = ""
@@ -67,4 +77,4 @@ def split_text_into_sentences(text: str, max_chars: int = 80) -> list[str]:
     if current:
         sentences.append(current.strip())
 
-    return sentences
+    return [s for s in sentences if has_renderable_text(s)]
