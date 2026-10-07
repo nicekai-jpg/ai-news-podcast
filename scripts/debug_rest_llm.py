@@ -1,7 +1,8 @@
 import logging
 
-from ai_news_podcast.pipeline.scriptwriter import _call_llm
 from dotenv import load_dotenv
+
+from ai_news_podcast.pipeline.llm_client import call_llm as _call_llm
 
 # 设置日志
 logging.basicConfig(level=logging.INFO)
