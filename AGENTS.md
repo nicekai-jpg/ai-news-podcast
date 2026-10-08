@@ -5,7 +5,7 @@ Guidance for AI agents working in this repository.
 ## What this is
 
 AI Daily Pioneer (AI 每日先锋) — a fully automated daily AI-news podcast generator.
-A GitHub Actions pipeline runs daily (cron `43 21 * * *` UTC = 05:43 Asia/Shanghai):
+A GitHub Actions pipeline runs daily (cron `0 21 * * *` UTC = 05:00 Asia/Shanghai):
 fetch RSS/Atom feeds → dedup / DBSCAN-cluster / 5-dimension score → LLM writes a
 dual-host dialogue script (MiniMax-M3, two agents: editor outline → writer script) →
 CosyVoice 2 zero-shot voice cloning synthesizes MP3 → static player site + Apple

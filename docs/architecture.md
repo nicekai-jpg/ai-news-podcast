@@ -78,7 +78,7 @@ graph TD
 
 `.github/workflows/daily.yml` 仅在以下两种情况下触发，**不含 push 触发**：
 
-- **定时触发**：每天 21:43 UTC（北京时间 5:43 AM）
+- **定时触发**：每天 21:00 UTC（北京时间 5:00 AM）
 - **手动触发**：在 Actions 页面点击 "Run workflow"，或通过 `gh workflow run` 命令
 
 ### 完整运行流程
