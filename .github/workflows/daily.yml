@@ -2,7 +2,7 @@ name: Daily Podcast
 
 on:
   schedule:
-    - cron: "0 21 * * *"
+    - cron: "30 17 * * *"
   workflow_dispatch:
     inputs:
       date:

@@ -106,7 +106,7 @@ uv run ruff format src/ tests/ scripts/
 
 当前 workflow 仅支持两种触发方式（**不含 push 触发**）：
 
-- **定时触发**：每天 21:00 UTC（北京时间 5:00 AM）
+- **定时触发**：cron `30 17 * * *`（17:30 UTC / 北京 01:30）；GitHub 调度约延迟 3 小时，实际开跑≈北京时间 5:00 AM
 - **手动触发**：Actions 页面点击 "Run workflow"，或 `gh workflow run "Daily Podcast"`
 
 ### 手动触发与部署
