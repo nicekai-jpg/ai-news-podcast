@@ -1,0 +1,668 @@
+{
+  "episode_id": "2026-10-10",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友们大家好，欢迎收听AI 每日先锋，今天是2026年10月10日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.488,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 8.937,
+      "duration": 1.567,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，这两天你有没有一种感觉，大模型这事儿好像到了一个新的阶段。",
+      "start": 11.001,
+      "duration": 6.618,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你这开场挺突然的。说吧，又想聊啥。",
+      "start": 18.072,
+      "duration": 3.744,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "我跟你说，最近看新闻，明显感觉大家已经不卷参数了。今天这几条，没有一条是说我又训了个多少B的模型、比谁家跑分更高。",
+      "start": 22.221,
+      "duration": 10.014,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "嗯，这其实是个挺明显的变化。前两年大家比的是谁家模型更大、谁家榜单更高，现在反而开始比谁更稳、谁更安全、谁能落到具体场景里。",
+      "start": 32.668,
+      "duration": 12.887,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "对，所以今天这期咱们就聊聊这些进入深水区之后的事情。",
+      "start": 46.02,
+      "duration": 5.921,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "A",
+      "text": "先说头条，字节那边搞了个挺有意思的研究，说找到了 DeepSeek 时强时弱的原因。",
+      "start": 52.403,
+      "duration": 6.879,
+      "audios": {
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "B",
+      "text": "这个我看到了，挺有意思。他们发现 DeepSeek 回答对不对，跟 token 在序列里的位置有非常强的关系，字节把这个叫 token 站位。",
+      "start": 59.733,
+      "duration": 9.491,
+      "audios": {
+        "professional": "chunk_009_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 10,
+      "host": "A",
+      "text": "什么叫 token 站位啊？我一个文科生听到这个词脑子就嗡的一下。",
+      "start": 69.724,
+      "duration": 6.356,
+      "audios": {
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "B",
+      "text": "你这么想，大模型是一个字一个字往后吐的，对吧？同样一句话，比如让它算数学题，关键的那个公式 token 出现在第 50 个位置还是第 500 个位置，最后答案可能完全不一样。",
+      "start": 76.518,
+      "duration": 14.3,
+      "audios": {
+        "professional": "chunk_011_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 12,
+      "host": "A",
+      "text": "这也太玄学了吧。我以前一直以为这就是模型的本质属性。",
+      "start": 91.279,
+      "duration": 5.703,
+      "audios": {
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "B",
+      "text": "玄学的地方就在于，模型在训练的时候，注意力分布是有偏好的。某些位置上它特别在意，某些位置上它就划水。字节这次把这种偏好转成了一种可度量的工程指标。",
+      "start": 97.427,
+      "duration": 13.995,
+      "audios": {
+        "professional": "chunk_013_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "我理解这事儿厉害在哪儿——以前我们说大模型波动大，大家都觉得这是玄学、是概率的本质，现在字节直接告诉你，这不是玄学，是工程问题，能修。",
+      "start": 111.896,
+      "duration": 12.887,
+      "audios": {
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "对，所以意义不止是修 DeepSeek。是评测体系要跟着变。以前判断一个模型好不好，就看最终答对没答对；现在还得看它站在哪儿答对。同答对一题，站在容易的位置和站在难的位置，分数应该不一样。",
+      "start": 125.21,
+      "duration": 18.044,
+      "audios": {
+        "professional": "chunk_015_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 16,
+      "host": "A",
+      "text": "这么一说其实跟考试一个道理，学霸轻松做对和学渣蒙对，分数一样但含金量不同。",
+      "start": 143.718,
+      "duration": 9.056,
+      "audios": {
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "B",
+      "text": "哈，你这比喻还挺贴切。所以以后推理引擎、推理框架、芯片调度，全都得考虑这个站位效应，谁先把它工程化，谁就能拉开差距。",
+      "start": 153.191,
+      "duration": 10.449,
+      "audios": {
+        "professional": "chunk_017_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "头条二也很有意思。DeepMind 这次一口气发了三个 Gemini 型号：3.6 Flash、3.5 Flash-Lite 还有 3.5 Flash Cyber。",
+      "start": 164.076,
+      "duration": 11.6,
+      "audios": {
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "嗯，一次性发三个，定位完全不一样。3.6 Flash 是补主战力的，3.5 Flash-Lite 把单 token 价格往下死磕，Flash Cyber 则是专门给网络安全场景用的。",
+      "start": 176.093,
+      "duration": 13.516,
+      "audios": {
+        "professional": "chunk_019_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "我特别好奇 Flash Cyber 这个，按理说 Gemini 之前没有专门搞安全的型号啊。",
+      "start": 190.105,
+      "duration": 7.053,
+      "audios": {
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "这其实跟现在的市场变化有关。你注意啊，AI 现在大量被用在代码审计、漏洞扫描、威胁情报这些地方，传统安全厂商根本扛不住这么多文本分析。Google 直接用一个轻量、垂直的型号去切这块蛋糕。",
+      "start": 197.57,
+      "duration": 16.389,
+      "audios": {
+        "professional": "chunk_021_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "所以这种型号矩阵化其实是一种收割策略？",
+      "start": 214.438,
+      "duration": 5.224,
+      "audios": {
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "B",
+      "text": "说白了就是精细化运营。你不可能让一个模型同时又便宜又快又专业，必须按场景拆开。通用大模型时代正在让位，现在是分层、分场景的舰队战略。",
+      "start": 220.094,
+      "duration": 12.756,
+      "audios": {
+        "professional": "chunk_023_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "这种策略对开发者其实挺友好的，不同任务挑不同模型就行，不用给所有需求都买最贵的。",
+      "start": 233.318,
+      "duration": 7.358,
+      "audios": {
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "B",
+      "text": "但反过来，开发者也得开始懂模型选型了。你得知道啥场景用啥型号，不然成本根本控制不住。",
+      "start": 241.166,
+      "duration": 8.098,
+      "audios": {
+        "professional": "chunk_025_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "说到 Gemini，顺便说个 DeepMind 的新动作。他们推出了 Private AI Compute，引入了服务端记忆这个能力。",
+      "start": 249.741,
+      "duration": 9.099,
+      "audios": {
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "B",
+      "text": "嗯，这个挺关键的。以前的 AI 助手不是本地记忆就是完全无记忆，本地记忆受限于设备容量，无记忆又没上下文。现在他们搞了个折中方案——数据加密存在服务器上。",
+      "start": 259.258,
+      "duration": 14.082,
+      "audios": {
+        "professional": "chunk_027_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "听起来是不是有点矛盾？服务器上又说是加密的，那到底算不算隐私？",
+      "start": 273.779,
+      "duration": 5.878,
+      "audios": {
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "B",
+      "text": "这就是技术细节的地方。它用的应该是同态加密或者 TEE 可信执行环境，数据在使用的时候才解密，普通运维根本看不到原文。能平衡长上下文和隐私，这是个挺大的进步。",
+      "start": 280.069,
+      "duration": 14.3,
+      "audios": {
+        "professional": "chunk_029_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "那对我们普通人有啥影响啊？",
+      "start": 294.862,
+      "duration": 2.83,
+      "audios": {
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "影响就是以后你跟 AI 聊一两个月的事，它还能记住， 但 Google 自己的人看不到你具体聊了什么。这种模式如果普及，个人 AI 助手才真正有可能成为日常工具。",
+      "start": 298.101,
+      "duration": 11.6,
+      "audios": {
+        "professional": "chunk_031_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "接下来这条新闻有点戳人。 Google AI 用生成式视频，帮一对老夫妻还原了他们 70 年的爱情故事。",
+      "start": 310.188,
+      "duration": 8.795,
+      "audios": {
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "B",
+      "text": "嗯， 这个我刷到了，据说是逐帧重建经典影像，把那些模糊的老照片、老视频用 AI 给补出来。",
+      "start": 319.425,
+      "duration": 8.011,
+      "audios": {
+        "professional": "chunk_033_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "我跟你说， 这种新闻我每次看到都觉得很感动。技术不光是算力和参数，它也能帮人找回那些快消失的东西。",
+      "start": 327.896,
+      "duration": 8.751,
+      "audios": {
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "对，这条新闻背后其实代表了生成式视频在情感叙事和历史修复上的潜力。 以前这种修复要请专业团队人工上色、修复帧，现在 AI 几乎是自动化的。",
+      "start": 337.118,
+      "duration": 12.408,
+      "audios": {
+        "professional": "chunk_035_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "问题是， 会不会有人用这个能力去做假视频、做坏事？",
+      "start": 349.938,
+      "duration": 4.833,
+      "audios": {
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "B",
+      "text": "那肯定会。 这就是为啥现在水印、溯源这些技术那么重要。技术本身是中性的，关键看配套的监管和标识体系能不能跟上。",
+      "start": 355.216,
+      "duration": 9.491,
+      "audios": {
+        "professional": "chunk_037_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "还有一条跟 NVIDIA 有关的， 呼吁开放科学备战下一场大流行。",
+      "start": 365.162,
+      "duration": 6.226,
+      "audios": {
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "这事儿其实老黄在好几个场合都讲过了。 他说新冠疫苗之所以能这么快出来，是因为之前几十年全球科学家把基础研究成果开放共享了。 换句话说，平时那些看似没用的开放研究，是大流行的真正防线。",
+      "start": 371.828,
+      "duration": 18.566,
+      "audios": {
+        "professional": "chunk_039_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "我有点疑问啊， NVIDIA 不是卖芯片的吗？怎么突然去喊开放科学？",
+      "start": 390.872,
+      "duration": 5.355,
+      "audios": {
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "B",
+      "text": "因为 AI for Science 是他们下一波增长点。生物、材料、气候这些领域，全靠算力和开放数据堆出来。老黄这么喊，其实是在给整个生态拉共识——你得有开放数据，我才能卖得动算力。",
+      "start": 396.708,
+      "duration": 17.217,
+      "audios": {
+        "professional": "chunk_041_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "但这个出发点其实没毛病啊。不管动机是啥，开放科学本身对全人类都有好处。",
+      "start": 414.351,
+      "duration": 6.966,
+      "audios": {
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "B",
+      "text": "没错，问题在于执行。开放到什么程度？谁来维护？商业利益怎么平衡？这才是真问题。",
+      "start": 421.787,
+      "duration": 7.619,
+      "audios": {
+        "professional": "chunk_043_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 44,
+      "host": "A",
+      "text": "好啦，新闻聊完了，接下来进入今天的项目雷达时间。",
+      "start": 429.867,
+      "duration": 4.223,
+      "audios": {
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "B",
+      "text": "今天的项目我觉得挺有意思，叫 storytold/lightcraft。地址在 GitHub 上，是个 Apache-2.0 协议的仓库。",
+      "start": 434.546,
+      "duration": 8.838,
+      "audios": {
+        "professional": "chunk_045_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 46,
+      "host": "A",
+      "text": "它是干嘛的呀？",
+      "start": 443.85,
+      "duration": 1.393,
+      "audios": {
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "B",
+      "text": "说白了就是 Adobe Lightroom 的开源、干净室纯 Rust 重写版。简单讲就是有人受不了 Lightroom 的闭源和价格，决定用 Rust 从头撸一个能用的替代品。",
+      "start": 445.676,
+      "duration": 12.253,
+      "audios": {
+        "professional": "chunk_047_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 48,
+      "host": "A",
+      "text": "这个我感兴趣。我之前一直嫌 Lightroom 订阅太贵，但开源版本又没 Lightroom 那么顺手。",
+      "start": 458.336,
+      "duration": 6.835,
+      "audios": {
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "B",
+      "text": "这就是它为啥值得上手。仓库已经斩获 7575 颗星了，较昨日涨了 1938 颗，增速非常陡峭。语言用的是 Rust，天然契合高性能图像",
+      "start": 465.641,
+      "duration": 13.888,
+      "audios": {
+        "professional": "chunk_049_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 50,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 479.93,
+      "duration": 7.532,
+      "audios": {
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 487.873,
+      "duration": 1.654,
+      "audios": {
+        "professional": "chunk_051_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
