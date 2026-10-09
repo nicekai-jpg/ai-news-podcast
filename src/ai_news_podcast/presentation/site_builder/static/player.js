@@ -45,6 +45,13 @@
     let scriptTotalChars = 0;
     let scriptParagraphs = [];
 
+    var MODES = ['podcast', 'report', 'sources'];
+    var MODE_DESC = {
+      podcast: 'AI 播客电台 · 每日 AI 资讯的声音解说与剧本展示',
+      report: '科技日报 · 聚合每日 AI 领域深度前沿动态',
+      sources: '来源速览 · 按媒体归类各家热门新闻'
+    };
+
     // 人机共存滚动参数
     let userScrolling = false;
     let userScrollTimer = null;
@@ -54,36 +61,25 @@
       if (currentMode === mode) return;
       currentMode = mode;
 
-      document.getElementById('btn-mode-report').classList.toggle('active', mode === 'report');
-      document.getElementById('btn-mode-podcast').classList.toggle('active', mode === 'podcast');
+      MODES.forEach(function(m) {
+        var btn = document.getElementById('btn-mode-' + m);
+        if (btn) btn.classList.toggle('active', m === mode);
+      });
 
-      const heroDesc = document.getElementById('hero-desc');
+      document.body.classList.toggle('theme-report', mode === 'report');
+      document.body.classList.toggle('theme-sources', mode === 'sources');
+
+      var heroDesc = document.getElementById('hero-desc');
       if (heroDesc) {
-        if (mode === 'report') {
-          document.body.classList.add('theme-report');
-          heroDesc.textContent = '科技日报 · 聚合每日 AI 领域深度前沿动态';
-        } else {
-          document.body.classList.remove('theme-report');
-          heroDesc.textContent = 'AI 播客电台 · 每日 AI 资讯的声音解说与剧本展示';
-        }
-      } else {
-        if (mode === 'report') {
-          document.body.classList.add('theme-report');
-        } else {
-          document.body.classList.remove('theme-report');
-        }
+        heroDesc.textContent = MODE_DESC[mode] || MODE_DESC.podcast;
       }
 
-      const panelReport = document.getElementById('panel-report');
-      const panelPodcast = document.getElementById('panel-podcast');
-
-      if (mode === 'report') {
-        if (panelPodcast) panelPodcast.style.display = 'none';
-        if (panelReport) panelReport.style.display = 'flex';
-      } else {
-        if (panelReport) panelReport.style.display = 'none';
-        if (panelPodcast) panelPodcast.style.display = 'grid';
-      }
+      MODES.forEach(function(m) {
+        var panel = document.getElementById('panel-' + m);
+        if (panel) panel.style.display = (m === mode) ? 'flex' : 'none';
+      });
+      var activePanel = document.getElementById('panel-' + mode);
+      if (activePanel) activePanel.style.display = (mode === 'podcast') ? 'grid' : 'flex';
 
       buildDatePills();
     }
@@ -91,18 +87,18 @@
     function buildDatePills() {
       const podcastWrap = document.getElementById('date-pills');
       const reportWrap = document.getElementById('report-date-pills');
+      const sourcesWrap = document.getElementById('sources-date-pills');
       if (podcastWrap) podcastWrap.innerHTML = '';
       if (reportWrap) reportWrap.innerHTML = '';
+      if (sourcesWrap) sourcesWrap.innerHTML = '';
 
       const podcastDates = DATES.filter(function(d) { return EPISODES[d] && EPISODES[d].mp3; });
       const reportDates = DATES;
+      const sourcesDates = DATES;
 
-      const currentDates = (currentMode === 'podcast') ? podcastDates : reportDates;
-      const currentWrap = (currentMode === 'podcast') ? podcastWrap : reportWrap;
-
-      // Render Podcast Calendar Pills
-      if (podcastWrap) {
-        podcastDates.forEach(function(d, index) {
+      function renderPills(wrap, dates) {
+        if (!wrap) return;
+        dates.forEach(function(d, index) {
           var dt = new Date(d + 'T00:00:00');
           var pill = document.createElement('div');
           pill.className = 'date-pill';
@@ -112,34 +108,26 @@
           var day = String(dt.getDate()).padStart(2, '0');
           var wk = WEEKDAYS[dt.getDay()];
           var isLatest = (index === 0);
-          pill.innerHTML = 
+          pill.innerHTML =
             '<span class="pill-month">' + mon + '月</span>' +
             '<span class="pill-day">' + day + '</span>' +
             '<span class="pill-weekday">周' + wk + '</span>' +
             (isLatest ? '<span class="pill-latest-badge">最新</span>' : '');
-          podcastWrap.appendChild(pill);
+          wrap.appendChild(pill);
         });
       }
 
-      // Render Report Calendar Pills
-      if (reportWrap) {
-        reportDates.forEach(function(d, index) {
-          var dt = new Date(d + 'T00:00:00');
-          var pill = document.createElement('div');
-          pill.className = 'date-pill';
-          pill.setAttribute('data-date', d);
-          pill.onclick = function() { loadDate(d); };
-          var mon = String(dt.getMonth() + 1).padStart(2, '0');
-          var day = String(dt.getDate()).padStart(2, '0');
-          var wk = WEEKDAYS[dt.getDay()];
-          var isLatest = (index === 0);
-          pill.innerHTML = 
-            '<span class="pill-month">' + mon + '月</span>' +
-            '<span class="pill-day">' + day + '</span>' +
-            '<span class="pill-weekday">周' + wk + '</span>' +
-            (isLatest ? '<span class="pill-latest-badge">最新</span>' : '');
-          reportWrap.appendChild(pill);
-        });
+      renderPills(podcastWrap, podcastDates);
+      renderPills(reportWrap, reportDates);
+      renderPills(sourcesWrap, sourcesDates);
+
+      var currentDates;
+      if (currentMode === 'podcast') {
+        currentDates = podcastDates;
+      } else if (currentMode === 'report') {
+        currentDates = reportDates;
+      } else {
+        currentDates = sourcesDates;
       }
 
       if (currentDates.length > 0) {
@@ -149,7 +137,9 @@
           loadDate(currentDates[0]);
         }
       } else {
-        if (currentMode === 'report' || document.body.classList.contains('theme-variant-b')) {
+        if (currentMode === 'sources') {
+          setEmpty(document.getElementById('sources-board-body'), '🏢', '暂无来源数据');
+        } else if (currentMode === 'report' || document.body.classList.contains('theme-variant-b')) {
           setEmpty(document.getElementById('report-panel-body'), '📰', '该模式下暂无日期数据');
         } else {
           setEmpty(document.getElementById('cast-panel-body'), '🎙️', '暂无播客电台数据');
@@ -216,6 +206,22 @@
           if (verdictWrap) verdictWrap.style.display = 'none';
         }
       } 
+      if (currentMode === 'sources') {
+        var boardBadge = document.getElementById('sources-board-badge');
+        var boardBody = document.getElementById('sources-board-body');
+        var srcItems = parseSourceItems(ep.desc);
+        if (boardBadge) {
+          var pubCount = {};
+          srcItems.forEach(function(it) { pubCount[it.source] = (pubCount[it.source] || 0) + 1; });
+          boardBadge.textContent = srcItems.length + ' 条 · ' + Object.keys(pubCount).length + ' 家来源';
+        }
+        if (srcItems.length) {
+          renderSourcesBoard(boardBody, srcItems);
+        } else {
+          setEmpty(boardBody, '🏢', '该日期暂无来源数据');
+        }
+      }
+
       if (currentMode === 'podcast' || document.body.classList.contains('theme-variant-b')) {
         var dateTagA = document.getElementById('podcast-date-tag');
         var dateTagB = document.getElementById('podcast-date-tag-b');
@@ -516,6 +522,71 @@
 
       cardsHtml += '</div>';
       return cardsHtml;
+    }
+
+    function parseSourceItems(htmlStr) {
+      var out = [];
+      if (!htmlStr || !htmlStr.trim()) return out;
+      var temp = document.createElement('div');
+      temp.innerHTML = htmlStr;
+      var nodes = temp.querySelectorAll('li');
+      if (nodes.length === 0) nodes = temp.querySelectorAll('a');
+      nodes.forEach(function(node) {
+        var a = (node.tagName && node.tagName.toLowerCase() === 'a') ? node : node.querySelector('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '#';
+        var text = (a.textContent || href).replace(/^[🔴🟡🟢🔵✨🔥⚡🌸🍃🎩🍷🌊🌐💡🔗\s]+/, '').trim();
+        var sourceName = '';
+        var small = (node.querySelector ? node.querySelector('small') : null);
+        if (small) sourceName = small.textContent.replace(/[()（）]/g, '').trim();
+        if (!sourceName) {
+          try {
+            sourceName = new URL(href, window.location.href).hostname.replace(/^www\./, '');
+          } catch (e) {
+            sourceName = '其他来源';
+          }
+        }
+        out.push({ href: href, title: text, source: sourceName });
+      });
+      return out;
+    }
+
+    function renderSourcesBoard(container, items) {
+      if (!container) return;
+      if (!items || !items.length) { setEmpty(container, '🏢', '该日期暂无来源数据'); return; }
+
+      var groups = {};
+      var order = [];
+      items.forEach(function(it) {
+        var key = it.source || '其他来源';
+        if (!groups[key]) { groups[key] = []; order.push(key); }
+        groups[key].push(it);
+      });
+
+      order.sort(function(a, b) {
+        return groups[b].length - groups[a].length || a.localeCompare(b);
+      });
+
+      var html = '<div class="pub-board">';
+      order.forEach(function(src) {
+        var arts = groups[src];
+        html += '<section class="pub-group">' +
+          '<div class="pub-group-head">' +
+            '<span class="pub-group-name">' + esc(src) + '</span>' +
+            '<span class="pub-group-count">' + arts.length + ' 条</span>' +
+          '</div>' +
+          '<div class="pub-articles">';
+        arts.forEach(function(it, i) {
+          html += '<a class="pub-article" href="' + esc(it.href) + '" target="_blank" rel="noopener">' +
+            '<span class="pub-article-num">' + (i + 1) + '</span>' +
+            '<span class="pub-article-title">' + esc(it.title) + '</span>' +
+            '<span class="source-chip-arrow">↗</span>' +
+          '</a>';
+        });
+        html += '</div></section>';
+      });
+      html += '</div>';
+      container.innerHTML = html;
     }
 
     function setPlaybackMode(mode) {

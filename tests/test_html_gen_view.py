@@ -194,3 +194,34 @@ class TestVoiceLabels:
         labels = _voice_labels(None)
         assert set(labels["host_a"]) == {"professional", "lively"}
         assert set(labels["host_b"]) == {"professional", "lively"}
+
+
+class TestSourceDigestTab:
+    def _build(self, tmp_path) -> str:
+        site_dir = tmp_path / "site"
+        episodes = [
+            {
+                "id": "2026-06-04",
+                "title": "AI 新闻快报 | 2026-06-04",
+                "enclosure_url": "https://example.com/episodes/2026-06-04.mp3",
+            }
+        ]
+        build_index_html(site_dir, "Test Podcast", episodes, "https://example.com")
+        return (site_dir / "index.html").read_text(encoding="utf-8")
+
+    def test_tab_button_and_panel_present(self, tmp_path) -> None:
+        html = self._build(tmp_path)
+        assert "btn-mode-sources" in html
+        assert "switchMode('sources')" in html
+        assert 'id="panel-sources"' in html
+        assert "🏢 来源速览" in html
+
+    def test_board_containers_present(self, tmp_path) -> None:
+        html = self._build(tmp_path)
+        assert 'id="sources-date-pills"' in html
+        assert 'id="sources-board-body"' in html
+
+    def test_js_helpers_present(self, tmp_path) -> None:
+        html = self._build(tmp_path)
+        assert "parseSourceItems" in html
+        assert "renderSourcesBoard" in html
