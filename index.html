@@ -36,6 +36,24 @@
       --bg-gradient: radial-gradient(circle at 50% 0%, #051820 0%, #020a0d 85%);
     }
 
+    body.theme-sources {
+      --accent: #f59e0b;
+      --accent-gradient: linear-gradient(135deg, #f59e0b 0%, #ec4899 100%);
+      --accent-light: #fbbf24;
+      --glow-color: rgba(245, 158, 11, 0.16);
+      --bg-gradient: radial-gradient(circle at 50% 0%, #1c1206 0%, #0a0703 85%);
+    }
+    body.theme-sources .top-tab-btn.active {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    }
+    body.theme-sources .date-pill.active {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.28) 0%, rgba(217, 119, 6, 0.12) 100%);
+      border-color: #fbbf24;
+      box-shadow: 0 8px 24px -4px rgba(245, 158, 11, 0.45);
+    }
+    body.theme-sources .date-pill.active .pill-weekday { color: #fbbf24; }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; background: var(--bg); background-image: var(--bg-gradient); background-attachment: fixed; color: #f3f4f6; line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; transition: background 0.8s ease; }
 
@@ -462,6 +480,79 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+
+    /* 来源速览看板 (Sources Board — 每个来源一张卡片, 瀑布流) */
+    .sources-board-wrap {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(18, 14, 36, 0.9) 0%, rgba(10, 7, 22, 0.95) 100%);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .sources-board-body { margin-top: 16px; }
+    .pub-board { columns: 3 300px; column-gap: 16px; }
+    .pub-group {
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      page-break-inside: avoid;
+      margin: 0 0 16px;
+      --pub: var(--pub-color, #8b5cf6);
+      background: rgba(20, 15, 38, 0.96);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--pub) 15%, rgba(20, 15, 38, 0.96)) 0%, rgba(12, 9, 24, 0.97) 44%);
+      border: 1px solid color-mix(in srgb, var(--pub) 40%, rgba(255, 255, 255, 0.08));
+      border-top: 3px solid var(--pub);
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .pub-group:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 34px color-mix(in srgb, var(--pub) 40%, transparent);
+    }
+    .pub-group-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 16px;
+      background: rgba(255, 255, 255, 0.03);
+      background: color-mix(in srgb, var(--pub) 16%, transparent);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      border-bottom: 1px solid color-mix(in srgb, var(--pub) 28%, transparent);
+    }
+    .pub-group-name { font-size: 0.95rem; font-weight: 850; color: var(--pub); letter-spacing: 0.01em; }
+    .pub-group-count {
+      flex-shrink: 0;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: #0b0713;
+      background: var(--pub);
+      padding: 3px 10px;
+      border-radius: 99px;
+      white-space: nowrap;
+    }
+    .pub-articles { display: flex; flex-direction: column; gap: 2px; padding: 8px; }
+    .pub-article {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.18s ease;
+    }
+    .pub-article:hover { background: rgba(255, 255, 255, 0.07); }
+    .pub-article-num { flex-shrink: 0; font-size: 0.68rem; font-weight: 800; color: #64748b; min-width: 16px; }
+    .pub-article-title { flex: 1; font-size: 0.82rem; font-weight: 600; color: #cbd5e1; line-height: 1.45; }
+    .pub-article:hover .pub-article-title { color: #ffffff; }
+    .pub-article .source-chip-arrow { opacity: 0; transition: opacity 0.18s ease; }
+    .pub-article:hover .source-chip-arrow { opacity: 1; }
+
+    /* variant B 特殊布局下隐藏来源页(仅播客 + 日报双栏) */
+    body.theme-variant-b #panel-sources { display: none !important; }
 
     /* 本期金句 Banner */
     .episode-insight-banner {
@@ -1770,7 +1861,7 @@ body.theme-variant-b .header-brand { display: none; }
         <div><div class="brand-name">AI 每日先锋</div><div class="brand-tagline">AI 前沿动态</div></div>
       </a>
 
-      <!-- 顶级双 Tab 页切换选项卡 (Two Top Tab Pages Navigation) -->
+      <!-- 顶级三 Tab 页切换选项卡 (Three Top Tab Pages Navigation) -->
       <nav class="top-tab-nav">
         <button id="btn-mode-podcast" class="top-tab-btn active" onclick="switchMode('podcast')">
           <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
@@ -1779,6 +1870,10 @@ body.theme-variant-b .header-brand { display: none; }
         <button id="btn-mode-report" class="top-tab-btn" onclick="switchMode('report')">
           <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
           📰 科技日报
+        </button>
+        <button id="btn-mode-sources" class="top-tab-btn" onclick="switchMode('sources')">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+          🏢 来源速览
         </button>
       </nav>
 
@@ -2048,12 +2143,37 @@ body.theme-variant-b .header-brand { display: none; }
           </div>
         </div>
       </div>
+
+      <!-- ==================== Tab 页 3：🏢 来源速览页面 ==================== -->
+      <div class="tab-page-workspace" id="panel-sources" style="display: none;">
+        <!-- 来源速览专属出版历程日历 -->
+        <div class="date-selector-wrap">
+          <div class="studio-calendar-header">
+            <span>📅 来源出版日历 (Source Publishing Calendar)</span>
+            <span class="calendar-sub-badge">点击切换往期来源速览</span>
+          </div>
+          <div class="date-pills" id="sources-date-pills"></div>
+        </div>
+
+        <!-- 按媒体来源聚合的新闻看板 -->
+        <div class="sources-board-wrap">
+          <div class="card-internal-header">
+            <div class="header-left">
+              <span class="header-icon">🏢</span>
+              <span class="header-title">各家媒体来源速览</span>
+              <span class="header-sub">Grouped by Publisher</span>
+            </div>
+            <span class="header-badge" id="sources-board-badge">—</span>
+          </div>
+          <div class="sources-board-body" id="sources-board-body"></div>
+        </div>
+      </div>
     </div>
 
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-10-09 10:48:05</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-10-09 16:35:13</p></div>
   </div>
 
   <script>
@@ -2104,6 +2224,13 @@ body.theme-variant-b .header-brand { display: none; }
     let scriptTotalChars = 0;
     let scriptParagraphs = [];
 
+    var MODES = ['podcast', 'report', 'sources'];
+    var MODE_DESC = {
+      podcast: 'AI 播客电台 · 每日 AI 资讯的声音解说与剧本展示',
+      report: '科技日报 · 聚合每日 AI 领域深度前沿动态',
+      sources: '来源速览 · 按媒体归类各家热门新闻'
+    };
+
     // 人机共存滚动参数
     let userScrolling = false;
     let userScrollTimer = null;
@@ -2113,36 +2240,25 @@ body.theme-variant-b .header-brand { display: none; }
       if (currentMode === mode) return;
       currentMode = mode;
 
-      document.getElementById('btn-mode-report').classList.toggle('active', mode === 'report');
-      document.getElementById('btn-mode-podcast').classList.toggle('active', mode === 'podcast');
+      MODES.forEach(function(m) {
+        var btn = document.getElementById('btn-mode-' + m);
+        if (btn) btn.classList.toggle('active', m === mode);
+      });
 
-      const heroDesc = document.getElementById('hero-desc');
+      document.body.classList.toggle('theme-report', mode === 'report');
+      document.body.classList.toggle('theme-sources', mode === 'sources');
+
+      var heroDesc = document.getElementById('hero-desc');
       if (heroDesc) {
-        if (mode === 'report') {
-          document.body.classList.add('theme-report');
-          heroDesc.textContent = '科技日报 · 聚合每日 AI 领域深度前沿动态';
-        } else {
-          document.body.classList.remove('theme-report');
-          heroDesc.textContent = 'AI 播客电台 · 每日 AI 资讯的声音解说与剧本展示';
-        }
-      } else {
-        if (mode === 'report') {
-          document.body.classList.add('theme-report');
-        } else {
-          document.body.classList.remove('theme-report');
-        }
+        heroDesc.textContent = MODE_DESC[mode] || MODE_DESC.podcast;
       }
 
-      const panelReport = document.getElementById('panel-report');
-      const panelPodcast = document.getElementById('panel-podcast');
-
-      if (mode === 'report') {
-        if (panelPodcast) panelPodcast.style.display = 'none';
-        if (panelReport) panelReport.style.display = 'flex';
-      } else {
-        if (panelReport) panelReport.style.display = 'none';
-        if (panelPodcast) panelPodcast.style.display = 'grid';
-      }
+      MODES.forEach(function(m) {
+        var panel = document.getElementById('panel-' + m);
+        if (panel) panel.style.display = (m === mode) ? 'flex' : 'none';
+      });
+      var activePanel = document.getElementById('panel-' + mode);
+      if (activePanel) activePanel.style.display = (mode === 'podcast') ? 'grid' : 'flex';
 
       buildDatePills();
     }
@@ -2150,18 +2266,18 @@ body.theme-variant-b .header-brand { display: none; }
     function buildDatePills() {
       const podcastWrap = document.getElementById('date-pills');
       const reportWrap = document.getElementById('report-date-pills');
+      const sourcesWrap = document.getElementById('sources-date-pills');
       if (podcastWrap) podcastWrap.innerHTML = '';
       if (reportWrap) reportWrap.innerHTML = '';
+      if (sourcesWrap) sourcesWrap.innerHTML = '';
 
       const podcastDates = DATES.filter(function(d) { return EPISODES[d] && EPISODES[d].mp3; });
       const reportDates = DATES;
+      const sourcesDates = DATES;
 
-      const currentDates = (currentMode === 'podcast') ? podcastDates : reportDates;
-      const currentWrap = (currentMode === 'podcast') ? podcastWrap : reportWrap;
-
-      // Render Podcast Calendar Pills
-      if (podcastWrap) {
-        podcastDates.forEach(function(d, index) {
+      function renderPills(wrap, dates) {
+        if (!wrap) return;
+        dates.forEach(function(d, index) {
           var dt = new Date(d + 'T00:00:00');
           var pill = document.createElement('div');
           pill.className = 'date-pill';
@@ -2171,34 +2287,26 @@ body.theme-variant-b .header-brand { display: none; }
           var day = String(dt.getDate()).padStart(2, '0');
           var wk = WEEKDAYS[dt.getDay()];
           var isLatest = (index === 0);
-          pill.innerHTML = 
+          pill.innerHTML =
             '<span class="pill-month">' + mon + '月</span>' +
             '<span class="pill-day">' + day + '</span>' +
             '<span class="pill-weekday">周' + wk + '</span>' +
             (isLatest ? '<span class="pill-latest-badge">最新</span>' : '');
-          podcastWrap.appendChild(pill);
+          wrap.appendChild(pill);
         });
       }
 
-      // Render Report Calendar Pills
-      if (reportWrap) {
-        reportDates.forEach(function(d, index) {
-          var dt = new Date(d + 'T00:00:00');
-          var pill = document.createElement('div');
-          pill.className = 'date-pill';
-          pill.setAttribute('data-date', d);
-          pill.onclick = function() { loadDate(d); };
-          var mon = String(dt.getMonth() + 1).padStart(2, '0');
-          var day = String(dt.getDate()).padStart(2, '0');
-          var wk = WEEKDAYS[dt.getDay()];
-          var isLatest = (index === 0);
-          pill.innerHTML = 
-            '<span class="pill-month">' + mon + '月</span>' +
-            '<span class="pill-day">' + day + '</span>' +
-            '<span class="pill-weekday">周' + wk + '</span>' +
-            (isLatest ? '<span class="pill-latest-badge">最新</span>' : '');
-          reportWrap.appendChild(pill);
-        });
+      renderPills(podcastWrap, podcastDates);
+      renderPills(reportWrap, reportDates);
+      renderPills(sourcesWrap, sourcesDates);
+
+      var currentDates;
+      if (currentMode === 'podcast') {
+        currentDates = podcastDates;
+      } else if (currentMode === 'report') {
+        currentDates = reportDates;
+      } else {
+        currentDates = sourcesDates;
       }
 
       if (currentDates.length > 0) {
@@ -2208,7 +2316,9 @@ body.theme-variant-b .header-brand { display: none; }
           loadDate(currentDates[0]);
         }
       } else {
-        if (currentMode === 'report' || document.body.classList.contains('theme-variant-b')) {
+        if (currentMode === 'sources') {
+          setEmpty(document.getElementById('sources-board-body'), '🏢', '暂无来源数据');
+        } else if (currentMode === 'report' || document.body.classList.contains('theme-variant-b')) {
           setEmpty(document.getElementById('report-panel-body'), '📰', '该模式下暂无日期数据');
         } else {
           setEmpty(document.getElementById('cast-panel-body'), '🎙️', '暂无播客电台数据');
@@ -2275,6 +2385,22 @@ body.theme-variant-b .header-brand { display: none; }
           if (verdictWrap) verdictWrap.style.display = 'none';
         }
       } 
+      if (currentMode === 'sources') {
+        var boardBadge = document.getElementById('sources-board-badge');
+        var boardBody = document.getElementById('sources-board-body');
+        var srcItems = parseSourceItems(ep.desc);
+        if (boardBadge) {
+          var pubCount = {};
+          srcItems.forEach(function(it) { pubCount[it.source] = (pubCount[it.source] || 0) + 1; });
+          boardBadge.textContent = srcItems.length + ' 条 · ' + Object.keys(pubCount).length + ' 家来源';
+        }
+        if (srcItems.length) {
+          renderSourcesBoard(boardBody, srcItems);
+        } else {
+          setEmpty(boardBody, '🏢', '该日期暂无来源数据');
+        }
+      }
+
       if (currentMode === 'podcast' || document.body.classList.contains('theme-variant-b')) {
         var dateTagA = document.getElementById('podcast-date-tag');
         var dateTagB = document.getElementById('podcast-date-tag-b');
@@ -2575,6 +2701,89 @@ body.theme-variant-b .header-brand { display: none; }
 
       cardsHtml += '</div>';
       return cardsHtml;
+    }
+
+    function parseSourceItems(htmlStr) {
+      var out = [];
+      if (!htmlStr || !htmlStr.trim()) return out;
+      var temp = document.createElement('div');
+      temp.innerHTML = htmlStr;
+      var nodes = temp.querySelectorAll('li');
+      if (nodes.length === 0) nodes = temp.querySelectorAll('a');
+      nodes.forEach(function(node) {
+        var a = (node.tagName && node.tagName.toLowerCase() === 'a') ? node : node.querySelector('a');
+        if (!a) return;
+        var href = a.getAttribute('href') || '#';
+        var text = (a.textContent || href).replace(/^[🔴🟡🟢🔵✨🔥⚡🌸🍃🎩🍷🌊🌐💡🔗\s]+/, '').trim();
+        var sourceName = '';
+        var small = (node.querySelector ? node.querySelector('small') : null);
+        if (small) sourceName = small.textContent.replace(/[()（）]/g, '').trim();
+        if (!sourceName) {
+          try {
+            sourceName = new URL(href, window.location.href).hostname.replace(/^www\./, '');
+          } catch (e) {
+            sourceName = '其他来源';
+          }
+        }
+        out.push({ href: href, title: text, source: sourceName });
+      });
+      return out;
+    }
+
+    var PUB_COLORS = ['#f472b6', '#60a5fa', '#34d399', '#fbbf24', '#a78bfa', '#fb7185', '#22d3ee', '#f59e0b', '#4ade80', '#818cf8', '#e879f9', '#2dd4bf', '#f97316', '#38bdf8', '#c084fc', '#facc15'];
+
+    function pickSourceColors(names) {
+      var used = {};
+      var map = {};
+      names.forEach(function(name) {
+        var h = 0;
+        for (var i = 0; i < name.length; i++) { h = (h * 31 + name.charCodeAt(i)) >>> 0; }
+        var idx = h % PUB_COLORS.length;
+        var tries = 0;
+        while (used[idx] && tries < PUB_COLORS.length) { idx = (idx + 1) % PUB_COLORS.length; tries++; }
+        used[idx] = true;
+        map[name] = PUB_COLORS[idx];
+      });
+      return map;
+    }
+
+    function renderSourcesBoard(container, items) {
+      if (!container) return;
+      if (!items || !items.length) { setEmpty(container, '🏢', '该日期暂无来源数据'); return; }
+
+      var groups = {};
+      var order = [];
+      items.forEach(function(it) {
+        var key = it.source || '其他来源';
+        if (!groups[key]) { groups[key] = []; order.push(key); }
+        groups[key].push(it);
+      });
+
+      order.sort(function(a, b) {
+        return groups[b].length - groups[a].length || a.localeCompare(b);
+      });
+
+      var colors = pickSourceColors(order);
+      var html = '<div class="pub-board">';
+      order.forEach(function(src) {
+        var arts = groups[src];
+        html += '<section class="pub-group" style="--pub-color: ' + (colors[src] || '#8b5cf6') + '">' +
+          '<div class="pub-group-head">' +
+            '<span class="pub-group-name">' + esc(src) + '</span>' +
+            '<span class="pub-group-count">' + arts.length + ' 条</span>' +
+          '</div>' +
+          '<div class="pub-articles">';
+        arts.forEach(function(it, i) {
+          html += '<a class="pub-article" href="' + esc(it.href) + '" target="_blank" rel="noopener">' +
+            '<span class="pub-article-num">' + (i + 1) + '</span>' +
+            '<span class="pub-article-title">' + esc(it.title) + '</span>' +
+            '<span class="source-chip-arrow">↗</span>' +
+          '</a>';
+        });
+        html += '</div></section>';
+      });
+      html += '</div>';
+      container.innerHTML = html;
     }
 
     function setPlaybackMode(mode) {
