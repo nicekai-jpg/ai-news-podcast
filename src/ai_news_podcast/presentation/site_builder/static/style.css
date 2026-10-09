@@ -490,17 +490,19 @@
       -webkit-column-break-inside: avoid;
       page-break-inside: avoid;
       margin: 0 0 16px;
-      background: linear-gradient(135deg, rgba(26, 20, 48, 0.95) 0%, rgba(14, 10, 28, 0.95) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.09);
+      --pub: var(--pub-color, #8b5cf6);
+      background: rgba(20, 15, 38, 0.96);
+      background: linear-gradient(180deg, color-mix(in srgb, var(--pub) 15%, rgba(20, 15, 38, 0.96)) 0%, rgba(12, 9, 24, 0.97) 44%);
+      border: 1px solid color-mix(in srgb, var(--pub) 40%, rgba(255, 255, 255, 0.08));
+      border-top: 3px solid var(--pub);
       border-radius: var(--radius-md);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.32);
       overflow: hidden;
-      transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
     .pub-group:hover {
-      border-color: var(--border-hover);
       transform: translateY(-3px);
-      box-shadow: 0 14px 32px var(--glow-color);
+      box-shadow: 0 14px 34px color-mix(in srgb, var(--pub) 40%, transparent);
     }
     .pub-group-head {
       display: flex;
@@ -508,17 +510,18 @@
       justify-content: space-between;
       gap: 10px;
       padding: 12px 16px;
-      background: rgba(255, 255, 255, 0.035);
+      background: rgba(255, 255, 255, 0.03);
+      background: color-mix(in srgb, var(--pub) 16%, transparent);
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      border-bottom: 1px solid color-mix(in srgb, var(--pub) 28%, transparent);
     }
-    .pub-group-name { font-size: 0.95rem; font-weight: 850; color: #f8fafc; letter-spacing: 0.01em; }
+    .pub-group-name { font-size: 0.95rem; font-weight: 850; color: var(--pub); letter-spacing: 0.01em; }
     .pub-group-count {
       flex-shrink: 0;
       font-size: 0.7rem;
       font-weight: 800;
-      color: var(--accent-light);
-      background: var(--glow-color);
-      border: 1px solid var(--glow-color);
+      color: #0b0713;
+      background: var(--pub);
       padding: 3px 10px;
       border-radius: 99px;
       white-space: nowrap;

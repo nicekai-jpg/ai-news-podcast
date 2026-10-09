@@ -551,6 +551,23 @@
       return out;
     }
 
+    var PUB_COLORS = ['#f472b6', '#60a5fa', '#34d399', '#fbbf24', '#a78bfa', '#fb7185', '#22d3ee', '#f59e0b', '#4ade80', '#818cf8', '#e879f9', '#2dd4bf', '#f97316', '#38bdf8', '#c084fc', '#facc15'];
+
+    function pickSourceColors(names) {
+      var used = {};
+      var map = {};
+      names.forEach(function(name) {
+        var h = 0;
+        for (var i = 0; i < name.length; i++) { h = (h * 31 + name.charCodeAt(i)) >>> 0; }
+        var idx = h % PUB_COLORS.length;
+        var tries = 0;
+        while (used[idx] && tries < PUB_COLORS.length) { idx = (idx + 1) % PUB_COLORS.length; tries++; }
+        used[idx] = true;
+        map[name] = PUB_COLORS[idx];
+      });
+      return map;
+    }
+
     function renderSourcesBoard(container, items) {
       if (!container) return;
       if (!items || !items.length) { setEmpty(container, '🏢', '该日期暂无来源数据'); return; }
@@ -567,10 +584,11 @@
         return groups[b].length - groups[a].length || a.localeCompare(b);
       });
 
+      var colors = pickSourceColors(order);
       var html = '<div class="pub-board">';
       order.forEach(function(src) {
         var arts = groups[src];
-        html += '<section class="pub-group">' +
+        html += '<section class="pub-group" style="--pub-color: ' + (colors[src] || '#8b5cf6') + '">' +
           '<div class="pub-group-head">' +
             '<span class="pub-group-name">' + esc(src) + '</span>' +
             '<span class="pub-group-count">' + arts.length + ' 条</span>' +
