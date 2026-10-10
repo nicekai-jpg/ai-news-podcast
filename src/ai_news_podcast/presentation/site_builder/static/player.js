@@ -650,7 +650,7 @@
 
     var INTRO_LABELS = ['这是什么', '核心特性', '适合谁', '为什么值得关注', '上手门槛', '怎么用'];
 
-    function renderIntro(text) {
+    function parseIntro(text) {
       var sections = [];
       var cur = null;
       function ensure() {
@@ -671,6 +671,10 @@
         if (b) { ensure().items.push(b[1]); return; }
         ensure().text.push(line);
       });
+      return sections;
+    }
+
+    function renderSections(sections) {
       var out = '';
       sections.forEach(function(s) {
         out += '<div class="ri-sec">';
@@ -710,16 +714,31 @@
         '<div class="radar-pick-head"><span class="radar-pick-badge">🥇 今日主推</span></div>' +
         '<a class="radar-repo" href="' + repoUrl + '" target="_blank" rel="noopener">' +
           esc(pick.repo) + '<span class="radar-repo-arrow">↗</span></a>' +
-        '<div class="radar-chips">' + chips + '</div>' +
-        (pick.description ? '<p class="radar-desc">' + esc(pick.description) + '</p>' : '');
+        '<div class="radar-chips">' + chips + '</div>';
       var intro = String(pick.readme_intro || '').trim();
       var excerpt = String(pick.readme_excerpt || '')
         .replace(/```[a-zA-Z0-9]*\n?/g, '')
         .replace(/\n{2,}/g, '\n')
         .trim();
-      if (intro || excerpt) {
+
+      var sections = parseIntro(intro);
+      var lead = null;
+      var rest = [];
+      sections.forEach(function(s) { if (s.label === '这是什么') { lead = s; } else { rest.push(s); } });
+      if (!lead) { rest = sections; }
+
+      // 顶部中文亮点导语
+      var leadText = (lead ? lead.text.join('') : String(pick.description || '')).trim();
+      if (leadText) {
+        html += '<div class="radar-lead"><span class="radar-lead-icon">💡</span>' +
+          '<span class="radar-lead-text">' + esc(leadText) + '</span></div>';
+      }
+      if (lead && pick.description) {
+        html += '<div class="radar-ghdesc">GitHub 原文：' + esc(pick.description) + '</div>';
+      }
+      if (rest.length || excerpt) {
         html += '<div class="radar-intro"><div class="radar-intro-label">项目简介</div>' +
-          (intro ? renderIntro(intro) : '') +
+          renderSections(rest) +
           (excerpt
             ? '<div class="ri-sec"><div class="ri-label">怎么用 · 快速上手</div>' +
               '<pre class="ri-pre">' + esc(excerpt) + '</pre></div>'

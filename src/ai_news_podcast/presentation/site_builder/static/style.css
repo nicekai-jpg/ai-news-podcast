@@ -611,13 +611,27 @@
     .radar-chip-delta { color: #34d399; background: rgba(52, 211, 153, 0.1); border-color: rgba(52, 211, 153, 0.32); }
     .radar-delta { color: #34d399; font-weight: 800; margin-left: 6px; }
     .radar-desc { margin: 0 0 4px; font-size: 0.88rem; color: #94a3b8; line-height: 1.6; }
+    .radar-lead {
+      display: flex; gap: 10px; align-items: flex-start;
+      margin: 2px 0 10px; padding: 12px 14px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 15%, transparent), rgba(255, 255, 255, 0.02));
+      border-left: 3px solid var(--accent); border-radius: 8px;
+      font-size: 0.98rem; line-height: 1.75; color: #f1f5f9; font-weight: 600;
+    }
+    .radar-lead-icon { flex-shrink: 0; line-height: 1.75; }
+    .radar-ghdesc { margin: 0 0 4px; font-size: 0.78rem; color: #64748b; line-height: 1.5; }
     .radar-intro { margin-top: 14px; display: flex; flex-direction: column; gap: 12px; }
     .radar-intro-label {
-      font-size: 0.98rem; font-weight: 850; color: #fff; letter-spacing: 0.01em;
+      font-size: 1rem; font-weight: 850; color: #fff; letter-spacing: 0.01em;
       padding-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
-    .ri-sec { padding-left: 12px; border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent); }
-    .ri-label { font-size: 0.8rem; font-weight: 850; color: var(--accent-light); letter-spacing: 0.02em; margin-bottom: 5px; }
+    .ri-sec { margin: 0; }
+    .ri-label {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 0.9rem; font-weight: 850; color: var(--accent-light);
+      letter-spacing: 0.02em; margin-bottom: 6px;
+    }
+    .ri-label::before { content: ""; width: 4px; height: 14px; border-radius: 2px; background: var(--accent); flex-shrink: 0; }
     .ri-text { margin: 0; font-size: 0.92rem; line-height: 1.8; color: #e2e8f0; }
     .ri-list { list-style: none; margin: 0; padding: 0; }
     .ri-list li { position: relative; padding-left: 16px; margin: 6px 0; font-size: 0.9rem; line-height: 1.7; color: #cbd5e1; }
