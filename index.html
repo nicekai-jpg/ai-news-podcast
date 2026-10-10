@@ -621,10 +621,8 @@
     .radar-desc { margin: 0 0 4px; font-size: 0.88rem; color: #94a3b8; line-height: 1.6; }
     .radar-intro { margin-top: 14px; display: flex; flex-direction: column; gap: 12px; }
     .radar-intro-label {
-      align-self: flex-start;
-      padding: 2px 9px; border-radius: 99px;
-      font-size: 0.68rem; font-weight: 800; color: var(--accent-light);
-      background: var(--glow-color); border: 1px solid var(--glow-color);
+      font-size: 0.98rem; font-weight: 850; color: #fff; letter-spacing: 0.01em;
+      padding-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
     .ri-sec { padding-left: 12px; border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent); }
     .ri-label { font-size: 0.8rem; font-weight: 850; color: var(--accent-light); letter-spacing: 0.02em; margin-bottom: 5px; }
@@ -632,12 +630,10 @@
     .ri-list { list-style: none; margin: 0; padding: 0; }
     .ri-list li { position: relative; padding-left: 16px; margin: 6px 0; font-size: 0.9rem; line-height: 1.7; color: #cbd5e1; }
     .ri-list li::before { content: ""; position: absolute; left: 3px; top: 10px; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-light); }
-    .radar-readme { margin-top: 14px; }
-    .radar-readme summary { cursor: pointer; font-size: 0.82rem; font-weight: 800; color: var(--accent-light); }
-    .radar-readme pre {
-      margin-top: 10px; padding: 14px 16px; overflow-x: auto;
+    .ri-pre {
+      margin: 2px 0 0; padding: 12px 14px; max-height: 300px; overflow: auto;
       background: rgba(2, 6, 12, 0.7); border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px; font-size: 0.78rem; line-height: 1.55; color: #cbd5e1;
+      border-radius: 10px; font-size: 0.78rem; line-height: 1.6; color: #cbd5e1;
       white-space: pre-wrap; word-break: break-word;
     }
     .radar-others { margin-top: 16px; }
@@ -2305,7 +2301,7 @@ body.theme-variant-b .header-brand { display: none; }
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-10-10 17:28:59</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-10-10 17:43:24</p></div>
   </div>
 
   <script>
@@ -3024,17 +3020,18 @@ body.theme-variant-b .header-brand { display: none; }
         '<div class="radar-chips">' + chips + '</div>' +
         (pick.description ? '<p class="radar-desc">' + esc(pick.description) + '</p>' : '');
       var intro = String(pick.readme_intro || '').trim();
-      if (intro) {
-        html += '<div class="radar-intro"><div class="radar-intro-label">项目简介</div>' +
-          renderIntro(intro) + '</div>';
-      }
       var excerpt = String(pick.readme_excerpt || '')
         .replace(/```[a-zA-Z0-9]*\n?/g, '')
         .replace(/\n{2,}/g, '\n')
         .trim();
-      if (excerpt) {
-        html += '<details class="radar-readme" open><summary>怎么用 · 快速上手（README 原文）</summary>' +
-          '<pre>' + esc(excerpt) + '</pre></details>';
+      if (intro || excerpt) {
+        html += '<div class="radar-intro"><div class="radar-intro-label">项目简介</div>' +
+          (intro ? renderIntro(intro) : '') +
+          (excerpt
+            ? '<div class="ri-sec"><div class="ri-label">怎么用 · 快速上手</div>' +
+              '<pre class="ri-pre">' + esc(excerpt) + '</pre></div>'
+            : '') +
+          '</div>';
       }
       html += '</div>';
 
