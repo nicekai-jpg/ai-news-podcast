@@ -24,7 +24,7 @@
         "cross_heat": 0.0,
         "ai_bonus": 0.0
       },
-      "readme_intro": "Strata 是一个开源的本地推理引擎,可在配备 12GB 及以上显存的 NVIDIA 或 AMD 显卡的消费级电脑上运行 Qwen3.8-Flash-Next 大模型,支持 Windows/Linux 一键安装,并在本地提供兼容 OpenAI/Anthropic 的 API 与图像输入功能,所有数据均在本地处理。"
+      "readme_intro": "这是什么：Strata 是开源推理引擎，普通 PC 本地运行 1250 亿参数大模型。\n\n核心特性：\n- 兼容 NVIDIA RTX 20-50 系或 AMD Radeon 多款显卡，仅需 12GB 显存\n- 支持 Windows / Linux 一键安装，本地暴露兼容 OpenAI / Anthropic 的 API\n- 提供对话、代码生成与图像理解功能，所有数据全程在本地处理"
     }
   ],
   "meta": {

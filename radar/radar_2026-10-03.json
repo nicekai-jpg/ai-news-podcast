@@ -25,7 +25,7 @@
       "license": "MIT",
       "has_install_docs": false,
       "mentions": 0,
-      "readme_excerpt": "",
+      "readme_excerpt": "git clone https://github.com/KKKKhazix/AIHOT.git myhot\ncd myhot\nnode scripts/init-env.ts --llm-key <你的模型 API Key>\ndocker compose up -d --build",
       "score": 0.383,
       "score_parts": {
         "velocity": 0.206,
@@ -33,7 +33,7 @@
         "cross_heat": 0.0,
         "ai_bonus": 0.1
       },
-      "readme_intro": "AIHOT 是一个自动汇集多路信源、用大模型对信息进行筛选与评分、再把同一事件聚合并按热度排名、最终生成每日要闻日报的网站框架，使用者可以替换为自己的行业信源和精选标准，把它变成自己行业的热点站。"
+      "readme_intro": "这是什么：这是一个可自配置的热点资讯站框架，用 AI 自动采集、筛选、聚簇、写作并产出每日热点与日报。\n\n核心特性：\n- 六步流水线覆盖采集、判重、预筛、两次独立评分、中文写作与事件聚簇，每一步提示词都在 industry/prompts/，改标准无需改代码。\n- 热度按事件而非文章计算，48 小时内同一来源只计一次、24 小时减半，重复抓取不重复计入。\n- 内置日报、周报、月报自动成刊流程，附网站与后台，支持 Docker Compose 一键部署，配 18 个公开信源作示范。"
     }
   ],
   "meta": {
