@@ -697,15 +697,21 @@
       projects.forEach(function(p) { if (p.repo === pickRepo) pick = p; else others.push(p); });
       if (!pick) pick = projects[0];
 
+      var repoUrl = esc(pick.url || ('https://github.com/' + pick.repo));
+      var chips = '<span class="radar-chip radar-chip-star">⭐ ' +
+        (pick.stars == null ? '?' : pick.stars) + '</span>';
+      if (typeof pick.delta_stars === 'number') {
+        chips += '<span class="radar-chip radar-chip-delta">↑ +' + pick.delta_stars + ' / 天</span>';
+      }
+      if (pick.language) chips += '<span class="radar-chip">' + esc(pick.language) + '</span>';
+      if (pick.license) chips += '<span class="radar-chip">' + esc(pick.license) + '</span>';
+
       var html = '<div class="radar-pick">' +
-        '<div class="radar-pick-badge">🥇 今日主推</div>' +
-        '<a class="radar-repo" href="' + esc(pick.url || ('https://github.com/' + pick.repo)) +
-          '" target="_blank" rel="noopener">' + esc(pick.repo) + ' ↗</a>' +
-        '<div class="radar-meta">' + radarStars(pick) +
-          (pick.language ? ' · <span class="radar-tag">' + esc(pick.language) + '</span>' : '') +
-          (pick.license ? ' · License: ' + esc(pick.license) : '') +
-        '</div>' +
-        '<div class="radar-desc">' + esc(pick.description || '') + '</div>';
+        '<div class="radar-pick-head"><span class="radar-pick-badge">🥇 今日主推</span></div>' +
+        '<a class="radar-repo" href="' + repoUrl + '" target="_blank" rel="noopener">' +
+          esc(pick.repo) + '<span class="radar-repo-arrow">↗</span></a>' +
+        '<div class="radar-chips">' + chips + '</div>' +
+        (pick.description ? '<p class="radar-desc">' + esc(pick.description) + '</p>' : '');
       var intro = String(pick.readme_intro || '').trim();
       if (intro) {
         html += '<div class="radar-intro"><div class="radar-intro-label">项目简介</div>' +
