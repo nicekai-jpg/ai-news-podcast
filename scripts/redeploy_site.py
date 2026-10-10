@@ -50,6 +50,10 @@ def main() -> int:
     if reports_src.exists():
         shutil.copytree(reports_src, site_dir / "reports", dirs_exist_ok=True)
 
+    radar_src = ROOT / "data/gh_radar"
+    if radar_src.exists():
+        shutil.copytree(radar_src, site_dir / "radar", dirs_exist_ok=True)
+
     print(f"redeployed site: {len(episodes)} episodes, base_url={base_url}")
     return 0
 

@@ -46,6 +46,24 @@
     }
     body.theme-sources .date-pill.active .pill-weekday { color: #fbbf24; }
 
+    body.theme-radar {
+      --accent: #10b981;
+      --accent-gradient: linear-gradient(135deg, #10b981 0%, #22d3ee 100%);
+      --accent-light: #6ee7b7;
+      --glow-color: rgba(16, 185, 129, 0.15);
+      --bg-gradient: radial-gradient(circle at 50% 0%, #04180f 0%, #020a07 85%);
+    }
+    body.theme-radar .top-tab-btn.active {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    }
+    body.theme-radar .date-pill.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.28) 0%, rgba(5, 150, 105, 0.12) 100%);
+      border-color: #6ee7b7;
+      box-shadow: 0 8px 24px -4px rgba(16, 185, 129, 0.45);
+    }
+    body.theme-radar .date-pill.active .pill-weekday { color: #6ee7b7; }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; background: var(--bg); background-image: var(--bg-gradient); background-attachment: fixed; color: #f3f4f6; line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; transition: background 0.8s ease; }
 
@@ -557,8 +575,55 @@
     }
     .pub-more:hover { background: rgba(255, 255, 255, 0.1); }
 
-    /* variant B 特殊布局下隐藏来源页(仅播客 + 日报双栏) */
+    /* 项目雷达 (Project Radar — GitHub 每日一项目) */
+    .radar-wrap {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(18, 14, 36, 0.9) 0%, rgba(10, 7, 22, 0.95) 100%);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .radar-body { margin-top: 16px; }
+    .radar-pick {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(12, 9, 24, 0.9) 55%);
+      border: 1px solid color-mix(in srgb, var(--accent) 40%, rgba(255, 255, 255, 0.08));
+      border-top: 3px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+    }
+    .radar-pick-badge { font-size: 0.74rem; font-weight: 800; color: var(--accent-light); letter-spacing: 0.04em; }
+    .radar-repo { display: inline-block; margin: 6px 0 8px; font-size: 1.15rem; font-weight: 850; color: #fff; text-decoration: none; }
+    .radar-repo:hover { color: var(--accent-light); }
+    .radar-meta { font-size: 0.82rem; color: #cbd5e1; font-weight: 700; }
+    .radar-tag { color: var(--accent-light); }
+    .radar-delta { color: #34d399; font-weight: 800; margin-left: 6px; }
+    .radar-desc { margin-top: 10px; font-size: 0.9rem; color: #e2e8f0; line-height: 1.6; }
+    .radar-readme { margin-top: 14px; }
+    .radar-readme summary { cursor: pointer; font-size: 0.82rem; font-weight: 800; color: var(--accent-light); }
+    .radar-readme pre {
+      margin-top: 10px; padding: 14px 16px; overflow-x: auto;
+      background: rgba(2, 6, 12, 0.7); border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px; font-size: 0.78rem; line-height: 1.55; color: #cbd5e1;
+      white-space: pre-wrap; word-break: break-word;
+    }
+    .radar-others { margin-top: 16px; }
+    .radar-others-title { font-size: 0.82rem; font-weight: 800; color: #94a3b8; margin-bottom: 8px; }
+    .radar-other {
+      display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+      padding: 10px 12px; margin-bottom: 8px; border-radius: 10px; text-decoration: none;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: background 0.18s ease;
+    }
+    .radar-other:hover { background: rgba(255, 255, 255, 0.07); }
+    .radar-other-repo { font-weight: 800; color: #fff; }
+    .radar-other-stars { font-size: 0.82rem; color: #34d399; font-weight: 700; }
+    .radar-other-desc { flex: 1 1 100%; font-size: 0.82rem; color: #94a3b8; }
+
+    /* variant B 特殊布局下隐藏来源页/雷达页(仅播客 + 日报双栏) */
     body.theme-variant-b #panel-sources { display: none !important; }
+    body.theme-variant-b #panel-radar { display: none !important; }
 
     /* 本期金句 Banner */
     .episode-insight-banner {

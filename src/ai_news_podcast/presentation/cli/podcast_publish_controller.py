@@ -4,6 +4,7 @@ Publish episode to site (feed.xml, index.html, assets).
 """
 
 import argparse
+import shutil
 from datetime import UTC, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -20,6 +21,15 @@ from ai_news_podcast.presentation.cli.episode_utils_controller import (
 from ai_news_podcast.presentation.site_builder.html_gen_view import build_index_html
 from ai_news_podcast.presentation.site_builder.rss_gen_view import build_feed_xml
 from ai_news_podcast.presentation.site_builder.show_notes_view import generate_show_notes_html
+
+
+def _sync_tree(src: Path, dst: Path) -> None:
+    """把 src 目录整体复制到 dst(先清空 dst);src 不存在时保持不变。"""
+    if not src.exists():
+        return
+    if dst.exists():
+        shutil.rmtree(dst)
+    shutil.copytree(src, dst)
 
 
 class PublishCommand(AsyncCommand):
@@ -147,14 +157,9 @@ class PublishCommand(AsyncCommand):
         write_text(site_dir / "feed.xml", feed_xml)
         build_index_html(site_dir, podcast_title, sorted_eps, base_url, cfg)
 
-        import shutil
-
-        reports_src = root / "data" / "reports"
-        reports_dst = site_dir / "reports"
-        if reports_src.exists():
-            if reports_dst.exists():
-                shutil.rmtree(reports_dst)
-            shutil.copytree(reports_src, reports_dst)
+        _sync_tree(root / "data" / "reports", site_dir / "reports")
+        # 项目雷达:把 radar_*.json 一并发布,供站点「项目雷达」Tab 按日期读取
+        _sync_tree(root / "data" / "gh_radar", site_dir / "radar")
 
         print(f"Episode {ep_id} published")
         return 0

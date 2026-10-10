@@ -156,7 +156,7 @@ def build_index_html(
         <div><div class="brand-name">{podcast_title}</div><div class="brand-tagline">AI 前沿动态</div></div>
       </a>
 
-      <!-- 顶级三 Tab 页切换选项卡 (Three Top Tab Pages Navigation) -->
+      <!-- 顶级四 Tab 页切换选项卡 (Four Top Tab Pages Navigation) -->
       <nav class="top-tab-nav">
         <button id="btn-mode-podcast" class="top-tab-btn active" onclick="switchMode('podcast')">
           <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
@@ -169,6 +169,10 @@ def build_index_html(
         <button id="btn-mode-sources" class="top-tab-btn" onclick="switchMode('sources')">
           <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
           🏢 来源速览
+        </button>
+        <button id="btn-mode-radar" class="top-tab-btn" onclick="switchMode('radar')">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+          📡 项目雷达
         </button>
       </nav>
 
@@ -461,6 +465,31 @@ def build_index_html(
             <span class="header-badge" id="sources-board-badge">—</span>
           </div>
           <div class="sources-board-body" id="sources-board-body"></div>
+        </div>
+      </div>
+
+      <!-- ==================== Tab 页 4：📡 项目雷达页面 ==================== -->
+      <div class="tab-page-workspace" id="panel-radar" style="display: none;">
+        <!-- 雷达专属出版历程日历 -->
+        <div class="date-selector-wrap">
+          <div class="studio-calendar-header">
+            <span>📅 雷达出版日历 (Radar Calendar)</span>
+            <span class="calendar-sub-badge">点击切换往期项目雷达</span>
+          </div>
+          <div class="date-pills" id="radar-date-pills"></div>
+        </div>
+
+        <!-- GitHub 每日一项目 -->
+        <div class="radar-wrap">
+          <div class="card-internal-header">
+            <div class="header-left">
+              <span class="header-icon">📡</span>
+              <span class="header-title">GitHub 每日一项目</span>
+              <span class="header-sub">Project Radar</span>
+            </div>
+            <span class="header-badge" id="radar-badge">—</span>
+          </div>
+          <div class="radar-body" id="radar-body"></div>
         </div>
       </div>
     </div>

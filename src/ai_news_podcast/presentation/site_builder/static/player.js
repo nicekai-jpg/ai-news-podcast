@@ -45,11 +45,12 @@
     let scriptTotalChars = 0;
     let scriptParagraphs = [];
 
-    var MODES = ['podcast', 'report', 'sources'];
+    var MODES = ['podcast', 'report', 'sources', 'radar'];
     var MODE_DESC = {
       podcast: 'AI 播客电台 · 每日 AI 资讯的声音解说与剧本展示',
       report: '科技日报 · 聚合每日 AI 领域深度前沿动态',
-      sources: '来源速览 · 按媒体归类各家热门新闻'
+      sources: '来源速览 · 按媒体归类各家热门新闻',
+      radar: '项目雷达 · 每天一个上手即用的开源项目'
     };
 
     // 人机共存滚动参数
@@ -68,6 +69,7 @@
 
       document.body.classList.toggle('theme-report', mode === 'report');
       document.body.classList.toggle('theme-sources', mode === 'sources');
+      document.body.classList.toggle('theme-radar', mode === 'radar');
 
       var heroDesc = document.getElementById('hero-desc');
       if (heroDesc) {
@@ -88,13 +90,16 @@
       const podcastWrap = document.getElementById('date-pills');
       const reportWrap = document.getElementById('report-date-pills');
       const sourcesWrap = document.getElementById('sources-date-pills');
+      const radarWrap = document.getElementById('radar-date-pills');
       if (podcastWrap) podcastWrap.innerHTML = '';
       if (reportWrap) reportWrap.innerHTML = '';
       if (sourcesWrap) sourcesWrap.innerHTML = '';
+      if (radarWrap) radarWrap.innerHTML = '';
 
       const podcastDates = DATES.filter(function(d) { return EPISODES[d] && EPISODES[d].mp3; });
       const reportDates = DATES;
       const sourcesDates = DATES;
+      const radarDates = DATES;
 
       function renderPills(wrap, dates) {
         if (!wrap) return;
@@ -120,12 +125,15 @@
       renderPills(podcastWrap, podcastDates);
       renderPills(reportWrap, reportDates);
       renderPills(sourcesWrap, sourcesDates);
+      renderPills(radarWrap, radarDates);
 
       var currentDates;
       if (currentMode === 'podcast') {
         currentDates = podcastDates;
       } else if (currentMode === 'report') {
         currentDates = reportDates;
+      } else if (currentMode === 'radar') {
+        currentDates = radarDates;
       } else {
         currentDates = sourcesDates;
       }
@@ -139,6 +147,8 @@
       } else {
         if (currentMode === 'sources') {
           setEmpty(document.getElementById('sources-board-body'), '🏢', '暂无来源数据');
+        } else if (currentMode === 'radar') {
+          setEmpty(document.getElementById('radar-body'), '📡', '暂无项目雷达');
         } else if (currentMode === 'report' || document.body.classList.contains('theme-variant-b')) {
           setEmpty(document.getElementById('report-panel-body'), '📰', '该模式下暂无日期数据');
         } else {
@@ -217,6 +227,23 @@
           if (boardBadge) boardBadge.textContent = '—';
           setEmpty(boardBody, '🏢', '该日期暂无来源数据');
         }
+      }
+
+      if (currentMode === 'radar') {
+        var radarBadge = document.getElementById('radar-badge');
+        var radarBody = document.getElementById('radar-body');
+        setLoading(radarBody, '正在加载项目雷达…');
+        fetch('./radar/radar_' + d + '.json')
+          .then(function(r) { if (!r.ok) throw new Error('no radar'); return r.json(); })
+          .then(function(data) {
+            renderRadar(radarBody, data);
+            var m = (data && data.meta) || {};
+            if (radarBadge) radarBadge.textContent = m.pick_repo ? ('主推 ' + m.pick_repo) : '该期无雷达';
+          })
+          .catch(function() {
+            if (radarBadge) radarBadge.textContent = '—';
+            setEmpty(radarBody, '📡', '该日期暂无项目雷达');
+          });
       }
 
       if (currentMode === 'podcast' || document.body.classList.contains('theme-variant-b')) {
@@ -613,6 +640,53 @@
       if (!group) return;
       group.querySelectorAll('.pub-article[data-more="1"]').forEach(function(el) { el.style.display = ''; });
       btn.style.display = 'none';
+    }
+
+    function radarStars(p) {
+      var d = p.delta_stars;
+      var delta = (typeof d === 'number') ? ('<span class="radar-delta">+' + d + '/天</span>') : '';
+      return '⭐ ' + (p.stars == null ? '?' : p.stars) + delta;
+    }
+
+    function renderRadar(container, data) {
+      if (!container) return;
+      var projects = (data && data.projects) || [];
+      if (!projects.length) { setEmpty(container, '📡', '该日期暂无项目雷达'); return; }
+      var meta = (data && data.meta) || {};
+      var pickRepo = meta.pick_repo || (projects[0] || {}).repo;
+      var pick = null;
+      var others = [];
+      projects.forEach(function(p) { if (p.repo === pickRepo) pick = p; else others.push(p); });
+      if (!pick) pick = projects[0];
+
+      var html = '<div class="radar-pick">' +
+        '<div class="radar-pick-badge">🥇 今日主推</div>' +
+        '<a class="radar-repo" href="' + esc(pick.url || ('https://github.com/' + pick.repo)) +
+          '" target="_blank" rel="noopener">' + esc(pick.repo) + ' ↗</a>' +
+        '<div class="radar-meta">' + radarStars(pick) +
+          (pick.language ? ' · <span class="radar-tag">' + esc(pick.language) + '</span>' : '') +
+          (pick.license ? ' · License: ' + esc(pick.license) : '') +
+        '</div>' +
+        '<div class="radar-desc">' + esc(pick.description || '') + '</div>';
+      var excerpt = String(pick.readme_excerpt || '').trim();
+      if (excerpt) {
+        html += '<details class="radar-readme" open><summary>README 上手摘录（可直接照着跑）</summary>' +
+          '<pre>' + esc(excerpt) + '</pre></details>';
+      }
+      html += '</div>';
+
+      if (others.length) {
+        html += '<div class="radar-others"><div class="radar-others-title">📎 备选项目</div>';
+        others.forEach(function(p) {
+          html += '<a class="radar-other" href="' + esc(p.url || ('https://github.com/' + p.repo)) +
+            '" target="_blank" rel="noopener">' +
+            '<span class="radar-other-repo">' + esc(p.repo) + '</span>' +
+            '<span class="radar-other-stars">' + radarStars(p) + '</span>' +
+            '<span class="radar-other-desc">' + esc(p.description || '') + '</span></a>';
+        });
+        html += '</div>';
+      }
+      container.innerHTML = html;
     }
 
     function setPlaybackMode(mode) {
