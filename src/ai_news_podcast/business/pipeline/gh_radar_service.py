@@ -309,25 +309,28 @@ async def _probe_readme(
     *,
     excerpt_chars: int,
     intro_chars: int,
-    intro_min: int,
     intro_fallback: Callable[[str, str, str], str | None] | None,
 ) -> None:
-    """探测单个项目的 README:抽取上手摘录 + 项目简介(简介不足时用 LLM 兜底)。"""
+    """探测单个项目的 README:抽取上手摘录 + 项目简介。
+
+    简介优先用 LLM 输出中文(README 多为英文);LLM 不可用时退回 README 原文摘要。
+    """
     try:
         readme = await client.fetch_readme_text(p.repo)
-        p.has_install_docs = _has_install_docs(readme)
-        p.readme_excerpt = _hands_on_excerpt(readme, excerpt_chars)
-        intro = _readme_intro(readme, intro_chars)
-        if len(intro) < intro_min and intro_fallback and readme:
-            try:
-                generated = intro_fallback(p.repo, p.description, readme)
-                if generated:
-                    intro = str(generated).strip()[:intro_chars]
-            except Exception as e:
-                logger.warning("radar intro LLM fallback failed for %s: %s", p.repo, e)
-        p.readme_intro = intro
     except Exception as e:  # 单仓库 README 拉取失败不致命
         logger.warning("README probe failed for %s: %s", p.repo, e)
+        readme = ""
+    p.has_install_docs = _has_install_docs(readme)
+    p.readme_excerpt = _hands_on_excerpt(readme, excerpt_chars)
+    intro = _readme_intro(readme, intro_chars)
+    if intro_fallback:
+        try:
+            generated = intro_fallback(p.repo, p.description, readme)
+            if generated and str(generated).strip():
+                intro = str(generated).strip()[:intro_chars]
+        except Exception as e:
+            logger.warning("radar intro LLM failed for %s: %s", p.repo, e)
+    p.readme_intro = intro
 
 
 async def build_radar(
@@ -389,7 +392,6 @@ async def build_radar(
         preferred = [str(t).lower() for t in gcfg.get("preferred_topics", [])]
         excerpt_chars = int(gcfg.get("readme_excerpt_chars", 1200))
         intro_chars = int(gcfg.get("readme_intro_chars", 400))
-        intro_min = int(gcfg.get("readme_intro_min_chars", 60))
 
         projects: list[RadarProject] = []
         for item in candidates:
@@ -401,7 +403,6 @@ async def build_radar(
                 p,
                 excerpt_chars=excerpt_chars,
                 intro_chars=intro_chars,
-                intro_min=intro_min,
                 intro_fallback=intro_fallback,
             )
             score_project(p, now=now, preferred_topics=preferred)
