@@ -608,6 +608,13 @@
     .radar-tag { color: var(--accent-light); }
     .radar-delta { color: #34d399; font-weight: 800; margin-left: 6px; }
     .radar-desc { margin-top: 10px; font-size: 0.9rem; color: #e2e8f0; line-height: 1.6; }
+    .radar-intro { margin-top: 12px; font-size: 0.92rem; color: #e2e8f0; line-height: 1.7; }
+    .radar-intro-label {
+      display: inline-block; margin-right: 8px; padding: 2px 8px; border-radius: 99px;
+      font-size: 0.68rem; font-weight: 800; color: var(--accent-light);
+      background: var(--glow-color); border: 1px solid var(--glow-color);
+      vertical-align: middle;
+    }
     .radar-readme { margin-top: 14px; }
     .radar-readme summary { cursor: pointer; font-size: 0.82rem; font-weight: 800; color: var(--accent-light); }
     .radar-readme pre {
@@ -2281,7 +2288,7 @@ body.theme-variant-b .header-brand { display: none; }
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-10-10 15:19:23</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-10-10 16:07:52</p></div>
   </div>
 
   <script>
@@ -2955,6 +2962,10 @@ body.theme-variant-b .header-brand { display: none; }
           (pick.license ? ' · License: ' + esc(pick.license) : '') +
         '</div>' +
         '<div class="radar-desc">' + esc(pick.description || '') + '</div>';
+      var intro = String(pick.readme_intro || '').trim();
+      if (intro) {
+        html += '<div class="radar-intro"><span class="radar-intro-label">项目简介</span>' + esc(intro) + '</div>';
+      }
       var excerpt = String(pick.readme_excerpt || '').trim();
       if (excerpt) {
         html += '<details class="radar-readme" open><summary>README 上手摘录（可直接照着跑）</summary>' +
