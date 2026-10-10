@@ -1,0 +1,124 @@
+{
+  "date": "2026-09-16",
+  "generated_at": "2026-09-15T23:51:34.396997+00:00",
+  "projects": [
+    {
+      "repo": "bojieli/ai-infra-book",
+      "url": "https://github.com/bojieli/ai-infra-book",
+      "description": "《深入理解 AI Infra：量化分析与系统设计》（李博杰 著）开源书稿：从硬件约束和模型架构出发，量化推导 LLM 推理与训练系统设计。含全书正文、PDF、配套计算工具与实验",
+      "language": "Python",
+      "topics": [
+        "accelerator",
+        "ai-infra",
+        "ai-infrastructure",
+        "book",
+        "datacenter-network",
+        "deepseek",
+        "distributed-systems",
+        "gpu",
+        "kv-cache",
+        "llm",
+        "llm-inference",
+        "llm-serving",
+        "llm-training",
+        "mixture-of-experts",
+        "performance-engineering"
+      ],
+      "stars": 3434,
+      "delta_stars": 1111,
+      "is_new": false,
+      "created_at": "2026-08-22T15:30:41Z",
+      "pushed_at": "2026-09-15T01:34:21Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 1,
+      "readme_excerpt": "python -m pip install -r website/requirements.txt\npython scripts/build_site.py\npython scripts/check_site.py\npython scripts/build_site.py --serve\n```\n\n预览地址为 <http://127.0.0.1:8000>。生成文件位于 `build/`，详细说明见[网站构建与发布](website/README.md)。\n\n**全书 PDF**（另需 Pandoc、XeLaTeX 和字体）：\n\n```bash\nbash book/build_pdf.sh\n```\n\n依赖、字体及单章编译方法见 [PDF 编译说明](book/README.md)。GitHub Actions 会检查 Pull Request 的网站与 PDF 构建；推送到 `main` 后自动生成 Release 并部署 Pages。",
+      "score": 0.837,
+      "score_parts": {
+        "velocity": 0.7407,
+        "hands_on": 1.0,
+        "cross_heat": 0.3333,
+        "ai_bonus": 0.1
+      }
+    },
+    {
+      "repo": "yanliudesign/mono-color-skill",
+      "url": "https://github.com/yanliudesign/mono-color-skill",
+      "description": "One-ink editorial print image skill — warm paper, halftone photography, active negative space, and restrained typography.",
+      "language": "Python",
+      "topics": [
+        "agent-skill",
+        "ai-agent",
+        "claude-skill",
+        "editorial-design",
+        "generative-art",
+        "halftone",
+        "image-generation",
+        "monochrome",
+        "poster-design",
+        "prompt-engineering",
+        "risograph",
+        "zine"
+      ],
+      "stars": 3085,
+      "delta_stars": 15,
+      "is_new": false,
+      "created_at": "2026-08-19T06:07:45Z",
+      "pushed_at": "2026-09-02T18:49:42Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 3,
+      "readme_excerpt": "",
+      "score": 0.34,
+      "score_parts": {
+        "velocity": 0.01,
+        "hands_on": 0.45,
+        "cross_heat": 1.0,
+        "ai_bonus": 0.0
+      }
+    },
+    {
+      "repo": "wang2122/sprix-sage-router",
+      "url": "https://github.com/wang2122/sprix-sage-router",
+      "description": "Sprix AI at 屿智同行 — state-aware SELF/COLLABORATE/HANDOFF routing for A2A agent networks.",
+      "language": "Python",
+      "topics": [
+        "a2a",
+        "agent-orchestration",
+        "agent-routing",
+        "ai-agents",
+        "multi-agent-systems",
+        "python",
+        "sprix-ai",
+        "task-scheduling"
+      ],
+      "stars": 3690,
+      "delta_stars": 1,
+      "is_new": false,
+      "created_at": "2026-08-18T04:08:11Z",
+      "pushed_at": "2026-08-28T09:12:08Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 1,
+      "readme_excerpt": "",
+      "score": 0.202,
+      "score_parts": {
+        "velocity": 0.0007,
+        "hands_on": 0.45,
+        "cross_heat": 0.3333,
+        "ai_bonus": 0.0
+      }
+    }
+  ],
+  "meta": {
+    "pick_repo": "bojieli/ai-infra-book",
+    "runner_up_repos": [
+      "yanliudesign/mono-color-skill",
+      "wang2122/sprix-sage-router"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 9
+  }
+}

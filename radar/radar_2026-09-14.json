@@ -1,0 +1,95 @@
+{
+  "date": "2026-09-14",
+  "generated_at": "2026-09-13T23:32:38.604909+00:00",
+  "projects": [
+    {
+      "repo": "anthropics/commerce-agents",
+      "url": "https://github.com/anthropics/commerce-agents",
+      "description": "Reference blueprint for building shopping and merchant agents with Claude. Examples in retail, commerce, telecom, and entertainment included.",
+      "language": "Python",
+      "topics": [],
+      "stars": 2811,
+      "delta_stars": 36,
+      "is_new": false,
+      "created_at": "2026-09-01T12:30:12Z",
+      "pushed_at": "2026-09-11T07:03:32Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 1,
+      "readme_excerpt": "pip install -r requirements.txt       # the seven packages and their pinned dependencies\ncp .env.example .env                  # add ANTHROPIC_API_KEY\n(cd examples && npm ci)               # the eight web apps share one workspace\npython scripts/run_demo.py retail     # API :8000 + storefront :3000\n```\n\n`--merchant` starts the portal instead of the storefront and `--all` starts both. The\nverticals are `retail` (:3000, portal :3100), `travel` (:3001, :3101), `telecom` (:3002,\n:3102), and `entertainment` (:3003, :3103); each README lists prompts to try on both surfaces.",
+      "score": 0.3787,
+      "score_parts": {
+        "velocity": 0.024,
+        "hands_on": 1.0,
+        "cross_heat": 0.3333,
+        "ai_bonus": 0.0
+      }
+    },
+    {
+      "repo": "rakanki911/DLSS5-Swapper",
+      "url": "https://github.com/rakanki911/DLSS5-Swapper",
+      "description": "Install, tune and restore DLSS 5 in your games with one click. Native RenoDX, DLSS5-Feeder for games without DLSS, OptiScaler and multipass routes; DirectX 8/9/11/12, Vulkan, OpenGL, DirectDraw and emulators. In-game F8 overlay, automatic backups, and a community page showing what works on your games and your graphics card.",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 4206,
+      "delta_stars": 264,
+      "is_new": false,
+      "created_at": "2026-08-29T23:51:32Z",
+      "pushed_at": "2026-09-13T02:02:21Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "score": 0.268,
+      "score_parts": {
+        "velocity": 0.176,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    },
+    {
+      "repo": "lnkiai/m3e-canvas",
+      "url": "https://github.com/lnkiai/m3e-canvas",
+      "description": "Sketch Material 3 Expressive screens in the browser and turn them into vibe-coding prompts.",
+      "language": "TypeScript",
+      "topics": [
+        "design-tool",
+        "material-3-expressive",
+        "material-design",
+        "material3",
+        "nextjs",
+        "prompt",
+        "react",
+        "vibe-coding"
+      ],
+      "stars": 6490,
+      "delta_stars": 164,
+      "is_new": false,
+      "created_at": "2026-09-02T04:36:34Z",
+      "pushed_at": "2026-09-12T02:16:51Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "score": 0.2347,
+      "score_parts": {
+        "velocity": 0.1093,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    }
+  ],
+  "meta": {
+    "pick_repo": "anthropics/commerce-agents",
+    "runner_up_repos": [
+      "rakanki911/DLSS5-Swapper",
+      "lnkiai/m3e-canvas"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 4
+  }
+}

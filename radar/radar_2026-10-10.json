@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-10",
+  "generated_at": "2026-10-09T21:55:43.425368+00:00",
+  "projects": [
+    {
+      "repo": "storytold/lightcraft",
+      "url": "https://github.com/storytold/lightcraft",
+      "description": "An open-source, clean-room reimplementation of Adobe Lightroom in pure Rust.",
+      "language": "Rust",
+      "topics": [
+        "art",
+        "lightroom",
+        "photography",
+        "raw",
+        "raw-editor",
+        "raw-processing",
+        "rust"
+      ],
+      "stars": 7575,
+      "delta_stars": 1938,
+      "is_new": false,
+      "created_at": "2026-09-30T14:09:27Z",
+      "pushed_at": "2026-10-09T16:28:58Z",
+      "license": "Apache-2.0",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "score": 0.68,
+      "score_parts": {
+        "velocity": 1.0,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    }
+  ],
+  "meta": {
+    "pick_repo": "storytold/lightcraft",
+    "runner_up_repos": [],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 11
+  }
+}

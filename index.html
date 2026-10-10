@@ -54,6 +54,24 @@
     }
     body.theme-sources .date-pill.active .pill-weekday { color: #fbbf24; }
 
+    body.theme-radar {
+      --accent: #10b981;
+      --accent-gradient: linear-gradient(135deg, #10b981 0%, #22d3ee 100%);
+      --accent-light: #6ee7b7;
+      --glow-color: rgba(16, 185, 129, 0.15);
+      --bg-gradient: radial-gradient(circle at 50% 0%, #04180f 0%, #020a07 85%);
+    }
+    body.theme-radar .top-tab-btn.active {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+    }
+    body.theme-radar .date-pill.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.28) 0%, rgba(5, 150, 105, 0.12) 100%);
+      border-color: #6ee7b7;
+      box-shadow: 0 8px 24px -4px rgba(16, 185, 129, 0.45);
+    }
+    body.theme-radar .date-pill.active .pill-weekday { color: #6ee7b7; }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; background: var(--bg); background-image: var(--bg-gradient); background-attachment: fixed; color: #f3f4f6; line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; transition: background 0.8s ease; }
 
@@ -565,8 +583,55 @@
     }
     .pub-more:hover { background: rgba(255, 255, 255, 0.1); }
 
-    /* variant B 特殊布局下隐藏来源页(仅播客 + 日报双栏) */
+    /* 项目雷达 (Project Radar — GitHub 每日一项目) */
+    .radar-wrap {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(18, 14, 36, 0.9) 0%, rgba(10, 7, 22, 0.95) 100%);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    .radar-body { margin-top: 16px; }
+    .radar-pick {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(12, 9, 24, 0.9) 55%);
+      border: 1px solid color-mix(in srgb, var(--accent) 40%, rgba(255, 255, 255, 0.08));
+      border-top: 3px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+    }
+    .radar-pick-badge { font-size: 0.74rem; font-weight: 800; color: var(--accent-light); letter-spacing: 0.04em; }
+    .radar-repo { display: inline-block; margin: 6px 0 8px; font-size: 1.15rem; font-weight: 850; color: #fff; text-decoration: none; }
+    .radar-repo:hover { color: var(--accent-light); }
+    .radar-meta { font-size: 0.82rem; color: #cbd5e1; font-weight: 700; }
+    .radar-tag { color: var(--accent-light); }
+    .radar-delta { color: #34d399; font-weight: 800; margin-left: 6px; }
+    .radar-desc { margin-top: 10px; font-size: 0.9rem; color: #e2e8f0; line-height: 1.6; }
+    .radar-readme { margin-top: 14px; }
+    .radar-readme summary { cursor: pointer; font-size: 0.82rem; font-weight: 800; color: var(--accent-light); }
+    .radar-readme pre {
+      margin-top: 10px; padding: 14px 16px; overflow-x: auto;
+      background: rgba(2, 6, 12, 0.7); border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px; font-size: 0.78rem; line-height: 1.55; color: #cbd5e1;
+      white-space: pre-wrap; word-break: break-word;
+    }
+    .radar-others { margin-top: 16px; }
+    .radar-others-title { font-size: 0.82rem; font-weight: 800; color: #94a3b8; margin-bottom: 8px; }
+    .radar-other {
+      display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+      padding: 10px 12px; margin-bottom: 8px; border-radius: 10px; text-decoration: none;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.07);
+      transition: background 0.18s ease;
+    }
+    .radar-other:hover { background: rgba(255, 255, 255, 0.07); }
+    .radar-other-repo { font-weight: 800; color: #fff; }
+    .radar-other-stars { font-size: 0.82rem; color: #34d399; font-weight: 700; }
+    .radar-other-desc { flex: 1 1 100%; font-size: 0.82rem; color: #94a3b8; }
+
+    /* variant B 特殊布局下隐藏来源页/雷达页(仅播客 + 日报双栏) */
     body.theme-variant-b #panel-sources { display: none !important; }
+    body.theme-variant-b #panel-radar { display: none !important; }
 
     /* 本期金句 Banner */
     .episode-insight-banner {
@@ -1875,7 +1940,7 @@ body.theme-variant-b .header-brand { display: none; }
         <div><div class="brand-name">AI 每日先锋</div><div class="brand-tagline">AI 前沿动态</div></div>
       </a>
 
-      <!-- 顶级三 Tab 页切换选项卡 (Three Top Tab Pages Navigation) -->
+      <!-- 顶级四 Tab 页切换选项卡 (Four Top Tab Pages Navigation) -->
       <nav class="top-tab-nav">
         <button id="btn-mode-podcast" class="top-tab-btn active" onclick="switchMode('podcast')">
           <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
@@ -1888,6 +1953,10 @@ body.theme-variant-b .header-brand { display: none; }
         <button id="btn-mode-sources" class="top-tab-btn" onclick="switchMode('sources')">
           <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
           🏢 来源速览
+        </button>
+        <button id="btn-mode-radar" class="top-tab-btn" onclick="switchMode('radar')">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle></svg>
+          📡 项目雷达
         </button>
       </nav>
 
@@ -2182,12 +2251,37 @@ body.theme-variant-b .header-brand { display: none; }
           <div class="sources-board-body" id="sources-board-body"></div>
         </div>
       </div>
+
+      <!-- ==================== Tab 页 4：📡 项目雷达页面 ==================== -->
+      <div class="tab-page-workspace" id="panel-radar" style="display: none;">
+        <!-- 雷达专属出版历程日历 -->
+        <div class="date-selector-wrap">
+          <div class="studio-calendar-header">
+            <span>📅 雷达出版日历 (Radar Calendar)</span>
+            <span class="calendar-sub-badge">点击切换往期项目雷达</span>
+          </div>
+          <div class="date-pills" id="radar-date-pills"></div>
+        </div>
+
+        <!-- GitHub 每日一项目 -->
+        <div class="radar-wrap">
+          <div class="card-internal-header">
+            <div class="header-left">
+              <span class="header-icon">📡</span>
+              <span class="header-title">GitHub 每日一项目</span>
+              <span class="header-sub">Project Radar</span>
+            </div>
+            <span class="header-badge" id="radar-badge">—</span>
+          </div>
+          <div class="radar-body" id="radar-body"></div>
+        </div>
+      </div>
     </div>
 
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-10-10 14:21:42</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-10-10 15:19:23</p></div>
   </div>
 
   <script>
@@ -2238,11 +2332,12 @@ body.theme-variant-b .header-brand { display: none; }
     let scriptTotalChars = 0;
     let scriptParagraphs = [];
 
-    var MODES = ['podcast', 'report', 'sources'];
+    var MODES = ['podcast', 'report', 'sources', 'radar'];
     var MODE_DESC = {
       podcast: 'AI 播客电台 · 每日 AI 资讯的声音解说与剧本展示',
       report: '科技日报 · 聚合每日 AI 领域深度前沿动态',
-      sources: '来源速览 · 按媒体归类各家热门新闻'
+      sources: '来源速览 · 按媒体归类各家热门新闻',
+      radar: '项目雷达 · 每天一个上手即用的开源项目'
     };
 
     // 人机共存滚动参数
@@ -2261,6 +2356,7 @@ body.theme-variant-b .header-brand { display: none; }
 
       document.body.classList.toggle('theme-report', mode === 'report');
       document.body.classList.toggle('theme-sources', mode === 'sources');
+      document.body.classList.toggle('theme-radar', mode === 'radar');
 
       var heroDesc = document.getElementById('hero-desc');
       if (heroDesc) {
@@ -2281,13 +2377,16 @@ body.theme-variant-b .header-brand { display: none; }
       const podcastWrap = document.getElementById('date-pills');
       const reportWrap = document.getElementById('report-date-pills');
       const sourcesWrap = document.getElementById('sources-date-pills');
+      const radarWrap = document.getElementById('radar-date-pills');
       if (podcastWrap) podcastWrap.innerHTML = '';
       if (reportWrap) reportWrap.innerHTML = '';
       if (sourcesWrap) sourcesWrap.innerHTML = '';
+      if (radarWrap) radarWrap.innerHTML = '';
 
       const podcastDates = DATES.filter(function(d) { return EPISODES[d] && EPISODES[d].mp3; });
       const reportDates = DATES;
       const sourcesDates = DATES;
+      const radarDates = DATES;
 
       function renderPills(wrap, dates) {
         if (!wrap) return;
@@ -2313,12 +2412,15 @@ body.theme-variant-b .header-brand { display: none; }
       renderPills(podcastWrap, podcastDates);
       renderPills(reportWrap, reportDates);
       renderPills(sourcesWrap, sourcesDates);
+      renderPills(radarWrap, radarDates);
 
       var currentDates;
       if (currentMode === 'podcast') {
         currentDates = podcastDates;
       } else if (currentMode === 'report') {
         currentDates = reportDates;
+      } else if (currentMode === 'radar') {
+        currentDates = radarDates;
       } else {
         currentDates = sourcesDates;
       }
@@ -2332,6 +2434,8 @@ body.theme-variant-b .header-brand { display: none; }
       } else {
         if (currentMode === 'sources') {
           setEmpty(document.getElementById('sources-board-body'), '🏢', '暂无来源数据');
+        } else if (currentMode === 'radar') {
+          setEmpty(document.getElementById('radar-body'), '📡', '暂无项目雷达');
         } else if (currentMode === 'report' || document.body.classList.contains('theme-variant-b')) {
           setEmpty(document.getElementById('report-panel-body'), '📰', '该模式下暂无日期数据');
         } else {
@@ -2410,6 +2514,23 @@ body.theme-variant-b .header-brand { display: none; }
           if (boardBadge) boardBadge.textContent = '—';
           setEmpty(boardBody, '🏢', '该日期暂无来源数据');
         }
+      }
+
+      if (currentMode === 'radar') {
+        var radarBadge = document.getElementById('radar-badge');
+        var radarBody = document.getElementById('radar-body');
+        setLoading(radarBody, '正在加载项目雷达…');
+        fetch('./radar/radar_' + d + '.json')
+          .then(function(r) { if (!r.ok) throw new Error('no radar'); return r.json(); })
+          .then(function(data) {
+            renderRadar(radarBody, data);
+            var m = (data && data.meta) || {};
+            if (radarBadge) radarBadge.textContent = m.pick_repo ? ('主推 ' + m.pick_repo) : '该期无雷达';
+          })
+          .catch(function() {
+            if (radarBadge) radarBadge.textContent = '—';
+            setEmpty(radarBody, '📡', '该日期暂无项目雷达');
+          });
       }
 
       if (currentMode === 'podcast' || document.body.classList.contains('theme-variant-b')) {
@@ -2806,6 +2927,53 @@ body.theme-variant-b .header-brand { display: none; }
       if (!group) return;
       group.querySelectorAll('.pub-article[data-more="1"]').forEach(function(el) { el.style.display = ''; });
       btn.style.display = 'none';
+    }
+
+    function radarStars(p) {
+      var d = p.delta_stars;
+      var delta = (typeof d === 'number') ? ('<span class="radar-delta">+' + d + '/天</span>') : '';
+      return '⭐ ' + (p.stars == null ? '?' : p.stars) + delta;
+    }
+
+    function renderRadar(container, data) {
+      if (!container) return;
+      var projects = (data && data.projects) || [];
+      if (!projects.length) { setEmpty(container, '📡', '该日期暂无项目雷达'); return; }
+      var meta = (data && data.meta) || {};
+      var pickRepo = meta.pick_repo || (projects[0] || {}).repo;
+      var pick = null;
+      var others = [];
+      projects.forEach(function(p) { if (p.repo === pickRepo) pick = p; else others.push(p); });
+      if (!pick) pick = projects[0];
+
+      var html = '<div class="radar-pick">' +
+        '<div class="radar-pick-badge">🥇 今日主推</div>' +
+        '<a class="radar-repo" href="' + esc(pick.url || ('https://github.com/' + pick.repo)) +
+          '" target="_blank" rel="noopener">' + esc(pick.repo) + ' ↗</a>' +
+        '<div class="radar-meta">' + radarStars(pick) +
+          (pick.language ? ' · <span class="radar-tag">' + esc(pick.language) + '</span>' : '') +
+          (pick.license ? ' · License: ' + esc(pick.license) : '') +
+        '</div>' +
+        '<div class="radar-desc">' + esc(pick.description || '') + '</div>';
+      var excerpt = String(pick.readme_excerpt || '').trim();
+      if (excerpt) {
+        html += '<details class="radar-readme" open><summary>README 上手摘录（可直接照着跑）</summary>' +
+          '<pre>' + esc(excerpt) + '</pre></details>';
+      }
+      html += '</div>';
+
+      if (others.length) {
+        html += '<div class="radar-others"><div class="radar-others-title">📎 备选项目</div>';
+        others.forEach(function(p) {
+          html += '<a class="radar-other" href="' + esc(p.url || ('https://github.com/' + p.repo)) +
+            '" target="_blank" rel="noopener">' +
+            '<span class="radar-other-repo">' + esc(p.repo) + '</span>' +
+            '<span class="radar-other-stars">' + radarStars(p) + '</span>' +
+            '<span class="radar-other-desc">' + esc(p.description || '') + '</span></a>';
+        });
+        html += '</div>';
+      }
+      container.innerHTML = html;
     }
 
     function setPlaybackMode(mode) {
