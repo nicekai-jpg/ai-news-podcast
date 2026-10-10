@@ -1,0 +1,47 @@
+name: Redeploy Site
+
+# Rebuild index.html / feed.xml / reports from data/episodes.json and deploy to
+# gh-pages WITHOUT re-running the audio pipeline. Handy for front-end changes.
+# Audio, show-notes HTML and chunk dirs are preserved via keep_files.
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: podcast-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.9"
+
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Rebuild site pages
+        env:
+          TZ: Asia/Shanghai
+        run: uv run python scripts/redeploy_site.py
+
+      - name: Remove .gitignore to ensure ignored files are deployed
+        run: rm -f .gitignore
+
+      - name: Deploy GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          keep_files: true

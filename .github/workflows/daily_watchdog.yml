@@ -1,0 +1,44 @@
+name: Daily Watchdog
+
+# Fallback for the daily podcast: GitHub's scheduler occasionally drops or very
+# late-fires the scheduled daily.yml. This checks whether today's (Asia/Shanghai)
+# episode is already published and, if not, re-dispatches daily.yml once.
+
+on:
+  schedule:
+    # 00:00 UTC ≈ 08:00 Asia/Shanghai — well after the daily run should be done
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: podcast-pipeline
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check today's episode is published
+        id: check
+        run: |
+          EP=$(TZ=Asia/Shanghai date +%F)
+          echo "date=$EP" >> "$GITHUB_OUTPUT"
+          if jq -e --arg d "$EP" 'any(.[]; .id == $d)' data/episodes.json >/dev/null 2>&1; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Re-dispatch daily workflow if today's episode is missing
+        if: steps.check.outputs.found == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "::warning::no episode for ${{ steps.check.outputs.date }} — re-dispatching daily.yml"
+          gh workflow run daily.yml
