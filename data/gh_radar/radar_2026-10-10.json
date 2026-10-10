@@ -24,7 +24,7 @@
       "license": "Apache-2.0",
       "has_install_docs": false,
       "mentions": 0,
-      "readme_excerpt": "",
+      "readme_excerpt": "```sh\ngit clone https://github.com/storytold/lightcraft && cd lightcraft\ncargo run --release -p lightcraft                       # opens your library (~/Pictures/LightCraft Library; a new one starts with demo photos)\ncargo run --release -p lightcraft -- ~/Pictures/trip    # import your photos (folders are scanned, duplicates skipped)\ncargo run --release -p lightcraft -- --memory           # a throwaway in-memory demo session (writes nothing)\ncargo run --release -p lightcraft -- --control 7980     # with the automation channel\ncargo xtask web --serve                                 # the same app in the browser: http://127.0.0.1:8080/\ncargo run --release -p lightcraft-cli -- render photo.jpg -o out.jpg --set light.exposure=0.5\ncargo xtask ci                                          # fmt, clippy, tests, layering, wasm checks\n```\n\nCI defaults to line-table debug information and one build job per 1.5 GB of RAM\navailable when it starts (at most one per CPU; 4 if memory can't be read), so an\n8 GB machine with 6 GB free builds with 4, and a busy machine with little free\nbuilds with fewer. Test threads follow, capped at 4. Full-debuginfo linkers, one\nper CPU, otherwise exhaust RAM before ",
       "score": 0.68,
       "score_parts": {
         "velocity": 1.0,
@@ -32,7 +32,7 @@
         "cross_heat": 0.0,
         "ai_bonus": 0.0
       },
-      "readme_intro": "LightCraft 是一个用纯 Rust 语言从零开始重新实现的 Adobe Lightroom 开源替代品，提供照片图库管理与 RAW 格式编辑功能，可原生运行于 macOS、Windows 和 Linux，也能通过 WebAssembly 在浏览器中运行，并支持通过 MCP 协议由 AI 代理驱动。"
+      "readme_intro": "这是什么：LightCraft 是用纯 Rust 从零编写的开源照片管理与 RAW 开发工具,提供类 Lightroom 的完整后期功能。\n核心特性：\n- 纯 Rust 实现,原生支持 macOS、Windows、Linux,并可通过 WebAssembly 在浏览器中运行\n- 提供编辑、调色、蒙版、预设、照片库组织等完整的照片后期与管理功能\n- 内置 MCP 服务器,支持 AI 代理端到端驱动整个工作流"
     }
   ],
   "meta": {

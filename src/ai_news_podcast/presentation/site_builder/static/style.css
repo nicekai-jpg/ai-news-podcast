@@ -601,6 +601,9 @@
     .radar-delta { color: #34d399; font-weight: 800; margin-left: 6px; }
     .radar-desc { margin-top: 10px; font-size: 0.9rem; color: #e2e8f0; line-height: 1.6; }
     .radar-intro { margin-top: 12px; font-size: 0.92rem; color: #e2e8f0; line-height: 1.7; }
+    .radar-intro-line { margin: 4px 0; }
+    .radar-intro-list { margin: 4px 0 4px 4px; padding-left: 18px; }
+    .radar-intro-list li { margin: 3px 0; color: #cbd5e1; }
     .radar-intro-label {
       display: inline-block; margin-right: 8px; padding: 2px 8px; border-radius: 99px;
       font-size: 0.68rem; font-weight: 800; color: var(--accent-light);

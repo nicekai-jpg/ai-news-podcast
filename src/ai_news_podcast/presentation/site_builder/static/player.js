@@ -648,6 +648,29 @@
       return '⭐ ' + (p.stars == null ? '?' : p.stars) + delta;
     }
 
+    function renderIntroLines(text) {
+      var inList = false;
+      var out = '';
+      String(text || '').split('\n').forEach(function(raw) {
+        var line = raw.trim();
+        if (!line) {
+          if (inList) { out += '</ul>'; inList = false; }
+          return;
+        }
+        if (/^(仓库|GitHub 描述|GitHub|README)[:：]/.test(line)) return; // 过滤 LLM 回显的输入
+        var bullet = line.match(/^[-•·*]\s*(.+)$/);
+        if (bullet) {
+          if (!inList) { out += '<ul class="radar-intro-list">'; inList = true; }
+          out += '<li>' + esc(bullet[1]) + '</li>';
+        } else {
+          if (inList) { out += '</ul>'; inList = false; }
+          out += '<div class="radar-intro-line">' + esc(line) + '</div>';
+        }
+      });
+      if (inList) out += '</ul>';
+      return out;
+    }
+
     function renderRadar(container, data) {
       if (!container) return;
       var projects = (data && data.projects) || [];
@@ -670,11 +693,15 @@
         '<div class="radar-desc">' + esc(pick.description || '') + '</div>';
       var intro = String(pick.readme_intro || '').trim();
       if (intro) {
-        html += '<div class="radar-intro"><span class="radar-intro-label">项目简介</span>' + esc(intro) + '</div>';
+        html += '<div class="radar-intro"><span class="radar-intro-label">项目简介</span>' +
+          renderIntroLines(intro) + '</div>';
       }
-      var excerpt = String(pick.readme_excerpt || '').trim();
+      var excerpt = String(pick.readme_excerpt || '')
+        .replace(/```[a-zA-Z0-9]*\n?/g, '')
+        .replace(/\n{2,}/g, '\n')
+        .trim();
       if (excerpt) {
-        html += '<details class="radar-readme" open><summary>README 上手摘录（可直接照着跑）</summary>' +
+        html += '<details class="radar-readme" open><summary>怎么用 · 快速上手（README 原文）</summary>' +
           '<pre>' + esc(excerpt) + '</pre></details>';
       }
       html += '</div>';

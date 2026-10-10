@@ -29,7 +29,7 @@
       "license": "Apache-2.0",
       "has_install_docs": false,
       "mentions": 0,
-      "readme_excerpt": "",
+      "readme_excerpt": "# Headless: open, edit, save\nphotocraft-cli run wave.psd \\\n  --cmd filter.sharpen.smartSharpen     --params '{\"amount\":80}' \\\n  --cmd layer.newAdjustmentLayer.curves --params '{\"points\":[[0,0],[64,48],[192,212],[255,255]]}' \\\n  --out wave-final.png\n\n# Apply one action list to a folder of images\nphotocraft-cli batch --actions grade.json --in ./raw --out ./graded\n\n# Every subcommand explains itself\nphotocraft-cli batch --help\n\n# Let an agent drive it over MCP (headless, or bridged to the running app)\nphotocraft-cli mcp",
       "score": 0.3504,
       "score_parts": {
         "velocity": 0.3409,
@@ -37,7 +37,7 @@
         "cross_heat": 0.0,
         "ai_bonus": 0.0
       },
-      "readme_intro": "PhotoCraft 是一个完全用 Rust 编写的开源图像编辑项目，旨在以\"洁净室\"方式重新实现 Adobe Photoshop 的核心功能，包括图层、蒙版、调整图层、图层样式、文字、矢量、画笔以及原生 PSD 文件支持，跨 macOS、Windows、Linux、FreeBSD 和 Web 等平台运行。"
+      "readme_intro": "这是什么：PhotoCraft 是用 Rust 从零独立编写的开源图像编辑应用，提供 Adobe Photoshop 的替代选择。\n核心特性：\n- 100% Rust 编写，原生支持 macOS、Windows、Linux、FreeBSD 和 Web 平台\n- 完整支持图层、蒙版、调整图层、图层样式、文字、矢量和画笔\n- 兼容读写真实的 PSD 文件"
     }
   ],
   "meta": {

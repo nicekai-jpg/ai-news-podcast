@@ -14,7 +14,7 @@ from typing import Any
 import httpx
 
 _GITHUB_API = "https://api.github.com"
-_README_MAX_CHARS = 6000
+_README_MAX_CHARS = 40000
 
 
 class GhClient:

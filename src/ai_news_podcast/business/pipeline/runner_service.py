@@ -40,9 +40,12 @@ def _make_radar_intro_fallback(llm_cfg: dict[str, Any]) -> Callable[[str, str, s
         from ai_news_podcast.business.pipeline.llm_client_service import call_llm
 
         prompt = (
-            "用一到两句简体中文,客观介绍这个开源项目是做什么的、解决什么问题。"
-            "只依据下面的信息,不要编造数字或不存在的功能,不要输出标题或 Markdown。\n"
-            f"仓库:{repo}\nGitHub 描述:{description}\nREADME 节选:\n{readme[:3000]}"
+            f"下面是某开源项目的信息:\n仓库:{repo}\nGitHub 描述:{description}\n"
+            f"README 节选:\n{readme[:3000]}\n\n"
+            "你是科技媒体编辑。请只依据上面信息,用简体中文按固定模板介绍这个项目,"
+            "不要编造功能或数字。严格只输出以下内容(不要重复输入信息,不要多余文字,不要 markdown 加粗):\n"
+            "这是什么：<一句话,20-40 字,说明它做什么、解决什么问题>\n"
+            "核心特性：\n- <要点一>\n- <要点二>\n- <要点三>"
         )
         return call_llm(prompt, llm_cfg)
 

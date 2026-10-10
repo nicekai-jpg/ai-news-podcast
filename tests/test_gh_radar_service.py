@@ -8,7 +8,7 @@ from pathlib import Path
 import httpx
 import pytest
 
-from ai_news_podcast.business.pipeline.gh_client_service import GhClient
+from ai_news_podcast.business.pipeline.gh_client_service import _README_MAX_CHARS, GhClient
 from ai_news_podcast.business.pipeline.gh_radar_service import (
     RadarProject,
     _hands_on_excerpt,
@@ -87,7 +87,7 @@ class TestGhClient:
 
     @pytest.mark.asyncio
     async def test_fetch_readme_success_raw_accept_and_truncation(self) -> None:
-        body = "x" * 7000
+        body = "x" * (_README_MAX_CHARS + 1000)
         seen: dict[str, str] = {}
 
         def handler(request: httpx.Request) -> httpx.Response:
@@ -97,7 +97,7 @@ class TestGhClient:
         gh = _gh(handler)
         text = await gh.fetch_readme_text("owner/repo")
         assert seen["accept"] == "application/vnd.github.raw+json"
-        assert text == body[:6000]
+        assert text == body[:_README_MAX_CHARS]
         await gh.aclose()
 
 

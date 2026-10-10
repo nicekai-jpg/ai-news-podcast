@@ -155,7 +155,9 @@ def _hands_on_excerpt(readme: str, max_chars: int) -> str:
                 start = max(0, i)
                 break
     if start < 0:
-        return ""
+        # 退化为第一个围栏代码块(常是安装/运行命令)
+        m = re.search(r"```[^\n]*\n(.*?)```", readme, re.DOTALL)
+        return m.group(1).strip()[:max_chars] if m else ""
     picked: list[str] = []
     size = 0
     for line in lines[start:]:
