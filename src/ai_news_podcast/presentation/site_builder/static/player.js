@@ -648,26 +648,41 @@
       return '⭐ ' + (p.stars == null ? '?' : p.stars) + delta;
     }
 
-    function renderIntroLines(text) {
-      var inList = false;
-      var out = '';
+    var INTRO_LABELS = ['这是什么', '核心特性', '适合谁', '为什么值得关注', '上手门槛', '怎么用'];
+
+    function renderIntro(text) {
+      var sections = [];
+      var cur = null;
+      function ensure() {
+        if (!cur) { cur = { label: '', text: [], items: [] }; sections.push(cur); }
+        return cur;
+      }
       String(text || '').split('\n').forEach(function(raw) {
         var line = raw.trim();
-        if (!line) {
-          if (inList) { out += '</ul>'; inList = false; }
+        if (!line) return;
+        if (/^(仓库|GitHub 描述|GitHub|README)[:：]/.test(line)) return; // 过滤回显的输入
+        var m = line.match(/^([^：:]{2,10})[：:]\s*(.*)$/);
+        if (m && INTRO_LABELS.indexOf(m[1]) >= 0) {
+          cur = { label: m[1], text: m[2] ? [m[2]] : [], items: [] };
+          sections.push(cur);
           return;
         }
-        if (/^(仓库|GitHub 描述|GitHub|README)[:：]/.test(line)) return; // 过滤 LLM 回显的输入
-        var bullet = line.match(/^[-•·*]\s*(.+)$/);
-        if (bullet) {
-          if (!inList) { out += '<ul class="radar-intro-list">'; inList = true; }
-          out += '<li>' + esc(bullet[1]) + '</li>';
-        } else {
-          if (inList) { out += '</ul>'; inList = false; }
-          out += '<div class="radar-intro-line">' + esc(line) + '</div>';
-        }
+        var b = line.match(/^[-•·*]\s*(.+)$/);
+        if (b) { ensure().items.push(b[1]); return; }
+        ensure().text.push(line);
       });
-      if (inList) out += '</ul>';
+      var out = '';
+      sections.forEach(function(s) {
+        out += '<div class="ri-sec">';
+        if (s.label) out += '<div class="ri-label">' + esc(s.label) + '</div>';
+        if (s.text.length) out += '<p class="ri-text">' + esc(s.text.join('')) + '</p>';
+        if (s.items.length) {
+          out += '<ul class="ri-list">';
+          s.items.forEach(function(it) { out += '<li>' + esc(it) + '</li>'; });
+          out += '</ul>';
+        }
+        out += '</div>';
+      });
       return out;
     }
 
@@ -693,8 +708,8 @@
         '<div class="radar-desc">' + esc(pick.description || '') + '</div>';
       var intro = String(pick.readme_intro || '').trim();
       if (intro) {
-        html += '<div class="radar-intro"><span class="radar-intro-label">项目简介</span>' +
-          renderIntroLines(intro) + '</div>';
+        html += '<div class="radar-intro"><div class="radar-intro-label">项目简介</div>' +
+          renderIntro(intro) + '</div>';
       }
       var excerpt = String(pick.readme_excerpt || '')
         .replace(/```[a-zA-Z0-9]*\n?/g, '')
