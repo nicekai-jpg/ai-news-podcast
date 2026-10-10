@@ -713,17 +713,18 @@
         '<div class="radar-chips">' + chips + '</div>' +
         (pick.description ? '<p class="radar-desc">' + esc(pick.description) + '</p>' : '');
       var intro = String(pick.readme_intro || '').trim();
-      if (intro) {
-        html += '<div class="radar-intro"><div class="radar-intro-label">项目简介</div>' +
-          renderIntro(intro) + '</div>';
-      }
       var excerpt = String(pick.readme_excerpt || '')
         .replace(/```[a-zA-Z0-9]*\n?/g, '')
         .replace(/\n{2,}/g, '\n')
         .trim();
-      if (excerpt) {
-        html += '<details class="radar-readme" open><summary>怎么用 · 快速上手（README 原文）</summary>' +
-          '<pre>' + esc(excerpt) + '</pre></details>';
+      if (intro || excerpt) {
+        html += '<div class="radar-intro"><div class="radar-intro-label">项目简介</div>' +
+          (intro ? renderIntro(intro) : '') +
+          (excerpt
+            ? '<div class="ri-sec"><div class="ri-label">怎么用 · 快速上手</div>' +
+              '<pre class="ri-pre">' + esc(excerpt) + '</pre></div>'
+            : '') +
+          '</div>';
       }
       html += '</div>';
 
