@@ -37,7 +37,7 @@
         "cross_heat": 0.0,
         "ai_bonus": 0.0
       },
-      "readme_intro": "这是什么：PhotoCraft 是用 Rust 从零独立编写的开源图像编辑应用，提供 Adobe Photoshop 的替代选择。\n核心特性：\n- 100% Rust 编写，原生支持 macOS、Windows、Linux、FreeBSD 和 Web 平台\n- 完整支持图层、蒙版、调整图层、图层样式、文字、矢量和画笔\n- 兼容读写真实的 PSD 文件"
+      "readme_intro": "这是什么：PhotoCraft 是 ArtCraft 社区推出的开源图像编辑项目，目标是用纯 Rust 从零重新实现 Adobe Photoshop 的核心能力，让用户在桌面与 Web 上获得原生、可离线的专业级图像编辑体验。它重点解决两大问题：一是摆脱对闭源商业软件和 Electron 类 Web 套壳应用的依赖，二是保证对真实 PSD 分层文档的读写兼容。\n\n核心特性：\n- 真实 PSD 兼容：支持打开、编辑并保存带图层、蒙版、调整图层、图层样式、文字与矢量的 Photoshop 文档，保留原有渲染。\n- 原生 GPU 渲染：基于 wgpu 的 GPU 合成器（支持 Metal、Vulkan、DX12、WebGPU）配合写时复制分块与多线程滤镜，强调不依赖 WebView 的原生性能。\n- 面向代理的可控架构：所有操作都是命令，可通过界面、CLI、JSON 控制通道或 MCP 服务器驱动同一套引擎，便于自动化和 AI 集成。\n- Photoshop 风格交互：菜单、快捷键、面板和工具的位置遵循 Photoshop 的习惯，熟悉 Photoshop 的用户可以直接上手。\n\n适合谁：依赖 Photoshop 工作流但希望使用开源、可审计、可脚本化图像编辑工具的设计师、插画师、开发者以及需要自动化图像处理流水线的团队。\n\n为什么值得关注：作为早期 Alpha 的纯 Rust 原生项目，它同时在跨平台原生体验、真实 PSD 兼容以及面向 AI 代理的命令化架构三个方向发力，体现了图像编辑工具向开源化、原生化与可编程化演进的趋势。"
     }
   ],
   "meta": {

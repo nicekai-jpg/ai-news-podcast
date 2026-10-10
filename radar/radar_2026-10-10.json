@@ -32,7 +32,7 @@
         "cross_heat": 0.0,
         "ai_bonus": 0.0
       },
-      "readme_intro": "这是什么：LightCraft 是用纯 Rust 从零编写的开源照片管理与 RAW 开发工具,提供类 Lightroom 的完整后期功能。\n核心特性：\n- 纯 Rust 实现,原生支持 macOS、Windows、Linux,并可通过 WebAssembly 在浏览器中运行\n- 提供编辑、调色、蒙版、预设、照片库组织等完整的照片后期与管理功能\n- 内置 MCP 服务器,支持 AI 代理端到端驱动整个工作流"
+      "readme_intro": "这是什么：LightCraft 是一个用纯 Rust 从零重写的开源照片管理与 RAW 处理软件，目标是对标 Adobe Lightroom，提供非破坏性的本地与浏览器端暗房体验。它解决摄影师对闭源商业软件的依赖问题，让原始照片数据始终保留在用户本地机器上。\n\n核心特性：\n- 全流程非破坏性编辑：所有调整都经过场景参考、广色域、32 位浮点管线渲染，原图不会被修改\n- 多端原生运行：同一份代码同时提供 macOS、Windows、Linux 的桌面应用以及基于 WebAssembly 的浏览器版本\n- AI 代理可驱动：内置 MCP 服务器，端到端支持 AI 代理通过 Model Context Protocol 操作整个工作流\n- 完整的光学与色彩工具集：包含基于引导滤波的局部色调映射、Kelvin/相对白平衡、自动与吸管中性灰、肤色保护 Vibrance 等模块\n\n适合谁：希望摆脱 Lightroom 订阅、关注本地隐私与开源生态，同时需要专业级 RAW 调色与图库管理的摄影师和后期工作者。\n\n为什么值得关注：作为一款年轻且快速迭代的项目，它在 Rust 全栈、原生与 Web 跨端、以及面向 AI 代理的 MCP 集成三个方向同时发力，代表了新一代创意工具的架构趋势。"
     }
   ],
   "meta": {
