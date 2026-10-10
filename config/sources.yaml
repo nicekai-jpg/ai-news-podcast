@@ -69,27 +69,27 @@ sources:
     url: "https://qwenlm.github.io/blog/index.xml"
     category: "official"
     enabled: true
-  - name: "DeepSeek 技术论文源"
+  - name: "arXiv · DeepSeek"
     url: "http://export.arxiv.org/api/query?search_query=abs:DeepSeek+OR+ti:DeepSeek&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
-  - name: "智谱 GLM 技术论文源"
+  - name: "arXiv · 智谱 GLM"
     url: "http://export.arxiv.org/api/query?search_query=abs:GLM-4+OR+ti:GLM-4+OR+abs:ZhipuAI&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
-  - name: "Kimi 月之暗面技术论文源"
-    url: "http://export.arxiv.org/api/query?search_query=abs:Moonshot+OR+abs:Kimi&sortBy=submittedDate&sortOrder=descending&max_results=15"
+  - name: "arXiv · Kimi"
+    url: "http://export.arxiv.org/api/query?search_query=abs:Moonshot+OR+ti:Kimi&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
-  - name: "MiniMax 技术论文源"
-    url: "http://export.arxiv.org/api/query?search_query=abs:MiniMax&sortBy=submittedDate&sortOrder=descending&max_results=15"
+  - name: "arXiv · MiniMax"
+    url: "http://export.arxiv.org/api/query?search_query=ti:MiniMax&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
-  - name: "Anthropic / Claude 技术论文源"
+  - name: "arXiv · Anthropic/Claude"
     url: "http://export.arxiv.org/api/query?search_query=abs:Anthropic+OR+ti:Claude&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
-  - name: "Grok / xAI 技术论文源"
+  - name: "arXiv · Grok/xAI"
     url: "http://export.arxiv.org/api/query?search_query=abs:xAI+OR+ti:Grok&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
@@ -105,23 +105,23 @@ sources:
     url: "https://www.microsoft.com/en-us/research/feed/"
     category: "official"
     enabled: true
-  - name: "Mistral & Meta Llama 技术论文源"
-    url: "http://export.arxiv.org/api/query?search_query=abs:Mistral+OR+abs:Mixtral+OR+abs:Llama&sortBy=submittedDate&sortOrder=descending&max_results=15"
+  - name: "arXiv · Mistral/Meta"
+    url: "http://export.arxiv.org/api/query?search_query=abs:Mistral+OR+abs:Mixtral+OR+ti:Llama&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
-  - name: "腾讯混元技术源"
+  - name: "arXiv · 腾讯混元"
     url: "http://export.arxiv.org/api/query?search_query=abs:Hunyuan&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
-  - name: "字节跳动 AI Lab 技术源"
+  - name: "arXiv · 字节 AI Lab"
     url: "http://export.arxiv.org/api/query?search_query=abs:ByteDance+OR+abs:Seed-TTS&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
-  - name: "上海 AI Lab (书生/InternLM) 技术源"
+  - name: "arXiv · 上海 AI Lab"
     url: "http://export.arxiv.org/api/query?search_query=abs:InternLM&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
-  - name: "百度文心 ERNIE 技术源"
+  - name: "arXiv · 百度文心"
     url: "http://export.arxiv.org/api/query?search_query=abs:ERNIE+OR+abs:PaddlePaddle&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: "research"
     enabled: true
