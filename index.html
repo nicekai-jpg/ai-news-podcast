@@ -550,6 +550,20 @@
     .pub-article:hover .pub-article-title { color: #ffffff; }
     .pub-article .source-chip-arrow { opacity: 0; transition: opacity 0.18s ease; }
     .pub-article:hover .source-chip-arrow { opacity: 1; }
+    .pub-more {
+      margin: 4px;
+      padding: 7px 10px;
+      width: calc(100% - 8px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px dashed rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      color: var(--accent-light);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.18s ease;
+    }
+    .pub-more:hover { background: rgba(255, 255, 255, 0.1); }
 
     /* variant B 特殊布局下隐藏来源页(仅播客 + 日报双栏) */
     body.theme-variant-b #panel-sources { display: none !important; }
@@ -2173,7 +2187,7 @@ body.theme-variant-b .header-brand { display: none; }
     <audio id="main-audio" style="display:none"></audio>
     <audio id="bgm-audio" loop style="display:none"></audio>
     <div class="toast" id="toast">✅ 已复制</div>
-    <div class="footer"><p>AI 每日先锋 · 构建于 2026-10-10 11:28:02</p></div>
+    <div class="footer"><p>AI 每日先锋 · 构建于 2026-10-10 13:40:37</p></div>
   </div>
 
   <script>
@@ -2724,6 +2738,7 @@ body.theme-variant-b .header-brand { display: none; }
     }
 
     var PUB_COLORS = ['#f472b6', '#60a5fa', '#34d399', '#fbbf24', '#a78bfa', '#fb7185', '#22d3ee', '#f59e0b', '#4ade80', '#818cf8', '#e879f9', '#2dd4bf', '#f97316', '#38bdf8', '#c084fc', '#facc15'];
+    var PUB_LIMIT = 12;
 
     function pickSourceColors(names) {
       var used = {};
@@ -2769,17 +2784,28 @@ body.theme-variant-b .header-brand { display: none; }
           '</div>' +
           '<div class="pub-articles">';
         arts.forEach(function(it, i) {
-          html += '<a class="pub-article" href="' + esc(it.href) + '" target="_blank" rel="noopener">' +
+          var more = (i >= PUB_LIMIT) ? ' data-more="1" style="display:none"' : '';
+          html += '<a class="pub-article"' + more + ' href="' + esc(it.href) + '" target="_blank" rel="noopener">' +
             '<span class="pub-article-num">' + (i + 1) + '</span>' +
             '<span class="pub-article-title">' + esc(it.title) + '</span>' +
             '<span class="source-chip-arrow">↗</span>' +
           '</a>';
         });
+        if (arts.length > PUB_LIMIT) {
+          html += '<button class="pub-more" onclick="expandPubGroup(this)">展开全部（共 ' + arts.length + ' 条）</button>';
+        }
         html += '</div></section>';
       });
       html += '</div>';
       container.innerHTML = html;
       return order.length;
+    }
+
+    function expandPubGroup(btn) {
+      var group = btn.closest ? btn.closest('.pub-group') : null;
+      if (!group) return;
+      group.querySelectorAll('.pub-article[data-more="1"]').forEach(function(el) { el.style.display = ''; });
+      btn.style.display = 'none';
     }
 
     function setPlaybackMode(mode) {
