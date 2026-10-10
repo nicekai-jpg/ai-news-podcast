@@ -393,7 +393,7 @@ async def build_radar(
         )
         preferred = [str(t).lower() for t in gcfg.get("preferred_topics", [])]
         excerpt_chars = int(gcfg.get("readme_excerpt_chars", 1200))
-        intro_chars = int(gcfg.get("readme_intro_chars", 400))
+        intro_chars = int(gcfg.get("readme_intro_chars", 800))
 
         projects: list[RadarProject] = []
         for item in candidates:

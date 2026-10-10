@@ -24,7 +24,7 @@
         "cross_heat": 0.0,
         "ai_bonus": 0.0
       },
-      "readme_intro": "这是什么：Strata 是开源推理引擎，普通 PC 本地运行 1250 亿参数大模型。\n\n核心特性：\n- 兼容 NVIDIA RTX 20-50 系或 AMD Radeon 多款显卡，仅需 12GB 显存\n- 支持 Windows / Linux 一键安装，本地暴露兼容 OpenAI / Anthropic 的 API\n- 提供对话、代码生成与图像理解功能，所有数据全程在本地处理"
+      "readme_intro": "这是什么：Strata 是一个面向消费级硬件的开源推理引擎，能够在普通游戏 PC（NVIDIA RTX 20/30/40/50 系列或 AMD Radeon RX 7900/7800/7700/9060/9070 系列显卡，12GB 以上显存）上本地运行 1250 亿参数的 Qwen3.8-Flash-Next 大模型，提供一键安装（Windows / Linux）、本地 OpenAI / Anthropic 兼容接口，并可选支持图像输入。它主要解决大模型通常依赖服务器、数据上云的问题，让普通用户在自己电脑上即可离线使用超大参数 AI 模型。\n\n核心特性：\n- 一键安装与本地 API：Windows 和 Linux 提供一键安装，安装后即可在本地 localhost 获得 OpenAI / Anthropic 兼容接口，方便接入现有应用和编码代理。\n- 量化与多模型适配：支持 Q2_0、IQ2_XS、IQ3_XXS、IQ3_S、Coder 等多种量化版本，可在 12GB 显存的显卡上运行，并通过 32GB / 64GB 内存决定可加载的模型规格。\n- 多 GPU 与硬件兼容：支持两张或三张显卡分担模型负载，并官方支持 NVIDIA / AMD 主流显卡，社区实验性支持 Tesla P40 / V100、GTX 10、Intel Arc、AMD Strix Halo 等老旧或非常规硬件。\n\n适合谁：拥有 12GB 以上显存游戏 PC、想完全离线本地运行 125B 参数级别大模型进行对话、代码、图片理解，并希望兼容 OpenAI / Anthropic 接口的个人开发者和技术爱好者。\n\n为什么值得关注：Strata 把\"超大参数模型在消费级显卡上本地跑得动、用得起\"这件事做成了一键安装的完整体验（自带本地 API、128K 上下文、多卡扩展），代表了本地大模型推理走向更大众化、"
     }
   ],
   "meta": {
