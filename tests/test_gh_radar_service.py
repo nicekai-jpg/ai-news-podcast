@@ -12,6 +12,7 @@ from ai_news_podcast.business.pipeline.gh_client_service import GhClient
 from ai_news_podcast.business.pipeline.gh_radar_service import (
     RadarProject,
     _hands_on_excerpt,
+    _readme_intro,
     build_radar,
     count_news_mentions,
     score_project,
@@ -332,3 +333,29 @@ class TestBuildRadar:
         gh = Boom([])
         with pytest.raises(RuntimeError):
             await build_radar(GCFG, "2026-09-09", tmp_path, [], client=gh, now=_NOW)
+
+
+class TestReadmeIntro:
+    def test_html_and_badges_stripped(self) -> None:
+        readme = (
+            '<h1 align="center">LightCraft</h1>\n'
+            '<p align="center"><b>Photo library and raw development in pure Rust.</b><br>'
+            "Native on macOS and Windows.</p>\n"
+            '<img src="https://img.shields.io/badge/pure-Rust-x">\n'
+            "## Quick start\ncargo run\n"
+        )
+        intro = _readme_intro(readme, 400)
+        assert "pure Rust" in intro
+        assert "Native on macOS" in intro
+        assert "shields.io" not in intro
+        assert "<" not in intro
+        assert "Quick start" not in intro  # 只取首个章节标题之前
+
+    def test_empty_readme(self) -> None:
+        assert _readme_intro("", 400) == ""
+
+    def test_excerpt_matches_heading_with_space(self) -> None:
+        readme = "# Hot\nintro\n\n## Quick start\ncargo run --release\n\n## License\nMIT"
+        excerpt = _hands_on_excerpt(readme, 1200)
+        assert "cargo run" in excerpt
+        assert "MIT" not in excerpt

@@ -668,6 +668,10 @@
           (pick.license ? ' · License: ' + esc(pick.license) : '') +
         '</div>' +
         '<div class="radar-desc">' + esc(pick.description || '') + '</div>';
+      var intro = String(pick.readme_intro || '').trim();
+      if (intro) {
+        html += '<div class="radar-intro"><span class="radar-intro-label">项目简介</span>' + esc(intro) + '</div>';
+      }
       var excerpt = String(pick.readme_excerpt || '').trim();
       if (excerpt) {
         html += '<details class="radar-readme" open><summary>README 上手摘录（可直接照着跑）</summary>' +

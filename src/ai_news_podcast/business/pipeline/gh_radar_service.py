@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import logging
 import re
+from collections.abc import Callable
 from dataclasses import asdict, dataclass, field
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -48,6 +49,39 @@ _EXCERPT_HEADINGS = (
     "快速开始",
     "上手",
 )
+# 去掉空白后再匹配:"Quick start"/"Getting started" 这类带空格的标题也能命中
+_EXCERPT_HEADINGS_COMPACT = tuple(re.sub(r"\s+", "", h) for h in _EXCERPT_HEADINGS)
+
+_HTML_TAG_RE = re.compile(r"<[^>]+>")
+_MD_IMAGE_RE = re.compile(r"!\[[^\]]*\]\([^)]*\)")
+
+
+def _readme_intro(readme: str, max_chars: int) -> str:
+    """从 README 开头抽取一段「项目是做什么的」简介。
+
+    剥掉 HTML 标签与 badge 图片,取首个章节标题之前的连续描述性文字。
+    纯文本抽取,不含 LLM,保证与原文一致。
+    """
+    if not readme:
+        return ""
+    text = _MD_IMAGE_RE.sub(" ", _HTML_TAG_RE.sub(" ", readme))
+    out: list[str] = []
+    size = 0
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        if line.startswith("#"):
+            if out:
+                break
+            continue
+        if set(line) <= set("-=*_>· "):  # 分隔线/装饰
+            continue
+        out.append(line)
+        size += len(line) + 1
+        if size >= max_chars:
+            break
+    return " ".join(out).strip()[:max_chars]
 
 
 @dataclass
@@ -68,6 +102,7 @@ class RadarProject:
     has_install_docs: bool
     mentions: int
     readme_excerpt: str = ""
+    readme_intro: str = ""
     score: float = 0.0
     score_parts: dict[str, float] = field(default_factory=dict)
 
@@ -108,7 +143,9 @@ def _hands_on_excerpt(readme: str, max_chars: int) -> str:
     start = -1
     for i, line in enumerate(lines):
         stripped = line.strip().lower()
-        if stripped.startswith("#") and any(h in stripped for h in _EXCERPT_HEADINGS):
+        if stripped.startswith("#") and any(
+            h in re.sub(r"\s+", "", stripped) for h in _EXCERPT_HEADINGS_COMPACT
+        ):
             start = i + 1
             break
     if start < 0:
@@ -266,6 +303,33 @@ def _load_recent_picks(output_dir: Path, window_days: int, today: str) -> set[st
     return picked
 
 
+async def _probe_readme(
+    client: GhClient,
+    p: RadarProject,
+    *,
+    excerpt_chars: int,
+    intro_chars: int,
+    intro_min: int,
+    intro_fallback: Callable[[str, str, str], str | None] | None,
+) -> None:
+    """探测单个项目的 README:抽取上手摘录 + 项目简介(简介不足时用 LLM 兜底)。"""
+    try:
+        readme = await client.fetch_readme_text(p.repo)
+        p.has_install_docs = _has_install_docs(readme)
+        p.readme_excerpt = _hands_on_excerpt(readme, excerpt_chars)
+        intro = _readme_intro(readme, intro_chars)
+        if len(intro) < intro_min and intro_fallback and readme:
+            try:
+                generated = intro_fallback(p.repo, p.description, readme)
+                if generated:
+                    intro = str(generated).strip()[:intro_chars]
+            except Exception as e:
+                logger.warning("radar intro LLM fallback failed for %s: %s", p.repo, e)
+        p.readme_intro = intro
+    except Exception as e:  # 单仓库 README 拉取失败不致命
+        logger.warning("README probe failed for %s: %s", p.repo, e)
+
+
 async def build_radar(
     gcfg: dict[str, Any],
     date_str: str,
@@ -274,6 +338,7 @@ async def build_radar(
     *,
     client: GhClient | None = None,
     now: datetime | None = None,
+    intro_fallback: Callable[[str, str, str], str | None] | None = None,
 ) -> dict[str, Any]:
     """构建当日项目雷达。硬失败直接抛异常,由调用方决定降级。"""
     now = now or datetime.now(tz=UTC)
@@ -323,18 +388,22 @@ async def build_radar(
         )
         preferred = [str(t).lower() for t in gcfg.get("preferred_topics", [])]
         excerpt_chars = int(gcfg.get("readme_excerpt_chars", 1200))
+        intro_chars = int(gcfg.get("readme_intro_chars", 400))
+        intro_min = int(gcfg.get("readme_intro_min_chars", 60))
 
         projects: list[RadarProject] = []
         for item in candidates:
             if str(item.get("full_name", "")) in recent_picks:
                 continue
             p = _to_project(item, prev_stars, news_titles)
-            try:
-                readme = await client.fetch_readme_text(p.repo)
-                p.has_install_docs = _has_install_docs(readme)
-                p.readme_excerpt = _hands_on_excerpt(readme, excerpt_chars)
-            except Exception as e:  # 单仓库 README 拉取失败不致命
-                logger.warning("README probe failed for %s: %s", p.repo, e)
+            await _probe_readme(
+                client,
+                p,
+                excerpt_chars=excerpt_chars,
+                intro_chars=intro_chars,
+                intro_min=intro_min,
+                intro_fallback=intro_fallback,
+            )
             score_project(p, now=now, preferred_topics=preferred)
             projects.append(p)
 

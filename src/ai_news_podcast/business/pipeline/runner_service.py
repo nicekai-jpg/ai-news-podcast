@@ -13,6 +13,7 @@
 from __future__ import annotations
 
 import logging
+from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -30,6 +31,22 @@ from ai_news_podcast.data.config.models_dao import AppConfig
 from ai_news_podcast.data.utils_dao import read_json
 
 log = logging.getLogger(__name__)
+
+
+def _make_radar_intro_fallback(llm_cfg: dict[str, Any]) -> Callable[[str, str, str], str | None]:
+    """雷达「项目简介」的 LLM 兜底:README 抽取不到时,让 LLM 依据原文写一两句。"""
+
+    def _fallback(repo: str, description: str, readme: str) -> str | None:
+        from ai_news_podcast.business.pipeline.llm_client_service import call_llm
+
+        prompt = (
+            "用一到两句简体中文,客观介绍这个开源项目是做什么的、解决什么问题。"
+            "只依据下面的信息,不要编造数字或不存在的功能,不要输出标题或 Markdown。\n"
+            f"仓库:{repo}\nGitHub 描述:{description}\nREADME 节选:\n{readme[:3000]}"
+        )
+        return call_llm(prompt, llm_cfg)
+
+    return _fallback
 
 
 def _to_dict(cfg: AppConfig | dict[str, Any]) -> dict[str, Any]:
@@ -195,7 +212,13 @@ async def run_pipeline(  # noqa: PLR0915
         )
         try:
             news_titles = [item.title for item in raw_items]
-            brief["radar"] = await build_radar(gh_radar_cfg, date_str, data_dir, news_titles)
+            brief["radar"] = await build_radar(
+                gh_radar_cfg,
+                date_str,
+                data_dir,
+                news_titles,
+                intro_fallback=_make_radar_intro_fallback(cfg_dict.get("llm", {})),
+            )
             event_bus.emit(
                 StageCompleted(
                     stage="gh_radar",
