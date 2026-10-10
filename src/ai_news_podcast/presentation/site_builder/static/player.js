@@ -545,6 +545,7 @@
     }
 
     var PUB_COLORS = ['#f472b6', '#60a5fa', '#34d399', '#fbbf24', '#a78bfa', '#fb7185', '#22d3ee', '#f59e0b', '#4ade80', '#818cf8', '#e879f9', '#2dd4bf', '#f97316', '#38bdf8', '#c084fc', '#facc15'];
+    var PUB_LIMIT = 12;
 
     function pickSourceColors(names) {
       var used = {};
@@ -590,17 +591,28 @@
           '</div>' +
           '<div class="pub-articles">';
         arts.forEach(function(it, i) {
-          html += '<a class="pub-article" href="' + esc(it.href) + '" target="_blank" rel="noopener">' +
+          var more = (i >= PUB_LIMIT) ? ' data-more="1" style="display:none"' : '';
+          html += '<a class="pub-article"' + more + ' href="' + esc(it.href) + '" target="_blank" rel="noopener">' +
             '<span class="pub-article-num">' + (i + 1) + '</span>' +
             '<span class="pub-article-title">' + esc(it.title) + '</span>' +
             '<span class="source-chip-arrow">↗</span>' +
           '</a>';
         });
+        if (arts.length > PUB_LIMIT) {
+          html += '<button class="pub-more" onclick="expandPubGroup(this)">展开全部（共 ' + arts.length + ' 条）</button>';
+        }
         html += '</div></section>';
       });
       html += '</div>';
       container.innerHTML = html;
       return order.length;
+    }
+
+    function expandPubGroup(btn) {
+      var group = btn.closest ? btn.closest('.pub-group') : null;
+      if (!group) return;
+      group.querySelectorAll('.pub-article[data-more="1"]').forEach(function(el) { el.style.display = ''; });
+      btn.style.display = 'none';
     }
 
     function setPlaybackMode(mode) {

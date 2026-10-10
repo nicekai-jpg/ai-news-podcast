@@ -542,6 +542,20 @@
     .pub-article:hover .pub-article-title { color: #ffffff; }
     .pub-article .source-chip-arrow { opacity: 0; transition: opacity 0.18s ease; }
     .pub-article:hover .source-chip-arrow { opacity: 1; }
+    .pub-more {
+      margin: 4px;
+      padding: 7px 10px;
+      width: calc(100% - 8px);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px dashed rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      color: var(--accent-light);
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.18s ease;
+    }
+    .pub-more:hover { background: rgba(255, 255, 255, 0.1); }
 
     /* variant B 特殊布局下隐藏来源页(仅播客 + 日报双栏) */
     body.theme-variant-b #panel-sources { display: none !important; }
