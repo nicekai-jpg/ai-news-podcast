@@ -23,7 +23,7 @@
       "license": "MIT",
       "has_install_docs": false,
       "mentions": 0,
-      "readme_excerpt": "",
+      "readme_excerpt": "**1 · Install.** Download the app from **[usemagpie.ai](https://usemagpie.ai)**, or run:\n\n```sh\ncurl -fsSL https://usemagpie.ai/install.sh | sh\n```\n\n<sub>Mac builds are signed and notarised, and every build updates itself. Behind a firewall, use `--proxy` or `--mirror`. Or `go install github.com/yetone/magpie@latest`, or the [Docker image](https://usemagpie.ai/docs/docker).</sub>\n\n**2 · Add a provider.** Open magpie and go to **Providers → Add provider**. Pick a preset and paste a key, or sign in with a subscription.\n\n**3 · Pick a model** for each agent on the **Agents** page. Start a new session and it's on the new model.\n\nOr do it all from the terminal:\n\n```sh\nmagpie provider add deepseek sk-…              # a preset needs only the key\nmagpie claude deepseek/deepseek-v4-pro          # Claude Code on DeepSeek\nmagpie codex moonshot/kimi-k2.5                 # Codex on Kimi\nmagpie group add \"Opus anywhere\" models=claude/claude-opus-5-5,copilot/claude-opus-5.5 routing=smart\nmagpie claude group/opus-anywhere               # fails over between subscriptions\nmagpie save work && magpie use work             # profiles\nmagpie quota                                    # what's left on every ",
       "score": 0.5573,
       "score_parts": {
         "velocity": 0.5547,
@@ -31,7 +31,7 @@
         "cross_heat": 0.0,
         "ai_bonus": 0.1
       },
-      "readme_intro": "**Claude Code on Kimi. Codex on DeepSeek. Gemini CLI on GLM. OpenCode on your ChatGPT plan.** Switch any of them from the menu bar. One local gateway serves them all, and when a quota runs out, it quietly moves on to the next account. [ ](https://github.com/yetone/magpie-releases/releases/latest) [ ](https://github.com/yetone/magpie/stargazers) [ ](https://discord.gg/vGSnD3ZKQF) [ ](LICENSE) **[Do"
+      "readme_intro": "magpie 是一个面向多种 AI 编程代理（如 Claude Code、Codex、Gemini CLI 等）的统一模型路由桌面应用，让用户可以从单一菜单栏列表为不同代理切换底层模型（如 DeepSeek、Kimi、GLM 或自己的订阅账号），并通过本地网关在配额耗尽时自动切换到下一个账号或模型，从而解决多代理、多供应商、多账号配置分散且互不通用的问题。"
     },
     {
       "repo": "shihabal3amri/DiPlay",
@@ -55,7 +55,7 @@
         "cross_heat": 0.0,
         "ai_bonus": 0.0
       },
-      "readme_intro": "**CarPlay for compatible BYD Android head units.** Wired and wireless, with the familiar DiAuto interface. Independent app: `com.shihab.diplay`. > **BYD support scope:** These projects focus on BYD cars. They may work on other brands, but other brands are unsupported and there are no plans to add support or fix brand-specific incompatibilities. [Download & website](https://shihabal3amri.github.io/"
+      "readme_intro": "DiPlay 是一个面向兼容 Android 车机（重点支持比亚迪车型）的独立 CarPlay 接收应用，支持有线和无线两种连接方式。它可直接安装在车机上使用，无需越狱、外接盒、Mac 或苹果账号，提供了类似 DiAuto 的界面，并支持本地诊断导出等功能，但目前为公开预览版，并非经过 Apple 认证的产品。"
     }
   ],
   "meta": {
