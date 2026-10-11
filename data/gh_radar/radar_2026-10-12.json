@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-12",
+  "generated_at": "2026-10-11T21:07:26.096207+00:00",
+  "projects": [
+    {
+      "repo": "Ebony-Vinyl/dsh-our-free-model",
+      "url": "https://github.com/Ebony-Vinyl/dsh-our-free-model",
+      "description": "在 dsh 里装上这个插件即可，无需登录、注册或填 API Key，就能使用包括 DeepSeek V4.1 Flash、Kimi K3 在内的前沿模型——完全免费，不限量。 All you do is install this plugin in dsh: no login, no sign-up, no API key — the frontier models are just there, DeepSeek V4.1 Flash and Kimi K3 among them. Completely free, with no usage cap.",
+      "language": "JavaScript",
+      "topics": [
+        "ai-agents",
+        "deepseek",
+        "deepseek-harness",
+        "developer-tools",
+        "dsh",
+        "dsh-plugin",
+        "free-model",
+        "llm",
+        "model-provider",
+        "openai-compatible"
+      ],
+      "stars": 8823,
+      "delta_stars": 2052,
+      "is_new": false,
+      "created_at": "2026-09-24T16:17:19Z",
+      "pushed_at": "2026-10-11T15:01:10Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 4,
+      "readme_excerpt": "**命令行（纯 dsh web）**\n\n```\ndsh plugin --profile web add /绝对路径/dsh-our-free-model\n```\n\n安装完成后重启应用一次。`--profile` 填写实际使用的 profile 名称。\n\n**DSHEAC AIO / 桌面端：请先阅读本节**\n\n桌面端在启动 web 服务之前会执行一道 profile 闸门。其扫描器仅放行 dsh 自身在\n.dsh-module-fallback 下生成的链接；profile 目录树中出现任何其它符号链接或目录\njunction，应用将拒绝启动并报错：\n\n```\nPROFILE_UPGRADE_REQUIRED: offline dependency migration is not yet available\n```\n\n因此桌面端不要使用 `link:` 依赖安装，也不要创建 junction。请使用应用内的插件管理器，\n或放置一个真实目录。\n\n以真实目录手工安装时，在 /profiles// 下完成三项操作：\n\n1. 将发布文件复制至 node_modules/dsh-our-free-model/\n（index.js、client.js、adapter/、src/、locale/、icon.svg、cordis.patch.yml、package.json——adapter/ 不可遗漏：index.js 首行即 import 该目录）\n2. 在 dependencies 中加入 \"dsh-our-free-model\": \"2.1.0\"——该版本号跟随仓库 package.json 的 version（版本变更时同步，当前为 2.1.0），不要沿用旧值，也不要写为 link:\n3. 在 dsh.profile.bundles 末尾追加 \"dsh-our-free-model\"\n\n不要再向 cordis.patch.yml 添加条目。被 dsh.profile.bundles 引用的包，其自带的\npatch 层会自动生效；两处同时注册将报错 duplicate loader entry id: our-free-model。\n\n**整合包（托管安装）**\n\n插件由整合包（EAC 整合包、Mojobox 等）安装时，更新时机与文件字节由安装方控制：\n安装时将 bundle config 设为 distribution: 'managed'（或向 settings.json 写入\n同一字段），插件的应用内升级、公告 feed 与热重载即全部停用——两个写入方同时操作\n同一安装目录只会导致目录损坏；模型 lane 不受影响。相关验收见\nscripts/offline-test.mjs；目录就绪记录（manifest 0.15 / 出处 / 许可 / 完整性）",
+      "readme_intro": "**简体中文** | [English](README_EN.md) Trendshift JavaScript 周榜第 1 · 2026-10-05 至 2026-10-11 · 更新中，截至 2026-10-11 > 你只需在 dsh 里装上这个插件，无需登录、注册、填 API Key 或任何其它操作， > 就能用上包括 DeepSeek V4.1 Flash、Kimi K3 在内的前沿模型——完全免费，不限量。 > *All you do is install this plugin in dsh: no login, no sign-up, no API key, nothing > else. The frontier models are just there — DeepSeek V4.1 Flash, Kimi K3 and the rest. > Free, with no usage cap.* > 模型清单跟随上游刷新，可用性由**你自己这台机器的网络出口**实测得出， > 思考强度下发的是真实预算而不是提示词，另附一个 OpenAI 兼容的本地转发端口。 > 纯插件挂载：不改内核、无构建步骤、零依赖。",
+      "score": 1.0,
+      "score_parts": {
+        "velocity": 1.0,
+        "hands_on": 1.0,
+        "cross_heat": 1.0,
+        "ai_bonus": 0.1
+      }
+    }
+  ],
+  "meta": {
+    "pick_repo": "Ebony-Vinyl/dsh-our-free-model",
+    "runner_up_repos": [],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 11
+  }
+}
