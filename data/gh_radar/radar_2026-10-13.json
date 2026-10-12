@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-13",
+  "generated_at": "2026-10-12T23:49:21.255423+00:00",
+  "projects": [
+    {
+      "repo": "storytold/wordcraft",
+      "url": "https://github.com/storytold/wordcraft",
+      "description": "An open-source, clean-room reimplementation of Microsoft Word in pure Rust",
+      "language": "Rust",
+      "topics": [],
+      "stars": 9082,
+      "delta_stars": 3582,
+      "is_new": false,
+      "created_at": "2026-10-07T08:34:24Z",
+      "pushed_at": "2026-10-12T16:22:14Z",
+      "license": "Apache-2.0",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "```sh\ngit clone https://github.com/storytold/wordcraft\ncd wordcraft\ncargo run --release -p wordcraft -- --sample        # the desktop app with the sample document\ncargo run --release -p wordcraft -- report.docx     # open a document\n```\n\nCommand line:\n\n```sh\nwordcraft-cli convert report.docx report.pdf        # docx, pdf, odt, rtf, html, md, tex, txt, png\nwordcraft-cli text report.docx                      # plain text\nwordcraft-cli inspect report.docx                   # structure as JSON\nwordcraft-cli run --template sample \\\n  --cmd 'select.text={\"text\":\"Membership\"}' --cmd format.bold --save out.docx\n```\n\nWeb: `cd apps/wordcraft-web && trunk serve`, then open <http://127.0.0.1:8771/?sample>.",
+      "readme_intro": "WordCraft Writing and document design; an open-source, clean-room reimplementation of Microsoft Word, rebuilt in pure Rust. A fast, open-source word processor with the Word workflow you already know: the ribbon, styles, tables, track changes, references and mail merge. It reads and writes .docx, runs natively on macOS, Windows, Linux and BSD, and in the browser via WebAssembly. By the ArtCraft team. WordCraft on getartcraft.com   · ArtCraft  · All Crafting Apps The Open Studio Handbook , WordCraft's built-in sample: the ribbon, live Styles gallery, rulers and the Navigation pane. > [!NOTE] > **ArtCraft is a community of artists from all walks of life.** Painters, photographers, > filmmakers, illustrators, designers, animators, hobbyists, and people who picked up a pencil > last week. If yo",
+      "score": 0.68,
+      "score_parts": {
+        "velocity": 1.0,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    }
+  ],
+  "meta": {
+    "pick_repo": "storytold/wordcraft",
+    "runner_up_repos": [],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 11
+  }
+}
