@@ -1,0 +1,681 @@
+{
+  "episode_id": "2026-10-16",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友们大家好，欢迎收听AI 每日先锋，今天是2026年10月16日。我是苏晴。",
+      "start": 1.0,
+      "duration": 9.273,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 10.722,
+      "duration": 1.48,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天科技圈有点热闹你知道吗？DeepMind 一天之内连发三条，我早上刷到的时候整个人都愣了。",
+      "start": 12.699,
+      "duration": 10.144,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "一天三连？这阵仗确实不常见。你先说说核心是什么？",
+      "start": 23.296,
+      "duration": 5.355,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "核心就是 Gemini 4 Argon，这名字你应该有印象——Argon 是他们最新一代的前沿模型。",
+      "start": 29.056,
+      "duration": 7.88,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "对，Argon 这一代主打的就是走出对话框。这次具体怎么落地？",
+      "start": 37.369,
+      "duration": 5.399,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "我跟你说，第一个重头戏是 Gemini 4 Argon for Robotics。你注意啊，它不是给机器人写段小程序那种玩具级别，而是在视觉-语义推理、深度物理理解，还有自主代码生成三个维度同时跳了一级。",
+      "start": 43.233,
+      "duration": 20.787,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你这么一说我大概有画面了。视觉-语义推理，说白了就是机器人能\"看懂\"眼前的东西还能理解这玩意是干嘛用的。深度物理理解更关键——以前机器人抓个杯子，力道不对就捏碎了，或者推门不知道该使多大劲。Argon 这一波据说在 Sim-to-Real 迁移上的表现非常夸张。",
+      "start": 64.482,
+      "duration": 21.483,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "对，而且最让我起鸡皮疙瘩的是\"自主代码生成\"。这意味着机器人不是跑一套固定脚本，而是现场自己写代码解决问题。",
+      "start": 86.416,
+      "duration": 12.321,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "这就是物理 AGI 的味道了。打个比方，传统机器人像是流水线工人，Argon 想要的是能进车间看见突发状况，自己判断、自己编程、自己执行的那种\"师傅\"。DeepMind 这步棋其实憋了很久，从 RT-2 开始一路走到现在。",
+      "start": 99.237,
+      "duration": 18.261,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "所以说这是 AI 走出屏幕、进入物理世界的关键一步。你觉得对我们普通人意味着什么？",
+      "start": 117.936,
+      "duration": 7.01,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "短期来看，工业自动化会先吃到红利。但你想想，家用机器人如果真具备这种泛化能力，以后帮你收拾房间不再是预设路径，而是真能理解\"把沙发垫拍干净\"这种模糊指令。",
+      "start": 125.407,
+      "duration": 15.214,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "这也太……我已经开始想象我家的扫地机器人突然开窍了的画面了。",
+      "start": 141.066,
+      "duration": 5.007,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "哈， 那是后话。第二个重头戏更有意思——DeepMind 用 Google Antigravity for Science 加速筛选新型抗菌肽，对抗全球抗生素耐药危机。",
+      "start": 146.547,
+      "duration": 11.905,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "抗菌肽这个事儿我之前听过，但一直没搞清楚它跟传统抗生素有啥区别。",
+      "start": 158.879,
+      "duration": 7.619,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "区别还挺大。传统抗生素很多都是几十年前从微生物里提取的小分子，细菌进化得快，耐药性越来越强。抗菌肽是天然存在的一类短蛋白，机制不同，细菌很难对它产生耐药性——至少目前看是这样。",
+      "start": 166.962,
+      "duration": 16.389,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "那为什么这么多年没大规模用上？",
+      "start": 183.768,
+      "duration": 3.004,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "问题就在\"筛选\"这两个字。天然肽的组合空间是天文数字，实验室一个一个测过去根本不现实。Antigravity for Science 这套工具能基于蛋白质结构做预测，把候选分子从几亿级压缩到几千个，然后再走湿实验验证。",
+      "start": 187.208,
+      "duration": 19.437,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "说白了就是把 AI 当筛子用，漏下来的才进实验室。",
+      "start": 207.062,
+      "duration": 4.31,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "对，这其实是 AI for Science 从 PPT 走向流水线的标志性事件。以前大家喊 AI for Science，多少有点营销成分；现在它真的能压缩新药研发的早期时间线。",
+      "start": 211.868,
+      "duration": 12.253,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "这事儿跟咱们普通人有关系吗？",
+      "start": 224.533,
+      "duration": 2.873,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "你注意啊，抗生素耐药这事被 WHO 列为全球十大健康威胁之一，耐药菌每年导致上百万人死亡。如果 AI 能把新型抗菌肽的发现周期从十年压到两三年，那受益的是整个医疗系统。挂号费、住院费、ICU 费用，长期看都会被拉下来。",
+      "start": 227.885,
+      "duration": 21.222,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "好，这一条确实有分量。说完了两个头条，咱们快速过几条快讯，都是围绕 Argon 的安全和企业落地。",
+      "start": 249.539,
+      "duration": 8.577,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "先说安全那条。DeepMind 这次专门发了篇博客，叫 Developing Gemini 4 Argon responsibly and safely。",
+      "start": 258.584,
+      "duration": 8.751,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "标题党还不少。",
+      "start": 267.825,
+      "duration": 1.35,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "哈，但内容不是空话。因为 Argon 的能力跃升太快，覆盖编程、金融、法律、网络安全这些高风险领域之后，模型一旦出错代价极大。所以他们强调要负责任部署和安全对齐。",
+      "start": 269.652,
+      "duration": 15.344,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "这有点像核电站——能量越大，护栏越得扎实。",
+      "start": 285.414,
+      "duration": 4.484,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "这个类比挺准。具体做法上，DeepMind 提了几个关键点：一是 Frontier Safety Framework 升级到了 3.0 版本，红队测试规模翻倍；二是对企业用户做分级授权，金融和法律场景必须有人类 in the loop；三是网络安全相关的滥用风险，专门搞了主动监测。",
+      "start": 290.337,
+      "duration": 20.961,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "懂了，这叫能力越大、责任越大。下一条——Gemini 4 Argon: our next era of frontier intelligence。",
+      "start": 311.71,
+      "duration": 9.772,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "这条其实是在讲定位。Argon 的重心不再是 Chatbot 比谁更能聊，而是编码、推理、多模态齐头并进，主攻企业级工作流落地。",
+      "start": 321.975,
+      "duration": 11.015,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "我感觉这就是在告诉投资人：你看，我们不做聊天玩具了，我们做的是干活的员工。",
+      "start": 333.399,
+      "duration": 7.14,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "没错。ChatGPT Work 这类智能体形态就是代表——Argon 不只是回答问题，而是能接住一个工单，从读需求、调 API、写代码、跑测试一直串到底，主打长链路多步任务。",
+      "start": 341.026,
+      "duration": 14.822,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "最后一条是 Built to solve your hardest problems，算是 Argon 的总览。",
+      "start": 356.29,
+      "duration": 6.487,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "对，这条更像品牌口号。它把视觉-语义、物理理解、自主代码三块能力打包成一个叙事，告诉市场：Argon 就是来啃硬骨头的。机器人、生命科学、企业流程，全都在射程之内。",
+      "start": 363.237,
+      "duration": 14.561,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "好，三条快讯扫完了。说真的，今天 DeepMind 这波操作给我的感觉就是——他们在抢\"物理世界 AI 霸主\"这个位子。",
+      "start": 378.269,
+      "duration": 9.448,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "你这话说得有意思。其实不只是 DeepMind，OpenAI、Anthropic 都在往物理世界渗透。但 Argon 这次走得更系统，从模型、到工具链、再到安全框架，一整套打包出来。",
+      "start": 388.129,
+      "duration": 14.256,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "看来 2026 年的下半场，战场真的从屏幕里打到屏幕外了。",
+      "start": 402.83,
+      "duration": 5.66,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "好了新闻聊完了，咱们进入今天的项目雷达时间。今天给大家挖到一个挺好玩的小工具，叫 anatomy。",
+      "start": 408.945,
+      "duration": 8.185,
+      "audios": {
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "等等，anatomy？这名字我以为是医学解剖课的。",
+      "start": 417.57,
+      "duration": 4.746,
+      "audios": {
+        "professional": "chunk_039_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "我一开始也这么以为，但它其实是给真实世界的机器和复杂系统生成精细等距交互式插图的一个 agent skill。输出是 SVG，还能选配 WebGL 着色器和 3D 效果。",
+      "start": 422.794,
+      "duration": 16.389,
+      "audios": {
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "B",
+      "text": "等距交互式插图？这东西以前做起来挺麻烦的，要会 D3 或者 Three.js。",
+      "start": 439.664,
+      "duration": 6.487,
+      "audios": {
+        "professional": "chunk_041_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "对，所以这个项目在 GitHub 上 star 已经到了 12566 颗，比昨天多了 2709 颗。增速非常夸张，社区在批量采用。",
+      "start": 446.577,
+      "duration": 11.973,
+      "audios": {
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "B",
+      "text": "关键是它零门槛——不用 API key，不用 npm install，只依赖 Node 内置模块。",
+      "start": 459.02,
+      "duration": 7.358,
+      "audios": {
+        "professional": "chunk_043_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 44,
+      "host": "A",
+      "text": "我最喜欢这种\"开箱即用\"的东西。怎么跑起来呢？命令很简单，我念给大家听：npx skills add wheresryan22/anatomy -g",
+      "start": 466.839,
+      "duration": 12.732,
+      "audios": {
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "B",
+      "text": "注意啊，最后那个 -g 是全局安装。之后 CLI 会问你启用哪些 agent，包括 Claude Code、Antigravity、OpenCode、Codex、还有一个叫 minimax-code 的。如果你懒得选，直接加参数跳过，比如 -a claude-code、-a antigravity、-a opencode、-a codex、-a minimax-code。",
+      "start": 480.027,
+      "duration": 23.331,
+      "audios": {
+        "professional": "chunk_045_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 46,
+      "host": "A",
+      "text": "用法上，以 Claude Code 为例，你可以这样调用：/anatomy explain how a token bucket rate limiter works, interactive",
+      "start": 503.824,
+      "duration": 10.076,
+      "audios": {
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "B",
+      "text": "哦，interactive 这个参数记得带上，出来的图可以点击旋转。Antigravity、OpenCode、minimax-code 都用 /anatomy 命令；Codex 里稍有不同，要键入 $anatomy。",
+      "start": 514.333,
+      "duration": 14.43,
+      "audios": {
+        "professional": "chunk_047_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 48,
+      "host": "A",
+      "text": "那如果 fork 下来做差异化，能从哪些角度改？",
+      "start": 529.17,
+      "duration": 4.223,
+      "audios": {
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "B",
+      "text": "我觉得有三个最小改动路径。第一，加模板库，比如半导体光刻机内部剖面、数据中心液冷回路、火箭发动机切片，把覆盖面从软件协议扩到硬件和生物结构。第二，在 SVG 上叠交互层，点击部件弹原理讲解或维基链接，从\"看图\"升级成\"探索\"。第三，把 WebGL 着色器模板化，按场景切换风格，线稿、工业、科普都行。",
+      "start": 533.863,
+      "duration": 30.645,
+      "audios": {
+        "professional": "chunk_049_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 50,
+      "host": "A",
+      "text": "嗯，听完我已经有动手的冲动了。今天的项目雷达就到这里。",
+      "start": 564.909,
+      "duration": 5.094,
+      "audios": {
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 570.414,
+      "duration": 5.573,
+      "audios": {
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 576.479,
+      "duration": 1.393,
+      "audios": {
+        "professional": "chunk_052_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
