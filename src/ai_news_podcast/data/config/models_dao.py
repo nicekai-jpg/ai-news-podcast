@@ -216,6 +216,73 @@ class GhRadarConfig:
     runner_up_count: int = 2
     readme_probe_limit: int = 12
     repeat_window_days: int = 30
+    widen_min_stars_ratio: float = 0.4
+    repeat_gap_days: int = 7
+    trending_rss_url: str = "https://rsshub.app/github/trending/daily"
+    trending_rss_url_fallback: str = "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml"
+    trending_top: int = 6
+    ai_topics: list[str] = field(
+        default_factory=lambda: [
+            "agents",
+            "llm",
+            "rag",
+            "mcp",
+            "inference",
+            "ai-agents",
+            "chatbot",
+        ]
+    )
+    topic_rotation_days: int = 90
+    topic_min_stars: int = 1000
+    news_repo_top: int = 4
+    direction_gate: str = "soft"
+    ai_lexicon: dict[str, list[str]] = field(
+        default_factory=lambda: {
+            "agents": [
+                "agent",
+                "agentic",
+                "multi-agent",
+                "autonomous",
+                "crew",
+                "swarm",
+                "orchestrator",
+                "browser-use",
+                "computer-use",
+            ],
+            "gateway": [
+                "llm",
+                "inference",
+                "serving",
+                "vllm",
+                "ollama",
+                "router",
+                "gateway",
+                "proxy",
+                "model",
+                "quantization",
+            ],
+            "rag": ["rag", "embedding", "vector", "retrieval", "knowledge", "semantic-search"],
+            "mcp": ["mcp", "tool-use", "function-calling", "tool-calling"],
+            "app": [
+                "chatbot",
+                "assistant",
+                "copilot",
+                "coding",
+                "prompt",
+                "chat",
+                "voice",
+                "asr",
+                "tts",
+                "multimodal",
+            ],
+            "training": ["fine-tune", "lora", "dataset", "training", "benchmark", "eval"],
+        }
+    )
+    velocity_cap: int = 1500
+    vel_rel: float = 0.6
+    vel_abs: float = 0.4
+    fresh_penalty: float = 0.85
+    same_language_penalty: float = 0.05
     readme_excerpt_chars: int = 1200
     excluded_name_patterns: list[str] = field(
         default_factory=lambda: [

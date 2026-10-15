@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import pytest
@@ -11,7 +12,57 @@ from ai_news_podcast.business.pipeline.dedup_service import (
     get_recent_broadcasted_texts,
     get_recent_broadcasted_urls,
 )
+from ai_news_podcast.business.pipeline.runner_service import _collect_news_repo_slugs
 from ai_news_podcast.data.utils_dao import write_json
+
+
+@dataclass
+class _FakeRawItem:
+    """与 RawItem 同形状的最小测试替身(getattr 兜底字段全空)。"""
+
+    title: str = ""
+    link: str = ""
+    normalized_link: str = ""
+    source_name: str = ""
+    full_text_snippet: str = ""
+    extra: dict = field(default_factory=dict)
+
+
+def test_collect_news_repo_slugs_dedupe_and_github_priority() -> None:
+    items = [
+        _FakeRawItem(
+            title="owner-ai/tool",
+            link="https://github.com/owner-ai/tool?tab=readme",
+            source_name="GitHub Trending Python",
+        ),
+        _FakeRawItem(
+            title="HNS discusses plain/lib",
+            link="https://news.ycombinator.com/x",
+            normalized_link="https://news.ycombinator.com/x",
+            full_text_snippet="repo: https://github.com/plain/lib#readme and https://github.com/plain/lib",
+            source_name="RSS · something",
+        ),
+        _FakeRawItem(
+            title="doc mention github.com/owner-ai/tool (already seen)",
+            link="https://medium.com/post",
+            source_name="Blog",
+        ),
+    ]
+    slugs = _collect_news_repo_slugs(items)  # type: ignore[arg-type]
+    assert slugs[0] == "owner-ai/tool"  # github 抓取器源优先
+    assert "plain/lib" in slugs
+    assert slugs == ["owner-ai/tool", "plain/lib"]
+
+
+def test_collect_news_repo_slugs_ignores_assets() -> None:
+    items = [
+        _FakeRawItem(
+            link="https://github.com/a-org/readme.md https://github.com/b-org/repo.txt",
+            source_name="Blog",
+        ),
+    ]
+    assert _collect_news_repo_slugs(items) == []  # type: ignore[arg-type]
+    assert _collect_news_repo_slugs([_FakeRawItem()]) == []  # type: ignore[list-item]
 
 
 def test_get_recent_broadcasted_urls_missing(tmp_path: Path) -> None:

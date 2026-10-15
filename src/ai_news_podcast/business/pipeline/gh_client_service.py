@@ -62,3 +62,29 @@ class GhClient:
             return ""
         resp.raise_for_status()
         return resp.text[:_README_MAX_CHARS]
+
+    async def fetch_repo(self, full_name: str) -> dict[str, Any] | None:
+        """GET /repos/{full_name}:单仓库元数据(stars/topics/description 等)。
+
+        404(仓库不存在/已删除)返回 None;其余错误上抛,由调用方决定降级。
+        """
+        resp = await self._client.get(f"{_GITHUB_API}/repos/{full_name}", headers=self._headers)
+        if resp.status_code == 404:
+            return None
+        resp.raise_for_status()
+        data: dict[str, Any] = resp.json()
+        return data
+
+    async def fetch_text(self, url: str) -> str:
+        """通用 HTTP GET 文本(供 Trending RSS 等榜单镜像源使用)。
+
+        带浏览器 UA:公共 RSSHub 实例对无 UA 的脚本请求会 403。
+        """
+        headers = dict(self._headers)
+        headers["User-Agent"] = (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+            "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        )
+        resp = await self._client.get(url, headers=headers)
+        resp.raise_for_status()
+        return resp.text

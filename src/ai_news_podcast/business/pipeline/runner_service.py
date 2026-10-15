@@ -13,6 +13,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
@@ -31,6 +32,43 @@ from ai_news_podcast.data.config.models_dao import AppConfig
 from ai_news_podcast.data.utils_dao import read_json
 
 log = logging.getLogger(__name__)
+
+_REPO_SLUG_RE = re.compile(r"github\.com/([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)")
+_NON_REPO_SUFFIXES = (
+    ".git",
+    ".md",
+    ".json",
+    ".yml",
+    ".yaml",
+    ".xml",
+    ".png",
+    ".svg",
+    ".jpg",
+    ".txt",
+)
+
+
+def _collect_news_repo_slugs(raw_items: list[Any]) -> list[str]:
+    """从当日新闻流抽取 owner/repo 形态的 GitHub 仓库链接(雷达 D4 源)。
+
+    GitHub 抓取器源(source_name 含 "github")优先排序;同一仓库去重。
+    """
+    seen: set[str] = set()
+    primary: list[str] = []
+    secondary: list[str] = []
+    for item in raw_items:
+        src_name = str(getattr(item, "source_name", "")).lower()
+        text = " ".join(
+            str(getattr(item, attr, ""))
+            for attr in ("link", "normalized_link", "title", "full_text_snippet")
+        )
+        for m in _REPO_SLUG_RE.finditer(text):
+            slug = m.group(1).rstrip("/")
+            if slug in seen or slug.endswith(_NON_REPO_SUFFIXES):
+                continue
+            seen.add(slug)
+            (primary if "github" in src_name else secondary).append(slug)
+    return primary + secondary
 
 
 def _make_radar_intro_fallback(llm_cfg: dict[str, Any]) -> Callable[[str, str, str], str | None]:
@@ -218,11 +256,13 @@ async def run_pipeline(  # noqa: PLR0915
         )
         try:
             news_titles = [item.title for item in raw_items]
+            news_repos = _collect_news_repo_slugs(raw_items)
             brief["radar"] = await build_radar(
                 gh_radar_cfg,
                 date_str,
                 data_dir,
                 news_titles,
+                news_repos=news_repos,
                 intro_fallback=_make_radar_intro_fallback(cfg_dict.get("llm", {})),
             )
             event_bus.emit(

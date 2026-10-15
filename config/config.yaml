@@ -248,6 +248,81 @@ gh_radar:
   runner_up_count: 2              # 日报备选项目数(只进日报,不进播客)
   readme_probe_limit: 12          # 探测 README 的候选上限(控 API 用量)
   repeat_window_days: 30          # 最近 N 天已推荐过的仓库不再推荐
+  widen_min_stars_ratio: 0.4      # 新品不足时扩池补搜的星数门槛(min_stars 该比例;0=关闭)
+  repeat_gap_days: 7              # 回选兜底:距最近一次上榜至少 N 天才允许再次上榜,防连续霸榜
+  # ── v4 四源发现 + 评分场 ────────────────────────────────────────────
+  trending_rss_url: "https://rsshub.app/github/trending/daily"
+  trending_rss_url_fallback: "https://mshibanami.github.io/GitHubTrendingRSS/daily/all.xml"
+  trending_top: 6                 # D1: trending 榜取前 N 个 slug 换 GET /repos 验活
+  ai_topics:                      # D3: AI 子方向轮换榜(按日期确定性轮换)
+    - "agents"
+    - "llm"
+    - "rag"
+    - "mcp"
+    - "inference"
+    - "ai-agents"
+    - "chatbot"
+  topic_rotation_days: 90         # D3 查询的创建窗口(天)
+  topic_min_stars: 1000           # D3 星数门槛(成熟AI项目)
+  news_repo_top: 4                # D4: 当日新闻挂载仓库最多验活 N 个
+  direction_gate: "soft"          # AI 方向闸: soft=仅评分权重 / strict=A=0 硬闸(可缓释)
+  ai_lexicon:                     # AI 方向词库(六类别;命中类别数×0.5=契约度)
+    agents:
+      - "agent"
+      - "agentic"
+      - "multi-agent"
+      - "autonomous"
+      - "crew"
+      - "swarm"
+      - "orchestrator"
+      - "browser-use"
+      - "computer-use"
+    gateway:
+      - "llm"
+      - "inference"
+      - "serving"
+      - "vllm"
+      - "ollama"
+      - "router"
+      - "gateway"
+      - "proxy"
+      - "model"
+      - "quantization"
+    rag:
+      - "rag"
+      - "embedding"
+      - "vector"
+      - "retrieval"
+      - "knowledge"
+      - "semantic-search"
+    mcp:
+      - "mcp"
+      - "tool-use"
+      - "function-calling"
+      - "tool-calling"
+    app:
+      - "chatbot"
+      - "assistant"
+      - "copilot"
+      - "coding"
+      - "prompt"
+      - "chat"
+      - "voice"
+      - "asr"
+      - "tts"
+      - "multimodal"
+    training:
+      - "fine-tune"
+      - "lora"
+      - "dataset"
+      - "training"
+      - "benchmark"
+      - "eval"
+  velocity_cap: 1500              # 绝对速度归一分母(星/天)
+  vel_rel: 0.6                    # 池内秩百分位权重
+  vel_abs: 0.4                    # 绝对速度权重
+  fresh_penalty: 0.85             # 考期:进池首日的速度折扣
+  same_language_penalty: 0.05     # 与昨日主推同语言的罚分
   readme_excerpt_chars: 1200      # README 上手小节摘录的最大字符数
   excluded_name_patterns:         # 命中即排除(资料合集类不可上手)
     - "awesome"
