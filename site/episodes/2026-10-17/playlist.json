@@ -1,0 +1,863 @@
+{
+  "episode_id": "2026-10-17",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友们大家好，欢迎收听AI每日先锋，今天是2026年10月17日。我是苏晴。",
+      "start": 1.0,
+      "duration": 8.359,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 9.808,
+      "duration": 1.611,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天科技圈感觉特别热闹，咱们一条一条慢慢聊哈。",
+      "start": 11.916,
+      "duration": 4.963,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "行，那你先开场，今天头条里有几个我觉得挺值得展开聊聊的。",
+      "start": 17.332,
+      "duration": 4.571,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "我跟你说，头一个就够有看头的——DeepMind搞了个全球首个\"双盲\"AI评测，你听说了吗？",
+      "start": 22.308,
+      "duration": 7.619,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "听说了。我早上看到这个新闻的第一反应就是：早该这么干了。",
+      "start": 30.36,
+      "duration": 4.92,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "就是！你知道现在大模型评测圈有多乱吗？每次新模型出来，榜单分数刷刷往上涨，但用户拿过来用一用，发现根本不是那么回事。",
+      "start": 35.745,
+      "duration": 11.102,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "对，这就是典型的\"基准污染\"问题。说白了就是模型方拿着测试集\"应试调优\"，分数是漂亮，但实际能力根本对不上号。",
+      "start": 47.309,
+      "duration": 11.799,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "嗯，而且有些厂商甚至会针对特定榜单专门调模型，有点像咱们上学那会儿刷题库刷出来的\"考试机器\"，换套卷子就露馅。",
+      "start": 59.559,
+      "duration": 10.797,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "你注意啊，这个\"双盲\"机制的关键就在两个\"盲\"——第三方出题，模型方提交之后看不到测试集。这下就没法针对性刷榜了。",
+      "start": 70.856,
+      "duration": 9.143,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "对，而且评的时候模型方也不知道自己被谁评、怎么评，杜绝了\"打招呼\"的可能性。",
+      "start": 80.437,
+      "duration": 7.01,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "这其实是基础设施级的创新你想想，评测是整个AGI竞赛的\"裁判\"，裁判不公正，比赛再热闹也没意义。",
+      "start": 87.908,
+      "duration": 10.231,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "没错如果双盲能成为行业标准，以后大家看榜单就能直接比较真实能力，而不是各种花式刷分。",
+      "start": 98.584,
+      "duration": 8.925,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "这也意味着一些靠\"刷榜\"博眼球的厂商会很难受，但对认真做技术的团队是大利好。",
+      "start": 107.983,
+      "duration": 7.445,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "真的假的，我已经开始期待下一轮盲测结果了。",
+      "start": 115.855,
+      "duration": 3.439,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "慢慢等吧，这种机制要推开需要时间，但方向肯定是对的。",
+      "start": 119.758,
+      "duration": 4.659,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "说到这儿，今天第二个头条也很有亮点——OpenAI跟NVIDIA联合发布了GPT-6 Astra Ultrafast，跑在Blackwell GPU上。",
+      "start": 124.834,
+      "duration": 10.773,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "这名字起得挺有意思，\"Ultrafast\"——超快版，专门主打极致推理速度。",
+      "start": 136.043,
+      "duration": 7.14,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "对，我看到新闻说这个版本不是简单的软件升级，而是OpenAI和NVIDIA一起做的\"模型×硬件协同设计\"。",
+      "start": 143.6,
+      "duration": 10.754,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "你注意啊，这是关键。以前模型厂商和芯片厂商基本是各干各的，模型出来了找算力跑，能跑多快跑多快。",
+      "start": 154.85,
+      "duration": 9.012,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "但这次不一样了，是OpenAI的人在NVIDIA的Blackwell架构上专门做了优化？",
+      "start": 164.274,
+      "duration": 7.924,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "没错。Blackwell这一代GPU本身在推理性能上就有大跃迁，加上模型架构针对它的特性做了调整，延迟和成本能同时被打下来。",
+      "start": 172.677,
+      "duration": 9.578,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "我跟你说，这对企业级应用来说是个大好事。你想啊，以前做个实时Agent要不就卡顿要不就贵得要死，现在两边一起优化，实时性上去了，成本下来了。",
+      "start": 182.687,
+      "duration": 12.645,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "对，比如代码助手、在线生产力工具、客服Agent这些场景，对延迟特别敏感。原来可能得等两三秒，现在能压到几百毫秒以内，体验完全不一样。",
+      "start": 195.8,
+      "duration": 11.774,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "这也太实用了吧。而且我猜……\"模型-芯片共研\"以后会变成新常态？",
+      "start": 208.064,
+      "duration": 6.705,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "肯定会。这次的意义就在于证明了这条路的可行性。以后大家拼的就不只是模型参数量了，而是整个软硬协同的系统能力。",
+      "start": 215.246,
+      "duration": 8.925,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "嗯，这个思路挺有意思，相当于把\"卷参数\"升级成了\"卷方法论\"。",
+      "start": 224.589,
+      "duration": 7.924,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "你这总结得挺好。今天大纲里那句金句就是这个意思——评测去泡沫、模型硬件协同设计、多模态纵深突破，三条战线一起走向成熟。",
+      "start": 232.952,
+      "duration": 10.449,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "对，那咱们继续看快讯。第一个，Gemini给3.7和3.6 Flash，还有3.5 Flash-Lite加了个新能力——Agentic视频理解。",
+      "start": 243.813,
+      "duration": 12.321,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "这个我看了，说的是AI能主动分析视频，还能定位关键片段、调用其他工具。",
+      "start": 256.627,
+      "duration": 6.444,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "我跟你说，这个功能听起来不起眼，但用起来很香。以前你给AI一个视频，它最多总结一下内容，现在它能自己\"看懂\"哪里是关键，还能干活。",
+      "start": 263.48,
+      "duration": 12.515,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "对，比如你扔一个两小时的会议录像给它，它能自动找到决策点、提取关键讨论、甚至调工具生成会议纪要。",
+      "start": 276.482,
+      "duration": 8.969,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "这也太省事了吧！以后整理录像不用自己一帧一帧翻了。",
+      "start": 285.893,
+      "duration": 6.356,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "没错。而且这是\"主动\"的，不是你问一句它答一句，是它自己能判断该关注什么。",
+      "start": 292.709,
+      "duration": 6.008,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "嗯，这个能力一旦普及，内容工作者的工作流估计要被改写一遍。",
+      "start": 299.188,
+      "duration": 7.184,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "第二个快讯是阿里通义千问的，他们开源了一个MoE训练的\"免费午餐\"方法，叫Global-batch load balance。",
+      "start": 306.784,
+      "duration": 8.098,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "等等，\"免费午餐\"？这名字听着就很诱人。",
+      "start": 315.327,
+      "duration": 5.094,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "哈哈，就是说这个方法几乎零成本，但能解决MoE训练里的专家负载不均问题。",
+      "start": 320.876,
+      "duration": 7.097,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "哦对了，我记得MoE就是混合专家模型，一个模型里有很多\"小专家\"分工处理不同任务？",
+      "start": 328.413,
+      "duration": 6.748,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "对，你理解得很准确。问题是训练的时候经常出现有些专家累死、有些专家闲死的情况，资源浪费严重。",
+      "start": 335.639,
+      "duration": 8.533,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "那这个Global-batch load balance就是让负载尽量均衡一点？",
+      "start": 344.653,
+      "duration": 6.356,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "没错。它是在整个batch层面做均衡调度，不需要额外开销，效果还挺明显的。这种\"白嫖\"的优化谁不爱啊。",
+      "start": 351.435,
+      "duration": 8.316,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "通义开源就是大气，这种方法对整个MoE社区都是贡献。",
+      "start": 360.221,
+      "duration": 5.703,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "是的，这对MoE训练效率是个挺实在的提升。第三个快讯是Gemini 3.5 Transcribe全面升级。",
+      "start": 366.385,
+      "duration": 7.488,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "嗯，语音转写这块儿我天天用。这次升级了什么？",
+      "start": 374.329,
+      "duration": 4.441,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "主要是在三个场景下的表现——口音、专业术语、多说话人对话。你想啊，医疗、法律、学术这种专业场景，术语一堆；客服、会议这种多人对话，交叉说话很乱。",
+      "start": 379.236,
+      "duration": 12.844,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "对，而且各地方言口音都不一样，原来识别率确实差点意思。",
+      "start": 392.513,
+      "duration": 5.878,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "这次升级之后，能更好地处理这些复杂情况，转写的准确率和可读性都上去了。",
+      "start": 398.798,
+      "duration": 6.531,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "嗯，这对做播客字幕、会议纪要、内容创作的团队来说是个好消息。",
+      "start": 405.799,
+      "duration": 6.182,
+      "audios": {
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "没错。新闻说完了，接下来进入今天的项目雷达时间。",
+      "start": 412.382,
+      "duration": 4.136,
+      "audios": {
+        "professional": "chunk_050_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "周航，今天推荐的这个项目跟科研有关，叫K-Dense-AI/scientific-agent-skills，听名字像是把AI Agent变成科研助手？",
+      "start": 416.929,
+      "duration": 12.558,
+      "audios": {
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "你说对了。这是一个Agent Skills技能库，作用是把任意AI Agent一键升级成\"AI科学家\"。",
+      "start": 429.979,
+      "duration": 7.793,
+      "audios": {
+        "professional": "chunk_052_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "一键升级？这也太夸张了吧。",
+      "start": 438.223,
+      "duration": 3.614,
+      "audios": {
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "不夸张哈。仓库里收录了177个验证即用的科学技能，覆盖生物、化学、医学、药物发现这些领域，还集成了100多个科学数据库。",
+      "start": 442.327,
+      "duration": 12.626,
+      "audios": {
+        "professional": "chunk_054_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "这么多技能，已经被多少科学家在用了？",
+      "start": 455.453,
+      "duration": 3.483,
+      "audios": {
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "25万以上。星标已经超过51,355个，是目前AI for Science领域排名第一的Agent Skills资源库。",
+      "start": 459.421,
+      "duration": 8.969,
+      "audios": {
+        "professional": "chunk_056_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "这数据挺硬核的，AI for Science现在真的是从论文演示走向工程化普及了。",
+      "start": 468.87,
+      "duration": 7.01,
+      "audios": {
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "对，生态标准、用户基数、社区维护都已经成熟，现在正是切入这个赛道的最佳时间窗口。",
+      "start": 476.28,
+      "duration": 6.922,
+      "audios": {
+        "professional": "chunk_058_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "那第一步怎么跑起来呢？我猜应该不用写一堆代码吧？",
+      "start": 483.68,
+      "duration": 4.702,
+      "audios": {
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "B",
+      "text": "不用。仓库原文明确写了：Compatible with Cursor、Claude Code、Codex、Pi、Antigravity，以及open Agent Skills标准。你挑一个Agent平台，在里面加载Agent Skills标准，引用这个仓库就能直接调用那177个技能和100多个数据库。",
+      "start": 488.845,
+      "duration": 21.067,
+      "audios": {
+        "professional": "chunk_060_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 61,
+      "host": "A",
+      "text": "哦，挺简单的。那如果我fork下来想做点差异化，有什么建议？",
+      "start": 510.354,
+      "duration": 4.484,
+      "audios": {
+        "lively": "chunk_061_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 62,
+      "host": "B",
+      "text": "你注意啊，复用现有框架，新增一个垂直学科领域——比如材料科学、气候建模、天体物理——做10到20个工作流技能，加对应数据库schema，就能发布该领域的专版技能包。",
+      "start": 515.269,
+      "duration": 15.388,
+      "audios": {
+        "professional": "chunk_062_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 63,
+      "host": "A",
+      "text": "这种增量式扩展成本很低，但能精准占领一个细分社区？",
+      "start": 531.15,
+      "duration": 5.573,
+      "audios": {
+        "lively": "chunk_063_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 64,
+      "host": "B",
+      "text": "没错，这是fork后性价比最高的差异化路径。仓库地址是https://github.com/K-Dense-AI/scientific-agent-skills，感兴趣的朋友可以直接clone下来试试。",
+      "start": 537.164,
+      "duration": 13.472,
+      "audios": {
+        "professional": "chunk_064_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 65,
+      "host": "A",
+      "text": "好，那今天的节目就到这里，感谢大家收听！",
+      "start": 551.126,
+      "duration": 3.352,
+      "audios": {
+        "lively": "chunk_065_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 66,
+      "host": "B",
+      "text": "我们明天见！",
+      "start": 554.886,
+      "duration": 1.524,
+      "audios": {
+        "professional": "chunk_066_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
