@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-17",
+  "generated_at": "2026-10-16T20:05:37.922220+00:00",
+  "projects": [
+    {
+      "repo": "K-Dense-AI/scientific-agent-skills",
+      "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+      "description": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 250,000+ scientists worldwide. 177 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+      "language": "Python",
+      "topics": [
+        "agent-skills",
+        "ai-scientist",
+        "bioinformatics",
+        "chemoinformatics",
+        "claude",
+        "claude-skills",
+        "claudecode",
+        "clinical-research",
+        "computational-biology",
+        "data-analysis",
+        "drug-discovery",
+        "genomics",
+        "materials-science",
+        "metabolomics",
+        "proteomics",
+        "scientific-computing",
+        "scientific-visualization"
+      ],
+      "stars": 51355,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2025-10-19T20:54:15Z",
+      "pushed_at": "2026-10-15T23:57:39Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 18,
+      "readme_excerpt": "",
+      "readme_intro": "[ ](LICENSE.md) [ ](https://arxiv.org/abs/2609.00065) [ ](pyproject.toml) [ ](#-whats-included) [ ](#-whats-included) [ ](https://agentskills.io/) [ ](https://agent-plugins.org/) [ ](https://github.com/K-Dense-AI/scientific-agent-skills/actions/workflows/security-scan.yml) [ ](https://github.com/K-Dense-AI/scientific-agent-skills/actions/workflows/skill-tests.yml) [ ](#-getting-started) [ ](https://x.com/k_dense_ai) [ ](https://www.linkedin.com/company/k-dense-inc) [ ](https://www.youtube.com/@K-Dense-Inc) [ ](https://www.reddit.com/user/-k-dense-/) > **🔔 Claude Scientific Skills is now Scientific Agent Skills.** Same skills, broader compatibility — now works with any AI agent that supports the open [Agent Skills](https://agentskills.io/) standard, not just Claude. > **New: [K-Dense BYOK](",
+      "score": 0.4962,
+      "score_parts": {
+        "velocity": 0.3107,
+        "vel_rel": 0.4545,
+        "vel_abs": 0.0948,
+        "hands_on": 1.0,
+        "cross_heat": 1.0,
+        "affinity": 0.5,
+        "days_in_pool": 0
+      },
+      "affinity": 0.5
+    },
+    {
+      "repo": "storytold/vectorcraft",
+      "url": "https://github.com/storytold/vectorcraft",
+      "description": "VectorCraft: An open-source, vector art tool written by scratch in pure Rust",
+      "language": "Rust",
+      "topics": [
+        "art",
+        "rust",
+        "rust-lang",
+        "svg",
+        "svg-editor",
+        "vector-graphics"
+      ],
+      "stars": 9430,
+      "delta_stars": 266,
+      "is_new": false,
+      "created_at": "2026-09-30T13:43:03Z",
+      "pushed_at": "2026-10-16T12:26:54Z",
+      "license": "Apache-2.0",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "```sh\ngit clone https://github.com/storytold/vectorcraft\ncd vectorcraft\n\ncargo run --release -p vectorcraft                          # desktop app\ncargo run --release -p vectorcraft -- examples/dusk-poster.vectorcraft\ncargo run --release -p vectorcraft -- --control 7979        # + JSON control channel\ncargo run --release -p vectorcraft-cli -- mcp               # MCP server (stdio)\ncargo run --release -p vectorcraft-cli -- run --in examples/ribbons.vectorcraft --export out.pdf   # headless batch\ncargo run --release -p vectorcraft-cli -- bench examples/neon-drive.vectorcraft                   # render timing\ncargo xtask bundle                                        # dist/VectorCraft.app (macOS)\ncd apps/vectorcraft-web && trunk build --release            # web build → dist/web\ncargo xtask ci                                            # fmt, clippy, tests, layering, wasm, vendor names\n```\n\nJapanese fonts come from [storytold/craft-fonts](https://github.com/storytold/craft-fonts), an optional\nbuild input (releases always use it): `CRAFT_FONTS_DIR=\"$PWD/../craft-fonts\" cargo run --release -p vectorcraft` (an absolute path).\nWithout it, Japanese text uses the installed system fonts. See ",
+      "readme_intro": "VectorCraft Vector illustration; an open-source, clean-room reimplementation of Adobe Illustrator, rebuilt in pure Rust. A fast, open-source, clean-room take on the Adobe Illustrator workflow. It runs natively on macOS, Windows, Linux and FreeBSD, and in the browser via WebAssembly. Built by the ArtCraft team. VectorCraft on getartcraft.com   · ArtCraft  · All Crafting Apps Neon Drive : a Pathfinder-cut sun, live Outer Glow on the type and grid, and clipping masks ·  examples/neon-drive.vectorcraft > [!NOTE] > **ArtCraft is a community of artists from all walks of life.** Digital, generative, music, > games &mdash; if you make things, you're one of us. **[Come say hi on Discord](https://discord.gg/artcraft).** A look around  · Made in VectorCraft  · Why VectorCraft  · Quick start  · Status",
+      "score": 0.4907,
+      "score_parts": {
+        "velocity": 0.6164,
+        "vel_rel": 0.9091,
+        "vel_abs": 0.1773,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 3
+      },
+      "affinity": 0.5
+    },
+    {
+      "repo": "truefoundry/trueforge",
+      "url": "https://github.com/truefoundry/trueforge",
+      "description": "The open-source agent harness - the runtime layer that turns an LLM into a working agent.",
+      "language": "TypeScript",
+      "topics": [
+        "agent",
+        "agentic-ai",
+        "agents",
+        "harness",
+        "harness-engineering"
+      ],
+      "stars": 6245,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-07-23T09:16:13Z",
+      "pushed_at": "2026-10-16T14:56:01Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "readme_intro": "The open-source agent harness - the runtime layer that turns an LLM into a working agent = 22.14\">",
+      "score": 0.4633,
+      "score_parts": {
+        "velocity": 0.1287,
+        "vel_rel": 0.1818,
+        "vel_abs": 0.049,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    }
+  ],
+  "meta": {
+    "pick_repo": "K-Dense-AI/scientific-agent-skills",
+    "runner_up_repos": [
+      "storytold/vectorcraft",
+      "truefoundry/trueforge"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 35,
+    "excluded_recent": 17,
+    "fresh_candidates": 18,
+    "widen_pass": false,
+    "pool_by_source": {
+      "trending": 5,
+      "new": 27,
+      "topic": 2,
+      "news": 1
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "wheresryan22/anatomy",
+    "yesterday_pick_delta": 1272
+  }
+}
