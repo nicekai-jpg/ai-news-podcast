@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-19",
+  "generated_at": "2026-10-18T19:37:46.305926+00:00",
+  "projects": [
+    {
+      "repo": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "language": "JavaScript",
+      "topics": [
+        "ai-agents",
+        "anthropic",
+        "claude",
+        "claude-code",
+        "developer-tools",
+        "llm",
+        "mcp",
+        "productivity"
+      ],
+      "stars": 283157,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-01-18T00:51:51Z",
+      "pushed_at": "2026-10-15T19:17:01Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "Use the [guided setup](#install-ecc) or [native plugin commands](#claude-code-details). Both install the same `ecc@ecc` plugin. Choose one and do not stack a full manual Claude install on top.\n\n<div align=\"center\">\n\n<table aria-label=\"ECC primary links\">\n<tr>\n<td width=\"33%\" align=\"center\">\n  <a href=\"https://ecc.tools/pricing\">\n    <img src=\"assets/images/community/ecc-tools-mark.svg\" height=\"42\" alt=\"ECC Tools\" /><br />\n    <strong>ECC Pro + GitHub App</strong>\n  </a><br />\n  <sub><a href=\"https://github.com/apps/ecc-tools\">Install free</a> · <a href=\"https://ecc.tools/pricing\">Private repos from $19/seat/mo</a></sub>\n</td>\n<td width=\"33%\" align=\"center\">\n  <a href=\"https://github.com/sponsors/affaan-m\">\n    <img src=\"assets/images/community/heart.svg\" height=\"42\" alt=\"\" /><br />\n    <strong>Sponsor ECC</strong>\n  </a><br />\n  <sub>Fund the open-source project</sub>\n</td>\n<td width=\"33%\" align=\"center\">\n  <a href=\"https://discord.gg/36yGMHGFbR\">\n    <img src=\"assets/images/community/discord.svg\" height=\"42\" alt=\"Discord\" /><br />\n    <strong>Community</strong>\n  </a><br />\n  <sub>Discord · Q&amp;A · Show and Tell</sub>\n</td>\n</tr>\n</table>\n\n</div>\n\n<sub>**OSS stays free.** This r",
+      "readme_intro": "Language: English  | العربية  | Português (Brasil)  | 简体中文  | 繁體中文  | 日本語  | 한국어  | Türkçe  | Русский  | Tiếng Việt  | ไทย  | Deutsch  | Español  | Українська  | Polski  | বাংলা > [!WARNING] > **Official sources only.** Install ECC only from verified channels: the GitHub repository [github.com/affaan-m/ECC](https://github.com/affaan-m/ECC), the npm packages [`ecc-universal`](https://www.npmjs.com/package/ecc-universal) and [`ecc-agentshield`](https://www.npmjs.com/package/ecc-agentshield), the [GitHub App](https://github.com/apps/ecc-tools), the plugin slug `ecc@ecc`, and the project website [ecc.tools](https://ecc.tools). Third-party re-uploads and unofficial mirrors are not maintained or reviewed by the project and may contain malware.",
+      "score": 0.6858,
+      "score_parts": {
+        "velocity": 0.8766,
+        "vel_rel": 1.0,
+        "vel_abs": 0.6915,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "ARahim3/DigUp",
+      "url": "https://github.com/ARahim3/DigUp",
+      "description": "Search your computer by what's in your files: photos, PDFs, documents, recordings, videos and code. On-device on Mac, Windows and Linux, built on Google DeepMind's EmbeddingGemma 2.",
+      "language": "Swift",
+      "topics": [
+        "embeddinggemma",
+        "embeddings",
+        "file-search",
+        "linux",
+        "llama-cpp",
+        "local-first",
+        "macos",
+        "menubar-app",
+        "multimodal",
+        "on-device",
+        "semantic-search",
+        "swift",
+        "tauri",
+        "windows"
+      ],
+      "stars": 4775,
+      "delta_stars": 231,
+      "is_new": false,
+      "created_at": "2026-10-08T20:37:51Z",
+      "pushed_at": "2026-10-18T05:30:06Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "**Mac.** Download the DMG from [Releases](https://github.com/ARahim3/DigUp/releases/latest) and drag DigUp to\nApplications, or use Homebrew: `brew install --cask arahim3/tap/digup`. It needs an Apple Silicon Mac with macOS 14 or\nlater.\n\n**Windows.** Download `DigUp_x.y.z_x64-setup.exe` from the\n[beta release](https://github.com/ARahim3/DigUp/releases/tag/v0.7.0-beta.2) and run it. It installs for you only, with\nno admin rights. Windows may say it doesn't recognize the app, because the installer isn't signed yet: choose More\ninfo, then Run anyway. It needs 64-bit Windows 10 or 11.\n\n**Linux.** On Ubuntu, Debian, Mint and the like, download the .deb and install it:\n\n```sh\nsudo apt install ./DigUp_x.y.z_amd64.deb\n```\n\nThe package is called `dig-up`, because Debian already has an unrelated `digup`. Anywhere else, download the\nAppImage, make it executable and run it. Both are for 64-bit Intel and AMD processors and work on Ubuntu 22.04,\nDebian 12, Mint 21 and newer.\n\nThen, on any of them:\n\n1. Open DigUp. While the model downloads (865 MB, once), pick the folders to search: whole folders, or only some of\n   their subfolders. DigUp shows how long the first pass will take for each, measured",
+      "readme_intro": "DigUp Describe it. Dig it up. Search the files on your computer by what's in them, with Google DeepMind's EmbeddingGemma 2 . Download for Mac   · Windows (beta)   · Linux (beta) Free and open source. Everything runs on your computer. EmbeddingGemma 2 is the multimodal embedding model Google DeepMind released in October 2026. It puts text, images, audio and video into one shared space: a photo of a dog on a beach lands next to the words \"a dog on the beach\", and a recording of someone talking about sleep lands next to \"where they talk about sleep\". It understands more than 100 languages, it's open (Apache 2.0), and at 740M parameters it's small enough to run on a laptop. DigUp brings that to the files on your computer, on a Mac, on Windows or on Linux. Pick the folders to search, and it rea",
+      "score": 0.6743,
+      "score_parts": {
+        "velocity": 0.498,
+        "vel_rel": 0.7273,
+        "vel_abs": 0.154,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 2
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "tangency-labs/solidcraft",
+      "url": "https://github.com/tangency-labs/solidcraft",
+      "description": "SolidCraft: an open-source parametric 3D CAD application built in pure Rust. Desktop, web, and automation through MCP.",
+      "language": "Rust",
+      "topics": [
+        "3d-modeling",
+        "brep",
+        "cad",
+        "egui",
+        "mcp",
+        "parametric-cad",
+        "rust",
+        "step",
+        "wasm"
+      ],
+      "stars": 5358,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-10-07T18:57:48Z",
+      "pushed_at": "2026-10-18T19:30:41Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "cargo run --release -p solidcraft -- --sample          # desktop app with a sample part\ncargo run --release -p solidcraft-cli -- commands      # the command registry\ncargo run --release -p solidcraft-cli -- run examples/bracket.json --out bracket.step\ncargo run --release -p solidcraft-cli -- snapshot examples/bracket.json --out bracket.png\ncargo run --release -p solidcraft-cli -- render examples/render-studio.json --out product.png\ncargo run --release -p solidcraft -- part.step          # open a STEP file as a new design\ncargo run --release -p solidcraft-cli -- eval part.step # measure an imported STEP file\ncargo xtask ci                                          # fmt, clippy, tests, icons, assets, layers, wasm",
+      "readme_intro": "SolidCraft An open-source parametric 3D CAD application built in pure Rust. Sketch, constrain, and build solids with a parametric feature timeline. Change a dimension and watch your model rebuild. Run it on your desktop, in your browser, or let AI agents model through the built-in MCP server. [![Download for Windows][badge-windows]][windows-msi] [![Download for macOS][badge-macos]][macos-dmg] [![Download for Linux][badge-linux]][linux-appimage] [![Get it from the Snap Store][badge-snap]][snap-store] [![Try it in your browser][badge-web]][web-app] Website  · Download  · Try it in the browser  · Documentation  · Discord  · SolidCore *A Raspberry Pi 4 case from an empty design: a sketch dimensioned with the board's parameters, extrude, fillet, shell, the rim rounded in one pick, an M2.5 stand",
+      "score": 0.4534,
+      "score_parts": {
+        "velocity": 0.6208,
+        "vel_rel": 0.8182,
+        "vel_abs": 0.3247,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 0
+      },
+      "affinity": 0.5
+    }
+  ],
+  "meta": {
+    "pick_repo": "affaan-m/ECC",
+    "runner_up_repos": [
+      "ARahim3/DigUp",
+      "tangency-labs/solidcraft"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 33,
+    "excluded_recent": 17,
+    "fresh_candidates": 16,
+    "widen_pass": false,
+    "pool_by_source": {
+      "trending": 3,
+      "new": 27,
+      "topic": 1,
+      "news": 2
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "deeplethe/utopia",
+    "yesterday_pick_delta": 23
+  }
+}
