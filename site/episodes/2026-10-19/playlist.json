@@ -1,0 +1,811 @@
+{
+  "episode_id": "2026-10-19",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年10月19日。我是苏晴。",
+      "start": 1.0,
+      "duration": 7.619,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。苏晴今天心情不错啊。",
+      "start": 9.068,
+      "duration": 4.397,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "那可不，今天这几条新闻看着就带劲。我最近琢磨出一个感受，现在AI圈拼的不再是谁家参数多了，是谁家能卷出性价比。",
+      "start": 13.962,
+      "duration": 11.494,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你这个总结还挺到位的。今天这两条头条刚好印证这个判断——一边是国产模型继续打价格战，另一边是科技巨头真金白银往科研里砸钱。两条路，两个打法，挺有看头。",
+      "start": 25.909,
+      "duration": 15.344,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "那咱们先说头条。DeepSeek你知道吧，最近又搞突袭了，V4.1-Flash-1017直接放出来，连搜索API一起开。",
+      "start": 41.658,
+      "duration": 9.883,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "是，我昨天刷到的时候还愣了一下。你注意啊，DeepSeek这套打法跟别人不太一样，他不发预告、不搞倒计时，半夜悄悄就上版本了，搞得开发者社区跟过年似的。",
+      "start": 51.974,
+      "duration": 13.168,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "这也太刺激了吧！那这个V4.1-Flash-1017到底牛在哪？",
+      "start": 65.607,
+      "duration": 5.965,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "名字里带个Flash，你应该能猜到，主打的就是快和便宜。这个版本在保持推理质量不掉的前提下，把响应速度又往上拉了一截，token单价据说压到了行业最低那一档。而且同步开放了搜索API，这意味着什么呢？",
+      "start": 72.034,
+      "duration": 16.563,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "意味着开发者可以花很少的钱，就能拿到\"模型+实时搜索\"的完整能力？",
+      "start": 89.048,
+      "duration": 6.835,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "对，你想想，以前你要做一个带联网搜索的AI应用，得自己去接搜索引擎、对接内容源、做检索优化，现在DeepSeek直接把模型和搜索打包给你，API调一调就能用。说白了，这就是在帮开发者省事。",
+      "start": 96.383,
+      "duration": 16.781,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "我跟你说，这个动作对中小团队特别友好。以前搞个像样的AI应用，光算力和搜索成本就能把预算烧穿，现在门槛一下子拉下来了。",
+      "start": 113.602,
+      "duration": 11.886,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "没错。而且你注意一个信号——DeepSeek最近几次更新都在刷新开源榜单的性能基准，配合现在这种\"白菜价\"的定价策略，说白了就是在倒逼那些海外闭源厂商重新想想自己的价格表到底合不合理。",
+      "start": 125.949,
+      "duration": 16.215,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "所以说现在真的是买方市场了？我之前还听人讨论说，AI行业是不是要进入一个\"用不起就别用\"的阶段。",
+      "start": 142.609,
+      "duration": 9.709,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "那肯定不是，现在的方向恰恰相反，是\"用得起就多用\"。DeepSeek这种打法一旦卷起来，其他家不跟进就丢了开发者生态。问题是，价格战打到最后，大家比拼的就不光是模型本身了，是整体的工具链和服务能力。",
+      "start": 152.792,
+      "duration": 19.176,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "说白了就是以后光有模型不够用，得配套生态全。",
+      "start": 172.395,
+      "duration": 5.137,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "对，这是个长期博弈。DeepSeek这一波我觉得更聪明的地方在于，他把\"模型+搜索\"的闭环直接做出来，下游开发者一旦用习惯，再换别的成本就很高了，这叫生态粘性。",
+      "start": 177.996,
+      "duration": 13.69,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "行，国产模型这边先放放。咱们看看大洋彼岸，Google这两天也没闲着，DeepMind刚宣布给一个叫Genesis Mission的项目提供4000万美元的AI算力支持。",
+      "start": 192.103,
+      "duration": 13.08,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "这个事儿挺有意思的。你注意啊，4000万美元听着是个大数字，但在Google这种体量的公司其实不算特别多，关键是这个投入的形式——不是给钱，是给AI tokens和算力积分。",
+      "start": 205.619,
+      "duration": 14.125,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "这俩有什么区别？",
+      "start": 220.161,
+      "duration": 1.829,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "区别大了。给钱的话，钱怎么花、花到哪去，研究团队有自主权；给tokens和算力积分，相当于直接给\"算力饭票\"，只能用来跑Google自家的模型。说白了，这就是在用算力绑定科研生态。",
+      "start": 222.486,
+      "duration": 15.649,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "所以Genesis Mission是干嘛的？",
+      "start": 238.547,
+      "duration": 2.177,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "简单说，是美国能源部牵头的一个科研加速计划，想用AI帮科学家加速各种基础研究突破。从蛋白质结构预测到新材料模拟，从药物筛选到气候模型，AI for Science这个概念其实喊了好几年了，但之前大多停留在论文和demo阶段。",
+      "start": 241.203,
+      "duration": 20.395,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "现在是动真格了？",
+      "start": 262.03,
+      "duration": 2.482,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "可以这么说。国家队级别的投入，意味着AI不再只是科研的辅助工具，而是要变成科研的基础设施。科研范式的迁移这话听着有点虚，但你想想，以前科学家做实验要靠经验、靠试错，现在AI能直接告诉你哪些方向值得试、参数怎么调，效率完全不是一个量级。",
+      "start": 264.98,
+      "duration": 22.789,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "那对我们普通人有啥影响？我又不是科学家。",
+      "start": 288.259,
+      "duration": 4.659,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "你这么想啊，药物研发周期以前是十几年，AI加速之后可能缩短到几年甚至更短；新材料从发现到量产以前可能要几十年，现在可能压缩到几年。问题是，这些突破最后都会传导到普通人的生活里——更便宜的药、更高效的电池、更轻便的材料。",
+      "start": 293.395,
+      "duration": 20.961,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "这倒是挺值得期待的。不过我有个疑问，Google为啥要这么大方？",
+      "start": 314.774,
+      "duration": 6.269,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "你这个问题问到点子上了。Google不是做慈善，DeepMind跟能源部合作，等于直接把自己嵌入了美国国家科研体系，这背后是战略层面的卡位。一旦科研工作者习惯了用Gemini、用DeepMind的工具，未来整个科研生态的AI标准，很可能就是Google系的。",
+      "start": 321.482,
+      "duration": 18.697,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "懂了，技术标准的争夺战。",
+      "start": 340.591,
+      "duration": 2.525,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "对，AI竞争到最后，拼的就是标准、生态和长期绑定。这一波Google算是下了一手好棋。",
+      "start": 343.609,
+      "duration": 7.053,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "说完了两个头条，咱们看看几条快讯。第一条，智谱的新模型在法律理解评测里拿了全球第一。",
+      "start": 351.071,
+      "duration": 8.882,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "这个事儿挺值得说的。你注意啊，法律这个领域特别挑AI——条文严谨、用语精确，稍微差一个字意思可能就反了。智谱能在这种专业评测里拿第一，说明垂直领域的Know-how正在变成真正的竞争力。",
+      "start": 360.44,
+      "duration": 16.52,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "我跟你讲，法律AI以前一直是个伪需求，大家觉得律师哪能靠AI呢。但你看现在，法律咨询、合同审查、案例检索这些活儿，AI已经能干不少了。",
+      "start": 377.402,
+      "duration": 12.234,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "而且法律数据的特殊性在于，它高度结构化、有判例可循，AI处理起来反而比那些开放性创作更稳定。这就是为什么垂直模型在法律领域容易出成绩——专业Know-how就是护城河。",
+      "start": 390.096,
+      "duration": 14.735,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "那以后律师是不是要失业了？",
+      "start": 405.302,
+      "duration": 2.873,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "没那么夸张，但确实会有一批重复性的法律工作被AI替代，剩下的就是更高级别的策略性、创造性工作。这跟咱们之前聊过的很多行业是一样的——AI不是消灭职业，是重新定义职业里的分工。",
+      "start": 408.587,
+      "duration": 15.91,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "行，那第二条快讯。HuggingFace发了一个350M参数小模型的结构化输出微调指南，说只用100步GRPO就能让小模型的输出合规性大幅提升。",
+      "start": 424.942,
+      "duration": 13.497,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "这个对开发者来说挺实用。350M参数你注意，是个相当小的模型了，跑起来成本很低。以前想让小模型稳定输出JSON、严格遵守格式要求，得做大量数据准备和复杂微调，现在这个指南把流程简化到了100步GRPO。",
+      "start": 438.894,
+      "duration": 20.09,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "GRPO是个啥？我听着像健身项目。",
+      "start": 459.424,
+      "duration": 5.094,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "哈哈，不是健身。GRPO全称叫Group Relative Policy Optimization，是一种强化学习的训练方法，特点是省资源、效果好。以前类似的训练可能需要几千步甚至几万步，现在压缩到100步，等于把门槛又往下砍了一大截。",
+      "start": 464.996,
+      "duration": 19.742,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "这对中小企业和个人开发者是好事吧？",
+      "start": 485.219,
+      "duration": 3.788,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "那必须的。以前玩不动微调的小团队，现在也能低成本上手了。 HuggingFace这种动作其实在传递一个信号——AI民主化不是空话，是真的在一步步落地。",
+      "start": 489.433,
+      "duration": 12.645,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "那第三条，Google Search上线了橄榄球主题的AI搜索功能。",
+      "start": 502.548,
+      "duration": 7.01,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "这个是Google Search AI模式的又一次扩展。 你注意啊，体育赛事这种场景特别适合生成式搜索——用户的问题往往很具体，\"昨晚那场球谁赢了\"、\"某个球员本赛季数据如何\"，传统搜索得跳好几个网页， AI模式直接给你整理好了。",
+      "start": 510.019,
+      "duration": 16.172,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "我说白了，这就是在用体育场景做AI搜索的落地试验。",
+      "start": 526.647,
+      "duration": 5.703,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "对，而且橄榄球在欧美是国民级运动，用户基数大、互动需求强。 如果橄榄球这个场景跑通了，后面篮球、足球、F1这些都可以复制。 体育很可能是生成式搜索真正进入普通人日常生活的下一个切口。",
+      "start": 532.816,
+      "duration": 16.738,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "新闻说完了， 接下来进入今天的项目雷达时间。今天给大家推荐一个仓库，叫affaan-m/ECC，全称是agent harness performance optimization system。",
+      "start": 549.987,
+      "duration": 11.6,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "你注意啊，这个名字听起来很技术， 但其实干的事儿很简单——给那些AI编码代理，比如Claude Code、Codex、Opencode、Cursor这些，加一套\"基础设施层\"。",
+      "start": 561.994,
+      "duration": 12.645,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "啥叫基础设施层？",
+      "start": 575.109,
+      "duration": 2.699,
+      "audios": {
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "你这么想，现在这些AI编码代理虽然能写代码，但用起来经常不稳定——它可能忘了你的项目约定、可能乱调工具、可能没做安全检查就动手改文件。 ECC就是给它们套上\"工具调用规范、记忆系统、安全护栏、研究先行\"这一整套基础设施， 让AI编程变得更可控、更高效。",
+      "start": 578.209,
+      "duration": 21.744,
+      "audios": {
+        "professional": "chunk_050_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "这个仓库现在热度怎么样？",
+      "start": 600.364,
+      "duration": 2.133,
+      "audios": {
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "已经收获了283,157颗星，这个数字你听着可能没概念，换算一下就是将近28万开发者投了关注票。说明现在大量开发者都在面临\"AI编码代理不稳定、缺乏护栏\"的共同痛点，此时进入生态正好能占住坑。",
+      "start": 602.989,
+      "duration": 18.61,
+      "audios": {
+        "professional": "chunk_052_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "那我现在想上手，第一步怎么搞？",
+      "start": 622.05,
+      "duration": 2.917,
+      "audios": {
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "仓库里提供了两种安装方式，一种叫guided setup引导式安装，一种叫native plugin commands原生插件命令。两个方式装的是同一个插件，名字叫ecc@ecc。你选其中一种就行千万别在自动安装的基础上再叠一整套手动Claude安装流程，原文说得清清楚楚——Choose one and do not stack。",
+      "start": 625.457,
+      "duration": 23.854,
+      "audios": {
+        "professional": "chunk_054_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "那我如果fork下来想搞点差异化，能从哪下手？",
+      "start": 649.811,
+      "duration": 4.484,
+      "audios": {
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "最有意思的地方在这儿——你可以基于现有harness，加针对特定语言或框架的\"领域型instinct与skill\"配置。举个例子，前端团队可以定制React性能优化的本能，数据团队可以定制SQL调优的记忆模块，等于把通用harness改造成团队专属的Agent加速器。",
+      "start": 654.78,
+      "duration": 22.156,
+      "audios": {
+        "professional": "chunk_056_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "这听着对中小团队特别有价值。",
+      "start": 677.416,
+      "duration": 3.178,
+      "audios": {
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "对每个团队痛点不一样，自己定制一套比等通用工具迭代快得多。这就是开源项目的魅力——你不用等官方更新，自己动手就能解决自己的问题。",
+      "start": 680.994,
+      "duration": 11.363,
+      "audios": {
+        "professional": "chunk_058_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "行，那今天这期节目就到这里。最后给大家留个思考题，AI竞赛从参数规模转向性价比和垂直深耕，这个趋势你怎么看？",
+      "start": 692.835,
+      "duration": 11.059,
+      "audios": {
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "B",
+      "text": "我觉得对咱们普通开发者来说，这是最好的时代——工具越来越多、门槛越来越低、选择越来越丰富。你要做的就是选一个赛道，深扎下去。",
+      "start": 704.357,
+      "duration": 11.537,
+      "audios": {
+        "professional": "chunk_060_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 61,
+      "host": "A",
+      "text": "好嘞，那我们下期再见！感谢收听AI每日先锋。",
+      "start": 716.336,
+      "duration": 5.312,
+      "audios": {
+        "lively": "chunk_061_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 62,
+      "host": "B",
+      "text": "下期再见！",
+      "start": 722.079,
+      "duration": 1.219,
+      "audios": {
+        "professional": "chunk_062_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
