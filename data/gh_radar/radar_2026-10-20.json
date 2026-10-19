@@ -1,0 +1,140 @@
+{
+  "date": "2026-10-20",
+  "generated_at": "2026-10-19T21:45:11.135078+00:00",
+  "projects": [
+    {
+      "repo": "anomalyco/opencode",
+      "url": "https://github.com/anomalyco/opencode",
+      "description": "The open source coding agent.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 217700,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2025-04-30T20:08:00Z",
+      "pushed_at": "2026-10-19T21:38:13Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 1,
+      "readme_excerpt": "```bash",
+      "readme_intro": "The open source AI coding agent. English  | 简体中文  | 繁體中文  | 한국어  | Deutsch  | Español  | Français  | Italiano  | Dansk  | 日本語  | Polski  | Русский  | Bosanski  | العربية  | Norsk  | Português (Brasil)  | ไทย  | Türkçe  | Українська  | বাংলা  | Ελληνικά  | Tiếng Việt [ ](https://opencode.ai)",
+      "score": 0.6478,
+      "score_parts": {
+        "velocity": 0.6536,
+        "vel_rel": 0.9091,
+        "vel_abs": 0.2703,
+        "hands_on": 1.0,
+        "cross_heat": 0.3333,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "XiaoDuoYa/codex-with-chatgpt",
+      "url": "https://github.com/XiaoDuoYa/codex-with-chatgpt",
+      "description": "ChatGPT thinks. Codex works. Use ChatGPT as the planning brain while keeping the Codex harness.",
+      "language": "TypeScript",
+      "topics": [
+        "ai-agents",
+        "chatgpt",
+        "codex",
+        "mcp",
+        "model-context-protocol",
+        "oauth"
+      ],
+      "stars": 7464,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-08-28T12:57:24Z",
+      "pushed_at": "2026-10-01T05:19:24Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 7,
+      "readme_excerpt": "**中文** — 不懂 git、Node、终端？完全不需要懂。把下面这段话原样复制给你的\n编码 Agent（Codex），然后去倒杯咖啡：\n\n```text\n请帮我完整安装并配置 Codex with ChatGPT，全程自动，我是不懂技术的小白，\n所有事情你自己做：\n\n1. 环境自检：需要 git 和 Node.js ≥ 20，缺什么就自动安装\n  （macOS 用 Homebrew，Windows 用 winget），同时安装 cloudflared。\n2. 下载：把 https://github.com/XiaoDuoYa/codex-with-chatgpt 克隆到\n   ~/codex-with-chatgpt（已存在就 git pull 更新）。\n3. 构建：在该目录里执行 corepack pnpm install 和 corepack pnpm build。\n4. 安装 Skill：先确定 Codex home：如果设置了非空的 CODEX_HOME 就使用它，\n   否则使用 ~/.codex（Windows 默认为 %USERPROFILE%\\.codex）。把仓库里的\n   skill/SKILL.md 复制到 <codex-home>/skills/codex-with-chatgpt/SKILL.md，\n   并把文件中 \"The codex-with-chatgpt checkout lives at:\" 那一行的路径改成实际克隆路径。\n5. 首次配置：按 SKILL.md 里的 first-time setup 流程执行\n  （运行 c2c setup，用内置浏览器打开 ChatGPT 配置连接器并输入配对码）。\n   全程只用内置浏览器，禁止打开任何第三方浏览器。\n6. 只有遇到需要我登录（ChatGPT / Cloudflare）、验证码或两步验证时才叫我，\n   而且一次只告诉我一个动作。\n7. 完成后给我看 ✓ 清单，并确认文件读取测试通过。我不懂 MCP、OAuth、\n   Tunnel、端口这些词，不要向我解释；出了问题先自己修。\n```\n\n\n**EN** — Don't know git, Node, or terminals? You don't need to. Copy the\nparagraph below, paste it to your coding agent (Codex), and go grab a coffee:\n\n```text\nPlease install and configure \"Codex with ChatGPT\" for me, fully automatically.\nI am a non-technical user — do everything yourself:",
+      "readme_intro": "> ChatGPT thinks. Codex works. > ChatGPT 负责思考，Codex 负责干活。 > [!IMPORTANT] > **遇到问题？** 请先向 Codex 发送 **「更新 Codex with ChatGPT」** 并重试。更新到最新版本可以解决大多数已知问题。 > **Having trouble?** First ask Codex to **“Update Codex with ChatGPT”** and try again. Updating to the latest version resolves most known issues.",
+      "score": 0.5706,
+      "score_parts": {
+        "velocity": 0.311,
+        "vel_rel": 0.4545,
+        "vel_abs": 0.0957,
+        "hands_on": 0.85,
+        "cross_heat": 1.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "Ryze-AI-Adgent/open-seo-mcp-skills",
+      "url": "https://github.com/Ryze-AI-Adgent/open-seo-mcp-skills",
+      "description": "Free SEO MCP server + open-source SEO and GEO skills for Claude: keyword research, rank tracking, audits, backlinks, AI visibility on your real GSC/GA4/ads data. claude mcp add ryze --transport http https://connector.get-ryze.ai/mcp",
+      "language": "Shell",
+      "topics": [
+        "ai-seo",
+        "ai-visibility",
+        "backlinks",
+        "claude",
+        "claude-code",
+        "claude-skills",
+        "dataforseo",
+        "generative-engine-optimization",
+        "geo",
+        "geo-mcp",
+        "keyword-research",
+        "llm-seo",
+        "mcp",
+        "mcp-server",
+        "open-source-seo",
+        "rank-tracking",
+        "seo",
+        "seo-audit",
+        "seo-mcp",
+        "seo-mcp-server"
+      ],
+      "stars": 6154,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-08-29T23:37:01Z",
+      "pushed_at": "2026-10-13T03:37:44Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 7,
+      "readme_excerpt": "```\nclaude mcp add ryze --transport http https://connector.get-ryze.ai/mcp\nclaude plugin marketplace add Ryze-AI-Adgent/open-seo-mcp-skills\nclaude plugin install open-seo-mcp-skills@ryze\n```\n\nThen: *\"run an SEO audit on mysite.com\"*. The plugin bundles the connector, so step one is optional in Claude Code.\n\nProduct pages: [Google Ads MCP](https://www.get-ryze.ai/google-ads-mcp?utm_source=github&utm_content=open-seo-mcp-skills) · [Meta Ads MCP](https://www.get-ryze.ai/meta-ads-mcp?utm_source=github&utm_content=open-seo-mcp-skills)",
+      "readme_intro": "[ ](https://www.get-ryze.ai/how-to-connect-claude-to-google-meta-ads-mcp?utm_source=github&utm_content=open-seo-mcp-skills) Skip the setup: use the hosted Ryze MCP (Google sign-in, Search Console and GA4 connected in one step, approval-gated changes). **[Connect Ryze in one click →](https://www.get-ryze.ai/developers?utm_source=github&utm_content=open-seo-mcp-skills)** Open-source SEO + GEO skills for Claude on a free **SEO MCP server** (the Ryze connector) — keyword research, rank tracking, site audits, backlinks, competitor gaps, AI visibility — running on **your own Search Console, Analytics and ads data** through the [Ryze MCP](https://get-ryze.ai?utm_source=github&utm_content=open-seo-mcp-skills), with DataForSEO built in for the data Google won't give you. No subscription for the too",
+      "score": 0.4997,
+      "score_parts": {
+        "velocity": 0.251,
+        "vel_rel": 0.3636,
+        "vel_abs": 0.0821,
+        "hands_on": 0.6,
+        "cross_heat": 1.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    }
+  ],
+  "meta": {
+    "pick_repo": "anomalyco/opencode",
+    "runner_up_repos": [
+      "XiaoDuoYa/codex-with-chatgpt",
+      "Ryze-AI-Adgent/open-seo-mcp-skills"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 51,
+    "excluded_recent": 17,
+    "fresh_candidates": 34,
+    "widen_pass": false,
+    "pool_by_source": {
+      "trending": 3,
+      "new": 26,
+      "topic": 19,
+      "news": 3
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "affaan-m/ECC",
+    "yesterday_pick_delta": 885
+  }
+}
