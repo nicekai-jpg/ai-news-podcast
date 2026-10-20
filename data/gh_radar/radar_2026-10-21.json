@@ -1,0 +1,121 @@
+{
+  "date": "2026-10-21",
+  "generated_at": "2026-10-20T20:53:07.385331+00:00",
+  "projects": [
+    {
+      "repo": "Human-Agent-Society/reef",
+      "url": "https://github.com/Human-Agent-Society/reef",
+      "description": "Infrastructure for continually self‑improving agents",
+      "language": "Python",
+      "topics": [
+        "agent-infrastructure",
+        "ai-agents",
+        "continual-learning",
+        "inference",
+        "llm",
+        "llm-training",
+        "reinforcement-learning",
+        "self-improving-agents"
+      ],
+      "stars": 7700,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-08-31T01:39:18Z",
+      "pushed_at": "2026-10-20T19:36:35Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "> 💡 **Note**\n>\n> Reef's artifact and checkpoint functionality requires the `git-lfs` system\n> package. Reef initializes Git LFS locally for its artifact repositories.\n\nWe recommend [uv](https://docs.astral.sh/uv/) for managing packages, and the\ncommands below use it.",
+      "readme_intro": "Infrastructure for continually self‑improving agents [ ](https://github.com/Human-Agent-Society/reef/actions/workflows/ci.yml) [ ](https://pypi.org/project/reef-infra/) [ ](pyproject.toml) [ ](LICENSE) English | [中文](README.zh.md) Reef is the first open-source infrastructure for continual self-improving agents. It connects agent inference, feedback, learning, and versioned delivery. Use it to train model weights with Slime and SGLang, or improve an agent's harness, including its prompts, rules, and skills. **🚀 [Get started](https://reefinfra.ai/docs/getting-started/quickstart/) | 🗺️ [Roadmap](https://github.com/Human-Agent-Society/reef/issues/25) | 🗓️ [Office Hours](https://github.com/Human-Agent-Society/reef/issues/818) | 📣 [Launch post](https://x.com/ao_qu18465/status/2094867930081337730",
+      "score": 0.648,
+      "score_parts": {
+        "velocity": 0.4229,
+        "vel_rel": 0.6364,
+        "vel_abs": 0.1027,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 3
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "deepseek-ai/DeepInfer",
+      "url": "https://github.com/deepseek-ai/DeepInfer",
+      "description": "DeepInfer: High-performance, large-scale inference framework for DeepSeek models",
+      "language": "Python",
+      "topics": [],
+      "stars": 11614,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-10-16T07:47:23Z",
+      "pushed_at": "2026-10-20T11:03:36Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 1,
+      "readme_excerpt": "",
+      "readme_intro": "DeepInfer is the high-performance inference framework that powers DeepSeek's large-scale production services. This open-source release provides offline inference with the core features needed for serving at scale. Supported models: - DeepSeek-V4.1-Flash Supported features: - Optimized kernels, model and sampler runtime - Parallelism: Attention DP / balanced CP, MoE EP + EPLB - DSpark and confidence-scheduled verification - SWA bounded replay - Asynchronous scheduling (zero-overhead batch scheduler) - Batch-invariant inference - Deterministic sampling - Structured outputs Feature details and configuration - **Optimized kernels:** [FlashMLA](https://github.com/deepseek-ai/FlashMLA), [DeepGEMM](https://github.com/deepseek-ai/DeepGEMM), [DeepEP](https://github.com/deepseek-ai/DeepEP), [TileKer",
+      "score": 0.6446,
+      "score_parts": {
+        "velocity": 1.0,
+        "vel_rel": 1.0,
+        "vel_abs": 1.0,
+        "hands_on": 1.0,
+        "cross_heat": 0.3333,
+        "affinity": 0.5,
+        "days_in_pool": 0
+      },
+      "affinity": 0.5
+    },
+    {
+      "repo": "akitaonrails/ai-memory",
+      "url": "https://github.com/akitaonrails/ai-memory",
+      "description": "Solution for long term memory for agent coding CLIs and to facilitate handoff between different agent vendors",
+      "language": "Rust",
+      "topics": [],
+      "stars": 11877,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-05-21T23:23:51Z",
+      "pushed_at": "2026-10-20T20:00:24Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 4,
+      "readme_excerpt": "",
+      "readme_intro": "> Long-term memory for AI coding agents. Quit Claude Code mid-task, > start OpenAI Codex in the same directory, continue without > re-explaining the architecture, the failed approaches, or the open > questions. **Website: [aimemory.sh](https://aimemory.sh)** [ ](https://aimemory.sh) [ ](https://github.com/akitaonrails/ai-memory/releases/latest) [ ](rust-toolchain.toml) [ ](LICENSE)",
+      "score": 0.5487,
+      "score_parts": {
+        "velocity": 0.1301,
+        "vel_rel": 0.1818,
+        "vel_abs": 0.0524,
+        "hands_on": 1.0,
+        "cross_heat": 1.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    }
+  ],
+  "meta": {
+    "pick_repo": "Human-Agent-Society/reef",
+    "runner_up_repos": [
+      "deepseek-ai/DeepInfer",
+      "akitaonrails/ai-memory"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 34,
+    "excluded_recent": 17,
+    "fresh_candidates": 17,
+    "widen_pass": false,
+    "pool_by_source": {
+      "trending": 3,
+      "new": 26,
+      "news": 2,
+      "topic": 3
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "anomalyco/opencode",
+    "yesterday_pick_delta": 1080
+  }
+}
