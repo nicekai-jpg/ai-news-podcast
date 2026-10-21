@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-22",
+  "generated_at": "2026-10-21T20:54:41.800952+00:00",
+  "projects": [
+    {
+      "repo": "deepseek-ai/deepseek-harness",
+      "url": "https://github.com/deepseek-ai/deepseek-harness",
+      "description": "DeepSeek Harness: Everything is a Plugin.",
+      "language": "TypeScript",
+      "topics": [
+        "ai-agents",
+        "cordis",
+        "dsh",
+        "dsh-plugin"
+      ],
+      "stars": 256917,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-08-13T11:56:32Z",
+      "pushed_at": "2026-10-17T08:16:09Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "pnpm install\npnpm run build\npnpm dsh web\n```\n\n`pnpm run build` prepares the repository artifacts. `pnpm dsh web` uses those built artifacts without rebuilding.",
+      "readme_intro": "English | [中文](README.zh.md) DeepSeek Harness (`dsh`) is an open-source agent harness developed by [DeepSeek AI](https://deepseek.com). It is built on an **everything-is-a-plugin** architecture and powered by [Cordis](https://github.com/cordiverse/cordis), whose design is described in [_A Programming Paradigm for Spatiotemporal Composability_](https://arxiv.org/abs/2608.25512). Documentation: [https://deepseek-harness.github.io/deepseek-harness/](https://deepseek-harness.github.io/deepseek-harness/)",
+      "score": 0.6162,
+      "score_parts": {
+        "velocity": 1.0,
+        "vel_rel": 1.0,
+        "vel_abs": 1.0,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 0
+      },
+      "affinity": 0.5
+    },
+    {
+      "repo": "stablyai/orca",
+      "url": "https://github.com/stablyai/orca",
+      "description": "Orca is the place for working with a fleet of agents (e.g. Grok Bot, Claude Code). Run any coding agent with your own subscription. Available on desktop, mobile and remote runtime.",
+      "language": "TypeScript",
+      "topics": [
+        "ade",
+        "agent-ide",
+        "ai-agents",
+        "automation",
+        "bot",
+        "claude-code",
+        "codex",
+        "ghostty",
+        "grok-bot",
+        "hermes-agent",
+        "mobile-app",
+        "muse",
+        "openclaw",
+        "opencode",
+        "orchestration",
+        "pi",
+        "runtime",
+        "terminal",
+        "worktrees",
+        "yc-backed"
+      ],
+      "stars": 101079,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-03-17T03:28:57Z",
+      "pushed_at": "2026-10-21T20:54:33Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "readme_intro": "Orca 中文  ·  日本語  ·  한국어  ·  Español  ·  Français  ·  Português The AI Orchestrator for 100x builders. Run Codex, ClaudeCode, OpenCode or Pi side-by-side — each in its own worktree, tracked in one place. Download Orca",
+      "score": 0.6078,
+      "score_parts": {
+        "velocity": 0.6146,
+        "vel_rel": 0.8182,
+        "vel_abs": 0.3091,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "CopilotKit/OpenBot",
+      "url": "https://github.com/CopilotKit/OpenBot",
+      "description": "Open-source AI coworkers that each get a computer of their own: a browser, files and tools, with every action decided before it happens and recorded after. Bring any AG-UI agent.",
+      "language": "TypeScript",
+      "topics": [
+        "ag-ui",
+        "agent-governance",
+        "ai-agents",
+        "browser-automation",
+        "copilotkit",
+        "generative-ui",
+        "mcp"
+      ],
+      "stars": 6851,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-08-17T00:44:59Z",
+      "pushed_at": "2026-10-21T20:51:32Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "> **Setting up with an AI assistant?** Paste [`prompt.txt`](prompt.txt) into it first. It carries the\n> same steps as below plus the things that are easy to get wrong: which of the blank keys in\n> `.env.example` are actually yours to fill (the CopilotKit key and a model key), which the start\n> script fills for you, and what each start-up refusal means. Every claim in it is checked against\n> this repository.\n\n1. Create `.env`:\n\n   ```sh\n   cp .env.example .env\n   bun install\n   ```\n\n2. Connect a fresh managed Intelligence project:\n\n   ```sh\n   npx --yes copilotkit@latest login\n   npx --yes copilotkit@latest project select\n   bun scripts/setup-learning.ts\n   ```\n\n   The helper provisions the selected project's runtime key, creates or reuses its\n   `openbot` Learning container, then writes both settings to `.env`. It preserves\n   custom container assignments and never replaces an existing OpenBot key; with one\n   set, it only creates `openbot` in that key's project if it is missing.\n   For fresh self-hosted setup, set `INTELLIGENCE_API_URL` to that deployment's\n   HTTPS API origin (or `http://localhost` for a local one) and run the helper\n   without the two `npx` commands. It opens an",
+      "readme_intro": "**The AI assistant your company can actually own.** Same shape as ChatGPT, Claude or Grok, with one difference that matters: it runs on your infrastructure and you can change anything about it. Any agent stack, through AG-UI. Each coworker gets a computer of its own: a real browser with its own logins, its own files, and only the tools you grant. Every action decided before it happens and recorded after. [**Talk to an engineer**](https://copilotkit.ai/talk-to-an-engineer?ref=openbot_readme) · [**Have us build it with you**](https://copilotkit.ai/talk-to-an-engineer?ref=openbot_readme) · [**copilotkit.ai/openbot**](https://copilotkit.ai/openbot) · [**Quick start**](#quick-start) · [**Docs**](docs/README.md) [ ](https://github.com/CopilotKit/openbot/actions/workflows/ci.yml) [ ](https://gith",
+      "score": 0.5862,
+      "score_parts": {
+        "velocity": 0.2463,
+        "vel_rel": 0.3636,
+        "vel_abs": 0.0703,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 2
+      },
+      "affinity": 1.0
+    }
+  ],
+  "meta": {
+    "pick_repo": "deepseek-ai/deepseek-harness",
+    "runner_up_repos": [
+      "stablyai/orca",
+      "CopilotKit/OpenBot"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 49,
+    "excluded_recent": 18,
+    "fresh_candidates": 31,
+    "widen_pass": false,
+    "pool_by_source": {
+      "topic": 19,
+      "trending": 3,
+      "new": 26,
+      "news": 1
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "Human-Agent-Society/reef",
+    "yesterday_pick_delta": 22
+  }
+}
