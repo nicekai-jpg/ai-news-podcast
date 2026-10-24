@@ -1,0 +1,132 @@
+{
+  "date": "2026-10-25",
+  "generated_at": "2026-10-24T19:45:13.560922+00:00",
+  "projects": [
+    {
+      "repo": "elie222/rakazo",
+      "url": "https://github.com/elie222/rakazo",
+      "description": "Open-source Grok Bot alternative. Choose your own model and sandbox.",
+      "language": "TypeScript",
+      "topics": [
+        "ai-agents",
+        "chatgpt",
+        "docker",
+        "electron",
+        "expo",
+        "grok",
+        "llm",
+        "self-hosted",
+        "typescript"
+      ],
+      "stars": 5586,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-08-13T06:28:56Z",
+      "pushed_at": "2026-10-24T19:43:11Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "You need Docker Engine, the Compose plugin, curl, and OpenSSL. No clone or Node install.\n\n```bash\nmkdir -p rakazo && cd rakazo &&\ncurl -fsSLO https://raw.githubusercontent.com/elie222/rakazo/main/infra/compose/install-images.sh &&\nbash install-images.sh\n```\n\nThe installer downloads the Compose files, creates `.env` with random secrets, and starts Rakazo.\nIt preserves an existing `.env` when rerun.\n\nOpen [http://127.0.0.1:5173](http://127.0.0.1:5173), create an account, and connect a model.\nLocal Docker computers are on by default. Optional remote providers: `e2b`, `daytona`, `createos`, `boat`, or `railway`\nwith the matching API key.\n\nDefault image tag is `edge` (main builds, `linux/amd64` + `linux/arm64`). Details and tags:\n[self-hosting guide](./docs/self-host.md#published-images-no-checkout).\n\nOn restricted networks, override the installer download base (`RAKAZO_DOWNLOAD_BASE`), skip\nexisting Compose files (`--local` / `RAKAZO_DOWNLOAD_SKIP_EXISTING`), or mirror the bootstrap\nscript URL — see\n[Restricted networks / mirror downloads](./docs/self-host.md#restricted-networks--mirror-downloads).\n\nFor an agent-assisted install, use [SETUP_PROMPT.md](./SETUP_PROMPT.md).",
+      "readme_intro": "[English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) [ ](https://github.com/elie222/rakazo/stargazers) [ ](https://discord.gg/RWwKa2Sn7h) [ ](https://apps.apple.com/app/rakazo/id6801531099) [ ](https://github.com/elie222/rakazo/releases/download/android/rakazo.apk) Rakazo is an open source AI agent for persistent teammates, and a self-hosted AI assistant you can run on your own machine. It is available on the web, as an Electron desktop app, and on [iPhone](https://apps.apple.com/app/rakazo/id6801531099) and [Android](https://github.com/elie222/rakazo/releases/download/android/rakazo.apk). Bring your own model and computer provider, or run the complete stack locally. It is an open source, self-hosted alternative to Grok Bot, Meta Muse, OpenAI Dots, Instinct, OpenClaw,",
+      "score": 0.6027,
+      "score_parts": {
+        "velocity": 0.2934,
+        "vel_rel": 0.4545,
+        "vel_abs": 0.0517,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 3
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "jev-chat/jev-chat-jarvis",
+      "url": "https://github.com/jev-chat/jev-chat-jarvis",
+      "description": "The chat decision assistant: before you reply, Jev reads the chat, judges intent and risk, and drafts replies you fill in with one tap. You press send. Android · Windows · macOS · iOS | 聊天辅助决策工具：先看懂对方再回复，发不发由你。",
+      "language": "Kotlin",
+      "topics": [
+        "accessibility-service",
+        "ai-assistant",
+        "android",
+        "chat-assistant",
+        "chat-copilot",
+        "llm",
+        "ocr",
+        "qq",
+        "whatsapp"
+      ],
+      "stars": 8045,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-09-21T11:12:53Z",
+      "pushed_at": "2026-10-16T09:46:28Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 1,
+      "readme_excerpt": "",
+      "readme_intro": "**Read them first, then reply. Before you answer, Jev works out what the other person really means, how risky the moment is and how to respond, then drafts replies you can fill in with one tap. Whether to send is always up to you.** [ ](https://github.com/jev-chat/jev-chat-jarvis/stargazers) [ ](#download--installation) [ ](../LICENSE)",
+      "score": 0.5343,
+      "score_parts": {
+        "velocity": 0.665,
+        "vel_rel": 1.0,
+        "vel_abs": 0.1625,
+        "hands_on": 0.45,
+        "cross_heat": 0.3333,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "NVIDIA/OpenShell",
+      "url": "https://github.com/NVIDIA/OpenShell",
+      "description": "OpenShell is the safe, private runtime for autonomous AI agents.",
+      "language": "Rust",
+      "topics": [],
+      "stars": 19366,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-02-24T22:52:22Z",
+      "pushed_at": "2026-10-24T02:12:45Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "You need Linux, macOS on Apple Silicon, or Windows with WSL 2 (experimental), plus Docker, Podman, or host virtualization. See the [Support Matrix](https://docs.nvidia.com/openshell/latest/about/support-matrix) for details.\n\n```shell\ncurl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh\nopenshell sandbox create --name demo\n```\n\nThe installer sets up the CLI and a local gateway. The default sandbox image is minimal Ubuntu with no agent installed. To run a real agent, follow [Run Your First Agent](https://docs.nvidia.com/openshell/latest/about/run-your-first-agent): it runs OpenCode against a free OpenRouter model and shows how to approve new access as the agent needs it.",
+      "readme_intro": "[ ](https://github.com/NVIDIA/OpenShell/blob/main/LICENSE) [ ](https://pypi.org/project/openshell/) [ ](SECURITY.md) [ ](https://docs.nvidia.com/openshell/latest/index.html) > [!IMPORTANT] > **New in OpenShell 0.1.x:** a stable release cadence, new isolation primitives, an expanded extension surface, and new APIs. [Read the 0.1.0 upgrade guide](https://docs.nvidia.com/openshell/latest/upgrade/0-1-0). OpenShell is the safe, private runtime for fleets of autonomous AI agents. Agents are most useful when they can read files, install packages, call APIs, and use credentials. OpenShell gives them that capability without giving them unrestricted access to your data, secrets, or network. You declare what each agent can touch in a policy, and OpenShell enforces it.",
+      "score": 0.5161,
+      "score_parts": {
+        "velocity": 0.4032,
+        "vel_rel": 0.6364,
+        "vel_abs": 0.0536,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 2
+      },
+      "affinity": 0.5
+    }
+  ],
+  "meta": {
+    "pick_repo": "elie222/rakazo",
+    "runner_up_repos": [
+      "jev-chat/jev-chat-jarvis",
+      "NVIDIA/OpenShell"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 52,
+    "excluded_recent": 19,
+    "fresh_candidates": 33,
+    "widen_pass": false,
+    "pool_by_source": {
+      "news": 3,
+      "new": 25,
+      "trending": 4,
+      "topic": 20
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "Graphify-Labs/graphify",
+    "yesterday_pick_delta": 503
+  }
+}
