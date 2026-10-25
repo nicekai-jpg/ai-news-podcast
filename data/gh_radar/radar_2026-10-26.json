@@ -1,0 +1,135 @@
+{
+  "date": "2026-10-26",
+  "generated_at": "2026-10-25T19:57:07.351996+00:00",
+  "projects": [
+    {
+      "repo": "pengchujin/aerial-tv",
+      "url": "https://github.com/pengchujin/aerial-tv",
+      "description": "给国产电视的一块干净桌面：参照 tvOS 设计的开源 Android TV 桌面，没有广告，开机自动接管。A tvOS-style launcher for Xiaomi, TCL and other China-market TVs.",
+      "language": "Kotlin",
+      "topics": [],
+      "stars": 4964,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-10-20T09:13:06Z",
+      "pushed_at": "2026-10-25T15:21:32Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "不用 root，不动系统应用，随时能还原。电脑和电视连同一个网络。",
+      "readme_intro": "**给国产电视的一块干净桌面。** 参照 Apple TV 做的 Android TV 桌面：没有广告，没有推荐流，只有你的 App、壁纸和航拍屏保。 适合小米、TCL、创维、索尼等国产电视，也能装在盒子和投影仪上。开机自动进入，待机也不会被清理。 **中文** · [English](README.en.md) | 电视自带的桌面 | 换上 Aerial 之后 | |:---:|:---:| |   |   |",
+      "score": 0.4698,
+      "score_parts": {
+        "velocity": 0.8647,
+        "vel_rel": 1.0,
+        "vel_abs": 0.6619,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.0,
+        "days_in_pool": 0
+      },
+      "affinity": 0.0
+    },
+    {
+      "repo": "ly05010419/MacNativeGames",
+      "url": "https://github.com/ly05010419/MacNativeGames",
+      "description": "Play your own Tears of the Kingdom and Breath of the Wild natively on Apple silicon Mac, iPhone and iPad. Not an emulator: the game's ARM64 code runs directly, NVN rebuilt on Metal. Bring your own game.",
+      "language": "C",
+      "topics": [
+        "apple-silicon",
+        "arm64",
+        "breath-of-the-wild",
+        "game-port",
+        "ios",
+        "ipados",
+        "macos",
+        "metal",
+        "native-port",
+        "tears-of-the-kingdom",
+        "ultrawide",
+        "zelda"
+      ],
+      "stars": 5437,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-10-17T19:52:00Z",
+      "pushed_at": "2026-10-25T16:43:13Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "Everything from building the app to playing is in **[docs/install.md](docs/install.md)**:\n\n- [What you need](docs/install.md#what-you-need) · [Build the app](docs/install.md#build-the-app) · [Breath of the Wild](docs/install.md#breath-of-the-wild-160-and-190-early) · [iPhone and iPad](docs/install.md#iphone-and-ipad)\n- [Controls](docs/install.md#controls) · [Where things are](docs/install.md#where-things-are) · [Known issues](docs/install.md#known-issues)\n- [Local testing](docs/install.md#local-testing) · [Audio fix](docs/install.md#audio-fix)",
+      "readme_intro": "Play your own Tears of the Kingdom and Breath of the Wild natively on Apple silicon Mac, iPhone and iPad. Not an emulator: the game's own ARM64 code runs directly on Apple chips, and its NVN graphics are rebuilt on Metal.",
+      "score": 0.4287,
+      "score_parts": {
+        "velocity": 0.7267,
+        "vel_rel": 0.9091,
+        "vel_abs": 0.4531,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.0,
+        "days_in_pool": 0
+      },
+      "affinity": 0.0
+    },
+    {
+      "repo": "shader-effects-inc/shaders",
+      "url": "https://github.com/shader-effects-inc/shaders",
+      "description": "WebGPU components for React, Vue, Svelte, Solid, JS & Framer",
+      "language": "TypeScript",
+      "topics": [
+        "cli",
+        "javascript",
+        "mcp",
+        "react",
+        "shaders",
+        "solid",
+        "svelte",
+        "vue",
+        "webgpu-shaders"
+      ],
+      "stars": 5460,
+      "delta_stars": 56,
+      "is_new": false,
+      "created_at": "2026-09-29T16:36:26Z",
+      "pushed_at": "2026-10-21T17:33:36Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "npm install shaders\n```",
+      "readme_intro": "Shaders WebGPU effects as components for React, Vue, Svelte, Solid and JavaScript ```bash npm install shaders ```",
+      "score": 0.4066,
+      "score_parts": {
+        "velocity": 0.2331,
+        "vel_rel": 0.3636,
+        "vel_abs": 0.0373,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 3
+      },
+      "affinity": 0.5
+    }
+  ],
+  "meta": {
+    "pick_repo": "pengchujin/aerial-tv",
+    "runner_up_repos": [
+      "ly05010419/MacNativeGames",
+      "shader-effects-inc/shaders"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 30,
+    "excluded_recent": 15,
+    "fresh_candidates": 15,
+    "widen_pass": false,
+    "pool_by_source": {
+      "new": 24,
+      "trending": 3,
+      "topic": 1,
+      "news": 2
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "elie222/rakazo",
+    "yesterday_pick_delta": 173
+  }
+}
