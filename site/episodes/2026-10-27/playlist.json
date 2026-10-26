@@ -1,0 +1,629 @@
+{
+  "episode_id": "2026-10-27",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年10月27日，我是苏晴。今天咱们聊到的几件事，表面看分属手语、数字人、搜索和视频生成，底下其实是一条线：AI正在从替咱们做内容，走向真正进入咱们的日常沟通。",
+      "start": 1.0,
+      "duration": 21.657,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "我是周航。我的判断是，下一轮竞争不只是生成得像不像人，而是人跟数字世界怎么交流、怎么协作、怎么表达，能不能再自然一点、再低门槛一点。咱们逐个看，这次还真有点意思。",
+      "start": 23.106,
+      "duration": 14.691,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "把最有意思的放前面。DeepMind把手语AI交到用户手中了，推出了手语转文本的SL2T模型，还给聋人与听障用户配了新的功能。真的假的，以前手语翻译大多得靠真人吧？",
+      "start": 38.294,
+      "duration": 17.87,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "对，而且这次的意义不只是“认得准”。手语转文本的难点从来不是把手形当成几个标签，SL2T要处理连续动作、运动轨迹、空间方向，还要结合上下文理解表达。单个手势看着像，句子连起来可能完全不同。",
+      "start": 56.617,
+      "duration": 19.611,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "我跟你说不由得想到，咱们平常看字幕，漏掉一句顶多会错意；手语交流要是错一句，可能直接改变整句话的意思。更麻烦的是，不同人的动作幅度、速度和表达习惯都不一样，模型见没见过这种表达，差别会特别大。",
+      "start": 76.633,
+      "duration": 22.92,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你注意啊，这里面最稀缺的不是算力，而是覆盖不同手语习惯、地区表达和真实场景的数据。公开数据集往往工整、完整、动作标准，真实用户可不会对着摄像头打一镜到底。所以评价SL2T，不能只看实验室里的一句准确率。",
+      "start": 99.986,
+      "duration": 19.742,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "而且手语也不只是手上的动作，语法、面部表情和身体姿态都可能承载信息。这就像把一整场音乐会只录成钢琴声，画面再清楚，也丢掉了很多东西。",
+      "start": 120.193,
+      "duration": 15.717,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "说白了，好的手语AI不能只追求字面转写，还得让听障用户知道什么时候没听懂、哪里可能存疑，能不能一键让人工接手。自动识别先给出结果，再提供纠错和人工兜底，这才像产品，而不是炫技。",
+      "start": 136.372,
+      "duration": 16.999,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "我最认可的是，它把长期被忽略的沟通方式放进了主流AI接口，不再当成一个小插件。对咱们来说，这跟有什么关系？咱们当然不是每个人都懂手语，但使用AI客服、视频会议、紧急通知时，多一种稳定输入输出方式，公共系统就少一道门槛。",
+      "start": 153.822,
+      "duration": 25.663,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "对，而且这会改变产品设计的起点。不是先做一个正常功能，再额外加个无障碍版本，而是从底层就考虑，有人靠听，有人靠看，有人靠文字。包容性一旦成为底座，效率往往也会跟着提高。",
+      "start": 179.985,
+      "duration": 15.562,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "就像字幕最初只是为听障观众准备，后来所有人在嘈杂环境里都愿意开。你别笑，这个逻辑真的成立。技术先服务少数人的高难度需求，往往会变成所有人都不觉得理所当然的基础能力。",
+      "start": 195.985,
+      "duration": 17.26,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "没错，而且最怕的是识别错以后还装懂。关键通知里宁可明确说“这段置信度低，请人工确认”，也别给一个流畅但错误的结果。流畅在这里甚至可能比卡顿更危险。",
+      "start": 213.706,
+      "duration": 13.168,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "这点特别重要。对了，Apple ML Research也带来一个很抓眼球的东西，叫GHARP。少量受试者照片，加上驱动表情信号，就能实时生成3D头部动画。这是不是以后拍张证件照，数字分身就能上线了？",
+      "start": 227.319,
+      "duration": 18.566,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "没那么神，但方向确实很猛。你可以把它理解成先用几张照片搭出一个大致三维外观，再由表情和头部驱动信号控制它怎么动。难点在于，几张照片不可能包含完整几何、材质和头发细节，模型得靠先验知识补全。",
+      "start": 246.359,
+      "duration": 18.653,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "这就像只给了几张房间照片，装修公司先猜出整体风格，再用几件家具把它还原得挺像。实时生成则更难，相当于一边猜、一边改，还得让动作保持稳定，不能每帧换一张脸。",
+      "start": 265.439,
+      "duration": 16.738,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "对，头部动画不只是贴张会动的照片。眼睛怎么转、牙齿怎么出现、脸怎么转过去，都可能穿帮。GHARP如果能在少量输入下把实时性保住，就能大幅降低虚拟角色、游戏NPC、个性化主播的制作成本。",
+      "start": 282.641,
+      "duration": 17.042,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "普通人也能用得上。比如我想做一门课，不想每次面对镜头都那么累，可以准备一套3D头像，让它替我讲；或者给团队做内部角色，把表情和说话节奏驱动起来。当然，这里面也会有点 uncanny valley那种微妙不适。",
+      "start": 300.1,
+      "duration": 19.48,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "问题也恰恰在这儿。照片是公开的，表情数据却可能来自深度伪造，生成的又是高度可识别的三维人脸。肖像授权不能只写一句“素材已获许可”，最好还能限定用途、期限和撤销方式。",
+      "start": 320.016,
+      "duration": 15.432,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "还有生成内容标记，对吧？一段3D头像流出去以后，别人怎么知道它不是本人实时拍摄？水印未必万无一失，但身份授权、来源记录和平台标记至少得一起上。",
+      "start": 335.865,
+      "duration": 13.888,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "还要防一种情况：有人只拿到几张照片，就擅自生成他人的数字替身。GHARP降低了制作门槛，也就可能降低恶搞、诈骗和虚假代言的门槛。技术普及不自动等于善意，技术底座最好自带边界。",
+      "start": 350.249,
+      "duration": 15.867,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "挺矛盾的，对吧？它既能让表达更轻松，也能让伪造更容易。我的态度是，先把授权和可追溯做扎实，再谈大规模普及，不然最后又是谁跑得快、谁责任更模糊。",
+      "start": 366.528,
+      "duration": 15.717,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "说完了这两件大新闻，咱们看看几条快讯。Google Search借助Gemini展示赛前准备建议，演示里会给出3种备赛思路。这个看着像搜索升级，其实挺能说明问题。",
+      "start": 382.724,
+      "duration": 13.211,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "以前咱们搜索“比赛前怎么准备”，得到的是一堆链接，自己再筛。现在AI直接根据具体目标给出几种方案，比如时间怎么分配、装备怎么选择、临场怎么调整。检索答案已经变成场景化指导了。",
+      "start": 396.367,
+      "duration": 16.912,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "但给3种思路比只给一个答案聪明。单一答案看着省事，用户却不知道它漏掉了什么，也不知道哪种适合自己的身体状况、预算和经验。把选择权还给用户，AI才像个助手，而不是替咱们做决定的班主任。",
+      "start": 413.747,
+      "duration": 16.128,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "不过3种方案也可能只是看起来不同，底层都来自同一篇搜索结果。Gemini负责归纳和改写，来源质量还得往上追。涉及伤病、营养和训练量时，我可不敢只听一个模型拍板。",
+      "start": 430.365,
+      "duration": 15.998,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "没错，场景化越强，责任越重。普通菜谱错了影响一顿饭，训练建议错了可能影响身体。搜索产品至少要把原始出处、建议适用范围和风险提示放近一点，别让一段顺滑总结把不确定性冲没。",
+      "start": 446.84,
+      "duration": 15.998,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "另一条是MOONSHOT探索多目标模型剪枝，Kimi框架同时面向视觉与语言模型，目标是在压缩效率和模型表现之间找平衡。这个词听起来像健身，其实是在给模型做精简。",
+      "start": 463.256,
+      "duration": 18.0,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "类比一下，模型像一栋塞得太满的大楼，房间多不代表利用率高。剪枝就是拆掉重复、冗余甚至长期不走的通道，让有限资源跑得更快。难点是拆错一个承重墙，整栋楼的业务能力都可能跟着掉。",
+      "start": 481.695,
+      "duration": 17.086,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "“多目标”听着更麻烦，因为不能只追求文件变小。还得顾速度、内存、效果，视觉模型和语言模型的能力特点又不一样。压缩得像狠了会变笨，保守了又没省下多少。",
+      "start": 499.193,
+      "duration": 15.127,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "对，所以它同时覆盖视觉与语言框架挺有意义。行业现在常在“大模型效果”和“部署成本”之间二选一，真正好用的路线是按场景做取舍。端侧任务宁可少一点通用能力，也要求响应快、隐私好。",
+      "start": 514.813,
+      "duration": 16.259,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "要是Kimi这套思路继续成熟，受益的不只是云端大厂。咱们手机上的实时翻译、相册搜索、办公助手，都能少耗一点电、少占一点内存。模型不是参数越大越有价值，能在具体设备上稳定工作更重要。",
+      "start": 531.481,
+      "duration": 17.478,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "而且剪枝还能服务不同预算的团队。小模型未必在所有榜单上赢，但部署便宜、响应稳定，批量业务反而更划算。行业真正需要的是可选择的路线，不是只供瞻仰的昂贵旗舰。",
+      "start": 549.446,
+      "duration": 14.996,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "说到生成内容，xAI的Grok也公开了生成版《Odyssey》的首七分钟。画面呢，我觉得“尚可”，就是能看，但离让人起鸡皮疙瘩还差不少。",
+      "start": 564.884,
+      "duration": 12.974,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "哈，你这评价已经挺克制了。很多生成影像容易把“清楚”误当成“好看”，每个镜头都规整、光线也漂亮，可连起来就是没有戏。人物站在那里说话，却没有处境、欲望和冲突。",
+      "start": 578.318,
+      "duration": 14.691,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "对呀，七分钟足够看出人物有没有张力了。如果角色不管遇到什么都保持同一种表情，再精细的皮肤纹理也救不了。画面像电影截图，不等于叙事像电影。",
+      "start": 593.48,
+      "duration": 13.061,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "生成模型很会组合已有视觉语言，单个镜头可以做得像模像样，但人物弧光、潜台词和节奏不是堆几个电影术语就有。提示词写“史诗、紧张、inspired”很容易，理解人物为什么非做这件事才难。",
+      "start": 606.953,
+      "duration": 16.651,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "而且大家已经看过原作熟透了，生成版哪怕复刻某个名场面，也很容易被拿来逐帧比较。熟IP像一把尺子，画面瑕疵会被放大，创作上的差异也会被误读成模型能力不足。",
+      "start": 624.049,
+      "duration": 17.173,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "所以这七分钟更像一次能力体检，不是一锤定音的审判。它证明生成链路能连续产出，已经有价值；但要说明它真的会讲故事，证据还远远不够。",
+      "start": 641.677,
+      "duration": 11.886,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "把这些消息串起来，我更确定那句话了：AI的下一轮竞争，不只是生成更像人的内容，而是让沟通、协作和表达更自然、更低门槛。手语入口、3D头像、场景化搜索、轻量模型，最后都在解决同一个问题。",
+      "start": 654.003,
+      "duration": 19.568,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "对，技术能力当然重要，但用户不会先看架构图，他们只关心“能不能解决我的问题”。能把复杂系统藏到自然交互后面，把特殊需求做进通用接口的公司，反而更可能留下来。",
+      "start": 674.049,
+      "duration": 15.17,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "新闻说完了，接下来进入今天的项目雷达时间。今天只看一个，我觉得挺适合想自己搭Agent、但不想从空目录熬锅底的人。",
+      "start": 689.7,
+      "duration": 9.752,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "没错，这个项目是makecindy/cindy，一个TypeScript、Apache-2.0许可的开源AI Agent，定位就是开箱即用，让“想到，就能做到”。仓库当前标注为⭐6336。",
+      "start": 699.878,
+      "duration": 14.038,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "为什么现在值得上手？素材标注“首日无对比数据”，所以暂时不能根据它判断增速，这一点咱们得说清楚。但现成的Agent能力，加上相对低的部署门槛，已经足够让团队试一轮。",
+      "start": 714.386,
+      "duration": 15.998,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "第一步怎么跑，终端里依次输入四条命令。第一条，git clone https://github.com/makecindy/cindy.git；第二条，cd cindy；第三条，git lfs pull；第四条，pnpm install。",
+      "start": 730.845,
+      "duration": 17.739,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "我翻译一下：前两条把仓库拉下来并进入目录，第三条拉取Git LFS管理的大文件，最后用pnpm装好依赖。想动手的听众可以先照着跑，再根据README准备自己的模型配置和密钥。",
+      "start": 749.04,
+      "duration": 16.912,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "如果你准备fork，我建议最小改动别碰核心执行链，只新增一个面向垂直任务的SkillHub插件或技能入口，预置提示词、输入字段与输出模板。这样通用Agent就能变成行业或团队专用助手，差异清楚，也更容易维护。",
+      "start": 766.418,
+      "duration": 19.48,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 786.331,
+      "duration": 6.835,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 793.573,
+      "duration": 0.784,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
