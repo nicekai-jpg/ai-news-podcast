@@ -1,793 +1,977 @@
-[Host A] /[Host B]. No parentheses. Need every "line" independent, likely paragraphs with line break. Should not include bullets or URLs maybe can say repository. Repository name and stars exact. Need installation command? Material gives only README prose, no command. "安装命令逐字念出素材摘录中的原文" There isn't a command. We can quote exact "不用 root，不动系统应用，随时能还原。电脑和电视连同一个网络。" Must not make up install command. They want listeners decide clone. Could mention clone but not command since no provided command. Need quote repository pengchujin/aerial-tv, Kotlin, MIT, ⭐4964 exact. Maybe phrase "GitHub 仓库 pengchujin/aerial-tv". "首日无对比数据" exact. No false growth.
+[Host A] /[Host B], no parenthetical annotations, no brackets besides markers, no stars, no headings? Pure dialogue. We can make lines perhaps 70-100 chars. No brackets in URL? URL includes slash no brackets. Avoid parentheses entirely maybe percentages? Fine.
 
-[Host A] Need discuss headline 1: OpenAI embodied data suppliers. Need perhaps identify companies? Outline asks "谁在给 OpenAI 供应具身数据?" Summary says questioning embodied data suppliers. We don't have names. Could discuss data collection suppliers generally, maybe Figure? Tesla? Apptronik? But accuracy concern. OpenAI may have robotics efforts. Need avoid unsupported claims. We can frame as report/question rather than name specific suppliers, since no names in outline. But title demands answer perhaps discuss categories: robot operators, teleoperation farms, human video data, simulation, sensor providers. We can say "目前真正值钱的不只是遥操作几千条视频，而是数据闭环". Mention scale, licensing, provenance, embodiment mismatch. OpenAI perhaps halted physical AI? Need not rely future facts. Date future 2026, supplied outline is source. We need based only outline. Analyze bottleneck. Define data flywheel: deploy -> collect failures -> remote assist -> relabel -> train -> improve -> lower cost -> deploy. Compare to driverless. Who owns closure gets entrance. Ordinary impact: products adapt, labor changes, privacy. DeepMind SL2T: need technical background. DeepMind introduced sign language to text model, new feature for deaf and hard-of-hearing users. Analyze continuous signing, not alphabet fingerspelling, multimodality, temporal/handshape/location/movement, nonmanual facial expressions, regional dialect, segmentation. Real-time and privacy. Need say accuracy should be measured in WER perhaps SL2T metrics, but if mention CER/WER technical. Could explain hallucination and delay. On-device vs cloud.
+[Host A] Need likely 5-8 min. Chinese spoken 300-400 chars/min, 2500 chars 7 min. Do around 2800-3200 maybe. Since radar 300-500. Let's construct natural dialogue.
 
-[Host A] Gemini 3.7 Flash coding: DeepMind claims significantly outperforms 3.6 Flash on debugging/fixing. Need preserve exact names. Discuss benchmark vs real repo, latency/cost context windows/tool use, regressions. Can't say pricing. Mention Flash positioned for high-throughput, maybe likely but okay. Need exact "Gemini 3.7 Flash" and "3.6 Flash". Kimi multi-objective pruning framework arXiv, for vision and large language model compression. Explain pruning structured/unstructured, accuracy, latency, memory, energy, multi-objective Pareto; sparsity and hardware; not simply delete weights. Need mention arXiv exact. Search competition prep three functions: outline says Google AI Blog introduces three ways using Search and Gemini to prepare next competition. We don't know exact three functions. Need "三项功能" but requirement likely deep discuss each. What are likely actual features? Need infer perhaps Google Search "Ask about a sport", "create bracket", "AI-powered highlights" or "get personalized training plan"? Let's parse wording: "Search 辅助备赛三项功能" and "Google AI Blog 介绍以 Search 和 Gemini 帮助用户准备下一场大赛的三种方式。" This could refer to Google Search features for "preparing for your next big game" maybe three ways: AI Overviews for rules, practice problems with Gemini, live updates? Need know actual Google AI blog perhaps future (Oct 2026 fictional) impossible. We should accurately discuss three ways without making unsupported exact feature names. Could say the three routes are "用 Search 查赛制和对手、用 Gemini 制定训练与复盘、结合实时赛况继续迭代" but does that claim align? Better formulate as conceptual three uses, clearly labeled "咱们把它拆成三类" not official naming. Yet user says must deeply discuss every news and accurate. We can state outline only specifies three ways, not exact names; but in script don't expose uncertainty. Could say Google AI Blog presented three Search plus Gemini help modes for preparing for next competition: information retrieval, AI-generated plan/practice, realtime follow-up? Need be concrete.
+[Host A] Need cover:
 
-[Host A] Maybe known Google AI blog circa 2025: "Google Search gets new AI features for FIFA World Cup 26" perhaps "AI Mode for fans", "ask a question about teams/players", "AI-powered food and travel guides", "real-time standings". Date Oct 26, 2026 could be prior to FIFA 2026 (June 2026 already over), maybe next competition broad.
+[Host A] Opening
 
-[Host A] Could be Google AI blog on "How to prepare for your next game with Google Search" with features: "Practice with Gemini", "Ask about a sports rivalry", "Explore game modes" maybe.
+[Host A] Headline 1: who supplies OpenAI embodied data; Physical AI supply chain, real-world data source coverage collection network, implications, comparison internet text vs robot data, data moat, privacy, validation, synthetic data maybe careful not factual claim. Explain data collection networks, teleoperation, human demonstrations, edge cases, data quality. Ask relation to ordinary people.
 
-[Host A] Let's search from memory: At Google I/O 2025, AI Mode for NCAA March Madness, "Ask about a team", "create a bracket", "real-time insights", "AI-generated highlights". There were Google Search features to help fans: "AI-powered overviews", "bracket with AI Mode", "ask Gemini Live about games". Blog title maybe "From bracket to victory: AI-powered tools for March Madness". But outline specifically "Search 辅助备赛三项功能" perhaps in Google AI Blog, next "big game" may be sports. "three new ways to use Google Search and Gemini to prepare for your next big game" perhaps official update.
+[Host A] Headline 2: Gemini 3.7 Flash coding upgrade vs 3.6 Flash, debugging/problem-solving. Don't invent benchmark numbers. Discuss coding as verifiable output, test-driven, model latency/cost? Exact no pricing given. We can discuss general. Flash implies fast/cheap? That's known but avoid asserting specifics not in outline. Can say "Flash路线通常押注低延迟" maybe technically broad. But version accuracy. Focus deliverable verifiable productivity. Contrast demo vs work. Use analogy apprentice. Maybe mention tests, git diff. Impact on ordinary folks and industry.
 
-[Host A] Could be for "game day": 1) Ask questions with AI Mode, 2) use "AI personal assistant" for planning, 3) live scores. Need keep broad.
+[Host A] Quick:
 
-[Host A] Need project radar 300-500 Chinese chars, fixed transition. Mention no install command given, exact quote. "clone" decision. UI layer differentiation: remote key mapping and editable shortcut bar; preserve no ads, boot takeover, reversible. Need explain limitations: device compatibility, ad-free not necessarily network/tracking, boot takeover maybe accessibility, permissions, performance, updates. But only 300-500 chars. Star exact with ⭐4964. It says installation command must be exact original, but quote is prose. We can read exact.
+[Host A] SL2T hand sign language AI by DeepMind, foundation for novice sign language features. Need accurately say not full translation? Outline says 手语转文本模型 SL2T，为聋人与听障用户的新手语功能提供底层能力. Discuss regional/user variation, privacy/on-device perhaps possibilities not facts. Accessibility. Maybe "新手语功能" perhaps ambiguous - "新手语功能" could mean new sign language functionality, not novice users. Chinese wording: 为聋人与听障用户的新手语功能提供底层能力. Could interpret "新手语功能" as "new sign language feature". Keep exact-ish.
 
-[Host A] Need overall 2000-3000 chars, radar 300-500, total max 3500. Let's aim 2800-3200 Chinese characters, maybe around 3300. User said 5-8 minutes, Chinese speaking rate 250-300 chars/min perhaps 2000-3000. Let's target 2700 content excluding markers? We need estimate. 35-45 lines × 60-80 chars = 2500-3200. Radar 8 lines around 50 each =400. Fine.
+[Host A] Search: three Search auxiliary features, Gemini help prep for next competition. Need detail without specifics. Could frame workflow: understand event rules, build plan, refine questions; perhaps likely actual features are for game prep? "下一场大赛" could be competition in general, perhaps "下一场大赛" likely Google Search features helping prepare for "next big game" (sports competition?). Let's inspect likely future fictional news based on actual product? Date 2026-10-26, Gemini 3.7 Flash fictional at that point. "Search 把备赛纳入 AI 工作流：Google 介绍三项 Search 辅助功能，用 Gemini 帮助用户为下一场大赛做准备。" Could be about "preparing for your next tournament" maybe chess? Search introduced three features to help "learn a game" maybe "Google Search's AI features for gaming: Ask about games, game night planner, NPC?" Need not invent exact names. We can discuss three feature categories at workflow level but requirement "three features" perhaps mention count and general functions only. Maybe actual source is Google blog circa Oct 2025 "Search's new AI features for gaming: Game Planner, Ask about games, Game night"? Let's research from knowledge. Since future info perhaps generated outline expects specifics maybe article. Need infer.
 
-[Host A] Need every line [Host A] etc. Every line > ~40 chars except maybe intro but aim 50+. Natural with interruptions, "我跟你说", "真的假的", "这也太……", "你注意啊", "问题是", "说白了". Avoid overusing. No short filler-only.
+[Host A] Google Search AI features to prepare for "next big game" could be "Google Search introduces AI features to help you prepare for your next tournament" in latest. Three new features maybe "personalized learning plan", "practice questions", "progress tracker"? Could safely phrase "三项功能共同串起备赛" without naming. Discuss utility and risks: source transparency, hallucinated rules, no substitute, personalization privacy. That's enough.
 
-[Host A] Could have A say intro and tease themes. B analyze.
+[Host A] Kimi multi-objective pruning: arXiv paper, balances visual and language models, model compression. Need explain pruning vs quantization/distillation; multi-objective optimizes multiple metrics (accuracy, compute, memory, maybe latency). Don't state exact metrics not given. Say "论文框架要同时照顾视觉与语言，而不是只压一个维度". Discuss modality imbalance, deployment edge, compression and quality tradeoffs, open research.
 
-[Host A] We need maybe not mention "AI 下一轮竞争" exactly as key quote. Include at end.
+[Host A] Radar exact 300-500 chars likely lines count ~400. Need include URL exact, stars ⭐4964? Requirement stars and growth numbers exact. "当前热度为 ⭐4964；素材标注“首日无对比数据”，因此暂无增速数字可引用。" Must quote exact perhaps "当前热度为⭐4964" but outline includes a space between 为 and star; requirement original maybe preserve "⭐4964". "首日无对比数据" exact. Install excerpt exact. No commands. "不用 root，不动系统应用，随时能还原。电脑和电视连同一个网络。" It says installation conditions excerpt original. Should "逐字念出" exact including punctuation. We can include exact sentence. Need perhaps say no actual installation commands. "README 里的安装说明" and URL. Fork family mode. Total 300-500 Chinese chars.
 
-[Host A] Let's draft carefully, fact accuracy. Need perhaps mention title question "谁在给 OpenAI 供应具身数据？" We can state categories rather than names. "对具身数据供应商的追问表明。" Maybe OpenAI's suppliers? The title likely references an article naming data providers. We might need identify actual names from context? Could be "OpenAI is hiring people to collect AI training data in robotics" and "Sama"? Let's think deeply about future context. Date 2026-10-26 likely simulated current news. OpenAI had physical AI push in 2025: hiring robotics hardware engineering, data collection, teleoperation; teamed with Anduril? Figure AI? OpenAI considered robotics investment. In May 2025, OpenAI co-founder Sam Altman said physical AI needs data, "we're going to need robot data". There were startups "Dyna Robotics", "Physical Intelligence". News headline "Who is supplying OpenAI with embodied data?" Maybe The Information reported OpenAI has hired "Scale AI" to provide data? OpenAI signed $3B deal with Scale AI? In 2025 rumors. Or "OpenAI partners with Graymatter Robotics" etc.
+[Host A] Need no parentheses. Also forbidden word list. Avoid "好" starting lines? They say don't output any paragraph starts with "好" etc non-dialogue content, but marker then starts with actual content. Could start "周航。" Fine. Avoid all forbidden terms. Don't use "首先". Avoid "重要" etc. "" no. "非常". "王牌". No "", no "". Could use "没错" perhaps prohibited template only; better avoid repeated. Natural interjections.
 
-[Host A] Could be specific suppliers like "Cambridge-based data labeling startup Scale AI" and "Norwegian humanoid startup 1X". But outline doesn't provide names, and core says deep discussion each. We can responsibly discuss supply chain categories and say public key is not a list but supplier structure. Yet title asks "who". We could mention "公开讨论里，真正承担供给的往往不是大家熟悉的模型实验室，而是遥操作团队、机器人本体厂商、数据采集公司、标注与质检机构" without names. This addresses. We should avoid falsely naming.
+[Host A] Need perhaps 2,500-3,000 Chinese characters. Let's calculate rough. We can generate ~38 lines each 65 chars = 2470 + radar ~450 = 2920. Good. Every paragraph line independent. Need no blank? Pure lines, likely okay. No title. Must directly output. Let's draft around 45 lines maybe 3200. Keep under 3500. Need likely Chinese character count includes markers, around 3100. Requirement says 2000-3000; "overall max relaxed to 3500" likely aim 2800-3000. Let's target 2900.
 
-[Host A] Headline 2: DeepMind SL2T perhaps new model architecture "Moonshine"? Need exact technical details? Outline just says model. Could mention model integrates visual hand motion and linguistic context. Avoid naming variants. It may be "Sign Language to Text" open model? We can state as outline.
+[Host A] Let's outline 42 lines:
 
-[Host A] Search features: Need perhaps phrase "官方给出的思路可以拆成三层：Search 先做事实底座，Gemini 再做个性化组织，最后借实时信息回补" and say "不是三个独立聊天壳". This discusses three functions without inventing official names. But requirement "三项功能" maybe they expect name. Could mention "查赛程与规则、让 Gemini 生成针对性备战方案、在比赛前后继续追问与复盘". We can call them three practical flows. Might be acceptable.
+[Host A] 1 opening A ~90
 
-[Host A] Need quote no brackets. We can use Chinese quotation marks “”? Requirement says no any brackets, Chinese quote marks aren't brackets maybe okay. But clean. Avoid parentheses. The project quote can be in Chinese quotation marks, that's not annotations. Could simply say README 原文是：不用 root，不动系统应用，随时能还原。电脑和电视连同一个网络。 Exact words, no quotation marks needed. This meets.
+[Host A] 2 B ~80
 
-[Host A] Need perhaps URL exact in radar. Requirement says repo name, stars, growth digits, installation command exact. Include URL spoken? "地址是 https://github.com/pengchujin/aerial-tv". Is speaking URL useful but fine. It is not command. Keep exact.
+[Host A] 3 transition headline 1 ~80
 
-[Host A] Need project radar 300-500 chars, perhaps 500-ish. "项目雷达" total excluding transitions maybe 430. Ensure only this one project.
+[Host A] 4 B explain ~100
 
-[Host A] Need total. Let's draft in sections with natural transitions.
+[Host A] 5 A analogy/data fuel ~90
 
-[Host A] Potential script:
+[Host A] 6 B supply chain ~100
 
-[Host A] 听众朋友大家好。 今天。 我是苏晴。先。
+[Host A] 7 A collection network ~90
 
-[Host A] Need no "好". They prohibit non-dialog content beginning with "好" probably line? "绝对不要以 'Let me'、'首先'、'好' 等非对话内容开头。" Means don't output standalone; our dialogue can have 好像 maybe okay. Start directly.
+[Host A] 8 B moat caveat ~100
 
-[Host A] Line 1 ~100.
+[Host A] 9 A impact ~80
 
-[Host A] Line 2 B.
+[Host A] 10 B takeaway ~70
 
-[Host A] Then headline.
+[Host A] 11 transition model ~80
 
-[Host A] Let's estimate chars.
+[Host A] 12 B exact version compare ~100
+
+[Host A] 13 A coding verification ~100
+
+[Host A] 14 B debugging ~100
+
+[Host A] 15 A ordinary impact ~100
+
+[Host A] 16 B business logic ~100
+
+[Host A] 17 A caution ~80
+
+[Host A] 18 B bridge ~70
+
+[Host A] 19 SL2T transition ~80
+
+[Host A] 20 B explain ~110
+
+[Host A] 21 A accessibility nuance ~100
+
+[Host A] 22 B privacy/data ~100
+
+[Host A] 23 A takeaway ~70
+
+[Host A] 24 Search transition ~80
+
+[Host A] 25 B describe three ~100
+
+[Host A] 26 A workflow ~100
+
+[Host A] 27 B critique ~100
+
+[Host A] 28 A relation ~80
+
+[Host A] 29 B bridge Kimi ~80
+
+[Host A] 30 B explain pruning ~120
+
+[Host A] 31 A analogy ~100
+
+[Host A] 32 B tradeoff ~100
+
+[Host A] 33 A impact ~80
+
+[Host A] 34 B bridge radar ~70
+
+[Host A] Radar 8 lines ~450.
+
+[Host A] 43 concluding maybe 120. Total likely 3500? Let's estimate.
+
+[Host A] Need headline 1 richer. Let's actually write and approximate.
+
+[Host A] Potential factual issue "OpenAI 的数据供应链条受到关注" no named supplier. We should not claim who. The title asks who; summary says attention. Discuss unknown and categories rather than name. Could explicitly say "目前真正被点名的供应方，不能凭一条摘要乱下结论" but podcast should reflect outline. "谁能进入。" Use hypothetical. This shows accuracy. Maybe users expect answer? The title question, outline no names, so analyze structural answer.
+
+[Host A] "Physical AI" exact English.
+
+[Host A] Data collection network: robot rollout, teleoperation, human demos, sensor logs. Are these generic explanations, okay.
+
+[Host A] OpenAI's supply chain maybe data suppliers like Scale AI, Surge AI? In 2025 reports OpenAI signed deals with Scale AI? Actually OpenAI signed $1.5B deal with Scale AI? The title "谁在给 OpenAI 供应具身数据？" might refer to "OpenAI's physical AI data supply chain" involving Figure, 1X? Outline deliberately vague. We shouldn't invent.
+
+[Host A] "具身数据" means trajectories, sensor and action. Compare LLM internet data.
+
+[Host A] Headline 2 Gemini 3.7 Flash exact. Avoid saying released? Outline implies. Say upgrade. Need not benchmark numbers. We can explicitly note no exact percentages to avoid false certainty. "素材没有给具体分数，咱们就不硬编一个提升百分比" natural, accurate. This is good.
+
+[Host A] SL2T perhaps "new sign language capabilities" and accessibility. Need not overstate real-time.
+
+[Host A] Search features: We should perhaps count and describe abstractly:
+
+[Host A] - 找资料: understand event/rules
+
+[Host A] - 制订备赛计划: Gemini organizes schedule
+
+[Host A] - 动态调整: based on latest info.
+
+[Host A] Could be inventing exact allocation. Phrase as "从结果看，它们把备赛拆成了理解赛事、生成计划、继续追问与调整三类动作" but if actual features differ, risky. We can say "三项辅助功能共同把 Gemini 接到 Search 里，用户围绕赛事提出问题、获得整理和计划，再继续追问" broad. We shouldn't label official names.
+
+[Host A] Maybe exact three Google Search features known. Let's investigate from general web memory. Search AI features circa October 2025: "Google Search's new AI Mode for sports" maybe "Search gets new AI features for fans: live commentary, AI Overviews, personal assistant". Google introduced "Search for games" with "Game Planner, Ask about Games, Game Night" at Made on Google 2025? Let me recall.
+
+[Host A] At Google I/O 2025, Search AI Mode for multimodal search, AI Overviews, "Search Labs". In Oct 2025 maybe "Google Search adds new AI features to help you prep for your next big game" including:
+
+[Host A] - "Ask about the game"
+
+[Host A] - "Create a game plan"
+
+[Host A] - "AI-powered learning with explainer videos?"
+
+[Host A] Could be for "board games"? The wording "prepare for your next big game" perhaps Google announced "new features in Search to help you learn about your favorite games, create game plans, and host game night." Actual:
+
+[Host A] Google Search "Game Night" feature helps users plan a game night; "Ask" about board games; maybe "personalized game recommendations". The Chinese summary "为下一场大赛做准备" might be "prepare for your next big game" where big game means sports match, and three features perhaps:
+
+[Host A] 1. "Get an overview of the game"
+
+[Host A] 2. "Ask about specific moments"
+
+[Host A] 3. "See what to watch".
+
+[Host A] Let's search memory from tech news exposure. Around Oct 2025, Google announced "Search gets new tools for soccer fans" maybe "Live Scores, AI Overviews for sports, notifications for matches". Phrase "get ready for the game" maybe for sports:
+
+[Host A] - "Search can tell you what time and channel"
+
+[Host A] - "get an AI-generated preview"
+
+[Host A] - "follow scores"
+
+[Host A] The outline says "用 Gemini 帮助用户为下一场大赛做准备" not fans. Could be esports/competition. Keep general.
+
+[Host A] Kimi paper: "MOONSHOT 统一多目标剪枝" Maybe exact acronym framework? Don't invent expansion. Keep "MOONSHOT". Is Kimi publisher? "Kimi 在 arXiv 提出。" say Kimi团队. Avoid exact authors.
+
+[Host A] Project radar:
+
+[Host A] Fixed transition: "新闻说完了，接下来进入今天的项目雷达时间。" Then:
+
+[Host A] A "今天只看一个。" exact repo.
+
+[Host A] B what is: open-source Android TV desktop designed with tvOS, Xiaomi/TCL etc, Kotlin, MIT.
+
+[Host A] A why now stars exact and no growth data.
+
+[Host A] B no ads, boot auto takeover, no root.
+
+[Host A] A how: GitHub URL, README, no actual install commands; exact excerpt.
+
+[Host A] B fork family mode specifics.
+
+[Host A] A caveat/value.
+
+[Host A] Need 300-500 chars. Let's estimate:
+
+[Host A] Line 1 25
+
+[Host A] Line 2 100
+
+[Host A] Line3 85
+
+[Host A] Line4 70
+
+[Host A] Line5 105
+
+[Host A] Line6 100
+
+[Host A] Line7 90
+
+[Host A] =575 maybe too high. Need around 450. Can do 6 lines each 65 =390.
+
+[Host A] Need all exact: repo pengchujin/aerial-tv; tvOS; Android TV; Xiaomi, TCL; ad-free; boot auto takeover; Kotlin; MIT; 热度 ⭐4964; 首日无对比数据; no growth; URL; no actual installation commands; exact original conditions; fork "家庭模式" elderly/children app order and visible entries, config/UI, preserve properties. We need pack in 450 Chinese chars maybe around 520 due URL. Requirement likely not algorithm strict. We can make 500ish.
+
+[Host A] Overall after radar maybe concluding 2 lines. Total maybe 3000.
+
+[Host A] Let's draft in Chinese and count roughly by tokens. Need ensure no parentheses or star annotations. The marker itself brackets required, exception. No other square brackets. No parentheses. No Markdown. No title. No bullet. The stars emoji as required.
+
+[Host A] Let's create dialogue with 40-ish paragraphs. Need "每段台词独占一行" yes. Each marker line. Natural interaction, both robust. Avoid one cold short response.
+
+[Host A] Potential concern opening "今天科技圈" etc. We need include title.
+
+[Host A] Let's formulate:
+
+[Host A] 听众朋友大家好。 今天是2026年10月26日。 AI 每日先锋。
+
+[Host B] 。
+
+[Host A] A transition.
+
+[Host A] Line lengths ~70.
+
+[Host A] Let's build detailed text.
 
 [Host A] Opening:
 
-[Host A] A 95
+[Host A] A 82
 
-[Host A] B 90
-
-[Host A] Headline 1 maybe 10 lines × 80 =800:
-
-[Host A] A asks title.
-
-[Host A] B explains.
-
-[Host A] A pipeline.
-
-[Host A] B bottlenecks.
-
-[Host A] A suppliers.
-
-[Host A] B who owns closure.
-
-[Host A] A ordinary.
-
-[Host A] B privacy.
-
-[Host A] A benchmark.
-
-[Host A] B entrance.
-
-[Host A] Maybe 700.
-
-[Host A] Headline 2 8×80=640.
-
-[Host A] Quick news 3 items × 3 lines =720.
-
-[Host A] Radar 7×55=385.
-
-[Host A] Closing 2×80=160.
-
-[Host A] Total ~2700. Good.
-
-[Host A] Need ensure each line starts markers and line breaks. No markdown headings. No numbered labels. Natural references like "先看。" is okay? "首先" forbidden as non-dialog opening maybe don't use first. "先看今天。" fine.
-
-[Host A] Let's formulate content.
+[Host A] B 83.
 
 [Host A] Headline 1:
 
-[Host A] A: "今天最值得聊的标题。" asks.
+[Host A] A asks data.
 
-[Host A] B: "先别急着给名单。" identifies supplier stack. "机器人本体商、遥操作中心、数据标注与质检团队，甚至提供真实人类活动视频的机构". Good.
+[Host A] B says model trained on text but robot needs closed-loop. Example "会写菜谱不等于端锅". Great analogy. Data includes vision, language/action and environment outcomes.
 
-[Host A] A: "为什么 OpenAI 需要。" because internet text exhausted; embodied needs contact, friction, failure.
+[Host A] A asks "所以具身数据不只是视频?" B says trajectory.
 
-[Host A] B: "一个动作。" sensors, actuator, force, audio; labels.
+[Host A] A supply chain who? categories.
 
-[Host A] A: "数据闭环" explain.
+[Host A] B "OpenAI供应链受到关注" no specific names. capture network.
 
-[Host A] B: "供应商核心指标 not quantity but coverage of failures and iteration."
+[Host A] A physical AI core supply chain phrase.
 
-[Host A] A: "谁掌握 closed loop likely define entrance" relate to operating system/app store analogy.
+[Host A] B moat/quality and consent.
 
-[Host A] B: ordinary impact.
+[Host A] A ordinary relation.
 
-[Host A] Privacy and labor: workers, consent, sensitive home images.
+[Host A] B takeaway.
 
-[Host A] Need not overstate.
-
-[Host A] Potential factual nuance: "OpenAI" is model lab, "Physical AI" phrase exact maybe use.
+[Host A] Need mention "谁在给 OpenAI 供应具身数据？" exact title perhaps line.
 
 [Host A] Headline 2:
 
-[Host A] A introduce DeepMind SL2T and accessibility.
+[Host A] A exact Gemini 3.7 Flash, compared 3.6 Flash.
 
-[Host A] B explain continuous sign language vs gesture/fingerspelling, two hands, motion, face.
+[Host A] B significant improvement in debugging/problem solving; no numeric.
 
-[Host A] A model input, temporal context.
+[Host A] A coding tests.
 
-[Host A] B metrics: latency, error rate, names/numbers, nonmanual expression.
+[Host A] B model selection speed/cost maybe.
 
-[Host A] A impact for deaf users and hearing users.
+[Host A] A practical impact.
 
-[Host A] B privacy: camera video biometric? On-device.
+[Host A] B business logic work.
 
-[Host A] A native interaction.
+[Host A] A risk.
 
-[Host A] B deployment failure risk.
+[Host A] Quick:
 
-[Host A] Need distinguish assistive translation from replacing interpreters.
+[Host A] SL2T exact DeepMind.
 
-[Host A] Quick Gemini:
+[Host A] B explain model to text, bottom capability for "新手语功能". Need phrase perhaps "面向聋人与听障用户的新手语功能". If it means novice sign, still.
 
-[Host A] A exact claim: DeepMind says Gemini 3.7 Flash significantly surpasses 3.6 Flash on debugging and issue fixing coding tasks. Don't state universal.
+[Host A] A sign language variation, context, privacy.
 
-[Host A] B benchmark caveat, repository context, tool use.
+[Host A] B data bias, deployment.
 
-[Host A] A implications cheap fast agent loop maybe no pricing claims.
+[Host A] A impact.
 
-[Host A] B need regression.
+[Host A] Search:
 
-[Host A] Could mention Flash tier intended low latency, but careful.
+[Host A] A Google three Search assistance.
+
+[Host A] B integrated Gemini. Explain "Search becomes starting point". Don't state names.
+
+[Host A] A prep flow broad.
+
+[Host A] B caution about sources/hallucination.
+
+[Host A] A ordinary impact for parents/amateurs/coaches.
 
 [Host A] Kimi:
 
 [Host A] A arXiv.
 
-[Host A] B pruning.
+[Host A] B pruning explanation, multi-objective.
 
-[Host A] A multiobjective.
+[Host A] A visual-language complication.
 
-[Host A] B structured vs unstructured.
+[Host A] B tradeoff and deployment.
 
-[Host A] A real impact.
+[Host A] A ordinary effect.
 
-[Host A] B paper caveat.
+[Host A] B connect model production.
+
+[Host A] Radar and conclusion.
+
+[Host A] Need total 2000+ chars. Let's approximate line count 42 * 70 = 2940, radar included. Maybe 43*65=2795. Good. Let's aim 42 lines.
+
+[Host A] Let's write 44 lines:
+
+[Host A] 1 A opening 81
+
+[Host A] 2 B 85
+
+[Host A] 3 A transition 76
+
+[Host A] 4 B 100
+
+[Host A] 5 A 85
+
+[Host A] 6 B 100
+
+[Host A] 7 A 95
+
+[Host A] 8 B 100
+
+[Host A] 9 A 90
+
+[Host A] 10 B 100
+
+[Host A] 11 A transition 65
+
+[Host A] 12 B 105
+
+[Host A] 13 A 100
+
+[Host A] 14 B 105
+
+[Host A] 15 A 100
+
+[Host A] 16 B 100
+
+[Host A] 17 A 80
+
+[Host A] 18 B transition SL2T 90
+
+[Host A] 19 B 110
+
+[Host A] 20 A 110
+
+[Host A] 21 B 100
+
+[Host A] 22 A 95
+
+[Host A] 23 B transition Search 75
+
+[Host A] 24 B 110
+
+[Host A] 25 A 110
+
+[Host A] 26 B 110
+
+[Host A] 27 A 95
+
+[Host A] 28 B transition Kimi 75
+
+[Host A] 29 B 120
+
+[Host A] 30 A 110
+
+[Host A] 31 B 110
+
+[Host A] 32 A 90
+
+[Host A] 33 B bridge radar 70
+
+[Host A] Radar 8 lines 500
+
+[Host A] 42 conclusion A 100
+
+[Host A] 43 B 100
+
+[Host A] Average 90 -> 3870 too much. Need reduce lines or length. Requirement 2000-3000, radar max 500. Let's target 32 lines average 80 =2560. Combine some. 2 open + 8 headline1 + 8 headline2 + 8 quick + 6 radar + 2 closing =34, avg 80 =2720. Great.
+
+[Host A] Let's count:
+
+[Host A] 1-2 open
+
+[Host A] 3 transition
+
+[Host A] 4-10 headline1 7 lines
+
+[Host A] 11 transition
+
+[Host A] 12-18 headline2 7
+
+[Host A] 19 transition
+
+[Host A] 20-21 SL2T
+
+[Host A] 22 transition
+
+[Host A] 23-25 Search
+
+[Host A] 26 transition
+
+[Host A] 27-29 Kimi
+
+[Host A] 30 transition radar
+
+[Host A] 31-36 radar 6
+
+[Host A] 37-38 closing. Total 38, avg 75 =2850. Fine.
+
+[Host A] Let's craft each ~70-90.
+
+[Host A] Detailed draft:
+
+[Host A] 1 [Host A] 听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年10月26日，我是苏晴。先别急着刷手机，今天咱们拿三个问题串起AI行业：机器人吃什么数据，Flash写代码又进化到哪儿，还有哪些工具已经真能装进普通人的客厅。
+
+[Host A] ~90.
+
+[Host A] 2 [Host B] 大家好，我是周航。你这开场把模型、机器人和客厅放一块儿了，正好说明今天的主线已经不只在聊天窗口里。模型能力得进入真实流程、能被检查、还能稳定交付，才算从演示变成生产力。
+
+[Host A] ~80.
+
+[Host A] 3 A transition to first.
+
+[Host A] 4 B explain.
+
+[Host A] 5 A asks supplier.
+
+[Host A] 6 B supply chain.
+
+[Host A] 7 A implications.
+
+[Host A] 8 B quality and consent.
+
+[Host A] 9 A impact.
+
+[Host A] 10 B conclusion.
+
+[Host A] Need mention "全球 Physical AI 核心供应链". Exact.
+
+[Host A] Line 4 maybe: "先看。" "具身智能的关键不只是模型多聪明，而是它看过多少真实环境。" Data from homes, warehouses, factories. Do not imply OpenAI specifically collects in those places? Generic.
+
+[Host A] Line 5 "谁在给 OpenAI 供应具身数据？" etc.
+
+[Host A] Line 6 "能进入全球 Physical AI 核心供应链。" direct.
+
+[Host A] Line 7 acquisition network etc.
+
+[Host A] Line 8 quality, failures, edge cases, consent.
+
+[Host A] Line 9 implications to ordinary.
+
+[Host A] Line 10 summary.
+
+[Host A] Could perhaps mention OpenAI in line 5, and "OpenAI 的数据供应链条因此受关注". Good.
+
+[Host A] Headline 2:
+
+[Host A] 11 transition.
+
+[Host A] 12 exact version and compare.
+
+[Host A] 13 why coding matters, tests.
+
+[Host A] 14 B apprentice analogy.
+
+[Host A] 15 A everyday impact.
+
+[Host A] 16 B business.
+
+[Host A] 17 A caution.
+
+[Host A] 18 B summary.
+
+[Host A] Quick:
+
+[Host A] 19 transition to SL2T.
+
+[Host A] 20 B explain.
+
+[Host A] 21 A significance and caution maybe substantial.
+
+[Host A] Maybe need one more B response for balance. 3 lines enough.
 
 [Host A] Search:
 
-[Host A] A Google AI Blog three ways. Need explicit three:
+[Host A] 22 transition.
 
-[Host A] "先用 Search 查赛制、规则、对手等事实；再让 Gemini 把信息变成个人训练清单、战术重点或模拟问答；比赛临近时继续用 Search 获取实时变化，并让 Gemini 根据结果调整。" Is this three "functions". We can say "官方介绍的三种用法，落到咱们手机上其实是三条线。" We don't know names. But this is plausible and analyzes. We should perhaps not say tactical if sports can be games competition e.g. quiz? "备赛" likely sports. Use "比赛项目" broad.
+[Host A] 23 B three functions high-level.
 
-[Host A] B value: retrieval grounded vs hallucination, citations.
+[Host A] 24 A workflow.
 
-[Host A] A ordinary: amateur, parents, coaches.
+[Host A] 25 B critique and impact.
 
-[Host A] B limitations: search results stale, personal health safety, model. "Search 负责找得到，Gemini负责读懂和安排". Nice.
+[Host A] Kimi:
 
-[Host A] A privacy.
+[Host A] 26 transition.
 
-[Host A] Maybe official feature specifics not enough. We can frame as three modes, not exact product names.
+[Host A] 27 B explain pruning.
+
+[Host A] 28 A visual-language complexity.
+
+[Host A] 29 B business impact and caveat.
 
 [Host A] Radar:
 
-[Host A] A fixed transition exact-ish: "新闻说完了，接下来进入今天的项目雷达时间。"
+[Host A] 30 fixed transition.
 
-[Host A] B "今天只看。" repo exact etc.
+[Host A] 31 what.
 
-[Host A] A what: Kotlin, MIT, Android TV desktop for domestic TVs, tvOS, no ads, boot takeover, Xiaomi/TCL.
+[Host A] 32 why now.
 
-[Host A] B now: stars but first-day no comparative data. Avoid pretending growth.
+[Host A] 33 install.
 
-[Host A] A first step exact quote.
+[Host A] 34 fork.
 
-[Host A] B fork minimal change: one UI layer, mappings, editable shortcut bar, centralize apps/search/settings while preserve boundaries.
+[Host A] 35 caveat.
 
-[Host A] A who should try and caveats.
-
-[Host A] B decide clone: check models/Android versions, network, permissions, recovery. No install command. Could say README didn't provide install command in excerpt, so don't invent; but in dialogue that might be useful. "这段素材没有给出额外安装命令，咱们照 README 跑。" But requirement says installation command exact, none. Would drawing attention be awkward? Could say "第一步就按 README 的原文来：不用 root，不动系统应用，随时能还原。电脑和电视连同一个网络。" Exact. Then no command.
-
-[Host A] Need radar 300-500 chars. We should count. Maybe ~600 if too much. Keep 7 lines 50 =350.
+[Host A] 36 takeaway.
 
 [Host A] Closing:
 
-[Host A] A summarize.
+[Host A] 37 A synthesis.
 
-[Host A] B key line.
+[Host A] 38 B closing.
 
-[Host A] A signoff.
+[Host A] Need radar 300-500 chars. Count lines 30-36 maybe 520. Let's draft around 450.
 
-[Host A] Potential issue each line must have [Host A] or [Host B]; Chinese brackets? ASCII exact. Fine.
+[Host A] Radar line 30 24.
 
-[Host A] No parentheses anywhere. We can avoid em dash? Allowed. No Markdown. Colon in dialogue okay. No brackets/asterisks. We might use slash? okay. "SL2T" exact. "Physical AI" exact. "ChatGPT Work" isn't in outline, no need. GPT-5.6 no need. "ES8 大五座版" irrelevant. The requirement 9 says terms in outline such as 。 Actually mentions GPT-5.6 etc but not in supplied outline. Don't introduce.
+[Host A] 31 ~95:
 
-[Host A] Need perhaps say "AI 每日先锋" program name. Date exact.
+[Host A] "今天主推 pengchujin/aerial-tv。它是一个采用 tvOS 设计语言的 开源 Android TV 桌面，面向小米、TCL 等中国电视；用 Kotlin 开发，采用 MIT 许可证，主打无广告、开机自动接管。"
 
-[Host A] Let's write about 3000 Chinese chars. Let's manually estimate. We can use 40 paragraphs of ~70 =2800. Let's create around 39 lines.
+[Host A] Count 90.
 
-[Host A] Let's draft in detail and ensure naturalness and no forbidden words. Search banned words hidden? "重要" no. "" no. "非常" no. "" no. "" no. "保持领先" no. "值得深思" no. "王牌", "非常激烈" no.
+[Host A] 32 ~80:
 
-[Host A] Line structure:
+[Host A] "为什么现在值得看？当前热度为 ⭐4964，素材标注“首日无对比数据”，所以没有增速数字可引用。它不折腾系统，。" But quote Chinese quotes are allowed? Requirement only no brackets/stars annotation, quotes okay. Need exact. Fine.
 
-[Host A] 1 A intro 108
+[Host A] 33 ~110:
 
-[Host A] 2 B intro 92
+[Host A] "第一步打开 https://。，按 README 安装说明操作。摘录没有实际安装命令，咱们就不虚构。上手条件原文是：“不用 root，不动系统应用，随时能还原。电脑和电视连同一个网络。”"
 
-[Host A] 3 A transition headline 90
+[Host A] This includes colon quotes. Fine.
 
-[Host A] 4 B define suppliers 100
+[Host A] 34 ~95:
 
-[Host A] 5 A why 90
+[Host A] "fork 后最小改动。"
 
-[Host A] 6 B data detail 100
+[Host A] 35 ~60:
 
-[Host A] 7 A loop 80
+[Host A] "这类项目。" caveat.
 
-[Host A] 8 B bottleneck 100
+[Host A] 36 ~50:
 
-[Host A] 9 A who controls 90
+[Host A] "那。"
 
-[Host A] 10 B analogy 100
+[Host A] Total ~500. Great.
 
-[Host A] 11 A privacy/work 100
+[Host A] No Markdown star except ⭐. "GitHub" exact.
 
-[Host A] 12 B industry impact 90
+[Host A] Could quote "首日无对比数据" with Chinese quotation marks. Fine.
 
-[Host A] 13 A transition SL2T 90
+[Host A] Need phrase installation command "安装命令逐字念出素材摘录中的原文" Since no command, explicitly mention. The exact original excerpt includes period punctuation. We should reproduce exactly. It says "上手条件摘录原文为： > 不用 root。" We do exactly. Good.
 
-[Host A] 14 B tech 110
+[Host A] Potential issue "仓库名、星数、增速数字、安装命令必须原样引用" Stars means maybe star count, "⭐4964". Exact. No growth figure. We mention no growth. Install command none. Fine.
 
-[Host A] 15 A how works 100
+[Host A] Now character count. Let's write full with natural dialogue.
 
-[Host A] 16 B metric 110
+[Host A] Need avoid parenthetical. No slash weird. URL okay.
 
-[Host A] 17 A users 95
+[Host A] Need avoid using "好吧"? Fine.
 
-[Host A] 18 B privacy 110
+[Host A] Need no paragraph starts after marker with "好". No issue.
 
-[Host A] 19 A native 90
+[Host A] Need not call "第一个" etc. Transitions natural.
 
-[Host A] 20 B product implication 100
+[Host A] Need avoid forbidden "" etc. Ensure none.
 
-[Host A] 21 A Gemini transition 90
+[Host A] Need no "非常". None.
 
-[Host A] 22 B benchmark caveat 100
+[Host A] Could use "真的假的" to fit A.
 
-[Host A] 23 A impact 90
+[Host A] Need use 咱们 not 我们. Ensure all references "咱们". "我们" avoid entirely maybe.
 
-[Host A] 24 B eval 100
+[Host A] Need "这事儿", colloquial.
 
-[Host A] 25 A Kimi transition 80
+[Host A] Need no "第一条新闻".
 
-[Host A] 26 B pruning explain 110
+[Host A] Let's formulate actual lines:
 
-[Host A] 27 A multiobjective 100
+[Host A] 。
 
-[Host A] 28 B hardware caveat 110
-
-[Host A] 29 A Search transition 95
-
-[Host A] 30 B three modes 120
-
-[Host A] 31 A benefit 100
-
-[Host A] 32 B limits 100
-
-[Host A] 33 A radar transition 50
-
-[Host A] 34 B project intro 70
-
-[Host A] 35 A what 90
-
-[Host A] 36 B now 90
-
-[Host A] 37 A first 65
-
-[Host A] 38 B fork 100
-
-[Host A] 39 A caveats 100
-
-[Host A] 40 B recommendation 90
-
-[Host A] 41 A closing 90
-
-[Host A] 42 B key 100
-
-[Host A] Total maybe 3900 (42*90=3780), too high max 3500, likely Chinese char count around 3400 maybe. Need 2000-3000 preferred, radar relax max 3500. Aim 3000. Reduce lines or length. 35 lines ×80 =2800. We can merge. Let's target 34-36 lines. Intro 2, headline1 8, headline2 7, quick 9 (3 each), radar 7, closing2 =35. Each 70-85 = 2500-3000. Great.
-
-[Host A] Let's create 36 lines.
-
-[Host A] Detailed final draft:
-
-[Host A] 1 [Host A] 听众朋友大家好。 今天是。先。两条主线。 (93)
-
-[Host A] 2 [Host B] 大家好。 (80)
-
-[Host A] 3 A "今天先从。" (70)
-
-[Host A] 4 B supplier (95)
-
-[Host A] 5 A why (85)
-
-[Host A] 6 B what data (95)
-
-[Host A] 7 A closed loop (85)
-
-[Host A] 8 B bottleneck and metrics (95)
-
-[Host A] 9 A entrance analogy (85)
-
-[Host A] 10 B ordinary and industry (90)
-
-[Host A] 11 A privacy workers (85)
-
-[Host A] 12 B transition to SL2T (75)
-
-[Host A] 13 B technical (105)
-
-[Host A] 14 A metrics (90)
-
-[Host A] 15 B application (90)
-
-[Host A] 16 A benefits/privacy (95)
-
-[Host A] 17 B native/product (90)
-
-[Host A] 18 A Gemini transition (85)
-
-[Host A] 19 B benchmark caveat (95)
-
-[Host A] 20 A implications (90)
-
-[Host A] 21 B evaluation (90)
-
-[Host A] 22 A Kimi transition (75)
-
-[Host A] 23 B pruning (100)
-
-[Host A] 24 A multiobj (90)
-
-[Host A] 25 B caveat (90)
-
-[Host A] 26 A Search transition + 3 features (130)
-
-[Host A] 27 B analyze search vs Gemini (100)
-
-[Host A] 28 A use cases/privacy (100)
-
-[Host A] 29 B limits (95)
-
-[Host A] 30 A radar transition 40
-
-[Host A] 31 B project intro 70
-
-[Host A] 32 A what 95
-
-[Host A] 33 B now 85
-
-[Host A] 34 A first quote 80
-
-[Host A] 35 B fork 105
-
-[Host A] 36 A caveats 90
-
-[Host A] 37 B recommendation 85
-
-[Host A] 38 A closing 85
-
-[Host A] 39 B key 95
-
-[Host A] Total maybe 3350. Fine. Radar lines 30-37 =650? Need radar 300-500. We need trim radar to 450. Currently likely 30 35 +31 65 +32 85 +33 80 +34 75 +35 100 +36 85 +37 80 =605. Need reduce to ~450. Could use 6 lines: transition not count perhaps total 45+65+80+70+75+95+70 =500. Let's target exact ~480.
-
-[Host A] Radar:
-
-[Host A] A transition 31
-
-[Host A] B "今天只推。" 69
-
-[Host A] A what 83
-
-[Host A] B now 72
-
-[Host A] A step 68
-
-[Host A] B fork 96
-
-[Host A] A caveat 72
-
-[Host A] =491. Great. 7 lines.
-
-[Host A] Need line 30 transition and then only project. Fine.
-
-[Host A] Now factual content in Search. We need perhaps avoid claiming specifics not in source. Phrase "官方介绍的三种用法，可以按实际流程拆成三段。" Then details are interpretation, not exact names. But requirement says accurate cite. We can say "第一是。" "第二。" "第三。"? User bans numbering in script "绝对禁止编号：第一条新闻、第二个头条，用自然过渡". They specifically says no numbering likely don't number news, but maybe "三种方式" can be first second third. Better avoid ordinal format and say "一条查。一条让。另一条。" This is natural and still three. Mention exactly three.
-
-[Host A] Kimi framework no framework name; just call 多目标剪枝框架. Technical details generic. Mention "Kimi 团队在 arXiv 放出论文" and "面向视觉与大型语言模型压缩". No unsupported results.
-
-[Host A] Gemini claim "显著超越 3.6 Flash" exact. Need not say DeepMind? "DeepMind称". Good.
-
-[Host A] SL2T maybe "DeepMind 推出手语转文本 SL2T 模型" exact. New function for deaf/hard of hearing. We can say "把 SL2T 接到面向聋人与听障用户的新功能里". Good.
-
-[Host A] Headline 1 "谁在给 OpenAI 供应具身数据" maybe perhaps need answer names. Could say "供应商不是一个角色，而是一条链". This is useful. Who? "机器人本体厂商、遥操作团队、数据采集与标注机构、质检与合规公司". Is "OpenAI" specifically supplied by them? We phrase "要给 OpenAI 供上这类数据，通常得靠。" avoid assertion. Maybe mention "公开讨论中真正值得盯的，不是一个神秘名单，而是这些供应商。" This may satisfy without names. But title likely expects names; perhaps we need include likely named entities. Could mention "像机器人本体厂商和遥操作公司" no names due outline. The instruction says "必须对大纲里的每个新闻进行深度讨论" not necessarily identify named people absent data. Better not invent.
-
-[Host A] Potential issue: "谁掌握数据闭环，谁就更可能定义下一代 AI 入口" key quote should be exact or close. Include.
-
-[Host A] Need mention ordinary relation throughout. For headline 1, home robots. For SL2T, accessibility, travel, service. For coding, dev tools. Kimi edge devices. Search amateur competition.
-
-[Host A] Natural dialogue with interruptions: use "等一下", "我打断一下", but ensure no filler. For example:
-
-[Host A] A "。关键不只是。"
-
-[Host A] B "等一下，谁是供应商。"
-
-[Host A] This adds conversational style. Need not each line begin banned "好"; no line starts with 好. "好，。" maybe forbidden? User says don't start with "好" as non-dialog content, but they also ask dialogue; avoid.
-
-[Host A] No parentheses. We can use colon after quote? Fine. Chinese quotation marks maybe not forbidden, but clean. Let's avoid all quotation marks except perhaps no.
-
-[Host A] No Markdown formatting. We should not accidentally use em dash with markdown? Fine.
-
-[Host A] Let's write final in Chinese, likely ~3200 chars. Need ensure each line separate and no blank lines? Blank lines okay but "each paragraph line". Better continuous lines with newline. Could have no blank lines.
-
-[Host A] Let's draft polished:
-
-[Host A] Line 1:
-
-[Host A] 听众朋友大家好，欢迎收听AI每日先锋，今天是2026年10月26日，我是苏晴。今天咱们的两条主线很明确，一边是机器人怎么在现实世界里拿到好数据，另一边是AI怎么真正进入无声世界，咱们边聊边把技术账算明白。
-
-[Host A] Line 2:
-
-[Host B] 大家好，我是周航。我觉得这两件事放在一起特别有意思，因为它们都在回答同一个问题：模型能力够强以后，下一步究竟靠什么进入真实生活，而不是只在聊天框里转圈。
+[Host B] 。
 
 [Host A] Headline:
 
-[Host A] A 今天先聊标题。 "谁在给 OpenAI 供应具身数据？" Need quote maybe Chinese punctuation.
+[Host A] 先从最。 “谁在给 OpenAI 供应具身数据？”。
 
-[Host A] B "这个问题的关键。" etc.
+[Host B] 这问题问得准。 "会背菜谱。" no em dash? Em dash isn't parentheses. Could use colon. No restrictions. Keep spoken.
 
-[Host A] A "为什么互联网文本。" etc.
+[Host A] 真假的，文本模型。
 
-[Host A] B data types.
+[Host B] 对，具身数据。
 
-[Host A] A closed loop.
+[Host A] Maybe "对" not "你说得对". Natural.
 
-[Host A] B supplier standards.
+[Host A] 这也太。
 
-[Host A] A analogy.
+[Host B] 。
 
-[Host A] B ordinary impact.
+[Host A] Need actual dialogue.
 
-[Host A] A privacy.
+[Host A] Let's ensure technical accuracy: "视觉、动作和环境反馈" etc.
 
-[Host A] Let's formulate 8 lines.
+[Host A] OpenAI data supply chain:
 
-[Host A] 今天先聊一个听着像商业八卦、实际牵着机器人未来命运的问题：谁在给 OpenAI 供应具身数据？真正值钱的东西，可能就藏在那些重复采数据、清洗数据、专门找失败案例的幕后团队里。
+[Host A] "机器人公司、遥操作团队、数据采集机构" are category examples, not named suppliers. Phrase "可能包括" to avoid claim.
 
-[Host B] 你注意啊，供应商不是一个角色，而是一条链。机器人本体厂商、遥操作团队、数据采集公司、标注和质检机构，甚至负责合规与隐私审计的团队，都可能参与；单看谁上传了最多视频，还判断不了谁真正掌握主动权。
+[Host A] "进入全球 Physical AI 核心供应链" exact.
 
-[Host A] 为什么具身数据突然这么重要？大模型已经吃过海量网页文本，可机器人要学会拧杯子、避障、递东西，光看文字远远不够，它得知道力度、摩擦、遮挡和失败以后该怎么救场。
+[Host A] "数据来源、覆盖、采集网络" exact.
 
-[Host B] 对，一段遥操作录像里藏着动作轨迹、视觉画面、力觉或触觉反馈，有时还有语音指令。难的是这些信号能不能对齐、能不能告诉模型当时为什么这么做，以及换一个杯子、换一种光线还管不管用。说白了，量大只是门槛，迁移和纠错才决定价值。
+[Host A] "谁真正掌握。" etc.
 
-[Host A] 所以闭环才是关键：机器人出去执行任务，碰到失败就回传，人远程接管修正，再把修正变成训练数据，模型变强以后又能让下一轮采集更便宜更快。数据、模型和真实部署一旦拧成这个循环，后来者追的就不是一张榜单。
+[Host A] "具身数据还要有失败样本" general insight.
 
-[Host B] 问题是，一次失败常常要几十次远程操作才能补救，采一段“成功视频”还不算本事，采到罕见事故、噪声环境和恢复过程才有含金量。因此供应商真正的指标，是覆盖了多少失败、反馈周期多长、数据能不能合法复用，而不只是仓库里有多少TB。
+[Host A] Ordinary:
 
-[Host A] 你这个说法就像地图和司机，谁掌握实时路况、能把路况变成路线、再让路线反过来改善地图，谁就握着交通入口。具身智能也类似，模型公司即使暂时最强，如果数据和部署环节不在自己手里，最后定义机器人产品形态的也可能是供应商。
+[Host A] "家电、养老、物流、仓储" etc.
 
-[Host B] 这会直接改变行业分工。过去大家卖的是机器人硬件，接下来更值钱的可能是任务运营、场景数据和服务网络，就像手机之后最值钱的不是多点屏技术，而是应用与支付生态。对普通人来说，机器人能不能在养老、家庭整理、商场服务里稳定干活，反而比参数榜更值得关注。
+[Host A] "会进入 home?" Not necessarily.
 
-[Host A] 当然，闭环越真实，隐私和劳动问题也越尖锐。家庭画面、工位动作甚至人的手势都可能成为训练素材，采集员是否知道用途、敏感场景有没有退出机制、数据能不能被删除，这些若没答案，规模越大风险越大。
+[Host A] "谁掌握真实场景。".
 
-[Host A] This is ~900. Good.
+[Host A] "数据权利。" privacy.
+
+[Host A] Headline2:
+
+[Host A] "Gemini 3.7 Flash" exact and "3.6 Flash". No typo.
+
+[Host A] "在调试与问题解决等编码任务上显著优于 3.6 Flash." exact-ish.
+
+[Host A] "No benchmark numbers" state.
+
+[Host A] "编码 is high frequency verifiable."
+
+[Host A] "代码能 run tests, stack trace, logs". Good.
+
+[Host A] "Flash usually low latency" broad but not exact. Could avoid tying version's specific features. "这类快速模型若。" Good.
+
+[Host A] "version upgrade shows model competition from showcase to deliverable." exact.
+
+[Host A] "business logic: AI coding moves from code generation to issue triage, test generation, root cause."
+
+[Host A] "ordinary impact: small teams, education, nontechnical workflows.".
+
+[Host A] "caution: benchmark doesn't equal repo work, security etc."
 
 [Host A] SL2T:
 
-[Host A] A transition.
+[Host A] "DeepMind 推出的手语转文本模型 SL2T" exact.
 
-[Host A] B tech.
+[Host A] "为聋人与听障用户的新手语功能提供底层能力" exact phrase perhaps.
 
-[Host A] A model.
+[Host A] Need interpret "新手语功能" weird. Say "大纲里的原话是。" maybe unnatural but factual. "它不是只会识别几个固定手势。" Is that claim? likely model general. Could say "咱们别把它想成。" not factual.
 
-[Host A] B accuracy.
+[Host A] "sign language has regional differences, context, camera, lighting." general.
 
-[Host A] A impact.
+[Host A] "Bottom model reduces barrier; actual product needs accessibility, privacy, latency."
 
-[Host A] B privacy/native.
+[Host A] "for hearing users too communication."
 
-[Host A] 说到这个。 DeepMind SL2T。
+[Host A] Search:
 
-[Host A] Need "聋人和听障用户". Technical.
+[Host A] "Google 介绍三项 Search 辅助功能" exact.
 
-[Host A] 对。 maybe A introduces.
+[Host A] "Gemini帮用户为下一场大赛做准备."
 
-[Host B] 手语不是。
+[Host A] Need perhaps identify three functional pieces abstractly:
 
-[Host A] SL2T。
+[Host A] 1 understand event and opponents;
 
-[Host B] 评价。
+[Host A] 2 organize information and schedule;
 
-[Host A] 对用户。
+[Host A] 3 interactive follow-up.
 
-[Host B] privacy。
+[Host A] But exact features unknown. We can frame "从使用效果看" not official names.
 
-[Host A] native.
+[Host A] Could say "官方没有在咱们大纲里列功能名，咱们不乱翻译成三个产品名；但那三项功能共同做的是。" This directly acknowledges source limitations, perhaps sounds too meta/robotic for podcast. Better naturally: "官方这次一口气讲了三项功能，虽然名字不念了。" Not good.
 
-[Host A] Maybe 7 lines ~650.
+[Host A] Could mention "检索赛事背景与规则、把零散信息整理成备赛清单、在对话里继续追问和调整" as likely. If inaccurate maybe issue. Let's infer exact likely actual features. Search the phrase mentally: In September 2025, Google Search launched "AI features for sports fans" perhaps:
 
-[Host A] Quick 9 lines ~800. Total then >3000 maybe 900+600+750+450+150=2850 plus markers maybe good.
+[Host A] - "Get an overview of a sports game with AI Overviews"
 
-[Host A] Let's calculate rough Chinese char:
+[Host A] - "Ask questions about a game"
 
-[Host A] headline 9 lines avg 100 =900.
+[Host A] - "Get live scores and updates".
 
-[Host A] SL2T 7 avg 100=700 =>1600.
+[Host A] The wording "prepare for your next big game" from Google blog might be "Google Search is getting new features to help you prepare for the next big game: Create a custom study guide, get a personalized learning plan, and quiz me." Search in education? "next big game" could be "game" like competition.
 
-[Host A] quick 9 avg 90=810 =>2410.
+[Host A] Three Search features maybe "Gameplan", "Ask a question", "Video recaps." Generic remains safest.
 
-[Host A] radar 450=>2860.
+[Host A] We can focus on workflow rather than labels and say "三项能力分别覆盖信息整理、计划生成、后续追问" but this may map. Requirement says deep discuss, likely acceptable.
 
-[Host A] closing150=>3010. Slight >3000 but max 3500, user overall says 2000-3000 and radar total 300-500. "原整体3000字上限相应放宽至3500字" so 3010 okay. Aim 3000.
+[Host A] Kimi:
 
-[Host A] Need perhaps no explicit "SL2T 模型" only acronym. Good.
+[Host A] "多目标剪枝框架" exact.
 
-[Host A] SL2T details:
+[Host A] "瞄准大模型压缩."
 
-[Host A] A: "DeepMind推出手语转文本 SL2T 模型，并接入面向聋人与听障用户的新功能。新闻看着像翻译工具升级，我更想把它看成输入方式变了。"
+[Host A] Explain pruning remove redundant weights/connections? Technical: Pruning removes weights/neurons/channels. Multi-objective jointly optimize. "视觉和语言" exact.
 
-[Host A] B: continuous sign language not alphabet.
+[Host A] "vision token and language reasoning." Good.
 
-[Host A] A: model needs video time sequence, hands, body, face, context.
+[Host A] "paper on arXiv needs reproduction." critical.
 
-[Host A] B: metrics word/char error, latency, names, numbers, nonmanual, regional sign.
+[Host A] "open source? arXiv only not code." Don't assume. Say "论文先公开，是否好复现还得看代码、权重和实验设置" cautious.
 
-[Host A] A: utility.
+[Host A] Radar:
 
-[Host A] B: cloud privacy.
+[Host A] Need "首日无对比数据" weird on 2026 date but use.
 
-[Host A] A: native interface.
+[Host A] Maybe "当前热度为⭐4964" exact spacing? Requirement says original "⭐4964". Include no space perhaps. "当前热度为 ⭐4964" same.
 
-[Host A] Let's keep.
+[Host A] "素材标注“首日无对比数据”" exact. Fine.
 
-[Host A] Gemini:
+[Host A] "无广告、开机自动接管且不要求 root" exact.
 
-[Host A] A exact.
+[Host A] "Kotlin".
 
-[Host A] B claim scope.
+[Host A] "MIT".
 
-[Host A] A potential.
+[Host A] "电脑和电视连同一个网络."
 
-[Host A] B eval.
+[Host A] "不要求 root" and exact quote.
 
-[Host A] Maybe 3 lines each = 6? We can do 4 lines.
+[Host A] "family mode."
 
-[Host A] Kimi 4 lines.
+[Host A] Conclusion tie golden quote:
 
-[Host A] Search 4 lines.
+[Host A] "AI下一轮竞争不只比模型大小。" Could paraphrase but include key line maybe exact-ish.
 
-[Host A] Total quick 12 lines ~1000, maybe too much. But can keep ~80 each =960. Overall 3060. Fine.
+[Host A] A "真实数据、可验证结果、进入具体人群生活". Good.
 
-[Host A] Need Search "三项功能" explicit. Let's be cautious:
+[Host A] B "这三件事恰好。" etc.
 
-[Host A] "Google AI Blog 介绍的三种用法，落到备赛流程就是三条线：用 Search 查赛制、规则、对手和赛程等事实；让 Gemini 根据这些信息整理训练重点、模拟问答或做临场预案；再用 Search 跟上临近比赛的变化，让 Gemini 继续调整。官方并没有替用户完成训练，而是把检索、推理和动态信息接成一条链。"
+[Host A] Need perhaps ending call to action "评论区。" but no need.
 
-[Host A] Could this be inaccurate? If actual three functions differ, but broad. They asked "Search 和 Gemini 帮助用户准备下一场大赛的三种方式." This interpretation is likely acceptable. We might phrase "可以理解为" to avoid presenting exact official labels. But script should report facts. "官方介绍的三种方式，可以理解为三条线" safe enough. Need mention source exact Google AI Blog.
+[Host A] Avoid "锁定。" perhaps.
 
-[Host A] Potential issues with "训练重点" perhaps Gemini feature specifically creates "personalized training plan". likely.
+[Host A] Need total count. Let's draft full now in final eventually. But first assess exact length manually via rough count. I'll draft here:
 
-[Host A] Project:
+[Host A] 1 88
 
-[Host A] 新闻说完了，接下来进入今天的项目雷达时间。
+[Host A] 2 79
 
-[Host B] 今天只推一个仓库，pengchujin/aerial-tv。它用 Kotlin 开发，采用 MIT 许可证，当前页面标注 ⭐4964，是给国产电视做的 Android TV 桌面。
+[Host A] 3 76
 
-[Host A] 它参照 tvOS 的思路，主打无广告、开机自动接管，目前明确支持 Xiaomi、TCL 等中国市场电视。说白了，它想替换的不是单个应用，而是电视开机后那套让人头疼的桌面体验。
+[Host A] 4 102
 
-[Host B] 为什么现在值得试？它的 ⭐4964 已经说明有人关注，但仓库明确标注“首日无对比数据”，暂时没有可核验的增速数字，咱们不能把热度说成增长。好的一面是免 root、不动系统应用，也能还原，真机试错和二次开发的心理成本低很多。
+[Host A] 5 82
 
-[Host A] 第一步怎么跑？README 摘录写得很直接：不用 root，不动系统应用，随时能还原。电脑和电视连同一个网络。先按现有说明验证连接、启动和恢复，再决定要不要长期放在主力电视上。
+[Host A] 6 96
 
-[Host B] fork 后最小改动的空间在一层 UI：加入国产电视遥控器按键映射，再做一个可编辑快捷栏，把常用应用、搜索和设置集中到首屏，同时保留无广告、开机接管和可还原这三条产品边界，差异化和改造成本都比较可控。
+[Host A] 7 91
 
-[Host A] 不过试用前还是得看自己的型号、Android 版本、权限和恢复路径，无广告也不等于没有网络请求。它更像低风险试验台，而不是装完就能替代所有电视系统，咱们clone之后先跑通基本链路，再决定是否继续投入。
+[Host A] 8 105
 
-[Host A] Radar chars maybe 650. Need 300-500. Count rough: 29 + 78 + 96 + 122 + 98 + 116 +100 =639. Too long. Need shrink to 450-500. Requirement says total radar 300-500. Let's target ~480. We can do 6 lines:
+[Host A] 9 88
 
-[Host A] A transition 24
+[Host A] 10 82 =889
 
-[Host A] B 80
+[Host A] 11 60
 
-[Host A] A 85
+[Host A] 12 99
 
-[Host A] B 95
+[Host A] 13 95
 
-[Host A] A 80
+[Host A] 14 90
 
-[Host A] B 110
+[Host A] 15 93
 
-[Host A] =474. Need include caveats and "what, why now, first, fork". Merge.
+[Host A] 16 97
 
-[Host A] Line B: repo details.
+[Host A] 17 93
 
-[Host A] A: what.
+[Host A] 18 78 =705 (cum1594)
 
-[Host A] B: why now + star caveat + risk.
+[Host A] 19 75
 
-[Host A] A: first quote + testing.
+[Host A] 20 105
 
-[Host A] B: fork + caveat/recommend. Maybe ~130.
+[Host A] 21 107 =287 (1881)
 
-[Host A] Total ~500.
+[Host A] 22 65
 
-[Host A] Let's estimate:
+[Host A] 23 105
 
-[Host A] A "新闻说完了，接下来进入今天的项目雷达时间。" 24.
+[Host A] 24 97
 
-[Host A] B "今天只推。" ~89.
+[Host A] 25 98=365 (2246)
 
-[Host A] A "它。" ~85.
+[Host A] 26 62
 
-[Host A] B "为什么。" ~125.
+[Host A] 27 113
 
-[Host A] A "第一步。" ~95.
+[Host A] 28 102
 
-[Host A] B "fork。" ~140.
+[Host A] 29 99=376 (2622)
 
-[Host A] Total 558. Trim.
+[Host A] Radar 30-36 ~470 ->3092
 
-[Host A] Could have 7 lines avg65 =455. Keep concise:
+[Host A] closing 160 ->3250. Hmm maybe too high. We need actual Chinese chars less than estimates perhaps. Requirement overall 2000-3000 and max 3500. 3250 okay due relaxed max, but desired 2000-3000 "total must 2000-3000" and radar exception "overall 3000 upper relaxed to 3500." So 3250 accepted. But probably count tool excludes markers maybe still 3000. We can target 3000.
 
-[Host A] A transition 23
+[Host A] Let's produce around 35 lines. Maybe remove one line and shorten.
 
-[Host A] B repo 78
+[Host A] Let's estimate actual final through token count? Chinese token approx 1 char per token. We can count lines using string lengths roughly. Need at least 2000. We'll aim around 2700 Chinese chars. Use 34 lines average 75 + radar 450 included. Let's consciously keep each line ~60-80.
 
-[Host A] A what 76
+[Host A] Detailed lines:
 
-[Host A] B now 103
+[Host A] 1 A ~77
 
-[Host A] A step 80
+[Host A] "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年10月26日，我是苏晴。今天咱们不聊模型排行榜，咱们直接看AI怎么拿到真实数据、写出能交付的代码，再钻进普通人的生活里。" Count ~76.
 
-[Host A] B fork 106
+[Host A] 2 B ~66
 
-[Host A] A caveats 76
+[Host A] "大家好，我是周航。你这开场挺会抓重点。模型聪不聪明只是上半程，能不能在现实里闭环干活，才是决定价值的下半程。" 58.
 
-[Host A] Total 542. Need reduce maybe 500ish. Word counting Chinese "字" likely includes punctuation. We can get ~500:
+[Host A] 3 A ~67
 
-[Host A] A 22
+[Host A] "先从最烧脑。 OpenAI data."
 
-[Host A] B 67
+[Host A] Let's write natural.
 
-[Host A] A 65
+[Host A] Potential user explicitly asks "今天科技圈有个大事"? no.
 
-[Host A] B 95
+[Host A] Let's draft all in final maybe 3000. But need no mistakes.
 
-[Host A] A 70
+[Host A] Let's calculate each roughly via chunks. I'll write candidate in analysis, then count approximate.
 
-[Host A] B 95
+[Host A] Candidate:
 
-[Host A] A 64 =478. Great.
+[Host A] 听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年10月26日，我是苏晴。今天咱们不刷模型排行榜，直接看AI怎么拿到真实数据、写出能交付的代码，再钻进普通人的生活里。
 
-[Host A] Draft:
+[Host A] (78)
 
-[Host A] 新闻说完了，接下来进入今天的项目雷达时间。 (23)
+[Host B] 大家好，我是周航。你这开场挺会抓重点。模型聪不聪明只是上半程，能不能在现实里闭环干活，才决定它到底值不值钱。
 
-[Host B] 今天只推一个仓库，pengchujin/aerial-tv。Kotlin 开发，MIT 许可证，当前标注 ⭐4964，是国产电视的 Android TV 桌面。 (65)
+[Host A] (59)
 
-[Host A] 它参照 tvOS 设计，主打无广告、开机自动接管，明确支持 Xiaomi、TCL 等中国市场电视，想改善的是电视开机后的整套桌面体验。 (65)
+[Host A] 先看这个让人脑内自动配图的问题：谁在给 OpenAI 供应具身数据？以前咱们谈大模型，燃料基本是网页、书籍和代码，现在机器人要学的是动作，还得知道动作做完以后环境变成什么样。
 
-[Host B] 现在值得试，是因为免 root、不动系统应用且可随时还原，试错门槛低。不过它也明确标注“首日无对比数据”，没有可核验的增速数字，热度和增长得分开看。 (76)
+[Host A] (84)
 
-[Host A] 第一步按 README 原文来：不用 root，不动系统应用，随时能还原。电脑和电视连同一个网络。跑通连接、启动和恢复，再考虑长期使用。 (67)
+[Host B] 这就像会背菜谱不等于会颠锅。文本模型读过大量菜谱，机器人却得亲手抓、拿、放，还要从杯子打翻、物体滑动这些失败里学会下一次怎么避坑。
 
-[Host B] fork 后先改一层 UI，加入国产电视遥控器按键映射和可编辑快捷栏，把常用应用、搜索、设置集中到首屏，同时保留无广告、开机接管与可还原的边界。 (76)
+[Host A] (65)
 
-[Host A] 还要核对型号、Android 版本、权限和回退路径。它适合低风险试用和二次开发，不一定适合直接替代所有电视系统，能顺利还原比多几个花哨功能更重要。 (71)
+[Host A] 真假的，所以具身数据不只是视频。它至少得把视觉、语言、动作和环境反馈串成一条轨迹，对机器人来说，知道看见什么只是第一步，知道该怎么动、动完啥结果才是关键。
 
-[Host A] Total ~443. Good. Include URL? Requirement says repo name and maybe link exact. They may expect link. Could add to B "地址是 https://github.com/pengchujin/aerial-tv。" Adds 48, total491. Great. It says link in outline, not explicitly must speak but good. Ensure no slash issue.
+[Host A] (75)
 
-[Host A] Need no quote brackets. Chinese quotes around 首日无对比数据 are okay? Requirement "绝对不要包含任何 XML 标签或中括号情感标签; 绝对不要包含任何括号或星号注解". Chinese quotation marks not brackets/parentheses. Fine. But to be ultra clean, remove quotes: "它也明确标注首日无对比数据". Keep exact phrase. Good.
+[Host B] 没错。也正因为这样，OpenAI 的数据供应链条才受到关注。谁能进入全球 Physical AI 核心供应链，谁就可能握有更丰富、更连续的具身智能燃料，但这不等于简单买更多视频。
 
-[Host A] Now overall line count and text. Let's draft fully, then check each line starts marker. No Markdown heading. Use natural talk.
+[Host A] (82)
 
-[Host A] Need ensure "事实准确性" Search three functions maybe concern. Could make it clear based outline and not assert exact official product names:
+[Host A] 来源、覆盖、采集网络，缺一不可。来源要合法可信，覆盖得包含不同家庭、工厂和街景，采集网络还得能持续带回失败样本；只在一个漂亮场景里采一堆成功录像，模型到陌生环境就容易僵住。
 
-[Host A] "Google AI Blog 介绍的三种方式，咱们可以按备赛链路来理解。" This is interpretive. Should mention all three. Good.
+[Host A] (89)
 
-[Host A] Could there be an issue with DeepMind SL2T "hand sign AI to users" perhaps model operates on video. We need no false architecture specifics like force. Fine.
+[Host B] 你注意啊，数据量只是表面功夫，标注质量才是硬通货。机器人动作往往有先后顺序，还得校准时间对齐。隐私、工人知情同意和数据授权也躲不过去，谁能把这些成本管好，谁才真像基础设施供应商。
 
-[Host A] Let's construct final now in analysis and count approximate.
+[Host A] (89)
 
-[Host A] Full draft:
+[Host A] 这跟我们有什么关系？以后居家养老、物流仓储、无障碍出行，都会受益于更懂环境的机器人；反过来，咱们的客厅也可能成为数据来源。便利和隐私怎么平衡，最后会落到每个用户身上。
 
-[Host A] 1 [Host A] 听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年10月26日，我是苏晴。今天咱们的两条主线很明确，一边是机器人怎么在现实世界里拿到好数据，另一边是AI怎么真正进入无声世界，咱们边聊边把技术账算明白。
+[Host A] (78)
 
-[Host A] 2 [Host B] 大家好，我是周航。我觉得这两件事放在一起特别有意思，因为它们都在回答同一个问题：模型能力够强以后，下一步究竟靠什么进入真实生活，而不是只在聊天框里转圈。
+[Host B] 说白了，下一轮竞争拼的不只是参数表，而是谁能拿到真实世界的数据，谁的采集网络又能稳定扩张。这就是具身版护城河，光靠融资堆机器人可绕不开这一关。
 
-[Host A] 3 A headline.
+[Host A] (71)
 
-[Host A] 4 B.
+[Host A] Subtotal 770.
 
-[Host A] 5 A.
+[Host A] 接着看编码。Gemini 3.7 Flash 相比 3.6 Flash，在调试与问题解决等编码任务上明显更强。素材没有给具体分数，那咱们就不硬编提升百分比，看它解决了什么才靠谱。
 
-[Host A] 6 B.
+[Host A] (77)
 
-[Host A] 7 A.
+[Host B] 编码是检验 AI 能不能干活的高频场景。聊天写个函数谁都能演示，可真实项目会冒出依赖冲突、边界条件和诡异报错；能读日志、定位根因、改完再跑测试，才是完整交付。
 
-[Host A] 8 B.
+[Host A] (80)
 
-[Host A] 9 A.
+[Host A] 这也太关键了。以前AI写代码像很会背语法题的实习生，代码看着漂亮，一进咱们项目就水土不服。3.7 Flash 如果能把调试和问题解决做实，至少说明它开始学查错，而不只是续写。
 
-[Host A] 10 B.
+[Host A] (83)
 
-[Host A] 11 A privacy.
+[Host B] 可以把它想成从代码补全升到结对调试。生成代码能赚个眼熟，自动补测试、追调用链、根据报错修根因，才可能吞下真实工单。Flash 这条快速路线若再把延迟和成本压住，价值会更直接。
 
-[Host A] 12 A SL2T intro (Host A consecutive okay, but natural could B transition? A okay)
+[Host A] (88)
 
-[Host A] 13 B.
+[Host A] 对普通用户也不只是程序员的事。咱们能用自然语言搭个小工具、让AI处理表格和重复流程，小团队甚至一个人也能做以前要两个人维护的东西。但它越会改代码，权限隔离和人工复核就越不能省。
 
-[Host A] 14 A.
+[Host A] (90)
 
-[Host A] 15 B.
+[Host B] 商业逻辑也变了。以前大家卖的是一个聊天框，现在卖的是能完成任务的工作流，还得用测试、代码差异和运行结果证明它干对了。企业会追问失败率、稳定性、能否接入现有系统，榜单漂亮只是入场券。
 
-[Host A] 16 A.
+[Host A] (87)
 
-[Host A] 17 B.
+[Host A] 我跟你说，模型竞争正在从通用能力展示转向可交付、可验证的生产力。但“显著优于 3.6 Flash”不等于进任何仓库都稳，复杂架构、安全检查和业务上下文，还是得让工程师兜底。
 
-[Host A] 18 A Gemini.
+[Host A] (83)
 
-[Host A] 19 B.
+[Host B] 这才是靠谱的期待。别把升级写成“程序员要失业”，更准确的说法是，AI先吃掉查错、补测试、样板代码这些可验证环节。能把杂活交出去，同时守住系统边界的人，反而更值钱。
 
-[Host A] 20 A.
+[Host A] (84)
 
-[Host A] 21 B.
+[Host A] Subtotal additional 752, cum 1522.
 
-[Host A] 22 A Kimi.
+[Host A] 快讯里还有一件特别暖心的事。DeepMind 推出手语转文本模型 SL2T，给聋人与听障用户的新手语功能提供底层能力。AI 不只服务屏幕前的效率问题，也能帮人跨过沟通障碍。
 
-[Host A] 23 B.
+[Host A] (79)
 
-[Host A] 24 A.
+[Host B] 这个底层能力很关键。摄像头看到的手势，要转成可读文本，机器得处理动作连续性、上下文和不同表达习惯。可它不能只在内网演示，得真正落到手机、电视和公共服务里。
 
-[Host A] 25 B.
+[Host A] (78)
 
-[Host A] 26 A Search.
+[Host A] 咱们也得泼点冷水。不同地区的手语表达有差异，光线、遮挡、镜头角度都会影响识别，模型不能替用户编一句看起来通顺但意思不对的话。涉及隐私时，本地处理和清晰授权都很重要。
 
-[Host A] 27 B.
+[Host A] (85)
 
-[Host A] 28 A.
+[Host A] Cum1686
 
-[Host A] 29 B.
+[Host A] 对了，Google 也把备赛塞进 Search 的 AI 工作流，介绍了三项辅助功能，用 Gemini 帮助用户为下一场大赛做准备。以前查规则、约对手、做计划要来回切网页，现在可以围绕一个目标连续追问。
 
-[Host A] 30 A radar
+[Host A] (86)
 
-[Host A] 31 B
+[Host B] 这三项功能合起来，本质是把 Search 从给链接变成给行动建议。检索赛事背景和规则，把零散信息整理成清单，再让用户通过对话调整备赛计划，工作流一下就顺起来了。
 
-[Host A] 32 A
+[Host A] (78)
 
-[Host A] 33 B
+[Host A] 对业余选手、教练和家长都挺实用，可信息新旧和来源必须标清楚。赛制、场地和时间一旦报错，AI 写得再顺也只是错得更完整，所以最终还得回到官方通知核对。
 
-[Host A] 34 A
+[Host A] (74)
 
-[Host A] 35 B
+[Host A] Cum 1924
 
-[Host A] 36 A
+[Host A] Kimi 团队在 arXiv 提出了多目标剪枝框架 MOONSHOT，瞄准视觉与语言模型的大模型压缩。名字挺浪漫，问题是，真能让又大又重的模型瘦身，还不把效果削疼吗？
 
-[Host A] 37 A close
+[Host A] (76)
 
-[Host A] 38 B close.
+[Host B] 剪枝可以理解成给模型做减法，把不重要甚至冗余的连接或结构删掉。单目标通常只盯参数量或某个精度指标，MOONSHOT 想统一兼顾视觉与语言表现，目标一多，权衡自然也更难。
 
-[Host A] Need line 37 maybe host A says summary. 38 B final. Good.
+[Host A] (85)
 
-[Host A] Let's ensure total 2000-3000 excluding radar. Headline
+[Host A] 视觉模型和语言模型本来就有点性格不合：一个怕图像细节丢了，一个怕推理链条断了。多目标框架要同时照顾两边，就像缩衣时不能只看肩宽，也不能只看袖长，最后得整套衣服还能穿。
+
+[Host A] (83)
+
+[Host B] 对，压缩真正看的不是文件变小，而是部署之后质量、速度、显存和设备成本能否一起平衡。论文到了 arXiv 只是第一步，代码是否公开、不同任务能不能复现、换模型后还稳不稳，都得继续验。
+
+[Host A] (86)
+
+[Host A] Cum 2254
+
+[Host A] 新闻说完了，接下来进入今天的项目雷达时间。今天只看一个离客厅很近的开源项目，名字叫 pengchujin/aerial-tv。
+
+[Host A] (60)
+
+[Host B] 它是一个采用 tvOS 设计风格的开源 Android TV 桌面，面向小米、TCL 等中国电视，用 Kotlin 开发，采用 MIT 许可证，主打无广告、开机自动接管。
+
+[Host A] (78)
+
+[Host A] 为什么现在值得上手？当前热度为 ⭐4964，素材标注“首日无对比数据”，所以暂无增速数字可引用。它把无广告、开机自动接管、不要求 root 这几件事放在一起，正
 [Host A] 好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！
 [Host B] 拜拜！
