@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-28",
+  "generated_at": "2026-10-27T21:33:36.934932+00:00",
+  "projects": [
+    {
+      "repo": "TauricResearch/TradingAgents",
+      "url": "https://github.com/TauricResearch/TradingAgents",
+      "description": "TradingAgents: Multi-Agents LLM Financial Trading Framework",
+      "language": "Python",
+      "topics": [
+        "agent",
+        "finance",
+        "llm",
+        "multiagent",
+        "trading"
+      ],
+      "stars": 117251,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2024-12-28T03:31:08Z",
+      "pushed_at": "2026-10-27T08:43:04Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "readme_intro": "Deutsch  | Español  | français  | 日本語  | 한국어  | Português  | Русский  | 中文",
+      "score": 0.5525,
+      "score_parts": {
+        "velocity": 0.4286,
+        "vel_rel": 0.6364,
+        "vel_abs": 0.117,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "seedds/nxnative",
+      "url": "https://github.com/seedds/nxnative",
+      "description": "Switch games running natively on iPhone, iPad and Mac: an NSP folder becomes an unsigned IPA (NSO rewriter, Horizon HLE host, NVN→Metal)",
+      "language": "Objective-C",
+      "topics": [],
+      "stars": 7642,
+      "delta_stars": 1723,
+      "is_new": false,
+      "created_at": "2026-10-13T05:20:14Z",
+      "pushed_at": "2026-10-27T20:13:07Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "brew install xcodegen zstd glslang\nbrew install --cask dotnet-sdk\npython3 -m pip install lz4 capstone fonttools \"backports.zstd; python_version < '3.14'\"\n```\n\nUse Python 3.12 or newer. Extraction writes one `RomFS.img` directly; the build reads it and bundles it as `romfs.img` in the IPA. The app reads the image in place, so neither the Mac build nor the iPhone expands it into a RomFS folder.\n\n**2. Put one game's NSPs in a folder**: the base game (an NSP, or an XCI cartridge dump), plus its update and DLC if you have them:\n\n```\n~/Games/MarioWonder/\n  Super Mario Bros. Wonder [010015100B514000][v0].nsp\n  Super Mario Bros. Wonder [010015100B514800][v327680].nsp\n```\n\nNSZ and XCZ files (compressed NSPs and XCIs) work too: the script converts them once with [nsz](https://github.com/nicoboss/nsz) (`python3 -m pip install nsz`) and keeps the NSPs in `<title ID>_build/nsp/`, which takes their full size on disk.\n\nAny version works, with or without an update: the script packs the newest version in the folder. DLC is optional too: the DLC in the folder is packed, and without it the game sees none, as on a Switch without it. Each game was tested on one version (an update named in the table abo",
+      "readme_intro": "Play your own Nintendo Switch games natively on iPhone and iPad. Bring your game (its NSP files) and your `prod.keys`; one script turns them into an IPA that you sideload. It is not an emulator: the game's own code runs directly on the Apple chip, with Switch graphics rebuilt on Metal. Nothing from any game is in this repository, and the project is not affiliated with Nintendo or any game publisher. > [!TIP] > **Prefer an app to the command line?** [NX2Apple](https://github.com/LNPANDY/NX2Apple) is a community Mac app that builds your games for the iPhone, iPad or Mac, keeps the Mac games in a library and starts them with their settings. It is a separate project that follows this one; this page describes nxnative's own command-line way. Building a front end of your own: [Front ends](docs/f",
+      "score": 0.51,
+      "score_parts": {
+        "velocity": 1.0,
+        "vel_rel": 1.0,
+        "vel_abs": 1.0,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.0,
+        "days_in_pool": 1
+      },
+      "affinity": 0.0
+    },
+    {
+      "repo": "mizorewww/laya-mlx",
+      "url": "https://github.com/mizorewww/laya-mlx",
+      "description": "Native MLX runtime for Laya typed decision models — 7–14 ms short decisions on M3 Max. No text generation, PyTorch, or cloud API.",
+      "language": "Python",
+      "topics": [
+        "apple-silicon",
+        "decision-model",
+        "inference",
+        "laya",
+        "local-ai",
+        "machine-learning",
+        "mlx",
+        "modernbert",
+        "system-one",
+        "typed-decisions"
+      ],
+      "stars": 7029,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-09-19T13:50:26Z",
+      "pushed_at": "2026-10-20T08:21:35Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "```bash\npip install laya-mlx\n```\n\n```python\nimport laya_mlx as laya\n\nagent = laya.load(\"aac6fef/laya-mlx\")\nresult = agent.predict(\n    \"I was billed twice. Please refund the duplicate.\",\n    {\n        \"department\": {\n            \"type\": \"choice\",\n            \"instructions\": \"Who should handle this?\",\n            \"criteria\": [\"billing\", \"technical\", \"sales\"],\n        }\n    },\n)\nprint(result[\"answers\"][\"department\"])\n```\n\nApple Silicon, Python 3.11+, macOS 14+. First load downloads the checkpoint; later inference is fully local. The measured environment is macOS 27.2, Python 3.12.13 and MLX 0.32.2. That MLX release supplies macOS 14, 15 and 26 wheels; the local installer selected the 26 wheel. Older supported macOS versions were not tested on this machine.\n\nRun the terminal demo:\n\n```bash\npip install 'laya-mlx[demo]'\nhf download aac6fef/laya-multilingual-mlx\nlaya-snake\n```\n\nDownload once before the offline demo. Use a terminal at least 104 × 35 cells. Space pauses, ↑/↓ changes speed, R resets and Q quits. `laya-snake --max-speed` makes a fresh decision for every move without pacing. [Recording, controls and exact metric meanings](https://github.com/mizorewww/laya-mlx/blob/main/docs/S",
+      "readme_intro": "**Open-weight typed decisions, running natively on Apple Silicon.** **13.4 ms** median end-to-end for a short English typed decision. **7.4 ms** with the multilingual checkpoint. **0 output tokens.** Local MLX inference, with no PyTorch, Transformers runtime, or cloud API. [中文](https://github.com/mizorewww/laya-mlx/blob/main/README.zh-CN.md) · [Benchmarks](https://github.com/mizorewww/laya-mlx/blob/main/BENCHMARKS.md) · [Snake demo](https://github.com/mizorewww/laya-mlx/blob/main/docs/SNAKE_DEMO.md) · [Hugging Face weights](https://huggingface.co/aac6fef/laya-mlx) The GIF is an original-speed render of a real local Snake run. Every move calls Laya; the visible cycle safety layer can correct unsafe proposals. The latency figures above are the separate **one-question API benchmark**, not the",
+      "score": 0.4632,
+      "score_parts": {
+        "velocity": 0.4857,
+        "vel_rel": 0.7273,
+        "vel_abs": 0.1233,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 0
+      },
+      "affinity": 0.5
+    }
+  ],
+  "meta": {
+    "pick_repo": "TauricResearch/TradingAgents",
+    "runner_up_repos": [
+      "seedds/nxnative",
+      "mizorewww/laya-mlx"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 35,
+    "excluded_recent": 18,
+    "fresh_candidates": 17,
+    "widen_pass": false,
+    "pool_by_source": {
+      "trending": 5,
+      "new": 25,
+      "topic": 5
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "makecindy/cindy",
+    "yesterday_pick_delta": 1068
+  }
+}
