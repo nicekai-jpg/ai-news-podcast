@@ -1,0 +1,417 @@
+<body>
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-group">
+        <img src="logo.svg" alt="" class="brand-logo-img" width="34" height="34">
+        <div class="brand-text">
+          <div class="brand-title">
+            今日AI看点
+            <span class="brand-badge">DAILY</span>
+          </div>
+          <div class="brand-subtitle">{{issue_tagline}}</div>
+        </div>
+      </div>
+
+      <nav class="header-nav" aria-label="章节导航">
+        <a href="#section-podcast" class="nav-anchor-link">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          今日主推
+        </a>
+        <a href="#section-report" class="nav-anchor-link">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          深度日报
+        </a>
+        <a href="#section-sources" class="nav-anchor-link">
+          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          信源
+        </a>
+        <a href="#section-radar" class="nav-anchor-link">
+          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          项目雷达
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-header-pill" id="theme-toggle" onclick="toggleTheme()" aria-label="切换深浅主题">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="theme-icon"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <span class="label-text" id="theme-label">深色</span>
+        </button>
+        <a href="./feed.xml" class="btn-header-pill btn-header-rss" target="_blank" rel="noopener" aria-label="RSS 订阅">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+          <span class="label-text">RSS</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN
+       ============================================================ -->
+  <main class="app-layout">
+
+    <!-- Shared Date Axis -->
+    <div class="shared-date-axis">
+      <div class="date-nav-controls">
+        <button class="date-step-btn" id="btn-prev-issue" onclick="stepIssue(1)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          上一期
+        </button>
+      </div>
+      <div class="date-pills-carousel" id="date-pills">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="date-nav-controls">
+        <button class="date-step-btn" id="btn-next-issue" onclick="stepIssue(-1)">
+          下一期
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section id="section-podcast" class="content-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-number">01</span>
+          <div>
+            <h2 class="section-title">今日主推播客</h2>
+            <p class="section-desc">每日一集 · 现场拆解</p>
+          </div>
+        </div>
+        <span class="section-meta">
+          <span class="demo-flag" data-requires="demo_note">{{demo_note}}</span>
+          {{podcast_chapter_count}} 章节
+        </span>
+      </div>
+
+      <div class="hero-grid">
+        <!-- Podcast Card -->
+        <article class="podcast-card">
+          <div class="podcast-cover-row">
+            <div class="podcast-disc">
+              <div class="disc-bars">
+                <div class="disc-bar"></div>
+                <div class="disc-bar"></div>
+                <div class="disc-bar"></div>
+                <div class="disc-bar"></div>
+                <div class="disc-bar"></div>
+              </div>
+            </div>
+            <div class="podcast-title-area">
+              <h3 class="podcast-heading">{{podcast_title}}</h3>
+              <p class="podcast-subhead">{{podcast_subtitle}}</p>
+            </div>
+          </div>
+
+          <div class="host-roster">
+            <span class="host-roster-label">本期主持</span>
+            <div class="host-roster-list" id="host-roster-list"><!-- Rendered by JS --></div>
+          </div>
+
+          <div class="podcast-cta-row">
+            <button class="btn-play-primary" onclick="togglePlay()" aria-pressed="false">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              播放本期
+            </button>
+            <button class="btn-transcript-cta" onclick="openDrawer()">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              逐字稿
+            </button>
+          </div>
+        </article>
+
+        <!-- Editorial Lead Card -->
+        <article class="editorial-card">
+          <div class="editorial-stamp">
+            <div class="stamp-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              编辑导语
+            </div>
+            <span class="stamp-date">{{issue_date}} · {{issue_number}} 期</span>
+          </div>
+          <p class="lead-quote">{{lead_quote}}</p>
+          <div class="metrics-strip">
+            <div class="metric-item">
+              <div class="metric-value">{{metric_sources_value}}<span class="metric-unit">{{metric_sources_unit}}</span></div>
+              <div class="metric-label">{{metric_sources_label}}</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">{{metric_hours_value}}<span class="metric-unit teal">{{metric_hours_unit}}</span></div>
+              <div class="metric-label">{{metric_hours_label}}</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">{{metric_speedup_value}}<span class="metric-unit amber">{{metric_speedup_unit}}</span></div>
+              <div class="metric-label">{{metric_speedup_label}}</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">{{metric_items_value}}<span class="metric-unit teal">{{metric_items_unit}}</span></div>
+              <div class="metric-label">{{metric_items_label}}</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DAILY REPORT
+         ============================================================ -->
+    <section id="section-report" class="content-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-number alt">02</span>
+          <div>
+            <h2 class="section-title">深度日报</h2>
+            <p class="section-desc">长文研判 · 四章拆解</p>
+          </div>
+        </div>
+        <span class="section-meta">{{report_word_count}} 字 · 约 {{report_read_minutes}} 分钟</span>
+      </div>
+
+      <div class="broadside-grid">
+        <div class="broadside-main">
+          <div class="broadside-header">
+            <div class="broadside-meta">
+              <span class="broadside-pill">{{report_pill}}</span>
+            </div>
+            <div class="broadside-toc">
+              <a href="#deep-dive-1" class="broadside-toc-link">{{chapter_1_tag}}</a>
+              <a href="#deep-dive-2" class="broadside-toc-link">{{chapter_2_tag}}</a>
+              <a href="#deep-dive-3" class="broadside-toc-link">{{chapter_3_tag}}</a>
+              <a href="#deep-dive-4" class="broadside-toc-link">{{chapter_4_tag}}</a>
+            </div>
+            <h3 class="broadside-title">{{report_title}}</h3>
+          </div>
+
+          <div class="deep-dive" id="deep-dive-1">
+            <div class="deep-dive-header">
+              <span class="deep-dive-tag">{{chapter_1_tag}}</span>
+              <span class="deep-dive-topic">{{chapter_1_topic}}</span>
+            </div>
+            <h4 class="deep-dive-title">{{chapter_1_title}}</h4>
+            <div class="deep-dive-point">
+              <div class="point-label"><span class="dot"></span>{{chapter_1_point_1_label}}</div>
+              <p class="point-text">{{chapter_1_point_1_text}}</p>
+            </div>
+            <div class="deep-dive-point highlight">
+              <div class="point-label"><span class="dot"></span>{{chapter_1_point_2_label}}</div>
+              <p class="point-text">{{chapter_1_point_2_text}}</p>
+            </div>
+            <div class="deep-dive-point" data-requires="chapter_1_point_3_label,chapter_1_point_3_text">
+              <div class="point-label"><span class="dot"></span>{{chapter_1_point_3_label}}</div>
+              <p class="point-text">{{chapter_1_point_3_text}}</p>
+            </div>
+          </div>
+
+          <div class="deep-dive" id="deep-dive-2">
+            <div class="deep-dive-header">
+              <span class="deep-dive-tag">{{chapter_2_tag}}</span>
+              <span class="deep-dive-topic">{{chapter_2_topic}}</span>
+            </div>
+            <h4 class="deep-dive-title">{{chapter_2_title}}</h4>
+            <div class="deep-dive-point">
+              <div class="point-label"><span class="dot"></span>{{chapter_2_point_1_label}}</div>
+              <p class="point-text">{{chapter_2_point_1_text}}</p>
+            </div>
+            <div class="deep-dive-point highlight">
+              <div class="point-label"><span class="dot"></span>{{chapter_2_point_2_label}}</div>
+              <p class="point-text">{{chapter_2_point_2_text}}</p>
+            </div>
+            <div class="deep-dive-point" data-requires="chapter_2_point_3_label,chapter_2_point_3_text">
+              <div class="point-label"><span class="dot"></span>{{chapter_2_point_3_label}}</div>
+              <p class="point-text">{{chapter_2_point_3_text}}</p>
+            </div>
+          </div>
+
+          <div class="deep-dive" id="deep-dive-3">
+            <div class="deep-dive-header">
+              <span class="deep-dive-tag">{{chapter_3_tag}}</span>
+              <span class="deep-dive-topic">{{chapter_3_topic}}</span>
+            </div>
+            <h4 class="deep-dive-title">{{chapter_3_title}}</h4>
+            <div class="deep-dive-point">
+              <div class="point-label"><span class="dot"></span>{{chapter_3_point_1_label}}</div>
+              <p class="point-text">{{chapter_3_point_1_text}}</p>
+            </div>
+            <div class="deep-dive-point highlight">
+              <div class="point-label"><span class="dot"></span>{{chapter_3_point_2_label}}</div>
+              <p class="point-text">{{chapter_3_point_2_text}}</p>
+            </div>
+            <div class="deep-dive-point" data-requires="chapter_3_point_3_label,chapter_3_point_3_text">
+              <div class="point-label"><span class="dot"></span>{{chapter_3_point_3_label}}</div>
+              <p class="point-text">{{chapter_3_point_3_text}}</p>
+            </div>
+          </div>
+
+          <div class="deep-dive" id="deep-dive-4">
+            <div class="deep-dive-header">
+              <span class="deep-dive-tag">{{chapter_4_tag}}</span>
+              <span class="deep-dive-topic">{{chapter_4_topic}}</span>
+            </div>
+            <h4 class="deep-dive-title">{{chapter_4_title}}</h4>
+            <div class="deep-dive-point">
+              <div class="point-label"><span class="dot"></span>{{chapter_4_point_1_label}}</div>
+              <p class="point-text">{{chapter_4_point_1_text}}</p>
+            </div>
+            <div class="deep-dive-point highlight">
+              <div class="point-label"><span class="dot"></span>{{chapter_4_point_2_label}}</div>
+              <p class="point-text">{{chapter_4_point_2_text}}</p>
+            </div>
+            <div class="deep-dive-point" data-requires="chapter_4_point_3_label,chapter_4_point_3_text">
+              <div class="point-label"><span class="dot"></span>{{chapter_4_point_3_label}}</div>
+              <p class="point-text">{{chapter_4_point_3_text}}</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="broadside-sidebar">
+          <div class="editor-quote-card">
+            <div class="editor-quote-header">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              编辑短评
+            </div>
+            <p class="editor-quote-text">{{editor_quote}}</p>
+            <div class="editor-quote-author">{{editor_name}} · {{editor_role}}</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SOURCES
+         ============================================================ -->
+    <section id="section-sources" class="content-section tint-cool">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-number">03</span>
+          <div>
+            <h2 class="section-title">信源与证据</h2>
+            <p class="section-desc">多源交叉验证 · 可追溯</p>
+          </div>
+        </div>
+        <span class="section-meta" id="sources-count-label"></span>
+      </div>
+
+      <div class="sources-filter" id="sources-filter" role="group" aria-label="按来源筛选">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="sources-grid" id="sources-grid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="sources-expand-bar">
+        <button class="btn-expand-sources" id="btn-expand-sources" onclick="toggleExpandSources()">
+          展开全部
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RADAR
+         ============================================================ -->
+    <section id="section-radar" class="content-section tint-warm">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-number alt">04</span>
+          <div>
+            <h2 class="section-title">GitHub 项目雷达</h2>
+            <p class="section-desc">严苛收录 · 过滤噪音与短期投机</p>
+          </div>
+        </div>
+        <span class="section-meta">今日状态：{{radar_status_label}}</span>
+      </div>
+
+      <div class="radar-card">
+        <div class="radar-empty-state" id="radar-empty">
+          <div class="radar-visual">
+            <canvas id="radarCanvas" class="radar-canvas" width="140" height="140" aria-hidden="true"></canvas>
+          </div>
+          <h3 class="radar-headline">{{radar_headline}}</h3>
+          <p class="radar-paragraph">{{radar_paragraph}}</p>
+          <div class="radar-meta-line">
+            <span>扫描候选 <strong>{{candidate_count}}</strong> 个</span>
+            <span class="sep">·</span>
+            <span>近期已收录排除 <strong>{{excluded_recent}}</strong> 个</span>
+            <span class="sep">·</span>
+            <span>{{radar_reason}}</span>
+          </div>
+        </div>
+
+        <div class="radar-pick-state" id="radar-pick" hidden>
+          <div class="radar-pick-head">
+            <h3 class="radar-pick-name">{{radar_pick_repo}}</h3>
+            <span class="radar-pick-growth">近 7 日 ★ +{{radar_pick_growth}}/天</span>
+          </div>
+          <div class="radar-pick-meta">
+            <span>{{radar_pick_lang}}</span>
+            <span class="sep">·</span>
+            <span class="radar-pick-stars">★ {{radar_pick_stars}}</span>
+            <span class="sep">·</span>
+            <span>{{radar_pick_license}}</span>
+          </div>
+          <p class="radar-pick-desc">{{radar_pick_desc}}</p>
+          <div class="radar-pick-action">
+            <a href="{{radar_pick_url}}" target="_blank" rel="noopener">在 GitHub 查看 ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       DOCKED PLAYER
+       ============================================================ -->
+  <div class="docked-player">
+    <div class="player-inner">
+      <div class="player-info">
+        <div class="player-disc">
+          <div class="disc-bars">
+            <div class="disc-bar"></div>
+            <div class="disc-bar"></div>
+            <div class="disc-bar"></div>
+            <div class="disc-bar"></div>
+            <div class="disc-bar"></div>
+          </div>
+        </div>
+        <div class="player-text">
+          <div class="player-title">{{podcast_title}}</div>
+          <div class="player-subtitle">{{player_subtitle}}</div>
+          <div class="player-time"><span id="player-current">00:00</span><span class="player-time-sep">/</span><span id="player-total">{{podcast_duration}}</span></div>
+        </div>
+      </div>
+      <div class="player-controls">
+        <button class="player-btn" onclick="seek(-15)" aria-label="后退 15 秒">
+          <svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        </button>
+        <button class="player-btn play" onclick="togglePlay()" aria-label="播放" aria-pressed="false">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+        <button class="player-btn" onclick="seek(15)" aria-label="前进 15 秒">
+          <svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        </button>
+        <button class="player-transcript-btn" onclick="openDrawer()">逐字稿</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TRANSCRIPT DRAWER
+       ============================================================ -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+  <aside class="transcript-drawer" id="transcript-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-heading">
+    <div class="drawer-header">
+      <h3 class="drawer-title" id="drawer-heading">本期逐字稿</h3>
+      <button class="drawer-close" onclick="closeDrawer()" aria-label="关闭">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body" id="transcript-body">
+      <!-- Rendered by JS -->
+    </div>
+  </aside>

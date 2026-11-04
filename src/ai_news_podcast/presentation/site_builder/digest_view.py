@@ -167,7 +167,7 @@ def _voice_labels(cfg: Any) -> dict[str, dict[str, str]]:
 def _hosts(cfg: Any) -> list[dict]:
     from ai_news_podcast.presentation.site_builder.html_gen_view import voice_catalog
 
-    names = {"host_a": ("A", "苏晴", "female"), "host_b": ("B", "周航", "male")}
+    names = {"host_a": ("A", "林夏", "female"), "host_b": ("B", "陈默", "male")}
     catalog = voice_catalog(cfg)
     hosts = []
     for config_key, (key, name, gender) in names.items():
