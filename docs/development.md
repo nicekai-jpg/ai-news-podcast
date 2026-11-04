@@ -100,7 +100,7 @@ uv run ruff format src/ tests/ scripts/
 
 ## 站点数据契约
 
-首页是「骨架 + 内联 `site-data` + 内联 `static/{style,app,player}`」，其余内容由前端按需 fetch 这些随
+首页是「设计稿 v23 骨架 `static/page_template.html` + 内联 `static/{style.css,app.js}` + `site-data`」，其余内容由前端按需 fetch 这些随
 `site/` 一起部署的 JSON（不再内联 `data/episodes.json` 的 `description`，它只给 `feed.xml` 使用）：
 
 - `site/data/digest_{date}.json`：每期站点数据，包含 `podcast`（标题 / MP3 / 时长 / 主持人 / 逐字稿入口）、

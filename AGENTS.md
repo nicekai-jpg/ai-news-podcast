@@ -151,8 +151,18 @@ Stage CLIs (console scripts in pyproject):
   近 30 天已推荐过的仓库由 `_load_recent_picks` 排除,不要绕过。
   无 `GITHUB_TOKEN` 时走匿名限流(每日一次扫描足够),不要在雷达里加需要
   更高限流的调用。
-- `site/index.html` 现在是骨架 + 内联 `site-data` JSON + 内联 `static/{style,app,player}`；
+- 站点首页 = 设计稿 v23（`今日AI看点`）骨架 `static/page_template.html` + 内联
+  `static/{style.css,app.js}` + 内联 `site-data` JSON。模板里的 `{{...}}` 注入点由 app.js
+  的 `hydrate()` 用 `digestToData()` 拉取的 digest 字段填充；切日期时重新 fetch
+  `site/data/digest_{date}.json` + `site/episodes/{date}/playlist.json` 后重渲染。
   不要重新内联 `episodes.json.desc`（体积红线 1.5MB）。
+- 深浅主题：`<html data-theme>` + localStorage（head 内联脚本先应用，避免闪烁），
+  默认跟随系统 `prefers-color-scheme`；主题令牌都在 `static/style.css` 的
+  `:root` / `[data-theme="dark"]`，改色只动令牌。
+- 播放器用整期 `./episodes/{date}.mp3`（feed 同一份）；音频 404/被拒时自动退化为模拟时钟。
+  旧的分片 `player.js` 已删除，不要再按 chunk 播放器改。
+- 主持人口径统一为 **林夏（Host A）/ 陈默（Host B）**：digest `_hosts`、writer prompt
+  (`prompts_dao.py` / `podcast_writer_service.py`) 与站点 roster 必须一致。
 - `site/data/digest_*.json` 由 publish 生成并在 CI `git add -f` 跟踪；**不要**把它挪出
   `site/`，否则月度 prune 后会从 gh-pages 消失（prune 只从 main 的 `site/` 拷贝）。
 - 章节条数据来源：writer prompt 的 `[CHAPTER] 标题` → `parse_dialogue_chunks` 的
