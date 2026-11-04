@@ -12,6 +12,9 @@ from ai_news_podcast.data.text_utils_dao import clean_tts_text
 # (见 2026-09-30 TTS 事故),因此在切句阶段直接剔除。
 _RENDERABLE_RE = re.compile(r"[\w\u4e00-\u9fff]")
 
+# 剧本章节标记：单独一行 `[CHAPTER] 标题`（由 Stage 3 writer 产出，标题 ≤12 字）。
+_CHAPTER_RE = re.compile(r"^\[CHAPTER\]\s*(.+)$")
+
 
 def has_renderable_text(text: str) -> bool:
     """文本是否含可发音内容,用于剔除纯标点/符号段。"""
@@ -23,6 +26,8 @@ def _filter_chunk_text(raw: str) -> str:
     lines = [line.strip() for line in raw.splitlines() if line.strip()]
     valid_lines = []
     for line in lines:
+        if _CHAPTER_RE.match(line):
+            continue
         if re.match(r"^[-*#]\s+", line) or re.match(
             r"^（注[：:]|^\(Note[：:]", line, re.IGNORECASE
         ):
@@ -31,29 +36,55 @@ def _filter_chunk_text(raw: str) -> str:
     return clean_tts_text(" ".join(valid_lines))
 
 
+def _split_chapter_lines(raw: str) -> tuple[str, str | None]:
+    """剥离段落里的 [CHAPTER] 行:返回 (对白正文, 最后一个章节标题)。
+
+    章节行不进 TTS 文本;同一段里出现多条时只有最后一条生效(连续章节标记取最后一个)。
+    """
+    chapter: str | None = None
+    lines: list[str] = []
+    for line in raw.splitlines():
+        match = _CHAPTER_RE.match(line.strip())
+        if match:
+            title = match.group(1).strip()
+            if title:
+                chapter = title
+            continue
+        lines.append(line)
+    return "\n".join(lines), chapter
+
+
 def parse_dialogue_chunks(
     text: str,
 ) -> list[DialogueChunk]:
-    """解析 [Host A]/[Host B] 对话标记为 DialogueChunk 列表。"""
+    """解析 [Host A]/[Host B] 对话标记为 DialogueChunk 列表。
+
+    紧邻某个 [Host X] 之前的 `[CHAPTER] 标题` 行归属该 Host 段:标题从对白文本里
+    剥离并写入 DialogueChunk.chapter;脚本末尾无后续 Host 的章节行会被忽略。
+    """
     marker_re = re.compile(r"\[Host\s*([AB])\]", re.IGNORECASE)
     chunks: list[DialogueChunk] = []
     current_host = "A"
+    current_chapter: str | None = None
     cursor = 0
 
     for m in marker_re.finditer(text):
-        raw = text[cursor : m.start()].strip()
-        if raw:
+        raw, pending_chapter = _split_chapter_lines(text[cursor : m.start()])
+        if raw.strip():
             cleaned = _filter_chunk_text(raw)
             if cleaned:
-                chunks.append(DialogueChunk(host=current_host, text=cleaned))
+                chunks.append(
+                    DialogueChunk(host=current_host, text=cleaned, chapter=current_chapter)
+                )
         current_host = m.group(1).upper()
+        current_chapter = pending_chapter
         cursor = m.end()
 
-    tail = text[cursor:].strip()
-    if tail:
-        cleaned = _filter_chunk_text(tail)
+    raw, _trailing_chapter = _split_chapter_lines(text[cursor:])
+    if raw.strip():
+        cleaned = _filter_chunk_text(raw)
         if cleaned:
-            chunks.append(DialogueChunk(host=current_host, text=cleaned))
+            chunks.append(DialogueChunk(host=current_host, text=cleaned, chapter=current_chapter))
     return chunks
 
 

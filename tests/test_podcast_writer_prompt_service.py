@@ -39,6 +39,18 @@ class TestBuildWriterPrompt:
         assert "[Host A]" in prompt
         assert "[Host B]" in prompt
 
+    def test_contains_chapter_marker_instructions(self) -> None:
+        prompt = build_writer_prompt(
+            '{"thesis": "x"}',
+            datetime(2024, 3, 15),
+            "Podcast",
+            {},
+        )
+        # 章节真标题：要求单独一行输出 [CHAPTER] 标题，且示例里出现
+        assert "[CHAPTER]" in prompt
+        assert "[CHAPTER] 今日头条" in prompt
+        assert "3-5 个话题段落" in prompt
+
     def test_uses_default_banned_words(self) -> None:
         prompt = build_writer_prompt(
             '{"thesis": "x"}',

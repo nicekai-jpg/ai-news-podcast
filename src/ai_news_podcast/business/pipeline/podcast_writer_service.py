@@ -29,6 +29,25 @@ from ai_news_podcast.data.text_utils_dao import (
 
 logger = logging.getLogger(__name__)
 
+# 章节标记由 writer 按 Stage 3 提示词单独成行输出。clean_tts_text 会把非 Host 的
+# 中括号标记整段删掉（RE_NON_HOST_BRACKET），因此清洗前先用哨兵占位保住标题，
+# 再由 _normalize_host_tags 还原成 `[CHAPTER] 标题`（不补 [Host A] 前缀）。
+_CHAPTER_LINE_RE = re.compile(r"^\[CHAPTER\]\s*(.+)$")
+_CHAPTER_SENTINEL = "__CHAPTER_MARKER__"
+_CHAPTER_SENTINEL_RE = re.compile(r"^" + _CHAPTER_SENTINEL + r"\s*(.+)$")
+
+
+def _protect_chapter_markers(text: str) -> str:
+    """把独立的 [CHAPTER] 标题行换成清洗安全的哨兵，避免标题被 clean_tts_text 删掉。"""
+    protected: list[str] = []
+    for raw_line in text.split("\n"):
+        match = _CHAPTER_LINE_RE.match(raw_line.strip())
+        if match:
+            protected.append(f"{_CHAPTER_SENTINEL} {match.group(1).strip()}")
+        else:
+            protected.append(raw_line)
+    return "\n".join(protected)
+
 
 def check_banned_words(text: str, banned: list[str] | None = None) -> list[str]:
     banned = banned or DEFAULT_BANNED_WORDS
@@ -188,7 +207,8 @@ def _post_process_script(
     mode_used: str,
 ) -> tuple[str, list[str], str]:
     """清洗、验证脚本，必要时回退到 fallback 模板。"""
-    script = clean_tts_text(script)
+    # clean_tts_text 会删掉 [CHAPTER] 的中括号，先换成哨兵保住章节标题
+    script = clean_tts_text(_protect_chapter_markers(script))
     if not script.strip():
         logger.warning("clean_tts_text 后脚本为空，强制降级到 Fallback 模板")
         script = _build_fallback(brief, episode_date, podcast_title)
@@ -240,6 +260,12 @@ def _normalize_host_tags(text: str) -> str:
     for raw_line in lines:
         line = raw_line.strip()
         if not line:
+            continue
+        # 章节行原样保留（不补 [Host A] 前缀，也不进 TTS 台词）；哨兵形式是
+        # clean_tts_text 之前的占位，这里统一还原成标准 [CHAPTER] 标题行。
+        chapter_match = _CHAPTER_LINE_RE.match(line) or _CHAPTER_SENTINEL_RE.match(line)
+        if chapter_match:
+            result.append(f"[CHAPTER] {chapter_match.group(1).strip()}")
             continue
         # 宽泛匹配，防止大模型加了一些冒号或者空格: [Host A]: 或者 Host A:
         line = re.sub(r"^\[?Host\s*A\]?:?\s*", "[Host A] ", line, flags=re.IGNORECASE)

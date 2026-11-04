@@ -140,6 +140,38 @@ class TestChapters:
         chapters = detect_chapters(quiet)
         assert 2 <= len(chapters) <= 3 and all(c["source"] == "fallback" for c in chapters)
 
+    def test_script_chapters_take_priority(self) -> None:
+        chunks = [
+            {"id": 1, "host": "A", "text": "开场白。", "start": 0.0, "chapter": "今日头条"},
+            {"id": 2, "host": "B", "text": "说到这个……", "start": 120.0, "chapter": "快讯速览"},
+            {"id": 3, "host": "A", "text": "最后一条。", "start": 240.0, "chapter": "收尾闲聊"},
+        ]
+        chapters = detect_chapters(chunks)
+        assert [(c["title"], c["start"], c["label"], c["source"]) for c in chapters] == [
+            ("今日头条", 0.0, "00:00", "script"),
+            ("快讯速览", 120.0, "02:00", "script"),
+            ("收尾闲聊", 240.0, "04:00", "script"),
+        ]
+
+    def test_single_script_chapter_falls_back_to_heuristic(self) -> None:
+        chunks = [
+            dict(chunk, chapter="今日头条") if i == 0 else dict(chunk)
+            for i, chunk in enumerate(CHUNKS)
+        ]
+        chapters = detect_chapters(chunks)
+        assert all(c["source"] == "cue_heuristic" for c in chapters)
+
+    def test_duplicate_script_titles_count_once_and_fall_back(self) -> None:
+        chunks = [dict(chunk, chapter="今日头条") for chunk in CHUNKS]
+        chapters = detect_chapters(chunks)
+        assert all(c["source"] == "cue_heuristic" for c in chapters)
+
+    def test_legacy_playlist_without_chapter_key_keeps_heuristic(self) -> None:
+        """历史 30 期 playlist 没有 chapter 字段 → 必须继续走转场词启发式。"""
+        assert all("chapter" not in chunk for chunk in CHUNKS)
+        chapters = detect_chapters(CHUNKS)
+        assert all(c["source"] == "cue_heuristic" for c in chapters)
+
 
 class TestBuildDigest:
     def _build(self, **overrides):

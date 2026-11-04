@@ -66,10 +66,34 @@ def duration_stats(chunks: list[dict]) -> tuple[float, float]:
     return (timeline, speech)
 
 
+def _script_chapters(chunks: list[dict]) -> list[dict]:
+    """用剧本 [CHAPTER] 真标题生成章节（按出现顺序；同标题只取第一次）。"""
+    chapters: list[dict] = []
+    seen: set[str] = set()
+    for chunk in chunks:
+        title = str(chunk.get("chapter") or "").strip()
+        if not title or title in seen:
+            continue
+        seen.add(title)
+        start = float(chunk.get("start") or 0)
+        chapters.append(
+            {
+                "title": title,
+                "start": start,
+                "label": _fmt_duration(start),
+                "source": "script",
+            }
+        )
+    return chapters
+
+
 def detect_chapters(chunks: list[dict]) -> list[dict]:
-    """按转场词定位章节锚点；不足 2 个锚点时退化为固定三点。"""
+    """章节优先用剧本真标题；不足 2 个不同标题时退化为转场词启发式/固定三点。"""
     if not chunks:
         return []
+    script_chapters = _script_chapters(chunks)
+    if len(script_chapters) >= 2:
+        return script_chapters
     chapters: list[dict] = [
         {
             "title": _short_title(chunks[0]),

@@ -6,13 +6,29 @@
 from __future__ import annotations
 
 import logging
+from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
 from ai_news_podcast.business.pipeline.tts_backends import TTSBackendFactory
 from ai_news_podcast.business.pipeline.tts_parser_service import parse_dialogue_chunks
+from ai_news_podcast.business.pipeline.tts_types_service import DialogueChunk
 
 log = logging.getLogger(__name__)
+
+
+def _chunk_script_lines(chunk: DialogueChunk) -> list[str]:
+    """把 chunk 还原成剧本文本行；有章节时先输出 [CHAPTER] 行（无章节与旧行为逐字一致）。"""
+    lines: list[str] = []
+    if chunk.chapter:
+        lines.append(f"[CHAPTER] {chunk.chapter}")
+    lines.append(f"[Host {chunk.host}] {chunk.text}")
+    return lines
+
+
+def _chunks_to_script(chunks: list[DialogueChunk]) -> str:
+    """把 chunk 列表重建成剧本纯文本（保留章节标记，供后续 parse 还原章节字段）。"""
+    return "\n\n".join("\n".join(_chunk_script_lines(chunk)) for chunk in chunks)
 
 
 def _annotate_text_in_batches(
@@ -38,7 +54,7 @@ def _annotate_text_in_batches(
     final_chunks = []
 
     for idx, batch in enumerate(batches, start=1):
-        batch_text = "\n\n".join(f"[Host {c.host}] {c.text}" for c in batch)
+        batch_text = _chunks_to_script(batch)
         log.info(
             "Director Agent 正在处理第 %d/%d 切段对白 (包含 %d 轮对话)...",
             idx,
@@ -104,11 +120,15 @@ def _annotate_text_in_batches(
 
         if batch_valid:
             log.info("第 %d/%d 切段情感标注与无损校验通过 (完整保留对白正文)", idx, len(batches))
-            final_chunks.extend(annotated_chunks)
+            # 章节字段按 chunk 顺序继承（Director 只加副语言标签，不负责章节标记）
+            final_chunks.extend(
+                replace(ann_c, chapter=orig_c.chapter)
+                for orig_c, ann_c in zip(batch, annotated_chunks, strict=False)
+            )
         else:
             final_chunks.extend(batch)
 
-    return "\n\n".join(f"[Host {c.host}] {c.text}" for c in final_chunks) + "\n"
+    return _chunks_to_script(final_chunks) + "\n"
 
 
 async def synthesize(
