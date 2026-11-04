@@ -1585,6 +1585,7 @@
 
 /* ---------- 交互状态与加载/空态 ---------- */
 [hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--accent-light); outline-offset: 2px; }
 .date-step-btn:disabled { opacity: .4; cursor: not-allowed; }
 .is-loading { opacity: .55; pointer-events: none; }
 .state-placeholder {

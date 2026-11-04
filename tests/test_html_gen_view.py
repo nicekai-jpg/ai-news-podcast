@@ -83,6 +83,73 @@ class TestSkeleton:
         assert "./feed.xml" in html
 
 
+class TestAccessibility:
+    """a11y 基础契约：dialog / slider / live region / 控件标签。"""
+
+    def test_drawer_dialog_semantics(self, tmp_path) -> None:
+        html = _build(tmp_path)
+        assert 'role="dialog"' in html
+        assert 'aria-modal="true"' in html
+        assert 'aria-labelledby="drawer-title"' in html
+        assert 'id="drawer-title"' in html
+
+    def test_drawer_hidden_by_default(self, tmp_path) -> None:
+        html = _build(tmp_path)
+        drawer = re.search(r'<aside[^>]*id="transcript-drawer"[^>]*>', html)
+        assert drawer is not None
+        assert 'aria-hidden="true"' in drawer.group(0)
+
+    def test_scrubber_is_slider(self, tmp_path) -> None:
+        html = _build(tmp_path)
+        track = re.search(r'<div[^>]*id="scrubber-track"[^>]*>', html)
+        assert track is not None
+        tag = track.group(0)
+        assert 'role="slider"' in tag
+        assert 'tabindex="0"' in tag
+        assert 'aria-valuemin="0"' in tag
+        assert 'aria-valuemax="100"' in tag
+        assert 'aria-valuenow="0"' in tag
+
+    def test_live_regions(self, tmp_path) -> None:
+        html = _build(tmp_path)
+        sentence = re.search(r'<div[^>]*id="player-sentence"[^>]*>', html)
+        assert sentence is not None
+        assert 'aria-live="polite"' in sentence.group(0)
+        toast = re.search(r'<div[^>]*id="toast-pill"[^>]*>', html)
+        assert toast is not None
+        assert 'role="status"' in toast.group(0)
+        assert 'aria-live="polite"' in toast.group(0)
+
+    def test_interactive_controls_have_labels(self, tmp_path) -> None:
+        html = _build(tmp_path)
+        controls = (
+            "date-prev",
+            "date-next",
+            "skip-back",
+            "skip-forward",
+            "dock-play-btn",
+            "speed-btn",
+            "mute-btn",
+            "btn-drawer-toggle",
+            "drawer-close",
+        )
+        labelled = 0
+        for control in controls:
+            tag = re.search(r'<button[^>]*id="' + control + r'"[^>]*>', html)
+            assert tag is not None, control
+            assert "aria-label=" in tag.group(0), control
+            labelled += 1
+        assert labelled >= 3
+        search = re.search(r'<input[^>]*id="source-search"[^>]*>', html)
+        assert search is not None
+        assert "aria-label=" in search.group(0)
+
+    def test_sections_have_landmark_labels(self, tmp_path) -> None:
+        html = _build(tmp_path)
+        for label in ("日期选择", "播客速览", "科技日报", "来源速递", "项目雷达"):
+            assert 'aria-label="' + label + '"' in html, label
+
+
 class TestSiteData:
     def test_parsable_and_scoped(self, tmp_path) -> None:
         data = _site_data(_build(tmp_path))

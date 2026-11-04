@@ -103,16 +103,16 @@ _PAGE_TEMPLATE = """<!doctype html>
   </header>
 
   <main class="app-layout">
-    <section class="shared-date-axis">
+    <section class="shared-date-axis" aria-label="日期选择">
       <div class="date-nav-controls">
-        <button class="date-step-btn" id="date-prev">← 前一日</button>
-        <button class="date-step-btn" id="date-next">后一日 →</button>
+        <button class="date-step-btn" id="date-prev" aria-label="前一日">← 前一日</button>
+        <button class="date-step-btn" id="date-next" aria-label="后一日">后一日 →</button>
       </div>
       <div class="date-pills-carousel" id="date-pills"></div>
       <div class="date-archive-link" id="date-latest" hidden>回到最新一期</div>
     </section>
 
-    <section id="section-hero" class="content-section">
+    <section id="section-hero" class="content-section" aria-label="播客速览">
       <div class="hero-chronicle-grid">
         <div class="podcast-hero-card" id="podcast-card">
           <div class="podcast-cover-meta">
@@ -147,7 +147,7 @@ _PAGE_TEMPLATE = """<!doctype html>
             </div>
           </div>
           <div class="podcast-cta-row">
-            <button class="btn-play-primary" id="hero-play-btn">
+            <button class="btn-play-primary" id="hero-play-btn" aria-pressed="false">
               <span id="hero-play-icon">▶</span><span id="hero-play-text">立即收听本期</span>
             </button>
             <button class="btn-transcript-cta" id="hero-transcript-btn">📜 逐字稿</button>
@@ -166,7 +166,7 @@ _PAGE_TEMPLATE = """<!doctype html>
       </div>
     </section>
 
-    <section id="section-daily" class="content-section">
+    <section id="section-daily" class="content-section" aria-label="科技日报">
       <div class="daily-reading-layout">
         <div class="section-header-row">
           <div class="section-tag-title"><span>📰</span> 《科技日报》深度解读
@@ -186,7 +186,7 @@ _PAGE_TEMPLATE = """<!doctype html>
       </div>
     </section>
 
-    <section id="section-sources" class="content-section">
+    <section id="section-sources" class="content-section" aria-label="来源速递">
       <div class="section-header-row">
         <div class="section-tag-title"><span>🌐</span> 今日参考信源速览
           <span class="section-counter-badge" id="source-count-badge">—</span></div>
@@ -197,7 +197,7 @@ _PAGE_TEMPLATE = """<!doctype html>
         <div class="source-search-box">
           <span class="source-search-icon">🔍</span>
           <input type="text" class="source-search-input" id="source-search"
-                 placeholder="检索标题或来源…">
+                 placeholder="检索标题或来源…" aria-label="检索标题或来源">
         </div>
       </div>
       <div class="sources-grid-layout" id="sources-grid"></div>
@@ -206,7 +206,7 @@ _PAGE_TEMPLATE = """<!doctype html>
       </div>
     </section>
 
-    <section id="section-radar" class="content-section">
+    <section id="section-radar" class="content-section" aria-label="项目雷达">
       <div class="section-header-row">
         <div class="section-tag-title"><span>📡</span> GitHub 项目雷达
           <span class="section-counter-badge" id="radar-badge">—</span></div>
@@ -222,49 +222,49 @@ _PAGE_TEMPLATE = """<!doctype html>
         <img src="./logo.png" alt="cover" class="player-thumb-img">
         <div class="player-track-info">
           <div class="player-track-title" id="player-title">AI 新闻快报</div>
-          <div class="player-live-sentence" id="player-sentence">点击播放开始收听…</div>
+          <div class="player-live-sentence" id="player-sentence" aria-live="polite">点击播放开始收听…</div>
         </div>
       </div>
       <div class="player-center">
         <div class="player-button-row">
-          <button class="btn-player-skip" id="skip-back">⏪ 15s</button>
-          <button class="btn-player-play" id="dock-play-btn"><span id="dock-play-icon">▶</span></button>
-          <button class="btn-player-skip" id="skip-forward">15s ⏩</button>
+          <button class="btn-player-skip" id="skip-back" aria-label="后退 15 秒">⏪ 15s</button>
+          <button class="btn-player-play" id="dock-play-btn" aria-label="播放或暂停" aria-pressed="false"><span id="dock-play-icon">▶</span></button>
+          <button class="btn-player-skip" id="skip-forward" aria-label="前进 15 秒">15s ⏩</button>
         </div>
         <div class="player-scrubber-row">
           <span class="player-time" id="time-current">00:00</span>
-          <div class="scrubber-track" id="scrubber-track"><div class="scrubber-progress" id="scrubber-fill"><div class="scrubber-thumb"></div></div></div>
+          <div class="scrubber-track" id="scrubber-track" role="slider" tabindex="0" aria-label="播放进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="scrubber-progress" id="scrubber-fill"><div class="scrubber-thumb"></div></div></div>
           <span class="player-time" id="time-duration">00:00</span>
         </div>
       </div>
       <div class="player-right">
-        <button class="btn-speed" id="speed-btn">1.0x</button>
+        <button class="btn-speed" id="speed-btn" aria-label="播放倍速">1.0x</button>
         <div class="volume-box">
-          <button class="btn-vol" id="mute-btn">🔊</button>
+          <button class="btn-vol" id="mute-btn" aria-label="静音或恢复音量">🔊</button>
           <input type="range" class="vol-slider" id="vol-slider" min="0" max="1" step="0.05" value="0.8">
         </div>
-        <button class="btn-transcript-drawer-toggle" id="btn-drawer-toggle">📜 逐字稿</button>
+        <button class="btn-transcript-drawer-toggle" id="btn-drawer-toggle" aria-label="打开逐字稿" aria-expanded="false">📜 逐字稿</button>
       </div>
     </div>
   </footer>
 
-  <aside class="transcript-drawer" id="transcript-drawer">
+  <aside class="transcript-drawer" id="transcript-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" aria-hidden="true">
     <div class="drawer-header">
-      <div class="drawer-title"><span>🎙️</span> 对话逐字稿 <span class="brand-badge" id="drawer-count"></span></div>
-      <button class="drawer-close-btn" id="drawer-close">✕</button>
+      <div class="drawer-title" id="drawer-title"><span>🎙️</span> 对话逐字稿 <span class="brand-badge" id="drawer-count"></span></div>
+      <button class="drawer-close-btn" id="drawer-close" aria-label="关闭逐字稿">✕</button>
     </div>
     <div class="drawer-filters">
       <div class="drawer-filter-group">
-        <button class="btn-drawer-filter active" data-speaker="all">全部</button>
-        <button class="btn-drawer-filter" data-speaker="A">只看苏晴</button>
-        <button class="btn-drawer-filter" data-speaker="B">只看周航</button>
+        <button class="btn-drawer-filter active" data-speaker="all" aria-pressed="true">全部</button>
+        <button class="btn-drawer-filter" data-speaker="A" aria-pressed="false">只看苏晴</button>
+        <button class="btn-drawer-filter" data-speaker="B" aria-pressed="false">只看周航</button>
       </div>
       <span class="drawer-hint">点击任意句子快速跳转播放</span>
     </div>
     <div class="drawer-body" id="drawer-chunk-list"></div>
   </aside>
 
-  <div class="toast-pill" id="toast-pill"></div>
+  <div class="toast-pill" id="toast-pill" role="status" aria-live="polite"></div>
   <audio id="main-audio" preload="metadata"></audio>
 
   <script type="application/json" id="site-data">{site_data}</script>

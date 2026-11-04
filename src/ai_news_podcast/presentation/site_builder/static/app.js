@@ -332,7 +332,8 @@
         '经工程稳定性与代码审查，编辑部决定今日<strong>宁缺毋滥、轮空主推</strong>。'
       : '今日候选项不足，编辑部决定<strong>轮空主推</strong>。';
     root.innerHTML = '<div class="radar-empty-state-view"><div class="radar-visual-box">' +
-      '<canvas id="radarCanvas" class="radar-sweep-canvas" width="180" height="180"></canvas>' +
+      '<canvas id="radarCanvas" class="radar-sweep-canvas" width="180" height="180" ' +
+      'aria-hidden="true"></canvas>' +
       '</div><div class="radar-empty-content">' +
       '<span class="radar-status-badge"><span>●</span> 今日雷达状态：暂无主推项目</span>' +
       '<h3 class="radar-empty-headline">今日候选池经多轮筛查，未检出达标项目</h3>' +
@@ -418,11 +419,58 @@
     badge.innerHTML = '<span class="badge-dot">●</span> 正在发言：' + HOST_NAMES[chunk.host];
   }
 
+  var lastFocusedBeforeDrawer = null;
+
+  function isDrawerOpen() {
+    var drawer = el('transcript-drawer');
+    return !!(drawer && drawer.classList.contains('open'));
+  }
+
+  function drawerFocusables() {
+    var drawer = el('transcript-drawer');
+    if (!drawer || !drawer.querySelectorAll) return [];
+    var nodes = drawer.querySelectorAll(
+      'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    return Array.prototype.slice.call(nodes).filter(function (node) {
+      return !node.disabled && node.getAttribute('aria-hidden') !== 'true';
+    });
+  }
+
+  function trapDrawerFocus(event) {
+    var nodes = drawerFocusables();
+    if (!nodes.length) return;
+    var first = nodes[0];
+    var last = nodes[nodes.length - 1];
+    var active = document.activeElement;
+    if (event.shiftKey && (!active || active === first)) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && active === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
+
   function toggleDrawer(open) {
     var drawer = el('transcript-drawer');
-    var shouldOpen = open === undefined ? !drawer.classList.contains('open') : open;
+    var toggle = el('btn-drawer-toggle');
+    var wasOpen = drawer.classList.contains('open');
+    var shouldOpen = open === undefined ? !wasOpen : !!open;
+    if (shouldOpen === wasOpen) return;
+    if (shouldOpen) lastFocusedBeforeDrawer = document.activeElement || null;
     drawer.classList.toggle('open', shouldOpen);
-    el('btn-drawer-toggle').classList.toggle('active', shouldOpen);
+    drawer.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+    toggle.classList.toggle('active', shouldOpen);
+    toggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+    if (shouldOpen) {
+      var closeBtn = el('drawer-close');
+      if (closeBtn && closeBtn.focus) closeBtn.focus();
+      return;
+    }
+    var restore = lastFocusedBeforeDrawer || toggle;
+    if (restore && restore.focus) restore.focus();
+    lastFocusedBeforeDrawer = null;
   }
 
   /* ---------- 播放器 UI 绑定 ---------- */
@@ -434,11 +482,18 @@
       el('dock-play-icon').textContent = icon;
       el('hero-play-text').textContent = playing ? '暂停播放' : '立即收听本期';
       el('podcast-card').classList.toggle('is-playing', playing);
+      document.querySelectorAll('#hero-play-btn, #dock-play-btn').forEach(function (button) {
+        button.setAttribute('aria-pressed', playing ? 'true' : 'false');
+      });
     });
     engine.onTime(function (current, duration) {
       el('time-current').textContent = fmtTime(current);
       el('time-duration').textContent = fmtTime(duration);
       el('scrubber-fill').style.width = (duration ? (current / duration) * 100 : 0) + '%';
+      el('scrubber-track').setAttribute(
+        'aria-valuenow',
+        String(duration ? Math.round((current / duration) * 100) : 0)
+      );
       highlightChunk(engine.index);
     });
     document.querySelectorAll('#hero-play-btn, #dock-play-btn').forEach(function (button) {
@@ -449,6 +504,22 @@
     el('scrubber-track').addEventListener('click', function (event) {
       var rect = event.currentTarget.getBoundingClientRect();
       engine.seek(((event.clientX - rect.left) / rect.width) * engine.duration, false);
+    });
+    el('scrubber-track').addEventListener('keydown', function (event) {
+      var duration = engine.duration || 0;
+      var current = engine.currentTime || 0;
+      if (event.key === 'ArrowLeft') {
+        engine.seek(current - 5, engine.playing);
+      } else if (event.key === 'ArrowRight') {
+        engine.seek(current + 5, engine.playing);
+      } else if (event.key === 'Home') {
+        engine.seek(0, engine.playing);
+      } else if (event.key === 'End') {
+        engine.seek(duration, engine.playing);
+      } else {
+        return;
+      }
+      event.preventDefault();
     });
     el('speed-btn').addEventListener('click', function () {
       var label = engine.cycleRate();
@@ -471,8 +542,10 @@
       button.addEventListener('click', function () {
         document.querySelectorAll('.btn-drawer-filter').forEach(function (other) {
           other.classList.remove('active');
+          other.setAttribute('aria-pressed', 'false');
         });
         button.classList.add('active');
+        button.setAttribute('aria-pressed', 'true');
         state.drawerFilter = button.getAttribute('data-speaker');
         renderTranscript();
       });
@@ -487,7 +560,11 @@
       renderSources();
     });
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') toggleDrawer(false);
+      if (event.key === 'Escape') {
+        toggleDrawer(false);
+        return;
+      }
+      if (event.key === 'Tab' && isDrawerOpen()) trapDrawerFocus(event);
     });
     el('date-prev').addEventListener('click', function () { stepDate(1); });
     el('date-next').addEventListener('click', function () { stepDate(-1); });
