@@ -642,6 +642,114 @@ def _apply_direction_gate(
     return False, ai_only
 
 
+def _exclusion_reason(
+    repo: str,
+    *,
+    selected: set[str],
+    recent: set[str],
+    fresh: set[str],
+    probe_before_gate: set[str],
+    probe_list: set[str],
+    scored: set[str],
+) -> str:
+    """单个候选未收录原因;先命中先返回(优先级与产品口径一致)。"""
+    if repo in selected:
+        return "selected"
+    if repo in recent or repo not in fresh:
+        return "recent_pick"
+    if repo in probe_before_gate and repo not in probe_list:
+        return "direction_gate"
+    if repo in probe_list and repo not in scored:
+        return "score_rank"
+    if repo in fresh and repo not in probe_before_gate:
+        return "probe_limit"
+    return "score_rank"
+
+
+def build_candidate_audit(
+    candidates: list[dict[str, Any]],
+    fresh: list[dict[str, Any]],
+    probe_before_gate: list[dict[str, Any]],
+    probe_list: list[dict[str, Any]],
+    scored_projects: list[RadarProject],
+    recent_pick_dates: dict[str, str],
+    selected_repos: list[str],
+    limit: int = 20,
+    *,
+    prev_stars: dict[str, int] | None = None,
+) -> list[dict[str, Any]]:
+    """把当日候选「为什么没被选中」审计成可展示明细(纯函数,不写文件)。
+
+    输出按 stars 降序、最多 limit 条;delta_stars 相对最近快照,无基线为 None。
+    """
+    previous = prev_stars or {}
+    fresh_repos = {str(it.get("full_name", "")) for it in fresh}
+    before_gate = {str(it.get("full_name", "")) for it in probe_before_gate}
+    probed = {str(it.get("full_name", "")) for it in probe_list}
+    scored = {p.repo for p in scored_projects}
+    selected = {str(repo) for repo in selected_repos}
+    recent = {str(repo) for repo in recent_pick_dates}
+    ordered = sorted(candidates, key=lambda it: int(it.get("stargazers_count", 0)), reverse=True)
+    audit: list[dict[str, Any]] = []
+    for item in ordered[:limit]:
+        repo = str(item.get("full_name", ""))
+        if not repo:
+            continue
+        stars = int(item.get("stargazers_count", 0))
+        license_info = item.get("license") or {}
+        license_id = ""
+        if isinstance(license_info, dict):
+            license_id = str(license_info.get("spdx_id") or license_info.get("name") or "")
+        audit.append(
+            {
+                "repo": repo,
+                "stars": stars,
+                "delta_stars": stars - previous[repo] if repo in previous else None,
+                "language": str(item.get("language") or ""),
+                "license": license_id,
+                "exclusion_reason": _exclusion_reason(
+                    repo,
+                    selected=selected,
+                    recent=recent,
+                    fresh=fresh_repos,
+                    probe_before_gate=before_gate,
+                    probe_list=probed,
+                    scored=scored,
+                ),
+            }
+        )
+    return audit
+
+
+def _candidate_audit_for(
+    candidates: list[dict[str, Any]],
+    fresh: list[dict[str, Any]],
+    probe_before_gate: list[dict[str, Any]],
+    probe_list: list[dict[str, Any]],
+    scored_projects: list[RadarProject],
+    recent_pick_dates: dict[str, str],
+    selected_repos: list[str],
+    *,
+    date_str: str,
+    prev_stars: dict[str, int] | None = None,
+) -> list[dict[str, Any]]:
+    """候选审计的可失败包装:任何异常只告警并返回空列表,绝不影响雷达主体。"""
+    try:
+        return build_candidate_audit(
+            candidates,
+            fresh,
+            probe_before_gate,
+            probe_list,
+            scored_projects,
+            recent_pick_dates,
+            selected_repos,
+            prev_stars=prev_stars,
+        )
+    except Exception:
+        logger.warning("candidate audit failed for %s", date_str, exc_info=True)
+        return []
+
+
 def _hands_on_of(p: RadarProject, now: datetime) -> float:
     """可上手分:0.4 README 含安装命令 + 0.3 有许可证 + 0.3/0.15 近期还在维护。"""
     hands_on = 0.4 * (1.0 if p.has_install_docs else 0.0)
@@ -900,6 +1008,7 @@ async def build_radar(
             probe_limit=int(gcfg.get("readme_probe_limit", 12)),
             repeat_gap_days=int(gcfg.get("repeat_gap_days", 7)),
         )
+        probe_before_gate = list(probe_list)
 
         lexicon = dict(gcfg.get("ai_lexicon") or {})
         affinity_map = {str(it.get("full_name", "")): ai_affinity(it, lexicon) for it in probe_list}
@@ -936,7 +1045,19 @@ async def build_radar(
         )
 
         keep = pick_count + int(gcfg.get("runner_up_count", 2))
+        scored_projects = list(projects)
         projects = projects[:keep]
+        candidate_audit = _candidate_audit_for(
+            candidates,
+            fresh,
+            probe_before_gate,
+            probe_list,
+            scored_projects,
+            recent_pick_dates,
+            [p.repo for p in projects],
+            date_str=date_str,
+            prev_stars=prev_stars,
+        )
         pick_repo = projects[0].repo if projects else ""
         # fresh 定义上不在排重表;上榜项目若命中 recent_pick_dates 即为回选兜底
         repeat_used = any(p.repo in recent_pick_dates for p in projects)
@@ -968,6 +1089,8 @@ async def build_radar(
                 "direction_fallback": direction_fallback,
                 "yesterday_pick": yesterday_pick,
                 "yesterday_pick_delta": yesterday_delta,
+                "candidate_audit": candidate_audit,
+                "audit_semantics": "v5",
             },
         }
         write_json(output_dir / f"radar_{date_str}.json", radar)

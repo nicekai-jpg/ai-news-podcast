@@ -98,6 +98,43 @@ uv run ruff format src/ tests/ scripts/
 
 项目配置的 lint 规则包括 E/F/I/W 基础规则。
 
+## 站点数据契约
+
+首页是「骨架 + 内联 `site-data` + 内联 `static/{style,app,player}`」，其余内容由前端按需 fetch 这些随
+`site/` 一起部署的 JSON（不再内联 `data/episodes.json` 的 `description`，它只给 `feed.xml` 使用）：
+
+- `site/data/digest_{date}.json`：每期站点数据，包含 `podcast`（标题 / MP3 / 时长 / 主持人 / 逐字稿入口）、
+  `lead`（导语）、`metrics`（指标）、`chapters`（章节）、`report`（日报解析结果）、`sources`（来源聚合）、
+  `radar`（项目雷达区块），以及 `schema_version` / `date` / `date_label` / `issue` / `availability` / `meta`
+  等元信息。
+- `site/data/calendar.json`：日期轴，`default_date` + `dates[]`，每项含 `date` / `issue_number` / `title` /
+  `availability`。
+- `site/episodes/{date}/playlist.json`：逐字稿分段（播放器与逐字稿抽屉读取，沿用原契约）。
+  带 `chapter` 字段的 chunk 表示该段开启了新章节（新一期由 writer 的 `[CHAPTER] 标题` 标记产生）。
+
+生成入口共 4 处，全部调用 `presentation/site_builder/digest_view.py:write_digest_outputs()`
+（纯函数组装 + 落盘，单期失败只告警、绝不阻断发布）：
+
+1. `podcast-publish`（Stage 5 发布）
+2. `podcast-daily`（本地全流程）
+3. `scripts/redeploy_site.py`（重新生成站点页面）
+4. `scripts/rebuild_site.py`（本地预览重建，`base_url` 用 `http://localhost:8000/site`）
+
+章节来源两档：新一期由 Stage 3 脚本里的 `[CHAPTER] 标题` 标记提供（`sources.chapters[].source="script"`，
+经 playlist chunk 的 `chapter` 字段透传；parser 会剥离标记、writer 清洗用哨兵占位、Director 批重建按 chunk
+继承，三者都不可丢标记）；历史剧集没有该字段时回退到转场词启发式（`cue_heuristic`，不足 2 个锚点时用固定
+`fallback` 三点）。改 writer prompt / TTS 解析 / Director 链路时，必须保持这条降级路径可用。
+
+项目雷达的候选审计（v1.5）：`radar_{date}.json` 的 `meta.candidate_audit` 记录当日候选池的
+仓库 / 星数 / 日增 / 语言 / 未收录原因（`meta.audit_semantics="v5"`），digest 只透传前 12 条到
+`radar.candidates.preview` 并置 `detail_available=true`；老 radar 文件没有该字段时前端只显示计数空态。
+
+`site/` 整体在 `.gitignore` 中，但 `site/data/` 必须被 git 跟踪：CI 的 publish 步骤用
+`git add -f site/data/` 把 digest/calendar 提交到 main，再随 `site/` 部署到 `gh-pages`，部署后还会校验
+`data/digest_{date}.json` 存在且非空。月度 `prune_pages.yml` 会以 main 上 tracked 的 `site/` 文件为基础重建
+gh-pages 孤儿分支（音频保留 30 天并先备份），因此 digest **不能挪出 `site/`**，否则下一次 prune 后就会从
+gh-pages 消失。
+
 ## GitHub Actions 持续集成与发布
 
 核心的自动化执行流位于 `.github/workflows/daily.yml`。这套工作流依赖 GitHub Actions 每日触发自动执行。如果您提交的 Pull Request 包含了新的第三方包依赖，请确保手动运行过 `uv lock` 更新你的锁定文件，否则云端的 CI 流程在复原环境时可能会失败。

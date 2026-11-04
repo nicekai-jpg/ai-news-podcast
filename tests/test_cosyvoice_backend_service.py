@@ -202,3 +202,61 @@ class TestSelectVariants:
 
         _variants, defaults = _host_variant_plan(self._cfg({}))
         assert defaults == {"A": "professional", "B": "professional"}
+
+
+class TestPlaylistChapterField:
+    """playlist 章节字段只对有章节的 chunk 写入，历史结构（无该键）保持不变。"""
+
+    def test_chapter_key_only_when_present(self, tmp_path: Path) -> None:
+        import json
+
+        from ai_news_podcast.business.pipeline.tts_backends.cosyvoice2_service import (
+            _write_chunks_and_playlist,
+        )
+        from ai_news_podcast.business.pipeline.tts_types_service import DialogueChunk
+
+        _write_chunks_and_playlist(
+            chunks=[
+                DialogueChunk(host="A", text="开场白。", chapter="今日头条"),
+                DialogueChunk(host="B", text="回应一下。"),
+            ],
+            segments_by_variant={"professional": [None, None]},
+            chunk_variant_names=[["professional"], ["professional"]],
+            timestamps=[(0.0, 1.0), (1.0, 2.0)],
+            voice_maps={"professional": {"A": "v1", "B": "v2"}},
+            output_path=tmp_path / "2026-11-04.mp3",
+        )
+
+        data = json.loads((tmp_path / "2026-11-04" / "playlist.json").read_text(encoding="utf-8"))
+        assert data["chunks"][0]["chapter"] == "今日头条"
+        assert "chapter" not in data["chunks"][1]
+        # 既有字段一个都不少
+        assert data["chunks"][1] == {
+            "id": 2,
+            "host": "B",
+            "text": "回应一下。",
+            "start": 1.0,
+            "duration": 2.0,
+            "audios": {},
+            "voices": {},
+        }
+
+    def test_legacy_chunk_without_chapter_has_no_key(self, tmp_path: Path) -> None:
+        import json
+
+        from ai_news_podcast.business.pipeline.tts_backends.cosyvoice2_service import (
+            _write_chunks_and_playlist,
+        )
+        from ai_news_podcast.business.pipeline.tts_types_service import DialogueChunk
+
+        _write_chunks_and_playlist(
+            chunks=[DialogueChunk(host="A", text="历史脚本。")],
+            segments_by_variant={"professional": [None]},
+            chunk_variant_names=[["professional"]],
+            timestamps=[(0.0, 1.0)],
+            voice_maps={"professional": {"A": "v1"}},
+            output_path=tmp_path / "2026-10-15.mp3",
+        )
+
+        data = json.loads((tmp_path / "2026-10-15" / "playlist.json").read_text(encoding="utf-8"))
+        assert "chapter" not in data["chunks"][0]

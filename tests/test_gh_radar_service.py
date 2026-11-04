@@ -16,6 +16,7 @@ from ai_news_podcast.business.pipeline.gh_radar_service import (
     _parse_trending_slugs,
     _readme_intro,
     ai_affinity,
+    build_candidate_audit,
     build_radar,
     count_news_mentions,
     score_project,
@@ -362,6 +363,17 @@ class TestBuildRadar:
         assert radar["projects"][0]["is_new"] is True
 
     @pytest.mark.asyncio
+    async def test_candidate_audit_written_to_meta(self, tmp_path: Path) -> None:
+        gcfg = dict(GCFG, readme_probe_limit=1)
+        items = [_repo_item("owner/hot", 1500), _repo_item("owner/cold", 900)]
+        gh = FakeGhClient(items, {"owner/hot": "pip install hot"})
+        radar = await build_radar(gcfg, "2026-09-09", tmp_path, [], client=gh, now=_NOW)
+        audit = radar["meta"]["candidate_audit"]
+        assert radar["meta"]["audit_semantics"] == "v5"
+        reasons = {a["repo"]: a["exclusion_reason"] for a in audit}
+        assert reasons == {"owner/hot": "selected", "owner/cold": "probe_limit"}
+
+    @pytest.mark.asyncio
     async def test_disabled_returns_degraded(self, tmp_path: Path) -> None:
         gh = FakeGhClient([])
         radar = await build_radar(
@@ -466,6 +478,84 @@ class TestBuildRadar:
         assert radar["projects"] == []
         assert radar["meta"]["pick_repo"] == ""
         assert radar["meta"]["widen_pass"] is True
+
+
+class TestBuildCandidateAudit:
+    def _audit(self, **overrides):
+        candidates = overrides.pop(
+            "candidates",
+            [
+                _repo_item("owner/selected", 5000),
+                _repo_item("owner/ranked", 4000),
+                _repo_item("owner/recent", 3000),
+                _repo_item("owner/gated", 2000),
+                _repo_item("owner/limited", 1000),
+            ],
+        )
+        kwargs = {
+            "candidates": candidates,
+            "fresh": [c for c in candidates if c["full_name"] != "owner/recent"],
+            "probe_before_gate": [
+                c
+                for c in candidates
+                if c["full_name"] in ("owner/selected", "owner/ranked", "owner/gated")
+            ],
+            "probe_list": [
+                c for c in candidates if c["full_name"] in ("owner/selected", "owner/ranked")
+            ],
+            "scored_projects": [_mk(repo="owner/selected"), _mk(repo="owner/ranked")],
+            "recent_pick_dates": {"owner/recent": "2026-09-01"},
+            "selected_repos": ["owner/selected"],
+        }
+        kwargs.update(overrides)
+        return build_candidate_audit(**kwargs)
+
+    def test_reason_priority_branches(self) -> None:
+        reasons = {a["repo"]: a["exclusion_reason"] for a in self._audit()}
+        assert reasons == {
+            "owner/selected": "selected",
+            "owner/ranked": "score_rank",
+            "owner/recent": "recent_pick",
+            "owner/gated": "direction_gate",
+            "owner/limited": "probe_limit",
+        }
+
+    def test_delta_and_license_fallback(self) -> None:
+        candidates = [_repo_item("owner/known", 900), _repo_item("owner/new", 800)]
+        candidates[0]["license"] = {"name": "Apache License 2.0"}
+        audit = self._audit(
+            candidates=candidates,
+            fresh=candidates,
+            probe_before_gate=[],
+            probe_list=[],
+            scored_projects=[],
+            recent_pick_dates={},
+            selected_repos=[],
+            prev_stars={"owner/known": 700},
+        )
+        by_repo = {a["repo"]: a for a in audit}
+        assert by_repo["owner/known"]["delta_stars"] == 200
+        assert by_repo["owner/known"]["license"] == "Apache License 2.0"
+        assert by_repo["owner/new"]["delta_stars"] is None
+
+    def test_limit_and_stars_desc(self) -> None:
+        candidates = [_repo_item(f"owner/r{i:02d}", i * 10) for i in range(25)]
+        audit = self._audit(
+            candidates=candidates,
+            fresh=candidates,
+            probe_before_gate=[],
+            probe_list=[],
+            scored_projects=[],
+            recent_pick_dates={},
+            selected_repos=[],
+        )
+        assert len(audit) == 20
+        stars = [a["stars"] for a in audit]
+        assert stars == sorted(stars, reverse=True)
+        assert audit[0]["repo"] == "owner/r24"
+
+    def test_empty_candidates(self) -> None:
+        assert build_candidate_audit([], [], [], [], [], {}, []) == []
 
 
 class TestReadmeIntro:

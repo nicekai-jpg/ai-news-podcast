@@ -27,7 +27,7 @@ concurrency:
 jobs:
   stage1:
     name: Stage 1 (fetch → process)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       episode_id: ${{ steps.episode.outputs.id }}
     steps:
@@ -85,7 +85,7 @@ jobs:
   writer:
     name: Stage 3 (script generation)
     needs: stage1
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       episode_id: ${{ needs.stage1.outputs.episode_id }}
     steps:
@@ -166,7 +166,7 @@ jobs:
   report:
     name: Stage 3b (daily report)
     needs: stage1
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     outputs:
       episode_id: ${{ needs.stage1.outputs.episode_id }}
     steps:
@@ -213,7 +213,7 @@ jobs:
   tts:
     name: Stage 4 (TTS audio)
     needs: writer
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 240
     outputs:
       episode_id: ${{ needs.writer.outputs.episode_id }}
@@ -289,7 +289,7 @@ jobs:
   publish:
     name: Stage 5 (publish site)
     needs: [tts]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       EPISODE: ${{ needs.tts.outputs.episode_id }}
       MIN_MP3_BYTES: '100000'  # mp3 截断保护阈值(实际单期约 2-3MB)
@@ -345,6 +345,12 @@ jobs:
           index = json.loads(Path("data/episodes.json").read_text(encoding="utf-8"))
           eps = index if isinstance(index, list) else index.get("episodes", [])
           assert any(str(e.get("id")) == ep for e in eps), "episodes.json missing entry"
+          digest_path = Path(f"site/data/digest_{ep}.json")
+          assert digest_path.exists(), f"missing {digest_path}"
+          digest = json.loads(digest_path.read_text(encoding="utf-8"))
+          assert digest.get("schema_version") == 1, "digest schema_version mismatch"
+          assert digest.get("date") == ep, "digest date mismatch"
+          assert digest.get("sources", {}).get("items") is not None, "digest sources missing"
           print(f"validated {ep}: mp3={size} bytes, threshold={min_bytes}, feed+index ok")
           PYEOF
 
@@ -355,6 +361,7 @@ jobs:
           git add -u site/ data/episodes.json
           if [ -f "site/reports/daily_report_${EPISODE}.md" ]; then git add -f "site/reports/daily_report_${EPISODE}.md"; else echo "No daily report for ${EPISODE}, skipped"; fi
           git add -f "site/episodes/${EPISODE}/playlist.json" 2>/dev/null || echo "No playlist.json for ${EPISODE}, skipped"
+          git add -f site/data/ 2>/dev/null || echo "No site/data yet, skipped"
           if git diff --cached --quiet; then
             echo "No site changes to commit"
           else
@@ -401,13 +408,19 @@ jobs:
             echo "::error::$EPISODE/playlist.json missing on gh-pages"
             exit 1
           fi
+          DIGEST=$(get_size "data/digest_${EPISODE}.json")
+          echo "gh-pages data/digest_${EPISODE}.json size: $DIGEST"
+          if [ "$DIGEST" -le 0 ]; then
+            echo "::error::data/digest_${EPISODE}.json missing on gh-pages"
+            exit 1
+          fi
           echo "gh-pages reconciliation OK"
 
   notify:
     name: Health check & alert
     needs: [stage1, writer, report, tts, publish]
     if: always()
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 10
     permissions:
       contents: read

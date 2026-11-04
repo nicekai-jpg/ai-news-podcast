@@ -151,6 +151,15 @@ Stage CLIs (console scripts in pyproject):
   近 30 天已推荐过的仓库由 `_load_recent_picks` 排除,不要绕过。
   无 `GITHUB_TOKEN` 时走匿名限流(每日一次扫描足够),不要在雷达里加需要
   更高限流的调用。
+- `site/index.html` 现在是骨架 + 内联 `site-data` JSON + 内联 `static/{style,app,player}`；
+  不要重新内联 `episodes.json.desc`（体积红线 1.5MB）。
+- `site/data/digest_*.json` 由 publish 生成并在 CI `git add -f` 跟踪；**不要**把它挪出
+  `site/`，否则月度 prune 后会从 gh-pages 消失（prune 只从 main 的 `site/` 拷贝）。
+- 章节条数据来源：writer prompt 的 `[CHAPTER] 标题` → `parse_dialogue_chunks` 的
+  `DialogueChunk.chapter` → playlist chunk 的 `chapter` → digest `chapters`（`source="script"`）。
+  `clean_tts_text` / `_normalize_host_tags` / Director 批重建三处都会经过脚本，改动时别把
+  `[CHAPTER]` 删掉（会被念出来）或丢掉（章节退化为转场词启发式）。历史 30 期无该字段，回退
+  `cue_heuristic` 是预期行为。
 
 ## Docs to read before touching sensitive areas
 

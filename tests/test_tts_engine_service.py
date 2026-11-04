@@ -138,6 +138,53 @@ class TestAnnotateTextInBatches:
         assert "[Host A] 第一条新闻是关于大模型部署升级。" in res
         assert "[Host B] 没错，性能提升了数倍之多。" in res
 
+    def test_chapter_markers_round_trip_through_director(self, monkeypatch) -> None:
+        """Director 只加副语言标签（会丢 [CHAPTER] 行）时，章节字段必须按 chunk 顺序继承回来。"""
+        from ai_news_podcast.business.pipeline import llm_client_service
+        from ai_news_podcast.business.pipeline.tts_engine_service import (
+            _annotate_text_in_batches,
+            parse_dialogue_chunks,
+        )
+
+        def fake_call_llm(prompt, llm_cfg):
+            # 模拟 Director 丢弃 [CHAPTER] 行、只回传带 Host 的台词
+            return "[Host A] 开场白。[laughter]\n\n[Host B] 回应一下。\n\n[Host A] 快讯正文。"
+
+        monkeypatch.setattr(llm_client_service, "call_llm", fake_call_llm)
+
+        text = (
+            "[Host A] 开场白。\n\n[CHAPTER] 今日头条\n[Host B] 回应一下。\n\n"
+            "[CHAPTER] 快讯速览\n[Host A] 快讯正文。"
+        )
+        result = _annotate_text_in_batches(text, "AI 每日先锋", {}, batch_size=10)
+
+        assert "[CHAPTER] 今日头条" in result
+        assert "[CHAPTER] 快讯速览" in result
+        chunks = parse_dialogue_chunks(result)
+        assert [chunk.chapter for chunk in chunks] == [None, "今日头条", "快讯速览"]
+        assert all("[CHAPTER]" not in chunk.text for chunk in chunks)
+
+    def test_no_chapter_rebuild_matches_legacy_output(self, monkeypatch) -> None:
+        """无章节脚本的批重建必须与旧实现逐字一致（不允许多出空行/标记）。"""
+        from ai_news_podcast.business.pipeline import llm_client_service
+        from ai_news_podcast.business.pipeline.tts_engine_service import (
+            _annotate_text_in_batches,
+            parse_dialogue_chunks,
+        )
+
+        def fake_call_llm(prompt, llm_cfg):
+            return "[Host A] 你好。[breath]\n\n[Host B] 嗯。"
+
+        monkeypatch.setattr(llm_client_service, "call_llm", fake_call_llm)
+
+        text = "[Host A] 你好。\n\n[Host B] 嗯。"
+        result = _annotate_text_in_batches(text, "AI 每日先锋", {}, batch_size=10)
+        legacy = (
+            "\n\n".join(f"[Host {c.host}] {c.text}" for c in parse_dialogue_chunks(result)) + "\n"
+        )
+        assert result == legacy
+        assert "[CHAPTER]" not in result
+
 
 class TestSynthesizeCfgNormalization:
     def test_appconfig_cfg_normalized_to_dict_for_backend(self, monkeypatch) -> None:

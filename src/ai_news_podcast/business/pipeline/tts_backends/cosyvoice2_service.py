@@ -78,17 +78,19 @@ def _write_chunks_and_playlist(
             audios[var] = fn
             voices[var] = voice_maps[var].get(chunk.host, "unknown")
 
-        playlist_chunks.append(
-            {
-                "id": idx,
-                "host": chunk.host,
-                "text": strip_tts_tags(chunk.text),
-                "start": round(start_sec, 3),
-                "duration": round(duration_sec, 3),
-                "audios": audios,
-                "voices": voices,
-            }
-        )
+        playlist_chunk = {
+            "id": idx,
+            "host": chunk.host,
+            "text": strip_tts_tags(chunk.text),
+            "start": round(start_sec, 3),
+            "duration": round(duration_sec, 3),
+            "audios": audios,
+            "voices": voices,
+        }
+        # 章节真标题（剧本 [CHAPTER] 标记）；无章节的老脚本不写该键，历史结构不变
+        if chunk.chapter:
+            playlist_chunk["chapter"] = chunk.chapter
+        playlist_chunks.append(playlist_chunk)
 
     playlist_data = {"episode_id": output_path.stem, "chunks": playlist_chunks}
 

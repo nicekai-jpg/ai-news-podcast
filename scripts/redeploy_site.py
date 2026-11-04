@@ -7,6 +7,7 @@ and chunk dirs are preserved on gh-pages via the deploy action's keep_files.
 
 from __future__ import annotations
 
+import logging
 import os
 import shutil
 from pathlib import Path
@@ -18,6 +19,8 @@ from ai_news_podcast.presentation.site_builder.html_gen_view import build_index_
 from ai_news_podcast.presentation.site_builder.rss_gen_view import build_feed_xml
 
 ROOT = Path(__file__).resolve().parent.parent
+
+log = logging.getLogger(__name__)
 
 
 def main() -> int:
@@ -33,6 +36,21 @@ def main() -> int:
     site_dir.mkdir(parents=True, exist_ok=True)
 
     build_index_html(site_dir, cfg.podcast.title, episodes, base_url, cfg)
+
+    # 每期 digest + 日历：失败只告警，不影响站点重建
+    from ai_news_podcast.presentation.site_builder.digest_view import write_digest_outputs
+
+    try:
+        write_digest_outputs(
+            ROOT,
+            episodes,
+            cfg,
+            base_url,
+            site_dir=site_dir,
+            episodes_dir=ROOT / str(cfg.build.episodes_dir),
+        )
+    except Exception:
+        log.warning("digest generation failed; continuing redeploy", exc_info=True)
 
     feed_xml = build_feed_xml(
         base_url=base_url,

@@ -14,66 +14,6 @@ def _cn_date(dt: datetime) -> str:
     return dt.strftime("%Y年%m月%d日")
 
 
-def generate_show_notes(
-    brief: dict[str, Any],
-    *,
-    episode_title: str,
-    episode_date: datetime,
-) -> str:
-    """Generate Markdown show notes for an episode."""
-    stories = brief.get("stories", [])
-    thesis = brief.get("thesis", "")
-    active = [s for s in stories if s.get("role") != "skip"]
-
-    lines: list[str] = []
-    lines.append(f"# {episode_title}")
-    lines.append("")
-    lines.append(f"**日期**: {_cn_date(episode_date)}")
-    lines.append("")
-
-    if thesis:
-        lines.append(f"> {thesis}")
-        lines.append("")
-
-    for role, label in [
-        ("main", "🔴 主要报道"),
-        ("supporting", "🟡 支撑消息"),
-        ("quick", "🟢 快讯"),
-    ]:
-        role_stories = [s for s in active if s.get("role") == role]
-        if not role_stories:
-            continue
-        lines.append(f"## {label}")
-        lines.append("")
-        for story in role_stories:
-            title = story.get("representative_title", "")
-            context = story.get("context", {})
-            summaries = context.get("factual_summary", [])
-            total = story.get("total_score", 0)
-
-            lines.append(f"### {title}")
-            lines.append("")
-            if summaries:
-                lines.extend(f"- {s}" for s in summaries)
-                lines.append("")
-            if story.get("items"):
-                lines.append("**来源链接：**")
-                lines.append("")
-                for item in story.get("items", [])[:5]:
-                    name = item.get("source_name", "")
-                    link = item.get("link", "")
-                    lines.append(f"- [{name}]({link})")
-                lines.append("")
-            lines.append(f"*综合评分: {total}/15*")
-            lines.append("")
-
-    lines.append("---")
-    lines.append("")
-    lines.append(f"*本期由 AI 自动生成，数据截至 {_cn_date(episode_date)}*")
-    lines.append("")
-    return "\n".join(lines)
-
-
 def generate_show_notes_html(
     brief: dict[str, Any],
     *,
