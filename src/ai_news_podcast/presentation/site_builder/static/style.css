@@ -499,6 +499,17 @@
       color: var(--host-b-color);
       border-color: rgba(56, 189, 248, 0.3);
     }
+    /* 纯色圆点（原型只用了 .badge-dot 类名、没有对应规则） */
+    .badge-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      font-size: 0;
+      line-height: 0;
+      flex: 0 0 6px;
+    }
     .host-rows {
       display: flex;
       flex-direction: column;
@@ -1408,6 +1419,11 @@
       gap: 8px;
       background: rgba(0, 0, 0, 0.2);
     }
+    /* 抽屉操作提示（模板使用、原型缺规则） */
+    .drawer-hint {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
     .drawer-filter-group {
       display: flex;
       align-items: center;
@@ -1603,4 +1619,11 @@
   }
   .transcript-drawer.open { transform: translateY(0); }
   .drawer-body { padding-bottom: 24px; }
+
+  /* 长 URL / 长标题兜底：390px 视口下禁止横向溢出 */
+  .source-title-link, .chunk-text, .lead-quote-text, .daily-report-wrapper {
+    overflow-wrap: anywhere; word-break: break-word;
+  }
+  .radar-hit-card .radar-hit-title { flex-wrap: wrap; gap: 6px; }
+  .player-left { min-width: 0; }
 }
