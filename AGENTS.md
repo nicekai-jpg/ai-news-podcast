@@ -155,6 +155,11 @@ Stage CLIs (console scripts in pyproject):
   不要重新内联 `episodes.json.desc`（体积红线 1.5MB）。
 - `site/data/digest_*.json` 由 publish 生成并在 CI `git add -f` 跟踪；**不要**把它挪出
   `site/`，否则月度 prune 后会从 gh-pages 消失（prune 只从 main 的 `site/` 拷贝）。
+- 章节条数据来源：writer prompt 的 `[CHAPTER] 标题` → `parse_dialogue_chunks` 的
+  `DialogueChunk.chapter` → playlist chunk 的 `chapter` → digest `chapters`（`source="script"`）。
+  `clean_tts_text` / `_normalize_host_tags` / Director 批重建三处都会经过脚本，改动时别把
+  `[CHAPTER]` 删掉（会被念出来）或丢掉（章节退化为转场词启发式）。历史 30 期无该字段，回退
+  `cue_heuristic` 是预期行为。
 
 ## Docs to read before touching sensitive areas
 
