@@ -28,6 +28,29 @@ def _norm_host_key(key: str) -> str | None:
     return None
 
 
+def voice_catalog(cfg: Any) -> dict[str, list[dict[str, Any]]]:
+    """全部可选音色 + 是否已真实合成，供站点渲染「置灰但保留」的音色按钮。"""
+    active = _voice_labels(cfg)
+    catalog: dict[str, list[dict[str, Any]]] = {}
+    for host, defaults in _DEFAULT_VOICE_NAMES.items():
+        available = active.get(host, {})
+        entries = [
+            {
+                "id": variant,
+                "label": available.get(variant, label),
+                "available": variant in available,
+            }
+            for variant, label in defaults.items()
+        ]
+        entries.extend(
+            {"id": variant, "label": label, "available": True}
+            for variant, label in available.items()
+            if variant not in defaults
+        )
+        catalog[host] = entries
+    return catalog
+
+
 def _voice_labels(cfg: Any) -> dict[str, dict[str, str]]:
     """注入播放器的音色标签；按 synth_variants（每 host）收敛，按钮只指向真实存在的音频。"""
     if cfg is None:
@@ -105,11 +128,15 @@ _PAGE_TEMPLATE = """<!doctype html>
   <main class="app-layout">
     <section class="shared-date-axis" aria-label="日期选择">
       <div class="date-nav-controls">
-        <button class="date-step-btn" id="date-prev" aria-label="前一日">← 前一日</button>
-        <button class="date-step-btn" id="date-next" aria-label="后一日">后一日 →</button>
+        <button class="date-step-btn" id="date-prev" aria-label="前一日"><span>←</span> 前一日</button>
+        <button class="date-step-btn" id="date-next" aria-label="后一日">后一日 <span>→</span></button>
       </div>
       <div class="date-pills-carousel" id="date-pills"></div>
-      <div class="date-archive-link" id="date-latest" hidden>回到最新一期</div>
+      <div class="date-archive-link" id="date-archive" role="button" tabindex="0"
+           aria-label="打开历史归档" aria-expanded="false">
+        <span>📅</span> 历史归档 ▾
+        <div class="date-archive-panel" id="date-archive-panel" hidden></div>
+      </div>
     </section>
 
     <section id="section-hero" class="content-section" aria-label="播客速览">
@@ -171,9 +198,9 @@ _PAGE_TEMPLATE = """<!doctype html>
         <div class="section-header-row">
           <div class="section-tag-title"><span>📰</span> 《科技日报》深度解读
             <span class="section-counter-badge" id="daily-counter"></span></div>
-          <div class="section-desc-hint">黄金阅读行宽 760px · 结构化长篇研判</div>
+          <div class="section-desc-hint">黄金阅读行宽 720px · 结构化长篇研判</div>
         </div>
-        <article class="daily-report-wrapper">
+        <article class="daily-report-wrapper" id="daily-report-wrapper">
           <div class="daily-meta-bar">
             <div class="daily-meta-left">
               <span class="daily-pill">深度研判</span>
@@ -181,7 +208,6 @@ _PAGE_TEMPLATE = """<!doctype html>
             </div>
             <div class="daily-toc-pills" id="daily-toc"></div>
           </div>
-          <div id="daily-report-body"></div>
         </article>
       </div>
     </section>

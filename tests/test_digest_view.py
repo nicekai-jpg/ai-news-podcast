@@ -173,6 +173,24 @@ class TestChapters:
         assert all(c["source"] == "cue_heuristic" for c in chapters)
 
 
+class TestHostsCatalog:
+    def test_all_variants_present_with_availability(self) -> None:
+        from ai_news_podcast.presentation.site_builder.digest_view import _hosts
+
+        hosts = _hosts(CFG)
+        assert [host["key"] for host in hosts] == ["A", "B"]
+        host_a = hosts[0]["variants"]
+        assert {variant["id"] for variant in host_a} == {"professional", "lively"}
+        assert [variant["id"] for variant in host_a if variant["available"]] == ["lively"]
+        assert [variant["id"] for variant in host_a if variant["default"]] == ["lively"]
+
+    def test_config_without_variants_marks_all_available(self) -> None:
+        from ai_news_podcast.presentation.site_builder.digest_view import _hosts
+
+        hosts = _hosts({})
+        assert all(variant["available"] for host in hosts for variant in host["variants"])
+
+
 class TestBuildDigest:
     def _build(self, **overrides):
         kwargs = {

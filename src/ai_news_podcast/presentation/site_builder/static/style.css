@@ -1616,78 +1616,142 @@
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
 
-/* ---------- 响应式：1024（平板/小桌面） ---------- */
-@media (max-width: 1024px) {
-  .app-layout { padding: 0 20px; }
-  .hero-chronicle-grid { grid-template-columns: 1fr; }
-  .metrics-summary-strip { grid-template-columns: repeat(2, 1fr); }
-  .sources-grid-layout { grid-template-columns: repeat(2, 1fr); }
-  .player-inner { grid-template-columns: 1fr auto; }
-  .player-right .volume-box { display: none; }
+/* ---------- 版式对齐补充（对照设计稿方向 A） ---------- */
+/* 章节 chips：保持单行（原型为一行 4 个），过长可横向滚动 */
+.chapters-row { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+.chapters-row::-webkit-scrollbar { display: none; }
+.chapter-chip { white-space: nowrap; }
+
+/* 未合成的音色按钮：保留设计稿的双按钮形态但置灰 */
+.voice-btn:disabled,
+.voice-btn.is-unavailable {
+  opacity: 0.42;
+  cursor: not-allowed;
+  filter: saturate(0.6);
 }
 
-/* ---------- 响应式：720（手机 390 目标） ---------- */
-@media (max-width: 720px) {
-  body { padding-bottom: 76px; }
-  .app-layout { padding: 0 16px; }
-  .header-inner { padding: 10px 16px; gap: 8px; }
-  .header-nav { display: none; }               /* 移动端用板块纵向流，不显示锚点导航 */
-  .brand-subtitle { display: none; }
-  .brand-title { font-size: 1rem; }
-  .shared-date-axis { gap: 8px; padding: 10px 0; }
-  .date-pills-carousel {
-    overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .date-pills-carousel::-webkit-scrollbar { display: none; }
-  .date-pill { flex: 0 0 auto; padding: 6px 10px; font-size: .74rem; }
-  .date-nav-controls .date-step-btn { padding: 6px 8px; font-size: .74rem; }
-  .date-archive-link { display: none; }
-
-  .section-header-row { flex-direction: column; align-items: flex-start; gap: 4px; }
-  .podcast-hero-card { padding: 16px; }
-  .podcast-main-heading { font-size: 1.1rem; }
-  .editorial-lead-card { padding: 16px; }
-  .lead-quote-text { font-size: .92rem; line-height: 1.68; }
-  .daily-reading-layout { max-width: 100%; }
-  .daily-report-wrapper { padding: 20px 18px; }
-  .daily-article-title { font-size: 1.15rem; }
-  .daily-toc-pills { display: none; }
-  .deep-dive-card { padding: 14px; }
-  .sources-controls-row { flex-direction: column; align-items: stretch; gap: 8px; }
-  .source-search-box { width: 100%; }
-  .sources-grid-layout { grid-template-columns: 1fr; }
-  .radar-empty-state-view { flex-direction: column; text-align: center; }
-
-  /* 吸底播放器 → 64px 迷你条：只留封面 + 当前句 + 播放键 */
-  .docked-audio-player { height: 64px; }
-  .player-inner {
-    grid-template-columns: 1fr auto; padding: 0 12px; height: 64px; gap: 8px;
-  }
-  .player-left .player-thumb-img { width: 40px; height: 40px; }
-  .player-track-title { font-size: .78rem; }
-  .player-live-sentence { font-size: .7rem; max-width: 62vw; white-space: nowrap;
-    overflow: hidden; text-overflow: ellipsis; }
-  .player-center .player-scrubber-row { display: none; }
-  .player-center .btn-player-skip { display: none; }
-  .player-right .btn-speed, .player-right .volume-box { display: none; }
-  .player-right .btn-transcript-drawer-toggle { padding: 6px 8px; font-size: .7rem; }
-
-  /* 逐字稿抽屉 → 全屏 bottom sheet */
-  .transcript-drawer {
-    inset: auto 0 0 0; width: auto; height: 78vh; border-radius: 18px 18px 0 0;
-    transform: translateY(100%);
-  }
-  .transcript-drawer.open { transform: translateY(0); }
-  .drawer-body { padding-bottom: 24px; }
-
-  /* 长 URL / 长标题兜底：390px 视口下禁止横向溢出 */
-  .source-title-link, .chunk-text, .lead-quote-text, .daily-report-wrapper {
-    overflow-wrap: anywhere; word-break: break-word;
-  }
-  .radar-hit-card .radar-hit-title { flex-wrap: wrap; gap: 6px; }
-  .player-left { min-width: 0; }
-  /* 候选明细表：窄屏允许横向滚动，避免撑破 390px 视口 */
-  .radar-candidates-details { overflow-x: auto; }
-  .radar-candidates-details th, .radar-candidates-details td { padding: 6px 8px; }
+/* 日期轴：历史归档下拉面板（原型只有装饰性链接，这里补成可用组件） */
+.date-archive-link { position: relative; cursor: pointer; user-select: none; }
+.date-archive-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 60;
+  width: 340px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
 }
+.date-archive-panel[hidden] { display: none; }
+.date-archive-panel .archive-item {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+  text-align: left;
+  cursor: pointer;
+}
+.date-archive-panel .archive-item:hover { color: #fff; border-color: var(--border-medium); }
+.date-archive-panel .archive-item.active { color: var(--accent-light); border-color: var(--accent-light); }
+
+/* 雷达空态：候选明细按钮 + 展开面板示意（对齐原型 actions 行） */
+.radar-empty-actions { display: flex; align-items: center; gap: 14px; margin-top: 6px; flex-wrap: wrap; }
+.radar-candidates-panel {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+}
+.radar-candidates-panel[hidden] { display: none; }
+.radar-candidates-panel table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.radar-candidates-panel th {
+  text-align: left; padding: 8px 10px; color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle); font-weight: 600;
+}
+.radar-candidates-panel td {
+  padding: 8px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+}
+.radar-candidates-panel .radar-candidates-note { color: var(--text-muted); font-size: 0.8rem; }
+
+/* ---------- 版式对齐补充（逐块对照设计稿方向 A） ---------- */
+/* 日期轴：carousel 占满剩余宽度（原型 flex 行为），导航/归档不被压缩 */
+.date-archive-link { flex-shrink: 0; }
+.date-pills-carousel { flex: 1; min-width: 0; justify-content: flex-start; }
+
+/* 章节区：标题与 chips 单行，避免把 hero 卡撑高 */
+.chapters-title { white-space: nowrap; flex: 0 0 auto; }
+.chapter-chip { white-space: nowrap; }
+
+/* 未合成的音色按钮：保留设计稿双按钮形态，置灰不可点 */
+.voice-btn:disabled,
+.voice-btn.is-unavailable {
+  opacity: 0.42;
+  cursor: not-allowed;
+  filter: saturate(0.6);
+}
+
+/* 日期轴历史归档下拉面板 */
+.date-archive-link { position: relative; cursor: pointer; user-select: none; }
+.date-archive-panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 60;
+  width: 340px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  background: var(--surface-elevated);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+.date-archive-panel[hidden] { display: none; }
+.date-archive-panel .archive-item {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 6px 8px;
+  text-align: left;
+  cursor: pointer;
+}
+.date-archive-panel .archive-item:hover { color: #fff; border-color: var(--border-medium); }
+.date-archive-panel .archive-item.active { color: var(--accent-light); border-color: var(--accent-light); }
+
+/* 雷达空态：候选明细按钮 + 面板（对齐原型的 actions 行） */
+.radar-empty-actions { display: flex; align-items: center; gap: 14px; margin-top: 6px; flex-wrap: wrap; }
+.radar-candidates-panel { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border-subtle); }
+.radar-candidates-panel[hidden] { display: none; }
+.radar-candidates-panel table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.radar-candidates-panel th {
+  text-align: left; padding: 8px 10px; color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle); font-weight: 600;
+}
+.radar-candidates-panel td {
+  padding: 8px 10px; border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+}
+.radar-candidates-panel .radar-candidates-note { color: var(--text-muted); font-size: 0.8rem; }
+
+/* 日报直接子元素由 wrapper 的 gap 控制（结构已对齐原型） */
+.daily-report-wrapper > .state-placeholder { padding: 24px 0; }
+
+/* 日期导航按钮：按设计稿固定宽度（80px）以复现两行文本 + 52px 高的轴高度 */
+.date-nav-controls { flex: 0 0 168px; width: 168px; }
+.date-nav-controls .date-step-btn { width: 80px; justify-content: center; white-space: normal; }
