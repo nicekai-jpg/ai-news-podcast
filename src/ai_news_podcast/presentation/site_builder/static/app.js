@@ -144,6 +144,7 @@
   function shortTocLabel(heading) {
     var text = String(heading || '')
       .replace(/^[一二三四五六七八九十]+、\s*/, '')
+      .replace(/^[0-9]+[.、]\s*/, '')
       .replace(/^[①②③④⑤⑥⑦⑧⑨⑩]\s*/, '')
       .replace(/^[\s“"'']+/, '');
     var cut = text.search(/[，。！？；：,.:;!?]/);
