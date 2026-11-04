@@ -1142,6 +1142,66 @@
       background: rgba(255, 255, 255, 0.1);
       color: #fff;
     }
+    /* v1.5 候选审计明细：空态内 <details> 表格 */
+    .radar-candidates-details {
+      margin-top: 4px;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      background: rgba(0, 0, 0, 0.18);
+      overflow: hidden;
+    }
+    .radar-candidates-details summary {
+      cursor: pointer;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-light);
+      list-style: none;
+      user-select: none;
+    }
+    .radar-candidates-details summary::-webkit-details-marker { display: none; }
+    .radar-candidates-details summary::before {
+      content: "▸ ";
+      color: var(--text-muted);
+    }
+    .radar-candidates-details[open] summary::before { content: "▾ "; }
+    .radar-candidates-details summary:hover { background: rgba(255, 255, 255, 0.04); }
+    .radar-candidates-details table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+    }
+    .radar-candidates-details th,
+    .radar-candidates-details td {
+      padding: 7px 12px;
+      text-align: left;
+      border-top: 1px solid var(--border-subtle);
+      white-space: nowrap;
+    }
+    .radar-candidates-details th {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .radar-candidates-details td { color: var(--text-secondary); }
+    .radar-candidates-details .radar-candidate-repo {
+      font-family: var(--font-mono);
+      color: var(--text-primary);
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+    .radar-candidate-reason {
+      display: inline-block;
+      padding: 1px 8px;
+      border-radius: var(--radius-full);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+    }
     /* Mock Hit State (for demo toggle) */
     .radar-hit-view {
       display: none;
@@ -1626,4 +1686,7 @@
   }
   .radar-hit-card .radar-hit-title { flex-wrap: wrap; gap: 6px; }
   .player-left { min-width: 0; }
+  /* 候选明细表：窄屏允许横向滚动，避免撑破 390px 视口 */
+  .radar-candidates-details { overflow-x: auto; }
+  .radar-candidates-details th, .radar-candidates-details td { padding: 6px 8px; }
 }

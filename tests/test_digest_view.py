@@ -217,6 +217,51 @@ class TestBuildDigest:
         assert out["status"] == "pick" and out["pick"]["repo"] == "a/b"
         assert out["candidates"]["semantics"] == "v4"
 
+    def test_candidate_audit_preview(self) -> None:
+        audit = [
+            {
+                "repo": f"a/r{i}",
+                "stars": 1000 - i,
+                "delta_stars": 10,
+                "language": "Python",
+                "license": "MIT",
+                "exclusion_reason": "score_rank",
+            }
+            for i in range(13)
+        ]
+        radar = {
+            **RADAR_EMPTY,
+            "meta": {
+                **RADAR_EMPTY["meta"],
+                "candidate_audit": audit,
+                "audit_semantics": "v5",
+            },
+        }
+        out = self._build(radar=radar)["radar"]
+        candidates = out["candidates"]
+        assert candidates["detail_available"] is True
+        assert candidates["semantics"] == "v5"
+        assert len(candidates["preview"]) == 12
+        assert set(candidates["preview"][0]) == {
+            "repo",
+            "stars",
+            "delta_stars",
+            "language",
+            "license",
+            "exclusion_reason",
+        }
+        assert candidates["preview"][0]["repo"] == "a/r0"
+
+    def test_candidate_audit_missing_keeps_legacy(self) -> None:
+        out = self._build()["radar"]
+        assert out["candidates"]["detail_available"] is False
+        assert out["candidates"]["preview"] is None
+        blank = {
+            **RADAR_EMPTY,
+            "meta": {**RADAR_EMPTY["meta"], "candidate_audit": [{"repo": ""}]},
+        }
+        assert self._build(radar=blank)["radar"]["candidates"]["detail_available"] is False
+
     def test_deterministic_no_now(self) -> None:
         assert json.dumps(self._build(), sort_keys=True) == json.dumps(
             self._build(), sort_keys=True

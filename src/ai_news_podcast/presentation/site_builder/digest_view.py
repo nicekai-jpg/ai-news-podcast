@@ -28,6 +28,15 @@ _CUE_PATTERNS = (
     re.compile(r"最后一条"),
 )
 _CHAPTER_GAP_SECONDS = 60.0
+_CANDIDATE_PREVIEW_LIMIT = 12
+_CANDIDATE_PREVIEW_FIELDS = (
+    "repo",
+    "stars",
+    "delta_stars",
+    "language",
+    "license",
+    "exclusion_reason",
+)
 
 
 def _zh_date(date_str: str) -> str:
@@ -179,6 +188,20 @@ def _metrics(brief: dict, sources: dict, chunks: list[dict]) -> list[dict]:
     ]
 
 
+def _candidate_preview(entries: list[dict]) -> list[dict]:
+    """候选审计 → 前端明细表所需的最小字段集（只留 6 列，最多 12 条）。"""
+    preview = []
+    for entry in entries[:_CANDIDATE_PREVIEW_LIMIT]:
+        row = {key: entry.get(key) for key in _CANDIDATE_PREVIEW_FIELDS}
+        row["repo"] = str(row.get("repo") or "")
+        row["stars"] = int(row.get("stars") or 0)
+        row["language"] = str(row.get("language") or "")
+        row["license"] = str(row.get("license") or "")
+        row["exclusion_reason"] = str(row.get("exclusion_reason") or "")
+        preview.append(row)
+    return preview
+
+
 def _radar_block(radar: dict | None, date_str: str, cfg: Any) -> dict:
     rules_cfg = _section_cfg(cfg, "gh_radar")
     rules = {
@@ -211,7 +234,18 @@ def _radar_block(radar: dict | None, date_str: str, cfg: Any) -> dict:
     meta = radar.get("meta") or {}
     projects = radar.get("projects") or []
     meta_keys = set(meta)
-    semantics = "v4" if meta_keys & {"fresh_candidates", "pool_by_source"} else "pre-v4"
+    raw_audit = meta.get("candidate_audit")
+    audit_entries = (
+        [entry for entry in raw_audit if isinstance(entry, dict) and entry.get("repo")]
+        if isinstance(raw_audit, list)
+        else []
+    )
+    if audit_entries:
+        semantics = str(meta.get("audit_semantics") or "v5")
+        preview: list[dict] | None = _candidate_preview(audit_entries)
+    else:
+        semantics = "v4" if meta_keys & {"fresh_candidates", "pool_by_source"} else "pre-v4"
+        preview = None
     yesterday = None
     if meta.get("yesterday_pick"):
         yesterday = {
@@ -233,8 +267,8 @@ def _radar_block(radar: dict | None, date_str: str, cfg: Any) -> dict:
             "excluded_recent": int(meta.get("excluded_recent") or 0),
             "fresh": int(meta["fresh_candidates"]) if "fresh_candidates" in meta else None,
             "semantics": semantics,
-            "detail_available": False,
-            "preview": None,
+            "detail_available": bool(audit_entries),
+            "preview": preview,
         },
         "message": message,
     }

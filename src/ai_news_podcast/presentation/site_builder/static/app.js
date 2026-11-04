@@ -20,6 +20,13 @@
   var el = function (id) { return document.getElementById(id); };
   var HOST_NAMES = { A: '苏晴', B: '周航' };
   var SOURCE_PREVIEW = 12;
+  var RADAR_REASON_LABELS = {
+    selected: '已入选',
+    score_rank: '评分排名靠后',
+    direction_gate: '方向不匹配',
+    recent_pick: '近 30 天已推荐',
+    probe_limit: '探测名额已满'
+  };
   var radarLoop = { running: false, raf: 0, reduceMotion: false };
 
   function showToast(message) {
@@ -269,6 +276,24 @@
   }
 
   /* ---------- 雷达 ---------- */
+  function renderRadarCandidateDetails(preview) {
+    if (!preview.length) return '';
+    var rows = preview.map(function (item) {
+      var delta = item.delta_stars == null ? '—' : '+' + item.delta_stars;
+      var reason = RADAR_REASON_LABELS[item.exclusion_reason] || item.exclusion_reason || '—';
+      return '<tr><td class="radar-candidate-repo">' + escapeHtml(item.repo) +
+        '</td><td>' + escapeHtml(item.stars) +
+        '</td><td>' + escapeHtml(delta) +
+        '</td><td>' + escapeHtml(item.language || '—') +
+        '</td><td><span class="radar-candidate-reason">' + escapeHtml(reason) +
+        '</span></td></tr>';
+    }).join('');
+    return '<details class="radar-candidates-details"><summary>查看今日参与评估的 ' +
+      preview.length + ' 个候选项目明细</summary><table><thead><tr>' +
+      '<th>仓库</th><th>Stars</th><th>日增</th><th>语言</th><th>未收录原因</th>' +
+      '</tr></thead><tbody>' + rows + '</tbody></table></details>';
+  }
+
   function renderRadar() {
     var radar = state.digest.radar || {};
     var root = el('radar-root');
@@ -299,6 +324,7 @@
       return;
     }
     var candidates = radar.candidates || {};
+    var preview = Array.isArray(candidates.preview) ? candidates.preview : [];
     var message = candidates.total
       ? '今日全网共扫描 <strong>' + candidates.total + ' 个候选仓库</strong>，' +
         (candidates.excluded_recent ? '其中 <strong>' + candidates.excluded_recent +
@@ -312,6 +338,7 @@
       '<h3 class="radar-empty-headline">今日候选池经多轮筛查，未检出达标项目</h3>' +
       '<p class="radar-empty-paragraph">「AI 每日先锋」每日严选 1 个具备重大架构革新且近期 ' +
       'Star 增速稳定的开源项目。' + message + '</p>' +
+      renderRadarCandidateDetails(preview) +
       '</div></div>';
     startRadarSweep();
   }
