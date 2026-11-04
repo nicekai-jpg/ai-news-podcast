@@ -165,14 +165,27 @@ def _voice_labels(cfg: Any) -> dict[str, dict[str, str]]:
 
 
 def _hosts(cfg: Any) -> list[dict]:
+    from ai_news_podcast.presentation.site_builder.html_gen_view import voice_catalog
+
     names = {"host_a": ("A", "苏晴", "female"), "host_b": ("B", "周航", "male")}
-    voice_labels = _voice_labels(cfg)
+    catalog = voice_catalog(cfg)
     hosts = []
     for config_key, (key, name, gender) in names.items():
         variants = [
-            {"id": variant, "label": label, "default": index == 0}
-            for index, (variant, label) in enumerate(voice_labels.get(config_key, {}).items())
+            {
+                "id": entry["id"],
+                "label": entry["label"],
+                "available": entry["available"],
+                "default": False,
+            }
+            for entry in catalog.get(config_key, [])
         ]
+        default_variant = next((variant for variant in variants if variant["available"]), None)
+        if default_variant is None and variants:
+            default_variant = variants[0]
+        if default_variant is not None:
+            default_variant["default"] = True
+        variants.sort(key=lambda variant: (not variant["default"], not variant["available"]))
         hosts.append({"key": key, "name": name, "gender": gender, "variants": variants})
     return hosts
 

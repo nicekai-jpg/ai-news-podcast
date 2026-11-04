@@ -69,7 +69,7 @@
     var calendar = state.calendar || {};
     var byDate = {};
     (calendar.dates || []).forEach(function (item) { byDate[item.date] = item; });
-    DATES.forEach(function (date) {
+    DATES.slice(0, 6).forEach(function (date) {
       var meta = byDate[date] || {};
       var issue = meta.issue_number ? ' · 第 ' + meta.issue_number + ' 期' : '';
       var pill = document.createElement('button');
@@ -82,7 +82,19 @@
     var index = DATES.indexOf(state.date);
     el('date-prev').disabled = index < 0 || index >= DATES.length - 1;
     el('date-next').disabled = index <= 0;
-    el('date-latest').hidden = index <= 0;
+    var panel = el('date-archive-panel');
+    panel.innerHTML = DATES.map(function (date) {
+      return '<button type="button" class="archive-item' +
+        (date === state.date ? ' active' : '') + '" data-date="' + date + '">' + date +
+        '</button>';
+    }).join('');
+    panel.querySelectorAll('.archive-item').forEach(function (item) {
+      item.addEventListener('click', function () {
+        loadDate(item.getAttribute('data-date'));
+        panel.hidden = true;
+        el('date-archive').setAttribute('aria-expanded', 'false');
+      });
+    });
     document.querySelectorAll('.nav-anchor-link').forEach(function (link) {
       link.classList.toggle('active', link.getAttribute('href') === '#section-hero');
     });
@@ -102,6 +114,8 @@
       podcast.segment_count ? podcast.segment_count + ' 段逐字稿' : '',
     ].filter(Boolean).join(' · ');
     el('player-title').textContent = podcast.title || '';
+    el('hero-transcript-btn').textContent = '📜 逐字稿' +
+      (podcast.segment_count ? ' (' + podcast.segment_count + ' 句)' : '');
     el('lead-date').textContent = digest.date_label + ' · 编辑部按';
     el('lead-text').innerHTML = digest.lead ? escapeHtml(digest.lead.text) : placeholder('✨', '本期暂无导语');
     el('nav-sources').textContent = '🌐 来源速递 (' + ((digest.sources || {}).shown || 0) + ')';
@@ -118,13 +132,38 @@
     }).join('');
   }
 
+  function shortChapterTitle(title) {
+    var text = String(title || '')
+      .replace(/^[行对嗯哦啊好]+[，,、]\s*/, '')
+      .replace(/^[\s“"'']+/, '');
+    var cut = text.search(/[，。！？；：,.:;!?]/);
+    if (cut > 0) text = text.slice(0, cut);
+    return text.length > 10 ? text.slice(0, 10) + '…' : text;
+  }
+
+  function shortTocLabel(heading) {
+    var text = String(heading || '')
+      .replace(/^[一二三四五六七八九十]+、\s*/, '')
+      .replace(/^[①②③④⑤⑥⑦⑧⑨⑩]\s*/, '')
+      .replace(/^[\s“"'']+/, '');
+    var cut = text.search(/[，。！？；：,.:;!?]/);
+    if (cut > 0) text = text.slice(0, cut);
+    return text.length > 8 ? text.slice(0, 8) + '…' : text;
+  }
+
   function renderChapters(chapters) {
     var wrap = el('chapters-row');
+    var CHAPTER_ICONS = ['🎙️', '🔍', '💡', '🌍', '📌'];
+    var FALLBACK_LABELS = ['开场', '话题一', '话题二', '收尾'];
     if (!chapters.length) { wrap.innerHTML = ''; wrap.hidden = true; return; }
     wrap.hidden = false;
-    wrap.innerHTML = '<span class="chapters-title">快速定位章节：</span>' + chapters.map(function (chapter) {
+    wrap.innerHTML = '<span class="chapters-title">快速定位章节：</span>' + chapters.map(function (chapter, index) {
+      var label = (chapter.source && chapter.source !== 'script')
+        ? (FALLBACK_LABELS[index] || ('话题' + (index + 1)))
+        : shortChapterTitle(chapter.title);
       return '<button class="chapter-chip" data-start="' + chapter.start + '">' +
-        '<span>🎧</span> ' + escapeHtml(chapter.title) +
+        '<span>' + CHAPTER_ICONS[index % CHAPTER_ICONS.length] + '</span> ' +
+        escapeHtml(label) +
         ' <span class="chapter-time">' + escapeHtml(chapter.label) + '</span></button>';
     }).join('');
     wrap.querySelectorAll('.chapter-chip').forEach(function (chip) {
@@ -141,17 +180,25 @@
       var container = el(host.key === 'A' ? 'host-a-voices' : 'host-b-voices');
       container.innerHTML = '';
       var selected = engine ? engine.voiceOf(host.key) : null;
-      (host.variants || []).forEach(function (variant, index) {
-        var isActive = selected ? selected === variant.id : index === 0;
+      (host.variants || []).forEach(function (variant) {
+        var isAvailable = variant.available !== false;
+        var isActive = isAvailable &&
+          (selected ? selected === variant.id : !!variant.default);
         var button = document.createElement('button');
         button.className = 'voice-btn host-' + host.key.toLowerCase() + '-btn' +
-          (isActive ? ' active' : '');
+          (isActive ? ' active' : '') + (isAvailable ? '' : ' is-unavailable');
         button.textContent = variant.label;
-        button.addEventListener('click', function () {
-          engine.setVoice(host.key, variant.id);
-          renderVoiceButtons(hosts);
-          showToast('已切换 ' + host.name + ' 音色为：' + variant.label);
-        });
+        if (!isAvailable) {
+          button.disabled = true;
+          button.setAttribute('aria-disabled', 'true');
+          button.title = '当前版本未合成该音色';
+        } else {
+          button.addEventListener('click', function () {
+            engine.setVoice(host.key, variant.id);
+            renderVoiceButtons(hosts);
+            showToast('已切换 ' + host.name + ' 音色为：' + variant.label);
+          });
+        }
         container.appendChild(button);
       });
       if (!host.variants || !host.variants.length) {
@@ -162,10 +209,12 @@
 
   /* ---------- 日报 ---------- */
   function renderReport(report) {
-    var body = el('daily-report-body');
+    var wrapper = el('daily-report-wrapper');
     var toc = el('daily-toc');
+    wrapper.querySelectorAll('.daily-article-title, .article-section-block, .state-placeholder')
+      .forEach(function (node) { node.remove(); });
     if (!report) {
-      body.innerHTML = placeholder('📰', '该日期暂无深度日报');
+      wrapper.insertAdjacentHTML('beforeend', placeholder('📰', '该日期暂无深度日报'));
       toc.innerHTML = '';
       el('daily-meta').textContent = '';
       el('daily-counter').textContent = '';
@@ -174,38 +223,52 @@
     el('daily-counter').textContent = '全文 ' + report.char_count + ' 字';
     el('daily-meta').textContent = '阅读时间：约 ' + report.reading_minutes + ' 分钟 · ' +
       (state.digest.date_label || '');
+    var deepDives = report.deep_dives || [];
+    var frontier = report.frontier || [];
+    var tocItems = [];
     var html = '';
     html += '<h1 class="daily-article-title">' + escapeHtml(report.title || '') + '</h1>';
-    (report.deep_dives || []).forEach(function (dive, index) {
-      html += '<div class="article-section-block" id="deep-dive-' + (index + 1) + '">' +
-        '<div class="deep-dive-card">' +
-        '<h3 class="deep-dive-title">' + escapeHtml(dive.heading) + '</h3>' +
-        pointBlock('📌 事件背景', dive.background) +
-        pointBlock('⚡ 核心突破点', dive.breakthrough) +
-        pointBlock('🌐 对行业与用户的深远影响', dive.impact) +
-        (dive.raw_sections || []).map(function (text) {
-          return '<div class="deep-dive-point">' + escapeHtml(text) + '</div>';
-        }).join('') +
-        '</div></div>';
-    });
-    if ((report.frontier || []).length) {
-      html += '<div class="article-section-block"><h2 class="article-section-header">⚡ 前沿情报</h2>' +
-        '<div class="frontier-list">' + report.frontier.map(function (item) {
+    if (deepDives.length) {
+      html += '<div class="article-section-block"><h2 class="article-section-header">🚀 重磅解读</h2>';
+      deepDives.forEach(function (dive, index) {
+        var anchor = 'daily-sec-' + (index + 1);
+        tocItems.push({ anchor: anchor, label: shortTocLabel(dive.heading) });
+        html += '<div class="deep-dive-card" id="' + anchor + '">' +
+          '<h3 class="deep-dive-title">' + escapeHtml(dive.heading) + '</h3>' +
+          pointBlock('📌 事件背景', dive.background) +
+          pointBlock('⚡ 核心突破点', dive.breakthrough) +
+          pointBlock('🌐 对行业与用户的深远影响', dive.impact) +
+          (dive.raw_sections || []).map(function (text) {
+            return '<div class="deep-dive-point">' + escapeHtml(text) + '</div>';
+          }).join('') +
+          '</div>';
+      });
+      html += '</div>';
+    }
+    if (frontier.length) {
+      var frontierAnchor = 'daily-sec-' + (deepDives.length + 1);
+      tocItems.push({ anchor: frontierAnchor, label: '前沿情报' });
+      html += '<div class="article-section-block" id="' + frontierAnchor + '">' +
+        '<h2 class="article-section-header">⚡ 前沿情报</h2>' +
+        '<div class="frontier-list">' + frontier.map(function (item) {
           return '<div class="frontier-item"><span class="frontier-bullet">🔹</span><div>' +
             '<strong>' + escapeHtml(item.title) + '</strong>：' + escapeHtml(item.summary) +
             '</div></div>';
         }).join('') + '</div></div>';
     }
     if (report.editor_verdict) {
-      html += '<div class="article-section-block"><div class="editor-quote-card">' +
+      var verdictAnchor = 'daily-sec-' + (deepDives.length + (frontier.length ? 2 : 1));
+      tocItems.push({ anchor: verdictAnchor, label: '深度点评' });
+      html += '<div class="article-section-block" id="' + verdictAnchor + '">' +
+        '<div class="editor-quote-card">' +
         '<div class="editor-quote-header"><span>💡</span> AI 小编深度点评</div>' +
         '<div class="editor-quote-body">' + escapeHtml(report.editor_verdict) + '</div>' +
         '</div></div>';
     }
-    body.innerHTML = html;
-    toc.innerHTML = (report.toc || []).map(function (item) {
+    wrapper.insertAdjacentHTML('beforeend', html);
+    toc.innerHTML = tocItems.map(function (item) {
       return '<a href="#' + escapeHtml(item.anchor) + '" class="daily-toc-link">' +
-        escapeHtml(item.title.length > 12 ? item.title.slice(0, 12) + '…' : item.title) + '</a>';
+        escapeHtml(item.label) + '</a>';
     }).join('');
   }
 
@@ -226,6 +289,18 @@
         (item.publisher || '').toLowerCase().indexOf(query) >= 0;
       return groupOk && queryOk;
     });
+  }
+
+  var SOURCE_BADGE_CLASS = {
+    'OpenAI': 'openai',
+    'Google': 'google',
+    'NVIDIA': 'nvidia',
+    'arXiv 论文': 'arxiv',
+    'Hacker News': 'hn'
+  };
+
+  function sourceBadgeClass(group) {
+    return SOURCE_BADGE_CLASS[group] || '';
   }
 
   function renderSources() {
@@ -259,7 +334,8 @@
     var visible = state.sourcesExpanded ? items : items.slice(0, SOURCE_PREVIEW);
     el('sources-grid').innerHTML = visible.map(function (item) {
       return '<div class="source-card">' +
-        '<div class="source-card-top"><span class="source-badge">' +
+        '<div class="source-card-top"><span class="source-badge ' +
+        escapeHtml(sourceBadgeClass(item.group)) + '">' +
         escapeHtml(item.publisher) + '</span><span class="source-role-pill">' +
         escapeHtml(item.role_label) + '</span></div>' +
         '<a href="' + escapeHtml(item.link) + '" target="_blank" rel="noopener" ' +
@@ -276,32 +352,43 @@
   }
 
   /* ---------- 雷达 ---------- */
-  function renderRadarCandidateDetails(preview) {
-    if (!preview.length) return '';
-    var rows = preview.map(function (item) {
-      var delta = item.delta_stars == null ? '—' : '+' + item.delta_stars;
-      var reason = RADAR_REASON_LABELS[item.exclusion_reason] || item.exclusion_reason || '—';
-      return '<tr><td class="radar-candidate-repo">' + escapeHtml(item.repo) +
-        '</td><td>' + escapeHtml(item.stars) +
-        '</td><td>' + escapeHtml(delta) +
-        '</td><td>' + escapeHtml(item.language || '—') +
-        '</td><td><span class="radar-candidate-reason">' + escapeHtml(reason) +
-        '</span></td></tr>';
-    }).join('');
-    return '<details class="radar-candidates-details"><summary>查看今日参与评估的 ' +
-      preview.length + ' 个候选项目明细</summary><table><thead><tr>' +
-      '<th>仓库</th><th>Stars</th><th>日增</th><th>语言</th><th>未收录原因</th>' +
-      '</tr></thead><tbody>' + rows + '</tbody></table></details>';
+  function renderRadarCandidatesPanel(preview, candidates) {
+    var total = preview.length || candidates.total || 0;
+    var actions = '<div class="radar-empty-actions">' +
+      '<button class="btn-radar-candidates" id="btn-radar-candidates" aria-expanded="false">' +
+      '<span>📋</span> 查看今日参与评估的 ' + total + ' 个候选项目明细</button>' +
+      '</div>';
+    var panel = '<div class="radar-candidates-panel" id="radar-candidates-panel" hidden>';
+    if (preview.length) {
+      var rows = preview.map(function (item) {
+        var delta = item.delta_stars == null ? '—' : '+' + item.delta_stars;
+        var reason = RADAR_REASON_LABELS[item.exclusion_reason] || item.exclusion_reason || '—';
+        return '<tr><td class="radar-candidate-repo">' + escapeHtml(item.repo) +
+          '</td><td>' + escapeHtml(item.stars) + '</td><td>' + escapeHtml(delta) +
+          '</td><td>' + escapeHtml(item.language || '—') +
+          '</td><td><span class="radar-candidate-reason">' + escapeHtml(reason) +
+          '</span></td></tr>';
+      }).join('');
+      panel += '<table><thead><tr><th>仓库</th><th>Stars</th><th>日增</th><th>语言</th>' +
+        '<th>未收录原因</th></tr></thead><tbody>' + rows + '</tbody></table>';
+    } else {
+      panel += '<p class="radar-candidates-note">该日期早于候选审计上线，暂无逐项明细。' +
+        '本期共扫描 ' + escapeHtml(candidates.total || 0) + ' 个候选仓库，其中 ' +
+        escapeHtml(candidates.excluded_recent || 0) + ' 个为近 30 天已推荐或重复收录。</p>';
+    }
+    panel += '</div>';
+    return actions + panel;
   }
 
   function renderRadar() {
     var radar = state.digest.radar || {};
     var root = el('radar-root');
     el('radar-badge').textContent = radar.available
-      ? (radar.status === 'pick' ? '主推 ' + radar.pick.repo : '本期无主推项目')
+      ? (radar.status === 'pick' ? '今日主推：' + radar.pick.repo : '今日状态：无主推项目')
       : '该期无雷达';
     if (radar.rules) {
-      el('radar-rules').textContent = '门槛：≥ ' + radar.rules.min_stars + ' 星 · 近 ' +
+      el('radar-rules').textContent = '严苛收录标准 · 过滤噪音与短期投机项目';
+      el('radar-rules').title = '门槛：≥ ' + radar.rules.min_stars + ' 星 · 近 ' +
         radar.rules.created_window_days + ' 天创建 · ' + radar.rules.recent_push_days + ' 天内活跃';
     }
     if (!radar.available) {
@@ -339,8 +426,16 @@
       '<h3 class="radar-empty-headline">今日候选池经多轮筛查，未检出达标项目</h3>' +
       '<p class="radar-empty-paragraph">「AI 每日先锋」每日严选 1 个具备重大架构革新且近期 ' +
       'Star 增速稳定的开源项目。' + message + '</p>' +
-      renderRadarCandidateDetails(preview) +
+      renderRadarCandidatesPanel(preview, candidates) +
       '</div></div>';
+    var candidatesButton = el('btn-radar-candidates');
+    var candidatesPanel = el('radar-candidates-panel');
+    if (candidatesButton && candidatesPanel) {
+      candidatesButton.addEventListener('click', function () {
+        candidatesPanel.hidden = !candidatesPanel.hidden;
+        candidatesButton.setAttribute('aria-expanded', String(!candidatesPanel.hidden));
+      });
+    }
     startRadarSweep();
   }
 
@@ -370,6 +465,9 @@
       ctx.fillStyle = grad; ctx.fill();
       ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(r, 0);
       ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 2; ctx.stroke();
+      ctx.fillStyle = 'rgba(245, 158, 11, 0.7)';
+      ctx.beginPath(); ctx.arc(38, -25, 3, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(-45, 30, 2.5, 0, Math.PI * 2); ctx.fill();
       ctx.restore();
       angle += 0.035;
       if (!radarLoop.reduceMotion) radarLoop.raf = requestAnimationFrame(draw);
@@ -562,13 +660,35 @@
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         toggleDrawer(false);
+        var archivePanelEl = el('date-archive-panel');
+        if (archivePanelEl) archivePanelEl.hidden = true;
         return;
       }
       if (event.key === 'Tab' && isDrawerOpen()) trapDrawerFocus(event);
     });
     el('date-prev').addEventListener('click', function () { stepDate(1); });
     el('date-next').addEventListener('click', function () { stepDate(-1); });
-    el('date-latest').addEventListener('click', function () { loadDate(DATES[0]); });
+    var archiveLink = el('date-archive');
+    var archivePanel = el('date-archive-panel');
+    if (archiveLink && archivePanel) {
+      archiveLink.addEventListener('click', function (event) {
+        event.stopPropagation();
+        archivePanel.hidden = !archivePanel.hidden;
+        archiveLink.setAttribute('aria-expanded', String(!archivePanel.hidden));
+      });
+      archiveLink.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          archiveLink.click();
+        }
+      });
+      document.addEventListener('click', function (event) {
+        if (archivePanel.hidden) return;
+        if (archivePanel.contains(event.target) || archiveLink.contains(event.target)) return;
+        archivePanel.hidden = true;
+        archiveLink.setAttribute('aria-expanded', 'false');
+      });
+    }
   }
 
   function stepDate(direction) {
@@ -581,8 +701,8 @@
   async function loadDate(date) {
     state.date = date;
     renderDateAxis();
-    var body = el('daily-report-body');
-    body.classList.add('is-loading');
+    var wrapper = el('daily-report-wrapper');
+    wrapper.classList.add('is-loading');
     try {
       var results = await Promise.all([
         fetchJson('./data/digest_' + date + '.json'),
@@ -605,7 +725,7 @@
       state.chunks = [];
       showToast('该日期数据暂不可用');
     } finally {
-      body.classList.remove('is-loading');
+      wrapper.classList.remove('is-loading');
     }
     renderHero();
     renderReport(state.digest.report);
@@ -614,9 +734,14 @@
     renderTranscript();
     state.player.load(state.chunks, date);
     ((state.digest.podcast || {}).hosts || []).forEach(function (host) {
-      if (!state.player.voiceOf(host.key) && (host.variants || []).length) {
-        state.player.setVoice(host.key, host.variants[0].id);
-      }
+      var variants = host.variants || [];
+      if (state.player.voiceOf(host.key) || !variants.length) return;
+      var preferred = variants.filter(function (variant) {
+        return variant.default && variant.available !== false;
+      })[0] || variants.filter(function (variant) {
+        return variant.available !== false;
+      })[0] || variants[0];
+      state.player.setVoice(host.key, preferred.id);
     });
     renderVoiceButtons(((state.digest.podcast || {}).hosts || []));
     el('player-sentence').textContent = '点击播放开始收听…';
@@ -647,7 +772,8 @@
       ? location.hash.replace('#', '') : DATES[0];
     if (!initial) {
       el('date-pills').innerHTML = '';
-      el('daily-report-body').innerHTML = placeholder('📰', '暂无任何已发布期数');
+      el('daily-report-wrapper').insertAdjacentHTML(
+        'beforeend', placeholder('📰', '暂无任何已发布期数'));
       return;
     }
     await loadDate(initial);
