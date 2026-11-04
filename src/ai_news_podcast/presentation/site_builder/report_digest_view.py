@@ -12,16 +12,34 @@ _LEAD_RE = re.compile(r"\*\*导语\*\*[：:]\s*(.+)")
 _HEADING_RE = re.compile(r"^(#{1,3})\s+(.+)$")
 _BULLET_RE = re.compile(r"^[-*]\s+\*\*(.+?)\*\*[：:]\s*(.+)$")
 _QUOTE_RE = re.compile(r"^>\s*(.+)$")
-_BOLD_POINT_RE = re.compile(r"^\*\*(.+?)\*\*[：:]\s*(.+)$")
+_BOLD_POINT_RE = re.compile(r"^(?:[-*]\s+)?\*\*(.+?)\*\*[：:]\s*(.+)$")
 _QUOTE_LABEL_RE = re.compile(r"^\*\*.+?\*\*[：:]\s*")
 
 _DEEP_DIVE_H2 = "重磅解读"
+_CN_NUMERALS = ("一", "二", "三", "四", "五", "六", "七", "八", "九", "十")
+_NUMBERED_HEADING_RE = re.compile(r"^([0-9]{1,2})[.、]\s*(.+)$")
 _FRONTIER_H2 = "前沿情报"
 _RADAR_H2 = "项目雷达"
 
 # 第三段小标题在历史样本里有 9 种写法，统一按关键词宽松匹配。
 _IMPACT_KEYWORDS = ("影响", "意义", "冲击")
 _BREAKTHROUGH_KEYWORDS = ("突破", "核心", "进展", "创新")
+
+
+def _strip_emphasis(text: str) -> str:
+    """去掉要点里的行内 ** 强调标记（前端按纯文本渲染）。"""
+    return text.replace("**", "").strip()
+
+
+def _normalize_dive_heading(text: str) -> str:
+    """ "1. 标题" / "1、标题" → "一、标题"（与设计稿编号风格一致）。"""
+    match = _NUMBERED_HEADING_RE.match(text)
+    if not match:
+        return text
+    index = int(match.group(1))
+    if not 1 <= index <= len(_CN_NUMERALS):
+        return text
+    return f"{_CN_NUMERALS[index - 1]}、{match.group(2).strip()}"
 
 
 def _classify_point(label: str) -> str:
@@ -63,6 +81,15 @@ class _ReportParser:
             return
         if self._feed_point(line):
             return
+        self._feed_fallback(line)
+
+    def _feed_fallback(self, line: str) -> None:
+        """未匹配任何结构：有当前卡片则作为卡片正文，否则记为全局段落。"""
+        if self.current_dive is not None:
+            text = _strip_emphasis(line.lstrip("-* ").strip())
+            if text:
+                self.current_dive["raw_sections"].append(text)
+            return
         self.raw_paragraphs.append(line)
 
     def _feed_heading(self, level: int, text: str) -> None:
@@ -74,6 +101,7 @@ class _ReportParser:
             self.section = self._section_kind(text)
             return
         if self.section == _DEEP_DIVE_H2:
+            text = _normalize_dive_heading(text)
             self.current_dive = {
                 "heading": text,
                 "background": None,
@@ -100,7 +128,7 @@ class _ReportParser:
         match = _LEAD_RE.search(line)
         if not match:
             return False
-        self.lead = match.group(1).strip()
+        self.lead = _strip_emphasis(match.group(1))
         return True
 
     def _feed_bullet(self, line: str) -> bool:
@@ -109,11 +137,14 @@ class _ReportParser:
         match = _BULLET_RE.match(line)
         if match:
             self.frontier.append(
-                {"title": match.group(1).strip(), "summary": match.group(2).strip()}
+                {
+                    "title": _strip_emphasis(match.group(1)),
+                    "summary": _strip_emphasis(match.group(2)),
+                }
             )
             return True
         if line.startswith(("-", "*")):
-            self.frontier.append({"title": line[1:].strip(), "summary": ""})
+            self.frontier.append({"title": _strip_emphasis(line[1:]), "summary": ""})
             return True
         return False
 
@@ -128,11 +159,13 @@ class _ReportParser:
         match = _BOLD_POINT_RE.match(line)
         if not match or self.current_dive is None:
             return False
-        key = _classify_point(match.group(1))
+        label = _strip_emphasis(match.group(1))
+        text = _strip_emphasis(match.group(2))
+        key = _classify_point(label)
         if self.current_dive[key] is None:
-            self.current_dive[key] = match.group(2).strip()
+            self.current_dive[key] = text
         else:
-            self.current_dive["raw_sections"].append(f"{match.group(1)}：{match.group(2)}")
+            self.current_dive["raw_sections"].append(f"{label}：{text}")
         return True
 
     def result(self) -> dict:
