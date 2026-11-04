@@ -1,4 +1,5 @@
 # ruff: noqa: E402
+import logging
 import shutil
 import sys
 from datetime import datetime
@@ -10,6 +11,8 @@ sys.path.insert(0, str(project_root / "src"))
 
 from ai_news_podcast.data.utils_dao import read_json, read_yaml
 from ai_news_podcast.presentation.site_builder.html_gen_view import build_index_html
+
+log = logging.getLogger(__name__)
 
 
 def rebuild():
@@ -47,6 +50,21 @@ def rebuild():
 
     print(f"Rebuilding index.html in {site_dir}...")
     build_index_html(site_dir, podcast_title, processed_episodes, "http://localhost:8000/site", cfg)
+
+    # 每期 digest + 日历：失败只告警，不影响本地预览重建
+    from ai_news_podcast.presentation.site_builder.digest_view import write_digest_outputs
+
+    try:
+        write_digest_outputs(
+            project_root,
+            processed_episodes,
+            cfg,
+            "http://localhost:8000/site",
+            site_dir=site_dir,
+            episodes_dir=site_dir / "episodes",
+        )
+    except Exception:
+        log.warning("digest generation failed; continuing rebuild", exc_info=True)
 
     # Now sync site to data/_preview
     preview_dir = project_root / "data/_preview"

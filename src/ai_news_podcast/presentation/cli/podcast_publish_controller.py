@@ -4,6 +4,7 @@ Publish episode to site (feed.xml, index.html, assets).
 """
 
 import argparse
+import logging
 import shutil
 from datetime import UTC, datetime
 from pathlib import Path
@@ -21,6 +22,8 @@ from ai_news_podcast.presentation.cli.episode_utils_controller import (
 from ai_news_podcast.presentation.site_builder.html_gen_view import build_index_html
 from ai_news_podcast.presentation.site_builder.rss_gen_view import build_feed_xml
 from ai_news_podcast.presentation.site_builder.show_notes_view import generate_show_notes_html
+
+log = logging.getLogger(__name__)
 
 
 def _sync_tree(src: Path, dst: Path) -> None:
@@ -156,6 +159,21 @@ class PublishCommand(AsyncCommand):
         )
         write_text(site_dir / "feed.xml", feed_xml)
         build_index_html(site_dir, podcast_title, sorted_eps, base_url, cfg)
+
+        # 每期 digest + 日历：失败只告警，绝不阻断发布
+        from ai_news_podcast.presentation.site_builder.digest_view import write_digest_outputs
+
+        try:
+            write_digest_outputs(
+                root,
+                sorted_eps,
+                cfg,
+                base_url,
+                site_dir=site_dir,
+                episodes_dir=episodes_dir,
+            )
+        except Exception:
+            log.warning("digest generation failed; continuing publish", exc_info=True)
 
         _sync_tree(root / "data" / "reports", site_dir / "reports")
         # 项目雷达:把 radar_*.json 一并发布,供站点「项目雷达」Tab 按日期读取

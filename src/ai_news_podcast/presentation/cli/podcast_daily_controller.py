@@ -1,6 +1,7 @@
 """Daily podcast pipeline: fetch → process → script → TTS → publish."""
 
 import argparse
+import logging
 import re
 from datetime import UTC, datetime
 from pathlib import Path
@@ -16,6 +17,8 @@ from ai_news_podcast.presentation.cli.base_controller import AsyncCommand
 from ai_news_podcast.presentation.cli.episode_utils_controller import episode_id as _episode_id
 from ai_news_podcast.presentation.cli.episode_utils_controller import get_base_url as _get_base_url
 from ai_news_podcast.presentation.site_builder.show_notes_view import generate_show_notes_html
+
+log = logging.getLogger(__name__)
 
 
 def _safe_html(text: str) -> str:
@@ -56,7 +59,9 @@ class DailyCommand(AsyncCommand):
         parser.add_argument("--with-report", action="store_true", help="同时生成日报")
         parser.add_argument("--force-refresh", action="store_true", help="强制重新抓取")
 
-    async def execute_async(self, args: argparse.Namespace, cfg: AppConfig, root: Path) -> int:  # noqa: PLR0915
+    async def execute_async(  # noqa: PLR0912, PLR0915
+        self, args: argparse.Namespace, cfg: AppConfig, root: Path
+    ) -> int:
         if args.date:
             day = datetime.fromisoformat(args.date).replace(tzinfo=UTC)
         else:
@@ -214,6 +219,23 @@ class DailyCommand(AsyncCommand):
             )
             write_text(site_dir / "feed.xml", feed_xml)
             build_index_html(site_dir, cfg.podcast.title, sorted_eps, base_url, cfg)
+
+            # 每期 digest + 日历：失败只告警，绝不阻断发布
+            from ai_news_podcast.presentation.site_builder.digest_view import (
+                write_digest_outputs,
+            )
+
+            try:
+                write_digest_outputs(
+                    root,
+                    sorted_eps,
+                    cfg,
+                    base_url,
+                    site_dir=site_dir,
+                    episodes_dir=episodes_dir,
+                )
+            except Exception:
+                log.warning("digest generation failed; continuing publish", exc_info=True)
 
         print(f"Episode {ep_id} published successfully")
         return 0

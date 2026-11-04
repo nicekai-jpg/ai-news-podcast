@@ -158,3 +158,60 @@ async def test_report_command_cleaning(dummy_cfg, tmp_path):
         assert "internal reasoning" not in content
         assert "✨ 科技新闻日报" in content
         assert "项目雷达" in content
+
+
+def test_write_digest_outputs_creates_files(tmp_path) -> None:
+    """write_digest_outputs 必须在 site/data/ 下写出 digest_{date}.json 与 calendar.json。"""
+    import json
+
+    root = tmp_path
+    (root / "data/briefs").mkdir(parents=True)
+    (root / "data/reports").mkdir(parents=True)
+    (root / "data/gh_radar").mkdir(parents=True)
+    (root / "site/episodes/2026-01-02").mkdir(parents=True)
+    (root / "data/briefs/brief_2026-01-02.json").write_text(
+        json.dumps({"thesis": "t", "stories": [], "metadata": {"total_deduped": 0}}),
+        encoding="utf-8",
+    )
+    (root / "site/episodes/2026-01-02/playlist.json").write_text(
+        json.dumps(
+            {
+                "chunks": [
+                    {
+                        "id": 1,
+                        "host": "A",
+                        "text": "x",
+                        "start": 1.0,
+                        "duration": 2.0,
+                        "audios": {"lively": "c.mp3"},
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    (root / "site/episodes/2026-01-02.mp3").write_bytes(b"x" * 200)
+    (root / "data/episodes.json").write_text("[]", encoding="utf-8")
+
+    from ai_news_podcast.presentation.site_builder.digest_view import write_digest_outputs
+
+    episodes = [
+        {
+            "id": "2026-01-02",
+            "title": "t",
+            "enclosure_url": "https://example.com/episodes/2026-01-02.mp3",
+        }
+    ]
+    written = write_digest_outputs(
+        root,
+        episodes,
+        {"podcast": {}},
+        "https://example.com",
+        site_dir=root / "site",
+        episodes_dir=root / "site/episodes",
+    )
+    assert (root / "site/data/digest_2026-01-02.json").exists()
+    assert (root / "site/data/calendar.json").exists()
+    assert written and written[0].name == "digest_2026-01-02.json"
+    digest = json.loads((root / "site/data/digest_2026-01-02.json").read_text(encoding="utf-8"))
+    assert digest["date"] == "2026-01-02" and digest["schema_version"] == 1
