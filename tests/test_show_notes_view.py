@@ -1,110 +1,69 @@
-"""Tests for podcast_writer_service generate_show_notes (Markdown)."""
+"""Tests for show_notes_view.generate_show_notes_html（生产唯一入口）。"""
 
 from __future__ import annotations
 
 from datetime import datetime
 
-from ai_news_podcast.presentation.site_builder.show_notes_view import generate_show_notes
+from ai_news_podcast.presentation.site_builder.show_notes_view import generate_show_notes_html
 
 
-class TestGenerateShowNotes:
+class TestGenerateShowNotesHtml:
     def test_full_structure(self) -> None:
         brief = {
-            "thesis": "AI is evolving fast",
             "stories": [
                 {
                     "role": "main",
                     "representative_title": "GPT-5",
-                    "context": {
-                        "factual_summary": ["It understands everything."],
-                    },
-                    "total_score": 14,
+                    "role_emoji": "🔴",
                     "items": [{"source_name": "OpenAI", "link": "https://openai.com"}],
-                },
-                {
-                    "role": "supporting",
-                    "representative_title": "Claude 4",
-                    "context": {
-                        "factual_summary": ["Better reasoning."],
-                    },
-                    "total_score": 10,
-                    "items": [],
-                },
-                {
-                    "role": "quick",
-                    "representative_title": "Mini Update",
-                    "context": {"factual_summary": []},
-                    "total_score": 6,
-                    "items": [{"source_name": "TechCrunch", "link": "https://tc.com"}],
                 },
                 {
                     "role": "skip",
                     "representative_title": "Ignored",
-                    "context": {},
-                    "total_score": 2,
-                    "items": [],
+                    "role_emoji": "⚪",
+                    "items": [{"source_name": "X", "link": "https://x.example"}],
                 },
-            ],
+            ]
         }
-        md = generate_show_notes(
+        html = generate_show_notes_html(
             brief,
             episode_title="AI News | 2024-03-15",
             episode_date=datetime(2024, 3, 15),
         )
-        assert "# AI News | 2024-03-15" in md
-        assert "2024年03月15日" in md
-        assert "> AI is evolving fast" in md
-        assert "🔴 主要报道" in md
-        assert "🟡 支撑消息" in md
-        assert "🟢 快讯" in md
-        assert "### GPT-5" in md
-        assert "It understands everything." in md
-        assert "[OpenAI](https://openai.com)" in md
-        assert "### Claude 4" in md
-        assert "### Mini Update" in md
-        assert "[TechCrunch](https://tc.com)" in md
-        assert "综合评分: 14/15" in md
-        assert "Ignored" not in md
-        assert "本期由 AI 自动生成" in md
-
-    def test_no_thesis(self) -> None:
-        brief = {
-            "thesis": "",
-            "stories": [
-                {
-                    "role": "main",
-                    "representative_title": "Only Story",
-                    "context": {"factual_summary": ["Summary."]},
-                    "total_score": 12,
-                    "items": [],
-                }
-            ],
-        }
-        md = generate_show_notes(brief, episode_title="T", episode_date=datetime(2024, 1, 1))
-        assert "> " not in md  # No thesis block
+        assert html.startswith("<!doctype html>")
+        assert "<title>AI News | 2024-03-15</title>" in html
+        assert "2024年03月15日" in html
+        assert '<a href="https://openai.com">GPT-5</a>' in html
+        assert "🔴" in html
+        assert "(OpenAI)" in html
+        assert "Ignored" not in html
 
     def test_empty_stories(self) -> None:
-        md = generate_show_notes(
-            {"stories": []},
+        html = generate_show_notes_html(
+            {},
             episode_title="Empty",
             episode_date=datetime(2024, 1, 1),
         )
-        assert "# Empty" in md
-        assert "🔴 主要报道" not in md
+        assert "<h1>Empty</h1>" in html
+        assert "2024年01月01日" in html
+        assert "<ol>" in html
+        assert "<li>" not in html
 
-    def test_items_limit_to_5(self) -> None:
-        items = [{"source_name": f"S{i}", "link": f"https://s{i}.com"} for i in range(10)]
+    def test_escapes_title_and_source(self) -> None:
         brief = {
             "stories": [
                 {
                     "role": "main",
-                    "representative_title": "Many Sources",
-                    "context": {"factual_summary": []},
-                    "total_score": 12,
-                    "items": items,
+                    "representative_title": "A & B <C>",
+                    "items": [{"source_name": "S <1>", "link": "https://example.com"}],
                 }
-            ],
+            ]
         }
-        md = generate_show_notes(brief, episode_title="T", episode_date=datetime(2024, 1, 1))
-        # Only first 5 items should appear
-        assert md.count("[S") == 5
+        html = generate_show_notes_html(
+            brief,
+            episode_title="T & <U>",
+            episode_date=datetime(2024, 1, 1),
+        )
+        assert "<title>T &amp; &lt;U&gt;</title>" in html
+        assert "A &amp; B &lt;C&gt;" in html
+        assert "S &lt;1&gt;" in html

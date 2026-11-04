@@ -151,6 +151,10 @@ Stage CLIs (console scripts in pyproject):
   近 30 天已推荐过的仓库由 `_load_recent_picks` 排除,不要绕过。
   无 `GITHUB_TOKEN` 时走匿名限流(每日一次扫描足够),不要在雷达里加需要
   更高限流的调用。
+- `site/index.html` 现在是骨架 + 内联 `site-data` JSON + 内联 `static/{style,app,player}`；
+  不要重新内联 `episodes.json.desc`（体积红线 1.5MB）。
+- `site/data/digest_*.json` 由 publish 生成并在 CI `git add -f` 跟踪；**不要**把它挪出
+  `site/`，否则月度 prune 后会从 gh-pages 消失（prune 只从 main 的 `site/` 拷贝）。
 
 ## Docs to read before touching sensitive areas
 

@@ -4,7 +4,8 @@ import gzip
 import json
 import re
 
-from ai_news_podcast.presentation.site_builder.html_gen_view import build_index_html
+from ai_news_podcast.data.config.models_dao import AppConfig
+from ai_news_podcast.presentation.site_builder.html_gen_view import _voice_labels, build_index_html
 
 _EPISODES = [
     {
@@ -106,23 +107,67 @@ class TestNoMockLeftovers:
 
 
 class TestVoiceLabelsContract:
-    """音色标签收敛契约（原 test_html_gen_view.py::TestVoiceLabels 保留）。"""
+    """音色标签收敛契约（原 test_html_gen_view.py::TestVoiceLabels 的 7 个用例）。"""
 
-    def test_defaults(self) -> None:
-        from ai_news_podcast.presentation.site_builder.html_gen_view import _voice_labels
+    def test_defaults_without_config(self) -> None:
+        labels = _voice_labels({})
+        assert set(labels["host_a"]) == {"professional", "lively"}
 
-        assert set(_voice_labels({})["host_a"]) == {"professional", "lively"}
+    def test_global_list_filters_both_hosts(self) -> None:
+        cfg = {"tts": {"cosyvoice": {"synth_variants": ["professional"]}}}
+        labels = _voice_labels(cfg)
+        assert set(labels["host_a"]) == {"professional"}
+        assert set(labels["host_b"]) == {"professional"}
 
-    def test_per_host_filter(self) -> None:
-        from ai_news_podcast.presentation.site_builder.html_gen_view import _voice_labels
-
+    def test_per_host_dict_filters_independently(self) -> None:
         cfg = {
             "tts": {
                 "cosyvoice": {"synth_variants": {"host_a": ["lively"], "host_b": ["professional"]}}
             }
         }
         labels = _voice_labels(cfg)
-        assert set(labels["host_a"]) == {"lively"} and set(labels["host_b"]) == {"professional"}
+        assert set(labels["host_a"]) == {"lively"}
+        assert set(labels["host_b"]) == {"professional"}
+
+    def test_appconfig_cfg(self) -> None:
+        cfg = AppConfig.from_dict(
+            {
+                "tts": {
+                    "cosyvoice": {
+                        "synth_variants": {"host_a": ["lively"], "host_b": ["professional"]}
+                    }
+                }
+            }
+        )
+        labels = _voice_labels(cfg)
+        assert set(labels["host_a"]) == {"lively"}
+        assert set(labels["host_b"]) == {"professional"}
+
+    def test_partial_custom_voice_names_does_not_crash(self) -> None:
+        cfg = {
+            "tts": {
+                "voice_names": {"host_a": {"professional": "亲切女声"}},
+                "cosyvoice": {"synth_variants": ["professional"]},
+            },
+        }
+        labels = _voice_labels(cfg)
+        assert set(labels["host_a"]) == {"professional"}
+        assert set(labels["host_b"]) == {"professional"}
+
+    def test_scalar_variant_value_ignored(self) -> None:
+        cfg = {
+            "tts": {
+                "cosyvoice": {"synth_variants": {"host_a": "lively", "host_b": ["professional"]}}
+            }
+        }
+        labels = _voice_labels(cfg)
+        assert set(labels["host_a"]) == {"professional", "lively"}
+        assert set(labels["host_b"]) == {"professional"}
+
+    def test_none_cfg_returns_defaults(self) -> None:
+        labels = _voice_labels(None)
+        assert set(labels["host_a"]) == {"professional", "lively"}
+        assert set(labels["host_b"]) == {"professional", "lively"}
 
 
 class TestSizeBudget:
