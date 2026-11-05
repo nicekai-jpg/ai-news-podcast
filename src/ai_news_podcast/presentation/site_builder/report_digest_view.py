@@ -15,6 +15,8 @@ _BULLET_RE = re.compile(r"^[-*]\s+\*\*(.+?)\*\*[：:]\s*(.+)$")
 _QUOTE_RE = re.compile(r"^>\s*(.+)$")
 _BOLD_POINT_RE = re.compile(r"^(?:[-*]\s+)?\*\*(.+?)\*\*[：:]\s*(.+)$")
 _QUOTE_LABEL_RE = re.compile(r"^\*\*.+?\*\*[：:]\s*")
+# 重磅解读标题可带分类前缀：[模型发布] Gemini 4 Carbon：…（2026-11 起）
+_CATEGORY_RE = re.compile(r"^\[([^\]]{1,12})\]\s*(.+)$")
 
 _DEEP_DIVE_H2 = "重磅解读"
 _CN_NUMERALS = ("一", "二", "三", "四", "五", "六", "七", "八", "九", "十")
@@ -43,6 +45,12 @@ def _normalize_dive_heading(text: str) -> str:
     return f"{_CN_NUMERALS[index - 1]}、{match.group(2).strip()}"
 
 
+def _join_rich_lines(lines: list[str]) -> str | None:
+    """把引用块/导语拼接成带段落与列表结构的纯文本（前端按 \n 渲染段落/有序列表）。"""
+    text = "\n".join(lines)
+    return re.sub(r"\n{3,}", "\n\n", text).strip() or None
+
+
 def _classify_point(label: str) -> str:
     if any(keyword in label for keyword in _BREAKTHROUGH_KEYWORDS):
         return "breakthrough"
@@ -65,9 +73,14 @@ class _ReportParser:
         self.raw_paragraphs: list[str] = []
         self.quote_lines: list[str] = []
         self.toc: list[dict] = []
+        self._lead_open = False
+        self._blank = False
 
     def feed(self, line: str) -> None:
-        if not line or line in ("---", "***"):
+        if not line:
+            self._blank = True
+            return
+        if line in ("---", "***"):
             return
         heading = _HEADING_RE.match(line)
         if heading:
@@ -75,14 +88,20 @@ class _ReportParser:
             return
         if self.section == _RADAR_H2:
             return
-        if self._feed_lead(line) or self._feed_bullet(line):
-            return
-        if line.startswith(">"):
-            self._feed_quote(line)
-            return
-        if self._feed_point(line):
+        if self._feed_content_line(line):
             return
         self._feed_fallback(line)
+
+    def _feed_content_line(self, line: str) -> bool:
+        """按优先级匹配内容行；返回 True 表示已消费。"""
+        if self._feed_lead(line) or self._feed_lead_continuation(line):
+            return True
+        if self._feed_bullet(line):
+            return True
+        if line.startswith(">"):
+            self._feed_quote(line)
+            return True
+        return self._feed_point(line)
 
     def _feed_fallback(self, line: str) -> None:
         """未匹配任何结构：有当前卡片则作为卡片正文，否则记为全局段落。"""
@@ -99,12 +118,28 @@ class _ReportParser:
             return
         if level == 2:
             self.current_dive = None
+            self._lead_open = False
             self.section = self._section_kind(text)
             return
         if self.section == _DEEP_DIVE_H2:
             text = _normalize_dive_heading(text)
+            category = None
+            # 归一化后形如「一、[模型发布] 标题」，分类前缀可能跟在中文序号后面
+            category_match = _CATEGORY_RE.match(text) or re.match(
+                r"^([一二三四五六七八九十]+、\s*)\[([^\]]{1,12})\]\s*(.+)$", text
+            )
+            if category_match:
+                groups = category_match.groups()
+                if len(groups) == 3:
+                    category = groups[1].strip()
+                    text = (groups[0] or "") + groups[2].strip()
+                else:
+                    category = groups[0].strip()
+                    text = groups[1].strip()
             self.current_dive = {
                 "heading": text,
+                "category": category,
+                "points": [],
                 "background": None,
                 "breakthrough": None,
                 "impact": None,
@@ -130,6 +165,21 @@ class _ReportParser:
         if not match:
             return False
         self.lead = _strip_emphasis(match.group(1))
+        self._lead_open = True
+        self._blank = False
+        return True
+
+    def _feed_lead_continuation(self, line: str) -> bool:
+        """导语可以写多段（空行分隔），后续普通段落并入导语，直到下一个标题出现。"""
+        if not self._lead_open or self.lead is None or self.current_dive is not None:
+            return False
+        if line.startswith((">", "-", "*", "#")):
+            return False
+        text = _strip_emphasis(line)
+        if not text:
+            return False
+        self.lead += ("\n\n" if self._blank else " ") + text
+        self._blank = False
         return True
 
     def _feed_bullet(self, line: str) -> bool:
@@ -153,8 +203,14 @@ class _ReportParser:
         match = _QUOTE_RE.match(line)
         text = match.group(1).strip() if match else ""
         text = _QUOTE_LABEL_RE.sub("", text)
-        if text:
-            self.quote_lines.append(text)
+        if not text:
+            self.quote_lines.append("")
+            self._blank = False
+            return
+        if self._blank and self.quote_lines and self.quote_lines[-1] != "":
+            self.quote_lines.append("")
+        self.quote_lines.append(text)
+        self._blank = False
 
     def _feed_point(self, line: str) -> bool:
         match = _BOLD_POINT_RE.match(line)
@@ -162,6 +218,7 @@ class _ReportParser:
             return False
         label = _strip_emphasis(match.group(1))
         text = _strip_emphasis(match.group(2))
+        self.current_dive["points"].append({"label": label, "text": text})
         key = _classify_point(label)
         if self.current_dive[key] is None:
             self.current_dive[key] = text
@@ -177,7 +234,7 @@ class _ReportParser:
             "lead": self.lead,
             "deep_dives": self.deep_dives,
             "frontier": self.frontier,
-            "editor_verdict": " ".join(self.quote_lines).strip() or None,
+            "editor_verdict": _join_rich_lines(self.quote_lines),
             "toc": self.toc,
             "raw_paragraphs": self.raw_paragraphs,
         }
