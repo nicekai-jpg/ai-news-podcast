@@ -215,3 +215,13 @@ def test_chapter_meta_falls_back_to_segment_count() -> None:
 def test_sources_capped_to_design_preview_count() -> None:
     app = _read("app.js")
     assert "SOURCE_DISPLAY_LIMIT = 30" in app
+
+
+def test_sections_share_one_panel_style() -> None:
+    """四个栏目外围统一：同样的底板，不再有 01/02 裸奔、03/04 冷暖底的差异。"""
+    template = _read("page_template.html")
+    assert template.count('class="content-section"') == 4
+    assert "tint-cool" not in template and "tint-warm" not in template
+    css = _read("style.css")
+    assert "--surface-panel" in css
+    assert ".content-section.tint-" not in css
