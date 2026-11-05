@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今日AI看点 · 雷达空状态</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+  <div class="state-page">
+    <div class="state-header">
+      <span class="state-number">04</span>
+      <h1 class="state-title">GitHub 项目雷达 · 空状态</h1>
+    </div>
+    <div class="state-card">
+      <span class="state-badge warning"><span class="dot"></span>今日轮空</span>
+      <h2 class="state-headline">{{radar_headline}}</h2>
+      <p class="state-paragraph">{{radar_paragraph}}</p>
+      <div class="state-meta">
+        <span>扫描候选 <strong>{{candidate_count}}</strong> 个</span>
+        <span class="sep">·</span>
+        <span>近期已收录排除 <strong>{{excluded_recent}}</strong> 个</span>
+        <span class="sep">·</span>
+        <span>{{radar_reason}}</span>
+      </div>
+      <p class="state-empty-note">宁缺毋滥：今日候选池经多轮筛查，均未达到收录标准。</p>
+    </div>
+  </div>
+<script src="_shared.js"></script>
+</body>
+</html>

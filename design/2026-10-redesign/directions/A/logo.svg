@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="今日AI看点">
+  <defs>
+    <linearGradient id="tile" x1="8" y1="2" x2="56" y2="62" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1e1d19"/>
+      <stop offset="1" stop-color="#0a0a09"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="18" y1="26" x2="34" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ee6c45"/>
+      <stop offset="1" stop-color="#bc361a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="64" height="64" rx="16" fill="url(#tile)"/>
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="15.5" fill="none" stroke="#f2ece0" stroke-opacity="0.09"/>
+
+  <!-- 后：月，虚（环） -->
+  <circle cx="37" cy="29" r="15" fill="none" stroke="#f2ece0" stroke-width="4.5"/>
+  <!-- 前：日，实，压实环的一角 -->
+  <circle cx="25" cy="37" r="13" fill="url(#sun)"/>
+</svg>

@@ -149,7 +149,11 @@ class TestGenerateScriptFallback:
                 }
             ]
         }
-        fake_llm = "[Host A] LLM generated script\n[Host B] Yes it is"
+        pairs = [
+            "[Host A] 今天我们聊第一条新闻，这是 LLM generated script 的内容。",
+            "[Host B] 好，我来补充一下背景和影响。",
+        ] * 20
+        fake_llm = "\n".join(pairs)
         with patch(
             "ai_news_podcast.business.pipeline.podcast_writer_service._call_llm",
             return_value=fake_llm,

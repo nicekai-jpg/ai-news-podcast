@@ -28,6 +28,11 @@ jobs:
         with:
           version: "latest"
 
+      - name: Pull latest content
+        # 与 daily 共用并发组会排队；排队中的 run 用的是入队时的 SHA，
+        # 不再 pull 一次可能用旧树重建、把当天 feed 覆盖回去
+        run: git pull origin main
+
       - name: Install dependencies
         run: uv sync --frozen
 

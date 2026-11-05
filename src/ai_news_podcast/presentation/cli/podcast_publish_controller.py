@@ -7,9 +7,11 @@ import argparse
 import logging
 import shutil
 from datetime import UTC, datetime
+from email.utils import format_datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from ai_news_podcast.business.pipeline.podcast_writer_service import script_quality
 from ai_news_podcast.data.config.models_dao import AppConfig
 from ai_news_podcast.data.text_utils_dao import episode_title as build_episode_title
 from ai_news_podcast.data.utils_dao import read_json, write_json, write_text
@@ -25,6 +27,16 @@ from ai_news_podcast.presentation.site_builder.rss_gen_view import build_feed_xm
 from ai_news_podcast.presentation.site_builder.show_notes_view import generate_show_notes_html
 
 log = logging.getLogger(__name__)
+
+
+def _resolve_episode_timestamps(previous: dict | None, now: datetime) -> tuple[str, str]:
+    """重发同一期时沿用旧 pubDate，避免旧集跳到 feed 顶部、被客户端当新集。
+
+    返回 (published_at_iso, pubDate)。
+    """
+    published_at_iso = str((previous or {}).get("published_at_iso") or now.isoformat())
+    pub_date_rfc = str((previous or {}).get("pubDate") or format_datetime(now))
+    return published_at_iso, pub_date_rfc
 
 
 def _sync_tree(src: Path, dst: Path) -> None:
@@ -47,8 +59,6 @@ class PublishCommand(AsyncCommand):
         parser.add_argument("--date", default=None, help="Episode date YYYY-MM-DD")
 
     async def execute_async(self, args: argparse.Namespace, cfg: AppConfig, root: Path) -> int:  # noqa: PLR0915
-        from email.utils import format_datetime
-
         if args.date:
             day = datetime.fromisoformat(args.date).replace(tzinfo=ZoneInfo("Asia/Shanghai"))
         else:
@@ -117,12 +127,23 @@ class PublishCommand(AsyncCommand):
         notes_url = f"{base_url}/episodes/{ep_id}.html"
         enclosure_length = mp3_path.stat().st_size if mp3_path.exists() else 0
 
-        published_at_iso = now.isoformat()
-        pub_date_rfc = format_datetime(now)
-        guid = f"{base_url}/episodes/{ep_id}"
+        script_path = episodes_dir / f"{ep_id}.txt"
+        quality = None
+        if script_path.exists():
+            quality = script_quality(script_path.read_text(encoding="utf-8"))
 
         existing = coerce_episode_list(read_json(episodes_index))
+        previous = next(
+            (ep for ep in existing if str(ep.get("id") or "") == ep_id),
+            None,
+        )
+        # 重发同一期（retry/补跑）不要重置 pubDate：否则旧集会跳到 feed 顶部，
+        # 客户端把它当新集，keep_last 还可能删掉比它更新的集。
         existing = [ep for ep in existing if str(ep.get("id") or "") != ep_id]
+        published_at_iso = str((previous or {}).get("published_at_iso") or now.isoformat())
+        pub_date_rfc = str((previous or {}).get("pubDate") or format_datetime(now))
+        guid = f"{base_url}/episodes/{ep_id}"
+
         existing.append(
             {
                 "id": ep_id,
@@ -134,6 +155,7 @@ class PublishCommand(AsyncCommand):
                 "enclosure_url": enclosure_url,
                 "enclosure_length": enclosure_length,
                 "published_at_iso": published_at_iso,
+                "quality": quality,
             }
         )
 

@@ -1,0 +1,2708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今日AI看点 · {{issue_date}}（第 {{issue_number}} 期）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — 深色编辑报刊
+       ============================================================ */
+    :root, [data-theme="light"] {
+      /* Surfaces — light paper theme */
+      --bg-canvas: #fafaf7;
+      --surface-card: #ffffff;
+      --surface-card-hover: #f8f6f2;
+      --surface-inset: #f0ede6;
+
+      /* Borders */
+      --border-subtle: rgba(26, 22, 18, 0.08);
+      --border-medium: rgba(26, 22, 18, 0.16);
+      --border-strong: rgba(26, 22, 18, 0.28);
+
+      /* Text */
+      --text-primary: #1a1714;
+      --text-secondary: #4a4540;
+      --text-muted: #6b665f;
+      --text-faint: #767169;
+
+      /* Accents */
+      --accent-primary: #d94a2b;       /* 朱砂红 */
+      --accent-primary-solid: #b93d1e; /* 实心填充用（白字对比度 5.6:1） */
+      --accent-primary-solid-hover: #a53518;
+      --accent-glow: rgba(217, 74, 43, 0.10);
+      --accent-secondary: #1e3a5f;     /* 深海蓝 */
+      --accent-secondary-soft: rgba(30, 58, 95, 0.10);
+      --accent-teal: #2a7a72;         /* 青绿 */
+      --accent-teal-soft: rgba(42, 122, 114, 0.10);
+
+      /* State colors */
+      --color-success: #3a8a5a;
+      --color-success-soft: rgba(58, 138, 90, 0.12);
+
+      /* Host colors */
+      --host-a-color: #c45a7a;
+      --host-b-color: #3a6a8a;
+
+      /* Radii */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+      --shadow-dock: 0 -4px 16px rgba(0, 0, 0, 0.08);
+      --shadow-drawer: -4px 0 24px rgba(0, 0, 0, 0.12);
+
+      /* Typography */
+      --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
+      --font-sans: "Noto Sans SC", -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      --font-mono: "SF Mono", "JetBrains Mono", Consolas, monospace;
+
+      /* Spacing */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-12: 48px;
+
+      /* Theme-aware (light defaults) */
+      --header-bg: rgba(250, 250, 247, 0.92);
+      --player-bg: rgba(250, 250, 247, 0.95);
+      --disc-gradient: linear-gradient(135deg, #f4efe6 0%, #ded6c8 100%);
+      /* 浅色主题下短评卡走纸面浅底 + 深墨字 */
+      --editor-card-bg: linear-gradient(150deg, #ffffff 0%, #f4f0e9 100%);
+      --editor-card-text: #1a1714;
+      --editor-card-accent: #b93d1e;
+      --tint-cool: rgba(42, 122, 114, 0.06);
+      --tint-warm: rgba(212, 165, 116, 0.10);
+    }
+
+    [data-theme="dark"] {
+      /* Surfaces — dark editorial */
+      --bg-canvas: #141210;
+      --surface-card: #201c18;
+      --surface-card-hover: #2a2520;
+      --surface-inset: #0e0c0a;
+
+      --border-subtle: rgba(242, 236, 224, 0.08);
+      --border-medium: rgba(242, 236, 224, 0.16);
+      --border-strong: rgba(242, 236, 224, 0.28);
+
+      --text-primary: #f2ece0;
+      --text-secondary: #b8b0a3;
+      --text-muted: #a39a8d;
+      --text-faint: #978e83;
+
+      --accent-primary: #d94a2b;
+      --accent-glow: rgba(217, 74, 43, 0.18);
+      --accent-secondary: #d4a574;
+      --accent-secondary-soft: rgba(212, 165, 116, 0.14);
+      --accent-teal: #5fa8a0;
+      --accent-teal-soft: rgba(95, 168, 160, 0.14);
+
+      --color-success: #5fa87a;
+      --color-success-soft: rgba(95, 168, 122, 0.14);
+
+      --host-a-color: #e89bb5;
+      --host-b-color: #8fb8d4;
+
+      --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.35);
+      --shadow-dock: 0 -6px 24px rgba(0, 0, 0, 0.5);
+      --shadow-drawer: -8px 0 32px rgba(0, 0, 0, 0.6);
+
+      --header-bg: rgba(20, 18, 16, 0.88);
+      --player-bg: rgba(20, 18, 16, 0.92);
+      --disc-gradient: linear-gradient(135deg, #2a2420 0%, #1a1614 100%);
+      --editor-card-bg: linear-gradient(150deg, rgba(212, 165, 116, 0.08) 0%, var(--surface-card) 100%);
+      --editor-card-text: #f2ece0;
+      --editor-card-accent: #d4a574;
+      --tint-cool: rgba(95, 168, 160, 0.06);
+      --tint-warm: rgba(212, 165, 116, 0.05);
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-canvas);
+      color: var(--text-primary);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 88px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    ::selection { background: var(--accent-primary); color: #fff; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-canvas); }
+    ::-webkit-scrollbar-thumb { background: rgba(242,236,224,0.18); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(242,236,224,0.3); }
+
+    /* ============================================================
+       LAYOUT
+       ============================================================ */
+    .app-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    /* ============================================================
+       HEADER
+       ============================================================ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--header-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .header-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: var(--space-3) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      min-width: 0;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-width: 0;
+    }
+    .brand-logo-img {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      border: 1px solid var(--border-medium);
+      flex-shrink: 0;
+    }
+    .brand-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.12rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      white-space: nowrap;
+    }
+    .brand-badge {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+      background: var(--accent-secondary-soft);
+      color: var(--accent-secondary);
+      border: 1px solid rgba(212, 165, 116, 0.3);
+      letter-spacing: 0.04em;
+    }
+    .brand-subtitle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(242,236,224,0.03);
+      padding: 3px 4px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      min-width: 0;
+    }
+    .nav-anchor-link {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      padding: 5px 11px;
+      border-radius: var(--radius-full);
+      transition: all 0.18s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+    .nav-anchor-link:hover, .nav-anchor-link.active {
+      color: var(--text-primary);
+      background: rgba(242,236,224,0.06);
+    }
+    .nav-anchor-link.active {
+      color: var(--accent-primary);
+      background: var(--accent-glow);
+    }
+    .nav-icon { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+    .btn-header-pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      background: rgba(242,236,224,0.04);
+      color: var(--text-secondary);
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .btn-header-pill:hover {
+      color: var(--text-primary);
+      background: rgba(242,236,224,0.08);
+      border-color: var(--border-medium);
+    }
+    .btn-header-rss:hover {
+      color: var(--accent-secondary);
+      border-color: rgba(212, 165, 116, 0.4);
+      background: var(--accent-secondary-soft);
+    }
+
+    /* ============================================================
+       SHARED DATE AXIS
+       ============================================================ */
+    .shared-date-axis {
+      margin: var(--space-5) 0 var(--space-4);
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3) var(--space-4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      box-shadow: var(--shadow-card);
+      min-width: 0;
+    }
+    .date-nav-controls { display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0; }
+    .date-step-btn {
+      padding: 6px 12px;
+      border-radius: var(--radius-md);
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: rgba(242,236,224,0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .date-step-btn:hover:not(:disabled) {
+      background: rgba(242,236,224,0.08);
+      color: var(--text-primary);
+      border-color: var(--border-medium);
+    }
+    .date-step-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .date-pills-carousel {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      overflow-x: auto;
+      padding: 2px 0;
+      min-width: 0;
+      scrollbar-width: none;
+    }
+    .date-pills-carousel::-webkit-scrollbar { display: none; }
+    .date-pill {
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-weight: 600;
+      white-space: nowrap;
+      background: rgba(242,236,224,0.03);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      transition: all 0.18s;
+      flex-shrink: 0;
+    }
+    .date-pill:hover { color: var(--text-primary); background: rgba(242,236,224,0.07); }
+    .date-pill.active {
+      background: var(--accent-primary-solid);
+      color: #fff;
+      border-color: var(--accent-primary-solid);
+    }
+
+    /* ============================================================
+       SECTION HEADERS
+       ============================================================ */
+    .content-section {
+      margin-bottom: var(--space-10);
+      scroll-margin-top: 72px;
+    }
+    .content-section:last-child { margin-bottom: 0; }
+
+    /* 冷暖底色板块：统一内边距，避免与相邻栏目的边框贴边重叠 */
+    .content-section.tint-cool,
+    .content-section.tint-warm {
+      padding: var(--space-6) var(--space-5);
+      border-radius: var(--radius-xl);
+      margin-left: calc(-1 * var(--space-5));
+      margin-right: calc(-1 * var(--space-5));
+    }
+    .content-section.tint-cool {
+      background: linear-gradient(180deg, var(--tint-cool) 0%, transparent 100%);
+    }
+    .content-section.tint-warm {
+      background: linear-gradient(180deg, var(--tint-warm) 0%, transparent 100%);
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: var(--space-5);
+      min-width: 0;
+    }
+    .section-title-group {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-3);
+      min-width: 0;
+    }
+    .section-number {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      letter-spacing: 0.08em;
+    }
+    .section-number.alt { color: var(--accent-teal); }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      letter-spacing: 0;
+      line-height: 1.3;
+    }
+    .section-meta {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .section-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .demo-flag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent-secondary);
+      letter-spacing: 0.04em;
+    }
+    .demo-flag::after { content: "·"; margin: 0 var(--space-2); color: var(--text-muted); }
+    .demo-flag[hidden] { display: none; }
+
+    /* ============================================================
+       HERO: PODCAST + EDITORIAL LEAD
+       ============================================================ */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 480px 1fr;
+      gap: var(--space-5);
+    }
+
+    /* Podcast Card */
+    .podcast-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      min-width: 0;
+    }
+    .podcast-card::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .podcast-cover-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      min-width: 0;
+    }
+    .podcast-disc {
+      width: 76px;
+      height: 76px;
+      border-radius: var(--radius-lg);
+      background: var(--disc-gradient);
+      border: 1px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .disc-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 30px;
+    }
+    .disc-bar {
+      width: 3px;
+      background: var(--accent-primary);
+      border-radius: 1.5px;
+      height: 6px;
+      transition: height 0.15s ease;
+    }
+    .is-playing .disc-bar:nth-child(1) { animation: barPulse 0.9s infinite ease-in-out; }
+    .is-playing .disc-bar:nth-child(2) { animation: barPulse 0.7s infinite 0.15s ease-in-out; }
+    .is-playing .disc-bar:nth-child(3) { animation: barPulse 1.1s infinite 0.3s ease-in-out; }
+    .is-playing .disc-bar:nth-child(4) { animation: barPulse 0.8s infinite 0.2s ease-in-out; }
+    .is-playing .disc-bar:nth-child(5) { animation: barPulse 1.0s infinite 0.4s ease-in-out; }
+    @keyframes barPulse { 0%, 100% { height: 5px; } 50% { height: 26px; } }
+
+    .podcast-title-area {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+    .podcast-heading {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+    .podcast-subhead {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Host roster — 静态展示，不提供无效的声线切换 */
+    .host-roster {
+      background: var(--surface-inset);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .host-roster-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+    .host-roster-list { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; }
+    .host-identity {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .host-avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .host-avatar.host-a { background: linear-gradient(135deg, #e89bb5, #c96b8a); color: #fff; }
+    .host-avatar.host-b { background: linear-gradient(135deg, #8fb8d4, #5a8fb5); color: #fff; }
+    .host-name { font-size: 0.76rem; font-weight: 700; color: var(--text-primary); }
+
+    /* Podcast CTAs */
+    .podcast-cta-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: auto;
+    }
+    .btn-play-primary {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      background: var(--accent-primary-solid);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 10px var(--space-4);
+      border-radius: var(--radius-md);
+      transition: all 0.18s;
+      letter-spacing: 0.02em;
+    }
+    .btn-play-primary:hover { background: var(--accent-primary-solid-hover); transform: translateY(-1px); }
+    .btn-transcript-cta {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 9px var(--space-3);
+      border-radius: var(--radius-md);
+      background: rgba(242,236,224,0.05);
+      border: 1px solid var(--border-medium);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .btn-transcript-cta:hover { background: rgba(242,236,224,0.09); color: var(--text-primary); }
+
+    /* Editorial Lead Card */
+    .editorial-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--space-4);
+      box-shadow: var(--shadow-card);
+      min-width: 0;
+    }
+    .editorial-stamp {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: var(--space-3);
+      gap: var(--space-3);
+    }
+    .stamp-label {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-secondary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .stamp-date {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .lead-quote {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+    }
+    .lead-quote strong { color: var(--accent-primary); font-weight: 700; }
+
+    /* Metrics Strip */
+    .metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+      background: var(--surface-inset);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+    .metric-item { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+      line-height: 1.2;
+    }
+    .metric-unit.teal { color: var(--accent-teal); }
+    .metric-unit.amber { color: var(--accent-secondary); }
+    .metric-label {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ============================================================
+       DAILY REPORT BROADSIDE
+       ============================================================ */
+    .broadside-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: var(--space-5);
+      align-items: start;
+    }
+    .broadside-main {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6) var(--space-6);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      min-width: 0;
+    }
+    .broadside-header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: var(--space-4);
+    }
+    .broadside-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .broadside-pill {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      background: var(--color-success-soft);
+      color: var(--color-success);
+      border: 1px solid rgba(95, 168, 122, 0.3);
+      letter-spacing: 0.04em;
+    }
+    .broadside-toc {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+    .broadside-toc-link {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      background: rgba(242,236,224,0.03);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .broadside-toc-link:hover {
+      color: var(--accent-teal);
+      border-color: rgba(95, 168, 160, 0.3);
+    }
+    .broadside-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 900;
+      line-height: 1.35;
+      color: var(--text-primary);
+      letter-spacing: 0;
+    }
+
+    /* Deep Dive Card */
+    .deep-dive {
+      background: var(--surface-inset);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      transition: border-color 0.18s;
+      min-width: 0;
+    }
+    .deep-dive:hover { border-color: var(--border-medium); }
+    .deep-dive-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .deep-dive-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent-secondary);
+      background: var(--accent-secondary-soft);
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(212, 165, 116, 0.25);
+      letter-spacing: 0.04em;
+    }
+    .deep-dive-topic {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .deep-dive-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+    .deep-dive-point {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    .deep-dive-point[hidden] { display: none; }
+    .point-label {
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .point-label .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent-primary);
+      flex-shrink: 0;
+    }
+    .point-text { margin: 0; }
+    .deep-dive-point.highlight {
+      background: rgba(217, 74, 43, 0.06);
+      border: 1px solid rgba(217, 74, 43, 0.2);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+    }
+
+    /* Sidebar */
+    .broadside-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      min-width: 0;
+    }
+    .editor-quote-card {
+      background: var(--editor-card-bg);
+      border: 1px solid rgba(30, 58, 95, 0.4);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      color: var(--editor-card-text);
+    }
+    .editor-quote-card .editor-quote-header { color: var(--editor-card-accent); }
+    .editor-quote-card .editor-quote-text { color: var(--editor-card-text); }
+    .editor-quote-card .editor-quote-author { color: #c9c2b6; }
+    .editor-quote-card .editor-quote-author::before { background: #7d756a; }
+
+    /* 浅色主题下短评卡是纸面浅卡，用细边框与轻阴影与正文区分 */
+    [data-theme="light"] .editor-quote-card {
+      border-color: rgba(26, 22, 18, 0.10);
+      box-shadow: 0 8px 24px rgba(26, 22, 18, 0.06);
+    }
+    [data-theme="light"] .editor-quote-card .editor-quote-author { color: var(--text-muted); }
+    [data-theme="light"] .editor-quote-card .editor-quote-author::before { background: var(--border-strong); }
+    .editor-quote-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-secondary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .editor-quote-text {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      font-style: italic;
+    }
+    .editor-quote-author {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .editor-quote-author::before {
+      content: "";
+      width: 16px;
+      height: 1px;
+      background: var(--text-faint);
+    }
+
+    /* ============================================================
+       SOURCES
+       ============================================================ */
+    .sources-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    .source-filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      background: rgba(242,236,224,0.04);
+      color: var(--text-secondary);
+      font-size: 0.74rem;
+      font-weight: 600;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    .source-filter-chip:hover {
+      color: var(--text-primary);
+      border-color: var(--border-medium);
+    }
+    .source-filter-chip.active {
+      background: var(--accent-teal-soft);
+      border-color: rgba(95, 168, 160, 0.45);
+      color: var(--accent-teal);
+    }
+    .source-filter-chip:focus-visible {
+      outline: 2px solid var(--accent-teal);
+      outline-offset: 2px;
+    }
+    .chip-count {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-faint);
+    }
+    .source-filter-chip.active .chip-count { color: var(--accent-teal); }
+
+    .sources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+    }
+    .source-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      transition: border-color 0.18s, background 0.18s;
+      min-width: 0;
+    }
+    .source-card:hover {
+      border-color: var(--border-medium);
+      background: var(--surface-card-hover);
+    }
+    a.source-card { color: inherit; text-decoration: none; }
+    a.source-card:hover { border-color: var(--border-strong); }
+    a.source-card:focus-visible {
+      outline: 2px solid var(--accent-teal);
+      outline-offset: 2px;
+    }
+    .source-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+      min-width: 0;
+    }
+    .source-badge {
+      font-size: 0.66rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .source-badge.openai { background: rgba(95, 168, 122, 0.14); color: var(--color-success); border: 1px solid rgba(95, 168, 122, 0.3); }
+    .source-badge.anthropic { background: rgba(212, 165, 116, 0.14); color: var(--accent-secondary); border: 1px solid rgba(212, 165, 116, 0.3); }
+    .source-badge.google { background: rgba(143, 184, 212, 0.14); color: var(--host-b-color); border: 1px solid rgba(143, 184, 212, 0.3); }
+    .source-badge.meta { background: rgba(232, 155, 181, 0.14); color: var(--host-a-color); border: 1px solid rgba(232, 155, 181, 0.3); }
+    .source-badge.arxiv { background: rgba(242,236,224,0.06); color: var(--text-secondary); border: 1px solid var(--border-medium); }
+    .source-badge.industry { background: var(--accent-teal-soft); color: var(--accent-teal); border: 1px solid rgba(95, 168, 160, 0.3); }
+    .source-badge.nvidia { background: var(--accent-secondary-soft); color: var(--accent-secondary); border: 1px solid rgba(212, 165, 116, 0.3); }
+    .source-meta {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-faint);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .source-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+    .source-summary {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .sources-expand-bar {
+      margin-top: var(--space-4);
+      display: flex;
+      justify-content: center;
+    }
+    .btn-expand-sources {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-secondary);
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(212, 165, 116, 0.3);
+      background: var(--accent-secondary-soft);
+      transition: all 0.18s;
+      letter-spacing: 0.02em;
+    }
+    .btn-expand-sources:hover {
+      background: rgba(212, 165, 116, 0.22);
+      border-color: rgba(212, 165, 116, 0.5);
+    }
+
+    /* ============================================================
+       RADAR
+       ============================================================ */
+    .radar-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      box-shadow: var(--shadow-card);
+      min-width: 0;
+    }
+    .radar-empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+      text-align: center;
+      padding: var(--space-4) 0;
+    }
+    .radar-visual {
+      width: 140px;
+      height: 140px;
+      position: relative;
+    }
+    .radar-canvas {
+      width: 100%;
+      height: 100%;
+    }
+    .radar-headline {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+    .radar-paragraph {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+    .radar-paragraph strong { color: var(--text-primary); font-weight: 700; }
+    .radar-meta-line {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+    .radar-meta-line .sep { color: var(--text-faint); }
+
+    /* Radar pick state */
+    .radar-pick-state {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      text-align: left;
+    }
+    .radar-pick-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .radar-pick-growth {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-secondary);
+      white-space: nowrap;
+    }
+    .radar-pick-name {
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      word-break: break-all;
+    }
+    .radar-pick-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+    .radar-pick-stars {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--color-success);
+    }
+    .radar-pick-desc {
+      font-size: 0.86rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 68ch;
+    }
+    .radar-pick-action a {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-secondary);
+    }
+    .radar-pick-action a:hover { color: var(--accent-primary); }
+    .radar-pick-action a:focus-visible {
+      outline: 2px solid var(--accent-teal);
+      outline-offset: 2px;
+    }
+    .radar-pick-state[hidden],
+    .radar-empty-state[hidden] { display: none; }
+
+    /* ============================================================
+       DOCKED PLAYER
+       ============================================================ */
+    .docked-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      background: var(--player-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-dock);
+    }
+    .player-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: var(--space-3) var(--space-6);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-4);
+      align-items: center;
+      min-width: 0;
+    }
+    .player-info {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-width: 0;
+    }
+    .player-disc {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--disc-gradient);
+      border: 1px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .player-disc .disc-bars { height: 18px; }
+    .player-disc .disc-bar { width: 2.5px; }
+    .player-text { min-width: 0; }
+    .player-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .player-subtitle {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .player-time {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-faint);
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    .player-time-sep { color: var(--text-faint); }
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+    .player-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(242,236,224,0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      transition: all 0.18s;
+      flex-shrink: 0;
+    }
+    .player-btn:hover { background: rgba(242,236,224,0.1); color: var(--text-primary); }
+    .player-btn.play {
+      width: 38px;
+      height: 38px;
+      background: var(--accent-primary-solid);
+      color: #fff;
+      border: none;
+    }
+    .player-btn.play:hover { background: var(--accent-primary-solid-hover); }
+    .player-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .player-btn.play svg { fill: currentColor; stroke: none; }
+    .player-transcript-btn {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent-secondary);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(212, 165, 116, 0.3);
+      background: var(--accent-secondary-soft);
+      transition: all 0.18s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .player-transcript-btn:hover {
+      background: rgba(212, 165, 116, 0.22);
+      border-color: rgba(212, 165, 116, 0.5);
+    }
+
+    /* ============================================================
+       TRANSCRIPT DRAWER
+       ============================================================ */
+    .transcript-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 420px;
+      max-width: 90vw;
+      background: var(--surface-card);
+      border-left: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-drawer);
+      z-index: 70;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .transcript-drawer.open {
+      transform: translateX(0);
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .drawer-header {
+      padding: var(--space-4) var(--space-5);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .drawer-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--text-primary);
+    }
+    .drawer-close {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: all 0.18s;
+    }
+    .drawer-close:hover { background: rgba(242,236,224,0.06); color: var(--text-primary); }
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-4) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .transcript-line {
+      display: flex;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .transcript-speaker {
+      font-size: 0.72rem;
+      font-weight: 700;
+      width: 32px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .transcript-speaker.host-a { color: var(--host-a-color); }
+    .transcript-speaker.host-b { color: var(--host-b-color); }
+    .transcript-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .transcript-text .timestamp {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-faint);
+      margin-right: var(--space-2);
+    }
+
+    /* Overlay */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 65;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .drawer-overlay.visible { opacity: 1; pointer-events: auto; }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1180px) {
+      /* 01 保持「播客 + 导语」并排，只收窄左栏，不拆组 */
+      .hero-grid { grid-template-columns: 380px 1fr; }
+      .podcast-card { max-width: none; }
+      .sources-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 1024px) {
+      /* 01 进一步收窄左栏，给导语卡留出可读宽度 */
+      .hero-grid { grid-template-columns: 340px 1fr; }
+      /* 02 在窄桌面改为上下排列，编辑短评排在正文之后 */
+      .broadside-grid { grid-template-columns: 1fr; }
+      .broadside-sidebar { order: 0; }
+    }
+    @media (max-width: 900px) {
+      .app-layout { padding: 0 var(--space-4); }
+      .header-inner { padding: var(--space-3) var(--space-4); }
+      .header-nav { display: none; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+      .sources-grid { grid-template-columns: 1fr; }
+      .content-section.tint-cool,
+      .content-section.tint-warm {
+        margin-left: calc(-1 * var(--space-4));
+        margin-right: calc(-1 * var(--space-4));
+        border-radius: 0;
+      }
+    }
+    @media (max-width: 640px) {
+      .brand-subtitle { display: none; }
+      .header-actions .btn-header-pill span.label-text { display: none; }
+    }
+    @media (max-width: 520px) {
+      /* 窄屏日期轴：胶囊独占一行，上一期/下一期在第二行两端 */
+      .shared-date-axis { flex-wrap: wrap; row-gap: var(--space-2); }
+      .date-pills-carousel { order: -1; flex-basis: 100%; }
+      .date-nav-controls { flex: 1 1 0; }
+      .date-nav-controls:last-child { justify-content: flex-end; }
+    }
+    @media (max-width: 390px) {
+      .app-layout { padding: 0 var(--space-3); }
+      .podcast-cta-row { flex-direction: column; }
+      .btn-play-primary, .btn-transcript-cta { width: 100%; justify-content: center; }
+      .metrics-strip { grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+      .metric-value { font-size: 1rem; }
+      .player-inner { grid-template-columns: 1fr; gap: var(--space-2); padding: var(--space-2) var(--space-3); }
+      .player-controls { justify-content: center; }
+      .transcript-drawer { width: 100vw; max-width: 100vw; }
+      .content-section.tint-cool,
+      .content-section.tint-warm {
+        margin-left: calc(-1 * var(--space-3));
+        margin-right: calc(-1 * var(--space-3));
+        border-radius: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    /* Utility */
+  </style>
+  <script>
+    (function() {
+      var saved = localStorage.getItem('theme');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = saved || (prefersDark ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
+</head>
+<body>
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-group">
+        <img src="logo.svg" alt="" class="brand-logo-img" width="34" height="34">
+        <div class="brand-text">
+          <div class="brand-title">
+            今日AI看点
+            <span class="brand-badge">DAILY</span>
+          </div>
+          <div class="brand-subtitle">{{issue_tagline}}</div>
+        </div>
+      </div>
+
+      <nav class="header-nav" aria-label="章节导航">
+        <a href="#section-podcast" class="nav-anchor-link">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          今日主推
+        </a>
+        <a href="#section-report" class="nav-anchor-link">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          深度日报
+        </a>
+        <a href="#section-sources" class="nav-anchor-link">
+          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          信源
+        </a>
+        <a href="#section-radar" class="nav-anchor-link">
+          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          项目雷达
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-header-pill" id="theme-toggle" onclick="toggleTheme()" aria-label="切换深浅主题">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="theme-icon"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <span class="label-text" id="theme-label">深色</span>
+        </button>
+        <a href="./feed.xml" class="btn-header-pill btn-header-rss" target="_blank" rel="noopener" aria-label="RSS 订阅">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+          <span class="label-text">RSS</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN
+       ============================================================ -->
+  <main class="app-layout">
+
+    <!-- Shared Date Axis -->
+    <div class="shared-date-axis">
+      <div class="date-nav-controls">
+        <button class="date-step-btn" id="btn-prev-issue" onclick="stepIssue(1)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          上一期
+        </button>
+      </div>
+      <div class="date-pills-carousel" id="date-pills">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="date-nav-controls">
+        <button class="date-step-btn" id="btn-next-issue" onclick="stepIssue(-1)">
+          下一期
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section id="section-podcast" class="content-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-number">01</span>
+          <div>
+            <h2 class="section-title">今日主推播客</h2>
+            <p class="section-desc">每日一集 · 现场拆解</p>
+          </div>
+        </div>
+        <span class="section-meta">
+          <span class="demo-flag" data-requires="demo_note">{{demo_note}}</span>
+          {{podcast_chapter_count}} 章节
+        </span>
+      </div>
+
+      <div class="hero-grid">
+        <!-- Podcast Card -->
+        <article class="podcast-card">
+          <div class="podcast-cover-row">
+            <div class="podcast-disc">
+              <div class="disc-bars">
+                <div class="disc-bar"></div>
+                <div class="disc-bar"></div>
+                <div class="disc-bar"></div>
+                <div class="disc-bar"></div>
+                <div class="disc-bar"></div>
+              </div>
+            </div>
+            <div class="podcast-title-area">
+              <h3 class="podcast-heading">{{podcast_title}}</h3>
+              <p class="podcast-subhead">{{podcast_subtitle}}</p>
+            </div>
+          </div>
+
+          <div class="host-roster">
+            <span class="host-roster-label">本期主持</span>
+            <div class="host-roster-list" id="host-roster-list"><!-- Rendered by JS --></div>
+          </div>
+
+          <div class="podcast-cta-row">
+            <button class="btn-play-primary" onclick="togglePlay()" aria-pressed="false">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              播放本期
+            </button>
+            <button class="btn-transcript-cta" onclick="openDrawer()">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              逐字稿
+            </button>
+          </div>
+        </article>
+
+        <!-- Editorial Lead Card -->
+        <article class="editorial-card">
+          <div class="editorial-stamp">
+            <div class="stamp-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              编辑导语
+            </div>
+            <span class="stamp-date">{{issue_date}} · {{issue_number}} 期</span>
+          </div>
+          <p class="lead-quote">{{lead_quote}}</p>
+          <div class="metrics-strip">
+            <div class="metric-item">
+              <div class="metric-value">{{metric_sources_value}}<span class="metric-unit">{{metric_sources_unit}}</span></div>
+              <div class="metric-label">{{metric_sources_label}}</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">{{metric_hours_value}}<span class="metric-unit teal">{{metric_hours_unit}}</span></div>
+              <div class="metric-label">{{metric_hours_label}}</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">{{metric_speedup_value}}<span class="metric-unit amber">{{metric_speedup_unit}}</span></div>
+              <div class="metric-label">{{metric_speedup_label}}</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">{{metric_items_value}}<span class="metric-unit teal">{{metric_items_unit}}</span></div>
+              <div class="metric-label">{{metric_items_label}}</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DAILY REPORT
+         ============================================================ -->
+    <section id="section-report" class="content-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-number alt">02</span>
+          <div>
+            <h2 class="section-title">深度日报</h2>
+            <p class="section-desc">长文研判 · 四章拆解</p>
+          </div>
+        </div>
+        <span class="section-meta">{{report_word_count}} 字 · 约 {{report_read_minutes}} 分钟</span>
+      </div>
+
+      <div class="broadside-grid">
+        <div class="broadside-main">
+          <div class="broadside-header">
+            <div class="broadside-meta">
+              <span class="broadside-pill">{{report_pill}}</span>
+            </div>
+            <div class="broadside-toc">
+              <a href="#deep-dive-1" class="broadside-toc-link">{{chapter_1_tag}}</a>
+              <a href="#deep-dive-2" class="broadside-toc-link">{{chapter_2_tag}}</a>
+              <a href="#deep-dive-3" class="broadside-toc-link">{{chapter_3_tag}}</a>
+              <a href="#deep-dive-4" class="broadside-toc-link">{{chapter_4_tag}}</a>
+            </div>
+            <h3 class="broadside-title">{{report_title}}</h3>
+          </div>
+
+          <div class="deep-dive" id="deep-dive-1">
+            <div class="deep-dive-header">
+              <span class="deep-dive-tag">{{chapter_1_tag}}</span>
+              <span class="deep-dive-topic">{{chapter_1_topic}}</span>
+            </div>
+            <h4 class="deep-dive-title">{{chapter_1_title}}</h4>
+            <div class="deep-dive-point">
+              <div class="point-label"><span class="dot"></span>{{chapter_1_point_1_label}}</div>
+              <p class="point-text">{{chapter_1_point_1_text}}</p>
+            </div>
+            <div class="deep-dive-point highlight">
+              <div class="point-label"><span class="dot"></span>{{chapter_1_point_2_label}}</div>
+              <p class="point-text">{{chapter_1_point_2_text}}</p>
+            </div>
+            <div class="deep-dive-point" data-requires="chapter_1_point_3_label,chapter_1_point_3_text">
+              <div class="point-label"><span class="dot"></span>{{chapter_1_point_3_label}}</div>
+              <p class="point-text">{{chapter_1_point_3_text}}</p>
+            </div>
+          </div>
+
+          <div class="deep-dive" id="deep-dive-2">
+            <div class="deep-dive-header">
+              <span class="deep-dive-tag">{{chapter_2_tag}}</span>
+              <span class="deep-dive-topic">{{chapter_2_topic}}</span>
+            </div>
+            <h4 class="deep-dive-title">{{chapter_2_title}}</h4>
+            <div class="deep-dive-point">
+              <div class="point-label"><span class="dot"></span>{{chapter_2_point_1_label}}</div>
+              <p class="point-text">{{chapter_2_point_1_text}}</p>
+            </div>
+            <div class="deep-dive-point highlight">
+              <div class="point-label"><span class="dot"></span>{{chapter_2_point_2_label}}</div>
+              <p class="point-text">{{chapter_2_point_2_text}}</p>
+            </div>
+            <div class="deep-dive-point" data-requires="chapter_2_point_3_label,chapter_2_point_3_text">
+              <div class="point-label"><span class="dot"></span>{{chapter_2_point_3_label}}</div>
+              <p class="point-text">{{chapter_2_point_3_text}}</p>
+            </div>
+          </div>
+
+          <div class="deep-dive" id="deep-dive-3">
+            <div class="deep-dive-header">
+              <span class="deep-dive-tag">{{chapter_3_tag}}</span>
+              <span class="deep-dive-topic">{{chapter_3_topic}}</span>
+            </div>
+            <h4 class="deep-dive-title">{{chapter_3_title}}</h4>
+            <div class="deep-dive-point">
+              <div class="point-label"><span class="dot"></span>{{chapter_3_point_1_label}}</div>
+              <p class="point-text">{{chapter_3_point_1_text}}</p>
+            </div>
+            <div class="deep-dive-point highlight">
+              <div class="point-label"><span class="dot"></span>{{chapter_3_point_2_label}}</div>
+              <p class="point-text">{{chapter_3_point_2_text}}</p>
+            </div>
+            <div class="deep-dive-point" data-requires="chapter_3_point_3_label,chapter_3_point_3_text">
+              <div class="point-label"><span class="dot"></span>{{chapter_3_point_3_label}}</div>
+              <p class="point-text">{{chapter_3_point_3_text}}</p>
+            </div>
+          </div>
+
+          <div class="deep-dive" id="deep-dive-4">
+            <div class="deep-dive-header">
+              <span class="deep-dive-tag">{{chapter_4_tag}}</span>
+              <span class="deep-dive-topic">{{chapter_4_topic}}</span>
+            </div>
+            <h4 class="deep-dive-title">{{chapter_4_title}}</h4>
+            <div class="deep-dive-point">
+              <div class="point-label"><span class="dot"></span>{{chapter_4_point_1_label}}</div>
+              <p class="point-text">{{chapter_4_point_1_text}}</p>
+            </div>
+            <div class="deep-dive-point highlight">
+              <div class="point-label"><span class="dot"></span>{{chapter_4_point_2_label}}</div>
+              <p class="point-text">{{chapter_4_point_2_text}}</p>
+            </div>
+            <div class="deep-dive-point" data-requires="chapter_4_point_3_label,chapter_4_point_3_text">
+              <div class="point-label"><span class="dot"></span>{{chapter_4_point_3_label}}</div>
+              <p class="point-text">{{chapter_4_point_3_text}}</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="broadside-sidebar">
+          <div class="editor-quote-card">
+            <div class="editor-quote-header">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              编辑短评
+            </div>
+            <p class="editor-quote-text">{{editor_quote}}</p>
+            <div class="editor-quote-author">{{editor_name}} · {{editor_role}}</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SOURCES
+         ============================================================ -->
+    <section id="section-sources" class="content-section tint-cool">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-number">03</span>
+          <div>
+            <h2 class="section-title">信源与证据</h2>
+            <p class="section-desc">多源交叉验证 · 可追溯</p>
+          </div>
+        </div>
+        <span class="section-meta" id="sources-count-label"></span>
+      </div>
+
+      <div class="sources-filter" id="sources-filter" role="group" aria-label="按来源筛选">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="sources-grid" id="sources-grid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="sources-expand-bar">
+        <button class="btn-expand-sources" id="btn-expand-sources" onclick="toggleExpandSources()">
+          展开全部
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RADAR
+         ============================================================ -->
+    <section id="section-radar" class="content-section tint-warm">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-number alt">04</span>
+          <div>
+            <h2 class="section-title">GitHub 项目雷达</h2>
+            <p class="section-desc">严苛收录 · 过滤噪音与短期投机</p>
+          </div>
+        </div>
+        <span class="section-meta">今日状态：{{radar_status_label}}</span>
+      </div>
+
+      <div class="radar-card">
+        <div class="radar-empty-state" id="radar-empty">
+          <div class="radar-visual">
+            <canvas id="radarCanvas" class="radar-canvas" width="140" height="140" aria-hidden="true"></canvas>
+          </div>
+          <h3 class="radar-headline">{{radar_headline}}</h3>
+          <p class="radar-paragraph">{{radar_paragraph}}</p>
+          <div class="radar-meta-line">
+            <span>扫描候选 <strong>{{candidate_count}}</strong> 个</span>
+            <span class="sep">·</span>
+            <span>近期已收录排除 <strong>{{excluded_recent}}</strong> 个</span>
+            <span class="sep">·</span>
+            <span>{{radar_reason}}</span>
+          </div>
+        </div>
+
+        <div class="radar-pick-state" id="radar-pick" hidden>
+          <div class="radar-pick-head">
+            <h3 class="radar-pick-name">{{radar_pick_repo}}</h3>
+            <span class="radar-pick-growth">近 7 日 ★ +{{radar_pick_growth}}/天</span>
+          </div>
+          <div class="radar-pick-meta">
+            <span>{{radar_pick_lang}}</span>
+            <span class="sep">·</span>
+            <span class="radar-pick-stars">★ {{radar_pick_stars}}</span>
+            <span class="sep">·</span>
+            <span>{{radar_pick_license}}</span>
+          </div>
+          <p class="radar-pick-desc">{{radar_pick_desc}}</p>
+          <div class="radar-pick-action">
+            <a href="{{radar_pick_url}}" target="_blank" rel="noopener">在 GitHub 查看 ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       DOCKED PLAYER
+       ============================================================ -->
+  <div class="docked-player">
+    <div class="player-inner">
+      <div class="player-info">
+        <div class="player-disc">
+          <div class="disc-bars">
+            <div class="disc-bar"></div>
+            <div class="disc-bar"></div>
+            <div class="disc-bar"></div>
+            <div class="disc-bar"></div>
+            <div class="disc-bar"></div>
+          </div>
+        </div>
+        <div class="player-text">
+          <div class="player-title">{{podcast_title}}</div>
+          <div class="player-subtitle">{{player_subtitle}}</div>
+          <div class="player-time"><span id="player-current">00:00</span><span class="player-time-sep">/</span><span id="player-total">{{podcast_duration}}</span></div>
+        </div>
+      </div>
+      <div class="player-controls">
+        <button class="player-btn" onclick="seek(-15)" aria-label="后退 15 秒">
+          <svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        </button>
+        <button class="player-btn play" onclick="togglePlay()" aria-label="播放" aria-pressed="false">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+        <button class="player-btn" onclick="seek(15)" aria-label="前进 15 秒">
+          <svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        </button>
+        <button class="player-transcript-btn" onclick="openDrawer()">逐字稿</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TRANSCRIPT DRAWER
+       ============================================================ -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+  <aside class="transcript-drawer" id="transcript-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-heading">
+    <div class="drawer-header">
+      <h3 class="drawer-title" id="drawer-heading">本期逐字稿</h3>
+      <button class="drawer-close" onclick="closeDrawer()" aria-label="关闭">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body" id="transcript-body">
+      <!-- Rendered by JS -->
+    </div>
+  </aside>
+
+  <script>
+    /* ============================================================
+       DATA — 后端注入点
+       所有占位符为带引号字符串，保证文件可直接打开；
+       后端替换时，用真实 JSON 覆盖整个 DATA 对象即可。
+       ============================================================ */
+    const ISSUE_286 = {
+      issue_number: "286",
+      issue_date: "2026-10-15",
+      issue_tagline: "AI 前沿 · 每日一刊",
+      podcast_duration: "36:42",
+      podcast_audio_url: "",
+      podcast_chapter_count: "4",
+      podcast_title: "Third Moment 与 Agent Kernel",
+      podcast_subtitle: "双主持对谈 · 今日焦点解读",
+      host_a_name: "林夏",
+      host_b_name: "陈默",
+      lead_quote: "今日全球科技圈呈现出「智能体规模化落地」的清晰主线——NVIDIA 重金押注法国 AI 生态，将 agentic computing 推向欧洲腹地；OpenAI 旗下 Daybreak 安全模型让恶意软件分析从「周级」压缩至「小时级」；Third Moment Research 更首次公开展示了万级 AI 智能体连续运转 36 小时以上的工业级范本。",
+      metric_sources_value: "10,000",
+      metric_sources_unit: "个",
+      metric_sources_label: "扫描信源",
+      metric_hours_value: "36+",
+      metric_hours_unit: "小时",
+      metric_hours_label: "研究时长",
+      metric_speedup_value: "76",
+      metric_speedup_unit: "倍",
+      metric_speedup_label: "效率提升",
+      metric_items_value: "30",
+      metric_items_unit: "条",
+      metric_items_label: "精选条目",
+      report_word_count: "1850",
+      report_read_minutes: "4",
+      report_pill: "深度研判",
+      report_title: "Third Moment：长任务调度的第三时刻",
+      chapter_1_tag: "Third Moment",
+      chapter_1_topic: "长任务调度",
+      chapter_1_title: "Third Moment Research：1 万智能体、36 小时长时任务的工业范本",
+      chapter_1_point_1_label: "事件背景",
+      chapter_1_point_1_text: "AI 安全研究机构 Third Moment Research 公开披露，依托 GPT-6 Astra、GPT-6.1 Sol、Codex 与 Daybreak 四款模型协作，其智能体集群在真实任务中实现 1 万个 Agent 持续运行超 36 小时。",
+      chapter_1_point_2_label: "核心突破",
+      chapter_1_point_2_text: "本次突破同时跨越「规模」与「时长」两条临界线——这是业内首个公开记录的、万级智能体长时协同生产案例。更值得关注的是其「边用边进化」的能力曲线。",
+      chapter_1_point_3_label: "深远影响",
+      chapter_1_point_3_text: "这标志着 AI 正式从「对话工具」过渡为「可托管的虚拟员工」。当智能体能以天为单位自主运转，传统企业的科层组织、SaaS 产品形态乃至 ITO 外包模式，都将面临结构性重构。",
+      chapter_2_tag: "模型军备",
+      chapter_2_topic: "算力主权",
+      chapter_2_title: "NVIDIA 押注法国，智能体计算挺进欧洲纵深",
+      chapter_2_point_1_label: "事件背景",
+      chapter_2_point_1_text: "在欧盟加速推进 AI 主权战略的关键节点，NVIDIA 正式宣布对法国初创企业集群的新一轮重大投资，覆盖航天、金融服务、公共部门与基础科研四大产业方向。",
+      chapter_2_point_2_label: "核心突破",
+      chapter_2_point_2_text: "本次投资最具信号意义的关键词是「agentic computing」（智能体计算）的产业级落地。法国 AI 生态完成了从「国家雄心」到「真实应用」的关键跃迁。",
+      chapter_3_tag: "AI 工具链",
+      chapter_3_topic: "安全模型",
+      chapter_3_title: "SentinelOne × OpenAI Daybreak：恶意软件分析提速千倍",
+      chapter_3_point_1_label: "事件背景",
+      chapter_3_point_1_text: "头部网络安全厂商 SentinelOne 接入 OpenAI Daybreak 模型后，将恶意软件分析周期从原本的数周压缩至数小时。",
+      chapter_3_point_2_label: "深远影响",
+      chapter_3_point_2_text: "释放出可观的高级威胁研究产能，安全运营从「被动响应」转向「主动猎杀」。",
+      chapter_4_tag: "开源生态",
+      chapter_4_topic: "角色 IP",
+      chapter_4_title: "Anthropic Scion：AIGC 角色 IP 化的标志性产品",
+      chapter_4_point_1_label: "事件背景",
+      chapter_4_point_1_text: "Hacker News 高分讨论显示，Anthropic 推出的 AI 角色「Scion」在叙事张力与情感弧线上深度致敬日本动画《物语》系列。",
+      chapter_4_point_2_label: "深远影响",
+      chapter_4_point_2_text: "被业内视为 AIGC 角色 IP 化的标志性产品，AI 从工具向内容创作者身份演进。",
+      editor_quote: "今日新闻看似分散，实则共同勾勒出 AI 产业的「三段式跃迁」图景——底层是算力主权化，中层是模型专用化，上层是智能体规模化。当「运行时长」取代「参数规模」成为新的竞争标尺，企业级 AI 的护城河已悄然迁移。",
+      editor_name: "林夏",
+      editor_role: "主编",
+      sources_list: "[{\"badge\": \"google\", \"badge_label\": \"Google AI Blog\", \"meta\": \"2026-10-15\", \"title\": \"DevFest is back\", \"summary\": \"DevFest is back\"}, {\"badge\": \"nvidia\", \"badge_label\": \"NVIDIA 官方博客\", \"meta\": \"2026-10-15\", \"title\": \"NVIDIA Announces New Investments in France’s Startups\", \"summary\": \"NVIDIA Announces New Investments in France’s Startups\"}, {\"badge\": \"industry\", \"badge_label\": \"Hacker News\", \"meta\": \"2026-10-15\", \"title\": \"Anthropic's Scion is heavily inspired by Mononoke\", \"summary\": \"Anthropic's Scion is heavily inspired by Mononoke\"}, {\"badge\": \"openai\", \"badge_label\": \"OpenAI Blog\", \"meta\": \"2026-10-15\", \"title\": \"SentinelOne cuts malware analysis from weeks to hours\", \"summary\": \"SentinelOne cuts malware analysis from weeks to hours\"}, {\"badge\": \"openai\", \"badge_label\": \"OpenAI Blog\", \"meta\": \"2026-10-15\", \"title\": \"How Third Moment Research runs 10,000 agents for 36+ hours\", \"summary\": \"How Third Moment Research runs 10,000 agents for 36+ hours\"}, {\"badge\": \"openai\", \"badge_label\": \"OpenAI Blog\", \"meta\": \"2026-10-15\", \"title\": \"Asana cuts model costs 76x in browser tests with GPT-6.1 Sol\", \"summary\": \"Asana cuts model costs 76x in browser tests with GPT-6.1 Sol\"}, {\"badge\": \"openai\", \"badge_label\": \"OpenAI Blog\", \"meta\": \"2026-10-15\", \"title\": \"Helping small businesses put AI to work\", \"summary\": \"Helping small businesses put AI to work\"}, {\"badge\": \"openai\", \"badge_label\": \"OpenAI Blog\", \"meta\": \"2026-10-15\", \"title\": \"Introducing GPT-6.1 Sol\", \"summary\": \"Introducing GPT-6.1 Sol\"}, {\"badge\": \"openai\", \"badge_label\": \"OpenAI Blog\", \"meta\": \"2026-10-15\", \"title\": \"Introducing dots\", \"summary\": \"Introducing dots\"}, {\"badge\": \"google\", \"badge_label\": \"Google AI Blog\", \"meta\": \"2026-10-15\", \"title\": \"Watch astronaut Christina Koch and Google’s James Manyika discuss space, technology, and discovery.\", \"summary\": \"Watch astronaut Christina Koch and Google’s James Manyika discuss space, technology, and discovery.\"}, {\"badge\": \"industry\", \"badge_label\": \"HuggingFace Blog\", \"meta\": \"2026-10-15\", \"title\": \"Quantization-Aware Healing: a compressed, 4-bit model that outperforms its full-precision original\", \"summary\": \"Quantization-Aware Healing: a compressed, 4-bit model that outperforms its full-precision original\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv cs.AI\", \"meta\": \"2026-10-15\", \"title\": \"Measuring the Inference Energy Efficiency of Open-Weight LLMs across Benchmarks, Reasoning Modes, and Hardware\", \"summary\": \"Measuring the Inference Energy Efficiency of Open-Weight LLMs across Benchmarks, Reasoning Modes, and Hardware\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv · DeepSeek\", \"meta\": \"2026-10-15\", \"title\": \"Output Discipline Sets the Floor: A Falsification-Guided, Model-Agnostic Agent Protocol for Auditable Hypothesis-Driven Decision Making\", \"summary\": \"Output Discipline Sets the Floor: A Falsification-Guided, Model-Agnostic Agent Protocol for Auditable Hypothesis-Driven Decision Making\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv · DeepSeek\", \"meta\": \"2026-10-15\", \"title\": \"BRQGen: Towards Adaptive Completeness Assessment and Follow-Up Question Generation for Bug Reports\", \"summary\": \"BRQGen: Towards Adaptive Completeness Assessment and Follow-Up Question Generation for Bug Reports\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv · 智谱 GLM\", \"meta\": \"2026-10-15\", \"title\": \"How Narrative Wrapping Affects LLM Refusal: A Cross-Language Benchmark and Defense\", \"summary\": \"How Narrative Wrapping Affects LLM Refusal: A Cross-Language Benchmark and Defense\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv · Mistral/Meta\", \"meta\": \"2026-10-15\", \"title\": \"Beyond Adjacent Layers: Graph-Guided Layer Fusion for Compressing Large Language Models\", \"summary\": \"Beyond Adjacent Layers: Graph-Guided Layer Fusion for Compressing Large Language Models\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv · 上海 AI Lab\", \"meta\": \"2026-10-15\", \"title\": \"LMDeploy Accelerates Mixed-Precision LLM Inference with TurboMind\", \"summary\": \"LMDeploy Accelerates Mixed-Precision LLM Inference with TurboMind\"}, {\"badge\": \"industry\", \"badge_label\": \"量子位\", \"meta\": \"2026-10-15\", \"title\": \"智能不出彩的「领克」，刚靠一次坠崖事故出圈了\", \"summary\": \"智能不出彩的「领克」，刚靠一次坠崖事故出圈了\"}, {\"badge\": \"industry\", \"badge_label\": \"量子位\", \"meta\": \"2026-10-15\", \"title\": \"调度效率提升80%！商汤大装置助力上海量子城市首批智能体落地\", \"summary\": \"调度效率提升80%！商汤大装置助力上海量子城市首批智能体落地\"}, {\"badge\": \"industry\", \"badge_label\": \"量子位\", \"meta\": \"2026-10-15\", \"title\": \"告别资料散落，让知识持续积累：openJiuwen首发个人知识空间，重塑个人办公智能体新体验！\", \"summary\": \"告别资料散落，让知识持续积累：openJiuwen首发个人知识空间，重塑个人办公智能体新体验！\"}, {\"badge\": \"industry\", \"badge_label\": \"少数派\", \"meta\": \"2026-10-15\", \"title\": \"派早报：Apple 发布 HomePod mini 2、HomeView 等新品\", \"summary\": \"派早报：Apple 发布 HomePod mini 2、HomeView 等新品\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv cs.AI\", \"meta\": \"2026-10-15\", \"title\": \"Artificiality's First Exam: An LLM-Referenced C-test for Supraintelligence\", \"summary\": \"Artificiality's First Exam: An LLM-Referenced C-test for Supraintelligence\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv cs.AI\", \"meta\": \"2026-10-15\", \"title\": \"When Pleasing the User Compromises Care: AI Sycophancy in Caregiver-Mediated Healthcare\", \"summary\": \"When Pleasing the User Compromises Care: AI Sycophancy in Caregiver-Mediated Healthcare\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv · DeepSeek\", \"meta\": \"2026-10-15\", \"title\": \"CosmoAgent: AI Agent for Theoretical Cosmology\", \"summary\": \"CosmoAgent: AI Agent for Theoretical Cosmology\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv · DeepSeek\", \"meta\": \"2026-10-15\", \"title\": \"RelLedger: Relational Information Governance for LLM Agent Organizations\", \"summary\": \"RelLedger: Relational Information Governance for LLM Agent Organizations\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv 计算与语言 (cs.CL)\", \"meta\": \"2026-10-15\", \"title\": \"Looking Complete Is Not Being Grounded: Evaluating LLM Sitreps Against Human-Authored Situation Reports\", \"summary\": \"Looking Complete Is Not Being Grounded: Evaluating LLM Sitreps Against Human-Authored Situation Reports\"}, {\"badge\": \"industry\", \"badge_label\": \"TechCrunch AI\", \"meta\": \"2026-10-15\", \"title\": \"Floqer’s AI agents research sales prospects so teams don’t have to\", \"summary\": \"Floqer’s AI agents research sales prospects so teams don’t have to\"}, {\"badge\": \"industry\", \"badge_label\": \"TechCrunch AI\", \"meta\": \"2026-10-15\", \"title\": \"Industrial Next wants factory robots to switch tasks in minutes, not weeks\", \"summary\": \"Industrial Next wants factory robots to switch tasks in minutes, not weeks\"}, {\"badge\": \"industry\", \"badge_label\": \"Hacker News\", \"meta\": \"2026-10-15\", \"title\": \"Nvidia's first GPU: GeForce 256\", \"summary\": \"Nvidia's first GPU: GeForce 256\"}, {\"badge\": \"industry\", \"badge_label\": \"Hacker News\", \"meta\": \"2026-10-15\", \"title\": \"Neckbeard – a DevOps/platform/SRE plugin for your agent\", \"summary\": \"Neckbeard – a DevOps/platform/SRE plugin for your agent\"}]",
+      candidate_count: "12",
+      excluded_recent: "12",
+      radar_status_label: "有主推项目",
+      radar_headline: "今日候选池经多轮筛查，未检出达标项目",
+      radar_paragraph: "本栏目每日严选 1 个具备重大架构革新且近 7 日 Star 增速稳定突破 300/天的优质开源项目。今日全网扫描了一批候选仓库，经工程稳定性、重复收录排查及实际代码审查，均处于评估观察期或版本迁移期，编辑部决定今日宁缺毋滥、轮空主推。",
+      radar_reason: "宁缺毋滥、轮空主推",
+      radar_pick_repo: "microsoft/autogen",
+      radar_pick_lang: "Python",
+      radar_pick_stars: "42.3k",
+      radar_pick_growth: "312",
+      radar_pick_license: "MIT",
+      radar_pick_desc: "微软开源的智能体编排框架，用对话驱动多智能体协作，支持工具调用、代码执行与人工介入。近 7 日 Star 增速持续高于收录阈值，工程活跃度稳定。",
+      radar_pick_url: "https://github.com/microsoft/autogen",
+      player_subtitle: "今日AI看点 · 第 286 期",
+      transcript_list: "[{\"speaker\": \"A\", \"time\": \"00:01\", \"text\": \"听众朋友大家好，欢迎收听今日AI看点，今天是2026年10月15日。我是林夏。\"}, {\"speaker\": \"B\", \"time\": \"00:09\", \"text\": \"大家好，我是陈默。林夏今天气色不错啊。\"}, {\"speaker\": \"A\", \"time\": \"00:13\", \"text\": \"那是，昨晚睡了个好觉。对了陈默，你最近关注智能体这块没有？我跟你说，今天看到个新闻直接把我整不会了。\"}, {\"speaker\": \"B\", \"time\": \"00:21\", \"text\": \"哪个？让我猜猜，是不是Third Moment Research那个万级智能体连续跑 36 小时的？\"}, {\"speaker\": \"A\", \"time\": \"00:28\", \"text\": \"你怎么知道的！我还没说呢！\"}, {\"speaker\": \"B\", \"time\": \"00:32\", \"text\": \"哈，因为我早上就刷到了。说实话这个数字挺震撼的，万级智能体，36 小时不间断，这已经不是我们以前理解的那种\\\"AI跑个demo\\\"了。\"}]",
+    };
+
+    /* 演示用多期样例：字段与后端返回一致，仅用于预览切换效果 */
+    const ISSUE_PATCHES = {
+      "285": {
+        issue_number: "285",
+        issue_date: "2026-10-14",
+        demo_note: "演示样例",
+        podcast_duration: "31:18",
+        podcast_title: "端侧模型的最后一公里",
+        podcast_subtitle: "双主持对谈 · 小模型落地",
+        lead_quote: "今天的讨论集中在「模型往终端走」这条线上：多家厂商把推理能力下放到手机与笔记本，用更小的参数换取更低的能耗；开源权重与商用许可的边界再次被推近；推理框架的竞争点从单纯速度转向兼容性。端侧不再是大模型的补充，正在成为独立的产品形态。",
+        metric_sources_value: "9,200",
+        metric_hours_value: "31",
+        metric_speedup_value: "64",
+        metric_items_value: "26",
+        report_word_count: "1620",
+        report_read_minutes: "4",
+        report_title: "端侧推理：从参数竞赛转向能耗竞赛",
+        chapter_1_tag: "端侧落地",
+        chapter_1_topic: "能耗约束",
+        chapter_1_title: "端侧模型开始按「每瓦性能」重新排位",
+        chapter_1_point_1_label: "事件背景",
+        chapter_1_point_1_text: "过去半年，手机与笔记本厂商把「本地跑模型」作为新卖点，衡量标准从参数量转向单位功耗下的可用输出。",
+        chapter_1_point_2_label: "核心突破",
+        chapter_1_point_2_text: "量化、蒸馏与稀疏化的组合，让中小规模模型在端侧接近云端体验，长文本与多轮对话的稳定性明显改善。",
+        chapter_1_point_3_label: "深远影响",
+        chapter_1_point_3_text: "当推理可以不联网完成，隐私、延迟与成本三条曲线同时改善，应用会从「调用接口」转向「内置能力」。",
+        chapter_2_tag: "开源生态",
+        chapter_2_topic: "权重开放",
+        chapter_2_title: "开源权重与商用许可的边界再次被推近",
+        chapter_2_point_1_label: "事件背景",
+        chapter_2_point_1_text: "多个模型团队在同一周调整了权重开放范围，从「研究可用」扩展到「有限商用」。",
+        chapter_2_point_2_label: "核心突破",
+        chapter_2_point_2_text: "许可条款开始按调用规模分层，而不是简单二分，为中小企业提供了可预期的合规路径。",
+        chapter_3_tag: "工具链",
+        chapter_3_topic: "推理框架",
+        chapter_3_title: "推理框架的竞争力从速度转向兼容性",
+        chapter_3_point_1_label: "事件背景",
+        chapter_3_point_1_text: "主流推理框架在新版本里把重点放在多后端适配与算子覆盖，而非单纯的吞吐提升。",
+        chapter_3_point_2_label: "深远影响",
+        chapter_3_point_2_text: "兼容性成为迁移成本的决定因素，框架之争正在变成生态之争。",
+        chapter_4_tag: "产业观察",
+        chapter_4_topic: "硬件协同",
+        chapter_4_title: "芯片厂商开始向上游模型层延伸",
+        chapter_4_point_1_label: "事件背景",
+        chapter_4_point_1_text: "多家芯片厂商发布面向端侧模型的参考实现，直接参与模型压缩与算子优化。",
+        chapter_4_point_2_label: "深远影响",
+        chapter_4_point_2_text: "硬件与模型的协同设计成为默认动作，单纯卖算力的空间被进一步压缩。",
+        editor_quote: "端侧的竞争不在「能不能跑」，而在「跑得值不值」。当能耗成为硬约束，工程能力比参数规模更能决定产品形态。",
+        sources_list: "[{\"badge\": \"google\", \"badge_label\": \"Google AI Blog\", \"meta\": \"2026-10-14\", \"title\": \"On-device models move into the OS layer\", \"summary\": \"On-device models move into the OS layer\"}, {\"badge\": \"openai\", \"badge_label\": \"OpenAI Blog\", \"meta\": \"2026-10-14\", \"title\": \"Smaller models, steadier latency\", \"summary\": \"Smaller models, steadier latency\"}, {\"badge\": \"meta\", \"badge_label\": \"Meta AI Blog\", \"meta\": \"2026-10-14\", \"title\": \"Open weights with tiered licensing\", \"summary\": \"Open weights with tiered licensing\"}, {\"badge\": \"industry\", \"badge_label\": \"Hacker News\", \"meta\": \"2026-10-14\", \"title\": \"What changed in inference frameworks this week\", \"summary\": \"What changed in inference frameworks this week\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv\", \"meta\": \"2026-10-14\", \"title\": \"Energy-aware quantization for edge inference\", \"summary\": \"Energy-aware quantization for edge inference\"}, {\"badge\": \"industry\", \"badge_label\": \"TechCrunch\", \"meta\": \"2026-10-14\", \"title\": \"Chipmakers move upstream into model tooling\", \"summary\": \"Chipmakers move upstream into model tooling\"}]",
+        candidate_count: "9",
+        excluded_recent: "9",
+        radar_status_label: "无主推项目",
+        radar_pick_repo: "",
+        radar_headline: "候选项目均处于早期验证阶段",
+        radar_paragraph: "今日扫描的候选仓库在架构改动与维护活跃度上均未达到收录阈值，编辑部决定轮空，不做勉强推荐。",
+        player_subtitle: "今日AI看点 · 第 285 期",
+        transcript_list: "[{\"speaker\": \"A\", \"time\": \"00:02\", \"text\": \"欢迎收听，今天我们聊端侧模型这一条线。\"}, {\"speaker\": \"B\", \"time\": \"00:11\", \"text\": \"手机本地跑模型，今年确实能用了。\"}, {\"speaker\": \"A\", \"time\": \"00:24\", \"text\": \"关键不是参数，是每瓦性能。\"}, {\"speaker\": \"B\", \"time\": \"00:38\", \"text\": \"同意，能耗才是真正的硬约束。\"}]"
+      },
+      "284": {
+        issue_number: "284",
+        issue_date: "2026-10-13",
+        demo_note: "演示样例",
+        podcast_duration: "28:05",
+        podcast_title: "多模态内容流水线成形",
+        podcast_subtitle: "双主持对谈 · 内容生产",
+        lead_quote: "今天的主线是「内容生产流水线」：图像、音频与视频模型开始被同一套编排串起来，从单点生成走向可复用的生产流程；与此同时，素材版权与可追溯性被提到产品层面讨论，生成能力之外的工程问题开始显形。",
+        metric_sources_value: "8,400",
+        metric_hours_value: "27",
+        metric_speedup_value: "58",
+        metric_items_value: "24",
+        report_word_count: "1480",
+        report_read_minutes: "4",
+        report_title: "多模态：内容生产从「单点生成」走向「流水线」",
+        chapter_1_tag: "多模态",
+        chapter_1_topic: "内容流水线",
+        chapter_1_title: "一条流水线替代五个工具",
+        chapter_1_point_1_label: "事件背景",
+        chapter_1_point_1_text: "过去一年，团队通常为图像、配音、剪辑分别采购工具，再靠人工串联。",
+        chapter_1_point_2_label: "核心突破",
+        chapter_1_point_2_text: "统一编排层出现后，同一份素材可以在图像、音频与视频之间流转，返工成本显著下降。",
+        chapter_1_point_3_label: "深远影响",
+        chapter_1_point_3_text: "内容团队的组织方式随之变化，岗位边界从「会用某个工具」转向「会设计流程」。",
+        chapter_2_tag: "版权",
+        chapter_2_topic: "可追溯",
+        chapter_2_title: "生成素材的溯源开始成为交付要求",
+        chapter_2_point_1_label: "事件背景",
+        chapter_2_point_1_text: "平台方陆续要求上传者说明素材来源与生成方式。",
+        chapter_2_point_2_label: "深远影响",
+        chapter_2_point_2_text: "水印与元数据从「可选」变成「默认」，工具链需要内建记录能力。",
+        chapter_3_tag: "音频",
+        chapter_3_topic: "实时合成",
+        chapter_3_title: "语音合成的重点转向可控性",
+        chapter_3_point_1_label: "事件背景",
+        chapter_3_point_1_text: "最新的语音模型把重点放在情绪、停顿与多语种切换的可控上。",
+        chapter_3_point_2_label: "深远影响",
+        chapter_3_point_2_text: "播客与有声内容的制作门槛继续下降，但审核成本同时上升。",
+        chapter_4_tag: "视频",
+        chapter_4_topic: "生成时长",
+        chapter_4_title: "视频生成开始比拼「可用时长」",
+        chapter_4_point_1_label: "事件背景",
+        chapter_4_point_1_text: "主流视频模型把单次生成时长从数秒推进到数十秒。",
+        chapter_4_point_2_label: "深远影响",
+        chapter_4_point_2_text: "短片段拼接仍是主流工作流，叙事连贯性依然是瓶颈。",
+        editor_quote: "多模态真正的分水岭不是「能不能生成」，而是「能不能稳定复现」。流水线一旦稳定，创作的门槛会降，审美的门槛会升。",
+        sources_list: "[{\"badge\": \"google\", \"badge_label\": \"Google AI Blog\", \"meta\": \"2026-10-13\", \"title\": \"One pipeline for image, audio and video\", \"summary\": \"One pipeline for image, audio and video\"}, {\"badge\": \"openai\", \"badge_label\": \"OpenAI Blog\", \"meta\": \"2026-10-13\", \"title\": \"Tracing generated assets end to end\", \"summary\": \"Tracing generated assets end to end\"}, {\"badge\": \"meta\", \"badge_label\": \"Meta AI Blog\", \"meta\": \"2026-10-13\", \"title\": \"Controllable speech synthesis\", \"summary\": \"Controllable speech synthesis\"}, {\"badge\": \"industry\", \"badge_label\": \"Hacker News\", \"meta\": \"2026-10-13\", \"title\": \"Video generation gets longer, not more coherent\", \"summary\": \"Video generation gets longer, not more coherent\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv\", \"meta\": \"2026-10-13\", \"title\": \"Provenance metadata for synthetic media\", \"summary\": \"Provenance metadata for synthetic media\"}, {\"badge\": \"industry\", \"badge_label\": \"TechCrunch\", \"meta\": \"2026-10-13\", \"title\": \"Creative teams reorganize around pipelines\", \"summary\": \"Creative teams reorganize around pipelines\"}]",
+        candidate_count: "7",
+        excluded_recent: "7",
+        radar_status_label: "无主推项目",
+        radar_pick_repo: "",
+        radar_headline: "候选仓库尚未形成稳定维护节奏",
+        radar_paragraph: "今日候选项目多处于早期重构阶段，提交频率波动较大，未达到编辑部的收录标准。",
+        player_subtitle: "今日AI看点 · 第 284 期",
+        transcript_list: "[{\"speaker\": \"A\", \"time\": \"00:02\", \"text\": \"今天聊多模态的生产流水线。\"}, {\"speaker\": \"B\", \"time\": \"00:12\", \"text\": \"从单点生成到流水线，差别很大。\"}, {\"speaker\": \"A\", \"time\": \"00:27\", \"text\": \"稳定复现比炫技重要得多。\"}, {\"speaker\": \"B\", \"time\": \"00:41\", \"text\": \"版权和溯源也在变成交付要求。\"}]"
+      },
+      "283": {
+        issue_number: "283",
+        issue_date: "2026-10-12",
+        demo_note: "演示样例",
+        podcast_duration: "33:12",
+        podcast_title: "当合规成为产品功能",
+        podcast_subtitle: "双主持对谈 · 安全与治理",
+        lead_quote: "今天的关键词是「治理落地」：模型能力评估、内容标识与数据流向说明，正从合规文档走进产品界面；企业在采购时开始把可审计性写进验收清单，治理从成本项变成准入项。",
+        metric_sources_value: "7,600",
+        metric_hours_value: "29",
+        metric_speedup_value: "49",
+        metric_items_value: "22",
+        report_word_count: "1560",
+        report_read_minutes: "4",
+        report_title: "AI 治理：合规要求开始进入产品设计层",
+        chapter_1_tag: "合规",
+        chapter_1_topic: "产品化",
+        chapter_1_title: "合规不再是一份附件，而是产品的一部分",
+        chapter_1_point_1_label: "事件背景",
+        chapter_1_point_1_text: "多地监管细则进入执行阶段，企业需要在实际产品中体现可解释与可追溯。",
+        chapter_1_point_2_label: "核心突破",
+        chapter_1_point_2_text: "权限、日志与内容标识被前置到设计阶段，而不是上线后再补。",
+        chapter_1_point_3_label: "深远影响",
+        chapter_1_point_3_text: "合规能力开始影响采购决策，成为供应商的准入门槛。",
+        chapter_2_tag: "安全",
+        chapter_2_topic: "红队",
+        chapter_2_title: "红队测试从项目制转为常态化",
+        chapter_2_point_1_label: "事件背景",
+        chapter_2_point_1_text: "头部团队把红队测试嵌入发布流程，按版本而非按季度执行。",
+        chapter_2_point_2_label: "深远影响",
+        chapter_2_point_2_text: "安全团队与产品团队的协作频率显著提高。",
+        chapter_3_tag: "数据",
+        chapter_3_topic: "流向",
+        chapter_3_title: "数据流向说明成为用户可见信息",
+        chapter_3_point_1_label: "事件背景",
+        chapter_3_point_1_text: "部分产品开始在设置页展示数据用途与保留周期。",
+        chapter_3_point_2_label: "深远影响",
+        chapter_3_point_2_text: "透明度提升带来信任，但也提高了产品文案的维护成本。",
+        chapter_4_tag: "标准",
+        chapter_4_topic: "评估",
+        chapter_4_title: "评估基准的碎片化仍待收敛",
+        chapter_4_point_1_label: "事件背景",
+        chapter_4_point_1_text: "不同机构发布的评测口径差异明显，横向比较困难。",
+        chapter_4_point_2_label: "深远影响",
+        chapter_4_point_2_text: "短期内企业需要自建评估集，长期看行业标准仍会收敛。",
+        editor_quote: "治理的难点从来不是写规则，而是让规则在界面里被看见。能被用户理解的合规，才是真的合规。",
+        sources_list: "[{\"badge\": \"google\", \"badge_label\": \"Google AI Blog\", \"meta\": \"2026-10-12\", \"title\": \"Compliance moves into the product surface\", \"summary\": \"Compliance moves into the product surface\"}, {\"badge\": \"openai\", \"badge_label\": \"OpenAI Blog\", \"meta\": \"2026-10-12\", \"title\": \"Red teaming on every release\", \"summary\": \"Red teaming on every release\"}, {\"badge\": \"meta\", \"badge_label\": \"Meta AI Blog\", \"meta\": \"2026-10-12\", \"title\": \"Showing data flows to users\", \"summary\": \"Showing data flows to users\"}, {\"badge\": \"industry\", \"badge_label\": \"Hacker News\", \"meta\": \"2026-10-12\", \"title\": \"Evaluation benchmarks are still fragmented\", \"summary\": \"Evaluation benchmarks are still fragmented\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv\", \"meta\": \"2026-10-12\", \"title\": \"Auditing model behavior in production\", \"summary\": \"Auditing model behavior in production\"}, {\"badge\": \"industry\", \"badge_label\": \"TechCrunch\", \"meta\": \"2026-10-12\", \"title\": \"Procurement checklists add auditability\", \"summary\": \"Procurement checklists add auditability\"}]",
+        candidate_count: "11",
+        excluded_recent: "11",
+        radar_status_label: "无主推项目",
+        radar_pick_repo: "",
+        radar_headline: "候选池以工具类仓库为主，未达收录阈值",
+        radar_paragraph: "今日候选项目中缺少具备架构级创新的样本，多数为既有工具的二次封装，编辑部决定轮空。",
+        player_subtitle: "今日AI看点 · 第 283 期",
+        transcript_list: "[{\"speaker\": \"A\", \"time\": \"00:02\", \"text\": \"今天的关键词是治理落地。\"}, {\"speaker\": \"B\", \"time\": \"00:14\", \"text\": \"合规开始进产品界面了。\"}, {\"speaker\": \"A\", \"time\": \"00:29\", \"text\": \"可审计性成了采购门槛。\"}, {\"speaker\": \"B\", \"time\": \"00:44\", \"text\": \"标准碎片化还得再等等。\"}]"
+      },
+      "282": {
+        issue_number: "282",
+        issue_date: "2026-10-11",
+        demo_note: "演示样例",
+        podcast_duration: "26:40",
+        podcast_title: "开发者的新工作台",
+        podcast_subtitle: "双主持对谈 · 工具链",
+        lead_quote: "今天的焦点是「开发者的工作台」：代码补全之后，工具开始接管评审、测试与发布环节；围绕仓库上下文的竞争，正在取代单纯的模型能力比较，信任成本成为新的门槛。",
+        metric_sources_value: "6,900",
+        metric_hours_value: "24",
+        metric_speedup_value: "41",
+        metric_items_value: "20",
+        report_word_count: "1380",
+        report_read_minutes: "3",
+        report_title: "开发者工具：从「补全代码」到「接管流程」",
+        chapter_1_tag: "工具链",
+        chapter_1_topic: "流程接管",
+        chapter_1_title: "编码助手开始覆盖评审与测试",
+        chapter_1_point_1_label: "事件背景",
+        chapter_1_point_1_text: "主流编码工具把能力从编辑器扩展到代码评审与自动化测试。",
+        chapter_1_point_2_label: "核心突破",
+        chapter_1_point_2_text: "工具开始读取仓库上下文与历史提交，给出更贴近项目的建议。",
+        chapter_1_point_3_label: "深远影响",
+        chapter_1_point_3_text: "开发者的工作重心从「写」转向「审」，对工具的信任成本成为关键。",
+        chapter_2_tag: "上下文",
+        chapter_2_topic: "检索",
+        chapter_2_title: "仓库级检索决定工具上限",
+        chapter_2_point_1_label: "事件背景",
+        chapter_2_point_1_text: "上下文窗口的扩张并没有解决「找对文件」的问题。",
+        chapter_2_point_2_label: "深远影响",
+        chapter_2_point_2_text: "索引质量与更新时效，成为工具差异化的主要来源。",
+        chapter_3_tag: "协作",
+        chapter_3_topic: "评审",
+        chapter_3_title: "评审环节的自动化仍以辅助为主",
+        chapter_3_point_1_label: "事件背景",
+        chapter_3_point_1_text: "自动评审可以覆盖风格与常见缺陷，但架构判断仍依赖人。",
+        chapter_3_point_2_label: "深远影响",
+        chapter_3_point_2_text: "人机分工在评审环节逐渐清晰。",
+        chapter_4_tag: "生态",
+        chapter_4_topic: "插件",
+        chapter_4_title: "插件生态重新活跃",
+        chapter_4_point_1_label: "事件背景",
+        chapter_4_point_1_text: "多家工具开放扩展接口，第三方集成数量回升。",
+        chapter_4_point_2_label: "深远影响",
+        chapter_4_point_2_text: "工具之争回到生态与工作流习惯。",
+        editor_quote: "工具的边界正在从「帮你写」扩展到「替你跑流程」。真正的分水岭是信任：你敢不敢让它直接改主干。",
+        sources_list: "[{\"badge\": \"google\", \"badge_label\": \"Google AI Blog\", \"meta\": \"2026-10-11\", \"title\": \"Coding tools expand into review and testing\", \"summary\": \"Coding tools expand into review and testing\"}, {\"badge\": \"openai\", \"badge_label\": \"OpenAI Blog\", \"meta\": \"2026-10-11\", \"title\": \"Repository context beats bigger windows\", \"summary\": \"Repository context beats bigger windows\"}, {\"badge\": \"meta\", \"badge_label\": \"Meta AI Blog\", \"meta\": \"2026-10-11\", \"title\": \"Automated review stays assistive\", \"summary\": \"Automated review stays assistive\"}, {\"badge\": \"industry\", \"badge_label\": \"Hacker News\", \"meta\": \"2026-10-11\", \"title\": \"Plugin ecosystems are back\", \"summary\": \"Plugin ecosystems are back\"}, {\"badge\": \"arxiv\", \"badge_label\": \"arXiv\", \"meta\": \"2026-10-11\", \"title\": \"Retrieval quality for code assistants\", \"summary\": \"Retrieval quality for code assistants\"}, {\"badge\": \"industry\", \"badge_label\": \"TechCrunch\", \"meta\": \"2026-10-11\", \"title\": \"Developers trust, then delegate\", \"summary\": \"Developers trust, then delegate\"}]",
+        candidate_count: "8",
+        excluded_recent: "8",
+        radar_status_label: "无主推项目",
+        radar_pick_repo: "",
+        radar_headline: "候选仓库多为实验性项目，稳定性不足",
+        radar_paragraph: "今日候选项目普遍缺少持续提交与测试覆盖，尚不足以支撑每日推荐，编辑部决定轮空。",
+        player_subtitle: "今日AI看点 · 第 282 期",
+        transcript_list: "[{\"speaker\": \"A\", \"time\": \"00:02\", \"text\": \"今天聊开发者的工作台。\"}, {\"speaker\": \"B\", \"time\": \"00:15\", \"text\": \"编码助手开始接管评审和测试。\"}, {\"speaker\": \"A\", \"time\": \"00:30\", \"text\": \"上下文质量决定工具上限。\"}, {\"speaker\": \"B\", \"time\": \"00:45\", \"text\": \"信任成本才是真正的关键。\"}]"
+      }
+    };
+
+    const ISSUE_ORDER = ["286", "285", "284", "283", "282"];
+    let DATA = Object.assign({}, ISSUE_286);
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateThemeUI(next);
+    }
+    function updateThemeUI(theme) {
+      const label = document.getElementById('theme-label');
+      const icon = document.getElementById('theme-icon');
+      if (label) label.textContent = theme === 'dark' ? '浅色' : '深色';
+      if (icon) {
+        /* 图标表示「点击后切到哪套主题」：深色时显示太阳，浅色时显示月亮 */
+        icon.innerHTML = theme === 'dark'
+          ? '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
+          : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+      }
+    }
+    /* update on load */
+    (function() { updateThemeUI(document.documentElement.getAttribute('data-theme') || 'light'); })();
+    let isPlaying = false;
+    let sourcesExpanded = false;
+    let sourceFilter = 'all';
+    let playTimer = null;
+    let currentTime = 0;
+    let audioEl = null;
+    let audioDuration = 0;
+
+    const PLAY_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+    const PAUSE_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+
+    /* 有 podcast_audio_url 时走真实音频；没有时退化为模拟时钟，保证时间码与前后 15 秒可感知 */
+    function audioUrl() {
+      const u = DATA.podcast_audio_url;
+      if (typeof u !== 'string') return '';
+      const t = u.trim();
+      return (!t || t.startsWith('{{')) ? '' : t;
+    }
+    function hasAudio() { return !!audioUrl(); }
+
+    function ensureAudio() {
+      const url = audioUrl();
+      if (!url) return null;
+      if (audioEl && audioEl.dataset.src === url) return audioEl;
+      if (audioEl) audioEl.pause();
+      audioEl = new Audio(url);
+      audioEl.dataset.src = url;
+      audioEl.preload = 'metadata';
+      audioEl.addEventListener('loadedmetadata', function() {
+        if (isFinite(audioEl.duration)) { audioDuration = audioEl.duration; renderClock(); }
+      });
+      audioEl.addEventListener('timeupdate', function() {
+        if (!audioEl) return;
+        currentTime = audioEl.currentTime;
+        renderClock();
+      });
+      audioEl.addEventListener('ended', function() { setPlaying(false); });
+      return audioEl;
+    }
+
+    function durationSeconds() {
+      if (hasAudio()) {
+        if (audioDuration) return audioDuration;
+        if (audioEl && isFinite(audioEl.duration)) return audioEl.duration;
+      }
+      const parts = String(DATA.podcast_duration || '').split(':').map(Number);
+      return parts.length === 2 && parts.every(n => !isNaN(n)) ? parts[0] * 60 + parts[1] : 0;
+    }
+    function formatClock(sec) {
+      if (!isFinite(sec)) return '00:00';
+      const s = Math.max(0, Math.round(sec));
+      return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+    }
+    function renderClock() {
+      const cur = document.getElementById('player-current');
+      if (cur) cur.textContent = formatClock(currentTime);
+      const total = document.getElementById('player-total');
+      if (total) {
+        const totalSec = durationSeconds();
+        total.textContent = totalSec ? formatClock(totalSec) : (DATA.podcast_duration || '00:00');
+      }
+    }
+    function seek(delta) {
+      if (audioEl && isFinite(audioEl.duration)) {
+        audioEl.currentTime = Math.max(0, Math.min(audioEl.currentTime + delta, audioEl.duration));
+        currentTime = audioEl.currentTime;
+      } else {
+        const total = durationSeconds();
+        currentTime = Math.max(0, Math.min(currentTime + delta, total || currentTime));
+      }
+      renderClock();
+    }
+    function stopClock() {
+      if (playTimer) { clearInterval(playTimer); playTimer = null; }
+    }
+    function startClock() {
+      stopClock();
+      playTimer = setInterval(function() {
+        const total = durationSeconds();
+        if (total && currentTime >= total) { setPlaying(false); return; }
+        currentTime = total ? Math.min(currentTime + 1, total) : currentTime + 1;
+        renderClock();
+      }, 1000);
+    }
+
+    /* 首屏与底部播放器共用一个播放状态，任何一处点击后两处按钮同步 */
+    function togglePlay() { setPlaying(!isPlaying); }
+
+    function setPlaying(next) {
+      isPlaying = next;
+
+      document.querySelectorAll('.podcast-disc, .player-disc')
+        .forEach(d => d.classList.toggle('is-playing', isPlaying));
+
+      const heroBtn = document.querySelector('.btn-play-primary');
+      if (heroBtn) {
+        heroBtn.innerHTML = isPlaying ? PAUSE_ICON + ' 暂停' : PLAY_ICON + ' 播放本期';
+        heroBtn.setAttribute('aria-pressed', String(isPlaying));
+      }
+
+      const dockBtn = document.querySelector('.player-btn.play');
+      if (dockBtn) {
+        dockBtn.innerHTML = isPlaying ? PAUSE_ICON : PLAY_ICON;
+        dockBtn.setAttribute('aria-label', isPlaying ? '暂停' : '播放');
+        dockBtn.setAttribute('aria-pressed', String(isPlaying));
+      }
+
+      if (isPlaying) {
+        const a = ensureAudio();
+        if (a) {
+          stopClock();
+          if (currentTime) a.currentTime = Math.min(currentTime, isFinite(a.duration) ? a.duration : currentTime);
+          const p = a.play();
+          if (p && p.catch) p.catch(function() { /* 自动播放被拦截时保持暂停态 */ setPlaying(false); });
+        } else {
+          startClock();
+        }
+      } else {
+        if (audioEl) audioEl.pause();
+        stopClock();
+      }
+    }
+
+    let drawerReturnFocus = null;
+    function openDrawer() {
+      drawerReturnFocus = document.activeElement;
+      document.getElementById('transcript-drawer').classList.add('open');
+      document.getElementById('drawer-overlay').classList.add('visible');
+      document.body.style.overflow = 'hidden';
+      const closeBtn = document.querySelector('.drawer-close');
+      if (closeBtn) closeBtn.focus();
+    }
+    function closeDrawer() {
+      document.getElementById('transcript-drawer').classList.remove('open');
+      document.getElementById('drawer-overlay').classList.remove('visible');
+      document.body.style.overflow = '';
+      if (drawerReturnFocus && typeof drawerReturnFocus.focus === 'function') {
+        drawerReturnFocus.focus();
+      }
+      drawerReturnFocus = null;
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeDrawer();
+    });
+
+    function toggleExpandSources() {
+      sourcesExpanded = !sourcesExpanded;
+      renderSources();
+    }
+
+    /* ISSUE_ORDER 为「新 → 旧」排列：上一期 = 更旧（索引 +1），下一期 = 更新（索引 -1） */
+    function stepIssue(delta) {
+      const idx = ISSUE_ORDER.indexOf(DATA.issue_number);
+      const next = idx + delta;
+      if (idx < 0 || next < 0 || next >= ISSUE_ORDER.length) return;
+      switchIssue(ISSUE_ORDER[next]);
+    }
+
+    function updateDateNav() {
+      const idx = ISSUE_ORDER.indexOf(DATA.issue_number);
+      const prevBtn = document.getElementById('btn-prev-issue');
+      const nextBtn = document.getElementById('btn-next-issue');
+      if (prevBtn) prevBtn.disabled = idx >= ISSUE_ORDER.length - 1;
+      if (nextBtn) nextBtn.disabled = idx <= 0;
+    }
+
+    function switchIssue(id) {
+      if (!id || id === DATA.issue_number || ISSUE_ORDER.indexOf(id) === -1) return;
+
+      DATA = Object.assign({}, ISSUE_286, ISSUE_PATCHES[id] || {}, { issue_number: id });
+      sourcesExpanded = false;
+      sourceFilter = 'all';
+      currentTime = 0;
+      /* 切期时释放上一期的音频，避免旧音频继续播放 */
+      if (audioEl) { audioEl.pause(); audioEl.src = ''; audioEl = null; }
+      audioDuration = 0;
+      setPlaying(false);
+      renderClock();
+      hydrate();
+      renderDatePills();
+      updateDateNav();
+      renderHosts();
+      renderSourceFilters();
+      renderSources();
+      renderTranscript();
+      renderRadar();
+
+      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+
+    /* Render date pills — 期号列表由 ISSUE_ORDER 驱动 */
+    function renderDatePills() {
+      const container = document.getElementById('date-pills');
+      if (!container) return;
+      container.innerHTML = ISSUE_ORDER.map(id => {
+        const issue = Object.assign({}, ISSUE_286, ISSUE_PATCHES[id] || {});
+        const label = String(issue.issue_date || '').slice(5);
+        const active = id === DATA.issue_number;
+        return '<button class="date-pill' + (active ? ' active' : '') + '"' +
+          ' onclick="selectIssue(\'' + id + '\')" aria-pressed="' + active + '">' + label + '</button>';
+      }).join('');
+    }
+
+    const SOURCE_ORIGINS = {
+      'Google AI Blog': 'https://blog.google/technology/ai/',
+      'OpenAI Blog': 'https://openai.com/news/',
+      'Meta AI Blog': 'https://ai.meta.com/blog/',
+      'NVIDIA 官方博客': 'https://blogs.nvidia.com/',
+      'Hacker News': 'https://news.ycombinator.com/',
+      'TechCrunch': 'https://techcrunch.com/',
+      'arXiv': 'https://arxiv.org/',
+      google: 'https://blog.google/technology/ai/',
+      openai: 'https://openai.com/news/',
+      meta: 'https://ai.meta.com/blog/',
+      arxiv: 'https://arxiv.org/',
+      nvidia: 'https://blogs.nvidia.com/',
+      anthropic: 'https://www.anthropic.com/news'
+    };
+
+    function selectIssue(id) { switchIssue(id); }
+
+    const BADGE_LABELS = {
+      openai: 'OpenAI',
+      google: 'Google',
+      meta: 'Meta',
+      arxiv: 'arXiv',
+      anthropic: 'Anthropic',
+      nvidia: 'NVIDIA',
+      industry: '行业媒体'
+    };
+
+    function filteredSources() {
+      const all = safeParse(DATA.sources_list, []);
+      return sourceFilter === 'all'
+        ? all
+        : all.filter(s => (s.badge || 'industry') === sourceFilter);
+    }
+
+    /* 来源分类统计 + 筛选 */
+    function renderSourceFilters() {
+      const bar = document.getElementById('sources-filter');
+      if (!bar) return;
+      const all = safeParse(DATA.sources_list, []);
+      const counts = {};
+      all.forEach(s => {
+        const key = s.badge || 'industry';
+        counts[key] = (counts[key] || 0) + 1;
+      });
+      const chips = [{ key: 'all', label: '全部', count: all.length }].concat(
+        Object.keys(counts)
+          .sort((a, b) => counts[b] - counts[a])
+          .map(key => ({ key, label: BADGE_LABELS[key] || key, count: counts[key] }))
+      );
+      bar.innerHTML = chips.map(c =>
+        '<button type="button" class="source-filter-chip' + (sourceFilter === c.key ? ' active' : '') + '"' +
+        ' onclick="setSourceFilter(\'' + c.key + '\')" aria-pressed="' + (sourceFilter === c.key) + '">' +
+        c.label + '<span class="chip-count">' + c.count + '</span></button>'
+      ).join('');
+    }
+
+    function setSourceFilter(key) {
+      sourceFilter = key;
+      sourcesExpanded = false;
+      renderSources();
+      renderSourceFilters();
+    }
+
+    /* Render sources — 有 url 用 url，否则回落到来源站点首页 */
+    function renderSources() {
+      const grid = document.getElementById('sources-grid');
+      if (!grid) return;
+      const sources = filteredSources();
+      grid.innerHTML = sources.map((s, i) => {
+        const hidden = (i >= 6 && !sourcesExpanded) ? ' style="display:none"' : '';
+        const href = s.url || SOURCE_ORIGINS[s.badge_label] || SOURCE_ORIGINS[s.badge] || '';
+        const title = s.title || '';
+        const summary = s.summary || '';
+        const inner =
+          '<div class="source-card-header">' +
+          '<span class="source-badge ' + (s.badge || 'industry') + '">' + (s.badge_label || '') + '</span>' +
+          '<span class="source-meta">' + (s.meta || '') + '</span>' +
+          '</div>' +
+          '<div class="source-title">' + title + '</div>' +
+          (summary && summary !== title ? '<div class="source-summary">' + summary + '</div>' : '');
+        if (!href) return '<article class="source-card"' + hidden + '>' + inner + '</article>';
+        return '<a class="source-card" href="' + href + '" target="_blank" rel="noopener"' + hidden + '>' + inner + '</a>';
+      }).join('');
+
+      const btn = document.getElementById('btn-expand-sources');
+      if (btn) btn.textContent = sourcesExpanded ? '收起信源' : '展开全部';
+
+      const label = document.getElementById('sources-count-label');
+      if (label) label.textContent = sources.length + ' 条信源';
+    }
+
+    /* 雷达：有主推数据时渲染主推卡，否则保留轮空态 */
+    function renderRadar() {
+      const empty = document.getElementById('radar-empty');
+      const pick = document.getElementById('radar-pick');
+      if (!empty || !pick) return;
+      const hasPick = !!(DATA.radar_pick_repo && String(DATA.radar_pick_repo).trim());
+      empty.hidden = hasPick;
+      pick.hidden = !hasPick;
+      if (hasPick) stopRadar(); else startRadar();
+    }
+
+    /* 主持人由数据驱动，roster 与逐字稿头像共用同一份姓名 */
+    function hostInitial(name) {
+      return String(name || '').trim().slice(0, 1) || '·';
+    }
+    function renderHosts() {
+      const list = document.getElementById('host-roster-list');
+      if (!list) return;
+      list.innerHTML = [
+        { cls: 'host-a', name: DATA.host_a_name },
+        { cls: 'host-b', name: DATA.host_b_name }
+      ].filter(h => h.name && String(h.name).trim()).map(h =>
+        '<span class="host-identity">' +
+        '<span class="host-avatar ' + h.cls + '">' + hostInitial(h.name) + '</span>' +
+        '<span class="host-name">' + h.name + '</span>' +
+        '</span>'
+      ).join('');
+    }
+
+    /* Render transcript */
+    function renderTranscript() {
+      const body = document.getElementById('transcript-body');
+      if (!body) return;
+      const lines = safeParse(DATA.transcript_list, []);
+      body.innerHTML = lines.map(l => {
+        const isA = l.speaker === 'A';
+        const name = isA ? DATA.host_a_name : DATA.host_b_name;
+        return '<div class="transcript-line">' +
+          '<span class="transcript-speaker ' + (isA ? 'host-a' : 'host-b') + '">' + hostInitial(name) + '</span>' +
+          '<div class="transcript-text"><span class="timestamp">' + (l.time || '') + '</span>' + (l.text || '') + '</div>' +
+          '</div>';
+      }).join('');
+    }
+
+    /* Radar canvas animation */
+    let radarRAF = null;
+    let radarAngle = 0;
+    let radarCanvas = null;
+    let radarCtx = null;
+
+    function radarReducedMotion() {
+      return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    function drawRadarFrame() {
+      if (!radarCtx || !radarCanvas) return;
+      const ctx = radarCtx;
+      const canvas = radarCanvas;
+      const cx = canvas.width / 2, cy = canvas.height / 2;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // rings
+      for (let r = 20; r <= 60; r += 20) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(212, 165, 116, 0.15)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      // cross
+      ctx.strokeStyle = 'rgba(212, 165, 116, 0.1)';
+      ctx.beginPath();
+      ctx.moveTo(cx, 0); ctx.lineTo(cx, canvas.height);
+      ctx.moveTo(0, cy); ctx.lineTo(canvas.width, cy);
+      ctx.stroke();
+      // sweep
+      const grad = ctx.createConicGradient(radarAngle, cx, cy);
+      grad.addColorStop(0, 'rgba(217, 74, 43, 0.35)');
+      grad.addColorStop(0.15, 'rgba(217, 74, 43, 0)');
+      grad.addColorStop(1, 'rgba(217, 74, 43, 0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, 60, radarAngle - 0.5, radarAngle);
+      ctx.closePath();
+      ctx.fill();
+      // center dot
+      ctx.beginPath();
+      ctx.arc(cx, cy, 3, 0, Math.PI * 2);
+      ctx.fillStyle = '#d94a2b';
+      ctx.fill();
+      radarAngle += 0.02;
+    }
+
+    function radarTick() {
+      drawRadarFrame();
+      radarRAF = requestAnimationFrame(radarTick);
+    }
+
+    function startRadar() {
+      if (!radarCanvas || radarRAF) return;
+      if (radarReducedMotion()) { drawRadarFrame(); return; }
+      radarRAF = requestAnimationFrame(radarTick);
+    }
+
+    function stopRadar() {
+      if (radarRAF) { cancelAnimationFrame(radarRAF); radarRAF = null; }
+    }
+
+    function initRadar() {
+      radarCanvas = document.getElementById('radarCanvas');
+      if (!radarCanvas) return;
+      radarCtx = radarCanvas.getContext('2d');
+      /* 主推态时轮空画布是隐藏的，不启动动画 */
+      const empty = document.getElementById('radar-empty');
+      if (empty && empty.hidden) return;
+      startRadar();
+    }
+
+    function safeParse(str, fallback) {
+      if (typeof str !== 'string') return (str == null ? fallback : str);
+      const s = str.trim();
+      if (!s || s.startsWith('{{')) return fallback;
+      try { return JSON.parse(s); } catch (e) { return fallback; }
+    }
+
+
+    /* Hydrate {{...}} placeholders in DOM with DATA values (preview mode)
+       首次运行时缓存模板文本，切换期号后可重复渲染 */
+    let titleTemplate = null;
+
+    function fieldValue(key) {
+      const v = DATA[key];
+      if (v == null) return null;
+      const text = String(v);
+      /* 空字符串表示「这一项确实没有」，渲染为空；未注入的模板占位符保持原样 */
+      if (text.trim().startsWith('{{')) return null;
+      return text;
+    }
+
+    function hydrate() {
+      const roots = [document.head, document.body];
+      roots.forEach(root => {
+        if (!root) return;
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(node => {
+          if (node.__tpl == null) {
+            if (!node.nodeValue || node.nodeValue.indexOf('{{') === -1) return;
+            node.__tpl = node.nodeValue;
+          }
+          node.nodeValue = node.__tpl.replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (m, key) => {
+            const v = fieldValue(key);
+            return v === null ? m : v;
+          });
+        });
+      });
+
+      document.querySelectorAll('*').forEach(el => {
+        if (el.__attrTpl == null) {
+          const tpl = {};
+          for (const attr of Array.from(el.attributes)) {
+            if (attr.value && attr.value.indexOf('{{') !== -1) tpl[attr.name] = attr.value;
+          }
+          if (!Object.keys(tpl).length) return;
+          el.__attrTpl = tpl;
+        }
+        Object.keys(el.__attrTpl).forEach(name => {
+          el.setAttribute(name, el.__attrTpl[name].replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (m, key) => {
+            const v = fieldValue(key);
+            return v === null ? m : v;
+          }));
+        });
+      });
+
+      if (titleTemplate === null && document.title.indexOf('{{') !== -1) {
+        titleTemplate = document.title;
+      }
+      if (titleTemplate) {
+        document.title = titleTemplate.replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (m, key) => {
+          const v = fieldValue(key);
+          return v === null ? m : v;
+        });
+      }
+
+      /* 可选内容块：data-requires 里的字段全部为空时隐藏，避免残留占位符或空行 */
+      document.querySelectorAll('[data-requires]').forEach(el => {
+        const keys = el.getAttribute('data-requires').split(',');
+        const hasContent = keys.some(k => {
+          const v = fieldValue(k.trim());
+          return v !== null && v.trim() !== '';
+        });
+        el.hidden = !hasContent;
+      });
+    }
+
+    /* Init */
+    document.addEventListener('DOMContentLoaded', function() {
+      hydrate();
+      renderDatePills();
+      updateDateNav();
+      renderHosts();
+      renderSourceFilters();
+      renderSources();
+      renderTranscript();
+      renderRadar();
+      initRadar();
+      renderClock();
+    });
+  </script>
+</body>
+</html>

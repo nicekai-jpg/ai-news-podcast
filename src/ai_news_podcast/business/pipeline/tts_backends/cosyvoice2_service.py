@@ -167,6 +167,14 @@ class CosyVoice2Backend(TTSBackend):
             chunk_variant_names: list[list[str]] = []
 
             for idx, chunk in enumerate(chunks, start=1):
+                # 心跳日志：GHA 里能区分“合成慢”和“卡死”，也方便估算剩余时间
+                log.info(
+                    "TTS progress %d/%d (host=%s, chars=%d)",
+                    idx,
+                    len(chunks),
+                    chunk.host,
+                    len(chunk.text),
+                )
                 sentences = split_text_into_sentences(chunk.text, max_chars=80)
                 vars_for_chunk = host_variant_map[chunk.host]
                 chunk_variant_names.append(vars_for_chunk)

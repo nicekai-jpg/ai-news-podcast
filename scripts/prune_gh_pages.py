@@ -9,6 +9,7 @@ import json
 # Setup logging
 import logging
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -18,10 +19,15 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(me
 log = logging.getLogger("prune_gh_pages")
 
 
+def _redact(cmd: list[str]) -> str:
+    """日志里隐藏 remote URL 里的 token。"""
+    return " ".join(re.sub(r"x-access-token:[^@]*@", "x-access-token:***@", part) for part in cmd)
+
+
 def run_cmd(
     cmd: list[str], cwd: Path | None = None, check: bool = True
 ) -> subprocess.CompletedProcess[str]:
-    log.info("Running command: %s", " ".join(cmd))
+    log.info("Running command: %s", _redact(cmd))
     res = subprocess.run(cmd, cwd=cwd, text=True, capture_output=True, check=False)
     if check and res.returncode != 0:
         log.error(
@@ -109,12 +115,18 @@ def backup_valid_episodes(root_dir: Path, clone_dir: Path, valid_ids: set[str]) 
                     shutil.copy2(file_path, backup_dir / file_name)
                     backed_up_count += 1
 
-            # Backup chunk folder
+            # 只备份 playlist.json：分块音频新播放器已不用，留着只会让 gh-pages 无限膨胀
             chunk_folder = source_episodes_dir / eid
-            if chunk_folder.exists() and chunk_folder.is_dir():
-                shutil.copytree(chunk_folder, backup_dir / eid)
-                log.info("Backed up chunk folder for episode: %s", eid)
+            playlist = chunk_folder / "playlist.json"
+            if playlist.exists():
+                (backup_dir / eid).mkdir(parents=True, exist_ok=True)
+                shutil.copy2(playlist, backup_dir / eid / "playlist.json")
                 backed_up_count += 1
+            elif chunk_folder.exists():
+                log.warning("episode %s has no playlist.json (chunk audio will be dropped)", eid)
+
+            if not (source_episodes_dir / f"{eid}.mp3").exists():
+                log.warning("episode %s has no mp3 on gh-pages before prune", eid)
     log.info("Backup complete. Total items backed up: %d", backed_up_count)
     return backup_dir
 

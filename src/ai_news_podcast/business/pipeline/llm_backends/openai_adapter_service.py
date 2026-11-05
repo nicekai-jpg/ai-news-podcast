@@ -91,5 +91,16 @@ class OpenAILLMBackend(LLMBackend):
             except (httpx.HTTPError, json.JSONDecodeError, OSError, ValueError, RuntimeError) as e:
                 logger.warning("LLM 调用失败 (第 %d 次重试): %s", attempt + 1, e)
                 time.sleep((attempt + 1) * 2)
+            except Exception as e:
+                # OpenAI SDK 的 APITimeoutError / RateLimitError / APIStatusError 不是
+                # httpx.HTTPError 子类；不兜住会让 writer/TTS 直接崩掉，而不是降级 fallback。
+                logger.warning(
+                    "LLM 调用异常 (第 %d 次重试, %s): %s",
+                    attempt + 1,
+                    type(e).__name__,
+                    e,
+                )
+                time.sleep((attempt + 1) * 2)
 
+        logger.error("LLM 连续 %d 次调用失败，返回 None 交由上层降级", max_retries)
         return None

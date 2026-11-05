@@ -10,7 +10,7 @@ from zoneinfo import ZoneInfo
 
 from ai_news_podcast.business.pipeline.podcast_writer_service import generate_podcast
 from ai_news_podcast.data.config.models_dao import AppConfig
-from ai_news_podcast.data.text_utils_dao import clean_tts_text
+from ai_news_podcast.data.text_utils_dao import clean_tts_text_preserving_chapters
 from ai_news_podcast.data.utils_dao import write_text
 from ai_news_podcast.presentation.cli.base_controller import AsyncCommand
 
@@ -60,9 +60,10 @@ class WriterCommand(AsyncCommand):
         episodes_dir.mkdir(parents=True, exist_ok=True)
 
         transcript_path = episodes_dir / f"{date_str}.txt"
-        clean_transcript = clean_tts_text(podcast_text) + "\n"
-        write_text(transcript_path, clean_transcript)
-        print(f"Script saved: {transcript_path} ({len(clean_transcript)} chars)")
+        # 兜底再清洗一次，但必须保住 [CHAPTER] 章节行（clean_tts_text 会把章节当普通中括号删掉）
+        final_script = clean_tts_text_preserving_chapters(podcast_text).rstrip("\n") + "\n"
+        write_text(transcript_path, final_script)
+        print(f"Script saved: {transcript_path} ({len(final_script)} chars)")
 
         return 0
 

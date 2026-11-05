@@ -40,7 +40,9 @@ def mix_bgm(
     audio_segment_cls = pydub.AudioSegment
 
     if not bgm_path or not Path(bgm_path).exists():
-        return vocal_segment
+        # 没有 BGM 也要加同样的 lead-in：assemble_dialogue_audio 的时间轴是从
+        # vocal_pad_ms 起算的，这里不加会导致 playlist/字幕整体比 mp3 晚 1 秒。
+        return audio_segment_cls.silent(duration=vocal_pad_ms) + vocal_segment
 
     bgm = audio_segment_cls.from_file(bgm_path)
 

@@ -40,17 +40,14 @@ def main() -> int:
     # 每期 digest + 日历：失败只告警，不影响站点重建
     from ai_news_podcast.presentation.site_builder.digest_view import write_digest_outputs
 
-    try:
-        write_digest_outputs(
-            ROOT,
-            episodes,
-            cfg,
-            base_url,
-            site_dir=site_dir,
-            episodes_dir=ROOT / str(cfg.build.episodes_dir),
-        )
-    except Exception:
-        log.warning("digest generation failed; continuing redeploy", exc_info=True)
+    write_digest_outputs(
+        ROOT,
+        episodes,
+        cfg,
+        base_url,
+        site_dir=site_dir,
+        episodes_dir=ROOT / str(cfg.build.episodes_dir),
+    )
 
     feed_xml = build_feed_xml(
         base_url=base_url,

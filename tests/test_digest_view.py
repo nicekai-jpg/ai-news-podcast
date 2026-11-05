@@ -394,3 +394,14 @@ class TestWriteOutputs:
         )
         assert not (data_dir / "digest_2026-01-01.json").exists()
         assert (data_dir / "digest_2026-10-15.json").exists()
+
+
+class TestCalendarAvailability:
+    def test_availability_comes_from_generated_digests(self) -> None:
+        cal = build_calendar(
+            episodes=[{"id": "2026-10-15", "title": "t"}, {"id": "2026-10-14", "title": "t2"}],
+            availability_by_date={"2026-10-15": {"podcast": True, "report": False}},
+        )
+        first, second = cal["dates"]
+        assert first["availability"] == {"podcast": True, "report": False}
+        assert second["availability"]["podcast"] is False

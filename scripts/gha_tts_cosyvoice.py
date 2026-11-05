@@ -57,7 +57,7 @@ async def main() -> int:
         script_text,
         backend="cosyvoice2",
         output_path=output_path,
-        transcript_path=script_path,
+        # 不要把清洗后的 transcript 写回源脚本：会覆盖 writer 的 [CHAPTER] 章节行
         cfg=cfg,
         project_root=root,
         bgm_path=str(bgm_resolved) if (bgm_resolved and bgm_resolved.exists()) else None,

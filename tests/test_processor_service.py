@@ -149,3 +149,25 @@ class TestExtractThesis:
         ):
             result = _extract_thesis(stories)
         assert result == "GPT-5发布是最热话题"
+
+
+class TestShortTopic:
+    def test_english_title_not_cut_mid_word(self) -> None:
+        from ai_news_podcast.business.pipeline.processor_thesis_service import _short_topic
+
+        topic = _short_topic("Speeding up planning decisions with AI", max_len=20)
+        assert "..." not in topic
+        assert len(topic) <= 20
+        assert topic.split()[-1] in {"up", "planning"}
+
+    def test_chinese_title_split_on_punctuation(self) -> None:
+        from ai_news_podcast.business.pipeline.processor_thesis_service import _short_topic
+
+        assert _short_topic("Gemini 4 Carbon：前沿模型进入长周期行动阶段") == "Gemini 4 Carbon"
+
+    def test_chinese_long_topic_truncated_without_ellipsis(self) -> None:
+        from ai_news_podcast.business.pipeline.processor_thesis_service import _short_topic
+
+        topic = _short_topic("一二三四五六七八九十一二三四五六七八九十超出", max_len=20)
+        assert "..." not in topic
+        assert len(topic) == 20

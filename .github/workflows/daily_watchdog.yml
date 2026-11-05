@@ -17,18 +17,34 @@ concurrency:
 permissions:
   contents: read
   actions: write
+  issues: write
 
 jobs:
   check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
       - name: Check today's episode is published
         id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           EP=$(TZ=Asia/Shanghai date +%F)
           echo "date=$EP" >> "$GITHUB_OUTPUT"
+
+          # 已有 daily 在跑/排队时不要再派发，否则会互相排队、互相取消 pending
+          RUNNING=$(gh run list --workflow=daily.yml --limit 10 --json status \
+            --jq '[.[] | select(.status == "in_progress" or .status == "queued")] | length' 2>/dev/null || echo 0)
+          echo "running=$RUNNING" >> "$GITHUB_OUTPUT"
+          if [ "${RUNNING:-0}" -gt 0 ]; then
+            echo "daily.yml 已在运行/排队，跳过本次检查"
+            echo "found=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           if jq -e --arg d "$EP" 'any(.[]; .id == $d)' data/episodes.json >/dev/null 2>&1; then
             echo "found=true" >> "$GITHUB_OUTPUT"
           else
@@ -41,4 +57,31 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "::warning::no episode for ${{ steps.check.outputs.date }} — re-dispatching daily.yml"
-          gh workflow run daily.yml
+          # 显式带日期：不要依赖 wall clock（GHA 调度可能延迟数小时）
+          gh workflow run daily.yml -f date="${{ steps.check.outputs.date }}"
+
+      - name: Alert on permanently missing days
+        # 错过的那天不派发（live RSS 补不回历史新闻，派发会得到错日期内容），只显式告警
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          MISSING=""
+          for OFFSET in 1 2 3; do
+            D=$(TZ=Asia/Shanghai date -d "-${OFFSET} day" +%F)
+            if ! jq -e --arg d "$D" 'any(.[]; .id == $d)' data/episodes.json >/dev/null 2>&1; then
+              MISSING="$MISSING $D"
+            fi
+          done
+          if [ -n "$MISSING" ]; then
+            TITLE="⚠️ 缺期告警: 最近 3 天缺失$MISSING"
+            gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"缺期告警\"" \
+              --jq '.items[0].number' 2>/dev/null | {
+                read -r N || true
+                if [ -n "${N:-}" ]; then
+                  gh issue comment "$N" --body "缺失日期:$MISSING" || true
+                else
+                  gh issue create --title "$TITLE" --body "这些日期没有发布节目: $MISSING" || true
+                fi
+              }
+          fi

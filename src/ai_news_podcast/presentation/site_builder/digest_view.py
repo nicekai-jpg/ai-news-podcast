@@ -412,6 +412,7 @@ def build_digest(
         "report": report,
         "sources": sources,
         "radar": radar_block,
+        "quality": episode.get("quality"),
         "meta": {
             "generated_from": {
                 "brief": f"data/briefs/brief_{date_str}.json",
@@ -425,19 +426,30 @@ def build_digest(
     }
 
 
-def build_calendar(episodes: list[dict]) -> dict:
-    """日期轴聚合文件：期号 + 标题 + 可用性（可用性由 digest 是否存在推断）。"""
+def build_calendar(
+    episodes: list[dict], availability_by_date: dict[str, dict] | None = None
+) -> dict:
+    """日期轴聚合文件：期号 + 标题 + 真实可用性（从生成的 digest 推导，不再硬编码 True）。"""
     dates = []
     for episode in episodes:
         date_str = str(episode.get("id") or "")
         if not date_str:
             continue
+        if availability_by_date is None:
+            availability = {"podcast": True, "report": True, "sources": True, "radar": True}
+        else:
+            availability = availability_by_date.get(date_str) or {
+                "podcast": False,
+                "report": False,
+                "sources": False,
+                "radar": False,
+            }
         dates.append(
             {
                 "date": date_str,
                 "issue_number": None,  # D4：v1 不显示期号；字段保留给未来真实刊号
                 "title": str(episode.get("title") or episode_title(date_str)),
-                "availability": {"podcast": True, "report": True, "sources": True, "radar": True},
+                "availability": availability,
             }
         )
     return {
@@ -460,6 +472,7 @@ def write_digest_outputs(
     data_dir = site_dir / "data"
     written: list[Path] = []
     kept: set[str] = set()
+    availability_by_date: dict[str, dict] = {}
     for episode in episodes:
         date_str = str(episode.get("id") or "")
         if not date_str:
@@ -486,12 +499,15 @@ def write_digest_outputs(
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(_dump(digest), encoding="utf-8")
             written.append(target)
+            availability_by_date[date_str] = digest.get("availability") or {}
         except (OSError, ValueError, TypeError):
             log.warning("digest generation failed for %s", date_str, exc_info=True)
 
     calendar_path = data_dir / "calendar.json"
     calendar_path.parent.mkdir(parents=True, exist_ok=True)
-    calendar_path.write_text(_dump(build_calendar(episodes)), encoding="utf-8")
+    calendar_path.write_text(
+        _dump(build_calendar(episodes, availability_by_date)), encoding="utf-8"
+    )
     for stale in data_dir.glob("digest_*.json"):
         if stale.name not in kept:
             stale.unlink(missing_ok=True)

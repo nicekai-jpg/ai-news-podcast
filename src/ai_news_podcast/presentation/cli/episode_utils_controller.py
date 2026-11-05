@@ -42,6 +42,9 @@ def episode_id(day: datetime) -> str:
 
 
 def coerce_episode_list(value: Any) -> list[dict[str, Any]]:
+    # 兼容 {"episodes": [...]} 包装：只接受 list 的话，格式一变 publish 会把历史全清空
+    if isinstance(value, dict):
+        value = value.get("episodes")
     if not isinstance(value, list):
         return []
     return [item for item in value if isinstance(item, dict)]

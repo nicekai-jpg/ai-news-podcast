@@ -31,6 +31,32 @@ RE_MULTI_NEWLINE = re.compile(r"\n{3,}")
 # Strip invalid HTML/XML tags
 RE_HTML_TAG = re.compile(r"<[^>]+>", flags=re.IGNORECASE)
 
+# 章节标记行：[CHAPTER] 标题（writer 输出，TTS 解析为章节，不要当普通中括号删掉）
+RE_CHAPTER_LINE = re.compile(r"^\[CHAPTER\]\s*(.+)$")
+_CHAPTER_SENTINEL = "__CHAPTER_MARKER__"
+RE_CHAPTER_SENTINEL = re.compile(r"^" + _CHAPTER_SENTINEL + r"\s*(.+)$")
+
+
+def clean_tts_text_preserving_chapters(text: str) -> str:
+    """clean_tts_text 会删掉所有非 Host 中括号，导致 [CHAPTER] 章节行丢失。
+
+    这里先把章节行换成哨兵，清洗后再还原；脚本里没有章节行时行为与 clean_tts_text 一致。
+    """
+    protected: list[str] = []
+    for raw_line in str(text).split("\n"):
+        match = RE_CHAPTER_LINE.match(raw_line.strip())
+        if match:
+            protected.append(f"{_CHAPTER_SENTINEL} {match.group(1).strip()}")
+        else:
+            protected.append(raw_line)
+    cleaned = clean_tts_text("\n".join(protected))
+    restored: list[str] = []
+    for line in cleaned.split("\n"):
+        match = RE_CHAPTER_SENTINEL.match(line.strip())
+        restored.append(f"[CHAPTER] {match.group(1).strip()}" if match else line)
+    return "\n".join(restored)
+
+
 # Thinking-process markers that LLM sometimes outputs instead of actual dialogue.
 # 2026-11-05 事故：模型把「写稿计划」整段包在 [Host A] 里输出，旧正则的英文规划词覆盖不足，
 # 且 contains_thinking_process 遇到首个 Host 标记就 early-return，导致 59 分钟垃圾音频上线。
@@ -41,7 +67,10 @@ RE_THINKING_MARKERS = re.compile(
     r"\d+\.\s*two hosts|here is|below is|i will|"
     r"firstly|secondly|finally|step \d|note:|"
     r"outline (?:says|likely)|instruction|requirement|"
-    r"^\s*1\.\s+two hosts|^\s*\d+\.\s*(?:two|host|conversation|natural))"
+    r"^\s*1\.\s+two hosts|^\s*\d+\.\s*(?:two|host|conversation|natural)|"
+    # 中文写稿计划（2026-11-05/10-22 事故：模型把这段当 [Host A] 台词输出）
+    r"写稿计划|节目大纲|先梳理|第一部分|第二部分|控制在.{0,10}(?:字|字符)|"
+    r"(?:^|\n)\s*(?:\[Host [AB]\]\s*)?(?:要求|约束|注意|大纲|步骤|字数|输出格式)[:：])"
 )
 
 
@@ -53,6 +82,44 @@ RE_THINK_TAG = re.compile(r"(?is)" + _THINK_OPEN + r".*?" + _THINK_CLOSE + r"\s*
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
+
+
+def script_quality_stats(text: str) -> dict:
+    """脚本质量快照（写入 episodes.json/digest，供站点/feed 与事后审计区分正常稿/兜底稿）。"""
+    script = str(text or "")
+    chars = len(re.sub(r"\s+", "", script))
+    host_a = script.count("[Host A]")
+    host_b = script.count("[Host B]")
+    chapters = len(re.findall(r"^\[CHAPTER\]", script, flags=re.MULTILINE))
+    host_a_chars = 0
+    host_b_chars = 0
+    current: str | None = None
+    for raw_line in script.splitlines():
+        line = raw_line.strip()
+        match = re.match(r"^\[Host ([AB])\]\s*(.*)$", line)
+        if match:
+            current = match.group(1)
+            line = match.group(2)
+        if current == "A":
+            host_a_chars += len(re.sub(r"\s+", "", line))
+        elif current == "B":
+            host_b_chars += len(re.sub(r"\s+", "", line))
+    total = host_a_chars + host_b_chars
+    if "[Host A] 听众朋友们好" in script:
+        mode = "fallback"
+    elif chars < 1200:
+        mode = "short"
+    else:
+        mode = "normal"
+    return {
+        "mode": mode,
+        "chars": chars,
+        "turns": host_a + host_b,
+        "host_a_chars": host_a_chars,
+        "host_b_chars": host_b_chars,
+        "host_char_ratio": round(min(host_a_chars, host_b_chars) / total, 3) if total else 0.0,
+        "chapters": chapters,
+    }
 
 
 def clean_tts_text(text: str) -> str:

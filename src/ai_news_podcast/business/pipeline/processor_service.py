@@ -90,6 +90,7 @@ def process(
         ngram_range=ngram,  # type: ignore[arg-type]
         eps=float(cluster_cfg.get("eps", 0.35)),
         min_samples=int(cluster_cfg.get("min_samples", 2)),
+        merge_title_threshold=float(cluster_cfg.get("merge_title_threshold", 80)),
     )
 
     # 3) 为每个 cluster 构建 context + 打分 + 角色分配

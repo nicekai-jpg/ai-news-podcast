@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import logging
 import random
+import re
 from dataclasses import dataclass, field
 
 from ai_news_podcast.business.pipeline.processor_types_service import ScoredStory
@@ -37,6 +38,31 @@ class ThesisTemplateRepository:
         self.templates = list(templates) if templates else list(_DEFAULT_THESIS_TEMPLATES)
 
 
+_TOPIC_SPLIT_RE = re.compile(r"[：:，,。.、—|(/]")
+_CJK_RE = re.compile(r"[\u4e00-\u9fff]")
+
+
+def _short_topic(title: str, *, max_len: int = 20) -> str:
+    """取标题的第一个短语做话题，中文按字符、英文按词边界截断（不再出现 "当Speeding up pla..."）。"""
+    text = str(title or "").strip()
+    if not text:
+        return ""
+    topic = _TOPIC_SPLIT_RE.split(text, maxsplit=1)[0].strip() or text
+    if len(topic) <= max_len:
+        return topic
+    if _CJK_RE.search(topic):
+        return topic[:max_len].rstrip()
+    words = topic.split()
+    kept: list[str] = []
+    length = 0
+    for word in words:
+        if length + len(word) + 1 > max_len:
+            break
+        kept.append(word)
+        length += len(word) + 1
+    return " ".join(kept) or " ".join(words[:3])
+
+
 class ThesisExtractor:
     """Extract thesis from scored stories."""
 
@@ -51,16 +77,10 @@ class ThesisExtractor:
         if not main_stories:
             return "今天的AI领域动态丰富，多个方向齐头并进"
 
-        main_topic = main_stories[0].representative_title
-        # 简化：取前 15 字作为话题
-        if len(main_topic) > 15:
-            main_topic = main_topic[:15] + "..."
-
+        main_topic = _short_topic(main_stories[0].representative_title, max_len=20)
         sub_topic = ""
         if supporting:
-            sub_topic = supporting[0].representative_title
-            if len(sub_topic) > 12:
-                sub_topic = sub_topic[:12] + "..."
+            sub_topic = _short_topic(supporting[0].representative_title, max_len=16)
 
         template = self.template_repo.get_random()
         return template.format(main_topic=main_topic, sub_topic=sub_topic or "产业应用")

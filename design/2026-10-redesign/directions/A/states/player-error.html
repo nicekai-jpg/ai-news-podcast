@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今日AI看点 · 播放器错误状态</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+  <div class="state-page">
+    <div class="state-header">
+      <span class="state-number">STATE</span>
+      <h1 class="state-title">播放器错误</h1>
+    </div>
+    <div class="state-card">
+      <span class="state-badge error"><span class="dot"></span>播放失败</span>
+      <h2 class="state-headline">{{player_error_headline}}</h2>
+      <p class="state-paragraph">{{player_error_message}}</p>
+      <div class="state-meta">
+        <span>错误码：{{player_error_code}}</span>
+        <span class="sep">·</span>
+        <span>{{player_error_time}}</span>
+      </div>
+      <p class="state-empty-note">音频文件加载失败或网络异常。检查网络连接后重试，或切换到逐字稿阅读。</p>
+    </div>
+  </div>
+<script src="_shared.js"></script>
+</body>
+</html>

@@ -15,7 +15,9 @@ logger = logging.getLogger(__name__)
 class CosyVoiceConfig:
     model_dir: Path
     refs: dict[str, dict[str, tuple[Path, str]]]
-    sample_rate: int = 22050
+    # CosyVoice2 输出是 24kHz；如果这里写错（历史默认 22050），
+    # 保存出来的 WAV 会被按 22.05k 解释，整期变慢 8.8%、音调变低。
+    sample_rate: int = 24000
     # 需要真实合成的变体(按 host);空元组 = 合成 refs 的全部(向后兼容)。
     synth_variants: dict[str, tuple[str, ...]] = field(default_factory=dict)
 
@@ -84,9 +86,13 @@ def load_cosyvoice_config(cfg: dict, *, project_root: Path) -> CosyVoiceConfig:
         global_variants = _clean_variants(raw_variants)
         synth_variants = {"A": global_variants, "B": global_variants}
 
+    audio_cfg = (cfg.get("tts") or {}).get("audio") or {}
+    sample_rate = int(audio_cfg.get("sample_rate") or 24000)
+
     return CosyVoiceConfig(
         model_dir=model_dir,
         refs=parsed_refs,
+        sample_rate=sample_rate,
         synth_variants=synth_variants,
     )
 
@@ -98,6 +104,17 @@ class CosyVoice2Engine:
         self._config = config
         self._model: Any = None
         self._ref_cache: dict[str, Any] = {}
+
+    @property
+    def sample_rate(self) -> int:
+        """模型真实输出采样率（模型未加载时回退到配置值）。"""
+        if self._model is None:
+            return self._config.sample_rate
+        model_sr = getattr(self._model, "sample_rate", None)
+        try:
+            return int(model_sr) if model_sr else self._config.sample_rate
+        except (TypeError, ValueError):
+            return self._config.sample_rate
 
     def _ensure_model(self) -> Any:
         if self._model is not None:
@@ -146,13 +163,5 @@ class CosyVoice2Engine:
             output = next(model.inference_zero_shot(text, ref_text, str(ref_wav), stream=False))
             return output["tts_speech"]
         except StopIteration:
-            import torch
-
-            logger.warning(
-                "CosyVoice returned no speech for chunk (host=%s). "
-                "Returning 1s silence. Input text: %r",
-                host,
-                text[:80],
-            )
-            sr = self._config.sample_rate
-            return torch.zeros(1, sr)
+            # 以前静默返回 1s 静音，坏块会被当成正常音频发布；现在显式失败让 TTS job 报警。
+            raise RuntimeError(f"CosyVoice 未返回语音（host={host}, text={text[:80]!r}）") from None

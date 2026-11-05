@@ -160,7 +160,13 @@ class TestHostBalanceGate:
                 return _EDITOR_OUTLINE
             if len(calls) == 2:
                 return "\n".join(["[Host A] 我先讲一遍。"] * 20 + ["[Host B] 嗯。"])
-            return "[Host A] 今天聊三条新闻。\n[Host B] 好，先看第一条。"
+            return "\n".join(
+                [
+                    "[Host A] 今天聊三条新闻，先看第一条的具体内容和背景。",
+                    "[Host B] 好，这条的行业影响我也关注到了。",
+                ]
+                * 26
+            )
 
         with patch.object(podcast_writer_service, "_call_llm", side_effect=fake_llm):
             script, warnings = podcast_writer_service.generate_podcast(
@@ -178,3 +184,77 @@ class TestHostBalanceGate:
             "[Host B] 好。"
         )
         assert podcast_writer_service.contains_thinking_process(leaked) is True
+
+
+class TestScriptQualityGate:
+    """2026-11-05 之后新增的质量闸门：短稿/超长稿/85:15 敷衍稿/中文计划稿都要能挡住。"""
+
+    @staticmethod
+    def _balanced_script(pairs: int = 30) -> str:
+        return "\n".join(
+            [
+                "[Host A] 今天这条新闻值得展开讲讲，先看它的背景和影响。",
+                "[Host B] 同意，我把刚才那条的关键信息补充一下。",
+            ]
+            * pairs
+        )
+
+    def test_balanced_script_passes(self) -> None:
+        from ai_news_podcast.business.pipeline.podcast_writer_service import _script_looks_valid
+
+        assert _script_looks_valid(self._balanced_script()) is True
+
+    def test_short_script_is_rejected(self) -> None:
+        from ai_news_podcast.business.pipeline.podcast_writer_service import _script_looks_valid
+
+        assert _script_looks_valid("[Host A] 你好。\n[Host B] 嗨。") is False
+
+    def test_oversized_script_is_rejected(self) -> None:
+        from ai_news_podcast.business.pipeline.podcast_writer_service import _script_looks_valid
+
+        huge = "\n".join(
+            [
+                "[Host A] " + "很长的一段台词。" * 20,
+                "[Host B] " + "另外一段很长的台词。" * 20,
+            ]
+            * 20
+        )
+        assert _script_looks_valid(huge) is False
+
+    def test_chinese_planning_text_is_detected(self) -> None:
+        from ai_news_podcast.business.pipeline.podcast_writer_service import _script_looks_valid
+
+        planning = (
+            "[Host A] 我先梳理第1段素材，注意口径和数字。\n"
+            "[Host B] 要求：这一段要展开，控制在四十字以上。\n"
+        ) * 10
+        assert _script_looks_valid(planning) is False
+
+
+class TestFallbackQuality:
+    def test_fallback_has_chapters_and_no_numbered_phrasing(self) -> None:
+        from ai_news_podcast.business.pipeline.podcast_writer_service import _build_fallback
+
+        brief = {
+            "stories": [
+                {
+                    "role": "main",
+                    "representative_title": "某模型发布",
+                    "context": {"factual_summary": ["English summary only here."]},
+                },
+                {
+                    "role": "supporting",
+                    "representative_title": "另一条新闻",
+                    "context": {"factual_summary": ["另一条中文摘要。"]},
+                },
+            ],
+            "radar": {"meta": {"pick_repo": "owner/repo"}, "projects": []},
+        }
+        script = _build_fallback(brief, datetime(2026, 11, 5), "今日AI看点")
+        assert "[CHAPTER] 开场" in script
+        assert "[CHAPTER] 收尾" in script
+        assert "第一个大头条" not in script
+        # 只有英文摘要时不要念英文原文
+        assert "English summary only here." not in script
+        assert "owner/repo" in script
+        assert script.count("[Host A]") > 0 and script.count("[Host B]") > 0
