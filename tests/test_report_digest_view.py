@@ -84,6 +84,12 @@ class TestParseVariants:
     def test_empty_returns_none(self) -> None:
         assert parse_report_markdown("") is None
 
+    def test_lead_with_colon_inside_bold(self) -> None:
+        """2026-11-05 起的写法：`**导语：** 正文`（冒号在粗体内）。"""
+        md = "# ✨ 科技新闻日报 | 2026年11月5日\n\n**导语：** 今日主线是长周期执行。\n\n## 别的栏目\n\n正文。\n"
+        r = parse_report_markdown(md)
+        assert r["lead"] == "今日主线是长周期执行。"
+
     def test_radar_section_is_not_news(self) -> None:
         md = STANDARD_MD + "\n## 📡 项目雷达 | 2026年10月15日\n\n### 🥇 主推 [o/r](https://x)\n"
         r = parse_report_markdown(md)

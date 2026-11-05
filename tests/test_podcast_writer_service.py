@@ -112,3 +112,69 @@ class TestGeneratePodcastRadar:
         assert "owner/hot" in captured[0]  # editor prompt 含雷达素材
         assert "[主推]" in captured[0]  # 主推段(delta/许可证/语言/摘录格式)已渲染
         assert "项目雷达栏目规范" in captured[1]  # writer prompt 含雷达规则
+
+
+def _brief() -> dict:
+    return {
+        "stories": [
+            {
+                "representative_title": "大新闻",
+                "role": "main",
+                "context": {"factual_summary": ["要点"], "sources_ranked": []},
+            }
+        ]
+    }
+
+
+_EDITOR_OUTLINE = "# 今日播报大纲\n\n## 金句\nx\n\n## 头条 1\n- **标题**: a\n- **摘要**: b\n"
+
+
+class TestHostBalanceGate:
+    """2026-11-05 事故回归：模型把写稿计划包在 [Host A] 里输出，Host B 只有 4 句。"""
+
+    def test_imbalanced_writer_output_falls_back(self) -> None:
+        calls: list[str] = []
+
+        def fake_llm(prompt, cfg):
+            calls.append(prompt)
+            if len(calls) == 1:
+                return _EDITOR_OUTLINE
+            return "\n".join(["[Host A] 我先讲一遍今天的新闻。"] * 20 + ["[Host B] 嗯。"])
+
+        with patch.object(podcast_writer_service, "_call_llm", side_effect=fake_llm):
+            script, warnings = podcast_writer_service.generate_podcast(
+                _brief(), episode_date=datetime(2026, 11, 5)
+            )
+
+        assert any("失衡" in warning for warning in warnings)
+        # 降级后的模板脚本必须双主持均衡
+        assert script.count("[Host A]") > 0
+        assert script.count("[Host B]") > 0
+
+    def test_retry_with_hard_constraint_recovers(self) -> None:
+        calls: list[str] = []
+
+        def fake_llm(prompt, cfg):
+            calls.append(prompt)
+            if len(calls) == 1:
+                return _EDITOR_OUTLINE
+            if len(calls) == 2:
+                return "\n".join(["[Host A] 我先讲一遍。"] * 20 + ["[Host B] 嗯。"])
+            return "[Host A] 今天聊三条新闻。\n[Host B] 好，先看第一条。"
+
+        with patch.object(podcast_writer_service, "_call_llm", side_effect=fake_llm):
+            script, warnings = podcast_writer_service.generate_podcast(
+                _brief(), episode_date=datetime(2026, 11, 5)
+            )
+
+        assert "输出格式硬约束" in calls[2]
+        assert not any("失衡" in warning for warning in warnings)
+        assert "今天聊三条新闻" in script
+
+    def test_thinking_leak_inside_host_tags_is_detected(self) -> None:
+        leaked = (
+            "[Host A] Let's plan dialogue structure:\n"
+            "[Host A] Need length. Let's estimate Chinese chars.\n"
+            "[Host B] 好。"
+        )
+        assert podcast_writer_service.contains_thinking_process(leaked) is True

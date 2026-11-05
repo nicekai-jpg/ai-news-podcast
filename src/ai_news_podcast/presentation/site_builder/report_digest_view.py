@@ -8,7 +8,8 @@ from __future__ import annotations
 
 import re
 
-_LEAD_RE = re.compile(r"\*\*导语\*\*[：:]\s*(.+)")
+# 兼容两种写法：`**导语**：正文` 与 `**导语：** 正文`（2026-11-05 起报告用了后者）
+_LEAD_RE = re.compile(r"\*\*导语[：:]?\*\*[：:]?\s*(.+)")
 _HEADING_RE = re.compile(r"^(#{1,3})\s+(.+)$")
 _BULLET_RE = re.compile(r"^[-*]\s+\*\*(.+?)\*\*[：:]\s*(.+)$")
 _QUOTE_RE = re.compile(r"^>\s*(.+)$")
