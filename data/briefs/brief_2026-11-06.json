@@ -1,0 +1,1823 @@
+{
+  "thesis": "当百度开源文心5遇上实际落地，我们看到了什么",
+  "stories": [
+    {
+      "cluster_id": 0,
+      "representative_title": "百度开源文心5.5 Flash Base，多基准测试刷新同尺寸模型 SOTA",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "11月5日，百度正式开源最新基座模型文心5.5 Flash Base"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/11/507787.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8c59ee075106aa14",
+          "title": "百度开源文心5.5 Flash Base，多基准测试刷新同尺寸模型 SOTA",
+          "link": "https://www.qbitai.com/2026/11/507787.html",
+          "normalized_link": "https://www.qbitai.com/2026/11/507787.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-11-05T07:15:13+00:00",
+          "summary": "11月5日，百度正式开源最新基座模型文心5.5 Flash Base",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> 百度开源文心5.5 Flash Base，多基准测试刷新同尺寸模型 SOTA 量子位的朋友们 2026-11-05 15:15:13 来源： 量子位 11月5日，百度正式开源最新基座模型文心5.5 Flash Base 11月5日，百度正式开源最新基座模型文心5.5 Flash Base（ERNIE 5.5 Flash Base）。模型采用MoE架构，总参数量2800亿，每个 Token 激活140亿参数，使用33.5万亿个 Token 完成预训练，预训练上下文长度最高达128K，微调与推理阶段支持最长100万 Token上下文。在知识、推理、数学、代码、多语言和长上下文等多个基准测试中取得同尺寸模型 SOTA 表现，超过 DeepSeek-V4-Flash-Base、Hy3-preview-Base、MiMo-V2.5-Base 等模型。 开源地址：https://huggingface.co/baidu/ERNIE-5.5-Flash-Base 随着大模型应用从文本问答向长文档分析、多轮交互和智能体任务延伸，模型需要处理的信息量持续增加，计算和显存开销也随之上升。在保证模型能力的同时提高资源利用效率，已成为大模型研发的重要课题。 文心 5.5 Flash Base围绕“效率”这一设计主线，在注意力机制、专家路由及训练机制等关键环节进行系统性优化，并实现了多项算法创新。 在注意力机制上，文心提出 Latent-Gated Sparse Attention ，将混合稀疏注意力、低秩门控注意力与虚拟头注意力结合起来。其中，模型通过组合HCA与MLA，让不同注意力层分别承担压缩历史信息和细粒度访问历史位置的任务；低秩门控注意力（Low-Rank Gated Attention）则利用已有的低维表示计算信息门控，使门控投影权重参数减少75%；此外，虚拟头注意力（Virtual Head Attention，VHA）可提升模型表达力与训练质量，推理时融合进注意力算子，开销极小。这些设计降低了长上下文处理的资源开销，同时保留模型对关键信息的处理能力。 在专家路由上，模型采用 Multi-Router Latent MoE ，由多个独立路由器共同参与专家选择，改善路由评分与专家实际效用之间的相关性。相比依赖单一路由器的传统方案，该设计旨在降低单一评分偏差对专家选择的影响，同时保持激活专家数量、专家计算量和通信量不变。在训练目标上，模型引入 ECHO ，无需额外增加 MTP 模块（Multi-Token Prediction），而是复用主干最后一层，让主干自身学习预测后续 token，从而提前规划序列走向，有效提升推理与代码能力。文心5.5 Flash 仅采用单步 ECHO 预训练，复用的最后一层还可作为投机解码的草稿模型，展现出多步外推能力：同样只训练一步，多步起草质量大幅优于辅助 MTP 模块。 除模型架构外，大模型基建创新也十分重要。文心对分布式Muon优化器进行了优化，并推出面向大 head dim 的注意力算子 FlashMask-4，改善大规模训练中的通信、显存利用与计算效率。模型能力的提升不仅依赖算法本身，也与训练系统能否高效支撑这些设计密切相关。 基座模型不仅承载着预训练阶段形成的通用能力，也是下游模型开发与应用创新的重要基础。与面向终端用户的应用模型不同，Base 模型为开发者和企业提供了进一步微调与定制的空间，可基于自身业务需求构建适应不同场景的专业模型与应用。开放基座模型能够为开发者提供更多技术选择，降低专业模型开发的训练成本与技术门槛。 当前，大模型的竞争逐渐迈向模型能力、训练效率与场景创新协同发展的新阶段。随着推理、Agent等技术与应用加速演进，行业对基座模型的需求也从单一的能力提升，转向更高效的训练范式、更灵活的能力拓展，以及更广泛的场景适配需求。文心5.5 Flash Base在提升模型基础能力与训练推理效率的同时，为开发者和社区提供了更具拓展性的技术基础，推动模型技术走向多样化的能力探索与应用创新。 本文由百度提供，量子位获授权转载，观点归原作者所有。 版权所有，未经授权不得以任何形式转载及使用，违者必究。",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "representative_title": "Linux内核被挖出948个漏洞！OpenAI花120万美元找到的",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "被轰成筛子了…"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/11/507697.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "4e335c2246d1195a",
+          "title": "Linux内核被挖出948个漏洞！OpenAI花120万美元找到的",
+          "link": "https://www.qbitai.com/2026/11/507697.html",
+          "normalized_link": "https://www.qbitai.com/2026/11/507697.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-11-05T01:54:44+00:00",
+          "summary": "被轰成筛子了…",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> Linux内核被挖出948个漏洞！OpenAI花120万美元找到的 Jay 2026-11-05 09:54:44 来源： 量子位 Jay 发自 凹非寺 量子位 | 公众号 QbitAI 刚刚，Linux内核， 被GPT挖出了948个漏洞😭 。 对，948个。。。 要知道，这可不是什么犄角旮旯的小软件，这是Linux Kernel，是安卓、是全世界无数云服务器、是几乎所有超算背后共同的心脏。 超过4000万行代码，几十年来全世界最顶尖的一批程序员在上面添砖加瓦。 结果，OpenAI用他们一个还没发布的「网络安全模型」，跑了一条自动化的流水线，从发现漏洞、验证漏洞、写出攻击代码 （Exploit） …… 最终，花费 120万美元 ，揪出了 948个 能让普通用户直接拿到最高管理员 （root） 权限的严重漏洞。。。 太惨了，Linux内核维护者们一觉醒来，发现OpenAI提出了948个补丁建议😭。 要知道，在AI出现之前，顶尖的人类安全研究员，一年能在Linux内核里找到 大约20个 类似的漏洞。 AI用10天，干了人类差不多50年的活。 而且成本还巨低。120万美元听着很多，但其实平均下来，找到并攻破一个漏洞的成本是 1279美元 。 如果按照Pwn2Own这种顶级黑客大赛的历史奖金来算，这948个漏洞的价值，大概在 1890万到6630万美元 之间。 AI黑客军团 所以，OpenAI到底是怎么做到的？ 他们用AI Agent，搭建了一支纪律严明、分工明确的AI黑客军团。 核心可分为三步： 1.侦察和分析 (Discovery) 整个Linux内核代码量超过4000万行，如果全量死磕，算力再多也得烧穿。 因此，OpenAI派出了两种AI Agent，打探敌情。 首先是「侦察兵」 (Scout agents) 。它负责通读Linux内核的全部代码，判断哪些部分跟安全有关、容易被攻击。 最后，它从4000多万行代码里，圈出了 280万行 「高价值目标」，大概占总代码量的7%，花掉了3426美元的API额度。 随后「分析师」 (Analyst agents) 进场，拿到「侦察兵」给的地图，开始对这280万行代码进行地毯式扫描，寻找可能的漏洞。 12个小时，它交出了2308个「疑似漏洞」报告，耗资31.6万美元。 2.验证和复现 (Validation) 光有报告没用，万一是误报呢？人类安全研究员最头疼的就是验证环节。 现在，该「分类兵」 (Triage agent) 上场了。它会针对每一个「疑似漏洞」，自动编写一小段代码 （PoC） ，然后在一个隔离的虚拟机里运行，看能不能让系统崩溃。 就像不停地用各种姿势去踹一扇门，直到把它踹开。 30小时之内，智能体在真实环境里成功复现了 1724个内核崩溃漏洞 ，命中率高达 74.7% 。 其中，因为模型逻辑脑补而导致的彻底误报，仅仅只有 3.1% 。 3.攻击和利用 (Exploitability assessment) 确认是真漏洞之后，最关键的一步来了。 「攻击手」 (ExploitDev agents) 接管任务。它会尝试绕过系统里所有的安全防护措施，比如SMEP、SMAP、KASLR等等，看看能不能利用这个漏洞，最终拿到系统的root权限。 在极端严苛的环境下，ExploitDev Agent （利用开发智能体） 最终实打实写出了 291个信息泄露PoC ，以及 1169个成功拿到root权限的提权Exploit 。 在合并同类变体后，锁定了 948个独立的本地提权漏洞 。 平均下来，造出一个完整、可用的root提权利用，API消耗仅仅只需要 359美元 。 意料之外的越界进化 这个网络安全模型的攻击方式，相当诡异。 安全团队抽样分析了智能体编写的166个利用程序，瘫软了。 AI自行发现并使用了 至少10种全新的Linux内核攻击技术 。 其中包括2种用于在内核缓存中精准堆喷射的持久弹性对象、2种用于提高提权稳定性的全新页面编排 （page grooming） 技术、5种通过任意写或直接篡改数据结构的数据流攻击手法，以及1种全新的任意类型混淆。 OpenAI拿着这些利用技术找业界资深的外部内核专家验证，对方同样表示： 闻所未闻。 另一个插曲更具戏剧性。 早期测试时，安全团队要求ExploitDev智能体针对特定分配的漏洞去写Exploit，只要拿到root shell就算通关。 结果在200个打通的案例里，人工核验发现，居然有 20个利用程序根本没用指...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 9,
+      "representative_title": "Vera Delivers the Best of Both Worlds: Highest Throughput and Fastest Agents",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "AI agents do more than generate answers"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "NVIDIA 官方博客",
+            "authority": 1,
+            "link": "https://blogs.nvidia.com/blog/vera-cpu-highest-throughput-fastest-agents/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "cb9b318f703a0f1a",
+          "title": "Vera Delivers the Best of Both Worlds: Highest Throughput and Fastest Agents",
+          "link": "https://blogs.nvidia.com/blog/vera-cpu-highest-throughput-fastest-agents/",
+          "normalized_link": "https://blogs.nvidia.com/blog/vera-cpu-highest-throughput-fastest-agents",
+          "source_name": "NVIDIA 官方博客",
+          "source_category": "official",
+          "published_at": "2026-11-05T20:00:41+00:00",
+          "summary": "AI agents do more than generate answers. They search for information, query databases, write and test code and take action. Each of those steps relies on a CPU, with agents moving between GPU reasoning and CPU execution throughout a task. As businesses put more agents to work, AI factories need CPUs that can execute those […]",
+          "full_text_snippet": "AI agents do more than generate answers. They search for information, query databases, write and test code and take action. Each of those steps relies on a CPU, with agents moving between GPU reasoning and CPU execution throughout a task. As businesses put more agents to work, AI factories need CPUs that can execute those steps quickly and support many agents at once, all within the limits of available power. What this means: AI infrastructure providers need to support more agents without making each one wait longer to get work done. And critically, AI factories are power limited. This means operators need to choose infrastructure that maximizes the work done for every watt. Why it matters: NVIDIA Vera delivers both fast agent performance and high capacity per watt within a single CPU. That gives providers one CPU for a range of agent workloads, rather than having to mix and match fast and dense x86 parts to balance speed and capacity. The data that proves it: In a 100-megawatt data center comparison, NVIDIA found that a single Vera CPU performs better than the fastest x86 CPU and the most energy-efficient x86 CPU. Vera delivers industry-leading agent speed while enabling 1.6x more agents per watt versus the fastest x86 CPU. Vera delivers 2x faster agent speed with leading energy efficiency compared with the most energy-efficient x86 CPU. Partners are already putting Vera to work. Early adopters see the same exceptional performance in production-style tests: Perplexity : Ran agentic coding tasks 1.5x faster with Vera than on traditional CPUs. Perplexity plans to deploy Vera in an upcoming production system. DeepInfra : Delivered up to 2.2x speed of the best x86 processor on agentic orchestration for its production agent workload, achieving the fastest of the four architectures tested. ClickHouse : Its standard binary, with no Vera-specific tuning, scaled near-linearly across 176 cores and topped the ClickBench hardware leaderboard. DuckLabs : Achieved about 1.5x...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 10,
+      "representative_title": "More Performance From Every Byte: How Full-Stack Codesign Solves AI’s Memory Challenge",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "Larger models, longer contexts and agentic applications are increasing GPU memory pressure while supply tightens and prices rise — a trend expected to continue through the near term"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "NVIDIA 官方博客",
+            "authority": 1,
+            "link": "https://blogs.nvidia.com/blog/memory-full-stack-codesign/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "064fb88520fa5af6",
+          "title": "More Performance From Every Byte: How Full-Stack Codesign Solves AI’s Memory Challenge",
+          "link": "https://blogs.nvidia.com/blog/memory-full-stack-codesign/",
+          "normalized_link": "https://blogs.nvidia.com/blog/memory-full-stack-codesign",
+          "source_name": "NVIDIA 官方博客",
+          "source_category": "official",
+          "published_at": "2026-11-05T16:00:00+00:00",
+          "summary": "Larger models, longer contexts and agentic applications are increasing GPU memory pressure while supply tightens and prices rise — a trend expected to continue through the near term. NVIDIA works closely with memory partners to rapidly adopt the latest memory technologies. NVIDIA was first to adopt HBM3e and HBM4 technologies into an accelerated computing stack. […]",
+          "full_text_snippet": "Larger models, longer contexts and agentic applications are increasing GPU memory pressure while supply tightens and prices rise — a trend expected to continue through the near term. NVIDIA works closely with memory partners to rapidly adopt the latest memory technologies. NVIDIA was first to adopt HBM3e and HBM4 technologies into an accelerated computing stack. But the approach isn’t to simply pack more memory onto the GPU. It’s full-stack codesign. NVIDIA intentionally designs GPUs, CPUs, networking, storage and software together to get more useful work out of memory at every layer of the AI factory. That matters because an AI factory runs on a memory and storage hierarchy. GPU high-bandwidth memory (HBM) is the fastest, most expensive and most contested tier — with model weights and KV cache competing for limited capacity. Below it sit CPU memory, local SSDs and shared storage, each trading speed for more capacity at a lower cost per bit. How much useful work a byte does depends on how well the whole hierarchy is used: shrinking what must be stored, placing it on the right tier and bringing it back to the GPU before it’s needed. Byte for byte, NVIDIA makes the most efficient use of memory at every layer — and the results show it. From NVIDIA Blackwell Ultra to the Vera Rubin platform, HBM capacity per GPU rose roughly 3%, while agentic throughput per dollar rose by up to 30x on SemiAnalysis AgentX. Agentic Inference Is Putting More Pressure on HBM Frontier models now have trillions of parameters — the values that hold what an AI model learned in training. KV cache, which holds the context the model needs to understand each active request without reprocessing the same information, is also expanding. Agentic trajectories carry prior context across repeated model and tool calls, in some cases processing up to 3 million tokens, so each request’s working memory grows over time. Retrieval-augmented generation (RAG) adds relevant enterprise information to prompts, cr...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 11,
+      "representative_title": "‘Hogwarts Legacy’ Gets a Magical NVIDIA DLSS 5 Upgrade on GeForce NOW",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "Hogwarts Legacy receives an NVIDIA DLSS 5 upgrade with 3D-Guided Neural Rendering today, bringing lifelike lighting and materials to the wizarding world on GeForce NOW"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "NVIDIA 官方博客",
+            "authority": 1,
+            "link": "https://blogs.nvidia.com/blog/geforce-now-thursday-hogwarts-legacy-dlss-5/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "434802a6a530e968",
+          "title": "‘Hogwarts Legacy’ Gets a Magical NVIDIA DLSS 5 Upgrade on GeForce NOW",
+          "link": "https://blogs.nvidia.com/blog/geforce-now-thursday-hogwarts-legacy-dlss-5/",
+          "normalized_link": "https://blogs.nvidia.com/blog/geforce-now-thursday-hogwarts-legacy-dlss-5",
+          "source_name": "NVIDIA 官方博客",
+          "source_category": "official",
+          "published_at": "2026-11-05T14:00:34+00:00",
+          "summary": "Hogwarts Legacy receives an NVIDIA DLSS 5 upgrade with 3D-Guided Neural Rendering today, bringing lifelike lighting and materials to the wizarding world on GeForce NOW. Blizzard Entertainment’s World of Warcraft: Forever also opens a new chapter in Azeroth, with a launch-week access reward available for GeForce NOW members. Meanwhile, Ubisoft brings fresh challenges with expansions […]",
+          "full_text_snippet": "Hogwarts Legacy receives an NVIDIA DLSS 5 upgrade with 3D-Guided Neural Rendering today, bringing lifelike lighting and materials to the wizarding world on GeForce NOW . Blizzard Entertainment’s World of Warcraft: Forever also opens a new chapter in Azeroth, with a launch-week access reward available for GeForce NOW members. Meanwhile, Ubisoft brings fresh challenges with expansions for Tom Clancy’s The Division 2 and Anno 117: Pax Romana . It’s all part of a packed month of play, with two-dozen games joining the GeForce NOW library throughout November, including eight this week. Hogwarts in a New Light VIDEO NVIDIA DLSS 5 with 3D-Guided Neural Rendering arrives in Hogwarts Legacy today, giving members a new reason to return to Hogwarts, streaming from Steam, Epic Games and Xbox with Play Anywhere support. Published by Warner Bros. Games under the Portkey Games label and developed by Avalanche Software, Hogwarts Legacy is an immersive, open-world action role-playing game set in the 1800s wizarding world. Begin as a fifth-year student, encounter magical creatures, brew potions and learn spells while exploring both recognizable and unfamiliar places. The update adds lifelike lighting and material detail while retaining underlying geometry and textures. Avalanche Software has tuned the integration through DLSS 5’s developer controls to maintain the game’s artistic intent and style. Hogwarts Legacy also includes support for the DLSS Multi Frame Generation and Ray Reconstruction features, accelerating and enhancing the ray-traced graphics that immerse players in Hogwarts School of Witchcraft and Wizardry. Thanks to NVIDIA DLSS 4.5 controls in the cloud, members can fine-tune their experience. Ultimate members can experience the update with GeForce RTX 5080-class performance across PCs, Macs, handhelds, browsers, mobile devices, compatible TVs and more, without an expensive PC upgrade or waiting for game downloads. GeForce NOW handles the installs and updates, saving t...",
+          "category": "product",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 12,
+      "representative_title": "Formally verifying agent-written full-stack web apps with PDD Kit",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "AI agents can generate code at a scale that’s hard for humans to review line-by-line"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Microsoft Research AI",
+            "authority": 1,
+            "link": "https://www.microsoft.com/en-us/research/blog/formally-verifying-agent-written-full-stack-web-apps-with-pdd-kit/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "3a45181f6d992343",
+          "title": "Formally verifying agent-written full-stack web apps with PDD Kit",
+          "link": "https://www.microsoft.com/en-us/research/blog/formally-verifying-agent-written-full-stack-web-apps-with-pdd-kit/",
+          "normalized_link": "https://www.microsoft.com/en-us/research/blog/formally-verifying-agent-written-full-stack-web-apps-with-pdd-kit",
+          "source_name": "Microsoft Research AI",
+          "source_category": "official",
+          "published_at": "2026-11-05T16:00:00+00:00",
+          "summary": "AI agents can generate code at a scale that’s hard for humans to review line-by-line. PDD Kit helps ensure the code is doing what the developer intended by creating formal specifications and testing against them. It converts developer intent into a Verus specification, proves AI-generated code meets it for every input, and uses tests where proofs aren't practical. Developers review intent, not every line. The post Formally verifying agent-written full-stack web apps with PDD Kit appeared firs...",
+          "full_text_snippet": "At a glance Formal methods for everyday software. PDD Kit helps you turn your intent into a formal spec, then proves the code your agent writes for every input and uses tests where a proof can’t reach. It takes formal methods beyond niche, specialist work to engineers without a formal methods background and to everyday applications, like the full-stack web app shown here. Exhaustive line-by-line human review can become difficult to scale as AI agents generate increasingly large amounts of code. The plan is supposed to be the contract between you and a coding agent, but nothing actually forces the agent to follow it. The tests it writes usually check what it built, rather than what you asked for. PDD Kit makes the agent keep the plan. It works with you to turn your intent into a formal specification in Verus (opens in new tab) , proves the agent’s code meets that spec for every input, and falls back to tests where a proof can’t reach. We tried it on a full-stack web app. Inside GitHub Next’s Chopin (opens in new tab) , we used PDD Kit to formally verify the login logic of Pet Store, a Rust (opens in new tab) storefront. Verus hardened the code and uncovered existing bugs, proving the absence of login bugs with respect to the specification. The developer reviewed the intent and never read the generated code line-by-line. The plan is the contract the agent should follow, but nothing constrains the agent to follow it. Coding agents now ship whole features in one sitting often spanning tens of thousands or hundreds of thousands of lines of code. As a result, reading every line of the pull request doesn’t scale to this new way of work. Now, most teams invest in the plan and relevant testing instead: describe to an agent what they want, go back and forth until the plan and proposed tests look right, and hand them off to the agent for implementation. This plan or natural language spec is meant to be the contract that an agent holds. However, in practice, the agent can dr...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 24,
+      "representative_title": "OpenAI released a new cybersecurity model. Is that enough?",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "OpenAI's newest cybersecurity model comes out as AI labs face scrutiny of their work to protect digital infrastructure"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/11/05/openai-released-a-new-cybersecurity-model-is-that-enough/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "5f2083e6ffbe0388",
+          "title": "OpenAI released a new cybersecurity model. Is that enough?",
+          "link": "https://techcrunch.com/2026/11/05/openai-released-a-new-cybersecurity-model-is-that-enough/",
+          "normalized_link": "https://techcrunch.com/2026/11/05/openai-released-a-new-cybersecurity-model-is-that-enough",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-11-05T19:06:12+00:00",
+          "summary": "OpenAI's newest cybersecurity model comes out as AI labs face scrutiny of their work to protect digital infrastructure.",
+          "full_text_snippet": "Max Justicz, the chief technology officer and co-founder of the startup Charge Robotics, used an OpenAI model to find a severe vulnerability that — if exploited — could allow hackers to take control of servers running Ubuntu, a widely used open source Linux-based operating system. Justicz, who has a hobbyist’s interest in cybersecurity and previously found a vulnerability in the same codebase, told TechCrunch that he found this issue using GPT 5.6 Sol, released in July, through the AI maker’s Daybreak Blue, a program that gives cybersecurity defenders access to powerful frontier models. “I literally just aimed ChatGPT at the same body of code and said ‘I found this bug previously that was fixed several years ago, please find bugs as bad or worse,’ and it came back in two hours with this,” Justicz said. “It’s extremely convoluted and hard for a human to find, but it works!” He reported the issue to the Debian Project, which maintains the software in question and issued a patch to fix the vulnerability. There has been no known evidence of exploitation. Still, the ease with which he found it suggests that we’ve only seen the tip of the iceberg when it comes to potential exploits that even novice hackers can utilize with the help of AI models. “I can only imagine what one could do with more time and access to less neutered models. We should expect some extremely crazy bugs to be found and exploited over the next few months,” Justicz wrote in a social media thread discussing his finding. “This might be obvious to most folks here, but there is currently huge alpha in taking some code or binary someone has not audited yet and just aiming a powerful AI model at it.” OpenAI appears to have noticed. Today, the AI giant announced a new model focused on cybersecurity, ChatGPT Cyber, would be made available to the highest tier of users in the cybersecurity program, Daybreak Red, which allows offensive cybersecurity researchers tools for vulnerability hunting and development....",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "representative_title": "Setting a new standard for responsible AI infrastructure",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 13,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 2,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "OpenAI introduces its National Community Compact and Compute Campus Policy Blueprint to protect local resources, create jobs, and guide responsible AI infrastructure development"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "OpenAI Blog",
+            "authority": 1,
+            "link": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "25fa4dd18ec78a48",
+          "title": "Setting a new standard for responsible AI infrastructure",
+          "link": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+          "normalized_link": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+          "source_name": "OpenAI Blog",
+          "source_category": "official",
+          "published_at": "2026-11-05T02:00:00+00:00",
+          "summary": "OpenAI introduces its National Community Compact and Compute Campus Policy Blueprint to protect local resources, create jobs, and guide responsible AI infrastructure development.",
+          "full_text_snippet": "OpenAI introduces its National Community Compact and Compute Campus Policy Blueprint to protect local resources, create jobs, and guide responsible AI infrastructure development.",
+          "category": "policy",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "representative_title": "Challenge-Aware Knowledge Recruitment with Meta-Agent Supervision for Medical Multi-Agent Reasoning",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 13,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2611.05393v1 Announce Type: new Abstract: Large language models perform strongly on standard medical QA but degrade on harder reasoning tasks, where multi-agent debate often fails to beat strong single-model prompting"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.AI",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.05393"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "48da68b7227da49a",
+          "title": "Challenge-Aware Knowledge Recruitment with Meta-Agent Supervision for Medical Multi-Agent Reasoning",
+          "link": "https://arxiv.org/abs/2611.05393",
+          "normalized_link": "https://arxiv.org/abs/2611.05393",
+          "source_name": "arXiv cs.AI",
+          "source_category": "research",
+          "published_at": "2026-11-05T05:00:00+00:00",
+          "summary": "arXiv:2611.05393v1 Announce Type: new Abstract: Large language models perform strongly on standard medical QA but degrade on harder reasoning tasks, where multi-agent debate often fails to beat strong single-model prompting. We argue that a key limitation is that existing systems select experts and retrieve knowledge from the question alone, rather than from gaps that emerge during reasoning. We propose challenge-aware adaptive recruitment: an external CHALLENGER inspects the evolving reasoni...",
+          "full_text_snippet": "[Submitted on 14 Sep 2026] Title: Challenge-Aware Knowledge Recruitment with Meta-Agent Supervision for Medical Multi-Agent Reasoning View a PDF of the paper titled Challenge-Aware Knowledge Recruitment with Meta-Agent Supervision for Medical Multi-Agent Reasoning, by Riccardo Riccio and 2 other authors View PDF HTML (experimental) Abstract: Large language models perform strongly on standard medical QA but degrade on harder reasoning tasks, where multi-agent debate often fails to beat strong single-model prompting. We argue that a key limitation is that existing systems select experts and retrieve knowledge from the question alone, rather than from gaps that emerge during reasoning. We propose challenge-aware adaptive recruitment: an external CHALLENGER inspects the evolving reasoning trace and identifies specific factual or expertise gaps. These signals trigger targeted knowledge retrieval or mid-discussion specialist recruitment. On the MEDAGENTSBENCH hard subset (862 questions across nine biomedical datasets), upfront retrieval provides little benefit, while challenge-aware in-between retrieval performs better; on a multi-specialist backbone it improves accuracy on 8 of 9 datasets and adds 6 percentage points over Challenger Only. Ablations indicate benefits from both retrieval timing and gap-specific query signals, and a live web-search experiment shows that the timing advantage persists across retrieval backends. For specialist recruitment, self-triggered adaptation is unreliable, whereas Challenger-triggered recruitment raises GPT-4.1-mini MedQA accuracy from 46% to 54%, with positive direction on all tested generalization datasets. Naively combining retrieval and specialist recruitment degrades performance, highlighting the need to coordinate adaptive intervention channels. These results show that when and why external resources are recruited is a key design choice in multi-agent medical reasoning. Submission history From: Haitz Sáez de Ocáriz Borde [ view...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "representative_title": "MIT神作被锤：Astra爆改Qwen权重？就吹吧！",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 12,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "spaCy作者长文炮轰"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/11/507782.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "c3f8792f11887214",
+          "title": "MIT神作被锤：Astra爆改Qwen权重？就吹吧！",
+          "link": "https://www.qbitai.com/2026/11/507782.html",
+          "normalized_link": "https://www.qbitai.com/2026/11/507782.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-11-05T07:10:56+00:00",
+          "summary": "spaCy作者长文炮轰",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> MIT神作被锤：Astra爆改Qwen权重？就吹吧！ Jay 2026-11-05 15:10:56 来源： 量子位 Jay 发自 凹非寺 量子位 | 公众号 QbitAI Astra修改小模型权重？MIT那篇爆火研究，被大佬公开质疑了。 Astra前两天刚刚凭借一项惊人能力刷屏AI圈——不用训练、不算梯度，直接修改另一个AI模型的权重。 MIT团队宣称，Astra仅修改Qwen3.5-0.8B的0.016%权重，就让数学成绩从7.9%暴涨至48.1%，相当于提升到原来的6倍多。 甚至有网友感慨：AI已经开始读懂另一个AI的大脑了。 然而，事情似乎出现了反转。 一位来头不小的圈内大佬公开发文，提出了质疑。 这项研究存在严重误导。 质疑者叫Matthew Honnibal，spaCy的作者、AI公司Explosion的联合创始人。 魔术师戏法 这背后到底发生了什么？ Honnibal用了一个很妙的比方，讽刺了MIT研究所做的事：障眼法。 舞台魔术师常常用多种方式来表演同一个戏法。 第一次，他可能用了一个特殊的道具；下一次，他会向你展示道具并无特殊，但他自己藏起了东西；第三次，可能又利用了某种强迫选择。 当你观看表演时，你会假设只有一种技术，所以每当魔术师表演一次，似乎都推翻了你对其工作原理的假设。 Honnibal认为，Astra这项研究的实验呈现，就酷似这样一场魔术。 回到Paper，原文其实展示了三项不同的能力： 读权重 ：只看原始的权重数字，就能识别一个小型神经网络正在执行什么任务。 写权重 ：不依赖环境反馈，从零开始直接生成或修改小型网络的参数，让它能玩《打砖块》之类的小游戏。 修复大模型 ：通过修改Qwen的部分权重，大幅提高其数学测试表现。 但这篇论文摘要给人的核心印象却是—— Astra「仅通过观察原始权重」，就能理解并修改另一个模型。 如果只是一眼扫过，很难不让人理解为： 无论是识别一个小型网络的功能，还是修复一个大语言模型的数学能力，都源于同一种「读脑」神技。 但，这是真的吗？ Honnibal仔细梳理了论文中的8组实验后发现：实现这三件事的实验条件，天差地别。 也就是说—— 纯纯是在偷换概念。 两种技术路径 那么不同实验之间，到底有什么猫腻？ 首先，在识别小型网络任务、修复一个卡住的赛车模型等实验中，Astra确实做到了「只看原始权重」。 因为实验条件非常苛刻： 直接将权重数字 （raw floats） 作为输入，放进Astra的上下文。 不允许Astra运行Python代码。 不允许Astra执行目标网络来观察其行为。 在这种模式下，Astra处理的模型参数规模都非常小，在 1.7万到17.2万 之间。这确实很了不起，但距离真正理解一个现代大语言模型，还有很长的路。 但到了最引人注目、也最令人振奋的Qwen数学能力修复实验，就完全不是这么回事儿了。 在修复8亿参数的Qwen模型时，Astra 并没有直接读取原始权重 。 取而代之的是，Astra被授权使用Python编程，并且最多可以进行50次前向测试。每次允许模型处理一批练习题，通过观察模型的表现来分析和修改权重。 这根本是两码事。。。 Honnibal一针见血地指出，将这两种方法打包在一起，很容易让读者误以为： 噢，那种在小模型上实现的「读脑术」，同样可以规模化地应用在8亿参数的大模型上。 但事实是，在处理真正的大语言模型时，Astra更像一个「场外教练」，需要通过编程、运行、观察等一系列工程手段来介入。 真正的价值 那么，这是否意味着MIT的研究毫无价值？ 当然不是。 必须承认，即使剥离了「读心术」的光环，Astra所展现的能力依旧非常了不起。 Honnibal也坦言，让一个AI模型被提示去设计并执行人类机器学习工程师才能完成的任务——编写代码片段来分析甚至直接修改网络权重——这本身就是一个巨大的进步。 一两年前的AI模型，在所有这些任务上都会失败。 这说明，今天的顶尖大模型，已经具备了相当复杂的工具使用和推理能力，能够作为一个「AI工程师」来诊断和修复其他模型。这本身就是一项值得关注的工程突破。 真正的问题，在于成果的呈现方式。 将两种截然不同的能力，模糊地包装成一种统一的、能够读写AI大脑的「超能力」。 说实话，乍一听还以为是A社做的事。。。 也侧面反映了如今AI圈的Hype狂潮吧。 原文： https://honnibal.dev/blog/astra-read-write-misleading 版权所有，未经授权...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "representative_title": "从3D生成到世界模型，这家AI公司想和年轻人一起定义问题",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 12,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "薪资+期权不限"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/11/507675.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "6a999ac344e50032",
+          "title": "从3D生成到世界模型，这家AI公司想和年轻人一起定义问题",
+          "link": "https://www.qbitai.com/2026/11/507675.html",
+          "normalized_link": "https://www.qbitai.com/2026/11/507675.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-11-05T00:41:34+00:00",
+          "summary": "薪资+期权不限！实习生也能训核心模型",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> 从3D生成到世界模型，这家AI公司想和年轻人一起定义问题 听雨 2026-11-05 08:41:34 来源： 量子位 听雨 发自 凹非寺 量子位 | 公众号QbitAI AI行业仍在为顶尖人才开出高价，但同时也越来越看重实际贡献，而不只是潜力。 年轻研究者由此面临一道难题：企业想要已经做出成果的人，但如果参与核心项目的机会变少了，代表作又该在哪完成？ 这也让人才竞争有了另一重标准：不只是企业筛选谁已经做出成果，年轻研究者也需要判断，谁能为自己的下一项成果提供条件。 能否进入核心项目、参与技术路线的判断，能否获得与任务匹配的数据、算力和协作支持，决定了一份人才计划能否兑现它对成长的承诺。 近日，半年不到就拿到约50亿元融资的人工智能公司 VAST（三启万物） ，发布了新一期 V·STAR顶尖人才计划 ，将邀请年轻研究者聚焦三类明确的研究任务： 3D生成基础模型、三维理解与智能体、世界模型。 它想寻找能够参与定义问题、提出技术判断，并将探索推进为实际成果的年轻研究者。 这些方向指向同一个目标： 让AI从生成内容，走向构建可交互的世界。 会写代码、生成图像和视频，还不等于能够构建一个持续运行的环境。 三维对象需要能够被编辑和操控，智能体需要理解空间并执行任务，世界则需要维护状态与规则，让每一次行动都产生可以延续的结果。 这些尚未解决的问题，正是VAST希望与年轻研究者共同推进的研究前沿。 3D打开新的研究空间 过去大家看AI做3D，容易先看颜值：像不像，精不精致，转一圈有没有露馅。 如今Agent开始接手项目，要求很快升级：模型能否导入引擎？部件能不能单独控制？想改一条腿，是否得把整个角色重新生成？ 大语言模型在规划、编程和调用工具上越来越熟练，但精细三维对象仍需要专业能力。 10月30日，Kimi官方发布的3D创作教程就提到，面对人物、动物、怪兽和复杂道具等适合网格建模的任务，Kimi会整理提示词与参考图，调用VAST旗下AI 3D基座模型Tripo等完成生成。 这样的协作已经长出了不少优秀作品。 独立开发者Sac用Claude、Tripo与Blender组成工作流，仅花16天，就把《小王子》里的星球做成了可以探索的3D场景。开发者@thebuggeddev则将Codex与Tripo结合，制作了可在网页上查看和操作器官模型的3D人体解剖应用，后来被OpenAI联合创始人兼总裁Greg Brockman转发。 这些项目里，大语言模型负责组织流程、编写程序，Tripo提供三维资产，创作者把它们组合成可以体验的作品。 一项能力接入另一项能力之后，研究问题也随之变化：生成出来的东西，怎样才能被下一步继续使用？ VAST首席科学家曹炎培做过一个很直观的实验。他先用Tripo P2.0生成机械蜘蛛，再利用模型形成的部件结构，让LLM为独立部件命名，编写并调试运动逻辑，最终实现部件级动画控制。 这时，几何结构是否清晰、部件划分是否合理，就会直接影响代码能否找到该控制的对象。蜘蛛的“腿”得在数据里也是一条可操作的腿，不能只靠观众觉得它长得像。 更复杂的项目，还会涉及同一个对象在多轮操作中的连续性。 把自己的猫放进游戏，需要保留它的脸型、花纹和体态，也需要适合后续绑定与动画的结构。 给一个已经做好动作的角色换外套，则要修改指定区域，同时尽量保留脸部特征、身体比例和原有动作。 哪些部分可以改变，哪些应该保留，修改之后还能不能继续使用，都是VAST希望通过3D原生智能深入解决的问题。 团队选择探索专门的三维训练，让模型学习形体、拓扑、部件关系，以及修改前后的对应规律，尝试把一部分制作中的试错提前到训练阶段，让生成的对象更容易被识别、操控和继续修改。 从三维表征到世界模型，VAST的几次关键选择 一个AI模型外观看起来不错，真正进入制作流程时，却可能还要花不少工夫整理网格结构。 尤其涉及编辑、细分和动画形变，四边面拓扑往往更方便后续处理。可手工重拓扑耗时，自动处理也可能损失细节。 创作者刚为生成速度高兴完，就得给后续整理重新排期。 Tripo P系列模型底层的Nexus框架，尝试让这个问题在生成阶段就加以解决。它将顶点与拓扑生成解耦，通过扩散模型由粗到细构造顶点，再用新的编码方式表达拓扑关系，实现无需预先排序的原生网格生成。 这一套触及3D生成本质的范式也得到了国际顶会的认可。今年7月，Nexus相关论文被国际图形学顶会SIGGRAPH收录；与此同时，基于P1.0的实时演示获得了SIGGRAPH 2026 Real-Ti...",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 7,
+      "representative_title": "A Feasibility Condition for Confidence-Gated Tiered LLM Inference",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 12,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 2,
+        "listener_relevance": 3,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2611.05394v1 Announce Type: new Abstract: Tiered inference distributes large language model computation across a hierarchy of devices, from on-device and edge hardware to the datacenter, and is increasingly offered as the route to cheaper, lower-latency, and more private serving"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.AI",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.05394"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "abdb707b0a55aeaa",
+          "title": "A Feasibility Condition for Confidence-Gated Tiered LLM Inference",
+          "link": "https://arxiv.org/abs/2611.05394",
+          "normalized_link": "https://arxiv.org/abs/2611.05394",
+          "source_name": "arXiv cs.AI",
+          "source_category": "research",
+          "published_at": "2026-11-05T05:00:00+00:00",
+          "summary": "arXiv:2611.05394v1 Announce Type: new Abstract: Tiered inference distributes large language model computation across a hierarchy of devices, from on-device and edge hardware to the datacenter, and is increasingly offered as the route to cheaper, lower-latency, and more private serving. Most such systems orchestrate frozen model checkpoints, and most decide what to resolve locally and what to escalate using a confidence signal produced by a forward-deployed model. We give a closed-form conditi...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 20,
+      "representative_title": "Rethinking Self-Repair in Code-as-Policy Agents: What Drives Retry Success?",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 12,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 2,
+        "listener_relevance": 3,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "Code-as-policy agents often use execution feedback to retry failed programs"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 机器人与具身智能 (cs.RO)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.06863v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "9123fd00e236ed1c",
+          "title": "Rethinking Self-Repair in Code-as-Policy Agents: What Drives Retry Success?",
+          "link": "https://arxiv.org/abs/2611.06863v1",
+          "normalized_link": "https://arxiv.org/abs/2611.06863v1",
+          "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+          "source_category": "research",
+          "published_at": "2026-11-04T18:19:24+00:00",
+          "summary": "Code-as-policy agents often use execution feedback to retry failed programs. Additional sampling and task guidance can also improve success, leaving the contribution of failure-specific feedback unclear. We study this question in simulated robot manipulation. A fixed lookup selects feedback templates using failure labels and the API variant. A frozen code model generates a fresh program after each scene reset. On the same 252 initial failures, Qwen2.5-Coder-7B recovers 85.3% within five retri...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 25,
+      "representative_title": "OpenAI president Greg Brockman says company could be IPO ready in 2027",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 12,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Speaking at a Wall Street Journal tech conference on Wednesday, the executive touted how the company had been gaining ground in the enterprise market, where rival Anthropic had already successfully made inroads"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/11/05/openai-president-greg-brockman-says-company-could-be-ipo-ready-in-2027/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "20ebb1cb1fa152c7",
+          "title": "OpenAI president Greg Brockman says company could be IPO ready in 2027",
+          "link": "https://techcrunch.com/2026/11/05/openai-president-greg-brockman-says-company-could-be-ipo-ready-in-2027/",
+          "normalized_link": "https://techcrunch.com/2026/11/05/openai-president-greg-brockman-says-company-could-be-ipo-ready-in-2027",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-11-05T18:02:27+00:00",
+          "summary": "Speaking at a Wall Street Journal tech conference on Wednesday, the executive touted how the company had been gaining ground in the enterprise market, where rival Anthropic had already successfully made inroads.",
+          "full_text_snippet": "OpenAI co-founder and president Greg Brockman said the company would be ready for an IPO in 2027, noting that its enterprise revenue has been growing. Speaking at a Wall Street Journal tech conference on Wednesday, the executive touted how the company had been gaining ground in the enterprise market, where rival Anthropic had already successfully made inroads. In response to the interviewer’s question about being IPO-ready next year, Brockman replied, “I think so. Yes.” “We’ve been very clear this year that we want to go public when we feel is the right time for us, and I feel extremely good about the business. I feel like we’ve made so much progress this year, and I’ve honestly never felt more confident in what we’re doing,” Brockman said. He detailed how OpenAI’s trajectory as an enterprise had changed over the course of 2026, noting that the first and second quarters were “pretty rough.” He also admitted that OpenAI “wasn’t even in the conversation” when it came to agentic coding — an area where Anthropic’s Claude Code has gained market share. “We had Codex, but no one was talking about it,” Brockman continued, “and I think that we just kept our heads down and executed.” By the third quarter, activity picked up, as OpenAI saw 70% quarterly growth in its annualized revenue — something Brockman attributed to the enterprise side of the business doubling. He explained that the growth wasn’t simply the result of something that happened in the quarter itself, but rather the culmination of investments the company had been making up to that point. Now the majority of OpenAI’s revenue is coming from the enterprise business, which previously accounted for only around 30% of its total revenue. “And it’s not that consumer [revenue has shrunk] … It’s been growing, but it’s the enterprise segment has really taken off,” he said, pointing to a recent partnership with JPMorgan Chase as one example of the type of client it’s now winning deals with. Brockman also spoke more broa...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 28,
+      "representative_title": "Launch HN: Rivet (YC W23) – Scale and Orchestrate Agents on S3",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 12,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（65 points, 33 评论）by NathanFlurry"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://github.com/rivet-dev/rivet"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "335e94a0914635a1",
+          "title": "Launch HN: Rivet (YC W23) – Scale and Orchestrate Agents on S3",
+          "link": "https://github.com/rivet-dev/rivet",
+          "normalized_link": "https://github.com/rivet-dev/rivet",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-11-05T17:17:42+00:00",
+          "summary": "HN 热门讨论（65 points, 33 评论）by NathanFlurry",
+          "full_text_snippet": "Fast, high-density, scalable orchestration with Rivet Actors. Built on S3 at SSD speeds. 4.99 ms p99 cold starts, 72 KB RAM per Actor, scales to billions Quickstart • Documentation • Changelog • Discord • X Rivet is an orchestrator for agentic workloads built on the actor model. Each Rivet Actor is a long-lived process with in-memory state, a SQLite database, WebSockets for realtime, and scheduling, addressed by key. Create one per agent, session, user, or tenant, and run it on plain Node.js, Bun, or Rust. 72 KB per Actor : Actors share a node process instead of each booting a sandbox, so one server holds hundreds of thousands. 4.99 ms p99 cold starts : No image pull and no VM boot. SQLite backed by S3, at SSD speeds : 1.07 ms durable writes and 1.36 ms reads at p99, for about 10.4× less than replicated SSD storage. Hibernates when idle : Idle Actors cost nothing and wake on the next request with nothing lost. Backend import { actor } from \"rivetkit\" ; import { db } from \"rivetkit/db\" ; const agent = actor ( { // Per-Actor SQLite database, persisted across restarts and hibernation db : db ( { onMigrate : async ( db ) => { // Apply the SQLite schema await db . execute ( `CREATE TABLE IF NOT EXISTS messages (role TEXT, content TEXT)` ) ; } , } ) , actions : { chat : async ( c , text : string ) => { // Durably save the message await c . db . execute ( \"INSERT INTO messages VALUES (?, ?)\" , \"user\" , text ) ; const messages = await c . db . execute ( \"SELECT role, content FROM messages\" ) ; const response = streamText ( { model : openai ( \"gpt-5\" ) , messages } ) ; // Stream tokens to every connected client for multiplayer for await ( const delta of response . textStream ) { c . broadcast ( \"token\" , delta ) ; } // Durably save the response await c . db . execute ( \"INSERT INTO messages VALUES (?, ?)\" , \"assistant\" , await response . text ) ; } , } , } ) ; Client (frontend or backend) // Connect to an Actor const agent = client . agent . getOrCreate ( \"agent-123\" ) ....",
+          "category": "product",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 22,
+      "representative_title": "Airbnb says it’s launching an AI travel agent in the first half of 2027",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Airbnb says its upcoming AI agent will help travelers plan trips, compare options, manage bookings, and get assistance throughout their stay"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "1121cf54e69f72cb",
+          "title": "Airbnb says it’s launching an AI travel agent in the first half of 2027",
+          "link": "https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027/",
+          "normalized_link": "https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-11-05T22:40:55+00:00",
+          "summary": "Airbnb says its upcoming AI agent will help travelers plan trips, compare options, manage bookings, and get assistance throughout their stay.",
+          "full_text_snippet": "Airbnb has teased its plans to build its own AI travel agent before, but on Thursday the company announced that the new AI feature will launch in the first half of 2027. In the company’s Q3 shareholder letter on Thursday , Airbnb also provided more detail about how the agent will work, what it will actually do, and how it’s different from a typical AI chatbot. In prior interviews, CEO Brian Chesky sketched out the travel company’s approach to AI, describing a plan to build an AI agent that has a richer interface than a conventional chatbot. He also expressed his opinions about how chatbots aren’t the right interface for travel, noting that people take pleasure in the planning process and in anticipating a trip. Any agent that it built, then, shouldn’t take away from the inspiration and the browsing, he told TechCrunch in an interview last month. Chesky today reiterated that belief, telling analysts on the earnings call that people won’t use one AI agent for everything. “Today’s AI agents like Muse and Instinct are good at simple routine tasks like making a restaurant reservation or scheduling an appointment. But planning a trip is different,” he said. “Travel is aspirational. Discovering where to go and where to stay is part of the experience. In fact, 80% of travelers say they enjoy spending time researching trips. People want to look at photos. They want to compare homes. They want to make decisions with people they’re traveling with,” he continued. “And I don’t think the general-purpose agents are the best to do that. So that is why we are building our own AI agent,” Chesky said. Airbnb described its agent as having a personalized interface that’s designed specifically for travel, where it will “build an interface” around a user’s question instead of simply responding as a chatbot would. “What we are doing is developing a custom-designed AI-native experience that responds to what guests are looking for,” Chesky said. “So instead of relying on traditional chat...",
+          "category": "product",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 27,
+      "representative_title": "Hungary: Communist-era files released, up to 60k former agents revealed",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（99 points, 22 评论）by rdmuser"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.euronews.com/2026/11/04/hungary-communist-era-files-opened-up-to-60000-former-agents-revealed"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "aae2e624d6dfcd5e",
+          "title": "Hungary: Communist-era files released, up to 60k former agents revealed",
+          "link": "https://www.euronews.com/2026/11/04/hungary-communist-era-files-opened-up-to-60000-former-agents-revealed",
+          "normalized_link": "https://www.euronews.com/2026/11/04/hungary-communist-era-files-opened-up-to-60000-former-agents-revealed",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-11-05T19:16:34+00:00",
+          "summary": "HN 热门讨论（99 points, 22 评论）by rdmuser",
+          "full_text_snippet": "In spite of Hungary's democratic transition in 1990, efforts to disclose communist-era archives have repeatedly failed, with critics blaming successive governments' reluctance to implicate public figures across the political spectrum. ADVERTISEMENT ADVERTISEMENT Hungary's Prime Minister Peter Magyar ended this stall with a bill in September to grant unrestricted access for the public to the records for the first time. \"After 36 years, we are finally fulfilling what was once one of the key promises of the 1990 regime change — a promise that was later denied and lied about,\" Magyar told a media briefing at the state security archives. \"For decades, restrictions on public access provided opportunities for political hysteria, blackmail, the exertion of pressure, and silencing,\" he said. Public figures featured in registry Politicians, clergy members and TV personalities' names appeared in the registries. But a \"large proportion\" of the informants were \"people who did not make their mark on national public life,\" said Bendeguz Gergo Cseh, the head of the archive. The government will set up hotlines offering emotional support and counselling for those affected by the revelations. \"Following today's disclosure, a great many families will be confronted with information that is difficult for them to bear,\" Magyar said, asking people to treat the disclosure with \"dignity and humanity.\" Various types of documents disclosed Under the law on the full disclosure of the previous regime’s secret service activities, four types of state security records dating from before 1990 will be made freely accessible to anyone. On Wednesday morning, the three of these became accessible on the nyitottaktak.hu (source in Hungarian) website. The \"6 card\" is the registration sheet for a network member. It contains the agent’s identifying data, including name, place and date of birth, mother’s name and occupation, but also the main details of the agent’s activity. Among them, the circumstances a...",
+          "category": "product",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "representative_title": "Agent Harness Awareness: Turning Verified Telemetry into Operational Control for Tool-Using Agents",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2611.05391v1 Announce Type: new Abstract: Tool descriptions tell an agent what an action can do, but they do not necessarily reveal whether that action is healthy or suitable at the moment of use"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.AI",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.05391"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "fb43f0f2d5d92507",
+          "title": "Agent Harness Awareness: Turning Verified Telemetry into Operational Control for Tool-Using Agents",
+          "link": "https://arxiv.org/abs/2611.05391",
+          "normalized_link": "https://arxiv.org/abs/2611.05391",
+          "source_name": "arXiv cs.AI",
+          "source_category": "research",
+          "published_at": "2026-11-05T05:00:00+00:00",
+          "summary": "arXiv:2611.05391v1 Announce Type: new Abstract: Tool descriptions tell an agent what an action can do, but they do not necessarily reveal whether that action is healthy or suitable at the moment of use. Execution harnesses often possess this information through monitors, traces, and recent failures while the model choosing the next action does not. We call this gap operational blindness. We introduce Agent Harness Awareness, a trust-separated design in which the host supplies a small, fresh,...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 13,
+      "representative_title": "SpecCompact: Accelerating LLM Agent Context Compaction with Slot-Parallel Semantic Speculative Verification",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "LLM agents use context compaction to manage growing interaction histories, but summarizing long histories with large models can introduce substantial delays"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 计算与语言 (cs.CL)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.06876v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d42ac278ebdfdc40",
+          "title": "SpecCompact: Accelerating LLM Agent Context Compaction with Slot-Parallel Semantic Speculative Verification",
+          "link": "https://arxiv.org/abs/2611.06876v1",
+          "normalized_link": "https://arxiv.org/abs/2611.06876v1",
+          "source_name": "arXiv 计算与语言 (cs.CL)",
+          "source_category": "research",
+          "published_at": "2026-11-04T18:34:41+00:00",
+          "summary": "LLM agents use context compaction to manage growing interaction histories, but summarizing long histories with large models can introduce substantial delays. Compaction therefore requires balancing information retention against latency. We observe that structured summary slots can retain information when generated independently. Based on this observation, we present SpecCompact, a framework that accelerates compaction through slot-parallel semantic speculation. SpecCompact fine-tunes a small...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 14,
+      "representative_title": "Persona Perspectives: Adopting Viewpoints Reorganizes Representations in LLMs",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "Common methods for monitoring features in large language models (LLMs) such as linear probes and sparse autoencoders (SAEs) assume that features maintain a consistent representation across contexts"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 计算与语言 (cs.CL)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.06848v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "2d8fd702591e20fa",
+          "title": "Persona Perspectives: Adopting Viewpoints Reorganizes Representations in LLMs",
+          "link": "https://arxiv.org/abs/2611.06848v1",
+          "normalized_link": "https://arxiv.org/abs/2611.06848v1",
+          "source_name": "arXiv 计算与语言 (cs.CL)",
+          "source_category": "research",
+          "published_at": "2026-11-04T18:05:17+00:00",
+          "summary": "Common methods for monitoring features in large language models (LLMs) such as linear probes and sparse autoencoders (SAEs) assume that features maintain a consistent representation across contexts. LLMs, however, can flexibly adopt different perspectives or \"personas\" that suggest different underlying systems of conceptual relations. In this paper, we examine whether prompting an LLM to adopt a persona alters the representational geometry of the model's latent space. We extract representatio...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 15,
+      "representative_title": "Before You Continue: Evaluating Time-Sensitive Safety Awareness in Conversational Assistants",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "Large language model (LLM) assistants increasingly help users with everyday activities that involve time-dependent constraints"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 计算与语言 (cs.CL)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.06839v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "6f04a9dbbf01aeb8",
+          "title": "Before You Continue: Evaluating Time-Sensitive Safety Awareness in Conversational Assistants",
+          "link": "https://arxiv.org/abs/2611.06839v1",
+          "normalized_link": "https://arxiv.org/abs/2611.06839v1",
+          "source_name": "arXiv 计算与语言 (cs.CL)",
+          "source_category": "research",
+          "published_at": "2026-11-04T17:54:49+00:00",
+          "summary": "Large language model (LLM) assistants increasingly help users with everyday activities that involve time-dependent constraints. However, users may not mention these constraints in later requests, requiring assistants to recognize and adjust their advice accordingly. To evaluate such capability, we introduce TASC (Temporal Action Safety in Conversation), a benchmark that evaluates whether LLMs apply time-dependent constraints when responding to conversational requests. TASC consists of 3,418 i...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 19,
+      "representative_title": "VABAR: A Variational Automation Benchmark for Agentic Robotics",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "For robots to operate reliably in commercial and industrial applications, they must persistently perform specific tasks with known variations in object shape and pose"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 机器人与具身智能 (cs.RO)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.06881v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8204b294859f2d75",
+          "title": "VABAR: A Variational Automation Benchmark for Agentic Robotics",
+          "link": "https://arxiv.org/abs/2611.06881v1",
+          "normalized_link": "https://arxiv.org/abs/2611.06881v1",
+          "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+          "source_category": "research",
+          "published_at": "2026-11-04T18:38:01+00:00",
+          "summary": "For robots to operate reliably in commercial and industrial applications, they must persistently perform specific tasks with known variations in object shape and pose. We call this Variational Automation (VA) to differentiate these settings from fixed automation. Inspired by recent papers on Agentic Robotics, where pretrained LLM and VLM coding agents combine interpretable robot programming with the open-world adaptability of model free policies, we propose a general set of agentic robotics b...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 23,
+      "representative_title": "Meta warns that election backlash against data centers could make AI expansion harder",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Meta warns that growing political opposition to data centers could threaten future AI investments, as communities push back against massive infrastructure projects"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/11/05/metas-warns-that-election-backlash-against-data-centers-could-make-ai-expansion-harder/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "284810c2fd047502",
+          "title": "Meta warns that election backlash against data centers could make AI expansion harder",
+          "link": "https://techcrunch.com/2026/11/05/metas-warns-that-election-backlash-against-data-centers-could-make-ai-expansion-harder/",
+          "normalized_link": "https://techcrunch.com/2026/11/05/metas-warns-that-election-backlash-against-data-centers-could-make-ai-expansion-harder",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-11-05T19:12:39+00:00",
+          "summary": "Meta warns that growing political opposition to data centers could threaten future AI investments, as communities push back against massive infrastructure projects.",
+          "full_text_snippet": "Meta president Dina Powell McCormick said that the Democratic wins in the midterm elections are going to make it a lot harder for companies to build data centers, adding that the industry has “not done as good a job as we needed to explain the benefits of these investments.” Speaking at the WSJ Tech conference on Wednesday, the Meta exec pointed out that the backlash against data centers — which was very much on the ballot during this election season — was also tied to people’s feelings about AI technology overall. “The visible sort of manifestation of AI is a data center, and it’s something that people can say, ‘I don’t want this in my community,’” she explained. “I think there’s an underlying bigger issue, which is how people feel about AI in general.” Meta believes it could turn around the negative consumer sentiment around AI if it’s able to demonstrate the value, not only of the data centers coming to local communities, but also in the technology itself. “The stakes of who builds the technology that cures cancer, that gives access to education, that is also a very fundamental difference … Mark [Zuckerberg, Meta CEO] is very ‘long human,’ and he’s betting on humans more than machines,” Powell McCormick explained. “And that’s what we mean when we say the future is for everyone. That people should not be left behind. But the way to ensure that is that this technology is democratized, that people have access to it in a very fair and transparent way,” she said. The exec also touted Meta’s experience in building data centers, saying that the company has been doing so for 20 years, as it takes a lot of compute power to offer the products it does in the social networking space. Today, the company has data centers in 23 states, she said, and five of them, including one in Texas, are planned as projects of 1 gigawatt or more. But Meta is now worried that it could lose some of its investments after politicians ran on anti-data-center platforms during the midterms. “I t...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 8,
+      "representative_title": "Smartphone-Aided VR Exergames for HIIT: Gamifying Fitness with Real-Time Pose Estimation",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "This paper introduces an innovative virtual reality (VR) exergame system designed to gamify High-Intensity Interval Training (HIIT) workouts through 11 predefined combo moves, including squat-punch combinations, bilateral arm strikes, and diagonal stretch combos"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv · Anthropic/Claude",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.06734v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8972fbc6320143f5",
+          "title": "Smartphone-Aided VR Exergames for HIIT: Gamifying Fitness with Real-Time Pose Estimation",
+          "link": "https://arxiv.org/abs/2611.06734v1",
+          "normalized_link": "https://arxiv.org/abs/2611.06734v1",
+          "source_name": "arXiv · Anthropic/Claude",
+          "source_category": "research",
+          "published_at": "2026-11-04T16:18:35+00:00",
+          "summary": "This paper introduces an innovative virtual reality (VR) exergame system designed to gamify High-Intensity Interval Training (HIIT) workouts through 11 predefined combo moves, including squat-punch combinations, bilateral arm strikes, and diagonal stretch combos. Unlike conventional tracking methods that often rely on wearable motion capture suits or limited headset-based sensors, our system uses a standard smartphone camera placed on a tripod to capture full-body movement. This approach offe...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 16,
+      "representative_title": "Motion-guided Contrastive Regularization For Latent World Models",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "JEPA-style world models learn action-conditioned latent dynamics without reconstructing observations, but distributional regularization alone does not ensure that their representations preserve information needed for control"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 计算机视觉与多模态 (cs.CV)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.06901v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "9bdbc782de45f9f5",
+          "title": "Motion-guided Contrastive Regularization For Latent World Models",
+          "link": "https://arxiv.org/abs/2611.06901v1",
+          "normalized_link": "https://arxiv.org/abs/2611.06901v1",
+          "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+          "source_category": "research",
+          "published_at": "2026-11-04T18:49:35+00:00",
+          "summary": "JEPA-style world models learn action-conditioned latent dynamics without reconstructing observations, but distributional regularization alone does not ensure that their representations preserve information needed for control. We identify static collapse, a failure mode in which the encoder preserves episode-specific static content while suppressing manipulation-relevant state changes. Because static content is temporally predictable yet diverse across episodes, this failure can persist despit...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 17,
+      "representative_title": "Occlusion for Free: Detecting Occlusion from the Disagreement Between Two Monocular Distance Cues",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "Knowing that a pedestrian is occluded is useful to a robot even when the detector cannot recover the hidden pixels, but occlusion estimators are normally trained on occlusion annotations that deployment settings rarely have"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 计算机视觉与多模态 (cs.CV)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.06899v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "5a4e2288e4dff297",
+          "title": "Occlusion for Free: Detecting Occlusion from the Disagreement Between Two Monocular Distance Cues",
+          "link": "https://arxiv.org/abs/2611.06899v1",
+          "normalized_link": "https://arxiv.org/abs/2611.06899v1",
+          "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+          "source_category": "research",
+          "published_at": "2026-11-04T18:49:13+00:00",
+          "summary": "Knowing that a pedestrian is occluded is useful to a robot even when the detector cannot recover the hidden pixels, but occlusion estimators are normally trained on occlusion annotations that deployment settings rarely have. We show that occlusion can be read off two distance estimates a camera-only pipeline already computes. Apparent height is largely unchanged by occlusion, because the detected box still spans the whole person; monocular metric depth is pulled toward the occluder, because t...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 18,
+      "representative_title": "cuRoboV2-Fast: Fast Torque-Limited Collision-Free Motion Planning",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "We present cuRoboV2-Fast, a GPU-accelerated planner that reduces both planning latency and execution time for collision-free, payload-aware, torque-limited motions"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 机器人与具身智能 (cs.RO)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.06913v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "b4d3bad6554cf3f4",
+          "title": "cuRoboV2-Fast: Fast Torque-Limited Collision-Free Motion Planning",
+          "link": "https://arxiv.org/abs/2611.06913v1",
+          "normalized_link": "https://arxiv.org/abs/2611.06913v1",
+          "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+          "source_category": "research",
+          "published_at": "2026-11-04T18:58:20+00:00",
+          "summary": "We present cuRoboV2-Fast, a GPU-accelerated planner that reduces both planning latency and execution time for collision-free, payload-aware, torque-limited motions. B-spline trajectory optimization reduces the required iterations, while accelerated robot computations and differentiable inverse dynamics reduce refinement cost and accommodate changing payloads. TimeOpt optimizes traversal speed along the fixed path under sampled velocity, acceleration, jerk, and torque constraints, exploiting l...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 21,
+      "representative_title": "ConDR: Conservative Reachability through Neural Hamilton-Jacobi Subsolutions",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "Hamilton-Jacobi (HJ) Reachability identifies the unsafe states of a dynamical system from which it can be forced into failure under worst-case disturbance"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 机器人与具身智能 (cs.RO)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.06802v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "5310a8aef327e427",
+          "title": "ConDR: Conservative Reachability through Neural Hamilton-Jacobi Subsolutions",
+          "link": "https://arxiv.org/abs/2611.06802v1",
+          "normalized_link": "https://arxiv.org/abs/2611.06802v1",
+          "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+          "source_category": "research",
+          "published_at": "2026-11-04T17:18:50+00:00",
+          "summary": "Hamilton-Jacobi (HJ) Reachability identifies the unsafe states of a dynamical system from which it can be forced into failure under worst-case disturbance. However, classical grid-based solvers scale exponentially with state dimension. DeepReach improves scalability by replacing the grid with a neural value function trained on the HJ-Isaacs (HJI) variational inequality (VI), but penalizes both sides of the residual equally. This allows the learned value to lie above the true one and unsafe st...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 26,
+      "representative_title": "MS Paint Remote Code Execution Vulnerability",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 5,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（160 points, 47 评论）by kuberwastaken"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.cve.org/CVERecord?id=CVE-2026-83844"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "ef3f53e2698295a0",
+          "title": "MS Paint Remote Code Execution Vulnerability",
+          "link": "https://www.cve.org/CVERecord?id=CVE-2026-83844",
+          "normalized_link": "https://www.cve.org/CVERecord?id=CVE-2026-83844",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-11-05T20:43:42+00:00",
+          "summary": "HN 热门讨论（160 points, 47 评论）by kuberwastaken",
+          "full_text_snippet": "Common vulnerabilities and Exposures (CVE) We're sorry but the CVE Website doesn't work properly without JavaScript enabled. Please enable it to continue.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_raw": 29,
+    "total_deduped": 29,
+    "total_clusters": 29,
+    "generated_at": "2026-11-05T22:53:25.847699+00:00",
+    "dedup_details": [
+      {
+        "title": "你不知道的客户端开发：AI 时代下的选型、原生与借力",
+        "link": "https://sspai.com/post/117713",
+        "source": "少数派",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "OpenAI to acquire Pierre Computer Company, Inc.",
+        "link": "https://openai.com/index/openai-to-acquire-pierre",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
+        "link": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/",
+        "source": "NVIDIA 官方博客",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "基于本体+知识+Harness+Datat Agent的智能体完整落地链路！",
+        "link": "https://www.qbitai.com/2026/11/507696.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2249,
+        "threshold": 0.2,
+        "matched_story_title": "量子位智库发布Agent落地报告！拆解企业智能化六大断点，附全链路破局框架",
+        "matched_episode_id": "2026-10-16",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story '量子位智库发布Agent落地报告！拆解企业智能化六大断点，附全链路破局框架' from 2026-10-16."
+      },
+      {
+        "title": "派早报：腾讯发布混元 Hy4 正式版，Google 调整 K-12 教育 AI 政策等",
+        "link": "https://sspai.com/post/118498",
+        "source": "少数派",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2305,
+        "threshold": 0.2,
+        "matched_story_title": "国行 Apple 智能上手：这些功能已经准备好",
+        "matched_episode_id": "2026-11-05",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story '国行 Apple 智能上手：这些功能已经准备好' from 2026-11-05."
+      },
+      {
+        "title": "GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents",
+        "link": "https://openai.com/index/introducing-gpt-6-cyber",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2339,
+        "threshold": 0.2,
+        "matched_story_title": "How Third Moment Research runs 10,000 agents for 36+ hours",
+        "matched_episode_id": "2026-10-15",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'How Third Moment Research runs 10,000 agents for 36+ hours' from 2026-10-15."
+      },
+      {
+        "title": "New NVIDIA Cosmos 3 Open Models for Interactive World Simulation",
+        "link": "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2652,
+        "threshold": 0.2,
+        "matched_story_title": "NVIDIA Open Models Advance Europe’s Sovereign Intelligence Across Industries",
+        "matched_episode_id": "2026-10-22",
+        "detail": "TF-IDF similarity (0.27) >= threshold (0.20) with historical story 'NVIDIA Open Models Advance Europe’s Sovereign Intelligence Across Industries' from 2026-10-22."
+      },
+      {
+        "title": "Who May Overrule the Agent? Evidence-Gated Authority in LLM Review Institutions",
+        "link": "https://arxiv.org/abs/2611.05390",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2223,
+        "threshold": 0.2,
+        "matched_story_title": "Who Speaks, Who Authorizes, Who Acts? Understanding Trust Boundaries in Multi-Agent LLMs",
+        "matched_episode_id": "2026-10-21",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Who Speaks, Who Authorizes, Who Acts? Understanding Trust Boundaries in Multi-Agent LLMs' from 2026-10-21."
+      },
+      {
+        "title": "Uncertainty-Aware Resource Orchestration for Agentic AI Systems",
+        "link": "https://arxiv.org/abs/2611.05392",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2239,
+        "threshold": 0.2,
+        "matched_story_title": "Secure Agentic AI and Multimodal Intelligence in 6G Communication Systems",
+        "matched_episode_id": "2026-10-24",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Secure Agentic AI and Multimodal Intelligence in 6G Communication Systems' from 2026-10-24."
+      },
+      {
+        "title": "Towards Robust Long-Lived Agents: Benchmarking Experience Lifecycles in Evolving Environments",
+        "link": "https://arxiv.org/abs/2611.05450",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2201,
+        "threshold": 0.2,
+        "matched_story_title": "Welcome RL Environments to the hub",
+        "matched_episode_id": "2026-10-18",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Welcome RL Environments to the hub' from 2026-10-18."
+      },
+      {
+        "title": "Trace2Eval: Contextualized Evaluation of Coding Agents from Real-World Traces",
+        "link": "https://arxiv.org/abs/2611.06506v1",
+        "source": "arXiv · DeepSeek",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2034,
+        "threshold": 0.2,
+        "matched_story_title": "Gemini 4 Argon: our next era of frontier intelligence",
+        "matched_episode_id": "2026-10-16",
+        "detail": "TF-IDF similarity (0.20) >= threshold (0.20) with historical story 'Gemini 4 Argon: our next era of frontier intelligence' from 2026-10-16."
+      },
+      {
+        "title": "Approximate minimax regret for conditionally similar tests",
+        "link": "https://arxiv.org/abs/2611.06557v1",
+        "source": "arXiv · MiniMax",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2544,
+        "threshold": 0.2,
+        "matched_story_title": "Closing the Log Gap: Minimax-Optimal Regret for Episodic RL",
+        "matched_episode_id": "2026-11-05",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'Closing the Log Gap: Minimax-Optimal Regret for Episodic RL' from 2026-11-05."
+      },
+      {
+        "title": "The Wizard of Open Weights: Chris Alexiuk Makes AI Easy With Open Models",
+        "link": "https://blogs.nvidia.com/blog/nvidia-life-chris-alexiuk/",
+        "source": "NVIDIA 官方博客",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2169,
+        "threshold": 0.2,
+        "matched_story_title": "NVIDIA Open Models Advance Europe’s Sovereign Intelligence Across Industries",
+        "matched_episode_id": "2026-10-22",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'NVIDIA Open Models Advance Europe’s Sovereign Intelligence Across Industries' from 2026-10-22."
+      },
+      {
+        "title": "Faster Retrieval for Better, More Efficient RAG",
+        "link": "https://machinelearning.apple.com/research/faster-retrieval",
+        "source": "Apple ML Research",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2853,
+        "threshold": 0.2,
+        "matched_story_title": "A Small Model Asks Better: Fine-Tuning Query Clarification for Retrieval-Augmented Generation",
+        "matched_episode_id": "2026-10-23",
+        "detail": "TF-IDF similarity (0.29) >= threshold (0.20) with historical story 'A Small Model Asks Better: Fine-Tuning Query Clarification for Retrieval-Augmented Generation' from 2026-10-23."
+      },
+      {
+        "title": "A Framework for Context Enrichment and Selective Robustness in LLM Social Agents",
+        "link": "https://arxiv.org/abs/2611.06914v1",
+        "source": "arXiv 计算与语言 (cs.CL)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2493,
+        "threshold": 0.2,
+        "matched_story_title": "TARSphere: A Robot-Oriented Full-Stack Framework for Long-Horizon Embodied Agents in Evolving Physical and Social Environments",
+        "matched_episode_id": "2026-10-23",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'TARSphere: A Robot-Oriented Full-Stack Framework for Long-Horizon Embodied Agents in Evolving Physical and Social Environments' from 2026-10-23."
+      },
+      {
+        "title": "Balancing hierarchical representation and quantization: A performance trade-off in text embeddings",
+        "link": "https://arxiv.org/abs/2611.06859v1",
+        "source": "arXiv 计算与语言 (cs.CL)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.25,
+        "threshold": 0.2,
+        "matched_story_title": "Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models",
+        "matched_episode_id": "2026-10-24",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'Qwen3 Embedding: Advancing Text Embedding and Reranking Through Foundation Models' from 2026-10-24."
+      },
+      {
+        "title": "LongBanana: An Expert-Verified Benchmark for Long-Context Multi-Reference Image Synthesis",
+        "link": "https://arxiv.org/abs/2611.06856v1",
+        "source": "arXiv 计算与语言 (cs.CL)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2213,
+        "threshold": 0.2,
+        "matched_story_title": "ImageTTS: Repurposing Pretrained Image Diffusion Transformers for Speech Synthesis",
+        "matched_episode_id": "2026-11-05",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'ImageTTS: Repurposing Pretrained Image Diffusion Transformers for Speech Synthesis' from 2026-11-05."
+      },
+      {
+        "title": "From Pixels to Actions - Towards Native Vision-Language-Action Policies",
+        "link": "https://arxiv.org/abs/2611.06918v1",
+        "source": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2857,
+        "threshold": 0.2,
+        "matched_story_title": "UniAction: Unified Action Conditioning for World Models",
+        "matched_episode_id": "2026-10-27",
+        "detail": "TF-IDF similarity (0.29) >= threshold (0.20) with historical story 'UniAction: Unified Action Conditioning for World Models' from 2026-10-27."
+      },
+      {
+        "title": "Perceptive Humanoid Motion from Simulation",
+        "link": "https://arxiv.org/abs/2611.06908v1",
+        "source": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2418,
+        "threshold": 0.2,
+        "matched_story_title": "Test-Time Motion Steering for Perceptive Humanoid Fall Recovery",
+        "matched_episode_id": "2026-10-23",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'Test-Time Motion Steering for Perceptive Humanoid Fall Recovery' from 2026-10-23."
+      },
+      {
+        "title": "Procedural Adversarial Learning",
+        "link": "https://arxiv.org/abs/2611.06890v1",
+        "source": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2652,
+        "threshold": 0.2,
+        "matched_story_title": "InfiniDream: Open-Ended Photorealistic 3D Worlds Through Procedural Generation",
+        "matched_episode_id": "2026-10-21",
+        "detail": "TF-IDF similarity (0.27) >= threshold (0.20) with historical story 'InfiniDream: Open-Ended Photorealistic 3D Worlds Through Procedural Generation' from 2026-10-21."
+      },
+      {
+        "title": "LongBanana: An Expert-Verified Benchmark for Long-Context Multi-Reference Image Synthesis",
+        "link": "https://arxiv.org/abs/2611.06856v1",
+        "source": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2213,
+        "threshold": 0.2,
+        "matched_story_title": "ImageTTS: Repurposing Pretrained Image Diffusion Transformers for Speech Synthesis",
+        "matched_episode_id": "2026-11-05",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'ImageTTS: Repurposing Pretrained Image Diffusion Transformers for Speech Synthesis' from 2026-11-05."
+      },
+      {
+        "title": "Perceptive Humanoid Motion from Simulation",
+        "link": "https://arxiv.org/abs/2611.06908v1",
+        "source": "arXiv 机器人与具身智能 (cs.RO)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2418,
+        "threshold": 0.2,
+        "matched_story_title": "Test-Time Motion Steering for Perceptive Humanoid Fall Recovery",
+        "matched_episode_id": "2026-10-23",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'Test-Time Motion Steering for Perceptive Humanoid Fall Recovery' from 2026-10-23."
+      },
+      {
+        "title": "Reinforcement Learning Enables Scaling Generalist Robot Policy Improvement",
+        "link": "https://arxiv.org/abs/2611.06905v1",
+        "source": "arXiv 机器人与具身智能 (cs.RO)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3399,
+        "threshold": 0.2,
+        "matched_story_title": "LoopWAM: Closed-Loop Generalist Policy Improvement from Deployment Rollouts",
+        "matched_episode_id": "2026-10-15",
+        "detail": "TF-IDF similarity (0.34) >= threshold (0.20) with historical story 'LoopWAM: Closed-Loop Generalist Policy Improvement from Deployment Rollouts' from 2026-10-15."
+      },
+      {
+        "title": "Meta says US users can now video chat with their Muse AI avatar",
+        "link": "https://techcrunch.com/2026/11/05/meta-says-us-users-can-now-video-chat-with-their-muse-ai-avatar/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3149,
+        "threshold": 0.2,
+        "matched_story_title": "Meta’s Muse hits 10M U.S. downloads in 40 days, a milestone reached by only 11 other apps",
+        "matched_episode_id": "2026-10-21",
+        "detail": "TF-IDF similarity (0.31) >= threshold (0.20) with historical story 'Meta’s Muse hits 10M U.S. downloads in 40 days, a milestone reached by only 11 other apps' from 2026-10-21."
+      },
+      {
+        "title": "Claude can now analyze your spending with its new Personal Finance tool",
+        "link": "https://techcrunch.com/2026/11/05/claude-can-now-analyze-your-spending-with-its-new-personal-finance-tool/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2583,
+        "threshold": 0.2,
+        "matched_story_title": "Claude Duet app is Anthropic’s bet on agents",
+        "matched_episode_id": "2026-10-23",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'Claude Duet app is Anthropic’s bet on agents' from 2026-10-23."
+      },
+      {
+        "title": "Claude Code sends your email address to websites",
+        "link": "https://github.com/anthropics/claude-code/issues/107757",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2194,
+        "threshold": 0.2,
+        "matched_story_title": "Show HN: I wrote an email app that accepts only one sender per inbox",
+        "matched_episode_id": "2026-10-15",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Show HN: I wrote an email app that accepts only one sender per inbox' from 2026-10-15."
+      },
+      {
+        "title": "Tencent Launches Hy4, One of the Leading Open-Source AI Models",
+        "link": "https://www.tencent.com/tencent-launches-hy4-joining-the-ranks-of-the-worlds-leading-open-source-ai-models/",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.4508,
+        "threshold": 0.2,
+        "matched_story_title": "Tencent Hy4",
+        "matched_episode_id": "2026-11-05",
+        "detail": "TF-IDF similarity (0.45) >= threshold (0.20) with historical story 'Tencent Hy4' from 2026-11-05."
+      },
+      {
+        "title": "Bild AI (YC W25) Is Hiring Founding Product Engineers",
+        "link": "https://www.ycombinator.com/companies/bild-ai/jobs",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2548,
+        "threshold": 0.2,
+        "matched_story_title": "Hazel (YC W24) Is Hiring",
+        "matched_episode_id": "2026-10-21",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'Hazel (YC W24) Is Hiring' from 2026-10-21."
+      }
+    ],
+    "ingest_filter": {
+      "input": 502,
+      "prefer_hours": 36,
+      "fallback_hours": 96,
+      "include_keywords": 44,
+      "exclude_keywords": 0,
+      "per_feed_cap": 6,
+      "after_recency": 162,
+      "window": "prefer_36h",
+      "after_keywords": 121,
+      "after_feed_cap": 57
+    }
+  },
+  "radar": {
+    "date": "2026-11-06",
+    "generated_at": "2026-11-05T22:53:25.847873+00:00",
+    "projects": [
+      {
+        "repo": "storytold/craft-anything",
+        "url": "https://github.com/storytold/craft-anything",
+        "description": "Craft Anything: understand how any software works, and craft your own.",
+        "language": "Rust",
+        "topics": [],
+        "stars": 14839,
+        "delta_stars": 3352,
+        "is_new": false,
+        "created_at": "2026-10-31T14:50:00Z",
+        "pushed_at": "2026-11-05T17:46:31Z",
+        "license": "Apache-2.0",
+        "has_install_docs": true,
+        "mentions": 0,
+        "readme_excerpt": "cargo install --path apps/craft-anything-cli         # the CLI, as `craft-anything-cli`\ncraft-anything-cli doctor                            # checks the install, coding agents and engines\n```\n\nBuilding needs a coding agent signed in on your computer (see [AI](#ai)); `doctor` says what's\nmissing. Rebuild from the command line (questions are asked in the terminal):\n\n```sh\ncraft-anything-cli rebuild https://example.com \"Recreate this website\"\ncraft-anything-cli rebuild - \"A snake game in Rust\" --rounds 1\ncraft-anything-cli rebuild https://example.com \"Make the header blue\" --continue-in \"<project folder>\"\ncraft-anything-cli rebuild - \"Add a contact form\" --project-folder \"<your folder>\" --existing edit\n```\n\nNew projects go in `Documents/Craft Anything` (change it in Settings → General). Each project\nfolder holds `craft.json` (the request, target, status and history), `capture/` (what was\nrecorded from the target), `app/` (the generated project), `checks/` (each comparison against\nthe original), `investigation.cany/` (evidence) and `inbox/` (open questions).\n\nA project can also start in a folder you pick (Choose a folder… under Start, or `--project-folder`).\nIf it already has files, y",
+        "readme_intro": "Craft Anything English  ·  日本語  ·  简体中文  ·  한국어 See how any website, app or game works, then have AI build your own version; an open-source, clean-room engine in pure Rust. Point it at a target, say what you want, and it studies the original with real inspection tools, has a coding agent build a new project, checks the result against the original and refines it. Download Craft Anything   · ArtCraft  · All Crafting Apps A website project: each check says how alike the build is, you approve anything outside the rules, and the plan shows what's left. > [!NOTE] > **ArtCraft is a community of artists from all walks of life.** Painters, photographers, > filmmakers, illustrators, designers, animators, hobbyists, and people who picked up a pencil > last week. If you make things, you're one of us. ",
+        "score": 0.51,
+        "score_parts": {
+          "velocity": 1.0,
+          "vel_rel": 1.0,
+          "vel_abs": 1.0,
+          "hands_on": 1.0,
+          "cross_heat": 0.0,
+          "affinity": 0.0,
+          "days_in_pool": 1
+        },
+        "affinity": 0.0
+      },
+      {
+        "repo": "wangzan101/Mika",
+        "url": "https://github.com/wangzan101/Mika",
+        "description": "An on-device AI agent for Android that operates apps and the web to get things done for you.",
+        "language": "Kotlin",
+        "topics": [
+          "accessibility",
+          "ai-agent",
+          "android",
+          "automation",
+          "jetpack-compose",
+          "kotlin",
+          "llm",
+          "mobile-agent"
+        ],
+        "stars": 7073,
+        "delta_stars": 469,
+        "is_new": false,
+        "created_at": "2026-10-29T14:34:07Z",
+        "pushed_at": "2026-11-05T15:46:37Z",
+        "license": "Apache-2.0",
+        "has_install_docs": false,
+        "mentions": 0,
+        "readme_excerpt": "",
+        "readme_intro": "**An AI assistant on your phone: say what you need, and it works your apps and the web until it's done.** It works on a hidden background screen, so you can keep using your phone. English · [简体中文](docs/readme/README.zh-CN.md) · [繁體中文](docs/readme/README.zh-Hant.md) · [日本語](docs/readme/README.ja.md) · [한국어](docs/readme/README.ko.md) · [Español](docs/readme/README.es.md) \"Send a message to File Transfer\": Mika's chat on the left, each step on its background screen on the right (4× speed; chat list blurred)",
+        "score": 0.4908,
+        "score_parts": {
+          "velocity": 0.5069,
+          "vel_rel": 0.6364,
+          "vel_abs": 0.3127,
+          "hands_on": 0.6,
+          "cross_heat": 0.0,
+          "affinity": 1.0,
+          "days_in_pool": 1
+        },
+        "affinity": 1.0
+      },
+      {
+        "repo": "NVIDIA/auto-ontology",
+        "url": "https://github.com/NVIDIA/auto-ontology",
+        "description": "Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows.",
+        "language": "Python",
+        "topics": [],
+        "stars": 7219,
+        "delta_stars": null,
+        "is_new": true,
+        "created_at": "2026-04-27T21:45:56Z",
+        "pushed_at": "2026-11-05T14:45:30Z",
+        "license": "Apache-2.0",
+        "has_install_docs": true,
+        "mentions": 1,
+        "readme_excerpt": "This runs Auto-Ontology with Docker Compose against Wide World Importers,\nMicrosoft's sample sales database. You need Docker with Compose v2,\n[uv](https://docs.astral.sh/uv/), and an NVIDIA API key (`nvapi-...`) from\n[build.nvidia.com](https://build.nvidia.com).\n\n1. Clone the repository and create `.env`:\n\n   ```bash\n   git clone https://github.com/NVIDIA/auto-ontology.git && cd auto-ontology\n   cp .env.example .env\n   ```\n\n   Then set these values in `.env`:\n\n   ```dotenv\n   DEFAULT_MODELS_API_KEY=nvapi-...\n   AUTH_SECRET=<a long random string, e.g. from openssl rand -base64 32>\n   APP_URL=http://localhost:3000\n   POSTGRES_PASSWORD=<a new password>\n   CONNECTION_STRINGS=postgresql://postgres:<the same password>@postgres:5432/wideworldimporters\n   AUTO_ONTOLOGY_ADMIN_PASSWORD=<a new password>\n   PGADMIN_PASSWORD=<a new password>\n   ```\n\n   Compose publishes Postgres, pgAdmin, and the web app on the host, so replace\n   each default password before you start it. `.env.example` also sets an API\n   key per model role: replace each `nvapi-your-api-key-here` with your key, or\n   delete those lines so they fall back to `DEFAULT_MODELS_API_KEY`.\n\n2. Start Postgres and load the sample datab",
+        "readme_intro": "Agents can retrieve documents and query databases, but reliability gates agentic analytics: a revenue metric answered faster is worth nothing if the number is wrong. Agents need a context layer that tells them where data lives, what it means, whether to use it, how to use it, where it came from, and what is similar. NVIDIA Auto Ontology is an open library that builds that layer from enterprise metadata, reconciles definitions across systems, and exposes it to any agent harness through MCP, CLI, and API. It complements the semantic models customers already own. It enables developers to: - Discover: generate enterprise ontologies from metadata; connect existing ontologies and semantic models; build AI-ready knowledge graphs. - Ground: give agents trusted business meaning for metrics, entitie",
+        "score": 0.4888,
+        "score_parts": {
+          "velocity": 0.1191,
+          "vel_rel": 0.1818,
+          "vel_abs": 0.0251,
+          "hands_on": 1.0,
+          "cross_heat": 0.3333,
+          "affinity": 1.0,
+          "days_in_pool": 0
+        },
+        "affinity": 1.0
+      }
+    ],
+    "meta": {
+      "pick_repo": "storytold/craft-anything",
+      "runner_up_repos": [
+        "wangzan101/Mika",
+        "NVIDIA/auto-ontology"
+      ],
+      "degraded": false,
+      "reason": "",
+      "candidates": 32,
+      "excluded_recent": 7,
+      "fresh_candidates": 25,
+      "widen_pass": false,
+      "pool_by_source": {
+        "trending": 4,
+        "new": 25,
+        "news": 1,
+        "topic": 2
+      },
+      "direction_fallback": false,
+      "yesterday_pick": "ccch1mneyyy/dsh-Go",
+      "yesterday_pick_delta": 2008,
+      "candidate_audit": [
+        {
+          "repo": "better-auth/better-auth",
+          "stars": 30605,
+          "delta_stars": null,
+          "language": "TypeScript",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "deepseek-ai/DeepInfer",
+          "stars": 25466,
+          "delta_stars": 89,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "wheresryan22/anatomy",
+          "stars": 25219,
+          "delta_stars": 354,
+          "language": "JavaScript",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "deepseek-ai/dsh-superagent-prototype",
+          "stars": 19451,
+          "delta_stars": 931,
+          "language": "TypeScript",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "storytold/craft-anything",
+          "stars": 14839,
+          "delta_stars": 3352,
+          "language": "Rust",
+          "license": "Apache-2.0",
+          "exclusion_reason": "selected"
+        },
+        {
+          "repo": "seedds/nxnative",
+          "stars": 12489,
+          "delta_stars": 342,
+          "language": "Python",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "ccch1mneyyy/dsh-Go",
+          "stars": 11390,
+          "delta_stars": 2008,
+          "language": "Dart",
+          "license": "AGPL-3.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "pengchujin/aerial-tv",
+          "stars": 9958,
+          "delta_stars": 341,
+          "language": "Kotlin",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "heydamir/unslop",
+          "stars": 9733,
+          "delta_stars": 1117,
+          "language": "JavaScript",
+          "license": "CC-BY-4.0",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "HeyPuter/everything",
+          "stars": 7271,
+          "delta_stars": 164,
+          "language": "JavaScript",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "NVIDIA/auto-ontology",
+          "stars": 7219,
+          "delta_stars": null,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "selected"
+        },
+        {
+          "repo": "ly05010419/MacNativeGames",
+          "stars": 7102,
+          "delta_stars": 74,
+          "language": "C",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "wangzan101/Mika",
+          "stars": 7073,
+          "delta_stars": 469,
+          "language": "Kotlin",
+          "license": "Apache-2.0",
+          "exclusion_reason": "selected"
+        },
+        {
+          "repo": "l0ng-ai/openidea",
+          "stars": 6738,
+          "delta_stars": 617,
+          "language": "TypeScript",
+          "license": "Apache-2.0",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "rivet-dev/rivet",
+          "stars": 6635,
+          "delta_stars": null,
+          "language": "Rust",
+          "license": "Apache-2.0",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "rddmwmddr/android-ad-cleaner",
+          "stars": 6547,
+          "delta_stars": 243,
+          "language": "Python",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "ARahim3/DigUp",
+          "stars": 6264,
+          "delta_stars": 27,
+          "language": "Swift",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "simbasjungles/free-my-tv",
+          "stars": 5924,
+          "delta_stars": 44,
+          "language": "Java",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "Jakeschincariol/day-trader-skill",
+          "stars": 5562,
+          "delta_stars": 288,
+          "language": "Python",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "amosblomqvist/learnharness",
+          "stars": 5551,
+          "delta_stars": 182,
+          "language": "TypeScript",
+          "license": "AGPL-3.0",
+          "exclusion_reason": "probe_limit"
+        }
+      ],
+      "audit_semantics": "v5"
+    }
+  }
+}
