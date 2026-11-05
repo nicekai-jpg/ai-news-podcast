@@ -1,0 +1,1187 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-25",
+  "date_label": "2026年10月25日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": true
+  },
+  "podcast": {
+    "title": "AI 新闻快报 | 2026-10-25",
+    "subtitle": "从谁在给OpenAI供应具身数据...到MetaHOPE: A ...，AI技术持续加速演进",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-25.mp3",
+    "duration_seconds": 516.438,
+    "duration_label": "08:36",
+    "speech_seconds": 497.829,
+    "segment_count": 40,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 40,
+      "segments_url": "episodes/2026-10-25/playlist.json",
+      "text_url": "episodes/2026-10-25.txt"
+    }
+  },
+  "lead": {
+    "text": "从谁在给OpenAI供应具身数据...到MetaHOPE: A ...，AI技术持续加速演进",
+    "source": "brief_thesis",
+    "source_file": "data/reports/daily_report_2026-10-25.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 63,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 23,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 40,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 13,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "听众朋友大家好，欢迎收听…",
+      "start": 1.0,
+      "label": "00:01",
+      "source": "cue_heuristic"
+    },
+    {
+      "title": "接下来这事儿更贴近隐私。…",
+      "start": 130.869,
+      "label": "02:11",
+      "source": "cue_heuristic"
+    },
+    {
+      "title": "新闻说完了， 接下来进入…",
+      "start": 480.085,
+      "label": "08:00",
+      "source": "cue_heuristic"
+    }
+  ],
+  "report": {
+    "title": "✨ 科技新闻日报 | 2026年10月25日",
+    "char_count": 2820,
+    "reading_minutes": 7,
+    "lead": null,
+    "deep_dives": [
+      {
+        "heading": "一、OpenAI 寻找具身数据供应商：Physical AI 进入供应链争夺战",
+        "background": null,
+        "breakthrough": null,
+        "impact": null,
+        "raw_sections": [
+          "事件背景： 大语言模型可以依靠互联网文本完成训练，但机器人要学会行走、抓取、整理乃至照顾人类，必须理解视觉、触觉、力反馈与空间约束。相关数据的采集成本高、周期长，且高度依赖真实场景，因此“谁在给 OpenAI 供应具身数据”直接关系到其能否突破纯软件智能，进入 Physical AI 核心供应链。",
+          "核心突破点： 这条消息的关键超越了新增某一家数据供应商的表层意义，其实质在于具身数据正在形成独立产业。现实世界中的遥操作记录、传感器日志、失败案例与仿真轨迹，被转化为可训练的动作序列；与此同时，数据清洗、动作标注、场景泛化与合规授权，也成为模型之外新的技术壁垒。谁能建立稳定、合法且可持续更新的数据闭环，谁就可能影响下一代机器人的能力上限。",
+          "行业与用户影响： 对 OpenAI 而言，这是补齐“模型—行动—现实反馈”闭环的关键拼图；对数据服务商而言，业务将从一次性项目交付升级为基础设施型收入，并拥有更强的议价能力。对普通用户而言，机器人和智能终端将不再只是执行固定脚本，而可能在家庭、工厂和公共服务中承担更复杂任务。不过，具身数据涉及肖像、空间与劳动过程权益，其采集边界、收益分配及模型训练后的责任归属，也将成为必须同步解决的治理问题。"
+        ]
+      },
+      {
+        "heading": "二、Private AI Compute 引入服务端安全记忆：个人 AI 开始拥有“长期记忆”",
+        "background": null,
+        "breakthrough": null,
+        "impact": null,
+        "raw_sections": [
+          "事件背景： 当前个人 AI 的主要矛盾在于：持续对话需要历史记忆，但敏感信息一旦被长期保存、任意检索或用于模型优化，隐私风险便会显著上升。完全无记忆的助手难以理解用户偏好；直接开放全部历史数据，又可能暴露健康、财务和家庭关系。",
+          "核心突破点： DeepMind 公布的 secure, server-side memory 试图把“记忆”纳入受控的服务器端基础设施，让个人 AI 在可信边界内维护和调用上下文。相较于仅在对话窗口内临时拼接历史信息，这种设计强调记忆的持久性、安全性与可治理性，使私人数据不必被无差别暴露在客户端或外部工作流中。其核心价值超越了简单增加上下文长度的范畴，更在于让记忆成为可授权、可限制使用的独立系统能力。",
+          "行业与用户影响： 如果该机制成熟，个人 AI 将从一次性问答工具转向长期协作者，能够持续理解健康习惯、工作安排、家庭关系与个人目标。硬件厂商、操作系统和云平台之间，也可能围绕“个人记忆由谁托管”展开新的入口之争。对企业而言，员工数据能否在租户之间隔离、记忆能否被审计和删除，将直接决定 AI 助手能否进入金融、医疗等高敏感场景。需要强调的是，服务端存储并不天然等于绝对隐私，访问控制、数据保留周期和训练使用政策仍需透明化。"
+        ]
+      }
+    ],
+    "frontier": [
+      {
+        "title": "AlphaGenome Atlas（DeepMind）： 首次系统性绘制约 90 亿种单字母 DNA 变异的分子影响预测图谱，把基因组模型从“参考序列分析”进一步推向“变异级效应预测”。它有望加速罕见病机制研究、功能基因组学和候选靶点筛选，但预测结果不能直接等同于临床因果关系，仍需实验验证。",
+        "summary": ""
+      },
+      {
+        "title": "Gemini 新模型矩阵（DeepMind）： 推出 Gemini 3.6 Flash、3.5 Flash-Lite 与 3.5 Flash Cyber，释放出明确的产品分层信号：主力模型负责综合能力，Lite 版本争夺低成本高并发场景，Cyber 版本则强化安全导向。其竞争重点不仅是性能，更是延迟、价格与行业合规之间的综合平衡。",
+        "summary": ""
+      },
+      {
+        "title": "用 AI 逐帧复现 70 年爱情故事（Google AI）： 该案例以老年夫妻在电影院的画面为落点，展示模型维持人物一致性、跨时间叙事与情绪表达的能力。生成式视频正在从“单镜头炫技”走向完整故事表达，但历史影像重构也带来肖像授权、情感真实性与内容溯源问题。",
+        "summary": ""
+      }
+    ],
+    "editor_verdict": "今日新闻看似分属机器人、生成式 AI、基因组与影像，实际共同指向“数据成为受监管的核心生产资料”。Physical AI 争夺的不只是模型，而是高质量真实交互数据；Private AI Compute 争夺的是个人数据如何被安全变现；AlphaGenome 则把数据资产推向生命科学基础设施。未来竞争将由单模型能力，转向“数据闭环×可信算力×垂直分发”的系统能力：谁能持续获得合法数据、建立评测与反馈机制，并把结果嵌入科研、医疗和企业流程，谁就更可能掌握平台权。新模型会继续降价提速，但稀缺的不是 token，而是独占、连续、可验证的数据关系。",
+    "toc": [
+      {
+        "anchor": "deep-dive-1",
+        "title": "一、OpenAI 寻找具身数据供应商：Physical AI 进入供应链争夺战"
+      },
+      {
+        "anchor": "deep-dive-2",
+        "title": "二、Private AI Compute 引入服务端安全记忆：个人 AI 开始拥有“长期记忆”"
+      }
+    ],
+    "raw_paragraphs": [
+      "**导语：** 今日全球科技圈的主线，是 AI 竞争正从“模型参数与通用能力”的比拼，转向**具身数据、隐私记忆和生命科学数据等核心生产资料**的争夺。与此同时，DeepMind 密集推出模型与基础设施更新，显示生成式 AI 正同时向更低成本、更高安全性和专业领域纵深推进。"
+    ],
+    "source_file": "data/reports/daily_report_2026-10-25.md"
+  },
+  "sources": {
+    "total_all": 63,
+    "total_main": 23,
+    "shown": 63,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "arXiv 论文",
+        "group": "arXiv 论文",
+        "count": 30
+      },
+      {
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "count": 21
+      },
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 7
+      },
+      {
+        "publisher": "Google",
+        "group": "Google",
+        "count": 4
+      },
+      {
+        "publisher": "OpenAI",
+        "group": "OpenAI",
+        "count": 1
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "谁在给OpenAI供应具身数据？",
+        "summary": "挤进全球Physical AI核心供应链",
+        "link": "https://www.qbitai.com/2026/10/504800.html",
+        "published_at": "2026-10-22T07:05:59+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "DeepMind Blog",
+        "group": "Google",
+        "source_name": "DeepMind Blog",
+        "category": "official",
+        "title": "Advancing Private AI Compute with secure, server-side memory",
+        "summary": "Introducing private, server-side memory to Private AI Compute for personal AI.",
+        "link": "https://deepmind.google/blog/advancing-private-ai-compute-with-secure-server-side-memory/",
+        "published_at": "2026-09-23T16:00:57+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "DeepMind Blog",
+        "group": "Google",
+        "source_name": "DeepMind Blog",
+        "category": "official",
+        "title": "AlphaGenome Atlas: A predictive map of every possible DNA letter change in the human genome",
+        "summary": "AlphaGenome Atlas maps the molecular effects of 9 billion single-letter DNA variants across the human genome.",
+        "link": "https://deepmind.google/blog/alphagenome-atlas-a-predictive-map-of-every-possible-dna-letter-change-in-the-human-genome/",
+        "published_at": "2026-09-08T14:00:15+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "DeepMind Blog",
+        "group": "Google",
+        "source_name": "DeepMind Blog",
+        "category": "official",
+        "title": "Introducing Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber",
+        "summary": "We’re introducing new Gemini models, including Gemini 3.6 Flash, 3.5 Flash-Lite and 3.5 Flash Cyber.",
+        "link": "https://deepmind.google/blog/introducing-gemini-3-6-flash-3-5-flash-lite-and-3-5-flash-cyber/",
+        "published_at": "2026-07-21T15:16:30+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Google AI Blog",
+        "group": "Google",
+        "source_name": "Google AI Blog",
+        "category": "official",
+        "title": "Recreating a 70-year love story frame by frame",
+        "summary": "An elderly couple sitting in a movie theater. Overlayed are \"Teulluride Film Festival\" and \"Love, Rendered\"",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/love-rendered-film/",
+        "published_at": "2026-09-09T16:00:00+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Forced to pick, Grok’s AI model chooses Republicans. OpenAI’s picks Democrats.",
+        "summary": "A new study found Grok's AI overwhelmingly recommends Republican candidates while OpenAI's GPT favors Democrats, with the two AI models disagreeing in more than 90% of nearly 500 election races.",
+        "link": "https://techcrunch.com/2026/10/24/forced-to-pick-groks-ai-model-chooses-republicans-openais-picks-democrats/",
+        "published_at": "2026-10-24T15:00:00+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users (Part II)",
+        "summary": "Learn how OpenAI scaled Habitat with reliable multi-tenancy, global caching, and Azure Cosmos DB to deliver 12× faster reads for ChatGPT.",
+        "link": "https://openai.com/index/scaling-storage-one-billion-users-part-two",
+        "published_at": "2026-10-23T17:00:00+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · 智谱 GLM",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 智谱 GLM",
+        "category": "research",
+        "title": "Playing log(N)-Questions over Wikipedia Abstracts: How Per-Round Errors Compound Under Information Asymmetry",
+        "summary": "We evaluate six frontier language models on the two-agent $\\log_2 N$-Questions game (Potash et al., 2019) to measure self-communication across an information asymmetry. A questioner with access to $N$ candidate Wikipedia lead paragraphs ($N",
+        "link": "https://arxiv.org/abs/2609.19113v3",
+        "published_at": "2026-09-16T17:41:12+00:00"
+      },
+      {
+        "rank": 9,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · 腾讯混元",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 腾讯混元",
+        "category": "research",
+        "title": "Hunyuan-A13B Technical Report",
+        "summary": "We present Hunyuan-A13B, an open-source large language model based on a Mixture-of-Experts architecture. It contains 80 billion total parameters but activates only 13 billion during inference, balancing model capability, computational effic",
+        "link": "https://arxiv.org/abs/2609.27284v1",
+        "published_at": "2026-09-23T03:21:24+00:00"
+      },
+      {
+        "rank": 10,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · 腾讯混元",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 腾讯混元",
+        "category": "research",
+        "title": "CachedSearch: Training-Free Cached Exploration for Test-Time Search in Video Diffusion",
+        "summary": "Test-time search lets small video diffusion models rival larger ones, but costs 2-10x more. All candidates are fully denoised, although most are discarded. Training-free caching makes each rollout 2-3x faster at near-lossless quality. Compo",
+        "link": "https://arxiv.org/abs/2607.23159v2",
+        "published_at": "2026-07-25T11:30:59+00:00"
+      },
+      {
+        "rank": 11,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · 腾讯混元",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 腾讯混元",
+        "category": "research",
+        "title": "Pipette: An Embodied Simulation Platform, Benchmark, and Data-Efficient Augmentation Framework for Wet-Lab Robotics",
+        "summary": "Wet-lab robots can improve the reproducibility, throughput, and safety of biomedical experiments, but scaling their learning requires customizable simulators for safe and reproducible task generation, open editable laboratory assets, and ef",
+        "link": "https://arxiv.org/abs/2606.12936v3",
+        "published_at": "2026-06-11T05:58:38+00:00"
+      },
+      {
+        "rank": 12,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · 腾讯混元",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 腾讯混元",
+        "category": "research",
+        "title": "When Built-in Thinking Helps and Hurts: Constraint-Level Error Shifts in Instruction Following",
+        "summary": "Large reasoning models (LRMs) often improve math and coding performance, but their effect on instruction following is unclear. We study IFEval with Qwen3 models (1.7B-32B), using same-weights Thinking ON/OFF controls; four Hunyuan models pr",
+        "link": "https://arxiv.org/abs/2606.09662v1",
+        "published_at": "2026-06-08T15:45:04+00:00"
+      },
+      {
+        "rank": 13,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · 上海 AI Lab",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 上海 AI Lab",
+        "category": "research",
+        "title": "Think Visually, Reason Textually: Vision-Language Synergy in ARC",
+        "summary": "Abstract reasoning from minimal examples remains a core unsolved problem for frontier foundation models such as GPT-5 and Grok 4. These models still fail to infer structured transformation rules from a handful of examples, which is a key ha",
+        "link": "https://arxiv.org/abs/2511.15703v2",
+        "published_at": "2025-11-19T18:59:04+00:00"
+      },
+      {
+        "rank": 14,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · 上海 AI Lab",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 上海 AI Lab",
+        "category": "research",
+        "title": "SIM-CoT: Supervised Implicit Chain-of-Thought",
+        "summary": "Implicit Chain-of-Thought (CoT) methods offer a token-efficient alternative to explicit CoT reasoning in Large Language Models (LLMs), but a persistent performance gap has limited their adoption. We identify a core latent instability issue ",
+        "link": "https://arxiv.org/abs/2509.20317v2",
+        "published_at": "2025-09-24T17:01:32+00:00"
+      },
+      {
+        "rank": 15,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · 上海 AI Lab",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 上海 AI Lab",
+        "category": "research",
+        "title": "MA-LoT: Model-Collaboration Lean-based Long Chain-of-Thought Reasoning enhances Formal Theorem Proving",
+        "summary": "Solving mathematical problems using computer-verifiable languages like Lean has significantly impacted the mathematical and computer science communities. State-of-the-art methods utilize a single Large Language Model (LLM) to generate compl",
+        "link": "https://arxiv.org/abs/2503.03205v3",
+        "published_at": "2025-03-05T05:50:31+00:00"
+      },
+      {
+        "rank": 16,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · 百度文心",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 百度文心",
+        "category": "research",
+        "title": "Are VLMs Seeing or Just Saying? Uncovering the Illusion of Visual Re-examination",
+        "summary": "Vision-Language Models (VLMs) often produce self-reflective statements like \"let me check the figure again\" during reasoning. Do such statements trigger genuine visual re-examination, or are they merely learned textual patterns? We investig",
+        "link": "https://arxiv.org/abs/2605.15864v2",
+        "published_at": "2026-05-15T11:31:14+00:00"
+      },
+      {
+        "rank": 17,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · 百度文心",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 百度文心",
+        "category": "research",
+        "title": "Cognitive Alignment Deciphered: A Self-Developed Scenario-Based Prompt Scale Coupled with Representational Similarity Analysis and Social Network Analysis for Unraveling Bias Mechanisms Across Humans and LLMs",
+        "summary": "Traditional cognitive bias measurement tools are limited by narrow bias coverage, low ecological validity, and reliance on abstract self reports, constraining scenario based and human AI comparisons. We introduce the context based Cognitive",
+        "link": "https://arxiv.org/abs/2604.22775v1",
+        "published_at": "2026-04-01T15:56:07+00:00"
+      },
+      {
+        "rank": 18,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · 百度文心",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 百度文心",
+        "category": "research",
+        "title": "ERNIE 5.0 Technical Report",
+        "summary": "In this report, we introduce ERNIE 5.0, a natively autoregressive foundation model desinged for unified multimodal understanding and generation across text, image, video, and audio. All modalities are trained from scratch under a unified ne",
+        "link": "https://arxiv.org/abs/2602.04705v1",
+        "published_at": "2026-02-04T16:18:15+00:00"
+      },
+      {
+        "rank": 19,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "又一国产决策模型发布！准确率超过微软和Jev等决策模型",
+        "summary": "10月22日，蚂蚁数科正式发布决策模型 LingDT-Decision-1.0。",
+        "link": "https://www.qbitai.com/2026/10/504879.html",
+        "published_at": "2026-10-22T09:07:05+00:00"
+      },
+      {
+        "rank": 20,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "少数派",
+        "group": "科技媒体",
+        "source_name": "少数派",
+        "category": "tools",
+        "title": "在硅谷，遇见个人计算机历史",
+        "summary": "从硅谷计算机历史博物馆出发，让书里的故事变得更加具体。 查看全文",
+        "link": "https://sspai.com/post/116128",
+        "published_at": "2026-10-24T08:26:02+00:00"
+      },
+      {
+        "rank": 21,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "The AI graveyard: a running list of projects and startups that didn’t make it",
+        "summary": "From Apple's repeatedly delayed Siri AI to OpenAI's messy \"super app\" launch, here's a look at the AI projects that shut down or missed expectations.",
+        "link": "https://techcrunch.com/2026/10/24/the-ai-graveyard-a-running-list-of-projects-and-startups-that-didnt-make-it/",
+        "published_at": "2026-10-24T19:00:00+00:00"
+      },
+      {
+        "rank": 22,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Block’s new voice model sounds eerily human",
+        "summary": "Block said that the voice model can run locally on a MacBook M4 Max",
+        "link": "https://techcrunch.com/2026/10/24/blocks-new-voice-model-sounds-eerily-human/",
+        "published_at": "2026-10-24T16:00:00+00:00"
+      },
+      {
+        "rank": 23,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "GPU-unlock: FP/BF16 instruction issue rate on Nvidia 3000's cards",
+        "summary": "HN 热门讨论（122 points, 48 评论）by fragebogen",
+        "link": "https://github.com/Zagitta/gpu-unlock",
+        "published_at": "2026-10-24T09:58:27+00:00"
+      },
+      {
+        "rank": 24,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · 腾讯混元",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 腾讯混元",
+        "category": "research",
+        "title": "MetaHOPE: A Metaphor-Oriented Evaluation Framework for Analysing MT and LLM Translation Errors",
+        "summary": "In this opinion paper, we propose MetaHOPE, an error severity-aware annotation framework for evaluating metaphor translations. Metaphors present challenges for machine translation (MT) and natural language understanding and processing (NLU,",
+        "link": "https://arxiv.org/abs/2607.00848v4",
+        "published_at": "2026-07-01T12:13:02+00:00"
+      },
+      {
+        "rank": 25,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · 百度文心",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 百度文心",
+        "category": "research",
+        "title": "Boosting Document Parsing Efficiency and Performance with Coarse-to-Fine Visual Processing",
+        "summary": "Document parsing is a fine-grained task where image resolution significantly impacts performance. While advanced research leveraging vision-language models benefits from high-resolution input to boost model performance, this often leads to ",
+        "link": "https://arxiv.org/abs/2603.24326v2",
+        "published_at": "2026-03-25T14:08:56+00:00"
+      },
+      {
+        "rank": 26,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Hottest toy for Christmas? Nvidia CEO plays with adorable Microduck robots, 20,000 sell",
+        "summary": "The robots, stomping their little feet and making tiny R2-D2 noises, sat, fell down dead for a \"nap,\" and summersaulted on voice command.",
+        "link": "https://techcrunch.com/2026/10/23/hottest-toy-for-christmas-nvidia-ceo-plays-with-adorable-microduck-robots-20000-sell/",
+        "published_at": "2026-10-23T21:59:19+00:00"
+      },
+      {
+        "rank": 27,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Dream-1",
+        "summary": "HN 热门讨论（64 points, 36 评论）by GaggiX",
+        "link": "https://dreamlabs.ai/research/dream-1/",
+        "published_at": "2026-10-24T18:23:24+00:00"
+      },
+      {
+        "rank": 28,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Symbolic Learning in Python and Julia",
+        "summary": "HN 热门讨论（23 points, 4 评论）by alex_hirner",
+        "link": "https://github.com/astroautomata/PySR",
+        "published_at": "2026-10-20T20:07:35+00:00"
+      },
+      {
+        "rank": 29,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · 上海 AI Lab",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 上海 AI Lab",
+        "category": "research",
+        "title": "InternLM-XComposer2.5-OmniLive: A Comprehensive Multimodal System for Long-term Streaming Video and Audio Interactions",
+        "summary": "Creating AI systems that can interact with environments over long periods, similar to human cognition, has been a longstanding research goal. Recent advancements in multimodal large language models (MLLMs) have made significant strides in o",
+        "link": "https://arxiv.org/abs/2412.09596v1",
+        "published_at": "2024-12-12T18:58:30+00:00"
+      },
+      {
+        "rank": 30,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Twelve years of distributed SQLite",
+        "summary": "HN 热门讨论（341 points, 51 评论）by otoolep",
+        "link": "https://philipotoole.com/twelve-years-of-distributed-sqlite/",
+        "published_at": "2026-10-24T01:16:58+00:00"
+      },
+      {
+        "rank": 31,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Bringing uv and ty together",
+        "summary": "HN 热门讨论（266 points, 90 评论）by Ravencentric",
+        "link": "https://astral.sh/blog/uv-ty-integration",
+        "published_at": "2026-10-20T21:30:56+00:00"
+      },
+      {
+        "rank": 32,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Physicists trap a single antimatter particle for a month",
+        "summary": "HN 热门讨论（245 points, 71 评论）by mooreds",
+        "link": "https://www.scientificamerican.com/article/physicists-trap-a-single-antimatter-particle-for-a-month/",
+        "published_at": "2026-10-21T19:40:01+00:00"
+      },
+      {
+        "rank": 33,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "FreeDNS",
+        "summary": "HN 热门讨论（185 points, 48 评论）by esher",
+        "link": "https://freedns.afraid.org/",
+        "published_at": "2026-10-24T15:20:01+00:00"
+      },
+      {
+        "rank": 34,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "TornadoVM 7 Enables GPU-Native Workloads from Java Applications",
+        "summary": "HN 热门讨论（72 points, 13 评论）by pjmlp",
+        "link": "https://www.infoq.com/news/2026/10/tornadovm-7-gpu/",
+        "published_at": "2026-10-22T09:01:10+00:00"
+      },
+      {
+        "rank": 35,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Cecilia Berdichevsky, Clementina expert (1961)",
+        "summary": "HN 热门讨论（20 points, 0 评论）by fedecaccia",
+        "link": "https://en.wikipedia.org/wiki/Cecilia_Berdichevsky",
+        "published_at": "2026-10-21T12:40:46+00:00"
+      },
+      {
+        "rank": 36,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · 上海 AI Lab",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 上海 AI Lab",
+        "category": "research",
+        "title": "CapRL: Stimulating Dense Image Caption Capabilities via Reinforcement Learning",
+        "summary": "Image captioning is a fundamental task that bridges the visual and linguistic domains, playing a critical role in pre-training Large Vision-Language Models (LVLMs). Current state-of-the-art captioning models are typically trained with Super",
+        "link": "https://arxiv.org/abs/2509.22647v1",
+        "published_at": "2025-09-26T17:59:55+00:00"
+      },
+      {
+        "rank": 37,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "The Geometry of Metaphor: Probing and Steering Metaphor Representations in Large Language Models",
+        "summary": "Metaphor is a crucial aspect of human cognition. As such, we would like to understand how it is represented in large language models (LLMs) and how it might be controlled. We use mechanistic interpretability techniques to identify causal su",
+        "link": "https://arxiv.org/abs/2610.31520v1",
+        "published_at": "2026-10-22T16:33:01+00:00"
+      },
+      {
+        "rank": 38,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "OBS Studio 33",
+        "summary": "HN 热门讨论（406 points, 143 评论）by pentagrama",
+        "link": "https://github.com/obsproject/obs-studio/releases/tag/33.0.0",
+        "published_at": "2026-10-24T04:49:58+00:00"
+      },
+      {
+        "rank": 39,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Node2Shell evolves to HTTP2Shell, blast radius affects many HTTP libs and apps",
+        "summary": "HN 热门讨论（228 points, 109 评论）by theanonymousone",
+        "link": "https://www.aikido.dev/blog/python-packages-vulnerable-node2shell-brotli-cve-2026-111497",
+        "published_at": "2026-10-24T08:06:39+00:00"
+      },
+      {
+        "rank": 40,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "A practical guide to AI image generation, from diffusion to agents",
+        "summary": "HN 热门讨论（225 points, 70 评论）by westsmith",
+        "link": "https://danielball.com/notes/ai_image_generation.html",
+        "published_at": "2026-10-20T19:22:39+00:00"
+      },
+      {
+        "rank": 41,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Oai-math-revised: a community hub for revising OpenAI's math write-ups",
+        "summary": "HN 热门讨论（16 points, 13 评论）by tokepi",
+        "link": "https://terrytao.wordpress.com/2026/10/24/oai-math-revised-a-community-hub-for-revising-openais-math-write-ups/",
+        "published_at": "2026-10-24T15:35:17+00:00"
+      },
+      {
+        "rank": 42,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 智谱 GLM",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 智谱 GLM",
+        "category": "research",
+        "title": "Raising the Bar for Chinese Adolescent LLM Safety: A Culturally-Grounded, Fine-Grained Benchmark",
+        "summary": "Safety risks in conversations with adolescents are not always explicit. A request may appear harmless unless a model considers the user's age, circumstances, and earlier turns. Existing Chinese safety benchmarks mainly target general users ",
+        "link": "https://arxiv.org/abs/2609.35902v1",
+        "published_at": "2026-09-28T03:43:01+00:00"
+      },
+      {
+        "rank": 43,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 智谱 GLM",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 智谱 GLM",
+        "category": "research",
+        "title": "Rethinking Heterogeneous System Disaggregation for Subquadratic Attention",
+        "summary": "Frontier language models are more aggressively using subquadratic attention to reduce the memory footprint and compute requirements during inference while still delivering frontier accuracy. While existing systems make dense attention-centr",
+        "link": "https://arxiv.org/abs/2609.13134v1",
+        "published_at": "2026-09-11T17:55:45+00:00"
+      },
+      {
+        "rank": 44,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 字节 AI Lab",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 字节 AI Lab",
+        "category": "research",
+        "title": "LoCA: Local Credit Assignment for Reinforcement Learning of Autoregressive Flow-Matching TTS",
+        "summary": "Reinforcement learning can improve text-to-speech synthesis through feedback on generated speech. However, sentence-level rewards do not identify local errors, while signed regression updates can lead to excessive fitting or repulsion of sa",
+        "link": "https://arxiv.org/abs/2610.28035v1",
+        "published_at": "2026-10-20T11:23:47+00:00"
+      },
+      {
+        "rank": 45,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 字节 AI Lab",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 字节 AI Lab",
+        "category": "research",
+        "title": "FastCI: Efficient GPU-Intensive CI for LLM Training Frameworks",
+        "summary": "As large language models (LLMs) keep growing in size and complexity, their training frameworks evolve at a rapid pace as well. Therefore, continuous integration (CI) is critical for maintaining the quality and stability of these frameworks.",
+        "link": "https://arxiv.org/abs/2610.01967v1",
+        "published_at": "2026-10-01T16:18:14+00:00"
+      },
+      {
+        "rank": 46,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 上海 AI Lab",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 上海 AI Lab",
+        "category": "research",
+        "title": "TCM-3CEval: A Triaxial Benchmark for Assessing Responses from Large Language Models in Traditional Chinese Medicine",
+        "summary": "Large language models (LLMs) excel in various NLP tasks and modern medicine, but their evaluation in traditional Chinese medicine (TCM) is underexplored. To address this, we introduce TCM3CEval, a benchmark assessing LLMs in TCM across thre",
+        "link": "https://arxiv.org/abs/2503.07041v1",
+        "published_at": "2025-03-10T08:29:15+00:00"
+      },
+      {
+        "rank": 47,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 百度文心",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 百度文心",
+        "category": "research",
+        "title": "The Nuclear Decision-Making Benchmark: Evaluating Frontier LLMs on Nuclear Tendencies",
+        "summary": "The integration of large language models into defense and national-security workflows raises urgent questions about whether frontier models exhibit stable, consistent, and policy-appropriate preferences in high-stakes contexts. We introduce",
+        "link": "https://arxiv.org/abs/2608.05180v1",
+        "published_at": "2026-06-29T01:45:20+00:00"
+      },
+      {
+        "rank": 48,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Neural chip decodes interactions between brain regions",
+        "summary": "HN 热门讨论（61 points, 11 评论）by giuliomagnifico",
+        "link": "https://actu.epfl.ch/news/neural-chip-decodes-interactions-between-brain-r-2/",
+        "published_at": "2026-10-24T15:57:17+00:00"
+      },
+      {
+        "rank": 49,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Parsing EDIFACT in Python with syntax trees",
+        "summary": "HN 热门讨论（19 points, 7 评论）by alexprengere",
+        "link": "https://github.com/AmadeusITGroup/Edison",
+        "published_at": "2026-10-22T14:07:48+00:00"
+      },
+      {
+        "rank": 50,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 智谱 GLM",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 智谱 GLM",
+        "category": "research",
+        "title": "Joules-to-GDP: How Much Economic Value Do AI Systems Produce per Unit of Energy?",
+        "summary": "An AI system can produce more economically valuable work while delivering less value for the energy it consumes. We therefore ask: How much economic value does an AI system create per unit of energy consumed? We formalize economic value in ",
+        "link": "https://arxiv.org/abs/2610.30858v1",
+        "published_at": "2026-10-22T07:35:57+00:00"
+      },
+      {
+        "rank": 51,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 腾讯混元",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 腾讯混元",
+        "category": "research",
+        "title": "SieveIVF: Threshold-Aware IVF Execution for Large-Scale Training Data Deduplication",
+        "summary": "Embedding-based training data deduplication retrieves candidate duplicate edges above an application similarity threshold, but fixed-probe inverted-file (IVF) search ignores this predicate when giving every query the same partition budget. ",
+        "link": "https://arxiv.org/abs/2608.03199v1",
+        "published_at": "2026-08-04T06:41:14+00:00"
+      },
+      {
+        "rank": 52,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 腾讯混元",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 腾讯混元",
+        "category": "research",
+        "title": "IFMTBench: A Comprehensive Benchmark for Multilingual Translation Instruction Following",
+        "summary": "Modern translation workflows demand more than semantic equivalence. Users routinely require models to preserve JSON or HTML schemas, honor curated glossaries, disambiguate with provided context, and match prescribed registers, often several",
+        "link": "https://arxiv.org/abs/2605.28218v1",
+        "published_at": "2026-05-27T09:35:27+00:00"
+      },
+      {
+        "rank": 53,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 字节 AI Lab",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 字节 AI Lab",
+        "category": "research",
+        "title": "Distill Locally, Schedule Globally: Flow Maps for Few-Step Text-to-Speech",
+        "summary": "Flow-matching text-to-speech (TTS) models achieve high synthesis quality but require many neural function evaluations (NFEs) to integrate their generative trajectories. Recent few-step flow-map distillation approaches for TTS construct targ",
+        "link": "https://arxiv.org/abs/2609.36324v1",
+        "published_at": "2026-09-28T21:57:56+00:00"
+      },
+      {
+        "rank": 54,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 上海 AI Lab",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 上海 AI Lab",
+        "category": "research",
+        "title": "AesthetiQ: Enhancing Graphic Layout Design via Aesthetic-Aware Preference Alignment of Multi-modal Large Language Models",
+        "summary": "Visual layouts are essential in graphic design fields such as advertising, posters, and web interfaces. The application of generative models for content-aware layout generation has recently gained traction. However, these models fail to und",
+        "link": "https://arxiv.org/abs/2503.00591v1",
+        "published_at": "2025-03-01T19:05:02+00:00"
+      },
+      {
+        "rank": 55,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 百度文心",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 百度文心",
+        "category": "research",
+        "title": "CTPX1: A Highly Integrated and High-Throughput Data-Driven Camera Based on Timepix4",
+        "summary": "The upgrade of the China Spallation Neutron Source (CSNS-II) will raise the proton beam power to 500 kW. Consequently, the existing Timepix3-based detector systems, limited to a count rate of 80 Mhits/s, will encounter severe saturation cha",
+        "link": "https://arxiv.org/abs/2603.09534v1",
+        "published_at": "2026-03-10T11:44:51+00:00"
+      },
+      {
+        "rank": 56,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "How Depth Growth and Looping Shape In-Context Learning in Language Models",
+        "summary": "Looped and depth-grown language models reuse computations across depth and have attracted interest for their reasoning capabilities. Building on prior suggestive evidence of improved in-context-learning (ICL), we investigate how such reuse ",
+        "link": "https://arxiv.org/abs/2610.31421v1",
+        "published_at": "2026-10-22T15:21:22+00:00"
+      },
+      {
+        "rank": 57,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Roku developer repositories moved from GitHub to GitLab",
+        "summary": "HN 热门讨论（180 points, 118 评论）by cxr",
+        "link": "https://blog.roku.com/developer/gitlab-move",
+        "published_at": "2026-10-24T16:06:26+00:00"
+      },
+      {
+        "rank": 58,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "The St. Helena 5 pence coin shows Jonathan, a roughly 190 year old tortoise",
+        "summary": "HN 热门讨论（62 points, 10 评论）by schleck8",
+        "link": "https://de.numista.com/9866",
+        "published_at": "2026-10-24T16:41:55+00:00"
+      },
+      {
+        "rank": 59,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "arXiv 论文",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Why is AI generated language so hard to understand?",
+        "summary": "HN 热门讨论（39 points, 25 评论）by canjobear",
+        "link": "https://arxiv.org/abs/2610.29162",
+        "published_at": "2026-10-24T18:04:57+00:00"
+      },
+      {
+        "rank": 60,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "PHP Foundation 'under-funded' with one full-time staff member, director says",
+        "summary": "HN 热门讨论（34 points, 8 评论）by firesteelrain",
+        "link": "https://www.reuters.com/technology/php-foundation-under-funded-with-one-full-time-staff-member-director-says-2026-10-23/",
+        "published_at": "2026-10-24T19:03:59+00:00"
+      },
+      {
+        "rank": 61,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Glymphatic clearance to alleviate traumatic brain edema& Alzheimer's pathology",
+        "summary": "HN 热门讨论（23 points, 7 评论）by ersinesen",
+        "link": "https://www.science.org/doi/10.1126/sciadv.aeh8870",
+        "published_at": "2026-10-24T18:19:05+00:00"
+      },
+      {
+        "rank": 62,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "John Carmack on the Goose Language: multiple data stacks and relative references",
+        "summary": "HN 热门讨论（23 points, 1 评论）by bobbydigitales",
+        "link": "https://twitter.com/ID_AA_Carmack/status/2113704269274636568",
+        "published_at": "2026-10-24T19:06:55+00:00"
+      },
+      {
+        "rank": 63,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Zac-OS-9: The classic Platinum desktop, reborn for modern PCs",
+        "summary": "HN 热门讨论（17 points, 3 评论）by felixding",
+        "link": "https://sourceforge.net/projects/zac-os-9/",
+        "published_at": "2026-10-22T01:28:27+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": true,
+    "status": "pick",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": {
+      "repo": "elie222/rakazo",
+      "url": "https://github.com/elie222/rakazo",
+      "description": "Open-source Grok Bot alternative. Choose your own model and sandbox.",
+      "language": "TypeScript",
+      "topics": [
+        "ai-agents",
+        "chatgpt",
+        "docker",
+        "electron",
+        "expo",
+        "grok",
+        "llm",
+        "self-hosted",
+        "typescript"
+      ],
+      "stars": 5586,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-08-13T06:28:56Z",
+      "pushed_at": "2026-10-24T19:43:11Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "You need Docker Engine, the Compose plugin, curl, and OpenSSL. No clone or Node install.\n\n```bash\nmkdir -p rakazo && cd rakazo &&\ncurl -fsSLO https://raw.githubusercontent.com/elie222/rakazo/main/infra/compose/install-images.sh &&\nbash install-images.sh\n```\n\nThe installer downloads the Compose files, creates `.env` with random secrets, and starts Rakazo.\nIt preserves an existing `.env` when rerun.\n\nOpen [http://127.0.0.1:5173](http://127.0.0.1:5173), create an account, and connect a model.\nLocal Docker computers are on by default. Optional remote providers: `e2b`, `daytona`, `createos`, `boat`, or `railway`\nwith the matching API key.\n\nDefault image tag is `edge` (main builds, `linux/amd64` + `linux/arm64`). Details and tags:\n[self-hosting guide](./docs/self-host.md#published-images-no-checkout).\n\nOn restricted networks, override the installer download base (`RAKAZO_DOWNLOAD_BASE`), skip\nexisting Compose files (`--local` / `RAKAZO_DOWNLOAD_SKIP_EXISTING`), or mirror the bootstrap\nscript URL — see\n[Restricted networks / mirror downloads](./docs/self-host.md#restricted-networks--mirror-downloads).\n\nFor an agent-assisted install, use [SETUP_PROMPT.md](./SETUP_PROMPT.md).",
+      "readme_intro": "[English](./README.md) | [简体中文](./README.zh-CN.md) | [日本語](./README.ja.md) [ ](https://github.com/elie222/rakazo/stargazers) [ ](https://discord.gg/RWwKa2Sn7h) [ ](https://apps.apple.com/app/rakazo/id6801531099) [ ](https://github.com/elie222/rakazo/releases/download/android/rakazo.apk) Rakazo is an open source AI agent for persistent teammates, and a self-hosted AI assistant you can run on your own machine. It is available on the web, as an Electron desktop app, and on [iPhone](https://apps.apple.com/app/rakazo/id6801531099) and [Android](https://github.com/elie222/rakazo/releases/download/android/rakazo.apk). Bring your own model and computer provider, or run the complete stack locally. It is an open source, self-hosted alternative to Grok Bot, Meta Muse, OpenAI Dots, Instinct, OpenClaw,",
+      "score": 0.6027,
+      "score_parts": {
+        "velocity": 0.2934,
+        "vel_rel": 0.4545,
+        "vel_abs": 0.0517,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 3
+      },
+      "affinity": 1.0
+    },
+    "runner_ups": [
+      {
+        "repo": "jev-chat/jev-chat-jarvis",
+        "url": "https://github.com/jev-chat/jev-chat-jarvis",
+        "description": "The chat decision assistant: before you reply, Jev reads the chat, judges intent and risk, and drafts replies you fill in with one tap. You press send. Android · Windows · macOS · iOS | 聊天辅助决策工具：先看懂对方再回复，发不发由你。",
+        "language": "Kotlin",
+        "topics": [
+          "accessibility-service",
+          "ai-assistant",
+          "android",
+          "chat-assistant",
+          "chat-copilot",
+          "llm",
+          "ocr",
+          "qq",
+          "whatsapp"
+        ],
+        "stars": 8045,
+        "delta_stars": null,
+        "is_new": true,
+        "created_at": "2026-09-21T11:12:53Z",
+        "pushed_at": "2026-10-16T09:46:28Z",
+        "license": "MIT",
+        "has_install_docs": false,
+        "mentions": 1,
+        "readme_excerpt": "",
+        "readme_intro": "**Read them first, then reply. Before you answer, Jev works out what the other person really means, how risky the moment is and how to respond, then drafts replies you can fill in with one tap. Whether to send is always up to you.** [ ](https://github.com/jev-chat/jev-chat-jarvis/stargazers) [ ](#download--installation) [ ](../LICENSE)",
+        "score": 0.5343,
+        "score_parts": {
+          "velocity": 0.665,
+          "vel_rel": 1.0,
+          "vel_abs": 0.1625,
+          "hands_on": 0.45,
+          "cross_heat": 0.3333,
+          "affinity": 1.0,
+          "days_in_pool": 0
+        },
+        "affinity": 1.0
+      },
+      {
+        "repo": "NVIDIA/OpenShell",
+        "url": "https://github.com/NVIDIA/OpenShell",
+        "description": "OpenShell is the safe, private runtime for autonomous AI agents.",
+        "language": "Rust",
+        "topics": [],
+        "stars": 19366,
+        "delta_stars": null,
+        "is_new": true,
+        "created_at": "2026-02-24T22:52:22Z",
+        "pushed_at": "2026-10-24T02:12:45Z",
+        "license": "Apache-2.0",
+        "has_install_docs": true,
+        "mentions": 0,
+        "readme_excerpt": "You need Linux, macOS on Apple Silicon, or Windows with WSL 2 (experimental), plus Docker, Podman, or host virtualization. See the [Support Matrix](https://docs.nvidia.com/openshell/latest/about/support-matrix) for details.\n\n```shell\ncurl -LsSf https://raw.githubusercontent.com/NVIDIA/OpenShell/main/install.sh | sh\nopenshell sandbox create --name demo\n```\n\nThe installer sets up the CLI and a local gateway. The default sandbox image is minimal Ubuntu with no agent installed. To run a real agent, follow [Run Your First Agent](https://docs.nvidia.com/openshell/latest/about/run-your-first-agent): it runs OpenCode against a free OpenRouter model and shows how to approve new access as the agent needs it.",
+        "readme_intro": "[ ](https://github.com/NVIDIA/OpenShell/blob/main/LICENSE) [ ](https://pypi.org/project/openshell/) [ ](SECURITY.md) [ ](https://docs.nvidia.com/openshell/latest/index.html) > [!IMPORTANT] > **New in OpenShell 0.1.x:** a stable release cadence, new isolation primitives, an expanded extension surface, and new APIs. [Read the 0.1.0 upgrade guide](https://docs.nvidia.com/openshell/latest/upgrade/0-1-0). OpenShell is the safe, private runtime for fleets of autonomous AI agents. Agents are most useful when they can read files, install packages, call APIs, and use credentials. OpenShell gives them that capability without giving them unrestricted access to your data, secrets, or network. You declare what each agent can touch in a policy, and OpenShell enforces it.",
+        "score": 0.5161,
+        "score_parts": {
+          "velocity": 0.4032,
+          "vel_rel": 0.6364,
+          "vel_abs": 0.0536,
+          "hands_on": 1.0,
+          "cross_heat": 0.0,
+          "affinity": 0.5,
+          "days_in_pool": 2
+        },
+        "affinity": 0.5
+      }
+    ],
+    "yesterday": {
+      "repo": "Graphify-Labs/graphify",
+      "delta_stars": 503,
+      "date": ""
+    },
+    "candidates": {
+      "total": 52,
+      "excluded_recent": 19,
+      "fresh": 33,
+      "semantics": "v4",
+      "detail_available": false,
+      "preview": null
+    },
+    "message": "今日主推项目"
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-10-25.json",
+      "report": "data/reports/daily_report_2026-10-25.md",
+      "radar": "data/gh_radar/radar_2026-10-25.json",
+      "playlist": "site/episodes/2026-10-25/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": [
+      "radar_candidate_detail_unavailable"
+    ]
+  }
+}

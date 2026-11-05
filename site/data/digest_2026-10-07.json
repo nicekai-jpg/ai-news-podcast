@@ -1,0 +1,1298 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-07",
+  "date_label": "2026年10月07日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": true
+  },
+  "podcast": {
+    "title": "AI 新闻快报 | 2026-10-07",
+    "subtitle": "当OpenAI「疯狂28天」首日...遇上实际落地，我们看到了什么",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-07.mp3",
+    "duration_seconds": 696.928,
+    "duration_label": "11:37",
+    "speech_seconds": 669.661,
+    "segment_count": 59,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 59,
+      "segments_url": "episodes/2026-10-07/playlist.json",
+      "text_url": "episodes/2026-10-07.txt"
+    }
+  },
+  "lead": {
+    "text": "今日全球AI产业呈现\"技术爆发与生态扩张\"的双线并行态势——OpenAI正式启动为期28天的密集更新计划拉开Q4序幕，DeepSeek以激进的人才战略宣告基础设施层面的军备竞赛升级；同时，NVIDIA持续推动Physical AI、新兴市场与清洁能源三大垂直领域的纵深落地，AI正从\"模型竞争\"全面迈向\"算力-场景-生态\"的三维竞速。",
+    "source": "report_lead",
+    "source_file": "data/reports/daily_report_2026-10-07.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 77,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 24,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 59,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 13,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "听众朋友大家好，欢迎收听…",
+      "start": 1.0,
+      "label": "00:01",
+      "source": "cue_heuristic"
+    },
+    {
+      "title": "行，这个点到为止。说到竞…",
+      "start": 153.312,
+      "label": "02:33",
+      "source": "cue_heuristic"
+    },
+    {
+      "title": "确实是。以前是\"先凑齐人…",
+      "start": 217.012,
+      "label": "03:37",
+      "source": "cue_heuristic"
+    },
+    {
+      "title": "行，这条我记住了。第二条…",
+      "start": 354.018,
+      "label": "05:54",
+      "source": "cue_heuristic"
+    }
+  ],
+  "report": {
+    "title": "✨ 科技新闻日报 | 2026年10月07日",
+    "char_count": 2484,
+    "reading_minutes": 6,
+    "lead": "今日全球AI产业呈现\"技术爆发与生态扩张\"的双线并行态势——OpenAI正式启动为期28天的密集更新计划拉开Q4序幕，DeepSeek以激进的人才战略宣告基础设施层面的军备竞赛升级；同时，NVIDIA持续推动Physical AI、新兴市场与清洁能源三大垂直领域的纵深落地，AI正从\"模型竞争\"全面迈向\"算力-场景-生态\"的三维竞速。",
+    "deep_dives": [
+      {
+        "heading": "一、OpenAI「疯狂28天」启程：从产品迭代到生态卡位的战略总攻",
+        "background": "在2026年Q4的关键节点，OpenAI启动了名为\"疯狂28天\"的高密度发布节奏，首日即释放多重信号。这一时间窗口恰逢全球大模型竞争进入\"应用兑现期\"——单纯比拼参数规模已成过去式，谁能更快将能力转化为产品体验与商业收入，谁就能在下一阶段的AI叙事中占据话语权。",
+        "breakthrough": "28天密集发布策略本身即是一种\"反摩尔定律\"的产品节奏宣示——意味着OpenAI不再追求单次发布的震撼性，而是通过高频、连续的迭代形成用户黏性记忆。这背后是其推理架构、多模态能力和Agent框架的持续成熟，使其具备了支撑高频落地的技术储备。",
+        "impact": "这一战略将对行业生态产生三重冲击：第一，迫使Anthropic、Google DeepMind等竞争对手必须调整发布节奏，避免在舆论场被持续边缘化；第二，中小模型厂商将面临\"以日为单位的代差淘汰\"，行业马太效应加剧；第三，对开发者与终端用户而言，意味着AI产品的成熟度将以前所未有的速度逼近\"水电煤\"式的日常基础设施水平，应用层创新将迎来真正的爆发拐点。",
+        "raw_sections": []
+      },
+      {
+        "heading": "二、DeepSeek扩军弹性计算：基础设施军备竞赛的\"人才信号弹\"",
+        "background": "在推理成本与算力调度成为大模型厂商核心竞争力分水岭的当下，DeepSeek发布了大量弹性计算团队的资深工程师岗位，甚至以\"岗位描述直接甩出一篇技术报告\"的方式彰显其工程文化——这是一种极度自信且带有\"硬核筛选\"意味的招聘策略。",
+        "breakthrough": "招聘方向精准锁定\"弹性计算\"（Elastic Computing），意味着DeepSeek正在构建能够应对推理流量潮汐的算力调度体系，是其从\"训练导向\"转向\"推理导向\"的关键战略落子。其JD中直接嵌入技术报告的\"硬核表达\"，本质上是在向行业传递信号：DeepSeek的人才标准已对标全球顶尖基础设施团队，其工程深度不容小觑。",
+        "impact": "这一动作揭示了2026年大模型行业的核心战场已悄然转移——从\"谁能训出更强的模型\"转向\"谁能更便宜、更稳定地运行模型\"。DeepSeek此举将引发连锁反应：其一，国内云厂商将被迫加大在异构算力、KV Cache优化、推理加速等基础设施研发力度；其二，AI Infra赛道将迎来估值与人才的双重重估；其三，\"弹性推理\"将成为继\"训练算力\"之后的下一个资本与人才聚集地。",
+        "raw_sections": []
+      }
+    ],
+    "frontier": [
+      {
+        "title": "NVIDIA力推Physical AI全栈安全",
+        "summary": "随着Physical AI从实验室走向大规模部署，NVIDIA在官方博客中系统阐述了\"每一层都必须安全\"的技术哲学。简析：这是黄仁勋\"具身智能\"叙事的关键基建配套——Physical AI的商业化拐点取决于安全标准的成熟，安全能力将成为机器人、自动驾驶等领域的核心准入门槛，NVIDIA正试图通过全栈安全标准定义行业游戏规则。"
+      },
+      {
+        "title": "埃及AI生态迈入\"生产规模\"阶段",
+        "summary": "在Grand Egyptian Museum举办的产业活动标志着埃及AI生态正式跨越\"原型验证\"阶段。简析：新兴市场的AI产业化不再是\"未来时\"——埃及的进展表明，AI的全球扩散已进入第三波浪潮，从北美-中国双极向非洲、中东等地区纵深推进，NVIDIA正以\"全栈赋能者\"姿态收割全球AI基础设施红利。"
+      },
+      {
+        "title": "NVIDIA AI赋能五大清洁能源企业",
+        "summary": "官方博客披露了五家利用NVIDIA AI技术加速清洁能源转型的代表性公司。简析：当AI的\"能源消耗\"叙事遭遇\"能源变革\"叙事，NVIDIA用行动给出了回应——能源行业的长尾数字化转型正是AI最具确定性的To B落地场景之一，这也将进一步打开AI在传统重工业中的价值天花板。"
+      }
+    ],
+    "editor_verdict": "**【AI小编深度点评】** 今日新闻看似分散，实则共同勾勒出2026年AI产业的三条底层主线：**第一，\"节奏即壁垒\"成为头部玩家共识**。无论是OpenAI的28天密集发布，还是DeepSeek的硬核抢人，本质上都是在用\"时间\"作为武器——在技术差距逐渐缩小的存量竞争阶段，执行速度与迭代节奏取代了原始创新，成为定义市场地位的核心变量。**第二，AI竞争从\"模型层\"下沉至\"基础设施层\"**。弹性计算、推理优化、Physical AI安全等议题的密集浮现，标志着行业已清醒认识到：真正的护城河不在模型本身，而在支撑模型运行的工程体系与生态网络。**第四，全球AI权力结构呈现\"基础设施垄断+区域生态扩散\"的二元格局**——NVIDIA通过技术标准、开发者生态与垂直行业落地三维绑定，正在构建一个难以撼动的\"AI基础设施帝国\"。未来12个月，谁能率先在\"推理成本-应用密度-生态深度\"上完成闭环，谁就将赢得AI下半场的入场券。",
+    "toc": [
+      {
+        "anchor": "deep-dive-1",
+        "title": "一、OpenAI「疯狂28天」启程：从产品迭代到生态卡位的战略总攻"
+      },
+      {
+        "anchor": "deep-dive-2",
+        "title": "二、DeepSeek扩军弹性计算：基础设施军备竞赛的\"人才信号弹\""
+      }
+    ],
+    "raw_paragraphs": [],
+    "source_file": "data/reports/daily_report_2026-10-07.md"
+  },
+  "sources": {
+    "total_all": 77,
+    "total_main": 24,
+    "shown": 77,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "arXiv 论文",
+        "group": "arXiv 论文",
+        "count": 31
+      },
+      {
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "count": 22
+      },
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 16
+      },
+      {
+        "publisher": "OpenAI",
+        "group": "OpenAI",
+        "count": 4
+      },
+      {
+        "publisher": "NVIDIA",
+        "group": "NVIDIA",
+        "count": 3
+      },
+      {
+        "publisher": "Google",
+        "group": "Google",
+        "count": 1
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "OpenAI「疯狂28天」首日，这都发了些啥啊…",
+        "summary": "",
+        "link": "https://www.qbitai.com/2026/10/501726.html",
+        "published_at": "2026-10-06T06:45:40+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "DeepSeek扩招！弹性计算团队大量HC，尤其需要资深工程师",
+        "summary": "岗位JD甩了篇技术报告",
+        "link": "https://www.qbitai.com/2026/10/501381.html",
+        "published_at": "2026-10-03T07:54:43+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "NVIDIA 官方博客",
+        "group": "NVIDIA",
+        "source_name": "NVIDIA 官方博客",
+        "category": "official",
+        "title": "Why Deploying Physical AI at Scale Demands Safety at Every Layer",
+        "summary": "Physical AI is moving rapidly from research to large-scale deployment. By 2035, ABI Research projects an installed base of 49 million level 3-5 autonomous vehicles (AVs), while Omdia estimates that roughly 60 million industrial robots will ",
+        "link": "https://blogs.nvidia.com/blog/physical-ai-halos-safety/",
+        "published_at": "2026-09-21T16:00:46+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "NVIDIA 官方博客",
+        "group": "NVIDIA",
+        "source_name": "NVIDIA 官方博客",
+        "category": "official",
+        "title": "From Enablement to Execution, Egypt’s AI Ecosystem Reaches Production Scale",
+        "summary": "Today, Egypt’s AI builders gathered in the Grand Egyptian Museum for a reception that highlighted the nation’s rapidly growing AI ecosystem — spanning AI natives, developers, researchers, startups and enterprises — building applications acr",
+        "link": "https://blogs.nvidia.com/blog/egypt-africa-ai-ecosystem/",
+        "published_at": "2026-09-21T16:00:10+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "NVIDIA 官方博客",
+        "group": "NVIDIA",
+        "source_name": "NVIDIA 官方博客",
+        "category": "official",
+        "title": "5 Companies Using NVIDIA AI for Clean Energy",
+        "summary": "Clean energy isn’t hard to come by, but the pace of large-scale adoption has historically been slow due to bottlenecks — including out-of-date infrastructure, elongated research and development timelines, and upfront cost barriers. At New Y",
+        "link": "https://blogs.nvidia.com/blog/clean-energy-nvidia-ai/",
+        "published_at": "2026-09-21T10:00:35+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Microsoft Research AI",
+        "group": "科技媒体",
+        "source_name": "Microsoft Research AI",
+        "category": "official",
+        "title": "What AI gets wrong and what failure teaches us",
+        "summary": "Jennifer Neville did not want to go into computer science—but that’s exactly where she landed. Neville discusses the starts and stops that led to her professional sweet spot and her work identifying “surprising failures” making it hard for ",
+        "link": "https://www.microsoft.com/en-us/research/podcast/what-ai-gets-wrong-and-what-failure-teaches-us/",
+        "published_at": "2026-10-06T16:19:06+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Microsoft Research AI",
+        "group": "科技媒体",
+        "source_name": "Microsoft Research AI",
+        "category": "official",
+        "title": "Improving synthesis prediction of small molecules at scale with RetroChimera",
+        "summary": "Custom-made molecules are advancing medicine, materials, and agriculture, but producing them is slow and expensive. A new Nature paper highlights RetroChimera, a predictive model that helps accelerate chemical synthesis, helping researchers",
+        "link": "https://www.microsoft.com/en-us/research/blog/improving-synthesis-prediction-of-small-molecules-at-scale-with-retrochimera/",
+        "published_at": "2026-09-21T15:30:19+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Mistral’s new 1T model aims to leapfrog closed and open rivals",
+        "summary": "French AI lab Mistral AI has released Mistral Large 4, a new large multimodal model aiming to leapfrog both American and Chinese rivals.",
+        "link": "https://techcrunch.com/2026/10/06/mistrals-new-1t-model-aims-to-leapfrog-closed-and-open-rivals/",
+        "published_at": "2026-10-06T14:33:16+00:00"
+      },
+      {
+        "rank": 9,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "How Jump Trading is scaling quant research with ChatGPT",
+        "summary": "Jump Trading uses OpenAI to expand quantitative research. See how longer-running AI workflows combine multiple data sources with human review.",
+        "link": "https://openai.com/index/jump-trading",
+        "published_at": "2026-10-06T12:00:00+00:00"
+      },
+      {
+        "rank": 10,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "Two years of OpenAI Academy",
+        "summary": "Marking two years of OpenAI Academy and bringing AI skills to even more communities.",
+        "link": "https://openai.com/index/two-years-of-openai-academy",
+        "published_at": "2026-09-23T16:00:00+00:00"
+      },
+      {
+        "rank": 11,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "DeepMind Blog",
+        "group": "Google",
+        "source_name": "DeepMind Blog",
+        "category": "official",
+        "title": "EmbeddingGemma 2: an open, lightweight multimodal embedding model",
+        "summary": "",
+        "link": "https://deepmind.google/blog/embeddinggemma-2-an-open-lightweight-multimodal-embedding-model/",
+        "published_at": "2026-10-06T19:57:04+00:00"
+      },
+      {
+        "rank": 12,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Agentic AI with Structured CoT for Enhancing AI's Spatial Intelligence: Visualization and Reasoning of Rotation",
+        "summary": "arXiv:2610.04188v1 Announce Type: new Abstract: Recent studies show that artificial intelligence (AI) with language and vision capabilities still experiences limitations in spatial reasoning. In this paper, we have studied the spatial capab",
+        "link": "https://arxiv.org/abs/2610.04188",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 13,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Anthropic is giving startups a free year of Claude Team and $1,000 in credits",
+        "summary": "\"We created this program because we believe the benefits of AI will reach most people through the companies that build on top of models, rather than through the models alone.\"",
+        "link": "https://techcrunch.com/2026/10/06/anthropic-gives-startups-a-free-year-of-enterprise-service-and-1000-in-token-credits/",
+        "published_at": "2026-10-06T16:00:00+00:00"
+      },
+      {
+        "rank": 14,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "少数派",
+        "group": "科技媒体",
+        "source_name": "少数派",
+        "category": "tools",
+        "title": "基于 Vaultwarden 和 Keyguard 的自托管密码管理实践",
+        "summary": "密码管理服务的数据，当然要掌握在自己手里。 查看全文",
+        "link": "https://sspai.com/post/115416",
+        "published_at": "2026-10-06T10:00:00+00:00"
+      },
+      {
+        "rank": 15,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Proxy Confidence: Auditing Black-Box LLM Agents with a Surrogate's Log-Probabilities",
+        "summary": "arXiv:2610.03894v1 Announce Type: new Abstract: A deployed LLM agent emits tool calls, queries, and code that can be silently wrong -- by the time the error surfaces, the action has run. Frontier chat APIs hide the model's token probabiliti",
+        "link": "https://arxiv.org/abs/2610.03894",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 16,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Behavioral History Outperforms Descriptions of the Person for LLM Synthetic Personas",
+        "summary": "arXiv:2610.03998v1 Announce Type: new Abstract: Large language models (LLMs) are increasingly used as synthetic personas representing survey respondents. Their validity as substitutes for particular respondents depends on whether they repro",
+        "link": "https://arxiv.org/abs/2610.03998",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 17,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "The Cost of a Hop: Benchmarking NLIP and A2A",
+        "summary": "arXiv:2610.04053v1 Announce Type: new Abstract: Autonomous agents built on Large Language Models (LLMs) need standardized protocols to interoperate across systems. Several now exist (A2A, MCP, ACP, ANP, NLIP), but the Natural Language Inter",
+        "link": "https://arxiv.org/abs/2610.04053",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 18,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Auditing Pairwise Equivalence Judgments: Self-Critique Effects and Diversity Measurement in Multi-Agent Hypothesis Generation",
+        "summary": "arXiv:2610.04133v1 Announce Type: new Abstract: Multi-agent systems built on large language models (LLMs) are increasingly applied to scientific discovery and hypothesis generation. Both the effect of refinement and the diversity of the del",
+        "link": "https://arxiv.org/abs/2610.04133",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 19,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Agentic Cognitive Depth: Operational Criteria for Evaluating LLM Agents",
+        "summary": "arXiv:2610.04168v1 Announce Type: new Abstract: Agentic large language model (LLM) systems are commonly implemented as an LLM in a loop with Planning, Memory, Tools, and Control Flow. This application-focused view connects agentic LLM resea",
+        "link": "https://arxiv.org/abs/2610.04168",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 20,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "How AI decision models could change content moderation",
+        "summary": "On Tuesday, Musubi announced a lightweight decision model made for real-time moderation called PolicyLM-1.7B, released with open weights.",
+        "link": "https://techcrunch.com/2026/10/06/how-ai-decision-models-could-change-content-moderation/",
+        "published_at": "2026-10-06T20:35:20+00:00"
+      },
+      {
+        "rank": 21,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "The next hurdle for AI agents: getting websites to let them in",
+        "summary": "Personal AI agents promise to shop, book flights, and make reservations for you. But deliberate blocks and anti-bot defenses are getting in the way, leaving consumers caught in the middle. A new standard aims to help.",
+        "link": "https://techcrunch.com/2026/10/06/the-next-hurdle-for-ai-agents-getting-websites-to-let-them-in/",
+        "published_at": "2026-10-06T19:56:50+00:00"
+      },
+      {
+        "rank": 22,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "OpenTPU – An open-source AI accelerator, developed by AI",
+        "summary": "HN 热门讨论（222 points, 288 评论）by fsbonetto",
+        "link": "https://github.com/FeSens/openTPU",
+        "published_at": "2026-10-06T16:23:25+00:00"
+      },
+      {
+        "rank": 23,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "OpenAI",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Decisions API is in public beta",
+        "summary": "HN 热门讨论（118 points, 50 评论）by chiefstorm",
+        "link": "https://developers.openai.com/api/docs/guides/decisions",
+        "published_at": "2026-10-06T20:57:25+00:00"
+      },
+      {
+        "rank": 24,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Utah to let AI examine patients and prescribe medication without human oversight",
+        "summary": "HN 热门讨论（62 points, 86 评论）by healsdata",
+        "link": "https://www.techspot.com/news/114111-utah-become-first-state-ai-examine-patients-prescribe.html",
+        "published_at": "2026-10-06T17:01:52+00:00"
+      },
+      {
+        "rank": 25,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Penguin Mail – open-source Rust email client for Linux with AI",
+        "summary": "HN 热门讨论（52 points, 13 评论）by kavourias",
+        "link": "https://penguin-mail.com/",
+        "published_at": "2026-10-06T21:59:43+00:00"
+      },
+      {
+        "rank": 26,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "刚刚，诺贝尔物理奖一人独揽！",
+        "summary": "南极洲甚至有一座高地以他名字命名",
+        "link": "https://www.qbitai.com/2026/10/501746.html",
+        "published_at": "2026-10-06T10:44:58+00:00"
+      },
+      {
+        "rank": 27,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "HuggingFace Blog",
+        "group": "科技媒体",
+        "source_name": "HuggingFace Blog",
+        "category": "research",
+        "title": "tokenizers v1: encode, decode and scaling, measured",
+        "summary": "",
+        "link": "https://huggingface.co/blog/tokenizers-v1",
+        "published_at": "2026-09-21T00:00:00+00:00"
+      },
+      {
+        "rank": 28,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Ex-Ramp engineers raise $20M for platform Melius after scrapping their first product",
+        "summary": "Instead of helping marketers manage and optimize ad spend, the company is focusing on building the tools that generate the creative assets and campaigns.",
+        "link": "https://techcrunch.com/2026/10/06/ex-ramp-engineers-raise-20m-for-platform-melius-after-scrapping-their-first-product/",
+        "published_at": "2026-10-06T22:34:03+00:00"
+      },
+      {
+        "rank": 29,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "OpenSSH 10.6",
+        "summary": "HN 热门讨论（82 points, 18 评论）by torcete",
+        "link": "https://www.openssh.org/releasenotes.html#10.6",
+        "published_at": "2026-10-06T20:41:39+00:00"
+      },
+      {
+        "rank": 30,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "LLMs may have helped my RSI",
+        "summary": "HN 热门讨论（30 points, 17 评论）by vaughands",
+        "link": "https://vaughanhilts.me/2026/10/05/llms-immensely-helped-my-rsi.html",
+        "published_at": "2026-10-06T03:01:04+00:00"
+      },
+      {
+        "rank": 31,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "How Fast is Python 3.15?",
+        "summary": "HN 热门讨论（19 points, 9 评论）by Qem",
+        "link": "https://blog.miguelgrinberg.com/post/how-fast-is-python-3-15",
+        "published_at": "2026-10-06T21:52:57+00:00"
+      },
+      {
+        "rank": 32,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "不er，咋陶哲轩也成AI减速派了？？",
+        "summary": "",
+        "link": "https://www.qbitai.com/2026/10/501736.html",
+        "published_at": "2026-10-06T07:59:17+00:00"
+      },
+      {
+        "rank": 33,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "HuggingFace Blog",
+        "group": "科技媒体",
+        "source_name": "HuggingFace Blog",
+        "category": "research",
+        "title": "Falcon-Emirati: When an LLM Learns the Dialect, the Culture, and the Nuance",
+        "summary": "",
+        "link": "https://huggingface.co/blog/tiiuae/falcon-emirati",
+        "published_at": "2026-10-06T06:44:39+00:00"
+      },
+      {
+        "rank": 34,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Teaching Agents to Code Reliably",
+        "summary": "arXiv:2610.03984v1 Announce Type: new Abstract: Autonomous coding agents solve repository issues by reading code, running commands, editing files, and submitting patches. Extra inference-time compute yields gains only when it produces a use",
+        "link": "https://arxiv.org/abs/2610.03984",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 35,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "InvestigationWorlds: An Agentic Environment for Legal Investigation",
+        "summary": "arXiv:2610.04129v1 Announce Type: new Abstract: We introduce InvestigationWorlds, an agentic environment for legal investigation. We build on an underused artifact of U.S. civil litigation: the summary judgment motion. This motion relies up",
+        "link": "https://arxiv.org/abs/2610.04129",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 36,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "LibreOffice says ‘no AI’ is now a software feature",
+        "summary": "The maker of the open source document editor says it has no plans to add AI to its software's default configuration, citing user privacy.",
+        "link": "https://techcrunch.com/2026/10/06/libreoffice-says-no-ai-is-now-a-software-feature/",
+        "published_at": "2026-10-06T15:25:00+00:00"
+      },
+      {
+        "rank": 37,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Pinterest’s AI now turns beauty Pins into action plans",
+        "summary": "Pinterest’s new AI-powered Beauty Guides translate hair and nail Pins into salon terminology, with estimated costs, appointment times, and maintenance needs.",
+        "link": "https://techcrunch.com/2026/10/06/pinterests-ai-now-turns-beauty-pins-into-action-plans/",
+        "published_at": "2026-10-06T14:00:49+00:00"
+      },
+      {
+        "rank": 38,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Paramount Skydance has completed its $111B merger with Warner Bros. Discovery",
+        "summary": "HN 热门讨论（164 points, 254 评论）by Mgtyalx",
+        "link": "https://arstechnica.com/tech-policy/2026/10/paramount-completes-111b-warner-merger-creating-skydance-behemoth/",
+        "published_at": "2026-10-06T20:33:47+00:00"
+      },
+      {
+        "rank": 39,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Beyond the Parameter Monolith: Reconstructive Memories, Executable Skills, and Residual Assembly for Language Models",
+        "summary": "arXiv:2610.04012v1 Announce Type: new Abstract: Language-model systems can separate contextual computation, persistent storage, and exact execution instead of updating all capabilities through one shared parameter system. We investigate FEM",
+        "link": "https://arxiv.org/abs/2610.04012",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 40,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Language Model Activations Inhabit Privileged Error-Correcting Basins",
+        "summary": "arXiv:2610.04183v1 Announce Type: new Abstract: Language models exhibit remarkable robustness, continuing to produce coherent text even when their activations are perturbed by interventions like linear steering. We hypothesize that this rob",
+        "link": "https://arxiv.org/abs/2610.04183",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 41,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "Base Models Can Reason By Taking a Cue From Training Data",
+        "summary": "In this paper, we study how training data creates associations between the tokens at the start of a base model's response and the reasoning behavior that follows. First, we demonstrate that fixing particular starting token cues makes a base",
+        "link": "https://arxiv.org/abs/2610.06851v1",
+        "published_at": "2026-10-05T17:59:52+00:00"
+      },
+      {
+        "rank": 42,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "Paradee: Distilling Kokoro-82M into an 8M-Parameter Single-Voice Text-to-Speech Model",
+        "summary": "We distill Kokoro-82M, a widely used open text-to-speech model with 54 voices, into Paradee, an 8.07M-parameter model that speaks one of them. Paradee keeps Kokoro's architecture with much narrower layers, and each of its two halves is trai",
+        "link": "https://arxiv.org/abs/2610.06817v1",
+        "published_at": "2026-10-05T17:56:07+00:00"
+      },
+      {
+        "rank": 43,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "Detecting Nighttime Anomalies from NASA Black Marble Using a Generalized Spatio-Temporally Robust Framework of Machine Leaning Ensembles",
+        "summary": "Nighttime lights from NASA's Black Marble product suite capture thermal and light emission signals from anomalous events including fires, volcanic eruptions, and gas flaring. Existing detection approaches rely primarily on thermal bands, li",
+        "link": "https://arxiv.org/abs/2610.06674v1",
+        "published_at": "2026-10-05T16:47:01+00:00"
+      },
+      {
+        "rank": 44,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "Visual Swarm Navigation via Deep Reinforcement Learning and Evolutionary Hybrid Design",
+        "summary": "Swarm robotics presents a robust and cost-effective paradigm for advanced automation in complex, dynamic environments, such as those encountered in search and rescue or environmental monitoring. A fundamental challenge for this field is the",
+        "link": "https://arxiv.org/abs/2610.06400v1",
+        "published_at": "2026-10-05T14:21:11+00:00"
+      },
+      {
+        "rank": 45,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Mistral Large 4",
+        "summary": "HN 热门讨论（1579 points, 960 评论）by Philpax",
+        "link": "https://mistral.ai/news/mistral-large-4/\\",
+        "published_at": "2026-10-06T13:15:49+00:00"
+      },
+      {
+        "rank": 46,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "The Query Transformation Pipeline",
+        "summary": "HN 热门讨论（9 points, 0 评论）by gvsg-rs",
+        "link": "https://readyset.io/blog/how-readyset-rewrites-your-sql-inside-the-query-transformation-pipeline",
+        "published_at": "2026-10-06T22:09:14+00:00"
+      },
+      {
+        "rank": 47,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "EvalResearchBench: Can AI Agents Design Their Own Evaluations?",
+        "summary": "arXiv:2610.04184v1 Announce Type: new Abstract: Recursive self-improvement (RSI) relies on evaluation feedback to assess progress and guide further research, yet repeatedly running complex benchmarks is costly and slows iteration. Human exp",
+        "link": "https://arxiv.org/abs/2610.04184",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 48,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "T-Search: An Open Agentic Retriever and Playground for Hard Multi-Step Search",
+        "summary": "We present T-Search, an open-weight agentic retriever for hard multi-step search. Given a question and a search tool over a fixed corpus, it runs a bounded multi-round search and returns a ranked list of evidence chunks with short justifica",
+        "link": "https://arxiv.org/abs/2610.06782v1",
+        "published_at": "2026-10-05T17:44:26+00:00"
+      },
+      {
+        "rank": 49,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "One Figure, Every Canvas: Editable Flowchart Relayout via Agentic Pipeline",
+        "summary": "Pipeline figures in ML papers must be repurposed across many canvases, including paper columns, 16:9 slides, portrait posters, 1:1 social teasers, 9:16 phone previews. Each format imposes a different aspect ratio on the same computational g",
+        "link": "https://arxiv.org/abs/2610.06852v1",
+        "published_at": "2026-10-05T17:59:54+00:00"
+      },
+      {
+        "rank": 50,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "On Learning Optimal Corners in Orthogonal Partially Observable Cooperative Guard Art Galleries",
+        "summary": "The CADENCE algorithm solves the Partially Observable Cooperative Guard Art Gallery Problem (POCGAGP) with formal coverage and connectivity guarantees, but leaves unspecified which valid corner each agent should be deployed to, a choice tha",
+        "link": "https://arxiv.org/abs/2610.06777v1",
+        "published_at": "2026-10-05T17:42:41+00:00"
+      },
+      {
+        "rank": 51,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "AffordCraft: Scalable Construction of Task-Ready Simulation Assets from Single Images",
+        "summary": "Robot learning in simulation depends on the objects the simulator offers. Many tasks need objects with separate parts, joints that allow the required motion, and physical properties that remain valid under contact. Existing methods recover ",
+        "link": "https://arxiv.org/abs/2610.06643v1",
+        "published_at": "2026-10-05T16:26:48+00:00"
+      },
+      {
+        "rank": 52,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "Traversability-Aware Cooperative Path Planning for Human-UGV Casualty Evacuation",
+        "summary": "Heterogeneous multi-robot path planning is a well-studied problem in which agents with disparate kinematic and dynamic models must coordinate to achieve shared objectives. These formulations, however, treat all agents as robotic-their cost ",
+        "link": "https://arxiv.org/abs/2610.06487v1",
+        "published_at": "2026-10-05T15:12:03+00:00"
+      },
+      {
+        "rank": 53,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Gleam doesn't compile to Erlang source anymore",
+        "summary": "HN 热门讨论（293 points, 123 评论）by ingve",
+        "link": "https://gleam.run/news/gleam-doesnt-compile-to-erlang-source-anymore/",
+        "published_at": "2026-10-06T08:08:20+00:00"
+      },
+      {
+        "rank": 54,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "What's Earth's dominant species by mass?",
+        "summary": "HN 热门讨论（139 points, 88 评论）by surprisetalk",
+        "link": "https://signoregalilei.com/2026/09/27/whats-earths-dominant-species-by-mass/",
+        "published_at": "2026-10-06T12:40:03+00:00"
+      },
+      {
+        "rank": 55,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Benchmark in Milliseconds",
+        "summary": "HN 热门讨论（128 points, 36 评论）by surprisetalk",
+        "link": "https://matklad.github.io/2026/10/05/benchmark-milliseconds.html",
+        "published_at": "2026-10-05T17:00:10+00:00"
+      },
+      {
+        "rank": 56,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "California closed the Montana license plate loophole",
+        "summary": "HN 热门讨论（49 points, 91 评论）by speckx",
+        "link": "https://www.thedrive.com/news/heres-how-california-closed-the-montana-license-plate-loophole",
+        "published_at": "2026-10-06T17:00:59+00:00"
+      },
+      {
+        "rank": 57,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "AnyPS5: Port PS5 binaries to PC without emulation (87% system libraries mapped)",
+        "summary": "HN 热门讨论（48 points, 9 评论）by Fe2O3",
+        "link": "https://github.com/boykopovar/AnyPS5",
+        "published_at": "2026-10-06T23:28:08+00:00"
+      },
+      {
+        "rank": 58,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Integer multiplication below n log n",
+        "summary": "HN 热门讨论（38 points, 24 评论）by E-Reverance",
+        "link": "https://github.com/openai/math/tree/main/preprints/Integer-multiplication-below-n-log-n-September-23-2026",
+        "published_at": "2026-10-06T23:14:52+00:00"
+      },
+      {
+        "rank": 59,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Stanford scientists found a way to regrow cartilage and stop arthritis",
+        "summary": "HN 热门讨论（28 points, 6 评论）by kelnos",
+        "link": "https://www.sciencedaily.com/releases/2026/10/261005011249.htm",
+        "published_at": "2026-10-06T23:54:35+00:00"
+      },
+      {
+        "rank": 60,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "When random is not actually random enough",
+        "summary": "HN 热门讨论（26 points, 5 评论）by steveklabnik",
+        "link": "https://ersc.io/blog/when-random-isnt-random-enough",
+        "published_at": "2026-10-06T20:12:05+00:00"
+      },
+      {
+        "rank": 61,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "REACT: Physically and Chemically Consistent Reconstruction of Marine Active Tracers",
+        "summary": "arXiv:2610.03888v1 Announce Type: new Abstract: Reconstructing global sea surface pH from sparse observations is critical for monitoring ocean acidification and understanding marine carbon cycling. Traditional assimilation and inverse model",
+        "link": "https://arxiv.org/abs/2610.03888",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 62,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "SGAnalog: An End-to-End Circuit Benchmark from Open-Source Silicon Tapeouts",
+        "summary": "arXiv:2610.03934v1 Announce Type: new Abstract: Existing analog integrated circuit design benchmarks make two questions hard to answer: whether a model has learned transferable circuit skills rather than recalled familiar examples, and whet",
+        "link": "https://arxiv.org/abs/2610.03934",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 63,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "LatentQuant: Preserving the Policy-Facing Latent Contract under NVFP4 VAE Quantization",
+        "summary": "arXiv:2610.03959v1 Announce Type: new Abstract: Recent world action models (WAMs) reuse pretrained video VAEs whose encoder latents directly condition downstream action policies. Quantization must therefore preserve not only reconstruction ",
+        "link": "https://arxiv.org/abs/2610.03959",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 64,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "ROAR: Unifying Runs across Heterogeneous AI-Driven Research Systems",
+        "summary": "arXiv:2610.03966v1 Announce Type: new Abstract: Each run of an AI-driven research system (ADRS) is an expensive search over a vast solution space, and dependable evaluation requires many runs, making run data both costly to produce and valu",
+        "link": "https://arxiv.org/abs/2610.03966",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 65,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Discrete Diffusion for Large Graph Generation via Structural Candidate Restriction",
+        "summary": "arXiv:2610.04056v1 Announce Type: new Abstract: Synthesizing realistic graphs at scale is vital when the graphs of interest are large and real-world samples are limited or access-sensitive. Diffusion-based generators have recently driven mu",
+        "link": "https://arxiv.org/abs/2610.04056",
+        "published_at": "2026-10-06T04:00:00+00:00"
+      },
+      {
+        "rank": 66,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "Balancing Memory Pathways: Analyzing and Improving Memory Utilization in Hybrid LMs",
+        "summary": "Recurrent-attention hybrid language models (LMs), which interleave attention and recurrent layers, are increasingly used to combine the efficiency of the recurrent layers with the strong performance of attention layers. Prior work suggests ",
+        "link": "https://arxiv.org/abs/2610.06750v1",
+        "published_at": "2026-10-05T17:27:30+00:00"
+      },
+      {
+        "rank": 67,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "ufakzeka-karar: An Open Turkish Typed-Decision Model with Order-Invariant Option Scoring",
+        "summary": "ufakzeka-karar is an open Turkish decision model with 182,494,466 parameters. Given a Turkish text and questions of a fixed answer type (a choice, a level on an ordered scale, or yes or no), it returns a temperature-scaled probability for e",
+        "link": "https://arxiv.org/abs/2610.06744v1",
+        "published_at": "2026-10-05T17:22:23+00:00"
+      },
+      {
+        "rank": 68,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "Domain adaptation of Russian ModernBERT for long legal documents",
+        "summary": "We investigate whether continued pretraining on Russian legislative documents improves a Russian ModernBERT encoder on legal text. The adapted model, RuModernBERT-ruLaw, was trained on a corpus reported to contain 304,382 legislative docume",
+        "link": "https://arxiv.org/abs/2610.06715v1",
+        "published_at": "2026-10-05T17:07:02+00:00"
+      },
+      {
+        "rank": 69,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "The Pushback Paradox: A Two-Probe Diagnostic for Language Model Compliance",
+        "summary": "Are language models compliant with user instructions? A model that always complies can be stopped but also exploited, while one that always resists can be neither exploited nor stopped. We contribute an open two-probe benchmark that can pla",
+        "link": "https://arxiv.org/abs/2610.06673v1",
+        "published_at": "2026-10-05T16:46:42+00:00"
+      },
+      {
+        "rank": 70,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "ChronoWorld: Camera-Controlled Consistent 4D World Generation via Spatiotemporal Cues and Geometric Reflections",
+        "summary": "While existing camera-controllable video generation models can produce visually compelling sequences, preserving intrinsic 4D spatiotemporal coherence remains challenging. To address this limitation, we propose ChronoWorld, an \"Observation-",
+        "link": "https://arxiv.org/abs/2610.06687v1",
+        "published_at": "2026-10-05T16:51:30+00:00"
+      },
+      {
+        "rank": 71,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "ArtifactArena: Evaluating Models by What They Build in the Physical World",
+        "summary": "To evaluate the frontier, we must measure models not by what they say, but by what they can engineer and build in grounded physical environments. We introduce \\textsc{ArtifactArena}, an open-ended platform where models face a physically gro",
+        "link": "https://arxiv.org/abs/2610.06511v1",
+        "published_at": "2026-10-05T15:28:48+00:00"
+      },
+      {
+        "rank": 72,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Toronto-Based VPN Provider Plans to Quit Canada over Lawful-Access Bill",
+        "summary": "HN 热门讨论（100 points, 40 评论）by speckx",
+        "link": "https://citizenlab.ca/toronto-based-vpn-provider-plans-to-quit-canada-over-lawful-access-bill/",
+        "published_at": "2026-10-06T18:52:18+00:00"
+      },
+      {
+        "rank": 73,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "South Korea says AI agents appear to have been used to hack the country's banks",
+        "summary": "HN 热门讨论（16 points, 2 评论）by thoughtpeddler",
+        "link": "https://www.reuters.com/world/south-koreas-lee-says-ai-appears-have-been-used-bank-hacks-2026-10-06/",
+        "published_at": "2026-10-06T23:50:33+00:00"
+      },
+      {
+        "rank": 74,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Nobel Prize in Physics 2026: Francis Halzen",
+        "summary": "HN 热门讨论（524 points, 172 评论）by solarist",
+        "link": "https://www.nobelprize.org/prizes/physics/2026/",
+        "published_at": "2026-10-06T09:48:46+00:00"
+      },
+      {
+        "rank": 75,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "OpenAI",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Sharing AI progress in mathematics",
+        "summary": "HN 热门讨论（351 points, 294 评论）by OfficialTurkey",
+        "link": "https://openai.com/index/sharing-ai-progress-in-mathematics/",
+        "published_at": "2026-10-06T22:17:21+00:00"
+      },
+      {
+        "rank": 76,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Vibecoding Photoshop: Time and pressure",
+        "summary": "HN 热门讨论（48 points, 56 评论）by samtheDamned",
+        "link": "https://andreklein.net/vibecoding-photoshop-time-and-pressure/",
+        "published_at": "2026-10-06T20:40:48+00:00"
+      },
+      {
+        "rank": 77,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "State of Devs 2026 survey results: developers are exhausted",
+        "summary": "HN 热门讨论（34 points, 11 评论）by sgdesign",
+        "link": "https://2026.stateofdevs.com/en-US/",
+        "published_at": "2026-10-06T23:26:30+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": true,
+    "status": "pick",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": {
+      "repo": "storytold/photocraft",
+      "url": "https://github.com/storytold/photocraft",
+      "description": "An open-source, clean-room reimplementation of Adobe Photoshop in pure Rust",
+      "language": "Rust",
+      "topics": [
+        "adobe",
+        "adobe-photoshop-2026",
+        "adobe-photoshop-2026-ai",
+        "art",
+        "image-editing",
+        "image-editing-software",
+        "image-editor",
+        "images",
+        "photo-editing",
+        "photoshop",
+        "psd",
+        "rust"
+      ],
+      "stars": 6818,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-09-30T13:37:48Z",
+      "pushed_at": "2026-10-07T00:59:59Z",
+      "license": "Apache-2.0",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "# Headless: open, edit, save\nphotocraft-cli run wave.psd \\\n  --cmd filter.sharpen.smartSharpen     --params '{\"amount\":80}' \\\n  --cmd layer.newAdjustmentLayer.curves --params '{\"points\":[[0,0],[64,48],[192,212],[255,255]]}' \\\n  --out wave-final.png\n\n# Apply one action list to a folder of images\nphotocraft-cli batch --actions grade.json --in ./raw --out ./graded\n\n# Every subcommand explains itself\nphotocraft-cli batch --help\n\n# Let an agent drive it over MCP (headless, or bridged to the running app)\nphotocraft-cli mcp",
+      "score": 0.3504,
+      "score_parts": {
+        "velocity": 0.3409,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      },
+      "readme_intro": "这是什么：PhotoCraft 是 ArtCraft 社区推出的开源图像编辑项目，目标是用纯 Rust 从零重新实现 Adobe Photoshop 的核心能力，让用户在桌面与 Web 上获得原生、可离线的专业级图像编辑体验。它重点解决两大问题：一是摆脱对闭源商业软件和 Electron 类 Web 套壳应用的依赖，二是保证对真实 PSD 分层文档的读写兼容。\n\n核心特性：\n- 真实 PSD 兼容：支持打开、编辑并保存带图层、蒙版、调整图层、图层样式、文字与矢量的 Photoshop 文档，保留原有渲染。\n- 原生 GPU 渲染：基于 wgpu 的 GPU 合成器（支持 Metal、Vulkan、DX12、WebGPU）配合写时复制分块与多线程滤镜，强调不依赖 WebView 的原生性能。\n- 面向代理的可控架构：所有操作都是命令，可通过界面、CLI、JSON 控制通道或 MCP 服务器驱动同一套引擎，便于自动化和 AI 集成。\n- Photoshop 风格交互：菜单、快捷键、面板和工具的位置遵循 Photoshop 的习惯，熟悉 Photoshop 的用户可以直接上手。\n\n适合谁：依赖 Photoshop 工作流但希望使用开源、可审计、可脚本化图像编辑工具的设计师、插画师、开发者以及需要自动化图像处理流水线的团队。\n\n为什么值得关注：作为早期 Alpha 的纯 Rust 原生项目，它同时在跨平台原生体验、真实 PSD 兼容以及面向 AI 代理的命令化架构三个方向发力，体现了图像编辑工具向开源化、原生化与可编程化演进的趋势。"
+    },
+    "runner_ups": [],
+    "yesterday": null,
+    "candidates": {
+      "total": 12,
+      "excluded_recent": 11,
+      "fresh": null,
+      "semantics": "pre-v4",
+      "detail_available": false,
+      "preview": null
+    },
+    "message": "今日主推项目"
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-10-07.json",
+      "report": "data/reports/daily_report_2026-10-07.md",
+      "radar": "data/gh_radar/radar_2026-10-07.json",
+      "playlist": "site/episodes/2026-10-07/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": [
+      "radar_candidate_detail_unavailable"
+    ]
+  }
+}
