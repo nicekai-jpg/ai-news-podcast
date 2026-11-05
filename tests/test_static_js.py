@@ -76,6 +76,7 @@ def test_template_placeholders_are_known() -> None:
         "podcast_duration",
         "podcast_audio_url",
         "podcast_chapter_meta",
+        "podcast_meta_text",
         "podcast_title",
         "podcast_subtitle",
         "player_subtitle",
@@ -198,11 +199,15 @@ def test_content_field_mapping_matches_design() -> None:
     assert "dataReady ? '' : m" in app  # 数据就绪后不再残留 {{...}} 占位符
 
 
-def test_report_title_keeps_masthead() -> None:
-    """日报大标题保留报告报头（科技新闻日报 · 日期），避免与首章标题重复。"""
+def test_generic_report_masthead_is_hidden() -> None:
+    """历史报告的通用报头「科技新闻日报 · 日期」和版块标题「深度日报」重复，直接不显示；
+    新报告的主题大标题（prompt 改成主题标题）正常展示。"""
+    template = _read("page_template.html")
+    assert 'data-requires="report_title"' in template
     app = _read("app.js")
-    assert "report_title: cleanReportTitle(report.title || '')" in app
-    assert "reportHeadline" not in app
+    assert "function displayReportTitle" in app
+    assert "/科技新闻日报/".replace("/", "") in app.replace("/", "") or "科技新闻日报" in app
+    assert "report_title: displayReportTitle(report.title)" in app
 
 
 def test_chapter_meta_falls_back_to_segment_count() -> None:
@@ -225,3 +230,44 @@ def test_sections_share_one_panel_style() -> None:
     css = _read("style.css")
     assert "--surface-panel" in css
     assert ".content-section.tint-" not in css
+
+
+def test_report_cards_show_category_and_dynamic_points() -> None:
+    """卡片左上角小字改成新闻分类（dive.category 或关键词兜底），要点标签来自日报本身。"""
+    app = _read("app.js")
+    assert "function newsCategory" in app
+    assert "dive.category || newsCategory(title)" in app
+    assert "dive.points" in app
+    template = _read("page_template.html")
+    assert "deep-dive-point highlight" not in template  # 不再默认高亮第二点
+    assert "{{chapter_1_topic}}" in template  # 目录用事件短名
+    assert 'data-requires="report_title"' in template
+
+
+def test_date_axis_navigation_matches_pill_order() -> None:
+    """胶囊按新→旧排列：左边是「下一期」（更新），右边是「上一期」（更早）。"""
+    template = _read("page_template.html")
+    left = template.index('id="btn-next-issue"')
+    right = template.index('id="btn-prev-issue"')
+    assert left < right
+
+
+def test_rich_text_renderer_present() -> None:
+    """编辑导语/编辑短评支持多段与有序列表（多条观点时按序号展示）。"""
+    app = _read("app.js")
+    assert "function renderRichText" in app
+    assert "function renderRichFields" in app
+    assert "renderRichFields();" in app
+
+
+def test_hero_card_is_enriched() -> None:
+    """播客卡：信息行 + 主持人音色 + 本期话题 + 等宽 CTA。"""
+    template = _read("page_template.html")
+    for hook in ("podcast-meta-line", "podcast-topics", "host-roster-list"):
+        assert hook in template
+    app = _read("app.js")
+    for symbol in ("_defaultVoiceLabel", "renderTopics", "topics_list", "podcast_meta_text"):
+        assert symbol in app, symbol
+    css = _read("style.css")
+    assert ".podcast-topic-chip" in css
+    assert ".host-voice" in css

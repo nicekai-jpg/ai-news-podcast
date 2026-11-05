@@ -54,18 +54,19 @@
 
     <!-- Shared Date Axis -->
     <div class="shared-date-axis">
+      <!-- 胶囊按「新 → 旧」从左到右排列：左边按钮往更新一期走，右边按钮往更早一期走 -->
       <div class="date-nav-controls">
-        <button class="date-step-btn" id="btn-prev-issue" onclick="stepIssue(1)">
+        <button class="date-step-btn" id="btn-next-issue" onclick="stepIssue(-1)">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-          上一期
+          下一期
         </button>
       </div>
       <div class="date-pills-carousel" id="date-pills">
         <!-- Rendered by JS -->
       </div>
       <div class="date-nav-controls">
-        <button class="date-step-btn" id="btn-next-issue" onclick="stepIssue(-1)">
-          下一期
+        <button class="date-step-btn" id="btn-prev-issue" onclick="stepIssue(1)">
+          上一期
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
       </div>
@@ -110,9 +111,16 @@
             </div>
           </div>
 
+          <div class="podcast-meta-line">{{podcast_meta_text}}</div>
+
           <div class="host-roster">
             <span class="host-roster-label">本期主持</span>
             <div class="host-roster-list" id="host-roster-list"><!-- Rendered by JS --></div>
+          </div>
+
+          <div class="podcast-topics" id="podcast-topics">
+            <span class="podcast-topics-label">本期话题</span>
+            <div class="podcast-topic-chips" id="podcast-topic-chips"><!-- Rendered by JS --></div>
           </div>
 
           <div class="podcast-cta-row">
@@ -136,7 +144,7 @@
             </div>
             <span class="stamp-date">{{issue_date}} · {{issue_number}} 期</span>
           </div>
-          <p class="lead-quote">{{lead_quote}}</p>
+          <div class="lead-quote">{{lead_quote}}</div>
           <div class="metrics-strip">
             <div class="metric-item">
               <div class="metric-value">{{metric_sources_value}}<span class="metric-unit">{{metric_sources_unit}}</span></div>
@@ -181,12 +189,12 @@
               <span class="broadside-pill">{{report_pill}}</span>
             </div>
             <div class="broadside-toc">
-              <a href="#deep-dive-1" class="broadside-toc-link">{{chapter_1_tag}}</a>
-              <a href="#deep-dive-2" class="broadside-toc-link">{{chapter_2_tag}}</a>
-              <a href="#deep-dive-3" class="broadside-toc-link">{{chapter_3_tag}}</a>
-              <a href="#deep-dive-4" class="broadside-toc-link">{{chapter_4_tag}}</a>
+              <a href="#deep-dive-1" class="broadside-toc-link">{{chapter_1_topic}}</a>
+              <a href="#deep-dive-2" class="broadside-toc-link">{{chapter_2_topic}}</a>
+              <a href="#deep-dive-3" class="broadside-toc-link">{{chapter_3_topic}}</a>
+              <a href="#deep-dive-4" class="broadside-toc-link">{{chapter_4_topic}}</a>
             </div>
-            <h3 class="broadside-title">{{report_title}}</h3>
+            <h3 class="broadside-title" data-requires="report_title">{{report_title}}</h3>
           </div>
 
           <div class="deep-dive" id="deep-dive-1">
@@ -199,7 +207,7 @@
               <div class="point-label"><span class="dot"></span>{{chapter_1_point_1_label}}</div>
               <p class="point-text">{{chapter_1_point_1_text}}</p>
             </div>
-            <div class="deep-dive-point highlight">
+            <div class="deep-dive-point">
               <div class="point-label"><span class="dot"></span>{{chapter_1_point_2_label}}</div>
               <p class="point-text">{{chapter_1_point_2_text}}</p>
             </div>
@@ -219,7 +227,7 @@
               <div class="point-label"><span class="dot"></span>{{chapter_2_point_1_label}}</div>
               <p class="point-text">{{chapter_2_point_1_text}}</p>
             </div>
-            <div class="deep-dive-point highlight">
+            <div class="deep-dive-point">
               <div class="point-label"><span class="dot"></span>{{chapter_2_point_2_label}}</div>
               <p class="point-text">{{chapter_2_point_2_text}}</p>
             </div>
@@ -239,7 +247,7 @@
               <div class="point-label"><span class="dot"></span>{{chapter_3_point_1_label}}</div>
               <p class="point-text">{{chapter_3_point_1_text}}</p>
             </div>
-            <div class="deep-dive-point highlight">
+            <div class="deep-dive-point">
               <div class="point-label"><span class="dot"></span>{{chapter_3_point_2_label}}</div>
               <p class="point-text">{{chapter_3_point_2_text}}</p>
             </div>
@@ -259,7 +267,7 @@
               <div class="point-label"><span class="dot"></span>{{chapter_4_point_1_label}}</div>
               <p class="point-text">{{chapter_4_point_1_text}}</p>
             </div>
-            <div class="deep-dive-point highlight">
+            <div class="deep-dive-point">
               <div class="point-label"><span class="dot"></span>{{chapter_4_point_2_label}}</div>
               <p class="point-text">{{chapter_4_point_2_text}}</p>
             </div>
@@ -276,7 +284,7 @@
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
               编辑短评
             </div>
-            <p class="editor-quote-text">{{editor_quote}}</p>
+            <div class="editor-quote-text">{{editor_quote}}</div>
             <div class="editor-quote-author">{{editor_name}} · {{editor_role}}</div>
           </div>
         </aside>

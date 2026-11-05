@@ -174,3 +174,72 @@ class TestProseFallback:
             "这一段是没有小标题的正文，解释事件背景与影响。",
             "第二段继续补充行业影响。",
         ]
+
+
+NEW_FORMAT_MD = """# ✨ 长周期执行与可交互世界
+
+**导语**：今日主线是长周期执行。
+
+第二条主线来自世界模型与公共决策流程。
+
+## 🚀 重磅解读
+
+### 1. [模型发布] Gemini 4 Carbon：前沿模型进入长周期行动阶段
+
+- **事件背景**：竞争从单轮问答转向持续执行。
+- **核心突破**：需要目标一致与动态修正。
+- **行业影响**：AI 进入执行层。
+
+### 2. [技术突破] Genie 4：世界模型成为交互式 AI 的基础设施
+
+- **核心突破**：实时模拟与真实性提升。
+
+## ⚡ 前沿情报
+
+- **AI 加速规划审批**：DeepMind 与英国政府合作。
+
+> 今日新闻看似分散，实则指向同一逻辑。
+>
+> 1. 长周期执行成为新标尺。
+> 2. 世界模型决定数据闭环。
+> 3. 公共决策是下一个试验场。
+"""
+
+
+class TestNewStructuredFormat:
+    """2026-11 起日报改为：主题标题 + 多段导语 + [分类] 标题 + 1-3 个自由要点 + 序号短评。"""
+
+    def test_thematic_title_has_no_masthead(self) -> None:
+        r = parse_report_markdown(NEW_FORMAT_MD)
+        assert r["title"] == "✨ 长周期执行与可交互世界"
+        assert "科技新闻日报" not in r["title"]
+
+    def test_multi_paragraph_lead_is_preserved(self) -> None:
+        r = parse_report_markdown(NEW_FORMAT_MD)
+        assert "今日主线是长周期执行" in r["lead"]
+        assert "\n\n" in r["lead"]
+        assert "第二条主线来自世界模型" in r["lead"]
+
+    def test_category_prefix_is_extracted(self) -> None:
+        r = parse_report_markdown(NEW_FORMAT_MD)
+        dives = r["deep_dives"]
+        assert dives[0]["category"] == "模型发布"
+        assert "Gemini 4 Carbon" in dives[0]["heading"]
+        assert "[模型发布]" not in dives[0]["heading"]
+        assert dives[1]["category"] == "技术突破"
+
+    def test_points_keep_label_and_order(self) -> None:
+        r = parse_report_markdown(NEW_FORMAT_MD)
+        points = r["deep_dives"][0]["points"]
+        assert [p["label"] for p in points] == ["事件背景", "核心突破", "行业影响"]
+        assert points[1]["text"].startswith("需要目标一致")
+        # 第二篇只有 1 个要点：不强制三段式
+        assert len(r["deep_dives"][1]["points"]) == 1
+        assert r["deep_dives"][1]["points"][0]["label"] == "核心突破"
+
+    def test_numbered_verdict_is_preserved(self) -> None:
+        r = parse_report_markdown(NEW_FORMAT_MD)
+        verdict = r["editor_verdict"]
+        assert "\n" in verdict
+        assert "1. 长周期执行成为新标尺。" in verdict
+        assert verdict.count("\n") >= 2

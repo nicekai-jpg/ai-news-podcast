@@ -103,3 +103,24 @@ class TestRadarReportSection:
         assert "⭐ 1500" in section and "+1000/天" in section
         assert "备选 [owner/next]" in section
         assert "首日" in section
+
+
+class TestReportPromptFormatting:
+    def test_requires_structured_verdict_and_category(self) -> None:
+        brief = {
+            "stories": [
+                {
+                    "role": "main",
+                    "total_score": 14,
+                    "representative_title": "GPT-5",
+                    "context": {"factual_summary": ["It is big."]},
+                }
+            ]
+        }
+        prompt = build_report_prompt(brief, "2024年03月15日")
+        # 分类前缀 + 1-3 个自由要点 + 多观点的有序列表
+        assert "[分类]" in prompt
+        assert "1-3 条" in prompt or "1–3 条" in prompt
+        assert "有序列表" in prompt
+        # 大标题不再是报头
+        assert "# ✨ {{今日主题标题}}" in prompt
