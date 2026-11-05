@@ -1,4 +1,4 @@
-<body>
+  <!-- 片段模板：body 标签由 html_gen_view 包裹，模板内不要再写 -->
   <!-- ============================================================
        HEADER
        ============================================================ -->
@@ -69,6 +69,8 @@
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
       </div>
+      <!-- 历史归档下拉：30 期全量列表，默认折叠（Rendered by JS） -->
+      <div class="archive-panel" id="date-archive-panel" hidden></div>
     </div>
 
     <!-- ============================================================
@@ -166,7 +168,7 @@
           <span class="section-number alt">02</span>
           <div>
             <h2 class="section-title">深度日报</h2>
-            <p class="section-desc">长文研判 · 四章拆解</p>
+            <p class="section-desc">长文研判 · 逐章拆解</p>
           </div>
         </div>
         <span class="section-meta">{{report_word_count}} 字 · 约 {{report_read_minutes}} 分钟</span>
@@ -304,8 +306,9 @@
         <!-- Rendered by JS -->
       </div>
 
-      <div class="sources-expand-bar">
-        <button class="btn-expand-sources" id="btn-expand-sources" onclick="toggleExpandSources()">
+      <div class="sources-expand-bar" id="sources-expand-bar">
+        <button class="btn-expand-sources" id="btn-expand-sources" onclick="toggleExpandSources()"
+                aria-expanded="false" aria-controls="sources-grid">
           展开全部
         </button>
       </div>
@@ -333,19 +336,28 @@
           </div>
           <h3 class="radar-headline">{{radar_headline}}</h3>
           <p class="radar-paragraph">{{radar_paragraph}}</p>
-          <div class="radar-meta-line">
+          <div class="radar-meta-line" data-requires="candidate_count,excluded_recent">
             <span>扫描候选 <strong>{{candidate_count}}</strong> 个</span>
             <span class="sep">·</span>
             <span>近期已收录排除 <strong>{{excluded_recent}}</strong> 个</span>
             <span class="sep">·</span>
             <span>{{radar_reason}}</span>
           </div>
+          <!-- 候选审计明细入口（Rendered by JS；老期只给口径说明） -->
+          <div class="radar-empty-actions" id="radar-empty-actions" hidden>
+            <button type="button" class="btn-radar-candidates" id="btn-radar-candidates"
+                    aria-expanded="false" aria-controls="radar-candidates-panel"
+                    onclick="toggleRadarCandidates()">
+              <span aria-hidden="true">📋</span> 查看今日候选池口径
+            </button>
+          </div>
+          <div class="radar-candidates-panel" id="radar-candidates-panel" hidden></div>
         </div>
 
         <div class="radar-pick-state" id="radar-pick" hidden>
           <div class="radar-pick-head">
             <h3 class="radar-pick-name">{{radar_pick_repo}}</h3>
-            <span class="radar-pick-growth">近 7 日 ★ +{{radar_pick_growth}}/天</span>
+            <span class="radar-pick-growth" data-requires="radar_pick_growth">近 7 日 ★ +{{radar_pick_growth}}/天</span>
           </div>
           <div class="radar-pick-meta">
             <span>{{radar_pick_lang}}</span>
@@ -404,7 +416,7 @@
        TRANSCRIPT DRAWER
        ============================================================ -->
   <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
-  <aside class="transcript-drawer" id="transcript-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-heading">
+  <aside class="transcript-drawer" id="transcript-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-heading" aria-hidden="true">
     <div class="drawer-header">
       <h3 class="drawer-title" id="drawer-heading">本期逐字稿</h3>
       <button class="drawer-close" onclick="closeDrawer()" aria-label="关闭">

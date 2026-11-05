@@ -139,7 +139,8 @@ def build_index_html(
         "<head>\n"
         '<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
-        "<title>{{podcast_title}} · 今日AI看点</title>\n"
+        "<title>今日AI看点</title>\n"
+        f'<link rel="icon" href="{_LOGO_URI}">\n'
         f"<style>\n{_read_static('style.css')}\n</style>\n"
         "<script>\n"
         "(function() {\n"
