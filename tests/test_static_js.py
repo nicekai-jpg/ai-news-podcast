@@ -122,3 +122,51 @@ def test_app_js_has_data_binding_contract() -> None:
     app = _read("app.js")
     for symbol in ("digestToData", "hydrate", "loadIssue", "applyConditionalBlocks", "toggleTheme"):
         assert symbol in app, symbol
+
+
+def test_app_js_escapes_untrusted_html() -> None:
+    """信源标题/摘要来自外部 RSS，逐字稿来自脚本：进 innerHTML 前必须转义。"""
+    app = _read("app.js")
+    assert "function escapeHtml" in app
+    for expression in (
+        "escapeHtml(title)",
+        "escapeHtml(s.badge_label)",
+        "escapeHtml(l.text)",
+        "escapeHtml(h.name)",
+        "escapeHtml(item.repo)",
+    ):
+        assert expression in app, expression
+
+
+def test_app_js_only_allows_http_links() -> None:
+    app = _read("app.js")
+    assert "function safeHref" in app
+    assert r"/^https?:\/\//i.test(value)" in app
+    assert "SOURCE_BADGE_CLASSES" in app
+
+
+def test_app_js_radar_color_is_defined() -> None:
+    """回归：radar 十字线颜色曾被写成未定义变量 crossColor，导致动画首帧抛错。"""
+    app = _read("app.js")
+    assert "crossColor" not in app
+    assert "rgba(212, 165, 116, 0.1)" in app
+
+
+def test_radar_pick_description_is_cleaned() -> None:
+    """仓库 README 首段是 Markdown/HTML 混排，直接渲染会出现 &nbsp;、**粗体**。"""
+    app = _read("app.js")
+    assert "function cleanReadmeText" in app
+    assert "pick.description" in app
+
+
+def test_app_js_date_archive_and_radar_candidates() -> None:
+    app = _read("app.js")
+    for symbol in (
+        "DATE_PILL_LIMIT",
+        "toggleArchive",
+        "closeArchive",
+        "toggleRadarCandidates",
+        "renderRadarCandidates",
+        "radar_candidates_preview",
+    ):
+        assert symbol in app, symbol

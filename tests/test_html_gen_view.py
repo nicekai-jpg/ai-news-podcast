@@ -89,6 +89,8 @@ class TestSkeleton:
         html = _build(tmp_path)
         assert 'src="data:image/svg+xml;base64,' in html
         assert 'src="logo.svg"' not in html
+        # favicon 同样内联，避免每次打开页面 404 /favicon.ico
+        assert '<link rel="icon" href="data:image/svg+xml;base64,' in html
 
     def test_inline_assets_only(self, tmp_path) -> None:
         html = _build(tmp_path)
@@ -135,3 +137,19 @@ class TestAccessibility:
         html = _build(tmp_path)
         assert 'aria-label="章节导航"' in html
         assert 'aria-hidden="true"' in html  # radar canvas 装饰
+
+
+class TestFollowupRegressions:
+    """v23 重做后补回的能力：30 期归档入口 + 雷达候选审计明细。"""
+
+    def test_date_axis_has_archive_panel(self, tmp_path) -> None:
+        html = _build(tmp_path)
+        assert 'id="date-archive-panel"' in html
+        assert 'class="archive-panel"' in html
+
+    def test_radar_candidate_audit_entry(self, tmp_path) -> None:
+        html = _build(tmp_path)
+        assert 'id="btn-radar-candidates"' in html
+        assert 'id="radar-candidates-panel"' in html
+        assert 'aria-controls="radar-candidates-panel"' in html
+        assert 'id="radar-empty-actions"' in html

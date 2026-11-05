@@ -306,6 +306,7 @@
       gap: var(--space-3);
       box-shadow: var(--shadow-card);
       min-width: 0;
+      position: relative;
     }
     .date-nav-controls { display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0; }
     .date-step-btn {
@@ -355,6 +356,50 @@
       background: var(--accent-primary-solid);
       color: #fff;
       border-color: var(--accent-primary-solid);
+    }
+    .date-pill.date-archive {
+      color: var(--accent-secondary);
+      border-color: var(--border-medium);
+    }
+    .date-pill.date-archive[aria-expanded="true"] {
+      background: var(--surface-inset);
+      color: var(--text-primary);
+    }
+    /* 历史归档下拉：30 期全量，双列滚动 */
+    .archive-panel {
+      position: absolute;
+      top: calc(100% + var(--space-2));
+      right: var(--space-4);
+      z-index: 40;
+      width: min(340px, 92vw);
+      max-height: 320px;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-1);
+      padding: var(--space-2);
+      background: var(--surface-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+    }
+    .archive-panel[hidden] { display: none; }
+    .archive-item {
+      padding: 6px 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      background: transparent;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      text-align: left;
+      transition: all 0.16s;
+    }
+    .archive-item:hover { background: var(--surface-card-hover); color: var(--text-primary); }
+    .archive-item.active {
+      background: var(--accent-primary-solid);
+      border-color: var(--accent-primary-solid);
+      color: #fff;
     }
 
     /* ============================================================
@@ -1076,6 +1121,68 @@
     }
     .radar-meta-line .sep { color: var(--text-faint); }
 
+    /* 候选审计明细（轮空态）：入口按钮 + 可展开表格 */
+    .radar-empty-actions { margin-top: var(--space-1); }
+    .radar-empty-actions[hidden] { display: none; }
+    .btn-radar-candidates {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-medium);
+      background: var(--accent-secondary-soft);
+      color: var(--accent-secondary);
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: all 0.18s;
+    }
+    .btn-radar-candidates:hover {
+      background: var(--surface-card-hover);
+      color: var(--text-primary);
+    }
+    .radar-candidates-panel {
+      width: 100%;
+      max-width: 880px;
+      margin-top: var(--space-3);
+      overflow-x: auto;
+      text-align: left;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      background: var(--surface-inset);
+    }
+    .radar-candidates-panel[hidden] { display: none; }
+    .radar-candidates-panel table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
+    .radar-candidates-panel th,
+    .radar-candidates-panel td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+      white-space: nowrap;
+    }
+    .radar-candidates-panel th {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+    }
+    .radar-candidates-panel tr:last-child td { border-bottom: 0; }
+    .radar-candidate-repo { font-family: var(--font-mono); color: var(--text-primary); }
+    .radar-candidate-reason {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: rgba(242,236,224,0.06);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+    }
+    .radar-candidates-note {
+      padding: 12px 14px;
+      font-size: 0.76rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
     /* Radar pick state */
     .radar-pick-state {
       display: flex;
@@ -1111,6 +1218,8 @@
       font-size: 0.76rem;
       color: var(--text-muted);
     }
+    /* 元信息缺项时连同其后的分隔符一起隐藏 */
+    .radar-pick-meta > span[hidden] + .sep { display: none; }
     .radar-pick-stars {
       font-family: var(--font-mono);
       font-weight: 700;

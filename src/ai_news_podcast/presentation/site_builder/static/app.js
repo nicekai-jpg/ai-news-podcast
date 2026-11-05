@@ -15,6 +15,16 @@
     let PLAYLIST_CHUNKS = [];
     let audioBroken = false;
 
+    /* 所有动态文本进入 innerHTML 前必须转义：信源标题/摘要来自外部 RSS，属不可信输入 */
+    function escapeHtml(value) {
+      return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
     const SOURCE_BADGE_KEYS = {
       'OpenAI': 'openai',
       'Google': 'google',
@@ -52,18 +62,42 @@
         .trim();
     }
 
+    /* 章节短标签：英文标题按词边界截断，避免出现 "Third Moment Resear" 这类半截单词 */
+    function truncateTag(tag, limit) {
+      const text = String(tag || '').trim();
+      if (text.length <= limit) return text;
+      const cut = text.slice(0, limit);
+      const boundary = cut.lastIndexOf(' ');
+      return (boundary > 0 ? cut.slice(0, boundary) : cut).replace(/[\s.&+·_-]+$/, '');
+    }
+
     function chapterTag(heading) {
       const text = cleanHeading(heading);
-      const match = text.match(/^[A-Za-z][A-Za-z0-9 .&+·_-]{1,18}/);
-      if (match) return match[0].trim();
+      /* 英文/带变音符的拉丁开头：取开头连续拉丁词（到中文/标点为止），按词边界截断 */
+      const latin = text.match(/^[A-Za-z\u00C0-\u024F][A-Za-z0-9\u00C0-\u024F .&+·_-]{1,24}/);
+      if (latin) return truncateTag(latin[0], 16);
+      /* 中文标题：取冒号前的短标签，最多 6 字（与旧实现一致，避免胶囊过长） */
+      const colon = text.search(/[：:]/);
+      if (colon > 0) return text.slice(0, colon).trim().slice(0, 6);
       return text.slice(0, 6);
     }
 
     function chapterTopic(heading) {
       const text = cleanHeading(heading);
-      let rest = text.slice(chapterTag(heading).length).replace(/^[\s，、：:·\-—]+/, '');
-      const cut = rest.search(/[，。！？；：,.:;!?]/);
+      const colon = text.search(/[：:]/);
+      let rest;
+      if (colon > 0) {
+        /* 有冒号时取冒号后的话题短语（如 "Third Moment Research：1 万智能体…" → "1 万智能体"） */
+        rest = text.slice(colon + 1);
+      } else {
+        rest = text.slice(chapterTag(heading).length).replace(/^[\s，、：:·\-—]+/, '');
+      }
+      rest = rest.trim();
+      const cut = rest.search(/[，。！？；：,.:;!?、]/);
       if (cut > 0) rest = rest.slice(0, cut);
+      rest = rest.trim();
+      /* 剩余过短（如 "ch"）时不渲染，避免出现无意义的话题标签 */
+      if (rest.length < 2) return '';
       return rest.length > 12 ? rest.slice(0, 12) + '…' : rest;
     }
 
@@ -79,6 +113,20 @@
       if (!isFinite(value)) return String(stars || '');
       if (value >= 1000) return (value / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
       return String(value);
+    }
+
+    /* README 首段是 Markdown/HTML 混排（含 badge、&nbsp;、**强调**），落成纯文本再截断 */
+    function cleanReadmeText(value) {
+      let text = String(value || '');
+      text = text.replace(/<[^>]+>/g, ' ');
+      text = text.replace(/&nbsp;/gi, ' ').replace(/&amp;/gi, '&')
+        .replace(/&lt;/gi, '<').replace(/&gt;/gi, '>').replace(/&quot;/gi, '"');
+      text = text.replace(/!\[[^\]]*\]\([^)]*\)/g, ' ');
+      text = text.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1');
+      text = text.replace(/[*_`#>]+/g, '');
+      text = text.replace(/\s+/g, ' ').trim();
+      if (!text) return '';
+      return text.length > 220 ? text.slice(0, 220) + '…' : text;
     }
 
     function digestToData(digest, playlist) {
@@ -113,12 +161,26 @@
         editor_role: '主编'
       };
 
+      /* 指标按 digest 的 metric.key 映射到设计四槽位；四键齐全时用键映射，否则退回位置映射 */
+      const METRIC_SLOT_BY_KEY = {
+        deduped_items: 'sources',
+        main_stories: 'hours',
+        podcast_segments: 'speedup',
+        media_outlets: 'items'
+      };
+      const METRIC_SLOTS = ['sources', 'hours', 'speedup', 'items'];
       const metrics = d.metrics || [];
-      ['sources', 'hours', 'speedup', 'items'].forEach(function (key, index) {
-        const metric = metrics[index] || {};
-        data['metric_' + key + '_value'] = metric.value != null ? String(metric.value) : '';
-        data['metric_' + key + '_unit'] = metric.unit || '';
-        data['metric_' + key + '_label'] = metric.label || '';
+      const metricBySlot = {};
+      metrics.forEach(function (metric) {
+        const slot = METRIC_SLOT_BY_KEY[metric && metric.key];
+        if (slot) metricBySlot[slot] = metric;
+      });
+      const keyedMetrics = Object.keys(metricBySlot).length === METRIC_SLOTS.length;
+      METRIC_SLOTS.forEach(function (slot, index) {
+        const metric = (keyedMetrics ? metricBySlot[slot] : metrics[index]) || {};
+        data['metric_' + slot + '_value'] = metric.value != null ? String(metric.value) : '';
+        data['metric_' + slot + '_unit'] = metric.unit || '';
+        data['metric_' + slot + '_label'] = metric.label || '';
       });
 
       for (let n = 1; n <= 4; n += 1) {
@@ -129,9 +191,13 @@
           dive.breakthrough || '',
           dive.impact || ''
         ];
-        if ((dive.raw_sections || []).length) {
-          points[2] = (points[2] ? points[2] + ' ' : '') + dive.raw_sections.join(' ');
-        }
+        /* raw_sections 是日报里未被结构化的段落：按顺序填进空缺的要点位，避免整段塞进第 3 点 */
+        (Array.isArray(dive.raw_sections) ? dive.raw_sections : []).forEach(function (section) {
+          const text = String(section || '').trim();
+          if (!text) return;
+          const emptyIndex = points.findIndex(function (point) { return !String(point || '').trim(); });
+          if (emptyIndex >= 0) points[emptyIndex] = text;
+        });
         data['chapter_' + n + '_title'] = title;
         data['chapter_' + n + '_tag'] = title ? chapterTag(title) : '';
         data['chapter_' + n + '_topic'] = title ? chapterTopic(title) : '';
@@ -156,22 +222,44 @@
       const radar = d.radar || {};
       const candidates = radar.candidates || {};
       const pick = radar.pick || null;
-      data.radar_status_label = pick ? '有主推项目' : '无主推项目';
-      data.radar_headline = pick
-        ? '今日候选池命中达标项目'
-        : '今日候选池经多轮筛查，未检出达标项目';
-      data.radar_paragraph = pick
-        ? '本栏目每日严选 1 个具备重大架构革新且增速稳定的开源项目。今日主推仓库经工程稳定性、重复收录排查与实际代码审查后入选。'
-        : '本栏目每日严选 1 个具备重大架构革新且近 7 日 Star 增速稳定突破 300/天的优质开源项目。今日全网扫描了一批候选仓库，经工程稳定性、重复收录排查及实际代码审查，均处于评估观察期或版本迁移期，编辑部决定今日宁缺毋滥、轮空主推。';
-      data.radar_reason = pick ? '编辑部一致通过' : '宁缺毋滥、轮空主推';
-      data.candidate_count = String(candidates.total != null ? candidates.total : (radar.runner_ups || []).length || 0);
-      data.excluded_recent = String(candidates.excluded_recent != null ? candidates.excluded_recent : 0);
+      const radarAvailable = radar.available !== false;
+      data.radar_available = radarAvailable;
+      data.radar_status_label = !radarAvailable
+        ? '该期无雷达'
+        : (pick ? '有主推项目' : '无主推项目');
+      if (!radarAvailable) {
+        /* 该期没有雷达数据：走独立空态，不伪装成「轮空主推」 */
+        data.radar_headline = String(radar.message || '该期暂无项目雷达');
+        data.radar_paragraph = '项目雷达自 2026 年 10 月上线，此前各期不含该项目数据。';
+        data.radar_reason = '';
+        data.candidate_count = '';
+        data.excluded_recent = '';
+      } else {
+        data.radar_headline = pick
+          ? '今日候选池命中达标项目'
+          : '今日候选池经多轮筛查，未检出达标项目';
+        data.radar_paragraph = pick
+          ? '本栏目每日严选 1 个具备重大架构革新且增速稳定的开源项目。今日主推仓库经工程稳定性、重复收录排查与实际代码审查后入选。'
+          : '本栏目每日严选 1 个具备重大架构革新且近 7 日 Star 增速稳定突破 300/天的优质开源项目。今日全网扫描了一批候选仓库，经工程稳定性、重复收录排查及实际代码审查，均处于评估观察期或版本迁移期，编辑部决定今日宁缺毋滥、轮空主推。';
+        data.radar_reason = pick ? '编辑部一致通过' : '宁缺毋滥、轮空主推';
+        data.candidate_count = String(candidates.total != null ? candidates.total : (radar.runner_ups || []).length || 0);
+        data.excluded_recent = String(candidates.excluded_recent != null ? candidates.excluded_recent : 0);
+      }
+      data.radar_candidates_total = data.candidate_count;
+      data.radar_candidates_semantics = String(candidates.semantics || '');
+      data.radar_candidates_preview = JSON.stringify(
+        Array.isArray(candidates.preview) ? candidates.preview.slice(0, 20) : []
+      );
+      data.radar_candidates_detail_available = candidates.detail_available === true;
       data.radar_pick_repo = pick ? String(pick.repo || '') : '';
       data.radar_pick_lang = pick ? String(pick.language || '') : '';
       data.radar_pick_stars = pick ? formatStars(pick.stars) : '';
       data.radar_pick_growth = pick ? String(pick.delta_stars == null ? '' : pick.delta_stars) : '';
       data.radar_pick_license = pick ? String(pick.license || '') : '';
-      data.radar_pick_desc = pick ? String(pick.readme_intro || pick.description || '') : '';
+      /* 优先用 GitHub 仓库描述（干净一句话）；readme 首段只做兜底并清成纯文本 */
+      data.radar_pick_desc = pick
+        ? String(pick.description || '').trim() || cleanReadmeText(pick.readme_intro)
+        : '';
       data.radar_pick_url = pick ? String(pick.url || '') : '';
 
       const chunks = (playlist && playlist.chunks) || [];
@@ -203,6 +291,18 @@
         const value = item.querySelector('.metric-value');
         const text = value ? value.textContent.trim() : '';
         item.hidden = !text;
+      });
+      /* 要点/话题为空时整块隐藏：日报结构不完整时不再留空高亮框 */
+      document.querySelectorAll('.deep-dive-point').forEach(function (point) {
+        const text = point.querySelector('.point-text');
+        point.hidden = !(text && text.textContent.trim());
+      });
+      document.querySelectorAll('.deep-dive-topic, .deep-dive-tag').forEach(function (node) {
+        node.hidden = !node.textContent.trim();
+      });
+      /* 雷达主推卡：语言/Star/许可证缺省时隐藏，避免只剩「· ·」 */
+      document.querySelectorAll('.radar-pick-meta > span:not(.sep)').forEach(function (node) {
+        node.hidden = !node.textContent.trim();
       });
     }
 
@@ -248,31 +348,49 @@
     }
     function hasAudio() { return !!audioUrl() && !audioBroken; }
 
+    /* 音频代际：切期释放旧 audio 时递增，旧元素的异步事件不再污染新一期的状态 */
+    let audioGeneration = 0;
+
+    function releaseAudio() {
+      audioGeneration += 1;
+      if (!audioEl) return;
+      const stale = audioEl;
+      audioEl = null;
+      stale.pause();
+      stale.removeAttribute('src');
+      try { stale.load(); } catch (e) { /* 旧浏览器忽略 */ }
+    }
+
     function ensureAudio() {
       const url = audioUrl();
       if (!url || audioBroken) return null;
       if (audioEl && audioEl.dataset.src === url) return audioEl;
-      if (audioEl) audioEl.pause();
-      audioEl = new Audio(url);
-      audioEl.dataset.src = url;
-      audioEl.preload = 'metadata';
-      audioEl.addEventListener('loadedmetadata', function() {
-        if (isFinite(audioEl.duration)) { audioDuration = audioEl.duration; renderClock(); }
+      releaseAudio();
+      const generation = audioGeneration;
+      const el = new Audio(url);
+      audioEl = el;
+      el.dataset.src = url;
+      el.preload = 'metadata';
+      const isCurrent = function () { return generation === audioGeneration && audioEl === el; };
+      el.addEventListener('loadedmetadata', function() {
+        if (!isCurrent()) return;
+        if (isFinite(el.duration)) { audioDuration = el.duration; renderClock(); }
       });
-      audioEl.addEventListener('timeupdate', function() {
-        if (!audioEl) return;
-        currentTime = audioEl.currentTime;
+      el.addEventListener('timeupdate', function() {
+        if (!isCurrent()) return;
+        currentTime = el.currentTime;
         renderClock();
       });
-      audioEl.addEventListener('ended', function() { setPlaying(false); });
-      audioEl.addEventListener('error', function() {
+      el.addEventListener('ended', function() { if (isCurrent()) setPlaying(false); });
+      el.addEventListener('error', function() {
         /* 音频缺失（本地预览 / 网络异常）时退化为模拟时钟，播放按钮仍可用 */
+        if (!isCurrent()) return;
         const wasPlaying = isPlaying;
         audioBroken = true;
         audioEl = null;
         if (wasPlaying) startClock();
       });
-      return audioEl;
+      return el;
     }
 
     function durationSeconds() {
@@ -369,16 +487,24 @@
     }
 
     let drawerReturnFocus = null;
+    function drawerElement() { return document.getElementById('transcript-drawer'); }
+
     function openDrawer() {
       drawerReturnFocus = document.activeElement;
-      document.getElementById('transcript-drawer').classList.add('open');
+      const drawer = drawerElement();
+      if (!drawer) return;
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
       document.getElementById('drawer-overlay').classList.add('visible');
       document.body.style.overflow = 'hidden';
       const closeBtn = document.querySelector('.drawer-close');
       if (closeBtn) closeBtn.focus();
     }
     function closeDrawer() {
-      document.getElementById('transcript-drawer').classList.remove('open');
+      const drawer = drawerElement();
+      if (!drawer || !drawer.classList.contains('open')) return;
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
       document.getElementById('drawer-overlay').classList.remove('visible');
       document.body.style.overflow = '';
       if (drawerReturnFocus && typeof drawerReturnFocus.focus === 'function') {
@@ -386,8 +512,26 @@
       }
       drawerReturnFocus = null;
     }
+    function trapDrawerFocus(event) {
+      const drawer = drawerElement();
+      if (!drawer || !drawer.classList.contains('open')) return;
+      const focusable = Array.from(drawer.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )).filter(function(node) { return !node.disabled && node.offsetParent !== null; });
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
     document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeDrawer();
+      if (e.key === 'Escape') { closeDrawer(); return; }
+      if (e.key === 'Tab') trapDrawerFocus(e);
     });
 
     function toggleExpandSources() {
@@ -411,9 +555,13 @@
       if (nextBtn) nextBtn.disabled = idx <= 0;
     }
 
+    /* 切期请求令牌：快速连点时只应用最后一次请求的结果 */
+    let loadToken = 0;
+
     async function loadIssue(id) {
       if (!id || ISSUE_ORDER.indexOf(id) === -1) return;
       if (DATA.issue_date === id) return;
+      const token = ++loadToken;
       let digest;
       let playlist = null;
       try {
@@ -422,24 +570,27 @@
         console.warn('digest load failed', id, error);
         return;
       }
+      if (token !== loadToken) return;
       try {
         playlist = await fetchJson('./episodes/' + id + '/playlist.json');
       } catch (error) {
         playlist = { chunks: [] };
       }
+      if (token !== loadToken) return;
       DATA = digestToData(digest, playlist);
       PLAYLIST_CHUNKS = (playlist && playlist.chunks) || [];
       sourcesExpanded = false;
       sourceFilter = 'all';
       currentTime = 0;
       audioBroken = false;
-      if (audioEl) { audioEl.pause(); audioEl.src = ''; audioEl = null; }
+      releaseAudio();
       audioDuration = 0;
       setPlaying(false);
       renderClock();
       hydrate();
       applyPostHydrateChrome();
       applyConditionalBlocks();
+      closeArchive();
       renderDatePills();
       updateDateNav();
       renderHosts();
@@ -453,17 +604,65 @@
 
     function switchIssue(id) { return loadIssue(id); }
 
-    /* Render date pills — 期号列表由 ISSUE_ORDER 驱动 */
+    /* Render date pills — 最近 6 期直接展示，其余收进「历史归档」下拉（30 期不撑爆日期轴） */
+    const DATE_PILL_LIMIT = 6;
+
+    function issuePill(id) {
+      const label = String(id).slice(5);
+      const active = id === DATA.issue_date;
+      return '<button class="date-pill' + (active ? ' active' : '') + '"' +
+        ' onclick="selectIssue(\'' + escapeHtml(id) + '\')" aria-pressed="' + active + '">' +
+        escapeHtml(label) + '</button>';
+    }
+
     function renderDatePills() {
       const container = document.getElementById('date-pills');
       if (!container) return;
-      container.innerHTML = ISSUE_ORDER.map(function (id) {
-        const label = String(id).slice(5);
-        const active = id === DATA.issue_date;
-        return '<button class="date-pill' + (active ? ' active' : '') + '"' +
-          ' onclick="selectIssue(\'' + id + '\')" aria-pressed="' + active + '">' + label + '</button>';
-      }).join('');
+      let visible = ISSUE_ORDER.slice(0, DATE_PILL_LIMIT);
+      /* 当前期不在最近 6 期时也保留一颗激活胶囊，否则用户看不到自己在哪一期 */
+      if (DATA.issue_date && ISSUE_ORDER.indexOf(DATA.issue_date) >= DATE_PILL_LIMIT) {
+        visible = [DATA.issue_date].concat(visible.slice(0, DATE_PILL_LIMIT - 1));
+      }
+      const archive = ISSUE_ORDER.length > visible.length
+        ? '<button type="button" class="date-pill date-archive" id="date-archive"' +
+          ' aria-expanded="false" aria-haspopup="true" onclick="toggleArchive(event)">历史归档 ▾</button>'
+        : '';
+      container.innerHTML = visible.map(issuePill).join('') + archive;
+
+      const panel = document.getElementById('date-archive-panel');
+      if (panel) {
+        panel.innerHTML = ISSUE_ORDER.map(function (id) {
+          return '<button type="button" class="archive-item' +
+            (id === DATA.issue_date ? ' active' : '') + '" data-date="' + escapeHtml(id) + '"' +
+            ' onclick="selectIssue(\'' + escapeHtml(id) + '\')">' + escapeHtml(id) + '</button>';
+        }).join('');
+      }
     }
+
+    function closeArchive() {
+      const panel = document.getElementById('date-archive-panel');
+      const button = document.getElementById('date-archive');
+      if (panel) panel.hidden = true;
+      if (button) button.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleArchive(event) {
+      if (event) event.stopPropagation();
+      const panel = document.getElementById('date-archive-panel');
+      const button = document.getElementById('date-archive');
+      if (!panel || !button) return;
+      const open = panel.hidden;
+      panel.hidden = !open;
+      button.setAttribute('aria-expanded', String(open));
+    }
+
+    document.addEventListener('click', function (event) {
+      const panel = document.getElementById('date-archive-panel');
+      const button = document.getElementById('date-archive');
+      if (!panel || panel.hidden) return;
+      if (panel.contains(event.target) || (button && button.contains(event.target))) return;
+      closeArchive();
+    });
 
     const SOURCE_ORIGINS = {
       'Google AI Blog': 'https://blog.google/technology/ai/',
@@ -481,7 +680,10 @@
       anthropic: 'https://www.anthropic.com/news'
     };
 
-    function selectIssue(id) { switchIssue(id); }
+    function selectIssue(id) {
+      closeArchive();
+      return switchIssue(id);
+    }
 
     const BADGE_LABELS = {
       openai: 'OpenAI',
@@ -517,8 +719,8 @@
       );
       bar.innerHTML = chips.map(c =>
         '<button type="button" class="source-filter-chip' + (sourceFilter === c.key ? ' active' : '') + '"' +
-        ' onclick="setSourceFilter(\'' + c.key + '\')" aria-pressed="' + (sourceFilter === c.key) + '">' +
-        c.label + '<span class="chip-count">' + c.count + '</span></button>'
+        ' onclick="setSourceFilter(\'' + escapeHtml(c.key) + '\')" aria-pressed="' + (sourceFilter === c.key) + '">' +
+        escapeHtml(c.label) + '<span class="chip-count">' + escapeHtml(c.count) + '</span></button>'
       ).join('');
     }
 
@@ -529,35 +731,116 @@
       renderSourceFilters();
     }
 
+    /* 外链白名单：只放行 http(s)，避免 RSS 里出现 javascript: 之类的伪协议 */
+    function safeHref(url) {
+      const value = String(url || '').trim();
+      return /^https?:\/\//i.test(value) ? value : '';
+    }
+
+    const SOURCE_BADGE_CLASSES = ['openai', 'anthropic', 'google', 'meta', 'arxiv', 'nvidia', 'industry'];
+    const SOURCE_PREVIEW = 6;
+
+    function sourceBadgeClass(badge) {
+      const key = String(badge || 'industry');
+      return SOURCE_BADGE_CLASSES.indexOf(key) >= 0 ? key : 'industry';
+    }
+
     /* Render sources — 有 url 用 url，否则回落到来源站点首页 */
     function renderSources() {
       const grid = document.getElementById('sources-grid');
       if (!grid) return;
       const sources = filteredSources();
       grid.innerHTML = sources.map((s, i) => {
-        const hidden = (i >= 6 && !sourcesExpanded) ? ' style="display:none"' : '';
-        const href = s.url || SOURCE_ORIGINS[s.badge_label] || SOURCE_ORIGINS[s.badge] || '';
+        const hidden = (i >= SOURCE_PREVIEW && !sourcesExpanded) ? ' style="display:none"' : '';
+        const href = safeHref(s.url) || SOURCE_ORIGINS[s.badge_label] || SOURCE_ORIGINS[s.badge] || '';
         const title = s.title || '';
         const summary = s.summary || '';
         const inner =
           '<div class="source-card-header">' +
-          '<span class="source-badge ' + (s.badge || 'industry') + '">' + (s.badge_label || '') + '</span>' +
-          '<span class="source-meta">' + (s.meta || '') + '</span>' +
+          '<span class="source-badge ' + sourceBadgeClass(s.badge) + '">' +
+          escapeHtml(s.badge_label) + '</span>' +
+          '<span class="source-meta">' + escapeHtml(s.meta) + '</span>' +
           '</div>' +
-          '<div class="source-title">' + title + '</div>' +
-          (summary && summary !== title ? '<div class="source-summary">' + summary + '</div>' : '');
+          '<div class="source-title">' + escapeHtml(title) + '</div>' +
+          (summary && summary !== title
+            ? '<div class="source-summary">' + escapeHtml(summary) + '</div>'
+            : '');
         if (!href) return '<article class="source-card"' + hidden + '>' + inner + '</article>';
-        return '<a class="source-card" href="' + href + '" target="_blank" rel="noopener"' + hidden + '>' + inner + '</a>';
+        return '<a class="source-card" href="' + escapeHtml(href) + '" target="_blank" rel="noopener"' +
+          hidden + '>' + inner + '</a>';
       }).join('');
 
       const btn = document.getElementById('btn-expand-sources');
-      if (btn) btn.textContent = sourcesExpanded ? '收起信源' : '展开全部';
+      if (btn) {
+        btn.textContent = sourcesExpanded ? '收起信源' : '展开全部';
+        btn.setAttribute('aria-expanded', String(sourcesExpanded));
+        const bar = btn.closest('.sources-expand-bar');
+        if (bar) bar.hidden = sources.length <= SOURCE_PREVIEW;
+      }
 
       const label = document.getElementById('sources-count-label');
       if (label) label.textContent = sources.length + ' 条信源';
     }
 
-    /* 雷达：有主推数据时渲染主推卡，否则保留轮空态 */
+    const RADAR_REASON_LABELS = {
+      selected: '本期主推',
+      score_rank: '评分排名靠后',
+      direction_gate: '方向闸门过滤',
+      recent_pick: '近 30 天已推荐',
+      probe_limit: '超出探测上限'
+    };
+
+    /* 候选审计明细：新数据渲染表格，老数据只给口径说明（fail-soft，不影响轮空态） */
+    function renderRadarCandidates() {
+      const actions = document.getElementById('radar-empty-actions');
+      const panel = document.getElementById('radar-candidates-panel');
+      const button = document.getElementById('btn-radar-candidates');
+      if (!actions || !panel || !button) return;
+      const preview = safeParse(DATA.radar_candidates_preview, []);
+      const rows = Array.isArray(preview) ? preview.filter(item => item && item.repo) : [];
+      const total = Number(DATA.radar_candidates_total) || rows.length;
+      const excluded = Number(DATA.excluded_recent) || 0;
+      const available = DATA.radar_candidates_detail_available === true && rows.length > 0;
+
+      actions.hidden = DATA.radar_available === false;
+      button.hidden = false;
+      button.setAttribute('aria-expanded', 'false');
+      panel.hidden = true;
+      if (actions.hidden) return;
+
+      if (available) {
+        button.innerHTML = '<span aria-hidden="true">📋</span> 查看今日参与评估的 ' +
+          escapeHtml(total) + ' 个候选项目明细';
+        panel.innerHTML = '<table><thead><tr><th>仓库</th><th>Stars</th><th>日增</th>' +
+          '<th>语言</th><th>未收录原因</th></tr></thead><tbody>' +
+          rows.map(function (item) {
+            const delta = item.delta_stars == null ? '—' : '+' + item.delta_stars;
+            const reason = RADAR_REASON_LABELS[item.exclusion_reason] || item.exclusion_reason || '—';
+            return '<tr><td class="radar-candidate-repo">' + escapeHtml(item.repo) +
+              '</td><td>' + escapeHtml(item.stars) + '</td><td>' + escapeHtml(delta) +
+              '</td><td>' + escapeHtml(item.language || '—') +
+              '</td><td><span class="radar-candidate-reason">' + escapeHtml(reason) +
+              '</span></td></tr>';
+          }).join('') +
+          '</tbody></table>';
+      } else {
+        button.innerHTML = '<span aria-hidden="true">📋</span> 查看今日候选池口径';
+        panel.innerHTML = '<p class="radar-candidates-note">该日期早于候选审计上线，暂无逐项明细。' +
+          '本期共扫描 ' + escapeHtml(total) + ' 个候选仓库，其中 ' + escapeHtml(excluded) +
+          ' 个为近 30 天已推荐或重复收录。</p>';
+      }
+    }
+
+    function toggleRadarCandidates() {
+      const panel = document.getElementById('radar-candidates-panel');
+      const button = document.getElementById('btn-radar-candidates');
+      if (!panel || !button) return;
+      const open = panel.hidden;
+      panel.hidden = !open;
+      button.setAttribute('aria-expanded', String(open));
+    }
+
+    /* 雷达：有主推数据时渲染主推卡，否则保留轮空态（轮空态带候选审计入口） */
     function renderRadar() {
       const empty = document.getElementById('radar-empty');
       const pick = document.getElementById('radar-pick');
@@ -565,7 +848,16 @@
       const hasPick = !!(DATA.radar_pick_repo && String(DATA.radar_pick_repo).trim());
       empty.hidden = hasPick;
       pick.hidden = !hasPick;
-      if (hasPick) stopRadar(); else startRadar();
+      const actions = document.getElementById('radar-empty-actions');
+      const panel = document.getElementById('radar-candidates-panel');
+      if (hasPick) {
+        if (actions) actions.hidden = true;
+        if (panel) panel.hidden = true;
+        stopRadar();
+      } else {
+        renderRadarCandidates();
+        startRadar();
+      }
     }
 
     /* 主持人由数据驱动，roster 与逐字稿头像共用同一份姓名 */
@@ -580,8 +872,8 @@
         { cls: 'host-b', name: DATA.host_b_name }
       ].filter(h => h.name && String(h.name).trim()).map(h =>
         '<span class="host-identity">' +
-        '<span class="host-avatar ' + h.cls + '">' + hostInitial(h.name) + '</span>' +
-        '<span class="host-name">' + h.name + '</span>' +
+        '<span class="host-avatar ' + h.cls + '">' + escapeHtml(hostInitial(h.name)) + '</span>' +
+        '<span class="host-name">' + escapeHtml(h.name) + '</span>' +
         '</span>'
       ).join('');
     }
@@ -595,8 +887,10 @@
         const isA = l.speaker === 'A';
         const name = isA ? DATA.host_a_name : DATA.host_b_name;
         return '<div class="transcript-line">' +
-          '<span class="transcript-speaker ' + (isA ? 'host-a' : 'host-b') + '">' + hostInitial(name) + '</span>' +
-          '<div class="transcript-text"><span class="timestamp">' + (l.time || '') + '</span>' + (l.text || '') + '</div>' +
+          '<span class="transcript-speaker ' + (isA ? 'host-a' : 'host-b') + '">' +
+          escapeHtml(hostInitial(name)) + '</span>' +
+          '<div class="transcript-text"><span class="timestamp">' + escapeHtml(l.time) + '</span>' +
+          escapeHtml(l.text) + '</div>' +
           '</div>';
       }).join('');
     }
@@ -626,7 +920,7 @@
         ctx.stroke();
       }
       // cross
-      ctx.strokeStyle = crossColor;
+      ctx.strokeStyle = 'rgba(212, 165, 116, 0.1)';
       ctx.beginPath();
       ctx.moveTo(cx, 0); ctx.lineTo(cx, canvas.height);
       ctx.moveTo(0, cy); ctx.lineTo(canvas.width, cy);
@@ -685,8 +979,6 @@
 
     /* Hydrate {{...}} placeholders in DOM with DATA values (preview mode)
        首次运行时缓存模板文本，切换期号后可重复渲染 */
-    let titleTemplate = null;
-
     function fieldValue(key) {
       const v = DATA[key];
       if (v == null) return null;
@@ -732,15 +1024,9 @@
         });
       });
 
-      if (titleTemplate === null && document.title.indexOf('{{') !== -1) {
-        titleTemplate = document.title;
-      }
-      if (titleTemplate) {
-        document.title = titleTemplate.replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (m, key) => {
-          const v = fieldValue(key);
-          return v === null ? m : v;
-        });
-      }
+      /* 标签页标题：品牌 + 期号日期（切期同步；首屏由服务端直接写好，无占位符闪烁） */
+      const pageTitle = DATA.issue_date ? '今日AI看点 · ' + DATA.issue_date : '今日AI看点';
+      if (document.title !== pageTitle) document.title = pageTitle;
 
       /* 可选内容块：data-requires 里的字段全部为空时隐藏，避免残留占位符或空行 */
       document.querySelectorAll('[data-requires]').forEach(el => {
