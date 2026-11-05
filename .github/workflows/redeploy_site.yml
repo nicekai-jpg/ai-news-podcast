@@ -50,3 +50,21 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./site
           keep_files: true
+
+      # 把重建后的 site/ 提交回 main：否则 main 上还是旧版 index/feed/digest，
+      # 月度 prune 从 main 重建 gh-pages 时会把刚部署的新前端覆盖回旧版
+      - name: Commit rebuilt site to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -u site/
+          if [ -d site/data ]; then git add -f site/data/; fi
+          if [ -d site/reports ]; then git add -f site/reports/; fi
+          if [ -d site/radar ]; then git add -f site/radar/; fi
+          if git diff --cached --quiet; then
+            echo "No site changes to commit"
+          else
+            git commit -m "chore(site): redeploy rebuild [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi
