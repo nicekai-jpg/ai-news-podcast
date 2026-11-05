@@ -1,0 +1,1422 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-18",
+  "date_label": "2026年10月18日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": true
+  },
+  "podcast": {
+    "title": "AI 新闻快报 | 2026-10-18",
+    "subtitle": "今天的AI领域，Introducing Gem...正在重塑行业格局",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-18.mp3",
+    "duration_seconds": 645.877,
+    "duration_label": "10:46",
+    "speech_seconds": 619.968,
+    "segment_count": 56,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 56,
+      "segments_url": "episodes/2026-10-18/playlist.json",
+      "text_url": "episodes/2026-10-18.txt"
+    }
+  },
+  "lead": {
+    "text": "今日全球科技舞台的核心叙事围绕两条主线展开：其一，大模型迭代正式进入\"以周为单位\"的敏捷战争，Google Gemini 3.8 Flash 的发布标志着头部厂商已将模型升级压缩到不足半月一个版本；其二，算力边界正从云端向终端双向挤压，NVIDIA 推出 64GB 本地 AI 工作站，预示着\"端云协同\"的下一代计算架构正在成形。",
+    "source": "report_lead",
+    "source_file": "data/reports/daily_report_2026-10-18.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 79,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 23,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 56,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 20,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "听众朋友大家好，欢迎收听…",
+      "start": 1.0,
+      "label": "00:01",
+      "source": "cue_heuristic"
+    },
+    {
+      "title": "好。 第一条，Apple…",
+      "start": 269.59,
+      "label": "04:30",
+      "source": "cue_heuristic"
+    },
+    {
+      "title": "再来看第二条。 Goog…",
+      "start": 339.406,
+      "label": "05:39",
+      "source": "cue_heuristic"
+    }
+  ],
+  "report": {
+    "title": "✨ 科技新闻日报 | 2026年10月18日",
+    "char_count": 2931,
+    "reading_minutes": 7,
+    "lead": "今日全球科技舞台的核心叙事围绕两条主线展开：其一，大模型迭代正式进入\"以周为单位\"的敏捷战争，Google Gemini 3.8 Flash 的发布标志着头部厂商已将模型升级压缩到不足半月一个版本；其二，算力边界正从云端向终端双向挤压，NVIDIA 推出 64GB 本地 AI 工作站，预示着\"端云协同\"的下一代计算架构正在成形。",
+    "deep_dives": [
+      {
+        "heading": "一、Gemini 3.8 Flash 登场：六周三次迭代，推理与编码进入\"工业化流水线\"",
+        "background": "距离 Gemini 3.7 Flash 发布仅三周，DeepMind 今日再次扔出重磅——Gemini 3.8 Flash 与专为安全/网络空间场景优化的 3.8 Flash Cyber 双版本同步上线。\"Flash\"系列正以肉眼可见的速度成为 Google 抢占企业级推理市场的主力旗舰。",
+        "breakthrough": null,
+        "impact": "这种\"三周一发\"的节奏，本质上是在用版本号作为时间武器，迫使下游应用厂商和竞争对手陷入持续的适配焦虑。当基础模型不再稀缺，\"永远最新\"本身就是最强的护城河。可以预见，2027 年的开发者大会将不再比拼\"基准分数\"，而是比拼\"哪个厂商本月发了几个版本\"。",
+        "raw_sections": [
+          "核心突破点：",
+          "1. 速度与成本的\"相对静止\"：在维持 3.7 Flash 同等推理成本与延迟的前提下实现能力跃迁，意味着 Google 已在推理效率优化上找到系统性的压强点。",
+          "2. 软件工程与 Agentic 任务的定向强化：3.8 Flash 在多步推理、工具调用、长链路 Agent 工作流上的提升，直指当下最热的\"AI 工程师\"赛道。",
+          "3. Cyber 变体的安全意涵：3.8 Flash Cyber 的命名暗示其针对网络安全攻防、代码审计、威胁情报等垂直场景的差异化能力，反映 Google 在 ToB 安全市场的卡位。"
+        ]
+      },
+      {
+        "heading": "二、NVIDIA DGX Spark 64GB：当\"本地大模型\"从极客玩具走向工程师标配",
+        "background": "NVIDIA 官方博客今日披露，64GB 显存版本的 DGX Spark 正式向开发者开放预订。这一数字意味着消费级桌面工作站首次具备了运行百亿参数级别模型的\"硬实力\"，本地 AI 开发的\"token 经济\"正式开启。",
+        "breakthrough": null,
+        "impact": "本地 AI 的崛起将与云端大模型形成\"双轨竞争\"——超大规模厂商垄断通用智能，而边缘设备则承接垂直场景、数据敏感、低延迟的差异化需求。对 Apple、Qualcomm 等芯片厂商而言，2027 年将是被迫正面回应的关键窗口期。",
+        "raw_sections": [
+          "核心突破点：",
+          "1. 显存即边界：64GB 是当前消费级硬件的一个甜蜜点——足以容纳经过量化优化的主流 30B-70B 级别模型，让\"全离线、私有化\"的 AI 推理不再是空想。",
+          "2. 开发范式重构：从\"调 API\"到\"养模型\"，开发者的迭代闭环被压缩到秒级，调试成本与数据隐私风险同时下降。",
+          "3. 生态卡位：NVIDIA 用\"硬件 + 软件栈\"双轮驱动，将工作站从\"卖盒子\"升级为\"卖 AI 生产力\"。"
+        ]
+      }
+    ],
+    "frontier": [
+      {
+        "title": "🎙️ Apple ML Research 发布语码转换（Code-Switching）检测新框架",
+        "summary": "通过识别语音基础模型中的\"语言选择性维度\"，显著提升多语言混合场景下的识别准确率。简析：这看似学术，实则是 Apple 在为下一代 Siri 与 AirPods 实时翻译功能铺路——全球 60% 以上人口在日常对话中存在语码转换现象，谁先解决谁就占据跨语言交互的制高点。"
+      },
+      {
+        "title": "🌐 Google 联合联合国推出 System Data Commons 全球数据公共平台",
+        "summary": "将原本散落在各机构的统计数据、可持续发展指标整合为可探索的统一数据资产。简析：AI 时代的下一个稀缺资源不是算力，而是高质量、已清洗、可治理的数据资产。Google 通过绑定多边组织，正在悄悄成为\"全球数据基础设施\"的隐形承包商。"
+      },
+      {
+        "title": "📺 Google 9 月 AI 进展回顾视频上线",
+        "summary": "从 Veo 视频模型更新到 Gemini for Workspace 全家桶，节奏密集。简析：这是 Google 向资本市场与开发者社区释放的明确信号——AI 产品矩阵已从\"单点突破\"转向\"全栈协同\"，任何竞争对手都将面对 Google 全产品线的\"集火式\"碾压。"
+      },
+      {
+        "title": "(责任编辑：AI 主理人 · 审稿：科技战略院)*",
+        "summary": ""
+      }
+    ],
+    "editor_verdict": "今日新闻看似零散，实则勾勒出 2026 下半年 AI 产业的三条底层逻辑。**第一，\"快\"已成为新的\"强\"**——Gemini 三周一发的背后，是基础模型从科研工程演化为产品工程的本质转变，未来胜出的不再是\"最强模型持有者\"，而是\"最强发布节奏的维持者\"。**第二，端云博弈将定义下一个十年**——NVIDIA 64GB 工作站与云端 API 并非替代关系，而是分层共存，垂直行业必将沿着\"敏感数据下沉、通用智能上云\"的路径重构 IT 架构。**第三，基础设施话语权的暗战已悄然打响**——从联合国数据公共平台到 Apple 的多语言底层研究，真正的巨头之争早已不在 ChatBot 界面，而在标准、协议、数据治理这些\"看不见的钢筋水泥\"上。2026 年的 AI 竞赛，已经从\"谁能做出惊艳演示\"，全面转入\"谁能搭建不可替代的系统\"。",
+    "toc": [
+      {
+        "anchor": "deep-dive-1",
+        "title": "一、Gemini 3.8 Flash 登场：六周三次迭代，推理与编码进入\"工业化流水线\""
+      },
+      {
+        "anchor": "deep-dive-2",
+        "title": "二、NVIDIA DGX Spark 64GB：当\"本地大模型\"从极客玩具走向工程师标配"
+      }
+    ],
+    "raw_paragraphs": [
+      "<br>"
+    ],
+    "source_file": "data/reports/daily_report_2026-10-18.md"
+  },
+  "sources": {
+    "total_all": 79,
+    "total_main": 23,
+    "shown": 79,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "arXiv 论文",
+        "group": "arXiv 论文",
+        "count": 28
+      },
+      {
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "count": 27
+      },
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 16
+      },
+      {
+        "publisher": "Google",
+        "group": "Google",
+        "count": 4
+      },
+      {
+        "publisher": "OpenAI",
+        "group": "OpenAI",
+        "count": 3
+      },
+      {
+        "publisher": "NVIDIA",
+        "group": "NVIDIA",
+        "count": 1
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "DeepMind Blog",
+        "group": "Google",
+        "source_name": "DeepMind Blog",
+        "category": "official",
+        "title": "Introducing Gemini 3.8 Flash and 3.8 Flash Cyber",
+        "summary": "",
+        "link": "https://deepmind.google/blog/introducing-gemini-3-8-flash-and-38-flash-cyber/",
+        "published_at": "2026-09-02T16:18:31+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Google AI Blog",
+        "group": "Google",
+        "source_name": "Google AI Blog",
+        "category": "official",
+        "title": "The latest AI news we announced in September 2026",
+        "summary": "A video showing the September AI updates",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/",
+        "published_at": "2026-10-02T15:00:00+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Google AI Blog",
+        "group": "Google",
+        "source_name": "Google AI Blog",
+        "category": "official",
+        "title": "Making global data easier to explore",
+        "summary": "UN System Data Commons Data webpage",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-un-data-commons-platform/",
+        "published_at": "2026-09-17T20:00:00+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "NVIDIA 官方博客",
+        "group": "NVIDIA",
+        "source_name": "NVIDIA 官方博客",
+        "category": "official",
+        "title": "NVIDIA DGX Spark 64GB Gives Developers More Ways to Build and Scale Local AI",
+        "summary": "Local AI is becoming more useful by the token. As AI agents move from experiments into everyday development, increasingly capable open models are shrinking to fit on more devices, giving builders more to run locally. Coming this month, NVID",
+        "link": "https://blogs.nvidia.com/blog/local-ai-dgx-spark-64gb-sync/",
+        "published_at": "2026-10-02T13:00:39+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Apple ML Research",
+        "group": "科技媒体",
+        "source_name": "Apple ML Research",
+        "category": "official",
+        "title": "Code-Switching Detection via Language-Selective Dimensions in Speech Foundation Models",
+        "summary": "Code-switching (CS), the alternation between languages within an utterance, is common in multilingual speech but underrepresented in pretraining corpora. Increasing CS coverage requires finding relevant utterances in large speech collection",
+        "link": "https://machinelearning.apple.com/research/code-switching-detection",
+        "published_at": "2026-10-14T00:00:00+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Replit is no longer working with Anthropic, CEO says",
+        "summary": "Over the weekend, Masad clarified that OpenAI would replace Anthropic as its default model provider. Claude will still be available to customers on the platform.",
+        "link": "https://techcrunch.com/2026/10/17/replit-is-no-longer-working-with-anthropic-ceo-says/",
+        "published_at": "2026-10-17T18:48:08+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "DeepSeek-v4.1-Flash-1017",
+        "summary": "HN 热门讨论（530 points, 489 评论）by theykk",
+        "link": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+        "published_at": "2026-10-17T08:21:25+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "How Itaú is building generative AI for its entire customer base",
+        "summary": "With ia.i, a conversational interface, and the IARA governance platform, Itaú is applying its AI First strategy to customers and employees — in one of Brazil’s most regulated sectors.",
+        "link": "https://openai.com/index/itau-generative-ai",
+        "published_at": "2026-10-16T19:00:00+00:00"
+      },
+      {
+        "rank": 9,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "Benefit Street Partners answers questions faster with Codex",
+        "summary": "Anant Kumar builds tools to compare loan valuations and analyze credit agreements, using Codex for code review and faster follow-ups.",
+        "link": "https://openai.com/index/benefit-street-partners",
+        "published_at": "2026-10-16T00:00:00+00:00"
+      },
+      {
+        "rank": 10,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "Chatham scales its capital markets expertise with OpenAI",
+        "summary": "Chatham Financial uses Codex and GPT-5.6 to build technology and redesign workflows, cutting trade validation from 30 minutes to under 4.",
+        "link": "https://openai.com/index/chatham-financial",
+        "published_at": "2026-10-02T00:00:00+00:00"
+      },
+      {
+        "rank": 11,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "DeepMind Blog",
+        "group": "Google",
+        "source_name": "DeepMind Blog",
+        "category": "official",
+        "title": "Proactive cyber defense for governments and enterprises",
+        "summary": "",
+        "link": "https://deepmind.google/blog/proactive-cyber-defense-for-governments-and-enterprises/",
+        "published_at": "2026-09-02T16:24:24+00:00"
+      },
+      {
+        "rank": 12,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "HuggingFace Blog",
+        "group": "科技媒体",
+        "source_name": "HuggingFace Blog",
+        "category": "research",
+        "title": "Getting the Source Right, Not Just the Fact: Source-Aware Verification for MCP Agents",
+        "summary": "",
+        "link": "https://huggingface.co/blog/MultiverseComputingCAI/getting-the-source-right-not-just-the-fact-source",
+        "published_at": "2026-09-29T13:07:00+00:00"
+      },
+      {
+        "rank": 13,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · DeepSeek",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · DeepSeek",
+        "category": "research",
+        "title": "What Coding Agents Leave Unsaid: Measuring Task-State Gaps Between Execution and Reports",
+        "summary": "Human supervisors rely on coding agents' reports to assess progress, verify repairs, and decide when to intervene. But a supervisor cannot investigate a failure they were never told occurred. Failed attempts, workarounds, and unresolved ris",
+        "link": "https://arxiv.org/abs/2610.20003v2",
+        "published_at": "2026-10-14T11:20:15+00:00"
+      },
+      {
+        "rank": 14,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · Anthropic/Claude",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Anthropic/Claude",
+        "category": "research",
+        "title": "How People Use ChatGPT: Conversation-Level Evidence from India, Nigeria, Brazil, and Pakistan",
+        "summary": "Public understanding of how people use LLM-based conversational AI assistants comes primarily from aggregate platform reports by OpenAI and Anthropic, which apply fixed taxonomies and inferred demographics to hundreds of millions of users a",
+        "link": "https://arxiv.org/abs/2609.38279v1",
+        "published_at": "2026-09-29T15:51:26+00:00"
+      },
+      {
+        "rank": 15,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "霸榜三大基准！优必选 Thinker-WM：多模态统一表征，单模型实现六大能力",
+        "summary": "优必选 Thinker-WM在三大公认具身世界模型基准评测中全部拿下第一名",
+        "link": "https://www.qbitai.com/2026/10/503843.html",
+        "published_at": "2026-10-16T08:00:31+00:00"
+      },
+      {
+        "rank": 16,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "范式智能联合睿思智联推出开源一站式 生产级 AI 部署平台 “模域ModelSphere”",
+        "summary": "范式智能技术集团有限公司联合北京睿思智联科技有限公司宣布，一站式生产级 AI 部署平台“模域”正式上线。",
+        "link": "https://www.qbitai.com/2026/10/503829.html",
+        "published_at": "2026-10-16T07:16:11+00:00"
+      },
+      {
+        "rank": 17,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "68岁亚马逊CTO：别让恐惧，替企业做AI决策",
+        "summary": "经验没有压缩算法",
+        "link": "https://www.qbitai.com/2026/10/503815.html",
+        "published_at": "2026-10-16T07:01:31+00:00"
+      },
+      {
+        "rank": 18,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "刚刚，Gemini 4终于来了：谷歌重回御三家，API限时半价",
+        "summary": "谷歌就是季节性气候模型公司",
+        "link": "https://www.qbitai.com/2026/10/503701.html",
+        "published_at": "2026-10-16T05:04:59+00:00"
+      },
+      {
+        "rank": 19,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "少数派",
+        "group": "科技媒体",
+        "source_name": "少数派",
+        "category": "tools",
+        "title": "被量化的心跳：HRV 是身体的晴雨表，还是制造焦虑的数字游戏？",
+        "summary": "这些设备最好的用途，不是让你更依赖它们，而是帮助你重新学会倾听自己。然后，在某个清晨，你不再需要看任何数字，就知道今天会是美好的一天。 查看全文",
+        "link": "https://sspai.com/post/104231",
+        "published_at": "2026-10-17T06:58:04+00:00"
+      },
+      {
+        "rank": 20,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "L2G-SR: Learning to Guide LLM-based Symbolic Regression",
+        "summary": "arXiv:2610.20685v1 Announce Type: new Abstract: Symbolic regression searches for an equation that explains observed data. Numerical error is commonly used to guide the search, but it alone can favor an accurate surrogate over a candidate wi",
+        "link": "https://arxiv.org/abs/2610.20685",
+        "published_at": "2026-10-17T04:00:00+00:00"
+      },
+      {
+        "rank": 21,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · DeepSeek",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · DeepSeek",
+        "category": "research",
+        "title": "Writability and the Pathway: A Controlled Study of Knowledge Injection into Addressed Memory",
+        "summary": "Addressed conditional memory provides a local surface for post-hoc knowledge injection, but a successful write need not transfer to a new question or preserve untargeted behavior. This study combines a controlled GPT-2 comparison with produ",
+        "link": "https://arxiv.org/abs/2610.21553v1",
+        "published_at": "2026-10-15T09:14:29+00:00"
+      },
+      {
+        "rank": 22,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · DeepSeek",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · DeepSeek",
+        "category": "research",
+        "title": "ISW-Agent: Integrating LLM-Driven Dialogue with n8n Workflow for Internal Solitary Wave Remote Sensing Image Processing",
+        "summary": "Internal solitary wave (ISW) remote sensing requires task parameters and spatial information to be transferred across image acquisition, detection, stripe extraction, and propagation prediction. Here, we present ISW-Agent, which integrates ",
+        "link": "https://arxiv.org/abs/2610.21502v1",
+        "published_at": "2026-10-15T08:38:23+00:00"
+      },
+      {
+        "rank": 23,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Show HN: Esp32sim – Run ESP32 firmware in the browser",
+        "summary": "HN 热门讨论（71 points, 9 评论）by joakimeriksson",
+        "link": "https://github.com/mikroverk/esp32sim",
+        "published_at": "2026-10-17T13:51:08+00:00"
+      },
+      {
+        "rank": 24,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "说真话就能拿10万？网易叭哥说重金求“真需求”，不卡专业学历",
+        "summary": "网易首个AI原生语音Agent「网易叭哥说」上线 “用户荣誉联创计划”，投入 10 万元征集产品建议",
+        "link": "https://www.qbitai.com/2026/10/503861.html",
+        "published_at": "2026-10-16T08:07:33+00:00"
+      },
+      {
+        "rank": 25,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "百度世界2026五大亮点曝光，企业和开发者值得关注什么？",
+        "summary": "10月15日，百度官方公众号发文公布百度世界2026五大亮点",
+        "link": "https://www.qbitai.com/2026/10/503779.html",
+        "published_at": "2026-10-16T06:07:41+00:00"
+      },
+      {
+        "rank": 26,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "HuggingFace Blog",
+        "group": "科技媒体",
+        "source_name": "HuggingFace Blog",
+        "category": "research",
+        "title": "Welcome RL Environments to the hub",
+        "summary": "",
+        "link": "https://huggingface.co/blog/rl-environments",
+        "published_at": "2026-09-28T00:00:00+00:00"
+      },
+      {
+        "rank": 27,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · Mistral/Meta",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Mistral/Meta",
+        "category": "research",
+        "title": "Human Interventions as Labels: Localizing, Steering, and (Sometimes) Editing the Computations Behind LLM Agent Failures",
+        "summary": "When an LLM agent misbehaves, a human steps in, and that intervention is usually discarded or replayed as training data. We treat it instead as a measurement: a label pointing at the internal computation that failed. We study it in a contro",
+        "link": "https://arxiv.org/abs/2610.21708v1",
+        "published_at": "2026-10-15T11:27:19+00:00"
+      },
+      {
+        "rank": 28,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "从“看懂世界”到“预演下一步”：世界模型与 VLA，如何让机器人拥有真正的“具身大脑”？",
+        "summary": "VLA解决“能干”，世界模型解决“想清楚再干”",
+        "link": "https://www.qbitai.com/2026/10/503865.html",
+        "published_at": "2026-10-16T08:12:01+00:00"
+      },
+      {
+        "rank": 29,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "中国机器人羽毛球连打1452拍！拿下吉尼斯，波士顿动力大佬被硬控",
+        "summary": "背后是一套通用物理运动平台",
+        "link": "https://www.qbitai.com/2026/10/503756.html",
+        "published_at": "2026-10-16T05:47:01+00:00"
+      },
+      {
+        "rank": 30,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · MiniMax",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · MiniMax",
+        "category": "research",
+        "title": "When Is Muon Optimal? Radial Fragility and Minimax Geometry",
+        "summary": "Muon replaces a matrix gradient by an approximate polar factor and has shown strong empirical performance in neural-network training. The Isotropic Curvature Model (ICM) provides a curvature-based explanation for this update by asking when ",
+        "link": "https://arxiv.org/abs/2610.21549v1",
+        "published_at": "2026-10-15T09:13:19+00:00"
+      },
+      {
+        "rank": 31,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Synced Review",
+        "group": "科技媒体",
+        "source_name": "Synced Review",
+        "category": "news",
+        "title": "Researchers from PSU and Duke introduce “Multi-Agent Systems Automated Failure Attribution",
+        "summary": "\"Automated failure attribution\" is a crucial component in the development lifecycle of Multi-Agent systems. It has the potential to transform the challenge of identifying \"what went wrong and who is to blame\" from a perplexing mystery into ",
+        "link": "https://syncedreview.com/2025/06/16/researchers-from-psu-and-duke-introduce-multi-agent-systems-automated-failure-attribution/",
+        "published_at": "2025-06-16T07:39:46+00:00"
+      },
+      {
+        "rank": 32,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "The First Candid",
+        "summary": "HN 热门讨论（37 points, 8 评论）by Thevet",
+        "link": "https://www.newyorker.com/magazine/2026/10/19/the-first-candid",
+        "published_at": "2026-10-16T17:28:19+00:00"
+      },
+      {
+        "rank": 33,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "A skeptic's first contact with Kubernetes (2024)",
+        "summary": "HN 热门讨论（36 points, 2 评论）by pmoriarty",
+        "link": "https://blog.davidv.dev/posts/first-contact-with-k8s/",
+        "published_at": "2026-10-17T03:16:25+00:00"
+      },
+      {
+        "rank": 34,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "超1亿元融资砸向四川具身科技！要把「情绪价值」卖进千家万户",
+        "summary": "9.8万元起售，冲刺万台量产",
+        "link": "https://www.qbitai.com/2026/10/503782.html",
+        "published_at": "2026-10-16T06:17:53+00:00"
+      },
+      {
+        "rank": 35,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "少数派",
+        "group": "科技媒体",
+        "source_name": "少数派",
+        "category": "tools",
+        "title": "本周看什么 | 最近值得一看的 13 部作品",
+        "summary": "📅本周新预告《哥斯拉-0.0》终极预告10月11日，电影《哥斯拉-0.0》发布了终极预告，将于11月3日在日本上映、11月6日在北美上映。该片为首部为IMAX拍摄的日本电影，山崎贵执导、编剧，神木隆之 ... 查看全文",
+        "link": "https://sspai.com/post/116423",
+        "published_at": "2026-10-16T10:21:07+00:00"
+      },
+      {
+        "rank": 36,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · MiniMax",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · MiniMax",
+        "category": "research",
+        "title": "Two Sample Sizes in Test-Time LLM Ensembling: Buffered ERM and Minimax Theory",
+        "summary": "Test-time scaling can improve the performance of large language models by generating multiple answers to a question and aggregating them. Weighted ensembles extend this idea by drawing answers from several models, with the weights determini",
+        "link": "https://arxiv.org/abs/2610.21363v1",
+        "published_at": "2026-10-15T06:41:37+00:00"
+      },
+      {
+        "rank": 37,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · MiniMax",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · MiniMax",
+        "category": "research",
+        "title": "Pointwise minimax lower bounds under a multi-index constraint: the price of an unknown orientation",
+        "summary": "We consider nonparametric regression with random design and non-Gaussian noise, where the regression function has the multi-index form $F(x)=f(Θx)$ with an unknown link $f:\\RR^m\\to\\RR$ in an anisotropic Hölder class and an unknown matrix $Θ",
+        "link": "https://arxiv.org/abs/2610.19208v1",
+        "published_at": "2026-10-13T21:23:51+00:00"
+      },
+      {
+        "rank": 38,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · Grok/xAI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Grok/xAI",
+        "category": "research",
+        "title": "Hybrid DeepXAI Fusion Network for Interpretable Big Data Analytics and Secure Cloud Decision-Making Systems",
+        "summary": "Big data analytics supports modern intelligent systems, but model complexity and limited transparency can undermine interpretability, trust, and security in decision-making. This paper presents the Hybrid DeepXAI Fusion Network, a deep lear",
+        "link": "https://arxiv.org/abs/2610.20661v1",
+        "published_at": "2026-10-14T06:39:43+00:00"
+      },
+      {
+        "rank": 39,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · Grok/xAI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Grok/xAI",
+        "category": "research",
+        "title": "Statistical Vignettes on the Grokking Phenomenon",
+        "summary": "In this work, we study grokking in a simple, analytically tractable setting whose rich phenomenology allows us to disentangle the effects of initialization, signal strength, weight decay, sample size, and input dimension. These factors can ",
+        "link": "https://arxiv.org/abs/2610.18811v1",
+        "published_at": "2026-10-13T17:47:56+00:00"
+      },
+      {
+        "rank": 40,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · Grok/xAI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Grok/xAI",
+        "category": "research",
+        "title": "Do Flatter Minima Drive Better Generalization? An Algorithmic Separation in Grokking",
+        "summary": "Flat loss landscapes have long been linked to better generalization in neural networks. However, its role as a causal mechanism for generalization is less established. Grokking provides an unique testbed to understand this distinction: mode",
+        "link": "https://arxiv.org/abs/2610.11206v1",
+        "published_at": "2026-10-08T04:06:50+00:00"
+      },
+      {
+        "rank": 41,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "3DCodeVerse: Exploring 3D Worlds as Code",
+        "summary": "We introduce 3DCodeVerse, a research ecosystem that enables coding agents to create editable and verifiable 3D content at scale. 3DCodeVerse comprises large-scale, high-quality datasets of executable 3D code, a coding harness for spatial re",
+        "link": "https://arxiv.org/abs/2610.22341v1",
+        "published_at": "2026-10-15T17:56:07+00:00"
+      },
+      {
+        "rank": 42,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Development statistics for the 7.2 kernel",
+        "summary": "HN 热门讨论（94 points, 59 评论）by farlight",
+        "link": "https://lwn.net/Articles/1088776/",
+        "published_at": "2026-10-17T17:14:12+00:00"
+      },
+      {
+        "rank": 43,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Pattern Matching Beats Narrative Reasoning",
+        "summary": "HN 热门讨论（8 points, 1 评论）by tosh",
+        "link": "https://blog.scottstevenson.net/p/pattern-matching-beats-narrative",
+        "published_at": "2026-10-17T18:34:13+00:00"
+      },
+      {
+        "rank": 44,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · 字节 AI Lab",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 字节 AI Lab",
+        "category": "research",
+        "title": "Taming Long-form Text-to-Speech",
+        "summary": "Long-form text-to-speech (TTS) enables multi-turn conversations with consistent prosody and higher quality voice cloning from longer reference audio. Recent open-weights autoregressive TTS models such as Qwen3-TTS and VoxCPM2 attain state-o",
+        "link": "https://arxiv.org/abs/2609.16989v1",
+        "published_at": "2026-09-15T11:03:52+00:00"
+      },
+      {
+        "rank": 45,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "Dense4D: Pixel-Level 4D Human Correspondence",
+        "summary": "Reconstructing human motion in 4D requires identifying the same surface points through articulation, deformation and changes in visibility. We introduce Dense4D, to our knowledge the first feed-forward model dedicated to dense 4D correspond",
+        "link": "https://arxiv.org/abs/2610.22325v1",
+        "published_at": "2026-10-15T17:52:14+00:00"
+      },
+      {
+        "rank": 46,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "MapQuest will now show you where Flock cameras are in your neighborhood",
+        "summary": "HN 热门讨论（220 points, 32 评论）by bookofjoe",
+        "link": "https://www.engadget.com/2288729/mapquest-will-now-show-you-where-flock-cameras-are-in-your-neighborhood/",
+        "published_at": "2026-10-17T10:59:31+00:00"
+      },
+      {
+        "rank": 47,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "AI Can Write the Code. Who Verifies It?",
+        "summary": "HN 热门讨论（10 points, 13 评论）by mmarvramm",
+        "link": "https://mihaisplace.com/blog/ai-can-write-the-code-who-verifies-it",
+        "published_at": "2026-10-17T18:31:30+00:00"
+      },
+      {
+        "rank": 48,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · Anthropic/Claude",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Anthropic/Claude",
+        "category": "research",
+        "title": "My Credentials, Please: Detecting Filesystem Capability Laundering in MCP Servers at Scale",
+        "summary": "The Model Context Protocol (MCP) standardizes how AI agents invoke external tools. MCP servers expose tools through a declared contract consisting of a name, description, and argument schema. In typical local deployments, client-side approv",
+        "link": "https://arxiv.org/abs/2610.22301v1",
+        "published_at": "2026-10-15T17:48:10+00:00"
+      },
+      {
+        "rank": 49,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · Anthropic/Claude",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Anthropic/Claude",
+        "category": "research",
+        "title": "The Invisible Language Tax: Token Premiums of French and Regional Languages in 2026 LLM Tokenizers, and a French-Optimized Prototype",
+        "summary": "LLM services are billed per token and context windows are measured in tokens, yet the number of tokens needed for the same content varies across languages. We measure this token premium on seven tokenizers of widely used 2026 models (OpenAI",
+        "link": "https://arxiv.org/abs/2609.39001v1",
+        "published_at": "2026-09-30T05:14:43+00:00"
+      },
+      {
+        "rank": 50,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "LIBERO-PeRM: Benchmarking Personalized Robotic Manipulation",
+        "summary": "Personalization is essential for general-purpose robots to transition into household environments and achieve true practicality. While general robotic manipulation has been extensively studied, personalized robotic manipulation (PeRM) lacks",
+        "link": "https://arxiv.org/abs/2610.22372v1",
+        "published_at": "2026-10-15T17:59:59+00:00"
+      },
+      {
+        "rank": 51,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "You could have invented transformers from memory",
+        "summary": "HN 热门讨论（443 points, 103 评论）by speckx",
+        "link": "https://alexwang.ai/posts/associative-memory/",
+        "published_at": "2026-10-16T19:01:17+00:00"
+      },
+      {
+        "rank": 52,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Solar surpasses nuclear power globally for first time",
+        "summary": "HN 热门讨论（360 points, 203 评论）by xbmcuser",
+        "link": "https://www.pv-magazine.com/2026/09/29/solar-surpasses-nuclear-power-globally-for-first-time/",
+        "published_at": "2026-10-17T14:01:01+00:00"
+      },
+      {
+        "rank": 53,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Rendering pretty sky in Around The World game",
+        "summary": "HN 热门讨论（100 points, 6 评论）by ibobev",
+        "link": "https://frozenfractal.com/blog/2026/10/12/around-the-world-34-a-pretty-sky/",
+        "published_at": "2026-10-16T15:06:43+00:00"
+      },
+      {
+        "rank": 54,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Bleached corals thrive within days when touching healthy neighbour",
+        "summary": "HN 热门讨论（71 points, 4 评论）by alkyon",
+        "link": "https://www.nature.com/articles/d41586-026-03266-x",
+        "published_at": "2026-10-16T23:38:27+00:00"
+      },
+      {
+        "rank": 55,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "The Commodore 64 hardware simulator: break chips and pins, see the results",
+        "summary": "HN 热门讨论（58 points, 10 评论）by antirez",
+        "link": "https://github.com/antirez/c64-hw-simulator",
+        "published_at": "2026-10-15T07:18:14+00:00"
+      },
+      {
+        "rank": 56,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Pele – Mermaid diagrams as themeable SVG",
+        "summary": "HN 热门讨论（54 points, 6 评论）by dchest",
+        "link": "https://pele.run/",
+        "published_at": "2026-10-17T15:55:09+00:00"
+      },
+      {
+        "rank": 57,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Dam removals are bringing fish back across the northeastern United States",
+        "summary": "HN 热门讨论（31 points, 3 评论）by sohkamyung",
+        "link": "https://www.smithsonianmag.com/science-nature/dam-removals-are-bringing-fish-back-across-the-northeastern-united-states-striking-down-one-tiny-barrier-at-a-time-180989679/",
+        "published_at": "2026-10-16T23:47:31+00:00"
+      },
+      {
+        "rank": 58,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Vintage Cassettes: 1963-2010",
+        "summary": "HN 热门讨论（24 points, 2 评论）by austinallegro",
+        "link": "http://vintagecassettes.com/",
+        "published_at": "2026-10-14T20:41:36+00:00"
+      },
+      {
+        "rank": 59,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Show HN: Parin – A 2D game engine between raylib and Godot, written in Dlang",
+        "summary": "HN 热门讨论（11 points, 2 评论）by Kapendev",
+        "link": "https://github.com/Kapendev/parin",
+        "published_at": "2026-10-16T13:22:49+00:00"
+      },
+      {
+        "rank": 60,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · DeepSeek",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · DeepSeek",
+        "category": "research",
+        "title": "N-Gram Memories at Two Bits: Quantizing Lookup Tables in Large Language Models",
+        "summary": "Conditional memory expands language-model capacity through selective lookup, but the full embedding table must remain available for every possible input. We introduce Conditional Program (CP), a compressed representation that reconstructs o",
+        "link": "https://arxiv.org/abs/2610.21810v1",
+        "published_at": "2026-10-15T12:57:19+00:00"
+      },
+      {
+        "rank": 61,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · DeepSeek",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · DeepSeek",
+        "category": "research",
+        "title": "RoLaQ: Joint Rotation and Range Calibration for 2-Bit KV Caches in Multi-Head Latent Attention",
+        "summary": "Multi-head latent attention (MLA) compresses the content of a key-value cache into a shared latent per token, making low-bit storage attractive for long-context inference. At two bits, errors in this representation perturb both attention ma",
+        "link": "https://arxiv.org/abs/2610.20686v1",
+        "published_at": "2026-10-14T16:46:48+00:00"
+      },
+      {
+        "rank": 62,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "Which Tokens to Merge? Diffusion Dynamics for Efficient Image Generation",
+        "summary": "Token merging has emerged as an effective training-free strategy for accelerating diffusion models by reducing redundant token computation while minimizing generation degradation. A key challenge is determining which tokens can be safely me",
+        "link": "https://arxiv.org/abs/2610.22370v1",
+        "published_at": "2026-10-15T17:59:35+00:00"
+      },
+      {
+        "rank": 63,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "SoftCache: Adaptive Step Size Caching for Diffusion Transformers",
+        "summary": "Diffusion and flow models generate a sample over iterative steps, each a full pass through a large network, and that pass dominates generation cost. Training-free caching accelerates them by reusing activations from recent evaluations inste",
+        "link": "https://arxiv.org/abs/2610.22369v1",
+        "published_at": "2026-10-15T17:59:34+00:00"
+      },
+      {
+        "rank": 64,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "SUPRA-TEX: 3D Generation with Super-Aligned Texture",
+        "summary": "Single image 3D generation aims to dress a given 3D mesh with relightable materials while faithfully preserving the visual details of a reference image. Existing methods either introduce artifacts when fusing inconsistent multi-view predict",
+        "link": "https://arxiv.org/abs/2610.22352v1",
+        "published_at": "2026-10-15T17:58:02+00:00"
+      },
+      {
+        "rank": 65,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "Not Just a Subject: Capturing Adaptive Scene-Specific Variance for Visual Storytelling",
+        "summary": "Recent advancements in diffusion models have significantly improved text-to-image generation, enabling their application to visual storytelling, where coherent image sequences are generated from narrative prompts. However, existing methods ",
+        "link": "https://arxiv.org/abs/2610.22320v1",
+        "published_at": "2026-10-15T17:51:49+00:00"
+      },
+      {
+        "rank": 66,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "Dexterity from Supervised Play",
+        "summary": "How can robots autonomously collect the contact-rich experience needed to learn dexterous manipulation? We present DSP: Dexterity from supervised play, a framework in which a robot learns a play policy from minutes of human play through beh",
+        "link": "https://arxiv.org/abs/2610.22340v1",
+        "published_at": "2026-10-15T17:55:50+00:00"
+      },
+      {
+        "rank": 67,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "Illumination-Aware Active Perception for Spacecraft Inspection",
+        "summary": "Harsh and rapidly varying orbital illumination introduces failure modes during spacecraft inspection. Existing planners rely on line-of-sight inspection metrics which perform occlusion checks against a known target and conflate geometric vi",
+        "link": "https://arxiv.org/abs/2610.22335v1",
+        "published_at": "2026-10-15T17:54:03+00:00"
+      },
+      {
+        "rank": 68,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "Asking Smarter Questions: Targeted Active Preference Learning for Underspecified Rewards",
+        "summary": "Reward learning typically assumes the human's input covers everything that matters for the task. In practice, humans can only attend to so much at once, so their teaching naturally captures some features---or aspects of the task---better th",
+        "link": "https://arxiv.org/abs/2610.22285v1",
+        "published_at": "2026-10-15T17:41:46+00:00"
+      },
+      {
+        "rank": 69,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "Safe and Fuel-Efficient Motion Planning for Lunar Propulsive Drones",
+        "summary": "Propulsive drones are a promising new technology for generating high-resolution terrain models of the Moon. In future lunar missions, propulsive drones will complete a series of hops across the lunar surface while capturing images with down",
+        "link": "https://arxiv.org/abs/2610.22225v1",
+        "published_at": "2026-10-15T17:05:04+00:00"
+      },
+      {
+        "rank": 70,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Show HN: Llmspeed – feel how fast a local LLM runs before you buy the hardware",
+        "summary": "HN 热门讨论（213 points, 67 评论）by albinstman",
+        "link": "https://llmspeed.dev/",
+        "published_at": "2026-10-17T04:36:53+00:00"
+      },
+      {
+        "rank": 71,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Gold is now the top U.S. export",
+        "summary": "HN 热门讨论（55 points, 13 评论）by iamnothere",
+        "link": "https://www.numismaticnews.net/gold-now-top-u-s-export",
+        "published_at": "2026-10-17T17:06:07+00:00"
+      },
+      {
+        "rank": 72,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "OpenCode Hacked: User credentials leaked",
+        "summary": "HN 热门讨论（208 points, 47 评论）by pranshuchittora",
+        "link": "https://twitter.com/opencode/status/2111516673953935833",
+        "published_at": "2026-10-17T18:01:41+00:00"
+      },
+      {
+        "rank": 73,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Making chicken transparent using Dorito dust",
+        "summary": "HN 热门讨论（188 points, 54 评论）by crescit_eundo",
+        "link": "https://chillphysicsenjoyer.substack.com/p/making-chicken-transparent-using",
+        "published_at": "2026-10-17T13:55:28+00:00"
+      },
+      {
+        "rank": 74,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Furifont, a Japanese font that shows furigana",
+        "summary": "HN 热门讨论（124 points, 21 评论）by plaguna",
+        "link": "https://furifont.antfu.me/",
+        "published_at": "2026-10-15T08:48:30+00:00"
+      },
+      {
+        "rank": 75,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Source code of the Estonian online voting system",
+        "summary": "HN 热门讨论（44 points, 9 评论）by theanonymousone",
+        "link": "https://github.com/valimised/ivxv",
+        "published_at": "2026-10-17T03:18:39+00:00"
+      },
+      {
+        "rank": 76,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "A Tudor life in the time of plague (2020)",
+        "summary": "HN 热门讨论（37 points, 3 评论）by pepys",
+        "link": "https://www.historytoday.com/archive/history-matters/tudor-life-time-plague",
+        "published_at": "2026-10-14T04:23:25+00:00"
+      },
+      {
+        "rank": 77,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "The future of programming (1982)",
+        "summary": "HN 热门讨论（22 points, 4 评论）by vismit2000",
+        "link": "https://dl.acm.org/doi/10.1145/358453.358459",
+        "published_at": "2026-10-17T11:20:52+00:00"
+      },
+      {
+        "rank": 78,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Espresso machine can run Doom",
+        "summary": "HN 热门讨论（13 points, 3 评论）by speckx",
+        "link": "https://www.gamespot.com/articles/this-espresso-machine-can-run-doom/",
+        "published_at": "2026-10-16T18:49:31+00:00"
+      },
+      {
+        "rank": 79,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Show HN: MirrorMD – An AI second opinion from a facial cosmetic surgeon",
+        "summary": "HN 热门讨论（8 points, 5 评论）by AIcosmeticsurge",
+        "link": "https://mymirrormd.com/",
+        "published_at": "2026-10-15T13:47:27+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": true,
+    "status": "pick",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": {
+      "repo": "deeplethe/utopia",
+      "url": "https://github.com/deeplethe/utopia",
+      "description": "World's first open-source enterprise world model.",
+      "language": "Rust",
+      "topics": [
+        "agent-memory",
+        "bitemporal",
+        "graphrag",
+        "knowledge-base",
+        "knowledge-graph",
+        "llm",
+        "ontology",
+        "pgvector",
+        "postgresql",
+        "rag",
+        "rust",
+        "self-hosted",
+        "semantic-search",
+        "temporal-knowledge-graph",
+        "world-model"
+      ],
+      "stars": 8409,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-08-07T19:33:17Z",
+      "pushed_at": "2026-10-17T00:27:57Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "Requirements: Docker (local development also needs Rust 1.85+, Node 20+, pnpm).\n\nThe prebuilt image is published for `linux/amd64` and `linux/arm64`, so it runs natively on x86-64 hosts as well as Apple Silicon and AWS Graviton. Tags up to `0.1.0-rc7` are amd64 only.\n\nStart from the prebuilt image:\n\n```bash\ngit clone https://github.com/deeplethe/utopia.git\ncd utopia\ndocker compose --profile app up -d\n```\n\nOpen http://localhost:1516 and register. The first account automatically becomes the administrator, and a public knowledge base readable by everyone is created at the same time. Before extracting business documents, configure the model endpoints (chat and embedding) under Administration → Models.\n\nThe database password (`UTOPIA_DB_PASSWORD` in `.env`, default `utopia`) is applied when the data volume is first initialised. To change it on a running deployment, change it in the database as well — `docker compose exec db psql -U utopia -c \"ALTER USER utopia PASSWORD '<new password>'\"` — or start over with `docker compose --profile app down -v`, which deletes all data.\n\nOr build from source:\n\n```bash\ndocker compose -f docker-compose.yml -f docker-compose.build.yml --profile app up -d ",
+      "readme_intro": "[Philosophy](#philosophy) · [Quick start](#quick-start) · [Features](#features) · [Roadmap](#roadmap) [ ](https://github.com/deeplethe/utopia/stargazers) [ ](LICENSE) [ ](https://www.rust-lang.org) [ ](https://utopia.bi) [ ](https://github.com/deeplethe/utopia/pkgs/container/utopia) [ ](https://github.com/deeplethe/utopia/discussions) [ ](https://github.com/deeplethe) [ ](README.zh-CN.md) **The enterprise world model built by [DeepLethe](https://deeplethe.com).** It is the first open substrate for knowledge engineering that learns passively and governs itself. Where a knowledge graph or a vector store works to hold present knowledge, Utopia puts time awareness and ontology in the base layer: the knowledge system evolves as material arrives, and conflict detection, reasoning and decision ma",
+      "score": 0.4993,
+      "score_parts": {
+        "velocity": 0.2498,
+        "vel_rel": 0.3636,
+        "vel_abs": 0.079,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    "runner_ups": [
+      {
+        "repo": "anthropics/claude-plugins-official",
+        "url": "https://github.com/anthropics/claude-plugins-official",
+        "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+        "language": "Python",
+        "topics": [
+          "claude-code",
+          "mcp",
+          "skills"
+        ],
+        "stars": 41543,
+        "delta_stars": 1201,
+        "is_new": false,
+        "created_at": "2025-11-20T18:36:20Z",
+        "pushed_at": "2026-10-17T16:41:00Z",
+        "license": "Apache-2.0",
+        "has_install_docs": false,
+        "mentions": 0,
+        "readme_excerpt": "Plugins can be installed directly from this marketplace via Claude Code's plugin system.\n\nTo install, run `/plugin install {plugin-name}@claude-plugins-official`\n\nor browse for the plugin in `/plugin > Discover`",
+        "readme_intro": "A curated directory of high-quality plugins for Claude Code. > **⚠️ Important:** Make sure you trust a plugin before installing, updating, or using it. Anthropic does not control what MCP servers, files, or other software are included in plugins and cannot verify that they will work as intended or that they won't change. See each plugin's homepage for more information.",
+        "score": 0.4575,
+        "score_parts": {
+          "velocity": 0.9203,
+          "vel_rel": 1.0,
+          "vel_abs": 0.8007,
+          "hands_on": 0.6,
+          "cross_heat": 0.0,
+          "affinity": 0.5,
+          "days_in_pool": 1
+        },
+        "affinity": 0.5
+      },
+      {
+        "repo": "bojieli/ai-infra-book",
+        "url": "https://github.com/bojieli/ai-infra-book",
+        "description": "《深入理解 AI Infra：量化分析与系统设计》（李博杰 著）开源书稿：从硬件约束和模型架构出发，量化推导 LLM 推理与训练系统设计。含全书正文、PDF、配套计算工具与实验",
+        "language": "Python",
+        "topics": [
+          "accelerator",
+          "ai-infra",
+          "ai-infrastructure",
+          "book",
+          "datacenter-network",
+          "deepseek",
+          "distributed-systems",
+          "gpu",
+          "kv-cache",
+          "llm",
+          "llm-inference",
+          "llm-serving",
+          "llm-training",
+          "mixture-of-experts",
+          "performance-engineering"
+        ],
+        "stars": 6654,
+        "delta_stars": null,
+        "is_new": true,
+        "created_at": "2026-08-22T15:30:41Z",
+        "pushed_at": "2026-10-01T08:19:29Z",
+        "license": "Apache-2.0",
+        "has_install_docs": true,
+        "mentions": 0,
+        "readme_excerpt": "python -m pip install -r website/requirements.txt\npython scripts/build_site.py\npython scripts/check_site.py\npython scripts/build_site.py --serve\n```\n\n预览地址为 <http://127.0.0.1:8000>，简体中文位于根目录，英文、繁體中文和俄语分别位于 `en/`、`zh-tw/` 和 `ru/`。生成文件位于 `build/`，详细说明见[网站构建与发布](website/README.md)。\n\n**全书 PDF 与 EPUB**（另需 Pandoc、XeLaTeX 和字体）：\n\n```bash\nbash book/build_pdf.sh                        # 简体中文 → book/AI-Infra-Book.pdf\nbash book-en/build_pdf.sh                     # English → book-en/AI-Infra-Book-EN.pdf\nbash book-zh-tw/build_pdf.sh                  # 繁體中文 → book-zh-tw/AI-Infra-Book-ZH-TW.pdf\npython3 book/build_epub.py --edition zh       # EPUB 只需 Pandoc 与 Poppler；--edition 可选 zh、en、zh-tw、ru\n```\n\n译本配图存于 Git LFS，构建前先下载：`git lfs pull --include=\"book-en/images/**,book-zh-tw/images/**\" --exclude=\"\"`。依赖、字体及单章编译方法见 [PDF 编译说明](book/README.md)。GitHub Actions 会检查 Pull Request 的网站与各语言的 PDF、EPUB 构建；推送到 `main` 后自动发布 Release（四种语言各含 PDF 与 EPUB）并部署四种语言的在线阅读网站。",
+        "readme_intro": "[ ](https://github.com/bojieli/ai-infra-book/actions/workflows/book-site.yml) [ ](LICENSE) [ ](https://github.com/bojieli/ai-infra-book) **简体中文** · [English](book-en/) · [繁體中文](book-zh-tw/) · [Русский — community edition](book-ru/) > [!TIP] > **下载与阅读** · [格式与版本说明](#版本与格式说明) > - **简体中文（原版，作者 [@bojieli](https://github.com/bojieli)）**：[PDF](https://github.com/bojieli/ai-infra-book/releases/latest/download/AI-Infra-Book.pdf) · [EPUB](https://github.com/bojieli/ai-infra-book/releases/latest/download/AI-Infra-Book.epub) · [在线阅读](https://bojieli.github.io/ai-infra-book/) > - **English（社区翻译，[@tg1482](https://github.com/tg1482)）**: [PDF](https://github.com/bojieli/ai-infra-book/releases/latest/download/AI-Infra-Book-EN.pdf) · [EPUB](https://github.com/bojieli/ai-infra-book/releases/latest/download/",
+        "score": 0.4337,
+        "score_parts": {
+          "velocity": 0.3044,
+          "vel_rel": 0.4545,
+          "vel_abs": 0.0792,
+          "hands_on": 0.85,
+          "cross_heat": 0.0,
+          "affinity": 1.0,
+          "days_in_pool": 0
+        },
+        "affinity": 1.0
+      }
+    ],
+    "yesterday": {
+      "repo": "K-Dense-AI/scientific-agent-skills",
+      "delta_stars": 786,
+      "date": ""
+    },
+    "candidates": {
+      "total": 52,
+      "excluded_recent": 18,
+      "fresh": 34,
+      "semantics": "v4",
+      "detail_available": false,
+      "preview": null
+    },
+    "message": "今日主推项目"
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-10-18.json",
+      "report": "data/reports/daily_report_2026-10-18.md",
+      "radar": "data/gh_radar/radar_2026-10-18.json",
+      "playlist": "site/episodes/2026-10-18/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": [
+      "radar_candidate_detail_unavailable"
+    ]
+  }
+}

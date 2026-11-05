@@ -1,0 +1,733 @@
+{
+  "episode_id": "2026-10-18",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年10月18日。 我是苏晴。",
+      "start": 1.0,
+      "duration": 7.793,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。 苏晴，你今天有没有一种被AI行业按在地上摩擦的感觉？就是那种，刚把上一份报告写完，准备发个朋友圈庆祝一下， 结果还没点发送呢，行业又变天了。",
+      "start": 9.242,
+      "duration": 13.646,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "我跟你说，真的有这种感觉。 我昨天才跟同事说，哎呀这个Gemini 3.7 Flash挺好用的，响应又快，价格也便宜， 结果今天早上睁开眼——",
+      "start": 23.385,
+      "duration": 11.905,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "3.8 Flash来了。",
+      "start": 35.743,
+      "duration": 1.567,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "对，3.8 Flash。 而且你知道吗，3.7 Flash是三周前才发的。 三周啊周航，我换个手机壳的周期都比这长。",
+      "start": 37.715,
+      "duration": 8.707,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你注意啊，如果算上更早的那次，这是六周内的第三次Flash迭代。 DeepMind现在这个节奏已经不是\"迭代\"了，这是在迭代的基础上去世六周、然后复活再迭代。",
+      "start": 46.855,
+      "duration": 12.297,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "你这个比喻我服了。但说真的，速度是一方面， 关键是这个3.8 Flash干了一件挺狠的事——它在同等速度和成本的前提下，把软件工程能力、Agent任务表现、多步推理一口气往上拉了一大截。",
+      "start": 59.617,
+      "duration": 16.563,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "这才是重点。 你想啊，以前的逻辑是：你要顶级推理能力？行，去买Pro版，慢一点贵一点你也认了。 但现在Flash系列直接把这个边界给抹平了。",
+      "start": 76.642,
+      "duration": 11.644,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "说白了就是卷到极致之后，\"旗舰\"和\"工作马\"之间的墙塌了。 以前那种\"生产环境就用便宜模型凑合\"的思路，现在越来越站不住脚了。",
+      "start": 88.737,
+      "duration": 11.407,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "而且这次还多了一个Flash Cyber变体，专门面向网络安全场景。 你想想这个布局——通用版做Agent、企业版做代码、Cyber版做安全， DeepMind这是要把Flash做成一条产品线了。",
+      "start": 100.644,
+      "duration": 14.691,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "哎这个我觉得挺有意思的。网络安全这个赛道以前AI想进去挺难的，因为误报率一高就没人敢用。但Flash Cyber如果真能做到又快又准，那对蓝队、对SOC分析师来说真的是解放。",
+      "start": 115.773,
+      "duration": 15.998,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "你别说，我还真想起一个场景。以后安全告警一进来，Flash Cyber三秒钟就给你出一份带处置建议的报告，那值班工程师终于可以睡个好觉了。",
+      "start": 132.232,
+      "duration": 11.208,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "这也太美好了。我做梦都不敢这么画。",
+      "start": 143.885,
+      "duration": 3.701,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "咱们继续往下聊。说完了谷歌，再聊聊NVIDIA。",
+      "start": 148.06,
+      "duration": 3.439,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "对，我正想说这个。NVIDIA这次搞了个DGX Spark 64GB版本，你听这名字——Spark，火花。小巧、桌面级、64GB显存。",
+      "start": 151.926,
+      "duration": 12.863,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "问题来了，为什么这个时候推这个？因为现在云端GPU是真的卡。你去订A100也好、H100也好，排队排到天荒地老。API那边按token计费也越来越贵，做大一点的项目账单看得你血压飙升。",
+      "start": 165.253,
+      "duration": 15.867,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "所以NVIDIA的意思是：兄弟你回来吧，别在云上卷了，自己桌上放一台行不行？",
+      "start": 181.537,
+      "duration": 7.184,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "对，64GB显存意味着什么？意味着你本地能跑7B、13B甚至更大参数的模型，能跑出真正可用的吞吐量，不是那种\"能跑但卡得你怀疑人生\"的状态。",
+      "start": 189.157,
+      "duration": 12.278,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "我跟你说这个事儿特别戳我们这些做内容的人。因为很多公司数据敏感，根本不敢上公有云API。但又馋大模型的能力。以前这种需求要么买私有云方案死贵，要么只能在本地跑个小模型凑合。",
+      "start": 201.852,
+      "duration": 17.565,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "现在DGX Spark 64GB这个形态出来之后，本地推理终于从\"能跑\"变成\"能生产\"了。你注意啊，这个转变其实重写了三件事——隐私、低延迟、成本控制。原来你是三选一或者三选二，现在有可能三者都要还能要得起。",
+      "start": 219.913,
+      "duration": 22.528,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "而且你想想它对独立开发者、小工作室的意义有多大。以前想跑个RAG原型，对不起，先去租卡。租完卡发现数据要上传，又开始纠结合规。 现在桌上一放，断网也能用。",
+      "start": 242.853,
+      "duration": 15.519,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "说得夸张一点， 这可能是2026年下半年本地AI走向主流的一个标志性产品。",
+      "start": 258.851,
+      "duration": 6.269,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "行， 那咱们聊几条快讯，节奏快一点。",
+      "start": 265.552,
+      "duration": 3.57,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "好。 第一条，Apple的ML Research团队发了一篇挺有意思的工作，做code-switching检测的。",
+      "start": 269.59,
+      "duration": 6.879,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "等等，code-switching我知道，就是中英夹杂那种说话方式，\"我今天meet到一半突然被拉去开个会\"。 但这个检测具体是干啥用的？",
+      "start": 276.959,
+      "duration": 9.361,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "简单说就是，他们发现在语音基础模型里有一些\"语言选择性维度\"，可以利用这些维度来判断当前这段语音到底是纯中文、纯英文、还是混着说的。 这事儿为啥重要呢？因为多语种混合的语料本身就少，模型在这种数据上训练效果就差。",
+      "start": 286.797,
+      "duration": 20.743,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "哦我懂了， 相当于给模型加了个\"语言雷达\"，让它在混着说的时候也能正确处理。",
+      "start": 307.958,
+      "duration": 6.792,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "对，差不多是这个意思。 而且Apple做这个，我觉得背后信号挺明确的——他们肯定在为下一代Siri的多语言体验做准备。你想想，如果Siri能更自然地处理中英夹杂、粤普夹杂，那才是真的本土化。",
+      "start": 315.189,
+      "duration": 15.867,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "这个我期待。 说实话现在我跟Siri说话已经很克制了，尽量说完整句子，它都经常听不懂。",
+      "start": 331.468,
+      "duration": 7.445,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "再来看第二条。 Google和联合国搞了个UN System Data Commons，全球统计数据共享平台。",
+      "start": 339.406,
+      "duration": 7.837,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "哈，听起来很官方的名字。 但你说这跟我们普通人有啥关系？",
+      "start": 347.652,
+      "duration": 5.747,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "关系其实不小。 你想啊，联合国下面几十个机构，每个机构都在统计各种数据——人口、GDP、健康、教育、气候。这些数据以前散落在不同的系统里，格式也不统一。",
+      "start": 353.886,
+      "duration": 13.385,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "我搜个数据得跑七八个网站那种感觉。",
+      "start": 367.713,
+      "duration": 4.005,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "对。 现在Google帮它统一成一个更易检索、更易复用的结构。这事儿表面上是给研究员、给政策制定者用的，但你想，AI时代训练数据就是石油，基础设施越规范，下游能跑出来的应用就越多。",
+      "start": 372.178,
+      "duration": 16.738,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "而且这个平台一旦成熟，什么气候变化的科普应用、全球发展指标的对比工具，都会基于它冒出来。",
+      "start": 389.387,
+      "duration": 8.969,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "没错。 第三条短一些，Google官方发了个9月AI更新汇总视频，一条视频把你2026年9月Google的全部AI进展过一遍。",
+      "start": 398.768,
+      "duration": 10.144,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "这个适合谁呢？适合我这种上个月光忙着看热搜、没空逐条追新闻的人。 一杯咖啡的时间集中补课，效率拉满。",
+      "start": 409.357,
+      "duration": 9.97,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "而且Google现在节奏也快了，光靠自己逐条盯确实容易漏。视频这种形式对他们来说也是一种用户教育手段。",
+      "start": 419.782,
+      "duration": 8.751,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "行， 那新闻聊完了，咱们进入今天的项目雷达时间。",
+      "start": 428.973,
+      "duration": 4.136,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "来了来了，今天这个项目有点意思。 仓库叫deeplethe/utopia。",
+      "start": 433.587,
+      "duration": 6.313,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "这名字起得挺有意思，utopia，乌托邦。副标题更炸——\"World's first open-source enterprise world model\"，全球首个开源企业级世界模型。",
+      "start": 440.381,
+      "duration": 15.257,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "你注意啊，关键词是\"企业级世界模型\"。之前开源社区里小模型、对话模型、Agent框架一堆，但敢说自己是\"世界模型\"的，而且还要面向企业级场景的，几乎是空白。",
+      "start": 456.064,
+      "duration": 13.385,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "所以这个仓库首日就有8409颗星，我觉得是合理的。先发优势+品牌占位，这波红利窗口打开了。",
+      "start": 469.919,
+      "duration": 8.446,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "许可证Apache-2.0，语言用的是Rust。Rust这一点其实加分不少，企业级部署、性能敏感的场景，Rust的吸引力不用多说。",
+      "start": 478.826,
+      "duration": 11.276,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "而且官方直接提供了linux/amd64和linux/arm64的预构建Docker镜像，开箱即用。支持本地、x86-64、Apple Silicon还有AWS Graviton，这个覆盖面相当全。",
+      "start": 490.558,
+      "duration": 18.479,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "咱们来说怎么跑起来。我把命令念一下，听众朋友可以照着敲——第一行git clone https://github.com/deeplethe/utopia.git，第二行cd utopia，第三行docker compose --profile app up -d。",
+      "start": 509.503,
+      "duration": 16.694,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "启动之后访问http://localhost:1516注册就行。这里有个小细节：第一个注册的账号自动成为管理员，而且系统会同时创建一个面向所有人的公开知识库。",
+      "start": 526.63,
+      "duration": 16.955,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "这个设计挺巧妙的，一上来就有内容，不是一个空架子等你填。但你要接自己公司的业务文档，得先去Administration → Models里配置chat模型和embedding模型的端点。",
+      "start": 543.992,
+      "duration": 12.166,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "那听众朋友如果fork下来想做点差异化，怎么搞？",
+      "start": 556.628,
+      "duration": 4.876,
+      "audios": {
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "两个方向我都挺看好。第一个就是围绕Administration → Models接入你自己的chat和embedding端点，把默认那个公开知识库换成你们行业的垂直语料，瞬间就变成一个行业世界模型。第二个稍微偏运维一些——改.env里的UTOPIA_DB_PASSWORD，然后跑一句docker compose exec db psql -U utopia -c \"ALTER USER utopia PASSWORD ''\"同步修改运行中实例的口令，适配企业内网的合规和多租户部署。",
+      "start": 561.905,
+      "duration": 35.149,
+      "audios": {
+        "professional": "chunk_050_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "我觉得第二个改动特别实用，很多公司第一步就是把默认密码改掉，能直接交差。",
+      "start": 597.465,
+      "duration": 7.445,
+      "audios": {
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "对，而且Apache-2.0加上这种部署友好度，企业拿来私有化部署的门槛很低。",
+      "start": 605.402,
+      "duration": 6.618,
+      "audios": {
+        "professional": "chunk_052_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "行，那今天的内容差不多就这些。 总结一下今天的关键词：六周一代、Flash Cyber、本地AI回归桌面、Apple的多语言雷达、联合国数据基础设施、还有一个8400多星的开源世界模型。",
+      "start": 612.471,
+      "duration": 18.261,
+      "audios": {
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "苏晴这个总结挺到位的。 听众朋友如果对哪个话题想深聊，欢迎在评论区或者私信告诉我们，咱们下期接着扒。",
+      "start": 631.222,
+      "duration": 8.533,
+      "audios": {
+        "professional": "chunk_054_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "好，感谢大家收听AI每日先锋，咱们明天见。",
+      "start": 640.255,
+      "duration": 4.484,
+      "audios": {
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "明天见。",
+      "start": 645.224,
+      "duration": 0.653,
+      "audios": {
+        "professional": "chunk_056_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}

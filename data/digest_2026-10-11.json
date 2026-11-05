@@ -1,0 +1,1094 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-11",
+  "date_label": "2026年10月11日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": true
+  },
+  "podcast": {
+    "title": "AI 新闻快报 | 2026-10-11",
+    "subtitle": "今天的AI领域，字节找到了DeepSeek时强...正在重塑行业格局",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-11.mp3",
+    "duration_seconds": 633.446,
+    "duration_label": "10:33",
+    "speech_seconds": 609.955,
+    "segment_count": 51,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 51,
+      "segments_url": "episodes/2026-10-11/playlist.json",
+      "text_url": "episodes/2026-10-11.txt"
+    }
+  },
+  "lead": {
+    "text": "今日科技圈的主线，是大模型从\"参数规模竞赛\"迈向\"可控性与落地深水区\"的关键拐点。字节跳动对 DeepSeek 输出波动机制的底层解构、Kimi 开源多模态 Agent 模型 K2.5 的重磅发布，以及 DeepMind 手语 AI 与 Google Search 在垂直场景的纵深落地，共同勾勒出 AI 产业从\"通用能力\"向\"垂直可用性\"全面迁移的新图景。",
+    "source": "report_lead",
+    "source_file": "data/reports/daily_report_2026-10-11.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 60,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 20,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 51,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 15,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "听众朋友大家好，欢迎收听…",
+      "start": 1.0,
+      "label": "00:01",
+      "source": "cue_heuristic"
+    },
+    {
+      "title": "新闻说完了，接下来进入今…",
+      "start": 413.872,
+      "label": "06:54",
+      "source": "cue_heuristic"
+    }
+  ],
+  "report": {
+    "title": "✨ 科技新闻日报 | 2026年10月11日",
+    "char_count": 3012,
+    "reading_minutes": 8,
+    "lead": "今日科技圈的主线，是大模型从\"参数规模竞赛\"迈向\"可控性与落地深水区\"的关键拐点。字节跳动对 DeepSeek 输出波动机制的底层解构、Kimi 开源多模态 Agent 模型 K2.5 的重磅发布，以及 DeepMind 手语 AI 与 Google Search 在垂直场景的纵深落地，共同勾勒出 AI 产业从\"通用能力\"向\"垂直可用性\"全面迁移的新图景。",
+    "deep_dives": [
+      {
+        "heading": "一、字节跳动破解 DeepSeek 谜团：Token 站位决定模型输出稳定性",
+        "background": "自 DeepSeek 问世以来，其在长文本推理、数学证明与代码生成场景中表现惊艳，但在面对某些看似简单的提问时却频繁翻车，\"时强时弱\"的玄学表现令整个技术社区困惑不已。字节跳动团队近日发表的研究，从底层 Transformer 的注意力分布与 Token 上下文占位机制切入，首次系统性地揭示了这一现象的根因。",
+        "breakthrough": "研究发现，DeepSeek 类推理模型对输入 Token 的位置极其敏感。当关键信息 Token 落在注意力窗口的\"高熵边缘区域\"或与系统提示产生语义偏移时，模型会触发内部的\"推理分流\"机制，导致输出路径在多条解空间间随机跳跃，宏观上表现为能力不稳定。字节团队提出了一套 Token 站位优化框架（Token Positioning Optimization），通过对输入序列的重排与前缀工程的工程化封装，可显著提升 DeepSeek 及其衍生模型在企业级场景中的输出一致性。",
+        "impact": "这一发现的真正价值不在于\"调教\"某一家模型，而在于它撕开了黑盒推理模型的最后一层窗户纸——大模型的不可控性并非玄学，而是可被工程化治理的系统性问题。对于将 LLM 接入生产环境的金融、医疗、法律客户而言，这意味着从\"Prompt 调优\"向\"输入架构工程\"的范式转移正在到来。可以预见，Token 站位工程将成为 RAG、Agent Workflow 设计中的标准模块，并催生一个全新的\"大模型输入工程\"细分赛道。",
+        "raw_sections": []
+      },
+      {
+        "heading": "二、Kimi K2.5：开源多模态 Agent 模型的\"全栈出击\"",
+        "background": "在 OpenAI、Anthropic 持续巩固闭源壁垒的背景下，中国大模型阵营的差异化突围路径日益清晰。月之暗面（Moonshot AI）于今日发布 Kimi K2.5，定位为\"开源多模态 Agentic Intelligence\"模型，标志着中国力量正式从\"对话能力对标\"升级为\"Agent 生态体系对标\"。",
+        "breakthrough": "K2.5 并非简单的多模态升级版。其论文揭示了三大架构创新：其一，统一视觉-语言 Agent 接口，将屏幕理解、GUI 操作、工具调用统一到同一套动作空间；其二，长程任务记忆机制，支撑其在跨数十步的复杂工作流中保持目标一致性；其三，开放权重 + 开放工具链，完全开源的训练 Recipe、推理框架与 Agent SDK。这是国内首个真正意义上的\"Agent-Native\"基座模型。",
+        "impact": "K2.5 的发布冲击的不仅是模型层，更是 AI 应用的\"操作系统层\"。过去一年，Agent 应用受制于上游模型的封闭协议与高昂 API 成本，开发者只能在巨头划定的花园里种菜。K2.5 的开源 Agent 基座，将使得独立开发者与中小企业的复杂 Agent 应用真正具备脱离大厂生态自循环的能力。从更宏观的视角看，这是中美 AI 竞争从\"算力与参数\"向\"Agent 生态主权\"延伸的标志性事件——基座模型的开源与否，将直接决定未来十年 AI 应用层的全球分工格局。",
+        "raw_sections": []
+      }
+    ],
+    "frontier": [
+      {
+        "title": "DeepMind 发布 SL2T 手语转文本模型",
+        "summary": "Google DeepMind 推出突破性的手语-文本转换模型 SL2T，并已在 Google Meet 与 Live Transcribe 中面向听障用户落地。该模型融合了骨骼关键点检测、视频时序建模与语境感知纠错三大模块，首次将美式手语（ASL）识别错误率压至个位数百分比区间。它不仅是技术突破，更是无障碍科技从\"能不能用\"迈向\"愿不愿用\"的关键一步。"
+      },
+      {
+        "title": "Google Search 集成 Gemini 推出\"赛事备战三件套\"",
+        "summary": "Google 将 Gemini 的多模态推理能力深度嵌入 Search，为马拉松、骑行等耐力运动选手提供训练计划生成、补给策略推演与实时配速建议。这是搜索引擎从\"信息检索\"向\"个性化决策代理\"演进的最新切片，也预示着 AI 助手正在抢占传统垂直应用（运动、营养、医疗咨询）的入口腹地。"
+      },
+      {
+        "title": "MOONSHOT 框架：多目标剪枝让视觉与语言模型\"瘦身不减质\"",
+        "summary": "Kimi 与 arXiv 联合发布的多目标剪枝框架 MOONSHOT，支持在模型压缩过程中同时权衡延迟、显存、能耗与精度损失。它的工程意义在于：企业部署大模型时首次拥有了\"可定制化的瘦身处方\"，而非只能选择厂商提供的固定蒸馏版本。这将极大降低垂直行业部署 LLaVA、Qwen-VL 等多模态模型的硬件门槛。"
+      }
+    ],
+    "editor_verdict": "今日的五条新闻，表面上是五个孤立的技术节点，背后却共同指向一个深层趋势——**AI 产业正从\"能力炫技\"全面转向\"工程化与场景化\"的下半场**。字节对 DeepSeek 稳定性的解构、Kimi 的 Agent-Native 开源、DeepMind 的无障碍落地、Google 的搜索决策化、MOONSHOT 的部署民主化，无一不在回答同一个问题：当模型的\"聪明\"已经成为标配，**真正的竞争壁垒开始向\"可控性、可用性与可负担性\"转移**。可以预见，未来 12-18 个月，全球科技巨头之间的较量重心，将从谁发布更强的旗舰模型，转向谁能在企业级部署、长尾场景覆盖与开发者生态构建上抢占制高点。而在这一轮新的竞赛中，**中国阵营凭借开源 Agent 基座与应用层的纵深积累，正在悄然改写全球 AI 竞争的底层规则**。",
+    "toc": [
+      {
+        "anchor": "deep-dive-1",
+        "title": "一、字节跳动破解 DeepSeek 谜团：Token 站位决定模型输出稳定性"
+      },
+      {
+        "anchor": "deep-dive-2",
+        "title": "二、Kimi K2.5：开源多模态 Agent 模型的\"全栈出击\""
+      }
+    ],
+    "raw_paragraphs": [],
+    "source_file": "data/reports/daily_report_2026-10-11.md"
+  },
+  "sources": {
+    "total_all": 60,
+    "total_main": 20,
+    "shown": 60,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "count": 26
+      },
+      {
+        "publisher": "arXiv 论文",
+        "group": "arXiv 论文",
+        "count": 25
+      },
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 5
+      },
+      {
+        "publisher": "Google",
+        "group": "Google",
+        "count": 3
+      },
+      {
+        "publisher": "OpenAI",
+        "group": "OpenAI",
+        "count": 1
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "字节找到了DeepSeek时强时弱的原因",
+        "summary": "答不答得对，得看Token站位",
+        "link": "https://www.qbitai.com/2026/10/502364.html",
+        "published_at": "2026-10-09T07:11:55+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "DeepMind Blog",
+        "group": "Google",
+        "source_name": "DeepMind Blog",
+        "category": "official",
+        "title": "Putting sign language AI into users’ hands",
+        "summary": "Introducing sign-language-to-text (SL2T), our breakthrough model powering new sign language features for Deaf and hard of hearing users.",
+        "link": "https://deepmind.google/blog/putting-sign-language-ai-into-users-hands/",
+        "published_at": "2026-08-12T14:01:59+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Google AI Blog",
+        "group": "Google",
+        "source_name": "Google AI Blog",
+        "category": "official",
+        "title": "3 ways to prep for your next big race with Search",
+        "summary": "Illustration on a blue background of technicolor runners with a magnifying glass and Gemini spark overlaid",
+        "link": "https://blog.google/products-and-platforms/products/search/running-race-training-tips/",
+        "published_at": "2026-09-10T16:00:00+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · Kimi",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Kimi",
+        "category": "research",
+        "title": "MOONSHOT : A Framework for Multi-Objective Pruning of Vision and Large Language Models",
+        "summary": "Weight pruning is a common technique for compressing large neural networks. We focus on the challenging post-training one-shot setting, where a pre-trained model is compressed without any retraining. Existing one-shot pruning methods typica",
+        "link": "https://arxiv.org/abs/2604.13287v2",
+        "published_at": "2026-04-14T20:31:23+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · Kimi",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Kimi",
+        "category": "research",
+        "title": "Kimi K2.5: Visual Agentic Intelligence",
+        "summary": "We introduce Kimi K2.5, an open-source multimodal agentic model designed to advance general agentic intelligence. K2.5 emphasizes the joint optimization of text and vision so that two modalities enhance each other. This includes a series of",
+        "link": "https://arxiv.org/abs/2602.02276v2",
+        "published_at": "2026-02-02T16:17:38+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "Atlassian and OpenAI expand partnership to turn enterprise knowledge into action",
+        "summary": "Atlassian and OpenAI are expanding their partnership to connect frontier models with enterprise knowledge and help teams plan, build, and deliver work.",
+        "link": "https://openai.com/index/atlassian-partnership",
+        "published_at": "2026-10-06T16:00:00+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "DeepMind Blog",
+        "group": "Google",
+        "source_name": "DeepMind Blog",
+        "category": "official",
+        "title": "Introducing Gemini 3.7 Flash",
+        "summary": "",
+        "link": "https://deepmind.google/blog/introducing-gemini-3-7-flash/",
+        "published_at": "2026-08-13T17:04:18+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · Kimi",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Kimi",
+        "category": "research",
+        "title": "The muon Moonshot: Moon subsurface tomography with upward-going muons",
+        "summary": "We propose a novel muon Moonshot concept for lunar subsurface tomography based on upward-going muons originated from the lunar regolith. Unlike the Earth, the Moon lacks an atmosphere, leaving a dense regolith below and a near-vacuum enviro",
+        "link": "https://arxiv.org/abs/2607.10403v2",
+        "published_at": "2026-07-11T17:04:32+00:00"
+      },
+      {
+        "rank": 9,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · Kimi",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Kimi",
+        "category": "research",
+        "title": "MOSAIC-Bench: Measuring Compositional Vulnerability Induction in Coding Agents",
+        "summary": "Coding agents often pass per-prompt safety review yet ship exploitable code when their tasks are decomposed into routine engineering tickets. The challenge is structural: existing safety alignment evaluates overt requests in isolation, leav",
+        "link": "https://arxiv.org/abs/2605.03952v2",
+        "published_at": "2026-05-05T16:38:23+00:00"
+      },
+      {
+        "rank": 10,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · Kimi",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Kimi",
+        "category": "research",
+        "title": "Verbal tics in frontier language models: A critical review of current releases, research evidence, and public discussion",
+        "summary": "Repeated praise, canned reassurance, familiar contrasts, and conspicuous vocabulary are recurring subjects in discussions of large language models. Their interpretation depends on context: a conventional phrase may be useful, while a fluent",
+        "link": "https://arxiv.org/abs/2604.19139v4",
+        "published_at": "2026-04-21T06:43:01+00:00"
+      },
+      {
+        "rank": 11,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · Kimi",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Kimi",
+        "category": "research",
+        "title": "Narrative over Numbers: The Identifiable Victim Effect and its Amplification Under Alignment and Reasoning in Large Language Models",
+        "summary": "The Identifiable Victim Effect (IVE) $-$ the tendency to allocate greater resources to a specific, narratively described victim than to a statistically characterized group facing equivalent hardship $-$ is one of the most robust findings in",
+        "link": "https://arxiv.org/abs/2604.12076v1",
+        "published_at": "2026-04-13T21:29:46+00:00"
+      },
+      {
+        "rank": 12,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · Kimi",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Kimi",
+        "category": "research",
+        "title": "An Independent Safety Evaluation of Kimi K2.5",
+        "summary": "Kimi K2.5 is an open-weight LLM that rivals closed models across coding, multimodal, and agentic benchmarks, but was released without an accompanying safety evaluation. In this work, we conduct a preliminary safety assessment of Kimi K2.5 f",
+        "link": "https://arxiv.org/abs/2604.03121v1",
+        "published_at": "2026-04-03T15:45:35+00:00"
+      },
+      {
+        "rank": 13,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · MiniMax",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · MiniMax",
+        "category": "research",
+        "title": "Sharp Minimax Gram-Determinant Asymptotics for Labelled Unit Decompositions of the Identity",
+        "summary": "We show that González Merino and Schymura's Conjecture 4.8, a sufficient condition for Makai's reverse isodiametric conjecture, fails in all sufficiently large dimensions. Its three-dimensional case follows from Aliev's proof. Pełczyński an",
+        "link": "https://arxiv.org/abs/2610.10979v1",
+        "published_at": "2026-10-07T23:06:56+00:00"
+      },
+      {
+        "rank": 14,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · MiniMax",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · MiniMax",
+        "category": "research",
+        "title": "Learning Sparse Support under Differential Privacy: Adaptive Algorithms and Minimax Limits",
+        "summary": "We study exact support recovery under $(ε,δ)$-differential privacy in sparse high-dimensional linear regression. We introduce Saturated Propose-test-release, a general mechanism that privately releases the output of a discrete selector with",
+        "link": "https://arxiv.org/abs/2610.05867v1",
+        "published_at": "2026-10-05T06:32:18+00:00"
+      },
+      {
+        "rank": 15,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · Anthropic/Claude",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Anthropic/Claude",
+        "category": "research",
+        "title": "Harness Tokenomics: A Router for the Enterprise Agentic Control Plane",
+        "summary": "Harnesses, the products that run AI coding agents, are multiplying, and enterprises are rolling them out to their employees. What started as pilots with a few hundred seats is now scaling to tens of thousands. Enterprises rarely build these",
+        "link": "https://arxiv.org/abs/2609.28919v2",
+        "published_at": "2026-09-24T02:00:20+00:00"
+      },
+      {
+        "rank": 16,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv · 智谱 GLM",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 智谱 GLM",
+        "category": "research",
+        "title": "How Narrative Wrapping Affects LLM Refusal: A Cross-Language Benchmark and Defense",
+        "summary": "Safety-aligned language models often refuse a harmful request stated directly but answer the same request inside a role-play or narrative wrapper. We measure this vulnerability across languages and registers: attack success on Qwen3-1.7B is",
+        "link": "https://arxiv.org/abs/2610.11005v1",
+        "published_at": "2026-10-07T23:40:25+00:00"
+      },
+      {
+        "rank": 17,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Apple discloses deal to hire team and license tech from personalized podcast startup Huxe",
+        "summary": "Is Apple hoping to get into the AI-generated podcast business?",
+        "link": "https://techcrunch.com/2026/10/10/apple-discloses-deal-to-hire-team-and-license-tech-from-personalized-podcast-startup-huxe/",
+        "published_at": "2026-10-10T19:50:00+00:00"
+      },
+      {
+        "rank": 18,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Talorys – A self-hosted personal AI agent on Cloudflare's free tier",
+        "summary": "HN 热门讨论（208 points, 106 评论）by rociiu",
+        "link": "https://github.com/rociiu/talorys",
+        "published_at": "2026-10-10T10:52:09+00:00"
+      },
+      {
+        "rank": 19,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Vibe coded browser ports of Halo, The Simpsons: Hit And Run, GTA work well",
+        "summary": "HN 热门讨论（69 points, 60 评论）by astlouis44",
+        "link": "https://kotaku.com/we-might-be-cooked-as-these-vibe-coded-web-browser-ports-of-halo-the-simpsons-hit-and-run-and-gta-vice-city-seem-to-work-perfectly-2000743300",
+        "published_at": "2026-10-10T18:11:58+00:00"
+      },
+      {
+        "rank": 20,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Recent AI models struggled to match a human algorithmic innovation",
+        "summary": "HN 热门讨论（26 points, 22 评论）by merksittich",
+        "link": "https://epoch.ai/publications/innovationeval",
+        "published_at": "2026-10-09T22:14:40+00:00"
+      },
+      {
+        "rank": 21,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · Kimi",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Kimi",
+        "category": "research",
+        "title": "Kimi K3: Open Frontier Intelligence",
+        "summary": "We introduce Kimi K3, a 2.8T parameter Mixture-of-Experts model with 104 billion activated parameters, native vision capabilities, and a 1-million-token context window. Kimi K3 is built on Kimi Delta Attention and Attention Residuals, which",
+        "link": "https://arxiv.org/abs/2607.24653v2",
+        "published_at": "2026-07-27T16:49:54+00:00"
+      },
+      {
+        "rank": 22,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · Kimi",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Kimi",
+        "category": "research",
+        "title": "TENT: A Declarative Slice Spraying Engine for Performant and Resilient Data Movement in Disaggregated LLM Serving",
+        "summary": "Modern GPU clusters rely on complex, heterogeneous interconnects. As large language model (LLM) serving shifts toward agentic reasoning, KVCache becomes a first-class mobile asset, driving frequent migrations and massive elephant flows that",
+        "link": "https://arxiv.org/abs/2604.00368v2",
+        "published_at": "2026-04-01T01:29:03+00:00"
+      },
+      {
+        "rank": 23,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "特斯拉FSD，在欧洲被打回原形",
+        "summary": "马斯克反而发文道谢？",
+        "link": "https://www.qbitai.com/2026/10/502467.html",
+        "published_at": "2026-10-10T06:59:02+00:00"
+      },
+      {
+        "rank": 24,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · Kimi",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Kimi",
+        "category": "research",
+        "title": "Complex KDA: Understanding and Enhancing the Expressivity of Kimi Delta Attention",
+        "summary": "Linear RNNs based on the delta-rule enable efficient sequence modeling, but their linear updates with a low-rank correction constrain their expressivity. Prior work has shown that composing two delta-rule transitions in a single recurrent u",
+        "link": "https://arxiv.org/abs/2609.24797v1",
+        "published_at": "2026-09-21T15:56:04+00:00"
+      },
+      {
+        "rank": 25,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · MiniMax",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · MiniMax",
+        "category": "research",
+        "title": "Minimax solutions for FitzHugh-Nagumo systems with critical exponential growth",
+        "summary": "We study a class of FitzHugh-Nagumo type systems with critical exponential growth in a smooth bounded domain of $\\mathbb{R}^{2}$. The classical reduction method turns the strongly indefinite system into a scalar nonlocal problem whose quadr",
+        "link": "https://arxiv.org/abs/2610.07411v1",
+        "published_at": "2026-10-05T21:20:00+00:00"
+      },
+      {
+        "rank": 26,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · MiniMax",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · MiniMax",
+        "category": "research",
+        "title": "Dynamic Minimax Regret Optimization for Robust LLM Post-Training",
+        "summary": "Modern LLM training increasingly relies on heterogeneous data sources spanning different domains, tasks, preference distributions, and difficulty levels. We study dynamic minimax regret for group-distributionally robust LLM post-training un",
+        "link": "https://arxiv.org/abs/2610.06329v1",
+        "published_at": "2026-10-05T13:39:26+00:00"
+      },
+      {
+        "rank": 27,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Anthropic can’t reliably control its AI agents. It’s cutting off its internal evals from the live internet instead",
+        "summary": "Anthropic said it \"turned off live internet access\" for \"all our internal evaluations\" until further notice.",
+        "link": "https://techcrunch.com/2026/10/09/anthropic-cant-reliably-control-its-ai-agents-its-cutting-off-its-internal-evals-from-the-live-internet-instead/",
+        "published_at": "2026-10-10T00:18:32+00:00"
+      },
+      {
+        "rank": 28,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "2D Vehicles",
+        "summary": "HN 热门讨论（152 points, 36 评论）by Michelangelo11",
+        "link": "https://patkerr.co.uk/2d-vehicles/",
+        "published_at": "2026-10-07T12:30:40+00:00"
+      },
+      {
+        "rank": 29,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Knuth reward check",
+        "summary": "HN 热门讨论（102 points, 36 评论）by Curiositry",
+        "link": "https://www.thomas-huehn.com/knuth-reward-check/",
+        "published_at": "2026-10-10T15:47:01+00:00"
+      },
+      {
+        "rank": 30,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Takeshi's Castle",
+        "summary": "HN 热门讨论（37 points, 19 评论）by tosh",
+        "link": "https://en.wikipedia.org/wiki/Takeshi%27s_Castle",
+        "published_at": "2026-10-10T19:12:55+00:00"
+      },
+      {
+        "rank": 31,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · Kimi",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Kimi",
+        "category": "research",
+        "title": "Optimizing Social Utility in Sequential Experiments",
+        "summary": "Regulatory approval of products in high-stakes domains such as drug development requires statistical evidence of safety and efficacy through large-scale randomized controlled trials. However, the high financial cost of these trials may dete",
+        "link": "https://arxiv.org/abs/2605.06520v1",
+        "published_at": "2026-05-07T16:28:25+00:00"
+      },
+      {
+        "rank": 32,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · MiniMax",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · MiniMax",
+        "category": "research",
+        "title": "Minimax and Adaptive Transfer Learning for Sparse Canonical Correlation Analysis",
+        "summary": "We develop a transfer learning framework for high-dimensional sparse canonical correlation analysis (CCA) with multiple heterogeneous source datasets. Our goal is to improve estimation of the target canonical coefficient matrices by borrowi",
+        "link": "https://arxiv.org/abs/2610.05735v1",
+        "published_at": "2026-10-05T03:34:57+00:00"
+      },
+      {
+        "rank": 33,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv · MiniMax",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · MiniMax",
+        "category": "research",
+        "title": "Minimax Quantum State Tomography in a Known Trace-Distance Ball",
+        "summary": "We study quantum state tomography when the unknown state lies in a trace-distance ball of radius $R$ around a known reference state $ρ$. For arbitrary collective measurements, we determine the minimax expected risk and confidence radius up ",
+        "link": "https://arxiv.org/abs/2610.05374v1",
+        "published_at": "2026-10-04T17:06:13+00:00"
+      },
+      {
+        "rank": 34,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Telegram Desktop vulnerability allowed any user's file to be stolen",
+        "summary": "HN 热门讨论（368 points, 202 评论）by g-b-r",
+        "link": "https://beaksec.github.io/posts/telegram-desktop-one-click-account-takeover/",
+        "published_at": "2026-10-10T03:02:47+00:00"
+      },
+      {
+        "rank": 35,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Bitwarden Dual License Model",
+        "summary": "HN 热门讨论（290 points, 217 评论）by Cider9986",
+        "link": "https://community.bitwarden.com/t/published-version-update-in-app-stores/102750",
+        "published_at": "2026-10-10T14:32:50+00:00"
+      },
+      {
+        "rank": 36,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Grieving the loss of details",
+        "summary": "HN 热门讨论（245 points, 195 评论）by signa11",
+        "link": "https://purplesyringa.moe/blog/grieving-the-loss-of-details/",
+        "published_at": "2026-10-06T16:37:21+00:00"
+      },
+      {
+        "rank": 37,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Chernobyl particles reveal unexpectedly stable nuclear fuel after 40 years",
+        "summary": "HN 热门讨论（108 points, 38 评论）by geox",
+        "link": "https://phys.org/news/2026-10-chernobyl-particles-reveal-unexpectedly-stable.html",
+        "published_at": "2026-10-07T01:44:59+00:00"
+      },
+      {
+        "rank": 38,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "PVX-001: open-source Covid-19 vaccine starts Phase 1 trial",
+        "summary": "HN 热门讨论（95 points, 17 评论）by jajoosam",
+        "link": "https://chronicles.popvax.com/p/popvax-goes-clinical",
+        "published_at": "2026-10-10T15:10:24+00:00"
+      },
+      {
+        "rank": 39,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Rampart: Browser native on-device PII radaction",
+        "summary": "HN 热门讨论（54 points, 21 评论）by nateb2022",
+        "link": "https://ndstudio.gov/posts/say-hello-to-rampart",
+        "published_at": "2026-10-09T17:52:07+00:00"
+      },
+      {
+        "rank": 40,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Whooping Cranes Learned to Migrate by Following Costumed Pilots",
+        "summary": "HN 热门讨论（40 points, 5 评论）by kgolubic",
+        "link": "https://theverifiedpost.com/article/whooping-cranes-ultralight-costumed-pilots-operation-migration",
+        "published_at": "2026-10-09T06:21:36+00:00"
+      },
+      {
+        "rank": 41,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Unikernels were hard. key word: were",
+        "summary": "HN 热门讨论（36 points, 14 评论）by ghuntley",
+        "link": "https://ghuntley.com/unikernels/",
+        "published_at": "2026-10-10T14:27:09+00:00"
+      },
+      {
+        "rank": 42,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "How strong is the strong interaction?",
+        "summary": "HN 热门讨论（29 points, 4 评论）by EA-3167",
+        "link": "https://cerncourier.com/how-strong-is-the-strong-interaction/",
+        "published_at": "2026-10-10T00:13:16+00:00"
+      },
+      {
+        "rank": 43,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "少数派",
+        "group": "科技媒体",
+        "source_name": "少数派",
+        "category": "tools",
+        "title": "App+1｜专注星空：让「少刷手机」这件事更愉悦一点",
+        "summary": "把决定使用时长的时机，放到每次打开应用之前。 查看全文",
+        "link": "https://sspai.com/post/115237",
+        "published_at": "2026-10-10T02:19:52+00:00"
+      },
+      {
+        "rank": 44,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "REA Reverse – Engineer Anything",
+        "summary": "HN 热门讨论（641 points, 273 评论）by modinfo",
+        "link": "https://rea.tools/",
+        "published_at": "2026-10-10T00:37:07+00:00"
+      },
+      {
+        "rank": 45,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Nvidia in talks to acquire US 'open' model startup Reflection AI",
+        "summary": "HN 热门讨论（64 points, 40 评论）by arkj",
+        "link": "https://www.ft.com/content/052610c5-22b4-4dd4-932e-b7f9f0628b6a",
+        "published_at": "2026-10-10T18:48:35+00:00"
+      },
+      {
+        "rank": 46,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · DeepSeek",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · DeepSeek",
+        "category": "research",
+        "title": "QuSema: Detecting Silent Bugs in Quantum Libraries via Quantum-knowledge-enhanced Agents",
+        "summary": "Quantum libraries are now critical infrastructure for quantum algorithm development, yet their correctness remains difficult to test. Existing testing techniques mainly rely on failure-based or comparison-based oracles, exposing bugs only w",
+        "link": "https://arxiv.org/abs/2610.10258v1",
+        "published_at": "2026-10-07T15:33:38+00:00"
+      },
+      {
+        "rank": 47,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "VFold: Symmetry-Aware Cross-Layer Value Cache Compression",
+        "summary": "While caching key-value (KV) states accelerates Large Language Model (LLM) decoding, this cache can dominate memory usage at long context lengths. One solution is to compress this memory by exploiting inter-layer cache similarities. However",
+        "link": "https://arxiv.org/abs/2610.12338v1",
+        "published_at": "2026-10-08T17:14:28+00:00"
+      },
+      {
+        "rank": 48,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "`123456' password used in Danish CPR data breach",
+        "summary": "HN 热门讨论（356 points, 183 评论）by baal80spam",
+        "link": "https://cphpost.dk/2026-10-10/news/round-up/123456-password-used-in-massive-danish-cpr-data-breach/",
+        "published_at": "2026-10-10T09:51:49+00:00"
+      },
+      {
+        "rank": 49,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Apple/macOS removed from official Unix registry",
+        "summary": "HN 热门讨论（196 points, 187 评论）by john_alan",
+        "link": "https://www.opengroup.org//openbrand/register/",
+        "published_at": "2026-10-10T10:57:31+00:00"
+      },
+      {
+        "rank": 50,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Can you use autoregressive diffusion to generate market data?",
+        "summary": "HN 热门讨论（170 points, 53 评论）by jsomers",
+        "link": "https://blog.janestreet.com/can-you-use-autoregressive-diffusion-to-generate-market-data/",
+        "published_at": "2026-10-09T14:56:13+00:00"
+      },
+      {
+        "rank": 51,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "I would like the value of my home to rise, while my property taxes fall",
+        "summary": "HN 热门讨论（161 points, 366 评论）by colinprince",
+        "link": "https://conversableeconomist.com/2026/09/28/i-would-like-the-value-of-my-home-to-rise-while-my-property-taxes-fall/",
+        "published_at": "2026-10-10T13:29:03+00:00"
+      },
+      {
+        "rank": 52,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Noto means \"no tofu\": fixing dotted circles in Myanmar text",
+        "summary": "HN 热门讨论（50 points, 29 评论）by steffoz",
+        "link": "https://www.datocms.com/blog/handling-less-common-scripts",
+        "published_at": "2026-10-06T17:24:17+00:00"
+      },
+      {
+        "rank": 53,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Nix wrote half of my debugger",
+        "summary": "HN 热门讨论（21 points, 1 评论）by ingve",
+        "link": "https://fzakaria.com/2026/10/07/nix-wrote-half-of-my-debugger",
+        "published_at": "2026-10-09T07:29:08+00:00"
+      },
+      {
+        "rank": 54,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · Kimi",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Kimi",
+        "category": "research",
+        "title": "Awakening: Modern Challenges and Opportunities of Software Engineering Research",
+        "summary": "Software engineering research benefited for decades from openly available tools, accessible systems, and problems that could be studied at modest scale. Today, many of the most relevant software systems are large, proprietary, and embedded ",
+        "link": "https://arxiv.org/abs/2603.21403v1",
+        "published_at": "2026-03-22T21:09:15+00:00"
+      },
+      {
+        "rank": 55,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · Mistral/Meta",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Mistral/Meta",
+        "category": "research",
+        "title": "Monte Carlo Estimation for KV Cache Eviction",
+        "summary": "Most KV-cache eviction methods ask, in effect, which memory appeared important while reading the prompt? We instead ask, which memory will matter while answering? Since decoding queries are unavailable at eviction time, prior future-aware m",
+        "link": "https://arxiv.org/abs/2610.07643v1",
+        "published_at": "2026-10-06T02:36:50+00:00"
+      },
+      {
+        "rank": 56,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · Mistral/Meta",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Mistral/Meta",
+        "category": "research",
+        "title": "WakeKV: Reactive, Reversible KV Residency for Heads That Change Their Minds",
+        "summary": "Most KV-cache compression methods classify attention heads once, either offline or during prefill, and keep this classification fixed throughout generation. Across three models (1.5B-8B) and three regimes (needle retrieval, long chain-of-th",
+        "link": "https://arxiv.org/abs/2610.02713v1",
+        "published_at": "2026-10-02T02:48:25+00:00"
+      },
+      {
+        "rank": 57,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "LeWAM: A JEPA World Action Model with Diffusion-Steering-Based MPC",
+        "summary": "World action models (WAMs) predict actions and future observations, typically from a reconstruction-based representation that carries noisy, redundant information which can complicate downstream predictions. We introduce LeWAM, a bidirectio",
+        "link": "https://arxiv.org/abs/2610.12407v1",
+        "published_at": "2026-10-08T17:46:03+00:00"
+      },
+      {
+        "rank": 58,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Eye of Sauron: Long-Range Hidden Spy Camera Detection (2024)",
+        "summary": "HN 热门讨论（282 points, 65 评论）by ortusdux",
+        "link": "https://www.usenix.org/conference/usenixsecurity24/presentation/zhang-qibo",
+        "published_at": "2026-10-07T19:15:57+00:00"
+      },
+      {
+        "rank": 59,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "OpenSCAD the Programmers Solid 3D CAD Modeller",
+        "summary": "HN 热门讨论（52 points, 48 评论）by b-man",
+        "link": "https://openscad.org/",
+        "published_at": "2026-10-06T21:22:44+00:00"
+      },
+      {
+        "rank": 60,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "How Protein Took over the World",
+        "summary": "HN 热门讨论（39 points, 61 评论）by thm",
+        "link": "https://www.ft.com/content/e26574cf-94cc-40d9-921e-5c7417fc5dbd",
+        "published_at": "2026-10-10T15:40:06+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": true,
+    "status": "pick",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": {
+      "repo": "storytold/filmcraft",
+      "url": "https://github.com/storytold/filmcraft",
+      "description": "An open-source, clean-room reimplementation of Adobe Premiere Pro built in pure Rust.",
+      "language": "Rust",
+      "topics": [
+        "adobe",
+        "art",
+        "rust",
+        "video",
+        "video-editing",
+        "video-editor",
+        "video-processing"
+      ],
+      "stars": 8448,
+      "delta_stars": 1503,
+      "is_new": false,
+      "created_at": "2026-09-30T13:41:20Z",
+      "pushed_at": "2026-10-10T20:42:13Z",
+      "license": "Apache-2.0",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "// over the control channel (JSON lines on TCP) or as MCP tool calls\n{\"method\": \"engine.execute\", \"params\": {\"command\": \"timeline.place\",\n  \"params\": {\"item\": 1, \"track\": \"V1\", \"seconds\": 0, \"sourceIn\": 284298240000000, \"duration\": 1270080000000}}}\n{\"method\": \"engine.execute\", \"params\": {\"command\": \"effects.setParam\",\n  \"params\": {\"clip\": 87, \"effect\": \"lumetri\", \"param\": \"curve_luma\", \"value\": [[0,0],[0.25,0.21],[0.75,0.82],[1,1]]}}}\n{\"method\": \"ui.screenshot\", \"params\": {\"path\": \"frame.png\"}}",
+      "readme_intro": "FilmCraft Video editing, color and sound; an open-source, clean-room reimplementation of Adobe Premiere Pro, rebuilt in pure Rust. An open-source, clean-room take on the Adobe Premiere Pro workflow: native on macOS, Windows and Linux, and in the browser via WebAssembly. By the ArtCraft team. FilmCraft on getartcraft.com   · ArtCraft  · All Crafting Apps Apollo 11 - Tranquility : a three-minute documentary edit of NASA's 1969 launch, landing and moonwalk film, with subtitles from the mission transcript. Every frame in these screenshots comes from public-domain footage, decoded, composited and graded by FilmCraft's own code. > [!NOTE] > **ArtCraft is a community of artists from all walks of life.** Digital, generative, music, > games &mdash; if you make things, you're one of us. **[Come say ",
+      "score": 0.68,
+      "score_parts": {
+        "velocity": 1.0,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    },
+    "runner_ups": [
+      {
+        "repo": "storytold/pdfcraft",
+        "url": "https://github.com/storytold/pdfcraft",
+        "description": "An open-source, clean-room reimplementation of Adobe Acrobat built in pure Rust",
+        "language": "Rust",
+        "topics": [
+          "acrobat",
+          "acrobat-full",
+          "acrobat-pro",
+          "adobe",
+          "adobe-acrobat",
+          "document-processing",
+          "documents",
+          "pdf",
+          "pdf-generation",
+          "pdf-processing",
+          "pdf-tools",
+          "pdf-viewer",
+          "rust"
+        ],
+        "stars": 7771,
+        "delta_stars": 1536,
+        "is_new": false,
+        "created_at": "2026-09-30T13:39:37Z",
+        "pushed_at": "2026-10-10T20:41:27Z",
+        "license": "Apache-2.0",
+        "has_install_docs": false,
+        "mentions": 0,
+        "readme_excerpt": "pdfcraft-cli combine report.pdf appendix.pdf --out combined.pdf\npdfcraft-cli extract report.pdf --pages 1,3,5 --out highlights.pdf\npdfcraft-cli split   report.pdf --every 10 --out-dir parts/",
+        "readme_intro": "PdfCraft The PDF workbench; an open-source, clean-room reimplementation of Adobe Acrobat, rebuilt in pure Rust. Read, organize, combine, split and secure PDFs in a fast, native app, written in Rust from the ground up. macOS · Windows · Linux · FreeBSD · the web PdfCraft on getartcraft.com   · ArtCraft  · All Crafting Apps The PdfCraft Showcase, a 13-page specimen PDF, open with the All tools panel and threaded comments. > [!NOTE] > **ArtCraft is a community of artists from all walks of life.** Digital, generative, music, > games &mdash; if you make things, you're one of us. **[Come say hi on Discord](https://discord.gg/artcraft).** Highlights  · Read  · Find  · Organize  · Combine &amp; split  · Protect  · Forms &amp; layers  · Everywhere  · Agents  · How it's built  · Get started  · What'",
+        "score": 0.68,
+        "score_parts": {
+          "velocity": 1.0,
+          "hands_on": 0.6,
+          "cross_heat": 0.0,
+          "ai_bonus": 0.0
+        }
+      }
+    ],
+    "yesterday": null,
+    "candidates": {
+      "total": 12,
+      "excluded_recent": 10,
+      "fresh": null,
+      "semantics": "pre-v4",
+      "detail_available": false,
+      "preview": null
+    },
+    "message": "今日主推项目"
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-10-11.json",
+      "report": "data/reports/daily_report_2026-10-11.md",
+      "radar": "data/gh_radar/radar_2026-10-11.json",
+      "playlist": "site/episodes/2026-10-11/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": [
+      "radar_candidate_detail_unavailable"
+    ]
+  }
+}

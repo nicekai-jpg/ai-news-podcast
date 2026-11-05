@@ -1,0 +1,97 @@
+{
+  "date": "2026-09-22",
+  "generated_at": "2026-09-22T00:21:58.261034+00:00",
+  "projects": [
+    {
+      "repo": "Albert-Weasker/niubigeo",
+      "url": "https://github.com/Albert-Weasker/niubigeo",
+      "description": "Open-source AI brand visibility and competitor reports. Official website: https://niubigeo.ai/ | Paid services: AI testing by real people and GEO optimization. Pricing: https://niubigeo.ai/pricing",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 4670,
+      "delta_stars": 2139,
+      "is_new": false,
+      "created_at": "2026-09-03T15:55:54Z",
+      "pushed_at": "2026-09-21T11:16:31Z",
+      "license": "Apache-2.0",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "score": 0.68,
+      "score_parts": {
+        "velocity": 1.0,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    },
+    {
+      "repo": "mizorewww/laya-mlx",
+      "url": "https://github.com/mizorewww/laya-mlx",
+      "description": "Native MLX runtime for Laya typed decision models — 7–14 ms short decisions on M3 Max. No text generation, PyTorch, or cloud API.",
+      "language": "Python",
+      "topics": [
+        "apple-silicon",
+        "decision-model",
+        "inference",
+        "laya",
+        "local-ai",
+        "machine-learning",
+        "mlx",
+        "modernbert",
+        "system-one",
+        "typed-decisions"
+      ],
+      "stars": 3802,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-09-19T13:50:26Z",
+      "pushed_at": "2026-09-19T16:32:30Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "pip install laya-mlx\n```\n\n```python\nimport laya_mlx as laya\n\nagent = laya.load(\"aac6fef/laya-mlx\")\nresult = agent.predict(\n    \"I was billed twice. Please refund the duplicate.\",\n    {\n        \"department\": {\n            \"type\": \"choice\",\n            \"instructions\": \"Who should handle this?\",\n            \"criteria\": [\"billing\", \"technical\", \"sales\"],\n        }\n    },\n)\nprint(result[\"answers\"][\"department\"])\n```\n\nApple Silicon, Python 3.11+, macOS 14+. First load downloads the checkpoint; later inference is fully local. The measured environment is macOS 27.2, Python 3.12.13 and MLX 0.32.2. That MLX release supplies macOS 14, 15 and 26 wheels; the local installer selected the 26 wheel. Older supported macOS versions were not tested on this machine.\n\nRun the terminal demo:\n\n```bash\npip install 'laya-mlx[demo]'\nhf download aac6fef/laya-multilingual-mlx\nlaya-snake\n```\n\nDownload once before the offline demo. Use a terminal at least 104 × 35 cells. Space pauses, ↑/↓ changes speed, R resets and Q quits. `laya-snake --max-speed` makes a fresh decision for every move without pacing. [Recording, controls and exact metric meanings](https://github.com/mizorewww/laya-mlx/blob/main/docs/SNAKE_DEM",
+      "score": 0.495,
+      "score_parts": {
+        "velocity": 0.1901,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.1
+      }
+    },
+    {
+      "repo": "zai-org/ZCode",
+      "url": "https://github.com/zai-org/ZCode",
+      "description": "Z.ai's coding agent harness. Powerful, intelligent, extensible.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 5572,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-09-20T12:01:16Z",
+      "pushed_at": "2026-09-21T00:02:36Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "| `pnpm install`                 | 安装依赖                                                          |\n| `pnpm prepare:desktop-runtime` | 准备桌面运行资源，默认包含远程资源准备                            |\n| `pnpm prepare:remote-assets`   | 单独准备远程运行资源                                              |\n| `pnpm bootstrap:with-remote`   | 初始化依赖、本地与远程资源，并串行构建相关包；跳过桌面应用 bundle |\n| `pnpm build`                   | 递归执行各 workspace 包的构建脚本，包括包内的资源准备步骤         |\n\n默认 `bootstrap` 跳过远程资源准备，适合本地桌面开发。使用远程工作区或验证远程发行资源时，再运行对应准备命令。",
+      "score": 0.4393,
+      "score_parts": {
+        "velocity": 0.2786,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    }
+  ],
+  "meta": {
+    "pick_repo": "Albert-Weasker/niubigeo",
+    "runner_up_repos": [
+      "mizorewww/laya-mlx",
+      "zai-org/ZCode"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 9
+  }
+}

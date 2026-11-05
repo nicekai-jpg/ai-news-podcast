@@ -1,0 +1,3066 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日AI看点</title>
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IuS7iuaXpUFJ55yL54K5Ij4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0idGlsZSIgeDE9IjgiIHkxPSIyIiB4Mj0iNTYiIHkyPSI2MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxZTFkMTkiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGEwYTA5Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzdW4iIHgxPSIxOCIgeTE9IjI2IiB4Mj0iMzQiIHkyPSI0OCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlZTZjNDUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYmMzNjFhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9InVybCgjdGlsZSkiLz4KICA8cmVjdCB4PSIwLjc1IiB5PSIwLjc1IiB3aWR0aD0iNjIuNSIgaGVpZ2h0PSI2Mi41IiByeD0iMTUuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjJlY2UwIiBzdHJva2Utb3BhY2l0eT0iMC4wOSIvPgoKICA8IS0tIOWQju+8muaciO+8jOiZmu+8iOeOr++8iSAtLT4KICA8Y2lyY2xlIGN4PSIzNyIgY3k9IjI5IiByPSIxNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjJlY2UwIiBzdHJva2Utd2lkdGg9IjQuNSIvPgogIDwhLS0g5YmN77ya5pel77yM5a6e77yM5Y6L5a6e546v55qE5LiA6KeSIC0tPgogIDxjaXJjbGUgY3g9IjI1IiBjeT0iMzciIHI9IjEzIiBmaWxsPSJ1cmwoI3N1bikiLz4KPC9zdmc+Cg==">
+<style>
+/* ============================================================
+       DESIGN TOKENS — 深色编辑报刊
+       ============================================================ */
+    :root, [data-theme="light"] {
+      /* Surfaces — light paper theme */
+      --bg-canvas: #fafaf7;
+      --surface-card: #ffffff;
+      --surface-card-hover: #f8f6f2;
+      --surface-inset: #f0ede6;
+
+      /* Borders */
+      --border-subtle: rgba(26, 22, 18, 0.08);
+      --border-medium: rgba(26, 22, 18, 0.16);
+      --border-strong: rgba(26, 22, 18, 0.28);
+
+      /* Text */
+      --text-primary: #1a1714;
+      --text-secondary: #4a4540;
+      --text-muted: #6b665f;
+      --text-faint: #767169;
+
+      /* Accents */
+      --accent-primary: #d94a2b;       /* 朱砂红 */
+      --accent-primary-solid: #b93d1e; /* 实心填充用（白字对比度 5.6:1） */
+      --accent-primary-solid-hover: #a53518;
+      --accent-glow: rgba(217, 74, 43, 0.10);
+      --accent-secondary: #1e3a5f;     /* 深海蓝 */
+      --accent-secondary-soft: rgba(30, 58, 95, 0.10);
+      --accent-teal: #2a7a72;         /* 青绿 */
+      --accent-teal-soft: rgba(42, 122, 114, 0.10);
+
+      /* State colors */
+      --color-success: #3a8a5a;
+      --color-success-soft: rgba(58, 138, 90, 0.12);
+
+      /* Host colors */
+      --host-a-color: #c45a7a;
+      --host-b-color: #3a6a8a;
+
+      /* Radii */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-full: 9999px;
+
+      /* Shadows */
+      --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+      --shadow-dock: 0 -4px 16px rgba(0, 0, 0, 0.08);
+      --shadow-drawer: -4px 0 24px rgba(0, 0, 0, 0.12);
+
+      /* Typography：不引外部字体，靠系统字体栈；按 macOS → Windows → Linux 顺序回退 */
+      --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", "Noto Serif CJK SC", Georgia, serif;
+      --font-sans: "Noto Sans SC", -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+      --font-mono: "SF Mono", "JetBrains Mono", Consolas, "Noto Sans Mono CJK SC", monospace;
+
+      /* Spacing */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 20px;
+      --space-6: 24px;
+      --space-8: 32px;
+      --space-10: 40px;
+      --space-12: 48px;
+
+      /* Theme-aware (light defaults) */
+      --header-bg: rgba(250, 250, 247, 0.92);
+      --player-bg: rgba(250, 250, 247, 0.95);
+      --disc-gradient: linear-gradient(135deg, #f4efe6 0%, #ded6c8 100%);
+      /* 浅色主题下短评卡走纸面浅底 + 深墨字 */
+      --editor-card-bg: linear-gradient(150deg, #ffffff 0%, #f4f0e9 100%);
+      --editor-card-text: #1a1714;
+      --editor-card-accent: #b93d1e;
+      --tint-cool: rgba(42, 122, 114, 0.06);
+      --tint-warm: rgba(212, 165, 116, 0.10);
+    }
+
+    [data-theme="dark"] {
+      /* Surfaces — dark editorial */
+      --bg-canvas: #141210;
+      --surface-card: #201c18;
+      --surface-card-hover: #2a2520;
+      --surface-inset: #0e0c0a;
+
+      --border-subtle: rgba(242, 236, 224, 0.08);
+      --border-medium: rgba(242, 236, 224, 0.16);
+      --border-strong: rgba(242, 236, 224, 0.28);
+
+      --text-primary: #f2ece0;
+      --text-secondary: #b8b0a3;
+      --text-muted: #a39a8d;
+      --text-faint: #978e83;
+
+      --accent-primary: #d94a2b;
+      --accent-glow: rgba(217, 74, 43, 0.18);
+      --accent-secondary: #d4a574;
+      --accent-secondary-soft: rgba(212, 165, 116, 0.14);
+      --accent-teal: #5fa8a0;
+      --accent-teal-soft: rgba(95, 168, 160, 0.14);
+
+      --color-success: #5fa87a;
+      --color-success-soft: rgba(95, 168, 122, 0.14);
+
+      --host-a-color: #e89bb5;
+      --host-b-color: #8fb8d4;
+
+      --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.35);
+      --shadow-dock: 0 -6px 24px rgba(0, 0, 0, 0.5);
+      --shadow-drawer: -8px 0 32px rgba(0, 0, 0, 0.6);
+
+      --header-bg: rgba(20, 18, 16, 0.88);
+      --player-bg: rgba(20, 18, 16, 0.92);
+      --disc-gradient: linear-gradient(135deg, #2a2420 0%, #1a1614 100%);
+      --editor-card-bg: linear-gradient(150deg, rgba(212, 165, 116, 0.08) 0%, var(--surface-card) 100%);
+      --editor-card-text: #f2ece0;
+      --editor-card-accent: #d4a574;
+      --tint-cool: rgba(95, 168, 160, 0.06);
+      --tint-warm: rgba(212, 165, 116, 0.05);
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg-canvas);
+      color: var(--text-primary);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-bottom: 88px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    ::selection { background: var(--accent-primary); color: #fff; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-canvas); }
+    ::-webkit-scrollbar-thumb { background: rgba(242,236,224,0.18); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(242,236,224,0.3); }
+
+    /* ============================================================
+       LAYOUT
+       ============================================================ */
+    .app-layout {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
+    }
+
+    /* ============================================================
+       HEADER
+       ============================================================ */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--header-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .header-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: var(--space-3) var(--space-6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-4);
+      min-width: 0;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-width: 0;
+    }
+    .brand-logo-img {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-md);
+      object-fit: cover;
+      border: 1px solid var(--border-medium);
+      flex-shrink: 0;
+    }
+    .brand-text { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+    .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.12rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      white-space: nowrap;
+    }
+    .brand-badge {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: var(--radius-full);
+      background: var(--accent-secondary-soft);
+      color: var(--accent-secondary);
+      border: 1px solid rgba(212, 165, 116, 0.3);
+      letter-spacing: 0.04em;
+    }
+    .brand-subtitle {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .header-nav {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(242,236,224,0.03);
+      padding: 3px 4px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      min-width: 0;
+    }
+    .nav-anchor-link {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      padding: 5px 11px;
+      border-radius: var(--radius-full);
+      transition: all 0.18s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+    .nav-anchor-link:hover, .nav-anchor-link.active {
+      color: var(--text-primary);
+      background: rgba(242,236,224,0.06);
+    }
+    .nav-anchor-link.active {
+      color: var(--accent-primary);
+      background: var(--accent-glow);
+    }
+    .nav-icon { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+    .btn-header-pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      background: rgba(242,236,224,0.04);
+      color: var(--text-secondary);
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .btn-header-pill:hover {
+      color: var(--text-primary);
+      background: rgba(242,236,224,0.08);
+      border-color: var(--border-medium);
+    }
+    .btn-header-rss:hover {
+      color: var(--accent-secondary);
+      border-color: rgba(212, 165, 116, 0.4);
+      background: var(--accent-secondary-soft);
+    }
+
+    /* ============================================================
+       SHARED DATE AXIS
+       ============================================================ */
+    .shared-date-axis {
+      margin: var(--space-5) 0 var(--space-4);
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-3) var(--space-4);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      box-shadow: var(--shadow-card);
+      min-width: 0;
+      position: relative;
+    }
+    .date-nav-controls { display: flex; align-items: center; gap: var(--space-2); flex-shrink: 0; }
+    .date-step-btn {
+      padding: 6px 12px;
+      border-radius: var(--radius-md);
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: rgba(242,236,224,0.04);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .date-step-btn:hover:not(:disabled) {
+      background: rgba(242,236,224,0.08);
+      color: var(--text-primary);
+      border-color: var(--border-medium);
+    }
+    .date-step-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .date-pills-carousel {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      overflow-x: auto;
+      padding: 2px 0;
+      min-width: 0;
+      scrollbar-width: none;
+    }
+    .date-pills-carousel::-webkit-scrollbar { display: none; }
+    .date-pill {
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-weight: 600;
+      white-space: nowrap;
+      background: rgba(242,236,224,0.03);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      transition: all 0.18s;
+      flex-shrink: 0;
+    }
+    .date-pill:hover { color: var(--text-primary); background: rgba(242,236,224,0.07); }
+    .date-pill.active {
+      background: var(--accent-primary-solid);
+      color: #fff;
+      border-color: var(--accent-primary-solid);
+    }
+    .date-pill.date-archive {
+      color: var(--accent-secondary);
+      border-color: var(--border-medium);
+    }
+    .date-pill.date-archive[aria-expanded="true"] {
+      background: var(--surface-inset);
+      color: var(--text-primary);
+    }
+    /* 历史归档下拉：30 期全量，双列滚动 */
+    .archive-panel {
+      position: absolute;
+      top: calc(100% + var(--space-2));
+      right: var(--space-4);
+      z-index: 40;
+      width: min(340px, 92vw);
+      max-height: 320px;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-1);
+      padding: var(--space-2);
+      background: var(--surface-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-card);
+    }
+    .archive-panel[hidden] { display: none; }
+    .archive-item {
+      padding: 6px 10px;
+      border-radius: var(--radius-md);
+      border: 1px solid transparent;
+      background: transparent;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+      text-align: left;
+      transition: all 0.16s;
+    }
+    .archive-item:hover { background: var(--surface-card-hover); color: var(--text-primary); }
+    .archive-item.active {
+      background: var(--accent-primary-solid);
+      border-color: var(--accent-primary-solid);
+      color: #fff;
+    }
+
+    /* ============================================================
+       SECTION HEADERS
+       ============================================================ */
+    .content-section {
+      margin-bottom: var(--space-10);
+      scroll-margin-top: 72px;
+    }
+    .content-section:last-child { margin-bottom: 0; }
+
+    /* 冷暖底色板块：统一内边距，避免与相邻栏目的边框贴边重叠 */
+    .content-section.tint-cool,
+    .content-section.tint-warm {
+      padding: var(--space-6) var(--space-5);
+      border-radius: var(--radius-xl);
+      margin-left: calc(-1 * var(--space-5));
+      margin-right: calc(-1 * var(--space-5));
+    }
+    .content-section.tint-cool {
+      background: linear-gradient(180deg, var(--tint-cool) 0%, transparent 100%);
+    }
+    .content-section.tint-warm {
+      background: linear-gradient(180deg, var(--tint-warm) 0%, transparent 100%);
+    }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-4);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: var(--space-5);
+      min-width: 0;
+    }
+    .section-title-group {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-3);
+      min-width: 0;
+    }
+    .section-number {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      letter-spacing: 0.08em;
+    }
+    .section-number.alt { color: var(--accent-teal); }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      letter-spacing: 0;
+      line-height: 1.3;
+    }
+    .section-meta {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .section-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .demo-flag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent-secondary);
+      letter-spacing: 0.04em;
+    }
+    .demo-flag::after { content: "·"; margin: 0 var(--space-2); color: var(--text-muted); }
+    .demo-flag[hidden] { display: none; }
+
+    /* ============================================================
+       HERO: PODCAST + EDITORIAL LEAD
+       ============================================================ */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 480px 1fr;
+      gap: var(--space-5);
+    }
+
+    /* Podcast Card */
+    .podcast-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      box-shadow: var(--shadow-card);
+      position: relative;
+      overflow: hidden;
+      min-width: 0;
+    }
+    .podcast-card::before {
+      content: "";
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .podcast-cover-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      min-width: 0;
+    }
+    .podcast-disc {
+      width: 76px;
+      height: 76px;
+      border-radius: var(--radius-lg);
+      background: var(--disc-gradient);
+      border: 1px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      position: relative;
+    }
+    .disc-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 30px;
+    }
+    .disc-bar {
+      width: 3px;
+      background: var(--accent-primary);
+      border-radius: 1.5px;
+      height: 6px;
+      transition: height 0.15s ease;
+    }
+    .is-playing .disc-bar:nth-child(1) { animation: barPulse 0.9s infinite ease-in-out; }
+    .is-playing .disc-bar:nth-child(2) { animation: barPulse 0.7s infinite 0.15s ease-in-out; }
+    .is-playing .disc-bar:nth-child(3) { animation: barPulse 1.1s infinite 0.3s ease-in-out; }
+    .is-playing .disc-bar:nth-child(4) { animation: barPulse 0.8s infinite 0.2s ease-in-out; }
+    .is-playing .disc-bar:nth-child(5) { animation: barPulse 1.0s infinite 0.4s ease-in-out; }
+    @keyframes barPulse { 0%, 100% { height: 5px; } 50% { height: 26px; } }
+
+    .podcast-title-area {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+    .podcast-heading {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.35;
+      letter-spacing: 0;
+    }
+    .podcast-subhead {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Host roster — 静态展示，不提供无效的声线切换 */
+    .host-roster {
+      background: var(--surface-inset);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .host-roster-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+    }
+    .host-roster-list { display: flex; align-items: center; gap: var(--space-4); flex-wrap: wrap; }
+    .host-identity {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .host-avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.68rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .host-avatar.host-a { background: linear-gradient(135deg, #e89bb5, #c96b8a); color: #fff; }
+    .host-avatar.host-b { background: linear-gradient(135deg, #8fb8d4, #5a8fb5); color: #fff; }
+    .host-name { font-size: 0.76rem; font-weight: 700; color: var(--text-primary); }
+
+    /* Podcast CTAs */
+    .podcast-cta-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: auto;
+    }
+    .btn-play-primary {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      background: var(--accent-primary-solid);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 10px var(--space-4);
+      border-radius: var(--radius-md);
+      transition: all 0.18s;
+      letter-spacing: 0.02em;
+    }
+    .btn-play-primary:hover { background: var(--accent-primary-solid-hover); transform: translateY(-1px); }
+    .btn-transcript-cta {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 9px var(--space-3);
+      border-radius: var(--radius-md);
+      background: rgba(242,236,224,0.05);
+      border: 1px solid var(--border-medium);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .btn-transcript-cta:hover { background: rgba(242,236,224,0.09); color: var(--text-primary); }
+
+    /* Editorial Lead Card */
+    .editorial-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5) var(--space-6);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--space-4);
+      box-shadow: var(--shadow-card);
+      min-width: 0;
+    }
+    .editorial-stamp {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: var(--space-3);
+      gap: var(--space-3);
+    }
+    .stamp-label {
+      font-family: var(--font-serif);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-secondary);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .stamp-date {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .lead-quote {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+    }
+    .lead-quote strong { color: var(--accent-primary); font-weight: 700; }
+
+    /* Metrics Strip */
+    .metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-3);
+      background: var(--surface-inset);
+      padding: var(--space-3) var(--space-4);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+    }
+    .metric-item { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      align-items: baseline;
+      gap: 2px;
+      line-height: 1.2;
+    }
+    .metric-unit.teal { color: var(--accent-teal); }
+    .metric-unit.amber { color: var(--accent-secondary); }
+    .metric-label {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ============================================================
+       DAILY REPORT BROADSIDE
+       ============================================================ */
+    .broadside-grid {
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: var(--space-5);
+      align-items: start;
+    }
+    .broadside-main {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6) var(--space-6);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      min-width: 0;
+    }
+    .broadside-header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: var(--space-4);
+    }
+    .broadside-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .broadside-pill {
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: var(--radius-full);
+      background: var(--color-success-soft);
+      color: var(--color-success);
+      border: 1px solid rgba(95, 168, 122, 0.3);
+      letter-spacing: 0.04em;
+    }
+    .broadside-toc {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+    .broadside-toc-link {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+      background: rgba(242,236,224,0.03);
+      border: 1px solid var(--border-subtle);
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .broadside-toc-link:hover {
+      color: var(--accent-teal);
+      border-color: rgba(95, 168, 160, 0.3);
+    }
+    .broadside-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 900;
+      line-height: 1.35;
+      color: var(--text-primary);
+      letter-spacing: 0;
+    }
+
+    /* Deep Dive Card */
+    .deep-dive {
+      background: var(--surface-inset);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      transition: border-color 0.18s;
+      min-width: 0;
+    }
+    .deep-dive:hover { border-color: var(--border-medium); }
+    .deep-dive-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .deep-dive-tag {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--accent-secondary);
+      background: var(--accent-secondary-soft);
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(212, 165, 116, 0.25);
+      letter-spacing: 0.04em;
+    }
+    .deep-dive-topic {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .deep-dive-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+    .deep-dive-point {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    .deep-dive-point[hidden] { display: none; }
+    .point-label {
+      font-size: 0.82rem;
+      color: var(--text-primary);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .point-label .dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--accent-primary);
+      flex-shrink: 0;
+    }
+    .point-text { margin: 0; }
+    .deep-dive-point.highlight {
+      background: rgba(217, 74, 43, 0.06);
+      border: 1px solid rgba(217, 74, 43, 0.2);
+      border-radius: var(--radius-md);
+      padding: var(--space-3) var(--space-4);
+    }
+
+    /* Sidebar */
+    .broadside-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      min-width: 0;
+    }
+    .editor-quote-card {
+      background: var(--editor-card-bg);
+      border: 1px solid rgba(30, 58, 95, 0.4);
+      border-radius: var(--radius-xl);
+      padding: var(--space-5);
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      color: var(--editor-card-text);
+    }
+    .editor-quote-card .editor-quote-header { color: var(--editor-card-accent); }
+    .editor-quote-card .editor-quote-text { color: var(--editor-card-text); }
+    .editor-quote-card .editor-quote-author { color: #c9c2b6; }
+    .editor-quote-card .editor-quote-author::before { background: #7d756a; }
+
+    /* 浅色主题下短评卡是纸面浅卡，用细边框与轻阴影与正文区分 */
+    [data-theme="light"] .editor-quote-card {
+      border-color: rgba(26, 22, 18, 0.10);
+      box-shadow: 0 8px 24px rgba(26, 22, 18, 0.06);
+    }
+    [data-theme="light"] .editor-quote-card .editor-quote-author { color: var(--text-muted); }
+    [data-theme="light"] .editor-quote-card .editor-quote-author::before { background: var(--border-strong); }
+    .editor-quote-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-secondary);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .editor-quote-text {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      font-style: italic;
+    }
+    .editor-quote-author {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .editor-quote-author::before {
+      content: "";
+      width: 16px;
+      height: 1px;
+      background: var(--text-faint);
+    }
+
+    /* ============================================================
+       SOURCES
+       ============================================================ */
+    .sources-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    .source-filter-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      background: rgba(242,236,224,0.04);
+      color: var(--text-secondary);
+      font-size: 0.74rem;
+      font-weight: 600;
+      transition: background 0.18s, border-color 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    .source-filter-chip:hover {
+      color: var(--text-primary);
+      border-color: var(--border-medium);
+    }
+    .source-filter-chip.active {
+      background: var(--accent-teal-soft);
+      border-color: rgba(95, 168, 160, 0.45);
+      color: var(--accent-teal);
+    }
+    .source-filter-chip:focus-visible {
+      outline: 2px solid var(--accent-teal);
+      outline-offset: 2px;
+    }
+    .chip-count {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-faint);
+    }
+    .source-filter-chip.active .chip-count { color: var(--accent-teal); }
+
+    .sources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+    }
+    .source-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      transition: border-color 0.18s, background 0.18s;
+      min-width: 0;
+    }
+    .source-card:hover {
+      border-color: var(--border-medium);
+      background: var(--surface-card-hover);
+    }
+    a.source-card { color: inherit; text-decoration: none; }
+    a.source-card:hover { border-color: var(--border-strong); }
+    a.source-card:focus-visible {
+      outline: 2px solid var(--accent-teal);
+      outline-offset: 2px;
+    }
+    .source-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-2);
+      min-width: 0;
+    }
+    .source-badge {
+      font-size: 0.66rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .source-badge.openai { background: rgba(95, 168, 122, 0.14); color: var(--color-success); border: 1px solid rgba(95, 168, 122, 0.3); }
+    .source-badge.anthropic { background: rgba(212, 165, 116, 0.14); color: var(--accent-secondary); border: 1px solid rgba(212, 165, 116, 0.3); }
+    .source-badge.google { background: rgba(143, 184, 212, 0.14); color: var(--host-b-color); border: 1px solid rgba(143, 184, 212, 0.3); }
+    .source-badge.meta { background: rgba(232, 155, 181, 0.14); color: var(--host-a-color); border: 1px solid rgba(232, 155, 181, 0.3); }
+    .source-badge.arxiv { background: rgba(242,236,224,0.06); color: var(--text-secondary); border: 1px solid var(--border-medium); }
+    .source-badge.industry { background: var(--accent-teal-soft); color: var(--accent-teal); border: 1px solid rgba(95, 168, 160, 0.3); }
+    .source-badge.nvidia { background: var(--accent-secondary-soft); color: var(--accent-secondary); border: 1px solid rgba(212, 165, 116, 0.3); }
+    .source-meta {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-faint);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .source-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+    .source-summary {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .sources-expand-bar {
+      margin-top: var(--space-4);
+      display: flex;
+      justify-content: center;
+    }
+    .btn-expand-sources {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-secondary);
+      padding: 8px 20px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(212, 165, 116, 0.3);
+      background: var(--accent-secondary-soft);
+      transition: all 0.18s;
+      letter-spacing: 0.02em;
+    }
+    .btn-expand-sources:hover {
+      background: rgba(212, 165, 116, 0.22);
+      border-color: rgba(212, 165, 116, 0.5);
+    }
+
+    /* ============================================================
+       RADAR
+       ============================================================ */
+    .radar-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: var(--space-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-5);
+      box-shadow: var(--shadow-card);
+      min-width: 0;
+    }
+    .radar-empty-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-4);
+      text-align: center;
+      padding: var(--space-4) 0;
+    }
+    .radar-visual {
+      width: 140px;
+      height: 140px;
+      position: relative;
+    }
+    .radar-canvas {
+      width: 100%;
+      height: 100%;
+    }
+    .radar-headline {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      line-height: 1.35;
+    }
+    .radar-paragraph {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+    .radar-paragraph strong { color: var(--text-primary); font-weight: 700; }
+    .radar-meta-line {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+    }
+    .radar-meta-line .sep { color: var(--text-faint); }
+
+    /* 候选审计明细（轮空态）：入口按钮 + 可展开表格 */
+    .radar-empty-actions { margin-top: var(--space-1); }
+    .radar-empty-actions[hidden] { display: none; }
+    .btn-radar-candidates {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-medium);
+      background: var(--accent-secondary-soft);
+      color: var(--accent-secondary);
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: all 0.18s;
+    }
+    .btn-radar-candidates:hover {
+      background: var(--surface-card-hover);
+      color: var(--text-primary);
+    }
+    .radar-candidates-panel {
+      width: 100%;
+      max-width: 880px;
+      margin-top: var(--space-3);
+      overflow-x: auto;
+      text-align: left;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      background: var(--surface-inset);
+    }
+    .radar-candidates-panel[hidden] { display: none; }
+    .radar-candidates-panel table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
+    .radar-candidates-panel th,
+    .radar-candidates-panel td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+      white-space: nowrap;
+    }
+    .radar-candidates-panel th {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+    }
+    .radar-candidates-panel tr:last-child td { border-bottom: 0; }
+    .radar-candidate-repo { font-family: var(--font-mono); color: var(--text-primary); }
+    .radar-candidate-reason {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: rgba(242,236,224,0.06);
+      color: var(--text-muted);
+      font-size: 0.7rem;
+    }
+    .radar-candidates-note {
+      padding: 12px 14px;
+      font-size: 0.76rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    /* Radar pick state */
+    .radar-pick-state {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+      text-align: left;
+    }
+    .radar-pick-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+    .radar-pick-growth {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-secondary);
+      white-space: nowrap;
+    }
+    .radar-pick-name {
+      font-family: var(--font-mono);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      word-break: break-all;
+    }
+    .radar-pick-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+    /* 元信息缺项时连同其后的分隔符一起隐藏 */
+    .radar-pick-meta > span[hidden] + .sep { display: none; }
+    .radar-pick-stars {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--color-success);
+    }
+    .radar-pick-desc {
+      font-size: 0.86rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      max-width: 68ch;
+    }
+    .radar-pick-action a {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-secondary);
+    }
+    .radar-pick-action a:hover { color: var(--accent-primary); }
+    .radar-pick-action a:focus-visible {
+      outline: 2px solid var(--accent-teal);
+      outline-offset: 2px;
+    }
+    .radar-pick-state[hidden],
+    .radar-empty-state[hidden] { display: none; }
+
+    /* ============================================================
+       DOCKED PLAYER
+       ============================================================ */
+    .docked-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 60;
+      background: var(--player-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-dock);
+    }
+    .player-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: var(--space-3) var(--space-6);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-4);
+      align-items: center;
+      min-width: 0;
+    }
+    .player-info {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      min-width: 0;
+    }
+    .player-disc {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--disc-gradient);
+      border: 1px solid var(--border-medium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .player-disc .disc-bars { height: 18px; }
+    .player-disc .disc-bar { width: 2.5px; }
+    .player-text { min-width: 0; }
+    .player-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .player-subtitle {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .player-time {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-faint);
+      white-space: nowrap;
+      margin-top: 2px;
+    }
+    .player-time-sep { color: var(--text-faint); }
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-shrink: 0;
+    }
+    .player-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(242,236,224,0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      transition: all 0.18s;
+      flex-shrink: 0;
+    }
+    .player-btn:hover { background: rgba(242,236,224,0.1); color: var(--text-primary); }
+    .player-btn.play {
+      width: 38px;
+      height: 38px;
+      background: var(--accent-primary-solid);
+      color: #fff;
+      border: none;
+    }
+    .player-btn.play:hover { background: var(--accent-primary-solid-hover); }
+    .player-btn svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .player-btn.play svg { fill: currentColor; stroke: none; }
+    .player-transcript-btn {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent-secondary);
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(212, 165, 116, 0.3);
+      background: var(--accent-secondary-soft);
+      transition: all 0.18s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .player-transcript-btn:hover {
+      background: rgba(212, 165, 116, 0.22);
+      border-color: rgba(212, 165, 116, 0.5);
+    }
+
+    /* ============================================================
+       TRANSCRIPT DRAWER
+       ============================================================ */
+    .transcript-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 420px;
+      max-width: 90vw;
+      background: var(--surface-card);
+      border-left: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-drawer);
+      z-index: 70;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .transcript-drawer.open {
+      transform: translateX(0);
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .drawer-header {
+      padding: var(--space-4) var(--space-5);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .drawer-title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--text-primary);
+    }
+    .drawer-close {
+      width: 30px;
+      height: 30px;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: all 0.18s;
+    }
+    .drawer-close:hover { background: rgba(242,236,224,0.06); color: var(--text-primary); }
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--space-4) var(--space-5);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .transcript-line {
+      display: flex;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .transcript-speaker {
+      font-size: 0.72rem;
+      font-weight: 700;
+      width: 32px;
+      flex-shrink: 0;
+      padding-top: 2px;
+    }
+    .transcript-speaker.host-a { color: var(--host-a-color); }
+    .transcript-speaker.host-b { color: var(--host-b-color); }
+    .transcript-text {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .transcript-text .timestamp {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-faint);
+      margin-right: var(--space-2);
+    }
+
+    /* Overlay */
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 65;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .drawer-overlay.visible { opacity: 1; pointer-events: auto; }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 1180px) {
+      /* 01 保持「播客 + 导语」并排，只收窄左栏，不拆组 */
+      .hero-grid { grid-template-columns: 380px 1fr; }
+      .podcast-card { max-width: none; }
+      .sources-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 1024px) {
+      /* 01 进一步收窄左栏，给导语卡留出可读宽度 */
+      .hero-grid { grid-template-columns: 340px 1fr; }
+      /* 02 在窄桌面改为上下排列，编辑短评排在正文之后 */
+      .broadside-grid { grid-template-columns: 1fr; }
+      .broadside-sidebar { order: 0; }
+    }
+    @media (max-width: 900px) {
+      .app-layout { padding: 0 var(--space-4); }
+      .header-inner { padding: var(--space-3) var(--space-4); }
+      .header-nav { display: none; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .metrics-strip { grid-template-columns: repeat(2, 1fr); }
+      .sources-grid { grid-template-columns: 1fr; }
+      .content-section.tint-cool,
+      .content-section.tint-warm {
+        margin-left: calc(-1 * var(--space-4));
+        margin-right: calc(-1 * var(--space-4));
+        border-radius: 0;
+      }
+    }
+    @media (max-width: 640px) {
+      .brand-subtitle { display: none; }
+      .header-actions .btn-header-pill span.label-text { display: none; }
+    }
+    @media (max-width: 520px) {
+      /* 窄屏日期轴：胶囊独占一行，上一期/下一期在第二行两端 */
+      .shared-date-axis { flex-wrap: wrap; row-gap: var(--space-2); }
+      .date-pills-carousel { order: -1; flex-basis: 100%; }
+      .date-nav-controls { flex: 1 1 0; }
+      .date-nav-controls:last-child { justify-content: flex-end; }
+    }
+    @media (max-width: 390px) {
+      .app-layout { padding: 0 var(--space-3); }
+      .podcast-cta-row { flex-direction: column; }
+      .btn-play-primary, .btn-transcript-cta { width: 100%; justify-content: center; }
+      .metrics-strip { grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+      .metric-value { font-size: 1rem; }
+      .player-inner { grid-template-columns: 1fr; gap: var(--space-2); padding: var(--space-2) var(--space-3); }
+      .player-controls { justify-content: center; }
+      .transcript-drawer { width: 100vw; max-width: 100vw; }
+      .content-section.tint-cool,
+      .content-section.tint-warm {
+        margin-left: calc(-1 * var(--space-3));
+        margin-right: calc(-1 * var(--space-3));
+        border-radius: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
+
+    /* Utility */
+
+/* hidden 属性必须生效（卡片/要点隐藏态） */
+[hidden] { display: none !important; }
+
+</style>
+<script>
+(function() {
+  var saved = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+})();
+</script>
+</head>
+<body>
+  <!-- 片段模板：body 标签由 html_gen_view 包裹，模板内不要再写 -->
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand-group">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IuS7iuaXpUFJ55yL54K5Ij4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0idGlsZSIgeDE9IjgiIHkxPSIyIiB4Mj0iNTYiIHkyPSI2MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxZTFkMTkiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGEwYTA5Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzdW4iIHgxPSIxOCIgeTE9IjI2IiB4Mj0iMzQiIHkyPSI0OCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlZTZjNDUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYmMzNjFhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9InVybCgjdGlsZSkiLz4KICA8cmVjdCB4PSIwLjc1IiB5PSIwLjc1IiB3aWR0aD0iNjIuNSIgaGVpZ2h0PSI2Mi41IiByeD0iMTUuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjJlY2UwIiBzdHJva2Utb3BhY2l0eT0iMC4wOSIvPgoKICA8IS0tIOWQju+8muaciO+8jOiZmu+8iOeOr++8iSAtLT4KICA8Y2lyY2xlIGN4PSIzNyIgY3k9IjI5IiByPSIxNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjJlY2UwIiBzdHJva2Utd2lkdGg9IjQuNSIvPgogIDwhLS0g5YmN77ya5pel77yM5a6e77yM5Y6L5a6e546v55qE5LiA6KeSIC0tPgogIDxjaXJjbGUgY3g9IjI1IiBjeT0iMzciIHI9IjEzIiBmaWxsPSJ1cmwoI3N1bikiLz4KPC9zdmc+Cg==" alt="" class="brand-logo-img" width="34" height="34">
+        <div class="brand-text">
+          <div class="brand-title">
+            今日AI看点
+            <span class="brand-badge">DAILY</span>
+          </div>
+          <div class="brand-subtitle">{{issue_tagline}}</div>
+        </div>
+      </div>
+
+      <nav class="header-nav" aria-label="章节导航">
+        <a href="#section-podcast" class="nav-anchor-link">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          今日主推
+        </a>
+        <a href="#section-report" class="nav-anchor-link">
+          <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          深度日报
+        </a>
+        <a href="#section-sources" class="nav-anchor-link">
+          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          信源
+        </a>
+        <a href="#section-radar" class="nav-anchor-link">
+          <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          项目雷达
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn-header-pill" id="theme-toggle" onclick="toggleTheme()" aria-label="切换深浅主题">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="theme-icon"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <span class="label-text" id="theme-label">深色</span>
+        </button>
+        <a href="./feed.xml" class="btn-header-pill btn-header-rss" target="_blank" rel="noopener" aria-label="RSS 订阅">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+          <span class="label-text">RSS</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN
+       ============================================================ -->
+  <main class="app-layout">
+
+    <!-- Shared Date Axis -->
+    <div class="shared-date-axis">
+      <div class="date-nav-controls">
+        <button class="date-step-btn" id="btn-prev-issue" onclick="stepIssue(1)">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          上一期
+        </button>
+      </div>
+      <div class="date-pills-carousel" id="date-pills">
+        <!-- Rendered by JS -->
+      </div>
+      <div class="date-nav-controls">
+        <button class="date-step-btn" id="btn-next-issue" onclick="stepIssue(-1)">
+          下一期
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <!-- 历史归档下拉：30 期全量列表，默认折叠（Rendered by JS） -->
+      <div class="archive-panel" id="date-archive-panel" hidden></div>
+    </div>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section id="section-podcast" class="content-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-number">01</span>
+          <div>
+            <h2 class="section-title">今日主推播客</h2>
+            <p class="section-desc">每日一集 · 现场拆解</p>
+          </div>
+        </div>
+        <span class="section-meta">
+          <span class="demo-flag" data-requires="demo_note">{{demo_note}}</span>
+          {{podcast_chapter_count}} 章节
+        </span>
+      </div>
+
+      <div class="hero-grid">
+        <!-- Podcast Card -->
+        <article class="podcast-card">
+          <div class="podcast-cover-row">
+            <div class="podcast-disc">
+              <div class="disc-bars">
+                <div class="disc-bar"></div>
+                <div class="disc-bar"></div>
+                <div class="disc-bar"></div>
+                <div class="disc-bar"></div>
+                <div class="disc-bar"></div>
+              </div>
+            </div>
+            <div class="podcast-title-area">
+              <h3 class="podcast-heading">{{podcast_title}}</h3>
+              <p class="podcast-subhead">{{podcast_subtitle}}</p>
+            </div>
+          </div>
+
+          <div class="host-roster">
+            <span class="host-roster-label">本期主持</span>
+            <div class="host-roster-list" id="host-roster-list"><!-- Rendered by JS --></div>
+          </div>
+
+          <div class="podcast-cta-row">
+            <button class="btn-play-primary" onclick="togglePlay()" aria-pressed="false">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              播放本期
+            </button>
+            <button class="btn-transcript-cta" onclick="openDrawer()">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              逐字稿
+            </button>
+          </div>
+        </article>
+
+        <!-- Editorial Lead Card -->
+        <article class="editorial-card">
+          <div class="editorial-stamp">
+            <div class="stamp-label">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              编辑导语
+            </div>
+            <span class="stamp-date">{{issue_date}} · {{issue_number}} 期</span>
+          </div>
+          <p class="lead-quote">{{lead_quote}}</p>
+          <div class="metrics-strip">
+            <div class="metric-item">
+              <div class="metric-value">{{metric_sources_value}}<span class="metric-unit">{{metric_sources_unit}}</span></div>
+              <div class="metric-label">{{metric_sources_label}}</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">{{metric_hours_value}}<span class="metric-unit teal">{{metric_hours_unit}}</span></div>
+              <div class="metric-label">{{metric_hours_label}}</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">{{metric_speedup_value}}<span class="metric-unit amber">{{metric_speedup_unit}}</span></div>
+              <div class="metric-label">{{metric_speedup_label}}</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value">{{metric_items_value}}<span class="metric-unit teal">{{metric_items_unit}}</span></div>
+              <div class="metric-label">{{metric_items_label}}</div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DAILY REPORT
+         ============================================================ -->
+    <section id="section-report" class="content-section">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-number alt">02</span>
+          <div>
+            <h2 class="section-title">深度日报</h2>
+            <p class="section-desc">长文研判 · 逐章拆解</p>
+          </div>
+        </div>
+        <span class="section-meta">{{report_word_count}} 字 · 约 {{report_read_minutes}} 分钟</span>
+      </div>
+
+      <div class="broadside-grid">
+        <div class="broadside-main">
+          <div class="broadside-header">
+            <div class="broadside-meta">
+              <span class="broadside-pill">{{report_pill}}</span>
+            </div>
+            <div class="broadside-toc">
+              <a href="#deep-dive-1" class="broadside-toc-link">{{chapter_1_tag}}</a>
+              <a href="#deep-dive-2" class="broadside-toc-link">{{chapter_2_tag}}</a>
+              <a href="#deep-dive-3" class="broadside-toc-link">{{chapter_3_tag}}</a>
+              <a href="#deep-dive-4" class="broadside-toc-link">{{chapter_4_tag}}</a>
+            </div>
+            <h3 class="broadside-title">{{report_title}}</h3>
+          </div>
+
+          <div class="deep-dive" id="deep-dive-1">
+            <div class="deep-dive-header">
+              <span class="deep-dive-tag">{{chapter_1_tag}}</span>
+              <span class="deep-dive-topic">{{chapter_1_topic}}</span>
+            </div>
+            <h4 class="deep-dive-title">{{chapter_1_title}}</h4>
+            <div class="deep-dive-point">
+              <div class="point-label"><span class="dot"></span>{{chapter_1_point_1_label}}</div>
+              <p class="point-text">{{chapter_1_point_1_text}}</p>
+            </div>
+            <div class="deep-dive-point highlight">
+              <div class="point-label"><span class="dot"></span>{{chapter_1_point_2_label}}</div>
+              <p class="point-text">{{chapter_1_point_2_text}}</p>
+            </div>
+            <div class="deep-dive-point" data-requires="chapter_1_point_3_label,chapter_1_point_3_text">
+              <div class="point-label"><span class="dot"></span>{{chapter_1_point_3_label}}</div>
+              <p class="point-text">{{chapter_1_point_3_text}}</p>
+            </div>
+          </div>
+
+          <div class="deep-dive" id="deep-dive-2">
+            <div class="deep-dive-header">
+              <span class="deep-dive-tag">{{chapter_2_tag}}</span>
+              <span class="deep-dive-topic">{{chapter_2_topic}}</span>
+            </div>
+            <h4 class="deep-dive-title">{{chapter_2_title}}</h4>
+            <div class="deep-dive-point">
+              <div class="point-label"><span class="dot"></span>{{chapter_2_point_1_label}}</div>
+              <p class="point-text">{{chapter_2_point_1_text}}</p>
+            </div>
+            <div class="deep-dive-point highlight">
+              <div class="point-label"><span class="dot"></span>{{chapter_2_point_2_label}}</div>
+              <p class="point-text">{{chapter_2_point_2_text}}</p>
+            </div>
+            <div class="deep-dive-point" data-requires="chapter_2_point_3_label,chapter_2_point_3_text">
+              <div class="point-label"><span class="dot"></span>{{chapter_2_point_3_label}}</div>
+              <p class="point-text">{{chapter_2_point_3_text}}</p>
+            </div>
+          </div>
+
+          <div class="deep-dive" id="deep-dive-3">
+            <div class="deep-dive-header">
+              <span class="deep-dive-tag">{{chapter_3_tag}}</span>
+              <span class="deep-dive-topic">{{chapter_3_topic}}</span>
+            </div>
+            <h4 class="deep-dive-title">{{chapter_3_title}}</h4>
+            <div class="deep-dive-point">
+              <div class="point-label"><span class="dot"></span>{{chapter_3_point_1_label}}</div>
+              <p class="point-text">{{chapter_3_point_1_text}}</p>
+            </div>
+            <div class="deep-dive-point highlight">
+              <div class="point-label"><span class="dot"></span>{{chapter_3_point_2_label}}</div>
+              <p class="point-text">{{chapter_3_point_2_text}}</p>
+            </div>
+            <div class="deep-dive-point" data-requires="chapter_3_point_3_label,chapter_3_point_3_text">
+              <div class="point-label"><span class="dot"></span>{{chapter_3_point_3_label}}</div>
+              <p class="point-text">{{chapter_3_point_3_text}}</p>
+            </div>
+          </div>
+
+          <div class="deep-dive" id="deep-dive-4">
+            <div class="deep-dive-header">
+              <span class="deep-dive-tag">{{chapter_4_tag}}</span>
+              <span class="deep-dive-topic">{{chapter_4_topic}}</span>
+            </div>
+            <h4 class="deep-dive-title">{{chapter_4_title}}</h4>
+            <div class="deep-dive-point">
+              <div class="point-label"><span class="dot"></span>{{chapter_4_point_1_label}}</div>
+              <p class="point-text">{{chapter_4_point_1_text}}</p>
+            </div>
+            <div class="deep-dive-point highlight">
+              <div class="point-label"><span class="dot"></span>{{chapter_4_point_2_label}}</div>
+              <p class="point-text">{{chapter_4_point_2_text}}</p>
+            </div>
+            <div class="deep-dive-point" data-requires="chapter_4_point_3_label,chapter_4_point_3_text">
+              <div class="point-label"><span class="dot"></span>{{chapter_4_point_3_label}}</div>
+              <p class="point-text">{{chapter_4_point_3_text}}</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="broadside-sidebar">
+          <div class="editor-quote-card">
+            <div class="editor-quote-header">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              编辑短评
+            </div>
+            <p class="editor-quote-text">{{editor_quote}}</p>
+            <div class="editor-quote-author">{{editor_name}} · {{editor_role}}</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SOURCES
+         ============================================================ -->
+    <section id="section-sources" class="content-section tint-cool">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-number">03</span>
+          <div>
+            <h2 class="section-title">信源与证据</h2>
+            <p class="section-desc">多源交叉验证 · 可追溯</p>
+          </div>
+        </div>
+        <span class="section-meta" id="sources-count-label"></span>
+      </div>
+
+      <div class="sources-filter" id="sources-filter" role="group" aria-label="按来源筛选">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="sources-grid" id="sources-grid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="sources-expand-bar" id="sources-expand-bar">
+        <button class="btn-expand-sources" id="btn-expand-sources" onclick="toggleExpandSources()"
+                aria-expanded="false" aria-controls="sources-grid">
+          展开全部
+        </button>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RADAR
+         ============================================================ -->
+    <section id="section-radar" class="content-section tint-warm">
+      <div class="section-header">
+        <div class="section-title-group">
+          <span class="section-number alt">04</span>
+          <div>
+            <h2 class="section-title">GitHub 项目雷达</h2>
+            <p class="section-desc">严苛收录 · 过滤噪音与短期投机</p>
+          </div>
+        </div>
+        <span class="section-meta">今日状态：{{radar_status_label}}</span>
+      </div>
+
+      <div class="radar-card">
+        <div class="radar-empty-state" id="radar-empty">
+          <div class="radar-visual">
+            <canvas id="radarCanvas" class="radar-canvas" width="140" height="140" aria-hidden="true"></canvas>
+          </div>
+          <h3 class="radar-headline">{{radar_headline}}</h3>
+          <p class="radar-paragraph">{{radar_paragraph}}</p>
+          <div class="radar-meta-line" data-requires="candidate_count,excluded_recent">
+            <span>扫描候选 <strong>{{candidate_count}}</strong> 个</span>
+            <span class="sep">·</span>
+            <span>近期已收录排除 <strong>{{excluded_recent}}</strong> 个</span>
+            <span class="sep">·</span>
+            <span>{{radar_reason}}</span>
+          </div>
+          <!-- 候选审计明细入口（Rendered by JS；老期只给口径说明） -->
+          <div class="radar-empty-actions" id="radar-empty-actions" hidden>
+            <button type="button" class="btn-radar-candidates" id="btn-radar-candidates"
+                    aria-expanded="false" aria-controls="radar-candidates-panel"
+                    onclick="toggleRadarCandidates()">
+              <span aria-hidden="true">📋</span> 查看今日候选池口径
+            </button>
+          </div>
+          <div class="radar-candidates-panel" id="radar-candidates-panel" hidden></div>
+        </div>
+
+        <div class="radar-pick-state" id="radar-pick" hidden>
+          <div class="radar-pick-head">
+            <h3 class="radar-pick-name">{{radar_pick_repo}}</h3>
+            <span class="radar-pick-growth" data-requires="radar_pick_growth">近 7 日 ★ +{{radar_pick_growth}}/天</span>
+          </div>
+          <div class="radar-pick-meta">
+            <span>{{radar_pick_lang}}</span>
+            <span class="sep">·</span>
+            <span class="radar-pick-stars">★ {{radar_pick_stars}}</span>
+            <span class="sep">·</span>
+            <span>{{radar_pick_license}}</span>
+          </div>
+          <p class="radar-pick-desc">{{radar_pick_desc}}</p>
+          <div class="radar-pick-action">
+            <a href="{{radar_pick_url}}" target="_blank" rel="noopener">在 GitHub 查看 ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       DOCKED PLAYER
+       ============================================================ -->
+  <div class="docked-player">
+    <div class="player-inner">
+      <div class="player-info">
+        <div class="player-disc">
+          <div class="disc-bars">
+            <div class="disc-bar"></div>
+            <div class="disc-bar"></div>
+            <div class="disc-bar"></div>
+            <div class="disc-bar"></div>
+            <div class="disc-bar"></div>
+          </div>
+        </div>
+        <div class="player-text">
+          <div class="player-title">{{podcast_title}}</div>
+          <div class="player-subtitle">{{player_subtitle}}</div>
+          <div class="player-time"><span id="player-current">00:00</span><span class="player-time-sep">/</span><span id="player-total">{{podcast_duration}}</span></div>
+        </div>
+      </div>
+      <div class="player-controls">
+        <button class="player-btn" onclick="seek(-15)" aria-label="后退 15 秒">
+          <svg viewBox="0 0 24 24"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        </button>
+        <button class="player-btn play" onclick="togglePlay()" aria-label="播放" aria-pressed="false">
+          <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+        <button class="player-btn" onclick="seek(15)" aria-label="前进 15 秒">
+          <svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        </button>
+        <button class="player-transcript-btn" onclick="openDrawer()">逐字稿</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TRANSCRIPT DRAWER
+       ============================================================ -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+  <aside class="transcript-drawer" id="transcript-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-heading" aria-hidden="true">
+    <div class="drawer-header">
+      <h3 class="drawer-title" id="drawer-heading">本期逐字稿</h3>
+      <button class="drawer-close" onclick="closeDrawer()" aria-label="关闭">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="drawer-body" id="transcript-body">
+      <!-- Rendered by JS -->
+    </div>
+  </aside>
+
+<script id="site-data" type="application/json">{"dates": ["2026-11-05", "2026-10-27", "2026-10-25", "2026-10-24", "2026-10-23", "2026-10-22", "2026-10-21", "2026-10-20", "2026-10-19", "2026-10-18", "2026-10-17", "2026-10-16", "2026-10-15", "2026-10-14", "2026-10-13", "2026-10-12", "2026-10-11", "2026-10-10", "2026-10-09", "2026-10-08", "2026-10-07", "2026-10-06", "2026-10-05", "2026-10-04", "2026-10-03", "2026-10-02", "2026-10-01", "2026-09-30", "2026-09-29", "2026-09-28"], "episodes": {"2026-11-05": {"title": "今日AI看点 | 2026-11-05", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-05.mp3"}, "2026-10-27": {"title": "AI 新闻快报 | 2026-10-27", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-27.mp3"}, "2026-10-25": {"title": "AI 新闻快报 | 2026-10-25", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-25.mp3"}, "2026-10-24": {"title": "AI 新闻快报 | 2026-10-24", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-24.mp3"}, "2026-10-23": {"title": "AI 新闻快报 | 2026-10-23", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-23.mp3"}, "2026-10-22": {"title": "AI 新闻快报 | 2026-10-22", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-22.mp3"}, "2026-10-21": {"title": "AI 新闻快报 | 2026-10-21", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-21.mp3"}, "2026-10-20": {"title": "AI 新闻快报 | 2026-10-20", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-20.mp3"}, "2026-10-19": {"title": "AI 新闻快报 | 2026-10-19", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-19.mp3"}, "2026-10-18": {"title": "AI 新闻快报 | 2026-10-18", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-18.mp3"}, "2026-10-17": {"title": "AI 新闻快报 | 2026-10-17", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-17.mp3"}, "2026-10-16": {"title": "AI 新闻快报 | 2026-10-16", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-16.mp3"}, "2026-10-15": {"title": "AI 新闻快报 | 2026-10-15", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-15.mp3"}, "2026-10-14": {"title": "AI 新闻快报 | 2026-10-14", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-14.mp3"}, "2026-10-13": {"title": "AI 新闻快报 | 2026-10-13", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-13.mp3"}, "2026-10-12": {"title": "AI 新闻快报 | 2026-10-12", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-12.mp3"}, "2026-10-11": {"title": "AI 新闻快报 | 2026-10-11", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-11.mp3"}, "2026-10-10": {"title": "AI 新闻快报 | 2026-10-10", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-10.mp3"}, "2026-10-09": {"title": "AI 新闻快报 | 2026-10-09", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-09.mp3"}, "2026-10-08": {"title": "AI 新闻快报 | 2026-10-08", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-08.mp3"}, "2026-10-07": {"title": "AI 新闻快报 | 2026-10-07", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-07.mp3"}, "2026-10-06": {"title": "AI 新闻快报 | 2026-10-06", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-06.mp3"}, "2026-10-05": {"title": "AI 新闻快报 | 2026-10-05", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-05.mp3"}, "2026-10-04": {"title": "AI 新闻快报 | 2026-10-04", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-04.mp3"}, "2026-10-03": {"title": "AI 新闻快报 | 2026-10-03", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-03.mp3"}, "2026-10-02": {"title": "AI 新闻快报 | 2026-10-02", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-02.mp3"}, "2026-10-01": {"title": "AI 新闻快报 | 2026-10-01", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-01.mp3"}, "2026-09-30": {"title": "AI 新闻快报 | 2026-09-30", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-09-30.mp3"}, "2026-09-29": {"title": "AI 新闻快报 | 2026-09-29", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-09-29.mp3"}, "2026-09-28": {"title": "AI 新闻快报 | 2026-09-28", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-09-28.mp3"}}}</script>
+<script>
+/* ============================================================
+   数据装配：从 digest JSON 映射为设计稿 v23 的注入字段
+   ============================================================ */
+    const SITE_DATA = (function () {
+      try {
+        var node = document.getElementById('site-data');
+        return node ? JSON.parse(node.textContent) : { dates: [] };
+      } catch (e) {
+        return { dates: [] };
+      }
+    })();
+
+    let ISSUE_ORDER = Array.isArray(SITE_DATA.dates) ? SITE_DATA.dates.slice() : [];
+    let DATA = {};
+    let PLAYLIST_CHUNKS = [];
+    let audioBroken = false;
+
+    /* 所有动态文本进入 innerHTML 前必须转义：信源标题/摘要来自外部 RSS，属不可信输入 */
+    function escapeHtml(value) {
+      return String(value == null ? '' : value)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    const SOURCE_BADGE_KEYS = {
+      'OpenAI': 'openai',
+      'Google': 'google',
+      'NVIDIA': 'nvidia',
+      'arXiv 论文': 'arxiv',
+      'Hacker News': 'industry',
+      '科技媒体': 'industry'
+    };
+    const POINT_LABELS = ['事件背景', '核心突破', '深远影响'];
+
+    async function fetchJson(url) {
+      const response = await fetch(url, { cache: 'no-cache' });
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      return response.json();
+    }
+
+    function clockText(seconds) {
+      const value = Math.max(0, Math.round(Number(seconds) || 0));
+      const mm = String(Math.floor(value / 60)).padStart(2, '0');
+      const ss = String(value % 60).padStart(2, '0');
+      return mm + ':' + ss;
+    }
+
+    function cleanReportTitle(title) {
+      return String(title || '')
+        .replace(/^[✨\s]+/, '')
+        .replace(/\s*\|\s*/g, ' · ')
+        .trim();
+    }
+
+    function cleanHeading(heading) {
+      return String(heading || '')
+        .replace(/^[一二三四五六七八九十]+、\s*/, '')
+        .replace(/^[0-9]+[.、]\s*/, '')
+        .trim();
+    }
+
+    /* 章节短标签：英文标题按词边界截断，避免出现 "Third Moment Resear" 这类半截单词 */
+    function truncateTag(tag, limit) {
+      const text = String(tag || '').trim();
+      if (text.length <= limit) return text;
+      const cut = text.slice(0, limit);
+      const boundary = cut.lastIndexOf(' ');
+      return (boundary > 0 ? cut.slice(0, boundary) : cut).replace(/[\s.&+·_-]+$/, '');
+    }
+
+    function chapterTag(heading) {
+      const text = cleanHeading(heading);
+      /* 英文/带变音符的拉丁开头：取开头连续拉丁词（到中文/标点为止），按词边界截断 */
+      const latin = text.match(/^[A-Za-z\u00C0-\u024F][A-Za-z0-9\u00C0-\u024F .&+·_-]{1,24}/);
+      if (latin) return truncateTag(latin[0], 16);
+      /* 中文标题：取冒号前的短标签，最多 6 字（与旧实现一致，避免胶囊过长） */
+      const colon = text.search(/[：:]/);
+      if (colon > 0) return text.slice(0, colon).trim().slice(0, 6);
+      return text.slice(0, 6);
+    }
+
+    function chapterTopic(heading) {
+      const text = cleanHeading(heading);
+      const colon = text.search(/[：:]/);
+      let rest;
+      if (colon > 0) {
+        /* 有冒号时取冒号后的话题短语（如 "Third Moment Research：1 万智能体…" → "1 万智能体"） */
+        rest = text.slice(colon + 1);
+      } else {
+        rest = text.slice(chapterTag(heading).length).replace(/^[\s，、：:·\-—]+/, '');
+      }
+      rest = rest.trim();
+      const cut = rest.search(/[，。！？；：,.:;!?、]/);
+      if (cut > 0) rest = rest.slice(0, cut);
+      rest = rest.trim();
+      /* 剩余过短（如 "ch"）时不渲染，避免出现无意义的话题标签 */
+      if (rest.length < 2) return '';
+      return rest.length > 12 ? rest.slice(0, 12) + '…' : rest;
+    }
+
+    function shortTopic(heading) {
+      const text = cleanHeading(heading);
+      const cut = text.search(/[，。！？；：,.:;!?]/);
+      const label = cut > 0 ? text.slice(0, cut) : text;
+      return label.length > 10 ? label.slice(0, 10) + '…' : label;
+    }
+
+    function formatStars(stars) {
+      const value = Number(stars);
+      if (!isFinite(value)) return String(stars || '');
+      if (value >= 1000) return (value / 1000).toFixed(1).replace(/\.0$/, '') + 'k';
+      return String(value);
+    }
+
+    /* README 首段是 Markdown/HTML 混排（含 badge、&nbsp;、**强调**），落成纯文本再截断 */
+    function cleanReadmeText(value) {
+      let text = String(value || '');
+      text = text.replace(/<[^>]+>/g, ' ');
+      text = text.replace(/&nbsp;/gi, ' ').replace(/&amp;/gi, '&')
+        .replace(/&lt;/gi, '<').replace(/&gt;/gi, '>').replace(/&quot;/gi, '"');
+      text = text.replace(/!\[[^\]]*\]\([^)]*\)/g, ' ');
+      text = text.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1');
+      text = text.replace(/[*_`#>]+/g, '');
+      text = text.replace(/\s+/g, ' ').trim();
+      if (!text) return '';
+      return text.length > 220 ? text.slice(0, 220) + '…' : text;
+    }
+
+    function digestToData(digest, playlist) {
+      const d = digest || {};
+      const date = String(d.date || '');
+      const podcast = d.podcast || {};
+      const hosts = podcast.hosts || [];
+      const chapters = d.chapters || [];
+      const report = d.report || {};
+      const dives = (report.deep_dives || []).slice(0, 4);
+      const editorName = (hosts[0] && hosts[0].name) || '林夏';
+      /* 设计稿的播客卡标题 = 当日头条（不是「品牌 | 日期」）；没有日报章节时退回期标题 */
+      const headline = cleanHeading((dives[0] && dives[0].heading) || '');
+      const data = {
+        issue_number: date,
+        issue_date: date,
+        issue_tagline: 'AI 前沿 · 每日一刊',
+        demo_note: '',
+        podcast_title: headline || podcast.title || ('今日AI看点 | ' + date),
+        podcast_subtitle: podcast.subtitle || '双主持对谈',
+        player_subtitle: '今日AI看点 · ' + date,
+        podcast_duration: podcast.duration_label || '--:--',
+        podcast_audio_url: podcast.mp3_url || ('./episodes/' + date + '.mp3'),
+        podcast_chapter_count: String(chapters.length || dives.length || 0),
+        host_a_name: (hosts[0] && hosts[0].name) || '林夏',
+        host_b_name: (hosts[1] && hosts[1].name) || '陈默',
+        lead_quote: (d.lead && d.lead.text) || '',
+        report_word_count: String(report.char_count || 0),
+        report_read_minutes: String(report.reading_minutes || 0),
+        report_pill: '深度研判',
+        report_title: cleanReportTitle(report.title || ''),
+        editor_quote: report.editor_verdict || (d.lead && d.lead.text) || '',
+        editor_name: editorName,
+        editor_role: '主编'
+      };
+
+      /* 指标按 digest 的 metric.key 映射到设计四槽位；四键齐全时用键映射，否则退回位置映射 */
+      const METRIC_SLOT_BY_KEY = {
+        deduped_items: 'sources',
+        main_stories: 'hours',
+        podcast_segments: 'speedup',
+        media_outlets: 'items'
+      };
+      const METRIC_SLOTS = ['sources', 'hours', 'speedup', 'items'];
+      const metrics = d.metrics || [];
+      const metricBySlot = {};
+      metrics.forEach(function (metric) {
+        const slot = METRIC_SLOT_BY_KEY[metric && metric.key];
+        if (slot) metricBySlot[slot] = metric;
+      });
+      const keyedMetrics = Object.keys(metricBySlot).length === METRIC_SLOTS.length;
+      METRIC_SLOTS.forEach(function (slot, index) {
+        const metric = (keyedMetrics ? metricBySlot[slot] : metrics[index]) || {};
+        data['metric_' + slot + '_value'] = metric.value != null ? String(metric.value) : '';
+        data['metric_' + slot + '_unit'] = metric.unit || '';
+        data['metric_' + slot + '_label'] = metric.label || '';
+      });
+
+      for (let n = 1; n <= 4; n += 1) {
+        const dive = dives[n - 1] || {};
+        const title = cleanHeading(dive.heading || '');
+        const points = [
+          dive.background || '',
+          dive.breakthrough || '',
+          dive.impact || ''
+        ];
+        /* raw_sections 是日报里未被结构化的段落：按顺序填进空缺的要点位，避免整段塞进第 3 点 */
+        (Array.isArray(dive.raw_sections) ? dive.raw_sections : []).forEach(function (section) {
+          const text = String(section || '').trim();
+          if (!text) return;
+          const emptyIndex = points.findIndex(function (point) { return !String(point || '').trim(); });
+          if (emptyIndex >= 0) points[emptyIndex] = text;
+        });
+        data['chapter_' + n + '_title'] = title;
+        data['chapter_' + n + '_tag'] = title ? chapterTag(title) : '';
+        data['chapter_' + n + '_topic'] = title ? chapterTopic(title) : '';
+        for (let m = 1; m <= 3; m += 1) {
+          data['chapter_' + n + '_point_' + m + '_label'] = points[m - 1] ? POINT_LABELS[m - 1] : '';
+          data['chapter_' + n + '_point_' + m + '_text'] = points[m - 1] || '';
+        }
+      }
+
+      /* 信源不再前端截断到 30 条：digest 已按角色筛过（上限 150），条数以实际入库为准 */
+      const sourceItems = (d.sources || {}).items || [];
+      data.sources_total_all = String((d.sources || {}).total_all || sourceItems.length || 0);
+      data.sources_list = JSON.stringify(sourceItems.map(function (item) {
+        return {
+          badge: SOURCE_BADGE_KEYS[item.group] || 'industry',
+          badge_label: item.source_name || item.publisher || '',
+          meta: String(item.published_at || '').slice(0, 10) || date,
+          title: item.title || '',
+          summary: item.summary || '',
+          url: item.link || ''
+        };
+      }));
+
+      const radar = d.radar || {};
+      const candidates = radar.candidates || {};
+      const pick = radar.pick || null;
+      const radarAvailable = radar.available !== false;
+      data.radar_available = radarAvailable;
+      data.radar_status_label = !radarAvailable
+        ? '该期无雷达'
+        : (pick ? '有主推项目' : '无主推项目');
+      if (!radarAvailable) {
+        /* 该期没有雷达数据：走独立空态，不伪装成「轮空主推」 */
+        data.radar_headline = String(radar.message || '该期暂无项目雷达');
+        data.radar_paragraph = '项目雷达自 2026 年 10 月上线，此前各期不含该项目数据。';
+        data.radar_reason = '';
+        data.candidate_count = '';
+        data.excluded_recent = '';
+      } else {
+        data.radar_headline = pick
+          ? '今日候选池命中达标项目'
+          : '今日候选池经多轮筛查，未检出达标项目';
+        data.radar_paragraph = pick
+          ? '本栏目每日严选 1 个具备重大架构革新且增速稳定的开源项目。今日主推仓库经工程稳定性、重复收录排查与实际代码审查后入选。'
+          : '本栏目每日严选 1 个具备重大架构革新且近 7 日 Star 增速稳定突破 300/天的优质开源项目。今日全网扫描了一批候选仓库，经工程稳定性、重复收录排查及实际代码审查，均处于评估观察期或版本迁移期，编辑部决定今日宁缺毋滥、轮空主推。';
+        data.radar_reason = pick ? '编辑部一致通过' : '宁缺毋滥、轮空主推';
+        data.candidate_count = String(candidates.total != null ? candidates.total : (radar.runner_ups || []).length || 0);
+        data.excluded_recent = String(candidates.excluded_recent != null ? candidates.excluded_recent : 0);
+      }
+      data.radar_candidates_total = data.candidate_count;
+      data.radar_candidates_semantics = String(candidates.semantics || '');
+      data.radar_candidates_preview = JSON.stringify(
+        Array.isArray(candidates.preview) ? candidates.preview.slice(0, 20) : []
+      );
+      data.radar_candidates_detail_available = candidates.detail_available === true;
+      data.radar_pick_repo = pick ? String(pick.repo || '') : '';
+      data.radar_pick_lang = pick ? String(pick.language || '') : '';
+      data.radar_pick_stars = pick ? formatStars(pick.stars) : '';
+      data.radar_pick_growth = pick ? String(pick.delta_stars == null ? '' : pick.delta_stars) : '';
+      data.radar_pick_license = pick ? String(pick.license || '') : '';
+      /* 优先用 GitHub 仓库描述（干净一句话）；readme 首段只做兜底并清成纯文本 */
+      data.radar_pick_desc = pick
+        ? String(pick.description || '').trim() || cleanReadmeText(pick.readme_intro)
+        : '';
+      data.radar_pick_url = pick ? String(pick.url || '') : '';
+
+      const chunks = (playlist && playlist.chunks) || [];
+      data.transcript_list = JSON.stringify(chunks.map(function (chunk) {
+        return {
+          speaker: chunk.host || 'A',
+          time: clockText(chunk.start),
+          text: chunk.text || ''
+        };
+      }));
+
+      return data;
+    }
+
+    function applyPostHydrateChrome() {
+      const stamp = document.querySelector('.stamp-date');
+      if (stamp) stamp.textContent = (DATA.issue_date || '') + ' · 今日AI看点';
+    }
+
+    function applyConditionalBlocks() {
+      for (let n = 1; n <= 4; n += 1) {
+        const hasTitle = !!(DATA['chapter_' + n + '_title'] || '').trim();
+        const block = document.getElementById('deep-dive-' + n);
+        if (block) block.hidden = !hasTitle;
+        const link = document.querySelectorAll('.broadside-toc-link')[n - 1];
+        if (link) link.hidden = !hasTitle;
+      }
+      document.querySelectorAll('.metric-item').forEach(function (item) {
+        const value = item.querySelector('.metric-value');
+        const text = value ? value.textContent.trim() : '';
+        item.hidden = !text;
+      });
+      /* 要点/话题为空时整块隐藏：日报结构不完整时不再留空高亮框 */
+      document.querySelectorAll('.deep-dive-point').forEach(function (point) {
+        const text = point.querySelector('.point-text');
+        point.hidden = !(text && text.textContent.trim());
+      });
+      document.querySelectorAll('.deep-dive-topic, .deep-dive-tag').forEach(function (node) {
+        node.hidden = !node.textContent.trim();
+      });
+      /* 雷达主推卡：语言/Star/许可证缺省时隐藏，避免只剩「· ·」 */
+      document.querySelectorAll('.radar-pick-meta > span:not(.sep)').forEach(function (node) {
+        node.hidden = !node.textContent.trim();
+      });
+    }
+
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme') || 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateThemeUI(next);
+    }
+    function updateThemeUI(theme) {
+      const label = document.getElementById('theme-label');
+      const icon = document.getElementById('theme-icon');
+      if (label) label.textContent = theme === 'dark' ? '浅色' : '深色';
+      if (icon) {
+        /* 图标表示「点击后切到哪套主题」：深色时显示太阳，浅色时显示月亮 */
+        icon.innerHTML = theme === 'dark'
+          ? '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
+          : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+      }
+    }
+    /* update on load */
+    (function() { updateThemeUI(document.documentElement.getAttribute('data-theme') || 'light'); })();
+    let isPlaying = false;
+    let sourcesExpanded = false;
+    let sourceFilter = 'all';
+    let playTimer = null;
+    let currentTime = 0;
+    let audioEl = null;
+    let audioDuration = 0;
+
+    const PLAY_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+    const PAUSE_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>';
+
+    /* 有 podcast_audio_url 时走真实音频；没有时退化为模拟时钟，保证时间码与前后 15 秒可感知 */
+    function audioUrl() {
+      const u = DATA.podcast_audio_url;
+      if (typeof u !== 'string') return '';
+      const t = u.trim();
+      return (!t || t.startsWith('{{')) ? '' : t;
+    }
+    function hasAudio() { return !!audioUrl() && !audioBroken; }
+
+    /* 音频代际：切期释放旧 audio 时递增，旧元素的异步事件不再污染新一期的状态 */
+    let audioGeneration = 0;
+
+    function releaseAudio() {
+      audioGeneration += 1;
+      if (!audioEl) return;
+      const stale = audioEl;
+      audioEl = null;
+      stale.pause();
+      stale.removeAttribute('src');
+      try { stale.load(); } catch (e) { /* 旧浏览器忽略 */ }
+    }
+
+    function ensureAudio() {
+      const url = audioUrl();
+      if (!url || audioBroken) return null;
+      if (audioEl && audioEl.dataset.src === url) return audioEl;
+      releaseAudio();
+      const generation = audioGeneration;
+      const el = new Audio(url);
+      audioEl = el;
+      el.dataset.src = url;
+      el.preload = 'metadata';
+      const isCurrent = function () { return generation === audioGeneration && audioEl === el; };
+      el.addEventListener('loadedmetadata', function() {
+        if (!isCurrent()) return;
+        if (isFinite(el.duration)) { audioDuration = el.duration; renderClock(); }
+      });
+      el.addEventListener('timeupdate', function() {
+        if (!isCurrent()) return;
+        currentTime = el.currentTime;
+        renderClock();
+      });
+      el.addEventListener('ended', function() { if (isCurrent()) setPlaying(false); });
+      el.addEventListener('error', function() {
+        /* 音频缺失（本地预览 / 网络异常）时退化为模拟时钟，播放按钮仍可用 */
+        if (!isCurrent()) return;
+        const wasPlaying = isPlaying;
+        audioBroken = true;
+        audioEl = null;
+        if (wasPlaying) startClock();
+      });
+      return el;
+    }
+
+    function durationSeconds() {
+      if (hasAudio()) {
+        if (audioDuration) return audioDuration;
+        if (audioEl && isFinite(audioEl.duration)) return audioEl.duration;
+      }
+      const parts = String(DATA.podcast_duration || '').split(':').map(Number);
+      return parts.length === 2 && parts.every(n => !isNaN(n)) ? parts[0] * 60 + parts[1] : 0;
+    }
+    function formatClock(sec) {
+      if (!isFinite(sec)) return '00:00';
+      const s = Math.max(0, Math.round(sec));
+      return String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+    }
+    function renderClock() {
+      const cur = document.getElementById('player-current');
+      if (cur) cur.textContent = formatClock(currentTime);
+      const total = document.getElementById('player-total');
+      if (total) {
+        const totalSec = durationSeconds();
+        total.textContent = totalSec ? formatClock(totalSec) : (DATA.podcast_duration || '00:00');
+      }
+    }
+    function seek(delta) {
+      if (audioEl && isFinite(audioEl.duration)) {
+        audioEl.currentTime = Math.max(0, Math.min(audioEl.currentTime + delta, audioEl.duration));
+        currentTime = audioEl.currentTime;
+      } else {
+        const total = durationSeconds();
+        currentTime = Math.max(0, Math.min(currentTime + delta, total || currentTime));
+      }
+      renderClock();
+    }
+    function stopClock() {
+      if (playTimer) { clearInterval(playTimer); playTimer = null; }
+    }
+    function startClock() {
+      stopClock();
+      playTimer = setInterval(function() {
+        const total = durationSeconds();
+        if (total && currentTime >= total) { setPlaying(false); return; }
+        currentTime = total ? Math.min(currentTime + 1, total) : currentTime + 1;
+        renderClock();
+      }, 1000);
+    }
+
+    /* 首屏与底部播放器共用一个播放状态，任何一处点击后两处按钮同步 */
+    function togglePlay() { setPlaying(!isPlaying); }
+
+    function setPlaying(next) {
+      isPlaying = next;
+
+      document.querySelectorAll('.podcast-disc, .player-disc')
+        .forEach(d => d.classList.toggle('is-playing', isPlaying));
+
+      const heroBtn = document.querySelector('.btn-play-primary');
+      if (heroBtn) {
+        heroBtn.innerHTML = isPlaying ? PAUSE_ICON + ' 暂停' : PLAY_ICON + ' 播放本期';
+        heroBtn.setAttribute('aria-pressed', String(isPlaying));
+      }
+
+      const dockBtn = document.querySelector('.player-btn.play');
+      if (dockBtn) {
+        dockBtn.innerHTML = isPlaying ? PAUSE_ICON : PLAY_ICON;
+        dockBtn.setAttribute('aria-label', isPlaying ? '暂停' : '播放');
+        dockBtn.setAttribute('aria-pressed', String(isPlaying));
+      }
+
+      if (isPlaying) {
+        const a = ensureAudio();
+        if (a) {
+          stopClock();
+          if (currentTime) a.currentTime = Math.min(currentTime, isFinite(a.duration) ? a.duration : currentTime);
+          const p = a.play();
+          if (p && p.catch) p.catch(function(error) {
+            if (error && error.name === 'NotAllowedError') {
+              /* 自动播放被拦截时保持暂停态 */
+              setPlaying(false);
+              return;
+            }
+            /* 音频缺失（本地预览 / CDN 异常）→ 模拟时钟，保证可试听交互 */
+            audioBroken = true;
+            audioEl = null;
+            if (isPlaying) startClock();
+          });
+        } else {
+          startClock();
+        }
+      } else {
+        if (audioEl) audioEl.pause();
+        stopClock();
+      }
+    }
+
+    let drawerReturnFocus = null;
+    function drawerElement() { return document.getElementById('transcript-drawer'); }
+
+    function openDrawer() {
+      drawerReturnFocus = document.activeElement;
+      const drawer = drawerElement();
+      if (!drawer) return;
+      drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      document.getElementById('drawer-overlay').classList.add('visible');
+      document.body.style.overflow = 'hidden';
+      const closeBtn = document.querySelector('.drawer-close');
+      if (closeBtn) closeBtn.focus();
+    }
+    function closeDrawer() {
+      const drawer = drawerElement();
+      if (!drawer || !drawer.classList.contains('open')) return;
+      drawer.classList.remove('open');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.getElementById('drawer-overlay').classList.remove('visible');
+      document.body.style.overflow = '';
+      if (drawerReturnFocus && typeof drawerReturnFocus.focus === 'function') {
+        drawerReturnFocus.focus();
+      }
+      drawerReturnFocus = null;
+    }
+    function trapDrawerFocus(event) {
+      const drawer = drawerElement();
+      if (!drawer || !drawer.classList.contains('open')) return;
+      const focusable = Array.from(drawer.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      )).filter(function(node) { return !node.disabled && node.offsetParent !== null; });
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { closeDrawer(); return; }
+      if (e.key === 'Tab') trapDrawerFocus(e);
+    });
+
+    function toggleExpandSources() {
+      sourcesExpanded = !sourcesExpanded;
+      renderSources();
+    }
+
+    /* ISSUE_ORDER 为「新 → 旧」排列：上一期 = 更旧（索引 +1），下一期 = 更新（索引 -1） */
+    function stepIssue(delta) {
+      const idx = ISSUE_ORDER.indexOf(DATA.issue_number);
+      const next = idx + delta;
+      if (idx < 0 || next < 0 || next >= ISSUE_ORDER.length) return;
+      switchIssue(ISSUE_ORDER[next]);
+    }
+
+    function updateDateNav() {
+      const idx = ISSUE_ORDER.indexOf(DATA.issue_number);
+      const prevBtn = document.getElementById('btn-prev-issue');
+      const nextBtn = document.getElementById('btn-next-issue');
+      if (prevBtn) prevBtn.disabled = idx >= ISSUE_ORDER.length - 1;
+      if (nextBtn) nextBtn.disabled = idx <= 0;
+    }
+
+    /* 切期请求令牌：快速连点时只应用最后一次请求的结果 */
+    let loadToken = 0;
+
+    async function loadIssue(id) {
+      if (!id || ISSUE_ORDER.indexOf(id) === -1) return;
+      if (DATA.issue_date === id) return;
+      const token = ++loadToken;
+      let digest;
+      let playlist = null;
+      try {
+        digest = await fetchJson('./data/digest_' + id + '.json');
+      } catch (error) {
+        console.warn('digest load failed', id, error);
+        return;
+      }
+      if (token !== loadToken) return;
+      try {
+        playlist = await fetchJson('./episodes/' + id + '/playlist.json');
+      } catch (error) {
+        playlist = { chunks: [] };
+      }
+      if (token !== loadToken) return;
+      DATA = digestToData(digest, playlist);
+      PLAYLIST_CHUNKS = (playlist && playlist.chunks) || [];
+      sourcesExpanded = false;
+      sourceFilter = 'all';
+      currentTime = 0;
+      audioBroken = false;
+      releaseAudio();
+      audioDuration = 0;
+      setPlaying(false);
+      renderClock();
+      hydrate();
+      applyPostHydrateChrome();
+      applyConditionalBlocks();
+      closeArchive();
+      renderDatePills();
+      updateDateNav();
+      renderHosts();
+      renderSourceFilters();
+      renderSources();
+      renderTranscript();
+      renderRadar();
+      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+
+    function switchIssue(id) { return loadIssue(id); }
+
+    /* Render date pills — 最近 6 期直接展示，其余收进「历史归档」下拉（30 期不撑爆日期轴） */
+    const DATE_PILL_LIMIT = 6;
+
+    function issuePill(id) {
+      const label = String(id).slice(5);
+      const active = id === DATA.issue_date;
+      return '<button class="date-pill' + (active ? ' active' : '') + '"' +
+        ' onclick="selectIssue(\'' + escapeHtml(id) + '\')" aria-pressed="' + active + '">' +
+        escapeHtml(label) + '</button>';
+    }
+
+    function renderDatePills() {
+      const container = document.getElementById('date-pills');
+      if (!container) return;
+      let visible = ISSUE_ORDER.slice(0, DATE_PILL_LIMIT);
+      /* 当前期不在最近 6 期时也保留一颗激活胶囊，否则用户看不到自己在哪一期 */
+      if (DATA.issue_date && ISSUE_ORDER.indexOf(DATA.issue_date) >= DATE_PILL_LIMIT) {
+        visible = [DATA.issue_date].concat(visible.slice(0, DATE_PILL_LIMIT - 1));
+      }
+      const archive = ISSUE_ORDER.length > visible.length
+        ? '<button type="button" class="date-pill date-archive" id="date-archive"' +
+          ' aria-expanded="false" aria-haspopup="true" onclick="toggleArchive(event)">历史归档 ▾</button>'
+        : '';
+      container.innerHTML = visible.map(issuePill).join('') + archive;
+
+      const panel = document.getElementById('date-archive-panel');
+      if (panel) {
+        panel.innerHTML = ISSUE_ORDER.map(function (id) {
+          return '<button type="button" class="archive-item' +
+            (id === DATA.issue_date ? ' active' : '') + '" data-date="' + escapeHtml(id) + '"' +
+            ' onclick="selectIssue(\'' + escapeHtml(id) + '\')">' + escapeHtml(id) + '</button>';
+        }).join('');
+      }
+    }
+
+    function closeArchive() {
+      const panel = document.getElementById('date-archive-panel');
+      const button = document.getElementById('date-archive');
+      if (panel) panel.hidden = true;
+      if (button) button.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleArchive(event) {
+      if (event) event.stopPropagation();
+      const panel = document.getElementById('date-archive-panel');
+      const button = document.getElementById('date-archive');
+      if (!panel || !button) return;
+      const open = panel.hidden;
+      panel.hidden = !open;
+      button.setAttribute('aria-expanded', String(open));
+    }
+
+    document.addEventListener('click', function (event) {
+      const panel = document.getElementById('date-archive-panel');
+      const button = document.getElementById('date-archive');
+      if (!panel || panel.hidden) return;
+      if (panel.contains(event.target) || (button && button.contains(event.target))) return;
+      closeArchive();
+    });
+
+    const SOURCE_ORIGINS = {
+      'Google AI Blog': 'https://blog.google/technology/ai/',
+      'OpenAI Blog': 'https://openai.com/news/',
+      'Meta AI Blog': 'https://ai.meta.com/blog/',
+      'NVIDIA 官方博客': 'https://blogs.nvidia.com/',
+      'Hacker News': 'https://news.ycombinator.com/',
+      'TechCrunch': 'https://techcrunch.com/',
+      'arXiv': 'https://arxiv.org/',
+      google: 'https://blog.google/technology/ai/',
+      openai: 'https://openai.com/news/',
+      meta: 'https://ai.meta.com/blog/',
+      arxiv: 'https://arxiv.org/',
+      nvidia: 'https://blogs.nvidia.com/',
+      anthropic: 'https://www.anthropic.com/news'
+    };
+
+    function selectIssue(id) {
+      closeArchive();
+      return switchIssue(id);
+    }
+
+    const BADGE_LABELS = {
+      openai: 'OpenAI',
+      google: 'Google',
+      meta: 'Meta',
+      arxiv: 'arXiv',
+      anthropic: 'Anthropic',
+      nvidia: 'NVIDIA',
+      industry: '行业媒体'
+    };
+
+    function filteredSources() {
+      const all = safeParse(DATA.sources_list, []);
+      return sourceFilter === 'all'
+        ? all
+        : all.filter(s => (s.badge || 'industry') === sourceFilter);
+    }
+
+    /* 来源分类统计 + 筛选 */
+    function renderSourceFilters() {
+      const bar = document.getElementById('sources-filter');
+      if (!bar) return;
+      const all = safeParse(DATA.sources_list, []);
+      const counts = {};
+      all.forEach(s => {
+        const key = s.badge || 'industry';
+        counts[key] = (counts[key] || 0) + 1;
+      });
+      const chips = [{ key: 'all', label: '全部', count: all.length }].concat(
+        Object.keys(counts)
+          .sort((a, b) => counts[b] - counts[a])
+          .map(key => ({ key, label: BADGE_LABELS[key] || key, count: counts[key] }))
+      );
+      bar.innerHTML = chips.map(c =>
+        '<button type="button" class="source-filter-chip' + (sourceFilter === c.key ? ' active' : '') + '"' +
+        ' onclick="setSourceFilter(\'' + escapeHtml(c.key) + '\')" aria-pressed="' + (sourceFilter === c.key) + '">' +
+        escapeHtml(c.label) + '<span class="chip-count">' + escapeHtml(c.count) + '</span></button>'
+      ).join('');
+    }
+
+    function setSourceFilter(key) {
+      sourceFilter = key;
+      sourcesExpanded = false;
+      renderSources();
+      renderSourceFilters();
+    }
+
+    /* 外链白名单：只放行 http(s)，避免 RSS 里出现 javascript: 之类的伪协议 */
+    function safeHref(url) {
+      const value = String(url || '').trim();
+      return /^https?:\/\//i.test(value) ? value : '';
+    }
+
+    const SOURCE_BADGE_CLASSES = ['openai', 'anthropic', 'google', 'meta', 'arxiv', 'nvidia', 'industry'];
+    const SOURCE_PREVIEW = 6;
+
+    function sourceBadgeClass(badge) {
+      const key = String(badge || 'industry');
+      return SOURCE_BADGE_CLASSES.indexOf(key) >= 0 ? key : 'industry';
+    }
+
+    /* Render sources — 有 url 用 url，否则回落到来源站点首页 */
+    function renderSources() {
+      const grid = document.getElementById('sources-grid');
+      if (!grid) return;
+      const sources = filteredSources();
+      grid.innerHTML = sources.map((s, i) => {
+        const hidden = (i >= SOURCE_PREVIEW && !sourcesExpanded) ? ' style="display:none"' : '';
+        const href = safeHref(s.url) || SOURCE_ORIGINS[s.badge_label] || SOURCE_ORIGINS[s.badge] || '';
+        const title = s.title || '';
+        const summary = s.summary || '';
+        const inner =
+          '<div class="source-card-header">' +
+          '<span class="source-badge ' + sourceBadgeClass(s.badge) + '">' +
+          escapeHtml(s.badge_label) + '</span>' +
+          '<span class="source-meta">' + escapeHtml(s.meta) + '</span>' +
+          '</div>' +
+          '<div class="source-title">' + escapeHtml(title) + '</div>' +
+          (summary && summary !== title
+            ? '<div class="source-summary">' + escapeHtml(summary) + '</div>'
+            : '');
+        if (!href) return '<article class="source-card"' + hidden + '>' + inner + '</article>';
+        return '<a class="source-card" href="' + escapeHtml(href) + '" target="_blank" rel="noopener"' +
+          hidden + '>' + inner + '</a>';
+      }).join('');
+
+      const btn = document.getElementById('btn-expand-sources');
+      if (btn) {
+        btn.textContent = sourcesExpanded ? '收起信源' : '展开全部';
+        btn.setAttribute('aria-expanded', String(sourcesExpanded));
+        const bar = btn.closest('.sources-expand-bar');
+        if (bar) bar.hidden = sources.length <= SOURCE_PREVIEW;
+      }
+
+      const label = document.getElementById('sources-count-label');
+      if (label) label.textContent = sources.length + ' 条信源';
+    }
+
+    const RADAR_REASON_LABELS = {
+      selected: '本期主推',
+      score_rank: '评分排名靠后',
+      direction_gate: '方向闸门过滤',
+      recent_pick: '近 30 天已推荐',
+      probe_limit: '超出探测上限'
+    };
+
+    /* 候选审计明细：新数据渲染表格，老数据只给口径说明（fail-soft，不影响轮空态） */
+    function renderRadarCandidates() {
+      const actions = document.getElementById('radar-empty-actions');
+      const panel = document.getElementById('radar-candidates-panel');
+      const button = document.getElementById('btn-radar-candidates');
+      if (!actions || !panel || !button) return;
+      const preview = safeParse(DATA.radar_candidates_preview, []);
+      const rows = Array.isArray(preview) ? preview.filter(item => item && item.repo) : [];
+      const total = Number(DATA.radar_candidates_total) || rows.length;
+      const excluded = Number(DATA.excluded_recent) || 0;
+      const available = DATA.radar_candidates_detail_available === true && rows.length > 0;
+
+      actions.hidden = DATA.radar_available === false;
+      button.hidden = false;
+      button.setAttribute('aria-expanded', 'false');
+      panel.hidden = true;
+      if (actions.hidden) return;
+
+      if (available) {
+        button.innerHTML = '<span aria-hidden="true">📋</span> 查看今日参与评估的 ' +
+          escapeHtml(total) + ' 个候选项目明细';
+        panel.innerHTML = '<table><thead><tr><th>仓库</th><th>Stars</th><th>日增</th>' +
+          '<th>语言</th><th>未收录原因</th></tr></thead><tbody>' +
+          rows.map(function (item) {
+            const delta = item.delta_stars == null ? '—' : '+' + item.delta_stars;
+            const reason = RADAR_REASON_LABELS[item.exclusion_reason] || item.exclusion_reason || '—';
+            return '<tr><td class="radar-candidate-repo">' + escapeHtml(item.repo) +
+              '</td><td>' + escapeHtml(item.stars) + '</td><td>' + escapeHtml(delta) +
+              '</td><td>' + escapeHtml(item.language || '—') +
+              '</td><td><span class="radar-candidate-reason">' + escapeHtml(reason) +
+              '</span></td></tr>';
+          }).join('') +
+          '</tbody></table>';
+      } else {
+        button.innerHTML = '<span aria-hidden="true">📋</span> 查看今日候选池口径';
+        panel.innerHTML = '<p class="radar-candidates-note">该日期早于候选审计上线，暂无逐项明细。' +
+          '本期共扫描 ' + escapeHtml(total) + ' 个候选仓库，其中 ' + escapeHtml(excluded) +
+          ' 个为近 30 天已推荐或重复收录。</p>';
+      }
+    }
+
+    function toggleRadarCandidates() {
+      const panel = document.getElementById('radar-candidates-panel');
+      const button = document.getElementById('btn-radar-candidates');
+      if (!panel || !button) return;
+      const open = panel.hidden;
+      panel.hidden = !open;
+      button.setAttribute('aria-expanded', String(open));
+    }
+
+    /* 雷达：有主推数据时渲染主推卡，否则保留轮空态（轮空态带候选审计入口） */
+    function renderRadar() {
+      const empty = document.getElementById('radar-empty');
+      const pick = document.getElementById('radar-pick');
+      if (!empty || !pick) return;
+      const hasPick = !!(DATA.radar_pick_repo && String(DATA.radar_pick_repo).trim());
+      empty.hidden = hasPick;
+      pick.hidden = !hasPick;
+      const actions = document.getElementById('radar-empty-actions');
+      const panel = document.getElementById('radar-candidates-panel');
+      if (hasPick) {
+        if (actions) actions.hidden = true;
+        if (panel) panel.hidden = true;
+        stopRadar();
+      } else {
+        renderRadarCandidates();
+        startRadar();
+      }
+    }
+
+    /* 主持人由数据驱动，roster 与逐字稿头像共用同一份姓名 */
+    function hostInitial(name) {
+      return String(name || '').trim().slice(0, 1) || '·';
+    }
+    function renderHosts() {
+      const list = document.getElementById('host-roster-list');
+      if (!list) return;
+      list.innerHTML = [
+        { cls: 'host-a', name: DATA.host_a_name },
+        { cls: 'host-b', name: DATA.host_b_name }
+      ].filter(h => h.name && String(h.name).trim()).map(h =>
+        '<span class="host-identity">' +
+        '<span class="host-avatar ' + h.cls + '">' + escapeHtml(hostInitial(h.name)) + '</span>' +
+        '<span class="host-name">' + escapeHtml(h.name) + '</span>' +
+        '</span>'
+      ).join('');
+    }
+
+    /* Render transcript */
+    function renderTranscript() {
+      const body = document.getElementById('transcript-body');
+      if (!body) return;
+      const lines = safeParse(DATA.transcript_list, []);
+      body.innerHTML = lines.map(l => {
+        const isA = l.speaker === 'A';
+        const name = isA ? DATA.host_a_name : DATA.host_b_name;
+        return '<div class="transcript-line">' +
+          '<span class="transcript-speaker ' + (isA ? 'host-a' : 'host-b') + '">' +
+          escapeHtml(hostInitial(name)) + '</span>' +
+          '<div class="transcript-text"><span class="timestamp">' + escapeHtml(l.time) + '</span>' +
+          escapeHtml(l.text) + '</div>' +
+          '</div>';
+      }).join('');
+    }
+
+    /* Radar canvas animation */
+    let radarRAF = null;
+    let radarAngle = 0;
+    let radarCanvas = null;
+    let radarCtx = null;
+
+    function radarReducedMotion() {
+      return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    function drawRadarFrame() {
+      if (!radarCtx || !radarCanvas) return;
+      const ctx = radarCtx;
+      const canvas = radarCanvas;
+      const cx = canvas.width / 2, cy = canvas.height / 2;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      // rings
+      for (let r = 20; r <= 60; r += 20) {
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(212, 165, 116, 0.15)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+      // cross
+      ctx.strokeStyle = 'rgba(212, 165, 116, 0.1)';
+      ctx.beginPath();
+      ctx.moveTo(cx, 0); ctx.lineTo(cx, canvas.height);
+      ctx.moveTo(0, cy); ctx.lineTo(canvas.width, cy);
+      ctx.stroke();
+      // sweep
+      const grad = ctx.createConicGradient(radarAngle, cx, cy);
+      grad.addColorStop(0, 'rgba(217, 74, 43, 0.35)');
+      grad.addColorStop(0.15, 'rgba(217, 74, 43, 0)');
+      grad.addColorStop(1, 'rgba(217, 74, 43, 0)');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, 60, radarAngle - 0.5, radarAngle);
+      ctx.closePath();
+      ctx.fill();
+      // center dot
+      ctx.beginPath();
+      ctx.arc(cx, cy, 3, 0, Math.PI * 2);
+      ctx.fillStyle = '#d94a2b';
+      ctx.fill();
+      radarAngle += 0.02;
+    }
+
+    function radarTick() {
+      drawRadarFrame();
+      radarRAF = requestAnimationFrame(radarTick);
+    }
+
+    function startRadar() {
+      if (!radarCanvas || radarRAF) return;
+      if (radarReducedMotion()) { drawRadarFrame(); return; }
+      radarRAF = requestAnimationFrame(radarTick);
+    }
+
+    function stopRadar() {
+      if (radarRAF) { cancelAnimationFrame(radarRAF); radarRAF = null; }
+    }
+
+    function initRadar() {
+      radarCanvas = document.getElementById('radarCanvas');
+      if (!radarCanvas) return;
+      radarCtx = radarCanvas.getContext('2d');
+      /* 主推态时轮空画布是隐藏的，不启动动画 */
+      const empty = document.getElementById('radar-empty');
+      if (empty && empty.hidden) return;
+      startRadar();
+    }
+
+    function safeParse(str, fallback) {
+      if (typeof str !== 'string') return (str == null ? fallback : str);
+      const s = str.trim();
+      if (!s || s.startsWith('{{')) return fallback;
+      try { return JSON.parse(s); } catch (e) { return fallback; }
+    }
+
+
+    /* Hydrate {{...}} placeholders in DOM with DATA values (preview mode)
+       首次运行时缓存模板文本，切换期号后可重复渲染 */
+    function fieldValue(key) {
+      const v = DATA[key];
+      if (v == null) return null;
+      const text = String(v);
+      /* 空字符串表示「这一项确实没有」，渲染为空；未注入的模板占位符保持原样 */
+      if (text.trim().startsWith('{{')) return null;
+      return text;
+    }
+
+    function hydrate() {
+      const roots = [document.head, document.body];
+      roots.forEach(root => {
+        if (!root) return;
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(node => {
+          if (node.__tpl == null) {
+            if (!node.nodeValue || node.nodeValue.indexOf('{{') === -1) return;
+            node.__tpl = node.nodeValue;
+          }
+          node.nodeValue = node.__tpl.replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (m, key) => {
+            const v = fieldValue(key);
+            return v === null ? m : v;
+          });
+        });
+      });
+
+      document.querySelectorAll('*').forEach(el => {
+        if (el.__attrTpl == null) {
+          const tpl = {};
+          for (const attr of Array.from(el.attributes)) {
+            if (attr.value && attr.value.indexOf('{{') !== -1) tpl[attr.name] = attr.value;
+          }
+          if (!Object.keys(tpl).length) return;
+          el.__attrTpl = tpl;
+        }
+        Object.keys(el.__attrTpl).forEach(name => {
+          el.setAttribute(name, el.__attrTpl[name].replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (m, key) => {
+            const v = fieldValue(key);
+            return v === null ? m : v;
+          }));
+        });
+      });
+
+      /* 标签页标题：品牌 + 期号日期（切期同步；首屏由服务端直接写好，无占位符闪烁） */
+      const pageTitle = DATA.issue_date ? '今日AI看点 · ' + DATA.issue_date : '今日AI看点';
+      if (document.title !== pageTitle) document.title = pageTitle;
+
+      /* 可选内容块：data-requires 里的字段全部为空时隐藏，避免残留占位符或空行 */
+      document.querySelectorAll('[data-requires]').forEach(el => {
+        const keys = el.getAttribute('data-requires').split(',');
+        const hasContent = keys.some(k => {
+          const v = fieldValue(k.trim());
+          return v !== null && v.trim() !== '';
+        });
+        el.hidden = !hasContent;
+      });
+    }
+
+    /* Init：从 site-data 的日期列表启动，默认加载最新一期 */
+    document.addEventListener('DOMContentLoaded', async function () {
+      try {
+        const saved = localStorage.getItem('theme');
+        if (saved === 'dark' || saved === 'light') {
+          document.documentElement.setAttribute('data-theme', saved);
+        }
+        updateThemeUI(document.documentElement.getAttribute('data-theme') || 'light');
+        hydrate();
+        applyPostHydrateChrome();
+        applyConditionalBlocks();
+        const hashDate = location.hash.replace('#', '');
+        const initial = ISSUE_ORDER.indexOf(hashDate) >= 0 ? hashDate : ISSUE_ORDER[0];
+        if (initial) {
+          await loadIssue(initial);
+        } else {
+          renderDatePills();
+          updateDateNav();
+          renderHosts();
+          renderSourceFilters();
+          renderSources();
+          renderTranscript();
+          renderRadar();
+        }
+      } finally {
+        initRadar();
+        renderClock();
+      }
+    });
+
+</script>
+</body>
+</html>

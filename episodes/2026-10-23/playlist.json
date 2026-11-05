@@ -1,0 +1,213 @@
+{
+  "episode_id": "2026-10-23",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友们好，欢迎收听AI 每日先锋，我是苏晴。今天是2026年10月23日。",
+      "start": 1.0,
+      "duration": 7.619,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。今天这AI圈的瓜，那可是相当有意思。",
+      "start": 9.068,
+      "duration": 4.92,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "咱们先聊聊今天第一个大头条。那就是，谁在给OpenAI供应具身数据？。",
+      "start": 14.485,
+      "duration": 7.14,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "苏晴也一直在关注这个，周航，这个事影响真的很大吗？",
+      "start": 22.078,
+      "duration": 5.181,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "确实。简单来说，挤进全球Physical AI核心供应链",
+      "start": 27.664,
+      "duration": 5.66,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "没错。那今天的第二个大头条，是关于：Beyond tree cover: mapping the world’s forest types。",
+      "start": 33.757,
+      "duration": 7.314,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "对，这个也备受关注，主要进展是：A global map categorizing every 10-meter patch of land on Earth into distinct forest types",
+      "start": 41.536,
+      "duration": 12.732,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "嗯，除了这两个头条，我看到快讯中 Transformers now runs llama.cpp quants 也有新动态。",
+      "start": 54.73,
+      "duration": 8.49,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "没错！关于这个，主要是 We're adding support for running GGUF models efficiently in transformers , so you can use checkpoints sized for your laptop's memory through the familiar transformers APIs",
+      "start": 63.671,
+      "duration": 18.542,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "嗯，除了这两个头条，我看到快讯中 NVIDIA Transforms European Retail, From Digital Discovery to Physical Operations 也有新动态。",
+      "start": 82.713,
+      "duration": 10.947,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "没错！关于这个，主要是 European retailers are using open models and physical intelligence across use cases — from a commerce platform cutting inference costs by 90% to to a fulfillment center where collaboration of different robotic fleets is simulated inside a digital twin",
+      "start": 94.098,
+      "duration": 26.093,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "嗯，除了这两个头条，我看到快讯中 Flint-interactive: A language for creating interactive data visualizations 也有新动态。",
+      "start": 120.652,
+      "duration": 10.642,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "没错！关于这个，主要是 Flint-interactive gives AI agents a language for creating interactive visualizations",
+      "start": 131.739,
+      "duration": 11.034,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "哇，每天都能看到新东西在冒出来。",
+      "start": 143.247,
+      "duration": 2.699,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "科技变化就是快，那以上就是今天的 AI 重点资讯。感谢各位收听，咱们明天见！",
+      "start": 146.373,
+      "duration": 7.053,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 153.89,
+      "duration": 0.61,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}

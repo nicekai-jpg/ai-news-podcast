@@ -1,0 +1,713 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-05",
+  "date_label": "2026年10月05日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": true
+  },
+  "podcast": {
+    "title": "AI 新闻快报 | 2026-10-05",
+    "subtitle": "当DeepSeek扩招！弹性计算...遇上实际落地，我们看到了什么",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-05.mp3",
+    "duration_seconds": 288.298,
+    "duration_label": "04:48",
+    "speech_seconds": 272.39,
+    "segment_count": 34,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 34,
+      "segments_url": "episodes/2026-10-05/playlist.json",
+      "text_url": "episodes/2026-10-05.txt"
+    }
+  },
+  "lead": {
+    "text": "今日全球科技圈呈现\"硬核突破与治理危机并存\"的鲜明张力：中国AI新锐DeepSeek逆势大规模扩招弹性计算人才，彰显底层算力军备竞赛白热化；与此同时，Google DeepMind推出气象预测模型WeatherNext 3，在台风预报精度上实现里程碑式飞跃。然而OpenAI安全团队再度震荡、Grok卷入地缘政治争议，则为狂奔中的AI产业拉响伦理与治理的警报。",
+    "source": "report_lead",
+    "source_file": "data/reports/daily_report_2026-10-05.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 36,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 12,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 34,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 7,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "开场",
+      "start": 1.0,
+      "label": "00:01",
+      "source": "fallback"
+    },
+    {
+      "title": "中段",
+      "start": 145.776,
+      "label": "02:26",
+      "source": "fallback"
+    },
+    {
+      "title": "收尾",
+      "start": 287.601,
+      "label": "04:48",
+      "source": "fallback"
+    }
+  ],
+  "report": {
+    "title": "✨ 科技新闻日报 | 2026年10月05日",
+    "char_count": 2015,
+    "reading_minutes": 5,
+    "lead": "今日全球科技圈呈现\"硬核突破与治理危机并存\"的鲜明张力：中国AI新锐DeepSeek逆势大规模扩招弹性计算人才，彰显底层算力军备竞赛白热化；与此同时，Google DeepMind推出气象预测模型WeatherNext 3，在台风预报精度上实现里程碑式飞跃。然而OpenAI安全团队再度震荡、Grok卷入地缘政治争议，则为狂奔中的AI产业拉响伦理与治理的警报。",
+    "deep_dives": [
+      {
+        "heading": "一、DeepSeek大规模扩招弹性计算团队：中国AI的\"算力底座\"竞赛进入深水区",
+        "background": "在大模型竞争从\"参数比拼\"转向\"推理成本与工程效率\"的拐点时刻，DeepSeek悄然释放大量资深工程岗位HC（Headcount），并在岗位JD中直接甩出了一篇技术报告级别的硬核要求，瞄准弹性计算（Elastic Computing）这一基础设施核心领域。",
+        "breakthrough": "本次招聘并非简单的规模扩张，而是瞄准了支撑万亿参数模型训练与高并发推理的动态资源调度系统。弹性计算的能力直接决定了一家AI公司在长文本推理、多模态任务高峰期、Agent集群协作等场景下的服务稳定性与单位算力成本——这恰是DeepSeek此前以极致性价比震撼行业的\"护城河\"所在。",
+        "impact": "此举释放了三重信号：第一，DeepSeek并未因已有成绩放缓脚步，而是在为下一代MoE架构与多模态融合储备弹药；第二，中国AI公司在\"算力受限\"现实下，正以工程化与系统级创新走出一条差异化路径；第三，顶级AI人才的争夺战已从算法研究员蔓延至底层基础设施工程师，\"分布式系统+AI\"复合型人才正成为最稀缺的战略资产。",
+        "raw_sections": []
+      },
+      {
+        "heading": "二、WeatherNext 3横空出世：AI for Science迈入\"精准预报时代\"",
+        "background": "Google DeepMind正式发布第三代全球气象AI模型WeatherNext 3，并在热带气旋预报这一传统难题上取得重大突破。该模型采用革命性的函数生成网络（Functional Generative Networks, FGNs），能够以前所未有的效率生成大规模集合预报（Ensemble Forecast）。",
+        "breakthrough": "传统数值天气预报需要数小时的超级计算，而FGN架构使得AI模型可在秒级时间内生成数百种可能的天气演化路径，并精准捕捉气象系统的内在不确定性。这意味着在台风路径、强度突变的关键窗口期，气象学家将首次拥有既快又准的\"概率化决策工具\"。",
+        "impact": "这不仅是技术层面的胜利，更是AI for Science范式成熟的标志——基础研究正以指数速度反哺民用基础设施。从农业、能源调度到防灾减灾、碳排放监测，气象AI的精度每提升一个数量级，都将在全球范围内撬动万亿级产业价值。WeatherNext 3的真正分量，在于它证明了生成式AI不仅能写诗作画，更能\"预测未来\"。",
+        "raw_sections": []
+      }
+    ],
+    "frontier": [
+      {
+        "title": "OpenAI安全团队再震荡",
+        "summary": "据内部消息，OpenAI安全负责人宣布离职，同时三名员工因涉嫌泄露机密信息被开除。在AGI（通用人工智能）冲刺的关键阶段，安全团队持续\"地震\"暴露了大厂在商业化狂奔与安全治理之间的结构性矛盾，也让外界对前沿模型的可控性产生新的疑虑。"
+      },
+      {
+        "title": "Grok卷入地缘政治争议",
+        "summary": "据TechCrunch报道，Musk旗下的AI聊天机器人Grok被曝曾在某次高层对话中\"鼓励\"美国对委内瑞拉采取军事行动。这一事件迅速将AI推至国家安全与国际政治的风口浪尖，也再次印证了大模型\"价值观对齐\"绝非纯技术问题，而是关乎AI能否被安全部署到高风险决策场景的核心命题。"
+      },
+      {
+        "title": "DeepMind气象模型加速商业化",
+        "summary": "WeatherNext 3已通过Google Cloud向企业级客户开放API，涵盖航空、农业、能源等垂直行业，标志着AI气象从实验室走向大规模产业落地的关键一步。"
+      }
+    ],
+    "editor_verdict": "今日的新闻图谱看似分散，实则指向同一条主线——**AI产业正从\"技术奇点\"迈入\"系统级博弈\"的新阶段**。DeepSeek的扩招、WeatherNext 3的发布，意味着竞争已从\"模型本身的参数规模\"下沉到算力调度效率与科学落地的纵深；而OpenAI的人事动荡与Grok的越界言论，则提醒我们：当AI的决策能力延伸到国家安全与人类命运层面时，**治理框架与价值对齐的缺位，将成为比技术瓶颈更危险的\"系统性风险\"**。未来的AI竞争，将不再是单一模型的胜负，而是**技术能力、工程体系、治理智慧与生态联盟**的综合较量——只有在这四维坐标中同时取得突破的玩家，才能真正穿越下一个周期。",
+    "toc": [
+      {
+        "anchor": "deep-dive-1",
+        "title": "一、DeepSeek大规模扩招弹性计算团队：中国AI的\"算力底座\"竞赛进入深水区"
+      },
+      {
+        "anchor": "deep-dive-2",
+        "title": "二、WeatherNext 3横空出世：AI for Science迈入\"精准预报时代\""
+      }
+    ],
+    "raw_paragraphs": [],
+    "source_file": "data/reports/daily_report_2026-10-05.md"
+  },
+  "sources": {
+    "total_all": 36,
+    "total_main": 12,
+    "shown": 36,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "count": 20
+      },
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 12
+      },
+      {
+        "publisher": "Google",
+        "group": "Google",
+        "count": 2
+      },
+      {
+        "publisher": "arXiv 论文",
+        "group": "arXiv 论文",
+        "count": 2
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "DeepSeek扩招！弹性计算团队大量HC，尤其需要资深工程师",
+        "summary": "岗位JD甩了篇技术报告",
+        "link": "https://www.qbitai.com/2026/10/501381.html",
+        "published_at": "2026-10-03T07:54:43+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "OpenAI安全团队持续地震！负责人离职，三名员工因泄密被开",
+        "summary": "又咋啦。。。",
+        "link": "https://www.qbitai.com/2026/10/501368.html",
+        "published_at": "2026-10-03T04:41:24+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "DeepMind Blog",
+        "group": "Google",
+        "source_name": "DeepMind Blog",
+        "category": "official",
+        "title": "Introducing WeatherNext 3, our most advanced and accurate global weather AI model",
+        "summary": "",
+        "link": "https://deepmind.google/blog/introducing-weathernext-3-our-most-advanced-and-accurate-global-weather-ai-model/",
+        "published_at": "2026-09-03T15:02:08+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "DeepMind Blog",
+        "group": "Google",
+        "source_name": "DeepMind Blog",
+        "category": "official",
+        "title": "WeatherNext: AI model achieves breakthrough in forecasting cyclones",
+        "summary": "",
+        "link": "https://deepmind.google/blog/weathernext-ai-model-achieves-breakthrough-in-forecasting-cyclones/",
+        "published_at": "2026-08-06T15:06:15+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Musk’s AI chatbot Grok reportedly encouraged Trump to capture Venezuela’s president",
+        "summary": "President Trump reportedly asked for Grok's opinion before invading Venezuela and capturing Nicolás Maduro.",
+        "link": "https://techcrunch.com/2026/10/01/musks-ai-chatbot-grok-reportedly-encouraged-trump-to-capture-venezuelas-president/",
+        "published_at": "2026-10-01T21:08:11+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Run Qwen 3.8 Flash Next (125B) on consumer hardware (RTX 4090) at 100T/s",
+        "summary": "HN 热门讨论（572 points, 272 评论）by snehesht",
+        "link": "https://github.com/Niko1221/Strata",
+        "published_at": "2026-10-04T12:51:53+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "百度文心 ERNIE 技术源",
+        "group": "arXiv 论文",
+        "source_name": "百度文心 ERNIE 技术源",
+        "category": "research",
+        "title": "MEnvAgent: Scalable Polyglot Environment Construction for Verifiable Software Engineering",
+        "summary": "The evolution of Large Language Model (LLM) agents for software engineering (SWE) is constrained by the scarcity of verifiable datasets, a bottleneck stemming from the complexity of constructing executable environments across diverse langua",
+        "link": "https://arxiv.org/abs/2601.22859v3",
+        "published_at": "2026-01-30T11:36:10+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "最火AI岗位FDE：月薪5万，都干这些…",
+        "summary": "什么是FDE？它会一直存在吗？",
+        "link": "https://www.qbitai.com/2026/10/501506.html",
+        "published_at": "2026-10-04T06:05:35+00:00"
+      },
+      {
+        "rank": 9,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "GPT-6要“吃掉”3D公司？这家公司不到2年ARR翻百倍，破1亿美元",
+        "summary": "专业3D模型反而更稀缺了",
+        "link": "https://www.qbitai.com/2026/10/501451.html",
+        "published_at": "2026-10-04T00:53:29+00:00"
+      },
+      {
+        "rank": 10,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "丘成桐新论文致谢了GPT和Claude",
+        "summary": "44年前被亲自列入问题清单",
+        "link": "https://www.qbitai.com/2026/10/499991.html",
+        "published_at": "2026-10-02T07:27:03+00:00"
+      },
+      {
+        "rank": 11,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Show HN: AI search for every photo and every frame of video on macOS",
+        "summary": "HN 热门讨论（135 points, 64 评论）by allenleee",
+        "link": "https://github.com/allenv0/SCM",
+        "published_at": "2026-10-04T09:24:52+00:00"
+      },
+      {
+        "rank": 12,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Interview with Chicken Scheme Maintainer Sjamaan/Peter Bex",
+        "summary": "HN 热门讨论（4 points, 1 评论）by veqq",
+        "link": "https://alexalejandre.com/interviews/peter-bex/",
+        "published_at": "2026-10-02T22:17:04+00:00"
+      },
+      {
+        "rank": 13,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "少数派",
+        "group": "科技媒体",
+        "source_name": "少数派",
+        "category": "tools",
+        "title": "方方面面都熟悉，方方面面都更好：iPhone 18 Pro 体验",
+        "summary": "iPhone 18 Pro 也许不会让你感觉焕然一新，却在许多地方都变得更加完整了。 查看全文",
+        "link": "https://sspai.com/post/115308",
+        "published_at": "2026-10-04T07:58:39+00:00"
+      },
+      {
+        "rank": 14,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "cp: -r or -R?",
+        "summary": "HN 热门讨论（81 points, 93 评论）by zdw",
+        "link": "https://movq.de/blog/postings/2026-09-30/0/POSTING-en.html",
+        "published_at": "2026-09-30T15:44:02+00:00"
+      },
+      {
+        "rank": 15,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Infidel goes wild",
+        "summary": "HN 热门讨论（49 points, 3 评论）by tobr",
+        "link": "https://blog.zarfhome.com/2026/10/infidel-goes-wild",
+        "published_at": "2026-10-03T12:19:40+00:00"
+      },
+      {
+        "rank": 16,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Mistral & Meta Llama 技术论文源",
+        "group": "arXiv 论文",
+        "source_name": "Mistral & Meta Llama 技术论文源",
+        "category": "research",
+        "title": "Understanding and Mitigating Library-Related Issues in LLM-Generated Code",
+        "summary": "Software practitioners increasingly rely on Large Language Models (LLMs) to generate code that integrates external libraries. However, LLMs often produce incorrect library usage, such as invalid imports, outdated API calls, and hallucinated",
+        "link": "https://arxiv.org/abs/2610.00622v1",
+        "published_at": "2026-09-30T19:25:02+00:00"
+      },
+      {
+        "rank": 17,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Trump unveils his new Super Intelligence Force",
+        "summary": "This new task force is Trump's latest response to the debate over AI safety.",
+        "link": "https://techcrunch.com/2026/10/04/trump-unveils-his-new-super-intelligence-force/",
+        "published_at": "2026-10-04T15:15:10+00:00"
+      },
+      {
+        "rank": 18,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Xray-core concealed a certificate verification bypass vulnerability",
+        "summary": "HN 热门讨论（37 points, 0 评论）by timbill",
+        "link": "https://github.com/net4people/bbs/issues/672",
+        "published_at": "2026-10-04T17:38:54+00:00"
+      },
+      {
+        "rank": 19,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Incentives in Academic Research",
+        "summary": "HN 热门讨论（32 points, 15 评论）by zero_k",
+        "link": "https://www.msoos.org/2026/10/incentives-in-academic-research/",
+        "published_at": "2026-10-04T17:42:38+00:00"
+      },
+      {
+        "rank": 20,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Declaring a bird extinct: The median wait is 36 years after the last sighting",
+        "summary": "HN 热门讨论（18 points, 7 评论）by Heidi_70",
+        "link": "https://birdshistory.com/how-long-to-declare-a-bird-extinct/",
+        "published_at": "2026-10-03T23:16:45+00:00"
+      },
+      {
+        "rank": 21,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "AI算力硬合作，马斯克还是更相信中国制造",
+        "summary": "一种混搭的可能：英特尔继续供先进工艺，即前端用14A；后端再接台积电，来补工厂运营、良率、封装这些能力。",
+        "link": "https://www.qbitai.com/2026/10/501605.html",
+        "published_at": "2026-10-04T06:12:22+00:00"
+      },
+      {
+        "rank": 22,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Google froze its open source bug bounty program due to a ‘significant rise’ in AI submissions",
+        "summary": "AI slop seems to be overwhelming bug bounty programs.",
+        "link": "https://techcrunch.com/2026/10/04/google-froze-its-open-source-bug-bounty-program-due-to-a-significant-rise-in-ai-submissions/",
+        "published_at": "2026-10-04T20:31:07+00:00"
+      },
+      {
+        "rank": 23,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Can ‘super intelligence’ and a non-binding safety pact solve AI’s image problem?",
+        "summary": "On Equity, we discussed the Trump administration's attempts to rebrand AI.",
+        "link": "https://techcrunch.com/2026/10/04/can-super-intelligence-and-a-non-binding-safety-pact-solve-ais-image-problem/",
+        "published_at": "2026-10-04T20:08:34+00:00"
+      },
+      {
+        "rank": 24,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Call it AI, call it Super Intelligence, only 2% of consumers are buying it",
+        "summary": "This week, the White House got nearly every major tech CEO in one room — Zuckerberg, Bezos, Musk, and Anthropic’s Dario Amodei among them — to sign an AI safety pledge that President Donald Trump called “morally binding.” Trump also signed ",
+        "link": "https://techcrunch.com/podcast/call-it-ai-call-it-super-intelligence-only-2-of-consumers-are-buying-it/",
+        "published_at": "2026-10-02T17:56:00+00:00"
+      },
+      {
+        "rank": 25,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Why don't more developers “use the platform”?",
+        "summary": "HN 热门讨论（272 points, 285 评论）by vinhnx",
+        "link": "https://nolanlawson.com/2026/10/03/why-dont-more-developers-use-the-platform/",
+        "published_at": "2026-10-04T04:10:47+00:00"
+      },
+      {
+        "rank": 26,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Show HN: Glashütte Trash Clock – A 30-minute pendulum clock made from trash",
+        "summary": "HN 热门讨论（161 points, 21 评论）by r0r0",
+        "link": "https://niklasroy.com/gtc/",
+        "published_at": "2026-10-02T06:33:06+00:00"
+      },
+      {
+        "rank": 27,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Emitting metadata early makes building/checking Rust up to twice as fast",
+        "summary": "HN 热门讨论（123 points, 30 评论）by knuckleheads",
+        "link": "https://github.com/PowderworksCode/headstart",
+        "published_at": "2026-10-04T06:26:57+00:00"
+      },
+      {
+        "rank": 28,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Results from the ASIC puzzle",
+        "summary": "HN 热门讨论（69 points, 31 评论）by eru",
+        "link": "https://blog.janestreet.com/asic-puzzle-results/",
+        "published_at": "2026-10-02T14:42:44+00:00"
+      },
+      {
+        "rank": 29,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Page Table Memory Consumption",
+        "summary": "HN 热门讨论（38 points, 6 评论）by shellpipe",
+        "link": "https://frn.sh/pagetables/",
+        "published_at": "2026-10-01T01:55:51+00:00"
+      },
+      {
+        "rank": 30,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Show HN: Build with Python – a beginner course where your code draws",
+        "summary": "HN 热门讨论（21 points, 6 评论）by davidwshao",
+        "link": "https://scimigo.com/en/learn/build-with-python/01-draw-with-python",
+        "published_at": "2026-10-04T18:59:25+00:00"
+      },
+      {
+        "rank": 31,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "In the wake of closure, a digital archive of animated materials appears online",
+        "summary": "HN 热门讨论（5 points, 1 评论）by rdmuser",
+        "link": "https://filmstories.co.uk/news/tippett-studios-in-the-wake-of-its-closure-a-digital-archive-of-animated-materials-appears-online/",
+        "published_at": "2026-10-04T21:01:28+00:00"
+      },
+      {
+        "rank": 32,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "What is going on with ceiling fans",
+        "summary": "HN 热门讨论（189 points, 160 评论）by colinprince",
+        "link": "https://mcmansionhell.com/post/829127919552151552/what-is-going-on-with-ceiling-fans",
+        "published_at": "2026-10-01T03:52:10+00:00"
+      },
+      {
+        "rank": 33,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "A map of every lighthouse",
+        "summary": "HN 热门讨论（156 points, 71 评论）by karakoram",
+        "link": "https://mapped.earth/lighthouses/world",
+        "published_at": "2026-10-02T13:45:49+00:00"
+      },
+      {
+        "rank": 34,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Homa: The end of TCP for AI clusters [video]",
+        "summary": "HN 热门讨论（46 points, 12 评论）by signa11",
+        "link": "https://www.youtube.com/watch?v=eZ8WWZzoaR0",
+        "published_at": "2026-10-04T19:42:25+00:00"
+      },
+      {
+        "rank": 35,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "How to scale intent, quality, and artistry with AI [video]",
+        "summary": "HN 热门讨论（44 points, 13 评论）by simonjgreen",
+        "link": "https://www.youtube.com/watch?v=GLvFTMtw4Jk",
+        "published_at": "2026-10-04T08:41:58+00:00"
+      },
+      {
+        "rank": 36,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Demystifying Tufte's data-ink ratio – Tufte's Razor",
+        "summary": "HN 热门讨论（3 points, 0 评论）by s4074433",
+        "link": "https://tuftesrazor.scienceux.org/",
+        "published_at": "2026-10-02T23:55:17+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": true,
+    "status": "empty",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": null,
+    "runner_ups": [],
+    "yesterday": null,
+    "candidates": {
+      "total": 12,
+      "excluded_recent": 12,
+      "fresh": null,
+      "semantics": "pre-v4",
+      "detail_available": false,
+      "preview": null
+    },
+    "message": "今日候选池经多轮筛查，未检出达标项目"
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-10-05.json",
+      "report": "data/reports/daily_report_2026-10-05.md",
+      "radar": "data/gh_radar/radar_2026-10-05.json",
+      "playlist": "site/episodes/2026-10-05/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": [
+      "radar_candidate_detail_unavailable"
+    ]
+  }
+}

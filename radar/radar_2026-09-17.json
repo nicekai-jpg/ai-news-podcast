@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-17",
+  "generated_at": "2026-09-16T23:55:07.399591+00:00",
+  "projects": [
+    {
+      "repo": "totec448-spec/chat-on-steroids",
+      "url": "https://github.com/totec448-spec/chat-on-steroids",
+      "description": "Cross-platform local MCP capabilities for ChatGPT with Chrome integration, Goal, Compact & Resume, and durable multi-agent workflows.",
+      "language": "TypeScript",
+      "topics": [
+        "automation",
+        "chatgpt",
+        "chrome-extension",
+        "electron",
+        "linux",
+        "local-first",
+        "macos",
+        "mcp",
+        "multi-agent",
+        "windows"
+      ],
+      "stars": 2843,
+      "delta_stars": 98,
+      "is_new": false,
+      "created_at": "2026-08-22T14:16:24Z",
+      "pushed_at": "2026-09-16T19:43:15Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "score": 0.3127,
+      "score_parts": {
+        "velocity": 0.0653,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.1
+      }
+    }
+  ],
+  "meta": {
+    "pick_repo": "totec448-spec/chat-on-steroids",
+    "runner_up_repos": [],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 11
+  }
+}

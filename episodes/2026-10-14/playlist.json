@@ -1,0 +1,759 @@
+{
+  "episode_id": "2026-10-14",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年10月14日。我是苏晴。",
+      "start": 1.0,
+      "duration": 6.966,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 8.415,
+      "duration": 1.785,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航你今天精神状态可以啊，感觉昨晚没熬太狠？",
+      "start": 10.697,
+      "duration": 5.79,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "托你吉言睡了六个小时，够用了。我跟你说今天这新闻我越看越觉得有点意思，AI 这个东西现在已经不是一项技术了，它像一个底层操作系统一样在到处渗透。",
+      "start": 16.94,
+      "duration": 12.626,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "哈，你这总结挺到位的。今天我们准备聊几条线上的大事，头条我挑了两个特别值得说道的，一个是谷歌 DeepMind 那边的，另一个是英伟达的硬件。我估计你听到那个硬件也会起鸡皮疙瘩。",
+      "start": 29.971,
+      "duration": 15.432,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "RTX Spark 那个对吧？我看到的时候第一反应是——这不是游戏显卡，这是把超算塞进机箱里了。",
+      "start": 45.836,
+      "duration": 7.706,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "对，但咱们先聊第一个。我跟你说今天 DeepMind 和它那个衍生公司 Isomorphic Labs 联合发布了一个生物韧性AI 方法论，这事儿听起来有点学术，但你往深了想其实特别有料。",
+      "start": 54.007,
+      "duration": 17.565,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "不是有料，是特别值得琢磨。生物韧性这个概念咱们先解释一下。你想啊 AlphaFold 当年是干嘛的？是预测蛋白质结构，也就是 AI 在理解生命科学。但生物韧性不一样，它不是理解，是设计一个能扛住各种环境压力的分子。",
+      "start": 72.034,
+      "duration": 19.611,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "哎这个区别太关键了。我打个比方哈，AlphaFold 像是给学生出一张试卷，AI 来答，答得对说明理解得好。但生物韧性是反过来了，AI 直接给你出一张试卷，它自己设计那种特别能扛打、特别稳定的分子结构。",
+      "start": 92.096,
+      "duration": 18.61,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "你这个比喻虽然土了点但挺到位的。说白了这就是从读懂世界到改写世界的跃迁。以前的 AI for Science 是做解析，现在的 AI for Science 是做创造。",
+      "start": 111.206,
+      "duration": 12.645,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "那这个对制药行业影响可就大了。以前研发一个新药十年起步，几十亿美金打底，因为啥？因为你得一个一个分子去试错啊。现在 AI 能直接在虚拟空间里筛那些特别能扛的分子，效率提升不是一星半点。",
+      "start": 124.289,
+      "duration": 18.697,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "而且你注意啊，这次不是 DeepMind 单方面发的，是 Isomorphic Labs 一起发的。这说明这套方法论已经过了实验室阶段，开始往产业化推了。Isomorphic Labs 你知道吧，就是 Alphabet 旗下专门做 AI 制药的那家，跟好多大药企都有深度合作。",
+      "start": 143.447,
+      "duration": 19.263,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "难怪主编把这条放在头条第一个位置。这不是新闻，这其实是一个信号——AI for Science 真的进入系统化产业落地了。我跟普通听众讲一句，以后你再听到哪家药企说自己用了 AI，别觉得是营销噱头，这次可能是真刀真枪的范式革命。",
+      "start": 163.155,
+      "duration": 20.961,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "对，普通听众记住一句话就够了：以后新药出来的速度可能会比你想象中快很多，而且成本会大幅下降。",
+      "start": 184.59,
+      "duration": 8.838,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "好嘞这个话题先放这儿。咱们来说说硬件那条线。NVIDIA 那个 RTX Spark 我昨天刷到的时候真的愣了半天，这是要干嘛？",
+      "start": 193.855,
+      "duration": 10.512,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "我直接跟你说吧，这东西的定位根本不是显卡，也不是单纯的工作站，NVIDIA 给它的定义是桌面级 AI 超算。一个巴掌大的盒子，里面塞了 Blackwell 架构的超级芯片。",
+      "start": 204.831,
+      "duration": 13.429,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "巴掌大？我看那个照片看起来还挺有分量的。",
+      "start": 218.677,
+      "duration": 4.528,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "那是散热模组大，但核心计算单元是真的小。关键指标你听一下：1 ExaFLOP 算力，128GB 统一内存，能跑 700 亿参数的模型。你知道这个量级之前在哪儿吗？在机房。",
+      "start": 223.641,
+      "duration": 20.438,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "等等，700 亿参数在本地跑？我前两年还觉得本地能跑个 70 亿就挺厉害了，现在直接翻了十倍？这也太夸张了。",
+      "start": 244.496,
+      "duration": 9.839,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "还没完。售价三万美金起步，对开发者来说其实是把过去租云的成本直接省下来。你想啊，云端跑一个大模型推理一小时几十美金，本地一次性投入之后随便跑，长期算下来便宜得多。",
+      "start": 254.831,
+      "duration": 14.648,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "我明白了，这个事情的影响不只是消费者层面，是整个 PC 生态要被重新洗牌。你想想苹果 Mac Studio、AMD 工作站，它们以前打的就是本地算力强这个卖点，现在英伟达直接给了一个更强的方案。",
+      "start": 269.891,
+      "duration": 17.478,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "苹果那个 M 系列芯片在端侧其实一直有优势，但 CUDA 生态太强了，开发者基本都围着它转。现在 RTX Spark 一出，相当于英伟达把优势从云端数据中心直接搬到了桌面。",
+      "start": 287.848,
+      "duration": 16.346,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "那以后是不是搞 AI 的都不用去租云了？自己做一台机器家里一放就行了？",
+      "start": 304.626,
+      "duration": 5.268,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "大部分场景是的。但我提醒一下，云端不会死，超大规模训练还是得去云。但推理、微调、测试这些环节基本都能本地化了。",
+      "start": 310.362,
+      "duration": 5.878,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "这意味着 AI 真的进入桌面化时代了。说白了以后程序员家里可能就跟以前游戏玩家攒机一样，开始攒 AI 工作站了。",
+      "start": 316.73,
+      "duration": 8.925,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "说到这个，NVIDIA 的策略其实是挺巧妙的。它不直接跟苹果硬碰，而是开辟一个全新的品类。你是开发者不是？行，来买一台。你看开发者都被收编了。",
+      "start": 326.132,
+      "duration": 12.297,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "对了还有一个事我特别好奇。Apple 那边 ML 团队发了一篇论文，说双语预训练比反复调参更能提升模型泛化能力。这个怎么理解？",
+      "start": 338.847,
+      "duration": 12.321,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "你注意啊，这个研究的背景是数据受限场景。啥意思呢？就是某些小语种或者特定领域，数据量不够，没法堆参数硬训。那怎么提升效果？传统思路是调超参，今天调学习率，明天调 batch size，搞来搞去边际收益越来越低。",
+      "start": 351.607,
+      "duration": 19.219,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "那双语预训练是啥路子？",
+      "start": 371.238,
+      "duration": 3.048,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "比如你想做一个泰语模型，但泰语数据少，那就掺一些英语数据一起预训练，让模型先建立跨语言的理解能力。然后再用泰语数据微调，效果比单纯调参好得多。",
+      "start": 374.779,
+      "duration": 12.887,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "这个对咱们普通听众有啥意义呢？",
+      "start": 388.075,
+      "duration": 3.178,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "意义在于——小语种的 AI 产品可能会井喷。以前为啥小语种 AI 不行？因为没人愿意花那个钱专门去堆数据。现在有方法论了，成本降下来，那斯瓦希里语、孟加拉语这些以前 AI 听不懂的语言，以后都能享受到高质量服务了。",
+      "start": 391.74,
+      "duration": 18.958,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "这听起来挺人文主义的。我特别喜欢这种技术进步，不是把蛋糕做大，而是让本来吃不到蛋糕的人也能吃到。",
+      "start": 411.14,
+      "duration": 8.882,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "是，这条挺暖的。说白了 AI 普惠不能光喊口号，得有这种具体的方法论支撑才行。",
+      "start": 420.482,
+      "duration": 7.358,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "对了还有个挺野的消息，你知道 X 平台最近搞了个新动作吗？",
+      "start": 428.311,
+      "duration": 5.268,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "知道，把 Grok 和 Cursor 打包进了 Premium 套餐。我刷到的时候第一反应是——这不就是学国内互联网那套吗？超级应用捆绑销售。",
+      "start": 433.991,
+      "duration": 10.493,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "哈你还别说，确实是。但人家这个捆绑组合拳确实有特色。X Premium 你知道分好几档吧？最便宜的八美金，就是社交订阅加一点点 AI 能力。中档加更多 AI 功能，最高两百美金的档位直接把 Cursor 这个 AI 编程工具也塞进去了。",
+      "start": 444.929,
+      "duration": 21.048,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "Cursor 你知道吧？现在最火的 AI 代码编辑器之一，开发者基本人手一个。它跟 X 打包意味着什么？意味着 X 不再是一个社交平台了，它想变成一个工作操作系统。",
+      "start": 466.432,
+      "duration": 12.166,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "马斯克的野望太大了。从推特改名 X 开始就在铺这个局，现在终于把 AI 聊天、AI 编程、社交、内容消费全装进一个 App 里。",
+      "start": 479.038,
+      "duration": 11.537,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "说白了这就是超级应用的思路，一个账号走天下。但问题是这种捆绑会不会让用户觉得腻？我个人对这种大杂烩是有点抵触的。",
+      "start": 491.053,
+      "duration": 11.494,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "我倒觉得对一些用户来说挺方便的。比如一个独立开发者，他可能就用 X 看新闻，用 Grok 查资料，用 Cursor 写代码。如果一个订阅全搞定，省心啊。",
+      "start": 503.028,
+      "duration": 12.732,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "这倒是。看人吧，反正八美金那档基本人人都能用得起。X 这个策略聪明就聪明在价格梯度铺得很开，从学生到专业人士全覆盖。",
+      "start": 516.186,
+      "duration": 11.102,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "最后还有一条我也特别想聊聊。Higgsfield 这家公司你听说过吗？",
+      "start": 527.758,
+      "duration": 5.486,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "AI 视频生成领域的新锐。之前主要是 AI 视频里面的人物一致性、动作流畅度做得不错。今天他们发了几个新模型，直接把 AI 视频从一分钟拉到十分钟以上。",
+      "start": 533.705,
+      "duration": 13.385,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "等等，GPT-6 Astra？我怎么听着像 OpenAI 的命名呢？",
+      "start": 547.546,
+      "duration": 4.833,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "我看的时候也愣了一下。Higgsfield 的产品线确实用了类似 GPT 的命名方式，包括 GPT-6 Astra、GPT-Image-2.5 还有 GPT-Live。这是他们自家的模型哈，不是 OpenAI 的。",
+      "start": 552.845,
+      "duration": 15.127,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "这个有点容易混了。我帮听众朋友捋一下哈，Higgsfield 这家公司是专门做 AI 视频生成的，这次发的几个模型主打就是长片叙事能力，而且支持语音电影。",
+      "start": 568.405,
+      "duration": 12.819,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "你注意啊语音电影这个概念。以前 AI 视频就是一段一段的，没有连贯的人物声音。现在他们把人物的声音、情绪、对白都连续起来了，相当于 AI 能直接生成一段有剧情、有配音的短片了。",
+      "start": 581.631,
+      "duration": 15.91,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "这不就是短视频博主和广告公司的福音吗？以前拍一支两分钟的广告，场地、演员、后期，几十万起步。现在 AI 直接给你生成十分钟的成片，成本可能只要几块钱。",
+      "start": 598.011,
+      "duration": 14.604,
+      "audios": {
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "问题就是这件事对内容行业冲击太大了。广告、影视、自媒体、短视频，整个创作链条都要被重新定义。你说编剧会失业吗？不会，但编剧的工作方式会彻底变。",
+      "start": 613.016,
+      "duration": 14.193,
+      "audios": {
+        "professional": "chunk_050_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "对。以前是先有剧本再有画面，现在可能是先让 AI 生成画面，反过来启发剧本。这种创作范式以前是不可想象的。",
+      "start": 627.62,
+      "duration": 10.101,
+      "audios": {
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "而且 GPT-Image-2.5 这个命名也说明图像质量又有提升。AI 视频的最后一个短板就是一致性差，几帧之间人物就变脸，现在通过 GPT-Live 这种长序列建模应该能缓解不少。",
+      "start": 638.213,
+      "duration": 15.257,
+      "audios": {
+        "professional": "chunk_052_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "说实话我看到这新闻的时候挺兴奋的，但又有点小焦虑。AI 生成内容太强大之后，我们怎么判断什么是真实的？",
+      "start": 653.921,
+      "duration": 8.359,
+      "audios": {
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "这是个好问题。但技术进步从来不会因为焦虑停下，我们能做的是跟上节奏，学会用 AI 而不被 AI 替代。",
+      "start": 662.77,
+      "duration": 7.88,
+      "audios": {
+        "professional": "chunk_054_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "这话我爱听。好啦听众朋友们，今天咱们聊了 DeepMind 的生物韧性方法论、英伟达的 RTX Spark、Apple 的双语预训练、X 平台的超级应用捆绑、还有 Higgsfield 的长片 AI 视频。",
+      "start": 671.15,
+      "duration": 18.0,
+      "audios": {
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "你看这些新闻，表面上是不同领域，但背后都有一个共同的趋势——AI 已经不再是某一项技术了，它在成为所有领域的底层基础设施。",
+      "start": 689.635,
+      "duration": 10.71,
+      "audios": {
+        "professional": "chunk_056_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "是啊，从生物到硬件到训练方法到内容生产，AI 真的无处不在了。咱们下期再见。",
+      "start": 700.825,
+      "duration": 7.488,
+      "audios": {
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "拜拜。",
+      "start": 708.713,
+      "duration": 0.61,
+      "audios": {
+        "professional": "chunk_058_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}

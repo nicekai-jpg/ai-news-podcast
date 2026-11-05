@@ -1,0 +1,83 @@
+{
+  "date": "2026-09-24",
+  "generated_at": "2026-09-24T00:01:56.523586+00:00",
+  "projects": [
+    {
+      "repo": "jev-chat/jev-chat-jarvis",
+      "url": "https://github.com/jev-chat/jev-chat-jarvis",
+      "description": "装在手机上的对话副驾：在微信 / QQ / X / 飞书里读懂对方、给出候选回复、一键填入输入框，发不发由你。非侵入，只读屏幕，不 hook 不改包。",
+      "language": "Kotlin",
+      "topics": [
+        "accessibility-service",
+        "android",
+        "chat-assistant",
+        "llm",
+        "qq",
+        "wechat"
+      ],
+      "stars": 5222,
+      "delta_stars": 1503,
+      "is_new": false,
+      "created_at": "2026-09-21T11:12:53Z",
+      "pushed_at": "2026-09-23T21:01:43Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 1,
+      "readme_excerpt": "**1. 装包。** 仓库里有签好名的 release 包：[`apk/jev-assistant-v1.4-release.apk`](apk/jev-assistant-v1.4-release.apk)（Android 11+）。各版本安装包也在 [Releases](https://github.com/jev-chat/jev-chat-jarvis/releases)。\n\n```bash\nadb install -r apk/jev-assistant-v1.4-release.apk\n```\n\n**2. 填密钥。** 打开 App → 设置 →「接口」分三张卡：判断接口 / 回复接口 / 视觉接口。最简单只填「判断接口」一栏的 [OpenRouter](https://openrouter.ai/) API Key，其余两栏留空会自动继承这把密钥就能用。想换回复模型（默认 `deepseek/deepseek-chat-v3.1`，国内 Gemini / OpenAI 会被区域限制）就在「回复接口」选预设（OpenRouter / DeepSeek 官方 / 通义兼容）或自填地址，每张卡都有独立的一键连通测试。\n\n**3. 开权限。** 按主页向导开三项：\n\n- 无障碍（读消息；升级到 1.3+ 后需要把无障碍关掉再打开一次，截屏能力才生效）\n- 悬浮窗 / 显示在其他应用上层（展示分析）\n- 自启动 + 省电无限制（小米 / HyperOS 必做，否则后台被冻结读不到消息）\n\n装过 debug 包的要先卸载再装 release（签名不同），卸载会清掉密钥和设置。小米 / HyperOS 重装后悬浮窗权限会被重置，装完按向导再开一次。",
+      "score": 0.9667,
+      "score_parts": {
+        "velocity": 1.0,
+        "hands_on": 1.0,
+        "cross_heat": 0.3333,
+        "ai_bonus": 0.1
+      }
+    },
+    {
+      "repo": "NandhaKishorM/laya",
+      "url": "https://github.com/NandhaKishorM/laya",
+      "description": "Non-autoregressive System 1 decision engine. Typed choice, score and yes/no decisions over any text in a single forward pass, in 100+ languages, with a router that picks the right checkpoint per request.",
+      "language": "Python",
+      "topics": [
+        "calibration",
+        "classification",
+        "decision-model",
+        "huggingface",
+        "jev",
+        "modernbert",
+        "multilingual",
+        "nlp",
+        "python",
+        "pytorch",
+        "routing",
+        "typed-decisions",
+        "zero-shot"
+      ],
+      "stars": 20381,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-09-18T04:46:33Z",
+      "pushed_at": "2026-09-23T18:05:00Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "0.3.10 changes only this README; its code is the same as 0.3.9. Everything below is new since 0.3.6. `pip install -U laya` for all of it; the checkpoints are unchanged.\n\n* **About 10x faster loading.** Checkpoints are built without the throwaway random weight initialisation, so `laya.load()` drops from about 22 s to about 2 s on CPU with bit-identical answers. This also skips the pass that crashed on Windows with Python 3.14 (#123). A second `Agent` for the same checkpoint reuses its parsed tokenizer and loads in about 0.5 s.\n* **`import laya` no longer loads torch.** Routing, language detection and e-mail cleaning work in lightweight processes; torch loads on first use of a model.\n* **Batch scoring.** `agent.predict_batch(states, questions)` scores many states in shared forward passes, with answers identical to calling `predict` one state at a time. See [Batch Mode](#batch-mode-score-many-states-in-one-forward-pass).\n* **Faster paths, all opt-in.** `laya.load(..., fast=True)` uses a TileLang GPU fast path that matches the stock bf16 forward within rounding (see [GPU Fast Path](#gpu-fast-path-tilelang)). `Agent(compile=True)` enables `torch.compile",
+      "score": 0.55,
+      "score_parts": {
+        "velocity": 0.5,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    }
+  ],
+  "meta": {
+    "pick_repo": "jev-chat/jev-chat-jarvis",
+    "runner_up_repos": [
+      "NandhaKishorM/laya"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 10
+  }
+}

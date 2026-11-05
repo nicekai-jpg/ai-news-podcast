@@ -1,0 +1,92 @@
+{
+  "date": "2026-09-13",
+  "generated_at": "2026-09-12T23:23:05.658868+00:00",
+  "projects": [
+    {
+      "repo": "EvoMap/AutoResearch",
+      "url": "https://github.com/EvoMap/AutoResearch",
+      "description": "AI/ML research agents from idea to paper-ready evidence. An EvoMap open-source project.",
+      "language": "Python",
+      "topics": [],
+      "stars": 4153,
+      "delta_stars": 719,
+      "is_new": false,
+      "created_at": "2026-08-15T07:48:42Z",
+      "pushed_at": "2026-09-10T08:34:26Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "score": 0.5397,
+      "score_parts": {
+        "velocity": 0.4793,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    },
+    {
+      "repo": "MengTo/threeui",
+      "url": "https://github.com/MengTo/threeui",
+      "description": "Open-source ThreeUI Community catalog with live interactive components and complete Community source.",
+      "language": "HTML",
+      "topics": [
+        "react",
+        "shaders",
+        "threejs",
+        "ui-components",
+        "webgl"
+      ],
+      "stars": 5671,
+      "delta_stars": 63,
+      "is_new": false,
+      "created_at": "2026-08-21T11:56:39Z",
+      "pushed_at": "2026-09-03T05:36:26Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "Install the public Community component library from npm:\n\n```bash\nnpm install @designcodeio/threeui\n```\n\nImport a component and the shared styles:\n\n```tsx\nimport { AtTheHorizon } from \"@designcodeio/threeui\";\nimport \"@designcodeio/threeui/style.css\";\n\nexport function Hero() {\n  return <AtTheHorizon />;\n}\n```\n\nFor the smallest development import graph, use a component subpath:\n\n```tsx\nimport { AtTheHorizon } from \"@designcodeio/threeui/components/AtTheHorizon\";\n```\n\nComponents that render full HTML documents expect their runtime files at the same root-relative URLs used by the ThreeUI preview. Copy the needed files from `node_modules/@designcodeio/threeui/lib-dist/assets/` into your app's public directory, or override the component's `sourceUrl` or `assetBaseUrl` prop where available.",
+      "score": 0.276,
+      "score_parts": {
+        "velocity": 0.042,
+        "hands_on": 0.85,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    },
+    {
+      "repo": "amagine-ai/Amagine3D",
+      "url": "https://github.com/amagine-ai/Amagine3D",
+      "description": "Amagine3D: From hardware requirements to editable 3D designs",
+      "language": "Python",
+      "topics": [],
+      "stars": 4302,
+      "delta_stars": 288,
+      "is_new": false,
+      "created_at": "2026-08-19T15:31:34Z",
+      "pushed_at": "2026-09-12T02:34:41Z",
+      "license": "Apache-2.0",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "score": 0.276,
+      "score_parts": {
+        "velocity": 0.192,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    }
+  ],
+  "meta": {
+    "pick_repo": "EvoMap/AutoResearch",
+    "runner_up_repos": [
+      "MengTo/threeui",
+      "amagine-ai/Amagine3D"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 2
+  }
+}

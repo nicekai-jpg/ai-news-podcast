@@ -1,0 +1,3359 @@
+{
+  "episode_id": "2026-10-22",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年10月22日，我是苏晴。今天咱们别只追发布清单，我想聊点更底层的东西：模型到底能证明什么，又有什么力量能让它真正跑起来。",
+      "start": 1.0,
+      "duration": 18.697,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。榜单像赛车场的计分板，只能告诉你这一圈谁快；模型背后的数学能力、算力供应和工程稳定性，才决定这台车能不能一直跑。今天咱们就按这个视角看新闻。",
+      "start": 20.146,
+      "duration": 14.759,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "Need \"好\" starts after marker? It starts \"大家好\" acceptable likely. User says don't use \"好\" etc as non-dialogue opening, but this is dialogue. Fine. Could use \"我是周航，先打个招呼\" avoid. But example uses 大家好. okay.",
+      "start": 35.402,
+      "duration": 22.243,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "A",
+      "text": "KLS:",
+      "start": 58.098,
+      "duration": 1.132,
+      "audios": {
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "先说一个听起来很学术、实际很硬核的消息。微软研究院AI宣布，困扰学界31年的KLS猜想获得解答。它不是普通计算题，而是在摸高维空间里的计算难度边界。",
+      "start": 59.635,
+      "duration": 15.935,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "KLS猜想的核心。 Need \"若结论成立\".",
+      "start": 76.003,
+      "duration": 3.396,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "真的假的。 class.",
+      "start": 79.864,
+      "duration": 1.48,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "significance.",
+      "start": 81.806,
+      "duration": 0.827,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "practical.",
+      "start": 83.084,
+      "duration": 1.088,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "validation.",
+      "start": 84.672,
+      "duration": 0.784,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "system war.",
+      "start": 85.894,
+      "duration": 1.437,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "A",
+      "text": "Need no numbered \"先说\" okay not prohibited. \"先说一个\" isn't \"首先\", natural. Good.",
+      "start": 87.792,
+      "duration": 8.751,
+      "audios": {
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "Anthropic transition.",
+      "start": 96.988,
+      "duration": 2.003,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "\"你注意啊，数学证明讲上限，另一边连算力都快成合同问题了。\" Great.",
+      "start": 99.465,
+      "duration": 7.271,
+      "audios": {
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "B maybe transition then A facts? Let A lead.",
+      "start": 107.163,
+      "duration": 4.746,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "A",
+      "text": "A \"TechCrunch。\" exact.",
+      "start": 112.373,
+      "duration": 2.656,
+      "audios": {
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "B explain.",
+      "start": 115.446,
+      "duration": 1.393,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "Capital/IPO.",
+      "start": 117.275,
+      "duration": 1.567,
+      "audios": {
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "\"基础设施支出\" perhaps what? No numbers. Don't invent.",
+      "start": 119.259,
+      "duration": 4.92,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "Quick transitions.",
+      "start": 124.675,
+      "duration": 1.611,
+      "audios": {
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "\"说到算力。\" etc.",
+      "start": 126.698,
+      "duration": 1.916,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "No title \"快讯\", natural.",
+      "start": 129.093,
+      "duration": 2.569,
+      "audios": {
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "Kumo: Maybe \"NVIDIA Kumo\" and \"Kumo Relational\". Use capitalization exact.",
+      "start": 132.094,
+      "duration": 8.751,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "\"Kumo Relational主打免训练直读企业数据库预测\". Good.",
+      "start": 141.313,
+      "duration": 5.66,
+      "audios": {
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "\"HuggingFace称。\" exact.",
+      "start": 147.463,
+      "duration": 2.743,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "Question whether \"HuggingFace\" source is a model card or community. Qualify.",
+      "start": 150.683,
+      "duration": 6.705,
+      "audios": {
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "AI failures:",
+      "start": 157.806,
+      "duration": 1.437,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "\"还有一条更像研究复盘。\" exact.",
+      "start": 159.682,
+      "duration": 3.178,
+      "audios": {
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "Maybe \"微软研究借Jennifer Neville的经历讨论\" awkward but exact.",
+      "start": 163.272,
+      "duration": 5.834,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "Need source qualifiers. Good.",
+      "start": 169.599,
+      "duration": 2.743,
+      "audios": {
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "Potential concern future fact could be false from current date, but user sets date. Treat as given.",
+      "start": 172.751,
+      "duration": 11.034,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "Let's discuss \"全时段稳定表现\" maybe interpret \"从预热到晚高峰\"? Could be benchmark all-time ranking, not temporal. Phrase exactly and don't overinterpret. \"这里最值得盯的是‘全时段稳定’，不是某一时刻冲顶\". Fine.",
+      "start": 184.272,
+      "duration": 19.021,
+      "audios": {
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "\"Flash\" no version. Don't say which.",
+      "start": 203.735,
+      "duration": 3.048,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "\"ordinary impact\" for each:",
+      "start": 207.243,
+      "duration": 2.438,
+      "audios": {
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "Good.",
+      "start": 210.152,
+      "duration": 0.697,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "Personal take/banter:",
+      "start": 211.261,
+      "duration": 1.829,
+      "audios": {
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "A \"这等于以后。\"",
+      "start": 213.535,
+      "duration": 2.786,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "B \"等会儿，别把。\" complete and substantive.",
+      "start": 216.776,
+      "duration": 3.788,
+      "audios": {
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "Need no em dash? allowed. Could use逗号.",
+      "start": 221.004,
+      "duration": 4.093,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "No parentheses. Fine.",
+      "start": 225.575,
+      "duration": 1.872,
+      "audios": {
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "Need project commands exact. Mention `pnpm dsh web` direct uses outputs. Good.",
+      "start": 227.928,
+      "duration": 11.034,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "Potential exact slogan includes period. In Chinese sentence, write quoted:",
+      "start": 239.388,
+      "duration": 7.445,
+      "audios": {
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "定位是\"DeepSeek Harness: Everything is a Plugin.\"",
+      "start": 247.303,
+      "duration": 3.788,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "A",
+      "text": "This includes exact string plus Chinese quote. Good.",
+      "start": 251.552,
+      "duration": 4.571,
+      "audios": {
+        "lively": "chunk_044_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "Need no code backticks. Commands raw.",
+      "start": 256.579,
+      "duration": 3.962,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "A",
+      "text": "MIT exact.",
+      "start": 261.007,
+      "duration": 1.916,
+      "audios": {
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "TypeScript exact.",
+      "start": 263.356,
+      "duration": 2.525,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "A",
+      "text": "Star exact.",
+      "start": 266.288,
+      "duration": 1.567,
+      "audios": {
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "\"首日无对比数据\" exact.",
+      "start": 268.325,
+      "duration": 2.873,
+      "audios": {
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "A",
+      "text": "No invented growth.",
+      "start": 271.599,
+      "duration": 2.438,
+      "audios": {
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "Fork: \"企业知识库连接器及少量配置\". exact.",
+      "start": 274.448,
+      "duration": 5.573,
+      "audios": {
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "A",
+      "text": "\"不改核心运行时\". exact.",
+      "start": 280.513,
+      "duration": 3.352,
+      "audios": {
+        "lively": "chunk_052_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "Closing perhaps mention all stories and key quote.",
+      "start": 284.316,
+      "duration": 4.963,
+      "audios": {
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "A",
+      "text": "今天的线索串起来。 math KLS etc.",
+      "start": 289.769,
+      "duration": 4.571,
+      "audios": {
+        "lively": "chunk_054_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 55,
+      "host": "B",
+      "text": "金句。",
+      "start": 294.84,
+      "duration": 0.653,
+      "audios": {
+        "professional": "chunk_055_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 56,
+      "host": "A",
+      "text": "For listeners。",
+      "start": 295.978,
+      "duration": 1.132,
+      "audios": {
+        "lively": "chunk_056_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 57,
+      "host": "B",
+      "text": "signoff.",
+      "start": 297.59,
+      "duration": 0.784,
+      "audios": {
+        "professional": "chunk_057_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 58,
+      "host": "A",
+      "text": "Need target 2000+ chars. Likely yes.",
+      "start": 298.774,
+      "duration": 5.224,
+      "audios": {
+        "lively": "chunk_058_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "Let's estimate full script approximate after drafting. We can manually count rough via lines. Let's enumerate and approximate:",
+      "start": 304.476,
+      "duration": 12.427,
+      "audios": {
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "A",
+      "text": "1 87",
+      "start": 317.366,
+      "duration": 1.741,
+      "audios": {
+        "lively": "chunk_060_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 61,
+      "host": "A",
+      "text": "2 85 =172",
+      "start": 319.549,
+      "duration": 3.962,
+      "audios": {
+        "lively": "chunk_061_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 62,
+      "host": "A",
+      "text": "3 88=260",
+      "start": 323.942,
+      "duration": 3.178,
+      "audios": {
+        "lively": "chunk_062_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 63,
+      "host": "A",
+      "text": "4 105=365",
+      "start": 327.613,
+      "duration": 5.703,
+      "audios": {
+        "lively": "chunk_063_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 64,
+      "host": "A",
+      "text": "5 82=447",
+      "start": 333.757,
+      "duration": 4.31,
+      "audios": {
+        "lively": "chunk_064_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 65,
+      "host": "A",
+      "text": "6 103=550",
+      "start": 338.557,
+      "duration": 4.223,
+      "audios": {
+        "lively": "chunk_065_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 66,
+      "host": "A",
+      "text": "7 93=643",
+      "start": 343.188,
+      "duration": 4.571,
+      "audios": {
+        "lively": "chunk_066_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 67,
+      "host": "A",
+      "text": "8 111=754",
+      "start": 348.183,
+      "duration": 5.137,
+      "audios": {
+        "lively": "chunk_067_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 68,
+      "host": "A",
+      "text": "9 82=836",
+      "start": 353.792,
+      "duration": 5.486,
+      "audios": {
+        "lively": "chunk_068_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 69,
+      "host": "A",
+      "text": "10 73=909",
+      "start": 359.706,
+      "duration": 2.961,
+      "audios": {
+        "lively": "chunk_069_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 70,
+      "host": "A",
+      "text": "11 104=1013",
+      "start": 363.097,
+      "duration": 4.615,
+      "audios": {
+        "lively": "chunk_070_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 71,
+      "host": "A",
+      "text": "12 109=1122",
+      "start": 368.13,
+      "duration": 5.007,
+      "audios": {
+        "lively": "chunk_071_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 72,
+      "host": "A",
+      "text": "13 94=1216",
+      "start": 373.606,
+      "duration": 4.267,
+      "audios": {
+        "lively": "chunk_072_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 73,
+      "host": "A",
+      "text": "14 118=1334",
+      "start": 378.33,
+      "duration": 6.182,
+      "audios": {
+        "lively": "chunk_073_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 74,
+      "host": "A",
+      "text": "15 91=1425",
+      "start": 384.923,
+      "duration": 6.139,
+      "audios": {
+        "lively": "chunk_074_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 75,
+      "host": "A",
+      "text": "16 115=1540",
+      "start": 391.472,
+      "duration": 6.922,
+      "audios": {
+        "lively": "chunk_075_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 76,
+      "host": "A",
+      "text": "17 76=1616",
+      "start": 398.834,
+      "duration": 5.399,
+      "audios": {
+        "lively": "chunk_076_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 77,
+      "host": "A",
+      "text": "18 116=1732",
+      "start": 404.698,
+      "duration": 6.269,
+      "audios": {
+        "lively": "chunk_077_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 78,
+      "host": "A",
+      "text": "19 91=1823",
+      "start": 411.429,
+      "duration": 5.703,
+      "audios": {
+        "lively": "chunk_078_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 79,
+      "host": "A",
+      "text": "20 105=1928",
+      "start": 417.545,
+      "duration": 4.789,
+      "audios": {
+        "lively": "chunk_079_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 80,
+      "host": "A",
+      "text": "21 82=2010",
+      "start": 422.772,
+      "duration": 3.701,
+      "audios": {
+        "lively": "chunk_080_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 81,
+      "host": "A",
+      "text": "22 113=2123",
+      "start": 426.943,
+      "duration": 5.965,
+      "audios": {
+        "lively": "chunk_081_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 82,
+      "host": "A",
+      "text": "23 92=2215",
+      "start": 433.345,
+      "duration": 4.876,
+      "audios": {
+        "lively": "chunk_082_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 83,
+      "host": "A",
+      "text": "24 120=2335",
+      "start": 438.711,
+      "duration": 5.79,
+      "audios": {
+        "lively": "chunk_083_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 84,
+      "host": "A",
+      "text": "25 82=2417",
+      "start": 444.916,
+      "duration": 4.093,
+      "audios": {
+        "lively": "chunk_084_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 85,
+      "host": "A",
+      "text": "26 90=2507",
+      "start": 449.479,
+      "duration": 4.441,
+      "audios": {
+        "lively": "chunk_085_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 86,
+      "host": "A",
+      "text": "27 109=2616",
+      "start": 454.362,
+      "duration": 5.529,
+      "audios": {
+        "lively": "chunk_086_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 87,
+      "host": "A",
+      "text": "28 112=2728",
+      "start": 460.36,
+      "duration": 4.441,
+      "audios": {
+        "lively": "chunk_087_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 88,
+      "host": "A",
+      "text": "29 83=2811",
+      "start": 465.227,
+      "duration": 5.268,
+      "audios": {
+        "lively": "chunk_088_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 89,
+      "host": "A",
+      "text": "Radar 430=3241",
+      "start": 470.972,
+      "duration": 4.528,
+      "audios": {
+        "lively": "chunk_089_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 90,
+      "host": "A",
+      "text": "Closing 260=3501 perhaps too close. Need reduce news part or total. My approximations maybe over. Overall max 3500. Better target 3100. Fine. Could be 3400. Okay. User desired 2000-3000 but exception 3500; radar + close maybe. We can make average 75. Let's aim 3000.",
+      "start": 475.97,
+      "duration": 39.546,
+      "audios": {
+        "lively": "chunk_090_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 91,
+      "host": "A",
+      "text": "Maybe 25 news lines avg 75 =1875 + radar430 + close240 =2545. Actually above I had 29 news lines. We can consolidate to ~24. But requirement depth. 25-30 rounds natural. Each 40+ chars.",
+      "start": 515.991,
+      "duration": 30.123,
+      "audios": {
+        "lively": "chunk_091_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 92,
+      "host": "A",
+      "text": "Could have 32 news lines avg 65 =2080 +450+200=2730. Let's keep lines around 60-80, not 100. Good.",
+      "start": 546.55,
+      "duration": 16.825,
+      "audios": {
+        "lively": "chunk_092_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 93,
+      "host": "A",
+      "text": "Need every paragraph around 40+ per user. We'll keep 50-90.",
+      "start": 563.831,
+      "duration": 5.486,
+      "audios": {
+        "lively": "chunk_093_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 94,
+      "host": "A",
+      "text": "Let's write concise polished final maybe 34 lines.",
+      "start": 569.728,
+      "duration": 5.355,
+      "audios": {
+        "lively": "chunk_094_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 95,
+      "host": "A",
+      "text": "Let's formulate now line by line with approximate chars:",
+      "start": 575.559,
+      "duration": 5.442,
+      "audios": {
+        "lively": "chunk_095_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 96,
+      "host": "A",
+      "text": "1 A intro 78.",
+      "start": 581.45,
+      "duration": 2.525,
+      "audios": {
+        "lively": "chunk_096_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 97,
+      "host": "A",
+      "text": "2 B intro 75.",
+      "start": 584.415,
+      "duration": 2.656,
+      "audios": {
+        "lively": "chunk_097_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 98,
+      "host": "A",
+      "text": "3 A KLS fact 75.",
+      "start": 587.544,
+      "duration": 4.136,
+      "audios": {
+        "lively": "chunk_098_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 99,
+      "host": "A",
+      "text": "4 B tech 90.",
+      "start": 592.11,
+      "duration": 1.829,
+      "audios": {
+        "lively": "chunk_099_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 100,
+      "host": "A",
+      "text": "5 A analogy 70.",
+      "start": 594.376,
+      "duration": 2.438,
+      "audios": {
+        "lively": "chunk_100_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 101,
+      "host": "A",
+      "text": "6 B impact 85.",
+      "start": 597.237,
+      "duration": 2.569,
+      "audios": {
+        "lively": "chunk_101_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 102,
+      "host": "A",
+      "text": "7 A validation 85.",
+      "start": 600.23,
+      "duration": 2.699,
+      "audios": {
+        "lively": "chunk_102_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 103,
+      "host": "A",
+      "text": "8 A/B tie? Need maybe B validation then A practical. Could be 7 lines KLS.",
+      "start": 603.352,
+      "duration": 8.77,
+      "audios": {
+        "lively": "chunk_103_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 104,
+      "host": "A",
+      "text": "KLS:",
+      "start": 612.526,
+      "duration": 1.393,
+      "audios": {
+        "lively": "chunk_104_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 105,
+      "host": "A",
+      "text": "3 80",
+      "start": 614.397,
+      "duration": 1.35,
+      "audios": {
+        "lively": "chunk_105_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 106,
+      "host": "A",
+      "text": "4 95",
+      "start": 616.231,
+      "duration": 1.524,
+      "audios": {
+        "lively": "chunk_106_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 107,
+      "host": "A",
+      "text": "5 75",
+      "start": 618.188,
+      "duration": 1.567,
+      "audios": {
+        "lively": "chunk_107_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 108,
+      "host": "A",
+      "text": "6 90",
+      "start": 620.215,
+      "duration": 1.263,
+      "audios": {
+        "lively": "chunk_108_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 109,
+      "host": "A",
+      "text": "7 80",
+      "start": 621.886,
+      "duration": 1.219,
+      "audios": {
+        "lively": "chunk_109_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 110,
+      "host": "A",
+      "text": "Total 420.",
+      "start": 623.516,
+      "duration": 2.09,
+      "audios": {
+        "lively": "chunk_110_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 111,
+      "host": "A",
+      "text": "Anthropic 7 lines ~500.",
+      "start": 626.092,
+      "duration": 4.049,
+      "audios": {
+        "lively": "chunk_111_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 112,
+      "host": "A",
+      "text": "MiniMax 4 ~280.",
+      "start": 630.637,
+      "duration": 3.701,
+      "audios": {
+        "lively": "chunk_112_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 113,
+      "host": "A",
+      "text": "Kumo 4 ~320.",
+      "start": 634.754,
+      "duration": 3.962,
+      "audios": {
+        "lively": "chunk_113_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 114,
+      "host": "A",
+      "text": "Failure 4 ~320.",
+      "start": 639.135,
+      "duration": 3.439,
+      "audios": {
+        "lively": "chunk_114_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 115,
+      "host": "A",
+      "text": "News total 1840.",
+      "start": 642.978,
+      "duration": 4.267,
+      "audios": {
+        "lively": "chunk_115_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 116,
+      "host": "A",
+      "text": "Intro 150, radar450, close220 =>2660. Great.",
+      "start": 647.655,
+      "duration": 12.8,
+      "audios": {
+        "lively": "chunk_116_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 117,
+      "host": "A",
+      "text": "Let's craft 7 KLS:",
+      "start": 660.944,
+      "duration": 3.091,
+      "audios": {
+        "lively": "chunk_117_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 118,
+      "host": "A",
+      "text": "A facts.",
+      "start": 664.504,
+      "duration": 1.48,
+      "audios": {
+        "lively": "chunk_118_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 119,
+      "host": "A",
+      "text": "B core explanation.",
+      "start": 666.471,
+      "duration": 2.351,
+      "audios": {
+        "lively": "chunk_119_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 120,
+      "host": "A",
+      "text": "A analogy/why difficult.",
+      "start": 669.272,
+      "duration": 3.657,
+      "audios": {
+        "lively": "chunk_120_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 121,
+      "host": "A",
+      "text": "B impact.",
+      "start": 673.419,
+      "duration": 1.088,
+      "audios": {
+        "lively": "chunk_121_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 122,
+      "host": "A",
+      "text": "A ordinary implications.",
+      "start": 674.974,
+      "duration": 2.612,
+      "audios": {
+        "lively": "chunk_122_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 123,
+      "host": "A",
+      "text": "B verification/AI role.",
+      "start": 678.021,
+      "duration": 2.351,
+      "audios": {
+        "lively": "chunk_123_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 124,
+      "host": "A",
+      "text": "A overarching maybe transition not needed, can use B final tie.",
+      "start": 680.838,
+      "duration": 7.184,
+      "audios": {
+        "lively": "chunk_124_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 125,
+      "host": "A",
+      "text": "Each >40.",
+      "start": 688.452,
+      "duration": 0.871,
+      "audios": {
+        "lively": "chunk_125_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 126,
+      "host": "A",
+      "text": "Anthropic 7:",
+      "start": 689.75,
+      "duration": 2.003,
+      "audios": {
+        "lively": "chunk_126_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 127,
+      "host": "A",
+      "text": "A facts.",
+      "start": 692.239,
+      "duration": 1.045,
+      "audios": {
+        "lively": "chunk_127_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 128,
+      "host": "A",
+      "text": "B partner competition.",
+      "start": 693.759,
+      "duration": 1.872,
+      "audios": {
+        "lively": "chunk_128_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 129,
+      "host": "A",
+      "text": "A spending vs capacity.",
+      "start": 696.084,
+      "duration": 2.395,
+      "audios": {
+        "lively": "chunk_129_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 130,
+      "host": "A",
+      "text": "B capital/IPOs.",
+      "start": 698.953,
+      "duration": 2.264,
+      "audios": {
+        "lively": "chunk_130_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 131,
+      "host": "A",
+      "text": "A ordinary impact.",
+      "start": 701.652,
+      "duration": 2.307,
+      "audios": {
+        "lively": "chunk_131_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 132,
+      "host": "A",
+      "text": "B concentration caveat.",
+      "start": 704.416,
+      "duration": 3.048,
+      "audios": {
+        "lively": "chunk_132_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 133,
+      "host": "A",
+      "text": "A takeaway transition.",
+      "start": 707.927,
+      "duration": 2.395,
+      "audios": {
+        "lively": "chunk_133_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 134,
+      "host": "A",
+      "text": "MiniMax 4:",
+      "start": 710.806,
+      "duration": 1.741,
+      "audios": {
+        "lively": "chunk_134_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 135,
+      "host": "A",
+      "text": "A source fact.",
+      "start": 713.029,
+      "duration": 1.916,
+      "audios": {
+        "lively": "chunk_135_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 136,
+      "host": "A",
+      "text": "B agent/stability.",
+      "start": 715.434,
+      "duration": 2.873,
+      "audios": {
+        "lively": "chunk_136_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 137,
+      "host": "A",
+      "text": "A practical.",
+      "start": 718.752,
+      "duration": 1.872,
+      "audios": {
+        "lively": "chunk_137_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 138,
+      "host": "A",
+      "text": "B benchmark caveat.",
+      "start": 721.034,
+      "duration": 2.177,
+      "audios": {
+        "lively": "chunk_138_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 139,
+      "host": "A",
+      "text": "Kumo 5:",
+      "start": 723.652,
+      "duration": 1.088,
+      "audios": {
+        "lively": "chunk_139_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 140,
+      "host": "A",
+      "text": "A source fact.",
+      "start": 725.218,
+      "duration": 1.524,
+      "audios": {
+        "lively": "chunk_140_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 141,
+      "host": "A",
+      "text": "B tech analogy.",
+      "start": 727.156,
+      "duration": 1.829,
+      "audios": {
+        "lively": "chunk_141_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 142,
+      "host": "A",
+      "text": "A NVIDIA strategy.",
+      "start": 729.447,
+      "duration": 2.351,
+      "audios": {
+        "lively": "chunk_142_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 143,
+      "host": "A",
+      "text": "B source claim/caveat.",
+      "start": 732.273,
+      "duration": 2.873,
+      "audios": {
+        "lively": "chunk_143_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 144,
+      "host": "A",
+      "text": "A deployment guardrails.",
+      "start": 735.626,
+      "duration": 2.438,
+      "audios": {
+        "lively": "chunk_144_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 145,
+      "host": "A",
+      "text": "Failure 5:",
+      "start": 738.506,
+      "duration": 1.088,
+      "audios": {
+        "lively": "chunk_145_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 146,
+      "host": "A",
+      "text": "A source.",
+      "start": 740.018,
+      "duration": 1.132,
+      "audios": {
+        "lively": "chunk_146_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 147,
+      "host": "A",
+      "text": "B interpretation.",
+      "start": 741.581,
+      "duration": 1.48,
+      "audios": {
+        "lively": "chunk_147_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 148,
+      "host": "A",
+      "text": "A generic examples.",
+      "start": 743.463,
+      "duration": 2.656,
+      "audios": {
+        "lively": "chunk_148_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 149,
+      "host": "A",
+      "text": "B taxonomy/method.",
+      "start": 746.612,
+      "duration": 1.698,
+      "audios": {
+        "lively": "chunk_149_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 150,
+      "host": "A",
+      "text": "A opinion/impact.",
+      "start": 748.744,
+      "duration": 2.09,
+      "audios": {
+        "lively": "chunk_150_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 151,
+      "host": "A",
+      "text": "Could be.",
+      "start": 751.248,
+      "duration": 1.045,
+      "audios": {
+        "lively": "chunk_151_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 152,
+      "host": "A",
+      "text": "Radar 6.",
+      "start": 752.783,
+      "duration": 1.567,
+      "audios": {
+        "lively": "chunk_152_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 153,
+      "host": "A",
+      "text": "Closing 4.",
+      "start": 754.778,
+      "duration": 1.176,
+      "audios": {
+        "lively": "chunk_153_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 154,
+      "host": "A",
+      "text": "Total lines 2+7+7+4+5+5+6+4=40 lines. Avg 65 =2600. Good.",
+      "start": 756.401,
+      "duration": 8.925,
+      "audios": {
+        "lively": "chunk_154_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 155,
+      "host": "A",
+      "text": "Let's write actual.",
+      "start": 765.747,
+      "duration": 2.133,
+      "audios": {
+        "lively": "chunk_155_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 156,
+      "host": "A",
+      "text": "Line 1:",
+      "start": 768.322,
+      "duration": 1.088,
+      "audios": {
+        "lively": "chunk_156_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 157,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年10月22日，我是苏晴。今天咱们不只追模型更新，更想看清两件事：AI的能力上限在哪，真正扩张又卡在哪儿。",
+      "start": 769.864,
+      "duration": 17.023,
+      "audios": {
+        "lively": "chunk_157_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 158,
+      "host": "A",
+      "text": "~76.",
+      "start": 787.294,
+      "duration": 1.35,
+      "audios": {
+        "lively": "chunk_158_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 159,
+      "host": "A",
+      "text": "2:",
+      "start": 789.056,
+      "duration": 0.958,
+      "audios": {
+        "lively": "chunk_159_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 160,
+      "host": "B",
+      "text": "大家好，我是周航。榜单像一场短跑，能看见谁冲得快；可模型竞赛现在更像系统战，数学、芯片、云和资本缺一块都跑不顺。咱们就顺着这个视角聊。",
+      "start": 790.514,
+      "duration": 12.582,
+      "audios": {
+        "professional": "chunk_160_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 161,
+      "host": "A",
+      "text": "~70.",
+      "start": 803.514,
+      "duration": 1.132,
+      "audios": {
+        "lively": "chunk_161_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 162,
+      "host": "A",
+      "text": "KLS:",
+      "start": 805.135,
+      "duration": 1.48,
+      "audios": {
+        "lively": "chunk_162_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 163,
+      "host": "A",
+      "text": "3 A 79.",
+      "start": 807.043,
+      "duration": 1.741,
+      "audios": {
+        "lively": "chunk_163_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 164,
+      "host": "A",
+      "text": "4 B 95.",
+      "start": 809.189,
+      "duration": 1.567,
+      "audios": {
+        "lively": "chunk_164_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 165,
+      "host": "A",
+      "text": "5 A 76.",
+      "start": 811.229,
+      "duration": 1.741,
+      "audios": {
+        "lively": "chunk_165_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 166,
+      "host": "A",
+      "text": "6 B 90.",
+      "start": 813.451,
+      "duration": 1.829,
+      "audios": {
+        "lively": "chunk_166_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 167,
+      "host": "A",
+      "text": "7 A 85.",
+      "start": 815.748,
+      "duration": 2.046,
+      "audios": {
+        "lively": "chunk_167_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 168,
+      "host": "A",
+      "text": "8 B 100.",
+      "start": 818.271,
+      "duration": 1.611,
+      "audios": {
+        "lively": "chunk_168_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 169,
+      "host": "A",
+      "text": "Maybe total 525.",
+      "start": 820.369,
+      "duration": 3.222,
+      "audios": {
+        "lively": "chunk_169_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 170,
+      "host": "A",
+      "text": "3",
+      "start": 824.0,
+      "duration": 0.697,
+      "audios": {
+        "lively": "chunk_170_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 171,
+      "host": "A",
+      "text": "微软研究院AI宣布，困扰学界31年的KLS猜想获得解答。先别被名字唬住，它研究的是高维空间里离散点集和凸集能重合到什么程度，直接连着计算复杂度的边界。",
+      "start": 825.1,
+      "duration": 16.544,
+      "audios": {
+        "lively": "chunk_171_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 172,
+      "host": "A",
+      "text": "\"直接连着\" okay.",
+      "start": 842.059,
+      "duration": 2.307,
+      "audios": {
+        "lively": "chunk_172_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 173,
+      "host": "A",
+      "text": "4",
+      "start": 844.847,
+      "duration": 0.653,
+      "audios": {
+        "lively": "chunk_173_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 174,
+      "host": "B",
+      "text": "其中高斯测度。 explain. \"KLS猜想要判断，当凸集在高斯分布下已经占据一定比例时，它与满足特定结构的离散点集的最大交集有没有统一而足够紧的上界。说白了，就是别让维数一高，组合爆炸偷偷钻空子。\"",
+      "start": 845.924,
+      "duration": 19.393,
+      "audios": {
+        "professional": "chunk_174_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 175,
+      "host": "A",
+      "text": "~110. Good.",
+      "start": 865.794,
+      "duration": 2.612,
+      "audios": {
+        "lively": "chunk_175_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 176,
+      "host": "A",
+      "text": "5 A analogy:",
+      "start": 868.879,
+      "duration": 1.916,
+      "audios": {
+        "lively": "chunk_176_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 177,
+      "host": "A",
+      "text": "\"我把它想成。\" 80.",
+      "start": 871.21,
+      "duration": 2.395,
+      "audios": {
+        "lively": "chunk_177_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 178,
+      "host": "A",
+      "text": "6 B:",
+      "start": 874.055,
+      "duration": 0.784,
+      "audios": {
+        "lively": "chunk_178_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 179,
+      "host": "A",
+      "text": "\"若结论成立。\" 90.",
+      "start": 875.25,
+      "duration": 2.395,
+      "audios": {
+        "lively": "chunk_179_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 180,
+      "host": "A",
+      "text": "7 A:",
+      "start": 878.092,
+      "duration": 1.001,
+      "audios": {
+        "lively": "chunk_180_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 181,
+      "host": "A",
+      "text": "\"对咱们。\" 80.",
+      "start": 879.507,
+      "duration": 1.524,
+      "audios": {
+        "lively": "chunk_181_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 182,
+      "host": "A",
+      "text": "8 B:",
+      "start": 881.435,
+      "duration": 1.437,
+      "audios": {
+        "lively": "chunk_182_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 183,
+      "host": "A",
+      "text": "\"这里还得踩一脚刹车。\" proof. 100.",
+      "start": 883.349,
+      "duration": 3.352,
+      "audios": {
+        "lively": "chunk_183_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 184,
+      "host": "A",
+      "text": "Need \"AI announced\" maybe \"微软研究院AI团队\". Fine.",
+      "start": 887.103,
+      "duration": 6.618,
+      "audios": {
+        "lively": "chunk_184_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 185,
+      "host": "A",
+      "text": "No assumption \"获得解答\" accepted.",
+      "start": 894.145,
+      "duration": 3.875,
+      "audios": {
+        "lively": "chunk_185_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 186,
+      "host": "A",
+      "text": "Anthropic:",
+      "start": 898.443,
+      "duration": 1.35,
+      "audios": {
+        "lively": "chunk_186_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 187,
+      "host": "A",
+      "text": "9 A transition fact 95.",
+      "start": 900.284,
+      "duration": 3.091,
+      "audios": {
+        "lively": "chunk_187_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 188,
+      "host": "A",
+      "text": "10 B relation 100.",
+      "start": 903.79,
+      "duration": 2.917,
+      "audios": {
+        "lively": "chunk_188_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 189,
+      "host": "A",
+      "text": "11 A \"基础设施支出\" 80.",
+      "start": 907.168,
+      "duration": 3.701,
+      "audios": {
+        "lively": "chunk_189_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 190,
+      "host": "A",
+      "text": "12 B economics 100.",
+      "start": 911.295,
+      "duration": 3.091,
+      "audios": {
+        "lively": "chunk_190_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 191,
+      "host": "A",
+      "text": "13 A effects 85.",
+      "start": 914.879,
+      "duration": 2.786,
+      "audios": {
+        "lively": "chunk_191_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 192,
+      "host": "A",
+      "text": "14 B caveat 100.",
+      "start": 918.072,
+      "duration": 3.004,
+      "audios": {
+        "lively": "chunk_192_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 193,
+      "host": "A",
+      "text": "15 A takeaway 75.",
+      "start": 921.562,
+      "duration": 2.612,
+      "audios": {
+        "lively": "chunk_193_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 194,
+      "host": "A",
+      "text": "9",
+      "start": 924.576,
+      "duration": 0.827,
+      "audios": {
+        "lively": "chunk_194_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 195,
+      "host": "A",
+      "text": "你注意啊，数学这边刚碰到能力上限，算力那边已经卡在合同桌上了。TechCrunch报道，Anthropic因云厂商将其视为竞争对手，难以获得足够算力，基础设施支出却还在上升。",
+      "start": 925.872,
+      "duration": 16.825,
+      "audios": {
+        "lively": "chunk_195_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 196,
+      "host": "A",
+      "text": "10",
+      "start": 943.151,
+      "duration": 0.827,
+      "audios": {
+        "lively": "chunk_196_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 197,
+      "host": "B",
+      "text": "这事绕不开一个别扭关系：模型公司需要云厂商的芯片和机房，云厂商又担心它把模型做起来，反过来竞争自己的AI服务。买方和潜在对手坐在同一张桌上，合同当然会变拧巴。",
+      "start": 944.457,
+      "duration": 16.52,
+      "audios": {
+        "professional": "chunk_197_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 198,
+      "host": "A",
+      "text": "11 A:",
+      "start": 961.389,
+      "duration": 1.263,
+      "audios": {
+        "lively": "chunk_198_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 199,
+      "host": "A",
+      "text": "\"更扎心。\" 80.",
+      "start": 963.085,
+      "duration": 2.133,
+      "audios": {
+        "lively": "chunk_199_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 200,
+      "host": "A",
+      "text": "12 B:",
+      "start": 965.626,
+      "duration": 0.914,
+      "audios": {
+        "lively": "chunk_200_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 201,
+      "host": "A",
+      "text": "\"基础设施支出上涨。\" 95.",
+      "start": 966.968,
+      "duration": 3.396,
+      "audios": {
+        "lively": "chunk_201_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 202,
+      "host": "A",
+      "text": "13 A:",
+      "start": 970.773,
+      "duration": 1.176,
+      "audios": {
+        "lively": "chunk_202_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 203,
+      "host": "A",
+      "text": "\"对普通用户。\" 80.",
+      "start": 972.431,
+      "duration": 1.698,
+      "audios": {
+        "lively": "chunk_203_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 204,
+      "host": "A",
+      "text": "14 B:",
+      "start": 974.567,
+      "duration": 1.088,
+      "audios": {
+        "lively": "chunk_204_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 205,
+      "host": "A",
+      "text": "\"不过。\" 100.",
+      "start": 976.099,
+      "duration": 1.524,
+      "audios": {
+        "lively": "chunk_205_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 206,
+      "host": "A",
+      "text": "15 A:",
+      "start": 978.078,
+      "duration": 1.132,
+      "audios": {
+        "lively": "chunk_206_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 207,
+      "host": "A",
+      "text": "\"所以。\" transition.",
+      "start": 979.633,
+      "duration": 1.741,
+      "audios": {
+        "lively": "chunk_207_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 208,
+      "host": "A",
+      "text": "MiniMax:",
+      "start": 981.781,
+      "duration": 1.263,
+      "audios": {
+        "lively": "chunk_208_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 209,
+      "host": "A",
+      "text": "16 A fact.",
+      "start": 983.508,
+      "duration": 1.829,
+      "audios": {
+        "lively": "chunk_209_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 210,
+      "host": "A",
+      "text": "17 B technical.",
+      "start": 985.796,
+      "duration": 2.395,
+      "audios": {
+        "lively": "chunk_210_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 211,
+      "host": "A",
+      "text": "18 A relevance.",
+      "start": 988.596,
+      "duration": 1.698,
+      "audios": {
+        "lively": "chunk_211_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 212,
+      "host": "A",
+      "text": "19 B caveat/impact.",
+      "start": 990.77,
+      "duration": 3.004,
+      "audios": {
+        "lively": "chunk_212_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 213,
+      "host": "A",
+      "text": "A \"量子位称，MiniMax登顶国模Agent，靠全时段稳定表现压过Flash。\" exact.",
+      "start": 994.186,
+      "duration": 7.619,
+      "audios": {
+        "lively": "chunk_213_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 214,
+      "host": "A",
+      "text": "B \"Agent不是问答。\" etc.",
+      "start": 1002.294,
+      "duration": 2.83,
+      "audios": {
+        "lively": "chunk_214_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 215,
+      "host": "A",
+      "text": "A \"对普通用户。\" stable.",
+      "start": 1005.574,
+      "duration": 3.178,
+      "audios": {
+        "lively": "chunk_215_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 216,
+      "host": "A",
+      "text": "B \"榜单仍要。\" etc.",
+      "start": 1009.177,
+      "duration": 2.525,
+      "audios": {
+        "lively": "chunk_216_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 217,
+      "host": "A",
+      "text": "Kumo:",
+      "start": 1012.135,
+      "duration": 0.827,
+      "audios": {
+        "lively": "chunk_217_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 218,
+      "host": "A",
+      "text": "20 A fact.",
+      "start": 1013.407,
+      "duration": 1.393,
+      "audios": {
+        "lively": "chunk_218_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 219,
+      "host": "A",
+      "text": "21 B explanation.",
+      "start": 1015.293,
+      "duration": 2.786,
+      "audios": {
+        "lively": "chunk_219_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 220,
+      "host": "A",
+      "text": "22 A analogy.",
+      "start": 1018.539,
+      "duration": 2.395,
+      "audios": {
+        "lively": "chunk_220_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 221,
+      "host": "A",
+      "text": "23 B industry/claim.",
+      "start": 1021.406,
+      "duration": 3.135,
+      "audios": {
+        "lively": "chunk_221_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 222,
+      "host": "A",
+      "text": "24 A guardrails.",
+      "start": 1024.962,
+      "duration": 2.307,
+      "audios": {
+        "lively": "chunk_222_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 223,
+      "host": "A",
+      "text": "A exact: \"对了，还有NVIDIA Kumo。\"",
+      "start": 1027.758,
+      "duration": 3.875,
+      "audios": {
+        "lively": "chunk_223_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 224,
+      "host": "A",
+      "text": "Could mention \"Kumo Relational主打免训练直读企业数据库预测，HuggingFace称表现优于监督学习。\" Good.",
+      "start": 1032.119,
+      "duration": 10.338,
+      "audios": {
+        "lively": "chunk_224_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 225,
+      "host": "A",
+      "text": "B \"免训练不等于。\" explain direct relational schema. Need not claim exact mechanics beyond.",
+      "start": 1042.883,
+      "duration": 9.554,
+      "audios": {
+        "lively": "chunk_225_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 226,
+      "host": "A",
+      "text": "A \"像新员工。\" analogy.",
+      "start": 1052.935,
+      "duration": 3.178,
+      "audios": {
+        "lively": "chunk_226_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 227,
+      "host": "A",
+      "text": "B \"NVIDIA。\" strategic and benchmark caveat.",
+      "start": 1056.52,
+      "duration": 4.484,
+      "audios": {
+        "lively": "chunk_227_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 228,
+      "host": "A",
+      "text": "A \"真进企业。\" permissions.",
+      "start": 1061.504,
+      "duration": 3.135,
+      "audios": {
+        "lively": "chunk_228_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 229,
+      "host": "A",
+      "text": "Failure:",
+      "start": 1065.125,
+      "duration": 0.827,
+      "audios": {
+        "lively": "chunk_229_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 230,
+      "host": "A",
+      "text": "25 A source.",
+      "start": 1066.372,
+      "duration": 2.612,
+      "audios": {
+        "lively": "chunk_230_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 231,
+      "host": "A",
+      "text": "26 B interpretation.",
+      "start": 1069.404,
+      "duration": 2.917,
+      "audios": {
+        "lively": "chunk_231_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 232,
+      "host": "A",
+      "text": "27 A examples.",
+      "start": 1072.764,
+      "duration": 2.83,
+      "audios": {
+        "lively": "chunk_232_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 233,
+      "host": "A",
+      "text": "28 B taxonomy.",
+      "start": 1076.061,
+      "duration": 2.743,
+      "audios": {
+        "lively": "chunk_233_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 234,
+      "host": "A",
+      "text": "29 A personal/action.",
+      "start": 1079.236,
+      "duration": 2.569,
+      "audios": {
+        "lively": "chunk_234_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 235,
+      "host": "A",
+      "text": "Need mention \"AI失败不是噪声\" explicitly.",
+      "start": 1082.22,
+      "duration": 3.918,
+      "audios": {
+        "lively": "chunk_235_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 236,
+      "host": "A",
+      "text": "A \"微软研究借Jennifer Neville的经历讨论，AI失败不是噪声，而是识别系统盲区的线索。\" exact.",
+      "start": 1086.614,
+      "duration": 10.405,
+      "audios": {
+        "lively": "chunk_236_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 237,
+      "host": "A",
+      "text": "B explain not individual anecdote.",
+      "start": 1097.475,
+      "duration": 2.917,
+      "audios": {
+        "lively": "chunk_237_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 238,
+      "host": "A",
+      "text": "A examples generic.",
+      "start": 1100.877,
+      "duration": 2.786,
+      "audios": {
+        "lively": "chunk_238_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 239,
+      "host": "A",
+      "text": "B taxonomy.",
+      "start": 1104.085,
+      "duration": 1.654,
+      "audios": {
+        "lively": "chunk_239_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 240,
+      "host": "A",
+      "text": "A impact.",
+      "start": 1106.14,
+      "duration": 1.219,
+      "audios": {
+        "lively": "chunk_240_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 241,
+      "host": "A",
+      "text": "Project:",
+      "start": 1107.819,
+      "duration": 0.958,
+      "audios": {
+        "lively": "chunk_241_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 242,
+      "host": "A",
+      "text": "30 transition.",
+      "start": 1109.264,
+      "duration": 2.307,
+      "audios": {
+        "lively": "chunk_242_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 243,
+      "host": "A",
+      "text": "31 what.",
+      "start": 1112.023,
+      "duration": 1.829,
+      "audios": {
+        "lively": "chunk_243_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 244,
+      "host": "A",
+      "text": "32 why.",
+      "start": 1114.324,
+      "duration": 1.916,
+      "audios": {
+        "lively": "chunk_244_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 245,
+      "host": "A",
+      "text": "33 commands.",
+      "start": 1116.705,
+      "duration": 1.872,
+      "audios": {
+        "lively": "chunk_245_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 246,
+      "host": "A",
+      "text": "34 fork.",
+      "start": 1119.016,
+      "duration": 1.306,
+      "audios": {
+        "lively": "chunk_246_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 247,
+      "host": "A",
+      "text": "35 decision.",
+      "start": 1120.805,
+      "duration": 2.438,
+      "audios": {
+        "lively": "chunk_247_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 248,
+      "host": "A",
+      "text": "This radar ~430.",
+      "start": 1123.688,
+      "duration": 3.352,
+      "audios": {
+        "lively": "chunk_248_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 249,
+      "host": "A",
+      "text": "Closing:",
+      "start": 1127.489,
+      "duration": 1.045,
+      "audios": {
+        "lively": "chunk_249_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 250,
+      "host": "A",
+      "text": "36 A summary.",
+      "start": 1129.018,
+      "duration": 2.351,
+      "audios": {
+        "lively": "chunk_250_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 251,
+      "host": "A",
+      "text": "37 B key quote.",
+      "start": 1131.801,
+      "duration": 2.22,
+      "audios": {
+        "lively": "chunk_251_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 252,
+      "host": "A",
+      "text": "38 A listener takeaways.",
+      "start": 1134.44,
+      "duration": 3.004,
+      "audios": {
+        "lively": "chunk_252_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 253,
+      "host": "A",
+      "text": "39 B farewell.",
+      "start": 1137.915,
+      "duration": 2.177,
+      "audios": {
+        "lively": "chunk_253_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 254,
+      "host": "A",
+      "text": "Total 39 lines.",
+      "start": 1140.58,
+      "duration": 2.09,
+      "audios": {
+        "lively": "chunk_254_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 255,
+      "host": "A",
+      "text": "Need ensure project radar only one project; yes.",
+      "start": 1143.071,
+      "duration": 6.226,
+      "audios": {
+        "lively": "chunk_255_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 256,
+      "host": "A",
+      "text": "Potential issue \"项目雷达部分",
+      "start": 1149.755,
+      "duration": 3.483,
+      "audios": {
+        "lively": "chunk_256_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 257,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 1153.732,
+      "duration": 6.444,
+      "audios": {
+        "lively": "chunk_257_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 258,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 1160.586,
+      "duration": 0.74,
+      "audios": {
+        "professional": "chunk_258_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}

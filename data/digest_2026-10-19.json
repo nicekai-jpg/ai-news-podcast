@@ -1,0 +1,927 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-19",
+  "date_label": "2026年10月19日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": true
+  },
+  "podcast": {
+    "title": "AI 新闻快报 | 2026-10-19",
+    "subtitle": "围绕突发！DeepSeek新模型发...，多方力量正在汇聚",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-19.mp3",
+    "duration_seconds": 723.298,
+    "duration_label": "12:03",
+    "speech_seconds": 694.695,
+    "segment_count": 62,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 62,
+      "segments_url": "episodes/2026-10-19/playlist.json",
+      "text_url": "episodes/2026-10-19.txt"
+    }
+  },
+  "lead": {
+    "text": "今日全球 AI 赛道呈现两条鲜明主线——一边是中国大模型厂商以极致性价比与垂直纵深持续挤压全球竞争空间，DeepSeek 以\"闪电\"版本重塑 API 经济、智谱在法律垂类登顶全球；另一边是美国科技巨头将 AI 算力上升为国家科研战略资产，Google 豪掷 4000 万美元AI 算力支持\"创世纪任务\"，并将生成式能力嵌入时装产业级创意流水线。技术平权与高价值纵深并行，一场关于\"谁能定义下一代 AI 使用方式\"的暗战已经全面打响。",
+    "source": "report_lead",
+    "source_file": "data/reports/daily_report_2026-10-19.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 42,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 14,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 62,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 9,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "听众朋友大家好，欢迎收听…",
+      "start": 1.0,
+      "label": "00:01",
+      "source": "cue_heuristic"
+    },
+    {
+      "title": "说完了两个头条，咱们看看…",
+      "start": 351.071,
+      "label": "05:51",
+      "source": "cue_heuristic"
+    },
+    {
+      "title": "行，那第二条快讯。Hug…",
+      "start": 424.942,
+      "label": "07:05",
+      "source": "cue_heuristic"
+    },
+    {
+      "title": "那第三条，Google …",
+      "start": 502.548,
+      "label": "08:23",
+      "source": "cue_heuristic"
+    }
+  ],
+  "report": {
+    "title": "✨ 科技新闻日报 | 2026年10月19日",
+    "char_count": 3021,
+    "reading_minutes": 8,
+    "lead": "今日全球 AI 赛道呈现两条鲜明主线——一边是中国大模型厂商以极致性价比与垂直纵深持续挤压全球竞争空间，DeepSeek 以\"闪电\"版本重塑 API 经济、智谱在法律垂类登顶全球；另一边是美国科技巨头将 AI 算力上升为国家科研战略资产，Google 豪掷 4000 万美元AI 算力支持\"创世纪任务\"，并将生成式能力嵌入时装产业级创意流水线。技术平权与高价值纵深并行，一场关于\"谁能定义下一代 AI 使用方式\"的暗战已经全面打响。",
+    "deep_dives": [
+      {
+        "heading": "一、DeepSeek V4.1-Flash-1017：把\"搜索\"打成基础设施级的价格战",
+        "background": null,
+        "breakthrough": null,
+        "impact": null,
+        "raw_sections": [
+          "事件背景：在通用大模型 API 普遍按 token 计费、信息检索类工具仍以订阅制为主的当下，DeepSeek 同期释放两款\"组合拳\"——全新轻量模型 V4.1-Flash-1017，以及与之配套的官方搜索/抓取 API。",
+          "核心突破点：最关键的信号不在模型能力本身，而在于其官宣的定价：每 1000 次成功请求仅 0.75 美元。这一数字较主流海外搜索增强类 API 低出一个数量级，几乎逼近\"按调用次数已无感\"的水平。搭配 Flash 系列的低延迟特性，开发者可以近乎零边际成本地将实时检索能力嵌入任何 Agent、RAG 工作流甚至终端应用。",
+          "对行业生态的深刻影响：这并非单纯的价格让利，而是 DeepSeek 在试图把\"实时信息获取\"从一项付费服务改写为类似水电的基础设施。当每一次网络搜索的边际成本低于人类一次深呼吸的能耗成本时，独立开发者、中小企业的创新门槛被彻底打穿，长尾应用的爆发窗口由此打开。可以预见，海外搜索 API 与闭源模型厂商将被迫在 Q4 之前做出明确的成本对标动作，行业新一轮\"API 通缩\"周期已然开始。"
+        ]
+      },
+      {
+        "heading": "二、Google 4000 万美元押注\"创世纪任务\"：AI 算力正式成为科研战略资源",
+        "background": null,
+        "breakthrough": null,
+        "impact": null,
+        "raw_sections": [
+          "事件背景：DeepMind 官博披露，Google 承诺为美国能源部主导的 Genesis Mission 提供价值 4000 万美元的 AI tokens 与算力积分，目标是在基础科学、材料、能源等领域加速突破。",
+          "核心突破点：表面看是一次企业社会责任式的赞助，但实质是 Google 将自家 AI 算力池首次以\"国家级科研基础设施\"的姿态嵌入国家科研调度体系。这意味着 AI 算力在未来将与粒子加速器、超算集群一样，成为被战略分配的关键资源，而非自由市场商品。",
+          "对行业生态的深刻影响：此举具有三重外溢效应：第一，OpenAI、Anthropic 与 xAI 若不跟进同类承诺，将在政府采购与顶尖科研客户争夺中失分；第二，\"AI for Science\"将从论文热词升级为可持续的算力-数据-人才闭环，材料科学、气候模拟、新药研发有望率先跑出 AGI 之外的第二条价值曲线；第三，AI 厂商的身份正在从\"模型供应商\"悄然过渡为\"科研合伙人\"，未来高端人才的争夺将围绕科研生态绑定能力展开，而非单纯的薪酬包大小。"
+        ]
+      }
+    ],
+    "frontier": [
+      {
+        "title": "智谱法律大模型登顶全球榜单",
+        "summary": "在最新法律领域基准测试中，智谱新模型取得综合第一名。这标志着中国大模型首次在强合规、强逻辑、对抗性推理的高门槛专业赛道上反超欧美同行。法律 AI 的真正护城河不在参数，而在高质量判例语料与司法流程理解——智谱若能将这一优势转化为律所、企业法务部门的 SaaS 订阅，将打开大模型商业化最具付费意愿的垂直蓝海。"
+      },
+      {
+        "title": "DeepSeek 搜索 API 引发 HN 471 分热议",
+        "summary": "海外开发者社区对 0.75 美元/千次定价表现出强烈兴趣，相关讨论帖 24 小时内冲到首页高位。评论焦点集中于\"中国 AI 是否正在系统性重构全球 API 经济学\"，开发者普遍认为这一价位将直接挤压 OpenAI 与 Anthropic 的中等价位段产品空间。"
+      },
+      {
+        "title": "Google AI × Jane Wade / Sergio Hudson 共创时装未来",
+        "summary": "Google AI Blog 发布与两位美国知名设计师的深度合作案例，展示生成式模型在高级定制打版、面料可视化、营销叙事中的全流程介入。这并非简单的\"AI 换装\"，而是把生成式工具前置进入创意决策环节，挑战了传统时装\"设计师单点灵感驱动\"的生产范式，预示高端服装业即将迎来一次生产关系的结构性调整。"
+      }
+    ],
+    "editor_verdict": "今天的几条新闻，表面是模型发布、定价下调、跨界合作、企业赞助，但底层指向的是同一个结构性命题——**AI 产业正从\"技术能力竞赛\"全面转向\"使用方式定义权\"的争夺**。DeepSeek 用价格把实时检索打成基础设施，争夺的是全球开发者的默认入口；智谱用法律垂类登顶，争夺的是高付费意愿的专业市场；Google 用国家科研预算绑定科研生态，争夺的是未来高端人才与政府客户的话语权。三股力量分别对应\"广度、深度、高度\"三种竞争维度。可以预见，2026 年下半年的大模型竞争将不再由基准榜单或参数规模主导，而是由**谁能让 AI 真正嵌入某一类决策工作流的不可替代环节**来定输赢——这也是所有大模型公司从\"模型公司\"升级为\"价值分配节点\"的最后窗口期。",
+    "toc": [
+      {
+        "anchor": "deep-dive-1",
+        "title": "一、DeepSeek V4.1-Flash-1017：把\"搜索\"打成基础设施级的价格战"
+      },
+      {
+        "anchor": "deep-dive-2",
+        "title": "二、Google 4000 万美元押注\"创世纪任务\"：AI 算力正式成为科研战略资源"
+      }
+    ],
+    "raw_paragraphs": [],
+    "source_file": "data/reports/daily_report_2026-10-19.md"
+  },
+  "sources": {
+    "total_all": 42,
+    "total_main": 14,
+    "shown": 42,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "count": 25
+      },
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 12
+      },
+      {
+        "publisher": "Google",
+        "group": "Google",
+        "count": 3
+      },
+      {
+        "publisher": "arXiv 论文",
+        "group": "arXiv 论文",
+        "count": 2
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "突发！DeepSeek新模型发布，超级性价比斩杀一切",
+        "summary": "新版本V4.1-Flash-1017，还开放了自研搜索API",
+        "link": "https://www.qbitai.com/2026/10/504067.html",
+        "published_at": "2026-10-17T12:21:09+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "智谱新模型，懂法方面全球第一了",
+        "summary": "AI的风还是刮到了法律圈",
+        "link": "https://www.qbitai.com/2026/10/503965.html",
+        "published_at": "2026-10-17T12:13:45+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "DeepMind Blog",
+        "group": "Google",
+        "source_name": "DeepMind Blog",
+        "category": "official",
+        "title": "Accelerating the frontiers of scientific discovery: Google’s $40M commitment to the Genesis Mission",
+        "summary": "Google commits $40M in AI tokens and credits for the Genesis Mission",
+        "link": "https://deepmind.google/blog/accelerating-the-frontiers-of-scientific-discovery-googles-40m-commitment-to-the-genesis-mission/",
+        "published_at": "2026-07-22T13:38:54+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "DeepSeek search and fetch – $0.75 per 1000 successful requests",
+        "summary": "HN 热门讨论（471 points, 228 评论）by fagnerbrack",
+        "link": "https://api-docs.deepseek.com/guides/search/",
+        "published_at": "2026-10-18T06:50:36+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Google AI Blog",
+        "group": "Google",
+        "source_name": "Google AI Blog",
+        "category": "official",
+        "title": "Co-creating the future of fashion with Google",
+        "summary": "Jane Wade and Sergio Hudson",
+        "link": "https://blog.google/innovation-and-ai/technology/ai/google-flow-fashion-week/",
+        "published_at": "2026-09-18T13:00:00+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Google AI Blog",
+        "group": "Google",
+        "source_name": "Google AI Blog",
+        "category": "official",
+        "title": "Get ready for the game with new football features in Search",
+        "summary": "An illustrated graphic set against a vibrant green background featuring American football elements, including a gold trophy, a blue helmet, a silver whistle, a football, a mini scoreboard, and play diagrams, with the icon for AI Mode in Goo",
+        "link": "https://blog.google/products-and-platforms/products/search/football-features-google-search/",
+        "published_at": "2026-09-09T16:00:00+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "HuggingFace Blog",
+        "group": "科技媒体",
+        "source_name": "HuggingFace Blog",
+        "category": "research",
+        "title": "Fine-tuning a 350M Model for Better Structured Outputs in 100 GRPO Steps",
+        "summary": "",
+        "link": "https://huggingface.co/blog/grpo-with-trl-ifstruct",
+        "published_at": "2026-09-03T00:00:00+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "HuggingFace Blog",
+        "group": "科技媒体",
+        "source_name": "HuggingFace Blog",
+        "category": "research",
+        "title": "Training a coding model to paint watercolours with TRL and OpenEnv",
+        "summary": "",
+        "link": "https://huggingface.co/blog/train-to-paint-with-code",
+        "published_at": "2026-09-03T00:00:00+00:00"
+      },
+      {
+        "rank": 9,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "清华开源！智能体操作系统任务成本降83%，AI记忆可查可改",
+        "summary": "整套系统原生支持MCP",
+        "link": "https://www.qbitai.com/2026/10/503935.html",
+        "published_at": "2026-10-17T12:10:35+00:00"
+      },
+      {
+        "rank": 10,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "Claude半小时解开密码学悬案，学界集体走偏20年",
+        "summary": "谜底指向时间",
+        "link": "https://www.qbitai.com/2026/10/503910.html",
+        "published_at": "2026-10-17T12:06:51+00:00"
+      },
+      {
+        "rank": 11,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "科技企业出海，为啥我推荐你去迪拜？",
+        "summary": "通往全球市场的超级跳板",
+        "link": "https://www.qbitai.com/2026/10/503893.html",
+        "published_at": "2026-10-17T09:05:08+00:00"
+      },
+      {
+        "rank": 12,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "霸榜三大基准！优必选 Thinker-WM：多模态统一表征，单模型实现六大能力",
+        "summary": "优必选 Thinker-WM在三大公认具身世界模型基准评测中全部拿下第一名",
+        "link": "https://www.qbitai.com/2026/10/503843.html",
+        "published_at": "2026-10-16T08:00:31+00:00"
+      },
+      {
+        "rank": 13,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "范式智能联合睿思智联推出开源一站式 生产级 AI 部署平台 “模域ModelSphere”",
+        "summary": "范式智能技术集团有限公司联合北京睿思智联科技有限公司宣布，一站式生产级 AI 部署平台“模域”正式上线。",
+        "link": "https://www.qbitai.com/2026/10/503829.html",
+        "published_at": "2026-10-16T07:16:11+00:00"
+      },
+      {
+        "rank": 14,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Show HN: Sphinx – A hook that quizzes you on your AI's code before shipping",
+        "summary": "HN 热门讨论（222 points, 75 评论）by critiquebrowser",
+        "link": "https://sphinx-six-theta.vercel.app/",
+        "published_at": "2026-10-18T04:33:49+00:00"
+      },
+      {
+        "rank": 15,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Anthropic says its workforce has become less junior and is spending more time in meetings",
+        "summary": "The composition of Anthropic’s workforce and the type of work getting done have changed significantly in the past year.",
+        "link": "https://techcrunch.com/2026/10/17/anthropic-says-its-workforce-has-become-less-junior-and-is-spending-more-time-in-meetings/",
+        "published_at": "2026-10-17T20:21:19+00:00"
+      },
+      {
+        "rank": 16,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Someone behind the software",
+        "summary": "HN 热门讨论（126 points, 48 评论）by tosh",
+        "link": "https://karrisaarinen.com/posts/someone-behind-the-software/",
+        "published_at": "2026-10-18T16:32:00+00:00"
+      },
+      {
+        "rank": 17,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Will it be a golden age or a dark age for mathematics (and science)?",
+        "summary": "HN 热门讨论（98 points, 122 评论）by smilelamp",
+        "link": "https://terrytao.wordpress.com/2026/10/18/will-it-be-a-golden-age-or-a-dark-age-for-mathematics-and-science/",
+        "published_at": "2026-10-18T15:00:40+00:00"
+      },
+      {
+        "rank": 18,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Show HN: The Zelda timeline to catch up before the Ocarina of Time remake",
+        "summary": "HN 热门讨论（120 points, 62 评论）by jsomau",
+        "link": "https://legendofhyrule.com/",
+        "published_at": "2026-10-18T13:06:54+00:00"
+      },
+      {
+        "rank": 19,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Hatching (Heraldry)",
+        "summary": "HN 热门讨论（65 points, 18 评论）by theanonymousone",
+        "link": "https://en.wikipedia.org/wiki/Hatching_(heraldry)",
+        "published_at": "2026-10-14T18:57:57+00:00"
+      },
+      {
+        "rank": 20,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "I Electrified My Push Scooter with a Power Drill",
+        "summary": "HN 热门讨论（39 points, 19 评论）by speckx",
+        "link": "https://eddieabbondanz.io/post/shop/drill-powered-scooter/",
+        "published_at": "2026-10-14T18:53:52+00:00"
+      },
+      {
+        "rank": 21,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Free Pascal Compiler Now Supports Dynamic Packages",
+        "summary": "HN 热门讨论（13 points, 3 评论）by sysrpl",
+        "link": "https://www.getlazarus.org/dynamic/",
+        "published_at": "2026-10-18T18:48:04+00:00"
+      },
+      {
+        "rank": 22,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "少数派",
+        "group": "科技媒体",
+        "source_name": "少数派",
+        "category": "tools",
+        "title": "Quote/0 妙用 +1，把墨水屏变成点餐助手",
+        "summary": "Matrix首页推荐Matrix是少数派的写作社区，我们主张分享真实的产品体验，有实用价值的经验与思考。我们会不定期挑选Matrix最优质的文章，展示来自用户的最真实的体验和观点。文章代表作者个人观点 ... 查看全文",
+        "link": "https://sspai.com/post/115241",
+        "published_at": "2026-10-18T07:01:02+00:00"
+      },
+      {
+        "rank": 23,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "Auditable and Deployable Multi-Agent Motion Planning via Posetal Games from Legal Guidelines",
+        "summary": "When robots are deployed in the real-world, they must interact with other agents and accomplish their own goals while adhering to legal constraints. These potentially conflicting objectives are often only partially prioritized, making scala",
+        "link": "https://arxiv.org/abs/2610.22277v1",
+        "published_at": "2026-10-15T17:39:16+00:00"
+      },
+      {
+        "rank": 24,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Meta removes language that raised scraping and AI training concerns",
+        "summary": "A Meta spokesperson insisted that the updated terms did not reflect a change in the way Meta crawls the web.",
+        "link": "https://techcrunch.com/2026/10/17/meta-removes-language-that-raised-scraping-and-ai-training-concerns/",
+        "published_at": "2026-10-17T21:31:32+00:00"
+      },
+      {
+        "rank": 25,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Parser Combinators",
+        "summary": "HN 热门讨论（190 points, 73 评论）by schindlabua",
+        "link": "https://t3.at/blog/2026-10-17-parser-combinators/",
+        "published_at": "2026-10-18T08:19:53+00:00"
+      },
+      {
+        "rank": 26,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Teal – A statically-typed dialect of Lua",
+        "summary": "HN 热门讨论（134 points, 59 评论）by Lyngbakr",
+        "link": "https://teal-language.org/",
+        "published_at": "2026-10-16T21:07:24+00:00"
+      },
+      {
+        "rank": 27,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Java sealed classes and exhaustive pattern matching",
+        "summary": "HN 热门讨论（92 points, 59 评论）by hnisjafx40",
+        "link": "https://neilmadden.blog/2026/04/24/java-sealed-classes-and-exhaustive-pattern-matching/",
+        "published_at": "2026-10-18T14:47:37+00:00"
+      },
+      {
+        "rank": 28,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "HOA's are making the home crisis worse",
+        "summary": "HN 热门讨论（74 points, 63 评论）by lovewins",
+        "link": "https://hoaspy.com/hoa/fl/florida-hoa-housing-crisis.html",
+        "published_at": "2026-10-18T18:40:16+00:00"
+      },
+      {
+        "rank": 29,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "The Intel 8087 chip: floating-point addition and subtraction",
+        "summary": "HN 热门讨论（59 points, 8 评论）by pwg",
+        "link": "https://www.righto.com/2026/10/8087-addition-subtraction-microcode.html",
+        "published_at": "2026-10-18T16:20:27+00:00"
+      },
+      {
+        "rank": 30,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "The Electronic Disturbance Theater and Electronic Civil Disobedience (1998)",
+        "summary": "HN 热门讨论（28 points, 4 评论）by jruohonen",
+        "link": "https://www.thing.net/~rdom/ecd/EDTECD.html",
+        "published_at": "2026-10-18T13:41:06+00:00"
+      },
+      {
+        "rank": 31,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Voyage of the Paper Canoe: 2500 Miles from Quebec to the Gulf of Mexico, 1874-5",
+        "summary": "HN 热门讨论（22 points, 5 评论）by Eridanus2",
+        "link": "http://www.ibiblio.org/eldritch/nhb/paperc/intro.html",
+        "published_at": "2026-10-15T18:34:09+00:00"
+      },
+      {
+        "rank": 32,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "CKKS – Addition and Multiplication",
+        "summary": "HN 热门讨论（6 points, 0 评论）by ibobev",
+        "link": "https://www.jeremykun.com/2026/10/11/ckks-addition-and-multiplication/",
+        "published_at": "2026-10-16T15:43:46+00:00"
+      },
+      {
+        "rank": 33,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · 字节 AI Lab",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · 字节 AI Lab",
+        "category": "research",
+        "title": "Generation Provenance Before Behavior Attribution: Auditing Synthetic Speech Research Objects",
+        "summary": "Attributing model behavior to synthetic training data requires knowing what produced each training item before estimating what that item caused. A waveform-label pair does not preserve this knowledge. We propose a generation-provenance subs",
+        "link": "https://arxiv.org/abs/2610.01378v1",
+        "published_at": "2026-10-01T09:45:00+00:00"
+      },
+      {
+        "rank": 34,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "RepRapMicron",
+        "summary": "HN 热门讨论（267 points, 38 评论）by RobotToaster",
+        "link": "https://github.com/VikOlliver/RepRapMicron/wiki",
+        "published_at": "2026-10-18T13:48:48+00:00"
+      },
+      {
+        "rank": 35,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Legal experts warn Meta's new terms still grant broad scraping permissions",
+        "summary": "HN 热门讨论（199 points, 53 评论）by DeepLogin",
+        "link": "https://www.niemanlab.org/2026/10/legal-experts-warn-metas-new-terms-still-grant-broad-scraping-permissions-despite-language-changes/",
+        "published_at": "2026-10-18T10:21:51+00:00"
+      },
+      {
+        "rank": 36,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Namecheap just seized and disabled all my domains",
+        "summary": "HN 热门讨论（129 points, 70 评论）by sashk",
+        "link": "https://www.reddit.com/r/sysadmin/comments/1x8cycd/namecheap_just_seized_and_disabled_all_my_domains/",
+        "published_at": "2026-10-18T16:56:56+00:00"
+      },
+      {
+        "rank": 37,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Sigsaly: Churchill's top secret hotline to the President",
+        "summary": "HN 热门讨论（68 points, 7 评论）by stmw",
+        "link": "https://www.iwm.org.uk/history/iwm/cwr/telephone",
+        "published_at": "2026-10-14T22:07:47+00:00"
+      },
+      {
+        "rank": 38,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Mitos editor is a fork of Helix",
+        "summary": "HN 热门讨论（38 points, 35 评论）by ambigious7777",
+        "link": "https://mitos.computer/",
+        "published_at": "2026-10-18T17:19:34+00:00"
+      },
+      {
+        "rank": 39,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Beyond Tetris: The Other Games of Alexey Pajitnov [video]",
+        "summary": "HN 热门讨论（26 points, 0 评论）by zdw",
+        "link": "https://www.youtube.com/watch?v=QH_LPimUJMs",
+        "published_at": "2026-10-17T23:08:30+00:00"
+      },
+      {
+        "rank": 40,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "PalmOS Lemmings by Aaron Ardiri",
+        "summary": "HN 热门讨论（22 points, 5 评论）by memalign",
+        "link": "https://github.com/ardiri/palmos-lemmings",
+        "published_at": "2026-10-18T17:56:59+00:00"
+      },
+      {
+        "rank": 41,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "CFPB Opens Debanking Investigation into Nine Large National Banks",
+        "summary": "HN 热门讨论（14 points, 6 评论）by iamnothere",
+        "link": "https://www.forbes.com/sites/ajdhaliwal/2026/10/16/cfpb-opens-debanking-investigation-into-nine-large-national-banks/",
+        "published_at": "2026-10-18T18:26:40+00:00"
+      },
+      {
+        "rank": 42,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Geographical Fun: Being Humourous Outlines of Various Countries (1868)",
+        "summary": "HN 热门讨论（4 points, 0 评论）by Thevet",
+        "link": "https://publicdomainreview.org/collection/geographical-fun-being-humourous-outlines-of-various-countries-1868/",
+        "published_at": "2026-10-17T08:24:23+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": true,
+    "status": "pick",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": {
+      "repo": "affaan-m/ECC",
+      "url": "https://github.com/affaan-m/ECC",
+      "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "language": "JavaScript",
+      "topics": [
+        "ai-agents",
+        "anthropic",
+        "claude",
+        "claude-code",
+        "developer-tools",
+        "llm",
+        "mcp",
+        "productivity"
+      ],
+      "stars": 283157,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-01-18T00:51:51Z",
+      "pushed_at": "2026-10-15T19:17:01Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "Use the [guided setup](#install-ecc) or [native plugin commands](#claude-code-details). Both install the same `ecc@ecc` plugin. Choose one and do not stack a full manual Claude install on top.\n\n<div align=\"center\">\n\n<table aria-label=\"ECC primary links\">\n<tr>\n<td width=\"33%\" align=\"center\">\n  <a href=\"https://ecc.tools/pricing\">\n    <img src=\"assets/images/community/ecc-tools-mark.svg\" height=\"42\" alt=\"ECC Tools\" /><br />\n    <strong>ECC Pro + GitHub App</strong>\n  </a><br />\n  <sub><a href=\"https://github.com/apps/ecc-tools\">Install free</a> · <a href=\"https://ecc.tools/pricing\">Private repos from $19/seat/mo</a></sub>\n</td>\n<td width=\"33%\" align=\"center\">\n  <a href=\"https://github.com/sponsors/affaan-m\">\n    <img src=\"assets/images/community/heart.svg\" height=\"42\" alt=\"\" /><br />\n    <strong>Sponsor ECC</strong>\n  </a><br />\n  <sub>Fund the open-source project</sub>\n</td>\n<td width=\"33%\" align=\"center\">\n  <a href=\"https://discord.gg/36yGMHGFbR\">\n    <img src=\"assets/images/community/discord.svg\" height=\"42\" alt=\"Discord\" /><br />\n    <strong>Community</strong>\n  </a><br />\n  <sub>Discord · Q&amp;A · Show and Tell</sub>\n</td>\n</tr>\n</table>\n\n</div>\n\n<sub>**OSS stays free.** This r",
+      "readme_intro": "Language: English  | العربية  | Português (Brasil)  | 简体中文  | 繁體中文  | 日本語  | 한국어  | Türkçe  | Русский  | Tiếng Việt  | ไทย  | Deutsch  | Español  | Українська  | Polski  | বাংলা > [!WARNING] > **Official sources only.** Install ECC only from verified channels: the GitHub repository [github.com/affaan-m/ECC](https://github.com/affaan-m/ECC), the npm packages [`ecc-universal`](https://www.npmjs.com/package/ecc-universal) and [`ecc-agentshield`](https://www.npmjs.com/package/ecc-agentshield), the [GitHub App](https://github.com/apps/ecc-tools), the plugin slug `ecc@ecc`, and the project website [ecc.tools](https://ecc.tools). Third-party re-uploads and unofficial mirrors are not maintained or reviewed by the project and may contain malware.",
+      "score": 0.6858,
+      "score_parts": {
+        "velocity": 0.8766,
+        "vel_rel": 1.0,
+        "vel_abs": 0.6915,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    "runner_ups": [
+      {
+        "repo": "ARahim3/DigUp",
+        "url": "https://github.com/ARahim3/DigUp",
+        "description": "Search your computer by what's in your files: photos, PDFs, documents, recordings, videos and code. On-device on Mac, Windows and Linux, built on Google DeepMind's EmbeddingGemma 2.",
+        "language": "Swift",
+        "topics": [
+          "embeddinggemma",
+          "embeddings",
+          "file-search",
+          "linux",
+          "llama-cpp",
+          "local-first",
+          "macos",
+          "menubar-app",
+          "multimodal",
+          "on-device",
+          "semantic-search",
+          "swift",
+          "tauri",
+          "windows"
+        ],
+        "stars": 4775,
+        "delta_stars": 231,
+        "is_new": false,
+        "created_at": "2026-10-08T20:37:51Z",
+        "pushed_at": "2026-10-18T05:30:06Z",
+        "license": "MIT",
+        "has_install_docs": true,
+        "mentions": 0,
+        "readme_excerpt": "**Mac.** Download the DMG from [Releases](https://github.com/ARahim3/DigUp/releases/latest) and drag DigUp to\nApplications, or use Homebrew: `brew install --cask arahim3/tap/digup`. It needs an Apple Silicon Mac with macOS 14 or\nlater.\n\n**Windows.** Download `DigUp_x.y.z_x64-setup.exe` from the\n[beta release](https://github.com/ARahim3/DigUp/releases/tag/v0.7.0-beta.2) and run it. It installs for you only, with\nno admin rights. Windows may say it doesn't recognize the app, because the installer isn't signed yet: choose More\ninfo, then Run anyway. It needs 64-bit Windows 10 or 11.\n\n**Linux.** On Ubuntu, Debian, Mint and the like, download the .deb and install it:\n\n```sh\nsudo apt install ./DigUp_x.y.z_amd64.deb\n```\n\nThe package is called `dig-up`, because Debian already has an unrelated `digup`. Anywhere else, download the\nAppImage, make it executable and run it. Both are for 64-bit Intel and AMD processors and work on Ubuntu 22.04,\nDebian 12, Mint 21 and newer.\n\nThen, on any of them:\n\n1. Open DigUp. While the model downloads (865 MB, once), pick the folders to search: whole folders, or only some of\n   their subfolders. DigUp shows how long the first pass will take for each, measured",
+        "readme_intro": "DigUp Describe it. Dig it up. Search the files on your computer by what's in them, with Google DeepMind's EmbeddingGemma 2 . Download for Mac   · Windows (beta)   · Linux (beta) Free and open source. Everything runs on your computer. EmbeddingGemma 2 is the multimodal embedding model Google DeepMind released in October 2026. It puts text, images, audio and video into one shared space: a photo of a dog on a beach lands next to the words \"a dog on the beach\", and a recording of someone talking about sleep lands next to \"where they talk about sleep\". It understands more than 100 languages, it's open (Apache 2.0), and at 740M parameters it's small enough to run on a laptop. DigUp brings that to the files on your computer, on a Mac, on Windows or on Linux. Pick the folders to search, and it rea",
+        "score": 0.6743,
+        "score_parts": {
+          "velocity": 0.498,
+          "vel_rel": 0.7273,
+          "vel_abs": 0.154,
+          "hands_on": 1.0,
+          "cross_heat": 0.0,
+          "affinity": 1.0,
+          "days_in_pool": 2
+        },
+        "affinity": 1.0
+      },
+      {
+        "repo": "tangency-labs/solidcraft",
+        "url": "https://github.com/tangency-labs/solidcraft",
+        "description": "SolidCraft: an open-source parametric 3D CAD application built in pure Rust. Desktop, web, and automation through MCP.",
+        "language": "Rust",
+        "topics": [
+          "3d-modeling",
+          "brep",
+          "cad",
+          "egui",
+          "mcp",
+          "parametric-cad",
+          "rust",
+          "step",
+          "wasm"
+        ],
+        "stars": 5358,
+        "delta_stars": null,
+        "is_new": true,
+        "created_at": "2026-10-07T18:57:48Z",
+        "pushed_at": "2026-10-18T19:30:41Z",
+        "license": "Apache-2.0",
+        "has_install_docs": true,
+        "mentions": 0,
+        "readme_excerpt": "cargo run --release -p solidcraft -- --sample          # desktop app with a sample part\ncargo run --release -p solidcraft-cli -- commands      # the command registry\ncargo run --release -p solidcraft-cli -- run examples/bracket.json --out bracket.step\ncargo run --release -p solidcraft-cli -- snapshot examples/bracket.json --out bracket.png\ncargo run --release -p solidcraft-cli -- render examples/render-studio.json --out product.png\ncargo run --release -p solidcraft -- part.step          # open a STEP file as a new design\ncargo run --release -p solidcraft-cli -- eval part.step # measure an imported STEP file\ncargo xtask ci                                          # fmt, clippy, tests, icons, assets, layers, wasm",
+        "readme_intro": "SolidCraft An open-source parametric 3D CAD application built in pure Rust. Sketch, constrain, and build solids with a parametric feature timeline. Change a dimension and watch your model rebuild. Run it on your desktop, in your browser, or let AI agents model through the built-in MCP server. [![Download for Windows][badge-windows]][windows-msi] [![Download for macOS][badge-macos]][macos-dmg] [![Download for Linux][badge-linux]][linux-appimage] [![Get it from the Snap Store][badge-snap]][snap-store] [![Try it in your browser][badge-web]][web-app] Website  · Download  · Try it in the browser  · Documentation  · Discord  · SolidCore *A Raspberry Pi 4 case from an empty design: a sketch dimensioned with the board's parameters, extrude, fillet, shell, the rim rounded in one pick, an M2.5 stand",
+        "score": 0.4534,
+        "score_parts": {
+          "velocity": 0.6208,
+          "vel_rel": 0.8182,
+          "vel_abs": 0.3247,
+          "hands_on": 1.0,
+          "cross_heat": 0.0,
+          "affinity": 0.5,
+          "days_in_pool": 0
+        },
+        "affinity": 0.5
+      }
+    ],
+    "yesterday": {
+      "repo": "deeplethe/utopia",
+      "delta_stars": 23,
+      "date": ""
+    },
+    "candidates": {
+      "total": 33,
+      "excluded_recent": 17,
+      "fresh": 16,
+      "semantics": "v4",
+      "detail_available": false,
+      "preview": null
+    },
+    "message": "今日主推项目"
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-10-19.json",
+      "report": "data/reports/daily_report_2026-10-19.md",
+      "radar": "data/gh_radar/radar_2026-10-19.json",
+      "playlist": "site/episodes/2026-10-19/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": [
+      "radar_candidate_detail_unavailable"
+    ]
+  }
+}

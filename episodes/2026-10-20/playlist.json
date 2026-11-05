@@ -1,0 +1,863 @@
+{
+  "episode_id": "2026-10-20",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI 每日先锋，今天是2026年10月20日。我是苏晴。",
+      "start": 1.0,
+      "duration": 8.054,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。",
+      "start": 9.503,
+      "duration": 1.872,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "周航，今天这期节目我越看大纲越觉得有劲，AI 这事儿现在是真的往\"地底下\"扎了，不是之前那种纯互联网的故事了。",
+      "start": 11.872,
+      "duration": 10.275,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "你这个\"扎\"用得很形象。是往实体经济扎，往工业制造、天气预报、法律这种原本觉得 AI 够不着的领域扎进去了。",
+      "start": 22.6,
+      "duration": 9.839,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "对！然后我看完今天所有素材就提炼出两个关键词——一个是\"性价比\"，一个是\"垂直专业能力\"。你注意啊，今天几条新闻其实都是围着这两条线在转。",
+      "start": 32.844,
+      "duration": 14.387,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "说白了，就是大家发现通用大模型那波红利快吃到头了，下一个阶段拼的是\"我这个 AI 在你这行到底行不行\"。行不行之外还得便宜。",
+      "start": 47.664,
+      "duration": 11.363,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "而且便宜还得配活儿硬。咱们先上第一个头条——DeepSeek。",
+      "start": 59.492,
+      "duration": 4.746,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "DeepSeek 这次放了个大招，V4.1-Flash-1017，这个版本号你记住了，名字长但分量足。",
+      "start": 64.7,
+      "duration": 8.316,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "我跟你说这个日期后缀特别有意思，1017 像直接把发版日期拍进去了，就差把日历贴你脸上说\"看，10 月 17 号新鲜出炉的\"。",
+      "start": 73.467,
+      "duration": 14.822,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "但它真正狠的地方不只是模型本身，是同步开放了自研的搜索 API。你想想这意味着什么？一家模型公司把你搜索这条链路也包了——RAG、检索增强、知识库更新，全给你搂进来。",
+      "start": 88.789,
+      "duration": 15.301,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "我理解就是说，以前你想搞 RAG，你得自己接搜索引擎、接向量数据库、再接大模型，自己搭一坨；现在 DeepSeek 直接说\"来，我一个 API 就给你包圆了\"对吧？",
+      "start": 104.528,
+      "duration": 16.041,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "对。而且它那个调性你又不是不知道——极致性价比，这把刀一直就是奔着开发者心智去的。你注意啊，现在大模型 API 价格战早就白热化了，国内外好几家都在卷这个，但 DeepSeek 每次出招都特别狠，它不是单纯打价格，它打的是\"性能除以价格的比\"。",
+      "start": 121.03,
+      "duration": 22.31,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "这是阳谋。",
+      "start": 143.785,
+      "duration": 1.306,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "对。而且 V4.1-Flash 本身定位就是 Flash 系列，主打响应快、成本低，结果这次性能还往上抬了一截。所以它不是简单的便宜，是\"便宜得让你没法拒绝\"那种便宜。",
+      "start": 145.565,
+      "duration": 14.822,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "那这事儿对中小厂意味着什么呢？我感觉——以前你想接一套\"搜索 + 大模型\"的完整方案，要么自己搭，要么就买大厂的捆绑套餐，结果突然冒出来一个便宜又灵活的选择。",
+      "start": 160.814,
+      "duration": 14.3,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "而且你想，搜索 API 这个东西以前是谁的地盘？Google、Bing，还有国内那几家。DeepSeek 这手\"搜索 + 模型一体化\"打出来，相当于在基础设施那一层硬生生撕开了一个口子。",
+      "start": 175.578,
+      "duration": 12.776,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "这也太狠了吧！等于以后开发者不用纠结\"先用哪家搜索引擎、再用哪家大模型\"，DeepSeek 直接给你打包了？",
+      "start": 188.771,
+      "duration": 8.882,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "你不用两个品牌、两套账单、两套接口规范，一个就解决。这种体验上的\"省心\"，其实才是最贵的。",
+      "start": 198.089,
+      "duration": 8.577,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "你这么一说我突然想到——以后那些做企业知识库的 SaaS 公司，是不是要被吊起来打？",
+      "start": 207.083,
+      "duration": 8.664,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "哈，你就别替他们操心了，我估计人家早就拥抱 DeepSeek 了，谁扛得住这个性价比。不过话说回来，咱们今天讲的不是它便宜不便宜，是这种\"全栈低价\"的打法对行业格局的冲击——以后基础设施层会被开源和低价玩家重新洗一遍。",
+      "start": 216.243,
+      "duration": 19.045,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "行 ，那我们赶紧看下一个。这条我觉得特别有画面感 。",
+      "start": 235.7,
+      "duration": 4.833,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "工业 AI，黄仁勋亲自到柏林。",
+      "start": 241.012,
+      "duration": 2.961,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "对，德国总理跟他，在一个叫 Kraftwerk 的地方见面。Kraftwerk 在德语里就是\"发电厂\"的意思，就是柏林一个改造过的前电厂 。我光看这个场景描述就已经觉得很燃了。",
+      "start": 244.405,
+      "duration": 16.52,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "你注意啊 ，这个地点选得很有讲究。它不是去高级酒店，也不是去政府大楼，是去一个废弃电厂改造的科技园区。这个信号其实在讲——传统工业要转型、能源要转型、整个制造业要重新过电 。",
+      "start": 261.393,
+      "duration": 17.347,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "而且黄仁勋是亲自去 。你说他是去卖卡的吧？但他站台的方式不是简单地说\"来买我的 GPU\"，而是直接跟一国总理谈\"你怎么用 AI 重塑制造业\" 。",
+      "start": 279.23,
+      "duration": 13.429,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "这背后其实是个更大的叙事 。AI 竞争已经从消费互联网——那种发聊天机器人、写文案——往汽车、制造、能源这些重资产行业延伸了 。德国手里有什么？大众、宝马、博世、西门子，全球最完整的工业体系。",
+      "start": 293.136,
+      "duration": 17.347,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "我有时候觉得德国挺焦虑的 。欧洲整体在 AI 那一波相对落后了一点，现在他们想打个差异化的牌——你们不是互联网公司卷不过美国嘛 ，那我就卷工业 AI。",
+      "start": 310.901,
+      "duration": 13.69,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "对 。而且黄仁勋这趟绝对不是白去的，他要的是把德国这些工业巨头都圈进英伟达的生态里。你想 ，一个车厂要搞自动驾驶训练、一个工厂要搞预测性维护、一个能源公司要做电网调度，这些场景背后全是要算力的。",
+      "start": 325.03,
+      "duration": 21.353,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "所以黄仁勋是带着方案去的？",
+      "start": 346.795,
+      "duration": 3.57,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "跟政府签个意向、跟几个大厂签个备忘录 ，然后把数据中心、DGX、Omniverse 那套东西往德国一铺。这一波下来，欧洲 AI 主战场就悄悄从消费端挪到工业端了 。",
+      "start": 350.858,
+      "duration": 15.432,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "但我有个疑问——德国要是真发力工业 AI，会不会反过来给中国制造业压力？",
+      "start": 366.699,
+      "duration": 7.184,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "这是个好问题。但咱们先别跑太远，因为今天快讯也挺多的。先说一个有意思的——智谱在法律 AI 上跑出全球第一了。",
+      "start": 374.37,
+      "duration": 9.186,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "这事儿我喜欢！我特别好奇法律这个领域，AI 真的能 hold 住？",
+      "start": 383.998,
+      "duration": 5.921,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "说实话我之前也小看它。因为大家觉得\"懂法\"门槛特别高，每个国家每个地区的判例都不一样，AI 能懂到哪去？结果智谱还真就靠着中文法律语料的积累，加上现在这种\"单项冠军\"的打法，在全球榜单上冲到了第一。",
+      "start": 390.379,
+      "duration": 17.173,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "但你想——法律本身就是一个高度依赖文本和逻辑推理的领域，跟大模型的优势天然对得上。所以它能跑出来其实不意外。",
+      "start": 408.023,
+      "duration": 10.797,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "你注意啊，\"垂直专业能力\"在 2026 年已经变成新的竞争维度了。大家不再比\"谁的模型参数多\"，而是比\"谁在某个具体的活儿上能把人干掉\"。法律是其中一个，医疗、金融估计也快了。",
+      "start": 419.232,
+      "duration": 15.736,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "那咱们普通人的机会在哪？我感觉以前大家觉得\"AI 跟我没关系，是程序员的事\"，现在你看，连律师都有可能被 AI 抢活了。",
+      "start": 435.413,
+      "duration": 10.014,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "这个话题展开能聊两小时，今天先别展开。但你说\"抢活\"其实有点偏，更准确的说法是\"协作\"——AI 先把最繁琐的法条检索、初稿起草吃掉，律师来做判断和沟通。",
+      "start": 445.882,
+      "duration": 14.038,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "行，那咱们再看一个——DeepMind 的 WeatherNext 3，我特别喜欢。",
+      "start": 460.36,
+      "duration": 6.618,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "天气预报 AI！这玩意儿我喜欢，因为它真的影响我明天穿什么。",
+      "start": 467.456,
+      "duration": 5.747,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "DeepMind 这次发了号称迄今最先进、最准确的全球天气 AI 模型——WeatherNext 3。覆盖范围是全尺度的连续数据，从短时到中长期都在做。",
+      "start": 473.684,
+      "duration": 14.778,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "你注意啊，AI 做天气预报这事其实挺反直觉的。传统天气预报不就是根据物理方程算嘛，云怎么走、气流怎么变，超级计算机一算就完事了。",
+      "start": 488.888,
+      "duration": 10.623,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "对。但传统方法有两个瓶颈——一个是算力贵到炸，一个是集合预报很难做。集合预报是啥意思？就是我要知道\"明天到底下不下雨\"，得跑几十个不同的初始条件，看哪个场景概率高。但每多一个成员，算力就翻倍。",
+      "start": 499.981,
+      "duration": 18.218,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "而 AI 训练完之后推理便宜啊。而且 DeepMind 这边有个特别牛的技术，叫函数生成网络，FGNs。它不是预测一个具体数值，而是预测整个概率分布的\"函数\"。",
+      "start": 518.66,
+      "duration": 14.256,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "我说个大白话哈——以前 AI 可能告诉你\"明天 60% 下雨、40% 不下雨\"，给你一个概率；FGNs 更进一步，它告诉你\"从今天到后天，所有可能天气走势的家族长什么样\"。你能看到所有可能性，还能看出哪些比较像、哪些比较不像。",
+      "start": 533.372,
+      "duration": 22.92,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "而且这次特别强调一句——在气旋预测上取得突破。气旋就是台风、飓风的母体，这玩意儿以前预测极难，因为本身就是混沌系统。",
+      "start": 556.758,
+      "duration": 9.665,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "我听过一个比喻，气象系统就像那只蝴蝶——亚马逊雨林一只蝴蝶扇一下翅膀，德州就刮飓风了。AI 能把这种内在的不确定性建模清楚，已经很牛了。",
+      "start": 566.856,
+      "duration": 13.235,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "而且你说说这有啥用——如果气象局用 WeatherNext 3 辅助预报，老百姓享受到的就是更准的台风预警、更准的农业播种窗口、更准的航班延误通知。",
+      "start": 580.498,
+      "duration": 13.08,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "所以 AI 真的开始\"接地气\"了，不再只是写邮件、做 PPT，开始管你看不看得到明天的太阳。",
+      "start": 594.048,
+      "duration": 8.969,
+      "audios": {
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "是的。你看，从天气预报到法律咨询到工业制造，今天这几条新闻串起来其实就是一句话——AI 在全面落地，每个行业都在被重新过一遍。",
+      "start": 603.418,
+      "duration": 11.146,
+      "audios": {
+        "professional": "chunk_050_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "行，新闻聊完了，咱们进入今天的项目雷达时间。周航，今天推的这个项目我看了一眼就惊了——21 万颗星。",
+      "start": 614.975,
+      "duration": 8.577,
+      "audios": {
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "是的，今天推的是 anomalyco/opencode 这个仓库。21 万 7700 颗星，用 TypeScript 写的，MIT 协议——就意味着你想干啥都行，商用、私有化、二开，没人管你。",
+      "start": 624.044,
+      "duration": 15.649,
+      "audios": {
+        "professional": "chunk_052_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "它的定位是啥？AI 编程助手赛道对吧？",
+      "start": 640.144,
+      "duration": 4.18,
+      "audios": {
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "编码 Agent，Coding Agent。它跟那种\"给你补全代码\"的工具不一样，它是真正能\"代办\"——你说一句\"帮我给这个项目加个登录功能\"，它就开始自己读代码、改文件、跑测试、然后汇报做完了。",
+      "start": 644.814,
+      "duration": 15.736,
+      "audios": {
+        "professional": "chunk_054_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "听起来这赛道已经很卷了啊。GitHub Copilot、Cursor、各种国产工具都在打，opencode 凭啥值得 clone？",
+      "start": 661.05,
+      "duration": 9.361,
+      "audios": {
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 56,
+      "host": "B",
+      "text": "第一，MIT 协议，改起来没门槛。第二，TypeScript 全栈意味着你 fork 下来改起来舒服。第三，最关键的——21 万星这个体量，说明开发者生态已经在聚集了，跟着流量走肯定比冷门项目摸索快。",
+      "start": 670.896,
+      "duration": 16.868,
+      "audios": {
+        "professional": "chunk_056_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 57,
+      "host": "A",
+      "text": "那第一步怎么跑起来呢？周航你给大家念念。",
+      "start": 688.244,
+      "duration": 4.789,
+      "audios": {
+        "lively": "chunk_057_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 58,
+      "host": "B",
+      "text": "不过说实话，今天我们手上这份 README 摘录是空的，没有可以逐字引用的安装命令。所以建议大家直接去仓库 https://github.com/anomalyco/opencode 看最新的 README 跑起来最靠谱，避免我们引到过期命令误导你。",
+      "start": 693.433,
+      "duration": 18.479,
+      "audios": {
+        "professional": "chunk_058_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 59,
+      "host": "A",
+      "text": "这个提醒很到位。AI 编程助手这种东西迭代飞快，今天能用的命令明天可能就变了。",
+      "start": 712.39,
+      "duration": 7.14,
+      "audios": {
+        "lively": "chunk_059_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 60,
+      "host": "B",
+      "text": "对。我们再说 fork 之后最小改动能做出什么差异化。三个切入点——第一个是 IDE 适配层。现在很多小众编辑器，主流 AI 编程工具支持得不好，你可以做一个适配层接到 opencode 上。第二个是私有模型接入，替换默认 LLM——比如公司有内部大模型、或者你想用本地开源模型，把这个口子接上去就有差异化。第三个是团队协作会话共享，把它从单兵 Agent 改造成团队工具，会话沉淀成团队知识库。",
+      "start": 719.993,
+      "duration": 33.171,
+      "audios": {
+        "professional": "chunk_060_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 61,
+      "host": "A",
+      "text": "听你这么一说我都觉得必须 clone 下来盘一盘了。",
+      "start": 753.606,
+      "duration": 4.18,
+      "audios": {
+        "lively": "chunk_061_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 62,
+      "host": "B",
+      "text": "而且 21 万星的项目，社区活跃度是有保障的。",
+      "start": 758.217,
+      "duration": 7.358,
+      "audios": {
+        "professional": "chunk_062_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 63,
+      "host": "A",
+      "text": "行，那今天项目雷达就到这里。最后一句话总结一下今天的节目——",
+      "start": 766.068,
+      "duration": 5.834,
+      "audios": {
+        "lively": "chunk_063_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 64,
+      "host": "B",
+      "text": "AI 在落地、模型在打价格战、垂直领域跑出冠军、工业 AI 在德国悄悄起航。天上飞的、地里种的、工厂里造的，都开始被 AI 重新过一遍了。",
+      "start": 772.343,
+      "duration": 12.06,
+      "audios": {
+        "professional": "chunk_064_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 65,
+      "host": "A",
+      "text": "听众朋友们，咱们明天见。",
+      "start": 784.893,
+      "duration": 1.785,
+      "audios": {
+        "lively": "chunk_065_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 66,
+      "host": "B",
+      "text": "明天见。",
+      "start": 787.086,
+      "duration": 0.74,
+      "audios": {
+        "professional": "chunk_066_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
