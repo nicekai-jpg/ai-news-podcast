@@ -71,8 +71,8 @@
     }
   },
   "lead": {
-    "text": "从谁在给OpenAI供应具身数据...到MetaHOPE: A ...，AI技术持续加速演进",
-    "source": "brief_thesis",
+    "text": "今日全球科技圈的主线，是 AI 竞争正从“模型参数与通用能力”的比拼，转向具身数据、隐私记忆和生命科学数据等核心生产资料的争夺。与此同时，DeepMind 密集推出模型与基础设施更新，显示生成式 AI 正同时向更低成本、更高安全性和专业领域纵深推进。",
+    "source": "report_lead",
     "source_file": "data/reports/daily_report_2026-10-25.md"
   },
   "metrics": [
@@ -129,10 +129,12 @@
     "title": "✨ 科技新闻日报 | 2026年10月25日",
     "char_count": 2820,
     "reading_minutes": 7,
-    "lead": null,
+    "lead": "今日全球科技圈的主线，是 AI 竞争正从“模型参数与通用能力”的比拼，转向具身数据、隐私记忆和生命科学数据等核心生产资料的争夺。与此同时，DeepMind 密集推出模型与基础设施更新，显示生成式 AI 正同时向更低成本、更高安全性和专业领域纵深推进。",
     "deep_dives": [
       {
         "heading": "一、OpenAI 寻找具身数据供应商：Physical AI 进入供应链争夺战",
+        "category": null,
+        "points": [],
         "background": null,
         "breakthrough": null,
         "impact": null,
@@ -144,6 +146,8 @@
       },
       {
         "heading": "二、Private AI Compute 引入服务端安全记忆：个人 AI 开始拥有“长期记忆”",
+        "category": null,
+        "points": [],
         "background": null,
         "breakthrough": null,
         "impact": null,
@@ -179,9 +183,7 @@
         "title": "二、Private AI Compute 引入服务端安全记忆：个人 AI 开始拥有“长期记忆”"
       }
     ],
-    "raw_paragraphs": [
-      "**导语：** 今日全球科技圈的主线，是 AI 竞争正从“模型参数与通用能力”的比拼，转向**具身数据、隐私记忆和生命科学数据等核心生产资料**的争夺。与此同时，DeepMind 密集推出模型与基础设施更新，显示生成式 AI 正同时向更低成本、更高安全性和专业领域纵深推进。"
-    ],
+    "raw_paragraphs": [],
     "source_file": "data/reports/daily_report_2026-10-25.md"
   },
   "sources": {
@@ -1172,6 +1174,7 @@
     },
     "message": "今日主推项目"
   },
+  "quality": null,
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-10-25.json",

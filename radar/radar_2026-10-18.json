@@ -1,0 +1,148 @@
+{
+  "date": "2026-10-18",
+  "generated_at": "2026-10-17T19:43:25.334537+00:00",
+  "projects": [
+    {
+      "repo": "deeplethe/utopia",
+      "url": "https://github.com/deeplethe/utopia",
+      "description": "World's first open-source enterprise world model.",
+      "language": "Rust",
+      "topics": [
+        "agent-memory",
+        "bitemporal",
+        "graphrag",
+        "knowledge-base",
+        "knowledge-graph",
+        "llm",
+        "ontology",
+        "pgvector",
+        "postgresql",
+        "rag",
+        "rust",
+        "self-hosted",
+        "semantic-search",
+        "temporal-knowledge-graph",
+        "world-model"
+      ],
+      "stars": 8409,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-08-07T19:33:17Z",
+      "pushed_at": "2026-10-17T00:27:57Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "Requirements: Docker (local development also needs Rust 1.85+, Node 20+, pnpm).\n\nThe prebuilt image is published for `linux/amd64` and `linux/arm64`, so it runs natively on x86-64 hosts as well as Apple Silicon and AWS Graviton. Tags up to `0.1.0-rc7` are amd64 only.\n\nStart from the prebuilt image:\n\n```bash\ngit clone https://github.com/deeplethe/utopia.git\ncd utopia\ndocker compose --profile app up -d\n```\n\nOpen http://localhost:1516 and register. The first account automatically becomes the administrator, and a public knowledge base readable by everyone is created at the same time. Before extracting business documents, configure the model endpoints (chat and embedding) under Administration → Models.\n\nThe database password (`UTOPIA_DB_PASSWORD` in `.env`, default `utopia`) is applied when the data volume is first initialised. To change it on a running deployment, change it in the database as well — `docker compose exec db psql -U utopia -c \"ALTER USER utopia PASSWORD '<new password>'\"` — or start over with `docker compose --profile app down -v`, which deletes all data.\n\nOr build from source:\n\n```bash\ndocker compose -f docker-compose.yml -f docker-compose.build.yml --profile app up -d ",
+      "readme_intro": "[Philosophy](#philosophy) · [Quick start](#quick-start) · [Features](#features) · [Roadmap](#roadmap) [ ](https://github.com/deeplethe/utopia/stargazers) [ ](LICENSE) [ ](https://www.rust-lang.org) [ ](https://utopia.bi) [ ](https://github.com/deeplethe/utopia/pkgs/container/utopia) [ ](https://github.com/deeplethe/utopia/discussions) [ ](https://github.com/deeplethe) [ ](README.zh-CN.md) **The enterprise world model built by [DeepLethe](https://deeplethe.com).** It is the first open substrate for knowledge engineering that learns passively and governs itself. Where a knowledge graph or a vector store works to hold present knowledge, Utopia puts time awareness and ontology in the base layer: the knowledge system evolves as material arrives, and conflict detection, reasoning and decision ma",
+      "score": 0.4993,
+      "score_parts": {
+        "velocity": 0.2498,
+        "vel_rel": 0.3636,
+        "vel_abs": 0.079,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "anthropics/claude-plugins-official",
+      "url": "https://github.com/anthropics/claude-plugins-official",
+      "description": "Official, Anthropic-managed directory of high quality Claude Code Plugins.",
+      "language": "Python",
+      "topics": [
+        "claude-code",
+        "mcp",
+        "skills"
+      ],
+      "stars": 41543,
+      "delta_stars": 1201,
+      "is_new": false,
+      "created_at": "2025-11-20T18:36:20Z",
+      "pushed_at": "2026-10-17T16:41:00Z",
+      "license": "Apache-2.0",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "Plugins can be installed directly from this marketplace via Claude Code's plugin system.\n\nTo install, run `/plugin install {plugin-name}@claude-plugins-official`\n\nor browse for the plugin in `/plugin > Discover`",
+      "readme_intro": "A curated directory of high-quality plugins for Claude Code. > **⚠️ Important:** Make sure you trust a plugin before installing, updating, or using it. Anthropic does not control what MCP servers, files, or other software are included in plugins and cannot verify that they will work as intended or that they won't change. See each plugin's homepage for more information.",
+      "score": 0.4575,
+      "score_parts": {
+        "velocity": 0.9203,
+        "vel_rel": 1.0,
+        "vel_abs": 0.8007,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 1
+      },
+      "affinity": 0.5
+    },
+    {
+      "repo": "bojieli/ai-infra-book",
+      "url": "https://github.com/bojieli/ai-infra-book",
+      "description": "《深入理解 AI Infra：量化分析与系统设计》（李博杰 著）开源书稿：从硬件约束和模型架构出发，量化推导 LLM 推理与训练系统设计。含全书正文、PDF、配套计算工具与实验",
+      "language": "Python",
+      "topics": [
+        "accelerator",
+        "ai-infra",
+        "ai-infrastructure",
+        "book",
+        "datacenter-network",
+        "deepseek",
+        "distributed-systems",
+        "gpu",
+        "kv-cache",
+        "llm",
+        "llm-inference",
+        "llm-serving",
+        "llm-training",
+        "mixture-of-experts",
+        "performance-engineering"
+      ],
+      "stars": 6654,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-08-22T15:30:41Z",
+      "pushed_at": "2026-10-01T08:19:29Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "python -m pip install -r website/requirements.txt\npython scripts/build_site.py\npython scripts/check_site.py\npython scripts/build_site.py --serve\n```\n\n预览地址为 <http://127.0.0.1:8000>，简体中文位于根目录，英文、繁體中文和俄语分别位于 `en/`、`zh-tw/` 和 `ru/`。生成文件位于 `build/`，详细说明见[网站构建与发布](website/README.md)。\n\n**全书 PDF 与 EPUB**（另需 Pandoc、XeLaTeX 和字体）：\n\n```bash\nbash book/build_pdf.sh                        # 简体中文 → book/AI-Infra-Book.pdf\nbash book-en/build_pdf.sh                     # English → book-en/AI-Infra-Book-EN.pdf\nbash book-zh-tw/build_pdf.sh                  # 繁體中文 → book-zh-tw/AI-Infra-Book-ZH-TW.pdf\npython3 book/build_epub.py --edition zh       # EPUB 只需 Pandoc 与 Poppler；--edition 可选 zh、en、zh-tw、ru\n```\n\n译本配图存于 Git LFS，构建前先下载：`git lfs pull --include=\"book-en/images/**,book-zh-tw/images/**\" --exclude=\"\"`。依赖、字体及单章编译方法见 [PDF 编译说明](book/README.md)。GitHub Actions 会检查 Pull Request 的网站与各语言的 PDF、EPUB 构建；推送到 `main` 后自动发布 Release（四种语言各含 PDF 与 EPUB）并部署四种语言的在线阅读网站。",
+      "readme_intro": "[ ](https://github.com/bojieli/ai-infra-book/actions/workflows/book-site.yml) [ ](LICENSE) [ ](https://github.com/bojieli/ai-infra-book) **简体中文** · [English](book-en/) · [繁體中文](book-zh-tw/) · [Русский — community edition](book-ru/) > [!TIP] > **下载与阅读** · [格式与版本说明](#版本与格式说明) > - **简体中文（原版，作者 [@bojieli](https://github.com/bojieli)）**：[PDF](https://github.com/bojieli/ai-infra-book/releases/latest/download/AI-Infra-Book.pdf) · [EPUB](https://github.com/bojieli/ai-infra-book/releases/latest/download/AI-Infra-Book.epub) · [在线阅读](https://bojieli.github.io/ai-infra-book/) > - **English（社区翻译，[@tg1482](https://github.com/tg1482)）**: [PDF](https://github.com/bojieli/ai-infra-book/releases/latest/download/AI-Infra-Book-EN.pdf) · [EPUB](https://github.com/bojieli/ai-infra-book/releases/latest/download/",
+      "score": 0.4337,
+      "score_parts": {
+        "velocity": 0.3044,
+        "vel_rel": 0.4545,
+        "vel_abs": 0.0792,
+        "hands_on": 0.85,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    }
+  ],
+  "meta": {
+    "pick_repo": "deeplethe/utopia",
+    "runner_up_repos": [
+      "anthropics/claude-plugins-official",
+      "bojieli/ai-infra-book"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 52,
+    "excluded_recent": 18,
+    "fresh_candidates": 34,
+    "widen_pass": false,
+    "pool_by_source": {
+      "new": 28,
+      "trending": 3,
+      "topic": 19,
+      "news": 2
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "K-Dense-AI/scientific-agent-skills",
+    "yesterday_pick_delta": 786
+  }
+}

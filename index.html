@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>今日AI看点</title>
 <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByb2xlPSJpbWciIGFyaWEtbGFiZWw9IuS7iuaXpUFJ55yL54K5Ij4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0idGlsZSIgeDE9IjgiIHkxPSIyIiB4Mj0iNTYiIHkyPSI2MiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxZTFkMTkiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGEwYTA5Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJzdW4iIHgxPSIxOCIgeTE9IjI2IiB4Mj0iMzQiIHkyPSI0OCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlZTZjNDUiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjYmMzNjFhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTYiIGZpbGw9InVybCgjdGlsZSkiLz4KICA8cmVjdCB4PSIwLjc1IiB5PSIwLjc1IiB3aWR0aD0iNjIuNSIgaGVpZ2h0PSI2Mi41IiByeD0iMTUuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjJlY2UwIiBzdHJva2Utb3BhY2l0eT0iMC4wOSIvPgoKICA8IS0tIOWQju+8muaciO+8jOiZmu+8iOeOr++8iSAtLT4KICA8Y2lyY2xlIGN4PSIzNyIgY3k9IjI5IiByPSIxNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjJlY2UwIiBzdHJva2Utd2lkdGg9IjQuNSIvPgogIDwhLS0g5YmN77ya5pel77yM5a6e77yM5Y6L5a6e546v55qE5LiA6KeSIC0tPgogIDxjaXJjbGUgY3g9IjI1IiBjeT0iMzciIHI9IjEzIiBmaWxsPSJ1cmwoI3N1bikiLz4KPC9zdmc+Cg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ============================================================
        DESIGN TOKENS — 深色编辑报刊
@@ -15,6 +18,7 @@
       --surface-card: #ffffff;
       --surface-card-hover: #f8f6f2;
       --surface-inset: #f0ede6;
+      --surface-panel: #f4f1ea;   /* 栏目统一底板 */
 
       /* Borders */
       --border-subtle: rgba(26, 22, 18, 0.08);
@@ -91,6 +95,7 @@
       --surface-card: #201c18;
       --surface-card-hover: #2a2520;
       --surface-inset: #0e0c0a;
+      --surface-panel: #1b1815;   /* 栏目统一底板 */
 
       --border-subtle: rgba(242, 236, 224, 0.08);
       --border-medium: rgba(242, 236, 224, 0.16);
@@ -413,26 +418,17 @@
     /* ============================================================
        SECTION HEADERS
        ============================================================ */
+    /* 四个栏目统一底板：同样的圆角 / 内边距 / 中性底色 / 细分隔线，避免 01-02 裸奔、03-04 有包围 */
     .content-section {
-      margin-bottom: var(--space-10);
+      margin: 0 calc(-1 * var(--space-5)) var(--space-10);
+      padding: var(--space-6) var(--space-5);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      background: var(--surface-panel);
+      box-shadow: var(--shadow-card);
       scroll-margin-top: 72px;
     }
     .content-section:last-child { margin-bottom: 0; }
-
-    /* 冷暖底色板块：统一内边距，避免与相邻栏目的边框贴边重叠 */
-    .content-section.tint-cool,
-    .content-section.tint-warm {
-      padding: var(--space-6) var(--space-5);
-      border-radius: var(--radius-xl);
-      margin-left: calc(-1 * var(--space-5));
-      margin-right: calc(-1 * var(--space-5));
-    }
-    .content-section.tint-cool {
-      background: linear-gradient(180deg, var(--tint-cool) 0%, transparent 100%);
-    }
-    .content-section.tint-warm {
-      background: linear-gradient(180deg, var(--tint-warm) 0%, transparent 100%);
-    }
     .section-header {
       display: flex;
       align-items: baseline;
@@ -615,15 +611,55 @@
     }
     .host-avatar.host-a { background: linear-gradient(135deg, #e89bb5, #c96b8a); color: #fff; }
     .host-avatar.host-b { background: linear-gradient(135deg, #8fb8d4, #5a8fb5); color: #fff; }
+    .host-text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
     .host-name { font-size: 0.76rem; font-weight: 700; color: var(--text-primary); }
+    .host-voice { font-size: 0.66rem; color: var(--text-muted); white-space: nowrap; }
+
+    /* 播客卡信息行：时长 · 段数 · 章节 */
+    .podcast-meta-line {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .podcast-meta-line .sep { color: var(--text-faint); }
+
+    /* 本期话题：可点击定位到对应章节 */
+    .podcast-topics {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .podcast-topics-label { font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); }
+    .podcast-topic-chips { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+    .podcast-topic-chip {
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      background: rgba(242,236,224,0.04);
+      color: var(--text-secondary);
+      font-size: 0.72rem;
+      font-weight: 600;
+      transition: all 0.18s;
+    }
+    .podcast-topic-chip:hover {
+      background: rgba(242,236,224,0.08);
+      border-color: var(--border-medium);
+      color: var(--text-primary);
+    }
+    .podcast-topics[hidden] { display: none; }
 
     /* Podcast CTAs */
     .podcast-cta-row {
       display: flex;
-      align-items: center;
+      align-items: stretch;
       gap: var(--space-2);
       margin-top: auto;
     }
+    .podcast-cta-row button { height: 40px; box-sizing: border-box; }
     .btn-play-primary {
       flex: 1;
       display: flex;
@@ -641,15 +677,17 @@
     }
     .btn-play-primary:hover { background: var(--accent-primary-solid-hover); transform: translateY(-1px); }
     .btn-transcript-cta {
+      flex: 1;
       display: flex;
       align-items: center;
-      gap: 5px;
-      padding: 9px var(--space-3);
+      justify-content: center;
+      gap: var(--space-2);
+      padding: 10px var(--space-4);
       border-radius: var(--radius-md);
       background: rgba(242,236,224,0.05);
       border: 1px solid var(--border-medium);
       color: var(--text-secondary);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
       transition: all 0.18s;
       white-space: nowrap;
@@ -699,6 +737,20 @@
       color: var(--text-primary);
     }
     .lead-quote strong { color: var(--accent-primary); font-weight: 700; }
+    /* 导语/短评支持多段与有序列表（多条观点时按序号渲染） */
+    .lead-quote p + p,
+    .editor-quote-text p + p { margin-top: 10px; }
+    .lead-quote ol,
+    .editor-quote-text ol {
+      list-style: decimal;
+      margin: 8px 0 0;
+      padding-left: 1.3em;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .lead-quote ol li,
+    .editor-quote-text ol li { padding-left: 2px; }
 
     /* Metrics Strip */
     .metrics-strip {
@@ -1495,8 +1547,7 @@
       .hero-grid { grid-template-columns: 1fr; }
       .metrics-strip { grid-template-columns: repeat(2, 1fr); }
       .sources-grid { grid-template-columns: 1fr; }
-      .content-section.tint-cool,
-      .content-section.tint-warm {
+      .content-section {
         margin-left: calc(-1 * var(--space-4));
         margin-right: calc(-1 * var(--space-4));
         border-radius: 0;
@@ -1522,8 +1573,7 @@
       .player-inner { grid-template-columns: 1fr; gap: var(--space-2); padding: var(--space-2) var(--space-3); }
       .player-controls { justify-content: center; }
       .transcript-drawer { width: 100vw; max-width: 100vw; }
-      .content-section.tint-cool,
-      .content-section.tint-warm {
+      .content-section {
         margin-left: calc(-1 * var(--space-3));
         margin-right: calc(-1 * var(--space-3));
         border-radius: 0;
@@ -1610,18 +1660,19 @@
 
     <!-- Shared Date Axis -->
     <div class="shared-date-axis">
+      <!-- 胶囊按「新 → 旧」从左到右排列：左边按钮往更新一期走，右边按钮往更早一期走 -->
       <div class="date-nav-controls">
-        <button class="date-step-btn" id="btn-prev-issue" onclick="stepIssue(1)">
+        <button class="date-step-btn" id="btn-next-issue" onclick="stepIssue(-1)">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-          上一期
+          下一期
         </button>
       </div>
       <div class="date-pills-carousel" id="date-pills">
         <!-- Rendered by JS -->
       </div>
       <div class="date-nav-controls">
-        <button class="date-step-btn" id="btn-next-issue" onclick="stepIssue(-1)">
-          下一期
+        <button class="date-step-btn" id="btn-prev-issue" onclick="stepIssue(1)">
+          上一期
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
         </button>
       </div>
@@ -1643,7 +1694,7 @@
         </div>
         <span class="section-meta">
           <span class="demo-flag" data-requires="demo_note">{{demo_note}}</span>
-          {{podcast_chapter_count}} 章节
+          {{podcast_chapter_meta}}
         </span>
       </div>
 
@@ -1666,9 +1717,16 @@
             </div>
           </div>
 
+          <div class="podcast-meta-line">{{podcast_meta_text}}</div>
+
           <div class="host-roster">
             <span class="host-roster-label">本期主持</span>
             <div class="host-roster-list" id="host-roster-list"><!-- Rendered by JS --></div>
+          </div>
+
+          <div class="podcast-topics" id="podcast-topics">
+            <span class="podcast-topics-label">本期话题</span>
+            <div class="podcast-topic-chips" id="podcast-topic-chips"><!-- Rendered by JS --></div>
           </div>
 
           <div class="podcast-cta-row">
@@ -1692,7 +1750,7 @@
             </div>
             <span class="stamp-date">{{issue_date}} · {{issue_number}} 期</span>
           </div>
-          <p class="lead-quote">{{lead_quote}}</p>
+          <div class="lead-quote">{{lead_quote}}</div>
           <div class="metrics-strip">
             <div class="metric-item">
               <div class="metric-value">{{metric_sources_value}}<span class="metric-unit">{{metric_sources_unit}}</span></div>
@@ -1737,12 +1795,12 @@
               <span class="broadside-pill">{{report_pill}}</span>
             </div>
             <div class="broadside-toc">
-              <a href="#deep-dive-1" class="broadside-toc-link">{{chapter_1_tag}}</a>
-              <a href="#deep-dive-2" class="broadside-toc-link">{{chapter_2_tag}}</a>
-              <a href="#deep-dive-3" class="broadside-toc-link">{{chapter_3_tag}}</a>
-              <a href="#deep-dive-4" class="broadside-toc-link">{{chapter_4_tag}}</a>
+              <a href="#deep-dive-1" class="broadside-toc-link">{{chapter_1_topic}}</a>
+              <a href="#deep-dive-2" class="broadside-toc-link">{{chapter_2_topic}}</a>
+              <a href="#deep-dive-3" class="broadside-toc-link">{{chapter_3_topic}}</a>
+              <a href="#deep-dive-4" class="broadside-toc-link">{{chapter_4_topic}}</a>
             </div>
-            <h3 class="broadside-title">{{report_title}}</h3>
+            <h3 class="broadside-title" data-requires="report_title">{{report_title}}</h3>
           </div>
 
           <div class="deep-dive" id="deep-dive-1">
@@ -1755,7 +1813,7 @@
               <div class="point-label"><span class="dot"></span>{{chapter_1_point_1_label}}</div>
               <p class="point-text">{{chapter_1_point_1_text}}</p>
             </div>
-            <div class="deep-dive-point highlight">
+            <div class="deep-dive-point">
               <div class="point-label"><span class="dot"></span>{{chapter_1_point_2_label}}</div>
               <p class="point-text">{{chapter_1_point_2_text}}</p>
             </div>
@@ -1775,7 +1833,7 @@
               <div class="point-label"><span class="dot"></span>{{chapter_2_point_1_label}}</div>
               <p class="point-text">{{chapter_2_point_1_text}}</p>
             </div>
-            <div class="deep-dive-point highlight">
+            <div class="deep-dive-point">
               <div class="point-label"><span class="dot"></span>{{chapter_2_point_2_label}}</div>
               <p class="point-text">{{chapter_2_point_2_text}}</p>
             </div>
@@ -1795,7 +1853,7 @@
               <div class="point-label"><span class="dot"></span>{{chapter_3_point_1_label}}</div>
               <p class="point-text">{{chapter_3_point_1_text}}</p>
             </div>
-            <div class="deep-dive-point highlight">
+            <div class="deep-dive-point">
               <div class="point-label"><span class="dot"></span>{{chapter_3_point_2_label}}</div>
               <p class="point-text">{{chapter_3_point_2_text}}</p>
             </div>
@@ -1815,7 +1873,7 @@
               <div class="point-label"><span class="dot"></span>{{chapter_4_point_1_label}}</div>
               <p class="point-text">{{chapter_4_point_1_text}}</p>
             </div>
-            <div class="deep-dive-point highlight">
+            <div class="deep-dive-point">
               <div class="point-label"><span class="dot"></span>{{chapter_4_point_2_label}}</div>
               <p class="point-text">{{chapter_4_point_2_text}}</p>
             </div>
@@ -1832,7 +1890,7 @@
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
               编辑短评
             </div>
-            <p class="editor-quote-text">{{editor_quote}}</p>
+            <div class="editor-quote-text">{{editor_quote}}</div>
             <div class="editor-quote-author">{{editor_name}} · {{editor_role}}</div>
           </div>
         </aside>
@@ -1842,7 +1900,7 @@
     <!-- ============================================================
          SOURCES
          ============================================================ -->
-    <section id="section-sources" class="content-section tint-cool">
+    <section id="section-sources" class="content-section">
       <div class="section-header">
         <div class="section-title-group">
           <span class="section-number">03</span>
@@ -1873,7 +1931,7 @@
     <!-- ============================================================
          RADAR
          ============================================================ -->
-    <section id="section-radar" class="content-section tint-warm">
+    <section id="section-radar" class="content-section">
       <div class="section-header">
         <div class="section-title-group">
           <span class="section-number alt">04</span>
@@ -1913,7 +1971,7 @@
         <div class="radar-pick-state" id="radar-pick" hidden>
           <div class="radar-pick-head">
             <h3 class="radar-pick-name">{{radar_pick_repo}}</h3>
-            <span class="radar-pick-growth" data-requires="radar_pick_growth">近 7 日 ★ +{{radar_pick_growth}}/天</span>
+            <span class="radar-pick-growth" data-requires="radar_pick_growth_text">{{radar_pick_growth_text}}</span>
           </div>
           <div class="radar-pick-meta">
             <span>{{radar_pick_lang}}</span>
@@ -2000,6 +2058,7 @@
 
     let ISSUE_ORDER = Array.isArray(SITE_DATA.dates) ? SITE_DATA.dates.slice() : [];
     let DATA = {};
+    let dataReady = false;
     let PLAYLIST_CHUNKS = [];
     let audioBroken = false;
 
@@ -2040,7 +2099,18 @@
       return String(title || '')
         .replace(/^[✨\s]+/, '')
         .replace(/\s*\|\s*/g, ' · ')
+        /* 报告 H1 的日期是零填充（2026年11月05日），统一成 2026年11月5日 */
+        .replace(/(\d{4})年0?(\d{1,2})月0?(\d{1,2})日/, function (m, y, mo, d) {
+          return y + '年' + Number(mo) + '月' + Number(d) + '日';
+        })
         .trim();
+    }
+
+    /* 历史报告的 H1 是通用报头「科技新闻日报 · 日期」，和版块标题「深度日报」重复，直接不显示；
+       新报告的大标题是当日主题标题，正常展示 */
+    function displayReportTitle(title) {
+      const clean = cleanReportTitle(title);
+      return /科技新闻日报/.test(clean) ? '' : clean;
     }
 
     function cleanHeading(heading) {
@@ -2096,6 +2166,84 @@
       return label.length > 10 ? label.slice(0, 10) + '…' : label;
     }
 
+    /* 新闻分类兜底：新报告由 LLM 在标题里给 [分类]；历史报告按标题关键词归类 */
+    const NEWS_CATEGORY_RULES = [
+      { label: '安全合规', pattern: /安全|漏洞|攻击|隐私|监管|合规|恶意|风险/ },
+      { label: '研究论文', pattern: /论文|arXiv|研究|基准|实验|数据集|评测/ },
+      { label: '开源项目', pattern: /GitHub|仓库|开源项目|stars?/i },
+      { label: '行业动态', pattern: /投资|融资|收购|合作|政策|政府|市场|竞争|战略|押注|发布财报/ },
+      { label: '技术突破', pattern: /突破|架构|算法|推理|加速|优化|压缩|剪枝/ },
+      { label: '模型发布', pattern: /模型|发布|推出|上线|开源|训练|参数|智能体/ },
+      { label: '产品工具', pattern: /产品|工具|应用|客户端|插件|功能|体验|助手/ }
+    ];
+
+    function _chapterMeta(chapters, podcast) {
+      const realChapters = (chapters || []).filter(function (c) { return c && c.source === 'script'; });
+      if (realChapters.length) return realChapters.length + ' 章节';
+      const segments = Number(podcast && podcast.segment_count) || 0;
+      return segments ? segments + ' 段对谈' : '';
+    }
+
+    function _podcastMetaText(podcast, chapters) {
+      const segments = Number(podcast && podcast.segment_count) || 0;
+      const realChapters = (chapters || []).filter(function (c) { return c && c.source === 'script'; });
+      return [
+        String((podcast && podcast.duration_label) || '--:--'),
+        segments ? segments + ' 段对谈' : '',
+        realChapters.length ? realChapters.length + ' 章节' : ''
+      ].filter(Boolean).join(' · ');
+    }
+
+    /* 主持人默认音色标签：取 variants 里标记 default 且已合成的，否则取第一个可用 */
+    function _defaultVoiceLabel(host) {
+      const variants = (host && host.variants) || [];
+      const usable = variants.filter(function (variant) {
+        return variant && variant.available !== false && variant.label;
+      });
+      const def = usable.filter(function (variant) { return variant.default; })[0] || usable[0];
+      return def ? String(def.label) : '';
+    }
+
+    function newsCategory(heading) {
+      const text = String(heading || '');
+      for (let i = 0; i < NEWS_CATEGORY_RULES.length; i += 1) {
+        if (NEWS_CATEGORY_RULES[i].pattern.test(text)) return NEWS_CATEGORY_RULES[i].label;
+      }
+      return text ? '行业动态' : '';
+    }
+
+    /* 轻量 Markdown 渲染：空行分段、`1. ` 行转有序列表、**加粗** 转 strong。
+       用于编辑导语 / 编辑短评这类「评语」——多条观点时按序号或段落展示。 */
+    function inlineRichText(text) {
+      return escapeHtml(text).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    }
+
+    function renderRichText(text) {
+      const blocks = String(text || '')
+        .split(/\n{2,}/)
+        .map(function (block) { return block.trim(); })
+        .filter(function (block) { return !!block; });
+      return blocks.map(function (block) {
+        const lines = block.split('\n').map(function (line) { return line.trim(); }).filter(Boolean);
+        const isList = lines.length > 0 && lines.every(function (line) {
+          return /^\d+[.、]\s*/.test(line);
+        });
+        if (isList) {
+          return '<ol>' + lines.map(function (line) {
+            return '<li>' + inlineRichText(line.replace(/^\d+[.、]\s*/, '')) + '</li>';
+          }).join('') + '</ol>';
+        }
+        return '<p>' + lines.map(inlineRichText).join('<br>') + '</p>';
+      }).join('');
+    }
+
+    function renderRichFields() {
+      const lead = document.querySelector('.lead-quote');
+      if (lead) lead.innerHTML = renderRichText(DATA.lead_quote);
+      const quote = document.querySelector('.editor-quote-text');
+      if (quote) quote.innerHTML = renderRichText(DATA.editor_quote);
+    }
+
     function formatStars(stars) {
       const value = Number(stars);
       if (!isFinite(value)) return String(stars || '');
@@ -2126,26 +2274,39 @@
       const report = d.report || {};
       const dives = (report.deep_dives || []).slice(0, 4);
       const editorName = (hosts[0] && hosts[0].name) || '林夏';
-      /* 设计稿的播客卡标题 = 当日头条（不是「品牌 | 日期」）；没有日报章节时退回期标题 */
+      /* 设计稿的播客卡标题是「A 与 B」式短标题（如「Third Moment 与 Agent Kernel」）：
+         取当日前两个章节 tag 组合；不足两个时回退到首章整句标题 */
       const headline = cleanHeading((dives[0] && dives[0].heading) || '');
+      const topTags = dives
+        .map(function (dive) { return chapterTag((dive && dive.heading) || ''); })
+        .filter(function (tag) { return !!tag; })
+        .slice(0, 2);
+      const shortTitle = topTags.length >= 2 ? topTags[0] + ' 与 ' + topTags[1] : '';
       const data = {
         issue_number: date,
         issue_date: date,
         issue_tagline: 'AI 前沿 · 每日一刊',
         demo_note: '',
-        podcast_title: headline || podcast.title || ('今日AI看点 | ' + date),
-        podcast_subtitle: podcast.subtitle || '双主持对谈',
+        podcast_title: shortTitle || headline || podcast.title || ('今日AI看点 | ' + date),
+        podcast_subtitle: '双主持对谈 · 今日焦点解读',
         player_subtitle: '今日AI看点 · ' + date,
         podcast_duration: podcast.duration_label || '--:--',
+        podcast_segment_count: String(podcast.segment_count || (playlist && playlist.chunks ? playlist.chunks.length : 0) || ''),
+        host_a_voice: (hosts[0] && _defaultVoiceLabel(hosts[0])) || '',
+        host_b_voice: (hosts[1] && _defaultVoiceLabel(hosts[1])) || '',
         podcast_audio_url: podcast.mp3_url || ('./episodes/' + date + '.mp3'),
         podcast_chapter_count: String(chapters.length || dives.length || 0),
+        /* 01 板块头：有真实 [CHAPTER] 章节显示「N 章节」，历史期（cue 启发式）显示「N 段对谈」 */
+        podcast_chapter_meta: _chapterMeta(chapters, podcast),
+        /* 播客卡信息行：时长 · 段数 · 章节（不重复） */
+        podcast_meta_text: _podcastMetaText(podcast, chapters),
         host_a_name: (hosts[0] && hosts[0].name) || '林夏',
         host_b_name: (hosts[1] && hosts[1].name) || '陈默',
         lead_quote: (d.lead && d.lead.text) || '',
         report_word_count: String(report.char_count || 0),
         report_read_minutes: String(report.reading_minutes || 0),
         report_pill: '深度研判',
-        report_title: cleanReportTitle(report.title || ''),
+        report_title: displayReportTitle(report.title),
         editor_quote: report.editor_verdict || (d.lead && d.lead.text) || '',
         editor_name: editorName,
         editor_role: '主编'
@@ -2176,40 +2337,70 @@
       for (let n = 1; n <= 4; n += 1) {
         const dive = dives[n - 1] || {};
         const title = cleanHeading(dive.heading || '');
-        const points = [
-          dive.background || '',
-          dive.breakthrough || '',
-          dive.impact || ''
-        ];
-        /* raw_sections 是日报里未被结构化的段落：按顺序填进空缺的要点位，避免整段塞进第 3 点 */
-        (Array.isArray(dive.raw_sections) ? dive.raw_sections : []).forEach(function (section) {
-          const text = String(section || '').trim();
-          if (!text) return;
-          const emptyIndex = points.findIndex(function (point) { return !String(point || '').trim(); });
-          if (emptyIndex >= 0) points[emptyIndex] = text;
-        });
+        /* 要点：新报告带 {label,text}（1-3 条，按新闻性质自由选择）；老报告退回三段式 */
+        let points = [];
+        if (Array.isArray(dive.points) && dive.points.length) {
+          points = dive.points.map(function (point) {
+            return {
+              label: String((point && point.label) || '').trim(),
+              text: String((point && point.text) || '').trim()
+            };
+          }).filter(function (point) { return !!point.text; });
+        } else {
+          points = [
+            { label: POINT_LABELS[0], text: dive.background || '' },
+            { label: POINT_LABELS[1], text: dive.breakthrough || '' },
+            { label: POINT_LABELS[2], text: dive.impact || '' }
+          ];
+          /* 老报告里未被结构化的段落：填进空缺要点位，避免整段塞进第 3 点 */
+          (Array.isArray(dive.raw_sections) ? dive.raw_sections : []).forEach(function (section) {
+            const text = String(section || '').trim();
+            if (!text) return;
+            const emptyIndex = points.findIndex(function (point) { return !point.text; });
+            if (emptyIndex >= 0) points[emptyIndex].text = text;
+          });
+          points = points.filter(function (point) { return !!point.text; });
+        }
+        const storyTag = title ? chapterTag(title) : '';
         data['chapter_' + n + '_title'] = title;
-        data['chapter_' + n + '_tag'] = title ? chapterTag(title) : '';
-        data['chapter_' + n + '_topic'] = title ? chapterTopic(title) : '';
+        /* 左上角小字 = 新闻分类（模型发布/安全合规/…）；右侧小字 = 事件短名 */
+        data['chapter_' + n + '_tag'] = title ? (dive.category || newsCategory(title)) : '';
+        data['chapter_' + n + '_topic'] = storyTag;
         for (let m = 1; m <= 3; m += 1) {
-          data['chapter_' + n + '_point_' + m + '_label'] = points[m - 1] ? POINT_LABELS[m - 1] : '';
-          data['chapter_' + n + '_point_' + m + '_text'] = points[m - 1] || '';
+          const point = points[m - 1] || {};
+          data['chapter_' + n + '_point_' + m + '_label'] = point.text ? (point.label || POINT_LABELS[m - 1]) : '';
+          data['chapter_' + n + '_point_' + m + '_text'] = point.text || '';
         }
       }
 
-      /* 信源不再前端截断到 30 条：digest 已按角色筛过（上限 150），条数以实际入库为准 */
-      const sourceItems = (d.sources || {}).items || [];
-      data.sources_total_all = String((d.sources || {}).total_all || sourceItems.length || 0);
+      /* 信源按设计稿展示 30 条精选（digest 入库上限 150），页头标注「30 / 150 条信源」 */
+      const SOURCE_DISPLAY_LIMIT = 30;
+      const allSourceItems = (d.sources || {}).items || [];
+      const sourceItems = allSourceItems.slice(0, SOURCE_DISPLAY_LIMIT);
+      data.sources_total_all = String((d.sources || {}).total_all || allSourceItems.length || 0);
       data.sources_list = JSON.stringify(sourceItems.map(function (item) {
         return {
           badge: SOURCE_BADGE_KEYS[item.group] || 'industry',
           badge_label: item.source_name || item.publisher || '',
-          meta: String(item.published_at || '').slice(0, 10) || date,
+          meta: date,
           title: item.title || '',
           summary: item.summary || '',
           url: item.link || ''
         };
       }));
+
+      /* 本期话题：取重磅解读（带锚点）+ 前沿情报（跳到深度日报），点击可定位 */
+      const topics = [];
+      dives.slice(0, 2).forEach(function (dive, index) {
+        const label = chapterTag((dive && dive.heading) || '');
+        if (label) topics.push({ label: label, anchor: '#deep-dive-' + (index + 1) });
+      });
+      (report.frontier || []).forEach(function (item) {
+        if (topics.length >= 3) return;
+        const label = shortTopic((item && item.title) || '');
+        if (label) topics.push({ label: label, anchor: '#section-report' });
+      });
+      data.topics_list = JSON.stringify(topics.slice(0, 3));
 
       const radar = d.radar || {};
       const candidates = radar.candidates || {};
@@ -2246,7 +2437,11 @@
       data.radar_pick_repo = pick ? String(pick.repo || '') : '';
       data.radar_pick_lang = pick ? String(pick.language || '') : '';
       data.radar_pick_stars = pick ? formatStars(pick.stars) : '';
-      data.radar_pick_growth = pick ? String(pick.delta_stars == null ? '' : pick.delta_stars) : '';
+      const growth = pick && pick.delta_stars != null
+        ? '近 7 日 ★ +' + pick.delta_stars + '/天'
+        : '';
+      /* 首日收录的项目没有增速基线：明说，而不是留一个「+/天」的空位 */
+      data.radar_pick_growth_text = growth || (pick && pick.is_new ? '首日收录 · 暂无增速基线' : '');
       data.radar_pick_license = pick ? String(pick.license || '') : '';
       /* 优先用 GitHub 仓库描述（干净一句话）；readme 首段只做兜底并清成纯文本 */
       data.radar_pick_desc = pick
@@ -2268,7 +2463,7 @@
 
     function applyPostHydrateChrome() {
       const stamp = document.querySelector('.stamp-date');
-      if (stamp) stamp.textContent = (DATA.issue_date || '') + ' · 今日AI看点';
+      if (stamp) stamp.textContent = DATA.issue_date || '';
     }
 
     function applyConditionalBlocks() {
@@ -2570,6 +2765,7 @@
       }
       if (token !== loadToken) return;
       DATA = digestToData(digest, playlist);
+      dataReady = true;
       PLAYLIST_CHUNKS = (playlist && playlist.chunks) || [];
       sourcesExpanded = false;
       sourceFilter = 'all';
@@ -2582,10 +2778,12 @@
       hydrate();
       applyPostHydrateChrome();
       applyConditionalBlocks();
+      renderRichFields();
       closeArchive();
       renderDatePills();
       updateDateNav();
       renderHosts();
+      renderTopics();
       renderSourceFilters();
       renderSources();
       renderTranscript();
@@ -2771,7 +2969,12 @@
       }
 
       const label = document.getElementById('sources-count-label');
-      if (label) label.textContent = sources.length + ' 条信源';
+      if (label) {
+        const total = Number(DATA.sources_total_all) || sources.length;
+        label.textContent = (total > sources.length && sourceFilter === 'all')
+          ? sources.length + ' / ' + total + ' 条信源'
+          : sources.length + ' 条信源';
+      }
     }
 
     const RADAR_REASON_LABELS = {
@@ -2860,14 +3063,43 @@
       const list = document.getElementById('host-roster-list');
       if (!list) return;
       list.innerHTML = [
-        { cls: 'host-a', name: DATA.host_a_name },
-        { cls: 'host-b', name: DATA.host_b_name }
+        { cls: 'host-a', name: DATA.host_a_name, voice: DATA.host_a_voice },
+        { cls: 'host-b', name: DATA.host_b_name, voice: DATA.host_b_voice }
       ].filter(h => h.name && String(h.name).trim()).map(h =>
         '<span class="host-identity">' +
         '<span class="host-avatar ' + h.cls + '">' + escapeHtml(hostInitial(h.name)) + '</span>' +
+        '<span class="host-text">' +
         '<span class="host-name">' + escapeHtml(h.name) + '</span>' +
+        (h.voice ? '<span class="host-voice">' + escapeHtml(h.voice) + '</span>' : '') +
+        '</span>' +
         '</span>'
       ).join('');
+    }
+
+    /* 本期话题 chips：点击定位到对应章节 / 深度日报 */
+    function renderTopics() {
+      const wrap = document.getElementById('podcast-topics');
+      const box = document.getElementById('podcast-topic-chips');
+      if (!wrap || !box) return;
+      const topics = safeParse(DATA.topics_list, []);
+      const items = (Array.isArray(topics) ? topics : []).filter(function (item) {
+        return item && item.label;
+      });
+      if (!items.length) {
+        wrap.hidden = true;
+        return;
+      }
+      wrap.hidden = false;
+      box.innerHTML = items.map(function (item) {
+        return '<button type="button" class="podcast-topic-chip" data-anchor="' +
+          escapeHtml(item.anchor || '#section-report') + '">' + escapeHtml(item.label) + '</button>';
+      }).join('');
+      box.querySelectorAll('.podcast-topic-chip').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          const target = document.querySelector(chip.getAttribute('data-anchor'));
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
     }
 
     /* Render transcript */
@@ -2994,7 +3226,7 @@
           }
           node.nodeValue = node.__tpl.replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (m, key) => {
             const v = fieldValue(key);
-            return v === null ? m : v;
+            return v === null ? (dataReady ? '' : m) : v;
           });
         });
       });
@@ -3011,7 +3243,7 @@
         Object.keys(el.__attrTpl).forEach(name => {
           el.setAttribute(name, el.__attrTpl[name].replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (m, key) => {
             const v = fieldValue(key);
-            return v === null ? m : v;
+            return v === null ? (dataReady ? '' : m) : v;
           }));
         });
       });
