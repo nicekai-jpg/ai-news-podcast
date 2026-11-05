@@ -517,14 +517,6 @@ jobs:
             for N in $(gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"Daily pipeline failed:\"" --jq '.items[].number' 2>/dev/null || true); do
               gh issue close "$N" -c "后续运行($EPISODE)成功,自动关闭历史失败告警。Run: $RUN_URL" || true
             done
-            # 缺期告警：今天成功但最近 14 天有缺失日期时，开一个显式的缺期 issue
-            MISSING=""
-            for OFFSET in $(seq 1 14); do
-              D=$(TZ=Asia/Shanghai date -d "-${OFFSET} day" +%F)
-              if ! grep -q "\"id\": \"$D\"" data/episodes.json 2>/dev/null; then MISSING="$MISSING $D"; fi
-            done
-            if [ -n "$MISSING" ]; then
-              gh issue create --title "⚠️ 缺期告警: 最近 14 天缺失$MISSING" \
-                --body "这些日期没有发布节目（历史失败不可回补，RSS 已永久缺档）: $MISSING" || true
-            fi
+            # 缺期告警由 daily_watchdog.yml 负责（它 checkout 了仓库、能读 episodes.json；
+            # notify job 没有 checkout，不要在这里读 data/）
           fi
