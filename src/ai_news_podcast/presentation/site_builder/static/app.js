@@ -143,19 +143,32 @@
       const report = d.report || {};
       const dives = (report.deep_dives || []).slice(0, 4);
       const editorName = (hosts[0] && hosts[0].name) || '林夏';
-      /* 设计稿的播客卡标题 = 当日头条（不是「品牌 | 日期」）；没有日报章节时退回期标题 */
+      /* 设计稿的播客卡标题是「A 与 B」式短标题（如「Third Moment 与 Agent Kernel」）：
+         取当日前两个章节 tag 组合；不足两个时回退到首章整句标题 */
       const headline = cleanHeading((dives[0] && dives[0].heading) || '');
+      const topTags = dives
+        .map(function (dive) { return chapterTag((dive && dive.heading) || ''); })
+        .filter(function (tag) { return !!tag; })
+        .slice(0, 2);
+      const shortTitle = topTags.length >= 2 ? topTags[0] + ' 与 ' + topTags[1] : '';
       const data = {
         issue_number: date,
         issue_date: date,
         issue_tagline: 'AI 前沿 · 每日一刊',
         demo_note: '',
-        podcast_title: headline || podcast.title || ('今日AI看点 | ' + date),
+        podcast_title: shortTitle || headline || podcast.title || ('今日AI看点 | ' + date),
         podcast_subtitle: '双主持对谈 · 今日焦点解读',
         player_subtitle: '今日AI看点 · ' + date,
         podcast_duration: podcast.duration_label || '--:--',
         podcast_audio_url: podcast.mp3_url || ('./episodes/' + date + '.mp3'),
         podcast_chapter_count: String(chapters.length || dives.length || 0),
+        /* 01 板块头：有真实 [CHAPTER] 章节显示「N 章节」，历史期（cue 启发式）显示「N 段对谈」 */
+        podcast_chapter_meta: (function () {
+          const realChapters = chapters.filter(function (c) { return c && c.source === 'script'; });
+          if (realChapters.length) return realChapters.length + ' 章节';
+          const segments = Number(podcast.segment_count) || 0;
+          return segments ? segments + ' 段对谈' : '';
+        })(),
         host_a_name: (hosts[0] && hosts[0].name) || '林夏',
         host_b_name: (hosts[1] && hosts[1].name) || '陈默',
         lead_quote: (d.lead && d.lead.text) || '',
@@ -214,9 +227,11 @@
         }
       }
 
-      /* 信源不再前端截断到 30 条：digest 已按角色筛过（上限 150），条数以实际入库为准 */
-      const sourceItems = (d.sources || {}).items || [];
-      data.sources_total_all = String((d.sources || {}).total_all || sourceItems.length || 0);
+      /* 信源按设计稿展示 30 条精选（digest 入库上限 150），页头标注「30 / 150 条信源」 */
+      const SOURCE_DISPLAY_LIMIT = 30;
+      const allSourceItems = (d.sources || {}).items || [];
+      const sourceItems = allSourceItems.slice(0, SOURCE_DISPLAY_LIMIT);
+      data.sources_total_all = String((d.sources || {}).total_all || allSourceItems.length || 0);
       data.sources_list = JSON.stringify(sourceItems.map(function (item) {
         return {
           badge: SOURCE_BADGE_KEYS[item.group] || 'industry',
@@ -793,7 +808,12 @@
       }
 
       const label = document.getElementById('sources-count-label');
-      if (label) label.textContent = sources.length + ' 条信源';
+      if (label) {
+        const total = Number(DATA.sources_total_all) || sources.length;
+        label.textContent = (total > sources.length && sourceFilter === 'all')
+          ? sources.length + ' / ' + total + ' 条信源'
+          : sources.length + ' 条信源';
+      }
     }
 
     const RADAR_REASON_LABELS = {
