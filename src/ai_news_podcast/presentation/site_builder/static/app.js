@@ -131,6 +131,33 @@
       { label: '产品工具', pattern: /产品|工具|应用|客户端|插件|功能|体验|助手/ }
     ];
 
+    function _chapterMeta(chapters, podcast) {
+      const realChapters = (chapters || []).filter(function (c) { return c && c.source === 'script'; });
+      if (realChapters.length) return realChapters.length + ' 章节';
+      const segments = Number(podcast && podcast.segment_count) || 0;
+      return segments ? segments + ' 段对谈' : '';
+    }
+
+    function _podcastMetaText(podcast, chapters) {
+      const segments = Number(podcast && podcast.segment_count) || 0;
+      const realChapters = (chapters || []).filter(function (c) { return c && c.source === 'script'; });
+      return [
+        String((podcast && podcast.duration_label) || '--:--'),
+        segments ? segments + ' 段对谈' : '',
+        realChapters.length ? realChapters.length + ' 章节' : ''
+      ].filter(Boolean).join(' · ');
+    }
+
+    /* 主持人默认音色标签：取 variants 里标记 default 且已合成的，否则取第一个可用 */
+    function _defaultVoiceLabel(host) {
+      const variants = (host && host.variants) || [];
+      const usable = variants.filter(function (variant) {
+        return variant && variant.available !== false && variant.label;
+      });
+      const def = usable.filter(function (variant) { return variant.default; })[0] || usable[0];
+      return def ? String(def.label) : '';
+    }
+
     function newsCategory(heading) {
       const text = String(heading || '');
       for (let i = 0; i < NEWS_CATEGORY_RULES.length; i += 1) {
@@ -218,15 +245,15 @@
         podcast_subtitle: '双主持对谈 · 今日焦点解读',
         player_subtitle: '今日AI看点 · ' + date,
         podcast_duration: podcast.duration_label || '--:--',
+        podcast_segment_count: String(podcast.segment_count || (playlist && playlist.chunks ? playlist.chunks.length : 0) || ''),
+        host_a_voice: (hosts[0] && _defaultVoiceLabel(hosts[0])) || '',
+        host_b_voice: (hosts[1] && _defaultVoiceLabel(hosts[1])) || '',
         podcast_audio_url: podcast.mp3_url || ('./episodes/' + date + '.mp3'),
         podcast_chapter_count: String(chapters.length || dives.length || 0),
         /* 01 板块头：有真实 [CHAPTER] 章节显示「N 章节」，历史期（cue 启发式）显示「N 段对谈」 */
-        podcast_chapter_meta: (function () {
-          const realChapters = chapters.filter(function (c) { return c && c.source === 'script'; });
-          if (realChapters.length) return realChapters.length + ' 章节';
-          const segments = Number(podcast.segment_count) || 0;
-          return segments ? segments + ' 段对谈' : '';
-        })(),
+        podcast_chapter_meta: _chapterMeta(chapters, podcast),
+        /* 播客卡信息行：时长 · 段数 · 章节（不重复） */
+        podcast_meta_text: _podcastMetaText(podcast, chapters),
         host_a_name: (hosts[0] && hosts[0].name) || '林夏',
         host_b_name: (hosts[1] && hosts[1].name) || '陈默',
         lead_quote: (d.lead && d.lead.text) || '',
@@ -315,6 +342,19 @@
           url: item.link || ''
         };
       }));
+
+      /* 本期话题：取重磅解读（带锚点）+ 前沿情报（跳到深度日报），点击可定位 */
+      const topics = [];
+      dives.slice(0, 2).forEach(function (dive, index) {
+        const label = chapterTag((dive && dive.heading) || '');
+        if (label) topics.push({ label: label, anchor: '#deep-dive-' + (index + 1) });
+      });
+      (report.frontier || []).forEach(function (item) {
+        if (topics.length >= 3) return;
+        const label = shortTopic((item && item.title) || '');
+        if (label) topics.push({ label: label, anchor: '#section-report' });
+      });
+      data.topics_list = JSON.stringify(topics.slice(0, 3));
 
       const radar = d.radar || {};
       const candidates = radar.candidates || {};
@@ -697,6 +737,7 @@
       renderDatePills();
       updateDateNav();
       renderHosts();
+      renderTopics();
       renderSourceFilters();
       renderSources();
       renderTranscript();
@@ -976,14 +1017,43 @@
       const list = document.getElementById('host-roster-list');
       if (!list) return;
       list.innerHTML = [
-        { cls: 'host-a', name: DATA.host_a_name },
-        { cls: 'host-b', name: DATA.host_b_name }
+        { cls: 'host-a', name: DATA.host_a_name, voice: DATA.host_a_voice },
+        { cls: 'host-b', name: DATA.host_b_name, voice: DATA.host_b_voice }
       ].filter(h => h.name && String(h.name).trim()).map(h =>
         '<span class="host-identity">' +
         '<span class="host-avatar ' + h.cls + '">' + escapeHtml(hostInitial(h.name)) + '</span>' +
+        '<span class="host-text">' +
         '<span class="host-name">' + escapeHtml(h.name) + '</span>' +
+        (h.voice ? '<span class="host-voice">' + escapeHtml(h.voice) + '</span>' : '') +
+        '</span>' +
         '</span>'
       ).join('');
+    }
+
+    /* 本期话题 chips：点击定位到对应章节 / 深度日报 */
+    function renderTopics() {
+      const wrap = document.getElementById('podcast-topics');
+      const box = document.getElementById('podcast-topic-chips');
+      if (!wrap || !box) return;
+      const topics = safeParse(DATA.topics_list, []);
+      const items = (Array.isArray(topics) ? topics : []).filter(function (item) {
+        return item && item.label;
+      });
+      if (!items.length) {
+        wrap.hidden = true;
+        return;
+      }
+      wrap.hidden = false;
+      box.innerHTML = items.map(function (item) {
+        return '<button type="button" class="podcast-topic-chip" data-anchor="' +
+          escapeHtml(item.anchor || '#section-report') + '">' + escapeHtml(item.label) + '</button>';
+      }).join('');
+      box.querySelectorAll('.podcast-topic-chip').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          const target = document.querySelector(chip.getAttribute('data-anchor'));
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
     }
 
     /* Render transcript */

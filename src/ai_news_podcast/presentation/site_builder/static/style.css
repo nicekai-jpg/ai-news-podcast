@@ -600,15 +600,55 @@
     }
     .host-avatar.host-a { background: linear-gradient(135deg, #e89bb5, #c96b8a); color: #fff; }
     .host-avatar.host-b { background: linear-gradient(135deg, #8fb8d4, #5a8fb5); color: #fff; }
+    .host-text { display: flex; flex-direction: column; line-height: 1.15; min-width: 0; }
     .host-name { font-size: 0.76rem; font-weight: 700; color: var(--text-primary); }
+    .host-voice { font-size: 0.66rem; color: var(--text-muted); white-space: nowrap; }
+
+    /* 播客卡信息行：时长 · 段数 · 章节 */
+    .podcast-meta-line {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+    .podcast-meta-line .sep { color: var(--text-faint); }
+
+    /* 本期话题：可点击定位到对应章节 */
+    .podcast-topics {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .podcast-topics-label { font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); }
+    .podcast-topic-chips { display: flex; flex-wrap: wrap; gap: var(--space-1); }
+    .podcast-topic-chip {
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-subtle);
+      background: rgba(242,236,224,0.04);
+      color: var(--text-secondary);
+      font-size: 0.72rem;
+      font-weight: 600;
+      transition: all 0.18s;
+    }
+    .podcast-topic-chip:hover {
+      background: rgba(242,236,224,0.08);
+      border-color: var(--border-medium);
+      color: var(--text-primary);
+    }
+    .podcast-topics[hidden] { display: none; }
 
     /* Podcast CTAs */
     .podcast-cta-row {
       display: flex;
-      align-items: center;
+      align-items: stretch;
       gap: var(--space-2);
       margin-top: auto;
     }
+    .podcast-cta-row button { height: 40px; box-sizing: border-box; }
     .btn-play-primary {
       flex: 1;
       display: flex;
@@ -626,15 +666,17 @@
     }
     .btn-play-primary:hover { background: var(--accent-primary-solid-hover); transform: translateY(-1px); }
     .btn-transcript-cta {
+      flex: 1;
       display: flex;
       align-items: center;
-      gap: 5px;
-      padding: 9px var(--space-3);
+      justify-content: center;
+      gap: var(--space-2);
+      padding: 10px var(--space-4);
       border-radius: var(--radius-md);
       background: rgba(242,236,224,0.05);
       border: 1px solid var(--border-medium);
       color: var(--text-secondary);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 600;
       transition: all 0.18s;
       white-space: nowrap;

@@ -76,6 +76,7 @@ def test_template_placeholders_are_known() -> None:
         "podcast_duration",
         "podcast_audio_url",
         "podcast_chapter_meta",
+        "podcast_meta_text",
         "podcast_title",
         "podcast_subtitle",
         "player_subtitle",
@@ -257,3 +258,16 @@ def test_rich_text_renderer_present() -> None:
     assert "function renderRichText" in app
     assert "function renderRichFields" in app
     assert "renderRichFields();" in app
+
+
+def test_hero_card_is_enriched() -> None:
+    """播客卡：信息行 + 主持人音色 + 本期话题 + 等宽 CTA。"""
+    template = _read("page_template.html")
+    for hook in ("podcast-meta-line", "podcast-topics", "host-roster-list"):
+        assert hook in template
+    app = _read("app.js")
+    for symbol in ("_defaultVoiceLabel", "renderTopics", "topics_list", "podcast_meta_text"):
+        assert symbol in app, symbol
+    css = _read("style.css")
+    assert ".podcast-topic-chip" in css
+    assert ".host-voice" in css
