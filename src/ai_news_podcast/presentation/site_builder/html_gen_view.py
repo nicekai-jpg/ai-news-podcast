@@ -14,6 +14,13 @@ _STATIC_DIR = Path(__file__).parent / "static"
 _LOGO_URI = "data:image/svg+xml;base64," + base64.b64encode(
     (_STATIC_DIR / "logo.svg").read_bytes()
 ).decode("ascii")
+# 设计稿 v23 的排版依赖 Noto Serif/Sans SC（见 DESIGN.md §3.3 / §10.6）；
+# CSS 里已备好系统字体回退，离线时自动降级，不影响可用性。
+_FONT_CSS_URL = (
+    "https://fonts.googleapis.com/css2?"
+    "family=Noto+Serif+SC:wght@500;700;900&"
+    "family=Noto+Sans+SC:wght@400;500;600;700&display=swap"
+)
 _DEFAULT_VOICE_NAMES = {
     "host_a": {"professional": "亲切女声", "lively": "青春女声"},
     "host_b": {"professional": "专业男声", "lively": "活力男声"},
@@ -142,6 +149,9 @@ def build_index_html(
         '<meta name="viewport" content="width=device-width, initial-scale=1">\n'
         "<title>今日AI看点</title>\n"
         f'<link rel="icon" href="{_LOGO_URI}">\n'
+        '<link rel="preconnect" href="https://fonts.googleapis.com">\n'
+        '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n'
+        f'<link href="{_FONT_CSS_URL}" rel="stylesheet">\n'
         f"<style>\n{_read_static('style.css')}\n</style>\n"
         "<script>\n"
         "(function() {\n"
