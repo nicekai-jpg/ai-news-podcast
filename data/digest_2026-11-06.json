@@ -1,0 +1,864 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-06",
+  "date_label": "2026年11月06日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": true
+  },
+  "podcast": {
+    "title": "今日AI看点 | 2026-11-06",
+    "subtitle": "当百度开源文心5遇上实际落地，我们看到了什么",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-06.mp3",
+    "duration_seconds": 66.924,
+    "duration_label": "01:07",
+    "speech_seconds": 60.91,
+    "segment_count": 12,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 12,
+      "segments_url": "episodes/2026-11-06/playlist.json",
+      "text_url": "episodes/2026-11-06.txt"
+    }
+  },
+  "lead": {
+    "text": "百度在11月5日开源文心5.5 Flash Base，并以多基准刷新同尺寸模型SOTA。开源基座模型之间的竞争，正从参数规模转向能力密度、部署效率与开发者可控性。\n\n英伟达则把AI基础设施的焦点推向“内存墙”：Vera主打最高吞吐与最快智能体，全栈协同设计试图缓解长上下文、模型规模化和智能体工作负载带来的显存压力。\n\n安全领域也出现强烈信号。Linux内核相关研究披露948个漏洞，并将OpenAI投入120万美元的漏洞挖掘计划带入舆论中心，规模化自动审计正成为软件治理的新变量。",
+    "source": "report_lead",
+    "source_file": "data/reports/daily_report_2026-11-06.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 29,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 15,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 12,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 11,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "开场",
+      "start": 1.0,
+      "label": "00:01",
+      "source": "script"
+    },
+    {
+      "title": "今日头条",
+      "start": 13.586,
+      "label": "00:14",
+      "source": "script"
+    },
+    {
+      "title": "项目雷达",
+      "start": 50.394,
+      "label": "00:50",
+      "source": "script"
+    },
+    {
+      "title": "收尾",
+      "start": 60.425,
+      "label": "01:00",
+      "source": "script"
+    }
+  ],
+  "report": {
+    "title": "✨ 模型开源竞速与智能算力突围",
+    "char_count": 2310,
+    "reading_minutes": 6,
+    "lead": "百度在11月5日开源文心5.5 Flash Base，并以多基准刷新同尺寸模型SOTA。开源基座模型之间的竞争，正从参数规模转向能力密度、部署效率与开发者可控性。\n\n英伟达则把AI基础设施的焦点推向“内存墙”：Vera主打最高吞吐与最快智能体，全栈协同设计试图缓解长上下文、模型规模化和智能体工作负载带来的显存压力。\n\n安全领域也出现强烈信号。Linux内核相关研究披露948个漏洞，并将OpenAI投入120万美元的漏洞挖掘计划带入舆论中心，规模化自动审计正成为软件治理的新变量。",
+    "deep_dives": [
+      {
+        "heading": "一、百度开源文心5.5 Flash Base",
+        "category": "模型发布",
+        "points": [
+          {
+            "label": "事件背景",
+            "text": "百度正式开源文心5.5 Flash Base。该产品定位于基座能力开放，为行业微调、私有化部署和垂直场景开发提供新的起点，也进一步扩大了文心开源生态的工具链。"
+          },
+          {
+            "label": "核心突破",
+            "text": "据官方披露，文心5.5 Flash Base在多项基准测试中刷新同尺寸模型SOTA。其价值不只是单项成绩领先，而是表明模型厂商正在通过架构、数据与训练效率的协同优化，争夺有限算力下的能力密度。"
+          },
+          {
+            "label": "后续观察",
+            "text": "官方“SOTA”仍需结合第三方复测、许可证边界、推理成本和部署门槛判断。对开发者而言，真正决定采用意愿的，是模型能否在真实业务中以可控成本稳定运行，而非只依赖榜单排名。"
+          }
+        ],
+        "background": "百度正式开源文心5.5 Flash Base。该产品定位于基座能力开放，为行业微调、私有化部署和垂直场景开发提供新的起点，也进一步扩大了文心开源生态的工具链。",
+        "breakthrough": "据官方披露，文心5.5 Flash Base在多项基准测试中刷新同尺寸模型SOTA。其价值不只是单项成绩领先，而是表明模型厂商正在通过架构、数据与训练效率的协同优化，争夺有限算力下的能力密度。",
+        "impact": null,
+        "raw_sections": [
+          "后续观察：官方“SOTA”仍需结合第三方复测、许可证边界、推理成本和部署门槛判断。对开发者而言，真正决定采用意愿的，是模型能否在真实业务中以可控成本稳定运行，而非只依赖榜单排名。"
+        ]
+      },
+      {
+        "heading": "二、英伟达用Vera与全栈协同合围“内存墙”",
+        "category": "技术突破",
+        "points": [
+          {
+            "label": "事件背景",
+            "text": "更大的模型、更长的上下文以及高频调用的智能体，正在持续推高GPU内存压力。英伟达判断，近期算力供应仍偏紧、价格仍有上行压力，显存带宽和数据搬运效率已成为制约规模化的关键瓶颈。"
+          },
+          {
+            "label": "核心突破",
+            "text": "英伟达官方博客称，Vera可同时实现“最高吞吐”和“最快智能体”，其底层路线是通过硬件与软件的全栈协同设计，在每个字节中争取更多有效性能。竞争焦点由峰值算力转向数据移动、内存利用和任务调度效率，更贴近智能体应用的真实成本结构。"
+          },
+          {
+            "label": "后续观察",
+            "text": "Vera的领先仍需统一模型、精度、上下文长度、并发量和能耗口径后验证。未来衡量AI平台，不能只看每秒生成多少Token，还要看智能体完成一次复杂任务需要多少显存、延迟与能源。"
+          }
+        ],
+        "background": "更大的模型、更长的上下文以及高频调用的智能体，正在持续推高GPU内存压力。英伟达判断，近期算力供应仍偏紧、价格仍有上行压力，显存带宽和数据搬运效率已成为制约规模化的关键瓶颈。",
+        "breakthrough": "英伟达官方博客称，Vera可同时实现“最高吞吐”和“最快智能体”，其底层路线是通过硬件与软件的全栈协同设计，在每个字节中争取更多有效性能。竞争焦点由峰值算力转向数据移动、内存利用和任务调度效率，更贴近智能体应用的真实成本结构。",
+        "impact": null,
+        "raw_sections": [
+          "后续观察：Vera的领先仍需统一模型、精度、上下文长度、并发量和能耗口径后验证。未来衡量AI平台，不能只看每秒生成多少Token，还要看智能体完成一次复杂任务需要多少显存、延迟与能源。"
+        ]
+      }
+    ],
+    "frontier": [
+      {
+        "title": "Linux内核漏洞",
+        "summary": "量子位报道，Linux内核相关漏洞研究披露948个漏洞，并将结果与OpenAI投入120万美元的漏洞挖掘计划联系起来。这显示自动化分析和规模化赏金机制有望成为软件安全基础设施；但948个漏洞是否属于同一批次、重复项如何计算、可利用漏洞占比及修复状态，仍须以原始报告核验。"
+      },
+      {
+        "title": "DLSS 5登陆GeForce NOW",
+        "summary": "《霍格沃茨之遗》获得DLSS 5升级，并引入“3D-Guided Neural Rendering”，把更精细的光照与材质表现带到云游戏。云端算力与神经网络渲染结合，意味着游戏画质竞争正在从本地硬件升级转向上云交付；实际体验仍取决于网络延迟、串流稳定性和不同设备上的成本收益。"
+      }
+    ],
+    "editor_verdict": "1. 模型竞争正在从参数规模转向同等体积下的有效能力。文心5.5 Flash Base开源的意义，在于把基座能力、许可证和可复现评测纳入同一竞争维度，但“SOTA”最终仍要由真实任务与第三方数据确认。\n\n2. 智能体把系统瓶颈从算力峰值推向内存带宽、数据搬运和端到端延迟。Vera及全栈协同路线说明，下一轮平台胜负取决于每字节、每瓦能换来多少有效工作，而非单项硬件规格。\n\n3. 948个漏洞的标题冲击力很强，但数量不等于同等风险。AI辅助安全若要成立，还必须公布漏洞批次、可利用性、修复状态以及重复项扣除口径。",
+    "toc": [
+      {
+        "anchor": "deep-dive-1",
+        "title": "一、百度开源文心5.5 Flash Base"
+      },
+      {
+        "anchor": "deep-dive-2",
+        "title": "二、英伟达用Vera与全栈协同合围“内存墙”"
+      }
+    ],
+    "raw_paragraphs": [],
+    "source_file": "data/reports/daily_report_2026-11-06.md"
+  },
+  "sources": {
+    "total_all": 29,
+    "total_main": 15,
+    "shown": 29,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "arXiv 论文",
+        "group": "arXiv 论文",
+        "count": 13
+      },
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 9
+      },
+      {
+        "publisher": "NVIDIA",
+        "group": "NVIDIA",
+        "count": 3
+      },
+      {
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "count": 3
+      },
+      {
+        "publisher": "OpenAI",
+        "group": "OpenAI",
+        "count": 1
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "百度开源文心5.5 Flash Base，多基准测试刷新同尺寸模型 SOTA",
+        "summary": "11月5日，百度正式开源最新基座模型文心5.5 Flash Base",
+        "link": "https://www.qbitai.com/2026/11/507787.html",
+        "published_at": "2026-11-05T07:15:13+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "Linux内核被挖出948个漏洞！OpenAI花120万美元找到的",
+        "summary": "被轰成筛子了…",
+        "link": "https://www.qbitai.com/2026/11/507697.html",
+        "published_at": "2026-11-05T01:54:44+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "NVIDIA 官方博客",
+        "group": "NVIDIA",
+        "source_name": "NVIDIA 官方博客",
+        "category": "official",
+        "title": "Vera Delivers the Best of Both Worlds: Highest Throughput and Fastest Agents",
+        "summary": "AI agents do more than generate answers. They search for information, query databases, write and test code and take action. Each of those steps relies on a CPU, with agents moving between GPU reasoning and CPU execution throughout a task. A",
+        "link": "https://blogs.nvidia.com/blog/vera-cpu-highest-throughput-fastest-agents/",
+        "published_at": "2026-11-05T20:00:41+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "NVIDIA 官方博客",
+        "group": "NVIDIA",
+        "source_name": "NVIDIA 官方博客",
+        "category": "official",
+        "title": "More Performance From Every Byte: How Full-Stack Codesign Solves AI’s Memory Challenge",
+        "summary": "Larger models, longer contexts and agentic applications are increasing GPU memory pressure while supply tightens and prices rise — a trend expected to continue through the near term. NVIDIA works closely with memory partners to rapidly adop",
+        "link": "https://blogs.nvidia.com/blog/memory-full-stack-codesign/",
+        "published_at": "2026-11-05T16:00:00+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "NVIDIA 官方博客",
+        "group": "NVIDIA",
+        "source_name": "NVIDIA 官方博客",
+        "category": "official",
+        "title": "‘Hogwarts Legacy’ Gets a Magical NVIDIA DLSS 5 Upgrade on GeForce NOW",
+        "summary": "Hogwarts Legacy receives an NVIDIA DLSS 5 upgrade with 3D-Guided Neural Rendering today, bringing lifelike lighting and materials to the wizarding world on GeForce NOW. Blizzard Entertainment’s World of Warcraft: Forever also opens a new ch",
+        "link": "https://blogs.nvidia.com/blog/geforce-now-thursday-hogwarts-legacy-dlss-5/",
+        "published_at": "2026-11-05T14:00:34+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Microsoft Research AI",
+        "group": "科技媒体",
+        "source_name": "Microsoft Research AI",
+        "category": "official",
+        "title": "Formally verifying agent-written full-stack web apps with PDD Kit",
+        "summary": "AI agents can generate code at a scale that’s hard for humans to review line-by-line. PDD Kit helps ensure the code is doing what the developer intended by creating formal specifications and testing against them. It converts developer inten",
+        "link": "https://www.microsoft.com/en-us/research/blog/formally-verifying-agent-written-full-stack-web-apps-with-pdd-kit/",
+        "published_at": "2026-11-05T16:00:00+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "OpenAI released a new cybersecurity model. Is that enough?",
+        "summary": "OpenAI's newest cybersecurity model comes out as AI labs face scrutiny of their work to protect digital infrastructure.",
+        "link": "https://techcrunch.com/2026/11/05/openai-released-a-new-cybersecurity-model-is-that-enough/",
+        "published_at": "2026-11-05T19:06:12+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "Setting a new standard for responsible AI infrastructure",
+        "summary": "OpenAI introduces its National Community Compact and Compute Campus Policy Blueprint to protect local resources, create jobs, and guide responsible AI infrastructure development.",
+        "link": "https://openai.com/index/setting-new-standard-responsible-ai-infrastructure",
+        "published_at": "2026-11-05T02:00:00+00:00"
+      },
+      {
+        "rank": 9,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Challenge-Aware Knowledge Recruitment with Meta-Agent Supervision for Medical Multi-Agent Reasoning",
+        "summary": "arXiv:2611.05393v1 Announce Type: new Abstract: Large language models perform strongly on standard medical QA but degrade on harder reasoning tasks, where multi-agent debate often fails to beat strong single-model prompting. We argue that a",
+        "link": "https://arxiv.org/abs/2611.05393",
+        "published_at": "2026-11-05T05:00:00+00:00"
+      },
+      {
+        "rank": 10,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "MIT神作被锤：Astra爆改Qwen权重？就吹吧！",
+        "summary": "spaCy作者长文炮轰",
+        "link": "https://www.qbitai.com/2026/11/507782.html",
+        "published_at": "2026-11-05T07:10:56+00:00"
+      },
+      {
+        "rank": 11,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "从3D生成到世界模型，这家AI公司想和年轻人一起定义问题",
+        "summary": "薪资+期权不限！实习生也能训核心模型",
+        "link": "https://www.qbitai.com/2026/11/507675.html",
+        "published_at": "2026-11-05T00:41:34+00:00"
+      },
+      {
+        "rank": 12,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "A Feasibility Condition for Confidence-Gated Tiered LLM Inference",
+        "summary": "arXiv:2611.05394v1 Announce Type: new Abstract: Tiered inference distributes large language model computation across a hierarchy of devices, from on-device and edge hardware to the datacenter, and is increasingly offered as the route to che",
+        "link": "https://arxiv.org/abs/2611.05394",
+        "published_at": "2026-11-05T05:00:00+00:00"
+      },
+      {
+        "rank": 13,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "Rethinking Self-Repair in Code-as-Policy Agents: What Drives Retry Success?",
+        "summary": "Code-as-policy agents often use execution feedback to retry failed programs. Additional sampling and task guidance can also improve success, leaving the contribution of failure-specific feedback unclear. We study this question in simulated ",
+        "link": "https://arxiv.org/abs/2611.06863v1",
+        "published_at": "2026-11-04T18:19:24+00:00"
+      },
+      {
+        "rank": 14,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "OpenAI president Greg Brockman says company could be IPO ready in 2027",
+        "summary": "Speaking at a Wall Street Journal tech conference on Wednesday, the executive touted how the company had been gaining ground in the enterprise market, where rival Anthropic had already successfully made inroads.",
+        "link": "https://techcrunch.com/2026/11/05/openai-president-greg-brockman-says-company-could-be-ipo-ready-in-2027/",
+        "published_at": "2026-11-05T18:02:27+00:00"
+      },
+      {
+        "rank": 15,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Launch HN: Rivet (YC W23) – Scale and Orchestrate Agents on S3",
+        "summary": "HN 热门讨论（65 points, 33 评论）by NathanFlurry",
+        "link": "https://github.com/rivet-dev/rivet",
+        "published_at": "2026-11-05T17:17:42+00:00"
+      },
+      {
+        "rank": 16,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Airbnb says it’s launching an AI travel agent in the first half of 2027",
+        "summary": "Airbnb says its upcoming AI agent will help travelers plan trips, compare options, manage bookings, and get assistance throughout their stay.",
+        "link": "https://techcrunch.com/2026/11/05/airbnb-says-its-launching-an-ai-travel-agent-in-the-first-half-of-2027/",
+        "published_at": "2026-11-05T22:40:55+00:00"
+      },
+      {
+        "rank": 17,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Hungary: Communist-era files released, up to 60k former agents revealed",
+        "summary": "HN 热门讨论（99 points, 22 评论）by rdmuser",
+        "link": "https://www.euronews.com/2026/11/04/hungary-communist-era-files-opened-up-to-60000-former-agents-revealed",
+        "published_at": "2026-11-05T19:16:34+00:00"
+      },
+      {
+        "rank": 18,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Agent Harness Awareness: Turning Verified Telemetry into Operational Control for Tool-Using Agents",
+        "summary": "arXiv:2611.05391v1 Announce Type: new Abstract: Tool descriptions tell an agent what an action can do, but they do not necessarily reveal whether that action is healthy or suitable at the moment of use. Execution harnesses often possess thi",
+        "link": "https://arxiv.org/abs/2611.05391",
+        "published_at": "2026-11-05T05:00:00+00:00"
+      },
+      {
+        "rank": 19,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "SpecCompact: Accelerating LLM Agent Context Compaction with Slot-Parallel Semantic Speculative Verification",
+        "summary": "LLM agents use context compaction to manage growing interaction histories, but summarizing long histories with large models can introduce substantial delays. Compaction therefore requires balancing information retention against latency. We ",
+        "link": "https://arxiv.org/abs/2611.06876v1",
+        "published_at": "2026-11-04T18:34:41+00:00"
+      },
+      {
+        "rank": 20,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "Persona Perspectives: Adopting Viewpoints Reorganizes Representations in LLMs",
+        "summary": "Common methods for monitoring features in large language models (LLMs) such as linear probes and sparse autoencoders (SAEs) assume that features maintain a consistent representation across contexts. LLMs, however, can flexibly adopt differe",
+        "link": "https://arxiv.org/abs/2611.06848v1",
+        "published_at": "2026-11-04T18:05:17+00:00"
+      },
+      {
+        "rank": 21,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "Before You Continue: Evaluating Time-Sensitive Safety Awareness in Conversational Assistants",
+        "summary": "Large language model (LLM) assistants increasingly help users with everyday activities that involve time-dependent constraints. However, users may not mention these constraints in later requests, requiring assistants to recognize and adjust",
+        "link": "https://arxiv.org/abs/2611.06839v1",
+        "published_at": "2026-11-04T17:54:49+00:00"
+      },
+      {
+        "rank": 22,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "VABAR: A Variational Automation Benchmark for Agentic Robotics",
+        "summary": "For robots to operate reliably in commercial and industrial applications, they must persistently perform specific tasks with known variations in object shape and pose. We call this Variational Automation (VA) to differentiate these settings",
+        "link": "https://arxiv.org/abs/2611.06881v1",
+        "published_at": "2026-11-04T18:38:01+00:00"
+      },
+      {
+        "rank": 23,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Meta warns that election backlash against data centers could make AI expansion harder",
+        "summary": "Meta warns that growing political opposition to data centers could threaten future AI investments, as communities push back against massive infrastructure projects.",
+        "link": "https://techcrunch.com/2026/11/05/metas-warns-that-election-backlash-against-data-centers-could-make-ai-expansion-harder/",
+        "published_at": "2026-11-05T19:12:39+00:00"
+      },
+      {
+        "rank": 24,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · Anthropic/Claude",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · Anthropic/Claude",
+        "category": "research",
+        "title": "Smartphone-Aided VR Exergames for HIIT: Gamifying Fitness with Real-Time Pose Estimation",
+        "summary": "This paper introduces an innovative virtual reality (VR) exergame system designed to gamify High-Intensity Interval Training (HIIT) workouts through 11 predefined combo moves, including squat-punch combinations, bilateral arm strikes, and d",
+        "link": "https://arxiv.org/abs/2611.06734v1",
+        "published_at": "2026-11-04T16:18:35+00:00"
+      },
+      {
+        "rank": 25,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "Motion-guided Contrastive Regularization For Latent World Models",
+        "summary": "JEPA-style world models learn action-conditioned latent dynamics without reconstructing observations, but distributional regularization alone does not ensure that their representations preserve information needed for control. We identify st",
+        "link": "https://arxiv.org/abs/2611.06901v1",
+        "published_at": "2026-11-04T18:49:35+00:00"
+      },
+      {
+        "rank": 26,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "Occlusion for Free: Detecting Occlusion from the Disagreement Between Two Monocular Distance Cues",
+        "summary": "Knowing that a pedestrian is occluded is useful to a robot even when the detector cannot recover the hidden pixels, but occlusion estimators are normally trained on occlusion annotations that deployment settings rarely have. We show that oc",
+        "link": "https://arxiv.org/abs/2611.06899v1",
+        "published_at": "2026-11-04T18:49:13+00:00"
+      },
+      {
+        "rank": 27,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "cuRoboV2-Fast: Fast Torque-Limited Collision-Free Motion Planning",
+        "summary": "We present cuRoboV2-Fast, a GPU-accelerated planner that reduces both planning latency and execution time for collision-free, payload-aware, torque-limited motions. B-spline trajectory optimization reduces the required iterations, while acc",
+        "link": "https://arxiv.org/abs/2611.06913v1",
+        "published_at": "2026-11-04T18:58:20+00:00"
+      },
+      {
+        "rank": 28,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 机器人与具身智能 (cs.RO)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 机器人与具身智能 (cs.RO)",
+        "category": "research",
+        "title": "ConDR: Conservative Reachability through Neural Hamilton-Jacobi Subsolutions",
+        "summary": "Hamilton-Jacobi (HJ) Reachability identifies the unsafe states of a dynamical system from which it can be forced into failure under worst-case disturbance. However, classical grid-based solvers scale exponentially with state dimension. Deep",
+        "link": "https://arxiv.org/abs/2611.06802v1",
+        "published_at": "2026-11-04T17:18:50+00:00"
+      },
+      {
+        "rank": 29,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "MS Paint Remote Code Execution Vulnerability",
+        "summary": "HN 热门讨论（160 points, 47 评论）by kuberwastaken",
+        "link": "https://www.cve.org/CVERecord?id=CVE-2026-83844",
+        "published_at": "2026-11-05T20:43:42+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": true,
+    "status": "pick",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": {
+      "repo": "storytold/craft-anything",
+      "url": "https://github.com/storytold/craft-anything",
+      "description": "Craft Anything: understand how any software works, and craft your own.",
+      "language": "Rust",
+      "topics": [],
+      "stars": 14839,
+      "delta_stars": 3352,
+      "is_new": false,
+      "created_at": "2026-10-31T14:50:00Z",
+      "pushed_at": "2026-11-05T17:46:31Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "cargo install --path apps/craft-anything-cli         # the CLI, as `craft-anything-cli`\ncraft-anything-cli doctor                            # checks the install, coding agents and engines\n```\n\nBuilding needs a coding agent signed in on your computer (see [AI](#ai)); `doctor` says what's\nmissing. Rebuild from the command line (questions are asked in the terminal):\n\n```sh\ncraft-anything-cli rebuild https://example.com \"Recreate this website\"\ncraft-anything-cli rebuild - \"A snake game in Rust\" --rounds 1\ncraft-anything-cli rebuild https://example.com \"Make the header blue\" --continue-in \"<project folder>\"\ncraft-anything-cli rebuild - \"Add a contact form\" --project-folder \"<your folder>\" --existing edit\n```\n\nNew projects go in `Documents/Craft Anything` (change it in Settings → General). Each project\nfolder holds `craft.json` (the request, target, status and history), `capture/` (what was\nrecorded from the target), `app/` (the generated project), `checks/` (each comparison against\nthe original), `investigation.cany/` (evidence) and `inbox/` (open questions).\n\nA project can also start in a folder you pick (Choose a folder… under Start, or `--project-folder`).\nIf it already has files, y",
+      "readme_intro": "Craft Anything English  ·  日本語  ·  简体中文  ·  한국어 See how any website, app or game works, then have AI build your own version; an open-source, clean-room engine in pure Rust. Point it at a target, say what you want, and it studies the original with real inspection tools, has a coding agent build a new project, checks the result against the original and refines it. Download Craft Anything   · ArtCraft  · All Crafting Apps A website project: each check says how alike the build is, you approve anything outside the rules, and the plan shows what's left. > [!NOTE] > **ArtCraft is a community of artists from all walks of life.** Painters, photographers, > filmmakers, illustrators, designers, animators, hobbyists, and people who picked up a pencil > last week. If you make things, you're one of us. ",
+      "score": 0.51,
+      "score_parts": {
+        "velocity": 1.0,
+        "vel_rel": 1.0,
+        "vel_abs": 1.0,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.0,
+        "days_in_pool": 1
+      },
+      "affinity": 0.0
+    },
+    "runner_ups": [
+      {
+        "repo": "wangzan101/Mika",
+        "url": "https://github.com/wangzan101/Mika",
+        "description": "An on-device AI agent for Android that operates apps and the web to get things done for you.",
+        "language": "Kotlin",
+        "topics": [
+          "accessibility",
+          "ai-agent",
+          "android",
+          "automation",
+          "jetpack-compose",
+          "kotlin",
+          "llm",
+          "mobile-agent"
+        ],
+        "stars": 7073,
+        "delta_stars": 469,
+        "is_new": false,
+        "created_at": "2026-10-29T14:34:07Z",
+        "pushed_at": "2026-11-05T15:46:37Z",
+        "license": "Apache-2.0",
+        "has_install_docs": false,
+        "mentions": 0,
+        "readme_excerpt": "",
+        "readme_intro": "**An AI assistant on your phone: say what you need, and it works your apps and the web until it's done.** It works on a hidden background screen, so you can keep using your phone. English · [简体中文](docs/readme/README.zh-CN.md) · [繁體中文](docs/readme/README.zh-Hant.md) · [日本語](docs/readme/README.ja.md) · [한국어](docs/readme/README.ko.md) · [Español](docs/readme/README.es.md) \"Send a message to File Transfer\": Mika's chat on the left, each step on its background screen on the right (4× speed; chat list blurred)",
+        "score": 0.4908,
+        "score_parts": {
+          "velocity": 0.5069,
+          "vel_rel": 0.6364,
+          "vel_abs": 0.3127,
+          "hands_on": 0.6,
+          "cross_heat": 0.0,
+          "affinity": 1.0,
+          "days_in_pool": 1
+        },
+        "affinity": 1.0
+      },
+      {
+        "repo": "NVIDIA/auto-ontology",
+        "url": "https://github.com/NVIDIA/auto-ontology",
+        "description": "Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows.",
+        "language": "Python",
+        "topics": [],
+        "stars": 7219,
+        "delta_stars": null,
+        "is_new": true,
+        "created_at": "2026-04-27T21:45:56Z",
+        "pushed_at": "2026-11-05T14:45:30Z",
+        "license": "Apache-2.0",
+        "has_install_docs": true,
+        "mentions": 1,
+        "readme_excerpt": "This runs Auto-Ontology with Docker Compose against Wide World Importers,\nMicrosoft's sample sales database. You need Docker with Compose v2,\n[uv](https://docs.astral.sh/uv/), and an NVIDIA API key (`nvapi-...`) from\n[build.nvidia.com](https://build.nvidia.com).\n\n1. Clone the repository and create `.env`:\n\n   ```bash\n   git clone https://github.com/NVIDIA/auto-ontology.git && cd auto-ontology\n   cp .env.example .env\n   ```\n\n   Then set these values in `.env`:\n\n   ```dotenv\n   DEFAULT_MODELS_API_KEY=nvapi-...\n   AUTH_SECRET=<a long random string, e.g. from openssl rand -base64 32>\n   APP_URL=http://localhost:3000\n   POSTGRES_PASSWORD=<a new password>\n   CONNECTION_STRINGS=postgresql://postgres:<the same password>@postgres:5432/wideworldimporters\n   AUTO_ONTOLOGY_ADMIN_PASSWORD=<a new password>\n   PGADMIN_PASSWORD=<a new password>\n   ```\n\n   Compose publishes Postgres, pgAdmin, and the web app on the host, so replace\n   each default password before you start it. `.env.example` also sets an API\n   key per model role: replace each `nvapi-your-api-key-here` with your key, or\n   delete those lines so they fall back to `DEFAULT_MODELS_API_KEY`.\n\n2. Start Postgres and load the sample datab",
+        "readme_intro": "Agents can retrieve documents and query databases, but reliability gates agentic analytics: a revenue metric answered faster is worth nothing if the number is wrong. Agents need a context layer that tells them where data lives, what it means, whether to use it, how to use it, where it came from, and what is similar. NVIDIA Auto Ontology is an open library that builds that layer from enterprise metadata, reconciles definitions across systems, and exposes it to any agent harness through MCP, CLI, and API. It complements the semantic models customers already own. It enables developers to: - Discover: generate enterprise ontologies from metadata; connect existing ontologies and semantic models; build AI-ready knowledge graphs. - Ground: give agents trusted business meaning for metrics, entitie",
+        "score": 0.4888,
+        "score_parts": {
+          "velocity": 0.1191,
+          "vel_rel": 0.1818,
+          "vel_abs": 0.0251,
+          "hands_on": 1.0,
+          "cross_heat": 0.3333,
+          "affinity": 1.0,
+          "days_in_pool": 0
+        },
+        "affinity": 1.0
+      }
+    ],
+    "yesterday": {
+      "repo": "ccch1mneyyy/dsh-Go",
+      "delta_stars": 2008,
+      "date": ""
+    },
+    "candidates": {
+      "total": 32,
+      "excluded_recent": 7,
+      "fresh": 25,
+      "semantics": "v5",
+      "detail_available": true,
+      "preview": [
+        {
+          "repo": "better-auth/better-auth",
+          "stars": 30605,
+          "delta_stars": null,
+          "language": "TypeScript",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "deepseek-ai/DeepInfer",
+          "stars": 25466,
+          "delta_stars": 89,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "wheresryan22/anatomy",
+          "stars": 25219,
+          "delta_stars": 354,
+          "language": "JavaScript",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "deepseek-ai/dsh-superagent-prototype",
+          "stars": 19451,
+          "delta_stars": 931,
+          "language": "TypeScript",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "storytold/craft-anything",
+          "stars": 14839,
+          "delta_stars": 3352,
+          "language": "Rust",
+          "license": "Apache-2.0",
+          "exclusion_reason": "selected"
+        },
+        {
+          "repo": "seedds/nxnative",
+          "stars": 12489,
+          "delta_stars": 342,
+          "language": "Python",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "ccch1mneyyy/dsh-Go",
+          "stars": 11390,
+          "delta_stars": 2008,
+          "language": "Dart",
+          "license": "AGPL-3.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "pengchujin/aerial-tv",
+          "stars": 9958,
+          "delta_stars": 341,
+          "language": "Kotlin",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "heydamir/unslop",
+          "stars": 9733,
+          "delta_stars": 1117,
+          "language": "JavaScript",
+          "license": "CC-BY-4.0",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "HeyPuter/everything",
+          "stars": 7271,
+          "delta_stars": 164,
+          "language": "JavaScript",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "NVIDIA/auto-ontology",
+          "stars": 7219,
+          "delta_stars": null,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "selected"
+        },
+        {
+          "repo": "ly05010419/MacNativeGames",
+          "stars": 7102,
+          "delta_stars": 74,
+          "language": "C",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        }
+      ]
+    },
+    "message": "今日主推项目"
+  },
+  "quality": {
+    "mode": "fallback",
+    "chars": 499,
+    "turns": 12,
+    "host_a_chars": 273,
+    "host_b_chars": 131,
+    "host_char_ratio": 0.324,
+    "chapters": 4
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-11-06.json",
+      "report": "data/reports/daily_report_2026-11-06.md",
+      "radar": "data/gh_radar/radar_2026-11-06.json",
+      "playlist": "site/episodes/2026-11-06/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": []
+  }
+}
