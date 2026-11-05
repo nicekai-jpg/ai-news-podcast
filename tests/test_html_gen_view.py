@@ -118,6 +118,10 @@ class TestSiteData:
         data = _site_data(_build(tmp_path, episodes=[]))
         assert data == {"dates": [], "episodes": {}}
 
+    def test_episode_title_fallback_uses_brand(self, tmp_path) -> None:
+        data = _site_data(_build(tmp_path, episodes=[{"id": "2026-10-13"}]))
+        assert data["episodes"]["2026-10-13"]["title"] == "今日AI看点 | 2026-10-13"
+
 
 class TestAccessibility:
     def test_drawer_dialog_semantics(self, tmp_path) -> None:

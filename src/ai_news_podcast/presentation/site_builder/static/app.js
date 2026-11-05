@@ -138,12 +138,14 @@
       const report = d.report || {};
       const dives = (report.deep_dives || []).slice(0, 4);
       const editorName = (hosts[0] && hosts[0].name) || '林夏';
+      /* 设计稿的播客卡标题 = 当日头条（不是「品牌 | 日期」）；没有日报章节时退回期标题 */
+      const headline = cleanHeading((dives[0] && dives[0].heading) || '');
       const data = {
         issue_number: date,
         issue_date: date,
         issue_tagline: 'AI 前沿 · 每日一刊',
         demo_note: '',
-        podcast_title: podcast.title || ('AI 新闻快报 | ' + date),
+        podcast_title: headline || podcast.title || ('今日AI看点 | ' + date),
         podcast_subtitle: podcast.subtitle || '双主持对谈',
         player_subtitle: '今日AI看点 · ' + date,
         podcast_duration: podcast.duration_label || '--:--',
@@ -207,14 +209,16 @@
         }
       }
 
-      const sourceItems = ((d.sources || {}).items || []).slice(0, 30);
+      /* 信源不再前端截断到 30 条：digest 已按角色筛过（上限 150），条数以实际入库为准 */
+      const sourceItems = (d.sources || {}).items || [];
+      data.sources_total_all = String((d.sources || {}).total_all || sourceItems.length || 0);
       data.sources_list = JSON.stringify(sourceItems.map(function (item) {
         return {
           badge: SOURCE_BADGE_KEYS[item.group] || 'industry',
-          badge_label: item.publisher || item.source_name || '',
+          badge_label: item.source_name || item.publisher || '',
           meta: String(item.published_at || '').slice(0, 10) || date,
           title: item.title || '',
-          summary: '',
+          summary: item.summary || '',
           url: item.link || ''
         };
       }));

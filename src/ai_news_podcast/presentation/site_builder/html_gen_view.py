@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from ai_news_podcast.data.config.models_dao import AppConfig
+from ai_news_podcast.data.text_utils_dao import episode_title
 
 _STATIC_DIR = Path(__file__).parent / "static"
 _LOGO_URI = "data:image/svg+xml;base64," + base64.b64encode(
@@ -112,7 +113,7 @@ def _build_site_data(
             continue
         dates_list.append(ep_id)
         episodes_map[ep_id] = {
-            "title": str(episode.get("title") or f"AI 新闻快报 | {ep_id}"),
+            "title": str(episode.get("title") or episode_title(ep_id)),
             "mp3": str(episode.get("enclosure_url") or f"{base_url}/episodes/{ep_id}.mp3"),
         }
     dates_list.sort(reverse=True)

@@ -6,12 +6,26 @@ from ai_news_podcast.presentation.site_builder.sources_digest_view import (
 )
 
 
-def _story(title: str, source: str, link: str, role: str = "main", category: str = "official"):
+def _story(
+    title: str,
+    source: str,
+    link: str,
+    role: str = "main",
+    category: str = "official",
+    summary: str = "",
+):
     return {
         "representative_title": title,
         "role": role,
         "role_emoji": "🔴",
-        "items": [{"source_name": source, "link": link, "source_category": category}],
+        "items": [
+            {
+                "source_name": source,
+                "link": link,
+                "source_category": category,
+                "summary": summary,
+            }
+        ],
     }
 
 
@@ -65,3 +79,17 @@ class TestBuildSourcesBlock:
             _story("B", "量子位", "https://x/b", role="quick"),
         ]
         assert build_sources_block(stories)["shown"] == 2
+
+    def test_summary_passthrough_and_source_name_badge(self) -> None:
+        block = build_sources_block(
+            [_story("A", "arXiv cs.AI", "https://arxiv.org/abs/1", summary="一句话摘要")]
+        )
+        item = block["items"][0]
+        assert item["summary"] == "一句话摘要"
+        # 设计稿徽章显示来源名：arXiv 子类不再被统一成「arXiv 论文」
+        assert item["publisher"] == "arXiv cs.AI"
+        assert item["group"] == "arXiv 论文"
+
+    def test_summary_is_capped(self) -> None:
+        block = build_sources_block([_story("A", "量子位", "https://x/a", summary="长" * 500)])
+        assert len(block["items"][0]["summary"]) == 240
