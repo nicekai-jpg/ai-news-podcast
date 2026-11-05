@@ -15,6 +15,7 @@ import re
 from pathlib import Path
 from typing import Any
 
+from ai_news_podcast.data.text_utils_dao import episode_title
 from ai_news_podcast.presentation.site_builder.report_digest_view import parse_report_markdown
 from ai_news_podcast.presentation.site_builder.sources_digest_view import build_sources_block
 
@@ -382,7 +383,7 @@ def build_digest(
             "radar": radar_block["available"],
         },
         "podcast": {
-            "title": str(episode.get("title") or f"AI 新闻快报 | {date_str}"),
+            "title": str(episode.get("title") or episode_title(date_str)),
             "subtitle": brief.get("thesis") or None,
             "mp3_url": mp3_url,
             "duration_seconds": round(timeline, 3),
@@ -435,7 +436,7 @@ def build_calendar(episodes: list[dict]) -> dict:
             {
                 "date": date_str,
                 "issue_number": None,  # D4：v1 不显示期号；字段保留给未来真实刊号
-                "title": str(episode.get("title") or f"AI 新闻快报 | {date_str}"),
+                "title": str(episode.get("title") or episode_title(date_str)),
                 "availability": {"podcast": True, "report": True, "sources": True, "radar": True},
             }
         )

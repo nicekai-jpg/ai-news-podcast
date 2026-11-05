@@ -170,3 +170,16 @@ def test_app_js_date_archive_and_radar_candidates() -> None:
         "radar_candidates_preview",
     ):
         assert symbol in app, symbol
+
+
+def test_hero_title_uses_daily_headline() -> None:
+    """设计稿播客卡标题 = 当日头条，不再显示「品牌 | 日期」。"""
+    app = _read("app.js")
+    assert "const headline = cleanHeading" in app
+    assert "podcast_title: headline ||" in app
+
+
+def test_sources_summary_and_no_frontend_truncation() -> None:
+    app = _read("app.js")
+    assert "summary: item.summary || ''" in app
+    assert "slice(0, 30)" not in app

@@ -5,10 +5,12 @@ from __future__ import annotations
 import pytest
 
 from ai_news_podcast.data.text_utils_dao import (
+    EPISODE_TITLE_PREFIX,
     RE_FACT_TAG,
     RE_MOOD_TAG,
     RE_NON_HOST_BRACKET,
     clean_tts_text,
+    episode_title,
     strip_tts_tags,
 )
 
@@ -258,3 +260,13 @@ class TestStripTtsTags:
     )
     def test_strip_tts_tags(self, input_text: str, expected: str) -> None:
         assert strip_tts_tags(input_text) == expected
+
+
+class TestEpisodeTitle:
+    """feed 条目 / episodes.json / digest 回退共用同一份品牌名。"""
+
+    def test_prefix_is_site_brand(self) -> None:
+        assert EPISODE_TITLE_PREFIX == "今日AI看点"
+
+    def test_format(self) -> None:
+        assert episode_title("2026-10-15") == "今日AI看点 | 2026-10-15"

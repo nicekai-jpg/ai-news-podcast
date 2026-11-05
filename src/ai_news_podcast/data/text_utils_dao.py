@@ -180,3 +180,15 @@ def contains_thinking_process(text: str) -> bool:
         if RE_THINKING_MARKERS.search(stripped):
             return True
     return False
+
+
+# ---------------------------------------------------------------------------
+# 单期标题 — feed 条目 / episodes.json / digest 回退共用同一份品牌名
+# ---------------------------------------------------------------------------
+
+EPISODE_TITLE_PREFIX = "今日AI看点"
+
+
+def episode_title(ep_id: str) -> str:
+    """单期标题：`今日AI看点 | 2026-10-15`（品牌名与站点「今日AI看点」一致）。"""
+    return f"{EPISODE_TITLE_PREFIX} | {ep_id}"

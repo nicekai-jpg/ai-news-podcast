@@ -49,10 +49,10 @@
       --shadow-dock: 0 -4px 16px rgba(0, 0, 0, 0.08);
       --shadow-drawer: -4px 0 24px rgba(0, 0, 0, 0.12);
 
-      /* Typography */
-      --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", Georgia, serif;
-      --font-sans: "Noto Sans SC", -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-      --font-mono: "SF Mono", "JetBrains Mono", Consolas, monospace;
+      /* Typography：不引外部字体，靠系统字体栈；按 macOS → Windows → Linux 顺序回退 */
+      --font-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "SimSun", "Noto Serif CJK SC", Georgia, serif;
+      --font-sans: "Noto Sans SC", -apple-system, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+      --font-mono: "SF Mono", "JetBrains Mono", Consolas, "Noto Sans Mono CJK SC", monospace;
 
       /* Spacing */
       --space-1: 4px;

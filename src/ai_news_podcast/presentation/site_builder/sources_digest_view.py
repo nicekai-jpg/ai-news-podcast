@@ -7,6 +7,7 @@ from urllib.parse import urlparse
 
 ROLE_LABELS = {"main": "核心信源", "supporting": "前沿参考", "quick": "快讯"}
 _MAX_ITEMS = 150
+SUMMARY_MAX_CHARS = 240
 
 
 def _host(link: str) -> str:
@@ -50,16 +51,19 @@ def build_sources_block(stories: list[dict], role_filter: str = "all") -> dict:
             continue
         source_name = str(first.get("source_name") or _host(link)).strip()
         group = classify_group(source_name, link)
+        # 设计稿信源卡有 2 行摘要；brief 的 items[].summary 有值就透传（截断防止卡片过长）
+        summary = str(first.get("summary") or "").strip()[:SUMMARY_MAX_CHARS]
         items.append(
             {
                 "rank": len(items) + 1,
                 "role": role if role in ROLE_LABELS else "quick",
                 "role_label": ROLE_LABELS.get(role, "快讯"),
-                "publisher": "arXiv 论文" if group == "arXiv 论文" else source_name,
+                "publisher": source_name,
                 "group": group,
                 "source_name": source_name,
                 "category": str(first.get("source_category") or ""),
                 "title": title,
+                "summary": summary,
                 "link": link,
                 "published_at": first.get("published_at"),
             }

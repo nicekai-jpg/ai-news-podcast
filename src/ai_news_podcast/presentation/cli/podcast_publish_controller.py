@@ -11,6 +11,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from ai_news_podcast.data.config.models_dao import AppConfig
+from ai_news_podcast.data.text_utils_dao import episode_title as build_episode_title
 from ai_news_podcast.data.utils_dao import read_json, write_json, write_text
 from ai_news_podcast.presentation.cli.base_controller import AsyncCommand
 from ai_news_podcast.presentation.cli.episode_utils_controller import (
@@ -54,7 +55,7 @@ class PublishCommand(AsyncCommand):
             day = datetime.now(tz=ZoneInfo("Asia/Shanghai"))
 
         ep_id = episode_id(day)
-        episode_title = f"AI 新闻快报 | {ep_id}"
+        episode_title = build_episode_title(ep_id)
         base_url = get_base_url(cfg, args.base_url)
 
         brief_path = root / "data" / "briefs" / f"brief_{ep_id}.json"

@@ -12,6 +12,7 @@ from ai_news_podcast.business.pipeline.runner_service import run_pipeline
 from ai_news_podcast.business.pipeline.tts_engine_service import synthesize
 from ai_news_podcast.data.config.models_dao import AppConfig
 from ai_news_podcast.data.text_utils_dao import clean_tts_text
+from ai_news_podcast.data.text_utils_dao import episode_title as build_episode_title
 from ai_news_podcast.data.utils_dao import load_sources, write_text
 from ai_news_podcast.presentation.cli.base_controller import AsyncCommand
 from ai_news_podcast.presentation.cli.episode_utils_controller import episode_id as _episode_id
@@ -71,7 +72,7 @@ class DailyCommand(AsyncCommand):
         # 防御命令行日期参数派生的路径注入：ep_id 必须是纯 YYYY-MM-DD
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", ep_id):
             raise ValueError(f"episode id is not a pure date: {ep_id}")
-        episode_title = f"AI 新闻快报 | {ep_id}"
+        episode_title = build_episode_title(ep_id)
         base_url = _get_base_url(cfg, args.base_url)
 
         sources_path = (root / args.sources).resolve()
