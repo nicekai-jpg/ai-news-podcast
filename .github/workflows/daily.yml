@@ -410,6 +410,9 @@ jobs:
       # 等 gh-pages 校验通过后再提交 main：否则部署失败会留下「feed 指向不存在的音频」
       - name: Commit site
         run: |
+          # 部署步骤删掉了 .gitignore（为了让 peaceiris 带上 ignored 文件），提交前先还原，
+          # 否则 git pull --rebase 会因 worktree 有未暂存删除而失败
+          git restore .gitignore 2>/dev/null || true
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -u site/ data/episodes.json
