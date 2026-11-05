@@ -75,7 +75,7 @@ def test_template_placeholders_are_known() -> None:
         "demo_note",
         "podcast_duration",
         "podcast_audio_url",
-        "podcast_chapter_count",
+        "podcast_chapter_meta",
         "podcast_title",
         "podcast_subtitle",
         "player_subtitle",
@@ -172,17 +172,20 @@ def test_app_js_date_archive_and_radar_candidates() -> None:
         assert symbol in app, symbol
 
 
-def test_hero_title_uses_daily_headline() -> None:
-    """设计稿播客卡标题 = 当日头条，不再显示「品牌 | 日期」。"""
+def test_hero_title_uses_short_design_style_title() -> None:
+    """设计稿播客卡标题是「A 与 B」式短标题，不再是「品牌 | 日期」。"""
     app = _read("app.js")
-    assert "const headline = cleanHeading" in app
-    assert "podcast_title: headline ||" in app
+    assert "const topTags = dives" in app
+    assert "shortTitle || headline" in app
+    assert "' 与 '" in app
 
 
-def test_sources_summary_and_no_frontend_truncation() -> None:
+def test_sources_summary_and_design_preview_count() -> None:
     app = _read("app.js")
     assert "summary: item.summary || ''" in app
-    assert "slice(0, 30)" not in app
+    # 信源按设计稿展示 30 条精选（上限由命名常量控制，不再是魔法数字）
+    assert "SOURCE_DISPLAY_LIMIT = 30" in app
+    assert ".items || []).slice(0, 30)" not in app
 
 
 def test_content_field_mapping_matches_design() -> None:
@@ -193,3 +196,22 @@ def test_content_field_mapping_matches_design() -> None:
     assert "stamp.textContent = DATA.issue_date" in app
     assert "radar_pick_growth_text" in app
     assert "dataReady ? '' : m" in app  # 数据就绪后不再残留 {{...}} 占位符
+
+
+def test_report_title_keeps_masthead() -> None:
+    """日报大标题保留报告报头（科技新闻日报 · 日期），避免与首章标题重复。"""
+    app = _read("app.js")
+    assert "report_title: cleanReportTitle(report.title || '')" in app
+    assert "reportHeadline" not in app
+
+
+def test_chapter_meta_falls_back_to_segment_count() -> None:
+    """历史期没有真实 [CHAPTER] 章节时，01 板块头应显示「N 段对谈」而不是假章节数。"""
+    app = _read("app.js")
+    assert "podcast_chapter_meta" in app
+    assert "段对谈" in app
+
+
+def test_sources_capped_to_design_preview_count() -> None:
+    app = _read("app.js")
+    assert "SOURCE_DISPLAY_LIMIT = 30" in app
