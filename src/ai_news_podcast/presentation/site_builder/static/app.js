@@ -60,6 +60,13 @@
         .trim();
     }
 
+    /* 历史报告的 H1 是通用报头「科技新闻日报 · 日期」，和版块标题「深度日报」重复，直接不显示；
+       新报告的大标题是当日主题标题，正常展示 */
+    function displayReportTitle(title) {
+      const clean = cleanReportTitle(title);
+      return /科技新闻日报/.test(clean) ? '' : clean;
+    }
+
     function cleanHeading(heading) {
       return String(heading || '')
         .replace(/^[一二三四五六七八九十]+、\s*/, '')
@@ -111,6 +118,57 @@
       const cut = text.search(/[，。！？；：,.:;!?]/);
       const label = cut > 0 ? text.slice(0, cut) : text;
       return label.length > 10 ? label.slice(0, 10) + '…' : label;
+    }
+
+    /* 新闻分类兜底：新报告由 LLM 在标题里给 [分类]；历史报告按标题关键词归类 */
+    const NEWS_CATEGORY_RULES = [
+      { label: '安全合规', pattern: /安全|漏洞|攻击|隐私|监管|合规|恶意|风险/ },
+      { label: '研究论文', pattern: /论文|arXiv|研究|基准|实验|数据集|评测/ },
+      { label: '开源项目', pattern: /GitHub|仓库|开源项目|stars?/i },
+      { label: '行业动态', pattern: /投资|融资|收购|合作|政策|政府|市场|竞争|战略|押注|发布财报/ },
+      { label: '技术突破', pattern: /突破|架构|算法|推理|加速|优化|压缩|剪枝/ },
+      { label: '模型发布', pattern: /模型|发布|推出|上线|开源|训练|参数|智能体/ },
+      { label: '产品工具', pattern: /产品|工具|应用|客户端|插件|功能|体验|助手/ }
+    ];
+
+    function newsCategory(heading) {
+      const text = String(heading || '');
+      for (let i = 0; i < NEWS_CATEGORY_RULES.length; i += 1) {
+        if (NEWS_CATEGORY_RULES[i].pattern.test(text)) return NEWS_CATEGORY_RULES[i].label;
+      }
+      return text ? '行业动态' : '';
+    }
+
+    /* 轻量 Markdown 渲染：空行分段、`1. ` 行转有序列表、**加粗** 转 strong。
+       用于编辑导语 / 编辑短评这类「评语」——多条观点时按序号或段落展示。 */
+    function inlineRichText(text) {
+      return escapeHtml(text).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    }
+
+    function renderRichText(text) {
+      const blocks = String(text || '')
+        .split(/\n{2,}/)
+        .map(function (block) { return block.trim(); })
+        .filter(function (block) { return !!block; });
+      return blocks.map(function (block) {
+        const lines = block.split('\n').map(function (line) { return line.trim(); }).filter(Boolean);
+        const isList = lines.length > 0 && lines.every(function (line) {
+          return /^\d+[.、]\s*/.test(line);
+        });
+        if (isList) {
+          return '<ol>' + lines.map(function (line) {
+            return '<li>' + inlineRichText(line.replace(/^\d+[.、]\s*/, '')) + '</li>';
+          }).join('') + '</ol>';
+        }
+        return '<p>' + lines.map(inlineRichText).join('<br>') + '</p>';
+      }).join('');
+    }
+
+    function renderRichFields() {
+      const lead = document.querySelector('.lead-quote');
+      if (lead) lead.innerHTML = renderRichText(DATA.lead_quote);
+      const quote = document.querySelector('.editor-quote-text');
+      if (quote) quote.innerHTML = renderRichText(DATA.editor_quote);
     }
 
     function formatStars(stars) {
@@ -175,7 +233,7 @@
         report_word_count: String(report.char_count || 0),
         report_read_minutes: String(report.reading_minutes || 0),
         report_pill: '深度研判',
-        report_title: cleanReportTitle(report.title || ''),
+        report_title: displayReportTitle(report.title),
         editor_quote: report.editor_verdict || (d.lead && d.lead.text) || '',
         editor_name: editorName,
         editor_role: '主编'
@@ -206,24 +264,39 @@
       for (let n = 1; n <= 4; n += 1) {
         const dive = dives[n - 1] || {};
         const title = cleanHeading(dive.heading || '');
-        const points = [
-          dive.background || '',
-          dive.breakthrough || '',
-          dive.impact || ''
-        ];
-        /* raw_sections 是日报里未被结构化的段落：按顺序填进空缺的要点位，避免整段塞进第 3 点 */
-        (Array.isArray(dive.raw_sections) ? dive.raw_sections : []).forEach(function (section) {
-          const text = String(section || '').trim();
-          if (!text) return;
-          const emptyIndex = points.findIndex(function (point) { return !String(point || '').trim(); });
-          if (emptyIndex >= 0) points[emptyIndex] = text;
-        });
+        /* 要点：新报告带 {label,text}（1-3 条，按新闻性质自由选择）；老报告退回三段式 */
+        let points = [];
+        if (Array.isArray(dive.points) && dive.points.length) {
+          points = dive.points.map(function (point) {
+            return {
+              label: String((point && point.label) || '').trim(),
+              text: String((point && point.text) || '').trim()
+            };
+          }).filter(function (point) { return !!point.text; });
+        } else {
+          points = [
+            { label: POINT_LABELS[0], text: dive.background || '' },
+            { label: POINT_LABELS[1], text: dive.breakthrough || '' },
+            { label: POINT_LABELS[2], text: dive.impact || '' }
+          ];
+          /* 老报告里未被结构化的段落：填进空缺要点位，避免整段塞进第 3 点 */
+          (Array.isArray(dive.raw_sections) ? dive.raw_sections : []).forEach(function (section) {
+            const text = String(section || '').trim();
+            if (!text) return;
+            const emptyIndex = points.findIndex(function (point) { return !point.text; });
+            if (emptyIndex >= 0) points[emptyIndex].text = text;
+          });
+          points = points.filter(function (point) { return !!point.text; });
+        }
+        const storyTag = title ? chapterTag(title) : '';
         data['chapter_' + n + '_title'] = title;
-        data['chapter_' + n + '_tag'] = title ? chapterTag(title) : '';
-        data['chapter_' + n + '_topic'] = title ? chapterTopic(title) : '';
+        /* 左上角小字 = 新闻分类（模型发布/安全合规/…）；右侧小字 = 事件短名 */
+        data['chapter_' + n + '_tag'] = title ? (dive.category || newsCategory(title)) : '';
+        data['chapter_' + n + '_topic'] = storyTag;
         for (let m = 1; m <= 3; m += 1) {
-          data['chapter_' + n + '_point_' + m + '_label'] = points[m - 1] ? POINT_LABELS[m - 1] : '';
-          data['chapter_' + n + '_point_' + m + '_text'] = points[m - 1] || '';
+          const point = points[m - 1] || {};
+          data['chapter_' + n + '_point_' + m + '_label'] = point.text ? (point.label || POINT_LABELS[m - 1]) : '';
+          data['chapter_' + n + '_point_' + m + '_text'] = point.text || '';
         }
       }
 
@@ -619,6 +692,7 @@
       hydrate();
       applyPostHydrateChrome();
       applyConditionalBlocks();
+      renderRichFields();
       closeArchive();
       renderDatePills();
       updateDateNav();

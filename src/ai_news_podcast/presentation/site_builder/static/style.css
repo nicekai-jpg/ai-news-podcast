@@ -684,6 +684,20 @@
       color: var(--text-primary);
     }
     .lead-quote strong { color: var(--accent-primary); font-weight: 700; }
+    /* 导语/短评支持多段与有序列表（多条观点时按序号渲染） */
+    .lead-quote p + p,
+    .editor-quote-text p + p { margin-top: 10px; }
+    .lead-quote ol,
+    .editor-quote-text ol {
+      list-style: decimal;
+      margin: 8px 0 0;
+      padding-left: 1.3em;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .lead-quote ol li,
+    .editor-quote-text ol li { padding-left: 2px; }
 
     /* Metrics Strip */
     .metrics-strip {
