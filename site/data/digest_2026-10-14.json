@@ -127,6 +127,25 @@
     "deep_dives": [
       {
         "heading": "一、NVIDIA RTX Spark：个人计算进入\"超级芯片\"时代",
+        "category": null,
+        "points": [
+          {
+            "label": "事件背景",
+            "text": "长期以来，AI 算力高度集中在云端数据中心，开发者与创作者不得不依赖云推理 API 或价格不菲的独立显卡。NVIDIA 此次推出 RTX Spark，本质上是把\"数据中心级 AI 算力\"压缩进一颗消费级 SoC。"
+          },
+          {
+            "label": "三合一架构",
+            "text": "将游戏 PC、创意工作站、个人 AI 超算融合为单一超级芯片，任务调度不再需要在异构硬件间反复迁移。"
+          },
+          {
+            "label": "端侧大模型推理普及",
+            "text": "意味着数十亿参数级模型可在本地运行，离线能力、低延迟响应与数据隐私得以同步满足。"
+          },
+          {
+            "label": "全栈生态下沉",
+            "text": "CUDA、TensorRT、NIM 等工具链一并下沉到桌面端，进一步巩固 NVIDIA 的开发者护城河。"
+          }
+        ],
         "background": "长期以来，AI 算力高度集中在云端数据中心，开发者与创作者不得不依赖云推理 API 或价格不菲的独立显卡。NVIDIA 此次推出 RTX Spark，本质上是把\"数据中心级 AI 算力\"压缩进一颗消费级 SoC。",
         "breakthrough": null,
         "impact": null,
@@ -143,6 +162,25 @@
       },
       {
         "heading": "二、X 订阅捆绑 Grok 与 Cursor：AI 时代的\"超级应用\"实验",
+        "category": null,
+        "points": [
+          {
+            "label": "事件背景",
+            "text": "在用户增长见顶、广告业务承压的背景下，X 选择了一条激进的商业化路径——将社交平台、AI 对话（xAI Grok）以及 AI 编程工具（Cursor）打包进同一订阅体系。"
+          },
+          {
+            "label": "分层订阅矩阵",
+            "text": "从 8 美元基础版到 200 美元顶级版，覆盖 C 端用户、中小开发者与专业团队；"
+          },
+          {
+            "label": "AI 全家桶模式",
+            "text": "打破\"社交平台只卖社交权益\"的传统边界，把生产力工具作为溢价核心；"
+          },
+          {
+            "label": "数据飞轮闭环",
+            "text": "聊天、代码、社交互动数据回流反哺 Grok 模型训练，构建自有数据资产。"
+          }
+        ],
         "background": "在用户增长见顶、广告业务承压的背景下，X 选择了一条激进的商业化路径——将社交平台、AI 对话（xAI Grok）以及 AI 编程工具（Cursor）打包进同一订阅体系。",
         "breakthrough": null,
         "impact": null,
@@ -902,6 +940,7 @@
     },
     "message": "今日候选池经多轮筛查，未检出达标项目"
   },
+  "quality": null,
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-10-14.json",

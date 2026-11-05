@@ -139,6 +139,21 @@
     "deep_dives": [
       {
         "heading": "解码 Gemini Robotics ER 2：具身智能叩开\"群体智能\"大门",
+        "category": null,
+        "points": [
+          {
+            "label": "视频理解驱动任务规划",
+            "text": "模型能够解析真实场景的长视频流，从动态环境中抽取因果链条，进而为复杂任务（如整理厨房、装配家具）生成可执行的多步骤计划。"
+          },
+          {
+            "label": "任务编排（Task Orchestration）",
+            "text": "当指令被下达后，ER 2 能够将宏观目标拆解为不同子任务，并动态分派给具备不同技能的机器人单元。"
+          },
+          {
+            "label": "多机器人协作（Multi-Robot Collaboration）",
+            "text": "多个异构机器人在统一\"指挥中枢\"下共享世界模型，实现感知-决策-动作的同步闭环。"
+          }
+        ],
         "background": "模型能够解析真实场景的长视频流，从动态环境中抽取因果链条，进而为复杂任务（如整理厨房、装配家具）生成可执行的多步骤计划。",
         "breakthrough": null,
         "impact": null,
@@ -151,6 +166,8 @@
       },
       {
         "heading": "DeepMind × 游戏工作室 × A24：AI 走向\"原生内容\"的基础设施化",
+        "category": null,
+        "points": [],
         "background": null,
         "breakthrough": null,
         "impact": null,
@@ -1666,6 +1683,7 @@
     },
     "message": "今日主推项目"
   },
+  "quality": null,
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-10-13.json",

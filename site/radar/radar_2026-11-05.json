@@ -1,0 +1,324 @@
+{
+  "date": "2026-11-05",
+  "generated_at": "2026-11-04T22:52:42.831191+00:00",
+  "projects": [
+    {
+      "repo": "ccch1mneyyy/dsh-Go",
+      "url": "https://github.com/ccch1mneyyy/dsh-Go",
+      "description": "dsh-go — DeepSeek Harness 装进口袋：手机本机运行，也能遥控你的电脑。",
+      "language": "Dart",
+      "topics": [
+        "ai-agent",
+        "android",
+        "android-app",
+        "coding-agent",
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "dsh-tui",
+        "flutter",
+        "llm"
+      ],
+      "stars": 9382,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-10-25T08:09:52Z",
+      "pushed_at": "2026-11-04T22:26:46Z",
+      "license": "AGPL-3.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "安装要求为 Android 8.0（API 26）及以上。Release 页面上的 **arm64** 安装包适用于常见的 64 位 Android 手机；x86_64 设备和模拟器用的 x64 包在发布说明末尾的「其他版本下载」里。仓库没有 32 位 ARM 构建。\n\n1. 从 [GitHub Releases](https://github.com/ccch1mneyyy/dsh-go/releases/latest) 或[官网下载页](https://go.dshtui.com/download)下载对应架构的 APK，并按系统提示允许该安装来源。\n2. 首次启动时，选择在本机安装运行环境，或连接远程主机。\n3. 为所选主机配置模型和所需凭据，再开始对话；部分远程渠道需要在主机侧配置。\n\n仅连接远程主机时，不必在手机上安装本机运行环境。手机操控只对正常模式下的本机引擎开放，需要按界面说明开启无障碍等权限；不打扰模式另外要求 Android 14 及以上，以及 Shizuku 或自连 ADB。首次使用可按[使用指南](docs/guide/README.md)逐项配置。\n\n本地引擎默认使用 PRoot 兼容启动。开发者选项中的直接启动默认关闭，开启后的兼容性和回退方式见[常见问题](docs/guide/zh/11-faq.md)。当前 Android 构建以 APK 侧载为目标，不是 Google Play 发布配置。",
+      "readme_intro": "简体中文  ·  English DeepSeek Harness 的 Android 客户端。手机上直接跑，也能遥控你电脑上的 DSH。 Trendshift 全语言日榜 #1 · 2026-10-30 Deepy 和鲸娘，陪你干活 干活时敲代码，做完来个空翻，等你确认会举手。打开「App 外显示」，它们还会跟你到桌面。 下载 DSH Go 从 GitHub Releases 或官网下载页获取最新版 APK，常见手机选 arm64 包。 &emsp; 感谢大家对 DSH Go 的支持和喜爱，我将尽快适配 iOS 和鸿蒙！大家 Star 点得越多，我适配得越快哦 hhh 第一次用可以先看 使用指南 ，遇到问题欢迎来 论坛和 QQ 群 。 手机上装过签名不同的早期测试包时不能直接覆盖安装，需要先卸载旧版；卸载会清空对话、Linux 环境和设置。 本机运行，也能遥控电脑 内置 Linux 环境，免 Root、免 Termux。电脑上的 DSH，也能一键切过去接着用。 插话、打断，过程自动收好 回复中途也能插话，排队的消息随时「立即发送」。做完的过程折叠成一行。 原生界面，也有网页版 和官方网页版一键切换，停在同一段对话，下次打开还是你上次用的那个。 分享卡、对话回放和链接 回复一键做成分享卡。整段对话生成链接，对方在浏览器里回放，链接端到端加密。 横屏与平板 横屏手机和平板重新排版：侧栏常驻，内容居中，弹出键盘也不挤。 主题配色与桌面图标 六套主题色，也能跟随壁纸或自选颜色。四款桌面图标，三种功能图标风格。 中文，也说 English 全部界面支持英文，在设置里切换，默认跟随系统。 手机操控 看屏幕、帮你点，三档确认随你选。敏感操作默认交还给你；放宽应用规则或解除限制前，请先了解风险。",
+      "score": 0.6292,
+      "score_parts": {
+        "velocity": 0.6866,
+        "vel_rel": 0.7273,
+        "vel_abs": 0.6255,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "thedotmack/claude-mem",
+      "url": "https://github.com/thedotmack/claude-mem",
+      "description": "Persistent Context Across Sessions for Every Agent –  Captures everything your agent does during sessions, compresses it with AI, and injects relevant context back into future sessions. Works with Claude Code, OpenClaw, Codex, Gemini, Hermes, Copilot, OpenCode + More",
+      "language": "TypeScript",
+      "topics": [
+        "ai",
+        "ai-agents",
+        "ai-memory",
+        "anthropic",
+        "artificial-intelligence",
+        "chromadb",
+        "claude",
+        "claude-agent-sdk",
+        "claude-agents",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "embeddings",
+        "long-term-memory",
+        "mem0",
+        "memory-engine",
+        "openmemory",
+        "rag",
+        "sqlite",
+        "supermemory"
+      ],
+      "stars": 112783,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2025-08-31T20:50:03Z",
+      "pushed_at": "2026-11-04T21:32:24Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 1,
+      "readme_excerpt": "Install claude-mem for Grok Bot:\n\n```bash\nnpx claude-mem install --ide grok-bot\n```\n\nGrok Bot has no host hooks, so we watch the chat log files. Default is CMEM Pro, the hosted memory. Local observer is opt-in: `--provider host`. Installing this plugin does not install Cursor.\n\n**Awareness push pilot (LFG + Orifice):** needle observations (`decision`, `bugfix`, `security_alert`, `sensitive`) are appended as dated `- YYYY-MM-DD [awareness] …` lines into that bot's `memory/log/YYYY-MM.md`. Grok Bot already re-reads the log from disk. This does not write `profile.md`, user-memory, or project memory. Disable with `CLAUDE_MEM_GROK_BOT_AWARENESS_ENABLED=false`.\n\nInstall with a single command:\n\n```bash\nnpx claude-mem install\n```\n\nThe installer sets everything up first, then asks you to sign in to claude-mem in your browser (email magic link — no card required). Signing in provisions a memory key for your account and unlocks the **claude-mem observer** with a **30 Day Free Trial**: memory runs off-plan, so you get up to 100% more usage from your plan. When the free trial ends, memory automatically falls back to your Anthropic plan unless you subscribe. After sign-in you pick your memory pr",
+      "readme_intro": "&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 🇨🇳 中文  • 🇹🇼 繁體中文  • 🇯🇵 日本語  • 🇵🇹 Português  • 🇧🇷 Português  • 🇰🇷 한국어  • 🇪🇸 Español  • 🇩🇪 Deutsch  • 🇫🇷 Français  • 🇮🇱 עברית  • 🇸🇦 العربية  • 🇷🇺 Русский  • 🇵🇱 Polski  • 🇨🇿 Čeština  • 🇳🇱 Nederlands  • 🇹🇷 Türkçe  • 🇺🇦 Українська  • 🇻🇳 Tiếng Việt  • 🇵🇭 Tagalog  • 🇮🇩 Indonesia  • 🇹🇭 ไทย  • 🇮🇳 हिन्दी  • 🇧🇩 বাংলা  • 🇵🇰 اردو  • 🇷🇴 Română  • 🇸🇪 Svenska  • 🇮🇹 Italiano  • 🇬🇷 Ελληνικά  • 🇭🇺 Magyar  • 🇫🇮 Suomi  • 🇩🇰 Dansk  • 🇳🇴 Norsk Persistent memory compression system built for  Claude Code . Quick Start  • How It Works  • Search Tools  • Documentation  • Configuration  • Troubleshooting  • License Claude-Mem seamlessly preserves context across sessions by automatically capturing tool usage observations, generating semantic summaries, and making them available to",
+      "score": 0.5553,
+      "score_parts": {
+        "velocity": 0.3427,
+        "vel_rel": 0.4545,
+        "vel_abs": 0.1749,
+        "hands_on": 1.0,
+        "cross_heat": 0.3333,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "google/elephant-goldfish-model",
+      "url": "https://github.com/google/elephant-goldfish-model",
+      "description": "Open-source skills for designing and reviewing software with AI agents",
+      "language": "Python",
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "antigravity",
+        "claude-code",
+        "claude-code-plugin",
+        "claude-skills",
+        "codex",
+        "codex-plugin",
+        "coding-agents",
+        "context-engineering",
+        "developer-tools",
+        "gemini",
+        "llm",
+        "multi-agent",
+        "prompt-engineering",
+        "spec-driven-development"
+      ],
+      "stars": 11763,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-09-13T16:31:06Z",
+      "pushed_at": "2026-11-04T20:36:04Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 24,
+      "readme_excerpt": "Choose your coding agent. Install the complete plugin so its skills can read the reviewer prompts and document standards.",
+      "readme_intro": "Design with an elephant. Review with a goldfish. Install  &ensp;·&ensp; Quickstart  &ensp;·&ensp; Documentation  &ensp;·&ensp; Website Thousands of Google engineers use EGM, an open-source plugin, to draft specs with deep-context agents and stress-test them with zero-context subagents before writing code. **Elephant** holds your project context and drafts the specification. **Goldfish** reviewers examine the draft and referenced source material without the earlier conversation, helping expose unstated assumptions and blind spots. **You** make the architectural trade-offs and approve the specification before implementing. Use it when a feature needs design decisions before implementation. For a small, clear bug fix, use your normal coding workflow.",
+      "score": 0.5429,
+      "score_parts": {
+        "velocity": 0.2785,
+        "vel_rel": 0.3636,
+        "vel_abs": 0.1508,
+        "hands_on": 1.0,
+        "cross_heat": 1.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    }
+  ],
+  "meta": {
+    "pick_repo": "ccch1mneyyy/dsh-Go",
+    "runner_up_repos": [
+      "thedotmack/claude-mem",
+      "google/elephant-goldfish-model"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 48,
+    "excluded_recent": 15,
+    "fresh_candidates": 33,
+    "widen_pass": false,
+    "pool_by_source": {
+      "topic": 20,
+      "trending": 3,
+      "new": 25
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "TauricResearch/TradingAgents",
+    "yesterday_pick_delta": 3379,
+    "candidate_audit": [
+      {
+        "repo": "deepseek-ai/deepseek-harness",
+        "stars": 272485,
+        "delta_stars": null,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "thedotmack/claude-mem",
+        "stars": 112783,
+        "delta_stars": null,
+        "language": "TypeScript",
+        "license": "Apache-2.0",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "Ebony-Vinyl/dsh-our-free-model",
+        "stars": 60664,
+        "delta_stars": null,
+        "language": "JavaScript",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "stars": 25377,
+        "delta_stars": 1998,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "wheresryan22/anatomy",
+        "stars": 24865,
+        "delta_stars": 3438,
+        "language": "JavaScript",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "lexmount/moli",
+        "stars": 22595,
+        "delta_stars": null,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "deepseek-ai/dsh-superagent-prototype",
+        "stars": 18520,
+        "delta_stars": null,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "storytold/wordcraft",
+        "stars": 17307,
+        "delta_stars": 948,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "vercel-labs/agent-desktop",
+        "stars": 14932,
+        "delta_stars": null,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "tangency-labs/solidcraft",
+        "stars": 13626,
+        "delta_stars": 2437,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "lemomo-ai/lemo-opuscar",
+        "stars": 12256,
+        "delta_stars": null,
+        "language": "JavaScript",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "seedds/nxnative",
+        "stars": 12147,
+        "delta_stars": 4505,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "milind-soni/OpenMausBot",
+        "stars": 12003,
+        "delta_stars": null,
+        "language": "TypeScript",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "google/elephant-goldfish-model",
+        "stars": 11763,
+        "delta_stars": null,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "storytold/craft-anything",
+        "stars": 11487,
+        "delta_stars": null,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "CopilotKit/OpenBot",
+        "stars": 10142,
+        "delta_stars": null,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "pengchujin/aerial-tv",
+        "stars": 9617,
+        "delta_stars": 2920,
+        "language": "",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "ccch1mneyyy/dsh-Go",
+        "stars": 9382,
+        "delta_stars": null,
+        "language": "Dart",
+        "license": "AGPL-3.0",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "heydamir/unslop",
+        "stars": 8616,
+        "delta_stars": null,
+        "language": "JavaScript",
+        "license": "CC-BY-4.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "Human-Agent-Society/reef",
+        "stars": 7796,
+        "delta_stars": 41,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      }
+    ],
+    "audit_semantics": "v5"
+  }
+}

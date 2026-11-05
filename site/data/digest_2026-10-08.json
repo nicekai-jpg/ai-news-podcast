@@ -133,6 +133,8 @@
     "deep_dives": [
       {
         "heading": "一、OpenAI\"论文海啸\"刷屏数学界：AI 正在成为基础科学的共同发现者？",
+        "category": null,
+        "points": [],
         "background": null,
         "breakthrough": null,
         "impact": null,
@@ -144,6 +146,13 @@
       },
       {
         "heading": "二、HuggingFace Transformers 兼容 GGUF：开源大模型的\"装机即用\"时代正式到来",
+        "category": null,
+        "points": [
+          {
+            "label": "对开发者和行业的深刻影响",
+            "text": "对个人开发者而言，MacBook Air 跑 70B 模型将成为日常；对企业而言，数据隐私、推理成本、对云厂商的依赖一次性被解决；对 OpenAI、Anthropic 等闭源玩家而言，这意味着他们最重要的\"易用性护城河\"正被开源工具链以肉眼可见的速度蚕食。当\"本地 + 开源\"的体验逼近\"云端 + 闭源\"，商业模式的天平将不可逆地向开源倾斜。"
+          }
+        ],
         "background": null,
         "breakthrough": null,
         "impact": "对个人开发者而言，MacBook Air 跑 70B 模型将成为日常；对企业而言，数据隐私、推理成本、对云厂商的依赖一次性被解决；对 OpenAI、Anthropic 等闭源玩家而言，这意味着他们最重要的\"易用性护城河\"正被开源工具链以肉眼可见的速度蚕食。当\"本地 + 开源\"的体验逼近\"云端 + 闭源\"，商业模式的天平将不可逆地向开源倾斜。",
@@ -1742,6 +1751,7 @@
     },
     "message": "今日候选池经多轮筛查，未检出达标项目"
   },
+  "quality": null,
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-10-08.json",

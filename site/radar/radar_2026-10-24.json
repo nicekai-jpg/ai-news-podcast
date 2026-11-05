@@ -1,0 +1,143 @@
+{
+  "date": "2026-10-24",
+  "generated_at": "2026-10-23T20:40:46.015991+00:00",
+  "projects": [
+    {
+      "repo": "Graphify-Labs/graphify",
+      "url": "https://github.com/Graphify-Labs/graphify",
+      "description": "Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.",
+      "language": "Python",
+      "topics": [
+        "ai-agents",
+        "antigravity",
+        "ast",
+        "claude-code",
+        "code-analysis",
+        "code-search",
+        "codex",
+        "cursor",
+        "developer-tools",
+        "gemini",
+        "graphify",
+        "graphrag",
+        "knowledge-graph",
+        "leiden",
+        "llm",
+        "mcp",
+        "openclaw",
+        "rag",
+        "skills",
+        "tree-sitter"
+      ],
+      "stars": 133840,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-04-03T15:49:07Z",
+      "pushed_at": "2026-10-23T17:59:28Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "curl -LsSf https://astral.sh/uv/install.sh | sh\n```\n\n---",
+      "readme_intro": "Read this in other languages English  |  简体中文  |  日本語  |  한국어  |  Deutsch  |  Français  |  Español  |  हिन्दी  |  Português  |  Русский  |  العربية  |  فارسی  |  Italiano  |  Polski  |  Nederlands  |  Türkçe  |  Українська  |  Tiếng Việt  |  Bahasa Indonesia  |  Svenska  |  Ελληνικά  |  Română  |  Čeština  |  Suomi  |  Dansk  |  Norsk  |  Magyar  |  ภาษาไทย  |  Oʻzbekcha  |  繁體中文  |  Filipino  |  עברית Cut agent token spend by 80%.  Graphify Cloud is always-on memory that governs your agents, keeps code quality high, and proves correctness with formal verification.   Start a free 14-day trial &rarr; Type `/graphify` in your AI coding assistant and it maps your entire project (code, docs, PDFs, images, videos) into a **knowledge graph** you can **query instead of grepping** through files. -",
+      "score": 0.6396,
+      "score_parts": {
+        "velocity": 0.7213,
+        "vel_rel": 0.9091,
+        "vel_abs": 0.4395,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "DietrichGebert/ponytail",
+      "url": "https://github.com/DietrichGebert/ponytail",
+      "description": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+      "language": "JavaScript",
+      "topics": [
+        "agent-skills",
+        "ai-agents",
+        "claude",
+        "claude-code",
+        "claude-code-plugin",
+        "cursor-rules",
+        "developer-tools",
+        "llm",
+        "prompt-engineering",
+        "yagni"
+      ],
+      "stars": 174716,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-06-12T00:52:37Z",
+      "pushed_at": "2026-10-18T01:55:14Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "**Claude Code**, as two separate prompts:\n\n```\n/plugin marketplace add DietrichGebert/ponytail\n```\n```\n/plugin install ponytail@ponytail\n```\n\n**Codex:**\n\n```bash\ncodex plugin marketplace add DietrichGebert/ponytail\ncodex plugin add ponytail@ponytail\n```\n\nThen open `/hooks` in Codex, trust its two lifecycle hooks, and start a new thread.\n\n**Any other agent:** copy [`AGENTS.md`](AGENTS.md) into your project, or ask your agent to install [`skills/ponytail/SKILL.md`](skills/ponytail/SKILL.md) as a skill. Step by step for Copilot, Cursor, OpenCode, Gemini and the rest: **[INSTALL.md](INSTALL.md)**.\n\nThat was it. He'd be proud. He won't say it.\n\nActive every session, with a handful of commands (see [Commands](#commands)). `/ponytail ultra` exists for when the codebase has wronged you personally. Startup and mode-change text shows the current mode.\n\nOnly install ponytail from `DietrichGebert/ponytail` on GitHub or `@dietrichgebert/ponytail` on npm. It never ships `.exe` or `.dll` files; a copy that does is not mine.",
+      "readme_intro": "Ponytail He says nothing. He writes one line. It works. Ponytail 5: rebuilt from the ground up. -53% code &middot; -41% time &middot; -26% cost &middot; -45% tokens And yet: 98% of risky logic ships with a test.  Without Ponytail: 68%. Benchmarked in Claude Code, the same agent with and without the skill: 39 tasks including a real FastAPI + React repo, Opus 5.5, 5 runs each.  Details . Español  &middot;  한국어  &middot;  简体中文  &middot;  日本語",
+      "score": 0.6227,
+      "score_parts": {
+        "velocity": 0.9503,
+        "vel_rel": 1.0,
+        "vel_abs": 0.8758,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "anthropics/knowledge-work-plugins",
+      "url": "https://github.com/anthropics/knowledge-work-plugins",
+      "description": "Open source repository of plugins primarily intended for knowledge workers to use in Claude Cowork",
+      "language": "Python",
+      "topics": [],
+      "stars": 32142,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-01-23T20:11:54Z",
+      "pushed_at": "2026-10-23T07:38:30Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 9,
+      "readme_excerpt": "",
+      "readme_intro": "Plugins that turn Claude into a specialist for your role, team, and company. Built for [Claude Cowork](https://claude.com/product/cowork), also compatible with [Claude Code](https://claude.com/product/claude-code).",
+      "score": 0.5267,
+      "score_parts": {
+        "velocity": 0.4132,
+        "vel_rel": 0.6364,
+        "vel_abs": 0.0785,
+        "hands_on": 1.0,
+        "cross_heat": 1.0,
+        "affinity": 0.5,
+        "days_in_pool": 0
+      },
+      "affinity": 0.5
+    }
+  ],
+  "meta": {
+    "pick_repo": "Graphify-Labs/graphify",
+    "runner_up_repos": [
+      "DietrichGebert/ponytail",
+      "anthropics/knowledge-work-plugins"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 32,
+    "excluded_recent": 14,
+    "fresh_candidates": 18,
+    "widen_pass": false,
+    "pool_by_source": {
+      "trending": 5,
+      "new": 25,
+      "topic": 2
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "openai/codex",
+    "yesterday_pick_delta": 157
+  }
+}
