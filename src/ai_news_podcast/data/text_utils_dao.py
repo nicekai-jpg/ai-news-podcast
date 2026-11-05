@@ -31,12 +31,16 @@ RE_MULTI_NEWLINE = re.compile(r"\n{3,}")
 # Strip invalid HTML/XML tags
 RE_HTML_TAG = re.compile(r"<[^>]+>", flags=re.IGNORECASE)
 
-# Thinking-process markers that LLM sometimes outputs instead of actual dialogue
+# Thinking-process markers that LLM sometimes outputs instead of actual dialogue.
+# 2026-11-05 事故：模型把「写稿计划」整段包在 [Host A] 里输出，旧正则的英文规划词覆盖不足，
+# 且 contains_thinking_process 遇到首个 Host 标记就 early-return，导致 59 分钟垃圾音频上线。
 RE_THINKING_MARKERS = re.compile(
-    r"(?i)(?:let me|key requirements|requirements and write|"
-    r"natural conversation|two hosts:|host a.*host b|"
+    r"(?i)(?:let me|let'?s (?:plan|parse|estimate|write|check)|"
+    r"key requirements|requirements and write|we need|need (?:to|length|target|accurate)|"
+    r"i'?ll (?:write|plan|check)|natural conversation|two hosts:|host a.*host b|"
     r"\d+\.\s*two hosts|here is|below is|i will|"
     r"firstly|secondly|finally|step \d|note:|"
+    r"outline (?:says|likely)|instruction|requirement|"
     r"^\s*1\.\s+two hosts|^\s*\d+\.\s*(?:two|host|conversation|natural))"
 )
 
@@ -162,21 +166,24 @@ def _strip_thinking_process(text: str) -> str:
     return "\n".join(result)
 
 
+_HOST_PREFIX_RE = re.compile(r"^\[Host\s*[AB]\]\s*", flags=re.IGNORECASE)
+
+
 def contains_thinking_process(text: str) -> bool:
-    """Return True if the text contains LLM reasoning/thinking output."""
+    """Return True if the text contains LLM reasoning/thinking output.
+
+    注意：不能「遇到首个 [Host A] 就判定正常」——模型会把写稿计划整段包在 Host 标记里输出
+    （2026-11-05 事故）。这里先剥掉 Host 前缀，再逐行匹配思考/规划词。
+    """
     if not text:
         return False
     # Strip think-tag content first so we check the remaining dialogue text
     text = RE_THINK_TAG.sub("", text)
-    # Check if there are lines with thinking markers before any real dialogue
-    lines = text.split("\n")
-    for line in lines:
+    for line in text.split("\n"):
         stripped = line.strip()
         if not stripped:
             continue
-        # If we hit a real host marker first, it's probably fine
-        if re.match(r"^\[Host\s*[AB]\]", stripped, flags=re.IGNORECASE):
-            return False
+        stripped = _HOST_PREFIX_RE.sub("", stripped)
         if RE_THINKING_MARKERS.search(stripped):
             return True
     return False

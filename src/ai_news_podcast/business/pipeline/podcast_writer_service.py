@@ -36,6 +36,24 @@ _CHAPTER_LINE_RE = re.compile(r"^\[CHAPTER\]\s*(.+)$")
 _CHAPTER_SENTINEL = "__CHAPTER_MARKER__"
 _CHAPTER_SENTINEL_RE = re.compile(r"^" + _CHAPTER_SENTINEL + r"\s*(.+)$")
 
+# 双主持对话：任一主持人占比低于该阈值视为口径失衡（2026-11-05 事故：Host A 228 句 / Host B 4 句）
+_MIN_HOST_RATIO = 0.15
+
+
+def _host_balance_ok(script: str, min_ratio: float = _MIN_HOST_RATIO) -> bool:
+    """Host A/B 轮次是否大致均衡；没有 Host 标记时返回 True，交给「无标记」分支处理。"""
+    host_a = script.count("[Host A]")
+    host_b = script.count("[Host B]")
+    total = host_a + host_b
+    if total == 0:
+        return True
+    return min(host_a, host_b) / total >= min_ratio
+
+
+def _script_looks_valid(script: str) -> bool:
+    """Writer 输出是否像一份可用的双主持对话（而非思考过程/单人口播）。"""
+    return not contains_thinking_process(script) and _host_balance_ok(script)
+
 
 def _protect_chapter_markers(text: str) -> str:
     """把独立的 [CHAPTER] 标题行换成清洗安全的哨兵，避免标题被 clean_tts_text 删掉。"""
@@ -135,7 +153,7 @@ def generate_podcast(
     brief: dict[str, Any],
     *,
     episode_date: datetime,
-    podcast_title: str = "AI 每日先锋",
+    podcast_title: str = "今日AI看点",
     writer_cfg: dict[str, Any] | None = None,
     llm_cfg: dict[str, Any] | None = None,
 ) -> tuple[str, list[str]]:
@@ -156,6 +174,7 @@ def generate_podcast(
 
     script = None
     mode_used = "fallback"
+    fallback_reason: str | None = None
 
     if material.strip():
         # --- Node 1: Editor ---
@@ -179,15 +198,32 @@ def generate_podcast(
                 script = raw_writer
                 mode_used = "Multi-Agent"
                 logger.info("Writer Agent 播客生成成功")
-                # 检测 LLM 是否输出了思考过程而非对话
-                if contains_thinking_process(script):
-                    logger.warning("Writer Agent 输出了思考过程而非对话，降级到 Fallback 模式")
-                    script = None
-                    mode_used = "fallback"
+                # 检测思考过程泄漏 / 主持人口径失衡（2026-11-05：模型把写稿计划包在 [Host A] 里输出）
+                if not _script_looks_valid(script):
+                    logger.warning("Writer 输出疑似思考过程或主持人口径失衡，带硬约束重试一次")
+                    retry_prompt = writer_prompt + (
+                        "\n\n【输出格式硬约束】只输出逐行 [Host A]/[Host B] 对话，"
+                        "两位主持人交替发言、轮次大致均衡；不要输出任何思考、计划、分析、"
+                        "英文说明、格式要求复述或自我检查。"
+                    )
+                    raw_retry = _call_llm(retry_prompt, dict(llm_cfg, temperature=0.7))
+                    if raw_retry and _script_looks_valid(raw_retry):
+                        script = raw_retry
+                        mode_used = "Multi-Agent (retry)"
+                        logger.info("Writer Agent 重试成功")
+                    else:
+                        logger.warning("Writer 重试仍不合格，降级到 Fallback 模式")
+                        script = None
+                        mode_used = "fallback"
+                        fallback_reason = (
+                            "LLM 输出疑似思考过程或主持人口径失衡，已降级到 Fallback 模板"
+                        )
             else:
                 logger.warning("Writer Agent 生成失败，降级到 Fallback 模式")
+                fallback_reason = "Writer Agent 生成失败，已降级到 Fallback 模板"
         else:
             logger.warning("Editor Agent 生成失败，降级到 Fallback 模式")
+            fallback_reason = "Editor Agent 生成失败，已降级到 Fallback 模板"
 
     if not script:
         script = _build_fallback(brief, episode_date, podcast_title)
@@ -195,6 +231,8 @@ def generate_podcast(
     script, warnings, _ = _post_process_script(
         script, brief, episode_date, podcast_title, banned_words, mode_used
     )
+    if fallback_reason:
+        warnings.append(fallback_reason)
     return script, warnings
 
 
@@ -231,6 +269,24 @@ def _post_process_script(
         script = _ensure_proper_ending(script)
         mode_used = "fallback (forced: no host markers)"
         warnings.append("LLM 输出不含 Host 标记，已强制降级到 Fallback 模板")
+        host_a_count = script.count("[Host A]")
+        host_b_count = script.count("[Host B]")
+        total_turns = host_a_count + host_b_count
+
+    # 双主持口径失衡（一人几乎不发言）同样是坏稿，降级到 Fallback，别让垃圾稿进 TTS
+    if not _host_balance_ok(script):
+        logger.warning(
+            "Host A/B 轮次严重失衡 (A:%d, B:%d)，强制降级到 Fallback 模板",
+            host_a_count,
+            host_b_count,
+        )
+        script = _build_fallback(brief, episode_date, podcast_title)
+        script = clean_tts_text(_protect_chapter_markers(script))
+        script = _replace_banned_words(script, banned_words)
+        script = _normalize_host_tags(script)
+        script = _ensure_proper_ending(script)
+        mode_used = "fallback (forced: host imbalance)"
+        warnings.append("LLM 输出主持人口径严重失衡，已强制降级到 Fallback 模板")
         host_a_count = script.count("[Host A]")
         host_b_count = script.count("[Host B]")
         total_turns = host_a_count + host_b_count

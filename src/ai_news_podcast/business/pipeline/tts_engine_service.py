@@ -165,7 +165,7 @@ async def synthesize(
     ):
         log.info("未检测到情感标签，正在启动 Director Agent 切段标注与无损校验机制...")
         if cfg:
-            podcast_title = str(cfg.get("podcast", {}).get("title") or "AI 每日先锋")
+            podcast_title = str(cfg.get("podcast", {}).get("title") or "今日AI看点")
             llm_cfg = cfg.get("llm", {})
 
             annotated_text = _annotate_text_in_batches(text, podcast_title, llm_cfg, batch_size=10)
