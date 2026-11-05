@@ -1,0 +1,284 @@
+{
+  "date": "2026-11-06",
+  "generated_at": "2026-11-05T22:53:25.847873+00:00",
+  "projects": [
+    {
+      "repo": "storytold/craft-anything",
+      "url": "https://github.com/storytold/craft-anything",
+      "description": "Craft Anything: understand how any software works, and craft your own.",
+      "language": "Rust",
+      "topics": [],
+      "stars": 14839,
+      "delta_stars": 3352,
+      "is_new": false,
+      "created_at": "2026-10-31T14:50:00Z",
+      "pushed_at": "2026-11-05T17:46:31Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "cargo install --path apps/craft-anything-cli         # the CLI, as `craft-anything-cli`\ncraft-anything-cli doctor                            # checks the install, coding agents and engines\n```\n\nBuilding needs a coding agent signed in on your computer (see [AI](#ai)); `doctor` says what's\nmissing. Rebuild from the command line (questions are asked in the terminal):\n\n```sh\ncraft-anything-cli rebuild https://example.com \"Recreate this website\"\ncraft-anything-cli rebuild - \"A snake game in Rust\" --rounds 1\ncraft-anything-cli rebuild https://example.com \"Make the header blue\" --continue-in \"<project folder>\"\ncraft-anything-cli rebuild - \"Add a contact form\" --project-folder \"<your folder>\" --existing edit\n```\n\nNew projects go in `Documents/Craft Anything` (change it in Settings → General). Each project\nfolder holds `craft.json` (the request, target, status and history), `capture/` (what was\nrecorded from the target), `app/` (the generated project), `checks/` (each comparison against\nthe original), `investigation.cany/` (evidence) and `inbox/` (open questions).\n\nA project can also start in a folder you pick (Choose a folder… under Start, or `--project-folder`).\nIf it already has files, y",
+      "readme_intro": "Craft Anything English  ·  日本語  ·  简体中文  ·  한국어 See how any website, app or game works, then have AI build your own version; an open-source, clean-room engine in pure Rust. Point it at a target, say what you want, and it studies the original with real inspection tools, has a coding agent build a new project, checks the result against the original and refines it. Download Craft Anything   · ArtCraft  · All Crafting Apps A website project: each check says how alike the build is, you approve anything outside the rules, and the plan shows what's left. > [!NOTE] > **ArtCraft is a community of artists from all walks of life.** Painters, photographers, > filmmakers, illustrators, designers, animators, hobbyists, and people who picked up a pencil > last week. If you make things, you're one of us. ",
+      "score": 0.51,
+      "score_parts": {
+        "velocity": 1.0,
+        "vel_rel": 1.0,
+        "vel_abs": 1.0,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.0,
+        "days_in_pool": 1
+      },
+      "affinity": 0.0
+    },
+    {
+      "repo": "wangzan101/Mika",
+      "url": "https://github.com/wangzan101/Mika",
+      "description": "An on-device AI agent for Android that operates apps and the web to get things done for you.",
+      "language": "Kotlin",
+      "topics": [
+        "accessibility",
+        "ai-agent",
+        "android",
+        "automation",
+        "jetpack-compose",
+        "kotlin",
+        "llm",
+        "mobile-agent"
+      ],
+      "stars": 7073,
+      "delta_stars": 469,
+      "is_new": false,
+      "created_at": "2026-10-29T14:34:07Z",
+      "pushed_at": "2026-11-05T15:46:37Z",
+      "license": "Apache-2.0",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "readme_intro": "**An AI assistant on your phone: say what you need, and it works your apps and the web until it's done.** It works on a hidden background screen, so you can keep using your phone. English · [简体中文](docs/readme/README.zh-CN.md) · [繁體中文](docs/readme/README.zh-Hant.md) · [日本語](docs/readme/README.ja.md) · [한국어](docs/readme/README.ko.md) · [Español](docs/readme/README.es.md) \"Send a message to File Transfer\": Mika's chat on the left, each step on its background screen on the right (4× speed; chat list blurred)",
+      "score": 0.4908,
+      "score_parts": {
+        "velocity": 0.5069,
+        "vel_rel": 0.6364,
+        "vel_abs": 0.3127,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 1
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "NVIDIA/auto-ontology",
+      "url": "https://github.com/NVIDIA/auto-ontology",
+      "description": "Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows.",
+      "language": "Python",
+      "topics": [],
+      "stars": 7219,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-04-27T21:45:56Z",
+      "pushed_at": "2026-11-05T14:45:30Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 1,
+      "readme_excerpt": "This runs Auto-Ontology with Docker Compose against Wide World Importers,\nMicrosoft's sample sales database. You need Docker with Compose v2,\n[uv](https://docs.astral.sh/uv/), and an NVIDIA API key (`nvapi-...`) from\n[build.nvidia.com](https://build.nvidia.com).\n\n1. Clone the repository and create `.env`:\n\n   ```bash\n   git clone https://github.com/NVIDIA/auto-ontology.git && cd auto-ontology\n   cp .env.example .env\n   ```\n\n   Then set these values in `.env`:\n\n   ```dotenv\n   DEFAULT_MODELS_API_KEY=nvapi-...\n   AUTH_SECRET=<a long random string, e.g. from openssl rand -base64 32>\n   APP_URL=http://localhost:3000\n   POSTGRES_PASSWORD=<a new password>\n   CONNECTION_STRINGS=postgresql://postgres:<the same password>@postgres:5432/wideworldimporters\n   AUTO_ONTOLOGY_ADMIN_PASSWORD=<a new password>\n   PGADMIN_PASSWORD=<a new password>\n   ```\n\n   Compose publishes Postgres, pgAdmin, and the web app on the host, so replace\n   each default password before you start it. `.env.example` also sets an API\n   key per model role: replace each `nvapi-your-api-key-here` with your key, or\n   delete those lines so they fall back to `DEFAULT_MODELS_API_KEY`.\n\n2. Start Postgres and load the sample datab",
+      "readme_intro": "Agents can retrieve documents and query databases, but reliability gates agentic analytics: a revenue metric answered faster is worth nothing if the number is wrong. Agents need a context layer that tells them where data lives, what it means, whether to use it, how to use it, where it came from, and what is similar. NVIDIA Auto Ontology is an open library that builds that layer from enterprise metadata, reconciles definitions across systems, and exposes it to any agent harness through MCP, CLI, and API. It complements the semantic models customers already own. It enables developers to: - Discover: generate enterprise ontologies from metadata; connect existing ontologies and semantic models; build AI-ready knowledge graphs. - Ground: give agents trusted business meaning for metrics, entitie",
+      "score": 0.4888,
+      "score_parts": {
+        "velocity": 0.1191,
+        "vel_rel": 0.1818,
+        "vel_abs": 0.0251,
+        "hands_on": 1.0,
+        "cross_heat": 0.3333,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    }
+  ],
+  "meta": {
+    "pick_repo": "storytold/craft-anything",
+    "runner_up_repos": [
+      "wangzan101/Mika",
+      "NVIDIA/auto-ontology"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 32,
+    "excluded_recent": 7,
+    "fresh_candidates": 25,
+    "widen_pass": false,
+    "pool_by_source": {
+      "trending": 4,
+      "new": 25,
+      "news": 1,
+      "topic": 2
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "ccch1mneyyy/dsh-Go",
+    "yesterday_pick_delta": 2008,
+    "candidate_audit": [
+      {
+        "repo": "better-auth/better-auth",
+        "stars": 30605,
+        "delta_stars": null,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "stars": 25466,
+        "delta_stars": 89,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "wheresryan22/anatomy",
+        "stars": 25219,
+        "delta_stars": 354,
+        "language": "JavaScript",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "deepseek-ai/dsh-superagent-prototype",
+        "stars": 19451,
+        "delta_stars": 931,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "storytold/craft-anything",
+        "stars": 14839,
+        "delta_stars": 3352,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "seedds/nxnative",
+        "stars": 12489,
+        "delta_stars": 342,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "ccch1mneyyy/dsh-Go",
+        "stars": 11390,
+        "delta_stars": 2008,
+        "language": "Dart",
+        "license": "AGPL-3.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "pengchujin/aerial-tv",
+        "stars": 9958,
+        "delta_stars": 341,
+        "language": "Kotlin",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "heydamir/unslop",
+        "stars": 9733,
+        "delta_stars": 1117,
+        "language": "JavaScript",
+        "license": "CC-BY-4.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "HeyPuter/everything",
+        "stars": 7271,
+        "delta_stars": 164,
+        "language": "JavaScript",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "NVIDIA/auto-ontology",
+        "stars": 7219,
+        "delta_stars": null,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "ly05010419/MacNativeGames",
+        "stars": 7102,
+        "delta_stars": 74,
+        "language": "C",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "wangzan101/Mika",
+        "stars": 7073,
+        "delta_stars": 469,
+        "language": "Kotlin",
+        "license": "Apache-2.0",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "l0ng-ai/openidea",
+        "stars": 6738,
+        "delta_stars": 617,
+        "language": "TypeScript",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "rivet-dev/rivet",
+        "stars": 6635,
+        "delta_stars": null,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "rddmwmddr/android-ad-cleaner",
+        "stars": 6547,
+        "delta_stars": 243,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "ARahim3/DigUp",
+        "stars": 6264,
+        "delta_stars": 27,
+        "language": "Swift",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "simbasjungles/free-my-tv",
+        "stars": 5924,
+        "delta_stars": 44,
+        "language": "Java",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "Jakeschincariol/day-trader-skill",
+        "stars": 5562,
+        "delta_stars": 288,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "amosblomqvist/learnharness",
+        "stars": 5551,
+        "delta_stars": 182,
+        "language": "TypeScript",
+        "license": "AGPL-3.0",
+        "exclusion_reason": "probe_limit"
+      }
+    ],
+    "audit_semantics": "v5"
+  }
+}
