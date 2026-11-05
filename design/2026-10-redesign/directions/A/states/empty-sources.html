@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今日AI看点 · 信源为空状态</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+  <div class="state-page">
+    <div class="state-header">
+      <span class="state-number">03</span>
+      <h1 class="state-title">信源与证据 · 空状态</h1>
+    </div>
+    <div class="state-card">
+      <span class="state-badge warning"><span class="dot"></span>暂无信源</span>
+      <h2 class="state-headline">{{empty_sources_headline}}</h2>
+      <p class="state-paragraph">{{empty_sources_message}}</p>
+      <div class="state-meta">
+        <span>扫描时间：{{empty_sources_scan_time}}</span>
+        <span class="sep">·</span>
+        <span>状态：{{empty_sources_status}}</span>
+      </div>
+    </div>
+  </div>
+<script src="_shared.js"></script>
+</body>
+</html>

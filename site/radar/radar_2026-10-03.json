@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-03",
+  "generated_at": "2026-10-03T00:49:05.909386+00:00",
+  "projects": [
+    {
+      "repo": "KKKKhazix/AIHOT",
+      "url": "https://github.com/KKKKhazix/AIHOT",
+      "description": "一个自己找热点、自己写日报的网站框架。把信源和精选标准换成你的，它就是你的行业热点站。",
+      "language": "TypeScript",
+      "topics": [
+        "ai",
+        "content-curation",
+        "llm",
+        "mcp",
+        "news-aggregator",
+        "rss",
+        "self-hosted",
+        "typescript"
+      ],
+      "stars": 4960,
+      "delta_stars": 309,
+      "is_new": false,
+      "created_at": "2026-09-28T23:40:05Z",
+      "pushed_at": "2026-10-02T07:06:47Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "git clone https://github.com/KKKKhazix/AIHOT.git myhot\ncd myhot\nnode scripts/init-env.ts --llm-key <你的模型 API Key>\ndocker compose up -d --build",
+      "score": 0.383,
+      "score_parts": {
+        "velocity": 0.206,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.1
+      },
+      "readme_intro": "这是什么：AIHOT 是一个自动化热点资讯网站框架,从多种信源持续采集资料,通过大模型进行预筛、独立两次评分和中文写作,将不同来源的同一事件聚簇并按独立来源计算热度,每天自动产出日报、周报和月报,可通过替换信源与精选标准适配任意行业。\n\n核心特性：\n- 六种信源接入：支持 RSS、网页列表、JSON 接口、X 账号、微信公众号以及自定义脚本推送,并按官方一手、官方账号与准官方、媒体与个人三级设置不同入选门槛\n- 提示词与门槛全公开：精选流程的预筛、两次评分、写作、聚簇复核等所有提示词原文和入选标准全部可改,还能在 SelectBench 中用自有标注样本校准\n- 事件级聚簇与热度：先用向量或文字重合度找候选,再由模型判断是否同一事件或后续进展,最终按 48 小时内独立来源数计算热度,人工调整的归属不会被覆盖\n\n适合谁：希望把选热点、写摘要、出日报这类日常编辑工作自动化的内容运营者、行业研究者,以及愿意把自家行业 KnowHow 沉淀为可复用流程的中小团队。\n\n为什么值得关注：它把\"采集—预筛—评分—写作—聚簇—成刊\"整条编辑流水线作为框架开源,信源和评分标准全部可在不写代码的前提下替换,让非专业开发者也能为自己的行业搭一个真正跑得起来的 AI 热点站。"
+    }
+  ],
+  "meta": {
+    "pick_repo": "KKKKhazix/AIHOT",
+    "runner_up_repos": [],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 11
+  }
+}

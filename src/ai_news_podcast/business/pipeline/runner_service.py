@@ -27,6 +27,7 @@ from ai_news_podcast.business.pipeline.dedup_service import (
 )
 from ai_news_podcast.business.pipeline.fetcher_service import fetch_all
 from ai_news_podcast.business.pipeline.gh_radar_service import build_radar
+from ai_news_podcast.business.pipeline.ingest_filter_service import filter_ingested_items
 from ai_news_podcast.business.pipeline.processor_service import process, save_brief
 from ai_news_podcast.data.config.models_dao import AppConfig
 from ai_news_podcast.data.utils_dao import read_json
@@ -190,6 +191,23 @@ async def run_pipeline(  # noqa: PLR0915
         )
     )
 
+    # ── Stage 1.5: 时间窗 / 话题关键词 / 单源配额 ──────────────────────────
+    # 这些配置此前只写在 config.yaml 里、代码从未读取，导致旧闻/单源霸榜/非 AI 内容进入素材池。
+    raw_items, ingest_stats = filter_ingested_items(
+        raw_items, selection_cfg=cfg_dict.get("selection") or {}
+    )
+    if not raw_items:
+        log.warning("No items left after ingest filter — pipeline aborted")
+        return {
+            "stories": [],
+            "thesis": "",
+            "metadata": {
+                "total_raw": 0,
+                "error": "no_items_after_filter",
+                "ingest_filter": ingest_stats,
+            },
+        }
+
     # ── 跨期历史去重 ──────────────────────────────────────────────────────────
     dedup_details: list[dict[str, Any]] = []
     dedup_cfg = processing_cfg.get("dedup", {})
@@ -245,8 +263,9 @@ async def run_pipeline(  # noqa: PLR0915
     )
     brief = process(raw_items, processing_cfg=processing_cfg)
 
-    # ── 注入去重详细计算信息 ────────────────────────────────────────────────────
+    # ── 注入过滤/去重统计 ──────────────────────────────────────────────────────
     brief.setdefault("metadata", {})["dedup_details"] = dedup_details
+    brief.setdefault("metadata", {})["ingest_filter"] = ingest_stats
 
     # ── Stage 2b: 项目雷达(独立项目轨,可失败不致命) ──────────────────────
     gh_radar_cfg = cfg_dict.get("gh_radar", {})

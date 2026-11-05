@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今日AI看点 · 雷达主推状态</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+  <div class="state-page">
+    <div class="state-header">
+      <span class="state-number">04</span>
+      <h1 class="state-title">GitHub 项目雷达 · 主推状态</h1>
+    </div>
+    <div class="state-card">
+      <div class="radar-pick-head">
+        <h2 class="radar-pick-name">{{radar_pick_repo}}</h2>
+        <span class="radar-pick-growth">近 7 日 ★ +{{radar_pick_growth}}/天</span>
+      </div>
+      <div class="radar-pick-meta">
+        <span>{{radar_pick_lang}}</span>
+        <span class="sep">·</span>
+        <span class="radar-pick-stars">★ {{radar_pick_stars}}</span>
+        <span class="sep">·</span>
+        <span>{{radar_pick_license}}</span>
+      </div>
+      <p class="radar-pick-desc">{{radar_pick_desc}}</p>
+      <div class="radar-pick-action">
+        <a href="{{radar_pick_url}}" target="_blank" rel="noopener">在 GitHub 查看 ↗</a>
+      </div>
+    </div>
+  </div>
+<script src="_shared.js"></script>
+</body>
+</html>

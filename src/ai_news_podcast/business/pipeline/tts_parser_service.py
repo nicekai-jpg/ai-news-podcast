@@ -72,7 +72,7 @@ def parse_dialogue_chunks(
         raw, pending_chapter = _split_chapter_lines(text[cursor : m.start()])
         if raw.strip():
             cleaned = _filter_chunk_text(raw)
-            if cleaned:
+            if cleaned and has_renderable_text(cleaned):
                 chunks.append(
                     DialogueChunk(host=current_host, text=cleaned, chapter=current_chapter)
                 )
@@ -83,7 +83,9 @@ def parse_dialogue_chunks(
     raw, _trailing_chapter = _split_chapter_lines(text[cursor:])
     if raw.strip():
         cleaned = _filter_chunk_text(raw)
-        if cleaned:
+        # 纯符号（如 "/"）会被 CosyVoice 的英文正则化 tokenize 成空列表而报错，
+        # 也会在 playlist 里留下 0.1s 的空段：直接丢弃。
+        if cleaned and has_renderable_text(cleaned):
             chunks.append(DialogueChunk(host=current_host, text=cleaned, chapter=current_chapter))
     return chunks
 
@@ -94,16 +96,27 @@ def split_text_into_sentences(text: str, max_chars: int = 80) -> list[str]:
     pattern = re.compile(r"([^，。！？；、,.!?;\s]+[，。！？；、,.!?;\s]*)")
     parts = pattern.findall(text)
     if not parts:
-        return [text] if has_renderable_text(text) else []
+        if not has_renderable_text(text):
+            return []
+        # 完全没有标点的长文本：直接按 max_chars 硬切（否则整段塞给模型可能被截断）
+        return [text[i : i + max_chars] for i in range(0, len(text), max_chars)]
 
     sentences = []
     current = ""
     for part in parts:
         if len(current) + len(part) <= max_chars:
             current += part
+            continue
+        if current:
+            sentences.append(current.strip())
+        # 单个 part 本身超长（无标点长文本）时按 max_chars 硬切，避免整段塞给模型
+        if len(part) > max_chars:
+            for start in range(0, len(part), max_chars):
+                piece = part[start : start + max_chars].strip()
+                if piece:
+                    sentences.append(piece)
+            current = ""
         else:
-            if current:
-                sentences.append(current.strip())
             current = part
     if current:
         sentences.append(current.strip())

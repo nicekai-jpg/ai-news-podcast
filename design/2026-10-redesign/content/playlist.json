@@ -1,0 +1,720 @@
+{
+  "episode_id": "2026-10-15",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听AI每日先锋，今天是2026年10月15日。我是苏晴。",
+      "start": 1.0,
+      "duration": 8.054,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是周航。苏晴今天气色不错啊。",
+      "start": 9.503,
+      "duration": 3.135,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "那是，昨晚睡了个好觉。对了周航，你最近关注智能体这块没有？我跟你说，今天看到个新闻直接把我整不会了。",
+      "start": 13.135,
+      "duration": 8.316,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "哪个？让我猜猜，是不是Third Moment Research那个一万个智能体连续跑36小时的？",
+      "start": 21.904,
+      "duration": 6.487,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "你怎么知道的！我还没说呢！",
+      "start": 28.796,
+      "duration": 3.744,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "哈，因为我早上就刷到了。说实话这个数字挺震撼的，一万个智能体，36小时不间断，这已经不是我们以前理解的那种\"AI跑个demo\"了。",
+      "start": 32.973,
+      "duration": 10.318,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "对吧？我一开始还以为是标题党，结果一看背后用的是GPT-6 Astra、GPT-6.1 Sol还有Codex，三个模型一块儿协同。你注意啊，这个组合挺有意思的——",
+      "start": 43.756,
+      "duration": 13.472,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "你说。",
+      "start": 57.69,
+      "duration": 0.653,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "Astra我理解是主控大脑那一层，Sol估计是执行层，Codex是写代码和工具调度那块。但关键是它们怎么协同的？一万个智能体跑36小时不掉链子，调度本身就是个超级难题。",
+      "start": 58.794,
+      "duration": 16.215,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "对，这就是这次突破的核心。你注意啊，以前我们看智能体跑任务，跑个几分钟、十几分钟崩了大家就觉得正常，因为长任务里变量太多，模型会漂移、工具会卡、网络会抖。但Third Moment这家公司干的事儿，等于是把\"智能体长跑\"这个事儿从学术问题变成了工程问题。",
+      "start": 75.509,
+      "duration": 21.701,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "说白了就是以前是能不能跑，现在是能不能跑得稳。",
+      "start": 97.648,
+      "duration": 4.354,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "没错。而且新闻里还提了个细节，说这套系统是\"越用越强\"，这就有点意思了。",
+      "start": 102.463,
+      "duration": 6.966,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "\"越用越强\"这四个字信息量很大。是说智能体之间会互相学习？还是有某种集体记忆？",
+      "start": 109.874,
+      "duration": 8.316,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "我猜是后者加前者。一方面单个智能体跑的过程中积累的经验会被写回共享知识库，另一方面智能体之间会观察彼此的策略，发现某个智能体在某个子任务上特别厉害，其他智能体就会去复用它的方法。你可以把它想象成——一万个实习生同时干活，每个人干完都把心得写在公司白板上，后来的新人直接读白板上手。",
+      "start": 118.664,
+      "duration": 26.142,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "哈这个类比好懂。但我有个担心啊，一万个智能体跑36小时，那背后算力成本得多少？",
+      "start": 145.233,
+      "duration": 7.358,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "这肯定不是普通公司玩得起的。我估计Third Moment要么是有大客户买单，要么就是拿到了类似NVIDIA那种级别的硬件支持。但反过来想，这种能力一旦跑通成本就会下来，就跟当年云计算一样。",
+      "start": 153.055,
+      "duration": 18.261,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "而且影响是实实在在的。你看新闻里列了几个方向：科研、国防、企业自动化。我跟你说，以前AI做科研顶多是给你查文献、跑个模拟，现在一万个智能体协同36小时，那是可以直接把一个实验室一周的工作量压缩到一天半完成的。",
+      "start": 171.733,
+      "duration": 21.527,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "没错。尤其是那种需要反复实验、调参、验证的研究，比如新材料筛选、药物发现、气候模型。以前一个博士带着几个学生吭哧吭哧干几个月，现在可能就是设定好目标，第二天早上起来看报告。",
+      "start": 193.696,
+      "duration": 15.867,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "我咋听着有点激动又有点害怕呢。你想想，如果这种能力落到国防领域……",
+      "start": 209.98,
+      "duration": 6.182,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "嗯，所以这件事不只是技术突破，它背后的战略意义也不小。这也是为什么我们看到各国最近都在抢Agentic Computing这块蛋糕。",
+      "start": 216.658,
+      "duration": 11.276,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "说到这个，NVIDIA今天还有个动作，正好跟这个能接上。",
+      "start": 228.346,
+      "duration": 4.18,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "对，加码法国那事儿。我跟你说，这次不是普通的风投，是NVIDIA这种级别的芯片巨头直接下注法国初创生态。",
+      "start": 233.005,
+      "duration": 8.795,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "而且方向特别明确，航天、金融、公共部门、科研，全是硬核领域。这感觉就是Agentic Computing终于从PPT走进了现实。",
+      "start": 242.232,
+      "duration": 11.668,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "你注意啊，这背后有个更大的信号。欧洲以前在AI这块一直被大家说是\"跟跑者\"，美国有OpenAI、Google，中国有字节、阿里、DeepSeek，法国、德国虽然也有Mistral这类公司，但整体存在感不算最强。",
+      "start": 254.368,
+      "duration": 16.346,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "现在NVIDIA这钱一砸，等于是官方盖章说欧洲是全球AI基础设施的第三个战略要地了。",
+      "start": 271.204,
+      "duration": 8.446,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "对，而且你注意它挑的全是Agentic Computing相关的初创。这跟前面Third Moment那个一万个智能体是同一个故事。大家都意识到，下一波AI竞争不是比谁模型大，是比谁能搞出真正能跑、能用、能交付的智能体系统。",
+      "start": 280.127,
+      "duration": 17.521,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "所以说白了，AI正在从\"玩具\"变成\"基础设施\"。",
+      "start": 298.066,
+      "duration": 4.876,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "哈你总结得挺到位。说白了就是，现在你做企业级应用、做政府数字化，不接入智能体基础设施就跟二十年前不接电网一样离谱。",
+      "start": 303.381,
+      "duration": 10.71,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "哈这比喻有点狠但确实是真的。我突然想到，那国内的智能体生态是不是也快了？咱们国内应该也有一批类似的公司在冲吧？",
+      "start": 314.503,
+      "duration": 9.578,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "肯定有。但客观讲，工业级持久运行这块，美国目前还是走在前面。不过你也别小看咱们的工程能力，差距在缩小，而且国内在垂直场景落地这块反而有优势。",
+      "start": 324.574,
+      "duration": 12.974,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "行，这个话题咱们以后单开一期好好聊。对了周航，今天还有几条快讯也挺有意思，咱们快速过一下？",
+      "start": 337.957,
+      "duration": 7.88,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "好，你先说。",
+      "start": 346.324,
+      "duration": 1.219,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "第一条是SentinelOne跟OpenAI合作的Daybreak。这个我有点意外，因为我印象里SentinelOne是做网络安全的，OpenAI做模型，怎么搞到一起去了？",
+      "start": 347.985,
+      "duration": 13.864,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "哈，这就是Agentic Computing在垂直领域的落地。你注意啊，传统恶意软件分析是个苦力活，安全研究员拿到样本，要逆向、要脱壳、要查行为特征、写报告，一搞就是几周。但有了Daybreak这种AI加持的智能体，它能自动跑分析、自动关联威胁情报、自动生成报告。",
+      "start": 362.309,
+      "duration": 21.178,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "哦就是从\"几周\"压到\"几小时\"那个意思？",
+      "start": 383.958,
+      "duration": 4.005,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "对，关键是这个\"几小时\"不是加班加点赶出来的，是AI自动跑出来的。而且它不是一次性的，是24小时在线盯着，这对安全响应来说是质变。",
+      "start": 388.375,
+      "duration": 11.102,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "这个我觉得挺好的。以前网络安全就是拼人力，现在AI一介入，攻防两端都被拉高了。对了小公司其实是受益最大的，因为它们没钱养一堆安全专家，现在接个AI服务就能顶半边天。",
+      "start": 399.922,
+      "duration": 15.562,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "没错，AI普惠在安全这块体现得特别明显。",
+      "start": 415.939,
+      "duration": 3.918,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "第二条更有意思，Anthropic的Scion致敬《幽灵公主》，这名字我差点看成Princess Mononoke了。",
+      "start": 420.297,
+      "duration": 8.446,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "哈哈我看到的时候也愣了一下。Scion这名字挺有意思的，本意是\"嫩芽、后代\"，可能Anthropic是想表达AI生成艺术的新生代力量。",
+      "start": 429.221,
+      "duration": 11.015,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "对，而且是深度致敬吉卜力美学。这个在Hacker News上直接引发了大量讨论。",
+      "start": 440.717,
+      "duration": 6.574,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "讨论的核心其实是AI生成艺术和人类艺术家之间的关系。你想啊，宫崎骏老爷子那种风格本来是很独特的，现在AI也能学，而且学得还挺像，那大家肯定要问：这是致敬还是抄袭？",
+      "start": 447.717,
+      "duration": 15.432,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "说白了，这事儿跟之前AI画图刚火起来时候的争议是一脉相承的。但不一样的地方在于，现在大家关注的不只是\"像不像\"，而是\"这种能力普及之后，艺术家该怎么办\"。",
+      "start": 463.619,
+      "duration": 14.43,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "对，而且Scion既然叫\"深度致敬\"，那它肯定不只是简单风格迁移，可能是能批量生成、持续迭代的那种。这种能力如果落到商业化场景里，对动画行业、广告行业冲击都不小。",
+      "start": 478.51,
+      "duration": 17.217,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "嗯，但我个人观点是，工具越强，艺术家反而越值钱。因为大家能轻易生成吉卜力风格，那稀缺的就变成\"我的故事是什么\"、\"我的情感是什么\"。AI能画得像，但画不出宫崎骏对自然和生命的思考。",
+      "start": 496.183,
+      "duration": 16.825,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "这话我同意。技术是把双刃剑，但最后留下来的永远是那些有灵魂的内容。",
+      "start": 513.474,
+      "duration": 5.921,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "没错。最后一条，Google DevFest 2026又回归了。",
+      "start": 519.828,
+      "duration": 5.181,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "对，这个算是开发者圈的老朋友了，今年又回来了。我记得去年DevFest主要聊的是Gemini和多模态，今年估计AI还是绝对主角。",
+      "start": 525.416,
+      "duration": 10.667,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "没错。而且你看，DevFest现在已经不是单纯的谷歌技术布道了，它变成全球开发者社区的一个年度聚会。这次我比较期待的是它在Agentic Computing、边缘AI、开源生态这几个方向上的内容。",
+      "start": 536.553,
+      "duration": 16.172,
+      "audios": {
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "B",
+      "text": "你说边缘AI这个点挺有意思的。现在大家都在卷云端大模型，但真正落地到手机、汽车、IoT设备上的本地推理能力，其实还是个洼地。",
+      "start": 553.126,
+      "duration": 10.144,
+      "audios": {
+        "professional": "chunk_050_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 51,
+      "host": "A",
+      "text": "对，Google在这块布局很早，从TensorFlow Lite到现在升级的LiteRT，都是往这个方向走。如果DevFest上能放出新的边缘端模型或者工具链，那对独立开发者是大利好。",
+      "start": 563.681,
+      "duration": 15.823,
+      "audios": {
+        "lively": "chunk_051_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 52,
+      "host": "B",
+      "text": "行，那今天咱们就先聊到这儿。总的来说，今天的核心关键词就是——智能体从demo毕业，开始变成真正的基础设施。",
+      "start": 579.996,
+      "duration": 8.272,
+      "audios": {
+        "professional": "chunk_052_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 53,
+      "host": "A",
+      "text": "对，不管是Third Moment的一万智能体长跑、NVIDIA押注法国、SentinelOne的AI安全，还是Scion这种生成艺术的新探索，背后都是同一个趋势：AI正在从\"能跑\"走向\"能扛\"。",
+      "start": 588.719,
+      "duration": 19.263,
+      "audios": {
+        "lively": "chunk_053_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 54,
+      "host": "B",
+      "text": "说得特别好。能扛，这个词精准。听众朋友们，今天的AI每日先锋就到这里，咱们下期再见！",
+      "start": 608.472,
+      "duration": 7.488,
+      "audios": {
+        "professional": "chunk_054_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 55,
+      "host": "A",
+      "text": "下期再见，拜拜！",
+      "start": 616.46,
+      "duration": 1.785,
+      "audios": {
+        "lively": "chunk_055_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    }
+  ]
+}

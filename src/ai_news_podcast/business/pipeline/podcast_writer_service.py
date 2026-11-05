@@ -25,6 +25,7 @@ from ai_news_podcast.data.text_utils_dao import (
     RE_MOOD_TAG,
     clean_tts_text,
     contains_thinking_process,
+    script_quality_stats,
 )
 
 logger = logging.getLogger(__name__)
@@ -50,9 +51,63 @@ def _host_balance_ok(script: str, min_ratio: float = _MIN_HOST_RATIO) -> bool:
     return min(host_a, host_b) / total >= min_ratio
 
 
+# 质量闸门：长度、轮次、每位主持人的字符占比、未标记行占比
+_MIN_SCRIPT_CHARS = 1200
+_MAX_SCRIPT_CHARS = 5200
+_MIN_TURNS = 10
+_MIN_HOST_CHAR_RATIO = 0.25
+_MAX_UNMARKED_RATIO = 0.2
+
+
+def _host_char_counts(script: str) -> tuple[int, int]:
+    """按 [Host X] 标记粗略统计每位主持人的实际台词字符数（去空白）。"""
+    counts = {"A": 0, "B": 0}
+    current: str | None = None
+    for raw_line in script.splitlines():
+        line = raw_line.strip()
+        match = re.match(r"^\[Host ([AB])\]\s*(.*)$", line)
+        if match:
+            current = match.group(1)
+            line = match.group(2)
+        if current:
+            counts[current] += len(re.sub(r"\s+", "", line))
+    return counts["A"], counts["B"]
+
+
+def _script_stats(script: str) -> dict[str, float]:
+    host_a, host_b = _host_char_counts(script)
+    total = host_a + host_b
+    unmarked = 0
+    for raw_line in script.splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("[CHAPTER]"):
+            continue
+        if not re.match(r"^\[Host [AB]\]", line):
+            unmarked += 1
+    lines = [ln for ln in script.splitlines() if ln.strip()]
+    return {
+        "chars": len(re.sub(r"\s+", "", script)),
+        "turns": script.count("[Host A]") + script.count("[Host B]"),
+        "host_a_chars": host_a,
+        "host_b_chars": host_b,
+        "host_char_ratio": (min(host_a, host_b) / total) if total else 0.0,
+        "unmarked_ratio": (unmarked / len(lines)) if lines else 0.0,
+        "chapters": script.count("[CHAPTER]"),
+    }
+
+
 def _script_looks_valid(script: str) -> bool:
-    """Writer 输出是否像一份可用的双主持对话（而非思考过程/单人口播）。"""
-    return not contains_thinking_process(script) and _host_balance_ok(script)
+    """Writer 输出是否像一份可用的双主持对话（而非计划/单人口播/短稿/超长稿）。"""
+    if contains_thinking_process(script) or not _host_balance_ok(script):
+        return False
+    stats = _script_stats(script)
+    if stats["turns"] < _MIN_TURNS:
+        return False
+    if not _MIN_SCRIPT_CHARS <= stats["chars"] <= _MAX_SCRIPT_CHARS:
+        return False
+    if stats["host_char_ratio"] < _MIN_HOST_CHAR_RATIO:
+        return False
+    return stats["unmarked_ratio"] <= _MAX_UNMARKED_RATIO
 
 
 def _protect_chapter_markers(text: str) -> str:
@@ -99,48 +154,69 @@ def _cn_date(dt: datetime) -> str:
 # ---------------------------------------------------------------------------
 
 
+def _has_cjk(text: str) -> bool:
+    return bool(re.search(r"[\u4e00-\u9fff]", text))
+
+
+def _pick_zh_summary(story: dict[str, Any]) -> str:
+    """从上下文里挑一条中文摘要；没有中文就返回空（中文主持不要念英文原文）。"""
+    summaries = (story.get("context") or {}).get("factual_summary") or []
+    for item in summaries:
+        text = str(item).strip()
+        if text and _has_cjk(text):
+            return text
+    return ""
+
+
 def _build_fallback(
     brief: dict[str, Any],
     episode_date: datetime,
     podcast_title: str,
 ) -> str:
-    """无 LLM 时的极简双人对谈兜底脚本。"""
-    stories = brief.get("stories", [])
-    active: list[dict[str, Any]] = [
-        s for s in stories if isinstance(s, dict) and s.get("role") != "skip"
+    """无 LLM 时的双人对谈兜底脚本：带章节、避免英文原文、避免「第一个大头条」这类编号腔。"""
+    stories = [
+        story
+        for story in (brief.get("stories") or [])
+        if isinstance(story, dict) and story.get("role") != "skip"
     ]
 
-    lines: list[str] = []
+    lines: list[str] = ["[CHAPTER] 开场"]
     lines.append(
         f"[Host A] 听众朋友们好，欢迎收听{podcast_title}，我是林夏。今天是{_cn_date(episode_date)}。"
     )
-    lines.append("[Host B] 大家好，我是陈默。今天这AI圈的瓜，那可是相当有意思。")
+    lines.append("[Host B] 大家好，我是陈默。今天挑几条值得展开的消息，和大家聊聊。")
 
-    for i, story in enumerate(active):
-        if i >= 5:
-            break
-        title = story.get("representative_title", "")
-        context = story.get("context", {})
-        summaries = context.get("factual_summary", [])
-        summary = summaries[0] if summaries else "细节不详，但极其重要。"
-
-        if i == 0:
-            lines.append(f"[Host A] 咱们先聊聊今天第一个大头条。那就是，{title}。")
-            lines.append("[Host B] 林夏也一直在关注这个，陈默，这个事影响真的很大吗？")
-            lines.append(f"[Host A] 确实。简单来说，{summary}")
-        elif i == 1:
-            lines.append(f"[Host B] 没错。那今天的第二个大头条，是关于：{title}。")
-            lines.append(f"[Host A] 对，这个也备受关注，主要进展是：{summary}")
+    if stories:
+        lines.append("[CHAPTER] 今日头条")
+        first = stories[0]
+        first_title = str(first.get("representative_title") or "").strip()
+        lines.append(f"[Host A] 先看今天的头条：{first_title}。")
+        summary = _pick_zh_summary(first)
+        if summary:
+            lines.append(f"[Host B] 具体来说，{summary}")
         else:
-            lines.append(f"[Host B] 嗯，除了这两个头条，我看到快讯中 {title} 也有新动态。")
-            lines.append(f"[Host A] 没错！关于这个，主要是 {summary}")
+            lines.append("[Host B] 目前披露的信息还比较有限，我们等更多细节出来再看。")
 
-    lines.append("[Host B] 哇，每天都能看到新东西在冒出来。")
-    lines.append(
-        "[Host A] 科技变化就是快，那以上就是今天的 AI 重点资讯。感谢各位收听，咱们明天见！"
-    )
+        for story in stories[1:3]:
+            title = str(story.get("representative_title") or "").strip()
+            if not title:
+                continue
+            lines.append(f"[Host A] 另一条值得关注的是：{title}。")
+            summary = _pick_zh_summary(story)
+            if summary:
+                lines.append(f"[Host B] 这条的重点是，{summary}")
+
+    radar = brief.get("radar") or {}
+    pick_repo = str((radar.get("meta") or {}).get("pick_repo") or "").strip()
+    if pick_repo:
+        lines.append("[CHAPTER] 项目雷达")
+        lines.append(f"[Host A] 项目雷达今天主推 {pick_repo}，感兴趣可以去 GitHub 看看。")
+        lines.append("[Host B] 好，这个先记下，回头我们细聊。")
+
+    lines.append("[CHAPTER] 收尾")
+    lines.append("[Host B] 今天的分享就到这里。")
+    lines.append("[Host A] 感谢收听，我们明天见。")
     lines.append("[Host B] 拜拜！")
-
     return "\n".join(lines) + "\n"
 
 
@@ -203,8 +279,9 @@ def generate_podcast(
                     logger.warning("Writer 输出疑似思考过程或主持人口径失衡，带硬约束重试一次")
                     retry_prompt = writer_prompt + (
                         "\n\n【输出格式硬约束】只输出逐行 [Host A]/[Host B] 对话，"
-                        "两位主持人交替发言、轮次大致均衡；不要输出任何思考、计划、分析、"
-                        "英文说明、格式要求复述或自我检查。"
+                        "两位主持人交替发言、轮次大致均衡（各占一半）；总字数控制在 1500-4500 字符；"
+                        "不要输出任何思考、计划、分析、英文说明、格式要求复述或自我检查；"
+                        "不要出现 URL、Markdown 标记或编号清单。"
                     )
                     raw_retry = _call_llm(retry_prompt, dict(llm_cfg, temperature=0.7))
                     if raw_retry and _script_looks_valid(raw_retry):
@@ -234,6 +311,14 @@ def generate_podcast(
     if fallback_reason:
         warnings.append(fallback_reason)
     return script, warnings
+
+
+def script_quality(script: str) -> dict:
+    """脚本质量快照：normal / fallback / short / broken（供 publish 写入 episodes.json/digest）。"""
+    stats = script_quality_stats(script)
+    if stats.get("mode") != "fallback" and not _script_looks_valid(script):
+        stats["mode"] = "broken"
+    return stats
 
 
 def _post_process_script(

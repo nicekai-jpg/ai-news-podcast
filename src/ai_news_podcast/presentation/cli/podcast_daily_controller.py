@@ -11,7 +11,7 @@ from ai_news_podcast.business.pipeline.podcast_writer_service import generate_po
 from ai_news_podcast.business.pipeline.runner_service import run_pipeline
 from ai_news_podcast.business.pipeline.tts_engine_service import synthesize
 from ai_news_podcast.data.config.models_dao import AppConfig
-from ai_news_podcast.data.text_utils_dao import clean_tts_text
+from ai_news_podcast.data.text_utils_dao import clean_tts_text_preserving_chapters
 from ai_news_podcast.data.text_utils_dao import episode_title as build_episode_title
 from ai_news_podcast.data.utils_dao import load_sources, write_text
 from ai_news_podcast.presentation.cli.base_controller import AsyncCommand
@@ -117,9 +117,10 @@ class DailyCommand(AsyncCommand):
             print(f"Script warning: {w}")
 
         transcript_path = episodes_dir / f"{ep_id}.txt"
-        clean_transcript = clean_tts_text(podcast_text) + "\n"
-        write_text(transcript_path, clean_transcript)
-        print(f"Transcript saved: {transcript_path} ({len(clean_transcript)} chars)")
+        # 兜底再清洗一次，但必须保住 [CHAPTER] 章节行
+        final_script = clean_tts_text_preserving_chapters(podcast_text).rstrip("\n") + "\n"
+        write_text(transcript_path, final_script)
+        print(f"Transcript saved: {transcript_path} ({len(final_script)} chars)")
 
         # Stage 3b: Daily report
         if args.with_report:

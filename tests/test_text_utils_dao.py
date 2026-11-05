@@ -270,3 +270,42 @@ class TestEpisodeTitle:
 
     def test_format(self) -> None:
         assert episode_title("2026-10-15") == "今日AI看点 | 2026-10-15"
+
+
+class TestScriptQualityStats:
+    def test_fallback_detected(self) -> None:
+        from ai_news_podcast.data.text_utils_dao import script_quality_stats
+
+        script = "[Host A] 听众朋友们好，欢迎收听今日AI看点，我是林夏。\n[Host B] 大家好。"
+        stats = script_quality_stats(script)
+        assert stats["mode"] == "fallback"
+
+    def test_normal_script_with_chapters(self) -> None:
+        from ai_news_podcast.data.text_utils_dao import script_quality_stats
+
+        script = "\n".join(
+            [
+                "[CHAPTER] 开场",
+                "[Host A] 今天聊一条新闻，" + "细节很多。" * 150,
+                "[Host B] 我把重点补充一下，" + "影响也不小。" * 150,
+            ]
+        )
+        stats = script_quality_stats(script)
+        assert stats["mode"] == "normal"
+        assert stats["chapters"] == 1
+        assert stats["turns"] == 2
+        assert stats["host_char_ratio"] > 0.3
+
+    def test_short_script_marked(self) -> None:
+        from ai_news_podcast.data.text_utils_dao import script_quality_stats
+
+        assert script_quality_stats("[Host A] 你好。\n[Host B] 嗨。")["mode"] == "short"
+
+
+def test_clean_preserving_chapters_keeps_markers() -> None:
+    from ai_news_podcast.data.text_utils_dao import clean_tts_text_preserving_chapters
+
+    script = "[CHAPTER] 开场\n[Host A] 你好[FACT] 世界\n[Host B] 嗯"
+    cleaned = clean_tts_text_preserving_chapters(script)
+    assert "[CHAPTER] 开场" in cleaned
+    assert "[FACT]" not in cleaned

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今日AI看点 · 日报为空状态</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+  <div class="state-page">
+    <div class="state-header">
+      <span class="state-number">02</span>
+      <h1 class="state-title">深度日报 · 空状态</h1>
+    </div>
+    <div class="state-card">
+      <span class="state-badge warning"><span class="dot"></span>暂无日报</span>
+      <h2 class="state-headline">{{empty_report_headline}}</h2>
+      <p class="state-paragraph">{{empty_report_message}}</p>
+      <div class="state-meta">
+        <span>期号：{{issue_number}}</span>
+        <span class="sep">·</span>
+        <span>{{issue_date}}</span>
+      </div>
+      <ul class="state-list">
+        <li><span class="label">可能原因</span><span class="reason">{{empty_report_reason_1}}</span></li>
+        <li><span class="label">建议操作</span><span class="reason">{{empty_report_reason_2}}</span></li>
+      </ul>
+    </div>
+  </div>
+<script src="_shared.js"></script>
+</body>
+</html>

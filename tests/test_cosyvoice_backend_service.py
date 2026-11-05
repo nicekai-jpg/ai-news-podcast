@@ -260,3 +260,24 @@ class TestPlaylistChapterField:
 
         data = json.loads((tmp_path / "2026-10-15" / "playlist.json").read_text(encoding="utf-8"))
         assert "chapter" not in data["chunks"][0]
+
+
+def test_config_sample_rate_defaults_to_model_rate(tmp_path: Path) -> None:
+    """CosyVoice2 模型是 24kHz：配置缺省时不能回落到 22050，否则整期变慢变低。"""
+    result = load_cosyvoice_config({"tts": {"cosyvoice": {}}}, project_root=tmp_path)
+    assert result.sample_rate == 24000
+    assert CosyVoiceConfig.__dataclass_fields__["sample_rate"].default == 24000
+
+
+def test_config_sample_rate_from_audio_config(tmp_path: Path) -> None:
+    cfg = {"tts": {"audio": {"sample_rate": 24000}, "cosyvoice": {}}}
+    assert load_cosyvoice_config(cfg, project_root=tmp_path).sample_rate == 24000
+
+    cfg = {"tts": {"audio": {"sample_rate": 22050}, "cosyvoice": {}}}
+    assert load_cosyvoice_config(cfg, project_root=tmp_path).sample_rate == 22050
+
+
+def test_engine_sample_rate_falls_back_to_config(tmp_path: Path) -> None:
+    cfg = load_cosyvoice_config({"tts": {"cosyvoice": {}}}, project_root=tmp_path)
+    engine = CosyVoice2Engine(cfg)
+    assert engine.sample_rate == 24000

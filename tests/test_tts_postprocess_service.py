@@ -46,3 +46,16 @@ def test_assemble_dialogue_audio_returns_timestamps() -> None:
         )
     assert len(combined) == 3100
     assert timestamps == [(0.0, 1.0), (1.1, 2.0)]
+
+
+class TestNoBgmLeadIn:
+    def test_mix_bgm_without_bgm_still_adds_lead_in(self) -> None:
+        """无 BGM 时也要加 vocal_pad 前导静音，否则 playlist 时间轴会比 mp3 晚 1 秒。"""
+        from ai_news_podcast.business.pipeline.tts_postprocess_service import mix_bgm
+
+        fake_pydub = type("M", (), {"AudioSegment": FakeSeg})()
+        with patch.dict(sys.modules, {"pydub": fake_pydub}):
+            mixed = mix_bgm(FakeSeg(2000), None, vocal_pad_ms=1000)
+            mixed_empty = mix_bgm(FakeSeg(2000), "", vocal_pad_ms=1000)
+        assert len(mixed) == 3000
+        assert len(mixed_empty) == 3000

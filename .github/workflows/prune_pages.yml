@@ -35,7 +35,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-        run: python scripts/prune_gh_pages.py
+        run: |
+          # 月跑一次，失败要等一个月：失败后立刻重试一次（网络/限流类抖动可直接恢复）
+          python scripts/prune_gh_pages.py || {
+            echo "::warning::prune failed, retrying once in 30s"
+            sleep 30
+            python scripts/prune_gh_pages.py
+          }
 
       - name: Alert on failure
         if: failure()
@@ -59,5 +65,5 @@ jobs:
           GH_REPO: ${{ github.repository }}
         run: |
           for N in $(gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"gh-pages prune failed\"" --jq '.items[].number' 2>/dev/null || true); do
-            gh issue close "$N" -c "本次 prune 成功,自动关闭。"
+            gh issue close "$N" -c "本次 prune 成功,自动关闭。" || true
           done

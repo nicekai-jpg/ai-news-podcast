@@ -67,6 +67,13 @@ Stage CLIs (console scripts in pyproject):
   (semantic model `paraphrase-multilingual-MiniLM-L12-v2`, TF-IDF fallback).
   sentence-transformers is an optional extra (`uv sync --extra semantic`, pulls torch);
   without it dedup always uses the TF-IDF fallback and logs a warning.
+- Stage 1 过滤（`ingest_filter_service.filter_ingested_items`）：`selection.prefer_recent_hours`
+  / `fallback_recent_hours`（窗口内条目 <20 时退化到 96h）、`include_keywords` /
+  `exclude_keywords`、`per_feed_cap` 现在真正生效；统计写入 brief `metadata.ingest_filter`。
+  聚类后还有一次「相似标题孤立条目合并」（`clustering.merge_title_threshold`，默认 80）。
+- 脚本质量：`podcast_writer_service.script_quality()` 产出 `normal|fallback|short|broken`
+  （长度/轮次/主持人字符占比/未标记行/思考过程），publish 写入 `episodes.json` 的
+  `quality`，digest 透传；站点/feed 目前不展示，供审计与后续降级标记使用。
 - Other artifacts: `data/reports/daily_report_{date}.md`,
   `site/episodes/{date}.txt` (script) and `.mp3` (audio),
   `data/episodes.json` (episode index, `keep_last: 30`).
@@ -86,9 +93,9 @@ Stage CLIs (console scripts in pyproject):
   audio blobs from main's history; a full backup bundle
   (`ai-news-podcast-pre-rewrite-2026-09-07.bundle`) sits next to the repo directory.
 
-- **Audio must NOT be committed to `main`**. The CI TTS job passes the episode MP3 and
-  chunk folder to the publish job via a workflow **artifact** (`episode-audio-{date}`);
-  only the publish job's deploy step sends them to `gh-pages`. All historical audio was
+- **Audio must NOT be committed to `main`**. The CI TTS job passes the episode MP3 +
+  `playlist.json` (not the chunk folder) to the publish job via a workflow **artifact**
+  (`episode-audio-{date}`); only the publish job's deploy step sends them to `gh-pages`. All historical audio was
   already stripped from main's history by `git filter-repo` (2026-09-07) — don't
   resurrect the old pattern of `git add -f site/episodes/*.mp3`. Locally, pre-commit
   blocks audio outside `assets/` and any file over 2 MB, but those hooks don't exist in CI.
@@ -103,6 +110,10 @@ Stage CLIs (console scripts in pyproject):
   (professional → 任一可用),html_gen_view 按 host 渲染音色按钮。发布主轨/默认
   变体 = 每位主持人**配置列表的第一项**(不是 professional 优先;professional
   优先仅是"列表为空时的回退"),别按 professional-first 误改。
+- **CosyVoice2 输出是 24kHz，保存时必须用 24k**：`CosyVoiceConfig.sample_rate` 从
+  `tts.audio.sample_rate` 读取（默认 24000），`CosyVoice2Engine.sample_rate` 优先用模型
+  自带的采样率。历史上这里默认 22050 导致所有节目慢 8.8%、音调低约 1.5 个半音
+  （2026-11 修复），改 TTS 时不要再把 sample_rate 写死成 22050。
 - TTS requires a CosyVoice2-0.5B environment: `COSYVOICE_MODEL_DIR` plus
   `PYTHONPATH` into the cloned CosyVoice repo. See `scripts/setup_cosyvoice_env.sh`,
   `scripts/gha_tts_cosyvoice.py`, and `docs/gha_cosyvoice2_deployment_log.md`.
@@ -134,7 +145,12 @@ Stage CLIs (console scripts in pyproject):
   `site/` to gh-pages via peaceiris action (`keep_files`), force-adding
   `site/episodes/{date}/playlist.json` — that chunk metadata is the only per-episode site
   content tracked on main, while audio, show notes HTML and full chunk dirs live only on
-  gh-pages (prune_gh_pages.py backs them up on rebuild). The trailing `notify` job
+  gh-pages (prune_gh_pages.py backs them up on rebuild)。**TTS artifact 只传
+  `{date}.mp3` + `{date}/playlist.json`**（分块音频新播放器已不用，历史 gh-pages
+  上曾囤 341MB 死文件）；prune 也只备份 playlist.json、不再保留 chunk 目录。
+  **main 的 `site/` 提交在 gh-pages 部署校验成功之后**（失败不会留下 feed 指向
+  不存在音频）。**重试只针对主链**（stage1/writer/tts/publish），report 失败只告警；
+  `retry=true` 不会跳过已成功 stage，重跑会重新生成脚本/音频。The trailing `notify` job
   (`if: always()`, job-level `contents: read` + `issues: write` + `actions: write`)
   writes a per-job health
   report to the Step Summary; on failure it opens/comments a GitHub issue
@@ -165,6 +181,9 @@ Stage CLIs (console scripts in pyproject):
   (`prompts_dao.py` / `podcast_writer_service.py`) 与站点 roster 必须一致。
 - `site/data/digest_*.json` 由 publish 生成并在 CI `git add -f` 跟踪；**不要**把它挪出
   `site/`，否则月度 prune 后会从 gh-pages 消失（prune 只从 main 的 `site/` 拷贝）。
+- 章节标记清洗：`clean_tts_text` 会删掉所有非 Host 中括号，**必须**用
+  `clean_tts_text_preserving_chapters`（writer 控制器/publish 都不例外），否则
+  `[CHAPTER]` 全被删掉、章节导航退化为 cue 启发式。
 - 章节条数据来源：writer prompt 的 `[CHAPTER] 标题` → `parse_dialogue_chunks` 的
   `DialogueChunk.chapter` → playlist chunk 的 `chapter` → digest `chapters`（`source="script"`）。
   `clean_tts_text` / `_normalize_host_tags` / Director 批重建三处都会经过脚本，改动时别把

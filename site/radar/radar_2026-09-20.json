@@ -1,0 +1,37 @@
+{
+  "date": "2026-09-20",
+  "generated_at": "2026-09-19T23:36:16.495100+00:00",
+  "projects": [
+    {
+      "repo": "tamaratran/fast-jev-compaction",
+      "url": "https://github.com/tamaratran/fast-jev-compaction",
+      "description": "Claude Code plugin that replaces the compaction summary with Jev decisions: every tool call and result is scored in one fast request, stale ones are dropped or truncated, everything kept stays verbatim.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 4202,
+      "delta_stars": 1035,
+      "is_new": false,
+      "created_at": "2026-09-17T05:57:20Z",
+      "pushed_at": "2026-09-18T04:45:31Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "```sh\nnpm install fast-jev-compaction\nexport TYPESAFE_API_KEY=...\n```\n\n```ts\nimport { compactMessages, reductionRatio, type Message } from 'fast-jev-compaction';\n\nconst transcript: Message[] = [\n  { role: 'user', text: 'Fix the failing test. Never edit src/generated.', toolUses: [] },\n  {\n    role: 'assistant',\n    text: '',\n    toolUses: [{ tool_use_id: 'toolu_1', tool: 'Read', input: { file_path: 'src/a.ts' } }],\n  },\n  { role: 'user', text: '', toolUses: [], toolResults: [{ tool_use_id: 'toolu_1', text: '…file…' }] },\n  // …\n];\n\nconst result = await compactMessages(transcript, { preserveRecentMessages: 4 });\nconsole.log(result.messages, result.decisions, result.stats);\nif (reductionRatio(result) < 0.25) {\n  // not worth it: keep the original transcript, or summarize instead\n}\n```\n\n`Message` is a subset of Claude Code's `SessionMessage`, so a session transcript\ncan be passed in as is.\n\nTo bring your own transport, implement `JevAsker` (one `ask(state, questions)`\nmethod) and call `compact(messages, asker, options)`; `buildJevRequest` and\n`parseJevResponse` give you the HTTP request body and response validation.\nThe building blocks (`collectToolCalls`, `fitState`, `batchCalls`,\n`d",
+      "score": 0.645,
+      "score_parts": {
+        "velocity": 0.69,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "ai_bonus": 0.0
+      }
+    }
+  ],
+  "meta": {
+    "pick_repo": "tamaratran/fast-jev-compaction",
+    "runner_up_repos": [],
+    "degraded": false,
+    "reason": "",
+    "candidates": 12,
+    "excluded_recent": 11
+  }
+}

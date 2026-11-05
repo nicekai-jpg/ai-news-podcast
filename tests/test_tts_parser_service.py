@@ -112,3 +112,18 @@ class TestParseDialogueChunksChapters:
         chunks = parse_dialogue_chunks(script)
         assert [chunk.chapter for chunk in chunks] == [None, None, "今日头条", "快讯速览"]
         assert all("[CHAPTER]" not in chunk.text for chunk in chunks)
+
+
+def test_non_renderable_chunk_is_dropped() -> None:
+    """纯符号块（如 /）会被 CosyVoice tokenize 成空列表，必须丢弃而不是生成 0.1s 空段。"""
+    from ai_news_podcast.business.pipeline.tts_parser_service import parse_dialogue_chunks
+
+    chunks = parse_dialogue_chunks("[Host A] /\n[Host B] 正常的一句话台词。")
+    assert [chunk.text for chunk in chunks] == ["正常的一句话台词。"]
+
+
+def test_long_text_without_punctuation_is_hard_cut() -> None:
+    from ai_news_podcast.business.pipeline.tts_parser_service import split_text_into_sentences
+
+    parts = split_text_into_sentences("啊" * 200, max_chars=80)
+    assert [len(part) for part in parts] == [80, 80, 40]

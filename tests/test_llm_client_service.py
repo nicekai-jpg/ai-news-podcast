@@ -119,3 +119,30 @@ class TestCallLlm:
             )
         assert captured["base_url"] == "https://custom.api/v1"
         assert captured["timeout"] == 30
+
+
+class BoomError(Exception):
+    """模拟 OpenAI SDK 的 APITimeoutError / RateLimitError：不是 httpx.HTTPError 子类。"""
+
+
+class FakeOpenAIBoom:
+    def __init__(self, **kwargs: Any):
+        pass
+
+    @property
+    def chat(self):
+        raise BoomError("rate limited")
+
+
+def test_sdk_exception_falls_back_to_none(monkeypatch) -> None:
+    """SDK 级异常（429/timeout/400）必须被兜住并返回 None，让上层降级而不是崩 job。"""
+    monkeypatch.setenv("FAKE_KEY", "sk-test")
+    fake_openai_module = MagicMock()
+    fake_openai_module.OpenAI = FakeOpenAIBoom
+
+    with (
+        patch.dict("sys.modules", {"openai": fake_openai_module}),
+        patch("time.sleep"),
+    ):
+        result = call_llm("prompt", {"api_key_env": "FAKE_KEY", "model": "test"})
+    assert result is None

@@ -214,7 +214,7 @@ jobs:
     name: Stage 4 (TTS audio)
     needs: writer
     runs-on: ubuntu-22.04
-    timeout-minutes: 240
+    timeout-minutes: 330
     outputs:
       episode_id: ${{ needs.writer.outputs.episode_id }}
     steps:
@@ -281,9 +281,11 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: episode-audio-${{ needs.writer.outputs.episode_id }}
+          # 只传整期 mp3 + playlist.json：分块音频新播放器已不用，
+          # 传上去会让 gh-pages 每天多 10-30MB 死文件（历史已囤 341MB）
           path: |
             site/episodes/${{ needs.writer.outputs.episode_id }}.mp3
-            site/episodes/${{ needs.writer.outputs.episode_id }}/
+            site/episodes/${{ needs.writer.outputs.episode_id }}/playlist.json
           if-no-files-found: error
 
   publish:
@@ -354,22 +356,6 @@ jobs:
           print(f"validated {ep}: mp3={size} bytes, threshold={min_bytes}, feed+index ok")
           PYEOF
 
-      - name: Commit site
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -u site/ data/episodes.json
-          if [ -f "site/reports/daily_report_${EPISODE}.md" ]; then git add -f "site/reports/daily_report_${EPISODE}.md"; else echo "No daily report for ${EPISODE}, skipped"; fi
-          git add -f "site/episodes/${EPISODE}/playlist.json" 2>/dev/null || echo "No playlist.json for ${EPISODE}, skipped"
-          git add -f site/data/ 2>/dev/null || echo "No site/data yet, skipped"
-          if git diff --cached --quiet; then
-            echo "No site changes to commit"
-          else
-            git commit -m "daily: publish $EPISODE [skip ci]"
-            git pull --rebase origin main
-            git push origin main
-          fi
-
       - name: Remove .gitignore to ensure ignored files are deployed
         run: rm -f .gitignore
 
@@ -397,10 +383,15 @@ jobs:
             done
             echo 0
           }
+          LOCAL_SIZE=$(stat -c%s "site/episodes/$EPISODE.mp3" 2>/dev/null || echo 0)
           SIZE=$(get_size "episodes/$EPISODE.mp3")
-          echo "gh-pages $EPISODE.mp3 size: $SIZE"
+          echo "gh-pages $EPISODE.mp3 size: $SIZE (local $LOCAL_SIZE)"
           if [ "$SIZE" -le "$MIN_MP3_BYTES" ]; then
             echo "::error::$EPISODE.mp3 missing or too small on gh-pages"
+            exit 1
+          fi
+          if [ "$SIZE" -ne "$LOCAL_SIZE" ]; then
+            echo "::error::$EPISODE.mp3 size mismatch: gh-pages=$SIZE local=$LOCAL_SIZE（上传可能被截断）"
             exit 1
           fi
           PLAYLIST=$(get_size "episodes/$EPISODE/playlist.json")
@@ -415,6 +406,26 @@ jobs:
             exit 1
           fi
           echo "gh-pages reconciliation OK"
+
+      # 等 gh-pages 校验通过后再提交 main：否则部署失败会留下「feed 指向不存在的音频」
+      - name: Commit site
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -u site/ data/episodes.json
+          if [ -d site/data ]; then git add -f site/data/; fi
+          if [ -d site/reports ]; then git add -f site/reports/; fi
+          if [ -d site/radar ]; then git add -f site/radar/; fi
+          if [ -f "site/episodes/${EPISODE}/playlist.json" ]; then
+            git add -f "site/episodes/${EPISODE}/playlist.json"
+          fi
+          if git diff --cached --quiet; then
+            echo "No site changes to commit"
+          else
+            git commit -m "daily: publish $EPISODE [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi
 
   notify:
     name: Health check & alert
@@ -441,12 +452,23 @@ jobs:
           RETRY: ${{ github.event.inputs.retry }}
         run: |
           EPISODE="${EPISODE:-$(TZ=Asia/Shanghai date +%F)}"
+          # 主链失败才允许自动重跑；report 是旁路，失败只告警（重跑一次要 1-4 小时 TTS）
+          CRITICAL=""
           FAILED=""
-          if [ "$S1" != "success" ]; then FAILED="$FAILED stage1=$S1"; fi
-          if [ "$WRITER" = "failure" ] || [ "$WRITER" = "cancelled" ]; then FAILED="$FAILED writer=$WRITER"; fi
+          if [ "$S1" != "success" ]; then CRITICAL="$CRITICAL stage1=$S1"; fi
+          if [ "$WRITER" = "failure" ] || [ "$WRITER" = "cancelled" ]; then CRITICAL="$CRITICAL writer=$WRITER"; fi
+          if [ "$TTS" = "failure" ] || [ "$TTS" = "cancelled" ]; then CRITICAL="$CRITICAL tts=$TTS"; fi
+          if [ "$PUBLISH" = "failure" ] || [ "$PUBLISH" = "cancelled" ]; then CRITICAL="$CRITICAL publish=$PUBLISH"; fi
+          FAILED="$CRITICAL"
           if [ "$REPORT" = "failure" ] || [ "$REPORT" = "cancelled" ]; then FAILED="$FAILED report=$REPORT"; fi
-          if [ "$TTS" = "failure" ] || [ "$TTS" = "cancelled" ]; then FAILED="$FAILED tts=$TTS"; fi
-          if [ "$PUBLISH" = "failure" ] || [ "$PUBLISH" = "cancelled" ]; then FAILED="$FAILED publish=$PUBLISH"; fi
+
+          # 连续失败升级：上一次已完成的 daily run 也失败，则本次告警标 P0
+          PREV_CONCLUSION=$(gh run list --workflow=daily.yml --limit 5 --json conclusion \
+            --jq '[.[] | select(.conclusion != null)][0].conclusion' 2>/dev/null || true)
+          ESCALATE=""
+          if [ -n "$CRITICAL" ] && [ "$PREV_CONCLUSION" = "failure" ]; then
+            ESCALATE="🔴 P0 连续失败"
+          fi
 
           {
             echo "## Daily Podcast 健康报告 — $EPISODE"
@@ -462,9 +484,12 @@ jobs:
             echo "Run: $RUN_URL"
           } >> "$GITHUB_STEP_SUMMARY"
 
-          TITLE="⚠️ Daily pipeline failed: $EPISODE"
+          TITLE="$ESCALATE ⚠️ Daily pipeline failed: $EPISODE"
+          TITLE=$(echo "$TITLE" | sed 's/^ *//')
           if [ -n "$FAILED" ]; then
-            if [ "$RETRY" = "true" ]; then
+            if [ -z "$CRITICAL" ]; then
+              RETRY_NOTE="仅日报(report)失败，属旁路，不触发整条流水线重跑"
+            elif [ "$RETRY" = "true" ]; then
               RETRY_NOTE="本次已是自动重跑,不再继续重试,需要人工介入"
             else
               RETRY_NOTE="将自动重跑一次"
@@ -474,7 +499,7 @@ jobs:
           Run: $RUN_URL
           重试策略: $RETRY_NOTE"
             # 重跑派发必须先做:issue API 故障不能吞掉重试(Step Summary 已留档,告警降级为 best-effort)
-            if [ "$RETRY" != "true" ]; then
+            if [ -n "$CRITICAL" ] && [ "$RETRY" != "true" ]; then
               gh workflow run daily.yml --ref main -f date="$EPISODE" -f retry=true
               echo "已触发自动重跑: date=$EPISODE retry=true"
             fi
@@ -485,7 +510,18 @@ jobs:
               gh issue create --title "$TITLE" --body "$BODY" || true
             fi
           else
-            for N in $(gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"Daily pipeline failed: $EPISODE\"" --jq '.items[].number' 2>/dev/null || true); do
-              gh issue close "$N" -c "今日运行($EPISODE)全部成功,自动关闭。Run: $RUN_URL"
+            # 成功时关闭所有历史失败 issue（原来只关当天，导致 10-26~11-04 的 9 个 issue 永久挂着）
+            for N in $(gh api -X GET search/issues -f q="repo:$GH_REPO in:title state:open \"Daily pipeline failed:\"" --jq '.items[].number' 2>/dev/null || true); do
+              gh issue close "$N" -c "后续运行($EPISODE)成功,自动关闭历史失败告警。Run: $RUN_URL" || true
             done
+            # 缺期告警：今天成功但最近 14 天有缺失日期时，开一个显式的缺期 issue
+            MISSING=""
+            for OFFSET in $(seq 1 14); do
+              D=$(TZ=Asia/Shanghai date -d "-${OFFSET} day" +%F)
+              if ! grep -q "\"id\": \"$D\"" data/episodes.json 2>/dev/null; then MISSING="$MISSING $D"; fi
+            done
+            if [ -n "$MISSING" ]; then
+              gh issue create --title "⚠️ 缺期告警: 最近 14 天缺失$MISSING" \
+                --body "这些日期没有发布节目（历史失败不可回补，RSS 已永久缺档）: $MISSING" || true
+            fi
           fi
