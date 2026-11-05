@@ -12,6 +12,7 @@
 
     let ISSUE_ORDER = Array.isArray(SITE_DATA.dates) ? SITE_DATA.dates.slice() : [];
     let DATA = {};
+    let dataReady = false;
     let PLAYLIST_CHUNKS = [];
     let audioBroken = false;
 
@@ -52,6 +53,10 @@
       return String(title || '')
         .replace(/^[✨\s]+/, '')
         .replace(/\s*\|\s*/g, ' · ')
+        /* 报告 H1 的日期是零填充（2026年11月05日），统一成 2026年11月5日 */
+        .replace(/(\d{4})年0?(\d{1,2})月0?(\d{1,2})日/, function (m, y, mo, d) {
+          return y + '年' + Number(mo) + '月' + Number(d) + '日';
+        })
         .trim();
     }
 
@@ -146,7 +151,7 @@
         issue_tagline: 'AI 前沿 · 每日一刊',
         demo_note: '',
         podcast_title: headline || podcast.title || ('今日AI看点 | ' + date),
-        podcast_subtitle: podcast.subtitle || '双主持对谈',
+        podcast_subtitle: '双主持对谈 · 今日焦点解读',
         player_subtitle: '今日AI看点 · ' + date,
         podcast_duration: podcast.duration_label || '--:--',
         podcast_audio_url: podcast.mp3_url || ('./episodes/' + date + '.mp3'),
@@ -216,7 +221,7 @@
         return {
           badge: SOURCE_BADGE_KEYS[item.group] || 'industry',
           badge_label: item.source_name || item.publisher || '',
-          meta: String(item.published_at || '').slice(0, 10) || date,
+          meta: date,
           title: item.title || '',
           summary: item.summary || '',
           url: item.link || ''
@@ -258,7 +263,11 @@
       data.radar_pick_repo = pick ? String(pick.repo || '') : '';
       data.radar_pick_lang = pick ? String(pick.language || '') : '';
       data.radar_pick_stars = pick ? formatStars(pick.stars) : '';
-      data.radar_pick_growth = pick ? String(pick.delta_stars == null ? '' : pick.delta_stars) : '';
+      const growth = pick && pick.delta_stars != null
+        ? '近 7 日 ★ +' + pick.delta_stars + '/天'
+        : '';
+      /* 首日收录的项目没有增速基线：明说，而不是留一个「+/天」的空位 */
+      data.radar_pick_growth_text = growth || (pick && pick.is_new ? '首日收录 · 暂无增速基线' : '');
       data.radar_pick_license = pick ? String(pick.license || '') : '';
       /* 优先用 GitHub 仓库描述（干净一句话）；readme 首段只做兜底并清成纯文本 */
       data.radar_pick_desc = pick
@@ -280,7 +289,7 @@
 
     function applyPostHydrateChrome() {
       const stamp = document.querySelector('.stamp-date');
-      if (stamp) stamp.textContent = (DATA.issue_date || '') + ' · 今日AI看点';
+      if (stamp) stamp.textContent = DATA.issue_date || '';
     }
 
     function applyConditionalBlocks() {
@@ -582,6 +591,7 @@
       }
       if (token !== loadToken) return;
       DATA = digestToData(digest, playlist);
+      dataReady = true;
       PLAYLIST_CHUNKS = (playlist && playlist.chunks) || [];
       sourcesExpanded = false;
       sourceFilter = 'all';
@@ -1006,7 +1016,7 @@
           }
           node.nodeValue = node.__tpl.replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (m, key) => {
             const v = fieldValue(key);
-            return v === null ? m : v;
+            return v === null ? (dataReady ? '' : m) : v;
           });
         });
       });
@@ -1023,7 +1033,7 @@
         Object.keys(el.__attrTpl).forEach(name => {
           el.setAttribute(name, el.__attrTpl[name].replace(/\{\{\s*([a-zA-Z0-9_]+)\s*\}\}/g, (m, key) => {
             const v = fieldValue(key);
-            return v === null ? m : v;
+            return v === null ? (dataReady ? '' : m) : v;
           }));
         });
       });

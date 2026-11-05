@@ -96,7 +96,10 @@ class TestSkeleton:
         html = _build(tmp_path)
         assert "<style>" in html and "<script>" in html
         assert "<script src=" not in html
-        assert 'rel="stylesheet"' not in html
+        # 唯一允许的外链样式是设计稿依赖的 Google Fonts（DESIGN.md §3.3 / §10.6）
+        stylesheets = re.findall(r'<link[^>]+rel="stylesheet"[^>]*>', html)
+        assert all("fonts.googleapis.com" in tag for tag in stylesheets), stylesheets
+        assert "Noto+Serif+SC" in html and "Noto+Sans+SC" in html
         assert "hydrate" in html and "digestToData" in html
 
     def test_page_size_budget(self, tmp_path) -> None:

@@ -110,7 +110,7 @@ def test_template_placeholders_are_known() -> None:
         "radar_pick_repo",
         "radar_pick_lang",
         "radar_pick_stars",
-        "radar_pick_growth",
+        "radar_pick_growth_text",
         "radar_pick_license",
         "radar_pick_desc",
         "radar_pick_url",
@@ -183,3 +183,13 @@ def test_sources_summary_and_no_frontend_truncation() -> None:
     app = _read("app.js")
     assert "summary: item.summary || ''" in app
     assert "slice(0, 30)" not in app
+
+
+def test_content_field_mapping_matches_design() -> None:
+    """DESIGN §7：副标题是固定节目形态；信源 meta 用出刊日期；stamp 只显示日期。"""
+    app = _read("app.js")
+    assert "podcast_subtitle: '双主持对谈 · 今日焦点解读'" in app
+    assert "meta: date," in app
+    assert "stamp.textContent = DATA.issue_date" in app
+    assert "radar_pick_growth_text" in app
+    assert "dataReady ? '' : m" in app  # 数据就绪后不再残留 {{...}} 占位符
