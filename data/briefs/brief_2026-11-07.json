@@ -1,0 +1,1659 @@
+{
+  "thesis": "DeepSeek带火稀疏计算——这可能是本周最值得关注的AI趋势",
+  "stories": [
+    {
+      "cluster_id": 1,
+      "representative_title": "DeepSeek带火稀疏计算，国产芯片公司加速突围：这家公司又融近10亿",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "Q3营收实现数倍增长"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/11/508155.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "4439f27cf211506a",
+          "title": "DeepSeek带火稀疏计算，国产芯片公司加速突围：这家公司又融近10亿",
+          "link": "https://www.qbitai.com/2026/11/508155.html",
+          "normalized_link": "https://www.qbitai.com/2026/11/508155.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-11-06T07:00:29+00:00",
+          "summary": "Q3营收实现数倍增长",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> DeepSeek带火稀疏计算，国产芯片公司加速突围：这家公司又融近10亿 思邈 2026-11-06 15:00:29 来源： 量子位 允中 发自 凹非寺 量子位 | 公众号QbitAI 近日，墨芯人工智能（以下简称“墨芯”）完成近 10亿元人民币C+轮融资 。 距上一轮近10亿元融资仅过去5个月，墨芯在短时间内连续完成两轮融资，反映出资本市场对其在 专用稀疏推理芯片 领域技术壁垒与商业化进展的高度认可。 凭借技术积累与产品落地形成的先发优势，以及商业化全面提速的发展势头，墨芯率先卡位推理算力需求集中释放的窗口，稀疏专用推理芯片的代差优势进一步凸显。 押注稀疏计算，走出差异化芯片路线 当前，大模型技术架构的持续演进， 正推动稀疏计算从一项辅助优化手段，走向AI算力设计的重要位置 。 随着混合专家（MoE）架构加速应用，大模型推理呈现明显的条件计算特征；与此同时，权重与激活中的稀疏结构，也为减少冗余计算提供了空间。 以 DeepSeek-V4-Pro 为例，其总参数约1.6万亿，但处理每个词元时仅激活约490亿参数，约占总参数量的3%。 如何将模型层面的计算节省，转化为实际的推理效率提升与成本下降，正成为AI算力发展需要解决的关键问题。 要高效处理此类负载， 芯片架构的选择是关键变量 。 通用GPU需兼顾训练、推理、科学计算等多类负载，难以针对特定稀疏模式进行算法与硬件的深度协同优化。 面向稀疏推理的专用芯片，则可通过算法、编译器与硬件的协同设计，减少无效计算及数据搬运开销。这一架构差异的价值，正在被产业界重新评估。 墨芯长期深耕的正是这一技术方向。自2018年成立以来，墨芯就专注稀疏计算领域，发明了 “权重稀疏化+激活稀疏化”双稀疏算法 ，并以此为基础，逐步形成 “算法-软件-硬件”协同设计的技术体系 。 要推动这一技术体系落地为成熟芯片产品，需要具备贯通算法、编译器、芯片架构与软件工具链的全栈工程能力。 墨芯创始团队成员来自卡内基梅隆大学及英特尔、高通、Marvell等顶尖半导体公司，兼具算法研究与芯片工程背景，拥有数十款产品、超50亿颗芯片的量产经验。 凭借这一工程能力，墨芯产品的效能表现已在国际权威基准测试中得到验证。 在MLPerf™ Inference测试中，S30计算卡在所参与的部分测试类别中 连续三届夺冠 ，在计算机视觉、自然语言处理等主流任务中，其能效比与单位算力推理吞吐量保持行业领先，验证了专用稀疏推理方案在真实数据中心负载下的工程可行性。 多场景落地与生态共建，稀疏计算迈入新阶段 规模化部署，正进一步巩固墨芯在稀疏推理芯片领域的领先地位。 墨芯基于自研芯片构建的推理集群，已在 西北、西南、华东、华北 四大片区战略性铺开。在此基础上，墨芯商业化正全面提速： 2026年第三季度营收实现 数倍增长 ，稀疏算力正深度融入我国算力体系建设，服务智能产业发展。 具体来看，在助力新型算力基础设施建设方面，墨芯参与了上海国资平台公司打造的国内首个海上算力Token工厂项目。 该项目依托海上风电绿电、海水冷却降低PUE与电费成本，但通用GPU的推理成本仍有可能抵消绿电带来的降本红利。针对这一痛点，墨芯凭借稀疏架构优势，结合算力混合异构模式，从芯片侧降低单Token推理成本，实现“绿电降本”与“算力架构降本”的优势叠加。 聚焦时空AI与时空大数据前沿领域，墨芯以稀疏算力为时空大数据智能计算等应用提供了高性价比的算力底座。 墨芯与北京大学上海临港国际科技创新中心地球与空间技术研究院开展合作，基于墨芯自研的稀疏化技术，实现了两款国际主流遥感影像智能分析基础模型在墨芯算力卡上的适配与实测： 在几乎不损失业务精度、无需对下游任务重新训练的条件下，推理吞吐最高提升 2.88倍 ，模型压缩最高达 7.64倍 。 这意味着，模型层面省下的计算，能够通过软硬件协同转化为实际的处理效率提升，让大规模遥感影像解译用更少的算力、更短的时间完成，也为稀疏算力承接地理空间基础模型推理提供了工程验证。 随着真实业务需求融入芯片设计与软件研发，墨芯也将技术积累和规模化部署经验转化为持续的迭代能力，推动稀疏专用推理芯片从 “可用”向“好用” 演进。 产品迭代层面，新一代板卡产品 SP200 将在年底前正式问世。 适配生态层面，墨芯升级版软件栈SECA（Sparse-native Efficient Computing Architecture）稀疏原生高效计算架构即将发布，将强化对大模型推理部署与集群运维的支持，进一步降低模型...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 11,
+      "representative_title": "How NVIDIA Open Source Tools Are Helping Researchers Build Next-Generation 6G Networks",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "A year ago, NVIDIA open sourced its Aerial wireless software, joining Sionna and a broader suite of open source tools for accelerating next-generation 6G network development"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "NVIDIA 官方博客",
+            "authority": 1,
+            "link": "https://blogs.nvidia.com/blog/telco-open-source-tools-research-6g-networks/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "0676c12db8f0f583",
+          "title": "How NVIDIA Open Source Tools Are Helping Researchers Build Next-Generation 6G Networks",
+          "link": "https://blogs.nvidia.com/blog/telco-open-source-tools-research-6g-networks/",
+          "normalized_link": "https://blogs.nvidia.com/blog/telco-open-source-tools-research-6g-networks",
+          "source_name": "NVIDIA 官方博客",
+          "source_category": "official",
+          "published_at": "2026-11-06T16:00:35+00:00",
+          "summary": "A year ago, NVIDIA open sourced its Aerial wireless software, joining Sionna and a broader suite of open source tools for accelerating next-generation 6G network development. Together, they give researchers a foundation for testing ideas, comparing results and building on each other’s work — connecting simulation and AI training with experiments on real over-the-air wireless […]",
+          "full_text_snippet": "A year ago, NVIDIA open sourced its Aerial wireless software , joining Sionna and a broader suite of open source tools for accelerating next-generation 6G network development. Together, they give researchers a foundation for testing ideas, comparing results and building on each other’s work — connecting simulation and AI training with experiments on real over-the-air wireless systems. Today, researchers and developers are using these tools to build 6G-ready networks that do more than just transmit data — receiving signals more effectively, keeping robots and autonomous systems connected when it matters most, and adapting in real time as devices move through the world. Over the past year, global developer adoption of NVIDIA AI Aerial and NVIDIA Sionna software has grown 10x, while NVIDIA’s open source 5G/6G tools have surpassed 1 million downloads. More than 8,000 research and academic institutions worldwide are using these platforms. The projects emerging today offer a view of how future networks could look. Each addresses a different challenge, but together point toward a broader ambition for building AI-native 6G networks that deliver connectivity, computing and sensing over a converged software-defined platform for billions of people, machines and agents. Networks That Help Robots React Faster A robot picking up an object needs to understand its surroundings and act before they change. When the AI powering that decision runs on a nearby server or in the cloud, the wireless connection becomes part of the response time. Researchers are exploring a more efficient approach called goal-oriented semantic communications. Instead of sending full images, robots transmit compact descriptions of objects, their positions and their relationships. Transmitting just as much information as needed allows robots to more quickly respond, especially in dynamic environments like workplaces and warehouses. At King’s College London , researchers connected a camera-equipped robot arm...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 7,
+      "representative_title": "Australian universities are creating AI-native graduates",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 13,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 2,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "Australian universities are expanding access to ChatGPT and bringing AI into teaching and learning to prepare students for an AI-enabled workforce"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "OpenAI Blog",
+            "authority": 1,
+            "link": "https://openai.com/index/australian-universities-ai-native-graduates"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "616c68177b707eae",
+          "title": "Australian universities are creating AI-native graduates",
+          "link": "https://openai.com/index/australian-universities-ai-native-graduates",
+          "normalized_link": "https://openai.com/index/australian-universities-ai-native-graduates",
+          "source_name": "OpenAI Blog",
+          "source_category": "official",
+          "published_at": "2026-11-05T17:00:00+00:00",
+          "summary": "Australian universities are expanding access to ChatGPT and bringing AI into teaching and learning to prepare students for an AI-enabled workforce.",
+          "full_text_snippet": "Australian universities are expanding access to ChatGPT and bringing AI into teaching and learning to prepare students for an AI-enabled workforce.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 8,
+      "representative_title": "The Two-Ledger Model: Transaction-Grain Cost Accounting for Multi-Agent AI Systems Across Clouds, Models, and Systems of Record",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 13,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2611.06989v1 Announce Type: new Abstract: Enterprises run business transactions through multi-agent AI systems spanning clouds, large language models (LLMs), orchestration harnesses, and systems of record"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.AI",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.06989"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "62aa0e581fddffbb",
+          "title": "The Two-Ledger Model: Transaction-Grain Cost Accounting for Multi-Agent AI Systems Across Clouds, Models, and Systems of Record",
+          "link": "https://arxiv.org/abs/2611.06989",
+          "normalized_link": "https://arxiv.org/abs/2611.06989",
+          "source_name": "arXiv cs.AI",
+          "source_category": "research",
+          "published_at": "2026-11-06T05:00:00+00:00",
+          "summary": "arXiv:2611.06989v1 Announce Type: new Abstract: Enterprises run business transactions through multi-agent AI systems spanning clouds, large language models (LLMs), orchestration harnesses, and systems of record. Finance receives AI cost only at settlement grain, aggregated by SKU and charge period. The business question (what did this order, claim, or case cost in AI?) cannot be answered from billing data, because providers never see enterprise transaction boundaries. The FinOps Open Cost and...",
+          "full_text_snippet": "[Submitted on 4 Nov 2026] Title: The Two-Ledger Model: Transaction-Grain Cost Accounting for Multi-Agent AI Systems Across Clouds, Models, and Systems of Record View a PDF of the paper titled The Two-Ledger Model: Transaction-Grain Cost Accounting for Multi-Agent AI Systems Across Clouds, Models, and Systems of Record, by Vivek Acharya View PDF HTML (experimental) Abstract: Enterprises run business transactions through multi-agent AI systems spanning clouds, large language models (LLMs), orchestration harnesses, and systems of record. Finance receives AI cost only at settlement grain, aggregated by SKU and charge period. The business question (what did this order, claim, or case cost in AI?) cannot be answered from billing data, because providers never see enterprise transaction boundaries. The FinOps Open Cost and Usage Specification (FOCUS) gives billing data one schema across providers but remains settlement-grain even as it adds AI token and requester attribution. We formalize this grain mismatch, derive seven requirements, and propose the Two-Ledger Model: a settlement ledger of FOCUS-conformant billing data joined to an attribution ledger of invocation-grain usage records built on OpenTelemetry GenAI telemetry. A layered correlation spine (trace context, A2A/MCP metadata, business-key correlation, probabilistic matching) assigns each record to its business transaction with recorded method and confidence; a versioned rate card prices usage in near real time; period reconciliation ties both ledgers to the invoice, and the unexplained residual identifies shadow AI. Costs are reported per order, claim, or outcome with agentic cost metrics. A simulation with known ground truth shows the spine sustaining cost coverage above 99% as trace propagation falls to zero, the reconciliation residual recovering planted unmetered spend within 0.24 percentage points while flagging provider billing errors, and mid-flight gating cutting p99 transaction cost by up to 61% at a 2...",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "representative_title": "99.4%登顶全球第一！这个中国AI师承世界冠军",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 12,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "一举刷新「AI安全世界杯」CyberGym世界纪录"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/11/508107.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d6fb6d5f94414f1c",
+          "title": "99.4%登顶全球第一！这个中国AI师承世界冠军",
+          "link": "https://www.qbitai.com/2026/11/508107.html",
+          "normalized_link": "https://www.qbitai.com/2026/11/508107.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-11-06T05:01:47+00:00",
+          "summary": "一举刷新「AI安全世界杯」CyberGym世界纪录",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> 99.4%登顶全球第一！这个中国AI师承世界冠军 一水 2026-11-06 13:01:47 来源： 量子位 一举刷新「AI安全世界杯」CyberGym世界纪录 一水 发自 凹非寺 量子位 | 公众号QbitAI 99.4%，全球第一。 好家伙，硅谷那几家天天站在聚光灯下大谈AI安全，谁承想呢？ 如今刷新AI安全世界纪录的，是一个中国AI系统。 就在被称为「AI安全世界杯」的CyberGym榜单上， 360自研AI安全攻防系统图龙锋，以99.4%的漏洞复现成功率登顶，创下该榜单最高纪录 。 △图源：CyberGym项目主页 （只截取部分） 同一张榜单上，与图龙锋同场竞技的，还有OpenAI的GPT-5.5-Cyber、Anthropic的Claude Mythos Preview，以及Google的Gemini 3.8 Flash Cyber。 全是专门强化过网络安全能力的各家选手。 就，还挺壮观的。。。 而且这个第一，还真不是扫两眼代码、圈几个可疑位置就能轻易拿下的。 1507个真实漏洞任务，连续三轮独立评测 ，AI需要从海量代码中定位相关位置、构造PoC （概念验证） ，再把漏洞真正复现出来，才算答对。 CyberGym刚发布时，全球最佳组合「OpenHands＋Claude 3.7 Sonnet」的成功率只有11.9%。 现在，图龙锋直接干到了99.4%，一个接近满分的成绩。 这就有点离谱了。 360到底怎么把一个AI，练成全球第一的漏洞挖掘高手？？ 往前回溯了下历史，只能说终极答案，既在意料之外，也在情理之中—— 没错，人，依旧是那个最关键的变量 。 全球第一的AI背后，是一群世界冠军 图龙锋的故事，恰好印证了「名师出高徒」这句中国老话，到了AI时代依然管用。 时间回到2017年，温哥华，Pwn2Own世界黑客大赛 。 这场比赛被称为「黑客世界杯」，规则简单粗暴： 参赛团队必须在规定时间内攻破真实产品，并当场完成漏洞利用和验证。 程序没被真正攻破，说什么都不算数。 比赛最后一天，360安全团队带来了一条横跨Microsoft Edge、Windows内核和VMware Workstation的攻击链。 他们要挑战的，是连续三道防线： 先攻破浏览器，再穿透操作系统内核，最后从虚拟机中强行逃逸，直抵宿主机。 三道关卡环环相扣，任何一环失手，整条攻击链都可能功亏一篑。 但现场演示开始后，整条攻击链跑通，只用了90秒 。 是的，90秒，如入无人之境。 不过观众看到的也就这90秒了，真正困难的工作，早在上台之前就已经开始。 研究员要从陌生系统里找到突破口，再把几个漏洞串成一条完整路径，中间经历过多少次试错，外界无从得知。 台上的90秒，只是反复判断之后，最终留下的那条正确路径 。 最终，经过三天较量，360以63分登顶积分榜，拿下赛事最高荣誉Master of Pwn （世界破解大师） 。 △图源：Pwn2Own官网 类似的能力展示在360也不止出现过一次。 2020年，360 Alpha Lab安全研究员龚广带来了一条名为「梯云纵」的漏洞链。 名字很有武侠味，实际效果也确实够猛。 攻击者可以远程突破Chrome浏览器和Android系统的多层防护，最终获得设备控制权限。 凭借这项研究，龚广拿下被誉为安全圈「奥斯卡」的Pwnie Awards「史诗级成就奖」，成为首位获得该奖项的中国安全研究员。 △图源：360官网 看到这里，事情开始有意思了。 Pwn2Own和「梯云纵」，面对的软件不同，技术细节也完全不一样。 但核心逻辑是一样的： 在没有标准答案的地方，自己找出一条能走通的路 。 这种能力，靠背题库显然背不出来。 得靠啥？当然是真刀真枪地干。 而360最不缺的，恰恰就是实战。 据360披露，其安全团队累计发现并协助修复微软、谷歌、苹果、华为、高通等厂商的CVE漏洞 （即拥有国际通用编号的公开漏洞） 超过3000个。 3000多个真实漏洞，是什么概念？ 意味着这群人长期都在和陌生代码、复杂系统，以及没有现成答案的问题打交道。 今天面对浏览器，明天可能就是操作系统、芯片或者企业业务软件，项目一换，原来的解法很可能直接失效，只能重新找。 这么多年磨下来，哪些线索值得追、什么时候该换方向，慢慢就成了一种判断力。 这才是360真正难复制的地方。 顶级安全专家本就稀缺，能让一群顶级专家连续二十多年处理数千个真实漏洞，把一次次试错沉淀成经验的团队，更稀缺 。 但问题也跟着来了，再厉害的专家，一天也只有24小...",
+          "category": "policy",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "representative_title": "更高能效比，带来新惊喜：M6 款 MacBook Pro 初探",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 12,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "M6 芯片提供了足够的性能保障，无论修图、视频剪辑还是运行入门级的 AI 大模型，它都能应对"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "少数派",
+            "authority": 4,
+            "link": "https://sspai.com/post/118570"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e68d9b365055b962",
+          "title": "更高能效比，带来新惊喜：M6 款 MacBook Pro 初探",
+          "link": "https://sspai.com/post/118570",
+          "normalized_link": "https://sspai.com/post/118570",
+          "source_name": "少数派",
+          "source_category": "tools",
+          "published_at": "2026-11-06T03:06:53+00:00",
+          "summary": "M6 芯片提供了足够的性能保障，无论修图、视频剪辑还是运行入门级的 AI 大模型，它都能应对。在此基础上，你原本可能需要加在 Pro 级 SoC 上的预算就能省下来，花给内存或者硬盘。 查看全文",
+          "full_text_snippet": "在 2025 年末 M5 版 MacBook Pro 的文章 中，我给出的结语是「在 AI 和大模型的发展如火如荼的当下，M5 芯片无疑昭示了 Apple 的新野心——在这个领域，Apple silicon 将大有可为」。文章发完没多久，内存和硬盘的超级涨价潮就席卷了全球，Apple silicon 也因为采用统一内存架构而成为了 AI 世界的宠儿。一年之后，当我再次摸到搭载了 M6 芯片的 MacBook Pro，颇有时过境迁的唏嘘之感。 新的基础款 MacBook Pro 在外观层面依然没有任何变化，但 M6 芯片的性能进步却令人瞩目，也直接提高了这部基础款的竞争力。在这篇文章里，我就来谈谈这款几天使用产品之后的感受。 外观：一点儿也没变，重量都一样 M6 款 MacBook Pro 的外观相较前代没有任何变化，甚至连重量都完全一致，所以我也就不多赘述了。就我个人来说，目前 MacBook Pro 系列的造型已经达到了美观和实用的平衡，除非有功能层面的需要，否则我希望 Apple 继续沿用，不要更改。 与此同时，全新的 PROLED XDR 版 MacBook Pro 的造型其实也没变，主要区别是减重减厚，并换用了新的 PROLED XDR 显示屏。所以，如果你在新老两条产品线之间纠结，那就主要考虑一下高素质萤幕对你的来说是否重要吧。PROLED XDR 确实很棒，只要你需要，肯定会喜欢。 关联阅读：《 开启 Mac 的下一世代：MacBook Pro (PROLED XDR) 首发体验 》 性能：GPU 和 NPU 的大胜利 既然新老基础款 MacBook Pro 的核心区别就是 SoC 升级，那我就在这个部分多讲两句。 M6 采用了新的架构设计，从之前的 10 核 CPU、10 核 GPU 变成了 12 核 CPU、12 核 GPU，而 CPU 架构从之前的 4 个超级核心加 6 个能效核心变成了 2 个超级核心、4 个性能核心和 6 个能效核心。同时，M6 比 M5 多了一个神经网络引擎（Neural-engine），在处理 AI 运算时的理论速度更快。此外，M6 的内存带宽也从 153GB/s 提升到了最高 170GB/s，对于运行本地 AI 大模型更为友好。 新老两代芯片的区别主要在核心数和架构上 从市面上各家的性能测试来看，M6 比 M5 的 CPU 单核性能提升了大约 10%、多核 20%，GPU 提升大约 20% 到 30%，NPU 则约 40% 到 50%。在实际的使用中，我也结合我的常用工具，针对性地做了对比。 这里要先提一点：我的 M5 版 MacBook Pro 是 16GB 内存的最基础款，但 M6 版则升级到了 32GB。更大的内存在一些项目里带来了更多优势，具体表现会在对应的测试里说明。 我首先尝试的是播客剪辑，使用《Reaper》渲染一个由两轨人声组成的对谈，全长超过一个半小时，且挂满了dxRevive Pro、VOTT 和 RX 系列插件，在播客项目里已经是比较重度的剪法。 播客渲染主要考验 CPU 部分的性能，M5 用时超过 15 分钟，M6 则只用 10 分钟就结束了战斗，领先优势甚至超过了通过跑分得到的理论数值。 使用 M6 渲染播客 第二项是使用《LM Studio》运行本地大模型，模型为 Gemma 4 12B。 两者的模型载入速度区别不大，都在 20 秒左右；token 的吐出速度 M6 略优，为每秒 19 左右，M5 则为每秒 16 左右。在这个项目里，M6 更高的内存带宽想必发挥了一定作用。 使用 M6 运行本地大模型，生成一份简单的上海旅行指南 这里就谈到了前面提到的内存容量问题。我的最初计划是使用较新的 Qwen3.8 27B 模型进行对比，但无奈 16GB 的 M5 直接被客户端禁止加载，于是才被迫改用了更小的模型。其实 32GB 的电脑不仅可以顺利加载 Qwen3.8 27B，而且 token 生成速度为每秒 10 个左右，还多了推理能力，在真实场景里会更实用。 这正是 AI 为大内存赋予的新意义——更大的统一内存有机会容纳体积更大的本地模型，干活的质量和效率也得以更佳。如果你需要在电脑上长期运行 OpenClaw 之类的 AI 代理服务，那把钱花在大内存上，选一个品质更高的本地模型，长期来看可能更加划算。 接下来回到性能对比，下一个项目是《ComfyUI》文生图，我使用 Flux 2 base 4B 模型，生成一张 1024*1024 的图片。M6 从首次加载模型到出图用时 5 分 50 秒左右，M5 则需要 8 分钟。两者速度都不算快，相比之下，M6 仍节省了不少时间。 我直接让 AI 帮我写了个简单直白的 Flux 2 测试工作流，生图内容是颇为俗气的「...",
+          "category": "model",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "representative_title": "香港金融科技周 x StartmeupHK 2026主论坛：以「金融+」、「AI+」及全球拓展开拓新机遇",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "香港金融科技周 x StartmeupHK 2026踏入第11届"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/11/507988.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "14b89f475667ab39",
+          "title": "香港金融科技周 x StartmeupHK 2026主论坛：以「金融+」、「AI+」及全球拓展开拓新机遇",
+          "link": "https://www.qbitai.com/2026/11/507988.html",
+          "normalized_link": "https://www.qbitai.com/2026/11/507988.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-11-06T03:36:34+00:00",
+          "summary": "香港金融科技周 x StartmeupHK 2026踏入第11届",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> 香港金融科技周 x StartmeupHK 2026主论坛：以「金融+」、「AI+」及全球拓展开拓新机遇 量子位的朋友们 2026-11-06 11:36:34 来源： 量子位 香港金融科技周 x StartmeupHK 2026踏入第11届 香港金融科技周 x StartmeupHK 2026一连两日的主论坛于11月3日于香港会议展览中心圆满结束。活动汇聚环球政府官员、监管机构、企业家、投资者、科技先驱及业界领袖，以及超过30个来自中国内地及海外市场的代表团，共同探讨「金融+」、「AI+」及全球拓展三大增长引擎带来的新机遇。 香港金融科技周 x StartmeupHK 2026踏入第11届，今年活动聚焦探讨企业如何在香港善用资本、科技及全球联通方面的综合优势，开拓新的增长机遇。主论坛于11月2日至3日举行，为一周盛事中的重点环节，深入探讨金融如何推动创新及产业转型、人工智能如何重塑各行业并创造新的价值，以及企业如何透过香港的国际网络和营商生态，连系新的合作伙伴、开拓新市场，把握全球增长机遇。 香港金融科技周 x StartmeupHK由财经事务及库务局、商务及经济发展局及投资推广署主办，并由香港金融管理局（金管局）、证券及期货事务监察委员会（证监会）及保险业监管局（保监局）协办。 联系金融、创新与全球增长 行政长官李家超为主论坛致开幕辞。随着科技发展、新的投资和全球贸易模式创造机遇，他指出，香港提供具确定性的营商环境，支持企业长远投资、创新和蓬勃发展。李家超表示：“香港特区政府在约两个月前公布《香港特别行政区经济和社会发展第一个五年规划》。五年规划与国家十五五规划紧密衔接，提供清晰方向，为香港发挥自身优势，更好融入和服务国家发展大局。我们的首份五年规划不仅是一份政策文件，更勾划香港为企业、投资者和创新者提供的发展前景。”他指出，五年规划有助企业善用香港深远的发展前景，把握国家及全球丰富的发展机遇。 行政长官李家超11月2日在香港金融科技周 x StartmeupHK2026致辞 李家超亦指出，国际社会对香港的信心持续增强，投资者继续在港投放资本，全球专业人才选择来港发展，国际企业亦以香港为基地拓展业务。展望未来，他强调科技迅速发展，亚洲推动全球经济增长，中国为带动转型之主要引擎所带来的机遇。凭借连接全球资本、强大的国际网络和与内地的深厚联系，香港具备独特优势，可以助力企业从科研、商业化走向规模化发展，并由香港拓展至内地及全球市场。 财政司司长陈茂波11月2日在香港金融科技周 x StartmeupHK 2026致辞 财政司司长陈茂波在主题演讲中提出，推动金融科技发展须聚焦三个方向：以效率为动力、以普惠为目标、以信任为基石。他表示：“推动金融科技迈步向前，不能止于推出更多试点项目，更要让创新成果融入企业日常营运，带来实质效益。政府会继续提供清晰的规则和可靠的基础设施。我诚邀大家在香港将创新构想转化为实际应用，让科技惠及企业和市民。” 「金融+」及「AI+」: 推动市场及产业创新 配合论坛的整体愿景，政策制订者及业界领袖深入探讨金融赋能及科技创新如何为各行各业及更广泛的经济开拓新的机遇。 财经事务及库务局局长许正宇在「金融科技枢纽：数据、代币与人工智能交汇」专题讨论中指出在金融科技世界里，三个连接世界、接通未来的重要工具－以数据作为推动力、借助代币化构建新基础建设，及将人工智能用为新智慧，他补充说，政府、监管机构与业界正携手合作，充分发挥这三大工具的潜力。透过立法、完善监管措施、鼓励并推动创新、提供更多应用场景，以及培育更多人才，在完备基础设施的同时，也能打造完善的生态圈，从而支持整个行业实现可持续发展。 财经事务及库务局局长许正宇（左一）于11月2日出席专题讨论，与BAI资本创始及管理合伙人龙宇（左二）、渣打集团行政总裁温拓思（右二）及腾讯公司副总裁、腾讯金融科技业务负责人林海峰（右一）对话。 商务及经济发展局局长丘应桦表示：“面对错综复杂的地缘政治、通胀压力及环球经济的不确定性，创科和初创企业需要一个可信赖的平台、可靠的国际枢纽以及世界级的专业服务，协助它们确立方向和开拓新市场；这正是香港所具备的独特优势。《香港第一个五年规划》标志着政府制定香港未来发展优次的重要一步，为商界进一步发展提供更具确定性及更清晰的策略方向。我们会继续致力优化香港的营商环境，让香港成为包括初创企业在内的全球企业蓬勃发展、拓展业务的理想平台。” 商务及经济发展局局长丘应桦今日在主论坛上致辞 财经事务及库务局副局长陈浩濂...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 18,
+      "representative_title": "Hundreds of Artex AI hacking tools found publicly exposed to the web",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Security researchers found hundreds of servers hosting the penetration testing tool Artex exposed to the internet, allowing anyone access to the hacking tool"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "0b47ae94b8dc6c92",
+          "title": "Hundreds of Artex AI hacking tools found publicly exposed to the web",
+          "link": "https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web/",
+          "normalized_link": "https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-11-06T18:44:38+00:00",
+          "summary": "Security researchers found hundreds of servers hosting the penetration testing tool Artex exposed to the internet, allowing anyone access to the hacking tool.",
+          "full_text_snippet": "Security researchers have discovered hundreds of copies of a Chinese-made AI hacking tool publicly exposed to the internet for anyone to access, potentially allowing outsiders to launch cyberattacks against unsuspecting targets. The hacking software, called Artex, is an open source autonomous penetration testing tool, meaning software that automatically probes computer systems for weaknesses, and it’s been linked to several cyberattacks since its public release in July. As open source software, it’s free for anyone to download and run on their own servers, making it a popular tool for those who cannot access Anthropic or OpenAI’s most advanced cybersecurity AI models for discovering security vulnerabilities. Microsoft has previously described Artex as a system of AI agents that can conduct cyberattacks “from reconnaissance through data exfiltration with little needed human interaction.” In a blog post , cybersecurity firm Censys, which scans the internet for exposed or vulnerable systems, said that it identified more than 800 distinct deployments of Artex that were accessible from the web without needing a password to log in. Silas Cutler, principal security researcher at Censys who wrote the blog post, said that not every instance of Artex is operated maliciously and many are used for authorized testers. But it’s unclear why hundreds of these Artex systems are exposed to the web, as the software does not require them to be accessible from the internet. The findings underscore how even powerful hacking tools can be misconfigured to be publicly accessible by anyone, increasing the chance that someone will find and misuse them. The publicly accessible systems also expose attack tools, such as implants (hidden malicious software) used to compromise and maintain persistent access to a victim’s network. Security companies have linked the use of Artex to several broad-scale cyberattacks, including against the Korean finance industry in September . Cybersecurity giant C...",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 19,
+      "representative_title": "Ramp data shows AI spending stalling just as Anthropic nears its IPO",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 2,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "AI usage keeps climbing, but spending has stalled"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/2026/11/06/ramp-data-shows-ai-spending-stalling-just-as-anthropic-nears-its-ipo/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "97dac9d9308d381a",
+          "title": "Ramp data shows AI spending stalling just as Anthropic nears its IPO",
+          "link": "https://techcrunch.com/2026/11/06/ramp-data-shows-ai-spending-stalling-just-as-anthropic-nears-its-ipo/",
+          "normalized_link": "https://techcrunch.com/2026/11/06/ramp-data-shows-ai-spending-stalling-just-as-anthropic-nears-its-ipo",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-11-06T15:54:47+00:00",
+          "summary": "AI usage keeps climbing, but spending has stalled. Price cuts and smarter cost controls among the biggest spenders could challenge investor assumptions about AI hypergrowth.",
+          "full_text_snippet": "Companies are using more AI than ever, but they’re not spending more on it. A new report from Ramp shows AI spending flatlined over late summer even as token volumes rose, a sign that price competition and savvier customers may be capping revenue for OpenAI and Anthropic. According to Ramp’s data, token spend only grew 1.5% across August and September. To compare, in July, it grew 42% from the previous month. As Anthropic gears up for its IPO , the data suggests investors might be wrong to assume AI companies will keep growing at breakneck speed. “Almost the entire spend on AI is from venture-backed, high-growth tech companies,” Ramp’s lead economist Ara Kharazian told TechCrunch. “That’s fine as long as AI spend continues to rise, but if it starts to slow down because of something in the market or some other factor, they will all start to slow down simultaneously, and that could lead to other cascading effects.” Kharazian said he’s already seeing evidence that the top 1% of firms — the most “ AI-pilled ” — have stuttered slightly in their spend in August and September, coming up just below the $10,000 per-employee they were hitting at their summer peaks. A slowdown among that cohort is “sufficient to slow down revenue entirely, despite the fact that we’re seeing rising volumes,” he said. Ramp data shows growth in spending among median and top 10%, but it’s not enough to make up the difference. Median firms spend $12-$15 per employee per month, and the top 10% spend $600-$1,000. “If you look at the use cases today, it’s not necessarily clear they will get up to that $10,000 per employee per month mark that the 1% is at,” Kharazian said. While there’s plenty of demand for AI coding agents in industries like software and finance, “it’s not necessarily true that a doctor’s office or a car dealership will need to spend that much on AI.” “The era of hypergrowth may be over, and now that we know there may not be as much juice to squeeze out of the top 1%,” he continued...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "representative_title": "AI短剧门槛降降降！实测即梦短剧工作室：剧本分镜预演一条龙，伙伴计划长期护航",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Seedance 2.5 单秒低至0.15元"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/11/507972.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "acef340f90e4e6c0",
+          "title": "AI短剧门槛降降降！实测即梦短剧工作室：剧本分镜预演一条龙，伙伴计划长期护航",
+          "link": "https://www.qbitai.com/2026/11/507972.html",
+          "normalized_link": "https://www.qbitai.com/2026/11/507972.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-11-06T03:20:05+00:00",
+          "summary": "Seedance 2.5 单秒低至0.15元",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> AI短剧门槛降降降！实测即梦短剧工作室：剧本分镜预演一条龙，伙伴计划长期护航 听雨 2026-11-06 11:20:05 来源： 量子位 听雨 发自 凹非寺 量子位 | 公众号QbitAI 有谁像我一样，最近追《The Accident》，真的有点上头啊！ 洛娜和基顿谈个恋爱，我比他俩还着急…… 而且最近精品短剧也确实不少： 我前脚还在《被裁掉的女孩》里看方桃子勇闯模特圈，后脚点开科幻短片《丧尸清道夫》，已经跟着机器人牛仔打起了丧尸～ 随着AI视频模型的能力越来越强，更多创作者也有了讲长故事的冲动。 但做连续剧集，还长期面临一致性、资产管理等痛点，精力也很容易被创意之外的流程性工作占用。 带着这些问题，我也试着拍了一部美高短剧： 这段美高小剧场，就是我用 即梦短剧工作室 搓出来的。 即梦短剧工作室最大的特点在于， 为想拍连续剧集的创作者，提供了画布之外的另一种选择 。 它把剧本、资产库和分镜这些环节串在同一个项目里，可以从一句话灵感开始，也能拿小说或已有剧本接着做。 大家可能都听说了，之前还有传闻称，即梦和小云雀要合并。 据即梦方面介绍，实际上是即梦整合了小云雀的短剧agent能力，两者同属剪映旗下。 此次打通有助于丰富即梦面向不同创作场景的工具能力，核心还是希望更好满足创作者实际需求。 那么，拍出一段人物连贯、有情绪变化、有喜剧节奏的故事，即梦能帮助创作者完成多少工作？ 我们实测走起～ 一个美高脑洞，如何变成可以拍的剧本 我给即梦的第一句话相当随意： 「我想做一个热门美高短剧，类似The Accident那种」。 短剧助手先去搜了一轮灵感，回来给了我三个选项。 点开一看，好家伙，一个学生从天台坠落，一间实验室失火，还有一个目击者正在跟凶手斗智斗勇。 这所高中的同学上学也太不容易了吧。。。 我赶紧补了一句，「不一定要悬疑，可以轻喜剧」。 这回对味了。 三个新脑洞里，我一眼挑中了《交换生驾到》。 一个叫林骁的中国交换生来到加州高中，上台自我介绍，掏出来的居然是一张学期目标表，还打算给全班定「周进步KPI」。 这一步用的是剧本模型 DreamScript 。选定方向之后，即梦先把故事设定铺开： 给林骁安排了一位数学拿F的学渣同桌杰克，还有一位飞扬跋扈、经常跟他对着干的啦啦队长克洛伊。 接着，它又生成了10集分集大纲以及前三集剧本正文，每集都列了具体故事和结尾留的悬念。 不得不说，这剧本也太详细了，除了台词，人物的动作、神情也都明确标注了出来。 不过吧，读到第二集，我发现有个小bug：标题明明写了「校花惨遭扣分」，但正文里却没有出现扣分动作。 我把这个问题丢给短剧助手，它先提了个改法，等我确认后，再重新写回剧本。 现在剧本都没问题了，我准备直接开始制作前三集短剧。 打开制作资产库，前三集要用的7个角色和3处场景已经按剧本列好了。 除了三个主角——林骁、杰克和克洛伊，连被拉去站岗的学生A、学生B也有自己的角色卡。 点开任意一张角色卡或场景卡，里面都写好了提示词，只要点击一下就能单独出图。 而且非常方便的是，还可以整组生成！ 我大概只花了10分钟，角色定妆图和校园场景图就出来了。 点击下一步，就进入了「分镜脚本生成」。 前三集已经罗列好了，你可以选择AI自动生成分镜，或者进入空白故事板，自己写分镜。 我这里选择了第一种，先拿第一集试试。 这是第一个片段直出的效果，大概花了4分钟生成。 大家看看，我觉得完成度算蛮高的了： 不过，校门口最后一镜，我想换个拍法。 原版用全景来拍杰克说「哥们，你真怪」，还不够突出人物情绪。 我想先在这句话给杰克一个特写，再接他听到上课铃时惊愕的反应，并且要加上双语字幕。 我直接把这个要求丢给了右侧的故事板助手。 提交之后，它先改动了分镜的文字描述，明确写出杰克的这句台词要配上正面特写。 接着重新生成了视频片段： 即梦完全按照我的要求重拍了这一段，不仅给了杰克正面特写，还把他对林骁这位怪异新转校生的震惊表现得淋漓尽致。 可以说是情绪张力拉满了～ 先预演、再开拍，把镜头和试错成本控制好 我还发现，即梦短剧工作室有个省积分的邪修大法： 那就是 「智能预演」+480p试生成 。 你可以通过短剧导演台和运镜库，先验证场景，满意了再正式生成。 比如这一集的片段03，原版是这样的： 这一段有几个bug：克洛伊跟林骁说话的时候，莫名看了一眼他的袖口，这个镜头没有意义；几位主角对话时，背后的教室空无一人，接下来又切换到全班哄堂大笑的场景，显得很突兀。 我把这些问题丢给了故事板助手，并告诉它要「智...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 20,
+      "representative_title": "AI is dramatically accelerating AI research",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 9,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（94 points, 40 评论）by yurivish"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.planned-obsolescence.org/p/ai-is-dramatically-accelerating-ai"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e0c8b4541e0b5e8b",
+          "title": "AI is dramatically accelerating AI research",
+          "link": "https://www.planned-obsolescence.org/p/ai-is-dramatically-accelerating-ai",
+          "normalized_link": "https://www.planned-obsolescence.org/p/ai-is-dramatically-accelerating-ai",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-11-06T20:27:23+00:00",
+          "summary": "HN 热门讨论（94 points, 40 评论）by yurivish",
+          "full_text_snippet": "This post discusses a public METR report on AI R&D acceleration at Anthropic. I did not work on this project or see the unredacted report. All opinions are my own and do not represent METR or the report authors. Thanks to Ryan Greenblatt for discussion, feedback, and help with modeling, and Daniel Kokotajlo, Eli Lifland, and Hjalmar Wjik for comments. Earlier this week, Anthropic stated in their S1 that they “may imminently meet” the threshold of “dramatically accelerated progress due to AI” as defined in their Responsible Scaling Policy. In their latest RSP (effective July 2026) , say this threshold will be met when: They observe or expect overall capabilities progress to be going twice as fast as the fastest sustained rate before AI was contributing much to AI R&D. This is plausibly attributable to AI automating AI R&D, rather than acceleration in compute or other inputs. For the last few months, some of my colleagues at METR have been working on a deep-access investigation to understand how much Anthropic is being accelerated by its AI systems. From my reading of their report and Anthropic’s RSP, it looks like the “dramatic acceleration” threshold has already been crossed. The report authors found that: Between October 2025 and October 2026, capabilities progress at Anthropic has been going about twice as fast as it had been over the previous twelve months. The measurement they report is an internal version of the Epoch Capabilities Index called AECI; a wide range of other supporting evidence for acceleration has been redacted. They said that this redacted evidence was \"a majority of the evidence [they] found most informative.\" While the pace may have initially started picking up for a mix of reasons, AI automation is probably the large majority of the reason why capabilities are still improving at this faster pace today. Their reasons for believing this have been redacted. This is a much bigger deal than it might sound at first. I think this report is the mos...",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "representative_title": "一边赛博修仙，一边卖家电！AI短剧开始冲双11业绩了？",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "挑战商业视频的高难度场景"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位",
+            "authority": 3,
+            "link": "https://www.qbitai.com/2026/11/508118.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "c675299fdf38cda0",
+          "title": "一边赛博修仙，一边卖家电！AI短剧开始冲双11业绩了？",
+          "link": "https://www.qbitai.com/2026/11/508118.html",
+          "normalized_link": "https://www.qbitai.com/2026/11/508118.html",
+          "source_name": "量子位",
+          "source_category": "news",
+          "published_at": "2026-11-06T06:54:17+00:00",
+          "summary": "挑战商业视频的高难度场景",
+          "full_text_snippet": "< img id=\"wx_img\" src=\"https://www.qbitai.com/wp-content/uploads/imgs/qbitai-logo-1.png\" width=\"400\" height=\"400\"> 一边赛博修仙，一边卖家电！AI短剧开始冲双11业绩了？ 梦瑶 2026-11-06 14:54:17 来源： 量子位 梦瑶 发自 凹非寺量子位 | 公众号 QbitAI AI短剧的商业模式，现在都开始淘宝化了！？ 就在这两天的双十一， 淘宝短剧 联合天猫小黑盒、天猫国际等，出品了一批衍生AI「品牌短剧」。 更会玩的是，观众前脚还在追剧，后脚就能顺着商品链接、达人测评、品牌直播间，一路逛到下单。 这边， 温碧霞 在淘宝AI短剧 《九尾神临》 当女主，一边赛博修仙，一边给美的、戴森带货～ 更绝的是，任凭镜头怎么切、动作怎么折腾，角色愣是没变脸，连皮肤纹理和微表情都稳稳拿捏： 另一边，咱熟悉的 全友家居 ，也趁着双11联动淘宝AI短剧整上活儿了。 直接给自家衣柜安排了一部定制剧《终章之外》，让它摇身一变，成了连接两个世界的关键道具。 从家具材质、空间比例，到复杂场景下的多镜头切换，商品细节始终保持稳定，连空间关系都经得起反复折腾： 还有下面这个超带劲的AI短剧，天猫国际「宠物紫药箱」打造的 《毛手毛脚餐厅》 。 毛发根根分明、表情生动自然，多只萌宠同框互动也没乱套。 切换镜头后，角色的毛色、斑纹、服饰依然对得上： 而这套玩法之所以能跑起来，背后还得有够硬的AI技术撑腰—— 既要把人物拍得逼真、商品还原得准确，还得让品牌自然融进剧情，真正拍出能商用的内容。 不卖关子，接下这份高难度工作的，正是阿里今年8月推出的新一代视频生成模型： Wan3.0 。 好嘛，视频模型的考场，如今一路从技术秀场，真·卷到了真金白银的生意场了～ AI视频的高端局，开始卷商业生产力了 今天我们再聊AI视频这行业，一个大家应该都比较有体感的事儿就是： 想生成一段足够让人直呼抓马、惊艳、震撼的视频画面，真的越来越容易了。（感慨.jpg） 甚至据我观察啊，今年最不缺「元年」称号的赛道，AI短剧、AI电影、AI短视频绝对榜上有名…… 但AI视频看似遍地开花的同时，一个最接近真金白银、也最考验商业交付能力的场景，至今仍未真正啃下来—— 广告电商。 原因很扎心，相较于其他视频场景，广告场景最难的地方便在于，其不仅要能生成好的画面，还要能稳定还原 商业资产 。 普通视频生成任务允许幻想、变形、微调，但广告内容可不行。 包装不能画错、logo不能畸变、核心卖点不能被AI脑补篡改，一旦失真，就不再是素材，而是品牌风险。 这就要求AI既要懂商品、懂品牌、懂内容，还得懂怎么把商品卖出去，让甲方爸爸点头满意。 这同样也意味着，对商用视频模型的能力要求，已经跳出视觉生成本身： 它需要具备足够的 稳定性、可控性、可编辑 的能力，还要了解客户需求，才能真正进入商业内容生产流程！！！ △AI生成 但话说回来，在让AI摇身一变、给品牌主当「广告专家」这事儿上，还真有玩家已经摸出了门道。 今年8月的时候，阿里推出新一代视频生成模型Wan3.0，几项核心能力，恰好瞄准了商业创作最头疼的难题。 一致性： 精准复刻参考细节，保持角色、道具、声音、空间关系、风格等关键维度的一致性。 真实质感： 更敏锐地刻画五官与皮肤细节，人物情绪表达自然克制，微表情与肢体动作彼此联动。 风格驾驭： 精准渲染影视拍摄调性，多风格创作时也不易发生风格混淆。 视频编辑： 支持修改画面、剧情与台词，提高内容创作效率。 而这些能力，恰恰是AI真正理解品牌需求、稳定还原商业资产，进而实现规模化电商内容生产的关键。 更有意思的是，Wan3.0还把这套能力带进了一块难度更高的商业场景： 「AI短剧」 。 这就意味着，模型得经得起更长的故事、更多的镜头，以及人物和商品反复出场的考验。 值得一提的是，Wan3.0身上的看家本事，如今已经在短剧圈真刀真枪地跑起来了—— 此前，它已与不鸣文化、秦九、必看科技等头部公司展开合作，相关作品即将或已经登陆 红果、抖音 等平台。 其中，灵境时空制作的《继母靠弹幕，魔丸变学霸》，红果热度值甚至已达到 2975万 ，收藏量达 4564 。 从能生成一条视频，到能支撑一部短剧的持续生产，Wan3.0正在把视频模型的能力边界，往真正的商业交付推进。 而今年「天猫双11」的三部AI品牌短剧，更让Wan3.0迎来了真实商业场景的硬核考验～ 三部AI短剧，Wan3.0挑战商业视频的高难度场景 《九尾神临》：明星不变脸、细节够逼真，风格化与镜头表演全拿捏 咱先来说说，我觉得很「脑洞很大」的一个作品—— Wan3.0与天猫小黑盒合作的明星AI短剧《九尾神临》。 这回， 温碧霞 授权真人形...",
+          "category": "other",
+          "language": "zh"
+        }
+      ]
+    },
+    {
+      "cluster_id": 12,
+      "representative_title": "Label-Wording Augmentation in a Typed-Decision Encoder: Gains on Unfamiliar Words, Not on Abbreviations or Codes",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "Typed-decision models score options that the caller supplies at request time, so their accuracy depends on label wording that the model's developer does not control"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 计算与语言 (cs.CL)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.08439v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8a04b51fc04b1a6a",
+          "title": "Label-Wording Augmentation in a Typed-Decision Encoder: Gains on Unfamiliar Words, Not on Abbreviations or Codes",
+          "link": "https://arxiv.org/abs/2611.08439v1",
+          "normalized_link": "https://arxiv.org/abs/2611.08439v1",
+          "source_name": "arXiv 计算与语言 (cs.CL)",
+          "source_category": "research",
+          "published_at": "2026-11-05T18:31:24+00:00",
+          "summary": "Typed-decision models score options that the caller supplies at request time, so their accuracy depends on label wording that the model's developer does not control. We compare two releases of a 307M-parameter multilingual cross-encoder, Ru-Jev, trained on thirteen Russian-language tasks; the later release adds an augmentation that presents labels in several surface forms. Holding questions fixed and varying only how eighteen routing labels are worded, we evaluate ten label vocabularies, prod...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 22,
+      "representative_title": "40C3 halfnarp – Submit talk preferences to aid scheduling",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 3,
+        "explainability": 2,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（28 points, 6 评论）by hanemile"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://halfnarp.events.ccc.de"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8401b3f48ea6e617",
+          "title": "40C3 halfnarp – Submit talk preferences to aid scheduling",
+          "link": "https://halfnarp.events.ccc.de",
+          "normalized_link": "https://halfnarp.events.ccc.de",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-11-06T18:16:43+00:00",
+          "summary": "HN 热门讨论（28 points, 6 评论）by hanemile",
+          "full_text_snippet": "swipe, hold, release ⟷ close The 40C3 halfnarp narpr β Help us to reduce conflicts of scheduling 40C3's Fahrplan: Click on the talks you would like to watch and press submit. For questions please read our FAQ and our blogpost for details. Please report problems to erdgeist@ccc.de . Select an event below to display halfnarp correlations, the darker the stronger. NEW on mobile: Swipe the narpr! Saal One Saal Zero Saal Ground Saal Fuse Saal One Saal Zero Saal Ground Saal Fuse Saal One Saal Zero Saal Ground Saal Fuse Saal One Saal Zero Saal Ground Saal Fuse P A U S E Day 1 Day 2 Day 3 Day 4 Security Hardware & Making Ethics, Society & Politics Chaos Community Creations Entertainment Science Art & Beauty",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 23,
+      "representative_title": "Show HN: Agents infer Lego mechanisms from sources, then animate them",
+      "role": "supporting",
+      "role_emoji": "🟡",
+      "total_score": 8,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（16 points, 0 评论）by antelocnova"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://github.com/anteloc/ldraw-mecha/tree/v0.5.0"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e57401ecb0ea2757",
+          "title": "Show HN: Agents infer Lego mechanisms from sources, then animate them",
+          "link": "https://github.com/anteloc/ldraw-mecha/tree/v0.5.0",
+          "normalized_link": "https://github.com/anteloc/ldraw-mecha/tree/v0.5.0",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-11-06T19:41:20+00:00",
+          "summary": "HN 热门讨论（16 points, 0 评论）by antelocnova",
+          "full_text_snippet": "Give an LDraw LEGO© model to an AI agent, get back a Blender-animated version of it. The agent will: Reverse-engineer (infer) the LDraw model's mechanics from its .mpd source code file 🤓 Study the discovered mechanisms. Plan the interactions between their different mechanical components. And finally, turn those plans into python code for Blender , that will: Create the required rigs for controlling the different mechanisms. Animate them according to plan ! 🤯 Note The installation process will install every required tool and dependency locally on this project repo, in order to avoid polluting the host OS . However, there is a requirement of setting several env vars on rc files, like e.g. .bashrc or .zshrc The installed dependencies, like e.g. Blender, are git-ignored by default. You'll need Python 3.12+ installed. System Requirements macOS git-lfs ( brew install git-lfs ) Linux, x86_64 (WIP, untested) git-lfs, Blender and LeoCAD required graphics libs Windows (WIP, untested) Run inside WSL2 (Ubuntu) Start by cloning the repo and running the setup script , pick the right one for your OS: git clone https://github.com/anteloc/ldraw-mecha.git cd ldraw-mecha\n./setup-macos.sh # or ./setup-linux.sh, ./setup-win-wsl.sh At the end of the setup process, you'll get a snippet with the env vars to be added to your shell profile ( .bashrc , .zshrc , etc.), something like e.g.: # >>> ldraw-mecha (from setup-macos.sh) >>> export LDRAW_DIR= \" /Users/me/ldraw-mecha/data/ldraw \" export LDRAWDIR= \" $LDRAW_DIR \" export BLENDER_BIN= \" /Users/me/ldraw-mecha/bin/Blender.app/Contents/MacOS/Blender \" export LEOCAD= \" /Users/me/ldraw-mecha/bin/LeoCAD.app/Contents/MacOS/LeoCAD \" export LDRAW_XRAY_CACHE= \" /Users/me/ldraw-mecha/.cache/ldraw-xray \" export LDRAW_ANNOTATOR_DB= \" /Users/me/ldraw-mecha/data/ldraw-info.db \" # export TYPESAFE_API_KEY=...   # optional: Jev semantic search (jev-rerank) # other env vars... # <<< ldraw-mecha <<< If you're on VS Code or a terminal , restart it in order t...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 10,
+      "representative_title": "Cleaning or Recalling? Knowledge Dependence in LLM-based Data Cleaning [Experiment, Analysis & Benchmark]",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 2,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "High scores on public data-cleaning benchmarks can reflect knowledge of familiar entities, making it difficult to assess how well an LLM repairs unfamiliar data"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv · DeepSeek",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.08106v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "752ccced0e9eebf9",
+          "title": "Cleaning or Recalling? Knowledge Dependence in LLM-based Data Cleaning [Experiment, Analysis & Benchmark]",
+          "link": "https://arxiv.org/abs/2611.08106v1",
+          "normalized_link": "https://arxiv.org/abs/2611.08106v1",
+          "source_name": "arXiv · DeepSeek",
+          "source_category": "research",
+          "published_at": "2026-11-05T14:44:44+00:00",
+          "summary": "High scores on public data-cleaning benchmarks can reflect knowledge of familiar entities, making it difficult to assess how well an LLM repairs unfamiliar data. We present CoRE (Cleaning or Recalling), a protocol comparing public benchmarks with fresh real records and paired name surrogates built from English words or syllables. The surrogates retain error positions and non-identity values while transferring the benchmark's error mechanisms. Across 21 controlled tables and eight LLMs, repair...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 21,
+      "representative_title": "Restaurant Delivery Payment-Skimming Campaign",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 7,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 3,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "HN 热门讨论（44 points, 19 评论）by fiej"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Hacker News",
+            "authority": 5,
+            "link": "https://www.infohawk.com/news/2026-11-05-scamwich-restaurant-skimming"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "c1c67cc6800fc35a",
+          "title": "Restaurant Delivery Payment-Skimming Campaign",
+          "link": "https://www.infohawk.com/news/2026-11-05-scamwich-restaurant-skimming",
+          "normalized_link": "https://www.infohawk.com/news/2026-11-05-scamwich-restaurant-skimming",
+          "source_name": "Hacker News",
+          "source_category": "community",
+          "published_at": "2026-11-06T19:19:27+00:00",
+          "summary": "HN 热门讨论（44 points, 19 评论）by fiej",
+          "full_text_snippet": "When customers order food online, they expect a familiar experience: find\n    their restaurant, choose their meal, and pay. Increasingly, criminals are\n    exploiting that familiarity by creating convincing clones of restaurant\n    ordering websites, right down to the original site's underlying code. In early November 2026, InfoHawk researchers investigated a collection of\n    suspicious websites that appear to be part of one or more coordinated\n    restaurant impersonation and payment-skimming operations. Across two research passes, we identified 820 domains impersonating 35\n    restaurant brands. Of those, 808 use the .delivery top-level\n    domain, and the rest use .com or .shop . The scale is concerning, but what makes these sites particularly dangerous\n    is how convincing they can be. These aren't ordinary fake websites The investigation began with a suspicious domain: mlckessejersstey[.]delivery . The site impersonated Jersey Mike's, the popular sandwich chain, and\n    reproduced its online ordering experience. Rather than simply displaying a crude imitation of the restaurant's website,\n    the attackers used a more sophisticated approach: reverse-proxying the\n    legitimate site while replacing the checkout payment form with a malicious\n    one. A reverse proxy can retrieve content from a legitimate website and present\n    it to visitors under a different domain. This allows an attacker-controlled\n    site to display genuine pages and assets while selectively modifying the\n    parts of the experience that matter to the attacker. In this case, the malicious checkout requested credit card information and\n    also asked customers for the SMS verification code sent by their bank. This is a particularly dangerous combination. Capturing a credit card number\n    is valuable to criminals; obtaining a one-time verification code could also\n    help them authorize fraudulent transactions, depending on how the victim's\n    bank uses that code. For consumers, the exp...",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 0,
+      "representative_title": "How a Blue Wave midterm might reshape the AI industry",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 2,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Democrats’ historic victories in this week’s U",
+          "Democrats’ historic victories in this week’s U"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/podcast/how-a-blue-wave-midterm-might-reshape-the-ai-industry/"
+          },
+          {
+            "name": "TechCrunch AI",
+            "authority": 3,
+            "link": "https://techcrunch.com/video/after-the-midterms-is-the-ai-industry-in-for-a-rough-two-years/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "94d3f146301ece8e",
+          "title": "How a Blue Wave midterm might reshape the AI industry",
+          "link": "https://techcrunch.com/podcast/how-a-blue-wave-midterm-might-reshape-the-ai-industry/",
+          "normalized_link": "https://techcrunch.com/podcast/how-a-blue-wave-midterm-might-reshape-the-ai-industry",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-11-06T18:00:00+00:00",
+          "summary": "Democrats’ historic victories in this week’s U.S. midterm elections could also transform the tech industry. The public voted on 41 data center-related ballot measures on Tuesday — in all but one, the majority voted to impose more restrictions on data center development. And even when data centers weren’t on the ballot directly, they were a […]",
+          "full_text_snippet": "Democrats’ historic victories in this week’s U.S. midterm elections could also transform the tech industry. The public voted on 41 data center-related ballot measures on Tuesday — in all but one, the majority voted to impose more restrictions on data center development. And even when data centers weren’t on the ballot directly, they were a major talking point, with newly-elected Democratic governors and congressmembers likely to support additional regulation . On the latest episode of TechCrunch’s Equity podcast, Kirsten Korosec, Sean O’Kane, and Anthony Ha discuss what the election will mean for the tech industry moving forward — not just when it comes to data centers (which OpenAI is already trying to rebrand ), but also increased government scrutiny of Big Tech. Listen to the full episode to hear more about: Subscribe to Equity on YouTube , Apple Podcasts , Overcast , Spotify and all the casts. You also can follow Equity on X and Threads , at @EquityPod.",
+          "category": "other",
+          "language": "en"
+        },
+        {
+          "id": "2563b3e6ff404ee3",
+          "title": "After the midterms, is the AI industry in for a rough two years?",
+          "link": "https://techcrunch.com/video/after-the-midterms-is-the-ai-industry-in-for-a-rough-two-years/",
+          "normalized_link": "https://techcrunch.com/video/after-the-midterms-is-the-ai-industry-in-for-a-rough-two-years",
+          "source_name": "TechCrunch AI",
+          "source_category": "news",
+          "published_at": "2026-11-06T17:23:52+00:00",
+          "summary": "Democrats’ historic victories in this week’s U.S. midterm elections could also transform the tech industry. The public voted on 41 data center-related ballot measures on Tuesday — in all but one, the majority voted to impose more restrictions on data center development. And even when data centers weren’t on the ballot directly, they were a […]",
+          "full_text_snippet": "Democrats’ historic victories in this week’s U.S. midterm elections could also transform the tech industry. The public voted on 41 data center-related ballot measures on Tuesday — in all but one, the majority voted to impose more restrictions on data center development. And even when data centers weren’t on the ballot directly, they were a major talking point, with newly-elected Democratic governors and congressmembers likely to support additional regulation . On the latest episode of TechCrunch’s Equity podcast, Kirsten Korosec, Sean O’Kane, and Anthony Ha discuss what the election will mean for the tech industry moving forward — not just when it comes to data centers (which OpenAI is already trying to rebrand ), but also increased government scrutiny of Big Tech. Subscribe to Equity on YouTube , Apple Podcasts , Overcast , Spotify and all the casts. You also can follow Equity on X and Threads , at @EquityPod.",
+          "category": "other",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 9,
+      "representative_title": "Unpacking the Compute Efficiency of Strong-to-Weak OPD against GRPO",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "On-policy distillation (OPD) trains a student on its own rollouts under a frozen teacher's per-token supervision"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv · DeepSeek",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.08453v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "dff9d77686c0b3fe",
+          "title": "Unpacking the Compute Efficiency of Strong-to-Weak OPD against GRPO",
+          "link": "https://arxiv.org/abs/2611.08453v1",
+          "normalized_link": "https://arxiv.org/abs/2611.08453v1",
+          "source_name": "arXiv · DeepSeek",
+          "source_category": "research",
+          "published_at": "2026-11-05T18:47:05+00:00",
+          "summary": "On-policy distillation (OPD) trains a student on its own rollouts under a frozen teacher's per-token supervision. Does this dense signal reduce the training FLOPs needed to reach a target accuracy compared with reinforcement learning? We systematically compare vanilla reverse-KL OPD with Group Relative Policy Optimization (GRPO) across task difficulty, student and teacher size, domain, and optimization choices, measuring held-out accuracy against training FLOPs. With an external post-trained...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 13,
+      "representative_title": "Understanding AI from the Inside: The State of Mechanistic Interpretability for AI Safety",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "Neural networks are likely to be among the most consequential artefacts in human history"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 计算与语言 (cs.CL)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.08438v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "2f9567d4f46496ce",
+          "title": "Understanding AI from the Inside: The State of Mechanistic Interpretability for AI Safety",
+          "link": "https://arxiv.org/abs/2611.08438v1",
+          "normalized_link": "https://arxiv.org/abs/2611.08438v1",
+          "source_name": "arXiv 计算与语言 (cs.CL)",
+          "source_category": "research",
+          "published_at": "2026-11-05T18:30:54+00:00",
+          "summary": "Neural networks are likely to be among the most consequential artefacts in human history. As these systems become more capable and autonomous, their potential to cause societal harm also grows, making AI safety one of the defining challenges of our time. Yet we continue to build increasingly powerful systems without fully understanding how they work, how they will behave in unfamiliar situations, or how to reliably control them. Mechanistic interpretability offers a path towards understanding...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "policy",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 14,
+      "representative_title": "StepBack: Step-Level Error-Localized Resampling for Efficient Test-Time Reasoning",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "Self-consistency (SC) is a widely used decoding strategy for improving chain-of-thought reasoning, but it requires sampling many complete reasoning trajectories with a preset budget"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 计算与语言 (cs.CL)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.08403v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "65115db3a0cbc7eb",
+          "title": "StepBack: Step-Level Error-Localized Resampling for Efficient Test-Time Reasoning",
+          "link": "https://arxiv.org/abs/2611.08403v1",
+          "normalized_link": "https://arxiv.org/abs/2611.08403v1",
+          "source_name": "arXiv 计算与语言 (cs.CL)",
+          "source_category": "research",
+          "published_at": "2026-11-05T18:12:49+00:00",
+          "summary": "Self-consistency (SC) is a widely used decoding strategy for improving chain-of-thought reasoning, but it requires sampling many complete reasoning trajectories with a preset budget. Its efficient variants reduce the cost mainly by stopping full-trajectory sampling early or distributing the number of samples across questions. In this paper, we propose StepBack, a step-level error-localized resampling method for efficient test-time reasoning. Given a small set of draft trajectories, StepBack l...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 15,
+      "representative_title": "Do You Miss the Nights We Spent Crafting Figures? Rethinking Teaser and Framework Figures in the Age of Generative AI",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "Scientific figures give research ideas a visual form through choices of abstraction, composition, and emphasis"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 计算机视觉与多模态 (cs.CV)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.08486v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "3de0008d9aabad95",
+          "title": "Do You Miss the Nights We Spent Crafting Figures? Rethinking Teaser and Framework Figures in the Age of Generative AI",
+          "link": "https://arxiv.org/abs/2611.08486v1",
+          "normalized_link": "https://arxiv.org/abs/2611.08486v1",
+          "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+          "source_category": "research",
+          "published_at": "2026-11-05T18:59:33+00:00",
+          "summary": "Scientific figures give research ideas a visual form through choices of abstraction, composition, and emphasis. Generative AI offers new ways to realize these choices, raising questions about explanatory clarity and purposeful visual expression. We examine these questions through a visual retrospective of 371 motivation and framework figures from 200 papers. The corpus comprises a quota-based main sample of 160 papers spanning four temporal periods and a separate purposive style-contrast samp...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "research",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 16,
+      "representative_title": "VFlash: Fast, Accurate Visual Planning via Flash Primitive Decoding",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "Models for physical AI tasks, such as robotics and autonomous driving, need not reason solely in language"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 计算机视觉与多模态 (cs.CV)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.08449v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "5c0b273d12716d35",
+          "title": "VFlash: Fast, Accurate Visual Planning via Flash Primitive Decoding",
+          "link": "https://arxiv.org/abs/2611.08449v1",
+          "normalized_link": "https://arxiv.org/abs/2611.08449v1",
+          "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+          "source_category": "research",
+          "published_at": "2026-11-05T18:44:43+00:00",
+          "summary": "Models for physical AI tasks, such as robotics and autonomous driving, need not reason solely in language. They can use visual plans--points, bounding boxes, and trajectories--to represent spatial goals and anticipate motion. However, autoregressive vision-language models generate these plans one coordinate token at a time, making richer predictions increasingly costly. We introduce VFlash, a method for fast, accurate visual planning through Flash Primitive Decoding. VFlash exploits the known...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "model",
+          "language": "en"
+        }
+      ]
+    },
+    {
+      "cluster_id": 17,
+      "representative_title": "Edge-Assisted Crowdsensing for Explainable Cyclist Safety Perception",
+      "role": "quick",
+      "role_emoji": "🟢",
+      "total_score": 6,
+      "scores": {
+        "impact_scope": 1,
+        "novelty": 1,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 2
+      },
+      "context": {
+        "factual_summary": [
+          "Cyclist fatality rates remain high despite policy support for active travel, and autonomous vehicles add complexity to mixed traffic"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv 计算机视觉与多模态 (cs.CV)",
+            "authority": 2,
+            "link": "https://arxiv.org/abs/2611.08441v1"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "344d52d71c2e069c",
+          "title": "Edge-Assisted Crowdsensing for Explainable Cyclist Safety Perception",
+          "link": "https://arxiv.org/abs/2611.08441v1",
+          "normalized_link": "https://arxiv.org/abs/2611.08441v1",
+          "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+          "source_category": "research",
+          "published_at": "2026-11-05T18:33:58+00:00",
+          "summary": "Cyclist fatality rates remain high despite policy support for active travel, and autonomous vehicles add complexity to mixed traffic. Neither crash statistics nor multi-model detection pipelines scale to continuous monitoring of perceived safety along a route. We present an edge-assisted crowdsensing system: handlebar cameras supply street-level frames, a vision-language model (VLM) turns each frame into structured traffic attributes through a single prompt, and an explainable boosting machin...",
+          "full_text_snippet": "BibTeX formatted citation ×",
+          "category": "policy",
+          "language": "en"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "total_raw": 27,
+    "total_deduped": 25,
+    "total_clusters": 24,
+    "generated_at": "2026-11-06T22:21:10.608297+00:00",
+    "dedup_details": [
+      {
+        "title": "Vera Delivers the Best of Both Worlds: Highest Throughput and Fastest Agents",
+        "link": "https://blogs.nvidia.com/blog/vera-cpu-highest-throughput-fastest-agents/",
+        "source": "NVIDIA 官方博客",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Into the Omniverse: How Developers Turn Ideas Into Simulations With Frontier AI Agents",
+        "link": "https://blogs.nvidia.com/blog/developers-simulation-frontier-ai-agents/",
+        "source": "NVIDIA 官方博客",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "More Performance From Every Byte: How Full-Stack Codesign Solves AI’s Memory Challenge",
+        "link": "https://blogs.nvidia.com/blog/memory-full-stack-codesign/",
+        "source": "NVIDIA 官方博客",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "‘Hogwarts Legacy’ Gets a Magical NVIDIA DLSS 5 Upgrade on GeForce NOW",
+        "link": "https://blogs.nvidia.com/blog/geforce-now-thursday-hogwarts-legacy-dlss-5/",
+        "source": "NVIDIA 官方博客",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "Formally verifying agent-written full-stack web apps with PDD Kit",
+        "link": "https://www.microsoft.com/en-us/research/blog/formally-verifying-agent-written-full-stack-web-apps-with-pdd-kit/",
+        "source": "Microsoft Research AI",
+        "reason": "cross_episode_url",
+        "detail": "URL matches a recently broadcasted article."
+      },
+      {
+        "title": "从RSI、Agent、Physical AI到整个系统栈，2026 奇点智能技术大会最新日程公布！",
+        "link": "https://www.qbitai.com/2026/11/508143.html",
+        "source": "量子位",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2146,
+        "threshold": 0.2,
+        "matched_story_title": "AI硬件出海，别当“背景板”，GTC2026 Shanghai「AI硬件专区」邀你占位",
+        "matched_episode_id": "2026-10-22",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'AI硬件出海，别当“背景板”，GTC2026 Shanghai「AI硬件专区」邀你占位' from 2026-10-22."
+      },
+      {
+        "title": "派早报：国务院办公厅发布 2027 年部分节假日放假安排等",
+        "link": "https://sspai.com/post/118587",
+        "source": "少数派",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2454,
+        "threshold": 0.2,
+        "matched_story_title": "派早报：Apple 智能国行版开放测试、拓竹发布 H3C 3D 打印机等",
+        "matched_episode_id": "2026-11-05",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story '派早报：Apple 智能国行版开放测试、拓竹发布 H3C 3D 打印机等' from 2026-11-05."
+      },
+      {
+        "title": "Partnering with Hacktron to find vulnerabilities in OpenAI’s systems",
+        "link": "https://openai.com/index/partnering-with-hacktron",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2453,
+        "threshold": 0.2,
+        "matched_story_title": "OpenAI and Poland’s NASK partner to advance AI safety and security",
+        "matched_episode_id": "2026-10-24",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'OpenAI and Poland’s NASK partner to advance AI safety and security' from 2026-10-24."
+      },
+      {
+        "title": "Measuring how AI agents handle everyday wet-lab science",
+        "link": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science",
+        "source": "OpenAI Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3125,
+        "threshold": 0.2,
+        "matched_story_title": "Pipette: An Embodied Simulation Platform, Benchmark, and Data-Efficient Augmentation Framework for Wet-Lab Robotics",
+        "matched_episode_id": "2026-10-25",
+        "detail": "TF-IDF similarity (0.31) >= threshold (0.20) with historical story 'Pipette: An Embodied Simulation Platform, Benchmark, and Data-Efficient Augmentation Framework for Wet-Lab Robotics' from 2026-10-25."
+      },
+      {
+        "title": "New NVIDIA Cosmos 3 Open Models for Interactive World Simulation",
+        "link": "https://huggingface.co/blog/nvidia/cosmos-interactive-world-simulation",
+        "source": "HuggingFace Blog",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2645,
+        "threshold": 0.2,
+        "matched_story_title": "NVIDIA Open Models Advance Europe’s Sovereign Intelligence Across Industries",
+        "matched_episode_id": "2026-10-22",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'NVIDIA Open Models Advance Europe’s Sovereign Intelligence Across Industries' from 2026-10-22."
+      },
+      {
+        "title": "Formalizing inverse problems in the age of AI: possibilities, pitfalls, and an invitation",
+        "link": "https://arxiv.org/abs/2611.06962",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2063,
+        "threshold": 0.2,
+        "matched_story_title": "MA-LoT: Model-Collaboration Lean-based Long Chain-of-Thought Reasoning enhances Formal Theorem Proving",
+        "matched_episode_id": "2026-10-25",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'MA-LoT: Model-Collaboration Lean-based Long Chain-of-Thought Reasoning enhances Formal Theorem Proving' from 2026-10-25."
+      },
+      {
+        "title": "KDASO: Knowledge-Data Dual-Driven Automated Skill Optimization for Liability Adjudication Tasks",
+        "link": "https://arxiv.org/abs/2611.06972",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2302,
+        "threshold": 0.2,
+        "matched_story_title": "AtomSearch: Evidence-Grounded Tree Search for Agent Skill Optimization",
+        "matched_episode_id": "2026-10-16",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'AtomSearch: Evidence-Grounded Tree Search for Agent Skill Optimization' from 2026-10-16."
+      },
+      {
+        "title": "BlockLock: Reproducible LLM Inference with Fixed Batch Geometry",
+        "link": "https://arxiv.org/abs/2611.06977",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2352,
+        "threshold": 0.2,
+        "matched_story_title": "FuTransformer: FP8 prefill and INT4 decode for Llama-style inference on Hopper",
+        "matched_episode_id": "2026-10-20",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'FuTransformer: FP8 prefill and INT4 decode for Llama-style inference on Hopper' from 2026-10-20."
+      },
+      {
+        "title": "Resource-Efficient Reinforcement Learning Post-Training through Elastic Expert Parallelism",
+        "link": "https://arxiv.org/abs/2611.06984",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2231,
+        "threshold": 0.2,
+        "matched_story_title": "QwQ-32B: Embracing the Power of Reinforcement Learning",
+        "matched_episode_id": "2026-10-24",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'QwQ-32B: Embracing the Power of Reinforcement Learning' from 2026-10-24."
+      },
+      {
+        "title": "Autonomous AI Agents Systematically Diverge From Human Preferences in Proof Formalization",
+        "link": "https://arxiv.org/abs/2611.06995",
+        "source": "arXiv cs.AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2446,
+        "threshold": 0.2,
+        "matched_story_title": "CARD: A Proof-Carrying Certificate-to-Action Interface for Relative-Measurement Graphs",
+        "matched_episode_id": "2026-11-05",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'CARD: A Proof-Carrying Certificate-to-Action Interface for Relative-Measurement Graphs' from 2026-11-05."
+      },
+      {
+        "title": "Generate-then-Rank: Learning Symbolic Goal Interpretation for Embodied Agents",
+        "link": "https://arxiv.org/abs/2611.07825v1",
+        "source": "arXiv · DeepSeek",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2235,
+        "threshold": 0.2,
+        "matched_story_title": "StopWatch: Goal Grounding for Object-goal Navigation",
+        "matched_episode_id": "2026-10-20",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'StopWatch: Goal Grounding for Object-goal Navigation' from 2026-10-20."
+      },
+      {
+        "title": "The Wizard of Open Weights: Chris Alexiuk Makes AI Easy With Open Models",
+        "link": "https://blogs.nvidia.com/blog/nvidia-life-chris-alexiuk/",
+        "source": "NVIDIA 官方博客",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2166,
+        "threshold": 0.2,
+        "matched_story_title": "NVIDIA Open Models Advance Europe’s Sovereign Intelligence Across Industries",
+        "matched_episode_id": "2026-10-22",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'NVIDIA Open Models Advance Europe’s Sovereign Intelligence Across Industries' from 2026-10-22."
+      },
+      {
+        "title": "SAE Interprets MoE: Sparse AutoEncoders Reveal That MoE Experts Exhibit Human-Interpretable Fine-Grained Specialization",
+        "link": "https://arxiv.org/abs/2611.08089v1",
+        "source": "arXiv · 字节 AI Lab",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2891,
+        "threshold": 0.2,
+        "matched_story_title": "Where Prefill Expert Reduction Hurts MoE Models: A Few Prompt Tokens Carry Most of the Short-Answer F1 Loss",
+        "matched_episode_id": "2026-10-20",
+        "detail": "TF-IDF similarity (0.29) >= threshold (0.20) with historical story 'Where Prefill Expert Reduction Hurts MoE Models: A Few Prompt Tokens Carry Most of the Short-Answer F1 Loss' from 2026-10-20."
+      },
+      {
+        "title": "Scientist World: Grow a Research World for AI-Scientists",
+        "link": "https://arxiv.org/abs/2611.08478v1",
+        "source": "arXiv 计算与语言 (cs.CL)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2131,
+        "threshold": 0.2,
+        "matched_story_title": "LitPivot: Developing research ideas through dynamic contextualization within the literature landscape",
+        "matched_episode_id": "2026-10-24",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'LitPivot: Developing research ideas through dynamic contextualization within the literature landscape' from 2026-10-24."
+      },
+      {
+        "title": "MedGraph: Maintaining Patient State with Graph Memory for Long-Term Medical Dialogue",
+        "link": "https://arxiv.org/abs/2611.08433v1",
+        "source": "arXiv 计算与语言 (cs.CL)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2449,
+        "threshold": 0.2,
+        "matched_story_title": "Medical Fine-Tuning Reshapes, Not Reduces, Patient-Facing AI Risk: A Rubric-Based, LLM-Judge Evaluation Framework",
+        "matched_episode_id": "2026-10-21",
+        "detail": "TF-IDF similarity (0.24) >= threshold (0.20) with historical story 'Medical Fine-Tuning Reshapes, Not Reduces, Patient-Facing AI Risk: A Rubric-Based, LLM-Judge Evaluation Framework' from 2026-10-21."
+      },
+      {
+        "title": "Where and Why is Grounded Reasoning Useful?",
+        "link": "https://arxiv.org/abs/2611.08485v1",
+        "source": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2168,
+        "threshold": 0.2,
+        "matched_story_title": "Reasoning is topologically simple",
+        "matched_episode_id": "2026-11-05",
+        "detail": "TF-IDF similarity (0.22) >= threshold (0.20) with historical story 'Reasoning is topologically simple' from 2026-11-05."
+      },
+      {
+        "title": "EgoGeneralist: Unifying Egocentric Action-Video Tasks through Video-Native Modeling",
+        "link": "https://arxiv.org/abs/2611.08477v1",
+        "source": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2677,
+        "threshold": 0.2,
+        "matched_story_title": "RepProbe: Can Video Language Models Count Repeated Actions? A Diagnostic Benchmark",
+        "matched_episode_id": "2026-10-15",
+        "detail": "TF-IDF similarity (0.27) >= threshold (0.20) with historical story 'RepProbe: Can Video Language Models Count Repeated Actions? A Diagnostic Benchmark' from 2026-10-15."
+      },
+      {
+        "title": "T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models",
+        "link": "https://arxiv.org/abs/2611.08413v1",
+        "source": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2119,
+        "threshold": 0.2,
+        "matched_story_title": "Which Tokens to Merge? Diffusion Dynamics for Efficient Image Generation",
+        "matched_episode_id": "2026-10-18",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Which Tokens to Merge? Diffusion Dynamics for Efficient Image Generation' from 2026-10-18."
+      },
+      {
+        "title": "OopsieRecover: Learning Transferable VLA Corrections from Semantic Interventions",
+        "link": "https://arxiv.org/abs/2611.08462v1",
+        "source": "arXiv 机器人与具身智能 (cs.RO)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2278,
+        "threshold": 0.2,
+        "matched_story_title": "When Human Corrections Travel: Safety in Federated VLA Adaptation",
+        "matched_episode_id": "2026-10-27",
+        "detail": "TF-IDF similarity (0.23) >= threshold (0.20) with historical story 'When Human Corrections Travel: Safety in Federated VLA Adaptation' from 2026-10-27."
+      },
+      {
+        "title": "Latent RL Priors for Data-Efficient Dexterous Manipulation",
+        "link": "https://arxiv.org/abs/2611.08458v1",
+        "source": "arXiv 机器人与具身智能 (cs.RO)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2851,
+        "threshold": 0.2,
+        "matched_story_title": "Simulation Priors for Rapid Adaptation in Model-Based RL for Autonomous Racing",
+        "matched_episode_id": "2026-10-21",
+        "detail": "TF-IDF similarity (0.29) >= threshold (0.20) with historical story 'Simulation Priors for Rapid Adaptation in Model-Based RL for Autonomous Racing' from 2026-10-21."
+      },
+      {
+        "title": "Failure Prediction and Classification in Vision-Language-Action Models Via Calibrated Latent Probing",
+        "link": "https://arxiv.org/abs/2611.08425v1",
+        "source": "arXiv 机器人与具身智能 (cs.RO)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2996,
+        "threshold": 0.2,
+        "matched_story_title": "If at First You Don't Succeed, Backtrack: Lightweight Recovery for Frozen VLAs",
+        "matched_episode_id": "2026-10-27",
+        "detail": "TF-IDF similarity (0.30) >= threshold (0.20) with historical story 'If at First You Don't Succeed, Backtrack: Lightweight Recovery for Frozen VLAs' from 2026-10-27."
+      },
+      {
+        "title": "T3R: Training-Free Two-Stage Token Refinement Towards Efficient and Robust VLA Models",
+        "link": "https://arxiv.org/abs/2611.08413v1",
+        "source": "arXiv 机器人与具身智能 (cs.RO)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2119,
+        "threshold": 0.2,
+        "matched_story_title": "Which Tokens to Merge? Diffusion Dynamics for Efficient Image Generation",
+        "matched_episode_id": "2026-10-18",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Which Tokens to Merge? Diffusion Dynamics for Efficient Image Generation' from 2026-10-18."
+      },
+      {
+        "title": "Social Humanoid: Socially Responsive Human-Humanoid Interaction",
+        "link": "https://arxiv.org/abs/2611.08407v1",
+        "source": "arXiv 机器人与具身智能 (cs.RO)",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2473,
+        "threshold": 0.2,
+        "matched_story_title": "EgoExplorer: A Vision-Motion-Touch Observatory for Human Loco-Manipulation In Situ",
+        "matched_episode_id": "2026-10-15",
+        "detail": "TF-IDF similarity (0.25) >= threshold (0.20) with historical story 'EgoExplorer: A Vision-Motion-Touch Observatory for Human Loco-Manipulation In Situ' from 2026-10-15."
+      },
+      {
+        "title": "Meta introduces Spaces, a new way to collaborate with your Muse agent",
+        "link": "https://techcrunch.com/2026/11/06/meta-introduces-spaces-a-new-way-to-collaborate-with-your-muse-agent/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.3108,
+        "threshold": 0.2,
+        "matched_story_title": "Meta’s Muse hits 10M U.S. downloads in 40 days, a milestone reached by only 11 other apps",
+        "matched_episode_id": "2026-10-21",
+        "detail": "TF-IDF similarity (0.31) >= threshold (0.20) with historical story 'Meta’s Muse hits 10M U.S. downloads in 40 days, a milestone reached by only 11 other apps' from 2026-10-21."
+      },
+      {
+        "title": "After blocking Muse, Amazon now lets users text Alexa to help them shop",
+        "link": "https://techcrunch.com/2026/11/06/after-blocking-muse-amazon-now-lets-users-text-alexa-to-help-them-shop/",
+        "source": "TechCrunch AI",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2063,
+        "threshold": 0.2,
+        "matched_story_title": "Deezer will soon let you filter out AI-generated music",
+        "matched_episode_id": "2026-10-15",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'Deezer will soon let you filter out AI-generated music' from 2026-10-15."
+      },
+      {
+        "title": "Memorilla: Latent Semantic Memory for LLMs",
+        "link": "https://arxiv.org/abs/2610.21375",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2141,
+        "threshold": 0.2,
+        "matched_story_title": "LeanSparse: Memory-Efficient Serving for Native Sparse-Attention LLMs",
+        "matched_episode_id": "2026-11-05",
+        "detail": "TF-IDF similarity (0.21) >= threshold (0.20) with historical story 'LeanSparse: Memory-Efficient Serving for Native Sparse-Attention LLMs' from 2026-11-05."
+      },
+      {
+        "title": "UpCodes (YC S17) is hiring SDR's to sell AI compliance software",
+        "link": "https://up.codes/careers?utm_source=HN",
+        "source": "Hacker News",
+        "reason": "cross_episode_semantic",
+        "similarity": 0.2562,
+        "threshold": 0.2,
+        "matched_story_title": "Hazel (YC W24) Is Hiring",
+        "matched_episode_id": "2026-10-21",
+        "detail": "TF-IDF similarity (0.26) >= threshold (0.20) with historical story 'Hazel (YC W24) Is Hiring' from 2026-10-21."
+      }
+    ],
+    "ingest_filter": {
+      "input": 503,
+      "prefer_hours": 36,
+      "fallback_hours": 96,
+      "include_keywords": 44,
+      "exclude_keywords": 0,
+      "per_feed_cap": 6,
+      "after_recency": 162,
+      "window": "prefer_36h",
+      "after_keywords": 128,
+      "after_feed_cap": 59
+    }
+  },
+  "radar": {
+    "date": "2026-11-07",
+    "generated_at": "2026-11-06T22:21:10.608475+00:00",
+    "projects": [
+      {
+        "repo": "heydamir/unslop",
+        "url": "https://github.com/heydamir/unslop",
+        "description": "A Claude skill that turns vibecoded, AI-looking UI into a designed interface",
+        "language": "JavaScript",
+        "topics": [],
+        "stars": 10689,
+        "delta_stars": 956,
+        "is_new": false,
+        "created_at": "2026-10-29T15:41:21Z",
+        "pushed_at": "2026-11-01T16:46:10Z",
+        "license": "CC-BY-4.0",
+        "has_install_docs": true,
+        "mentions": 0,
+        "readme_excerpt": "For Claude Code, copy the skill into your skills folder.\n\n```bash\ngit clone https://github.com/heydamir/unslop\nmkdir -p ~/.claude/skills && cp -r unslop/skills/unslop ~/.claude/skills/\n```\n\nFor a single project, copy it into `.claude/skills/` inside that project instead.\n\nFor Codex, ask it to install the skill straight from this repo.\n\n```\n$skill-installer install https://github.com/heydamir/unslop/tree/main/skills/unslop\n```\n\nOr copy it by hand into `~/.agents/skills/`, or into `.agents/skills/` inside a single project.\n\n```bash\ngit clone https://github.com/heydamir/unslop\nmkdir -p ~/.agents/skills && cp -r unslop/skills/unslop ~/.agents/skills/\n```\n\nTo snapshot a live site or create a story video, install Playwright and its Chromium browser from the project directory where you run the skill:\n\n```bash\nnpm install -D playwright\nnpx playwright install chromium\n```\n\nStory videos also require ffmpeg installed and available on your PATH.",
+        "readme_intro": "Created by Damir Sokolovsky ([@heydamir](https://x.com/heydamir)), who started the [Unslopping series](https://x.com/heydamir/status/2115063463063998736) on X. unslop is a skill for Claude Code and Codex that turns vibecoded, AI-looking UI into a designed interface with its own character. It finds the slop first, the purple gradients, glows, emoji labels, shouty copy and uneven spacing, then sets a direction from your product and fixes the screen pass by pass like a designer doing a redline review. It works in whatever your screen is built with, like Next.js, React, Vue, Svelte, Tailwind or plain HTML and CSS, on dashboards, apps and landing pages, and even on a live site when all you have is a link.",
+        "score": 0.5301,
+        "score_parts": {
+          "velocity": 0.8004,
+          "vel_rel": 0.9091,
+          "vel_abs": 0.6373,
+          "hands_on": 1.0,
+          "cross_heat": 0.0,
+          "affinity": 0.0,
+          "days_in_pool": 2
+        },
+        "affinity": 0.0
+      },
+      {
+        "repo": "deepseek-ai/dsh-superagent-prototype",
+        "url": "https://github.com/deepseek-ai/dsh-superagent-prototype",
+        "description": "Towards a More Autonomous Agent System",
+        "language": "TypeScript",
+        "topics": [],
+        "stars": 20220,
+        "delta_stars": 769,
+        "is_new": false,
+        "created_at": "2026-10-31T09:32:46Z",
+        "pushed_at": "2026-11-03T09:29:14Z",
+        "license": "MIT",
+        "has_install_docs": false,
+        "mentions": 0,
+        "readme_excerpt": "",
+        "readme_intro": "> **Research prototype for reference only, not an official DeepSeek product.** This code grew out of our team's day-to-day development work, with much of the engineering done by coding agents. Treat it as research code, not production-ready software. It may still contain bugs, and its coding style and engineering practices may be inconsistent. Review and adapt it before using it in your own environment. > We have adapted it for publication, so it is not identical to our internal version or the implementation described in *Exploring Super-agent Design: Towards a More Autonomous Agent System*. Some designs discussed in the article are directions for future development and are not implemented in this prototype. dsh-superagent is a proactive coding agent for one GitHub repository, packaged as ",
+        "score": 0.5186,
+        "score_parts": {
+          "velocity": 0.696,
+          "vel_rel": 0.8182,
+          "vel_abs": 0.5127,
+          "hands_on": 0.6,
+          "cross_heat": 0.0,
+          "affinity": 0.5,
+          "days_in_pool": 2
+        },
+        "affinity": 0.5
+      },
+      {
+        "repo": "mattpocock/skills",
+        "url": "https://github.com/mattpocock/skills",
+        "description": "Skills for Real Engineers. Straight from my .agents directory.",
+        "language": "Shell",
+        "topics": [],
+        "stars": 316636,
+        "delta_stars": null,
+        "is_new": true,
+        "created_at": "2026-02-03T11:15:53Z",
+        "pushed_at": "2026-11-05T10:40:01Z",
+        "license": "MIT",
+        "has_install_docs": false,
+        "mentions": 0,
+        "readme_excerpt": "A plugin updates itself. [skills.sh](https://skills.sh/mattpocock/skills) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.",
+        "readme_intro": "[ ](https://skills.sh/mattpocock/skills) My agent skills that I use every day to do real engineering - not vibe coding. Developing real applications is hard. Approaches like GSD, BMAD, and Spec-Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve. These skills are designed to be small, easy to adapt, and composable. They work with any model. They're based on decades of engineering experience. Hack around with them. Make them your own. Enjoy. If you want to keep up with changes to these skills, and any new ones I create, you can join ~60,000 other devs on my newsletter: [Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)",
+        "score": 0.5033,
+        "score_parts": {
+          "velocity": 0.9059,
+          "vel_rel": 1.0,
+          "vel_abs": 0.7648,
+          "hands_on": 0.6,
+          "cross_heat": 0.0,
+          "affinity": 0.5,
+          "days_in_pool": 0
+        },
+        "affinity": 0.5
+      }
+    ],
+    "meta": {
+      "pick_repo": "heydamir/unslop",
+      "runner_up_repos": [
+        "deepseek-ai/dsh-superagent-prototype",
+        "mattpocock/skills"
+      ],
+      "degraded": false,
+      "reason": "",
+      "candidates": 32,
+      "excluded_recent": 8,
+      "fresh_candidates": 24,
+      "widen_pass": false,
+      "pool_by_source": {
+        "trending": 4,
+        "new": 25,
+        "topic": 2,
+        "news": 1
+      },
+      "direction_fallback": false,
+      "yesterday_pick": "storytold/craft-anything",
+      "yesterday_pick_delta": 2996,
+      "candidate_audit": [
+        {
+          "repo": "mattpocock/skills",
+          "stars": 316636,
+          "delta_stars": null,
+          "language": "Shell",
+          "license": "MIT",
+          "exclusion_reason": "selected"
+        },
+        {
+          "repo": "better-auth/better-auth",
+          "stars": 30629,
+          "delta_stars": 24,
+          "language": "TypeScript",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "deepseek-ai/DeepInfer",
+          "stars": 25550,
+          "delta_stars": 84,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "deepseek-ai/dsh-superagent-prototype",
+          "stars": 20220,
+          "delta_stars": 769,
+          "language": "TypeScript",
+          "license": "MIT",
+          "exclusion_reason": "selected"
+        },
+        {
+          "repo": "storytold/craft-anything",
+          "stars": 17835,
+          "delta_stars": 2996,
+          "language": "Rust",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "seedds/nxnative",
+          "stars": 12920,
+          "delta_stars": 431,
+          "language": "Python",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "ccch1mneyyy/dsh-Go",
+          "stars": 12899,
+          "delta_stars": 1509,
+          "language": "Dart",
+          "license": "AGPL-3.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "heydamir/unslop",
+          "stars": 10689,
+          "delta_stars": 956,
+          "language": "JavaScript",
+          "license": "CC-BY-4.0",
+          "exclusion_reason": "selected"
+        },
+        {
+          "repo": "pengchujin/aerial-tv",
+          "stars": 10336,
+          "delta_stars": 378,
+          "language": "Kotlin",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "NVIDIA/auto-ontology",
+          "stars": 8912,
+          "delta_stars": 1693,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "HeyPuter/everything",
+          "stars": 7450,
+          "delta_stars": 179,
+          "language": "JavaScript",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "l0ng-ai/openidea",
+          "stars": 7423,
+          "delta_stars": 685,
+          "language": "TypeScript",
+          "license": "Apache-2.0",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "wangzan101/Mika",
+          "stars": 7385,
+          "delta_stars": 312,
+          "language": "Kotlin",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "ly05010419/MacNativeGames",
+          "stars": 7187,
+          "delta_stars": 85,
+          "language": "C",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "rddmwmddr/android-ad-cleaner",
+          "stars": 6738,
+          "delta_stars": 191,
+          "language": "Python",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "simbasjungles/free-my-tv",
+          "stars": 5968,
+          "delta_stars": 44,
+          "language": "Java",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "Jakeschincariol/day-trader-skill",
+          "stars": 5768,
+          "delta_stars": 206,
+          "language": "Python",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "amosblomqvist/learnharness",
+          "stars": 5716,
+          "delta_stars": 165,
+          "language": "TypeScript",
+          "license": "AGPL-3.0",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "patch-gg/pixelfx",
+          "stars": 5585,
+          "delta_stars": 340,
+          "language": "JavaScript",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "valentderah/totk-pc-recomp",
+          "stars": 5378,
+          "delta_stars": 243,
+          "language": "C",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        }
+      ],
+      "audit_semantics": "v5"
+    }
+  }
+}
