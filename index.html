@@ -2134,10 +2134,15 @@
       /* 英文/带变音符的拉丁开头：取开头连续拉丁词（到中文/标点为止），按词边界截断 */
       const latin = text.match(/^[A-Za-z\u00C0-\u024F][A-Za-z0-9\u00C0-\u024F .&+·_-]{1,24}/);
       if (latin) return truncateTag(latin[0], 16);
-      /* 中文标题：取冒号前的短标签，最多 6 字（与旧实现一致，避免胶囊过长） */
+      /* 中文标题：取冒号前的短标签，最多 6 字；如果第 6 字正好切在英文单词中间，
+         丢掉残缺的拉丁尾巴（如「英伟达用Ve」→「英伟达用」） */
       const colon = text.search(/[：:]/);
-      if (colon > 0) return text.slice(0, colon).trim().slice(0, 6);
-      return text.slice(0, 6);
+      const base = colon > 0 ? text.slice(0, colon).trim() : text;
+      let tag = base.slice(0, 6);
+      if (tag.length === 6 && /[A-Za-z]$/.test(tag) && /[A-Za-z]/.test(base.charAt(6))) {
+        tag = tag.replace(/[A-Za-z]+$/, '');
+      }
+      return tag;
     }
 
     function chapterTopic(heading) {
