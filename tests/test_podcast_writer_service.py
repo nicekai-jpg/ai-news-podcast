@@ -258,3 +258,71 @@ class TestFallbackQuality:
         assert "English summary only here." not in script
         assert "owner/repo" in script
         assert script.count("[Host A]") > 0 and script.count("[Host B]") > 0
+
+
+class TestSalvageDialogue:
+    """2026-11-06 事故回归：19k 字符的输出里混着写稿计划和成稿，不能整篇丢掉。"""
+
+    @staticmethod
+    def _dialogue_block(pairs: int = 30) -> str:
+        return "\n".join(
+            [
+                "[CHAPTER] 开场",
+                "[Host A] 听众朋友们好，欢迎收听今天的节目。",
+                "[Host B] 大家好，我们来看几条重要的消息。",
+            ]
+            + [
+                f"[Host A] 这是第{index}条的背景和影响分析，信息量不小。\n[Host B] 我把关键数字和判断补充一下。"
+                for index in range(pairs)
+            ]
+        )
+
+    def test_picks_longest_contiguous_run(self) -> None:
+        from ai_news_podcast.business.pipeline.podcast_writer_service import (
+            _salvage_dialogue,
+            _script_looks_valid,
+        )
+
+        raw = (
+            "Need no 好 start. Fine.\n"
+            "[CHAPTER] 草稿\n"
+            "[Host A] 这是草稿，不要用。\n"
+            "\nLet's count rough.\n"
+            "Chapter1 10 lines ~800?\n"
+            "Total ~2770.\n"
+            "We need to polish.\n" + self._dialogue_block()
+        )
+        salvaged = _salvage_dialogue(raw)
+        assert "草稿" not in salvaged
+        assert "We need" not in salvaged
+        assert _script_looks_valid(salvaged) is True
+
+    def test_empty_when_no_dialogue(self) -> None:
+        from ai_news_podcast.business.pipeline.podcast_writer_service import _salvage_dialogue
+
+        assert _salvage_dialogue("We need to plan.\nLet's count.") == ""
+
+
+class TestFallbackLength:
+    def test_fallback_is_listenable_length(self) -> None:
+        from ai_news_podcast.business.pipeline.podcast_writer_service import _build_fallback
+
+        stories = [
+            {
+                "role": "main" if index == 0 else "supporting",
+                "representative_title": f"新闻标题{index}",
+                "context": {
+                    "factual_summary": [
+                        f"这是第{index}条新闻的中文摘要，说明了事件背景、关键数据与对行业的实际影响，值得持续跟进。"
+                    ]
+                },
+            }
+            for index in range(5)
+        ]
+        brief = {"stories": stories, "radar": {"meta": {"pick_repo": "owner/repo"}}}
+        script = _build_fallback(brief, datetime(2026, 11, 6), "今日AI看点")
+        chars = len("".join(script.split()))
+        assert chars >= 600
+        assert "第一个大头条" not in script
+        assert script.count("[CHAPTER]") >= 3
+        assert script.count("[Host A]") >= 6 and script.count("[Host B]") >= 6
