@@ -1,0 +1,275 @@
+{
+  "date": "2026-11-07",
+  "generated_at": "2026-11-06T22:21:10.608475+00:00",
+  "projects": [
+    {
+      "repo": "heydamir/unslop",
+      "url": "https://github.com/heydamir/unslop",
+      "description": "A Claude skill that turns vibecoded, AI-looking UI into a designed interface",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 10689,
+      "delta_stars": 956,
+      "is_new": false,
+      "created_at": "2026-10-29T15:41:21Z",
+      "pushed_at": "2026-11-01T16:46:10Z",
+      "license": "CC-BY-4.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "For Claude Code, copy the skill into your skills folder.\n\n```bash\ngit clone https://github.com/heydamir/unslop\nmkdir -p ~/.claude/skills && cp -r unslop/skills/unslop ~/.claude/skills/\n```\n\nFor a single project, copy it into `.claude/skills/` inside that project instead.\n\nFor Codex, ask it to install the skill straight from this repo.\n\n```\n$skill-installer install https://github.com/heydamir/unslop/tree/main/skills/unslop\n```\n\nOr copy it by hand into `~/.agents/skills/`, or into `.agents/skills/` inside a single project.\n\n```bash\ngit clone https://github.com/heydamir/unslop\nmkdir -p ~/.agents/skills && cp -r unslop/skills/unslop ~/.agents/skills/\n```\n\nTo snapshot a live site or create a story video, install Playwright and its Chromium browser from the project directory where you run the skill:\n\n```bash\nnpm install -D playwright\nnpx playwright install chromium\n```\n\nStory videos also require ffmpeg installed and available on your PATH.",
+      "readme_intro": "Created by Damir Sokolovsky ([@heydamir](https://x.com/heydamir)), who started the [Unslopping series](https://x.com/heydamir/status/2115063463063998736) on X. unslop is a skill for Claude Code and Codex that turns vibecoded, AI-looking UI into a designed interface with its own character. It finds the slop first, the purple gradients, glows, emoji labels, shouty copy and uneven spacing, then sets a direction from your product and fixes the screen pass by pass like a designer doing a redline review. It works in whatever your screen is built with, like Next.js, React, Vue, Svelte, Tailwind or plain HTML and CSS, on dashboards, apps and landing pages, and even on a live site when all you have is a link.",
+      "score": 0.5301,
+      "score_parts": {
+        "velocity": 0.8004,
+        "vel_rel": 0.9091,
+        "vel_abs": 0.6373,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.0,
+        "days_in_pool": 2
+      },
+      "affinity": 0.0
+    },
+    {
+      "repo": "deepseek-ai/dsh-superagent-prototype",
+      "url": "https://github.com/deepseek-ai/dsh-superagent-prototype",
+      "description": "Towards a More Autonomous Agent System",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 20220,
+      "delta_stars": 769,
+      "is_new": false,
+      "created_at": "2026-10-31T09:32:46Z",
+      "pushed_at": "2026-11-03T09:29:14Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "",
+      "readme_intro": "> **Research prototype for reference only, not an official DeepSeek product.** This code grew out of our team's day-to-day development work, with much of the engineering done by coding agents. Treat it as research code, not production-ready software. It may still contain bugs, and its coding style and engineering practices may be inconsistent. Review and adapt it before using it in your own environment. > We have adapted it for publication, so it is not identical to our internal version or the implementation described in *Exploring Super-agent Design: Towards a More Autonomous Agent System*. Some designs discussed in the article are directions for future development and are not implemented in this prototype. dsh-superagent is a proactive coding agent for one GitHub repository, packaged as ",
+      "score": 0.5186,
+      "score_parts": {
+        "velocity": 0.696,
+        "vel_rel": 0.8182,
+        "vel_abs": 0.5127,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 2
+      },
+      "affinity": 0.5
+    },
+    {
+      "repo": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "description": "Skills for Real Engineers. Straight from my .agents directory.",
+      "language": "Shell",
+      "topics": [],
+      "stars": 316636,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-02-03T11:15:53Z",
+      "pushed_at": "2026-11-05T10:40:01Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "A plugin updates itself. [skills.sh](https://skills.sh/mattpocock/skills) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.",
+      "readme_intro": "[ ](https://skills.sh/mattpocock/skills) My agent skills that I use every day to do real engineering - not vibe coding. Developing real applications is hard. Approaches like GSD, BMAD, and Spec-Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve. These skills are designed to be small, easy to adapt, and composable. They work with any model. They're based on decades of engineering experience. Hack around with them. Make them your own. Enjoy. If you want to keep up with changes to these skills, and any new ones I create, you can join ~60,000 other devs on my newsletter: [Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)",
+      "score": 0.5033,
+      "score_parts": {
+        "velocity": 0.9059,
+        "vel_rel": 1.0,
+        "vel_abs": 0.7648,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 0
+      },
+      "affinity": 0.5
+    }
+  ],
+  "meta": {
+    "pick_repo": "heydamir/unslop",
+    "runner_up_repos": [
+      "deepseek-ai/dsh-superagent-prototype",
+      "mattpocock/skills"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 32,
+    "excluded_recent": 8,
+    "fresh_candidates": 24,
+    "widen_pass": false,
+    "pool_by_source": {
+      "trending": 4,
+      "new": 25,
+      "topic": 2,
+      "news": 1
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "storytold/craft-anything",
+    "yesterday_pick_delta": 2996,
+    "candidate_audit": [
+      {
+        "repo": "mattpocock/skills",
+        "stars": 316636,
+        "delta_stars": null,
+        "language": "Shell",
+        "license": "MIT",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "better-auth/better-auth",
+        "stars": 30629,
+        "delta_stars": 24,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "stars": 25550,
+        "delta_stars": 84,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "deepseek-ai/dsh-superagent-prototype",
+        "stars": 20220,
+        "delta_stars": 769,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "storytold/craft-anything",
+        "stars": 17835,
+        "delta_stars": 2996,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "seedds/nxnative",
+        "stars": 12920,
+        "delta_stars": 431,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "ccch1mneyyy/dsh-Go",
+        "stars": 12899,
+        "delta_stars": 1509,
+        "language": "Dart",
+        "license": "AGPL-3.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "heydamir/unslop",
+        "stars": 10689,
+        "delta_stars": 956,
+        "language": "JavaScript",
+        "license": "CC-BY-4.0",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "pengchujin/aerial-tv",
+        "stars": 10336,
+        "delta_stars": 378,
+        "language": "Kotlin",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "NVIDIA/auto-ontology",
+        "stars": 8912,
+        "delta_stars": 1693,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "HeyPuter/everything",
+        "stars": 7450,
+        "delta_stars": 179,
+        "language": "JavaScript",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "l0ng-ai/openidea",
+        "stars": 7423,
+        "delta_stars": 685,
+        "language": "TypeScript",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "wangzan101/Mika",
+        "stars": 7385,
+        "delta_stars": 312,
+        "language": "Kotlin",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "ly05010419/MacNativeGames",
+        "stars": 7187,
+        "delta_stars": 85,
+        "language": "C",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "rddmwmddr/android-ad-cleaner",
+        "stars": 6738,
+        "delta_stars": 191,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "simbasjungles/free-my-tv",
+        "stars": 5968,
+        "delta_stars": 44,
+        "language": "Java",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "Jakeschincariol/day-trader-skill",
+        "stars": 5768,
+        "delta_stars": 206,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "amosblomqvist/learnharness",
+        "stars": 5716,
+        "delta_stars": 165,
+        "language": "TypeScript",
+        "license": "AGPL-3.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "patch-gg/pixelfx",
+        "stars": 5585,
+        "delta_stars": 340,
+        "language": "JavaScript",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "valentderah/totk-pc-recomp",
+        "stars": 5378,
+        "delta_stars": 243,
+        "language": "C",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      }
+    ],
+    "audit_semantics": "v5"
+  }
+}
