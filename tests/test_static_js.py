@@ -271,3 +271,10 @@ def test_hero_card_is_enriched() -> None:
     css = _read("style.css")
     assert ".podcast-topic-chip" in css
     assert ".host-voice" in css
+
+
+def test_chapter_tag_does_not_cut_latin_words() -> None:
+    """短标题截到 6 字时若切在英文单词中间，要丢掉残缺拉丁尾巴（英伟达用Ve → 英伟达用）。"""
+    app = _read("app.js")
+    assert "/[A-Za-z]$/.test(tag)" in app
+    assert "replace(/[A-Za-z]+$/" in app
