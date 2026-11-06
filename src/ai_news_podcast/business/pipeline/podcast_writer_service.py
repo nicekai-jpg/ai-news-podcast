@@ -522,7 +522,23 @@ def _ensure_proper_ending(script: str) -> str:
     if has_ending:
         return script
 
-    # 脚本被截断，追加标准结束语
+    # 脚本被截断：先丢掉最后半句（模型 max_tokens 截断时常见 "[Host A] 游戏这边"），
+    # 再追加标准结束语，避免出现「半句话 + 道别」的听感断裂。
+    lines = stripped.splitlines()
+    while lines:
+        tail = lines[-1].strip()
+        if not tail:
+            lines.pop()
+            continue
+        if tail.startswith(("[Host A]", "[Host B]", "[CHAPTER]")) and not re.search(
+            r"[。！？.!?…”」』]$", tail
+        ):
+            lines.pop()
+            continue
+        break
     logger.warning("脚本被截断，自动追加标准结束语")
-    closing_lines = """\n[Host A] 好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！\n[Host B] 拜拜！"""
-    return stripped + closing_lines + "\n"
+    closing_lines = (
+        "\n[Host A] 好了听众朋友们，以上就是今天的今日AI看点。感谢收听，我们明天见！"
+        "\n[Host B] 拜拜！"
+    )
+    return "\n".join(lines) + closing_lines + "\n"
