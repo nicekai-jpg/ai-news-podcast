@@ -1,0 +1,769 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-07",
+  "date_label": "2026年11月07日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": true
+  },
+  "podcast": {
+    "title": "今日AI看点 | 2026-11-07",
+    "subtitle": "DeepSeek带火稀疏计算——这可能是本周最值得关注的AI趋势",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-07.mp3",
+    "duration_seconds": 101.101,
+    "duration_label": "01:41",
+    "speech_seconds": 92.86,
+    "segment_count": 17,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 17,
+      "segments_url": "episodes/2026-11-07/playlist.json",
+      "text_url": "episodes/2026-11-07.txt"
+    }
+  },
+  "lead": {
+    "text": "DeepSeek带动的稀疏计算热潮，正把AI竞争从模型参数规模推向芯片与系统效率。国产芯片公司近10亿元融资、季度营收数倍增长，为这一技术路线添上商业注脚。\n\n另一条主线来自6G研发。NVIDIA通过开放Aerial、Sionna等工具降低网络实验门槛，显示科技巨头正试图用开源生态提前定义下一代通信标准。",
+    "source": "report_lead",
+    "source_file": "data/reports/daily_report_2026-11-07.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 25,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 6,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 17,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 10,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "开场",
+      "start": 1.0,
+      "label": "00:01",
+      "source": "script"
+    },
+    {
+      "title": "今日头条",
+      "start": 13.226,
+      "label": "00:13",
+      "source": "script"
+    },
+    {
+      "title": "其他值得关注",
+      "start": 26.324,
+      "label": "00:26",
+      "source": "script"
+    },
+    {
+      "title": "项目雷达",
+      "start": 83.999,
+      "label": "01:24",
+      "source": "script"
+    },
+    {
+      "title": "收尾",
+      "start": 93.58,
+      "label": "01:34",
+      "source": "script"
+    }
+  ],
+  "report": {
+    "title": "✨ 稀疏算力与开源网络竞逐新入口",
+    "char_count": 2105,
+    "reading_minutes": 5,
+    "lead": "DeepSeek带动的稀疏计算热潮，正把AI竞争从模型参数规模推向芯片与系统效率。国产芯片公司近10亿元融资、季度营收数倍增长，为这一技术路线添上商业注脚。\n\n另一条主线来自6G研发。NVIDIA通过开放Aerial、Sionna等工具降低网络实验门槛，显示科技巨头正试图用开源生态提前定义下一代通信标准。",
+    "deep_dives": [
+      {
+        "heading": "一、行业动态 DeepSeek牵引稀疏计算，国产芯片融资近10亿元",
+        "category": null,
+        "points": [],
+        "background": null,
+        "breakthrough": null,
+        "impact": null,
+        "raw_sections": [
+          "根据量子位报道，DeepSeek引发的稀疏计算关注度正在向产业链传导，一家国产芯片公司获得近10亿元融资，其第三季度营收也实现数倍增长。稀疏计算通过减少实际参与运算的参数或连接，有望降低推理时延、内存占用与能耗。",
+          "这一动向意味着，AI芯片的竞争指标正从峰值算力转向“有效算力”——单位电力、芯片面积和成本能够产生多少有效输出。若软件栈、编译器与模型协同优化同步成熟，国产厂商有机会从替代单一 workloads 转向参与底层计算范式重构。",
+          "近10亿元融资和营收倍增表明资本已开始重新评估相关公司的商业价值，但融资规模不能替代客户结构、交付能力和毛利率等指标。后续应重点观察其产品是否进入主流大模型推理集群，以及高增长能否持续而非受短期备货影响。"
+        ]
+      },
+      {
+        "heading": "二、开源项目 NVIDIA开放6G工具链，抢占下一代网络入口",
+        "category": null,
+        "points": [],
+        "background": null,
+        "breakthrough": null,
+        "impact": null,
+        "raw_sections": [
+          "NVIDIA官方博客显示，其在约一年前开源无线软件Aerial，并将其与Sionna及更广泛的工具套件组合，用于加速下一代6G网络开发。开放这些工具后，研究者可以基于共同软件环境开展网络设计、仿真和算法验证，而不必完全依赖封闭平台。",
+          "对产业而言，开源的价值不只是“免费使用”，更重要的是建立可复现、可比较的研发基线。6G仍处于标准演进早期，谁能提供更易扩展的工具链，谁就可能影响研究者的默认选择，并顺势推动硬件接口、开发范式与生态标准。",
+          "开源并不等于标准已经确定。NVIDIA的工具优势仍需接受跨厂商互操作性、开源社区活跃度以及运营商部署意愿的检验；只有当实验方案被更广泛的产业参与者采用，工具影响力才会真正转化为6G标准话语权。"
+        ]
+      }
+    ],
+    "frontier": [],
+    "editor_verdict": "1. **算力竞争正从堆规模转向算效率。** 稀疏计算若能兑现更低时延与能耗，芯片增长才会从概念红利变成订单，关键在软件栈适配与规模交付。\n2. **6G话语权先从工具开放起步。** NVIDIA开源Aerial与Sionna有助于复现实验、形成可比较方案，但最终仍取决于跨厂商互操作和标准采纳。\n3. **落地需要新的成本与安全语言。** 多智能体核算、CyberGym纪录与高校AI教学，分别指向企业治理、能力验证和人才重构；长期壁垒是可审计、可复现、可规模化。",
+    "toc": [
+      {
+        "anchor": "deep-dive-1",
+        "title": "一、行业动态 DeepSeek牵引稀疏计算，国产芯片融资近10亿元"
+      },
+      {
+        "anchor": "deep-dive-2",
+        "title": "二、开源项目 NVIDIA开放6G工具链，抢占下一代网络入口"
+      }
+    ],
+    "raw_paragraphs": [
+      "根据OpenAI Blog的消息，**澳大利亚高校正在扩大ChatGPT使用范围，将AI直接纳入教学与学习过程**，培养“AI原生”毕业生。重点不再只是提供访问权限，而是重构课程、作业与评价方式，以适应AI成为基础工作工具后的岗位要求。",
+      "在多智能体成本核算方面，arXiv预印本**《双账本模型》提出按业务交易粒度记录多智能体系统成本**，覆盖多云、多模型、编排框架及核心业务系统。该思路试图把成本核算从粗放的Token计费，推进到可分摊、可归因的交易级管理，但其方法仍需更多实践验证。",
+      "此外，安全领域也取得新突破。**一款师承世界冠军的中国AI在“AI安全世界杯”CyberGym中取得99.4%的成绩**，刷新世界纪录并登顶全球榜首。该结果展示了顶尖方法在网络安全任务中的潜力，但单一榜单表现仍需结合泛化能力、真实环境稳定性和独立复现结果判断。"
+    ],
+    "source_file": "data/reports/daily_report_2026-11-07.md"
+  },
+  "sources": {
+    "total_all": 24,
+    "total_main": 6,
+    "shown": 24,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 9
+      },
+      {
+        "publisher": "arXiv 论文",
+        "group": "arXiv 论文",
+        "count": 9
+      },
+      {
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "count": 4
+      },
+      {
+        "publisher": "NVIDIA",
+        "group": "NVIDIA",
+        "count": 1
+      },
+      {
+        "publisher": "OpenAI",
+        "group": "OpenAI",
+        "count": 1
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "DeepSeek带火稀疏计算，国产芯片公司加速突围：这家公司又融近10亿",
+        "summary": "Q3营收实现数倍增长",
+        "link": "https://www.qbitai.com/2026/11/508155.html",
+        "published_at": "2026-11-06T07:00:29+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "NVIDIA 官方博客",
+        "group": "NVIDIA",
+        "source_name": "NVIDIA 官方博客",
+        "category": "official",
+        "title": "How NVIDIA Open Source Tools Are Helping Researchers Build Next-Generation 6G Networks",
+        "summary": "A year ago, NVIDIA open sourced its Aerial wireless software, joining Sionna and a broader suite of open source tools for accelerating next-generation 6G network development. Together, they give researchers a foundation for testing ideas, c",
+        "link": "https://blogs.nvidia.com/blog/telco-open-source-tools-research-6g-networks/",
+        "published_at": "2026-11-06T16:00:35+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "Australian universities are creating AI-native graduates",
+        "summary": "Australian universities are expanding access to ChatGPT and bringing AI into teaching and learning to prepare students for an AI-enabled workforce.",
+        "link": "https://openai.com/index/australian-universities-ai-native-graduates",
+        "published_at": "2026-11-05T17:00:00+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "The Two-Ledger Model: Transaction-Grain Cost Accounting for Multi-Agent AI Systems Across Clouds, Models, and Systems of Record",
+        "summary": "arXiv:2611.06989v1 Announce Type: new Abstract: Enterprises run business transactions through multi-agent AI systems spanning clouds, large language models (LLMs), orchestration harnesses, and systems of record. Finance receives AI cost onl",
+        "link": "https://arxiv.org/abs/2611.06989",
+        "published_at": "2026-11-06T05:00:00+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "99.4%登顶全球第一！这个中国AI师承世界冠军",
+        "summary": "一举刷新「AI安全世界杯」CyberGym世界纪录",
+        "link": "https://www.qbitai.com/2026/11/508107.html",
+        "published_at": "2026-11-06T05:01:47+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "少数派",
+        "group": "科技媒体",
+        "source_name": "少数派",
+        "category": "tools",
+        "title": "更高能效比，带来新惊喜：M6 款 MacBook Pro 初探",
+        "summary": "M6 芯片提供了足够的性能保障，无论修图、视频剪辑还是运行入门级的 AI 大模型，它都能应对。在此基础上，你原本可能需要加在 Pro 级 SoC 上的预算就能省下来，花给内存或者硬盘。 查看全文",
+        "link": "https://sspai.com/post/118570",
+        "published_at": "2026-11-06T03:06:53+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "香港金融科技周 x StartmeupHK 2026主论坛：以「金融+」、「AI+」及全球拓展开拓新机遇",
+        "summary": "香港金融科技周 x StartmeupHK 2026踏入第11届",
+        "link": "https://www.qbitai.com/2026/11/507988.html",
+        "published_at": "2026-11-06T03:36:34+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Hundreds of Artex AI hacking tools found publicly exposed to the web",
+        "summary": "Security researchers found hundreds of servers hosting the penetration testing tool Artex exposed to the internet, allowing anyone access to the hacking tool.",
+        "link": "https://techcrunch.com/2026/11/06/hundreds-of-artex-ai-hacking-tools-found-publicly-exposed-to-the-web/",
+        "published_at": "2026-11-06T18:44:38+00:00"
+      },
+      {
+        "rank": 9,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Ramp data shows AI spending stalling just as Anthropic nears its IPO",
+        "summary": "AI usage keeps climbing, but spending has stalled. Price cuts and smarter cost controls among the biggest spenders could challenge investor assumptions about AI hypergrowth.",
+        "link": "https://techcrunch.com/2026/11/06/ramp-data-shows-ai-spending-stalling-just-as-anthropic-nears-its-ipo/",
+        "published_at": "2026-11-06T15:54:47+00:00"
+      },
+      {
+        "rank": 10,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "AI短剧门槛降降降！实测即梦短剧工作室：剧本分镜预演一条龙，伙伴计划长期护航",
+        "summary": "Seedance 2.5 单秒低至0.15元",
+        "link": "https://www.qbitai.com/2026/11/507972.html",
+        "published_at": "2026-11-06T03:20:05+00:00"
+      },
+      {
+        "rank": 11,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "AI is dramatically accelerating AI research",
+        "summary": "HN 热门讨论（94 points, 40 评论）by yurivish",
+        "link": "https://www.planned-obsolescence.org/p/ai-is-dramatically-accelerating-ai",
+        "published_at": "2026-11-06T20:27:23+00:00"
+      },
+      {
+        "rank": 12,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "一边赛博修仙，一边卖家电！AI短剧开始冲双11业绩了？",
+        "summary": "挑战商业视频的高难度场景",
+        "link": "https://www.qbitai.com/2026/11/508118.html",
+        "published_at": "2026-11-06T06:54:17+00:00"
+      },
+      {
+        "rank": 13,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "Label-Wording Augmentation in a Typed-Decision Encoder: Gains on Unfamiliar Words, Not on Abbreviations or Codes",
+        "summary": "Typed-decision models score options that the caller supplies at request time, so their accuracy depends on label wording that the model's developer does not control. We compare two releases of a 307M-parameter multilingual cross-encoder, Ru",
+        "link": "https://arxiv.org/abs/2611.08439v1",
+        "published_at": "2026-11-05T18:31:24+00:00"
+      },
+      {
+        "rank": 14,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "40C3 halfnarp – Submit talk preferences to aid scheduling",
+        "summary": "HN 热门讨论（28 points, 6 评论）by hanemile",
+        "link": "https://halfnarp.events.ccc.de",
+        "published_at": "2026-11-06T18:16:43+00:00"
+      },
+      {
+        "rank": 15,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Show HN: Agents infer Lego mechanisms from sources, then animate them",
+        "summary": "HN 热门讨论（16 points, 0 评论）by antelocnova",
+        "link": "https://github.com/anteloc/ldraw-mecha/tree/v0.5.0",
+        "published_at": "2026-11-06T19:41:20+00:00"
+      },
+      {
+        "rank": 16,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · DeepSeek",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · DeepSeek",
+        "category": "research",
+        "title": "Cleaning or Recalling? Knowledge Dependence in LLM-based Data Cleaning [Experiment, Analysis & Benchmark]",
+        "summary": "High scores on public data-cleaning benchmarks can reflect knowledge of familiar entities, making it difficult to assess how well an LLM repairs unfamiliar data. We present CoRE (Cleaning or Recalling), a protocol comparing public benchmark",
+        "link": "https://arxiv.org/abs/2611.08106v1",
+        "published_at": "2026-11-05T14:44:44+00:00"
+      },
+      {
+        "rank": 17,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Restaurant Delivery Payment-Skimming Campaign",
+        "summary": "HN 热门讨论（44 points, 19 评论）by fiej",
+        "link": "https://www.infohawk.com/news/2026-11-05-scamwich-restaurant-skimming",
+        "published_at": "2026-11-06T19:19:27+00:00"
+      },
+      {
+        "rank": 18,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "How a Blue Wave midterm might reshape the AI industry",
+        "summary": "Democrats’ historic victories in this week’s U.S. midterm elections could also transform the tech industry. The public voted on 41 data center-related ballot measures on Tuesday — in all but one, the majority voted to impose more restrictio",
+        "link": "https://techcrunch.com/podcast/how-a-blue-wave-midterm-might-reshape-the-ai-industry/",
+        "published_at": "2026-11-06T18:00:00+00:00"
+      },
+      {
+        "rank": 19,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · DeepSeek",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · DeepSeek",
+        "category": "research",
+        "title": "Unpacking the Compute Efficiency of Strong-to-Weak OPD against GRPO",
+        "summary": "On-policy distillation (OPD) trains a student on its own rollouts under a frozen teacher's per-token supervision. Does this dense signal reduce the training FLOPs needed to reach a target accuracy compared with reinforcement learning? We sy",
+        "link": "https://arxiv.org/abs/2611.08453v1",
+        "published_at": "2026-11-05T18:47:05+00:00"
+      },
+      {
+        "rank": 20,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "Understanding AI from the Inside: The State of Mechanistic Interpretability for AI Safety",
+        "summary": "Neural networks are likely to be among the most consequential artefacts in human history. As these systems become more capable and autonomous, their potential to cause societal harm also grows, making AI safety one of the defining challenge",
+        "link": "https://arxiv.org/abs/2611.08438v1",
+        "published_at": "2026-11-05T18:30:54+00:00"
+      },
+      {
+        "rank": 21,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算与语言 (cs.CL)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算与语言 (cs.CL)",
+        "category": "research",
+        "title": "StepBack: Step-Level Error-Localized Resampling for Efficient Test-Time Reasoning",
+        "summary": "Self-consistency (SC) is a widely used decoding strategy for improving chain-of-thought reasoning, but it requires sampling many complete reasoning trajectories with a preset budget. Its efficient variants reduce the cost mainly by stopping",
+        "link": "https://arxiv.org/abs/2611.08403v1",
+        "published_at": "2026-11-05T18:12:49+00:00"
+      },
+      {
+        "rank": 22,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "Do You Miss the Nights We Spent Crafting Figures? Rethinking Teaser and Framework Figures in the Age of Generative AI",
+        "summary": "Scientific figures give research ideas a visual form through choices of abstraction, composition, and emphasis. Generative AI offers new ways to realize these choices, raising questions about explanatory clarity and purposeful visual expres",
+        "link": "https://arxiv.org/abs/2611.08486v1",
+        "published_at": "2026-11-05T18:59:33+00:00"
+      },
+      {
+        "rank": 23,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "VFlash: Fast, Accurate Visual Planning via Flash Primitive Decoding",
+        "summary": "Models for physical AI tasks, such as robotics and autonomous driving, need not reason solely in language. They can use visual plans--points, bounding boxes, and trajectories--to represent spatial goals and anticipate motion. However, autor",
+        "link": "https://arxiv.org/abs/2611.08449v1",
+        "published_at": "2026-11-05T18:44:43+00:00"
+      },
+      {
+        "rank": 24,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "group": "arXiv 论文",
+        "source_name": "arXiv 计算机视觉与多模态 (cs.CV)",
+        "category": "research",
+        "title": "Edge-Assisted Crowdsensing for Explainable Cyclist Safety Perception",
+        "summary": "Cyclist fatality rates remain high despite policy support for active travel, and autonomous vehicles add complexity to mixed traffic. Neither crash statistics nor multi-model detection pipelines scale to continuous monitoring of perceived s",
+        "link": "https://arxiv.org/abs/2611.08441v1",
+        "published_at": "2026-11-05T18:33:58+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": true,
+    "status": "pick",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": {
+      "repo": "heydamir/unslop",
+      "url": "https://github.com/heydamir/unslop",
+      "description": "A Claude skill that turns vibecoded, AI-looking UI into a designed interface",
+      "language": "JavaScript",
+      "topics": [],
+      "stars": 10689,
+      "delta_stars": 956,
+      "is_new": false,
+      "created_at": "2026-10-29T15:41:21Z",
+      "pushed_at": "2026-11-01T16:46:10Z",
+      "license": "CC-BY-4.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "For Claude Code, copy the skill into your skills folder.\n\n```bash\ngit clone https://github.com/heydamir/unslop\nmkdir -p ~/.claude/skills && cp -r unslop/skills/unslop ~/.claude/skills/\n```\n\nFor a single project, copy it into `.claude/skills/` inside that project instead.\n\nFor Codex, ask it to install the skill straight from this repo.\n\n```\n$skill-installer install https://github.com/heydamir/unslop/tree/main/skills/unslop\n```\n\nOr copy it by hand into `~/.agents/skills/`, or into `.agents/skills/` inside a single project.\n\n```bash\ngit clone https://github.com/heydamir/unslop\nmkdir -p ~/.agents/skills && cp -r unslop/skills/unslop ~/.agents/skills/\n```\n\nTo snapshot a live site or create a story video, install Playwright and its Chromium browser from the project directory where you run the skill:\n\n```bash\nnpm install -D playwright\nnpx playwright install chromium\n```\n\nStory videos also require ffmpeg installed and available on your PATH.",
+      "readme_intro": "Created by Damir Sokolovsky ([@heydamir](https://x.com/heydamir)), who started the [Unslopping series](https://x.com/heydamir/status/2115063463063998736) on X. unslop is a skill for Claude Code and Codex that turns vibecoded, AI-looking UI into a designed interface with its own character. It finds the slop first, the purple gradients, glows, emoji labels, shouty copy and uneven spacing, then sets a direction from your product and fixes the screen pass by pass like a designer doing a redline review. It works in whatever your screen is built with, like Next.js, React, Vue, Svelte, Tailwind or plain HTML and CSS, on dashboards, apps and landing pages, and even on a live site when all you have is a link.",
+      "score": 0.5301,
+      "score_parts": {
+        "velocity": 0.8004,
+        "vel_rel": 0.9091,
+        "vel_abs": 0.6373,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.0,
+        "days_in_pool": 2
+      },
+      "affinity": 0.0
+    },
+    "runner_ups": [
+      {
+        "repo": "deepseek-ai/dsh-superagent-prototype",
+        "url": "https://github.com/deepseek-ai/dsh-superagent-prototype",
+        "description": "Towards a More Autonomous Agent System",
+        "language": "TypeScript",
+        "topics": [],
+        "stars": 20220,
+        "delta_stars": 769,
+        "is_new": false,
+        "created_at": "2026-10-31T09:32:46Z",
+        "pushed_at": "2026-11-03T09:29:14Z",
+        "license": "MIT",
+        "has_install_docs": false,
+        "mentions": 0,
+        "readme_excerpt": "",
+        "readme_intro": "> **Research prototype for reference only, not an official DeepSeek product.** This code grew out of our team's day-to-day development work, with much of the engineering done by coding agents. Treat it as research code, not production-ready software. It may still contain bugs, and its coding style and engineering practices may be inconsistent. Review and adapt it before using it in your own environment. > We have adapted it for publication, so it is not identical to our internal version or the implementation described in *Exploring Super-agent Design: Towards a More Autonomous Agent System*. Some designs discussed in the article are directions for future development and are not implemented in this prototype. dsh-superagent is a proactive coding agent for one GitHub repository, packaged as ",
+        "score": 0.5186,
+        "score_parts": {
+          "velocity": 0.696,
+          "vel_rel": 0.8182,
+          "vel_abs": 0.5127,
+          "hands_on": 0.6,
+          "cross_heat": 0.0,
+          "affinity": 0.5,
+          "days_in_pool": 2
+        },
+        "affinity": 0.5
+      },
+      {
+        "repo": "mattpocock/skills",
+        "url": "https://github.com/mattpocock/skills",
+        "description": "Skills for Real Engineers. Straight from my .agents directory.",
+        "language": "Shell",
+        "topics": [],
+        "stars": 316636,
+        "delta_stars": null,
+        "is_new": true,
+        "created_at": "2026-02-03T11:15:53Z",
+        "pushed_at": "2026-11-05T10:40:01Z",
+        "license": "MIT",
+        "has_install_docs": false,
+        "mentions": 0,
+        "readme_excerpt": "A plugin updates itself. [skills.sh](https://skills.sh/mattpocock/skills) copies editable files into your project, and you update them by hand. Pick one per agent, because installing both gives you every skill twice.",
+        "readme_intro": "[ ](https://skills.sh/mattpocock/skills) My agent skills that I use every day to do real engineering - not vibe coding. Developing real applications is hard. Approaches like GSD, BMAD, and Spec-Kit try to help by owning the process. But while doing so, they take away your control and make bugs in the process hard to resolve. These skills are designed to be small, easy to adapt, and composable. They work with any model. They're based on decades of engineering experience. Hack around with them. Make them your own. Enjoy. If you want to keep up with changes to these skills, and any new ones I create, you can join ~60,000 other devs on my newsletter: [Sign Up To The Newsletter](https://www.aihero.dev/s/skills-newsletter)",
+        "score": 0.5033,
+        "score_parts": {
+          "velocity": 0.9059,
+          "vel_rel": 1.0,
+          "vel_abs": 0.7648,
+          "hands_on": 0.6,
+          "cross_heat": 0.0,
+          "affinity": 0.5,
+          "days_in_pool": 0
+        },
+        "affinity": 0.5
+      }
+    ],
+    "yesterday": {
+      "repo": "storytold/craft-anything",
+      "delta_stars": 2996,
+      "date": ""
+    },
+    "candidates": {
+      "total": 32,
+      "excluded_recent": 8,
+      "fresh": 24,
+      "semantics": "v5",
+      "detail_available": true,
+      "preview": [
+        {
+          "repo": "mattpocock/skills",
+          "stars": 316636,
+          "delta_stars": null,
+          "language": "Shell",
+          "license": "MIT",
+          "exclusion_reason": "selected"
+        },
+        {
+          "repo": "better-auth/better-auth",
+          "stars": 30629,
+          "delta_stars": 24,
+          "language": "TypeScript",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "deepseek-ai/DeepInfer",
+          "stars": 25550,
+          "delta_stars": 84,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "deepseek-ai/dsh-superagent-prototype",
+          "stars": 20220,
+          "delta_stars": 769,
+          "language": "TypeScript",
+          "license": "MIT",
+          "exclusion_reason": "selected"
+        },
+        {
+          "repo": "storytold/craft-anything",
+          "stars": 17835,
+          "delta_stars": 2996,
+          "language": "Rust",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "seedds/nxnative",
+          "stars": 12920,
+          "delta_stars": 431,
+          "language": "Python",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "ccch1mneyyy/dsh-Go",
+          "stars": 12899,
+          "delta_stars": 1509,
+          "language": "Dart",
+          "license": "AGPL-3.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "heydamir/unslop",
+          "stars": 10689,
+          "delta_stars": 956,
+          "language": "JavaScript",
+          "license": "CC-BY-4.0",
+          "exclusion_reason": "selected"
+        },
+        {
+          "repo": "pengchujin/aerial-tv",
+          "stars": 10336,
+          "delta_stars": 378,
+          "language": "Kotlin",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "NVIDIA/auto-ontology",
+          "stars": 8912,
+          "delta_stars": 1693,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "HeyPuter/everything",
+          "stars": 7450,
+          "delta_stars": 179,
+          "language": "JavaScript",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "l0ng-ai/openidea",
+          "stars": 7423,
+          "delta_stars": 685,
+          "language": "TypeScript",
+          "license": "Apache-2.0",
+          "exclusion_reason": "score_rank"
+        }
+      ]
+    },
+    "message": "今日主推项目"
+  },
+  "quality": {
+    "mode": "fallback",
+    "chars": 795,
+    "turns": 17,
+    "host_a_chars": 425,
+    "host_b_chars": 240,
+    "host_char_ratio": 0.361,
+    "chapters": 5
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-11-07.json",
+      "report": "data/reports/daily_report_2026-11-07.md",
+      "radar": "data/gh_radar/radar_2026-11-07.json",
+      "playlist": "site/episodes/2026-11-07/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": []
+  }
+}
