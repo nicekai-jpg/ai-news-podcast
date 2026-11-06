@@ -110,6 +110,53 @@ def _script_looks_valid(script: str) -> bool:
     return stats["unmarked_ratio"] <= _MAX_UNMARKED_RATIO
 
 
+_MAX_SALVAGE_CHARS = 5200
+
+
+def _salvage_dialogue(script: str) -> str:
+    """模型常把「写稿计划」和正式台词混在一起输出（2026-11-06 实测 19k 字符里混着
+    `Need no ...`/`Let's count rough.` 这类规划行，正文被切成很多段）。
+
+    这里取**最长的一段连续对白**（[Host A]/[Host B]/[CHAPTER] 行），它通常就是模型
+    最后写出的完整成稿；碎片化的草稿段不采用，宁可走 fallback 也不拼一份前后错乱的稿。
+    """
+    runs: list[list[str]] = []
+    current: list[str] = []
+    for raw_line in str(script).splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        if re.match(r"^\[(?:Host [AB]|CHAPTER)\]", line):
+            current.append(line)
+        elif current:
+            runs.append(current)
+            current = []
+    if current:
+        runs.append(current)
+    if not runs:
+        return ""
+    return "\n".join(max(runs, key=len)) + "\n"
+
+
+def _trim_script(script: str, max_chars: int = _MAX_SALVAGE_CHARS) -> str:
+    """超长稿按行截断到目标长度，并补结束语；优先在章节/整行边界切。"""
+    kept: list[str] = []
+    total = 0
+    for raw_line in script.splitlines():
+        if total + len(raw_line) + 1 > max_chars:
+            break
+        kept.append(raw_line)
+        total += len(raw_line) + 1
+    return _ensure_proper_ending("\n".join(kept) + "\n")
+
+
+def _accept_script(script: str) -> str:
+    """接受 LLM 稿前的最后一道整理：超长就截断，保证有结束语。"""
+    if len(re.sub(r"\s+", "", script)) > _MAX_SALVAGE_CHARS:
+        return _trim_script(script)
+    return script
+
+
 def _protect_chapter_markers(text: str) -> str:
     """把独立的 [CHAPTER] 标题行换成清洗安全的哨兵，避免标题被 clean_tts_text 删掉。"""
     protected: list[str] = []
@@ -159,13 +206,25 @@ def _has_cjk(text: str) -> bool:
 
 
 def _pick_zh_summary(story: dict[str, Any]) -> str:
-    """从上下文里挑一条中文摘要；没有中文就返回空（中文主持不要念英文原文）。"""
+    """从上下文里挑中文摘要（最多两句）；没有中文就返回空（中文主持不要念英文原文）。"""
     summaries = (story.get("context") or {}).get("factual_summary") or []
+    picked: list[str] = []
     for item in summaries:
         text = str(item).strip()
         if text and _has_cjk(text):
-            return text
-    return ""
+            picked.append(text)
+        if len(picked) >= 2:
+            break
+    return " ".join(picked)
+
+
+def _pick_zh_background(story: dict[str, Any]) -> str:
+    """取中文背景补充（没有中文就返回空）。"""
+    background = (story.get("context") or {}).get("historical_background") or ""
+    text = str(background).strip()
+    if not text or not _has_cjk(text):
+        return ""
+    return text[:160]
 
 
 def _build_fallback(
@@ -173,7 +232,11 @@ def _build_fallback(
     episode_date: datetime,
     podcast_title: str,
 ) -> str:
-    """无 LLM 时的双人对谈兜底脚本：带章节、避免英文原文、避免「第一个大头条」这类编号腔。"""
+    """无 LLM / 输出不合格时的双人对谈兜底：带章节、中文摘要优先、无编号腔、含雷达。
+
+    2026-11-06 的教训：旧模板只有 ~500 字符/12 轮，TTS 出来 1 分钟，听众体验极差；
+    这里扩到 5 条素材、每条 2 轮，保证兜底稿也有几分钟可听的正文。
+    """
     stories = [
         story
         for story in (brief.get("stories") or [])
@@ -184,7 +247,7 @@ def _build_fallback(
     lines.append(
         f"[Host A] 听众朋友们好，欢迎收听{podcast_title}，我是林夏。今天是{_cn_date(episode_date)}。"
     )
-    lines.append("[Host B] 大家好，我是陈默。今天挑几条值得展开的消息，和大家聊聊。")
+    lines.append("[Host B] 大家好，我是陈默。今天消息不少，我们从最值得展开的几条开始，挑重点聊。")
 
     if stories:
         lines.append("[CHAPTER] 今日头条")
@@ -193,18 +256,24 @@ def _build_fallback(
         lines.append(f"[Host A] 先看今天的头条：{first_title}。")
         summary = _pick_zh_summary(first)
         if summary:
-            lines.append(f"[Host B] 具体来说，{summary}")
+            lines.append(f"[Host B] 简单梳理一下：{summary}")
         else:
-            lines.append("[Host B] 目前披露的信息还比较有限，我们等更多细节出来再看。")
+            lines.append("[Host B] 这条目前披露的信息还比较有限，我们等更多细节出来再看。")
 
-        for story in stories[1:3]:
+        lines.append("[CHAPTER] 其他值得关注")
+        for story in stories[1:5]:
             title = str(story.get("representative_title") or "").strip()
             if not title:
                 continue
-            lines.append(f"[Host A] 另一条值得关注的是：{title}。")
             summary = _pick_zh_summary(story)
+            background = _pick_zh_background(story)
+            lines.append(f"[Host A] 接下来这条是：{title}。")
             if summary:
-                lines.append(f"[Host B] 这条的重点是，{summary}")
+                lines.append(f"[Host B] 我的理解是：{summary}")
+            if background:
+                lines.append(f"[Host A] 补充一点背景：{background}")
+            if not summary and not background:
+                lines.append("[Host B] 这条的细节还在陆续放出，先记下来，后面再跟。")
 
     radar = brief.get("radar") or {}
     pick_repo = str((radar.get("meta") or {}).get("pick_repo") or "").strip()
@@ -214,15 +283,66 @@ def _build_fallback(
         lines.append("[Host B] 好，这个先记下，回头我们细聊。")
 
     lines.append("[CHAPTER] 收尾")
-    lines.append("[Host B] 今天的分享就到这里。")
+    lines.append("[Host B] 今天的分享就到这里，信息不少，建议收藏慢慢看。")
     lines.append("[Host A] 感谢收听，我们明天见。")
     lines.append("[Host B] 拜拜！")
     return "\n".join(lines) + "\n"
 
 
-# ---------------------------------------------------------------------------
-# 主入口
-# ---------------------------------------------------------------------------
+_HARD_CONSTRAINT = (
+    "\n\n【输出格式硬约束】只输出逐行 [Host A]/[Host B] 对话，"
+    "两位主持人交替发言、轮次大致均衡（各占一半）；总字数控制在 1500-4500 字符；"
+    "不要输出任何思考、计划、分析、英文说明、格式要求复述或自我检查；"
+    "不要出现 URL、Markdown 标记或编号清单。"
+)
+
+
+def _pick_writer_script(
+    writer_prompt: str, llm_cfg: dict[str, Any]
+) -> tuple[str | None, str, str | None]:
+    """跑 writer 并挑出可用脚本：原文 → 抽出对白 → 硬约束重试（原文/抽对白）。
+
+    返回 (script | None, mode, fallback_reason)。
+    2026-11-06 实测：模型一次输出 19k 字符，把 `Need no ...`/`Let's count rough.`
+    这类写稿计划混在 [Host A] 行之间。直接整篇丢弃会退化成 1 分钟模板稿，
+    所以先抽出真正的 [Host A]/[Host B]/[CHAPTER] 行再判定。
+    """
+    raw_writer = _call_llm(writer_prompt, dict(llm_cfg, temperature=0.85))
+    if not raw_writer:
+        return None, "fallback", "Writer Agent 生成失败，已降级到 Fallback 模板"
+    logger.info("Writer Agent 播客生成成功")
+
+    candidate = _accept_script(raw_writer)
+    if _script_looks_valid(candidate):
+        return candidate, "Multi-Agent", None
+
+    salvaged = _accept_script(_salvage_dialogue(raw_writer))
+    if _script_looks_valid(salvaged):
+        logger.warning("Writer 输出混有计划文本，已抽出对话行后采用")
+        return salvaged, "Multi-Agent (salvaged)", None
+
+    stats = _script_stats(raw_writer)
+    logger.warning(
+        "Writer 输出不合格 (chars=%s, turns=%s, ratio=%.2f, unmarked=%.2f, chapters=%s)",
+        stats["chars"],
+        stats["turns"],
+        stats["host_char_ratio"],
+        stats["unmarked_ratio"],
+        stats["chapters"],
+    )
+    logger.warning("Writer 输出疑似思考过程或主持人口径失衡，带硬约束重试一次")
+    raw_retry = _call_llm(writer_prompt + _HARD_CONSTRAINT, dict(llm_cfg, temperature=0.7))
+    if raw_retry:
+        for mode, retry_candidate in (
+            ("Multi-Agent (retry)", _accept_script(raw_retry)),
+            ("Multi-Agent (retry salvaged)", _accept_script(_salvage_dialogue(raw_retry))),
+        ):
+            if retry_candidate and _script_looks_valid(retry_candidate):
+                logger.info("Writer Agent 重试成功")
+                return retry_candidate, mode, None
+
+    logger.warning("Writer 重试仍不合格，降级到 Fallback 模式")
+    return None, "fallback", "LLM 输出疑似思考过程或主持人口径失衡，已降级到 Fallback 模板"
 
 
 def generate_podcast(
@@ -233,12 +353,7 @@ def generate_podcast(
     writer_cfg: dict[str, Any] | None = None,
     llm_cfg: dict[str, Any] | None = None,
 ) -> tuple[str, list[str]]:
-    """
-    生成播客脚本 (双Agent双播客机制)。
-    Step 1: Editor Agent 提炼大纲
-    Step 2: Writer Agent 编写对谈播客
-    失败时退回退化版的双人对谈模板。
-    """
+    """生成播客脚本 (双Agent双播客机制)：Editor 提纲 → Writer 对谈；失败降级模板。"""
     cfg = writer_cfg or {}
     style_cfg = cfg.get("style", {})
     banned_words = style_cfg.get("banned_words", DEFAULT_BANNED_WORDS)
@@ -248,7 +363,7 @@ def generate_podcast(
     radar_material = _build_radar_text(brief.get("radar"))
     logger.info("素材文本 %d 字符，准备启动 Multi-Agent 编剧流程", len(material))
 
-    script = None
+    script: str | None = None
     mode_used = "fallback"
     fallback_reason: str | None = None
 
@@ -256,10 +371,8 @@ def generate_podcast(
         # --- Node 1: Editor ---
         editor_prompt = build_editor_prompt(material, episode_date, radar_material=radar_material)
         raw_editor = _call_llm(editor_prompt, llm_cfg)
-
         if raw_editor:
             logger.info("Editor Agent 生成大纲成功，准备注入 Writer 节点")
-            # --- Node 2: Writer ---
             writer_prompt = build_writer_prompt(
                 raw_editor,
                 episode_date,
@@ -267,37 +380,7 @@ def generate_podcast(
                 style_cfg,
                 has_radar="## 项目雷达" in raw_editor,
             )
-            raw_writer = _call_llm(
-                writer_prompt, dict(llm_cfg, temperature=0.85)
-            )  # 稍微提高Writer的temperature增加活泼度
-            if raw_writer:
-                script = raw_writer
-                mode_used = "Multi-Agent"
-                logger.info("Writer Agent 播客生成成功")
-                # 检测思考过程泄漏 / 主持人口径失衡（2026-11-05：模型把写稿计划包在 [Host A] 里输出）
-                if not _script_looks_valid(script):
-                    logger.warning("Writer 输出疑似思考过程或主持人口径失衡，带硬约束重试一次")
-                    retry_prompt = writer_prompt + (
-                        "\n\n【输出格式硬约束】只输出逐行 [Host A]/[Host B] 对话，"
-                        "两位主持人交替发言、轮次大致均衡（各占一半）；总字数控制在 1500-4500 字符；"
-                        "不要输出任何思考、计划、分析、英文说明、格式要求复述或自我检查；"
-                        "不要出现 URL、Markdown 标记或编号清单。"
-                    )
-                    raw_retry = _call_llm(retry_prompt, dict(llm_cfg, temperature=0.7))
-                    if raw_retry and _script_looks_valid(raw_retry):
-                        script = raw_retry
-                        mode_used = "Multi-Agent (retry)"
-                        logger.info("Writer Agent 重试成功")
-                    else:
-                        logger.warning("Writer 重试仍不合格，降级到 Fallback 模式")
-                        script = None
-                        mode_used = "fallback"
-                        fallback_reason = (
-                            "LLM 输出疑似思考过程或主持人口径失衡，已降级到 Fallback 模板"
-                        )
-            else:
-                logger.warning("Writer Agent 生成失败，降级到 Fallback 模式")
-                fallback_reason = "Writer Agent 生成失败，已降级到 Fallback 模板"
+            script, mode_used, fallback_reason = _pick_writer_script(writer_prompt, llm_cfg)
         else:
             logger.warning("Editor Agent 生成失败，降级到 Fallback 模式")
             fallback_reason = "Editor Agent 生成失败，已降级到 Fallback 模板"
