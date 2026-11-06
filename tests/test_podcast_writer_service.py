@@ -326,3 +326,20 @@ class TestFallbackLength:
         assert "第一个大头条" not in script
         assert script.count("[CHAPTER]") >= 3
         assert script.count("[Host A]") >= 6 and script.count("[Host B]") >= 6
+
+
+class TestProperEnding:
+    def test_drops_dangling_last_line_before_closing(self) -> None:
+        from ai_news_podcast.business.pipeline.podcast_writer_service import _ensure_proper_ending
+
+        script = "[Host A] 今天聊了很多。\n[Host B] 是的。\n[Host A] 游戏这边"
+        result = _ensure_proper_ending(script)
+        assert "游戏这边" not in result
+        assert "今日AI看点" in result
+        assert "AI每日先锋" not in result
+
+    def test_keeps_script_with_ending(self) -> None:
+        from ai_news_podcast.business.pipeline.podcast_writer_service import _ensure_proper_ending
+
+        script = "[Host A] 今天聊了很多。\n[Host B] 拜拜！"
+        assert _ensure_proper_ending(script) == script
