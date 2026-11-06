@@ -4,23 +4,22 @@
     {
       "id": 1,
       "host": "A",
-      "text": "听众朋友们好，欢迎收听今日AI看点，我是林夏。今天是2026年11月6日。",
+      "text": "听众朋友大家好，欢迎收听今日AI看点，今天是2026年11月6日，我是林夏。今天咱们聊点真正影响行业底层的东西，安全、内存和智能体，一个都绕不开。",
       "start": 1.0,
-      "duration": 7.32,
+      "duration": 13.43,
       "audios": {
         "lively": "chunk_001_lively.mp3"
       },
       "voices": {
         "lively": "host_a_lively"
-      },
-      "chapter": "开场"
+      }
     },
     {
       "id": 2,
       "host": "B",
-      "text": "大家好，我是陈默。今天挑几条值得展开的消息，和大家聊聊。",
-      "start": 8.769,
-      "duration": 4.32,
+      "text": "大家好，我是陈默。今天这组新闻连起来看特别有意思，模型能力只是起点，真正的竞争已经开始转向漏洞治理、运行效率和系统协同。",
+      "start": 14.879,
+      "duration": 9.76,
       "audios": {
         "professional": "chunk_002_professional.mp3"
       },
@@ -31,23 +30,23 @@
     {
       "id": 3,
       "host": "A",
-      "text": "先看今天的头条：百度开源文心5.5 Flash Base，多基准测试刷新同尺寸模型 SOTA。",
-      "start": 13.586,
-      "duration": 9.0,
+      "text": "OpenAI投入120万美元，一共挖出948个Linux内核漏洞。这个数字摆出来确实有点吓人，因为Linux可是云服务器、网络设备乃至大量安卓设备底下的基础设施。",
+      "start": 25.136,
+      "duration": 13.99,
       "audios": {
         "lively": "chunk_003_lively.mp3"
       },
       "voices": {
         "lively": "host_a_lively"
       },
-      "chapter": "今日头条"
+      "chapter": "头条拆解"
     },
     {
       "id": 4,
       "host": "B",
-      "text": "具体来说，11月5日，百度正式开源最新基座模型文心5.5 Flash Base",
-      "start": 23.039,
-      "duration": 6.4,
+      "text": "你注意啊，948个不等于948个都能被一键攻破，更不代表它们严重程度相同。真正可怕的是，这些漏洞长期藏在代码深处，说明过去的审计和测试仍有大量盲区。",
+      "start": 39.579,
+      "duration": 12.71,
       "audios": {
         "professional": "chunk_004_professional.mp3"
       },
@@ -58,9 +57,9 @@
     {
       "id": 5,
       "host": "A",
-      "text": "另一条值得关注的是：Linux内核被挖出948个漏洞！ OpenAI花120万美元找到的。",
-      "start": 29.844,
-      "duration": 7.64,
+      "text": "所以，这120万美元买的不是一个漂亮数字，而是把大模型和自动化审计结合起来的生产力。以前人工逐行检查内核，现在模型可以先筛可疑代码，再帮助生成测试思路和复现路径。",
+      "start": 52.694,
+      "duration": 17.15,
       "audios": {
         "lively": "chunk_005_lively.mp3"
       },
@@ -71,9 +70,9 @@
     {
       "id": 6,
       "host": "B",
-      "text": "这条的重点是，被轰成筛子了…",
-      "start": 37.917,
-      "duration": 2.64,
+      "text": "问题也从漏洞数量转向了后面的责任链。发现以后什么时候公开、要不要提前通知维护者、给多少修复窗口、补丁发布后谁来回归，这整套流程都得跟上，不能只管挖不管修。",
+      "start": 70.277,
+      "duration": 12.51,
       "audios": {
         "professional": "chunk_006_professional.mp3"
       },
@@ -84,9 +83,9 @@
     {
       "id": 7,
       "host": "A",
-      "text": "另一条值得关注的是：Vera Delivers the Best of Both Worlds: Highest Throughput and Fastest Agents。",
-      "start": 41.022,
-      "duration": 8.91,
+      "text": "而且948个漏洞可能横跨很多年，它们不像一次系统入侵那样第二天就结束，而像散落在老房子里的暗线。平时没事，一旦被串起来，就可能从普通缺陷变成真正的攻击入口。",
+      "start": 83.252,
+      "duration": 15.51,
       "audios": {
         "lively": "chunk_007_lively.mp3"
       },
@@ -96,66 +95,235 @@
     },
     {
       "id": 8,
-      "host": "A",
-      "text": "项目雷达今天主推 storytold/craft-anything，感兴趣可以去 GitHub 看看。",
-      "start": 50.394,
-      "duration": 6.2,
-      "audios": {
-        "lively": "chunk_008_lively.mp3"
-      },
-      "voices": {
-        "lively": "host_a_lively"
-      },
-      "chapter": "项目雷达"
-    },
-    {
-      "id": 9,
       "host": "B",
-      "text": "好，这个先记下，回头我们细聊。",
-      "start": 57.045,
-      "duration": 2.88,
+      "text": "这也暴露了开源关键基础设施的安全债。维护者数量有限，补丁节奏却要跟上整个互联网的需求，一次性悬赏挖漏洞很好，但长期资金、自动分诊和持续审计同样不能少。",
+      "start": 99.224,
+      "duration": 12.83,
       "audios": {
-        "professional": "chunk_009_professional.mp3"
+        "professional": "chunk_008_professional.mp3"
       },
       "voices": {
         "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "对普通人来说，并不是这948个漏洞都会直接落到每台手机上，但云平台、路由器和网站只要有一层没补上，最终承担后果的仍可能是咱们这些毫无技术背景的用户。",
+      "start": 112.505,
+      "duration": 12.48,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
       }
     },
     {
       "id": 10,
       "host": "B",
-      "text": "今天的分享就到这里。",
-      "start": 60.425,
-      "duration": 1.36,
+      "text": "我更关心这次会不会改变行业的投入结构。过去大家抢显卡、抢模型参数，现在有公司愿意拿真金白银做安全研究，说明AI除了制造新风险，也开始成为发现风险的基础设施。",
+      "start": 125.485,
+      "duration": 12.95,
       "audios": {
         "professional": "chunk_010_professional.mp3"
       },
       "voices": {
         "professional": "host_b_professional"
-      },
-      "chapter": "收尾"
+      }
     },
     {
       "id": 11,
       "host": "A",
-      "text": "感谢收听，我们明天见。",
-      "start": 62.223,
-      "duration": 2.48,
+      "text": "接着看NVIDIA提出的全栈协同，核心就是争夺“每个字节”的性能。大模型要装更多权重，长上下文要保存更多KV缓存，Agent还得装下工具输出和执行历史，显存压力只会越来越夸张。",
+      "start": 138.873,
+      "duration": 17.95,
       "audios": {
         "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "内存瓶颈"
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "你可以把GPU想成一家高级餐厅，芯片数量是厨师，内存容量是仓库，内存带宽则是传送带。菜太多、仓库太小，或者传菜太慢，再多厨师也只能站着等。",
+      "start": 157.284,
+      "duration": 12.8,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "NVIDIA现在把处理器、GPU、互联、网络、编译器、运行库和模型调度一起优化，就是想让数据少搬家、空闲显存能被利用起来。说白了，它卖的不再只是一块芯片，而是一整套流水线。",
+      "start": 170.529,
+      "duration": 18.19,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
       },
       "voices": {
         "lively": "host_a_lively"
       }
     },
     {
-      "id": 12,
+      "id": 14,
+      "host": "B",
+      "text": "这点特别关键，因为Agent不是只回答一次问题。它可能连续读文档、调用软件、生成代码，再把结果喂回上下文，每一轮都在吃内存和带宽，吞吐量自然比普通聊天更吃系统能力。",
+      "start": 189.193,
+      "duration": 13.79,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "再加上供应趋紧、价格上涨的趋势，显存就不只是技术参数，而是成本问题。内存效率提高，可能直接换来更低的推理价格、更短的响应时间和更低的能源消耗。",
+      "start": 203.41,
+      "duration": 13.84,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "但“每个字节性能”也得听具体条件。模型质量、延迟、并发量和能耗不能只挑最好看的数字说，而且目前很多结论来自厂商自有测试，还是得看不同工作负载下能不能重复兑现。",
+      "start": 217.714,
+      "duration": 13.99,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "快讯里先看文心5.5 Flash Base开源，百度称它在多基准刷新同尺寸模型SOTA。这个名字里的Base很关键，它更像可供继续训练和开发的基础模型，而不是只做封装的成品助手。",
+      "start": 232.121,
+      "duration": 17.31,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "快讯观察"
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "同尺寸竞争比单纯拼参数更接近实际部署。模型小一点，推理成本、响应速度和私有化门槛都可能受益；可SOTA到底稳不稳，还得看测试集、提示词和复现条件，不能只听发布稿报喜。",
+      "start": 249.867,
+      "duration": 15.11,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "而且开放以后，社区能不能微调、能不能商用、部署工具是否齐全，才决定它会不会真的进入产品。开源最怕热闹三天，然后开发者发现文档跟不上、问题也没人接。",
+      "start": 265.394,
+      "duration": 16.11,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "NVIDIA还称Vera冲刺最高吞吐与最快Agent。这里的重点不是生成一句更漂亮的话，而是能拆任务、调用工具、执行更多动作，这正好说明模型能力必须靠系统工程才能兑现。",
+      "start": 282.0,
+      "duration": 13.99,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "对呀，一次回答快不代表任务完成得快。Agent要是每一步都等半天，或者工具调用老出错，哪怕单次生成再漂亮也没意义。真正该测的是成功率、总耗时和成本。",
+      "start": 296.402,
+      "duration": 14.87,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "厂商说“最快”当然要保留一点冷静，最好同时看并发负载、失败重试和权限安全。Agent替你操作真实系统时，效率高但边界不清，也可能把一次小错误放大成业务事故。",
+      "start": 311.751,
+      "duration": 13.63,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "游戏这边",
+      "start": 325.813,
+      "duration": 1.04,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的AI每日先锋。感谢收听，我们明天见！",
+      "start": 327.321,
+      "duration": 5.88,
+      "audios": {
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
       "host": "B",
       "text": "拜拜！",
-      "start": 65.164,
-      "duration": 1.76,
+      "start": 333.691,
+      "duration": 1.2,
       "audios": {
-        "professional": "chunk_012_professional.mp3"
+        "professional": "chunk_025_professional.mp3"
       },
       "voices": {
         "professional": "host_b_professional"
