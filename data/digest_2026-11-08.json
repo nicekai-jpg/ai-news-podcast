@@ -1,0 +1,531 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-08",
+  "date_label": "2026年11月08日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": true
+  },
+  "podcast": {
+    "title": "今日AI看点 | 2026-11-08",
+    "subtitle": "今天的AI领域，抢跑DeepSeek！硅谷华人把下一代A正在重塑行业格局",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-08.mp3",
+    "duration_seconds": 490.55,
+    "duration_label": "08:11",
+    "speech_seconds": 471.46,
+    "segment_count": 41,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 41,
+      "segments_url": "episodes/2026-11-08/playlist.json",
+      "text_url": "episodes/2026-11-08.txt"
+    }
+  },
+  "lead": {
+    "text": "今日最值得关注的，不再是又一个基础模型刷新榜单，而是智能体底层工程开始从“单次问答”转向“长程执行”。据量子位报道，硅谷华人团队正在打造下一代 Agent Harness，且两大 Agent 玩家在路线选择上不谋而合：竞争焦点正从模型本身，迁移到由状态、工具和任务编排组成的系统层。\n\n与此同时，恶意 AGENTS.md 文件让“代理读取的文字”变成潜在攻击入口，PPIO 沙箱则把隔离的云电脑包装成开箱即用的 API。两条新闻共同指向同一现实：智能体越能独立行动，运行环境、可信边界与失败恢复能力就越重要。",
+    "source": "report_lead",
+    "source_file": "data/reports/daily_report_2026-11-08.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 6,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 3,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 41,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 2,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "今日头条",
+      "start": 22.586,
+      "label": "00:23",
+      "source": "script"
+    },
+    {
+      "title": "安全新入口",
+      "start": 134.444,
+      "label": "02:14",
+      "source": "script"
+    },
+    {
+      "title": "智能体落地",
+      "start": 233.14,
+      "label": "03:53",
+      "source": "script"
+    },
+    {
+      "title": "项目雷达",
+      "start": 367.019,
+      "label": "06:07",
+      "source": "script"
+    }
+  ],
+  "report": {
+    "title": "✨ 智能体从会说走向可信地做事",
+    "char_count": 2021,
+    "reading_minutes": 5,
+    "lead": "今日最值得关注的，不再是又一个基础模型刷新榜单，而是智能体底层工程开始从“单次问答”转向“长程执行”。据量子位报道，硅谷华人团队正在打造下一代 Agent Harness，且两大 Agent 玩家在路线选择上不谋而合：竞争焦点正从模型本身，迁移到由状态、工具和任务编排组成的系统层。\n\n与此同时，恶意 AGENTS.md 文件让“代理读取的文字”变成潜在攻击入口，PPIO 沙箱则把隔离的云电脑包装成开箱即用的 API。两条新闻共同指向同一现实：智能体越能独立行动，运行环境、可信边界与失败恢复能力就越重要。",
+    "deep_dives": [
+      {
+        "heading": "一、Agent Harness从单会话走向长程编排",
+        "category": "技术突破",
+        "points": [],
+        "background": null,
+        "breakthrough": null,
+        "impact": null,
+        "raw_sections": [
+          "据量子位报道，硅谷华人团队抢跑 DeepSeek 推出下一代 Agent Harness，其核心判断是“单 Session 已难以为继”。报道同时提到，两大 Agent 玩家正在不谋而合地转向更长周期、更强工具调用的智能体路线。",
+          "Agent Harness 作为模型之外的“运行时系统”，承担着上下文管理、工具调度、任务拆解、状态保存与失败恢复等关键职能。这一架构将系统能力的上限从模型的一次回答，扩展到代理能否连续数小时乃至数天稳定推进复杂任务。",
+          "智能体产品的竞争单位正从“模型分数”变成“任务完成率”。随着模型能力逐步趋同，状态管理、并发执行、容错机制和权限控制将成为更关键的差异化指标。"
+        ]
+      },
+      {
+        "heading": "二、恶意AGENTS.md把提示注入推向执行层",
+        "category": "安全合规",
+        "points": [],
+        "background": null,
+        "breakthrough": null,
+        "impact": null,
+        "raw_sections": [
+          "AGENTS.md 通常用于存放供编码智能体自动读取的项目规则与上下文指令。恶意版本的危险之处，在于它可以借助代理对本地文件的天然信任，诱导其执行越权操作。",
+          "这类威胁与传统二进制病毒有所区别，主要通过“被阅读的文字”触发工具调用、敏感数据访问或恶意命令。攻击者只需污染一个代码仓库或依赖包，就可能把风险扩散至开发者和 CI/CD 流程，形成新的 AI 工具链供应链攻击。",
+          "面对此类威胁，开发者不能仅依赖系统提示词进行防护。团队需要将 AGENTS.md 视为不可信输入，并配套最小权限、工具白名单、隔离执行、操作审计与文件来源校验等多层防护机制。"
+        ]
+      }
+    ],
+    "frontier": [],
+    "editor_verdict": "1. **竞争焦点迁移**：下一代 Agent 的胜负，不再只由模型参数决定，而由 Harness 的长程状态、工具调用和容错能力决定。模型可替换，系统工程正在成为护城河。\n2. **安全边界重画**：当代理能读文件、调工具，提示词就可能变成执行入口。AGENTS.md 事件提醒我们，必须把“给代理看的文字”按不可信代码治理。\n3. **执行层才是体验底座**：个人智能体、手机与云电脑正在汇合。未来产品差异不只在“会说什么”，更在“能否安全、持续地把事做完”。",
+    "toc": [
+      {
+        "anchor": "deep-dive-1",
+        "title": "一、Agent Harness从单会话走向长程编排"
+      },
+      {
+        "anchor": "deep-dive-2",
+        "title": "二、恶意AGENTS.md把提示注入推向执行层"
+      }
+    ],
+    "raw_paragraphs": [
+      "PPIO 沙箱将“云电脑”做成标准化 API，为 Personal Agent 提供可按需调用的隔离计算环境。个人智能体的上限不仅取决于模型，更取决于它能否安全操作真实系统，云端执行层由此成为关键补充。",
+      "STEPX Neo 智能体手机在进博会高通展台首次亮相，强调软硬模一体化。终端形态虽然不是智能体创新的最终答案，但跨应用执行、端云协同、延迟控制与隐私边界的综合表现，将决定其能否从概念设备走向规模化使用。",
+      "阿里巴巴发布《2026 AI向善行动报告》，AI 数据中心可持续发展成为年度亮点。AI 基础设施的竞争已延伸至能源、用水与碳排放维度，未来相关披露需要从原则性表态走向可核验的量化指标。"
+    ],
+    "source_file": "data/reports/daily_report_2026-11-08.md"
+  },
+  "sources": {
+    "total_all": 6,
+    "total_main": 3,
+    "shown": 6,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 6
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "抢跑DeepSeek！硅谷华人把下一代Agent Harness造出来了！？",
+        "summary": "苦单Session久矣，两大Agent玩家不谋而合。",
+        "link": "https://www.qbitai.com/2026/11/508264.html",
+        "published_at": "2026-11-07T05:01:17+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "AGENTS.MD，危险危险危险！！！",
+        "summary": "全新的电脑病毒",
+        "link": "https://www.qbitai.com/2026/11/508244.html",
+        "published_at": "2026-11-07T03:43:55+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "为什么每个 Personal Agent 背后，都必须配备一台“云电脑”？",
+        "summary": "PPIO 沙箱，把“云电脑”做成开箱即用的 API",
+        "link": "https://www.qbitai.com/2026/11/508174.html",
+        "published_at": "2026-11-06T09:25:59+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "阶跃终端 STEPX Neo 智能体手机亮相进博会高通展台，软硬模一体打造智能体新体验",
+        "summary": "阶跃终端旗下 STEPX Neo 智能体手机首次亮相",
+        "link": "https://www.qbitai.com/2026/11/508170.html",
+        "published_at": "2026-11-06T09:21:51+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "阿里巴巴发布《2026 AI向善行动报告》 AI数据中心可持续发展成年度亮点",
+        "summary": "11月5日，阿里巴巴发布《2026 AI向善行动报告》",
+        "link": "https://www.qbitai.com/2026/11/508165.html",
+        "published_at": "2026-11-06T09:19:00+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "TechCrunch AI",
+        "group": "科技媒体",
+        "source_name": "TechCrunch AI",
+        "category": "news",
+        "title": "Crusoe sells troubled Wyoming data center project to Google",
+        "summary": "The deal highlights the challenges of developing massive AI data centers.",
+        "link": "https://techcrunch.com/2026/11/06/crusoe-sells-troubled-wyoming-data-center-project-to-google/",
+        "published_at": "2026-11-07T01:40:28+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": true,
+    "status": "pick",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": {
+      "repo": "amosblomqvist/learnharness",
+      "url": "https://github.com/amosblomqvist/learnharness",
+      "description": "Agent harness for learning difficult things.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 6156,
+      "delta_stars": 440,
+      "is_new": false,
+      "created_at": "2026-10-16T19:35:33Z",
+      "pushed_at": "2026-11-07T07:50:13Z",
+      "license": "AGPL-3.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "npm ci\nnpm run dev        # http://localhost:3000\nnpm test           # fixtures and fake providers",
+      "readme_intro": "An agent harness for learning. Download  · How it works  · Documentation  · Issues  · Discord LearnHarness uses AI agents to plan and teach lessons from your current understanding to your goal. It builds a detailed picture of what you understand and how you reason. That picture is updated as you learn. Instead of just giving you an explanation, it uses your answers and thinking to decide what you need next. Teaching builds understanding one reasoning step at a time. Practice makes it usable. A persistent knowledge graph carries it across sessions.",
+      "score": 0.607,
+      "score_parts": {
+        "velocity": 0.6628,
+        "vel_rel": 0.9091,
+        "vel_abs": 0.2933,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 3
+      },
+      "affinity": 0.5
+    },
+    "runner_ups": [
+      {
+        "repo": "KKKKhazix/AIHOT",
+        "url": "https://github.com/KKKKhazix/AIHOT",
+        "description": "一个自己找热点、自己写日报的网站框架。把信源和精选标准换成你的，它就是你的行业热点站。",
+        "language": "TypeScript",
+        "topics": [
+          "ai",
+          "chinese",
+          "content-curation",
+          "daily-digest",
+          "docker-compose",
+          "llm",
+          "mcp",
+          "news-aggregator",
+          "postgresql",
+          "rss",
+          "self-hosted",
+          "typescript"
+        ],
+        "stars": 9728,
+        "delta_stars": null,
+        "is_new": true,
+        "created_at": "2026-09-28T23:40:05Z",
+        "pushed_at": "2026-11-07T20:12:01Z",
+        "license": "MIT",
+        "has_install_docs": true,
+        "mentions": 0,
+        "readme_excerpt": "git clone https://github.com/KKKKhazix/AIHOT.git myhot\ncd myhot\nnode scripts/init-env.ts --llm-key <你的模型 API Key>\ndocker compose up -d --build",
+        "readme_intro": "一个自己找热点、自己写日报的网站框架。 把信源换成你的，把精选标准换成你的 KnowHow，它就是你的行业热点站。 简体中文  ·  English 跑起来  · 改成你的行业  · 它是怎么工作的  · 文档  · 社区交流",
+        "score": 0.5746,
+        "score_parts": {
+          "velocity": 0.5029,
+          "vel_rel": 0.7273,
+          "vel_abs": 0.1663,
+          "hands_on": 1.0,
+          "cross_heat": 0.0,
+          "affinity": 1.0,
+          "days_in_pool": 0
+        },
+        "affinity": 1.0
+      },
+      {
+        "repo": "rddmwmddr/android-ad-cleaner",
+        "url": "https://github.com/rddmwmddr/android-ad-cleaner",
+        "description": "关掉国产安卓手机系统里的广告、热搜、资讯推荐和营销推送。不 root，可还原，支持 AI 智能体一键执行。",
+        "language": "Python",
+        "topics": [
+          "adb",
+          "ai-agent",
+          "android",
+          "coloros",
+          "debloat",
+          "hyperos",
+          "magicos",
+          "originos"
+        ],
+        "stars": 6922,
+        "delta_stars": 184,
+        "is_new": false,
+        "created_at": "2026-10-24T05:35:47Z",
+        "pushed_at": "2026-11-07T16:13:18Z",
+        "license": "MIT",
+        "has_install_docs": true,
+        "mentions": 0,
+        "readme_excerpt": "请克隆 https://github.com/rddmwmddr/android-ad-cleaner ，读仓库里的 AGENTS.md，\n然后帮我给连着电脑的这台手机去广告。每一步改之前告诉我要改什么。",
+        "readme_intro": "关掉国产安卓手机系统里的广告、热搜、资讯推荐和营销推送。 介绍页：**https://rddmwmddr.github.io/android-ad-cleaner/** 如果大家有其他需求可以加VX和电报群： https://t.me/+A5X3Mxzs-Cg3NjYx",
+        "score": 0.4876,
+        "score_parts": {
+          "velocity": 0.3218,
+          "vel_rel": 0.4545,
+          "vel_abs": 0.1227,
+          "hands_on": 1.0,
+          "cross_heat": 0.0,
+          "affinity": 0.5,
+          "days_in_pool": 3
+        },
+        "affinity": 0.5
+      }
+    ],
+    "yesterday": {
+      "repo": "heydamir/unslop",
+      "delta_stars": 608,
+      "date": ""
+    },
+    "candidates": {
+      "total": 47,
+      "excluded_recent": 16,
+      "fresh": 31,
+      "semantics": "v5",
+      "detail_available": true,
+      "preview": [
+        {
+          "repo": "Ebony-Vinyl/dsh-our-free-model",
+          "stars": 65364,
+          "delta_stars": null,
+          "language": "JavaScript",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "yetone/magpie",
+          "stars": 31785,
+          "delta_stars": null,
+          "language": "Go",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "tree-sitter/tree-sitter",
+          "stars": 27401,
+          "delta_stars": null,
+          "language": "Rust",
+          "license": "MIT",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "deepseek-ai/DeepInfer",
+          "stars": 25601,
+          "delta_stars": 51,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "deepseek-ai/dsh-superagent-prototype",
+          "stars": 20788,
+          "delta_stars": 568,
+          "language": "TypeScript",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "storytold/craft-anything",
+          "stars": 20392,
+          "delta_stars": 2557,
+          "language": "Rust",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "ccch1mneyyy/dsh-Go",
+          "stars": 14273,
+          "delta_stars": 1374,
+          "language": "Dart",
+          "license": "AGPL-3.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "google/elephant-goldfish-model",
+          "stars": 13750,
+          "delta_stars": null,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "seedds/nxnative",
+          "stars": 13324,
+          "delta_stars": 404,
+          "language": "Python",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "heydamir/unslop",
+          "stars": 11297,
+          "delta_stars": 608,
+          "language": "JavaScript",
+          "license": "CC-BY-4.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "pengchujin/aerial-tv",
+          "stars": 10554,
+          "delta_stars": 218,
+          "language": "Kotlin",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "NVIDIA/auto-ontology",
+          "stars": 9731,
+          "delta_stars": 819,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        }
+      ]
+    },
+    "message": "今日主推项目"
+  },
+  "quality": {
+    "mode": "normal",
+    "chars": 2988,
+    "turns": 41,
+    "host_a_chars": 1435,
+    "host_b_chars": 1266,
+    "host_char_ratio": 0.469,
+    "chapters": 4
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-11-08.json",
+      "report": "data/reports/daily_report_2026-11-08.md",
+      "radar": "data/gh_radar/radar_2026-11-08.json",
+      "playlist": "site/episodes/2026-11-08/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": []
+  }
+}
