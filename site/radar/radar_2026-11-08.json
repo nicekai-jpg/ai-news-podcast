@@ -1,0 +1,296 @@
+{
+  "date": "2026-11-08",
+  "generated_at": "2026-11-07T21:07:25.306341+00:00",
+  "projects": [
+    {
+      "repo": "amosblomqvist/learnharness",
+      "url": "https://github.com/amosblomqvist/learnharness",
+      "description": "Agent harness for learning difficult things.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 6156,
+      "delta_stars": 440,
+      "is_new": false,
+      "created_at": "2026-10-16T19:35:33Z",
+      "pushed_at": "2026-11-07T07:50:13Z",
+      "license": "AGPL-3.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "npm ci\nnpm run dev        # http://localhost:3000\nnpm test           # fixtures and fake providers",
+      "readme_intro": "An agent harness for learning. Download  · How it works  · Documentation  · Issues  · Discord LearnHarness uses AI agents to plan and teach lessons from your current understanding to your goal. It builds a detailed picture of what you understand and how you reason. That picture is updated as you learn. Instead of just giving you an explanation, it uses your answers and thinking to decide what you need next. Teaching builds understanding one reasoning step at a time. Practice makes it usable. A persistent knowledge graph carries it across sessions.",
+      "score": 0.607,
+      "score_parts": {
+        "velocity": 0.6628,
+        "vel_rel": 0.9091,
+        "vel_abs": 0.2933,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 3
+      },
+      "affinity": 0.5
+    },
+    {
+      "repo": "KKKKhazix/AIHOT",
+      "url": "https://github.com/KKKKhazix/AIHOT",
+      "description": "一个自己找热点、自己写日报的网站框架。把信源和精选标准换成你的，它就是你的行业热点站。",
+      "language": "TypeScript",
+      "topics": [
+        "ai",
+        "chinese",
+        "content-curation",
+        "daily-digest",
+        "docker-compose",
+        "llm",
+        "mcp",
+        "news-aggregator",
+        "postgresql",
+        "rss",
+        "self-hosted",
+        "typescript"
+      ],
+      "stars": 9728,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-09-28T23:40:05Z",
+      "pushed_at": "2026-11-07T20:12:01Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "git clone https://github.com/KKKKhazix/AIHOT.git myhot\ncd myhot\nnode scripts/init-env.ts --llm-key <你的模型 API Key>\ndocker compose up -d --build",
+      "readme_intro": "一个自己找热点、自己写日报的网站框架。 把信源换成你的，把精选标准换成你的 KnowHow，它就是你的行业热点站。 简体中文  ·  English 跑起来  · 改成你的行业  · 它是怎么工作的  · 文档  · 社区交流",
+      "score": 0.5746,
+      "score_parts": {
+        "velocity": 0.5029,
+        "vel_rel": 0.7273,
+        "vel_abs": 0.1663,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "rddmwmddr/android-ad-cleaner",
+      "url": "https://github.com/rddmwmddr/android-ad-cleaner",
+      "description": "关掉国产安卓手机系统里的广告、热搜、资讯推荐和营销推送。不 root，可还原，支持 AI 智能体一键执行。",
+      "language": "Python",
+      "topics": [
+        "adb",
+        "ai-agent",
+        "android",
+        "coloros",
+        "debloat",
+        "hyperos",
+        "magicos",
+        "originos"
+      ],
+      "stars": 6922,
+      "delta_stars": 184,
+      "is_new": false,
+      "created_at": "2026-10-24T05:35:47Z",
+      "pushed_at": "2026-11-07T16:13:18Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "请克隆 https://github.com/rddmwmddr/android-ad-cleaner ，读仓库里的 AGENTS.md，\n然后帮我给连着电脑的这台手机去广告。每一步改之前告诉我要改什么。",
+      "readme_intro": "关掉国产安卓手机系统里的广告、热搜、资讯推荐和营销推送。 介绍页：**https://rddmwmddr.github.io/android-ad-cleaner/** 如果大家有其他需求可以加VX和电报群： https://t.me/+A5X3Mxzs-Cg3NjYx",
+      "score": 0.4876,
+      "score_parts": {
+        "velocity": 0.3218,
+        "vel_rel": 0.4545,
+        "vel_abs": 0.1227,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 3
+      },
+      "affinity": 0.5
+    }
+  ],
+  "meta": {
+    "pick_repo": "amosblomqvist/learnharness",
+    "runner_up_repos": [
+      "KKKKhazix/AIHOT",
+      "rddmwmddr/android-ad-cleaner"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 47,
+    "excluded_recent": 16,
+    "fresh_candidates": 31,
+    "widen_pass": false,
+    "pool_by_source": {
+      "topic": 19,
+      "trending": 3,
+      "new": 25
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "heydamir/unslop",
+    "yesterday_pick_delta": 608,
+    "candidate_audit": [
+      {
+        "repo": "Ebony-Vinyl/dsh-our-free-model",
+        "stars": 65364,
+        "delta_stars": null,
+        "language": "JavaScript",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "yetone/magpie",
+        "stars": 31785,
+        "delta_stars": null,
+        "language": "Go",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "tree-sitter/tree-sitter",
+        "stars": 27401,
+        "delta_stars": null,
+        "language": "Rust",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "stars": 25601,
+        "delta_stars": 51,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "deepseek-ai/dsh-superagent-prototype",
+        "stars": 20788,
+        "delta_stars": 568,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "storytold/craft-anything",
+        "stars": 20392,
+        "delta_stars": 2557,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "ccch1mneyyy/dsh-Go",
+        "stars": 14273,
+        "delta_stars": 1374,
+        "language": "Dart",
+        "license": "AGPL-3.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "google/elephant-goldfish-model",
+        "stars": 13750,
+        "delta_stars": null,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "seedds/nxnative",
+        "stars": 13324,
+        "delta_stars": 404,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "heydamir/unslop",
+        "stars": 11297,
+        "delta_stars": 608,
+        "language": "JavaScript",
+        "license": "CC-BY-4.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "pengchujin/aerial-tv",
+        "stars": 10554,
+        "delta_stars": 218,
+        "language": "Kotlin",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "NVIDIA/auto-ontology",
+        "stars": 9731,
+        "delta_stars": 819,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "KKKKhazix/AIHOT",
+        "stars": 9728,
+        "delta_stars": null,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "jev-chat/jev-chat-jarvis",
+        "stars": 8286,
+        "delta_stars": null,
+        "language": "Kotlin",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "Human-Agent-Society/reef",
+        "stars": 7784,
+        "delta_stars": null,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "l0ng-ai/openidea",
+        "stars": 7648,
+        "delta_stars": 225,
+        "language": "TypeScript",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "wangzan101/Mika",
+        "stars": 7589,
+        "delta_stars": 204,
+        "language": "Kotlin",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "HeyPuter/everything",
+        "stars": 7569,
+        "delta_stars": 119,
+        "language": "JavaScript",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "elie222/rakazo",
+        "stars": 7453,
+        "delta_stars": null,
+        "language": "TypeScript",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "ly05010419/MacNativeGames",
+        "stars": 7261,
+        "delta_stars": 74,
+        "language": "C",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      }
+    ],
+    "audit_semantics": "v5"
+  }
+}
