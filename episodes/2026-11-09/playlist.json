@@ -1,0 +1,452 @@
+{
+  "episode_id": "2026-11-09",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听今日AI看点，今天是2026年11月9日，我是林夏。今天不追热闹，咱们从一个挺关键的问题开始：AI到底什么时候，才配得上被企业放进核心流程？",
+      "start": 1.0,
+      "duration": 14.07,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是陈默。我的答案是，能生成已经不算门槛，能不能安全部署才是。金融合规、邮件认证和代码基础设施，正一起决定AI采用的规模和边界。",
+      "start": 15.519,
+      "duration": 12.64,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "先说高盛。公开消息是，高盛正在把 Claude Code 从银行家和交易员的使用范围里撤出。具体为什么撤、覆盖哪些团队，公开信息还没说透，咱不能替它补剧情。",
+      "start": 28.656,
+      "duration": 14.23,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "金融AI边界"
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "但方向很明确。你注意啊，Claude Code不是只会补全几行代码的聊天框，它能读仓库、改文件、执行命令，能力越大，权限面就越大。效率价值已经不足以自动换来部署许可。",
+      "start": 43.339,
+      "duration": 14.75,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "银行家和交易员的使用场景里，提示词、上下文和运行日志都可能碰到客户信息、策略资料或者内部系统。这不是给模型关个会员就完了，而是谁能看数据、谁能执行动作、出了错怎么审计。",
+      "start": 58.494,
+      "duration": 17.99,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "说白了。以前像给实习生发门禁卡，至少知道他进哪间屋、能开哪台机器；AI编码助手要是权限没分层，连他看了什么、改过什么都说不清，那风险根本没法向监管交代。",
+      "start": 76.917,
+      "duration": 14.79,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "所以这次撤出更像行业信号，不是某款工具的判决书。金融业以后选AI，模型能力大概只占一半，另一半得是数据隔离、操作留痕、审批和回滚，少一样都可能被合规卡住。",
+      "start": 92.172,
+      "duration": 15.92,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "我甚至觉得，真正成熟的采购表应该加一列：出了事怎么复盘。模型答错了可以重试，智能体在真实系统里动过一轮，可不是删掉聊天记录就能当没发生。",
+      "start": 108.554,
+      "duration": 12.31,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "对了还有件事，Outlook.com 开始拒收未配置 DMARC 域名的邮件。以前DMARC像门上贴的建议，现在邮件网关直接把不认证的访客拦在外面。",
+      "start": 121.315,
+      "duration": 13.59,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "邮件安全门槛"
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "你可以把SPF理解成公司允许哪些服务器代发，DKIM像每封邮件带一枚可验的电子印章，DMARC则规定：至少一条认证链要和发件主域名对得上。不是三个都得满分，但得拿出能对上的证据。",
+      "start": 135.405,
+      "duration": 16.59,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "这么一看，它拦的不只是伪装成银行、平台或者同事的钓鱼邮件，也包括那些域名看着真、但转发链路把SPF或DKIM对齐弄丢的老系统。普通用户少了一层假信，但验证码和通知也可能突然进不来。",
+      "start": 152.433,
+      "duration": 18.39,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "问题就在这儿。很多CRM、扫描仪、旧邮件网关和第三方发信服务都存着多年配置，升级时得先盘清楚谁在用什么域名发信。Outlook这道门槛能压缩仿冒空间，却不会替企业自动修好历史债。",
+      "start": 171.284,
+      "duration": 16.99,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "换句话说，防伪不是贴个配置就结束，它会逼着组织给每条邮件链路找责任人。以前钓鱼是骗子拼模板，现在邮件入口开始查门牌、验签名，安全当然更踏实，只是误伤也更容易变成工单。",
+      "start": 188.719,
+      "duration": 17.15,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "再来个听着挺严肃的。美方情报备忘录指称，Megaspeed 一名高管受中国国家安全部招募，目标是刺探英伟达 CEO。这个说法目前仍待独立证实。",
+      "start": 206.343,
+      "duration": 12.16,
+      "audios": {
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "圈层快讯"
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "这里得把边界画清楚：情报备忘录里的指称，不等于已经完成司法定罪，更不等于所有细节都已被公开验证。这么严肃的叙事，越需要证据链，不能因为情绪上头就写成实锤。",
+      "start": 218.93,
+      "duration": 13.07,
+      "audios": {
+        "professional": "chunk_015_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 16,
+      "host": "A",
+      "text": "如果后续证据能补齐，影响会从个人指控扩到企业治理、英伟达相关供应链和美国对外资技术背景的审查。但眼下咱能做的只有按传闻级别传播，顺便提醒采购和合规团队别忽略高层背景风险。",
+      "start": 232.464,
+      "duration": 18.39,
+      "audios": {
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "B",
+      "text": "对，而且信息本身也会被利用。越是未经证实的重大指控，越容易被拿来包装成结论。技术公司该做的是留证据、查权限、划利益冲突，而不是转发一张截屏就给案子盖章。",
+      "start": 251.271,
+      "duration": 13.35,
+      "audios": {
+        "professional": "chunk_017_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "另一个话题轻松一点，Hacker News 上有个热帖在聊“AI脑疲劳”。 folks 发现，AI写代码、整理邮件确实快，可注意力下降和认知消耗也跟着涨，屏幕一直亮着，人反而更累。",
+      "start": 265.057,
+      "duration": 14.99,
+      "audios": {
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "这事儿特别像什么呢？以前加班是亲手搬砖，现在AI帮你把砖砌好，但每块砖是谁摁的、墙面平不平，还得你盯。输入快了，审核、纠错和上下文切换全被压到最后，人容易产生一种虚假的高效感。",
+      "start": 280.464,
+      "duration": 17.87,
+      "audios": {
+        "professional": "chunk_019_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "我跟朋友试下来的办法是先批量处理同类任务，别每来一条通知就切窗口；再设一个强制验证点，先让AI给计划和差异，关键决定自己签字。休息也得排进日程，不然脑子不会因为有AI就自动升级。",
+      "start": 298.83,
+      "duration": 16.43,
+      "audios": {
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "说白了，把AI当副驾驶，不要当自动驾驶。它可以替你起草路线、查资料、做检查，但观察路况和最后踩刹车的人必须清醒。真正该优化的不是每一秒点击次数，而是一段工作结束以后你还剩多少判断力。",
+      "start": 315.672,
+      "duration": 15.51,
+      "audios": {
+        "professional": "chunk_021_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "接着看代码。AI写码太快，GitHub也在承压。OpenAI选择收购替代方案，Anthropic选择原地自研，马斯克也入场了，代码托管正在进入重建期。",
+      "start": 331.661,
+      "duration": 13.52,
+      "audios": {
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "代码托管变天"
+    },
+    {
+      "id": 23,
+      "host": "B",
+      "text": "这里的“承压”未必只是服务器扛不住，而是整个链条变重：AI生成的PR、机器人提交、临时仓库和CI任务一起上涨。代码产量翻倍以后，最贵的资源从服务器CPU变成了人的审查注意力。",
+      "start": 345.613,
+      "duration": 15.27,
+      "audios": {
+        "professional": "chunk_023_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "还有安全问题。AI能批量生成看起来很像真的依赖和补丁，仓库一多，密钥泄露、供应链投毒、恶意安装脚本也会跟着放大。以前一个恶意包要骗开发者，现在可以同时喂给几百个代理。",
+      "start": 361.351,
+      "duration": 19.19,
+      "audios": {
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "B",
+      "text": "代码越来越便宜，信任反而更贵。所以代码托管不会只比谁存得多，还得更懂谁在提交、哪个代理拿了什么权限、改动是否可追溯。身份、签名、分支保护和成本控制都会变成核心产品。",
+      "start": 381.031,
+      "duration": 14.55,
+      "audios": {
+        "professional": "chunk_025_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "OpenAI走收购，Anthropic自己造，马斯克再进来，说明大模型公司和代码平台之间的边界已经糊了。未来GitHub可能不只是托管代码，而是管理AI代理、构建流水线和软件供应链的控制层。",
+      "start": 396.058,
+      "duration": 17.83,
+      "audios": {
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "B",
+      "text": "对，而且普通开发者会直接感受到：提交更便宜，审查更贵，依赖更多，权限更复杂。咱享受AI提高产能的便利，也得重新问一句，每个自动提交到底是谁授权、谁验证、谁负责。",
+      "start": 414.306,
+      "duration": 14.88,
+      "audios": {
+        "professional": "chunk_027_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "新闻说完了，接下来进入今天的项目雷达时间。今天只看 kingcharleslzy-ai/dsh-purge，这是 dsh-purge Community · DeepSeek Harness 社区维护版，基于小杨 / YuJunZhiXue 的 dsh-purge，用 JavaScript 开发，MIT 许可证。",
+      "start": 429.625,
+      "duration": 19.07,
+      "audios": {
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "项目雷达"
+    },
+    {
+      "id": 29,
+      "host": "B",
+      "text": "它把宿主兼容、状态诊断、提示词管理、更新和本机备份回滚集中起来。当前 ⭐5424，较昨日 +460，适合想降低插件运维风险的开发者。",
+      "start": 449.107,
+      "duration": 11.92,
+      "audios": {
+        "professional": "chunk_029_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "README特别提醒：DSH 官方入口负责安装插件；下面的社区安装器由本仓库维护，不是 DeepSeek 官方脚本。首次安装可用官方界面或 CLI。",
+      "start": 461.52,
+      "duration": 13.68,
+      "audios": {
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "已经装过 dsh-purge / 旧独立面板时，用社区安装器原地迁移，不要先卸载。安装、应用宿主补丁、手动重启是独立动作。素材没给具体 shell 命令，咱们不编。",
+      "start": 475.609,
+      "duration": 12.23,
+      "audios": {
+        "professional": "chunk_031_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "fork 时可加更新前差异预览和可审计诊断报告，不用重写核心安装链。想试的人先看兼容性，再小范围迁移；项目地址是 https://github.com/kingcharleslzy-ai/dsh-purge。",
+      "start": 488.326,
+      "duration": 17.63,
+      "audios": {
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的今日AI看点。感谢收听，我们明天见！",
+      "start": 506.398,
+      "duration": 7.48,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 514.338,
+      "duration": 0.68,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
