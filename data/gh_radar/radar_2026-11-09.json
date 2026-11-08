@@ -1,0 +1,294 @@
+{
+  "date": "2026-11-09",
+  "generated_at": "2026-11-08T21:24:41.729106+00:00",
+  "projects": [
+    {
+      "repo": "kingcharleslzy-ai/dsh-purge",
+      "url": "https://github.com/kingcharleslzy-ai/dsh-purge",
+      "description": "dsh-purge Community · DeepSeek Harness 社区维护版：宿主兼容、状态诊断、提示词管理、更新与本机备份回滚。基于小杨 / YuJunZhiXue 的 dsh-purge。",
+      "language": "JavaScript",
+      "topics": [
+        "agent-tools",
+        "backup",
+        "deepseek",
+        "deepseek-harness",
+        "dsh",
+        "dsh-plugin",
+        "jailbreak",
+        "prompt-injection",
+        "prompt-management",
+        "purge-community",
+        "rollback"
+      ],
+      "stars": 5424,
+      "delta_stars": 460,
+      "is_new": false,
+      "created_at": "2026-10-16T07:44:27Z",
+      "pushed_at": "2026-11-08T16:31:02Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "**DSH 官方入口负责安装插件；下面的社区安装器由本仓库维护，不是 DeepSeek 官方脚本。** 首次安装可用官方界面或 CLI；已经装过 `dsh-purge` / 旧独立面板时，用社区安装器原地迁移，不要先卸载。安装、应用宿主补丁、手动重启是独立动作。",
+      "readme_intro": "**让 AI 更专注地辅助你的学习与动手实验。** 给 DeepSeek Harness 的自托管控件（俗称「破甲」插件）· 86 条宿主补丁 · 25 层状态自检 · 左侧栏整页设置 [ ](https://github.com/kingcharleslzy-ai/dsh-purge/releases) [ ](https://github.com/kingcharleslzy-ai/dsh-purge/actions/workflows/community.yml) 当前版本 **1.6.85** · 适配 **DSH Desktop 0.2.2-rc.1**（0.2.1-rc.1 / rc.2 / rc.3 / rc.5 同样通过） · [English](docs/README.en.md) 1.6.85 为已授权测试入口增加一次性命令执行挑战，区分文件写入与命令执行。[发行说明](https://github.com/kingcharleslzy-ai/dsh-purge/releases/tag/v1.6.85)。 **原项目与作者**：基于 [小杨 / YuJunZhiXue 的 dsh-purge](https://github.com/YuJunZhiXue/dsh-purge) 独立维护。原仓库已恢复；保留原作者署名、版权与 MIT 许可证。社区版由本仓库维护，并非原作者官方发行。",
+      "score": 0.7148,
+      "score_parts": {
+        "velocity": 0.6136,
+        "vel_rel": 0.8182,
+        "vel_abs": 0.3067,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 3
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "google/agents-cli",
+      "url": "https://github.com/google/agents-cli",
+      "description": "The CLI and skills that turn any coding assistant into an expert at creating, evaluating, and deploying AI agents on Google Cloud.",
+      "language": "Python",
+      "topics": [
+        "adk",
+        "agent-development-kit",
+        "agents",
+        "coding-agent",
+        "gemini",
+        "gemini-enterprise-agent-platform",
+        "generative-ai",
+        "google-cloud"
+      ],
+      "stars": 6321,
+      "delta_stars": null,
+      "is_new": true,
+      "created_at": "2026-04-08T17:09:55Z",
+      "pushed_at": "2026-11-04T17:44:59Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "```bash\nuvx google-agents-cli setup\n```\n\n<details>\n<summary>Or just the skills — your coding agent will handle the rest</summary>\n\n```bash\nnpx skills add google/agents-cli\n```\n\n</details>",
+      "readme_intro": "agents-cli The CLI and skills for building agents on Gemini platform. Get Started  &nbsp;&nbsp;|&nbsp;&nbsp; Skills  &nbsp;&nbsp;|&nbsp;&nbsp; Commands  &nbsp;&nbsp;|&nbsp;&nbsp; PyPI  &nbsp;&nbsp;|&nbsp;&nbsp; Issues  &nbsp;&nbsp;|&nbsp;&nbsp; Docs  &nbsp;&nbsp;|&nbsp;&nbsp; Release Notes  &nbsp;&nbsp;|&nbsp;&nbsp; Star us Turn your favorite coding assistant into an expert at building and deploying agents on Google Cloud. **Agents CLI in Gemini platform** (`agents-cli`) gives your coding agent the skills and commands to build, scale, govern, and optimize enterprise-grade agents — so you don't have to learn every CLI and service yourself. **Works seamlessly with:** [Antigravity CLI](https://antigravity.google/) &nbsp;•&nbsp; [Claude Code](https://docs.anthropic.com/en/docs/claude-code) &nb",
+      "score": 0.4273,
+      "score_parts": {
+        "velocity": 0.0079,
+        "vel_rel": 0.0,
+        "vel_abs": 0.0197,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 1.0,
+        "days_in_pool": 0
+      },
+      "affinity": 1.0
+    },
+    {
+      "repo": "zortos293/Lichii",
+      "url": "https://github.com/zortos293/Lichii",
+      "description": "VERY experimental Nintendo Switch 2 emulator",
+      "language": "C++",
+      "topics": [],
+      "stars": 6708,
+      "delta_stars": 1372,
+      "is_new": false,
+      "created_at": "2026-10-31T14:17:26Z",
+      "pushed_at": "2026-11-08T21:23:22Z",
+      "license": "GPL-3.0",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "JepEjfyWjGjhJvHSrqj52KtLjcbbbmUh1iGqerYBF4w",
+      "readme_intro": "Lichii is an experimental, open-source Nintendo Switch and Switch 2 emulator written in C++. It builds on Eglantine, Eden, yuzu and Sudachi, preserving their contributions while developing this fork's game compatibility and renderer fixes. This is an independent fork, not an official release of those upstream projects. Lichii is not affiliated with Nintendo. Visit the [official Lichii website](https://lichii.zortos.me) to find games and compare community compatibility reports.",
+      "score": 0.4148,
+      "score_parts": {
+        "velocity": 0.9659,
+        "vel_rel": 1.0,
+        "vel_abs": 0.9147,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "affinity": 0.0,
+        "days_in_pool": 1
+      },
+      "affinity": 0.0
+    }
+  ],
+  "meta": {
+    "pick_repo": "kingcharleslzy-ai/dsh-purge",
+    "runner_up_repos": [
+      "google/agents-cli",
+      "zortos293/Lichii"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 28,
+    "excluded_recent": 11,
+    "fresh_candidates": 17,
+    "widen_pass": false,
+    "pool_by_source": {
+      "trending": 3,
+      "new": 25
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "amosblomqvist/learnharness",
+    "yesterday_pick_delta": 288,
+    "candidate_audit": [
+      {
+        "repo": "vercel-labs/agent-browser",
+        "stars": 47506,
+        "delta_stars": null,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "stars": 25663,
+        "delta_stars": 62,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "google/skills",
+        "stars": 23702,
+        "delta_stars": null,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "storytold/craft-anything",
+        "stars": 22433,
+        "delta_stars": 2041,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "deepseek-ai/dsh-superagent-prototype",
+        "stars": 21171,
+        "delta_stars": 383,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "ccch1mneyyy/dsh-Go",
+        "stars": 15992,
+        "delta_stars": 1719,
+        "language": "Dart",
+        "license": "AGPL-3.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "seedds/nxnative",
+        "stars": 13700,
+        "delta_stars": 376,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "heydamir/unslop",
+        "stars": 11903,
+        "delta_stars": 606,
+        "language": "JavaScript",
+        "license": "CC-BY-4.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "pengchujin/aerial-tv",
+        "stars": 10731,
+        "delta_stars": 177,
+        "language": "Kotlin",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "l0ng-ai/openidea",
+        "stars": 7824,
+        "delta_stars": 176,
+        "language": "TypeScript",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "wangzan101/Mika",
+        "stars": 7736,
+        "delta_stars": 147,
+        "language": "Kotlin",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "HeyPuter/everything",
+        "stars": 7654,
+        "delta_stars": 85,
+        "language": "JavaScript",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "ly05010419/MacNativeGames",
+        "stars": 7325,
+        "delta_stars": 64,
+        "language": "C",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "rddmwmddr/android-ad-cleaner",
+        "stars": 7109,
+        "delta_stars": 187,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "zortos293/Lichii",
+        "stars": 6708,
+        "delta_stars": 1372,
+        "language": "C++",
+        "license": "GPL-3.0",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "amosblomqvist/learnharness",
+        "stars": 6444,
+        "delta_stars": 288,
+        "language": "TypeScript",
+        "license": "AGPL-3.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "google/agents-cli",
+        "stars": 6321,
+        "delta_stars": null,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "Jakeschincariol/day-trader-skill",
+        "stars": 6171,
+        "delta_stars": 222,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "simbasjungles/free-my-tv",
+        "stars": 6120,
+        "delta_stars": 93,
+        "language": "Java",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "patch-gg/pixelfx",
+        "stars": 6067,
+        "delta_stars": 255,
+        "language": "JavaScript",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      }
+    ],
+    "audit_semantics": "v5"
+  }
+}
