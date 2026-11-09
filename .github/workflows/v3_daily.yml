@@ -11,6 +11,16 @@ on:
         description: "Episode date (YYYY-MM-DD), default is today"
         required: false
         type: string
+      fulltext:
+        description: "回源抓正文（关闭可显著加速，验证用）"
+        required: false
+        type: boolean
+        default: true
+      max_workers:
+        description: "采集源级并发"
+        required: false
+        type: string
+        default: "8"
       skip_script:
         description: "只跑到点评，不生成文稿/音频"
         required: false
@@ -97,11 +107,15 @@ jobs:
           EPISODE="${{ steps.episode.outputs.id }}"
           EXTRA=""
           if [ "${{ github.event.inputs.skip_script }}" = "true" ]; then
-            EXTRA="--skip-script"
+            EXTRA="$EXTRA --skip-script"
+          fi
+          if [ "${{ github.event.inputs.fulltext }}" = "false" ]; then
+            EXTRA="$EXTRA --no-fulltext"
           fi
           uv run python -m ai_news_podcast.presentation.cli.podcast_v3_controller \
             --date "$EPISODE" \
             --rsshub-base http://127.0.0.1:1200 \
+            --max-workers "${{ github.event.inputs.max_workers || '8' }}" \
             $EXTRA
 
       - name: Upload v3 pipeline artifacts

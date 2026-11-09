@@ -17,6 +17,8 @@ stage1:
   per_source_limit: 15
   http_timeout: 20
   retries: 2
+  fetch_fulltext: true   # 关闭可显著加速（正文/证据质量下降），GHA 快速验证可传 --no-fulltext
+  max_workers: 8
 
 stage4:
   report_top_n: 5

@@ -87,3 +87,28 @@ def test_with_audio_and_publish(tmp_path: Path, monkeypatch: Any) -> None:
     assert sink["tts"]["text"].startswith("[CHAPTER]")
     assert str(sink["tts"]["output"]).endswith("2026-11-09.mp3")
     assert sink["publish"] == "2026-11-09"
+
+
+def test_no_fulltext_and_workers(tmp_path: Path, monkeypatch: Any) -> None:
+    calls: dict[str, Any] = {}
+
+    def fake_run(date_str: str, **kwargs: Any) -> V3RunResult:
+        calls.update(kwargs)
+        return V3RunResult(
+            date=date_str,
+            raw_path=tmp_path / "raw.json.gz",
+            ocean_dir=tmp_path / "ocean",
+            events_path=tmp_path / "events.json",
+            shortlist_path=tmp_path / "shortlist.json",
+            commentary_path=tmp_path / "commentary.json",
+        )
+
+    monkeypatch.setattr(
+        "ai_news_podcast.presentation.cli.podcast_v3_controller.run_v3_pipeline", fake_run
+    )
+    rc = V3PipelineCommand().run(
+        ["--date", "2026-11-09", "--data-dir", str(tmp_path), "--no-fulltext", "--max-workers", "3"]
+    )
+    assert rc == 0
+    assert calls["fetch_fulltext"] is False
+    assert calls["max_workers"] == 3
