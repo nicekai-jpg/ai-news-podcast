@@ -1,0 +1,97 @@
+# 实现进度与接口约定（Lead 维护）
+
+> 2026-11-09 动工。4 个并行工作流 + Lead 集成。
+
+## 工作流
+
+| 任务 | 负责人 | 范围 | 状态 |
+|---|---|---|---|
+| task-1 Stage 1 采集入海 | collect-agent | `business/collect/`、`config/sources_v3.yaml`、`tests/test_collect_*` | ✅ completed（70 tests，源 132 条） |
+| task-2 Stage 2 新闻潮汐 | ocean-agent | `business/ocean/`、`config/ocean_v3.yaml`、`config/nlp/`、`tests/test_ocean_*` | running（其余三个已完成） |
+| task-3 Stage 3 选题推荐 | recommend-agent | `business/recommend/`、`config/recommend_v3.yaml`、`tests/test_recommend_*` | ✅ completed（63 tests） |
+| task-4 Stage 4/5 点评与文稿 | editorial-agent | `business/editorial/`、`config/editorial_v3.yaml`、`tests/test_editorial_*` | ✅ completed（67 tests） |
+| task-5 集成与验收 | lead | `business/contracts/`、`business/coverage/`、`business/pipeline/runner` 集成、workflows、`.importlinter`、e2e | in_progress（orchestrator + mock e2e 已就绪） |
+
+## Lead 已完成（基础层）
+
+- `business/contracts/__init__.py`：Item / Event / Labels / ShortlistEntry / Commentary / Fact，`canonical_link`、`make_item_id`、`make_event_id`。
+- `business/contracts/artifact.py`：`write_artifact` / `read_artifact` / `latest_artifact`（gzip JSON）。
+- `business/coverage/ledger.py`：跨日覆盖账本（load/save/is_covered/append_entry）。
+- `.importlinter` 层序：pipeline → collect → ocean → recommend → editorial → coverage → contracts → events → data.*。
+- `LLMConfig.stage_models` + `resolve_model(stage)`（支持按 Stage 指定模型，如 stage2/3 用 M3.1 Flash）。
+- 测试：`tests/test_contracts.py`、`tests/test_coverage_ledger.py`、`tests/test_llm_config.py` 全绿。
+
+## 约定接口（集成时以最终报告为准）
+
+```python
+# Stage 1
+collect_and_write(config_path, date_str, output_path, *, rsshub_base=None, window_hours=72) -> Path
+
+# Stage 2
+build_ocean(raw_artifact_path, *, date_str, history_dir=None, ledger_path=None,
+            config_path="config/ocean_v3.yaml") -> OceanSnapshot(events, items, continuity)
+
+# Stage 3
+recommend(events, *, config_path="config/recommend_v3.yaml", llm_judge=None,
+          covered_event_ids=None) -> list[ShortlistEntry]
+
+# Stage 4
+build_commentaries(shortlist, events, llm_call, *, config_path="config/editorial_v3.yaml") -> list[Commentary]
+
+# Stage 5
+build_script(shortlist, events, commentaries, llm_call, *, config_path="config/editorial_v3.yaml") -> str
+```
+
+## 集成注意
+
+- 各 Stage 之间只通过 contracts + JSON artifact 交换，禁止互相 import 内部模块；
+- LLM 调用以可注入的 `llm_call` / `llm_judge` 传入，生产侧由 Lead 适配 `llm_client_service`（带 `resolve_model(stage)`）；
+- 迁移期保留旧管线（`runner_service.run_pipeline`），新链用独立入口，默认不切换；
+- 所有新模块只 import contracts/data.*，不 import `business.pipeline` 内部实现。
+
+## 阶段交接约定（2026-11-09 确认）
+
+| 交接 | 路径 / 结构 |
+|---|---|
+| Stage 1 → 2 | `data/raw/raw-{date}.json.gz`（manifest + items，contracts.Item） |
+| Stage 2 → 3/4 | `data/ocean/{date}/`：`events.json`（list[Event.to_dict]）、`items.json`（item 字段 + event_id/continuity_id/labels/dup_of/dup_reason，保留 full_text）、`continuity.json`、`manifest.json` |
+| Stage 3 → 4 | `data/selection/{date}/shortlist.json`（list[ShortlistEntry.to_dict]，顺序=rank） |
+| Stage 4 → 5 | `data/editorial/{date}/commentary.json`（list[Commentary.to_dict]）+ `daily_report_{date}.md` |
+| Stage 5 → 6 | `site/episodes/{date}.txt`（15 分钟、3000–3600 字、3–4 章节、[CHAPTER]） |
+
+- Stage 2 的 history_dir 默认 `data/ocean/`，扫描最近 30 天、跳过当天目录；
+- Stage 3 直接读 events.json，不 import ocean 包；
+- LLM 一律以 `llm_call: Callable[[str], str]` / `llm_judge` 注入，生产侧用 `llm_client_service.call_llm` + `resolve_model(stage)` 适配。
+
+## Lead 追加（2026-11-09 晚）
+
+- `business/pipeline/v3_runner_service.py`：Stage 1→5 编排（lazy import）、item_evidence 注入、覆盖账本写入、02 日报 Markdown 渲染；`tests/test_v3_runner_service.py` mock 全链路通过。
+- `config/pipeline_v3.yaml`：全局路径/保留期/各 Stage 模型配置。
+- 全量回归：667 passed / 1 failed（collect-agent 自测的 URL 编码用例，已通知其修复）。
+- editorial-agent 交付：`business/editorial/`（config/prompts/commentary/script/quality）+ 67 tests，全绿；Stage 4 输出 commentary.json + daily_report md（日报 md 由 Lead 编排层渲染）。
+
+## 集成状态（2026-11-09 晚）
+
+- collect ✅（132 源 / 70 tests）、recommend ✅（63 tests）、editorial ✅（67 tests）；
+- Lead 编排：`v3_runner_service` 已接 LLM judge 适配器、daily_report md 渲染；
+- 全仓回归：**743 passed**，lint-imports 4/4；
+- 待 ocean-agent 完成后：真实小样本联调（Stage1 fixture → Stage2 → Stage3 → Stage4/5）。
+
+## 最终状态（2026-11-09）
+
+- 4 个并行工作流全部完成：collect（132 源 / 70 tests）、ocean（74 tests）、recommend（63 tests）、
+  editorial（67 tests）；Lead 集成：contracts/artifact、coverage ledger、v3 编排器、LLM judge 适配、
+  daily_report 渲染、CLI（podcast-pipeline-v3）、.importlinter 层序、stage_models。
+- 全仓回归：**821 passed**；`ruff check` / `ruff format --check` 全绿；`lint-imports` 4/4。
+- 真实网络冒烟：Stage 1 抓取机器之心/ HuggingFace 共 7 条（全文 ok）→ Stage 2 聚类/标注 → Stage 3 短名单全链路跑通。
+- 集成测试：`tests/test_v3_pipeline_integration.py`（真实 ocean/recommend/editorial + 假 LLM）与
+  `tests/test_v3_runner_service.py`（mock 编排）通过。
+- 未提交 git；旧管线未改默认行为；GHA 尚未切到新链（下一步）。
+
+## Stage 6/7 接入（2026-11-09 完成）
+
+- `podcast-pipeline-v3 --with-audio` → 复用 `tts_engine_service.synthesize`（CosyVoice2），输出 `site/episodes/{date}.mp3`；
+- `podcast-pipeline-v3 --publish` → 依赖音频，复用旧 `PublishCommand`（feed/site/`data/episodes.json`/digest）；
+- 为兼容旧 publish，Stage 4/5 追加写 `data/briefs/brief_{date}.json`（thesis/stories/metadata/radar，
+  stories 字段映射自 shortlist/events/items），publish 逻辑零改动；
+- 全仓回归：**822 passed**，ruff/format/lint-imports 全绿；e2e 测试断言 brief 可被 publish 消费。

@@ -1,0 +1,87 @@
+name: RSSHub Cache Snapshots
+
+# 在 CI 里临时起一个 RSSHub 实例，抓取几条"没有稳定原生 RSS"的路由/直连地址，
+# 归一化成小 JSON 落盘到 data/cache/ 并提交回 main，供日报 Stage 1 消费。
+# 设计说明见 docs/rsshub_cache_relay.md。
+
+on:
+  schedule:
+    # 每天 16:00 UTC（北京时间 00:00）跑一次；即使 GitHub 调度延迟 3h，
+    # 也能在日报流水线（约 20:30 UTC 起）之前完成快照。
+    - cron: "0 16 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "只抓取并打印耗时，不写文件、不提交（用于验证/测速）"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+# 独立并发组：日报主链可能跑 4-5 小时，缓存任务不该排在它后面。
+concurrency:
+  group: rsshub-cache
+  cancel-in-progress: false
+
+jobs:
+  cache:
+    name: Fetch RSSHub snapshots
+    runs-on: ubuntu-latest
+    services:
+      # 临时 RSSHub 实例（官方镜像，ghcr 比 Docker Hub 更快且避开匿名拉取限流）。
+      # 只用 latest（不含 puppeteer，约 127MB）；需要浏览器渲染的路由再换 chromium-bundled。
+      rsshub:
+        image: ghcr.io/diygod/rsshub:latest
+        ports:
+          - 1200:1200
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.9"
+
+      - name: Wait for RSSHub
+        run: |
+          start=$(date +%s)
+          for i in $(seq 1 120); do
+            if curl -fsS -o /dev/null --max-time 2 http://localhost:1200/; then
+              echo "RSSHub ready after $(( $(date +%s) - start ))s"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "RSSHub 未就绪（120s 超时）"
+          exit 1
+
+      - name: Build cache snapshots
+        run: |
+          python scripts/build_rsshub_cache.py \
+            --base-url http://localhost:1200 \
+            --output-dir data/cache \
+            --max-items 20 \
+            ${{ github.event.inputs.dry_run == 'true' && '--dry-run' || '' }}
+
+      - name: Commit snapshots
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/cache
+          if git diff --cached --quiet; then
+            echo "缓存无变化，跳过提交"
+            exit 0
+          fi
+          git commit -m "cache: rsshub snapshots $(TZ=Asia/Shanghai date +%F) [skip ci]"
+          for i in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push; then
+              echo "快照已推送到 main"
+              exit 0
+            fi
+            echo "push 第 $i 次失败，5s 后重试"
+            sleep 5
+          done
+          echo "快照 push 失败"
+          exit 1

@@ -64,7 +64,14 @@ def get_recent_broadcasted_urls(
             found = re.findall(r'href="([^"]+)"', desc)
             for url in found:
                 url_str = str(url).strip()
-                if url_str.endswith((".mp3", ".xml", ".html")) or "/feed.xml" in url_str:
+                if not url_str:
+                    continue
+                # 只排除站点自身资源(音频/feed/单集页面)。历史实现把 ``.html`` 一律跳过,
+                # 导致量子位等站点的正文链接(均以 .html 结尾)从未进入 URL 去重集合,
+                # 同一篇文章可以连续两天被当成新素材再次播报。
+                if url_str.endswith((".mp3", ".xml", ".json")) or "/feed.xml" in url_str:
+                    continue
+                if re.search(r"/episodes/\d{4}-\d{2}-\d{2}\.html$", url_str):
                     continue
                 norm = normalize_url(url_str)
                 if norm:
@@ -214,85 +221,99 @@ def get_recent_broadcasted_texts(
 # ---------------------------------------------------------------------------
 
 
+# 模型家族别名 → 规范化家族名。长别名在前, 避免短别名抢先匹配。
+_MODEL_FAMILY_ALIASES: tuple[tuple[str, str], ...] = (
+    ("deepseek", "deepseek"),
+    ("minimax", "minimax"),
+    ("moonshot", "kimi"),
+    ("月之暗面", "kimi"),
+    ("kimi", "kimi"),
+    ("qwen", "qwen"),
+    ("通义", "qwen"),
+    ("千问", "qwen"),
+    ("claude", "claude"),
+    ("gemini", "gemini"),
+    ("gemma", "gemma"),
+    ("llama", "llama"),
+    ("mistral", "mistral"),
+    ("hunyuan", "hunyuan"),
+    ("混元", "hunyuan"),
+    ("doubao", "doubao"),
+    ("豆包", "doubao"),
+    ("smollm", "smollm"),
+    ("glm", "glm"),
+    ("智谱", "glm"),
+    ("ernie", "ernie"),
+    ("文心", "ernie"),
+    ("grok", "grok"),
+    ("gpt", "gpt"),
+)
+
+
 def _extract_model_versions(text: str) -> set[tuple[str, str]]:
-    """Extract (model_family, version) pairs from text, e.g., ('qwen', '3.8'), ('kimi', 'k3')."""
+    """Extract (model_family, version) pairs from text, e.g., ('qwen', '3.8'), ('kimi', 'k2').
+
+    只认紧跟在模型家族名之后的版本号(允许 ``DeepSeek-V4.1`` / ``MiniMax-M3.1`` /
+    ``Kimi K2`` 这类写法)。旧实现还会把正文中任意 ``\\d+.\\d+`` 都算作该家族的版本号,
+    于是 ``DeepSeek Harness 0.2.1`` 里的 "2.1" 被误当成 DeepSeek 的另一个版本,
+    跨期去重会把「同一条重复新闻」判定成「新版本事件」而放行。
+    """
     import re
 
     text_lower = text.lower()
 
-    family_map = {
-        "千问": "qwen",
-        "通义": "qwen",
-        "qwen": "qwen",
-        "kimi": "kimi",
-        "月之暗面": "kimi",
-        "deepseek": "deepseek",
-        "claude": "claude",
-        "gpt": "gpt",
-        "gemini": "gemini",
-        "llama": "llama",
-        "glm": "glm",
-        "智谱": "glm",
-        "minimax": "minimax",
-        "hunyuan": "hunyuan",
-        "混元": "hunyuan",
-        "doubao": "doubao",
-        "豆包": "doubao",
-        "gemma": "gemma",
-        "smollm": "smollm",
-        "mistral": "mistral",
-    }
-
     found_pairs: set[tuple[str, str]] = set()
-    for raw_key, family in family_map.items():
-        if raw_key in text_lower:
-            pattern = rf"(?:{raw_key})[\s\-_]*(?:v|k|r)?(\d+(?:\.\d+)*|k\d+(?:\.\d+)*|v\d+(?:\.\d+)*|r\d+(?:\.\d+)*)"
-            matches = re.findall(pattern, text_lower)
-            for m in matches:
-                if m and len(m) >= 1:
-                    found_pairs.add((family, m.strip("vk-_")))
-
-    for raw_key, family in family_map.items():
-        if raw_key in text_lower:
-            gen_matches = re.findall(
-                r"\b(?:v|k|r)?(\d+\.\d+|[2-9]b|\d+t|k[2-5](?:\.\d+)?|v[2-6](?:\.\d+)?)\b",
-                text_lower,
-            )
-            for gm in gen_matches:
-                clean_v = gm.strip("vk-_")
-                if clean_v and clean_v not in ("2024", "2025", "2026"):
-                    found_pairs.add((family, clean_v))
+    for alias, family in _MODEL_FAMILY_ALIASES:
+        # 家族名 → 可选分隔符 → 可选版本前缀字母(v/k/r/m) → 可选空格 → 数字版本号。
+        # 版本号支持 ``4.1`` 与 ``claude-3-5-sonnet`` 这类连字符写法(统一规范成 3.5);
+        # ``(?![\d.])`` 防止把 "4.1" 当成 "4.10" 的前缀。
+        pattern = (
+            rf"(?:{re.escape(alias)})[\s\-_/]*(?:[vkr]|m)?\s*"
+            r"(\d+(?:[.\-]\d+)*)(?![\d.])"
+        )
+        for match in re.finditer(pattern, text_lower):
+            version = match.group(1).replace("-", ".").strip("._-")
+            if not version:
+                continue
+            # 家族名后紧跟的年份(如 "DeepSeek 2026")不是版本号, 跳过。
+            if len(version) == 4 and version.isdigit() and 1900 <= int(version) <= 2100:
+                continue
+            found_pairs.add((family, version))
 
     return found_pairs
 
 
 def _are_distinct_model_versions(new_text: str, hist_text: str) -> bool:
     """Check if new_text specifies a model version distinct from or missing in hist_text."""
+    import re
+
     new_versions = _extract_model_versions(new_text)
     if not new_versions:
         return False
 
     hist_versions = _extract_model_versions(hist_text)
+    hist_by_family: dict[str, set[str]] = {}
+    for family, version in hist_versions:
+        hist_by_family.setdefault(family, set()).add(version)
     hist_text_lower = hist_text.lower()
 
     for family, new_v in new_versions:
-        fam_hist_versions = {v for f, v in hist_versions if f == family}
-        if fam_hist_versions and new_v not in fam_hist_versions:
-            log.info(
-                "Model version divergence detected for '%s': new '%s' vs historical %s. Keeping item.",
-                family,
-                new_v,
-                fam_hist_versions,
-            )
-            return True
-
-        if new_v not in hist_text_lower:
-            log.info(
-                "Model version '%s' (%s) not found in historical match. Keeping item.",
-                new_v,
-                family,
-            )
-            return True
+        fam_hist_versions = hist_by_family.get(family)
+        if not fam_hist_versions:
+            # 历史素材没提到同一家族的版本号, 无法据此判定为「新版本事件」, 按重复处理。
+            continue
+        if new_v in fam_hist_versions:
+            continue
+        # 版本号已在历史正文中出现(如 V4.1)也算同一版本, 避免 "4.1" 与 "V4.1" 误判。
+        if re.search(rf"(?<![\d.]){re.escape(new_v)}(?![\d.])", hist_text_lower):
+            continue
+        log.info(
+            "Model version divergence detected for '%s': new '%s' vs historical %s. Keeping item.",
+            family,
+            new_v,
+            sorted(fam_hist_versions),
+        )
+        return True
 
     return False
 

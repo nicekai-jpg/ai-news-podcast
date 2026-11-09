@@ -14,7 +14,7 @@ import logging
 import re
 import time
 from dataclasses import asdict, dataclass
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any
 from urllib.parse import parse_qs, urlencode, urlparse, urlunparse
 
@@ -286,6 +286,20 @@ async def _http_get(
 # ---------------------------------------------------------------------------
 
 
+def _entry_content_html(entry: Any) -> str:
+    """取 RSS 的 ``content:encoded`` 全文 HTML。
+
+    部分源(如 wechat2rss 生成的公众号 feed)只有 ``content:encoded`` 有全文,
+    ``summary`` 只有几十字; 优先用全文可以省掉一次正文抓取, 也避免微信页反爬导致
+    素材只剩一个短摘要。
+    """
+    for block in getattr(entry, "content", None) or []:
+        value = block.get("value") if isinstance(block, dict) else getattr(block, "value", "")
+        if value:
+            return str(value)
+    return ""
+
+
 async def _process_single_entry(
     entry: Any,
     *,
@@ -306,8 +320,12 @@ async def _process_single_entry(
     item_id = _item_id(norm_link)
     published_at = _parse_dt(entry)
 
-    summary_raw = str(getattr(entry, "summary", "") or "") or str(
-        getattr(entry, "description", "") or ""
+    content_html = _entry_content_html(entry)
+    content_text = _strip_html(content_html)
+    summary_raw = (
+        content_text
+        or str(getattr(entry, "summary", "") or "")
+        or str(getattr(entry, "description", "") or "")
     )
     summary = _strip_html(summary_raw)
 
@@ -319,10 +337,10 @@ async def _process_single_entry(
     if len(summary) > 500:
         summary = summary[:497].rstrip() + "..."
 
-    # 全文提取 (受 max_pages 限制)
-    full_text = ""
-    # 如果摘要没了（是垃圾），我们稍微放宽一点限制，或者至少优先抓取
-    if pages_counter[0] < max_pages or not summary:
+    # content:encoded 已含正文时直接使用, 不再额外抓页面(公众号链接常被反爬)。
+    full_text = content_text[:2000].strip()
+    if not full_text and (pages_counter[0] < max_pages or not summary):
+        # 如果摘要没了（是垃圾），我们稍微放宽一点限制，或者至少优先抓取
         try:
             page_resp = await _http_get(client, link, throttle)
             if not summary:  # 只有没摘要时才增加计数，避免浪费配额
@@ -567,6 +585,271 @@ async def _fetch_hn_api(
 
 
 # ---------------------------------------------------------------------------
+# DeepSeek 官方新闻（docs 站点没有 RSS: 用 sitemap 发现 news 页, 抓中文正文）
+# ---------------------------------------------------------------------------
+
+_DEEPSEEK_NEWS_PATH_RE = re.compile(r"/news/news(\d{2})(\d{2})(\d{2})/?$")
+_DEEPSEEK_NEWS_RECENT_DAYS = 14
+_DEEPSEEK_CHANGELOG_RECENT_DAYS = 14
+_DEEPSEEK_NEWS_DEFAULT_SITEMAP = "https://api-docs.deepseek.com/sitemap.xml"
+
+
+def _deepseek_published_at(year2: str, month: str, day: str) -> datetime | None:
+    """news 页只给日期(如 2026/10/17), 统一按北京时间 20:00(UTC 12:00)近似发布时间。
+
+    官方新闻以傍晚发布为主(如 V4.1-Flash-1017 当日 20:21 见报); 用 12:00 UTC 比用
+    00:00 UTC 更接近真实发布时间, 避免时间窗/时效扣分把当天发布误判成"旧闻"。
+    """
+    try:
+        return datetime(2000 + int(year2), int(month), int(day), 12, 0, tzinfo=UTC)
+    except ValueError:
+        return None
+
+
+def _deepseek_zh_url(url: str) -> str:
+    parsed = urlparse(url)
+    return urlunparse((parsed.scheme, parsed.netloc, f"/zh-cn{parsed.path}", "", "", ""))
+
+
+def _deepseek_title(html: str) -> str:
+    match = re.search(r"<title[^>]*>(.*?)</title>", html, re.S | re.I)
+    if not match:
+        return ""
+    title = _strip_html(match.group(1)).strip()
+    return re.sub(r"\s*\|\s*DeepSeek API Docs\s*$", "", title, flags=re.I).strip()
+
+
+def _deepseek_sitemap_entries(sitemap_text: str) -> list[tuple[datetime, str]]:
+    """从 sitemap 中解析出 (发布日期, 英文新闻页 URL), 按日期倒序。"""
+    entries: list[tuple[datetime, str]] = []
+    for loc in re.findall(r"<loc>\s*([^<]+?)\s*</loc>", sitemap_text):
+        match = _DEEPSEEK_NEWS_PATH_RE.search(loc)
+        if not match:
+            continue
+        published = _deepseek_published_at(*match.groups())
+        if published is not None:
+            entries.append((published, loc))
+    entries.sort(key=lambda entry: entry[0], reverse=True)
+    return entries
+
+
+async def _get_page_text(
+    client: httpx.AsyncClient,
+    throttle: _DomainThrottle,
+    url: str,
+) -> str | None:
+    """抓取页面文本, 失败返回 None(由调用方决定是否回退)。"""
+    try:
+        resp = await _http_get(client, url, throttle)
+    except (httpx.HTTPError, OSError, ValueError):
+        return None
+    return resp.text
+
+
+async def _fetch_deepseek_page(
+    client: httpx.AsyncClient,
+    throttle: _DomainThrottle,
+    en_url: str,
+) -> tuple[str, str] | None:
+    """优先抓 zh-cn 版新闻页(中文正文), 失败回退英文页。返回 (最终链接, HTML)。"""
+    zh_url = _deepseek_zh_url(en_url)
+    zh_text = await _get_page_text(client, throttle, zh_url)
+    if zh_text is not None:
+        return zh_url, zh_text
+    logger.debug("DeepSeek zh news fetch failed, fallback to en: %s", zh_url)
+
+    en_text = await _get_page_text(client, throttle, en_url)
+    if en_text is not None:
+        return en_url, en_text
+    logger.warning("DeepSeek news page fetch failed: %s", en_url)
+    return None
+
+
+def _build_deepseek_item(
+    *,
+    name: str,
+    src_category: str,
+    published: datetime,
+    link: str,
+    page_text: str,
+) -> RawItem | None:
+    """把官方新闻页 HTML 转成 RawItem; 标题缺失时返回 None。"""
+    title = _deepseek_title(page_text)
+    if not title:
+        return None
+    body = _extract_fulltext(page_text, link, min_chars=400, max_chars=2000)
+    if not body:
+        body = _strip_html(page_text)
+    summary = body[:300].strip()
+    full_text = body[:2000].strip() or summary
+    norm_link = normalize_url(link)
+    return RawItem(
+        id=_item_id(norm_link),
+        title=title,
+        link=link,
+        normalized_link=norm_link,
+        source_name=name,
+        source_category=src_category,
+        published_at=published.isoformat(),
+        summary=summary,
+        full_text_snippet=full_text,
+        category=_infer_category(title, summary),
+        language="zh",
+    )
+
+
+def _parse_deepseek_changelog(html: str) -> list[tuple[datetime, str, str]]:
+    """解析更新日志页: 每个 ``时间: YYYY-MM-DD`` 小节下的 h3 条目。
+
+    返回 (发布日期(UTC 12:00 近似), 标题, 正文文本)。更新日志是**稳定地址**,
+    不随版本发布换 URL, 可覆盖那些没有单独 news 页的 API/版本更新。
+    """
+    entries: list[tuple[datetime, str, str]] = []
+    for section in re.finditer(r"<h2[^>]*>(.*?)</h2>(.*?)(?=<h2[^>]*>|$)", html, re.S):
+        heading = _strip_html(section.group(1))
+        date_match = re.search(r"(\d{4})-(\d{2})-(\d{2})", heading)
+        if not date_match:
+            continue
+        try:
+            published = datetime(
+                int(date_match.group(1)),
+                int(date_match.group(2)),
+                int(date_match.group(3)),
+                12,
+                0,
+                tzinfo=UTC,
+            )
+        except ValueError:
+            continue
+        for entry in re.finditer(
+            r"<h3[^>]*>(.*?)</h3>(.*?)(?=<h3[^>]*>|<h2[^>]*>|$)",
+            section.group(2),
+            re.S,
+        ):
+            # Docusaurus 的标题锚点会带零宽空格(\u200b), 不清掉会污染标题。
+            title = _strip_html(entry.group(1)).replace("\u200b", "").strip()
+            body = _strip_html(entry.group(2)).replace("\u200b", "").strip()
+            if title and body:
+                entries.append((published, title, body))
+    return entries
+
+
+def _deepseek_changelog_items(
+    *,
+    name: str,
+    src_category: str,
+    changelog_url: str,
+    html: str,
+    news_dates: set[str],
+) -> list[RawItem]:
+    """更新日志 → RawItem; 同日期已有 news 页时跳过(新闻页信息更全, 避免重复播报)。"""
+    cutoff = datetime.now(tz=UTC) - timedelta(days=_DEEPSEEK_CHANGELOG_RECENT_DAYS)
+    items: list[RawItem] = []
+    seen: set[str] = set()
+    for published, title, body in _parse_deepseek_changelog(html):
+        if published < cutoff or published.date().isoformat() in news_dates:
+            continue
+        # 所有更新日志条目共用同一个页面: 用 query 参数区分, 否则跨期 URL 去重
+        # 会把「之前播过任意一条更新日志」误当成整个页面都播过, 从而漏掉新条目。
+        slug = hashlib.md5(title.encode("utf-8")).hexdigest()[:8]
+        link = f"{changelog_url}?date={published:%Y-%m-%d}&entry={slug}"
+        norm_link = normalize_url(link)
+        if norm_link in seen:
+            continue
+        seen.add(norm_link)
+        summary = body[:300].strip()
+        full_text = body[:2000].strip() or summary
+        items.append(
+            RawItem(
+                id=_item_id(norm_link),
+                title=title,
+                link=link,
+                normalized_link=norm_link,
+                source_name=name,
+                source_category=src_category,
+                published_at=published.isoformat(),
+                summary=summary,
+                full_text_snippet=full_text,
+                category=_infer_category(title, summary),
+                language="zh",
+            )
+        )
+    return items
+
+
+async def _fetch_deepseek_news(
+    src: dict[str, Any],
+    *,
+    client: httpx.AsyncClient,
+    throttle: _DomainThrottle,
+    max_items: int,
+) -> list[RawItem]:
+    """抓取 DeepSeek 官方新闻(一手发布信息)。
+
+    DeepSeek 官网/docs 没有提供 RSS:
+    - ``/news/newsYYMMDD`` 新闻页只出现在 sitemap 里, 每次发布都是**新地址**,
+      因此每次运行都重新解析 sitemap, 不硬编码任何一期的 URL;
+    - ``/zh-cn/updates`` 更新日志是**稳定地址**, 用来兜底覆盖没有单独 news 页的更新。
+    """
+    name = str(src.get("name") or "").strip()
+    src_category = str(src.get("category") or "other").strip()
+    if not name:
+        return []
+    sitemap_url = str(src.get("url") or "").strip() or _DEEPSEEK_NEWS_DEFAULT_SITEMAP
+
+    try:
+        sitemap_resp = await _http_get(client, sitemap_url, throttle)
+    except (httpx.HTTPError, OSError, ValueError):
+        logger.warning("Failed to fetch DeepSeek news sitemap: %s", name)
+        return []
+
+    entries = _deepseek_sitemap_entries(sitemap_resp.text)
+    if not entries:
+        logger.info("No DeepSeek news entries found in sitemap: %s", name)
+        return []
+
+    cutoff = datetime.now(tz=UTC) - timedelta(days=_DEEPSEEK_NEWS_RECENT_DAYS)
+    selected = [entry for entry in entries if entry[0] >= cutoff][:max_items]
+    if not selected:
+        # 长期没有新版本时仍抓最新一条: 让跨期去重判断是否已播, 避免漏掉唯一一次官方发布。
+        selected = entries[:1]
+
+    items: list[RawItem] = []
+    for published, en_url in selected:
+        page = await _fetch_deepseek_page(client, throttle, en_url)
+        if page is None:
+            continue
+        link, page_text = page
+        item = _build_deepseek_item(
+            name=name,
+            src_category=src_category,
+            published=published,
+            link=link,
+            page_text=page_text,
+        )
+        if item is not None:
+            items.append(item)
+
+    changelog_url = str(src.get("changelog_url") or "").strip()
+    if changelog_url:
+        changelog_html = await _get_page_text(client, throttle, changelog_url)
+        if changelog_html:
+            news_dates = {entry[0].date().isoformat() for entry in entries}
+            items.extend(
+                _deepseek_changelog_items(
+                    name=name,
+                    src_category=src_category,
+                    changelog_url=changelog_url,
+                    html=changelog_html,
+                    news_dates=news_dates,
+                )
+            )
+
+    logger.info("Fetched %d items from DeepSeek official news: %s", len(items), name)
+    return items
+
+
+# ---------------------------------------------------------------------------
 # 抓取器注册表
 # ---------------------------------------------------------------------------
 
@@ -574,6 +857,7 @@ _FETCHER_REGISTRY: dict[str, Any] = {
     "rss": _fetch_one_feed,
     "github_api": _fetch_github_api,
     "hn_api": _fetch_hn_api,
+    "deepseek_news": _fetch_deepseek_news,
 }
 
 
@@ -597,6 +881,7 @@ async def fetch_all(
     - ``rss``（默认）：标准 RSS 抓取
     - ``github_api``：GitHub Search API
     - ``hn_api``：Hacker News Algolia API
+    - ``deepseek_news``：DeepSeek 官方新闻页(sitemap 发现, 无 RSS)
     """
     enabled = [s for s in sources if s.get("enabled", False)]
     if not enabled:

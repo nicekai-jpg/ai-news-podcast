@@ -12,6 +12,12 @@ layers =
     presentation.cli
     presentation.site_builder
     business.pipeline
+    business.collect
+    business.ocean
+    business.recommend
+    business.editorial
+    business.coverage
+    business.contracts
     business.events
     data.config
     data.utils_dao

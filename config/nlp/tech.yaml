@@ -1,0 +1,53 @@
+# 技术栈词典（多标签）。id 稳定，便于 Stage 3 audience_fit / 多样性使用。
+tech_stack:
+  - id: llm
+    name: 大语言模型
+    aliases: [LLM, 大语言模型, 大模型, 语言模型, 模型, large language model, 基础模型]
+  - id: agent
+    name: 智能体
+    aliases: [Agent, 智能体, AI Agent, 代理, 多智能体, multi-agent, autonomous agent]
+  - id: multimodal
+    name: 多模态
+    aliases: [多模态, multimodal, 图文, 图文生成, 视频生成, 语音生成, 跨模态]
+  - id: reasoning
+    name: 推理
+    aliases: [推理, reasoning, 思维链, chain of thought, COT, 推理模型]
+  - id: training
+    name: 训练
+    aliases: [训练, training, 预训练, 微调, fine-tuning, finetune, post-training, 强化学习, RLHF]
+  - id: inference
+    name: 推理部署
+    aliases: [推理, 推理引擎, inference, serving, 部署, 量化, quantization, 蒸馏, distillation]
+  - id: chip
+    name: 芯片
+    aliases: [芯片, 半导体, GPU, TPU, NPU, ASIC, 算力, chip, semiconductor, accelerator]
+  - id: robot
+    name: 机器人
+    aliases: [机器人, 具身智能, robot, robotics, embodied AI, 人形机器人, humanoid]
+  - id: autonomous_driving
+    name: 自动驾驶
+    aliases: [自动驾驶, 无人驾驶, autonomous driving, self-driving, Robotaxi, 智能驾驶]
+  - id: speech
+    name: 语音
+    aliases: [语音, 语音合成, 语音识别, TTS, ASR, speech, voice]
+  - id: vision
+    name: 视觉
+    aliases: [视觉, 图像生成, 视频生成, 计算机视觉, vision, image generation, video generation, diffusion]
+  - id: coding
+    name: 代码生成
+    aliases: [代码生成, 编程, coding, code generation, 代码补全, code completion, 编程助手]
+  - id: rag
+    name: 检索增强
+    aliases: [RAG, 检索增强, retrieval augmented, 知识库, 向量数据库, vector database]
+  - id: safety
+    name: 安全对齐
+    aliases: [安全, 对齐, alignment, safety, 价值观, 幻觉, hallucination, 红队, red team]
+  - id: data
+    name: 数据
+    aliases: [数据集, 语料, 数据标注, dataset, data, 合成数据, synthetic data]
+  - id: edge
+    name: 端侧
+    aliases: [端侧, 端侧模型, on-device, edge AI, 手机端, 本地部署, local model]
+  - id: open_source
+    name: 开源生态
+    aliases: [开源, open source, open-source, 开放权重, open weights, 社区版]

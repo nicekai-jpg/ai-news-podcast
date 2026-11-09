@@ -1,0 +1,27 @@
+# 受众画像（多标签）：由技术栈/对象/动作/关键词推导，供 Stage 3 audience_fit。
+personas:
+  - id: developer
+    name: 开发者
+    keywords: [开发者, 程序员, 工程师, 代码, 编程, API, SDK, 框架, 开源, 部署, developer, engineer, coding, framework, API, SDK, open source, deploy]
+    tech_stack: [agent, coding, rag, inference, training, open_source, edge]
+    object_types: [framework, model]
+  - id: investor
+    name: 投资人
+    keywords: [融资, 估值, 投资, 财报, 营收, 股价, 上市, 募资, 并购, funding, valuation, investment, earnings, revenue, stock, IPO, acquisition]
+    actions: [funding, ipo, acquisition]
+    object_types: []
+  - id: consumer
+    name: 消费者
+    keywords: [用户, 订阅, 价格, 免费, 手机, 应用, 产品, 功能, 体验, user, subscription, price, free, app, product, feature]
+    tech_stack: [speech, vision, edge, multimodal]
+    object_types: [product]
+  - id: policymaker
+    name: 政策制定者
+    keywords: [监管, 政策, 法案, 合规, 政府, 白宫, 欧盟, 工信部, 网信办, regulation, policy, legislation, compliance, government]
+    actions: [regulation, ban, lawsuit]
+    object_types: [policy]
+  - id: researcher
+    name: 研究者
+    keywords: [论文, 研究, 实验, 基准, 数据集, 学术, 预印本, paper, research, experiment, benchmark, dataset, academic]
+    tech_stack: [training, reasoning, data]
+    object_types: [paper]

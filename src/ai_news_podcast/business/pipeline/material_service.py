@@ -6,11 +6,42 @@
 from __future__ import annotations
 
 import logging
+from datetime import UTC, datetime
 from typing import Any
+from zoneinfo import ZoneInfo
 
 from ai_news_podcast.business.pipeline.strategies import StrategyRegistry
+from ai_news_podcast.business.pipeline.strategies.base_service import (
+    story_age_hours,
+    story_published_at,
+)
 
 logger = logging.getLogger(__name__)
+
+_BEIJING_TZ = ZoneInfo("Asia/Shanghai")
+
+
+def _brief_reference_time(brief: dict[str, Any]) -> datetime:
+    """素材时效基准时间：优先用 brief 生成时间，其次当前时间。"""
+    raw = str((brief.get("metadata") or {}).get("generated_at") or "").strip()
+    if raw:
+        try:
+            parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
+            return parsed if parsed.tzinfo is not None else parsed.replace(tzinfo=UTC)
+        except ValueError:
+            pass
+    return datetime.now(tz=UTC)
+
+
+def _published_line(story: dict[str, Any], reference: datetime) -> str:
+    """素材发布时间行：让写稿 LLM 能判断新闻新旧，而不是只凭标题猜。"""
+    published = story_published_at(story)
+    if published is None:
+        return ""
+    local = published.astimezone(_BEIJING_TZ)
+    age = story_age_hours(story, reference)
+    age_part = f"，约 {age:.0f} 小时前" if age is not None else ""
+    return f"发布时间：{local:%Y-%m-%d %H:%M}（北京时间{age_part}）\n"
 
 
 def build_material_text(
@@ -29,15 +60,17 @@ def build_material_text(
         - "score_diversity": 按分数降序 + 实体多样性惩罚（MMR-like），
           防止同一家公司霸榜。适合播客脚本生成。
         - "pure_score": 纯按分数排序取 top N。适合日报生成。
+        两种策略都会对超过 24/48 小时的旧素材扣分，避免旧闻挤掉新事件。
 
     Returns
     -------
     str: 结构化素材文本，可直接注入 LLM prompt。
     """
     stories = brief.get("stories", [])
+    reference = _brief_reference_time(brief)
 
     strategy_obj = StrategyRegistry.get(strategy)
-    selected = strategy_obj.select(stories, max_stories)
+    selected = strategy_obj.select(stories, max_stories, reference_time=reference)
 
     sections: list[str] = []
     for i, story in enumerate(selected, 1):
@@ -50,6 +83,7 @@ def build_material_text(
         sources = context.get("sources_ranked", [])
 
         part = f"【素材{i}】（{role_label}）\n标题：{title}\n"
+        part += _published_line(story, reference)
 
         if summaries:
             part += "摘要：\n"

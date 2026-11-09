@@ -1,8 +1,14 @@
 sources:
+  # 机器之心官网 RSS 已失效(返回 HTML), 改用 wechat2rss 公共服务的公众号 feed。
+  # 该服务免费收录部分公众号、更新延迟约 6-24h; 若服务失效会自然降级(失败只告警)。
   - name: "机器之心"
-    url: "https://www.jiqizhixin.com/rss"
+    url: "https://wechat2rss.xlab.app/feed/51e92aad2728acdd1fda7314be32b16639353001.xml"
     category: "news"
-    enabled: false
+    enabled: true
+  - name: "新智元"
+    url: "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml"
+    category: "news"
+    enabled: true
   - name: "量子位"
     url: "https://www.qbitai.com/feed"
     category: "news"
@@ -68,6 +74,14 @@ sources:
   - name: "Qwen 通义千问技术博客"
     url: "https://qwenlm.github.io/blog/index.xml"
     category: "official"
+    enabled: true
+  # DeepSeek 官网没有 RSS: news/newsYYMMDD 页面只在 sitemap 里, 由 deepseek_news 抓取器
+  # 发现并抓 zh-cn 正文; changelog_url 指向稳定地址的更新日志, 兜底覆盖没有单独 news 页的更新。
+  - name: "DeepSeek 官方新闻"
+    url: "https://api-docs.deepseek.com/sitemap.xml"
+    changelog_url: "https://api-docs.deepseek.com/zh-cn/updates"
+    category: "official"
+    fetcher_type: "deepseek_news"
     enabled: true
   - name: "arXiv · DeepSeek"
     url: "http://export.arxiv.org/api/query?search_query=abs:DeepSeek+OR+ti:DeepSeek&sortBy=submittedDate&sortOrder=descending&max_results=15"

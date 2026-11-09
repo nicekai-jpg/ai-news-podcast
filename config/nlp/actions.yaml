@@ -1,0 +1,66 @@
+# 动作词典：多标签输出，priority 只用于选 primary（数值大优先），不丢其它动作。
+actions:
+  - id: accident
+    name: 事故/故障
+    priority: 100
+    aliases: [事故, 宕机, 崩溃, 故障, 中断, 泄露, 泄漏, 漏洞, 网络攻击, 被攻击, 失窃, 起火, outage, downtime, incident, leak, breach, hack, hacked, crash]
+  - id: lawsuit
+    name: 诉讼
+    priority: 95
+    aliases: [诉讼, 起诉, 指控, 控告, 法院, 判决, 侵权, lawsuit, sue, sued, court, verdict, infringement]
+  - id: regulation
+    name: 监管
+    priority: 90
+    aliases: [监管, 监管机构, 合规, 审查, 反垄断, 处罚, 罚款, 备案, 许可证, 牌照, regulate, regulator, compliance, antitrust, fine, investigation]
+  - id: ban
+    name: 禁令/下架
+    priority: 88
+    aliases: [禁令, 封禁, 下架, 禁用, 限制使用, ban, banned, blocked, takedown, remove]
+  - id: layoff
+    name: 裁员
+    priority: 86
+    aliases: [裁员, 解雇, 优化员工, 人员优化, layoff, layoffs, job cuts, downsizing]
+  - id: funding
+    name: 融资
+    priority: 85
+    aliases: [融资, 募资, 完成融资, 估值, 获得投资, 注资, 领投, raise, raised, funding, valuation, investment, invest]
+  - id: ipo
+    name: 上市
+    priority: 83
+    aliases: [上市, 首次公开募股, IPO, 挂牌]
+  - id: acquisition
+    name: 收购
+    priority: 82
+    aliases: [收购, 并购, 合并, 买下, acquisition, acquire, acquired, merger]
+  - id: release
+    name: 发布
+    priority: 80
+    aliases: [发布, 推出, 上线, 问世, 亮相, 面世, 公布, launch, launched, release, released, unveil, unveiled, roll out, introduce, announced]
+  - id: open_source
+    name: 开源
+    priority: 79
+    aliases: [开源, 开放源代码, 开放权重, open source, open-source, open weights, opensourced]
+  - id: product_update
+    name: 产品更新
+    priority: 70
+    aliases: [更新, 升级, 迭代, 版本更新, update, updated, upgrade, upgraded, iteration]
+  - id: partnership
+    name: 合作
+    priority: 68
+    aliases: [合作, 联手, 战略合作, 达成合作, 携手, partnership, partner, teamed up, collaborate, collaboration]
+  - id: benchmark
+    name: 评测
+    priority: 60
+    aliases: [评测, 测评, 基准, 榜单, 排行榜, 跑分, benchmark, evaluation, evaluate, leaderboard, score]
+  - id: pricing
+    name: 价格调整
+    priority: 55
+    aliases: [降价, 涨价, 免费, 收费标准, 价格调整, price cut, price increase, free tier, pricing]
+  - id: hiring
+    name: 招聘
+    priority: 45
+    aliases: [招聘, 扩招, 招人, 招募, hiring, recruiting, job posting]
+  - id: research
+    name: 研究
+    priority: 40
+    aliases: [研究, 论文, 实验, 研究成果, research, paper, study, experiment]

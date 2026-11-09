@@ -164,6 +164,62 @@ class TestBuildMaterialText:
         assert "Background info" in result
         assert "TechCrunch" in result
 
+    def test_material_includes_publish_time(self) -> None:
+        """素材应带发布时间与距今小时数, 让写稿 LLM 能判断新旧。"""
+        stories = [
+            {
+                "representative_title": "Fresh release",
+                "role": "main",
+                "total_score": 14,
+                "items": [{"published_at": "2026-10-17T12:21:09+00:00"}],
+                "context": {
+                    "factual_summary": ["summary"],
+                    "historical_background": "",
+                    "sources_ranked": [],
+                },
+            },
+        ]
+        brief = self._make_brief(stories)
+        brief["metadata"] = {"generated_at": "2026-10-17T19:43:25+00:00"}
+
+        result = build_material_text(brief, max_stories=1, strategy="pure_score")
+
+        assert "发布时间：" in result
+        assert "2026-10-17 20:21" in result  # UTC → 北京时间
+        assert "约 7 小时前" in result
+
+    def test_stale_story_ranks_below_fresh_story(self) -> None:
+        """同等分数下, 三天前的旧闻应让位给几小时前的新事件。"""
+        stale = {
+            "representative_title": "Stale Story",
+            "role": "main",
+            "total_score": 14,
+            "items": [{"published_at": "2026-10-14T00:00:00+00:00"}],
+            "context": {
+                "factual_summary": ["old"],
+                "historical_background": "",
+                "sources_ranked": [],
+            },
+        }
+        fresh = {
+            "representative_title": "Fresh Story",
+            "role": "main",
+            "total_score": 13,
+            "items": [{"published_at": "2026-10-17T10:00:00+00:00"}],
+            "context": {
+                "factual_summary": ["new"],
+                "historical_background": "",
+                "sources_ranked": [],
+            },
+        }
+        brief = self._make_brief([stale, fresh])
+        brief["metadata"] = {"generated_at": "2026-10-17T12:00:00+00:00"}
+
+        result = build_material_text(brief, max_stories=1, strategy="pure_score")
+
+        assert "Fresh Story" in result
+        assert "Stale Story" not in result
+
 
 class TestBuildRadarText:
     def test_empty_radar_returns_empty(self) -> None:

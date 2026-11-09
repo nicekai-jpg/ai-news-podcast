@@ -1,0 +1,34 @@
+# 主题词典：多标签 + primary。priority 数值大者优先成为 primary_topic。
+topics:
+  - id: policy
+    name: 政策监管
+    priority: 100
+    aliases: [政策, 监管, 法案, 立法, 合规, 政府, 白宫, 欧盟委员会, 工信部, 网信办, 反垄断, policy, regulation, regulator, legislation, government, compliance, antitrust]
+  - id: safety
+    name: 安全伦理
+    priority: 95
+    aliases: [安全, 伦理, 隐私, 版权, 偏见, 深度伪造, 造假, 攻击, 漏洞, 对齐, safety, ethics, privacy, copyright, deepfake, attack, vulnerability, alignment]
+  - id: business
+    name: 商业
+    priority: 90
+    aliases: [商业, 营收, 财报, 市场份额, 商业化, 客户, 订单, 定价, business, revenue, earnings, market share, customer, pricing]
+  - id: capital
+    name: 资本
+    priority: 85
+    aliases: [融资, 投资, 估值, 并购, 收购, 上市, IPO, 募资, funding, investment, valuation, acquisition, merger, IPO]
+  - id: research
+    name: 研究
+    priority: 80
+    aliases: [研究, 论文, 实验, 学术, 预印本, 基准, research, paper, study, academic, preprint, benchmark]
+  - id: product
+    name: 产品
+    priority: 70
+    aliases: [产品, 应用, 上线, 功能, 更新, 版本, 用户体验, product, app, feature, update, version, user experience]
+  - id: technology
+    name: 技术
+    priority: 60
+    aliases: [技术, 架构, 算法, 训练, 推理, 模型, 芯片, 算力, technology, architecture, algorithm, training, inference, model, chip, compute]
+  - id: industry
+    name: 产业
+    priority: 50
+    aliases: [产业, 行业, 生态, 供应链, 制造业, 医疗, 金融, 教育, industry, supply chain, manufacturing, healthcare, finance, education]

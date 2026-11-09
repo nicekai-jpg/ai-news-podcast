@@ -1,0 +1,30 @@
+# 地域词典（多标签）。只在文本命中或由主体总部推断时输出；未命中留空。
+# 歧义规则见 postal 注释：避免“国内”等相对词产生错误地域。
+regions:
+  - id: china
+    name: 中国
+    aliases: [中国, 国内, 中国大陆, 北京, 上海, 深圳, 杭州, 广州, 南京, 成都, 武汉, 香港, 中国台湾, China, Chinese]
+  - id: usa
+    name: 美国
+    aliases: [美国, 美方, 硅谷, 华盛顿, 加州, 纽约, 西雅图, 波士顿, 得州, United States, USA, America, American]
+  - id: europe
+    name: 欧洲
+    aliases: [欧洲, 欧盟, 英国, 法国, 德国, 意大利, 荷兰, 瑞士, Europe, European Union, Britain, France, Germany]
+  - id: japan
+    name: 日本
+    aliases: [日本, 东京, Japan, Japanese]
+  - id: korea
+    name: 韩国
+    aliases: [韩国, 首尔, South Korea, Korean]
+  - id: india
+    name: 印度
+    aliases: [印度, India, Indian]
+  - id: southeast_asia
+    name: 东南亚
+    aliases: [东南亚, 新加坡, 越南, 印尼, 马来西亚, Southeast Asia, Singapore]
+  - id: middle_east
+    name: 中东
+    aliases: [中东, 沙特, 阿联酋, 迪拜, Middle East, Saudi, UAE]
+  - id: global
+    name: 全球
+    aliases: [全球, 全世界, 国际, 世界范围, global, worldwide, international]

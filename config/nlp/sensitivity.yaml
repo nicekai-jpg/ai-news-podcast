@@ -1,0 +1,23 @@
+# 敏感性词典（风险/措辞，供 Stage 3 risk 与 Stage 4/5 克制表达）。
+# 输出按 priority 降序的多标签列表（primary = 第一个）。
+sensitivity:
+  - id: geopolitics
+    name: 地缘/出口管制
+    priority: 100
+    aliases: [制裁, 出口管制, 实体清单, 禁令, 国家安全, 断供, 脱钩, sanction, export control, entity list, national security, ban]
+  - id: accident
+    name: 事故/安全事件
+    priority: 90
+    aliases: [事故, 宕机, 崩溃, 故障, 中断, 泄露, 泄漏, 漏洞, 攻击, 黑客, 失窃, outage, downtime, incident, leak, breach, hack, vulnerability]
+  - id: litigation
+    name: 诉讼
+    priority: 85
+    aliases: [诉讼, 起诉, 指控, 法院, 判决, 侵权, 索赔, lawsuit, sued, court, verdict, infringement, claim]
+  - id: regulation
+    name: 监管/合规
+    priority: 80
+    aliases: [监管, 处罚, 罚款, 调查, 反垄断, 合规, 审查, 备案, regulation, regulator, fine, investigation, antitrust, compliance, review]
+  - id: ethics
+    name: 伦理/隐私
+    priority: 75
+    aliases: [伦理, 隐私, 版权, 偏见, 深度伪造, 造假, 歧视, 未成年, ethics, privacy, copyright, bias, deepfake, misinformation, discrimination, minor]

@@ -104,3 +104,75 @@ class TestInferCategory:
 
     def test_other(self) -> None:
         assert _infer_category("Random thoughts", "") == "other"
+
+
+class TestContentEncoded:
+    """wechat2rss 等源只有 content:encoded 有全文, summary 只有几十字。"""
+
+    @pytest.mark.asyncio
+    async def test_uses_content_encoded_without_extra_page_fetch(self) -> None:
+        from types import SimpleNamespace
+        from unittest.mock import AsyncMock, patch
+
+        from ai_news_podcast.business.pipeline import fetcher_service
+        from ai_news_podcast.business.pipeline.fetcher_service import _process_single_entry
+
+        full_body = "机器之心正文内容。" * 200  # 1400 字
+        entry = SimpleNamespace(
+            title="机器之心：某模型发布",
+            link="https://mp.weixin.qq.com/s?__biz=xxx&mid=1&idx=1&sn=abc",
+            summary="原创",
+            content=[{"value": f"<p>{full_body}</p>"}],
+            published_parsed=(2026, 11, 5, 8, 21, 0),
+        )
+        http_get = AsyncMock(side_effect=AssertionError("content:encoded 已含正文, 不应再抓页面"))
+
+        with patch.object(fetcher_service, "_http_get", new=http_get):
+            item = await _process_single_entry(
+                entry,
+                name="机器之心",
+                src_category="news",
+                client=None,
+                throttle=None,
+                max_pages=10,
+                pages_counter=[0],
+            )
+
+        assert item is not None
+        assert item.summary.startswith("机器之心正文内容")
+        assert len(item.summary) <= 500
+        assert len(item.full_text_snippet) > len(item.summary)
+        assert "机器之心正文内容" in item.full_text_snippet
+        assert http_get.await_count == 0
+
+    @pytest.mark.asyncio
+    async def test_falls_back_to_page_fetch_without_content(self) -> None:
+        from types import SimpleNamespace
+        from unittest.mock import AsyncMock, patch
+
+        from ai_news_podcast.business.pipeline import fetcher_service
+        from ai_news_podcast.business.pipeline.fetcher_service import _process_single_entry
+
+        entry = SimpleNamespace(
+            title="普通 RSS 源新闻",
+            link="https://example.com/news/1",
+            summary="",
+            published_parsed=(2026, 11, 5, 8, 21, 0),
+        )
+        page = "<html><body><article><p>" + ("页面正文。" * 300) + "</p></article></body></html>"
+        http_get = AsyncMock(return_value=SimpleNamespace(text=page))
+
+        with patch.object(fetcher_service, "_http_get", new=http_get):
+            item = await _process_single_entry(
+                entry,
+                name="Example",
+                src_category="news",
+                client=None,
+                throttle=None,
+                max_pages=10,
+                pages_counter=[0],
+            )
+
+        assert item is not None
+        assert item.full_text_snippet
+        assert http_get.await_count == 1
