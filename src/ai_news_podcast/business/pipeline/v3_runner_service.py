@@ -312,6 +312,8 @@ def run_v3_pipeline(
     config_dir: str | Path = DEFAULT_CONFIG_DIR,
     rsshub_base: str | None = None,
     window_hours: int = 72,
+    fetch_fulltext: bool = True,
+    max_workers: int = 8,
     llm_cfg: Any | None = None,
     llm_call_factory: LLMCallFactory | None = None,
     llm_judge: LLMJudge | None = None,
@@ -337,6 +339,8 @@ def run_v3_pipeline(
         raw_dir / f"raw-{date_str}.json.gz",
         rsshub_base=rsshub_base,
         window_hours=window_hours,
+        fetch_fulltext=fetch_fulltext,
+        max_workers=max_workers,
     )
     logger.info("Stage 1 完成：%s", raw_path)
 

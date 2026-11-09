@@ -48,6 +48,13 @@ class V3PipelineCommand(AsyncCommand):
             "--rsshub-base", default=None, help="本地 RSSHub 实例地址（如 http://127.0.0.1:1200）"
         )
         parser.add_argument("--window-hours", type=int, default=72, help="采集时间窗口（默认 72h）")
+        parser.add_argument(
+            "--no-fulltext",
+            dest="fetch_fulltext",
+            action="store_false",
+            help="不回源抓正文（快速验证用；正文质量下降）",
+        )
+        parser.add_argument("--max-workers", type=int, default=8, help="采集源级并发（默认 8）")
         parser.add_argument("--skip-script", action="store_true", help="只跑到点评，不生成文稿")
         parser.add_argument("--no-ledger", action="store_true", help="不写入覆盖账本")
         parser.add_argument("--dry-run", action="store_true", help="只打印配置，不执行")
@@ -120,6 +127,7 @@ class V3PipelineCommand(AsyncCommand):
         print(f"data_dir={data_dir}")
         print(f"config_dir={config_dir}")
         print(f"rsshub_base={args.rsshub_base or '(未提供，C3 将跳过)'}")
+        print(f"fetch_fulltext={args.fetch_fulltext}；max_workers={args.max_workers}")
         print(f"模型：默认 {llm_cfg.model}；按 Stage {llm_cfg.stage_models}")
         print("=" * 55)
 
@@ -134,6 +142,8 @@ class V3PipelineCommand(AsyncCommand):
                 config_dir=config_dir,
                 rsshub_base=args.rsshub_base,
                 window_hours=args.window_hours,
+                fetch_fulltext=args.fetch_fulltext,
+                max_workers=args.max_workers,
                 llm_cfg=llm_cfg,
                 skip_script=args.skip_script,
                 update_ledger=not args.no_ledger,
