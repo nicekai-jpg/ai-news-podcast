@@ -118,6 +118,10 @@ Stage CLIs (console scripts in pyproject):
   `podcast-writer` / `podcast-report` / `podcast-tts` / `podcast-publish` 不变，新链默认不接入 GHA，可随时回滚。
 - **Stage 7 兼容**：Stage 4/5 会额外写 `data/briefs/brief_{date}.json`（thesis/stories/metadata/radar），
   字段映射自 shortlist/events/items，供旧 `podcast-publish`（依赖 brief）直接消费，无需改 publish。
+- **GHA（手动验证）**：`.github/workflows/v3_daily.yml` 三步 job（pipeline Stage1–5 + RSSHub service
+  container → tts → publish），仅 `workflow_dispatch`，与旧 `daily.yml` 共享 `podcast-pipeline`
+  并发组；默认只上传产物、不部署不提交，勾选 `deploy` 才部署 gh-pages 并提交 main。
+  **cron 未切换**，旧 `daily.yml` 仍是生产默认。
 - **模块**（都在 `business/` 下，只依赖 `contracts`/`data.*`，不 import `business.pipeline` 内部实现）：
   - `contracts/`：Item / Event / Labels / ShortlistEntry / Commentary + `artifact.py`（gzip JSON）；
   - `coverage/ledger.py`：跨日覆盖账本（已选中事件指纹，长期保留）；

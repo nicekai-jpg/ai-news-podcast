@@ -95,3 +95,14 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
 - 为兼容旧 publish，Stage 4/5 追加写 `data/briefs/brief_{date}.json`（thesis/stories/metadata/radar，
   stories 字段映射自 shortlist/events/items），publish 逻辑零改动；
 - 全仓回归：**822 passed**，ruff/format/lint-imports 全绿；e2e 测试断言 brief 可被 publish 消费。
+
+## 分支与 GHA（2026-11-09 晚）
+
+- 分支 `feat/v3-pipeline`，提交 `79f0cd50`（822 tests 全绿后提交）。
+- 新增手动工作流 `.github/workflows/v3_daily.yml`：pipeline（Stage1–5，RSSHub service container）→ tts → publish；
+  默认只校验/上传 artifact，`deploy=true` 才部署 gh-pages + 提交 main；cron 未切换。
+- 真实发布联调（隔离 git worktree，假 LLM + ffmpeg 合成占位 mp3）：
+  `podcast-publish --date 2099-12-31` 成功产出 feed enclosure、episodes.json 条目、index.html、
+  show notes、digest_{date}.json —— 证明 v3 兼容 brief 可被旧 publish 真实消费。
+- 真实 TTS 未跑：本机有 `~/cosyvoice_models` + `~/cosyvoice_src`，但 `~/cosyvoice_venv` 不存在，
+  需先跑 `bash scripts/setup_cosyvoice_env.sh`（较重，未擅自执行）。
