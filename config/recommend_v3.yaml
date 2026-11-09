@@ -1,0 +1,171 @@
+# Stage 3 选题推荐配置（docs/pipeline_redesign_v4 §4 / v5 §5、§7）
+#
+# 漏斗：多路召回 → 规则粗排 → 精排（规则 0.6 + LLM 0.4）→ MMR 重排 → top 8
+# 注意：lifecycle / evidence_tier 只在召回/粗排使用，精排权重表里不出现（防循环/重复计数）。
+
+version: 3
+
+# 一、多路召回：只做资格判断，不打分
+recall:
+  new_hours: 48             # 新事件窗口
+  evolving_hours: 168       # 持续事件（burst/evolving）窗口 = 7 天
+  long_tail_hours: 720      # 长尾窗口 = 30 天（须有新进展）
+  min_subject_weight: 0.6   # 主体召回门槛（weight × confidence）
+  min_independent_sources: 2
+  min_evidence_score: 2.5
+  min_source_count: 3       # 无 evidence_score 时的来源数兜底
+  unknown_age_as_fresh: true
+  ai_topics:
+    - ai
+    - 人工智能
+    - 大模型
+    - 模型
+    - 技术
+    - 产品
+    - 研究
+    - 商业
+    - 资本
+    - 融资
+    - 政策
+    - 监管
+    - 安全
+    - 开源
+    - 芯片
+    - 算力
+    - agent
+    - 多模态
+    - 机器人
+    - 推理
+    - 训练
+    - 数据
+  ai_tech_stack:
+    - llm
+    - 大模型
+    - agent
+    - 智能体
+    - 多模态
+    - 芯片
+    - gpu
+    - 机器人
+    - 具身
+    - 推理
+    - 训练
+    - 微调
+    - 数据
+    - 语音
+    - 视觉
+    - 强化学习
+    - rag
+    - mcp
+    - 扩散
+
+# 二、规则粗排：硬门槛 + 可解释粗排分
+coarse:
+  max_candidates: 20
+  subject_cap: 2            # 同一主体先留 2 条
+  fact_consistency_min: 0.5 # labels.confidence.fact_consistency 低于阈值 → 事实矛盾，淘汰
+  rumor_tiers: [rumor]      # 单一来源 + 该分级 → 淘汰
+  junk_keywords:            # 招聘 / 课程 / 广告 / 榜单等非新闻
+    - 招聘
+    - 诚聘
+    - 招人
+    - 内推
+    - 求职
+    - 训练营
+    - 课程
+    - 报名
+    - 招生
+    - 付费
+    - 广告
+    - 推广
+    - 优惠
+    - 榜单
+    - 排行榜
+    - 带货
+    - hiring
+    - recruit
+    - job
+    - webinar
+    - course
+    - sponsored
+    - advertisement
+  demote_keywords:          # 软文 / 评测类只降权不淘汰
+    - 评测
+    - 测评
+    - 软文
+    - 推广
+    - 上手体验
+    - 促销
+    - review
+    - hands-on
+  priority_actions:         # 粗排加分动作（多标签任一生效）
+    - 发布
+    - 开源
+    - 上线
+    - 推出
+    - 融资
+    - 收购
+    - 合作
+    - 政策
+    - 监管
+    - 事故
+    - 诉讼
+    - 突破
+    - release
+    - launch
+    - open-source
+    - funding
+    - acquisition
+    - policy
+    - lawsuit
+  demote_penalty: 0.6
+  single_source_penalty: 0.4
+
+# 三、精排：七个规则特征权重 + LLM rubric 融合
+fine:
+  llm_top_k: 20             # 只把规则分前 20 条送 LLM 复核（成本可控）
+  blend_rule: 0.6           # 冷启动：规则 0.6 + LLM 0.4
+  blend_llm: 0.4
+  # 七个规则特征 = LLM 六维中「证据与风险」拆成正/负两个分量
+  # risk 是安全度（5 − 风险惩罚），权重越大越惩罚风险
+  weights:
+    impact: 0.20
+    novelty: 0.18
+    momentum: 0.14
+    audience_fit: 0.14
+    narratability: 0.14
+    evidence: 0.12
+    risk: 0.08
+  clickbait_keywords:
+    - 震惊
+    - 炸裂
+    - 史上最强
+    - 吊打
+    - 碾压
+    - 颠覆
+    - 重磅
+    - 太强了
+    - 必看
+    - shocking
+    - game changer
+    - game-changer
+
+# 四、重排：去重 / 时效衰减 / MMR 多样性 / top N
+rerank:
+  shortlist_size: 8
+  mmr_lambda: 0.72          # utility = λ×相关度 − (1−λ)×最大相似度
+  max_per_subject: 2
+  max_per_tech_stack: 2
+  title_dedupe_ratio: 0.92
+  subject_similarity_weight: 0.45
+  tech_similarity_weight: 0.35
+  topic_similarity_weight: 0.20
+  # 泛技术标签只参与相似度/展示，不参与「同技术栈 ≤2」硬截断，
+  # 否则几乎所有 AI 新闻都会命中 llm/大模型 而凑不满 8 条。
+  generic_tech_tags: [ai, 人工智能, llm, 大模型, 模型, 技术, 机器学习, 深度学习, 生成式ai, 数据]
+  stale_factor: 0.50        # 超过最长衰减窗口后的系数
+  decay_points:             # [最大小时数, 衰减系数]，按小时升序
+    - [24, 1.00]
+    - [48, 0.95]
+    - [168, 0.85]
+    - [720, 0.70]

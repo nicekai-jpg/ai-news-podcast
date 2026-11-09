@@ -67,6 +67,28 @@ Stage CLIs (console scripts in pyproject):
   (semantic model `paraphrase-multilingual-MiniLM-L12-v2`, TF-IDF fallback).
   sentence-transformers is an optional extra (`uv sync --extra semantic`, pulls torch);
   without it dedup always uses the TF-IDF fallback and logs a warning.
+- Stage 1 fetchers (`fetcher_service._FETCHER_REGISTRY`): default `rss`, plus
+  `github_api`, `hn_api`, and `deepseek_news`。`deepseek_news` 对应 DeepSeek 官方新闻
+  （官网没有 RSS）：每次运行从 `api-docs.deepseek.com/sitemap.xml` **动态发现**
+  `/news/newsYYMMDD` 页（每次发布换新地址，代码里不要写死任何一期 URL）、抓 zh-cn 正文；
+  另用**稳定地址** `/zh-cn/updates` 更新日志兜底没有单独 news 页的更新
+  （`changelog_url` 配置项，按 h3 条目生成、同日期已有 news 页则跳过）。
+  `published_at` 取页面日期 + 12:00 UTC 近似（北京时间 20:00）。
+  加其他厂商官方源时优先找 RSS，没有再用同类 sitemap/news 抓取器。
+- 公众号 RSS：机器之心官网 RSS 已失效、新智元没有站内 RSS，二者改走 wechat2rss 公共服务
+  （`config/sources.yaml` 里 `wechat2rss.xlab.app/feed/<id>.xml`；免费名单只覆盖部分媒体号，
+  不含厂商官方号）。`_process_single_entry` 优先用 `content:encoded` 全文
+  （wechat2rss 的 `summary` 只有十几字），因此不依赖被反爬的 `mp.weixin.qq.com` 页面；
+  加新公众号源时确认 feed 的 entry 带 `content`。厂商官方公众号（DeepSeek Harness 等）
+  需要自建 WeWe RSS / wechat2rss 私有部署桥接，公共免费服务没有收录。
+- **RSSHub 快照缓存**（`rsshub_cache.yml` + `scripts/build_rsshub_cache.py` +
+  `config/rsshub_routes.json`）：GHA 里临时起官方 `ghcr.io/diygod/rsshub` 容器，抓没有稳定
+  原生 RSS 的少数路由（Anthropic/IT之家/36Kr/极客公园/极术 AI/AIBase/智源/DSH Releases 等），归一化到 `data/cache/*.json`
+  并提交 main，供 Stage 1 消费。**不依赖公共 RSSHub 实例、不 fork RSSHub**；单源失败保留旧快照，
+  手动测速用 `workflow_dispatch` 的 `dry_run`。设计见 `docs/rsshub_cache_relay.md`。
+- 素材时效：`material_service.build_material_text` 给每条素材注入「发布时间（北京时间，
+  约 X 小时前）」；`strategies/base_service.py` 的 `effective_score` 对 >24h/>48h 的素材
+  扣 1/3 分，选材（播客与日报共用）不会让旧闻挤掉新事件。
 - Stage 1 过滤（`ingest_filter_service.filter_ingested_items`）：`selection.prefer_recent_hours`
   / `fallback_recent_hours`（窗口内条目 <20 时退化到 96h）、`include_keywords` /
   `exclude_keywords`、`per_feed_cap` 现在真正生效；统计写入 brief `metadata.ingest_filter`。
@@ -82,6 +104,47 @@ Stage CLIs (console scripts in pyproject):
   两者都由 stage1 提交到 main。雷达作为独立「项目轨」与新闻管线完全隔离,
   结果挂在 brief 的 `radar` 键上,播客栏目「项目雷达」(只讲主推)与日报章节
   (主推 + 备选)均由此生成。
+
+## 新流水线 v3（2026-11-09 实装，旧管线保留）
+
+设计见 `docs/pipeline_redesign_v2~v5.md`、`docs/source_pipeline_design.md`、
+`docs/source_channels.md`（源清单）与 `docs/implementation_status.md`（进度/交接）。
+
+- **入口**：`podcast-pipeline-v3 --date YYYY-MM-DD [--data-dir data] [--config-dir config]
+  [--rsshub-base http://127.0.0.1:1200] [--skip-script] [--no-ledger] [--dry-run]
+  [--with-audio] [--publish]`。
+  `--with-audio` 复用 `tts_engine_service.synthesize`（Stage 6，需 CosyVoice 环境）；
+  `--publish` 隐含音频并复用旧 `PublishCommand`（Stage 7）。旧入口 `podcast-pipeline` /
+  `podcast-writer` / `podcast-report` / `podcast-tts` / `podcast-publish` 不变，新链默认不接入 GHA，可随时回滚。
+- **Stage 7 兼容**：Stage 4/5 会额外写 `data/briefs/brief_{date}.json`（thesis/stories/metadata/radar），
+  字段映射自 shortlist/events/items，供旧 `podcast-publish`（依赖 brief）直接消费，无需改 publish。
+- **GHA（手动验证）**：`.github/workflows/v3_daily.yml` 三步 job（pipeline Stage1–5 + RSSHub service
+  container → tts → publish），仅 `workflow_dispatch`，与旧 `daily.yml` 共享 `podcast-pipeline`
+  并发组；默认只上传产物、不部署不提交，勾选 `deploy` 才部署 gh-pages 并提交 main。
+  **cron 未切换**，旧 `daily.yml` 仍是生产默认。
+- **模块**（都在 `business/` 下，只依赖 `contracts`/`data.*`，不 import `business.pipeline` 内部实现）：
+  - `contracts/`：Item / Event / Labels / ShortlistEntry / Commentary + `artifact.py`（gzip JSON）；
+  - `coverage/ledger.py`：跨日覆盖账本（已选中事件指纹，长期保留）；
+  - `collect/`：C1 RSS、C2 Atom、C3 RSSHub、C4 网页、C5 wechat2rss（132 源，见
+    `config/sources_v3.yaml`；`contracts.artifact.write_artifact` 落盘）；
+  - `ocean/`：四层去重、事件聚类、连续性、多维标注（`config/nlp/*.yaml` 词典）、证据分；
+  - `recommend/`：召回→粗排（含淘汰原因）→精排（规则 0.6 + LLM rubric 0.4，只读事实标签，
+    不读 lifecycle/evidence_tier/evidence_score）→重排（MMR/去重/时效）→ top 8；
+  - `editorial/`：点评（事实/观点分离、evidence_ids、禁用词、客观性闸门）+ 15 分钟双主持文稿
+    （3000–3600 字、3–4 章、`[CHAPTER]`）；
+  - `pipeline/v3_runner_service.py`：Stage 1→5 编排、LLM 按 Stage 选模型（`LLMConfig.stage_models`）、
+    覆盖账本写入、`daily_report_{date}.md` 渲染。
+- **产物路径**：`data/raw/raw-{date}.json.gz`、`data/ocean/{date}/{events,items,continuity,manifest}.json`、
+  `data/selection/{date}/shortlist.json`、`data/editorial/{date}/{commentary.json,daily_report_{date}.md}`、
+  `site/episodes/{date}.txt`。全文只走 artifact，不进 git。
+- **配置**：`config/pipeline_v3.yaml`（路径/保留期/各 Stage 模型）、`config/sources_v3.yaml`、
+  `config/ocean_v3.yaml` + `config/nlp/`、`config/recommend_v3.yaml`、`config/editorial_v3.yaml`。
+- **测试**：`tests/test_contracts.py`、`test_coverage_ledger.py`、`test_llm_config.py`、
+  `test_collect_*`、`test_ocean_*`、`test_recommend_*`、`test_editorial_*`、
+  `test_v3_runner_service.py`、`test_v3_pipeline_integration.py`、`test_v3_cli_controller.py`。
+- **已知取舍**：C3 的 66 条路由尚未对本地 RSSHub 镜像逐条复测（collect-agent 按命名空间填写）；
+  C4 的智谱/MiniMax/字节 Seed/商汤/工信部/网信办走“锚点+邻近日期”启发式，站点改版时在
+  `sources_v3.yaml` 给该源加 `selectors`；M3.1 Flash 仅配置占位，尚未 A/B。
 
 ## Gotchas
 
@@ -193,6 +256,7 @@ Stage CLIs (console scripts in pyproject):
 ## Docs to read before touching sensitive areas
 
 - `docs/architecture.md` and `docs/pipeline_walkthrough.md` — pipeline design
+- `docs/rsshub_cache_relay.md` — RSSHub 快照缓存中转（GHA 临时实例）设计
 - `docs/development.md`, `docs/contributing.md` — dev workflow
 - `docs/tts_complete_guide.md`, `docs/gha_cosyvoice2_deployment_log.md` — CosyVoice setup
 - `.github/workflows/` holds `ci.yml` (quality gate: ruff check + ruff format check

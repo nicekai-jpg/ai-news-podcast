@@ -1,0 +1,34 @@
+# 新流水线（Stage 1–7）全局配置
+# 各 Stage 的算法阈值在各自配置里：
+#   config/ocean_v3.yaml（Stage 2）、config/recommend_v3.yaml（Stage 3）、
+#   config/editorial_v3.yaml（Stage 4/5）；源清单在 config/sources_v3.yaml。
+pipeline:
+  timezone: Asia/Shanghai
+  artifact_retention_days: 30
+  raw_dir: "data/raw"
+  ocean_dir: "data/ocean"
+  selection_dir: "data/selection"
+  editorial_dir: "data/editorial"
+  coverage_ledger: "data/coverage/ledger.json"
+  history_days: 30
+
+stage1:
+  window_hours: 72
+  per_source_limit: 15
+  http_timeout: 20
+  retries: 2
+
+stage4:
+  report_top_n: 5
+
+stage5:
+  target_minutes: 15
+
+# 各 Stage 使用的模型；未列出的 Stage 用 config.yaml 里的 llm.model。
+# M3.1 Flash 已发布（2026-10-19），先用 M3 跑通，A/B 后再切 stage2/stage3。
+llm:
+  stage_models:
+    stage2: "MiniMax-M3"
+    stage3: "MiniMax-M3"
+    stage4: "MiniMax-M3"
+    stage5: "MiniMax-M3"

@@ -1,0 +1,289 @@
+name: Daily Podcast v3 (manual)
+
+# 新链 Stage 1–7 的手动验证工作流：
+# - 默认只跑完、上传产物，不部署 gh-pages、不提交 main；
+# - 勾选 deploy 才部署并提交（与旧 daily.yml 串行，共享 podcast-pipeline 并发组）。
+# 旧 daily.yml 保持不变，可随时回滚。
+on:
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Episode date (YYYY-MM-DD), default is today"
+        required: false
+        type: string
+      skip_script:
+        description: "只跑到点评，不生成文稿/音频"
+        required: false
+        type: boolean
+        default: false
+      run_tts:
+        description: "Run Stage 6 TTS (needs CosyVoice cache)"
+        required: false
+        type: boolean
+        default: true
+      run_publish:
+        description: "Run Stage 7 publish (feed/site/episodes.json)"
+        required: false
+        type: boolean
+        default: true
+      deploy:
+        description: "部署 gh-pages 并提交 main（默认仅校验）"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: podcast-pipeline
+  cancel-in-progress: false
+
+jobs:
+  pipeline:
+    name: "v3 Stage 1-5 (collect → ocean → recommend → editorial → script)"
+    runs-on: ubuntu-22.04
+    timeout-minutes: 150
+    services:
+      rsshub:
+        image: ghcr.io/diygod/rsshub:latest
+        ports:
+          - 1200:1200
+    outputs:
+      episode_id: ${{ steps.episode.outputs.id }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.9"
+
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - id: episode
+        run: |
+          INPUT_DATE="${{ github.event.inputs.date }}"
+          if [ -n "$INPUT_DATE" ]; then
+            echo "id=$INPUT_DATE" >> "$GITHUB_OUTPUT"
+          else
+            echo "id=$(TZ=Asia/Shanghai date +%F)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Wait for RSSHub
+        run: |
+          for i in $(seq 1 90); do
+            if curl -fsS http://127.0.0.1:1200/healthz >/dev/null 2>&1; then
+              echo "RSSHub ready"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "::error::RSSHub not ready after 180s"
+          exit 1
+
+      - name: Run v3 Stage 1-5
+        env:
+          TZ: Asia/Shanghai
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EPISODE="${{ steps.episode.outputs.id }}"
+          EXTRA=""
+          if [ "${{ github.event.inputs.skip_script }}" = "true" ]; then
+            EXTRA="--skip-script"
+          fi
+          uv run python -m ai_news_podcast.presentation.cli.podcast_v3_controller \
+            --date "$EPISODE" \
+            --rsshub-base http://127.0.0.1:1200 \
+            $EXTRA
+
+      - name: Upload v3 pipeline artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: v3-output-${{ steps.episode.outputs.id }}
+          path: |
+            data/raw/
+            data/ocean/
+            data/selection/
+            data/editorial/
+            data/briefs/brief_${{ steps.episode.outputs.id }}.json
+            site/episodes/${{ steps.episode.outputs.id }}.txt
+          if-no-files-found: warn
+          retention-days: 30
+
+  tts:
+    name: "v3 Stage 6 (TTS audio)"
+    needs: pipeline
+    if: ${{ github.event.inputs.run_tts != 'false' && github.event.inputs.skip_script != 'true' }}
+    runs-on: ubuntu-22.04
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.9"
+
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install system deps
+        run: sudo apt-get update -qq && sudo apt-get install -y sox libsox-dev ffmpeg
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Download v3 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: v3-output-${{ needs.pipeline.outputs.episode_id }}
+          path: .
+
+      - name: Cache CosyVoice
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/cosyvoice_src
+            ~/cosyvoice_models
+            ~/cosyvoice_venv
+          key: cosyvoice-gha-v7
+
+      - name: Setup CosyVoice environment
+        run: bash scripts/setup_cosyvoice_env.sh
+
+      - name: Synthesize episode audio
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          EPISODE="${{ needs.pipeline.outputs.episode_id }}"
+          export COSYVOICE_MODEL_DIR="$HOME/cosyvoice_models/CosyVoice2-0.5B"
+          export PYTHONPATH="$HOME/cosyvoice_src:$HOME/cosyvoice_src/third_party/Matcha-TTS"
+          "$HOME/cosyvoice_venv/bin/python" scripts/gha_tts_cosyvoice.py \
+            --script "site/episodes/${EPISODE}.txt" \
+            --output "site/episodes/${EPISODE}.mp3" \
+            --model-dir "$HOME/cosyvoice_models/CosyVoice2-0.5B"
+
+      - name: Upload episode audio artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: episode-audio-${{ needs.pipeline.outputs.episode_id }}
+          path: |
+            site/episodes/${{ needs.pipeline.outputs.episode_id }}.mp3
+            site/episodes/${{ needs.pipeline.outputs.episode_id }}/playlist.json
+          if-no-files-found: error
+
+  publish:
+    name: "v3 Stage 7 (publish site)"
+    needs: [pipeline, tts]
+    if: ${{ github.event.inputs.run_publish != 'false' && github.event.inputs.skip_script != 'true' }}
+    runs-on: ubuntu-22.04
+    env:
+      EPISODE: ${{ needs.pipeline.outputs.episode_id }}
+      MIN_MP3_BYTES: '100000'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11.9"
+
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Install dependencies
+        run: uv sync --frozen
+
+      - name: Download v3 artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: v3-output-${{ needs.pipeline.outputs.episode_id }}
+          path: .
+
+      - name: Download episode audio artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: episode-audio-${{ needs.pipeline.outputs.episode_id }}
+          path: site/episodes
+
+      - name: Publish feed and site
+        env:
+          TZ: Asia/Shanghai
+        run: uv run podcast-publish --date "$EPISODE"
+
+      - name: Validate episode artifacts
+        run: |
+          python3 - "$EPISODE" <<'PYEOF'
+          import json
+          import os
+          import sys
+          from pathlib import Path
+
+          ep = sys.argv[1]
+          min_bytes = int(os.environ["MIN_MP3_BYTES"])
+          mp3 = Path(f"site/episodes/{ep}.mp3")
+          assert mp3.exists(), f"missing {mp3}"
+          size = mp3.stat().st_size
+          assert size > min_bytes, f"mp3 too small: {size} bytes"
+          feed = Path("site/feed.xml").read_text(encoding="utf-8")
+          assert f"episodes/{ep}.mp3" in feed, "feed.xml missing episode enclosure"
+          index = json.loads(Path("data/episodes.json").read_text(encoding="utf-8"))
+          eps = index if isinstance(index, list) else index.get("episodes", [])
+          assert any(str(e.get("id")) == ep for e in eps), "episodes.json missing entry"
+          print(f"validated {ep}: mp3={size} bytes")
+          PYEOF
+
+      - name: Upload publish artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: v3-publish-${{ needs.pipeline.outputs.episode_id }}
+          path: |
+            site/
+            data/episodes.json
+          if-no-files-found: error
+          retention-days: 14
+
+      # 只有显式勾选 deploy 才部署 + 提交 main（默认只校验，不污染生产）
+      - name: Remove .gitignore to ensure ignored files are deployed
+        if: ${{ github.event.inputs.deploy == 'true' }}
+        run: rm -f .gitignore
+
+      - name: Deploy GitHub Pages
+        if: ${{ github.event.inputs.deploy == 'true' }}
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          keep_files: true
+
+      - name: Commit site
+        if: ${{ github.event.inputs.deploy == 'true' }}
+        run: |
+          git restore .gitignore 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/briefs/ data/episodes.json
+          git add -u site/
+          if [ -d site/data ]; then git add -f site/data/; fi
+          if [ -f "site/episodes/${EPISODE}/playlist.json" ]; then
+            git add -f "site/episodes/${EPISODE}/playlist.json"
+          fi
+          if git diff --cached --quiet; then
+            echo "No site changes to commit"
+          else
+            git commit -m "daily: publish $EPISODE [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi

@@ -1,0 +1,595 @@
+# 主体词典：公司 / 实验室 / 人物。别名用于多模匹配（长别名优先）。
+# weight 为影响力初值（0–1），后续可由编辑配置覆盖；ambiguous 实体需要邻近科技词才计。
+companies:
+  - id: openai
+    name: OpenAI
+    aliases: [OpenAI, Open AI, 开放人工智能]
+    type: company
+    weight: 1.0
+    headquarters: usa
+  - id: google
+    name: Google
+    aliases: [Google, 谷歌]
+    type: company
+    weight: 1.0
+    headquarters: usa
+  - id: deepmind
+    name: DeepMind
+    aliases: [DeepMind, Google DeepMind, 谷歌深度思维]
+    type: company
+    weight: 0.95
+    headquarters: europe
+  - id: anthropic
+    name: Anthropic
+    aliases: [Anthropic, 安思罗匹克]
+    type: company
+    weight: 1.0
+    headquarters: usa
+  - id: microsoft
+    name: Microsoft
+    aliases: [Microsoft, 微软]
+    type: company
+    weight: 1.0
+    headquarters: usa
+  - id: apple
+    name: Apple
+    aliases: [Apple, 苹果]
+    type: company
+    weight: 0.95
+    headquarters: usa
+    ambiguous: true
+  - id: meta
+    name: Meta
+    aliases: [Meta, Facebook, 脸书]
+    type: company
+    weight: 0.95
+    headquarters: usa
+    ambiguous: true
+  - id: nvidia
+    name: NVIDIA
+    aliases: [NVIDIA, Nvidia, 英伟达]
+    type: company
+    weight: 1.0
+    headquarters: usa
+  - id: amd
+    name: AMD
+    aliases: [AMD, 超威半导体]
+    type: company
+    weight: 0.85
+    headquarters: usa
+  - id: intel
+    name: Intel
+    aliases: [Intel, 英特尔]
+    type: company
+    weight: 0.85
+    headquarters: usa
+  - id: amazon
+    name: Amazon
+    aliases: [Amazon, 亚马逊, AWS]
+    type: company
+    weight: 0.95
+    headquarters: usa
+  - id: tesla
+    name: Tesla
+    aliases: [Tesla, 特斯拉]
+    type: company
+    weight: 0.85
+    headquarters: usa
+  - id: xai
+    name: xAI
+    aliases: [xAI, x.ai, 马斯克旗下xAI]
+    type: company
+    weight: 0.9
+    headquarters: usa
+  - id: mistral
+    name: Mistral AI
+    aliases: [Mistral AI, Mistral, 米斯特拉尔]
+    type: company
+    weight: 0.9
+    headquarters: europe
+  - id: cohere
+    name: Cohere
+    aliases: [Cohere]
+    type: company
+    weight: 0.75
+    headquarters: usa
+  - id: huggingface
+    name: Hugging Face
+    aliases: [Hugging Face, HuggingFace, 抱抱脸]
+    type: company
+    weight: 0.9
+    headquarters: usa
+  - id: stability
+    name: Stability AI
+    aliases: [Stability AI, Stability]
+    type: company
+    weight: 0.7
+    headquarters: europe
+  - id: midjourney
+    name: Midjourney
+    aliases: [Midjourney]
+    type: company
+    weight: 0.7
+    headquarters: usa
+  - id: perplexity
+    name: Perplexity
+    aliases: [Perplexity]
+    type: company
+    weight: 0.8
+    headquarters: usa
+  - id: databricks
+    name: Databricks
+    aliases: [Databricks]
+    type: company
+    weight: 0.8
+    headquarters: usa
+  - id: snowflake
+    name: Snowflake
+    aliases: [Snowflake]
+    type: company
+    weight: 0.7
+    headquarters: usa
+  - id: salesforce
+    name: Salesforce
+    aliases: [Salesforce]
+    type: company
+    weight: 0.75
+    headquarters: usa
+  - id: ibm
+    name: IBM
+    aliases: [IBM, 国际商业机器]
+    type: company
+    weight: 0.8
+    headquarters: usa
+  - id: alibaba
+    name: 阿里巴巴
+    aliases: [阿里巴巴, 阿里, Alibaba, 阿里云, Alibaba Cloud]
+    type: company
+    weight: 0.95
+    headquarters: china
+  - id: qwen
+    name: 通义千问
+    aliases: [通义千问, 通义, Qwen, 千问]
+    type: lab
+    weight: 0.9
+    headquarters: china
+  - id: bytedance
+    name: 字节跳动
+    aliases: [字节跳动, 字节, ByteDance, 抖音]
+    type: company
+    weight: 0.9
+    headquarters: china
+  - id: tencent
+    name: 腾讯
+    aliases: [腾讯, Tencent, 混元]
+    type: company
+    weight: 0.9
+    headquarters: china
+  - id: baidu
+    name: 百度
+    aliases: [百度, Baidu]
+    type: company
+    weight: 0.9
+    headquarters: china
+  - id: huawei
+    name: 华为
+    aliases: [华为, Huawei, 昇腾]
+    type: company
+    weight: 0.9
+    headquarters: china
+  - id: zhipu
+    name: 智谱
+    aliases: [智谱, 智谱AI, Zhipu, ZhipuAI]
+    type: company
+    weight: 0.85
+    headquarters: china
+  - id: moonshot
+    name: 月之暗面
+    aliases: [月之暗面, Moonshot AI, Moonshot, Kimi]
+    type: company
+    weight: 0.85
+    headquarters: china
+  - id: minimax
+    name: MiniMax
+    aliases: [MiniMax, 稀宇科技]
+    type: company
+    weight: 0.85
+    headquarters: china
+  - id: deepseek
+    name: DeepSeek
+    aliases: [DeepSeek, 深度求索]
+    type: company
+    weight: 1.0
+    headquarters: china
+  - id: stepfun
+    name: 阶跃星辰
+    aliases: [阶跃星辰, 阶跃, StepFun]
+    type: company
+    weight: 0.75
+    headquarters: china
+  - id: zeroone
+    name: 零一万物
+    aliases: [零一万物, 01.AI, Yi]
+    type: company
+    weight: 0.75
+    headquarters: china
+    ambiguous: true
+  - id: sensetime
+    name: 商汤
+    aliases: [商汤, SenseTime]
+    type: company
+    weight: 0.75
+    headquarters: china
+  - id: iflytek
+    name: 科大讯飞
+    aliases: [科大讯飞, 讯飞, iFlytek]
+    type: company
+    weight: 0.75
+    headquarters: china
+  - id: baichuan
+    name: 百川智能
+    aliases: [百川智能, 百川, Baichuan]
+    type: company
+    weight: 0.75
+    headquarters: china
+  - id: openbmb
+    name: 面壁智能
+    aliases: [面壁智能, 面壁, OpenBMB]
+    type: company
+    weight: 0.7
+    headquarters: china
+  - id: xiaomi
+    name: 小米
+    aliases: [小米, Xiaomi]
+    type: company
+    weight: 0.8
+    headquarters: china
+    ambiguous: true
+  - id: oppo
+    name: OPPO
+    aliases: [OPPO]
+    type: company
+    weight: 0.65
+    headquarters: china
+  - id: vivo
+    name: vivo
+    aliases: [vivo]
+    type: company
+    weight: 0.6
+    headquarters: china
+    ambiguous: true
+  - id: honor
+    name: 荣耀
+    aliases: [荣耀, HONOR]
+    type: company
+    weight: 0.6
+    headquarters: china
+  - id: samsung
+    name: 三星
+    aliases: [三星, Samsung]
+    type: company
+    weight: 0.8
+    headquarters: korea
+  - id: sony
+    name: 索尼
+    aliases: [索尼, Sony]
+    type: company
+    weight: 0.7
+    headquarters: japan
+  - id: softbank
+    name: 软银
+    aliases: [软银, SoftBank]
+    type: company
+    weight: 0.75
+    headquarters: japan
+  - id: sequoia
+    name: 红杉资本
+    aliases: [红杉资本, 红杉, Sequoia]
+    type: company
+    weight: 0.65
+    headquarters: usa
+  - id: a16z
+    name: a16z
+    aliases: [a16z, Andreessen Horowitz]
+    type: company
+    weight: 0.6
+    headquarters: usa
+  - id: unitree
+    name: 宇树科技
+    aliases: [宇树科技, 宇树, Unitree]
+    type: company
+    weight: 0.7
+    headquarters: china
+  - id: agibot
+    name: 智元机器人
+    aliases: [智元机器人, 智元, AgiBot]
+    type: company
+    weight: 0.7
+    headquarters: china
+  - id: figure
+    name: Figure AI
+    aliases: [Figure AI, Figure]
+    type: company
+    weight: 0.7
+    headquarters: usa
+  - id: boston_dynamics
+    name: Boston Dynamics
+    aliases: [Boston Dynamics, 波士顿动力]
+    type: company
+    weight: 0.65
+    headquarters: usa
+  - id: waymo
+    name: Waymo
+    aliases: [Waymo]
+    type: company
+    weight: 0.7
+    headquarters: usa
+  - id: character
+    name: Character.AI
+    aliases: [Character.AI, Character AI]
+    type: company
+    weight: 0.6
+    headquarters: usa
+  - id: moore_threads
+    name: 摩尔线程
+    aliases: [摩尔线程, Moore Threads]
+    type: company
+    weight: 0.65
+    headquarters: china
+  - id: cambricon
+    name: 寒武纪
+    aliases: [寒武纪, Cambricon]
+    type: company
+    weight: 0.7
+    headquarters: china
+  - id: biren
+    name: 壁仞科技
+    aliases: [壁仞科技, 壁仞, Biren]
+    type: company
+    weight: 0.6
+    headquarters: china
+  - id: metax
+    name: 沐曦
+    aliases: [沐曦, MetaX]
+    type: company
+    weight: 0.6
+    headquarters: china
+  - id: arm
+    name: Arm
+    aliases: [Arm, 安谋]
+    type: company
+    weight: 0.75
+    headquarters: europe
+  - id: qualcomm
+    name: 高通
+    aliases: [高通, Qualcomm]
+    type: company
+    weight: 0.8
+    headquarters: usa
+  - id: broadcom
+    name: 博通
+    aliases: [博通, Broadcom]
+    type: company
+    weight: 0.75
+    headquarters: usa
+  - id: tsmc
+    name: 台积电
+    aliases: [台积电, TSMC]
+    type: company
+    weight: 0.8
+    headquarters: china
+  - id: asml
+    name: ASML
+    aliases: [ASML, 阿斯麦]
+    type: company
+    weight: 0.75
+    headquarters: europe
+
+labs:
+  - id: google_research
+    name: Google Research
+    aliases: [Google Research, 谷歌研究院]
+    type: lab
+    weight: 0.85
+    headquarters: usa
+  - id: microsoft_research
+    name: Microsoft Research
+    aliases: [Microsoft Research, 微软研究院]
+    type: lab
+    weight: 0.8
+    headquarters: usa
+  - id: fair
+    name: Meta AI
+    aliases: [Meta AI, FAIR, 元AI]
+    type: lab
+    weight: 0.8
+    headquarters: usa
+  - id: baai
+    name: 智源研究院
+    aliases: [智源研究院, 智源, BAAI]
+    type: lab
+    weight: 0.7
+    headquarters: china
+  - id: shanghai_ai_lab
+    name: 上海人工智能实验室
+    aliases: [上海人工智能实验室, 上海AI实验室, Shanghai AI Lab]
+    type: lab
+    weight: 0.75
+    headquarters: china
+  - id: allen_ai
+    name: AI2
+    aliases: [Allen Institute for AI, AI2]
+    type: lab
+    weight: 0.65
+    headquarters: usa
+  - id: openai_safety
+    name: OpenAI Safety
+    aliases: [OpenAI Safety]
+    type: lab
+    weight: 0.6
+    headquarters: usa
+  - id: tsinghua
+    name: 清华大学
+    aliases: [清华大学, 清华, Tsinghua]
+    type: lab
+    weight: 0.7
+    headquarters: china
+  - id: peking
+    name: 北京大学
+    aliases: [北京大学, 北大, Peking University]
+    type: lab
+    weight: 0.7
+    headquarters: china
+  - id: cas
+    name: 中科院
+    aliases: [中科院, 中国科学院, CAS, 自动化所]
+    type: lab
+    weight: 0.7
+    headquarters: china
+  - id: mit
+    name: MIT
+    aliases: [MIT, 麻省理工]
+    type: lab
+    weight: 0.7
+    headquarters: usa
+  - id: stanford
+    name: Stanford
+    aliases: [Stanford, 斯坦福]
+    type: lab
+    weight: 0.7
+    headquarters: usa
+  - id: berkeley
+    name: UC Berkeley
+    aliases: [UC Berkeley, Berkeley, 伯克利]
+    type: lab
+    weight: 0.7
+    headquarters: usa
+
+people:
+  - id: sam_altman
+    name: Sam Altman
+    aliases: [Sam Altman, 萨姆·奥特曼, 奥特曼]
+    type: person
+    weight: 0.8
+    ambiguous: true
+    headquarters: usa
+  - id: elon_musk
+    name: Elon Musk
+    aliases: [Elon Musk, 马斯克, 伊隆·马斯克]
+    type: person
+    weight: 0.85
+    headquarters: usa
+  - id: jensen_huang
+    name: 黄仁勋
+    aliases: [黄仁勋, Jensen Huang]
+    type: person
+    weight: 0.8
+    headquarters: usa
+  - id: satya_nadella
+    name: Satya Nadella
+    aliases: [Satya Nadella, 萨提亚·纳德拉]
+    type: person
+    weight: 0.7
+    headquarters: usa
+  - id: sundar_pichai
+    name: Sundar Pichai
+    aliases: [Sundar Pichai, 桑达尔·皮查伊]
+    type: person
+    weight: 0.7
+    headquarters: usa
+  - id: demis_hassabis
+    name: Demis Hassabis
+    aliases: [Demis Hassabis, 哈萨比斯]
+    type: person
+    weight: 0.75
+    headquarters: europe
+  - id: dario_amodei
+    name: Dario Amodei
+    aliases: [Dario Amodei]
+    type: person
+    weight: 0.7
+    headquarters: usa
+  - id: ilya_sutskever
+    name: Ilya Sutskever
+    aliases: [Ilya Sutskever, 伊利亚·苏茨克维]
+    type: person
+    weight: 0.7
+    headquarters: usa
+  - id: mira_murati
+    name: Mira Murati
+    aliases: [Mira Murati, 米拉·穆拉蒂]
+    type: person
+    weight: 0.6
+    headquarters: usa
+  - id: liang_wenfeng
+    name: 梁文锋
+    aliases: [梁文锋]
+    type: person
+    weight: 0.7
+    headquarters: china
+  - id: yann_lecun
+    name: Yann LeCun
+    aliases: [Yann LeCun, 杨立昆, 勒昆]
+    type: person
+    weight: 0.7
+    headquarters: usa
+  - id: geoffrey_hinton
+    name: Geoffrey Hinton
+    aliases: [Geoffrey Hinton, 辛顿, 杰弗里·辛顿]
+    type: person
+    weight: 0.7
+    headquarters: europe
+  - id: fei_fei_li
+    name: 李飞飞
+    aliases: [李飞飞, Fei-Fei Li]
+    type: person
+    weight: 0.65
+    headquarters: usa
+  - id: andrew_ng
+    name: 吴恩达
+    aliases: [吴恩达, Andrew Ng]
+    type: person
+    weight: 0.6
+    headquarters: usa
+  - id: karpathy
+    name: Andrej Karpathy
+    aliases: [Andrej Karpathy, Karpathy]
+    type: person
+    weight: 0.6
+    headquarters: usa
+  - id: zhang_yiming
+    name: 张一鸣
+    aliases: [张一鸣]
+    type: person
+    weight: 0.6
+    headquarters: china
+  - id: robin_li
+    name: 李彦宏
+    aliases: [李彦宏, Robin Li]
+    type: person
+    weight: 0.6
+    headquarters: china
+  - id: pony_ma
+    name: 马化腾
+    aliases: [马化腾, Pony Ma]
+    type: person
+    weight: 0.6
+    headquarters: china
+  - id: mark_zuckerberg
+    name: 扎克伯格
+    aliases: [扎克伯格, Mark Zuckerberg]
+    type: person
+    weight: 0.65
+    headquarters: usa
+  - id: tim_cook
+    name: Tim Cook
+    aliases: [Tim Cook, 蒂姆·库克]
+    type: person
+    weight: 0.6
+    headquarters: usa
+  - id: greg_brockman
+    name: Greg Brockman
+    aliases: [Greg Brockman]
+    type: person
+    weight: 0.55
+    headquarters: usa

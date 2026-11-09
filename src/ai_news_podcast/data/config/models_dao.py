@@ -192,6 +192,12 @@ class LLMConfig:
     temperature: float = 0.7
     max_output_tokens: int = 4096
     timeout: int = 120
+    # 按 Stage 覆盖模型（如 stage_models: {stage2: MiniMax-M3.1-Flash}）；缺省用 model
+    stage_models: dict[str, str] = field(default_factory=dict)
+
+    def resolve_model(self, stage: str = "") -> str:
+        """返回某 Stage 使用的模型名；未配置则回落到默认 model。"""
+        return self.stage_models.get(stage) or self.model
 
 
 @dataclass(frozen=True)

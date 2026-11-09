@@ -1,0 +1,70 @@
+{
+  "sources": [
+    {
+      "name": "anthropic_news",
+      "label": "Anthropic News",
+      "route": "/anthropic/news",
+      "category": "official"
+    },
+    {
+      "name": "anthropic_research",
+      "label": "Anthropic Research",
+      "route": "/anthropic/research",
+      "category": "official"
+    },
+    {
+      "name": "google_research",
+      "label": "Google Research",
+      "route": "/google/research",
+      "category": "official"
+    },
+    {
+      "name": "dsh_releases",
+      "label": "DeepSeek Harness Releases",
+      "url": "https://github.com/deepseek-ai/deepseek-harness/releases.atom",
+      "category": "official"
+    },
+    {
+      "name": "ithome_it",
+      "label": "IT之家 IT 资讯",
+      "route": "/ithome/it",
+      "category": "news"
+    },
+    {
+      "name": "36kr_newsflashes",
+      "label": "36Kr 快讯",
+      "route": "/36kr/newsflashes",
+      "category": "news"
+    },
+    {
+      "name": "geekpark",
+      "label": "极客公园",
+      "route": "/geekpark",
+      "category": "news"
+    },
+    {
+      "name": "huxiu_moment",
+      "label": "虎嗅 24 小时",
+      "route": "/huxiu/moment",
+      "category": "news"
+    },
+    {
+      "name": "aijishu_ai",
+      "label": "极术社区 AI",
+      "route": "/aijishu/channel/ai",
+      "category": "news"
+    },
+    {
+      "name": "aibase_news",
+      "label": "AIBase 新闻",
+      "route": "/aibase/news",
+      "category": "news"
+    },
+    {
+      "name": "baai_hub",
+      "label": "智源社区",
+      "route": "/baai/hub",
+      "category": "research"
+    }
+  ]
+}

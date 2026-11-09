@@ -1,0 +1,23 @@
+# 可讲性角度词典（多标签）：冲突/对比/首次/纪录/反转 等，供 Stage 3 narratability。
+narrative_angles:
+  - id: first
+    name: 首次/首个
+    aliases: [首次, 首个, 首款, 第一, 首创, 首例, 全球首个, 业内首个, first-ever, first ever, world's first, debut]
+  - id: record
+    name: 纪录/之最
+    aliases: [纪录, 破纪录, 史上最高, 史上最大, 史上最强, 历史新高, 最高, 最大, 最低, 最快, 最强, record, record-breaking, all-time, largest, fastest, most powerful]
+  - id: conflict
+    name: 冲突/争议
+    aliases: [冲突, 争议, 反对, 质疑, 指责, 批评, 反击, 口水战, 互撕, 诉讼, 争端, controversy, conflict, backlash, criticism, dispute, criticize]
+  - id: comparison
+    name: 对比/竞争
+    aliases: [对比, 相比, 超越, 超过, 领先, 落后, 追平, 击败, 竞争, 对标, 差距, compare, compared, outperform, surpass, beat, ahead of, behind, versus, vs]
+  - id: reversal
+    name: 反转
+    aliases: [反转, 撤回, 改口, 否认, 下架, 态度转变, 翻车, 道歉, reversal, retract, retracted, reversed, deny, denied, u-turn, apology]
+  - id: surprise
+    name: 意外/突发
+    aliases: [意外, 突发, 震惊, 出人意料, 没想到, surprise, surprising, unexpectedly, shock]
+  - id: cost
+    name: 价格/免费
+    aliases: [降价, 涨价, 免费, 价格战, 打折, 补贴, price cut, free, price war, discount, subsidy]

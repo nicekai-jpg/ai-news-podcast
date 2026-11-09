@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
+from datetime import datetime
 from typing import Any, ClassVar
 
-from ai_news_podcast.business.pipeline.strategies.base_service import MaterialSelectionStrategy
+from ai_news_podcast.business.pipeline.strategies.base_service import (
+    MaterialSelectionStrategy,
+    effective_score,
+)
 
 
 class DiversityStrategy(MaterialSelectionStrategy):
@@ -53,8 +57,13 @@ class DiversityStrategy(MaterialSelectionStrategy):
         self.companies = companies or self._DEFAULT_COMPANIES
         self.penalty = penalty
 
-    def select(self, stories: list[dict], max_stories: int) -> list[dict]:
-        """Select stories with diversity penalty."""
+    def select(
+        self,
+        stories: list[dict],
+        max_stories: int,
+        reference_time: datetime | None = None,
+    ) -> list[dict]:
+        """Select stories with diversity penalty and freshness penalty."""
         active = [s for s in stories if isinstance(s, dict) and s.get("role") != "skip"]
         selected: list[dict] = []
         entity_counts: dict[str, int] = {}
@@ -62,7 +71,7 @@ class DiversityStrategy(MaterialSelectionStrategy):
 
         while len(selected) < max_stories and candidates:
             for c in candidates:
-                orig_score = c.get("total_score", 0)
+                orig_score = effective_score(c, reference_time)
                 c_entities = self._get_story_entities(c)
                 penalty = sum(self.penalty * entity_counts.get(ent, 0) for ent in c_entities)
                 c["_temp_score"] = orig_score - penalty

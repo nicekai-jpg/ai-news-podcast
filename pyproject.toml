@@ -26,6 +26,7 @@ dependencies = [
 
 [project.scripts]
 podcast-pipeline = "ai_news_podcast.presentation.cli.podcast_pipeline_controller:entrypoint"
+podcast-pipeline-v3 = "ai_news_podcast.presentation.cli.podcast_v3_controller:entrypoint"
 podcast-writer   = "ai_news_podcast.presentation.cli.podcast_writer_controller:entrypoint"
 podcast-tts      = "ai_news_podcast.presentation.cli.podcast_tts_controller:entrypoint"
 podcast-daily    = "ai_news_podcast.presentation.cli.podcast_daily_controller:entrypoint"

@@ -1,0 +1,796 @@
+# Stage 1 采集源清单（通道化定稿 v1.0，2026-11-09）
+#
+# 依据：docs/source_channels.md §4.8（C3 定稿）、§5.0（C4 定稿）、§6（C5 定稿）、
+#       docs/source_pipeline_design.md §3（通道总表）。
+#
+# 源数量：C1 31 / C2 11 / C3 66 / C4 7 / C5 17 = 合计 132 条（跨通道重复按条目计）。
+#
+#   C1 c1_rss          31 = 中文媒体 4（含机器之心/新智元的 wechat2rss feed）+ 官方博客 8
+#                          + 英文媒体 3 + arXiv 15（5 分类 + 10 主题查询）+ 36Kr 原生 1
+#                          （36Kr 原生 RSS 已坏且主通道改 C3，故 enabled: false 保留占位）
+#   C2 c2_atom         11 = GitHub Releases 8 + YouTube 3
+#   C3 c3_rsshub       66 = 一级 AI 垂直/官方 38 + 二级 AI 栏目 6 + 三级 泛科技/产业 22
+#   C4 c4_web           7 = DeepSeek / 智谱 / MiniMax / 字节 Seed / 商汤 / 工信部 / 网信办
+#   C5 c5_wechat2rss   17 = 机器之心…得物技术（公共 wechat2rss feed，含 content:encoded 全文）
+#
+# 说明与取舍：
+# 1. docs/source_channels.md §4.8 的一级表实际列了 40 行（4.7 的 38 + DeepMind + PixelsTech），
+#    但章节标题/总量按「一级 38」计。本文件以 66 总量为准：DeepMind 路由超时且 C1 原生 RSS
+#    覆盖（§4.8 亦标注），Podwise 为播客探索榜且无发布时间（无法进 72h 窗口），二者不重复接入；
+#    PixelsTech 与 4.7 全量一级源保留。
+# 2. 三级 22 个源的 RSSHub 路由按镜像命名空间约定填写，上线前建议对照部署镜像的
+#    /app/assets/build/routes.json 复核；单源路由失效只会记录 failed，不影响其它源。
+# 3. C4 的 5 个 SPA 源（Kimi/文心/混元/阶跃/讯飞）与 Telegram 频道按 §5.0 结论暂不接入。
+# 4. C4 列表页默认用「锚点 + 邻近日期」启发式解析；若某站改版，可在该源下加
+#    selectors: {item: "...", title: "...", link: "...", date: "...", summary: "..."}
+#    精确指定（parser: generic 时生效）。
+# 5. 字段：name 唯一 slug / label 展示名 / channel 通道 / url 或 urls 或 rsshub_route /
+#    category 来源类别（official|news|research|community|video|podcast）/ limit 单源条数上限 /
+#    enabled / failover（主通道失败时的一次性备用抓取）。
+# 6. 采集端只做 URL 规范化、同源内去重、72h 时效过滤、条数上限；跨源去重与
+#    重要性判断全部交给 Stage 2。
+#
+# 所有 URL 只是「入口」，正文由采集时一次性抓全（feed content:encoded / readability）。
+
+defaults:
+  limit: 15
+  enabled: true
+
+sources:
+  # =========================================================================
+  # C1 固定 RSS（31）
+  # =========================================================================
+  # --- 中文媒体 4（机器之心/新智元官网 RSS 已失效，走 wechat2rss feed）---
+  - name: jiqizhixin
+    label: 机器之心
+    channel: c1_rss
+    url: "https://wechat2rss.xlab.app/feed/51e92aad2728acdd1fda7314be32b16639353001.xml"
+    category: news
+    limit: 20
+  - name: xinzhiyuan
+    label: 新智元
+    channel: c1_rss
+    url: "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml"
+    category: news
+    limit: 20
+  - name: qbitai
+    label: 量子位
+    channel: c1_rss
+    url: "https://www.qbitai.com/feed"
+    category: news
+    limit: 20
+  - name: sspai
+    label: 少数派
+    channel: c1_rss
+    url: "https://sspai.com/feed"
+    category: news
+    limit: 20
+
+  # --- 官方博客 8 ---
+  - name: openai_news
+    label: OpenAI News
+    channel: c1_rss
+    url: "https://openai.com/blog/rss.xml"
+    category: official
+    limit: 30
+  - name: deepmind_blog
+    label: DeepMind Blog
+    channel: c1_rss
+    url: "https://deepmind.google/blog/rss.xml"
+    category: official
+    limit: 20
+  - name: google_ai_blog
+    label: Google AI Blog
+    channel: c1_rss
+    url: "https://blog.google/technology/ai/rss/"
+    category: official
+    limit: 20
+  - name: nvidia_blog
+    label: NVIDIA Blog
+    channel: c1_rss
+    url: "https://blogs.nvidia.com/feed/"
+    category: official
+    limit: 20
+  - name: msr_blog
+    label: Microsoft Research Blog
+    channel: c1_rss
+    url: "https://www.microsoft.com/en-us/research/feed/"
+    category: research
+    limit: 20
+  - name: apple_ml
+    label: Apple ML Research
+    channel: c1_rss
+    url: "https://machinelearning.apple.com/rss.xml"
+    category: research
+    limit: 15
+  - name: huggingface_blog
+    label: HuggingFace Blog
+    channel: c1_rss
+    url: "https://huggingface.co/blog/feed.xml"
+    category: research
+    limit: 20
+  - name: qwen_blog
+    label: Qwen 通义千问技术博客
+    channel: c1_rss
+    url: "https://qwenlm.github.io/blog/index.xml"
+    category: official
+    limit: 15
+
+  # --- 英文媒体 3 ---
+  - name: techcrunch_ai
+    label: TechCrunch AI
+    channel: c1_rss
+    url: "https://techcrunch.com/category/artificial-intelligence/feed/"
+    category: news
+    limit: 30
+  - name: synced_review
+    label: Synced Review
+    channel: c1_rss
+    url: "https://syncedreview.com/feed/"
+    category: news
+    limit: 15
+  - name: venturebeat_ai
+    label: VentureBeat AI
+    channel: c1_rss
+    url: "https://venturebeat.com/category/ai/feed/"
+    category: news
+    limit: 20
+
+  # --- arXiv 15：5 个分类 RSS + 10 个主题查询（Atom）---
+  - name: arxiv_cs_ai
+    label: arXiv cs.AI
+    channel: c1_rss
+    url: "https://rss.arxiv.org/rss/cs.AI"
+    category: research
+    limit: 30
+  - name: arxiv_cs_lg
+    label: arXiv cs.LG
+    channel: c1_rss
+    url: "https://rss.arxiv.org/rss/cs.LG"
+    category: research
+    limit: 30
+  - name: arxiv_cs_cl
+    label: arXiv cs.CL
+    channel: c1_rss
+    url: "https://rss.arxiv.org/rss/cs.CL"
+    category: research
+    limit: 30
+  - name: arxiv_cs_cv
+    label: arXiv cs.CV
+    channel: c1_rss
+    url: "https://rss.arxiv.org/rss/cs.CV"
+    category: research
+    limit: 30
+  - name: arxiv_cs_ro
+    label: arXiv cs.RO
+    channel: c1_rss
+    url: "https://rss.arxiv.org/rss/cs.RO"
+    category: research
+    limit: 30
+  - name: arxiv_deepseek
+    label: arXiv · DeepSeek
+    channel: c1_rss
+    url: "https://export.arxiv.org/api/query?search_query=abs:DeepSeek+OR+ti:DeepSeek&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: research
+  - name: arxiv_glm
+    label: arXiv · 智谱 GLM
+    channel: c1_rss
+    url: "https://export.arxiv.org/api/query?search_query=abs:GLM-4+OR+ti:GLM-4+OR+abs:ZhipuAI&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: research
+  - name: arxiv_kimi
+    label: arXiv · Kimi/Moonshot
+    channel: c1_rss
+    url: "https://export.arxiv.org/api/query?search_query=abs:Moonshot+OR+ti:Kimi&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: research
+  - name: arxiv_claude
+    label: arXiv · Anthropic/Claude
+    channel: c1_rss
+    url: "https://export.arxiv.org/api/query?search_query=abs:Anthropic+OR+ti:Claude&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: research
+  - name: arxiv_grok
+    label: arXiv · xAI/Grok
+    channel: c1_rss
+    url: "https://export.arxiv.org/api/query?search_query=abs:xAI+OR+ti:Grok&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: research
+  - name: arxiv_mistral_llama
+    label: arXiv · Mistral/Llama
+    channel: c1_rss
+    url: "https://export.arxiv.org/api/query?search_query=abs:Mistral+OR+abs:Mixtral+OR+ti:Llama&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: research
+  - name: arxiv_hunyuan
+    label: arXiv · 腾讯混元
+    channel: c1_rss
+    url: "https://export.arxiv.org/api/query?search_query=abs:Hunyuan&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: research
+  - name: arxiv_bytedance
+    label: arXiv · 字节 Seed
+    channel: c1_rss
+    url: "https://export.arxiv.org/api/query?search_query=abs:ByteDance+OR+abs:Seed-TTS&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: research
+  - name: arxiv_internlm
+    label: arXiv · 上海 AI Lab
+    channel: c1_rss
+    url: "https://export.arxiv.org/api/query?search_query=abs:InternLM&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: research
+  - name: arxiv_ernie
+    label: arXiv · 百度文心
+    channel: c1_rss
+    url: "https://export.arxiv.org/api/query?search_query=abs:ERNIE+OR+abs:PaddlePaddle&sortBy=submittedDate&sortOrder=descending&max_results=15"
+    category: research
+
+  # --- 其它 1（原生 RSS 已坏，主通道改 C3；保留占位便于观测恢复情况）---
+  - name: 36kr_native
+    label: 36Kr 快讯（原生 RSS）
+    channel: c1_rss
+    url: "https://36kr.com/feed-newsflash"
+    category: news
+    enabled: false
+
+  # =========================================================================
+  # C2 Atom（11 = GitHub Releases 8 + YouTube 3）
+  # =========================================================================
+  - name: dsh_releases
+    label: DeepSeek Harness Releases
+    channel: c2_atom
+    url: "https://github.com/deepseek-ai/deepseek-harness/releases.atom"
+    category: official
+  - name: deepgemm_releases
+    label: DeepGEMM Releases
+    channel: c2_atom
+    url: "https://github.com/deepseek-ai/DeepGEMM/releases.atom"
+    category: official
+  - name: deepep_releases
+    label: DeepEP Releases
+    channel: c2_atom
+    url: "https://github.com/deepseek-ai/DeepEP/releases.atom"
+    category: official
+  - name: vllm_releases
+    label: vLLM Releases
+    channel: c2_atom
+    url: "https://github.com/vllm-project/vllm/releases.atom"
+    category: community
+  - name: llama_cpp_releases
+    label: llama.cpp Releases
+    channel: c2_atom
+    url: "https://github.com/ggml-org/llama.cpp/releases.atom"
+    category: community
+  - name: transformers_releases
+    label: Transformers Releases
+    channel: c2_atom
+    url: "https://github.com/huggingface/transformers/releases.atom"
+    category: community
+  - name: langchain_releases
+    label: LangChain Releases
+    channel: c2_atom
+    url: "https://github.com/langchain-ai/langchain/releases.atom"
+    category: community
+  - name: ollama_releases
+    label: Ollama Releases
+    channel: c2_atom
+    url: "https://github.com/ollama/ollama/releases.atom"
+    category: community
+  - name: openai_youtube
+    label: OpenAI YouTube
+    channel: c2_atom
+    url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCXZCJLdBC09xxGZ6gcdrc6A"
+    category: video
+  - name: deepmind_youtube
+    label: Google DeepMind YouTube
+    channel: c2_atom
+    url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCP7jMXSY2xbc3KCAE0MHQ-A"
+    category: video
+  - name: anthropic_youtube
+    label: Anthropic YouTube
+    channel: c2_atom
+    url: "https://www.youtube.com/feeds/videos.xml?channel_id=UCrDwWp7EBBv4NwvScIpBDOA"
+    category: video
+
+  # =========================================================================
+  # C3 RSSHub（66 = 一级 38 + 二级 6 + 三级 22）
+  # =========================================================================
+  # --- 一级：AI 垂直/官方（38）---
+  - name: openai_news_rsshub
+    label: OpenAI News
+    channel: c3_rsshub
+    rsshub_route: /openai/news
+    category: official
+    failover: { channel: c1_rss, url: "https://openai.com/blog/rss.xml" }
+  - name: anthropic_news
+    label: Anthropic News
+    channel: c3_rsshub
+    rsshub_route: /anthropic/news
+    category: official
+  - name: claude_blog
+    label: Claude Blog
+    channel: c3_rsshub
+    rsshub_route: /claude/blog
+    category: official
+  - name: claude_code_changelog
+    label: Claude Code Changelog
+    channel: c3_rsshub
+    rsshub_route: /claude/code/changelog
+    category: official
+  - name: deepseek_news_rsshub
+    label: DeepSeek News
+    channel: c3_rsshub
+    rsshub_route: /deepseek/news
+    category: official
+  - name: huggingface_blog_rsshub
+    label: HuggingFace Blog
+    channel: c3_rsshub
+    rsshub_route: /huggingface/blog
+    category: research
+    failover: { channel: c1_rss, url: "https://huggingface.co/blog/feed.xml" }
+  - name: ollama_blog
+    label: Ollama Blog
+    channel: c3_rsshub
+    rsshub_route: /ollama/blog
+    category: official
+  - name: qwen_blog_rsshub
+    label: Qwen Research Blog
+    channel: c3_rsshub
+    rsshub_route: /qwen/blog
+    category: official
+    failover: { channel: c1_rss, url: "https://qwenlm.github.io/blog/index.xml" }
+  - name: cohere_blog
+    label: Cohere Blog
+    channel: c3_rsshub
+    rsshub_route: /cohere/blog
+    category: official
+  - name: langchain_blog
+    label: LangChain Blog
+    channel: c3_rsshub
+    rsshub_route: /langchain/blog
+    category: official
+  - name: kiro_blog
+    label: Kiro Blog
+    channel: c3_rsshub
+    rsshub_route: /kiro/blog
+    category: official
+  - name: inceptionlabs_blog
+    label: Inception Labs Blog
+    channel: c3_rsshub
+    rsshub_route: /inceptionlabs/blog
+    category: official
+  - name: thinkingmachines_news
+    label: Thinking Machines News
+    channel: c3_rsshub
+    rsshub_route: /thinkingmachines/news
+    category: official
+  - name: transformer_circuits
+    label: Transformer Circuits
+    channel: c3_rsshub
+    rsshub_route: /transformer-circuits
+    category: research
+  - name: the_decoder
+    label: The Decoder
+    channel: c3_rsshub
+    rsshub_route: /the-decoder/news
+    category: news
+  - name: cool_papers
+    label: Cool Papers (cs.AI)
+    channel: c3_rsshub
+    rsshub_route: /papers/category/arxiv/cs.AI
+    category: research
+  - name: mit_tr_ai
+    label: MIT Technology Review AI
+    channel: c3_rsshub
+    rsshub_route: /technologyreview/artificial-intelligence
+    category: news
+  - name: nvidia_newsroom
+    label: NVIDIA Newsroom
+    channel: c3_rsshub
+    rsshub_route: /nvidia/newsroom
+    category: official
+  - name: nvidia_developer
+    label: NVIDIA Developer Blog
+    channel: c3_rsshub
+    rsshub_route: /nvidia/developer
+    category: official
+  - name: baai_hub
+    label: 智源 BAAI Hub
+    channel: c3_rsshub
+    rsshub_route: /baai/hub
+    category: research
+  - name: deeplearning_the_batch
+    label: DeepLearning.AI The Batch
+    channel: c3_rsshub
+    rsshub_route: /deeplearning/the-batch
+    category: research
+  - name: bfl_announcements
+    label: BFL Announcements
+    channel: c3_rsshub
+    rsshub_route: /bfl/announcements
+    category: official
+  - name: cursor_blog
+    label: Cursor Blog
+    channel: c3_rsshub
+    rsshub_route: /cursor/blog
+    category: official
+  - name: cline_blog
+    label: Cline Blog
+    channel: c3_rsshub
+    rsshub_route: /cline/blog
+    category: official
+  - name: coze_store
+    label: Coze 扣子商店
+    channel: c3_rsshub
+    rsshub_route: /coze/store/project
+    category: community
+  - name: civitai_models
+    label: Civitai Models
+    channel: c3_rsshub
+    rsshub_route: /civitai/models
+    category: community
+  - name: chub_characters
+    label: Chub Characters
+    channel: c3_rsshub
+    rsshub_route: /chub/characters
+    category: community
+  - name: zread_trending
+    label: Zread Trending
+    channel: c3_rsshub
+    rsshub_route: /zread/trending
+    category: community
+  - name: forwardfuture_daily
+    label: Forward Future Daily
+    channel: c3_rsshub
+    rsshub_route: /forwardfuture/daily
+    category: news
+  - name: augmentcode_blog
+    label: Augment Code Blog
+    channel: c3_rsshub
+    rsshub_route: /augmentcode/blog
+    category: official
+  - name: deepl_blog
+    label: DeepL Blog
+    channel: c3_rsshub
+    rsshub_route: /deepl/blog/en
+    category: official
+  - name: mathpix_blog
+    label: Mathpix Blog
+    channel: c3_rsshub
+    rsshub_route: /mathpix/blog
+    category: official
+  - name: ai_bot_news
+    label: AI 工具集
+    channel: c3_rsshub
+    rsshub_route: /ai-bot/daily-ai-news
+    category: news
+  - name: aibase_news
+    label: AIBase 新闻
+    channel: c3_rsshub
+    rsshub_route: /aibase/news
+    category: news
+  - name: aijishu_ai
+    label: 极术社区 AI
+    channel: c3_rsshub
+    rsshub_route: /aijishu/channel/ai
+    category: community
+  - name: qbitai_rsshub
+    label: 量子位（RSSHub）
+    channel: c3_rsshub
+    rsshub_route: /qbitai/category/资讯
+    category: news
+    failover: { channel: c1_rss, url: "https://www.qbitai.com/feed" }
+  - name: google_research
+    label: Google Research
+    channel: c3_rsshub
+    rsshub_route: /google/research
+    category: official
+  - name: pixelstech_ai
+    label: PixelsTech AI
+    channel: c3_rsshub
+    rsshub_route: /pixelstech/feed/ai
+    category: news
+
+  # --- 二级：泛科技媒体的 AI 栏目（6，参数路由）---
+  - name: ithome_ai
+    label: IT之家 AI
+    channel: c3_rsshub
+    rsshub_route: /ithome/tag/AI
+    category: news
+    failover: { channel: c1_rss, url: "https://it.ithome.com/rss/ai/rss.xml" }
+  - name: sspai_ai
+    label: 少数派 AI
+    channel: c3_rsshub
+    rsshub_route: /sspai/tag/AI
+    category: news
+    failover: { channel: c1_rss, url: "https://sspai.com/feed" }
+  - name: nyt_technology
+    label: NYT Technology
+    channel: c3_rsshub
+    rsshub_route: /nytimes/rss/Technology
+    category: news
+  - name: nature_news
+    label: Nature News
+    channel: c3_rsshub
+    rsshub_route: /nature/news
+    category: research
+  - name: wired_ai
+    label: WIRED AI
+    channel: c3_rsshub
+    rsshub_route: /wired/tag/artificial-intelligence
+    category: news
+  - name: bloomberg_technology
+    label: Bloomberg Technology
+    channel: c3_rsshub
+    rsshub_route: /bloomberg/technology
+    category: news
+
+  # --- 三级：泛科技/产业（22，可选；路由按 RSSHub 命名空间约定，上线前复核）---
+  - name: 36kr_newsflashes
+    label: 36Kr 快讯
+    channel: c3_rsshub
+    rsshub_route: /36kr/newsflashes
+    category: news
+    limit: 20
+  - name: geekpark
+    label: 极客公园
+    channel: c3_rsshub
+    rsshub_route: /geekpark
+    category: news
+    limit: 20
+  - name: huxiu_moment
+    label: 虎嗅 24 小时
+    channel: c3_rsshub
+    rsshub_route: /huxiu/moment
+    category: news
+    limit: 20
+  - name: tmtpost_news
+    label: 钛媒体
+    channel: c3_rsshub
+    rsshub_route: /tmtpost/news
+    category: news
+  - name: leiphone_news
+    label: 雷峰网
+    channel: c3_rsshub
+    rsshub_route: /leiphone/newsflash
+    category: news
+  - name: ifanr
+    label: 爱范儿
+    channel: c3_rsshub
+    rsshub_route: /ifanr
+    category: news
+  - name: infoq_recommend
+    label: InfoQ
+    channel: c3_rsshub
+    rsshub_route: /infoq/recommend
+    category: news
+  - name: thepaper_featured
+    label: 澎湃新闻
+    channel: c3_rsshub
+    rsshub_route: /thepaper/featured
+    category: news
+  - name: cnbeta
+    label: cnBeta
+    channel: c3_rsshub
+    rsshub_route: /cnbeta
+    category: news
+    limit: 20
+  - name: ofweek_news
+    label: OFweek
+    channel: c3_rsshub
+    rsshub_route: /ofweek/news
+    category: news
+  - name: engadget_chinese
+    label: Engadget 中文版
+    channel: c3_rsshub
+    rsshub_route: /engadget/chinese
+    category: news
+  - name: scientificamerican
+    label: Scientific American
+    channel: c3_rsshub
+    rsshub_route: /scientificamerican
+    category: research
+  - name: trendforce_news
+    label: TrendForce
+    channel: c3_rsshub
+    rsshub_route: /trendforce/news
+    category: news
+  - name: csia_news
+    label: 中国半导体行业协会
+    channel: c3_rsshub
+    rsshub_route: /csia/news
+    category: news
+  - name: oschina_news
+    label: 开源中国
+    channel: c3_rsshub
+    rsshub_route: /oschina/news
+    category: news
+  - name: juejin_aicoding
+    label: 掘金 AI 编程
+    channel: c3_rsshub
+    rsshub_route: /juejin/aicoding
+    category: community
+  - name: mydrivers_ai
+    label: 快科技（AI/智能）
+    channel: c3_rsshub
+    rsshub_route: /mydrivers/bcid/801
+    category: news
+    limit: 20
+  - name: landiannews
+    label: 蓝点网
+    channel: c3_rsshub
+    rsshub_route: /landiannews
+    category: news
+  - name: dgtle
+    label: 数字尾巴
+    channel: c3_rsshub
+    rsshub_route: /dgtle
+    category: news
+  - name: mittr_cn
+    label: MIT 科技评论中文
+    channel: c3_rsshub
+    rsshub_route: /mittrchina
+    category: news
+  - name: benedict_evans
+    label: Benedict Evans
+    channel: c3_rsshub
+    rsshub_route: /benedictevans
+    category: research
+  - name: gwern
+    label: Gwern
+    channel: c3_rsshub
+    rsshub_route: /gwern
+    category: research
+
+  # =========================================================================
+  # C4 网页抓取（7 个 SSR 源）
+  # =========================================================================
+  - name: deepseek_web
+    label: DeepSeek 官方新闻（sitemap+changelog）
+    channel: c4_web
+    parser: deepseek
+    url: "https://api-docs.deepseek.com/sitemap.xml"
+    changelog_url: "https://api-docs.deepseek.com/zh-cn/updates"
+    category: official
+    failover: { channel: c3_rsshub, route: /deepseek/news }
+  - name: zhipu_news
+    label: 智谱新闻
+    channel: c4_web
+    parser: generic
+    url: "https://zhipuai.cn/zh/news"
+    category: official
+  - name: minimax_news
+    label: MiniMax 新闻
+    channel: c4_web
+    parser: generic
+    url: "https://minimax.cn/news"
+    category: official
+  - name: bytedance_seed
+    label: 字节 Seed 研究/博客
+    channel: c4_web
+    parser: generic
+    urls:
+      - "https://seed.bytedance.com/research"
+      - "https://seed.bytedance.com/blog_list/foundation"
+    category: official
+  - name: sensetime_news
+    label: 商汤新闻
+    channel: c4_web
+    parser: generic
+    url: "https://www.sensetime.com/cn/news"
+    category: official
+  - name: miit_policy
+    label: 工信部政策文件
+    channel: c4_web
+    parser: generic
+    urls:
+      - "https://www.miit.gov.cn/zwgk/zcwj/index.html"
+      - "https://www.miit.gov.cn/"
+    category: official
+  - name: cac_policy
+    label: 网信办政策法规
+    channel: c4_web
+    parser: generic
+    urls:
+      - "https://www.cac.gov.cn/xxgk/zcfg/index.htm"
+      - "https://www.cac.gov.cn/"
+    category: official
+
+  # =========================================================================
+  # C5 wechat2rss（17 个公众号，feed 自带 content:encoded 全文）
+  # =========================================================================
+  - name: jiqizhixin_wechat
+    label: 机器之心（公众号）
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/51e92aad2728acdd1fda7314be32b16639353001.xml"
+    category: news
+    limit: 20
+  - name: xinzhiyuan_wechat
+    label: 新智元（公众号）
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/ede30346413ea70dbef5d485ea5cbb95cca446e7.xml"
+    category: news
+    limit: 20
+  - name: qbitai_wechat
+    label: 量子位（公众号）
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/7131b577c61365cb47e81000738c10d872685908.xml"
+    category: news
+    limit: 20
+  - name: geekpark_wechat
+    label: 极客公园（公众号）
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/1a5aec98e71c707c8ca092bc2c255b9d4bac477d.xml"
+    category: news
+    limit: 20
+  - name: paperweekly_wechat
+    label: PaperWeekly
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/3be891c2f4e526629ab055a297cc2cd6c1f0a563.xml"
+    category: research
+    limit: 20
+  - name: aicv_wechat
+    label: 我爱计算机视觉
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/b81ffcfff1107b5265cd7e39de610dc7ca72caf4.xml"
+    category: research
+    limit: 20
+  - name: xixiaoyao_wechat
+    label: 夕小瑶科技说
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/a1cd365aa14ed7d64cabfc8aa086da40ecaba34d.xml"
+    category: news
+    limit: 20
+  - name: bytedance_tech_wechat
+    label: 字节跳动技术团队
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/4025ea55575daf8bfd8227e68b28d9638b073267.xml"
+    category: official
+    limit: 20
+  - name: alitech_wechat
+    label: 阿里技术
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/6e1f9b775f7a5841ac1a94310f0478b45a02ec01.xml"
+    category: official
+    limit: 20
+  - name: aliyun_dev_wechat
+    label: 阿里云开发者
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/c74ed6db00cfbf16f2a048a165b4453f982681f0.xml"
+    category: official
+    limit: 20
+  - name: alimiddleware_wechat
+    label: 阿里巴巴中间件
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/ede34e7a9aff5e93ad159ebfd27075710a963f54.xml"
+    category: official
+    limit: 20
+  - name: tencent_tech_wechat
+    label: 腾讯技术工程
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/9685937b45fe9c7a526dbc32e4f24ba879a65b9a.xml"
+    category: official
+    limit: 20
+  - name: meituan_tech_wechat
+    label: 美团技术团队
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/eb4d04149424a874693a51c6fdda0dba8673f5e4.xml"
+    category: official
+    limit: 20
+  - name: xiaomi_tech_wechat
+    label: 小米技术
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/20bc9c3251b3c4f73d3b53aa1f1ab853d05d4cbc.xml"
+    category: official
+    limit: 20
+  - name: bilibili_tech_wechat
+    label: 哔哩哔哩技术
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/434235d4815fdb8447ff3127fc053ceb8b3aada6.xml"
+    category: official
+    limit: 20
+  - name: iqiyi_tech_wechat
+    label: 爱奇艺技术产品团队
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/16a4ec12a83a52e1f6e941bce030a4d64ee26c47.xml"
+    category: official
+    limit: 20
+  - name: dewu_tech_wechat
+    label: 得物技术
+    channel: c5_wechat2rss
+    url: "https://wechat2rss.xlab.app/feed/f3a42bd249ec6e8834ae761d8d0f85a949950944.xml"
+    category: official
+    limit: 20

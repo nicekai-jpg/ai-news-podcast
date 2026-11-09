@@ -1,0 +1,49 @@
+# Stage 4 编辑点评 / Stage 5 播客文稿配置（流程细化设计 v4 §5/§6）
+#
+# 结构说明：
+# - 顶层键为扁平配置；也兼容 stage4: / stage5: / commentary: 子节（同名键子节优先），
+#   便于后续把本文件并入 config/config.yaml 时按 stage 分组。
+# - 所有字数均指「口语正文字数」（不含 [Host A]/[Host B]/[CHAPTER] 标记、章节标题与空白）。
+
+# Stage 4：只点评精排前 N 条（日报同源，推荐 5 条）
+report_top_n: 5
+
+# Stage 5：15 分钟 ≈ 3000–3600 字（按 CosyVoice 中文 220–260 字/分钟估算）
+target_minutes: 15
+min_chars: 3000
+max_chars: 3600
+
+# 章节：目标 4 章，允许 3–4 章（开场 + 主推 1–2 + 收尾）
+chapters: 4
+min_chapters: 3
+max_chapters: 4
+
+# 双主持均衡：任一主持人正文字数占比不得低于该值
+min_host_char_ratio: 0.25
+# 未标记行占比上限（超过视为模型输出了非对话内容）
+max_unmarked_ratio: 0.2
+
+# 格式不达标时最多重写次数（0 = 不重写）
+max_rewrites: 1
+
+# 主持人口径（与站点 roster / writer prompt 保持一致）
+hosts:
+  host_a: 林夏
+  host_b: 陈默
+
+# 点评正文每条 fact 的建议字数区间（150–300，仅质量告警，不做硬性拒收）
+commentary:
+  min_fact_chars: 150
+  max_fact_chars: 300
+
+# 禁用营销词/夸张词：点评与文稿都不得出现（发现即拒收 fact 或计入质量问题）
+banned_words:
+  - "废话不多说"
+  - "众所周知"
+  - "颠覆"
+  - "炸裂"
+  - "重磅"
+  - "王炸"
+  - "杀疯了"
+  - "遥遥领先"
+  - "细思极恐"

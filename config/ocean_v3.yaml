@@ -1,0 +1,107 @@
+# Stage 2「新闻潮汐」配置（阈值全部可调，先给初值，跑两周再校准）。
+# 读取方式：business/ocean/build.py:load_ocean_config()，未配置项回退代码内默认值。
+
+version: 3
+
+preprocess:
+  max_full_text_chars: 4000  # 相似度计算只用正文前 N 字，控制内存/耗时
+  keyword_top_k: 15          # 关键词抽取上限（聚类候选/审计用）
+
+dedupe:
+  title_threshold: 0.90            # L2 标题近似（rapidfuzz ratio，规范化后）
+  semantic_threshold: 0.80         # L3 语义（TF-IDF char n-gram，标题+摘要）；只合并
+                                   # 近似同文转载，同一事件的多源报道留给聚类
+  semantic_embedding_threshold: 0.80  # 若接入 sentence-transformers 的余弦阈值（预留）
+  cross_day_title_threshold: 0.88  # L4 与历史事件代表标题的相似阈值
+  cross_day_semantic_threshold: 0.40  # L4 与历史事件正文的语义阈值
+  cross_day_new_progress: true     # L4 命中历史时，有新进展则不当作重复
+  min_title_chars: 6               # 规范化标题短于此值不做标题近似（避免单字误合并）
+  max_title_candidates: 300        # L2 每条标题最多比对的候选数（倒排索引分块）
+
+cluster:
+  time_window_hours: 48       # 候选对时间窗（±48h）
+  semantic_threshold: 0.55    # 候选对语义相似下限
+  entity_jaccard_threshold: 0.50  # 主体/对象实体 Jaccard 下限
+  title_threshold: 0.85       # 标题近似兜底阈值
+  min_shared_keywords: 2      # 共享关键词数（候选生成）
+  method: components          # components（连通分量，确定性）| hdbscan（可选）
+  hdbscan_min_cluster_size: 2
+  max_candidate_pairs: 50000  # 候选对上限，超限停止新增边
+  max_candidates_per_item: 200  # 每条最多候选数（倒排索引分块）
+  reject_distinct_versions: true  # 版本号不同（GPT-5 vs GPT-5.1）不并入同一事件
+
+continuity:
+  history_days: 30            # 跨日匹配窗口（最近 30 天 ocean 快照）
+  entity_jaccard_threshold: 0.60   # 实体集合 Jaccard
+  title_threshold: 0.75            # 代表标题相似
+  entity_title_floor: 0.35         # 仅实体命中时，标题相似的最低兜底（防同主体不同事件误配）
+  entity_title_floor_single: 0.50  # 只共享 1 个主体时，标题相似需更高（单主体 Jaccard 无区分度）
+  progress_number_types: [version, money, percent, score, count]  # 视为“新进展”的数字类型
+  new_progress_actions: true       # 出现历史没有的新动作词 → 新进展
+  covered_title_threshold: 0.85    # 与覆盖账本标题比对的阈值
+  max_sequence: 999
+
+evidence:
+  weights:
+    official_source: 2.0
+    source_count: 1.0
+    fact_consistency: 1.0
+    full_text_ratio: 0.5
+    single_source: -1.0
+    rumor: -1.5
+  source_count_cap: 5
+  min_full_text_chars: 300
+  official_categories: [official]
+  rumor_keywords:
+    - 传闻
+    - 据悉
+    - 消息称
+    - 爆料
+    - 据报道
+    - 未经证实
+    - rumor
+    - reportedly
+    - unconfirmed
+  rumor_max_sources: 2       # 独立来源数低于此值且命中传闻词 → rumor_flag
+  momentum_window_hours: 6   # 近 N 小时新增来源占比（momentum_growth）
+  tiers:
+    strong: 4.0
+    medium: 2.5
+    weak: 1.0
+
+labels:
+  nlp_dir: nlp
+  lifecycle:
+    burst_sources: 3         # 新事件 24h 内独立来源 ≥ N → burst
+    burst_window_hours: 24
+    long_tail_days: 7        # 距首见 ≥ N 天仍有报道 → long_tail
+    fading_days: 3           # 距上次更新 ≥ N 天且无新进展 → fading
+  novelty:
+    max_values: 12
+  quote_markers:
+    - 官方表示
+    - 官方声明
+    - 在声明中
+    - 新闻稿
+    - 发言人
+    - 表示：“
+    - says
+    - said
+    - announced
+    - according to
+    - press release
+  min_alias_length: 2
+  context_window_chars: 40   # 歧义实体（苹果/小米/Meta）所需的科技上下文窗口
+  confidence:
+    subjects: 0.95
+    object_type: 0.75
+    actions: 0.85
+    tech_stack: 0.85
+    regions: 0.65
+    topics: 0.65
+    evidence_tier: 0.90
+    novelty_numbers: 0.80
+    narrative_angle: 0.70
+    audience_persona: 0.65
+    sensitivity: 0.75
+    quote_availability: 0.70
