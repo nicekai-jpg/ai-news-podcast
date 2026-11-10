@@ -115,3 +115,27 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
   9 个失败且无替代的源禁用；定时任务默认 `--no-fulltext`、`max_workers=12`。
 - 生产 cron 切到 `.github/workflows/v3_daily.yml`（30 17 * * *，自动 deploy + commit）；
   旧 `daily.yml` 仅保留 workflow_dispatch 回滚。
+
+## 三项验证（2026-11-10）
+
+### 1) C3 路由线上复核（本地 RSSHub 容器 1205）
+- 首轮 53 条启用路由：**48 ok / 5 bad**（mathpix、sspai、nature、leiphone 60s 超时；gwern 404）。
+- 处理：sspai/nature/leiphone/gwern 改原生 RSS（均验证 200）；mathpix 禁用。
+- 二轮 48 条：**46 ok / 2 bad**（huggingface 503、nyt 60s 超时）。
+- 再处理：huggingface、nyt 也改原生 RSS（均验证 200）。最终 C3 启用 46 条，全部有可用入口。
+
+### 2) M3.1 Flash 可用性 / A/B
+- 模型 ID `MiniMax-M3.1-Flash` / `-Preview` 均可用（200，中文输出正常）。
+- **max_tokens 太小会空输出**：800 时 reasoning 占满 token → content 为空。
+- 16384 tokens + temperature 0.5：生成 15 分钟稿 quality 通过（3554 字/4 章），但耗时 **412s**；
+  8192 tokens 重复 2 次均空输出。
+- 同 prompt 下 M3 2/2 quality 失败（输出像 prompt 片段回显、含禁用词、超长/章节失衡）；
+  昨晚 GHA 的 M3 稿也仅 1664 字/7 章/主持失衡。
+- 结论：**问题主要在 v3 文稿 prompt 与 token 预算，不在模型本身**；暂不切 Stage5 到 Flash，
+  先修 prompt（精简规则、禁用词列表改为泛化约束、强制格式、max_tokens≥16k），再 A/B。
+
+### 3) 回源全文的影响（24 条短摘要样本）
+- 页面正文平均 **896 字** vs 摘要 **221 字**（约 4 倍）；数字/版本类 token 平均 **10.7 vs 4.8**；
+  9/24 条页面正文 >2×摘要。
+- 结论：全文对证据密度有明显价值，但全量回源太慢；
+  **建议两阶段抓取**：Stage1 只抓摘要（快），Stage3/4 对 top 20 候选再回源正文（质量+时间平衡）。
