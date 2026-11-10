@@ -78,7 +78,11 @@ def load_item_evidence(ocean_dir: Path) -> dict[str, str]:
     return evidence
 
 
-def make_llm_call(llm_cfg: Any, stage: str) -> LLMCall:
+def make_llm_call(
+    llm_cfg: Any,
+    stage: str,
+    options: dict[str, Any] | None = None,
+) -> LLMCall:
     """用现有 llm_client_service 构造某 Stage 的 prompt→text 调用。
 
     ``llm_cfg`` 可以是配置 dataclass（支持 ``resolve_model(stage)``）或 dict。
@@ -93,6 +97,8 @@ def make_llm_call(llm_cfg: Any, stage: str) -> LLMCall:
     else:
         cfg = dict(llm_cfg or {})
         cfg.setdefault("model", cfg.get("model", "MiniMax-M3"))
+    if options:
+        cfg.update(options)
 
     def _call(prompt: str) -> str:
         result = call_llm(prompt, cfg)
@@ -316,6 +322,7 @@ def run_v3_pipeline(
     max_workers: int = 8,
     llm_cfg: Any | None = None,
     llm_call_factory: LLMCallFactory | None = None,
+    stage_options: dict[str, dict[str, Any]] | None = None,
     llm_judge: LLMJudge | None = None,
     skip_script: bool = False,
     update_ledger: bool = True,
@@ -363,7 +370,7 @@ def run_v3_pipeline(
             return llm_call_factory(stage)
         if llm_cfg is None:
             raise ValueError("需要提供 llm_cfg 或 llm_call_factory 才能调用 LLM")
-        return make_llm_call(llm_cfg, stage)
+        return make_llm_call(llm_cfg, stage, (stage_options or {}).get(stage))
 
     _llm_for = _llm_for_factory
 

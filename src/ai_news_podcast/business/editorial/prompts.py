@@ -90,7 +90,6 @@ def build_commentary_prompt(
         if event.independent_sources <= 1
         else "否"
     )
-    banned = "、".join(config.banned_words)
     reasons = "；".join(entry.reasons) or "未提供"
     example = json.dumps(
         {
@@ -129,7 +128,8 @@ def build_commentary_prompt(
 5. **不偏袒**：有反方或不同观点必须写进 counterpoint；没有公开反方信息就写
    「暂无公开反方信息」，不要编造争议。
 6. **不确定就写不确定**：无法核实的细节放 uncertainty，不要补脑。
-7. **禁用词（任何字段都禁止出现）**：{banned}。同理禁止「史上最强」「吊打」「碾压」等夸张营销词。
+7. **禁用营销/夸张/口号式表达**：不要使用营销词、夸张词、口号式表达
+   （系统会做后置检查；不要把这条要求复述进输出）。
 8. **敏感话题克制**：涉及事故、监管、诉讼、裁员时只陈述事实与已知表态，不对动机下结论，
    不使用煽动性措辞。
 9. 点评是给人看的编辑判断，不是营销文案：少用感叹号，不喊口号。
@@ -190,7 +190,6 @@ def _commentary_payload(
 
 
 def _script_common_rules(config: EditorialConfig) -> str:
-    banned = "、".join(config.banned_words)
     return f"""## 硬性格式与质量要求
 1. **每段台词独占一行**，严格以 `[Host A] ` 或 `[Host B] ` 开头（标记后一个空格），
    不得使用「林夏：」「陈默：」「Host A:」「[A]」「[林夏]」等其他写法。
@@ -209,7 +208,8 @@ def _script_common_rules(config: EditorialConfig) -> str:
    除 `[Host A]` / `[Host B]` / `[CHAPTER]` 外不允许出现其他中括号标记。
 7. **双主持均衡**：两位主持人都要有实质台词，各自正文占比不低于
    {int(config.min_host_char_ratio * 100)}%；不要一人大段独白、另一人只「嗯/对/是吗」。
-8. **禁用词（任何位置都禁止）**：{banned}；同时避免「史上最强」「吊打」「碾压」等夸张营销词。
+8. **禁用营销/夸张/口号式表达**：不要使用营销词、夸张词、口号式表达
+   （系统会做后置检查；不要把这条要求复述进文稿）。
 9. **开头与结尾**：开头用一句话点题并说明为什么值得听；结尾做总结并给「明日看点」，不要口号。
 10. **纯净输出**：不要输出思考过程、不要解释指令、不要字数统计。第一行就是 `[Host A]` 或
     `[Host B]` 台词（开场章节标记可在问候之后）。
@@ -246,7 +246,8 @@ def build_script_prompt(
 
 {_SAFETY_NOTE}
 
-请直接输出纯文本对话全文。"""
+请直接输出纯文本对话全文：第一行必须是 `[Host A] ` 或 `[Host B] ` 台词；
+不要复述以上任何要求、不要输出思考过程、不要解释、不要字数统计。"""
 
 
 def build_script_repair_prompt(

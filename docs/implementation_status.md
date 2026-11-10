@@ -145,3 +145,14 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
 - 生产定时任务**保留全文回源**（fetch_fulltext=true）：GHA 半夜跑不赶时间，且 Stage 2 标注
   （labels.py 已把 full_text 拼入标注文本，上限 4000 字）与 Stage 3 推荐需要全文更准确。
 - 两阶段抓取方案不采用；`--no-fulltext` 仅保留给人工快速验证。
+
+## Stage5 模型 A/B 与切换（2026-11-10）
+
+- 方法：同一份 2026-11-09 数据（events/shortlist/commentary），本地直连 MiniMax API，
+  同一套 quality 闸门；每模型 3 次采样（temp 0.5 / 16k token）。
+- 结果：M3 **0/3 通过**（章节 6–15、超长 25k–32k 字、主持失衡、回显要求）；
+  M3.1-Flash **2/3 通过**（3191/3314 字，3–4 章，无 issue），第 3 次空输出。
+- 24k token 复测：1/2 通过、1 次空输出（疑似超模型输出上限），故 stage5 固定 16k。
+- 结论/改动：Stage5 模型切换为 `MiniMax-M3.1-Flash`，temperature 0.4，max_output_tokens 16384，
+  `max_rewrites=2`；prompt 去掉禁用词列表回显、末尾强制“直接输出文稿、不复述要求”。
+- 剩余风险：偶发空输出（约 1/3），靠重写兜底；上线后需观察前几期质量。

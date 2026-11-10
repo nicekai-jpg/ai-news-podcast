@@ -146,7 +146,8 @@ Stage CLIs (console scripts in pyproject):
   `test_v3_runner_service.py`、`test_v3_pipeline_integration.py`、`test_v3_cli_controller.py`。
 - **已知取舍**：C3 路由已按 2026-11-09 GHA 实跑结果收敛（慢/失败路由改原生 RSS 或禁用，见
   `sources_v3.yaml` 头部）；C4 的智谱/MiniMax/字节 Seed/商汤/工信部/网信办走“锚点+邻近日期”
-  启发式，站点改版时在 `sources_v3.yaml` 给该源加 `selectors`；M3.1 Flash 仅配置占位，尚未 A/B。
+  启发式，站点改版时在 `sources_v3.yaml` 给该源加 `selectors`；M3.1 Flash 已 A/B：Stage5 切换到 Flash（同 prompt 下 Flash 2/3 通过、M3 0/3），
+  stage5 用 16k token + temp 0.4 + 最多 2 次重写；仍需观察偶发空输出。
 
 ## Gotchas
 

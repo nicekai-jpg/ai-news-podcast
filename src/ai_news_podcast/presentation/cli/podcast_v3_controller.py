@@ -11,6 +11,7 @@ import dataclasses
 import logging
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 from zoneinfo import ZoneInfo
 
 import yaml
@@ -31,6 +32,15 @@ def _load_stage_models(path: Path) -> dict[str, str]:
     data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     models = ((data.get("llm") or {}).get("stage_models")) or {}
     return {str(k): str(v) for k, v in models.items()}
+
+
+def _load_stage_options(path: Path) -> dict[str, dict[str, Any]]:
+    """读取 pipeline_v3.yaml 的 llm.stage_options（温度/最大 token 等）。"""
+    if not path.exists():
+        return {}
+    data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    options = ((data.get("llm") or {}).get("stage_options")) or {}
+    return {str(k): dict(v) for k, v in options.items() if isinstance(v, dict)}
 
 
 class V3PipelineCommand(AsyncCommand):
@@ -116,6 +126,7 @@ class V3PipelineCommand(AsyncCommand):
         config_dir = (root / args.config_dir).resolve()
 
         stage_models = _load_stage_models(config_dir / "pipeline_v3.yaml")
+        stage_options = _load_stage_options(config_dir / "pipeline_v3.yaml")
         llm_cfg = cfg.llm
         if stage_models:
             llm_cfg = dataclasses.replace(
@@ -145,6 +156,7 @@ class V3PipelineCommand(AsyncCommand):
                 fetch_fulltext=args.fetch_fulltext,
                 max_workers=args.max_workers,
                 llm_cfg=llm_cfg,
+                stage_options=stage_options,
                 skip_script=args.skip_script,
                 update_ledger=not args.no_ledger,
             )
