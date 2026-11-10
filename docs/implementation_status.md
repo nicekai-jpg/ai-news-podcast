@@ -139,3 +139,9 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
   9/24 条页面正文 >2×摘要。
 - 结论：全文对证据密度有明显价值，但全量回源太慢；
   **建议两阶段抓取**：Stage1 只抓摘要（快），Stage3/4 对 top 20 候选再回源正文（质量+时间平衡）。
+
+## 全文策略（2026-11-10 用户定）
+
+- 生产定时任务**保留全文回源**（fetch_fulltext=true）：GHA 半夜跑不赶时间，且 Stage 2 标注
+  （labels.py 已把 full_text 拼入标注文本，上限 4000 字）与 Stage 3 推荐需要全文更准确。
+- 两阶段抓取方案不采用；`--no-fulltext` 仅保留给人工快速验证。
