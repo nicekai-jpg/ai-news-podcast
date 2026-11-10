@@ -113,12 +113,12 @@ Stage CLIs (console scripts in pyproject):
 - **入口**：`podcast-pipeline-v3 --date YYYY-MM-DD [--data-dir data] [--config-dir config]
   [--rsshub-base http://127.0.0.1:1200] [--skip-script] [--no-ledger] [--dry-run]
   [--with-audio] [--publish]`。
-  `--with-audio` 复用 `tts_engine_service.synthesize`（Stage 6，需 CosyVoice 环境）；
-  `--publish` 隐含音频并复用旧 `PublishCommand`（Stage 7）。旧入口 `podcast-pipeline` /
+  `--with-audio` 复用 `tts_engine_service.synthesize`（Stage 8，需 CosyVoice 环境）；
+  `--publish` 隐含音频并复用旧 `PublishCommand`（Stage 9）。旧入口 `podcast-pipeline` /
   `podcast-writer` / `podcast-report` / `podcast-tts` / `podcast-publish` 不变，新链默认不接入 GHA，可随时回滚。
-- **Stage 7 兼容**：Stage 4/5 会额外写 `data/briefs/brief_{date}.json`（thesis/stories/metadata/radar），
+- **brief 兼容（供 Stage 8/9）**：S4–S7 会额外写 `data/briefs/brief_{date}.json`（thesis/stories/metadata/radar、report_rows、report_review、podcast_review），
   字段映射自 shortlist/events/items，供旧 `podcast-publish`（依赖 brief）直接消费，无需改 publish。
-- **GHA（生产）**：`.github/workflows/v3_daily.yml` 三步 job（pipeline Stage1–5 + RSSHub service
+- **GHA（生产）**：`.github/workflows/v3_daily.yml` 三步 job（pipeline S1–S7 + RSSHub service
   container → tts → publish）。2026-11-10 起 **cron `30 17 * * *` 切到 v3**（定时任务默认**回源全文**
   `fulltext=true`、`max_workers=12`、自动部署 gh-pages 并提交 main）。GHA 半夜跑不赶时间，
   全文用于 Stage 2 标注/Stage 3 推荐更准确，慢可以接受；手动 dispatch 可覆盖参数
@@ -136,12 +136,13 @@ Stage CLIs (console scripts in pyproject):
   - `ocean/`：四层去重、事件聚类、连续性、多维标注（`config/nlp/*.yaml` 词典）、证据分；
   - `recommend/`：召回→粗排（含淘汰原因）→精排（规则 0.6 + LLM rubric 0.4，只读事实标签，
     不读 lifecycle/evidence_tier/evidence_score）→重排（MMR/去重/时效）→ top 8；
-  - `editorial/`：点评（事实/观点分离、evidence_ids、禁用词、客观性闸门）+ 15 分钟双主持文稿
-    （3000–3600 字、3–4 章、`[CHAPTER]`）；
-  - `pipeline/v3_runner_service.py`：Stage 1→5 编排、LLM 按 Stage 选模型（`LLMConfig.stage_models`）、
+  - `editorial/`：S4 日报正文（事实/观点分离、evidence_ids、客观性闸门）→ S5 日报点评（对日报）；
+    S6 播客文稿（事实底稿来自 S2 全文证据，3000–3600 字、3–4 章、`[CHAPTER]`）→ S7 播客点评
+    （对文稿，产出 show notes/章节导语）；
+  - `pipeline/v3_runner_service.py`：S1–S7 编排、LLM 按 Stage 选模型（`LLMConfig.stage_models`）、
     覆盖账本写入、`daily_report_{date}.md` 渲染。
 - **产物路径**：`data/raw/raw-{date}.json.gz`、`data/ocean/{date}/{events,items,continuity,manifest}.json`、
-  `data/selection/{date}/shortlist.json`、`data/editorial/{date}/{commentary.json,daily_report_{date}.md}`、
+  `data/selection/{date}/shortlist.json`、`data/editorial/{date}/{report.json,daily_report_{date}.md,report_review.json,podcast_review.json}`、
   `site/episodes/{date}.txt`。全文只走 artifact，不进 git。
 - **配置**：`config/pipeline_v3.yaml`（路径/保留期/各 Stage 模型）、`config/sources_v3.yaml`、
   `config/ocean_v3.yaml` + `config/nlp/`、`config/recommend_v3.yaml`、`config/editorial_v3.yaml`。
@@ -151,8 +152,8 @@ Stage CLIs (console scripts in pyproject):
 - **已知取舍**：C3 路由已按 2026-11-09 GHA 实跑结果收敛（慢/失败路由改原生 RSS 或禁用，见
   `sources_v3.yaml` 头部）；C4 的智谱/MiniMax/字节 Seed/商汤/工信部/网信办走“锚点+邻近日期”
   启发式，站点改版时在 `sources_v3.yaml` 给该源加 `selectors`；全部 Stage 已切换 MiniMax-M3.1-Flash（2026-11-10 用户决定；成本约 M3 五折价的 50%，
-  Stage5 A/B Flash 2/3 vs M3 0/3）。Flash 是推理模型：stage3 需 24k token/timeout 300s，
-  stage4 8k/240s，stage5 16k/600s；低 token 预算会空输出（上层有重试/降级）。
+  S6 A/B Flash 2/3 vs M3 0/3）。Flash 是推理模型：stage3 需 24k/300s，stage4 8k/240s，
+  stage5 16k/300s，stage6 16k/600s，stage7 16k/300s；低 token 预算会空输出（上层有重试/降级）。
 
 ## Gotchas
 

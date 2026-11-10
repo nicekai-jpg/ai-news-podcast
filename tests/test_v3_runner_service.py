@@ -8,7 +8,15 @@ import types
 from pathlib import Path
 from typing import Any
 
-from ai_news_podcast.business.contracts import Commentary, Event, Fact, Item, ShortlistEntry
+from ai_news_podcast.business.contracts import (
+    Commentary,
+    EditorialReview,
+    Event,
+    Fact,
+    Item,
+    PodcastReview,
+    ShortlistEntry,
+)
 from ai_news_podcast.business.pipeline.v3_runner_service import (
     load_item_evidence,
     make_llm_judge,
@@ -93,8 +101,23 @@ def _fake_modules(monkeypatch: Any, tmp_path: Path) -> dict[str, Any]:
         "ai_news_podcast.business.editorial.commentary.build_commentaries", fake_commentaries
     )
 
+    def fake_report_review(*args: Any, **kwargs: Any) -> EditorialReview:
+        calls["report_review"] = {"rows": len(list(args[0])) if args else 0}
+        return EditorialReview(overall="ok", items=[])
+
+    def fake_podcast_review(*args: Any, **kwargs: Any) -> PodcastReview:
+        calls["podcast_review"] = {"script": bool(args[0]) if args else False}
+        return PodcastReview(overall="ok", show_notes="notes")
+
+    monkeypatch.setattr(
+        "ai_news_podcast.business.editorial.review.build_report_review", fake_report_review
+    )
+    monkeypatch.setattr(
+        "ai_news_podcast.business.editorial.review.build_podcast_review", fake_podcast_review
+    )
+
     def fake_script(*args: Any, **kwargs: Any) -> str:
-        calls["script"] = {"item_evidence": bool(kwargs.get("item_evidence"))}
+        calls["script"] = {"item_evidence": bool(args[2]) if len(args) > 2 else False}
         return "[CHAPTER] 开场\n[Host A] 你好\n[Host B] 你好"
 
     monkeypatch.setattr("ai_news_podcast.business.editorial.script.build_script", fake_script)
@@ -116,6 +139,10 @@ def test_run_v3_pipeline_flow(tmp_path: Path, monkeypatch: Any) -> None:
     assert calls["recommend"]["events"] == 1
     assert calls["commentaries"]["item_evidence"] is True
     assert calls["script"]["item_evidence"] is True
+    assert calls["report_review"]["rows"] == 1
+    assert calls["podcast_review"]["script"] is True
+    assert result.report_review_path is not None and result.report_review_path.exists()
+    assert result.podcast_review_path is not None and result.podcast_review_path.exists()
 
     ledger = json.loads((data_dir / "coverage" / "ledger.json").read_text(encoding="utf-8"))
     assert ledger["entries"][0]["event_id"] == "e1"

@@ -1,14 +1,14 @@
-# Stage 4 编辑点评 / Stage 5 播客文稿配置（流程细化设计 v4 §5/§6）
+# S4 日报正文 / S5 日报点评 / S6 播客文稿 / S7 播客点评配置（v4 §5/§6）
 #
 # 结构说明：
 # - 顶层键为扁平配置；也兼容 stage4: / stage5: / commentary: 子节（同名键子节优先），
 #   便于后续把本文件并入 config/config.yaml 时按 stage 分组。
 # - 所有字数均指「口语正文字数」（不含 [Host A]/[Host B]/[CHAPTER] 标记、章节标题与空白）。
 
-# Stage 4：只点评精排前 N 条（日报同源，推荐 5 条）
+# S4：日报正文只写精排前 N 条（推荐 5 条）
 report_top_n: 5
 
-# Stage 5：15 分钟 ≈ 3000–3600 字（按 CosyVoice 中文 220–260 字/分钟估算）
+# S6：15 分钟 ≈ 3000–3600 字（按 CosyVoice 中文 220–260 字/分钟估算）
 target_minutes: 15
 min_chars: 3000
 max_chars: 3600

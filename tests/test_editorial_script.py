@@ -1,4 +1,4 @@
-"""Tests for business/editorial/script.py（Stage 5 文稿，假 LLM，不联网）。"""
+"""Tests for business/editorial/script.py（S6 文稿，假 LLM，不联网）。"""
 
 from __future__ import annotations
 
@@ -8,17 +8,12 @@ from typing import Any
 import pytest
 import yaml
 
-from ai_news_podcast.business.contracts import (
-    Commentary,
-    Event,
-    Fact,
-    Labels,
-    ShortlistEntry,
-)
+from ai_news_podcast.business.contracts import Event, Labels, ShortlistEntry
 from ai_news_podcast.business.editorial import build_script, normalize_script, quality
 from ai_news_podcast.business.editorial.config import load_config
 
 _BASE = "这是用于测试的播客对白内容，讨论事实与观点以及行业影响。"
+EVIDENCE = {"item-1": "该公司今日发布 2.1 版本，融资 10 亿美元。"}
 
 
 def utterance(speaker: str, chars: int) -> str:
@@ -58,17 +53,6 @@ def make_event(event_id: str = "evt-1") -> Event:
     )
 
 
-def make_commentary(event_id: str = "evt-1", headline: str = "某公司发布 2.1 版本") -> Commentary:
-    return Commentary(
-        event_id=event_id,
-        headline=headline,
-        one_liner="一句话摘要",
-        facts=[Fact(text="该公司今日发布 2.1 版本，融资 10 亿美元。", evidence_ids=["item-1"])],
-        why_matters="版本迭代会影响工具链。",
-        counterpoint="暂无公开反方信息",
-    )
-
-
 class FakeLLM:
     def __init__(self, responses: list[str]) -> None:
         self._responses = list(responses)
@@ -103,7 +87,7 @@ class TestBuildScript:
         script = make_script(3300, 4)
         llm = FakeLLM([script])
 
-        result = build_script([make_entry()], [make_event()], [make_commentary()], llm)
+        result = build_script([make_entry()], [make_event()], EVIDENCE, llm)
 
         report = quality(result)
         assert report["ok"], report["issues"]
@@ -114,7 +98,7 @@ class TestBuildScript:
     def test_prompt_carries_facts_and_targets(self) -> None:
         llm = FakeLLM([make_script(3300, 4)])
 
-        build_script([make_entry()], [make_event()], [make_commentary()], llm)
+        build_script([make_entry()], [make_event()], EVIDENCE, llm)
 
         prompt = llm.prompts[0]
         assert "某公司发布 2.1 版本" in prompt
@@ -122,13 +106,13 @@ class TestBuildScript:
         assert "3000" in prompt and "3600" in prompt
         assert "[CHAPTER]" in prompt
         assert "林夏" in prompt and "陈默" in prompt
-        assert "禁止引入点评之外" in prompt
+        assert "事实底稿" in prompt
 
     def test_rewrites_when_too_short(self) -> None:
         valid = make_script(3300, 4)
         llm = FakeLLM([make_script(600, 2), valid])
 
-        result = build_script([make_entry()], [make_event()], [make_commentary()], llm)
+        result = build_script([make_entry()], [make_event()], EVIDENCE, llm)
 
         assert len(llm.prompts) == 2
         assert "未通过" in llm.prompts[1]
@@ -138,7 +122,7 @@ class TestBuildScript:
         valid = make_script(3300, 4)
         llm = FakeLLM([make_script(4000, 4), valid])
 
-        result = build_script([make_entry()], [make_event()], [make_commentary()], llm)
+        result = build_script([make_entry()], [make_event()], EVIDENCE, llm)
 
         assert len(llm.prompts) == 2
         assert quality(result)["ok"]
@@ -148,7 +132,7 @@ class TestBuildScript:
         second = make_script(600, 2)
         llm = FakeLLM([first, second])
 
-        result = build_script([make_entry()], [make_event()], [make_commentary()], llm)
+        result = build_script([make_entry()], [make_event()], EVIDENCE, llm)
 
         assert len(llm.prompts) == 2
         assert quality(result)["chars"] == 3300
@@ -159,7 +143,7 @@ class TestBuildScript:
         result = build_script(
             [make_entry()],
             [make_event()],
-            [make_commentary()],
+            EVIDENCE,
             llm,
             config_path=write_config(tmp_path),
         )
@@ -171,7 +155,7 @@ class TestBuildScript:
         llm = FakeLLM([make_script(50, 1), make_script(50, 1)])
 
         result = build_script(
-            [make_entry()], [make_event()], [make_commentary()], llm, config_path=config_path
+            [make_entry()], [make_event()], EVIDENCE, llm, config_path=config_path
         )
 
         report = quality(result, config_path=config_path)
@@ -184,31 +168,28 @@ class TestBuildScript:
             raise RuntimeError("模拟 LLM 故障")
 
         with pytest.raises(RuntimeError):
-            build_script([make_entry()], [make_event()], [make_commentary()], boom)
+            build_script([make_entry()], [make_event()], EVIDENCE, boom)
 
-    def test_commentaries_ordered_by_shortlist_rank(self) -> None:
-        first = make_commentary("evt-1", headline="头号事件")
-        second = make_commentary("evt-2", headline="二号事件")
+    def test_events_ordered_by_shortlist_rank(self) -> None:
         llm = FakeLLM([make_script(3300, 4)])
         entries = [make_entry(1, "evt-1"), make_entry(2, "evt-2")]
+        event_1 = make_event("evt-1")
+        event_1.representative_title = "头号事件"
+        event_2 = make_event("evt-2")
+        event_2.representative_title = "二号事件"
 
-        build_script(entries, [make_event("evt-1"), make_event("evt-2")], [second, first], llm)
+        build_script(entries, [event_2, event_1], EVIDENCE, llm)
 
         prompt = llm.prompts[0]
         assert prompt.index("头号事件") < prompt.index("二号事件")
 
-    def test_accepts_item_evidence(self) -> None:
+    def test_prompt_includes_evidence_text(self) -> None:
         llm = FakeLLM([make_script(3300, 4)])
 
-        result = build_script(
-            [make_entry()],
-            [make_event()],
-            [make_commentary()],
-            llm,
-            item_evidence={"item-1": "补充正文"},
-        )
+        result = build_script([make_entry()], [make_event()], EVIDENCE, llm)
 
         assert quality(result)["ok"]
+        assert "融资 10 亿美元" in llm.prompts[0]
 
 
 class TestNormalizeScript:

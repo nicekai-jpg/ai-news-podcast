@@ -210,7 +210,7 @@ def parse_commentary(
     config: EditorialConfig,
     item_evidence: Mapping[str, str] | None = None,
 ) -> Commentary:
-    """把 LLM 返回的 JSON 映射校验并转换为 ``Commentary``。
+    """把 LLM 返回的 JSON 映射校验并转换为 ``Commentary``（S4 日报正文）。
 
     校验失败（无合法 facts / 结构错误）抛 ``EditorialValidationError``；
     单条 fact 不合格只会被丢弃。
@@ -267,7 +267,7 @@ def build_commentaries(
     item_evidence: Mapping[str, str] | None = None,
     config_path: str | Path = DEFAULT_CONFIG_PATH,
 ) -> list[Commentary]:
-    """为精排 shortlist 的前 ``report_top_n`` 条事件生成编辑点评。
+    """为精排 shortlist 的前 ``report_top_n`` 条事件生成日报正文。
 
     - ``shortlist`` 的顺序即 rank，不再重排；同一 event 只处理一次；
     - 单条事件失败（event 缺失 / LLM 异常 / 客观性校验不过）记日志后跳过，

@@ -1,4 +1,4 @@
-"""Stage 4/5 编辑流水线的配置加载与校验。
+"""S4–S7 编辑流水线的配置加载与校验。
 
 配置默认来自 ``config/editorial_v3.yaml``；文件缺失或字段缺失时回落到内置默认值，
 保证在任意工作目录下也可用。也兼容 ``stage4:`` / ``stage5:`` / ``commentary:``
@@ -37,7 +37,7 @@ DEFAULT_BANNED_WORDS: tuple[str, ...] = (
 
 @dataclass(frozen=True)
 class EditorialConfig:
-    """Stage 4/5 的运行参数（不可变，便于测试注入）。"""
+    """S4–S7 的运行参数（不可变，便于测试注入）。"""
 
     report_top_n: int = 5
     target_minutes: int = 15

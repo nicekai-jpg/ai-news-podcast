@@ -194,3 +194,23 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
 - 取消 A（compact history 入 git）：不再需要，artifact 已提供统一规格文章 + 推荐属性 + 全文。
 - Stage 4 已正式合并“点评 + 日报”：`editorial/commentary.py` 产出点评，
   `editorial/report.py` 渲染 `daily_report_{date}.md`；Stage 5 复用同一份点评写播客文稿。
+
+## Stage 拆分：日报点评 / 播客点评（2026-11-10 设计确认）
+
+用户确认的语义：**先有结果，再点评**；点评对象是已生成的日报和播客文稿。
+
+| Stage | 产物 | 输入 |
+|---|---|---|
+| S1 采集入海 | `raw-{date}.json.gz` | 132 源 + 全文 |
+| S2 新闻潮汐 | `ocean/{date}/{events,items,continuity}.json` | 原始 items + 历史 artifact |
+| S3 选题推荐 | `selection/{date}/shortlist.json` | S2 属性 |
+| S4 日报生成 | `editorial/{date}/report.json` + `daily_report_{date}.md` | S3 + **S2 全文证据底稿** |
+| S5 日报点评 | `editorial/{date}/report_review.json` | **已生成的 S4 日报** + 证据 |
+| S6 播客文稿生成 | `site/episodes/{date}.txt` | S3 + **S2 全文证据底稿** |
+| S7 播客点评 | `editorial/{date}/podcast_review.json` | **已生成的 S6 文稿** + 日报要点（含 show notes/章节导语） |
+| S8 音频 / S9 发布 | mp3 / feed+site | 文稿 / brief |
+
+- 页面数据：`brief` 与 `digest` 已透传 `report_rows`、`report_review`、`podcast_review`；
+  02 页面用日报+日报点评，01 页面用播客+播客点评（前端渲染下一步接）。
+- 生成与点评分离后，S4/S6 不再消费点评，事实约束由 Stage 2 全文证据底稿提供。
+- 配置：`pipeline_v3.yaml` stage4（日报生成）/stage5（日报点评）/stage6（文稿）/stage7（播客点评），全部 M3.1-Flash。
