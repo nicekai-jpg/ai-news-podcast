@@ -33,4 +33,11 @@ llm:
     stage2: "MiniMax-M3"
     stage3: "MiniMax-M3"
     stage4: "MiniMax-M3"
-    stage5: "MiniMax-M3"
+    stage5: "MiniMax-M3.1-Flash"   # A/B: 2/3 通过 vs M3 0/3；更长 token 预算
+  # 按 Stage 覆盖生成参数；stage5 需要更大 token 预算（长文稿 + 思考 token）
+  stage_options:
+    stage4:
+      temperature: 0.3
+    stage5:
+      temperature: 0.4
+      max_output_tokens: 16384   # 16k 是实测较稳的输出上限（24k 有空输出风险）

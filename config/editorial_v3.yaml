@@ -24,7 +24,7 @@ min_host_char_ratio: 0.25
 max_unmarked_ratio: 0.2
 
 # 格式不达标时最多重写次数（0 = 不重写）
-max_rewrites: 1
+max_rewrites: 2
 
 # 主持人口径（与站点 roster / writer prompt 保持一致）
 hosts:
