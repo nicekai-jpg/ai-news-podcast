@@ -124,6 +124,10 @@ Stage CLIs (console scripts in pyproject):
   全文用于 Stage 2 标注/Stage 3 推荐更准确，慢可以接受；手动 dispatch 可覆盖参数
   （fulltext/max_workers/deploy 等）。旧 `daily.yml` 保留 `workflow_dispatch` 仅作回滚，不再定时。
   与旧链共享 `podcast-pipeline` 并发组。
+- **历史 artifact（Stage 2 跨日）**：pipeline job 先用 `scripts/fetch_v3_history.py` 通过 gh CLI
+  下载最近 14 天成功的 `v3-output-<date>` artifact（权限 `actions: read`），合并 `data/ocean/<date>/`
+  到工作区，Stage 2 的跨日去重/连续性在 CI 里可用；artifact 只上传当天 `data/ocean/<date>/`，
+  避免把 14 天历史重复打包。历史缺失/下载失败不阻断当天流水线。
 - **模块**（都在 `business/` 下，只依赖 `contracts`/`data.*`，不 import `business.pipeline` 内部实现）：
   - `contracts/`：Item / Event / Labels / ShortlistEntry / Commentary + `artifact.py`（gzip JSON）；
   - `coverage/ledger.py`：跨日覆盖账本（已选中事件指纹，长期保留）；

@@ -183,3 +183,14 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
   建议每日写 compact history 快照（~100–200KB/天）入 git，或按 run-id 下载历史 artifact。
 - Stage2 实际不调用 LLM（规则标注），“全 Stage Flash”对 stage2 无实际影响。
 - 无 token/费用统计（可在 llm 客户端记录 usage 落 manifest）。
+
+## 历史 artifact 方案（2026-11-10，采用 B；A 取消）
+
+- 采用设计稿原方案 B：pipeline job 用 `scripts/fetch_v3_history.py`（gh CLI）下载最近 14 天
+  成功的 `v3-output-<date>` artifact，把 `data/ocean/<date>/` 合并进工作区，Stage 2 历史扫描即可用。
+- workflow 增加 `actions: read`；artifact 上传只含当天 `data/ocean/<date>/`，避免历史重复打包。
+- 本地验证：下载 2026-11-09/11-10 两天历史 → build_ocean history_events=547、continuity_updates=33、
+  reappeared_events=325，跨日链路生效。
+- 取消 A（compact history 入 git）：不再需要，artifact 已提供统一规格文章 + 推荐属性 + 全文。
+- Stage 4 已正式合并“点评 + 日报”：`editorial/commentary.py` 产出点评，
+  `editorial/report.py` 渲染 `daily_report_{date}.md`；Stage 5 复用同一份点评写播客文稿。
