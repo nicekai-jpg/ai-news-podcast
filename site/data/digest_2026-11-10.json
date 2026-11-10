@@ -1,0 +1,788 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-10",
+  "date_label": "2026年11月10日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": true
+  },
+  "podcast": {
+    "title": "今日AI看点 | 2026-11-10",
+    "subtitle": "腾讯混元跻身最强开源模型！一手实测Hy4——这可能是本周最值得关注的AI趋势",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-10.mp3",
+    "duration_seconds": 526.179,
+    "duration_label": "08:46",
+    "speech_seconds": 509.8,
+    "segment_count": 35,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 35,
+      "segments_url": "episodes/2026-11-10/playlist.json",
+      "text_url": "episodes/2026-11-10.txt"
+    }
+  },
+  "lead": {
+    "text": "：\n\n11 月 10 日的科技新闻呈现出三条清晰的暗线。其一，开源模型的竞争维度正在切换——腾讯混元 Hy4 发布并被实测为当前最强开源模型，但真正的卖点已不是单项跑分，而是与 WorkBuddy 组合后的多模态 Agent 交付链路。\n\n其二，模型能力扩张的另一面是\"可控\"与\"可采购\"。OpenAI 同日公开 Control Room，一套横跨自身研究基础设施、可追踪并快速终止模型负载的中枢系统；ChatGPT Enterprise 则同步上线 AWS Marketplace。一管刹车、一管结算，企业级 AI 的真实门槛正在浮现。\n\n其三，物理智能的瓶颈继续下移。NVIDIA 在 CoRL 展示如何让机器人在仿真中排练齿轮对齐、线缆连接这类精细活，同时借 MSIT–NVIDIA 论坛加码韩国初创投资，将算力与制造供应链一并纳入版图。",
+    "source": "report_lead",
+    "source_file": "data/reports/daily_report_2026-11-10.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 23,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 17,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 35,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 7,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "运行时治理",
+      "start": 63.264,
+      "label": "01:03",
+      "source": "script"
+    },
+    {
+      "title": "软件交付竞赛",
+      "start": 154.883,
+      "label": "02:35",
+      "source": "script"
+    },
+    {
+      "title": "产业快讯",
+      "start": 267.177,
+      "label": "04:27",
+      "source": "script"
+    },
+    {
+      "title": "项目雷达",
+      "start": 420.905,
+      "label": "07:01",
+      "source": "script"
+    }
+  ],
+  "report": {
+    "title": "✨ 开源智能体冲刺，算力开始装上刹车",
+    "char_count": 2319,
+    "reading_minutes": 6,
+    "lead": "：\n\n11 月 10 日的科技新闻呈现出三条清晰的暗线。其一，开源模型的竞争维度正在切换——腾讯混元 Hy4 发布并被实测为当前最强开源模型，但真正的卖点已不是单项跑分，而是与 WorkBuddy 组合后的多模态 Agent 交付链路。\n\n其二，模型能力扩张的另一面是\"可控\"与\"可采购\"。OpenAI 同日公开 Control Room，一套横跨自身研究基础设施、可追踪并快速终止模型负载的中枢系统；ChatGPT Enterprise 则同步上线 AWS Marketplace。一管刹车、一管结算，企业级 AI 的真实门槛正在浮现。\n\n其三，物理智能的瓶颈继续下移。NVIDIA 在 CoRL 展示如何让机器人在仿真中排练齿轮对齐、线缆连接这类精细活，同时借 MSIT–NVIDIA 论坛加码韩国初创投资，将算力与制造供应链一并纳入版图。",
+    "deep_dives": [
+      {
+        "heading": "一、腾讯混元 Hy4：开源模型从\"刷榜\"转向\"干活\"",
+        "category": "模型发布",
+        "points": [
+          {
+            "label": "核心突破",
+            "text": "混元 Hy4 的关键指标不再局限于通用能力评测，而在于与 WorkBuddy 搭配后形成的多模态 Agent 交付力——模型需要能读懂界面、理解上下文、调用工具，并端到端完成一个真实任务，而非只回答正确。"
+          },
+          {
+            "label": "用户价值",
+            "text": "企业采用开源模型的决策项早已从\"参数与精度\"迁移到总拥有成本：推理开销、可私有化部署的可行性、以及与现有工具链的耦合度。Hy4 的打法是把模型与工作流打包交付，直接降低了二次开发的装配成本。"
+          },
+          {
+            "label": "后续观察",
+            "text": "榜单红利会迅速衰减，真正的检验在于第三方生态——未来一到两个季度，是否有团队基于 Hy4 构建出稳定的商业化 Agent 流程，以及量化版本与不同硬件的部署门槛，是否低到中小团队也能独立跑起来。"
+          }
+        ],
+        "background": "企业采用开源模型的决策项早已从\"参数与精度\"迁移到总拥有成本：推理开销、可私有化部署的可行性、以及与现有工具链的耦合度。Hy4 的打法是把模型与工作流打包交付，直接降低了二次开发的装配成本。",
+        "breakthrough": "混元 Hy4 的关键指标不再局限于通用能力评测，而在于与 WorkBuddy 搭配后形成的多模态 Agent 交付力——模型需要能读懂界面、理解上下文、调用工具，并端到端完成一个真实任务，而非只回答正确。",
+        "impact": null,
+        "raw_sections": [
+          "后续观察：榜单红利会迅速衰减，真正的检验在于第三方生态——未来一到两个季度，是否有团队基于 Hy4 构建出稳定的商业化 Agent 流程，以及量化版本与不同硬件的部署门槛，是否低到中小团队也能独立跑起来。"
+        ]
+      },
+      {
+        "heading": "二、OpenAI Control Room：给模型算力装上\"急停\"",
+        "category": "安全合规",
+        "points": [
+          {
+            "label": "事件背景",
+            "text": "OpenAI 公开 Control Room，一套部署在其研究基础设施之上的中央系统，用于集中追踪模型训练与推理负载，并在出现安全或信息安全疑虑时迅速将其终止。"
+          },
+          {
+            "label": "核心突破",
+            "text": "价值不在\"能停掉一个任务\"，而在于把散落在多集群、多团队之间的研究算力收敛成统一可观测、可撤销的控制面。过去需要逐个排查进程，现在是一次调用即可在全局范围内止住负载。"
+          },
+          {
+            "label": "行业影响",
+            "text": "当模型研发进入多集群并行、多个团队共享算力的阶段，\"可中断性\"正升格为与\"可复现性\"并列的工程属性。谁先把负载治理做成可信的基础设施层，谁就更有资格向受监管行业解释\"出事时会发生什么\"。"
+          }
+        ],
+        "background": "OpenAI 公开 Control Room，一套部署在其研究基础设施之上的中央系统，用于集中追踪模型训练与推理负载，并在出现安全或信息安全疑虑时迅速将其终止。",
+        "breakthrough": "价值不在\"能停掉一个任务\"，而在于把散落在多集群、多团队之间的研究算力收敛成统一可观测、可撤销的控制面。过去需要逐个排查进程，现在是一次调用即可在全局范围内止住负载。",
+        "impact": "当模型研发进入多集群并行、多个团队共享算力的阶段，\"可中断性\"正升格为与\"可复现性\"并列的工程属性。谁先把负载治理做成可信的基础设施层，谁就更有资格向受监管行业解释\"出事时会发生什么\"。",
+        "raw_sections": []
+      }
+    ],
+    "frontier": [
+      {
+        "title": "NVIDIA 让机器人在仿真里\"排练\"精细活",
+        "summary": "CoRL 上，NVIDIA 与合作伙伴展示如何用仿真训练机器人完成齿轮对齐、线缆连接与小零件装配等高精度操作。仿真从\"学会走路\"走向\"手要稳\"，意味着具身智能的核心瓶颈正从策略学习迁移到高质量操作数据的获取成本。"
+      },
+      {
+        "title": "ChatGPT Enterprise 上线 AWS Marketplace",
+        "summary": "企业可通过既有的 AWS 采购与账单关系开通企业版，把\"选型—合规—结算\"链路压进已有框架。这既是把 AI 席位塞进 IT 目录的关键一步，也意味着云厂商与模型厂商在企业入口的正面竞争将进一步加剧。"
+      },
+      {
+        "title": "NVIDIA 联手韩国 MSIT 加码初创投资",
+        "summary": "在 COEX 举行的 MSIT–NVIDIA AI 创业伙伴论坛上，NVIDIA 宣布对韩国初创企业的新一轮意向投资。韩国的算力、电池与消费电子供应链，正被系统性纳入 NVIDIA 的物理 AI 版图。"
+      }
+    ],
+    "editor_verdict": "1. 开源模型这一轮最值得注意的，不是谁在某个榜单上多了几个点，而是厂商开始用\"搭配自家工具、交付完整任务链\"来定义自己——模型正在被重新包装成一个 Agent 运行时。\n\n2. Control Room 出现的时机比它本身更重要：当研究算力被切成数十个集群、由多个团队共享，\"出事能停\"就从一个运维细节升格为安全承诺，未来这类能力很可能成为企业采购 AI 服务的固定检查项。\n\n3. 模型、算力、采购通道都在向平台集中，真正稀缺的资源因此不是智能本身，而是可被追责、可被中断、可被结算的控制层。",
+    "toc": [
+      {
+        "anchor": "deep-dive-1",
+        "title": "一、腾讯混元 Hy4：开源模型从\"刷榜\"转向\"干活\""
+      },
+      {
+        "anchor": "deep-dive-2",
+        "title": "二、OpenAI Control Room：给模型算力装上\"急停\""
+      }
+    ],
+    "raw_paragraphs": [],
+    "source_file": "data/reports/daily_report_2026-11-10.md"
+  },
+  "sources": {
+    "total_all": 23,
+    "total_main": 17,
+    "shown": 23,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 8
+      },
+      {
+        "publisher": "arXiv 论文",
+        "group": "arXiv 论文",
+        "count": 5
+      },
+      {
+        "publisher": "OpenAI",
+        "group": "OpenAI",
+        "count": 4
+      },
+      {
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "count": 4
+      },
+      {
+        "publisher": "NVIDIA",
+        "group": "NVIDIA",
+        "count": 2
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "腾讯混元跻身最强开源模型！一手实测Hy4：搭配WorkBuddy，多模态Agent交付力拉满",
+        "summary": "",
+        "link": "https://www.qbitai.com/2026/11/507843.html",
+        "published_at": "2026-11-09T08:44:00+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "NVIDIA 官方博客",
+        "group": "NVIDIA",
+        "source_name": "NVIDIA 官方博客",
+        "category": "official",
+        "title": "Practice Makes Precise: At CoRL, NVIDIA and Partners Reveal How Robots Rehearse Delicate Work in Simulation",
+        "summary": "Simulation, which has long been the proving ground for robots learning to walk, roll and hop, is now helping researchers teach robots tasks that require a finer touch: aligning gears, connecting cables and assembling small components. The s",
+        "link": "https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/",
+        "published_at": "2026-11-09T14:00:01+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "NVIDIA 官方博客",
+        "group": "NVIDIA",
+        "source_name": "NVIDIA 官方博客",
+        "category": "official",
+        "title": "NVIDIA Announces New Planned Investments in Korean Startups at the MSIT-NVIDIA AI Startup Partnership Forum",
+        "summary": "Korea’s Ministry of Science and ICT and NVIDIA hosted the MSIT -NVIDIA AI Startup Partnership Forum at COEX. Representatives from the Ministry of Science and ICT and NVIDIA met with over 20 Korean startups across foundation models, physical",
+        "link": "https://blogs.nvidia.com/blog/korean-startup-investments-msit/",
+        "published_at": "2026-11-09T08:00:53+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "ChatGPT Enterprise now available in AWS Marketplace",
+        "summary": "ChatGPT Enterprise is now available through AWS Marketplace, helping organizations simplify procurement through existing AWS purchasing and billing relationships.",
+        "link": "https://openai.com/index/chatgpt-enterprise-aws-marketplace",
+        "published_at": "2026-11-09T19:00:00+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "Control Room: A central system to track and stop model workloads across our research infrastructure",
+        "summary": "Learn how OpenAI’s Control Room tracks model workloads across our research infrastructure and can rapidly stop them when safety or security concerns arise.",
+        "link": "https://openai.com/index/control-room",
+        "published_at": "2026-11-09T13:00:00+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "CodeRabbit scales agentic software development and ships 20x more",
+        "summary": "CodeRabbit uses OpenAI models to govern and trust AI-generated code and Codex to ship 20 times more software with the same engineering team.",
+        "link": "https://openai.com/index/coderabbit-codex-daybreak",
+        "published_at": "2026-11-09T08:00:00+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "OpenAI Blog",
+        "group": "OpenAI",
+        "source_name": "OpenAI Blog",
+        "category": "official",
+        "title": "Kuken Industries searches 70 years of drawings in minutes",
+        "summary": "Kuken Industries uses the OpenAI API to search 70 years of cooling tower drawings. Engineers can find the drawing for a repair in 4.5 minutes, down from nearly an hour.",
+        "link": "https://openai.com/index/kuken",
+        "published_at": "2026-11-09T08:00:00+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "机器之心",
+        "group": "科技媒体",
+        "source_name": "机器之心",
+        "category": "news",
+        "title": "让AI「摸懂」物理世界，首个触觉推理模型Touch-R1，入选NeurIPS 2026",
+        "summary": "机器之心 2026-11-09 16:45 北京 当视觉与触觉发生冲突，智能体会怎么办？ 看起来像硬质塑料，按下去却十分柔软 —— 当视觉与触觉发生冲突，人类往往会依赖触感修正视觉误区；但现有的多模态模型却常常更相信视觉，从而误判物体的真实物理属性。 图 1 研究概览：Touch-R1 在触觉推理评测基准 TouchReason-Bench 上的表现优于其他代表性多模态大语言模型（左）；Touch-R1 依据触觉证据，推翻视觉误判，将材料判断为橡胶（右） 戴盟机器人团队联合厦",
+        "link": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651073140&idx=3&sn=788754bcaa053557f9c8ccd807058410",
+        "published_at": "2026-11-09T08:45:00+00:00"
+      },
+      {
+        "rank": 9,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "新智元",
+        "group": "科技媒体",
+        "source_name": "新智元",
+        "category": "news",
+        "title": "GPT-6.2首测！网友：终于有个能压倒Opus 5.5的了？？",
+        "summary": "原创 ASI启示录 2026-11-09 12:56 北京 新智元报道 就在刚刚，GPT-6.2 Sol 悄悄「灰度」上线了！ 很多人发现，自己被悄悄路由到了GPT-6.2 Sol，感受就是——强大得离谱。 现在，X上到处都是实测demo的刷屏。 网友都玩儿疯了，直接登上国外社交媒体热搜—— 仅凭一句话，GPT-6.2 So就能无中生有完整的3D交互场景，所有复杂的 Three.js 代码，都完美打包进一个HTML文件。 它不用 Blender，不用外部素材，能给你直接在网页",
+        "link": "https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&mid=2652741489&idx=1&sn=9e5afce079bbaa1db52ccabdc4bc8f2c",
+        "published_at": "2026-11-09T04:56:00+00:00"
+      },
+      {
+        "rank": 10,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "新智元",
+        "group": "科技媒体",
+        "source_name": "新智元",
+        "category": "news",
+        "title": "ChatGPT一秒画出个人秘密，全网疯转「空房间」测试！",
+        "summary": "ASI启示录 2026-11-09 12:56 北京 新智元报道 AI太懂你了，简直让人毛骨悚然！ 这几天， 一个「空房间」的实验再度爆火 ，引全网数百万人围观。 网友Jakub Szymczuk也跟风测了一把。他随手丢给ChatGPT一张家徒四壁的灰色毛坯房照片，只敲了一行字： 「 用你所知道的关于我的信息，填满这个房间 」。 短短十几秒，原本空荡荡的屋子，瞬间被塞成了一间全是 个人隐私的「全景监控室」 。 最绝的是电脑桌上的一个细节，玻璃罐里居然装着一只虫子「衣鱼」。 他",
+        "link": "https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&mid=2652741489&idx=2&sn=caf428a0dfd694d7682c03a12afdb794",
+        "published_at": "2026-11-09T04:56:00+00:00"
+      },
+      {
+        "rank": 11,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "“AI毁了我的计算机学位”",
+        "summary": "教授也用Claude糊弄…",
+        "link": "https://www.qbitai.com/2026/11/508706.html",
+        "published_at": "2026-11-09T08:57:20+00:00"
+      },
+      {
+        "rank": 12,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "千问办公2.0发布，首个支持多人与Agent协作的Team Agent来了",
+        "summary": "11月9日，千问办公发布2.0版本",
+        "link": "https://www.qbitai.com/2026/11/508694.html",
+        "published_at": "2026-11-09T08:34:03+00:00"
+      },
+      {
+        "rank": 13,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "AI接管一家8万Star开源公司，写代码、派任务、查Bug全包了",
+        "summary": "Worker不够了主管Agent还能自己招！",
+        "link": "https://www.qbitai.com/2026/11/508607.html",
+        "published_at": "2026-11-09T05:47:58+00:00"
+      },
+      {
+        "rank": 14,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "LLM-Based Feature Extraction for Multi-Criteria Inventory Classification",
+        "summary": "arXiv:2611.08626v1 Announce Type: new Abstract: E-commerce supply chains generate large volumes of customer feedback and operational data that remain underutilized in inventory management. Traditional inventory classification techniques suc",
+        "link": "https://arxiv.org/abs/2611.08626",
+        "published_at": "2026-11-09T05:00:00+00:00"
+      },
+      {
+        "rank": 15,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Aspect-wise Pairwise Tournaments for Test-Time Selection",
+        "summary": "arXiv:2611.08640v1 Announce Type: new Abstract: Scaling test-time compute has proven highly effective at improving LLM reasoning. A popular method is best-of-n sampling, where a model generates many candidate solutions and one is selected. ",
+        "link": "https://arxiv.org/abs/2611.08640",
+        "published_at": "2026-11-09T05:00:00+00:00"
+      },
+      {
+        "rank": 16,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Decision Context: Persistent Behavioral Learning for AI Agents",
+        "summary": "arXiv:2611.08644v1 Announce Type: new Abstract: LLM agents do not learn from corrections across sessions. A user fixes the same mistake at the start of every conversation. Existing agent memory systems primarily handle facts, such as prefer",
+        "link": "https://arxiv.org/abs/2611.08644",
+        "published_at": "2026-11-09T05:00:00+00:00"
+      },
+      {
+        "rank": 17,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Claude Fable 5.2 and Mythos 5.2",
+        "summary": "HN 热门讨论（896 points, 544 评论）by meetpateltech",
+        "link": "https://www.anthropic.com/claude-fable-and-mythos-5-2",
+        "published_at": "2026-11-09T18:56:29+00:00"
+      },
+      {
+        "rank": 18,
+        "role": "supporting",
+        "role_label": "前沿参考",
+        "publisher": "量子位",
+        "group": "科技媒体",
+        "source_name": "量子位",
+        "category": "news",
+        "title": "当AI在加速狂奔，什么反而应该“慢”下来？",
+        "summary": "“让人放心，把人放大。”",
+        "link": "https://www.qbitai.com/2026/11/508586.html",
+        "published_at": "2026-11-09T03:47:12+00:00"
+      },
+      {
+        "rank": 19,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "NormGym: Evaluating Normative Competence through Social Interaction",
+        "summary": "arXiv:2611.08613v1 Announce Type: new Abstract: Normative competence, the ability to infer socially enforced expectations from interaction and adjust behavior accordingly, is essential for agents operating in unfamiliar human communities. Y",
+        "link": "https://arxiv.org/abs/2611.08613",
+        "published_at": "2026-11-09T05:00:00+00:00"
+      },
+      {
+        "rank": 20,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv cs.AI",
+        "group": "arXiv 论文",
+        "source_name": "arXiv cs.AI",
+        "category": "research",
+        "title": "Pdb or Not to Be: Comparing Debugging Interfaces With Pass$_{X}$@$k$",
+        "summary": "arXiv:2611.08666v1 Announce Type: new Abstract: Interactive debuggers are indispensable to human software development, yet coding agents overwhelmingly rely on edit-execute-observe loops, using common bash tools, test scripts, and print sta",
+        "link": "https://arxiv.org/abs/2611.08666",
+        "published_at": "2026-11-09T05:00:00+00:00"
+      },
+      {
+        "rank": 21,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "DeepX claims inference up to 100B parameters at less than 5 W",
+        "summary": "HN 热门讨论（136 points, 22 评论）by giuliomagnifico",
+        "link": "https://www.eetimes.com/deepx-tapes-out-second-gen-chip-projects-6-7x-performance-gain-with-lpddr5x-pim/",
+        "published_at": "2026-11-09T18:33:58+00:00"
+      },
+      {
+        "rank": 22,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "A year after the 100% AI mandate nobody understands our code",
+        "summary": "HN 热门讨论（83 points, 85 评论）by thelifeline",
+        "link": "https://www.reddit.com/r/ClaudeCode/comments/1xq2n3t/a_year_after_the_100_ai_mandate_nobody/",
+        "published_at": "2026-11-09T22:19:12+00:00"
+      },
+      {
+        "rank": 23,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Hacker News",
+        "group": "Hacker News",
+        "source_name": "Hacker News",
+        "category": "community",
+        "title": "Show HN: MeowDisplay Is iPhone Mirroring, but in Reverse",
+        "summary": "HN 热门讨论（73 points, 26 评论）by raiseCatError",
+        "link": "https://meowdisplay.app/",
+        "published_at": "2026-11-09T18:39:22+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": true,
+    "status": "pick",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": {
+      "repo": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "description": "Browser automation CLI for AI agents",
+      "language": "Rust",
+      "topics": [],
+      "stars": 48463,
+      "delta_stars": 957,
+      "is_new": false,
+      "created_at": "2026-01-11T05:38:15Z",
+      "pushed_at": "2026-11-10T00:37:18Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 4,
+      "readme_excerpt": "```bash\nnpm install -g agent-browser\nagent-browser install           # download Chrome for Testing (first time only)\n```\n\n- **Homebrew:** `brew install agent-browser`, then `agent-browser install`.\n- **Linux:** `agent-browser install --with-deps` also installs the browser's system libraries.\n- **No install:** `npx agent-browser open example.com`.\n\nProject installs, building from source, `upgrade`, and `doctor` are covered in [Installation](https://agent-browser.dev/installation).",
+      "readme_intro": "Browser automation for AI agents: open pages, read them as an accessibility tree, and act on elements from the shell. agent-browser is a native Rust CLI that gives an AI agent a browser it can drive one command at a time. `snapshot` returns the page as compact text with a ref such as `@e1` for each element. The agent acts on a ref, reads the page again to check the result, and repeats. The browser stays open between commands, so each step is one short shell call.",
+      "score": 0.6582,
+      "score_parts": {
+        "velocity": 0.8552,
+        "vel_rel": 1.0,
+        "vel_abs": 0.638,
+        "hands_on": 1.0,
+        "cross_heat": 1.0,
+        "affinity": 0.5,
+        "days_in_pool": 1
+      },
+      "affinity": 0.5
+    },
+    "runner_ups": [
+      {
+        "repo": "patch-gg/pixelfx",
+        "url": "https://github.com/patch-gg/pixelfx",
+        "description": "244 pixel art effects, every one a small piece of code. Plus a Claude Code skill to make your own.",
+        "language": "JavaScript",
+        "topics": [
+          "agent-skills",
+          "animation",
+          "canvas",
+          "claude-code-plugin",
+          "gamedev",
+          "pixel-art",
+          "sprite-sheet",
+          "vfx"
+        ],
+        "stars": 6331,
+        "delta_stars": 264,
+        "is_new": false,
+        "created_at": "2026-10-30T06:43:25Z",
+        "pushed_at": "2026-11-09T09:51:43Z",
+        "license": "MIT",
+        "has_install_docs": true,
+        "mentions": 0,
+        "readme_excerpt": "import { createFrame, clearFrame, createFx, composite } from \"pixelfx\";\nimport * as frostNova from \"pixelfx/fx/ice/frost-nova\";\n\nconst frame = createFrame(320, 180);                   // your game's pixel resolution\nconst img = new ImageData(320, 180);\nconst fx = createFx(frostNova, { x: 160, y: 140 });   // also: flip, angle, seed, palette, light...\n\nfunction tick(dt) {\n  fx.update(dt);\n  clearFrame(frame);\n  fx.draw(frame, \"back\");                              // behind characters\n  drawCharacters();\n  fx.draw(frame, \"front\");\n  composite(frame, img.data, backgroundColor);         // color, then light added on top\n  ctx.putImageData(img, 0, 0);                         // scale up with image-rendering: pixelated\n}",
+        "readme_intro": "** 244  pixel art effects and animations, every one a small piece of code.** Fire, explosions, magic, weather, UI, pickups, critters and more. Play them live, recolor and mirror them, drop them into a browser game, or export sprite sheets for any engine. Plus a Claude Code skill that makes new ones the way a picky pixel artist would: draft, render, look, refine. Every effect that involves a character is **acted out**: he winds up, lets go, freezes on contact and recovers, and a target takes the hit. Twelve whole moves chain the effects into attacks from wind-up to recovery. **[open the gallery](https://patch-gg.github.io/pixelfx/)** · [catalog](docs/CATALOG.md) · [acting](#acting) · [the skill](#the-skill) · [make your own](#make-your-own) · [publish it on patch](#publish-it-on-patch) · [h",
+        "score": 0.4642,
+        "score_parts": {
+          "velocity": 0.3977,
+          "vel_rel": 0.5455,
+          "vel_abs": 0.176,
+          "hands_on": 1.0,
+          "cross_heat": 0.0,
+          "affinity": 0.5,
+          "days_in_pool": 3
+        },
+        "affinity": 0.5
+      },
+      {
+        "repo": "anomalyco/rune",
+        "url": "https://github.com/anomalyco/rune",
+        "description": "Rune: Native UI framework",
+        "language": "Rust",
+        "topics": [],
+        "stars": 5904,
+        "delta_stars": 907,
+        "is_new": false,
+        "created_at": "2026-10-22T05:51:40Z",
+        "pushed_at": "2026-11-10T00:54:47Z",
+        "license": "MIT",
+        "has_install_docs": false,
+        "mentions": 0,
+        "readme_excerpt": "fn view(s: &State, _: &mut Cx<State>) -> El {\n    let t = tok::theme(true);\n    let label = text(if s.on { \"Lights on\" } else { \"Lights off\" })\n        .font(type_::TITLE).color(t.text);\n    let knob = el().key(\"knob\").size(18.0, 18.0).radius(9.0).fill(t.knob)\n        .absolute(if s.on { 18.0 } else { 2.0 }, 2.0);\n    let switch = el().key(\"switch\").role(\"switch\").label(\"Lights\").checked(s.on)\n        .focusable(true).size(38.0, 22.0).radius(11.0)\n        .fill(if s.on { tok::accent(0, true) } else { t.control_off })\n        .motion(motion::SNAPPY)\n        .on_press(|s: &mut State| s.on = !s.on)\n        .child(knob);\n    col().w_full().h_full().center().gap(16.0).fill(t.bg).child(label).child(switch)\n}",
+        "readme_intro": "A native GPU-rendered Rust UI framework for macOS, Windows, Linux and the web, with its own renderer, text, layout and springs. Every app can run headless, so an agent can render to PNG, dump the element tree and drive it with scripted input. ```rust fn view(s: &State, _: &mut Cx ) -> El { let t = tok::theme(true); let label = text(if s.on { \"Lights on\" } else { \"Lights off\" }) .font(type_::TITLE).color(t.text); let knob = el().key(\"knob\").size(18.0, 18.0).radius(9.0).fill(t.knob) .absolute(if s.on { 18.0 } else { 2.0 }, 2.0); let switch = el().key(\"switch\").role(\"switch\").label(\"Lights\").checked(s.on) .focusable(true).size(38.0, 22.0).radius(11.0) .fill(if s.on { tok::accent(0, true) } else { t.control_off }) .motion(motion::SNAPPY) .on_press(|s: &mut State| s.on = !s.on) .child(knob); co",
+        "score": 0.3617,
+        "score_parts": {
+          "velocity": 0.7873,
+          "vel_rel": 0.9091,
+          "vel_abs": 0.6047,
+          "hands_on": 0.6,
+          "cross_heat": 0.0,
+          "affinity": 0.0,
+          "days_in_pool": 1
+        },
+        "affinity": 0.0
+      }
+    ],
+    "yesterday": {
+      "repo": "kingcharleslzy-ai/dsh-purge",
+      "delta_stars": 616,
+      "date": ""
+    },
+    "candidates": {
+      "total": 50,
+      "excluded_recent": 19,
+      "fresh": 31,
+      "semantics": "v5",
+      "detail_available": true,
+      "preview": [
+        {
+          "repo": "vercel-labs/agent-browser",
+          "stars": 48463,
+          "delta_stars": 957,
+          "language": "Rust",
+          "license": "Apache-2.0",
+          "exclusion_reason": "selected"
+        },
+        {
+          "repo": "deepseek-ai/DeepInfer",
+          "stars": 25742,
+          "delta_stars": 79,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "storytold/craft-anything",
+          "stars": 24491,
+          "delta_stars": 2058,
+          "language": "Rust",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "google/skills",
+          "stars": 23775,
+          "delta_stars": 73,
+          "language": "Python",
+          "license": "Apache-2.0",
+          "exclusion_reason": "score_rank"
+        },
+        {
+          "repo": "deepseek-ai/dsh-superagent-prototype",
+          "stars": 21744,
+          "delta_stars": 573,
+          "language": "TypeScript",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "ccch1mneyyy/dsh-Go",
+          "stars": 17579,
+          "delta_stars": 1587,
+          "language": "Dart",
+          "license": "AGPL-3.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "tangency-labs/solidcraft",
+          "stars": 15293,
+          "delta_stars": null,
+          "language": "Rust",
+          "license": "Apache-2.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "seedds/nxnative",
+          "stars": 14145,
+          "delta_stars": 445,
+          "language": "Python",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "heydamir/unslop",
+          "stars": 12750,
+          "delta_stars": 847,
+          "language": "JavaScript",
+          "license": "CC-BY-4.0",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "pengchujin/aerial-tv",
+          "stars": 10901,
+          "delta_stars": 170,
+          "language": "Kotlin",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "CopilotKit/OpenBot",
+          "stars": 10572,
+          "delta_stars": null,
+          "language": "TypeScript",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        },
+        {
+          "repo": "KKKKhazix/AIHOT",
+          "stars": 10066,
+          "delta_stars": null,
+          "language": "TypeScript",
+          "license": "MIT",
+          "exclusion_reason": "recent_pick"
+        }
+      ]
+    },
+    "message": "今日主推项目"
+  },
+  "quality": {
+    "mode": "normal",
+    "chars": 3162,
+    "turns": 35,
+    "host_a_chars": 1550,
+    "host_b_chars": 1367,
+    "host_char_ratio": 0.469,
+    "chapters": 4
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-11-10.json",
+      "report": "data/reports/daily_report_2026-11-10.md",
+      "radar": "data/gh_radar/radar_2026-11-10.json",
+      "playlist": "site/episodes/2026-11-10/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": []
+  }
+}

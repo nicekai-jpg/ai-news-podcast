@@ -1,0 +1,283 @@
+{
+  "date": "2026-11-10",
+  "generated_at": "2026-11-10T00:55:53.463589+00:00",
+  "projects": [
+    {
+      "repo": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "description": "Browser automation CLI for AI agents",
+      "language": "Rust",
+      "topics": [],
+      "stars": 48463,
+      "delta_stars": 957,
+      "is_new": false,
+      "created_at": "2026-01-11T05:38:15Z",
+      "pushed_at": "2026-11-10T00:37:18Z",
+      "license": "Apache-2.0",
+      "has_install_docs": true,
+      "mentions": 4,
+      "readme_excerpt": "```bash\nnpm install -g agent-browser\nagent-browser install           # download Chrome for Testing (first time only)\n```\n\n- **Homebrew:** `brew install agent-browser`, then `agent-browser install`.\n- **Linux:** `agent-browser install --with-deps` also installs the browser's system libraries.\n- **No install:** `npx agent-browser open example.com`.\n\nProject installs, building from source, `upgrade`, and `doctor` are covered in [Installation](https://agent-browser.dev/installation).",
+      "readme_intro": "Browser automation for AI agents: open pages, read them as an accessibility tree, and act on elements from the shell. agent-browser is a native Rust CLI that gives an AI agent a browser it can drive one command at a time. `snapshot` returns the page as compact text with a ref such as `@e1` for each element. The agent acts on a ref, reads the page again to check the result, and repeats. The browser stays open between commands, so each step is one short shell call.",
+      "score": 0.6582,
+      "score_parts": {
+        "velocity": 0.8552,
+        "vel_rel": 1.0,
+        "vel_abs": 0.638,
+        "hands_on": 1.0,
+        "cross_heat": 1.0,
+        "affinity": 0.5,
+        "days_in_pool": 1
+      },
+      "affinity": 0.5
+    },
+    {
+      "repo": "patch-gg/pixelfx",
+      "url": "https://github.com/patch-gg/pixelfx",
+      "description": "244 pixel art effects, every one a small piece of code. Plus a Claude Code skill to make your own.",
+      "language": "JavaScript",
+      "topics": [
+        "agent-skills",
+        "animation",
+        "canvas",
+        "claude-code-plugin",
+        "gamedev",
+        "pixel-art",
+        "sprite-sheet",
+        "vfx"
+      ],
+      "stars": 6331,
+      "delta_stars": 264,
+      "is_new": false,
+      "created_at": "2026-10-30T06:43:25Z",
+      "pushed_at": "2026-11-09T09:51:43Z",
+      "license": "MIT",
+      "has_install_docs": true,
+      "mentions": 0,
+      "readme_excerpt": "import { createFrame, clearFrame, createFx, composite } from \"pixelfx\";\nimport * as frostNova from \"pixelfx/fx/ice/frost-nova\";\n\nconst frame = createFrame(320, 180);                   // your game's pixel resolution\nconst img = new ImageData(320, 180);\nconst fx = createFx(frostNova, { x: 160, y: 140 });   // also: flip, angle, seed, palette, light...\n\nfunction tick(dt) {\n  fx.update(dt);\n  clearFrame(frame);\n  fx.draw(frame, \"back\");                              // behind characters\n  drawCharacters();\n  fx.draw(frame, \"front\");\n  composite(frame, img.data, backgroundColor);         // color, then light added on top\n  ctx.putImageData(img, 0, 0);                         // scale up with image-rendering: pixelated\n}",
+      "readme_intro": "** 244  pixel art effects and animations, every one a small piece of code.** Fire, explosions, magic, weather, UI, pickups, critters and more. Play them live, recolor and mirror them, drop them into a browser game, or export sprite sheets for any engine. Plus a Claude Code skill that makes new ones the way a picky pixel artist would: draft, render, look, refine. Every effect that involves a character is **acted out**: he winds up, lets go, freezes on contact and recovers, and a target takes the hit. Twelve whole moves chain the effects into attacks from wind-up to recovery. **[open the gallery](https://patch-gg.github.io/pixelfx/)** · [catalog](docs/CATALOG.md) · [acting](#acting) · [the skill](#the-skill) · [make your own](#make-your-own) · [publish it on patch](#publish-it-on-patch) · [h",
+      "score": 0.4642,
+      "score_parts": {
+        "velocity": 0.3977,
+        "vel_rel": 0.5455,
+        "vel_abs": 0.176,
+        "hands_on": 1.0,
+        "cross_heat": 0.0,
+        "affinity": 0.5,
+        "days_in_pool": 3
+      },
+      "affinity": 0.5
+    },
+    {
+      "repo": "anomalyco/rune",
+      "url": "https://github.com/anomalyco/rune",
+      "description": "Rune: Native UI framework",
+      "language": "Rust",
+      "topics": [],
+      "stars": 5904,
+      "delta_stars": 907,
+      "is_new": false,
+      "created_at": "2026-10-22T05:51:40Z",
+      "pushed_at": "2026-11-10T00:54:47Z",
+      "license": "MIT",
+      "has_install_docs": false,
+      "mentions": 0,
+      "readme_excerpt": "fn view(s: &State, _: &mut Cx<State>) -> El {\n    let t = tok::theme(true);\n    let label = text(if s.on { \"Lights on\" } else { \"Lights off\" })\n        .font(type_::TITLE).color(t.text);\n    let knob = el().key(\"knob\").size(18.0, 18.0).radius(9.0).fill(t.knob)\n        .absolute(if s.on { 18.0 } else { 2.0 }, 2.0);\n    let switch = el().key(\"switch\").role(\"switch\").label(\"Lights\").checked(s.on)\n        .focusable(true).size(38.0, 22.0).radius(11.0)\n        .fill(if s.on { tok::accent(0, true) } else { t.control_off })\n        .motion(motion::SNAPPY)\n        .on_press(|s: &mut State| s.on = !s.on)\n        .child(knob);\n    col().w_full().h_full().center().gap(16.0).fill(t.bg).child(label).child(switch)\n}",
+      "readme_intro": "A native GPU-rendered Rust UI framework for macOS, Windows, Linux and the web, with its own renderer, text, layout and springs. Every app can run headless, so an agent can render to PNG, dump the element tree and drive it with scripted input. ```rust fn view(s: &State, _: &mut Cx ) -> El { let t = tok::theme(true); let label = text(if s.on { \"Lights on\" } else { \"Lights off\" }) .font(type_::TITLE).color(t.text); let knob = el().key(\"knob\").size(18.0, 18.0).radius(9.0).fill(t.knob) .absolute(if s.on { 18.0 } else { 2.0 }, 2.0); let switch = el().key(\"switch\").role(\"switch\").label(\"Lights\").checked(s.on) .focusable(true).size(38.0, 22.0).radius(11.0) .fill(if s.on { tok::accent(0, true) } else { t.control_off }) .motion(motion::SNAPPY) .on_press(|s: &mut State| s.on = !s.on) .child(knob); co",
+      "score": 0.3617,
+      "score_parts": {
+        "velocity": 0.7873,
+        "vel_rel": 0.9091,
+        "vel_abs": 0.6047,
+        "hands_on": 0.6,
+        "cross_heat": 0.0,
+        "affinity": 0.0,
+        "days_in_pool": 1
+      },
+      "affinity": 0.0
+    }
+  ],
+  "meta": {
+    "pick_repo": "vercel-labs/agent-browser",
+    "runner_up_repos": [
+      "patch-gg/pixelfx",
+      "anomalyco/rune"
+    ],
+    "degraded": false,
+    "reason": "",
+    "candidates": 50,
+    "excluded_recent": 19,
+    "fresh_candidates": 31,
+    "widen_pass": false,
+    "pool_by_source": {
+      "trending": 3,
+      "new": 24,
+      "topic": 23
+    },
+    "direction_fallback": false,
+    "yesterday_pick": "kingcharleslzy-ai/dsh-purge",
+    "yesterday_pick_delta": 616,
+    "candidate_audit": [
+      {
+        "repo": "vercel-labs/agent-browser",
+        "stars": 48463,
+        "delta_stars": 957,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "selected"
+      },
+      {
+        "repo": "deepseek-ai/DeepInfer",
+        "stars": 25742,
+        "delta_stars": 79,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "storytold/craft-anything",
+        "stars": 24491,
+        "delta_stars": 2058,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "google/skills",
+        "stars": 23775,
+        "delta_stars": 73,
+        "language": "Python",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "deepseek-ai/dsh-superagent-prototype",
+        "stars": 21744,
+        "delta_stars": 573,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "ccch1mneyyy/dsh-Go",
+        "stars": 17579,
+        "delta_stars": 1587,
+        "language": "Dart",
+        "license": "AGPL-3.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "tangency-labs/solidcraft",
+        "stars": 15293,
+        "delta_stars": null,
+        "language": "Rust",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "seedds/nxnative",
+        "stars": 14145,
+        "delta_stars": 445,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "heydamir/unslop",
+        "stars": 12750,
+        "delta_stars": 847,
+        "language": "JavaScript",
+        "license": "CC-BY-4.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "pengchujin/aerial-tv",
+        "stars": 10901,
+        "delta_stars": 170,
+        "language": "Kotlin",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "CopilotKit/OpenBot",
+        "stars": 10572,
+        "delta_stars": null,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "KKKKhazix/AIHOT",
+        "stars": 10066,
+        "delta_stars": null,
+        "language": "TypeScript",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "rehan-remade/universal-modder",
+        "stars": 9560,
+        "delta_stars": null,
+        "language": "Python",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "Ryze-AI-Adgent/open-seo-mcp-skills",
+        "stars": 9049,
+        "delta_stars": null,
+        "language": "Shell",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "l0ng-ai/openidea",
+        "stars": 8157,
+        "delta_stars": 333,
+        "language": "TypeScript",
+        "license": "Apache-2.0",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "wangzan101/Mika",
+        "stars": 7911,
+        "delta_stars": 175,
+        "language": "Kotlin",
+        "license": "Apache-2.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "HeyPuter/everything",
+        "stars": 7816,
+        "delta_stars": 162,
+        "language": "JavaScript",
+        "license": "MIT",
+        "exclusion_reason": "score_rank"
+      },
+      {
+        "repo": "amosblomqvist/learnharness",
+        "stars": 7714,
+        "delta_stars": 1270,
+        "language": "TypeScript",
+        "license": "AGPL-3.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "zortos293/Lichii",
+        "stars": 7631,
+        "delta_stars": 923,
+        "language": "C++",
+        "license": "GPL-3.0",
+        "exclusion_reason": "recent_pick"
+      },
+      {
+        "repo": "ly05010419/MacNativeGames",
+        "stars": 7395,
+        "delta_stars": 70,
+        "language": "C",
+        "license": "MIT",
+        "exclusion_reason": "recent_pick"
+      }
+    ],
+    "audit_semantics": "v5"
+  }
+}

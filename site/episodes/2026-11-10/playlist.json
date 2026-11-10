@@ -1,0 +1,464 @@
+{
+  "episode_id": "2026-11-10",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "听众朋友大家好，欢迎收听今日AI看点，今天是2026年11月10日，我是林夏。今天咱们不围着模型排行榜打转，而是看看AI怎么从“会写、会说”，真正变成“能操作、能交付”。",
+      "start": 1.0,
+      "duration": 15.79,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "大家好，我是陈默。今天几条消息串起来，其实是一条很清楚的线：AI已经进入可控、可交付的工程化阶段。模型能力当然重要，但能不能停下来、能不能验货、能不能采购，正在决定它能不能进入真实业务。",
+      "start": 17.239,
+      "duration": 15.71,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "真假的，过去咱们看发布会，重点是参数涨了多少、跑分高了几点。现在真正让企业紧张的，是智能体点错一个按钮，或者生成一堆看着能跑、实际埋雷的代码。",
+      "start": 33.446,
+      "duration": 16.48,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "恰好，今天的两条头条都在讲这件事。一个负责给模型工作负载装上刹车，一个已经让工程团队把软件交付量做到二十倍，后面还有开源模型、机器人训练和企业采购渠道。",
+      "start": 50.379,
+      "duration": 12.48,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "OpenAI推出了Control Room，它会统一追踪研究基础设施中的模型工作负载，还能在出现安全风险时紧急停止。说白了，就是给正在干活的AI装一套运行监控和总闸。",
+      "start": 63.264,
+      "duration": 15.15,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "运行时治理"
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "你注意啊，以前咱们说AI安全，更多是在模型上线前跑测试、查漏洞。Control Room管的是任务已经跑起来以后：它现在做到哪一步、是否还该不该继续，以及风险出现时能不能马上中止。",
+      "start": 78.847,
+      "duration": 14.91,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "这个区别可太大了。考试答错一道题是一回事，智能体接手整套流程以后，它可能连续发邮件、改数据库、提交代码，甚至越权访问其他系统，这时候光有考试分数可不够。",
+      "start": 94.222,
+      "duration": 15.96,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "打个比方，Control Room就像机场塔台，不只负责给飞机做出发前检查，还得看它飞到哪里、遇到异常时能不能发出终止指令。治理因此从一次性验收，延伸到了整个运行过程。",
+      "start": 110.644,
+      "duration": 13.51,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "这跟咱们有什么关系？以后公司部署办公智能体，客户一定会问三个问题：它做过什么，出错能不能撤回，出了问题谁负责。没有运行时的追踪和停止能力，这些承诺就很难写进合同。",
+      "start": 124.605,
+      "duration": 14.71,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "但紧急停止只是最后一道防线，不是治理的全部。前面的权限边界、任务隔离、结果验证和人工审批同样重要。Control Room真正释放的信号是，行业开始补齐智能体规模化的基础设施。",
+      "start": 139.815,
+      "duration": 14.63,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "OpenAI的案例里，CodeRabbit借助Codex，把同一个工程团队的软件交付量提升了20倍。更有意思的是，它不是只让模型疯狂生成代码，而是先用模型治理和验证流程，把AI产物管住再交付。",
+      "start": 154.883,
+      "duration": 18.23,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "软件交付竞赛"
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "这20倍肯定不能理解成每个程序员突然拥有20个助手，也不能直接外推到所有团队。案例真正有价值的地方，是Codex进入了完整工程链路，前面有治理，后面有验证，不再停在聊天框里。",
+      "start": 173.574,
+      "duration": 15.43,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "我跟你说，这就像把AI招进工厂，不能只给它一堆原料就说产量提升十倍。还得有质检、有返修流程、有异常停机。CodeRabbit做的是把AI塞进生产线，而不是单纯多写几段代码。",
+      "start": 189.449,
+      "duration": 15.71,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "说白了，Codex更像那个手脚很快的执行者，模型治理和代码验证则是生产管理。代码生成出来只是一张候选订单，通过测试、审查和验收，才算软件真正交付。",
+      "start": 205.633,
+      "duration": 13.31,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "所以竞争焦点确实变了。以前大家比谁更会写函数、补全注释，现在要比谁敢让智能体完成一个可验收的任务。对普通开发者来说，代码助手也会从提效插件，慢慢变成能处理工单和复杂流程的同事。",
+      "start": 219.37,
+      "duration": 16.83,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "但这里也得泼点冷水，二十倍是CodeRabbit特定团队和流程中的案例结果，不是行业保证。真正难的往往不是生成，而是理解旧系统、处理边界情况，以及让验证结果可信。",
+      "start": 236.664,
+      "duration": 13.67,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "我反而觉得，这会推动开发者把更多精力放到需求拆解、架构判断和验收标准上。机器负责重复执行，人负责决定什么才算做完，这可能比争论它一天写多少行代码更有意义。",
+      "start": 250.751,
+      "duration": 15.99,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "对了还有件事，腾讯混元Hy4已经开源。按量子位的实测说法，它搭配WorkBuddy，可以强化多模态Agent的交付能力。这里最值得琢磨的，不只是模型又开源了，而是工作台和模型开始组合。",
+      "start": 267.177,
+      "duration": 17.55,
+      "audios": {
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "产业快讯"
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "WorkBuddy更像智能体面向实际任务的执行环境，Hy4则提供底层能力。多模态Agent想交付成果，就得把图像、文本和操作结果接起来，而不是只展示一个漂亮的单轮回答。",
+      "start": 285.144,
+      "duration": 14.67,
+      "audios": {
+        "professional": "chunk_019_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "没错，模型能力是一层，Agent交付是另一层。模型回答得再聪明，如果最后填不进表格、调不通工具、产不出完整文件，对业务来说仍然是半成品。当然，实测结论也要继续看更多场景验证。",
+      "start": 300.31,
+      "duration": 16.55,
+      "audios": {
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "再看机器人。英伟达和合作方展示了先在仿真环境里训练机器人，让它们练习对齐齿轮、接线以及小组件装配。这套路子等于驾驶员先在模拟器里练车，合格了才碰真车。",
+      "start": 317.272,
+      "duration": 13.39,
+      "audios": {
+        "professional": "chunk_021_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "仿真的优势不只是安全，还能反复制造少见情况。真实工厂里等一次齿轮没对准，设备可能已经停了；仿真里可以练几百次，而且能顺手调整光线、摩擦和零件位置。",
+      "start": 331.141,
+      "duration": 14.15,
+      "audios": {
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "B",
+      "text": "但仿真和现实之间还有一道“现实差距”。线缆会晃，零件会有毛刺，地面也不一定平，所以仿真训练解决的是大部分重复练习，最后还得用真实数据校正和验证。",
+      "start": 345.723,
+      "duration": 12.76,
+      "audios": {
+        "professional": "chunk_023_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "还有一条挺务实，ChatGPT Enterprise进入AWS Marketplace了。企业可以沿用既有AWS采购与账单渠道完成获取。也就是说，技术部门不用每次都重新走一套供应商准入和合同流程。",
+      "start": 358.951,
+      "duration": 18.27,
+      "audios": {
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "B",
+      "text": "这就像公司食堂新增一家供应商，最后还是从原来的采购平台下单，预算、审批和账单不用另建一套。模型效果决定员工愿不愿意用，采购渠道则决定企业实际上能不能用。",
+      "start": 377.711,
+      "duration": 13.63,
+      "audios": {
+        "professional": "chunk_025_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "把这些消息放在一起特别有意思：一边是运行时控制，一边是工程验证，中间还有开源模型、仿真训练和企业采购。共同目标不是让AI显得更聪明，而是让它做事的过程更可控。",
+      "start": 391.818,
+      "duration": 16.55,
+      "audios": {
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "B",
+      "text": "说白了，行业正在补齐一套交付体系：前面有模型和工具，中间有治理、验证与仿真，后面有采购和计费。模型竞赛还在继续，但企业真正买单的，是完整流程。",
+      "start": 408.786,
+      "duration": 11.68,
+      "audios": {
+        "professional": "chunk_027_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "新闻说完了，接下来进入今天的项目雷达时间。今天主推vercel-labs/agent-browser，定位就是Browser automation CLI for AI agents，也就是给AI智能体用的浏览器自动化命令行工具，用Rust编写，许可证为Apache-2.0。",
+      "start": 420.905,
+      "duration": 20.79,
+      "audios": {
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "项目雷达"
+    },
+    {
+      "id": 29,
+      "host": "B",
+      "text": "为什么现在值得上手？项目目前是⭐48463，较昨日 +957。这个增长说明，AI智能体正从模型内部走向真实浏览器，稳定、可脚本化的浏览器接口也开始变成关键基础设施。",
+      "start": 442.107,
+      "duration": 14.43,
+      "audios": {
+        "professional": "chunk_029_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "第一步直接运行npm install -g agent-browser，然后执行agent-browser install。用Homebrew就运行brew install agent-browser，再执行agent-browser install，路径很直接。",
+      "start": 457.03,
+      "duration": 16.51,
+      "audios": {
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "Linux用户可以运行agent-browser install --with-deps，它还会安装浏览器需要的系统库；不想本地安装，就运行npx agent-browser open example.com，先把体验门槛降下来。",
+      "start": 473.949,
+      "duration": 15.39,
+      "audios": {
+        "professional": "chunk_031_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "fork之后别急着造万能机器人，先锁定一个团队高频流程，在CLI外面加一层任务预设，把登录、页面导航、截图、表单填写和结果归档串成一个命令，差异就出来了。",
+      "start": 489.826,
+      "duration": 14.75,
+      "audios": {
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "B",
+      "text": "安全设计才是关键：默认dry-run，提交等关键动作前要求人工确认，再把执行过程记录下来。这样通用工具才能变成可审计的业务专用助手，团队也更容易判断值不值得clone。",
+      "start": 505.018,
+      "duration": 13.51,
+      "audios": {
+        "professional": "chunk_033_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "好了听众朋友们，以上就是今天的今日AI看点。感谢收听，我们明天见！",
+      "start": 518.988,
+      "duration": 6.36,
+      "audios": {
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "拜拜！",
+      "start": 525.819,
+      "duration": 0.36,
+      "audios": {
+        "professional": "chunk_035_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
