@@ -67,6 +67,12 @@ class OpenAILLMBackend(LLMBackend):
                 )
 
                 raw_text = response.choices[0].message.content
+                if not raw_text:
+                    logger.warning(
+                        "LLM 返回空内容（可能是思考 token 耗尽 max_output_tokens）；"
+                        "finish_reason=%s",
+                        getattr(response.choices[0], "finish_reason", None),
+                    )
                 if raw_text:
                     # 过滤 MiniMax M3/DeepSeek 等推理模型返回的思考链内容
                     text = re.sub(r"\s*<thinking>.*?</thinking>\s*", "", raw_text, flags=re.DOTALL)

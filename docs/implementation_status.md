@@ -214,3 +214,11 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
   02 页面用日报+日报点评，01 页面用播客+播客点评（前端渲染下一步接）。
 - 生成与点评分离后，S4/S6 不再消费点评，事实约束由 Stage 2 全文证据底稿提供。
 - 配置：`pipeline_v3.yaml` stage4（日报生成）/stage5（日报点评）/stage6（文稿）/stage7（播客点评），全部 M3.1-Flash。
+
+## S6 空输出修复（2026-11-10）
+
+- 现象：新版 S6（事实底稿 prompt）首调偶发空内容，pipeline 报 LLM 失败。
+- 抓包：16k max_tokens 时 reasoning 13.6k、completion 15,635，接近上限；24k 时 reasoning 19.4k、内容正常。
+- 修复：stage6 `max_output_tokens` 16384 → 24576（timeout 600s 不变）；LLM 后端在空 content 时打
+  warning（含 finish_reason），便于以后定位。
+- 复测：同数据走 `make_llm_call(stage6)` 真实 API 通过（正文/质量按 quality 闸门判断）。
