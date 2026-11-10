@@ -354,14 +354,36 @@ def build_digest(
         report = None
         warnings.append("report_parse_failed")
 
+    # S5 日报点评 -> 02 版块「编辑短评」；S7 播客点评 show_notes -> 01 版块「编辑导语」
+    report_review = brief.get("report_review") or {}
+    podcast_review = brief.get("podcast_review") or {}
+    report_verdict = str(report_review.get("overall") or "").strip()
+    if report_verdict:
+        # 编辑短评 = 日报点评总评 + 前两条逐条点评（renderRichText 会按序号渲染）
+        verdict_lines = [report_verdict]
+        for item in (report_review.get("items") or [])[:2]:
+            if not isinstance(item, dict):
+                continue
+            title = str(item.get("title") or "").strip()
+            comment = str(item.get("comment") or "").strip()
+            if comment:
+                verdict_lines.append(f"{title}：{comment}" if title else comment)
+        if report is not None:
+            report["editor_verdict"] = "\n\n".join(verdict_lines)
+    podcast_notes = str(podcast_review.get("show_notes") or "").strip()
+
     radar_block = _radar_block(radar, date_str, cfg)
     if not radar_block["candidates"]["detail_available"]:
         warnings.append("radar_candidate_detail_unavailable")
 
     episode = episode or {}
     mp3_url = str(episode.get("enclosure_url") or f"{base_url}/episodes/{date_str}.mp3")
-    lead_source = "report_lead" if report and report.get("lead") else "brief_thesis"
-    lead_text = (report or {}).get("lead") or brief.get("thesis") or None
+    if podcast_notes:
+        lead_source = "podcast_review"
+        lead_text: str | None = podcast_notes
+    else:
+        lead_source = "report_lead" if report and report.get("lead") else "brief_thesis"
+        lead_text = (report or {}).get("lead") or brief.get("thesis") or None
     issue = resolve_issue(episode.get("issue_no"))
 
     hosts = _hosts(cfg)
