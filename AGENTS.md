@@ -153,7 +153,7 @@ Stage CLIs (console scripts in pyproject):
   `sources_v3.yaml` 头部）；C4 的智谱/MiniMax/字节 Seed/商汤/工信部/网信办走“锚点+邻近日期”
   启发式，站点改版时在 `sources_v3.yaml` 给该源加 `selectors`；全部 Stage 已切换 MiniMax-M3.1-Flash（2026-11-10 用户决定；成本约 M3 五折价的 50%，
   S6 A/B Flash 2/3 vs M3 0/3）。Flash 是推理模型：stage3 需 24k/300s，stage4 8k/240s，
-  stage5 16k/300s，stage6 16k/600s，stage7 16k/300s；低 token 预算会空输出（上层有重试/降级）。
+  stage5 16k/300s，stage6 24k/600s，stage7 16k/300s；低 token 预算会空输出（上层有重试/降级）。
 
 ## Gotchas
 
