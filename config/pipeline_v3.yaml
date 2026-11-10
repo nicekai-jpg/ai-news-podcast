@@ -53,7 +53,7 @@ llm:
       timeout: 300
     stage6:                 # S6 播客文稿（长文稿）
       temperature: 0.4
-      max_output_tokens: 16384   # 16k 是实测较稳的输出上限（24k 有空输出风险）
+      max_output_tokens: 24576   # 实测 reasoning 已达 19k tokens，16k 会偶发空输出
       timeout: 600        # 长文稿实测 ~230–430s
     stage7:                 # S7 播客点评 + show notes
       temperature: 0.3
