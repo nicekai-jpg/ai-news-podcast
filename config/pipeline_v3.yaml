@@ -30,14 +30,22 @@ stage5:
 # M3.1 Flash 已发布（2026-10-19），先用 M3 跑通，A/B 后再切 stage2/stage3。
 llm:
   stage_models:
-    stage2: "MiniMax-M3"
-    stage3: "MiniMax-M3"
-    stage4: "MiniMax-M3"
-    stage5: "MiniMax-M3.1-Flash"   # A/B: 2/3 通过 vs M3 0/3；更长 token 预算
+    stage2: "MiniMax-M3.1-Flash"
+    stage3: "MiniMax-M3.1-Flash"
+    stage4: "MiniMax-M3.1-Flash"
+    stage5: "MiniMax-M3.1-Flash"
   # 按 Stage 覆盖生成参数；stage5 需要更大 token 预算（长文稿 + 思考 token）
+  # 关键：Flash 是推理模型，长 prompt 需要更大 token 预算与超时；低预算会空输出。
   stage_options:
+    stage3:
+      temperature: 0.2
+      max_output_tokens: 24576
+      timeout: 300        # 20 条事件实测 ~170s
     stage4:
       temperature: 0.3
+      max_output_tokens: 8192
+      timeout: 240
     stage5:
       temperature: 0.4
       max_output_tokens: 16384   # 16k 是实测较稳的输出上限（24k 有空输出风险）
+      timeout: 600        # 长文稿实测 ~230–430s
