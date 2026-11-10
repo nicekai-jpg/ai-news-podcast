@@ -95,6 +95,16 @@ RADAR_EMPTY = {
 }
 
 
+_REPORT_MD = """# 深度日报 2026-10-15
+
+> 编辑短评：旧的短评。
+
+## 1. A 事件
+
+事实一段。
+"""
+
+
 class TestIssue:
     def test_missing_issue_is_unavailable(self) -> None:
         issue = resolve_issue(None)
@@ -222,6 +232,23 @@ class TestBuildDigest:
         assert metrics["main_stories"] == 1
         assert metrics["podcast_segments"] == 4
         assert metrics["media_outlets"] == 2
+
+    def test_reviews_fill_editorial_slots(self) -> None:
+        brief = dict(BRIEF)
+        brief["report_review"] = {
+            "overall": "日报点评：数字准确，需补来源。",
+            "items": [],
+            "risks": [],
+        }
+        brief["podcast_review"] = {
+            "overall": "不错",
+            "show_notes": "本期看点：模型与工具。",
+            "chapters": [],
+        }
+        digest = self._build(brief=brief, report_md=_REPORT_MD)
+        assert digest["lead"]["text"] == "本期看点：模型与工具。"
+        assert digest["lead"]["source"] == "podcast_review"
+        assert digest["report"]["editor_verdict"] == "日报点评：数字准确，需补来源。"
 
     def test_radar_empty_state(self) -> None:
         radar = self._build()["radar"]
