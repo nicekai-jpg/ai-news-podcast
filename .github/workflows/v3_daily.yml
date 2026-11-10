@@ -14,7 +14,7 @@ on:
         required: false
         type: string
       fulltext:
-        description: "回源抓正文（关闭可显著加速，验证用）"
+        description: "回源抓正文（定时任务默认开启；关闭仅用于快速验证）"
         required: false
         type: boolean
         default: true
@@ -108,7 +108,7 @@ jobs:
         run: |
           EPISODE="${{ steps.episode.outputs.id }}"
           FULLTEXT="${{ github.event.inputs.fulltext }}"
-          if [ -z "$FULLTEXT" ]; then FULLTEXT="false"; fi   # 定时任务默认不回源，控制时长
+          if [ -z "$FULLTEXT" ]; then FULLTEXT="true"; fi   # 定时任务默认回源：推荐标注需要全文
           WORKERS="${{ github.event.inputs.max_workers }}"
           if [ -z "$WORKERS" ]; then WORKERS="12"; fi
           EXTRA=""
