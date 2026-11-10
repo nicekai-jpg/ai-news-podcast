@@ -320,10 +320,9 @@ sources:
     category: official
   - name: huggingface_blog_rsshub
     label: HuggingFace Blog
-    channel: c3_rsshub
-    rsshub_route: /huggingface/blog
+    channel: c1_rss
+    url: "https://huggingface.co/blog/feed.xml"
     category: research
-    failover: { channel: c1_rss, url: "https://huggingface.co/blog/feed.xml" }
   - name: ollama_blog
     label: Ollama Blog
     channel: c3_rsshub
@@ -363,7 +362,7 @@ sources:
   - name: transformer_circuits
     label: Transformer Circuits
     channel: c1_rss
-    url: \"https://www.transformer-circuits.pub/feed.xml\"
+    url: "https://www.transformer-circuits.pub/feed.xml"
     category: research
   - name: the_decoder
     label: The Decoder
@@ -456,6 +455,7 @@ sources:
     channel: c3_rsshub
     rsshub_route: /mathpix/blog
     category: official
+    enabled: false
   - name: ai_bot_news
     label: AI 工具集
     channel: c3_rsshub
@@ -498,19 +498,18 @@ sources:
     failover: { channel: c1_rss, url: "https://it.ithome.com/rss/ai/rss.xml" }
   - name: sspai_ai
     label: 少数派 AI
-    channel: c3_rsshub
-    rsshub_route: /sspai/tag/AI
+    channel: c1_rss
+    url: "https://sspai.com/feed"
     category: news
-    failover: { channel: c1_rss, url: "https://sspai.com/feed" }
   - name: nyt_technology
     label: NYT Technology
-    channel: c3_rsshub
-    rsshub_route: /nytimes/rss/Technology
+    channel: c1_rss
+    url: "https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml"
     category: news
   - name: nature_news
     label: Nature News
-    channel: c3_rsshub
-    rsshub_route: /nature/news
+    channel: c1_rss
+    url: "https://www.nature.com/nature.rss"
     category: research
   - name: wired_ai
     label: WIRED AI
@@ -520,7 +519,7 @@ sources:
   - name: bloomberg_technology
     label: Bloomberg Technology
     channel: c1_rss
-    url: \"https://feeds.bloomberg.com/technology/news.rss\"
+    url: "https://feeds.bloomberg.com/technology/news.rss"
     category: news
 
   # --- 三级：泛科技/产业（22，可选；路由按 RSSHub 命名空间约定，上线前复核）---
@@ -533,7 +532,7 @@ sources:
   - name: geekpark
     label: 极客公园
     channel: c1_rss
-    url: \"https://www.geekpark.net/rss\"
+    url: "https://www.geekpark.net/rss"
     category: news
     limit: 20
   - name: huxiu_moment
@@ -550,13 +549,13 @@ sources:
     enabled: false
   - name: leiphone_news
     label: 雷峰网
-    channel: c3_rsshub
-    rsshub_route: /leiphone/newsflash
+    channel: c1_rss
+    url: "https://www.leiphone.com/feed"
     category: news
   - name: ifanr
     label: 爱范儿
     channel: c1_rss
-    url: \"https://www.ifanr.com/feed\"
+    url: "https://www.ifanr.com/feed"
     category: news
   - name: infoq_recommend
     label: InfoQ
@@ -583,7 +582,7 @@ sources:
   - name: engadget_chinese
     label: Engadget 中文版
     channel: c1_rss
-    url: \"https://www.engadget.com/rss.xml\"
+    url: "https://www.engadget.com/rss.xml"
     category: news
   - name: scientificamerican
     label: Scientific American
@@ -605,7 +604,7 @@ sources:
   - name: oschina_news
     label: 开源中国
     channel: c1_rss
-    url: \"https://www.oschina.net/news/rss\"
+    url: "https://www.oschina.net/news/rss"
     category: news
   - name: juejin_aicoding
     label: 掘金 AI 编程
@@ -641,8 +640,8 @@ sources:
     enabled: false
   - name: gwern
     label: Gwern
-    channel: c3_rsshub
-    rsshub_route: /gwern
+    channel: c1_rss
+    url: "https://gwern.net/feed"
     category: research
 
   # =========================================================================
