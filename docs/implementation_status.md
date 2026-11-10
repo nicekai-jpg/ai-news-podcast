@@ -156,3 +156,14 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
 - 结论/改动：Stage5 模型切换为 `MiniMax-M3.1-Flash`，temperature 0.4，max_output_tokens 16384，
   `max_rewrites=2`；prompt 去掉禁用词列表回显、末尾强制“直接输出文稿、不复述要求”。
 - 剩余风险：偶发空输出（约 1/3），靠重写兜底；上线后需观察前几期质量。
+
+## 全量切 M3.1-Flash（2026-11-10，用户决定）
+
+- 定价：Flash 输入 ¥1.00/M、输出 ¥4.00/M；M3 五折 ¥2.10/¥8.40 → Flash 约为 M3 五折价的 50%
+  （估算一期 ≈¥0.11 vs ¥0.23）。
+- 适配：Flash 为推理模型，长 prompt 必须给足 token/超时，否则空输出：
+  - stage3（top20 事件 rubric）：24k tokens、timeout 300s（实测 169s，解析 19/20）；
+  - stage4 点评：8k tokens、timeout 240s；
+  - stage5 文稿：16k tokens、timeout 600s（实测 232–430s）。
+- 失败兜底：stage3 judge 异常自动降级纯规则分；stage4 单条失败跳过；stage5 最多 2 次重写。
+- stage_models：stage2/3/4/5 全部 `MiniMax-M3.1-Flash`。
