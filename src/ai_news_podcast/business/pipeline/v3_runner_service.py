@@ -149,6 +149,7 @@ def _append_coverage(
     shortlist: list[ShortlistEntry],
     events: list[Event],
     ocean_dir: Path,
+    event_ids: list[str] | None = None,
 ) -> None:
     """把本次选中的事件写入跨日覆盖账本（幂等）。"""
     from ai_news_podcast.business.coverage.ledger import (
@@ -172,7 +173,10 @@ def _append_coverage(
             ]
 
     ledger = load_ledger(ledger_path)
+    allowed = {str(x) for x in event_ids} if event_ids is not None else None
     for entry in shortlist:
+        if allowed is not None and str(entry.event_id) not in allowed:
+            continue
         event = by_id.get(str(entry.event_id))
         if event is None:
             continue
@@ -438,12 +442,14 @@ def run_v3_pipeline(
     logger.info("Stage 4/5 兼容 brief：%s", brief_path)
 
     if update_ledger:
+        # 只记录真正进入点评/文稿的事件，避免“入选但未播报”被跨日过滤
         _append_coverage(
             ledger_path=ledger_path,
             date_str=date_str,
             shortlist=shortlist,
             events=events,
             ocean_dir=ocean_dir,
+            event_ids=[str(c.event_id) for c in commentaries],
         )
 
     return V3RunResult(

@@ -5,10 +5,7 @@ name: RSSHub Cache Snapshots
 # 设计说明见 docs/rsshub_cache_relay.md。
 
 on:
-  schedule:
-    # 每天 16:00 UTC（北京时间 00:00）跑一次；即使 GitHub 调度延迟 3h，
-    # 也能在日报流水线（约 20:30 UTC 起）之前完成快照。
-    - cron: "0 16 * * *"
+  # 2026-11-10: v3 已用实时 RSSHub；旧快照缓存不再定时（保留手动回滚）
   workflow_dispatch:
     inputs:
       dry_run:
