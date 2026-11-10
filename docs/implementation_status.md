@@ -167,3 +167,19 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
   - stage5 文稿：16k tokens、timeout 600s（实测 232–430s）。
 - 失败兜底：stage3 judge 异常自动降级纯规则分；stage4 单条失败跳过；stage5 最多 2 次重写。
 - stage_models：stage2/3/4/5 全部 `MiniMax-M3.1-Flash`。
+
+## 复盘发现与修复（2026-11-10）
+
+已修：
+- 覆盖账本持久化：pipeline artifact 增加 data/coverage/，publish job 提交 `data/coverage/`；
+- 覆盖语义：账本只记录进入 Commentary（真正播报）的事件，不再把整个 shortlist 标为已覆盖；
+- pipeline job timeout 150→240 分钟（全文跑实测 104 分钟，留余量）；
+- 新增 GHA 脚本检查：文稿缺失/为空直接失败，质量不达标给 warning；
+- 旧 rsshub_cache workflow 去掉定时（v3 已用实时 RSSHub，且旧任务连续失败）。
+
+未修（P0/P1，待决策）：
+- 历史事件未持久化：GHA 每次 checkout 没有 `data/ocean` 历史，Stage2 的连续性/30 天跨日去重
+  目前只依赖覆盖账本；events.json ~1.5–1.8MB/天，30 天约 50MB，不适合直接入 git。
+  建议每日写 compact history 快照（~100–200KB/天）入 git，或按 run-id 下载历史 artifact。
+- Stage2 实际不调用 LLM（规则标注），“全 Stage Flash”对 stage2 无实际影响。
+- 无 token/费用统计（可在 llm 客户端记录 usage 落 manifest）。
