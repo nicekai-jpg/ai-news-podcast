@@ -5,6 +5,8 @@ name: Daily Podcast v3 (manual)
 # - 勾选 deploy 才部署并提交（与旧 daily.yml 串行，共享 podcast-pipeline 并发组）。
 # 旧 daily.yml 保持不变，可随时回滚。
 on:
+  schedule:
+    - cron: "30 17 * * *"   # 17:30 UTC ≈ 北京 01:30；GitHub 调度通常延迟 0–3h
   workflow_dispatch:
     inputs:
       date:
@@ -105,17 +107,21 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           EPISODE="${{ steps.episode.outputs.id }}"
+          FULLTEXT="${{ github.event.inputs.fulltext }}"
+          if [ -z "$FULLTEXT" ]; then FULLTEXT="false"; fi   # 定时任务默认不回源，控制时长
+          WORKERS="${{ github.event.inputs.max_workers }}"
+          if [ -z "$WORKERS" ]; then WORKERS="12"; fi
           EXTRA=""
           if [ "${{ github.event.inputs.skip_script }}" = "true" ]; then
             EXTRA="$EXTRA --skip-script"
           fi
-          if [ "${{ github.event.inputs.fulltext }}" = "false" ]; then
+          if [ "$FULLTEXT" = "false" ]; then
             EXTRA="$EXTRA --no-fulltext"
           fi
           uv run python -m ai_news_podcast.presentation.cli.podcast_v3_controller \
             --date "$EPISODE" \
             --rsshub-base http://127.0.0.1:1200 \
-            --max-workers "${{ github.event.inputs.max_workers || '8' }}" \
+            --max-workers "$WORKERS" \
             $EXTRA
 
       - name: Upload v3 pipeline artifacts
@@ -271,11 +277,11 @@ jobs:
 
       # 只有显式勾选 deploy 才部署 + 提交 main（默认只校验，不污染生产）
       - name: Remove .gitignore to ensure ignored files are deployed
-        if: ${{ github.event.inputs.deploy == 'true' }}
+        if: ${{ github.event_name == 'schedule' || github.event.inputs.deploy == 'true' }}
         run: rm -f .gitignore
 
       - name: Deploy GitHub Pages
-        if: ${{ github.event.inputs.deploy == 'true' }}
+        if: ${{ github.event_name == 'schedule' || github.event.inputs.deploy == 'true' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -283,7 +289,7 @@ jobs:
           keep_files: true
 
       - name: Commit site
-        if: ${{ github.event.inputs.deploy == 'true' }}
+        if: ${{ github.event_name == 'schedule' || github.event.inputs.deploy == 'true' }}
         run: |
           git restore .gitignore 2>/dev/null || true
           git config user.name "github-actions[bot]"

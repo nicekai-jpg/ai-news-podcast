@@ -106,3 +106,12 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
   show notes、digest_{date}.json —— 证明 v3 兼容 brief 可被旧 publish 真实消费。
 - 真实 TTS 未跑：本机有 `~/cosyvoice_models` + `~/cosyvoice_src`，但 `~/cosyvoice_venv` 不存在，
   需先跑 `bash scripts/setup_cosyvoice_env.sh`（较重，未擅自执行）。
+
+## 生产切换（2026-11-10）
+
+- 2026-11-09 GHA 实跑：Stage1–5（fulltext=false）17m37s 成功，618 items / 547 events；慢因是
+  RSSHub 上游路由（bloomberg 125s、oschina 59s、geekpark 503 73s）与回源全文。
+- 调整：6 个慢路由改原生 RSS（transformer-circuits/bloomberg/geekpark/ifanr/engadget/oschina），
+  9 个失败且无替代的源禁用；定时任务默认 `--no-fulltext`、`max_workers=12`。
+- 生产 cron 切到 `.github/workflows/v3_daily.yml`（30 17 * * *，自动 deploy + commit）；
+  旧 `daily.yml` 仅保留 workflow_dispatch 回滚。

@@ -118,10 +118,11 @@ Stage CLIs (console scripts in pyproject):
   `podcast-writer` / `podcast-report` / `podcast-tts` / `podcast-publish` 不变，新链默认不接入 GHA，可随时回滚。
 - **Stage 7 兼容**：Stage 4/5 会额外写 `data/briefs/brief_{date}.json`（thesis/stories/metadata/radar），
   字段映射自 shortlist/events/items，供旧 `podcast-publish`（依赖 brief）直接消费，无需改 publish。
-- **GHA（手动验证）**：`.github/workflows/v3_daily.yml` 三步 job（pipeline Stage1–5 + RSSHub service
-  container → tts → publish），仅 `workflow_dispatch`，与旧 `daily.yml` 共享 `podcast-pipeline`
-  并发组；默认只上传产物、不部署不提交，勾选 `deploy` 才部署 gh-pages 并提交 main。
-  **cron 未切换**，旧 `daily.yml` 仍是生产默认。
+- **GHA（生产）**：`.github/workflows/v3_daily.yml` 三步 job（pipeline Stage1–5 + RSSHub service
+  container → tts → publish）。2026-11-10 起 **cron `30 17 * * *` 切到 v3**（定时任务默认
+  `--no-fulltext`、`max_workers=12`、自动部署 gh-pages 并提交 main）；手动 dispatch 可覆盖参数
+  （fulltext/max_workers/deploy 等）。旧 `daily.yml` 保留 `workflow_dispatch` 仅作回滚，不再定时。
+  与旧链共享 `podcast-pipeline` 并发组。
 - **模块**（都在 `business/` 下，只依赖 `contracts`/`data.*`，不 import `business.pipeline` 内部实现）：
   - `contracts/`：Item / Event / Labels / ShortlistEntry / Commentary + `artifact.py`（gzip JSON）；
   - `coverage/ledger.py`：跨日覆盖账本（已选中事件指纹，长期保留）；
@@ -142,9 +143,9 @@ Stage CLIs (console scripts in pyproject):
 - **测试**：`tests/test_contracts.py`、`test_coverage_ledger.py`、`test_llm_config.py`、
   `test_collect_*`、`test_ocean_*`、`test_recommend_*`、`test_editorial_*`、
   `test_v3_runner_service.py`、`test_v3_pipeline_integration.py`、`test_v3_cli_controller.py`。
-- **已知取舍**：C3 的 66 条路由尚未对本地 RSSHub 镜像逐条复测（collect-agent 按命名空间填写）；
-  C4 的智谱/MiniMax/字节 Seed/商汤/工信部/网信办走“锚点+邻近日期”启发式，站点改版时在
-  `sources_v3.yaml` 给该源加 `selectors`；M3.1 Flash 仅配置占位，尚未 A/B。
+- **已知取舍**：C3 路由已按 2026-11-09 GHA 实跑结果收敛（慢/失败路由改原生 RSS 或禁用，见
+  `sources_v3.yaml` 头部）；C4 的智谱/MiniMax/字节 Seed/商汤/工信部/网信办走“锚点+邻近日期”
+  启发式，站点改版时在 `sources_v3.yaml` 给该源加 `selectors`；M3.1 Flash 仅配置占位，尚未 A/B。
 
 ## Gotchas
 

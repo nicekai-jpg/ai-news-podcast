@@ -3,13 +3,14 @@
 # 依据：docs/source_channels.md §4.8（C3 定稿）、§5.0（C4 定稿）、§6（C5 定稿）、
 #       docs/source_pipeline_design.md §3（通道总表）。
 #
-# 源数量：C1 31 / C2 11 / C3 66 / C4 7 / C5 17 = 合计 132 条（跨通道重复按条目计）。
+# 源数量：共 132 条（跨通道重复按条目计），其中启用 122。2026-11-10 生产化调整：
+#   - 6 个慢/不稳的 RSSHub 路由改走原生 RSS（transformer-circuits/bloomberg/geekpark/
+#     ifanr/engadget/oschina）；9 个确认失败且无原生替代的源 enabled:false；
+#   - GHA 定时任务关闭回源全文（--no-fulltext），控制单次时长。
 #
-#   C1 c1_rss          31 = 中文媒体 4（含机器之心/新智元的 wechat2rss feed）+ 官方博客 8
-#                          + 英文媒体 3 + arXiv 15（5 分类 + 10 主题查询）+ 36Kr 原生 1
-#                          （36Kr 原生 RSS 已坏且主通道改 C3，故 enabled: false 保留占位）
+#   C1 c1_rss          34（31 + 6 个改原生 - 3 个禁用）
 #   C2 c2_atom         11 = GitHub Releases 8 + YouTube 3
-#   C3 c3_rsshub       66 = 一级 AI 垂直/官方 38 + 二级 AI 栏目 6 + 三级 泛科技/产业 22
+#   C3 c3_rsshub       53（66 - 6 改原生 - 7 禁用）
 #   C4 c4_web           7 = DeepSeek / 智谱 / MiniMax / 字节 Seed / 商汤 / 工信部 / 网信办
 #   C5 c5_wechat2rss   17 = 机器之心…得物技术（公共 wechat2rss feed，含 content:encoded 全文）
 #
@@ -129,12 +130,14 @@ sources:
     url: "https://syncedreview.com/feed/"
     category: news
     limit: 15
+    enabled: false
   - name: venturebeat_ai
     label: VentureBeat AI
     channel: c1_rss
     url: "https://venturebeat.com/category/ai/feed/"
     category: news
     limit: 20
+    enabled: false
 
   # --- arXiv 15：5 个分类 RSS + 10 个主题查询（Atom）---
   - name: arxiv_cs_ai
@@ -359,8 +362,8 @@ sources:
     category: official
   - name: transformer_circuits
     label: Transformer Circuits
-    channel: c3_rsshub
-    rsshub_route: /transformer-circuits
+    channel: c1_rss
+    url: \"https://www.transformer-circuits.pub/feed.xml\"
     category: research
   - name: the_decoder
     label: The Decoder
@@ -397,6 +400,7 @@ sources:
     channel: c3_rsshub
     rsshub_route: /deeplearning/the-batch
     category: research
+    enabled: false
   - name: bfl_announcements
     label: BFL Announcements
     channel: c3_rsshub
@@ -483,6 +487,7 @@ sources:
     channel: c3_rsshub
     rsshub_route: /pixelstech/feed/ai
     category: news
+    enabled: false
 
   # --- 二级：泛科技媒体的 AI 栏目（6，参数路由）---
   - name: ithome_ai
@@ -514,8 +519,8 @@ sources:
     category: news
   - name: bloomberg_technology
     label: Bloomberg Technology
-    channel: c3_rsshub
-    rsshub_route: /bloomberg/technology
+    channel: c1_rss
+    url: \"https://feeds.bloomberg.com/technology/news.rss\"
     category: news
 
   # --- 三级：泛科技/产业（22，可选；路由按 RSSHub 命名空间约定，上线前复核）---
@@ -527,8 +532,8 @@ sources:
     limit: 20
   - name: geekpark
     label: 极客公园
-    channel: c3_rsshub
-    rsshub_route: /geekpark
+    channel: c1_rss
+    url: \"https://www.geekpark.net/rss\"
     category: news
     limit: 20
   - name: huxiu_moment
@@ -542,6 +547,7 @@ sources:
     channel: c3_rsshub
     rsshub_route: /tmtpost/news
     category: news
+    enabled: false
   - name: leiphone_news
     label: 雷峰网
     channel: c3_rsshub
@@ -549,8 +555,8 @@ sources:
     category: news
   - name: ifanr
     label: 爱范儿
-    channel: c3_rsshub
-    rsshub_route: /ifanr
+    channel: c1_rss
+    url: \"https://www.ifanr.com/feed\"
     category: news
   - name: infoq_recommend
     label: InfoQ
@@ -573,16 +579,18 @@ sources:
     channel: c3_rsshub
     rsshub_route: /ofweek/news
     category: news
+    enabled: false
   - name: engadget_chinese
     label: Engadget 中文版
-    channel: c3_rsshub
-    rsshub_route: /engadget/chinese
+    channel: c1_rss
+    url: \"https://www.engadget.com/rss.xml\"
     category: news
   - name: scientificamerican
     label: Scientific American
     channel: c3_rsshub
     rsshub_route: /scientificamerican
     category: research
+    enabled: false
   - name: trendforce_news
     label: TrendForce
     channel: c3_rsshub
@@ -593,10 +601,11 @@ sources:
     channel: c3_rsshub
     rsshub_route: /csia/news
     category: news
+    enabled: false
   - name: oschina_news
     label: 开源中国
-    channel: c3_rsshub
-    rsshub_route: /oschina/news
+    channel: c1_rss
+    url: \"https://www.oschina.net/news/rss\"
     category: news
   - name: juejin_aicoding
     label: 掘金 AI 编程
@@ -629,6 +638,7 @@ sources:
     channel: c3_rsshub
     rsshub_route: /benedictevans
     category: research
+    enabled: false
   - name: gwern
     label: Gwern
     channel: c3_rsshub
