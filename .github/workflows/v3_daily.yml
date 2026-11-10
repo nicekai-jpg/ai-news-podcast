@@ -1,4 +1,4 @@
-name: Daily Podcast v3 (manual)
+name: Daily Podcast v3
 
 # 新链 Stage 1–7 的手动验证工作流：
 # - 默认只跑完、上传产物，不部署 gh-pages、不提交 main；
@@ -54,7 +54,7 @@ concurrency:
 
 jobs:
   pipeline:
-    name: "v3 Stage 1-5 (collect → ocean → recommend → editorial → script)"
+    name: "v3 Stage 1-7 (collect → ocean → recommend → report → report review → script → podcast review)"
     runs-on: ubuntu-22.04
     timeout-minutes: 240
     services:
@@ -173,7 +173,7 @@ jobs:
           retention-days: 30
 
   tts:
-    name: "v3 Stage 6 (TTS audio)"
+    name: "v3 Stage 8 (TTS audio)"
     needs: pipeline
     if: ${{ github.event.inputs.run_tts != 'false' && github.event.inputs.skip_script != 'true' }}
     runs-on: ubuntu-22.04
@@ -237,7 +237,7 @@ jobs:
           if-no-files-found: error
 
   publish:
-    name: "v3 Stage 7 (publish site)"
+    name: "v3 Stage 9 (publish site)"
     needs: [pipeline, tts]
     if: ${{ github.event.inputs.run_publish != 'false' && github.event.inputs.skip_script != 'true' }}
     runs-on: ubuntu-22.04

@@ -222,3 +222,14 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
 - 修复：stage6 `max_output_tokens` 16384 → 24576（timeout 600s 不变）；LLM 后端在空 content 时打
   warning（含 finish_reason），便于以后定位。
 - 复测：同数据走 `make_llm_call(stage6)` 真实 API 通过（正文/质量按 quality 闸门判断）。
+
+## 本地可验证项结果（2026-11-10 收盘前）
+
+- 真实 API 跑通 S4→S7 全段（真实 2026-11-09 数据，676s）：
+  - 生成 `report.json`、`daily_report_2026-11-09.md`、`report_review.json`、文稿、`podcast_review.json`；
+  - 4 条日报正文 / 4 条日报点评 / 3 章播客点评；文稿 quality ok（3271 字、3 章、无 issue）。
+- brief 兼容：21.3KB，含 `report_rows`/`report_review`/`podcast_review`；旧 `show_notes` 渲染正常。
+- digest 页面映射：`lead.source=podcast_review`（01 编辑导语）、`report.editor_verdict=日报点评`
+  （02 编辑短评），与 app.js 既有槽位对齐。
+- CLI `--dry-run` 正常；GHA artifact 已包含 `data/editorial/`、`data/coverage/`、当天 ocean。
+- 尚未验证：GHA 全链路（采集 + TTS + publish + 自动提交/部署），等今晚定时首跑。
