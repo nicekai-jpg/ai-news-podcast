@@ -172,7 +172,7 @@ class Fact:
 
 @dataclass
 class Commentary:
-    """Stage 4 编辑点评（事实与观点分离）。"""
+    """Stage 4 日报正文（事实与观点分离，02 深度日报/页面使用）。"""
 
     event_id: str
     headline: str
@@ -184,6 +184,47 @@ class Commentary:
     counterpoint: str = ""
     uncertainty: str = ""
     sources: list[dict[str, Any]] = field(default_factory=list)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class ReviewItem:
+    """单条结果的点评（S5 日报点评 / S7 播客点评共用）。"""
+
+    event_id: str = ""
+    title: str = ""
+    verdict: str = ""  # 准确 / 需修正 / 补充
+    comment: str = ""
+    corrections: list[str] = field(default_factory=list)
+    highlights: list[str] = field(default_factory=list)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class EditorialReview:
+    """S5 日报点评：对已生成的日报做编辑审读。"""
+
+    overall: str = ""
+    items: list[ReviewItem] = field(default_factory=list)
+    risks: list[str] = field(default_factory=list)
+
+    def to_dict(self) -> dict[str, Any]:
+        return asdict(self)
+
+
+@dataclass
+class PodcastReview:
+    """S7 播客点评：对已生成的播客文稿做审读 + 01 页面 show notes。"""
+
+    overall: str = ""
+    show_notes: str = ""
+    chapters: list[dict[str, Any]] = field(default_factory=list)
+    items: list[ReviewItem] = field(default_factory=list)
+    fact_check_notes: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

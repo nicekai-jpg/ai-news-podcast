@@ -410,6 +410,8 @@ def build_digest(
         "metrics": _metrics(brief, sources, chunks),
         "chapters": detect_chapters(chunks),
         "report": report,
+        "report_review": brief.get("report_review") or {},
+        "podcast_review": brief.get("podcast_review") or {},
         "sources": sources,
         "radar": radar_block,
         "quality": episode.get("quality"),

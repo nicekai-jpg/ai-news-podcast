@@ -121,7 +121,40 @@ def _make_commentary(prompt: str) -> str:
     return json.dumps(payload, ensure_ascii=False)
 
 
+def _make_report_review() -> str:
+    return json.dumps(
+        {
+            "overall": "日报整体准确，注意单一来源表述。",
+            "items": [],
+            "risks": ["单一来源"],
+        },
+        ensure_ascii=False,
+    )
+
+
+def _make_podcast_review() -> str:
+    return json.dumps(
+        {
+            "overall": "本期结构清晰。",
+            "show_notes": "本期聊聊模型与工具更新。",
+            "chapters": [
+                {"title": "开场", "intro": "今天从两件事说起。", "highlights": ["模型发布"]}
+            ],
+            "items": [],
+            "fact_check_notes": [],
+        },
+        ensure_ascii=False,
+    )
+
+
 def _fake_llm(prompt: str) -> str:
+    for marker, builder in (
+        ("值班编辑", _make_report_review),
+        ("播客审稿编辑", _make_podcast_review),
+        ("事实底稿", _make_script),
+    ):
+        if marker in prompt:
+            return builder()
     if "evidence_ids" in prompt or '"facts"' in prompt:
         return _make_commentary(prompt)
         evidence_ids = []
@@ -191,9 +224,8 @@ def test_ocean_recommend_editorial_interop(tmp_path: Path) -> None:
     script = build_script(
         shortlist,
         events,
-        commentaries,
+        item_evidence,
         _fake_llm,
-        item_evidence=item_evidence,
         config_path="config/editorial_v3.yaml",
     )
     assert "[CHAPTER]" in script
@@ -223,6 +255,8 @@ def test_run_v3_pipeline_end_to_end(tmp_path: Path, monkeypatch: Any) -> None:
     assert result.shortlist_path.exists()
     assert result.commentary_path.exists()
     assert result.report_path is not None and result.report_path.exists()
+    assert result.report_review_path is not None and result.report_review_path.exists()
+    assert result.podcast_review_path is not None and result.podcast_review_path.exists()
     assert result.script_path is not None and result.script_path.exists()
     assert result.brief_path is not None and result.brief_path.exists()
     brief = json.loads(result.brief_path.read_text(encoding="utf-8"))

@@ -18,7 +18,7 @@ from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
-from ai_news_podcast.business.contracts import Commentary, Event, ShortlistEntry
+from ai_news_podcast.business.contracts import Event, ShortlistEntry
 
 from .config import DEFAULT_CONFIG_PATH, EditorialConfig, LLMCall, load_config
 from .prompts import build_script_prompt, build_script_repair_prompt
@@ -160,26 +160,22 @@ def _defect_score(report: dict[str, Any]) -> tuple[int, int]:
 def build_script(
     shortlist: Sequence[ShortlistEntry],
     events: Sequence[Event],
-    commentaries: Sequence[Commentary],
+    item_evidence: Mapping[str, str] | None,
     llm_call: LLMCall,
     *,
-    item_evidence: Mapping[str, str] | None = None,
     config_path: str | Path = DEFAULT_CONFIG_PATH,
 ) -> str:
-    """根据 Stage 4 点评生成 15 分钟双主持播客文稿。
+    """根据事实底稿（Stage 2 全文证据）生成 15 分钟双主持播客文稿。
 
-    - ``commentaries`` 按 ``shortlist`` 的 rank 顺序参与写作（unknown 事件排最后）；
+    - ``item_evidence`` 是 item_id -> 正文，用于构造每事件的事实底稿；
     - 返回标准化后的纯文本（``[Host A]/[Host B]/[CHAPTER]``），可直接写
       ``site/episodes/{date}.txt``；不满足字数/章节等硬指标时返回尽力而为的版本，
       具体缺陷由 ``quality()`` 报告；
     - LLM 调用异常直接抛出，由上层决定重试/降级。
     """
     config = load_config(config_path)
-    logger.debug("Stage 5 使用配置 %s，item_evidence=%s", config_path, item_evidence is not None)
-    rank = {str(entry.event_id): index for index, entry in enumerate(shortlist)}
-    ordered = sorted(commentaries, key=lambda c: rank.get(str(c.event_id), len(rank)))
-
-    prompt = build_script_prompt(ordered, list(events), config=config)
+    logger.debug("S6 使用配置 %s，item_evidence=%s", config_path, item_evidence is not None)
+    prompt = build_script_prompt(shortlist, list(events), item_evidence, config=config)
     raw = llm_call(prompt)
     script = normalize_script(raw, config)
     report = check_script(script, config)

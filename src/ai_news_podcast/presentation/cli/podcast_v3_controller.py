@@ -73,7 +73,7 @@ class V3PipelineCommand(AsyncCommand):
         )
         parser.add_argument("--publish", action="store_true", help="Stage 7：发布站点（隐含音频）")
 
-    async def _stage6_7(
+    async def _stage_audio_publish(
         self,
         args: argparse.Namespace,
         cfg: AppConfig,
@@ -164,7 +164,7 @@ class V3PipelineCommand(AsyncCommand):
             log.exception("新流水线执行失败")
             return 1
 
-        rc = await self._stage6_7(args, cfg, root, date_str, result)
+        rc = await self._stage_audio_publish(args, cfg, root, date_str, result)
         if rc != 0:
             return rc
 

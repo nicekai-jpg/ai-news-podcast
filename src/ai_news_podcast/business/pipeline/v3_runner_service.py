@@ -44,8 +44,10 @@ class V3RunResult:
     ocean_dir: Path
     events_path: Path
     shortlist_path: Path
-    commentary_path: Path
+    commentary_path: Path  # S4 日报 JSON（保留旧字段名，内容为 report.json）
     report_path: Path | None = None
+    report_review_path: Path | None = None
+    podcast_review_path: Path | None = None
     script_path: Path | None = None
     brief_path: Path | None = None
 
@@ -62,7 +64,7 @@ def _write_json(path: Path, data: Any) -> Path:
 
 
 def load_item_evidence(ocean_dir: Path) -> dict[str, str]:
-    """读取 items.json，构造 item_id -> 正文（供 Stage 4/5 事实核对）。"""
+    """读取 items.json，构造 item_id -> 正文（供 S4 日报/S6 文稿的事实底稿）。"""
     path = Path(ocean_dir) / "items.json"
     if not path.exists():
         return {}
@@ -206,17 +208,125 @@ def load_ocean_items(ocean_dir: Path) -> list[dict[str, Any]]:
     return [row for row in rows if isinstance(row, dict)]
 
 
+@dataclass
+class _EditorialOutputs:
+    """S4–S7 的产物与中间结果。"""
+
+    report_rows: list[Commentary]
+    report_json_path: Path
+    report_review: Any
+    report_path: Path
+    report_review_path: Path
+    script_path: Path | None
+    podcast_review: Any | None
+    podcast_review_path: Path | None
+
+
+def _run_editorial_stages(
+    *,
+    shortlist: list[ShortlistEntry],
+    events: list[Event],
+    item_evidence: dict[str, str],
+    editorial_root: Path,
+    date_str: str,
+    config_root: Path,
+    llm_for: Callable[[str], LLMCall],
+    skip_script: bool,
+) -> _EditorialOutputs:
+    """S4 日报生成 → S5 日报点评 → S6 文稿生成 → S7 播客点评。"""
+    from ai_news_podcast.business.editorial.commentary import build_commentaries
+    from ai_news_podcast.business.editorial.report import render_daily_report
+    from ai_news_podcast.business.editorial.review import (
+        build_podcast_review,
+        build_report_review,
+    )
+    from ai_news_podcast.business.editorial.script import build_script
+
+    editorial_dir = editorial_root / date_str
+    editorial_cfg = config_root / "editorial_v3.yaml"
+
+    # S4：日报正文（事实底稿来自 Stage 2 全文证据）
+    report_rows: list[Commentary] = build_commentaries(
+        shortlist,
+        events,
+        llm_for("stage4"),
+        item_evidence=item_evidence,
+        config_path=editorial_cfg,
+    )
+    report_json_path = _write_json(
+        editorial_dir / "report.json", [row.to_dict() for row in report_rows]
+    )
+    report_path = editorial_dir / f"daily_report_{date_str}.md"
+    report_path.write_text(render_daily_report(report_rows, date_str=date_str), encoding="utf-8")
+    logger.info("S4 完成：日报 %s 条，%s", len(report_rows), report_path)
+
+    # S5：对已生成的日报做点评
+    report_review = build_report_review(
+        report_rows,
+        events,
+        llm_for("stage5"),
+        item_evidence=item_evidence,
+        config_path=editorial_cfg,
+    )
+    report_review_path = _write_json(editorial_dir / "report_review.json", report_review.to_dict())
+    logger.info("S5 完成：日报点评 %s 条", len(report_review.items))
+
+    # S6：用事实底稿生成播客文稿（不消费点评）
+    script_path: Path | None = None
+    podcast_review_path: Path | None = None
+    podcast_review: Any | None = None
+    if not skip_script:
+        script_text = build_script(
+            shortlist,
+            events,
+            item_evidence,
+            llm_for("stage6"),
+            config_path=editorial_cfg,
+        )
+        script_path = Path("site") / "episodes" / f"{date_str}.txt"
+        script_path.parent.mkdir(parents=True, exist_ok=True)
+        script_path.write_text(script_text + "\n", encoding="utf-8")
+        logger.info("S6 完成：%s", script_path)
+
+        # S7：对已生成的文稿做点评 + show notes
+        podcast_review = build_podcast_review(
+            script_text,
+            report_rows,
+            events,
+            llm_for("stage7"),
+            config_path=editorial_cfg,
+        )
+        podcast_review_path = _write_json(
+            editorial_dir / "podcast_review.json", podcast_review.to_dict()
+        )
+        logger.info("S7 完成：播客点评 %s 章", len(podcast_review.chapters))
+
+    return _EditorialOutputs(
+        report_rows=report_rows,
+        report_json_path=report_json_path,
+        report_review=report_review,
+        report_path=report_path,
+        report_review_path=report_review_path,
+        script_path=script_path,
+        podcast_review=podcast_review,
+        podcast_review_path=podcast_review_path,
+    )
+
+
 def build_brief_compat(
     *,
     date_str: str,
     events: list[Event],
     shortlist: list[ShortlistEntry],
     ocean_dir: Path,
+    report_rows: list[Commentary] | None = None,
+    report_review: Any | None = None,
+    podcast_review: Any | None = None,
 ) -> dict[str, Any]:
     """把 Stage 2/3/4 产物转成旧 publish 能消费的 brief 结构。
 
     旧 `podcast-publish` 依赖 `data/briefs/brief_{date}.json` 的 thesis/stories/metadata/radar；
-    这里只做兼容转换，不改 publish 逻辑，保证新链可以直接复用 Stage 6/7。
+    这里只做兼容转换，不改 publish 逻辑，保证新链可以直接复用 Stage 8/9。
     """
     items_by_id = {str(row.get("item_id")): row for row in load_ocean_items(ocean_dir)}
     event_by_id = {str(event.event_id): event for event in events}
@@ -279,6 +389,9 @@ def build_brief_compat(
             "shortlist": len(shortlist),
         },
         "radar": {"date": date_str, "projects": []},
+        "report_rows": [row.to_dict() for row in (report_rows or [])],
+        "report_review": report_review.to_dict() if report_review else {},
+        "podcast_review": podcast_review.to_dict() if podcast_review else {},
     }
 
 
@@ -298,7 +411,7 @@ def run_v3_pipeline(
     skip_script: bool = False,
     update_ledger: bool = True,
 ) -> V3RunResult:
-    """串联 Stage 1→5，返回产物路径。"""
+    """串联 Stage 1→7（S1–S7），返回产物路径。"""
     data_root = Path(data_dir)
     config_root = Path(config_dir)
     raw_dir = data_root / "raw"
@@ -362,52 +475,29 @@ def run_v3_pipeline(
     )
     logger.info("Stage 3 完成：shortlist=%s", len(shortlist))
 
-    # ---- Stage 4 编辑点评 ----
-    from ai_news_podcast.business.editorial.commentary import build_commentaries
-    from ai_news_podcast.business.editorial.report import render_daily_report
-
-    item_evidence = load_item_evidence(ocean_dir)
-    commentaries: list[Commentary] = build_commentaries(
-        shortlist,
-        events,
-        _llm_for("stage4"),
-        item_evidence=item_evidence,
-        config_path=config_root / "editorial_v3.yaml",
+    editorial = _run_editorial_stages(
+        shortlist=shortlist,
+        events=events,
+        item_evidence=load_item_evidence(ocean_dir),
+        editorial_root=editorial_root,
+        date_str=date_str,
+        config_root=config_root,
+        llm_for=_llm_for,
+        skip_script=skip_script,
     )
-    commentary_path = _write_json(
-        editorial_root / date_str / "commentary.json",
-        [commentary.to_dict() for commentary in commentaries],
-    )
-    report_path = editorial_root / date_str / f"daily_report_{date_str}.md"
-    report_path.write_text(render_daily_report(commentaries, date_str=date_str), encoding="utf-8")
-    logger.info("Stage 4 完成：点评 %s 条，日报 %s", len(commentaries), report_path)
-
-    # ---- Stage 5 播客文稿 ----
-    script_path: Path | None = None
-    if not skip_script:
-        from ai_news_podcast.business.editorial.script import build_script
-
-        script = build_script(
-            shortlist,
-            events,
-            commentaries,
-            _llm_for("stage5"),
-            item_evidence=item_evidence,
-            config_path=config_root / "editorial_v3.yaml",
-        )
-        script_path = Path("site") / "episodes" / f"{date_str}.txt"
-        script_path.parent.mkdir(parents=True, exist_ok=True)
-        script_path.write_text(script + "\n", encoding="utf-8")
-        logger.info("Stage 5 完成：%s", script_path)
+    report_rows = editorial.report_rows
 
     brief = build_brief_compat(
         date_str=date_str,
         events=events,
         shortlist=shortlist,
         ocean_dir=ocean_dir,
+        report_rows=report_rows,
+        report_review=editorial.report_review,
+        podcast_review=editorial.podcast_review,
     )
     brief_path = _write_json(data_root / "briefs" / f"brief_{date_str}.json", brief)
-    logger.info("Stage 4/5 兼容 brief：%s", brief_path)
+    logger.info("S4–S7 兼容 brief：%s", brief_path)
 
     if update_ledger:
         # 只记录真正进入点评/文稿的事件，避免“入选但未播报”被跨日过滤
@@ -417,7 +507,7 @@ def run_v3_pipeline(
             shortlist=shortlist,
             events=events,
             ocean_dir=ocean_dir,
-            event_ids=[str(c.event_id) for c in commentaries],
+            event_ids=[str(row.event_id) for row in report_rows],
         )
 
     return V3RunResult(
@@ -426,8 +516,10 @@ def run_v3_pipeline(
         ocean_dir=ocean_dir,
         events_path=events_path,
         shortlist_path=shortlist_path,
-        commentary_path=commentary_path,
-        report_path=report_path,
-        script_path=script_path,
+        commentary_path=editorial.report_json_path,
+        report_path=editorial.report_path,
+        report_review_path=editorial.report_review_path,
+        podcast_review_path=editorial.podcast_review_path,
+        script_path=editorial.script_path,
         brief_path=brief_path,
     )
