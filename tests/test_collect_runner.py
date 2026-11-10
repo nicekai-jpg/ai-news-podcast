@@ -96,11 +96,12 @@ class TestShippedConfig:
         sources = load_sources(REPO_ROOT / "config" / "sources_v3.yaml")
 
         assert len(sources) == 132
+        assert sum(1 for source in sources if source.enabled) == 122
         assert Counter(source.channel for source in sources) == Counter(
             {
-                "c1_rss": 31,
+                "c1_rss": 37,
                 "c2_atom": 11,
-                "c3_rsshub": 66,
+                "c3_rsshub": 60,
                 "c4_web": 7,
                 "c5_wechat2rss": 17,
             }
@@ -129,13 +130,24 @@ class TestShippedConfig:
             elif source.channel == "c4_web":
                 assert source.parser in {"", "generic", "deepseek"}, source.name
 
-    def test_disabled_source_is_36kr_native(self) -> None:
+    def test_disabled_sources(self) -> None:
         sources = {
             source.name: source for source in load_sources(REPO_ROOT / "config" / "sources_v3.yaml")
         }
 
-        disabled = [name for name, source in sources.items() if not source.enabled]
-        assert disabled == ["36kr_native"]
+        disabled = {name for name, source in sources.items() if not source.enabled}
+        assert disabled == {
+            "36kr_native",
+            "synced_review",
+            "venturebeat_ai",
+            "deeplearning_the_batch",
+            "pixelstech_ai",
+            "tmtpost_news",
+            "ofweek_news",
+            "scientificamerican",
+            "csia_news",
+            "benedict_evans",
+        }
 
 
 class TestCollectAll:

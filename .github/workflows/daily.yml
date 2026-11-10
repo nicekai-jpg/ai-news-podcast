@@ -1,8 +1,7 @@
 name: Daily Podcast
 
 on:
-  schedule:
-    - cron: "30 17 * * *"
+  # 2026-11-10: 生产 cron 已切到 v3_daily.yml；旧链保留 workflow_dispatch 以便回滚
   workflow_dispatch:
     inputs:
       date:
