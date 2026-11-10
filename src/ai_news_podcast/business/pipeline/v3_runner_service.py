@@ -282,39 +282,6 @@ def build_brief_compat(
     }
 
 
-def render_daily_report(commentaries: list[Commentary], *, date_str: str = "") -> str:
-    """把 Stage 4 点评渲染为 02 深度日报 Markdown。"""
-    lines = [f"# 深度日报 {date_str}".strip(), ""]
-    for index, item in enumerate(commentaries, start=1):
-        lines.append(f"## {index}. {item.headline}")
-        if item.one_liner:
-            lines.append(item.one_liner)
-        if item.facts:
-            lines.append("")
-            lines.append("**事实**")
-            for fact in item.facts:
-                source_note = "（单一来源）" if fact.single_source else ""
-                lines.append(f"- {fact.text}{source_note}")
-        for label, value in (
-            ("为什么重要", item.why_matters),
-            ("背景", item.background),
-            ("影响", item.impact),
-            ("反方观点", item.counterpoint or "暂无公开反方信息"),
-            ("不确定项", item.uncertainty),
-        ):
-            if value:
-                lines.append("")
-                lines.append(f"**{label}**：{value}")
-        if item.sources:
-            lines.append("")
-            lines.append(
-                "来源："
-                + "；".join(str(s.get("label") or s.get("link") or "") for s in item.sources)
-            )
-        lines.append("")
-    return "\n".join(lines).strip() + "\n"
-
-
 def run_v3_pipeline(
     date_str: str,
     *,
@@ -397,6 +364,7 @@ def run_v3_pipeline(
 
     # ---- Stage 4 编辑点评 ----
     from ai_news_podcast.business.editorial.commentary import build_commentaries
+    from ai_news_podcast.business.editorial.report import render_daily_report
 
     item_evidence = load_item_evidence(ocean_dir)
     commentaries: list[Commentary] = build_commentaries(

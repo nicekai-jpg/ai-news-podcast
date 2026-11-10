@@ -46,6 +46,7 @@ on:
 
 permissions:
   contents: write
+  actions: read   # 下载历史 v3 artifact（Stage 2 跨日去重/连续性）
 
 concurrency:
   group: podcast-pipeline
@@ -87,6 +88,14 @@ jobs:
           else
             echo "id=$(TZ=Asia/Shanghai date +%F)" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Fetch v3 history artifacts
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          uv run python scripts/fetch_v3_history.py --days 14 --exclude-run-id "$GITHUB_RUN_ID"
 
       - name: Wait for RSSHub
         run: |
@@ -154,7 +163,7 @@ jobs:
           name: v3-output-${{ steps.episode.outputs.id }}
           path: |
             data/raw/
-            data/ocean/
+            data/ocean/${{ steps.episode.outputs.id }}/
             data/selection/
             data/editorial/
             data/briefs/brief_${{ steps.episode.outputs.id }}.json
