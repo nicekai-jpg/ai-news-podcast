@@ -394,3 +394,16 @@ jobs:
           else
             gh issue create --title "$TITLE" --body "$BODY"
           fi
+      - name: Close failure issue on success
+        if: ${{ !contains(needs.*.result, 'failure') }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          EP="${{ needs.pipeline.outputs.episode_id }}"
+          if [ -z "$EP" ]; then EP=$(TZ=Asia/Shanghai date +%F); fi
+          TITLE="⚠️ v3 pipeline failed: $EP"
+          NUMBER=$(gh issue list --state open --search "$TITLE in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUMBER" ]; then
+            gh issue close "$NUMBER" --comment "流水线已恢复（run ${{ github.run_id }}）"
+          fi
