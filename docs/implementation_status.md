@@ -337,3 +337,11 @@ LLM S3-S7      16m     (8%)
   community/video/podcast=3），事件取最可信来源 `best_source_tier`；
 - 重排同分时优先更可信来源（tie-break，不改分数）；字段可供后续页面/审计展示；
 - 测试：`tests/test_ocean_source_tier.py`、重排 tie-break；879 passed。
+
+## 采集源健康度（2026-11-11）
+
+- `business/collect/health.py`：聚合多天 raw artifact 的 source_stats + items 全文状态，
+  输出每源天数/条目/失败天数/空源天数/全文成功率/平均耗时/健康标记；
+- `scripts/source_health.py`：读 `data/raw/raw-*.json.gz` 生成 Markdown/JSON 报告；
+- 阈值：失败过半或连续多天 0 条=bad；有失败/空源过半/全文率<50%=warn；
+- 测试：`tests/test_source_health.py`；884 passed。
