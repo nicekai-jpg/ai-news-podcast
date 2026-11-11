@@ -265,3 +265,15 @@ LLM S3-S7      16m     (8%)
   目标降到约 45–60 分钟；站点限流会导致部分 full_text failed，非致命。
 - TTS：CosyVoice2 CPU 推理 56 个 chunk 约 75 分钟（约 1.3 分钟/chunk）。可选优化：GPU runner、
   分块并行合成、减少音色/句级切分；需单独评估质量与成本，暂未改。
+
+## 非 AI 新闻过滤（2026-11-11）
+
+用户反馈页面出现汽车类新闻。排查：`玛莎拉蒂与尊界联合造车` 因主体「华为」命中主体召回通道，
+且规则标签给的是 business/capital/technology，没有 AI 信号，却进入 shortlist 第 5 位。
+
+修复：
+- 推荐粗排新增硬门槛 `not_ai`：事件标题+摘要必须命中 AI 关键词（config/recommend_v3.yaml
+  `coarse.require_ai_relevance: true`，关键词表在 recommend/config.py `DEFAULT_AI_TEXT_KEYWORDS`）。
+- 用 2026-11-11 真实数据回归：718 events 淘汰 192 条（汽车/股票/消费/社会新闻），
+  原 shortlist 里唯一的汽车事件被淘汰，其余 6 条 AI 事件保留。
+- 原始采集仍保留全部源（设计上采集不做重要性判断），非 AI 内容在推荐阶段被挡掉。

@@ -37,6 +37,7 @@ REJECT_COVERED_BEFORE = "covered_before"
 REJECT_JUNK = "junk"
 REJECT_SINGLE_SOURCE_RUMOR = "single_source_rumor"
 REJECT_FACT_CONFLICT = "fact_conflict"
+REJECT_NOT_AI = "not_ai"
 REJECT_SUBJECT_CAP = "subject_cap"
 REJECT_COARSE_CUT = "coarse_cut"
 
@@ -145,32 +146,73 @@ def _hard_rejection(
     event: Event, settings: CoarseSettings, covered: set[str]
 ) -> CoarseElimination | None:
     """按优先级依次检查硬门槛，命中第一条即淘汰。"""
+    for rejection in (
+        _coverage_rejection(event, covered),
+        _content_rejection(event, settings),
+        _consistency_rejection(event, settings),
+    ):
+        if rejection is not None:
+            return rejection
+    return None
+
+
+def _coverage_rejection(event: Event, covered: set[str]) -> CoarseElimination | None:
     if event.event_id in covered:
         return CoarseElimination(event.event_id, REJECT_COVERED, "覆盖账本已选中")
     if event.covered_before:
         return CoarseElimination(event.event_id, REJECT_COVERED_BEFORE, "事件标记为已播报")
+    return None
+
+
+def _content_rejection(event: Event, settings: CoarseSettings) -> CoarseElimination | None:
     junk = _matched_junk(event, settings)
     if junk:
         return CoarseElimination(event.event_id, REJECT_JUNK, f"命中非新闻关键词: {junk}")
+    if settings.require_ai_relevance and not _is_ai_related(event, settings):
+        return CoarseElimination(
+            event.event_id,
+            REJECT_NOT_AI,
+            f"与 AI 无关（未命中 AI 关键词；主体={_subject_names(event)}）",
+        )
     if _is_single_source_rumor(event, settings):
         return CoarseElimination(
             event.event_id,
             REJECT_SINGLE_SOURCE_RUMOR,
             "独立来源不足且证据分级为传闻",
         )
-    consistency = event.labels.confidence.get("fact_consistency")
-    if consistency is not None:
-        try:
-            value = float(consistency)
-        except (TypeError, ValueError):
-            value = 1.0
-        if value < settings.fact_consistency_min:
-            return CoarseElimination(
-                event.event_id,
-                REJECT_FACT_CONFLICT,
-                f"跨源事实一致性 {value:.2f} < {settings.fact_consistency_min}",
-            )
     return None
+
+
+def _consistency_rejection(event: Event, settings: CoarseSettings) -> CoarseElimination | None:
+    consistency = event.labels.confidence.get("fact_consistency")
+    if consistency is None:
+        return None
+    try:
+        value = float(consistency)
+    except (TypeError, ValueError):
+        value = 1.0
+    if value < settings.fact_consistency_min:
+        return CoarseElimination(
+            event.event_id,
+            REJECT_FACT_CONFLICT,
+            f"跨源事实一致性 {value:.2f} < {settings.fact_consistency_min}",
+        )
+    return None
+
+
+def _subject_names(event: Event) -> str:
+    names = [str(item.get("name") or item.get("id") or "") for item in event.labels.subjects[:3]]
+    return "、".join(name for name in names if name) or "未标注"
+
+
+def _is_ai_related(event: Event, settings: CoarseSettings) -> bool:
+    """事件必须带 AI 信号（标题/摘要命中 AI 关键词）。
+
+    汽车/消费/社会新闻常因主体（如华为、特斯拉）命中所属主体通道而进入候选；
+    这里只在标题/摘要上做 AI 关键词硬门槛，避免被正文里的偶然词或宽泛主题标签误放行。
+    """
+    text = f"{event.representative_title} {event.summary}"
+    return bool(matched_keywords(text, settings.ai_text_keywords))
 
 
 def _matched_junk(event: Event, settings: CoarseSettings) -> str:

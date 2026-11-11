@@ -11,6 +11,7 @@ from ai_news_podcast.business.recommend.coarse import (
     REJECT_COVERED_BEFORE,
     REJECT_FACT_CONFLICT,
     REJECT_JUNK,
+    REJECT_NOT_AI,
     REJECT_SINGLE_SOURCE_RUMOR,
     REJECT_SUBJECT_CAP,
     coarse_rank,
@@ -210,3 +211,43 @@ class TestCapsAndOrdering:
             candidate.event.event_id: candidate.coarse_score for candidate in outcome.candidates
         }
         assert scores["a"] > scores["b"]
+
+
+class TestAiRelevance:
+    def test_rejects_non_ai_event(self) -> None:
+        car = _make_event(
+            "car",
+            title="玛莎拉蒂将与尊界联合造车，明年正式量产",
+            summary="双方将联合开发新车，首发车型或为双门 GT。",
+            subjects=[{"id": "huawei", "name": "华为", "weight": 0.9, "confidence": 1.0}],
+        )
+        outcome = coarse_rank(
+            [RecallCandidate(event=car, channels=("subject",))],
+            CoarseSettings(),
+            reference_time=REFERENCE,
+        )
+        assert outcome.candidates == []
+        assert [item.reason for item in outcome.eliminated] == [REJECT_NOT_AI]
+
+    def test_keeps_ai_event(self) -> None:
+        ai = _make_event("ai", title="OpenAI 发布新模型，支持 Agent 工具")
+        outcome = coarse_rank(
+            [RecallCandidate(event=ai, channels=("subject",))],
+            CoarseSettings(),
+            reference_time=REFERENCE,
+        )
+        assert [item.event.event_id for item in outcome.candidates] == ["ai"]
+
+    def test_switch_can_disable_gate(self) -> None:
+        car = _make_event(
+            "car2",
+            title="某车企发布新车",
+            summary="新车明年初上市。",
+            subjects=[{"id": "x", "name": "某车企", "weight": 0.9, "confidence": 1.0}],
+        )
+        outcome = coarse_rank(
+            [RecallCandidate(event=car, channels=("subject",))],
+            CoarseSettings(require_ai_relevance=False),
+            reference_time=REFERENCE,
+        )
+        assert [item.event.event_id for item in outcome.candidates] == ["car2"]
