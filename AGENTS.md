@@ -153,7 +153,7 @@ Stage CLIs (console scripts in pyproject):
   `test_v3_runner_service.py`、`test_v3_pipeline_integration.py`、`test_v3_cli_controller.py`。
 - **已知取舍**：C3 路由已按 2026-11-09 GHA 实跑结果收敛（慢/失败路由改原生 RSS 或禁用，见
   `sources_v3.yaml` 头部）；C4 的智谱/MiniMax/字节 Seed/商汤/工信部/网信办走“锚点+邻近日期”
-  启发式，站点改版时在 `sources_v3.yaml` 给该源加 `selectors`；推荐粗排有 `require_ai_relevance` 硬门槛（标题/摘要无 AI 关键词的汽车/消费/社会新闻直接淘汰，可配置关闭）；全部 Stage 已切换 MiniMax-M3.1-Flash（2026-11-10 用户决定；成本约 M3 五折价的 50%，
+  启发式，站点改版时在 `sources_v3.yaml` 给该源加 `selectors`；推荐召回把 AI 相关性作为**准入前提**（`recall.require_ai_relevance`，标题/摘要需命中 AI 关键词），粗排再保留同款硬门槛兜底；全部 Stage 已切换 MiniMax-M3.1-Flash（2026-11-10 用户决定；成本约 M3 五折价的 50%，
   S6 A/B Flash 2/3 vs M3 0/3）。Flash 是推理模型：stage3 需 24k/300s，stage4 8k/240s，
   stage5 16k/300s，stage6 24k/600s，stage7 16k/300s；低 token 预算会空输出（上层有重试/降级）。
 

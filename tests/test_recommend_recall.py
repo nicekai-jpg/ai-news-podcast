@@ -28,6 +28,7 @@ def _make_event(
     topics: list[str] | None = None,
     tech_stack: list[str] | None = None,
     novelty_numbers: list[dict] | None = None,
+    title: str | None = None,
 ) -> Event:
     seen = "" if age_hours is None else (REFERENCE - timedelta(hours=age_hours)).isoformat()
     labels = Labels(
@@ -44,7 +45,7 @@ def _make_event(
     )
     return Event(
         event_id=event_id,
-        representative_title=f"事件 {event_id}",
+        representative_title=title or f"AI 模型事件 {event_id}",
         item_ids=[f"item-{event_id}"],
         source_count=source_count,
         independent_sources=independent_sources,
@@ -220,3 +221,25 @@ class TestRecallEvidence:
         candidates = recall_events([event], RecallSettings(), reference_time=REFERENCE)
         channels = candidates[0].channels
         assert channels == tuple(channel for channel in RECALL_CHANNELS if channel in channels)
+
+
+class TestAiPrecondition:
+    def test_rejects_non_ai_event_even_if_fresh_and_subject(self) -> None:
+        car = _make_event(
+            "car",
+            title="玛莎拉蒂将与尊界联合造车，明年正式量产",
+            subjects=[{"id": "huawei", "name": "华为", "weight": 0.9, "confidence": 1.0}],
+        )
+        assert recall_events([car], RecallSettings(), reference_time=REFERENCE) == []
+
+    def test_keeps_ai_event(self) -> None:
+        ai = _make_event("ai", title="OpenAI 发布新模型，支持 Agent 工具")
+        candidates = recall_events([ai], RecallSettings(), reference_time=REFERENCE)
+        assert [candidate.event.event_id for candidate in candidates] == ["ai"]
+
+    def test_switch_can_disable_precondition(self) -> None:
+        car = _make_event("car2", title="某车企发布新车")
+        candidates = recall_events(
+            [car], RecallSettings(require_ai_relevance=False), reference_time=REFERENCE
+        )
+        assert [candidate.event.event_id for candidate in candidates] == ["car2"]

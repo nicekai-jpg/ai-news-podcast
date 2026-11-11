@@ -137,7 +137,7 @@ class TestRecommendEndToEnd:
 
     def test_covered_and_junk_events_are_not_recommended(self) -> None:
         events = _valid_events(10)
-        events.append(_make_event(10, subject="covered", title="已被播报的事件"))
+        events.append(_make_event(10, subject="covered", title="已被播报的 AI 模型事件"))
         events.append(_make_event(11, subject="junk", title="大模型算法工程师招聘（内推）"))
         result = recommend_with_audit(
             events,
