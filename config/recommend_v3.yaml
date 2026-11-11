@@ -62,6 +62,7 @@ recall:
 # 二、规则粗排：硬门槛 + 可解释粗排分
 coarse:
   max_candidates: 20
+  require_ai_relevance: true   # 无 AI 信号（汽车/消费/社会新闻）直接淘汰
   subject_cap: 2            # 同一主体先留 2 条
   fact_consistency_min: 0.5 # labels.confidence.fact_consistency 低于阈值 → 事实矛盾，淘汰
   rumor_tiers: [rumor]      # 单一来源 + 该分级 → 淘汰
