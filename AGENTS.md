@@ -148,7 +148,8 @@ Stage CLIs (console scripts in pyproject):
   `site/episodes/{date}.txt`。全文只走 artifact，不进 git。
 - **配置**：`config/pipeline_v3.yaml`（路径/保留期/各 Stage 模型）、`config/sources_v3.yaml`、
   `config/ocean_v3.yaml` + `config/nlp/`、`config/recommend_v3.yaml`、`config/editorial_v3.yaml`。
-- **评测**：`business/eval/recommend_eval.py` + `scripts/eval_recommend.py`（推荐分阶段指标，见 `docs/recommend_evaluation.md`）；
+- **源健康度**：`business/collect/health.py` + `scripts/source_health.py`（多天 raw artifact 聚合，见 `docs/source_health.md`）；
+  **评测**：`business/eval/recommend_eval.py` + `scripts/eval_recommend.py`（推荐分阶段指标，见 `docs/recommend_evaluation.md`）；
   **测试**：`tests/test_contracts.py`、`test_coverage_ledger.py`、`test_llm_config.py`、
   `test_collect_*`、`test_ocean_*`、`test_recommend_*`、`test_editorial_*`、
   `test_v3_runner_service.py`、`test_v3_pipeline_integration.py`、`test_v3_cli_controller.py`。
