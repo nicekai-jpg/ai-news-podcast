@@ -74,6 +74,8 @@ def recall_events(
         if event is None:
             continue
         event_id = event.event_id or _fallback_event_id(event)
+        if settings.require_ai_relevance and not _has_ai_signal(event, settings):
+            continue
         if event_id not in events_by_id:
             event_order.append(event_id)
             events_by_id[event_id] = event
@@ -99,6 +101,16 @@ def recall_events(
         _channel_counts(candidates),
     )
     return candidates
+
+
+def _has_ai_signal(event: Event, settings: RecallSettings) -> bool:
+    """召回准入前提：事件标题/摘要必须带 AI 信号。
+
+    多路召回的各通道（时效/主体/连续性）只回答“是否值得关注”，不回答“是不是 AI”；
+    因此 AI 相关性必须作为前置标准，避免汽车/消费/社会新闻靠时效或主体混进来。
+    """
+    text = f"{event.representative_title} {event.summary}"
+    return bool(matched_keywords(text, settings.ai_text_keywords))
 
 
 def _fallback_event_id(event: Event) -> str:

@@ -274,6 +274,8 @@ class RecallSettings:
     unknown_age_as_fresh: bool = True
     ai_topics: tuple[str, ...] = DEFAULT_RECALL_AI_TOPICS
     ai_tech_stack: tuple[str, ...] = DEFAULT_RECALL_AI_TECH
+    require_ai_relevance: bool = True
+    ai_text_keywords: tuple[str, ...] = DEFAULT_AI_TEXT_KEYWORDS
 
 
 @dataclass(frozen=True)
@@ -360,6 +362,10 @@ class RecommendConfig:
             unknown_age_as_fresh=bool(recall_raw.get("unknown_age_as_fresh", True)),
             ai_topics=_tuple_of_str(recall_raw.get("ai_topics"), DEFAULT_RECALL_AI_TOPICS),
             ai_tech_stack=_tuple_of_str(recall_raw.get("ai_tech_stack"), DEFAULT_RECALL_AI_TECH),
+            require_ai_relevance=bool(recall_raw.get("require_ai_relevance", True)),
+            ai_text_keywords=_tuple_of_str(
+                recall_raw.get("ai_text_keywords"), DEFAULT_AI_TEXT_KEYWORDS
+            ),
         )
         coarse = CoarseSettings(
             max_candidates=int(to_float_config(coarse_raw.get("max_candidates"), 20)),

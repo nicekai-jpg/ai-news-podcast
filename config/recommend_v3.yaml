@@ -7,6 +7,7 @@ version: 3
 
 # 一、多路召回：只做资格判断，不打分
 recall:
+  require_ai_relevance: true   # AI 相关性是准入门槛（不是六通道之一）
   new_hours: 48             # 新事件窗口
   evolving_hours: 168       # 持续事件（burst/evolving）窗口 = 7 天
   long_tail_hours: 720      # 长尾窗口 = 30 天（须有新进展）
