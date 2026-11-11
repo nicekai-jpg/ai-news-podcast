@@ -127,13 +127,13 @@ Stage CLIs (console scripts in pyproject):
   覆盖账本在 pipeline job 结束即提交（TTS/publish 失败也不会丢跨日状态）。
   与旧链共享 `podcast-pipeline` 并发组。
 - **历史 artifact（Stage 2 跨日）**：pipeline job 先用 `scripts/fetch_v3_history.py` 通过 gh CLI
-  下载最近 14 天成功的 `v3-output-<date>` artifact（权限 `actions: read`），合并 `data/ocean/<date>/`
+  下载最近 30 天成功的 `v3-output-<date>` artifact（权限 `actions: read`），合并 `data/ocean/<date>/`
   到工作区，Stage 2 的跨日去重/连续性在 CI 里可用；artifact 只上传当天 `data/ocean/<date>/`，
-  避免把 14 天历史重复打包。历史缺失/下载失败不阻断当天流水线。
+  避免把 30 天历史重复打包。历史缺失/下载失败不阻断当天流水线。
 - **模块**（都在 `business/` 下，只依赖 `contracts`/`data.*`，不 import `business.pipeline` 内部实现）：
   - `contracts/`：Item / Event / Labels / ShortlistEntry / Commentary + `artifact.py`（gzip JSON）；
   - `coverage/ledger.py`：跨日覆盖账本（已选中事件指纹，长期保留）；
-  - `collect/`：C1 RSS、C2 Atom、C3 RSSHub、C4 网页、C5 wechat2rss（132 源，见
+  - `collect/`：C1 RSS、C2 Atom、C3 RSSHub、C4 网页、C5 wechat2rss（132 源（启用 127），见
     `config/sources_v3.yaml`；`contracts.artifact.write_artifact` 落盘）；
   - `ocean/`：四层去重、事件聚类、连续性、多维标注（`config/nlp/*.yaml` 词典）、证据分；
   - `recommend/`：召回→粗排（含淘汰原因）→精排（规则 0.6 + LLM rubric 0.4，只读事实标签，

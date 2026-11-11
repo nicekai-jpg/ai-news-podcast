@@ -151,7 +151,7 @@ def fetch_history(
 def main() -> int:
     parser = argparse.ArgumentParser(description="下载 v3 历史 artifact 作为 Stage 2 历史输入")
     parser.add_argument("--workflow", default="v3_daily.yml")
-    parser.add_argument("--days", type=int, default=14)
+    parser.add_argument("--days", type=int, default=30)
     parser.add_argument("--out-dir", default="data")
     parser.add_argument("--exclude-run-id", default="")
     parser.add_argument("--max-runs", type=int, default=40)

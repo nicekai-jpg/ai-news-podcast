@@ -42,6 +42,30 @@ def generate_show_notes_html(
     safe_title = _esc(episode_title)
     body = "\n".join(items_html)
 
+    review = brief.get("podcast_review") or {}
+    review_html = ""
+    if review.get("show_notes"):
+        review_html += f"<p>{_esc(str(review['show_notes']))}</p>\n"
+    chapters = [c for c in (review.get("chapters") or []) if isinstance(c, dict)]
+    if chapters:
+        chapter_html = []
+        for chapter in chapters:
+            title = _esc(str(chapter.get("title") or ""))
+            intro = _esc(str(chapter.get("intro") or ""))
+            highlights = [str(h) for h in (chapter.get("highlights") or []) if str(h).strip()]
+            if not title and not intro:
+                continue
+            highlight_html = ""
+            if highlights:
+                highlight_html = (
+                    "<ul>" + "".join(f"<li>{_esc(h)}</li>" for h in highlights) + "</ul>"
+                )
+            chapter_html.append(
+                f"<li><strong>{title}</strong>{(': ' + intro) if intro else ''}{highlight_html}</li>"
+            )
+        if chapter_html:
+            review_html += "<h2>本期章节</h2>\n<ol>\n" + "\n".join(chapter_html) + "\n</ol>\n"
+
     return (
         "<!doctype html>\n"
         '<html lang="zh-CN">\n'
@@ -56,6 +80,8 @@ def generate_show_notes_html(
         "<body>\n"
         f"<h1>{safe_title}</h1>\n"
         f"<p>{date_text}</p>\n"
+        f"{review_html}"
+        "<h2>本期提到</h2>\n"
         "<ol>\n"
         f"{body}\n"
         "</ol>\n"

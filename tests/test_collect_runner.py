@@ -96,7 +96,7 @@ class TestShippedConfig:
         sources = load_sources(REPO_ROOT / "config" / "sources_v3.yaml")
 
         assert len(sources) == 132
-        assert sum(1 for source in sources if source.enabled) == 121
+        assert sum(1 for source in sources if source.enabled) == 127
         assert Counter(source.channel for source in sources) == Counter(
             {
                 "c1_rss": 43,
@@ -137,14 +137,8 @@ class TestShippedConfig:
 
         disabled = {name for name, source in sources.items() if not source.enabled}
         assert disabled == {
-            "36kr_native",
-            "mathpix_blog",
-            "synced_review",
             "venturebeat_ai",
-            "deeplearning_the_batch",
-            "pixelstech_ai",
             "tmtpost_news",
-            "ofweek_news",
             "scientificamerican",
             "csia_news",
             "benedict_evans",

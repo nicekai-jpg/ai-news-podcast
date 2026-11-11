@@ -91,6 +91,20 @@ class OpenAILLMBackend(LLMBackend):
                             logger.info("从思考链或未闭合标签中自动找回对白: %d 字符", len(text))
 
                     _validate_llm_text(text)
+                    try:
+                        from ai_news_podcast.business.pipeline.llm_usage_service import (
+                            record_usage,
+                        )
+
+                        usage = getattr(response, "usage", None)
+                        if usage is not None:
+                            record_usage(
+                                str(model_name),
+                                prompt_tokens=int(getattr(usage, "prompt_tokens", 0) or 0),
+                                completion_tokens=int(getattr(usage, "completion_tokens", 0) or 0),
+                            )
+                    except Exception:  # 用量统计绝不能影响主流程
+                        logger.debug("记录 LLM usage 失败", exc_info=True)
                     logger.info("LLM 调用成功，返回 %d 字符", len(text))
                     return text
 

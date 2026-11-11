@@ -36,6 +36,11 @@ llm:
     stage5: "MiniMax-M3.1-Flash"   # S5 日报点评
     stage6: "MiniMax-M3.1-Flash"   # S6 播客文稿生成
     stage7: "MiniMax-M3.1-Flash"   # S7 播客点评
+  # 价格（元/百万 tokens），用于每期费用估算
+  pricing:
+    MiniMax-M3.1-Flash:
+      input: 1.00
+      output: 4.00
   # 按 Stage 覆盖生成参数；stage5 需要更大 token 预算（长文稿 + 思考 token）
   # 关键：Flash 是推理模型，长 prompt 需要更大 token 预算与超时；低预算会空输出。
   stage_options:
