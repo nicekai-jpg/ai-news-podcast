@@ -345,3 +345,10 @@ LLM S3-S7      16m     (8%)
 - `scripts/source_health.py`：读 `data/raw/raw-*.json.gz` 生成 Markdown/JSON 报告；
 - 阈值：失败过半或连续多天 0 条=bad；有失败/空源过半/全文率<50%=warn；
 - 测试：`tests/test_source_health.py`；884 passed。
+
+## LLM rubric 多次采样（2026-11-11）
+
+- `FineSettings.llm_samples`（默认 1）：>1 时对精排前 `llm_top_k` 条重复调用 LLM，
+  各维度取中位数再融合，降低单次打分波动；
+- 成本随采样次数线性增加，默认关闭；打开前先用评测集确认收益；
+- 测试：`test_llm_samples_use_median_scores`；885 passed。

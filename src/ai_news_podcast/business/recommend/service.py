@@ -170,16 +170,56 @@ def _apply_llm_judge(
     if llm_judge is None or not scored:
         return scored
     judged_events = [item.event for item in scored[: config.fine.llm_top_k]]
-    try:
-        judgements = llm_judge(judged_events) or {}
-    except Exception:
-        logger.warning("LLM judge 调用失败，降级为纯规则分", exc_info=True)
+    samples = max(1, int(config.fine.llm_samples))
+    results: list[dict] = []
+    for index in range(samples):
+        try:
+            judgements = llm_judge(judged_events) or {}
+        except Exception:
+            logger.warning("LLM judge 第 %d 次调用失败，跳过该样本", index + 1, exc_info=True)
+            continue
+        if isinstance(judgements, dict) and judgements:
+            results.append(judgements)
+    if not results:
+        logger.warning("LLM judge 无有效结果，降级为纯规则分")
         return scored
+    judgements = results[0] if len(results) == 1 else _median_judgements(results)
+    logger.debug("LLM judge 评分 %d 条（%d/%d 次采样）", len(judgements), len(results), samples)
     if not isinstance(judgements, dict) or not judgements:
         logger.warning("LLM judge 返回空结果，降级为纯规则分")
         return scored
     logger.debug("LLM judge 评分 %d 条", len(judgements))
     return apply_judgements(scored, judgements, config.fine)
+
+
+def _median_judgements(samples: list[dict]) -> dict[str, dict]:
+    """多次 LLM 采样按维度取中位数，降低单次打分波动。"""
+    from ai_news_podcast.business.recommend.base import JUDGE_DIMENSIONS
+
+    merged: dict[str, dict] = {}
+    event_ids: set[str] = set()
+    for sample in samples:
+        event_ids.update(str(key) for key in sample)
+    for event_id in event_ids:
+        rows = [sample[event_id] for sample in samples if isinstance(sample.get(event_id), dict)]
+        if not rows:
+            continue
+        row: dict = {}
+        for dimension in JUDGE_DIMENSIONS:
+            values = []
+            for item in rows:
+                try:
+                    values.append(float(item.get(dimension)))
+                except (TypeError, ValueError):
+                    continue
+            if values:
+                values.sort()
+                row[dimension] = values[len(values) // 2]
+        reason = next((str(item.get("reason") or "") for item in rows if item.get("reason")), "")
+        if reason:
+            row["reason"] = reason
+        merged[event_id] = row
+    return merged
 
 
 def _to_shortlist_entry(rank: int, item: RerankedItem, channels: tuple[str, ...]) -> ShortlistEntry:

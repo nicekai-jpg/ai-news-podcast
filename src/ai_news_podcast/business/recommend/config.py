@@ -303,6 +303,7 @@ class FineSettings:
     llm_top_k: int = 20
     blend_rule: float = 0.6
     blend_llm: float = 0.4
+    llm_samples: int = 1  # >1 时多次采样取中位数（成本×N，默认关）
     clickbait_keywords: tuple[str, ...] = DEFAULT_CLICKBAIT_KEYWORDS
 
 
@@ -393,6 +394,7 @@ class RecommendConfig:
             llm_top_k=int(to_float_config(fine_raw.get("llm_top_k"), 20)),
             blend_rule=to_float_config(fine_raw.get("blend_rule"), 0.6),
             blend_llm=to_float_config(fine_raw.get("blend_llm"), 0.4),
+            llm_samples=max(1, int(to_float_config(fine_raw.get("llm_samples"), 1))),
             clickbait_keywords=_tuple_of_str(
                 fine_raw.get("clickbait_keywords"), DEFAULT_CLICKBAIT_KEYWORDS
             ),
