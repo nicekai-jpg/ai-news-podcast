@@ -22,7 +22,7 @@ on:
         description: "采集源级并发"
         required: false
         type: string
-        default: "8"
+        default: "24"
       skip_script:
         description: "只跑到点评，不生成文稿/音频"
         required: false
@@ -119,7 +119,7 @@ jobs:
           FULLTEXT="${{ github.event.inputs.fulltext }}"
           if [ -z "$FULLTEXT" ]; then FULLTEXT="true"; fi   # 定时任务默认回源：推荐标注需要全文
           WORKERS="${{ github.event.inputs.max_workers }}"
-          if [ -z "$WORKERS" ]; then WORKERS="12"; fi
+          if [ -z "$WORKERS" ]; then WORKERS="24"; fi
           EXTRA=""
           if [ "${{ github.event.inputs.skip_script }}" = "true" ]; then
             EXTRA="$EXTRA --skip-script"

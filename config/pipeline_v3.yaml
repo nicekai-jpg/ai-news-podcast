@@ -18,7 +18,8 @@ stage1:
   http_timeout: 20
   retries: 2
   fetch_fulltext: true   # 关闭可显著加速（正文/证据质量下降），GHA 快速验证可传 --no-fulltext
-  max_workers: 8
+  max_workers: 24
+  request_interval: 0.5   # 同域请求间隔（秒）；越小越快，但可能被站点限流
 
 stage4:
   report_top_n: 5

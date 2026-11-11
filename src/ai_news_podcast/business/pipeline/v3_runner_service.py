@@ -224,6 +224,18 @@ class _EditorialOutputs:
     podcast_review_path: Path | None
 
 
+def _load_stage1_settings(config_root: Path) -> dict[str, Any]:
+    path = config_root / "pipeline_v3.yaml"
+    if not path.is_file():
+        return {}
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        return {}
+    stage1 = data.get("stage1") if isinstance(data, dict) else {}
+    return stage1 if isinstance(stage1, dict) else {}
+
+
 def _load_pricing(config_root: Path) -> dict[str, Any]:
     path = config_root / "pipeline_v3.yaml"
     if not path.is_file():
@@ -456,6 +468,7 @@ def run_v3_pipeline(
     # ---- Stage 1 采集入海 ----
     from ai_news_podcast.business.collect.runner import collect_and_write
 
+    stage1_settings = _load_stage1_settings(config_root)
     raw_path = collect_and_write(
         config_root / "sources_v3.yaml",
         date_str,
@@ -464,6 +477,7 @@ def run_v3_pipeline(
         window_hours=window_hours,
         fetch_fulltext=fetch_fulltext,
         max_workers=max_workers,
+        request_interval=float(stage1_settings.get("request_interval", 1.0)),
     )
     logger.info("Stage 1 完成：%s", raw_path)
 
