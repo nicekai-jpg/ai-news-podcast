@@ -23,6 +23,8 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+import yaml
+
 from ai_news_podcast.business.contracts import Commentary, Event, ShortlistEntry, utc_now_iso
 
 logger = logging.getLogger(__name__)
@@ -222,6 +224,33 @@ class _EditorialOutputs:
     podcast_review_path: Path | None
 
 
+def _load_pricing(config_root: Path) -> dict[str, Any]:
+    path = config_root / "pipeline_v3.yaml"
+    if not path.is_file():
+        return {}
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        return {}
+    llm = data.get("llm") if isinstance(data, dict) else {}
+    return (llm or {}).get("pricing") or {}
+
+
+def _write_llm_usage(*, config_root: Path, editorial_root: Path, date_str: str) -> None:
+    """把本次运行的 LLM token 用量与费用估算写入 editorial 目录（进 artifact）。"""
+    from ai_news_podcast.business.pipeline.llm_usage_service import estimate_cost, snapshot
+
+    usage = snapshot()
+    if not usage:
+        return
+    payload = {
+        "usage": usage,
+        "estimate": estimate_cost(usage, _load_pricing(config_root)),
+    }
+    _write_json(editorial_root / date_str / "llm_usage.json", payload)
+    logger.info("LLM 用量：%s", payload["estimate"])
+
+
 def _run_editorial_stages(
     *,
     shortlist: list[ShortlistEntry],
@@ -412,6 +441,9 @@ def run_v3_pipeline(
     update_ledger: bool = True,
 ) -> V3RunResult:
     """串联 Stage 1→7（S1–S7），返回产物路径。"""
+    from ai_news_podcast.business.pipeline.llm_usage_service import reset as _reset_usage
+
+    _reset_usage()
     data_root = Path(data_dir)
     config_root = Path(config_dir)
     raw_dir = data_root / "raw"
@@ -486,6 +518,8 @@ def run_v3_pipeline(
         skip_script=skip_script,
     )
     report_rows = editorial.report_rows
+
+    _write_llm_usage(config_root=config_root, editorial_root=editorial_root, date_str=date_str)
 
     brief = build_brief_compat(
         date_str=date_str,

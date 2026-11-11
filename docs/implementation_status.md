@@ -240,3 +240,12 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
 - 覆盖账本改为 pipeline job 结束即提交（continue-on-error），不依赖 TTS/publish 成功。
 - v3 增加 Notify job：汇总各 job 结果，失败时开/评论 issue（此前 v3 失败无告警）。
 - 全 Stage Flash 的 token/超时预算、历史 artifact 下载、watchdog 监控 v3 均已在 GHA 验证或修正。
+
+## 缺口修复（2026-11-11）
+
+- 历史 artifact 窗口 14→30 天（artifact 保留期正好 30 天）。
+- S5 日报点评逐条点评不再截断（编辑短评展示全部）。
+- S7 章节导语/highlights 接入 show notes 页面（episodes/{date}.html）。
+- 新增 LLM token 用量与费用统计：`data/editorial/{date}/llm_usage.json`（价格表在 pipeline_v3.yaml llm.pricing）。
+- C3 本地 RSSHub 复测：重新启用 6 个源（deeplearning/mathpix/pixelstech/ofweek/synced/36kr），
+  启用数 121→127；剩余 5 个禁用（tmtpost/scientificamerican/csia/benedictevans 路由 404，venturebeat 429）。

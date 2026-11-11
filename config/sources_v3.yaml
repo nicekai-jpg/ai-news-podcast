@@ -3,14 +3,16 @@
 # 依据：docs/source_channels.md §4.8（C3 定稿）、§5.0（C4 定稿）、§6（C5 定稿）、
 #       docs/source_pipeline_design.md §3（通道总表）。
 #
-# 源数量：共 132 条（跨通道重复按条目计），其中启用 122。2026-11-10 生产化调整：
+# 源数量：共 132 条（跨通道重复按条目计），其中启用 127（2026-11-11 重新验证后增加 6 个）。
+#   - 2026-11-11 本地 RSSHub 复测：deeplearning/mathpix/pixelstech/ofweek 路由恢复，synced/36kr 原生
+#     feed 可用，重新启用 6 个；剩余 5 个仍禁用（路由 404 或 429）。
 #   - 6 个慢/不稳的 RSSHub 路由改走原生 RSS（transformer-circuits/bloomberg/geekpark/
 #     ifanr/engadget/oschina）；9 个确认失败且无原生替代的源 enabled:false；
 #   - GHA 定时任务关闭回源全文（--no-fulltext），控制单次时长。
 #
-#   C1 c1_rss          34（31 + 6 个改原生 - 3 个禁用）
+#   C1 c1_rss          43（含原生 RSS；启用 42）
 #   C2 c2_atom         11 = GitHub Releases 8 + YouTube 3
-#   C3 c3_rsshub       53（66 - 6 改原生 - 7 禁用）
+#   C3 c3_rsshub       54（启用 50；5 个仍禁用：tmtpost/scientificamerican/csia/benedictevans 路由 404，venturebeat 429）
 #   C4 c4_web           7 = DeepSeek / 智谱 / MiniMax / 字节 Seed / 商汤 / 工信部 / 网信办
 #   C5 c5_wechat2rss   17 = 机器之心…得物技术（公共 wechat2rss feed，含 content:encoded 全文）
 #
@@ -130,7 +132,7 @@ sources:
     url: "https://syncedreview.com/feed/"
     category: news
     limit: 15
-    enabled: false
+    enabled: true
   - name: venturebeat_ai
     label: VentureBeat AI
     channel: c1_rss
@@ -227,7 +229,7 @@ sources:
     channel: c1_rss
     url: "https://36kr.com/feed-newsflash"
     category: news
-    enabled: false
+    enabled: true
 
   # =========================================================================
   # C2 Atom（11 = GitHub Releases 8 + YouTube 3）
@@ -399,7 +401,7 @@ sources:
     channel: c3_rsshub
     rsshub_route: /deeplearning/the-batch
     category: research
-    enabled: false
+    enabled: true
   - name: bfl_announcements
     label: BFL Announcements
     channel: c3_rsshub
@@ -455,7 +457,7 @@ sources:
     channel: c3_rsshub
     rsshub_route: /mathpix/blog
     category: official
-    enabled: false
+    enabled: true
   - name: ai_bot_news
     label: AI 工具集
     channel: c3_rsshub
@@ -487,7 +489,7 @@ sources:
     channel: c3_rsshub
     rsshub_route: /pixelstech/feed/ai
     category: news
-    enabled: false
+    enabled: true
 
   # --- 二级：泛科技媒体的 AI 栏目（6，参数路由）---
   - name: ithome_ai
@@ -578,7 +580,7 @@ sources:
     channel: c3_rsshub
     rsshub_route: /ofweek/news
     category: news
-    enabled: false
+    enabled: true
   - name: engadget_chinese
     label: Engadget 中文版
     channel: c1_rss

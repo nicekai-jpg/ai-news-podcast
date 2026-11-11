@@ -359,7 +359,7 @@ def _report_from_rows(
         )
     verdict = str(review.get("overall") or "").strip()
     verdict_lines = [verdict]
-    for item in (review.get("items") or [])[:2]:
+    for item in review.get("items") or []:
         if isinstance(item, dict) and str(item.get("comment") or "").strip():
             title = str(item.get("title") or "").strip()
             comment = str(item.get("comment") or "").strip()
@@ -405,7 +405,7 @@ def _resolve_report(
     verdict = str(review.get("overall") or "").strip()
     if report is not None and verdict:
         verdict_lines = [verdict]
-        for item in (review.get("items") or [])[:2]:
+        for item in review.get("items") or []:
             if not isinstance(item, dict):
                 continue
             title = str(item.get("title") or "").strip()

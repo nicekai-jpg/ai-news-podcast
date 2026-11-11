@@ -95,7 +95,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_RUN_ID: ${{ github.run_id }}
         run: |
-          uv run python scripts/fetch_v3_history.py --days 14 --exclude-run-id "$GITHUB_RUN_ID"
+          uv run python scripts/fetch_v3_history.py --days 30 --exclude-run-id "$GITHUB_RUN_ID"
 
       - name: Wait for RSSHub
         run: |
