@@ -22,6 +22,7 @@ def _make_event(
     topic: str = "技术",
     age_hours: float = 2.0,
     title: str | None = None,
+    categories: list[str] | None = None,
 ) -> Event:
     seen = (REFERENCE - timedelta(hours=age_hours)).isoformat()
     return Event(
@@ -38,6 +39,7 @@ def _make_event(
             tech_stack=[tech],
             topics=[topic],
         ),
+        source_categories=categories or ["news"],
     )
 
 
@@ -170,3 +172,27 @@ class TestDedupeAndDecay:
             shortlist_size=3,
         )
         assert len(result) == 3
+
+    def test_same_topic_capped(self) -> None:
+        scored = [
+            _make_fine(str(index), 5.0 - index, subject=f"s{index}", tech=f"t{index}")
+            for index in range(5)
+        ]
+        result = rerank(
+            scored,
+            RerankSettings(shortlist_size=8, max_per_topic=2, max_per_category=8),
+            reference_time=REFERENCE,
+        )
+        assert len(result) == 2
+
+    def test_same_category_capped(self) -> None:
+        scored = [
+            _make_fine(str(index), 5.0 - index, subject=f"s{index}", tech=f"t{index}")
+            for index in range(5)
+        ]
+        result = rerank(
+            scored,
+            RerankSettings(shortlist_size=8, max_per_topic=8, max_per_category=2),
+            reference_time=REFERENCE,
+        )
+        assert len(result) == 2
