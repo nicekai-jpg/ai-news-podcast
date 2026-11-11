@@ -289,3 +289,12 @@ LLM S3-S7      16m     (8%)
 - 粗排 `coarse.require_ai_relevance` 保留为兜底。
 - 关键词表统一在 `recommend/config.py: DEFAULT_AI_TEXT_KEYWORDS`；两处均可配置关闭。
 - 测试：846 passed。
+
+## 推荐评测基础设施（2026-11-11）
+
+- 新增 `business/eval/recommend_eval.py`：事件标题 ↔ 标注 JSONL 匹配，跑完整推荐链路，
+  输出召回/粗排/top8 分阶段指标与漏召回、漏放清单。
+- 新增 `scripts/build_eval_template.py`（等步长抽样生成 200 条标注模板）、
+  `scripts/eval_recommend.py`（评测 CLI）；说明见 `docs/recommend_evaluation.md`。
+- 种子标注 16 条（assistant_seed，未复核）冒烟：召回正样本 8/8，负样本漏入 2/8，
+  粗排负样本 0/2，top8 精确率 80%；人工 200 条标注后替换。
