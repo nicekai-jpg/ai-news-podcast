@@ -21,6 +21,7 @@ import yaml
 
 from ai_news_podcast.business.contracts import Item, Labels
 from ai_news_podcast.business.ocean.config import cfg_get
+from ai_news_podcast.business.ocean.relevance import classify_text, stronger_grade
 from ai_news_podcast.business.ocean.textutils import (
     clean_text,
     extract_novelty_numbers,
@@ -617,6 +618,7 @@ def label_text(
     if any(entity.ambiguous for entity, _ in entity_pairs):
         confidence["subjects"] = min(confidence.get("subjects", 0.95), 0.6)
 
+    ai_relevance, ai_evidence, _ = classify_text(title, summary, full_text)
     labels = Labels(
         subjects=subjects,
         object_type=object_types,
@@ -632,6 +634,8 @@ def label_text(
         narrative_angle=narrative_ids,
         audience_persona=persona_ids,
         sensitivity=sensitivity_ids,
+        ai_relevance=ai_relevance,
+        ai_evidence=ai_evidence,
         quote_availability=quote_available,
         confidence=confidence,
         method="rule",
@@ -743,6 +747,13 @@ def merge_labels(
     max_values = int(cfg_get(cfg, "labels.novelty.max_values", 12))
     confidence = _merged_confidence(labels_list, cfg)
     confidence["evidence_tier"] = float(cfg_get(cfg, "labels.confidence.evidence_tier", 0.9))
+    ai_relevance = "unknown"
+    ai_evidence: list[str] = []
+    for labels in labels_list:
+        ai_relevance = stronger_grade(ai_relevance, str(labels.ai_relevance or "unknown"))
+        for term in labels.ai_evidence:
+            if term and term not in ai_evidence:
+                ai_evidence.append(term)
     return Labels(
         subjects=_merge_subjects(labels_list),
         object_type=_merge_ordered([labels.object_type for labels in labels_list]),
@@ -758,6 +769,8 @@ def merge_labels(
         narrative_angle=_merge_ordered([labels.narrative_angle for labels in labels_list]),
         audience_persona=_merge_ordered([labels.audience_persona for labels in labels_list]),
         sensitivity=_merge_ordered([labels.sensitivity for labels in labels_list]),
+        ai_relevance=ai_relevance,
+        ai_evidence=ai_evidence[:8],
         quote_availability=any(labels.quote_availability for labels in labels_list),
         confidence=confidence,
         method="rule",

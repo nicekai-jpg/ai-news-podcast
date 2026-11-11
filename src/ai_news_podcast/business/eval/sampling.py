@@ -120,3 +120,12 @@ def stratified_sample(
         picked.extend(remaining[: limit - len(picked)])
 
     return picked
+
+
+def split_by_day(rows: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    """按 date 字段分组，保持原始顺序；用于把大队列拆成按天标注文件。"""
+    groups: dict[str, list[dict[str, Any]]] = {}
+    for row in rows:
+        date = str(row.get("date") or "unknown")
+        groups.setdefault(date, []).append(row)
+    return dict(sorted(groups.items()))

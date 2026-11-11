@@ -35,6 +35,7 @@ def _make_event(
     independent_sources: int = 3,
     confidence: dict | None = None,
     covered_before: bool = False,
+    ai_relevance: str = "unknown",
 ) -> Event:
     seen = (REFERENCE - timedelta(hours=age_hours)).isoformat()
     labels = Labels(
@@ -49,6 +50,7 @@ def _make_event(
         lifecycle=lifecycle,
         evidence_tier=evidence_tier,
         confidence={} if confidence is None else confidence,
+        ai_relevance=ai_relevance,
     )
     return Event(
         event_id=event_id,
@@ -251,3 +253,21 @@ class TestAiRelevance:
             reference_time=REFERENCE,
         )
         assert [item.event.event_id for item in outcome.candidates] == ["car2"]
+
+    def test_label_grade_can_keep_adjacent(self) -> None:
+        car = _make_event("car3", title="某车企发布新车", ai_relevance="adjacent")
+        outcome = coarse_rank(
+            [RecallCandidate(event=car, channels=("subject",))],
+            CoarseSettings(),
+            reference_time=REFERENCE,
+        )
+        assert [item.event.event_id for item in outcome.candidates] == ["car3"]
+
+    def test_label_none_rejects_ai_title(self) -> None:
+        ai = _make_event("ai3", title="OpenAI 发布新模型", ai_relevance="none")
+        outcome = coarse_rank(
+            [RecallCandidate(event=ai, channels=("subject",))],
+            CoarseSettings(),
+            reference_time=REFERENCE,
+        )
+        assert [item.reason for item in outcome.eliminated] == [REJECT_NOT_AI]
