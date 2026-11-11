@@ -130,6 +130,7 @@ class Event:
     is_update: bool = False
     labels: Labels = field(default_factory=Labels)
     source_categories: list[str] = field(default_factory=list)  # official/news/research/community
+    best_source_tier: int = 3  # 1=一手/研究, 2=媒体, 3=社区/聚合
     evidence_score: float = 0.0
     momentum_growth: float = 0.0
     reappeared: bool = False

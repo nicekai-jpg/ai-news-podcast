@@ -23,6 +23,7 @@ def _make_event(
     age_hours: float = 2.0,
     title: str | None = None,
     categories: list[str] | None = None,
+    source_tier: int = 2,
 ) -> Event:
     seen = (REFERENCE - timedelta(hours=age_hours)).isoformat()
     return Event(
@@ -40,6 +41,7 @@ def _make_event(
             topics=[topic],
         ),
         source_categories=categories or ["news"],
+        best_source_tier=source_tier,
     )
 
 
@@ -196,3 +198,11 @@ class TestDedupeAndDecay:
             reference_time=REFERENCE,
         )
         assert len(result) == 2
+
+    def test_prefers_more_credible_source_on_tie(self) -> None:
+        scored = [
+            _make_fine("low", 3.0, subject="s1", tech="t1", source_tier=3),
+            _make_fine("high", 3.0, subject="s2", tech="t2", source_tier=1),
+        ]
+        result = rerank(scored, RerankSettings(shortlist_size=2), reference_time=REFERENCE)
+        assert [item.event.event_id for item in result] == ["high", "low"]

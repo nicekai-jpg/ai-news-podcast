@@ -187,7 +187,7 @@ def _pick_best(
 ) -> tuple[RerankedItem, float, float] | None:
     """返回 (原始候选, MMR utility, 多样性惩罚)，保持原对象以便从 remaining 移除。"""
     best: tuple[RerankedItem, float, float] | None = None
-    best_key: tuple[float, float, str] | None = None
+    best_key: tuple[float, float, int, str] | None = None
     for item in remaining:
         features = _features(item.event, settings)
         if _capped(
@@ -209,7 +209,8 @@ def _pick_best(
         )
         utility = settings.mmr_lambda * relevance - (1.0 - settings.mmr_lambda) * similarity
         penalty = (1.0 - settings.mmr_lambda) * similarity
-        key = (utility, item.final_score, item.event.event_id)
+        # 同分时优先更可信来源（tier 数字越小越好）
+        key = (utility, item.final_score, -item.event.best_source_tier, item.event.event_id)
         if best_key is None or key > best_key:
             best_key = key
             best = (item, utility, penalty)
