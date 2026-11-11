@@ -1,0 +1,89 @@
+# 推荐流程评测（Stage 3）
+
+目标：把“推荐准不准”从感觉变成可复现的数字。骨架：
+
+```
+events.json（Stage 2 产物）
+        │
+        ▼
+标注 JSONL（人工/助审，200 条）
+        │
+        ▼
+scripts/eval_recommend.py
+        │
+        ├── 召回：正样本召回率 / 负样本漏入率
+        ├── 粗排：正样本保留率 / 负样本漏入率
+        └── top8：精确率 / 正样本覆盖 / 负样本占比
+```
+
+## 标注格式
+
+每行一个 JSON：
+
+```json
+{"title":"OpenAI 发布新模型","summary":"...","ai_relevance":"core","worth_publishing":true,"label_source":"human","reviewed":true,"note":""}
+```
+
+| 字段 | 取值 | 说明 |
+|---|---|---|
+| `title` | 事件标题 | 必须和 `events.json` 的 `representative_title` 归一化后一致 |
+| `ai_relevance` | `core` | AI 模型、Agent、算法、AI 产品、AI 研究 |
+| `ai_relevance` | `adjacent` | AI 芯片、算力、机器人、自动驾驶、具身智能 |
+| `ai_relevance` | `none` | 与 AI 无关（汽车、消费、股市、社会） |
+| `ai_relevance` | `unknown` | 信息不足，不参与正/负样本统计 |
+| `worth_publishing` | `true` | 值得上节目 |
+| `worth_publishing` | `false` | 不值得上节目 |
+| `label_source` | `human` | 人工标注（金标准） |
+| `label_source` | `assistant_seed` | 助审种子，仅供冒烟测试 |
+| `reviewed` | `true` | 已人工复核 |
+
+## 生成标注模板
+
+```bash
+uv run python scripts/build_eval_template.py \
+  --events data/ocean/2026-11-11/events.json \
+  --out data/eval/recommend/review_queue.jsonl \
+  --limit 200
+```
+
+抽样是等步长抽样（覆盖全天事件），不是随机；填好后把每条 `ai_relevance` 和
+`worth_publishing` 写上，`label_source` 保持 `human`、`reviewed` 改为 `true`。
+
+## 跑评测
+
+```bash
+uv run python scripts/eval_recommend.py \
+  --events data/ocean/2026-11-11/events.json \
+  --labels data/eval/recommend/seed_2026-11-11.jsonl \
+  --reference-time 2026-11-11T08:00:00+00:00 \
+  --out-md data/eval/recommend/report_2026-11-11.md
+```
+
+`--reference-time` 建议固定，否则“时效衰减”会随运行时间变化，指标不可复现。
+
+## 指标口径
+
+| 指标 | 计算 | 看什么 |
+|---|---|---|
+| 召回正样本召回率 | 被召回的正样本 / 标注正样本 | 漏没漏 AI 新闻 |
+| 召回负样本漏入率 | 被召回的负样本 / 标注负样本 | 汽车/消费新闻有没有混进来 |
+| 粗排正样本保留率 | 粗排留下的正样本 / 召回正样本 | 粗排误杀多少 |
+| 粗排负样本漏入率 | 粗排留下的负样本 / 召回负样本 | 粗排挡住多少 |
+| top8 精确率 | top8 正样本 / top8 已标注条目 | 节目质量 |
+| top8 正样本覆盖 | top8 正样本 / 全部标注正样本 | 有没有漏掉重要新闻 |
+| top8 负样本占比 | top8 负样本 / top8 条目 | 有没有“不 AI”混进节目 |
+
+未标注的 top8 条目单独计入 `unknown`，不污染精确率分母。
+
+## 当前状态（2026-11-11）
+
+- 指标脚本、标注模板、README 已落地；
+- 种子标注 `data/eval/recommend/seed_2026-11-11.jsonl` 共 16 条，`label_source=assistant_seed`、`reviewed=false`，**只能冒烟，不能当金标准**；
+- 用 2026-11-11 真实数据跑通：召回正样本 8/8，负样本漏入 2/8，粗排负样本漏入 0/2，top8 精确率 80%；
+- 下一步：人工标注 200 条，替换种子集，再据此调召回/粗排阈值。
+
+## 局限
+
+- 标题精确匹配：事件合并后标题可能被改写，未匹配会列在报告里；
+- 只评推荐链路，不评日报/文稿/音频质量；
+- `worth_publishing` 目前只记录，不参与指标（后续可做“值得讲”的排序评测）。
