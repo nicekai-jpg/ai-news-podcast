@@ -215,15 +215,103 @@ def _warnings(matched: dict[str, EvalLabel], labels: list[EvalLabel]) -> list[st
     return warnings
 
 
+def aggregate_reports(reports: list[dict[str, Any]]) -> dict[str, Any]:
+    """多天评测结果按分阶段计数汇总，重算比率。"""
+    if not reports:
+        raise ValueError("reports 不能为空")
+    stage_sums = {
+        "recall": {
+            "positives_recalled": 0,
+            "positives_total": 0,
+            "negative_leaked": 0,
+            "negative_total": 0,
+        },
+        "coarse": {
+            "positives_kept": 0,
+            "positives_from_recall": 0,
+            "negative_leaked": 0,
+            "negative_from_recall": 0,
+        },
+        "shortlist": {"total": 0, "positives": 0, "negatives": 0, "unknown": 0},
+    }
+    matched = 0
+    labeled = 0
+    reviewed = 0
+    unmatched: list[str] = []
+    misses = {
+        "positive_not_recalled": [],
+        "positive_not_shortlisted": [],
+        "negative_in_shortlist": [],
+        "unmatched_labels": [],
+    }
+    for report in reports:
+        for stage, values in report.get("stages", {}).items():
+            for key, value in values.items():
+                stage_sums.setdefault(stage, {})[key] = stage_sums.setdefault(stage, {}).get(
+                    key, 0
+                ) + int(value)
+        coverage = report.get("metrics", {}).get("label_coverage", {})
+        matched += int(coverage.get("matched", 0))
+        labeled += int(coverage.get("labeled", 0))
+        reviewed += int(coverage.get("reviewed", 0))
+        for key, bucket in misses.items():
+            bucket.extend(report.get("misses", {}).get(key, []))
+        unmatched.extend(report.get("misses", {}).get("unmatched_labels", []))
+
+    recall = stage_sums["recall"]
+    coarse = stage_sums["coarse"]
+    shortlist = stage_sums["shortlist"]
+    metrics = {
+        "label_coverage": {
+            "labeled": labeled,
+            "matched": matched,
+            "unmatched": len(set(unmatched)),
+            "reviewed": reviewed,
+        },
+        "recall": {
+            "positive_recall": _ratio(recall["positives_recalled"], recall["positives_total"]),
+            "negative_leak_rate": _ratio(recall["negative_leaked"], recall["negative_total"]),
+        },
+        "coarse": {
+            "positive_keep_rate": _ratio(coarse["positives_kept"], coarse["positives_from_recall"]),
+            "negative_leak_rate": _ratio(coarse["negative_leaked"], coarse["negative_from_recall"]),
+        },
+        "shortlist": {
+            "precision": _ratio(shortlist["positives"], shortlist["total"]),
+            "positive_recall": _ratio(shortlist["positives"], recall["positives_total"]),
+            "negative_rate": _ratio(shortlist["negatives"], shortlist["total"]),
+        },
+    }
+    unmatched_unique = sorted(set(unmatched))
+    warnings: list[str] = []
+    if matched < 100:
+        warnings.append(f"matched labels 只有 {matched} 条，建议 ≥200 条")
+    if any(report.get("warnings") for report in reports):
+        warnings.extend(w for report in reports for w in report.get("warnings", []))
+    return {
+        "generated_at": reports[0].get("generated_at", ""),
+        "days": len(reports),
+        "event_days": [report.get("events", 0) for report in reports],
+        "events": sum(int(report.get("events", 0)) for report in reports),
+        "stages": stage_sums,
+        "metrics": metrics,
+        "misses": {key: sorted(set(values)) for key, values in misses.items()},
+        "warnings": sorted(set(warnings)),
+        "unmatched_labels": unmatched_unique,
+    }
+
+
 def render_markdown(report: dict[str, Any]) -> str:
     """把评测报告渲染成便于人看的 Markdown。"""
     metrics = report["metrics"]
     stages = report["stages"]
     coverage = metrics["label_coverage"]
+    day_note = f"- 评测天数：{report['days']}" if "days" in report else ""
     lines = [
         "# 推荐流程评测报告",
         "",
         f"- 生成时间：{report['generated_at']}",
+        day_note,
         f"- 事件数：{report['events']}",
         f"- 标注：{coverage['labeled']} 条，匹配 {coverage['matched']} 条，未匹配 {coverage['unmatched']} 条",
         "",

@@ -107,3 +107,16 @@ def test_render_markdown_contains_metrics() -> None:
     assert "推荐流程评测报告" in markdown
     assert "top8" in markdown
     assert "精确率" in markdown
+
+
+def test_aggregate_reports_sums_stages() -> None:
+    from ai_news_podcast.business.eval.recommend_eval import aggregate_reports
+
+    labels = [EvalLabel(title=EVENTS[0].representative_title, ai_relevance="core")]
+    first = evaluate(EVENTS, labels, reference_time=REFERENCE)
+    second = evaluate(EVENTS, labels, reference_time=REFERENCE)
+    aggregate = aggregate_reports([first, second])
+    assert aggregate["days"] == 2
+    assert aggregate["stages"]["recall"]["positives_total"] == 2
+    assert aggregate["metrics"]["recall"]["positive_recall"] == 1.0
+    assert aggregate["metrics"]["shortlist"]["precision"] == 1.0
