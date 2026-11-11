@@ -173,10 +173,10 @@ class V3PipelineCommand(AsyncCommand):
             ("Stage1 raw", result.raw_path),
             ("Stage2 events", result.events_path),
             ("Stage3 shortlist", result.shortlist_path),
-            ("Stage4 commentary", result.commentary_path),
-            ("Stage4 report", result.report_path),
-            ("Stage5 script", result.script_path),
-            ("Stage4/5 brief(compat)", result.brief_path),
+            ("S4 report json", result.commentary_path),
+            ("S4 daily report", result.report_path),
+            ("S6 script", result.script_path),
+            ("S4–S7 brief(compat)", result.brief_path),
         ):
             if path is not None:
                 print(f"  {label}: {path}")

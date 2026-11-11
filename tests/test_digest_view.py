@@ -233,6 +233,31 @@ class TestBuildDigest:
         assert metrics["podcast_segments"] == 4
         assert metrics["media_outlets"] == 2
 
+    def test_structured_report_rows_build_report_block(self) -> None:
+        brief = dict(BRIEF)
+        brief["report_rows"] = [
+            {
+                "event_id": "e1",
+                "headline": "模型发布",
+                "one_liner": "一句话摘要",
+                "facts": [{"text": "事实一（带数字 100B）"}],
+                "background": "背景一",
+                "impact": "影响一",
+                "counterpoint": "暂无公开反方信息",
+            }
+        ]
+        brief["report_review"] = {
+            "overall": "整体准确",
+            "items": [{"title": "模型发布", "comment": "建议补来源"}],
+        }
+        digest = self._build(brief=brief, report_md="")
+        report = digest["report"]
+        assert report is not None
+        assert report["deep_dives"][0]["heading"] == "1、模型发布"
+        assert len(report["deep_dives"][0]["points"]) == 4
+        assert "整体准确" in (report["editor_verdict"] or "")
+        assert digest["availability"]["report"] is True
+
     def test_reviews_fill_editorial_slots(self) -> None:
         brief = dict(BRIEF)
         brief["report_review"] = {

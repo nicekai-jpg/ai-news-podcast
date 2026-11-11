@@ -109,7 +109,7 @@ jobs:
           echo "::error::RSSHub not ready after 180s"
           exit 1
 
-      - name: Run v3 Stage 1-5
+      - name: Run v3 Stage 1-7
         env:
           TZ: Asia/Shanghai
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
@@ -156,6 +156,20 @@ jobs:
               print("issues:", "；".join(report["issues"]))
               print("::warning::script quality issues (continue, see issues above)")
           PYEOF
+
+      - name: Commit coverage ledger (cross-day state)
+        if: ${{ github.event_name == 'schedule' || github.event.inputs.deploy == 'true' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -d data/coverage ]; then git add data/coverage; fi
+          if git diff --cached --quiet; then
+            echo "No coverage changes"
+          else
+            git commit -m "chore: update coverage ledger ${{ steps.episode.outputs.id }} [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          fi
 
       - name: Upload v3 pipeline artifacts
         uses: actions/upload-artifact@v4
