@@ -312,6 +312,110 @@ def _radar_block(radar: dict | None, date_str: str, cfg: Any) -> dict:
     }
 
 
+def _report_from_rows(
+    rows: list[dict],
+    *,
+    date_str: str,
+    review: dict,
+) -> dict:
+    """由 S4 结构化日报（brief.report_rows）构造 02 页面 report 块。
+
+    v3 的 daily_report md 与旧日报格式不同，前端需要的结构直接从结构化数据生成，
+    不再依赖 Markdown 解析。
+    """
+    dives: list[dict] = []
+    total_chars = 0
+    for index, row in enumerate(rows, start=1):
+        if not isinstance(row, dict):
+            continue
+        heading = str(row.get("headline") or "").strip()
+        points: list[dict] = []
+        facts = [
+            str(f.get("text") or "").strip()
+            for f in (row.get("facts") or [])
+            if isinstance(f, dict)
+        ]
+        facts = [text for text in facts if text]
+        if facts:
+            points.append({"label": "事实", "text": "\n".join(facts)})
+        for label, key in (("背景", "background"), ("影响", "impact"), ("反方", "counterpoint")):
+            text = str(row.get(key) or "").strip()
+            if text:
+                points.append({"label": label, "text": text})
+        if not heading and not points:
+            continue
+        body = "".join(point["text"] for point in points)
+        total_chars += len(body)
+        dives.append(
+            {
+                "heading": f"{index}、{heading}" if heading else f"{index}、",
+                "category": "",
+                "points": points,
+                "raw_sections": [],
+                "background": "",
+                "breakthrough": "",
+                "impact": "",
+            }
+        )
+    verdict = str(review.get("overall") or "").strip()
+    verdict_lines = [verdict]
+    for item in (review.get("items") or [])[:2]:
+        if isinstance(item, dict) and str(item.get("comment") or "").strip():
+            title = str(item.get("title") or "").strip()
+            comment = str(item.get("comment") or "").strip()
+            verdict_lines.append(f"{title}：{comment}" if title else comment)
+    lead = ""
+    if dives:
+        first_points = dives[0]["points"]
+        lead = first_points[0]["text"].split("\n")[0] if first_points else ""
+    return {
+        "title": f"深度日报 {date_str}",
+        "lead": lead or None,
+        "deep_dives": dives,
+        "frontier": [],
+        "raw_paragraphs": [],
+        "toc": [{"level": 3, "text": dive["heading"]} for dive in dives],
+        "char_count": total_chars,
+        "reading_minutes": max(1, round(total_chars / 400)),
+        "editor_verdict": "\n\n".join(verdict_lines) if verdict else None,
+        "source_file": f"data/editorial/{date_str}/report.json",
+    }
+
+
+def _resolve_report(
+    *,
+    brief: dict,
+    report_md: str | None,
+    date_str: str,
+    warnings: list[str],
+) -> dict | None:
+    """解析/构造 02 页面 report 块：优先 S4 结构化数据，退回旧 Markdown。"""
+    review = brief.get("report_review") or {}
+    rows = [row for row in (brief.get("report_rows") or []) if isinstance(row, dict)]
+    if rows:
+        return _report_from_rows(rows, date_str=date_str, review=review)
+    try:
+        report = parse_report_markdown(report_md or "")
+        if report is not None:
+            report["source_file"] = f"data/reports/daily_report_{date_str}.md"
+    except ValueError:
+        log.warning("report parse failed for %s", date_str, exc_info=True)
+        report = None
+        warnings.append("report_parse_failed")
+    verdict = str(review.get("overall") or "").strip()
+    if report is not None and verdict:
+        verdict_lines = [verdict]
+        for item in (review.get("items") or [])[:2]:
+            if not isinstance(item, dict):
+                continue
+            title = str(item.get("title") or "").strip()
+            comment = str(item.get("comment") or "").strip()
+            if comment:
+                verdict_lines.append(f"{title}：{comment}" if title else comment)
+        report["editor_verdict"] = "\n\n".join(verdict_lines)
+    return report
+
+
 def build_digest(
     *,
     date_str: str,
@@ -345,31 +449,8 @@ def build_digest(
         }
         warnings.append("sources_build_failed")
 
-    try:
-        report = parse_report_markdown(report_md or "")
-        if report is not None:
-            report["source_file"] = f"data/reports/daily_report_{date_str}.md"
-    except ValueError:
-        log.warning("report parse failed for %s", date_str, exc_info=True)
-        report = None
-        warnings.append("report_parse_failed")
-
-    # S5 日报点评 -> 02 版块「编辑短评」；S7 播客点评 show_notes -> 01 版块「编辑导语」
-    report_review = brief.get("report_review") or {}
+    report = _resolve_report(brief=brief, report_md=report_md, date_str=date_str, warnings=warnings)
     podcast_review = brief.get("podcast_review") or {}
-    report_verdict = str(report_review.get("overall") or "").strip()
-    if report_verdict:
-        # 编辑短评 = 日报点评总评 + 前两条逐条点评（renderRichText 会按序号渲染）
-        verdict_lines = [report_verdict]
-        for item in (report_review.get("items") or [])[:2]:
-            if not isinstance(item, dict):
-                continue
-            title = str(item.get("title") or "").strip()
-            comment = str(item.get("comment") or "").strip()
-            if comment:
-                verdict_lines.append(f"{title}：{comment}" if title else comment)
-        if report is not None:
-            report["editor_verdict"] = "\n\n".join(verdict_lines)
     podcast_notes = str(podcast_review.get("show_notes") or "").strip()
 
     radar_block = _radar_block(radar, date_str, cfg)
