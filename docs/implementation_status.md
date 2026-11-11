@@ -330,3 +330,10 @@ LLM S3-S7      16m     (8%)
   开启后同一主题/来源类别超过上限的候选不再入选，用于后续“防偏科”策略；
 - 默认关闭的原因：主题标签较宽（技术/产品/商业），未评测前开启可能把 top8 压到 3 条；
 - 测试：`tests/test_recommend_rerank.py` 覆盖主题/类别上限；873 passed。
+
+## 来源可信度分级（2026-11-11）
+
+- `business/ocean/source_tier.py`：按 Item.category 分级（official/research=1，news=2，
+  community/video/podcast=3），事件取最可信来源 `best_source_tier`；
+- 重排同分时优先更可信来源（tie-break，不改分数）；字段可供后续页面/审计展示；
+- 测试：`tests/test_ocean_source_tier.py`、重排 tie-break；879 passed。

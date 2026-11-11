@@ -36,6 +36,7 @@ from ai_news_podcast.business.ocean.labels import (
     load_lexicon,
     merge_labels,
 )
+from ai_news_podcast.business.ocean.source_tier import best_tier
 from ai_news_podcast.business.ocean.textutils import clean_text, parse_time
 
 log = logging.getLogger(__name__)
@@ -166,6 +167,7 @@ def _build_event(
         is_update=False,
         labels=labels,
         source_categories=sorted({str(item.category or "news") for item in members}),
+        best_source_tier=best_tier(members),
         evidence_score=evidence.score,
         momentum_growth=evidence.momentum_growth,
         reappeared=False,
