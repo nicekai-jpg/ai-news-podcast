@@ -123,6 +123,8 @@ Stage CLIs (console scripts in pyproject):
   `fulltext=true`、`max_workers=12`、自动部署 gh-pages 并提交 main）。GHA 半夜跑不赶时间，
   全文用于 Stage 2 标注/Stage 3 推荐更准确，慢可以接受；手动 dispatch 可覆盖参数
   （fulltext/max_workers/deploy 等）。旧 `daily.yml` 保留 `workflow_dispatch` 仅作回滚，不再定时。
+  Notify job 汇总各 job 结果，失败时开/评论 `⚠️ v3 pipeline failed: {date}` issue；
+  覆盖账本在 pipeline job 结束即提交（TTS/publish 失败也不会丢跨日状态）。
   与旧链共享 `podcast-pipeline` 并发组。
 - **历史 artifact（Stage 2 跨日）**：pipeline job 先用 `scripts/fetch_v3_history.py` 通过 gh CLI
   下载最近 14 天成功的 `v3-output-<date>` artifact（权限 `actions: read`），合并 `data/ocean/<date>/`
