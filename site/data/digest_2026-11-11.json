@@ -1,0 +1,567 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-11",
+  "date_label": "2026年11月11日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": false
+  },
+  "podcast": {
+    "title": "今日AI看点 | 2026-11-11",
+    "subtitle": "Introducing Claude Fable 5.2 and Claude Mythos 5.2",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-11.mp3",
+    "duration_seconds": 643.059,
+    "duration_label": "10:43",
+    "speech_seconds": 617.15,
+    "segment_count": 56,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 56,
+      "segments_url": "episodes/2026-11-11/playlist.json",
+      "text_url": "episodes/2026-11-11.txt"
+    }
+  },
+  "lead": {
+    "text": "本期把AI竞争从“单次回答”拉回真实流程：先审视模型能力、访问资格与安全边界，再讨论多Agent长任务能否持续规划和验证；随后对比ChatGPT的企业经营入口与Claude的上下文工作台，最后落到Seedream 5.5的连续编辑和玛莎拉蒂Design的产业协作。后两章信息较完整，前两章的模型称谓与发布方数据仍需补齐来源。",
+    "source": "podcast_review",
+    "source_file": "data/reports/daily_report_2026-11-11.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 718,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 1,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 56,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 7,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "模型升级与开放边界",
+      "start": 26.586,
+      "label": "00:27",
+      "source": "script"
+    },
+    {
+      "title": "Agent的工程边界",
+      "start": 128.659,
+      "label": "02:09",
+      "source": "script"
+    },
+    {
+      "title": "企业入口与协作工作台",
+      "start": 260.621,
+      "label": "04:21",
+      "source": "script"
+    },
+    {
+      "title": "快讯与明日观察",
+      "start": 479.127,
+      "label": "07:59",
+      "source": "script"
+    }
+  ],
+  "report": {
+    "title": "深度日报 2026-11-11",
+    "lead": "据现有报道，字节发布了新的生图模型Seedream 5.5，列出的更新重点包括局部编辑与多轮修改的一致性、原生透明和半透明素材、复杂场景中的文字与排版，以及人物和场景的真实质感。Seedream 5.5已上线豆包、豆包工作和即梦；API服务将于本周上线火山引擎。在即梦网页中，可在“生成”的图片生成模式选择该模型，多张参考图放在一起操作则使用“画布”。",
+    "deep_dives": [
+      {
+        "heading": "1、字节发布Seedream 5.5生图模型",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，字节发布了新的生图模型Seedream 5.5，列出的更新重点包括局部编辑与多轮修改的一致性、原生透明和半透明素材、复杂场景中的文字与排版，以及人物和场景的真实质感。Seedream 5.5已上线豆包、豆包工作和即梦；API服务将于本周上线火山引擎。在即梦网页中，可在“生成”的图片生成模式选择该模型，多张参考图放在一起操作则使用“画布”。\n据现有报道，官方案例把同一张图连续编辑修改了100轮；该媒体随后进行18轮测试，每轮仅修改生日猫蛋糕正面的数字，数字从1改到18，同时把猫咪花色、捧脸姿势、珍珠饰品、桌上蜡烛和酒杯作为固定参照。报道者称，18轮后数字均改对，猫的捧脸双爪、额头珍珠头饰和脖子项链未发生明显偏移。\n据现有报道，在另一项12轮服装试搭测试中，测试者每一轮都在上一轮结果上继续修改，依次更换打底衫、长袖开衫和长裤，最后修改包的颜色与材质，同时要求左侧“圆领打底衫”搭配小图同步更新。测试时固定了人物身份、身形、站姿、手机、房间陈设和光影。报道者称，最终动图中左侧小图随服装变化更新，人物背后的布局保持不变。\n据现有报道，在同为18轮的对照测试中，Image 2.6的蛋糕数字仍能辨认，但报道者观察到后半段画面变化增多，开始出现画面变模糊、猫脸、毛发和桌布块状重绘，以及原本偏暗的烛光场景逐渐变亮、变暖。该对照来自同一篇实测文章，并非第三方独立复测；现有材料中与Nano Banana 2有关的具体比较内容被截断。"
+          },
+          {
+            "label": "背景",
+            "text": "分析口径：现有材料把Seedream 5.5描述为字节的新生图模型，并将此次更新与局部编辑、多轮修改、透明背景、文字排版和真实质感联系起来。报道采用猫咪数字连续修改、服装试搭等场景进行实测，并提及与Image 2.6、Nano Banana 2进行对照；当前只有单一独立来源，且证据正文被截断。"
+          },
+          {
+            "label": "影响",
+            "text": "分析口径：如果连续局部修改的稳定性、跨区域一致性和透明图输出能够在不同题材中复现，Seedream 5.5可能更适合商品图迭代、人物服装试搭和素材制作；API接入火山引擎后，开发者也可能把它嵌入现有工作流。当前证据不足以判断其相对Image 2.6、Nano Banana 2的整体优劣，也不足以确认生产环境中的成本、速度与稳定性。"
+          },
+          {
+            "label": "反方",
+            "text": "据现有报道中的对照测试，Image 2.6在18轮数字修改任务中仍能保持数字可辨认，但后半段被观察到模糊、块状重绘，以及烛光场景变亮、变暖。这一结果仅是同一媒体进行的对照，未形成独立反方证据；除此之外，暂无公开反方信息。"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "2、OpenAI测试ChatGPT企业入口与智能体",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "OpenAI正在推出测试版功能“Businesses in ChatGPT”。企业可通过Business Hub认领业务、维护企业信息，并查看用户如何与该企业在ChatGPT中互动。官方材料称，ChatGPT每周有“1.2 billion”用户；此次测试让企业建立更完整的资料入口，并获得用户互动表现方面的数据。Business Hub的这组管理、资料维护与洞察查看能力，构成该测试版面向企业的主要操作界面。\n据现有报道，Business Agents首批面向美国符合条件的电商及在线服务企业，可由企业在ChatGPT中创建，用于回答客户问题、协助比较产品，也可成为ChatGPT广告的目标。商家还可在Business Hub加入带价格和库存状态的商品信息流，并查看自身在对话中被提及的次数及网站获得的点击数；Shopify商家可直接连接店铺。\n据现有报道，OpenAI表示，用户与ChatGPT的对话不会与企业共享；公司计划逐步把Businesses in ChatGPT扩展到更多市场和行业。该设计与Google My Business存在功能交集：后者是Google提供的免费工具，用于管理企业在Search和Maps中的展示信息；现有材料将OpenAI的新入口描述为把企业资料直接置于对话式AI界面中。"
+          },
+          {
+            "label": "背景",
+            "text": "背景：现有材料把Google My Business定位为企业信息管理工具，用于管理企业在Search和Maps中的展示；Businesses in ChatGPT则把认领资料、管理信息、互动洞察和Business Agents集中到ChatGPT。两者都涉及企业资料控制，但前者围绕搜索与地图展示，后者围绕对话交互；现有材料未提供用户迁移、流量规模或变现方式的对比数据。"
+          },
+          {
+            "label": "影响",
+            "text": "影响：较直接的产品影响集中在电商、在线服务及Shopify商家，因为现有功能已经覆盖资料接入、商品信息和Business Agents路径。更广泛的结果取决于Business Agents的覆盖范围、回答准确性、隐私执行、广告机制和用户采用情况；在这些变量未披露前，无法量化其对OpenAI收入、企业获客成本或Google企业工具份额的影响。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "3、Anthropic 扩展 Claude 应用内协作",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据 Anthropic 公告，互动连接器此次升级后，在连接器支持相应能力的情况下，用户可在 Claude 对话旁打开合作方工具，或将其展开至全屏，并让 Claude 与用户同时在该工具中工作。该功能正面向网页端和 Claude 桌面应用的所有方案推出，也是新版 Claude 体验将聊天与 Cowork 合并的一部分。功能会在账户更新至新版 Claude，或由所在组织启用后出现。\n据 Anthropic 公告，用户可要求 Claude 修改当前打开工具中的页面、行或文件，并在操作前以与批准连接器操作相同的方式批准 Claude 的操作；获准后的修改会直接显示在工具内，用户可继续并行工作。对 Confluence、Notion 等工具，Claude 中打开的是用户以自身账户登录后的完整编辑器，而非此前互动连接器提供的有限预览。\nAnthropic 同时发布 Claude Whiteboards 和 Claude Sheets 的测试版，并将 Claude Dashboards 转为正式可用的 Claude Data。Whiteboards 是供团队与 Claude 共同头脑风暴的共享看板；Sheets 是 Claude 与用户共同构建、编辑的电子表格；Claude Data 增加数据故事、认证查询和实时分享。三者面向所有付费方案提供。\n此次更新把连接器从工具预览推进到合作方应用的直接嵌入。Anthropic 提到 Adobe、Atlassian 等合作伙伴，The Decoder 则将 Adobe、Atlassian、Salesforce 列入相关合作方。Anthropic 还表示 Salesforce 插件处于测试版，并称可加入通话、记录笔记的 Claude Meetings 为“即将推出”；这些变化与 Claude Sheets、Claude Whiteboards 和 Claude Data 一同构成此次工作区更新。"
+          },
+          {
+            "label": "背景",
+            "text": "背景脉络：互动连接器此前仅提供工具的小型实时视图。此次更新把完整工具嵌入、Claude 直接操作、原生协作工件与 Cowork 放进同一工作流程，方向上是从独立聊天工具扩展为跨应用工作空间。"
+          },
+          {
+            "label": "影响",
+            "text": "分析口径：短期可能降低文档、表格和业务工具之间的上下文搬运成本，并扩大 Claude 在团队协作场景中的使用范围；中长期则取决于企业审计、权限粒度、连接器覆盖、运行稳定性和付费方案限制。现有资料没有披露统一的价格、采用率或生产环境效率数据，因此尚不足以量化商业影响。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "4、玛莎拉蒂与尊界合作定名，计划2027年第四季度量产",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，玛莎拉蒂与尊界的合作项目已正式定名为「玛莎拉蒂 Design」，新车外观设计已经冻结，按计划将于 2027 年第四季度进入量产阶段。合作涉及 Stellantis 集团、华为与江淮汽车，三方分工为：尊界超级工厂负责在华生产，华为提供鸿蒙座舱、乾崑 ADS 高阶智驾及三电系统，玛莎拉蒂负责造型设计并输出海外销售网络。\n据现有报道，玛莎拉蒂在中国不具备独立的乘用车生产资质，新车将由位于安徽合肥的尊界超级工厂代工生产。未喷涂的白车身与三电底盘在合肥尊界工厂下线后，将以半散件形式运往意大利；车漆喷涂、内饰装配等后续工序，则由玛莎拉蒂位于摩德纳或卡西诺的工厂完成，构成跨越中欧两地的组装方案，且海外车辆将悬挂玛莎拉蒂三叉戟车标。\n据现有报道，该项目初期规划了两款车：一款中大型纯电 SUV，以及一款大型纯电 GT。玛莎拉蒂内部目前更倾向于让大型纯电 GT 率先上市，以延续 GranTurismo 车系的产品定位。国内市场方面，新车将归入尊界品牌并进入鸿蒙智行渠道；海外市场则悬挂玛莎拉蒂三叉戟车标，通过其全球经销商网络销售，中东、意大利、法国和德国被列为首批重点市场。\n2025 年全年，玛莎拉蒂全球销量不足 8000 辆，较 2017 年的高点下降逾八成，创下十多年来的最低纪录；同期调整后营业亏损达 1.98 亿欧元，营业利润率为 -27.3%。报道还称，Stellantis 集团首席执行官安东尼奥·菲洛萨在今年 6 月曾公开表示，集团不会出售玛莎拉蒂，但必须为它找一个产业合作伙伴。"
+          },
+          {
+            "label": "背景",
+            "text": "从现有报道呈现的背景看，玛莎拉蒂在中国不具备独立乘用车生产资质，Stellantis 集团则把绝大部分研发预算留给走量的主流品牌，玛莎拉蒂自身难以独立承担从零开发纯电平台和智能座舱的资金需求。此次合作因而同时涉及品牌销量与盈利压力、电动化技术投入、国内生产资质和海外渠道衔接等问题，其性质更接近传统豪华品牌对外部技术与制造资源的组合。"
+          },
+          {
+            "label": "影响",
+            "text": "若项目按计划推进，可能影响高端纯电市场的产品与渠道格局：国内将新增尊界序列产品，海外则会出现采用玛莎拉蒂标识、由中欧两地协作生产的车型。对投资者和消费者而言，后续应关注首款车型形式、上市时间、定价、产能安排及实际销量。现阶段不宜把车型规划和量产时间表视为已经落地的产品或确定的商业结果。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      }
+    ],
+    "frontier": [],
+    "raw_paragraphs": [],
+    "toc": [
+      {
+        "level": 3,
+        "text": "1、字节发布Seedream 5.5生图模型"
+      },
+      {
+        "level": 3,
+        "text": "2、OpenAI测试ChatGPT企业入口与智能体"
+      },
+      {
+        "level": 3,
+        "text": "3、Anthropic 扩展 Claude 应用内协作"
+      },
+      {
+        "level": 3,
+        "text": "4、玛莎拉蒂与尊界合作定名，计划2027年第四季度量产"
+      }
+    ],
+    "char_count": 3991,
+    "reading_minutes": 10,
+    "editor_verdict": "整份日报与所给证据大体一致，未见核心数字硬冲突，Seedream一条对“官方案例100轮”和“媒体实测18轮”的区分尤其稳妥。最需处理的是来源与归因：Claude、玛莎拉蒂来源栏为空，Businesses来源展示不完整；相对时间也应改成可核验日期。\n\n字节发布Seedream 5.5生图模型：数字与证据基本吻合：100轮是官方案例，媒体实测为18轮；12轮服装试搭及Image 2.6对照也表述准确。标题未沿用“100轮不崩”，避免了夸大。建议补齐原文链接，并把“本周上线”锚定到报道日期。\n\nOpenAI测试ChatGPT企业入口与智能体：功能、首批资格及“每周12亿”均与OpenAI材料一致，也已注明12亿是OpenAI口径。需要补的是来源展示：事实挂有两条证据，来源栏却只列官方页；建议统一将1.2 billion写作“12亿/周”。",
+    "source_file": "data/editorial/2026-11-11/report.json"
+  },
+  "report_review": {
+    "overall": "整份日报与所给证据大体一致，未见核心数字硬冲突，Seedream一条对“官方案例100轮”和“媒体实测18轮”的区分尤其稳妥。最需处理的是来源与归因：Claude、玛莎拉蒂来源栏为空，Businesses来源展示不完整；相对时间也应改成可核验日期。",
+    "items": [
+      {
+        "event_id": "4d763641c1f6deafc5d90eb6fc0d4bdd1f5e67d035bd22c1d696c59d717bde1f",
+        "title": "字节发布Seedream 5.5生图模型",
+        "verdict": "补充",
+        "comment": "数字与证据基本吻合：100轮是官方案例，媒体实测为18轮；12轮服装试搭及Image 2.6对照也表述准确。标题未沿用“100轮不崩”，避免了夸大。建议补齐原文链接，并把“本周上线”锚定到报道日期。",
+        "corrections": [
+          "“API服务将于本周上线火山引擎”需以报道日期（2026-11-10）作时间锚点，并保留“计划”口径。",
+          "唯一来源链接为空；应补上该实测原文链接，并尽量增加字节或火山引擎官方页面作为直接依据。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "ccc533b30ca17d00aece300dafd4d1445194c676e1265e5f521e404309ac183f",
+        "title": "OpenAI测试ChatGPT企业入口与智能体",
+        "verdict": "补充",
+        "comment": "功能、首批资格及“每周12亿”均与OpenAI材料一致，也已注明12亿是OpenAI口径。需要补的是来源展示：事实挂有两条证据，来源栏却只列官方页；建议统一将1.2 billion写作“12亿/周”。",
+        "corrections": [
+          "来源栏与证据索引不一致：首条事实引用两条证据，但sources只列OpenAI官方页面；应补列另一条来源及链接，或说明其只是官方页摘要。",
+          "“1.2 billion”建议统一写为“12亿/周”，并保留“OpenAI称”及统计口径说明。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "0445740df79c4700636121c729b5f661ec0b3fd6f0f02cd679fe21c747a21ee7",
+        "title": "Anthropic 扩展 Claude 应用内协作",
+        "verdict": "补充",
+        "comment": "连接器升级、审批机制、三类协作工件及Salesforce测试版均有官方材料或The Decoder对应，未见数字冲突。主要缺口是来源栏为空；“聊天与Cowork合并”比官方原意更强，宜改为“整合”或“合流”。",
+        "corrections": [
+          "sources为空，但正文实际引用了多项证据；应至少列出Anthropic相关公告与The Decoder原文。",
+          "“将聊天与Cowork合并”较官方“brings chat and Cowork together”更强，建议改为“整合”或“合流”，避免暗示产品已完成合并。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "2e5496695bd0585dc41663d39b2154843f97dade731c8a05c58ca86ecc84d636",
+        "title": "玛莎拉蒂与尊界合作定名，计划2027年第四季度量产",
+        "verdict": "需修正",
+        "comment": "量产时点、车型规划、跨两地组装及财务数字均与报道一致，分析也未把规划当成结果。需修正的是归因强度：证据仅一篇媒体来源，标题和“已正式定名”应保留“据报道”；来源栏也要补齐。",
+        "corrections": [
+          "标题“合作定名”及正文“已正式定名、设计已经冻结”应明确归因于该篇报道；现有证据不是三方官方公告。",
+          "来源栏为空，应补列该报道的媒体名称、标题和链接。",
+          "“今年6月”需随报道日期换算为具体年月或补充时间锚点，避免相对时间歧义。"
+        ],
+        "highlights": []
+      }
+    ],
+    "risks": [
+      "Seedream证据正文被截断且仅有一篇媒体实测，Nano Banana 2对照无法核验；100轮是官方案例，不能写成独立实测结论。",
+      "ChatGPT“每周12亿”为OpenAI自报口径，测试资格、收费方式、广告机制及隐私承诺的实际执行仍有待观察。",
+      "Claude连接器的完整支持清单、组织启用节奏、权限粒度、第三方数据边界及Claude Meetings发布日期尚未披露。",
+      "玛莎拉蒂项目的名称、设计冻结、量产时点和渠道安排均缺少官方公告，2027年第四季度量产仍是计划而非确定结果。"
+    ]
+  },
+  "podcast_review": {
+    "overall": "本期以“长任务—企业入口—协作工作台—产业落地”串起六条动态，双主播的结构推进清楚，后两章与现有日报要点大体吻合。但前两章大量模型名称、价格、速度及Agent实验没有对应参考资料，且Claude工作台若干细节也缺少出处；建议补齐来源、收窄绝对化表述。",
+    "show_notes": "本期把AI竞争从“单次回答”拉回真实流程：先审视模型能力、访问资格与安全边界，再讨论多Agent长任务能否持续规划和验证；随后对比ChatGPT的企业经营入口与Claude的上下文工作台，最后落到Seedream 5.5的连续编辑和玛莎拉蒂Design的产业协作。后两章信息较完整，前两章的模型称谓与发布方数据仍需补齐来源。",
+    "chapters": [
+      {
+        "title": "模型升级与开放边界",
+        "intro": "本章试图把模型升级拆成能力、准入与安全三条轴，但Fable 5.2、Mythos 5.2及其价格、速度和RSI限制均未出现在所给日报要点中，适合作为待核验线索而非已确认结论。",
+        "highlights": [
+          "Fable与Mythos被描述为同底模、不同开放范围，差异核心在访问资格。",
+          "API降价、Fast模式与速度提升被列为成本和效率变量。",
+          "能力相近不等于门槛相同，安全边界应单独评估。"
+        ]
+      },
+      {
+        "title": "Agent的工程边界",
+        "intro": "多Agent连续运行、系统级开发、代码迁移和形式化证明，构成“长任务”叙事的主证据；不过这些具体结果与对比数据在现有参考资料中没有对应条目，发布方结果和可外推范围需要单独核验。",
+        "highlights": [
+          "从千个Agent协作八天造操作系统，追问自主拆解与冲突修正。",
+          "以代码库迁移和形式化证明检验持续执行、机器验证。",
+          "区分单场景结果与可普遍复制的工程能力。"
+        ]
+      },
+      {
+        "title": "企业入口与协作工作台",
+        "intro": "本章对照两种企业路径：ChatGPT让商家进入对话现场，Claude把第三方工具与协作产物留在工作区。现有要点支持其产品方向，但连接器数量、具体连接对象及部分治理能力仍应补出处。",
+        "highlights": [
+          "Business Hub、商品信息流和Business Agents争夺对话中的商业入口。",
+          "互动连接器升级为完整编辑器，修改仍需逐次批准。",
+          "Whiteboards、Sheets、Data把上下文、协作和数据连接组合起来。"
+        ]
+      },
+      {
+        "title": "快讯与明日观察",
+        "intro": "两条快讯分别检验生成模型的连续编辑稳定性与汽车合作的制造、渠道落地。前者来自官方案例和同篇实测，后者多为项目规划与品牌财务数据，适合据此设定后续观察指标。",
+        "highlights": [
+          "Seedream 5.5以100轮官方案例、18轮数字编辑和12轮换装测试聚焦一致性。",
+          "与Image 2.6的对照来自同一篇实测，不等于独立复测。",
+          "玛莎拉蒂Design的量产节点、两款车型与中欧分工构成后续观察清单。"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "event_id": "4d763641c1f6deafc5d90eb6fc0d4bdd1f5e67d035bd22c1d696c59d717bde1f",
+        "title": "字节发布Seedream 5.5生图模型",
+        "verdict": "准确",
+        "comment": "核心更新、上线入口、100轮官方案例及18轮局部编辑均与参考要点一致，12轮换装测试也有支撑。需注明与Image 2.6的对照来自同一篇文章，并非第三方独立复测。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "ccc533b30ca17d00aece300dafd4d1445194c676e1265e5f521e404309ac183f",
+        "title": "OpenAI测试ChatGPT企业入口与智能体",
+        "verdict": "准确",
+        "comment": "Business Hub、商品feed、Business Agents、Shopify接入及美国首批范围均与参考要点一致；文稿也保留了“不共享原始对话”的权限边界，能避免把分析能力误读为持续监听。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "0445740df79c4700636121c729b5f661ec0b3fd6f0f02cd679fe21c747a21ee7",
+        "title": "Anthropic 扩展 Claude 应用内协作",
+        "verdict": "补充",
+        "comment": "互动连接器、逐次批准、完整编辑器及Whiteboards、Sheets、Data主线吻合；但文稿应补上账户更新或组织启用条件，并核验“9000个连接器”、Claude Data连接对象等扩展细节。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "2e5496695bd0585dc41663d39b2154843f97dade731c8a05c58ca86ecc84d636",
+        "title": "玛莎拉蒂与尊界合作定名，计划2027年第四季度量产",
+        "verdict": "准确",
+        "comment": "定名、设计冻结、2027年第四季度量产、三方分工、两款规划车型及销量和亏损数据均有参考支撑。结论应继续使用“计划”口径，并提示现阶段主要依据单一报道。",
+        "corrections": [],
+        "highlights": []
+      }
+    ],
+    "fact_check_notes": [
+      "需核验Fable 5.2、Mythos 5.2、Opus 5.5是否确为正式型号，以及“同底模、开放范围不同、需通过Cybersecurity或Life Sciences验证项目申请”等发布与准入信息；所给要点无对应来源。",
+      "需核验API降价20%、每百万token输入8美元和输出40美元、Fast模式16美元和80美元、速度最高提升30%、输出最高2.5倍速及限制RSI等数字。",
+      "需核验千个Agent连续八天编写操作系统、核心代码库超过90%合并提交由Claude完成、30小时完成费马大定理形式化证明及相关对比数据；还应明确这些结果是否仅为发布方预发布测试。",
+      "黑洞物理问题、电子设备设计和机器人评估等追加案例缺少所给材料中的对应来源，需补充出处并避免直接外推。",
+      "Claude部分的“9000个连接器和插件”、MCP、Claude Code获取代码库上下文、Whiteboards负责人和日期、Sheets公式与多标签、Claude Data连接对象及审计和隔离能力等细节，需进一步核实。",
+      "Seedream与Image 2.6的18轮对照来自同一篇文章内的实测，并非第三方独立复测，页面文案宜明确这一证据边界。",
+      "玛莎拉蒂Design目前主要依据单一报道；量产时间、车型先后及市场安排均属规划信息，应持续保留条件语气。"
+    ]
+  },
+  "sources": {
+    "total_all": 7,
+    "total_main": 1,
+    "shown": 7,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 6
+      },
+      {
+        "publisher": "arXiv 论文",
+        "group": "arXiv 论文",
+        "count": 1
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "AI 工具集",
+        "group": "科技媒体",
+        "source_name": "AI 工具集",
+        "category": "",
+        "title": "Introducing Claude Fable 5.2 and Claude Mythos 5.2",
+        "summary": "Anthropic推出 Claude Fable 5.2 与 Claude Mythos 5.2 :1000个Agent自主协作8天从空文件夹造出可开机操作系统,30小时完成费马大定理形式化证明,一天设计出四层PCB板并造出三台真机,单卡7分钟破解病毒衣壳折叠。跑分几乎全项第一,Claude Fable 5.2在High档以 Claude Opus 5.5 一半价格平替其极限水平。 来源:量子位",
+        "link": "https://mp.weixin.qq.com/s/-7HZq3dikDuFlf3k0ZtKHw",
+        "published_at": "2026-11-09T16:00:00+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "夕小瑶科技说",
+        "group": "科技媒体",
+        "source_name": "夕小瑶科技说",
+        "category": "",
+        "title": "实测Seedream 5.5:100轮改图不崩,还能直出透明图",
+        "summary": "原创 夕小瑶编辑部 2026-11-10 13:21 北京 昨天,字节发布了新的生图模型 Seedream 5.5。 这次更新有几个明显的变化:局部编辑和多轮修改时的一致性、原生透明和半透明素材、复杂场景里的文字与排版,以及人物和场景的真实质感。 我挑了几个场景试了试,部分场景也放了 Image 2.6 和 Nano Banana 2 的结果作参照。 先说入口,Seedream 5.5 已经上线豆包、豆包工作和即梦。API 服务将于本周上线火山引擎。 比如打开即梦网页,在“生",
+        "link": "https://mp.weixin.qq.com/s?__biz=MzIwNzc2NTk0NQ==&mid=2247623241&idx=1&sn=3b899492617510ef605e6790d86a0f9d",
+        "published_at": "2026-11-10T05:21:00+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "The Decoder",
+        "group": "科技媒体",
+        "source_name": "The Decoder",
+        "category": "",
+        "title": "Introducing Businesses in ChatGPT",
+        "summary": "OpenAI is launching a beta feature called \"Businesses in ChatGPT\" that could compete with Google's \"MyBusiness.\" Google My Business is Google's free tool that lets companies manage how they appear across Search and Maps, and OpenAI's new of",
+        "link": "https://the-decoder.com/openai-turns-chatgpt-into-a-business-directory-with-ai-agents-that-handle-customer-questions/",
+        "published_at": "2026-11-10T20:17:00+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Claude Blog",
+        "group": "科技媒体",
+        "source_name": "Claude Blog",
+        "category": "",
+        "title": "Your apps can now open in Claude, and Claude can work in them",
+        "summary": "Today we’re launching Claude Whiteboards and Claude Sheets in beta, and Claude Dashboards (opens in new tab) becomes generally available as Claude Data. Whiteboards is a shared board where your team brainstorms with Claude, Sheets is a spre",
+        "link": "https://claude.com/resources/articles/sheets-whiteboards-data",
+        "published_at": "2026-11-10T00:00:00+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "爱范儿",
+        "group": "科技媒体",
+        "source_name": "爱范儿",
+        "category": "",
+        "title": "玛莎拉蒂将与尊界联合造车,首发车型或为双门 GT,明年正式量产",
+        "summary": "中国车企买标充门面的时代已经过去了。 #欢迎关注爱范儿官方微信公众号:爱范儿(微信号:ifanr),更多精彩内容第一时间为您奉上。",
+        "link": "https://www.ifanr.com/1688586?utm_source=rss&utm_medium=rss&utm_campaign=",
+        "published_at": "2026-11-09T14:56:35+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "arXiv · xAI/Grok",
+        "group": "arXiv 论文",
+        "source_name": "arXiv · xAI/Grok",
+        "category": "",
+        "title": "Fairness in Explainable AI Narratives: Decomposing Social Disparities in LLM-Generated Explanations",
+        "summary": "Large language models (LLMs) are increasingly used to translate technical explainable AI (XAI) artefacts such as SHAP into explanatory narratives (XAINs) for lay users. In high-risk domains, these explanations are often the main resource th",
+        "link": "https://arxiv.org/abs/2611.12592v1",
+        "published_at": "2026-11-09T15:42:42+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Cool Papers (cs.AI)",
+        "group": "科技媒体",
+        "source_name": "Cool Papers (cs.AI)",
+        "category": "",
+        "title": "MaxIM: Maximally Informative Incremental Summarization via Reinforcement Learning",
+        "summary": "[PDF] [Kimi] AI systems must often maintain bounded memory of unbounded interaction histories. However, optimizing the memory representation, and its updates, for downstream task utility is difficult for standard reinforcement learning (RL)",
+        "link": "https://papers.cool/arxiv/2611.12825",
+        "published_at": "2026-11-09T18:25:42+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": false,
+    "status": "unavailable",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": null,
+    "runner_ups": [],
+    "yesterday": null,
+    "candidates": {
+      "total": 0,
+      "excluded_recent": 0,
+      "fresh": null,
+      "semantics": "unknown",
+      "detail_available": false,
+      "preview": null
+    },
+    "message": "该日期暂无项目雷达"
+  },
+  "quality": {
+    "mode": "normal",
+    "chars": 4041,
+    "turns": 56,
+    "host_a_chars": 1924,
+    "host_b_chars": 1725,
+    "host_char_ratio": 0.473,
+    "chapters": 4
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-11-11.json",
+      "report": "data/reports/daily_report_2026-11-11.md",
+      "radar": "data/gh_radar/radar_2026-11-11.json",
+      "playlist": "site/episodes/2026-11-11/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": [
+      "radar_candidate_detail_unavailable"
+    ]
+  }
+}
