@@ -308,3 +308,17 @@ LLM S3-S7      16m     (8%)
   core 320、adjacent 82、none 48、unknown 150；
 - `eval_recommend.py` 支持多天聚合，新增 `aggregate_reports` 与分天明细；
 - 现有 v3 artifact 仅 3 天，后续每天自动积累，队列可持续扩容。
+
+## 标注工具（2026-11-11）
+
+- `scripts/split_review_queue.py`：按天拆分 600 条队列（11-09 198 / 11-10 167 / 11-11 235）；
+- `scripts/label_queue.py`：终端交互标注，回车接受建议、逐条写盘、可断点续标；
+- 队列/天文件在 `data/eval/recommend/days/`，标注产物 `labels_<date>.jsonl`。
+
+## ai_relevance 分级（2026-11-11）
+
+- `business/ocean/relevance.py`：规则版分级（core/adjacent/none/unknown + 证据词 + 置信度）；
+- `Labels` 新增 `ai_relevance` / `ai_evidence`；`label_text` 逐条打标，`merge_labels` 按
+  core > adjacent > none > unknown 合并；
+- 召回/粗排 AI 门槛优先读标签等级：core/adjacent 放行，none 淘汰，unknown 回退文本关键词；
+- 测试：`tests/test_ocean_relevance.py`、召回/粗排标签优先用例；871 passed。

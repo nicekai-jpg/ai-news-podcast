@@ -103,6 +103,8 @@ class Labels:
     narrative_angle: list[str] = field(default_factory=list)
     audience_persona: list[str] = field(default_factory=list)
     sensitivity: list[str] = field(default_factory=list)
+    ai_relevance: str = "unknown"  # core / adjacent / none / unknown
+    ai_evidence: list[str] = field(default_factory=list)  # 命中的 AI 关键词
     quote_availability: bool = False
     confidence: dict[str, float] = field(default_factory=dict)
     method: str = "rule"  # rule / llm / hybrid

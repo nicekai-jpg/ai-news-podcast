@@ -29,6 +29,7 @@ def _make_event(
     tech_stack: list[str] | None = None,
     novelty_numbers: list[dict] | None = None,
     title: str | None = None,
+    ai_relevance: str = "unknown",
 ) -> Event:
     seen = "" if age_hours is None else (REFERENCE - timedelta(hours=age_hours)).isoformat()
     labels = Labels(
@@ -42,6 +43,7 @@ def _make_event(
         lifecycle=lifecycle,
         evidence_tier=evidence_tier,
         novelty_numbers=[] if novelty_numbers is None else novelty_numbers,
+        ai_relevance=ai_relevance,
     )
     return Event(
         event_id=event_id,
@@ -243,3 +245,14 @@ class TestAiPrecondition:
             [car], RecallSettings(require_ai_relevance=False), reference_time=REFERENCE
         )
         assert [candidate.event.event_id for candidate in candidates] == ["car2"]
+
+    def test_label_grade_overrides_text(self) -> None:
+        car = _make_event("car3", title="某车企发布新车", ai_relevance="adjacent")
+        assert [
+            c.event.event_id
+            for c in recall_events([car], RecallSettings(), reference_time=REFERENCE)
+        ] == ["car3"]
+
+    def test_label_none_rejects_ai_text(self) -> None:
+        ai = _make_event("ai2", title="OpenAI 发布新模型", ai_relevance="none")
+        assert recall_events([ai], RecallSettings(), reference_time=REFERENCE) == []

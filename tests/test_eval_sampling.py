@@ -48,3 +48,16 @@ class TestStratifiedSample:
         first = stratified_sample(self._rows(), {"core": 2, "adjacent": 2})
         second = stratified_sample(list(reversed(self._rows())), {"core": 2, "adjacent": 2})
         assert [row["title"] for row in first] == [row["title"] for row in second]
+
+
+def test_split_by_day_groups_and_preserves_order() -> None:
+    from ai_news_podcast.business.eval.sampling import split_by_day
+
+    rows = [
+        {"date": "2026-11-10", "title": "b"},
+        {"date": "2026-11-09", "title": "a"},
+        {"date": "2026-11-10", "title": "c"},
+    ]
+    groups = split_by_day(rows)
+    assert list(groups) == ["2026-11-09", "2026-11-10"]
+    assert [row["title"] for row in groups["2026-11-10"]] == ["b", "c"]

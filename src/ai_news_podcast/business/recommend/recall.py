@@ -109,6 +109,11 @@ def _has_ai_signal(event: Event, settings: RecallSettings) -> bool:
     多路召回的各通道（时效/主体/连续性）只回答“是否值得关注”，不回答“是不是 AI”；
     因此 AI 相关性必须作为前置标准，避免汽车/消费/社会新闻靠时效或主体混进来。
     """
+    grade = str(getattr(event.labels, "ai_relevance", "unknown") or "unknown")
+    if grade in ("core", "adjacent"):
+        return True
+    if grade == "none":
+        return False
     text = f"{event.representative_title} {event.summary}"
     return bool(matched_keywords(text, settings.ai_text_keywords))
 

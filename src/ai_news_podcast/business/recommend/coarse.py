@@ -211,6 +211,11 @@ def _is_ai_related(event: Event, settings: CoarseSettings) -> bool:
     汽车/消费/社会新闻常因主体（如华为、特斯拉）命中所属主体通道而进入候选；
     这里只在标题/摘要上做 AI 关键词硬门槛，避免被正文里的偶然词或宽泛主题标签误放行。
     """
+    grade = str(getattr(event.labels, "ai_relevance", "unknown") or "unknown")
+    if grade in ("core", "adjacent"):
+        return True
+    if grade == "none":
+        return False
     text = f"{event.representative_title} {event.summary}"
     return bool(matched_keywords(text, settings.ai_text_keywords))
 

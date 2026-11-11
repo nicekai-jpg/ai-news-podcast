@@ -110,3 +110,61 @@ uv run python scripts/eval_recommend.py \
 - 标题精确匹配：事件合并后标题可能被改写，未匹配会列在报告里；
 - 只评推荐链路，不评日报/文稿/音频质量；
 - `worth_publishing` 目前只记录，不参与指标（后续可做“值得讲”的排序评测）。
+
+## 分次标注（推荐）
+
+先按天拆分，再逐天标，避免一次 600 条压力太大：
+
+```bash
+# 1. 按天拆分
+uv run python scripts/split_review_queue.py \
+  --queue data/eval/recommend/review_queue_2026-11.jsonl \
+  --out-dir data/eval/recommend/days
+
+# 2. 交互式标注（逐条写盘，Ctrl-C 可中断，重跑自动跳过已标）
+uv run python scripts/label_queue.py \
+  --queue data/eval/recommend/days/2026-11-11.jsonl \
+  --out data/eval/recommend/labels_2026-11-11.jsonl \
+  --limit 50
+
+# 3. 标完当天就跑一次评测
+uv run python scripts/eval_recommend.py \
+  --events data/ocean/2026-11-11/events.json \
+  --labels data/eval/recommend/labels_2026-11-11.jsonl \
+  --reference-time 2026-11-11T08:00:00+00:00
+```
+
+回车 = 接受机器建议；`s` = 跳过；`c/a/n/u` 手动指定 AI 相关性；`y/n` 选是否值得上节目。
+
+## Stage 2 的 ai_relevance 分级（规则版已上线）
+
+Stage 2 标注新增两个字段：
+
+| 字段 | 取值 | 说明 |
+|---|---|---|
+| `ai_relevance` | core | AI 模型、Agent、算法、AI 产品、AI 研究 |
+| `ai_relevance` | adjacent | 芯片、算力、机器人、自动驾驶、数据中心 |
+| `ai_relevance` | none | 无任何 AI 信号 |
+| `ai_relevance` | unknown | 信息不足 |
+| `ai_evidence` | 关键词列表 | 命中的证据词，便于人工审计 |
+
+判定顺序：
+
+```
+标题+摘要命中 core 词        → core   (confidence 0.8)
+标题+摘要只命中 infra 词     → adjacent (0.7)
+正文命中 core/infra 词       → core / adjacent (0.55 / 0.5)
+无任何命中                   → none   (0.6)
+标题+摘要过短                → unknown (0.2)
+```
+
+推荐链路（召回/粗排）优先信标签等级：
+
+```
+core / adjacent  → 直接放行
+none             → 直接淘汰
+unknown          → 回退到标题+摘要关键词门槛
+```
+
+规则版先保证零成本、可解释；等评测集标注完成后再决定是否用 LLM 复核
+（只对召回候选，成本可控）。
