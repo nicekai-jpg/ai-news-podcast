@@ -249,3 +249,19 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
 - 新增 LLM token 用量与费用统计：`data/editorial/{date}/llm_usage.json`（价格表在 pipeline_v3.yaml llm.pricing）。
 - C3 本地 RSSHub 复测：重新启用 6 个源（deeplearning/mathpix/pixelstech/ofweek/synced/36kr），
   启用数 121→127；剩余 5 个禁用（tmtpost/scientificamerican/csia/benedictevans 路由 404，venturebeat 429）。
+
+## 时长分析与采集提速（2026-11-11）
+
+首期成功跑（run 42945166054）总耗时 3h23m，拆解：
+
+```
+采集 S1        1h36m   (47%)
+TTS S8         1h15m   (37%)
+LLM S3-S7      16m     (8%)
+其他/发布      16m     (8%)
+```
+
+- 采集：stage1 原 12 workers、同域间隔 1.0s；改为 24 workers、间隔 0.5s（config/pipeline_v3.yaml stage1），
+  目标降到约 45–60 分钟；站点限流会导致部分 full_text failed，非致命。
+- TTS：CosyVoice2 CPU 推理 56 个 chunk 约 75 分钟（约 1.3 分钟/chunk）。可选优化：GPU runner、
+  分块并行合成、减少音色/句级切分；需单独评估质量与成本，暂未改。
