@@ -233,3 +233,10 @@ build_script(shortlist, events, commentaries, llm_call, *, config_path="config/e
   （02 编辑短评），与 app.js 既有槽位对齐。
 - CLI `--dry-run` 正常；GHA artifact 已包含 `data/editorial/`、`data/coverage/`、当天 ocean。
 - 尚未验证：GHA 全链路（采集 + TTS + publish + 自动提交/部署），等今晚定时首跑。
+
+## 全链路审计补充（2026-11-11）
+
+- 修复 02 页面 report 块：v3 日报 md 不兼容旧 parser，改为从 brief.report_rows/report_review 结构化构造。
+- 覆盖账本改为 pipeline job 结束即提交（continue-on-error），不依赖 TTS/publish 成功。
+- v3 增加 Notify job：汇总各 job 结果，失败时开/评论 issue（此前 v3 失败无告警）。
+- 全 Stage Flash 的 token/超时预算、历史 artifact 下载、watchdog 监控 v3 均已在 GHA 验证或修正。
