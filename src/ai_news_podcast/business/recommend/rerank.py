@@ -47,6 +47,7 @@ class _Features:
     subjects: frozenset[str]
     tech_stack: frozenset[str]
     topics: frozenset[str]
+    categories: frozenset[str]
 
 
 def rerank(
@@ -132,6 +133,8 @@ def _mmr_select(
     max_relevance = max((item.final_score for item in remaining), default=0.0) or 1.0
     subject_counts: dict[str, int] = {}
     tech_counts: dict[str, int] = {}
+    topic_counts: dict[str, int] = {}
+    category_counts: dict[str, int] = {}
 
     while remaining and len(selected) < limit:
         picked = _pick_best(
@@ -141,6 +144,8 @@ def _mmr_select(
             max_relevance,
             subject_counts,
             tech_counts,
+            topic_counts,
+            category_counts,
         )
         if picked is None:
             logger.debug("MMR 严格上限下已无可用候选，提前结束")
@@ -162,6 +167,10 @@ def _mmr_select(
             subject_counts[subject] = subject_counts.get(subject, 0) + 1
         for tech in features.tech_stack:
             tech_counts[tech] = tech_counts.get(tech, 0) + 1
+        for topic in features.topics:
+            topic_counts[topic] = topic_counts.get(topic, 0) + 1
+        for category in features.categories:
+            category_counts[category] = category_counts.get(category, 0) + 1
         remaining.remove(chosen)
     return selected
 
@@ -173,13 +182,22 @@ def _pick_best(
     max_relevance: float,
     subject_counts: dict[str, int],
     tech_counts: dict[str, int],
+    topic_counts: dict[str, int],
+    category_counts: dict[str, int],
 ) -> tuple[RerankedItem, float, float] | None:
     """返回 (原始候选, MMR utility, 多样性惩罚)，保持原对象以便从 remaining 移除。"""
     best: tuple[RerankedItem, float, float] | None = None
     best_key: tuple[float, float, str] | None = None
     for item in remaining:
         features = _features(item.event, settings)
-        if _capped(features, settings, subject_counts, tech_counts):
+        if _capped(
+            features,
+            settings,
+            subject_counts,
+            tech_counts,
+            topic_counts,
+            category_counts,
+        ):
             continue
         relevance = item.final_score / max_relevance
         similarity = max(
@@ -203,13 +221,22 @@ def _capped(
     settings: RerankSettings,
     subject_counts: dict[str, int],
     tech_counts: dict[str, int],
+    topic_counts: dict[str, int],
+    category_counts: dict[str, int],
 ) -> bool:
     if any(
         subject_counts.get(subject, 0) >= settings.max_per_subject for subject in features.subjects
     ):
         return True
-    return any(
-        tech_counts.get(tech, 0) >= settings.max_per_tech_stack for tech in features.tech_stack
+    if any(tech_counts.get(tech, 0) >= settings.max_per_tech_stack for tech in features.tech_stack):
+        return True
+    if settings.max_per_topic > 0 and any(
+        topic_counts.get(topic, 0) >= settings.max_per_topic for topic in features.topics
+    ):
+        return True
+    return settings.max_per_category > 0 and any(
+        category_counts.get(category, 0) >= settings.max_per_category
+        for category in features.categories
     )
 
 
@@ -226,6 +253,11 @@ def _features(event: Event, settings: RerankSettings) -> _Features:
         subjects=frozenset(subject for subject in subjects if subject),
         tech_stack=frozenset(tech for tech in tech_stack if tech and tech not in generic),
         topics=frozenset(normalize_text(topic) for topic in labels.topics if normalize_text(topic)),
+        categories=frozenset(
+            normalize_text(category)
+            for category in event.source_categories
+            if normalize_text(category)
+        ),
     )
 
 

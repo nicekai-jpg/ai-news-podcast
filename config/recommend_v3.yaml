@@ -158,6 +158,8 @@ rerank:
   mmr_lambda: 0.72          # utility = λ×相关度 − (1−λ)×最大相似度
   max_per_subject: 2
   max_per_tech_stack: 2
+  max_per_topic: 0            # 0=关闭；先评测再决定阈值
+  max_per_category: 0         # 0=关闭；official/news/research 混排后再启用
   title_dedupe_ratio: 0.92
   subject_similarity_weight: 0.45
   tech_similarity_weight: 0.35

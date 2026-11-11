@@ -314,6 +314,8 @@ class RerankSettings:
     mmr_lambda: float = 0.72
     max_per_subject: int = 2
     max_per_tech_stack: int = 2
+    max_per_topic: int = 0  # 0=关闭；评测后再决定是否开启
+    max_per_category: int = 0
     title_dedupe_ratio: float = 0.92
     subject_similarity_weight: float = 0.45
     tech_similarity_weight: float = 0.35
@@ -400,6 +402,8 @@ class RecommendConfig:
             mmr_lambda=to_float_config(rerank_raw.get("mmr_lambda"), 0.72),
             max_per_subject=int(to_float_config(rerank_raw.get("max_per_subject"), 2)),
             max_per_tech_stack=int(to_float_config(rerank_raw.get("max_per_tech_stack"), 2)),
+            max_per_topic=int(to_float_config(rerank_raw.get("max_per_topic"), 0)),
+            max_per_category=int(to_float_config(rerank_raw.get("max_per_category"), 0)),
             title_dedupe_ratio=to_float_config(rerank_raw.get("title_dedupe_ratio"), 0.92),
             subject_similarity_weight=to_float_config(
                 rerank_raw.get("subject_similarity_weight"), 0.45

@@ -165,6 +165,7 @@ def _build_event(
         sequence=1,
         is_update=False,
         labels=labels,
+        source_categories=sorted({str(item.category or "news") for item in members}),
         evidence_score=evidence.score,
         momentum_growth=evidence.momentum_growth,
         reappeared=False,

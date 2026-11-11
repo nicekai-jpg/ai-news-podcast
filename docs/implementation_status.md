@@ -322,3 +322,11 @@ LLM S3-S7      16m     (8%)
   core > adjacent > none > unknown 合并；
 - 召回/粗排 AI 门槛优先读标签等级：core/adjacent 放行，none 淘汰，unknown 回退文本关键词；
 - 测试：`tests/test_ocean_relevance.py`、召回/粗排标签优先用例；871 passed。
+
+## 推荐重排配额（2026-11-11）
+
+- `Event` 新增 `source_categories`（official/news/research/community），由事件内 items 汇总；
+- 重排新增 `max_per_topic` / `max_per_category` 配额，默认 0（关闭）；
+  开启后同一主题/来源类别超过上限的候选不再入选，用于后续“防偏科”策略；
+- 默认关闭的原因：主题标签较宽（技术/产品/商业），未评测前开启可能把 top8 压到 3 条；
+- 测试：`tests/test_recommend_rerank.py` 覆盖主题/类别上限；873 passed。

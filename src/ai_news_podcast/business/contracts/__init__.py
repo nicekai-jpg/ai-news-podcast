@@ -129,6 +129,7 @@ class Event:
     sequence: int = 1
     is_update: bool = False
     labels: Labels = field(default_factory=Labels)
+    source_categories: list[str] = field(default_factory=list)  # official/news/research/community
     evidence_score: float = 0.0
     momentum_growth: float = 0.0
     reappeared: bool = False
