@@ -225,6 +225,31 @@ class TestLlmJudgeIntegration:
         assert len(result) == 8
         assert all(entry.llm_score == 0.0 for entry in result)
 
+    def test_llm_samples_use_median_scores(self, tmp_path) -> None:
+        path = tmp_path / "config.yaml"
+        path.write_text(
+            "fine:\n  llm_top_k: 1\n  llm_samples: 3\nrerank:\n  shortlist_size: 1\n",
+            encoding="utf-8",
+        )
+        calls = 0
+        impacts = [2, 4, 3]
+
+        def fake_judge(events: list[Event]) -> dict[str, dict]:
+            nonlocal calls
+            impact = impacts[calls]
+            calls += 1
+            return {event.event_id: {**FIVE, "impact": impact, "reason": "r"} for event in events}
+
+        result = recommend_with_audit(
+            _valid_events(1),
+            config_path=path,
+            llm_judge=fake_judge,
+            reference_time=REFERENCE,
+        )
+        assert calls == 3
+        entry = result.fine_scores[0]
+        assert entry.llm_score == pytest.approx(4.6)
+
     def test_judge_returning_empty_dict_falls_back(self) -> None:
         result = recommend(_valid_events(5), llm_judge=lambda events: {}, reference_time=REFERENCE)
         assert len(result) == 5
