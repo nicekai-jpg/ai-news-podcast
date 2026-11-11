@@ -1,8 +1,8 @@
 name: Daily Watchdog
 
-# Fallback for the daily podcast: GitHub's scheduler occasionally drops or very
-# late-fires the scheduled daily.yml. This checks whether today's (Asia/Shanghai)
-# episode is already published and, if not, re-dispatches daily.yml once.
+# Fallback for the v3 daily podcast: GitHub's scheduler occasionally drops or very
+# late-fires the scheduled v3_daily.yml. This checks whether today's (Asia/Shanghai)
+# episode is already published and, if not, re-dispatches v3_daily.yml once.
 
 on:
   schedule:
@@ -35,12 +35,15 @@ jobs:
           EP=$(TZ=Asia/Shanghai date +%F)
           echo "date=$EP" >> "$GITHUB_OUTPUT"
 
-          # 已有 daily 在跑/排队时不要再派发，否则会互相排队、互相取消 pending
-          RUNNING=$(gh run list --workflow=daily.yml --limit 10 --json status \
+          # 已有 v3/daily 在跑/排队时不要再派发，否则会互相排队、互相取消 pending
+          RUNNING_V3=$(gh run list --workflow=v3_daily.yml --limit 10 --json status \
             --jq '[.[] | select(.status == "in_progress" or .status == "queued")] | length' 2>/dev/null || echo 0)
+          RUNNING_OLD=$(gh run list --workflow=daily.yml --limit 10 --json status \
+            --jq '[.[] | select(.status == "in_progress" or .status == "queued")] | length' 2>/dev/null || echo 0)
+          RUNNING=$(( ${RUNNING_V3:-0} + ${RUNNING_OLD:-0} ))
           echo "running=$RUNNING" >> "$GITHUB_OUTPUT"
           if [ "${RUNNING:-0}" -gt 0 ]; then
-            echo "daily.yml 已在运行/排队，跳过本次检查"
+            echo "v3_daily.yml / daily.yml 已在运行/排队，跳过本次检查"
             echo "found=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -56,9 +59,14 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "::warning::no episode for ${{ steps.check.outputs.date }} — re-dispatching daily.yml"
+          echo "::warning::no episode for ${{ steps.check.outputs.date }} — re-dispatching v3_daily.yml"
           # 显式带日期：不要依赖 wall clock（GHA 调度可能延迟数小时）
-          gh workflow run daily.yml -f date="${{ steps.check.outputs.date }}"
+          gh workflow run v3_daily.yml \
+            -f date="${{ steps.check.outputs.date }}" \
+            -f fulltext=true \
+            -f run_tts=true \
+            -f run_publish=true \
+            -f deploy=true
 
       - name: Alert on permanently missing days
         # 错过的那天不派发（live RSS 补不回历史新闻，派发会得到错日期内容），只显式告警
