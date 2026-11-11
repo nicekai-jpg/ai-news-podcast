@@ -27,6 +27,11 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Sync latest main before checking
+        # 定时任务排队可能很久；run 的 SHA 可能落后于刚发布/提交的 main，
+        # 不刷新会拿旧 episodes.json 误判“本期缺失”并重复派发。
+        run: git fetch origin main && git reset --hard origin/main
+
       - name: Check today's episode is published
         id: check
         env:
