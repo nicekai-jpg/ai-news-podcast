@@ -298,3 +298,13 @@ LLM S3-S7      16m     (8%)
   `scripts/eval_recommend.py`（评测 CLI）；说明见 `docs/recommend_evaluation.md`。
 - 种子标注 16 条（assistant_seed，未复核）冒烟：召回正样本 8/8，负样本漏入 2/8，
   粗排负样本 0/2，top8 精确率 80%；人工 200 条标注后替换。
+
+## 推荐评测集扩容（2026-11-11）
+
+用户指出 16 条种子太单薄。已改为多天分层：
+- `build_eval_template.py` 支持多 events 文件、按标题去重、按 core/adjacent/none/unknown
+  配额抽样，稀有负样本全部纳入；
+- 生成 `data/eval/recommend/review_queue_2026-11.jsonl` 600 条（3 天 artifact）：
+  core 320、adjacent 82、none 48、unknown 150；
+- `eval_recommend.py` 支持多天聚合，新增 `aggregate_reports` 与分天明细；
+- 现有 v3 artifact 仅 3 天，后续每天自动积累，队列可持续扩容。

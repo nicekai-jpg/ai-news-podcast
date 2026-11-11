@@ -37,17 +37,26 @@ scripts/eval_recommend.py
 | `label_source` | `assistant_seed` | 助审种子，仅供冒烟测试 |
 | `reviewed` | `true` | 已人工复核 |
 
-## 生成标注模板
+## 生成标注模板（多天分层）
 
 ```bash
 uv run python scripts/build_eval_template.py \
-  --events data/ocean/2026-11-11/events.json \
-  --out data/eval/recommend/review_queue.jsonl \
-  --limit 200
+  --events data/ocean/2026-11-09/events.json \
+           data/ocean/2026-11-10/events.json \
+           data/ocean/2026-11-11/events.json \
+  --out data/eval/recommend/review_queue_2026-11.jsonl \
+  --quota core=250,adjacent=100,none=100,unknown=150
 ```
 
-抽样是等步长抽样（覆盖全天事件），不是随机；填好后把每条 `ai_relevance` 和
-`worth_publishing` 写上，`label_source` 保持 `human`、`reviewed` 改为 `true`。
+抽样规则：
+
+- 跨天合并、按标题去重；
+- 先按配额抽 `core / adjacent / none / unknown`，某组不足时用其他组补齐；
+- 稀有负样本（`none`）全部纳入，不随机丢弃；
+- 每题带 `suggested_ai_relevance`（机器建议，仅加速人工，不是金标准）。
+
+填好后把每条 `ai_relevance` 和 `worth_publishing` 写上，`label_source` 保持 `human`、
+`reviewed` 改为 `true`。
 
 ## 跑评测
 
@@ -77,10 +86,24 @@ uv run python scripts/eval_recommend.py \
 
 ## 当前状态（2026-11-11）
 
-- 指标脚本、标注模板、README 已落地；
-- 种子标注 `data/eval/recommend/seed_2026-11-11.jsonl` 共 16 条，`label_source=assistant_seed`、`reviewed=false`，**只能冒烟，不能当金标准**；
-- 用 2026-11-11 真实数据跑通：召回正样本 8/8，负样本漏入 2/8，粗排负样本漏入 0/2，top8 精确率 80%；
-- 下一步：人工标注 200 条，替换种子集，再据此调召回/粗排阈值。
+- 指标脚本、标注模板、多天汇总已落地；
+- 种子标注 `seed_2026-11-11.jsonl` 16 条，`assistant_seed`、`reviewed=false`，只能冒烟；
+- 已生成多天分层队列 `review_queue_2026-11.jsonl` 600 条：core 320、adjacent 82、none 48、unknown 150；
+- 可用的 v3 artifact 只有 2026-11-09 / 11-10 / 11-11 三天，所以队列覆盖 3 天；
+  负样本池本身只有 48 条（AI 源里汽车/消费新闻少），已全部纳入；
+- 人工标注 600 条预计 1.5–2 小时；至少完成 200 条后指标才有参考价值，600 条做完再用于调权重；
+- 种子冒烟结果仅作链路验证：召回正样本 8/8、负样本漏入 2/8、top8 精确率 80%。
+
+## 样本规模怎么算够
+
+| 用途 | 最少标注 | 说明 |
+|---|---|---|
+| 链路冒烟 | 20 | 只验证代码和指标能算 |
+| 阶段阈值调整 | 200 | 每类至少 30 条 |
+| 权重/LLM 校准 | 600 | 每类至少 100 条 |
+| 上线前回归 | 1000 | 覆盖 7 天以上、多来源 |
+
+样本要**跨天**、**分层**、**包含负样本**；单天 16 条不能用来下结论。
 
 ## 局限
 
