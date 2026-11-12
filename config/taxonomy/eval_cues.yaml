@@ -1,0 +1,69 @@
+# 评价线索词表（形容词/评价词 → 极性 × 强度）
+#
+# 说明：刻度不是“不穷举”，而是把同义词归到同一刻度上，词表仍要尽量补全。
+# 字段：
+#   cue       词/短语
+#   dimension sentiment / impact / controversy
+#   value     -1 / 0 / +1（方向）
+#   intensity 1 弱 / 2 中 / 3 强
+#   note      例子/说明（可选）
+#
+# 否定词和程度词单独列出，用于组合：
+#   “不 + 重要” → 翻转；“非常 + 重磅” → 强度提升。
+
+version: 1
+
+negators: [不, 未, 没, 没有, 无, 非, 并非, 否认, 辟谣, 澄清]
+intensifiers:
+  3: [极其, 极为, 非常, 十分, 极度, 最, 史上, 大幅, 显著, 明显, 颠覆性]
+  2: [较, 比较, 相当, 较大, 快速]
+  1: [略, 稍, 微, 轻微, 小幅]
+
+cues:
+  # ===== 情绪/评价（sentiment）=====
+  - {cue: 突破, dimension: sentiment, value: 1, intensity: 3}
+  - {cue: 领先, dimension: sentiment, value: 1, intensity: 2}
+  - {cue: 增长, dimension: sentiment, value: 1, intensity: 2}
+  - {cue: 提升, dimension: sentiment, value: 1, intensity: 2}
+  - {cue: 成功, dimension: sentiment, value: 1, intensity: 2}
+  - {cue: 落地, dimension: sentiment, value: 1, intensity: 1}
+  - {cue: 好评, dimension: sentiment, value: 1, intensity: 2}
+  - {cue: 亮眼, dimension: sentiment, value: 1, intensity: 2}
+  - {cue: 强劲, dimension: sentiment, value: 1, intensity: 3}
+  - {cue: 超预期, dimension: sentiment, value: 1, intensity: 3}
+  - {cue: 创纪录, dimension: sentiment, value: 1, intensity: 3}
+  - {cue: 翻车, dimension: sentiment, value: -1, intensity: 3}
+  - {cue: 失败, dimension: sentiment, value: -1, intensity: 2}
+  - {cue: 下滑, dimension: sentiment, value: -1, intensity: 2}
+  - {cue: 亏损, dimension: sentiment, value: -1, intensity: 2}
+  - {cue: 裁员, dimension: sentiment, value: -1, intensity: 2}
+  - {cue: 事故, dimension: sentiment, value: -1, intensity: 3}
+  - {cue: 漏洞, dimension: sentiment, value: -1, intensity: 2}
+  - {cue: 泄露, dimension: sentiment, value: -1, intensity: 3}
+  - {cue: 停产, dimension: sentiment, value: -1, intensity: 2}
+  - {cue: 召回, dimension: sentiment, value: -1, intensity: 2}
+  - {cue: 暴跌, dimension: sentiment, value: -1, intensity: 3}
+  - {cue: 不及预期, dimension: sentiment, value: -1, intensity: 3}
+  - {cue: 风险, dimension: sentiment, value: -1, intensity: 1}
+
+  # ===== 影响力（impact）=====
+  - {cue: 重磅, dimension: impact, value: 1, intensity: 3}
+  - {cue: 颠覆, dimension: impact, value: 1, intensity: 3}
+  - {cue: 革命性, dimension: impact, value: 1, intensity: 3}
+  - {cue: 里程碑, dimension: impact, value: 1, intensity: 3}
+  - {cue: 历史性, dimension: impact, value: 1, intensity: 3}
+  - {cue: 全球首个, dimension: impact, value: 1, intensity: 3}
+  - {cue: 行业首个, dimension: impact, value: 1, intensity: 2}
+  - {cue: 首次, dimension: impact, value: 1, intensity: 2}
+  - {cue: 最大, dimension: impact, value: 1, intensity: 2}
+
+  # ===== 争议度（controversy）=====
+  - {cue: 争议, dimension: controversy, value: 1, intensity: 2}
+  - {cue: 质疑, dimension: controversy, value: 1, intensity: 2}
+  - {cue: 反对, dimension: controversy, value: 1, intensity: 2}
+  - {cue: 抗议, dimension: controversy, value: 1, intensity: 3}
+  - {cue: 诉讼, dimension: controversy, value: 1, intensity: 3}
+  - {cue: 调查, dimension: controversy, value: 1, intensity: 2}
+  - {cue: 处罚, dimension: controversy, value: 1, intensity: 2}
+  - {cue: 违规, dimension: controversy, value: 1, intensity: 3}
+  - {cue: 伦理, dimension: controversy, value: 1, intensity: 2}
