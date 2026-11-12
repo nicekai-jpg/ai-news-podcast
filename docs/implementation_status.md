@@ -465,3 +465,10 @@ LLM S3-S7      16m     (8%)
 - `scripts/ops_snapshot.py`：每日运维快照（事件数、推荐数、点评质量、覆盖率告警、源健康度），
   写入 GHA Step Summary 并随 artifact 上传；
 - GHA 已加 Editorial quality / Ops snapshot 两步（continue-on-error，不阻断主链）。
+
+## P0 预标注队列（2026-11-12）
+
+- `scripts/prelabel_queue.py`：对评测队列逐条跑规则标注，输出
+  `prelabel_ai_relevance/primary_domain/industry/topics/tech_stack/actions/narrative/confidence`；
+- 生成 `data/eval/recommend/review_queue_2026-11_1000_prelabel.jsonl`，人工只需确认/修正；
+- 下一步：标 300 条 → 跑规则基线。
