@@ -1,0 +1,234 @@
+# 推荐流程评测报告
+
+- 生成时间：2026-11-12T07:21:55.001830+00:00
+- 评测天数：1
+- 事件数：718
+- 标注：300 条，匹配 157 条，未匹配 143 条
+
+## 分阶段指标
+
+| 阶段 | 指标 | 值 |
+|---|---|---|
+| 召回 | 正样本召回率 | 67.33% |
+| 召回 | 负样本漏入率 | 0.00% |
+| 粗排 | 正样本保留率 | 5.94% |
+| 粗排 | 负样本漏入率 | n/a |
+| top8 | 精确率 | 80.00% |
+| top8 | 正样本覆盖 | 2.67% |
+| top8 | 负样本占比 | 0.00% |
+
+## 各阶段数量
+
+| 阶段 | 正样本 | 负样本 |
+|---|---|---|
+| 召回 | 101 / 150 | 0 / 7 |
+| 粗排 | 6 / 101 | 0 / 0 |
+| top8 | 4 | 0 |
+
+## 漏召回的正样本
+
+- A Model Organism for Studying Unverbalized Evaluation Awareness
+- ASCENT: Scale-Complementary External State for Frozen Long-Context Language Models
+- BiMuon: A Geometry-Aware Stochastic Bilevel Optimization Approach
+- BiVerify: Closing the Loop Between Backward and Forward Verification for Mathematical Self-Correction
+- Can the Confidence and Decisions of System 1 Models Be Trusted? An Explainability and Perturbation Audit of Jev-Style Decision Models
+- CoRA-Bench: Evaluating Evidence Preservation by Context Selectors Under Token Budgets
+- CodeRabbit scales agentic software development and ships 20x more
+- DASH-SLAM: Calibration-Free Metric Monocular SLAM via Depth Scale Propagation
+- Do large language models rank moral values? A transitivity test of moral competence
+- Dropping Tokens Without Dropping Them: Causal Attribution for Diabetic Retinopathy
+- EmbodiedIntentBench: Benchmarking Intent-Driven Runtime Adaptation for Mobile Robotic Missions
+- Fable 5.2狂刷72项世界纪录,23年黑洞难题告破!科学史又改写了
+- Fast Accurate Quantum Monte Carlo without Metropolis Adjustment
+- From Video to Digital Twin: An Exploratory Study of World Models and Gaussian Splatting on In-the-Wild Video
+- GTA6预载文件出现新线索:PS5 Pro版有可能支持40FPS模式
+- How to make failure your friend and teacher in science
+- ICLR 2027首轮评审,槽点有点多
+- Implicit Bias in State Space Models and Linear Autoregressive Training
+- Interpretability Is Not Model-Specific
+- Key Institutional Considerations for Designing Effective Independent Verification Organizations
+- LoRazor: Trimming Adapter Execution for Efficient Multi-LoRA Serving
+- MAGE: Towards Generalizable Multi-timescale EEG Representations
+- Match the Geometry Before the Surrogate: Extreme Low-Budget Optimization in High Dimensions
+- Nanopath: Fast, Fair, Open Experimentation for Pathology Foundation Models
+- OfficeTwin: Realizing 3D Reconstruction of Redundant Scenes through Partial Viewpoint Perception
+- PC玩家天塌了!苏姿丰摊牌:AMD早已是一家数据中心优先的公司
+- Preconditioned Implicit Midpoint Langevin Sampling for Non-Smooth Bayesian Imaging
+- Process then Retrieve: Investigating the Origins of the Modality Gap in Vision-Language Models
+- Renhuai123/ziwei-doushu
+- ScreenProof: Where Is This Screen Wrong? Finding UI Faults Without a Reference
+- Semiprime Factorization with Discrete Diffusion and Beam Search: Scaling Laws
+- SimDuoReal: Object-Centric Bimanual Policy for Emergent Dexterity
+- Switch 2公开破解不到20天就被封堵 任天堂通过23.5.0固件修复关键越狱漏洞
+- The Truth Beneath the Tokens: Prompt-Space Recovery of Knowledge Edits in Language Models
+- The backlash about data centers might really just be about electricity
+- Video-DCI: How Far Are VLM Agents from Human Viewers in Direct Video Corpus Interaction?
+- We’re bringing Adobe’s creative and productivity tools closer to your everyday Google apps.
+- What is the 'Dead Internet Theory' and should humanity be worried?
+- Which Taxels, Not How Many: Tactile Sensor Placement for Dexterous Policies
+- v0.40.17
+- 从路透社到 Linux Magazine:openKylin 3.0 收获全球关注
+- 准备退货!理想高管吐槽苹果笔记本电脑:风扇噪音大的像烧开水
+- 实测Seedream 5.5:100轮改图不崩,还能直出透明图
+- 影子暗访|非标农用地膜的“身份游戏”(上):从定制到发货都在打暗语
+- 得克萨斯不相信数据中心
+- 微软向特朗普政府施压,要求其放弃拟议中的中国光收发器进口禁令。三位知情人士透露,微软一直在向特朗普政府施压,要求其放弃有关禁止从中国进口一种用于人工智...
+- 微软要给经典版Outlook换新界面 调整图标和布局等 用户要求的更新说明也回归
+- 百度搭子连中三元:中信建投、国家电投数科、通用数科
+- 風瑛なづき/Fueinaduki/Hueinaduki Style
+
+## 未匹配的标注（检查标题是否被事件合并改写）
+
+- 2.1.321
+- 599 元起,极米记得 AI 记忆手环 L1 体验,戴在手腕上的「AI 速记员」
+- 8800 GTX显卡问世20周年:怀念500多美元买旗舰、性能还翻倍的日子
+- A Spiking Neural Model of the Mental Lexicon: Representations, Similarity Structure, and Associative Retrieval in Perception and Production
+- AI auditors catch most agent misbehavior but flood reviewers with false alarms, new study finds
+- AI coding agents still need human cleanup on nearly three out of four tasks in a real-world test
+- AI 代码上线前的第 2 道门禁:升级依赖前,怎样先建立等价基线?
+- AI 热潮撞上资源争议,微软荷兰在建数据中心遭抗议
+- AI 编程工作流的设计:从人工判断到 AI裁判
+- AI 编程进入“通话时代”:Cursor 智能体可实时语音协作
+- ActPrune: Action-Grounded Visual Token Pruning for Efficient Vision-Language-Action Models
+- Align3D: Image-Structure Co-Aligned 3D Scene Generation with Observability-Aware Fidelity-Preserving Guidance
+- AlterNet: Adaptive-Depth Mixture-of-Experts with Learned Halting for Elastic Inference
+- An Anatomy-guided 3D Segmentation Pipeline for Prostate Surgical Phantoms from CT Scans
+- Anthropic 发布 Fable / Mythos 新版:支持超千个智能体协同,多项硬核性能大升级
+- Anthropic 研究称 Claude AI 智能体可以靠“做梦”变得更聪明
+- Anthropic发布ClaudeFable5.2和Mythos5.2模型,编程与科学研究能力提升。
+- Assessing the Impact of Retrieval-Augmented Generation on Algorithmic Problem-Solving
+- Asymmetric Correspondence Learning for Lexical and Style Embeddings: Interpreting Latent Space via Acoustic Features
+- Benchmarking Machine Learning for Chaotic Three-Body Dynamics in Astrophysics
+- Beyond Truncation? Entailment-Licensed Elision and the Limits of Semantic Preservation in LLM Decoding
+- CS-Pi: Constraint-Satisfying Flow Policy Sampling
+- Cancellation Is Not Enough: What Retries Leave Behind in an Overloaded LLM Engine
+- Contextuality and Contradictions: Exploring Real-World Identifications of AI-Generated Writing
+- Debate to Deceive: Poisoning LLM's Fact-Checking via Game-Theoretic Multi-Agent Debate
+- Decoding spatial and semantic information from large-scale visual cortical activity for natural-movie reconstruction
+- DeepSeek harness 好用的插件推荐~[7467635309308543002#DeepSeek 体验分享#]
+- Does Country Matter? Evaluating Geographic Sensitivity of Large Language Models in Zero-Shot Chronic Kidney Disease Screening
+- Elden Ring: Чрево Древнего Хаоса
+- Enhancing Academic Advisement with Case-Based Reasoning
+- Ensemble Methodology for Reference-Free Confidence Estimation in LLM-based Code Summarization
+- Evolutionary Adaptive Metric Learning: A Multi-Objective Framework for Learning Local Distance Functions in Nearest Neighbor Classification
+- FASTFUNNELS: Agile Multi Robot Navigation in Narrow Spaces via Adaptive Dynamic Funnels
+- FATHOM: World-Model-Guided Diffusion Action-Trajectory Selection for Sparse-Marker AUV Tracking
+- FGR_Mixer
+- FasterRW: An Efficient Prior-Assisted Random Walk Solver for Thermal Analysis
+- Federated training performs as well as centralized for 3D Latent Diffusion for Diagnosis-Conditioned Brain MRI Synthesis
+- Flow-Guided Target-Space Alignment via Path Consistency
+- Forcing a Letter Suppresses Refusal: Mechanistic Evidence from WMDP
+- Foundation-Model Residuals as Signals of Urban Bus Irregularity
+- Frame: Form-Restricted Authoring with Model-Based Evaluation
+- GitGuardian 独立复核 Claude Code 密钥泄露:公开 GitHub 23,276 个仓库含 31,088 个密钥、17% 检测时仍有效,Docker Hub 镜像另涉 613 个
+- Google Messages启动主页大改版:集成 Gemini 快捷入口、重构置顶与底部搜索
+- Guardrail Erosion in Domain Fine-Tuned Large Language Models: A Paired Audit of Knowledge-Centric Abstention in Biomedical LLMs
+- HOC2R: Hand-Object Contact Trajectories for Human-to-Robot Motion Transfer
+- HaNDF: Object-Conditioned Geometric Neural Hand Distance Fields
+- Harness 已经很准了,为什么还需要一个 Agent Native Database
+- Hundreds of Artex AI hacking tools found publicly exposed to the web
+- IWIBench: Evaluating Gradient-Free Model Driven Intra-weight Injection
+- Interpretable Multifidelity Learning with Kolmogorov-Arnold Networks for Spatiotemporal Nuclear Reactor Flow Modeling
+- KLEAR: Knowledge-Matched LLM Evaluation in Korean across Application Requirements via Controlled Benchmark Transformation
+- LifeVal: Measuring AI progress on the tasks that matter in everyday life.
+- Localizing and Editing the Goal Representation of a Vision-Language-Action Model
+- MEDALLION: Manifold Embedding Distillation and Attributions for Low-dimensional Latent InterpretatiON
+- Medium 推出全新 AI 写作辅助应用 TK,将大模型深度融入创作流程
+- Medium’s new TK app brings AI assistance directly into the writing process
+- Meta releases Muse Ember, a new lightweight model for agent execution
+- Meta 推出轻量主力 Muse Ember:性能持平 Claude 5.5,单次任务成本大降至三分之一
+- Meta发布Muse Ember:以极致性价比切入智能体重复性工作
+- Mind the Divergence: Divergence-Guided Reliability-Aware Fusion and Adaptive LLM Prompting for Conversational Emotion Recognition
+- MiniMax 加码大模型产业:珠海横琴新设科技公司,注册资本 500 万
+- MotionBench-XAI: Benchmarking What Shapes Shapley Explanations in Spatiotemporal Machine Learning
+- NAND价格僵持只是暂时!群联CEO潘健成:2027春节后需求要大爆发
+- NB420_AsianGirls
+- NeurIPS'26 | 如何减少共情推理中的错误传播?
+- Nine AI agents tried autonomous research on open questions from US national labs and none passed the experts' bar
+- NormGym: Evaluating Normative Competence through Social Interaction
+- Olivia | You forgot about her
+- On Differentially Private Mechanisms for Linear Regression
+- On the Effectiveness and Limitations of Open-Weight LLMs for Low-Resource Offensive Language Detection in Danish
+- On the Reliability of Majority-Vote Pseudo-Labels in Test-Time Reinforcement Learning
+- OpenAI 构建中央控制室:实时追踪模型工作负载,确保异常干预后 35 秒内秒级叫停
+- OpenAI大规模封号?ChatGPT 用户该如何应对
+- Pdb or Not to Be: Comparing Debugging Interfaces With Pass$_{X}$@$k$
+- PhysioWave-T: Token-Efficient Wavelet Foundation Models for Biosignals
+- Q-OIL: Optimistic Exploration in Learning from Human Interventions
+- Refer-CityFlow and M3Track: A Benchmark Dataset and Reference Framework for Language-Driven Multi-Target Multi-Camera Tracking
+- Representational drift in a code model: behaviour settles, which neurons carry it does not
+- Ripple-65B Preview delivers strong agentic coding results as a fully Apache 2.0 open US model
+- Robust Readout of Cross-Point Resistive Arrays via Time-Domain Optimization
+- Safe Circumnavigation on Heterogeneous Orbits: A Range-Only HOCBF-QP Framework for Nonholonomic Multi-Agent Systems
+- Scoring, Not Learning: Decomposing Catalog-Consolidation Gains in Web-Scraped Retail Product Recognition
+- Semantic Conditional Similarity (SCS): A Formal Mathematical Framework
+- Speed Up Image Generation with FLUX 3 Image Klein on NVIDIA Blackwell GPUs
+- State propaganda in some Chinese AI models is only "a thin layer" that fine-tuning can strip away
+- Structuring Survey Histories for LLM Digital Twins: A Controlled Study of Background, Decision Procedure, and Evaluation Profiles
+- Subliminal Learning in Vision-Language Models
+- TPAMI 2026|悉尼大学和新国立提出:从“神经元”到“路径”,TraceRouter++重定向大模型有害语义
+- Test-Time Compute Scales Better with Parallel Agent Teams
+- Toward LLM Self-Play Under Data Scarcity: Effectiveness, Generalizability, and Trustworthiness
+- Using an LLM to Tackle Difficult Cases in NER for Nepali Tweets
+- Wellness Robots and the Path to Full Autonomy
+- What Limits mmWave Human-State Sensing for Robot Perception?
+- When F1 Is Not Enough: Auditing Codebooks for LLM-Assisted Annotation
+- When to Trust the BIM: Identifiability-Aware LiDAR-Inertial--BIM Fusion under As-Built Deviations
+- [News] China’s SMEE Showcases Lithography Systems with 90%+ Localized Parts, Claims 10M+ Wafers Processed
+- agent 撑爆 Git 之后,两家改的不是同一层
+- b12237
+- hmharness CI 假绿:CI 显示全绿也可能在撒谎,一条 process.exit(0) 的排查闭环 GitHub:swsgbl/hmharness
+- “史上最大 IPO”遇挑战:Anthropic 上市估值存分歧,1.5 万亿美元仍被嫌贵
+- 【社论】科技创新不是工厂“流水线”
+- 一款药也没有,谷歌的AI制药公司又要融50亿美元
+- 不能把整个安全体系押在大模型上:AI 分诊 CVE,人工审查仍不能少
+- 世界首款 美国研发出200mm单晶金刚石晶圆:散热性能10倍提升
+- 两人合照公开!黄仁勋出轨女主揭秘 买了至少近50亿美元英伟达先进AI芯片
+- 九成代码AI写,谁来审?Claude Code亮出6道关卡!
+- 北京大学王栋谈人工智能治理的适度干预原则:对一匹快马,只需轻轻勒缰
+- 千问办公2.0发布,首个支持多人与Agent协作的Team Agent来了
+- 千问办公2.0发布:定位Team Agent,协作、自动任务、人机共创三线升级
+- 华尔街给 AI 热泼冷水:Anthropic 冲刺"史上最大 IPO"遇降温
+- 古尔曼爆料:Siri 最快明年变身自主代理,正面硬刚 OpenAI 与 Meta
+- 哈佛·史密森天体物理中心打造超大虚拟宇宙 模拟范围达15亿光年
+- 多伦多大学团队提出“自建实验室”:AI自主构建数字孪生,完成真实化学实验
+- 字节 Seedream 5.5 发布:支持 100 轮连续编辑与原生透明输出,全面刷新 AI 图像创作天花板
+- 字节继续整个AI产品到豆包办公:TRAE中国版账号体系升级为豆包飞书账号
+- 家里的NAS搬进车里了!绿联上线比亚迪:私人电影库随车走
+- 小岛秀夫:AI 能提升游戏开发效率,但可能剥夺创作中最有价值的试错过程
+- 开发者每周借助 AI 节约数十小时的比例在一年内从 68% 降至 26%
+- 当 20 万员工遇上 2000 万智能体:纳德拉描绘微软新编制
+- 当 AI 在加速狂奔,什么反而应该“慢”下来?
+- 抢跑DeepSeek!硅谷华人把下一代Agent Harness造出来了!?
+- 收购 EA 后,银湖资本与沙特基金 250 亿美元报价 Unity;超10万款应用已适配iPhone Duo;美国再发生 NVIDIA AI 设备失窃案 | 极客早知道
+- 显卡降价彻底无望!DRAM价格暴涨400%!RTX 5090炒到3.3万
+- 智面agent
+- 李宝瓶人物lora
+- 沈阳一热力公司拒收现金?公司回应:找零较麻烦,没拒收
+- 没买显卡,我用 Google Colab 免费跑通了 AI 生图:从零部署 Z-Image Turbo
+- 清朗浦江|规范先导产业网上信息传播秩序专项行动典型案例通报
+- 火山引擎发布Seedream5.5:像素级可控编辑,百轮修改不崩坏
+- 特朗普,再谈AI。美国硅谷和政界有关AI安全的争论仍在持续发酵。美国总统特朗普最新表示,人工智能(AI)带来的风险是可控的,但他同时也释放出对采取安全保障措...
+- 电表倒着转 微软新技术可让游戏卡跑AI:还会给你钱
+- 皮尔法伯集团与晶泰科技达成AI驱动药物发现合作,将在肿瘤领域联合开展多个研发项目
+- 破天荒!物理学「教皇」威滕33页独作致敬 AI,Claude提出关键构造
+- 给你们一个 每日更新的 dsh插件 skill mcp AI知识库大全 https://github.com/Awesome-AI-Pedia/Awesome-AI-Pedia
+- 美国联邦检察官表示,自2024年7月以来的18个月中,企业因使用AI生成的声音模仿公司高管的诈骗电话而损失超过1.29亿美元。
+- 英伟达据悉介入Megaspeed芯片走私案调查 引发影响美国执法的质疑
+- 苹果将在土耳其设立美国以外首个先进制造中心 扩大开发者教育投资
+- 苹果给 AI 收费划了新道:不包月,按用量买断
+- 让模型学会图文并茂地表达:南大联合美团LongCat提出IntReal,从真实数据、细粒度评测到训练优化
+- 谷歌将推出两款专用TPU正面硬刚英伟达 可与AMD芯片协同工作
+- 迪士尼携手Adobe开发专属AI模型,布局主题公园、影视及体育业务
+- 释疑|“反数据中心”成美政治议程,他们到底在反对什么?
+- 风波里的站队:马斯克一句"我同意"力挺黄仁勋
+
+## 警告
+
+- 存在未人工复核的标注（reviewed=false）
+
+## 分天明细
+
+| 日期 | 事件数 | top8 正样本 | top8 负样本 |
+|---|---|---|---|
+| 2026-11-11 | 718 | 4 | 0 |

@@ -472,3 +472,11 @@ LLM S3-S7      16m     (8%)
   `prelabel_ai_relevance/primary_domain/industry/topics/tech_stack/actions/narrative/confidence`；
 - 生成 `data/eval/recommend/review_queue_2026-11_1000_prelabel.jsonl`，人工只需确认/修正；
 - 下一步：标 300 条 → 跑规则基线。
+
+## 机器预标注冒烟（2026-11-12）
+
+- `scripts/build_machine_labels.py`：预标注队列 → 评测标注文件 + 分层抽查样本；
+- 生成 300 条机器标注（`labels_2026-11_machine_smoke.jsonl`）和 50 条抽查样本；
+- 在 11-11 artifact 上跑评测：匹配 157 条，top8 精确率 80.0%、召回 67.3%、粗排保留 5.94%；
+- **注意：这是循环冒烟，不是金标准**，只能验证工具链跑通，不能作为上线依据；
+- 人工标注 300 条后用同一脚本重跑，才是真基线。
