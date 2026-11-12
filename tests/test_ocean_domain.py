@@ -64,3 +64,11 @@ def test_extra_keyword_from_config(tmp_path) -> None:
     )
     keywords = load_domain_keywords(str(path))
     assert classify_domain("某明星演唱会门票售罄", keywords=keywords)[0] == OTHER
+
+
+def test_industry_fallback_maps_non_ai_healthcare() -> None:
+    from ai_news_podcast.business.ocean.domain import classify_domain
+
+    domain, evidence = classify_domain("某医院上线新的挂号系统")
+    assert domain == OTHER
+    assert evidence

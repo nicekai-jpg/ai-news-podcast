@@ -105,8 +105,10 @@ class Labels:
     sensitivity: list[str] = field(default_factory=list)
     ai_relevance: str = "unknown"  # core / adjacent / none / unknown
     ai_evidence: list[str] = field(default_factory=list)  # 命中的 AI 关键词
-    primary_domain: str = "unknown"  # ai_core / ai_infra / other / unknown
+    primary_domain: str = "unknown"  # ai_core / ai_infra / ai_application / other / unknown
     domain_evidence: list[str] = field(default_factory=list)
+    industry: str = "unknown"  # taxonomy industries.yaml 的规范 id
+    industry_evidence: list[str] = field(default_factory=list)
     quote_availability: bool = False
     confidence: dict[str, float] = field(default_factory=dict)
     method: str = "rule"  # rule / llm / hybrid

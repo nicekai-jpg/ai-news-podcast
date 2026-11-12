@@ -68,3 +68,12 @@ industries:
         )
         with pytest.raises(TaxonomyError):
             load_taxonomy(root)
+
+
+def test_industry_match_returns_keyword_evidence() -> None:
+    taxonomy = default_taxonomy()
+    match = taxonomy.industry_match("某车企宣布停产")
+    assert match is not None
+    industry, keyword = match
+    assert industry["id"] == "automotive"
+    assert keyword in {"车企", "停产"}

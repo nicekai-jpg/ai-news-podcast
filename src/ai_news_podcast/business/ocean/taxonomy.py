@@ -48,10 +48,17 @@ class Taxonomy:
         return self.entity_aliases.get(normalized)
 
     def industry_for_title(self, title: str) -> dict[str, Any] | None:
-        normalized = _normalize(title)
+        for keyword, industry in self.industry_keywords:
+            if keyword and keyword in _normalize(title):
+                return industry
+        return None
+
+    def industry_match(self, text: str) -> tuple[dict[str, Any], str] | None:
+        """返回 (行业, 命中关键词)，用于写证据。"""
+        normalized = _normalize(text)
         for keyword, industry in self.industry_keywords:
             if keyword and keyword in normalized:
-                return industry
+                return industry, keyword
         return None
 
 
