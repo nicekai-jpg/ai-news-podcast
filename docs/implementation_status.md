@@ -379,3 +379,12 @@ LLM S3-S7      16m     (8%)
 - `config/taxonomy/industries.yaml`：有限行业清单 + ai_related + 关键词；
 - `business/ocean/taxonomy.py`：加载/校验/别名映射/行业查询；`tests/test_taxonomy.py`；
 - 文档：`docs/taxonomy.md`（含规则+LLM 标注路线、补词流程）。
+
+## 标签覆盖审计（2026-11-12）
+
+用户指出同一类“词表覆盖不足”问题可能遍布其他环节。新增：
+- `business/eval/label_coverage.py` + `scripts/label_coverage.py`：统计 topics/tech_stack/
+  subjects/actions/narrative_angle/audience_persona/sensitivity 的空白率并告警；
+- 2026-11-11 实测：subjects 48% 空白、narrative 51%、tech 29%、actions 25%、topics 16%；
+- docs/taxonomy.md 增补“其他位置的同类风险”表（impact/novelty/risk/来源分级/证据/聚类/全文/账本）；
+- 结论：每个字段都要有覆盖度量，不再假设词典完整。
