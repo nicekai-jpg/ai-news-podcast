@@ -30,6 +30,15 @@ INFRA_TERMS: frozenset[str] = frozenset(
         "智能驾驶",
         "数据中心",
         "光刻",
+        "segmentation",
+        "neural",
+        "dexterous",
+        "tactile",
+        "lithography",
+        "bimanual",
+        "slam",
+        "bayesian optimization",
+        "bayesian optimisation",
     }
 )
 
@@ -41,10 +50,17 @@ ADJACENT_HINTS: tuple[str, ...] = tuple(
 )
 
 _WHITESPACE = re.compile(r"\s+")
+_AI_BOILERPLATE = re.compile(
+    r"(本图片|图片|配图|题图|海报|插图)(由|是)?\s*AI\s*(生成|绘制|制作)"
+    r"|AI[- ]generated\s+(image|illustration)"
+    r"|AI\s*生成(的)?(图片|配图)",
+    re.I,
+)
 
 
 def _clean(text: str) -> str:
-    return _WHITESPACE.sub(" ", str(text or "")).strip()
+    cleaned = _WHITESPACE.sub(" ", str(text or "")).strip()
+    return _AI_BOILERPLATE.sub(" ", cleaned).strip()
 
 
 def _grade(matches: list[str]) -> tuple[str, list[str]] | None:

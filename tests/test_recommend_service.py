@@ -57,7 +57,7 @@ def _make_event(
     subject_id = subject or f"company{index}"
     return Event(
         event_id=f"e{index}",
-        representative_title=title or f"{subject_id} 发布新模型 v{index}",
+        representative_title=title or f"{subject_id} 发布新 AI 模型 v{index}",
         summary="事件摘要",
         item_ids=[f"item-{index}-a", f"item-{index}-b"],
         source_count=source_count,
