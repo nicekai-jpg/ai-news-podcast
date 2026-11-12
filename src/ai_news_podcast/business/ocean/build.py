@@ -36,6 +36,7 @@ from ai_news_podcast.business.ocean.labels import (
     load_lexicon,
     merge_labels,
 )
+from ai_news_podcast.business.ocean.semantic import SemanticLabeler
 from ai_news_podcast.business.ocean.source_tier import best_tier
 from ai_news_podcast.business.ocean.textutils import clean_text, parse_time
 
@@ -270,6 +271,7 @@ def build_ocean(
     history_dir: str | Path | None = None,
     ledger_path: str | Path | dict[str, Any] | None = None,
     config_path: str | Path = "config/ocean_v3.yaml",
+    semantic_labeler: SemanticLabeler | None = None,
 ) -> OceanSnapshot:
     """Stage 2 主入口：读取 raw artifact，产出 `data/ocean/{date}/` 快照。"""
     if not date_str or not is_date_dirname(date_str[:10]):
@@ -305,6 +307,13 @@ def build_ocean(
     labeled: dict[str, LabeledItem] = {
         item.item_id: label_item(item, lexicon, config) for item in items
     }
+    if semantic_labeler is not None:
+        suggestions = semantic_labeler.suggest(items)
+        for item_id, suggestion in suggestions.items():
+            if item_id in labeled:
+                labeled[item_id].labels = semantic_labeler.apply(
+                    labeled[item_id].labels, suggestion
+                )
     dedup = dedupe_items(
         items,
         labeled=labeled,

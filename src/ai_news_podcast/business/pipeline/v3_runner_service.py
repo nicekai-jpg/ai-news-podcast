@@ -436,6 +436,36 @@ def build_brief_compat(
     }
 
 
+def _build_semantic_labeler(
+    config_root: Path,
+    llm_cfg: Any | None,
+    llm_call_factory: LLMCallFactory | None,
+    stage_options: dict[str, dict[str, Any]] | None,
+) -> Any | None:
+    """按配置构造 Stage 2 语义标注器；默认关闭，失败不影响主链。"""
+    ocean_config_path = config_root / "ocean_v3.yaml"
+    if not ocean_config_path.is_file():
+        return None
+    ocean_cfg = yaml.safe_load(ocean_config_path.read_text(encoding="utf-8")) or {}
+    semantic_cfg = dict((ocean_cfg.get("labels") or {}).get("semantic") or {})
+    if not semantic_cfg.get("enabled") or (llm_cfg is None and llm_call_factory is None):
+        return None
+    from ai_news_podcast.business.ocean.semantic import SemanticLabeler
+    from ai_news_podcast.business.ocean.taxonomy import default_taxonomy
+
+    stage2_call = (
+        llm_call_factory("stage2")
+        if llm_call_factory is not None
+        else make_llm_call(llm_cfg, "stage2", (stage_options or {}).get("stage2"))
+    )
+    return SemanticLabeler(
+        stage2_call,
+        default_taxonomy(),
+        min_confidence=float(semantic_cfg.get("min_confidence", 0.6)),
+        batch_size=int(semantic_cfg.get("batch_size", 20)),
+    )
+
+
 def run_v3_pipeline(
     date_str: str,
     *,
@@ -484,13 +514,19 @@ def run_v3_pipeline(
     # ---- Stage 2 新闻潮汐 ----
     from ai_news_podcast.business.ocean.build import build_ocean
 
-    snapshot = build_ocean(
-        raw_path,
-        date_str=date_str,
-        history_dir=ocean_root,
-        ledger_path=ledger_path,
-        config_path=config_root / "ocean_v3.yaml",
+    semantic_labeler = _build_semantic_labeler(
+        config_root, llm_cfg, llm_call_factory, stage_options
     )
+
+    ocean_kwargs = {
+        "date_str": date_str,
+        "history_dir": ocean_root,
+        "ledger_path": ledger_path,
+        "config_path": config_root / "ocean_v3.yaml",
+    }
+    if semantic_labeler is not None:
+        ocean_kwargs["semantic_labeler"] = semantic_labeler
+    snapshot = build_ocean(raw_path, **ocean_kwargs)
     events: list[Event] = list(snapshot.events)
     events_path = ocean_dir / "events.json"
     logger.info("Stage 2 完成：%s 个事件", len(events))

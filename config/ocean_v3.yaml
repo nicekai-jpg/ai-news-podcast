@@ -71,6 +71,10 @@ evidence:
 
 labels:
   nlp_dir: nlp
+  semantic:
+    enabled: false          # LLM 语义标注（P3）；默认关闭，先影子跑
+    min_confidence: 0.6
+    batch_size: 20
   lifecycle:
     burst_sources: 3         # 新事件 24h 内独立来源 ≥ N → burst
     burst_window_hours: 24
