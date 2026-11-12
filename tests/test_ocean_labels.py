@@ -206,3 +206,15 @@ class TestLabelMetadata:
         assert (
             merged.label_confidence["ai_relevance"] >= first.labels.label_confidence["ai_relevance"]
         )
+
+
+class TestIndustry:
+    def test_industry_id_from_taxonomy(self) -> None:
+        labeled = _label("某车企宣布停产")
+        assert labeled.labels.industry == "automotive"
+        assert labeled.labels.industry_evidence
+        assert labeled.labels.label_confidence["industry"] > 0
+
+    def test_unknown_industry_for_generic_text(self) -> None:
+        labeled = _label("公司发布季度公告")
+        assert labeled.labels.industry == "unknown"

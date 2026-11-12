@@ -26,6 +26,7 @@ from pathlib import Path
 import yaml
 
 from ai_news_podcast.business.ocean.relevance import CORE_HINTS, INFRA_TERMS
+from ai_news_podcast.business.ocean.taxonomy import default_taxonomy
 from ai_news_podcast.business.recommend.base import matched_keywords
 
 _CONFIG_PATH = Path(__file__).resolve().parents[4] / "config" / "domain_keywords.yaml"
@@ -52,9 +53,10 @@ def load_domain_keywords(path: str | None = None) -> dict[str, tuple[str, ...]]:
 
 AI_CORE = "ai_core"
 AI_INFRA = "ai_infra"
+AI_APPLICATION = "ai_application"
 OTHER = "other"
 UNKNOWN = "unknown"
-AI_DOMAINS = (AI_CORE, AI_INFRA)
+AI_DOMAINS = (AI_CORE, AI_INFRA, AI_APPLICATION)
 
 # 明确属于 AI 驾驶/座舱的标题，优先于"汽车"类目词。
 AI_DRIVING_TERMS: tuple[str, ...] = (
@@ -157,18 +159,7 @@ def _head(title: str, summary: str) -> str:
     return title.strip()
 
 
-def classify_domain(
-    title: str,
-    summary: str = "",
-    full_text: str = "",
-    *,
-    category: str = "news",
-    keywords: dict[str, tuple[str, ...]] | None = None,
-) -> tuple[str, list[str]]:
-    """返回 (primary_domain, evidence)。"""
-    head = _head(title, summary)
-    terms = keywords or load_domain_keywords()
-
+def _keyword_domain(head: str, terms: dict[str, tuple[str, ...]]) -> tuple[str, list[str]] | None:
     for domain, term_list in (
         (AI_CORE, terms["ai_core"]),
         (AI_INFRA, terms["ai_driving"]),
@@ -184,17 +175,45 @@ def classify_domain(
     infra = _matches(head, terms["ai_infra"])
     if infra:
         return AI_INFRA, infra[:5]
+    return None
+
+
+def classify_domain(
+    title: str,
+    summary: str = "",
+    full_text: str = "",
+    *,
+    category: str = "news",
+    keywords: dict[str, tuple[str, ...]] | None = None,
+) -> tuple[str, list[str]]:
+    """返回 (primary_domain, evidence)。"""
+    head = _head(title, summary)
+    terms = keywords or load_domain_keywords()
+
+    keyword_domain = _keyword_domain(head, terms)
+    if keyword_domain is not None:
+        return keyword_domain
+
+    industry_domain = _industry_domain(title)
+    if industry_domain is not None:
+        return industry_domain
 
     if str(category or "").lower() in ("official", "research"):
-        for domain, term_list in (
-            (AI_CORE, terms["ai_core"]),
-            (AI_INFRA, terms["ai_infra"]),
-        ):
-            matches = _matches(full_text[:2000], term_list)
-            if matches:
-                return domain, matches[:5]
-
+        return _keyword_domain(full_text[:2000], terms) or (UNKNOWN, [])
     return UNKNOWN, []
+
+
+def _industry_domain(title: str) -> tuple[str, list[str]] | None:
+    industry = default_taxonomy().industry_for_title(title)
+    if industry is None:
+        return None
+    related = str(industry.get("ai_related") or "none")
+    domain = {
+        "core": AI_CORE,
+        "infra": AI_INFRA,
+        "application": AI_APPLICATION,
+    }.get(related, OTHER)
+    return domain, [str(industry.get("name"))]
 
 
 def stronger_domain(current: str, candidate: str) -> str:
@@ -204,6 +223,7 @@ def stronger_domain(current: str, candidate: str) -> str:
 
 
 __all__ = [
+    "AI_APPLICATION",
     "AI_CORE",
     "AI_DOMAINS",
     "AI_INFRA",

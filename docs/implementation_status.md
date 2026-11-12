@@ -397,3 +397,11 @@ LLM S3-S7      16m     (8%)
 - 生成 1000 条分层评测队列 `data/eval/recommend/review_queue_2026-11_1000.jsonl`
   （core 584 / unknown 300 / adjacent 76 / none 40，负样本池有限）；
 - 测试：914 → 917 passed。
+
+## P2 规则接入 taxonomy（2026-11-12）
+
+- `Labels` 新增 `industry` / `industry_evidence`（taxonomy 规范 id + 命中词）；
+- `label_text` 用 `taxonomy.industry_match` 打行业标签，并写入证据/置信度/方法；
+- `classify_domain` 关键词判不出时用行业表兜底（core→ai_core、infra→ai_infra、
+  application→ai_application、none→other）；
+- 测试：行业匹配、行业兜底、标签行业/证据；916 passed。

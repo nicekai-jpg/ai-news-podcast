@@ -23,6 +23,7 @@ from ai_news_podcast.business.contracts import Item, Labels
 from ai_news_podcast.business.ocean.config import cfg_get
 from ai_news_podcast.business.ocean.domain import classify_domain, stronger_domain
 from ai_news_podcast.business.ocean.relevance import classify_text, stronger_grade
+from ai_news_podcast.business.ocean.taxonomy import default_taxonomy
 from ai_news_podcast.business.ocean.textutils import (
     clean_text,
     extract_novelty_numbers,
@@ -624,6 +625,9 @@ def label_text(
         title, summary, full_text, category=category
     )
     primary_domain, domain_evidence = classify_domain(title, summary, full_text, category=category)
+    industry_match = default_taxonomy().industry_match(title)
+    industry = str(industry_match[0]["id"]) if industry_match else "unknown"
+    industry_evidence = [industry_match[1]] if industry_match else []
     labels = Labels(
         subjects=subjects,
         object_type=object_types,
@@ -643,17 +647,22 @@ def label_text(
         ai_evidence=ai_evidence,
         primary_domain=primary_domain,
         domain_evidence=domain_evidence,
+        industry=industry,
+        industry_evidence=industry_evidence,
         label_evidence={
             "ai_relevance": ai_evidence,
             "primary_domain": domain_evidence,
+            "industry": industry_evidence,
         },
         label_confidence={
             "ai_relevance": float(ai_confidence),
             "primary_domain": 0.6 if primary_domain else 0.2,
+            "industry": 0.7 if industry_match else 0.2,
         },
         label_method={
             "ai_relevance": "rule",
             "primary_domain": "rule",
+            "industry": "rule",
         },
         taxonomy_version=1,
         quote_availability=quote_available,
@@ -752,6 +761,52 @@ def _merged_confidence(labels_list: list[Labels], config: dict[str, Any]) -> dic
     return confidence
 
 
+def _merge_semantic_labels(labels_list: list[Labels]) -> dict[str, Any]:
+    """合并事件级语义字段与元数据（避免 merge_labels 过长）。"""
+    result: dict[str, Any] = {
+        "ai_relevance": "unknown",
+        "ai_evidence": [],
+        "primary_domain": "unknown",
+        "domain_evidence": [],
+        "industry": "unknown",
+        "industry_evidence": [],
+        "label_evidence": {},
+        "label_confidence": {},
+        "label_method": {},
+    }
+    for labels in labels_list:
+        result["ai_relevance"] = stronger_grade(
+            result["ai_relevance"], str(labels.ai_relevance or "unknown")
+        )
+        result["primary_domain"] = stronger_domain(
+            result["primary_domain"], str(labels.primary_domain or "unknown")
+        )
+        if result["industry"] == "unknown" and labels.industry and labels.industry != "unknown":
+            result["industry"] = str(labels.industry)
+        for source, target in (
+            (labels.ai_evidence, result["ai_evidence"]),
+            (labels.domain_evidence, result["domain_evidence"]),
+            (labels.industry_evidence, result["industry_evidence"]),
+        ):
+            for term in source:
+                if term and term not in target:
+                    target.append(term)
+        for dimension, values in labels.label_evidence.items():
+            bucket = result["label_evidence"].setdefault(dimension, [])
+            for value in values:
+                if value not in bucket:
+                    bucket.append(value)
+        for dimension, value in labels.label_confidence.items():
+            current = result["label_confidence"].get(dimension, 0.0)
+            result["label_confidence"][dimension] = max(current, float(value))
+        for dimension, value in labels.label_method.items():
+            current = result["label_method"].get(dimension)
+            result["label_method"][dimension] = (
+                value if current is None or current == value else "hybrid"
+            )
+    return result
+
+
 def merge_labels(
     labeled_items: list[LabeledItem],
     *,
@@ -768,35 +823,7 @@ def merge_labels(
     max_values = int(cfg_get(cfg, "labels.novelty.max_values", 12))
     confidence = _merged_confidence(labels_list, cfg)
     confidence["evidence_tier"] = float(cfg_get(cfg, "labels.confidence.evidence_tier", 0.9))
-    ai_relevance = "unknown"
-    ai_evidence: list[str] = []
-    primary_domain = "unknown"
-    domain_evidence: list[str] = []
-    label_evidence: dict[str, list[str]] = {}
-    label_confidence: dict[str, float] = {}
-    label_method: dict[str, str] = {}
-    for labels in labels_list:
-        ai_relevance = stronger_grade(ai_relevance, str(labels.ai_relevance or "unknown"))
-        primary_domain = stronger_domain(primary_domain, str(labels.primary_domain or "unknown"))
-        for term in labels.ai_evidence:
-            if term and term not in ai_evidence:
-                ai_evidence.append(term)
-        for term in labels.domain_evidence:
-            if term and term not in domain_evidence:
-                domain_evidence.append(term)
-        for dimension, values in labels.label_evidence.items():
-            bucket = label_evidence.setdefault(dimension, [])
-            for value in values:
-                if value not in bucket:
-                    bucket.append(value)
-        for dimension, value in labels.label_confidence.items():
-            label_confidence[dimension] = max(label_confidence.get(dimension, 0.0), float(value))
-        for dimension, value in labels.label_method.items():
-            label_method[dimension] = (
-                value
-                if dimension not in label_method or label_method[dimension] == value
-                else "hybrid"
-            )
+    semantic = _merge_semantic_labels(labels_list)
     return Labels(
         subjects=_merge_subjects(labels_list),
         object_type=_merge_ordered([labels.object_type for labels in labels_list]),
@@ -812,13 +839,15 @@ def merge_labels(
         narrative_angle=_merge_ordered([labels.narrative_angle for labels in labels_list]),
         audience_persona=_merge_ordered([labels.audience_persona for labels in labels_list]),
         sensitivity=_merge_ordered([labels.sensitivity for labels in labels_list]),
-        ai_relevance=ai_relevance,
-        ai_evidence=ai_evidence[:8],
-        primary_domain=primary_domain,
-        domain_evidence=domain_evidence[:8],
-        label_evidence={key: values[:8] for key, values in label_evidence.items()},
-        label_confidence=label_confidence,
-        label_method=label_method,
+        ai_relevance=semantic["ai_relevance"],
+        ai_evidence=semantic["ai_evidence"][:8],
+        primary_domain=semantic["primary_domain"],
+        domain_evidence=semantic["domain_evidence"][:8],
+        industry=semantic["industry"],
+        industry_evidence=semantic["industry_evidence"][:8],
+        label_evidence={key: values[:8] for key, values in semantic["label_evidence"].items()},
+        label_confidence=semantic["label_confidence"],
+        label_method=semantic["label_method"],
         taxonomy_version=max(
             (int(labels.taxonomy_version or 1) for labels in labels_list), default=1
         ),
