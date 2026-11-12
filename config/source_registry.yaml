@@ -1,0 +1,46 @@
+# 来源可信度名单（P4）
+#
+# 目标：category 只做兜底，具体源可以覆盖。
+# tier：1=一手/研究，2=媒体，3=社区/聚合。
+# 只影响证据分与同分排序，不改主分数。
+
+version: 1
+
+tiers:
+  openai_news: 1
+  anthropic_news: 1
+  deepmind_blog: 1
+  google_ai_blog: 1
+  meta_ai_blog: 1
+  nvidia_blog: 1
+  microsoft_research: 1
+  msr_blog: 1
+  apple_ml: 1
+  huggingface_blog: 1
+  qwen_blog: 1
+  deepseek_news: 1
+  mistral_blog: 1
+  minimax_news: 1
+  zhipu_news: 1
+  seed_news: 1
+  sensetime_news: 1
+  miit: 1
+  cac: 1
+  arxiv: 1
+  github_releases: 1
+  jiqizhixin: 2
+  xinzhiyuan: 2
+  qbitai: 2
+  ithome: 2
+  "36kr": 2
+  geekpark: 2
+  ifanr: 2
+  techcrunch: 2
+  theverge: 2
+  wired: 2
+  venturebeat: 2
+  bloomberg: 2
+  reuters: 2
+  hackernews: 3
+  reddit: 3
+  hacker_news: 3

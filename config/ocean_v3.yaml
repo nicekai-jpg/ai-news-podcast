@@ -42,6 +42,7 @@ continuity:
   max_sequence: 999
 
 evidence:
+  dedup_syndicated_titles: false   # P4：同标题多源转载只算一个独立来源；评测后再开
   weights:
     official_source: 2.0
     source_count: 1.0

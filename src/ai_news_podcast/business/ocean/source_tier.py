@@ -6,7 +6,14 @@
 
 from __future__ import annotations
 
+from functools import lru_cache
+from pathlib import Path
+
+import yaml
+
 from ai_news_podcast.business.contracts import Item
+
+_REGISTRY_PATH = Path(__file__).resolve().parents[4] / "config" / "source_registry.yaml"
 
 TIER_OFFICIAL = 1
 TIER_RESEARCH = 1
@@ -24,19 +31,36 @@ _CATEGORY_TIERS: dict[str, int] = {
 }
 
 
+@lru_cache(maxsize=1)
+def load_source_registry(path: str | Path | None = None) -> dict[str, int]:
+    target = Path(path) if path else _REGISTRY_PATH
+    if not target.is_file():
+        return {}
+    data = yaml.safe_load(target.read_text(encoding="utf-8")) or {}
+    return {
+        str(name): int(tier)
+        for name, tier in (data.get("tiers") or {}).items()
+        if str(tier).isdigit()
+    }
+
+
 def tier_for_category(category: str) -> int:
     return _CATEGORY_TIERS.get(str(category or "").strip().lower(), TIER_UNKNOWN)
 
 
-def tier_for_item(item: Item) -> int:
+def tier_for_item(item: Item, registry: dict[str, int] | None = None) -> int:
+    overrides = load_source_registry() if registry is None else registry
+    key = str(item.source or item.source_label or "")
+    if key in overrides:
+        return int(overrides[key])
     return tier_for_category(item.category)
 
 
-def best_tier(items: list[Item]) -> int:
+def best_tier(items: list[Item], registry: dict[str, int] | None = None) -> int:
     """事件内最好的来源等级（数字最小）。"""
     if not items:
         return TIER_UNKNOWN
-    return min(tier_for_item(item) for item in items)
+    return min(tier_for_item(item, registry) for item in items)
 
 
 def tier_name(tier: int) -> str:
@@ -50,6 +74,7 @@ __all__ = [
     "TIER_RESEARCH",
     "TIER_UNKNOWN",
     "best_tier",
+    "load_source_registry",
     "tier_for_category",
     "tier_for_item",
     "tier_name",
