@@ -1,6 +1,6 @@
 # 推荐流程评测报告
 
-- 生成时间：2026-11-12T07:21:55.001830+00:00
+- 生成时间：2026-11-12T07:38:15.580723+00:00
 - 评测天数：1
 - 事件数：718
 - 标注：300 条，匹配 157 条，未匹配 143 条
@@ -9,73 +9,58 @@
 
 | 阶段 | 指标 | 值 |
 |---|---|---|
-| 召回 | 正样本召回率 | 67.33% |
+| 召回 | 正样本召回率 | 74.05% |
 | 召回 | 负样本漏入率 | 0.00% |
-| 粗排 | 正样本保留率 | 5.94% |
+| 粗排 | 正样本保留率 | 6.19% |
 | 粗排 | 负样本漏入率 | n/a |
-| top8 | 精确率 | 80.00% |
-| top8 | 正样本覆盖 | 2.67% |
+| top8 | 精确率 | 75.00% |
+| top8 | 正样本覆盖 | 2.29% |
 | top8 | 负样本占比 | 0.00% |
 
 ## 各阶段数量
 
 | 阶段 | 正样本 | 负样本 |
 |---|---|---|
-| 召回 | 101 / 150 | 0 / 7 |
-| 粗排 | 6 / 101 | 0 / 0 |
-| top8 | 4 | 0 |
+| 召回 | 97 / 131 | 0 / 26 |
+| 粗排 | 6 / 97 | 0 / 0 |
+| top8 | 3 | 0 |
 
 ## 漏召回的正样本
 
+- 2026 开源行业解决方案创新赛总决赛评委阵容公布
 - A Model Organism for Studying Unverbalized Evaluation Awareness
-- ASCENT: Scale-Complementary External State for Frozen Long-Context Language Models
+- AuDiR: Diagnosing Audio Reasoning with Rule and Percept Interventions
+- Beyond the Prompt: Leveraging Pre-Decoding States for Jailbreak Detection in dLLMs
 - BiMuon: A Geometry-Aware Stochastic Bilevel Optimization Approach
 - BiVerify: Closing the Loop Between Backward and Forward Verification for Mathematical Self-Correction
 - Can the Confidence and Decisions of System 1 Models Be Trusted? An Explainability and Perturbation Audit of Jev-Style Decision Models
-- CoRA-Bench: Evaluating Evidence Preservation by Context Selectors Under Token Budgets
-- CodeRabbit scales agentic software development and ships 20x more
-- DASH-SLAM: Calibration-Free Metric Monocular SLAM via Depth Scale Propagation
-- Do large language models rank moral values? A transitivity test of moral competence
 - Dropping Tokens Without Dropping Them: Causal Attribution for Diabetic Retinopathy
-- EmbodiedIntentBench: Benchmarking Intent-Driven Runtime Adaptation for Mobile Robotic Missions
 - Fable 5.2狂刷72项世界纪录,23年黑洞难题告破!科学史又改写了
-- Fast Accurate Quantum Monte Carlo without Metropolis Adjustment
-- From Video to Digital Twin: An Exploratory Study of World Models and Gaussian Splatting on In-the-Wild Video
-- GTA6预载文件出现新线索:PS5 Pro版有可能支持40FPS模式
-- How to make failure your friend and teacher in science
-- ICLR 2027首轮评审,槽点有点多
-- Implicit Bias in State Space Models and Linear Autoregressive Training
+- How a Model's Architecture and Performance Influences Explainability: A Study of Grad-CAM and CRAFT in CNN-Based Image Classification
+- HyPLM Technical Report
 - Interpretability Is Not Model-Specific
 - Key Institutional Considerations for Designing Effective Independent Verification Organizations
-- LoRazor: Trimming Adapter Execution for Efficient Multi-LoRA Serving
-- MAGE: Towards Generalizable Multi-timescale EEG Representations
+- LogCDM: Interpretable Log Anomaly Detection via Behavioral Graph Drift and Adaptive Signal Fusion
 - Match the Geometry Before the Surrogate: Extreme Low-Budget Optimization in High Dimensions
-- Nanopath: Fast, Fair, Open Experimentation for Pathology Foundation Models
-- OfficeTwin: Realizing 3D Reconstruction of Redundant Scenes through Partial Viewpoint Perception
+- Nemotron-Personas-Finance-Japan: A Synthetic Dataset Capturing Japan's Demographics and Financial Context
 - PC玩家天塌了!苏姿丰摊牌:AMD早已是一家数据中心优先的公司
-- Preconditioned Implicit Midpoint Langevin Sampling for Non-Smooth Bayesian Imaging
-- Process then Retrieve: Investigating the Origins of the Modality Gap in Vision-Language Models
-- Renhuai123/ziwei-doushu
-- ScreenProof: Where Is This Screen Wrong? Finding UI Faults Without a Reference
+- Representation Learning for 3D Brain Imaging: A Benchmark
 - Semiprime Factorization with Discrete Diffusion and Beam Search: Scaling Laws
-- SimDuoReal: Object-Centric Bimanual Policy for Emergent Dexterity
+- Shortcuts and Boundaries: Verifiable RL Misalignment and Contextual Safety Learning
 - Switch 2公开破解不到20天就被封堵 任天堂通过23.5.0固件修复关键越狱漏洞
-- The Truth Beneath the Tokens: Prompt-Space Recovery of Knowledge Edits in Language Models
 - The backlash about data centers might really just be about electricity
-- Video-DCI: How Far Are VLM Agents from Human Viewers in Direct Video Corpus Interaction?
 - We’re bringing Adobe’s creative and productivity tools closer to your everyday Google apps.
 - What is the 'Dead Internet Theory' and should humanity be worried?
-- Which Taxels, Not How Many: Tactile Sensor Placement for Dexterous Policies
+- WorldMind: Test-Time Scaling for Visual Spatial Reasoning through Latent World Simulation
+- Your Experts Have Partners. There's HOPE for Keeping Them Together
+- phimint v0.8.0 发布:模型选择跨重启生效、终端贴图、长输出不再消失
+- v0.40.16
 - v0.40.17
 - 从路透社到 Linux Magazine:openKylin 3.0 收获全球关注
-- 准备退货!理想高管吐槽苹果笔记本电脑:风扇噪音大的像烧开水
-- 实测Seedream 5.5:100轮改图不崩,还能直出透明图
-- 影子暗访|非标农用地膜的“身份游戏”(上):从定制到发货都在打暗语
+- 开源新生力:一群中学生登上 GOTC 主会场
 - 得克萨斯不相信数据中心
 - 微软向特朗普政府施压,要求其放弃拟议中的中国光收发器进口禁令。三位知情人士透露,微软一直在向特朗普政府施压,要求其放弃有关禁止从中国进口一种用于人工智...
-- 微软要给经典版Outlook换新界面 调整图标和布局等 用户要求的更新说明也回归
 - 百度搭子连中三元:中信建投、国家电投数科、通用数科
-- 風瑛なづき/Fueinaduki/Hueinaduki Style
 
 ## 未匹配的标注（检查标题是否被事件合并改写）
 
@@ -231,4 +216,4 @@
 
 | 日期 | 事件数 | top8 正样本 | top8 负样本 |
 |---|---|---|---|
-| 2026-11-11 | 718 | 4 | 0 |
+| 2026-11-11 | 718 | 3 | 0 |

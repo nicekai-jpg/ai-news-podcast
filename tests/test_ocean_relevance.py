@@ -51,3 +51,34 @@ def test_stronger_grade_order() -> None:
     assert stronger_grade("none", "adjacent") == "adjacent"
     assert stronger_grade("adjacent", "core") == "core"
     assert stronger_grade("core", "adjacent") == "core"
+
+
+class TestRelevanceTightening:
+    def test_agentic_coding_model_summary_is_core(self) -> None:
+        grade, _, _ = classify_text("v0.40.16", "a 65B dense model built for agentic coding")
+        assert grade == "core"
+
+    def test_mixture_of_experts_language_model_is_core(self) -> None:
+        grade, _, _ = classify_text(
+            "Your Experts Have Partners",
+            "Higher-Order Pruning of Experts in Mixture-of-Experts Language Models",
+        )
+        assert grade == "core"
+
+    def test_chatbots_is_core(self) -> None:
+        grade, _, _ = classify_text("Freeing Chatbots From Corporate Guardrails")
+        assert grade == "core"
+
+    def test_ai_generated_image_caption_is_ignored(self) -> None:
+        grade, _, _ = classify_text(
+            "微软给经典版 Outlook 换新界面",
+            "本次更新调整图标和布局。本图片由 AI 生成，仅做示意使用。",
+        )
+        assert grade == "none"
+
+    def test_bare_arxiv_is_not_ai(self) -> None:
+        grade, _, _ = classify_text(
+            "ScreenProof: Where Is This Screen Wrong?",
+            "arXiv:2611.10234v1 Abstract: A phone screen can be wrong in ways that need no reference.",
+        )
+        assert grade in {"none", "unknown"}
