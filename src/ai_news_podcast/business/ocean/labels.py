@@ -597,18 +597,32 @@ def label_text(
     text = clean_text(f"{title}。{summary}。{full_text[:max_chars]}")
     text_lower = text.lower()
 
-    entity_pairs = _extract_entities(text_lower, lexicon, config)
+    head_lower = f"{title}。{summary}。".lower()
+
+    def _head_or_body(extract: Any) -> Any:
+        value = extract(head_lower)
+        return value if value else extract(text_lower)
+
+    entity_pairs = _head_or_body(lambda scope: _extract_entities(scope, lexicon, config))
     subjects, entity_defs = _build_subjects(entity_pairs)
-    object_types, object_keys = _extract_object_keys(text_lower, lexicon)
-    action_ids, primary_action = _extract_actions(text_lower, lexicon)
-    tech_ids = _extract_term_ids(text_lower, lexicon, KIND_TECH)
-    topic_ids = _priority_order(_extract_term_ids(text_lower, lexicon, KIND_TOPIC), lexicon.topics)
-    narrative_ids = _extract_term_ids(text_lower, lexicon, KIND_NARRATIVE)
-    sensitivity_ids = _priority_order(
-        _extract_term_ids(text_lower, lexicon, KIND_SENSITIVITY), lexicon.sensitivity
+    object_types, object_keys = _head_or_body(lambda scope: _extract_object_keys(scope, lexicon))
+    action_ids, primary_action = _head_or_body(lambda scope: _extract_actions(scope, lexicon))
+    tech_ids = _head_or_body(lambda scope: _extract_term_ids(scope, lexicon, KIND_TECH))
+    topic_ids = _priority_order(
+        _head_or_body(lambda scope: _extract_term_ids(scope, lexicon, KIND_TOPIC)),
+        lexicon.topics,
     )
-    persona_ids = _extract_personas(text_lower, lexicon, tech_ids, action_ids, object_types)
-    regions = _extract_regions(text_lower, lexicon, list(entity_defs.values()))
+    narrative_ids = _head_or_body(lambda scope: _extract_term_ids(scope, lexicon, KIND_NARRATIVE))
+    sensitivity_ids = _priority_order(
+        _head_or_body(lambda scope: _extract_term_ids(scope, lexicon, KIND_SENSITIVITY)),
+        lexicon.sensitivity,
+    )
+    persona_ids = _head_or_body(
+        lambda scope: _extract_personas(scope, lexicon, tech_ids, action_ids, object_types)
+    )
+    regions = _head_or_body(
+        lambda scope: _extract_regions(scope, lexicon, list(entity_defs.values()))
+    )
     novelty_numbers = extract_novelty_numbers(text)
     max_numbers = int(cfg_get(config, "labels.novelty.max_values", 12))
     novelty_numbers = novelty_numbers[:max_numbers]
@@ -658,11 +672,23 @@ def label_text(
             "ai_relevance": float(ai_confidence),
             "primary_domain": 0.6 if primary_domain else 0.2,
             "industry": 0.7 if industry_match else 0.2,
+            "topics": 0.65 if topic_ids else 0.2,
+            "tech_stack": 0.65 if tech_ids else 0.2,
+            "actions": 0.65 if action_ids else 0.2,
+            "narrative_angle": 0.6 if narrative_ids else 0.2,
+            "audience_persona": 0.6 if persona_ids else 0.2,
+            "sensitivity": 0.7 if sensitivity_ids else 0.2,
         },
         label_method={
             "ai_relevance": "rule",
             "primary_domain": "rule",
             "industry": "rule",
+            "topics": "rule",
+            "tech_stack": "rule",
+            "actions": "rule",
+            "narrative_angle": "rule",
+            "audience_persona": "rule",
+            "sensitivity": "rule",
         },
         taxonomy_version=1,
         quote_availability=quote_available,

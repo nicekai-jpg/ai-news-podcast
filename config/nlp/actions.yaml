@@ -64,3 +64,19 @@ actions:
     name: 研究
     priority: 40
     aliases: [研究, 论文, 实验, 研究成果, research, paper, study, experiment]
+  - id: personnel
+    name: 人事变动
+    priority: 66
+    aliases: [任命, 离职, 辞职, 加盟, 加入, 卸任, 换帅, appoint, appointed, resign, resignation, join, joined]
+  - id: deployment
+    name: 部署上线
+    priority: 65
+    aliases: [部署, 落地, 上线运行, 投产, 规模化, deploy, deployed, deployment, rollout]
+  - id: award
+    name: 获奖认证
+    priority: 35
+    aliases: [获奖, 奖项, 认证, 入选, award, awarded, recognition, certification]
+  - id: recall
+    name: 召回停售
+    priority: 84
+    aliases: [召回, 停售, 停止销售, recall, recalled, discontinue]

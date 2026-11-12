@@ -405,3 +405,13 @@ LLM S3-S7      16m     (8%)
 - `classify_domain` 关键词判不出时用行业表兜底（core→ai_core、infra→ai_infra、
   application→ai_application、none→other）；
 - 测试：行业匹配、行业兜底、标签行业/证据；916 passed。
+
+## P2 作用域与词表扩展（2026-11-12）
+
+- `label_text` 改为“标题+摘要优先、正文兜底”：每个维度先在标题/摘要匹配，命中为空才看正文，
+  减少正文背景词污染；
+- 词典扩展：topics 8→12、actions 16→20、narrative 7→10、persona 5→7、tech 17→22；
+  新增 hardware/open_source/infrastructure/application、personnel/deployment/award/recall、
+  howto/crisis/trend、enterprise/creator、mcp/world_model/reinforcement/video/cloud；
+- 所有词典字段补 `label_method` / `label_confidence`；
+- 测试：924 passed。

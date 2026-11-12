@@ -25,3 +25,13 @@ personas:
     keywords: [论文, 研究, 实验, 基准, 数据集, 学术, 预印本, paper, research, experiment, benchmark, dataset, academic]
     tech_stack: [training, reasoning, data]
     object_types: [paper]
+  - id: enterprise
+    name: 企业决策者
+    keywords: [企业, 公司, CTO, CIO, 决策者, 采购, 私有化, enterprise, business, procurement]
+    actions: [partnership, deployment, acquisition]
+    object_types: [product, framework]
+  - id: creator
+    name: 创作者
+    keywords: [创作者, 设计, 内容创作, 自媒体, 视频, 图像, creator, designer, content creation]
+    tech_stack: [vision, speech, multimodal, video]
+    object_types: [product]
