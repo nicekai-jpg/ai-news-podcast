@@ -352,3 +352,12 @@ LLM S3-S7      16m     (8%)
   各维度取中位数再融合，降低单次打分波动；
 - 成本随采样次数线性增加，默认关闭；打开前先用评测集确认收益；
 - 测试：`test_llm_samples_use_median_scores`；885 passed。
+
+## AI 信号收紧（2026-11-12）
+
+验证跑发现：汽车新闻正文提到“自动驾驶/辅助驾驶”会被判 core/adjacent，Cybertruck 停产进了 top8。
+修正：
+- Stage 2 规则分级：正文兜底只对 official/research 来源开放，新闻/社区只看标题+摘要；
+- 召回/粗排门槛：core/adjacent 标签也必须**标题**带 AI 信号（一手/研究来源例外）；
+- 用验证 artifact（763 事件）回归：Cybertruck 停产被挡，7 条 shortlist 中 6 条 AI 事件保留；
+- 边界：标题含“机器人”的玩具新闻仍会通过，属可接受误放，后续可用主题/对象标签继续收紧。

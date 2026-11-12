@@ -155,7 +155,7 @@ Stage CLIs (console scripts in pyproject):
   `test_v3_runner_service.py`、`test_v3_pipeline_integration.py`、`test_v3_cli_controller.py`。
 - **已知取舍**：C3 路由已按 2026-11-09 GHA 实跑结果收敛（慢/失败路由改原生 RSS 或禁用，见
   `sources_v3.yaml` 头部）；C4 的智谱/MiniMax/字节 Seed/商汤/工信部/网信办走“锚点+邻近日期”
-  启发式，站点改版时在 `sources_v3.yaml` 给该源加 `selectors`；Stage 2 已产出 `ai_relevance`（core/adjacent/none/unknown + 证据词）、`source_categories`（official/news/research/community）与 `best_source_tier`（1=一手/研究，2=媒体，3=社区/聚合），推荐召回把 AI 相关性作为**准入前提**（优先读标签等级，unknown 回退标题/摘要关键词），粗排同款门槛兜底；重排预留 `max_per_topic/max_per_category` 配额（默认 0=关闭，评测后再开）；精排 LLM rubric 支持 `fine.llm_samples` 多次采样取中位数（默认 1，评测后再开）；全部 Stage 已切换 MiniMax-M3.1-Flash（2026-11-10 用户决定；成本约 M3 五折价的 50%，
+  启发式，站点改版时在 `sources_v3.yaml` 给该源加 `selectors`；Stage 2 已产出 `ai_relevance`（core/adjacent/none/unknown + 证据词）、`source_categories`（official/news/research/community）与 `best_source_tier`（1=一手/研究，2=媒体，3=社区/聚合），推荐召回把 AI 相关性作为**准入前提**（标题必须带 AI 信号；一手/研究来源可用标签等级，unknown 回退标题关键词），粗排同款门槛兜底；重排预留 `max_per_topic/max_per_category` 配额（默认 0=关闭，评测后再开）；精排 LLM rubric 支持 `fine.llm_samples` 多次采样取中位数（默认 1，评测后再开）；全部 Stage 已切换 MiniMax-M3.1-Flash（2026-11-10 用户决定；成本约 M3 五折价的 50%，
   S6 A/B Flash 2/3 vs M3 0/3）。Flash 是推理模型：stage3 需 24k/300s，stage4 8k/240s，
   stage5 16k/300s，stage6 24k/600s，stage7 16k/300s；低 token 预算会空输出（上层有重试/降级）。
 
