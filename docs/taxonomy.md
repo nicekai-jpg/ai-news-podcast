@@ -73,3 +73,48 @@ LLM 层（只对候选，受控输出）
 - 实体和行业清单是首批种子（AI 公司/常见行业），后续按“有限清单”补齐；
 - 下一步：规则标注接入 `taxonomy`（用 industry/entity id），再上 LLM 受控标注；
 - 旧的 `config/domain_keywords.yaml` 暂时保留作补充词表，后续逐步收敛到 taxonomy。
+
+
+## 字段全景与穷尽方法（v1）
+
+字段分四类，穷尽方式不同：
+
+| 类别 | 字段例子 | 穷尽方式 |
+|---|---|---|
+| 封闭枚举 | ai_centrality、object_type、primary_action、sentiment、risk_labels | 自上而下定类别，值只能从枚举选 |
+| 有限清单 | 公司/实验室/人物、产品/模型、行业、地区、语言 | 建 registry，用标准库 + 持续补别名 |
+| 组合生成 | event_type、novelty_type、narrative_angle | 不穷举字符串，穷举维度组合（action × object） |
+| 开放抽取 | 数字、benchmark、引语、链接 | 正则/NER 抽取，不做硬门槛 |
+| 派生计算 | lifecycle、timeliness、credibility | 公式/规则，不人工填 |
+
+### 形容词类怎么处理
+
+不要穷举“重要/重磅/颠覆/炸裂/争议”这类同义词，而是**降到有序刻度 + 锚点句**：
+
+| 字段 | 刻度 | 锚点 |
+|---|---|---|
+| impact_scope | 0-5 | 0 无影响，3 行业级，5 全球级 |
+| sentiment | -2..2 | -2 强负面，0 中性，+2 强正面 |
+| controversy | 0-5 | 0 无争议，3 有对立观点，5 重大伦理/法律争议 |
+| novelty_type | 多选枚举 | first/record/reversal/new_version/new_number |
+
+### 穷尽的六种手段
+
+1. **标准导入**：行业用 GICS/申万，地区用 ISO 3166，语言用 ISO 639，动作借 VerbNet/事件类型学；
+2. **语料挖掘**：从历史标题/正文抽名词/动词短语，按频次补；
+3. **同义词/别名扩展**：公司英文名、简称、产品名统一映射到规范 id；
+4. **组合生成**：event_type = action × object，narrative_angle = 角度集合，不手写所有组合；
+5. **饱和分析**：每 N 篇新增唯一词数量下降即接近覆盖；同时看 unknown 率；
+6. **错误驱动**：每周抽查误判样本，补枚举/别名并跑回归。
+
+### 覆盖度量
+
+- 每个字段的 `unknown` 比例；
+- 实体/行业命中率（命中条数 / 总条数）；
+- 别名覆盖率（同一实体不同写法是否归并）；
+- 饱和曲线（新增词/新增文档）；
+- 误杀/漏放（评测集）。
+
+### 字段清单
+
+完整字段注册表见 `config/taxonomy/dimensions.yaml`（约 30 个字段，标注 type/enumerability/values_source/consumers）。
