@@ -361,3 +361,12 @@ LLM S3-S7      16m     (8%)
 - 召回/粗排门槛：core/adjacent 标签也必须**标题**带 AI 信号（一手/研究来源例外）；
 - 用验证 artifact（763 事件）回归：Cybertruck 停产被挡，7 条 shortlist 中 6 条 AI 事件保留；
 - 边界：标题含“机器人”的玩具新闻仍会通过，属可接受误放，后续可用主题/对象标签继续收紧。
+
+## 主题域分级（2026-11-12）
+
+用户提醒“今天汽车，明天可能是别的类”。新增 `business/ocean/domain.py`：
+- 标题判定 `primary_domain`：ai_core / ai_infra / other / unknown；
+- 汽车、金融、消费、体育、娱乐、社会、政治等统一归 other；
+- 召回/粗排遇到 other 直接淘汰，不再依赖“AI 关键词在不在”；
+- 验证 artifact（763 事件）回归：31 条 other 全部挡住；原 top8 保留 6/7；
+- 测试：898 passed。

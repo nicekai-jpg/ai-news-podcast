@@ -1,0 +1,185 @@
+"""Stage 2 主题域分级：ai_core / ai_infra / other / unknown。
+
+目的不是"标题里有没有 AI 词"，而是判断**这条新闻的主领域**：
+- ai_core：模型、Agent、算法、AI 产品、AI 研究；
+- ai_infra：芯片/算力/机器人/自动驾驶等 AI 基础设施；
+- other：汽车、消费、金融、社会、体育、娱乐等非 AI 主领域；
+- unknown：信息不足。
+
+规则顺序（先强后弱）：
+1. **标题**命中强 AI 词 → ai_core；
+2. 标题命中自动驾驶/智能驾驶等 AI 驾驶词 → ai_infra（即使同时有汽车词）；
+3. 标题命中非 AI 类目词 → other；
+4. 标题命中基础设施词 → ai_infra；
+5. official/research 来源允许正文 AI 词兜底 → ai_core/ai_infra；
+6. 否则 unknown。
+
+只用标题判定主领域；摘要/正文只给 official/research 做兜底，
+避免汽车新闻因摘要里提了一句“自动驾驶”被归到 AI。
+"""
+
+from __future__ import annotations
+
+from ai_news_podcast.business.ocean.relevance import CORE_HINTS, INFRA_TERMS
+from ai_news_podcast.business.recommend.base import matched_keywords
+
+AI_CORE = "ai_core"
+AI_INFRA = "ai_infra"
+OTHER = "other"
+UNKNOWN = "unknown"
+AI_DOMAINS = (AI_CORE, AI_INFRA)
+
+# 明确属于 AI 驾驶/座舱的标题，优先于"汽车"类目词。
+AI_DRIVING_TERMS: tuple[str, ...] = (
+    "自动驾驶",
+    "智能驾驶",
+    "无人驾驶",
+    "智能座舱",
+    "robotaxi",
+    "fsd",
+)
+
+# 非 AI 主领域的高置信标题词；命中即判 other（前提是没命中强 AI 词）。
+OTHER_CATEGORY_TERMS: tuple[str, ...] = (
+    "汽车",
+    "车型",
+    "车企",
+    "造车",
+    "轿车",
+    "suv",
+    "销量",
+    "停产",
+    "召回",
+    "碰撞",
+    "车祸",
+    "公交车",
+    "停车",
+    "股票",
+    "股价",
+    "a股",
+    "港股",
+    "美股",
+    "指数",
+    "涨停",
+    "跌停",
+    "基金",
+    "融资买入",
+    "财报",
+    "营收",
+    "利润",
+    "房价",
+    "楼市",
+    "体育",
+    "足球",
+    "篮球",
+    "奥运",
+    "电影",
+    "电视剧",
+    "明星",
+    "综艺",
+    "短剧",
+    "游戏",
+    "手机",
+    "耳机",
+    "笔记本",
+    "好物",
+    "优惠",
+    "折扣",
+    "双十一",
+    "玩具",
+    "摆件",
+    "遥控",
+    "天气",
+    "事故",
+    "社会",
+    "政治",
+)
+
+# 汽车品牌：标题带品牌不等于 AI（除非同时有 AI 驾驶词）。
+AUTO_BRANDS: tuple[str, ...] = (
+    "特斯拉",
+    "比亚迪",
+    "蔚来",
+    "小鹏",
+    "理想汽车",
+    "问界",
+    "小米汽车",
+    "极氪",
+    "长城汽车",
+    "吉利",
+    "丰田",
+    "本田",
+    "大众汽车",
+    "奔驰",
+    "宝马",
+    "奥迪",
+    "福特",
+    "现代汽车",
+    "起亚",
+    "沃尔沃",
+)
+
+
+def _matches(text: str, terms: tuple[str, ...]) -> list[str]:
+    return matched_keywords(text, terms)
+
+
+def _head(title: str, summary: str) -> str:
+    # 主领域只看标题；summary 参数保留是为了接口兼容/未来可选策略
+    del summary
+    return title.strip()
+
+
+def classify_domain(
+    title: str,
+    summary: str = "",
+    full_text: str = "",
+    *,
+    category: str = "news",
+) -> tuple[str, list[str]]:
+    """返回 (primary_domain, evidence)。"""
+    head = _head(title, summary)
+
+    for domain, terms in (
+        (AI_CORE, CORE_HINTS),
+        (AI_INFRA, AI_DRIVING_TERMS),
+    ):
+        matches = _matches(head, terms)
+        if matches:
+            return domain, matches[:5]
+
+    other = _matches(head, OTHER_CATEGORY_TERMS + AUTO_BRANDS)
+    if other:
+        return OTHER, other[:5]
+
+    infra = _matches(head, tuple(INFRA_TERMS))
+    if infra:
+        return AI_INFRA, infra[:5]
+
+    if str(category or "").lower() in ("official", "research"):
+        for domain, terms in (
+            (AI_CORE, CORE_HINTS),
+            (AI_INFRA, tuple(INFRA_TERMS)),
+        ):
+            matches = _matches(full_text[:2000], terms)
+            if matches:
+                return domain, matches[:5]
+
+    return UNKNOWN, []
+
+
+def stronger_domain(current: str, candidate: str) -> str:
+    """事件内多 item 合并：ai_core > ai_infra > unknown > other。"""
+    order = {AI_CORE: 3, AI_INFRA: 2, UNKNOWN: 1, OTHER: 0}
+    return candidate if order.get(candidate, 0) > order.get(current, 0) else current
+
+
+__all__ = [
+    "AI_CORE",
+    "AI_DOMAINS",
+    "AI_INFRA",
+    "OTHER",
+    "UNKNOWN",
+    "classify_domain",
+    "stronger_domain",
+]

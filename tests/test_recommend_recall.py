@@ -31,6 +31,7 @@ def _make_event(
     title: str | None = None,
     ai_relevance: str = "unknown",
     source_tier: int = 3,
+    primary_domain: str = "unknown",
 ) -> Event:
     seen = "" if age_hours is None else (REFERENCE - timedelta(hours=age_hours)).isoformat()
     labels = Labels(
@@ -45,6 +46,7 @@ def _make_event(
         evidence_tier=evidence_tier,
         novelty_numbers=[] if novelty_numbers is None else novelty_numbers,
         ai_relevance=ai_relevance,
+        primary_domain=primary_domain,
     )
     return Event(
         event_id=event_id,
@@ -262,3 +264,13 @@ class TestAiPrecondition:
     def test_label_none_rejects_ai_text(self) -> None:
         ai = _make_event("ai2", title="OpenAI 发布新模型", ai_relevance="none")
         assert recall_events([ai], RecallSettings(), reference_time=REFERENCE) == []
+
+    def test_domain_other_is_rejected_even_with_ai_grade(self) -> None:
+        car = _make_event(
+            "car5",
+            title="特斯拉宣布 Cybertruck 停产",
+            ai_relevance="core",
+            primary_domain="other",
+            source_tier=1,
+        )
+        assert recall_events([car], RecallSettings(), reference_time=REFERENCE) == []

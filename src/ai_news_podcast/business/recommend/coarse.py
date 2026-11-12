@@ -212,6 +212,9 @@ def _is_ai_related(event: Event, settings: CoarseSettings) -> bool:
     这里只在标题/摘要上做 AI 关键词硬门槛，避免被正文里的偶然词或宽泛主题标签误放行。
     """
     head_signal = bool(matched_keywords(event.representative_title, settings.ai_text_keywords))
+    domain = str(getattr(event.labels, "primary_domain", "unknown") or "unknown")
+    if domain == "other":
+        return False
     grade = str(getattr(event.labels, "ai_relevance", "unknown") or "unknown")
     if grade in ("core", "adjacent"):
         # 只有一手/研究来源才允许“正文里提 AI”算相关；新闻/社区必须标题或摘要带 AI 信号

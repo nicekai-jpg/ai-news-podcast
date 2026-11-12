@@ -37,6 +37,7 @@ def _make_event(
     covered_before: bool = False,
     ai_relevance: str = "unknown",
     source_tier: int = 3,
+    primary_domain: str = "unknown",
 ) -> Event:
     seen = (REFERENCE - timedelta(hours=age_hours)).isoformat()
     labels = Labels(
@@ -52,6 +53,7 @@ def _make_event(
         evidence_tier=evidence_tier,
         confidence={} if confidence is None else confidence,
         ai_relevance=ai_relevance,
+        primary_domain=primary_domain,
     )
     return Event(
         event_id=event_id,
@@ -282,3 +284,18 @@ class TestAiRelevance:
             reference_time=REFERENCE,
         )
         assert [item.reason for item in outcome.eliminated] == [REJECT_NOT_AI]
+
+    def test_domain_other_is_rejected_even_with_ai_grade(self) -> None:
+        car = _make_event(
+            "car5",
+            title="特斯拉宣布 Cybertruck 停产",
+            ai_relevance="core",
+            primary_domain="other",
+            source_tier=1,
+        )
+        outcome = coarse_rank(
+            [RecallCandidate(event=car, channels=("subject",))],
+            CoarseSettings(),
+            reference_time=REFERENCE,
+        )
+        assert outcome.candidates == []
