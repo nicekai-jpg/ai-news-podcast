@@ -1,0 +1,87 @@
+# 行业/领域词表（穷举式，先定骨架再补词）
+#
+# 字段：
+#   id           规范 id
+#   name         展示名
+#   parent       上级行业（没有则省略）
+#   ai_related   AI 相关性：core=AI 本体，infra=AI 基础设施，application=AI 应用，none=非 AI
+#   keywords     命中这些词归入该行业（标题优先）
+
+version: 1
+
+industries:
+  - id: ai
+    name: 人工智能
+    ai_related: core
+    keywords: [AI, 人工智能, 大模型, 模型, LLM, Agent, 智能体, 生成式, AIGC, 机器学习]
+
+  - id: semiconductors
+    name: 半导体
+    ai_related: infra
+    keywords: [芯片, 半导体, GPU, 算力, 英伟达, 光刻, 晶圆]
+
+  - id: robotics
+    name: 机器人
+    ai_related: infra
+    keywords: [机器人, 人形机器人, 具身智能, 机械臂]
+
+  - id: autonomous_driving
+    name: 自动驾驶
+    ai_related: infra
+    keywords: [自动驾驶, 智能驾驶, 无人驾驶, Robotaxi]
+
+  - id: cloud_data
+    name: 云与数据中心
+    ai_related: infra
+    keywords: [云计算, 数据中心, 智算中心, 服务器]
+
+  - id: ai_application
+    name: AI 应用
+    parent: ai
+    ai_related: application
+    keywords: [编程助手, AI 医疗, AI 金融, AI 教育, AI 搜索, AI 办公]
+
+  - id: automotive
+    name: 汽车
+    ai_related: none
+    keywords: [汽车, 车型, 车企, 造车, 轿车, SUV, 销量, 停产, 召回]
+
+  - id: finance
+    name: 金融
+    ai_related: none
+    keywords: [股票, 股价, A股, 港股, 美股, 指数, 涨停, 基金, 财报, 营收]
+
+  - id: consumer
+    name: 消费电子
+    ai_related: none
+    keywords: [手机, 耳机, 笔记本, 好物, 优惠, 折扣, 双十一, 玩具]
+
+  - id: media_entertainment
+    name: 影视娱乐
+    ai_related: none
+    keywords: [电影, 电视剧, 明星, 综艺, 短剧, 游戏, 演唱会]
+
+  - id: sports
+    name: 体育
+    ai_related: none
+    keywords: [体育, 足球, 篮球, 奥运]
+
+  - id: healthcare
+    name: 医疗健康
+    ai_related: none
+    keywords: [医疗, 医院, 药企, 临床]
+
+  - id: education
+    name: 教育
+    ai_related: none
+    keywords: [教育, 学校, 课程, 考试]
+
+  - id: policy
+    name: 政策与社会
+    ai_related: none
+    keywords: [政策, 监管, 法案, 政府, 政治, 社会, 事故]
+
+  - id: other
+    name: 其他
+    ai_related: none
+    keywords: []

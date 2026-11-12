@@ -370,3 +370,12 @@ LLM S3-S7      16m     (8%)
 - 召回/粗排遇到 other 直接淘汰，不再依赖“AI 关键词在不在”；
 - 验证 artifact（763 事件）回归：31 条 other 全部挡住；原 top8 保留 6/7；
 - 测试：898 passed。
+
+## 标签体系骨架（2026-11-12）
+
+用户要求先定骨架/技术路线/标签类型，再填词。已落地：
+- `config/taxonomy/labels.yaml`：决策标签受控枚举（ai_centrality/primary_domain/object_type/primary_action/lifecycle/evidence_tier）；
+- `config/taxonomy/entities.yaml`：公司/实验室/人物/产品 id + 别名（首批种子）；
+- `config/taxonomy/industries.yaml`：有限行业清单 + ai_related + 关键词；
+- `business/ocean/taxonomy.py`：加载/校验/别名映射/行业查询；`tests/test_taxonomy.py`；
+- 文档：`docs/taxonomy.md`（含规则+LLM 标注路线、补词流程）。
