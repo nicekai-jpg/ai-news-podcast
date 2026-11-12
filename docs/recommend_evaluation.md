@@ -203,3 +203,39 @@ unknown           → 标题带 AI 关键词才放行
 ```
 
 这样不用为“汽车/股票/手机/体育”逐个打补丁：非 AI 主领域统一被 `other` 挡住。
+
+## 词表覆盖流程（发现一个补一个）
+
+规则不可能理解一切，但常见类目有限，做法是**覆盖 + 回归**：
+
+```
+每天 events artifact
+        ↓
+scripts/domain_coverage.py
+        ↓
+unknown / other 标题清单（人工扫一眼）
+        ↓
+把漏掉的词加到 config/domain_keywords.yaml
+        ↓
+跑回归（domain/relevance/recall/coarse 测试 + 历史 artifact）
+        ↓
+合入，下一期生效
+```
+
+命令：
+
+```bash
+# 看覆盖缺口（unknown 最需要补词）
+uv run python scripts/domain_coverage.py \
+  --events data/ocean/2026-11-12/events.json \
+  --out-md data/domain_coverage/report.md \
+  --out-queue data/domain_coverage/review.jsonl
+```
+
+补词原则：
+
+- `other_category`：明显非 AI 的类目（汽车、金融、消费、体育、娱乐、社会）；
+- `auto_brands`：汽车品牌，避免“品牌出现=AI”；
+- `ai_core_extra`：新模型/研究常用英文词（diffusion、tokenizer、world model 等）；
+- `ai_driving`：自动驾驶/智能驾驶类，优先于汽车类目；
+- 加完必须跑测试，确认没有把已通过的 AI 新闻误杀。

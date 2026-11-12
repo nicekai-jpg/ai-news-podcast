@@ -8,6 +8,7 @@ from ai_news_podcast.business.ocean.domain import (
     OTHER,
     UNKNOWN,
     classify_domain,
+    load_domain_keywords,
     stronger_domain,
 )
 
@@ -42,3 +43,24 @@ def test_stronger_domain_order() -> None:
     assert stronger_domain(UNKNOWN, OTHER) == UNKNOWN
     assert stronger_domain(OTHER, AI_INFRA) == AI_INFRA
     assert stronger_domain(AI_INFRA, AI_CORE) == AI_CORE
+
+
+def test_load_domain_keywords_reads_config() -> None:
+    keywords = load_domain_keywords()
+    assert "汽车" in keywords["other_category"]
+    assert "自动驾驶" in keywords["ai_driving"]
+    assert "特斯拉" in keywords["auto_brands"]
+
+
+def test_extra_keyword_from_config(tmp_path) -> None:
+    path = tmp_path / "domain.yaml"
+    path.write_text(
+        "other_category: [演唱会]\n"
+        "ai_driving: []\n"
+        "ai_core_extra: []\n"
+        "ai_infra_extra: []\n"
+        "auto_brands: []\n",
+        encoding="utf-8",
+    )
+    keywords = load_domain_keywords(str(path))
+    assert classify_domain("某明星演唱会门票售罄", keywords=keywords)[0] == OTHER
