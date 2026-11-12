@@ -1,0 +1,118 @@
+# 主题域/相关性词表（可维护）
+#
+# 用法：发现新的非 AI 类目或 AI 核心词，直接加到这里；改完跑：
+#   uv run python -m pytest tests/test_ocean_domain.py tests/test_ocean_relevance.py -q
+#
+# 说明：
+# - ai_core_extra 追加到内置 AI 核心词（模型/Agent/LLM/论文等）；
+# - ai_infra_extra 追加到 AI 基础设施词（芯片/算力/机器人等）；
+# - ai_driving 优先于汽车类目词（自动驾驶/智能驾驶等）；
+# - other_category 命中即判非 AI（汽车、金融、消费、体育、娱乐、社会等）；
+# - auto_brands 汽车品牌：标题带品牌不等于 AI（除非同时有 ai_driving）。
+
+version: 1
+
+ai_core_extra:
+  - diffusion
+  - tokenizer
+  - tokenization
+  - alignment
+  - distillation
+  - world model
+
+ai_infra_extra:
+  - 数据中心
+  - 光刻
+  - 智算中心
+
+ai_driving:
+  - 自动驾驶
+  - 智能驾驶
+  - 无人驾驶
+  - 智能座舱
+  - robotaxi
+  - fsd
+
+other_category:
+  # 汽车/出行
+  - 汽车
+  - 车型
+  - 车企
+  - 造车
+  - 轿车
+  - suv
+  - 销量
+  - 停产
+  - 召回
+  - 碰撞
+  - 车祸
+  - 公交车
+  - 停车
+  - 网约车
+  # 金融/股市
+  - 股票
+  - 股价
+  - a股
+  - 港股
+  - 美股
+  - 指数
+  - 涨停
+  - 跌停
+  - 基金
+  - 融资买入
+  - 财报
+  - 营收
+  - 利润
+  - 债券
+  # 房产/民生
+  - 房价
+  - 楼市
+  - 天气
+  - 事故
+  - 社会
+  - 政治
+  # 体育/娱乐
+  - 体育
+  - 足球
+  - 篮球
+  - 奥运
+  - 电影
+  - 电视剧
+  - 明星
+  - 综艺
+  - 短剧
+  - 游戏
+  - 演唱会
+  # 消费/数码
+  - 手机
+  - 耳机
+  - 笔记本
+  - 好物
+  - 优惠
+  - 折扣
+  - 双十一
+  - 玩具
+  - 摆件
+  - 遥控
+
+auto_brands:
+  - 特斯拉
+  - 比亚迪
+  - 蔚来
+  - 小鹏
+  - 理想汽车
+  - 问界
+  - 小米汽车
+  - 极氪
+  - 长城汽车
+  - 吉利
+  - 丰田
+  - 本田
+  - 大众汽车
+  - 奔驰
+  - 宝马
+  - 奥迪
+  - 福特
+  - 现代汽车
+  - 起亚
+  - 沃尔沃

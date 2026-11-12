@@ -20,8 +20,35 @@
 
 from __future__ import annotations
 
+from functools import lru_cache
+from pathlib import Path
+
+import yaml
+
 from ai_news_podcast.business.ocean.relevance import CORE_HINTS, INFRA_TERMS
 from ai_news_podcast.business.recommend.base import matched_keywords
+
+_CONFIG_PATH = Path(__file__).resolve().parents[4] / "config" / "domain_keywords.yaml"
+
+
+@lru_cache(maxsize=1)
+def load_domain_keywords(path: str | None = None) -> dict[str, tuple[str, ...]]:
+    """读取 config/domain_keywords.yaml；缺失时回退内置列表。"""
+    config_path = Path(path) if path else _CONFIG_PATH
+    raw: dict = {}
+    if config_path.is_file():
+        try:
+            raw = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+        except (OSError, yaml.YAMLError):
+            raw = {}
+    return {
+        "ai_core": tuple(CORE_HINTS) + tuple(raw.get("ai_core_extra") or ()),
+        "ai_infra": tuple(INFRA_TERMS) + tuple(raw.get("ai_infra_extra") or ()),
+        "ai_driving": tuple(raw.get("ai_driving") or AI_DRIVING_TERMS),
+        "other_category": tuple(raw.get("other_category") or OTHER_CATEGORY_TERMS),
+        "auto_brands": tuple(raw.get("auto_brands") or AUTO_BRANDS),
+    }
+
 
 AI_CORE = "ai_core"
 AI_INFRA = "ai_infra"
@@ -136,32 +163,34 @@ def classify_domain(
     full_text: str = "",
     *,
     category: str = "news",
+    keywords: dict[str, tuple[str, ...]] | None = None,
 ) -> tuple[str, list[str]]:
     """返回 (primary_domain, evidence)。"""
     head = _head(title, summary)
+    terms = keywords or load_domain_keywords()
 
-    for domain, terms in (
-        (AI_CORE, CORE_HINTS),
-        (AI_INFRA, AI_DRIVING_TERMS),
+    for domain, term_list in (
+        (AI_CORE, terms["ai_core"]),
+        (AI_INFRA, terms["ai_driving"]),
     ):
-        matches = _matches(head, terms)
+        matches = _matches(head, term_list)
         if matches:
             return domain, matches[:5]
 
-    other = _matches(head, OTHER_CATEGORY_TERMS + AUTO_BRANDS)
+    other = _matches(head, terms["other_category"] + terms["auto_brands"])
     if other:
         return OTHER, other[:5]
 
-    infra = _matches(head, tuple(INFRA_TERMS))
+    infra = _matches(head, terms["ai_infra"])
     if infra:
         return AI_INFRA, infra[:5]
 
     if str(category or "").lower() in ("official", "research"):
-        for domain, terms in (
-            (AI_CORE, CORE_HINTS),
-            (AI_INFRA, tuple(INFRA_TERMS)),
+        for domain, term_list in (
+            (AI_CORE, terms["ai_core"]),
+            (AI_INFRA, terms["ai_infra"]),
         ):
-            matches = _matches(full_text[:2000], terms)
+            matches = _matches(full_text[:2000], term_list)
             if matches:
                 return domain, matches[:5]
 
