@@ -35,6 +35,7 @@ class Taxonomy:
     entities: list[dict[str, Any]] = field(default_factory=list)
     industries: list[dict[str, Any]] = field(default_factory=list)
     entity_aliases: dict[str, dict[str, Any]] = field(default_factory=dict)
+    entity_industries: dict[str, str] = field(default_factory=dict)
     industry_keywords: list[tuple[str, dict[str, Any]]] = field(default_factory=list)
 
     def enum_values(self, dimension: str) -> tuple[str, ...]:
@@ -91,7 +92,9 @@ def _validate_dimensions(labels: dict[str, Any]) -> dict[str, dict[str, Any]]:
     return {str(name): dict(spec or {}) for name, spec in dimensions.items()}
 
 
-def _parse_entities(raw: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str, dict[str, Any]]]:
+def _parse_entities(
+    raw: dict[str, Any],
+) -> tuple[list[dict[str, Any]], dict[str, dict[str, Any]], dict[str, str]]:
     entities = raw.get("entities") or []
     seen: set[str] = set()
     aliases: dict[str, dict[str, Any]] = {}
@@ -108,7 +111,10 @@ def _parse_entities(raw: dict[str, Any]) -> tuple[list[dict[str, Any]], dict[str
             key = _normalize(str(alias or ""))
             if key:
                 aliases.setdefault(key, entity)
-    return list(entities), aliases
+    industries = {
+        str(entity["id"]): str(entity["industry"]) for entity in entities if entity.get("industry")
+    }
+    return list(entities), aliases, industries
 
 
 def _parse_industries(
@@ -140,7 +146,7 @@ def load_taxonomy(base_dir: str | Path | None = None) -> Taxonomy:
     """加载并校验标签体系；失败抛 TaxonomyError。"""
     root = Path(base_dir) if base_dir else _BASE_DIR
     dimensions = _validate_dimensions(_read_yaml(root / "labels.yaml"))
-    entities, aliases = _parse_entities(_read_yaml(root / "entities.yaml"))
+    entities, aliases, entity_industries = _parse_entities(_read_yaml(root / "entities.yaml"))
     industries, keywords = _parse_industries(_read_yaml(root / "industries.yaml"))
     logger.debug(
         "标签体系加载: %d 维度, %d 实体, %d 行业", len(dimensions), len(entities), len(industries)
@@ -150,6 +156,7 @@ def load_taxonomy(base_dir: str | Path | None = None) -> Taxonomy:
         entities=entities,
         industries=industries,
         entity_aliases=aliases,
+        entity_industries=entity_industries,
         industry_keywords=keywords,
     )
 

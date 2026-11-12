@@ -1,129 +1,201 @@
 # 主体词表（先搭骨架，后续按“全球知名公司就那么多”的规模补齐）
 #
-# 字段：
-#   id          规范 id
-#   name        展示名
-#   type        company / lab / person / product / org / government
-#   ai_related  是否 AI 主体
-#   aliases     别名/英文名/简称
-#
-# 用途：实体抽取后映射到 id，避免“OpenAI/开放人工智能”被当成两个主体。
+# 字段：id / name / type / ai_related / industry（taxonomy industries id）/ aliases
+# 行业字段用于标签兜底：标题没命中行业词时，用主体所属行业补。
 
 version: 1
-
 entities:
-  - id: openai
-    name: OpenAI
-    type: company
-    ai_related: true
-    aliases: [OpenAI, 开放人工智能]
-  - id: anthropic
-    name: Anthropic
-    type: company
-    ai_related: true
-    aliases: [Anthropic, Claude]
-  - id: google
-    name: Google
-    type: company
-    ai_related: true
-    aliases: [Google, 谷歌, DeepMind]
-  - id: microsoft
-    name: Microsoft
-    type: company
-    ai_related: true
-    aliases: [Microsoft, 微软]
-  - id: meta
-    name: Meta
-    type: company
-    ai_related: true
-    aliases: [Meta, 脸书, Facebook]
-  - id: nvidia
-    name: NVIDIA
-    type: company
-    ai_related: true
-    aliases: [NVIDIA, 英伟达]
-  - id: apple
-    name: Apple
-    type: company
-    ai_related: true
-    aliases: [Apple, 苹果]
-  - id: amazon
-    name: Amazon
-    type: company
-    ai_related: true
-    aliases: [Amazon, 亚马逊, AWS]
-  - id: xai
-    name: xAI
-    type: company
-    ai_related: true
-    aliases: [xAI, Grok]
-  - id: tesla
-    name: Tesla
-    type: company
-    ai_related: false
-    aliases: [Tesla, 特斯拉]
-  - id: alibaba
-    name: 阿里巴巴
-    type: company
-    ai_related: true
-    aliases: [Alibaba, 阿里, 通义, Qwen]
-  - id: tencent
-    name: 腾讯
-    type: company
-    ai_related: true
-    aliases: [Tencent, 腾讯, 混元]
-  - id: bytedance
-    name: 字节跳动
-    type: company
-    ai_related: true
-    aliases: [ByteDance, 字节, 豆包, Seed]
-  - id: baidu
-    name: 百度
-    type: company
-    ai_related: true
-    aliases: [Baidu, 百度, 文心]
-  - id: huawei
-    name: 华为
-    type: company
-    ai_related: true
-    aliases: [Huawei, 华为]
-  - id: deepseek
-    name: DeepSeek
-    type: company
-    ai_related: true
-    aliases: [DeepSeek, 深度求索]
-  - id: zhipu
-    name: 智谱
-    type: company
-    ai_related: true
-    aliases: [Zhipu, 智谱, GLM]
-  - id: minimax
-    name: MiniMax
-    type: company
-    ai_related: true
-    aliases: [MiniMax, 海螺]
-  - id: moonshot
-    name: 月之暗面
-    type: company
-    ai_related: true
-    aliases: [Moonshot, 月之暗面, Kimi]
-  - id: stepfun
-    name: 阶跃星辰
-    type: company
-    ai_related: true
-    aliases: [StepFun, 阶跃星辰]
-  - id: sensetime
-    name: 商汤
-    type: company
-    ai_related: true
-    aliases: [SenseTime, 商汤]
-  - id: mistral
-    name: Mistral AI
-    type: company
-    ai_related: true
-    aliases: [Mistral]
-  - id: huggingface
-    name: Hugging Face
-    type: company
-    ai_related: true
-    aliases: [Hugging Face, HuggingFace]
+- id: openai
+  name: OpenAI
+  type: company
+  ai_related: true
+  aliases:
+  - OpenAI
+  - 开放人工智能
+  industry: ai
+- id: anthropic
+  name: Anthropic
+  type: company
+  ai_related: true
+  aliases:
+  - Anthropic
+  - Claude
+  industry: ai
+- id: google
+  name: Google
+  type: company
+  ai_related: true
+  aliases:
+  - Google
+  - 谷歌
+  - DeepMind
+  industry: ai
+- id: microsoft
+  name: Microsoft
+  type: company
+  ai_related: true
+  aliases:
+  - Microsoft
+  - 微软
+  industry: ai
+- id: meta
+  name: Meta
+  type: company
+  ai_related: true
+  aliases:
+  - Meta
+  - 脸书
+  - Facebook
+  industry: ai
+- id: nvidia
+  name: NVIDIA
+  type: company
+  ai_related: true
+  aliases:
+  - NVIDIA
+  - 英伟达
+  industry: semiconductors
+- id: apple
+  name: Apple
+  type: company
+  ai_related: true
+  aliases:
+  - Apple
+  - 苹果
+  industry: ai
+- id: amazon
+  name: Amazon
+  type: company
+  ai_related: true
+  aliases:
+  - Amazon
+  - 亚马逊
+  - AWS
+  industry: ai
+- id: xai
+  name: xAI
+  type: company
+  ai_related: true
+  aliases:
+  - xAI
+  - Grok
+  industry: ai
+- id: tesla
+  name: Tesla
+  type: company
+  ai_related: false
+  aliases:
+  - Tesla
+  - 特斯拉
+  industry: automotive
+- id: alibaba
+  name: 阿里巴巴
+  type: company
+  ai_related: true
+  aliases:
+  - Alibaba
+  - 阿里
+  - 通义
+  - Qwen
+  industry: ai
+- id: tencent
+  name: 腾讯
+  type: company
+  ai_related: true
+  aliases:
+  - Tencent
+  - 腾讯
+  - 混元
+  industry: ai
+- id: bytedance
+  name: 字节跳动
+  type: company
+  ai_related: true
+  aliases:
+  - ByteDance
+  - 字节
+  - 豆包
+  - Seed
+  industry: ai
+- id: baidu
+  name: 百度
+  type: company
+  ai_related: true
+  aliases:
+  - Baidu
+  - 百度
+  - 文心
+  industry: ai
+- id: huawei
+  name: 华为
+  type: company
+  ai_related: true
+  aliases:
+  - Huawei
+  - 华为
+  industry: ai
+- id: deepseek
+  name: DeepSeek
+  type: company
+  ai_related: true
+  aliases:
+  - DeepSeek
+  - 深度求索
+  industry: ai
+- id: zhipu
+  name: 智谱
+  type: company
+  ai_related: true
+  aliases:
+  - Zhipu
+  - 智谱
+  - GLM
+  industry: ai
+- id: minimax
+  name: MiniMax
+  type: company
+  ai_related: true
+  aliases:
+  - MiniMax
+  - 海螺
+  industry: ai
+- id: moonshot
+  name: 月之暗面
+  type: company
+  ai_related: true
+  aliases:
+  - Moonshot
+  - 月之暗面
+  - Kimi
+  industry: ai
+- id: stepfun
+  name: 阶跃星辰
+  type: company
+  ai_related: true
+  aliases:
+  - StepFun
+  - 阶跃星辰
+  industry: ai
+- id: sensetime
+  name: 商汤
+  type: company
+  ai_related: true
+  aliases:
+  - SenseTime
+  - 商汤
+  industry: ai
+- id: mistral
+  name: Mistral AI
+  type: company
+  ai_related: true
+  aliases:
+  - Mistral
+  industry: ai
+- id: huggingface
+  name: Hugging Face
+  type: company
+  ai_related: true
+  aliases:
+  - Hugging Face
+  - HuggingFace
+  industry: ai

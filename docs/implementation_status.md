@@ -415,3 +415,21 @@ LLM S3-S7      16m     (8%)
   howto/crisis/trend、enterprise/creator、mcp/world_model/reinforcement/video/cloud；
 - 所有词典字段补 `label_method` / `label_confidence`；
 - 测试：924 passed。
+
+## P2 验证结果（2026-11-12 本地重建）
+
+用 11-12 同一份 raw artifact，对比“改造前 artifact”与“当前代码重建”的标签空白率：
+
+| 字段 | 改造前 | 改造后 |
+|---|---|---|
+| topics | 17% | 16% |
+| tech_stack | 27% | 25% |
+| subjects | 49% | 49% |
+| actions | 25% | 24% |
+| narrative_angle | 51% | 39% |
+| audience_persona | 11% | 10% |
+
+- 行业未知 55% → 38%（关键词 + 主体行业兜底）；
+- 叙述角度明显改善；
+- subjects 空白率没变，实体词典仍是最大缺口（P3/词表继续补）；
+- GHA 已加 `Label coverage report` 步骤（continue-on-error，报告写入 Step Summary 并随 artifact 上传）。

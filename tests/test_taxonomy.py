@@ -77,3 +77,10 @@ def test_industry_match_returns_keyword_evidence() -> None:
     industry, keyword = match
     assert industry["id"] == "automotive"
     assert keyword in {"车企", "停产"}
+
+
+def test_entity_industry_mapping() -> None:
+    taxonomy = default_taxonomy()
+    assert taxonomy.entity_industries["openai"] == "ai"
+    assert taxonomy.entity_industries["nvidia"] == "semiconductors"
+    assert taxonomy.entity_industries["tesla"] == "automotive"

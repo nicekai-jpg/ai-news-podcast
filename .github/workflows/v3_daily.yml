@@ -133,6 +133,18 @@ jobs:
             --max-workers "$WORKERS" \
             $EXTRA
 
+      - name: Label coverage report
+        if: ${{ github.event.inputs.skip_script != 'true' }}
+        continue-on-error: true
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          EPISODE="${{ steps.episode.outputs.id }}"
+          uv run python scripts/label_coverage.py             --events "data/ocean/${EPISODE}/events.json"             --out-md "data/ocean/${EPISODE}/label_coverage.md" || true
+          if [ -f "data/ocean/${EPISODE}/label_coverage.md" ]; then
+            cat "data/ocean/${EPISODE}/label_coverage.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Check script quality
         if: ${{ github.event.inputs.skip_script != 'true' }}
         env:
