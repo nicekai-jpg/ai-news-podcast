@@ -450,3 +450,9 @@ LLM S3-S7      16m     (8%)
 - `source_tier.tier_for_item/best_tier` 支持 registry，证据分与同分排序可解释；
 - `evidence.dedup_syndicated_titles` 开关（默认关）：同标题多源转载只算一个独立来源；
 - 测试：934 passed。
+
+## P5 全文降级与源健康度（2026-11-12）
+
+- `extract_article_text` 增加 JSON-LD `articleBody` 降级：readability 失败时不再直接丢正文；
+- GHA 增加 `Source health report` 步骤：最近 7 天 raw artifact 聚合，写 Step Summary 并随 artifact 上传；
+- 测试：937 passed。

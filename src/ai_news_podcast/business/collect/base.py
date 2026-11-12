@@ -12,6 +12,7 @@
 
 from __future__ import annotations
 
+import json
 import logging
 import re
 import threading
@@ -355,6 +356,31 @@ def find_date_in_url(url: str) -> datetime | None:
     return _make_date(int(match.group(1)), int(match.group(2)), int(match.group(3)))
 
 
+def _json_ld_article_body(html: str) -> str:
+    """从 JSON-LD 的 articleBody 里取正文（readability 失败时的降级）。"""
+    try:
+        soup = BeautifulSoup(html, "html.parser")
+    except (ValueError, TypeError):
+        return ""
+    for script in soup.find_all("script", attrs={"type": "application/ld+json"}):
+        raw = script.string or script.get_text() or ""
+        try:
+            data = json.loads(raw)
+        except (json.JSONDecodeError, TypeError):
+            continue
+        stack = [data]
+        while stack:
+            node = stack.pop()
+            if isinstance(node, dict):
+                body = node.get("articleBody") or node.get("text")
+                if isinstance(body, str) and len(strip_html(body)) >= 200:
+                    return strip_html(body)
+                stack.extend(node.values())
+            elif isinstance(node, list):
+                stack.extend(node)
+    return ""
+
+
 def extract_article_text(
     html: str,
     url: str = "",
@@ -362,13 +388,15 @@ def extract_article_text(
     min_chars: int = READABLE_MIN_CHARS,
     max_chars: int = FULL_TEXT_MAX_CHARS,
 ) -> str:
-    """用 readability 抽正文；失败时退回整页文本，过短视为抽取失败。"""
+    """用 readability 抽正文；失败时依次退回 JSON-LD、整页文本，过短视为失败。"""
     summary_html = ""
     try:
         summary_html = Document(html).summary() or ""
     except (OSError, ValueError, TypeError, AttributeError) as exc:
         logger.debug("readability 抽取失败(%s): %s", url, exc)
     text = strip_html(summary_html) if summary_html else ""
+    if len(text) < min_chars:
+        text = _json_ld_article_body(html)
     if not text:
         text = strip_html(html)
     if len(text) < min_chars:
