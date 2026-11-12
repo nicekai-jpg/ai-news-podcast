@@ -150,7 +150,8 @@ jobs:
         env:
           TZ: Asia/Shanghai
         run: |
-          uv run python scripts/source_health.py             --raw-dir data/raw             --days 7             --out-md "data/ocean/${{ steps.episode.outputs.id }}/source_health.md" || true
+          uv run python scripts/source_health.py             --raw-dir data/raw             --days 7             --out-md "data/ocean/${{ steps.episode.outputs.id }}/source_health.md" \
+            --out-json "data/ocean/${{ steps.episode.outputs.id }}/source_health.json" || true
           if [ -f "data/ocean/${{ steps.episode.outputs.id }}/source_health.md" ]; then
             cat "data/ocean/${{ steps.episode.outputs.id }}/source_health.md" >> "$GITHUB_STEP_SUMMARY"
           fi
