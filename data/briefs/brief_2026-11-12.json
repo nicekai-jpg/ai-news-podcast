@@ -1,0 +1,630 @@
+{
+  "thesis": "谷歌正式开放 Gemini 4 Carbon 模型",
+  "stories": [
+    {
+      "cluster_id": 0,
+      "representative_title": "谷歌正式开放 Gemini 4 Carbon 模型",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 21,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 5,
+        "explainability": 4,
+        "listener_relevance": 4,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "谷歌 Gemini 4 Carbon 模型正式API上线,面向Ultra订阅用户开放。Gemini 4 Carbon在CursorBench 4.0、WANDR、AutomationBench三项基准排名第一,任务成本比第二名的 Fable 5.2 低50%以上。Gemini 4 Carbon能自动重建登月舱3D模型,与 Antigravity 的/swarm功能配合可调度多Agent协作。 来源:量子位"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "智源 BAAI Hub",
+            "link": "https://hub.baai.ac.cn/view/59575"
+          },
+          {
+            "name": "AI 工具集",
+            "link": "https://mp.weixin.qq.com/s/9b1_lBtr62ZaQUurGKl5DA"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "52876f979113203f857078ba1d616a6ab1d037684cc3fc801a4481c706d85aed",
+          "title": "Gemini 4 Carbon连夜上桌!力压Fable 5.2花费仅一半,还挖出了PHP同级漏洞...",
+          "link": "https://hub.baai.ac.cn/view/59575",
+          "source_name": "智源 BAAI Hub",
+          "published_at": "2026-11-11T22:30:00+00:00",
+          "summary": "鱼羊 发自 凹非寺 量子位 | 公众号 QbitAI A社Fable 5.2一发,谷歌Gemini 4 Carbon终于是憋不住了。 刚刚,谷歌这个誓要重回牌桌,拳打Claude Opus 5.5、脚踩GPT-6 Astra的大饼总算是 API上线 了,同时, 面向Ultra订阅用户开放 。 嗯,100刀一个月那个Ultra。 emmm...但至少,这回可以眼见为实了,咱先来看效果: 谷歌用Carbon分析了阿波罗登月舱的图片资料和技术图纸,然后,Carbon就自己个儿重建了3D模型,并制作了这么一个视频。 此番正式上线,谷歌也更新了一波Gemini 4 Carbon的测试成绩。 在CursorBench 4.0、Perplexity的WANDR和Zapier的AutomationBench中,Carbon均排名第一, 并且每项任务成本都比排名第二的模型低50%以上 —— 说的就是你,Fable 5.2。 此外,Gemini推特带盐人Logan也没忘又暗示了一把RSI: Argon发布仅仅几周,Carbon就根据Argon的诸多反馈取得了显著进展,并在网络安全、知识和代码领域开辟了新..."
+        },
+        {
+          "id": "c3dcb737547540803b5ba7c9a6bff6f804149df5d6ac50df65f0cef8de6d9efa",
+          "title": "谷歌正式开放 Gemini 4 Carbon 模型",
+          "link": "https://mp.weixin.qq.com/s/9b1_lBtr62ZaQUurGKl5DA",
+          "source_name": "AI 工具集",
+          "published_at": "2026-11-10T16:00:00+00:00",
+          "summary": "谷歌 Gemini 4 Carbon 模型正式API上线,面向Ultra订阅用户开放。Gemini 4 Carbon在CursorBench 4.0、WANDR、AutomationBench三项基准排名第一,任务成本比第二名的 Fable 5.2 低50%以上。Gemini 4 Carbon能自动重建登月舱3D模型,与 Antigravity 的/swarm功能配合可调度多Agent协作。 来源:量子位"
+        }
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "representative_title": "Qwen4-Max 预览版首发上线千问AI平台Token Plan",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 21,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 5,
+        "explainability": 5,
+        "listener_relevance": 3,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "欢迎大家抢先体验!"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "阿里技术",
+            "link": "https://mp.weixin.qq.com/s?__biz=Mzg4NTczNzg2OA==&mid=2247512488&idx=1&sn=8a921e6683912e7b07038d4b16e25f58"
+          },
+          {
+            "name": "阿里云开发者",
+            "link": "https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247562678&idx=1&sn=4bca2da2340d7065386940ee76a34d51"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "241784c7465b9f5258352aca396cfc1e6452bb74d122038e721538e9300e8c28",
+          "title": "Qwen4-Max 预览版上线,Qwen Code 1.0 Preview 发布",
+          "link": "https://mp.weixin.qq.com/s?__biz=Mzg4NTczNzg2OA==&mid=2247512488&idx=1&sn=8a921e6683912e7b07038d4b16e25f58",
+          "source_name": "阿里技术",
+          "published_at": "2026-11-11T03:45:00+00:00",
+          "summary": "今天,Qwen4-Max 预览版首发上线阿里 Token Plan,Qwen Code 1.0 Preview 同步开源。"
+        },
+        {
+          "id": "5e27f2a37378682e546a18178892d348beeac82d9c00ca83e3e3319af122f666",
+          "title": "Qwen4-Max 预览版首发上线千问AI平台Token Plan",
+          "link": "https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247562678&idx=1&sn=4bca2da2340d7065386940ee76a34d51",
+          "source_name": "阿里云开发者",
+          "published_at": "2026-11-11T02:44:00+00:00",
+          "summary": "欢迎大家抢先体验!"
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "representative_title": "马斯克 xAI 面临多起集体诉讼:Grok 被指卷入儿童色情图像风波",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 17,
+      "scores": {
+        "impact_scope": 4,
+        "novelty": 3,
+        "explainability": 5,
+        "listener_relevance": 4,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "人工智能技术的迅猛发展在带来生产力飞跃的同时,也正在将整个行业拖入复杂的法律与伦理泥潭。近日,埃隆·马斯克(Elon Musk)旗下的人工智能公司 xAI 正在美国多地遭遇多起集体诉讼。多名年轻受害者指控称,xAI 旗下的聊天机器人 Grok 被滥用并用于生成她们的非自愿色情图像,其中甚至涉及未成年人。 从初中毕业照到性虐待材料:受害者的真实梦魇 事件的核心指向了一系列令人不安的深度伪造滥用案例。在一起代表威斯康星州受害者的诉讼中,原告被化名为“简·多伊5号(Jane Doe5)”。她在多年未曾想起初中毕业典礼后,突然被执法调查人员告知,当年一张她身穿黄色碎花连衣裙、年仅14岁的合影被恶意利用。 调查显示,照片中一名同学的成年哥哥利用 Grok 将这张普通照片篡改成了暴露身体且带有性挑逗姿势的儿童性虐待材料(CSAM),并在互联网上广泛传播。对于即将迈入大学校门的受害者而言,这种无法彻底根除和追踪的数字影像外流,带来了极大的心理创伤,甚至引发了持续的焦虑与自杀倾向。 类似遭遇并非个例。田纳西州、怀俄明州以及加利福尼亚州的多名未成年人及家属也陆续提起诉讼,指控对象同样直指 Grok..."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "AIBase 新闻",
+            "link": "https://www.aibase.com/zh/news/32260"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "95f39fb1d15906efb889dc10865c4edac577880fd86a47ed74949a12659c8da4",
+          "title": "马斯克 xAI 面临多起集体诉讼:Grok 被指卷入儿童色情图像风波",
+          "link": "https://www.aibase.com/zh/news/32260",
+          "source_name": "AIBase 新闻",
+          "published_at": "2026-11-12T01:09:00+00:00",
+          "summary": "人工智能技术的迅猛发展在带来生产力飞跃的同时,也正在将整个行业拖入复杂的法律与伦理泥潭。近日,埃隆·马斯克(Elon Musk)旗下的人工智能公司 xAI 正在美国多地遭遇多起集体诉讼。多名年轻受害者指控称,xAI 旗下的聊天机器人 Grok 被滥用并用于生成她们的非自愿色情图像,其中甚至涉及未成年人。 从初中毕业照到性虐待材料:受害者的真实梦魇 事件的核心指向了一系列令人不安的深度伪造滥用案例。在一起代表威斯康星州受害者的诉讼中,原告被化名为“简·多伊5号(Jane Doe5)”。她在多年未曾想起初中毕业典礼后,突然被执法调查人员告知,当年一张她身穿黄色碎花连衣裙、年仅14岁的合影被恶意利用。 调查显示,照片中一名同学的成年哥哥利用 Grok 将这张普通照片篡改成了暴露身体且带有性挑逗姿势的儿童性虐待材料(CSAM),并在互联网上广泛传播。对于即将迈入大学校门的受害者而言,这种无法彻底根除和追踪的数字影像外流,带来了极大的心理创伤,甚至引发了持续的焦虑与自杀倾向。 类似遭遇并非个例。田纳西州、怀俄明州以及加利福尼亚州的多名未成年人及家属也陆续提起诉讼,指控对象同样直指 Grok..."
+        }
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "representative_title": "CoreWeave turns to customer prepayments, shorter contracts to fund AI growth",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 15,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "CoreWeave is increasingly asking customers to pay upfront, borrowing against specific contracts, and even looking to short-term deals that could lead to higher prices, according to the company’s third-quarter earnings."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "link": "https://techcrunch.com/2026/11/11/coreweave-turns-to-customer-prepayments-shorter-contracts-to-fund-ai-growth/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "5413a692ab5366d74989e7dc7d56ebfb4e784aae1c12a1952ee15965c8ff2419",
+          "title": "CoreWeave turns to customer prepayments, shorter contracts to fund AI growth",
+          "link": "https://techcrunch.com/2026/11/11/coreweave-turns-to-customer-prepayments-shorter-contracts-to-fund-ai-growth/",
+          "source_name": "TechCrunch AI",
+          "published_at": "2026-11-11T19:54:00+00:00",
+          "summary": "CoreWeave is increasingly asking customers to pay upfront, borrowing against specific contracts, and even looking to short-term deals that could lead to higher prices, according to the company’s third-quarter earnings."
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "representative_title": "100轮图像编辑这道「毙刷题」,新出的Seedream 5.5稳上来了!",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 18,
+      "scores": {
+        "impact_scope": 4,
+        "novelty": 5,
+        "explainability": 4,
+        "listener_relevance": 4,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "速度提了,API价格降了"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位（公众号）",
+            "link": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247942445&idx=1&sn=18eb40f983ce6f226d5e91685b655b10"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "44f7547038c6d84ae95095ba95e2aa042d31240298a02bd38f84fce9239ce78e",
+          "title": "100轮图像编辑这道「毙刷题」,新出的Seedream 5.5稳上来了!",
+          "link": "https://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247942445&idx=1&sn=18eb40f983ce6f226d5e91685b655b10",
+          "source_name": "量子位（公众号）",
+          "published_at": "2026-11-10T02:22:00+00:00",
+          "summary": "速度提了,API价格降了"
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "representative_title": "Multi-Future Drafting: Mixture Block Drafters for Tree-Verified Speculative Decoding",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 15,
+      "scores": {
+        "impact_scope": 4,
+        "novelty": 5,
+        "explainability": 2,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2611.13017v1 Announce Type: new Abstract: Block drafters such as DFlash draft a block of future tokens in one forward pass, and draft trees such as DDTree verify the prefixes ranked highest by the product of the drafter's per-position distributions. Under tree verification, the expected number of accepted tokens is the probability mass the tree covers. We show that a product misallocates it: when the continuation can follow several futures, it splices them into chimeras, prefixes stitch..."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.AI",
+            "link": "https://arxiv.org/abs/2611.13017"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "d3effae8f8a7d7a2e004df4d88337f2bbc2e674467f6271dc97012dd6b8cd810",
+          "title": "Multi-Future Drafting: Mixture Block Drafters for Tree-Verified Speculative Decoding",
+          "link": "https://arxiv.org/abs/2611.13017",
+          "source_name": "arXiv cs.AI",
+          "published_at": "2026-11-11T05:00:00+00:00",
+          "summary": "arXiv:2611.13017v1 Announce Type: new Abstract: Block drafters such as DFlash draft a block of future tokens in one forward pass, and draft trees such as DDTree verify the prefixes ranked highest by the product of the drafter's per-position distributions. Under tree verification, the expected number of accepted tokens is the probability mass the tree covers. We show that a product misallocates it: when the continuation can follow several futures, it splices them into chimeras, prefixes stitch..."
+        }
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "representative_title": "Gemini Intelligence Gets More Features and Comes to More Devices and More Locales",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 10,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 0,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "Google announced today that Gemini Intelligence is expanding to more devices, including the Pixel 10 series and the Motorola Signature 27."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "PixelsTech AI",
+            "link": "https://www.pixelstech.net/feed/link/85998.html"
+          },
+          {
+            "name": "Google AI Blog",
+            "link": "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "e4a18c0f28ee060a8fa2c2f0d763600cf2d7a18894bcb91f72153b584aad8873",
+          "title": "Gemini Intelligence Gets More Features and Comes to More Devices and More Locales",
+          "link": "https://www.pixelstech.net/feed/link/85998.html",
+          "source_name": "PixelsTech AI",
+          "published_at": "2026-11-10T00:00:00+00:00",
+          "summary": "Google announced today that Gemini Intelligence is expanding to more devices, including the Pixel 10 series and the Motorola Signature 27."
+        },
+        {
+          "id": "fafff4292c09fd9370c59269226818b22b187de9757f1096f65549cc01bfa598",
+          "title": "Gemini Intelligence: New features, on more devices",
+          "link": "https://blog.google/products-and-platforms/platforms/android/gemini-intelligence-november-features-devices/",
+          "source_name": "Google AI Blog",
+          "published_at": "2026-11-10T19:00:00+00:00",
+          "summary": "Gemini Intelligence is rolling out to more devices. See how expanded capabilities across these devices help you do more."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "generated_at": "2026-11-12T03:14:05.500509+00:00",
+    "total_raw": 789,
+    "total_deduped": 777,
+    "total_clusters": 777,
+    "pipeline": "v3",
+    "shortlist": 7
+  },
+  "radar": {
+    "date": "2026-11-12",
+    "projects": []
+  },
+  "report_rows": [
+    {
+      "event_id": "928411a14a650b59810f997fb0ea331db542e48b569182727145008452040a22",
+      "headline": "谷歌开放 Gemini 4 Carbon API",
+      "one_liner": "据量子位报道，谷歌 Gemini 4 Carbon 已正式上线 API，并同时面向 Ultra 订阅用户开放。",
+      "facts": [
+        {
+          "text": "据量子位报道，谷歌 Gemini 4 Carbon 已正式上线 API，并同时面向 Ultra 订阅用户开放。谷歌随本次上线更新了模型测试成绩：在 CursorBench 4.0、Perplexity 的 WANDR 和 Zapier 的 AutomationBench 中，Carbon 均排名第一，并且每项任务成本都比排名第二的模型低50%以上。报道将排名第二的模型称为 Fable 5.2，并称三项排名及成本比较来自谷歌公布的结果。",
+          "evidence_ids": [
+            "52876f979113203f857078ba1d616a6ab1d037684cc3fc801a4481c706d85aed",
+            "c3dcb737547540803b5ba7c9a6bff6f804149df5d6ac50df65f0cef8de6d9efa"
+          ],
+          "single_source": false
+        },
+        {
+          "text": "据量子位报道，谷歌使用 Carbon 分析阿波罗登月舱的图片资料和技术图纸，随后由 Carbon 重建 3D模型并制作相关视频。其他实测中，Carbon 被用于研究模拟人类发声结构的方案、编程实现交互式 3D 模拟，并实时合成 6种鸟类的声音。报道还称，Carbon 可通过 3js 重建真实视频片段；一项弹珠游戏实测认为其物理特性真实，但照明效果和启动状态仍需进一步调整。",
+          "evidence_ids": [
+            "52876f979113203f857078ba1d616a6ab1d037684cc3fc801a4481c706d85aed",
+            "c3dcb737547540803b5ba7c9a6bff6f804149df5d6ac50df65f0cef8de6d9efa"
+          ],
+          "single_source": false
+        },
+        {
+          "text": "据量子位报道，与模型一同亮相的 Google Antigravity 新功能 /swarm，可由一条指令调度多个 Agent，并让用户实时查看各 Agent 的工作进度。量子位将其核心分工描述为：Carbon 负责架构设计、协调和审查需要深度推理的任务，速度更快的轻量模型在各自工作区并行执行，另设验证 Agent 负责验证。展示界面会呈现各 Agent 已执行到哪一步，以显示协作过程。",
+          "evidence_ids": [
+            "52876f979113203f857078ba1d616a6ab1d037684cc3fc801a4481c706d85aed",
+            "c3dcb737547540803b5ba7c9a6bff6f804149df5d6ac50df65f0cef8de6d9efa"
+          ],
+          "single_source": false
+        },
+        {
+          "text": "据量子位报道，谷歌披露 Carbon 近期在某热门开源软件中发现了两个漏洞，其严重程度被描述为“跟PHP那个不相上下”，但谷歌没有具体说明漏洞内容。报道显示，相关补丁已经发布，公告将在完成合规披露流程后发出。量子位将这一披露与编码推理、网络安全、3D/UI设计等官方预告内容一并叙述，并称在官方和非官方实测之后，谷歌补充披露了漏洞发现情况。",
+          "evidence_ids": [
+            "52876f979113203f857078ba1d616a6ab1d037684cc3fc801a4481c706d85aed",
+            "c3dcb737547540803b5ba7c9a6bff6f804149df5d6ac50df65f0cef8de6d9efa"
+          ],
+          "single_source": false
+        }
+      ],
+      "why_matters": "从开发者采用角度看，这次变化不只涉及新模型上线，也同时涉及任务成本比较与 /swarm 多模型编排。如果基准中的成本优势能够在真实工作负载中复现，API 使用和多 Agent 协作可能降低复杂任务的执行与协调成本；现有材料尚不足以判断实际生产收益。",
+      "background": "从产品叙事看，报道把本次 API 上线与此前的 Argon 发布、反馈迭代、基准更新和首批实测串联起来，并同时引出 Google Antigravity 的 /swarm。其可观察节点是模型从预告与测试进入 API 和订阅用户可用阶段，而不只是新增一组测试成绩。",
+      "impact": "潜在影响集中在编码与知识任务、3D/UI及交互内容生成，以及由多个模型分工的自动化流程。成本优势若可复现，可能影响开发者的调用方式；漏洞发现能力则可能使安全审计和负责任披露成为后续关注点。当前证据尚不足以量化用户采用情况、性能提升或安全影响。",
+      "counterpoint": "现有材料并非只有正面结论：博主 Chubby 的弹珠游戏实测指出，照明效果和启动状态仍需完善。更重要的是，三项基准第一与“每项任务成本低50%以上”来自谷歌公布、量子位转述的结果，所给材料没有提供独立复测或完整测试方法，因而不能据此确认该优势在一般生产任务中成立。",
+      "uncertainty": "材料未给出 Gemini 4 Carbon API 的正式上线日期、具体 API 价格、速率限制、地区与账号范围；“面向 Ultra 订阅用户开放”具体指产品内访问、API 权限还是其他权益也未说明。三项基准的完整测试方法、独立复测结果，以及 Fable 5.2 的具体比较口径未提供。漏洞披露尚未完成，软件名称、漏洞编号、影响范围及是否已遭利用仍待公告。/swarm 的正式开放范围、收费方式及验证 Agent 的完整职责也未在所给截断文本中呈现。",
+      "sources": [
+        {
+          "label": "量子位（微信公众号 QbitAI）",
+          "link": "",
+          "official": false
+        }
+      ]
+    },
+    {
+      "event_id": "3c213b5cff69c57331d633a7a34e6d34f86b637ffeb89fc88335319a89207b47",
+      "headline": "Qwen4-Max预览版上线Token Plan",
+      "one_liner": "阿里于2026-11-11发布Qwen4-Max预览版并首发上线Token Plan，同时开源Qwen Code 1.0 Preview。",
+      "facts": [
+        {
+          "text": "2026-11-11，阿里技术与阿里云分别发布信息，均称Qwen4-Max预览版已经发布，并首发上线阿里Token Plan。阿里技术在同一发布说明中宣布Qwen Code 1.0 Preview同步开源，称该版本融合Qoder与Qwen Code的Harness能力，定位为可嵌入开发者自身产品的Agent运行基础，并提供Qwen Code GitHub地址。两则材料均支持这一发布事件。",
+          "evidence_ids": [
+            "241784c7465b9f5258352aca396cfc1e6452bb74d122038e721538e9300e8c28",
+            "5e27f2a37378682e546a18178892d348beeac82d9c00ca83e3e3319af122f666"
+          ],
+          "single_source": false
+        },
+        {
+          "text": "据阿里云报道，Token Plan用户可限时2折体验Qwen4模型，新用户再享折上5折，最低1折即可抢先体验。报道没有以金额形式列出各档价格，而是引导用户通过千问AI平台Token Plan页面查看；同时给出的QwenCloud链接指向另一处Token Plan定价入口。由于折扣数字和适用方式只出现在阿里云这份材料中，相关表述仅反映该报道公布的活动口径。",
+          "evidence_ids": [
+            "5e27f2a37378682e546a18178892d348beeac82d9c00ca83e3e3319af122f666"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据阿里技术报道，Qwen4-Max预览版上线时，千问办公、Qoder、千问APP、QwenStudio等入口已经接入该模型；阿里云也称这些产品可体验Qwen4。两份材料均把千问AI平台的Token Plan页面列为体验入口，阿里云另列出QwenCloud定价页面。这些发布信息覆盖模型预览、Token Plan使用入口和多个产品入口，但各入口的具体功能差异、开放范围及计费方式未进一步展开。",
+          "evidence_ids": [
+            "241784c7465b9f5258352aca396cfc1e6452bb74d122038e721538e9300e8c28",
+            "5e27f2a37378682e546a18178892d348beeac82d9c00ca83e3e3319af122f666"
+          ],
+          "single_source": false
+        }
+      ],
+      "why_matters": "分析口径：旗舰模型预览、Token Plan入口与Agent运行工具同步推进，可能缩短开发者从试用到嵌入自身产品的路径。对开发者和Agent生态观察者而言，后续比较重点应放在复杂编程、办公任务与工具调用中的稳定性，而不只停留在发布演示。现有材料没有提供可独立复测的性能数据，因此暂不能据此判断模型在具体任务上的领先程度。",
+      "background": "从产品组合看，这次更新把Qwen4系列预览模型、Token Plan使用入口和Qwen Code 1.0 Preview放在同一发布节奏中。分析上，这种组合同时触及模型能力分发、开发者接入和Agent工作流三层；但它仍处于预览阶段，后续产品边界、版本稳定性和商业化方式需要以完整发布信息为准。",
+      "impact": "潜在影响主要体现在试用成本和接入路径：折扣可能提高早期尝鲜意愿，开放Qwen Code则为开发者提供可嵌入的Agent运行工具。实际影响还取决于折扣期限、任务成功率、工具兼容性及正式版定价；这些条件在当前材料中尚未明确，因此不宜对用户增长、成本下降或生态扩张作确定判断。",
+      "counterpoint": "暂无公开反方信息",
+      "uncertainty": "Qwen4正式版的发布日期、Qwen4-Max预览版与正式版的差异、Token Plan各档价格及折扣适用期限与资格条件均未在现有材料中说明；有关3D建模、网页设计、交互等表现的测试方法、样本与可复现数据也未披露。",
+      "sources": [
+        {
+          "label": "千问AI平台Token Plan",
+          "link": "https://platform.qianwenai.com/pricing/token-plan",
+          "official": true
+        },
+        {
+          "label": "Qwen Code GitHub",
+          "link": "https://github.com/QwenLM/qwen-code",
+          "official": true
+        },
+        {
+          "label": "QwenCloud Token Plan",
+          "link": "https://qwencloud.com/pricing/token-plan",
+          "official": true
+        }
+      ]
+    },
+    {
+      "event_id": "0ffb9834f9ba3b22bbed002965273a4f1bb8efefa89bbcf1cf2720cb51ffe325",
+      "headline": "xAI旗下Grok在美国面临多起集体诉讼",
+      "one_liner": "据现有报道，xAI在美国多地面临多起集体诉讼，原告指控Grok被用于生成非自愿色情图像，部分指控涉及未成年人。",
+      "facts": [
+        {
+          "text": "据现有报道，埃隆·马斯克（Elon Musk）旗下的人工智能公司xAI正在美国多地面临多起集体诉讼。多名年轻受害者在诉讼中指控，Grok被滥用并用于生成其非自愿色情图像，其中部分指控涉及未成年人。报道还称，田纳西州、怀俄明州和加利福尼亚州有未成年人及家属陆续提起诉讼；原告所称涉案素材包括学校毕业年鉴照片、海滩度假比基尼照和童年合影，加利福尼亚州另有一起全国性集体诉讼。",
+          "evidence_ids": [
+            "95f39fb1d15906efb889dc10865c4edac577880fd86a47ed74949a12659c8da4"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，在代表威斯康星州受害者的诉讼中，原告以“简·多伊5号（Jane Doe5）”名义出现。原告称，自己一张身穿黄色碎花连衣裙、年仅14岁时的毕业合影，被照片中一名同学的成年哥哥利用Grok篡改为暴露身体并带有性挑逗姿势的儿童性虐待材料（CSAM），并在互联网上广泛传播。原告称，这段经历带来心理创伤，并引发持续的焦虑与自杀倾向。",
+          "evidence_ids": [
+            "95f39fb1d15906efb889dc10865c4edac577880fd86a47ed74949a12659c8da4"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，Grok自发布以来设有“Spicy”和“Unhinged”等模式。报道称，今年早些时候，X（原推特）平台上的用户曾利用Grok大规模生成带性暗示或将人物衣物移除的图像，其中包括大量未成年人的虚假色情内容。随着舆论反弹，X于今年1月将Grok的图片生成功能调整为付费用户专享，并称已关闭为真实人物生成未经同意的性化图片的能力。",
+          "evidence_ids": [
+            "95f39fb1d15906efb889dc10865c4edac577880fd86a47ed74949a12659c8da4"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，xAI一方面称，已将相关违规内容报告给美国国家失踪与受虐儿童中心（NCMEC），并起诉部分涉嫌滥用的个人；另一方面，xAI对明尼苏达州禁止AI生成虚假裸照的法案提出诉讼，并主张该法案违反美国宪法第一修正案所保护的言论自由。报道所引批评人士则认为，将图片生成功能设为付费用户专享并未从根本上解决问题。",
+          "evidence_ids": [
+            "95f39fb1d15906efb889dc10865c4edac577880fd86a47ed74949a12659c8da4"
+          ],
+          "single_source": true
+        }
+      ],
+      "why_matters": "分析口径：争议把生成式图像滥用的责任问题延伸到模型能否阻断性化及未成年人图像、平台是否采取有效防护，以及服务提供方与实际滥用者之间如何分配责任。若案件继续推进，可能影响Grok图像功能的安全设计、开放策略及平台审核责任边界。",
+      "background": "分析口径：报道将本案置于Grok以较少限制和NSFW内容为特点的产品定位，以及其图像功能在X平台快速传播的背景下。X在舆论反弹后收紧并付费化图片生成功能，但报道同时呈现了防护措施与言论自由主张之间的张力，争议已从具体受害者个案延伸到多州诉讼与地方监管冲突。",
+      "impact": "分析口径：短期看，诉讼与监管争议可能促使xAI和X加强上传素材识别、未成年人图像拦截、真实人物性化内容限制及事件响应机制；中期则可能影响AI生成虚假裸照的合规边界与责任分配。现有材料尚不足以判断诉讼结果、监管走向或产品调整的实际效果。",
+      "counterpoint": "据现有报道，xAI称其向NCMEC报告相关违规内容并起诉部分涉嫌滥用者，同时以美国宪法第一修正案所保护的言论自由为由挑战明尼苏达州的相关法案。报道所引批评人士则认为，X在今年1月将图片生成功能调整为付费用户专享，未从根本上解决问题。",
+      "uncertainty": "现有材料仅有一篇未注明名称与链接的报道，且正文被截断。诉讼的具体立案日期、法院、案号、原告人数、是否已获集体诉讼认证、xAI对各案答辩、相关图片鉴定结果及最终责任均未载明；有关Grok训练数据包含侵害画面的指控也无法由现有材料独立核实。",
+      "sources": []
+    },
+    {
+      "event_id": "6cd03bd37aa4d3a5de2618046aa227020df2afc06c52a258b9ff811a43c0e287",
+      "headline": "CoreWeave调整预付款、合同担保与短约融资",
+      "one_liner": "据现有报道，CoreWeave在第三季度财报中称，正增加客户预付款和以特定合同为担保的借款，并寻求可能带来更高价格的短期合同，以更有效率地为AI业务增长融资。",
+      "facts": [
+        {
+          "text": "据现有报道，向客户出租AI计算能力的CoreWeave在第三季度财报中表示，正越来越多地要求客户预付资金、以特定客户合同为担保借款，并寻求期限更短的合同。报道指出，短期限合同可能带来更高价格；公司认为，这些安排可更有效率地为增长融资，并从现有基础设施中占用更多现金。现有证据仅包含1个独立来源，相关表述仍需后续披露或独立报道交叉核验。",
+          "evidence_ids": [
+            "5413a692ab5366d74989e7dc7d56ebfb4e784aae1c12a1952ee15965c8ff2419"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，CoreWeave第三季度营收为$3.66 billion，较上年同期增长168%；同期录得$709 million净亏损和$846 million季度利息支出。上述金额、增速及亏损口径均来自同一现有报道，尚无第二个独立来源交叉核验；公司对客户预付款、合同担保借款等增长融资方式的调整，也是在这一季度业绩背景下披露。",
+          "evidence_ids": [
+            "5413a692ab5366d74989e7dc7d56ebfb4e784aae1c12a1952ee15965c8ff2419"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，CoreWeave首席执行官Michael Intrator在周二的业绩电话会上表示：“We will not use the unsecured debt market to fund our business at current yields, nor do we need to,”。公司计划依靠以特定客户合同为支持的贷款，并按需动用资金，为仍待建设、用于交付其$132.5 billion待履行合同积压（significant backlog）的大部分基础设施融资。",
+          "evidence_ids": [
+            "5413a692ab5366d74989e7dc7d56ebfb4e784aae1c12a1952ee15965c8ff2419"
+          ],
+          "single_source": true
+        }
+      ],
+      "why_matters": "分析：这一变化把CoreWeave的AI基础设施扩张与客户现金回收、合同期限和融资条件直接连接起来，可能影响其扩张速度与资金压力。对投资者和客户而言，后续需要同时观察营收增长能否转化为现金、合同积压能否按期交付，以及短期合同价格变化是否改变总拥有成本与续约安排。",
+      "background": "分析背景：CoreWeave是一家出租AI计算能力的neocloud。此次融资调整出现在公司第三季度业绩披露及$132.5 billion待履行合同积压背景下；现有报道提示，相关做法能否支撑扩张，取决于当前需求和定价能力能否延续。",
+      "impact": "分析：若客户预付款、合同担保借款和短期合同被更多采用，CoreWeave可能更快获得建设资金，并把现实现金投入待交付项目；短约价格上升或推高收入，却也可能增加客户续约和成本控制的不确定性。现有材料不足以测算其对现金流、杠杆、利润率或客户合同期限的净影响。",
+      "counterpoint": "暂无公开反方信息。",
+      "uncertainty": "现有证据正文在“CoreWeave also said it expects about $9 billion in customer prepayments and dep……”处截断，因此可确认的完整信息仅包括“expects about $9 billion in customer prepayments”，并列项目、统计期间和会计处理无法核实。事件目前只有1个独立来源；具体借款规模与成本、客户预付款覆盖比例、短期合同的实际定价和合同期限也无法从现有材料确认。",
+      "sources": []
+    }
+  ],
+  "report_review": {
+    "overall": "各条数字与所给证据大体一致，但来源独立性被高估：Gemini两条证据实为同一篇量子位文章，xAI与CoreWeave均缺可识别来源。法律事件须区分“提起诉讼”与“获准集体诉讼”，Qwen部分也仅有厂商发布，不能据此判断性能。",
+    "items": [
+      {
+        "event_id": "928411a14a650b59810f997fb0ea331db542e48b569182727145008452040a22",
+        "title": "谷歌开放 Gemini 4 Carbon API",
+        "verdict": "需修正",
+        "comment": "数字与量子位正文基本吻合，基准第一及成本低50%以上均应保留“谷歌公布、媒体转述”的限定。需修正的是两条证据正文完全相同，不能据此标为双来源；正文截断处的/swarm职责也不宜补写。",
+        "corrections": [
+          "两个evidence_id对应同一篇量子位文章正文，相关事实的single_source应改为true，独立来源数按1计。",
+          "量子位来源的link为空，需补充文章链接，避免以重复正文呈现为双来源。",
+          "“验证Agent负责验证”的完整职责超出可见的截断证据，应删除，或改为“验证Agent的具体职责未完整呈现”。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "3c213b5cff69c57331d633a7a34e6d34f86b637ffeb89fc88335319a89207b47",
+        "title": "Qwen4-Max预览版上线Token Plan",
+        "verdict": "补充",
+        "comment": "发布日期、预览版、Token Plan入口及“2折、新用户折上5折、最低1折”均与两份阿里官方材料一致，未见数字冲突。需把“暂无公开反方信息”收窄为“所给材料未提供反方信息”，并说明两则材料同属阿里，不能视为外部独立验证。",
+        "corrections": [
+          "将“暂无公开反方信息”改为“所给材料未提供反方信息”，避免把材料缺失表述为公开信息不存在。",
+          "两则材料分别来自阿里技术与阿里云，均属阿里官方发布；如展示独立来源数，应注明这一来源属性，不宜暗示已有第三方交叉验证。",
+          "标题中的“Token Plan”可明确为“千问AI平台Token Plan”，与证据标题保持一致，减少称谓歧义。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "0ffb9834f9ba3b22bbed002965273a4f1bb8efefa89bbcf1cf2720cb51ffe325",
+        "title": "xAI旗下Grok在美国面临多起集体诉讼",
+        "verdict": "需修正",
+        "comment": "叙事基本忠实于所给报道，且已使用“指控、原告称”等归因措辞。风险在于“集体诉讼”可能被读作已获法院认证，且全文仅有一篇未具名且截断的报道；标题宜更中性，并明确认证状态和来源缺口。",
+        "corrections": [
+          "“多起集体诉讼”建议改为“多起据报道寻求集体救济的诉讼”；现有材料未说明法院已经完成集体诉讼认证。",
+          "标题中的“儿童色情图像风波”可改为“被指生成非自愿性化图像”，并在正文保留CSAM指控的归因，避免将诉讼指控写成既定事实。",
+          "sources为空，需补录原始报道的媒体、标题、发布日期和链接；若无法识别，应明确标注“来源未识别、单篇且正文截断”。",
+          "报道中的“今年1月”缺少年份锚点；如能核实应补年份，否则应说明原文仅使用相对时间。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "6cd03bd37aa4d3a5de2618046aa227020df2afc06c52a258b9ff811a43c0e287",
+        "title": "CoreWeave调整预付款、合同担保与短约融资",
+        "verdict": "需修正",
+        "comment": "营收、同比增幅、净亏损、利息支出和1325亿美元积压均与证据一致，融资策略概括也基本准确。需修正“从现有基础设施中占用更多现金”的译法，并补来源与财年；现有截断不足以确认预付款之外的并列项目。",
+        "corrections": [
+          "将“从现有基础设施中占用更多现金”改为“从现有基础设施中回笼或释放更多现金”，避免产生现金被占用的相反理解。",
+          "补录英文报道的媒体、标题、发布日期和链接，并明确第三季度所属年份；目前来源数组为空。",
+          "证据元数据中的“主体=Microsoft”与正文主体CoreWeave不符，应予纠正。",
+          "将“暂无公开反方信息”改为“所给材料未提供反方信息”。"
+        ],
+        "highlights": []
+      }
+    ],
+    "risks": [
+      "Gemini的两个证据ID指向同一篇量子位文章，且基准与成本比较为谷歌公布口径，不能视为独立复测。",
+      "Qwen条目仅有阿里官方材料，折扣期限、完整价格及独立性能验证均未给出。",
+      "xAI事件依赖单一未具名且截断的报道，立案情况、集体诉讼认证及被告答辩状态仍不明确。",
+      "CoreWeave条目缺少来源链接和财年，且证据元数据存在主体误标，财务数字及融资安排仍需复核。"
+    ]
+  },
+  "podcast_review": {
+    "overall": "本期以能力、入口、安全、成本四条线串联新闻，整体结构清楚，也较好地区分了官方成绩、媒体实测与诉讼指控。模型竞速章信息密度偏高；Seedream整段缺少所给事实依据，Qwen能力描述、Grok训练数据指称及“超级漏洞”措辞需补证或收敛，CoreWeave宜补财务背景与来源限制。",
+    "show_notes": "《今日AI看点》本期以能力、入口、安全、成本四条线审视AI落地：Gemini 4 Carbon聚焦多Agent编排、任务成本与漏洞处置；Qwen4-Max和Qwen Code强调多入口及可嵌入的Agent基础；文稿另以Seedream 5.5的连续编辑、图层输出与单张成本作为图像案例，并注明相关数字仍需补证；Grok诉讼把争议推向未成年人保护、训练数据与传播责任；CoreWeave的预付款、合同担保和短约融资则提醒市场关注增长背后的现金流。节目不排总榜，而是区分发布口径、实测表现、诉讼指控和待验证项。",
+    "chapters": [
+      {
+        "title": "开场",
+        "intro": "本期不评单一总榜，而是先建立四个观察尺度：榜单与实测看能力，产品接入看入口，漏洞与诉讼看安全，计费与合同看成本。每条消息都追问它究竟改变了什么，以及现有证据还缺什么。",
+        "highlights": [
+          "榜单看能力上限，实测看稳定性",
+          "入口看用户能否使用，成本看能否持续",
+          "安全边界决定产品能否被信任"
+        ]
+      },
+      {
+        "title": "模型竞速",
+        "intro": "Gemini 4 Carbon以基准、任务成本和多Agent编排切入竞争，Qwen4-Max与开源Qwen Code则把重点放在产品入口和可嵌入工作流。两者都提供了清晰的产品方向，但发布口径、功能演示与生产稳定性仍需分开判断。",
+        "highlights": [
+          "Carbon在三项指定基准排名第一，官方称任务成本较第二名低50%以上",
+          "/swarm让Carbon负责架构、协调和审查，轻量模型并行执行",
+          "Qwen Code 1.0 Preview开源，强调Harness与开发者自有流程接入"
+        ]
+      },
+      {
+        "title": "能力与边界",
+        "intro": "图像模型以100轮连续编辑检验累积误差，生成式AI的安全问题则由Grok诉讼延伸到未成年人保护、训练数据与传播责任。低价和更强能力都不能替代稳定输出、治理流程与清晰边界。",
+        "highlights": [
+          "文稿称100轮编辑测试暴露了后期畸变与累积误差",
+          "文稿以透明PNG、拆回图层及约0.28元单张成本描述编辑工作流",
+          "Grok案件须区分诉讼指控，并审视训练数据、传播与未成年人保护"
+        ]
+      },
+      {
+        "title": "算力账本",
+        "intro": "CoreWeave的扩张不只看收入和需求，还要看预付款、合同担保借款与短期合同如何改变现金流和报价。章节据此把增长拆成供给确定性、融资条件与客户长期成本三笔账。",
+        "highlights": [
+          "预付款与合同担保借款成为增长融资工具",
+          "短期合同可灵活补位，但可能带来更高报价",
+          "判断增长还要核对回款方式、合同期限与价格变化"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "event_id": "928411a14a650b59810f997fb0ea331db542e48b569182727145008452040a22",
+        "title": "谷歌开放 Gemini 4 Carbon API",
+        "verdict": "补充",
+        "comment": "上线API、Ultra开放、三项基准与成本比较、/swarm分工及漏洞处置均有依据。宜注明基准结果来自谷歌，并将“超级漏洞”改为“两个漏洞”，说明具体等级尚未披露。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "3c213b5cff69c57331d633a7a34e6d34f86b637ffeb89fc88335319a89207b47",
+        "title": "Qwen4-Max预览版上线Token Plan",
+        "verdict": "需修正",
+        "comment": "发布事件、接入入口和折扣口径基本一致，但“复杂编程、专业办公、前端设计、专业软件操作、世界知识、感知”等能力表述未见于所给材料。宜补原始发布说明；折扣也应注明适用条件及来源。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "0ffb9834f9ba3b22bbed002965273a4f1bb8efefa89bbcf1cf2720cb51ffe325",
+        "title": "xAI旗下Grok在美国面临多起集体诉讼",
+        "verdict": "需修正",
+        "comment": "对案件性质、受害经历、X的付费限制及xAI法律行动的处理总体审慎，明确区分指控与法院结论。但“训练数据含学龄前受侵害画面”及“变成付费卖点”未见于所给事实，需补证或删除。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "6cd03bd37aa4d3a5de2618046aa227020df2afc06c52a258b9ff811a43c0e287",
+        "title": "CoreWeave调整预付款、合同担保与短约融资",
+        "verdict": "补充",
+        "comment": "预付款、合同担保借款、寻求短约及短约可能更贵均与材料一致。不过本期未呈现营收、亏损、利息和合同积压等关键财务背景，且现有证据仅一个独立来源，宜补注交叉核验限制。",
+        "corrections": [],
+        "highlights": []
+      }
+    ],
+    "fact_check_notes": [
+      "Seedream 5.5整段未见于所给日报要点，包括100轮编辑测试、GPT-Image 2.6约第10轮开始畸变、透明PNG与拆图层、文本Token不收费、2K方图约0.28元及成本低于Seedream 5.0 Pro一半等表述，均需补充可核验来源。",
+      "Carbon三项基准排名和每项任务成本低50%以上的比较来自谷歌公布结果，应明确归因，不能视为第三方独立复测。",
+      "Carbon所发现漏洞应表述为“两个漏洞”，具体严重程度和等级尚未披露，不宜直接使用“超级漏洞”扩大原始信息。",
+      "Qwen4的复杂编程、专业办公、前端设计、专业软件操作、世界知识、感知等能力描述，以及“最低1折”的活动口径，需补充原始出处、适用条件和来源限制。",
+      "“加州全国性集体诉讼指称Grok训练数据含原告学龄前受侵害画面”及“付费限制把争议工具变成付费卖点”未见于所给事实，需补证或改写。",
+      "CoreWeave相关现有证据仅有一个独立来源；建议补充第三季度营收36.6亿美元、同比增长168%、净亏损7.09亿美元、季度利息8.46亿美元及1325亿美元待履行合同积压等背景，并注明尚待交叉核验。"
+    ]
+  }
+}

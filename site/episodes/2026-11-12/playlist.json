@@ -1,0 +1,763 @@
+{
+  "episode_id": "2026-11-12",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "大家好，欢迎来到今日AI看点。今天这些消息值得一起看，因为AI竞争不只关乎模型谁更聪明，能力、入口、安全和成本也决定它能否进入真实工作。",
+      "start": 1.0,
+      "duration": 12.52,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "开场"
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "我会从Gemini 4 Carbon和Qwen4-Max聊起，再把Seedream 5.5、xAI的诉讼争议和CoreWeave的增长账本接上，只问每条消息究竟改变了什么。",
+      "start": 13.969,
+      "duration": 11.23,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "我们先固定几个尺度：榜单看能力上限，实测看稳定性，产品接入看用户能否使用，成本看这种能力能否持续。",
+      "start": 25.696,
+      "duration": 9.04,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "安全也要放进来。漏洞能否修补、内容会否造成伤害、平台怎样处置滥用，都会反过来决定产品能不能被信任。",
+      "start": 35.189,
+      "duration": 8.96,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "因此今天不排一张总榜，而是分别看能力、入口、安全和成本，分清真实进展、发布口号和仍待解决的问题。",
+      "start": 44.554,
+      "duration": 9.56,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "A",
+      "text": "谷歌的Gemini 4 Carbon模型正式上线API，面向Ultra订阅用户开放；Antigravity里的/swarm也同步亮相，让Carbon负责架构设计、协调和审查需要深度推理的任务。",
+      "start": 54.547,
+      "duration": 14.67,
+      "audios": {
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "模型竞速"
+    },
+    {
+      "id": 7,
+      "host": "B",
+      "text": "成绩很直接：在CursorBench 4.0、Perplexity的WANDR和Zapier的AutomationBench中，Carbon均排名第一，每项任务成本都比排名第二的Fable 5.2低50%以上。",
+      "start": 69.682,
+      "duration": 12.63,
+      "audios": {
+        "professional": "chunk_007_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 8,
+      "host": "A",
+      "text": "榜单之外，谷歌用阿波罗登月舱展示了更完整的链路：Carbon分析图片资料和技术图纸，重建3D模型并制作视频。",
+      "start": 82.774,
+      "duration": 10.04,
+      "audios": {
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "B",
+      "text": "这个演示值得看，因为它不是只回答一道题，而是把资料理解、三维重建和视频输出接在一起。",
+      "start": 93.265,
+      "duration": 7.4,
+      "audios": {
+        "professional": "chunk_009_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 10,
+      "host": "A",
+      "text": "/swarm更值得琢磨。一条指令能叫来一队Agent，还能实时看到进度；Carbon像总设计师，速度更快的轻量模型在各自工作区并行执行。",
+      "start": 101.165,
+      "duration": 11.44,
+      "audios": {
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "B",
+      "text": "协作的重点也不再是一次回答，而是多个Agent持续分工，模型还要协调不同工作区，并根据任务情况推进后续步骤。",
+      "start": 113.043,
+      "duration": 9.16,
+      "audios": {
+        "professional": "chunk_011_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 12,
+      "host": "A",
+      "text": "首批实测里，Carbon做出可交互的3D鸟声模拟器，能实时合成6种鸟类的声音，展示出的交互能力很直观。",
+      "start": 122.664,
+      "duration": 9.28,
+      "audios": {
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "B",
+      "text": "同批实测里的弹珠游戏有真实物理特性，不过照明效果和启动状态还要继续调教。演示能跑通不等于所有细节都已成熟。",
+      "start": 132.389,
+      "duration": 8.76,
+      "audios": {
+        "professional": "chunk_013_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "安全方面，谷歌披露Carbon发现了某热门开源软件中的两个超级漏洞，补丁已经发出，公告将在完成合规披露流程后发出。",
+      "start": 141.623,
+      "duration": 10.6,
+      "audios": {
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "能发现、能修补是一面，披露是否完整是另一面。先发补丁再走合规披露，响应速度和治理流程必须同时配合。",
+      "start": 152.65,
+      "duration": 8.4,
+      "audios": {
+        "professional": "chunk_015_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 16,
+      "host": "A",
+      "text": "说到多Agent，就不能不提Qwen。Qwen4-Max预览版首发上线阿里Token Plan，Qwen Code 1.0 Preview同步开源，千问办公、Qoder、千问APP和QwenStudio等也第一时间接入。",
+      "start": 161.514,
+      "duration": 17.75,
+      "audios": {
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "B",
+      "text": "官方把Qwen4的能力落在复杂编程、专业办公、前端设计和专业软件操作等任务上，并强调世界知识、感知、编程与Agentic能力。",
+      "start": 179.681,
+      "duration": 10.12,
+      "audios": {
+        "professional": "chunk_017_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "价格也放进了发布信息。Token Plan用户可限时享受2折，新用户再享折上5折，最低可以到1折，入口门槛被拉得更低。",
+      "start": 190.237,
+      "duration": 11.32,
+      "audios": {
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "Qwen Code真正的看点不只在价格。它融合Qoder与Qwen Code的Harness能力并开源，开发者可以接入自己的工具和业务流程，把Agent嵌入已有产品。",
+      "start": 201.974,
+      "duration": 11.59,
+      "audios": {
+        "professional": "chunk_019_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "Harness可以理解成翻译器和插座。用户要求、工具结果和系统反馈进入对应任务，Agent再据此调整判断、继续行动。",
+      "start": 214.06,
+      "duration": 9.96,
+      "audios": {
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "更关键的是开放接入。官方强调以事件为语言，开发者能让Agent沿自己的业务路径运行，再把运行基础嵌进产品，而不必接受封闭流程。",
+      "start": 224.432,
+      "duration": 10.72,
+      "audios": {
+        "professional": "chunk_021_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "对开发者来说，这意味着不必让Agent绕开已有系统，业务背景和工具结果可以在同一条链路里继续流转。",
+      "start": 235.631,
+      "duration": 9.88,
+      "audios": {
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 23,
+      "host": "B",
+      "text": "两边的共同点很清楚。/swarm偏强模型统筹一队Agent，Qwen Code强调开放接入和可嵌入，差别就在进入现有工作流以后的稳定性。",
+      "start": 245.943,
+      "duration": 11.96,
+      "audios": {
+        "professional": "chunk_023_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "所以榜单、成本和Agent都不能单独下结论。Carbon展示协作能力，Qwen提供运行基础，接下来还要看真实任务里谁更省调用、更少返工，也更少把风险甩给用户。",
+      "start": 258.371,
+      "duration": 13.76,
+      "audios": {
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "图像这边，Seedream 5.5接受了一个直接的考验：连续编辑100轮图像。对比测试里，GPT-Image 2.6在第10轮左右开始畸变，越往后失真越严重。",
+      "start": 272.621,
+      "duration": 13.04,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "能力与边界"
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "Seedream后期也有畸变，不过整体更保真。它不是绝对满分，却说明连续任务里的稳定性更值得肯定，尤其是多轮编辑场景。",
+      "start": 286.138,
+      "duration": 9.76,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "重点不只是成品好不好看，而是多轮任务会不会累积误差。每轮输入只是上一轮输出，一旦走偏，后面就可能步步错。",
+      "start": 296.316,
+      "duration": 11.16,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "单张样图可能很惊艳，但连续修改多轮以后还能不能保持结构，才是调用方在真实工作里经常遇到的难题。",
+      "start": 307.915,
+      "duration": 8.32,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "Seedream 5.5还把真实感、小字与多语言渲染、透明图生成与编辑放在一起，支持直出透明底PNG，也能把成图拆回图层。",
+      "start": 316.647,
+      "duration": 11.2,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "它可以单独修改文案或者输出不同语言版本，生成速度也比之前版本更快，细节能力开始靠近完整编辑流程。",
+      "start": 328.34,
+      "duration": 8.52,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "API延续输入图加输出图的两段计费，文本Token不产生费用；以2K方图编辑为例，单张成本在0.28元左右。",
+      "start": 337.269,
+      "duration": 10.24,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "不到Seedream 5.0 Pro一半。对连续编辑来说，单轮便宜只是一半，能少穿保真问题、少返工，同样会影响最终使用成本。",
+      "start": 347.996,
+      "duration": 9.16,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "低价和更长工作流是优势，不过现有实测仍有后期畸变，稳定上限还得继续观察，不能因为单轮便宜就忽略长时间运行的问题。",
+      "start": 357.598,
+      "duration": 11.88,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "可能力越强，边界越不能只靠用户自觉。xAI正在美国多地面对多起集体诉讼，多名年轻受害者指控Grok被滥用生成非自愿色情图像，其中涉及未成年人。",
+      "start": 369.938,
+      "duration": 13.72,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "这里必须说清楚，这是诉讼指控，不是法院已经作出的结论。可即使结论尚未形成，案件提出的问题也涉及产品设计、传播和未成年人保护。",
+      "start": 384.129,
+      "duration": 13.0,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "其中一案涉及威斯康星州原告简·多伊5号。诉状称，她初中毕业时一张身穿黄色碎花连衣裙、年仅14岁的合影，被同学的成年哥哥利用Grok篡改成儿童性虐待材料，并在互联网上传播。",
+      "start": 397.541,
+      "duration": 15.83,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "类似指控还出现在田纳西州、怀俄明州和加利福尼亚州，素材涉及年鉴照片、海滩度假比基尼照和童年合影，争议并不是单一案件。",
+      "start": 413.816,
+      "duration": 12.64,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "加州全国性集体诉讼中，原告还指称Grok训练数据含其学龄前受侵害画面。如果指控成立，它触及的就不只是输出过滤，还有训练数据这一层。",
+      "start": 426.911,
+      "duration": 11.4,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "争议也指向产品策略。Grok被塑造成限制更少、更有真实感和争议性的产品，xAI还推出过Spicy、Unhinged等模式，鼓励更具冲击力、NSFW的视觉内容。",
+      "start": 438.751,
+      "duration": 15.0,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "宽松边界和滥用后果正面相撞，这解释了争议为什么会持续。生成工具的传播能力越强，事后删除就越难覆盖全部影响。",
+      "start": 454.229,
+      "duration": 9.24,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "今年1月，X把Grok图片生成调整为付费用户专享，并声称关闭为真实人物生成未经同意的性化图片的能力，但批评者认为这没有根治问题。",
+      "start": 463.95,
+      "duration": 12.84,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "批评者还认为，这把争议工具变成了付费卖点。调整访问权限是一步，训练数据、输出边界、传播渠道和滥用处置仍然需要分别回答。",
+      "start": 477.216,
+      "duration": 10.4,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "xAI则向NCMEC报告并起诉部分涉嫌滥用者，同时挑战明尼苏达州禁止AI生成虚假裸照的法案，也在用法律路径回应边界争议。",
+      "start": 488.086,
+      "duration": 12.92,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "这与Carbon处理漏洞的路径很不一样：一边是补丁和合规披露，另一边是生成、传播、训练数据与言论自由边界的连环争议。",
+      "start": 501.467,
+      "duration": 12.52,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "模型治理不是一道开关。Carbon那边是修补和披露要跟上，xAI这边则说明产品模式、付费机制和处置路径会一起决定结果。",
+      "start": 514.443,
+      "duration": 11.56,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "A",
+      "text": "看完能力和安全，再看CoreWeave。它提供AI计算力租赁，增长故事越亮眼，背后的付款安排和合同定价就越值得追问。",
+      "start": 526.469,
+      "duration": 10.28,
+      "audios": {
+        "lively": "chunk_046_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "算力账本"
+    },
+    {
+      "id": 47,
+      "host": "B",
+      "text": "它正在要求客户预付款、以具体合同为基础借款，并寻求短期合同，而短期合同可能带来更高价格。",
+      "start": 537.182,
+      "duration": 8.32,
+      "audios": {
+        "professional": "chunk_047_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 48,
+      "host": "A",
+      "text": "客户先把钱拿出来，能让算力租赁的现金流更直接。若借款需要具体合同作依据，合同期限和确定性也不再只是商务条款。",
+      "start": 545.909,
+      "duration": 10.64,
+      "audios": {
+        "lively": "chunk_048_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 49,
+      "host": "B",
+      "text": "寻求短期合同能更灵活地补位，却可能让客户承担更高价格和调整成本，需求变化时尤其要算清这笔账。",
+      "start": 557.019,
+      "duration": 9.32,
+      "audios": {
+        "professional": "chunk_049_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 50,
+      "host": "A",
+      "text": "这不是说预付款本身一定不好，而是要分清它换来了什么。如果客户换来确定的算力供给和更快的部署节奏，价格就是这种确定性的成本。",
+      "start": 566.74,
+      "duration": 14.24,
+      "audios": {
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 51,
+      "host": "B",
+      "text": "所以看CoreWeave的增长，不能只盯着需求，还要核对客户如何付款、借款依赖什么合同，以及短期合同可能带来的报价变化。",
+      "start": 581.391,
+      "duration": 9.28,
+      "audios": {
+        "professional": "chunk_051_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 52,
+      "host": "A",
+      "text": "回头看今天几条消息，几个维度已经很清楚。Carbon用榜单说明能力，用/swarm和漏洞处置说明协作与安全，任务成本对比则说明成本优势。",
+      "start": 591.163,
+      "duration": 13.12,
+      "audios": {
+        "lively": "chunk_052_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 53,
+      "host": "B",
+      "text": "Qwen4-Max与Qwen Code把能力接进办公、开发工具和自有流程；Seedream 5.5用100轮编辑、图层能力与0.28元左右的单张成本展示连续工作流。",
+      "start": 604.734,
+      "duration": 13.43,
+      "audios": {
+        "professional": "chunk_053_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 54,
+      "host": "A",
+      "text": "xAI的案件提醒我们，真实感、争议性和付费推广都不能脱离责任边界；CoreWeave则提醒我们，增长还要看付款方式和合同期限。",
+      "start": 618.654,
+      "duration": 12.12,
+      "audios": {
+        "lively": "chunk_054_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 55,
+      "host": "B",
+      "text": "所以以后评价一条AI新闻，不必只问谁更强、谁更快，还要问谁能把能力、入口、安全和成本讲清楚。",
+      "start": 631.274,
+      "duration": 8.24,
+      "audios": {
+        "professional": "chunk_055_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 56,
+      "host": "A",
+      "text": "可以固定问几个问题：能力够不够强，入口够不够顺，安全边界是否清楚，成本能否持续承受。",
+      "start": 639.999,
+      "duration": 8.56,
+      "audios": {
+        "lively": "chunk_056_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 57,
+      "host": "B",
+      "text": "几个问题都要有证据。榜单和实测对应能力，产品接入对应入口，漏洞与案件对应安全，计费与合同对应成本，缺一项都很难看清全貌。",
+      "start": 649.039,
+      "duration": 10.04,
+      "audios": {
+        "professional": "chunk_057_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 58,
+      "host": "A",
+      "text": "模型当然重要，但真正决定落地质量的，是它进入工作之后能否稳定运行、承担代价，并且让使用者放心。",
+      "start": 659.479,
+      "duration": 9.08,
+      "audios": {
+        "lively": "chunk_058_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    }
+  ]
+}
