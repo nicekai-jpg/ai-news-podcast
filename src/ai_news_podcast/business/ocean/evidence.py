@@ -55,8 +55,29 @@ def _source_key(item: Item) -> str:
     return str(item.source or item.source_label or "unknown")
 
 
-def _independent_sources(items: list[Item]) -> int:
-    return len({_source_key(item) for item in items})
+def _normalized_title(title: str) -> str:
+    return "".join(
+        ch for ch in str(title or "").lower() if ch.isalnum() or "\u4e00" <= ch <= "\u9fff"
+    )
+
+
+def _independent_sources(items: list[Item], config: dict[str, Any] | None = None) -> int:
+    cfg = config or {}
+    if not bool(cfg_get(cfg, "evidence.dedup_syndicated_titles", False)):
+        return len({_source_key(item) for item in items})
+    seen_sources: set[str] = set()
+    seen_titles: set[str] = set()
+    independent = 0
+    for item in items:
+        source = _source_key(item)
+        title = _normalized_title(item.title)
+        if source in seen_sources or (title and title in seen_titles):
+            continue
+        independent += 1
+        seen_sources.add(source)
+        if title:
+            seen_titles.add(title)
+    return independent
 
 
 def _full_text_ratio(items: list[Item], min_chars: int) -> float:
@@ -91,7 +112,7 @@ def _fact_consistency(items: list[Item]) -> float:
 
 
 def _rumor_flag(items: list[Item], config: dict[str, Any]) -> bool:
-    independent = _independent_sources(items)
+    independent = _independent_sources(items, config)
     if independent >= int(cfg_get(config, "evidence.rumor_max_sources", 2)):
         return False
     keywords = [str(word).lower() for word in cfg_get(config, "evidence.rumor_keywords", [])]
@@ -146,7 +167,7 @@ def score_event(items: list[Item], *, config: dict[str, Any]) -> EvidenceResult:
         is_official_category(item.category, official_categories) for item in items
     )
     source_count = len({str(item.source or item.source_label) for item in items})
-    independent_sources = _independent_sources(items)
+    independent_sources = _independent_sources(items, config)
     cap = int(cfg_get(config, "evidence.source_count_cap", 5))
     min_full_text = int(cfg_get(config, "evidence.min_full_text_chars", 300))
     full_text_ratio = _full_text_ratio(items, min_full_text)

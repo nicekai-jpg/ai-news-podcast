@@ -141,3 +141,16 @@ class TestTierFor:
 
     def test_rumor_flag_overrides_high_score(self) -> None:
         assert tier_for(9.0, True, ocean_config()) == "rumor"
+
+
+def test_syndicated_titles_count_as_one_source() -> None:
+    from ai_news_podcast.business.ocean.evidence import _independent_sources
+
+    items = [
+        make_item(title="OpenAI 发布 GPT-5.1", source="source_a"),
+        make_item(title="OpenAI 发布 GPT-5.1", source="source_b"),
+    ]
+    off = _independent_sources(items, {"evidence": {"dedup_syndicated_titles": False}})
+    on = _independent_sources(items, {"evidence": {"dedup_syndicated_titles": True}})
+    assert off == 2
+    assert on == 1

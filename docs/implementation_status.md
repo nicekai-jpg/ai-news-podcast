@@ -442,3 +442,11 @@ LLM S3-S7      16m     (8%)
 - `config/ocean_v3.yaml` 的 `labels.semantic.enabled` 默认 false，开启后 Stage 2 才会调用 LLM；
 - 证据不匹配、枚举非法、置信度低于 0.6 一律丢弃/保留规则值；
 - 测试：931 passed。
+
+## P4 来源可信度与同源识别（2026-11-12）
+
+- 新增 `config/source_registry.yaml`：按具体源覆盖 tier（1 一手/研究、2 媒体、3 社区），
+  category 只做兜底；
+- `source_tier.tier_for_item/best_tier` 支持 registry，证据分与同分排序可解释；
+- `evidence.dedup_syndicated_titles` 开关（默认关）：同标题多源转载只算一个独立来源；
+- 测试：934 passed。
