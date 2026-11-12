@@ -110,6 +110,11 @@ class Labels:
     quote_availability: bool = False
     confidence: dict[str, float] = field(default_factory=dict)
     method: str = "rule"  # rule / llm / hybrid
+    taxonomy_version: int = 1
+    # 标签级元数据：field -> 证据/置信度/生成方式（rule/llm/hybrid）
+    label_evidence: dict[str, list[str]] = field(default_factory=dict)
+    label_confidence: dict[str, float] = field(default_factory=dict)
+    label_method: dict[str, str] = field(default_factory=dict)
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)

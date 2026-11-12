@@ -620,7 +620,9 @@ def label_text(
     if any(entity.ambiguous for entity, _ in entity_pairs):
         confidence["subjects"] = min(confidence.get("subjects", 0.95), 0.6)
 
-    ai_relevance, ai_evidence, _ = classify_text(title, summary, full_text, category=category)
+    ai_relevance, ai_evidence, ai_confidence = classify_text(
+        title, summary, full_text, category=category
+    )
     primary_domain, domain_evidence = classify_domain(title, summary, full_text, category=category)
     labels = Labels(
         subjects=subjects,
@@ -641,6 +643,19 @@ def label_text(
         ai_evidence=ai_evidence,
         primary_domain=primary_domain,
         domain_evidence=domain_evidence,
+        label_evidence={
+            "ai_relevance": ai_evidence,
+            "primary_domain": domain_evidence,
+        },
+        label_confidence={
+            "ai_relevance": float(ai_confidence),
+            "primary_domain": 0.6 if primary_domain else 0.2,
+        },
+        label_method={
+            "ai_relevance": "rule",
+            "primary_domain": "rule",
+        },
+        taxonomy_version=1,
         quote_availability=quote_available,
         confidence=confidence,
         method="rule",
@@ -757,6 +772,9 @@ def merge_labels(
     ai_evidence: list[str] = []
     primary_domain = "unknown"
     domain_evidence: list[str] = []
+    label_evidence: dict[str, list[str]] = {}
+    label_confidence: dict[str, float] = {}
+    label_method: dict[str, str] = {}
     for labels in labels_list:
         ai_relevance = stronger_grade(ai_relevance, str(labels.ai_relevance or "unknown"))
         primary_domain = stronger_domain(primary_domain, str(labels.primary_domain or "unknown"))
@@ -766,6 +784,19 @@ def merge_labels(
         for term in labels.domain_evidence:
             if term and term not in domain_evidence:
                 domain_evidence.append(term)
+        for dimension, values in labels.label_evidence.items():
+            bucket = label_evidence.setdefault(dimension, [])
+            for value in values:
+                if value not in bucket:
+                    bucket.append(value)
+        for dimension, value in labels.label_confidence.items():
+            label_confidence[dimension] = max(label_confidence.get(dimension, 0.0), float(value))
+        for dimension, value in labels.label_method.items():
+            label_method[dimension] = (
+                value
+                if dimension not in label_method or label_method[dimension] == value
+                else "hybrid"
+            )
     return Labels(
         subjects=_merge_subjects(labels_list),
         object_type=_merge_ordered([labels.object_type for labels in labels_list]),
@@ -785,6 +816,12 @@ def merge_labels(
         ai_evidence=ai_evidence[:8],
         primary_domain=primary_domain,
         domain_evidence=domain_evidence[:8],
+        label_evidence={key: values[:8] for key, values in label_evidence.items()},
+        label_confidence=label_confidence,
+        label_method=label_method,
+        taxonomy_version=max(
+            (int(labels.taxonomy_version or 1) for labels in labels_list), default=1
+        ),
         quote_availability=any(labels.quote_availability for labels in labels_list),
         confidence=confidence,
         method="rule",
