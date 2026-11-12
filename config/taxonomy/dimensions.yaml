@@ -1,0 +1,190 @@
+# 标签字段全景 v1（dimension registry）
+#
+# 每个字段必须声明：
+#   type          enum / ordinal / hierarchy / registry / extracted / derived
+#   enumerability closed（封闭枚举）/ finite（有限清单）/ open（抽取）/ derived（计算）
+#   values_source 值从哪来（标准/词表/实体库/正文抽取）
+#   coverage      覆盖度怎么量
+#   consumers     谁消费（recall/coarse/fine/editorial/page/audit）
+#
+# 原则：
+# 1. 决策字段尽量封闭或有限；开放字段只做事实，不做硬门槛；
+# 2. 形容词类（重要/有争议/新颖）不穷举同义词，改成有序刻度 + 锚点例子；
+# 3. 字段之间允许派生（event_type 由 action×object 组合生成）。
+
+version: 1
+
+dimensions:
+
+  # ===== 内容语义 =====
+  primary_domain:
+    type: enum
+    enumerability: closed
+    values_source: labels.yaml
+    consumers: [recall, coarse]
+  industry:
+    type: hierarchy
+    enumerability: finite
+    values_source: industries.yaml（对齐 GICS/申万一级 + AI 子类）
+    consumers: [coarse, fine, page]
+  ai_centrality:
+    type: enum
+    enumerability: closed
+    values_source: labels.yaml
+    consumers: [recall, coarse]
+  object_type:
+    type: enum
+    enumerability: closed
+    values_source: labels.yaml
+    consumers: [coarse, fine]
+  primary_action:
+    type: enum
+    enumerability: closed
+    values_source: labels.yaml（动作词表）
+    consumers: [coarse, fine]
+  secondary_actions:
+    type: enum_multi
+    enumerability: closed
+    values_source: labels.yaml
+    consumers: [fine]
+  technology_stack:
+    type: enum_multi
+    enumerability: finite
+    values_source: tech 词表（LLM/Agent/RAG/多模态/扩散/RL/语音/视觉…）
+    consumers: [recall, fine]
+  modalities:
+    type: enum_multi
+    enumerability: closed
+    values_source: text/image/audio/video/3d/code/robotics
+    consumers: [fine, page]
+  applications:
+    type: hierarchy
+    enumerability: finite
+    values_source: 应用行业树（编程/医疗/金融/教育/办公/搜索…）
+    consumers: [fine, page]
+  deployment:
+    type: enum
+    enumerability: closed
+    values_source: cloud/on_prem/edge/device/hybrid
+    consumers: [fine]
+  open_source:
+    type: bool
+    enumerability: closed
+    values_source: 标题/正文/仓库链接
+    consumers: [fine, page]
+  business_model:
+    type: enum
+    enumerability: closed
+    values_source: api/subscription/enterprise/consumer/free/ad
+    consumers: [fine]
+
+  # ===== 主体/实体 =====
+  actor_entities:
+    type: registry
+    enumerability: finite
+    values_source: entities.yaml（公司/实验室/人物/机构/政府）
+    consumers: [recall, coarse, fine, page]
+  object_entities:
+    type: registry
+    enumerability: finite
+    values_source: entities.yaml（模型/产品/硬件/芯片/论文）
+    consumers: [fine, page]
+  location:
+    type: registry
+    enumerability: finite
+    values_source: ISO 3166 + 城市/地区 gazetteer
+    consumers: [fine, page]
+  language:
+    type: enum
+    enumerability: closed
+    values_source: ISO 639-1
+    consumers: [audit]
+
+  # ===== 事件属性 =====
+  lifecycle:
+    type: enum
+    enumerability: derived
+    values_source: sequence/source_count/age_days 规则
+    consumers: [recall, coarse]
+  event_type:
+    type: enum
+    enumerability: finite
+    values_source: 由 action × object 组合生成（release_model/release_feature/funding_round…）
+    consumers: [coarse, fine, page]
+  novelty_type:
+    type: enum_multi
+    enumerability: closed
+    values_source: new_version/new_number/first/record/reversal/none
+    consumers: [fine]
+  impact_scope:
+    type: ordinal
+    enumerability: closed
+    values_source: 0-5（产品/公司/行业/国家/全球）
+    consumers: [fine]
+  timeliness:
+    type: enum
+    enumerability: derived
+    values_source: 发布时间 + 更新状态（breaking/developing/analysis/evergreen）
+    consumers: [recall, fine]
+  sentiment:
+    type: ordinal
+    enumerability: closed
+    values_source: -2..2（负面/中性/正面），锚点句
+    consumers: [fine, page]
+  controversy:
+    type: ordinal
+    enumerability: closed
+    values_source: 0-5（争议程度），锚点句
+    consumers: [fine]
+  risk_labels:
+    type: enum_multi
+    enumerability: closed
+    values_source: privacy/safety/ethics/legal/security/geopolitics
+    consumers: [fine]
+  credibility:
+    type: enum
+    enumerability: derived
+    values_source: source tier + 独立来源 + 官方确认
+    consumers: [coarse, fine]
+  source_type:
+    type: enum
+    enumerability: closed
+    values_source: official/research/news/community/video/podcast
+    consumers: [coarse, audit]
+  audience_persona:
+    type: enum_multi
+    enumerability: closed
+    values_source: developer/researcher/investor/consumer/policymaker/enterprise
+    consumers: [fine]
+  narrative_angle:
+    type: enum_multi
+    enumerability: finite
+    values_source: first/record/reversal/comparison/cost/conflict/how_to/crisis
+    consumers: [fine]
+  sensitivity:
+    type: enum_multi
+    enumerability: closed
+    values_source: politics/violence/legal/privacy/health/finance
+    consumers: [fine]
+
+  # ===== 抽取事实 =====
+  numbers:
+    type: extracted
+    enumerability: open
+    values_source: 正则（版本/金额/百分比/日期/数量）
+    consumers: [fine]
+  benchmarks:
+    type: extracted
+    enumerability: open
+    values_source: benchmark 名 + 分数（后续建 registry）
+    consumers: [fine]
+  quotes:
+    type: extracted
+    enumerability: open
+    values_source: 引语 + 说话人
+    consumers: [fine]
+  references:
+    type: extracted
+    enumerability: open
+    values_source: 链接/论文/官方公告
+    consumers: [audit]

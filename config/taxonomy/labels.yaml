@@ -1,0 +1,87 @@
+# 标签体系 v1（受控词表）
+#
+# 原则：
+# 1. 决策标签只能从枚举里选，不允许自由发挥；
+# 2. 抽取标签（公司/产品/数字）从全文抽，但必须映射到 entities.yaml 的规范 id；
+# 3. 每个标签都要有消费者（召回/粗排/精排/编辑/页面），没有消费者的不建。
+#
+# 修改流程：改本文件 → 跑 tests/test_taxonomy.py + tests/test_ocean_domain.py → 回归。
+
+version: 1
+
+dimensions:
+
+  # AI 在事件里的中心性（推荐门槛用）
+  ai_centrality:
+    type: enum
+    values: [central, infra, incidental, none, unknown]
+    consumers: [recall, coarse]
+    definition:
+      central: AI 模型/Agent/算法/研究是事件主体
+      infra: AI 基础设施是主体（芯片/算力/机器人/自动驾驶）
+      incidental: 顺带提到 AI，删掉不影响事件
+      none: 与 AI 无关
+      unknown: 信息不足
+
+  # 主领域（标题判定；非 AI 类目统一 other）
+  primary_domain:
+    type: enum
+    values: [ai_core, ai_infra, ai_application, other, unknown]
+    consumers: [recall, coarse]
+    definition:
+      ai_core: 模型/Agent/算法/研究
+      ai_infra: 芯片/算力/机器人/自动驾驶/数据中心
+      ai_application: AI 产品与行业应用（编程/医疗/金融 AI 等）
+      other: 汽车/金融/消费/体育/娱乐/社会/政治等
+      unknown: 信息不足
+
+  # 对象类型
+  object_type:
+    type: enum
+    values:
+      - model
+      - product_feature
+      - research_paper
+      - benchmark
+      - funding
+      - acquisition
+      - partnership
+      - policy
+      - hardware
+      - incident
+      - personnel
+      - other
+
+  # 主要动作
+  primary_action:
+    type: enum
+    values:
+      - release
+      - update
+      - research
+      - funding
+      - acquisition
+      - partnership
+      - regulation
+      - pricing
+      - lawsuit
+      - incident
+      - personnel
+      - benchmark
+      - other
+
+  # 生命周期（规则推导，仅召回/粗排/点评使用）
+  lifecycle:
+    type: enum
+    values: [burst, evolving, long_tail, fading, unknown]
+
+  # 证据等级（规则推导，仅粗排门槛）
+  evidence_tier:
+    type: enum
+    values: [strong, medium, weak, rumor, unknown]
+
+  # 抽取型标签（不在这里穷举值，值来自全文）
+  # - subjects: 公司/实验室/人物 → 映射 entities.yaml
+  # - products_models: 产品/模型名 → 映射 entities.yaml
+  # - industries: 行业 → 映射 industries.yaml
+  # - novelty_numbers: 版本/金额/日期/百分比 → 正则抽取
