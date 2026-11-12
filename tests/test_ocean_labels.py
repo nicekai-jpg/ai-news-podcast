@@ -218,3 +218,21 @@ class TestIndustry:
     def test_unknown_industry_for_generic_text(self) -> None:
         labeled = _label("公司发布季度公告")
         assert labeled.labels.industry == "unknown"
+
+
+class TestExpandedDictionaries:
+    def test_personnel_action(self) -> None:
+        labeled = _label("公司任命新的 CTO，原负责人离职")
+        assert "personnel" in labeled.labels.actions
+
+    def test_video_tech(self) -> None:
+        labeled = _label("新模型支持文生视频与视频编辑")
+        assert "video" in labeled.labels.tech_stack
+
+    def test_howto_narrative(self) -> None:
+        labeled = _label("教程：如何使用新的 Agent 框架")
+        assert "howto" in labeled.labels.narrative_angle
+
+    def test_hardware_topic(self) -> None:
+        labeled = _label("新款 GPU 服务器开始出货")
+        assert "hardware" in labeled.labels.topics

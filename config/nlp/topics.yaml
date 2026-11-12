@@ -32,3 +32,19 @@ topics:
     name: 产业
     priority: 50
     aliases: [产业, 行业, 生态, 供应链, 制造业, 医疗, 金融, 教育, industry, supply chain, manufacturing, healthcare, finance, education]
+  - id: hardware
+    name: 硬件
+    priority: 75
+    aliases: [芯片, GPU, 显卡, 服务器, 数据中心, 硬件, 设备, 算力, 光刻, chip, gpu, hardware, server, data center]
+  - id: open_source
+    name: 开源
+    priority: 72
+    aliases: [开源, 开放权重, open source, open-source, open weights, 社区版]
+  - id: infrastructure
+    name: 基础设施
+    priority: 65
+    aliases: [基础设施, 云计算, 云服务, 智算中心, infrastructure, cloud, data center]
+  - id: application
+    name: 应用
+    priority: 55
+    aliases: [应用, 落地, 场景, 行业应用, application, use case, deployment]

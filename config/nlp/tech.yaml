@@ -51,3 +51,18 @@ tech_stack:
   - id: open_source
     name: 开源生态
     aliases: [开源, open source, open-source, 开放权重, open weights, 社区版]
+  - id: mcp
+    name: MCP/工具协议
+    aliases: [MCP, model context protocol, 工具调用, function calling, tool use]
+  - id: world_model
+    name: 世界模型
+    aliases: [世界模型, world model, 物理引擎, 仿真环境]
+  - id: reinforcement
+    name: 强化学习
+    aliases: [强化学习, reinforcement learning, RLHF, 奖励模型, reward model]
+  - id: video
+    name: 视频生成
+    aliases: [视频生成, 文生视频, video generation, text-to-video, 视频编辑]
+  - id: cloud
+    name: 云
+    aliases: [云计算, 云服务, 公有云, 私有云, cloud, aws, azure, gcp]
