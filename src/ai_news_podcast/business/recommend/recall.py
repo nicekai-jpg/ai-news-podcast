@@ -110,6 +110,9 @@ def _has_ai_signal(event: Event, settings: RecallSettings) -> bool:
     因此 AI 相关性必须作为前置标准，避免汽车/消费/社会新闻靠时效或主体混进来。
     """
     head_signal = bool(matched_keywords(event.representative_title, settings.ai_text_keywords))
+    domain = str(getattr(event.labels, "primary_domain", "unknown") or "unknown")
+    if domain == "other":
+        return False
     grade = str(getattr(event.labels, "ai_relevance", "unknown") or "unknown")
     if grade in ("core", "adjacent"):
         # 只有一手/研究来源才允许“正文里提 AI”算相关；新闻/社区必须标题或摘要带 AI 信号
