@@ -236,3 +236,9 @@ class TestExpandedDictionaries:
     def test_hardware_topic(self) -> None:
         labeled = _label("新款 GPU 服务器开始出货")
         assert "hardware" in labeled.labels.topics
+
+
+def test_industry_falls_back_to_entity_mapping() -> None:
+    labeled = _label("OpenAI 发布新模型")
+    assert labeled.labels.industry == "ai"
+    assert labeled.labels.industry_evidence

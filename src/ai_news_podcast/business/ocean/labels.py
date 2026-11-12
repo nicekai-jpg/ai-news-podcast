@@ -599,9 +599,14 @@ def label_text(
 
     head_lower = f"{title}。{summary}。".lower()
 
+    def _meaningful(value: Any) -> bool:
+        if isinstance(value, tuple):
+            return bool(value[0]) if value else False
+        return bool(value)
+
     def _head_or_body(extract: Any) -> Any:
         value = extract(head_lower)
-        return value if value else extract(text_lower)
+        return value if _meaningful(value) else extract(text_lower)
 
     entity_pairs = _head_or_body(lambda scope: _extract_entities(scope, lexicon, config))
     subjects, entity_defs = _build_subjects(entity_pairs)
@@ -639,9 +644,18 @@ def label_text(
         title, summary, full_text, category=category
     )
     primary_domain, domain_evidence = classify_domain(title, summary, full_text, category=category)
-    industry_match = default_taxonomy().industry_match(title)
+    taxonomy = default_taxonomy()
+    industry_match = taxonomy.industry_match(title)
     industry = str(industry_match[0]["id"]) if industry_match else "unknown"
     industry_evidence = [industry_match[1]] if industry_match else []
+    if industry == "unknown":
+        for subject in subjects:
+            subject_id = str(subject.get("id") or "")
+            entity_industry = taxonomy.entity_industries.get(subject_id)
+            if entity_industry:
+                industry = entity_industry
+                industry_evidence = [str(subject.get("name") or subject_id)]
+                break
     labels = Labels(
         subjects=subjects,
         object_type=object_types,
