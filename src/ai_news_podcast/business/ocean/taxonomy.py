@@ -38,6 +38,10 @@ class Taxonomy:
     entity_industries: dict[str, str] = field(default_factory=dict)
     industry_keywords: list[tuple[str, dict[str, Any]]] = field(default_factory=list)
 
+    @property
+    def industry_ids(self) -> tuple[str, ...]:
+        return tuple(str(industry.get("id")) for industry in self.industries)
+
     def enum_values(self, dimension: str) -> tuple[str, ...]:
         values = self.dimensions.get(dimension, {}).get("values") or ()
         return tuple(str(value) for value in values)

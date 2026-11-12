@@ -433,3 +433,12 @@ LLM S3-S7      16m     (8%)
 - 叙述角度明显改善；
 - subjects 空白率没变，实体词典仍是最大缺口（P3/词表继续补）；
 - GHA 已加 `Label coverage report` 步骤（continue-on-error，报告写入 Step Summary 并随 artifact 上传）。
+
+## P3 LLM 语义标注（2026-11-12，默认关闭）
+
+- `business/ocean/semantic.py`：批量 prompt（枚举 + 证据 + 置信度）→ 校验枚举/证据必须出现在
+  标题或摘要 → `SemanticLabeler.apply` 与规则标签合并（method=hybrid）；
+- `build_ocean(..., semantic_labeler=...)` 与 `v3_runner_service` 已接入；
+- `config/ocean_v3.yaml` 的 `labels.semantic.enabled` 默认 false，开启后 Stage 2 才会调用 LLM；
+- 证据不匹配、枚举非法、置信度低于 0.6 一律丢弃/保留规则值；
+- 测试：931 passed。
