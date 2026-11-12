@@ -456,3 +456,12 @@ LLM S3-S7      16m     (8%)
 - `extract_article_text` 增加 JSON-LD `articleBody` 降级：readability 失败时不再直接丢正文；
 - GHA 增加 `Source health report` 步骤：最近 7 天 raw artifact 聚合，写 Step Summary 并随 artifact 上传；
 - 测试：937 passed。
+
+## P6/P7 点评质量与运维快照（2026-11-12）
+
+- `business/editorial/review_quality.py`：日报/播客点评的结构评分（overall/items/show_notes/chapters/
+  comment），低分进入人工复核；
+- `scripts/editorial_quality.py`：命令行检查当天两份点评；
+- `scripts/ops_snapshot.py`：每日运维快照（事件数、推荐数、点评质量、覆盖率告警、源健康度），
+  写入 GHA Step Summary 并随 artifact 上传；
+- GHA 已加 Editorial quality / Ops snapshot 两步（continue-on-error，不阻断主链）。
