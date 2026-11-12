@@ -186,3 +186,23 @@ class TestItemLabeling:
         assert labeled.labels.subjects[0]["id"] == "openai"
         assert "model" in labeled.labels.object_type
         assert labeled.entity_keys
+
+
+class TestLabelMetadata:
+    def test_label_text_has_evidence_confidence_method(self) -> None:
+        labeled = _label("OpenAI 发布新模型，支持 Agent")
+        labels = labeled.labels
+        assert labels.taxonomy_version == 1
+        assert labels.label_method["ai_relevance"] == "rule"
+        assert labels.label_confidence["ai_relevance"] > 0
+        assert labels.label_evidence["ai_relevance"]
+
+    def test_merge_marks_hybrid_when_methods_differ(self) -> None:
+        first = _label("OpenAI 发布新模型")
+        second = _label("Anthropic 发布 Claude 新版本")
+        second.labels.label_method["ai_relevance"] = "llm"
+        merged = merge_labels([first, second], config=ocean_config())
+        assert merged.label_method["ai_relevance"] == "hybrid"
+        assert (
+            merged.label_confidence["ai_relevance"] >= first.labels.label_confidence["ai_relevance"]
+        )

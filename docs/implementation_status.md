@@ -388,3 +388,12 @@ LLM S3-S7      16m     (8%)
 - 2026-11-11 实测：subjects 48% 空白、narrative 51%、tech 29%、actions 25%、topics 16%；
 - docs/taxonomy.md 增补“其他位置的同类风险”表（impact/novelty/risk/来源分级/证据/聚类/全文/账本）；
 - 结论：每个字段都要有覆盖度量，不再假设词典完整。
+
+## P1 标签元数据 + P0 队列扩容（2026-11-12）
+
+- `Labels` 新增 `taxonomy_version`、`label_evidence`、`label_confidence`、`label_method`
+  （field → 证据/置信度/rule|llm|hybrid）；`label_text` 与 `merge_labels` 已填充/合并；
+- 旧 artifact 读入时默认 unknown/rule，向后兼容；
+- 生成 1000 条分层评测队列 `data/eval/recommend/review_queue_2026-11_1000.jsonl`
+  （core 584 / unknown 300 / adjacent 76 / none 40，负样本池有限）；
+- 测试：914 → 917 passed。
