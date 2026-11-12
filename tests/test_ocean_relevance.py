@@ -27,9 +27,20 @@ class TestClassifyText:
         grade, _, _ = classify_text("新车")
         assert grade == "unknown"
 
-    def test_body_evidence_falls_back_to_core(self) -> None:
+    def test_body_only_evidence_is_ignored_for_news(self) -> None:
+        grade, _, _ = classify_text(
+            "某车企发布新车",
+            summary="",
+            full_text="该车搭载智能驾驶系统，支持 AI 语音助手",
+        )
+        assert grade == "none"
+
+    def test_body_evidence_allowed_for_research(self) -> None:
         grade, _, confidence = classify_text(
-            "某公司发布新款硬件", summary="", full_text="该产品内置 AI 模型，支持 Agent 工具"
+            "A Novel Method for X",
+            summary="",
+            full_text="该方法使用大模型与 Agent 工具",
+            category="research",
         )
         assert grade == "core"
         assert confidence < 0.7

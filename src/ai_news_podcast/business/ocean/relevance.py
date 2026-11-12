@@ -57,9 +57,13 @@ def _grade(matches: list[str]) -> tuple[str, list[str]] | None:
 
 
 def classify_text(
-    title: str, summary: str = "", full_text: str = ""
+    title: str, summary: str = "", full_text: str = "", *, category: str = "news"
 ) -> tuple[str, list[str], float]:
-    """返回 (ai_relevance, evidence, confidence)。"""
+    """返回 (ai_relevance, evidence, confidence)。
+
+    只有 official/research 来源允许用正文兜底；新闻/社区来源只看标题+摘要，
+    避免“汽车新闻正文提了一句自动驾驶”就被判成 AI 相关。
+    """
     head = _clean(f"{title} {summary}")
     body = _clean(full_text)[:2000]
     if len(head) < 8 and len(body) < 20:
@@ -70,12 +74,13 @@ def classify_text(
         grade, evidence = head_grade
         return grade, evidence, 0.8 if grade == "core" else 0.7
 
-    body_grade = _grade(matched_keywords(body, DEFAULT_AI_TEXT_KEYWORDS))
-    if body_grade is not None:
-        grade, evidence = body_grade
-        return grade, evidence, 0.55 if grade == "core" else 0.5
+    if str(category or "").strip().lower() in ("official", "research"):
+        body_grade = _grade(matched_keywords(body, DEFAULT_AI_TEXT_KEYWORDS))
+        if body_grade is not None:
+            grade, evidence = body_grade
+            return grade, evidence, 0.55 if grade == "core" else 0.5
 
-    if len(head) < 15:
+    if len(head) < 4:
         return "unknown", [], 0.2
     return "none", [], 0.6
 

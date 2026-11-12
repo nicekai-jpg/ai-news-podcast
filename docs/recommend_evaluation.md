@@ -151,12 +151,15 @@ Stage 2 标注新增两个字段：
 判定顺序：
 
 ```
-标题+摘要命中 core 词        → core   (confidence 0.8)
-标题+摘要只命中 infra 词     → adjacent (0.7)
-正文命中 core/infra 词       → core / adjacent (0.55 / 0.5)
-无任何命中                   → none   (0.6)
-标题+摘要过短                → unknown (0.2)
+标题+摘要命中 core 词             → core   (confidence 0.8)
+标题+摘要只命中 infra 词          → adjacent (0.7)
+正文命中 core/infra 词（仅 official/research）→ core / adjacent (0.55 / 0.5)
+无任何命中                        → none   (0.6)
+标题过短                          → unknown (0.2)
 ```
+
+推荐门槛比标签更严：**标题必须带 AI 信号**才放行（一手/研究来源例外）。
+汽车/消费新闻即使正文提到“自动驾驶/AI”，只要标题没有 AI 信号，就不会进推荐。
 
 推荐链路（召回/粗排）优先信标签等级：
 

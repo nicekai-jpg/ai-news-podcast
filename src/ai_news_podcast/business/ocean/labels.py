@@ -588,6 +588,7 @@ def label_text(
     *,
     lexicon: Lexicon,
     config: dict[str, Any],
+    category: str = "news",
 ) -> LabeledItem:
     """对一段文本做规则标注（无 Item 依赖，便于复用/测试）。"""
     max_chars = int(cfg_get(config, "preprocess.max_full_text_chars", 4000))
@@ -618,7 +619,7 @@ def label_text(
     if any(entity.ambiguous for entity, _ in entity_pairs):
         confidence["subjects"] = min(confidence.get("subjects", 0.95), 0.6)
 
-    ai_relevance, ai_evidence, _ = classify_text(title, summary, full_text)
+    ai_relevance, ai_evidence, _ = classify_text(title, summary, full_text, category=category)
     labels = Labels(
         subjects=subjects,
         object_type=object_types,
@@ -657,6 +658,7 @@ def label_item(item: Item, lexicon: Lexicon, config: dict[str, Any]) -> LabeledI
         item.full_text,
         lexicon=lexicon,
         config=config,
+        category=item.category,
     )
 
 

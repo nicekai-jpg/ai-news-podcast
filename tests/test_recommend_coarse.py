@@ -36,6 +36,7 @@ def _make_event(
     confidence: dict | None = None,
     covered_before: bool = False,
     ai_relevance: str = "unknown",
+    source_tier: int = 3,
 ) -> Event:
     seen = (REFERENCE - timedelta(hours=age_hours)).isoformat()
     labels = Labels(
@@ -64,6 +65,7 @@ def _make_event(
         labels=labels,
         evidence_score=3.0,
         covered_before=covered_before,
+        best_source_tier=source_tier,
     )
 
 
@@ -254,14 +256,23 @@ class TestAiRelevance:
         )
         assert [item.event.event_id for item in outcome.candidates] == ["car2"]
 
-    def test_label_grade_can_keep_adjacent(self) -> None:
+    def test_label_grade_needs_head_signal_for_news(self) -> None:
         car = _make_event("car3", title="某车企发布新车", ai_relevance="adjacent")
         outcome = coarse_rank(
             [RecallCandidate(event=car, channels=("subject",))],
             CoarseSettings(),
             reference_time=REFERENCE,
         )
-        assert [item.event.event_id for item in outcome.candidates] == ["car3"]
+        assert outcome.candidates == []
+
+    def test_label_grade_trusted_for_official(self) -> None:
+        car = _make_event("car4", title="某车企发布新车", ai_relevance="adjacent", source_tier=1)
+        outcome = coarse_rank(
+            [RecallCandidate(event=car, channels=("subject",))],
+            CoarseSettings(),
+            reference_time=REFERENCE,
+        )
+        assert [item.event.event_id for item in outcome.candidates] == ["car4"]
 
     def test_label_none_rejects_ai_title(self) -> None:
         ai = _make_event("ai3", title="OpenAI 发布新模型", ai_relevance="none")
