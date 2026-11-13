@@ -19,10 +19,24 @@ DEFAULT_FIELDS = (
 LOW_EXPECTATION = {"sensitivity"}
 
 
+def _labels(event: Any) -> Any:
+    return event.labels if hasattr(event, "labels") else (event.get("labels") or {})
+
+
 def _label(event: Any, field: str) -> list[Any]:
-    labels = event.labels if hasattr(event, "labels") else (event.get("labels") or {})
+    labels = _labels(event)
     value = getattr(labels, field, None) if not isinstance(labels, dict) else labels.get(field)
     return list(value or [])
+
+
+def _has_evidence(event: Any, field: str) -> bool:
+    labels = _labels(event)
+    evidence = (
+        getattr(labels, "label_evidence", None)
+        if not isinstance(labels, dict)
+        else labels.get("label_evidence")
+    )
+    return bool(evidence and evidence.get(field))
 
 
 def label_coverage(
@@ -39,10 +53,12 @@ def label_coverage(
         empty = sum(1 for event in events if not _label(event, field))
         counts = Counter(len(_label(event, field)) for event in events)
         rate = round(empty / total, 4)
+        with_evidence = sum(1 for event in events if _has_evidence(event, field))
         rows[field] = {
             "empty": empty,
             "total": len(events),
             "empty_rate": rate,
+            "evidence_rate": round(with_evidence / total, 4),
             "distribution": dict(sorted(counts.items())),
         }
         if field not in LOW_EXPECTATION and rate > warn_threshold:
@@ -56,12 +72,15 @@ def render_markdown(report: dict[str, Any]) -> str:
         "",
         f"- 事件数：{report['events']}",
         "",
-        "| 字段 | 空白数 | 空白率 | 标签数分布 |",
-        "|---|---|---|---|",
+        "> 空白率只是词表覆盖诊断，不等于标签准确率；准确率需要人工金标准。",
+        "",
+        "| 字段 | 空白数 | 空白率 | 证据覆盖率 | 标签数分布 |",
+        "|---|---|---|---|---|",
     ]
     for field, row in report["fields"].items():
         lines.append(
-            f"| {field} | {row['empty']} | {row['empty_rate']:.0%} | {row['distribution']} |"
+            f"| {field} | {row['empty']} | {row['empty_rate']:.0%} | "
+            f"{row['evidence_rate']:.0%} | {row['distribution']} |"
         )
     if report["warnings"]:
         lines += ["", "## 告警", ""]

@@ -58,7 +58,10 @@ def render(snapshot: dict[str, Any]) -> str:
     for key, label in (("report_quality", "日报点评"), ("podcast_quality", "播客点评")):
         quality = snapshot.get(key)
         if quality:
-            lines.append(f"- {label}质量：{quality['score']}（问题 {len(quality['issues'])} 个）")
+            lines.append(
+                f"- {label}结构完整度：{quality['structure_score']}"
+                f"（问题 {len(quality['issues'])} 个）"
+            )
     warnings = snapshot.get("coverage_warnings") or []
     lines.append(f"- 覆盖率告警：{len(warnings)} 个")
     if snapshot.get("source_health"):

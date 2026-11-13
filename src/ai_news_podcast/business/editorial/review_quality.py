@@ -9,6 +9,7 @@ def review_quality(review: dict[str, Any], *, kind: str = "report") -> dict[str,
     """返回 {score, issues, checks}；score 越低越需要人工复核。"""
     issues: list[str] = []
     checks: dict[str, bool] = {}
+    score_name = "structure_score"
     overall = str(review.get("overall") or "").strip()
     checks["overall"] = len(overall) >= 50
     if not checks["overall"]:
@@ -38,7 +39,13 @@ def review_quality(review: dict[str, Any], *, kind: str = "report") -> dict[str,
 
     passed = sum(1 for value in checks.values() if value)
     score = round(passed / len(checks), 3) if checks else 0.0
-    return {"score": score, "issues": issues, "checks": checks}
+    return {
+        "metric": "structure_completeness",
+        "score_name": score_name,
+        "structure_score": score,
+        "issues": issues,
+        "checks": checks,
+    }
 
 
 __all__ = ["review_quality"]
