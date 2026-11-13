@@ -490,3 +490,16 @@ LLM S3-S7      16m     (8%)
 - 重新生成预标注队列、300 条机器标注、50 条抽查；
 - 冒烟指标：召回 74.05%，top8 精确率 75.0%，粗排保留 6.19%；
 - **决定：机器标注只用于降低人工成本，不当作金标准；P3/P4 继续默认关闭。**
+
+## 改造后验证跑结果（2026-11-12，GHA 43173216866）
+
+- 跑完 S1–S7（未发布），耗时约 1h41m，成功；
+- 事件数 589；subjects 空白率 38%（改造前 49%），narrative 36%（改造前 51%），
+  actions 24%，topics 16%；
+- 新顶点：`ai_relevance` core 373 / none 178 / adjacent 35 / unknown 3；
+  `primary_domain` ai_core 299 / ai_infra 39 / unknown 251（旧 artifact 无该字段）；
+- top8 全部为 AI 主题，无汽车/消费混入；
+- 新报告已生成：`label_coverage.md`（告警 2 项：subjects、narrative）、`source_health.md`；
+- 日报/播客点评质量均为 1.0；
+- 发现 GHA 的 Editorial quality / Ops snapshot 两步漏在 main 外，已补；
+- 结论：标签覆盖改善、无类别污染；但 subjects 仍是最大缺口，P3/P4 继续关闭。

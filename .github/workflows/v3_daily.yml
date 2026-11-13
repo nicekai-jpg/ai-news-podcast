@@ -156,6 +156,27 @@ jobs:
             cat "data/ocean/${{ steps.episode.outputs.id }}/source_health.md" >> "$GITHUB_STEP_SUMMARY"
           fi
 
+      - name: Editorial quality report
+        continue-on-error: true
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          EPISODE="${{ steps.episode.outputs.id }}"
+          uv run python scripts/editorial_quality.py --editorial-dir "data/editorial/${EPISODE}" || true
+
+      - name: Ops snapshot
+        continue-on-error: true
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          EPISODE="${{ steps.episode.outputs.id }}"
+          uv run python scripts/ops_snapshot.py \
+            --date "$EPISODE" \
+            --out-md "data/ocean/${EPISODE}/ops_snapshot.md" || true
+          if [ -f "data/ocean/${EPISODE}/ops_snapshot.md" ]; then
+            cat "data/ocean/${EPISODE}/ops_snapshot.md" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Check script quality
         if: ${{ github.event.inputs.skip_script != 'true' }}
         env:
