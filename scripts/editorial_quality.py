@@ -23,10 +23,10 @@ def main() -> int:
             failed = True
             continue
         report = review_quality(json.loads(path.read_text(encoding="utf-8")), kind=kind)
-        print(f"{name}: score={report['score']} issues={len(report['issues'])}")
+        print(f"{name}: 结构完整度={report['structure_score']} issues={len(report['issues'])}")
         for issue in report["issues"]:
             print(f"  - {issue}")
-        if report["score"] < 0.75:
+        if report["structure_score"] < 0.75:
             failed = True
     return 1 if failed else 0
 
