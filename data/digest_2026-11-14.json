@@ -1,0 +1,557 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-14",
+  "date_label": "2026年11月14日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": false
+  },
+  "podcast": {
+    "title": "今日AI看点 | 2026-11-14",
+    "subtitle": "派早报:英伟达 CEO 黄仁勋宣布辞职等",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-14.mp3",
+    "duration_seconds": 590.447,
+    "duration_label": "09:50",
+    "speech_seconds": 576.83,
+    "segment_count": 29,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 29,
+      "segments_url": "episodes/2026-11-14/playlist.json",
+      "text_url": "episodes/2026-11-14.txt"
+    }
+  },
+  "lead": {
+    "text": "本期从模型竞速、开发者落地与扩张成本三条线，观察 AI 竞争如何从榜单延伸到真实工作流。Google Gemini 4 Hydrogen 重点讨论百万 Token 上下文、思考档位、API 定价、Antigravity 智能调度及官方安全数据；百度文心 5.5 Flash Preview 聚焦 Flash 档位、研发自动化与高频调用价值；微软 Project Kilby 则把数据中心电力和社区成本摆上台面。节目另以快乐虾米移动端上线为产品快讯，结尾提醒：速度之外，稳定性、账单、审批与版权合作更值得持续观察。",
+    "source": "podcast_review",
+    "source_file": "data/reports/daily_report_2026-11-14.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 736,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 1,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 29,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 7,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "模型竞速",
+      "start": 24.226,
+      "label": "00:24",
+      "source": "script"
+    },
+    {
+      "title": "效率落地",
+      "start": 270.78,
+      "label": "04:31",
+      "source": "script"
+    },
+    {
+      "title": "收尾",
+      "start": 556.135,
+      "label": "09:16",
+      "source": "script"
+    }
+  ],
+  "report": {
+    "title": "深度日报 2026-11-14",
+    "lead": "据现有报道，Google 于 11 月 12 日正式推出 Gemini 4 Hydrogen，定位为面向快速执行、日常编程和 AI 智能体工作流的模型，并首次将 Gemini 4 系列模型能力扩展至免费用户。模型支持最高 100 万 Token 上下文窗口，支持原生 100 万 Token 输入和最高 100 万 Token 输出，可处理 PDF、电子表格、图表、音频和视频等多模态内容。其 API 输入价格为每百万 Token 1.50 美元，输出价格为每百万 Token 7.50 美元，整个上下文窗口采用统一定价。",
+    "deep_dives": [
+      {
+        "heading": "1、Google发布Gemini 4 Hydrogen模型",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，Google 于 11 月 12 日正式推出 Gemini 4 Hydrogen，定位为面向快速执行、日常编程和 AI 智能体工作流的模型，并首次将 Gemini 4 系列模型能力扩展至免费用户。模型支持最高 100 万 Token 上下文窗口，支持原生 100 万 Token 输入和最高 100 万 Token 输出，可处理 PDF、电子表格、图表、音频和视频等多模态内容。其 API 输入价格为每百万 Token 1.50 美元，输出价格为每百万 Token 7.50 美元，整个上下文窗口采用统一定价。\n据现有报道，Gemini 4 Hydrogen 提供 low、medium、high 和 xhigh 四档思考深度，默认使用 high 档位。第三方评测机构 Artificial Analysis 公布的数据显示，该模型在 high 档位下的智能指数达到 51 分，超过 Gemini 4 Argon 的 50 分，xhigh 档位进一步提升至 54 分。Google 表示，相比上一代 Gemini 3.8 Flash，新模型默认档位的任务完成速度提升至 2.5 倍，Terminal-Bench 4.1 测试得分由 18.2% 提升至 57%，虚构错误减少超过 5 倍。\n据现有报道，Google 为 AI 开发平台 Google Antigravity 推出 Orchestrator 智能调度功能，可在同一会话中按任务需求自动切换 Gemini 4 Carbon、Hydrogen 等模型。根据 Google 公布的 Terminal-Bench 4.0 测试结果，该功能在接近 Carbon 任务成功率的同时，平均配额消耗减少 24%，任务完成速度提升 19%。模型目前在全球范围内陆续开放，开发者可通过 Gemini API、Google AI Studio 和 Android Studio 使用，企业用户可通过 Gemini 商业服务及 Google Antigravity 接入。\n据现有报道，Google 宣称，Gemini 4 Hydrogen 在智能体任务中的越权行为最多减少 81%，任务服务不足问题最多减少 79%，内部智能体诚实度评测得分达到 96.7%，对间接提示注入攻击的抵御能力提升超过 2.3 倍。现有材料同时注明，上述安全性改进数据主要来自 Google 自身评测，实际效果仍有待进一步验证。"
+          },
+          {
+            "label": "背景",
+            "text": "分析口径：材料将 Hydrogen 放在 Gemini 4 系列、上一代 Gemini 3.8 Flash 和 Google Antigravity 的产品框架中，Gemini 4 Argon 与 Gemini 3.8 Flash 分别构成系列内和代际参照，Antigravity 的 Orchestrator 则提供会话内多模型切换。这一组合意味着开发者不仅需要选择单模型，也需要根据任务设置模型路由策略。"
+          },
+          {
+            "label": "影响",
+            "text": "分析口径：Hydrogen 短期可能影响开发者对模型路由、编程智能体和长上下文文档处理的试验选择；免费用户获得自动模型选择，也可能扩大普通用户接触 Gemini 4 能力的入口。企业接入时仍需评估 API 成本、思考档位、数据合规和智能体越权风险。由于关键性能与安全数字包含厂商自测，实际采用宜使用自有任务集进行复测。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "2、微软称将自行承担AI数据中心电力成本",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，IT之家于 11 月 13 日援引彭博社 11 月 12 日博文称，微软将寻求在不依赖政府补贴、也不增加其他电力用户成本的情况下，为旗下 AI 数据中心供电。微软云运营与创新总裁诺埃尔·沃尔什（Noelle Walsh）在休斯顿举行的彭博新能源财经会议上表示：“我们不希望其他客户为我们的增长买单。我们会自行承担费用。”报道还称，微软计划今年投入 1,170 亿美元建设相关计算能力，并强调“社区优先”，主张项目建设应让当地居民受益。\n据现有报道，微软正与雪佛龙（Chevron Corp.）及投资机构 Engine No. 1 创立的 Joulent 公司合作，在得克萨斯州西部推进名为“Project Kilby”的大型数据中心及配套供电项目。该项目因当地暂停审批新数据中心而推进受阻；雪佛龙仍以 2028 年启动运行、2031 年全面投运为目标。雪佛龙新能源业务负责人表示，项目将为当地创造就业和稳定税收，并称无法为社区带来净收益的项目“注定失败”。"
+          },
+          {
+            "label": "背景",
+            "text": "编辑背景判断：事件发生在美国多地数据中心引发关注、得克萨斯州西部当地暂停审批新数据中心的背景下。微软同时提出成本自担和“社区优先”，说明其扩张议题除算力建设外，还涉及电力成本、社区收益与项目许可之间的协调。"
+          },
+          {
+            "label": "影响",
+            "text": "编辑分析：若费用承担承诺得到落实，微软可能减少 AI 数据中心扩张对其他电力用户成本的直接影响。Project Kilby 的 2028 年启动运行和 2031 年全面投运目前属于目标，当地暂停审批政策仍是推进障碍。后续观察重点包括实际资本投入、供电安排和许可进度，而不只是宣布的投资规模。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息。现有报道仅提到当地暂停审批新数据中心的政策构成推进阻力，以及雪佛龙方面关于社区净收益的条件性表述，未提供对微软成本承诺的直接质疑。"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "3、百度发布文心5.5 Flash进展，孙天祥亮相",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，在11月12日的百度世界大会上，孙天祥第一次以百度基础模型研发部负责人的身份公开亮相，并介绍了文心5.5 Flash Preview。他表示，模型名仍有点长，正在努力尽快去掉Preview尾缀，且这还不是最终版本，模型仍在打磨。报道还称，过去一周百度连续放出几项进展：11月5日开源文心5.5 Flash Base，11月9日公开用于自动优化模型研发的ERNIE Evolve，11月11日，基于Base后训练得到的文心5.5 Flash Preview上线千帆和OpenRouter，目前正在限免体验。\n据现有报道，文心5.5 Flash Preview是一个MoE模型，总参数2800亿，每个Token激活140亿参数，支持100万Token上下文，生成速度超过每秒200 Token。百度公布的数据称，文心5.5 Flash Base在知识、推理、数学和代码等多项基准测试上拿到了同尺寸基座模型的SOTA。报道还称，DeepSeek-V4-Flash、腾讯Hy3-preview和小米MiMo-V2.5均处在相近的尺寸区间。\n据现有报道，孙天祥于报道所述今年7月正式加入百度，担任基础模型研发部负责人，同时进入百度模型委员会，报道注明其出生于1997年。报道还介绍，他在复旦大学读博期间主导研发MOSS，并将其称为“国内首个公开内测的类ChatGPT对话大模型”；报道另称，他较早在国际上提出“语言模型即服务（LMaaS）”和模型低成本调优。博士毕业后，他创办了日行迹智能，研究方向是用AI来做AI研究。"
+          },
+          {
+            "label": "背景",
+            "text": "分析背景上，据现有报道的叙述，孙天祥接手文心四个月后，没有先拿出一个旗舰模型，而是先推进Flash档位、研发自动化，并开始往RSI方向下注。报道把文心5.5 Flash Base、ERNIE Evolve和文心5.5 Flash Preview视为一组连续动作；但可引用证据对RSI及ERNIE Evolve的技术细节展开有限。"
+          },
+          {
+            "label": "影响",
+            "text": "潜在影响主要在开发者生态和Agent应用侧。若文心5.5 Flash Preview后续定版并去掉Preview尾缀，Base、Preview与ERNIE Evolve可能形成从模型开源、自动优化到产品体验的衔接路径。现阶段更值得观察的是实际基准复现、调用成本、限免期限、稳定性和长上下文任务表现；现有证据不足以判断最终竞争力。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "4、快乐虾米上线iOS与安卓平台",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，阿里旗下AI音乐创作平台快乐虾米（HappyShrimp）已上线iOS与安卓平台，登陆苹果App Store及各大安卓应用商店，App Store版本已更新至0.2.14。该产品由阿里ATH（TokenHub）事业群研发，2026年8月17日以PC网页端Beta形式首发；报道将其列为阿里“Happy系列”AI模型的第三位成员，前两位分别是视频生成模型HappyHorse和三维交互视频模型HappyOyster。\n据现有报道，快乐虾米主打端到端整曲一体化生成。用户可用自然语言描述情绪、故事或风格，完成歌词、作曲、编曲与人声演唱，也可以自备歌词。平台设有“智能歌词”与“纯音乐”两种模式，后者输出无人声器乐BGM，适用于短视频、播客及纪录片配乐。“音乐配方”可保存并复用生成参数；“做同款”可参考上传音频的曲风与配器方向，但不复刻原歌手音色。\n据现有报道，快乐虾米国内标准会员约30元/月，可生成150首歌曲，折合每首约0.2元；海外会员起售价14.90美元/月，积分包起售价9.90美元。在版权背景方面，虾米音乐已于2021年2月停止服务；快乐虾米则在首发当日与太合音乐集团达成战略合作，将版权方纳入生态，现有报道将这种版权布局与旧虾米作出区分。"
+          },
+          {
+            "label": "背景",
+            "text": "背景脉络：据现有报道，虾米音乐于2021年2月停止服务，快乐虾米则由阿里ATH（TokenHub）事业群研发，并被列为“Happy系列”第三位成员。现有材料将快乐虾米作为该系列的新产品介绍，同时强调其与旧虾米在版权布局上的区别。"
+          },
+          {
+            "label": "影响",
+            "text": "影响分析：移动端及两种生成模式可能扩大个人创作者、内容运营和企业素材团队的试用范围，会员与积分定价也为用户选择提供了商业化参照。版权方参与可能为商业使用场景补充内容来源，但现有证据不足以判断授权覆盖范围、生成质量、用户留存、付费转化及其对现有音乐工具的实际替代影响。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      }
+    ],
+    "frontier": [],
+    "raw_paragraphs": [],
+    "toc": [
+      {
+        "level": 3,
+        "text": "1、Google发布Gemini 4 Hydrogen模型"
+      },
+      {
+        "level": 3,
+        "text": "2、微软称将自行承担AI数据中心电力成本"
+      },
+      {
+        "level": 3,
+        "text": "3、百度发布文心5.5 Flash进展，孙天祥亮相"
+      },
+      {
+        "level": 3,
+        "text": "4、快乐虾米上线iOS与安卓平台"
+      }
+    ],
+    "char_count": 3938,
+    "reading_minutes": 10,
+    "editor_verdict": "四条内容的事实和数字均能在证据正文中找到对应，未见明显数值冲突。主要问题是来源链普遍不完整、发布日期缺年份，事件1“不确定性”混入英伟达辞职等无关信息；性能、安全及SOTA多为厂商或单一来源口径，应明确归因、提示独立验证，并减少重复的“据现有报道”。\n\nGoogle发布Gemini 4 Hydrogen模型：核心事实与数字均和证据一致，百万Token、四档思考、API定价及基准提升未见错配。需清理“不确定性”中的英伟达、金摇杆和ANR等无关残句，并补唯一来源；发布年份和截断处的可用范围仍待核。\n\n微软称将自行承担AI数据中心电力成本：金额、项目主体及 2028/2031 时间目标均与转引材料一致，标题未明显超出原报道承诺。主要缺口是“今年”没有年份、成本承担机制未披露，且仅有 IT之家转引彭博社，宜补原始链接并保持二手来源标识。\n\n百度发布文心5.5 Flash进展，孙天祥亮相：时间线、2800 亿总参数、140 亿激活参数、100 万 Token 上下文和每秒 200 Token 以上均与证据一致，SOTA 也已注明为百度口径。标题宜更具体，并补原文链接、发布年份及独立复现信息。\n\n快乐虾米上线iOS与安卓平台：移动端上线、0.2.14 版本、2026 年 8 月 17 日网页首发、会员与积分价格均与证据吻合。版权合作只写成生态布局，措辞尚属克制；需补唯一来源，并继续明确授权范围、地区和积分规则尚不清楚。",
+    "source_file": "data/editorial/2026-11-14/report.json"
+  },
+  "report_review": {
+    "overall": "四条内容的事实和数字均能在证据正文中找到对应，未见明显数值冲突。主要问题是来源链普遍不完整、发布日期缺年份，事件1“不确定性”混入英伟达辞职等无关信息；性能、安全及SOTA多为厂商或单一来源口径，应明确归因、提示独立验证，并减少重复的“据现有报道”。",
+    "items": [
+      {
+        "event_id": "4a6bc5a95636bdf264973a26b8e3e3e18f5fd0653996d4ffa7b29664ed53c419",
+        "title": "Google发布Gemini 4 Hydrogen模型",
+        "verdict": "需修正",
+        "comment": "核心事实与数字均和证据一致，百万Token、四档思考、API定价及基准提升未见错配。需清理“不确定性”中的英伟达、金摇杆和ANR等无关残句，并补唯一来源；发布年份和截断处的可用范围仍待核。",
+        "corrections": [
+          "删除面向读者文案中关于“英伟达 CEO 黄仁勋宣布辞职”“2026 年金摇杆奖”和 ANR 的无关残句；这些内容来自上游条目的标题或摘要，与 Gemini 4 Hydrogen 无关。",
+          "sources 为空：应回查并补录唯一来源及原文链接；链接暂时无法取得时，标注“链接待补”，不要自行杜撰。",
+          "证据仅写“11 月 12 日”，未给发布年份；建议在日期字段标注“年份待核”，不要自行推定。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "bebef704c427926caded397257346e876af64258151d104a633d465f9656cc4a",
+        "title": "微软称将自行承担AI数据中心电力成本",
+        "verdict": "补充",
+        "comment": "金额、项目主体及 2028/2031 时间目标均与转引材料一致，标题未明显超出原报道承诺。主要缺口是“今年”没有年份、成本承担机制未披露，且仅有 IT之家转引彭博社，宜补原始链接并保持二手来源标识。",
+        "corrections": [
+          "补核“今年”对应的年份；现有证据未给出年份，也未说明 1,170 亿美元支出的时间分布。",
+          "补录彭博社原文链接；当前 sources.link 为空，并应继续保留“IT之家转引彭博社”的来源说明。",
+          "不要把 1,170 亿美元写成 Project Kilby 的单项预算；证据仅将其列为微软当年建设相关计算能力的整体投入计划。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "111b9a7ad0b019a32c6277590ccaa02e22fc137bce855a36546b538cee83495f",
+        "title": "百度发布文心5.5 Flash进展，孙天祥亮相",
+        "verdict": "补充",
+        "comment": "时间线、2800 亿总参数、140 亿激活参数、100 万 Token 上下文和每秒 200 Token 以上均与证据一致，SOTA 也已注明为百度口径。标题宜更具体，并补原文链接、发布年份及独立复现信息。",
+        "corrections": [
+          "标题可改为“百度开源文心 5.5 Flash Base、公开 ERNIE Evolve 并上线 Preview，孙天祥公开亮相”，以免“发布进展”含义过泛。",
+          "补录 Founder Park 原文链接；当前 sources.link 为空。",
+          "证据只写“11 月”和“今年 7 月”，未给具体年份；应补核年份后再确定相关时间关系。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "d4f9eab9e5fc45d19db4c41f87f2517b4973b1adfd9b32a05473da3bc642e6ae",
+        "title": "快乐虾米上线iOS与安卓平台",
+        "verdict": "补充",
+        "comment": "移动端上线、0.2.14 版本、2026 年 8 月 17 日网页首发、会员与积分价格均与证据吻合。版权合作只写成生态布局，措辞尚属克制；需补唯一来源，并继续明确授权范围、地区和积分规则尚不清楚。",
+        "corrections": [
+          "sources 为空：应补录唯一报道来源及原文链接；证据未提供来源名称时先标注“来源待补”，不要自行填写。",
+          "后续不要把与太合音乐集团的战略合作直接等同于完整版权授权；现有证据只支持“将版权方纳入生态”，授权范围、期限和结算方式均未披露。"
+        ],
+        "highlights": []
+      }
+    ],
+    "risks": [
+      "四条均为单一来源，事件2还是 IT之家对彭博社的转引；转引链条不能视为多处独立验证。",
+      "事件1的部分性能与安全数字来自 Google 自测，事件3的 SOTA 来自百度公布数据，测试设置、样本与可复现性仍待核实。",
+      "事件1、2、3均未给出完整发布年份，事件1证据正文还被截断，涉及开放范围和上线时间的内容需回查原文。",
+      "Project Kilby 的 2028 年启动、2031 年全面投运仍是雪佛龙方面的目标，且项目受当地暂停审批政策影响，不宜写成确定投运时间。",
+      "快乐虾米的移动端具体上线日期、海外可用地区、积分消耗规则及版权合作机制均未披露，商业化与版权风险尚不能据此排除。"
+    ]
+  },
+  "podcast_review": {
+    "overall": "本期信息密度高，Google、百度、微软与阿里的主要事实均有材料支撑，且多处区分官方宣称、第三方评测与编辑判断。Google 段落的成本、评测和稳定性提醒较扎实；不足是“效率落地”同时容纳模型、基础设施和音乐产品，主线稍散，RSI 等概念也应补足定义或出处。",
+    "show_notes": "本期从模型竞速、开发者落地与扩张成本三条线，观察 AI 竞争如何从榜单延伸到真实工作流。Google Gemini 4 Hydrogen 重点讨论百万 Token 上下文、思考档位、API 定价、Antigravity 智能调度及官方安全数据；百度文心 5.5 Flash Preview 聚焦 Flash 档位、研发自动化与高频调用价值；微软 Project Kilby 则把数据中心电力和社区成本摆上台面。节目另以快乐虾米移动端上线为产品快讯，结尾提醒：速度之外，稳定性、账单、审批与版权合作更值得持续观察。",
+    "chapters": [
+      {
+        "title": "模型竞速",
+        "intro": "Google 为主线，拆解 Hydrogen 的长上下文、思考档位、定价与编程表现，并对照 Antigravity 编排和安全评测。重点不是争夺“更强”，而是观察速度、成本与失败重试能否在日常任务中可控。",
+        "highlights": [
+          "百万 Token 上下文与每百万 Token 1.50 美元输入、7.50 美元输出定价，抬高开发者评估重点。",
+          "Antigravity 自动路由被描述为省去手工选模型，配额与速度数据来自谷歌公布结果。",
+          "第三方指数可用于判断是否值得试用，官方安全数据仍需独立验证。"
+        ]
+      },
+      {
+        "title": "效率落地",
+        "intro": "章节转向百度、微软和阿里：百度以 Flash Preview 争夺高频调用，ERNIE Evolve 指向研发自动化；微软讨论数据中心供电与地方审批；快乐虾米补充 AI 音乐走向移动端的商业化进展。",
+        "highlights": [
+          "文心 5.5 Flash Preview 的 MoE 参数、百万 Token 上下文与每秒 200 Token 以上生成速度。",
+          "微软承诺自行承担 AI 数据中心增量电力成本，但 Project Kilby 仍受暂停审批影响。",
+          "快乐虾米以整曲生成、纯音乐模式和版权合作补足消费级 AI 案例。"
+        ]
+      },
+      {
+        "title": "收尾",
+        "intro": "结尾将四条新闻收束到同一判断：模型能力只是起点，长期采用取决于日常任务的稳定性，以及成本、可靠性和社区接受度能否兑现。后续追踪 Orchestrator 开放范围、Preview 去尾缀与 Kilby 审批。",
+        "highlights": [
+          "谷歌、百度、微软分别对应产品打包、开发者调用与基础设施责任。",
+          "后续观察点落到开放范围、版本落地、审批进展和版权合作。"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "event_id": "4a6bc5a95636bdf264973a26b8e3e3e18f5fd0653996d4ffa7b29664ed53c419",
+        "title": "Google发布Gemini 4 Hydrogen模型",
+        "verdict": "补充",
+        "comment": "数字与日报要点基本一致，也明确区分官方安全数据和编辑判断。需进一步确认 Orchestrator 目前先向 AI Ultra 用户开放的范围，避免把模型触达与编排功能开放混为一谈。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "111b9a7ad0b019a32c6277590ccaa02e22fc137bce855a36546b538cee83495f",
+        "title": "百度发布文心5.5 Flash进展，孙天祥亮相",
+        "verdict": "补充",
+        "comment": "时间线、MoE 参数、上下文和速度均与材料一致，也把 Flash 的高频调用价值讲清。需补充 RSI 的全称、定义和出处；现有要点只确认 ERNIE Evolve 用于自动优化模型研发。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "bebef704c427926caded397257346e876af64258151d104a633d465f9656cc4b",
+        "title": "微软称将自行承担AI数据中心电力成本",
+        "verdict": "准确",
+        "comment": "引语、投入金额、合作方及 2028 年、2031 年时间表均有材料支撑，也清楚指出暂停审批这一落地阻力。“自行承担费用”目前仍是企业承诺，实际效果取决于供电结构和审批结果。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "d4f9eab9e5fc45d19db4c41f87f2517b4973b1adfd9b32a05473da3bc642e6ae",
+        "title": "快乐虾米上线iOS与安卓平台",
+        "verdict": "准确",
+        "comment": "移动端上线、整曲生成、定价及与太合音乐集团的合作均与要点相符。“做同款”不复刻原歌手音色的边界表述清楚；可继续观察版权合作能否形成持续机制。",
+        "corrections": [],
+        "highlights": []
+      }
+    ],
+    "fact_check_notes": [
+      "“Orchestrator 目前先向 AI Ultra 用户开放”及“免费用户通过自动模型选择获得 Hydrogen 能力”的具体机制未见于所给日报要点，需核对 Google 公告或产品说明，并区分模型可用范围与编排功能开放范围。",
+      "“RSI”在文稿中未定义。所给材料仅确认 ERNIE Evolve 用于自动优化模型研发；若将其进一步解释为“模型继续改进自己”，需补充原始定义或可靠出处。"
+    ]
+  },
+  "sources": {
+    "total_all": 8,
+    "total_main": 1,
+    "shown": 8,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 8
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "少数派 AI",
+        "group": "科技媒体",
+        "source_name": "少数派 AI",
+        "category": "",
+        "title": "派早报:英伟达 CEO 黄仁勋宣布辞职等",
+        "summary": "2026 年金摇杆奖获奖名单公布,Apex Compute 推出跨平台 AI 帧生成技术 ANR 等。 查看全文",
+        "link": "https://sspai.com/post/118966",
+        "published_at": "2026-11-13T00:48:17+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "IT之家 AI",
+        "group": "科技媒体",
+        "source_name": "IT之家 AI",
+        "category": "",
+        "title": "不靠补贴、不增加他人成本:微软承诺其 AI 扩张电费将自己买单",
+        "summary": "感谢IT之家网友 咩咩洋 的线索投递! IT之家 11 月 13 日消息,彭博社昨日(11 月 12 日)发布博文 ,报道称微软将寻求在不依赖政府补贴、不增加其他电力用户成本的情况下,为旗下 AI 数据中心供电。 昨日在休斯顿举行的彭博新能源财经会议上,微软云运营与创新总裁诺埃尔 · 沃尔什(Noelle Walsh)表示:“我们不希望其他客户为我们的增长买单。我们会自行承担费用。” 报道称,公司计划今年投入 1,170 亿美元 (IT之家注:现汇率约合 7,821.53 亿",
+        "link": "https://www.ithome.com/1/026/533.htm",
+        "published_at": "2026-11-13T02:37:09+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "智源 BAAI Hub",
+        "group": "科技媒体",
+        "source_name": "智源 BAAI Hub",
+        "category": "",
+        "title": "孙天祥接手四个月,文心大模型有了一些新动作:Flash 模型先上桌,再下注 RSI",
+        "summary": "11 月 12 日的百度世界大会上,孙天祥第一次以百度基础模型研发部负责人的身份公开亮相。 他上台介绍了文心 5.5 Flash Preview,先拿模型名字开了个玩笑:「这个模型名还是有点长,念起来稍微有点麻烦,我们正在努力,尽快把 Preview 的尾缀去掉。」 这还不算最终版本,模型仍在打磨。过去一周,百度已经连续放出了几项进展。11 月 5 日,开源文心 5.5 Flash Base。11 月 9 日,公开用于自动优化模型研发的 ERNIE Evolve。11 月 1",
+        "link": "https://hub.baai.ac.cn/view/59646",
+        "published_at": "2026-11-13T18:20:00+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "AIBase 新闻",
+        "group": "科技媒体",
+        "source_name": "AIBase 新闻",
+        "category": "",
+        "title": "\"Happy系列\"再添一员,阿里以端到端整曲生成切入AI音乐赛道",
+        "summary": "阿里巴巴旗下AI音乐创作平台快乐虾米(HappyShrimp)正式上线iOS与安卓平台,登陆苹果App Store及各大安卓应用商店,App Store版本已更新至0.2.14。 该产品由阿里ATH(TokenHub)事业群研发,2026年8月17日以PC网页端Beta形式首发,是阿里\"Happy系列\"AI模型的第三位成员,前两位分别为视频生成模型HappyHorse和三维交互视频模型HappyOyster。 产品主打端到端整曲一体化生成,用户以自然语言描述情绪、故事或风格,",
+        "link": "https://www.aibase.com/zh/news/32309",
+        "published_at": "2026-11-13T06:28:29+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "AIBase 新闻",
+        "group": "科技媒体",
+        "source_name": "AIBase 新闻",
+        "category": "",
+        "title": "比高端型号还猛却更便宜,Google 用\"Gemini 4 Hydrogen\"上演反向内卷",
+        "summary": "Google 刚推出 Gemini4Hydrogen(氢),一款主打速度与执行效率的新模型,结果一登场就尴尬了自家的 Argon:第三方智能指数榜上,Hydrogen 拿下51分、Xhigh 档冲到54分,压过定位更高的 Argon 的50分;默认档速度达上代 Flash 的2.5倍、胡编乱造减超80%,API 价格却比 Argon 更低。 编排器替你自动换模型 Google 没让两块招牌各自为战。新推的 Antigravity Orchestrator 能在同一任务里按进展",
+        "link": "https://www.aibase.com/zh/news/32318",
+        "published_at": "2026-11-13T08:38:40+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "快科技（AI/智能）",
+        "group": "科技媒体",
+        "source_name": "快科技（AI/智能）",
+        "category": "",
+        "title": "算力巅峰!7536块GPU模拟出宇宙第一缕光:重现16亿光年宇宙演化",
+        "summary": "快科技11月13日消息,麻省理工学院(MIT)联合马克斯·普朗克天体物理研究所近日发布了名为“Lumina”的超大规模宇宙模拟项目。 该项目成功利用顶级超级计算机的算力,重构了从宇宙“黑暗时代”到其后20亿年间的演化过程,涵盖范围达500百万秒差距(约16亿光年)。 此前高分辨率模拟受限于算力,往往只能在极小的体积内进行局部观察。据研究团队介绍,Lumina模拟的体积比目前世界上最好的模拟还要大出100倍。 这意味着科学家可以同时观察微观层面的星系诞生,以及宏观层面的大尺度宇",
+        "link": "https://m.mydrivers.com/newsview/1165649.html",
+        "published_at": "2026-11-13T09:21:00+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "爱范儿",
+        "group": "科技媒体",
+        "source_name": "爱范儿",
+        "category": "",
+        "title": "AI 时代,公司的「新厂房」长什么样?",
+        "summary": "真正决定公司未来十年身位的,是谁先动手重建那座名叫「智能组织」的新厂房。 #欢迎关注爱范儿官方微信公众号:爱范儿(微信号:ifanr),更多精彩内容第一时间为您奉上。",
+        "link": "https://www.ifanr.com/1689182?utm_source=rss&utm_medium=rss&utm_campaign=",
+        "published_at": "2026-11-13T06:34:19+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "新智元（公众号）",
+        "group": "科技媒体",
+        "source_name": "新智元（公众号）",
+        "category": "",
+        "title": "250名三甲医生输给中国AI!引发中美医疗权威热议",
+        "summary": "ASI启示录 2026-11-12 12:34 北京 新智元报道 上个月,微软在《科学》杂志上甩出一篇论文:自家AI诊断系统诊断正确率83%,对照组的全科医生只有36%。 微软AI CEO苏莱曼直言: 这是通往「医疗超级智能」的一步。 热闹还没散,未来医生联合国内顶级三甲医院胸外科开展的一项多中心研究,也拿AI和医生比了一场,数字比微软的更亮眼。 考卷是 顶级三甲医院 胸外科拿出的40例真实疑难肺癌病例,从未公开过;20位顶级专家在看到任何答卷之前,先给每道题写好评分规则,答",
+        "link": "https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&mid=2652742394&idx=1&sn=578bf5c6b8b6e59b99b01953e0c3f53a",
+        "published_at": "2026-11-12T04:34:00+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": false,
+    "status": "unavailable",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": null,
+    "runner_ups": [],
+    "yesterday": null,
+    "candidates": {
+      "total": 0,
+      "excluded_recent": 0,
+      "fresh": null,
+      "semantics": "unknown",
+      "detail_available": false,
+      "preview": null
+    },
+    "message": "该日期暂无项目雷达"
+  },
+  "quality": {
+    "mode": "normal",
+    "chars": 3547,
+    "turns": 29,
+    "host_a_chars": 1660,
+    "host_b_chars": 1684,
+    "host_char_ratio": 0.496,
+    "chapters": 3
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-11-14.json",
+      "report": "data/reports/daily_report_2026-11-14.md",
+      "radar": "data/gh_radar/radar_2026-11-14.json",
+      "playlist": "site/episodes/2026-11-14/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": [
+      "radar_candidate_detail_unavailable"
+    ]
+  }
+}
