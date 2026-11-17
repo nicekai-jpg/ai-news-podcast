@@ -251,6 +251,8 @@ jobs:
             data/raw/
             data/ocean/${{ steps.episode.outputs.id }}/
             data/kg/${{ steps.episode.outputs.id }}/
+            data/facts/
+            data/kg_debug/
             data/selection/
             data/editorial/
             data/briefs/brief_${{ steps.episode.outputs.id }}.json
