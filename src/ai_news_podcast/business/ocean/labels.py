@@ -419,6 +419,15 @@ def _resolve_overlaps(matches: list[_AliasMatch]) -> list[_AliasMatch]:
     return selected
 
 
+def match_aliases(text_lower: str, index: _AliasIndex, kind: str) -> list[_AliasMatch]:
+    """公开的多模别名匹配入口（供知识图谱等下游模块复用）。
+
+    与内部 `_match_aliases` 行为一致：ASCII 走词边界正则、CJK 走首字索引，
+    重叠命中保留更长的那个。
+    """
+    return _match_aliases(text_lower, index, kind)
+
+
 def _contains_keyword(text_lower: str, keyword: str) -> bool:
     if not keyword:
         return False

@@ -252,6 +252,19 @@ def test_run_v3_pipeline_end_to_end(tmp_path: Path, monkeypatch: Any) -> None:
 
     assert result.raw_path.exists()
     assert result.events_path.exists()
+
+    facts_path = tmp_path / "data" / "facts" / "facts-2026-11-09.jsonl"
+    manifest_path = tmp_path / "data" / "facts" / "manifest-2026-11-09.json"
+    assert facts_path.exists(), "Stage 2.5 应写出事实卡"
+    assert manifest_path.exists(), "Stage 2.5 应写出 manifest"
+    facts_rows = [
+        json.loads(line) for line in facts_path.read_text(encoding="utf-8").splitlines() if line
+    ]
+    assert facts_rows, "合成数据应至少产出一张事实卡"
+    assert all(row["evidence"]["sentence"] for row in facts_rows)
+    facts_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    assert facts_manifest["alert"] == "", "正常路径不应有告警"
+    assert facts_manifest["stats"]["events"] > 0
     assert result.shortlist_path.exists()
     assert result.commentary_path.exists()
     assert result.report_path is not None and result.report_path.exists()

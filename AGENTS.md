@@ -138,13 +138,26 @@ Stage CLIs (console scripts in pyproject):
   - `ocean/`：四层去重、事件聚类、连续性、多维标注（`config/nlp/*.yaml` 词典）、证据分；
   - `recommend/`：召回→粗排（含淘汰原因）→精排（规则 0.6 + LLM rubric 0.4，只读事实标签，
     不读 lifecycle/evidence_tier/evidence_score）→重排（MMR/去重/时效）→ top 8；
+  - `kg/`：**Stage 2.5 零 LLM 事实层**（2026-11-16 实装，取代 V1 模板三元组）：
+    noise（选句/噪声/语言/文章主体）→ clause（分句）→ dep（spaCy 依存，中英双模型）→
+    fill（关系+槽位）→ grade（A/B/C）→ store（去重/落盘）；产物 `data/facts/facts-{date}.jsonl`
+    + `manifest-{date}.json`，**进 git 长期保留**；C 样本写 `data/kg_debug/c-{date}.jsonl`（只进 artifact）。
+    配置：`config/nlp/event_schemas.yaml`（21 类）、`noise.yaml`、`negation.yaml`。
+    CLI：`uv run python scripts/kg_facts.py build|backfill|report|eval|validate|query|prune`。
+    依赖 `kg` extra + spaCy 模型（zh_core_web_sm / en_core_web_sm，CI/GHA 用 spacy download 装）。
+    B 档扩展通道（只进 B、不进 A）：主语继承（上一解析主语/标题或导语主体）、名词性事实
+    （售价/估值/IPO/漏洞等无动词句）、同谓词多宾语拆分。A 档还有守卫（对象质量/人事角色/
+    合作方实体/金额校验），命中降 B 不丢卡。B 体积大时可 `prune --keep-b-days 90` 轮转。
+    手动演练期用 `KG_FACTS_ENABLED` 控制：GHA 定时任务默认 false 跳过、`workflow_dispatch` 才 true；
+    一周验证通过后把 env 改成常开。
+    旧 `business/kg/service.py:build_kg()` 与 `data/kg/{date}/kg.json` 只在 `stage2_5.debug_kg=true` 时产出。
   - `editorial/`：S4 日报正文（事实/观点分离、evidence_ids、客观性闸门）→ S5 日报点评（对日报）；
     S6 播客文稿（事实底稿来自 S2 全文证据，3000–3600 字、3–4 章、`[CHAPTER]`）→ S7 播客点评
     （对文稿，产出 show notes/章节导语）；
   - `pipeline/v3_runner_service.py`：S1–S7 编排、LLM 按 Stage 选模型（`LLMConfig.stage_models`）、
     覆盖账本写入、`daily_report_{date}.md` 渲染。
 - **产物路径**：`data/raw/raw-{date}.json.gz`、`data/ocean/{date}/{events,items,continuity,manifest}.json`、
-  `data/selection/{date}/shortlist.json`、`data/editorial/{date}/{report.json,daily_report_{date}.md,report_review.json,podcast_review.json}`、
+  `data/facts/{facts-{date}.jsonl,manifest-{date}.json}`（Stage 2.5 事实层，进 git）、`data/selection/{date}/shortlist.json`、`data/editorial/{date}/{report.json,daily_report_{date}.md,report_review.json,podcast_review.json}`、
   `site/episodes/{date}.txt`。全文只走 artifact，不进 git。
 - **配置**：`config/pipeline_v3.yaml`（路径/保留期/各 Stage 模型）、`config/sources_v3.yaml`、
   `config/ocean_v3.yaml` + `config/nlp/`、`config/recommend_v3.yaml`、`config/editorial_v3.yaml`。
@@ -154,7 +167,8 @@ Stage CLIs (console scripts in pyproject):
   **评测**：`business/eval/recommend_eval.py` + `scripts/eval_recommend.py`（推荐分阶段指标，见 `docs/evaluation_system.md`、`docs/recommend_evaluation.md`）；
   **测试**：`tests/test_contracts.py`、`test_coverage_ledger.py`、`test_llm_config.py`、
   `test_collect_*`、`test_ocean_*`、`test_recommend_*`、`test_editorial_*`、
-  `test_v3_runner_service.py`、`test_v3_pipeline_integration.py`、`test_v3_cli_controller.py`。
+  `test_v3_runner_service.py`、`test_v3_pipeline_integration.py`、`test_v3_cli_controller.py`、
+  `test_kg_text.py`、`test_kg_parse.py`、`test_kg_fill.py`、`test_kg_store.py`、`test_kg_facts_integration.py`。
 - **已知取舍**：C3 路由已按 2026-11-09 GHA 实跑结果收敛（慢/失败路由改原生 RSS 或禁用，见
   `sources_v3.yaml` 头部）；C4 的智谱/MiniMax/字节 Seed/商汤/工信部/网信办走“锚点+邻近日期”
   启发式，站点改版时在 `sources_v3.yaml` 给该源加 `selectors`；Stage 2 已产出 `ai_relevance`（core/adjacent/none/unknown + 证据词）与 `primary_domain`（ai_core/ai_infra/other/unknown，汽车/金融/消费/社会等归 other）、`source_categories`（official/news/research/community）与 `best_source_tier`（1=一手/研究，2=媒体，3=社区/聚合），推荐召回把 AI 相关性作为**准入前提**（标题必须带 AI 信号；一手/研究来源可用标签等级，unknown 回退标题关键词），粗排同款门槛兜底；重排预留 `max_per_topic/max_per_category` 配额（默认 0=关闭，评测后再开）；精排 LLM rubric 支持 `fine.llm_samples` 多次采样取中位数（默认 1，评测后再开）；全部 Stage 已切换 MiniMax-M3.1-Flash（2026-11-10 用户决定；成本约 M3 五折价的 50%，

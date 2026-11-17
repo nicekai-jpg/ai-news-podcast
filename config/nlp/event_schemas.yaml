@@ -1,0 +1,151 @@
+version: 1
+# 事实层事件 schema：21 类。filler 指向 fill.py 里的填充器实现。
+# subject/object 是允许的实体类型；required 是必填槽；optional 是可填槽。
+schemas:
+  release:
+    label: 发布
+    subject: [company]
+    object: [product]
+    required: [object]
+    optional: [time]
+    filler: generic
+  open_source:
+    label: 开源
+    subject: [company]
+    object: [product]
+    required: [object]
+    optional: [license]
+    filler: generic
+  update:
+    label: 更新
+    subject: [company]
+    object: [product]
+    required: [object]
+    optional: [version]
+    filler: generic
+  pricing:
+    label: 价格
+    subject: [company]
+    object: [product]
+    required: [object]
+    optional: [amount]
+    filler: pricing
+  supply:
+    label: 量产交付
+    subject: [company]
+    object: [product]
+    required: [object]
+    optional: [amount, time]
+    filler: supply
+  deploy:
+    label: 部署接入
+    subject: [company]
+    object: [product]
+    required: [object]
+    optional: [peer]
+    filler: generic
+  support:
+    label: 支持
+    subject: [company]
+    object: [product]
+    required: [object]
+    optional: [scope]
+    filler: generic
+  funding:
+    label: 融资上市
+    subject: [company]
+    object: [other]
+    required: [object]
+    optional: [amount, investor]
+    filler: funding
+  acquisition:
+    label: 收购
+    subject: [company]
+    object: [company, org]
+    required: [object]
+    optional: [amount]
+    filler: acquisition
+  partnership:
+    label: 合作
+    subject: [company]
+    object: [company, org]
+    required: [object]
+    optional: [project]
+    filler: partnership
+  benchmark:
+    label: 评测对比
+    subject: [company]
+    object: [product]
+    required: [object]
+    optional: [score]
+    filler: generic
+  personnel:
+    label: 人事
+    subject: [person]
+    object: [other]
+    required: [person]
+    optional: [role, company]
+    filler: personnel
+  layoff:
+    label: 裁员
+    subject: [company]
+    object: [other]
+    required: [object]
+    optional: [amount]
+    filler: layoff
+  regulation:
+    label: 监管
+    subject: [org]
+    object: [company]
+    required: [object]
+    optional: [measure]
+    filler: generic
+  legal:
+    label: 诉讼
+    subject: [company]
+    object: [company]
+    required: [object]
+    optional: [case]
+    filler: generic
+  incident:
+    label: 事故风险
+    subject: [company]
+    object: [other]
+    required: [object]
+    optional: [location]
+    filler: generic
+  research:
+    label: 研究
+    subject: [org]
+    object: [product]
+    required: [object]
+    optional: [data]
+    filler: generic
+  event:
+    label: 活动
+    subject: [company]
+    object: [other]
+    required: [object]
+    optional: [location]
+    filler: generic
+  info:
+    label: 信息披露
+    subject: [company]
+    object: [other]
+    required: [object]
+    optional: [time]
+    filler: generic
+  award:
+    label: 获奖认证
+    subject: [company]
+    object: [product]
+    required: [object]
+    optional: [time]
+    filler: generic
+  other:
+    label: 其他
+    subject: []
+    object: []
+    required: []
+    optional: []
+    filler: none

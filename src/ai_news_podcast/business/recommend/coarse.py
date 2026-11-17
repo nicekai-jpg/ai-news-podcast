@@ -180,6 +180,12 @@ def _content_rejection(event: Event, settings: CoarseSettings) -> CoarseEliminat
             REJECT_SINGLE_SOURCE_RUMOR,
             "独立来源不足且证据分级为传闻",
         )
+    if _is_uncorroborated_major_claim(event, settings):
+        return CoarseElimination(
+            event.event_id,
+            REJECT_SINGLE_SOURCE_RUMOR,
+            "重大事项只有单一来源，缺少独立佐证",
+        )
     return None
 
 
@@ -228,6 +234,17 @@ def _matched_junk(event: Event, settings: CoarseSettings) -> str:
     text = f"{event.representative_title} {event.summary}"
     matches = matched_keywords(text, settings.junk_keywords)
     return "、".join(matches)
+
+
+def _is_uncorroborated_major_claim(event: Event, settings: CoarseSettings) -> bool:
+    """高管变动/融资/收购/上市/诉讼等重大事项，单一媒体来源不入围。"""
+    actions = {str(action) for action in event.labels.actions}
+    major = bool(actions & set(settings.major_claim_actions))
+    if not major:
+        return False
+    independent = int(getattr(event, "independent_sources", 0) or 0)
+    tier = int(getattr(event, "best_source_tier", 3) or 3)
+    return independent < settings.major_claim_min_sources and tier != 1
 
 
 def _is_single_source_rumor(event: Event, settings: CoarseSettings) -> bool:
