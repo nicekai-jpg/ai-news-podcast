@@ -158,6 +158,11 @@ def _clamp(value: Any, default: int, low: int, high: int) -> int:
     return max(low, min(high, number))
 
 
+def _env_choice(name: str) -> str | None:
+    raw = os.environ.get(name, "").strip().lower()
+    return raw or None
+
+
 def _env_enabled() -> bool | None:
     raw = os.environ.get("KG_FACTS_ENABLED", "").strip().lower()
     if raw in {"1", "true", "yes", "on"}:
@@ -174,6 +179,12 @@ def load_facts_config(config_root: Path) -> FactsConfig:
     override = _env_enabled()
     if override is not None:
         enabled = override
+    tokenizer = str(_env_choice("KG_FACTS_TOKENIZER") or settings.get("tokenizer") or "spacy")
+    parser_name = str(_env_choice("KG_FACTS_PARSER") or settings.get("parser") or "spacy")
+    if tokenizer not in {"spacy", "custom"}:
+        tokenizer = "spacy"
+    if parser_name not in {"spacy", "ltp"}:
+        parser_name = "spacy"
     return FactsConfig(
         enabled=enabled,
         max_sentences_guard=_clamp(settings.get("max_sentences_guard"), 500, 50, 1000),
@@ -181,7 +192,19 @@ def load_facts_config(config_root: Path) -> FactsConfig:
         n_process=_clamp(settings.get("n_process"), 2, 1, 4),
         max_seconds=_clamp(settings.get("max_seconds"), 600, 60, 1800),
         debug_kg=bool(settings.get("debug_kg", False)),
+        tokenizer=tokenizer,
+        parser=parser_name,
     )
+
+
+def build_parser(cfg: FactsConfig, lexicon: KGlexicon) -> Any:
+    """按配置构建解析器：spaCy（可选自定义分词）或 LTP（英文回退 spaCy）。"""
+    base = DepParser.load(lexicon, custom_tokenizer=cfg.tokenizer == "custom")
+    if cfg.parser == "ltp":
+        from ai_news_podcast.business.kg.ltp_parser import LTPParser
+
+        return LTPParser(lexicon, fallback=base)
+    return base
 
 
 def rules_version(config_root: Path) -> str:
@@ -208,6 +231,7 @@ def build_facts_artifact(
     root = Path(config_root)
     cfg = config or load_facts_config(root)
     lex = lexicon or KGlexicon.load(root / "nlp")
+    parser = parser or build_parser(cfg, lex)
     schema_path = root / "nlp/event_schemas.yaml"
     rules_path = root / "nlp/negation.yaml"
     return build_facts(
@@ -244,7 +268,7 @@ def run_facts_stage(
     started = time.monotonic()
     try:
         lex = lexicon or KGlexicon.load(root / "nlp")
-        dep_parser = parser or DepParser.load(lex)
+        dep_parser = parser or build_parser(cfg, lex)
         if dep_parser is None:
             alert = "parser_missing"
             logger.warning("Stage 2.5 事实层：解析模型不可用，跳过")
@@ -314,6 +338,7 @@ def run_facts_stage(
 __all__ = [
     "build_facts_artifact",
     "build_kg_artifact",
+    "build_parser",
     "load_facts_config",
     "rules_version",
     "run_facts_stage",

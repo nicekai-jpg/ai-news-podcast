@@ -271,6 +271,8 @@ class FactsConfig:
     n_process: int = 2
     max_seconds: int = 600
     debug_kg: bool = False
+    tokenizer: str = "spacy"  # spacy | custom
+    parser: str = "spacy"  # spacy | ltp
     # 固定值（写死，不开放配置）
     max_sentence_chars: int = 600
     max_clause_chars: int = 120

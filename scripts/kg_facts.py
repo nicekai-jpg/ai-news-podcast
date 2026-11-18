@@ -32,6 +32,7 @@ from ai_news_podcast.business.kg.store import (  # noqa: E402
     read_all_facts,
 )
 from ai_news_podcast.business.pipeline.kg_stage_service import (  # noqa: E402
+    build_parser,
     load_facts_config,
     run_facts_stage,
 )
@@ -49,6 +50,15 @@ def _load_day(date_str: str, data_dir: Path) -> tuple[list[dict], list[Event]]:
     return items, events
 
 
+def _config_with_overrides(args: argparse.Namespace):
+    from dataclasses import replace
+
+    cfg = load_facts_config(Path(args.config_dir))
+    parser_name = getattr(args, "parser", "") or cfg.parser
+    tokenizer = getattr(args, "tokenizer", "") or cfg.tokenizer
+    return replace(cfg, parser=parser_name, tokenizer=tokenizer)
+
+
 def cmd_build(args: argparse.Namespace) -> int:
     data_dir = Path(args.data_dir)
     items, events = _load_day(args.date, data_dir)
@@ -58,6 +68,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         date_str=args.date,
         config_root=Path(args.config_dir),
         data_root=data_dir,
+        config=_config_with_overrides(args),
     )
     print(json.dumps(stats, ensure_ascii=False, indent=2))
     return 0 if stats.get("ok", True) else 1
@@ -82,6 +93,7 @@ def cmd_backfill(args: argparse.Namespace) -> int:
             date_str=date_str,
             config_root=Path(args.config_dir),
             data_root=data_dir,
+            config=_config_with_overrides(args),
         )
         print(
             f"{date_str}: events={stats.get('events', 0)} A={stats.get('cards_a', 0)} B={stats.get('cards_b', 0)}"
@@ -371,22 +383,18 @@ def _parse_diagnostic(
     return result
 
 
-def cmd_eval(args: argparse.Namespace) -> int:  # noqa: PLR0915
-    gold_path = Path(args.gold)
-    if not gold_path.is_file():
-        print(f"金标不存在：{gold_path}", file=sys.stderr)
-        return 2
-    samples = [
-        json.loads(line)
-        for line in gold_path.read_text(encoding="utf-8").splitlines()
-        if line.strip()
-    ]
-    config = load_facts_config(Path(args.config_dir))
-    lex = KGlexicon.load(Path(args.config_dir) / "nlp")
-    parser = DepParser.load(lex)
-    if parser is None:
-        print("解析模型不可用", file=sys.stderr)
-        return 2
+def _eval_once(
+    samples: list[dict],
+    config,
+    lex: KGlexicon,
+    parser,
+    *,
+    diagnose: bool = False,
+) -> dict:
+    """对一组金标样本跑一次评测，返回指标（不做门槛判断）。"""
+    import time as _time
+
+    started = _time.monotonic()
     cards_all: list[dict] = []
     expected_total = 0
     out_of_scope = 0
@@ -422,27 +430,114 @@ def cmd_eval(args: argparse.Namespace) -> int:  # noqa: PLR0915
         )
         if any(_match_fact(card, fact) for fact in expected):
             a_correct += 1
-    precision = round(a_correct / len(a_cards), 3) if a_cards else 1.0
-    recall = round(matched_expected / expected_total, 3) if expected_total else 0.0
     evidence_ok = sum(1 for card in cards_all if card.get("evidence", {}).get("sentence"))
+    metrics = {
+        "samples": len(samples),
+        "cards": len(cards_all),
+        "cards_a": len(a_cards),
+        "cards_b": len(cards_all) - len(a_cards),
+        "a_correct": a_correct,
+        "precision": round(a_correct / len(a_cards), 3) if a_cards else 1.0,
+        "expected": expected_total,
+        "matched": matched_expected,
+        "recall": round(matched_expected / expected_total, 3) if expected_total else 0.0,
+        "out_of_scope": out_of_scope,
+        "evidence": round(evidence_ok / len(cards_all), 3) if cards_all else 0.0,
+        "noise": noise_false,
+        "seconds": round(_time.monotonic() - started, 1),
+    }
+    if diagnose:
+        metrics["diagnose"] = _parse_diagnostic(samples, lex, {"sm": "sm", "md": "md"})
+    return metrics
+
+
+def _print_eval(metrics: dict) -> None:
     print("== 金标评测 ==")
-    print(f"样本数：{len(samples)}")
+    print(f"样本数：{metrics['samples']}")
     print(
-        f"抽出事实：{len(cards_all)} 条（A 档 {len(a_cards)} / B 档 {len(cards_all) - len(a_cards)}）"
+        f"抽出事实：{metrics['cards']} 条（A 档 {metrics['cards_a']} / B 档 {metrics['cards_b']}）"
     )
-    print(f"A 档准确率：{precision}（{a_correct}/{len(a_cards)}）")
-    print(f"事件召回：{recall}（{matched_expected}/{expected_total}）")
-    print(f"金标越界（句内找不到主语/宾语，不计召回）：{out_of_scope}")
-    print(f"证据率：{round(evidence_ok / len(cards_all), 3) if cards_all else 0.0}")
-    print(f"噪声误抽：{noise_false}")
-    if args.diagnose:
+    print(f"A 档准确率：{metrics['precision']}（{metrics['a_correct']}/{metrics['cards_a']}）")
+    print(f"事件召回：{metrics['recall']}（{metrics['matched']}/{metrics['expected']}）")
+    print(f"金标越界（句内找不到主语/宾语，不计召回）：{metrics['out_of_scope']}")
+    print(f"证据率：{metrics['evidence']}")
+    print(f"噪声误抽：{metrics['noise']}")
+    if "diagnose" in metrics:
         print("== 解析诊断（sm/md 对比）==")
-        diag = _parse_diagnostic(samples, lex, {"sm": "sm", "md": "md"})
-        for label, metrics in diag.items():
-            print(f"{label}: {metrics}")
-    ok = precision >= args.min_precision
+        for label, diag_metrics in metrics["diagnose"].items():
+            print(f"{label}: {diag_metrics}")
+
+
+def cmd_eval(args: argparse.Namespace) -> int:
+    gold_path = Path(args.gold)
+    if not gold_path.is_file():
+        print(f"金标不存在：{gold_path}", file=sys.stderr)
+        return 2
+    samples = [
+        json.loads(line)
+        for line in gold_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    config = _config_with_overrides(args)
+    lex = KGlexicon.load(Path(args.config_dir) / "nlp")
+    try:
+        parser = build_parser(config, lex)
+    except ImportError as exc:
+        print(f"解析器不可用：{exc}", file=sys.stderr)
+        return 2
+    if parser is None:
+        print("解析模型不可用", file=sys.stderr)
+        return 2
+    metrics = _eval_once(samples, config, lex, parser, diagnose=args.diagnose)
+    _print_eval(metrics)
+    ok = metrics["precision"] >= args.min_precision
     print(f"门槛 {args.min_precision}：{'通过' if ok else '未通过'}")
     return 0 if ok else 1
+
+
+def cmd_compare(args: argparse.Namespace) -> int:
+    """同一金标对比三种解析配置：spaCy / 自定义分词 / LTP。"""
+    gold_path = Path(args.gold)
+    if not gold_path.is_file():
+        print(f"金标不存在：{gold_path}", file=sys.stderr)
+        return 2
+    samples = [
+        json.loads(line)
+        for line in gold_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    lex = KGlexicon.load(Path(args.config_dir) / "nlp")
+    modes = [
+        ("spacy", "spacy"),
+        ("custom", "spacy"),
+        ("spacy", "ltp"),
+    ]
+    rows = []
+    for tokenizer, parser_name in modes:
+        from dataclasses import replace
+
+        cfg = replace(
+            load_facts_config(Path(args.config_dir)), tokenizer=tokenizer, parser=parser_name
+        )
+        label = f"{parser_name}+{tokenizer}"
+        try:
+            parser = build_parser(cfg, lex)
+        except Exception as exc:
+            print(f"{label}: 不可用（{exc}）")
+            continue
+        metrics = _eval_once(samples, cfg, lex, parser)
+        rows.append({"mode": label, **metrics})
+        print(
+            f"{label}: cards={metrics['cards']} A={metrics['cards_a']} "
+            f"recall={metrics['recall']} evidence={metrics['evidence']} "
+            f"noise={metrics['noise']} seconds={metrics['seconds']}"
+        )
+    if args.out:
+        Path(args.out).write_text(
+            json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        print(f"对比结果已写入：{args.out}")
+    return 0
 
 
 def _fact_object_text(row: dict) -> str:
@@ -605,11 +700,15 @@ def main() -> int:
 
     build = sub.add_parser("build", help="单日构建")
     build.add_argument("--date", required=True)
+    build.add_argument("--parser", choices=["spacy", "ltp"], default="")
+    build.add_argument("--tokenizer", choices=["spacy", "custom"], default="")
     build.set_defaults(func=cmd_build)
 
     backfill = sub.add_parser("backfill", help="回填最近 N 天")
     backfill.add_argument("--days", type=int, default=8)
     backfill.add_argument("--force", action="store_true")
+    backfill.add_argument("--parser", choices=["spacy", "ltp"], default="")
+    backfill.add_argument("--tokenizer", choices=["spacy", "custom"], default="")
     backfill.set_defaults(func=cmd_backfill)
 
     report = sub.add_parser("report", help="覆盖周报")
@@ -621,7 +720,14 @@ def main() -> int:
     ev.add_argument("--gold", default="data/eval/kg_facts_gold.jsonl")
     ev.add_argument("--min-precision", type=float, default=0.85)
     ev.add_argument("--diagnose", action="store_true")
+    ev.add_argument("--parser", choices=["spacy", "ltp"], default="")
+    ev.add_argument("--tokenizer", choices=["spacy", "custom"], default="")
     ev.set_defaults(func=cmd_eval)
+
+    compare = sub.add_parser("compare", help="对比解析配置（spaCy / 自定义分词 / LTP）")
+    compare.add_argument("--gold", default="data/eval/kg_facts_gold.jsonl")
+    compare.add_argument("--out", default="")
+    compare.set_defaults(func=cmd_compare)
 
     prune = sub.add_parser("prune", help="B 档轮转（A 永久保留）")
     prune.add_argument("--keep-b-days", type=int, default=90)

@@ -52,3 +52,15 @@ def test_english_parse(parser: DepParser) -> None:
     assert parse.root_index >= 0
     predicates = extract_predicates(parse, reporting_verbs())
     assert any(pred.verb_text.lower() == "released" for pred in predicates)
+
+
+def test_custom_tokenizer_merges_lexicon_words() -> None:
+    from ai_news_podcast.business.kg.dep import DepParser
+
+    lex = KGlexicon.load("config/nlp")
+    parser = DepParser.load(lex, custom_tokenizer=True)
+    assert parser is not None
+    nlp = parser.nlps["zh"]
+    assert next(t.text for t in nlp.tokenizer("01.AI 发布新模型")) == "01.AI"
+    assert next(t.text for t in nlp.tokenizer("BYD 发布新车")) == "BYD"
+    assert next(t.text for t in nlp.tokenizer("Claude-4.5 上线")) == "Claude-4.5"

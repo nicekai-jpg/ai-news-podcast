@@ -40,6 +40,8 @@ semantic = ["sentence-transformers>=3.0"]
 # 事实层依存解析依赖（zh_core_web_sm / en_core_web_sm 需单独下载：
 # uv run python -m spacy download zh_core_web_sm && uv run python -m spacy download en_core_web_sm）
 kg = ["spacy>=3.8"]
+# 可选解析器：LTP 4（中文分词/依存比 spaCy 强，但会安装 torch，体积大）
+kg-ltp = ["ltp>=4.2"]
 
 [dependency-groups]
 dev = [

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import re
 from typing import Any
 
 from ai_news_podcast.business.kg.entities import detect_open_entities
@@ -19,17 +20,107 @@ _COORD_DEPS = ("conj",)
 _DESCEND_DEPS = ("ccomp", "xcomp", "parataxis")
 _SIDE_VERB_DEPS = ("acl", "advcl", "relcl", "conj", "dep", "amod", "nmod")
 _VERB_POS = ("VERB", "VA", "VC", "VE", "AUX")
+_VERSION_RE = re.compile(r"v?\d+(?:\.\d+)+", re.IGNORECASE)
+
+
+def detect_spans(
+    lexicon: KGlexicon, text: str, lang: str = "zh", title: str = ""
+) -> list[LexiconSpan]:
+    """词典实体 + 未登录实体，按“起点升序、长词优先”去重叠。"""
+    spans: list[LexiconSpan] = lexicon.find_spans(text)
+    if lang == "zh" and text:
+        try:
+            opened = detect_open_entities(text, title)
+        except Exception:
+            opened = []
+        for item in opened:
+            if any(item.start < span.end and span.start < item.end for span in spans):
+                continue
+            spans.append(LexiconSpan(item.start, item.end, item.text, "", item.kind, "open"))
+    spans.sort(key=lambda row: (row.start, -(row.end - row.start)))
+    deduped: list[LexiconSpan] = []
+    last_end = -1
+    for span in spans:
+        if span.start < last_end:
+            continue
+        deduped.append(span)
+        last_end = span.end
+    return deduped
+
+
+def _entity_vocab(lexicon: KGlexicon) -> set[str]:
+    """把词典里的实体/对象名称和别名收集成分词词表（只收 ≥2 字）。"""
+    words: set[str] = set()
+    for row in lexicon.lexicon.entities:
+        for name in (row.name, *row.aliases):
+            text = str(name or "").strip()
+            if len(text) >= 2:
+                words.add(text)
+    for row in lexicon.lexicon.objects:
+        for name in (row.name, *row.aliases):
+            text = str(name or "").strip()
+            if len(text) >= 2:
+                words.add(text)
+    return words
+
+
+class _EntityMergeTokenizer:
+    """默认分词器外面包一层：把“相邻且合起来是词表词/版本号”的 token 合并。
+
+    只合并不拆分，尽量不破坏原模型（pkuseg）的分词分布。
+    """
+
+    def __init__(self, base: Any, vocab: set[str]) -> None:
+        self.base = base
+        self.vocab = vocab
+
+    def __call__(self, text: str) -> Any:
+        from spacy.tokens import Doc
+
+        doc = self.base(text)
+        toks = list(doc)
+        words: list[str] = []
+        spaces: list[bool] = []
+        i = 0
+        while i < len(toks):
+            best = i
+            acc = toks[i].text
+            for j in range(i + 1, min(i + 6, len(toks))):
+                if toks[j].idx != toks[j - 1].idx + len(toks[j - 1].text):
+                    break
+                acc += toks[j].text
+                if acc in self.vocab or _VERSION_RE.fullmatch(acc):
+                    best = j
+            words.append("".join(t.text for t in toks[i : best + 1]))
+            end = toks[best].idx + len(toks[best].text)
+            spaces.append(end < len(text) and text[end].isspace())
+            i = best + 1
+        return Doc(doc.vocab, words=words, spaces=spaces)
 
 
 class DepParser:
     """中英双模型解析器；模型缺失时对应语言不可用。"""
 
-    def __init__(self, nlps: dict[str, Any], lexicon: KGlexicon) -> None:
+    def __init__(
+        self, nlps: dict[str, Any], lexicon: KGlexicon, *, custom_tokenizer: bool = False
+    ) -> None:
         self.nlps = nlps
         self.lexicon = lexicon
+        self.custom_tokenizer = custom_tokenizer
+        if custom_tokenizer:
+            vocab = _entity_vocab(lexicon)
+            for lang, nlp in nlps.items():
+                if lang == "zh":
+                    nlp.tokenizer = _EntityMergeTokenizer(nlp.tokenizer, vocab)
 
     @classmethod
-    def load(cls, lexicon: KGlexicon, *, models: dict[str, str] | None = None) -> DepParser | None:
+    def load(
+        cls,
+        lexicon: KGlexicon,
+        *,
+        models: dict[str, str] | None = None,
+        custom_tokenizer: bool = False,
+    ) -> DepParser | None:
         import spacy
 
         model_names = models or {"zh": "zh_core_web_sm", "en": "en_core_web_sm"}
@@ -43,7 +134,7 @@ class DepParser:
                 logger.warning("spaCy 模型加载失败：%s（%s）", name, lang, exc_info=True)
         if not nlps:
             return None
-        return cls(nlps, lexicon)
+        return cls(nlps, lexicon, custom_tokenizer=custom_tokenizer)
 
     @property
     def languages(self) -> tuple[str, ...]:
@@ -52,25 +143,7 @@ class DepParser:
     def analyze(self, text: str, lang: str = "zh", title: str = "") -> ParseResult:
         """解析一个子句：先合并词表实体/未登录实体，再跑依存。"""
         nlp = self.nlps.get(lang) or next(iter(self.nlps.values()))
-        spans: list[LexiconSpan] = self.lexicon.find_spans(text)
-        if lang == "zh" and text:
-            try:
-                opened = detect_open_entities(text, title)
-            except Exception:
-                opened = []
-            for item in opened:
-                if any(item.start < span.end and span.start < item.end for span in spans):
-                    continue
-                spans.append(LexiconSpan(item.start, item.end, item.text, "", item.kind, "open"))
-        spans.sort(key=lambda row: (row.start, -(row.end - row.start)))
-        deduped: list[LexiconSpan] = []
-        last_end = -1
-        for span in spans:
-            if span.start < last_end:
-                continue
-            deduped.append(span)
-            last_end = span.end
-        spans = deduped
+        spans = detect_spans(self.lexicon, text, lang, title)
         doc = nlp.tokenizer(text)
         self._merge_spans(doc, spans)
         for _, proc in nlp.pipeline:

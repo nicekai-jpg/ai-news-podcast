@@ -31,6 +31,9 @@ dependencies = [
 kg = [
     { name = "spacy" },
 ]
+kg-ltp = [
+    { name = "ltp" },
+]
 semantic = [
     { name = "sentence-transformers" },
 ]
@@ -51,6 +54,7 @@ requires-dist = [
     { name = "feedparser", specifier = "==6.0.11" },
     { name = "httpx", specifier = ">=0.27" },
     { name = "jieba", specifier = ">=0.42" },
+    { name = "ltp", marker = "extra == 'kg-ltp'", specifier = ">=4.2" },
     { name = "openai", specifier = ">=1.0" },
     { name = "pydantic", specifier = ">=2.12.5" },
     { name = "pydub", specifier = "==0.25.1" },
@@ -63,7 +67,7 @@ requires-dist = [
     { name = "spacy", marker = "extra == 'kg'", specifier = ">=3.8" },
     { name = "tenacity", specifier = ">=8.2" },
 ]
-provides-extras = ["semantic", "kg"]
+provides-extras = ["semantic", "kg", "kg-ltp"]
 
 [package.metadata.requires-dev]
 dev = [
@@ -1035,6 +1039,49 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/41/f2/d34e8b3a08a9cc79a50b2208a93dce981fe615b64d5a4d4abee421d898df/joblib-1.5.3.tar.gz", hash = "sha256:8561a3269e6801106863fd0d6d84bb737be9e7631e33aaed3fb9ce5953688da3", size = 331603, upload-time = "2025-12-15T08:41:46.427Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/7b/91/984aca2ec129e2757d1e4e3c81c3fcda9d0f85b74670a094cc443d9ee949/joblib-1.5.3-py3-none-any.whl", hash = "sha256:5fc3c5039fc5ca8c0276333a188bbd59d6b7ab37fe6632daa76bc7f9ec18e713", size = 309071, upload-time = "2025-12-15T08:41:44.973Z" },
+]
+
+[[package]]
+name = "ltp"
+version = "4.2.14"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "huggingface-hub" },
+    { name = "ltp-core" },
+    { name = "ltp-extension" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/81/15/f33755c7a840ace18e9336a8c991125735a26abae99f414d3bfeef15019e/ltp-4.2.14-py3-none-any.whl", hash = "sha256:2ee959d9a686c80551fa43a213cd100c602b3659ebfb49513a37107b25533928", size = 20870, upload-time = "2024-06-08T17:41:41.856Z" },
+]
+
+[[package]]
+name = "ltp-core"
+version = "0.1.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "torch" },
+    { name = "transformers" },
+]
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/73/55/bb880fd459976e5bc95a75e83b29b156e4b3acf2b97acc9b9cdeb694440e/ltp_core-0.1.4-py3-none-any.whl", hash = "sha256:d47b5045fb061a6c9dd237f38940c995d71c4b3a56c76ce12d0f2b77d034a80f", size = 66471, upload-time = "2023-01-04T08:38:21.606Z" },
+]
+
+[[package]]
+name = "ltp-extension"
+version = "0.1.13"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/50/c5/a00118e7fd35733b12b3cc84b09c64f42ef2a1d7cf1cbad88d4aa33f7e55/ltp_extension-0.1.13.tar.gz", hash = "sha256:5fa2fdca6f96f1c1535ab259dd6e1ad6c427e2c11391750f4f8d30db55ff6401", size = 109552, upload-time = "2024-04-04T19:17:41.583Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/02/63/a389f2b47e60890bde1124853c6d6d5a0fabb7c7ec68d77e1f9583d54c97/ltp_extension-0.1.13-cp37-abi3-macosx_10_12_x86_64.whl", hash = "sha256:9630a02efc2c1bdb4999a0d90b9aae6d544adc85af0d8844126a26a461db3f67", size = 923068, upload-time = "2024-04-04T19:17:39.299Z" },
+    { url = "https://files.pythonhosted.org/packages/12/48/c3846016678b4d7f5b4822e40594d0303404934f42f05229afc80713c092/ltp_extension-0.1.13-cp37-abi3-macosx_11_0_arm64.whl", hash = "sha256:e2add33859c825118a5b75a96967cbd464fef5fa24b2921bb3ed6fe129bcd12e", size = 804788, upload-time = "2024-04-04T19:17:36.384Z" },
+    { url = "https://files.pythonhosted.org/packages/b9/73/dcc246b313375c44024bdd2cf85f3e06d01d1823c1433ffa4504c3a1d9e3/ltp_extension-0.1.13-cp37-abi3-manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:ccd8387a46675b776a9b537935446cbed982afad3a632dc096f0a7bd45b3bb6b", size = 1382220, upload-time = "2024-04-04T19:17:31.922Z" },
+    { url = "https://files.pythonhosted.org/packages/97/af/56058f9303d7c5c14abbbe6694b64d682d9f4f1b52a85444d7b9d3196be1/ltp_extension-0.1.13-cp37-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b2d46cb45b10420b828ac9d3532fb736fadfe484d4d2647c933697e1a48b0a1a", size = 1293184, upload-time = "2024-04-04T19:17:21.5Z" },
+    { url = "https://files.pythonhosted.org/packages/ea/56/dd8c33c1e542a7906b3223196502fe3a73a99a4030f6e819673c5e104abe/ltp_extension-0.1.13-cp37-abi3-manylinux_2_17_armv7l.manylinux2014_armv7l.whl", hash = "sha256:1fa88577fdda17596759b7eebf3aa24353982d3f51ae691a57c066669ade3688", size = 1355357, upload-time = "2024-04-04T19:17:24.375Z" },
+    { url = "https://files.pythonhosted.org/packages/c8/25/8d4c0397c8f588db9bfa2dbe5ae0cf69efa24e5d3e18cd6b357c25b1f1bf/ltp_extension-0.1.13-cp37-abi3-manylinux_2_17_ppc64le.manylinux2014_ppc64le.whl", hash = "sha256:1e7cd25d7a5f810b93085a22306cd6f97eebe2c2c9b609e4b8ac3b2e028be783", size = 1383942, upload-time = "2024-04-04T19:17:27.103Z" },
+    { url = "https://files.pythonhosted.org/packages/59/f0/a50af7bfeb9a428d570bd679344e8d254aa55d582ffaf3ecec8258278f3a/ltp_extension-0.1.13-cp37-abi3-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:c014ad836e28b69a8dc5f17d3603d18cdef4db70de294a246c0b40d6df9eafaf", size = 1769627, upload-time = "2024-04-04T19:17:29.154Z" },
+    { url = "https://files.pythonhosted.org/packages/9b/28/fbd3facff50ec9a284a2f39d9c5afde510327c08cdb7aead3f642e1871cd/ltp_extension-0.1.13-cp37-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:221c504221218d64469038276974009abc85766cbd15fd7fa3a40d52796d3e67", size = 1355133, upload-time = "2024-04-04T19:17:33.912Z" },
+    { url = "https://files.pythonhosted.org/packages/e8/d4/a98c303756776e1917c6ee05484641001c3c4d5eccc0eee9775a4f12bd43/ltp_extension-0.1.13-cp37-abi3-win32.whl", hash = "sha256:4b232cde6f3c65ffe8f80181ebaa55d71912a9e7ba527dda3cbc041a81202b68", size = 681506, upload-time = "2024-04-04T19:17:45.747Z" },
+    { url = "https://files.pythonhosted.org/packages/5e/99/90892503fe37128ad11d2397ce093a3605c36452cca8ef04be261027ea1e/ltp_extension-0.1.13-cp37-abi3-win_amd64.whl", hash = "sha256:15cdbc748647a7850ff241f516f81af1a3c41d36ab5e07da703cf0e53457f15b", size = 707510, upload-time = "2024-04-04T19:17:43.441Z" },
 ]
 
 [[package]]

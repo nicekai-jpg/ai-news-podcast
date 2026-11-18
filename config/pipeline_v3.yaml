@@ -22,6 +22,8 @@ stage2_5:
   n_process: 2
   max_seconds: 600
   debug_kg: false
+  tokenizer: spacy   # spacy | custom（custom = 词典词合并，解决 01.AI/BYD/Claude-4.5 之类被切碎）
+  parser: spacy      # spacy | ltp（ltp 需要安装 kg-ltp extra，英文仍走 spaCy）
   # 旧键：只在 debug_kg 打开时给 V1 抽取器用
   min_confidence: 0.4
   max_chars: 6000

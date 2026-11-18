@@ -148,6 +148,9 @@ Stage CLIs (console scripts in pyproject):
     B 档扩展通道（只进 B、不进 A）：主语继承（上一解析主语/标题或导语主体）、名词性事实
     （售价/估值/IPO/漏洞等无动词句）、同谓词多宾语拆分。A 档还有守卫（对象质量/人事角色/
     合作方实体/金额校验），命中降 B 不丢卡。B 体积大时可 `prune --keep-b-days 90` 轮转。
+    解析器/分词可选：`stage2_5.tokenizer=spacy|custom`（custom 用词典把 01.AI/BYD 之类
+    被切碎的词合并）、`stage2_5.parser=spacy|ltp`（LTP 依赖 `kg-ltp` extra，需 torch）；
+    CLI eval/build 支持 `--parser`/`--tokenizer`，`kg_facts.py compare` 一次跑三种配置。
     手动演练期用 `KG_FACTS_ENABLED` 控制：GHA 定时任务默认 false 跳过、`workflow_dispatch` 才 true；
     一周验证通过后把 env 改成常开。
     旧 `business/kg/service.py:build_kg()` 与 `data/kg/{date}/kg.json` 只在 `stage2_5.debug_kg=true` 时产出。

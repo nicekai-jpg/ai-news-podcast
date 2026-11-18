@@ -709,6 +709,74 @@ span 匹配规则：
 
 无 root 返回空；解析抛异常跳过该句并计数。
 
+### 6.3b 可选的解析器与分词（2026-11-18 实测）
+
+默认仍是 spaCy（zh + en）。另外留了两个开关，用来解决「分词把实体切碎」和「中文依存偏弱」：
+
+| 配置键 | 取值 | 环境变量覆盖 |
+|---|---|---|
+| stage2_5.tokenizer | spacy | KG_FACTS_TOKENIZER |
+| stage2_5.tokenizer | custom | KG_FACTS_TOKENIZER |
+| stage2_5.parser | spacy | KG_FACTS_PARSER |
+| stage2_5.parser | ltp | KG_FACTS_PARSER |
+
+custom 分词器（只合不拆）：
+
+```
+pkuseg 默认分词
+   │
+   ▼
+相邻 token 合起来是「词表词」或「版本号」？
+   │ 是
+   ▼
+合并成一个 token（其余保持 pkuseg 原样）
+```
+
+修复效果（真实可复现）：`01.AI`、`360集团`、`ASML`、`BYD`、`ByteDance`、`Character.AI`、`Claude-4`、`Claude-4.5`、`DeepEP` 等原本被切碎的词，都能合成一个 token。词表来自 `config/nlp` 的实体/对象名称与别名。
+
+LTP 解析器（可选依赖 `kg-ltp`，会装 torch；英文仍回退 spaCy）：
+
+| LTP 标签 | 映射成 | 作用 |
+|---|---|---|
+| HED | ROOT | 句子根 |
+| SBV | nsubj | 主语 |
+| VOB | dobj | 宾语 |
+| FOB | dobj | 前置宾语 |
+| POB | nmod:prep | 介词宾语 |
+| ATT | amod / compound:nn | 按词性决定定语 |
+| COO | conj | 并列 |
+| ADV | advmod | 状语 |
+| CMP | nmod:prep | 补语 |
+| LAD | advcl | 左附加 |
+| RAD | acl | 右附加 |
+| TMP | nmod:tmod | 时间 |
+
+实测对比（同一份 180 句金标）：
+
+| 配置 | 抽出卡片 | 事件召回 | 证据率 | 耗时 |
+|---|---|---|---|---|
+| spaCy + spacy 分词 | 129 | 0.108 | 1.0 | 1.9 秒 |
+| spaCy + custom 分词 | 129 | 0.108 | 1.0 | 1.6 秒 |
+| LTP | 61 | 0.123 | 1.0 | 3.4 秒 |
+
+真实一天（2026-11-16，470 个事件）：
+
+| 配置 | A 卡 | B 卡 | 解析错误 | 耗时 |
+|---|---|---|---|---|
+| spaCy | 7 | 3,108 | 0 | 70.9 秒 |
+| custom 分词 | 7 | 3,106 | 0 | 56.2 秒 |
+| LTP | 6 | 1,658 | 0 | 116.1 秒 |
+
+结论（当前数据）：
+
+| 选项 | 收益 | 代价 | 建议 |
+|---|---|---|---|
+| custom 分词 | 修词表内被切碎的实体 | 很小 | 可以直接开 |
+| LTP | 金标召回 +0.015、B 卡少一半 | torch 依赖、慢约 60% | 先小流量试 |
+| 都不开 | 现状 | 无 | 默认 |
+
+命令：`uv run python scripts/kg_facts.py compare`（一次跑三种配置）；单次评测加 `--parser ltp` / `--tokenizer custom`。
+
 ### 6.4 schema.py：事件 schema
 
 职责：把 21 类事件的「主体类型、对象类型、必填槽、可选槽」从配置读进来并校验。
