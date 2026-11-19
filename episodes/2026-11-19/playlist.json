@@ -1,0 +1,594 @@
+{
+  "episode_id": "2026-11-19",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "今天这几条AI新闻值得听，因为它们都在回答同一个更现实的问题：模型继续变强以后，真正决定价值的到底是能力、价格，还是它被允许做什么。",
+      "start": 1.0,
+      "duration": 13.52,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "我更想把它们放进同一条线里看：模型开源、成本下降、能力升级，安全边界也跟着变得显眼，这样的组合比单独追某个模型更有意思。",
+      "start": 14.969,
+      "duration": 10.56,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      },
+      "chapter": "开场"
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "那咱们不按热搜排顺序，直接看技术变化怎么一路传到产品、成本和公司决策，行不行？",
+      "start": 26.026,
+      "duration": 8.04,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "A",
+      "text": "先看腾讯混元：Hy4 flash 系列正式开源，而且不是只放一个成品，而是把不同使用路径都摆出来。",
+      "start": 34.519,
+      "duration": 8.52,
+      "audios": {
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "开源与算力账"
+    },
+    {
+      "id": 5,
+      "host": "B",
+      "text": "三个版本是标准版 Hy4 flash、量化后的 Hy4 flash-FP8，以及供研究者从零训练的 Hy4 flash Base。一个面向部署，一个侧重资源效率，一个保留训练入口。",
+      "start": 43.444,
+      "duration": 12.55,
+      "audios": {
+        "professional": "chunk_005_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 6,
+      "host": "A",
+      "text": "Base 这个安排我最喜欢。以前谈开源，常常只能拿到别人调好的终点；Base 让研究者能接着往上做。",
+      "start": 56.427,
+      "duration": 8.44,
+      "audios": {
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "B",
+      "text": "获取渠道包括 GitHub、Hugging Face、ModelScope、GitCode，也能下载部署；社区还提供 GGUF 格式和开源协议说明。入口确实铺得很开。",
+      "start": 65.332,
+      "duration": 10.99,
+      "audios": {
+        "professional": "chunk_007_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 8,
+      "host": "A",
+      "text": "我的追问是，它靠什么把成本压下来？架构给了线索：总参数量 224B，其中含 64B Engram 参数，但每个 token 只激活 12B。",
+      "start": 76.784,
+      "duration": 11.6,
+      "audios": {
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "B",
+      "text": "这是稀疏架构。像一座大仓库，处理每个 token 时只启用一小片工作区，官方逻辑就是既省算力又保能力。",
+      "start": 88.835,
+      "duration": 9.44,
+      "audios": {
+        "professional": "chunk_009_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 10,
+      "host": "A",
+      "text": "类比我接受，但别把“保能力”直接换成“所有任务都强”。现有信息确认的是激活机制和官方定位，不能单凭 224B 就替具体任务下结论。",
+      "start": 98.775,
+      "duration": 11.72,
+      "audios": {
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "B",
+      "text": "对，规模大不等于每个场景都划算。Hy4 flash 还支持多模态输入，上下文长度拉到 100万 token，长资料和复杂长对话是它更贴近的应用方向。",
+      "start": 110.933,
+      "duration": 11.96,
+      "audios": {
+        "professional": "chunk_011_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 12,
+      "host": "A",
+      "text": "价格端的信号更直接：API 价格较 Hy4 大幅下调。现有信息没有列具体金额，所以我们能说到“降了”，不能替它编价目表。",
+      "start": 123.354,
+      "duration": 11.36,
+      "audios": {
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "B",
+      "text": "落地也不停在仓库里。它已接入腾讯云 TokenHub、WorkBuddy、腾讯元宝、企业微信、QQ、ima、Marvis 等产品和服务。",
+      "start": 135.159,
+      "duration": 9.92,
+      "audios": {
+        "professional": "chunk_013_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "这就形成一条链：开放获取拉来开发者，模型进入产品，使用再反哺生态。完整 Hy4 模型的开源也还在推进中。",
+      "start": 145.553,
+      "duration": 9.72,
+      "audios": {
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "节奏要分清，今天交付的是 Hy4 flash 系列，不该提前把更大的 Hy4 算成已经发布。开放权重和协议降低上手门槛，本地部署也不等于自动没有成本。",
+      "start": 155.7,
+      "duration": 11.0,
+      "audios": {
+        "professional": "chunk_015_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 16,
+      "host": "A",
+      "text": "接下来这条快讯更偏产业：英伟达在黄仁勋离任后的首次业绩电话会前，领导层又成了焦点。",
+      "start": 167.164,
+      "duration": 8.32,
+      "audios": {
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "B",
+      "text": "黄仁勋表示，若能回归担任 CEO 会感到荣幸；但董事长 Harvey Jones 明确排除了重新启用他的可能，还说电话会上不回答有关离任的问题。",
+      "start": 175.901,
+      "duration": 11.04,
+      "audios": {
+        "professional": "chunk_017_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "Harvey Jones 的理由是，董事会宁愿找合适的永久 CEO，也不急着推进继任。内部和外部候选人都要考虑，并请 Heidrick & Struggles 负责搜寻。",
+      "start": 187.377,
+      "duration": 12.91,
+      "audios": {
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "B",
+      "text": "经营层面，临时 CEO 兼 CFO Colette Kress 说业务照常运行，超大规模云厂商仍在争抢更多 NVIDIA 计算容量，客户过去一周也持续要求追加出货。",
+      "start": 200.704,
+      "duration": 12.67,
+      "audios": {
+        "professional": "chunk_019_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 20,
+      "host": "A",
+      "text": "供给端要听另一半：台积电正在帮助缓解供应缺口，存储与封装供应已有保障，但组件成本上涨正在挤压利润。需求旺和利润有压力，可以同时存在。",
+      "start": 213.87,
+      "duration": 12.72,
+      "audios": {
+        "lively": "chunk_020_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 21,
+      "host": "B",
+      "text": "所以问题不只是黄仁勋回不回来，而是 AI 需求很强时，公司还能不能同时稳住供应、利润和治理。这几件事叠在一起，才是压力所在。",
+      "start": 227.002,
+      "duration": 10.2,
+      "audios": {
+        "professional": "chunk_021_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 22,
+      "host": "A",
+      "text": "说完开源和算力，再看能力升级。OpenAI 正式发布 GPT-6.2 Astra 和 GPT-6.2 Sol，官方点名的方向包括专业任务、Coding、电脑操作和执行效率。",
+      "start": 237.681,
+      "duration": 13.83,
+      "audios": {
+        "lively": "chunk_022_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "能力与边界"
+    },
+    {
+      "id": 23,
+      "host": "B",
+      "text": "两款不是同一种助手换皮。Astra 面向复杂编程和专业工作，Sol 更强调日常多模态任务与工具使用，一个偏硬任务，一个偏日常协作。",
+      "start": 251.943,
+      "duration": 11.4,
+      "audios": {
+        "professional": "chunk_023_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "它们将用于 ChatGPT Work、Codex 和 API，同时降低部分使用成本。电脑操作值得多看一眼，因为模型不只给答案，还要在工具链里做事。",
+      "start": 263.811,
+      "duration": 11.08,
+      "audios": {
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 25,
+      "host": "B",
+      "text": "所以 OpenAI 同步发布系统安全卡，披露两款模型的网络安全能力都达到 Preparedness Framework 的 Critical 门槛，Astra 的 AI 自我改进能力达到 High 门槛。",
+      "start": 275.381,
+      "duration": 11.51,
+      "audios": {
+        "professional": "chunk_025_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "对应措施是加强高风险能力的访问限制。我更愿意把这看成能力边界写进产品，而不是等事故发生再补说明。",
+      "start": 287.368,
+      "duration": 10.28,
+      "audios": {
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "B",
+      "text": "这个判断成立。Critical 和 High 是能力门槛，不等于模型“一定会做坏事”；它说明能力到了需要额外限制访问的位置。只看发布文案，很容易漏掉这一层。",
+      "start": 298.066,
+      "duration": 12.2,
+      "audios": {
+        "professional": "chunk_027_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "这里还夹着一条人才快讯：谷歌 DeepMind 首席战略官贾斯吉特·塞孔 Jasjit Sekhon 已离职并加入 Anthropic。他 3 月加入 DeepMind，任职仅约 8 个月。",
+      "start": 310.705,
+      "duration": 12.99,
+      "audios": {
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "B",
+      "text": "他表示未来会致力于提升 Claude 的知识可靠性与事实严谨性。Zecki 统计，过去一年离开 DeepMind 的员工中，25% 加入 Anthropic，21% 流向 Meta，14% 选择 OpenAI；Anthropic 又即将启动 IPO。",
+      "start": 324.107,
+      "duration": 16.67,
+      "audios": {
+        "professional": "chunk_029_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "大家争的不只是模型能力，也包括谁来定义可靠和严谨。还有篇研究更该被产品经理看到：arXiv:2611.21946v1 讨论推理模型的“有害过度思考”。",
+      "start": 341.27,
+      "duration": 13.84,
+      "audios": {
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "一个已经拿到正确答案的模型，继续想下去反而可能把答案想丢。论文把停止判断拆成两个概率：现在停止会给出的答案是否正确，叫 commitment；继续想最终的答案是否正确，叫 verdict。",
+      "start": 355.519,
+      "duration": 14.11,
+      "audios": {
+        "professional": "chunk_031_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "只看最终 verdict，没法判断继续推理会帮忙还是帮倒忙。commitment 与 verdict 的差距，等于继续推理后预期剩下的质量变化，也就是现在停止能获得的准确率收益。",
+      "start": 370.116,
+      "duration": 15.07,
+      "audios": {
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "B",
+      "text": "论文还给了一个恒等式，把准确率与预算的曲线拆成链内答案变化，以及仍在运行的链发生的变化。它把“继续想”变成了可以计算的成本问题。",
+      "start": 385.628,
+      "duration": 11.44,
+      "audios": {
+        "professional": "chunk_033_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "数据挺扎眼：在 MATH-500 上，DeepSeek-R1-Distill-Qwen-1.5B 已保持正确答案的 379 个点，继续推理平均损失 3.6 points，损失集中在少数问题。选取这 379 个点时还不看推理链最后怎么结束。",
+      "start": 397.528,
+      "duration": 19.51,
+      "audios": {
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "所以“多想一会儿”不是免费午餐。对系统来说，知道什么时候收手和知道怎么答同样重要。这条是研究快讯，但产品含义很直接。",
+      "start": 417.509,
+      "duration": 8.72,
+      "audios": {
+        "professional": "chunk_035_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "说到把能力装进工作流，火山引擎 AI MediaKit Skill 给了个具体例子。作者打开 Claude Code，贴进字幕擦除 demo 视频链接，只说：“把这个视频里的字幕擦掉。”",
+      "start": 426.641,
+      "duration": 13.91,
+      "audios": {
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "B",
+      "text": "AI MediaKit 是火山引擎“智能处理”产品线下的能力集合，背后是字节系视频业务算法的产品化。它不是单个视频工具，而是把一组处理能力接到对话入口上。",
+      "start": 440.996,
+      "duration": 11.8,
+      "audios": {
+        "professional": "chunk_037_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "它包含 80 项原子能力，横跨视频、图像、音频三个模态。像画质增强、字幕擦除、高光智剪、抠图、剧情分析、ASR，还有背景移除、OCR、人声分离。",
+      "start": 453.251,
+      "duration": 13.36,
+      "audios": {
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "对比 FFmpeg 就很直观。它免费、强大，可拼接视频也要写命令、查手册；字幕擦除、画质修复这类任务，它本身不负责理解内容。AI MediaKit 想省掉的正是操作负担。",
+      "start": 467.051,
+      "duration": 15.63,
+      "audios": {
+        "professional": "chunk_039_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "传统专业软件能做得更多，但学习成本摆在那里；在线工具又可能遇到排队、限速、隐私顾虑和不能批量。Skill 的价值不是删掉专业软件，而是让常见任务先用一句话跑通。",
+      "start": 483.159,
+      "duration": 14.16,
+      "audios": {
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "B",
+      "text": "这里得加免责声明：文章里的测试结论、价格、耗时和效果，主要来自作者在特定素材、测试方法和实际环境下的实测，实际表现仍要以产品页面、公示价格、账单和使用场景为准。",
+      "start": 497.8,
+      "duration": 14.44,
+      "audios": {
+        "professional": "chunk_041_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "这条应用线可以这样看：Claude Code 像自然语言入口，AI MediaKit 提供处理模块，背后是字节系视频业务的算法能力。能不能从“演示很顺”走到“日常好用”，还得看真实素材和真实账单。",
+      "start": 512.666,
+      "duration": 15.71,
+      "audios": {
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "今天的主线很清楚：开源把门槛压低，升级把能力推高，安全与治理决定它能走多远。",
+      "start": 528.846,
+      "duration": 6.88,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "收尾"
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "真正值得观察的，不是某一个数字，而是能力、成本和责任能否一起跟上；模型也要学会适时收手。",
+      "start": 536.187,
+      "duration": 7.84,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "明日看点，我会盯 Hy4 完整模型的开源进度，也看英伟达永久 CEO 候选讨论和 GPT-6.2 高风险能力访问限制的后续说明；应用侧再看 AI MediaKit 的实际价格与体验。",
+      "start": 544.483,
+      "duration": 16.47,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    }
+  ]
+}
