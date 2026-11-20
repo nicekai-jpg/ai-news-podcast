@@ -385,6 +385,227 @@ companies:
     weight: 0.75
     headquarters: europe
 
+  - id: byd
+    name: 比亚迪
+    aliases: [比亚迪, BYD]
+    type: company
+  - id: lenovo
+    name: 联想
+    aliases: [联想, Lenovo]
+    type: company
+  - id: jd
+    name: 京东
+    aliases: [京东, 京东云, JD.com]
+    type: company
+  - id: meituan
+    name: 美团
+    aliases: [美团, Meituan]
+    type: company
+  - id: kuaishou
+    name: 快手
+    aliases: [快手, Kuaishou, 可灵, Kling]
+    type: company
+  - id: netease
+    name: 网易
+    aliases: [网易, NetEase]
+    type: company
+  - id: q360
+    name: 360集团
+    aliases: [360集团, 三六零]
+    type: company
+  - id: antgroup
+    name: 蚂蚁集团
+    aliases: [蚂蚁集团, Ant Group, 百灵]
+    type: company
+  - id: xiaohongshu
+    name: 小红书
+    aliases: [小红书, RedNote]
+    type: company
+  - id: kingsoft
+    name: 金山办公
+    aliases: [金山办公, WPS]
+    type: company
+  - id: pinduoduo
+    name: 拼多多
+    aliases: [拼多多, PDD, Temu]
+    type: company
+  - id: bilibili
+    name: 哔哩哔哩
+    aliases: [哔哩哔哩, B站, Bilibili]
+    type: company
+  - id: zhihu
+    name: 知乎
+    aliases: [知乎, Zhihu]
+    type: company
+  - id: weibo
+    name: 微博
+    aliases: [微博, Weibo]
+    type: company
+  - id: didi
+    name: 滴滴
+    aliases: [滴滴, 滴滴出行, DiDi]
+    type: company
+  - id: li_auto
+    name: 理想汽车
+    aliases: [理想汽车, Li Auto]
+    type: company
+  - id: nio
+    name: 蔚来
+    aliases: [蔚来, NIO]
+    type: company
+  - id: xpeng
+    name: 小鹏汽车
+    aliases: [小鹏汽车, 小鹏, XPeng]
+    type: company
+  - id: chinatelecom
+    name: 中国电信
+    aliases: [中国电信, 天翼云]
+    type: company
+  - id: chinamobile
+    name: 中国移动
+    aliases: [中国移动, 中国移动九天]
+    type: company
+  - id: chinaunicom
+    name: 中国联通
+    aliases: [中国联通]
+    type: company
+  - id: kunlunxin
+    name: 昆仑芯
+    aliases: [昆仑芯, Kunlunxin]
+    type: company
+  - id: pingtouge
+    name: 平头哥
+    aliases: [平头哥, 平头哥半导体, T-Head]
+    type: company
+  - id: hygon
+    name: 海光信息
+    aliases: [海光信息, 海光, Hygon]
+    type: company
+  - id: iluvatar
+    name: 天数智芯
+    aliases: [天数智芯, Iluvatar CoreX]
+    type: company
+  - id: enflame
+    name: 燧原科技
+    aliases: [燧原科技, 燧原, Enflame]
+    type: company
+  - id: smic
+    name: 中芯国际
+    aliases: [中芯国际, SMIC]
+    type: company
+  - id: cxmt
+    name: 长鑫存储
+    aliases: [长鑫存储, CXMT]
+    type: company
+  - id: ymtc
+    name: 长江存储
+    aliases: [长江存储, YMTC]
+    type: company
+  - id: verisilicon
+    name: 芯原股份
+    aliases: [芯原股份, 芯原, VeriSilicon]
+    type: company
+  - id: scaleai
+    name: Scale AI
+    aliases: [Scale AI, ScaleAI]
+    type: company
+  - id: anysphere
+    name: Anysphere
+    aliases: [Anysphere, Cursor]
+    type: company
+  - id: cognition
+    name: Cognition
+    aliases: [Cognition, Devin]
+    type: company
+  - id: physical_intelligence
+    name: Physical Intelligence
+    aliases: [Physical Intelligence]
+    type: company
+  - id: groq
+    name: Groq
+    aliases: [Groq]
+    type: company
+  - id: cerebras
+    name: Cerebras
+    aliases: [Cerebras]
+    type: company
+  - id: sambanova
+    name: SambaNova
+    aliases: [SambaNova]
+    type: company
+  - id: graphcore
+    name: Graphcore
+    aliases: [Graphcore]
+    type: company
+  - id: tenstorrent
+    name: Tenstorrent
+    aliases: [Tenstorrent]
+    type: company
+  - id: inflection
+    name: Inflection AI
+    aliases: [Inflection AI, Inflection]
+    type: company
+  - id: runway
+    name: Runway
+    aliases: [Runway, Runway ML]
+    type: company
+  - id: luma
+    name: Luma AI
+    aliases: [Luma AI]
+    type: company
+  - id: pika
+    name: Pika
+    aliases: [Pika Labs, Pika]
+    type: company
+  - id: suno
+    name: Suno
+    aliases: [Suno]
+    type: company
+  - id: elevenlabs
+    name: ElevenLabs
+    aliases: [ElevenLabs]
+    type: company
+  - id: fireworks
+    name: Fireworks AI
+    aliases: [Fireworks AI]
+    type: company
+  - id: together
+    name: Together AI
+    aliases: [Together AI]
+    type: company
+  - id: oracle
+    name: Oracle
+    aliases: [Oracle, 甲骨文]
+    type: company
+  - id: sap
+    name: SAP
+    aliases: [SAP]
+    type: company
+  - id: palantir
+    name: Palantir
+    aliases: [Palantir]
+    type: company
+  - id: micron
+    name: 美光
+    aliases: [美光, Micron]
+    type: company
+  - id: skhynix
+    name: SK海力士
+    aliases: [SK海力士, SK Hynix]
+    type: company
+  - id: dell
+    name: 戴尔
+    aliases: [戴尔, Dell]
+    type: company
+  - id: hpe
+    name: 惠普企业
+    aliases: [惠普企业, HPE]
+    type: company
+  - id: supermicro
+    name: 超微
+    aliases: [超微, Supermicro]
+    type: company
+
 labs:
   - id: google_research
     name: Google Research
@@ -464,6 +685,107 @@ labs:
     type: lab
     weight: 0.7
     headquarters: usa
+
+  - id: cmu
+    name: 卡内基梅隆大学
+    aliases: [卡内基梅隆大学, 卡内基梅隆, CMU]
+    type: lab
+  - id: oxford
+    name: 牛津大学
+    aliases: [牛津大学, 牛津, Oxford]
+    type: lab
+  - id: cambridge
+    name: 剑桥大学
+    aliases: [剑桥大学, 剑桥, Cambridge]
+    type: lab
+  - id: eth
+    name: 苏黎世联邦理工
+    aliases: [苏黎世联邦理工, ETH Zurich]
+    type: lab
+  - id: cuhk
+    name: 香港中文大学
+    aliases: [香港中文大学, 港中文, CUHK]
+    type: lab
+  - id: hkust
+    name: 香港科技大学
+    aliases: [香港科技大学, 港科大, HKUST]
+    type: lab
+  - id: sjtu
+    name: 上海交通大学
+    aliases: [上海交通大学, 上海交大, SJTU]
+    type: lab
+  - id: zju
+    name: 浙江大学
+    aliases: [浙江大学, 浙大, ZJU]
+    type: lab
+  - id: fudan
+    name: 复旦大学
+    aliases: [复旦大学, 复旦]
+    type: lab
+  - id: ustc
+    name: 中国科学技术大学
+    aliases: [中国科学技术大学, 中科大, USTC]
+    type: lab
+  - id: zhejiang_lab
+    name: 之江实验室
+    aliases: [之江实验室]
+    type: lab
+  - id: pengcheng_lab
+    name: 鹏城实验室
+    aliases: [鹏城实验室]
+    type: lab
+  - id: ict
+    name: 中科院计算所
+    aliases: [中科院计算所, 计算技术研究所]
+    type: lab
+  - id: automation
+    name: 中科院自动化所
+    aliases: [中科院自动化所, 自动化研究所]
+    type: lab
+  - id: miit
+    name: 工业和信息化部
+    aliases: [工业和信息化部, 工信部]
+    type: lab
+  - id: cac
+    name: 国家互联网信息办公室
+    aliases: [国家互联网信息办公室, 网信办]
+    type: lab
+  - id: ndrc
+    name: 国家发展改革委
+    aliases: [国家发展改革委, 发改委]
+    type: lab
+  - id: most
+    name: 科学技术部
+    aliases: [科学技术部, 科技部]
+    type: lab
+  - id: eu
+    name: 欧盟
+    aliases: [欧盟, European Union]
+    type: lab
+  - id: whitehouse
+    name: 白宫
+    aliases: [白宫, White House]
+    type: lab
+  - id: congress
+    name: 美国国会
+    aliases: [美国国会, Congress]
+    type: lab
+  - id: un
+    name: 联合国
+    aliases: [联合国, United Nations]
+    type: lab
+  - id: mlcommons
+    name: MLCommons
+    aliases: [MLCommons]
+    type: lab
+  - id: ieee
+    name: IEEE
+    aliases: [IEEE]
+    type: lab
+  - id: acm
+    name: ACM
+    aliases: [ACM]
+    type: lab
 
 people:
   - id: sam_altman
@@ -593,3 +915,79 @@ people:
     type: person
     weight: 0.55
     headquarters: usa
+  - id: leijun
+    name: 雷军
+    aliases: [雷军]
+    type: person
+  - id: zhouhongyi
+    name: 周鸿祎
+    aliases: [周鸿祎]
+    type: person
+  - id: wangxiaochuan
+    name: 王小川
+    aliases: [王小川]
+    type: person
+  - id: yangzhilin
+    name: 杨植麟
+    aliases: [杨植麟]
+    type: person
+  - id: yanjunjie
+    name: 闫俊杰
+    aliases: [闫俊杰]
+    type: person
+  - id: jiangdaxin
+    name: 姜大昕
+    aliases: [姜大昕]
+    type: person
+  - id: jack_ma
+    name: 马云
+    aliases: [马云]
+    type: person
+  - id: richard_liu
+    name: 刘强东
+    aliases: [刘强东]
+    type: person
+  - id: wangchuanfu
+    name: 王传福
+    aliases: [王传福]
+    type: person
+  - id: li_xiang
+    name: 李想
+    aliases: [李想]
+    type: person
+  - id: he_xiaopeng
+    name: 何小鹏
+    aliases: [何小鹏]
+    type: person
+  - id: william_li
+    name: 李斌
+    aliases: [李斌]
+    type: person
+  - id: yin_qi
+    name: 印奇
+    aliases: [印奇]
+    type: person
+  - id: kai_fu_lee
+    name: 李开复
+    aliases: [李开复]
+    type: person
+  - id: mustafa_suleyman
+    name: Mustafa Suleyman
+    aliases: [Mustafa Suleyman, 苏莱曼]
+    type: person
+  - id: aravind_srinivas
+    name: Aravind Srinivas
+    aliases: [Aravind Srinivas]
+    type: person
+  - id: jeff_dean
+    name: Jeff Dean
+    aliases: [Jeff Dean]
+    type: person
+  - id: clement_delangue
+    name: Clement Delangue
+    aliases: [Clement Delangue]
+    type: person
+  - id: thomas_wolf
+    name: Thomas Wolf
+    aliases: [Thomas Wolf]
+    type: person

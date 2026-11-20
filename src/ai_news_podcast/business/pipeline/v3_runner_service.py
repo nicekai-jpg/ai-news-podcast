@@ -8,6 +8,7 @@
 阶段产物：
     data/raw/raw-{date}.json.gz
     data/ocean/{date}/events.json|items.json|continuity.json
+    data/kg/{date}/kg.json
     data/selection/{date}/shortlist.json
     data/editorial/{date}/commentary.json
     site/episodes/{date}.txt
@@ -234,6 +235,54 @@ def _load_stage1_settings(config_root: Path) -> dict[str, Any]:
         return {}
     stage1 = data.get("stage1") if isinstance(data, dict) else {}
     return stage1 if isinstance(stage1, dict) else {}
+
+
+def _load_kg_settings(config_root: Path) -> dict[str, Any]:
+    path = config_root / "pipeline_v3.yaml"
+    if not path.is_file():
+        return {}
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        return {}
+    stage = data.get("stage2_5") if isinstance(data, dict) else {}
+    return stage if isinstance(stage, dict) else {}
+
+
+def _run_kg_stage(
+    *,
+    events: list[Event],
+    items: list[dict[str, Any]],
+    data_root: Path,
+    date_str: str,
+    config_root: Path,
+) -> dict[str, Any]:
+    """跑 Stage 2.5 事实层；任何异常都只告警，不阻断主链。"""
+    settings = _load_kg_settings(config_root)
+    if not settings.get("enabled", True):
+        logger.info("Stage 2.5 事实层：配置关闭，跳过")
+        return {"enabled": False}
+    try:
+        from ai_news_podcast.business.pipeline.kg_stage_service import run_facts_stage
+
+        stats = run_facts_stage(
+            items=items,
+            events=events,
+            date_str=date_str,
+            config_root=config_root,
+            data_root=data_root,
+        )
+    except Exception:
+        logger.warning("Stage 2.5 事实层失败，跳过（不影响主链）", exc_info=True)
+        return {"enabled": True, "ok": False, "error": "facts_failed"}
+    else:
+        logger.info(
+            "Stage 2.5 事实层：%s 个事件，%s 条 A / %s 条 B",
+            stats.get("events", 0),
+            stats.get("cards_a", 0),
+            stats.get("cards_b", 0),
+        )
+        return stats
 
 
 def _load_pricing(config_root: Path) -> dict[str, Any]:
@@ -530,6 +579,15 @@ def run_v3_pipeline(
     events: list[Event] = list(snapshot.events)
     events_path = ocean_dir / "events.json"
     logger.info("Stage 2 完成：%s 个事件", len(events))
+
+    # ---- Stage 2.5 知识图谱（可失败，不阻断 Stage 3） ----
+    _run_kg_stage(
+        events=events,
+        items=snapshot.items,
+        data_root=data_root,
+        date_str=date_str,
+        config_root=config_root,
+    )
 
     def _llm_for_factory(stage: str) -> LLMCall:
         if llm_call_factory is not None:

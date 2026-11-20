@@ -1,0 +1,44 @@
+version: 1
+# 噪声句模式：命中即整句跳过。
+# 原则：覆盖各种来源格式（文章/社区/视频/英文），但不误杀真新闻。
+patterns:
+  - category: author
+    pattern: "来源[:：]"
+  - category: author
+    pattern: "发自"
+  - category: author
+    pattern: "公众号"
+  - category: author
+    pattern: "Source:"
+  - category: author
+    pattern: "Written by"
+  - category: link
+    pattern: "原文链接"
+  - category: link
+    pattern: "参考链接"
+  - category: link
+    pattern: "Read more"
+  - category: interact
+    pattern: "扫码关注"
+  - category: event
+    pattern: "报名"
+  - category: ops
+    pattern: "往期回顾"
+  - category: ops
+    pattern: "Subscribe"
+  - category: ops
+    pattern: "Newsletter"
+  - category: reference
+    pattern: "参考文献"
+  - category: reference
+    pattern: "arXiv"
+  - category: community
+    pattern: "安装说明"
+  - category: community
+    pattern: "Star history"
+  - category: community
+    pattern: "License"
+  - category: video
+    pattern: "字幕"
+  - category: video
+    pattern: "时间戳"

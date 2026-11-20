@@ -82,6 +82,15 @@ DEFAULT_JUNK_KEYWORDS: tuple[str, ...] = (
     "recruit",
     "job",
     "webinar",
+    "早知道",
+    "早报",
+    "周报",
+    "盘点",
+    "汇总",
+    "一览",
+    "合集",
+    "速览",
+    "简报",
     "course",
     "sponsored",
     "advertisement",
@@ -314,6 +323,8 @@ class RecallSettings:
     ai_topics: tuple[str, ...] = DEFAULT_RECALL_AI_TOPICS
     ai_tech_stack: tuple[str, ...] = DEFAULT_RECALL_AI_TECH
     require_ai_relevance: bool = True
+    major_claim_actions: tuple[str, ...] = ("personnel", "funding", "acquisition", "ipo", "lawsuit")
+    major_claim_min_sources: int = 2
     ai_text_keywords: tuple[str, ...] = DEFAULT_AI_TEXT_KEYWORDS
 
 
@@ -331,6 +342,8 @@ class CoarseSettings:
     demote_penalty: float = 0.6
     single_source_penalty: float = 0.4
     require_ai_relevance: bool = True
+    major_claim_actions: tuple[str, ...] = ("personnel", "funding", "acquisition", "ipo", "lawsuit")
+    major_claim_min_sources: int = 2
     ai_text_keywords: tuple[str, ...] = DEFAULT_AI_TEXT_KEYWORDS
 
 
@@ -424,6 +437,11 @@ class RecommendConfig:
             demote_penalty=to_float_config(coarse_raw.get("demote_penalty"), 0.6),
             single_source_penalty=to_float_config(coarse_raw.get("single_source_penalty"), 0.4),
             require_ai_relevance=bool(coarse_raw.get("require_ai_relevance", True)),
+            major_claim_actions=_tuple_of_str(
+                coarse_raw.get("major_claim_actions"),
+                ("personnel", "funding", "acquisition", "ipo", "lawsuit"),
+            ),
+            major_claim_min_sources=int(coarse_raw.get("major_claim_min_sources", 2)),
             ai_text_keywords=_tuple_of_str(
                 coarse_raw.get("ai_text_keywords"), DEFAULT_AI_TEXT_KEYWORDS
             ),
