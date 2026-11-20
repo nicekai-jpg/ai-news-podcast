@@ -1,0 +1,425 @@
+{
+  "episode_id": "2026-11-20",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "早上好，我是林夏。今天值得听，因为AI正同时改写产品节奏和资本定价：Gemini 4 Neon、Phai系列和GPT-6.2扎进真实任务，Anthropic敲钟则把算力、盈利和争议摆上台面。两条线放一起，才看得出行业在争什么。",
+      "start": 1.0,
+      "duration": 18.51,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "我是陈默。咱们不只追榜单，更关注模型怎样用速度、成本和可用性换工作量，以及资本市场怎样给这种增长标价。跑得快是表面，持续把能力变成收入才是难题。",
+      "start": 19.959,
+      "duration": 13.56,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      },
+      "chapter": "今日开场"
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "没错，咱们不把技术更新和资本市场割裂开看，而是看看它们怎样互相影响。",
+      "start": 34.016,
+      "duration": 6.12,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "A",
+      "text": "模型竞速这条线先看谷歌。Gemini 4 Neon的位置很细：在旗舰Carbon和高频高效的Hydrogen之间，像咖啡店里的中杯，照顾那些既要能力又嫌慢的任务。",
+      "start": 40.589,
+      "duration": 14.67,
+      "audios": {
+        "lively": "chunk_004_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "模型竞速"
+    },
+    {
+      "id": 5,
+      "host": "B",
+      "text": "这个位置最有意思的是，它不只讲聪明，还把账算清楚。Neon速度约为Carbon的3倍，成本仅60%，支持100万token上下文和4档思考深度；每百万输入token 3美元，每百万输出token 15美元，缓存输入token低至0.15美元。开发者选的不只是模型，也是每次调用愿意付多少钱。",
+      "start": 55.664,
+      "duration": 23.51,
+      "audios": {
+        "professional": "chunk_005_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 6,
+      "host": "A",
+      "text": "“思考深度”能调很重要。以前聊推理模型，容易变成越慢越聪明；现在至少给了任务复杂度一个旋钮。",
+      "start": 79.607,
+      "duration": 8.68,
+      "audios": {
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "B",
+      "text": "对，而且榜单不只测答题。Neon在Artificial Analysis Intelligence Index以61分排第3，在Vals Index排第2，数值为70.9%；Agent Arena Index排第2，1336分，来自4200余个真实世界智能体会话。Legal Research Bench和Tax Agent Bench排第1，Zapier AutomationBench排第1，56.3%，这些更贴近法律、税务和企业流程。",
+      "start": 88.752,
+      "duration": 30.34,
+      "audios": {
+        "professional": "chunk_007_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 8,
+      "host": "A",
+      "text": "那这些名次能不能直接翻译成“好用”？我觉得还得看真实工作流。评测跑得漂亮是一层，能不能少返工、少绕路，是另一层。",
+      "start": 119.554,
+      "duration": 9.96,
+      "audios": {
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "B",
+      "text": "没错。谷歌还把Genie 4放进Project Genie：浏览时可用自然语言实时改环境，有原生音频，Project Genie Agent能生成、remix虚拟世界。像鼠标和画笔，一个帮你把事做完，一个让你改做事的地方。",
+      "start": 129.965,
+      "duration": 15.35,
+      "audios": {
+        "professional": "chunk_009_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 10,
+      "host": "A",
+      "text": "这个区别挺有意思。Neon和Genie 4不是同一场短跑，一个争夺工作台里的时间，一个争夺可交互世界。那Phai系列为什么也值得放进这条线？",
+      "start": 145.815,
+      "duration": 11.92,
+      "audios": {
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 11,
+      "host": "B",
+      "text": "11月18日，范式智能无预告发布Phai-A1和视频模型Phai-M1。官方口径是，同等质量下，Phai-A1响应速度比同参数级别模型快8–10倍；具体测试条件是相同单卡RTX 3090、相同版本代码Agent任务，对比对象是Qwen 27B。",
+      "start": 158.173,
+      "duration": 22.63,
+      "audios": {
+        "professional": "chunk_011_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 12,
+      "host": "A",
+      "text": "这里得谨慎一点，这是范式公布的测试数据，而且技术报告还没公开。所以“8–10倍”应该带着测试条件一起听，不能直接外推到所有硬件和任务。",
+      "start": 181.264,
+      "duration": 12.6,
+      "audios": {
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "B",
+      "text": "对。速度来源在公开资料里能看出轮廓：Phai-A1采用MoE架构，总参数350亿，但每个token只激活约30亿参数。Transformer推理计算量与激活参数相关，激活量降一个数量级，单token前向计算也降一个数量级，这正是官方所说的主要来源。类比一下，像是总图书馆很大，但每次只拉开你真正要看的几格。",
+      "start": 194.309,
+      "duration": 26.22,
+      "audios": {
+        "professional": "chunk_013_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "可只拉几格，会不会牺牲知识容量？Phai-A1还强调原生百万级上下文，权重在YaRN的factor=4设置上做过额外训练适配，config.json默认开启rope scaling来支持1M上下文；后训练数据也直接覆盖百万Token长上下文场景。",
+      "start": 221.003,
+      "duration": 21.99,
+      "audios": {
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "还有一个容易被忽略的点是，响应时延并不只看单token快不快，还等于首token延迟加生成token数乘以单token速度。Phai-A1面向写代码、修问题、工具调用和多步任务做强化训练，目标就是缩短思考路径，少生成冗余推理步骤。这对频繁交互的Agent场景，比只报一个峰值速度更实在。",
+      "start": 243.42,
+      "duration": 23.95,
+      "audios": {
+        "professional": "chunk_015_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 16,
+      "host": "A",
+      "text": "视频侧Phai-M1走的是“真”，也就是更弱的AI感、更细腻的画风。模型上线后有网友称体验入口服务器一度崩掉，不过这只能当热度旁证，不能替代模型质量本身。",
+      "start": 267.834,
+      "duration": 13.0,
+      "audios": {
+        "lively": "chunk_016_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 17,
+      "host": "B",
+      "text": "还有一个快讯，GPT-6.2 Astra和Sol也把“少输出、少花额度”放在核心位置。Astra面向最难项目，Sol面向日常工作；两者都称在困难任务上用更少输出token取得更好结果。相较GPT-6.1 Sol，GPT-6.2 Sol更聪明、更高效，同一付费方案能完成更多任务；Astra则强调文档、表格、代码和前端呈现更贴近模板与行业惯例。",
+      "start": 281.251,
+      "duration": 27.82,
+      "audios": {
+        "professional": "chunk_017_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 18,
+      "host": "A",
+      "text": "这几条线放一起，市场正在从“谁的智力最高”转向“谁能用更少时间和token交付可用结果”。速度、成本、上下文和工具调用，开始像同一张账本上的项目。",
+      "start": 309.507,
+      "duration": 12.92,
+      "audios": {
+        "lively": "chunk_018_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "镜头切到纽约。纽约当地时间周四11月19日上午，Anthropic在纽约纳斯达克交易所举行首次公开募股敲钟仪式，股票代码是“ANT”。时代广场的巨型电子屏幕直播现场，公司代表和嘉宾共同出席，现场响起掌声。",
+      "start": 322.844,
+      "duration": 21.03,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "资本定价"
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "掌声背后是定价。此次IPO发行价为每股83美元，新股发行融资规模约794亿美元；包括谷歌、英伟达在内的战略合作伙伴，还计划在IPO完成后认购合计约260亿美元的股票。按完全摊薄口径，公司估值接近1.5万亿美元。",
+      "start": 344.37,
+      "duration": 19.15,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "开盘后的早期交易又把温度往上推了一档：股价到$111.50，比$83的IPO价格高33%。按开盘报道的口径，这会让公司市值超过$2 trillion。这里不是两个估值互相打架，而是估值时点和股价不同。",
+      "start": 363.932,
+      "duration": 19.23,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "这个区分很重要。IPO价格是发行定价，开盘交易价是市场当场给出的另一张答卷。发行价此前已经高于公司预计的每股$70至$78区间，上市后的波动则提醒我们，早盘热情不能替代对长期经营问题的判断。",
+      "start": 383.641,
+      "duration": 17.63,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "更有点戏剧性的是，纳斯达克交易所附近出现了抗议。横幅写着“STOP TECH OLIGARCHS”和“AI OUT OF OUR HEALTHCARE”，来的人担心科技巨头的影响力，也担心人工智能进入医疗保健体系。",
+      "start": 401.703,
+      "duration": 16.79,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "这类抗议和财务数字不在同一层面，却共同定义了上市的复杂性：资本市场给公司定价，社会公众也在追问技术权力和行业边界。敲钟说明Anthropic获得了公开市场认可，但认可从来不等于所有问题已经有答案。",
+      "start": 418.961,
+      "duration": 16.39,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "还有一个值得盯的细节，战略伙伴还计划在IPO完成后认购合计约260亿美元的股票。这会让人想到，模型竞争背后不只是产品团队，还有算力供应、基础设施和资本同盟。",
+      "start": 435.841,
+      "duration": 16.64,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "对，这也是为什么IPO不能只看首日涨跌。Anthropic收入在快速增长，但巨额算力支出、未来盈利能力以及高估值的可持续性，才是资本市场关注的核心。前两项决定它能不能把故事变成经营结果，后一项决定今天的漂亮价格会不会成为明天压力。",
+      "start": 452.958,
+      "duration": 18.95,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "把另一边接回来就更清楚了。Gemini 4 Neon在争取用3倍速度和60%成本拿下任务，Phai-A1用稀疏激活和工程优化压低延迟，GPT-6.2 Astra与Sol强调用更少输出token完成更多事情；Anthropic则把同样的算力账放大到资本市场。一个在拼单位任务成本，一个在拼基础设施规模。",
+      "start": 472.326,
+      "duration": 27.03,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "这也解释为什么模型榜单和股价可以同时重要。模型能力决定产品有没有人用，产品使用决定收入，收入才决定算力投入能不能继续。链条很长，任何一环都可能让漂亮的数字变形。",
+      "start": 499.795,
+      "duration": 14.56,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "所以这场敲钟不是终局，更像把聚光灯换成放大镜。以前大家问模型会不会取代某些流程，现在还要追问：谁承担基础设施成本，谁享受规模效应，普通人又要承担什么外部性。",
+      "start": 514.767,
+      "duration": 16.12,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "这些问题不会被一次IPO回答，但会被公开市场逼着更频繁地回答。接下来更值得看的，是这些投入能不能持续转化成企业真正愿意付费的结果。",
+      "start": 531.38,
+      "duration": 10.32,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "今天可以收成一句话：模型端在拼更快、更省、更能完成真实工作，资本端在检验这些能力值多少钱。榜单仍然重要，但成本、上下文、工具调用和盈利能力，已经更能解释行业温度。",
+      "start": 542.109,
+      "duration": 14.83,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "明日观察"
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "明日看点：看Anthropic上市后的股价波动，继续追问算力支出与盈利；试Gemini 4 Neon和Genie 4的真实交互；等Phai技术报告，再看GPT-6.2 Astra与Sol能否减少专业任务返工。我们明天见。",
+      "start": 557.426,
+      "duration": 16.39,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
