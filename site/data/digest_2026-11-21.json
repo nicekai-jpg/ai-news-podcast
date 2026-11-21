@@ -1,0 +1,606 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-21",
+  "date_label": "2026年11月21日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": false
+  },
+  "podcast": {
+    "title": "今日AI看点 | 2026-11-21",
+    "subtitle": "昇腾算力训出了双榜SOTA的具身世界模型,华为云这次想把整套底座开放出来",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-21.mp3",
+    "duration_seconds": 581.696,
+    "duration_label": "09:42",
+    "speech_seconds": 561.71,
+    "segment_count": 43,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 43,
+      "segments_url": "episodes/2026-11-21/playlist.json",
+      "text_url": "episodes/2026-11-21.txt"
+    }
+  },
+  "lead": {
+    "text": "本期聚焦AI从“会回答”走向“能完成工作”的关键变化。华为云发布昇腾原生具身世界模型CloudRobo-WM1.2，OpenAI推出GPT-6.2 Astra与Sol，分别把机器人操作、工作文档和3D内容推向可交付形态。与此同时，SimpleX的Tetra-1探索把蛋白质结构纳入原生多模态推理，阿里在ATC 2026的两篇论文从推理集群与对象存储网络两侧降低系统浪费，Inkling 2 Mini则以稀疏激活、低精度和长上下文瞄准本地部署。节目沿“模型能力—系统成本—生产验证”展开，兼顾发布信息、案例与仍待验证的风险。",
+    "source": "podcast_review",
+    "source_file": "data/reports/daily_report_2026-11-21.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 755,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 1,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 43,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 8,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "模型走出屏幕",
+      "start": 33.056,
+      "label": "00:33",
+      "source": "script"
+    },
+    {
+      "title": "结构与系统底座",
+      "start": 304.871,
+      "label": "05:05",
+      "source": "script"
+    },
+    {
+      "title": "明日看点",
+      "start": 552.076,
+      "label": "09:12",
+      "source": "script"
+    }
+  ],
+  "report": {
+    "title": "深度日报 2026-11-21",
+    "lead": "据现有报道，华为云于11月16日发布昇腾原生具身世界模型CloudRobo-WM1.2，并计划于11月30日开放模型权重、推理代码和后训练代码。报道将其描述为从模型架构、训练框架、核心算子到推理部署均围绕昇腾进行软硬件协同优化，而非仅把既有模型迁移到昇腾芯片上运行。现有材料使用的是“计划开放”这一表述，不能据此确认模型权重及相关代码是否已经实际发布。",
+    "deep_dives": [
+      {
+        "heading": "1、华为云发布具身模型并计划开放权重与代码",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，华为云于11月16日发布昇腾原生具身世界模型CloudRobo-WM1.2，并计划于11月30日开放模型权重、推理代码和后训练代码。报道将其描述为从模型架构、训练框架、核心算子到推理部署均围绕昇腾进行软硬件协同优化，而非仅把既有模型迁移到昇腾芯片上运行。现有材料使用的是“计划开放”这一表述，不能据此确认模型权重及相关代码是否已经实际发布。\n据现有报道，CloudRobo-WM1.2在RoboTwin 2.0和LIBERO-Pro 2.0两项具身智能评测中的平均成功率均排名第一，对应成绩分别为88.98%和81.73%。该模型在昇腾算力上训练，其训练框架、关键算子和推理部署也围绕昇腾进行了优化；报道将这种从模型到软硬件栈的协同方式概括为“昇腾原生”。上述排名与成绩目前均只有同一现有报道这一来源。\n据现有报道，在一项第三方独立测试中，CloudRobo-WM1.2面对5种机器人本体，测试覆盖13项操作任务，其平均成功率比第二名高出23个百分点。报道列出的任务包括转动旋钮、双臂连续交接和玩具入篮，并提到机器人在插头意外滑脱后，可依据新的观测画面动态调整动作并重试插接。现有材料未给出该测试的具体机构、测试方法和完整分数。\n据现有报道，CloudRobo-WM1.2采用PPA（Perceive-Predict-Act）多模态世界表征架构，将感知、预测与动作放在同一阶段联合训练，并同步接入RGB视频、DINO语义特征、深度和三维点云等多类信号。报道称，该设计用于增强对物理交互结果的预判，并处理物体遮挡、视角变化和物体动态运动场景下的误差问题；这是对技术方案的描述，相关性能仍缺少其他独立来源复核。"
+          },
+          {
+            "label": "背景",
+            "text": "分析上，从本次发布的技术脉络看，具身模型需要把感知、预测与动作串联，并应对机器人本体、任务和物理环境的变化。现有报道将竞争维度概括为训练效率、数据规模、部署成本和场景落地速度，而不只是芯片本身的表现。这一定义来自单一报道，尚待更多行业材料交叉验证。"
+          },
+          {
+            "label": "影响",
+            "text": "分析上，对开发者和研究机构，开放模型与训练代码可能降低开展具身模型实验的起步成本；对企业用户，实际影响则更多取决于昇腾资源可获得性、部署条件、许可证以及适配其他机器人和任务的工作量。现有材料尚不足以量化这些条件，榜单与真机测试结果也需要在统一环境下进一步复核。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "2、阿里两篇论文获ATC 2026最佳论文奖",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，11 月 15 日，ATC 2026 期间，阿里巴巴在香港沙田万怡酒店举办 Alibaba Hong Kong Forum，主题为“面向下一代人工智能的全栈协同设计”（Full-Stack Co-Design for Next-Generation AI: Infrastructure, Systems, Models and Data）。论坛设置 AI Infra & AI Systems、Model & Data 两个并行 Session，高校学者与阿里巴巴技术专家介绍研究进展和技术难题；30+ 位高校学者、50+ 位高校学生和阿里技术专家参与技术交流。\n据现有报道，11 月 16 日，大会公布最佳论文奖：ATC 2026 共录用 135 篇论文，阿里巴巴入选 12 篇，并在 6 篇最佳论文中占 2 篇。获评的两篇论文为《Model-as-a-Service in the Wild: Characterizing Production LLM Inference Clusters at Scale》和《Lean: Saving OSS Network Cost by Application-Infrastructure Coordination》。\n据现有报道，《Model-as-a-Service in the Wild》依托十万卡级大模型服务平台 xMaaS，研究连续六个月、覆盖约 30 万个应用与 7 万个模型变体的真实运行数据。论文从集群、应用与模型三个层面揭示显存预留与实际使用不匹配、冷模型长期占用资源等问题，并同步开放脱敏数据，为异构算力调度、精细化显存管理与弹性扩缩容提供生产依据。\n据现有报道，《Lean》聚焦对象存储 OSS 的网络成本，以应用与网络基础设施协同设计为思路，用 SRv6 实现轻量化边缘接入、灵活流量调度与业务流量物理隔离。材料称，该系统已在生产环境持续运行四年，在同等生产流量下将 OSS 网络总成本较原方案降低 55.6%。该工作由阿里云与上海交通大学徐尔茨老师合作完成。"
+          },
+          {
+            "label": "背景",
+            "text": "从本次论坛的议题设置看，讨论范围被划分为基础设施、系统、模型与数据，并设置 AI Infra & AI Systems、Model & Data 两个并行 Session。就可见材料而言，论坛与获奖论文都聚焦生产系统研究，分别讨论推理集群资源管理和 OSS 网络成本优化，体现的是跨层协同的技术视角，而非仅围绕模型能力展开。"
+          },
+          {
+            "label": "影响",
+            "text": "分析来看，如果 xMaaS 运行数据中呈现的资源错配具有广泛性，异构调度、显存管理和弹性扩缩容可能改善推理平台的资源效率；如果 SRv6 协同方案可以复制，相关思路也可能扩展到更多云应用场景。不过，可见材料没有给出部署范围、时延或吞吐变化以及第三方复现结果，因此现阶段更适合将其视为工程优化方向和研究议题，而非对普遍业务成效的确定判断。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息。现有材料仅呈现阿里技术对论坛、论文及生产系统的介绍，未提供独立来源、第三方复现结果或对方法适用边界的公开讨论。"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "3、SimpleX 开放 Tetra-1 Preview 试用",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，机器之心于2026-11-19 12:09发布消息：SimpleX本源智简在11 月10 日开放Tetra-1 Preview试用。项目博客为https://simplexfoundry.com/tetra-1/，在线体验申请入口为https://simplexfoundry.com/tetra-1/apply/。报道将其定位为AI for Science初创公司的早期探索，目标是探索微观世界中的生物推理。\n据现有报道，Tetra-1 Preview不同于“语言模型+外部工具”的方案，将微观蛋白质结构作为与宏观文本并列的原生模态，使语言推理与结构生成在同一推理链中交替进行。报道将其称为“生物原生语言模型”的早期探索，并称该设置用于减少专用工具与语言模型跨系统衔接时，原子级结构细节被压缩或丢弃造成的信息损失。\n据现有报道，当前语言模型主要基于自然语言文本思考，在处理蛋白质折叠、抗体结合等微观结构计算时，需要调用AlphaFold等专用外部工具；报道认为，跨系统传递可能造成原子级结构信息损失。Tetra-1 Preview的公开评测关注无同源参照的全新结构（OOD 泛化）与复杂多分子界面结合。\n据现有报道，Anthropic公布了Claude的首批药物研发合作成果；另一组科研团队借助Claude自主设计出靶向食物过敏的双表位抗IgE抗体。报道同时回顾，Demis Hassabis与John Jumper领衔的AlphaFold团队摘下了2024 年诺贝尔化学奖，并引用John Jumper在《MIT Technology Review》专访中的问题：如何让“能读科学、能做一点科学推理”的机器与“超人级的蛋白结构预测系统”一起工作。"
+          },
+          {
+            "label": "背景",
+            "text": "背景：报道把Tetra-1放在大模型长程推理向生命科学扩展的背景下。传统方案让语言模型调用蛋白质结构预测等外部工具，Tetra-1则尝试把结构作为原生模态纳入同一推理链；报道还以Claude药物研发合作、过敏抗体设计和AlphaFold团队的2024 年诺贝尔化学奖作为技术脉络。"
+          },
+          {
+            "label": "影响",
+            "text": "影响（分析）：现阶段更适合将其视为一次可试用的早期技术发布，而非已经获得独立验证的行业结论。短期影响可能集中在AI for Science工具链和蛋白质结构研究流程；后续判断其实际价值，需要完整基准、接口说明、第三方复现，以及在具体任务中的稳定性、成本与可追溯性数据。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "4、OpenAI 发布 GPT-6.2 双模型，Astra 降价",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，OpenAI 于 2026-11-18 正式发布 GPT-6.2 Astra 和 GPT-6.2 Sol。Astra 被定位为处理复杂项目的旗舰模型，Sol 更轻快，面向日常写作、编程和多步骤任务；两款模型均已在 ChatGPT Work、Codex 和 API 上线。报道将本次更新的重点概括为两项：让表格、幻灯片和文档输出更接近可直接使用的工作成果，以及降低完成一道任务所花的钱。\n据现有报道，GPT-6.2 Astra 的标准 API 输入价格从上一代的每百万 Token 10 美元降到 8 美元，输出价格从 50 美元降到 40 美元，两项均下降 20%。GPT-6.2 Sol 延续上一代价格：每百万 Token 输入 2 美元，输出 10 美元。报道还称，在 OpenAI 公布的几项测试里，单次任务成本降得比单价更明显。\n据现有报道，GPT-6.2 Astra 的演示覆盖文档设计、3D 场景和车辆动态模拟。OpenAI 让新旧模型使用同一套模板，为四个团队设计动物主题周边；Astra 输出的方案随后被做成一本带插画的产品指南，包含徽章、T 恤和背包贴样式、矢量图、建议尺寸和打样说明。另一项演示先创建汽车的 3D 模型，再编写 Python 程序模拟轮胎与悬架动态关系，并用 Blender 将结果制作成动画。\n据现有报道，OpenAI 开发者 Thomas Ricouard 使用 GPT-6.2 Astra 和 Codex 制作了 Paris Atlas：用户可在浏览器中的虚拟巴黎里步行或开车。作者介绍，该项目包含交通、行人、自行车和 50 多个 3D 地标，并结合制作好的素材与程序化生成的地形和纹理。报道给出的体验地址为 https://developers.openai.com/showcase/paris-atlas。"
+          },
+          {
+            "label": "背景",
+            "text": "从现有报道呈现的脉络看，Astra 此前已用于专业文档、代码修改、电脑操作、3D 场景和设计工作，本次发布继续强化其复杂项目定位；报道把 Sol 定位为更轻快、面向日常写作、编程和多步骤任务的模型。更新同时覆盖能力演示、工作流可用性和定价调整，但现有材料没有提供完整的前代版本对照或更长的发布历史。"
+          },
+          {
+            "label": "影响",
+            "text": "若报道所列上线范围与价格持续有效，开发者可按任务复杂度评估模型选择：常规写作、编程和多步骤任务可先评估 Sol，复杂项目再评估 Astra。文档、PPT、代码和 3D 相关团队还需验证输出是否可直接进入现有流程，并观察复杂任务的 Token 消耗与返工量。现有证据不足以判断两款模型在实际生产环境中的总体优劣或替代节奏。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "5、Inkling 2 Mini 发布：面向本地多模态部署",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，Inkling 2 Mini 是一款循环式（looped）transformer 模型，采用多模态 Mixture-of-Experts 架构：物理总参数量约 26B，每个 token 激活参数量为 3B。其扩大容量的做法是让部分层在一个循环中重复三次（repeats three times），以在较低激活量下取得更大模型式的容量表现。模型发布方为 Thinking Machines Lab。\n据现有报道，Inkling 2 Mini 支持 1M-token 上下文长度，可接受图像与文本输入；发布方以混合精度格式提供该模型，专家权重（expert weights）采用 NVFP4 与 MXFP8 两种格式。模型另附带一个 DSpark drafter，用于在较小的显存代价下获得额外加速。文中称其体积远小于上一代 Inkling 2 Small，设计目标是面向本地 AI 环境运行。\n据现有报道，Inkling 2 Mini 随附 transformers、Llama App（llama.cpp）与 MLX 支持；SGLang 为其提供 day-zero（首日）推理支持，可用于数据中心硬件上的生产部署。发布方表示该模型比 Inkling 2 Small「小得多」（much, much smaller），并称在自家环境中运行面向本地 AI 部署的模型。\n据现有报道，来源方称在自行进行的「vibe tests」（体感测试）中，Inkling 2 Mini 至少与 Qwen 3.8 27B 相当，并明确写出仍需要更多验证（More validation is needed）。该对比出自发布方自测，文中未给出标准化基准脚本、测试硬件配置或第三方复现数据。"
+          },
+          {
+            "label": "背景",
+            "text": "Inkling 2 系列此前已有 Inkling 2 Small，本次为面向本地部署的 Mini 版本，发布方的叙述主线是循环层结构、混合精度专家权重与推理框架适配。事件资料把主体标注为通义千问，而证据文本显示模型由 Thinking Machines Lab 推出、并将对比对象写作 Qwen 3.8 27B，两者关系尚不明确。循环 transformer 与低比特权重、推测解码是近端侧推理常见的降本思路，此处仅作为脉络梳理。"
+          },
+          {
+            "label": "影响",
+            "text": "潜在影响集中在本地与私有化部署的开发者与企业用户：多模态输入、1M-token 上下文与较低激活参数量的组合，若实测成立，可能降低单机环境承载多模态长上下文任务的资源门槛；transformers、llama.cpp、MLX、SGLang 的适配也意味着接入路径相对完整。但当前只有 1 个独立来源、无第三方基准与引语，企业侧采用前宜以自有任务集做实测。以上为分析判断。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息。已有的保留意见来自来源方自身：与 Qwen 3.8 27B 的比较基于「vibe tests」，并写明「More validation is needed」，文中亦使用「Wewe are super excited」等主观表述，未提供可复现的评测细节。"
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      }
+    ],
+    "frontier": [],
+    "raw_paragraphs": [],
+    "toc": [
+      {
+        "level": 3,
+        "text": "1、华为云发布具身模型并计划开放权重与代码"
+      },
+      {
+        "level": 3,
+        "text": "2、阿里两篇论文获ATC 2026最佳论文奖"
+      },
+      {
+        "level": 3,
+        "text": "3、SimpleX 开放 Tetra-1 Preview 试用"
+      },
+      {
+        "level": 3,
+        "text": "4、OpenAI 发布 GPT-6.2 双模型，Astra 降价"
+      },
+      {
+        "level": 3,
+        "text": "5、Inkling 2 Mini 发布：面向本地多模态部署"
+      }
+    ],
+    "char_count": 5626,
+    "reading_minutes": 14,
+    "editor_verdict": "五条正文的事件描述、日期和核心数字大体与所给证据相符，也普遍保留了单一来源和“计划开放”的限定。主要问题是 SimpleX、Inkling 的事件主体错标，OpenAI 条目的来源与论据范围错配，华为条目缺原始链接和年份；被截断的评测及成本口径仍需独立复核。\n\n华为云发布具身模型并计划开放权重与代码：核心发布、双榜成绩、第三方测试的23个百分点及PPA描述均与证据一致，也正确区分“计划开放”和“已经开放”。需补原始报道链接及两个“11月”的年份；当前来源列表为空，读者无法追溯。\n\n阿里两篇论文获ATC 2026最佳论文奖：论坛日程、135篇录用、12篇入选、6篇最佳论文中占2篇，以及30万应用、7万变体、运行四年和55.6%降幅均与原文一致。数字核对无误，但仍缺ATC官方名单和论文全文佐证。\n\nSimpleX 开放 Tetra-1 Preview 试用：发布主体、试用时间、架构描述及背景引文均见于报道，且对截断评测保持克制。主要编辑错误在事件主体：应为SimpleX本源智简；Anthropic等仅是背景，50亿美元融资亦无证据，相关数字应移除或待核。\n\nOpenAI 发布 GPT-6.2 双模型，Astra 降价：GPT-6.2型号、上下线范围及Astra由10/50美元降至8/40美元、Sol为2/10美元均与证据一致，20%降幅计算无误。问题是来源列表只放Paris Atlas展示页，无法支撑发布和定价。\n\nInkling 2 Mini 发布：面向本地多模态部署：26B总参数、3B激活、1M上下文、NVFP4/MXFP8、DSpark及“至少相当”均与证据一致，也保留了来源方自测限制。需纠正主体、模型代际关系和引语错字，部分机制表述也应收紧。",
+    "source_file": "data/editorial/2026-11-21/report.json"
+  },
+  "report_review": {
+    "overall": "五条正文的事件描述、日期和核心数字大体与所给证据相符，也普遍保留了单一来源和“计划开放”的限定。主要问题是 SimpleX、Inkling 的事件主体错标，OpenAI 条目的来源与论据范围错配，华为条目缺原始链接和年份；被截断的评测及成本口径仍需独立复核。",
+    "items": [
+      {
+        "event_id": "438ade465c6dcc5791bf4d611f633831e07a808d92ccba9611b2cfd7148ef00f",
+        "title": "华为云发布具身模型并计划开放权重与代码",
+        "verdict": "补充",
+        "comment": "核心发布、双榜成绩、第三方测试的23个百分点及PPA描述均与证据一致，也正确区分“计划开放”和“已经开放”。需补原始报道链接及两个“11月”的年份；当前来源列表为空，读者无法追溯。",
+        "corrections": [
+          "补充原始报道链接、发布日期，以及11月16日和11月30日的具体年份；现有证据未注明年份，且日报的 sources 列表为空。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "9d033aa9059fc495a638b63650393a5a2f439d8e59c87a8e2e91e6cb1dec9df4",
+        "title": "阿里两篇论文获ATC 2026最佳论文奖",
+        "verdict": "补充",
+        "comment": "论坛日程、135篇录用、12篇入选、6篇最佳论文中占2篇，以及30万应用、7万变体、运行四年和55.6%降幅均与原文一致。数字核对无误，但仍缺ATC官方名单和论文全文佐证。",
+        "corrections": [
+          "补充ATC 2026官方获奖名单或两篇论文页面；当前只有阿里技术自述，尚不足以独立确认获奖及生产系统数据。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "2b2892cef58e132400523e38a4dfad4f57ab671cff3c501175c5850785e89d1e",
+        "title": "SimpleX 开放 Tetra-1 Preview 试用",
+        "verdict": "需修正",
+        "comment": "发布主体、试用时间、架构描述及背景引文均见于报道，且对截断评测保持克制。主要编辑错误在事件主体：应为SimpleX本源智简；Anthropic等仅是背景，50亿美元融资亦无证据，相关数字应移除或待核。",
+        "corrections": [
+          "将事件主体由“Anthropic、Demis Hassabis、MIT”改为“SimpleX本源智简”；现有证据中的Anthropic、AlphaFold和MIT仅是技术背景，不是Tetra-1的发布主体或合作方。",
+          "删除“50亿美元融资”及融资主体、轮次和时间，或取得独立证据后再保留；可见证据未提供该信息。",
+          "建议将Claude合作、抗体设计和诺奖内容从facts移至background，避免与Tetra-1发布事实并列后造成关联误读。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "536e01a4177979dbef6efa742f1013477678b1ca3805bb5b31087d2d455b7598",
+        "title": "OpenAI 发布 GPT-6.2 双模型，Astra 降价",
+        "verdict": "补充",
+        "comment": "GPT-6.2型号、上下线范围及Astra由10/50美元降至8/40美元、Sol为2/10美元均与证据一致，20%降幅计算无误。问题是来源列表只放Paris Atlas展示页，无法支撑发布和定价。",
+        "corrections": [
+          "将实际证据来源“阿雅（2026-11-18）”列入sources并补充文章链接；现有OpenAI Developers Showcase链接只对应Paris Atlas案例。",
+          "补充OpenAI官方模型发布与定价页面，用于核验价格及ChatGPT Work、Codex、API的上线状态；在此之前继续保留“据现有报道”的限定。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "59eb294c4014a70cfaae99ddbe613efcf78b7e94d89458291b9093156855eeaf",
+        "title": "Inkling 2 Mini 发布：面向本地多模态部署",
+        "verdict": "需修正",
+        "comment": "26B总参数、3B激活、1M上下文、NVFP4/MXFP8、DSpark及“至少相当”均与证据一致，也保留了来源方自测限制。需纠正主体、模型代际关系和引语错字，部分机制表述也应收紧。",
+        "corrections": [
+          "将事件主体从“通义千问”改为“Thinking Machines Lab”；Qwen 3.8 27B仅是比较对象，证据未说明两者存在归属关系。",
+          "将“上一代Inkling 2 Small”“此前已有”改为“体量小于Inkling 2 Small”；证据未给出两者的发布时间或代际关系。",
+          "修正引语中的“「Wewe are super excited」”，证据原文为“we are super excited about this release”。",
+          "将“用于推测解码”及“近端侧常见降本思路”收紧为证据明确的“以较小显存代价获得额外加速”；可见证据未展开推测解码机制或行业普遍性。"
+        ],
+        "highlights": []
+      }
+    ],
+    "risks": [
+      "五条事件均只有一个来源；涉及发布、获奖、榜单、价格和性能的主张仍需官方材料或独立第三方交叉验证。",
+      "五段证据正文均有截断，尤其需要补齐SimpleX评测细节、华为第三方测试方法、Lean成本统计口径及后续材料。",
+      "华为条目仍只有开放计划，仓库地址、许可证、代码范围和实际发布状态均需确认。",
+      "SimpleX与Inkling的主体标注可能影响索引和关联推荐，应在入库前修正；未经证实的融资数字不应出现在公开日报中。"
+    ]
+  },
+  "podcast_review": {
+    "overall": "本期以“从能力展示走向任务交付”为主线，串联具身智能、双模型工作流、原生结构推理与系统降本，结构清晰且有生产视角。亮点是将模型表现与成本、部署链路并置；不足是部分评测结论来源单一，Tetra-1的领先表述证据不足，且“明日”与具体日期略有错位。",
+    "show_notes": "本期聚焦AI从“会回答”走向“能完成工作”的关键变化。华为云发布昇腾原生具身世界模型CloudRobo-WM1.2，OpenAI推出GPT-6.2 Astra与Sol，分别把机器人操作、工作文档和3D内容推向可交付形态。与此同时，SimpleX的Tetra-1探索把蛋白质结构纳入原生多模态推理，阿里在ATC 2026的两篇论文从推理集群与对象存储网络两侧降低系统浪费，Inkling 2 Mini则以稀疏激活、低精度和长上下文瞄准本地部署。节目沿“模型能力—系统成本—生产验证”展开，兼顾发布信息、案例与仍待验证的风险。",
+    "chapters": [
+      {
+        "title": "模型走出屏幕",
+        "intro": "从机器人进入物理世界，到模型直接生成文档、表格与三维内容，本章讨论“能力商品化”之后的新问题：失败能否被感知、结果能否直接交付，以及模型如何嵌入既有工作流。",
+        "highlights": [
+          "CloudRobo-WM1.2以PPA联合感知、预测与动作，并计划开放模型权重及推理、后训练代码。",
+          "GPT-6.2 Astra标准API输入、输出价格均下调20%，Sol维持上一代价格。",
+          "工作文档、3D场景与虚拟巴黎案例显示交付物正从文本答案延伸到可用成果。"
+        ]
+      },
+      {
+        "title": "结构与系统底座",
+        "intro": "本章把视角从模型前端拉向系统底层：结构模态如何减少科学工具间的信息损失，推理集群与网络如何消除资源浪费，以及本地多模态模型怎样压低部署门槛。",
+        "highlights": [
+          "Tetra-1 Preview把蛋白质结构作为原生模态，探索统一推理空间。",
+          "阿里两篇ATC论文分别聚焦大规模推理资源调度和OSS网络成本协同。",
+          "Inkling 2 Mini以约26B总参数、3B激活参数和1M上下文支持本地多模态部署。"
+        ]
+      },
+      {
+        "title": "明日看点",
+        "intro": "本章收束于验证节点：开放计划能否兑现、降价能否转化为更低的单任务成本，以及早期模型和本地部署方案能否获得独立实测支持。",
+        "highlights": [
+          "11月30日的开放计划是近期可核查节点。",
+          "真实单任务成本比每百万Token标价更接近生产价值。",
+          "Tetra-1与Inkling 2 Mini需要第三方基准和真实硬件复现。"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "event_id": "438ade465c6dcc5791bf4d611f633831e07a808d92ccba9611b2cfd7148ef00f",
+        "title": "华为云发布具身模型并计划开放权重与代码",
+        "verdict": "准确",
+        "comment": "发布与开放计划的时间、评测成绩、PPA架构及多模态输入均与现有材料一致。第三方测试的机构、方法与完整分数未披露，节目应继续把性能结论限定为报道所称，而非已充分独立验证。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "536e01a4177979dbef6efa742f1013477678b1ca3805bb5b31087d2d455b7598",
+        "title": "OpenAI 发布 GPT-6.2 双模型，Astra 降价",
+        "verdict": "准确",
+        "comment": "两款模型定位、上线渠道、价格变化及官方案例均与材料一致；节目把关注点从Token单价扩展到单任务成本，抓住了生产评估的关键。案例展示仍不能替代跨任务基准和真实返工数据。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "2b2892cef58e132400523e38a4dfad4f57ab671cff3c501175c5850785e89d1e",
+        "title": "SimpleX 开放 Tetra-1 Preview 试用",
+        "verdict": "需修正",
+        "comment": "原生结构模态、Preview阶段及研发目标表述准确；但“超过AlphaFold3、IsoDDE与Claude Opus”的结论不见于所给事实材料，应删除或补齐评测来源、设置与指标，并明确是否为发布方测试。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "9d033aa9059fc495a638b63650393a5a2f439d8e59c87a8e2e91e6cb1dec9df4",
+        "title": "阿里两篇论文获ATC 2026最佳论文奖",
+        "verdict": "准确",
+        "comment": "论坛信息、论文入选与获奖数量、xMaaS运行规模及Lean降本55.6%均与材料一致。将模型服务与网络基础设施并置，说明节目不只关注模型分数，也关注生产系统中的资源利用。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "59eb294c4014a70cfaae99ddbe613efcf78b7e94d89458291b9093156855eeaf",
+        "title": "Inkling 2 Mini 发布：面向本地多模态部署",
+        "verdict": "准确",
+        "comment": "循环式Transformer、多模态MoE、约26B总参数、3B激活、1M上下文及部署支持均与材料一致。节目保留了“仍需更多验证”的限定，也应注明其与Qwen的对比来自发布方自测。",
+        "corrections": [],
+        "highlights": []
+      }
+    ],
+    "fact_check_notes": [
+      "文稿称Tetra-1在公开评测中“超过AlphaFold3、IsoDDE与Claude Opus”，但所给日报要点只说明评测关注OOD全新结构与复杂多分子界面结合，未提供该比较结论。需补充来源、任务、指标和测试方，否则应删除或改成有明确归属的报道口径。",
+      "CloudRobo-WM1.2的两项榜单排名、88.98%与81.73%的成绩，以及第三方测试领先23个百分点，目前均来自同一现有报道；第三方测试机构、方法、完整分数及独立复核信息缺失，“独立测试”宜注明来源边界。",
+      "Inkling 2 Mini“至少与Qwen 3.8 27B相当”来自发布方vibe tests，缺少标准化脚本、硬件配置和第三方复现；文稿已有“需要更多验证”的限定，页面文案也应继续保留。",
+      "“明日看点”中的11月30日是华为云计划开放日期。若节目在11月19日前后发布，它并非字面意义上的“明日”，建议将“明日”仅作为栏目名，或改为“后续看点”或“下一验证节点”。"
+    ]
+  },
+  "sources": {
+    "total_all": 8,
+    "total_main": 1,
+    "shown": 8,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 8
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "量子位（RSSHub）",
+        "group": "科技媒体",
+        "source_name": "量子位（RSSHub）",
+        "category": "",
+        "title": "昇腾算力训出了双榜SOTA的具身世界模型,华为云这次想把整套底座开放出来",
+        "summary": "国产算力的成熟,把具身竞争维度从「芯片有多强」,拉入了一个比拼训练效率、数据规模、部署成本和场景落地速度的多维战场。 华为云要开源具身世界模型了,一开就是双榜第一! 关键是,这个模型用的还是国产昇腾算力。 11月16日,华为云发布了 昇腾原生具身世界模型CloudRobo-WM1.2 。 在RoboTwin 2.0和LIBERO-Pro 2.0两项具身智能评测中,它的平均成功率都排第一。 华为云计划在11月30日,开放该模型权重、推理代码和后训练代码。 好么,连后训练代码都直",
+        "link": "https://www.qbitai.com/2026/11/511610.html",
+        "published_at": "2026-11-20T08:04:58+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "阿里技术",
+        "group": "科技媒体",
+        "source_name": "阿里技术",
+        "category": "",
+        "title": "阿里巴巴两篇论文获 ATC 2026 最佳论文奖,并在港研讨 AI Native 系统的可靠性与效率",
+        "summary": "原创 阿里技术 2026-11-19 20:02 浙江 11 月 15 日,在 ATC 2026 期间,阿里巴巴于香港沙田万怡酒店举办 Alibaba Hong Kong Forum,主题为「面向下一代人工智能的全栈协同设计」(Full-Stack Co-Design for Next-Generation AI: Infrastructure, Systems, Models and Data)。设 AI Infra & AI Systems、M odel & Data 两",
+        "link": "https://mp.weixin.qq.com/s?__biz=Mzg4NTczNzg2OA==&mid=2247512863&idx=1&sn=6bb494cb5f4f8cfc53945efeea17c50a",
+        "published_at": "2026-11-19T12:02:00+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "机器之心（公众号）",
+        "group": "科技媒体",
+        "source_name": "机器之心（公众号）",
+        "category": "",
+        "title": "语言模型推理折叠蛋白质?把3D结构塞进思维链,超越AlphaFold3、IsoDDE与Claude Opus",
+        "summary": "SimpleX 开放Tetra-1 Preview 试用,迈向微观世界的生物推理。",
+        "link": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651075302&idx=1&sn=1badc9c3cd5176dcd98e705345707a2d",
+        "published_at": "2026-11-19T04:09:00+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "夕小瑶科技说",
+        "group": "科技媒体",
+        "source_name": "夕小瑶科技说",
+        "category": "",
+        "title": "GPT-6.2 Astra 和 Sol 正式发布,Astra 降价了",
+        "summary": "原创 阿雅 2026-11-18 08:11 北京 被催了这么久,OpenAI 终于这次把两款模型一起发布了。 今天凌晨,OpenAI 正式发布了两款 GPT-6.2 Astra 和 GPT-6.2 Sol。 Astra 是处理复杂项目的旗舰模型,Sol 更轻快,负责日常写作、编程和多步骤任务。 两款模型现在都已在 ChatGPT Work、Codex 和 API 上线。 这次更新,OpenAI 把重点放在了两件事上: 交出来的表格、幻灯片和文档更接近工作里能直接用的成品,做",
+        "link": "https://mp.weixin.qq.com/s?__biz=MzIwNzc2NTk0NQ==&mid=2247623485&idx=1&sn=a3f36a2369f9c0a490fa6f8013c6917f",
+        "published_at": "2026-11-18T00:11:00+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "HuggingFace Blog",
+        "group": "科技媒体",
+        "source_name": "HuggingFace Blog",
+        "category": "",
+        "title": "Welcome Inkling 2 Mini, Cutting-edge Performance for your Local Setup",
+        "summary": "",
+        "link": "https://huggingface.co/blog/inkling2mini",
+        "published_at": "2026-11-20T00:00:00+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "InfoQ",
+        "group": "科技媒体",
+        "source_name": "InfoQ",
+        "category": "",
+        "title": "AI 漫剧不缺作品,缺什么?|QLab直播",
+        "summary": "半年新增 22.19 万部 AI 剧及漫剧,但能达到回本所需播放量的,只有约 1.3%。 据 DataEye 相关统计,2026 年上半年,抖音端新增 AI 剧及漫剧 22.19 万部。与此同时,AI 短剧制作成本下降约 90%,流量成本却同比上涨超过 100%。 AI 把短剧制作成本打下来了,为什么赚钱反而更难了? 作品越来越容易做,流量越来越贵,竞争也越来越激烈。对于想入局的普通创作者、小型 AI 影视团队来说,最关心的恐怕还是:现在做 AI 漫剧,到底还有没有机会? 今",
+        "link": "https://www.infoq.cn/article/27xI2tBkStO5qz52VBPw",
+        "published_at": "2026-11-20T09:14:29+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "Claude Code Changelog",
+        "group": "科技媒体",
+        "source_name": "Claude Code Changelog",
+        "category": "",
+        "title": "2.1.330",
+        "summary": "Added Added sign-in to organizations managed in Anthropic’s Enterprise Admin Console: after claude auth login , Claude Code applies the organization’s settings and uses its cloud provider or gateway Added easel, a built-in mod that draws ch",
+        "link": "https://code.claude.com/docs/en/changelog#2-1-330",
+        "published_at": "2026-11-20T00:00:00+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "TrendForce",
+        "group": "科技媒体",
+        "source_name": "TrendForce",
+        "category": "",
+        "title": "[News] Alibaba Begins AI Model Training with T-Head Chips, Targets Full Domestic Adoption by 2027 amid New U.S. Curbs",
+        "summary": "Alibaba is accelerating its shift toward domestically developed AI chips as tighter U.S. export restrictions threaten Chinese companies’ access to advanced computing power. According to Nikkei , CEO Eddie Wu said the company is already trai",
+        "link": "https://www.trendforce.com/news/2026/11/20/news-alibaba-begins-ai-model-training-with-t-head-chips-targets-full-domestic-adoption-by-2027-amid-new-u-s-curbs/",
+        "published_at": "2026-11-20T09:12:24+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": false,
+    "status": "unavailable",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": null,
+    "runner_ups": [],
+    "yesterday": null,
+    "candidates": {
+      "total": 0,
+      "excluded_recent": 0,
+      "fresh": null,
+      "semantics": "unknown",
+      "detail_available": false,
+      "preview": null
+    },
+    "message": "该日期暂无项目雷达"
+  },
+  "quality": {
+    "mode": "normal",
+    "chars": 3403,
+    "turns": 43,
+    "host_a_chars": 1527,
+    "host_b_chars": 1575,
+    "host_char_ratio": 0.492,
+    "chapters": 3
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-11-21.json",
+      "report": "data/reports/daily_report_2026-11-21.md",
+      "radar": "data/gh_radar/radar_2026-11-21.json",
+      "playlist": "site/episodes/2026-11-21/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": [
+      "radar_candidate_detail_unavailable"
+    ]
+  }
+}
