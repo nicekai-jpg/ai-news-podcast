@@ -1,7 +1,20 @@
 {
   "schema_version": 1,
-  "default_date": "2026-11-21",
+  "default_date": "2026-11-22",
   "dates": [
+    {
+      "date": "2026-11-22",
+      "issue_number": null,
+      "title": "今日AI看点 | 2026-11-22",
+      "availability": {
+        "podcast": true,
+        "transcript": true,
+        "playlist": true,
+        "report": true,
+        "sources": true,
+        "radar": false
+      }
+    },
     {
       "date": "2026-11-21",
       "issue_number": null,
@@ -370,19 +383,6 @@
       "date": "2026-10-15",
       "issue_number": null,
       "title": "AI 新闻快报 | 2026-10-15",
-      "availability": {
-        "podcast": true,
-        "transcript": true,
-        "playlist": true,
-        "report": true,
-        "sources": true,
-        "radar": true
-      }
-    },
-    {
-      "date": "2026-10-14",
-      "issue_number": null,
-      "title": "AI 新闻快报 | 2026-10-14",
       "availability": {
         "podcast": true,
         "transcript": true,
