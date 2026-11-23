@@ -8,6 +8,7 @@
     python scripts/kg_facts.py eval --gold data/eval/kg_facts_gold.jsonl --min-precision 0.85
     python scripts/kg_facts.py query --subject 英伟达 --relation personnel
     python scripts/kg_facts.py audit --days 3
+    python scripts/kg_facts.py watch --days 7
 """
 
 from __future__ import annotations
@@ -253,6 +254,126 @@ def _recent_fact_dates(facts_dir: Path, days: int) -> list[str]:
         return []
     names = sorted(path.stem.replace("facts-", "") for path in facts_dir.glob("facts-*.jsonl"))
     return names[-days:] if days > 0 else names
+
+
+def cmd_watch(args: argparse.Namespace) -> int:
+    """A/A2 每日趋势 + 异常告警，供观察期一天看一眼。
+
+    与 `audit` 互补：audit 给单日全量明细，watch 给多日趋势。
+    """
+    data_dir = Path(args.data_dir)
+    facts_dir = data_dir / "facts"
+    dates = _recent_fact_dates(facts_dir, args.days)
+    if not dates:
+        print("没有事实文件", file=sys.stderr)
+        return 2
+
+    rows_by_date: list[tuple[str, list[dict]]] = []
+    for date_str in dates:
+        rows = load_day(facts_dir, date_str)
+        if rows:
+            rows_by_date.append((date_str, rows))
+    if not rows_by_date:
+        print("事实文件为空", file=sys.stderr)
+        return 2
+
+    print("## A/A2 每日趋势")
+    print("")
+    print("| 日期 | A | A2 | B | A+A2 占比 | 关系数 |")
+    print("|---|---|---|---|---|---|")
+    series: list[tuple[str, int, int]] = []
+    for date_str, rows in rows_by_date:
+        a = sum(1 for row in rows if row.get("grade") == "A")
+        a2 = sum(1 for row in rows if row.get("grade") == "A2")
+        b = len(rows) - a - a2
+        relations = len({row.get("relation") for row in rows if row.get("grade") in ("A", "A2")})
+        share = f"{(a + a2) / len(rows):.2%}" if rows else "-"
+        print(f"| {date_str} | {a} | {a2} | {b} | {share} | {relations} |")
+        series.append((date_str, a, a2))
+
+    total_a = sum(item[1] for item in series)
+    total_a2 = sum(item[2] for item in series)
+    days = len(series)
+    print(
+        f"| **合计** | **{total_a}** | **{total_a2}** | | "
+        f"均值 {total_a / days:.1f} / {total_a2 / days:.1f} | |"
+    )
+
+    warnings = _watch_warnings(series, rows_by_date, args)
+    print("")
+    print("## 告警")
+    print("")
+    if warnings:
+        for item in warnings:
+            print(f"- {item}")
+    else:
+        print("- 无异常")
+
+    if args.sample:
+        print("")
+        print("## 抽查样本（随机）")
+        print("")
+        for line in _sample_lines(rows_by_date[-1][1], args.sample, seed=args.seed):
+            print(f"- {line}")
+    return 0
+
+
+def _watch_warnings(
+    series: list[tuple[str, int, int]],
+    rows_by_date: list[tuple[str, list[dict]]],
+    args: argparse.Namespace,
+) -> list[str]:
+    """观察期最该被发现的三种异常。"""
+    warnings: list[str] = []
+    zero_days = [date_str for date_str, a, a2 in series if a + a2 == 0]
+    if zero_days:
+        warnings.append(f"A+A2 为 0 的日期：{'、'.join(zero_days)}（可能是数据缺失或抽取全线失败）")
+
+    if len(series) >= 2:
+        latest_a = series[-1][1]
+        base = sum(item[1] for item in series[:-1]) / (len(series) - 1)
+        if base >= 3 and latest_a < base * 0.34:
+            warnings.append(
+                f"A 档骤降：最新 {latest_a} 条，此前均值 {base:.1f} 条（词典被改坏或抽取退化）"
+            )
+
+    today_rows = rows_by_date[-1][1]
+    bad_evidence = [
+        row
+        for row in today_rows
+        if row.get("grade") in ("A", "A2")
+        and not str((row.get("evidence") or {}).get("sentence") or "").strip()
+    ]
+    if bad_evidence:
+        warnings.append(f"{len(bad_evidence)} 条 A/A2 证据句为空")
+
+    if args.min_a and args.min_a2:
+        recent = series[-args.min_days :]
+        avg_a = sum(item[1] for item in recent) / len(recent)
+        avg_a2 = sum(item[2] for item in recent) / len(recent)
+        if avg_a < args.min_a:
+            warnings.append(f"A 档均值 {avg_a:.1f} < 门槛 {args.min_a}")
+        if avg_a2 < args.min_a2:
+            warnings.append(f"A2 档均值 {avg_a2:.1f} < 门槛 {args.min_a2}")
+    return warnings
+
+
+def _sample_lines(rows: list[dict], size: int, *, seed: int = 13) -> list[str]:
+    """随机抽若干条 A/A2，附证据句，供人工眼检。"""
+    import random
+
+    picked = [row for row in rows if row.get("grade") in ("A", "A2")]
+    if not picked:
+        return ["（当日无 A/A2）"]
+    rng = random.Random(seed)
+    if len(picked) > size:
+        picked = rng.sample(picked, size)
+    out: list[str] = []
+    for row in picked:
+        grade = row.get("grade")
+        sentence = str((row.get("evidence") or {}).get("sentence") or "")[:60]
+        out.append(f"[{grade}] {render_fact_line(row)}　← {sentence}")
+    return out
 
 
 def _iso_weeks(days: int) -> list[str]:
@@ -822,7 +943,7 @@ def cmd_validate(args: argparse.Namespace) -> int:  # noqa: C901, PLR0912, PLR09
     return 0 if not errors else 1
 
 
-def main() -> int:
+def main() -> int:  # noqa: PLR0915
     parser = argparse.ArgumentParser(description="事实层 CLI")
     parser.add_argument("--data-dir", default="data")
     parser.add_argument("--config-dir", default="config")
@@ -873,6 +994,15 @@ def main() -> int:
     audit.add_argument("--no-context", action="store_true", help="不打印原文上下文")
     audit.add_argument("--out-md", default="")
     audit.set_defaults(func=cmd_audit)
+
+    watch = sub.add_parser("watch", help="A/A2 每日趋势（观察期用）")
+    watch.add_argument("--days", type=int, default=7)
+    watch.add_argument("--sample", type=int, default=5, help="最新一天随机抽查条数")
+    watch.add_argument("--seed", type=int, default=13)
+    watch.add_argument("--min-a", type=int, default=0, help="A 档日均门槛，低于则告警")
+    watch.add_argument("--min-a2", type=int, default=0, help="A2 档日均门槛")
+    watch.add_argument("--min-days", type=int, default=3)
+    watch.set_defaults(func=cmd_watch)
 
     query = sub.add_parser("query", help="查事实")
     query.add_argument("--subject", default="")

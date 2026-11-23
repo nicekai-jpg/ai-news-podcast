@@ -1,0 +1,117 @@
+"""kg_facts watch：A/A2 趋势与告警。"""
+
+from __future__ import annotations
+
+import importlib.util
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def _load_script():
+    spec = importlib.util.spec_from_file_location(
+        "kg_facts_watch", ROOT / "scripts" / "kg_facts.py"
+    )
+    module = importlib.util.module_from_spec(spec)
+    sys.modules["kg_facts_watch"] = module
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    return module
+
+
+def _row(grade: str, subject: str, relation: str, obj: str, *, sentence: str = "原句") -> dict:
+    return {
+        "grade": grade,
+        "subject": {"name": subject, "id": "", "kind": "company"},
+        "relation": relation,
+        "slots": {"object": {"text": obj, "entity_id": "", "kind": "product"}},
+        "grade_reasons": ["dep_confirmed"],
+        "evidence": {"sentence": sentence, "item_id": "i1"},
+        "source": {"name": "测试源"},
+    }
+
+
+def _write(directory: Path, date: str, rows: list[dict]) -> None:
+    directory.mkdir(parents=True, exist_ok=True)
+    (directory / f"facts-{date}.jsonl").write_text(
+        "\n".join(json.dumps(row, ensure_ascii=False) for row in rows) + "\n", encoding="utf-8"
+    )
+
+
+def _args(tmp_path: Path, **extra) -> object:
+    args = type("A", (), {})()
+    args.data_dir = str(tmp_path)
+    args.days = 7
+    args.sample = 0
+    args.seed = 13
+    args.min_a = 0
+    args.min_a2 = 0
+    args.min_days = 3
+    for key, value in extra.items():
+        setattr(args, key, value)
+    return args
+
+
+class TestTrend:
+    def test_counts_a_and_a2_separately(self, tmp_path, capsys):
+        module = _load_script()
+        facts = tmp_path / "facts"
+        _write(
+            facts,
+            "2026-11-16",
+            [
+                _row("A", "OpenAI", "release", "GPT-5"),
+                _row("A2", "谷歌", "release", "Gemini 4 Hydrogen"),
+                _row("B", "Meta", "release", "LLaMA"),
+            ],
+        )
+        assert module.cmd_watch(_args(tmp_path)) == 0
+        out = capsys.readouterr().out
+        assert "| 2026-11-16 | 1 | 1 | 1 |" in out
+
+    def test_no_facts_returns_error(self, tmp_path):
+        module = _load_script()
+        assert module.cmd_watch(_args(tmp_path)) == 2
+
+
+class TestWarnings:
+    def test_flags_zero_day(self, tmp_path, capsys):
+        module = _load_script()
+        facts = tmp_path / "facts"
+        _write(facts, "2026-11-15", [_row("A", "OpenAI", "release", "GPT-5")])
+        _write(facts, "2026-11-16", [_row("B", "Meta", "release", "LLaMA")])
+        module.cmd_watch(_args(tmp_path))
+        out = capsys.readouterr().out
+        assert "A+A2 为 0 的日期：2026-11-16" in out
+
+    def test_flags_empty_evidence(self, tmp_path, capsys):
+        module = _load_script()
+        facts = tmp_path / "facts"
+        _write(facts, "2026-11-16", [_row("A", "OpenAI", "release", "GPT-5", sentence="")])
+        module.cmd_watch(_args(tmp_path))
+        assert "证据句为空" in capsys.readouterr().out
+
+    def test_flags_threshold(self, tmp_path, capsys):
+        module = _load_script()
+        facts = tmp_path / "facts"
+        _write(facts, "2026-11-16", [_row("A", "OpenAI", "release", "GPT-5")])
+        module.cmd_watch(_args(tmp_path, min_a=3, min_a2=1, min_days=1))
+        out = capsys.readouterr().out
+        assert "A 档均值 1.0 < 门槛 3" in out
+        assert "A2 档均值 0.0 < 门槛 1" in out
+
+
+class TestSample:
+    def test_sample_is_reproducible(self, tmp_path, capsys):
+        module = _load_script()
+        facts = tmp_path / "facts"
+        rows = [_row("A", f"公司{i}", "release", f"产品{i}") for i in range(10)]
+        _write(facts, "2026-11-16", rows)
+        module.cmd_watch(_args(tmp_path, sample=3, seed=7))
+        first = capsys.readouterr().out
+        module.cmd_watch(_args(tmp_path, sample=3, seed=7))
+        second = capsys.readouterr().out
+        assert first == second
+        assert first.count("[A] 公司") == 3
