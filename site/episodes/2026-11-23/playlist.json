@@ -1,0 +1,529 @@
+{
+  "episode_id": "2026-11-23",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "大家好，我是林夏；今天值得听，因为AI正在同时面对估值、干活和落地几场现实考试，把这些线并起来看，才知道热闹背后的成色。",
+      "start": 1.0,
+      "duration": 11.28,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "我是陈默；今天不跟着发布节奏走，我们看资本买的是预期、机器承担的是工作、AI给出的结果能不能验收，这些问题比演示更值得听。",
+      "start": 12.729,
+      "duration": 10.12,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "用一句话概括：资本开始追问回报，机器人开始接受现场检验，AI设计硬件也开始碰到流片这道硬门槛。",
+      "start": 23.346,
+      "duration": 9.24,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "现实考题"
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "数学与开发工具则提醒我们另一道边界：证明要等独立核验，版本更新还得落到真实工作流，不能只看标题。",
+      "start": 33.039,
+      "duration": 8.28,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "Anthropic当地时间11月19日正式登陆纳斯达克，股票代码ANT；发行价83美元，公开募资813亿美元，直接刷新全球IPO募资纪录。",
+      "start": 41.724,
+      "duration": 13.44,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "资本押上算力"
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "上市首日开盘价111.50美元，较发行价上涨34%，盘中估值一度突破2万亿美元，最终收于97.17美元，首日上涨约17%；这组数字很明确，但先别只看价格。",
+      "start": 55.597,
+      "duration": 15.84,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "更关键的是反差：Anthropic成立仅5年，还在持续投入，尚未实现稳定盈利，却已经被放到全球资本市场中心。资本眼下买的显然不是既有利润，而是未来的商业位置。",
+      "start": 71.902,
+      "duration": 14.44,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "它的赌注与过去卖软件工具不同。微软等巨头主要出售帮助员工提效的工具，Anthropic想让Claude直接完成一部分原本需要员工完成的工作，Claude Code的快速发展又让AI从聊天工具走向企业生产力变得可讨论。",
+      "start": 86.804,
+      "duration": 16.71,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "于是争夺的预算也变了：过去软件公司盯企业IT预算，往后AI公司可能还要碰一部分人力成本预算。这个逻辑很诱人，但离企业长期付费，中间隔着可靠性、价格和回报。",
+      "start": 103.965,
+      "duration": 15.32,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "这也解释不了全部估值，因为Anthropic仍是一门极其烧钱的生意，训练要芯片，运行要算力，还要面对OpenAI和谷歌的竞争。模型今天领先，明天就可能被追平。",
+      "start": 119.785,
+      "duration": 11.68,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "所以客户最终不会给“参数最多”发奖金，他们会看谁真正好用、便宜，能帮企业赚钱。资本市场可以提前为未来买单，企业终究要拿利润说话，技术革命和投资回报从来不是一回事。",
+      "start": 131.903,
+      "duration": 15.99,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "节点AI的判断我认同：AI产业正从比拼技术能力，转向比拼商业价值。对中国AI企业也一样，不缺大模型和应用场景，关键是怎么深入产业，真正帮企业降本增效、创造收入。",
+      "start": 148.354,
+      "duration": 14.12,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "别把高估值自动翻译成产品成熟。资本愿意为可能性付钱，客户是否持续使用、能否覆盖高额算力成本，才是上市后绕不开的题。",
+      "start": 162.919,
+      "duration": 11.28,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "我愿意把它看作一张提前开出的未来支票：有上行想象，也有为伟大技术支付过高价格的风险。上市不是答案，只是把商业化大考公开摆上了台面。",
+      "start": 174.673,
+      "duration": 10.92,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "硬件那边也有一个很像的故事。Architect Labs在美国加利福尼亚州帕洛阿尔托宣布，其AI系统自主发现、设计并验证了通用CPU Frostbite，采用全新指令集，试图从底层绕开传统CPU的部分限制。",
+      "start": 186.02,
+      "duration": 20.07,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "关键数字是：在25项工作负载测试中，由4个计算单元组成的Frostbite集群，每瓦性能达到一款尺寸相近、已完成硅验证的双发射顺序执行CPU核心的4.59倍。",
+      "start": 206.554,
+      "duration": 12.88,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "可这句话后面必须跟一个逗号：数据来自基于7纳米工艺的模拟设计，Frostbite尚未真正流片，还没有实际芯片可验证；因法律原因，对照CPU核心型号也不能公开。",
+      "start": 219.851,
+      "duration": 13.16,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "它的思路是让程序直接暴露可并行执行的工作，不依赖传统线程、锁机制或乱序执行硬件在运行中寻找机会，这被叫作“免费多线程”；Frostbite由多个Tile组成，通过片上网络互连，各有独立的小容量本地内存。",
+      "start": 233.447,
+      "duration": 17.71,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "本次测试集群用了4个Tile和4个L3节点，完整设计其实包含16个Tile。早期综合阶段频率一度达到800MHz，最终布局降到500MHz；单位面积性能达到对照核心的8.77倍。",
+      "start": 251.574,
+      "duration": 18.75,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "我更在意平均值会不会掩盖差异：全部25项测试的每瓦性能提升是4.59倍，调优时引入的10项是6.02倍，最终评估才加入的15项是3.83倍，递归斐波那契是1.15倍，conv2d是23.12倍。",
+      "start": 270.82,
+      "duration": 17.63,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "这就是Frostbite值得听、也该克制的原因。AI设计时没有预设处理器架构理念很引人注意，但模拟设计不是量产芯片，等真实流片、真实负载和可核对的对照出现，讨论才跨过最关键的一步。",
+      "start": 288.862,
+      "duration": 18.47,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "再说APEC期间的具身智能。星动纪元创始人陈建宇在中国邮政深圳龙岗邮区中心的夜班分拣线上讲了星动M7，还说“做出一只叫样品，能一致地做出一万只，才叫生产力”。",
+      "start": 307.811,
+      "duration": 14.8,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      },
+      "chapter": "现场与验证"
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "APEC没有给具身智能设官方展区，机器人被拆成一个个岗位，散在会场和城市里，深圳等于把整座城市变成展台：送水、做咖啡、倒啤酒、导览、迎宾，机器人在不同场景里回答实际价值。",
+      "start": 323.043,
+      "duration": 17.59,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "新闻中心里，智平方的7台爱宝分成3台做咖啡、2台做冰淇淋、2台做果汁，一小时出45杯咖啡、30份冰淇淋、30份果汁；上岗前还做了约2000人规模的压力测试。",
+      "start": 341.101,
+      "duration": 12.56,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "自变量则称，截至2026年7月，其机器人已进入1000多户家庭，在物流产线做到每小时1200件以上；数量和场景都在扩展，但演示与日常使用仍是两回事。",
+      "start": 354.151,
+      "duration": 15.24,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "我很认同报道里的那个追问：观众能看到机器人把一件事做完，却看不到它失败时谁来接。能干活是入场，持续交付才决定企业会不会继续付钱。",
+      "start": 369.868,
+      "duration": 10.64,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "更难的是复制。星动纪元称，星动M7已在中国邮政广东省分公司“一省八城十一地”上岗，从2026年3月广州试点铺开，平均每小时供件超1500件，达到熟练分拣工水平。",
+      "start": 380.926,
+      "duration": 16.24,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "它还不用改造原有产线，支持24小时运行，已进入十几个物流中心，按任务量结算的RaaS模式也在试。效率数字可以展示，跨八个城市、十一个点位才是复制能力。",
+      "start": 397.605,
+      "duration": 12.4,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "逐际动力讲的是另一层，它称累计获得数千台订单，过半来自海外，客户覆盖中东、日韩和北美；2026年本体交付突破1000台，过半交付海外。这里验证的是方案能不能走出单一场景。",
+      "start": 410.417,
+      "duration": 15.39,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "这些案例放在一起看，具身智能的分水岭不是会不会做一个动作，而是能否反复工作、有人接管失败、还能用同一套方案扩到更多地方。",
+      "start": 426.3,
+      "duration": 10.0,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "还有一则需要快速但不轻率的快讯。34岁的Anthropic数学家Levent Alpöge与纽约大学教授Tristan Buckmaster公布79页论文，声称证明三维Navier–Stokes方程的无外力有限时间爆破，并公开Lean形式化证明代码。",
+      "start": 436.709,
+      "duration": 19.87,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "陶哲轩认为大体策略已经清楚，但还要整理成规范、专业的证明文本，独立核验仍是关卡，所以现在应称“证明主张”，不能把消息直接写成已经尘埃落定的定理。",
+      "start": 457.066,
+      "duration": 12.6,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "同日，拥有斯坦福大学数学博士学位的Alessandro Maria Masullo发布不使用AI的黎曼猜想证明草稿，研究前后花了将近12年。另一边是AI协作，另一边是纯人类手稿，两条路都在回应同一个难题。",
+      "start": 470.108,
+      "duration": 18.91,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "工具端的v0.2.3-alpha.1也在把智能体往工作台推：插件市场能添加Git仓库来源，私有仓库也能浏览安装；时间线插件能看任务树、阻塞事项和进展报告。",
+      "start": 489.478,
+      "duration": 14.36,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "代码审阅页面可以集中查看本人相关的GitHub PR，插件还能增加审阅视图和行注解，并支持评审、合并GitLab；会话状态区则把工作目录、变更请求、子智能体、任务和插件状态放到一起。",
+      "start": 504.309,
+      "duration": 16.95,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "连接能力也在补齐：Web连接模式支持远程登录，插件页统一管理连接器账号，MCP支持OAuth授权与凭据自动刷新，还加入Linear、Notion、腾讯文档、飞书、企业微信、腾讯会议和钉钉等连接器。",
+      "start": 521.671,
+      "duration": 16.75,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "CLI应用插件也共用账号管理和上游技能下载能力，这说明它想覆盖的不只是编辑器里的一个按钮，而是跨入口的连续工作；不过版本号带着alpha，界面齐整不等于结果可靠，实际使用还得继续验。",
+      "start": 538.866,
+      "duration": 17.75,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "把今天这些线收拢一下：资本要看回报，机器人要过复制与故障接管，AI芯片和数学主张都要等硬证据。",
+      "start": 557.071,
+      "duration": 9.08,
+      "audios": {
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "明日看点"
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "明天的看点就在这些缺口上：Anthropic能否拿出更多商业回报证据，Frostbite离流片还有多远，机器人部署能否讲清复制与接管，数学主张何时接受独立核验。",
+      "start": 566.591,
+      "duration": 12.68,
+      "audios": {
+        "professional": "chunk_039_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "开发工具那边，就看v0.2.3-alpha.1的插件、审阅和连接能力能否形成稳定工作流，我们据此更新判断，不提前替结果下结论。",
+      "start": 579.749,
+      "duration": 12.24,
+      "audios": {
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    }
+  ]
+}
