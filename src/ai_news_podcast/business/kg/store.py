@@ -39,10 +39,14 @@ def fact_key(
     return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:12]
 
 
+# 档位优先级：A > A2 > B。A2 是「主语继承」的中间档，比 B 可信但不及 A。
+_GRADE_RANK = {"A": 3, "A2": 2, "B": 1}
+
+
 def _merge_two(old: FactCard, new: FactCard) -> FactCard:
     """同 fact_id 合并：档位取高者为主，来源累加；理由/证据跟随主卡。"""
     winner = old
-    if new.grade == "A" and old.grade != "A":
+    if _GRADE_RANK.get(new.grade, 0) > _GRADE_RANK.get(old.grade, 0):
         winner = new
     sources = tuple(sorted(set(old.sources) | set(new.sources)))
     return FactCard(

@@ -223,6 +223,7 @@ class DayStats:
     predicates: int = 0
     candidates: int = 0
     cards_a: int = 0
+    cards_a2: int = 0
     cards_b: int = 0
     cards_new: int = 0
     errors: int = 0
@@ -248,6 +249,7 @@ class DayStats:
             "predicates": self.predicates,
             "candidates": self.candidates,
             "cards_a": self.cards_a,
+            "cards_a2": self.cards_a2,
             "cards_b": self.cards_b,
             "cards_new": self.cards_new,
             "errors": self.errors,

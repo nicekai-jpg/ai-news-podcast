@@ -94,3 +94,41 @@ def test_write_day_idempotent(tmp_path) -> None:
 def test_c_samples_written(tmp_path) -> None:
     path = write_c_samples(tmp_path, "2026-11-16", [{"clause": "x"}])
     assert path is not None and path.exists()
+
+
+class TestGradeMerge:
+    def _card(self, grade: str, sources: tuple[str, ...]):
+        from ai_news_podcast.business.kg.types import FactCard
+
+        return FactCard(
+            fact_id="f1",
+            date="2026-11-16",
+            subject={"id": "google", "name": "谷歌", "kind": "company"},
+            role="main",
+            relation="release",
+            relation_raw="发布",
+            slots={"object": {"text": "Gemini 4 Hydrogen"}},
+            polarity="positive",
+            modality="actual",
+            grade=grade,
+            grade_reasons=(),
+            evidence={"sentence": "s", "item_id": "i1"},
+            source={"id": "x", "name": "x", "category": "news"},
+            continuity_id="c1",
+            is_new=True,
+            sources=sources,
+            created_at="2026-11-16T00:00:00+00:00",
+        )
+
+    def test_a_beats_a2(self) -> None:
+        from ai_news_podcast.business.kg.store import merge_cards
+
+        merged = merge_cards([self._card("A2", ("a",)), self._card("A", ("b",))])
+        assert merged[0].grade == "A"
+        assert merged[0].sources == ("a", "b")
+
+    def test_a2_beats_b(self) -> None:
+        from ai_news_podcast.business.kg.store import merge_cards
+
+        merged = merge_cards([self._card("B", ("a",)), self._card("A2", ("b",))])
+        assert merged[0].grade == "A2"

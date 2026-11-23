@@ -71,9 +71,11 @@ def _serialize_slot(slot: SlotValue) -> dict[str, object]:
 
 def _object_key(candidate: FactCandidate) -> str:
     if candidate.relation == "personnel":
-        role = candidate.slots.get("role")
-        if role is not None:
-            return role.text
+        # 人事事实的去重依据是「谁 + 哪家公司」，不包含职务：
+        # 「辞去总裁/CEO/董事」是同一件事被分句后重复抽到的，职务写进 role 槽即可。
+        person = candidate.slots.get("person")
+        if person is not None and person.text:
+            return person.text
     for name in ("object", "person", "role"):
         slot = candidate.slots.get(name)
         if slot is not None and slot.text:
@@ -82,11 +84,53 @@ def _object_key(candidate: FactCandidate) -> str:
 
 
 def _peer_key(candidate: FactCandidate) -> str:
+    if candidate.relation == "personnel":
+        # 人事事实按「人」去重；公司归属不稳定（有的分句带定语、有的不带），
+        # 放进键里会把同一件事拆成两张卡。
+        return ""
     for name in ("peer", "company", "investor"):
         slot = candidate.slots.get(name)
         if slot is not None and slot.text:
             return slot.text
     return ""
+
+
+_RETARGET_MAX_GAP = 40
+
+
+def _retarget_clause(candidate: FactCandidate, text: str) -> None:
+    """证据句取自标题时，把它改指到正文里能同时支撑两端的句子。
+
+    标题派生的句子常常是概括或标题党（"OpenAI 和 Meta 联手"），
+    但同一事实在正文里可能有明确表述（"中金公司与蚂蚁集团签署战略合作协议"）。
+    能找到就改指，找不到则保留原句，交给 `grade()` 的 `evidence_from_title` 降档。
+    """
+    clause = candidate.clause.strip()
+    if not clause or clause in text:
+        return
+    anchors = [candidate.subject.text.strip()]
+    if candidate.relation == "personnel":
+        role = candidate.slots.get("role")
+        anchors.append(str(role.text or "").strip() if role is not None else "")
+    else:
+        obj = candidate.slots.get("object")
+        anchors.append(str(obj.text or "").strip() if obj is not None else "")
+    anchors = [anchor for anchor in anchors if anchor]
+    if len(anchors) < 2:
+        return
+    for sentence in split_news_sentences(text):
+        positions = [sentence.find(anchor) for anchor in anchors]
+        if any(position < 0 for position in positions):
+            continue
+        # 两端必须挨得够近：同一句里隔了几十个字的实体谈的往往不是同一件事
+        # （如「OpenAI 与 Visa、Mastercard 均在其中……Meta 的 Muse 与 OpenAI 的 dots 是竞争对手」）。
+        if max(positions) - min(positions) > _RETARGET_MAX_GAP:
+            continue
+        window = sentence[min(positions) : max(positions) + max(len(a) for a in anchors) + 20]
+        if not any(cue and cue in window for cue in (candidate.relation_raw,)):
+            continue
+        candidate.clause = sentence.strip()
+        return
 
 
 def _make_card(
@@ -304,6 +348,7 @@ def build_facts(  # noqa: C901, PLR0912, PLR0915
                     for candidate in candidates:
                         stats.candidates += 1
                         candidate.item_id = ctx.item_id
+                        _retarget_clause(candidate, text)
                         grade, reasons = grade_mod.grade(
                             candidate,
                             article_subject_text=(
@@ -311,6 +356,8 @@ def build_facts(  # noqa: C901, PLR0912, PLR0915
                             ),
                             object_max_chars=config.object_max_chars,
                             evidence_scope=scope,
+                            source_text=text,
+                            title=title,
                         )
                         if grade == "C":
                             if len(c_samples) < config.c_sample_limit:
@@ -353,6 +400,7 @@ def build_facts(  # noqa: C901, PLR0912, PLR0915
                     continue
                 stats.candidates += 1
                 nominal.item_id = ctx.item_id
+                _retarget_clause(nominal, text)
                 grade, reasons = grade_mod.grade(
                     nominal,
                     article_subject_text=(
@@ -360,6 +408,8 @@ def build_facts(  # noqa: C901, PLR0912, PLR0915
                     ),
                     object_max_chars=config.object_max_chars,
                     evidence_scope=scope,
+                    source_text=text,
+                    title=title,
                 )
                 if grade == "C":
                     continue
@@ -384,7 +434,8 @@ def build_facts(  # noqa: C901, PLR0912, PLR0915
 
     result.cards = store.merge_cards(result.cards)
     stats.cards_a = sum(1 for card in result.cards if card.grade == "A")
-    stats.cards_b = len(result.cards) - stats.cards_a
+    stats.cards_a2 = sum(1 for card in result.cards if card.grade == "A2")
+    stats.cards_b = len(result.cards) - stats.cards_a - stats.cards_a2
     stats.cards_new = sum(1 for card in result.cards if card.is_new)
     stats.unmatched_subjects = subject_counter.most_common(20)
     stats.unmatched_verbs = verb_counter.most_common(20)

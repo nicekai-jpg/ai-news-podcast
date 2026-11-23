@@ -312,6 +312,28 @@ def _write_llm_usage(*, config_root: Path, editorial_root: Path, date_str: str) 
     logger.info("LLM 用量：%s", payload["estimate"])
 
 
+def _load_verified_facts(data_root: Path, date_str: str, config_root: Path) -> dict[str, list[str]]:
+    """读取 Stage 2.5 的 A 档事实。开关关闭 / 文件缺失时返回空 dict。"""
+    from ai_news_podcast.business.editorial.config import load_config
+    from ai_news_podcast.business.editorial.verified_facts import (
+        facts_by_item,
+        load_a_cards,
+    )
+
+    editorial_cfg = load_config(config_root / "editorial_v3.yaml")
+    if not editorial_cfg.inject_verified_facts:
+        return {}
+    try:
+        cards = load_a_cards(data_root / "facts", date_str, grades=editorial_cfg.fact_grades)
+    except OSError:
+        logger.warning("读取 Stage 2.5 事实失败，跳过已核验事实注入", exc_info=True)
+        return {}
+    if not cards:
+        return {}
+    logger.info("Stage 2.5 已核验事实：%s 条 A 档", len(cards))
+    return facts_by_item(cards)
+
+
 def _run_editorial_stages(
     *,
     shortlist: list[ShortlistEntry],
@@ -322,6 +344,7 @@ def _run_editorial_stages(
     config_root: Path,
     llm_for: Callable[[str], LLMCall],
     skip_script: bool,
+    verified_by_item: dict[str, list[str]] | None = None,
 ) -> _EditorialOutputs:
     """S4 日报生成 → S5 日报点评 → S6 文稿生成 → S7 播客点评。"""
     from ai_news_podcast.business.editorial.commentary import build_commentaries
@@ -342,6 +365,7 @@ def _run_editorial_stages(
         llm_for("stage4"),
         item_evidence=item_evidence,
         config_path=editorial_cfg,
+        verified_by_item=verified_by_item,
     )
     report_json_path = _write_json(
         editorial_dir / "report.json", [row.to_dict() for row in report_rows]
@@ -624,6 +648,7 @@ def run_v3_pipeline(
         config_root=config_root,
         llm_for=_llm_for,
         skip_script=skip_script,
+        verified_by_item=_load_verified_facts(data_root, date_str, config_root),
     )
     report_rows = editorial.report_rows
 

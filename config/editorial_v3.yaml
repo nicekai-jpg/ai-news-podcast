@@ -8,6 +8,18 @@
 # S4：日报正文只写精排前 N 条（推荐 5 条）
 report_top_n: 5
 
+# 是否把 Stage 2.5 机器抽取的 A 档事实注入 S4 prompt 的「已核验事实」块。
+# 默认关闭，原因（2026-11-23 实测，见 docs/kg_triple_benchmark_method.md §7）：
+#   - A 档每天仅 5~11 条，只能对上 7/470 个事件（1.5%），98.5% 的事件注入的是空块；
+#   - 注入的事实多为证据正文已含的重复信息，实测 S4 的 facts 条数从 4 降到 3。
+# 打开前先确认 A 档覆盖率：`uv run python scripts/kg_facts.py report --days 1`。
+inject_verified_facts: false
+
+# 注入哪些档位的事实卡：默认只取 A（严格档，精度约 80%）。
+# 写 [A, A2] 会连「主语继承」的中间档一起注入——A2 数量约是 A 的 8 倍，
+# 但抽样精度只有约 50%，只适合在素材不够时当补充，且必须在 prompt 里标注低置信。
+fact_grades: [A]
+
 # S6：15 分钟 ≈ 3000–3600 字（按 CosyVoice 中文 220–260 字/分钟估算）
 target_minutes: 15
 min_chars: 3000

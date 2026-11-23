@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""事实层 CLI：build / backfill / report / eval / query。
+"""事实层 CLI：build / backfill / report / eval / query / audit。
 
 用法：
     python scripts/kg_facts.py build --date 2026-11-16
@@ -7,6 +7,7 @@
     python scripts/kg_facts.py report --days 28 --out-md data/facts/report.md
     python scripts/kg_facts.py eval --gold data/eval/kg_facts_gold.jsonl --min-precision 0.85
     python scripts/kg_facts.py query --subject 英伟达 --relation personnel
+    python scripts/kg_facts.py audit --days 3
 """
 
 from __future__ import annotations
@@ -29,6 +30,7 @@ from ai_news_podcast.business.kg.lexicon import KGlexicon  # noqa: E402
 from ai_news_podcast.business.kg.relations import CANONICAL_LABELS  # noqa: E402
 from ai_news_podcast.business.kg.service import build_facts  # noqa: E402
 from ai_news_podcast.business.kg.store import (  # noqa: E402
+    load_day,
     read_all_facts,
 )
 from ai_news_podcast.business.pipeline.kg_stage_service import (  # noqa: E402
@@ -128,6 +130,129 @@ def cmd_query(args: argparse.Namespace) -> int:
         )
     print(f"共 {len(rows)} 条")
     return 0
+
+
+def _slot_text(row: dict, names: tuple[str, ...]) -> str:
+    slots = row.get("slots") or {}
+    for name in names:
+        slot = slots.get(name)
+        if isinstance(slot, dict) and slot.get("text"):
+            return str(slot["text"])
+    return ""
+
+
+def render_fact_line(row: dict) -> str:
+    subject = str((row.get("subject") or {}).get("name") or "")
+    relation = str(row.get("relation") or "")
+    label = CANONICAL_LABELS.get(relation, relation)
+    if relation == "personnel":
+        person = _slot_text(row, ("person",)) or subject
+        role = _slot_text(row, ("role",))
+        company = _slot_text(row, ("company",))
+        parts = [part for part in (person, role, company) if part]
+        return f"{' · '.join(parts)}（人事）"
+    obj = _slot_text(row, ("object", "peer", "investor"))
+    return f"{subject} —{label}→ {obj or '（缺宾语）'}"
+
+
+def cmd_audit(args: argparse.Namespace) -> int:  # noqa: PLR0912, PLR0915
+    """把 A 档事实连同证据句、原文上下文打印出来，供人工抽查准确率。
+
+    这是判断「要不要提召回」的唯一依据：A 档本身不准，提召回只会放大错误。
+    """
+    data_dir = Path(args.data_dir)
+    dates = [args.date] if args.date else _recent_fact_dates(data_dir / "facts", args.days)
+    if not dates:
+        print("没有事实文件", file=sys.stderr)
+        return 2
+
+    items_by_date: dict[str, dict[str, dict]] = {}
+    if not args.no_context:
+        for date_str in dates:
+            path = data_dir / "ocean" / date_str / "items.json"
+            if not path.is_file():
+                continue
+            try:
+                items_by_date[date_str] = {
+                    str(row.get("item_id")): row
+                    for row in json.loads(path.read_text(encoding="utf-8"))
+                }
+            except (OSError, json.JSONDecodeError):
+                continue
+
+    total = 0
+    total_a2 = 0
+    b_total = 0
+    lines: list[str] = []
+    for date_str in dates:
+        rows = load_day(data_dir / "facts", date_str)
+        if not rows:
+            continue
+        a_rows = [row for row in rows if row.get("grade") == "A"]
+        a2_rows = [row for row in rows if row.get("grade") == "A2"]
+        b_total += len(rows) - len(a_rows) - len(a2_rows)
+        total += len(a_rows)
+        total_a2 += len(a2_rows)
+        if not a_rows and not a2_rows:
+            continue
+        lines.append(
+            f"## {date_str}（A 档 {len(a_rows)} 条 / A2 档 {len(a2_rows)} 条 / 当日全部 {len(rows)} 条）"
+        )
+        lines.append("")
+        for index, row in enumerate([*a_rows, *a2_rows], 1):
+            evidence = row.get("evidence") or {}
+            sentence = str(evidence.get("sentence") or "")
+            lines.append(f"{index}. {render_fact_line(row)}")
+            lines.append(f"   - 证据：{sentence or '（空）'}")
+            lines.append(
+                f"   - 来源：{(row.get('source') or {}).get('name') or '-'}"
+                f"　档位理由：{','.join(row.get('grade_reasons') or []) or '-'}"
+            )
+            if not args.no_context:
+                item = items_by_date.get(date_str, {}).get(str(evidence.get("item_id") or ""))
+                if item is not None:
+                    title = str(item.get("title") or "")
+                    lines.append(f"   - 标题：{title[:80]}")
+                    body = str(item.get("full_text") or "")
+                    position = body.find(sentence[:20]) if sentence else -1
+                    if position > 0:
+                        lines.append(
+                            f"   - 上下文：…{body[max(0, position - 60) : position + len(sentence) + 40]}…"
+                        )
+            lines.append("")
+
+    header = [
+        f"# A 档事实抽查（{len(dates)} 天）",
+        "",
+        "判定口径：这条事实在原文里成立吗？主语、关系、宾语三者是否都对得上？",
+        "",
+        "| 指标 | 数值 |",
+        "|---|---|",
+        f"| 日期数 | {len(dates)} |",
+        f"| A 档 | {total} 条 |",
+        f"| A2 档（主语继承） | {total_a2} 条 |",
+        f"| B 档 | {b_total} 条 |",
+        f"| A+A2 占比 | {(total + total_a2) / (total + total_a2 + b_total):.2%} |"
+        if total + total_a2 + b_total
+        else "| A+A2 占比 | - |",
+        "",
+    ]
+    report = "\n".join(header + lines) if lines else "\n".join([*header, "（无 A 档事实）", ""])
+    print(report)
+
+    if args.out_md:
+        target = Path(args.out_md)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(report, encoding="utf-8")
+        print(f"written -> {target}", file=sys.stderr)
+    return 0
+
+
+def _recent_fact_dates(facts_dir: Path, days: int) -> list[str]:
+    if not facts_dir.is_dir():
+        return []
+    names = sorted(path.stem.replace("facts-", "") for path in facts_dir.glob("facts-*.jsonl"))
+    return names[-days:] if days > 0 else names
 
 
 def _iso_weeks(days: int) -> list[str]:
@@ -598,10 +723,10 @@ def cmd_prune(args: argparse.Namespace) -> int:
         if file_date >= cutoff:
             total_after += len(rows)
             continue
-        kept = [row for row in rows if row.get("grade") == "A"]
+        kept = [row for row in rows if row.get("grade") in ("A", "A2")]
         total_after += len(kept)
         removed = len(rows) - len(kept)
-        print(f"{date_str}: 保留 {len(kept)} 条 A，删除 {removed} 条 B")
+        print(f"{date_str}: 保留 {len(kept)} 条 A/A2，删除 {removed} 条 B")
         if args.apply and removed:
             tmp = path.with_suffix(".tmp")
             with tmp.open("w", encoding="utf-8") as handle:
@@ -613,6 +738,7 @@ def cmd_prune(args: argparse.Namespace) -> int:
                 manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
                 manifest.setdefault("stats", {})
                 manifest["stats"]["cards_a"] = sum(1 for r in kept if r["grade"] == "A")
+                manifest["stats"]["cards_a2"] = sum(1 for r in kept if r["grade"] == "A2")
                 manifest["stats"]["cards_b"] = 0
                 manifest["stats"]["cards_new"] = sum(
                     1 for r in kept if r.get("is_new") and r["grade"] == "A"
@@ -656,7 +782,7 @@ def cmd_validate(args: argparse.Namespace) -> int:  # noqa: C901, PLR0912, PLR09
             seen.add(fact_id)
             if row.get("date") != date_str:
                 errors.append(f"{date_str}: 日期字段不一致 {fact_id}")
-            if row.get("grade") not in ("A", "B"):
+            if row.get("grade") not in ("A", "A2", "B"):
                 errors.append(f"{date_str}: 档位非法 {fact_id}")
             if row.get("relation") not in RELATIONS:
                 errors.append(f"{date_str}: 关系非法 {fact_id}")
@@ -686,6 +812,10 @@ def cmd_validate(args: argparse.Namespace) -> int:  # noqa: C901, PLR0912, PLR09
                     errors.append(f"{date_str}: A 档主体无实体 id {fact_id}")
                 if "dep_confirmed" not in (row.get("grade_reasons") or []):
                     errors.append(f"{date_str}: A 档缺 dep_confirmed {fact_id}")
+            if row.get("grade") == "A2" and "subject_inherited" not in (
+                row.get("grade_reasons") or []
+            ):
+                errors.append(f"{date_str}: A2 档缺 subject_inherited {fact_id}")
     print(f"校验事实 {checked} 条，错误 {len(errors)} 处")
     for item in errors[:30]:
         print(" -", item)
@@ -736,6 +866,13 @@ def main() -> int:
 
     validate = sub.add_parser("validate", help="独立校验事实")
     validate.set_defaults(func=cmd_validate)
+
+    audit = sub.add_parser("audit", help="A 档抽查（含证据句与原文上下文）")
+    audit.add_argument("--date", default="", help="只看某一天；缺省用 --days")
+    audit.add_argument("--days", type=int, default=1)
+    audit.add_argument("--no-context", action="store_true", help="不打印原文上下文")
+    audit.add_argument("--out-md", default="")
+    audit.set_defaults(func=cmd_audit)
 
     query = sub.add_parser("query", help="查事实")
     query.add_argument("--subject", default="")

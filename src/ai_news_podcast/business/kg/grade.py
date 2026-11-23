@@ -50,8 +50,57 @@ GENERIC_OBJECTS = {
 ROLE_IDENTITIES = {"联合创始人", "创始人", "联合创办人"}
 TITLE_SEPARATORS = re.compile(r"[丨|!！?？;；]")
 TITLE_MARKERS = ("实测第一", "榜单", "排行", "发布会", "直击")
+
+# 证据句落在「虚构/假设/示例」引文里的信号。
+# 例：「野生高考出题组连夜把 800 字材料作文题拟好了：「阅读下面的材料……近日，英伟达创始人黄仁勋辞去 CEO 职务」」
+_FICTION_MARKERS = (
+    "作文",
+    "材料",
+    "题目",
+    "阅读下面",
+    "假设",
+    "假如",
+    "示例",
+    "例如",
+    "比如",
+    "考试",
+    "拟好",
+    "虚构",
+    "段子",
+    "大纲",
+)
+_QUOTE_PAIRS: tuple[tuple[str, str], ...] = (("「", "」"), ("“", "”"))
+# 中英混排片段（"英伟达 NVIDIA 产品"）。纯英文专名（"Memory summary"）不算，
+# 否则所有带空格的英文产品名都会被误杀。
+_CJK = re.compile(r"[\u4e00-\u9fff]")
 MIXED_FRAGMENT = re.compile(r"[A-Za-z]")
 ENTITY_KINDS = {"company", "person", "org"}
+
+
+def _inside_quoted_material(body: str, clause: str) -> bool:
+    """证据句是否落在「假设/示例/作文」类引文中。
+
+    只在引号内、且引号前 40 字内出现虚构标记时才算命中，
+    避免把正常引用（「词元所」）误判。
+    """
+    needle = (clause or "").strip()[:20]
+    if not body or not needle:
+        return False
+    position = body.find(needle)
+    if position < 0:
+        return False
+    for opener, closer in _QUOTE_PAIRS:
+        start = body.rfind(opener, 0, position)
+        if start < 0:
+            continue
+        end = body.find(closer, start + 1)
+        # 长引文常见「开了引号但一直没闭合」；这种情况仍算在引文内。
+        if end >= 0 and end < position:
+            continue
+        context = body[max(0, start - 40) : start]
+        if any(marker in context for marker in _FICTION_MARKERS):
+            return True
+    return False
 
 
 def _object_text(candidate: FactCandidate) -> str:
@@ -92,7 +141,7 @@ def a_guard(candidate: FactCandidate) -> list[str]:  # noqa: C901, PLR0912
             violations.append("a_guard_title_fragment")
         if object_text in GENERIC_OBJECTS:
             violations.append("a_guard_generic_object")
-        if MIXED_FRAGMENT.search(object_text) and " " in object_text:
+        if MIXED_FRAGMENT.search(object_text) and _CJK.search(object_text) and " " in object_text:
             violations.append("a_guard_mixed_fragment")
         if relation in ("funding", "pricing") and not (
             any(char.isdigit() for char in object_text) or entity_id
@@ -114,10 +163,14 @@ def a_guard(candidate: FactCandidate) -> list[str]:  # noqa: C901, PLR0912
             )
         ):
             violations.append("a_guard_generic_object")
-    if candidate.subject.text.strip() and candidate.subject.text.strip() not in clause:
+    # 继承来的主语本来就不在当前子句里，这是定义而非缺陷；由 A2 档接管。
+    if (
+        not candidate.secondary
+        and candidate.subject.text.strip()
+        and candidate.subject.text.strip() not in clause
+    ):
         violations.append("a_guard_subject_absent")
-    if candidate.secondary:
-        violations.append("a_guard_inherited")
+    # 主语继承不再在这里否决：它由 grade() 单独判成 A2。
     return violations
 
 
@@ -142,8 +195,15 @@ def grade(  # noqa: C901, PLR0911, PLR0912
     article_subject_text: str,
     object_max_chars: int = 30,
     evidence_scope: str = "body",
+    source_text: str = "",
+    title: str = "",
 ) -> tuple[str, list[str]]:
-    """返回 (档位, 理由码)。C 档不落盘。"""
+    """返回 (档位, 理由码)。C 档不落盘。
+
+    ``source_text`` 传条目正文时，会额外校验证据句是否真在正文里：
+    - 不在正文（通常来自标题）→ ``evidence_from_title``，降 B；
+    - 落在「作文/假设/示例」类引文里 → ``evidence_quoted_material``，降 B。
+    """
     if not candidate.subject.text.strip():
         return "C", ["empty_subject"]
     if candidate.relation == "other":
@@ -172,6 +232,15 @@ def grade(  # noqa: C901, PLR0911, PLR0912
         reasons.append("subject_inherited")
     if evidence_scope in ("title", "summary"):
         reasons.append("title_only")
+    clause = str(candidate.clause or "").strip()
+    if source_text and clause:
+        if title and clause == title.strip():
+            reasons.append("evidence_from_title")
+        elif clause not in source_text:
+            # 正文里找不到：多半是标题或摘要派生的句子。
+            reasons.append("evidence_from_title")
+        elif _inside_quoted_material(source_text, clause):
+            reasons.append("evidence_quoted_material")
     if "noun_trigger" in candidate.reasons:
         reasons.append("noun_trigger")
     if object_value is not None and not object_value.entity_id and object_value.kind == "other":
@@ -179,12 +248,17 @@ def grade(  # noqa: C901, PLR0911, PLR0912
     if _object_truncated(candidate):
         reasons.append("object_weak")
 
-    if reasons:
-        return "B", sorted(set(reasons))
+    unique = sorted(set(reasons))
     guard = a_guard(candidate)
     if guard:
-        return "B", sorted(set(guard))
-    return "A", ["dep_confirmed"]
+        return "B", sorted(set(guard) | set(unique))
+    if not unique:
+        return "A", ["dep_confirmed"]
+    if unique == ["subject_inherited"]:
+        # 主语是从上一句继承来的：事实形态完整，但指代可能取错。
+        # 单列 A2，让下游自己决定用不用，不污染 A 的可信度。
+        return "A2", ["subject_inherited"]
+    return "B", unique
 
 
 __all__ = ["GENERIC_SUBJECTS", "a_guard", "grade"]

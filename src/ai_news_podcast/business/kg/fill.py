@@ -138,6 +138,7 @@ _ORG_SUFFIX_EN = (
     "Holdings",
 )
 _SUBJECT_DEPS = {"nsubj", "nsubjpass", "nsubj:xsubj"}
+_OBJECT_DEPS = {"dobj", "obj", "attr", "pobj", "nmod", "compound:nn"}
 _OBJECT_NOUNS = {"价格", "售价", "估值", "金额", "销量", "融资", "发行", "营收", "收入"}
 _GENERIC_SUBJECT_WORDS = {
     "价格",
@@ -291,7 +292,7 @@ def _ner_kind(ent_type: str) -> str:
     return mapping.get((ent_type or "").upper(), "")
 
 
-def resolve_mention(  # noqa: PLR0911
+def resolve_mention(  # noqa: PLR0911, PLR0912
     parse: ParseResult, index: int, *, allow_open: bool = True
 ) -> SlotValue | None:
     """token → 实体值：词表 span 优先，其次 NER/后缀/拉丁名。"""
@@ -317,6 +318,12 @@ def resolve_mention(  # noqa: PLR0911
             word.isupper() and 2 <= len(word) <= 4 for word in words
         ):
             kind = "company"
+        elif _looks_like_product_en(text):
+            # "ChatGPT Wallet"、"Gemini Robotics 2.5"：拉丁专名不等于人名。
+            kind = "product"
+        elif any(word[:1].islower() for word in words[1:]):
+            # "Memory summary" 第二个词小写，不像人名；宾语位按产品或未知处理。
+            kind = "product" if token.dep in _OBJECT_DEPS else "other"
         else:
             kind = "person"
     if not kind and text.isascii() and len(text) >= 3 and token.dep in _SUBJECT_DEPS:
@@ -375,6 +382,54 @@ def _type_ok(kind: str, allowed: tuple[str, ...]) -> bool:
     if kind == "company" and "org" in allowed:
         return True
     return kind == "org" and "company" in allowed
+
+
+_EN_PRODUCT_SUFFIX = (
+    "wallet",
+    "model",
+    "api",
+    "sdk",
+    "chip",
+    "gpu",
+    "cpu",
+    "os",
+    "app",
+    "suite",
+    "cloud",
+    "platform",
+    "engine",
+    "kit",
+    "agent",
+    "assistant",
+    "studio",
+    "pro",
+    "max",
+    "lite",
+    "beta",
+    "preview",
+    "coder",
+    "search",
+    "browser",
+    "database",
+    "server",
+    "cli",
+    "plugin",
+    "extension",
+    "framework",
+    "library",
+    "protocol",
+    "token",
+    "pipeline",
+    "benchmark",
+)
+
+
+def _looks_like_product_en(text: str) -> bool:
+    """拉丁专名是否更像产品而非人名：带版本号或以产品词结尾。"""
+    if re.search(r"\d", text):
+        return True
+    lowered = text.lower()
+    return any(lowered.endswith(suffix) for suffix in _EN_PRODUCT_SUFFIX)
 
 
 def _first_object_token(parse: ParseResult, pred: Predicate) -> int:
@@ -436,13 +491,115 @@ def _expand_right(parse: ParseResult, index: int, base_text: str) -> str:
     return (base_text + extra).strip()
 
 
+_QUOTE_PAIRS = {"「": "」", "“": "”", "（": "）"}
+# 引号内的同位语常是真正专名（大模型交易平台「词元所」），但不能太长。
+_APPOSITIVE_MAX = 20
+
+
+def _quoted_appositive(parse: ParseResult, index: int) -> SlotValue | None:
+    """宾语后紧跟引号同位语时，取引号内的专名。
+
+    「百度推出大模型交易平台「词元所」」：spaCy 把「平台」和「所」都标成 dobj，
+    取第一个会得到泛称「大模型交易平台」。真正的名字在引号里。
+    """
+    count = len(parse.tokens)
+    for offset in range(index + 1, min(count, index + 9)):
+        open_token = parse.tokens[offset]
+        opener = open_token.text.strip()
+        closer = _QUOTE_PAIRS.get(opener)
+        if closer is None:
+            continue
+        for follow in range(offset + 1, min(count, offset + 14)):
+            text = parse.tokens[follow].text
+            if text.strip() == closer:
+                # 用原文切片保留原空格（「Memory summary」不能拼成 Memorysummary）。
+                first = parse.tokens[offset + 1]
+                last = parse.tokens[follow - 1] if follow - 1 > offset else first
+                name = parse.text[first.idx : last.idx + len(last.text)].strip()
+                if 2 <= len(name) <= _APPOSITIVE_MAX and not name.isdigit():
+                    # 类型按后缀推断，避免把机构名一律当产品。
+                    return SlotValue("object", name, "", _suffix_kind(name) or "product")
+                return None
+        return None
+    return None
+
+
+_GENERIC_HEADS = (
+    "模型",
+    "芯片",
+    "平台",
+    "框架",
+    "系统",
+    "处理器",
+    "服务",
+    "功能",
+    "产品",
+    "技术",
+    "架构",
+    "协议",
+)
+_LATIN_APPOSITIVE_RE = re.compile(r"[A-Za-z][A-Za-z0-9.\-]*(?:\s+[A-Za-z0-9.\-]+){0,4}")
+
+
+def _is_generic_object(text: str) -> bool:
+    value = text.strip()
+    return value in _GENERIC_HEADS or any(value.endswith(head) for head in _GENERIC_HEADS)
+
+
+def _latin_appositive(  # noqa: PLR0911
+    parse: ParseResult, index: int, object_text: str
+) -> SlotValue | None:
+    """无引号同位语：「高性能AI模型——Muse Ember」「机器人模型 Gemini Robotics 2.5」。
+
+    只在宾语是泛称（模型/芯片/平台…）且后面紧跟拉丁专名时启用，
+    避免把普通英文名词当产品名。
+    """
+    if not _is_generic_object(object_text):
+        return None
+    count = len(parse.tokens)
+    start = index + 1
+    # 跳过破折号/连字符/括号等连接符。
+    while start < count and parse.tokens[start].text.strip() in (
+        "——",
+        "—",
+        "-",
+        "：",
+        ":",
+        "（",
+        "）",
+    ):
+        start += 1
+    if start >= count:
+        return None
+    tail = "".join(token.text for token in parse.tokens[start : min(count, start + 10)])
+    tail = tail.strip(" ，,。；;：:（）()「」“”")
+    tail = re.split(r"[，,。；;！？!?]", tail)[0].strip()
+    match = _LATIN_APPOSITIVE_RE.match(tail)
+    if match is None:
+        return None
+    name = match.group(0).strip()
+    if not (2 <= len(name) <= _APPOSITIVE_MAX):
+        return None
+    if not any(char.isalpha() for char in name) or not any(char.isupper() for char in name):
+        return None
+    if name in _GENERIC_HEADS:
+        return None
+    return SlotValue("object", name, "", "product")
+
+
 def _object_value(parse: ParseResult, index: int, ctx: FillContext) -> SlotValue:
+    quoted = _quoted_appositive(parse, index)
+    if quoted is not None:
+        return quoted
     text = _object_phrase(parse, index)
     span = _span_for(parse, index)
     if span is not None:
         return SlotValue("object", span.name, span.entity_id, span.kind)
     mention = resolve_mention(parse, index)
     combined = _expand_right(parse, index, text or mention.text if mention is not None else text)
+    latin = _latin_appositive(parse, index, combined)
+    if latin is not None:
+        return latin
     if mention is not None:
         return SlotValue("object", combined, mention.entity_id, mention.kind)
     return SlotValue("object", combined, "", "other")
@@ -560,7 +717,7 @@ def _fill_generic(
     return slots
 
 
-def _fill_personnel(
+def _fill_personnel(  # noqa: PLR0912
     parse: ParseResult, pred: Predicate, ctx: FillContext, schema: EventSchema
 ) -> dict[str, SlotValue] | None:
     subject, _ = _resolve_subject(parse, pred, ctx, schema) or (None, False)
@@ -587,12 +744,44 @@ def _fill_personnel(
         return None
     if company is None:
         company = _prep_value(parse, pred, ("在", "加入", "at", "of"))
+    if company is None:
+        company = _owner_before(parse, pred, person)
     slots: dict[str, SlotValue] = {"person": person}
     if role is not None:
         slots["role"] = role
     if company is not None:
         slots["company"] = SlotValue("company", company.text, company.entity_id, company.kind)
     return slots
+
+
+# 「公司联合创始人黄仁勋」里的「公司」是泛称，不是归属实体。
+_GENERIC_OWNERS = {"公司", "企业", "该企业", "该公司", "厂商", "集团", "团队"}
+
+
+def _owner_before(parse: ParseResult, pred: Predicate, person: SlotValue) -> SlotValue | None:
+    """「英伟达创始人黄仁勋辞去 CEO」这类句式：公司是人名的定语，不是介词宾语。
+
+    只在人名左侧、同一谓语范围内找最近的机构/公司，避免把远距离实体当归属。
+    """
+    person_index = None
+    for index in pred.subjects:
+        value = resolve_mention(parse, index)
+        if value is not None and value.text == person.text:
+            person_index = index
+            break
+    if person_index is None:
+        return None
+    for index in range(person_index - 1, max(-1, person_index - 8), -1):
+        value = resolve_mention(parse, index)
+        if value is None:
+            continue
+        if (
+            value.kind in ("company", "org")
+            and value.text != person.text
+            and value.text.strip() not in _GENERIC_OWNERS
+        ):
+            return value
+    return None
 
 
 def _entity_peer(value: SlotValue | None) -> SlotValue | None:

@@ -23,6 +23,15 @@ def test_drops_generic_terms() -> None:
     assert "大模型" not in names
 
 
+def test_drops_generic_news_nouns() -> None:
+    entities = detect_open_entities(
+        "这家半导体材料公司称，德系车企对全球都市市场都在观望，官方与开发者也在等"
+    )
+    names = [item.text for item in entities]
+    for word in ("半导体材料公司", "材料公司", "德系", "车企", "全球", "都市", "官方", "开发者"):
+        assert word not in names
+
+
 def test_english_caps_only_when_in_title_or_multiword() -> None:
     single = detect_open_entities("我们用了 Groq 的芯片")
     assert all(item.text != "Groq" for item in single) or all(

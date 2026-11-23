@@ -14,7 +14,8 @@ logger = logging.getLogger(__name__)
 
 _KEEP_PIPES = ("tok2vec", "tagger", "attribute_ruler", "parser", "ner")
 _SUBJECT_DEPS = ("nsubj", "nsubjpass", "nsubj:xsubj")
-_OBJECT_DEPS = ("dobj", "obj", "attr")
+# nmod:range：带版本号的产品名常被 spaCy 标成范围修饰（如 "Seedance 2.5 flash"）。
+_OBJECT_DEPS = ("dobj", "obj", "attr", "nmod:range")
 _PREP_DEPS = ("nmod:prep", "nmod", "obl", "prep")
 _COORD_DEPS = ("conj",)
 _DESCEND_DEPS = ("ccomp", "xcomp", "parataxis")
