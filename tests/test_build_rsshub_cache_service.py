@@ -129,6 +129,9 @@ class TestResolveUrl:
         assert cache.resolve_url({}, "http://localhost:1200") == ""
 
 
+_FIXED_NOW = datetime(2026, 11, 7, tzinfo=UTC)
+
+
 class TestBuildAndWrite:
     def test_build_snapshot(self, monkeypatch) -> None:
         monkeypatch.setattr(cache, "fetch_xml", lambda url, timeout=60: _RSS)
@@ -137,6 +140,7 @@ class TestBuildAndWrite:
             base_url="http://localhost:1200",
             days=14,
             max_items=10,
+            now=_FIXED_NOW,
         )
         assert snapshot["source"] == "demo"
         assert snapshot["label"] == "Demo"
@@ -192,7 +196,9 @@ class TestMain:
     def test_writes_snapshots(self, tmp_path: Path, monkeypatch) -> None:
         monkeypatch.setattr(cache, "fetch_xml", lambda url, timeout=60: _RSS)
         out = tmp_path / "cache"
-        code = cache.main(["--config", str(self._config(tmp_path)), "--output-dir", str(out)])
+        code = cache.main(
+            ["--config", str(self._config(tmp_path)), "--output-dir", str(out)], now=_FIXED_NOW
+        )
         assert code == 0
         files = sorted(path.name for path in out.glob("*.json"))
         assert files == ["one.json", "two.json"]

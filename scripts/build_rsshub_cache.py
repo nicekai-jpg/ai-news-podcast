@@ -179,15 +179,20 @@ def build_snapshot(
     days: int,
     max_items: int,
     timeout: int = _DEFAULT_TIMEOUT,
+    now: datetime | None = None,
 ) -> dict[str, Any]:
-    """抓取并生成单个源的快照数据。"""
+    """抓取并生成单个源的快照数据。
+
+    ``now`` 仅用于测试注入固定参考时间（避免用真实日期导致时间依赖的测试
+    随时间推移失败）；生产调用不传，按当前时间计算窗口。
+    """
     url = resolve_url(source, base_url)
     if not url:
         raise ValueError(f"source {source.get('name')!r} 缺少 url/route")
     started = time.monotonic()
     xml_text = fetch_xml(url, timeout=timeout)
     raw_items = parse_feed(xml_text, limit=max(120, max_items * 4))
-    items = normalize_items(raw_items, days=days, max_items=max_items)
+    items = normalize_items(raw_items, days=days, max_items=max_items, now=now)
     elapsed = time.monotonic() - started
     return {
         "source": str(source.get("name") or ""),
@@ -231,7 +236,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     return parser.parse_args(argv)
 
 
-def main(argv: list[str] | None = None) -> int:
+def main(argv: list[str] | None = None, *, now: datetime | None = None) -> int:
     args = parse_args(argv)
     logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
     config_path = Path(args.config)
@@ -254,6 +259,7 @@ def main(argv: list[str] | None = None) -> int:
                 days=args.days,
                 max_items=args.max_items,
                 timeout=args.timeout,
+                now=now,
             )
         except (urllib.error.URLError, OSError, ValueError, ET.ParseError) as exc:
             failed += 1
