@@ -29,6 +29,13 @@ def _dedupe(items, **kwargs):
     return dedupe_items(items, labeled=_labeled(items), config=ocean_config(), **kwargs)
 
 
+def _dedupe_merge_all(items):
+    """强制跨源合并（旧行为），用于只验证合并规则本身的用例。"""
+    cfg = ocean_config()
+    cfg["dedupe"] = {**cfg.get("dedupe", {}), "cross_source_merge": True}
+    return dedupe_items(items, labeled=_labeled(items), config=cfg)
+
+
 class TestLayer1Url:
     def test_same_normalized_url_merged(self) -> None:
         first = make_item(
@@ -60,6 +67,7 @@ class TestLayer1Url:
 
 class TestLayer2Title:
     def test_near_identical_titles_merged(self) -> None:
+        """跨源同文合并（旧行为的显式开关）。"""
         first = make_item(
             title="OpenAI 发布 GPT-5 模型",
             link="https://a.com/1",
@@ -72,7 +80,7 @@ class TestLayer2Title:
             source="b",
             full_text="a longer body " * 10,
         )
-        result = _dedupe([first, second])
+        result = _dedupe_merge_all([first, second])
         assert len(result.survivors) == 1
         assert result.duplicates[first.item_id].reason == DUP_TITLE
         assert result.survivors[0].item_id == second.item_id
@@ -86,6 +94,7 @@ class TestLayer2Title:
 
 class TestLayer3Semantic:
     def test_syndicated_copy_merged(self) -> None:
+        """跨源同文转载合并（旧行为的显式开关）。"""
         summary = (
             "OpenAI 今日正式发布 GPT-5 大模型，支持多模态输入与 100 万 tokens 上下文，"
             "API 价格同步公布，开发者可通过平台调用。"
@@ -102,7 +111,7 @@ class TestLayer3Semantic:
             link="https://b.com/2",
             source="b",
         )
-        result = _dedupe([first, second])
+        result = _dedupe_merge_all([first, second])
         assert len(result.survivors) == 1
         duplicate = next(iter(result.duplicates.values()))
         assert duplicate.reason == DUP_SEMANTIC
@@ -125,8 +134,11 @@ class TestLayer3Semantic:
 
 class TestRetentionPolicy:
     def test_longer_full_text_wins(self) -> None:
-        first = make_item(title="Same", link="https://a.com/1", source="a", full_text="x" * 5)
-        second = make_item(title="Same", link="https://b.com/2", source="b", full_text="x" * 50)
+        # 同族 source：确保会合并，只验证「选谁」（跨源保留由 TestCrossSourceScope 覆盖）
+        first = make_item(title="Same", link="https://a.com/1", source="demo", full_text="x" * 5)
+        second = make_item(
+            title="Same", link="https://b.com/2", source="demo_x", full_text="x" * 50
+        )
         result = _dedupe([first, second])
         assert result.survivors[0].item_id == second.item_id
 
@@ -134,14 +146,14 @@ class TestRetentionPolicy:
         first = make_item(
             title="Same",
             link="https://a.com/1",
-            source="media",
+            source="demo",
             category="news",
             full_text="x" * 10,
         )
         second = make_item(
             title="Same",
             link="https://b.com/2",
-            source="official",
+            source="demo_x",
             category="official",
             full_text="x" * 10,
         )
@@ -152,14 +164,14 @@ class TestRetentionPolicy:
         first = make_item(
             title="Same",
             link="https://a.com/1",
-            source="a",
+            source="demo",
             full_text="x" * 10,
             published_at="2026-11-09T09:00:00+00:00",
         )
         second = make_item(
             title="Same",
             link="https://b.com/2",
-            source="b",
+            source="demo_x",
             full_text="x" * 10,
             published_at="2026-11-09T08:00:00+00:00",
         )
@@ -255,3 +267,45 @@ class TestLayer4CrossDay:
         result = _dedupe([item])
         assert len(result.survivors) == 1
         assert result.stats["kept"] == 1
+
+
+class TestCrossSourceScope:
+    """`dedupe.cross_source_merge: false` 时，跨媒体同文保留、同媒体多渠合并。"""
+
+    SUMMARY = "OpenAI 今日正式发布 GPT-5 大模型，支持多模态输入与 100 万 tokens 上下文。"
+
+    def _pair(self, source_a: str, source_b: str):
+        first = make_item(
+            title="OpenAI 发布 GPT-5 大模型",
+            summary=self.SUMMARY,
+            link="https://a.com/1",
+            source=source_a,
+        )
+        second = make_item(
+            title="OpenAI GPT-5 大模型正式发布",
+            summary=self.SUMMARY,
+            link="https://b.com/2",
+            source=source_b,
+        )
+        return first, second
+
+    def test_same_media_channels_still_merge(self):
+        from ai_news_podcast.business.ocean.dedupe import dedupe_items
+
+        first, second = self._pair("jiqizhixin", "jiqizhixin_wechat")
+        result = dedupe_items([first, second], config={"dedupe": {"cross_source_merge": False}})
+        assert len(result.survivors) == 1
+
+    def test_different_media_kept(self):
+        from ai_news_podcast.business.ocean.dedupe import dedupe_items
+
+        first, second = self._pair("jiqizhixin", "cnbeta")
+        result = dedupe_items([first, second], config={"dedupe": {"cross_source_merge": False}})
+        assert len(result.survivors) == 2
+
+    def test_default_keeps_old_behaviour(self):
+        from ai_news_podcast.business.ocean.dedupe import dedupe_items
+
+        first, second = self._pair("jiqizhixin", "cnbeta")
+        result = dedupe_items([first, second], config={})
+        assert len(result.survivors) == 1
