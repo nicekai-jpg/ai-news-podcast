@@ -36,3 +36,46 @@ def test_podcast_requires_show_notes_and_chapters() -> None:
     result = review_quality(review, kind="podcast")
     assert result["structure_score"] <= 0.25
     assert len(result["issues"]) >= 3
+
+
+def test_claim_numbers_skip_dates_and_ordinals() -> None:
+    from ai_news_podcast.business.editorial.quality import script_claim_numbers
+
+    script = (
+        "[Host A] 2026年11月16日，第3章提到 5.5 版本，涨了 35%，卖出 1,000 台。\n"
+        "[Host B] 只有 3 个要点。\n"
+    )
+    numbers = script_claim_numbers(script)
+    assert "5.5" in numbers
+    assert "35%" in numbers
+    assert "1,000" in numbers
+    # 日期与序号不进核对集合
+    assert "2026" not in numbers and "11" not in numbers and "16" not in numbers
+    # 单数字太常见，不当作事实声明
+    assert "3" not in numbers
+
+
+def test_check_script_flags_number_missing_from_evidence() -> None:
+    from ai_news_podcast.business.editorial.quality import check_script
+
+    script = "[Host A] " + "内容" * 40 + " 融资 99 亿美元。\n[Host B] " + "对白" * 40 + "\n"
+    report = check_script(script, evidence_text="该公司融资 10 亿美元。")
+    assert "99" in report["unverified_numbers"]
+    assert report["fact_checked"] is True
+    assert any("底稿" in issue for issue in report["issues"])
+
+
+def test_check_script_accepts_numbers_present_in_evidence() -> None:
+    from ai_news_podcast.business.editorial.quality import check_script
+
+    script = "[Host A] " + "内容" * 40 + " 融资 10 亿美元。\n[Host B] " + "对白" * 40 + "\n"
+    report = check_script(script, evidence_text="该公司融资 10 亿美元。")
+    assert report["unverified_numbers"] == []
+
+
+def test_check_script_skips_fact_check_without_evidence() -> None:
+    from ai_news_podcast.business.editorial.quality import check_script
+
+    report = check_script("[Host A] 融资 99 亿美元。\n")
+    assert report["fact_checked"] is False
+    assert report["unverified_numbers"] == []

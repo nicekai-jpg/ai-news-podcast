@@ -249,3 +249,26 @@ def test_repo_config_defaults() -> None:
     cfg = load_config(config_path)
 
     assert (cfg.min_chars, cfg.max_chars, cfg.chapters) == (3000, 3600, 4)
+
+
+class TestScriptFactCheck:
+    def test_rewrites_when_number_not_in_evidence(self) -> None:
+        bad = make_script(3300, 4).replace(_BASE, "融资 99 亿美元。", 1)
+        good = make_script(3300, 4)
+        llm = FakeLLM([bad, good])
+
+        result = build_script([make_entry()], [make_event()], EVIDENCE, llm)
+
+        assert len(llm.prompts) == 2
+        assert "99" in llm.prompts[1]  # 重写 prompt 里列出了找不到的数字
+        assert "99" not in result
+
+    def test_accepts_numbers_present_in_evidence(self) -> None:
+        script = make_script(3300, 4)
+        script = script.replace(_BASE, "发布 2.1 版本", 1)
+        script = script.replace(_BASE, "融资 10 亿美元", 1)
+        llm = FakeLLM([script])
+
+        build_script([make_entry()], [make_event()], EVIDENCE, llm)
+
+        assert len(llm.prompts) == 1  # 数字都能在底稿找到，不触发重写

@@ -5,9 +5,11 @@
   「林夏：」「Host A:」「[A]」等写法会被归一化为 ``[Host X]``，Markdown/思考过程行被丢弃，
   未标记的续行并入上一位主持人的台词，保证「每段台词独占一行」。
 - **质量闸门**：字数 3000–3600、章节 3–4、双主持占比 ≥25%、无禁用词、未标记行 ≤20%；
-  不达标时最多重写 ``max_rewrites`` 次（保留更好的一版），仍超长则按章节/行边界截断。
-- **事实来源**：只用 Stage 4 点评（headline/facts）；``item_evidence`` 为接口预留，
-  当前不注入文稿 prompt，避免引入点评之外的新事实。
+  另外对文稿里的数字做**逐字核对**——每个数字都必须能在事实底稿（标题/摘要/证据正文）
+  里找到，找不到即判不合格并触发重写。不达标时最多重写 ``max_rewrites`` 次（保留更好
+  的一版），仍超长则按章节/行边界截断。
+- **事实来源**：``item_evidence``（Stage 2 全文）会注入文稿 prompt 作为唯一事实底稿，
+  同一份底稿也用于上面的数字核对，保证「模型看到的」和「被核对的」是同一份语料。
 """
 
 from __future__ import annotations
@@ -151,6 +153,37 @@ def _trim_to_max(script: str, max_chars: int) -> str:
     return "\n".join(kept) + ("\n" if kept else "")
 
 
+def _script_evidence_text(
+    shortlist: Sequence[ShortlistEntry],
+    events: Sequence[Event],
+    item_evidence: Mapping[str, str] | None,
+    config: EditorialConfig,
+) -> str:
+    """拼出文稿允许引用的事实底稿，供数字核对使用。
+
+    选取口径必须与 ``prompts.build_script_prompt`` 完全一致，否则核对的语料
+    和模型看到的底稿不是同一份，会误报。
+    """
+    event_by_id = {str(event.event_id): event for event in events}
+    parts: list[str] = []
+    seen: set[str] = set()
+    for entry in shortlist:
+        event = event_by_id.get(str(entry.event_id))
+        if event is None or event.event_id in seen:
+            continue
+        seen.add(event.event_id)
+        parts.append(event.representative_title or "")
+        parts.append(event.summary or "")
+        if item_evidence:
+            for item_id in event.item_ids:
+                snippet = item_evidence.get(str(item_id))
+                if snippet:
+                    parts.append(snippet)
+        if len(seen) >= max(config.report_top_n, config.chapters + 1):
+            break
+    return "\n".join(parts)
+
+
 def _defect_score(report: dict[str, Any]) -> tuple[int, int]:
     """缺陷越少越好；同缺陷数时越接近目标字数中点越好。"""
     mid = (int(report["min_chars"]) + int(report["max_chars"])) // 2
@@ -176,9 +209,10 @@ def build_script(
     config = load_config(config_path)
     logger.debug("S6 使用配置 %s，item_evidence=%s", config_path, item_evidence is not None)
     prompt = build_script_prompt(shortlist, list(events), item_evidence, config=config)
+    evidence_text = _script_evidence_text(shortlist, events, item_evidence, config)
     raw = llm_call(prompt)
     script = normalize_script(raw, config)
-    report = check_script(script, config)
+    report = check_script(script, config, evidence_text=evidence_text)
 
     attempts = 0
     while not report["ok"] and attempts < config.max_rewrites:
@@ -186,7 +220,7 @@ def build_script(
         logger.info("文稿未达标（第 %s 次重写）：%s", attempts, "；".join(report["issues"]))
         raw = llm_call(build_script_repair_prompt(script, report, config=config))
         candidate = normalize_script(raw, config)
-        candidate_report = check_script(candidate, config)
+        candidate_report = check_script(candidate, config, evidence_text=evidence_text)
         if _defect_score(candidate_report) <= _defect_score(report):
             script, report = candidate, candidate_report
         else:
@@ -199,7 +233,7 @@ def build_script(
         )
     if report["chars"] > config.max_chars:
         script = _trim_to_max(script, config.max_chars)
-        final_report = check_script(script, config)
+        final_report = check_script(script, config, evidence_text=evidence_text)
         logger.warning(
             "文稿超长已截断：%s → %s 字，剩余问题：%s",
             report["chars"],

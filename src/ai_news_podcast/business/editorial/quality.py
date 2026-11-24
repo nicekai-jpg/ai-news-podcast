@@ -16,10 +16,17 @@ from typing import Any
 from ai_news_podcast.business.contracts import Commentary
 
 from .config import EditorialConfig, load_config
+from .factcheck import number_in_text
 
 _HOST_LINE_RE = re.compile(r"^\[Host ([AB])\]\s*(.*)$")
 _CHAPTER_LINE_RE = re.compile(r"^\[CHAPTER\]\s*(.*)$")
 _WHITESPACE_RE = re.compile(r"\s+")
+
+# 需要逐字核对的事实数字：整数/小数/千分位 + 可选百分号（全角比较前 NFKC）
+_CLAIM_NUMBER_RE = re.compile(r"\d+(?:[.,]\d+)*\s*[%％]?")
+# 日期/编号类数字不当作“事实声明”，避免「2026年」「第2章」误报
+_DATE_OR_ORDINAL_SUFFIX = frozenset("年月日号期章节目次")
+_ORDINAL_PREFIX = "第"
 
 # 点评各栏位字数（含 facts 正文），用于 150–300 字/条的告警统计
 _COMMENTARY_TEXT_FIELDS = (
@@ -105,7 +112,36 @@ def unmarked_lines(script: str) -> list[str]:
     return lines
 
 
-def check_script(script: str, config: EditorialConfig | None = None) -> dict[str, Any]:
+def script_claim_numbers(script: str) -> list[str]:
+    """提取需要核对的事实数字（≥2 位、排除日期/序号），保持出现顺序去重。
+
+    口径：
+    - 只保留数字部分 ≥2 位的 token（``5`` 这种太常见，不当作可核对声明）；
+    - ``2026年`` / ``第2章`` / ``3日`` 这类日期与序号跳过；
+    - ``5.5`` / ``35%`` / ``1,000`` 都保留，版本号与比例恰恰最容易出错。
+    """
+    text = _WHITESPACE_RE.sub(" ", script or "")
+    numbers: list[str] = []
+    for match in _CLAIM_NUMBER_RE.finditer(text):
+        token = match.group(0).strip()
+        digits = re.sub(r"\D", "", token)
+        if len(digits) < 2:
+            continue
+        if text[match.end() : match.end() + 1] in _DATE_OR_ORDINAL_SUFFIX:
+            continue
+        if text[max(0, match.start() - 1) : match.start()] == _ORDINAL_PREFIX:
+            continue
+        if token not in numbers:
+            numbers.append(token)
+    return numbers
+
+
+def check_script(
+    script: str,
+    config: EditorialConfig | None = None,
+    *,
+    evidence_text: str | None = None,
+) -> dict[str, Any]:
     """检查文稿是否满足 15 分钟双主持播客的硬指标。
 
     返回可直接打印/落盘的 dict：``ok`` 为总闸门，``issues`` 为人类可读的失败项。
@@ -141,6 +177,19 @@ def check_script(script: str, config: EditorialConfig | None = None) -> dict[str
     if banned:
         issues.append(f"出现禁用词：{'、'.join(banned)}")
 
+    # 事实核对：文稿里的每个数字都必须能在事实底稿里逐字找到。
+    # evidence_text 为空表示调用方没给底稿（旧调用/单测），跳过而不是误报。
+    claim_numbers = script_claim_numbers(script)
+    unverified: list[str] = []
+    if evidence_text is not None:
+        unverified = [
+            number for number in claim_numbers if not number_in_text(number, evidence_text)
+        ]
+        if unverified:
+            sample = "、".join(unverified[:8])
+            more = f"（共 {len(unverified)} 个）" if len(unverified) > 8 else ""
+            issues.append(f"数字在事实底稿中找不到：{sample}{more}")
+
     return {
         "ok": not issues,
         "chars": chars,
@@ -159,6 +208,9 @@ def check_script(script: str, config: EditorialConfig | None = None) -> dict[str
         "unmarked_ratio": unmarked_ratio,
         "max_unmarked_ratio": cfg.max_unmarked_ratio,
         "banned_words": banned,
+        "claim_numbers": claim_numbers,
+        "unverified_numbers": unverified,
+        "fact_checked": evidence_text is not None,
         "issues": issues,
     }
 

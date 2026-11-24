@@ -20,7 +20,6 @@ from __future__ import annotations
 import json
 import logging
 import re
-import unicodedata
 from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
@@ -28,6 +27,7 @@ from typing import Any
 from ai_news_podcast.business.contracts import Commentary, Event, Fact, ShortlistEntry
 
 from .config import DEFAULT_CONFIG_PATH, EditorialConfig, LLMCall, load_config
+from .factcheck import extract_numbers, number_in_text
 from .prompts import build_commentary_prompt
 from .quality import find_banned_words
 from .verified_facts import verified_facts_for_event
@@ -36,16 +36,9 @@ logger = logging.getLogger(__name__)
 
 COUNTERPOINT_FALLBACK = "暂无公开反方信息"
 
-# 数字 token：整数/小数/千分位 + 可选百分号（全角在比较前统一 NFKC）
-_NUMBER_RE = re.compile(r"\d+(?:[.,]\d+)*\s*[%％]?")
-
 
 class EditorialValidationError(ValueError):
     """LLM 输出不满足 Stage 4 的格式/客观性约束。"""
-
-
-def _normalize(text: str) -> str:
-    return unicodedata.normalize("NFKC", text or "")
 
 
 def extract_json_object(text: str) -> dict[str, Any]:
@@ -69,25 +62,6 @@ def extract_json_object(text: str) -> dict[str, Any]:
         if isinstance(candidate, dict):
             return candidate
     raise EditorialValidationError("LLM 输出中找不到合法 JSON 对象")
-
-
-def extract_numbers(text: str) -> list[str]:
-    """提取文本中的阿拉伯数字 token（含小数/千分位/百分号），保持出现顺序。"""
-    return [match.group(0).replace(" ", "") for match in _NUMBER_RE.finditer(_normalize(text))]
-
-
-def number_in_text(number: str, text: str) -> bool:
-    """数字是否能在证据文本中找到（逐字匹配；至少两位数字才允许纯数字子串兜底）。"""
-    number = _normalize(number).replace(" ", "")
-    if not number:
-        return True
-    haystack = _normalize(text)
-    if number in haystack:
-        return True
-    digits = re.sub(r"\D", "", number)
-    if len(digits) < 2:
-        return False
-    return digits in re.sub(r"\D", "", haystack)
 
 
 def sanitize_text(text: str, banned: Sequence[str]) -> str:
