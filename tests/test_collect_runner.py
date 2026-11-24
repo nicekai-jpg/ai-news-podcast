@@ -96,7 +96,8 @@ class TestShippedConfig:
         sources = load_sources(REPO_ROOT / "config" / "sources_v3.yaml")
 
         assert len(sources) == 132
-        assert sum(1 for source in sources if source.enabled) == 127
+        # 2026-11-24：arXiv 论文不做日报，15 个 arxiv 源显式禁用（127 → 112）。
+        assert sum(1 for source in sources if source.enabled) == 112
         assert Counter(source.channel for source in sources) == Counter(
             {
                 "c1_rss": 43,
@@ -136,7 +137,9 @@ class TestShippedConfig:
         }
 
         disabled = {name for name, source in sources.items() if not source.enabled}
-        assert disabled == {
+        arxiv = {name for name in sources if name.startswith("arxiv")}
+        assert arxiv and arxiv <= disabled, "arXiv 源应全部禁用"
+        assert disabled - arxiv == {
             "venturebeat_ai",
             "tmtpost_news",
             "scientificamerican",
