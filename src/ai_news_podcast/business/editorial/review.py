@@ -128,6 +128,31 @@ def parse_podcast_review(payload: Mapping[str, Any], config: EditorialConfig) ->
     )
 
 
+def _deterministic_fact_notes(
+    script: str,
+    config: EditorialConfig,
+    evidence_text: str,
+) -> tuple[list[str], list[str]]:
+    """用稿件与证据做确定性核对，产出可复现的 fact_check_notes。
+
+    LLM 自评的 ``fact_check_notes`` 没有任何校验价值；这里改为程序核对：
+    - 文稿里的声明数字是否都能在事实底稿中逐字找到；
+    - 点评章节数与文稿 ``[CHAPTER]`` 是否一致。
+    """
+    from .quality import chapter_titles, check_script
+
+    notes: list[str] = []
+    if evidence_text.strip():
+        report = check_script(script, config, evidence_text=evidence_text)
+        if report["unverified_numbers"]:
+            notes.append("以下数字未在事实底稿中找到：" + "、".join(report["unverified_numbers"]))
+        else:
+            notes.append(f"文稿内 {len(report['claim_numbers'])} 个数字均可在事实底稿核对")
+    else:
+        notes.append("未提供事实底稿，跳过数字核对")
+    return notes, chapter_titles(script)
+
+
 def build_podcast_review(
     script: str,
     report_rows: Sequence[Commentary],
@@ -135,8 +160,13 @@ def build_podcast_review(
     llm_call: LLMCall,
     *,
     config_path: str | Path = DEFAULT_CONFIG_PATH,
+    evidence_text: str = "",
 ) -> PodcastReview:
-    """S7：对已生成的播客文稿做审读并生成 01 页面 show notes。"""
+    """S7：对已生成的播客文稿做审读并生成 01 页面 show notes。
+
+    ``fact_check_notes`` 不采用 LLM 自评，改用 ``_deterministic_fact_notes``
+    对稿件与证据做程序核对，结果可复现。
+    """
     config = load_config(config_path)
     if not script.strip():
         return PodcastReview()
@@ -151,5 +181,12 @@ def build_podcast_review(
     except Exception:
         logger.exception("播客点评 LLM 调用失败，已跳过")
         return PodcastReview()
+
+    notes, script_chapters = _deterministic_fact_notes(script, config, evidence_text)
+    if review.chapters and len(review.chapters) != len(script_chapters):
+        notes.append(
+            f"章节数与文稿不一致：文稿 {len(script_chapters)} 章，点评 {len(review.chapters)} 章"
+        )
+    review.fact_check_notes = notes
     logger.info("S7 播客点评完成：%s 章，%s 条点评", len(review.chapters), len(review.items))
     return review

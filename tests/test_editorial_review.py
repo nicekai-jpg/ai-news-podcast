@@ -88,7 +88,42 @@ class TestPodcastReview:
         assert review.show_notes == "本期看点"
         assert review.chapters[0]["title"] == "开场"
         assert review.items[0].verdict == "补充"
-        assert review.fact_check_notes == ["核对数字"]
+        # fact_check_notes 不再采信 LLM 自评，改为程序核对
+        assert review.fact_check_notes == ["未提供事实底稿，跳过数字核对"]
+
+    def test_fact_notes_verified_against_evidence(self) -> None:
+        payload = {"chapters": [{"title": "开场", "intro": "导语"}]}
+        script = "[CHAPTER] 开场\n[Host A] 模型参数 100B。"
+        review = build_podcast_review(
+            script,
+            [_row()],
+            [_event()],
+            _llm(payload),
+            config_path=CONFIG,
+            evidence_text="该模型参数 100B。",
+        )
+        assert review.fact_check_notes == ["文稿内 1 个数字均可在事实底稿核对"]
+
+    def test_fact_notes_flag_missing_number(self) -> None:
+        payload = {"chapters": [{"title": "开场", "intro": "导语"}]}
+        script = "[CHAPTER] 开场\n[Host A] 模型参数 999B。"
+        review = build_podcast_review(
+            script,
+            [_row()],
+            [_event()],
+            _llm(payload),
+            config_path=CONFIG,
+            evidence_text="该模型参数 100B。",
+        )
+        assert any("999" in note for note in review.fact_check_notes)
+
+    def test_fact_notes_flag_chapter_mismatch(self) -> None:
+        payload = {"chapters": [{"title": "开场", "intro": "导语"}]}
+        script = "[CHAPTER] 开场\n[Host A] 你好\n[CHAPTER] 收尾\n[Host B] 再见"
+        review = build_podcast_review(
+            script, [_row()], [_event()], _llm(payload), config_path=CONFIG
+        )
+        assert any("章节数" in note for note in review.fact_check_notes)
 
     def test_empty_script_skips_llm(self) -> None:
         review = build_podcast_review(" ", [_row()], [_event()], _llm({}), config_path=CONFIG)

@@ -397,12 +397,13 @@ def _run_editorial_stages(
 ) -> _EditorialOutputs:
     """S4 日报生成 → S5 日报点评 → S6 文稿生成 → S7 播客点评。"""
     from ai_news_podcast.business.editorial.commentary import build_commentaries
+    from ai_news_podcast.business.editorial.config import load_config as load_editorial_config
     from ai_news_podcast.business.editorial.report import render_daily_report
     from ai_news_podcast.business.editorial.review import (
         build_podcast_review,
         build_report_review,
     )
-    from ai_news_podcast.business.editorial.script import build_script
+    from ai_news_podcast.business.editorial.script import build_script, script_evidence_text
 
     editorial_dir = editorial_root / date_str
     editorial_cfg = config_root / "editorial_v3.yaml"
@@ -452,13 +453,20 @@ def _run_editorial_stages(
         script_path.write_text(script_text + "\n", encoding="utf-8")
         logger.info("S6 完成：%s", script_path)
 
-        # S7：对已生成的文稿做点评 + show notes
+        # S7：对已生成的文稿做点评 + show notes；
+        # fact_check_notes 用与 S6 同源的底稿做确定性核对
+        evidence_for_review = script_evidence_text(
+            shortlist, events, item_evidence, load_editorial_config(editorial_cfg)
+        )
+        if radar_text.strip():
+            evidence_for_review = f"{evidence_for_review}\n{radar_text}"
         podcast_review = build_podcast_review(
             script_text,
             report_rows,
             events,
             llm_for("stage7"),
             config_path=editorial_cfg,
+            evidence_text=evidence_for_review,
         )
         podcast_review_path = _write_json(
             editorial_dir / "podcast_review.json", podcast_review.to_dict()

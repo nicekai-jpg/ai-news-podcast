@@ -153,7 +153,7 @@ def _trim_to_max(script: str, max_chars: int) -> str:
     return "\n".join(kept) + ("\n" if kept else "")
 
 
-def _script_evidence_text(
+def script_evidence_text(
     shortlist: Sequence[ShortlistEntry],
     events: Sequence[Event],
     item_evidence: Mapping[str, str] | None,
@@ -212,7 +212,7 @@ def build_script(
     prompt = build_script_prompt(
         shortlist, list(events), item_evidence, config=config, radar_text=radar_text
     )
-    evidence_text = _script_evidence_text(shortlist, events, item_evidence, config)
+    evidence_text = script_evidence_text(shortlist, events, item_evidence, config)
     if radar_text.strip():
         # 雷达是独立轨，星数/安装命令也要能通过数字核对
         evidence_text = f"{evidence_text}\n{radar_text}"
