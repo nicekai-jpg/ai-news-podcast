@@ -444,3 +444,37 @@ def test_non_inherited_clean_stays_a() -> None:
         source_text="谷歌发布 Gemini 4 Hydrogen。",
     )
     assert quality == "A"
+
+
+def test_subject_differs_from_article_not_inherited(env) -> None:
+    """正文明确写了主语、但不是本文主角 → 不算继承（不进 A2）。"""
+    from ai_news_podcast.business.kg.dep import extract_predicates
+    from ai_news_podcast.business.kg.fill import (
+        FillContext,
+        build_candidate,
+        classify_relation,
+    )
+
+    lex, parser, schemas, reporting = env
+    parse = parser.analyze("比亚迪推出第二代刀片电池。", "zh")
+    ctx = FillContext(
+        lexicon=lex,
+        schemas=schemas,
+        item_id="x",
+        article_subject=__import__(
+            "ai_news_podcast.business.kg.types", fromlist=["SlotValue"]
+        ).SlotValue("subject", "阿里巴巴", "alibaba", "company"),
+    )
+    rows = []
+    for pred in extract_predicates(parse, reporting):
+        match = classify_relation(parse, pred, lex)
+        if match is None:
+            continue
+        candidate = build_candidate(parse, pred, match, ctx)
+        if candidate is not None:
+            rows.append(candidate)
+    assert rows, "该句应抽到候选"
+    # 比亚迪是正文里的专名，只是不是本文主角，不应当作「继承」
+    for candidate in rows:
+        assert candidate.secondary is False
+        assert "subject_inherited" not in candidate.reasons

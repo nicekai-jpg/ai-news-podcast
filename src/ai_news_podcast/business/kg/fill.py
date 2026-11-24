@@ -1124,12 +1124,10 @@ def build_candidate(  # noqa: PLR0911
         elif required not in slots:
             return None
     polarity, modality = _polarity_and_modality(parse.text, ctx)
-    article = ctx.article_subject
-    secondary = inherited or (
-        article is not None
-        and subject.text != article.text
-        and not (article.entity_id and subject.entity_id == article.entity_id)
-    )
+    # 注意：这里不再把「主语≠文章主体」算进 secondary。
+    # 那个条件会把「正文里明确写了主语、但主体不是本文主角」的正确事实
+    # 也标成继承，导致 A2 里混入大量误报。
+    secondary = inherited
     event_time = _event_time(parse.text, ctx.published_at)
     if event_time:
         slots["event_time"] = SlotValue("event_time", event_time, "", "date")
@@ -1141,7 +1139,7 @@ def build_candidate(  # noqa: PLR0911
         slots=slots,
         polarity=polarity,
         modality=modality,
-        reasons=["dep_confirmed"],
+        reasons=["dep_confirmed"] + (["subject_inherited"] if inherited else []),
         published_at=ctx.published_at,
         secondary=secondary,
         event_time=event_time,
