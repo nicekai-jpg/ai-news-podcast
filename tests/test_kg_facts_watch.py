@@ -43,6 +43,7 @@ def _write(directory: Path, date: str, rows: list[dict]) -> None:
 def _args(tmp_path: Path, **extra) -> object:
     args = type("A", (), {})()
     args.data_dir = str(tmp_path)
+    args.date = ""
     args.days = 7
     args.sample = 0
     args.seed = 13
@@ -115,3 +116,48 @@ class TestSample:
         second = capsys.readouterr().out
         assert first == second
         assert first.count("[A] 公司") == 3
+
+
+class TestCoverage:
+    def _event(self, event_id: str, item_ids: list[str]) -> dict:
+        return {"event_id": event_id, "item_ids": item_ids}
+
+    def test_counts_event_level_coverage(self, tmp_path, capsys):
+        module = _load_script()
+        facts = tmp_path / "facts"
+        _write(
+            facts,
+            "2026-11-16",
+            [
+                _row("A", "OpenAI", "release", "GPT-5"),
+                _row("A2", "谷歌", "release", "Gemini 4 Hydrogen"),
+                _row("B", "Meta", "release", "LLaMA"),
+            ],
+        )
+        # 三条事实都在 i1 上，只属于 e1；e2 无事实
+        for name in ("2026-11-16",):
+            path = facts / f"facts-{name}.jsonl"
+            rows = [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
+            for row in rows:
+                row["evidence"]["item_id"] = "i1"
+            path.write_text(
+                "\n".join(json.dumps(row, ensure_ascii=False) for row in rows) + "\n",
+                encoding="utf-8",
+            )
+        day = tmp_path / "ocean" / "2026-11-16"
+        day.mkdir(parents=True)
+        (day / "events.json").write_text(
+            json.dumps([self._event("e1", ["i1"]), self._event("e2", ["i2"])], ensure_ascii=False),
+            encoding="utf-8",
+        )
+        assert module.cmd_coverage(_args(tmp_path)) == 0
+        out = capsys.readouterr().out
+        assert "| 2026-11-16 | 2 | 1 | 1 | 1 | 50.0% |" in out
+        assert "A 档覆盖 50.0% 的事件" in out
+
+    def test_missing_events_file_is_skipped(self, tmp_path, capsys):
+        module = _load_script()
+        _write(tmp_path / "facts", "2026-11-16", [_row("A", "OpenAI", "release", "GPT-5")])
+        assert module.cmd_coverage(_args(tmp_path)) == 0
+        out = capsys.readouterr().out
+        assert "合计" not in out

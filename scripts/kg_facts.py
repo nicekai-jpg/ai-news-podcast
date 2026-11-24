@@ -9,6 +9,7 @@
     python scripts/kg_facts.py query --subject 英伟达 --relation personnel
     python scripts/kg_facts.py audit --days 3
     python scripts/kg_facts.py watch --days 7
+    python scripts/kg_facts.py coverage --days 7
 """
 
 from __future__ import annotations
@@ -374,6 +375,80 @@ def _sample_lines(rows: list[dict], size: int, *, seed: int = 13) -> list[str]:
         sentence = str((row.get("evidence") or {}).get("sentence") or "")[:60]
         out.append(f"[{grade}] {render_fact_line(row)}　← {sentence}")
     return out
+
+
+def cmd_coverage(args: argparse.Namespace) -> int:
+    """统计 A/A2 事实能覆盖多少个事件——判断「值不值得注入日报」的核心指标。"""
+    data_dir = Path(args.data_dir)
+    facts_dir = data_dir / "facts"
+    dates = [args.date] if args.date else _recent_fact_dates(facts_dir, args.days)
+    if not dates:
+        print("没有事实文件", file=sys.stderr)
+        return 2
+
+    print("## 事实覆盖事件")
+    print("")
+    print("| 日期 | 事件 | A 覆盖 | A2 覆盖 | A+A2 覆盖 | 事件级 A 占比 |")
+    print("|---|---|---|---|---|---|")
+    totals = {"events": 0, "a": 0, "a2": 0, "both": 0}
+    for date_str in dates:
+        events_path = data_dir / "ocean" / date_str / "events.json"
+        if not events_path.is_file():
+            continue
+        try:
+            events = json.loads(events_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        rows = load_day(facts_dir, date_str)
+        item_to_event: dict[str, str] = {}
+        event_ids: list[str] = []
+        for event in events:
+            event_id = str(event.get("event_id") or "")
+            if not event_id:
+                continue
+            event_ids.append(event_id)
+            for item_id in event.get("item_ids") or []:
+                item_to_event[str(item_id)] = event_id
+
+        hit_a: set[str] = set()
+        hit_a2: set[str] = set()
+        for row in rows:
+            grade = row.get("grade")
+            if grade not in ("A", "A2"):
+                continue
+            item_id = str((row.get("evidence") or {}).get("item_id") or "")
+            event_id = item_to_event.get(item_id)
+            if event_id is None:
+                continue
+            (hit_a if grade == "A" else hit_a2).add(event_id)
+
+        both = hit_a | hit_a2
+        totals["events"] += len(event_ids)
+        totals["a"] += len(hit_a)
+        totals["a2"] += len(hit_a2)
+        totals["both"] += len(both)
+        share = f"{len(hit_a) / len(event_ids):.1%}" if event_ids else "-"
+        print(
+            f"| {date_str} | {len(event_ids)} | {len(hit_a)} | {len(hit_a2)} | "
+            f"{len(both)} | {share} |"
+        )
+
+    if totals["events"]:
+        print(
+            f"| **合计** | **{totals['events']}** | **{totals['a']}** | "
+            f"**{totals['a2']}** | **{totals['both']}** | "
+            f"**{totals['a'] / totals['events']:.1%}** |"
+        )
+        print("")
+        print(
+            f"A 档覆盖 {totals['a'] / totals['events']:.1%} 的事件，"
+            f"A+A2 覆盖 {totals['both'] / totals['events']:.1%}。"
+        )
+        print(
+            "注入阈值参考：A 覆盖 <10% 时注入块多半是空的，收益为负；"
+            "达到 30% 以上再考虑打开 inject_verified_facts。"
+        )
+    return 0
 
 
 def _iso_weeks(days: int) -> list[str]:
@@ -994,6 +1069,11 @@ def main() -> int:  # noqa: PLR0915
     audit.add_argument("--no-context", action="store_true", help="不打印原文上下文")
     audit.add_argument("--out-md", default="")
     audit.set_defaults(func=cmd_audit)
+
+    coverage = sub.add_parser("coverage", help="A/A2 覆盖了多少事件")
+    coverage.add_argument("--date", default="")
+    coverage.add_argument("--days", type=int, default=7)
+    coverage.set_defaults(func=cmd_coverage)
 
     watch = sub.add_parser("watch", help="A/A2 每日趋势（观察期用）")
     watch.add_argument("--days", type=int, default=7)

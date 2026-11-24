@@ -207,6 +207,8 @@ class TestPromptInjection:
         assert "以证据正文为准" in prompt
 
     def test_absent_when_no_facts(self):
+        """没有事实时整块不出现——覆盖率只有 1.6%，空块只是白占篇幅。"""
         entry, event = self._entry_event()
         prompt = build_commentary_prompt(entry, event, config=load_config(), evidence_ids=["i1"])
-        assert "本事件无机器抽取的可核验事实" in prompt
+        assert "已核验事实" not in prompt
+        assert "本事件无机器抽取的可核验事实" not in prompt

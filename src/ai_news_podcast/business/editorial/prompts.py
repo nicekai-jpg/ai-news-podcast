@@ -119,7 +119,8 @@ def build_commentary_prompt(
         indent=2,
     )
 
-    verified_block = "（本事件无机器抽取的可核验事实）"
+    # 没有事实时整块不出现：覆盖率只有 1.6%，空块会白白占用每个 prompt 的篇幅。
+    verified_block = ""
     if verified_facts:
         lines = "\n".join(f"- {item}" for item in verified_facts)
         verified_block = (
@@ -163,7 +164,6 @@ def build_commentary_prompt(
 
 ## 证据正文（事实与数字只能来自这里；引用时标注对应的证据 ID）
 {evidence_block}
-
 {verified_block}
 
 {_SAFETY_NOTE}
