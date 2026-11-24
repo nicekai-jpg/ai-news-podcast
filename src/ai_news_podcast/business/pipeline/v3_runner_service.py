@@ -8,6 +8,7 @@
 阶段产物：
     data/raw/raw-{date}.json.gz
     data/ocean/{date}/events.json|items.json|continuity.json
+    data/kg/{date}/kg.json
     data/selection/{date}/shortlist.json
     data/editorial/{date}/commentary.json
     site/episodes/{date}.txt
@@ -236,6 +237,54 @@ def _load_stage1_settings(config_root: Path) -> dict[str, Any]:
     return stage1 if isinstance(stage1, dict) else {}
 
 
+def _load_kg_settings(config_root: Path) -> dict[str, Any]:
+    path = config_root / "pipeline_v3.yaml"
+    if not path.is_file():
+        return {}
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        return {}
+    stage = data.get("stage2_5") if isinstance(data, dict) else {}
+    return stage if isinstance(stage, dict) else {}
+
+
+def _run_kg_stage(
+    *,
+    events: list[Event],
+    items: list[dict[str, Any]],
+    data_root: Path,
+    date_str: str,
+    config_root: Path,
+) -> dict[str, Any]:
+    """跑 Stage 2.5 事实层；任何异常都只告警，不阻断主链。"""
+    settings = _load_kg_settings(config_root)
+    if not settings.get("enabled", True):
+        logger.info("Stage 2.5 事实层：配置关闭，跳过")
+        return {"enabled": False}
+    try:
+        from ai_news_podcast.business.pipeline.kg_stage_service import run_facts_stage
+
+        stats = run_facts_stage(
+            items=items,
+            events=events,
+            date_str=date_str,
+            config_root=config_root,
+            data_root=data_root,
+        )
+    except Exception:
+        logger.warning("Stage 2.5 事实层失败，跳过（不影响主链）", exc_info=True)
+        return {"enabled": True, "ok": False, "error": "facts_failed"}
+    else:
+        logger.info(
+            "Stage 2.5 事实层：%s 个事件，%s 条 A / %s 条 B",
+            stats.get("events", 0),
+            stats.get("cards_a", 0),
+            stats.get("cards_b", 0),
+        )
+        return stats
+
+
 def _load_pricing(config_root: Path) -> dict[str, Any]:
     path = config_root / "pipeline_v3.yaml"
     if not path.is_file():
@@ -263,6 +312,28 @@ def _write_llm_usage(*, config_root: Path, editorial_root: Path, date_str: str) 
     logger.info("LLM 用量：%s", payload["estimate"])
 
 
+def _load_verified_facts(data_root: Path, date_str: str, config_root: Path) -> dict[str, list[str]]:
+    """读取 Stage 2.5 的 A 档事实。开关关闭 / 文件缺失时返回空 dict。"""
+    from ai_news_podcast.business.editorial.config import load_config
+    from ai_news_podcast.business.editorial.verified_facts import (
+        facts_by_item,
+        load_a_cards,
+    )
+
+    editorial_cfg = load_config(config_root / "editorial_v3.yaml")
+    if not editorial_cfg.inject_verified_facts:
+        return {}
+    try:
+        cards = load_a_cards(data_root / "facts", date_str, grades=editorial_cfg.fact_grades)
+    except OSError:
+        logger.warning("读取 Stage 2.5 事实失败，跳过已核验事实注入", exc_info=True)
+        return {}
+    if not cards:
+        return {}
+    logger.info("Stage 2.5 已核验事实：%s 条 A 档", len(cards))
+    return facts_by_item(cards)
+
+
 def _run_editorial_stages(
     *,
     shortlist: list[ShortlistEntry],
@@ -273,6 +344,7 @@ def _run_editorial_stages(
     config_root: Path,
     llm_for: Callable[[str], LLMCall],
     skip_script: bool,
+    verified_by_item: dict[str, list[str]] | None = None,
 ) -> _EditorialOutputs:
     """S4 日报生成 → S5 日报点评 → S6 文稿生成 → S7 播客点评。"""
     from ai_news_podcast.business.editorial.commentary import build_commentaries
@@ -293,6 +365,7 @@ def _run_editorial_stages(
         llm_for("stage4"),
         item_evidence=item_evidence,
         config_path=editorial_cfg,
+        verified_by_item=verified_by_item,
     )
     report_json_path = _write_json(
         editorial_dir / "report.json", [row.to_dict() for row in report_rows]
@@ -531,6 +604,15 @@ def run_v3_pipeline(
     events_path = ocean_dir / "events.json"
     logger.info("Stage 2 完成：%s 个事件", len(events))
 
+    # ---- Stage 2.5 知识图谱（可失败，不阻断 Stage 3） ----
+    _run_kg_stage(
+        events=events,
+        items=snapshot.items,
+        data_root=data_root,
+        date_str=date_str,
+        config_root=config_root,
+    )
+
     def _llm_for_factory(stage: str) -> LLMCall:
         if llm_call_factory is not None:
             return llm_call_factory(stage)
@@ -566,6 +648,7 @@ def run_v3_pipeline(
         config_root=config_root,
         llm_for=_llm_for,
         skip_script=skip_script,
+        verified_by_item=_load_verified_facts(data_root, date_str, config_root),
     )
     report_rows = editorial.report_rows
 

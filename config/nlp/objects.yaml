@@ -267,6 +267,125 @@ objects:
     type: product
     family: robotaxi
 
+
+  # 2026-11-23 按 scripts/kg_lexicon_gaps.py 的缺口清单补充（A 档需要两端在词典内）。
+  # 版本号用新闻里的真实写法，缩短会截断实体边界。
+  - id: longcat-2.5
+    name: LongCat-2.5
+    aliases: ["LongCat-2.5", "LongCat 2.5"]
+    type: model
+    family: longcat
+  - id: seedance-2.5
+    name: Seedance 2.5 flash
+    aliases: ["Seedance 2.5 flash", "Seedance 2.5"]
+    type: model
+    family: seedance
+  - id: seedream-5.5
+    name: Seedream 5.5
+    aliases: ["Seedream 5.5", "Seedream 5"]
+    type: model
+    family: seedream
+  - id: lingbot-touch
+    name: LingBot-Touch
+    aliases: ["LingBot-Touch", "LingBot Touch"]
+    type: model
+    family: lingbot
+  - id: lingbot-vla
+    name: LingBot-VLA
+    aliases: ["LingBot-VLA", "LingBot VLA"]
+    type: model
+    family: lingbot
+  - id: xperience-2
+    name: Xperience 2
+    aliases: ["Xperience 2", "Xperience-2"]
+    type: product
+    family: xperience
+  - id: neohorse-1
+    name: NeoHorse-1
+    aliases: ["NeoHorse-1", "NeoHorse 1"]
+    type: model
+    family: neohorse
+  - id: groot-2
+    name: GR00T 2
+    aliases: ["GR00T 2", "GR00T-2"]
+    type: model
+    family: groot
+  - id: edge0-35b
+    name: Edge0-35B
+    aliases: ["Edge0-35B", "Edge0 35B"]
+    type: model
+    family: edge0
+  - id: edge0-145b
+    name: Edge0-145B
+    aliases: ["Edge0-145B", "Edge0 145B"]
+    type: model
+    family: edge0
+  - id: gemini-4-hydrogen
+    name: Gemini 4 Hydrogen
+    aliases: ["Gemini 4 Hydrogen", "Gemini4Hydrogen"]
+    type: model
+    family: gemini
+  - id: trace-router-plus
+    name: TraceRouter++
+    aliases: ["TraceRouter++", "TraceRouter"]
+    type: model
+    family: tracerouter
+  - id: bigbang-v1
+    name: BigBang-V1
+    aliases: ["BigBang-V1", "BigBang V1"]
+    type: model
+    family: bigbang
+  - id: alphagenome-2
+    name: AlphaGenome 2
+    aliases: ["AlphaGenome 2", "AlphaGenome-2"]
+    type: model
+    family: alphagenome
+  - id: intreal-100k
+    name: IntReal-100K
+    aliases: ["IntReal-100K", "IntReal 100K"]
+    type: model
+    family: intreal
+  - id: natura-1
+    name: Natura-1
+    aliases: ["Natura-1", "Natura 1"]
+    type: model
+    family: natura
+  - id: fx-bio-1031
+    name: Fx-Bio-1031
+    aliases: ["Fx-Bio-1031", "Fx Bio 1031"]
+    type: model
+    family: fxbio
+  - id: btd-700
+    name: BTD 700
+    aliases: ["BTD 700", "BTD-700"]
+    type: product
+    family: btd
+  - id: maestro-500
+    name: MAESTRO 500
+    aliases: ["MAESTRO 500", "MAESTRO-500"]
+    type: product
+    family: maestro
+  - id: vy249hg3
+    name: VY249HG3
+    aliases: ["VY249HG3"]
+    type: product
+    family: vy
+  - id: h100
+    name: H100
+    aliases: ["H100", "NVIDIA H100"]
+    type: chip
+    family: nvidia_gpu
+  - id: rtx-5080
+    name: RTX 5080
+    aliases: ["RTX 5080", "RTX5080"]
+    type: chip
+    family: nvidia_gpu
+  - id: cortex-m42
+    name: Cortex-M42
+    aliases: ["Cortex-M42", "Cortex M42"]
+    type: chip
+    family: arm_cortex
+
 # 泛化类型关键词：没有命中具体对象时，仍能给出 object_type。
 type_keywords:
   model: [模型, 大模型, 基础模型, 推理模型, 语言模型, model, foundation model, reasoning model]

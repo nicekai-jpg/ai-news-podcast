@@ -70,12 +70,6 @@ sources:
     limit: 20
 
   # --- 官方博客 8 ---
-  - name: openai_news
-    label: OpenAI News
-    channel: c1_rss
-    url: "https://openai.com/blog/rss.xml"
-    category: official
-    limit: 30
   - name: deepmind_blog
     label: DeepMind Blog
     channel: c1_rss
@@ -126,13 +120,6 @@ sources:
     url: "https://techcrunch.com/category/artificial-intelligence/feed/"
     category: news
     limit: 30
-  - name: synced_review
-    label: Synced Review
-    channel: c1_rss
-    url: "https://syncedreview.com/feed/"
-    category: news
-    limit: 15
-    enabled: true
   - name: venturebeat_ai
     label: VentureBeat AI
     channel: c1_rss
@@ -148,75 +135,89 @@ sources:
     url: "https://rss.arxiv.org/rss/cs.AI"
     category: research
     limit: 30
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_cs_lg
     label: arXiv cs.LG
     channel: c1_rss
     url: "https://rss.arxiv.org/rss/cs.LG"
     category: research
     limit: 30
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_cs_cl
     label: arXiv cs.CL
     channel: c1_rss
     url: "https://rss.arxiv.org/rss/cs.CL"
     category: research
     limit: 30
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_cs_cv
     label: arXiv cs.CV
     channel: c1_rss
     url: "https://rss.arxiv.org/rss/cs.CV"
     category: research
     limit: 30
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_cs_ro
     label: arXiv cs.RO
     channel: c1_rss
     url: "https://rss.arxiv.org/rss/cs.RO"
     category: research
     limit: 30
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_deepseek
     label: arXiv · DeepSeek
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:DeepSeek+OR+ti:DeepSeek&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_glm
     label: arXiv · 智谱 GLM
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:GLM-4+OR+ti:GLM-4+OR+abs:ZhipuAI&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_kimi
     label: arXiv · Kimi/Moonshot
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:Moonshot+OR+ti:Kimi&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_claude
     label: arXiv · Anthropic/Claude
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:Anthropic+OR+ti:Claude&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_grok
     label: arXiv · xAI/Grok
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:xAI+OR+ti:Grok&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_mistral_llama
     label: arXiv · Mistral/Llama
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:Mistral+OR+abs:Mixtral+OR+ti:Llama&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_hunyuan
     label: arXiv · 腾讯混元
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:Hunyuan&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_bytedance
     label: arXiv · 字节 Seed
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:ByteDance+OR+abs:Seed-TTS&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_internlm
     label: arXiv · 上海 AI Lab
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:InternLM&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_ernie
     label: arXiv · 百度文心
     channel: c1_rss
@@ -224,16 +225,7 @@ sources:
     category: research
 
   # --- 其它 1（原生 RSS 已坏，主通道改 C3；保留占位便于观测恢复情况）---
-  - name: 36kr_native
-    label: 36Kr 快讯（原生 RSS）
-    channel: c1_rss
-    url: "https://36kr.com/feed-newsflash"
-    category: news
-    enabled: true
-
-  # =========================================================================
-  # C2 Atom（11 = GitHub Releases 8 + YouTube 3）
-  # =========================================================================
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: dsh_releases
     label: DeepSeek Harness Releases
     channel: c2_atom
@@ -320,11 +312,6 @@ sources:
     channel: c3_rsshub
     rsshub_route: /deepseek/news
     category: official
-  - name: huggingface_blog_rsshub
-    label: HuggingFace Blog
-    channel: c1_rss
-    url: "https://huggingface.co/blog/feed.xml"
-    category: research
   - name: ollama_blog
     label: Ollama Blog
     channel: c3_rsshub
@@ -673,15 +660,16 @@ sources:
     label: 字节 Seed 研究/博客
     channel: c4_web
     parser: generic
+    # /research 会 302 到 /zh/research；卡片是 SSR 的 <a href="/zh/blog/...">，
+    # 标题 h3/h4 两种版式，日期 span 三种类名（mt-auto / shrink-0 / .../50）。
+    # blog_list/* 是纯客户端渲染的空壳，抓不到条目，故不配。
+    selectors:
+      item: 'a[href^="/zh/blog/"]'
+      title: "h3, h4"
+      summary: "p"
+      date: 'span.mt-auto, span.shrink-0, span[class*="/50"]'
     urls:
-      - "https://seed.bytedance.com/research"
-      - "https://seed.bytedance.com/blog_list/foundation"
-    category: official
-  - name: sensetime_news
-    label: 商汤新闻
-    channel: c4_web
-    parser: generic
-    url: "https://www.sensetime.com/cn/news"
+      - "https://seed.bytedance.com/zh/research"
     category: official
   - name: miit_policy
     label: 工信部政策文件

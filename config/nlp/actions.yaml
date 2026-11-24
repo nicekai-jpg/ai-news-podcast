@@ -1,17 +1,25 @@
 # 动作词典：多标签输出，priority 只用于选 primary（数值大优先），不丢其它动作。
+#
+# 2026-11-16 扩充：20 → 58 条。目标是覆盖 AI 新闻里的高频事件动词，
+# 供「词表 + 模板」三元组抽取当关系锚点。新增条目都避免用单字或过泛的词
+# （如「发」「推」「开放」），防止误命中。
 actions:
   - id: accident
     name: 事故/故障
     priority: 100
-    aliases: [事故, 宕机, 崩溃, 故障, 中断, 泄露, 泄漏, 漏洞, 网络攻击, 被攻击, 失窃, 起火, outage, downtime, incident, leak, breach, hack, hacked, crash]
+    aliases: [事故, 宕机, 崩溃, 故障, 中断, 泄露, 泄漏, 漏洞, 网络攻击, 被攻击, 失窃, 起火, outage, downtime, incident, leak, breach, hack, hacked, crash, crashes, crashed, 攻击, 召回, 爆炸, 风险]
   - id: lawsuit
     name: 诉讼
     priority: 95
-    aliases: [诉讼, 起诉, 指控, 控告, 法院, 判决, 侵权, lawsuit, sue, sued, court, verdict, infringement]
+    aliases: [诉讼, 起诉, 指控, 控告, 法院, 判决, 侵权, 上诉, 索赔, lawsuit, sue, sued, court, verdict, infringement, appeal, suing, files lawsuit, 和解]
   - id: regulation
     name: 监管
     priority: 90
-    aliases: [监管, 监管机构, 合规, 审查, 反垄断, 处罚, 罚款, 备案, 许可证, 牌照, regulate, regulator, compliance, antitrust, fine, investigation]
+    aliases: [监管, 监管机构, 合规, 反垄断, 处罚, 罚款, 备案, 许可证, 牌照, regulate, regulator, compliance, antitrust, fine, approves, approved, approval, 立案, 约谈, 整改, 批准, 许可, 禁令, 下架, 封禁, 限制]
+  - id: investigation
+    name: 调查
+    priority: 89
+    aliases: [调查, 立案, 取证, 问询, 约谈, investigate, investigation, probe, investigates, investigated]
   - id: ban
     name: 禁令/下架
     priority: 88
@@ -19,64 +27,172 @@ actions:
   - id: layoff
     name: 裁员
     priority: 86
-    aliases: [裁员, 解雇, 优化员工, 人员优化, layoff, layoffs, job cuts, downsizing]
+    aliases: [裁员, 解雇, 优化员工, 人员优化, 缩编, layoff, layoffs, job cuts, downsizing, lays off, laid off, cut jobs, 优化]
   - id: funding
     name: 融资
     priority: 85
-    aliases: [融资, 募资, 完成融资, 估值, 获得投资, 注资, 领投, raise, raised, funding, valuation, investment, invest]
-  - id: ipo
-    name: 上市
-    priority: 83
-    aliases: [上市, 首次公开募股, IPO, 挂牌]
-  - id: acquisition
-    name: 收购
-    priority: 82
-    aliases: [收购, 并购, 合并, 买下, acquisition, acquire, acquired, merger]
-  - id: release
-    name: 发布
-    priority: 80
-    aliases: [发布, 推出, 上线, 问世, 亮相, 面世, 公布, launch, launched, release, released, unveil, unveiled, roll out, introduce, announced]
-  - id: open_source
-    name: 开源
-    priority: 79
-    aliases: [开源, 开放源代码, 开放权重, open source, open-source, open weights, opensourced]
-  - id: product_update
-    name: 产品更新
-    priority: 70
-    aliases: [更新, 升级, 迭代, 版本更新, update, updated, upgrade, upgraded, iteration]
-  - id: partnership
-    name: 合作
-    priority: 68
-    aliases: [合作, 联手, 战略合作, 达成合作, 携手, partnership, partner, teamed up, collaborate, collaboration]
-  - id: benchmark
-    name: 评测
-    priority: 60
-    aliases: [评测, 测评, 基准, 榜单, 排行榜, 跑分, benchmark, evaluation, evaluate, leaderboard, score]
-  - id: pricing
-    name: 价格调整
-    priority: 55
-    aliases: [降价, 涨价, 免费, 收费标准, 价格调整, price cut, price increase, free tier, pricing]
-  - id: hiring
-    name: 招聘
-    priority: 45
-    aliases: [招聘, 扩招, 招人, 招募, hiring, recruiting, job posting]
-  - id: research
-    name: 研究
-    priority: 40
-    aliases: [研究, 论文, 实验, 研究成果, research, paper, study, experiment]
-  - id: personnel
-    name: 人事变动
-    priority: 66
-    aliases: [任命, 离职, 辞职, 加盟, 加入, 卸任, 换帅, appoint, appointed, resign, resignation, join, joined]
-  - id: deployment
-    name: 部署上线
-    priority: 65
-    aliases: [部署, 落地, 上线运行, 投产, 规模化, deploy, deployed, deployment, rollout]
-  - id: award
-    name: 获奖认证
-    priority: 35
-    aliases: [获奖, 奖项, 认证, 入选, award, awarded, recognition, certification]
+    aliases: [融资, 募资, 完成融资, 获得投资, 注资, 领投, 参投, 天使轮, A轮, B轮, C轮, D轮, raise, raised, funding, valuation, investment, invest, invested, raises, secures, closes round, 估值, 跟投, 定增, 增发, 发债, 递表, 招股, 挂牌]
   - id: recall
     name: 召回停售
     priority: 84
-    aliases: [召回, 停售, 停止销售, recall, recalled, discontinue]
+    aliases: [召回, 停售, 停止销售, recall, recalled, discontinue, recalls, discontinued]
+  - id: ipo
+    name: 上市
+    priority: 83
+    aliases: [上市, 首次公开募股, IPO, 挂牌, 递表, 招股, IPOs, goes public, went public]
+  - id: acquisition
+    name: 收购
+    priority: 82
+    aliases: [收购, 并购, 合并, 买下, 私有化, 入股, acquisition, acquire, acquired, merger, acquires, buys, bought, 控股, 参股]
+  - id: release
+    name: 发布
+    priority: 80
+    aliases: [发布, 推出, 上线, 问世, 亮相, 面世, 公布, 首发, 开放平台, 开放API, 开放接口, launch, launched, release, released, unveil, unveiled, roll out, introduce, announced, launches, launching, announces, unveils, introduces, 开放, 开售, 预售, 启动, 开发, 研发, 开发出, 研发出, develop, developed, develops, builds]
+  - id: open_source
+    name: 开源
+    priority: 79
+    aliases: [开源, 开放源代码, 开放权重, open source, open-source, open weights, opensourced, open-sourced, open sources, open-weights]
+  - id: record
+    name: 破纪录
+    priority: 78
+    aliases: [刷新纪录, 创纪录, 破纪录, 史上最, 首创, 首次实现, 全球首个, record, record-breaking, sets record, breaks record]
+  - id: outperform
+    name: 超过
+    priority: 76
+    aliases: [超过, 超越, 领先, 反超, 击败, 胜过, 优于, 赶超, outperform, surpass, beat, beats, tops]
+  - id: ranking
+    name: 排名
+    priority: 74
+    aliases: [排名, 位列, 登顶, 榜首, 排行, ranking, ranked, top]
+  - id: product_update
+    name: 产品更新
+    priority: 70
+    aliases: [更新, 升级, 迭代, 版本更新, 改版, update, updated, upgrade, upgraded, iteration, updates, upgrades, 修复, 补丁]
+  - id: partnership
+    name: 合作
+    priority: 68
+    aliases: [合作, 联手, 战略合作, 达成合作, 携手, 牵手, 签约, 续约, 签署, 达成, partnership, partner, teamed up, collaborate, collaboration, partners, partnered, collaborates, teams up, 共建, 联合]
+  - id: personnel
+    name: 人事变动
+    priority: 66
+    aliases: [任命, 离职, 辞职, 辞去, 辞任, 离任, 卸任, 换帅, 接任, 出任, 加盟, appoint, appointed, resign, resignation, step down, appoints, names, named, hires, hired, resigns, resigned, steps down, joins, 加入, 挖角, 晋升, 退休]
+  - id: return
+    name: 回归
+    priority: 65
+    aliases: [回归, 复职, 重返, 复出, return, comeback, reinstated]
+  - id: deployment
+    name: 部署上线
+    priority: 65
+    aliases: [部署, 落地, 上线运行, 规模化, 接入, 集成, 适配, 调用, 搭载, deploy, deployed, deployment, rollout, integrate, integrated, deploys, integrates, integration]
+  - id: support
+    name: 支持
+    priority: 62
+    aliases: [支持, 兼容, 打通, 对接, support, supported, compatible, supports, 提供]
+  - id: benchmark
+    name: 评测
+    priority: 60
+    aliases: [评测, 测评, 基准, 榜单, 排行榜, 跑分, 实测, 测试, 内测, 公测, benchmark, evaluation, evaluate, leaderboard, score, scores, scored, tops, beats, outperforms, 得分, 排名, 领先, 击败, 刷新, 破纪录]
+  - id: supply
+    name: 量产交付
+    priority: 58
+    aliases: [量产, 下线, 出货, 交付, 投产, 开工, mass production, shipped, delivery, ships, delivers, delivered, 发货, 产能]
+  - id: pricing
+    name: 价格调整
+    priority: 55
+    aliases: [降价, 涨价, 定价, 免费, 收费标准, 价格调整, 订阅, 会员, price cut, price increase, free tier, pricing, subscription, prices, price cuts, 调价, 提价, 折扣, 打折, 收费, 首发价, 预售价, 起售价]
+  - id: disclosed
+    name: 披露
+    priority: 54
+    aliases: [披露, 透露, 官宣, 宣布, 承认, 证实, 确认, disclose, disclosed, announce, confirm, confirmed, discloses, reveals, revealed, reports, reported, 公布, 回应, 辟谣, 预计, 预测, 传闻, 据悉]
+  - id: rumor
+    name: 传闻
+    priority: 52
+    aliases: [传闻, 爆料, 据传, 知情人士称, 消息称, rumored, reportedly, sources say]
+  - id: deny
+    name: 否认
+    priority: 50
+    aliases: [否认, 辟谣, 澄清, 回应, 回复, 致歉, 道歉, deny, denied, refute, clarify, respond, apology]
+  - id: suspend
+    name: 暂停
+    priority: 49
+    aliases: [暂停, 停摆, 叫停, 中止, 终止, 关停, 停服, 退出, suspend, suspended, halt, halted, shut down, suspends]
+  - id: resume
+    name: 恢复
+    priority: 47
+    aliases: [恢复, 重启, 复更, 复活, resume, resumed, restart, back online, resumes]
+  - id: hiring
+    name: 招聘
+    priority: 45
+    aliases: [招聘, 扩招, 招人, 招募, hiring, recruiting, job posting, hire, hires]
+  - id: migrate
+    name: 迁移替换
+    priority: 44
+    aliases: [迁移, 切换, 替换, 替代, 迁移到, migrate, migrated, switch, replace, replaced, migrates, migration]
+  - id: research
+    name: 研究
+    priority: 40
+    aliases: [研究, 论文, 实验, 研究成果, 白皮书, 蓝皮书, research, paper, study, experiment, publishes, published, preprint, 发表, 训练, 预印本, 专利, 验证, 分析]
+  - id: training
+    name: 训练
+    priority: 38
+    aliases: [训练, 预训练, 微调, 后训练, 对齐, training, pretrain, pretraining, fine-tune, finetune, alignment]
+  - id: event
+    name: 举办活动
+    priority: 36
+    aliases: [举办, 召开, 开幕, 闭幕, 发布会, 峰会, 大会, hold, hosted, summit, conference, hosts, holds, held, 举行, 定于, 主办, 出席, 参会]
+  - id: award
+    name: 获奖认证
+    priority: 35
+    aliases: [获奖, 认证, 入选, award, awarded, recognition, certification, wins, won, recognized, 获得, 通过认证, 被评为]
+  - id: export_control
+    name: 出口管制
+    priority: 87
+    aliases: [出口管制, 制裁, 实体清单, 限制出口, export control, sanction, sanctions, entity list]
+  - id: found
+    name: 成立
+    priority: 42
+    aliases: [成立, 创办, 创立, 组建, 分拆, 独立运营, founded, founded, spin off, spin-off]
+  - id: build
+    name: 建设
+    priority: 41
+    aliases: [建设, 新建, 扩建, 奠基, 落成, build, built, construct, expansion]
+  - id: demo
+    name: 演示展示
+    priority: 43
+    aliases: [演示, 展示, 展出, demo, demonstrate, showcased]
+  - id: predict
+    name: 预测
+    priority: 30
+    aliases: [预计, 预测, 有望, 预期, predict, predicted, forecast, expected]
+  - id: settle
+    name: 和解赔偿
+    priority: 56
+    aliases: [和解, 赔偿, 赔款, settle, settlement, compensate, settles, settled]
+  - id: warn
+    name: 警告
+    priority: 32
+    aliases: [警告, 提醒, 风险提示, warn, warned, caution]
+  - id: sponsor
+    name: 赞助
+    priority: 25
+    aliases: [赞助, 冠名, sponsor, sponsored]
+  - id: open_access
+    name: 开放访问
+    priority: 53
+    aliases: [开放下载, 免费开放, 开放使用, open access, publicly available]
+  - id: verify
+    name: 验证
+    priority: 31
+    aliases: [验证, 复现, 证实可行, verify, verified, reproduce, replicated]
+  - id: compare
+    name: 对比
+    priority: 33
+    aliases: [对比, 对标, 比较, 相比, compare, compared, benchmark against]
+  - id: cooperate_std
+    name: 参与标准
+    priority: 28
+    aliases: [参与制定, 加入联盟, 标准制定, standard, consortium, alliance]
+  - id: provide
+    name: 提供
+    priority: 27
+    aliases: [提供, 供给, 提供支持, provide, provided, offering]

@@ -116,6 +116,27 @@ def _versions_distinct(left: str, right: str) -> bool:
     return not (left_versions <= right_versions or right_versions <= left_versions)
 
 
+def _source_family(source: str) -> str:
+    """源族：`jiqizhixin` 与 `jiqizhixin_wechat` 视为同一媒体。
+
+    同一媒体的多渠道转载属于真重复，应合并；不同媒体对同一事件的报道
+    必须保留，交给 Stage 2 聚类才能形成「多源印证」。
+    """
+    return (source or "").split("_")[0].casefold()
+
+
+def _cross_source_allowed(left: Item, right: Item, config: dict[str, Any]) -> bool:
+    """跨源重复是否允许合并。
+
+    默认 True（旧行为：全局合并近似同文）。设为 False 时只在同一媒体族
+    内合并——不同媒体对同一事件的报道会保留，交给 Stage 2 聚类，
+    从而产生真正的 `independent_sources` 信号。
+    """
+    if bool(cfg_get(config, "dedupe.cross_source_merge", True)):
+        return True
+    return _source_family(left.source) == _source_family(right.source)
+
+
 def _blocking_tokens(title: str) -> list[str]:
     tokens = keywords(title, top_k=8)
     normalized = normalize_title(title)
@@ -153,7 +174,7 @@ def _group_by_url(items: list[Item], uf: _UnionFind) -> None:
             uf.union(first, index)
 
 
-def _merge_by_title(
+def _merge_by_title(  # noqa: PLR0912
     items: list[Item],
     uf: _UnionFind,
     config: dict[str, Any],
@@ -181,6 +202,8 @@ def _merge_by_title(
                 if similarity < threshold:
                     continue
                 if _versions_distinct(item.title, items[candidate].title):
+                    continue
+                if not _cross_source_allowed(item, items[candidate], config):
                     continue
                 if best is None or similarity > best[0]:
                     best = (similarity, candidate)
@@ -222,6 +245,8 @@ def _merge_by_semantic(
             if similarity < threshold:
                 continue
             if _versions_distinct(docs[position], docs[right_position]):
+                continue
+            if not _cross_source_allowed(items[root], items[roots[right_position]], config):
                 continue
             merged = uf.union(anchor_root, right_root)
             anchor_root = merged

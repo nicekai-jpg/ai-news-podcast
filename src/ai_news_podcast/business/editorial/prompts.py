@@ -68,11 +68,14 @@ def build_commentary_prompt(
     config: EditorialConfig,
     evidence_ids: Sequence[str] | None = None,
     evidence_snippets: Mapping[str, str] | None = None,
+    verified_facts: Sequence[str] | None = None,
 ) -> str:
     """为单条入选事件构建日报正文 prompt。
 
     ``evidence_ids`` / ``evidence_snippets`` 由调用方按 item_evidence 解析后传入；
     缺省时回退到事件自身的 item_ids 与标题/摘要。
+    ``verified_facts`` 是 Stage 2.5 机器抽取的 A 档事实（形如「主体 —关系→ 宾语」），
+    只作为交叉核对的辅助线索，不能替代 evidence_ids。
     """
     labels = event.labels
     allowed_ids = list(evidence_ids) if evidence_ids is not None else _event_evidence_ids(event)
@@ -116,6 +119,19 @@ def build_commentary_prompt(
         indent=2,
     )
 
+    # 没有事实时整块不出现：覆盖率只有 1.6%，空块会白白占用每个 prompt 的篇幅。
+    verified_block = ""
+    if verified_facts:
+        lines = "\n".join(f"- {item}" for item in verified_facts)
+        verified_block = (
+            "## 已核验事实（Stage 2.5 机器抽取，可供交叉核对）\n"
+            "以下条目由规则从原文抽取，**不是新的事实来源**：\n"
+            "1. 只能用来核对 evidence 正文里是否漏读、错读了同名主体；\n"
+            "2. 与证据正文冲突时，以证据正文为准；\n"
+            "3. 不得单独引用，facts 仍必须带 evidence_ids。\n"
+            f"{lines}"
+        )
+
     return f"""你是「今日AI看点」的资深科技新闻编辑，负责为 S4 写一条**日报正文**。
 日报会用于 02 深度日报/页面，S5 会在其基础上做日报点评，因此客观性优先于文采。
 
@@ -148,6 +164,7 @@ def build_commentary_prompt(
 
 ## 证据正文（事实与数字只能来自这里；引用时标注对应的证据 ID）
 {evidence_block}
+{verified_block}
 
 {_SAFETY_NOTE}
 

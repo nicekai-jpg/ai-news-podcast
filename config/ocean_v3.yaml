@@ -8,6 +8,11 @@ preprocess:
   keyword_top_k: 15          # 关键词抽取上限（聚类候选/审计用）
 
 dedupe:
+  # 跨源同文是否合并。false = 只在同一媒体族内合并（jiqizhixin 与
+  # jiqizhixin_wechat 视为同族），不同媒体对同一事件的报道保留给 Stage 2 聚类。
+  # 这是 `independent_sources` 能否产生区分度的前提：默认 true 时会把
+  # 多家报道压成一条，导致 99% 事件只有 1 个独立来源。
+  cross_source_merge: false
   title_threshold: 0.90            # L2 标题近似（rapidfuzz ratio，规范化后）
   semantic_threshold: 0.80         # L3 语义（TF-IDF char n-gram，标题+摘要）；只合并
                                    # 近似同文转载，同一事件的多源报道留给聚类

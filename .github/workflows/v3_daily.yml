@@ -57,6 +57,9 @@ jobs:
     name: "v3 Stage 1-7 (collect → ocean → recommend → report → report review → script → podcast review)"
     runs-on: ubuntu-22.04
     timeout-minutes: 240
+    env:
+      # 手动演练期：定时任务默认跳过事实层，workflow_dispatch 才开；一周后改成常开
+      KG_FACTS_ENABLED: ${{ github.event_name == 'workflow_dispatch' && 'true' || 'false' }}
     services:
       rsshub:
         image: ghcr.io/diygod/rsshub:latest
@@ -78,7 +81,12 @@ jobs:
           cache-dependency-glob: "uv.lock"
 
       - name: Install dependencies
-        run: uv sync --frozen
+        run: uv sync --frozen --extra kg
+
+      - name: Install spaCy models (zh + en)
+        run: |
+          uv run python -m spacy download zh_core_web_sm
+          uv run python -m spacy download en_core_web_sm
 
       - id: episode
         run: |
@@ -201,6 +209,24 @@ jobs:
               print("::warning::script quality issues (continue, see issues above)")
           PYEOF
 
+      - name: Facts stage alert
+        continue-on-error: true
+        env:
+          TZ: Asia/Shanghai
+        run: |
+          EPISODE="${{ steps.episode.outputs.id }}"
+          MANIFEST="data/facts/manifest-${EPISODE}.json"
+          if [ -f "$MANIFEST" ]; then
+            ALERT=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1])).get('alert',''))" "$MANIFEST")
+            if [ -n "$ALERT" ]; then
+              echo "::warning::facts stage alert: $ALERT"
+              echo "facts stage alert: $ALERT" >> "$GITHUB_STEP_SUMMARY"
+            fi
+            python3 -c "import json,sys; s=json.load(open(sys.argv[1])).get('stats',{}); print('| facts | %s A / %s B |' % (s.get('cards_a',0), s.get('cards_b',0)))" "$MANIFEST" >> "$GITHUB_STEP_SUMMARY" || true
+          else
+            echo "::warning::facts manifest missing: $MANIFEST"
+          fi
+
       - name: Commit coverage ledger (cross-day state)
         continue-on-error: true
         if: ${{ github.event_name == 'schedule' || github.event.inputs.deploy == 'true' }}
@@ -208,10 +234,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if [ -d data/coverage ]; then git add data/coverage; fi
+          if [ -d data/facts ]; then git add data/facts; fi
           if git diff --cached --quiet; then
             echo "No coverage changes"
           else
-            git commit -m "chore: update coverage ledger ${{ steps.episode.outputs.id }} [skip ci]"
+            git commit -m "chore: update coverage ledger and facts ${{ steps.episode.outputs.id }} [skip ci]"
             git pull --rebase origin main
             git push origin main
           fi
@@ -223,6 +250,9 @@ jobs:
           path: |
             data/raw/
             data/ocean/${{ steps.episode.outputs.id }}/
+            data/kg/${{ steps.episode.outputs.id }}/
+            data/facts/
+            data/kg_debug/
             data/selection/
             data/editorial/
             data/briefs/brief_${{ steps.episode.outputs.id }}.json

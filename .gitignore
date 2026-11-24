@@ -53,3 +53,10 @@ out/
 .commandcode/
 .mimosa/
 .zcode/
+
+# Fact-layer local artifacts (facts 本身要进 git，下面这些不进)
+data/ocean/
+data/kg_audit/
+data/kg_debug/
+data/kg_llm/
+data/kg_strict/

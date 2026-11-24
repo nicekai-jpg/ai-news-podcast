@@ -30,6 +30,7 @@ from ai_news_podcast.business.contracts import Commentary, Event, Fact, Shortlis
 from .config import DEFAULT_CONFIG_PATH, EditorialConfig, LLMCall, load_config
 from .prompts import build_commentary_prompt
 from .quality import find_banned_words
+from .verified_facts import verified_facts_for_event
 
 logger = logging.getLogger(__name__)
 
@@ -266,13 +267,16 @@ def build_commentaries(
     *,
     item_evidence: Mapping[str, str] | None = None,
     config_path: str | Path = DEFAULT_CONFIG_PATH,
+    verified_by_item: Mapping[str, list[str]] | None = None,
 ) -> list[Commentary]:
     """为精排 shortlist 的前 ``report_top_n`` 条事件生成日报正文。
 
     - ``shortlist`` 的顺序即 rank，不再重排；同一 event 只处理一次；
     - 单条事件失败（event 缺失 / LLM 异常 / 客观性校验不过）记日志后跳过，
       不阻断其余事件；
-    - ``item_evidence`` 可选：item_id -> 正文，用于数字核对与 prompt 证据片段。
+    - ``item_evidence`` 可选：item_id -> 正文，用于数字核对与 prompt 证据片段；
+    - ``verified_by_item`` 可选：item_id -> Stage 2.5 A 档事实。只有
+      ``config.inject_verified_facts`` 为真时才真正注入（默认关闭）。
     """
     config = load_config(config_path)
     event_by_id = {str(event.event_id): event for event in events}
@@ -300,6 +304,11 @@ def build_commentaries(
             config=config,
             evidence_ids=allowed_ids,
             evidence_snippets=snippets,
+            verified_facts=(
+                verified_facts_for_event(event.item_ids, verified_by_item)
+                if verified_by_item and config.inject_verified_facts
+                else None
+            ),
         )
         try:
             raw_output = llm_call(prompt)

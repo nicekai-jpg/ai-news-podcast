@@ -1,0 +1,2891 @@
+{
+ "version": 3,
+ "frozen": true,
+ "items": [
+  {
+   "item_id": "fabeced95f4b1465169ef6584ca1e91b83dd90426eff003f4a175b29f7a17af0",
+   "title": "浙大与联想团队联合提出 EM2Mem:打造多模态智能体的事件中心记忆方案",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "浙江大学与联想团队",
+     "relation": "research",
+     "object": "EM²Mem",
+     "confidence": 0.0,
+     "evidence": "近日，浙江大学与联想团队合作提出了一项全新的以事件为中心的多模态长期记忆方案——EM²Mem，相关研究成果已在 EMNLP2026正式亮相",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "浙江大学",
+     "relation": "partnership",
+     "object": "联想团队",
+     "confidence": 0.0,
+     "evidence": "近日，浙江大学与联想团队合作提出了一项全新的以事件为中心的多模态长期记忆方案——EM²Mem，相关研究成果已在 EMNLP2026正式亮相",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "b8b0b83d4e640a12e2ef79d49414c15a386caabcf15914776faf69fc1fd56b5b",
+   "title": "独家丨港大孵化的半导体材料公司,融资数千万",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "DiamNEX",
+     "relation": "funding",
+     "object": "耀途资本",
+     "confidence": 0.0,
+     "evidence": "作者丨陈玘凡 编辑 丨吴优 雷峰网 ·鲸犀独家获悉， 半导体材料公司钻耐科思科技（DiamNEX）已完成 数千万元 新一轮融资，由耀途资本独家投资",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "DiamNEX",
+     "relation": "research",
+     "object": "《Nature》",
+     "confidence": 0.0,
+     "evidence": "DiamNEX的成果发表于《Nature》，入选香港政府产学研1+计划，获批超5000万港币资助；同时还获得第49届和51届日内瓦发明展金奖、2025年度中国科学十大进展",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "DiamNEX",
+     "relation": "award",
+     "object": "日内瓦发明展金奖",
+     "confidence": 0.0,
+     "evidence": "DiamNEX的成果发表于《Nature》，入选香港政府产学研1+计划，获批超5000万港币资助；同时还获得第49届和51届日内瓦发明展金奖、2025年度中国科学十大进展",
+     "meta": {
+      "review": "cross_sentence"
+     }
+    },
+    {
+     "subject": "金刚石薄膜试生产线",
+     "relation": "deploy",
+     "object": "深圳",
+     "confidence": 0.0,
+     "evidence": "目前，金刚石薄膜试生产线已落地深圳，已可稳定制备4英寸及以上（最大12英寸）的金刚石薄膜，在成本大幅降低的同时，为算力芯片、先进封装等应用提供了理想的材料方案",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "37ea1d17fe2ad81fa140916d9db39f1bf85261304b03779af1c8b2305f49b842",
+   "title": "OpenAI 和 Meta 联手,打通了 Agent 商业「最后一公里」",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Sierra",
+     "relation": "release",
+     "object": "Poppy v1.0",
+     "confidence": 0.0,
+     "evidence": "一边是企业级对话式智能体公司 Sierra 联合 Meta 正式发布个 人代理协议 Poppy v1.0，解决助手怎么「进门」的问题 ；另一边是 OpenAI 推出面向个人助手 dots 的 ChatGPT Wallet， 解决助手怎么「付钱」的问题",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Sierra",
+     "relation": "partnership",
+     "object": "Meta",
+     "confidence": 0.0,
+     "evidence": "从发布信息来看，Sierra 与 Meta 联手推动这套协议，可以说非常互补",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "OpenAI",
+     "relation": "release",
+     "object": "ChatGPT Wallet",
+     "confidence": 0.0,
+     "evidence": "OpenAI 推出的 ChatGPT Wallet，设计出发点非常明确，就是让 Agent 能把交易推到终点，但从头到尾都碰不到真实资金信息",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Shopify",
+     "relation": "partnership",
+     "object": "Poppy",
+     "confidence": 0.0,
+     "evidence": "这一次真正帮 Poppy 跨过门槛的，是电商基础设施巨头 Shopify",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Stripe",
+     "relation": "partnership",
+     "object": "Poppy",
+     "confidence": 0.0,
+     "evidence": "Visa 和 Mastercard 同时出现在两边的名单里，Shopify、Stripe 这些掌管电商与支付基础设施的公司，则站在 Poppy 的核心伙伴之列",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "418efd6781f8cdc6de71dcb3490ee9bc159dd66310f21e2c7635fbfd2735f475",
+   "title": "半导体分析师:黄仁勋辞职后客户加速评估AMD与谷歌芯片 锁定效应松动",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "黄仁勋",
+     "relation": "personnel",
+     "object": "英伟达",
+     "confidence": 0.0,
+     "evidence": "一家采购英伟达芯片的云厂商高管表示， 围绕黄仁勋的不确定性正促使公司认真评估其他芯片选项，包括谷歌和AMD产品",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Colette Kress",
+     "relation": "personnel",
+     "object": "英伟达",
+     "confidence": 0.0,
+     "evidence": "半导体分析师Jukan表示，阻止主要客户进一步向其他芯片厂商的AI服务器多元化，将成为临时CEO Colette Kress及未来正式继任者面临的关键挑战之一。",
+     "meta": {
+      "review": "cross_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "dcb6c75f2e5bdbfbca31e3b2327737cbbfe7fb8eea095047917c339c42634000",
+   "title": "斯坦福让GPT-6 Astra直接修改机器人参数:只动65行词嵌入,修复一类指令失灵",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "斯坦福",
+     "relation": "research",
+     "object": "GPT-6 Astra",
+     "confidence": 0.0,
+     "evidence": "斯坦福让GPT-6 Astra直接修改机器人参数:只动65行词嵌入,修复一类指令失灵",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "GPT-6 Astra",
+     "relation": "benchmark",
+     "object": "87.5%",
+     "confidence": 0.0,
+     "evidence": "动图 2｜GPT-6 Astra调试机器人权重的真实过程回放。",
+     "meta": {
+      "review": "cross_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "30153793f11c1ad6bd6dfec6e2c37e3b0073df83746b6dddfda2adc6954f7ead",
+   "title": "Cohere Expands Its Sovereign AI Platform with AISLE and cubic",
+   "lang": "en",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Cohere",
+     "relation": "release",
+     "object": "AISLE",
+     "confidence": 0.0,
+     "evidence": "Cohere Expands Its Sovereign AI Platform with AISLE and cubic",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Cohere",
+     "relation": "release",
+     "object": "cubic",
+     "confidence": 0.0,
+     "evidence": "Cohere Expands Its Sovereign AI Platform with AISLE and cubic",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "f0444e6e04c3621d66eeba60b7a260f9a6d0b4f8dc7d7e0368ec99d1f8e42981",
+   "title": "中大梁小丹团队,GeoThinker 两项研究成果,破除空间推理「几何信息用不好、计算开销大」难题",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "中山大学梁晓丹团队",
+     "relation": "research",
+     "object": "GeoThinker",
+     "confidence": 0.0,
+     "evidence": "围绕这一问题，中山大学梁晓丹团队连续开展了 GeoThinker 系列研究",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "GeoThinker",
+     "relation": "award",
+     "object": "ICML 2026",
+     "confidence": 0.0,
+     "evidence": "先从第一项工作 GeoThinker 说起。",
+     "meta": {
+      "review": "cross_sentence"
+     }
+    },
+    {
+     "subject": "中山大学梁晓丹团队",
+     "relation": "partnership",
+     "object": "小鹏汽车",
+     "confidence": 0.0,
+     "evidence": "围绕这一问题，中山大学梁晓丹团队连续开展了 GeoThinker 系列研究。",
+     "meta": {
+      "review": "cross_sentence"
+     }
+    },
+    {
+     "subject": "中山大学梁晓丹团队",
+     "relation": "partnership",
+     "object": "南洋理工大学",
+     "confidence": 0.0,
+     "evidence": "围绕这一问题，中山大学梁晓丹团队连续开展了 GeoThinker 系列研究。",
+     "meta": {
+      "review": "cross_sentence"
+     }
+    },
+    {
+     "subject": "中山大学梁晓丹团队",
+     "relation": "partnership",
+     "object": "MBZUAI",
+     "confidence": 0.0,
+     "evidence": "围绕这一问题，中山大学梁晓丹团队连续开展了 GeoThinker 系列研究。",
+     "meta": {
+      "review": "cross_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "bd1b8bb468d11f721f9f00709956e93cba814a3bd0dd717a9030f336d364d8e7",
+   "title": "语飞国际中文教育垂直大模型发布:深度融合专业教学场景,为全球师生与机构提供智能化服务",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "2026世界中文大会",
+     "relation": "event",
+     "object": "北京",
+     "confidence": 0.0,
+     "evidence": "据央视新闻报道，2026世界中文大会于11月13日在北京正式开幕",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "ecc3916b649e8a716d5a483759806afbb63b38be8c79a336409fb4d1e65d8b85",
+   "title": "AI 接管手机迈出关键一步:谷歌 Gemini 自动化应用名单曝光,当前共计 134 款",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "谷歌 Gemini 任务自动化功能",
+     "relation": "info",
+     "object": "适配应用清单",
+     "confidence": 0.0,
+     "evidence": "IT之家 11 月 13 日消息，科技媒体 Android Authority 昨日（11 月 12 日）发布博文，报道称谷歌 Gemini 任务自动化功能适配应用清单被曝光， 共计 134 款 App，覆盖外卖、打车、购物、旅行及办公等场景，但不代表这些应用已全部开放自动操作",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Gemini",
+     "relation": "support",
+     "object": "Zomato",
+     "confidence": 0.0,
+     "evidence": "报道实测显示，Gemini 能在印度外卖平台 Zomato 上选餐，也能通过 Blinkit 选购牛奶；未被列入名单的 Swiggy、Zepto 则遭到拒绝",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Gemini",
+     "relation": "support",
+     "object": "Blinkit",
+     "confidence": 0.0,
+     "evidence": "报道实测显示，Gemini 能在印度外卖平台 Zomato 上选餐，也能通过 Blinkit 选购牛奶；未被列入名单的 Swiggy、Zepto 则遭到拒绝",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "0b04e3e1fde5fdf02e1327ae68fa489f3c26df5b64677313decc4e3ec97260cc",
+   "title": "Fable 5.2贵17倍还输了!12 个AI进群当同事,OpenAI包揽前二",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Deepnote",
+     "relation": "release",
+     "object": "Agent Initiative Benchmark",
+     "confidence": 0.0,
+     "evidence": "数据协作平台Deepnote今天发布了一项评测结果—— 创始人Jakub Jurovych搞了一个叫Agent Initiative Benchmark的东西，把12个前沿模型丢进同一家公司的Slack群里当AI同事，让它们自己决定什么时候该帮忙、什么时候该闭嘴",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "GPT-6 Astra",
+     "relation": "benchmark",
+     "object": "8.97分",
+     "confidence": 0.0,
+     "evidence": "跑完一看—— OpenAI包揽前二！ GPT-6 Astra拿了8.97分，第一",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "GPT-6.1 Sol",
+     "relation": "benchmark",
+     "object": "8.65分",
+     "confidence": 0.0,
+     "evidence": "GPT-6.1 Sol拿了8.65分，第二，单个任务只花0.11美元",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Anthropic Fable 5.2",
+     "relation": "pricing",
+     "object": "单个任务1.87美元",
+     "confidence": 0.0,
+     "evidence": "排第三的Anthropic Fable 5.2，8.17分，单个任务1.87美元",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "GPT-6 Luna",
+     "relation": "pricing",
+     "object": "每单0.007美元",
+     "confidence": 0.0,
+     "evidence": "而整张表上最离谱的一组对比是： Fable 5.1每单3.02美元，GPT-6 Luna每单0.007美元，价格差了430倍，得分只差1.1分",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "db6d1687900fe229fe401a43d857e0a4fbe40105bd8b72bd0483ef3d13d11f4c",
+   "title": "20岁高龄AMD显卡还在更新!AI立功:HD 2000/3000终于能正常播放视频",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "AMD",
+     "relation": "release",
+     "object": "Radeon HD 2000、HD 3000系列显卡",
+     "confidence": 0.0,
+     "evidence": "20岁高龄AMD显卡还在更新！AI立功：HD 2000/3000终于能正常播放视频 黑白 2026年11月15日 19:52 0 快科技11月15日消息， AMD近20年前推出的Radeon HD 2000、HD 3000系列显卡，近日迎来一项驱动修复，解决了硬件加速播放视频时出现画面损坏的问题，计划随Linux 7.5内核更新推出",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Ted Bullock",
+     "relation": "release",
+     "object": "补丁",
+     "confidence": 0.0,
+     "evidence": "发现并处理这一故障的是首次参与Linux内核补丁提交的开发者Ted Bullock， 他在一台配备RV610显卡的老款苹果iMac上复现了异常，随后发现，只要停止图形绘制，或者将视频解码输入数据放在独立显存中，画面便能恢复正常",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "补丁",
+     "relation": "support",
+     "object": "Linux 7.5",
+     "confidence": 0.0,
+     "evidence": "目前补丁已经获得Linux图形驱动维护者接收，并被纳入面向Linux 7.5的AMD图形驱动更新",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "cb9e85d9240dcdf372347f840f2aba65ef59a05ddddafe21e868ea8ce55e9696",
+   "title": "英伟达风波引发两党施压 美国国会酝酿收紧AI芯片对华出口限制",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "黄仁勋",
+     "relation": "incident",
+     "object": "艾丽丝·黄",
+     "confidence": 0.0,
+     "evidence": "随着围绕英伟达前首席执行官黄仁勋及其与新加坡商界人士艾丽丝·黄（Alice Huang）关系的争议持续发酵，美国两党议员开始重新审视现有芯片出口管制政策，并推动将更多限制措施写入法律",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "7fcd2541649a3555f54598792cdc76e42eef1d2cc36cc831072da5c145b21162",
+   "title": "Claude 辅助完成 19 万行代码,成功对三元哥德巴赫猜想进行形式化证明",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Charlie Reams",
+     "relation": "research",
+     "object": "三元哥德巴赫猜想",
+     "confidence": 0.0,
+     "evidence": "近日，独立开发者 Charlie Reams 借助Claude Code成功完成了对三元哥德巴赫猜想的形式化证明",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "AI",
+     "relation": "research",
+     "object": "Harald Helfgott",
+     "confidence": 0.0,
+     "evidence": "AI 在运行和推导中自主发现了数学家 Harald Helfgott 于2013年发表的原版证明中的11处关键问题",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "a5cbeaaf0b4df56fac42b355269cd9f2ddbe11ceac7d918be68f354b6e800abd",
+   "title": "Export-banned Nvidia chips are behind China’s most powerful AI models — uh-oh, Jensen!",
+   "lang": "en",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Jensen Huang",
+     "relation": "personnel",
+     "object": "Nvidia",
+     "confidence": 0.0,
+     "evidence": "The leading open-weight models developed by Chinese companies were trained on Nvidia chips that the U.S. government restricted from shipping to its largest geopolitical rival, a new research effort claims. The apparently widespread access to Blackwell GPUs among Chinese frontier labs shows the magnitude of the problem facing the leading chip designer. Nvidia CEO Jensen Huang left the company this week after admitting to his affair with Alice Huang, executive of Megaspeed, a company implicated in smuggling Nvidia chips into China. Alice Huang has also been alleged to be an agent of China’s intelligence service. While Jensen Huang’s relationships with a customer and two employees have drawn the most public interest, Nvidia’s potential corporate liability for export control violations likely factored into its decision to part ways with Huang. U.S. export controls are intended to protect the country’s leadership in AI capabilities against China, but Huang has long sought to open up that market. Blackwell GPUs are banned from export to China or Chinese-owned firms, while the Trump administration allows Nvidia to export the H200, a less powerful chip, provided shipments take a circuitous shipping route that allows the U.S. to claim a 25% tariff. Will DePue, a former OpenAI researcher who leads the nonprofit research group Unemployment Labs, analyzed the weights — the unique structure — of large language models released openly by DeepSeek, Moonshot AI, MiniMax, and Ant Group. The weights still reflect the configurations of the chips used to train them, and DePue was able to find compelling evidence that the most closely watched models, including Moonshot’s Kimi’s K3 releases and DeepSeek’s V4 models, bear fingerprints from training on Blackwell chips. White House technology adviser Michael Kratsios said earlier this year that Moonshot had used export-banned Nvidia chips, citing U.S. intelligence sources. Epoch AI, a nonprofit research organization, estimates that about two million advanced chips entered China in 2024 and 2025 through schemes designed to hide their final destination. That doesn’t mean that these models were trained entirely on Nvidia chips, or that export control laws were necessarily violated; the chips could have been in an offshore data center, which has proven a popular way for Chinese firms to access compute and driven an industrial revolution in Malaysia. Epoch’s data estimates that 275,000 Nvidia AI accelerators were imported to Malaysia in 2024 and 2025. However, the ostensible goal of the export bans is to prevent exactly that: Chinese AI labs training on the most powerful chips. China hawks have long called for stronger controls on who uses chips, not just who owns them or where they are installed. “If we care about the U.S. tech edge, it doesn’t make any sense to me that you would not allow Chinese companies to access chips in mainland China or Hong Kong and Macau, but then say, actually, if you just go over to Malaysia, you can do whatever you want,” Sam Bresnick, a researcher at the Georgetown Center for Security and Emerging Technology, told TechCrunch this summer. Megaspeed, the company led by Alice Huang, has been at the center of that trade for several years through its subsidiary Speedmatrix, and has been the subject of investigations by both the U.S. and S i ngaporean government. Friday, Bloomberg also reported that a company with links to Alice Huang was involved in smuggling banned Nvidia chips to a data center in Shanghai. In May, the short-selling research firm Culper published a report arguing that Nvidia had a “ China problem ” because a significant share of its revenue was driven by Chinese demand, either through remote data centers or smuggling in violation of U.S. law. It detailed Megaspeed’s relationship with Nvidia and alleged that Alice Huang’s companies are backed by Chinese firms that are barred from accessing U.S. chips. Ironically, short-seller Culper’s bet against Nvidia wasn’t driven by the expectation of a U.S. government crackdown. Instead, it was focused on the Chinese government’s response to the bans, which was to recommit to its domestic chip industry. If China succeeds, billions of dollars in Chinese demand for Nvidia chips could dry up. Some 600,000 H200 chips are reportedly stockpiled in Hong Kong, awaiting shipment into China. While Chinese companies might want the chips, observers have no consensus on why they haven’t been cleared for import. Graham Webster, a research scholar at Stanford who focuses on U.S.-China technology policy, said he doesn’t buy the idea that holding the chips back would drive domestic production, since demand for chips is so large. Other theories for the hold-up include preparation for a potential trade deal that would involve importing a large volume of U.S. goods, or concerns about potential surveillance technology in the chips. For now, U.S. companies have limited obligations to track what their customers do with controlled goods like AI chips. However, Jensen Huang’s personal and professional entanglements with Alice Huang create a much bigger problem for Nvidia if government investigators confirm that chip smuggling took place and that he was aware of it. Nvidia and Huang have both vouched for Megaspeed’s data centers, saying Nvidia officials had visited them to confirm they were legitimate. The U.S. government’s treatment of Nvidia and Megaspeed is also under scrutiny. Secretary of Commerce Howard Lutnick, who oversees the agencies that license chip exports, could reportedly lose his job after reports that his investigators failed to uncover suspicious chip buyers and were too cozy with Nvidia officials.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Alice Huang",
+     "relation": "personnel",
+     "object": "Megaspeed",
+     "confidence": 0.0,
+     "evidence": "The leading open-weight models developed by Chinese companies were trained on Nvidia chips that the U.S. government restricted from shipping to its largest geopolitical rival, a new research effort claims. The apparently widespread access to Blackwell GPUs among Chinese frontier labs shows the magnitude of the problem facing the leading chip designer. Nvidia CEO Jensen Huang left the company this week after admitting to his affair with Alice Huang, executive of Megaspeed, a company implicated in smuggling Nvidia chips into China. Alice Huang has also been alleged to be an agent of China’s intelligence service. While Jensen Huang’s relationships with a customer and two employees have drawn the most public interest, Nvidia’s potential corporate liability for export control violations likely factored into its decision to part ways with Huang. U.S. export controls are intended to protect the country’s leadership in AI capabilities against China, but Huang has long sought to open up that market. Blackwell GPUs are banned from export to China or Chinese-owned firms, while the Trump administration allows Nvidia to export the H200, a less powerful chip, provided shipments take a circuitous shipping route that allows the U.S. to claim a 25% tariff. Will DePue, a former OpenAI researcher who leads the nonprofit research group Unemployment Labs, analyzed the weights — the unique structure — of large language models released openly by DeepSeek, Moonshot AI, MiniMax, and Ant Group. The weights still reflect the configurations of the chips used to train them, and DePue was able to find compelling evidence that the most closely watched models, including Moonshot’s Kimi’s K3 releases and DeepSeek’s V4 models, bear fingerprints from training on Blackwell chips. White House technology adviser Michael Kratsios said earlier this year that Moonshot had used export-banned Nvidia chips, citing U.S. intelligence sources. Epoch AI, a nonprofit research organization, estimates that about two million advanced chips entered China in 2024 and 2025 through schemes designed to hide their final destination. That doesn’t mean that these models were trained entirely on Nvidia chips, or that export control laws were necessarily violated; the chips could have been in an offshore data center, which has proven a popular way for Chinese firms to access compute and driven an industrial revolution in Malaysia. Epoch’s data estimates that 275,000 Nvidia AI accelerators were imported to Malaysia in 2024 and 2025. However, the ostensible goal of the export bans is to prevent exactly that: Chinese AI labs training on the most powerful chips. China hawks have long called for stronger controls on who uses chips, not just who owns them or where they are installed. “If we care about the U.S. tech edge, it doesn’t make any sense to me that you would not allow Chinese companies to access chips in mainland China or Hong Kong and Macau, but then say, actually, if you just go over to Malaysia, you can do whatever you want,” Sam Bresnick, a researcher at the Georgetown Center for Security and Emerging Technology, told TechCrunch this summer. Megaspeed, the company led by Alice Huang, has been at the center of that trade for several years through its subsidiary Speedmatrix, and has been the subject of investigations by both the U.S. and S i ngaporean government. Friday, Bloomberg also reported that a company with links to Alice Huang was involved in smuggling banned Nvidia chips to a data center in Shanghai. In May, the short-selling research firm Culper published a report arguing that Nvidia had a “ China problem ” because a significant share of its revenue was driven by Chinese demand, either through remote data centers or smuggling in violation of U.S. law. It detailed Megaspeed’s relationship with Nvidia and alleged that Alice Huang’s companies are backed by Chinese firms that are barred from accessing U.S. chips. Ironically, short-seller Culper’s bet against Nvidia wasn’t driven by the expectation of a U.S. government crackdown. Instead, it was focused on the Chinese government’s response to the bans, which was to recommit to its domestic chip industry. If China succeeds, billions of dollars in Chinese demand for Nvidia chips could dry up. Some 600,000 H200 chips are reportedly stockpiled in Hong Kong, awaiting shipment into China. While Chinese companies might want the chips, observers have no consensus on why they haven’t been cleared for import. Graham Webster, a research scholar at Stanford who focuses on U.S.-China technology policy, said he doesn’t buy the idea that holding the chips back would drive domestic production, since demand for chips is so large. Other theories for the hold-up include preparation for a potential trade deal that would involve importing a large volume of U.S. goods, or concerns about potential surveillance technology in the chips. For now, U.S. companies have limited obligations to track what their customers do with controlled goods like AI chips. However, Jensen Huang’s personal and professional entanglements with Alice Huang create a much bigger problem for Nvidia if government investigators confirm that chip smuggling took place and that he was aware of it. Nvidia and Huang have both vouched for Megaspeed’s data centers, saying Nvidia officials had visited them to confirm they were legitimate. The U.S. government’s treatment of Nvidia and Megaspeed is also under scrutiny. Secretary of Commerce Howard Lutnick, who oversees the agencies that license chip exports, could reportedly lose his job after reports that his investigators failed to uncover suspicious chip buyers and were too cozy with Nvidia officials.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "U.S. government",
+     "relation": "regulation",
+     "object": "Nvidia chips",
+     "confidence": 0.0,
+     "evidence": "The leading open-weight models developed by Chinese companies were trained on Nvidia chips that the U.S. government restricted from shipping to its largest geopolitical rival, a new research effort claims. The apparently widespread access to Blackwell GPUs among Chinese frontier labs shows the magnitude of the problem facing the leading chip designer. Nvidia CEO Jensen Huang left the company this week after admitting to his affair with Alice Huang, executive of Megaspeed, a company implicated in smuggling Nvidia chips into China. Alice Huang has also been alleged to be an agent of China’s intelligence service. While Jensen Huang’s relationships with a customer and two employees have drawn the most public interest, Nvidia’s potential corporate liability for export control violations likely factored into its decision to part ways with Huang. U.S. export controls are intended to protect the country’s leadership in AI capabilities against China, but Huang has long sought to open up that market. Blackwell GPUs are banned from export to China or Chinese-owned firms, while the Trump administration allows Nvidia to export the H200, a less powerful chip, provided shipments take a circuitous shipping route that allows the U.S. to claim a 25% tariff. Will DePue, a former OpenAI researcher who leads the nonprofit research group Unemployment Labs, analyzed the weights — the unique structure — of large language models released openly by DeepSeek, Moonshot AI, MiniMax, and Ant Group. The weights still reflect the configurations of the chips used to train them, and DePue was able to find compelling evidence that the most closely watched models, including Moonshot’s Kimi’s K3 releases and DeepSeek’s V4 models, bear fingerprints from training on Blackwell chips. White House technology adviser Michael Kratsios said earlier this year that Moonshot had used export-banned Nvidia chips, citing U.S. intelligence sources. Epoch AI, a nonprofit research organization, estimates that about two million advanced chips entered China in 2024 and 2025 through schemes designed to hide their final destination. That doesn’t mean that these models were trained entirely on Nvidia chips, or that export control laws were necessarily violated; the chips could have been in an offshore data center, which has proven a popular way for Chinese firms to access compute and driven an industrial revolution in Malaysia. Epoch’s data estimates that 275,000 Nvidia AI accelerators were imported to Malaysia in 2024 and 2025. However, the ostensible goal of the export bans is to prevent exactly that: Chinese AI labs training on the most powerful chips. China hawks have long called for stronger controls on who uses chips, not just who owns them or where they are installed. “If we care about the U.S. tech edge, it doesn’t make any sense to me that you would not allow Chinese companies to access chips in mainland China or Hong Kong and Macau, but then say, actually, if you just go over to Malaysia, you can do whatever you want,” Sam Bresnick, a researcher at the Georgetown Center for Security and Emerging Technology, told TechCrunch this summer. Megaspeed, the company led by Alice Huang, has been at the center of that trade for several years through its subsidiary Speedmatrix, and has been the subject of investigations by both the U.S. and S i ngaporean government. Friday, Bloomberg also reported that a company with links to Alice Huang was involved in smuggling banned Nvidia chips to a data center in Shanghai. In May, the short-selling research firm Culper published a report arguing that Nvidia had a “ China problem ” because a significant share of its revenue was driven by Chinese demand, either through remote data centers or smuggling in violation of U.S. law. It detailed Megaspeed’s relationship with Nvidia and alleged that Alice Huang’s companies are backed by Chinese firms that are barred from accessing U.S. chips. Ironically, short-seller Culper’s bet against Nvidia wasn’t driven by the expectation of a U.S. government crackdown. Instead, it was focused on the Chinese government’s response to the bans, which was to recommit to its domestic chip industry. If China succeeds, billions of dollars in Chinese demand for Nvidia chips could dry up. Some 600,000 H200 chips are reportedly stockpiled in Hong Kong, awaiting shipment into China. While Chinese companies might want the chips, observers have no consensus on why they haven’t been cleared for import. Graham Webster, a research scholar at Stanford who focuses on U.S.-China technology policy, said he doesn’t buy the idea that holding the chips back would drive domestic production, since demand for chips is so large. Other theories for the hold-up include preparation for a potential trade deal that would involve importing a large volume of U.S. goods, or concerns about potential surveillance technology in the chips. For now, U.S. companies have limited obligations to track what their customers do with controlled goods like AI chips. However, Jensen Huang’s personal and professional entanglements with Alice Huang create a much bigger problem for Nvidia if government investigators confirm that chip smuggling took place and that he was aware of it. Nvidia and Huang have both vouched for Megaspeed’s data centers, saying Nvidia officials had visited them to confirm they were legitimate. The U.S. government’s treatment of Nvidia and Megaspeed is also under scrutiny. Secretary of Commerce Howard Lutnick, who oversees the agencies that license chip exports, could reportedly lose his job after reports that his investigators failed to uncover suspicious chip buyers and were too cozy with Nvidia officials.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "6c7ff1ba8cc4cfa429d08911d1c98abda3781c447385c2aeb65309d12330361a",
+   "title": "Kayla",
+   "lang": "en",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": []
+  },
+  {
+   "item_id": "27f05b1e107757f349a8e8c56c8f878e37e4a95bd4d7cb7ad21047cc75d46054",
+   "title": "石墨烯有望破解AI芯片散热难题 靠新的组合方式实现行业突破",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "安德烈·海姆",
+     "relation": "award",
+     "object": "2010年诺贝尔物理学奖",
+     "confidence": 0.0,
+     "evidence": "快科技11月15日消息， 2010年诺贝尔物理学奖得主、中国科学院外籍院士安德烈·海姆（Andre Geim）近期在上海表示：“单层石墨烯性能卓越，相关应用有望在15年内从实验室走向大众生活。”",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "2026中国石墨烯材料应用博览会",
+     "relation": "event",
+     "object": "浙江温州",
+     "confidence": 0.0,
+     "evidence": "近日，2026中国石墨烯材料应用博览会暨中国国际石墨烯创新大会“诺奖院士巅峰对话会”在浙江温州举行。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "石墨烯",
+     "relation": "research",
+     "object": "AI芯片",
+     "confidence": 0.0,
+     "evidence": "安德烈·海姆表示，石墨烯的应用已延伸到电子产品散热、锂电池等领域，目前科研人员正探索将其应用于AI芯片这类对散热要求更高的场景。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "正泰",
+     "relation": "research",
+     "object": "石墨烯材料",
+     "confidence": 0.0,
+     "evidence": "正泰集团新材料板块业务负责人从电力新能源企业一线实践出发，谈及过去十余年正泰在石墨烯材料领域的创新探索。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "正泰石墨烯新材料",
+     "relation": "deploy",
+     "object": "散热涂料",
+     "confidence": 0.0,
+     "evidence": "目前，正泰石墨烯新材料已在智能电气设备、重防腐及散热涂料、先进镀层、锂电池等领域推广。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "正泰低压产品",
+     "relation": "deploy",
+     "object": "石墨烯触头",
+     "confidence": 0.0,
+     "evidence": "他现场举例表示，正泰高质量石墨烯金属复合技术实现核心触头及器件导电、导热与抗熔焊性能的全面跃升，四年累计应用石墨烯触头的正泰低压产品超过6亿台。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "d2f42c10f003ee5fff847fc5932a9c0f0553c927f3a142cf5796086966994775",
+   "title": "中金公司与蚂蚁集团达成战略合作 共探AI赋能财富管理",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "中金公司",
+     "relation": "partnership",
+     "object": "蚂蚁集团",
+     "confidence": 0.0,
+     "evidence": "11月13日，中国国际金融股份有限公司（简称“中金公司”）与蚂蚁科技集团股份有限公司（简称“蚂蚁集团”）签署战略合作协议。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "蚂蚁集团",
+     "relation": "research",
+     "object": "大模型、智能体及可信AI",
+     "confidence": 0.0,
+     "evidence": "近年来，蚂蚁集团持续布局人工智能技术，在大模型、智能体及可信AI等领域开展创新，推动AI技术在金融及生活服务等场景应用。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "bbeb954c62bca8451be1a61070c7136a8d8e3f7002ca837a4044bca17fb38b31",
+   "title": "AI DJs Completely Kill My Groove",
+   "lang": "en",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "YouTube Labs",
+     "relation": "support",
+     "object": "Beyond the Beat",
+     "confidence": 0.0,
+     "evidence": "And since I’m a software reporter, I always enable the beta features available through YouTube Labs , which include Beyond the Beat.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Spotify’s AI DJ",
+     "relation": "update",
+     "object": "eight",
+     "confidence": 0.0,
+     "evidence": "One of the biggest recent changes to Spotify’s AI DJ was adding new voices to the lineup, so I went into my settings and played the introduction clips for each of the eight English-language voices.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Spotify",
+     "relation": "info",
+     "object": "80 percent",
+     "confidence": 0.0,
+     "evidence": "Although Spotify claims it has “80 percent of listeners coming back to DJ week after week,” according to the company’s launch blog , I won’t be one of them.",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "bbcb79fadd39dd32e9c797027b308d5c2c485c48e2443c45c36a1c1cd441ee24",
+   "title": "ChatGPT’s new Wallet lets AI agents shop and check out for you",
+   "lang": "en",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "OpenAI",
+     "relation": "release",
+     "object": "new wallet feature",
+     "confidence": 0.0,
+     "evidence": "On Friday, OpenAI launched a new wallet feature that lets its agents, called dots , help you decide what to buy and then complete the purchase on your behalf.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Meta’s Muse",
+     "relation": "benchmark",
+     "object": "over 10 million",
+     "confidence": 0.0,
+     "evidence": "While companies like DoorDash and Uber have so far reported low numbers of orders placed by AI agents, Meta’s Muse, which now has over 10 million users, has seen AI-assisted shopping become a top activity on its app.",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "ChatGPT’s Wallet",
+     "relation": "deploy",
+     "object": "payment token",
+     "confidence": 0.0,
+     "evidence": "When it’s time to transact, ChatGPT’s Wallet charges the selected card using a payment token, which is a substitute for the user’s actual card details, so that information isn’t shared with either the dot or the merchant.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "de008e2b40bcc298a56723519af07413440e062816c7e776c03f35983ecac4be",
+   "title": "徐峥刷到自己的 AI 换脸视频愣了:有的真人演员还不如它",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "徐峥",
+     "relation": "event",
+     "object": "第四届表演教育国际论坛",
+     "confidence": 0.0,
+     "evidence": "在近日举办的第四届表演教育国际论坛上，导演徐峥聊起自己初遇 AI 生成内容的经历。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "上海戏剧学院",
+     "relation": "release",
+     "object": "行业倡议书",
+     "confidence": 0.0,
+     "evidence": "面对冲击，上海戏剧学院率先牵头发布行业倡议书，定下\"以真人表演为本、以 AI 为辅\"的核心原则。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "a1caf0339f0731b4608d425345c39a980f636621a1bcc4e6b90d40054fb3bbde",
+   "title": "Nat. Commun. | 从单细胞转录组中学习稳健细胞表征的预训练框架",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": []
+  },
+  {
+   "item_id": "72ef9d1aa97af6d874cc2ca988c0eef0d5313f333f2006af974f602335f0290f",
+   "title": "不用显卡:玩家靠停产傲腾内存跑通 2.8 万亿参数 Kimi K3 AI 模型,每秒输出 1.5 词元",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "u/IndividualSurvival",
+     "relation": "deploy",
+     "object": "月之暗面 Kimi K3 模型",
+     "confidence": 0.0,
+     "evidence": "IT之家 11 月 13 日消息，网友 u/IndividualSurvival 于 11 月 2 日在 Reddit 社区发帖，分享了一项家庭实验室尝试，在不配备显卡的情况下，使用已停产的英特尔傲腾持久内存， 成功运行 2.8 万亿参数的月之暗面 Kimi K3 模型。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "英特尔",
+     "relation": "partnership",
+     "object": "美光",
+     "confidence": 0.0,
+     "evidence": "IT之家注：“傲腾”（Intel Optane）是一套基于 3D XPoint 的内存与存储产品技术，是英特尔与美光共同开发的非易失性存储技术。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "每秒 0.85 个词元",
+     "relation": "benchmark",
+     "object": "每秒 1.50 个词元",
+     "confidence": 0.0,
+     "evidence": "报道显示，采用 1 比特量化、压缩模型数据后，初始生成速度约为每秒 0.85 个词元；关闭直接访问功能 DAX、让常用数据受益于 DRAM 缓存后，速度提升至每秒 1.50 个词元。",
+     "object_kind": "number",
+     "meta": {
+      "review": "cross_sentence"
+     }
+    },
+    {
+     "subject": "3 比特量化",
+     "relation": "benchmark",
+     "object": "每秒 0.75 个词元",
+     "confidence": 0.0,
+     "evidence": "另一项 3 比特量化测试仅达到每秒 0.75 个词元，生成 5 万个词元约需 18.5 小时。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "ecfc2ce5483dc89204d86e6bedcc1deecbdd0908ff821679b74d59be11555115",
+   "title": "langchain-deepseek==1.2.0",
+   "lang": "en",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "langchain-deepseek",
+     "relation": "release",
+     "object": "1.2.0",
+     "confidence": 0.0,
+     "evidence": "Changes since langchain-deepseek==1.1.1 release(deepseek): 1.2.0 ( #41858 )",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "ChatDeepSeek",
+     "relation": "deploy",
+     "object": "LangSmith gateway",
+     "confidence": 0.0,
+     "evidence": "feat(deepseek): route ChatDeepSeek through LangSmith gateway ( #41839 )",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "certifi",
+     "relation": "update",
+     "object": "2026.10.19",
+     "confidence": 0.0,
+     "evidence": "chore(deps): bump certifi from 2025.8.3 to 2026.10.19 in /libs/partners/deepseek ( #41389 )",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "urllib3",
+     "relation": "update",
+     "object": "2.8.0",
+     "confidence": 0.0,
+     "evidence": "chore(deps): bump urllib3 from 2.7.0 to 2.8.0 in /libs/partners/deepseek ( #40962 )",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "4998f35bb5f64754d87e082a2b4f9eb07a668dc5a6cdb6678c70321c5593a578",
+   "title": "Nearly 70 percent of US agencies use generative AI, and unions are finally catching up with guardrails",
+   "lang": "en",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "US agencies",
+     "relation": "deploy",
+     "object": "generative AI",
+     "confidence": 0.0,
+     "evidence": "Nearly 70 percent of US agencies use generative AI, and unions are finally catching up with guardrails",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Ernst and Young",
+     "relation": "research",
+     "object": "70 percent",
+     "confidence": 0.0,
+     "evidence": "The issue is growing more urgent as nearly 70 percent of US government agencies already use generative AI, according to an Ernst and Young survey .",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "SEIU Local 668",
+     "relation": "deploy",
+     "object": "ChatGPT Enterprise",
+     "confidence": 0.0,
+     "evidence": "In Pennsylvania, Governor Josh Shapiro guaranteed SEIU Local 668 human oversight during a pilot of OpenAI's ChatGPT Enterprise .",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Gavin Newsom",
+     "relation": "regulation",
+     "object": "bossware",
+     "confidence": 0.0,
+     "evidence": "On top of that, California Governor Gavin Newsom banned AI surveillance software, often called \"bossware,\" along with automated firings in September.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Liz Shuler",
+     "relation": "support",
+     "object": "AI safety systems",
+     "confidence": 0.0,
+     "evidence": "Union leaders like Liz Shuler of the AFL-CIO, Lorena Gonzalez, and TWU's John Samuelsen support AI safety systems where they help workers but insist on mandatory human control over every AI application in the workplace, the Guardian reports .",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "3003d0e4ec081578c9279b3ff133c3ce905de8d1e5470f7f005ea40a227936ee",
+   "title": "langchain-openai==1.8.0",
+   "lang": "en",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "langchain-openai",
+     "relation": "update",
+     "object": "Python 3.10",
+     "confidence": 0.0,
+     "evidence": "langchain-openai 1.8.0 drops support for Python 3.10 , which has reached end-of-life.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "langchain-openai",
+     "relation": "release",
+     "object": "1.8.0",
+     "confidence": 0.0,
+     "evidence": "Changes since langchain-openai==1.7.4 release(openai): 1.8.0 ( #41841 )",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "openai",
+     "relation": "update",
+     "object": "OpenAIClassifier",
+     "confidence": 0.0,
+     "evidence": "feat(openai): add OpenAIClassifier for the GA Decisions API ( #41787 )",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "partner packages",
+     "relation": "update",
+     "object": "Python 3.10",
+     "confidence": 0.0,
+     "evidence": "feat(partners): Remove EOL'd Python 3.10 from partner packages ( #41268 )",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "fc1d70bba296bc73c15323b60b097a96b51a887bae46038613c72fbc763045d0",
+   "title": "Elon Musk, other tech execs sign petition calling on Nvidia to reinstate Jensen Huang",
+   "lang": "en",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Elon Musk",
+     "relation": "support",
+     "object": "petition",
+     "confidence": 0.0,
+     "evidence": "Elon Musk, other tech execs sign petition calling on Nvidia to reinstate Jensen Huang",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Nvidia",
+     "relation": "personnel",
+     "object": "Jensen Huang",
+     "confidence": 0.0,
+     "evidence": "A petition calling on Nvidia to reinstate the company’s recently ousted CEO Jensen Huang appears to have attracted more than 115,000 signatures as of Saturday afternoon.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Elon Musk",
+     "relation": "personnel",
+     "object": "Tesla",
+     "confidence": 0.0,
+     "evidence": "Notable supporters include Tesla and SpaceX CEO Elon Musk, Replit CEO Amjad Masad, Epic Games CEO Tim Sweeney, and Y Combinator CEO Garry Tan.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Huang",
+     "relation": "event",
+     "object": "Congress",
+     "confidence": 0.0,
+     "evidence": "The former CEO has agreed to testify before Congress, while news reports have also suggested that Huang engaged in multiple extramarital affairs .",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Nvidia",
+     "relation": "personnel",
+     "object": "Colette Kress",
+     "confidence": 0.0,
+     "evidence": "Nvidia appointed CFO Colette Kress as the company’s interim CEO while it searches for a permanent replacement.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "0f667cc7d82392067974daa8cdd7386ea2d5b6519d63ef4ede8f3d3bb4a7b3cf",
+   "title": "澳大利亚央行研究:AI 最先冲击年轻劳动者,尤其是软件、客服岗位",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "迈克 · 梅杰（Mike Major）",
+     "relation": "research",
+     "object": "AI",
+     "confidence": 0.0,
+     "evidence": "澳大利亚储备银行（RBA）的迈克 · 梅杰（Mike Major）开展了一项研究，并建立了一套就业市场监测系统，重点关注最有可能率先受到 AI 影响的群体，包括职场新人，以及编程、文职工作和客户服务等 AI 影响程度较高的职业。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "斯坦福大学",
+     "relation": "release",
+     "object": "一项研究",
+     "confidence": 0.0,
+     "evidence": "多项研究发现类似趋势，但 AI 并非唯一原因 2025 年 8 月，斯坦福大学发布了一项基于数百万份美国工资记录的研究，也发现了类似现象。",
+     "meta": {
+      "review": "cross_sentence"
+     }
+    },
+    {
+     "subject": "13%",
+     "relation": "benchmark",
+     "object": "20%",
+     "confidence": 0.0,
+     "evidence": "自 2022 年底以来，22 至 25 岁、从事 AI 高影响职业的劳动者，就业人数相对减少了 13%；年轻软件开发人员的降幅更是接近 20%。",
+     "object_kind": "value",
+     "meta": {
+      "review": "cross_sentence"
+     }
+    },
+    {
+     "subject": "Anthropic",
+     "relation": "release",
+     "object": "一项研究",
+     "confidence": 0.0,
+     "evidence": "IT之家注意到，Anthropic 于 2026 年 3 月发布的一项研究同样发现，在容易受到 AI 影响的职业中，22 至 25 岁年轻人的招聘需求出现下降，其找到工作的概率降低了约 14%。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "27%",
+     "relation": "update",
+     "object": "9%",
+     "confidence": 0.0,
+     "evidence": "根据该公司的一份内部评估，自 2025 年初以来，其技术岗位中新入职初级员工的占比，已经从 27% 降至 9%。",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "AI 智能体",
+     "relation": "benchmark",
+     "object": "6 倍",
+     "confidence": 0.0,
+     "evidence": "截至 2026 年 8 月，该公司内部 AI 智能体累计执行任务的时间，已经达到人类员工工作时长的 6 倍。",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "LinkedIn",
+     "relation": "update",
+     "object": "6 倍",
+     "confidence": 0.0,
+     "evidence": "LinkedIn 的数据也显示，一年之内，平台上的 AI 相关招聘信息数量增长了 6 倍。",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "589bcc595d142dfdc79a75dd32bae06262083d3dabd078997ffb7cbd0b66b7eb",
+   "title": "黄仁勋辞职仅数日便传出考虑复出:英伟达内部酝酿“迎回创始人”行动",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "黄仁勋",
+     "relation": "personnel",
+     "object": "英伟达",
+     "confidence": 0.0,
+     "evidence": "黄仁勋于11月12日宣布辞去英伟达首席执行官、总裁以及董事会成员职务，结束了长达33年的公司领导生涯。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "英伟达",
+     "relation": "personnel",
+     "object": "科莱特·克雷斯",
+     "confidence": 0.0,
+     "evidence": "英伟达随后安排首席财务官科莱特·克雷斯（Colette Kress）暂时接管公司，并启动新任首席执行官的遴选工作。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "埃隆·马斯克",
+     "relation": "support",
+     "object": "黄仁勋",
+     "confidence": 0.0,
+     "evidence": "特斯拉首席执行官埃隆·马斯克也公开支持黄仁勋回归，认为没有这位创始人，英伟达可能失去一些重要商业机会。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "美国",
+     "relation": "regulation",
+     "object": "Megaspeed",
+     "confidence": 0.0,
+     "evidence": "美国方面则一直在调查Megaspeed是否涉嫌协助中国企业获取受到出口限制的英伟达先进AI芯片。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "美国国会",
+     "relation": "regulation",
+     "object": "黄仁勋",
+     "confidence": 0.0,
+     "evidence": "目前，美国国会两党已经有人要求黄仁勋以及商务部长霍华德·卢特尼克出席听证会，解释Megaspeed相关业务、先进芯片出口审批以及美国政府此前调查进展。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "英伟达",
+     "relation": "info",
+     "object": "中国",
+     "confidence": 0.0,
+     "evidence": "黄仁勋此前一直强调，英伟达没有发现先进芯片被大规模非法转运至中国的证据，并表示公司会对相关客户和供应链进行审查。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "832a6159f2846c46e55f73afc058aeb7738139dd75d685d32cf1bf7cc6264d93",
+   "title": "Cyber at the Frontier: Introducing Daybreak Red Team & Daybreak Defense Factory",
+   "lang": "en",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "OpenAI",
+     "relation": "release",
+     "object": "Daybreak",
+     "confidence": 0.0,
+     "evidence": "Greg Brockman, Nancy Wang, Fouad Matin, Clint Gibler, Alexander Thiemann, and Matt Boyle took the stage at Cyber at the Frontier, where OpenAI introduced two cybersecurity products under one unified Codex plugin called Daybreak: Daybreak Defense Factory: builds on Codex Security Cloud to help teams automate the defensive loop to find, validate, and fix vulnerabilities at scale.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "5ea3a89016afcba7cb780414a9dabab92d5a374d5d1392fb1b4edf3f412fca65",
+   "title": "马斯克称将签名支持黄仁勋复职;OpenAI 推 ChatGPT 钱包;微软全球服务故障第二天仍未恢复|极客早知道",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "马斯克",
+     "relation": "support",
+     "object": "黄仁勋",
+     "confidence": 0.0,
+     "evidence": "马斯克表示，自己将签名支持黄仁勋回归。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "OpenAI",
+     "relation": "release",
+     "object": "ChatGPT Wallet",
+     "confidence": 0.0,
+     "evidence": "OpenAI 宣布推出全新的支付功能 ChatGPT Wallet，允许 AI 代理在获得授权后代表用户完成在线购物和付款流程。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "OpenAI",
+     "relation": "partnership",
+     "object": "美国运通",
+     "confidence": 0.0,
+     "evidence": "为实现这一功能，OpenAI 与美国运通（American Express）、万事达卡（Mastercard）和 Visa 等主流支付网络展开合作，希望进一步推动 AI 代理从信息助手向实际执行任务工具转变。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "月之暗面",
+     "relation": "funding",
+     "object": "50 亿美元",
+     "confidence": 0.0,
+     "evidence": "此前彭博社报道，月之暗面已完成最后一轮私募融资、估值约 500 亿美元，正考虑在 IPO 中募资最多 50 亿美元，并已以保密形式向港交所递交上市申请；公司回应媒体时称不对市场传言或猜测置评。",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "微软",
+     "relation": "incident",
+     "object": "Microsoft 365 服务",
+     "confidence": 0.0,
+     "evidence": "11 月 13 日，微软表示，持续近两天的大规模服务故障正在逐步得到修复，Outlook 邮箱及其他 Microsoft 365 服务的可用性和邮件投递表现已有改善，但部分用户仍可能遇到间歇性连接问题。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "DeepSeek",
+     "relation": "release",
+     "object": "全家桶应用 API",
+     "confidence": 0.0,
+     "evidence": "11 月 13 日晚间，DeepSeek 宣布正式开放全家桶应用 API：在原有 API 中开启对应参数， 即可获得深度思考搜索、文件输入等对话功能 ；语音及相关底层能力也已开放独立接口（含 OCR、ASR、TTS 等），支持单独或组合调用。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "2027 款全新领克 03",
+     "relation": "pricing",
+     "object": "10.38-13.38 万元",
+     "confidence": 0.0,
+     "evidence": "11 月 13 日消息，2027 款全新领克 03 今晚正式上市，新车共推出 4 款车型， 限时专享价 10.38-13.38 万元 。",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "981251abcf15d321171ee774de814f25784497eade2388c814ef1603b075eb92",
+   "title": "openJiuwen发布RSI原生AgentOS,让Agent自由变身,持续迭代!",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "openJiuwen",
+     "relation": "release",
+     "object": "RSI原生AgentOS",
+     "confidence": 0.0,
+     "evidence": "openJiuwen发布RSI原生AgentOS,让Agent自由变身,持续迭代!",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "openJiuwen",
+     "relation": "research",
+     "object": "HyperAgent",
+     "confidence": 0.0,
+     "evidence": "这是openJiuwen为HyperAgent提出的八项特征之一，即 从「开发者友好」走向「RSI友好」 。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "RSI原生AgentOS",
+     "relation": "support",
+     "object": "WorkSwarm",
+     "confidence": 0.0,
+     "evidence": "WorkSwarm背后的RSI原生AgentOS负责加载扩展，让这个系统插件在工作台上生效。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Gateway",
+     "relation": "deploy",
+     "object": "AgentServer",
+     "confidence": 0.0,
+     "evidence": "企业可以 按业务需要选择Gateway连接的AgentServer，并在两侧分别加载所需的扩展 。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "WorkSwarm",
+     "relation": "support",
+     "object": "Gateway登录系统插件",
+     "confidence": 0.0,
+     "evidence": "在WorkSwarm中，Gateway登录系统插件可以给应用入口加上登录页，并在请求进入业务流程前校验凭证。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "WorkSwarm",
+     "relation": "support",
+     "object": "Claude Code",
+     "confidence": 0.0,
+     "evidence": "在WorkSwarm里，新建单Agent会话时，系统插件可以提供Claude Code （CC） 、Codex和openJiuwen三种Harness选项。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "01174abbde699f16fde3350006a2cfdea780cd09421a245fefefa05d1e5336cb",
+   "title": "Agent如何越用越强?中科院自动化所、美团等推出RSI综述",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "中国科学院自动化研究所",
+     "relation": "release",
+     "object": "LLM Agent 递归自我改进综述",
+     "confidence": 0.0,
+     "evidence": "近日， 中国科学院自动化研究所、美团联合山东大学、中国人民大学、中科院微电子所、上海交通大学、理想汽车等多家单位 ，推出 LLM Agent 递归自我改进综述。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "戴思齐",
+     "relation": "personnel",
+     "object": "中国科学院自动化研究所",
+     "confidence": 0.0,
+     "evidence": "第一作者：戴思齐，中国科学院自动化研究所复杂系统认知与决策重点实验室博士生。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "阮景晴",
+     "relation": "personnel",
+     "object": "美团",
+     "confidence": 0.0,
+     "evidence": "共同第一作者、项目负责人：阮景晴， 美团高级算法工程师。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "张斌",
+     "relation": "personnel",
+     "object": "中国科学院自动化研究所",
+     "confidence": 0.0,
+     "evidence": "通讯作者、项目负责人：张斌，中国科学院自动化研究所复杂系统认知与决策重点实验室助理研究员。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "bc5d643a0d8627abcd7b0132f23b1997b42ea0f96172602db7c9ce3b0ea1062b",
+   "title": "AI 自动写 PR,模型反而最简单:Inkitt 如何应对 Webhook 重复、CI 失败与合并冲突",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Inkitt",
+     "relation": "release",
+     "object": "一次性 PR 创建器",
+     "confidence": 0.0,
+     "evidence": "图片 Inkitt 一次性 PR 创建器架构（来源： Inkitt 博客文章 ） 该编排器将决策逻辑与副作用分离。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "99cb66c603ff0dcee5db8d0a8e4ac4a8e08e17a0f2e49341bfb780151706dba8",
+   "title": "前 OpenAI 研究员:当前活着的人最有可能死于 AI 失控",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "克里斯蒂亚诺",
+     "relation": "event",
+     "object": "希尔顿讲座",
+     "confidence": 0.0,
+     "evidence": "当地时间周一，克里斯蒂亚诺在希尔顿讲座（The Hinton Lectures）上表示：“我认为，在座的大多数人，最有可能的死亡原因将是一次 AI 意外事故。”",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "克里斯蒂亚诺",
+     "relation": "personnel",
+     "object": "人工智能对齐研究中心",
+     "confidence": 0.0,
+     "evidence": "克里斯蒂亚诺目前担任人工智能对齐研究中心（Alignment Research Center）负责人。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "OpenAI 的 AI 智能体",
+     "relation": "incident",
+     "object": "Hugging Face",
+     "confidence": 0.0,
+     "evidence": "他列举了今年早些时候 OpenAI 的 AI 智能体入侵开源代码托管平台 Hugging Face 的事件，以及英国人工智能安全研究所的一项评估。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Claude 智能体",
+     "relation": "incident",
+     "object": "恶意代码",
+     "confidence": 0.0,
+     "evidence": "在后者的测试中，一个 Claude 智能体曾试图在某个开源软件包中植入恶意代码。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "AI",
+     "relation": "incident",
+     "object": "未来三年内",
+     "confidence": 0.0,
+     "evidence": "克里斯蒂亚诺表示：“我认为，未来三年内发生 AI 接管事件的风险很高。”",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "克里斯蒂亚诺",
+     "relation": "personnel",
+     "object": "OpenAI",
+     "confidence": 0.0,
+     "evidence": "根据他的 LinkedIn 个人资料，克里斯蒂亚诺曾于 2017 年至 2021 年在 OpenAI 担任技术研究人员。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "埃文 · 休宾格",
+     "relation": "personnel",
+     "object": "Anthropic",
+     "confidence": 0.0,
+     "evidence": "Anthropic 负责 AI 对齐压力测试团队的埃文 · 休宾格（Evan Hubinger）当时表示，他认为未来十年内，AI 导致全人类死亡的概率超过 10%。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "AI",
+     "relation": "incident",
+     "object": "10%",
+     "confidence": 0.0,
+     "evidence": "IT之家注意到，被广泛称为“AI 教父”的计算机科学家杰弗里 · 辛顿（Geoffrey Hinton）也表示，未来十年内 AI 导致人类灭绝的概率达到 10%，并不是一个不合理的估计。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "945180e094f8cb96aded8e11c8013cf9424f586d50f74c91e4e222ec83cd7a80",
+   "title": "b12426",
+   "lang": "en",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "mtmd",
+     "relation": "support",
+     "object": "higgs v3 STT",
+     "confidence": 0.0,
+     "evidence": "mtmd: support higgs v3 STT and vibevoice-ASR ( #32329 )",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "094ddcf573d60c80ac3bddd907e6a7529e29c157b8192f1a1abddd4d40a0b385",
+   "title": "Anthropic 募资 904 亿剑指史上最大 IPO,认购已超六倍",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Anthropic",
+     "relation": "funding",
+     "object": "904 亿",
+     "confidence": 0.0,
+     "evidence": "Anthropic 募资 904 亿剑指史上最大 IPO,认购已超六倍",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "IPO",
+     "relation": "funding",
+     "object": "644 亿美元",
+     "confidence": 0.0,
+     "evidence": "招股文件显示，公司连同联合创始人计划借 IPO 最多募得 644 亿美元，再叠加一笔 260 亿美元的非公开配售，双管齐下为登陆公开市场备足弹药。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "5a7538ac02344da7fbc677915a81a6fdad78315b95b2a817f78755dda4d922cf",
+   "title": "Anthropic's Claude for Manufacturing plugs AI directly into factory software to automate industrial workflows",
+   "lang": "en",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Anthropic",
+     "relation": "release",
+     "object": "Claude",
+     "confidence": 0.0,
+     "evidence": "Anthropic has released Claude for Manufacturing, a plugin giving the AI direct access to industrial software to automate factory workflows.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Claude",
+     "relation": "deploy",
+     "object": "Infor plugin",
+     "confidence": 0.0,
+     "evidence": "Via an added Infor plugin, Claude can also order from backup suppliers when deliveries are delayed and reschedule production—after human approval.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "e2ae06722caddc84591707d17f062abeb44bf72aa19dcdbaafe47dc5e31770b7",
+   "title": "李彦宏定义 AI 下一个十年,智能组织是「新厂房」",
+   "lang": "zh",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "百度",
+     "relation": "release",
+     "object": "词元所",
+     "confidence": 0.0,
+     "evidence": "百度重磅发布了大模型交易平台——词元所。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "百度",
+     "relation": "release",
+     "object": "文心 5.5 Flash Preview",
+     "confidence": 0.0,
+     "evidence": "百度最新基础模型文心 5.5 Flash Preview 也正式发布，模型支持最长 100 万 Token 的上下文，在复杂编程、知识工作、3D 建模、视频创作等方面表现突出。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "文心闪电模型",
+     "relation": "deploy",
+     "object": "百度智能云千帆平台",
+     "confidence": 0.0,
+     "evidence": "百度两款应用模型——文心闪电模型和文心一镜微表情大模型，当天正式上线百度智能云千帆平台，可通过 API 接入。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "南方电网",
+     "relation": "partnership",
+     "object": "百度",
+     "confidence": 0.0,
+     "evidence": "南方电网与百度合作的「天璇伙伴」是一个典型案例。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "天池超节点",
+     "relation": "deploy",
+     "object": "全国多地",
+     "confidence": 0.0,
+     "evidence": "目前天池超节点已走通全栈国产化路径，开放六大核心模块技术规范，在全国多地完成千柜级部署，成功支撑万亿参数大模型训练，为大规模智能体长周期运行提供了稳定、高性价比的算力保障。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "千帆 Agent Infra",
+     "relation": "benchmark",
+     "object": "25%",
+     "confidence": 0.0,
+     "evidence": "其中千帆 Agent Infra 打造「词元工厂」与「驾驭工程」两大能力：前者提供 150 多款主流模型服务，推理速度较行业提升 25%；后者覆盖长上下文管理、持久记忆、子智能体调度等能力，任务成功率达 95%，同时节省 23% 的 Token 消耗。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "百度",
+     "relation": "open_source",
+     "object": "文心 5.5 Flash Base",
+     "confidence": 0.0,
+     "evidence": "在基础模型方面，大会前夕百度开源了文心 5.5 Flash Base 基座模型，会议当天正式发布文心 5.5 Flash 预览版并上线千帆平台，文心闪电模型与文心一镜微表情大模型也同步向合作伙伴开放。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "089569df6b4a803969717d0041fdf1ad3699811c7864cf96fb35226920d98edf",
+   "title": "No Pilots. Few Air Traffic Controllers. What Could Go Wrong?",
+   "lang": "en",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Sean Duffy",
+     "relation": "release",
+     "object": "SMART",
+     "confidence": 0.0,
+     "evidence": "On September 27, US transportation secretary Sean Duffy posted a video on X with the words “GAME CHANGER.” “Introducing ‘SMART’—the new air traffic management tool that saves YOU time, cuts back DELAYS, and makes your flying experience BETTER,” he wrote.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "FAA",
+     "relation": "incident",
+     "object": "national groundstop",
+     "confidence": 0.0,
+     "evidence": "Almost three weeks later, that post would get a new life, as a nervous joke, as the FAA issued a national groundstop on Friday the 13th that instantly threw the world’s airline schedules into chaos.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Cessna Caravan",
+     "relation": "event",
+     "object": "Phoenix",
+     "confidence": 0.0,
+     "evidence": "Take, for instance, the Cessna Caravan that took off from Buchanan Field Airport in Concord, California, and flew south to Phoenix on a calm September morning.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "federal government",
+     "relation": "deploy",
+     "object": "NextGen",
+     "confidence": 0.0,
+     "evidence": "In 2007, the federal government rolled out a sweeping project called Next Generation Air Transportation System—NextGen, for short—that mandated broad changes to the air travel system over the decades to come.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "ADS-B",
+     "relation": "deploy",
+     "object": "United States",
+     "confidence": 0.0,
+     "evidence": "Among its provisions was the requirement that, by 2020, aircraft in the United States be equipped with ADS-B, a system that constantly sends radio signals telling everyone in the vicinity where you are and where you’re headed.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Google",
+     "relation": "release",
+     "object": "Project Wing",
+     "confidence": 0.0,
+     "evidence": "In 2014, Google unveiled Project Wing, a drone delivery offering that by 2018 was ferrying food, coffee, and medication to 164 homes near Canberra, Australia .",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Joby",
+     "relation": "release",
+     "object": "S4 model",
+     "confidence": 0.0,
+     "evidence": "Joby was among those leading the charge: In 2020, the company unveiled the design of its S4 model, which it said would be able to carry a pilot and four passengers 100 miles or more at speeds of up to 200 mph.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "S4",
+     "relation": "event",
+     "object": "maiden flight",
+     "confidence": 0.0,
+     "evidence": "The S4’s maiden flight took place last year.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "f7586de710e3655416670b95eebecbee39c9cbe407d5cdd058a278284bebdc4c",
+   "title": "《求是》杂志发表习近平总书记重要文章《携手共建亚太命运共同体》",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "《求是》杂志",
+     "relation": "release",
+     "object": "《携手共建亚太命运共同体》",
+     "confidence": 0.0,
+     "evidence": "《求是》杂志发表习近平总书记重要文章《携手共建亚太命运共同体》",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "a36027ac6b21118324724b98400f6700ec43cb654182f566437dd2140df550b8",
+   "title": "带回老板呼声出现在英伟达内部建议箱 员工要求董事会先公布调查结果并听取员工意见",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "英伟达",
+     "relation": "personnel",
+     "object": "黄仁勋",
+     "confidence": 0.0,
+     "evidence": "根据英伟达董事会在 11 月 12 日发布的公告，黄仁勋辞去公司总裁、首席执行官和董事职务，即时生效。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "英伟达",
+     "relation": "personnel",
+     "object": "科莱特・克雷斯",
+     "confidence": 0.0,
+     "evidence": "英伟达首席财务官科莱特・克雷斯暂代 CEO，英伟达董事会将从内部和外部寻找正式继任者。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "76eaf2c5f6d247068a13a5cfa8261da60a759cabd87f802be6937b4fbfe2628c",
+   "title": "Banks bar Chinese and Hong Kong investors from Anthropic IPO over US export controls",
+   "lang": "en",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Anthropic IPO",
+     "relation": "regulation",
+     "object": "US export controls",
+     "confidence": 0.0,
+     "evidence": "Banks bar Chinese and Hong Kong investors from Anthropic IPO over US export controls",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "ITAR",
+     "relation": "regulation",
+     "object": "US",
+     "confidence": 0.0,
+     "evidence": "Multiple banks have reportedly rejected buy orders from those regions or consider allocations unlikely, with some of the people involved citing ITAR, the US export control rules governing defense-related goods, as the reason.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "DeepSeek",
+     "relation": "incident",
+     "object": "16 million queries",
+     "confidence": 0.0,
+     "evidence": "It also exposed large-scale distillation attacks by DeepSeek, Moonshot, and MiniMax involving some 16 million queries.",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "49f0b0840b1ef26af09f29c86adc67fccd4a404dbae10e2dbf51e8f46347b640",
+   "title": "AI agent startup LangChain hits $3B valuation",
+   "lang": "en",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "LangChain",
+     "relation": "funding",
+     "object": "$300 million",
+     "confidence": 0.0,
+     "evidence": "Agent management startup LangChain has raised a $300 million Series C at a $3 billion valuation led by CapitalG, with participation from investors, including Singapore’s GIC, DFJ Growth, IVP, and Sapphire Ventures, the company announced on Friday.",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "LangChain",
+     "relation": "event",
+     "object": "2022",
+     "confidence": 0.0,
+     "evidence": "LangChain began in 2022 as a popular open source project that handled the kinds of tasks that early-stage LLMs found difficult, like searching the web, calling APIs, and interacting with databases.",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "LangChain",
+     "relation": "info",
+     "object": "7,000",
+     "confidence": 0.0,
+     "evidence": "However, LangChain has had a head start and now claims 7,000 LangSmith customers, including big-name startups like Harvey, Rippling, and Clay, and enterprises like Nvidia, Toyota, and Salesforce.",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "a0624655f9689a80b0cb79e485f1cf7d46dc71f78ae20820562da07ab2ae95e2",
+   "title": "从双11看消费新趋势。各大平台的双11购物狂欢节已全部收官,与往年相比,电商大促的竞争范式正在发生转变。从“卷价格”到“拼价值”。今年双11是《互联网平台价...",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "京东",
+     "relation": "info",
+     "object": "超130%",
+     "confidence": 0.0,
+     "evidence": "京东数据显示，双11首周平台服务消费订单量同比增长超130%；",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "天猫",
+     "relation": "benchmark",
+     "object": "半小时2万亿词元",
+     "confidence": 0.0,
+     "evidence": "11月2日，天猫有直播间创下半小时2万亿词元的销售纪录。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "京东平台大模型词元包",
+     "relation": "benchmark",
+     "object": "超10倍",
+     "confidence": 0.0,
+     "evidence": "京东方面，双11全周期，AIPC、AI工作站、AI相机、AI眼镜、AI录音设备等AI趋势品成交额同比增长超100%，“词元”搜索量环比提升超13倍，京东平台大模型词元包销量环比增长超10倍。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "bef2bc2421477dd36ffec4a28f346408c38703f3c063698b103ee518cfc38d5d",
+   "title": "Yelp AI 助手融合原生 UI 与服务端驱动 UI",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Yelp 助手",
+     "relation": "release",
+     "object": "iOS",
+     "confidence": 0.0,
+     "evidence": "Yelp 助手于 2024 年在 iOS 上推出，帮助用户向本地服务从业者提交服务需求。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Yelp",
+     "relation": "deploy",
+     "object": "CHAOS 框架",
+     "confidence": 0.0,
+     "evidence": "该方案基于 Yelp 的 CHAOS 框架（全称 Content Hosting Architecture with Optimization Strategies，带优化策略的内容托管架构）渲染对话内容，导航栏与消息输入框则保留原生实现。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "CHAOS",
+     "relation": "support",
+     "object": "Android",
+     "confidence": 0.0,
+     "evidence": "CHAOS 支持 Web、iOS 和 Android。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Airbnb",
+     "relation": "deploy",
+     "object": "Ghost Platform",
+     "confidence": 0.0,
+     "evidence": "Airbnb 通过其 Ghost Platform 公开过类似的思路，该平台在 Web 和移动客户端上使用服务器定义的 UI。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Android 助手",
+     "relation": "deploy",
+     "object": "Biz Ask Anything",
+     "confidence": 0.0,
+     "evidence": "该架构还支持复用 Android 助手来启动 Biz Ask Anything 试点项目。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Yelp",
+     "relation": "info",
+     "object": "新版助手",
+     "confidence": 0.0,
+     "evidence": "Yelp 表示，这项工作为其下一代助手奠定了基础，新版助手现在可以将商家信息与用户可执行的操作连接起来。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "ab23a7fa21e24fb3c24226790bb08f711e3c8669c84a5666d3351f7cbde7aa1f",
+   "title": "Muse can now place calls to US businesses — if you pay",
+   "lang": "en",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Muse",
+     "relation": "deploy",
+     "object": "U.S. businesses",
+     "confidence": 0.0,
+     "evidence": "After initially testing the feature in September, Meta’s consumer AI agent Muse is now able to place calls to U.S. businesses on behalf of its users.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Muse",
+     "relation": "info",
+     "object": "over 10 million",
+     "confidence": 0.0,
+     "evidence": "Meta’s Muse, which now has over 10 million users , the company said last month, has been working to make consumer AI a mainstream product for everyday users.",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Alexandr Wang",
+     "relation": "personnel",
+     "object": "Meta",
+     "confidence": 0.0,
+     "evidence": "Notes Alexandr Wang, Meta’s chief AI officer and head of its Superintelligence Labs division, the feature could be used to take care of calls people don’t want to make, like those to their cable company, the DMV, or to a restaurant that doesn’t offer online reservations.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Muse",
+     "relation": "pricing",
+     "object": "$20 per month",
+     "confidence": 0.0,
+     "evidence": "Currently, Muse subscription plans start at $20 per month for 500 million Muse tokens per week.",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "$100 per month",
+     "relation": "pricing",
+     "object": "3 billion tokens",
+     "confidence": 0.0,
+     "evidence": "Heavier AI users can opt to pay $100 per month for 3 billion tokens.",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Muse",
+     "relation": "update",
+     "object": "Muse email address",
+     "confidence": 0.0,
+     "evidence": "While calls remain a paid-only feature for the time being, the recently added option to make a Muse email address will soon roll out to free users, Wang said this week.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "8a2cd090a811fa862c0b30fe4288fdcdbe5273fabe6acea2d041bce6005f25e9",
+   "title": "海尔热水器双11战报:京东天猫双平台销量TOP1",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "海尔无镁棒小蓝瓶热水器",
+     "relation": "support",
+     "object": "五效合一净化系统",
+     "confidence": 0.0,
+     "evidence": "海尔无镁棒小蓝瓶热水器以AI净护芯代替镁棒，无镁渣0水垢，内胆免维护，同时搭载五效合一净化系统，实现100%滤杂、99.3% 除余氯、99.5%阻垢、99.99%抑菌，出水含锶元素，家人每次沐浴都是洁净温润的活水，告别杂质刺激，打造更安全的净肤体验。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "海尔",
+     "relation": "release",
+     "object": "3D巨能洗",
+     "confidence": 0.0,
+     "evidence": "海尔还打造3D巨能洗能满足多人口家庭接力沐浴，随时畅享热水。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "海尔小海鲸无冷凝水燃气热水器",
+     "relation": "deploy",
+     "object": "超音速离心雾化2.0 技术",
+     "confidence": 0.0,
+     "evidence": "海尔小海鲸无冷凝水燃气热水器，依托超音速离心雾化2.0 技术，将冷凝水先净化后再打散成微米水雾，随烟气100%排出室外。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "海尔",
+     "relation": "deploy",
+     "object": "AI智慧用水能力",
+     "confidence": 0.0,
+     "evidence": "从洗浴净水、恒温热水到全流程用水守护，海尔依托AI智慧用水能力，串联家庭每一处用水场景，把洁净、安心的舒适感贯穿居家日常，让全屋好水陪伴用户生活。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "7a14a441a07d99cf2c5fc4c794e7002da0215eecea384325690cd51f26c98aa2",
+   "title": "独家|燧原科技首席生态官李星宇离职",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "李星宇",
+     "relation": "personnel",
+     "object": "燧原科技",
+     "confidence": 0.0,
+     "evidence": "雷峰网独家获悉，燧原科技首席生态官李星宇已于近日离职。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "燧原科技",
+     "relation": "funding",
+     "object": "2026年9月",
+     "confidence": 0.0,
+     "evidence": "他先后任职的地平线与燧原科技，分别于2024年10月和2026年9月上市。",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "7a47887a4d35f207aa1a4bd1d884030ed99225d77e15f3c8c1aa75633bfe0044",
+   "title": "端侧 AI 迎来「高智能」时刻,比肩云端模型",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "无界方舟",
+     "relation": "open_source",
+     "object": "Edge0-35B",
+     "confidence": 0.0,
+     "evidence": "今年 9 月，无界方舟开源了 Edge0-35B，首次让一个通常需要近 20GB 权重空间的 350 亿参数模型，放进手机能够运行的内存预算里。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Edge0-35B",
+     "relation": "deploy",
+     "object": "iPhone 18 Pro Max",
+     "confidence": 0.0,
+     "evidence": "Edge0-35B 在 iPhone 18 Pro Max 上做到 37+ token/s、约 2.5GB 内存。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Edge0-145B",
+     "relation": "open_source",
+     "object": "Hugging Face",
+     "confidence": 0.0,
+     "evidence": "今天，Edge0-145B 已经在 Hugging Face 开放模型权重，全新的端侧统一推理引擎也在 GitHub 开源，并提供一键部署工具与完整硬件适配指南。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Edge0-145B",
+     "relation": "support",
+     "object": "macOS",
+     "confidence": 0.0,
+     "evidence": "Edge0-145B 发布首日 Day 0 即全面支持 macOS、Windows、Linux 三大系统，覆盖苹果 M 系列芯片，以及 NVIDIA GPU 等 平台。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Edge0-145B",
+     "relation": "benchmark",
+     "object": "80+ token/s",
+     "confidence": 0.0,
+     "evidence": "Edge0-145B 的参数量是它的 4 倍，在笔记本电脑上运行的速度高达 80+ token/s，峰值内存仅需 29GB。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Edge0-145B",
+     "relation": "benchmark",
+     "object": "DeepSeek-V4-Flash",
+     "confidence": 0.0,
+     "evidence": "无界方舟公布的六项主流评测中，Edge0-145B 在 DeepSWE 1.1 64.6、Terminal-Bench 2.1 86.5、HLE 35.4、GPQA-Diamond 90.4、IFBench 80.6、AA-LCR 79.3，综合水平与 DeepSeek-V4-Flash 等主流开源云端大模型处于同一档位。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Edge0-145B",
+     "relation": "benchmark",
+     "object": "Claude Opus 4.6（Max）",
+     "confidence": 0.0,
+     "evidence": "在 DeepSWE 和 Terminal-Bench 这两项智能体编程评测上，Edge0-145B 超过了同档位的开源模型；在 Terminal-Bench 2.1、IFBench 和 AA-LCR 上，它的得分还高于云端闭源模型 Claude Opus 4.6（Max）。",
+     "meta": {
+      "review": "cross_sentence"
+     }
+    },
+    {
+     "subject": "无界方舟",
+     "relation": "info",
+     "object": "11 万家",
+     "confidence": 0.0,
+     "evidence": "截至目前，无界方舟开源模型在 3 个月内下载量已经突破 1,500 万次，多次登顶 Hugging Face 趋势总榜第一；截至 2026 年 10 月，客户数已突破 11 万家。",
+     "object_kind": "number",
+     "meta": {
+      "review": "cross_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "74c014fd8520c29bed3c871a2fa8cc434dd6102c15e19a8a6a7c87b5645bd463",
+   "title": "微软 14 年 AI 老将离职:称创新难落地,降本研究未获认真考虑",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "约翰 · 兰福德",
+     "relation": "personnel",
+     "object": "微软",
+     "confidence": 0.0,
+     "evidence": "IT之家 11 月 14 日消息，科技媒体 Windows Latest 今天（11 月 14 日）发布博文， 报道称在微软任职逾 14 年的 AI 科学家、AI Frontiers 实验室联合创始人约翰 · 兰福德（John Langford）已离职。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "穆斯塔法 · 苏莱曼",
+     "relation": "personnel",
+     "object": "Microsoft AI 部门",
+     "confidence": 0.0,
+     "evidence": "兰福德所在的约 50 人团队于今年 9 月发生调整，被并入穆斯塔法 · 苏莱曼（Mustafa Suleyman）领导的 Microsoft AI 部门，但在研究路线、创新落地渠道和团队重组方式上存在较大分歧，因此兰福德决定离职。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "字节跳动 Seed 团队",
+     "relation": "release",
+     "object": "Recycler 研究",
+     "confidence": 0.0,
+     "evidence": "报道指出，字节跳动 Seed 团队在今年 10 月 25 日发布采用类似思路的 Recycler 研究，该方法以类似方式重用隐藏状态，且在推理和数学方面，能超越参数多两到三倍的模型。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "兰福德",
+     "relation": "research",
+     "object": "Contextual Bandits",
+     "confidence": 0.0,
+     "evidence": "IT之家查询公开资料，兰福德是机器学习领域资深且有影响力的研究者，长期从事机器学习与学习理论研究，其重要贡献是推进 Contextual Bandits（上下文多臂老虎机），与合作者在探索算法、学习问题归约及离线策略评估方面做出代表性工作，为机器学习系统利用不完整反馈改进决策提供了理论与方法基础。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "10 亿参数模型",
+     "relation": "benchmark",
+     "object": "使用约 1.5 倍数据训练的常规模型",
+     "confidence": 0.0,
+     "evidence": "在论文实验中，10 亿参数模型能够以更少训练数据，接近或达到使用约 1.5 倍数据训练的常规模型表现，每个词元增加的计算开销则很小。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "167c81c5d6fc7db57e5d8050dad8aa2d9c145c2e728ec6de40d656937d161a0d",
+   "title": "Where was Nvidia’s security team?",
+   "lang": "en",
+   "split": "dev",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Jensen Huang",
+     "relation": "incident",
+     "object": "Megaspeed",
+     "confidence": 0.0,
+     "evidence": "Just two and a half months later, CEO Jensen Huang himself left the company over growing questions about his extramarital relationships — starting with an executive at Megaspeed, a Singapore data center company that U.S. investigators suspect of funneling Nvidia chips to China, then widening to reports about two separate affairs with Nvidia employees.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "David Reber",
+     "relation": "personnel",
+     "object": "Nvidia",
+     "confidence": 0.0,
+     "evidence": "At the time, David Reber, who spent four years as CSO and seven at Nvidia overall, said he was leaving for health reasons.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Reber",
+     "relation": "personnel",
+     "object": "Saša Zdjelar",
+     "confidence": 0.0,
+     "evidence": "Reber’s replacement, Saša Zdjelar, previously spent 17 years at ExxonMobil in Houston, leaving as a senior IT manager before spending one year at Salesforce and several years at the cybersecurity company ReversingLabs.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Nvidia",
+     "relation": "legal",
+     "object": "Megaspeed",
+     "confidence": 0.0,
+     "evidence": "Nvidia’s top lawyer was engaged with the government’s Megaspeed inquiry more than a year ago, The New York Times reported earlier this week .",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Nvidia",
+     "relation": "regulation",
+     "object": "code of conduct",
+     "confidence": 0.0,
+     "evidence": "Reports about Huang’s relationships with employees suggest colleagues also knew of them, even if the behavior is not expressly forbidden by Nvidia’s code of conduct .",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Eftimiades",
+     "relation": "info",
+     "object": "TechCrunch",
+     "confidence": 0.0,
+     "evidence": "Even if it had, Eftimiades, who wrote Chinese Espionage Operations and Tactics in 2020, told TechCrunch that a security team’s resources are often limited.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Eftimiades",
+     "relation": "research",
+     "object": "IMSI catchers",
+     "confidence": 0.0,
+     "evidence": "Technology can augment that human intelligence, Eftimiades said, pointing to IMSI catchers as one example.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "ace93743341fe9333861756e5896120a562ee2a3f5fd193903ce32a9385de551",
+   "title": "GitLab 19.5 发布,将智能体开发纳入可治理的 DevOps 平台能力",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "GitLab 19.5",
+     "relation": "release",
+     "object": "GitLab MCP 服务器",
+     "confidence": 0.0,
+     "evidence": "GitLab 19.5 于 10 月 15 日发布，将智能体软件开发和治理作为平台核心： GitLab MCP 服务器正式可用，同时扩展了外部 AI 智能体与 GitLab 交互的方式。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Claude Code",
+     "relation": "support",
+     "object": "GitLab Duo",
+     "confidence": 0.0,
+     "evidence": "该版本允许 Claude Code 、 Cursor 等兼容 MCP 的工具访问更多 GitLab 工具目录，并调用 GitLab Duo Agent Platform 的智能体和工作流。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "GitLab.com",
+     "relation": "update",
+     "object": "MCP 速率限制",
+     "confidence": 0.0,
+     "evidence": "GitLab.com 还引入了 MCP 速率限制：免费版用户每分钟 60 次请求，Premium 和 Ultimate 用户每分钟 600 次，重连与重试请求同样计入限额。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "GitLab 19.5",
+     "relation": "deploy",
+     "object": "Claude Code",
+     "confidence": 0.0,
+     "evidence": "GitLab 19.5 允许通过 GitLab CLI 连接 Claude Code、Cursor 和 Codex 等工具。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "GitLab",
+     "relation": "release",
+     "object": "Secrets Manager",
+     "confidence": 0.0,
+     "evidence": "该版本同时正式发布 GitLab Secrets Manager 。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "GitLab",
+     "relation": "update",
+     "object": "安全配置模板能力",
+     "confidence": 0.0,
+     "evidence": "GitLab 还扩展了安全配置模板能力，企业可以统一配置密钥检测（Secret Detection）、静态应用安全检测（SAST）的参数，例如排除路径、分析器镜像、全历史扫描等，不必在每个项目的 CI/CD 文件中重复配置。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "b712604da9892f2c6ae4ac8ab2087b0a5b90e8fcb469ebf0d51ef693899a6ff9",
+   "title": "本周15股南向资金持股量环比增长超10%",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "恒生指数",
+     "relation": "benchmark",
+     "object": "3.45%",
+     "confidence": 0.0,
+     "evidence": "本周（11月9日至11月13日）港股市场主要股指集体回撤，恒生指数累计跌3.45%，恒生科技指数跌6.5%，恒生中国企业指数跌4.07%。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "卓越睿新",
+     "relation": "benchmark",
+     "object": "32.5%",
+     "confidence": 0.0,
+     "evidence": "从持股量变化来看，本周15股南向资金持股量环比增长超10%（剔除10月以来新纳入港股通的个股），卓越睿新环比增长32.5%，居首；派格生物医药-B、兆威机电、新秀丽持股量环比增幅居前，分别为24.54%、23.45%、19.94%。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "韩国",
+     "relation": "supply",
+     "object": "703.5亿美元",
+     "confidence": 0.0,
+     "evidence": "上月，韩国信息通信技术产业出口额达703.5亿美元，连续第二个月突破700亿美元关口。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "《2026年10月ICT贸易动向》",
+     "relation": "info",
+     "object": "三倍",
+     "confidence": 0.0,
+     "evidence": "韩国科学技术信息通信部与产业通商资源部15日发布的《2026年10月ICT贸易动向》显示，10月ICT出口额较去年同期232.9亿美元增长至三倍。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "芯片",
+     "relation": "supply",
+     "object": "564.7亿美元",
+     "confidence": 0.0,
+     "evidence": "芯片出口同比大增259.4%至564.7亿美元，占ICT出口总额的80.3%。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "固态硬盘",
+     "relation": "supply",
+     "object": "584.3%",
+     "confidence": 0.0,
+     "evidence": "受AI数据中心投资增加带动，固态硬盘出货量飙升584.3%，计算机及外设出口同比大涨439.3%，达到59.9亿美元。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "dac02ae95f1ebdc9e22d05c2da83c5b55a3e12d7ab7aed58c89adcdb0df25837",
+   "title": "韩国一“超高分”考生承认偷用AI,青瓦台紧急商议对策",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "韩国总统府青瓦台",
+     "relation": "event",
+     "object": "紧急会议",
+     "confidence": 0.0,
+     "evidence": "韩国总统府青瓦台当天召开紧急会议商讨应对措施，以防在即将举行的高考中出现此类现象。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "首尔地方警察厅",
+     "relation": "event",
+     "object": "调查",
+     "confidence": 0.0,
+     "evidence": "这名考生已向首尔地方警察厅自首，警方表示将就此事展开调查。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "韩国",
+     "relation": "regulation",
+     "object": "5年",
+     "confidence": 0.0,
+     "evidence": "韩国相关法律规定，被认定作弊者的成绩将被取消，5年内不得再次参加该考试。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "韩国国务总理韩圣淑",
+     "relation": "event",
+     "object": "会议",
+     "confidence": 0.0,
+     "evidence": "韩国国务总理韩圣淑定于16日召集教育部、雇佣劳动部、行政安全部等相关政府部门官员召开会议，进一步讨论应对措施。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "韩国",
+     "relation": "incident",
+     "object": "AI工具及设备作弊事件",
+     "confidence": 0.0,
+     "evidence": "今年以来，韩国查处多起考生利用AI工具及设备作弊事件，涉案场景覆盖各类等级考试。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "韩国教育部",
+     "relation": "regulation",
+     "object": "AI眼镜",
+     "confidence": 0.0,
+     "evidence": "韩国教育部今年7月把AI眼镜列入高考禁带物品清单，其本月9日发布的“考生注意事项指南”中，明确禁止考生携带包括AI眼镜在内的任何电子设备进入考场。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "01f856d121da3f7caa364cae28a038ab496009788d63286168f1a6b0d1c937ff",
+   "title": "法官驳回三星、美光与SK海力士抗辩请求 DRAM供应操纵反垄断诉讼进入实质审理阶段",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "三星",
+     "relation": "legal",
+     "object": "DRAM供应操纵反垄断诉讼",
+     "confidence": 0.0,
+     "evidence": "法官驳回三星、美光与SK海力士抗辩请求 DRAM供应操纵反垄断诉讼进入实质审理阶段",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "美国加利福尼亚州联邦法院",
+     "relation": "legal",
+     "object": "集体反垄断诉讼",
+     "confidence": 0.0,
+     "evidence": "美国加利福尼亚州联邦法院近日作出重要裁决，一起针对全球三大DRAM内存制造商的集体反垄断诉讼得以继续推进。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Noël Wise",
+     "relation": "legal",
+     "object": "《谢尔曼反垄断法》第一条款",
+     "confidence": 0.0,
+     "evidence": "在11月14日公布的裁决中，美国加州北区联邦地区法院法官Noël Wise认定，诉状已经合理地提出了三家公司存在违反《谢尔曼反垄断法》第一条款的非法协议嫌疑，因此拒绝了被告联合提出的撤诉动议。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "传统DRAM",
+     "relation": "pricing",
+     "object": "18个月内累计上涨了约697%",
+     "confidence": 0.0,
+     "evidence": "诉讼材料显示，在没有显著扩大整体产能的情况下，传统DRAM价格在18个月内累计上涨了约697%。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "HBM",
+     "relation": "benchmark",
+     "object": "DDR5内存的三至四倍",
+     "confidence": 0.0,
+     "evidence": "由于HBM每GB容量所需的晶圆面积约为DDR5内存的三至四倍，大量产能转向HBM后，面向个人电脑和普通消费者市场的内存供应受到明显挤压，进一步加剧了供需失衡。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "案件管理会议",
+     "relation": "event",
+     "object": "2027年1月12日",
+     "confidence": 0.0,
+     "evidence": "案件管理会议则定于2027年1月12日举行。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "19c1fb556084b78651bb83375132db531264f8ab7bcd80d13f5716f31bd8632f",
+   "title": "The-PR-Agent/pr-agent",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "Qodo",
+     "relation": "open_source",
+     "object": "PR-Agent",
+     "confidence": 0.0,
+     "evidence": "PR-Agent is an open-source, AI-powered code review agent and a community-maintained legacy project of Qodo.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Qodo",
+     "relation": "deploy",
+     "object": "GitHub",
+     "confidence": 0.0,
+     "evidence": "Qodo offers a free version for open-source projects and integrates seamlessly with GitHub, GitLab, Bitbucket, and Azure DevOps for high-quality automated reviews.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "pragent/pr-agent",
+     "relation": "release",
+     "object": "0.34.2 and later",
+     "confidence": 0.0,
+     "evidence": "Releases 0.34.2 and later are published under pragent/pr-agent .",
+     "object_kind": "value",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Qodo Merge",
+     "relation": "update",
+     "object": "Qodo 2.0",
+     "confidence": 0.0,
+     "evidence": "Qodo Merge (Qodo 1.0), the hosted URL, which was the enterprise version of PR-Agent, has been rebranded and evolved into Qodo (Qodo 2.0), a full AI code review platform.",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "af1898b9badcd1ce0cce7af24b1bf8b56b279becdffab9a27131dd01ecf78d3a",
+   "title": "从提效到扩能:AI 驱动小团队的能力突破与组织演进|AICon北京",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "本次大会",
+     "relation": "event",
+     "object": "北京新云南皇冠假日酒店",
+     "confidence": 0.0,
+     "evidence": "本次大会将于12 月 18–19 日，在北京新云南皇冠假日酒店举办。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "AICon",
+     "relation": "event",
+     "object": "2026 年",
+     "confidence": 0.0,
+     "evidence": "在这一背景下，2026 年 AICon 人工智能开发与应用大会 · 北京站正式启动。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "高梓耕",
+     "relation": "personnel",
+     "object": "彩讯 Nexus Lab",
+     "confidence": 0.0,
+     "evidence": "高梓耕，彩讯 Nexus Lab 研发负责人。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "高梓耕",
+     "relation": "event",
+     "object": "Multi-Agent Systems",
+     "confidence": 0.0,
+     "evidence": "彩讯股份Nexus Lab 研发负责人高梓耕已确认出席 “Multi-Agent Systems” 专题，并发表题为《从计划到交付：Nexus WorkGraph 的多 Agent 长程执行实践》的主题分享。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "c1ab2cf9242c9d6a7454892f3a85231269317198744311c143d8b7adccaf1a2f",
+   "title": "40 亿参数模型拿下 6 个评测第一,西湖大学团队押注「概念世界模型」",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "施一公",
+     "relation": "event",
+     "object": "西湖世界模型研究中心",
+     "confidence": 0.0,
+     "evidence": "西湖世界模型研究中心成立，施一公亲自揭牌。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "北京大学",
+     "relation": "partnership",
+     "object": "逆矩阵科技",
+     "confidence": 0.0,
+     "evidence": "今年 7 月，北京大学与逆矩阵科技成立世界模型联合实验室。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "2026 物理 AI 与世界模型大会",
+     "relation": "funding",
+     "object": "规划总规模 50 亿元",
+     "confidence": 0.0,
+     "evidence": "同月，2026 物理 AI 与世界模型大会在南京召开，现场成立产业联盟，并达成规划总规模 50 亿元的投资基金战略合作。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "西湖大学团队",
+     "relation": "release",
+     "object": "Awomo-0.5",
+     "confidence": 0.0,
+     "evidence": "西湖大学团队 发布的首版基础模型 Awomo-0.5，定位是 通用物理世界模型 。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Awomo-0.5",
+     "relation": "benchmark",
+     "object": "80.6%",
+     "confidence": 0.0,
+     "evidence": "Awomo-0.5 在这个测试里的成功率是 80.6%。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "Awomo-0.5",
+     "relation": "benchmark",
+     "object": "73.4%",
+     "confidence": 0.0,
+     "evidence": "Awomo-0.5 在这里拿到了 73.4%。",
+     "object_kind": "number",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "于开丞",
+     "relation": "personnel",
+     "object": "西湖世界模型研究中心",
+     "confidence": 0.0,
+     "evidence": "西湖世界模型研究中心的发起人和主任，是西湖大学工学院助理教授、博士生导师 于开丞 ，主要 负责中心研究方向、科研合作及重要应用场景的规划 。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "西湖大学",
+     "relation": "partnership",
+     "object": "西湖数智",
+     "confidence": 0.0,
+     "evidence": "在运行机制上，研究中心由西湖大学与西湖数智共同投入资金，也计划引入更多合作伙伴和社会资源。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "f5474bfeb05c4367146b65fbd2087d9ff39bd244bbf06c2eb9804737577b9416",
+   "title": "英伟达缩减AI融资支持 并不会让价格亲民的GeForce显卡在2027年重回市场",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": [
+    {
+     "subject": "服务器加速器",
+     "relation": "update",
+     "object": "游戏显卡",
+     "confidence": 0.0,
+     "evidence": "数据中心AI加速器通常采用HBM和复杂封装，GeForce显卡则依赖GDDR内存及不同的硬件设计，服务器加速器不能简单改造成游戏显卡。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    },
+    {
+     "subject": "伊恩·卡特雷斯",
+     "relation": "info",
+     "object": "约六个月",
+     "confidence": 0.0,
+     "evidence": "半导体分析师伊恩·卡特雷斯表示，在台积电等晶圆代工厂生产硅晶圆通常需要约六个月，随后还要完成内存采购、封装和整卡组装。",
+     "meta": {
+      "review": "same_sentence"
+     }
+    }
+   ]
+  },
+  {
+   "item_id": "5b176a80962826c8da1a119bd85dd6553ee0be26a04939933828fb0ef85e38a8",
+   "title": "在快 AI 时代,我是怎么把 Mole 做成一款「慢产品」的?",
+   "lang": "zh",
+   "split": "test",
+   "status": "reviewed",
+   "triples": []
+  }
+ ]
+}

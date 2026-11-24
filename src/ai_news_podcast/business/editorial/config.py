@@ -53,6 +53,12 @@ class EditorialConfig:
     host_b: str = "陈默"
     fact_min_chars: int = 150
     fact_max_chars: int = 300
+    # 是否把 Stage 2.5 的 A 档事实注入 S4 prompt。
+    # 默认关闭：实测 A 档只覆盖 1.5% 的事件，且多为正文已含的冗余信息，
+    # 注入后 facts 条数反而下降（见 docs/kg_triple_benchmark_method.md §7）。
+    inject_verified_facts: bool = False
+    # 注入哪些档位：默认只取严格的 A；写 ("A", "A2") 可连带主语继承的中间档。
+    fact_grades: tuple[str, ...] = ("A",)
     banned_words: tuple[str, ...] = DEFAULT_BANNED_WORDS
 
     @property
@@ -82,6 +88,27 @@ def _pick_float(flat: dict[str, Any], key: str, default: float) -> float:
     except (TypeError, ValueError):
         logger.warning("编辑配置 %s 不是数字，使用默认值 %s", key, default)
         return default
+
+
+def _pick_bool(flat: dict[str, Any], key: str, default: bool) -> bool:
+    raw = flat.get(key, default)
+    if isinstance(raw, bool):
+        return raw
+    if isinstance(raw, str):
+        return raw.strip().lower() in ("1", "true", "yes", "on")
+    return default
+
+
+_VALID_GRADES = ("A", "A2", "B")
+
+
+def _pick_grades(flat: dict[str, Any], default: tuple[str, ...]) -> tuple[str, ...]:
+    raw = flat.get("fact_grades")
+    if not isinstance(raw, list):
+        return default
+    picked = tuple(str(item).strip().upper() for item in raw)
+    valid = tuple(item for item in picked if item in _VALID_GRADES)
+    return valid or default
 
 
 def _pick_banned_words(flat: dict[str, Any]) -> tuple[str, ...]:
@@ -124,6 +151,8 @@ def config_from_mapping(data: dict[str, Any] | None = None) -> EditorialConfig:
         host_b=host_b,
         fact_min_chars=_pick_int(flat, "fact_min_chars", _pick_int(flat, "min_fact_chars", 150)),
         fact_max_chars=_pick_int(flat, "fact_max_chars", _pick_int(flat, "max_fact_chars", 300)),
+        inject_verified_facts=_pick_bool(flat, "inject_verified_facts", False),
+        fact_grades=_pick_grades(flat, ("A",)),
         banned_words=_pick_banned_words(flat),
     )
     _validate(cfg)
