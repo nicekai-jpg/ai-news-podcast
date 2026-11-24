@@ -299,3 +299,18 @@ class TestAiRelevance:
             reference_time=REFERENCE,
         )
         assert outcome.candidates == []
+
+
+class TestDemoteKeywords:
+    def test_activity_promo_is_demoted(self) -> None:
+        """活动宣传类（读书会）应被 demote_keywords 降权，排在同分正常新闻之后。"""
+        from ai_news_podcast.business.recommend.config import RecommendConfig
+
+        settings = RecommendConfig.load("config/recommend_v3.yaml").coarse
+        normal = _make_event("e1", title="OpenAI 发布新模型")
+        promo = _make_event("e2", title="集智首个全 AI 读书会来了")
+        outcome = coarse_rank(
+            [_candidate(promo), _candidate(normal)], settings, reference_time=REFERENCE
+        )
+        order = [item.event.event_id for item in outcome.candidates]
+        assert order[0] == "e1"

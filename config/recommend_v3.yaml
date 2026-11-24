@@ -91,7 +91,7 @@ coarse:
     - course
     - sponsored
     - advertisement
-  demote_keywords:          # 软文 / 评测类只降权不淘汰
+  demote_keywords:          # 软文 / 评测 / 活动宣传只降权不淘汰
     - 评测
     - 测评
     - 软文
@@ -100,6 +100,12 @@ coarse:
     - 促销
     - review
     - hands-on
+    # 活动宣传与会议审稿吐槽：信息量低、不是新闻事件
+    - 读书会
+    - 沙龙
+    - 报名
+    - 直播
+    - 评审
   priority_actions:         # 粗排加分动作（多标签任一生效）
     - 发布
     - 开源
