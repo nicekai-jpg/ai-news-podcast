@@ -341,6 +341,9 @@ class CoarseSettings:
     priority_actions: tuple[str, ...] = DEFAULT_PRIORITY_ACTIONS
     demote_penalty: float = 0.6
     single_source_penalty: float = 0.4
+    # 教程/方法论类叙事角度（narrative_angle）不是具体新闻事件，粗排降权
+    demote_angles: tuple[str, ...] = ("howto",)
+    angle_penalty: float = 0.8
     require_ai_relevance: bool = True
     major_claim_actions: tuple[str, ...] = ("personnel", "funding", "acquisition", "ipo", "lawsuit")
     major_claim_min_sources: int = 2
@@ -436,6 +439,8 @@ class RecommendConfig:
             ),
             demote_penalty=to_float_config(coarse_raw.get("demote_penalty"), 0.6),
             single_source_penalty=to_float_config(coarse_raw.get("single_source_penalty"), 0.4),
+            demote_angles=_tuple_of_str(coarse_raw.get("demote_angles"), ("howto",)),
+            angle_penalty=to_float_config(coarse_raw.get("angle_penalty"), 0.8),
             require_ai_relevance=bool(coarse_raw.get("require_ai_relevance", True)),
             major_claim_actions=_tuple_of_str(
                 coarse_raw.get("major_claim_actions"),

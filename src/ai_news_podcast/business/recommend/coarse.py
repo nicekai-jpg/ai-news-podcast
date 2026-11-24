@@ -316,9 +316,10 @@ def _coarse_score(
         reasons.append("证据分级强")
 
     score += _priority_action_bonus(labels, settings.priority_actions)
-    if _has_demote_keyword(event, settings):
-        score -= settings.demote_penalty
-        reasons.append("软文/评测类降权")
+    demote_penalty, demote_reasons = _demote_penalties(event, labels, settings)
+    if demote_penalty:
+        score -= demote_penalty
+        reasons.extend(demote_reasons)
 
     if event.independent_sources <= 1:
         score -= settings.single_source_penalty
@@ -340,6 +341,21 @@ def _priority_action_bonus(labels: Labels, priority_actions: tuple[str, ...]) ->
             if keyword.casefold() in normalized:
                 return _PRIORITY_ACTION_BONUS
     return 0.0
+
+
+def _demote_penalties(
+    event: Event, labels: Labels, settings: CoarseSettings
+) -> tuple[float, list[str]]:
+    """软文/评测关键词与教程型叙事角度的降权合计。"""
+    penalty = 0.0
+    reasons: list[str] = []
+    if _has_demote_keyword(event, settings):
+        penalty += settings.demote_penalty
+        reasons.append("软文/评测类降权")
+    if settings.demote_angles and set(labels.narrative_angle or ()) & set(settings.demote_angles):
+        penalty += settings.angle_penalty
+        reasons.append("教程/方法论类降权")
+    return penalty, reasons
 
 
 def _has_demote_keyword(event: Event, settings: CoarseSettings) -> bool:

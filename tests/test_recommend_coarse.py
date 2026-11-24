@@ -314,3 +314,28 @@ class TestDemoteKeywords:
         )
         order = [item.event.event_id for item in outcome.candidates]
         assert order[0] == "e1"
+
+
+class TestAngleDemote:
+    def test_howto_angle_is_demoted(self) -> None:
+        """教程/方法论（howto）不是具体事件，应排在同分新闻之后。"""
+        from ai_news_podcast.business.recommend.config import RecommendConfig
+
+        settings = RecommendConfig.load("config/recommend_v3.yaml").coarse
+        normal = _make_event("e1", title="OpenAI 发布新模型")
+        howto = _make_event("e2", title="如何用 OpenAI 提升效率")
+        howto.labels.narrative_angle = ["howto"]
+        outcome = coarse_rank(
+            [_candidate(howto), _candidate(normal)], settings, reference_time=REFERENCE
+        )
+        order = [item.event.event_id for item in outcome.candidates]
+        assert order[0] == "e1"
+
+    def test_angle_demote_can_be_disabled(self) -> None:
+        from ai_news_podcast.business.recommend.config import CoarseSettings
+
+        settings = CoarseSettings(demote_angles=())
+        howto = _make_event("e2", title="如何用 OpenAI 提升效率")
+        howto.labels.narrative_angle = ["howto"]
+        outcome = coarse_rank([_candidate(howto)], settings, reference_time=REFERENCE)
+        assert "教程/方法论类降权" not in outcome.candidates[0].reasons

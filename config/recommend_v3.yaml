@@ -137,6 +137,8 @@ coarse:
     - policy
     - lawsuit
   demote_penalty: 0.6
+  demote_angles: [howto]   # 教程/方法论类叙事角度（howto）降权，不是具体事件
+  angle_penalty: 0.8
   single_source_penalty: 0.4
 
 # 三、精排：七个规则特征权重 + LLM rubric 融合
