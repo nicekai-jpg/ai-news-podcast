@@ -70,12 +70,6 @@ sources:
     limit: 20
 
   # --- 官方博客 8 ---
-  - name: openai_news
-    label: OpenAI News
-    channel: c1_rss
-    url: "https://openai.com/blog/rss.xml"
-    category: official
-    limit: 30
   - name: deepmind_blog
     label: DeepMind Blog
     channel: c1_rss
@@ -335,11 +329,6 @@ sources:
     channel: c3_rsshub
     rsshub_route: /deepseek/news
     category: official
-  - name: huggingface_blog_rsshub
-    label: HuggingFace Blog
-    channel: c1_rss
-    url: "https://huggingface.co/blog/feed.xml"
-    category: research
   - name: ollama_blog
     label: Ollama Blog
     channel: c3_rsshub

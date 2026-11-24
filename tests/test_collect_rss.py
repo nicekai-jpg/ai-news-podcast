@@ -384,3 +384,57 @@ class TestHelpers:
         assert len(item.summary) <= 500
         assert len(item.full_text) <= 12000
         assert item.full_text_status == "none"
+
+
+class TestEarlyWindowFilter:
+    """档案型 feed（返回半年历史）应在构造 Item 之前就被时间窗挡掉。"""
+
+    def _feed(self, *, old: int, fresh: int) -> bytes:
+        from datetime import UTC, datetime, timedelta
+
+        now = datetime(2026, 11, 16, 12, tzinfo=UTC)
+        parts = ['<?xml version="1.0"?><rss version="2.0"><channel><title>t</title>']
+        for index in range(old):
+            when = (now - timedelta(days=200 + index)).strftime("%a, %d %b %Y %H:%M:%S +0000")
+            parts.append(
+                f"<item><title>old{index}</title><link>https://e.com/o{index}</link>"
+                f"<pubDate>{when}</pubDate><description>d</description></item>"
+            )
+        for index in range(fresh):
+            when = (now - timedelta(hours=index + 1)).strftime("%a, %d %b %Y %H:%M:%S +0000")
+            parts.append(
+                f"<item><title>new{index}</title><link>https://e.com/n{index}</link>"
+                f"<pubDate>{when}</pubDate><description>d</description></item>"
+            )
+        parts.append("</channel></rss>")
+        return "".join(parts).encode()
+
+    def test_old_entries_are_not_built(self, monkeypatch) -> None:
+        from datetime import UTC, datetime
+        from pathlib import Path
+
+        from ai_news_podcast.business.collect import rss as rss_mod
+        from ai_news_podcast.business.collect.base import FetchContext, load_sources
+
+        calls = []
+        original = rss_mod.build_item_from_entry
+
+        def counting(entry, source, ctx, **kwargs):
+            calls.append(entry.title)
+            return original(entry, source, ctx, **kwargs)
+
+        monkeypatch.setattr(rss_mod, "build_item_from_entry", counting)
+        monkeypatch.setattr(rss_mod, "fetch_bytes", lambda ctx, url: self._feed(old=50, fresh=3))
+
+        source = load_sources(Path(__file__).resolve().parents[1] / "config" / "sources_v3.yaml")[0]
+        ctx = FetchContext(
+            date_str="2026-11-16",
+            window_hours=72,
+            now=datetime(2026, 11, 16, 12, tzinfo=UTC),
+            fetch_fulltext=False,
+        )
+        items = rss_mod.fetch_feed(source, ctx, urls=["https://e.com/feed"])
+        # 只有窗口内的 3 条进入构造流程，50 条历史直接被跳过
+        assert len(calls) == 3
+        assert all(title.startswith("new") for title in calls)
+        assert len(items) == 3

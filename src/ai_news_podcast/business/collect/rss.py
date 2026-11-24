@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import logging
 from dataclasses import dataclass, field
-from datetime import UTC, datetime
+from datetime import UTC, datetime, timedelta
 from typing import Any
 
 import feedparser
@@ -219,7 +219,13 @@ def fetch_feed(
             errors.append(str(exc))
             logger.warning("feed 解析失败 %s (%s): %s", source.name, url, exc)
             continue
+        # 先按时间窗过滤再构造成 Item：feed 常返回半年档案
+        # （openai.com 的 rss.xml 有 1400+ 条），提前过滤能省掉绝大部分
+        # strip_html 与回源抓正文。
+        cutoff = ctx.now - timedelta(hours=ctx.window_hours)
         for entry in entries:
+            if entry.published_at is not None and entry.published_at < cutoff:
+                continue
             item = build_item_from_entry(
                 entry,
                 source,
@@ -228,6 +234,8 @@ def fetch_feed(
             )
             if item is not None:
                 items.append(item)
+            if source.limit > 0 and len(items) >= source.limit:
+                break
 
     if not items and errors:
         raise CollectError(f"源 {source.name} 全部 feed 抓取失败: {'; '.join(errors[:3])}")
