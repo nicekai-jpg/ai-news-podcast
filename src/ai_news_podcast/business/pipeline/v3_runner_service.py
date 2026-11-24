@@ -16,6 +16,7 @@
 
 from __future__ import annotations
 
+import asyncio
 import dataclasses
 import json
 import logging
@@ -237,6 +238,53 @@ def _load_stage1_settings(config_root: Path) -> dict[str, Any]:
     return stage1 if isinstance(stage1, dict) else {}
 
 
+def _load_gh_radar_settings(config_root: Path) -> dict[str, Any]:
+    path = config_root / "config.yaml"
+    if not path.is_file():
+        return {}
+    try:
+        data = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+    except (OSError, yaml.YAMLError):
+        return {}
+    radar = data.get("gh_radar") if isinstance(data, dict) else {}
+    return radar if isinstance(radar, dict) else {}
+
+
+def _run_radar_stage(
+    *,
+    events: list[Event],
+    data_dir: Path,
+    config_root: Path,
+    date_str: str,
+    enabled: bool | None,
+) -> dict[str, Any] | None:
+    """构建项目雷达（独立项目轨，可失败不致命）。
+
+    失败只记 warning，返回 None；正片照常。``enabled=None`` 时读
+    ``config/config.yaml`` 的 ``gh_radar.enabled``。
+    """
+    settings = _load_gh_radar_settings(config_root)
+    if enabled is None:
+        enabled = bool(settings.get("enabled", False))
+    if not enabled:
+        logger.info("项目雷达：配置关闭，跳过")
+        return None
+
+    from ai_news_podcast.business.pipeline.gh_radar_service import build_radar
+
+    news_titles = [event.representative_title for event in events if event.representative_title]
+    try:
+        radar = asyncio.run(build_radar(settings, date_str, data_dir, news_titles))
+    except Exception:
+        logger.warning("项目雷达失败，本期不含雷达栏目", exc_info=True)
+        return None
+    if not radar.get("projects"):
+        logger.info("项目雷达：无候选项目，本期不含雷达栏目")
+        return None
+    logger.info("项目雷达完成：%s 个项目", len(radar.get("projects") or []))
+    return radar
+
+
 def _load_kg_settings(config_root: Path) -> dict[str, Any]:
     path = config_root / "pipeline_v3.yaml"
     if not path.is_file():
@@ -345,6 +393,7 @@ def _run_editorial_stages(
     llm_for: Callable[[str], LLMCall],
     skip_script: bool,
     verified_by_item: dict[str, list[str]] | None = None,
+    radar_text: str = "",
 ) -> _EditorialOutputs:
     """S4 日报生成 → S5 日报点评 → S6 文稿生成 → S7 播客点评。"""
     from ai_news_podcast.business.editorial.commentary import build_commentaries
@@ -396,6 +445,7 @@ def _run_editorial_stages(
             item_evidence,
             llm_for("stage6"),
             config_path=editorial_cfg,
+            radar_text=radar_text,
         )
         script_path = Path("site") / "episodes" / f"{date_str}.txt"
         script_path.parent.mkdir(parents=True, exist_ok=True)
@@ -436,6 +486,7 @@ def build_brief_compat(
     report_rows: list[Commentary] | None = None,
     report_review: Any | None = None,
     podcast_review: Any | None = None,
+    radar: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """把 Stage 2/3/4 产物转成旧 publish 能消费的 brief 结构。
 
@@ -502,7 +553,7 @@ def build_brief_compat(
             "pipeline": "v3",
             "shortlist": len(shortlist),
         },
-        "radar": {"date": date_str, "projects": []},
+        "radar": radar or {"date": date_str, "projects": []},
         "report_rows": [row.to_dict() for row in (report_rows or [])],
         "report_review": report_review.to_dict() if report_review else {},
         "podcast_review": podcast_review.to_dict() if podcast_review else {},
@@ -554,6 +605,7 @@ def run_v3_pipeline(
     llm_judge: LLMJudge | None = None,
     skip_script: bool = False,
     update_ledger: bool = True,
+    radar_enabled: bool | None = None,
 ) -> V3RunResult:
     """串联 Stage 1→7（S1–S7），返回产物路径。"""
     from ai_news_podcast.business.pipeline.llm_usage_service import reset as _reset_usage
@@ -604,6 +656,20 @@ def run_v3_pipeline(
     events_path = ocean_dir / "events.json"
     logger.info("Stage 2 完成：%s 个事件", len(events))
 
+    # ---- Stage 2b 项目雷达（独立项目轨，可失败不阻断主链） ----
+    radar = _run_radar_stage(
+        events=events,
+        data_dir=data_root,
+        config_root=config_root,
+        date_str=date_str,
+        enabled=radar_enabled,
+    )
+    radar_text = ""
+    if radar:
+        from ai_news_podcast.business.pipeline.material_service import build_radar_text
+
+        radar_text = build_radar_text(radar)
+
     # ---- Stage 2.5 知识图谱（可失败，不阻断 Stage 3） ----
     _run_kg_stage(
         events=events,
@@ -649,6 +715,7 @@ def run_v3_pipeline(
         llm_for=_llm_for,
         skip_script=skip_script,
         verified_by_item=_load_verified_facts(data_root, date_str, config_root),
+        radar_text=radar_text,
     )
     report_rows = editorial.report_rows
 
@@ -662,6 +729,7 @@ def run_v3_pipeline(
         report_rows=report_rows,
         report_review=editorial.report_review,
         podcast_review=editorial.podcast_review,
+        radar=radar,
     )
     brief_path = _write_json(data_root / "briefs" / f"brief_{date_str}.json", brief)
     logger.info("S4–S7 兼容 brief：%s", brief_path)

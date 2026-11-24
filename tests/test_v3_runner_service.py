@@ -128,7 +128,9 @@ def test_run_v3_pipeline_flow(tmp_path: Path, monkeypatch: Any) -> None:
     monkeypatch.chdir(tmp_path)
     calls = _fake_modules(monkeypatch, tmp_path)
     data_dir = tmp_path / "data"
-    result = run_v3_pipeline("2026-11-09", data_dir=data_dir, llm_cfg={"model": "fake"})
+    result = run_v3_pipeline(
+        "2026-11-09", data_dir=data_dir, llm_cfg={"model": "fake"}, radar_enabled=False
+    )
 
     assert result.raw_path.exists()
     assert result.events_path.exists()
@@ -170,3 +172,55 @@ def test_make_llm_judge_parses_json() -> None:
 def test_make_llm_judge_bad_output_returns_empty() -> None:
     judge = make_llm_judge(lambda prompt: "not json at all")
     assert judge([Event(event_id="e1", representative_title="t")]) == {}
+
+
+class TestRadarStage:
+    def test_disabled_returns_none(self, tmp_path: Path) -> None:
+        from ai_news_podcast.business.pipeline.v3_runner_service import _run_radar_stage
+
+        assert (
+            _run_radar_stage(
+                events=[],
+                data_dir=tmp_path,
+                config_root=tmp_path,
+                date_str="2026-11-09",
+                enabled=False,
+            )
+            is None
+        )
+
+    def test_returns_radar_from_builder(self, tmp_path: Path, monkeypatch: Any) -> None:
+        import ai_news_podcast.business.pipeline.gh_radar_service as gh
+        from ai_news_podcast.business.pipeline.v3_runner_service import _run_radar_stage
+
+        async def fake_build(settings: Any, date_str: str, data_dir: Any, titles: Any, **kw: Any):
+            return {"date": date_str, "projects": [{"repo": "a/b", "stars": 10}], "meta": {}}
+
+        monkeypatch.setattr(gh, "build_radar", fake_build)
+        radar = _run_radar_stage(
+            events=[],
+            data_dir=tmp_path,
+            config_root=tmp_path,
+            date_str="2026-11-09",
+            enabled=True,
+        )
+        assert radar and radar["projects"][0]["repo"] == "a/b"
+
+    def test_failure_is_swallowed(self, tmp_path: Path, monkeypatch: Any) -> None:
+        import ai_news_podcast.business.pipeline.gh_radar_service as gh
+        from ai_news_podcast.business.pipeline.v3_runner_service import _run_radar_stage
+
+        async def boom(*args: Any, **kwargs: Any):
+            raise RuntimeError("github down")
+
+        monkeypatch.setattr(gh, "build_radar", boom)
+        assert (
+            _run_radar_stage(
+                events=[],
+                data_dir=tmp_path,
+                config_root=tmp_path,
+                date_str="2026-11-09",
+                enabled=True,
+            )
+            is None
+        )

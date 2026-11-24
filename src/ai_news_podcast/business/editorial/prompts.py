@@ -278,8 +278,13 @@ def build_script_prompt(
     item_evidence: Mapping[str, str] | None,
     *,
     config: EditorialConfig,
+    radar_text: str = "",
 ) -> str:
-    """构建 S6 文稿 prompt：事实底稿来自 Stage 2 全文证据，而不是点评。"""
+    """构建 S6 文稿 prompt：事实底稿来自 Stage 2 全文证据，而不是点评。
+
+    ``radar_text`` 是「项目雷达」栏目的结构化素材（由编排层从 ``data/gh_radar``
+    格式化后注入）。它与新闻是两条独立轨，单独成章；为空时整段不出现。
+    """
     event_by_id = {str(event.event_id): event for event in events}
     ordered: list[Event] = []
     seen: set[str] = set()
@@ -296,6 +301,19 @@ def build_script_prompt(
         for index, event in enumerate(ordered, start=1)
     ]
     material = "\n\n".join(blocks) if blocks else "（无事件素材，按主题做今日综述）"
+    radar_block = ""
+    if radar_text.strip():
+        radar_block = f"""
+## 项目雷达（独立栏目，与上面的新闻完全无关）
+{radar_text.strip()}
+
+项目雷达写作要求：
+- 在文稿最后单开一章 `[CHAPTER] 项目雷达`，只讲「主推」项目，简短带过即可；
+- 仓库名、星数、增速、语言、许可证、安装命令必须与上面素材**逐字一致**，
+  不得改写、翻译或自行估算；素材里没有的数字一律不要写；
+- 不要展开「其余候选」，不要把项目与新闻混在同一章；
+- 素材为空则跳过该栏目，不要编造。
+"""
     return f"""你是「今日AI看点」的金牌撰稿人，请根据下面的**事实底稿**写一份双人对谈播客文稿。
 
 {_script_common_rules(config)}
@@ -309,7 +327,7 @@ def build_script_prompt(
 - 可以把底稿里的证据转述成口语，但不能改变事实含义。
 
 {material}
-
+{radar_block}
 {_SAFETY_NOTE}
 
 请直接输出纯文本对话全文：第一行必须是 `[Host A] ` 或 `[Host B] ` 台词；
@@ -321,10 +339,17 @@ def build_script_repair_prompt(
     report: dict[str, object],
     *,
     config: EditorialConfig,
+    radar_text: str = "",
 ) -> str:
     """文稿质量闸门未通过时的重写 prompt（仅输出修正后的完整文稿）。"""
     issues = report.get("issues") or []
     issue_lines = "\n".join(f"- {issue}" for issue in issues) or "- 未知问题"
+    radar_block = ""
+    if radar_text.strip():
+        radar_block = f"""
+## 项目雷达素材（星数/安装命令只能逐字引用这里的值）
+{radar_text.strip()}
+"""
     return f"""你上一版播客文稿没有通过自动质量检查，请**整篇重写**（不是局部修补）。
 
 ## 未通过项
@@ -338,7 +363,7 @@ def build_script_repair_prompt(
   {int(config.min_host_char_ratio * 100)}%；
 - 每段台词独占一行，以 `[Host A] ` / `[Host B] ` 开头；无 Markdown、无其他中括号标记；
 - 事实与数字必须与「事实底稿」一致，不得引入底稿之外的新事实。
-
+{radar_block}
 ## 上一版文稿（仅用于参考话题与事实，请勿照抄其错误格式）
 {script}
 

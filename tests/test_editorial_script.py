@@ -272,3 +272,35 @@ class TestScriptFactCheck:
         build_script([make_entry()], [make_event()], EVIDENCE, llm)
 
         assert len(llm.prompts) == 1  # 数字都能在底稿找到，不触发重写
+
+
+class TestRadarSection:
+    RADAR = (
+        "以下是「项目雷达」栏目的结构化素材(与新闻无关,单独成栏)。\n"
+        "- [主推] vercel-labs/agent-browser(⭐48463,较昨日 +957,语言:Rust,"
+        "许可证:Apache-2.0):Browser automation CLI for AI agents"
+    )
+
+    def test_prompt_includes_radar_when_provided(self) -> None:
+        llm = FakeLLM([make_script(3300, 4)])
+
+        build_script([make_entry()], [make_event()], EVIDENCE, llm, radar_text=self.RADAR)
+
+        prompt = llm.prompts[0]
+        assert "项目雷达" in prompt
+        assert "vercel-labs/agent-browser" in prompt
+
+    def test_prompt_omits_radar_when_empty(self) -> None:
+        llm = FakeLLM([make_script(3300, 4)])
+
+        build_script([make_entry()], [make_event()], EVIDENCE, llm, radar_text="")
+
+        assert "项目雷达" not in llm.prompts[0]
+
+    def test_radar_numbers_pass_fact_check(self) -> None:
+        script = make_script(3300, 4).replace(_BASE, "项目目前⭐48463，较昨日 +957。", 1)
+        llm = FakeLLM([script])
+
+        build_script([make_entry()], [make_event()], EVIDENCE, llm, radar_text=self.RADAR)
+
+        assert len(llm.prompts) == 1  # 星数来自雷达素材，不应触发重写

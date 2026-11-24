@@ -235,10 +235,13 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if [ -d data/coverage ]; then git add data/coverage; fi
           if [ -d data/facts ]; then git add data/facts; fi
+          # 项目雷达的星数快照要跨日保留，次日才能算 delta_stars
+          if [ -d data/gh_radar ]; then git add data/gh_radar; fi
+          if [ -d data/gh_snapshots ]; then git add data/gh_snapshots; fi
           if git diff --cached --quiet; then
             echo "No coverage changes"
           else
-            git commit -m "chore: update coverage ledger and facts ${{ steps.episode.outputs.id }} [skip ci]"
+            git commit -m "chore: update coverage ledger, facts, radar ${{ steps.episode.outputs.id }} [skip ci]"
             git pull --rebase origin main
             git push origin main
           fi

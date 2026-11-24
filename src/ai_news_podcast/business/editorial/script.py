@@ -197,6 +197,7 @@ def build_script(
     llm_call: LLMCall,
     *,
     config_path: str | Path = DEFAULT_CONFIG_PATH,
+    radar_text: str = "",
 ) -> str:
     """根据事实底稿（Stage 2 全文证据）生成 15 分钟双主持播客文稿。
 
@@ -208,8 +209,13 @@ def build_script(
     """
     config = load_config(config_path)
     logger.debug("S6 使用配置 %s，item_evidence=%s", config_path, item_evidence is not None)
-    prompt = build_script_prompt(shortlist, list(events), item_evidence, config=config)
+    prompt = build_script_prompt(
+        shortlist, list(events), item_evidence, config=config, radar_text=radar_text
+    )
     evidence_text = _script_evidence_text(shortlist, events, item_evidence, config)
+    if radar_text.strip():
+        # 雷达是独立轨，星数/安装命令也要能通过数字核对
+        evidence_text = f"{evidence_text}\n{radar_text}"
     raw = llm_call(prompt)
     script = normalize_script(raw, config)
     report = check_script(script, config, evidence_text=evidence_text)
@@ -218,7 +224,9 @@ def build_script(
     while not report["ok"] and attempts < config.max_rewrites:
         attempts += 1
         logger.info("文稿未达标（第 %s 次重写）：%s", attempts, "；".join(report["issues"]))
-        raw = llm_call(build_script_repair_prompt(script, report, config=config))
+        raw = llm_call(
+            build_script_repair_prompt(script, report, config=config, radar_text=radar_text)
+        )
         candidate = normalize_script(raw, config)
         candidate_report = check_script(candidate, config, evidence_text=evidence_text)
         if _defect_score(candidate_report) <= _defect_score(report):

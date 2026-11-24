@@ -248,6 +248,7 @@ def test_run_v3_pipeline_end_to_end(tmp_path: Path, monkeypatch: Any) -> None:
         data_dir=tmp_path / "data",
         config_dir=REPO_ROOT / "config",
         llm_call_factory=lambda stage: _fake_llm,
+        radar_enabled=False,  # 雷达会打 GitHub API，测试里关掉
     )
 
     assert result.raw_path.exists()
