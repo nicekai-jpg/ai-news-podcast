@@ -45,6 +45,8 @@ def _args(tmp_path: Path, **extra) -> object:
     args.data_dir = str(tmp_path)
     args.date = ""
     args.days = 7
+    args.shortlist = False
+    args.top_n = 0
     args.sample = 0
     args.seed = 13
     args.min_a = 0
@@ -161,3 +163,25 @@ class TestCoverage:
         assert module.cmd_coverage(_args(tmp_path)) == 0
         out = capsys.readouterr().out
         assert "合计" not in out
+
+
+class TestCoverageShortlist:
+    def test_limits_denominator_to_shortlist(self, tmp_path, capsys, monkeypatch):
+        """--shortlist 只算前 N 个入选事件，分母显著变小。"""
+        module = _load_script()
+        facts = tmp_path / "facts"
+        rows = [_row("A", "OpenAI", "release", "GPT-5")]
+        for row in rows:
+            row["evidence"]["item_id"] = "i1"
+        _write(facts, "2026-11-16", rows)
+        day = tmp_path / "ocean" / "2026-11-16"
+        day.mkdir(parents=True)
+        events = [{"event_id": f"e{n}", "item_ids": [f"i{n}"]} for n in range(1, 6)]
+        (day / "events.json").write_text(json.dumps(events, ensure_ascii=False), encoding="utf-8")
+
+        monkeypatch.setattr(module, "_shortlist_event_ids", lambda rows, top_n: ["e1"])
+        args = _args(tmp_path, shortlist=True, top_n=1)
+        assert module.cmd_coverage(args) == 0
+        out = capsys.readouterr().out
+        assert "| 2026-11-16 | 1 | 1 | 0 | 1 | 100.0% |" in out
+        assert "前 1 个入选事件" in out

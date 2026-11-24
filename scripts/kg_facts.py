@@ -377,8 +377,22 @@ def _sample_lines(rows: list[dict], size: int, *, seed: int = 13) -> list[str]:
     return out
 
 
-def cmd_coverage(args: argparse.Namespace) -> int:
-    """统计 A/A2 事实能覆盖多少个事件——判断「值不值得注入日报」的核心指标。"""
+def _shortlist_event_ids(events: list[dict], top_n: int) -> list[str]:
+    """跑一次 Stage 3 推荐，取前 top_n 个事件（日报实际会写的那些）。"""
+    from ai_news_podcast.business.contracts import Event as EventRow
+    from ai_news_podcast.business.recommend.service import recommend
+
+    rows = [EventRow.from_dict(row) for row in events]
+    picked = recommend(rows, config_path=Path("config/recommend_v3.yaml"))
+    return [str(entry.event_id) for entry in picked[:top_n]]
+
+
+def cmd_coverage(args: argparse.Namespace) -> int:  # noqa: PLR0912, PLR0915
+    """统计 A/A2 事实覆盖多少个事件——判断「值不值得注入日报」的核心指标。
+
+    `--shortlist` 只统计日报实际会写的前 N 个事件（默认取 editorial.report_top_n），
+    因为全部 470+ 个事件里绝大多数永远不会进日报。
+    """
     data_dir = Path(args.data_dir)
     facts_dir = data_dir / "facts"
     dates = [args.date] if args.date else _recent_fact_dates(facts_dir, args.days)
@@ -386,7 +400,14 @@ def cmd_coverage(args: argparse.Namespace) -> int:
         print("没有事实文件", file=sys.stderr)
         return 2
 
-    print("## 事实覆盖事件")
+    top_n = args.top_n
+    if args.shortlist and top_n <= 0:
+        from ai_news_podcast.business.editorial.config import load_config
+
+        top_n = load_config(Path(args.config_dir) / "editorial_v3.yaml").report_top_n
+
+    scope = f"前 {top_n} 个入选事件" if args.shortlist else "全部事件"
+    print(f"## 事实覆盖事件（{scope}）")
     print("")
     print("| 日期 | 事件 | A 覆盖 | A2 覆盖 | A+A2 覆盖 | 事件级 A 占比 |")
     print("|---|---|---|---|---|---|")
@@ -400,6 +421,10 @@ def cmd_coverage(args: argparse.Namespace) -> int:
         except (OSError, json.JSONDecodeError):
             continue
         rows = load_day(facts_dir, date_str)
+        if args.shortlist:
+            keep = set(_shortlist_event_ids(events, top_n))
+            events = [event for event in events if str(event.get("event_id")) in keep]
+
         item_to_event: dict[str, str] = {}
         event_ids: list[str] = []
         for event in events:
@@ -1073,6 +1098,12 @@ def main() -> int:  # noqa: PLR0915
     coverage = sub.add_parser("coverage", help="A/A2 覆盖了多少事件")
     coverage.add_argument("--date", default="")
     coverage.add_argument("--days", type=int, default=7)
+    coverage.add_argument(
+        "--shortlist",
+        action="store_true",
+        help="只统计日报前 N 个入选事件（更贴近实际用途）",
+    )
+    coverage.add_argument("--top-n", type=int, default=0, help="默认取 editorial.report_top_n")
     coverage.set_defaults(func=cmd_coverage)
 
     watch = sub.add_parser("watch", help="A/A2 每日趋势（观察期用）")

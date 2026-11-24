@@ -143,17 +143,24 @@ Stage CLIs (console scripts in pyproject):
     fill（关系+槽位）→ grade（A/B/C）→ store（去重/落盘）；产物 `data/facts/facts-{date}.jsonl`
     + `manifest-{date}.json`，**进 git 长期保留**；C 样本写 `data/kg_debug/c-{date}.jsonl`（只进 artifact）。
     配置：`config/nlp/event_schemas.yaml`（21 类）、`noise.yaml`、`negation.yaml`。
-    CLI：`uv run python scripts/kg_facts.py build|backfill|report|eval|validate|query|prune`。
+    CLI：`uv run python scripts/kg_facts.py build|backfill|report|eval|validate|query|prune|audit|watch|coverage`。
     依赖 `kg` extra + spaCy 模型（zh_core_web_sm / en_core_web_sm，CI/GHA 用 spacy download 装）。
-    B 档扩展通道（只进 B、不进 A）：主语继承（上一解析主语/标题或导语主体）、名词性事实
-    （售价/估值/IPO/漏洞等无动词句）、同谓词多宾语拆分。A 档还有守卫（对象质量/人事角色/
-    合作方实体/金额校验），命中降 B 不丢卡。B 体积大时可 `prune --keep-b-days 90` 轮转。
+    B 档扩展通道（只进 B、不进 A）：名词性事实（售价/估值/IPO/漏洞等无动词句）、
+    同谓词多宾语拆分。主语继承（上一解析主语/标题或导语主体）单列 **A2** 档，不混进 A。
+    A 档还有守卫（对象质量/人事角色/合作方实体/金额校验/证据不在标题或虚构引文里），
+    命中降 B 不丢卡。B 体积大时可 `prune --keep-b-days 90` 轮转。
     解析器/分词可选：`stage2_5.tokenizer=spacy|custom`（custom 用词典把 01.AI/BYD 之类
     被切碎的词合并）、`stage2_5.parser=spacy|ltp`（LTP 依赖 `kg-ltp` extra，需 torch）；
     CLI eval/build 支持 `--parser`/`--tokenizer`，`kg_facts.py compare` 一次跑三种配置。
     手动演练期用 `KG_FACTS_ENABLED` 控制：GHA 定时任务默认 false 跳过、`workflow_dispatch` 才 true；
     一周验证通过后把 env 改成常开。
     旧 `business/kg/service.py:build_kg()` 与 `data/kg/{date}/kg.json` 只在 `stage2_5.debug_kg=true` 时产出。
+    **事实层当前无生产消费者**：`data/facts/` 只被报表/抽查 CLI 读，`editorial` 里的 `facts`
+    是 LLM 输出的 JSON、和它无关。S4 的事实注入通道已建好（`editorial.verified_facts` +
+    `verified_facts_for_event`），但 `inject_verified_facts` 默认 false——实测 A 档只覆盖
+    1.6% 的事件、日报 top5 里 13.3%，远低于 30% 的启用阈值（见 `docs/kg_triple_benchmark_method.md` §9.7e）。
+    档位：A（两端在词典、证据可定位、主语不继承）精度 ~83%、~9.5 条/天；A2（只差主语继承）
+    约一半可靠，`fact_grades: [A]` 默认不取。沿用 `KG_FACTS_ENABLED`：定时任务跳过、dispatch 才跑。
   - `editorial/`：S4 日报正文（事实/观点分离、evidence_ids、客观性闸门）→ S5 日报点评（对日报）；
     S6 播客文稿（事实底稿来自 S2 全文证据，3000–3600 字、3–4 章、`[CHAPTER]`）→ S7 播客点评
     （对文稿，产出 show notes/章节导语）；
