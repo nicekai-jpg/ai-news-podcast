@@ -438,3 +438,34 @@ class TestEarlyWindowFilter:
         assert len(calls) == 3
         assert all(title.startswith("new") for title in calls)
         assert len(items) == 3
+
+    def test_ascending_feed_keeps_newest(self, monkeypatch) -> None:
+        """feed 若不是时间倒序（nyt/bloomberg 实测如此），也不能丢新条目。"""
+        from datetime import UTC, datetime, timedelta
+        from pathlib import Path
+
+        from ai_news_podcast.business.collect import rss as rss_mod
+        from ai_news_podcast.business.collect.base import FetchContext, load_sources
+
+        now = datetime(2026, 11, 16, 12, tzinfo=UTC)
+        parts = ['<?xml version="1.0"?><rss version="2.0"><channel><title>t</title>']
+        # 正序：最老的在前，最新的在最后
+        for days in (300, 200, 1, 2):
+            when = (now - timedelta(days=days)).strftime("%a, %d %b %Y %H:%M:%S +0000")
+            parts.append(
+                f"<item><title>d{days}</title><link>https://e.com/{days}</link>"
+                f"<pubDate>{when}</pubDate><description>x</description></item>"
+            )
+        parts.append("</channel></rss>")
+        monkeypatch.setattr(rss_mod, "fetch_bytes", lambda ctx, url: "".join(parts).encode())
+
+        source = load_sources(Path(__file__).resolve().parents[1] / "config" / "sources_v3.yaml")[0]
+        ctx = FetchContext(
+            date_str="2026-11-16",
+            window_hours=72,
+            now=now,
+            fetch_fulltext=False,
+        )
+        items = rss_mod.fetch_feed(source, ctx, urls=["https://e.com/feed"])
+        titles = sorted(item.title for item in items)
+        assert titles == ["d1", "d2"], titles

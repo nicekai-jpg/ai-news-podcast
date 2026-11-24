@@ -234,8 +234,6 @@ def fetch_feed(
             )
             if item is not None:
                 items.append(item)
-            if source.limit > 0 and len(items) >= source.limit:
-                break
 
     if not items and errors:
         raise CollectError(f"源 {source.name} 全部 feed 抓取失败: {'; '.join(errors[:3])}")

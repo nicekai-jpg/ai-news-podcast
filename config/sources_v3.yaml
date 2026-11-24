@@ -120,13 +120,6 @@ sources:
     url: "https://techcrunch.com/category/artificial-intelligence/feed/"
     category: news
     limit: 30
-  - name: synced_review
-    label: Synced Review
-    channel: c1_rss
-    url: "https://syncedreview.com/feed/"
-    category: news
-    limit: 15
-    enabled: true
   - name: venturebeat_ai
     label: VentureBeat AI
     channel: c1_rss
@@ -233,16 +226,6 @@ sources:
 
   # --- 其它 1（原生 RSS 已坏，主通道改 C3；保留占位便于观测恢复情况）---
     enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
-  - name: 36kr_native
-    label: 36Kr 快讯（原生 RSS）
-    channel: c1_rss
-    url: "https://36kr.com/feed-newsflash"
-    category: news
-    enabled: true
-
-  # =========================================================================
-  # C2 Atom（11 = GitHub Releases 8 + YouTube 3）
-  # =========================================================================
   - name: dsh_releases
     label: DeepSeek Harness Releases
     channel: c2_atom
@@ -680,12 +663,6 @@ sources:
     urls:
       - "https://seed.bytedance.com/research"
       - "https://seed.bytedance.com/blog_list/foundation"
-    category: official
-  - name: sensetime_news
-    label: 商汤新闻
-    channel: c4_web
-    parser: generic
-    url: "https://www.sensetime.com/cn/news"
     category: official
   - name: miit_policy
     label: 工信部政策文件

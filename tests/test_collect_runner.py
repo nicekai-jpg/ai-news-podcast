@@ -95,16 +95,17 @@ class TestShippedConfig:
     def test_source_counts(self) -> None:
         sources = load_sources(REPO_ROOT / "config" / "sources_v3.yaml")
 
-        # 2026-11-24：arXiv 15 源禁用 + 删除 2 个重复源（openai_news、
-        # huggingface_blog_rsshub，与既有源 URL 完全相同）→ 130 源、启用 110。
-        assert len(sources) == 130
-        assert sum(1 for source in sources if source.enabled) == 110
+        # 2026-11-24：arXiv 15 源禁用 + 删重复源（openai_news、huggingface_blog_rsshub）
+        # + 删持久失败源（synced_review 403、36kr_native 返 HTML、sensetime_news 解析失败）
+        # → 127 源、启用 107。
+        assert len(sources) == 127
+        assert sum(1 for source in sources if source.enabled) == 107
         assert Counter(source.channel for source in sources) == Counter(
             {
-                "c1_rss": 41,
+                "c1_rss": 39,
                 "c2_atom": 11,
                 "c3_rsshub": 54,
-                "c4_web": 7,
+                "c4_web": 6,
                 "c5_wechat2rss": 17,
             }
         )
