@@ -9,7 +9,8 @@ import pytest
 from ai_news_podcast.business.kg.service import build_kg
 
 # 词表用绝对路径：别的测试可能 monkeypatch.chdir()，相对路径会失效。
-NLP_DIR = Path(__file__).resolve().parents[1] / "config" / "nlp"
+ROOT = Path(__file__).resolve().parents[1]
+NLP_DIR = ROOT / "config" / "nlp"
 
 
 @pytest.fixture(scope="module")
@@ -116,3 +117,41 @@ def test_retarget_rejects_distant_mentions() -> None:
     )
     _retarget_clause(candidate, body)
     assert candidate.clause == "OpenAI 和 Meta 联手"
+
+
+class TestGradeInvariants:
+    """A/A2 档在完整 build_facts 流程中的不变量。"""
+
+    def _items(self) -> list[dict]:
+        return [
+            {
+                "item_id": "i1",
+                "title": "英伟达创始人黄仁勋辞去 CEO 职务",
+                "full_text": (
+                    "英伟达创始人黄仁勋辞去 CEO 职务。黄仁勋表示将继续关注 AI 芯片的发展。"
+                ),
+                "published_at": "2026-11-16T08:00:00+00:00",
+            }
+        ]
+
+    def test_a2_always_carries_subject_inherited(self):
+        from ai_news_podcast.business.kg.service import build_facts
+        from ai_news_podcast.business.pipeline.kg_stage_service import load_facts_config
+
+        cfg = load_facts_config(ROOT / "config")
+        result = build_facts(self._items(), [], date_str="2026-11-16", config=cfg)
+        for card in result.cards:
+            if card.grade == "A2":
+                assert "subject_inherited" in card.grade_reasons, card.fact_id
+            if card.grade == "A":
+                assert "subject_inherited" not in card.grade_reasons, card.fact_id
+
+    def test_stats_partition_all_cards(self):
+        from ai_news_podcast.business.kg.service import build_facts
+        from ai_news_podcast.business.pipeline.kg_stage_service import load_facts_config
+
+        cfg = load_facts_config(ROOT / "config")
+        result = build_facts(self._items(), [], date_str="2026-11-16", config=cfg)
+        stats = result.stats
+        assert stats.cards_a + stats.cards_a2 + stats.cards_b == len(result.cards)
+        assert stats.cards_a2 >= 0
