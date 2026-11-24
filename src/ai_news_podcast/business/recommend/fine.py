@@ -162,14 +162,10 @@ def _momentum_score(event: Event) -> float:
     growth_signal = min(max(event.momentum_growth, 0.0), 4.0) / 4.0
     sequence_signal = min(max(event.sequence - 1, 0), 3) / 3
     count_signal = min(max(event.source_count, 0), 8) / 8
-    reappear_signal = 1.0 if event.reappeared else 0.0
-    score = (
-        2.0 * source_signal
-        + 1.2 * growth_signal
-        + 0.8 * sequence_signal
-        + 0.6 * count_signal
-        + 0.4 * reappear_signal
-    )
+    # 注意：reappeared 不加分。它只表示「历史里见过、但账本没覆盖、且没有新进展」，
+    # 给分会形成「越没被选中越容易被再次推荐」的循环（同一篇观点稿连续多天进 shortlist）。
+    # 真正的新进展由 is_update → sequence_signal 体现。
+    score = 2.0 * source_signal + 1.2 * growth_signal + 0.8 * sequence_signal + 0.6 * count_signal
     return clamp(score)
 
 

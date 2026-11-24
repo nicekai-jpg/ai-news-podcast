@@ -217,3 +217,16 @@ class TestRubricPrompt:
         prompt = build_rubric_prompt([_make_event()])
         assert "lifecycle" not in prompt
         assert "evidence_tier" not in prompt
+
+
+class TestReappeared:
+    def test_reappeared_alone_does_not_raise_momentum(self) -> None:
+        """reappeared 只代表「见过但没新进展」，不应加分，否则会反复推荐同一条。"""
+        plain = _score(_make_event("a"))
+        seen = _score(_make_event("a", reappeared=True))
+        assert seen.components["momentum"] == plain.components["momentum"]
+
+    def test_new_progress_still_raises_momentum(self) -> None:
+        plain = _score(_make_event("a"))
+        updated = _score(_make_event("a", sequence=3))
+        assert updated.components["momentum"] > plain.components["momentum"]
