@@ -148,75 +148,89 @@ sources:
     url: "https://rss.arxiv.org/rss/cs.AI"
     category: research
     limit: 30
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_cs_lg
     label: arXiv cs.LG
     channel: c1_rss
     url: "https://rss.arxiv.org/rss/cs.LG"
     category: research
     limit: 30
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_cs_cl
     label: arXiv cs.CL
     channel: c1_rss
     url: "https://rss.arxiv.org/rss/cs.CL"
     category: research
     limit: 30
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_cs_cv
     label: arXiv cs.CV
     channel: c1_rss
     url: "https://rss.arxiv.org/rss/cs.CV"
     category: research
     limit: 30
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_cs_ro
     label: arXiv cs.RO
     channel: c1_rss
     url: "https://rss.arxiv.org/rss/cs.RO"
     category: research
     limit: 30
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_deepseek
     label: arXiv · DeepSeek
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:DeepSeek+OR+ti:DeepSeek&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_glm
     label: arXiv · 智谱 GLM
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:GLM-4+OR+ti:GLM-4+OR+abs:ZhipuAI&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_kimi
     label: arXiv · Kimi/Moonshot
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:Moonshot+OR+ti:Kimi&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_claude
     label: arXiv · Anthropic/Claude
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:Anthropic+OR+ti:Claude&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_grok
     label: arXiv · xAI/Grok
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:xAI+OR+ti:Grok&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_mistral_llama
     label: arXiv · Mistral/Llama
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:Mistral+OR+abs:Mixtral+OR+ti:Llama&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_hunyuan
     label: arXiv · 腾讯混元
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:Hunyuan&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_bytedance
     label: arXiv · 字节 Seed
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:ByteDance+OR+abs:Seed-TTS&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_internlm
     label: arXiv · 上海 AI Lab
     channel: c1_rss
     url: "https://export.arxiv.org/api/query?search_query=abs:InternLM&sortBy=submittedDate&sortOrder=descending&max_results=15"
     category: research
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: arxiv_ernie
     label: arXiv · 百度文心
     channel: c1_rss
@@ -224,6 +238,7 @@ sources:
     category: research
 
   # --- 其它 1（原生 RSS 已坏，主通道改 C3；保留占位便于观测恢复情况）---
+    enabled: false   # arXiv 论文不进日报（2026-11-24 决定）
   - name: 36kr_native
     label: 36Kr 快讯（原生 RSS）
     channel: c1_rss
