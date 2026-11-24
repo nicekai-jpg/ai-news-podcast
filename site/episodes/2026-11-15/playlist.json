@@ -1,0 +1,568 @@
+{
+  "episode_id": "2026-11-15",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "早上好，我是林夏。今天想聊的，不是几条看起来都很热闹的AI新闻，而是它们共同指向的现实问题：模型能力继续向前以后，研发组织、产品接口和真实应用之间，究竟应该怎样重新分工？",
+      "start": 1.0,
+      "duration": 15.55,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "开场：别把速度当成结论"
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "我是陈默。今天我们会把几条消息放到同一张图上看，也始终守住一条边界：实验里“能够完成”和现实里“已经普及”，并不是同一个判断。",
+      "start": 16.999,
+      "duration": 9.6,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "我们先从OpenAI的机器人团队调整讲起，再看DeepSeek怎样把App能力拆成接口，以及llama.cpp怎样开放本地推理底座，最后用医疗和芯片消息校准一下速度感。",
+      "start": 27.096,
+      "duration": 15.63,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "这些消息表面上各讲各的，背后却有共同线索：能力正从封闭产品流向可组合的模块，但模块能否变成可靠结果，仍取决于工程、验证和组织条件。",
+      "start": 43.179,
+      "duration": 11.44,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "OpenAI最近向《财富》确认，准备撤销独立机器人团队，并把相关人员转入核心研究和应用部门。官方给出的背景是，通用模型已经能直接用于部分机器人任务。",
+      "start": 55.024,
+      "duration": 12.92,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "通用模型正在改写边界"
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "这里不能直接听成“机器人已经交给大模型”。更准确地说，过去要靠专用机器人模型完成的场景理解、下一步判断和执行后的纠错，开始进入通用模型的能力范围。",
+      "start": 68.377,
+      "duration": 11.6,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "英伟达10月公布的仿真测试给了一组直观数字：通用模型GPT-6 Astra直接生成机器人动作，成功率是66.3%；接入智能体系统后升到74.8%，并超过专用机器人模型。",
+      "start": 80.442,
+      "duration": 15.35,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "但这两个数字必须带着测试边界来读，因为它们来自仿真，不能直接当作真实机器人部署的成功率。测试更重要的含义，是同一套通用模型开始同时覆盖动作生成和纠错。",
+      "start": 96.254,
+      "duration": 13.8,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "可以把它理解成，过去像专科门诊，针对特定动作要单独训练；现在更像全科能力上场，先理解场景、决定动作，再根据结果修正，专用模型的部分空间因此可能被压缩。",
+      "start": 110.505,
+      "duration": 15.2,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "从组织层面看，这是合并机器人研发与应用资源；从技术层面看，是专用和通用的边界被侵蚀。两种变化互相呼应，却不能压成一句“模型变强了”。",
+      "start": 126.205,
+      "duration": 11.2,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "这也不是OpenAI第一次碰机器人。2019年10月，团队公布机械手解魔方研究，先在仿真环境用强化学习训练神经网络，再把学到的能力迁移到真实机械手。",
+      "start": 137.843,
+      "duration": 13.52,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "为了缩小虚拟与现实的差距，研究人员持续改变魔方尺寸、质量、手指摩擦等参数。这个项目展示了学习系统处理复杂物理操作的潜力，却也撞上了难以绕开的数据瓶颈。",
+      "start": 151.824,
+      "duration": 13.2,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "语言模型可以使用互联网文本，机器人需要的却是“手往哪里移动、夹爪何时闭合、接触后物体会怎样变化”这类交互记录；后者数量更少，采集还要投入硬件、操作和现场维护。",
+      "start": 165.469,
+      "duration": 14.2,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "2021年，联合创始人沃伊切赫·扎伦巴在播客中解释过，机器人缺少适合预训练的大量数据，而其他领域的数据丰富得多，更有利于公司推进AGI。",
+      "start": 180.143,
+      "duration": 13.92,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "所以后来OpenAI在2024年重建机器人团队，并与Figure签署合作协议，计划结合自身的模型研究与对方的机器人硬件、软件经验，共同开发人形机器人模型。",
+      "start": 194.49,
+      "duration": 14.84,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "这说明需求并没有消失，只是资源配置反复变化。更早一步，2023年谷歌DeepMind提出视觉—语言—动作模型RT-2，把视觉语言任务与机器人轨迹数据结合训练。",
+      "start": 209.794,
+      "duration": 13.48,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "RT-2让语言和视觉知识参与动作预测，同时仍要依靠机器人数据建立观察与动作之间的对应；2024年发布的视频生成模型Sora，则把模拟环境作为另一条探索路径。",
+      "start": 223.691,
+      "duration": 15.8,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "一条线是让通用模型进入动作决策，另一条线是让模型学习模拟环境；两条线能否合起来属于技术问题，眼下撤销团队则是组织选择，不能混为一谈。",
+      "start": 239.927,
+      "duration": 12.0,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "后续更值得看的是，哪些工作会随人员转入核心研究和应用部门，哪些仍然需要专用机器人模型与真实交互数据；组织动作和数字要放在一起判断。",
+      "start": 252.344,
+      "duration": 13.28,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "最关键的提醒仍然是，通用模型在仿真里更强，不会自动消除机器人数据稀缺。它也许降低某些训练环节的门槛，却不能凭空创造真实世界的接触反馈。",
+      "start": 266.12,
+      "duration": 11.72,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "换个话题，DeepSeek把App里的联网搜索、深度思考搜索、文件上传、链接阅读和语音能力开放成API。官方表示，开发者甚至可以1：1复刻完整的DeepSeek App。",
+      "start": 278.252,
+      "duration": 15.23,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "接口开放与本地底座"
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "这些能力不再必须打包使用，而是提供独立接口，可以单独调用、分别计费。语音识别和语音合成也首次进入开放行列，Search、Fetch、OCR、ASR和TTS都能按需选择、自由组合。",
+      "start": 293.961,
+      "duration": 15.31,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "官方还开源了一套轻量级聊天前端Demo，并支持导入DeepSeek历史对话。“1：1复刻”最值得注意的地方，是连自家完整产品形态背后的能力，也被摆到开发者面前。",
+      "start": 309.703,
+      "duration": 15.24,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "DeepSeek在10月17日已经开放Search和Fetch，但当时开发者还要处理工具调用和模型衔接：判断是否搜索，调用Search寻找网页，用Fetch读取内容，再把结果交回模型总结。",
+      "start": 325.411,
+      "duration": 14.51,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "现在这些步骤可以自动完成。V4.1-Flash已经在Messages、Responses和Chat Completions三类接口下支持相关对话扩展功能，开发者要关注的不只是会不会调用搜索。",
+      "start": 340.411,
+      "duration": 14.63,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "成本也有明确信息：语音识别一小时不到4毛，而且这次提供五折。各接口分别计费的好处，是开发者可以按实际需要组合，不必为了某一项能力吞下整套服务。",
+      "start": 355.518,
+      "duration": 12.0,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "我会把这看作平台策略的变化：把App背后的基础能力拆成可调用的积木，再把组装权交给开发者。对产品团队来说，接口数量本身不是终点，工作流是否顺畅才是。",
+      "start": 367.936,
+      "duration": 15.0,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "同样要注意，接口都在不等于做出来就一样好用。搜索何时触发、结果怎样呈现、文件和语音链路是否顺手，仍然要由开发者设计，开放降低门槛，也把产品责任向开发者移动。",
+      "start": 383.375,
+      "duration": 14.32,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "这和本地推理是另一种开放。开发者Georgi Gerganov在11月13日宣布，开源AI推理项目llama.cpp与底层机器学习引擎ggml的库版本迈入1.0.0。",
+      "start": 398.107,
+      "duration": 15.91,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "llama.cpp主要用C和C++编写，让大语言模型能够在个人电脑、服务器等不同硬件上运行。1.0.0首先是一个兼容性里程碑，而不是一次模型能力升级。",
+      "start": 414.51,
+      "duration": 14.56,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "版本规则也给依赖库装上了路标：MAJOR，例如1.x.x到2.0.0，代表公共C API出现破坏性变更；MINOR和PATCH分别对应兼容功能或无API变化的缺陷修复。",
+      "start": 429.479,
+      "duration": 16.19,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "工程上，ggml通过专用后端支持不同硬件，每个后端都可编译为动态库，并在运行时按需加载；llama.cpp已经支持超过150种模型架构变体和主流推测解码方法。",
+      "start": 446.156,
+      "duration": 15.72,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "官方还强调使用Hugging Face的HF Buckets和HF Jobs扩展持续集成，并在NVIDIA、AMD、Qualcomm、Arm、IBM、Intel的硬件支持下增加自托管测试运行器。",
+      "start": 462.318,
+      "duration": 17.27,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "一条路线是把服务能力拆成API，让开发者组合调用；另一条是把本地推理底座做成开源软件，让模型在不同硬件上运行。共同点是组装权下沉，场景和约束并不相同。",
+      "start": 480.048,
+      "duration": 15.12,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "所以1.0.0不该被听成“所有模型、所有硬件都能零配置运行”。它的目标是降低部署复杂度、充分利用设备计算能力，真实适配仍要看后端和模型。",
+      "start": 495.639,
+      "duration": 13.64,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "快讯里有一条医疗消息。Anthropic首席执行官达里奥·阿莫代伊预测，癌症、阿尔茨海默病、心脏病和精神疾病有望在不到十年内成为“过去式”；礼来董事长兼首席执行官戴夫·里克斯在11月12日于X平台回应，愿景令人向往，但不太可能。",
+      "start": 509.691,
+      "duration": 22.23,
+      "audios": {
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "医疗、芯片与明日看点"
+    },
+    {
+      "id": 37,
+      "host": "B",
+      "text": "里克斯的理由是，人类对生物学仍有大片空白，通过随机人体试验获得可靠证据，依然是决定研发进度的关键瓶颈。AI可以更快找到候选药物，却不能同样快地证明药物对患者安全、有效。",
+      "start": 532.366,
+      "duration": 14.79,
+      "audios": {
+        "professional": "chunk_037_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "另一条快讯和黄仁勋有关。他离开NVIDIA后，亚洲一些政府着手确认芯片供应承诺，另一些则关注本地项目影响或处理正在进行的调查；NVIDIA董事会已在11月8日启动独立调查。",
+      "start": 547.611,
+      "duration": 16.75,
+      "audios": {
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "中国外交部11月10日否认有关中国商人是间谍的指控，称其没有根据、是对北京的污蔑；同时表示，未听说受限NVIDIA芯片与上海一个数据中心存在关联。",
+      "start": 564.801,
+      "duration": 11.92,
+      "audios": {
+        "professional": "chunk_039_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "回到今天的主线：通用模型在改写研发分工，DeepSeek和llama.cpp在拆开能力与底座，医疗和芯片消息则提醒我们，实验室里的速度不等于现实落地也有同样速度。",
+      "start": 577.199,
+      "duration": 15.19,
+      "audios": {
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "B",
+      "text": "所以别把几件事压成一句“AI发展太快”。能力出现在哪一层、开发者能组装什么、验证还要走多远，是三个不同问题，需要分别找证据。",
+      "start": 592.87,
+      "duration": 10.24,
+      "audios": {
+        "professional": "chunk_041_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "明天可以继续看OpenAI团队整合后的方向、DeepSeek独立接口的实际组合，以及llama.cpp 1.0.0后的API和ABI适配；医疗预测的分歧和芯片供应回应也值得跟进。",
+      "start": 603.536,
+      "duration": 15.75,
+      "audios": {
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 43,
+      "host": "B",
+      "text": "有新证据再下结论，没有就继续等。真正值得追踪的，不是又出现了多少漂亮数字，而是这些能力能否稳定穿过组织、接口和现实环境这三道门。",
+      "start": 619.756,
+      "duration": 12.08,
+      "audios": {
+        "professional": "chunk_043_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}

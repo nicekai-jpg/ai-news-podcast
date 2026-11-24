@@ -1,0 +1,802 @@
+{
+  "episode_id": "2026-11-17",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "今天这期值得听，因为AI正从“会回答”走向“能工作”，而安全、算力边界、专业落地和物理世界已经不能分开讨论。",
+      "start": 1.0,
+      "duration": 9.2,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "我们顺着这几条线索聊：模型为什么可能失控，专业岗位怎样接住AI，机器人又怎样理解世界。术语咱们慢慢拆，不拿热闹当结论。",
+      "start": 10.649,
+      "duration": 10.48,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "先说最抓眼的。OpenAI曾与Goodfire多次会谈，一名高管提出以超过 50 亿美元收购这家成立仅两年的初创公司，或者改谈商业合作。",
+      "start": 21.626,
+      "duration": 12.32,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "今日线索"
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "收购没落地，但信号很清楚：机制可解释性从冷门方向变成了安全基础设施。",
+      "start": 34.399,
+      "duration": 6.96,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "它和现实风险贴得近，因为近几个月接连发生AI安全事件，包括Hugging Face入侵事件；漏洞由OpenAI技术引发，甚至波及OpenAI自身部分系统。",
+      "start": 41.764,
+      "duration": 13.72,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "这就不只是模型答错，而是模型入侵企业、政府系统并造成损失后，企业可能面对巨额法律赔偿乃至被追责起诉。",
+      "start": 55.917,
+      "duration": 9.08,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "另一条线在美国。特朗普政府准备推出海外AI芯片和数据中心出口管制，堵住远程访问别国AI基础设施的绕行路径。",
+      "start": 65.462,
+      "duration": 11.64,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "规则要求企业在相关AI芯片、服务器流向全球数据中心、且可能让中国或其他受限国家公司获得算力时申请许可。",
+      "start": 77.564,
+      "duration": 9.24,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "对象包括D:5组国家的相关企业；规则称这是现有管制的逻辑延伸，目标是削弱其利用美国先进Super Intelligence半导体训练先进模型的能力。",
+      "start": 87.255,
+      "duration": 12.88,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "值得听的变化是：控制对象从芯片有没有运出去，延伸到算力能不能被远程使用。",
+      "start": 100.635,
+      "duration": 6.48,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "中国这边也有产品线。百度世界2026提出“智能组织”，度小满把轩辕4.5放进金融流程；豆包工作上线“工作台”，首批覆盖金融、医疗、教育等21个专业场景。",
+      "start": 107.553,
+      "duration": 14.08,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "李飞飞在CoRL2026介绍Atlas，又把视线拉到机器人的世界建模。把这些放一起看，AI越深入组织、基础设施和物理世界，解释、权限与成本越不能回避。",
+      "start": 122.094,
+      "duration": 12.92,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "我们先从那场没谈成的收购聊起，再看金融和组织怎么接住AI，再落到世界模型。",
+      "start": 135.459,
+      "duration": 6.76,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "也会把企业的成绩陈述、官方提示和技术争议分开，不用热闹替代判断。",
+      "start": 142.693,
+      "duration": 5.52,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "超过 50 亿美元买一个成立仅两年的公司，价格到底在买什么？",
+      "start": 148.64,
+      "duration": 5.84,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "安全溢价"
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "买的是持续读懂模型内部机制的能力。Goodfire得到Anthropic投资，而Goodfire今年 2 月完成融资时，私募估值为 12.5 亿美元，所以这个报价存在巨大溢价。",
+      "start": 154.944,
+      "duration": 13.91,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "Goodfire的核心专长是机制可解释性，也就是mech interp。传统方案读取模型输出的思维链文本并观察行为；Goodfire和Martian等竞品直接观测模型内部运行的数学计算。",
+      "start": 169.271,
+      "duration": 15.79,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "像从看解题草稿，变成看运算过程本身。草稿可能变少，运算却还在继续。",
+      "start": 185.497,
+      "duration": 6.36,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "报道还提到，OpenAI的Astra模型背后的秘密技术等进展，会压缩思维链信息量，监控难度随之增加。Goodfire的价值就来自另一条监控路径。",
+      "start": 192.274,
+      "duration": 13.36,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "但不能把它讲成银弹。Goodfire承认，这套技术成熟度尚不及思维链监控；部分AI研究者还认为它在科研严谨度上弱于其他机器学习研究方向。",
+      "start": 206.13,
+      "duration": 10.88,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "需求却很迫切。OpenAI内部急着排查自家AI为何在内外引发安全漏洞，Anthropic也投资了Goodfire。",
+      "start": 217.422,
+      "duration": 9.64,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "OpenAI、Anthropic和谷歌的高管都承认，传统监控AI行为的可靠性正在下降。安全能力因此不再只是附件，而会进入采购和估值。",
+      "start": 227.541,
+      "duration": 10.84,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "Goodfire管理层认为，如果保持独立发展，向多家AI企业输出技术，公司价值会高于 50 亿美元。这正是谈判没谈拢的重要原因。",
+      "start": 238.813,
+      "duration": 12.12,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "买方想把能力收进内部，卖方想做跨公司的平台生意，核心分歧不是技术一句话能概括的。",
+      "start": 251.401,
+      "duration": 7.2,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "而且方案本来不只买断。一名高管提出的是以超过 50 亿美元收购，或者达成其他形式商业合作，控制权和商业弹性差得很远。",
+      "start": 259.091,
+      "duration": 11.4,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "还有成本。Goodfire联合创始人兼首席科学家汤姆・麦格拉思在YouTube访谈中表示，其技术会快速迭代，成本将远低于思维链监控。",
+      "start": 270.968,
+      "duration": 11.4,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "因为思维链监控要运行一个大模型，去读取另一个模型输出的思维链。Goodfire押注的是用更低成本持续迭代。",
+      "start": 282.786,
+      "duration": 9.24,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "一边是成熟度争议，一边是长期成本优势。这类技术最终得靠真实部署证明自己。",
+      "start": 292.465,
+      "duration": 6.24,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "我觉得最值得留下的不是OpenAI出价高，而是安全能力开始拥有独立价格。",
+      "start": 299.117,
+      "duration": 6.32,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "对。收购没落地也不削弱这个信号：能解释自己造出来的东西，正在成为模型公司的新能力层。",
+      "start": 305.93,
+      "duration": 7.2,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "从安全组件聊到组织，我就想问：模型能力不少，金融机构为什么未必马上用得起？",
+      "start": 313.539,
+      "duration": 6.68,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "落地账单"
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "11月12日，百度世界2026在北京举行。李彦宏判断下一幕是“智能组织”，提出打破岗位边界、沉淀隐性知识、设计流程闭环。",
+      "start": 320.706,
+      "duration": 9.88,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "金融场景还要兼顾专业人才、技术资源、场景验证，以及技术投入与应用成本。轩辕4.5就是在这张账单上做文章。",
+      "start": 331.028,
+      "duration": 10.88,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "度小满与香港科技大学、香港生成式人工智能研发中心在2026香港金融科技周联合发布轩辕4.5金融增强大模型，把自进化，也就是RSI技术用于模型训练与智能体场景适配。",
+      "start": 342.368,
+      "duration": 14.79,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "在所测金融场景中，它以约通用顶级模型十分之一的推理成本，实现更强的金融场景能力。",
+      "start": 357.629,
+      "duration": 8.48,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "“所测”这个限定很重要，不能顺手扩成所有场景都能这样便宜，但持续运行的账已经值得算。",
+      "start": 366.521,
+      "duration": 6.8,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "据度小满披露，基于轩辕已构建上千个智能体、5000余项技能，日均Token使用量超过1000亿。",
+      "start": 373.766,
+      "duration": 8.0,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "智能风控已全面由智能体驱动，风险策略随环境变化动态自进化，迭代周期压缩一半以上；短期逾期风险下降约50%，信贷年化逾期风险整体降低12%。",
+      "start": 382.221,
+      "duration": 14.0,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "AI信审员的审核能力超过80%的人工信审员，客户等待时长由10分钟缩短至2分钟；AI贷后专员的催回率较传统机器人提升8%以上。",
+      "start": 396.661,
+      "duration": 12.4,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "客服Agent可独立处理80%的高频问题，必要时由人工接手；一名客户经理加上企微Agent，可服务2万人，工作量相当于原来10名客户经理。",
+      "start": 409.539,
+      "duration": 11.24,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "这不是把人全部替掉，而是独立执行、与员工协作、再由人工接手，像重新划分工作流水线。",
+      "start": 421.26,
+      "duration": 8.0,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "这也呼应了“智能组织”：打破岗位边界、沉淀隐性知识、设计流程闭环。轩辕和智能体是技术侧，流程闭环才决定能否持续运转。",
+      "start": 429.686,
+      "duration": 11.24,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "豆包工作走的是另一条路。11月16日上线“工作台”，为专业工作提供专属AI空间，预先配置技能和工具，不必每次从头挑。",
+      "start": 441.396,
+      "duration": 10.0,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "金融投研预置公告解读、业绩分析、市场简报和公司研究入口，并连接万得、同花顺、国泰海通等专业数据服务。",
+      "start": 451.857,
+      "duration": 9.32,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "医生工作台提供临床指南查找、医学文献解读等入口，官方明确只用于医学科研辅助，不能替代执业医师临床判断。",
+      "start": 461.633,
+      "duration": 10.76,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "创意设计可把一套创意延展成系列海报和品牌包装；教师工作台能生成教案课件、把习题变成可调参数的互动实验，并与学科网合作查找教学资源和用题图找相似题。",
+      "start": 472.859,
+      "duration": 14.16,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 47,
+      "host": "A",
+      "text": "豆包也提示，演示画面中的数据不作为实际使用成效引用，所以入口做得顺，不等于业务成效已经被证明。",
+      "start": 487.452,
+      "duration": 9.68,
+      "audios": {
+        "lively": "chunk_047_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 48,
+      "host": "B",
+      "text": "轩辕先做深，豆包先铺开。合起来才像完整路径：专业能力和成本控制、便捷入口、流程接入，以及人工兜底和责任边界。",
+      "start": 497.539,
+      "duration": 9.76,
+      "audios": {
+        "professional": "chunk_048_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 49,
+      "host": "A",
+      "text": "所以判断AI落地，不能只问聪不聪明，还得问它在哪段流程替人做事、出了错谁接住，以及数字来自实测、披露还是演示画面。",
+      "start": 507.769,
+      "duration": 12.6,
+      "audios": {
+        "lively": "chunk_049_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 50,
+      "host": "A",
+      "text": "收束到机器人。李飞飞在CoRL2026问了一个很朴素的问题：给定世界状态、目标和机器人，下一步该做什么？",
+      "start": 520.77,
+      "duration": 9.4,
+      "audios": {
+        "lively": "chunk_050_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "世界与明日"
+    },
+    {
+      "id": 51,
+      "host": "B",
+      "text": "机器人既要理解环境，也要预测有后果的动作并规划；真实数据是长尾问题，部署又受限，所以需要模拟不同环境来补充训练和评估。",
+      "start": 530.581,
+      "duration": 9.88,
+      "audios": {
+        "professional": "chunk_051_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 52,
+      "host": "A",
+      "text": "CoRL2026于2026年11月在奥斯汀开幕。李飞飞是斯坦福教授、ImageNet发起者、World Labs创始人；此前World Labs被AMD收购的消息正在圈内发酵，她即将出任AMD首席科学家。",
+      "start": 540.953,
+      "duration": 17.99,
+      "audios": {
+        "lively": "chunk_052_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 53,
+      "host": "B",
+      "text": "她介绍的主角，是World Labs与斯坦福团队研发的Atlas：一个统一的生成与重建世界模型，也是单个从零训练的自回归基础模型。",
+      "start": 559.394,
+      "duration": 10.8,
+      "audios": {
+        "professional": "chunk_053_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 54,
+      "host": "A",
+      "text": "它接收文本、图像、视频、深度信号、灰度框或3D结构信号等多模态输入，输出像素帧；既能生成时空上漂亮的帧，也能合成新视角，实现高精度、高保真的3D重建。",
+      "start": 570.684,
+      "duration": 14.72,
+      "audios": {
+        "lively": "chunk_054_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 55,
+      "host": "B",
+      "text": "李飞飞把世界模型的问题拆成渲染、规划和仿真。Atlas主要解决渲染与仿真，尤其是模拟世界的几何以及3D/4D动态。",
+      "start": 585.904,
+      "duration": 10.48,
+      "audios": {
+        "professional": "chunk_055_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 56,
+      "host": "A",
+      "text": "这三部分并非完全隔离，而是彼此衔接。机器人要理解世界、规划动作并补足模拟环境，正好对应渲染、规划与仿真。",
+      "start": 596.869,
+      "duration": 9.44,
+      "audios": {
+        "lively": "chunk_056_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 57,
+      "host": "B",
+      "text": "这也接上前面的故事：Goodfire追问模型为何产生某种行为，轩辕让智能体进入金融流程，Atlas则让机器人表示并模拟世界。",
+      "start": 606.789,
+      "duration": 9.8,
+      "audios": {
+        "professional": "chunk_057_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 58,
+      "host": "A",
+      "text": "今天的信号放在一起看，AI竞争不只比模型能说什么，还在比谁能解释自己的行为、谁能承担专业场景成本、谁能处理真实环境。",
+      "start": 616.989,
+      "duration": 12.32,
+      "audios": {
+        "lively": "chunk_058_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 59,
+      "host": "B",
+      "text": "边界也要同时摆出来：收购没有落地，机制可解释性的成熟度有争议；金融效果来自度小满披露，豆包提醒演示数据不能当实际成效。",
+      "start": 629.787,
+      "duration": 10.64,
+      "audios": {
+        "professional": "chunk_059_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 60,
+      "host": "A",
+      "text": "明日看点，我会继续看美国远程算力管制如何落到许可细节，也会观察豆包工作台进入真实工作后的使用边界，以及Atlas背后的世界模型会不会更贴近部署与评估。",
+      "start": 640.89,
+      "duration": 13.88,
+      "audios": {
+        "lively": "chunk_060_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 61,
+      "host": "B",
+      "text": "今天不必急着给这些故事排座次。能力越深入安全、组织和物理世界，可解释、可负担、可追责就越不能分开看；明天再按新变化继续聊。",
+      "start": 655.212,
+      "duration": 10.8,
+      "audios": {
+        "professional": "chunk_061_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}

@@ -1,0 +1,640 @@
+{
+  "thesis": "OpenAI再次解散机器人团队:GPT-6太强,决定All in通用模型",
+  "stories": [
+    {
+      "cluster_id": 0,
+      "representative_title": "OpenAI再次解散机器人团队:GPT-6太强,决定All in通用模型",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 20,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 5,
+        "explainability": 5,
+        "listener_relevance": 4,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "专门为机器人开发的模型,开始在机器人任务上输给通用模型。 英伟达 10 月公布的一项仿真测试显示,通用模型 GPT-6 Astra 直接生成机器人动作,成功率达到 66.3%;使用智能体系统后,成功率进一步升至 74.8%,远超专用机器人模型的表现。理解场景、判断下一步、根据执行结果纠错,这些过去需要机器人研究者专门处理的工作,正在进入通用模型的能力范围。 这些变化的影响正在传导至 OpenAI 的研发组织。最近,OpenAI 向《财富》(Fortune)确认,由于通用模型已经展现出直接用于部分机器人任务的能力,公司希望进一步整合机器人研发与通用模型研究,将撤销独立机器人团队,将相关人员转入核心研究和应用部门。 机器人要想理解环境、选择动作和纠正错误,原本需要单独训练专用的模型;如今,面向语言、代码和视觉等广泛任务发展的模型,开始侵蚀二者间原本泾渭分明的边界。 数据瓶颈与机器人研究的回归 其实在这次整合之前,OpenAI 已经因训练数据不足而叫停过机器人研究。 2019 年 10 月,OpenAI 公布了机械手解魔方的研究。团队在仿真环境中训练神经网络,通过强化学习,让系统根据动..."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "MIT 科技评论中文",
+            "link": "https://www.mittrchina.com/news/detail/17243"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "f18547cb40b9930260c0174e7d5a7a4608ce9978d10470383c87c8dc095cc18d",
+          "title": "OpenAI再次解散机器人团队:GPT-6太强,决定All in通用模型",
+          "link": "https://www.mittrchina.com/news/detail/17243",
+          "source_name": "MIT 科技评论中文",
+          "published_at": "2026-11-14T10:19:51+00:00",
+          "summary": "专门为机器人开发的模型,开始在机器人任务上输给通用模型。 英伟达 10 月公布的一项仿真测试显示,通用模型 GPT-6 Astra 直接生成机器人动作,成功率达到 66.3%;使用智能体系统后,成功率进一步升至 74.8%,远超专用机器人模型的表现。理解场景、判断下一步、根据执行结果纠错,这些过去需要机器人研究者专门处理的工作,正在进入通用模型的能力范围。 这些变化的影响正在传导至 OpenAI 的研发组织。最近,OpenAI 向《财富》(Fortune)确认,由于通用模型已经展现出直接用于部分机器人任务的能力,公司希望进一步整合机器人研发与通用模型研究,将撤销独立机器人团队,将相关人员转入核心研究和应用部门。 机器人要想理解环境、选择动作和纠正错误,原本需要单独训练专用的模型;如今,面向语言、代码和视觉等广泛任务发展的模型,开始侵蚀二者间原本泾渭分明的边界。 数据瓶颈与机器人研究的回归 其实在这次整合之前,OpenAI 已经因训练数据不足而叫停过机器人研究。 2019 年 10 月,OpenAI 公布了机械手解魔方的研究。团队在仿真环境中训练神经网络,通过强化学习,让系统根据动..."
+        }
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "representative_title": "突发!DeepSeek开放全家桶API",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 18,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 4,
+        "explainability": 4,
+        "listener_relevance": 4,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "官方App功能均可自由组合调用"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "量子位（RSSHub）",
+            "link": "https://www.qbitai.com/2026/11/510003.html"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "c4751f38fca860ad40605d1fb3b371f0f0edc0229546d70647b100ab3db49e8a",
+          "title": "突发!DeepSeek开放全家桶API",
+          "link": "https://www.qbitai.com/2026/11/510003.html",
+          "source_name": "量子位（RSSHub）",
+          "published_at": "2026-11-14T02:39:56+00:00",
+          "summary": "官方App功能均可自由组合调用 周五晚上搞事,D老师通通都不藏了! 就在刚刚,DeepSeek宣布, 正式开放全家桶应用API 。 什么意思? 以前大家在DeepSeek App里用得顺手的联网搜索、深度思考搜索、文件上传、链接阅读等功能,现在开发者通过API通通都能直接用上了,而且不必打包使用,它们都有独立接口,支持单独调用、分别计费。 划重点, 语音能力也首次加入开放行列 ,包括语音识别、语音合成等接口。 官方还放出一句相当有意思的话: 开发者甚至可以1:1复刻出完整的DeepSeek App 。 不是哥们,连自家产品都允许别人照着做啊?? DeepSeek还贴心亲自打了个样,直接开源了一套轻量级聊天前端Demo,支持导入DeepSeek历史对话。 也就是说,开发者不用再从头折腾搜索、文件解析、语音识别这些基础功能,就能快速搭出一个功能接近DeepSeek App的产品。 消息一出,评论区也是相当热闹。 有网友直接感叹: 什么叫1:1复刻出完整的DeepSeek App???人工智能之光! 全家桶应用API开放一览 具体来看,这次DeepSeek一口气开放了这些能力: 这里有..."
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "representative_title": "礼来 CEO 回应“AI 十年内攻克癌症”:愿景很美好,但不太可能",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 17,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 4,
+        "explainability": 3,
+        "listener_relevance": 4,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "感谢IT之家网友 软媒用户1053564 的线索投递! IT之家 11 月 14 日消息,礼来(Eli Lilly)董事长兼首席执行官戴夫 · 里克斯(Dave Ricks)于 11 月 12 日在 X 平台发布推文,回应 Anthropic 首席执行官达里奥 · 阿莫代伊(Dario Amodei)有关“AI 将在不到十年内攻克癌症等疾病”的预测, 称这一愿景“令人向往”,但实现的可能性不大。 IT之家此前报道,在面向投资者的路演视频中,阿莫代伊表示癌症、阿尔茨海默病、心脏病和精神疾病,有望在不到十年内成为“过去式”。 这番对 AI 医疗前景的乐观判断,引发医药界人士质疑 。 里克斯在推文中表示:“如果这个愿景真得令人向往,但是我认为这不太可能发生”。他表示人类对生物学的认识仍有大片空白,而通过随机人体试验获取可靠证据,依然是决定研发进度的关键瓶颈。 里克斯同时表示,自己对 AI 在医药行业的应用感到振奋,但预计进展更可能是“稳步、渐进的”。换言之,更快找到候选药物,并不意味着可以同样迅速地证明它对患者安全、有效;实验室发现距离真正用于治疗,仍有必须完成的验证过程。 礼来(El..."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "IT之家 AI",
+            "link": "https://www.ithome.com/1/027/037.htm"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "a63ee3aea48eeae85d8b29e51e8b12f3f1554052b50e395111d9bca05def5ea8",
+          "title": "礼来 CEO 回应“AI 十年内攻克癌症”:愿景很美好,但不太可能",
+          "link": "https://www.ithome.com/1/027/037.htm",
+          "source_name": "IT之家 AI",
+          "published_at": "2026-11-14T01:10:57+00:00",
+          "summary": "感谢IT之家网友 软媒用户1053564 的线索投递! IT之家 11 月 14 日消息,礼来(Eli Lilly)董事长兼首席执行官戴夫 · 里克斯(Dave Ricks)于 11 月 12 日在 X 平台发布推文,回应 Anthropic 首席执行官达里奥 · 阿莫代伊(Dario Amodei)有关“AI 将在不到十年内攻克癌症等疾病”的预测, 称这一愿景“令人向往”,但实现的可能性不大。 IT之家此前报道,在面向投资者的路演视频中,阿莫代伊表示癌症、阿尔茨海默病、心脏病和精神疾病,有望在不到十年内成为“过去式”。 这番对 AI 医疗前景的乐观判断,引发医药界人士质疑 。 里克斯在推文中表示:“如果这个愿景真得令人向往,但是我认为这不太可能发生”。他表示人类对生物学的认识仍有大片空白,而通过随机人体试验获取可靠证据,依然是决定研发进度的关键瓶颈。 里克斯同时表示,自己对 AI 在医药行业的应用感到振奋,但预计进展更可能是“稳步、渐进的”。换言之,更快找到候选药物,并不意味着可以同样迅速地证明它对患者安全、有效;实验室发现距离真正用于治疗,仍有必须完成的验证过程。 礼来(El..."
+        }
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "representative_title": "Asian governments react to Nvidia CEO Jensen Huang’s exit",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 14,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Some governments moved to confirm chip supply commitments, while others are monitoring the impact on local projects or addressing ongoing investigations."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TechCrunch AI",
+            "link": "https://techcrunch.com/2026/11/14/asian-governments-react-to-nvidia-ceo-jensen-huangs-exit/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "299cfd655b5df2e69b8ede045143ce3c41e2a7526bf75d29e28b082199bf46f6",
+          "title": "Asian governments react to Nvidia CEO Jensen Huang’s exit",
+          "link": "https://techcrunch.com/2026/11/14/asian-governments-react-to-nvidia-ceo-jensen-huangs-exit/",
+          "source_name": "TechCrunch AI",
+          "published_at": "2026-11-14T16:34:15+00:00",
+          "summary": "Some governments moved to confirm chip supply commitments, while others are monitoring the impact on local projects or addressing ongoing investigations."
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "representative_title": "本地推理引擎 llama.cpp 1.0.0 史诗级更新:支持超 150 种模型架构,断网也能满血跑大模型",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 15,
+      "scores": {
+        "impact_scope": 4,
+        "novelty": 3,
+        "explainability": 3,
+        "listener_relevance": 4,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "IT之家 11 月 14 日消息,开发者 Georgi Gerganov(X 账号为 @ggerganov)昨日(11 月 13 日)在 X 平台发布推文, 宣布开源 AI 推理项目 llama.cpp 与底层机器学习引擎 ggml 的库版本迈入 1.0.0。 IT之家查询公开资料,Gerganov 是开源项目 llama.cpp 的创建者,也是 ggml、 whisper.cpp 等本地 AI 基础软件的重要开发者。他在个人 X 简介中将自己标注为 Hugging Face 工程师,GitHub 资料所在地为保加利亚索非亚。 llama.cpp 是一个主要用 C/C++ 编写的开源 AI 推理项目,核心作用是让大语言模型在个人电脑、服务器等不同硬件上运行。它既可以用于本地部署,也可以用于云端服务,目标是降低部署复杂度,并充分利用设备的计算能力。 本次更新最大的亮点就是明确接口兼容性规则: 项目 库 定位 llama.cpp libllama C/C++ 大模型推理库 ggml libggml 底层机器学习张量库 两者今后都会通过主版本号升级,明确标记 API 或 ABI 不兼容..."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "IT之家 AI",
+            "link": "https://www.ithome.com/1/027/019.htm"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "8018fd5cadd2d318e84c56bb0956281e72d2d9eeb45eb2590cd785c202d3859a",
+          "title": "本地推理引擎 llama.cpp 1.0.0 史诗级更新:支持超 150 种模型架构,断网也能满血跑大模型",
+          "link": "https://www.ithome.com/1/027/019.htm",
+          "source_name": "IT之家 AI",
+          "published_at": "2026-11-14T00:14:06+00:00",
+          "summary": "IT之家 11 月 14 日消息,开发者 Georgi Gerganov(X 账号为 @ggerganov)昨日(11 月 13 日)在 X 平台发布推文, 宣布开源 AI 推理项目 llama.cpp 与底层机器学习引擎 ggml 的库版本迈入 1.0.0。 IT之家查询公开资料,Gerganov 是开源项目 llama.cpp 的创建者,也是 ggml、 whisper.cpp 等本地 AI 基础软件的重要开发者。他在个人 X 简介中将自己标注为 Hugging Face 工程师,GitHub 资料所在地为保加利亚索非亚。 llama.cpp 是一个主要用 C/C++ 编写的开源 AI 推理项目,核心作用是让大语言模型在个人电脑、服务器等不同硬件上运行。它既可以用于本地部署,也可以用于云端服务,目标是降低部署复杂度,并充分利用设备的计算能力。 本次更新最大的亮点就是明确接口兼容性规则: 项目 库 定位 llama.cpp libllama C/C++ 大模型推理库 ggml libggml 底层机器学习张量库 两者今后都会通过主版本号升级,明确标记 API 或 ABI 不兼容..."
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "representative_title": "ICSE 2027 | 清华提出CoACT:降低Coding Agent 33% Token开销",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 19,
+      "scores": {
+        "impact_scope": 4,
+        "novelty": 5,
+        "explainability": 5,
+        "listener_relevance": 4,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "能否在不影响任务完成的前提下压缩上下文?"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "机器之心（公众号）",
+            "link": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651074362&idx=3&sn=da18bc335c6b6345ee976e60b4009347"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "47ceea9850456cc0c6583438ba72ec3b24550819c19f9510da936eff6cd77ea2",
+          "title": "ICSE 2027 | 清华提出CoACT:降低Coding Agent 33% Token开销",
+          "link": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651074362&idx=3&sn=da18bc335c6b6345ee976e60b4009347",
+          "source_name": "机器之心（公众号）",
+          "published_at": "2026-11-13T06:28:00+00:00",
+          "summary": "能否在不影响任务完成的前提下压缩上下文?"
+        }
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "representative_title": "踢开具身Scaling的另一扇门:华为诺亚团队登顶Behavior Challenge 2026",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 18,
+      "scores": {
+        "impact_scope": 4,
+        "novelty": 5,
+        "explainability": 4,
+        "listener_relevance": 4,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "经典机器人方法,如何走向可扩展的知识体系?"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "机器之心（公众号）",
+            "link": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651074456&idx=1&sn=fd945abf7738045bba3669031d5ef7a2"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "f3fa3a656e0bef91debb83184f2837767791aba6b3dc985623028f7198c568cd",
+          "title": "踢开具身Scaling的另一扇门:华为诺亚团队登顶Behavior Challenge 2026",
+          "link": "https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2651074456&idx=1&sn=fd945abf7738045bba3669031d5ef7a2",
+          "source_name": "机器之心（公众号）",
+          "published_at": "2026-11-14T03:34:00+00:00",
+          "summary": "经典机器人方法,如何走向可扩展的知识体系?"
+        }
+      ]
+    },
+    {
+      "cluster_id": 7,
+      "representative_title": "微软 14 年 AI 老将离职:称创新难落地,降本研究未获认真考虑",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 19,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 4,
+        "explainability": 5,
+        "listener_relevance": 4,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "IT之家 11 月 14 日消息,科技媒体 Windows Latest 今天(11 月 14 日)发布博文, 报道称在微软任职逾 14 年的 AI 科学家、AI Frontiers 实验室联合创始人约翰 · 兰福德(John Langford)已离职。 他表示,离开的关键原因是研究成果看不到实际应用的路径,创新想法甚至难以获得认真考虑。 微软任职逾 14 年的 AI 科学家、AI Frontiers 实验室联合创始人约翰 · 兰福德(John Langford),图源:微软 IT之家查询公开资料,兰福德是机器学习领域资深且有影响力的研究者,长期从事机器学习与学习理论研究,其重要贡献是推进 Contextual Bandits(上下文多臂老虎机),与合作者在探索算法、学习问题归约及离线策略评估方面做出代表性工作,为机器学习系统利用不完整反馈改进决策提供了理论与方法基础。 兰福德所在的约 50 人团队于今年 9 月发生调整,被并入穆斯塔法 · 苏莱曼(Mustafa Suleyman)领导的 Microsoft AI 部门,但在研究路线、创新落地渠道和团队重组方式上存在较大分歧,因..."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "IT之家 AI",
+            "link": "https://www.ithome.com/1/027/078.htm"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "74c014fd8520c29bed3c871a2fa8cc434dd6102c15e19a8a6a7c87b5645bd463",
+          "title": "微软 14 年 AI 老将离职:称创新难落地,降本研究未获认真考虑",
+          "link": "https://www.ithome.com/1/027/078.htm",
+          "source_name": "IT之家 AI",
+          "published_at": "2026-11-14T05:05:18+00:00",
+          "summary": "IT之家 11 月 14 日消息,科技媒体 Windows Latest 今天(11 月 14 日)发布博文, 报道称在微软任职逾 14 年的 AI 科学家、AI Frontiers 实验室联合创始人约翰 · 兰福德(John Langford)已离职。 他表示,离开的关键原因是研究成果看不到实际应用的路径,创新想法甚至难以获得认真考虑。 微软任职逾 14 年的 AI 科学家、AI Frontiers 实验室联合创始人约翰 · 兰福德(John Langford),图源:微软 IT之家查询公开资料,兰福德是机器学习领域资深且有影响力的研究者,长期从事机器学习与学习理论研究,其重要贡献是推进 Contextual Bandits(上下文多臂老虎机),与合作者在探索算法、学习问题归约及离线策略评估方面做出代表性工作,为机器学习系统利用不完整反馈改进决策提供了理论与方法基础。 兰福德所在的约 50 人团队于今年 9 月发生调整,被并入穆斯塔法 · 苏莱曼(Mustafa Suleyman)领导的 Microsoft AI 部门,但在研究路线、创新落地渠道和团队重组方式上存在较大分歧,因..."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "generated_at": "2026-11-14T23:10:49.322822+00:00",
+    "total_raw": 530,
+    "total_deduped": 523,
+    "total_clusters": 523,
+    "pipeline": "v3",
+    "shortlist": 8
+  },
+  "radar": {
+    "date": "2026-11-15",
+    "projects": []
+  },
+  "report_rows": [
+    {
+      "event_id": "b0b02ccc57d8e39c1f5c2f036ac5497a7c202c41f8ec3a4ed9e2de17dc1bfc3e",
+      "headline": "OpenAI据报拟撤销独立机器人团队",
+      "one_liner": "据《财富》报道，OpenAI拟撤销独立机器人团队，并将相关人员转入核心研究和应用部门，理由是通用模型已能直接完成部分机器人任务。",
+      "facts": [
+        {
+          "text": "据现有报道，OpenAI 向《财富》确认，公司希望进一步整合机器人研发与通用模型研究，将撤销独立机器人团队，并把相关人员转入核心研究和应用部门。报道给出的组织调整理由是，通用模型已经展现出直接用于部分机器人任务的能力。此前，OpenAI 曾于 2024 年重建机器人团队，并与 Figure 签署合作协议，计划结合自身模型研究与对方的机器人硬件、软件经验，开发人形机器人模型。",
+          "evidence_ids": [
+            "f18547cb40b9930260c0174e7d5a7a4608ce9978d10470383c87c8dc095cc18d"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，英伟达于 10 月公布一项仿真测试：通用模型 GPT-6 Astra 直接生成机器人动作的成功率为 66.3%，使用智能体系统后成功率为 74.8%。两组结果分别对应直接生成动作和使用智能体系统两种设置。报道将其与专用机器人模型的表现作比较，并称通用模型的表现“远超”后者；测试还涉及场景理解、下一步判断和依据执行结果纠错等能力。",
+          "evidence_ids": [
+            "f18547cb40b9930260c0174e7d5a7a4608ce9978d10470383c87c8dc095cc18d"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，OpenAI 在 2019 年 10 月公布机械手解魔方研究：团队在仿真环境中训练神经网络，通过强化学习让系统根据动作结果改善控制方式，再把能力迁移到真实机械手上；为缩小虚拟环境与现实差异，研究人员改变魔方尺寸、质量、手指摩擦等参数。报道还称，机器人研究随后因训练数据不足而停止推进。",
+          "evidence_ids": [
+            "f18547cb40b9930260c0174e7d5a7a4608ce9978d10470383c87c8dc095cc18d"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，联合创始人沃伊切赫·扎伦巴（Wojciech Zaremba）在 2021 年的一档播客中解释，机器人缺少适合预训练的大量数据，而其他领域的数据更丰富，更有利于公司推进通用人工智能（AGI）。报道将预训练解释为先从广泛数据中学习可复用知识与表示，再用于不同任务；机器人还需要把观察与身体动作相对应，因此相关交互记录少于互联网文本。",
+          "evidence_ids": [
+            "f18547cb40b9930260c0174e7d5a7a4608ce9978d10470383c87c8dc095cc18d"
+          ],
+          "single_source": true
+        }
+      ],
+      "why_matters": "如果调整按报道推进，OpenAI 将减少独立机器人团队这一资源单元，并把相关工作并入通用模型核心研究与应用。分析上，这反映公司可能把通用模型能力扩展与机器人系统落地视为同一研发链路，重点是复用通用模型在理解、规划和纠错方面的能力，而不是意味着机器人问题已经解决。",
+      "background": "从报道梳理的技术路线看，专用机器人模型与通用模型、智能体系统之间的能力边界正在变化。机器人任务需要把环境观察映射为具体动作，如果通用模型能够承担更多理解和决策环节，专用训练与数据采集的边际需求可能下降；但这一判断目前主要建立在仿真结果之上。",
+      "impact": "对行业开发者而言，评估机器人方案时可能需要同时测试通用模型直接生成动作与智能体闭环两种路径。对 OpenAI 而言，后续观察点包括人员转入后的项目产出、Figure 合作是否调整，以及通用模型在真实环境中的可靠性。现有材料不足以量化项目周期、成本或人员规模的变化。",
+      "counterpoint": "暂无公开反方信息",
+      "uncertainty": "所给证据只有 1 个独立来源，且仅列出仿真测试结果，未提供专用机器人模型的具体对照成功率、任务规模、完整评测方法或真实机器人复现结果。团队调整的具体生效时间、涉及人数、岗位范围及其他确认信息均未披露；现有证据也未包含“GPT-6 Astra”的官方技术报告或完整模型说明，无法核验其命名、版本与测试配置。",
+      "sources": []
+    },
+    {
+      "event_id": "de147f7dacd717dec80d16964cb1887f03446813f8b1d7af7d699e0bd1ec95bf",
+      "headline": "DeepSeek开放搜索、语音等独立API",
+      "one_liner": "据现有报道，DeepSeek开放联网搜索、文件上传、链接阅读及ASR、TTS等独立API，开发者可组合调用并按接口分别计费。",
+      "facts": [
+        {
+          "text": "据现有报道，DeepSeek宣布正式开放应用API。此前在DeepSeek App中使用的联网搜索、深度思考搜索、文件上传和链接阅读等功能，现可通过API使用；这些能力无需打包，Search、Fetch、OCR、ASR、TTS等接口可按需选择、自由组合，也可单独调用并分别计费。报道将其描述为把DeepSeek App背后的整套基础能力开放给开发者。",
+          "evidence_ids": [
+            "c4751f38fca860ad40605d1fb3b371f0f0edc0229546d70647b100ab3db49e8a"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，联网搜索并非此次才开放，DeepSeek早在今年10月17日已开放自研Search和Fetch接口。当时开发者仍需自行处理工具调用和模型衔接，包括判断是否搜索、调用Search寻找网页、用Fetch读取内容，再把结果交回模型总结。报道称，开启联网搜索功能后，何时搜索、搜索什么、读取哪些网页以及如何依据搜索结果继续回答，可由DeepSeek自动完成。",
+          "evidence_ids": [
+            "c4751f38fca860ad40605d1fb3b371f0f0edc0229546d70647b100ab3db49e8a"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，语音能力此次首次进入开放范围，ASR和TTS获得官方独立接口。此前DeepSeek App虽支持语音交互，但公开的模型API未提供同样完整的语音能力，开发者制作可听可说助手时通常还需另外接入语音识别、语音合成服务；报道所述变化是，ASR和TTS均可通过DeepSeek接口调用，且不要求与全部底层能力打包使用。",
+          "evidence_ids": [
+            "c4751f38fca860ad40605d1fb3b371f0f0edc0229546d70647b100ab3db49e8a"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，V4.1-Flash模型已在Messages、Responses和Chat Completions三类接口下支持相关对话扩展功能。DeepSeek同时开源了一套轻量级聊天前端Demo，支持导入DeepSeek历史对话。报道还转述DeepSeek的说法，开发者甚至可以“1：1复刻出完整的DeepSeek App”；借助这些接口和Demo，开发者无需从头搭建搜索、文件解析、语音识别等基础功能，可较快组装出功能接近DeepSeek App的产品。",
+          "evidence_ids": [
+            "c4751f38fca860ad40605d1fb3b371f0f0edc0229546d70647b100ab3db49e8a"
+          ],
+          "single_source": true
+        }
+      ],
+      "why_matters": "编辑分析：对开发者而言，变化的核心不是新增单一聊天接口，而是把搜索、内容读取、OCR和语音拆分为可组合的调用单元，减少自行串联工具与模型的工作量。对企业应用而言，这可能降低接入检索、文档和语音能力的集成门槛；实际收益仍取决于接口稳定性、计费、权限与兼容性。",
+      "background": "编辑分析：从现有报道看，此次并非从零开放工具能力，而是在此前Search、Fetch接口基础上，增加自动搜索编排和独立语音接口，并扩大可组合调用的范围。报道同时对比了DeepSeek App与公开模型API的能力，变化重点在于接口颗粒度及调用链路。",
+      "impact": "编辑分析：短期内，开发者可能更快验证带联网检索、文档处理或语音交互的应用，原型制作以及助手类产品的实现路径可能更直接。对平台方而言，第三方应用增加也可能扩大其模型与工具接口的使用场景。实际商业影响还需观察调用量、付费采用、稳定性及后续迭代。",
+      "counterpoint": "暂无公开反方信息",
+      "uncertainty": "现有事件仅有一个独立来源，完整价格表在现有证据中被截断，也未提供可供交叉核验的官方文档或公告链接。各接口的实际开放范围、完整计费规则、稳定性与兼容性，以及“1：1复刻出完整的DeepSeek App”的可复现程度，仍待更多来源或实际调用验证。",
+      "sources": []
+    },
+    {
+      "event_id": "0ddcce720302d3fe77169405aa75f73eb837e65458f031afbeff2d63fec3c170",
+      "headline": "礼来CEO谨慎看待AI医疗时间表",
+      "one_liner": "据现有报道，礼来CEO戴夫·里克斯称，AI在不到十年内攻克癌症等疾病的愿景“令人向往”，但不太可能实现。",
+      "facts": [
+        {
+          "text": "据现有报道，IT之家于11 月 14 日消息，礼来（Eli Lilly）董事长兼首席执行官戴夫·里克斯（Dave Ricks）于11 月 12 日在X平台发布推文，回应Anthropic首席执行官达里奥·阿莫代伊（Dario Amodei）关于“AI将在不到十年内攻克癌症等疾病”的预测。里克斯称这一愿景“令人向往”，但认为实现的可能性不大，并表示：“如果这个愿景真得令人向往，但是我认为这不太可能发生”。",
+          "evidence_ids": [
+            "a63ee3aea48eeae85d8b29e51e8b12f3f1554052b50e395111d9bca05def5ea8"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，IT之家此前报道称，阿莫代伊在面向投资者的路演视频中表示，癌症、阿尔茨海默病、心脏病和精神疾病有望在不到十年内成为“过去式”。现有材料将这番对AI医疗前景的乐观判断描述为引发了医药界人士质疑，但没有列出质疑者的姓名、所属机构或具体理由。报道呈现的语境是，里克斯随后针对这组“不到十年”的预测作出回应。",
+          "evidence_ids": [
+            "a63ee3aea48eeae85d8b29e51e8b12f3f1554052b50e395111d9bca05def5ea8"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，里克斯在推文中表示，人类对生物学的认识仍有大片空白，而通过随机人体试验获取可靠证据，依然是决定研发进度的关键瓶颈。他同时表示，自己对AI在医药行业的应用感到振奋，但预计进展更可能是“稳步、渐进的”。报道进一步解释，更快找到候选药物，并不意味着可以同样迅速地证明其对患者安全、有效；从实验室发现到真正用于治疗，仍有必须完成的验证过程。",
+          "evidence_ids": [
+            "a63ee3aea48eeae85d8b29e51e8b12f3f1554052b50e395111d9bca05def5ea8"
+          ],
+          "single_source": true
+        }
+      ],
+      "why_matters": "分析口径：这场分歧把讨论从AI能否辅助药物发现，推进到候选药物能否在短时间内完成可靠验证。对投资者和医疗行业参与者而言，研发时间表会影响预期；对患者而言，最终影响仍取决于安全性和有效性证据是否充分。",
+      "background": "分析口径：现有材料呈现的是一次围绕AI医疗时间表的双CEO表态。阿莫代伊给出“不到十年”的乐观预测，里克斯则以生物学认知和人体试验证据为约束，提出“稳步、渐进”的判断。现有材料未展开双方论证细节，因而更适合视为对研发速度预期的公开分歧。",
+      "impact": "分析口径：若这一分歧持续被行业引用，可能使AI医疗讨论更强调试验设计和验证周期，而非仅以候选药物发现速度衡量进展。对医药研发计划和市场预期而言，这可能促使相关方把“发现—验证—应用”拆开评估；实际研发进度或患者结果是否因此改变，现有材料无法判断。",
+      "counterpoint": "阿莫代伊代表更乐观的一方。据现有报道，他认为癌症、阿尔茨海默病、心脏病和精神疾病有望在不到十年内成为“过去式”。现有材料没有提供支持这一预测的详细论证，也没有列出其他公开反方信息；当前可核验的分歧主要是预测时间表与里克斯谨慎判断之间的差异。",
+      "uncertainty": "现有证据仅为IT之家一篇报道，未附里克斯推文或阿莫代伊路演视频的原始链接与完整上下文；报道所称“医药界人士质疑”未给出具体姓名或机构，事件年份也未在现有材料中明确，上述内容无法独立核验。",
+      "sources": []
+    },
+    {
+      "event_id": "b8b6ee164c1a202a074931989ffa83f1b557c3f914a47fff797785d8d9bac39f",
+      "headline": "亚洲多国政府回应黄仁勋离任",
+      "one_liner": "据现有报道，亚洲部分政府正确认芯片供应承诺，另一些政府则关注其对本地项目的影响并处理正在进行的调查。",
+      "facts": [
+        {
+          "text": "据现有报道，黄仁勋离开英伟达后，亚洲各国政府的应对并不一致：部分政府着手确认芯片供应承诺，另一些政府则关注这一变化对本地项目的影响，或处理仍在进行的调查。报道同时称，英伟达与全球企业建立了密切联系，亚洲尤其如此；英伟达的影响并不局限于美国，其不少亚洲关键合作伙伴在全球人工智能产业中发挥作用。",
+          "evidence_ids": [
+            "299cfd655b5df2e69b8ede045143ce3c41e2a7526bf75d29e28b082199bf46f6"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "黄仁勋离任受到亚洲各界关注之际，据现有报道，英伟达董事会于“Sunday, November 8”启动一项独立调查，时间背景是有关黄仁勋成为中国间谍行动目标的消息。报道还称，黄仁勋承认与新加坡芯片公司Megaspeed前高管Alice Huang存在婚外情。材料把董事会调查、间谍行动相关报道及个人关系披露列在同一事件脉络中，但没有给出调查范围、已作结论或后续时间表。",
+          "evidence_ids": [
+            "299cfd655b5df2e69b8ede045143ce3c41e2a7526bf75d29e28b082199bf46f6"
+          ],
+          "single_source": true
+        }
+      ],
+      "why_matters": "黄仁勋离任与芯片供应、出口管制及政策调查交织，说明事件影响不只落在公司治理层面，也触及亚洲政府和本地产业项目。分析上，后续应关注供应承诺能否确认、项目评估是否更新，以及相关调查是否公布可核验进展。",
+      "background": "从分析口径看，事件同时连接公司治理、跨境芯片供应与出口管制三条线索：董事会调查与针对黄仁勋的间谍行动报道相连，亚洲政府的回应则集中在供应承诺、本地项目和既有调查上。现有材料只呈现这些线索在同一时点的并行状态，无法据此判断离任与各地具体政策之间存在直接因果关系。",
+      "impact": "分析上，潜在影响取决于三个可验证节点：芯片供应承诺能否得到确认，项目评估是否出现正式更新，以及相关调查是否公布进展。对投资者和政策制定者而言，当前更稳妥的判断是风险可能从单一高管变动向供应与监管层面扩散；这属于影响路径分析，不代表现有材料已确认供应中断或政策转向。",
+      "counterpoint": "中国外交部公开否认有关中国女商人充任间谍的指控，并称相关说法“毫无根据”、是对北京的污蔑，构成对相关指控的直接异议。除这一回应外，现有材料未提供其他政府或独立观察者对黄仁勋离任所涉影响的具体反驳，因此无法比较各方判断依据。",
+      "uncertainty": "尚未确认或未在现有材料中说明的事项包括：涉及响应的亚洲国家完整名单、芯片供应承诺的对象与金额及落实时间、董事会独立调查的范围和结论、受限制英伟达芯片与上海数据中心相关说法的依据，以及黄仁勋离任是否已经导致任何具体出口管制或本地项目决定发生变化。",
+      "sources": []
+    },
+    {
+      "event_id": "db30184cbe5311b59796ed571da567abd89b5479aa67ec7ef51a97d0cee698d7",
+      "headline": "llama.cpp 与 ggml 库版本升至 1.0.0",
+      "one_liner": "据现有报道，llama.cpp 与 ggml 的库版本迈入 1.0.0，llama.cpp 已支持超过 150 种模型架构变体。",
+      "facts": [
+        {
+          "text": "据现有报道，开发者 Georgi Gerganov（X 账号为 @ggerganov）于 11 月 13 日在 X 平台发布推文，宣布开源 AI 推理项目 llama.cpp 与底层机器学习引擎 ggml 的库版本迈入 1.0.0。报道称，llama.cpp 主要用 C/C++ 编写，核心作用是让大语言模型在个人电脑、服务器等不同硬件上运行，既可用于本地部署，也可用于云端服务。Gerganov 是 llama.cpp 的创建者，也是 ggml、whisper.cpp 等本地 AI 基础软件的重要开发者。",
+          "evidence_ids": [
+            "8018fd5cadd2d318e84c56bb0956281e72d2d9eeb45eb2590cd785c202d3859a"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，llama.cpp 的 C/C++ 大模型推理库 libllama 与底层机器学习张量库 libggml 采用主版本号标记 API 或 ABI 不兼容变化。MAJOR 示例为 1.x.x → 2.0.0，对应 ./include 中公共 C API 出现破坏性变更；MINOR 示例为 1.0.x → 1.1.0，涵盖向后兼容的功能、后端更新、模型支持或 API 新增；PATCH 示例为 1.0.0 → 1.0.1，对应不改变 API 的 bug 修复。",
+          "evidence_ids": [
+            "8018fd5cadd2d318e84c56bb0956281e72d2d9eeb45eb2590cd785c202d3859a"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，llama.cpp 已支持超过 150 种模型架构变体及主流推测解码方法。ggml 通过专用后端支持不同硬件，每个后端都可以编译为动态库，并按需在运行时加载。公告还称，项目将在 NVIDIA、AMD、Qualcomm、Arm、IBM、Intel 的硬件支持下，持续增加覆盖主要硬件平台的自托管测试运行器，以扩大跨平台测试覆盖。",
+          "evidence_ids": [
+            "8018fd5cadd2d318e84c56bb0956281e72d2d9eeb45eb2590cd785c202d3859a"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，为支撑持续加快的开发节奏，公告列出三项投入：使用 Hugging Face 的 HF Buckets、HF Jobs 扩展 CI 基础设施；在 NVIDIA、AMD、Qualcomm、Arm、IBM、Intel 的硬件支持下，增加覆盖主要硬件平台的自托管测试运行器；在开发流程中审慎使用 LLM，同时继续把代码质量、架构控制和对实现细节的理解放在首位。报道还提到，项目将继续加强自动化测试基础设施。",
+          "evidence_ids": [
+            "8018fd5cadd2d318e84c56bb0956281e72d2d9eeb45eb2590cd785c202d3859a"
+          ],
+          "single_source": true
+        }
+      ],
+      "why_matters": "分析来看，1.0.0 的主要价值不只在于版本号变化，而在于 libllama 与 libggml 将 API/ABI 不兼容映射到主版本号，依赖方可以据此安排兼容性检查。超过 150 种模型架构变体、专用后端和跨平台测试，则关系到本地推理工具链能否覆盖更多模型与硬件组合；这些能力对开发者的实际价值仍取决于具体设备、模型和构建方式。",
+      "background": "背景方面，据现有报道，llama.cpp 由 Georgi Gerganov 创建，主要用 C/C++ 编写，定位是让大语言模型在个人电脑、服务器等不同硬件上运行，并兼顾本地部署和云端服务。Gerganov 同时是 ggml、whisper.cpp 等本地 AI 基础软件的重要开发者，并在个人 X 简介中标注为 Hugging Face 工程师。",
+      "impact": "分析上，主版本升级将成为依赖方复核接口和二进制兼容性的明确节点；后端更新、模型支持和 API 新增被安排在 MINOR 版本中，便于应用按向后兼容假设评估常规升级。对本地部署用户而言，更广的模型与硬件组合可能增加方案选择，但速度、资源占用、兼容性和稳定性不能仅凭版本号判断，仍需在具体模型、设备与构建配置上验证。",
+      "counterpoint": "暂无公开反方信息",
+      "uncertainty": "当前仅有 1 个独立来源；证据未附原始 X 推文、完整 release notes 或变更日志链接，报道中的“11 月 13 日”也未标明年份。现有资料未提供超过 150 种模型架构变体及各类硬件后端的逐项实测结果，也未提供本地运行与云端服务的性能对照，因此无法据此判断具体模型运行时的速度、资源占用、兼容性或稳定性。",
+      "sources": []
+    }
+  ],
+  "report_review": {
+    "overall": "整体表述克制，已把报道事实、条件性分析和未知项分开，五条未发现硬性数字冲突。主要风险是所有事件均只有单一来源；DeepSeek价格、OpenAI仿真对照、亚洲政府具体回应等仍不完整，涉及时点、归因和模型命名的内容需回到原始材料复核。",
+    "items": [
+      {
+        "event_id": "b0b02ccc57d8e39c1f5c2f036ac5497a7c202c41f8ec3a4ed9e2de17dc1bfc3e",
+        "title": "OpenAI据报拟撤销独立机器人团队",
+        "verdict": "准确",
+        "comment": "与证据一致：团队撤并、66.3%/74.8%、2019年魔方项目、2021年数据瓶颈及2024年与Figure合作均可对应。标题保留“据报”较稳妥，分析也没有把仿真结果外推为机器人问题已解决。后续应盯住真实环境复现和专用模型对照数据。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "de147f7dacd717dec80d16964cb1887f03446813f8b1d7af7d699e0bd1ec95bf",
+        "title": "DeepSeek开放搜索、语音等独立API",
+        "verdict": "补充",
+        "comment": "功能开放范围、自动搜索编排、语音接口和三类调用接口均与证据相符，“1∶1复刻”也保留了引述属性。稿件漏掉了证据中已给出的语音识别价格点，且该数字不能外推到其他接口。单一来源下仍宜附官方接口文档和完整价目表。",
+        "corrections": [
+          "补充证据已明确的价格信息：语音识别每小时不到0.4元，报道并称此次打五折；不要把该价格表述套用于全部接口。",
+          "“今年10月17日”未标年份，宜结合官方公告确认具体年份和生效时间。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "0ddcce720302d3fe77169405aa75f73eb837e65458f031afbeff2d63fec3c170",
+        "title": "礼来CEO谨慎看待AI医疗时间表",
+        "verdict": "准确",
+        "comment": "核心事实与引语均能在证据中找到：里克斯于11月12日回应“不到十年”预测，并以随机人体试验和生物学认知为约束。稿件没有把“医药界质疑”补成具名反驳，也明确指出年份缺失，审慎程度合适；后续可补原始推文与路演语境。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "b8b6ee164c1a202a074931989ffa83f1b557c3f914a47fff797785d8d9bac39f",
+        "title": "亚洲多国政府回应黄仁勋离任",
+        "verdict": "补充",
+        "comment": "离任、董事会调查及中方否认均与证据相符，稿件未把并行线索写成已证因果。需补各亚洲国家的具体回应；现有证据除中国外交部外未列国家，“多国”仍偏概括。还应加入外交部称“不了解”受限芯片与上海数据中心关联报道及其反对扰乱供应链的出口管制立场。",
+        "corrections": [
+          "补充外交部后续表态：称不了解有关受限英伟达芯片与上海数据中心关联的报道，并反对扰乱全球供应链的出口管制。",
+          "“亚洲多国”标题需要具体国家及各自措施支撑；现有证据只明确中国外交部回应，未列其他亚洲政府，不能自行补写。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "db30184cbe5311b59796ed571da567abd89b5479aa67ec7ef51a97d0cee698d7",
+        "title": "llama.cpp 与 ggml 库版本升至 1.0.0",
+        "verdict": "准确",
+        "comment": "1.0.0、语义化版本规则、150余种架构变体、后端加载方式及CI投入均与证据一致。把重点放在兼容性边界而非“史诗级更新”较合适；当前不宜据此推断性能提升，建议后续补正式版本说明、变更日志和基准数据。",
+        "corrections": [],
+        "highlights": []
+      }
+    ],
+    "risks": [
+      "五条事件均只有一个独立来源，且各条 sources 列表为空；页面应补充可访问的原始公告、报道或项目链接。",
+      "事件一的“GPT-6 Astra”命名、测试配置、专用模型对照及真实机器人复现均未给出，66.3%和74.8%的仿真结果不可外推。",
+      "事件二的完整API文档、价目表、稳定性及“1∶1复刻”效果仍待官方材料和实际调用验证。",
+      "事件三缺原始推文、路演视频和明确年份，“医药界质疑”也没有具名来源。",
+      "事件四未列亚洲国家完整名单，董事会调查范围、芯片供应承诺及各地具体政策决定仍未明确。",
+      "事件五缺发布年份、完整版本说明和基准测试；1.0.0本身不能证明性能、速度或兼容性提升。"
+    ]
+  },
+  "podcast_review": {
+    "overall": "本期以“速度不等于结论”为主线，将机器人团队调整、DeepSeek API开放、llama.cpp 1.0.0及医疗、芯片动态放在同一框架下比较。结构清晰，持续区分实验能力、组织选择与现实验证；中段关于“开放不等于好用”的提醒略有重复。接口价格及外交部回应等细节缺少材料支撑，发布前需补核。",
+    "show_notes": "本期由林夏、陈默梳理五条AI产业动态：OpenAI拟整合机器人团队，通用模型与智能体在仿真中取得更高成功率；DeepSeek将搜索、OCR、ASR、TTS等App能力拆成可组合API；llama.cpp与ggml升至1.0.0，确立兼容性版本规则并扩大跨平台测试；医疗预测与芯片事件则提供现实校准。节目不追逐“AI太快”的笼统结论，而是追问能力位于哪一层、开发者拥有多少组装权，以及验证还需多久。",
+    "chapters": [
+      {
+        "title": "开场：别把速度当成结论",
+        "intro": "从速度感出发，本期把机器人、接口、本地推理、医疗与芯片消息放到同一张图上。开场先设定判断边界：实验里能够完成，不等于现实中已经普及，技术进步也不能替代工程、验证与组织条件。",
+        "highlights": [
+          "用“实验可行不等于现实普及”统一五条消息的判断尺度",
+          "把“AI发展太快”拆成组织、接口与验证三个问题",
+          "预告从能力层级、组装权和落地距离展开后续讨论"
+        ]
+      },
+      {
+        "title": "通用模型正在改写边界",
+        "intro": "围绕OpenAI拟撤销独立机器人团队，回顾通用模型进入动作生成、纠错与机器人研究的历史。核心不是宣告机器人问题已解决，而是观察专用模型与通用模型边界如何变化，以及组织整合背后的资源选择。",
+        "highlights": [
+          "机器人团队拟整合，通用模型与专用模型边界受关注",
+          "GPT-6 Astra仿真成功率为66.3%，接入智能体后升至74.8%",
+          "真实交互数据稀缺仍是机器人研发的关键约束"
+        ]
+      },
+      {
+        "title": "接口开放与本地底座",
+        "intro": "本章对照DeepSeek开放App底层能力与llama.cpp发布1.0.0：一条路线把服务拆成可组合API，另一条把本地推理底座交给开发者。重点落在组装权下沉，以及接口可用与体验可靠之间的距离。",
+        "highlights": [
+          "DeepSeek将Search、Fetch、OCR、ASR、TTS拆成独立接口",
+          "llama.cpp与ggml 1.0.0明确API与ABI兼容性规则",
+          "API开放与本地开源都下沉组装权，但都仍需工程适配"
+        ]
+      },
+      {
+        "title": "医疗、芯片与明日看点",
+        "intro": "医疗领域的乐观预测与礼来CEO的谨慎回应，叠加黄仁勋离任后的芯片供应与调查动态，提醒听众实验室速度不能直接外推到临床和产业落地。最后给出下一期应继续追踪的证据节点。",
+        "highlights": [
+          "阿莫代伊的乐观医疗时间表与里克斯的谨慎判断形成对照",
+          "人体试验、安全性和有效性验证决定医疗落地速度",
+          "芯片供应承诺、本地项目与独立调查仍待后续证据"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "event_id": "b0b02ccc57d8e39c1f5c2f036ac5497a7c202c41f8ec3a4ed9e2de17dc1bfc3e",
+        "title": "OpenAI据报拟撤销独立机器人团队",
+        "verdict": "补充",
+        "comment": "团队整合、仿真数字与2019年以来的研究脉络均与所给材料一致，且反复强调仿真不等于实机部署。需补明2019年魔方项目后来因数据不足停止，并区分组织调整与机器人技术成熟。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "de147f7dacd717dec80d16964cb1887f03446813f8b1d7af7d699e0bd1ec95bf",
+        "title": "DeepSeek开放搜索、语音等独立API",
+        "verdict": "需修正",
+        "comment": "App能力拆分、独立计费、三类接口与前端Demo均获材料支持，平台化判断也较克制。具体语音价格及“五折”优惠不在所给材料中，需补官方计费口径与条件后再保留。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "db30184cbe5311b59796ed571da567abd89b5479aa67ec7ef51a97d0cee698d7",
+        "title": "llama.cpp 与 ggml 库版本升至 1.0.0",
+        "verdict": "准确",
+        "comment": "1.0.0的API/ABI兼容性规则、150余种架构支持、动态后端与跨平台测试均与材料一致。文稿也明确它不是模型能力升级，避免了“所有硬件零配置运行”的误读。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "c0ddcce720302d3fe77169405aa75f73eb837e65458f031afbeff2d63fec3c170",
+        "title": "礼来CEO谨慎看待AI医疗时间表",
+        "verdict": "准确",
+        "comment": "对阿莫代伊预测、里克斯回应及人体试验瓶颈的转述与材料一致。节目把“发现候选药物”和“证明安全有效”分开，较好校准了医疗AI的时间表预期。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "b8b6ee164c1a202a074931989ffa83f1b557c3f914a47fff797785d8d9bac39f",
+        "title": "亚洲多国政府回应黄仁勋离任",
+        "verdict": "需修正",
+        "comment": "亚洲政府反应和董事会启动调查的时间点与材料相符，且没有虚构调查结论。但外交部回应及上海数据中心说法超出所给材料，需补权威出处或删除。",
+        "corrections": [],
+        "highlights": []
+      }
+    ],
+    "fact_check_notes": [
+      "“语音识别一小时不到4毛，而且这次提供五折”未出现在所给日报要点中，需核对官方价格、计费单位、适用时段及优惠条件；无法确认时应删去具体数字。",
+      "中国外交部11月10日的否认表述及“上海数据中心”关联未获所给日报要点支持，需补充权威来源、明确所指事件，否则不宜作为确定事实播出。",
+      "RT-2于2023年提出、Sora于2024年发布的背景叙述不在所给日报要点的证据范围内，发布前应另核原始来源，尤其是其与机器人模拟探索的关系。",
+      "所给要点称2019年魔方项目在数据不足后停止推进；文稿只说遇到数据瓶颈。若保留该历史节点，宜补明停研事实并限定为该项目。"
+    ]
+  }
+}

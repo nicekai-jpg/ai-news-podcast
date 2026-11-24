@@ -1,0 +1,425 @@
+{
+  "episode_id": "2026-11-16",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "早上好。今天AI最值得听的变化，不是模型又刷新了多少分数，而是它开始进入工作流：什么时候行动、要花多少钱、能带走什么上下文，以及出了问题怎样收场。我们就顺着这几条线，看模型、Agent、机器人和算力如何真正落地。",
+      "start": 1.0,
+      "duration": 19.63,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "何时开口"
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "第一条是Deepnote的Agent Initiative Benchmark。创始人Jakub Jurovych把12个前沿模型放进同一家公司的Slack群，让它们自己判断何时帮忙、何时沉默。结果，OpenAI的GPT-6 Astra和GPT-6.1 Sol包揽前二。",
+      "start": 21.079,
+      "duration": 18.35,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "测试环境是一家虚构公司PageMantle：6年运营历史、71名员工、100家企业客户、11套业务系统，从CRM、发票、工单到产品分析和数据仓库都连在一起。模型要做的不是答题，而是像潜伏在群里的新同事一样工作。",
+      "start": 39.926,
+      "duration": 20.43,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "它可以回频道、回线程、私信当事人，也可以什么都不做。整套评测包含50个真实职场任务、8种场景；每次限时3分钟，由两个盲评模型独立打0到10分。12个模型各跑一遍，共600次完整运行，数据集和代码全部开源。",
+      "start": 60.809,
+      "duration": 18.23,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "这就把沉默也变成了能力的一部分。就像群里那个每次都抢话的人，知识再强也可能拖慢全队；反过来，模型如果永远不开口，同样不可用。测“该不该说”，比单看回答质量更接近协作。",
+      "start": 79.444,
+      "duration": 15.75,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "分数上，Astra得到8.97分，Sol得到8.65分，只差0.32分，而且95%置信区间有重叠，统计上可能分不出谁更高。但价格已经拉开，Sol单个任务只要0.11美元，是Astra价格的六分之一。",
+      "start": 95.627,
+      "duration": 17.51,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "所以OpenAI包揽前二，不等于Astra就是唯一答案。若场景更看重稳定成本，Sol更接近这次评测里的性价比赢家。这不是谁全面碾压，而是能力接近时，账单会替团队做选择。",
+      "start": 113.602,
+      "duration": 16.35,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "再看Anthropic的Fable 5.2，得分8.17，单个任务1.87美元，正好是Sol价格的17倍。折算成70人公司每个月的Slack监控账单，Sol是281美元，Fable 5.2是4684美元，同一项账单约16.7倍。",
+      "start": 130.414,
+      "duration": 16.55,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "这像两个人都说能修电脑，一个报价低得多，公司也未必只按标价选人，还得计算被打断、返工和占用人力的代价。这个评测真正有用的地方，也许不是宣布冠军，而是把能力与总成本放到了同一张表上。",
+      "start": 147.415,
+      "duration": 20.03,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "另一组差距也很醒目：Fable 5.1每单3.02美元，GPT-6 Luna每单0.007美元，价格差430倍，得分只差1.1分。不过一次评测不能直接当采购合同；PageMantle毕竟是虚构公司，任务也经过设定，结论仍要回到自己的场景验证。",
+      "start": 167.945,
+      "duration": 20.51,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "B",
+      "text": "价格快讯也要完整看。Anthropic在11月9日发布Claude Fable 5.2与Mythos 5.2，输入价从Fable 5.1的每百万token 10美元降到8美元，输出从50美元降到40美元；但同一天公告里，日常主力仍是9月22日发布的Opus 5.5。",
+      "start": 188.893,
+      "duration": 20.47,
+      "audios": {
+        "professional": "chunk_011_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      },
+      "chapter": "价格不是唯一答案"
+    },
+    {
+      "id": 12,
+      "host": "A",
+      "text": "牌价降低，不等于默认模型立刻更换。强旗舰与最适合每天运行，本来就是两个问题。原本跑在Fable 5.1上的工作，在同等token量下切到5.2更直接；已有Opus 5.5工作流，则该按升级触发条件决定，而不是只看降价。",
+      "start": 209.824,
+      "duration": 18.31,
+      "audios": {
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "B",
+      "text": "速度同样要单独算：Fable 5.2的输出比Fable 5.1和Mythos 5.1最多快30%；Fast mode还能再快最多2.5倍，但价格变成每百万输入16美元、输出80美元。它卖的是等待时间，不是默认能力。",
+      "start": 228.579,
+      "duration": 15.11,
+      "audios": {
+        "professional": "chunk_013_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "官方基准也不能脱离推理投入档位单看。以FrontierCode 2.0为例，Fable 5.2的Xhigh档为49.1%，Opus 5.5为45.5%；基准名称、分值和effort档位必须一起读，单独摘出一个百分比很容易误判。",
+      "start": 244.163,
+      "duration": 17.11,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "更稳妥的做法，是按任务触发切模型：普通任务走成本更低的主力，真正复杂的任务再升级。这样既不必为最强能力给所有请求付费，也不会因为一味追求便宜，让关键步骤错过质量窗口。",
+      "start": 261.7,
+      "duration": 18.27,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "接着看上下文。11月13日，开源Agent框架DSH发布v0.2.2-rc.3，更新日志只有两行：新增一个实验性的会话导入插件，以及修复Windows桌面版更新。看起来像顺手加功能，实际改动却大得多。",
+      "start": 280.434,
+      "duration": 16.63,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      },
+      "chapter": "上下文与具身能力"
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "从rc.2到rc.3一共6个提交，变更文件达到300个，已经是GitHub单次返回的上限，实际只多不少；新增8880行、删除450行。新增实验包packages/experimental/deepseek-chat-import/占46个文件、6864行新增，主体其实是一套完整插件。",
+      "start": 297.481,
+      "duration": 25.43,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "测试和文档也说明它不是简单接线：新包配了24个测试文件、3747行测试代码，仅导入器的宿主端测试就有821行；中英双语README各179行，外加一份266行的特性设计笔记。工程量藏在细节里。",
+      "start": 323.347,
+      "duration": 19.19,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "DSH的仓库是deepseek-ai/deepseek-harness。harness负责管理会话、调用工具、运行代码和保存历史，模型负责思考，两者合起来才能把想法变成可执行工作。这个插件的用途，就是把外部聊天变成可以接着工作的上下文。",
+      "start": 342.954,
+      "duration": 20.43,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "插件识别的是chat.deepseek.com“导出全部会话”生成的deepseek_data系列ZIP包，格式版本3。带过去的不只是问题和回答，还包括原会话标题和时间、提问与附件、模型思考、联网搜索卡片和最终回答，并在DSH里恢复成一条能继续聊的持久会话。",
+      "start": 363.88,
+      "duration": 21.11,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "这些历史还会直接进入后续请求的模型上下文。这样一来，你在聊天入口里攒好的背景、方案和来回讨论，不必复制粘贴到开发Agent后再讲一遍。像把会议白板直接搬进工位，价值不只是多一个导入按钮。",
+      "start": 385.402,
+      "duration": 17.03,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "这和前面的同事评测正好呼应：一个模型要学会在Slack里判断何时开口，另一个框架把能继续思考的上下文带进下一段工作。再把尺度放大，华为诺亚具身智能团队The North Star用HiPhys-RSI方案，在BEHAVIOR-1K Challenge 2026的57支参赛团队中夺得冠军。",
+      "start": 402.911,
+      "duration": 20.83,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "冠军覆盖100项家庭任务的隐藏测试，取得约0.683的Q-score和48.2%的完整任务成功率。整理、清洁这类任务，需要高层推理、跨房间导航和双臂精细操作，不是一次抓取就能完成。比赛依托斯坦福大学李飞飞团队开发的BEHAVIOR-1K基准平台，并与11月9日至12日举行的CoRL 2026联动。",
+      "start": 424.173,
+      "duration": 31.11,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "冠军技术报告《Scaling by Structure: What Forms Can Scaling Take in Embodied AI?》提出另一种增长问题：具身能力能不能靠构建和改进结构化、可执行的知识与技能持续扩展？报告把可执行程序，以及背后的工具、约束和经验，当作能力积累的载体。",
+      "start": 455.751,
+      "duration": 19.47,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "比赛本身也比去年更重：任务从50项增到100项，场景从3个增到7个；参与者从96人增到265人，参赛提交从18份增到57份。最佳完整任务成功率从12%升到48%，达到上一届的4倍，机器人还要在数分钟级任务里连续处理多物体交互、状态变化和多技能协同。",
+      "start": 475.711,
+      "duration": 25.67,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "硬件侧还有一条海底算力快讯。《海洋信息技术与应用》发表的专利研究，分析了2006年至2026年6月的全球专利，人工筛出168件样本，其中中国占80%；研究称从2021年起，中国成为主导者。",
+      "start": 501.858,
+      "duration": 18.39,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      },
+      "chapter": "算力落地与明日观察"
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "早期探索由美国、挪威和加拿大的海洋工程公司与研究机构主导，2014年之前每年专利申请量不足3件。微软2018年启动“纳提克项目”，在苏格兰沿海部署海底数据中心，运行两年后，故障率仅为陆地对照组的八分之一。",
+      "start": 520.666,
+      "duration": 18.95,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "后来技术重点转向模块化集群、原位检修、多能源互补和智能运维。机房沉到水下也不是简单换位置：陆上数据中心消耗的电力已占全球总用电量的3%，其中相当一部分用于散热；海水能当天然“散热器”，还能降低冷却用水量、避免占用土地。",
+      "start": 540.055,
+      "duration": 19.87,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "上海临港那座全球首个海上风电融合型海底数据中心已于今年年初投入使用，总投资16亿元，整体规划24兆瓦，一期示范项目装机规模2.3兆瓦。设施总重1950吨，位于10米水深海域。",
+      "start": 560.337,
+      "duration": 18.87,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "当然，每一步都有约束：同事可能插话或沉默，导入会增加需要管理的上下文，机器人要经得住长任务稳定性，机房也要解决深海工程问题。把指标放回这些约束里，才知道投入是否合适。",
+      "start": 579.7,
+      "duration": 16.31,
+      "audios": {
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "明天我们会继续盯更贴近真实团队的Agent评测、DSH会话导入的后续更新，也会看企业怎样设定默认模型和升级触发条件；具身智能与海底算力，则要等稳定长任务和工程运行给出更多证据。",
+      "start": 596.419,
+      "duration": 15.47,
+      "audios": {
+        "professional": "chunk_031_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "今天的共同点是，AI不只要展示能力，还得交代它何时行动、花多少钱、带进什么上下文，以及硬件和身体能否接住。我们会继续用实际更新和可复核的数据判断，而不是只看标题。",
+      "start": 612.376,
+      "duration": 16.83,
+      "audios": {
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    }
+  ]
+}

@@ -1,0 +1,567 @@
+{
+  "episode_id": "2026-11-21",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "今天这组AI消息值得听，因为竞争已经从“模型能答什么”，推进到“能不能把活干完”：机器人进入物理世界，模型开始交付工作文档，科学模型触碰三维结构，而开源与降价又在决定谁能真正用起来。",
+      "start": 1.0,
+      "duration": 17.43,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "更关键的是，它们连成了一条线。模型能力在上层快速商品化，算力、训练链路、系统成本和部署方式反而成了关键变量。咱们顺着这条线，看看技术怎么变成生产问题。",
+      "start": 18.879,
+      "duration": 13.68,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "华为云这次发布昇腾原生具身世界模型CloudRobo-WM1.2，把国产算力、具身模型和开放底座放到了一起。关注点不只是芯片本身，而是训练效率、数据规模、部署成本和场景落地速度。",
+      "start": 33.056,
+      "duration": 17.63,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "模型走出屏幕"
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "发布时间是11月16日。“昇腾原生”这个名字很关键，它不是把现成模型搬到昇腾上跑通，而是从模型架构、训练框架、核心算子一路管到推理部署。",
+      "start": 51.139,
+      "duration": 13.52,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "那世界模型和普通视觉模型有什么不同？简单说，它不只告诉机器人杯子是什么、在哪里，还要预测推一下以后杯子会滑动还是倾倒。",
+      "start": 65.064,
+      "duration": 12.56,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "CloudRobo-WM1.2在RoboTwin 2.0和LIBERO-Pro 2.0上的平均成功率分别为88.98%和81.73%，两项评测的平均成功率都是最高值。",
+      "start": 78.057,
+      "duration": 18.31,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "仿真榜单之外还有更贴近真机的数据。第三方独立测试用了5种机器人本体、13项操作任务，平均成功率比次优结果高23个百分点。",
+      "start": 96.832,
+      "duration": 12.24,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "里面还有个细节挺能说明问题：机器人把插头插进去以后意外滑脱，模型会根据新的观测画面动态调整动作，再重试插接。",
+      "start": 109.534,
+      "duration": 10.36,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "这意味着它记住的不只是固定动作轨迹，还会根据物理交互的结果修正下一步。碰到失败以后能调整，比一次做对更接近真实使用。",
+      "start": 120.345,
+      "duration": 11.24,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "背后是PPA，也就是Perceive-Predict-Act多模态世界表征架构。它把感知、预测和动作放在同一阶段联合训练，而不是三个模块各做各的。",
+      "start": 132.085,
+      "duration": 10.48,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "训练信号也不只来自普通摄像头。模型会同时接入RGB视频、DINO语义特征、深度和三维点云，这样空间结构和运动状态才有更完整的表达。",
+      "start": 143.003,
+      "duration": 13.52,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "这也解释了“原生”为什么重要。从世界模型预训练、强化学习到机器人部署，昇腾不是只负责跑推理，而是进入整条训练和部署链路。",
+      "start": 156.984,
+      "duration": 9.64,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "华为云还计划在11月30日开放模型权重、推理代码和后训练代码。机器人团队不必从零搭训练链路，可以接入自己的数据做调试和验证。",
+      "start": 167.069,
+      "duration": 14.44,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "这会降低重复造轮子的成本，但代码开放不等于部署成本自动消失。数据准备、硬件适配和场景验证，仍然要由使用方承担。",
+      "start": 181.983,
+      "duration": 10.32,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "把视线拉回软件界面，OpenAI发布GPT-6.2 Astra和GPT-6.2 Sol，也在做同一件事：让能力从“能演示”变成“能交付”。",
+      "start": 192.73,
+      "duration": 11.56,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "Astra面向复杂项目，Sol更轻快，负责日常写作、编程和多步骤任务。两款模型都已在ChatGPT Work、Codex和API上线。",
+      "start": 204.754,
+      "duration": 10.64,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "价格也有明显变化。Astra的标准API输入价格从上一代每百万 Token 10美元降到8美元，输出价格从50美元降到40美元，两项均下降20%。",
+      "start": 215.811,
+      "duration": 14.24,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "Sol延续上一代价格，每百万 Token 输入2美元、输出10美元。OpenAI公布的测试还显示，单次任务成本下降得比单价更明显。",
+      "start": 230.487,
+      "duration": 10.36,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "这不等于只做了一次降价促销，更像是交付方式变了。表格、幻灯片和文档正在接近可以直接使用的工作成果，而不只是让人再手工整理一遍。",
+      "start": 241.264,
+      "duration": 13.04,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "官方案例里，新旧模型使用同一套模板，为四个团队设计动物主题周边。Astra给出的方案包含矢量图、建议尺寸和打样说明。",
+      "start": 254.8,
+      "duration": 10.08,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "3D也是重点。OpenAI演示过规划后院菜园，还让模型创建汽车3D模型、编写Python程序模拟轮胎和悬架，再用Blender生成动画。",
+      "start": 265.292,
+      "duration": 12.76,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "开发者Thomas Ricouard还做了Paris Atlas，里面有交通、行人、自行车和50多个3D地标，能在浏览器里的虚拟巴黎步行或开车。",
+      "start": 278.531,
+      "duration": 11.44,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "Astra和Sol分开定价也很有意思。一个承担更复杂、更长链条的项目，另一个覆盖高频日常任务，用户选择模型时会更像在分配工作，而不是只选一个万能答案。",
+      "start": 290.403,
+      "duration": 14.0,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "A",
+      "text": "还有一条线更深：当语言模型碰到蛋白质、抗体和分子界面，只靠自然语言文本不够，原子级结构会在调用外部工具时丢失，推理链也会被截断。",
+      "start": 304.871,
+      "duration": 12.88,
+      "audios": {
+        "lively": "chunk_024_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "结构与系统底座"
+    },
+    {
+      "id": 25,
+      "host": "B",
+      "text": "11月10日，SimpleX开放Tetra-1 Preview试用。它把蛋白质结构当作与文本并列的原生模态，让语言推理和结构生成在同一条推理链里交替进行。",
+      "start": 318.241,
+      "duration": 12.24,
+      "audios": {
+        "professional": "chunk_025_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 26,
+      "host": "A",
+      "text": "这和“语言模型调用AlphaFold”不是同一种路线。前者是外部工具返回结果，后者尝试让模型在推理过程中持续接触微观结构，并理解动作会带来什么物理变化。",
+      "start": 330.958,
+      "duration": 12.8,
+      "audios": {
+        "lively": "chunk_026_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 27,
+      "host": "B",
+      "text": "在无同源参照的全新结构和复杂多分子界面结合的公开评测中，报道给出的结论是，Tetra-1超过了AlphaFold3、IsoDDE与Claude Opus。",
+      "start": 344.176,
+      "duration": 12.0,
+      "audios": {
+        "professional": "chunk_027_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "它的目标也不只是输出一个默认构象，而是让研究人员通过自然语言，探索特定生理或药物功能下的蛋白构象及背后的生物学机制。",
+      "start": 356.615,
+      "duration": 11.56,
+      "audios": {
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "B",
+      "text": "不过它仍是Preview阶段的早期探索，开放试用意味着大家可以直接接触，但具体能力还得看后续验证，不能只凭对比名称下结论。",
+      "start": 368.587,
+      "duration": 9.24,
+      "audios": {
+        "professional": "chunk_029_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "阿里那边讨论的是另一个尺度：怎样让应用、模型、基础设施一起设计，而不是各层分别优化，再在中间互相等待。",
+      "start": 378.32,
+      "duration": 9.72,
+      "audios": {
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "11月15日，阿里巴巴在香港沙田万怡酒店举办Alibaba Hong Kong Forum，主题是面向下一代人工智能的全栈协同设计，设置AI Infra & AI Systems和Model & Data两个并行Session。",
+      "start": 388.449,
+      "duration": 17.11,
+      "audios": {
+        "professional": "chunk_031_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "参与交流的有30+位高校学者、50+位高校学生和阿里技术专家。到了11月16日，本届ATC录用135篇论文，阿里入选12篇，并在6篇最佳论文中占2篇。",
+      "start": 406.046,
+      "duration": 15.32,
+      "audios": {
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "B",
+      "text": "其中《Model-as-a-Service in the Wild》依托十万卡级大模型服务平台xMaaS，研究连续六个月、覆盖约30万个应用与7万个模型变体的真实运行数据。",
+      "start": 421.808,
+      "duration": 12.95,
+      "audios": {
+        "professional": "chunk_033_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "它发现显存预留与实际使用不匹配、冷模型长期占用资源等问题。这些问题会直接影响异构算力调度、精细化显存管理和弹性扩缩容。",
+      "start": 435.218,
+      "duration": 13.4,
+      "audios": {
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "另一篇《Lean》聚焦OSS网络成本，用SRv6实现轻量化边缘接入、灵活流量调度和业务流量物理隔离。系统已在生产环境持续运行四年，同等生产流量下将OSS网络总成本较原方案降低55.6%。",
+      "start": 449.089,
+      "duration": 18.23,
+      "audios": {
+        "professional": "chunk_035_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "两篇论文放在一起看很有意思。一篇研究怎么让大模型服务更贴近真实应用，一篇研究怎么让应用与网络基础设施协同省成本，方向都是减少系统里的浪费。",
+      "start": 467.731,
+      "duration": 14.2,
+      "audios": {
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "B",
+      "text": "还有一个本地模型消息。Inkling 2 Mini是新的循环式Transformer，也是多模态Mixture-of-Experts，总参数~26B，每个token激活3B参数，支持1M-token上下文和图像、文本输入。",
+      "start": 482.376,
+      "duration": 15.91,
+      "audios": {
+        "professional": "chunk_037_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "它用部分层循环访问来增加容量，专家权重采用NVFP4和MXFP8混合精度，还附带DSpark drafter，为推理速度争取更多空间。",
+      "start": 498.741,
+      "duration": 13.48,
+      "audios": {
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "在体验测试里，它至少可与Qwen 3.8 27B相比，但发布者也明确说需要更多验证。这个保留态度反而比直接宣布胜负更可信。",
+      "start": 512.661,
+      "duration": 10.8,
+      "audios": {
+        "professional": "chunk_039_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 40,
+      "host": "A",
+      "text": "部署支持也做得比较全，提供transformers、Llama App也就是llama.cpp、MLX支持，SGLang还提供day-zero推理支持。本地用户可以按自己的硬件条件试。",
+      "start": 523.939,
+      "duration": 14.71,
+      "audios": {
+        "lively": "chunk_040_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 41,
+      "host": "B",
+      "text": "这几件事放在一起看，前端在争夺更复杂的任务，底层则在争夺更低的单位成本和更短的工程链路。谁能把模型接进真实工作，谁才算把能力变成了生产力。",
+      "start": 539.13,
+      "duration": 12.52,
+      "audios": {
+        "professional": "chunk_041_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 42,
+      "host": "A",
+      "text": "今天的共同线索很清楚：AI正向机器人、工作流和三维生物结构深入，同时靠开源、降价与系统优化降低使用成本。接下来要看的是这些能力能否稳定进入生产环境。",
+      "start": 552.076,
+      "duration": 14.52,
+      "audios": {
+        "lively": "chunk_042_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "明日看点"
+    },
+    {
+      "id": 43,
+      "host": "B",
+      "text": "明日看点是华为云在11月30日的开放计划能否落地，Astra降价能否继续转成更低的单任务成本，Tetra-1和Inkling 2 Mini又会收到怎样的实测反馈。我们继续看证据，也保留质疑。",
+      "start": 567.066,
+      "duration": 14.63,
+      "audios": {
+        "professional": "chunk_043_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}

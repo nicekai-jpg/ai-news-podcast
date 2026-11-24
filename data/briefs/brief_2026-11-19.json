@@ -1,0 +1,610 @@
+{
+  "thesis": "腾讯混元开源超高性价比大模型 Hy4 flash",
+  "stories": [
+    {
+      "cluster_id": 0,
+      "representative_title": "腾讯混元开源超高性价比大模型 Hy4 flash",
+      "role": "main",
+      "role_emoji": "🔴",
+      "total_score": 19,
+      "scores": {
+        "impact_scope": 4,
+        "novelty": 4,
+        "explainability": 4,
+        "listener_relevance": 4,
+        "source_richness": 3
+      },
+      "context": {
+        "factual_summary": [
+          "腾讯混元正式开源 Hy4 flash 系列模型,包含 Hy4 flash、Hy4 flash-FP8 与 Hy4 flash Base 三个版本,开发者可在 GitHub、Hugging Face、ModelScope、GitCode 等平台下载部署;同时提供 GGUF 版本与开源协议,完整 Hy4 模型开源也在推进中。 来源:腾讯混元"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "AIBase 新闻",
+            "link": "https://www.aibase.com/zh/news/32380"
+          },
+          {
+            "name": "AIBase 新闻",
+            "link": "https://www.aibase.com/zh/news/32381"
+          },
+          {
+            "name": "AI 工具集",
+            "link": "https://mp.weixin.qq.com/s/yaFPaQL6MNVz01GD2sIlRw"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "432a31d48d48f7779674c9c2d8c4eeee95ea3eb24adf5952e1db0fd80c6f99da",
+          "title": "腾讯把 Hy4 flash 开源了:224B 大模型放进 GitHub,人人可下载",
+          "link": "https://www.aibase.com/zh/news/32380",
+          "source_name": "AIBase 新闻",
+          "published_at": "2026-11-18T15:37:29+00:00",
+          "summary": "腾讯混元今日官宣开源 Hy4flash 系列,一口气放出三个版本:标准版 Hy4flash、量化后的 Hy4flash-FP8,以及供研究者从零训练的 Hy4flash Base。GitHub、Hugging Face、ModelScope、GitCode 四个平台均可下载,还额外提供了 GGUF 格式,方便本地部署的玩家跑起来。官方同时预告,更大的 Hy4模型也在开源路上。 卖点不是 最大 ,是划算 这款模型走的是性价比路线:总参数量224B,其中含64B Engram 参数,每个 token 只激活12B,属稀疏架构,既省算力又保能力。它支持多模态输入,上下文长度拉到100万 token,API 价格较 Hy4大幅下调——官方给它的标签是迄今性价比 最高 的 Hy 模型。 落地也铺得够广:腾讯云 TokenHub、元宝、企业微信、QQ、ima、Marvis 等产品已接入该模型。对开发者而言,权重可下、协议公开、价格更低,等于把大模型应用的成本门槛又踩低一截;对腾讯来说,开源既是刷存在感,也是借社区反哺自家生态的惯用打法。"
+        },
+        {
+          "id": "8d6688be2c166fa32d22dfd8d156ca3ab47ded50506ef1225ca961ecf7b47e56",
+          "title": "总参数 224B、支持 100 万超长上下文!腾讯混元重磅开源 Hy4 flash 家族,多端生态全面上线",
+          "link": "https://www.aibase.com/zh/news/32381",
+          "source_name": "AIBase 新闻",
+          "published_at": "2026-11-18T15:43:55+00:00",
+          "summary": "人工智能开源生态再度迎来重磅更新。腾讯混元于2026年11月18日正式宣布开源 Hy4flash 模型,为开发者和广大用户带来了一款主打 极致 性价比的全新大模型选择。 家族矩阵全线亮相,多渠道支持便捷部署 此次腾讯混元推出的开源版本覆盖了多个不同规格,具体包含 Hy4flash、Hy4flash-FP8以及 Hy4flash Base 三个版本。 为了方便全球开发者快速上手与二次开发,腾讯同步开放了多个主流代码托管与模型社区平台。开发者目前可以前往 GitHub、Hugging Face、ModelScope 以及 GitCode 等渠道进行下载和本地部署,同时社区也提供了相应的 GGUF 格式支持与详细的开源协议说明。此外,腾讯混元官方还透露,正在加速推进后续更多 Hy4系列模型的开源工作。 核心架构与性能:大容量与高效率的完美平衡 作为迄今为止定位 最高 性价比的 Hy 模型,Hy4flash 在参数规模与实际效能上展现出了诸多亮点: 参数与激活量: 模型总参数量达到了224B,其中包含64B 的 Engram 参数;而在实际运行中,每个 token 仅激活12B 参数,兼..."
+        },
+        {
+          "id": "e9cabca33f648613522e5abbccfb2dccbe422337e322b9d532991128521f3cb0",
+          "title": "腾讯混元开源超高性价比大模型 Hy4 flash",
+          "link": "https://mp.weixin.qq.com/s/yaFPaQL6MNVz01GD2sIlRw",
+          "source_name": "AI 工具集",
+          "published_at": "2026-11-17T16:00:00+00:00",
+          "summary": "腾讯混元正式开源 Hy4 flash 系列模型,包含 Hy4 flash、Hy4 flash-FP8 与 Hy4 flash Base 三个版本,开发者可在 GitHub、Hugging Face、ModelScope、GitCode 等平台下载部署;同时提供 GGUF 版本与开源协议,完整 Hy4 模型开源也在推进中。 来源:腾讯混元"
+        }
+      ]
+    },
+    {
+      "cluster_id": 1,
+      "representative_title": "OpenAI 发布 GPT-6.2 Astra 和 Sol;王兴兴:家用机器人或将迎来技术突破;《GTA 6》开发商批评 AI 公司放任游戏仿制行为",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 19,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 5,
+        "explainability": 4,
+        "listener_relevance": 4,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "​谷歌 DeepMind 首席战略官跳槽 Anthropic;Anthropic 收紧漏洞披露政策;美国加州起诉 OpenAI;苹果折叠屏 iPhone Duo 适配应用突破 20 万款;谷歌 Gemini 智能体安全测试失控"
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "极客公园（公众号）",
+            "link": "https://mp.weixin.qq.com/s?__biz=MTMwNDMwODQ0MQ==&mid=2653116725&idx=1&sn=fe059f66430c664ee4f5c9e58661844a"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "afde473da5350f3e9d26ebe05eda3805c9024dfd3939b87a4379ff1fa82870c1",
+          "title": "OpenAI 发布 GPT-6.2 Astra 和 Sol;王兴兴:家用机器人或将迎来技术突破;《GTA 6》开发商批评 AI 公司放任游戏仿制行为",
+          "link": "https://mp.weixin.qq.com/s?__biz=MTMwNDMwODQ0MQ==&mid=2653116725&idx=1&sn=fe059f66430c664ee4f5c9e58661844a",
+          "source_name": "极客公园（公众号）",
+          "published_at": "2026-11-18T00:51:00+00:00",
+          "summary": "​谷歌 DeepMind 首席战略官跳槽 Anthropic;Anthropic 收紧漏洞披露政策;美国加州起诉 OpenAI;苹果折叠屏 iPhone Duo 适配应用突破 20 万款;谷歌 Gemini 智能体安全测试失控"
+        }
+      ]
+    },
+    {
+      "cluster_id": 2,
+      "representative_title": "[News] NVIDIA’s 1st Earnings Without Huang: Comeback Ruled Out; Memory, Packaging Secured as TSMC Helps Ease Supply Gap",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 16,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 3,
+        "explainability": 5,
+        "listener_relevance": 2,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Just hours before NVIDIA’s earnings call, Jensen Huang signaled he would be “honored” to return as CEO, putting the chip giant’s leadership turmoil back in the spotlight. Yet the door appears firmly shut: according to Reuters , Chairman Harvey Jones ruled out reinstating Huang and made clear that questions surrounding his departure would be off-limits during the call. Jones, cited by Reuters, said NVIDIA would prioritize finding the right permanent CEO over rushing the succession process. The..."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "TrendForce",
+            "link": "https://www.trendforce.com/news/2026/11/18/news-nvidias-1st-earnings-without-huang-comeback-ruled-out-memory-packaging-secured-as-tsmc-helps-ease-supply-gap/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "f20ae8ec58917b1aa9059ec5a466da3c3e439e87b443309f233cfb341caa2c31",
+          "title": "[News] NVIDIA’s 1st Earnings Without Huang: Comeback Ruled Out; Memory, Packaging Secured as TSMC Helps Ease Supply Gap",
+          "link": "https://www.trendforce.com/news/2026/11/18/news-nvidias-1st-earnings-without-huang-comeback-ruled-out-memory-packaging-secured-as-tsmc-helps-ease-supply-gap/",
+          "source_name": "TrendForce",
+          "published_at": "2026-11-18T02:13:39+00:00",
+          "summary": "Just hours before NVIDIA’s earnings call, Jensen Huang signaled he would be “honored” to return as CEO, putting the chip giant’s leadership turmoil back in the spotlight. Yet the door appears firmly shut: according to Reuters , Chairman Harvey Jones ruled out reinstating Huang and made clear that questions surrounding his departure would be off-limits during the call. Jones, cited by Reuters, said NVIDIA would prioritize finding the right permanent CEO over rushing the succession process. The..."
+        }
+      ]
+    },
+    {
+      "cluster_id": 3,
+      "representative_title": "Conserved Verdicts, Drifting Commitments: Identifying Harmful Overthinking",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 17,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 5,
+        "explainability": 3,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "arXiv:2611.21946v1 Announce Type: new Abstract: A reasoning model that has reached a correct answer can lose it by continuing to think. Deciding whether to stop means comparing two probabilities at the same point of a chain: that the answer the model would give if stopped now is correct (its commitment), and that the answer it will finish with is correct (its verdict). We show that the verdict alone, which is what final-correctness probes estimate, cannot make this comparison. As a forecast o..."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "arXiv cs.AI",
+            "link": "https://arxiv.org/abs/2611.21946"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "79f999b8767bf047280b77c4aae9a912a3f02df99cdf9ecfe6ff19cca98ccdad",
+          "title": "Conserved Verdicts, Drifting Commitments: Identifying Harmful Overthinking",
+          "link": "https://arxiv.org/abs/2611.21946",
+          "source_name": "arXiv cs.AI",
+          "published_at": "2026-11-18T05:00:00+00:00",
+          "summary": "arXiv:2611.21946v1 Announce Type: new Abstract: A reasoning model that has reached a correct answer can lose it by continuing to think. Deciding whether to stop means comparing two probabilities at the same point of a chain: that the answer the model would give if stopped now is correct (its commitment), and that the answer it will finish with is correct (its verdict). We show that the verdict alone, which is what final-correctness probes estimate, cannot make this comparison. As a forecast o..."
+        }
+      ]
+    },
+    {
+      "cluster_id": 4,
+      "representative_title": "把 80+ 项音视频能力装进 Claude Code 后,我合上了 FFmpeg 手册",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 18,
+      "scores": {
+        "impact_scope": 4,
+        "novelty": 5,
+        "explainability": 4,
+        "listener_relevance": 4,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "视频架构 2026-11-18 18:00 北京 AI MediaKit Skill 发布以来,我们陆续收到了许多开发者用户的投稿,他们结合真实使用场景,分享了自己从接入到成片的体验和测试记录。我们从中精选了几篇,陆续与大家分享。 ⚠️ 文中测试结论以及价格、耗时、效果等数据,主要基于作者在特定素材、测试方法和实际环境下的实测结果,具体表现请以实际产品页面、公示价格、账单及使用场景为准。 作者:CSDN Halcyon.平安 本文为节选转载,内容仅代表作者个人观点;全文可点击 【阅读原文】 阅读。 一、 空手开箱 准备试试火山新出的 AI MediaKit Skill时,我第一反应是翻硬盘找素材——想找段画质差的老视频,或者带硬字幕的片源。翻了一圈,一无所获。 索性直接用官方 demo。后来想想这反而是件好事:空着手也能跑通全流程,恰好说明上手门槛低。 于是我打开 Claude Code,把字幕擦除 demo 视频的链接贴进输入框,敲了一句话: “把这个视频里的字幕擦掉。” 就这一句。接下来发生的事,就是这篇要讲的。 先说为什么要折腾这个。干视频活的人,多半被几样东西折磨过:FF..."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "字节跳动技术团队",
+            "link": "https://mp.weixin.qq.com/s?__biz=MzI1MzYzMjE0MQ==&mid=2247524506&idx=1&sn=0d9dab639998e69bde48db3e1dadf652"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "0183da82067d83fdbba38ff1bc336c66dd47dd80f2c5495c7bfa5ebb548e92d2",
+          "title": "把 80+ 项音视频能力装进 Claude Code 后,我合上了 FFmpeg 手册",
+          "link": "https://mp.weixin.qq.com/s?__biz=MzI1MzYzMjE0MQ==&mid=2247524506&idx=1&sn=0d9dab639998e69bde48db3e1dadf652",
+          "source_name": "字节跳动技术团队",
+          "published_at": "2026-11-18T10:00:00+00:00",
+          "summary": "视频架构 2026-11-18 18:00 北京 AI MediaKit Skill 发布以来,我们陆续收到了许多开发者用户的投稿,他们结合真实使用场景,分享了自己从接入到成片的体验和测试记录。我们从中精选了几篇,陆续与大家分享。 ⚠️ 文中测试结论以及价格、耗时、效果等数据,主要基于作者在特定素材、测试方法和实际环境下的实测结果,具体表现请以实际产品页面、公示价格、账单及使用场景为准。 作者:CSDN Halcyon.平安 本文为节选转载,内容仅代表作者个人观点;全文可点击 【阅读原文】 阅读。 一、 空手开箱 准备试试火山新出的 AI MediaKit Skill时,我第一反应是翻硬盘找素材——想找段画质差的老视频,或者带硬字幕的片源。翻了一圈,一无所获。 索性直接用官方 demo。后来想想这反而是件好事:空着手也能跑通全流程,恰好说明上手门槛低。 于是我打开 Claude Code,把字幕擦除 demo 视频的链接贴进输入框,敲了一句话: “把这个视频里的字幕擦掉。” 就这一句。接下来发生的事,就是这篇要讲的。 先说为什么要折腾这个。干视频活的人,多半被几样东西折磨过:FF..."
+        }
+      ]
+    },
+    {
+      "cluster_id": 5,
+      "representative_title": "语音 AI 迎来重磅并购:ElevenLabs 宣布收购日本知名语音 AI 公司 Kotoba",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 16,
+      "scores": {
+        "impact_scope": 4,
+        "novelty": 3,
+        "explainability": 4,
+        "listener_relevance": 4,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "全球语音人工智能领域迎来了一起备受瞩目的行业整合。知名语音 AI 企业 ElevenLabs 于近日正式宣布,已成功收购日本领先的语音 AI 实验室 Kotoba。通过此次强强联手,双方将共同加速 AI 智能体与语音交互界面在全球第四大经济体的深度落地与普及。 突破语言文化壁垒:打造适应本土化深层语境的语音 AI 人类的语言交流不仅是字面词汇的组合,更带有浓厚的地域色彩、复杂的方言口音以及不成文的社会文化规范。相比之下,日语等语言在表达上往往更加精妙和注重语境——例如句子中经常省略主语和宾语、用词会随交谈对象实时变化、习惯通过频繁道歉来维持社交礼貌、用停顿代表思考,甚至拥有独特的“读空气”(kūki o yomu)文化,即需要领会言外之意。 正是看到了这种跨文化交互的复杂性,ElevenLabs 将“让 AI 在不同文化和语境下都自然、直观”作为核心使命。而 Kotoba 凭借其深厚的语音技术研究和对日本本土市场的深刻理解,成为了实现这一目标的天然合作伙伴。 Kotoba 由 AI 研究者 Noriyuki Kojima(小岛敬之)与 Jungo Kasai(笠井淳吾)于2023..."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "AIBase 新闻",
+            "link": "https://www.aibase.com/zh/news/32375"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "f286a95a78602cb83dfb25fe5db6a2316dff9bdbeb131c233e3a71c83c9a43c9",
+          "title": "语音 AI 迎来重磅并购:ElevenLabs 宣布收购日本知名语音 AI 公司 Kotoba",
+          "link": "https://www.aibase.com/zh/news/32375",
+          "source_name": "AIBase 新闻",
+          "published_at": "2026-11-18T11:34:29+00:00",
+          "summary": "全球语音人工智能领域迎来了一起备受瞩目的行业整合。知名语音 AI 企业 ElevenLabs 于近日正式宣布,已成功收购日本领先的语音 AI 实验室 Kotoba。通过此次强强联手,双方将共同加速 AI 智能体与语音交互界面在全球第四大经济体的深度落地与普及。 突破语言文化壁垒:打造适应本土化深层语境的语音 AI 人类的语言交流不仅是字面词汇的组合,更带有浓厚的地域色彩、复杂的方言口音以及不成文的社会文化规范。相比之下,日语等语言在表达上往往更加精妙和注重语境——例如句子中经常省略主语和宾语、用词会随交谈对象实时变化、习惯通过频繁道歉来维持社交礼貌、用停顿代表思考,甚至拥有独特的“读空气”(kūki o yomu)文化,即需要领会言外之意。 正是看到了这种跨文化交互的复杂性,ElevenLabs 将“让 AI 在不同文化和语境下都自然、直观”作为核心使命。而 Kotoba 凭借其深厚的语音技术研究和对日本本土市场的深刻理解,成为了实现这一目标的天然合作伙伴。 Kotoba 由 AI 研究者 Noriyuki Kojima(小岛敬之)与 Jungo Kasai(笠井淳吾)于2023..."
+        }
+      ]
+    },
+    {
+      "cluster_id": 6,
+      "representative_title": "Google ships Gemini 4 Neon, its fourth new Gemini model in a month",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 15,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 4,
+        "explainability": 2,
+        "listener_relevance": 3,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Google released Gemini 4 Neon, promising \"frontier-level intelligence with fast end-to-end task completion across complex software engineering, knowledge work, and science workflows.\" The model is live today through the API at $3 per million input tokens and $15 per million output tokens, above Carbon and Argon's introductory rate of $2/$10 (doubling to $4/$20 on December 1 ) and twice the price of Hydrogen at $1.50/$7.50. Model Input (per 1M tokens) Output (per 1M tokens) Gemini 4 Hydrogen $..."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "The Decoder",
+            "link": "https://the-decoder.com/google-ships-gemini-4-neon-its-fourth-new-gemini-model-in-a-month/"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "3a7670ff256fb2daa29101db0be73fac4d09745808b93ba301b28e57911a5d99",
+          "title": "Google ships Gemini 4 Neon, its fourth new Gemini model in a month",
+          "link": "https://the-decoder.com/google-ships-gemini-4-neon-its-fourth-new-gemini-model-in-a-month/",
+          "source_name": "The Decoder",
+          "published_at": "2026-11-18T21:03:23+00:00",
+          "summary": "Google released Gemini 4 Neon, promising \"frontier-level intelligence with fast end-to-end task completion across complex software engineering, knowledge work, and science workflows.\" The model is live today through the API at $3 per million input tokens and $15 per million output tokens, above Carbon and Argon's introductory rate of $2/$10 (doubling to $4/$20 on December 1 ) and twice the price of Hydrogen at $1.50/$7.50. Model Input (per 1M tokens) Output (per 1M tokens) Gemini 4 Hydrogen $..."
+        }
+      ]
+    },
+    {
+      "cluster_id": 7,
+      "representative_title": "Anthropic prices initial public offering",
+      "role": "support",
+      "role_emoji": "⚪",
+      "total_score": 11,
+      "scores": {
+        "impact_scope": 5,
+        "novelty": 3,
+        "explainability": 1,
+        "listener_relevance": 1,
+        "source_richness": 1
+      },
+      "context": {
+        "factual_summary": [
+          "Today Anthropic, PBC priced its initial public offering of its Class A common stock at $83.00 per share. The offering consists of 980,000,000 shares of Class A common stock, 956,351,354 of which are being sold by Anthropic and 23,648,646 of which are being sold by certain selling stockholders. Anthropic will not receive any proceeds from the sale of shares by the selling stockholders. The shares are expected to begin trading on the Nasdaq Global Select Market on November 19, 2026 under the sy..."
+        ],
+        "historical_background": "",
+        "sources_ranked": [
+          {
+            "name": "Anthropic News",
+            "link": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering"
+          }
+        ]
+      },
+      "items": [
+        {
+          "id": "76db4fd405ce28bbae37221ad1662c04e5355eb242d3c120f0fd500e5c3022d2",
+          "title": "Anthropic prices initial public offering",
+          "link": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
+          "source_name": "Anthropic News",
+          "published_at": "2026-11-18T00:00:00+00:00",
+          "summary": "Today Anthropic, PBC priced its initial public offering of its Class A common stock at $83.00 per share. The offering consists of 980,000,000 shares of Class A common stock, 956,351,354 of which are being sold by Anthropic and 23,648,646 of which are being sold by certain selling stockholders. Anthropic will not receive any proceeds from the sale of shares by the selling stockholders. The shares are expected to begin trading on the Nasdaq Global Select Market on November 19, 2026 under the sy..."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "generated_at": "2026-11-19T01:13:06.737262+00:00",
+    "total_raw": 796,
+    "total_deduped": 782,
+    "total_clusters": 782,
+    "pipeline": "v3",
+    "shortlist": 8
+  },
+  "radar": {
+    "date": "2026-11-19",
+    "projects": []
+  },
+  "report_rows": [
+    {
+      "event_id": "50669cab85eb01aadee23c0178b118c17a720cb285ee9f0b84ebd31911edbf7d",
+      "headline": "腾讯混元开源 Hy4flash 系列三个版本",
+      "one_liner": "腾讯混元开源 Hy4flash、Hy4flash-FP8 和 Hy4flash Base，提供多个下载平台、GGUF 格式及面向研究者的 Base 版本。",
+      "facts": [
+        {
+          "text": "据现有报道，腾讯混元开源了 Hy4flash、Hy4flash-FP8 和 Hy4flash Base 三个版本，其中 Hy4flash-FP8 为量化版本，Hy4flash Base 供研究者从零训练。开发者可在 GitHub、Hugging Face、ModelScope、GitCode 四个平台下载，并使用另行提供的 GGUF 格式；材料同时提到开源协议说明。腾讯混元方面称，更大 Hy4 模型的开源仍在推进中。",
+          "evidence_ids": [
+            "432a31d48d48f7779674c9c2d8c4eeee95ea3eb24adf5952e1db0fd80c6f99da",
+            "8d6688be2c166fa32d22dfd8d156ca3ab47ded50506ef1225ca961ecf7b47e56",
+            "e9cabca33f648613522e5abbccfb2dccbe422337e322b9d532991128521f3cb0"
+          ],
+          "single_source": false
+        },
+        {
+          "text": "据现有报道，Hy4flash 的总参数量为224B，其中包含64B Engram 参数；每个 token 只激活12B参数，属于稀疏架构。该结构把模型总规模与单次计算量分开描述：前者为224B，后者为每个 token 激活12B。两份材料给出的数字一致，但均未同时提供不同硬件环境下的吞吐、延迟或训练成本实测结果。",
+          "evidence_ids": [
+            "432a31d48d48f7779674c9c2d8c4eeee95ea3eb24adf5952e1db0fd80c6f99da",
+            "8d6688be2c166fa32d22dfd8d156ca3ab47ded50506ef1225ca961ecf7b47e56"
+          ],
+          "single_source": false
+        },
+        {
+          "text": "据现有报道，Hy4flash 原生支持多模态输入，上下文长度为100万 token；对应 API 接口价格较 Hy4 大幅降低。现有材料只给出价格变化方向，没有列出具体金额、计费单位或不同版本之间的价格表，也未说明价格比较所采用的调用量、输入长度或输出长度条件。",
+          "evidence_ids": [
+            "432a31d48d48f7779674c9c2d8c4eeee95ea3eb24adf5952e1db0fd80c6f99da",
+            "8d6688be2c166fa32d22dfd8d156ca3ab47ded50506ef1225ca961ecf7b47e56"
+          ],
+          "single_source": false
+        },
+        {
+          "text": "据现有报道，Hy4flash 已接入腾讯云 TokenHub、腾讯元宝、企业微信、QQ、ima 和 Marvis 等产品或服务。两份材料对上述接入对象均作了列出，但均未披露各产品的具体上线时间、启用范围、默认模型路由比例，也没有说明用户是否可以选择手动切换到 Hy4flash。现阶段可核实的是模型进入相关产品的接入列表，接入深度与实际使用量仍无公开数据。",
+          "evidence_ids": [
+            "432a31d48d48f7779674c9c2d8c4eeee95ea3eb24adf5952e1db0fd80c6f99da",
+            "8d6688be2c166fa32d22dfd8d156ca3ab47ded50506ef1225ca961ecf7b47e56"
+          ],
+          "single_source": false
+        }
+      ],
+      "why_matters": "分析口径：此次开放同时覆盖推理、量化分发和从头训练三类使用路径，并提供模型权重、GGUF 格式与多个下载平台。对开发者而言，其意义在于可以在同一模型家族内选择部署或研究入口；对模型生态而言，后续能否形成可复现的第三方评测、工具适配和实际调用量，比“性价比”标签本身更能说明影响。",
+      "background": "分析口径：现有材料把此次动作定位为 Hy4flash 系列的阶段性开放，而不是 Hy4 全家族一次性开源：标准版、FP8 与 Base 同时发布，更大 Hy4 模型仍被列为后续工作。由于资料未提供与现有 Hy4 或其他开源模型的统一测试条件，本次发布更适合作为产品与开放范围的节点，而非模型能力结论的终点。",
+      "impact": "分析口径：短期内，Base 权重和 GGUF 格式可能降低二次训练、本地部署及格式适配的入门门槛；腾讯产品接入则可能扩大开发者的接触与试用场景。中期影响取决于独立基准结果、实际硬件需求、社区反馈及 API 定价能否持续，这些条件目前尚未在材料中得到量化验证。",
+      "counterpoint": "暂无公开反方信息",
+      "uncertainty": "尚待核实：独立第三方性能基准及测试环境；224B稀疏模型在不同显卡、推理框架和量化方案下的显存、吞吐与延迟；API 相对 Hy4 的具体价格、计费单位和版本差异；开源协议的具体名称与条款；“更大 Hy4 模型”的发布时间及完整开放范围。发布日期方面，一份材料明确写为2026年11月18日，另一份仅写“今日”，跨来源日期表述尚未完全一致。",
+      "sources": [
+        {
+          "label": "腾讯混元 Hy4-flash GitHub 仓库",
+          "link": "https://github.com/Tencent-Hunyuan/Hy4-flash",
+          "official": true
+        },
+        {
+          "label": "腾讯混元 Hy4-flash Hugging Face 模型页",
+          "link": "https://huggingface.co/tencent/Hy4-flash",
+          "official": true
+        },
+        {
+          "label": "腾讯混元 Hy4-flash ModelScope 模型页",
+          "link": "https://modelscope.cn/models/Tencent-Hunyuan/Hy4-flash",
+          "official": true
+        },
+        {
+          "label": "腾讯混元 Hy4-flash GitCode 模型页",
+          "link": "https://ai.gitcode.com/tencent_hunyuan/Hy4-flash",
+          "official": true
+        },
+        {
+          "label": "Hy4-flash GGUF 模型页",
+          "link": "https://huggingface.co/AngelSlim/Hy4-flash-GGUF",
+          "official": false
+        },
+        {
+          "label": "Hy4-flash 开源协议",
+          "link": "https://huggingface.co/tencent/Hy4-flash/blob/main/LICENSE",
+          "official": true
+        }
+      ]
+    },
+    {
+      "event_id": "fa7fcd2d6ac9765726f572d7ba739361ae15ad8a969361de5a053864c9e5626a",
+      "headline": "英伟达CEO遴选与算力供需受关注",
+      "one_liner": "据现有报道，NVIDIA 董事长排除黄仁勋复任，董事会推进永久CEO遴选；与此同时，客户追加算力需求，而零部件成本上升正在挤压利润率。",
+      "facts": [
+        {
+          "text": "据现有报道，在 NVIDIA 财报电话会开始前数小时，黄仁勋表示若能回归担任 CEO 将“感到荣幸”，令该公司的领导层变动再次受到关注。Reuters 报道称，董事长 Harvey Jones 排除让黄仁勋复任，并表示电话会将不讨论其离任相关问题；Jones 还称，董事会寻找合适的永久 CEO 优先于加快继任程序。",
+          "evidence_ids": [
+            "f20ae8ec58917b1aa9059ec5a466da3c3e439e87b443309f233cfb341caa2c31"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，董事会将考虑内部和外部候选人，并聘请高管搜寻公司 Heidrick & Struggles 负责永久 CEO 遴选。关于经营与需求，Reuters 引述 NVIDIA 临时 CEO 兼 CFO Colette Kress 表示，超大规模云服务商正急切寻求更多 NVIDIA 计算容量；Commercial Times 引述 Kress 称业务“照常运转”，客户在过去一周继续要求追加出货。现有材料同时称，不断上升的零部件成本正在对盈利能力造成压力。",
+          "evidence_ids": [
+            "f20ae8ec58917b1aa9059ec5a466da3c3e439e87b443309f233cfb341caa2c31"
+          ],
+          "single_source": true
+        }
+      ],
+      "why_matters": "分析：对投资者而言，这次财报电话会的重要性不只在于业绩数字，也包括董事会如何处理 CEO 继任，以及管理层能否在算力需求仍强时平衡供给、交付和成本。市场可能据此重新评估治理连续性和利润率韧性，但现有材料不足以判断实际结果。",
+      "background": "分析：现有材料将事件置于两条并行线索中：一是黄仁勋离任后的永久 CEO 遴选，二是 AI 算力需求旺盛但供给和零部件成本形成约束。领导层安排关系到长期执行连续性，供需与成本则影响交付和利润表现。",
+      "impact": "分析：若永久 CEO 遴选以比较内部和外部候选人为核心，后续关注点将落在交接安排和责任分工；若客户继续追加需求而零部件成本上升，利润率与交付节奏可能承受压力。以上属于情景判断，不代表对财报结果或继任时间表的预测。",
+      "counterpoint": "暂无公开反方信息。现有材料同时呈现黄仁勋关于回归担任 CEO 将“感到荣幸”的表态，以及 Reuters 报道中 Harvey Jones 排除复任、限制讨论离任问题的口径，但未提供董事会以外的独立反方材料，也未显示黄仁勋对相关报道的回应。",
+      "uncertainty": "现有证据仅有一个独立来源，且正文在成本与利润率部分被截断，未提供原文链接。永久 CEO 人选、继任时间表、黄仁勋离任原因，以及收入、利润率、供给缺口等具体数字无法从可见材料中核实；Reuters 与 Commercial Times 的引述出现在同一证据条目中，不能视为两项独立交叉验证。",
+      "sources": [
+        {
+          "label": "现有单一证据条目（内引 Reuters、Commercial Times）",
+          "link": "",
+          "official": false
+        }
+      ]
+    },
+    {
+      "event_id": "7fbee7e1d72e8f51b22dccb3dddce23e7075fe4da33093f944713fc23cdd2018",
+      "headline": "Claude Code 中的 AI MediaKit 实测",
+      "one_liner": "据现有报道，一篇 CSDN 作者的节选转载记录了在 Claude Code 中输入字幕擦除指令的 AI MediaKit Skill 测试流程，并称其最内层包含 80 项原子能力，横跨视频、图像、音频三个模态。",
+      "facts": [
+        {
+          "text": "据现有报道，这篇由 CSDN Halcyon.平安撰写、并注明为节选转载的文章，页面标注“2026-11-18 18:00 北京”。文章介绍对火山引擎新出的 AI MediaKit Skill 的体验，并明确提示，文中测试结论以及价格、耗时、效果等数据主要来自作者在特定素材、测试方法和实际环境下的实测，实际表现应以产品页面、公示价格、账单及使用场景为准。",
+          "evidence_ids": [
+            "0183da82067d83fdbba38ff1bc336c66dd47dd80f2c5495c7bfa5ebb548e92d2"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，作者在打开 Claude Code 后，将字幕擦除 demo 视频链接粘贴到输入框，并输入“这个视频里的字幕擦掉。”由于未找到本地测试素材，作者转用官方 demo 完成流程演示。文章同时以需要编写 ffmpeg 命令拼接两段视频的场景作为对照；这些内容反映作者的个人操作与体验，转载文章本身不代表独立测评结论。",
+          "evidence_ids": [
+            "0183da82067d83fdbba38ff1bc336c66dd47dd80f2c5495c7bfa5ebb548e92d2"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，文章将 AI MediaKit 描述为火山引擎“智能处理”产品线下的能力集合，并称其背后是字节系视频业务的算法沉淀。产品形态被描述为三层结构，最内层是横跨视频、图像、音频三个模态的 80 项原子能力。所给表格列出的类别及数量为：智能视频 30、图像 AI 21、音频 4、通用 2；其他层级内容和其余原子能力未在现有证据中完整展示。",
+          "evidence_ids": [
+            "0183da82067d83fdbba38ff1bc336c66dd47dd80f2c5495c7bfa5ebb548e92d2"
+          ],
+          "single_source": true
+        },
+        {
+          "text": "据现有报道，文章表格列出的代表能力中，智能视频一栏标注数量 30，并列出画质增强、字幕擦除、高光智剪、抠图、剧情分析、ASR；图像 AI 一栏标注数量 21，并列出背景移除、画质增强、擦除修复、OCR、智能裁剪；音频一栏标注数量 4，并列出人声分离、端点识别、转码、元信息。通用一栏标注数量 2，可见“异步任务查询”和以“远程文……”开头的条目；后一项因原文截断无法完整核验。",
+          "evidence_ids": [
+            "0183da82067d83fdbba38ff1bc336c66dd47dd80f2c5495c7bfa5ebb548e92d2"
+          ],
+          "single_source": true
+        }
+      ],
+      "why_matters": "分析口径：如果开发者能够通过 Claude Code 以自然语言串联媒体处理任务，AI MediaKit 的价值不只是增加若干处理接口，而是把音视频操作接入现有的编程交互。它可能减少命令检索和工具配置，但实际效率收益仍取决于任务复杂度、素材质量、调用成本及失败重试情况。",
+      "background": "背景脉络：现有材料没有提供可核验的前序发布记录。唯一可见来源是一篇用户体验文章的节选转载，文章将 AI MediaKit 放在火山引擎“智能处理”产品线下，并与 FFmpeg、专业剪辑软件和在线工具进行对照；这些比较反映作者的产品判断，不能视为跨工具性能结论。",
+      "impact": "影响分析：若自然语言调用能够覆盖成片链路中的多项原子能力，开发者和内容团队可能更倾向把音视频处理纳入可编排的代理工作流。不过，目前材料只展示单次流程和作者特定环境中的定性体验，尚不足以判断批量处理能力、稳定性、计费、速度、输出效果或相对 FFmpeg 和专业软件的实际优势。",
+      "counterpoint": "暂无公开反方信息。现有文章自身提示，测试结论以及价格、耗时、效果等数据受素材、测试方法和实际环境影响，并注明内容仅代表作者个人观点；文中关于上手门槛和工具替代关系的判断不宜直接外推为普遍结论。",
+      "uncertainty": "当前仅有 1 个独立来源，且为节选转载；所给证据后半部分被截断，无法核实 AI MediaKit Skill 三层结构的完整内容、80 项原子能力的完整清单、Claude Code 的具体接入方式、字幕擦除结果、价格、耗时、批量处理表现及效果数据。材料中的“2026-11-18 18:00 北京”也需结合官方页面确认其对应文章发布时间还是产品发布时间。",
+      "sources": [
+        {
+          "label": "CSDN Halcyon.平安《把 80+ 项音视频能力装进 Claude Code 后,我合上了 FFmpeg 手册》（节选转载）",
+          "link": "",
+          "official": false
+        }
+      ]
+    }
+  ],
+  "report_review": {
+    "overall": "三条内容整体较克制，版本、参数和引述大多能回到证据。主要问题是来源强度不均：腾讯混元条目需补全接入名单并厘清社区 GGUF，英伟达条目仅见单一截断证据，MediaKit 条目则把单一用户转载写成“实测”，可见分类合计与80项口径尚未闭合。",
+    "items": [
+      {
+        "event_id": "50669cab85eb01aadee23c0178b118c17a720cb285ee9f0b84ebd31911edbf7d",
+        "title": "腾讯混元开源 Hy4flash 系列三个版本",
+        "verdict": "补充",
+        "comment": "核心版本、参数和上下文数字均与两份材料一致，边界说明也较克制。主要需补列 WorkBuddy，并区分腾讯官方下载页与社区提供的 GGUF；“无公开数据”宜收窄为“现有材料未披露”，避免扩大结论。",
+        "corrections": [
+          "接入对象漏列第二份材料明确提到的 WorkBuddy；若要列出完整名单，应补上，若保留“等”则可注明名单并不完整。",
+          "GGUF 链接指向非官方账号 AngelSlim，且第二份材料称其为社区提供；建议明确其来源，避免与四个腾讯官方下载平台并列理解为官方发布。",
+          "“接入深度与实际使用量仍无公开数据”超出当前证据能够证明的范围，宜改为“现有材料未披露接入深度与实际使用量”。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "fa7fcd2d6ac9765726f572d7ba739361ae15ad8a969361de5a053864c9e5626a",
+        "title": "英伟达CEO遴选与算力供需受关注",
+        "verdict": "补充",
+        "comment": "管理层表态、需求和成本线索均与可见正文一致，且已明确标注单一证据及截断风险，事实层面可靠。当前主要问题是来源卡无链接，宜补齐 Reuters、Commercial Times 原文，并继续避免把两篇引述算作独立交叉验证。",
+        "corrections": [
+          "补齐 Reuters、Commercial Times 的原文链接；当前来源卡链接为空，读者无法追溯具体引述。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "7fbee7e1d72e8f51b22dccb3dddce23e7075fe4da33093f944713fc23cdd2018",
+        "title": "Claude Code 中的 AI MediaKit 实测",
+        "verdict": "需修正",
+        "comment": "事实摘录基本忠实，但“实测”标题抬高了单一用户转载的证据级别，且可见分类仅合计57项，无法据节选复核“80项”。宜改为“用户体验节选”，补明口径差异，并附全文或官方材料。",
+        "corrections": [
+          "标题中的“实测”宜改为“用户体验”或“节选转载”，避免将一篇 CSDN 作者体验文章呈现为独立测评。",
+          "表格可见四类数量合计57项（30+21+4+2），应明确这一可见小计与“最内层80项”口径尚未闭合，不能让读者误以为80项已得到完整核验。",
+          "补齐 CSDN 全文或 AI MediaKit Skill 官方材料链接；当前来源链接为空。"
+        ],
+        "highlights": []
+      }
+    ],
+    "risks": [
+      "事件1的发布日期表述尚未闭合：一份材料写明2026年11月18日，另一份仅写“今日”，应以腾讯官方公告确认。",
+      "事件1的 API 具体价格、计费单位、许可证条款及第三方硬件实测仍未见材料支撑。",
+      "事件2的证据正文被截断且无原文链接，收入、利润率、供给缺口及继任时间表均不能据此确认；Reuters 与 Commercial Times 的引述也不构成两项独立交叉验证。",
+      "事件3仅有单一用户节选转载；80项完整清单、三层结构、Claude Code接入机制、性能、价格和耗时均待完整原文或官方材料核验，页面日期也不宜直接视为产品发布日期。"
+    ]
+  },
+  "podcast_review": {
+    "overall": "本期以“能力、价格与权限”串起新闻，结构清楚，技术、治理与应用案例衔接顺畅，且多次主动区分事实、推断与实测。Hy4 与 AI MediaKit 段落较扎实；不足是“能力与边界”信息过密，且多项人事、论文、安全结论及 NVIDIA 供给表述缺少所给材料支撑，发布前应集中核源。",
+    "show_notes": "本期以“模型变强后，价值究竟由能力、价格还是使用边界决定”为主线，串联 Hy4flash 开源与稀疏架构、英伟达 CEO 遴选及算力供需、模型安全门槛、推理停止机制，以及 Claude Code 调用 AI MediaKit 的媒体处理案例。节目强调区分已确认信息、官方口径与作者实测，也提醒关注接入深度、真实价格、隐私、失败重试与供应利润，避免把演示等同于日常可用。",
+    "chapters": [
+      {
+        "title": "开场",
+        "intro": "主持人用“能力、价格、允许做什么”确立统一观察框架，并决定不按热搜排序，而沿技术变化追踪到产品、成本与公司决策，为后续开源、治理、安全和应用讨论建立同一条主线。",
+        "highlights": [
+          "以能力、价格与权限作为本期判断模型价值的三个维度",
+          "按技术到产品、成本与决策的链条组织新闻",
+          "将开源、能力升级与安全边界放在同一框架下"
+        ]
+      },
+      {
+        "title": "开源与算力账",
+        "intro": "本章先拆解 Hy4flash 的标准、FP8 与 Base 三种开放路径及稀疏参数结构，再转向英伟达：一边是云厂商争夺算力与客户追加出货，另一边是 CEO 遴选、供应保障和利润压力。",
+        "highlights": [
+          "Hy4flash 以三类版本覆盖部署、量化分发和从头训练",
+          "224B 总参数、64B Engram 与每 token 激活 12B 区分模型规模和计算量",
+          "需求旺盛可以与供应、成本及治理压力同时存在"
+        ]
+      },
+      {
+        "title": "能力与边界",
+        "intro": "本章把专业任务、电脑操作、安全阈值、人才流动和推理停止机制放到“能力如何被约束”的语境中，再用 AI MediaKit 展示能力进入工作流后的产品价值，也提醒演示效果与真实成本仍需验证。",
+        "highlights": [
+          "将高风险能力阈值与访问限制视为产品边界",
+          "用 commitment 与 verdict 解释继续推理并非稳赚",
+          "以 Claude Code 加 AI MediaKit 展示自然语言编排媒体任务"
+        ]
+      },
+      {
+        "title": "收尾",
+        "intro": "结尾回到本期主线：开源降低门槛、能力继续上探，但安全、治理、成本与责任必须同步跟上。对模型而言，知道何时停止思考；对产品而言，验证真实素材、账单和稳定性同样关键。",
+        "highlights": [
+          "能力、价格与责任需要同步评估",
+          "适时收手与正确作答同样重要",
+          "后续关注完整 Hy4、CEO 候选与产品实测"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "event_id": "50669cab85eb01aadee23c0178b118c17a720cb285ee9f0b84ebd31911edbf7d",
+        "title": "腾讯混元开源 Hy4flash 系列三个版本",
+        "verdict": "需修正",
+        "comment": "版本、参数、获取渠道、模态、上下文和降价方向均有依据，三类开放路径也交代清楚。主要问题是接入列表中的 WorkBuddy 未见于参考材料，“接入”深度与实际使用量也不宜过度延伸。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "fa7fcd2d6ac9765726f572d7ba739361ae15ad8a969361de5a053864c9e5626a",
+        "title": "英伟达CEO遴选与算力供需受关注",
+        "verdict": "补充",
+        "comment": "CEO 遴选、算力需求追加与组件成本压力基本对应材料，治理与经营并置的分析也成立。台积电协助、存储及封装供应已有保障未获参考材料支持，应补出处或删除。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "7fbee7e1d72e8f51b22dccb3dddce23e7075fe4da33093f944713fc23cdd2018",
+        "title": "Claude Code 中的 AI MediaKit 实测",
+        "verdict": "补充",
+        "comment": "Claude Code 演示、三模态能力集合、产品定位及免责声明均与材料一致，也明确属于特定环境实测。关于在线工具排队、限速、隐私、不能批量及与专业软件的比较，宜注明为作者观察，不能写成普遍结论。",
+        "corrections": [],
+        "highlights": []
+      }
+    ],
+    "fact_check_notes": [
+      "Hy4flash 接入列表中的“WorkBuddy”未出现在对应日报要点中；其余平台的接入时间、启用范围、默认路由和实际使用量也没有公开数据，“已接入”宜限定为列入接入名单。",
+      "“台积电正在帮助缓解供应缺口，存储与封装供应已有保障”未见于对应日报要点，需补充可核验来源；目前只有组件成本上涨压制利润的表述得到支持。",
+      "OpenAI“GPT-6.2 Astra/Sol”发布、进入 ChatGPT Work、Codex 和 API、成本下降，以及 Preparedness Framework 的 Critical、High 门槛和系统安全卡，均未获所给日报要点支持，需核对官方发布与安全卡原文。",
+      "谷歌 DeepMind 人事变动、Jasjit Sekhon 的任期与去向、Zecki 的人员流向统计，以及 Anthropic“即将启动 IPO”等说法均无对应材料支持，需核验公告及统计口径。",
+      "arXiv:2611.21946v1 的研究结论、commitment 与 verdict 的定义、相关恒等式，以及 MATH-500 中 379 个样本和平均损失 3.6 points 等精确数据均未获参考材料支持，需核对论文版本、实验设置与指标。",
+      "AI MediaKit 的“80 项原子能力”来自文章描述，现有表格仅展示了部分类别与数量，宜注明出处，不宜表述为已完整核验的能力清单。",
+      "关于传统专业软件学习成本，以及在线工具存在排队、限速、隐私顾虑和不能批量等比较性判断，应明确归因于作者体验或补充来源。"
+    ]
+  }
+}

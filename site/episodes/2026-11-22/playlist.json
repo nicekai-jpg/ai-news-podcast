@@ -1,0 +1,607 @@
+{
+  "episode_id": "2026-11-22",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "这期我们把AI放进三道难题里：它能不能参与数学证明，能不能成为真正有用的个人代理，以及能不能在现实世界采取行动。单看一项能力很容易兴奋，把它们放在一起，才更容易看清能力与边界。",
+      "start": 1.0,
+      "duration": 16.99,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "从答案到可检验的过程"
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "更值得注意的是，这几件事背后有一个共同转向：模型不再只给出一段文字，而是开始组织工具、保留长期记忆，并尝试把建议推进成行动，同时还要面对电力、训练和真实部署这些硬约束。",
+      "start": 18.439,
+      "duration": 15.31,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "所以今天不讨论某个产品是不是更聪明，而要追问三个问题：结论能不能验证，调用工具后能不能持续工作，进入现实以后又该由谁承担后果。",
+      "start": 34.246,
+      "duration": 13.24,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "这三个问题分别对应可信度、可用性和责任。数学证明可以用严密步骤接受检查，个人代理要看它是否真正完成任务，现实行动还要看权限、边界和失败后的处理方式。",
+      "start": 47.939,
+      "duration": 13.72,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "黎曼猜想的消息恰好展示了这套逻辑。一个人类数学家与Claude合作，公开的是代码而不是一篇已经定稿的论文，所以重点不能只放在AI解决了什么，还要放在外界如何检查。",
+      "start": 62.064,
+      "duration": 16.39,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "A",
+      "text": "这期最重要的不是急着给AI下结论，而是把每一步拆开看：输入是什么，工具做了什么，记忆保存了什么，最后的行动又经过谁授权。只有这样，热闹的案例才能变成可以讨论的证据。",
+      "start": 78.887,
+      "duration": 15.75,
+      "audios": {
+        "lively": "chunk_006_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 7,
+      "host": "B",
+      "text": "这里要守住两个区别：模型参与一个过程，不等于模型单独完成全部工作；系统展示一次能力，也不等于它已经能够稳定部署。把这两层区别说清楚，讨论才不会跑得太快。",
+      "start": 95.102,
+      "duration": 12.44,
+      "audios": {
+        "professional": "chunk_007_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 8,
+      "host": "A",
+      "text": "接下来我们先从黎曼猜想的证明声称讲起，再把话题延伸到工具、长期记忆和真实行动，最后整理一套判断AI进展是否扎实的办法。",
+      "start": 108.004,
+      "duration": 12.0,
+      "audios": {
+        "lively": "chunk_008_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 9,
+      "host": "B",
+      "text": "今天不追逐一句夸张结论，而是追问材料能否复核、过程能否定位错误、行动能否保持可控。这三个尺度，也会贯穿接下来的全部讨论。",
+      "start": 120.455,
+      "duration": 10.24,
+      "audios": {
+        "professional": "chunk_009_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 10,
+      "host": "A",
+      "text": "先说人物和材料。34岁的Anthropic数学家Levent Alpöge发布了一份4页PDF，声称自己与Claude合作找到了黎曼猜想的证明。关键词是声称，因为现有材料还没有完成独立验证。",
+      "start": 131.195,
+      "duration": 16.59,
+      "audios": {
+        "lively": "chunk_010_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "黎曼猜想证明声称的边界"
+    },
+    {
+      "id": 11,
+      "host": "B",
+      "text": "他没有提交一篇传统意义上的完整论文，而是公开了整套Lean形式化证明代码，并分成14个压缩文件供外界下载。对检查者来说，入口从连续论文变成了可以运行、对照的证明材料。",
+      "start": 148.223,
+      "duration": 13.35,
+      "audios": {
+        "professional": "chunk_011_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 12,
+      "host": "A",
+      "text": "两种发布方式并不等价。论文把论证组织成连续文本，读者逐步检查；形式化代码则把证明拆成更细的机器可检查步骤，不符合规则的地方都可能成为追查位置。",
+      "start": 162.034,
+      "duration": 14.84,
+      "audios": {
+        "lively": "chunk_012_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 13,
+      "host": "B",
+      "text": "但代码可下载，也不等于结论已经通过检查。验证者仍要确认代码是否覆盖需要证明的全部内容，文件之间是否完整衔接，以及Lean是否接受了全部关键步骤。",
+      "start": 177.319,
+      "duration": 12.8,
+      "audios": {
+        "professional": "chunk_013_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 14,
+      "host": "A",
+      "text": "Alpöge还提到，如果把代码转成包含全部细节的文档，篇幅会超过25万页。这个数字不是在展示论文有多漂亮，而是在说明形式化结果和日常阅读之间可能存在巨大的展开差异。",
+      "start": 190.593,
+      "duration": 16.87,
+      "audios": {
+        "lively": "chunk_014_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 15,
+      "host": "B",
+      "text": "所以压缩文件的价值，是让庞大的证明细节不必全部铺在纸面上。不过文件越紧凑，外界越需要依靠工具逐步展开和核验，不能因为下载方便，就降低对完整性的要求。",
+      "start": 207.89,
+      "duration": 13.36,
+      "audios": {
+        "professional": "chunk_015_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "对普通听众来说，形式化验证不一定容易亲自完成，但公开代码至少让专业人员拥有共同的检查对象。它解决的是可审查性，而不是替所有人自动给出最终判断。",
+      "start": 221.714,
+      "duration": 12.4,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "黎曼猜想自1859年提出至今，已经悬而未决167年，还带着100万美元悬赏。漫长的历史和高额奖励都说明，这不是一句生成式回答就能跨过去的障碍，更不能把一次声称当成定论。",
+      "start": 234.531,
+      "duration": 17.91,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "悬赏是关注度的信号，不是正确性的证明。验证者不会因为结果惊人、奖励很高就跳过检查，反而会因为影响重大，要求更严格、更透明、更容易重复的论证。",
+      "start": 252.877,
+      "duration": 11.88,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "从分工来看，Claude参与合作，真正承担专业判断的是数学家，外部专家承担验证。AI在这里更像强大的研究工具，而不是专业责任和判断责任的替代者。",
+      "start": 265.174,
+      "duration": 14.2,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "因此，现阶段最准确的表述仍然是：Alpöge声称与Claude合作找到了证明，并公开形式化代码，完整论文尚未提交，结论等待外界验证。少一个限定词，可信度就可能完全不同。",
+      "start": 279.87,
+      "duration": 14.23,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "这个案例也提醒我们，公布材料不等于完成验证。真正需要观察的是，外界能否沿着公开路径检查关键环节，能不能区分已经确认的部分、作者声称的部分和仍然未知的部分。",
+      "start": 294.512,
+      "duration": 16.68,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "这也是这次消息最值得借鉴的地方。不管AI进入证明、代理还是现实工作流，能说清过程、能重复验证、能定位错误，都比一次惊艳演示更能说明它是否可靠。",
+      "start": 311.671,
+      "duration": 13.68,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "把视角拉远一点，数学证明只是最显眼的一例，更大的变化是模型开始组织工具。只会生成文字的模型，与能够调用外部工具、安排步骤并检查结果的系统，工作方式并不相同。",
+      "start": 325.783,
+      "duration": 15.12,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "工具、记忆与真实行动"
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "工具的价值不只是增加信息，更在于每一步都能留下可检查的痕迹。刚才谈到的Lean代码就是典型例子，结果不再只依赖模型说已经完成，而是交给明确规则继续检验。",
+      "start": 341.371,
+      "duration": 12.92,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "长期记忆解决的是连续性问题。没有持续记忆，模型每次都要从头开始；有了记忆，系统才可能记住用户长期目标、已经确认的偏好，以及此前行动的结果。",
+      "start": 354.781,
+      "duration": 13.6,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "但记忆不等于把全部历史塞回上下文。更可靠的做法，是知道哪些内容值得保存，哪些已经过时，哪些只是临时线索，并允许用户查看、纠正和删除。",
+      "start": 368.858,
+      "duration": 11.04,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "当工具和长期记忆结合起来，个人代理的形态才会改变。它不再只回答现在该做什么，而能根据长期目标安排步骤，调用工具执行，再把结果写回记忆，供下一次继续使用。",
+      "start": 380.316,
+      "duration": 14.68,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 28,
+      "host": "A",
+      "text": "这个闭环听上去像一条顺畅流程，现实里却经常在信息缺口、工具返回异常或用户改变目标时中断。代理是否知道何时暂停、保留哪些记录，本身就是能力的一部分。",
+      "start": 395.435,
+      "duration": 15.2,
+      "audios": {
+        "lively": "chunk_028_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 29,
+      "host": "B",
+      "text": "这意味着评价标准会从单轮聪明转向闭环稳定。完成一次任务不够，系统还要在信息不完整、工具失败或环境变化时停下来确认，而不是为了显得有效率继续向前。",
+      "start": 411.047,
+      "duration": 12.56,
+      "audios": {
+        "professional": "chunk_029_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 30,
+      "host": "A",
+      "text": "尤其要看失败以后怎么办。换一条路径、请求补充信息、把任务交还给用户，都比掩盖失败更可靠。一个代理的价值，不只是顺利时答得多好，也是受阻时能否保持诚实。",
+      "start": 424.1,
+      "duration": 15.24,
+      "audios": {
+        "lively": "chunk_030_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 31,
+      "host": "B",
+      "text": "真实行动比信息问答多了一层风险。读取信息通常可以撤回，发出邮件、修改资料或操作外部系统则可能产生实际影响，所以权限、确认节点和异常处理必须成为设计的一部分。",
+      "start": 439.749,
+      "duration": 14.28,
+      "audios": {
+        "professional": "chunk_031_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 32,
+      "host": "A",
+      "text": "能力越接近行动，系统越不能只追求成功率。还要明确允许做什么、不允许做什么，高风险步骤是否必须由人确认，这些边界本身就是代理能力的一部分。",
+      "start": 454.516,
+      "duration": 12.48,
+      "audios": {
+        "lively": "chunk_032_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 33,
+      "host": "B",
+      "text": "建议、执行和授权最好分开。高风险动作可以暂停，异常情况可以交还给人，每次行动也应有清楚记录，这样出了问题才知道在哪里停下、谁来接手。",
+      "start": 467.438,
+      "duration": 11.8,
+      "audios": {
+        "professional": "chunk_033_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 34,
+      "host": "A",
+      "text": "电力、训练和真实部署这些约束同样不能忽略。模型在演示里完成复杂推理，不表示同样的能力能在现实成本和运行条件下长期提供，实验室表现与稳定服务必须分开评价。",
+      "start": 479.698,
+      "duration": 16.52,
+      "audios": {
+        "lively": "chunk_034_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 35,
+      "host": "B",
+      "text": "面对这类新闻，可以先问来源，再问材料。是否有完整材料，材料是否覆盖全部关键环节，别人能否沿同一路径复核，还有哪些部分尚未验证，这比传播中的措辞更重要。",
+      "start": 496.689,
+      "duration": 13.2,
+      "audios": {
+        "professional": "chunk_035_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      },
+      "chapter": "判断AI进展的三个尺度"
+    },
+    {
+      "id": 36,
+      "host": "A",
+      "text": "这四个问题不是降低期待，而是把讨论拉回证据。来源决定我们先看谁说了什么，材料决定我们能检查什么，复核路径决定别人能否重复，未知部分则提醒我们别把空白填成结论。",
+      "start": 510.301,
+      "duration": 16.08,
+      "audios": {
+        "lively": "chunk_036_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 37,
+      "host": "B",
+      "text": "以黎曼猜想消息为例，来源、代码和验证状态都已经说明，但完整论文并未提交。我们不把等待验证说成已经解决，也不把代码公开等同于所有人都能确认，而是准确区分已知、声称和未知。",
+      "start": 526.826,
+      "duration": 16.55,
+      "audios": {
+        "professional": "chunk_037_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 38,
+      "host": "A",
+      "text": "对工具型系统，要追问调用了什么工具，返回结果是否被检查，失败时能否换路径。只有最终答案、没有中间过程的任务，很难判断问题究竟被解决了，还是只是被掩盖了。",
+      "start": 543.831,
+      "duration": 14.88,
+      "audios": {
+        "lively": "chunk_038_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 39,
+      "host": "B",
+      "text": "对带长期记忆的代理，则要追问记了什么、为什么记、怎样更新，以及用户能否纠正。不能被管理的记忆，会把一次偶然判断变成长久偏差，让后续行动建立在错误前提上。",
+      "start": 559.151,
+      "duration": 14.2,
+      "audios": {
+        "professional": "chunk_039_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "记忆和权限也不能分开讨论。代理记住的内容会影响下一步建议，能够执行的权限又会放大错误的后果，所以查看、纠正和收回授权都应该进入日常流程。",
+      "start": 573.829,
+      "duration": 12.0,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 41,
+      "host": "A",
+      "text": "对进入现实世界的代理，评价重点是可控，而不只是能完成。系统要把建议、执行和授权分开，让高风险动作可以暂停，让异常情况可以交还给人。",
+      "start": 586.31,
+      "duration": 12.68,
+      "audios": {
+        "lively": "chunk_041_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 42,
+      "host": "B",
+      "text": "同时，每次行动都要有清楚记录，谁提出、谁确认、执行了什么、结果怎样，都要能够回看。责任不能只写一句由模型负责，而要落实到权限、流程和交接方式。",
+      "start": 599.416,
+      "duration": 12.28,
+      "audios": {
+        "professional": "chunk_042_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 43,
+      "host": "A",
+      "text": "所以，可靠的AI不是一个只凭语气判断真假的聊天对象，也不是一次演示中的万能助手。它更像一个能接受材料检验、按规则调用工具、在边界内行动的系统。",
+      "start": 612.166,
+      "duration": 13.48,
+      "audios": {
+        "lively": "chunk_043_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 44,
+      "host": "B",
+      "text": "这三条线索合在一起，会形成更成熟的AI观：证明让我们看到验证的重要性，工具和记忆让我们看到持续工作的价值，真实行动则提醒我们权限与责任不能外包。",
+      "start": 626.107,
+      "duration": 12.68,
+      "audios": {
+        "professional": "chunk_044_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 45,
+      "host": "A",
+      "text": "今天最值得带走的，不是AI已经证明黎曼猜想这样一句过度简化的话，而是三个判断尺度：结论要接受检查，过程要能够复核，行动必须保持可控。",
+      "start": 639.243,
+      "duration": 11.48,
+      "audios": {
+        "lively": "chunk_045_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 46,
+      "host": "B",
+      "text": "对每个具体成果，都保留声称、待验证和尚未提交这些限定，也是一种负责任的表达。AI可以加速研究，但证明能否成立、工具能否复用、行动能否信任，仍要由完整材料和外部检查来决定。",
+      "start": 651.189,
+      "duration": 14.91,
+      "audios": {
+        "professional": "chunk_046_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}
