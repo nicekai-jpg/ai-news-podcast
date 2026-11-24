@@ -91,6 +91,16 @@ coarse:
     - course
     - sponsored
     - advertisement
+    # 汇总/清单类：不是单一事件，做不成一期节目（代码默认有，YAML 曾漏配）
+    - 早知道
+    - 早报
+    - 周报
+    - 盘点
+    - 汇总
+    - 一览
+    - 合集
+    - 速览
+    - 简报
   demote_keywords:          # 软文 / 评测 / 活动宣传只降权不淘汰
     - 评测
     - 测评

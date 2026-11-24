@@ -29,14 +29,17 @@ GOLD = ROOT / "data" / "eval" / "recommend" / "gold_v1_llm.jsonl"
 OCEAN = ROOT / "data" / "ocean"
 
 
-def load_gold() -> dict[str, dict[str, dict]]:
-    """date -> normalized title -> gold row。"""
+def load_gold(paths: list[Path] | None = None) -> dict[str, dict[str, dict]]:
+    """date -> normalized title -> gold row（多个文件合并，后者覆盖前者）。"""
     by_date: dict[str, dict[str, dict]] = {}
-    for line in GOLD.read_text(encoding="utf-8").splitlines():
-        if not line.strip():
+    for path in paths or [GOLD]:
+        if not path.exists():
             continue
-        row = json.loads(line)
-        by_date.setdefault(str(row.get("date")), {})[normalize_title(row.get("title"))] = row
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            row = json.loads(line)
+            by_date.setdefault(str(row.get("date")), {})[normalize_title(row.get("title"))] = row
     return by_date
 
 
@@ -108,9 +111,15 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument(
         "--llm", action="store_true", help="启用生产同款 Stage 3 LLM 精排（需 MINIMAX_API_KEY）"
     )
+    parser.add_argument(
+        "--gold",
+        nargs="+",
+        default=[str(GOLD)],
+        help="金标 JSONL（可多个；默认 3 天全量金标）",
+    )
     args = parser.parse_args(argv)
 
-    gold = load_gold()
+    gold = load_gold([Path(path) for path in args.gold])
     judge = build_llm_judge() if args.llm else None
     rows = [eval_day(day, gold.get(day, {}), args.k, judge) for day in args.days]
     total_judged = sum(r.get("judged", 0) for r in rows)
