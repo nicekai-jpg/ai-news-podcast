@@ -40,14 +40,42 @@ def load_gold() -> dict[str, dict[str, dict]]:
     return by_date
 
 
-def eval_day(day: str, gold: dict[str, dict], k: int) -> dict:
+def build_llm_judge() -> object:
+    """按生产配置构造 Stage 3 的 LLM rubric judge（需要 MINIMAX_API_KEY）。"""
+    import dataclasses
+
+    import yaml
+
+    from ai_news_podcast.business.pipeline.v3_runner_service import (
+        make_llm_call,
+        make_llm_judge,
+    )
+    from ai_news_podcast.data.config.loader_dao import load_config as load_app_config
+
+    cfg = load_app_config(ROOT / "config" / "config.yaml")
+    v3 = yaml.safe_load((ROOT / "config" / "pipeline_v3.yaml").read_text(encoding="utf-8")) or {}
+    llm_section = v3.get("llm") or {}
+    stage_models = llm_section.get("stage_models") or {}
+    stage_options = llm_section.get("stage_options") or {}
+    llm_cfg = cfg.llm
+    if stage_models:
+        llm_cfg = dataclasses.replace(
+            cfg.llm, stage_models={**cfg.llm.stage_models, **stage_models}
+        )
+    return make_llm_judge(make_llm_call(llm_cfg, "stage3", stage_options.get("stage3")))
+
+
+def eval_day(day: str, gold: dict[str, dict], k: int, llm_judge: object = None) -> dict:
     events_path = OCEAN / day / "events.json"
     if not events_path.exists():
         return {"day": day, "error": "no events"}
     events = [Event.from_dict(row) for row in json.loads(events_path.read_text(encoding="utf-8"))]
     reference = datetime.strptime(day, "%Y-%m-%d").replace(hour=12, tzinfo=UTC)
     shortlist = recommend(
-        events, config_path=ROOT / "config" / "recommend_v3.yaml", reference_time=reference
+        events,
+        config_path=ROOT / "config" / "recommend_v3.yaml",
+        reference_time=reference,
+        llm_judge=llm_judge,
     )
     judged = 0
     positive = 0
@@ -77,10 +105,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--days", nargs="+", default=["2026-11-09", "2026-11-10", "2026-11-11"])
     parser.add_argument("--k", type=int, default=8)
     parser.add_argument("--show-picks", action="store_true")
+    parser.add_argument(
+        "--llm", action="store_true", help="启用生产同款 Stage 3 LLM 精排（需 MINIMAX_API_KEY）"
+    )
     args = parser.parse_args(argv)
 
     gold = load_gold()
-    rows = [eval_day(day, gold.get(day, {}), args.k) for day in args.days]
+    judge = build_llm_judge() if args.llm else None
+    rows = [eval_day(day, gold.get(day, {}), args.k, judge) for day in args.days]
     total_judged = sum(r.get("judged", 0) for r in rows)
     total_positive = sum(r.get("positive", 0) for r in rows)
     print(f"{'日期':12}{'shortlist':>10}{'已判':>6}{'正例':>6}{'P@k':>8}")
