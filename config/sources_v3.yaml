@@ -660,9 +660,16 @@ sources:
     label: 字节 Seed 研究/博客
     channel: c4_web
     parser: generic
+    # /research 会 302 到 /zh/research；卡片是 SSR 的 <a href="/zh/blog/...">，
+    # 标题 h3/h4 两种版式，日期 span 三种类名（mt-auto / shrink-0 / .../50）。
+    # blog_list/* 是纯客户端渲染的空壳，抓不到条目，故不配。
+    selectors:
+      item: 'a[href^="/zh/blog/"]'
+      title: "h3, h4"
+      summary: "p"
+      date: 'span.mt-auto, span.shrink-0, span[class*="/50"]'
     urls:
-      - "https://seed.bytedance.com/research"
-      - "https://seed.bytedance.com/blog_list/foundation"
+      - "https://seed.bytedance.com/zh/research"
     category: official
   - name: miit_policy
     label: 工信部政策文件
