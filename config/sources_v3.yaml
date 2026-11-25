@@ -307,6 +307,9 @@ sources:
     channel: c3_rsshub
     rsshub_route: /meta/ai/blog
     category: official
+    # 2026-11-25 实测 feed 最新一篇是 2026-07-27（4 个月前），对日报无贡献；
+    # 保留配置以便 Meta 恢复更新时直接启用。
+    enabled: false
   - name: mistral_news
     label: Mistral News
     channel: c3_rsshub

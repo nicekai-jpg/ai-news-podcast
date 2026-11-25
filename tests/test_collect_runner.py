@@ -95,10 +95,10 @@ class TestShippedConfig:
     def test_source_counts(self) -> None:
         sources = load_sources(REPO_ROOT / "config" / "sources_v3.yaml")
 
-        # 2026-11-25：删 5 个（路由真坏/不存在）后为 122 源；再新增 8 个
-        # RSSHub 官方厂商博客源（全部实测 200）→ 130 源、启用 112。
+        # 2026-11-25：删 5 个（路由真坏/不存在）后 122 源；新增 8 个 RSSHub
+        # 厂商博客源 → 130 源；meta_ai_blog 4 个月未更新，禁用 → 启用 111。
         assert len(sources) == 130
-        assert sum(1 for source in sources if source.enabled) == 112
+        assert sum(1 for source in sources if source.enabled) == 111
         assert Counter(source.channel for source in sources) == Counter(
             {
                 "c1_rss": 39,
@@ -144,6 +144,7 @@ class TestShippedConfig:
             "venturebeat_ai",
             "tmtpost_news",
             "benedict_evans",
+            "meta_ai_blog",
         }
 
 
