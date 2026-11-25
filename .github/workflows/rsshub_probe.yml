@@ -1,0 +1,68 @@
+name: rsshub route probe
+
+# 手动诊断：只起 RSSHub 容器并逐个探测路由，不跑采集/LLM。
+# 用于区分「路由本身坏了」与「采集并发/资源导致的 503」。
+
+on:
+  workflow_dispatch:
+    inputs:
+      routes:
+        description: "空格分隔的路由（默认探测已知不稳定的 7 个 + 3 个对照组）"
+        required: false
+        type: string
+        default: "/inceptionlabs/blog /deeplearning/the-batch /pixelstech/feed/ai /kiro/blog /papers/category/arxiv/cs.AI /mathpix/blog /wired/tag/artificial-intelligence /juejin/aicoding /huxiu/moment /thepaper/featured"
+
+jobs:
+  probe:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 20
+    services:
+      rsshub:
+        image: ghcr.io/diygod/rsshub:latest
+        ports:
+          - 1200:1200
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for RSSHub ready
+        run: |
+          for i in $(seq 1 60); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 5 http://127.0.0.1:1200/ || true)
+            echo "attempt $i -> $code"
+            if [ "$code" = "200" ] || [ "$code" = "404" ]; then break; fi
+            sleep 2
+          done
+
+      - name: Probe routes serially
+        run: |
+          echo "| route | attempt1 | attempt2 | attempt3 | 最终 |"
+          echo "|---|---|---|---|---|"
+          for route in ${{ github.event.inputs.routes }}; do
+            codes=""
+            final=""
+            for attempt in 1 2 3; do
+              out=$(curl -s -o /tmp/body -w '%{http_code} %{time_total}' --max-time 30 "http://127.0.0.1:1200${route}" || echo "000 0")
+              code=$(echo "$out" | awk '{print $1}')
+              secs=$(echo "$out" | awk '{print $2}')
+              codes="$codes ${code}(${secs}s)"
+              final="$code"
+              sleep 1
+            done
+            size=$(wc -c < /tmp/body 2>/dev/null || echo 0)
+            echo "| ${route} | $(echo $codes | awk '{print $1}') | $(echo $codes | awk '{print $2}') | $(echo $codes | awk '{print $3}') | ${final} (${size}B) |"
+          done
+
+      - name: Probe routes concurrently (simulate max_workers=24)
+        run: |
+          echo "并发 24 探测同一批路由，观察是否出现 503/超时"
+          for route in ${{ github.event.inputs.routes }}; do
+            ( code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 "http://127.0.0.1:1200${route}" || echo 000)
+              echo "${code} ${route}" ) &
+          done
+          wait
+
+      - name: RSSHub version
+        run: |
+          curl -s --max-time 10 http://127.0.0.1:1200/ | head -c 400 || true
+          echo ""
+          docker ps -a --format '{{.Image}} {{.Status}}' || true
