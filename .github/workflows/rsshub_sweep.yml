@@ -1,6 +1,6 @@
 name: rsshub full sweep
 
-# 诊断：按生产配置（同域 0.5s 间隔、20s 超时、2 次重试）串行探测全部 C3 路由，
+# 诊断：按生产配置（同域 0.5s 间隔、20s 超时、3 次尝试）串行探测全部 C3 路由，
 # 用于判断「失败」是路由坏了还是并发/超时导致的。
 
 on:
@@ -26,31 +26,33 @@ jobs:
             sleep 2
           done
 
-      - name: Serial sweep (prod-like: 0.5s gap, 20s timeout, 3 attempts)
+      - name: Extract routes from config
         run: |
-          echo "| route | 结果 | 秒 | 字节 |"
+          grep -oE 'rsshub_route:[[:space:]]*"?[^"[:space:]#]+' config/sources_v3.yaml \
+            | sed -E 's/rsshub_route:[[:space:]]*"?//' > /tmp/routes.txt
+          wc -l < /tmp/routes.txt
+
+      - name: Serial sweep prod-like
+        run: |
+          echo "| route | status | seconds | bytes |"
           echo "|---|---|---|---|"
           FAIL=0
           while read -r route; do
             [ -z "$route" ] && continue
             ok=""
+            code="000"
+            secs="0"
             for attempt in 1 2 3; do
               out=$(curl -s -o /tmp/b -w '%{http_code} %{time_total}' --max-time 20 "http://127.0.0.1:1200${route}" || echo "000 0")
               code=$(echo "$out" | awk '{print $1}')
-              if [ "$code" = "200" ]; then ok="$code"; secs=$(echo "$out" | awk '{print $2}'); break; fi
+              secs=$(echo "$out" | awk '{print $2}')
+              if [ "$code" = "200" ]; then ok="$code"; break; fi
               sleep 1
             done
-            if [ -z "$ok" ]; then
-              ok="$code"; secs=$(echo "$out" | awk '{print $2}'); FAIL=$((FAIL+1))
-            fi
-            size=$(wc -c < /tmp/b 2>/dev/null || echo 0)
-            echo "| ${route} | ${ok} | ${secs} | ${size} |"
+            if [ -z "$ok" ]; then FAIL=$((FAIL+1)); fi
+            bytes=$(wc -c < /tmp/b 2>/dev/null || echo 0)
+            echo "| ${route} | ${code} | ${secs} | ${bytes} |"
             sleep 0.5
-          done < <(python3 -c "
-import re,sys
-text=open('config/sources_v3.yaml',encoding='utf-8').read()
-routes=re.findall(r'rsshub_route:\s*[\"]?([^\s\"#]+)', text)
-for r in routes: print(r)
-")
+          done < /tmp/routes.txt
           echo ""
-          echo "失败数: ${FAIL}"
+          echo "FAILED_COUNT=${FAIL}"
