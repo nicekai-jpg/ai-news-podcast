@@ -409,3 +409,54 @@ class TestSourcesFallback:
             },
         )
         assert [s["link"] for s in review.sources] == ["https://a.com/1"]
+
+
+class TestSyndicatedSources:
+    """量子位/雷峰网转载同一篇通稿时，independent_sources=2 会误导日报。"""
+
+    _EVIDENCE = {"item-1": _EVENT_SUMMARY, "item-2": _EVENT_SUMMARY}  # noqa: RUF012
+    _PAYLOAD = {  # noqa: RUF012
+        "event_id": "evt-1",
+        "headline": "标题",
+        "facts": [{"text": _EVENT_SUMMARY, "evidence_ids": ["item-1"], "single_source": False}],
+    }
+
+    def _sources(self, *, same_title: bool) -> dict:
+        second = _EVENT_TITLE if same_title else "另一家媒体的不同标题报道"
+        return {
+            "item-1": {"label": "量子位", "link": "https://a.com/1", "title": _EVENT_TITLE},
+            "item-2": {"label": "雷峰网", "link": "https://b.com/2", "title": second},
+        }
+
+    def test_identical_titles_count_as_single_source(self) -> None:
+        review = parse_commentary(
+            self._PAYLOAD,
+            make_event(independent_sources=2),
+            config=load_config(),
+            item_evidence=self._EVIDENCE,
+            item_sources=self._sources(same_title=True),
+        )
+        assert review.facts[0].single_source is True
+
+    def test_different_titles_keep_multi_source(self) -> None:
+        review = parse_commentary(
+            self._PAYLOAD,
+            make_event(independent_sources=2),
+            config=load_config(),
+            item_evidence=self._EVIDENCE,
+            item_sources=self._sources(same_title=False),
+        )
+        assert review.facts[0].single_source is False
+
+    def test_missing_titles_fall_back_to_event_value(self) -> None:
+        review = parse_commentary(
+            self._PAYLOAD,
+            make_event(independent_sources=2),
+            config=load_config(),
+            item_evidence=self._EVIDENCE,
+            item_sources={
+                "item-1": {"label": "量子位", "link": "https://a.com/1"},
+                "item-2": {"label": "雷峰网", "link": "https://b.com/2"},
+            },
+        )
+        assert review.facts[0].single_source is False

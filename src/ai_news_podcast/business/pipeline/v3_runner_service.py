@@ -107,6 +107,7 @@ def load_item_sources(ocean_dir: Path) -> dict[str, dict[str, str]]:
             "label": str(row.get("source_label") or row.get("source") or ""),
             "link": link,
             "official": "true" if category in ("official", "research") else "",
+            "title": str(row.get("title") or ""),
         }
     return out
 

@@ -151,6 +151,32 @@ def _sources_from_evidence(
     return sources
 
 
+def _effective_independent_sources(
+    event: Event, item_sources: Mapping[str, Mapping[str, Any]] | None
+) -> int:
+    """有效独立来源数：同标题转载只算一个。
+
+    `event.independent_sources` 按来源计，会把「量子位/雷峰网转载同一篇通稿」
+    算成 2 个独立来源，让日报误以为有交叉印证。这里按标题去重得到真实值；
+    拿不到标题时退回原值（不凭空降低）。
+    """
+    base = int(event.independent_sources or 0)
+    if not item_sources or base <= 1:
+        return base
+    titles: set[str] = set()
+    seen_any = False
+    for item_id in event.item_ids:
+        meta = item_sources.get(str(item_id))
+        title = str((meta or {}).get("title") or "").strip().lower()
+        if not title:
+            continue
+        seen_any = True
+        titles.add(title)
+    if not seen_any:
+        return base
+    return max(1, min(base, len(titles)))
+
+
 def _merge_sources(
     from_llm: list[dict[str, Any]], from_meta: list[dict[str, Any]]
 ) -> list[dict[str, Any]]:
@@ -189,6 +215,8 @@ def _parse_fact(
     allowed_ids: Sequence[str],
     corpus: str,
     banned: Sequence[str],
+    *,
+    effective_sources: int | None = None,
 ) -> Fact | None:
     """解析并校验单条 fact；不满足客观性要求时返回 None 并记日志。"""
     if not isinstance(raw, dict):
@@ -235,7 +263,8 @@ def _parse_fact(
         )
         return None
 
-    single_source = bool(raw.get("single_source", False)) or event.independent_sources <= 1
+    independent = event.independent_sources if effective_sources is None else effective_sources
+    single_source = bool(raw.get("single_source", False)) or independent <= 1
     return Fact(text=text, evidence_ids=valid_ids, single_source=single_source)
 
 
@@ -256,6 +285,7 @@ def parse_commentary(
         raise EditorialValidationError("点评 JSON 顶层必须是对象")
 
     allowed_ids, corpus, _ = resolve_evidence(event, item_evidence)
+    effective_sources = _effective_independent_sources(event, item_sources)
     logger.debug("事件 %s 可引用证据 %s", event.event_id, allowed_ids)
 
     raw_facts = payload.get("facts")
@@ -264,7 +294,17 @@ def parse_commentary(
     facts = [
         fact
         for raw in raw_facts
-        if (fact := _parse_fact(raw, event, allowed_ids, corpus, config.banned_words)) is not None
+        if (
+            fact := _parse_fact(
+                raw,
+                event,
+                allowed_ids,
+                corpus,
+                config.banned_words,
+                effective_sources=effective_sources,
+            )
+        )
+        is not None
     ]
     if not facts:
         raise EditorialValidationError(f"事件 {event.event_id} 没有通过客观性校验的 facts")
