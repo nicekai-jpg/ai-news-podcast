@@ -338,11 +338,6 @@ sources:
     channel: c3_rsshub
     rsshub_route: /kiro/blog
     category: official
-  - name: inceptionlabs_blog
-    label: Inception Labs Blog
-    channel: c3_rsshub
-    rsshub_route: /inceptionlabs/blog
-    category: official
   - name: thinkingmachines_news
     label: Thinking Machines News
     channel: c3_rsshub
@@ -358,11 +353,6 @@ sources:
     channel: c3_rsshub
     rsshub_route: /the-decoder/news
     category: news
-  - name: cool_papers
-    label: Cool Papers (cs.AI)
-    channel: c3_rsshub
-    rsshub_route: /papers/category/arxiv/cs.AI
-    category: research
   - name: mit_tr_ai
     label: MIT Technology Review AI
     channel: c3_rsshub
@@ -383,12 +373,6 @@ sources:
     channel: c3_rsshub
     rsshub_route: /baai/hub
     category: research
-  - name: deeplearning_the_batch
-    label: DeepLearning.AI The Batch
-    channel: c3_rsshub
-    rsshub_route: /deeplearning/the-batch
-    category: research
-    enabled: true
   - name: bfl_announcements
     label: BFL Announcements
     channel: c3_rsshub
@@ -463,7 +447,7 @@ sources:
   - name: qbitai_rsshub
     label: 量子位（RSSHub）
     channel: c3_rsshub
-    rsshub_route: /qbitai/category/资讯
+    rsshub_route: /qbitai/tag/大语言模型
     category: news
     failover: { channel: c1_rss, url: "https://www.qbitai.com/feed" }
   - name: google_research
@@ -533,7 +517,7 @@ sources:
   - name: tmtpost_news
     label: 钛媒体
     channel: c3_rsshub
-    rsshub_route: /tmtpost/news
+    rsshub_route: /tmtpost/new
     category: news
     enabled: false
   - name: leiphone_news
@@ -573,23 +557,11 @@ sources:
     channel: c1_rss
     url: "https://www.engadget.com/rss.xml"
     category: news
-  - name: scientificamerican
-    label: Scientific American
-    channel: c3_rsshub
-    rsshub_route: /scientificamerican
-    category: research
-    enabled: false
   - name: trendforce_news
     label: TrendForce
     channel: c3_rsshub
     rsshub_route: /trendforce/news
     category: news
-  - name: csia_news
-    label: 中国半导体行业协会
-    channel: c3_rsshub
-    rsshub_route: /csia/news
-    category: news
-    enabled: false
   - name: oschina_news
     label: 开源中国
     channel: c1_rss
@@ -624,7 +596,7 @@ sources:
   - name: benedict_evans
     label: Benedict Evans
     channel: c3_rsshub
-    rsshub_route: /benedictevans
+    rsshub_route: /ben-evans
     category: research
     enabled: false
   - name: gwern

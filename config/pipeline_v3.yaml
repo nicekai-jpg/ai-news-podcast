@@ -36,6 +36,10 @@ stage1:
   fetch_fulltext: true   # 关闭可显著加速（正文/证据质量下降），GHA 快速验证可传 --no-fulltext
   max_workers: 24
   request_interval: 0.5   # 同域请求间隔（秒）；越小越快，但可能被站点限流
+  # C3 全部路由都指向同一个 RSSHub 容器（同一域），与外部站点共用 24 并发会把
+  # 容器压出 503/超时（2026-11-25 实测：串行探测 200，24 并发下失败 8 个）。
+  rsshub_workers: 4
+  rsshub_timeout: 45      # RSSHub 需现抓上游再渲染，比直连站慢得多
 
 stage4:
   report_top_n: 5

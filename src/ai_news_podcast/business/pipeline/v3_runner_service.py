@@ -641,6 +641,8 @@ def run_v3_pipeline(
         fetch_fulltext=fetch_fulltext,
         max_workers=max_workers,
         request_interval=float(stage1_settings.get("request_interval", 1.0)),
+        rsshub_workers=int(stage1_settings.get("rsshub_workers", 4)),
+        rsshub_timeout=float(stage1_settings.get("rsshub_timeout", 45.0)),
     )
     logger.info("Stage 1 完成：%s", raw_path)
 

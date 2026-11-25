@@ -15,6 +15,7 @@ collect_and_write(config_path, date_str, output_path, *, ...) -> Path
 
 from __future__ import annotations
 
+import dataclasses
 import logging
 import time
 from collections.abc import Callable
@@ -195,6 +196,8 @@ def collect_all(
     fetch_fulltext: bool = True,
     request_interval: float = 1.0,
     retry_wait: float = 1.0,
+    rsshub_workers: int = 4,
+    rsshub_timeout: float = 45.0,
     now: datetime | None = None,
 ) -> CollectionResult:
     """按 ``config/sources_v3.yaml`` 采集全部启用源，返回统一 item 列表。
@@ -202,7 +205,10 @@ def collect_all(
     - ``rsshub_base``：临时 RSSHub 实例地址；未提供或未就绪时 C3 源标记 skipped
       （若有 failover 则改走备用通道），其它通道照常；
     - ``http_client``：可注入的 httpx 客户端（测试/复用连接池）；
-    - ``max_workers``：源级并发数（``1`` 为串行）。
+    - ``max_workers``：源级并发数（``1`` 为串行）；
+    - ``rsshub_workers``：C3 源独立并发池大小。所有 C3 路由都指向同一个 RSSHub
+      容器（同一域），与外部站点共用 24 并发会把容器压出 503/超时，故单独限流；
+    - ``rsshub_timeout``：C3 的单次超时。RSSHub 需要现抓上游再渲染，比直连站慢得多。
     """
     sources = load_sources(config_path)
     context = FetchContext(
@@ -215,21 +221,31 @@ def collect_all(
         throttle_interval=request_interval,
         retry_wait=retry_wait,
     )
+    rsshub_context = dataclasses.replace(context, timeout=rsshub_timeout)
     try:
         rsshub_ready = _ensure_rsshub(context, sources)
-        if max_workers > 1 and len(sources) > 1:
-            with ThreadPoolExecutor(max_workers=max_workers) as executor:
-                futures = [
-                    executor.submit(_process_source, source, context, rsshub_ready=rsshub_ready)
-                    for source in sources
-                ]
-                results = [future.result() for future in futures]
-        else:
-            results = [
-                _process_source(source, context, rsshub_ready=rsshub_ready) for source in sources
+        c3_sources = [source for source in sources if source.channel == "c3_rsshub"]
+        other_sources = [source for source in sources if source.channel != "c3_rsshub"]
+
+        with ThreadPoolExecutor(max_workers=max(1, max_workers)) as executor:
+            futures = [
+                executor.submit(_process_source, source, context, rsshub_ready=rsshub_ready)
+                for source in other_sources
             ]
+            # C3 单独一个更小的池：同一个 RSSHub 容器扛不住 24 并发
+            with ThreadPoolExecutor(max_workers=max(1, rsshub_workers)) as c3_executor:
+                c3_futures = [
+                    c3_executor.submit(
+                        _process_source, source, rsshub_context, rsshub_ready=rsshub_ready
+                    )
+                    for source in c3_sources
+                ]
+                c3_results = [future.result() for future in c3_futures]
+            results = [future.result() for future in futures] + c3_results
     finally:
         context.close()
+        if rsshub_context is not context:
+            rsshub_context.close()
 
     all_items: list[Item] = []
     stats: list[dict[str, Any]] = []

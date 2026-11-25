@@ -14,7 +14,7 @@ import httpx
 import pytest
 import yaml
 
-from ai_news_podcast.business.collect import collect_all, collect_and_write
+from ai_news_podcast.business.collect import collect_all, collect_and_write, runner
 from ai_news_podcast.business.collect.base import ConfigError, load_sources
 from ai_news_podcast.business.contracts.artifact import read_artifact
 
@@ -95,16 +95,16 @@ class TestShippedConfig:
     def test_source_counts(self) -> None:
         sources = load_sources(REPO_ROOT / "config" / "sources_v3.yaml")
 
-        # 2026-11-24：arXiv 15 源禁用 + 删重复源（openai_news、huggingface_blog_rsshub）
-        # + 删持久失败源（synced_review 403、36kr_native 返 HTML、sensetime_news 解析失败）
-        # → 127 源、启用 107。
-        assert len(sources) == 127
-        assert sum(1 for source in sources if source.enabled) == 107
+        # 2026-11-25：再删 5 个（路由真坏/不存在）：inceptionlabs_blog 503、
+        # cool_papers arxiv 超时、deeplearning_the_batch 503、
+        # scientificamerican 与 csia_news 路由 404 → 122 源、启用 104。
+        assert len(sources) == 122
+        assert sum(1 for source in sources if source.enabled) == 104
         assert Counter(source.channel for source in sources) == Counter(
             {
                 "c1_rss": 39,
                 "c2_atom": 11,
-                "c3_rsshub": 54,
+                "c3_rsshub": 49,
                 "c4_web": 6,
                 "c5_wechat2rss": 17,
             }
@@ -144,8 +144,6 @@ class TestShippedConfig:
         assert disabled - arxiv == {
             "venturebeat_ai",
             "tmtpost_news",
-            "scientificamerican",
-            "csia_news",
             "benedict_evans",
         }
 
@@ -374,3 +372,54 @@ class TestConfigValidation:
     def test_invalid_config_raises(self, tmp_path: Path, sources: list[dict[str, Any]]) -> None:
         with pytest.raises(ConfigError):
             load_sources(_write_config(tmp_path, sources))
+
+
+class TestRsshubPool:
+    def test_c3_uses_separate_pool_and_longer_timeout(
+        self, tmp_path: Path, monkeypatch: Any
+    ) -> None:
+        """C3 必须走独立池和更长超时：所有 RSSHub 路由同域，与外部站点共用并发会 503。"""
+        seen: dict[str, Any] = {}
+        original = runner._process_source  # noqa: SLF001 - 需要观察内部传参
+
+        def spy(source, ctx, *, rsshub_ready):
+            seen.setdefault(source.channel, ctx.timeout)
+            return original(source, ctx, rsshub_ready=rsshub_ready)
+
+        monkeypatch.setattr(runner, "_process_source", spy)
+        monkeypatch.setattr(runner, "_ensure_rsshub", lambda ctx, sources: True)
+
+        config = _write_config(
+            tmp_path,
+            [
+                {
+                    "name": "plain",
+                    "label": "Plain",
+                    "channel": "c1_rss",
+                    "url": GOOD_URL,
+                    "category": "news",
+                    "limit": 5,
+                },
+                {
+                    "name": "via_hub",
+                    "label": "Hub",
+                    "channel": "c3_rsshub",
+                    "rsshub_route": "/demo/feed",
+                    "category": "news",
+                    "limit": 5,
+                },
+            ],
+        )
+        client = _FakeClient(
+            {
+                GOOD_URL: _atom_feed(),
+                "http://localhost:1200/demo/feed": _atom_feed(title="Hub 新闻"),
+            }
+        )
+        _run(
+            config,
+            client,
+            rsshub_base="http://localhost:1200",
+            rsshub_timeout=45.0,
+        )
+        assert seen["c3_rsshub"] == 45.0
