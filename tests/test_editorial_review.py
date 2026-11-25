@@ -141,3 +141,85 @@ class TestParsers:
         )
         assert len(review.chapters) == 2
         assert review.chapters[1]["title"] == ""
+
+
+class TestChapterAlignment:
+    """章节标题必须与文稿 [CHAPTER] 严格一致：页面导航直接来自它。"""
+
+    SCRIPT = "[CHAPTER] 今日开场\n[Host A] 你好\n[CHAPTER] 数据底座\n[Host B] 继续"
+
+    def _payload(self, titles: list[str]) -> dict:
+        return {
+            "show_notes": "本期看点" * 20,
+            "chapters": [{"title": t, "intro": "导语", "highlights": ["听点"]} for t in titles],
+            "items": [],
+        }
+
+    def test_drifted_titles_are_corrected(self) -> None:
+        review = build_podcast_review(
+            self.SCRIPT,
+            [_row()],
+            [_event()],
+            _llm(self._payload(["开场白", "数据底座换挡"])),
+            config_path=CONFIG,
+        )
+        assert [c["title"] for c in review.chapters] == ["今日开场", "数据底座"]
+        assert any("章节标题已按文稿校正" in note for note in review.fact_check_notes)
+        # LLM 写的 intro 保留
+        assert review.chapters[0]["intro"] == "导语"
+
+    def test_matching_titles_keep_no_extra_note(self) -> None:
+        review = build_podcast_review(
+            self.SCRIPT,
+            [_row()],
+            [_event()],
+            _llm(self._payload(["今日开场", "数据底座"])),
+            config_path=CONFIG,
+        )
+        assert [c["title"] for c in review.chapters] == ["今日开场", "数据底座"]
+        assert not any("章节" in note for note in review.fact_check_notes)
+
+    def test_chapter_count_mismatch_rebuilds_from_script(self) -> None:
+        review = build_podcast_review(
+            self.SCRIPT,
+            [_row()],
+            [_event()],
+            _llm(self._payload(["只有一章"])),
+            config_path=CONFIG,
+        )
+        assert [c["title"] for c in review.chapters] == ["今日开场", "数据底座"]
+        assert any("章节数与文稿不一致" in note for note in review.fact_check_notes)
+
+    def test_missing_chapters_generated_from_script(self) -> None:
+        review = build_podcast_review(
+            self.SCRIPT,
+            [_row()],
+            [_event()],
+            _llm({"show_notes": "看点" * 30, "items": []}),
+            config_path=CONFIG,
+        )
+        assert [c["title"] for c in review.chapters] == ["今日开场", "数据底座"]
+        assert any("生成骨架" in note for note in review.fact_check_notes)
+
+
+def test_review_quality_flags_chapter_mismatch() -> None:
+    from ai_news_podcast.business.editorial.review_quality import review_quality
+
+    review = {
+        "overall": "整体评价" * 20,
+        "items": [{"event_id": "e1", "comment": "有依据"}],
+        "show_notes": "本期看点" * 30,
+        "chapters": [
+            {"title": "开场白", "intro": "导语"},
+            {"title": "数据底座换挡", "intro": "导语"},
+            {"title": "收尾", "intro": "导语"},
+        ],
+    }
+    aligned = review_quality(
+        review, kind="podcast", script_chapters=["今日开场", "数据底座", "明日看点"]
+    )
+    assert aligned["checks"]["chapter_alignment"] is False
+    assert any("不一致" in issue for issue in aligned["issues"])
+
+    ok = review_quality(review, kind="podcast")
+    assert "chapter_alignment" not in ok["checks"]

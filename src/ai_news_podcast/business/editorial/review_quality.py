@@ -5,7 +5,12 @@ from __future__ import annotations
 from typing import Any
 
 
-def review_quality(review: dict[str, Any], *, kind: str = "report") -> dict[str, Any]:
+def review_quality(
+    review: dict[str, Any],
+    *,
+    kind: str = "report",
+    script_chapters: list[str] | None = None,
+) -> dict[str, Any]:
     """返回 {score, issues, checks}；score 越低越需要人工复核。"""
     issues: list[str] = []
     checks: dict[str, bool] = {}
@@ -32,6 +37,14 @@ def review_quality(review: dict[str, Any], *, kind: str = "report") -> dict[str,
         )
         if not checks["chapters"]:
             issues.append("chapters 少于 3 或缺少 title/intro")
+        if script_chapters:
+            # 章节标题必须与文稿 [CHAPTER] 一致，否则页面导航与音频不符
+            got = [str(c.get("title") or "") for c in chapters if isinstance(c, dict)]
+            checks["chapter_alignment"] = len(got) == len(script_chapters) and all(
+                str(a).strip() == str(b).strip() for a, b in zip(got, script_chapters, strict=False)
+            )
+            if not checks["chapter_alignment"]:
+                issues.append("章节标题与文稿 [CHAPTER] 不一致")
     else:
         checks["item_comments"] = all(item.get("comment") for item in items)
         if not checks["item_comments"]:

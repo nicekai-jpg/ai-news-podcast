@@ -56,6 +56,18 @@ def _commentary_audit(rows: list[dict]) -> dict[str, Any] | None:
     }
 
 
+def _script_chapters(path: Path) -> list[str]:
+    """读取文稿里的 [CHAPTER] 标题（缺失返回空）。"""
+    if not path.is_file():
+        return []
+    titles: list[str] = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if stripped.startswith("[CHAPTER]"):
+            titles.append(stripped[len("[CHAPTER]") :].strip())
+    return titles
+
+
 def _size_kb(path: Path) -> int:
     return round(path.stat().st_size / 1024) if path.is_file() else 0
 
@@ -67,6 +79,7 @@ def build_snapshot(data_dir: Path, date_str: str) -> dict[str, Any]:
     editorial = data_dir / "editorial" / date_str
     report_review = _load_json(editorial / "report_review.json", {})
     podcast_review = _load_json(editorial / "podcast_review.json", {})
+    script_chapters = _script_chapters(Path("site") / "episodes" / f"{date_str}.txt")
     coverage = label_coverage(events) if events else {"warnings": [], "fields": {}}
     report_rows = _load_json(editorial / "report.json", [])
     health_path = ocean / "source_health.json"
@@ -80,7 +93,9 @@ def build_snapshot(data_dir: Path, date_str: str) -> dict[str, Any]:
         "events_kb": _size_kb(ocean / "events.json"),
         "report_quality": review_quality(report_review, kind="report") if report_review else None,
         "podcast_quality": (
-            review_quality(podcast_review, kind="podcast") if podcast_review else None
+            review_quality(podcast_review, kind="podcast", script_chapters=script_chapters)
+            if podcast_review
+            else None
         ),
         "commentary_audit": _commentary_audit(report_rows),
         "coverage_warnings": coverage.get("warnings", []),

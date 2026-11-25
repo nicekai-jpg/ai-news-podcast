@@ -128,6 +128,63 @@ def parse_podcast_review(payload: Mapping[str, Any], config: EditorialConfig) ->
     )
 
 
+def _normalize_title(text: str) -> str:
+    """章节标题归一化：去空白与标点，用于宽松比对。"""
+    import re
+
+    return re.sub(r"[\s\-—·:：,，。.!！?？\"'“”‘’()（）\[\]【】|]", "", str(text or "")).lower()
+
+
+def _align_chapters(
+    review: PodcastReview, script_titles: list[str]
+) -> tuple[PodcastReview, list[str]]:
+    """让 S7 的章节标题与文稿 ``[CHAPTER]`` 严格对齐。
+
+    章节标题是页面上章节导航的唯一来源，必须与听众实际听到的一致。
+    之前只靠 prompt 约束 + 事后记一条 note，标题被改写时页面就会漂移。
+    这里改为程序对齐：
+    - 数量一致 → 逐条比对，不匹配的用文稿标题覆盖（保留 LLM 写的 intro）；
+    - 数量不一致 → 以文稿为准重建章节骨架（保留能对上的 intro），并记 note。
+    """
+    notes: list[str] = []
+    if not script_titles:
+        return review, notes
+    chapters = list(review.chapters or [])
+    if not chapters:
+        notes.append("点评未给章节，已按文稿 [CHAPTER] 生成骨架")
+        review.chapters = [
+            {"title": title, "intro": "", "highlights": []} for title in script_titles
+        ]
+        return review, notes
+
+    if len(chapters) == len(script_titles):
+        drifted: list[str] = []
+        for chapter, title in zip(chapters, script_titles, strict=True):
+            current = str(chapter.get("title") or "")
+            if _normalize_title(current) != _normalize_title(title):
+                drifted.append(f"{current or '(空)'} → {title}")
+                chapter["title"] = title
+        if drifted:
+            notes.append("章节标题已按文稿校正：" + "；".join(drifted))
+        return review, notes
+
+    notes.append(
+        f"章节数与文稿不一致（点评 {len(chapters)} 章 / 文稿 {len(script_titles)} 章），已按文稿重建"
+    )
+    aligned: list[dict[str, Any]] = []
+    for index, title in enumerate(script_titles):
+        source = chapters[index] if index < len(chapters) else {}
+        aligned.append(
+            {
+                "title": title,
+                "intro": str(source.get("intro") or ""),
+                "highlights": list(source.get("highlights") or []),
+            }
+        )
+    review.chapters = aligned
+    return review, notes
+
+
 def _deterministic_fact_notes(
     script: str,
     config: EditorialConfig,
@@ -183,10 +240,7 @@ def build_podcast_review(
         return PodcastReview()
 
     notes, script_chapters = _deterministic_fact_notes(script, config, evidence_text)
-    if review.chapters and len(review.chapters) != len(script_chapters):
-        notes.append(
-            f"章节数与文稿不一致：文稿 {len(script_chapters)} 章，点评 {len(review.chapters)} 章"
-        )
-    review.fact_check_notes = notes
+    review, chapter_notes = _align_chapters(review, script_chapters)
+    review.fact_check_notes = [*notes, *chapter_notes]
     logger.info("S7 播客点评完成：%s 章，%s 条点评", len(review.chapters), len(review.items))
     return review
