@@ -295,10 +295,11 @@ Stage CLIs (console scripts in pyproject):
 ## Docs to read before touching sensitive areas
 
 - `docs/architecture.md` and `docs/pipeline_walkthrough.md` — pipeline design
-- `docs/source_to_recommendation.md` — L1–L4 分层方案与「还没做什么」的权威清单
+- `docs/source_to_recommendation.md` — L1–L4 分层方案与「还没做什么」的权威清单；
+  **只有 L1 采集达成，L4 推荐 P@8 仅 0.59、目标未达成**
 - `docs/editorial_quality.md` — S4–S7 成品质量的检查项与已修缺陷（改日报/文稿/点评前先看）；
   改 `presentation/site_builder/static/` 必须按其中 §7 做浏览器验证，pytest 覆盖不到前端
-- `docs/recommend_evaluation.md` — 推荐评测口径与「S3 已到上限」的证据
+- `docs/recommend_evaluation.md` — 推荐评测口径；**P@8 仅 0.59，推荐目标未达成**，四条调参路已证否
 - `docs/rsshub_cache_relay.md` — RSSHub 快照缓存中转（GHA 临时实例）设计
 - `docs/development.md`, `docs/contributing.md` — dev workflow
 - `docs/tts_complete_guide.md`, `docs/gha_cosyvoice2_deployment_log.md` — CosyVoice setup
