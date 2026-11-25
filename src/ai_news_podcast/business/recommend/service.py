@@ -88,9 +88,13 @@ def recommend_with_audit(
     llm_judge: LLMJudge | None = None,
     covered_event_ids: set[str] | None = None,
     reference_time: datetime | None = None,
+    config: RecommendConfig | None = None,
 ) -> RecommendationResult:
-    """与 `recommend` 相同，但额外返回召回/粗排/精排/重排的中间结果。"""
-    config = RecommendConfig.load(config_path)
+    """与 `recommend` 相同，但额外返回召回/粗排/精排/重排的中间结果。
+
+    ``config`` 可显式传入（A/B 对照用），否则从 ``config_path`` 加载。
+    """
+    config = config or RecommendConfig.load(config_path)
     reference = ensure_utc(reference_time) if reference_time is not None else datetime.now(tz=UTC)
     covered = set(covered_event_ids or ())
     normalized_events = _coerce_events(events)
@@ -104,8 +108,14 @@ def recommend_with_audit(
     )
     scored = score_events([candidate.event for candidate in coarse.candidates], config.fine)
     scored = _apply_llm_judge(scored, llm_judge, config)
+    # LLM 判定「不是具体新闻事件」的候选不进入重排（观点/教程/汇总类）。
+    event_scores = scored
+    if config.fine.eventness_gate:
+        event_scores = [item for item in scored if item.is_event is not False]
+    if len(event_scores) != len(scored):
+        logger.info("LLM 事件性闸门：剔除 %d 条非新闻事件", len(scored) - len(event_scores))
     reranked = rerank(
-        scored,
+        event_scores,
         config.rerank,
         covered_event_ids=covered,
         reference_time=reference,

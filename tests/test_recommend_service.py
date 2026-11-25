@@ -281,3 +281,27 @@ class TestLoadEvents:
     def test_load_events_missing_file(self, tmp_path) -> None:
         with pytest.raises(FileNotFoundError):
             load_events(tmp_path / "missing.json")
+
+
+class TestEventnessGateIntegration:
+    def test_non_event_is_excluded_from_shortlist(self, tmp_path) -> None:
+        path = tmp_path / "config.yaml"
+        path.write_text("fine:\n  llm_top_k: 5\nrerank:\n  shortlist_size: 5\n", encoding="utf-8")
+        judged: list[str] = []
+
+        def fake_judge(events: list[Event]) -> dict[str, dict]:
+            judged.extend(event.event_id for event in events)
+            out = {}
+            for index, event in enumerate(events):
+                out[event.event_id] = {**FIVE, "is_event": index != 0}
+            return out
+
+        result = recommend_with_audit(
+            _valid_events(10),
+            config_path=path,
+            llm_judge=fake_judge,
+            reference_time=REFERENCE,
+        )
+        excluded = judged[0]
+        assert excluded not in {entry.event_id for entry in result.shortlist}
+        assert all(item.fine.is_event is not False for item in result.reranked)

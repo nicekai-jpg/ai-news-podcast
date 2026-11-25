@@ -52,6 +52,7 @@ class FineScore:
     rule_score: float = 0.0
     llm_score: float | None = None
     final_score: float = 0.0
+    is_event: bool | None = None  # LLM 判定是否有具体新闻事件；None=未判定
     llm_reason: str = ""
     reasons: list[str] = field(default_factory=list)
 
@@ -89,11 +90,16 @@ def apply_judgements(
             continue
         final = clamp(settings.blend_rule * item.rule_score + settings.blend_llm * llm_score)
         reasons = [*item.reasons, f"LLM 复核分 {llm_score:.2f}/5"]
+        is_event = _parse_bool(raw.get("is_event"))
+        if is_event is False:
+            final = 0.0
+            reasons.append("LLM 判定：非具体新闻事件")
         updated.append(
             replace(
                 item,
                 llm_score=llm_score,
                 final_score=final,
+                is_event=is_event,
                 llm_reason=reason,
                 reasons=reasons,
             )
@@ -226,6 +232,20 @@ def _low_confidence_count(labels: Labels) -> int:
         if to_float(value, 1.0) < 0.4:
             count += 1
     return count
+
+
+def _parse_bool(value: Any) -> bool | None:
+    """把 LLM 的 is_event 输出解析成 bool；缺失/无法识别返回 None。"""
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)):
+        return bool(value)
+    text = str(value or "").strip().lower()
+    if text in {"true", "yes", "y", "1", "是"}:
+        return True
+    if text in {"false", "no", "n", "0", "否"}:
+        return False
+    return None
 
 
 def _normalize_judgement(raw: dict[str, Any]) -> tuple[dict[str, float], str]:

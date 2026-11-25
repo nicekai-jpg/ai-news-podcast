@@ -230,3 +230,30 @@ class TestReappeared:
         plain = _score(_make_event("a"))
         updated = _score(_make_event("a", sequence=3))
         assert updated.components["momentum"] > plain.components["momentum"]
+
+
+class TestEventnessGate:
+    def test_non_event_judgement_zeroes_score(self) -> None:
+        scored = [_score(_make_event("e1"))]
+        judgements = {"e1": {**ALL_DIMS_FIVE, "is_event": False, "reason": "观点稿"}}
+        blended = apply_judgements(scored, judgements, FineSettings())
+        assert blended[0].is_event is False
+        assert blended[0].final_score == 0.0
+        assert any("非具体新闻事件" in reason for reason in blended[0].reasons)
+
+    def test_event_judgement_keeps_score(self) -> None:
+        scored = [_score(_make_event("e1"))]
+        judgements = {"e1": {**ALL_DIMS_FIVE, "is_event": True, "reason": "发布"}}
+        blended = apply_judgements(scored, judgements, FineSettings())
+        assert blended[0].is_event is True
+        assert blended[0].final_score > 0
+
+    def test_missing_is_event_stays_unknown(self) -> None:
+        scored = [_score(_make_event("e1"))]
+        blended = apply_judgements(scored, {"e1": dict(ALL_DIMS_FIVE)}, FineSettings())
+        assert blended[0].is_event is None
+
+    def test_prompt_asks_for_is_event(self) -> None:
+        prompt = build_rubric_prompt([_make_event("e1")])
+        assert "is_event" in prompt
+        assert "观点评论" in prompt
