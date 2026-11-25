@@ -295,6 +295,8 @@ Stage CLIs (console scripts in pyproject):
 ## Docs to read before touching sensitive areas
 
 - `docs/architecture.md` and `docs/pipeline_walkthrough.md` — pipeline design
+- `docs/editorial_quality.md` — S4–S7 成品质量的检查项与已修缺陷（改日报/文稿/点评前先看）
+- `docs/recommend_evaluation.md` — 推荐评测口径与「S3 已到上限」的证据
 - `docs/rsshub_cache_relay.md` — RSSHub 快照缓存中转（GHA 临时实例）设计
 - `docs/development.md`, `docs/contributing.md` — dev workflow
 - `docs/tts_complete_guide.md`, `docs/gha_cosyvoice2_deployment_log.md` — CosyVoice setup
