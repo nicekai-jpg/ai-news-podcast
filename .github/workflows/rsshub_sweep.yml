@@ -1,0 +1,56 @@
+name: rsshub full sweep
+
+# 诊断：按生产配置（同域 0.5s 间隔、20s 超时、2 次重试）串行探测全部 C3 路由，
+# 用于判断「失败」是路由坏了还是并发/超时导致的。
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sweep:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 40
+    services:
+      rsshub:
+        image: ghcr.io/diygod/rsshub:latest
+        ports:
+          - 1200:1200
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Wait for RSSHub
+        run: |
+          for i in $(seq 1 90); do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 5 http://127.0.0.1:1200/healthz || true)
+            if [ "$code" = "200" ]; then echo "ready after $i"; break; fi
+            sleep 2
+          done
+
+      - name: Serial sweep (prod-like: 0.5s gap, 20s timeout, 3 attempts)
+        run: |
+          echo "| route | 结果 | 秒 | 字节 |"
+          echo "|---|---|---|---|"
+          FAIL=0
+          while read -r route; do
+            [ -z "$route" ] && continue
+            ok=""
+            for attempt in 1 2 3; do
+              out=$(curl -s -o /tmp/b -w '%{http_code} %{time_total}' --max-time 20 "http://127.0.0.1:1200${route}" || echo "000 0")
+              code=$(echo "$out" | awk '{print $1}')
+              if [ "$code" = "200" ]; then ok="$code"; secs=$(echo "$out" | awk '{print $2}'); break; fi
+              sleep 1
+            done
+            if [ -z "$ok" ]; then
+              ok="$code"; secs=$(echo "$out" | awk '{print $2}'); FAIL=$((FAIL+1))
+            fi
+            size=$(wc -c < /tmp/b 2>/dev/null || echo 0)
+            echo "| ${route} | ${ok} | ${secs} | ${size} |"
+            sleep 0.5
+          done < <(python3 -c "
+import re,sys
+text=open('config/sources_v3.yaml',encoding='utf-8').read()
+routes=re.findall(r'rsshub_route:\s*[\"]?([^\s\"#]+)', text)
+for r in routes: print(r)
+")
+          echo ""
+          echo "失败数: ${FAIL}"
