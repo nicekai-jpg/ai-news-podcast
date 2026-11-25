@@ -295,6 +295,7 @@ Stage CLIs (console scripts in pyproject):
 ## Docs to read before touching sensitive areas
 
 - `docs/architecture.md` and `docs/pipeline_walkthrough.md` — pipeline design
+- `docs/source_to_recommendation.md` — L1–L4 分层方案与「还没做什么」的权威清单
 - `docs/editorial_quality.md` — S4–S7 成品质量的检查项与已修缺陷（改日报/文稿/点评前先看）；
   改 `presentation/site_builder/static/` 必须按其中 §7 做浏览器验证，pytest 覆盖不到前端
 - `docs/recommend_evaluation.md` — 推荐评测口径与「S3 已到上限」的证据
