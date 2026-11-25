@@ -486,3 +486,23 @@ class TestDiveSources(TestBuildDigest):
         brief["report_rows"] = [{"event_id": "e1", "headline": "无出处", "facts": []}]
         digest = self._build(brief=brief, report_md="")
         assert digest["report"]["deep_dives"][0]["sources"] == []
+
+
+class TestEditorVerdictVerdictTag(TestBuildDigest):
+    """S5 的 verdict（准确/需修正/补充）是复核结论，不能丢。"""
+
+    def test_verdict_tag_is_rendered(self) -> None:
+        brief = dict(BRIEF)
+        brief["report_rows"] = [{"event_id": "e1", "headline": "模型发布", "facts": []}]
+        brief["report_review"] = {
+            "overall": "整体准确",
+            "items": [
+                {"title": "模型发布", "verdict": "需修正", "comment": "缺年份"},
+                {"title": "另一条", "verdict": "准确", "comment": "无问题"},
+                {"title": "无点评", "verdict": "补充", "comment": ""},
+            ],
+        }
+        verdict = self._build(brief=brief, report_md="")["report"]["editor_verdict"]
+        assert "【需修正】模型发布：缺年份" in verdict
+        assert "【准确】另一条：无问题" in verdict
+        assert "无点评" not in verdict  # comment 为空的行不显示

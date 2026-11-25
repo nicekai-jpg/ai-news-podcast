@@ -371,10 +371,19 @@ def _report_from_rows(
     verdict = str(review.get("overall") or "").strip()
     verdict_lines = [verdict]
     for item in review.get("items") or []:
-        if isinstance(item, dict) and str(item.get("comment") or "").strip():
-            title = str(item.get("title") or "").strip()
-            comment = str(item.get("comment") or "").strip()
-            verdict_lines.append(f"{title}：{comment}" if title else comment)
+        if not isinstance(item, dict):
+            continue
+        comment = str(item.get("comment") or "").strip()
+        if not comment:
+            continue
+        title = str(item.get("title") or "").strip()
+        # S5 的 verdict（准确/需修正/补充）是复核结论，丢掉读者就只看到评价
+        verdict_tag = str(item.get("verdict") or "").strip()
+        prefix = f"【{verdict_tag}】" if verdict_tag else ""
+        if title:
+            verdict_lines.append(f"{prefix}{title}：{comment}")
+        else:
+            verdict_lines.append(f"{prefix}{comment}")
     lead = ""
     if dives:
         first_points = dives[0]["points"]
@@ -408,7 +417,7 @@ def _resolve_report(
     try:
         report = parse_report_markdown(report_md or "")
         if report is not None:
-            report["source_file"] = f"data/reports/daily_report_{date_str}.md"
+            report["source_file"] = f"data/editorial/{date_str}/daily_report_{date_str}.md"
     except ValueError:
         log.warning("report parse failed for %s", date_str, exc_info=True)
         report = None
@@ -516,7 +525,7 @@ def build_digest(
             {
                 "text": lead_text,
                 "source": lead_source,
-                "source_file": f"data/reports/daily_report_{date_str}.md",
+                "source_file": f"data/editorial/{date_str}/daily_report_{date_str}.md",
             }
             if lead_text
             else None
@@ -532,7 +541,7 @@ def build_digest(
         "meta": {
             "generated_from": {
                 "brief": f"data/briefs/brief_{date_str}.json",
-                "report": f"data/reports/daily_report_{date_str}.md",
+                "report": f"data/editorial/{date_str}/daily_report_{date_str}.md",
                 "radar": f"data/gh_radar/radar_{date_str}.json",
                 "playlist": f"site/episodes/{date_str}/playlist.json",
                 "episodes": "data/episodes.json",
@@ -596,9 +605,10 @@ def write_digest_outputs(
         kept.add(f"digest_{date_str}.json")
         try:
             brief = _read_json_or_none(root / "data" / "briefs" / f"brief_{date_str}.json")
+            # v3（生产）写 data/editorial/<date>/；旧管线写 data/reports/，保留兜底
             report_md = _read_text_or_none(
-                root / "data" / "reports" / f"daily_report_{date_str}.md"
-            )
+                root / "data" / "editorial" / date_str / f"daily_report_{date_str}.md"
+            ) or _read_text_or_none(root / "data" / "reports" / f"daily_report_{date_str}.md")
             radar = _read_json_or_none(root / "data" / "gh_radar" / f"radar_{date_str}.json")
             playlist = _read_json_or_none(episodes_dir / date_str / "playlist.json")
             digest = build_digest(
