@@ -30,11 +30,11 @@ def render_daily_report(commentaries: list[Commentary], *, date_str: str = "") -
                 lines.append(f"**{label}**：{value}")
         if item.sources:
             lines.append("")
-            lines.append(
-                "来源："
-                + "；".join(
-                    str(source.get("label") or source.get("link") or "") for source in item.sources
-                )
-            )
+            lines.append("**来源**")
+            for source in item.sources:
+                label = str(source.get("label") or "原文")
+                link = str(source.get("link") or "").strip()
+                official = "（官方/一手）" if source.get("official") else ""
+                lines.append(f"- [{label}]({link}){official}" if link else f"- {label}{official}")
         lines.append("")
     return "\n".join(lines).strip() + "\n"

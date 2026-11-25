@@ -330,3 +330,82 @@ def test_default_config_loaded() -> None:
     cfg = load_config("config/editorial_v3.yaml")
 
     assert cfg.report_top_n == 5
+
+
+class TestSourcesFallback:
+    """LLM 常不填 sources；必须用采集到的 item 元数据确定性补齐出处。"""
+
+    _EVIDENCE = {"item-1": _EVENT_SUMMARY, "item-2": _EVENT_SUMMARY}  # noqa: RUF012 - 测试常量，不修改
+
+    def _payload(self, *, sources: list[dict] | None = None) -> dict:
+        payload = {
+            "event_id": "evt-1",
+            "headline": "标题",
+            "facts": [
+                {
+                    "text": _EVENT_SUMMARY,
+                    "evidence_ids": ["item-1"],
+                    "single_source": False,
+                }
+            ],
+        }
+        if sources is not None:
+            payload["sources"] = sources
+        return payload
+
+    def test_sources_filled_from_item_metadata_when_llm_omits(self) -> None:
+        review = parse_commentary(
+            self._payload(),
+            make_event(),
+            config=load_config(),
+            item_evidence=self._EVIDENCE,
+            item_sources={
+                "item-1": {"label": "AIBase", "link": "https://a.com/1", "official": ""},
+                "item-2": {"label": "量子位", "link": "https://b.com/2", "official": ""},
+            },
+        )
+        assert [s["link"] for s in review.sources] == ["https://a.com/1", "https://b.com/2"]
+        assert review.sources[0]["label"] == "AIBase"
+
+    def test_llm_sources_take_precedence(self) -> None:
+        review = parse_commentary(
+            self._payload(sources=[{"label": "官方", "link": "https://official.com"}]),
+            make_event(),
+            config=load_config(),
+            item_evidence=self._EVIDENCE,
+            item_sources={"item-1": {"label": "AIBase", "link": "https://a.com/1"}},
+        )
+        # LLM 的条目优先，元数据只补 LLM 没给的链接
+        assert review.sources[0]["link"] == "https://official.com"
+        assert "https://a.com/1" in [s["link"] for s in review.sources]
+
+    def test_llm_empty_link_is_backfilled_by_metadata(self) -> None:
+        """LLM 常只给 label 不给 link，必须用元数据补 URL。"""
+        review = parse_commentary(
+            self._payload(sources=[{"label": "The Decoder", "link": ""}]),
+            make_event(),
+            config=load_config(),
+            item_evidence=self._EVIDENCE,
+            item_sources={"item-1": {"label": "", "link": "https://d.com/x"}},
+        )
+        assert [s["link"] for s in review.sources] == ["https://d.com/x"]
+        assert review.sources[0]["label"] == "The Decoder"
+
+    def test_no_item_sources_keeps_empty(self) -> None:
+        review = parse_commentary(
+            self._payload(), make_event(), config=load_config(), item_evidence=self._EVIDENCE
+        )
+        assert review.sources == []
+
+    def test_sources_deduplicated_and_scoped_to_event(self) -> None:
+        review = parse_commentary(
+            self._payload(),
+            make_event(item_ids=["item-1"]),
+            config=load_config(),
+            item_evidence=self._EVIDENCE,
+            item_sources={
+                "item-1": {"label": "AIBase", "link": "https://a.com/1"},
+                "item-9": {"label": "别的", "link": "https://other.com"},
+            },
+        )
+        assert [s["link"] for s in review.sources] == ["https://a.com/1"]

@@ -79,3 +79,37 @@ def test_check_script_skips_fact_check_without_evidence() -> None:
     report = check_script("[Host A] 融资 99 亿美元。\n")
     assert report["fact_checked"] is False
     assert report["unverified_numbers"] == []
+
+
+def test_ops_snapshot_reports_commentary_audit() -> None:
+    """日报客观性审计必须进入运维快照，否则「缺出处」永远不可见。"""
+    import importlib.util
+    from pathlib import Path
+
+    script = Path(__file__).resolve().parents[1] / "scripts" / "ops_snapshot.py"
+    spec = importlib.util.spec_from_file_location("ops_snapshot", script)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    rows = [
+        {
+            "event_id": "e1",
+            "headline": "标题",
+            "one_liner": "",
+            "why_matters": "",
+            "background": "",
+            "impact": "",
+            "counterpoint": "暂无公开反方信息",
+            "uncertainty": "",
+            "facts": [
+                {"text": "该公司发布 2.1 版本。", "evidence_ids": ["i1"], "single_source": True}
+            ],
+            "sources": [],
+        }
+    ]
+    audit = mod._commentary_audit(rows)  # noqa: SLF001 - 按路径加载的脚本内部函数
+    assert audit["items"] == 1
+    assert audit["facts"] == 1
+    assert audit["single_source_facts"] == 1
+    assert audit["facts_without_evidence"] == 0
+    assert audit["items_without_sources"] == 1

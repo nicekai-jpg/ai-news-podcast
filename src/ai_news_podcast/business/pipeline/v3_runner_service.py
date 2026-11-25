@@ -84,6 +84,33 @@ def load_item_evidence(ocean_dir: Path) -> dict[str, str]:
     return evidence
 
 
+def load_item_sources(ocean_dir: Path) -> dict[str, dict[str, str]]:
+    """读取 items.json，构造 item_id -> {label, link, official} 供日报出处使用。
+
+    LLM 常常不填 sources，读者就拿不到原文链接；这里用采集到的 item 元数据
+    确定性补齐，不依赖模型。
+    """
+    path = Path(ocean_dir) / "items.json"
+    if not path.exists():
+        return {}
+    rows = _read_json(path)
+    out: dict[str, dict[str, str]] = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        item_id = str(row.get("item_id") or "")
+        link = str(row.get("link") or "").strip()
+        if not item_id or not link:
+            continue
+        category = str(row.get("category") or "")
+        out[item_id] = {
+            "label": str(row.get("source_label") or row.get("source") or ""),
+            "link": link,
+            "official": "true" if category in ("official", "research") else "",
+        }
+    return out
+
+
 def make_llm_call(
     llm_cfg: Any,
     stage: str,
@@ -387,6 +414,7 @@ def _run_editorial_stages(
     shortlist: list[ShortlistEntry],
     events: list[Event],
     item_evidence: dict[str, str],
+    item_sources: dict[str, dict[str, str]],
     editorial_root: Path,
     date_str: str,
     config_root: Path,
@@ -414,6 +442,7 @@ def _run_editorial_stages(
         events,
         llm_for("stage4"),
         item_evidence=item_evidence,
+        item_sources=item_sources,
         config_path=editorial_cfg,
         verified_by_item=verified_by_item,
     )
@@ -719,6 +748,7 @@ def run_v3_pipeline(
         shortlist=shortlist,
         events=events,
         item_evidence=load_item_evidence(ocean_dir),
+        item_sources=load_item_sources(ocean_dir),
         editorial_root=editorial_root,
         date_str=date_str,
         config_root=config_root,

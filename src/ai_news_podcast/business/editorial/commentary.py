@@ -122,6 +122,67 @@ def _clean_sources(raw: Any) -> list[dict[str, Any]]:
     return sources
 
 
+def _sources_from_evidence(
+    event: Event, item_sources: Mapping[str, Mapping[str, Any]] | None
+) -> list[dict[str, Any]]:
+    """用采集到的 item 元数据构造出处列表（LLM 未给 sources 时兜底）。
+
+    只取该事件自己 item_ids 的条目，按出现顺序去重链接。
+    """
+    if not item_sources:
+        return []
+    sources: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for item_id in event.item_ids:
+        meta = item_sources.get(str(item_id))
+        if not meta:
+            continue
+        link = str(meta.get("link") or "").strip()
+        if not link or link in seen:
+            continue
+        seen.add(link)
+        sources.append(
+            {
+                "label": str(meta.get("label") or ""),
+                "link": link,
+                "official": bool(meta.get("official")),
+            }
+        )
+    return sources
+
+
+def _merge_sources(
+    from_llm: list[dict[str, Any]], from_meta: list[dict[str, Any]]
+) -> list[dict[str, Any]]:
+    """合并 LLM 出处与采集元数据出处。
+
+    LLM 常给出空 link（只有 label），这种情况下用元数据补 URL；按 link 去重，
+    LLM 已有的条目优先。
+    """
+    merged: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for source in from_llm:
+        link = str(source.get("link") or "").strip()
+        if not link:
+            continue
+        seen.add(link)
+        merged.append(source)
+    for source in from_meta:
+        link = str(source.get("link") or "").strip()
+        if not link or link in seen:
+            continue
+        seen.add(link)
+        merged.append(source)
+    # LLM 只给了 label 时，把它的 label 套到同序号的元数据条目上
+    labels_only = [
+        str(s.get("label") or "") for s in from_llm if not str(s.get("link") or "").strip()
+    ]
+    for index, label in enumerate(labels_only):
+        if index < len(merged) and label and not merged[index].get("label"):
+            merged[index]["label"] = label
+    return merged
+
+
 def _parse_fact(
     raw: Any,
     event: Event,
@@ -184,6 +245,7 @@ def parse_commentary(
     *,
     config: EditorialConfig,
     item_evidence: Mapping[str, str] | None = None,
+    item_sources: Mapping[str, Mapping[str, Any]] | None = None,
 ) -> Commentary:
     """把 LLM 返回的 JSON 映射校验并转换为 ``Commentary``（S4 日报正文）。
 
@@ -230,7 +292,10 @@ def parse_commentary(
         impact=sanitize_text(str(payload.get("impact") or ""), config.banned_words),
         counterpoint=counterpoint,
         uncertainty=sanitize_text(str(payload.get("uncertainty") or ""), config.banned_words),
-        sources=_clean_sources(payload.get("sources")),
+        sources=_merge_sources(
+            _clean_sources(payload.get("sources")),
+            _sources_from_evidence(event, item_sources),
+        ),
     )
 
 
@@ -240,6 +305,7 @@ def build_commentaries(
     llm_call: LLMCall,
     *,
     item_evidence: Mapping[str, str] | None = None,
+    item_sources: Mapping[str, Mapping[str, Any]] | None = None,
     config_path: str | Path = DEFAULT_CONFIG_PATH,
     verified_by_item: Mapping[str, list[str]] | None = None,
 ) -> list[Commentary]:
@@ -292,7 +358,11 @@ def build_commentaries(
         try:
             payload = extract_json_object(raw_output)
             commentary = parse_commentary(
-                payload, event, config=config, item_evidence=item_evidence
+                payload,
+                event,
+                config=config,
+                item_evidence=item_evidence,
+                item_sources=item_sources,
             )
         except EditorialValidationError as exc:
             logger.warning("事件 %s 点评未通过校验，已跳过：%s", event.event_id, exc)
