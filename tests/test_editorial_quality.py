@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
 from ai_news_podcast.business.editorial.review_quality import review_quality
 
 
@@ -113,3 +115,36 @@ def test_ops_snapshot_reports_commentary_audit() -> None:
     assert audit["single_source_facts"] == 1
     assert audit["facts_without_evidence"] == 0
     assert audit["items_without_sources"] == 1
+
+
+def test_script_factcheck_cli_rebuilds_evidence(tmp_path: Path) -> None:
+    """GHA 只传文稿文本时数字核对会被跳过；CLI 必须能从产物重建底稿。"""
+    import importlib.util
+    import json
+
+    script_path = Path(__file__).resolve().parents[1] / "scripts" / "script_factcheck.py"
+    spec = importlib.util.spec_from_file_location("script_factcheck", script_path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    data = tmp_path / "data"
+    ocean = data / "ocean" / "2026-11-25"
+    ocean.mkdir(parents=True)
+    (data / "selection" / "2026-11-25").mkdir(parents=True)
+    event = {
+        "event_id": "e1",
+        "representative_title": "某模型发布",
+        "summary": "参数 100B。",
+        "item_ids": ["i1"],
+    }
+    (ocean / "events.json").write_text(json.dumps([event], ensure_ascii=False), encoding="utf-8")
+    (ocean / "items.json").write_text(
+        json.dumps([{"item_id": "i1", "full_text": "参数 100B。"}], ensure_ascii=False),
+        encoding="utf-8",
+    )
+    (data / "selection" / "2026-11-25" / "shortlist.json").write_text(
+        json.dumps([{"rank": 1, "event_id": "e1"}], ensure_ascii=False), encoding="utf-8"
+    )
+
+    evidence = mod.rebuild_evidence(data, "2026-11-25")
+    assert "100B" in evidence

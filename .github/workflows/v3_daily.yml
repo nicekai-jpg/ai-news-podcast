@@ -208,6 +208,8 @@ jobs:
               print("issues:", "；".join(report["issues"]))
               print("::warning::script quality issues (continue, see issues above)")
           PYEOF
+          # 数字核对需要事实底稿；上面 quality(text) 没传底稿，核对会被静默跳过
+          uv run python scripts/script_factcheck.py --date "${EPISODE}" --data-dir data || true
 
       - name: Facts stage alert
         continue-on-error: true
