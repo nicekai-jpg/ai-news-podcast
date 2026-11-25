@@ -168,7 +168,38 @@ uv run python scripts/script_factcheck.py --date 2026-11-25 --strict
 uv run python scripts/redeploy_site.py --dry-run   # 或直接看 data/digest 产物
 ```
 
-## 7 测试覆盖
+## 7 前端改动的验证（2026-11-25，浏览器实测）
+
+前端改动（`app.js` / `style.css`）**只有浏览器实测才算验证过**：
+Python 单测只能证明 digest JSON 里有 `sources` 字段，证明不了页面上出现了链接。
+本轮改动完成后补做了这一步。
+
+### 方法
+
+1. 用真实产物构建可独立打开的站点：`build_index_html(out, title, episodes, base_url, cfg)`
+2. 放入 `data/digest_<date>.json` 与 `episodes/<date>/playlist.json`
+3. `python3 -m http.server 8899` 起本地服务
+4. `agent-browser open http://127.0.0.1:8899`，再用 `eval` 统计节点数
+
+### 结果
+
+| 检查 | 结果 |
+|---|---|
+| `.deep-dive-sources` 区块数 | **4**（模板只有 4 个 deep-dive 位，属设计） |
+| `.deep-dive-source-link` 链接数 | **11** |
+| 首个区块文本 | `原文出处 / 量子位（RSSHub）/ 雷峰网` |
+| `editor_verdict` 的 verdict 标签 | `【补充】`、`【需修正】` 正常渲染 |
+| 视觉 | 虚线分隔、主题配色正常（截图确认） |
+| `node --check app.js` | 语法通过 |
+| CSS 大括号平衡 | 290 / 290 |
+
+### 教训
+
+**凡是改 `presentation/site_builder/static/`，必须用浏览器验证一次**，
+不能只依赖 Python 单测。这与本项目历史上「`[CHAPTER]` 被 `clean_tts_text` 删掉」
+属于同一类问题：**改的层和验证的层不是同一层**。
+
+## 8 测试覆盖
 
 | 文件 | 覆盖 |
 |---|---|
@@ -179,3 +210,5 @@ uv run python scripts/redeploy_site.py --dry-run   # 或直接看 data/digest �
 | `tests/test_editorial_script.py` | 文稿数字核对触发重写 |
 
 总计 1135 项通过（全量）。
+
+前端（`app.js` / `style.css`）不在 pytest 覆盖范围内，必须按 §7 的流程做浏览器验证。
