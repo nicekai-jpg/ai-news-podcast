@@ -95,16 +95,15 @@ class TestShippedConfig:
     def test_source_counts(self) -> None:
         sources = load_sources(REPO_ROOT / "config" / "sources_v3.yaml")
 
-        # 2026-11-25：再删 5 个（路由真坏/不存在）：inceptionlabs_blog 503、
-        # cool_papers arxiv 超时、deeplearning_the_batch 503、
-        # scientificamerican 与 csia_news 路由 404 → 122 源、启用 104。
-        assert len(sources) == 122
-        assert sum(1 for source in sources if source.enabled) == 104
+        # 2026-11-25：删 5 个（路由真坏/不存在）后为 122 源；再新增 8 个
+        # RSSHub 官方厂商博客源（全部实测 200）→ 130 源、启用 112。
+        assert len(sources) == 130
+        assert sum(1 for source in sources if source.enabled) == 112
         assert Counter(source.channel for source in sources) == Counter(
             {
                 "c1_rss": 39,
                 "c2_atom": 11,
-                "c3_rsshub": 49,
+                "c3_rsshub": 57,
                 "c4_web": 6,
                 "c5_wechat2rss": 17,
             }

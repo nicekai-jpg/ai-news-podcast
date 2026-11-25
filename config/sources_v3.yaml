@@ -297,6 +297,47 @@ sources:
     channel: c3_rsshub
     rsshub_route: /anthropic/news
     category: official
+  - name: anthropic_research
+    label: Anthropic Research
+    channel: c3_rsshub
+    rsshub_route: /anthropic/research
+    category: research
+  - name: meta_ai_blog
+    label: Meta AI Blog
+    channel: c3_rsshub
+    rsshub_route: /meta/ai/blog
+    category: official
+  - name: mistral_news
+    label: Mistral News
+    channel: c3_rsshub
+    rsshub_route: /mistral/news
+    category: official
+  - name: kimi_blog
+    label: Kimi (Moonshot) Blog
+    channel: c3_rsshub
+    rsshub_route: /kimi/blog
+    category: official
+  - name: groq_blog
+    label: Groq Blog
+    channel: c3_rsshub
+    rsshub_route: /groq/blog
+    category: official
+  - name: together_blog
+    label: Together AI Blog
+    channel: c3_rsshub
+    rsshub_route: /together/blog
+    category: official
+  - name: minimax_news_zh
+    label: MiniMax 新闻（中文站/RSSHub）
+    channel: c3_rsshub
+    rsshub_route: /minimax/news/zh-CN
+    category: official
+  - name: hf_daily_papers
+    label: HuggingFace Daily Papers
+    channel: c3_rsshub
+    rsshub_route: /huggingface/daily-papers
+    category: research
+    limit: 15
   - name: claude_blog
     label: Claude Blog
     channel: c3_rsshub
