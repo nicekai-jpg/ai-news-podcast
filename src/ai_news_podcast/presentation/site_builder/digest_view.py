@@ -346,11 +346,22 @@ def _report_from_rows(
             continue
         body = "".join(point["text"] for point in points)
         total_chars += len(body)
+        # 出处必须带到站点：S4 已从 item 元数据补齐，丢在这里等于白做
+        sources = [
+            {
+                "label": str(src.get("label") or "").strip(),
+                "link": str(src.get("link") or "").strip(),
+                "official": bool(src.get("official")),
+            }
+            for src in (row.get("sources") or [])
+            if isinstance(src, dict) and str(src.get("link") or "").strip()
+        ]
         dives.append(
             {
                 "heading": f"{index}、{heading}" if heading else f"{index}、",
                 "category": "",
                 "points": points,
+                "sources": sources,
                 "raw_sections": [],
                 "background": "",
                 "breakthrough": "",

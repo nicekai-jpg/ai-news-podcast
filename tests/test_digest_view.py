@@ -457,3 +457,32 @@ class TestCalendarAvailability:
         first, second = cal["dates"]
         assert first["availability"] == {"podcast": True, "report": False}
         assert second["availability"]["podcast"] is False
+
+
+class TestDiveSources(TestBuildDigest):
+    """S4 补的原文出处必须到达站点；丢掉等于白做。"""
+
+    def test_sources_are_carried_into_deep_dives(self) -> None:
+        brief = dict(BRIEF)
+        brief["report_rows"] = [
+            {
+                "event_id": "e1",
+                "headline": "模型发布",
+                "facts": [{"text": "事实一"}],
+                "sources": [
+                    {"label": "量子位", "link": "https://a.com/1", "official": False},
+                    {"label": "官方", "link": "https://b.com/2", "official": True},
+                    {"label": "无链接", "link": "", "official": False},
+                ],
+            }
+        ]
+        digest = self._build(brief=brief, report_md="")
+        sources = digest["report"]["deep_dives"][0]["sources"]
+        assert [s["link"] for s in sources] == ["https://a.com/1", "https://b.com/2"]
+        assert sources[1]["official"] is True
+
+    def test_missing_sources_yields_empty_list(self) -> None:
+        brief = dict(BRIEF)
+        brief["report_rows"] = [{"event_id": "e1", "headline": "无出处", "facts": []}]
+        digest = self._build(brief=brief, report_md="")
+        assert digest["report"]["deep_dives"][0]["sources"] == []

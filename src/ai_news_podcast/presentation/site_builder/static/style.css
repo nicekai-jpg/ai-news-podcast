@@ -912,6 +912,27 @@
       flex-shrink: 0;
     }
     .point-text { margin: 0; }
+    /* 原文出处：每条深度日报末尾的可点击来源 */
+    .deep-dive-sources {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+      padding-top: var(--space-2);
+      border-top: 1px dashed var(--border-subtle, rgba(0, 0, 0, 0.12));
+      font-size: 0.8125rem;
+    }
+    .deep-dive-sources-label {
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .deep-dive-source-link {
+      color: var(--accent-primary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .deep-dive-source-link:hover { border-bottom-color: currentColor; }
     .deep-dive-point.highlight {
       background: rgba(217, 74, 43, 0.06);
       border: 1px solid rgba(217, 74, 43, 0.2);

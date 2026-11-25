@@ -330,6 +330,8 @@
           data['chapter_' + n + '_point_' + m + '_label'] = point.text ? (point.label || POINT_LABELS[m - 1]) : '';
           data['chapter_' + n + '_point_' + m + '_text'] = point.text || '';
         }
+        /* 出处：S4 已从采集元数据补齐，前端负责展示成可点击链接 */
+        data['chapter_' + n + '_sources'] = Array.isArray(dive.sources) ? dive.sources : [];
       }
 
       /* 信源按设计稿展示 30 条精选（digest 入库上限 150），页头标注「30 / 150 条信源」 */
@@ -423,6 +425,37 @@
     function applyPostHydrateChrome() {
       const stamp = document.querySelector('.stamp-date');
       if (stamp) stamp.textContent = DATA.issue_date || '';
+      renderDiveSources();
+    }
+
+    /* 深度日报每条事件的原文出处；没有链接时整块不渲染 */
+    function renderDiveSources() {
+      for (let n = 1; n <= 4; n += 1) {
+        const block = document.getElementById('deep-dive-' + n);
+        if (!block) continue;
+        const existing = block.querySelector('.deep-dive-sources');
+        if (existing) existing.remove();
+        const items = (DATA['chapter_' + n + '_sources'] || []).filter(function (src) {
+          return src && src.link;
+        });
+        if (!items.length) continue;
+        const wrap = document.createElement('div');
+        wrap.className = 'deep-dive-sources';
+        const label = document.createElement('span');
+        label.className = 'deep-dive-sources-label';
+        label.textContent = '原文出处';
+        wrap.appendChild(label);
+        items.slice(0, 4).forEach(function (src) {
+          const a = document.createElement('a');
+          a.className = 'deep-dive-source-link';
+          a.href = src.link;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.textContent = (src.label || '原文') + (src.official ? ' · 官方' : '');
+          wrap.appendChild(a);
+        });
+        block.appendChild(wrap);
+      }
     }
 
     function applyConditionalBlocks() {
