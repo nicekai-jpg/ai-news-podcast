@@ -299,7 +299,7 @@ Stage CLIs (console scripts in pyproject):
   **L1 采集达成；L4 推荐 2026-11-26 修正口径——真瓶颈是槽位不够，shortlist 已 8→15**
 - `docs/editorial_quality.md` — S4–S7 成品质量的检查项与已修缺陷（改日报/文稿/点评前先看）；
   改 `presentation/site_builder/static/` 必须按其中 §7 做浏览器验证，pytest 覆盖不到前端
-- `docs/recommend_evaluation.md` — 推荐评测口径；**P@k 会随 k 变化、不能跨档位比较**，六条调参路已证否（见 todo N1）
+- `docs/recommend_evaluation.md` — 推荐评测口径；**P@k 会随 k 变化、不能跨档位比较**，六条调参路已证否；末节「2026-11-26 增补」记了三条规则护栏（不精确≠该改）、标注传导不到排序的三关卡、以及改链路前必看的两处陷阱
 - `docs/rsshub_cache_relay.md` — RSSHub 快照缓存中转（GHA 临时实例）设计
 - `docs/development.md`, `docs/contributing.md` — dev workflow
 - `docs/tts_complete_guide.md`, `docs/gha_cosyvoice2_deployment_log.md` — CosyVoice setup
