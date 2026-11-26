@@ -296,3 +296,18 @@ class TestTopicLexiconPrecision:
     def test_specific_tech_term_still_works(self) -> None:
         labeled = self._label("团队完成预训练与微调", "使用量化与蒸馏优化。")
         assert "technology" in labeled.labels.topics
+
+    def test_term_name_is_not_a_bare_alias(self) -> None:
+        """`_aliases()` 会自动把 name 加入别名，所以 name 不能是裸泛词。
+
+        回归：technology/industry/application 的 name 曾分别是
+        「技术」「产业」「应用」，导致这些泛词永远命中，收紧 aliases 无效。
+        """
+        lexicon = ocean_lexicon()
+        for term_id, bare in (
+            ("technology", "技术"),
+            ("industry", "产业"),
+            ("application", "应用"),
+        ):
+            term = next(t for t in lexicon.topics if t.id == term_id)
+            assert term.name != bare, f"{term_id} 的 name 不能是裸词「{bare}」"
