@@ -86,33 +86,118 @@ def divergence(gold_row, event) -> int:
     return len(gold_tech ^ pred_tech) + len(gold_topics ^ pred_topics)
 
 
+def classify(item: dict) -> str:  # noqa: PLR0911 - 分类规则本身就是多分支
+    """把分歧归到可读的类别，方便分组审阅。"""
+    event = item["event"]
+    gold = item["gold"]["fields"]
+    gold_subs = {str(s).lower() for s in (gold.get("subjects") or [])}
+    pred_subs = {
+        str(s.get("name") or s.get("id") or "").lower() for s in (event.labels.subjects or [])
+    }
+    gold_tech = to_enum(gold.get("tech_stack"), TECH_MAP)
+    pred_tech = set(event.labels.tech_stack or [])
+    gold_topics = to_enum(gold.get("topics"), TOPIC_MAP)
+    pred_topics = set(event.labels.topics or [])
+
+    if pred_subs and not (pred_subs & gold_subs) and gold_subs:
+        return "主体完全错配"
+    if not pred_subs and gold_subs:
+        return "主体漏标"
+    if len(pred_tech - gold_tech) >= 3:
+        return "技术过度标注"
+    if len(gold_tech - pred_tech) >= 3:
+        return "技术漏标"
+    if len(pred_topics - gold_topics) >= 3:
+        return "类别过度标注"
+    if len(gold_topics - pred_topics) >= 3:
+        return "类别漏标"
+    return "其他分歧"
+
+
+def _snippet(event, limit: int = 180) -> str:
+    """取事件正文片段，供人工判断标注是否合理。"""
+    text = str(event.summary or "").strip()
+    if not text:
+        return "（无摘要）"
+    text = " ".join(text.split())
+    return text[:limit] + ("…" if len(text) > limit else "")
+
+
 def render(items: list[dict]) -> str:
+    groups: dict[str, list[dict]] = {}
+    for item in items:
+        groups.setdefault(classify(item), []).append(item)
+
+    order = [
+        "主体完全错配",
+        "主体漏标",
+        "技术过度标注",
+        "技术漏标",
+        "类别过度标注",
+        "类别漏标",
+        "其他分歧",
+    ]
     lines = [
         "# 标注金标抽检（30 条）",
         "",
-        "> 按「规则与金标分歧度」降序挑出，分歧越大越可能有问题。",
-        "> 请逐条在「判定」列填：`对` / `错` / `部分`，错的在「备注」说明。",
-        "> 填完后运行 `uv run python scripts/label_spotcheck.py --apply` 回写。",
+        "> 按「规则与 LLM 金标的分歧」分组，每组内按分歧度降序。",
+        "> 每条在「判定」处填 `对`（金标正确）/ `错`（金标有误）/ `部分`，并写一句备注。",
+        "> **你只需判断「LLM 金标这一栏是否合理」，不必逐字校对规则。**",
+        "> 填完运行 `uv run python scripts/label_spotcheck.py --apply` 回写。",
         "",
-        "| # | 标题 | LLM 金标 | 规则产出 | 分歧 | 判定 | 备注 |",
-        "|---|---|---|---|---|---|---|",
+        "## 分组概览",
+        "",
+        "| 分组 | 条数 | 含义 |",
+        "|---|---|---|",
     ]
-    for index, item in enumerate(items, 1):
-        event = item["event"]
-        gold = item["gold"]["fields"]
-        title = str(event.representative_title or "")[:34].replace("|", "／")
-        gold_text = (
-            f"主体:{gold.get('subjects')}<br>技术:{gold.get('tech_stack')}<br>"
-            f"类别:{gold.get('topics')}"
-        ).replace("|", "／")
-        pred_text = (
-            f"主体:{[s.get('name') for s in event.labels.subjects]}<br>"
-            f"技术:{event.labels.tech_stack}<br>类别:{event.labels.topics}"
-        ).replace("|", "／")
-        lines.append(
-            f"| {index} | `{item['gold']['event_id'][:8]}` {title} | {gold_text} | "
-            f"{pred_text} | {item['divergence']} |  |  |"
-        )
+    meaning = {
+        "主体完全错配": "规则标的主体与金标完全不重合，通常是规则误命中",
+        "主体漏标": "规则没标出主体",
+        "技术过度标注": "规则标的技术比金标多 3 个以上，多为裸词误命中",
+        "技术漏标": "金标有而规则缺",
+        "类别过度标注": "规则类别比金标多 3 个以上",
+        "类别漏标": "金标类别有而规则缺",
+        "其他分歧": "差异较小或方向混合",
+    }
+    lines.extend(
+        f"| {key} | {len(groups[key])} | {meaning[key]} |" for key in order if key in groups
+    )
+    lines.append("")
+
+    index = 0
+    for key in order:
+        if key not in groups:
+            continue
+        lines.append(f"## {key}（{len(groups[key])} 条）")
+        lines.append("")
+        for item in groups[key]:
+            index += 1
+            event = item["event"]
+            gold = item["gold"]["fields"]
+            pred_subs = [s.get("name") for s in (event.labels.subjects or [])]
+            lines.append(f"### {index}. {event.representative_title}")
+            lines.append("")
+            lines.append(
+                f"- **ID**：`{item['gold']['event_id'][:8]}`　**分歧度**：{item['divergence']}"
+            )
+            lines.append(f"- **摘要**：{_snippet(event)}")
+            lines.append("")
+            lines.append("| | 主体 | 技术 | 类别 |")
+            lines.append("|---|---|---|---|")
+            lines.append(
+                f"| **LLM 金标** | {', '.join(map(str, gold.get('subjects') or [])) or '（空）'} "
+                f"| {', '.join(map(str, gold.get('tech_stack') or [])) or '（空）'} "
+                f"| {', '.join(map(str, gold.get('topics') or [])) or '（空）'} |"
+            )
+            lines.append(
+                f"| **规则产出** | {', '.join(str(s) for s in pred_subs if s) or '（空）'} "
+                f"| {', '.join(event.labels.tech_stack or []) or '（空）'} "
+                f"| {', '.join(event.labels.topics or []) or '（空）'} |"
+            )
+            lines.append("")
+            lines.append("- **判定**：　　（填 `对` / `错` / `部分`）")
+            lines.append("- **备注**：")
+            lines.append("")
     return "\n".join(lines) + "\n"
 
 

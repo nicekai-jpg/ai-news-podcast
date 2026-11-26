@@ -266,3 +266,33 @@ class TestNarrativeScope:
             config=ocean_config(),
         )
         assert "howto" in labeled.labels.narrative_angle
+
+
+class TestTopicLexiconPrecision:
+    """词表收紧的回归：泛词不能把「技术/行业/应用」类标签洒给所有新闻。"""
+
+    def _label(self, title: str, summary: str = "") -> object:
+        return label_text(
+            title,
+            summary,
+            "",
+            lexicon=ocean_lexicon(),
+            config=ocean_config(),
+        )
+
+    def test_generic_words_do_not_trigger_technology(self) -> None:
+        # 「模型」「架构」「推理」这类词在 AI 新闻里遍地都是，不应单独判定 technology
+        labeled = self._label("某公司发布新模型", "采用新架构，推理速度提升。")
+        assert "technology" not in labeled.labels.topics
+
+    def test_bare_application_word_does_not_trigger(self) -> None:
+        labeled = self._label("这款应用上线", "面向开发者开放。")
+        assert "application" not in labeled.labels.topics
+
+    def test_specific_industry_still_works(self) -> None:
+        labeled = self._label("制造业供应链数字化", "车企与银行业客户增长。")
+        assert "industry" in labeled.labels.topics
+
+    def test_specific_tech_term_still_works(self) -> None:
+        labeled = self._label("团队完成预训练与微调", "使用量化与蒸馏优化。")
+        assert "technology" in labeled.labels.topics

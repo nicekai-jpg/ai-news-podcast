@@ -27,11 +27,14 @@ topics:
   - id: technology
     name: 技术
     priority: 60
-    aliases: [技术, 架构, 算法, 训练, 推理, 模型, 芯片, 算力, technology, architecture, algorithm, training, inference, model, chip, compute]
+    # 2026-11-26：按 210 条金标实测精确率删裸词——架构0.31/模型0.33/技术0.26 偏低，
+    # 算法0.00/推理0.00/算力0.00 几乎误报；只保留有区分度的「训练」与具体术语
+    aliases: [训练, 微调, 量化, 蒸馏, 预训练, 推理加速, technology, transformer, training, fine-tuning]
   - id: industry
     name: 产业
     priority: 50
-    aliases: [产业, 行业, 生态, 供应链, 制造业, 医疗, 金融, 教育, industry, supply chain, manufacturing, healthcare, finance, education]
+    # 2026-11-26：教育/生态/金融 精确率 0.00、行业 0.14，删裸词保留具体产业
+    aliases: [供应链, 制造业, 车企, 银行业, industry, supply chain, manufacturing]
   - id: hardware
     name: 硬件
     priority: 75
@@ -47,4 +50,5 @@ topics:
   - id: application
     name: 应用
     priority: 55
-    aliases: [应用, 落地, 场景, 行业应用, application, use case, deployment]
+    # 2026-11-26：应用0.12/落地0.20 精确率过低，改限定词
+    aliases: [行业应用, 落地案例, 企业应用, application, use case, deployment]
