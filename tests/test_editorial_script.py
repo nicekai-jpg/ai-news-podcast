@@ -271,8 +271,8 @@ def test_repo_config_defaults() -> None:
 
     # 2026-11-26 放宽：15 分钟/3000–3600 字/4 章 → 20 分钟/3600–4400 字/5 章
     # （shortlist 8→15、report_top_n 5→8 之后，原时长装不下）
-    # 字数按「模型实际生成语速」~182 字/分钟定，不是 TTS 的 220–260 字/分钟；
-    # 按 TTS 语速定 4000 下限会让模型频繁达不到而触发重写。
+    # 区间经实测确认：新配置下模型写到 3804 字/6 章，一次通过未触发重写
+    # （见 docs/editorial_quality.md §9）。
     assert (cfg.min_chars, cfg.max_chars, cfg.chapters) == (3600, 4400, 5)
     assert (cfg.min_chapters, cfg.max_chapters) == (4, 6)
     assert cfg.target_minutes == 20
