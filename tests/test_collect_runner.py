@@ -95,13 +95,14 @@ class TestShippedConfig:
     def test_source_counts(self) -> None:
         sources = load_sources(REPO_ROOT / "config" / "sources_v3.yaml")
 
-        # 2026-11-25：删 5 个（路由真坏/不存在）后 122 源；新增 8 个 RSSHub
-        # 厂商博客源 → 130 源；meta_ai_blog 4 个月未更新，禁用 → 启用 111。
-        assert len(sources) == 130
-        assert sum(1 for source in sources if source.enabled) == 111
+        # 2026-11-26：删 gwern（22 天全失败）；禁用 pixelstech_ai（失败率 55%）、
+        # juejin_aicoding（失败率 45%）；启用 tmtpost_news / benedict_evans（路由已修，
+        # 实测 200）→ 129 源、启用 110。
+        assert len(sources) == 129
+        assert sum(1 for source in sources if source.enabled) == 110
         assert Counter(source.channel for source in sources) == Counter(
             {
-                "c1_rss": 39,
+                "c1_rss": 38,
                 "c2_atom": 11,
                 "c3_rsshub": 57,
                 "c4_web": 6,
@@ -142,9 +143,9 @@ class TestShippedConfig:
         assert arxiv and arxiv <= disabled, "arXiv 源应全部禁用"
         assert disabled - arxiv == {
             "venturebeat_ai",
-            "tmtpost_news",
-            "benedict_evans",
             "meta_ai_blog",
+            "pixelstech_ai",
+            "juejin_aicoding",
         }
 
 

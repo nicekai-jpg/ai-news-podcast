@@ -41,10 +41,10 @@ tech_stack:
     aliases: [RAG, 检索增强, retrieval augmented, 知识库, 向量数据库, vector database]
   - id: safety
     name: 安全对齐
-    aliases: [安全, 对齐, alignment, safety, 价值观, 幻觉, hallucination, 红队, red team]
+    aliases: [AI安全, 安全对齐, 对齐, alignment, AI safety, 价值观对齐, 幻觉, hallucination, 红队, red team]
   - id: data
     name: 数据
-    aliases: [数据集, 语料, 数据标注, dataset, data, 合成数据, synthetic data]
+    aliases: [数据集, 语料, 数据标注, dataset, 数据管道, 合成数据, synthetic data]
   - id: edge
     name: 端侧
     aliases: [端侧, 端侧模型, on-device, edge AI, 手机端, 本地部署, local model]
@@ -65,4 +65,4 @@ tech_stack:
     aliases: [视频生成, 文生视频, video generation, text-to-video, 视频编辑]
   - id: cloud
     name: 云
-    aliases: [云计算, 云服务, 公有云, 私有云, cloud, aws, azure, gcp]
+    aliases: [云计算, 云服务, 公有云, 私有云, cloud computing, cloud platform, aws, azure, gcp]

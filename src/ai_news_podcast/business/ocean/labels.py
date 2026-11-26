@@ -626,7 +626,10 @@ def label_text(
         _head_or_body(lambda scope: _extract_term_ids(scope, lexicon, KIND_TOPIC)),
         lexicon.topics,
     )
-    narrative_ids = _head_or_body(lambda scope: _extract_term_ids(scope, lexicon, KIND_NARRATIVE))
+    # narrative_angle 只看标题：别名（实践/上手/步骤/如何）在正文里极常见，
+    # 一旦允许正文命中，几乎所有长文都会被标成 howto，而 S3 用 howto 做降权，
+    # 会误伤真新闻（实测 9 条负例里 7 条是正文命中）。
+    narrative_ids = _extract_term_ids(head_lower, lexicon, KIND_NARRATIVE)
     sensitivity_ids = _priority_order(
         _head_or_body(lambda scope: _extract_term_ids(scope, lexicon, KIND_SENSITIVITY)),
         lexicon.sensitivity,

@@ -242,3 +242,27 @@ def test_industry_falls_back_to_entity_mapping() -> None:
     labeled = _label("OpenAI 发布新模型")
     assert labeled.labels.industry == "ai"
     assert labeled.labels.industry_evidence
+
+
+class TestNarrativeScope:
+    """narrative_angle 只看标题：正文里的「实践/步骤/如何」不能触发 howto。"""
+
+    def test_howto_not_triggered_by_body_only(self) -> None:
+        labeled = label_text(
+            "OpenAI 发布新模型",
+            "该公司今日发布新模型。",
+            "本文介绍具体实践步骤，以及如何上手、如何使用该模型的教程。",
+            lexicon=ocean_lexicon(),
+            config=ocean_config(),
+        )
+        assert "howto" not in labeled.labels.narrative_angle
+
+    def test_howto_triggered_by_title(self) -> None:
+        labeled = label_text(
+            "如何用 OpenAI 提升效率：完整指南",
+            "教程摘要。",
+            "正文。",
+            lexicon=ocean_lexicon(),
+            config=ocean_config(),
+        )
+        assert "howto" in labeled.labels.narrative_angle

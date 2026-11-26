@@ -504,7 +504,8 @@ sources:
     channel: c3_rsshub
     rsshub_route: /pixelstech/feed/ai
     category: news
-    enabled: true
+    # 多天实测 ok 10 / failed 12（失败率 ~55%，上游反爬）；2026-11-26 禁用
+    enabled: false
 
   # --- 二级：泛科技媒体的 AI 栏目（6，参数路由）---
   - name: ithome_ai
@@ -563,7 +564,6 @@ sources:
     channel: c3_rsshub
     rsshub_route: /tmtpost/new
     category: news
-    enabled: false
   - name: leiphone_news
     label: 雷峰网
     channel: c1_rss
@@ -616,6 +616,9 @@ sources:
     channel: c3_rsshub
     rsshub_route: /juejin/aicoding
     category: community
+    # 多天实测 ok 12 / failed 10（失败率 ~45%）；2026-11-26 禁用
+    enabled: false
+
   - name: mydrivers_ai
     label: 快科技（AI/智能）
     channel: c3_rsshub
@@ -642,16 +645,6 @@ sources:
     channel: c3_rsshub
     rsshub_route: /ben-evans
     category: research
-    enabled: false
-  - name: gwern
-    label: Gwern
-    channel: c1_rss
-    url: "https://gwern.net/feed"
-    category: research
-
-  # =========================================================================
-  # C4 网页抓取（7 个 SSR 源）
-  # =========================================================================
   - name: deepseek_web
     label: DeepSeek 官方新闻（sitemap+changelog）
     channel: c4_web
