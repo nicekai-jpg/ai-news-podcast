@@ -73,7 +73,7 @@
   "lead": {
     "text": "《今日AI看点》本期以能力、入口、安全、成本四条线审视AI落地：Gemini 4 Carbon聚焦多Agent编排、任务成本与漏洞处置；Qwen4-Max和Qwen Code强调多入口及可嵌入的Agent基础；文稿另以Seedream 5.5的连续编辑、图层输出与单张成本作为图像案例，并注明相关数字仍需补证；Grok诉讼把争议推向未成年人保护、训练数据与传播责任；CoreWeave的预付款、合同担保和短约融资则提醒市场关注增长背后的现金流。节目不排总榜，而是区分发布口径、实测表现、诉讼指控和待验证项。",
     "source": "podcast_review",
-    "source_file": "data/reports/daily_report_2026-11-12.md"
+    "source_file": "data/editorial/2026-11-12/daily_report_2026-11-12.md"
   },
   "metrics": [
     {
@@ -156,6 +156,7 @@
             "text": "现有材料并非只有正面结论：博主 Chubby 的弹珠游戏实测指出，照明效果和启动状态仍需完善。更重要的是，三项基准第一与“每项任务成本低50%以上”来自谷歌公布、量子位转述的结果，所给材料没有提供独立复测或完整测试方法，因而不能据此确认该优势在一般生产任务中成立。"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -180,6 +181,23 @@
           {
             "label": "反方",
             "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "千问AI平台Token Plan",
+            "link": "https://platform.qianwenai.com/pricing/token-plan",
+            "official": true
+          },
+          {
+            "label": "Qwen Code GitHub",
+            "link": "https://github.com/QwenLM/qwen-code",
+            "official": true
+          },
+          {
+            "label": "QwenCloud Token Plan",
+            "link": "https://qwencloud.com/pricing/token-plan",
+            "official": true
           }
         ],
         "raw_sections": [],
@@ -208,6 +226,7 @@
             "text": "据现有报道，xAI称其向NCMEC报告相关违规内容并起诉部分涉嫌滥用者，同时以美国宪法第一修正案所保护的言论自由为由挑战明尼苏达州的相关法案。报道所引批评人士则认为，X在今年1月将图片生成功能调整为付费用户专享，未从根本上解决问题。"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -234,6 +253,7 @@
             "text": "暂无公开反方信息。"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -262,7 +282,7 @@
     ],
     "char_count": 3884,
     "reading_minutes": 10,
-    "editor_verdict": "各条数字与所给证据大体一致，但来源独立性被高估：Gemini两条证据实为同一篇量子位文章，xAI与CoreWeave均缺可识别来源。法律事件须区分“提起诉讼”与“获准集体诉讼”，Qwen部分也仅有厂商发布，不能据此判断性能。\n\n谷歌开放 Gemini 4 Carbon API：数字与量子位正文基本吻合，基准第一及成本低50%以上均应保留“谷歌公布、媒体转述”的限定。需修正的是两条证据正文完全相同，不能据此标为双来源；正文截断处的/swarm职责也不宜补写。\n\nQwen4-Max预览版上线Token Plan：发布日期、预览版、Token Plan入口及“2折、新用户折上5折、最低1折”均与两份阿里官方材料一致，未见数字冲突。需把“暂无公开反方信息”收窄为“所给材料未提供反方信息”，并说明两则材料同属阿里，不能视为外部独立验证。\n\nxAI旗下Grok在美国面临多起集体诉讼：叙事基本忠实于所给报道，且已使用“指控、原告称”等归因措辞。风险在于“集体诉讼”可能被读作已获法院认证，且全文仅有一篇未具名且截断的报道；标题宜更中性，并明确认证状态和来源缺口。\n\nCoreWeave调整预付款、合同担保与短约融资：营收、同比增幅、净亏损、利息支出和1325亿美元积压均与证据一致，融资策略概括也基本准确。需修正“从现有基础设施中占用更多现金”的译法，并补来源与财年；现有截断不足以确认预付款之外的并列项目。",
+    "editor_verdict": "各条数字与所给证据大体一致，但来源独立性被高估：Gemini两条证据实为同一篇量子位文章，xAI与CoreWeave均缺可识别来源。法律事件须区分“提起诉讼”与“获准集体诉讼”，Qwen部分也仅有厂商发布，不能据此判断性能。\n\n【需修正】谷歌开放 Gemini 4 Carbon API：数字与量子位正文基本吻合，基准第一及成本低50%以上均应保留“谷歌公布、媒体转述”的限定。需修正的是两条证据正文完全相同，不能据此标为双来源；正文截断处的/swarm职责也不宜补写。\n\n【补充】Qwen4-Max预览版上线Token Plan：发布日期、预览版、Token Plan入口及“2折、新用户折上5折、最低1折”均与两份阿里官方材料一致，未见数字冲突。需把“暂无公开反方信息”收窄为“所给材料未提供反方信息”，并说明两则材料同属阿里，不能视为外部独立验证。\n\n【需修正】xAI旗下Grok在美国面临多起集体诉讼：叙事基本忠实于所给报道，且已使用“指控、原告称”等归因措辞。风险在于“集体诉讼”可能被读作已获法院认证，且全文仅有一篇未具名且截断的报道；标题宜更中性，并明确认证状态和来源缺口。\n\n【需修正】CoreWeave调整预付款、合同担保与短约融资：营收、同比增幅、净亏损、利息支出和1325亿美元积压均与证据一致，融资策略概括也基本准确。需修正“从现有基础设施中占用更多现金”的译法，并补来源与财年；现有截断不足以确认预付款之外的并列项目。",
     "source_file": "data/editorial/2026-11-12/report.json"
   },
   "report_review": {
@@ -559,7 +579,7 @@
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-11-12.json",
-      "report": "data/reports/daily_report_2026-11-12.md",
+      "report": "data/editorial/2026-11-12/daily_report_2026-11-12.md",
       "radar": "data/gh_radar/radar_2026-11-12.json",
       "playlist": "site/episodes/2026-11-12/playlist.json",
       "episodes": "data/episodes.json"

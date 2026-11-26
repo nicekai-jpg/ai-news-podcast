@@ -923,6 +923,27 @@
       flex-shrink: 0;
     }
     .point-text { margin: 0; }
+    /* 原文出处：每条深度日报末尾的可点击来源 */
+    .deep-dive-sources {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+      padding-top: var(--space-2);
+      border-top: 1px dashed var(--border-subtle, rgba(0, 0, 0, 0.12));
+      font-size: 0.8125rem;
+    }
+    .deep-dive-sources-label {
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .deep-dive-source-link {
+      color: var(--accent-primary);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .deep-dive-source-link:hover { border-bottom-color: currentColor; }
     .deep-dive-point.highlight {
       background: rgba(217, 74, 43, 0.06);
       border: 1px solid rgba(217, 74, 43, 0.2);
@@ -2042,7 +2063,7 @@
     </div>
   </aside>
 
-<script id="site-data" type="application/json">{"dates": ["2026-11-25", "2026-11-24", "2026-11-23", "2026-11-22", "2026-11-21", "2026-11-20", "2026-11-19", "2026-11-18", "2026-11-17", "2026-11-16", "2026-11-15", "2026-11-14", "2026-11-13", "2026-11-12", "2026-11-11", "2026-11-10", "2026-11-09", "2026-11-08", "2026-11-07", "2026-11-06", "2026-11-05", "2026-10-27", "2026-10-25", "2026-10-24", "2026-10-23", "2026-10-22", "2026-10-21", "2026-10-20", "2026-10-19", "2026-10-18"], "episodes": {"2026-11-25": {"title": "今日AI看点 | 2026-11-25", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-25.mp3"}, "2026-11-24": {"title": "今日AI看点 | 2026-11-24", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-24.mp3"}, "2026-11-23": {"title": "今日AI看点 | 2026-11-23", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-23.mp3"}, "2026-11-22": {"title": "今日AI看点 | 2026-11-22", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-22.mp3"}, "2026-11-21": {"title": "今日AI看点 | 2026-11-21", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-21.mp3"}, "2026-11-20": {"title": "今日AI看点 | 2026-11-20", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-20.mp3"}, "2026-11-19": {"title": "今日AI看点 | 2026-11-19", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-19.mp3"}, "2026-11-18": {"title": "今日AI看点 | 2026-11-18", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-18.mp3"}, "2026-11-17": {"title": "今日AI看点 | 2026-11-17", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-17.mp3"}, "2026-11-16": {"title": "今日AI看点 | 2026-11-16", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-16.mp3"}, "2026-11-15": {"title": "今日AI看点 | 2026-11-15", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-15.mp3"}, "2026-11-14": {"title": "今日AI看点 | 2026-11-14", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-14.mp3"}, "2026-11-13": {"title": "今日AI看点 | 2026-11-13", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-13.mp3"}, "2026-11-12": {"title": "今日AI看点 | 2026-11-12", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-12.mp3"}, "2026-11-11": {"title": "今日AI看点 | 2026-11-11", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-11.mp3"}, "2026-11-10": {"title": "今日AI看点 | 2026-11-10", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-10.mp3"}, "2026-11-09": {"title": "今日AI看点 | 2026-11-09", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-09.mp3"}, "2026-11-08": {"title": "今日AI看点 | 2026-11-08", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-08.mp3"}, "2026-11-07": {"title": "今日AI看点 | 2026-11-07", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-07.mp3"}, "2026-11-06": {"title": "今日AI看点 | 2026-11-06", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-06.mp3"}, "2026-11-05": {"title": "今日AI看点 | 2026-11-05", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-05.mp3"}, "2026-10-27": {"title": "AI 新闻快报 | 2026-10-27", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-27.mp3"}, "2026-10-25": {"title": "AI 新闻快报 | 2026-10-25", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-25.mp3"}, "2026-10-24": {"title": "AI 新闻快报 | 2026-10-24", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-24.mp3"}, "2026-10-23": {"title": "AI 新闻快报 | 2026-10-23", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-23.mp3"}, "2026-10-22": {"title": "AI 新闻快报 | 2026-10-22", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-22.mp3"}, "2026-10-21": {"title": "AI 新闻快报 | 2026-10-21", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-21.mp3"}, "2026-10-20": {"title": "AI 新闻快报 | 2026-10-20", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-20.mp3"}, "2026-10-19": {"title": "AI 新闻快报 | 2026-10-19", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-19.mp3"}, "2026-10-18": {"title": "AI 新闻快报 | 2026-10-18", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-18.mp3"}}}</script>
+<script id="site-data" type="application/json">{"dates": ["2026-11-26", "2026-11-25", "2026-11-24", "2026-11-23", "2026-11-22", "2026-11-21", "2026-11-20", "2026-11-19", "2026-11-18", "2026-11-17", "2026-11-16", "2026-11-15", "2026-11-14", "2026-11-13", "2026-11-12", "2026-11-11", "2026-11-10", "2026-11-09", "2026-11-08", "2026-11-07", "2026-11-06", "2026-11-05", "2026-10-27", "2026-10-25", "2026-10-24", "2026-10-23", "2026-10-22", "2026-10-21", "2026-10-20", "2026-10-19"], "episodes": {"2026-11-26": {"title": "今日AI看点 | 2026-11-26", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-26.mp3"}, "2026-11-25": {"title": "今日AI看点 | 2026-11-25", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-25.mp3"}, "2026-11-24": {"title": "今日AI看点 | 2026-11-24", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-24.mp3"}, "2026-11-23": {"title": "今日AI看点 | 2026-11-23", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-23.mp3"}, "2026-11-22": {"title": "今日AI看点 | 2026-11-22", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-22.mp3"}, "2026-11-21": {"title": "今日AI看点 | 2026-11-21", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-21.mp3"}, "2026-11-20": {"title": "今日AI看点 | 2026-11-20", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-20.mp3"}, "2026-11-19": {"title": "今日AI看点 | 2026-11-19", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-19.mp3"}, "2026-11-18": {"title": "今日AI看点 | 2026-11-18", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-18.mp3"}, "2026-11-17": {"title": "今日AI看点 | 2026-11-17", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-17.mp3"}, "2026-11-16": {"title": "今日AI看点 | 2026-11-16", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-16.mp3"}, "2026-11-15": {"title": "今日AI看点 | 2026-11-15", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-15.mp3"}, "2026-11-14": {"title": "今日AI看点 | 2026-11-14", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-14.mp3"}, "2026-11-13": {"title": "今日AI看点 | 2026-11-13", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-13.mp3"}, "2026-11-12": {"title": "今日AI看点 | 2026-11-12", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-12.mp3"}, "2026-11-11": {"title": "今日AI看点 | 2026-11-11", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-11.mp3"}, "2026-11-10": {"title": "今日AI看点 | 2026-11-10", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-10.mp3"}, "2026-11-09": {"title": "今日AI看点 | 2026-11-09", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-09.mp3"}, "2026-11-08": {"title": "今日AI看点 | 2026-11-08", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-08.mp3"}, "2026-11-07": {"title": "今日AI看点 | 2026-11-07", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-07.mp3"}, "2026-11-06": {"title": "今日AI看点 | 2026-11-06", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-06.mp3"}, "2026-11-05": {"title": "今日AI看点 | 2026-11-05", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-05.mp3"}, "2026-10-27": {"title": "AI 新闻快报 | 2026-10-27", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-27.mp3"}, "2026-10-25": {"title": "AI 新闻快报 | 2026-10-25", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-25.mp3"}, "2026-10-24": {"title": "AI 新闻快报 | 2026-10-24", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-24.mp3"}, "2026-10-23": {"title": "AI 新闻快报 | 2026-10-23", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-23.mp3"}, "2026-10-22": {"title": "AI 新闻快报 | 2026-10-22", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-22.mp3"}, "2026-10-21": {"title": "AI 新闻快报 | 2026-10-21", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-21.mp3"}, "2026-10-20": {"title": "AI 新闻快报 | 2026-10-20", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-20.mp3"}, "2026-10-19": {"title": "AI 新闻快报 | 2026-10-19", "mp3": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-10-19.mp3"}}}</script>
 <script>
 /* ============================================================
    数据装配：从 digest JSON 映射为设计稿 v23 的注入字段
@@ -2376,6 +2397,8 @@
           data['chapter_' + n + '_point_' + m + '_label'] = point.text ? (point.label || POINT_LABELS[m - 1]) : '';
           data['chapter_' + n + '_point_' + m + '_text'] = point.text || '';
         }
+        /* 出处：S4 已从采集元数据补齐，前端负责展示成可点击链接 */
+        data['chapter_' + n + '_sources'] = Array.isArray(dive.sources) ? dive.sources : [];
       }
 
       /* 信源按设计稿展示 30 条精选（digest 入库上限 150），页头标注「30 / 150 条信源」 */
@@ -2469,6 +2492,37 @@
     function applyPostHydrateChrome() {
       const stamp = document.querySelector('.stamp-date');
       if (stamp) stamp.textContent = DATA.issue_date || '';
+      renderDiveSources();
+    }
+
+    /* 深度日报每条事件的原文出处；没有链接时整块不渲染 */
+    function renderDiveSources() {
+      for (let n = 1; n <= 4; n += 1) {
+        const block = document.getElementById('deep-dive-' + n);
+        if (!block) continue;
+        const existing = block.querySelector('.deep-dive-sources');
+        if (existing) existing.remove();
+        const items = (DATA['chapter_' + n + '_sources'] || []).filter(function (src) {
+          return src && src.link;
+        });
+        if (!items.length) continue;
+        const wrap = document.createElement('div');
+        wrap.className = 'deep-dive-sources';
+        const label = document.createElement('span');
+        label.className = 'deep-dive-sources-label';
+        label.textContent = '原文出处';
+        wrap.appendChild(label);
+        items.slice(0, 4).forEach(function (src) {
+          const a = document.createElement('a');
+          a.className = 'deep-dive-source-link';
+          a.href = src.link;
+          a.target = '_blank';
+          a.rel = 'noopener noreferrer';
+          a.textContent = (src.label || '原文') + (src.official ? ' · 官方' : '');
+          wrap.appendChild(a);
+        });
+        block.appendChild(wrap);
+      }
     }
 
     function applyConditionalBlocks() {

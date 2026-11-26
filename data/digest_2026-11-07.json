@@ -73,7 +73,7 @@
   "lead": {
     "text": "DeepSeek带动的稀疏计算热潮，正把AI竞争从模型参数规模推向芯片与系统效率。国产芯片公司近10亿元融资、季度营收数倍增长，为这一技术路线添上商业注脚。\n\n另一条主线来自6G研发。NVIDIA通过开放Aerial、Sionna等工具降低网络实验门槛，显示科技巨头正试图用开源生态提前定义下一代通信标准。",
     "source": "report_lead",
-    "source_file": "data/reports/daily_report_2026-11-07.md"
+    "source_file": "data/editorial/2026-11-07/daily_report_2026-11-07.md"
   },
   "metrics": [
     {
@@ -187,7 +187,7 @@
       "在多智能体成本核算方面，arXiv预印本**《双账本模型》提出按业务交易粒度记录多智能体系统成本**，覆盖多云、多模型、编排框架及核心业务系统。该思路试图把成本核算从粗放的Token计费，推进到可分摊、可归因的交易级管理，但其方法仍需更多实践验证。",
       "此外，安全领域也取得新突破。**一款师承世界冠军的中国AI在“AI安全世界杯”CyberGym中取得99.4%的成绩**，刷新世界纪录并登顶全球榜首。该结果展示了顶尖方法在网络安全任务中的潜力，但单一榜单表现仍需结合泛化能力、真实环境稳定性和独立复现结果判断。"
     ],
-    "source_file": "data/reports/daily_report_2026-11-07.md"
+    "source_file": "data/editorial/2026-11-07/daily_report_2026-11-07.md"
   },
   "report_review": {},
   "podcast_review": {},
@@ -761,7 +761,7 @@
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-11-07.json",
-      "report": "data/reports/daily_report_2026-11-07.md",
+      "report": "data/editorial/2026-11-07/daily_report_2026-11-07.md",
       "radar": "data/gh_radar/radar_2026-11-07.json",
       "playlist": "site/episodes/2026-11-07/playlist.json",
       "episodes": "data/episodes.json"

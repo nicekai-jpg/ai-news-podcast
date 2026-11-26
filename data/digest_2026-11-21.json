@@ -73,7 +73,7 @@
   "lead": {
     "text": "本期聚焦AI从“会回答”走向“能完成工作”的关键变化。华为云发布昇腾原生具身世界模型CloudRobo-WM1.2，OpenAI推出GPT-6.2 Astra与Sol，分别把机器人操作、工作文档和3D内容推向可交付形态。与此同时，SimpleX的Tetra-1探索把蛋白质结构纳入原生多模态推理，阿里在ATC 2026的两篇论文从推理集群与对象存储网络两侧降低系统浪费，Inkling 2 Mini则以稀疏激活、低精度和长上下文瞄准本地部署。节目沿“模型能力—系统成本—生产验证”展开，兼顾发布信息、案例与仍待验证的风险。",
     "source": "podcast_review",
-    "source_file": "data/reports/daily_report_2026-11-21.md"
+    "source_file": "data/editorial/2026-11-21/daily_report_2026-11-21.md"
   },
   "metrics": [
     {
@@ -150,6 +150,7 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -176,6 +177,7 @@
             "text": "暂无公开反方信息。现有材料仅呈现阿里技术对论坛、论文及生产系统的介绍，未提供独立来源、第三方复现结果或对方法适用边界的公开讨论。"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -200,6 +202,18 @@
           {
             "label": "反方",
             "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "SimpleX：Tetra-1 Preview",
+            "link": "https://simplexfoundry.com/tetra-1/",
+            "official": true
+          },
+          {
+            "label": "SimpleX：Tetra-1 在线体验申请",
+            "link": "https://simplexfoundry.com/tetra-1/apply/",
+            "official": true
           }
         ],
         "raw_sections": [],
@@ -228,6 +242,13 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [
+          {
+            "label": "OpenAI Developers Showcase：Paris Atlas",
+            "link": "https://developers.openai.com/showcase/paris-atlas",
+            "official": true
+          }
+        ],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -254,6 +275,7 @@
             "text": "暂无公开反方信息。已有的保留意见来自来源方自身：与 Qwen 3.8 27B 的比较基于「vibe tests」，并写明「More validation is needed」，文中亦使用「Wewe are super excited」等主观表述，未提供可复现的评测细节。"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -286,7 +308,7 @@
     ],
     "char_count": 5626,
     "reading_minutes": 14,
-    "editor_verdict": "五条正文的事件描述、日期和核心数字大体与所给证据相符，也普遍保留了单一来源和“计划开放”的限定。主要问题是 SimpleX、Inkling 的事件主体错标，OpenAI 条目的来源与论据范围错配，华为条目缺原始链接和年份；被截断的评测及成本口径仍需独立复核。\n\n华为云发布具身模型并计划开放权重与代码：核心发布、双榜成绩、第三方测试的23个百分点及PPA描述均与证据一致，也正确区分“计划开放”和“已经开放”。需补原始报道链接及两个“11月”的年份；当前来源列表为空，读者无法追溯。\n\n阿里两篇论文获ATC 2026最佳论文奖：论坛日程、135篇录用、12篇入选、6篇最佳论文中占2篇，以及30万应用、7万变体、运行四年和55.6%降幅均与原文一致。数字核对无误，但仍缺ATC官方名单和论文全文佐证。\n\nSimpleX 开放 Tetra-1 Preview 试用：发布主体、试用时间、架构描述及背景引文均见于报道，且对截断评测保持克制。主要编辑错误在事件主体：应为SimpleX本源智简；Anthropic等仅是背景，50亿美元融资亦无证据，相关数字应移除或待核。\n\nOpenAI 发布 GPT-6.2 双模型，Astra 降价：GPT-6.2型号、上下线范围及Astra由10/50美元降至8/40美元、Sol为2/10美元均与证据一致，20%降幅计算无误。问题是来源列表只放Paris Atlas展示页，无法支撑发布和定价。\n\nInkling 2 Mini 发布：面向本地多模态部署：26B总参数、3B激活、1M上下文、NVFP4/MXFP8、DSpark及“至少相当”均与证据一致，也保留了来源方自测限制。需纠正主体、模型代际关系和引语错字，部分机制表述也应收紧。",
+    "editor_verdict": "五条正文的事件描述、日期和核心数字大体与所给证据相符，也普遍保留了单一来源和“计划开放”的限定。主要问题是 SimpleX、Inkling 的事件主体错标，OpenAI 条目的来源与论据范围错配，华为条目缺原始链接和年份；被截断的评测及成本口径仍需独立复核。\n\n【补充】华为云发布具身模型并计划开放权重与代码：核心发布、双榜成绩、第三方测试的23个百分点及PPA描述均与证据一致，也正确区分“计划开放”和“已经开放”。需补原始报道链接及两个“11月”的年份；当前来源列表为空，读者无法追溯。\n\n【补充】阿里两篇论文获ATC 2026最佳论文奖：论坛日程、135篇录用、12篇入选、6篇最佳论文中占2篇，以及30万应用、7万变体、运行四年和55.6%降幅均与原文一致。数字核对无误，但仍缺ATC官方名单和论文全文佐证。\n\n【需修正】SimpleX 开放 Tetra-1 Preview 试用：发布主体、试用时间、架构描述及背景引文均见于报道，且对截断评测保持克制。主要编辑错误在事件主体：应为SimpleX本源智简；Anthropic等仅是背景，50亿美元融资亦无证据，相关数字应移除或待核。\n\n【补充】OpenAI 发布 GPT-6.2 双模型，Astra 降价：GPT-6.2型号、上下线范围及Astra由10/50美元降至8/40美元、Sol为2/10美元均与证据一致，20%降幅计算无误。问题是来源列表只放Paris Atlas展示页，无法支撑发布和定价。\n\n【需修正】Inkling 2 Mini 发布：面向本地多模态部署：26B总参数、3B激活、1M上下文、NVFP4/MXFP8、DSpark及“至少相当”均与证据一致，也保留了来源方自测限制。需纠正主体、模型代际关系和引语错字，部分机制表述也应收紧。",
     "source_file": "data/editorial/2026-11-21/report.json"
   },
   "report_review": {
@@ -594,7 +616,7 @@
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-11-21.json",
-      "report": "data/reports/daily_report_2026-11-21.md",
+      "report": "data/editorial/2026-11-21/daily_report_2026-11-21.md",
       "radar": "data/gh_radar/radar_2026-11-21.json",
       "playlist": "site/episodes/2026-11-21/playlist.json",
       "episodes": "data/episodes.json"

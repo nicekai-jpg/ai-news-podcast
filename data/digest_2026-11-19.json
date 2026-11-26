@@ -73,7 +73,7 @@
   "lead": {
     "text": "本期以“模型变强后，价值究竟由能力、价格还是使用边界决定”为主线，串联 Hy4flash 开源与稀疏架构、英伟达 CEO 遴选及算力供需、模型安全门槛、推理停止机制，以及 Claude Code 调用 AI MediaKit 的媒体处理案例。节目强调区分已确认信息、官方口径与作者实测，也提醒关注接入深度、真实价格、隐私、失败重试与供应利润，避免把演示等同于日常可用。",
     "source": "podcast_review",
-    "source_file": "data/reports/daily_report_2026-11-19.md"
+    "source_file": "data/editorial/2026-11-19/daily_report_2026-11-19.md"
   },
   "metrics": [
     {
@@ -156,6 +156,38 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [
+          {
+            "label": "腾讯混元 Hy4-flash GitHub 仓库",
+            "link": "https://github.com/Tencent-Hunyuan/Hy4-flash",
+            "official": true
+          },
+          {
+            "label": "腾讯混元 Hy4-flash Hugging Face 模型页",
+            "link": "https://huggingface.co/tencent/Hy4-flash",
+            "official": true
+          },
+          {
+            "label": "腾讯混元 Hy4-flash ModelScope 模型页",
+            "link": "https://modelscope.cn/models/Tencent-Hunyuan/Hy4-flash",
+            "official": true
+          },
+          {
+            "label": "腾讯混元 Hy4-flash GitCode 模型页",
+            "link": "https://ai.gitcode.com/tencent_hunyuan/Hy4-flash",
+            "official": true
+          },
+          {
+            "label": "Hy4-flash GGUF 模型页",
+            "link": "https://huggingface.co/AngelSlim/Hy4-flash-GGUF",
+            "official": false
+          },
+          {
+            "label": "Hy4-flash 开源协议",
+            "link": "https://huggingface.co/tencent/Hy4-flash/blob/main/LICENSE",
+            "official": true
+          }
+        ],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -182,6 +214,7 @@
             "text": "暂无公开反方信息。现有材料同时呈现黄仁勋关于回归担任 CEO 将“感到荣幸”的表态，以及 Reuters 报道中 Harvey Jones 排除复任、限制讨论离任问题的口径，但未提供董事会以外的独立反方材料，也未显示黄仁勋对相关报道的回应。"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -208,6 +241,7 @@
             "text": "暂无公开反方信息。现有文章自身提示，测试结论以及价格、耗时、效果等数据受素材、测试方法和实际环境影响，并注明内容仅代表作者个人观点；文中关于上手门槛和工具替代关系的判断不宜直接外推为普遍结论。"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -232,7 +266,7 @@
     ],
     "char_count": 2746,
     "reading_minutes": 7,
-    "editor_verdict": "三条内容整体较克制，版本、参数和引述大多能回到证据。主要问题是来源强度不均：腾讯混元条目需补全接入名单并厘清社区 GGUF，英伟达条目仅见单一截断证据，MediaKit 条目则把单一用户转载写成“实测”，可见分类合计与80项口径尚未闭合。\n\n腾讯混元开源 Hy4flash 系列三个版本：核心版本、参数和上下文数字均与两份材料一致，边界说明也较克制。主要需补列 WorkBuddy，并区分腾讯官方下载页与社区提供的 GGUF；“无公开数据”宜收窄为“现有材料未披露”，避免扩大结论。\n\n英伟达CEO遴选与算力供需受关注：管理层表态、需求和成本线索均与可见正文一致，且已明确标注单一证据及截断风险，事实层面可靠。当前主要问题是来源卡无链接，宜补齐 Reuters、Commercial Times 原文，并继续避免把两篇引述算作独立交叉验证。\n\nClaude Code 中的 AI MediaKit 实测：事实摘录基本忠实，但“实测”标题抬高了单一用户转载的证据级别，且可见分类仅合计57项，无法据节选复核“80项”。宜改为“用户体验节选”，补明口径差异，并附全文或官方材料。",
+    "editor_verdict": "三条内容整体较克制，版本、参数和引述大多能回到证据。主要问题是来源强度不均：腾讯混元条目需补全接入名单并厘清社区 GGUF，英伟达条目仅见单一截断证据，MediaKit 条目则把单一用户转载写成“实测”，可见分类合计与80项口径尚未闭合。\n\n【补充】腾讯混元开源 Hy4flash 系列三个版本：核心版本、参数和上下文数字均与两份材料一致，边界说明也较克制。主要需补列 WorkBuddy，并区分腾讯官方下载页与社区提供的 GGUF；“无公开数据”宜收窄为“现有材料未披露”，避免扩大结论。\n\n【补充】英伟达CEO遴选与算力供需受关注：管理层表态、需求和成本线索均与可见正文一致，且已明确标注单一证据及截断风险，事实层面可靠。当前主要问题是来源卡无链接，宜补齐 Reuters、Commercial Times 原文，并继续避免把两篇引述算作独立交叉验证。\n\n【需修正】Claude Code 中的 AI MediaKit 实测：事实摘录基本忠实，但“实测”标题抬高了单一用户转载的证据级别，且可见分类仅合计57项，无法据节选复核“80项”。宜改为“用户体验节选”，补明口径差异，并附全文或官方材料。",
     "source_file": "data/editorial/2026-11-19/report.json"
   },
   "report_review": {
@@ -519,7 +553,7 @@
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-11-19.json",
-      "report": "data/reports/daily_report_2026-11-19.md",
+      "report": "data/editorial/2026-11-19/daily_report_2026-11-19.md",
       "radar": "data/gh_radar/radar_2026-11-19.json",
       "playlist": "site/episodes/2026-11-19/playlist.json",
       "episodes": "data/episodes.json"

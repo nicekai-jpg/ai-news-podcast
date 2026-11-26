@@ -73,7 +73,7 @@
   "lead": {
     "text": "本期把AI竞争从“单次回答”拉回真实流程：先审视模型能力、访问资格与安全边界，再讨论多Agent长任务能否持续规划和验证；随后对比ChatGPT的企业经营入口与Claude的上下文工作台，最后落到Seedream 5.5的连续编辑和玛莎拉蒂Design的产业协作。后两章信息较完整，前两章的模型称谓与发布方数据仍需补齐来源。",
     "source": "podcast_review",
-    "source_file": "data/reports/daily_report_2026-11-11.md"
+    "source_file": "data/editorial/2026-11-11/daily_report_2026-11-11.md"
   },
   "metrics": [
     {
@@ -156,6 +156,7 @@
             "text": "据现有报道中的对照测试，Image 2.6在18轮数字修改任务中仍能保持数字可辨认，但后半段被观察到模糊、块状重绘，以及烛光场景变亮、变暖。这一结果仅是同一媒体进行的对照，未形成独立反方证据；除此之外，暂无公开反方信息。"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -180,6 +181,13 @@
           {
             "label": "反方",
             "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "OpenAI：Introducing Businesses in ChatGPT",
+            "link": "https://openai.com/index/introducing-businesses-in-chatgpt/",
+            "official": true
           }
         ],
         "raw_sections": [],
@@ -208,6 +216,7 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -234,6 +243,7 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -262,7 +272,7 @@
     ],
     "char_count": 3991,
     "reading_minutes": 10,
-    "editor_verdict": "整份日报与所给证据大体一致，未见核心数字硬冲突，Seedream一条对“官方案例100轮”和“媒体实测18轮”的区分尤其稳妥。最需处理的是来源与归因：Claude、玛莎拉蒂来源栏为空，Businesses来源展示不完整；相对时间也应改成可核验日期。\n\n字节发布Seedream 5.5生图模型：数字与证据基本吻合：100轮是官方案例，媒体实测为18轮；12轮服装试搭及Image 2.6对照也表述准确。标题未沿用“100轮不崩”，避免了夸大。建议补齐原文链接，并把“本周上线”锚定到报道日期。\n\nOpenAI测试ChatGPT企业入口与智能体：功能、首批资格及“每周12亿”均与OpenAI材料一致，也已注明12亿是OpenAI口径。需要补的是来源展示：事实挂有两条证据，来源栏却只列官方页；建议统一将1.2 billion写作“12亿/周”。\n\nAnthropic 扩展 Claude 应用内协作：连接器升级、审批机制、三类协作工件及Salesforce测试版均有官方材料或The Decoder对应，未见数字冲突。主要缺口是来源栏为空；“聊天与Cowork合并”比官方原意更强，宜改为“整合”或“合流”。\n\n玛莎拉蒂与尊界合作定名，计划2027年第四季度量产：量产时点、车型规划、跨两地组装及财务数字均与报道一致，分析也未把规划当成结果。需修正的是归因强度：证据仅一篇媒体来源，标题和“已正式定名”应保留“据报道”；来源栏也要补齐。",
+    "editor_verdict": "整份日报与所给证据大体一致，未见核心数字硬冲突，Seedream一条对“官方案例100轮”和“媒体实测18轮”的区分尤其稳妥。最需处理的是来源与归因：Claude、玛莎拉蒂来源栏为空，Businesses来源展示不完整；相对时间也应改成可核验日期。\n\n【补充】字节发布Seedream 5.5生图模型：数字与证据基本吻合：100轮是官方案例，媒体实测为18轮；12轮服装试搭及Image 2.6对照也表述准确。标题未沿用“100轮不崩”，避免了夸大。建议补齐原文链接，并把“本周上线”锚定到报道日期。\n\n【补充】OpenAI测试ChatGPT企业入口与智能体：功能、首批资格及“每周12亿”均与OpenAI材料一致，也已注明12亿是OpenAI口径。需要补的是来源展示：事实挂有两条证据，来源栏却只列官方页；建议统一将1.2 billion写作“12亿/周”。\n\n【补充】Anthropic 扩展 Claude 应用内协作：连接器升级、审批机制、三类协作工件及Salesforce测试版均有官方材料或The Decoder对应，未见数字冲突。主要缺口是来源栏为空；“聊天与Cowork合并”比官方原意更强，宜改为“整合”或“合流”。\n\n【需修正】玛莎拉蒂与尊界合作定名，计划2027年第四季度量产：量产时点、车型规划、跨两地组装及财务数字均与报道一致，分析也未把规划当成结果。需修正的是归因强度：证据仅一篇媒体来源，标题和“已正式定名”应保留“据报道”；来源栏也要补齐。",
     "source_file": "data/editorial/2026-11-11/report.json"
   },
   "report_review": {
@@ -555,7 +565,7 @@
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-11-11.json",
-      "report": "data/reports/daily_report_2026-11-11.md",
+      "report": "data/editorial/2026-11-11/daily_report_2026-11-11.md",
       "radar": "data/gh_radar/radar_2026-11-11.json",
       "playlist": "site/episodes/2026-11-11/playlist.json",
       "episodes": "data/episodes.json"
