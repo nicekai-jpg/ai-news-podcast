@@ -122,14 +122,21 @@ class TestBuildCommentaries:
         assert "暂无公开反方信息" in llm.prompts[0]
 
     def test_respects_report_top_n(self) -> None:
-        events = [make_event(f"evt-{i}") for i in range(6)]
-        entries = [make_entry(i + 1, f"evt-{i}") for i in range(6)]
-        llm = FakeLLM([as_json(make_payload()) for _ in range(6)])
+        # 断言「被 report_top_n 截断」这件事，而不是写死当前配置值：
+        # 2026-11-26 report_top_n 由 5 改为 8，写死 5 会让测试与配置脱钩。
+        from ai_news_podcast.business.editorial.config import load_config
+
+        top_n = load_config().report_top_n
+        # 多给 2 条，确保确实发生了截断
+        count = top_n + 2
+        events = [make_event(f"evt-{i}") for i in range(count)]
+        entries = [make_entry(i + 1, f"evt-{i}") for i in range(count)]
+        llm = FakeLLM([as_json(make_payload()) for _ in range(count)])
 
         result = build_commentaries(entries, events, llm)
 
-        assert len(result) == 5
-        assert len(llm.prompts) == 5
+        assert len(result) == top_n
+        assert len(llm.prompts) == top_n
 
     def test_dedupes_same_event(self) -> None:
         events = [make_event("evt-1")]
@@ -329,7 +336,8 @@ class TestJsonExtraction:
 def test_default_config_loaded() -> None:
     cfg = load_config("config/editorial_v3.yaml")
 
-    assert cfg.report_top_n == 5
+    # 2026-11-26 由 5 改为 8，配合 shortlist 8→15
+    assert cfg.report_top_n == 8
 
 
 class TestSourcesFallback:

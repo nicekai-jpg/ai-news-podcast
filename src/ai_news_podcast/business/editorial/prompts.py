@@ -214,9 +214,9 @@ def _script_common_rules(config: EditorialConfig) -> str:
    不得使用「林夏：」「陈默：」「Host A:」「[A]」「[林夏]」等其他写法。
 2. **章节标记单独成行**：`[CHAPTER] 标题`。标题 ≤12 字，不编号、不带 emoji、不带句末标点。
    全文严格 {config.min_chapters}–{config.max_chapters} 章（建议 {config.chapters} 章）：
-   开场、主体 1–2 章、收尾；开场与收尾各一章。
+   开场、主体多章、收尾；开场与收尾各一章。
 3. **长度**：口语正文合计 {config.min_chars}–{config.max_chars} 字（不含 `[Host A]`/`[Host B]`/
-   `[CHAPTER]` 标记与章节标题），对应约 {config.target_minutes} 分钟；每章约 700–900 字，
+   `[CHAPTER]` 标记与章节标题），对应约 {config.target_minutes} 分钟；主角章节每章约 700–900 字，
    开场/收尾各约 120–180 字。宁可信息密度高一些，也不要凑字。
 4. **事实一致**：事实、数字、版本号、金额、来源只能来自下方「今日点评」的 headline 与 facts；
    禁止引入点评之外的新事实、新数字、新来源。事件标题/摘要只用于理解背景主题，不得从中抽取

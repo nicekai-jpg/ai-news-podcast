@@ -137,7 +137,7 @@ Stage CLIs (console scripts in pyproject):
     `config/sources_v3.yaml`；`contracts.artifact.write_artifact` 落盘）；
   - `ocean/`：四层去重、事件聚类、连续性、多维标注（`config/nlp/*.yaml` 词典）、证据分；
   - `recommend/`：召回→粗排（含淘汰原因）→精排（规则 0.6 + LLM rubric 0.4，只读事实标签，
-    不读 lifecycle/evidence_tier/evidence_score）→重排（MMR/去重/时效）→ top 8；
+    不读 lifecycle/evidence_tier/evidence_score）→重排（MMR/去重/时效）→ top 15；
   - `kg/`：**Stage 2.5 零 LLM 事实层**（2026-11-16 实装，取代 V1 模板三元组）：
     noise（选句/噪声/语言/文章主体）→ clause（分句）→ dep（spaCy 依存，中英双模型）→
     fill（关系+槽位）→ grade（A/B/C）→ store（去重/落盘）；产物 `data/facts/facts-{date}.jsonl`
@@ -162,7 +162,7 @@ Stage CLIs (console scripts in pyproject):
     档位：A（两端在词典、证据可定位、主语不继承）精度 ~83%、~9.5 条/天；A2（只差主语继承）
     约一半可靠，`fact_grades: [A]` 默认不取。沿用 `KG_FACTS_ENABLED`：定时任务跳过、dispatch 才跑。
   - `editorial/`：S4 日报正文（事实/观点分离、evidence_ids、客观性闸门）→ S5 日报点评（对日报）；
-    S6 播客文稿（事实底稿来自 S2 全文证据，3000–3600 字、3–4 章、`[CHAPTER]`）→ S7 播客点评
+    S6 播客文稿（事实底稿来自 S2 全文证据，4000–4800 字、4–6 章、`[CHAPTER]`）→ S7 播客点评
     （对文稿，产出 show notes/章节导语）；
   - `pipeline/v3_runner_service.py`：S1–S7 编排、LLM 按 Stage 选模型（`LLMConfig.stage_models`）、
     覆盖账本写入、`daily_report_{date}.md` 渲染。
@@ -296,10 +296,10 @@ Stage CLIs (console scripts in pyproject):
 
 - `docs/architecture.md` and `docs/pipeline_walkthrough.md` — pipeline design
 - `docs/source_to_recommendation.md` — L1–L4 分层方案与「还没做什么」的权威清单；
-  **只有 L1 采集达成，L4 推荐 P@8 仅 0.59、目标未达成**
+  **L1 采集达成；L4 推荐 2026-11-26 修正口径——真瓶颈是槽位不够，shortlist 已 8→15**
 - `docs/editorial_quality.md` — S4–S7 成品质量的检查项与已修缺陷（改日报/文稿/点评前先看）；
   改 `presentation/site_builder/static/` 必须按其中 §7 做浏览器验证，pytest 覆盖不到前端
-- `docs/recommend_evaluation.md` — 推荐评测口径；**P@8 仅 0.59，推荐目标未达成**，四条调参路已证否
+- `docs/recommend_evaluation.md` — 推荐评测口径；**P@k 会随 k 变化、不能跨档位比较**，六条调参路已证否（见 todo N1）
 - `docs/rsshub_cache_relay.md` — RSSHub 快照缓存中转（GHA 临时实例）设计
 - `docs/development.md`, `docs/contributing.md` — dev workflow
 - `docs/tts_complete_guide.md`, `docs/gha_cosyvoice2_deployment_log.md` — CosyVoice setup

@@ -103,7 +103,8 @@ class TestConfigLoading:
         assert config.fine.llm_top_k == 20
         assert config.fine.blend_rule == pytest.approx(0.6)
         assert config.fine.blend_llm == pytest.approx(0.4)
-        assert config.rerank.shortlist_size == 8
+        # 2026-11-26 由 8 放宽到 15：实测粗排前 20 名 6~7 成值得播，8 条浪费一半
+        assert config.rerank.shortlist_size == 15
         assert config.rerank.mmr_lambda == pytest.approx(0.72)
         assert sum(config.fine.weights.values()) == pytest.approx(1.0)
 
@@ -122,10 +123,15 @@ class TestConfigLoading:
 
 class TestRecommendEndToEnd:
     def test_returns_shortlist_with_reasons_and_components(self) -> None:
+        # 不写死条数：断言「不超过 shortlist_size 且 rank 连续」，
+        # 2026-11-26 shortlist_size 8→15 后写死 8 会让测试与配置脱钩。
+        # 实测这条链路上 title_dedupe / max_per_tech_stack 会先于 shortlist_size 截断
+        # （10 条测试事件标题相近），所以这里不要求正好等于 size。
+        size = RecommendConfig.load().rerank.shortlist_size
         result = recommend(_valid_events(10), reference_time=REFERENCE)
-        assert len(result) == 8
-        assert [entry.rank for entry in result] == list(range(1, 9))
-        assert len({entry.event_id for entry in result}) == 8
+        assert 0 < len(result) <= size
+        assert [entry.rank for entry in result] == list(range(1, len(result) + 1))
+        assert len({entry.event_id for entry in result}) == len(result)
         for entry in result:
             assert 0.0 <= entry.score <= 5.0
             assert entry.rule_score > 0.0
@@ -221,8 +227,9 @@ class TestLlmJudgeIntegration:
         def broken_judge(events: list[Event]) -> dict[str, dict]:
             raise RuntimeError("LLM 不可用")
 
+        size = RecommendConfig.load().rerank.shortlist_size
         result = recommend(_valid_events(10), llm_judge=broken_judge, reference_time=REFERENCE)
-        assert len(result) == 8
+        assert 0 < len(result) <= size
         assert all(entry.llm_score == 0.0 for entry in result)
 
     def test_llm_samples_use_median_scores(self, tmp_path) -> None:

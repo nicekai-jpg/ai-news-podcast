@@ -21,9 +21,27 @@ def utterance(speaker: str, chars: int) -> str:
     return f"[Host {speaker}] {text}"
 
 
-def make_script(total: int = 3300, chapters: int = 4) -> str:
-    """生成一份字数/章节/主持均衡都达标的标准文稿。"""
-    titles = ["开场", "主推一", "主推二", "收尾"][:chapters]
+def _config_baseline() -> tuple[int, int]:
+    """取当前配置的「合格文稿」基准（字数、章节），避免测试写死旧配置值。
+
+    2026-11-26 配置放宽（3000–3600 字/4 章 → 4000–4800 字/5 章）后，
+    测试里写死的 3300/4 不再达标，会触发重写并耗尽 FakeLLM 响应。
+    """
+    from ai_news_podcast.business.editorial.config import load_config
+
+    cfg = load_config(Path(__file__).resolve().parents[1] / "config" / "editorial_v3.yaml")
+    return (cfg.min_chars + cfg.max_chars) // 2, cfg.chapters
+
+
+_OK_CHARS, _OK_CHAPTERS = _config_baseline()
+
+
+def make_script(total: int | None = None, chapters: int | None = None) -> str:
+    """生成一份字数/章节/主持均衡都达标的标准文稿（默认取配置中位值）。"""
+    total = _OK_CHARS if total is None else total
+    chapters = _OK_CHAPTERS if chapters is None else chapters
+    titles = ["开场", "主推一", "主推二", "主推三", "主推四", "收尾"]
+    titles = [*titles[: max(0, chapters - 1)], "收尾"] if chapters > 1 else titles[:1]
     per_chapter = total // chapters
     lines: list[str] = []
     for index in range(chapters):
@@ -84,32 +102,35 @@ def write_config(tmp_path: Path, **overrides: Any) -> str:
 
 class TestBuildScript:
     def test_returns_quality_ok_script(self) -> None:
-        script = make_script(3300, 4)
+        script = make_script()
         llm = FakeLLM([script])
 
         result = build_script([make_entry()], [make_event()], EVIDENCE, llm)
 
         report = quality(result)
         assert report["ok"], report["issues"]
-        assert report["chars"] == 3300
-        assert report["chapters"] == 4
+        assert report["chars"] == _OK_CHARS
+        assert report["chapters"] == _OK_CHAPTERS
         assert len(llm.prompts) == 1
 
     def test_prompt_carries_facts_and_targets(self) -> None:
-        llm = FakeLLM([make_script(3300, 4)])
+        llm = FakeLLM([make_script()])
 
         build_script([make_entry()], [make_event()], EVIDENCE, llm)
 
         prompt = llm.prompts[0]
         assert "某公司发布 2.1 版本" in prompt
         assert "item-1" in prompt
-        assert "3000" in prompt and "3600" in prompt
+        from ai_news_podcast.business.editorial.config import load_config
+
+        _cfg = load_config(Path(__file__).resolve().parents[1] / "config" / "editorial_v3.yaml")
+        assert str(_cfg.min_chars) in prompt and str(_cfg.max_chars) in prompt
         assert "[CHAPTER]" in prompt
         assert "林夏" in prompt and "陈默" in prompt
         assert "事实底稿" in prompt
 
     def test_rewrites_when_too_short(self) -> None:
-        valid = make_script(3300, 4)
+        valid = make_script()
         llm = FakeLLM([make_script(600, 2), valid])
 
         result = build_script([make_entry()], [make_event()], EVIDENCE, llm)
@@ -119,8 +140,8 @@ class TestBuildScript:
         assert quality(result)["ok"]
 
     def test_rewrites_when_too_long(self) -> None:
-        valid = make_script(3300, 4)
-        llm = FakeLLM([make_script(4000, 4), valid])
+        valid = make_script()
+        llm = FakeLLM([make_script(_OK_CHARS + 1200, _OK_CHAPTERS), valid])
 
         result = build_script([make_entry()], [make_event()], EVIDENCE, llm)
 
@@ -171,7 +192,7 @@ class TestBuildScript:
             build_script([make_entry()], [make_event()], EVIDENCE, boom)
 
     def test_events_ordered_by_shortlist_rank(self) -> None:
-        llm = FakeLLM([make_script(3300, 4)])
+        llm = FakeLLM([make_script()])
         entries = [make_entry(1, "evt-1"), make_entry(2, "evt-2")]
         event_1 = make_event("evt-1")
         event_1.representative_title = "头号事件"
@@ -184,7 +205,7 @@ class TestBuildScript:
         assert prompt.index("头号事件") < prompt.index("二号事件")
 
     def test_prompt_includes_evidence_text(self) -> None:
-        llm = FakeLLM([make_script(3300, 4)])
+        llm = FakeLLM([make_script()])
 
         result = build_script([make_entry()], [make_event()], EVIDENCE, llm)
 
@@ -248,13 +269,17 @@ def test_repo_config_defaults() -> None:
     config_path = Path(__file__).resolve().parents[1] / "config" / "editorial_v3.yaml"
     cfg = load_config(config_path)
 
-    assert (cfg.min_chars, cfg.max_chars, cfg.chapters) == (3000, 3600, 4)
+    # 2026-11-26 放宽：15 分钟/3000–3600 字/4 章 → 20 分钟/4000–4800 字/5 章
+    # （shortlist 8→15、report_top_n 5→8 之后，原时长装不下）
+    assert (cfg.min_chars, cfg.max_chars, cfg.chapters) == (4000, 4800, 5)
+    assert (cfg.min_chapters, cfg.max_chapters) == (4, 6)
+    assert cfg.target_minutes == 20
 
 
 class TestScriptFactCheck:
     def test_rewrites_when_number_not_in_evidence(self) -> None:
-        bad = make_script(3300, 4).replace(_BASE, "融资 99 亿美元。", 1)
-        good = make_script(3300, 4)
+        bad = make_script().replace(_BASE, "融资 99 亿美元。", 1)
+        good = make_script()
         llm = FakeLLM([bad, good])
 
         result = build_script([make_entry()], [make_event()], EVIDENCE, llm)
@@ -264,7 +289,7 @@ class TestScriptFactCheck:
         assert "99" not in result
 
     def test_accepts_numbers_present_in_evidence(self) -> None:
-        script = make_script(3300, 4)
+        script = make_script()
         script = script.replace(_BASE, "发布 2.1 版本", 1)
         script = script.replace(_BASE, "融资 10 亿美元", 1)
         llm = FakeLLM([script])
@@ -282,7 +307,7 @@ class TestRadarSection:
     )
 
     def test_prompt_includes_radar_when_provided(self) -> None:
-        llm = FakeLLM([make_script(3300, 4)])
+        llm = FakeLLM([make_script()])
 
         build_script([make_entry()], [make_event()], EVIDENCE, llm, radar_text=self.RADAR)
 
@@ -291,14 +316,14 @@ class TestRadarSection:
         assert "vercel-labs/agent-browser" in prompt
 
     def test_prompt_omits_radar_when_empty(self) -> None:
-        llm = FakeLLM([make_script(3300, 4)])
+        llm = FakeLLM([make_script()])
 
         build_script([make_entry()], [make_event()], EVIDENCE, llm, radar_text="")
 
         assert "项目雷达" not in llm.prompts[0]
 
     def test_radar_numbers_pass_fact_check(self) -> None:
-        script = make_script(3300, 4).replace(_BASE, "项目目前⭐48463，较昨日 +957。", 1)
+        script = make_script().replace(_BASE, "项目目前⭐48463，较昨日 +957。", 1)
         llm = FakeLLM([script])
 
         build_script([make_entry()], [make_event()], EVIDENCE, llm, radar_text=self.RADAR)
