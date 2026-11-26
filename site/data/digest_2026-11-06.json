@@ -73,7 +73,7 @@
   "lead": {
     "text": "百度开源文心5.5 Flash Base，多基准测试刷新同规模模型 SOTA。竞争焦点正从“封闭 API 调用”转向开放权重、实际部署与生态扩散，基座模型能否进入真实业务链路，成为衡量影响力的关键。\n\nLinux 内核被曝出 948 个漏洞，相关挖掘项目获 OpenAI 约 120 万美元资助。随着 AI 服务器、云平台和智能体持续依赖 Linux，安全治理必须从单点补丁升级为基础设施级工程。\n\nNVIDIA 则从智能体执行效率与内存瓶颈两端推进：Vera 强调高吞吐和快速任务执行，全栈协同设计试图缓解长上下文、模型规模与智能体工作负载带来的显存压力。",
     "source": "report_lead",
-    "source_file": "data/reports/daily_report_2026-11-06.md"
+    "source_file": "data/editorial/2026-11-06/daily_report_2026-11-06.md"
   },
   "metrics": [
     {
@@ -204,7 +204,7 @@
       }
     ],
     "raw_paragraphs": [],
-    "source_file": "data/reports/daily_report_2026-11-06.md"
+    "source_file": "data/editorial/2026-11-06/daily_report_2026-11-06.md"
   },
   "report_review": {},
   "podcast_review": {},
@@ -852,7 +852,7 @@
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-11-06.json",
-      "report": "data/reports/daily_report_2026-11-06.md",
+      "report": "data/editorial/2026-11-06/daily_report_2026-11-06.md",
       "radar": "data/gh_radar/radar_2026-11-06.json",
       "playlist": "site/episodes/2026-11-06/playlist.json",
       "episodes": "data/episodes.json"

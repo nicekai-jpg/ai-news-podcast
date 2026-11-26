@@ -73,7 +73,7 @@
   "lead": {
     "text": "本期从企业AI落地视角串起OceanBase、文心、Anthropic与英伟达四组进展：OceanLake以湖库一体架构和数据分支支撑Agent访问，OceanSeek核心引擎宣布开源，OceanBase并披露AI与海外增长数据；文心5.5 Flash Preview开放权重；Siren检验智能体在缺陷沙盒中的越界行为；英伟达高管更替则牵出持续合规审查。节目不止罗列发布，更关注部署证据、推理成本、权限边界、治理监督，以及技术承诺能否转化为稳定业务。",
     "source": "podcast_review",
-    "source_file": "data/reports/daily_report_2026-11-25.md"
+    "source_file": "data/editorial/2026-11-25/daily_report_2026-11-25.md"
   },
   "metrics": [
     {
@@ -156,6 +156,7 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -182,6 +183,7 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -206,6 +208,23 @@
           {
             "label": "反方",
             "text": "暂无公开反方信息。两份可引用证据的正文内容高度重合，其中量子位页面注明本文由百度提供并获授权转载；因此，CodeArena WebDev 排名、基准表现和速度描述应视为发布相关报道口径，尚未由现有材料中的多方独立测试加以验证。"
+          }
+        ],
+        "sources": [
+          {
+            "label": "量子位",
+            "link": "https://www.qbitai.com",
+            "official": false
+          },
+          {
+            "label": "Hugging Face 模型页",
+            "link": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Preview",
+            "official": true
+          },
+          {
+            "label": "ModelScope 模型页",
+            "link": "https://www.modelscope.cn/models/baidu/ERNIE-5.5-Flash-Preview",
+            "official": true
           }
         ],
         "raw_sections": [],
@@ -234,6 +253,7 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -260,6 +280,7 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -292,7 +313,7 @@
     ],
     "char_count": 4607,
     "reading_minutes": 12,
-    "editor_verdict": "整体数字大多与证据吻合，分析也较好地区分了发布方口径与独立事实。最需处理的是高度重合的证据被计为多来源、若干日期缺年份，以及两条 OceanBase 内容重复；Anthropic 末组指标和经营数据的统计口径仍需人工核实。\n\nOceanBase发布OceanLake并开源核心引擎：发布、能力描述及13.36倍、9.86倍等数字均与证据一致，且已注明为大会披露和发布方口径。主要问题是两条证据正文近乎同稿，仍需核实来源独立性并补链接；“秒级”应继续保留为厂商宣称。\n\n英伟达恢复黄仁勋总裁、CEO及董事职务：核心复任决定、政府意见、股价涨幅及调查进展均有出处，表述总体克制。需补注日期年份，统一中英文日期格式，并将“仍在聘请外部律师调查”改为证据支持的“正由外部律师协助调查”。\n\n文心 5.5 Flash Preview 开源：参数、上下文长度和榜单名次均与报道一致，也没有补造基准分数。需修正的是两份证据实际来自同一篇授权转载内容，single_source=false易造成误读；许可与下载可用性宜由官方模型页再核。\n\nAnthropic公布Siren智能体越狱评估：26类沙盒、1700余场景及各项比例均能对应原文，指标区分也做得较好。唯一需补的是末组“归零/0.1%”没有说明对应模型集合和具体指标，证据原句本身也有歧义，刊发前应向来源确认。\n\n蚂蚁OceanBase披露AI与海外经营数据：经营数字与场景描述均能对应唯一报道，且对单一来源、正文截断和未经审计风险已有提示。建议把条目聚焦经营变化，减少与 OceanBase 产品发布事件的重复，并补齐原文链接、统计期及 Omdia 口径。",
+    "editor_verdict": "整体数字大多与证据吻合，分析也较好地区分了发布方口径与独立事实。最需处理的是高度重合的证据被计为多来源、若干日期缺年份，以及两条 OceanBase 内容重复；Anthropic 末组指标和经营数据的统计口径仍需人工核实。\n\n【补充】OceanBase发布OceanLake并开源核心引擎：发布、能力描述及13.36倍、9.86倍等数字均与证据一致，且已注明为大会披露和发布方口径。主要问题是两条证据正文近乎同稿，仍需核实来源独立性并补链接；“秒级”应继续保留为厂商宣称。\n\n【需修正】英伟达恢复黄仁勋总裁、CEO及董事职务：核心复任决定、政府意见、股价涨幅及调查进展均有出处，表述总体克制。需补注日期年份，统一中英文日期格式，并将“仍在聘请外部律师调查”改为证据支持的“正由外部律师协助调查”。\n\n【需修正】文心 5.5 Flash Preview 开源：参数、上下文长度和榜单名次均与报道一致，也没有补造基准分数。需修正的是两份证据实际来自同一篇授权转载内容，single_source=false易造成误读；许可与下载可用性宜由官方模型页再核。\n\n【补充】Anthropic公布Siren智能体越狱评估：26类沙盒、1700余场景及各项比例均能对应原文，指标区分也做得较好。唯一需补的是末组“归零/0.1%”没有说明对应模型集合和具体指标，证据原句本身也有歧义，刊发前应向来源确认。\n\n【补充】蚂蚁OceanBase披露AI与海外经营数据：经营数字与场景描述均能对应唯一报道，且对单一来源、正文截断和未经审计风险已有提示。建议把条目聚焦经营变化，减少与 OceanBase 产品发布事件的重复，并补齐原文链接、统计期及 Omdia 口径。",
     "source_file": "data/editorial/2026-11-25/report.json"
   },
   "report_review": {
@@ -614,7 +635,7 @@
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-11-25.json",
-      "report": "data/reports/daily_report_2026-11-25.md",
+      "report": "data/editorial/2026-11-25/daily_report_2026-11-25.md",
       "radar": "data/gh_radar/radar_2026-11-25.json",
       "playlist": "site/episodes/2026-11-25/playlist.json",
       "episodes": "data/episodes.json"

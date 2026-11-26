@@ -73,7 +73,7 @@
   "lead": {
     "text": "：\n\n11 月 10 日的科技新闻呈现出三条清晰的暗线。其一，开源模型的竞争维度正在切换——腾讯混元 Hy4 发布并被实测为当前最强开源模型，但真正的卖点已不是单项跑分，而是与 WorkBuddy 组合后的多模态 Agent 交付链路。\n\n其二，模型能力扩张的另一面是\"可控\"与\"可采购\"。OpenAI 同日公开 Control Room，一套横跨自身研究基础设施、可追踪并快速终止模型负载的中枢系统；ChatGPT Enterprise 则同步上线 AWS Marketplace。一管刹车、一管结算，企业级 AI 的真实门槛正在浮现。\n\n其三，物理智能的瓶颈继续下移。NVIDIA 在 CoRL 展示如何让机器人在仿真中排练齿轮对齐、线缆连接这类精细活，同时借 MSIT–NVIDIA 论坛加码韩国初创投资，将算力与制造供应链一并纳入版图。",
     "source": "report_lead",
-    "source_file": "data/reports/daily_report_2026-11-10.md"
+    "source_file": "data/editorial/2026-11-10/daily_report_2026-11-10.md"
   },
   "metrics": [
     {
@@ -210,7 +210,7 @@
       }
     ],
     "raw_paragraphs": [],
-    "source_file": "data/reports/daily_report_2026-11-10.md"
+    "source_file": "data/editorial/2026-11-10/daily_report_2026-11-10.md"
   },
   "report_review": {},
   "podcast_review": {},
@@ -780,7 +780,7 @@
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-11-10.json",
-      "report": "data/reports/daily_report_2026-11-10.md",
+      "report": "data/editorial/2026-11-10/daily_report_2026-11-10.md",
       "radar": "data/gh_radar/radar_2026-11-10.json",
       "playlist": "site/episodes/2026-11-10/playlist.json",
       "episodes": "data/episodes.json"

@@ -73,7 +73,7 @@
   "lead": {
     "text": "今日最值得关注的，不再是又一个基础模型刷新榜单，而是智能体底层工程开始从“单次问答”转向“长程执行”。据量子位报道，硅谷华人团队正在打造下一代 Agent Harness，且两大 Agent 玩家在路线选择上不谋而合：竞争焦点正从模型本身，迁移到由状态、工具和任务编排组成的系统层。\n\n与此同时，恶意 AGENTS.md 文件让“代理读取的文字”变成潜在攻击入口，PPIO 沙箱则把隔离的云电脑包装成开箱即用的 API。两条新闻共同指向同一现实：智能体越能独立行动，运行环境、可信边界与失败恢复能力就越重要。",
     "source": "report_lead",
-    "source_file": "data/reports/daily_report_2026-11-08.md"
+    "source_file": "data/editorial/2026-11-08/daily_report_2026-11-08.md"
   },
   "metrics": [
     {
@@ -181,7 +181,7 @@
       "STEPX Neo 智能体手机在进博会高通展台首次亮相，强调软硬模一体化。终端形态虽然不是智能体创新的最终答案，但跨应用执行、端云协同、延迟控制与隐私边界的综合表现，将决定其能否从概念设备走向规模化使用。",
       "阿里巴巴发布《2026 AI向善行动报告》，AI 数据中心可持续发展成为年度亮点。AI 基础设施的竞争已延伸至能源、用水与碳排放维度，未来相关披露需要从原则性表态走向可核验的量化指标。"
     ],
-    "source_file": "data/reports/daily_report_2026-11-08.md"
+    "source_file": "data/editorial/2026-11-08/daily_report_2026-11-08.md"
   },
   "report_review": {},
   "podcast_review": {},
@@ -523,7 +523,7 @@
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-11-08.json",
-      "report": "data/reports/daily_report_2026-11-08.md",
+      "report": "data/editorial/2026-11-08/daily_report_2026-11-08.md",
       "radar": "data/gh_radar/radar_2026-11-08.json",
       "playlist": "site/episodes/2026-11-08/playlist.json",
       "episodes": "data/episodes.json"

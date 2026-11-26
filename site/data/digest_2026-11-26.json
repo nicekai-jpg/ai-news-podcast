@@ -1,0 +1,670 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-26",
+  "date_label": "2026年11月26日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": false
+  },
+  "podcast": {
+    "title": "今日AI看点 | 2026-11-26",
+    "subtitle": "算力唤醒真实世界:九章云极发布物理AI工厂与生态开放计划",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-26.mp3",
+    "duration_seconds": 631.559,
+    "duration_label": "10:32",
+    "speech_seconds": 610.19,
+    "segment_count": 46,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 46,
+      "segments_url": "episodes/2026-11-26/playlist.json",
+      "text_url": "episodes/2026-11-26.txt"
+    }
+  },
+  "lead": {
+    "text": "本期从“会写代码的AI”转向“能动手、能协作、能完成工作”的AI。物理AI部分复盘深圳峰会提出的“物理AI工厂”与生态开放计划，聚焦标准接口、仿真验证、算力组织和AI5部署优先级；智能体部分观察文心5.5 Flash Preview如何以长上下文、测试反馈和多Agent协作支撑长程任务，并梳理AgentCore的记忆、知识库、连接器与Skill机制，以及GPT-6.2 Sol进入ChatGPT后的交互变化。编辑结语是：模型更大、工具更多并不自动等于系统稳定，真正要看验证能否闭环、权限与记忆是否有边界、资源能否匹配真实任务。",
+    "source": "podcast_review",
+    "source_file": "data/editorial/2026-11-26/daily_report_2026-11-26.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 583,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 1,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 46,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 7,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "开场",
+      "start": 15.249,
+      "label": "00:15",
+      "source": "script"
+    },
+    {
+      "title": "算力与落地",
+      "start": 31.959,
+      "label": "00:32",
+      "source": "script"
+    },
+    {
+      "title": "智能体与编程",
+      "start": 310.341,
+      "label": "05:10",
+      "source": "script"
+    },
+    {
+      "title": "收尾",
+      "start": 598.287,
+      "label": "09:58",
+      "source": "script"
+    }
+  ],
+  "report": {
+    "title": "深度日报 2026-11-26",
+    "lead": "11月25日，2026物理AI行业峰会暨九章云极智算生态大会在深圳举行。会议由九章云极DataCanvas主办，深圳市龙华区工业和信息化局支持，清华大学互联网产业研究院为学术指导单位；来自标准机构、高校与科研院所、投资机构，以及机器人本体、世界模型、仿真软件、智算云等领域的上百位嘉宾代表出席，中国电子技术标准化研究院副院长范科峰、深圳市龙华区委常委、常务副区长张智和九章云极DataCanvas董事长方磊分别致辞。",
+    "deep_dives": [
+      {
+        "heading": "1、九章云极发布物理AI工厂及生态开放计划",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "11月25日，2026物理AI行业峰会暨九章云极智算生态大会在深圳举行。会议由九章云极DataCanvas主办，深圳市龙华区工业和信息化局支持，清华大学互联网产业研究院为学术指导单位；来自标准机构、高校与科研院所、投资机构，以及机器人本体、世界模型、仿真软件、智算云等领域的上百位嘉宾代表出席，中国电子技术标准化研究院副院长范科峰、深圳市龙华区委常委、常务副区长张智和九章云极DataCanvas董事长方磊分别致辞。\n会议把物理AI的产业化路径概括为两个方向：以工程化能力将算力组织为生产体系的“物理AI工厂”，以及连接产业链专业能力的“物理AI生态”。中国电子技术标准化研究院副院长范科峰在致辞中表示，数据接口、通信协议、安全边界等标准化问题将愈发突出；九章云极DataCanvas董事长方磊称：“Agent错了可以重试，机器人撞了不能重来。”\n深圳市龙华区委常委、常务副区长张智在致辞中表示，龙华有超两万家制造业企业、超600家人工智能及机器人企业，数字经济核心产业增加值占GDP超35%；当地已建成“鸿蒙+昇腾”双生态数字孪生底座和全国首个虚实融合具身智能训练场（EAI Park），并形成从世界模型、基础设施到Sim-to-Real、场景应用的支撑链条。\n在市场数据方面，易观合伙人张澄宇发布《2026年中国（亚洲）物理AI开发基础设施市场专题研究报告》。报告给出的判断是，2026年中国物理AI开发基础设施市场规模约335亿元，2030年预计超800亿元；报告还讨论数据、仿真与验证环节的贡献，但现有引文在该处被截断，未展示相关数值。"
+          },
+          {
+            "label": "背景",
+            "text": "现有材料把物理AI理解为机器人、世界模型、仿真软件与智算基础设施等能力的组合，并将关键问题落在从实验室到产线的转化以及跨产业链协作。龙华区的制造业、机器人企业及训练场建设提供了区域应用背景，易观报告则提供了市场规模预测；其中约335亿元和2030年预计超800亿元属于报告预测口径，不等同于已经实现的收入。"
+          },
+          {
+            "label": "影响",
+            "text": "短期看，标准接口、训练场、仿真和真机验证可能成为企业部署物理AI时关注的合作环节。对算力与云服务商，潜在机会是提供可调度、可复用的工程平台；对机器人厂商，潜在机会是接入共同工具链；对投资者，则需继续观察开放计划的合作范围、真实部署项目、收费模式与单位算力成本。现有报道尚不足以证明相关计划已经产生规模化商业结果。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "量子位",
+            "link": "https://www.qbitai.com",
+            "official": false
+          },
+          {
+            "label": "雷峰网",
+            "link": "https://www.leiphone.com/category/chips/Qz3QPf26nVIVA0ga.html",
+            "official": false
+          },
+          {
+            "label": "量子位",
+            "link": "https://www.qbitai.com/2026/11/512582.html",
+            "official": false
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "2、百度开放文心5.5Flash Preview模型权重",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，百度近日将文心5.5Flash Preview模型权重面向全球开源社区开放，支持在Hugging Face与ModelScope下载，并兼容vLLM、SGLang等主流推理框架。报道同时以复杂工程中的代码生成、3D建模和知识工作为应用背景，但所给证据没有附上独立测评结果，因此此次开放的范围与框架兼容性目前属于单一来源信息。\n据现有报道，文心5.5Flash Preview采用MoE（混合专家）稀疏激活架构，总参数量为2800亿，每个token仅激活140亿参数，并原生支持长达100万token的上下文窗口。报道将这一配置解释为在参数规模与推理成本之间进行取舍；不过，所给材料未提供不同硬件条件下的速度、吞吐、显存占用或单位调用成本对比。\n据现有报道，此次开源技术博客介绍了一个基于Unreal Engine5.8的第三人称武侠游戏《云岫行》开发案例：任务持续11小时，模型需把跨越多代引擎的素材整合进同一UE5.8工程，并用C++完成全套逻辑编写。报道称，面对人物悬空、跑动方向不一致、相机错位等试玩问题，模型把视觉现象转成代码断言与自动化测试用例，再依据失败反馈修正代码。\n据现有报道，该模型还展示了两个Agent协同调用Blender Python API的3D建模流程：从OpenStreetMap抓取矢量布局数据，经截面放样生成机身与机翼，再由Cycles/OptiX分帧渲染并通过FFmpeg合成。报道将这一流程描述为无需人工干预，但所给证据未提供工程文件、运行日志或可复现说明，无法据此核验端到端执行结果。"
+          },
+          {
+            "label": "背景",
+            "text": "从技术脉络看，报道把AI编程的难点从单文件函数生成转向跨文件、长周期、强依赖工程的验证闭环，并以《云岫行》案例说明“用测试代替视觉”的工作方式。编辑分析认为，这一叙事强调模型能否持续读取失败信息并调整代码，而不只是首次输出是否符合预期；它反映的是发布材料中的产品定位，尚不等于已被行业普遍验证。"
+          },
+          {
+            "label": "影响",
+            "text": "潜在影响主要在研究与二次开发侧：开放权重并适配主流推理框架，可能降低开发者试用和部署该模型的接入门槛；长上下文与稀疏激活也可能成为复杂工程任务的基础设施选项。对生产环境的实际判断仍取决于许可证、算力需求、速度、稳定性、代码安全性和真实项目复现效果，而这些信息在现有材料中尚未得到充分说明。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "AIBase 新闻",
+            "link": "https://www.aibase.com/zh/news/32521",
+            "official": false
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "3、阿里云 AgentCore 管理 Skill 支持对话操作",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，阿里云在 2026-11-24 的材料中介绍，AgentCore 面向企业提供 Agent 的创建、治理、协作、进化等能力。用户无需登录 AgentCore 控制台，即可通过 Skill 让 Codex、Qoder 等 Coding Agent，千问、豆包等办公 Agent，各类企业自建 Agent，以及已经运行在 AgentCore 上的 Agent，通过对话使用 AgentCore。报道给出的 Skill 安装地址为 https://help.aliyun.com/zh/agentcore/agentcore-management-skill。\n据现有报道，2026-11-25 16:46，AgentCore 托管 Harness 已支持一键开启记忆、知识库和连接器。开发者可连接已有的百炼知识库、OTS 知识库、ContextDB 等三方记忆/知识库，集中管理这些资源，为 Agent 接入业务依据，并将交互过程中产生的偏好和经验保存下来，供后续任务检索复用。相关业务信息包括产品手册、合同条款、订单记录和历史沟通，也包括用户表达偏好、已确认的业务事实及处理某类问题的经验。\n据现有报道，AgentCore 通过三类资源承接上下文信息：记忆保存历史记录，并从中提取可复用的偏好、事实和经验；知识库承载管理制度、手册和业务资料，为回答提供可追溯依据；连接器访问业务系统中的记录与日志，为分析提供查询结果。应用可保存交互事件，开发者可选择会话摘要、语义记忆、用户画像、技能记忆，或使用智能策略、编写自定义提取指令。"
+          },
+          {
+            "label": "背景",
+            "text": "背景梳理（编辑分析）：2026-11-24 的材料重点是让 Agent 通过 Skill 使用 AgentCore；2026-11-25 的材料则集中于记忆、知识库和连接器。编辑上可将前者理解为管理入口的变化，将后者理解为业务上下文供给能力的补充，但现有材料没有提供客户落地成效数据。"
+          },
+          {
+            "label": "影响",
+            "text": "影响判断（编辑分析）：该 Skill 为企业增加了以现有 Agent 交互界面管理 AgentCore 的路径，并可能把平台配置与日常任务处理放在同一工作流中。面向生产环境时，影响程度还取决于跨 Agent 兼容性、权限边界、审计记录、连接器访问范围及异常处理方式。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "报道所链接的阿里云 AgentCore 管理 Skill 安装文档",
+            "link": "https://help.aliyun.com/zh/agentcore/agentcore-management-skill",
+            "official": true
+          },
+          {
+            "label": "阿里巴巴中间件",
+            "link": "https://mp.weixin.qq.com/s?__biz=MzcwOTMzMTQyMA==&mid=2247517525&idx=1&sn=604cf062bef927c858b7b7fa3b2c96e2",
+            "official": true
+          },
+          {
+            "label": "阿里巴巴中间件",
+            "link": "https://mp.weixin.qq.com/s?__biz=MzcwOTMzMTQyMA==&mid=2247517512&idx=1&sn=e91f562d564d09e9d23fb4f6c1261e23",
+            "official": true
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "4、马斯克称AI5优先用于Optimus和训练系统",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，11 月 22 日，一名仍在使用 AI3 的特斯拉车主在 X 上询问下一代 AI5 芯片何时上车。马斯克回复称，AI5 将优先部署到 Optimus 人形机器人和 AI 训练系统，汽车将继续使用 AI4；他给出的理由是“AI4 足以解决超人（superhuman）驾驶的问题”。报道未在这段回复中给出汽车端采用 AI5 的具体时间。\n据现有报道，在一季度财报电话会议上，马斯克表示 AI4 的算力足以支持无人监督自动驾驶，安全水平可远超人类驾驶；他还称，更先进的 AI5 应优先用于 Optimus 和公司的 AI 训练集群。现有材料把这番表述与 11 月 22 日的 X 回复并列呈现，但未注明两处时间的年份、完整文字记录或可直接核验的原始链接。\n据现有报道，AI5 已流片并进入试产，大规模量产定在 2027 年；报道给出的计划参数为，算力约为 AI4 的 12 倍，内存计划约 96GB，后者为现役 AI4 约 32GB 的三倍。报道还称，更大的内存可运行更复杂的 AI 模型，同时会使成本、功耗和散热压力上升，但没有给出这些方面的量化数据。\n据现有报道，现役 AI4（也称 HW4）的车载自动驾驶计算平台由两颗定制 SoC 支撑；每颗 SoC 内置 3 个名为“TRIP”的神经网络加速器，合计 6 个，并配合 GDDR6 显存，承担摄像头图像理解、路径规划和车辆控制等实时任务。报道还写道，在马斯克看来，这套配置用于驾驶已经足够，而真正需要更强算力的是机器人；材料没有给出与“超人”能力相对应的测试标准。"
+          },
+          {
+            "label": "背景",
+            "text": "背景：据现有报道，一季度财报电话会议上已出现 AI4 支持无人监督驾驶、AI5 优先用于 Optimus 与训练集群的表述，11 月 22 日的 X 回复延续了同一方向。现有 AI4 又称 HW4，其车载计算平台采用两颗定制 SoC、合计 6 个“TRIP”神经网络加速器与 GDDR6 显存。"
+          },
+          {
+            "label": "影响",
+            "text": "分析：该选择意味着机器人与模型训练可能先于汽车获得新一代算力，同时汽车端硬件升级节奏可能后移。AI5 的量产进度、内存与功耗方案、成本控制及散热能力，都会影响这一部署顺序能否按计划落实；计划参数也不等同于最终产品表现。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "AIBase 新闻",
+            "link": "https://www.aibase.com/zh/news/32520",
+            "official": false
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "5、GPT-6.2 Sol 推送至 ChatGPT 聊天页面",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，OpenAI 于 11 月 24 日宣布，GPT-6.2 Sol 正式登陆 ChatGPT 聊天页面。此前，该模型已在 ChatGPT Work 和 Codex 平台亮相，此次上线是在不到一周后进一步扩大应用范围。根据报道转述的 OpenAI 介绍，该模型针对日常对话场景进行了优化，重点提升复杂请求处理能力；在用户提供详细指令或要求联网查找信息时，其需求理解和任务完成表现得到改进。\n据现有报道，GPT-6.2 Sol 提升了图像细节识别能力，可以更准确地识别照片中的文字、标签内容以及标志上的符号。在网络信息检索方面，该模型改进了选项比较能力，例如在线比较不同商品或服务时，可以根据价格、地理位置等具体条件筛选结果。此外，其后续交互能力也有所改进：当用户关注某件商品的价格时，模型可以主动询问是否需要在商品降价时提醒用户。\n据现有报道，GPT-6.2 Sol 已于当地时间 11 月 23 日开始面向全球 ChatGPT Plus、Pro、Business 和 Enterprise 订阅用户推送。OpenAI 同时公布了旧款模型的退役安排：GPT-5.6 Sol 将于 12 月 23 日从 ChatGPT 聊天页面、ChatGPT Work 和 Codex 中退役；同一天，GPT-5.6 Terra 也将退出 ChatGPT Work 和 Codex。"
+          },
+          {
+            "label": "背景",
+            "text": "分析口径：此次更新延续了“新模型扩大覆盖、旧模型安排退出”的产品迭代节奏。模型版本更替可能成为 ChatGPT 订阅用户近期需要关注的产品变量，但实际替代范围仍取决于不同订阅方案及功能的可用情况。"
+          },
+          {
+            "label": "影响",
+            "text": "分析口径：若推送按报道所述推进，新的图像识别、按条件比较选项和后续提醒交互将进入订阅用户的日常使用路径；旧款模型退出后，依赖相关模型或工作流的用户可能需要调整使用习惯和版本配置。报道没有提供对照测试、地区差异、逐步推送节奏或调用成本，实际体验与效率变化仍需后续观察。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "AI 工具集",
+            "link": "https://www.ithome.com/1/031/271.htm",
+            "official": false
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      }
+    ],
+    "frontier": [],
+    "raw_paragraphs": [],
+    "toc": [
+      {
+        "level": 3,
+        "text": "1、九章云极发布物理AI工厂及生态开放计划"
+      },
+      {
+        "level": 3,
+        "text": "2、百度开放文心5.5Flash Preview模型权重"
+      },
+      {
+        "level": 3,
+        "text": "3、阿里云 AgentCore 管理 Skill 支持对话操作"
+      },
+      {
+        "level": 3,
+        "text": "4、马斯克称AI5优先用于Optimus和训练系统"
+      },
+      {
+        "level": 3,
+        "text": "5、GPT-6.2 Sol 推送至 ChatGPT 聊天页面"
+      }
+    ],
+    "char_count": 4660,
+    "reading_minutes": 12,
+    "editor_verdict": "整体事实和数字基本贴合证据，未发现关键数值冲突，预测口径也与已实现收入作了区分。最需修正的是事件1的来源标识与“单一来源”标记不一致；事件2、4、5均依赖单一二手报道，需补官方仓库、财报或X原帖及OpenAI公告，并继续标明未获独立验证。\n\n【需修正】九章云极发布物理AI工厂及生态开放计划：主体、数字和引语均与证据吻合，也明确335亿元及超800亿元只是报告预测。需修正来源口径：两条证据摘录内容高度相同，日报各事实却标为单一来源，且来源列表混入首页、分类页；应统一独立来源数并换成可核验的报道直链。\n\n【补充】百度开放文心5.5Flash Preview模型权重：参数、上下文长度及两个工程案例均能逐项对应证据，对“无需人工干预”和框架兼容性也注明不可复现，表述克制。日报已把许可证、仓库、基准和第三方复现列入不确定性；取得这些材料前，不宜把案例提升为已验证的工业级能力。\n\n【准确】阿里云 AgentCore 管理 Skill 支持对话操作：两项材料分别对应11月24日的管理Skill和11月25日的上下文能力，时间、支持对象及记忆、知识库、连接器的边界均与证据一致。现有分析没有越过材料，且已保留权限、审计和客户采用情况的问号；来源以官方材料为主，表述较为稳妥。\n\n【补充】马斯克称AI5优先用于Optimus和训练系统：优先级表述、12倍、96GB、32GB以及两颗SoC、六个TRIP加速器均与证据一致，年份和原始链接缺失也已在正文中提示。导语仍应标明“11月22日”的年份未确认，并补X原帖和财报电话会记录；现阶段相关规格只宜作为报道中的计划参数。\n\n【补充】GPT-6.2 Sol 推送至 ChatGPT 聊天页面：上线时间、订阅层级和旧模型退出日期均与证据一致，功能描述也明确是转述官方介绍，没有冒充独立测试。需要补OpenAI原始公告并确认两个日期的年份、地区限制和推送完成情况；在此之前，全球可用性只能维持“据报道”的表述。",
+    "source_file": "data/editorial/2026-11-26/report.json"
+  },
+  "report_review": {
+    "overall": "整体事实和数字基本贴合证据，未发现关键数值冲突，预测口径也与已实现收入作了区分。最需修正的是事件1的来源标识与“单一来源”标记不一致；事件2、4、5均依赖单一二手报道，需补官方仓库、财报或X原帖及OpenAI公告，并继续标明未获独立验证。",
+    "items": [
+      {
+        "event_id": "08b4d1cf39d2f6d9099ca696f95e2b795694802e1990ebf60559ed7736c53082",
+        "title": "九章云极发布物理AI工厂及生态开放计划",
+        "verdict": "需修正",
+        "comment": "主体、数字和引语均与证据吻合，也明确335亿元及超800亿元只是报告预测。需修正来源口径：两条证据摘录内容高度相同，日报各事实却标为单一来源，且来源列表混入首页、分类页；应统一独立来源数并换成可核验的报道直链。",
+        "corrections": [
+          "日报事实字段标为single_source: true，与证据元数据“独立来源数：2”不一致；应核实两条记录是否分别对应不同媒体。若只是同稿转载，应将独立来源数改为1，不能视为交叉验证。",
+          "来源列表中的“量子位”首页和“雷峰网”分类页不是具体引文页面，应替换为对应报道直链或删除。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "96ea5137841de5c2aa13ccf2be181ffc672202995742985a3824f3265739b0c9",
+        "title": "百度开放文心5.5Flash Preview模型权重",
+        "verdict": "补充",
+        "comment": "参数、上下文长度及两个工程案例均能逐项对应证据，对“无需人工干预”和框架兼容性也注明不可复现，表述克制。日报已把许可证、仓库、基准和第三方复现列入不确定性；取得这些材料前，不宜把案例提升为已验证的工业级能力。",
+        "corrections": [
+          "补充文心5.5Flash Preview的官方模型仓库直链、具体许可证和发布日期；现有证据只能确认二手报道中的开放说法。",
+          "补充官方基准或第三方复现结果，尤其应覆盖《云岫行》11小时任务及双Agent建模流程的日志、提示词、硬件配置和验收标准。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "a938fe78f041402c50d5d65f2530535dbb62fe6fc24cffdd2cf2cfe57a151996",
+        "title": "阿里云 AgentCore 管理 Skill 支持对话操作",
+        "verdict": "准确",
+        "comment": "两项材料分别对应11月24日的管理Skill和11月25日的上下文能力，时间、支持对象及记忆、知识库、连接器的边界均与证据一致。现有分析没有越过材料，且已保留权限、审计和客户采用情况的问号；来源以官方材料为主，表述较为稳妥。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "653857b58fc1025113c5a117915887864b1aab7ed204f253c75d172fdbc9ba6f",
+        "title": "马斯克称AI5优先用于Optimus和训练系统",
+        "verdict": "补充",
+        "comment": "优先级表述、12倍、96GB、32GB以及两颗SoC、六个TRIP加速器均与证据一致，年份和原始链接缺失也已在正文中提示。导语仍应标明“11月22日”的年份未确认，并补X原帖和财报电话会记录；现阶段相关规格只宜作为报道中的计划参数。",
+        "corrections": [
+          "在导语中将“11月22日”标为“年份未注明”，并补充可核验的X原帖链接。",
+          "补充一季度财报电话会的年份及官方记录；AI5已流片、进入试产、2027年量产及12倍、96GB等指标须继续保留“据报道”口径。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "877a0d59c1ac3e2c0fe6527a1d0072dae57a72eda5378bf933c692fdae6389a7",
+        "title": "GPT-6.2 Sol 推送至 ChatGPT 聊天页面",
+        "verdict": "补充",
+        "comment": "上线时间、订阅层级和旧模型退出日期均与证据一致，功能描述也明确是转述官方介绍，没有冒充独立测试。需要补OpenAI原始公告并确认两个日期的年份、地区限制和推送完成情况；在此之前，全球可用性只能维持“据报道”的表述。",
+        "corrections": [
+          "补充OpenAI原始公告链接，并核对“11月23日”“12月23日”的年份与时区；现有证据未给出完整年份。",
+          "补充地区限制、各订阅方案的具体差异和推送完成时间；未取得官方公告前，标题中的推送事实应继续保留来源限定。"
+        ],
+        "highlights": []
+      }
+    ],
+    "risks": [
+      "事件1的“独立来源数：2”与日报single_source: true冲突；两条摘录内容高度相同，且来源列表含首页、分类页，交叉验证不足。",
+      "事件2缺少官方模型仓库、许可证、发布日期、官方基准及第三方复现，“无需人工干预”等案例仍属单方陈述。",
+      "事件3未披露Skill权限模型、审计机制、支持版本和客户采用数据，企业生产可用性仍无法判断。",
+      "事件4缺少X原帖及财报电话会原始记录，日期年份亦未明；AI5规格、量产节点和部署优先级均来自单一二手报道。",
+      "事件5缺少OpenAI原始公告，日期年份、地区与订阅差异、推送完成情况及性能表现均待核实。"
+    ]
+  },
+  "podcast_review": {
+    "overall": "本期结构清楚，用“AI从回答走向完成工作”串联物理AI、长程编程和企业Agent三条新闻，价值在于把讨论落到成本、验证、记忆、权限与责任。主要案例与日报基本一致，但文心长程开发、双Agent流程仍缺独立复现证据，峰会段落还出现材料未支持的发言人归属，需核实后使用。",
+    "show_notes": "本期从“会写代码的AI”转向“能动手、能协作、能完成工作”的AI。物理AI部分复盘深圳峰会提出的“物理AI工厂”与生态开放计划，聚焦标准接口、仿真验证、算力组织和AI5部署优先级；智能体部分观察文心5.5 Flash Preview如何以长上下文、测试反馈和多Agent协作支撑长程任务，并梳理AgentCore的记忆、知识库、连接器与Skill机制，以及GPT-6.2 Sol进入ChatGPT后的交互变化。编辑结语是：模型更大、工具更多并不自动等于系统稳定，真正要看验证能否闭环、权限与记忆是否有边界、资源能否匹配真实任务。",
+    "chapters": [
+      {
+        "title": "开场",
+        "intro": "从物理AI、长程编程到企业Agent，本期讨论AI如何走出“只会回答”的阶段，并把成本、验证、记忆和责任串成同一条落地线索。",
+        "highlights": [
+          "主线：AI从屏幕内回答走向真实任务闭环",
+          "判断标准：成本由谁承担、结果由谁验证",
+          "编辑视角：模型热度之外，更要看系统可靠性"
+        ]
+      },
+      {
+        "title": "算力与落地",
+        "intro": "聚焦物理AI峰会、算力基础设施与AI5部署路线，观察机器人从实验走向产线时，标准、仿真、验证和资源分配如何成为硬约束。",
+        "highlights": [
+          "物理AI工厂负责工程化，生态计划负责产业链协同",
+          "标准接口、数据协议与安全边界决定规模化",
+          "AI5优先投向Optimus和训练系统，仍需看任务兑现"
+        ]
+      },
+      {
+        "title": "智能体与编程",
+        "intro": "从文心5.5 Flash Preview的长程编码，到AgentCore的企业上下文，再到GPT-6.2 Sol的聊天体验，比较不同Agent完成任务所需的验证与治理条件。",
+        "highlights": [
+          "长上下文不是终点，测试反馈才能驱动持续纠错",
+          "企业Agent将记忆、知识库与连接器按任务组合",
+          "权限、追溯与保留边界决定上下文能否落地"
+        ]
+      },
+      {
+        "title": "收尾",
+        "intro": "收束全期：模型升级只是起点，真正的工作闭环还需要验证、上下文治理和与真实任务匹配的资源，并持续追踪后续可复现性。",
+        "highlights": [
+          "共同结论：AI正从回答问题转向完成工作",
+          "后续观察：接口、测试闭环、记忆治理与部署表现",
+          "评估原则：把成本、可靠性与责任一并计算"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "event_id": "08b4d1cf39d2f6d9099ca696f95e2b795694802e1990ebf60559ed7736c53082",
+        "title": "九章云极发布物理AI工厂及生态开放计划",
+        "verdict": "需修正",
+        "comment": "“工厂+生态”、标准化诉求及龙华产业数据有依据；但文稿归于方磊、张一鸣的阶段判断与需求归纳未见于所给材料，需核实发言人、原始出处及上下文。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "96ea5137841de5c2aa13ccf2be181ffc672202995742985a3824f3265739b0c9",
+        "title": "百度开放文心5.5Flash Preview模型权重",
+        "verdict": "补充",
+        "comment": "开放渠道、MoE参数和长上下文表述与材料一致；但11小时开发及双Agent流程缺少独立测评、运行日志与复现说明，应作为待验证的厂商案例呈现。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "a938fe78f041402c50d5d65f2530535dbb62fe6fc24cffdd2cf2cfe57a151996",
+        "title": "阿里云 AgentCore 管理 Skill 支持对话操作",
+        "verdict": "准确",
+        "comment": "三类上下文资源、记忆提取方式和Skill入口描述均与材料吻合，且节目抓住了权限与追溯问题；实际成色仍取决于身份授权、审计及连接器稳定性。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "653857b58fc1025113c5a117915887864b1aab7ed204f253c75d172fdbc9ba6f",
+        "title": "马斯克称AI5优先用于Optimus和训练系统",
+        "verdict": "补充",
+        "comment": "部署优先级及流片、试产和规划参数与材料基本一致；但应明确这是路线图而非已落地部署，汽车采用AI5的时间未给出，成本与功耗也未量化。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "877a0d59c1ac3e2c0fe6527a1d0072dae57a72eda5378bf933c692fdae6389a7",
+        "title": "GPT-6.2 Sol 推送至 ChatGPT 聊天页面",
+        "verdict": "准确",
+        "comment": "推送范围、复杂请求与图像识别改进及旧模型退役安排均与材料一致；但缺少基准、延迟、错误率和成本数据，当前更适合描述为功能更新而非性能定论。",
+        "corrections": [],
+        "highlights": []
+      }
+    ],
+    "fact_check_notes": [
+      "文稿内 16 个数字均可在事实底稿核对"
+    ]
+  },
+  "sources": {
+    "total_all": 8,
+    "total_main": 1,
+    "shown": 8,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 8
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "雷峰网",
+        "group": "科技媒体",
+        "source_name": "雷峰网",
+        "category": "",
+        "title": "算力唤醒真实世界:九章云极发布物理AI工厂与生态开放计划",
+        "summary": "11月25日,以“算力唤醒真实世界”为主题的2026物理AI行业峰会暨九章云极智算生态大会在深圳举行。会议由九章云极DataCanvas主办,深圳市龙华区工业和信息化局支持,清华大学互联网产业研究院为学术指导单位。来自标准机构、高校与科研院所、投资机构,以及机器人本体、世界模型、仿真软件、智算云等领域的上百位嘉宾代表出席。中国电子技术标准化研究院副院长范科峰,深圳市龙华区委常委、常务副区长张智,九章云极DataCanvas董事长方磊分别致辞。 会议聚焦的核心命题是:当机器人、",
+        "link": "https://www.leiphone.com/category/chips/Qz3QPf26nVIVA0ga.html",
+        "published_at": "2026-11-25T14:15:00+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "AIBase 新闻",
+        "group": "科技媒体",
+        "source_name": "AIBase 新闻",
+        "category": "",
+        "title": "百度开源文心 5.5 Flash Preview,用“测试驱动”重塑长程 AI 编程范式",
+        "summary": "在 AI 编程领域,开发者们正面临一个普遍的“工程化瓶颈”:大模型能轻松写出漂亮的单文件函数,但在面对跨文件、长周期、强依赖的复杂工程时,往往陷入“幻觉频发、调试困难、难以闭环”的泥潭。我们需要的,不再是一个只会“接话”的代码补全工具,而是一个能理解工程逻辑、具备自我纠错能力的智能协作者。 近日,百度正式将文心5.5Flash Preview 模型权重面向全球开源社区开放(支持 Hugging Face 与 ModelScope 下载,兼容 vLLM、SGLang 等主流推理",
+        "link": "https://www.aibase.com/zh/news/32521",
+        "published_at": "2026-11-25T11:46:21+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "阿里巴巴中间件",
+        "group": "科技媒体",
+        "source_name": "阿里巴巴中间件",
+        "category": "",
+        "title": "久等了:让你的 Agent 来管理 AgentCore",
+        "summary": "AgentCore 托管 Harness 现已支持一键开启记忆,知识库,连接器。现在,从一个业务场景开始,为你的 Agent 接入所需的上下文。",
+        "link": "https://mp.weixin.qq.com/s?__biz=MzcwOTMzMTQyMA==&mid=2247517525&idx=1&sn=604cf062bef927c858b7b7fa3b2c96e2",
+        "published_at": "2026-11-25T08:46:00+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "AIBase 新闻",
+        "group": "科技媒体",
+        "source_name": "AIBase 新闻",
+        "category": "",
+        "title": "马斯克拍板:AI5 芯片优先给 Optimus 机器人,特斯拉汽车留在“足以超人驾驶”的 AI4 上",
+        "summary": "还开着 AI3 的特斯拉车主在 X 上问马斯克:下一代 AI5 芯片什么时候能上车?得到的答案有点“扎心”——优先给机器人。11 月 22 日,马斯克回复这位网友时明确:AI5 将优先部署到 Optimus 人形机器人和 AI 训练系统,汽车继续留在 AI4 上,因为“AI4 足以解决超人(superhuman)驾驶的问题”。 先给机器人,不是偏心 这并非一时兴起:一季度财报电话会议上,马斯克就说过 AI4 的算力足以支持无人监督自动驾驶,安全水平可远超人类驾驶,更先进的 A",
+        "link": "https://www.aibase.com/zh/news/32520",
+        "published_at": "2026-11-25T11:40:16+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "AI 工具集",
+        "group": "科技媒体",
+        "source_name": "AI 工具集",
+        "category": "",
+        "title": "OpenAI 宣布 GPT-6.2 Sol 上线 ChatGPT",
+        "summary": "OpenAI 宣布 GPT-6.2 Sol 正式上线 ChatGPT 聊天页面,继此前在 ChatGPT Work 和 Codex 平台上线后进一步扩大适用范围。 GPT-6.2 Sol 针对日常对话优化,重点提升复杂请求处理能力:图像细节识别更精准,可辨认照片文字与标志符号;联网检索支持按价格、地理位置等条件比较选项;还能主动跟进交互,如询问用户是否需要商品降价提醒。 来源:IT之家",
+        "link": "https://www.ithome.com/1/031/271.htm",
+        "published_at": "2026-11-23T16:00:00+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "The Decoder",
+        "group": "科技媒体",
+        "source_name": "The Decoder",
+        "category": "",
+        "title": "Anthropic tops 700 million monthly MCP SDK downloads and expands the protocol for more autonomous AI agents",
+        "summary": "Anthropic reports more than 700 million monthly downloads for its MCP standard two years after launch. New features such as background tasks, follow-up questions for users, and file uploads are designed to let Claude work more independently",
+        "link": "https://the-decoder.com/anthropic-tops-700-million-monthly-mcp-sdk-downloads-and-expands-the-protocol-for-more-autonomous-ai-agents/",
+        "published_at": "2026-11-24T19:23:41+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "IT之家 AI",
+        "group": "科技媒体",
+        "source_name": "IT之家 AI",
+        "category": "",
+        "title": "AI 钓鱼邮件会“自我进化”:TheMailer 曝光,不断升级文案直到骗过垃圾邮件过滤器",
+        "summary": "IT之家 11 月 24 日消息,科技媒体 TechRadar 今天(11 月 24 日)发布博文,报道称暗网论坛近期正传播名为 TheMailer 的 AI 网络钓鱼工具, 结合多种商用大模型与自动化邮件测试、个性化定制和反复改写能力,让攻击者持续调整诈骗邮件,直到其成功绕过收件方的垃圾邮件过滤器。 TheMailer 工具由安全厂商 Varonis Threat Labs 研究人员发现,是一个自托管平台,可通过使用者自己的 API 凭证接入 Claude、ChatGPT、",
+        "link": "https://www.ithome.com/1/031/482.htm",
+        "published_at": "2026-11-24T06:20:26+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "InfoQ",
+        "group": "科技媒体",
+        "source_name": "InfoQ",
+        "category": "",
+        "title": "谷歌开源环境质量智能体 AQuA,用于诊断生产环境 AI 智能体故障",
+        "summary": "谷歌 开源 AQuA(Ambient Quality Agent,环境质量智能体) ,这是一个参考实现,用于分析生产环境中的 AI 智能体会话、验证反复出现的故障模式,并对已部署的源代码进行根因排查。该工具针对的是传统基础设施监控可能遗漏的静默质量回归问题,例如智能体忽略用户偏好,或在返回成功响应的同时跳过必需的工具调用。 AQuA 在谷歌云中与业务智能体并行运行,不在请求链路里,从 Cloud Trace、Cloud Logging 或 BigQuery 读取遥测数据。每次",
+        "link": "https://www.infoq.cn/article/YAc2TqCHc09kAFF1A7BS",
+        "published_at": "2026-11-25T05:00:00+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": false,
+    "status": "unavailable",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": null,
+    "runner_ups": [],
+    "yesterday": null,
+    "candidates": {
+      "total": 0,
+      "excluded_recent": 0,
+      "fresh": null,
+      "semantics": "unknown",
+      "detail_available": false,
+      "preview": null
+    },
+    "message": "该日期暂无项目雷达"
+  },
+  "quality": {
+    "mode": "normal",
+    "chars": 3706,
+    "turns": 46,
+    "host_a_chars": 1654,
+    "host_b_chars": 1730,
+    "host_char_ratio": 0.489,
+    "chapters": 4
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-11-26.json",
+      "report": "data/editorial/2026-11-26/daily_report_2026-11-26.md",
+      "radar": "data/gh_radar/radar_2026-11-26.json",
+      "playlist": "site/episodes/2026-11-26/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": [
+      "radar_candidate_detail_unavailable"
+    ]
+  }
+}

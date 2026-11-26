@@ -73,7 +73,7 @@
   "lead": {
     "text": "本期把三条AI主线放在同一张桌上：先拆解Anthropic申报文件中的价格区间、股本与完全稀释口径，说明为何同一公司会相差约4000亿美元；再核算腾讯Hy4 flash的单位Token价格与单任务成本，提醒免费期后仍要看完整执行账单；最后审视Gemini Tasks进入电话、预约、支付和登录后的授权与责任边界，并关注SkillMaster技能自进化及OpenAI儿童安全工具。",
     "source": "podcast_review",
-    "source_file": "data/reports/daily_report_2026-11-18.md"
+    "source_file": "data/editorial/2026-11-18/daily_report_2026-11-18.md"
   },
   "metrics": [
     {
@@ -156,6 +156,7 @@
             "text": "暂无公开反方信息。现有材料中的差异主要是股本与稀释口径不同：按78美元和SEC股本表估算约1.02万亿美元，完全稀释口径约1.4万亿美元；高于每股80美元及1.5至1.6万亿美元仍是媒体所述的可能定价情形，并非SEC文件已确认的最终结果。"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -182,6 +183,7 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -208,6 +210,7 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -234,6 +237,7 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -258,6 +262,18 @@
           {
             "label": "反方",
             "text": "暂无公开反方信息。当前材料仅来自单一报道，未提供独立团队复现、第三方评测或对方法局限性的公开讨论。"
+          }
+        ],
+        "sources": [
+          {
+            "label": "SKILLMASTER 论文页面（arXiv）",
+            "link": "https://arxiv.org/abs/2605.08693",
+            "official": true
+          },
+          {
+            "label": "Skill-Master 项目仓库（GitHub）",
+            "link": "https://github.com/sduyangmin/Skill-Master",
+            "official": true
           }
         ],
         "raw_sections": [],
@@ -292,7 +308,7 @@
     ],
     "char_count": 4574,
     "reading_minutes": 11,
-    "editor_verdict": "整体叙事清楚，多数数字能在证据中找到对应原文。最需修正的是 Anthropic 条目把按 78 美元计算的约 1.02 万亿美元泛化为 70—78 美元区间估值；其余条目应补齐来源链接，并持续区分官方发布、媒体转述与单一实测，避免把潜在结果写成定论。\n\nAnthropic估值两种口径相差约4000亿美元：核心口径与证据一致：78 美元对应 SEC 股本表口径约 1.02 万亿美元，另有媒体所引完全稀释约 1.4 万亿美元。问题是“影响”段把该数字泛化为 70—78 美元整个区间的参照，读者可能误以为 70 美元时仍同值；应明确仅对应顶格价。\n\n腾讯 Hy4 flash 发布，公布参数与价格：参数、WorkIndex 成本倍数、输入 0.5 元和输出 2 元，以及 11 月 16—30 日免费活动均与证据一致。稿件也提示了单一来源、正文截断和活动年份不明；但性能提升与相对 DeepSeek 的速度比较仍应持续归因于 APPSO 报道，并补齐原文链接。\n\nOpenAI发布儿童性虐待材料检测工具：发布内容与官方材料一致，稿件没有虚构工具名称和检测指标，也明确其是图像分类器。标题略泛，宜改成“OpenAI发布潜在CSAM图像分类器”；正式发布日期、开放范围和性能指标不能由截断正文补出，仍需补齐官方原文链接。\n\nGoogle 扩大 Gemini Tasks 开放范围：扩围、Tasks 的开关定位、Spark 到 Task Mode 的演进、免费覆盖 Gemini 4 Hydrogen 用户及个人使用案例均与证据吻合，背景也提醒模型覆盖不等于功能普及。主要缺口是来源列表为空，无法回查扩围范围、生效时间与账号条件，应补齐原文和日期。\n\n清华团队提出 SkillMaster 技能自进化方法：论文主题、团队与作者单位、NeurIPS 2026 录用信息、方法定位及两类学习信号都与证据一致；arXiv 与 GitHub 链接也已给出。稿件明确缺少基准、数值、消融和第三方复现，避免了把方法主张写成已验证收益。",
+    "editor_verdict": "整体叙事清楚，多数数字能在证据中找到对应原文。最需修正的是 Anthropic 条目把按 78 美元计算的约 1.02 万亿美元泛化为 70—78 美元区间估值；其余条目应补齐来源链接，并持续区分官方发布、媒体转述与单一实测，避免把潜在结果写成定论。\n\n【需修正】Anthropic估值两种口径相差约4000亿美元：核心口径与证据一致：78 美元对应 SEC 股本表口径约 1.02 万亿美元，另有媒体所引完全稀释约 1.4 万亿美元。问题是“影响”段把该数字泛化为 70—78 美元整个区间的参照，读者可能误以为 70 美元时仍同值；应明确仅对应顶格价。\n\n【补充】腾讯 Hy4 flash 发布，公布参数与价格：参数、WorkIndex 成本倍数、输入 0.5 元和输出 2 元，以及 11 月 16—30 日免费活动均与证据一致。稿件也提示了单一来源、正文截断和活动年份不明；但性能提升与相对 DeepSeek 的速度比较仍应持续归因于 APPSO 报道，并补齐原文链接。\n\n【补充】OpenAI发布儿童性虐待材料检测工具：发布内容与官方材料一致，稿件没有虚构工具名称和检测指标，也明确其是图像分类器。标题略泛，宜改成“OpenAI发布潜在CSAM图像分类器”；正式发布日期、开放范围和性能指标不能由截断正文补出，仍需补齐官方原文链接。\n\n【补充】Google 扩大 Gemini Tasks 开放范围：扩围、Tasks 的开关定位、Spark 到 Task Mode 的演进、免费覆盖 Gemini 4 Hydrogen 用户及个人使用案例均与证据吻合，背景也提醒模型覆盖不等于功能普及。主要缺口是来源列表为空，无法回查扩围范围、生效时间与账号条件，应补齐原文和日期。\n\n【准确】清华团队提出 SkillMaster 技能自进化方法：论文主题、团队与作者单位、NeurIPS 2026 录用信息、方法定位及两类学习信号都与证据一致；arXiv 与 GitHub 链接也已给出。稿件明确缺少基准、数值、消融和第三方复现，避免了把方法主张写成已验证收益。",
     "source_file": "data/editorial/2026-11-18/report.json"
   },
   "report_review": {
@@ -619,7 +635,7 @@
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-11-18.json",
-      "report": "data/reports/daily_report_2026-11-18.md",
+      "report": "data/editorial/2026-11-18/daily_report_2026-11-18.md",
       "radar": "data/gh_radar/radar_2026-11-18.json",
       "playlist": "site/episodes/2026-11-18/playlist.json",
       "episodes": "data/episodes.json"

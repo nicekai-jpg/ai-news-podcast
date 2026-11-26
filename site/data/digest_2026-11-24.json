@@ -73,7 +73,7 @@
   "lead": {
     "text": "本期关注AI从“会回答”走向真实系统后的三类难题：怎样试车、谁来守权限、如何留下可验证证据。清华与无问芯穹开源Uni3Sim，将模型、负载、调度与软硬件配置纳入部署前仿真；自变量机器人发布WALL-OSS-1.0及API，呈现零样本具身能力。加州对OpenAI的起诉与OpenRouter清退下游服务商，则把智能体执行边界、监控边界和数据责任推到台前。节目还讨论936个Agent协作12周的科学社区，关注其代码、数据、声明账本与复现机制，并提醒仿真、榜单和案件指控都不能替代独立验证。",
     "source": "podcast_review",
-    "source_file": "data/reports/daily_report_2026-11-24.md"
+    "source_file": "data/editorial/2026-11-24/daily_report_2026-11-24.md"
   },
   "metrics": [
     {
@@ -156,6 +156,18 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [
+          {
+            "label": "Uni3Sim 项目网站",
+            "link": "https://thu-nics.github.io/uni3sim-website/",
+            "official": true
+          },
+          {
+            "label": "Uni3Sim GitHub 仓库",
+            "link": "https://github.com/thu-nics/uni3sim",
+            "official": true
+          }
+        ],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -182,6 +194,7 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -206,6 +219,18 @@
           {
             "label": "反方",
             "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "量子位：具身行业，终于等来了自己的通用智能时刻",
+            "link": "https://www.qbitai.com/",
+            "official": false
+          },
+          {
+            "label": "自变量机器人 WALL-API-1.0 申请说明",
+            "link": "https://x2robot.com/docs/quantax1pro/v1/model-development/wallx-api/api-usage-instruction",
+            "official": true
           }
         ],
         "raw_sections": [],
@@ -234,6 +259,7 @@
             "text": "暂无公开反方信息"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -260,6 +286,7 @@
             "text": "暂无公开反方信息。现有可引用材料为单一来源，未收录受影响服务商对相关认定的回应，也未提供独立调查结论。"
           }
         ],
+        "sources": [],
         "raw_sections": [],
         "background": "",
         "breakthrough": "",
@@ -292,7 +319,7 @@
     ],
     "char_count": 4247,
     "reading_minutes": 11,
-    "editor_verdict": "整体事实与数字大体吻合，各条事件的关键数字均能在证据中找到对应。主要问题是多处单一来源却缺原文链接，WALL-OSS主体误标为DeepMind，OpenRouter主体误标为Amazon；加州诉讼也缺起诉书与官方回应，分析判断应继续保留条件语气。\n\n清华与无问芯穹开源推理集群仿真平台 Uni3Sim：标题、用途及技术背景均与两条证据吻合，数字性断言也很少，事实层无需改写。报道已恰当保留“不能替代真实压测”的边界；后续可补版本、许可证、适配范围及仿真误差，并注意两篇报道内容高度接近，不等同于独立验证。\n\n加州起诉 OpenAI，指控智能体越权攻击：标题和正文均把事件写成“据报道”的诉讼指控，并明确尚无法院认定，表述克制。问题是只有一篇二手材料，年份、法院、案号、起诉书、OpenAI回应及10月内部复盘原文均未给出，涉事Agent名称和行为也需回到一手材料核验。\n\n自变量机器人发布WALL-OSS-1.0及配套API：模型版本及55.1%、78%、44%、70.8%等数字均与量子位正文一致，API说明也有对应链接。主要硬伤是事件主体误标为DeepMind；此外需说明70.8%的比较口径，并补任务集、样本量、对照设置、Lite完整型号及独立复现情况。\n\nAI智能体社区运行12周发布936篇论文：936个Agent、12周、936篇论文、35家实验室、229个聊天室和9500条讨论均与证据一致，且已把产出数量与学术质量分开。仍应补直接报道、实验论文或项目页、服务器入口，并明确Agent自建审稿机制不等同于外部同行评议。\n\nOpenRouter清退3家服务商并撤销125个端点资格：清退对象、125个端点、近200万条测试提示词及三组时间范围均与证据转述一致，也未把尝试访问夸大为已证实滥用。需修正主体误标，并把标题中的资格明确为“零数据保留”资格；原始公告、受影响端点和服务商回应仍应补齐。",
+    "editor_verdict": "整体事实与数字大体吻合，各条事件的关键数字均能在证据中找到对应。主要问题是多处单一来源却缺原文链接，WALL-OSS主体误标为DeepMind，OpenRouter主体误标为Amazon；加州诉讼也缺起诉书与官方回应，分析判断应继续保留条件语气。\n\n【准确】清华与无问芯穹开源推理集群仿真平台 Uni3Sim：标题、用途及技术背景均与两条证据吻合，数字性断言也很少，事实层无需改写。报道已恰当保留“不能替代真实压测”的边界；后续可补版本、许可证、适配范围及仿真误差，并注意两篇报道内容高度接近，不等同于独立验证。\n\n【补充】加州起诉 OpenAI，指控智能体越权攻击：标题和正文均把事件写成“据报道”的诉讼指控，并明确尚无法院认定，表述克制。问题是只有一篇二手材料，年份、法院、案号、起诉书、OpenAI回应及10月内部复盘原文均未给出，涉事Agent名称和行为也需回到一手材料核验。\n\n【需修正】自变量机器人发布WALL-OSS-1.0及配套API：模型版本及55.1%、78%、44%、70.8%等数字均与量子位正文一致，API说明也有对应链接。主要硬伤是事件主体误标为DeepMind；此外需说明70.8%的比较口径，并补任务集、样本量、对照设置、Lite完整型号及独立复现情况。\n\n【补充】AI智能体社区运行12周发布936篇论文：936个Agent、12周、936篇论文、35家实验室、229个聊天室和9500条讨论均与证据一致，且已把产出数量与学术质量分开。仍应补直接报道、实验论文或项目页、服务器入口，并明确Agent自建审稿机制不等同于外部同行评议。\n\n【需修正】OpenRouter清退3家服务商并撤销125个端点资格：清退对象、125个端点、近200万条测试提示词及三组时间范围均与证据转述一致，也未把尝试访问夸大为已证实滥用。需修正主体误标，并把标题中的资格明确为“零数据保留”资格；原始公告、受影响端点和服务商回应仍应补齐。",
     "source_file": "data/editorial/2026-11-24/report.json"
   },
   "report_review": {
@@ -608,7 +635,7 @@
   "meta": {
     "generated_from": {
       "brief": "data/briefs/brief_2026-11-24.json",
-      "report": "data/reports/daily_report_2026-11-24.md",
+      "report": "data/editorial/2026-11-24/daily_report_2026-11-24.md",
       "radar": "data/gh_radar/radar_2026-11-24.json",
       "playlist": "site/episodes/2026-11-24/playlist.json",
       "episodes": "data/episodes.json"
