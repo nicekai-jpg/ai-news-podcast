@@ -86,20 +86,31 @@ def _parse(raw: str) -> dict:
 
 
 def pick_events(days: list[str], per_day: int) -> list[dict]:
-    """按事件分层的确定性抽样：每天取前 N 个事件（按 event_id 排序）。"""
+    """按事件分层抽样：每天取前 N 个事件，**跨天按 event_id 去重**。
+
+    同一条新闻会连续多天出现在不同日期的 events.json 里，不去重会重复标注
+    （实测 210 行里只有 145 个唯一 event_id）。
+    """
     picked: list[dict] = []
+    seen: set[str] = set()
     for day in days:
         path = OCEAN / day / "events.json"
         if not path.is_file():
             continue
         events = json.loads(path.read_text(encoding="utf-8"))
         events = sorted(events, key=lambda e: str(e.get("event_id")))
-        for event in events[:per_day]:
-            titles = {str(event.get("representative_title") or "").strip().lower()}
-            key = next(iter(titles))
-            if not key:
+        taken = 0
+        for event in events:
+            if taken >= per_day:
+                break
+            event_id = str(event.get("event_id") or "")
+            if not event_id or event_id in seen:
                 continue
+            if not str(event.get("representative_title") or "").strip():
+                continue
+            seen.add(event_id)
             picked.append({"date": day, **event})
+            taken += 1
     return picked
 
 
