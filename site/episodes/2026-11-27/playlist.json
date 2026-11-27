@@ -1,0 +1,531 @@
+{
+  "episode_id": "2026-11-27",
+  "chunks": [
+    {
+      "id": 1,
+      "host": "A",
+      "text": "大家好，这里是今日AI看点。今天值得听，不只是因为模型又多了几项成绩，而是AI开始跨领域承担任务：设计蛋白质、在对话中等人插话，也替开发者找出可能引发宕机的漏洞。",
+      "start": 1.0,
+      "duration": 17.15,
+      "audios": {
+        "lively": "chunk_001_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 2,
+      "host": "B",
+      "text": "这几条消息连起来看很有意思，它们都在追问同一件事：当通用模型越来越能直接做专业任务，我们过去熟悉的工具分工还站得住吗？接下来的讨论既有成绩，也有反方意见。",
+      "start": 18.599,
+      "duration": 13.08,
+      "audios": {
+        "professional": "chunk_002_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      },
+      "chapter": "开场"
+    },
+    {
+      "id": 3,
+      "host": "A",
+      "text": "先从一条反直觉的进展说起。11月中旬，AI生物公司Phylo的研究员Xinming Tu做了个小范围测试，让OpenAI、Anthropic和Google的通用大语言模型预测一批冷门细菌蛋白质的序列，程序在后台跑了一夜。",
+      "start": 32.176,
+      "duration": 19.75,
+      "audios": {
+        "lively": "chunk_003_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "蛋白质设计变局"
+    },
+    {
+      "id": 4,
+      "host": "B",
+      "text": "结果很意外：Anthropic最新版Claude不仅胜过其他通用大模型，还超过了用海量序列数据训练出来的蛋白质语言模型。Xinming Tu随后与哈佛医学院计算生物学家Leo Chen把发现发在博客上，引发计算生物学圈的一波测试。",
+      "start": 52.379,
+      "duration": 19.63,
+      "audios": {
+        "professional": "chunk_004_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 5,
+      "host": "A",
+      "text": "这算不算通用模型已经赢了？还不能这么急。测试很快延伸到更硬的任务：Claude能直接预测蛋白质的接触图，画出真实的三维结构接触关系，不过精度仍不及专有模型ESM-2。",
+      "start": 72.414,
+      "duration": 15.47,
+      "audios": {
+        "lively": "chunk_005_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 6,
+      "host": "B",
+      "text": "几天后，OpenAI也在最新预印本及技术报告中证明，在不调用专用蛋白质生成工具的情况下，GPT-6系列通用模型仅靠推理与代码能力，就能设计全新的蛋白质三维结构与序列，并公布了湿实验结合数据。",
+      "start": 88.317,
+      "duration": 16.83,
+      "audios": {
+        "professional": "chunk_006_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 7,
+      "host": "A",
+      "text": "公开测试里还有一组具体数字：30项基序支架挑战的初步计算分析中，结构通过率为43.7%，高于RFdiffusion的27.8%；200项指定折叠挑战中，通过率为18.9%，略高于Proteina的17.1%。",
+      "start": 105.612,
+      "duration": 19.19,
+      "audios": {
+        "lively": "chunk_007_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 8,
+      "host": "B",
+      "text": "这组结果有意思的地方，不只是谁赢了，而是工作流变了。过去设计新蛋白往往要在十几个互不兼容的工具间切换、调参；现在科学家可以直接用自然语言提出结合位点、螺旋或折叠链等物理约束。",
+      "start": 125.264,
+      "duration": 16.43,
+      "audios": {
+        "professional": "chunk_008_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 9,
+      "host": "A",
+      "text": "所以垂直模型并非立刻失去价值。AlphaFold、RFdiffusion、ProteinMPNN仍可能在精度和可控性上更强；通用模型带来的改变，是把专业能力的入口从菜单和参数，变成更接近实验目标的自然语言。",
+      "start": 142.145,
+      "duration": 19.35,
+      "audios": {
+        "lively": "chunk_009_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 10,
+      "host": "B",
+      "text": "我的保留意见也在这里：小范围测试和公开挑战不能替代更广泛验证。不过趋势已经清楚，通用模型正在越界做设计，垂直模型要回答的也不只是准不准，还有哪些环节真的不可替代。",
+      "start": 161.995,
+      "duration": 13.95,
+      "audios": {
+        "professional": "chunk_010_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 11,
+      "host": "A",
+      "text": "交互这边，上海人工智能实验室开源了全双工多模态模型Sage-Interaction。它支持用户随时打断、插话，也会在用户切换意图时转向新话题，不再要求人等它把一整轮话播报完。",
+      "start": 176.383,
+      "duration": 15.43,
+      "audios": {
+        "lively": "chunk_011_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "对话不再排队"
+    },
+    {
+      "id": 12,
+      "host": "B",
+      "text": "它公开的双工语音评测也很具体：交互质量在FD-Bench V1.5上得分80.73，语音响应时延为1.29秒，在所述评测中位居当前开闭源双工模型首位。",
+      "start": 192.274,
+      "duration": 13.16,
+      "audios": {
+        "professional": "chunk_012_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 13,
+      "host": "A",
+      "text": "对照来看，同一评测里的Doubao-Duplex响应时延是1.39秒，Moss-Live是1.47秒。Sage-Interaction不只追求快，还要在快速接话与自然交流之间保持平衡，不能像自动播放那样抢着把话说完。",
+      "start": 205.879,
+      "duration": 17.19,
+      "audios": {
+        "lively": "chunk_013_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 14,
+      "host": "B",
+      "text": "能支持打断就算解决了吗？光能打断还不够。另一个容易忽略的指标，是模型对用户打断的响应得分83.00。难点不是静音，而是识别这究竟是补充、纠正还是改题，并在新状态上继续说。",
+      "start": 223.543,
+      "duration": 15.39,
+      "audios": {
+        "professional": "chunk_014_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 15,
+      "host": "A",
+      "text": "训练方式也围绕这个目标展开。Sage-Interaction把交互时机判断、插话响应机制和前后台任务协同作为核心设计；模型持续接收音频、视频和文本，在理解、思考和输出之间并行更新状态。",
+      "start": 239.36,
+      "duration": 16.31,
+      "audios": {
+        "lively": "chunk_015_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 16,
+      "host": "B",
+      "text": "训练数据覆盖全双工语音对话、流式视频理解和异步任务委派，还采用多智能体角色扮演框架，以旅行规划、科学计算等任务生成多轮轨迹，监督模型识别委派时机并把结果接回对话。",
+      "start": 256.134,
+      "duration": 14.95,
+      "audios": {
+        "professional": "chunk_016_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 17,
+      "host": "A",
+      "text": "这对科研协作尤其有意思。科学发现不是交完完整问题再等静态答案，而是边思考、边试错、边调整；流式视频理解也让它可以参与远程指导和实时画面分析。",
+      "start": 271.501,
+      "duration": 16.6,
+      "audios": {
+        "lively": "chunk_017_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 18,
+      "host": "B",
+      "text": "不过别把评测分数直接等同于日常体验。真实对话里还有多人语音、短暂应答和任务失败，这些都要单独观察。Sage-Interaction将在书生·端砚科学发现平台上线，后续使用会给出更细的答案。",
+      "start": 288.537,
+      "duration": 15.31,
+      "audios": {
+        "professional": "chunk_018_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 19,
+      "host": "A",
+      "text": "来看一条更让人警觉的消息。微软总裁兼副主席布拉德·史密斯警告，AI让漏洞发现更快，开发者如果仓促打补丁，反而可能引发更多宕机。这不是泛泛担忧，而是接在一次大规模Microsoft 365宕机之后。",
+      "start": 304.264,
+      "duration": 21.35,
+      "audios": {
+        "lively": "chunk_019_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "漏洞修复赛跑"
+    },
+    {
+      "id": 20,
+      "host": "B",
+      "text": "这场影响全球公共和私营机构的宕机发生后不到两周，史密斯在当地11月22日接受CBS News《面向全国》采访时明确表示，这次宕机既不是网络攻击造成的，也不是AI造成的。",
+      "start": 326.11,
+      "duration": 16.03,
+      "audios": {
+        "professional": "chunk_020_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 21,
+      "host": "A",
+      "text": "但他把近期一些范围更大的中断形容为“AI的连锁反应”。AI模型和代码分析工具现在能极快在上万行代码库中找出缺陷，缺陷一旦暴露，就可能为重大服务中断埋下伏笔。",
+      "start": 342.552,
+      "duration": 14.32,
+      "audios": {
+        "lively": "chunk_021_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 22,
+      "host": "B",
+      "text": "压力不只来自防守方。攻击者同样能借助AI发现薄弱处并利用漏洞，开发者必须在漏洞被利用前上线修复，相当于和网络空间里的攻击者赛跑。",
+      "start": 357.351,
+      "duration": 12.72,
+      "audios": {
+        "professional": "chunk_022_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 23,
+      "host": "A",
+      "text": "这是不是意味着补丁越快上线越危险？不能这样理解。复杂、高度互联且老旧的IT基础设施上，一个堵漏洞的修复在真实负载下可能引发CPU或内存问题；测试时间有限时，也难覆盖不同流量模式、硬件配置和下游依赖。",
+      "start": 370.503,
+      "duration": 18.79,
+      "audios": {
+        "lively": "chunk_023_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 24,
+      "host": "B",
+      "text": "仓促更新因此容易造成新的性能瓶颈，甚至连锁宕机。微软在11月19日发布的官方网络安全刊物中也指出，攻击者发现漏洞的速度已经快于各机构修复的速度。",
+      "start": 389.761,
+      "duration": 13.92,
+      "audios": {
+        "professional": "chunk_024_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 25,
+      "host": "A",
+      "text": "微软随后于11月24日宣布启动内部“红色代码”行动，要整改工程与事件响应流程，并把未来宕机时的全球恢复时间压缩到一小时以内，部分诊断会借助AI智能体。",
+      "start": 404.171,
+      "duration": 14.12,
+      "audios": {
+        "lively": "chunk_025_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 26,
+      "host": "B",
+      "text": "这并不构成“别装补丁”的理由。史密斯仍敦促用户继续为手机和电脑安装安全更新，微软每月发布的修复补丁多达数百个。漏洞需要及时修复，但仓促上线也不能替代充分测试。",
+      "start": 418.768,
+      "duration": 14.8,
+      "audios": {
+        "professional": "chunk_026_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 27,
+      "host": "A",
+      "text": "快讯里，腾讯生命科学实验室的ORIDTP也值得记一笔。11月25日，相关AI for Science研究成果登上《Nature》主刊。平台把扩散生成模型、双目标强化学习、柔性多肽亲和力建模与生物学实验接成“计算设计—实验验证—反馈优化”的闭环。",
+      "start": 433.986,
+      "duration": 22.79,
+      "audios": {
+        "lively": "chunk_027_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "落地拼图"
+    },
+    {
+      "id": 28,
+      "host": "B",
+      "text": "每轮实验仅需测试约15条多肽。团队已在减重降糖和肿瘤免疫两个方向完成验证；减重降糖部分在肥胖及糖尿病小鼠模型中，以低于对照药物的摩尔剂量观察到显著的减重与控糖效果。",
+      "start": 457.215,
+      "duration": 15.95,
+      "audios": {
+        "professional": "chunk_028_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 29,
+      "host": "A",
+      "text": "边界也要说清楚：研究仍处于临床前阶段，尚未开展人体临床试验。ORIDTP已部署到腾讯健康BioNexus，也可以在WorkBuddy找到，它目前代表的是计算设计与实验验证的进展。",
+      "start": 473.577,
+      "duration": 16.75,
+      "audios": {
+        "lively": "chunk_029_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 30,
+      "host": "B",
+      "text": "产品侧还有一项计费调整：OpenAI修正GPT-6.2 Astra/Sol的计费错误后，Codex配额会消耗得更快。错误不是多扣，而是少扣；Astra达到配额限制速度快40%，Sol快25%。",
+      "start": 490.82,
+      "duration": 16.67,
+      "audios": {
+        "professional": "chunk_030_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 31,
+      "host": "A",
+      "text": "作为补偿，Codex技术经理蒂博宣布向全体ChatGPT订阅用户赠送1张重置卡。能力之外，配额与计费规则同样是产品体验，用户也会关注补偿过程是否足够透明。",
+      "start": 507.899,
+      "duration": 15.24,
+      "audios": {
+        "lively": "chunk_031_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 32,
+      "host": "B",
+      "text": "机器人那边，马斯克质疑多数演示依赖事先安排和预编程，并举出“拿苹果时把桌子挪走”的例子。Figure随后发布41秒视频回应，展示Figure 03在桌子移动后重新定位并取回苹果。",
+      "start": 523.626,
+      "duration": 15.19,
+      "audios": {
+        "professional": "chunk_032_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 33,
+      "host": "A",
+      "text": "这个场景是在测环境变化泛化：不能只记住苹果的固定坐标，还要感知场景、重新规划路径和抓取策略。不过一次视频不能替所有真实环境作保证。",
+      "start": 539.258,
+      "duration": 14.68,
+      "audios": {
+        "lively": "chunk_033_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 34,
+      "host": "B",
+      "text": "马斯克表示，特斯拉计划在一两个月内展示无需预编程动作的“真实”演示。现在双方给出的证据都很具体，比较标准也很清楚：场景改变以后，机器人究竟是在重新判断，还是只记住了动作。",
+      "start": 554.398,
+      "duration": 16.35,
+      "audios": {
+        "professional": "chunk_034_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 35,
+      "host": "A",
+      "text": "语音输入方面，Wispr Flow推出Canto-2，覆盖Mac、Windows、iOS及Android。相较Canto-1，14种语言的转录错误率平均降低36%，英语错误率降低超过15%。",
+      "start": 571.219,
+      "duration": 16.11,
+      "audios": {
+        "lively": "chunk_035_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 36,
+      "host": "B",
+      "text": "内部基准里，14种语言平均错误率从9.9%降至6.3%，英语从3.2%降至2.7%；复杂人名、专业词汇和自定义词条准确识别率从41%升至69%。即使自定义词典累积至1000个条目，模型仍能正确识别92%的较简单术语。",
+      "start": 587.741,
+      "duration": 20.35,
+      "audios": {
+        "professional": "chunk_036_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 37,
+      "host": "A",
+      "text": "编程Agent方向，SWE-OPD把On-Policy Distillation带到真实软件工程任务，研究称首次将跨词表OPD跑通于工业级长程Agentic Coding场景，而且不用RL，也不挑成功轨迹。",
+      "start": 608.536,
+      "duration": 16.71,
+      "audios": {
+        "lively": "chunk_037_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      }
+    },
+    {
+      "id": 38,
+      "host": "B",
+      "text": "它的思路是让Student在真实软件仓库里自主探索、调用工具并根据反馈修改代码，再由Teacher在Student实际访问的状态上提供Token-level概率监督，而不是照着一条固定答案走。这让能力迁移更贴近真实Agent的工作方式。",
+      "start": 625.701,
+      "duration": 18.39,
+      "audios": {
+        "professional": "chunk_038_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    },
+    {
+      "id": 39,
+      "host": "A",
+      "text": "把这些消息串起来，AI已经开始跨领域承担任务：设计蛋白、实时协作、找漏洞、做多肽、做听写和编程Agent。能力扩大之后，验证、部署和事故响应也都要跟上。",
+      "start": 644.531,
+      "duration": 13.52,
+      "audios": {
+        "lively": "chunk_039_lively.mp3"
+      },
+      "voices": {
+        "lively": "host_a_lively"
+      },
+      "chapter": "收尾"
+    },
+    {
+      "id": 40,
+      "host": "B",
+      "text": "明天的看点很具体：蛋白质设计会出现哪些新验证，Sage-Interaction上线后的真实交互如何，微软能否减少连锁宕机，重置卡、机器人和Canto-2又会收到怎样的实际反馈。",
+      "start": 658.529,
+      "duration": 13.67,
+      "audios": {
+        "professional": "chunk_040_professional.mp3"
+      },
+      "voices": {
+        "professional": "host_b_professional"
+      }
+    }
+  ]
+}

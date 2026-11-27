@@ -1,0 +1,896 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-27",
+  "date_label": "2026年11月27日",
+  "issue": {
+    "number": null,
+    "label": null,
+    "source": "unavailable"
+  },
+  "availability": {
+    "podcast": true,
+    "transcript": true,
+    "playlist": true,
+    "report": true,
+    "sources": true,
+    "radar": false
+  },
+  "podcast": {
+    "title": "今日AI看点 | 2026-11-27",
+    "subtitle": "AlphaFold危矣,Claude和GPT都可以直接设计蛋白了,效果还惊人的好",
+    "mp3_url": "https://nicekai-jpg.github.io/ai-news-podcast/episodes/2026-11-27.mp3",
+    "duration_seconds": 672.199,
+    "duration_label": "11:12",
+    "speech_seconds": 653.59,
+    "segment_count": 40,
+    "hosts": [
+      {
+        "key": "A",
+        "name": "林夏",
+        "gender": "female",
+        "variants": [
+          {
+            "id": "lively",
+            "label": "青春女声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "professional",
+            "label": "亲切女声",
+            "available": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "key": "B",
+        "name": "陈默",
+        "gender": "male",
+        "variants": [
+          {
+            "id": "professional",
+            "label": "专业男声",
+            "available": true,
+            "default": true
+          },
+          {
+            "id": "lively",
+            "label": "活力男声",
+            "available": false,
+            "default": false
+          }
+        ]
+      }
+    ],
+    "transcript": {
+      "format": "playlist",
+      "segment_count": 40,
+      "segments_url": "episodes/2026-11-27/playlist.json",
+      "text_url": "episodes/2026-11-27.txt"
+    }
+  },
+  "lead": {
+    "text": "本期以“通用模型正在跨过工具边界”为主线，关注AI从回答问题转向设计蛋白质、实时协作与发现漏洞。三组主话题分别讨论通用模型与垂直模型的分工、Sage-Interaction的全双工交互，以及漏洞修复与仓促上线之间的风险。落地拼图还收录腾讯ORIDTP多肽闭环、Codex配额补偿、Figure移桌取苹果、Wispr Flow Canto-2和SWE-OPD。文稿在成绩之外标注了样本规模、来源与部署边界，并提醒漏洞章节及相关产品数据仍需回到论文、官方公告或原始采访核验。",
+    "source": "podcast_review",
+    "source_file": "data/editorial/2026-11-27/daily_report_2026-11-27.md"
+  },
+  "metrics": [
+    {
+      "key": "deduped_items",
+      "label": "今日入库",
+      "value": 536,
+      "unit": "条",
+      "source": "brief.metadata.total_deduped"
+    },
+    {
+      "key": "main_stories",
+      "label": "核心研判",
+      "value": 1,
+      "unit": "条",
+      "source": "brief.stories[role=main]"
+    },
+    {
+      "key": "podcast_segments",
+      "label": "双人对谈",
+      "value": 40,
+      "unit": "段",
+      "source": "playlist.chunks"
+    },
+    {
+      "key": "media_outlets",
+      "label": "覆盖媒体",
+      "value": 10,
+      "unit": "家",
+      "source": "brief.stories[].items[0].source_name"
+    }
+  ],
+  "chapters": [
+    {
+      "title": "开场",
+      "start": 18.599,
+      "label": "00:19",
+      "source": "script"
+    },
+    {
+      "title": "蛋白质设计变局",
+      "start": 32.176,
+      "label": "00:32",
+      "source": "script"
+    },
+    {
+      "title": "对话不再排队",
+      "start": 176.383,
+      "label": "02:56",
+      "source": "script"
+    },
+    {
+      "title": "漏洞修复赛跑",
+      "start": 304.264,
+      "label": "05:04",
+      "source": "script"
+    },
+    {
+      "title": "落地拼图",
+      "start": 433.986,
+      "label": "07:14",
+      "source": "script"
+    },
+    {
+      "title": "收尾",
+      "start": 644.531,
+      "label": "10:45",
+      "source": "script"
+    }
+  ],
+  "report": {
+    "title": "深度日报 2026-11-27",
+    "lead": "据现有报道，11 月中旬，AI 生物公司 Phylo 的研究员 Xinming Tu 做了一次小范围测试，让 OpenAI、Anthropic 和 Google 的通用大语言模型预测一批冷门细菌蛋白质的序列，并将程序在后台运行一夜。测试结果是，Anthropic 最新版 Claude 不仅胜过其他通用模型，也超过了专门使用海量序列数据训练的蛋白质语言模型；其比较对象既包括其他厂商的通用模型，也包括垂直领域的蛋白质模型。",
+    "deep_dives": [
+      {
+        "heading": "1、通用模型进入蛋白质设计任务",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，11 月中旬，AI 生物公司 Phylo 的研究员 Xinming Tu 做了一次小范围测试，让 OpenAI、Anthropic 和 Google 的通用大语言模型预测一批冷门细菌蛋白质的序列，并将程序在后台运行一夜。测试结果是，Anthropic 最新版 Claude 不仅胜过其他通用模型，也超过了专门使用海量序列数据训练的蛋白质语言模型；其比较对象既包括其他厂商的通用模型，也包括垂直领域的蛋白质模型。\n据现有报道，Xinming Tu 随后与哈佛医学院计算生物学家 Leo Chen 将上述发现发在博客上，并引发计算生物学领域的一轮测试热潮。在这场复测中，包括两人在内的研究者陆续发现，Claude 还能直接预测蛋白质的接触图（contact map），用于表示真实三维结构中的接触关系；但其精度仍不及专有模型 ESM-2。\n据现有报道，几天后，OpenAI 在最新发布的预印本及技术报告中展示，在未调用专用蛋白质生成工具的情况下，GPT-6 系列通用模型仅依靠自身的推理与代码能力，即可直接设计新的蛋白质三维结构与序列，并公布了湿实验结合数据。公开测试覆盖四类任务；其中，30 项基序支架挑战的初步计算分析中，OpenAI 最新内部模型的结构通过率为 43.7%，高于 RFdiffusion 的 27.8%；200 项指定折叠挑战中，通过率为 18.9%，略高于 Proteina 的 17.1%。"
+          },
+          {
+            "label": "背景",
+            "text": "分析背景：据现有报道，过去几年 AI for Science 的常见分工是通用大模型负责阅读文献、编写代码和辅助分析，AlphaFold、RFdiffusion、ProteinMPNN 等垂直模型承担蛋白质结构预测与分子设计。此次进展意味着通用模型开始直接承担部分设计任务，但现有结果尚不足以证明原有分工已经被替代。"
+          },
+          {
+            "label": "影响",
+            "text": "分析：短期内更值得关注的是通用模型能否成为结构预测、折叠设计和湿实验工具的上层入口，而非立即取代专有模型。若其在更复杂的约束、不同蛋白家族和重复湿实验中保持优势，AI for Science 的产品形态可能从单点模型调用转向自然语言驱动的多阶段设计流程。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "MIT 科技评论中文",
+            "link": "https://www.mittrchina.com/news/detail/17295",
+            "official": false
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "2、上海AI Lab开源Sage-Interaction",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，上海人工智能实验室近日开源全双工多模态模型 Sage-Interaction。两篇材料将其描述为以交互时机判断、插话响应机制和前后台任务协同为核心设计目标的交互模型，可持续接收音频、视频和文本等多模态信息，并在理解、思考和输出之间并行工作，以细粒度时间粒度更新对话状态；其目标是把大模型从传统“一问一答”模式转向“边交流、边协作、边办事”的交互形态。\n据现有报道，Sage-Interaction 在 FD-Bench V1.5 双工语音评测中的交互质量得分为 80.73，位居当前开闭源双工交互模型首位。模型面向真实、连续的双工语音交流，在保持交互质量的同时实现 1.29秒 的语音响应时延。两篇材料均将这两项数据作为模型全双工交互能力的量化结果，并将该模型与等待用户完整输入及完整答案生成后再进入下一轮的请求-响应式交互方式加以区分。\n据现有报道，材料称 Sage-Interaction 的 1.29秒 语音响应时延超过了 Doubao-Duplex（1.39s）和 Moss-Live（1.47s）等对比模型，其中 Doubao-Duplex 为闭源模型。其训练数据覆盖全双工语音对话、流式视频理解和异步任务委派，并使用多智能体角色扮演框架生成多轮交互轨迹；模型据此开展监督后训练，并针对音频与视频监督密度不同设计非对称训练目标。材料还称，其流式视频理解与主动响应达到同规模开源模型的前沿水平。"
+          },
+          {
+            "label": "背景",
+            "text": "交互模型把持续接收多模态信息、并行理解与输出以及动态更新对话状态纳入训练和设计目标。Sage-Interaction 在此基础上加入插话时机判断、异步任务委派与结果回填，试图在直接对话和后台执行之间建立统一交互机制，并将其科研应用指向科学发现流程。"
+          },
+          {
+            "label": "影响",
+            "text": "潜在影响主要体现在三个方面：为实时语音产品提供开源的全双工交互基座；为流式视频与异步任务协同提供统一的模型接口；为开发者围绕插话、并行执行和结果融入开展二次开发提供基础。这些影响属于技术路径层面的判断，实际采用仍取决于许可证、资源开销、工具链成熟度与独立评测结果。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "AIBase 新闻",
+            "link": "https://www.aibase.com/zh/news/32551",
+            "official": false
+          },
+          {
+            "label": "AI 工具集",
+            "link": "https://mp.weixin.qq.com/s/JbO-3zVZIHVILN5kd1rjWQ",
+            "official": false
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "3、腾讯称AI双靶点多肽研究发表于《Nature》",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，IT之家于11月26日消息称，腾讯于当日宣布，腾讯生命科学实验室的一项AI for Science研究成果于11月25日正式以第一单位登上《Nature》主刊。该研究聚焦高活性双靶点治疗性多肽的从头设计，即不依赖已有的分子模板，从零开始设计一把能打开两把锁的“钥匙”，为复杂疾病的治疗提供新的可能。\n据现有报道，腾讯团队围绕上述问题研发了AI平台ORIDTP，将扩散生成模型、双目标强化学习、柔性多肽亲和力建模与生物学实验相结合，跑通了“计算设计—实验验证—反馈优化”的研发闭环。报道将这一路径描述为从传统依赖大规模分子库盲筛的模式，转向AI驱动的小样本精准迭代；每轮实验仅需测试约15条多肽。\n据现有报道，团队已在两个机制迥异的药理方向完成验证；证据配图说明“双靶点多肽在基因敲入小鼠中的抗肿瘤活性”。目前，该研究仍处于临床前阶段，尚未开展人体临床试验。ORIDTP已部署至面向科研社区开放的一站式生命科学AI工作台“腾讯健康BioNexus”，也可以在WorkBuddy找到它。"
+          },
+          {
+            "label": "背景",
+            "text": "现有材料主要介绍本次研究的技术路径、动物模型验证和产品部署情况，没有提供ORIDTP此前的版本记录、公开基准或完整研发时间线，因此无法据此判断该平台相较既有双靶点多肽设计方法的改进幅度。"
+          },
+          {
+            "label": "影响",
+            "text": "潜在影响集中在药物早期发现环节：多靶点多肽设计若能在更多靶点和实验体系中复现，可能为复杂疾病的候选物筛选提供补充工具。BioNexus与WorkBuddy为科研用户提供了新的使用入口，但当前仍属临床前研究，不能据此评估人体疗效、监管前景或商业化价值。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "IT之家 AI",
+            "link": "https://www.ithome.com/1/033/125.htm",
+            "official": false
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "4、OpenAI赠送重置卡，部分模型配额消耗加快",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据蓝点网2026年11月26日报道，OpenAI向全体ChatGPT订阅用户赠送1张重置卡，作为GPT-6.2 Astra/Sol计费错误的补偿。报道明确区分了错误方向：此次并非OpenAI多扣用户配额，而是此前少扣配额；修正错误后，继续使用上述模型的用户将更快达到配额限制，可完成的工作量也会相应减少。报道使用“补偿”描述此次赠送，并将后续配额变化与该计费错误直接关联。\n据蓝点网报道，配额触顶速度的变化因模型而异：继续使用GPT-6.2 Astra时，达到配额限制的速度比修正前快40%；继续使用GPT-6.2 Sol时，达到配额限制的速度比修正前快25%。这两项百分比都以各自模型修正前的触顶速度为比较基准。报道仅分别列出两种模型各自的修正后触顶速度变化，并未把40%与25%换算为绝对配额、具体使用时长或新的金额。\n据蓝点网报道，文章标题将此次调整概括为“后续Codex部分模型配额消耗会更快”，正文点名的模型为GPT-6.2 Astra与GPT-6.2 Sol。页面显示的发布时间为2026年11月26日 11:42，栏目为“人工智能”。目前提供的材料仅包含该篇报道，未附OpenAI公告、Codex技术经理的原始帖子或可独立核验的截图链接。因此，关于重置卡与配额调整的表述目前均属于单一来源报道，引用时仍需保留来源限定。"
+          },
+          {
+            "label": "背景",
+            "text": "分析口径：现有报道把此次调整描述为对GPT-6.2 Astra/Sol“少扣配额”错误的修正。此前相关模型存在配额扣减偏慢的情况；修正后，配额触顶速度提高。报道所称的补偿措施是向全体ChatGPT订阅用户赠送1张重置卡，但现有证据未说明其领取、使用和失效规则。"
+          },
+          {
+            "label": "影响",
+            "text": "分析：1张重置卡可能缓解部分用户因配额触顶加快而产生的短期使用压力，但补偿本身不能替代清晰的计费说明。对频繁使用Codex相关模型的用户，达到限额所需工作量的变化可能影响任务拆分、续接和订阅档位选择；对OpenAI而言，后续重点是补偿能否顺利执行，以及官方能否提供更稳定的配额说明。当前材料不足以支持对长期定价或用户规模作判断。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "蓝点网",
+            "link": "https://www.landian.news/archives/128880.html",
+            "official": false
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "5、Figure 用移桌取苹果视频回应马斯克",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，IT之家 11 月 26 日消息，Figure 于 11 月 24 日发布一段 41 秒视频，回应马斯克关于人形机器人演示“摆拍、预先编程”的质疑。Figure 首席执行官布雷特·阿德科克在 X 平台发布该视频，展示 Figure 03 机器人在桌子被人为移动后，仍能重新定位并取回放在桌上的苹果。报道将这段视频作为对马斯克所提质疑的直接回应。\n据现有报道，11 月 18 日在 TomorrowX 峰会上，马斯克表示，目前多数人形机器人演示并非真正的自主运行，通常经过事先安排和预编程，缺乏真实环境中的自主适应能力。他以“让机器人去拿一个苹果，然后把桌子挪走，它就拿不到苹果了”为例，说明自己对机器人能否适应环境变化的质疑。\n据现有报道，马斯克还表示，特斯拉正在推进 Optimus 人形机器人，并计划在一两个月内展示一次未经摆拍、无需预编程动作的“真实”演示。Figure 发布的 41 秒视频中，Figure 03 先按指令从桌上拿起苹果并将其放回桌面；桌子被移到新位置后，机器人再次接到取回苹果的指令，随后走向新位置并成功完成动作。"
+          },
+          {
+            "label": "背景",
+            "text": "从编辑分析看，此次交锋的背景是马斯克质疑人形机器人演示的真实自主性，以及 Figure 使用相同类型的“苹果与桌子”任务作出回应。现有公开材料只给出这一组任务，未提供两家公司技术路线、可重复测试协议或第三方基准，因此该视频更接近双方主张的对照样本，而非系统性能力评测。"
+          },
+          {
+            "label": "影响",
+            "text": "从编辑分析看，若 Figure 后续披露更完整的测试条件、连续运行记录及任务说明，外界才更可能区分视频展示、预设流程与环境变化适应之间的差异。在此之前，这场回应把机器人演示的评价重点引向“改变条件后能否继续完成任务”，但不足以证明或否定马斯克关于多数演示的概括判断。"
+          },
+          {
+            "label": "反方",
+            "text": "马斯克的公开质疑构成另一方观点：据现有报道，他称目前多数人形机器人演示并非真正的自主运行，通常经过事先安排和预编程，并以移桌后无法取回苹果为例。Figure 则通过 41 秒视频展示 Figure 03 在桌子被移动后重新定位并取回苹果；该视频是否足以证明现场自主性，现有材料没有给出独立核验。"
+          }
+        ],
+        "sources": [
+          {
+            "label": "IT之家 AI",
+            "link": "https://www.ithome.com/1/032/739.htm",
+            "official": false
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "6、SWE-OPD探索跨词表编程Agent蒸馏",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，研究提出名为“SWE-OPD: On-Policy Distillation for Agentic Coding”的项目，将On-Policy Distillation（OPD）引入真实软件工程任务，探索在工业级长程Agentic Coding场景中进行能力迁移。论文版本标识为“2611.21020v1”，地址为https://arxiv.org/pdf/2611.21020v1，代码地址为https://github.com/ernie-research/SWE-OPD。\n据现有报道，SWE-OPD的训练流程包括Student自主探索与Teacher提供监督两部分：Student在真实、可执行的软件仓库中通过多轮交互生成代码、调用工具并获取环境反馈；Teacher不生成完整参考解决方案，而是在Student实际访问的上下文和状态上提供Token-level概率监督。报道将其与依赖固定文本或静态训练数据的传统知识蒸馏作了对比。\n据现有报道，该研究提出两个待验证问题：OPD能否在具有长程交互、复杂工具调用和动态环境状态的真实软件工程任务中运行，以及跨词表条件下能否实现有效蒸馏。报道将研究场景概括为从短文本推理转向真实软件工程、从静态数据蒸馏转向动态交互环境，并称其实现了跨词表OPD在该类场景中的首次应用。"
+          },
+          {
+            "label": "背景",
+            "text": "作为背景梳理，OPD的基本机制是让Student按照自身策略生成交互轨迹，再由Teacher针对Student实际访问的状态提供细粒度Token-level监督。报道认为，在编程Agent场景中，模型生成的轨迹可能明显偏离Teacher的轨迹，因此固定文本或静态数据难以直接覆盖动态交互过程。"
+          },
+          {
+            "label": "影响",
+            "text": "潜在影响主要体现在编程Agent的模型蒸馏与工程训练流程：若该方法在公开基准和真实仓库中表现稳定，可能扩展跨模型、跨词表能力迁移的适用范围。现有材料尚不足以确认其相对现有训练方法的实际增益，也无法评估部署成本及对不同模型规模的适用范围。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "SWE-OPD论文（arXiv）",
+            "link": "https://arxiv.org/pdf/2611.21020v1",
+            "official": true
+          },
+          {
+            "label": "SWE-OPD代码仓库（GitHub）",
+            "link": "https://github.com/ernie-research/SWE-OPD",
+            "official": true
+          },
+          {
+            "label": "PaperWeekly",
+            "link": "https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247724165&idx=2&sn=970124cd12052db880a1504e2ffc481f",
+            "official": true
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      },
+      {
+        "heading": "7、Wispr Flow 发布 Canto-2 语音转文本模型",
+        "category": "",
+        "points": [
+          {
+            "label": "事实",
+            "text": "据现有报道，IT之家于 11 月 26 日消息，AI 语音听写应用 Wispr Flow 本周推出语音转文本模型 Canto-2，面向 Mac、Windows、iOS 及 Android 等平台用户。报道将此次发布的目标概括为减少听写错误，并提升对专有人名、技术术语及复杂表达的理解能力。Wispr 还表示，Canto-2 的训练更贴近真实使用场景，模型学习了背景噪音、笔记本电脑和手机麦克风收音，以及用户说话中途重新组织句子的情形。\n据现有报道援引 Wispr 官方介绍，与前代 Canto-1 相比，Canto-2 在 14 种语言中的转录错误率平均降低 36%，英语错误率降低超过 15%。在 Wispr 的内部基准测试中，14 种语言的平均错误率由 9.9% 降至 6.3%；英语的平均错误率由 3.2% 降至 2.7%。这些对比数字来自 Wispr 公布的测试结果，报道未列出各语言的分项数据。\n据现有报道，Wispr 表示，Canto-2 对复杂人名、专业词汇及自定义词条的准确识别率，从 Canto-1 的 41% 提升至 69%，且并未因此更频繁地“误插入”用户并未说出的词。Wispr 还称，即使自定义词典累积至 1000 个条目，模型仍能正确识别 92% 的较简单术语。上述识别率与误插入情况均来自 Wispr 对 Canto-2 的测试表述。\n据现有报道，Wispr 称，若以 11 月 9 日的结果计算，Canto-2 在 Hugging Face 公开多语言基准中可位列总排名第三，并在其内部测试的 14 种语言中取得最低平均错误率。报道同时转述了公开基准排名和内部测试结论，但现有材料未给出该公开基准的具体名称、榜单链接、测试配置或各语言分项结果。"
+          },
+          {
+            "label": "背景",
+            "text": "背景分析：Canto-2 是 Canto-1 的后继版本，改进重点包括多语言转录、难词识别，以及对日常噪音、设备收音条件和口语重组的适应。此次发布还引用了 Hugging Face 公开多语言基准排名，但公开榜单与 Wispr 内部测试属于不同口径，相关结果不能直接互换。"
+          },
+          {
+            "label": "影响",
+            "text": "影响分析：若后续独立测试能够复现相关降幅，Canto-2 可能改善人名、技术词和复杂表达密集场景中的听写体验，并减少用户修改转写文本的负担。此次覆盖 Mac、Windows、iOS 及 Android 等平台，也可能推动语音输入能力在个人设备间形成一致的使用体验；实际效果仍取决于真实环境中的准确率、响应速度和完整工作流表现。"
+          },
+          {
+            "label": "反方",
+            "text": "暂无公开反方信息"
+          }
+        ],
+        "sources": [
+          {
+            "label": "IT之家 AI",
+            "link": "https://www.ithome.com/1/032/752.htm",
+            "official": false
+          }
+        ],
+        "raw_sections": [],
+        "background": "",
+        "breakthrough": "",
+        "impact": ""
+      }
+    ],
+    "frontier": [],
+    "raw_paragraphs": [],
+    "toc": [
+      {
+        "level": 3,
+        "text": "1、通用模型进入蛋白质设计任务"
+      },
+      {
+        "level": 3,
+        "text": "2、上海AI Lab开源Sage-Interaction"
+      },
+      {
+        "level": 3,
+        "text": "3、腾讯称AI双靶点多肽研究发表于《Nature》"
+      },
+      {
+        "level": 3,
+        "text": "4、OpenAI赠送重置卡，部分模型配额消耗加快"
+      },
+      {
+        "level": 3,
+        "text": "5、Figure 用移桌取苹果视频回应马斯克"
+      },
+      {
+        "level": 3,
+        "text": "6、SWE-OPD探索跨词表编程Agent蒸馏"
+      },
+      {
+        "level": 3,
+        "text": "7、Wispr Flow 发布 Canto-2 语音转文本模型"
+      }
+    ],
+    "char_count": 6091,
+    "reading_minutes": 15,
+    "editor_verdict": "整体上，日报对可见证据中的事件、数字和限定条件大多忠实，也主动披露了单一来源与截断问题。最需处理的是厂商或项目方自报成绩的归因、个别来源属性和实体标注需校正，以及ORIDTP、SWE-OPD等缺少可核验论文与实验结果。\n\n【准确】通用模型进入蛋白质设计任务：三项事实均能与证据正文逐项对应，43.7%对27.8%、18.9%对17.1%等数字无误，且注明了“初步计算分析”。标题和影响判断较克制；现有材料仍不足以证明通用模型已替代垂直模型，这一限定应继续保留。\n\n【补充】上海AI Lab开源Sage-Interaction：80.73、1.29秒及与Doubao-Duplex、Moss-Live的时延比较均有依据，训练目标和数据构成也一致。两篇材料均未提供第三方复现，不能按两份独立验证计算；建议补明评测方、代码仓库、许可证和测试配置，并继续限定“首位”结论。\n\n【补充】腾讯称AI双靶点多肽研究发表于《Nature》：关于《Nature》主刊、ORIDTP技术组合、每轮约15条多肽及临床前阶段，均未超出证据，也没有把动物结果写成人体疗效。仍需补上论文题名、DOI和候选物、效应量、比较基线等原始信息，否则只能确认公司转述的总体结论。\n\n【需修正】OpenAI赠送重置卡，部分模型配额消耗加快：少扣配额的方向以及Astra快40%、Sol快25%均与证据一致，也正确说明修正后可用工作量减少。需要修正的是“暂无公开反方信息”：证据明确提到用户不满和此前解释不足；同时只有二手报道，标题最好保留“据报道”的限定。\n\n【准确】Figure 用移桌取苹果视频回应马斯克：11月18日、24日、26日及41秒等时间信息与证据一致，Figure 03在桌位变化后取回苹果的动作也描述准确。评论没有把单段视频当作自主性证明，并列出剪辑、遥控、重复次数等关键缺口；标题和正文可按现状保留。\n\n【需修正】SWE-OPD探索跨词表编程Agent蒸馏：训练流程、论文版本和代码地址都与证据吻合，“首次”也已写成研究方主张，未冒充独立结论。现有截断材料没有教师或学生模型、基准和量化结果，无法评价实际增益；PaperWeekly应标成二手解读，arXiv与GitHub属于同一项目上游材料。\n\n【需修正】Wispr Flow 发布 Canto-2 语音转文本模型：各转录指标及难词识别数据均与证据一致，报告也区分了内部基准和公开榜单。需修正实体归属：主体应为Wispr Flow，Hugging Face只是报道所称榜单的平台；“总排名第三”仍缺基准名、链接和快照，补齐前须保留厂商自述限定。",
+    "source_file": "data/editorial/2026-11-27/report.json"
+  },
+  "report_review": {
+    "overall": "整体上，日报对可见证据中的事件、数字和限定条件大多忠实，也主动披露了单一来源与截断问题。最需处理的是厂商或项目方自报成绩的归因、个别来源属性和实体标注需校正，以及ORIDTP、SWE-OPD等缺少可核验论文与实验结果。",
+    "items": [
+      {
+        "event_id": "557b5a662b49ae09c9f908ea57ac4f406ba598833fa173d75a74fbadd3e1dcfb",
+        "title": "通用模型进入蛋白质设计任务",
+        "verdict": "准确",
+        "comment": "三项事实均能与证据正文逐项对应，43.7%对27.8%、18.9%对17.1%等数字无误，且注明了“初步计算分析”。标题和影响判断较克制；现有材料仍不足以证明通用模型已替代垂直模型，这一限定应继续保留。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "f3200e8141a623cb835844246c8ee98c65c1632b74f93b6e11a640de1abd56e7",
+        "title": "上海AI Lab开源Sage-Interaction",
+        "verdict": "补充",
+        "comment": "80.73、1.29秒及与Doubao-Duplex、Moss-Live的时延比较均有依据，训练目标和数据构成也一致。两篇材料均未提供第三方复现，不能按两份独立验证计算；建议补明评测方、代码仓库、许可证和测试配置，并继续限定“首位”结论。",
+        "corrections": [
+          "将80.73分、1.29秒和“当前首位”明确归因于项目方或评测口径；两篇转述材料不能替代独立复现。",
+          "补充代码仓库、开放许可证、模型规模及FD-Bench V1.5测试配置。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "30a70727343993171fc45a1cfb74cd26c8af5fd131bb8ad1231db12e3d07cbd5",
+        "title": "腾讯称AI双靶点多肽研究发表于《Nature》",
+        "verdict": "补充",
+        "comment": "关于《Nature》主刊、ORIDTP技术组合、每轮约15条多肽及临床前阶段，均未超出证据，也没有把动物结果写成人体疗效。仍需补上论文题名、DOI和候选物、效应量、比较基线等原始信息，否则只能确认公司转述的总体结论。",
+        "corrections": [
+          "补充《Nature》论文题名、DOI或可访问链接，以及候选分子、效应量、比较基线和完整实验条件；当前证据正文未提供。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "04bd97d3968af40ff7ee65d18ec41e4d74047963fced9070cd8654316aec3e4f",
+        "title": "OpenAI赠送重置卡，部分模型配额消耗加快",
+        "verdict": "需修正",
+        "comment": "少扣配额的方向以及Astra快40%、Sol快25%均与证据一致，也正确说明修正后可用工作量减少。需要修正的是“暂无公开反方信息”：证据明确提到用户不满和此前解释不足；同时只有二手报道，标题最好保留“据报道”的限定。",
+        "corrections": [
+          "将counterpoint从“暂无公开反方信息”改为：用户对修正后配额更快消耗不满，且此前通知未充分说明计费错误原因和前后消耗差异。",
+          "在取得OpenAI公告前，标题应加“据报道”；并补充重置卡适用档位、领取、使用和失效规则。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "6f45581f397fa68b25c7203528d558e5fe19445d81f3026035ff854892a20af8",
+        "title": "Figure 用移桌取苹果视频回应马斯克",
+        "verdict": "准确",
+        "comment": "11月18日、24日、26日及41秒等时间信息与证据一致，Figure 03在桌位变化后取回苹果的动作也描述准确。评论没有把单段视频当作自主性证明，并列出剪辑、遥控、重复次数等关键缺口；标题和正文可按现状保留。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "84944cf66aa03cd2d88f4114ce5fec5be8f2db2aab6a2a030bfd494191a652b5",
+        "title": "SWE-OPD探索跨词表编程Agent蒸馏",
+        "verdict": "需修正",
+        "comment": "训练流程、论文版本和代码地址都与证据吻合，“首次”也已写成研究方主张，未冒充独立结论。现有截断材料没有教师或学生模型、基准和量化结果，无法评价实际增益；PaperWeekly应标成二手解读，arXiv与GitHub属于同一项目上游材料。",
+        "corrections": [
+          "将PaperWeekly从官方来源改为二手报道；arXiv论文和GitHub仓库属于同一项目材料，不能相互充当独立验证来源。",
+          "补齐教师与学生模型的名称和规模、评测基准、消融实验及主要量化结果；当前正文不足以判断实际增益。"
+        ],
+        "highlights": []
+      },
+      {
+        "event_id": "9394d67f4c4ba2778bd2e1461cbb6152a316c3371c3a0fa29d5b713a3183a3fb",
+        "title": "Wispr Flow 发布 Canto-2 语音转文本模型",
+        "verdict": "需修正",
+        "comment": "各转录指标及难词识别数据均与证据一致，报告也区分了内部基准和公开榜单。需修正实体归属：主体应为Wispr Flow，Hugging Face只是报道所称榜单的平台；“总排名第三”仍缺基准名、链接和快照，补齐前须保留厂商自述限定。",
+        "corrections": [
+          "将事件主体从Hugging Face改为Wispr Flow（Wispr）；Hugging Face在此是公开榜单平台，不是模型发布方。",
+          "补充公开多语言基准的准确名称、链接、测试配置及11月9日榜单快照；否则“总排名第三”只能保留为Wispr自述。",
+          "补充Mac、Windows、iOS、Android各平台的正式开放范围、可用时间与Wispr官方说明链接。"
+        ],
+        "highlights": []
+      }
+    ],
+    "risks": [
+      "多数条目只有单一二手来源，尤其事件3、4、5、7；在补入《Nature》论文、OpenAI公告、原始视频或厂商说明前，不宜使用确定口吻。",
+      "事件2的“首位”和事件7的“第三”主要来自项目方或厂商口径，内部基准与公开榜单不可直接比较。",
+      "事件1证据在minibinder湿实验段落截断，事件3、6也缺完整效应量或基准结果；不得据此补写性能数字。",
+      "事件3、5、7多处日期未标年份，页面发布时应统一补齐年份，避免与往年报道混淆。",
+      "来源独立性可能被高估：两篇转述材料及同一项目的论文与仓库，不构成多次独立验证。",
+      "若页面沿用证据侧实体标签，需清理事件7的Hugging Face、事件5的Apple（此处为水果），以及事件6中未获可见证据确认的DeepSeek、通义千问等标签。"
+    ]
+  },
+  "podcast_review": {
+    "overall": "主线清晰，三组主话题形成“能力扩张—验证跟上”的递进，数字与材料大体吻合，反方提示也充分。问题是“落地拼图”塞入过多异质快讯，节奏易散；漏洞章节缺少对应依据，Sage、ORIDTP及单一来源数据还需补证或收窄表述。",
+    "show_notes": "本期以“通用模型正在跨过工具边界”为主线，关注AI从回答问题转向设计蛋白质、实时协作与发现漏洞。三组主话题分别讨论通用模型与垂直模型的分工、Sage-Interaction的全双工交互，以及漏洞修复与仓促上线之间的风险。落地拼图还收录腾讯ORIDTP多肽闭环、Codex配额补偿、Figure移桌取苹果、Wispr Flow Canto-2和SWE-OPD。文稿在成绩之外标注了样本规模、来源与部署边界，并提醒漏洞章节及相关产品数据仍需回到论文、官方公告或原始采访核验。",
+    "chapters": [
+      {
+        "title": "开场",
+        "intro": "从蛋白质设计、全双工交互与漏洞修复三组消息切入，提出共同问题：通用模型跨过专业工具边界后，能力、验证与责任如何重新分配？",
+        "highlights": [
+          "通用模型开始承担跨领域专业任务",
+          "传统工具分工面临重新划分",
+          "能力成绩之外还要观察验证与部署"
+        ]
+      },
+      {
+        "title": "蛋白质设计变局",
+        "intro": "比较通用模型在序列、接触图与三维结构设计中的表现，说明真正变化可能是自然语言入口降低多工具切换成本；同时保留小样本、湿实验与外部复核的边界。",
+        "highlights": [
+          "通用模型在部分蛋白质设计挑战中超过垂直模型",
+          "自然语言正在改变专业软件的交互入口",
+          "小规模测试不能替代湿实验和广泛验证"
+        ]
+      },
+      {
+        "title": "对话不再排队",
+        "intro": "Sage-Interaction把重点从“答得快”推进到“判断何时说、允许打断、并行办事”。稿件呈现评测数据，也提醒多人环境、失败恢复与上线体验仍需观察。",
+        "highlights": [
+          "全双工交互支持随时打断与意图切换",
+          "响应速度之外还要判断何时让出话权",
+          "评测分数不等于真实协作体验"
+        ]
+      },
+      {
+        "title": "漏洞修复赛跑",
+        "intro": "围绕漏洞发现提速与仓促发布风险，强调修复本身也可能放大系统压力。本章时间线、引语及内部行动缺少对应参考材料，需补充微软官方或CBS原始来源核验。",
+        "highlights": [
+          "AI同时加速漏洞发现与利用",
+          "仓促补丁可能引入新的系统故障",
+          "及时修复与充分测试需要同时满足"
+        ]
+      },
+      {
+        "title": "落地拼图",
+        "intro": "这一章密集汇总多肽研发、Codex配额、机器人取物、语音转录与编程Agent。信息量充足，但各条证据等级不同，阅读时应区分论文结果、厂商基准与演示视频。",
+        "highlights": [
+          "ORIDTP连接多肽计算设计与实验反馈",
+          "机器人演示转向观察环境变化后的泛化",
+          "语音与编程Agent同时强化真实场景能力"
+        ]
+      },
+      {
+        "title": "收尾",
+        "intro": "回扣“跨领域承担任务”的主线，把后续观察落到蛋白质验证、真实语音交互、连锁宕机、配额补偿与机器人泛化等可检验的问题上。",
+        "highlights": [
+          "能力扩张之后验证与部署必须同步",
+          "下一期将追踪各项目实际反馈",
+          "演示、评测与真实使用仍需区分"
+        ]
+      }
+    ],
+    "items": [
+      {
+        "event_id": "557b5a662b49ae09c9f908ea57ac4f406ba598833fa173d75a74fbadd3e1dcfb",
+        "title": "通用模型进入蛋白质设计任务",
+        "verdict": "需修正",
+        "comment": "序列、接触图、湿实验与两组通过率均与材料对应，且稿件明确小规模测试不能替代广泛验证。建议将“证明”改为“展示”，并继续区分计算通过率与湿实验结果。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "f3200e8141a623cb835844246c8ee98c65c1632b74f93b6e11a640de1abd56e7",
+        "title": "上海AI Lab开源Sage-Interaction",
+        "verdict": "需修正",
+        "comment": "双工评分、1.29秒时延、对比模型及训练路线均有材料支撑；但“打断响应83.00”和书生·端砚上线安排不在所给要点中，应补原始出处或删除，并保留真实场景稳定性限制。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "30a70727343993171fc45a1cfb74cd26c8af5fd131bb8ad1231db12e3d07cbd5",
+        "title": "腾讯称AI双靶点多肽研究发表于《Nature》",
+        "verdict": "需修正",
+        "comment": "闭环、每轮约15条多肽、两个方向及临床前边界基本吻合；但减重降糖小鼠、低于对照摩尔剂量和显著效果未见于所给材料，需以论文数据核实或收窄。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "04bd97d3968af40ff7ee65d18ec41e4d74047963fced9070cd8654316aec3e4d",
+        "title": "OpenAI赠送重置卡，部分模型配额消耗加快",
+        "verdict": "补充",
+        "comment": "少扣而非多扣、触顶速度加快40%和25%及补偿方向与材料一致；但目前是单一报道，发放细节应注明来源，也不能换算成绝对配额、使用时长或长期定价判断。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "6f45581f397fa68b25c7203528d558e5fe19445d81f3026035ff854892a20af8",
+        "title": "Figure用移桌取苹果视频回应马斯克",
+        "verdict": "补充",
+        "comment": "41秒移桌取苹果视频及马斯克质疑有材料对应，稿件也避免外推通用自主性。但视频中机器人是在桌子移动后再次接到取回指令，建议补明这一点，不能解读为完全自主发现并行动。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "84944cf66aa03cd2d88f4114ce5fec5be8f2db2aab6a2a030bfd494191a652b5",
+        "title": "SWE-OPD探索跨词表编程Agent蒸馏",
+        "verdict": "补充",
+        "comment": "Student在真实仓库自主探索、Teacher在实际状态提供Token级概率监督的描述准确；“首次”“不用RL、不挑成功轨迹”应注明是论文作者主张，并补充算力成本、训练稳定性与跨仓库泛化验证。",
+        "corrections": [],
+        "highlights": []
+      },
+      {
+        "event_id": "9394d67f4c4ba2778bd2e1461cbb6152a316c3371c3a0fa29d5b713a3183a3fb",
+        "title": "Wispr Flow发布Canto-2语音转文本模型",
+        "verdict": "补充",
+        "comment": "错误率降幅、内部基准和专名识别提升均有材料支撑，稿件也区分了总体转录与术语识别。仍应提示结论主要来自厂商测试，公开榜单配置及外部复现尚缺。",
+        "corrections": [],
+        "highlights": []
+      }
+    ],
+    "fact_check_notes": [
+      "文稿内 30 个数字均可在事实底稿核对"
+    ]
+  },
+  "sources": {
+    "total_all": 15,
+    "total_main": 1,
+    "shown": 15,
+    "role_filter": "all",
+    "groups": [
+      {
+        "publisher": "科技媒体",
+        "group": "科技媒体",
+        "count": 15
+      }
+    ],
+    "items": [
+      {
+        "rank": 1,
+        "role": "main",
+        "role_label": "核心信源",
+        "publisher": "MIT 科技评论中文",
+        "group": "科技媒体",
+        "source_name": "MIT 科技评论中文",
+        "category": "",
+        "title": "AlphaFold危矣,Claude和GPT都可以直接设计蛋白了,效果还惊人的好",
+        "summary": "11 月中旬,AI 生物公司 Phylo 的研究员 Xinming Tu 做了一次小范围测试。他让 OpenAI、Anthropic 和 Google 的通用大语言模型去预测一批冷门细菌蛋白质的序列,然后把程序挂在后台跑了一夜。 结果让他非常意外,Anthropic 最新版 Claude 不仅胜过了其他通用大模型,还超过了专门用海量序列数据训练出来的蛋白质语言模型。随后,他与哈佛医学院计算生物学家 Leo Chen 将这项发现发在了博客上,很快在计算生物学圈子里引发了一场测试",
+        "link": "https://www.mittrchina.com/news/detail/17295",
+        "published_at": "2026-11-25T10:26:53+00:00"
+      },
+      {
+        "rank": 2,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "AIBase 新闻",
+        "group": "科技媒体",
+        "source_name": "AIBase 新闻",
+        "category": "",
+        "title": "上海 AI Lab 开源全双工多模态模型 Sage-Interaction",
+        "summary": "在与AI交互的日常中,我们常常陷入一种隐秘的挫败感:必须僵硬地等待模型把长篇大论播报完毕才能插话;一旦打断,对话上下文便瞬间崩塌。这种“一问一答”的半双工模式,让AI始终带着浓重的“客服机器人”色彩,难以真正融入人类自然、高频、充满打断与重叠的真实协作场景。 打破这一交互壁垒的关键时刻已经到来。近日,上海人工智能实验室正式开源全双工多模态模型 Sage-Interaction,旨在推动大模型从单向的“指令-响应”机器,彻底转向“边交流、边协作、边办事”的全新交互形态。 核心突",
+        "link": "https://www.aibase.com/zh/news/32551",
+        "published_at": "2026-11-26T15:44:35+00:00"
+      },
+      {
+        "rank": 3,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "IT之家 AI",
+        "group": "科技媒体",
+        "source_name": "IT之家 AI",
+        "category": "",
+        "title": "微软总裁史密斯警告:AI 让漏洞发现更快,开发者仓促打补丁或引发更多宕机",
+        "summary": "IT之家 11 月 26 日消息,距离一场重创全球公共和私营机构的大规模 Microsoft 365 宕机不到两周,微软总裁兼副主席布拉德 · 史密斯(Brad Smith)就警告称,可能还会有更多技术宕机发生。 IT之家注意到,在当地时间 11 月 22 日接受美国哥伦比亚广播公司(CBS News)《面向全国》(Face the Nation)节目采访时,史密斯解释说,这次 Microsoft 365 宕机既不是网络攻击造成的,也不是 AI 造成的。他把近期一些范围更大的",
+        "link": "https://www.ithome.com/1/032/798.htm",
+        "published_at": "2026-11-26T07:10:24+00:00"
+      },
+      {
+        "rank": 4,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "IT之家 AI",
+        "group": "科技媒体",
+        "source_name": "IT之家 AI",
+        "category": "",
+        "title": "腾讯用 AI 挑战药物研发领域前沿难题:成果登 Nature,在减重降糖、肿瘤免疫方向完成验证",
+        "summary": "感谢IT之家网友 补药吖 的线索投递! IT之家 11 月 26 日消息,腾讯今日宣布,11 月 25 日,腾讯生命科学实验室的一项 AI for Science 研究成果,正式以第一单位登上《Nature》主刊。 据介绍, 腾讯用 AI 挑战了药物研发领域的一个前沿难题:高活性双靶点治疗性多肽的从头设计 。通俗来说,就是不依赖已有的分子模板,从零开始设计一把能打开两把锁的“钥匙”,为复杂疾病的治疗提供新的可能。 围绕这个问题,团队经过长期探索,研发了 AI 平台 ORIDT",
+        "link": "https://www.ithome.com/1/033/125.htm",
+        "published_at": "2026-11-26T14:58:09+00:00"
+      },
+      {
+        "rank": 5,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "蓝点网",
+        "group": "科技媒体",
+        "source_name": "蓝点网",
+        "category": "",
+        "title": "OpenAI向全体ChatGPT订阅用户赠送1张重置卡 后续Codex部分模型配额消耗会更快",
+        "summary": "早前蓝点网刚刚提到 OpenAI 向很多用户发送邮件 ,说是 GPT-6.2 Astra/Sol 模型存在计费错误问题。这里的计费错误指的是用户使用以上模型时配额消耗的速度要比正常时慢,也就是用户可以完成更多工作。 修正错误后用户可以观察到配额消耗更快: 目前 OpenAI 已经修正后端模型计费错误问题,修正后用户继续使用 GPT-6.2 Astra/Sol 模型时会发现配额消耗速度更快,也就是配额可以完成的工作内容将会减少。 按照 OpenAI 的说明,继续使用 GPT-6",
+        "link": "https://www.landian.news/archives/128880.html",
+        "published_at": "2026-11-26T03:42:26+00:00"
+      },
+      {
+        "rank": 6,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "IT之家 AI",
+        "group": "科技媒体",
+        "source_name": "IT之家 AI",
+        "category": "",
+        "title": "马斯克质疑称多数机器人演示是摆拍,Figure 接招用 41 秒视频回击",
+        "summary": "IT之家 11 月 26 日消息,人形机器人公司 Figure 于 11 月 24 日回应马斯克的“摆拍、预先编程”质疑, 发布一段 41 秒视频,展示 Figure 03 机器人在桌子被人为移动后,仍能重新定位并取回放在桌上的苹果。 11 月 18 日在 TomorrowX 峰会上,马斯克表示目前多数人形机器人演示并非真正的自主运行,通常是经过事先安排和预编程,缺乏真实环境中的自主适应能力。他举例表示“让机器人去拿一个苹果,然后把桌子挪走,它就拿不到苹果了。” 该测试可视为",
+        "link": "https://www.ithome.com/1/032/739.htm",
+        "published_at": "2026-11-26T04:55:46+00:00"
+      },
+      {
+        "rank": 7,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "PaperWeekly",
+        "group": "科技媒体",
+        "source_name": "PaperWeekly",
+        "category": "",
+        "title": "业界首个!800B大模型参与,跨词表OPD跑通编程Agent",
+        "summary": "不用RL、不挑成功轨迹",
+        "link": "https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247724165&idx=2&sn=970124cd12052db880a1504e2ffc481f",
+        "published_at": "2026-11-25T12:32:00+00:00"
+      },
+      {
+        "rank": 8,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "IT之家 AI",
+        "group": "科技媒体",
+        "source_name": "IT之家 AI",
+        "category": "",
+        "title": "减少错别字:Canto-2 语音 AI 模型发布,让你的语音输入“零修改”直出",
+        "summary": "IT之家 11 月 26 日消息,AI 语音听写应用 Wispr Flow 本周推出全新语音转文本模型 Canto-2, 面向 Mac、Windows、iOS 及 Android 等平台用户,旨在减少听写错误,并显著提升对专有人名、技术术语及复杂表达的理解能力。 IT之家附上相关视频如下: 据 Wispr 官方介绍,与前代 Canto-1 相比,Canto-2 在 14 种语言中的转录错误率平均降低 36%,英语错误率降低超过 15%。在内部基准测试中,14 种语言的平均错误",
+        "link": "https://www.ithome.com/1/032/752.htm",
+        "published_at": "2026-11-26T06:06:42+00:00"
+      },
+      {
+        "rank": 9,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "阿里技术",
+        "group": "科技媒体",
+        "source_name": "阿里技术",
+        "category": "",
+        "title": "智能体身份与授权:智能体生态的信任底座",
+        "summary": "阿里巴巴与业界专家共同起草了 Deferred Token Response(DTR)规范,目前该规范草案已被 OAuth 工作组正式采纳",
+        "link": "https://mp.weixin.qq.com/s?__biz=Mzg4NTczNzg2OA==&mid=2247512957&idx=1&sn=e018f76617777f9304e13650b3381024",
+        "published_at": "2026-11-26T10:01:00+00:00"
+      },
+      {
+        "rank": 10,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "小米技术",
+        "group": "科技媒体",
+        "source_name": "小米技术",
+        "category": "",
+        "title": "小米集团2026年Q3业绩:稳中求进,单季营收站稳千亿",
+        "summary": "小米技术 2026-11-24 20:10 北京 11月24日,小米集团发布2026年第三季度业绩公告。本季度小米各业务稳中求进:总营收1072亿元,再超千亿;集团毛利率环比改善,经营质量稳步提升。 汽车业务规模加速扩张,澎程逆势领涨增程赛道。 新能源汽车及AI等创新业务收入239亿元,当季新车交付100975台。10月新车交付量突破5万辆,创年内新高,同时领跑20万以上价位品牌销量榜,小米澎程 N70、 小米SU7、小米澎程 N90分别包揽20万以上车型销量前三。澎程 N7",
+        "link": "https://mp.weixin.qq.com/s?__biz=MzUxMDQxMDMyNg==&mid=2247520790&idx=1&sn=6090d31875c496216d5b9d660472a9ab",
+        "published_at": "2026-11-24T12:10:00+00:00"
+      },
+      {
+        "rank": 11,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "InfoQ",
+        "group": "科技媒体",
+        "source_name": "InfoQ",
+        "category": "",
+        "title": "不用自建后端,前端页面也能接入云端数据了:Pages Data SDK 正式上线",
+        "summary": "AI 帮你把页面做出来了,也部署上线了。换个设备打开,却发现之前添加的内容没了,因为数据还留在上一台电脑的浏览器里。想让所有人看到同一份数据,通常得再搭一个后端,申请数据库、写接口、处理部署。这条路,跟快速做出一个可用的应用刚好背道而驰。 IGA Pages 是火山引擎全站加速产品体系中的 Web 应用托管和部署能力。Pages Data SDK 让你在 Web 页面应用(Pages 项目)里直接创建、查询、更新和删除云端数据,不需要额外搭建后端服务和数据库。数据操作在 Pa",
+        "link": "https://www.infoq.cn/article/WXXMTPHLTH0bKV3rc35g",
+        "published_at": "2026-11-26T05:46:49+00:00"
+      },
+      {
+        "rank": 12,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "阿里技术",
+        "group": "科技媒体",
+        "source_name": "阿里技术",
+        "category": "",
+        "title": "从真实问题出发,复旦大学 × 阿里巴巴格造社启动",
+        "summary": "11 月 24 日,复旦大学 × 阿里巴巴 AI Native 人才培养计划暨格造社启动日活动在复旦大学江湾校区举行。",
+        "link": "https://mp.weixin.qq.com/s?__biz=Mzg4NTczNzg2OA==&mid=2247512946&idx=1&sn=c1bd7ddd6535cf7a4abbabcc0ffe2393",
+        "published_at": "2026-11-25T10:01:00+00:00"
+      },
+      {
+        "rank": 13,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "快科技（AI/智能）",
+        "group": "科技媒体",
+        "source_name": "快科技（AI/智能）",
+        "category": "",
+        "title": "闪屏有救了!英伟达G-SYNC工具修复60FPS OLED闪烁",
+        "summary": "快科技11月27日消息,据Wccftech报道, NVIDIA Profile Inspector开发者Orbmu2k发布了一款名为NVIDIA G-SYNC Tweaks的免费开源工具。 这款工具可用于调整英伟达显卡驱动中未公开的G-SYNC、可变刷新率(VRR)相关参数,重点解决部分高刷显示器在60FPS时提前触发低帧率补偿(LFC),导致OLED屏幕亮度闪烁以及其他显示器出现卡顿的问题。 可变刷新率技术能够让显示器刷新率与GPU实际输出帧率动态同步,从而减少画面撕裂和卡",
+        "link": "https://m.mydrivers.com/newsview/1168964.html",
+        "published_at": "2026-11-27T00:21:00+00:00"
+      },
+      {
+        "rank": 14,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "快科技（AI/智能）",
+        "group": "科技媒体",
+        "source_name": "快科技（AI/智能）",
+        "category": "",
+        "title": "内存占用超1GB!微软主动砍掉三款Copilot应用:12月正式下线",
+        "summary": "快科技11月26日消息, 微软最近做了一件让不少Windows 11用户舒心的事:宣布退役People、Files和Calendar三款Microsoft 365伴侣应用。 这三款被强行安装、内置Copilot按钮的迷你应用将在2026年12月16日停止工作,已经装上的用户还需要自行卸载。 至于为什么砍掉,微软在Ignite 2026大会的问答环节给出了官方解释,而答案多少有点让人哭笑不得——这三个应用是大量内存和问题的来源,功能虽然提供了一些,但代价非常高昂。 这三款应用是",
+        "link": "https://m.mydrivers.com/newsview/1168869.html",
+        "published_at": "2026-11-26T09:55:00+00:00"
+      },
+      {
+        "rank": 15,
+        "role": "quick",
+        "role_label": "快讯",
+        "publisher": "The Decoder",
+        "group": "科技媒体",
+        "source_name": "The Decoder",
+        "category": "",
+        "title": "PrismML shrinks a 54 GB language model to 5.9 GB by reducing every weight to just three possible values",
+        "summary": "Startup PrismML has released Ternary Bonsai 2.5 27B, an updated version of its aggressively compressed language model. It's based on Qwen3.8-27B and takes up just 5.9 GB of memory, same as its predecessor. That's possible because of ternary",
+        "link": "https://the-decoder.com/prismml-squeezes-an-agent-based-coding-model-with-27-billion-parameters-into-5-9-gb/",
+        "published_at": "2026-11-25T11:51:49+00:00"
+      }
+    ],
+    "warnings": []
+  },
+  "radar": {
+    "available": false,
+    "status": "unavailable",
+    "rules": {
+      "min_stars": 500,
+      "created_window_days": 30,
+      "recent_push_days": 21,
+      "repeat_window_days": 30,
+      "probe_limit": 12,
+      "pick_count": 1,
+      "runner_up_count": 2
+    },
+    "pick": null,
+    "runner_ups": [],
+    "yesterday": null,
+    "candidates": {
+      "total": 0,
+      "excluded_recent": 0,
+      "fresh": null,
+      "semantics": "unknown",
+      "detail_available": false,
+      "preview": null
+    },
+    "message": "该日期暂无项目雷达"
+  },
+  "quality": {
+    "mode": "normal",
+    "chars": 3920,
+    "turns": 40,
+    "host_a_chars": 1821,
+    "host_b_chars": 1819,
+    "host_char_ratio": 0.5,
+    "chapters": 6
+  },
+  "meta": {
+    "generated_from": {
+      "brief": "data/briefs/brief_2026-11-27.json",
+      "report": "data/editorial/2026-11-27/daily_report_2026-11-27.md",
+      "radar": "data/gh_radar/radar_2026-11-27.json",
+      "playlist": "site/episodes/2026-11-27/playlist.json",
+      "episodes": "data/episodes.json"
+    },
+    "warnings": [
+      "radar_candidate_detail_unavailable"
+    ]
+  }
+}
