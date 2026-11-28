@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>今日AI看点 | 2026-11-28</title>
+  <style>body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;max-width:860px;margin:24px auto;padding:0 16px;line-height:1.6}li{margin:12px 0}small{color:#555}</style>
+</head>
+<body>
+<h1>今日AI看点 | 2026-11-28</h1>
+<p>2026年11月28日</p>
+<p>本期从 Claude Ship 的代码交付流程切入，拆解 AI Agent 如何在 PR 中分权：审查者只读、修复者可改代码、审批者按默认分支策略放行，完整状态则沉淀在 PR 内。随后结合苏莱曼“先遏制、后对齐”的示警，讨论沙盒、权限与人工监督；再沿纳德拉的模型调度路线与 7B 冷启动优化，看训练、推理和按需拉起如何落到单位成本。快讯部分覆盖 Chrome 的 Gemini 内存问题、SpaceX 算力园区、Talkie 下架及 Epochal 历史网页复现。结尾回到一个判断：AI 从生成走向执行后，分权、留痕、治理与成本必须同步设计。</p>
+<h2>本期章节</h2>
+<ol>
+<li><strong>今日议程</strong>: 从 Claude Ship 切入代码交付：用只读审查、可修改修复与独立审批拆分权限，并借 PR 状态、运行级别和审计记录说明，Agent 真正进入合并链路后，治理应与执行同时设计。<ul><li>Code Review、PR Steward、Claude Approvals 分工：只读审查、可改修复、独立审批</li><li>PR 事件驱动后续任务，Diff、CI、审查意见和审批记录留在同一上下文</li><li>三种审查强度可配置，但覆盖率与内部效率数字仍需核对统计口径</li></ul></li>
+<li><strong>能力越过门槛</strong>: 借苏莱曼的“先遏制、后对齐”警告，把能力增长与控制缺口放在同一张图里：漏洞发现、跨系统操作和绕栏行为，要求沙盒、权限与人工监督先于高权限执行落地。<ul><li>“门槛”指向 AI 能力接近人类难以有效监督和控制的边界</li><li>“遏制”负责限制能力，“对齐”负责校准目标与行为，两者不能混为一谈</li><li>示警提供了优先级，却不是能够覆盖所有高权限场景的完整方案</li></ul></li>
+<li><strong>算力上的算盘</strong>: 本节把竞争单位从单次模型成绩换成单位成本与可用产能：一边由微软按任务路由模型，另一边优化稀疏流量下从零拉起，训练、推理和基础设施共同进入成本曲线。<ul><li>纳德拉以性能接近为前提，强调模型调度和“每美元结果”</li><li>Copilot 自动路由与 Rocket 训练分别对应推理降本和训练效率</li><li>7B 服务从 43.12 秒降至 11.74 秒，说明冷启动也是完整系统问题</li></ul></li>
+<li><strong>产品与基建快讯</strong>: 快讯把风险落到真实系统：浏览器内存、园区电力、伴侣应用年龄与内容、历史网页的未来信息泄漏，分别考验资源治理、基础设施协同和平台责任。<ul><li>Chrome 修复已上线，但高内存个案仍缺少统一测试环境</li><li>StarBase 将算力建设延伸到供能、许可与储能协同</li><li>Talkie 与 Epochal 分别暴露未成年人保护和历史信息边界问题</li></ul></li>
+<li><strong>明日看点</strong>: 收束今日的三条观察线：规则维护要跟上代码变化，冷启动继续压低时延，安全要求则可能改写产品上架门槛；下一期将继续追踪这些可验证的工程指标。<ul><li>关注 Claude Ship 的审批策略能否随代码和规则变化及时维护</li><li>继续观察模型从零拉起时延及服务就绪成本的优化空间</li><li>跟踪年龄分级、内容安全和平台审核对 AI 产品分发的影响</li></ul></li>
+</ol>
+<h2>本期提到</h2>
+<ol>
+<li>🔴 <a href="https://www.aibase.com/zh/news/32580">Anthropic 放出 Claude Ship:内部 PR 合并量 3 个月翻倍,回滚比例下降超 40%</a> <small>(AIBase 新闻)</small></li>
+<li>⚪ <a href="https://www.ithome.com/1/033/191.htm">微软 AI 负责人苏莱曼警告:AI 正跨越危险门槛,“对齐”之前先要能“遏制”</a> <small>(IT之家 AI)</small></li>
+<li>⚪ <a href="https://www.ithome.com/1/033/416.htm">一个标签页曾吃掉 8.4GB 内存:谷歌称已修复 Chrome 浏览器 Gemini 吃内存问题</a> <small>(IT之家 AI)</small></li>
+<li>⚪ <a href="https://www.ithome.com/1/032/805.htm">微软纳德拉:自研 AI 落后 3~6 个月没关系,“量大管饱”才是硬道理</a> <small>(IT之家 AI)</small></li>
+<li>⚪ <a href="https://www.aibase.com/zh/news/32574">90天从空地到算力巨兽!SpaceX 狂砸240亿美元自建“能源孤岛”</a> <small>(AIBase 新闻)</small></li>
+<li>⚪ <a href="https://mp.weixin.qq.com/s?__biz=Mzg4NTczNzg2OA==&mid=2247512965&idx=1&sn=586669b4c9bf2dd547b6766a6953e1a9">一个 7B 模型服务冷启动要 2 分半,我们把它压进了 12 秒</a> <small>(阿里技术)</small></li>
+<li>⚪ <a href="https://www.landian.news/archives/128951.html">苹果下架拥有1100万名用户的MiniMax Talkie 调查显示其AI角色向儿童发送不当内容</a> <small>(蓝点网)</small></li>
+<li>⚪ <a href="https://www.mittrchina.com/news/detail/17302">xAI创始成员张国栋新公司亮相,他们用万亿网页造了一台AI“时光机”</a> <small>(MIT 科技评论中文)</small></li>
+<li>⚪ <a href="https://www.cac.gov.cn/2026-11/27/c_1797537998599677.htm">国家网信办等十一部门联合公布《分布式数字身份互通互认应用规定》</a> <small>(网信办政策法规)</small></li>
+<li>⚪ <a href="https://www.aibase.com/zh/news/32566">月之暗面赋能科研、DeepSeek牵手知乎,中国AI大模型正式打响“高质量数据与专业场景”保卫战</a> <small>(AIBase 新闻)</small></li>
+<li>⚪ <a href="https://mp.weixin.qq.com/s?__biz=Mzg4NTczNzg2OA==&mid=2247512957&idx=1&sn=e018f76617777f9304e13650b3381024">智能体身份与授权:智能体生态的信任底座</a> <small>(阿里技术)</small></li>
+<li>⚪ <a href="https://mp.weixin.qq.com/s?__biz=MzIzOTU0NTQ0MA==&mid=2247562833&idx=1&sn=b17256dfcccf44941af611df251f29e3">千问 AI Arena:让你的智能体走进支付宝</a> <small>(阿里云开发者)</small></li>
+<li>⚪ <a href="https://kiro.dev/blog/kirobench/">Benchmarking coding agents on the work developers bring to Kiro</a> <small>(Kiro Blog)</small></li>
+<li>⚪ <a href="https://www.landian.news/archives/128952.html">造孽啊!英伟达621.40显卡驱动修复过度写入问题 但又出现黑屏和信号丢失</a> <small>(蓝点网)</small></li>
+<li>⚪ <a href="https://community.aijishu.com/a/1060000000526826">海纳百川,算力为潮:深圳的七十二变</a> <small>(极术社区 AI)</small></li>
+</ol>
+</body>
+</html>
